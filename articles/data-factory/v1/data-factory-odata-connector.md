@@ -66,10 +66,10 @@ A következő táblázat a JSON-elemeket társított OData-szolgáltatás leír�
 | type |A type tulajdonságot kell beállítani: **OData** |Igen |
 | url |Az OData-szolgáltatás URL-címe. |Igen |
 | authenticationType |Az OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. <br/><br/> Felhőalapú OData a lehetséges értékek: névtelen, alapszintű és OAuth (Megjegyzés: az Azure Data Factory jelenleg csak támogatás az Azure Active Directory-alapú OAuth). <br/><br/> A helyszíni OData a lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
-| felhasználónév |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Igen (csak akkor, ha az egyszerű hitelesítés használata esetén) |
+| username |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Igen (csak akkor, ha az egyszerű hitelesítés használata esetén) |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Igen (csak akkor, ha az egyszerű hitelesítés használata esetén) |
 | authorizedCredential |Ha OAuth használ, kattintson a **engedélyezés** gombra a Data Factory Copy varázslót vagy a szerkesztőben, és adja meg a hitelesítő adatok a tulajdonság értéke lesz automatikusan létrehozott. |Igen (csak akkor, ha OAuth-hitelesítés használata esetén) |
-| átjáró neve |Az átjáró, amely a Data Factory szolgáltatás segítségével csatlakozhat a helyszíni OData-szolgáltatás neve. Csak adja meg, ha a másolt adatok helyi OData-forráshoz. |Nem |
+| gatewayName |Az átjáró, amely a Data Factory szolgáltatás segítségével csatlakozhat a helyszíni OData-szolgáltatás neve. Csak adja meg, ha a másolt adatok helyi OData-forráshoz. |Nem |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 ```json
@@ -148,7 +148,7 @@ A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban 
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| elérési út |Az OData-erőforrás elérési útja |Nem |
+| path |Az OData-erőforrás elérési útja |Nem |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti táblák és a házirend az összes típusú tevékenységek érhetők el.
@@ -159,7 +159,7 @@ Ha a forrás típusa van **RelationalSource** (amely tartalmazza az OData) typeP
 
 | Tulajdonság | Leírás | Példa | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"?$select=Name, Description&$top=5" |Nem |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"?$select=Name, Description&$top=5" |Nem |
 
 ## <a name="type-mapping-for-odata"></a>OData-leképezés típusa
 Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi kétlépéses módszer a forrás-típusok közül.
