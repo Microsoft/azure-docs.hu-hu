@@ -85,15 +85,16 @@ Az Azure Disk Encryption internetkapcsolatra van szükség az Active Directory, 
 | typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
 | (optional) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
 | (optional) AADClientSecret | password | string |
-| (nem kötelező) AADClientCertificate | thumbprint | string |
+| (optional) AADClientCertificate | thumbprint | string |
 | EncryptionOperation | EnableEncryption | string | 
 | KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultResourceId | erőforrás-uri | string |
 | KekVaultResourceId | erőforrás-uri | string |
 | KeyVaultURL | url | string |
+| (optional) Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
-| VolumeType | Az operációs rendszer, az adatok, az összes | string |
+| VolumeType | OS, Data, All | string |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 Sablon telepítése egy példa: [ új titkosított Windows virtuális gép létrehozása katalógus-lemezkép](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
