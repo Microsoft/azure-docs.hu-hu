@@ -178,7 +178,7 @@ Ez a szakasz ismerteti a különböző módokon használhatja a Parancsfájlműv
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza a megadott szkriptek közül. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
     | Bash parancsfájl URI azonosítója |Adja meg a szkript URI azonosítója. |
-    | A fő/feldolgozó vagy Zookeeper |Adja meg a csomópontok, amelyen a szkript fut: **A fő**, **feldolgozó**, vagy **ZooKeeper**. |
+    | Head/Worker vagy ZooKeeper |Adja meg a csomópontok, amelyen a szkript fut: **Head**, **Worker**, vagy **ZooKeeper**. |
     | Paraméterek |Adja meg a paramétereket, ha a parancsfájl által igényelt. |
 
     Használja a __parancsfájlműveletet__ bejegyzést, győződjön meg arról, hogy érvényesek-e a parancsfájl méretezési műveletek során.
