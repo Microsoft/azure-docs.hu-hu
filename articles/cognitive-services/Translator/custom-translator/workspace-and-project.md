@@ -3,19 +3,19 @@ title: Mi az a munkaterület és a projekt? -Egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk ismerteti a munkaterület és a projekt közötti különbséget, valamint az egyéni Translator szolgáltatáshoz tartozó projekt-kategóriákat és címkéket.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 28bc07cadf9ffea56059755e243cb3e828077588
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0abda0307e3cdbd0e73e131bee072172375198eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368967"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898053"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni Translator-munkaterület?
 
@@ -45,6 +45,6 @@ Ha például azt szeretném, hogy a technológiai tartomány fordításait angol
 
 Ha Ön nyelvi szolgáltató, és több olyan ügyfelet szeretne kiszolgálni, akik különböző modellekkel rendelkeznek, és megtartják ugyanazt a kategóriát és nyelvi párt, akkor a projekt címkéje az ügyfelek közötti különbségtételhez bölcs döntés lenne.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tájékozódjon a [Betanításról és a modellről, és](training-and-model.md) Ismerje meg, hogyan hozhat létre hatékony fordítási modellt.

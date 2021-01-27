@@ -1,5 +1,5 @@
 ---
-title: Videofájlok streamelése az Azure Media Services használatával – .NET | Microsoft Docs
+title: Videofájlok továbbítása Azure Media Services-.NET-tel
 description: Kövesse ennek az oktatóanyagnak a lépéseit, hogy a .NET használatával új Azure Media Services fiókot hozzon létre, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268689"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898189"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET
 
@@ -55,10 +55,10 @@ A minta a következő műveleteket hajtja végre:
 
 1. Létrehoz egy **átalakítót** (először ellenőrzi, hogy létezik-e a megadott átalakító). 
 2. Létrehozza a kódolási **feladatok** **kimenetéhez használt kimeneti objektumot** .
-3. Egy HTTPS URL-cím alapján hozza létre a **feladathoz**tartozó bemenetet.
+3. Egy HTTPS URL-cím alapján hozza létre a **feladathoz** tartozó bemenetet.
 4. Elküldi a kódolási **feladatot** a korábban létrehozott bemenet és kimenet használatával.
 5. Ellenőrzi a feladat állapotát.
-6. Adatfolyam- **keresőt**hoz létre.
+6. Adatfolyam- **keresőt** hoz létre.
 7. Streamelési URL-címeket épít fel.
 
 A minta egyes funkcióinak leírásáért vizsgálja meg a kódot, és tekintse meg az [ebben a forrásfájlban](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) található megjegyzéseket.
@@ -113,7 +113,7 @@ Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
 Az Azure Media Services v3 SDK-k nem szálbiztosak. Többszálas alkalmazások használatakor minden szálhoz ajánlott létrehozni egy új AzureMediaServicesClient objektumot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

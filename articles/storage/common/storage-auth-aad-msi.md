@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e58cbef74aa9b6f58207abf780fd63176d5edd7d
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 552d2587f35ed391b470c6d5b1693b79fd57306b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680921"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879578"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -31,7 +31,7 @@ Ahhoz, hogy az Azure-erőforrásokhoz felügyelt identitások használatával en
 - [Azure Portalra](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -166,9 +166,9 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 > [!NOTE]
 > Az Azure AD-vel a blob-vagy üzenetsor-adatkérések engedélyezéséhez HTTPS protokollt kell használnia a kérelmekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A tárolási és az Azure RBAC hozzáférési jogosultságának kezelése](./storage-auth-aad-rbac-portal.md).
 - [Használja az Azure ad-t a Storage-alkalmazásokhoz](storage-auth-aad-app.md).
 - [PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a Blobok adatainak eléréséhez](../blobs/authorize-data-operations-powershell.md)
-- [Oktatóanyag: hozzáférés a Storage-ból App Service felügyelt identitások használatával](/azure/app-service/scenario-secure-app-access-storage)
+- [Oktatóanyag: hozzáférés a Storage-ból App Service felügyelt identitások használatával](../../app-service/scenario-secure-app-access-storage.md)

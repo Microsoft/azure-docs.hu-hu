@@ -2,13 +2,13 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Ismerteti, hogyan használhatók a csatolt sablonok egy Azure Resource Manager sablonban (ARM-sablon) egy moduláris sablon megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790935"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880431"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -495,6 +495,91 @@ A paraméterek értékének megadásához használja a `parameters` tulajdonság
 ```
 
 Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutató hivatkozást. Az üzemelő példány hibát jelez, ha mindkettő `parametersLink` és `parameters` a meg van adva.
+
+### <a name="use-relative-path-for-linked-templates"></a>Relatív elérési út használata csatolt sablonokhoz
+
+A `relativePath` tulajdonsága `Microsoft.Resources/deployments` megkönnyíti a csatolt sablonok létrehozását. Ezzel a tulajdonsággal egy távoli csatolt sablon helyezhető üzembe a szülőhöz képest. Ehhez a szolgáltatáshoz minden sablon fájlját meg kell adni, és elérhetőnek kell lennie egy távoli URI-n, például a GitHubon vagy az Azure Storage-fiókon. Ha a fő sablont Azure PowerShell vagy Azure CLI-n keresztüli URI azonosítóval hívja meg, a gyermek központi telepítési URI a szülő-és a relativePath kombinációja.
+
+> [!NOTE]
+> TemplateSpec létrehozásakor a tulajdonság által hivatkozott minden sablon `relativePath` Azure PowerShell vagy az Azure CLI használatával van csomagolva a templateSpec-erőforráshoz. Nincs szükség a fájlok előkészítésére. További információ: [sablon létrehozása a csatolt sablonokkal](./template-specs.md#create-a-template-spec-with-linked-templates).
+
+Tegyük fel a következőhöz hasonló mappastruktúrát:
+
+![Resource Manager csatolt sablon relatív elérési útja](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
+
+A következő sablon azt mutatja be, hogy a *mainTemplate.js* hogyan telepíti *nestedChild.js* az előző képen látható módon.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+A következő üzemelő példányban az előző sablonban található csatolt sablon URI-ja **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** .
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+Ha egy Azure Storage-fiókban tárolt relatív elérési úttal rendelkező csatolt sablonokat kíván telepíteni, használja a `QueryString` / `query-string` paramétert a TemplateUri paraméterrel használandó sas-jogkivonat megadásához. Ezt a paramétert csak az Azure CLI 2,18-es vagy újabb verziója, valamint a 5,4-es vagy újabb verziójú Azure PowerShell támogatja.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+Győződjön meg arról, hogy nincs vezető "?" a QueryString. Az üzembe helyezés során a rendszer a központi telepítések URI-azonosítójának összeállításakor létrehoz egyet.
 
 ## <a name="template-specs"></a>Sablonspecifikációk
 

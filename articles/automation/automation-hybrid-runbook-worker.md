@@ -3,14 +3,14 @@ title: Azure Automation Hybrid Runbook Worker – áttekintés
 description: Ez a cikk áttekintést nyújt a hibrid Runbook-feldolgozóról, amellyel runbookok futtathatók a helyi adatközpontban vagy a felhőalapú szolgáltatóban található gépeken.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072139"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896952"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
@@ -54,16 +54,7 @@ A Windows rendszerű gépek ajánlott telepítési módszere egy Azure Automatio
 
 ## <a name="network-planning"></a><a name="network-planning"></a>Hálózattervezés
 
-Ahhoz, hogy a rendszer és a felhasználó hibrid Runbook feldolgozója is csatlakozni tudjanak Azure Automationhoz, hozzá kell férnie az ebben a részben ismertetett portszámhoz és URL-címekhez. A munkavégzőnek hozzáféréssel kell rendelkeznie a Log Analytics ügynökhöz a Azure Monitor Log Analytics munkaterülethez való csatlakozáshoz [szükséges portokhoz és URL-címekhez](../azure-monitor/platform/agent-windows.md) .
-
-A hibrid Runbook-feldolgozónak a következő portokra és URL-címekre van szüksége:
-
-* Port: csak TCP 443 szükséges a kimenő internet-hozzáféréshez
-* Globális URL-cím: `*.azure-automation.net`
-* US Gov Virginia globális URL-címe: `*.azure-automation.us`
-* Ügynök szolgáltatás: `https://<workspaceId>.agentsvc.azure-automation.net`
-
-Ha rendelkezik egy adott régióhoz definiált Automation-fiókkal, akkor a hibrid Runbook-feldolgozó kommunikációt korlátozhatja az adott regionális adatközpontra. Tekintse át a [Azure Automation által használt DNS-rekordokat](how-to/automation-region-dns-records.md) a szükséges DNS-rekordokhoz.
+A hibrid Runbook-feldolgozóhoz szükséges portok, URL-címek és egyéb hálózatkezelési adatok részletes adatainak megtekintéséhez [Azure Automation hálózati konfigurációt](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) .
 
 ### <a name="proxy-server-use"></a>Proxykiszolgáló használata
 
@@ -94,7 +85,7 @@ Azure Automation Hybrid Runbook Worker Azure Government használható a követke
 * Az [Azure dedikált gazdagépei](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)olyan fizikai kiszolgálókat biztosítanak, amelyek egy vagy több virtuális gép üzemeltetésére képesek egy Azure-előfizetéshez.
 
 >[!NOTE]
->A hibrid Runbook-feldolgozói szerepkörrel való számítási elkülönítés az Azure kereskedelmi és az USA kormányzati felhők számára érhető el. 
+>A hibrid Runbook-feldolgozói szerepkörrel való számítási elkülönítés az Azure kereskedelmi és az USA kormányzati felhők számára érhető el.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozók Update Management címei
 

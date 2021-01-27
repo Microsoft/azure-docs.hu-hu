@@ -1,5 +1,5 @@
 ---
-title: Terminológia és entitások változása Azure Media Services v2 és v3 között | Microsoft Docs
+title: Terminológia és entitások változása Azure Media Services v2 és v3 között
 description: Ez a cikk a Azure Media Services v2 és v3 közötti terminológiai különbségeket ismerteti.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f657b853298cf0065da931835ea56ef2e0e0fe7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b53fbcb62004a8af9b2470c76f64f1ace845c1a8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690406"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898392"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminológia és entitások változása Media Services v2 és v3 között
 
@@ -56,10 +56,10 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | `Job`<!-- row --> | `Job` | Hozzon létre egy t a `Transform` létrehozása előtt `Job` . | Nem | Nem |
 | `JobTemplate`<!-- row --> | `Transform` | Használjon `Transform` helyette. Az átalakítás egy adott feladatokból származó különálló entitás, amely újra felhasználható. | Nem | Nem |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Igen | Nem |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | Ahelyett, hogy megkeresi a `MediaProcessor` nevet, használja a kívánt beállításkészletet az átalakítás definiálásához. A használt beállításkészlet határozza meg a rendszer által használt adathordozó-processzort. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Nem | NA (ReadOnly a v2-ben) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | Ahelyett, hogy megkeresi a `MediaProcessor` nevet, használja a kívánt beállításkészletet az átalakítás definiálásához. A használt beállításkészlet határozza meg a rendszer által használt adathordozó-processzort. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (ReadOnly a v2-ben) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | A v3-as értesítések Azure Event Grid használatával kezelhetők. A `NotificationEndpoint` Event Grid előfizetés-regisztráció váltja fel, amely a kapott értesítések típusának konfigurációját is magában foglalja (a v2-ben a feladat `JobNotificationSubscription` , a `TaskNotificationSubscription` feladat és a telemetria kezelése `ComponentMonitoringSetting` ). A v2 telemetria Azure Event Grid és Azure Monitor között osztották fel, hogy illeszkedjenek a nagyobb Azure-ökoszisztémák fejlesztéséhez. | Nem | Nem |
 | `Program`<!-- row --> | `LiveOutput` | Az élő kimenetek mostantól a V3 API-ban lévő programokat cserélik le.  | Nem | Nem |
-| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | A folyamatos átviteli végpontok elsődlegesek maradnak. Ezek a dinamikus csomagolás, a titkosítás és a HLS és a DASH tartalom továbbítására szolgálnak mind az élő, mind az igény szerinti folyamatos átvitelhez, vagy közvetlenül a forrástól, vagy a CDN-n keresztül. Az új funkciók közé tartozik a jobb Azure Monitor integráció és a diagramok támogatása. |  Igen | Igen |
+| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | A folyamatos átviteli végpontok elsődlegesek maradnak. Ezek a dinamikus csomagolás, a titkosítás és a HLS és a DASH tartalom továbbítására szolgálnak mind az élő, mind az igény szerinti folyamatos átvitelhez, vagy közvetlenül a forrástól, vagy a CDN-n keresztül. Az új funkciók közé tartozik a jobb Azure Monitor integráció és a diagramok támogatása. |  Igen | Yes |
 | `Task`<!-- row --> | `JobOutput` | Lecserélte `JobOutput` (amely már nem különálló entitás az API-ban).  Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nem | Nem |
 | `TaskTemplate`<!-- row --> | `TransformOutput` | Lecserélte `TransformOutput` (amely már nem különálló entitás az API-ban). Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nem | Nem |
 | `Inputs`<!-- row --> | `Inputs` | A bemenetek és kimenetek jelenleg a feladatok szintjén vannak. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Nem | Nem |
@@ -69,7 +69,7 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | **További változások** | **V2**  | **V3** |
 |---|---|---|
 | **Storage** <!--new row --> |||
-| Storage <!--new row --> | | A v3 SDK-k mostantól le vannak választva a Storage SDK-ból, így nagyobb mértékben szabályozható a használni kívánt Storage SDK verziója, és elkerülheti a verziószámozási problémákat.                      |
+| Tárolás <!--new row --> | | A v3 SDK-k mostantól le vannak választva a Storage SDK-ból, így nagyobb mértékben szabályozható a használni kívánt Storage SDK verziója, és elkerülheti a verziószámozási problémákat.                      |
 | **Kódolás** <!--new row --> |||
 | Kódolási átviteli sebesség <!--new row --> | átviteli sebesség (Kbit/s): 128 (Kbit/s)| bitek másodpercenként: ex: 128000 (BITS/másodperc)|
 | DRM-FairPlay kódolása <!--new row --> | Media Services v2-ben megadható az inicializálási vektor (IV). | Media Services v3-as verzióban nem adható meg a FairPlay IV.|

@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 15e94b647b0f12baceffc60ad1c6ab81cc84cf22
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b4aa23079661150f40b39ff65117b7f4229a67e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631941"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880895"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Oktatóanyag: Django-alkalmazás üzembe helyezése az AK-ban Azure Database for PostgreSQL-rugalmas kiszolgálóval
 
@@ -38,7 +38,7 @@ Az **[AK](../../aks/intro-kubernetes.md)** egy felügyelt Kubernetes szolgáltat
 > [!NOTE]
 > Ha a rövid útmutatóban helyileg futtatja a parancsokat (Azure Cloud Shell helyett), győződjön meg arról, hogy rendszergazdaként futtatja a parancsokat.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot, a *Django-Project* használatával az [az Group Create] [az-Group-Create] parancsot az *eastus* helyen.
 
@@ -86,7 +86,7 @@ A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/refer
 az aks install-cli
 ```
 
-Az [aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása
-Hozzon létre egy rugalmas kiszolgálót az az [postgreSQL flexibilis-Server Create](/azure/postgresql/flexible-server?view=azure-cli-latest&preserve-view=true)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
+Hozzon létre egy rugalmas kiszolgálót az az [postgreSQL flexibilis-Server Create](./index.yml?preserve-view=true&view=azure-cli-latest)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -387,7 +387,7 @@ az group delete --name django-project --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését](../../aks/kubernetes-service-principal.md#additional-considerations) ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [érheti el a Kubernetes webes irányítópultját](../../aks/kubernetes-dashboard.md) az AK-fürthöz
 - Ismerje meg, hogyan [engedélyezheti a folyamatos üzembe helyezést](../../aks/deployment-center-launcher.md)

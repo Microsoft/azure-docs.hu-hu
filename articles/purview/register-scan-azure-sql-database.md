@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555950"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879731"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database regisztrálása és vizsgálata
 
@@ -39,7 +39,7 @@ Az Azure-beli hatáskörébe nem támogatottak a Azure SQL Database [nézeteinek
 
 ### <a name="set-up-authentication-for-a-scan"></a>Hitelesítés beállítása vizsgálathoz
 
-Hitelesítés Azure SQL Database vizsgálatához. Ha új hitelesítést kell létrehoznia, engedélyeznie kell az [adatbázis-hozzáférést SQL Databasehoz](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage). A hatáskörébe három hitelesítési módszer létezik:
+Hitelesítés Azure SQL Database vizsgálatához. Ha új hitelesítést kell létrehoznia, engedélyeznie kell az [adatbázis-hozzáférést SQL Databasehoz](../azure-sql/database/logins-create-manage.md). A hatáskörébe három hitelesítési módszer létezik:
 
 - SQL-hitelesítés
 - Szolgáltatásnév
@@ -88,8 +88,8 @@ Egyszerű szolgáltatásnév használatához használhat egy meglévőt, vagy l�
 
 Az egyszerű szolgáltatásnak vagy a felügyelt identitásnak engedéllyel kell rendelkeznie az adatbázis, a sémák és a táblák metaadatainak beszerzéséhez. Emellett képesnek kell lennie a táblázatok lekérdezésére is a besoroláshoz.
 
-- [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Ha felügyelt identitást használ, a hatáskörébe tartozó fióknak saját felügyelt identitása van, amely alapvetően a hatáskörébe tartozik a létrehozásakor. Létre kell hoznia egy Azure AD-felhasználót Azure SQL Database a hatáskörébe tartozó felügyelt identitással vagy a saját egyszerű szolgáltatásával, az [egyszerű szolgáltatás felhasználójának létrehozásához a Azure SQL Databaseban](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). Az identitáshoz megfelelő engedélyeket (például vagy) kell rendelnie `db_owner` `db_datareader` . SQL-szintaxis – példa felhasználói és engedélyezési engedélyek létrehozására:
+- [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](../azure-sql/database/authentication-aad-configure.md)
+- Ha felügyelt identitást használ, a hatáskörébe tartozó fióknak saját felügyelt identitása van, amely alapvetően a hatáskörébe tartozik a létrehozásakor. Létre kell hoznia egy Azure AD-felhasználót Azure SQL Database a hatáskörébe tartozó felügyelt identitással vagy a saját egyszerű szolgáltatásával, az [egyszerű szolgáltatás felhasználójának létrehozásához a Azure SQL Databaseban](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database). Az identitáshoz megfelelő engedélyeket (például vagy) kell rendelnie `db_owner` `db_datareader` . SQL-szintaxis – példa felhasználói és engedélyezési engedélyek létrehozására:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -161,7 +161,7 @@ A **források regisztrálása (Azure SQL Database)** képernyőn tegye a követk
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database vizsgálatokból származó eszközöket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

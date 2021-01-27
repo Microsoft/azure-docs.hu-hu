@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ab4aa149672e77c3d67eef50b3814d61cd67c0bc
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 83ffab432be038a2fbec8672e5e0de8f5c902654
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202419"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880878"
 ---
 # <a name="azure-security-baseline-for-azure-migrate"></a>Azure Migrate Azure biztonsági alapterve
 
@@ -23,7 +23,7 @@ Ha szeretné megtekinteni, hogyan Azure Migrate teljes mértékben leképezni az
 
 ## <a name="identity-management"></a>Identitáskezelés
 
-*További információ: [Azure Security Benchmark: Identitáskezelés](/azure/security/benchmarks/security-controls-v2-identity-management).*
+*További információ: [Azure Security Benchmark: Identitáskezelés](../security/benchmarks/security-controls-v2-identity-management.md).*
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Az Azure Active Directory, mint központi identitáskezelő és hitelesítési rendszer szabványosítása
 
@@ -41,7 +41,7 @@ Az Azure AD támogatja a külső identitást, amely lehetővé teszi a felhaszn�
 
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Külső identitásszolgáltatók használata alkalmazáshoz](/azure/active-directory/b2b/identity-providers) 
+- [Külső identitásszolgáltatók használata alkalmazáshoz](../active-directory/external-identities/identity-providers.md) 
 
 - [Az identitásbiztonsági pontszám fogalma az Azure Active Directoryban](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -101,9 +101,9 @@ Az Azure Advanced Threat Protection (ATP) olyan biztonsági megoldás, amely Act
 
 - [Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directoryban](../active-directory/reports-monitoring/concept-audit-logs.md) 
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
+- [A kockázatos tevékenységek miatt megjelölt Azure AD-felhasználók azonosítása](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [A felhasználók identitási és hozzáférési tevékenységeinek monitorozása az Azure Security Centerben](../security-center/security-center-identity-access.md) 
 
@@ -117,7 +117,7 @@ Az Azure Advanced Threat Protection (ATP) olyan biztonsági megoldás, amely Act
 
 ## <a name="privileged-access"></a>Emelt szintű hozzáférés
 
-*További információ: [Azure Security Benchmark: Emelt jogosultságú hozzáférés](/azure/security/benchmarks/security-controls-v2-privileged-access).*
+*További információ: [Azure Security Benchmark: Emelt jogosultságú hozzáférés](../security/benchmarks/security-controls-v2-privileged-access.md).*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Az üzletileg kritikus rendszerek rendszergazdai elérésének korlátozása
 
@@ -159,7 +159,7 @@ Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerep
 
 Érdemes biztosítani, hogy a vészhelyzeti hozzáférési fiókok hitelesítő adatai (például jelszó, tanúsítvány vagy intelligens kártya) biztonságos helyen vannak tárolva, amelyet csak azok ismernek, akik jogosultak azokat használni, kizárólag vészhelyzet esetén.
 
-- [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../active-directory/roles/security-emergency-access.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -182,7 +182,7 @@ Bizonyos Azure-szolgáltatások támogatják a helyi felhasználókat és szerep
 
 - [Az emelt szintű hozzáférésű munkaállomások ismertetése](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../active-directory/devices/howto-azure-managed-workstation.md)
+- [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](/security/compass/privileged-access-deployment)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -206,7 +206,7 @@ A beépített szerepkörökkel engedélyeket oszthat ki, és csak akkor kell egy
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információ: [Azure Security Benchmark: Adatvédelem](/azure/security/benchmarks/security-controls-v2-data-protection).*
+*További információ: [Azure Security Benchmark: Adatvédelem](../security/benchmarks/security-controls-v2-data-protection.md).*
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2: A bizalmas adatok védelme
 
@@ -240,7 +240,7 @@ A Azure Migrate kiszolgáló áttelepítési eszköze replikálja az adatait az 
 
 ## <a name="asset-management"></a>Asset Management (Eszközkezelés)
 
-*További információ: [Azure Security Benchmark: Összetevők kezelése](/azure/security/benchmarks/security-controls-v2-asset-management).*
+*További információ: [Azure Security Benchmark: Összetevők kezelése](../security/benchmarks/security-controls-v2-asset-management.md).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Gondoskodás arról, hogy a biztonsági csapat átlássa az adategységek kockázatait
 
@@ -270,7 +270,7 @@ A Azure Migrate nem teszi lehetővé az alkalmazások futtatását vagy a szoftv
 
 - [Azure Security Center Asset Inventory Management](../security-center/asset-inventory.md) 
 
-- [Útmutató az erőforrások elnevezésével és címkézésével kapcsolatos döntésekhez](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [Útmutató az erőforrások elnevezésével és címkézésével kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -303,7 +303,7 @@ Konfigurálás
 
 ## <a name="logging-and-threat-detection"></a>Naplózás és fenyegetésészlelés
 
-*További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
+*További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](../security/benchmarks/security-controls-v2-logging-threat-detection.md).*
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Fenyegetésészlelés engedélyezése az Azure-beli identitás- és hozzáférés-kezeléshez
 
@@ -323,7 +323,7 @@ Az Azure Security Center riasztásokat is küldhet bizonyos gyanús tevékenysé
 
 - [Az Azure Identity Protection engedélyezése](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Fenyegetésvédelem az Azure Security Centerben](/azure/security-center/threat-protection)
+- [Fenyegetésvédelem az Azure Security Centerben](../security-center/azure-defender.md)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -363,7 +363,7 @@ Számos szervezet úgy dönt, hogy a gyakran használt és az Azure-tárolót ha
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ: [Azure Security Benchmark: Incidensek kezelése](/azure/security/benchmarks/security-controls-v2-incident-response).*
+*További információ: [Azure Security Benchmark: Incidensek kezelése](../security/benchmarks/security-controls-v2-incident-response.md).*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Előkészítés – incidensválasz-folyamat frissítése az Azure-hoz
 
@@ -445,7 +445,7 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -467,7 +467,7 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 ## <a name="posture-and-vulnerability-management"></a>A biztonsági állapot és a biztonsági rések kezelése
 
-*További információ: [Azure Security Benchmark: A biztonsági állapot és a biztonsági rések kezelése](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
+*További információ: [Azure Security Benchmark: A biztonsági állapot és a biztonsági rések kezelése](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md).*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: Rendszeres támadásszimulációk végrehajtása
 
@@ -486,7 +486,7 @@ A Microsoft-felhő behatolástesztelési beavatkozási szabályai szerint eljár
 
 ## <a name="governance-and-strategy"></a>Irányítás és stratégia
 
-*További információ: [Azure Security Benchmark: Irányítás és stratégia](/azure/security/benchmarks/security-controls-v2-governance-strategy).*
+*További információ: [Azure Security Benchmark: Irányítás és stratégia](../security/benchmarks/security-controls-v2-governance-strategy.md).*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Eszközkezelési és adatvédelmi stratégia 
 
@@ -511,15 +511,15 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 -   A megfelelő titkosítási szabványok
 
 További információkat az alábbi hivatkozásokon találhat:
-- [Az Azure Security architektúrára vonatkozó ajánlásai – Tárolás, adatok és titkosítás](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Az Azure Security architektúrára vonatkozó ajánlásai – Tárolás, adatok és titkosítás](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Az Azure Security alapjai – Azure-beli adatbiztonság, titkosítás és tárolás](../security/fundamentals/encryption-overview.md)
 
-- [Felhőadaptálási keretrendszer – Az Azure-beli adatbiztonsághoz és titkosításhoz ajánlott eljárások](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [Felhőadaptálási keretrendszer – Az Azure-beli adatbiztonsághoz és titkosításhoz ajánlott eljárások](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure Security Benchmark – Eszközkezelés](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure Security Benchmark – Eszközkezelés](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure Security Benchmark – Adatvédelem](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Security Benchmark – Adatvédelem](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -547,7 +547,7 @@ Gondoskodjon róla, hogy a szegmentálási stratégia következetesen meg legyen
 
 **Útmutató**: Folyamatosan mérje és mérsékelje a kockázatokat, amelyeknek az egyes összetevők, valamint az a környezet van kitéve, amelyben üzemeltetve vannak. Kezelje kiemelten az olyan nagy értékű összetevőket és leginkább elérhetővé tett támadási felületeket, mint a közzétett alkalmazások, a hálózat be- és kilépési pontjai, a felhasználói és rendszergazdai végpontok stb.
 
-- [Azure Security Benchmark - Biztonsági állapot és biztonsági rések felmérése](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Security Benchmark - Biztonsági állapot és biztonsági rések felmérése](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -588,7 +588,7 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 További információkat az alábbi hivatkozásokon találhat:
 - [Ajánlott Azure-biztonsági eljárások 11 – Architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – Hálózati biztonság](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure Security Benchmark – Hálózati biztonság](../security/benchmarks/security-controls-v2-network-security.md)
 
 - [A nagyvállalati hálózati biztonság áttekintése](../security/fundamentals/network-overview.md)
 
@@ -616,9 +616,9 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 További információkat az alábbi hivatkozásokon találhat:
 
-- [Azure Security Benchmark – Identitáskezelés](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure Security Benchmark – Identitáskezelés](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure Security Benchmark – Emelt jogosultságú hozzáférés](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Security Benchmark – Emelt jogosultságú hozzáférés](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Ajánlott Azure-biztonsági eljárások 11 – Architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -650,9 +650,9 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 További információkat az alábbi hivatkozásokon találhat:
 
-- [Azure Security Benchmark – Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure Security Benchmark – Naplózás és fenyegetésészlelés](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure Security Benchmark – Incidenskezelés](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure Security Benchmark – Incidenskezelés](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Ajánlott Azure-biztonsági eljárások 4 – Folyamat. Incidensválasz-folyamat frissítése a felhőhöz](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -664,7 +664,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

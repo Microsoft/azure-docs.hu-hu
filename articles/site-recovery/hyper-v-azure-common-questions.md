@@ -3,12 +3,12 @@ title: Gyakori kérdések a Hyper-V vész-helyreállítással kapcsolatban Azure
 description: Ez a cikk a helyi Hyper-V virtuális gépeken az Azure-ba való vész-helyreállítás beállításával kapcsolatos gyakori kérdéseket összegzi a Azure Site Recovery-hely használatával.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754351"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879444"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Vészhelyreállítás Hyper-V-ről Azure-ba – Gyakori kérdések
 
@@ -167,7 +167,7 @@ A Hyper-V virtuális gépek 30 másodpercenként replikálhatók (kivéve a Prem
 
 ### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>A Azure Site Recovery és a Hyper-V replika együtt is konfigurálható egy Hyper-V-gépen?
 
-Igen, a Azure Site Recovery és a Hyper-V replika is konfigurálható a gépekhez. A gépnek azonban fizikai gépnek kell lennie, és az Azure-ba replikálni kell a konfiguráció/folyamat kiszolgáló használatával. További információ a [fizikai gépek](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture)védelméről.
+Igen, a Azure Site Recovery és a Hyper-V replika is konfigurálható a gépekhez. A gépnek azonban fizikai gépnek kell lennie, és az Azure-ba replikálni kell a konfiguráció/folyamat kiszolgáló használatával. További információ a [fizikai gépek](./physical-azure-architecture.md)védelméről.
 
 ### <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikálást?
 A kiterjesztett vagy láncolt replikáció nem támogatott. Kérje ezt a funkciót a [visszajelzési fórumokban](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

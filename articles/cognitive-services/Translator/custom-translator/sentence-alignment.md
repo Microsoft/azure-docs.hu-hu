@@ -2,19 +2,19 @@
 title: Mondat párosítása és igazítása – egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: A betanítás végrehajtása során a párhuzamos dokumentumokban lévő mondatok párosítva vannak vagy igazíthatók. Az egyéni fordító egyszerre tanul egy mondatot a mondatok beolvasásával, a mondat fordításával. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0c33d766bfd3dff47ddb151e8ce4ea7b25c37548
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724306"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897951"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
@@ -46,6 +46,6 @@ Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat az egyes dokument
 > - A hangolás és a tesztelés nem kötelező. Ha nem adja meg őket, a rendszer eltávolítja a megfelelő százalékot az ellenőrzéshez és teszteléshez használt képzésből. 
 > - A modelleket csak a szótárak adatai alapján lehet betanítani. Tekintse meg a [Mi az a szótár](./what-is-dictionary.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

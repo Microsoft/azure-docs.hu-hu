@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c0cb4527349b09ed8e794cc55dee6f9e54f8a7d4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e451e55a9a73022f9c90ba4adae91b520840481e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937365"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880759"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>A gépi tanulási folyamat naplófájljainak összegyűjtése a riasztások és a hibakeresés Application Insights
 
@@ -26,7 +26,7 @@ Ha a naplók a helyükön vannak, a kivételek és a hibaüzenetek előzményeit
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kövesse a [Azure Machine learning](./how-to-manage-workspace.md) munkaterület létrehozásához és [az első folyamat létrehozásához](./how-to-create-your-first-pipeline.md) szükséges lépéseket.
+* Kövesse a [Azure Machine learning](./how-to-manage-workspace.md) munkaterület létrehozásához és [az első folyamat létrehozásához](./how-to-create-machine-learning-pipelines.md) szükséges lépéseket.
 * [Állítsa be a fejlesztési környezetet](./how-to-configure-environment.md) az Azure Machine learning SDK telepítéséhez.
 * Telepítse a [OpenCensus Azure monitor-exportáló](https://pypi.org/project/opencensus-ext-azure/) csomagot helyileg:
   ```python

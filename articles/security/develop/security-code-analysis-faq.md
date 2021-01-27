@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543044"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879915"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 Kérdése van? További információért tekintse meg az alábbi gyakori kérdéseket.
@@ -163,7 +163,7 @@ A következő források segítenek a titkok biztonságos kezelésében és a biz
  - [Azure AD-Managed Service Identity (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Felügyelt identitások Azure App Service és Azure Functions](../../app-service/overview-managed-identity.md)
- - [AppAuthentication-könyvtár](../../key-vault/general/service-to-service-authentication.md)
+ - [AppAuthentication-könyvtár](/dotnet/api/overview/azure/service-to-service-authentication)
 
 
 További információkért tekintse meg a [titkok biztonságos kezelését a felhőben](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)című blogbejegyzésben.
@@ -196,7 +196,7 @@ A tartalmi kereső a következőképpen van definiálva:
 
 A teljes hibaüzenet:
 
-"Hiba: a projekt a Microsoft. NETCore. app *x. x. x*verziójával lett visszaállítva, de az aktuális beállításokkal az *y. y. y* verzió lesz használatban. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
+"Hiba: a projekt a Microsoft. NETCore. app *x. x. x* verziójával lett visszaállítva, de az aktuális beállításokkal az *y. y. y* verzió lesz használatban. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
 
 Mivel a (z) a (z) a gyűjtemény részeként futtatott a a-elemzők, a kiépíthető állapotban kell lennie a forrás fájának.
 
@@ -222,7 +222,7 @@ A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a [Microsoft.net
 
 A DevOps-elemzők létrehozási feladatának le kell kérdezni az MSBuild-napló Azure-beli az MSBuild-Build feladatból. Ha az analizátor feladat közvetlenül az MSBuild feladat után fut, a napló még nem lesz elérhető. Helyezzen el más feladatokat az MSBuild-feladat és a a a a a a a a a a a a a a ( További feladatok például a BinSkim és a kártevők elleni képolvasó.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további segítségre van szüksége, a Microsoft biztonsági kód elemzésének támogatása hétfőtől péntekig 9:00-tól 5:00-ig, a csendes-óceáni téli időpontig érhető el.
 

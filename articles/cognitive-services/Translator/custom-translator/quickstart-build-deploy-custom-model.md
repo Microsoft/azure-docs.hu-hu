@@ -2,19 +2,19 @@
 title: 'Gyors útmutató: egyéni modell létrehozása, üzembe helyezése és használata – egyéni fordító'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban részletesen áttekintheti a fordítási rendszerek létrehozását az egyéni fordító használatával.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 12/09/2019
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: quickstart
-ms.openlocfilehash: 4fbac2c2d77d838ac7fc4f3caaa73983633c3e03
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ae417006903c8d2478126f928f05647361bad1b9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366050"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896206"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: egyéni modell összeállítása, üzembe helyezése és használata fordításhoz
 
@@ -94,6 +94,6 @@ Egy üzembe helyezett modell egy projekten belüli kicseréléséhez kattintson 
 
 Az üzembe helyezett modellek a Microsoft Translator [text API v3-as verzióján keresztül érhetők el a Kategóriakód megadásával](../reference/v3-0-translate.md?tabs=curl). A Translator Text APIról további információt az [API-referenciát](../reference/v3-0-reference.md) ismertető weblapon találhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan navigálhat a [Custom Translator munkaterületen, és hogyan kezelheti a projektjeit](workspace-and-project.md).

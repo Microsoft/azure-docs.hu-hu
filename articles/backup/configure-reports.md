@@ -3,14 +3,14 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325247"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897275"
 ---
-# <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
+# <a name="configure-azure-backup-reports-preview"></a>Azure Backup-jelentések konfigurálása (előzetes verzió)
 
 A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy a biztonsági másolatok alapján bepillantást nyerjen a hosszú idő alatt álló adatokat. Ilyen megoldás esetén a következő esetekben használhatók:
 
@@ -180,6 +180,6 @@ A biztonsági mentési jelentésben szereplő widgeteket Kusto-lekérdezések m�
 
 - Emellett a diagnosztikai adatok egy Storage-fiókba vagy egy LA-munkaterületre való küldésének [v1-sémája](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) is egy elavult útvonalon található. Ez azt jelenti, hogy ha egyéni lekérdezéseket vagy automatizálásokat írt a v1 séma alapján, javasoljuk, hogy frissítse ezeket a lekérdezéseket a jelenleg támogatott v2 séma használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a Azure Backup figyeléséről és jelentéskészítéséről](./backup-azure-monitor-alert-faq.md)

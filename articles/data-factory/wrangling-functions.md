@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634140"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896663"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Átalakítási függvények a Power Queryban az adatok huzavona
 
@@ -24,7 +24,7 @@ A Azure Data Factoryban található huzavona-ben a Power Query ```M``` szkriptek
 
 Jelenleg nem minden Power Query M függvény támogatott az adatok huzavona, annak ellenére, hogy a létrehozás során elérhetővé válik. A mash-UPS összeállításakor a következő hibaüzenet jelenik meg, ha egy függvény nem támogatott:
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 Az alábbi lista a támogatott Power Query M függvények listáját tartalmazza.
 
@@ -96,7 +96,7 @@ Tartsa meg és távolítsa el a Top, Keep Range (megfelelő M függvények, csak
 | Table.Distinct | Az ismétlődő sorok eltávolítása nem támogatott. |
 | Table.RemoveLastN | Az alsó sorok eltávolítása nem támogatott. |
 | Table.RowCount | Nem támogatott, de úgy érhető el, hogy hozzáad egy egyéni oszlopot, amely az 1 értéket tartalmazza, majd összesíti az oszlopot a List. Sum értékkel. A table. Group támogatott. | 
-| Sorok szintjének hibakezelés | A sorok szintjének hibakezelés jelenleg nem támogatott. Ha például egy oszlopból nem numerikus értékeket szeretne kiszűrni, az egyik módszer az, hogy a Text (szöveg) oszlopot egy számra alakítsa át. Minden olyan cella, amely nem alakítható át, hibás állapotba kerül, és szűrni kell. Ez a forgatókönyv nem lehetséges a huzavona-adatfolyamban. |
+| Sorok szintjének hibakezelés | A sorok szintjének hibakezelés jelenleg nem támogatott. Ha például egy oszlopból nem numerikus értékeket szeretne kiszűrni, az egyik módszer az, hogy a Text (szöveg) oszlopot egy számra alakítsa át. Minden olyan cella, amely nem alakítható át, hibás állapotba kerül, és szűrni kell. Ez a forgatókönyv nem lehetséges a felskálázás M-ben. |
 | Table.Transpose | Nem támogatott |
 | Table.Pivot | Nem támogatott |
 

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 41aa7f251bc12fd889a71f65da83c4730ebda9a7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0eedd5ce67e96c9d732cf24cbe56a8c3c5e92aaa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789633"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880491"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -47,8 +47,7 @@ Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet
 | November 9., 2020 | [Azure Service Fabric 7,2 második frissítés kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-second-refresh-release/ba-p/1874738) | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU2-releasenotes.md) |
 | November 10., 2020  | Azure Service Fabric 7,2 harmadik frissítés kiadása | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
 | 2020. december 2. | [Azure Service Fabric 7,2 negyedik frissítés kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
-
-
+| 2021. január 25. | [Azure Service Fabric 7,2 ötödik frissítés kiadása](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [Kibocsátási megjegyzések](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
 
 ## <a name="previous-versions"></a>Korábbi verziók
 

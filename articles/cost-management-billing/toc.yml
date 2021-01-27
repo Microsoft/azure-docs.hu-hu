@@ -393,7 +393,7 @@
     - name: Számlázásautomatizálási forgatókönyvek
       href: manage/cost-management-automation-scenarios.md
     - name: Az Azure számlázási API áttekintése
-      href: manage/usage-rate-card-overview.md
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure számlázási REST API
       href: /rest/api/billing
     - name: Azure használati API áttekintése

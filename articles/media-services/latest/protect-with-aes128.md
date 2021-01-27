@@ -1,25 +1,9 @@
 ---
-title: Videó titkosítása AES-128
-titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan titkosíthatja a videót AES 128 bites titkosítással, és hogyan használhatja a Key Delivery szolgáltatást a Azure Media Servicesban.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289330"
+title: videó titkosítása AES-128 használatával: Azure Media Services Leírás: megtudhatja, hogyan titkosíthatja a videót AES 128 bites titkosítással, és hogyan használhatja a Key Delivery szolgáltatást a Azure Media Servicesban.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: oktatóanyag MS. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Oktatóanyag: videó titkosítása AES-128-mel és a Key Delivery Service használata
 
@@ -113,7 +97,7 @@ A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Váróli
 
 ## <a name="create-a-content-key-policy"></a>Tartalmi kulcsokra vonatkozó szabályzat létrehozása
 
-A tartalomkulcsok biztonságos hozzáférést nyújtanak az objektumokhoz. Létre kell hoznia egy **tartalmi kulcsra vonatkozó házirendet** , amely azt konfigurálja, hogy a rendszer hogyan továbbítsa a tartalmi kulcsot a végfelhasználók számára. A tartalmi kulcs a **folyamatos átviteli lokátorhoz**van társítva. A Media Services a kulcsfontosságú kézbesítési szolgáltatást is biztosítja, amely titkosítási kulcsokat biztosít a hitelesítő felhasználók számára.
+A tartalomkulcsok biztonságos hozzáférést nyújtanak az objektumokhoz. Létre kell hoznia egy **tartalmi kulcsra vonatkozó házirendet** , amely azt konfigurálja, hogy a rendszer hogyan továbbítsa a tartalmi kulcsot a végfelhasználók számára. A tartalmi kulcs a **folyamatos átviteli lokátorhoz** van társítva. A Media Services a kulcsfontosságú kézbesítési szolgáltatást is biztosítja, amely titkosítási kulcsokat biztosít a hitelesítő felhasználók számára.
 
 Ha egy lejátszó egy adatfolyamot kér, Media Services a megadott kulccsal dinamikusan titkosítja a tartalmat (ebben az esetben az AES-titkosítás használatával). Az adatfolyam visszafejtéséhez a lejátszó a kulcs kézbesítési szolgáltatástól kéri a kulcsot. A szolgáltatás kiértékeli a kulcshoz megadott tartalomkulcs-szabályzatot annak meghatározásához, hogy a felhasználó jogosult-e a kulcs lekérésére.
 
@@ -139,13 +123,13 @@ Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezz�
 
 Ebben az oktatóanyagban meghatározzuk, hogy a tartalomkulcs-szabályzat jogkivonat-korlátozással rendelkezzen. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services támogatja a tokeneket a [JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) formátumban, és ezt a mintát a példában konfiguráljuk.
 
-A ContentKeyIdentifierClaim a **tartalmi kulcs házirendjében**használják, ami azt jelenti, hogy a Key Delivery Service-nek bemutatott jogkivonat azonosítójának szerepelnie kell benne. A mintában nem határoztak meg tartalmi kulcsot a folyamatos átviteli lokátor létrehozásakor, a rendszer létrehozott egy véletlenszerűen kiválasztottat a számunkra. A teszt token létrehozásához be kell szereznie a ContentKeyId, amelyet a ContentKeyIdentifierClaim jogcímbe kell helyezni.
+A ContentKeyIdentifierClaim a **tartalmi kulcs házirendjében** használják, ami azt jelenti, hogy a Key Delivery Service-nek bemutatott jogkivonat azonosítójának szerepelnie kell benne. A mintában nem határoztak meg tartalmi kulcsot a folyamatos átviteli lokátor létrehozásakor, a rendszer létrehozott egy véletlenszerűen kiválasztottat a számunkra. A teszt token létrehozásához be kell szereznie a ContentKeyId, amelyet a ContentKeyIdentifierClaim jogcímbe kell helyezni.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>DASH streamelési URL létrehozása
 
-Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streaminglocators) , letöltheti a streaming URL-címeket. URL-cím létrehozásához összefűzni kell a [streamvégpontok](/rest/api/media/streamingendpoints) -gazdagép nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
+Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streaminglocators) , letöltheti a streaming URL-címeket. URL-cím létrehozásához összefűzni kell a [streamvégpontok](/rest/api/media/streamingendpoints) -gazdagép nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
@@ -173,7 +157,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Védelem a DRM-mel](protect-with-drm.md)

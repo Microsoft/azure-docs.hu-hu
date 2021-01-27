@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567972"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878918"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>A Salesforce Service-felhő összekötése az Azure Sentinel szolgáltatással
 
@@ -37,7 +37,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható a Salesforce Service Cloud-meg
 
 - Olvasási jogosultsággal kell rendelkeznie a munkaterület megosztott kulcsaihoz. [További információ a munkaterület kulcsairól](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-- Függvényalkalmazás létrehozásához olvasási és írási engedéllyel kell rendelkeznie a Azure Functionshoz. [További információ a Azure Functionsról](/azure/azure-functions/).
+- Függvényalkalmazás létrehozásához olvasási és írási engedéllyel kell rendelkeznie a Azure Functionshoz. [További információ a Azure Functionsról](../azure-functions/index.yml).
 
 - A következő Salesforce REST API hitelesítő adatokkal kell rendelkeznie: **SALESFORCE API username**, **Salesforce API Password**, **Salesforce biztonsági jogkivonat**, **Salesforce fogyasztói kulcs**, **Salesforce fogyasztói titok**. [További információ a Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm).
 

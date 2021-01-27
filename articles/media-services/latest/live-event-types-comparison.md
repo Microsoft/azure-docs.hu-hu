@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services LiveEvent-típusok | Microsoft Docs
-description: Azure Media Services egy élő eseményt lehet *átadni* vagy *élő kódolásra*beállítani. Ez a cikk egy részletes táblázatot mutat be, amely összehasonlítja az élő események típusait.
+title: Azure Media Services LiveEvent-típusok
+description: Azure Media Services egy élő eseményt lehet *átadni* vagy *élő kódolásra* beállítani. Ez a cikk egy részletes táblázatot mutat be, amely összehasonlítja az élő események típusait.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3126cbf4f9d87e9baa7267e309210b751a47069d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397304"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897798"
 ---
 # <a name="live-event-types-comparison"></a>Élő eseménytípus összehasonlítása
 
@@ -42,7 +42,7 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | A hozzájárulási csatorna maximális felbontása |4K (4096x2160 at 60 Frames/mp) |1080p (1920x1088 30 keret/mp)|
 | Ajánlott maximális rétegek a hozzájárulási adatcsatornában|Legfeljebb 12|Egy hang|
 | Maximális rétegek a kimenetben| Ugyanaz, mint a bevitel|Legfeljebb 6 (lásd az alábbi rendszerbeállításokat)|
-| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|N.A.|
+| A hozzájárulási csatorna maximális összesített sávszélessége|60 Mbps|N/A|
 | A hozzájárulás egyetlen rétegének maximális bitrátája |20 Mbps|20 Mbps|
 | Többnyelvű hangsávok támogatása|Igen|Nem|
 | Támogatott bemeneti videós kodekek |H. 264/AVC és H. 265/HEVC|H. 264/AVC|
@@ -55,15 +55,15 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | Bemeneti protokollok|RTMP, töredezett – MP4 (Smooth Streaming)|RTMP, töredezett – MP4 (Smooth Streaming)|
 | Ár|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|
 | Maximális futási idő| 24 óra x 365 nap, élő lineáris | 24 óra x 365 nap, élő lineáris (előzetes verzió)|
-| A beágyazott CEA 608/708 feliratok-adattovábbítási képesség|Igen|Igen|
-| Az élő átírások bekapcsolásának lehetősége|Igen|Igen|
+| A beágyazott CEA 608/708 feliratok-adattovábbítási képesség|Igen|Yes|
+| Az élő átírások bekapcsolásának lehetősége|Igen|Yes|
 | A beágyazások behelyezésének támogatása|Nem|Nem|
 | Az ad-jelzés támogatása API-n keresztül| Nem|Nem|
-| Az ad-jelzés támogatása SCTE-35 sávon belüli üzenetek használatával|Igen|Igen|
-| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Igen|Részleges|
-| Nem egységes bemeneti Pallagi Péter támogatása|Igen|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
-| Változó képarány bemenetének támogatása|Igen|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
-| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|Nem|12 óra elteltével, ha nem fut LiveOutput|
+| Az ad-jelzés támogatása SCTE-35 sávon belüli üzenetek használatával|Igen|Yes|
+| Lehetőség a rövid időpontokból való helyreállításra a hozzájárulási hírcsatornában|Yes|Részleges|
+| Nem egységes bemeneti Pallagi Péter támogatása|Yes|Nem – a bemenetnek rögzített GOP-időtartammal kell rendelkeznie|
+| Változó képarány bemenetének támogatása|Yes|Nem – a bemenetnek rögzített képkockasebességnek kell lennie. A kisebb variációk a nagy teljesítményű jeleneteknél, például a mozgásban vannak. A hozzájárulási hírcsatorna azonban nem tudja eldobni a képkockák sebességét (például 15 képkockára/másodpercre).|
+| Élő esemény automatikus kitöltése a bemeneti adatcsatorna elvesztésekor|No|12 óra elteltével, ha nem fut LiveOutput|
 
 ## <a name="system-presets"></a>Rendszerbeállítás
 

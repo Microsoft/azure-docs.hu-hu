@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 87504625c298c4fb858ff90430d707081e87cd5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186571"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896325"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Folyamatos üzembe helyezés beállítása a Chocolatey segítségével
 
@@ -208,10 +208,10 @@ Ettől kezdve a konfigurációtól függ, hogy a virtuális gépek a frissítés
 * [Azure Automation DSC – áttekintés](automation-dsc-overview.md)
 * [Bevezetési gépek a Azure Automation DSC általi felügyelethez](automation-dsc-onboarding.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
 - A szolgáltatás használatának megkezdéséhez tekintse meg az [Azure Automation állapot konfigurációjának első lépéseivel foglalkozó](automation-dsc-getting-started.md)témakört.
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
-- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).

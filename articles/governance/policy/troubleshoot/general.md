@@ -1,26 +1,26 @@
 ---
 title: Gyakori hibák elhárítása
-description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
+description: Ismerje meg, hogy miként lehet elhárítani a házirend-definíciók, a különböző SDK-k és a Kubernetes-bővítmények létrehozásával kapcsolatos problémákat.
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882976"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897071"
 ---
-# <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
+# <a name="troubleshoot-errors-with-using-azure-policy"></a>A Azure Policy használatával kapcsolatos hibák elhárítása
 
-A házirend-definíciók létrehozásakor, az SDK-val való együttműködésben vagy a Kubernetes-bővítmény [Azure Policy](../concepts/policy-for-kubernetes.md) beállításában hibák léphetnek fel. Ez a cikk az esetlegesen felmerülő általános hibákat és azok megoldását ismerteti.
+Amikor szabályzat-definíciókat hoz létre, együttműködik az SDK-val, vagy beállítja a Kubernetes-bővítményhez [tartozó Azure Policy](../concepts/policy-for-kubernetes.md) , hibákba ütközhet. Ez a cikk az esetlegesen előforduló különféle általános hibákat ismerteti, és javaslatokat tesz a megoldására.
 
-## <a name="finding-error-details"></a>Hiba részleteinek megállapítása
+## <a name="find-error-details"></a>Hiba részleteinek keresése
 
-A hiba részleteinek helye a hibát okozó művelettől függ.
+A hiba részleteinek helye attól függ, hogy Azure Policy milyen aspektusa van a munkájának.
 
-- Ha egyéni házirenddel dolgozik, próbálja ki a Azure Portal a séma vagy az eredményül kapott [megfelelőségi](../how-to/get-compliance-data.md) információk átadásával kapcsolatban, hogy láthassa az erőforrások kiértékelésének módját.
-- Ha különböző SDK-val dolgozik, az SDK részletesen ismerteti, hogy a függvény miért nem sikerült.
-- A Kubernetes beépülő moduljának használatakor Kezdje a [naplózást](../concepts/policy-for-kubernetes.md#logging) a fürtben.
+- Ha egyéni szabályzattal dolgozik, lépjen a Azure Portalra, és tekintse át a sémával kapcsolatos visszajelzéseket, vagy tekintse át az eredményül kapott [megfelelőségi információkat](../how-to/get-compliance-data.md) , hogy láthassa az erőforrások kiértékelésének módját.
+- Ha a különböző SDK-k bármelyikével dolgozik, az SDK részletesen ismerteti, hogy a függvény miért nem sikerült.
+- Ha együttműködik a Kubernetes-bővítménysel, kezdje a fürt [naplózásával](../concepts/policy-for-kubernetes.md#logging) .
 
 ## <a name="general-errors"></a>Általános hibák
 
@@ -28,7 +28,7 @@ A hiba részleteinek helye a hibát okozó művelettől függ.
 
 #### <a name="issue"></a>Probléma
 
-A Azure Policy [aliasokat](../concepts/definition-structure.md#aliases) használ a Azure Resource Manager tulajdonságok leképezéséhez.
+Egy házirend-definícióban helytelen vagy nem létező alias van használatban. A Azure Policy [aliasokat](../concepts/definition-structure.md#aliases) használ a Azure Resource Manager tulajdonságok leképezéséhez.
 
 #### <a name="cause"></a>Ok
 
@@ -36,47 +36,49 @@ Egy házirend-definícióban helytelen vagy nem létező alias van használatban
 
 #### <a name="resolution"></a>Feloldás
 
-Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez használja [a Azure Policy bővítményt a Visual Studio Code](../how-to/extension-for-vscode.md) -hoz vagy az SDK-hoz. Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
+Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez nyissa meg a [Visual Studio Code Azure Policy bővítményét](../how-to/extension-for-vscode.md) vagy az SDK-t. Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
 
-### <a name="scenario-evaluation-details-not-up-to-date"></a>Forgatókönyv: az értékelés részletei nem naprakészek
-
-#### <a name="issue"></a>Probléma
-
-Egy erőforrás a "nincs elindítva" állapotban van, vagy a megfelelőségi adatok nem aktuálisak.
-
-#### <a name="cause"></a>Ok
-
-Az új szabályzatok vagy kezdeményezési hozzárendelések alkalmazása körülbelül 30 percet vesz igénybe. Egy meglévő hozzárendelés hatókörén belüli új vagy frissített erőforrások körülbelül 15 perccel később elérhetővé válnak. A standard megfelelőségi vizsgálat 24 óránként történik. További információ: [kiértékelési eseményindítók](../how-to/get-compliance-data.md#evaluation-triggers).
-
-#### <a name="resolution"></a>Feloldás
-
-Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
-
-### <a name="scenario-compliance-not-as-expected"></a>Forgatókönyv: nem a várt megfelelőség
+### <a name="scenario-evaluation-details-arent-up-to-date"></a>Forgatókönyv: a kiértékelés részletei nem naprakészek
 
 #### <a name="issue"></a>Probléma
 
-Egy erőforrás nem a _megfelelő_ vagy _nem megfelelő_, az adott erőforrás számára várt értékelési állapotban van.
+Egy erőforrás nincs *elindítva* állapotban, vagy a megfelelőségi adatok nem aktuálisak.
 
 #### <a name="cause"></a>Ok
 
-Az erőforrás nem a megfelelő hatókörben van a házirend-hozzárendeléshez, vagy a házirend-definíció nem a kívánt módon működik.
+Egy új szabályzat vagy kezdeményezési hozzárendelés körülbelül 30 percet vesz igénybe. Egy meglévő hozzárendelés hatókörén belüli új vagy frissített erőforrások körülbelül 15 perc alatt elérhetővé válnak. A standard megfelelőségi vizsgálat 24 óránként történik. További információ: [kiértékelési eseményindítók](../how-to/get-compliance-data.md#evaluation-triggers).
 
 #### <a name="resolution"></a>Feloldás
 
-A házirend-definíció hibaelhárításához kövesse az alábbi lépéseket:
+Először is várjon egy megfelelő időtartamot a kiértékelés befejezésére, és a megfelelőségi eredmények elérhetővé válnak a Azure Portalban vagy az SDK-ban. Ha Azure PowerShell vagy a REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 
-1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
+### <a name="scenario-compliance-isnt-as-expected"></a>Forgatókönyv: a megfelelőség nem a várt módon
+
+#### <a name="issue"></a>Probléma
+
+Egy erőforrás nem az erőforráshoz várt _megfelelő_ vagy _nem megfelelő_ értékelési állapotban van.
+
+#### <a name="cause"></a>Ok
+
+Az erőforrás nincs a szabályzat-hozzárendelés megfelelő hatókörében, vagy a házirend-definíció nem a kívánt módon működik.
+
+#### <a name="resolution"></a>Feloldás
+
+A házirend-definícióval kapcsolatos hibák megoldásához tegye a következőket:
+
+1. Először is várjon, amíg a próbaverzió befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. 
+
+1. Ha Azure PowerShell vagy a REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva.
 1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
-   - Az összes erőforrástípus "all" üzemmódja.
-   - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
-1. Győződjön meg arról, hogy az erőforrás hatóköre nincs [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy [mentesített](../concepts/exemption-structure.md).
+   - A üzemmódnak minden erőforrástípus kell lennie `all` .
+   - A mód akkor kell `indexed` , ha a házirend-definíció ellenőrzi a címkéket vagy a helyet.
+1. Ügyeljen arra, hogy az erőforrás hatóköre ne legyen [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy ne legyen [kivétel](../concepts/exemption-structure.md).
 1. Ha a szabályzat-hozzárendelés megfelelősége `0/0` erőforrásokat mutat, a hozzárendelési hatókörön belül nem határoztak meg erőforrásokat. A házirend-definíciót és a hozzárendelési hatókört egyaránt ellenőriznie kell.
-1. Ahhoz, hogy egy nem megfelelő erőforrást a megfelelőnek kellene lennie, vizsgálja meg a meg [nem felelés okainak megállapítását](../how-to/determine-non-compliance.md). A definíció és a kiértékelt tulajdonság értékének összehasonlítása azt jelzi, hogy az erőforrás miért nem megfelelő.
+1. A megfelelőnek tartott nem megfelelő erőforrásokért lásd: [a nem megfelelőség okának megállapítása](../how-to/determine-non-compliance.md). A definíció és a kiértékelt tulajdonság értékének összehasonlítása azt jelzi, hogy az erőforrás miért nem megfelelő.
    - Ha a **célként megadott érték** helytelen, módosítsa a házirend-definíciót.
    - Ha az **aktuális érték** helytelen, ellenőrizze az erőforrás adattartalmát a használatával `resources.azure.com` .
-1. Tekintse meg a hibaelhárítást: a többi gyakori probléma és megoldás esetében [nem a várt módon érvényesíthető](#scenario-enforcement-not-as-expected) .
+1. Más gyakori problémák és megoldások esetében lásd [: Hibaelhárítás: a végrehajtás nem a várt módon](#scenario-enforcement-not-as-expected).
 
 Ha továbbra is problémája van a duplikált és testreszabott beépített szabályzat-definícióval vagy egyéni definícióval, hozzon létre egy támogatási jegyet a **szabályzat készítése** területen a probléma helyes átirányításához.
 
@@ -84,24 +86,26 @@ Ha továbbra is problémája van a duplikált és testreszabott beépített szab
 
 #### <a name="issue"></a>Probléma
 
-Az Azure Policy által várhatóan végrehajtott erőforrás nem, és nincs bejegyzés az Azure-beli [tevékenység naplójában](../../../azure-monitor/platform/platform-logs-overview.md).
+Olyan erőforrásra van szükség, amelyről Azure Policy, hogy a művelet nem zajlik le, és nincs bejegyzés az [Azure-beli tevékenység naplójában](../../../azure-monitor/platform/platform-logs-overview.md).
 
 #### <a name="cause"></a>Ok
 
-A házirend-hozzárendelés _le_ lett állítva a [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) . Míg a kényszerítési mód le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
+A házirend-hozzárendelés _le_ lett állítva egy [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) -beállításhoz. Amíg a **enforcementMode** le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
 
 #### <a name="resolution"></a>Feloldás
 
-A szabályzat-hozzárendelés kényszerítésének hibaelhárításához kövesse az alábbi lépéseket:
+A szabályzat-hozzárendelés kényszerítésének hibakeresése a következő módon végezhető el:
 
-1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
+1. Először is várjon, amíg a próbaverzió befejeződik, és a megfelelőségi eredmények elérhetővé válnak a Azure Portalban vagy az SDK-ban. 
+
+1. Ha Azure PowerShell vagy a REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_ van.
 1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
-   - Az összes erőforrástípus "all" üzemmódja.
-   - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
-1. Győződjön meg arról, hogy az erőforrás hatóköre nincs [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy [mentesített](../concepts/exemption-structure.md).
-1. Ellenőrizze, hogy az erőforrás hasznos adatai megegyeznek-e a szabályzat logikájával. Ezt a [har-nyomkövetés rögzítésével](../../../azure-portal/capture-browser-trace.md) vagy az ARM-sablon tulajdonságainak áttekintésével végezheti el.
-1. Hibaelhárítás ellenőrzése: az egyéb gyakori problémák és megoldások esetében [nem a várt megfelelőség](#scenario-compliance-not-as-expected) .
+   - A üzemmódnak az `all` összes erőforrás-típushoz kell tartoznia.
+   - A mód akkor kell `indexed` , ha a házirend-definíció ellenőrzi a címkéket vagy a helyet.
+1. Ügyeljen arra, hogy az erőforrás hatóköre ne legyen [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy ne legyen [kivétel](../concepts/exemption-structure.md).
+1. Ellenőrizze, hogy az erőforrás-tartalom megfelel-e a szabályzat logikájának. Ezt [egy http Archive (har) nyomkövetés rögzítésével](../../../azure-portal/capture-browser-trace.md) vagy a Azure Resource Manager sablon (ARM-sablon) tulajdonságainak áttekintésével teheti meg.
+1. Más gyakori problémák és megoldások esetében lásd [: Hibaelhárítás: a megfelelőség nem a várt módon](#scenario-compliance-isnt-as-expected).
 
 Ha továbbra is problémája van a duplikált és testreszabott beépített szabályzat-definícióval vagy egyéni definícióval, hozzon létre egy támogatási jegyet a **szabályzat készítése** területen a probléma helyes átirányításához.
 
@@ -113,7 +117,7 @@ Egy erőforrás létrehozása vagy frissítése megtagadva.
 
 #### <a name="cause"></a>Ok
 
-A hatókörhöz tartozó szabályzat-hozzárendelés az új vagy frissített erőforrás megfelel egy [megtagadási](../concepts/effects.md#deny) hatású házirend-definíció feltételeinek. Ezek a definíciók nem hozhatók létre vagy nem frissíthetők.
+Az új vagy frissített erőforrás hatóköréhez tartozó szabályzat-hozzárendelés megfelel egy [megtagadási](../concepts/effects.md#deny) hatású házirend-definíció feltételeinek. A rendszer nem tudja létrehozni vagy frissíteni a definícióknak megfelelő erőforrásokat.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -125,23 +129,23 @@ Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabály
 
 #### <a name="issue"></a>Probléma
 
-Azure Policy számos Azure Resource Manager sablon (ARM-sablon) függvényt és függvényt támogat, amelyek csak egy házirend-definícióban érhetők el. A Resource Manager ezeket a függvényeket egy központi telepítés részeként dolgozza fel a házirend-definíció részeként.
+Azure Policy számos ARM-sablon függvényt és funkciót támogat, amelyek csak egy házirend-definícióban érhetők el. A Resource Manager ezeket a függvényeket egy központi telepítés részeként dolgozza fel a házirend-definíció részeként.
 
 #### <a name="cause"></a>Ok
 
-A támogatott függvények, például a vagy a használata esetén a `parameter()` `resourceGroup()` függvény feldolgozott eredménye a központi telepítéskor, a házirend-definícióhoz való kilépés és a Azure Policy motor feldolgozása helyett.
+A támogatott függvények, például a vagy a használata esetén a `parameter()` `resourceGroup()` függvény feldolgozott eredménye az üzembe helyezéskor történik, és nem engedélyezi a függvényt a házirend-definícióhoz, és Azure Policy a motort a feldolgozáshoz.
 
 #### <a name="resolution"></a>Feloldás
 
-Ha egy függvényt át szeretne adni egy házirend-definíció részévé, a teljes karakterláncot a `[` tulajdonsághoz hasonló módon kell kinéznie `[[resourceGroup().tags.myTag]` . A escape-karakter hatására a Resource Manager az értéket karakterláncként kezeli a sablon feldolgozásakor. Azure Policy ezután a függvényt a házirend-definícióba helyezi, ami lehetővé teszi, hogy az a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
+Ha egy függvényt egy házirend-definíció részeként szeretne átadni, akkor a teljes karakterláncot olyan módon kell megadnia, `[` hogy a tulajdonság hasonlítson `[[resourceGroup().tags.myTag]` . Az escape-karakter hatására a Resource Manager az értéket karakterláncként kezeli a sablon feldolgozásakor. Azure Policy ezután a függvényt a házirend-definícióba helyezi, amely lehetővé teszi, hogy az a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/templates/template-expressions.md).
 
 ## <a name="add-on-for-kubernetes-installation-errors"></a>Bővítmény a Kubernetes telepítési hibáihoz
 
-### <a name="scenario-install-using-helm-chart-fails-on-password"></a>Forgatókönyv: a Helm diagram használatával történő telepítés sikertelen a jelszóval
+### <a name="scenario-installation-by-using-a-helm-chart-fails-because-of-a-password-error"></a>Forgatókönyv: a telepítés nem sikerült, mert hiba történt egy Helm-diagram használatával.
 
 #### <a name="issue"></a>Probléma
 
-A `helm install azure-policy-addon` parancs a következő üzenetek egyikével meghiúsul:
+A `helm install azure-policy-addon` parancs végrehajtása sikertelen, és a következő hibák valamelyikét adja vissza:
 
 - `!: event not found`
 - `Error: failed parsing --set data: key "<key>" has no value (cannot end with ,)`
@@ -152,13 +156,13 @@ A generált jelszó tartalmaz egy vesszőt ( `,` ), amely a Helm diagramra van f
 
 #### <a name="resolution"></a>Feloldás
 
-A jelszó értékében válassza a vessző ( `,` ) értéket, ha `helm install azure-policy-addon` fordított perjelet ( `\` ) használ.
+Ha futtatja a parancsot, a jelszó mezőben adja meg a `helm install azure-policy-addon` vessző ( `,` ) karakterláncot egy fordított perjel () értékkel `\` .
 
-### <a name="scenario-install-using-helm-chart-fails-as-name-already-exists"></a>Forgatókönyv: a telepítés a Helm diagram használatával meghiúsul, mert a név már létezik
+### <a name="scenario-installation-by-using-a-helm-chart-fails-because-the-name-already-exists"></a>Forgatókönyv: a telepítés a Helm-diagram használatával meghiúsul, mert a név már létezik
 
 #### <a name="issue"></a>Probléma
 
-A `helm install azure-policy-addon` parancs a következő üzenettel meghiúsul:
+A `helm install azure-policy-addon` parancs végrehajtása sikertelen, és a következő hibaüzenetet adja vissza:
 
 - `Error: cannot re-use a name that is still in use`
 
@@ -168,29 +172,27 @@ A (z) nevű Helm `azure-policy-addon` -diagram már telepítve van vagy részben
 
 #### <a name="resolution"></a>Feloldás
 
-Kövesse az utasításokat a [Kubernetes-bővítmény Azure Policy eltávolításához](../concepts/policy-for-kubernetes.md#remove-the-add-on), majd futtassa újra a `helm install azure-policy-addon` parancsot.
+Az utasításokat követve [távolítsa el a Kubernetes-bővítmény Azure Policy](../concepts/policy-for-kubernetes.md#remove-the-add-on), majd futtassa újra a `helm install azure-policy-addon` parancsot.
 
 ### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Forgatókönyv: az Azure-beli virtuális gépek felhasználó által hozzárendelt identitásai a rendszer által hozzárendelt felügyelt identitások helyére kerülnek.
 
 #### <a name="issue"></a>Probléma
 
-Miután hozzárendelte a vendég-konfigurációs házirend kezdeményezéseit a számítógépeken található beállítások naplózásához, a rendszer már nem rendeli hozzá a számítógéphez rendelt, felhasználóhoz rendelt felügyelt identitásokat. Csak rendszerhez rendelt felügyelt identitás van hozzárendelve.
+Miután hozzárendelte a vendég-konfigurációs házirend-kezdeményezéseket a számítógépeken lévő beállítások naplózásához, a számítógéphez hozzárendelt felhasználóhoz rendelt felügyelt identitások már nincsenek hozzárendelve. Csak rendszerhez rendelt felügyelt identitás van hozzárendelve.
 
 #### <a name="cause"></a>Ok
 
-A vendég konfiguráció DeployIfNotExists-definíciókban korábban használt szabályzat-definíciók biztosítják, hogy a rendszerhez hozzárendelt identitás hozzá legyen rendelve a géphez, de a felhasználó által hozzárendelt identitás-hozzárendelések is el lettek távolítva.
+A korábban a vendég konfiguráció DeployIfNotExists-definíciókban használt szabályzat-definíciók biztosítják, hogy a rendszerhez hozzárendelt identitás hozzá legyen rendelve a géphez, de a felhasználó által hozzárendelt identitás-hozzárendelések is el lettek távolítva.
 
 #### <a name="resolution"></a>Feloldás
 
-Azok a definíciók, amelyek korábban a problémát okozták, elavultként jelennek meg, \[ \] és az előfeltételeket a felhasználó által hozzárendelt felügyelt identitás eltávolítása nélkül kezelő szabályzat-definíciók váltja fel. Manuális lépésre van szükség. Törölje az elavultként megjelölt házirend-hozzárendeléseket, \[ \] és cserélje le azokat a frissített előfeltétel-házirend kezdeményezésre, valamint az eredetivel megegyező nevű házirend-definícióra.
+A hibát okozó definíciók *[elavult]* néven jelennek meg, és azokat a házirend-definíciók váltja fel, amelyek az előfeltételeket a felhasználó által hozzárendelt felügyelt identitások eltávolítása nélkül kezelik. Manuális lépésre van szükség. Törölje a (z) *[elavult]* jelölésű meglévő szabályzat-hozzárendeléseket, és cserélje le azokat a frissített előfeltétel-házirend kezdeményezésre, valamint az eredetivel megegyező nevű szabályzat-definícióra.
 
-Részletes tájékoztatást a következő blogbejegyzésben talál:
-
-[A vendég konfigurációjának naplózási házirendjeihez kiadott fontos változás](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)
+Részletes tájékoztatásért tekintse meg a [vendég konfigurációs naplózási szabályzatok című blogbejegyzésben megjelent fontos módosítást](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Bővítmény a Kubernetes általános hibáihoz
 
-### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a kimenő forgalomra vonatkozó korlátozások miatt
+### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-egress-restrictions"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a kimenő forgalomra vonatkozó korlátozások miatt
 
 #### <a name="issue"></a>Probléma
 
@@ -201,16 +203,16 @@ A bővítmény nem tudja elérni a Azure Policy szolgáltatás végpontját, és
 
 #### <a name="cause"></a>Ok
 
-Ez a probléma akkor fordul elő, ha a kimenő forgalom zárolva van.
+Ez a probléma akkor fordul elő, ha egy fürt leszállása zárolva van.
 
 #### <a name="resolution"></a>Feloldás
 
-Győződjön meg arról, hogy a következő cikkek tartományai és portjai nyitva vannak:
+Győződjön meg arról, hogy a következő cikkekben említett tartományok és portok nyitva vannak:
 
-- [Szükséges kimenő hálózati szabályok és teljes tartománynevek az AK-fürtökhöz](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
-- [Azure Policy bővítmény telepítése az Azure arc használatára képes Kubernetes (előzetes verzió)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+- [Szükséges kimenő hálózati szabályok és teljes tartománynevek (FQDN) az AK-fürtökhöz](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
+- [Az Azure arc-kompatibilis Kubernetes Azure Policy-bővítményének telepítése (előzetes verzió)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
 
-### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-aad-pod-identity-configuration"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a HRE-Pod-Identity konfiguráció miatt
+### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-the-aad-pod-identity-configuration"></a>Forgatókönyv: a bővítmény nem tudja elérni a Azure Policy szolgáltatási végpontot a HRE-Pod-Identity konfiguráció miatt
 
 #### <a name="issue"></a>Probléma
 
@@ -221,18 +223,18 @@ A bővítmény nem tudja elérni a Azure Policy szolgáltatás végpontját, és
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a _Add-Pod-Identity_ telepítve van a fürtön, és a _Kube rendszer_ nem zárja ki a _HRE-Pod identitást_.
+Ez a hiba akkor fordul elő, ha a _Add-Pod-Identity_ telepítve van a fürtön, és a _Kube_ hüvelyek nem zárhatók ki a _HRE-Pod-Identity_ szolgáltatásban.
 
-A _HRE-Pod-Identity_ összetevő csomópont felügyelt identitás (NMI) hüvelye módosítja a csomópontok iptables-t az Azure-példány metaadatainak végpontjának hívására. Ez a beállítás azt jelenti, hogy a metaadat-végpontra vonatkozó összes kérést a NMI akkor is elfogja, ha a pod nem használja a _HRE-Pod-Identity_ kapcsolót.
-**AzurePodIdentityException** A CRD úgy konfigurálható, hogy tájékoztassa a _HRE-Pod-Identity_ attribútumot arról, hogy a CRD-ben definiált címkével rendelkező Pod-ból származó metaadatokra irányuló kérések a NMI-ben végzett feldolgozás nélkül legyenek proxy.
+A _HRE-Pod-Identity_ összetevő csomópont felügyelt identitás (NMI) hüvelye módosítja a csomópontok iptables-et az Azure-példány metaadatainak végpontjának lehallgatására. Ez a beállítás azt jelenti, hogy a metaadat-végpontra irányuló kérelmeket a NMI észleli, még akkor is, ha a pod nem használja a _HRE-Pod-Identity-_ t.
+A *AzurePodIdentityException* -CUSTOMRESOURCEDEFINITION (CRD) úgy konfigurálható, hogy tájékoztassa a _HRE-Pod-Identity-_ t, hogy a CRD által meghatározott címkékből származó összes metaadat-végpontra irányuló kérések a NMI-ben végzett feldolgozás nélkül legyenek proxyn.
 
 #### <a name="resolution"></a>Feloldás
 
-Zárja ki a System hüvelyt a `kubernetes.azure.com/managedby: aks` _Kube-System_ névtérben a _HRE-Pod-Identity_ címkével a **AzurePodIdentityException** CRD konfigurálásával.
+A `kubernetes.azure.com/managedby: aks` *AzurePodIdentityException* CRD konfigurálásával zárja ki a _Kube-System_ névtérben található címkével ellátott rendszerhüvelyeket a _HRE-Pod-Identity_ objektumban.
 
-További információ: [a HRE Pod Identity letiltása egy adott Pod/alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+További információ: [a Azure Active Directory (Azure ad) Pod-identitás letiltása egy adott Pod/alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 
-A kivételek konfigurálásához tekintse meg a következő példát:
+A kivételek konfigurálásához kövesse az alábbi példát:
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -259,51 +261,43 @@ spec:
 
 #### <a name="issue"></a>Probléma
 
-A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hibák valamelyikét látja a bővítmény naplófájljaiban:
+A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a kiegészítő naplók a következő hibák valamelyikét jelenítik meg:
 
-```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.
-```
+- `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
-vagy
-
-```
-policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+- `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
 StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error."
-```
+Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>Ok
 
-Az `Microsoft.PolicyInsights` erőforrás-szolgáltató nincs regisztrálva, és a bővítménynek regisztrálnia kell a szabályzat-definíciók beolvasásához és a megfelelőségi részletek visszaadásához.
+A "Microsoft. PolicyInsights" erőforrás-szolgáltató nincs regisztrálva. A bővítménynek regisztrálnia kell a szabályzat-definíciók beolvasásához és a megfelelőségi részletek visszaadásához.
 
 #### <a name="resolution"></a>Feloldás
 
-Regisztrálja az `Microsoft.PolicyInsights` erőforrás-szolgáltatót a fürt előfizetésében. Útmutatásért lásd: [erőforrás-szolgáltató regisztrálása](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Regisztrálja a Microsoft. PolicyInsights erőforrás-szolgáltatót a fürt előfizetésében. Útmutatásért tekintse meg az [erőforrás-szolgáltató regisztrálása](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)című témakört.
 
 ### <a name="scenario-the-subscription-is-disabled"></a>Forgatókönyv: az előfizetés le van tiltva
 
 #### <a name="issue"></a>Probléma
 
-A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hibaüzenetet látja:
+A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a következő hiba jelenik meg:
 
-```
-The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.
-```
+`The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.`
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba azt jelzi, hogy az előfizetés problémás, és a szolgáltatás jelzője `Microsoft.PolicyInsights/DataPlaneBlocked` hozzá lett adva az előfizetés letiltásához.
+Ez a hiba azt jelzi, hogy az előfizetés problémás volt, és a szolgáltatás jelzője `Microsoft.PolicyInsights/DataPlaneBlocked` hozzá lett adva az előfizetés blokkolásához.
 
 #### <a name="resolution"></a>Feloldás
 
-A `azuredg@microsoft.com` probléma kivizsgálásához és megoldásához lépjen kapcsolatba a szolgáltatás csapatával.
+A probléma kivizsgálásához és megoldásához [forduljon a szolgáltatás csapatához](mailto:azuredg@microsoft.com).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+Ha a probléma nem szerepel a cikkben, vagy nem oldható fel, kérjen támogatást az alábbi csatornák egyikének meglátogatásával:
 
 - Választ kaphat a szakértőktől a [Microsoft Q&A](/answers/topics/azure-policy.html)használatával.
-- Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
-- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . A Twitteren ez a hivatalos Microsoft Azure-erőforrás segít a felhasználói élmény javításában azáltal, hogy a megfelelő válaszokat, támogatást és szakértőket csatlakoztatja az Azure-közösséghez.
+- Ha továbbra is segítségre van szüksége, nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatási kérelem küldése** lehetőséget.

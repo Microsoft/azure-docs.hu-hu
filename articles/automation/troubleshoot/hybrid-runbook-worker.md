@@ -2,25 +2,21 @@
 title: A hibrid Runbook-feldolgozói problémák elhárítása Azure Automation
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémákat.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428398"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896494"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
 Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. Általános információk: a [hibrid Runbook Worker áttekintése](../automation-hybrid-runbook-worker.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 A hibrid Runbook-feldolgozó attól függ, hogy az ügynök kommunikál-e a Azure Automation fiókjával a feldolgozó regisztrálásához, a Runbook-feladatok fogadásához és a jelentés állapotához. Windows esetén ez az ügynök a Windows Log Analytics ügynöke. Linux esetén ez az Log Analytics-ügynök Linux rendszerhez.
 
@@ -46,7 +42,7 @@ A lehetséges okok a következők:
 
 #### <a name="resolution"></a>Feloldás
 
-Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ** \* . azure-automation.net** a 443-es porton.
+Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a **\* . azure-automation.net** a 443-es porton.
 
 A hibrid Runbook-feldolgozót futtató számítógépeknek meg kell felelniük a minimális hardverkövetelmények, mielőtt a feldolgozó konfigurálva lenne a szolgáltatás üzemeltetésére. A runbookok és az általuk használt háttérrendszer okozhatja, hogy a rendszer túlhasználatba kerül, és a runbook-feladatok késését vagy időtúllépését okozza.
 
@@ -58,7 +54,7 @@ A leírást a megfelelő eseményhez tartozó **Microsoft-SMA** eseménynaplóba
 
 #### <a name="issue"></a>Probléma
 
-A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a lekérdezés eredménye érvénytelen. A következő hiba jelenik meg, amikor a feldolgozó megpróbál megnyitni egy kapcsolódást a [jelző kiszolgálóval](/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
+A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a lekérdezés eredménye érvénytelen. A következő hiba jelenik meg, amikor a feldolgozó megpróbál megnyitni egy kapcsolódást a [jelző kiszolgálóval](/aspnet/core/signalr/introduction).
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -194,7 +190,7 @@ Ha az ügynök nem fut, futtassa a következő parancsot a szolgáltatás elind�
 
 ### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Forgatókönyv: a megadott osztály nem létezik
 
-Ha a/var/opt/Microsoft/omsconfig/omsconfig.log hibaüzenet jelenik meg `The specified class does not exist..` , **/var/opt/microsoft/omsconfig/omsconfig.log**akkor a Linux log Analytics-ügynökének frissítése szükséges. A következő parancs futtatásával telepítse újra az ügynököt.
+Ha a/var/opt/Microsoft/omsconfig/omsconfig.log hibaüzenet jelenik meg `The specified class does not exist..` , akkor a Linux log Analytics-ügynökének frissítése szükséges. A következő parancs futtatásával telepítse újra az ügynököt.
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -226,7 +222,7 @@ Az **Application and Services Logs\Operations-kezelő** eseménynaplójában a 4
 
 #### <a name="cause"></a>Ok
 
-Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure felé irányuló kommunikációt. Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ** \* . azure-automation.net** a 443-es porton.
+Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure felé irányuló kommunikációt. Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a **\* . azure-automation.net** a 443-es porton.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -238,7 +234,7 @@ A hibrid feldolgozók a [Runbook kimenetét és üzeneteit](../automation-runboo
 
 #### <a name="issue"></a>Probléma
 
-Egy Windows hibrid Runbook-feldolgozón futó parancsfájl nem tud a várt módon csatlakozni a Orchestrator-homokozóban Microsoft 365. A szkript a [MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kapcsolatot használja a kapcsolathoz. 
+Egy Windows hibrid Runbook-feldolgozón futó parancsfájl nem tud a várt módon csatlakozni a Orchestrator-homokozóban Microsoft 365. A szkript a [MsolService](/powershell/module/msonline/connect-msolservice) kapcsolatot használja a kapcsolathoz. 
 
 Ha úgy módosítja **Orchestrator.Sandbox.exe.config** a proxy és a mellőzési lista beállításához, a sandbox továbbra sem csatlakozik megfelelően. Úgy tűnik, hogy a várt módon működik egy **Powershell_ise.exe.config** -fájl, amely azonos proxy-és megkerülési lista-beállításokkal rendelkezik. A Service Management Automation (SMA) naplók és a PowerShell-naplók nem biztosítanak semmilyen információt a proxyval kapcsolatban.
 
@@ -250,7 +246,7 @@ A-kiszolgálón lévő Active Directory összevonási szolgáltatások (AD FS) (
 
 A Orchestrator-sandbox problémájának megoldásához áttelepítheti a parancsfájlt, hogy a MSOnline modul helyett a PowerShell-parancsmagokhoz használja a Azure Active Directory modulokat. További információ: [áttelepítés Orchestrator-ről Azure Automationra (bétaverzió)](../automation-orchestrator-migration.md).
 
-Ha továbbra is a MSOnline modul-parancsmagokat szeretné használni, módosítsa a parancsfájlt a [hívási parancs](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)használatára. Értékek megadása a `ComputerName` és `Credential` paraméterek számára. 
+Ha továbbra is a MSOnline modul-parancsmagokat szeretné használni, módosítsa a parancsfájlt a [hívási parancs](/powershell/module/microsoft.powershell.core/invoke-command)használatára. Értékek megadása a `ComputerName` és `Credential` paraméterek számára. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
@@ -353,10 +349,10 @@ A probléma megoldása:
 
 1. Próbálja megismételni a `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python-szkriptet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.

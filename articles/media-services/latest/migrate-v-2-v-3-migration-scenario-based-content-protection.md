@@ -1,5 +1,5 @@
 ---
-title: A Content Protection forgatókönyv-alapú áttelepítési útmutatója | Microsoft Docs
+title: Tartalomvédelem – forgatókönyv-alapú áttelepítési útmutató
 description: Ez a cikk olyan tartalomvédelem-alapú útmutatást nyújt, amely a Azure Media Services v2-ről a v3-re való áttelepítést segíti.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: a546120a93f311be29083d5f23d4716316bf64f4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d1e8c8d1f7f710acff75fa1d78aab68df03c954d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690355"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898290"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Tartalomvédelem – forgatókönyv-alapú áttelepítési útmutató
 

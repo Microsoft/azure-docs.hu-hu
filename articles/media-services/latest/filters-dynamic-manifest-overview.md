@@ -1,6 +1,5 @@
 ---
 title: A jegyzékfájlok szűrése dinamikus csomagoló használatával
-titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan hozhat létre szűrőket dinamikus csomagoló használatával a jegyzékfájlok szűréséhez és szelektív továbbításához.
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299031"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897662"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>A jegyzékfájlok szűrése dinamikus csomagoló használatával
 
@@ -27,7 +26,7 @@ ms.locfileid: "89299031"
 
 Ha adaptív sávszélességű adatfolyam-továbbítási tartalmat továbbít az eszközökhöz, előfordulhat, hogy egy jegyzékfájl több verzióját kell közzétennie az adott eszköz képességeinek vagy a rendelkezésre álló hálózati sávszélességnek a megcélzásához. A [dinamikus](dynamic-packaging-overview.md) csomagolás lehetővé teszi olyan szűrők megadását, amelyek meghatározott kodekeket, felbontásokat, bitrátákat és hangsávok kombinációkat végezhetnek el menet közben. Ez a szűrés nem szükséges több másolat létrehozásához. Egyszerűen közzé kell tennie egy új URL-címet a célként megadott eszközökhöz konfigurált szűrők (iOS, Android, Okostelevízió üzletága vagy böngészők) és a hálózati képességek (nagy sávszélességű, mobil vagy alacsony sávszélességű forgatókönyvek) számára. Ebben az esetben az ügyfelek a lekérdezési karakterláncon keresztül kezelhetik a tartalom folyamatos átvitelét (az elérhető [eszközcsoport-szűrők vagy-szűrők](filters-concept.md)megadásával), és szűrők használatával továbbítják a stream adott részeit.
 
-Bizonyos kézbesítési forgatókönyvek esetében meg kell győződnie arról, hogy az ügyfél nem fér hozzá bizonyos műsorszámokhoz. Előfordulhat például, hogy nem szeretne közzétenni egy olyan jegyzékfájlt, amely HD-számokat tartalmaz egy adott előfizetői szinten. Vagy előfordulhat, hogy el kívánja távolítani a speciális adaptív sávszélességű (ABR) útvonalakat, hogy csökkentse a szállítási költségeket egy adott eszközre, amely nem használja a további számokat. Ebben az esetben a létrehozáskor társíthatja az előre létrehozott szűrők listáját a [folyamatos átviteli lokátorhoz](streaming-locators-concept.md) . Az ügyfelek ezután nem kezelhetik a tartalom adatfolyamként való továbbítását, mivel azt a **folyamatos átviteli lokátor**határozza meg.
+Bizonyos kézbesítési forgatókönyvek esetében meg kell győződnie arról, hogy az ügyfél nem fér hozzá bizonyos műsorszámokhoz. Előfordulhat például, hogy nem szeretne közzétenni egy olyan jegyzékfájlt, amely HD-számokat tartalmaz egy adott előfizetői szinten. Vagy előfordulhat, hogy el kívánja távolítani a speciális adaptív sávszélességű (ABR) útvonalakat, hogy csökkentse a szállítási költségeket egy adott eszközre, amely nem használja a további számokat. Ebben az esetben a létrehozáskor társíthatja az előre létrehozott szűrők listáját a [folyamatos átviteli lokátorhoz](streaming-locators-concept.md) . Az ügyfelek ezután nem kezelhetik a tartalom adatfolyamként való továbbítását, mivel azt a **folyamatos átviteli lokátor** határozza meg.
 
 A szűrést kombinálhatja a szűrők megadásával [a folyamatos átviteli lokátorban](filters-concept.md#associating-filters-with-streaming-locator) + további, az ügyfél által az URL-ben megadott szűrőket is. Ez a kombináció hasznos lehet a további sávok, például a metaadatok, az esemény-adatfolyamok, a hangnyelvek és a leíró hangsávok korlátozására.
 
@@ -141,7 +140,7 @@ További információt [ebben a blogbejegyzésben](https://azure.microsoft.com/b
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
-- A **forceEndTimestamp**, a **PresentationWindowDuration**és a **liveBackoffDuration** értékeit nem szabad a VOD-szűrőhöz beállítani. Csak élő szűrési helyzetekben használatosak.
+- A **forceEndTimestamp**, a **PresentationWindowDuration** és a **liveBackoffDuration** értékeit nem szabad a VOD-szűrőhöz beállítani. Csak élő szűrési helyzetekben használatosak.
 - A dinamikus jegyzékfájl a GOP-határokon (kulcstárolókban) működik, ezért a nyírási pontossággal rendelkezik.
 - Használhatja ugyanazt a szűrőt a fiók-és az adategység-szűrőkhöz. Az eszközök szűrői magasabb prioritással rendelkeznek, és felülbírálják a fiókok szűrőit.
 - Ha frissít egy szűrőt, akár 2 percet is igénybe vehet, amíg a streaming végpont frissíti a szabályokat. Ha szűrőket használt a tartalom kiszolgálásához (és gyorsítótárazta a tartalmat a proxykban és a CDN-gyorsítótárban), akkor a szűrők frissítése a lejátszó meghibásodását okozhatja. Javasoljuk, hogy a szűrő frissítése után törölje a gyorsítótárat. Ha ez a beállítás nem lehetséges, érdemes lehet egy másik szűrőt használni.

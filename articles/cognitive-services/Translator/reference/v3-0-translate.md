@@ -3,19 +3,19 @@ title: Fordítói fordítási módszer
 titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services Translator fordítási metódusának paramétereinek, fejlécének és szövegtörzsének megismerése szöveg fordításához.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016547"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895441"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: fordítás
 
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>api-verzió</td>
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Description</th>
+  <th>Leírás</th>
   <tr>
     <td>a</td>
     <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg nyelvét. A hatókör használatával megkeresheti, hogy mely nyelvek érhetők el a <a href="./v3-0-languages.md">támogatott nyelvek</a> közül <code>translation</code> . Ha a <code>from</code> paraméter nincs megadva, a rendszer az automatikus nyelvfelismerés alapján határozza meg a forrás nyelvét. <br/><br/>A <code>from</code> <a href="/azure/cognitive-services/translator/dynamic-dictionary">dinamikus szótár</a> funkció használatakor az automatikus észlelés helyett a (z) paramétert kell használnia.</td>
@@ -364,7 +364,7 @@ Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Műveletek</th>
+  <th>Művelet</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Ez az alapértelmezett viselkedés. A káromkodás a forrás és a cél között lesz továbbítva.<br/><br/>

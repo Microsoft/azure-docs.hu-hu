@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Átalakítás létrehozása | Microsoft Docs
+title: Példa Azure CLI-parancsfájlra – átalakítás létrehozása
 description: Az átalakítások feladatokból álló egyszerű munkafolyamatot definiálnak a video- vagy hangfájlok feldolgozásához (ezek „recept” néven is ismertek). A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalakítást.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4784bb8a396a30e9002c789c7aad382640f04a5c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: adbd7deccf32312f67cff7b92ff7813036e9b1b3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95996896"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898528"
 ---
 # <a name="create-a-transform"></a>Átalakítás létrehozása
 
@@ -51,6 +51,6 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ az átalakításokról és a feladatokról](transforms-jobs-concept.md)

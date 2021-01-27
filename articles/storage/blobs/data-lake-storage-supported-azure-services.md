@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cbbbf4ddc651c535cb1266257990f149c80b4742
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562497"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879864"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások
 
@@ -39,12 +39,12 @@ Ez a táblázat felsorolja a Azure Data Lake Storage Gen2 használható Azure-sz
 |HDInsight |Általánosan elérhető|Igen|Igen|[Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[A HDFS CLI használata Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |Általánosan elérhető|Igen|Igen|[Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Általánosan elérhető|Igen|Igen|[Data Lake Storage Gen2 adatai elemzése a Power BI használatával](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (korábban SQL Data Warehouse)|Általánosan elérhető|Igen|Igen|[A Storage-fiókban tárolt adatelemzés](/azure/synapse-analytics/get-started-analyze-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (korábban SQL Data Warehouse)|Általánosan elérhető|Igen|Igen|[A Storage-fiókban tárolt adatelemzés](../../synapse-analytics/get-started-analyze-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Az SQL Server Integration Servicest (SSIS)|Általánosan elérhető|Igen|Igen|[Azure Storage-kapcsolatkezelő](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure Data Explorer|Általánosan elérhető|Igen|Igen|[Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|Előnézet|Igen|Igen|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|Még nem támogatott|Nem alkalmazható|Nem alkalmazható|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](../../cdn/cdn-overview.md)|
-|Azure SQL Database|Még nem támogatott|Nem alkalmazható|Nem alkalmazható|[Mi az Azure SQL Database?](/azure/azure-sql/database/sql-database-paas-overview)|
+|Azure SQL Database|Még nem támogatott|Nem alkalmazható|Nem alkalmazható|[Mi az Azure SQL Database?](../../azure-sql/database/sql-database-paas-overview.md)|
 
 ## <a name="see-also"></a>Lásd még
 

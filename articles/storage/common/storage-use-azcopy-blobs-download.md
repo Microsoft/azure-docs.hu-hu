@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630037"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880118"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Blobok letöltése az Azure Blob Storage-ból az AzCopy v10 használatával
 
@@ -21,14 +21,14 @@ A blob Storage-ból a AzCopy v10 parancssori segédprogram használatával tölt
 
 Ha más típusú feladatokhoz, például fájlok feltöltéséhez, blob Storage-hoz való szinkronizáláshoz vagy Blobok a fiókok közötti másolásához szeretne példákat látni, tekintse meg a jelen cikk [következő lépések](#next-steps) című szakaszának hivatkozásait.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
 > [!NOTE] 
 > A cikkben szereplő példák azt feltételezik, hogy Azure Active Directory (Azure AD) használatával adta meg az engedélyezési hitelesítő adatokat.
 >
-> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Példa: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
@@ -143,7 +143,7 @@ Ezután használja a [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--li
 
 #### <a name="download-a-blob-snapshot"></a>BLOB-pillanatkép letöltése
 
-A [blob-](/azure/storage/blobs/snapshots-overview) Pillanatképek a blob-pillanatkép **datetime** értékére hivatkozva tölthetők le. 
+A [blob-](../blobs/snapshots-overview.md) Pillanatképek a blob-pillanatkép **datetime** értékére hivatkozva tölthetők le. 
 
 |    |     |
 |--------|-----------|
@@ -152,13 +152,13 @@ A [blob-](/azure/storage/blobs/snapshots-overview) Pillanatképek a blob-pillana
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
 > [!NOTE]
-> Ha SAS-tokent használ a blob-adatokhoz való hozzáférés engedélyezéséhez, akkor az SAS-tokent követően adja hozzá a Snapshot **datetime** értéket. Például: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
+> Ha SAS-tokent használ a blob-adatokhoz való hozzáférés engedélyezéséhez, akkor az SAS-tokent követően adja hozzá a Snapshot **datetime** értéket. Példa: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
 
 ## <a name="download-with-optional-flags"></a>Letöltés opcionális jelzővel
 
 A letöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 
-|Forgatókönyv|Jelölő|
+|Eset|Jelölő|
 |---|---|
 |Fájlok automatikus kibontása.|**– Kibontás**|
 |Adja meg, hogy a másolással kapcsolatos naplóbejegyzések milyen részletesek legyenek.|**– naplózási szint** = \[ FIGYELMEZTETÉSi \| hiba – \| \| nincs\]|
@@ -166,7 +166,7 @@ A letöltési műveletet opcionális jelzők használatával is megteheti. Íme 
 
 A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a következő cikkekben talál:
 

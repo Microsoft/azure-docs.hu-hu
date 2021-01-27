@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787029"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880186"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
 
@@ -126,3 +126,4 @@ A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett tám
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
+- Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)

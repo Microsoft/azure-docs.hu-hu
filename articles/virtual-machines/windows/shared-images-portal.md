@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 57cebed8ac229ed54945d75786b84b3cd2a36252
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25cd75035a814fd718cc1101e6575f78c50f105e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844199"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879697"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Azure közös rendszerkép-katalógus létrehozása a portál használatával
 
-A [megosztott képgyűjtemény](shared-image-galleries.md) egyszerűbbé teszi a szervezeten belüli Egyéni rendszerképek megosztását. Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni lemezképek olyan központi telepítési feladatok indítására használhatók, mint az alkalmazások, az alkalmazások konfigurációja és más operációsrendszer-konfigurációk. 
+A [megosztott képgyűjtemény](../shared-image-galleries.md) egyszerűbbé teszi a szervezeten belüli Egyéni rendszerképek megosztását. Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni lemezképek olyan központi telepítési feladatok indítására használhatók, mint az alkalmazások, az alkalmazások konfigurációja és más operációsrendszer-konfigurációk. 
 
 A megosztott képkatalógus lehetővé teszi az egyéni virtuálisgép-rendszerképek megosztását a szervezeten belül vagy régiókban, egy HRE-bérlőn belül. Válassza ki a megosztani kívánt képeket, mely régiókat szeretné elérhetővé tenni a alkalmazásban, és hogy kivel szeretné megosztani azokat. Több gyűjteményt is létrehozhat, hogy logikailag csoportosítsa a megosztott rendszerképeket. 
 
@@ -60,7 +60,7 @@ Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuáli
 
 Ha törölni szeretné az egyes erőforrásokat, akkor azokat fordított sorrendben kell törölnie. A rendszerkép definíciójának törléséhez például törölnie kell az adott rendszerképből létrehozott összes rendszerkép-verziót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
 
@@ -69,4 +69,4 @@ Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrá
 - [Rendszerképverzió létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Virtuális gép létrehozása rendszerképverzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](../troubleshooting-shared-images.md)című témakört.
+A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](../shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](../troubleshooting-shared-images.md)című témakört.

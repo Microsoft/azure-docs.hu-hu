@@ -3,19 +3,19 @@ title: Translator V 3.0 – dokumentáció
 titleSuffix: Azure Cognitive Services
 description: A Translator V 3.0 dokumentációja. A Translator 3. verziója modern JSON-alapú webes API-t biztosít.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024500"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895458"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -39,9 +39,9 @@ A Microsoft Translator több adatközpont-helyből is kiszolgálható. Jelenleg 
 
 A Microsoft Translatorre irányuló kéréseket a legtöbb esetben az adatközpont kezeli, amely a kérelem eredeti helyétől legközelebb esik. Adatközpont meghibásodása esetén a kérést az Azure földrajzán kívül is át lehet irányítani.
 
-Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhető legyen, módosítsa az API-kérés globális végpontját a kívánt regionális végpontra:
+Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhető legyen, módosítsa az API-kérés globális végpontját a kívánt földrajzi végpontra:
 
-|Description|Az Azure földrajza|Kiindulási URL-cím|
+|Description|Az Azure földrajza|Alap URL-cím (földrajzi végpont)|
 |:--|:--|:--|
 |Azure|Globális (nem regionális)|   api.cognitive.microsofttranslator.com|
 |Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|

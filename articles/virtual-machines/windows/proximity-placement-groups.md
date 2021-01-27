@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de71be8c88264d2cfb513a7f0214515058b5185
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083446"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878324"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával
 
 
-Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](co-location.md#proximity-placement-groups)belül kell telepítenie.
+Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](../co-location.md#proximity-placement-groups)belül kell telepítenie.
 
 A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hogy az Azure számítási erőforrásai fizikailag közel legyenek egymáshoz. A közelségi csoportok olyan munkaterhelések esetén hasznosak, ahol az alacsony késés követelmény.
 

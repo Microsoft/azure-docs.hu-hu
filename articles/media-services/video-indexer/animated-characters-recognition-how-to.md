@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763387"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880927"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Az animált karakterfelismerés (előzetes verzió) használata a portál és az API használatával 
 
@@ -35,7 +35,7 @@ Ha Video Indexer fizetős fiókkal rendelkezik, először egy Custom Vision-fió
 > [!NOTE]
 > Mindkét fióknak ugyanabban a régióban kell lennie. A Custom Vision integráció jelenleg nem támogatott a japán régióban.
 
-A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). 
+A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). 
 
 Vegye figyelembe, hogy a modell betanítását csak Video Indexeron keresztül kell elvégezni, és nem a Custom Vision webhelyén keresztül. 
 
@@ -108,7 +108,7 @@ A modell címkézése és betanítása előtt az összes animált karakter neve 
 1. Csak fizetett fiókok: Tekintse át a csoportokat Custom Vision 
 
     > [!NOTE]
-    > A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). Fontos megjegyezni, hogy a modell betanítását csak Video Indexeron keresztül kell elvégezni (az ebben a Topid leírtak szerint), és nem a Custom Vision weboldalán keresztül. 
+    > A Custom Vision fiókjához hozzáféréssel rendelkező fizetős fiókok a modelleket és a címkézett képeket is láthatják. További információ az [osztályozó javítása Custom Visionban](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). Fontos megjegyezni, hogy a modell betanítását csak Video Indexeron keresztül kell elvégezni (az ebben a Topid leírtak szerint), és nem a Custom Vision weboldalán keresztül. 
 
     1. Nyissa meg Video Indexer **egyéni modellek** lapját, és válassza az **animált karakterek** lapot. 
     1. Kattintson a Szerkesztés gombra ahhoz a modellhez, amellyel a Custom Vision felügyelheti. 

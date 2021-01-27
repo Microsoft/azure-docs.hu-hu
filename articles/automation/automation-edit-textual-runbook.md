@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6b786ffaf309e147de27e8cd8be314a3d8a5fb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186350"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896986"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése Azure Automation
 
@@ -29,8 +29,8 @@ Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel v
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Runbook szerkesztése a Azure Portal
 
 1. A Azure Portal válassza ki az Automation-fiókját.
-2. A **folyamat automatizálása**területen válassza a **runbookok** lehetőséget a runbookok listájának megnyitásához.
-3. Válassza ki a szerkeszteni kívánt runbook, majd kattintson a **Szerkesztés**gombra.
+2. A **folyamat automatizálása** területen válassza a **runbookok** lehetőséget a runbookok listájának megnyitásához.
+3. Válassza ki a szerkeszteni kívánt runbook, majd kattintson a **Szerkesztés** gombra.
 4. Szerkessze a runbook.
 5. A Szerkesztés befejezéséhez kattintson a **Mentés** gombra.
 6. Kattintson a **Közzététel** elemre, ha közzé szeretné tenni a runbook legújabb vázlatos verzióját.
@@ -40,7 +40,7 @@ Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel v
 1. A szöveges szerkesztő vászonján vigye a kurzort arra a helyre, ahová a parancsmagot helyezni kívánja.
 2. Bontsa ki a **parancsmagok** csomópontot a könyvtár vezérlőben.
 3. Bontsa ki a használni kívánt parancsmagot tartalmazó modult.
-4. Kattintson a jobb gombbal a parancsmag nevére a beszúráshoz, majd válassza a **Hozzáadás a vászonhoz**lehetőséget. Ha a parancsmag egynél több paraméterrel van beállítva, a szerkesztő hozzáadja az alapértelmezett készletet. A parancsmag kibontásával másik paramétert is kijelölhet.
+4. Kattintson a jobb gombbal a parancsmag nevére a beszúráshoz, majd válassza a **Hozzáadás a vászonhoz** lehetőséget. Ha a parancsmag egynél több paraméterrel van beállítva, a szerkesztő hozzáadja az alapértelmezett készletet. A parancsmag kibontásával másik paramétert is kijelölhet.
 5. Vegye figyelembe, hogy a parancsmag kódja a teljes paraméterekkel együtt van beszúrva.
 6. Adja meg a megfelelő értéket a szögletes zárójelek (<>) körüli érték helyett a szükséges paraméterekhez. Távolítsa el a szükségtelen paramétereket.
 
@@ -48,7 +48,7 @@ Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel v
 
 1. A szöveges szerkesztő vászonján vigye a kurzort arra a helyre, ahová a [gyermek runbook](automation-child-runbooks.md)kódot kívánja helyezni.
 2. Bontsa ki a **runbookok** csomópontot a könyvtár vezérlőben.
-3. Kattintson a jobb gombbal a beszúrandó runbook, és válassza a **Hozzáadás a vászonhoz**lehetőséget.
+3. Kattintson a jobb gombbal a beszúrandó runbook, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
 4. A gyermek runbook kódja minden runbook-paraméterhez be van beszúrva.
 5. Cserélje le a helyőrzőket az egyes paraméterek megfelelő értékeivel.
 
@@ -57,7 +57,7 @@ Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel v
 1. A szöveges szerkesztő vászon vezérlőjében vigye a kurzort arra a helyre, ahová a gyermek runbook kódot kívánja helyezni.
 2. Bontsa ki az **eszközök** csomópontot a könyvtár vezérlőben.
 3. Bontsa ki a kívánt eszköz típusának csomópontját.
-4. Kattintson a jobb gombbal a beszúrandó eszköz nevére, majd válassza a **Hozzáadás a vászonhoz**lehetőséget. [Változó eszközök](./shared-resources/variables.md)esetén válassza a **"változó beolvasása" lehetőséget a vászonhoz** , vagy **adja hozzá a "változó beállítása" beállítást a vászonhoz**, attól függően, hogy szeretné-e lekérni vagy beállítani a változót.
+4. Kattintson a jobb gombbal a beszúrandó eszköz nevére, majd válassza a **Hozzáadás a vászonhoz** lehetőséget. [Változó eszközök](./shared-resources/variables.md)esetén válassza a **"változó beolvasása" lehetőséget a vászonhoz** , vagy **adja hozzá a "változó beállítása" beállítást a vászonhoz**, attól függően, hogy szeretné-e lekérni vagy beállítani a változót.
 5. Vegye figyelembe, hogy az eszköz kódját a rendszer beszúrja a runbook.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Azure Automation runbook szerkesztése a Windows PowerShell használatával
@@ -91,7 +91,7 @@ Import-AzAutomationRunbook -Path "$scriptfolder\Hello-World.ps1" -Name $runbookN
 Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Automation Runbookok kezelése](manage-runbooks.md).
 * [PowerShell-munkafolyamat betanítása](automation-powershell-workflow.md).
@@ -101,4 +101,4 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Azonosító adatok](./shared-resources/credentials.md).
 * [Ütemtervek](./shared-resources/schedules.md).
 * [Változók](./shared-resources/variables.md).
-* [PowerShell-parancsmagok leírása](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [PowerShell-parancsmagok leírása](/powershell/module/az.automation).

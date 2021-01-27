@@ -2,19 +2,19 @@
 title: Modell részleteinek megtekintése – egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: A modellek lap bármely projektben megjeleníti az egyes modellek részleteit, például a modell nevét, a modell állapotát, a BLEU pontszámát, a képzést, a hangolást, a tesztelési mondatok számát.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 52e305f9d50ab0f383810778be681ac41be97c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11f39aa480e3ba6508bf730c61891e80ea689e8b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509788"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895951"
 ---
 # <a name="view-model-details"></a>Modell részleteinek megtekintése
 

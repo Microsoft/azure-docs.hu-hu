@@ -194,9 +194,9 @@
     - name: A Logic Apps biztonsági alapkonfigurációja
       href: ../../logic-apps/security-baseline.md
     - name: A Microsoft Cloud App Security alapkonfigurációja
-      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
+      href: /cloud-app-security/security-baseline
     - name: A Microsoft Defender for Identity biztonsági alapkonfigurációja
-      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
+      href: /defender-for-identity/security-baseline
     - name: A Network Watcher biztonsági alapkonfigurációja
       href: ../../network-watcher/security-baseline.md
     - name: A Power BI biztonsági alapkonfigurációja

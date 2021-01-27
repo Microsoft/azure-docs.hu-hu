@@ -6,12 +6,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746165"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880559"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Oktatóanyag: VPN Gateway létrehozása és kezelése Azure Portal használatával
 
@@ -74,7 +74,7 @@ Hozzon létre egy virtuális hálózati átjárót a következő értékek haszn
 
 Az átjáró nyilvános IP-címét az átjáró **Áttekintés** oldalán tekintheti meg.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Áttekintő lap":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Áttekintő oldal":::
 
 Ha további információkat szeretne látni a nyilvános IP-cím objektumról, kattintson a **nyilvános IP-cím** melletti név/IP-cím hivatkozásra.
 
@@ -103,7 +103,7 @@ Ha nem folytatja az alkalmazás használatát, vagy folytassa a következő okta
 Ha a VPN-átjáróval rendelkezik, megadhatja a kapcsolatokat. Az alábbi cikkek segítséget nyújtanak a leggyakoribb konfigurációk létrehozásához:
 
 > [!div class="nextstepaction"]
-> [Helyek közötti VPN-kapcsolatok](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [Helyek közötti VPN-kapcsolatok](./tutorial-site-to-site-portal.md)
 
 > [!div class="nextstepaction"]
 > [Pont – hely típusú VPN-kapcsolatok](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

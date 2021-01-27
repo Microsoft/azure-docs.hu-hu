@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185772"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894847"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell-modulok frissítése
 
@@ -38,7 +38,7 @@ Az **Update-AutomationAzureModulesForAccount** runbook alapértelmezés szerint 
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Frissítési runbook-kód használata normál PowerShell-parancsfájlként
 
-A runbook kódot normál PowerShell-parancsfájlként is használhatja runbook helyett. Ehhez először jelentkezzen be az Azure-ba a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) parancsmaggal, majd továbbítsa `-Login $false` a parancsfájlnak.
+A runbook kódot normál PowerShell-parancsfájlként is használhatja runbook helyett. Ehhez először jelentkezzen be az Azure-ba a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmaggal, majd továbbítsa `-Login $false` a parancsfájlnak.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>A szuverén felhők frissítési runbook használata
 
@@ -48,7 +48,7 @@ Ha a runbook a szuverén felhőkön szeretné használni, a `AzEnvironment` para
 
 Ha a PowerShell-galéria elérhető legújabb modul helyett egy adott Azure PowerShell modul verzióját szeretné használni, adja át ezeket a verziókat az `ModuleVersionOverrides` **Update-AutomationAzureModulesForAccount** runbook választható paraméterének. Példákért tekintse meg a  [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) runbook. Azure PowerShell a paraméterben nem említett modulok a `ModuleVersionOverrides` PowerShell-Galéria legújabb moduljaival frissülnek. Ha nem adja meg a `ModuleVersionOverrides` paramétert, a rendszer az összes modult frissíti a PowerShell-Galéria legújabb moduljaival. Ez a viselkedés ugyanaz, mint az **Azure-modulok frissítése** gomb a Azure Portalban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A modulok használatával kapcsolatos részletekért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).
 * További információ a frissítési runbook: az [Azure-modulok Runbook frissítése](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update).

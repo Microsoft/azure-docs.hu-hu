@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610471"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880575"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -150,7 +150,7 @@ Csak NTFS-kötetek támogatottak; A ReFS, a FAT, a FAT32 és más fájlrendszere
 
 Az alábbi táblázat az NTFS fájlrendszer szolgáltatásainak együttműködési állapotát mutatja be: 
 
-| Funkció | Támogatás állapota | Jegyzetek |
+| Szolgáltatás | Támogatás állapota | Jegyzetek |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési lista (ACL-ek) | Teljes mértékben támogatott | A Windows-stílusú tulajdonosi hozzáférés-vezérlési listát a Azure File Sync őrzi meg, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. Az ACL-ek az Azure-fájlmegosztás közvetlen csatlakoztatása esetén is kikényszeríthető, azonban ez további konfigurálást igényel. További információért tekintse meg az [Identity szakaszt](#identity) . |
 | Rögzített hivatkozások | Kimarad | |
@@ -384,9 +384,9 @@ Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a bizto
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
-* [Az Azure Files üzembe helyezése](storage-files-deployment-guide.md)
+* [Az Azure Files üzembe helyezése](./storage-how-to-create-file-share.md)
 * [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
 * [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

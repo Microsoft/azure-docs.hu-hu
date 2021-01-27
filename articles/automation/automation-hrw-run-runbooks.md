@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301529"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896969"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -22,7 +22,7 @@ Ha hibrid Runbook-feldolgozón futtat egy runbook, akkor a runbook a munkavégz�
 
 A Azure Automation a feladatokat a hibrid Runbook-feldolgozókon eltérően kezeli az Azure-beli munkaterületeken futó feladatoktől. Ha hosszan futó runbook rendelkezik, győződjön meg arról, hogy az esetleges újraindításra rugalmas. A feladat működésével kapcsolatos részletekért lásd: [hibrid Runbook Worker Jobs](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-A hibrid Runbook-feldolgozók feladatai a helyi rendszerfiók alatt futnak **Windows rendszeren vagy** a Linuxon futó **nxautomation** -fiókban. Linux esetében ellenőrizze, hogy a **nxautomation** -fiók hozzáfér-e ahhoz a helyhez, ahol a runbook-modulok vannak tárolva. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, ügyeljen arra, hogy a paraméter AllUsers megadásával `Scope` biztosítsa, hogy a **nxautomation** -fiók hozzáférhessen. A Linux PowerShell-lel kapcsolatos további információkért lásd: [ismert problémák a PowerShell számára a nem Windows platformokon](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
+A hibrid Runbook-feldolgozók feladatai a helyi rendszerfiók alatt futnak **Windows rendszeren vagy** a Linuxon futó **nxautomation** -fiókban. Linux esetében ellenőrizze, hogy a **nxautomation** -fiók hozzáfér-e ahhoz a helyhez, ahol a runbook-modulok vannak tárolva. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, ügyeljen arra, hogy a paraméter AllUsers megadásával `Scope` biztosítsa, hogy a **nxautomation** -fiók hozzáférhessen. A Linux PowerShell-lel kapcsolatos további információkért lásd: [ismert problémák a PowerShell számára a nem Windows platformokon](/powershell/scripting/whats-new/what-s-new-in-powershell-70).
 
 ## <a name="configure-runbook-permissions"></a>Runbook engedélyeinek konfigurálása
 
@@ -323,8 +323,8 @@ A hibrid runbook-feldolgozón futó runbookok kapcsolatos problémák elhárít�
 
 * Linux rendszeren a felhasználó hibrid feldolgozói naplókat talál a következő helyen: `/home/nxautomation/run/worker.log` , és a System runbook Worker naplói a következő címen találhatók: `/var/opt/microsoft/omsagent/run/automationworker/worker.log` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha a runbookok nem fejeződik be sikeresen, tekintse át a [runbook-végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)hibaelhárítási útmutatóját.
 * További információ a PowerShellről, beleértve a nyelvi referenciákat és a tanulási modulokat is: [PowerShell-dokumentumok](/powershell/scripting/overview).
-* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation#automation).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).

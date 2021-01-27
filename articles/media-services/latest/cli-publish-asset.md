@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-példaszkript – Objektum közzététele | Microsoft Docs
+title: Példa Azure CLI-parancsfájlra – eszköz közzététele
 description: Ez a cikk bemutatja, hogyan tehet közzé egy eszközt az Azure CLI-szkript használatával.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b3c358a84dd74595c476f029a1c8f28bc3c901f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c283c39f1ea90275c42de1481a9cb9006f2b2c5f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295869"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897088"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI-példa: Objektum közzététele
 
@@ -38,6 +38,6 @@ A jelen cikkben lévő Azure CLI-példaszkript bemutatja, hogyan hozhat létre s
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/publish-asset/Publish-Asset.sh "Publish an asset")]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Media Services áttekintése](media-services-overview.md)

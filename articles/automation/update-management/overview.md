@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185614"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896901"
 ---
 # <a name="update-management-overview"></a>Az Update Management áttekintése
 
@@ -167,7 +167,7 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
 | Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
@@ -185,16 +185,7 @@ A Update Management-t használó gépek átlagos adatfelhasználása Azure Monit
 
 ## <a name="network-planning"></a><a name="ports"></a>Hálózattervezés
 
-A következő címek megadása kifejezetten a Update Management. A címekkel folytatott kommunikáció az 443-as porton keresztül történik.
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-Amikor hálózati biztonsági szabályokat hoz létre, vagy Azure Firewall konfigurálja az Automation szolgáltatás és a Log Analytics munkaterület forgalmának engedélyezéséhez, használja a **GuestAndHybridManagement** és a **AzureMonitor** [szolgáltatási címkét](../../virtual-network/service-tags-overview.md#available-service-tags) . Ez leegyszerűsíti a hálózati biztonsági szabályok folyamatos felügyeletét. Ha biztonságosan és magántulajdonban szeretne csatlakozni az Automation szolgáltatáshoz az Azure-beli virtuális gépekről, tekintse át az [Azure Private link használata](../how-to/private-link-security.md)című ismertetőt. A helyszíni tűzfal-konfigurációk részét képező aktuális szolgáltatási címke és tartomány információ beszerzéséhez lásd: [letölthető JSON-fájlok](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+A Update Managementhoz szükséges portok, URL-címek és egyéb hálózatkezelési adatok részletes ismertetését [Azure Automation hálózati konfigurációban](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) találja.
 
 Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra is engedélyeznie kell a forgalmat. A szükséges végpontok frissített listáját a [http/proxy szolgáltatással kapcsolatos problémák](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)között találja. Ha helyi [Windows Update-kiszolgálóval](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)rendelkezik, engedélyeznie kell a forgalmat a [WSUS-kulcsban](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)megadott kiszolgálóra is.
 
@@ -227,11 +218,14 @@ A következő táblázat a Linux-frissítések támogatott besorolásait határo
 |Egyéb frissítések     | Minden egyéb olyan frissítés, amely nem kritikus jellegű, vagy amelyek nem biztonsági frissítések.        |
 
 >[!NOTE]
->A Linux rendszerű gépek frissítési besorolása csak akkor érhető el, ha a támogatott Azure-beli nyilvános Felhőbeli régiókban van használatban. Update Management használatakor a következő nemzeti Felhőbeli régiókban:
+>A Linux rendszerű gépek frissítési besorolása csak a támogatott Azure-beli nyilvános Felhőbeli régiókban használható. A következő nemzeti Felhőbeli régiókban a Update Management használatakor nincs szükség Linux-frissítések besorolására:
+>
 >* Azure US Government
 >* 21Vianet Kínában
 >
-> a Linux-frissítések besorolása nem történik meg, és a **többi frissítés** kategóriába tartoznak. A Update Management a támogatott disztribúciók által közzétett, kifejezetten a kiadott [ovális](https://oval.mitre.org/) (biztonsági sebezhetőségi és értékelési nyelvi) fájlokat használja. Mivel az Internet-hozzáférés ezen országos felhőktől korlátozódik, Update Management nem fér hozzá és nem használhatja ezeket a fájlokat.
+> A besorolás helyett a frissítések a **többi frissítés** kategóriában jelennek meg.
+>
+> A Update Management a támogatott disztribúciók által közzétett, kifejezetten a kiadott [ovális](https://oval.mitre.org/) (biztonsági sebezhetőségi és értékelési nyelvi) fájlokat használja. Mivel az Internet-hozzáférés ezen országos felhőktől korlátozódik, Update Management nem fér hozzá a fájlokhoz.
 
 A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kiértékelheti a kritikus **frissítések és a** Felhőbeli biztonsági frissítések közötti különbséget.  A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal az RTM verziójában. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, a Update Management a besorolások alapján javíthatja a javítást.
 

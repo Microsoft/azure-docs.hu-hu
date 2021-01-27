@@ -7,15 +7,14 @@ ms.workload: infrastructure-services
 ms.author: cynthn
 author: cynthn
 ms.date: 10/26/2018
-ms.openlocfilehash: d1acbe82a086574a102e7897bbd3b99683c1185e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e7dd75a025b76773a0bf1e3b4f752b5a77db6786
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594979"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897374"
 ---
 # <a name="tagging-a-vm-using-a-template"></a>Virtuális gép címkézése sablon használatával
-
 
 Ez a cikk az Azure-beli virtuális gépek Resource Manager-sablonok használatával történő címkézését ismerteti. A címkék felhasználó által definiált kulcs/érték párok, amelyek közvetlenül egy erőforráson vagy erőforráscsoporton helyezhetők el. Az Azure jelenleg legfeljebb 50 címkét támogat erőforrás és erőforráscsoport szerint. A címkéket a létrehozáskor vagy egy meglévő erőforráshoz való hozzáadáskor lehet elhelyezni egy erőforráson.
 
@@ -25,7 +24,7 @@ Kattintson az **üzembe helyezés az Azure** -ban gombra a [sablon hivatkozásá
 
 ![Egyszerű üzembe helyezés címkékkel](./media/tag/deploy-to-azure-tags.png)
 
-Ez a sablon a következő címkéket tartalmazza: *részleg* , *alkalmazás* , és *létrehozta*. Ezeket a címkéket közvetlenül a sablonban is hozzáadhatja vagy szerkesztheti, ha különböző címkéket szeretne megadni.
+Ez a sablon a következő címkéket tartalmazza: *részleg*, *alkalmazás*, és *létrehozta*. Ezeket a címkéket közvetlenül a sablonban is hozzáadhatja vagy szerkesztheti, ha különböző címkéket szeretne megadni.
 
 ![Azure-címkék sablonban](./media/tag/azure-tags-in-a-template.png)
 
@@ -46,8 +45,7 @@ Ezután a **Paraméterek szerkesztése** szakaszban kitöltheti a címkék ért�
 
 Kattintson a **Létrehozás** gombra a sablon a címke értékeivel való telepítéséhez.
 
-
-**Következő lépések**
+### <a name="next-steps"></a>Következő lépések
 
 - Az Azure-erőforrások címkézésével kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md) és [címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
-- Ha szeretné megtekinteni, hogyan segíthetnek az Azure-erőforrások használatának kezelésében, tekintse meg [Az Azure-számla megismerése](../cost-management-billing/understand/review-individual-bill.md) és [a Microsoft Azure erőforrás-felhasználás betekintését](../cost-management-billing/manage/usage-rate-card-overview.md)ismertető témakört.
+- Ha szeretné megtekinteni, hogyan segíthet az Azure-erőforrások használatának kezelésében, tekintse meg [Az Azure-számla ismertetése](../cost-management-billing/understand/review-individual-bill.md)című témakört.

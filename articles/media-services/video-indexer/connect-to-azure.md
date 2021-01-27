@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702637"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897156"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
+# <a name="create-a-video-indexer-account"></a>Video Indexer fiók létrehozása
 
 A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel létrehoz egy Video Indexer fiókot, amely az Azure-előfizetéshez csatlakozik. Az indexelt percek megfizetése után további információért lásd a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/).
 
@@ -25,7 +25,9 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéshez és egy Azur
 
 Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó és modell testreszabását átmásolhatja az új fiókba, ahogy azt a [tartalom importálása a próbaverziós fiókból](#import-your-content-from-the-trial-account) című szakaszban tárgyaljuk.
 
-## <a name="prerequisites"></a>Előfeltételek
+A cikk a [video Indexer-fiók Azure Governmenthoz való összekapcsolását](#video-indexer-in-azure-government)is ismerteti.
+
+## <a name="prerequisites-for-connecting-to-azure"></a>Az Azure-hoz való csatlakozás előfeltételei
 
 * Azure-előfizetés.
 
@@ -37,7 +39,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
 
     A felhasználónak munkahelyi vagy iskolai fiókkal rendelkező Azure AD-felhasználónak kell lennie. Ne használjon személyes fiókot (például outlook.com, live.com vagy hotmail.com).
 
-    ![minden HRE-felhasználó](./media/create-account/all-aad-users.png)
+    ![minden Azure AD-felhasználó](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>Az automatikus folyamat további előfeltételei
 
@@ -59,7 +61,7 @@ Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>Új fiók létrehozása
+## <a name="create-a-new-account-on-azure"></a>Új fiók létrehozása az Azure-ban 
 
 > [!NOTE]
 > Ha az Azure-előfizetése tanúsítványalapú többtényezős hitelesítést használ, rendkívül fontos, hogy a következő lépéseket olyan eszközön végezze el, amelyen telepítve vannak a szükséges tanúsítványok.
@@ -155,7 +157,7 @@ A párbeszédpanelen adja meg a következő adatokat:
 |Alkalmazásazonosító|Az Azure AD-alkalmazás azonosítója (a megadott Media Services fiókra vonatkozó engedélyekkel), amelyeket az előző szakaszban hozott létre.|
 |Alkalmazás kulcsa|Az előző szakaszban létrehozott Azure AD-alkalmazás kulcsa. |
 
-## <a name="import-your-content-from-the-trial-account"></a>Tartalom importálása a *próbaverziós* fiókból
+### <a name="import-your-content-from-the-trial-account"></a>Tartalom importálása a *próbaverziós* fiókból
 
 Új fiók létrehozásakor lehetősége van importálni a tartalmat a *próbaverziós* fiókból az új fiókba. Ha az **új fiók létrehozása az Azure-előfizetéshez** párbeszédpanelen az *Importálás* lehetőséget választja, a rendszer a *próbaverziós* fiókból az új fiókba másolja a média és a tartalom modell testreszabását.
 
@@ -163,16 +165,10 @@ A tartalom importálásának lehetősége a fent ismertetett automatizált és m
 
 > [!NOTE]
 > A tartalom csak egyszer importálható minden fiókból.
+>
+> A *próbaverziós* fiók nem availagle a Azure Government felhőben.
 
-## <a name="delete-the-account"></a>Fiók törlése
-
-Ha később törölni szeretné a fiókot, törölheti a fiókot a Video Indexer webhelyről. A fiók törléséhez a tulajdonosnak kell lennie.
-
-Válassza ki a fiók – > **Beállítások**  ->  **törölje ezt a fiókot**. 
-
-A fiók 90 nap múlva véglegesen törölve lesz.
-
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="azure-media-services-considerations"></a>Azure Media Services megfontolások
 
 A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 
@@ -201,11 +197,54 @@ A fiók létrehozásának automatizálásához a következő két lépésből á
     Tekintse meg a [Media Services fiók létrehozási sablonjának](https://github.com/Azure-Samples/media-services-v3-arm-templates)példáját.
 1. Hívja [a Create-Account fiókot a Media Services és az Azure ad-alkalmazással](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
+## <a name="video-indexer-in-azure-government"></a>Video Indexer a Azure Government
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>A Azure Governmenthoz való csatlakozás előfeltételei
+
+-   Azure-előfizetés [Azure Governmentban](https://docs.microsoft.com/azure/azure-government/).
+- Azure AD-fiók Azure Governmentban.
+- Az engedélyekkel és erőforrásokkal kapcsolatos összes előzetes követelmény az [Azure-hoz való csatlakozás előfeltételeiben](#prerequisites-for-connecting-to-azure)leírtak szerint.
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>Új fiók létrehozása a Azure Government portálon keresztül
+
+> [!NOTE]
+> A Azure Government felhő nem tartalmaz Video Indexer *próbaverzióját* .
+
+Fizetős fiók létrehozása a Video Indexer-portálon keresztül:
+
+1. Nyissa meg a következőt: https://videoindexer.ai.azure.us 
+1. Jelentkezzen be Azure Government Azure AD-fiókjával.
+1.  Ha nem rendelkezik olyan Video Indexer fiókkal a Azure Governmentban, amelynek Ön a tulajdonosa vagy közreműködője, akkor a fiók létrehozásának megkezdéséhez egy üres felülettel fog rendelkezni. 
+
+    A folyamat többi része a fentiekben leírtak szerint csak azok a régiók lesznek, amelyekről a video Indexer elérhető lesz. 
+
+    Ha már létezik közreműködő vagy rendszergazda egy vagy több Video Indexer fiókban Azure Government, akkor a fiókba kerül, és innen elindíthat egy további fiók létrehozásához szükséges lépéseket, a fent leírtak szerint.
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>Új fiók létrehozása az Azure Government API-n keresztül
+
+Ha fizetős fiókot szeretne létrehozni a Azure Governmentban, kövesse a következő témakör utasításait: [create-Paid-Account](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account). Ez az API-végpont csak kormányzati Felhőbeli régiókat tartalmaz.
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>A Azure Government Video Indexer korlátozásai
+
+*   Nem érhető el manuális tartalom-moderálás a kormányzati felhőben. 
+
+    A nyilvános felhőben, ha a tartalom sértőnek minősül a tartalom moderálása alapján, az ügyfél megkérheti, hogy egy ember megtekintse a tartalmat, és esetleg visszaállítsa ezt a döntést.  
+*   Nincsenek próbaverziós fiókok. 
+* Bing Description – a gov Cloud szolgáltatásban nem jelennek meg az azonosított hírességek és nevesített entitások leírása. Ez csak a felhasználói felületi képesség. 
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült az Oktatóanyaggal, törölje azokat az erőforrásokat, amelyeket nem szeretne használni.
 
-## <a name="next-steps"></a>További lépések
+### <a name="delete-a-video-indexer-account"></a>Video Indexer fiók törlése
+
+Ha Video Indexer fiókot szeretne törölni, törölheti a fiókot a Video Indexer webhelyről. A fiók törléséhez a tulajdonosnak kell lennie.
+
+Válassza ki a fiók – > **Beállítások**  ->  **törölje ezt a fiókot**. 
+
+A fiók 90 nap múlva véglegesen törölve lesz.
+
+## <a name="next-steps"></a>Következő lépések
 
 Programozott módon használhatja a próbaverziós fiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókokat a következő témakörben található utasítások végrehajtásával: API-k [használata](video-indexer-use-apis.md).
 

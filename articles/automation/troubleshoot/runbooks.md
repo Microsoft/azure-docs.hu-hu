@@ -2,16 +2,16 @@
 title: Azure Automation runbook kapcsolatos problémák elhárítása
 description: Ez a cikk a Azure Automation runbookok kapcsolatos hibák elhárítását és megoldását ismerteti.
 services: automation
+ms.subservice: ''
 ms.date: 11/03/2020
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 116677354009c538eece02184d801cfda11574a0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368083"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896308"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
@@ -505,7 +505,7 @@ Ha havonta több mint 500 perces feldolgozást szeretne használni, módosítsa 
 
 1. Jelentkezzen be az Azure-előfizetésbe.
 1. Válassza ki a frissítendő Automation-fiókot.
-1. Válassza a **Beállítások** , majd a **díjszabás** lehetőséget.
+1. Válassza a **Beállítások**, majd a **díjszabás** lehetőséget.
 1. Kattintson az **Engedélyezés** elemre az oldal alján a fiók alapszintű szintre való frissítéséhez.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Forgatókönyv: az 1 MB-nál nagyobb kimeneti adatfolyam Runbook
@@ -680,7 +680,7 @@ Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások ke
 * [Runbook végrehajtás a Azure Automationban](../automation-runbook-execution.md)
 * [Runbook indítása Azure Automation](../start-runbooks.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem találja a problémát, vagy nem tudja feloldani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796108"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879797"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: Autó árának előrejelzése a tervezővel
 
@@ -82,7 +82,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
 
 1. Adja meg a számítási erőforrás nevét.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > Számítási erőforrás létrehozása körülbelül öt percet vesz igénybe. Az erőforrás létrehozása után újra felhasználhatja azt, és kihagyhatja ezt a várakozási időt a jövőbeli futtatásokhoz.
@@ -103,7 +103,7 @@ A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben a
 
 Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet.
 
-1. Kattintson a jobb gombbal a **személygépkocsi-árlista (nyers)** elemre, majd válassza a **Megjelenítés** lehetőséget.
+1. Kattintson a jobb gombbal a **személygépkocsi-árlista (RAW)** elemre , és válassza az  >  **adatkészlet kimenetének** megjelenítése lehetőséget.
 
 1. Válassza ki az adatablak különböző oszlopait az egyes adatok megtekintéséhez.
 
@@ -284,7 +284,7 @@ Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat 
 
 A Futtatás után megtekintheti a folyamat futtatásának eredményét. Először tekintse meg a regressziós modell által generált előrejelzéseket.
 
-1. Kattintson a jobb gombbal a **pontszám modell** modulra, és válassza a **Megjelenítés** elemet a kimenet megtekintéséhez.
+1. Kattintson a jobb gombbal a **pontszám modell** modulra, majd a kimenet megjelenítéséhez válassza a  >  **pontozásos adatkészlet** megjelenítése lehetőséget.
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
@@ -294,7 +294,7 @@ A Futtatás után megtekintheti a folyamat futtatásának eredményét. Előszö
 
 A **kiértékelési modell** használatával megtekintheti, hogy a betanított modell milyen jól lett elvégezve a teszt adatkészleten.
 
-1. Kattintson a jobb gombbal a **modell kiértékelése** modulra, és válassza a **Megjelenítés** elemet a kimenet megtekintéséhez.
+1. Kattintson a jobb gombbal a **modell kiértékelése** modulra, és válassza a   >  **kiértékelési eredmények** megjelenítése lehetőséget a kimenet megtekintéséhez.
 
 A modellhez a következő statisztikák láthatók:
 

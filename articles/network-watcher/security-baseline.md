@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 598f925d939694ea47605b0e8ea2e63872db7811
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3f16589765752a2a635ccd055e7d55de8b9ce330
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201246"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880016"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Network Watcher Azure biztonsági alapterve
 
@@ -429,7 +429,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 * [Az Azure VPN Gateway által támogatott IPSec-paraméterek](./network-watcher-diagnose-on-premises-connectivity.md)
 
-* [Helyek közötti kapcsolat konfigurálása a Azure Portalban](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Helyek közötti kapcsolat konfigurálása a Azure Portalban](../vpn-gateway/tutorial-site-to-site-portal.md)
 
 **Az Azure Security Center monitorozása**: Jelenleg nem érhető el
 
@@ -957,7 +957,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

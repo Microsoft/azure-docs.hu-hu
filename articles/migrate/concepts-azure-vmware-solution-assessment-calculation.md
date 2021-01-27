@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: a489902372b0b88a0ffec07fa685ee745ec59c50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567715"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880457"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure VMware-megoldásba)
 
@@ -207,7 +207,7 @@ A tényleges kihasználtsági érték meghatározása után a tároló, a háló
 
 Ha helyszíni *méretezést* használ, a kiszolgáló értékelése nem veszi figyelembe a virtuális gépek és lemezek teljesítményének előzményeit. Ehelyett az AVS-csomópontokat a helyszínen lefoglalt méret alapján foglalja le. Az alapértelmezett tárolási típus a vSAN az AVS-ben.
 
-[További](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) információ az Azure VMware-megoldás értékelésének áttekintéséről.
+[További](./tutorial-assess-vmware-azure-vmware-solution.md#review-an-assessment) információ az Azure VMware-megoldás értékelésének áttekintéséről.
 
 ## <a name="confidence-ratings"></a>Megbízhatósági minősítések
 

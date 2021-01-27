@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880152"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>A partneri VPN-eszközök konfigurációinak áttekintése
 Ez a cikk áttekintést nyújt a helyszíni VPN-eszközök konfigurálásáról az Azure VPN Gateway-hez való csatlakozáshoz. A minta Azure-beli virtuális hálózat és a VPN-átjáró beállításával megtudhatja, hogyan csatlakozhat a különböző helyszíni VPN-eszközök konfigurációhoz ugyanazzal a paraméterekkel.
@@ -27,7 +27,7 @@ A mintában az első konfiguráció egyetlen S2S VPN-alagutat tartalmaz az Azure
 
 ![Egyetlen S2S VPN-alagút diagramja](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Az egyetlen VPN-alagút beállításával kapcsolatos részletes utasításokért lásd: [helyek közötti kapcsolat konfigurálása](vpn-gateway-howto-site-to-site-resource-manager-portal.md). A következő szakaszokban adja meg a minta konfigurációjának kapcsolódási paramétereit, és adjon meg egy PowerShell-parancsfájlt, amely segítséget nyújt az első lépésekhez.
+Az egyetlen VPN-alagút beállításával kapcsolatos részletes utasításokért lásd: [helyek közötti kapcsolat konfigurálása](./tutorial-site-to-site-portal.md). A következő szakaszokban adja meg a minta konfigurációjának kapcsolódási paramétereit, és adjon meg egy PowerShell-parancsfájlt, amely segítséget nyújt az első lépésekhez.
 
 ### <a name="connection-parameters"></a>Kapcsolódási paraméterek
 Ez a szakasz az előző szakaszokban leírt példák paramétereit sorolja fel.
@@ -148,6 +148,5 @@ A S2S VPN-kapcsolat létrehozásakor igény szerint [a BGP-t is használhatja a 
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az aktív-aktív VPN-átjárók beállításával kapcsolatos részletes utasításokért lásd: [aktív-aktív VPN-átjárók konfigurálása a létesítmények közötti és VNet-VNet kapcsolatokhoz](vpn-gateway-activeactive-rm-powershell.md).
-

@@ -3,19 +3,19 @@ title: Káromkodás-szűrés – Translator
 titleSuffix: Azure Cognitive Services
 description: A káromkodás szűrésével meghatározhatja az Azure Cognitive Services Translatorben lévő szövegben lefordított káromkodás szintjét.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 9f389d669e69dbfa6ec6d4d0b4716d2367443f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996159"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896799"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Káromkodás-szűrés hozzáadása a fordítóval
 
@@ -32,6 +32,6 @@ A translate () metódus a "Options" paramétert veszi fel, amely tartalmazza az 
 | Megjelölve | A profán szavakat XML-címkék veszik körül.. \<profanity> . \</profanity> | 彼は変態です 。 | Egy \<profanity> bunkó \</profanity> . |
 | Törölve | A rendszer eltávolítja a profán szavakat a kimenetből a csere nélkül. | 彼は 。 | Ő a. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Káromkodás-szűrés alkalmazása a fordítói hívással](reference/v3-0-translate.md)

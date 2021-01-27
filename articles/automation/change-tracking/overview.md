@@ -3,14 +3,14 @@ title: A Azure Automation Change Tracking és a leltár áttekintése
 description: Ez a cikk ismerteti a Change Tracking és a leltár szolgáltatást, amely segít azonosítani a szoftvereket és a Microsoft szolgáltatásbeli módosításokat a környezetben.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445421"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896629"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -32,7 +32,7 @@ A Change Tracking és a leltár a [Azure Security Center file Integrity monitori
 - Microsoft-szolgáltatások
 - Linux-démonok
 
-A Change Tracking és a leltárban foglalt összes szolgáltatás engedélyezése további díjakat eredményezhet. A továbblépés előtt tekintse át az [Automation díjszabását](https://azure.microsoft.com/pricing/details/automation/) és a [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/). 
+A Change Tracking és a leltárban foglalt összes szolgáltatás engedélyezése további díjakat eredményezhet. A továbblépés előtt tekintse át az [Automation díjszabását](https://azure.microsoft.com/pricing/details/automation/) és a [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/).
 
 A Change Tracking és a leltár Azure Monitor naplókba továbbítja az adatokat, és az összegyűjtött adatokat egy Log Analytics munkaterületen tárolja. A fájlok integritásának figyelése (FIM) szolgáltatás csak akkor érhető el, ha engedélyezve van az **Azure Defender for Servers** . További információkért tekintse meg a Azure Security Center [díjszabását](../../security-center/security-center-pricing.md) . A FIM feltölti az adatait ugyanarra a Log Analytics munkaterületre, mint amelyet az adatok Change Tracking és leltárból való tárolásához hoztak létre. Javasoljuk, hogy figyelje a csatolt Log Analytics munkaterületet, hogy nyomon követhesse a pontos használatot. A Azure Monitor naplók adatfelhasználásának elemzésével kapcsolatos további információkért lásd: [a használat és a költséghatékonyság kezelése](../../azure-monitor/platform/manage-cost-storage.md).
 
@@ -74,16 +74,7 @@ A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
-A következő címek megadása kifejezetten a Change Tracking és a leltárhoz szükséges. A címekkel folytatott kommunikáció az 443-as porton keresztül történik.
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
-
-Amikor hálózati biztonsági szabályokat hoz létre, vagy Azure Firewall konfigurálja az Automation szolgáltatás és a Log Analytics munkaterület forgalmának engedélyezéséhez, használja a **GuestAndHybridManagement** és a **AzureMonitor** [szolgáltatási címkét](../../virtual-network/service-tags-overview.md#available-service-tags) . Ez leegyszerűsíti a hálózati biztonsági szabályok folyamatos felügyeletét. Ha biztonságosan és magántulajdonban szeretne csatlakozni az Automation szolgáltatáshoz az Azure-beli virtuális gépekről, tekintse át az [Azure Private link használata](../how-to/private-link-security.md)című ismertetőt. A helyszíni tűzfal-konfigurációk részét képező aktuális szolgáltatási címke és tartomány információ beszerzéséhez lásd: [letölthető JSON-fájlok](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+A Change Tracking és a leltárhoz szükséges portok, URL-címek és egyéb hálózatkezelési adatok részletes ismertetését [Azure Automation hálózati konfigurációban](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory) találja.
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
@@ -112,7 +103,7 @@ A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl ta
 A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok változásainak figyelését. A figyeléssel megadhatja azokat a bővíthetőségi pontokat, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi táblázat az előre konfigurált (de nem engedélyezett) beállításkulcsokat sorolja fel. A kulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |Beállításjegyzék kulcsa | Rendeltetés |
+> |Beállításjegyzék kulcsa | Cél |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
@@ -159,7 +150,7 @@ A következő táblázat a Change Tracking és a leltár által támogatott vál
 
 A következő táblázat a nyomon követett elemek korlátozásait mutatja gépenként a Change Tracking és a leltár esetében.
 
-| **Erőforrás** | **Korlát** |
+| **Erőforrás** | **Korlátot** |
 |---|---|---|
 |Fájl|500|
 |Regisztrációs adatbázis|250|
@@ -196,7 +187,7 @@ Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid kö
 |Konfigurációváltozás <br>&#124;, ahol a RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ Software \\ Microsoft \\ Windows \\ CurrentVersion \\ QualityCompat"| Hasznos a kritikus vírusvédelmi kulcsok változásainak nyomon követéséhez.|
 |Konfigurációváltozás <br>&#124;, ahol a RegistryKey a következőt tartalmazza: @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ Parameters \\ FirewallPolicy"| Hasznos a tűzfalbeállítások változásainak nyomon követéséhez.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Automation-fiókból való engedélyezéssel kapcsolatban lásd: [change Tracking és leltár engedélyezése Automation-fiókból](enable-from-automation-account.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Egyéni átalakítás kódolása a Media Services v3 .NET-Azure használatával | Microsoft Docs
+title: Egyéni átalakítás kódolása Media Services v3 .NET-Azure használatával
 description: Ez a témakör bemutatja, hogyan kódolhat egyéni átalakításokat a .NET használatával a Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295614"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897173"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Kódolás egyéni átalakítással – .NET
 
@@ -48,7 +48,7 @@ Az egyéni előre definiált minta a [EncodeCustomTransform](https://github.com/
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Átalakítás létrehozása egyéni beállításkészlettel 
 
-Új [átalakítás](/rest/api/media/transforms)létrehozásakor meg kell adnia, hogy mit szeretne kimenetként létrehozni. A kötelező paraméter egy [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. A **beállításkészlet** a kívánt **TransformOutput**létrehozásához használt videó-és/vagy hangfeldolgozási műveletek részletes utasításait írja le. Az alábbi **TransformOutput** egyéni kodekeket és rétegbeli kimeneti beállításokat hoz létre.
+Új [átalakítás](/rest/api/media/transforms)létrehozásakor meg kell adnia, hogy mit szeretne kimenetként létrehozni. A kötelező paraméter egy [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. A **beállításkészlet** a kívánt **TransformOutput** létrehozásához használt videó-és/vagy hangfeldolgozási műveletek részletes utasításait írja le. Az alábbi **TransformOutput** egyéni kodekeket és rétegbeli kimeneti beállításokat hoz létre.
 
 [Átalakítások](/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható. A (z) Media Services v3-as verziójában az entitások metódusának **beolvasása** **Null értéket** ad vissza, ha az entitás nem létezik (kis-és nagybetű nem megkülönbözteti a nevet)
 

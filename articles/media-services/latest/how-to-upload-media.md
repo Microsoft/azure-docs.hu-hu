@@ -1,24 +1,10 @@
 ---
-title: Adathordozók feltöltése
-titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan tölthet fel médiatartalmakat adatfolyamként vagy kódolásra.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015848"
+title: adathordozó feltöltése: Azure Media Services Leírás: megtudhatja, hogyan tölthetők fel a média adatfolyam-továbbításra vagy kódolásra.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: útmutató MS. Date: 08/31/2020 MS. Author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>Média feltöltése adatfolyamként vagy kódolásra
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

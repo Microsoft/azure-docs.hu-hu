@@ -1,6 +1,5 @@
 ---
 title: Media Services entitások szűrése, rendezése és lapozása
-titleSuffix: Azure Media Services
 description: Ismerje meg Azure Media Services v3 entitások szűrését, rendezését és lapozását.
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f562927fcbcf66ca7006ac2d100520311ac917
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300187"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897883"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
@@ -66,13 +65,13 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Rendezési sorrend
 
-Ezzel a paranccsal `$orderby` rendezheti a visszaadott objektumokat a megadott paraméterrel. Példa:  
+Ezzel a paranccsal `$orderby` rendezheti a visszaadott objektumokat a megadott paraméterrel. Például:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá a `asc` mezőt vagy a `desc` nevet a mezőhöz szóközzel elválasztva. Például: `$orderby properties/created desc`.
+Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá a `asc` mezőt vagy a `desc` nevet a mezőhöz szóközzel elválasztva. Példa: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Token kihagyása
 
@@ -158,7 +157,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
 
-|Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
+|Entitás neve|Tulajdonság neve|Szűrő|Sorrend|
 |---|---|---|---|
 |[Adategységek](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
 ||Properties. alternateId |`eq`||

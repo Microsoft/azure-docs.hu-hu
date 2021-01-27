@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7ebe56b95b0c4b938c31c0ece04d27fd1b234b05
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1861a4e75f34cfd7fe386c094cce3a638b3e1a1e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729912"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880793"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -159,8 +159,6 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
-
-
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
 Felügyelt identitás típusa |Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
@@ -168,13 +166,12 @@ Felügyelt identitás típusa |Az összes általánosan elérhető<br>Globális 
 | Rendszer által hozzárendelt | Előnézet | Előnézet | Nem elérhető | Előnézet |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el  | Nem érhető el  | Nem érhető el |
 
+### <a name="azure-firewall-policy"></a>Azure Firewall házirend
 
-
-
-
-
-
-
+Felügyelt identitás típusa |Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Rendszer által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
+| Felhasználó által hozzárendelt | Előnézet | Nem érhető el  | Nem érhető el  | Nem érhető el |
 
 ### <a name="azure-functions"></a>Azure Functions
 

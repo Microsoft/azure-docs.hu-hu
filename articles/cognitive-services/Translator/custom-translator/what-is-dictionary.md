@@ -2,19 +2,19 @@
 title: Mi az a szótár? -Egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: A szótár egy igazított dokumentum, amely megadja a mondatok vagy mondatok (és azok fordításai) listáját, amelyeket mindig a Microsoft Translatornek kell lefordítani. A szótárakat más néven szószedeteknek vagy terminusoknak is nevezik.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 160aa372cec2d018d5a3558f99e079624d965098
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368984"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895560"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az a szótár?
 
@@ -43,6 +43,6 @@ A modelleket csak a szótárak adatai alapján lehet betanítani. Ehhez válassz
 - A mondatok szótárának használatakor a rendszer figyelmen kívül hagyja a mondat végét. Ha például a forrás-szótár "Ez a mondat a központozás vége!" kifejezést tartalmazza, akkor az "Ez a mondat írásjelekkel végződik" kifejezéseket tartalmazó fordítási kérések egyeznek.
 - Ha egy szó többször is megjelenik egy szótárban, a rendszer mindig a megadott utolsó bejegyzést fogja használni. Ezért a szótár nem tartalmazhat ugyanazon szó több fordítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el [a dokumentumok formátumait ismertető útmutatót](document-formats-naming-convention.md).

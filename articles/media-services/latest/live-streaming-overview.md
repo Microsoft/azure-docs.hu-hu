@@ -1,5 +1,5 @@
 ---
-title: Az élő közvetítés áttekintése Azure Media Services v3-vel | Microsoft Docs
+title: Az élő közvetítés áttekintése Azure Media Services v3-val
 description: Ez a cikk áttekintést nyújt az élő közvetítésről Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ad3a14cff13395f4d59ab2ed59ae1cc26eaad866
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695822"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896782"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -131,7 +131,7 @@ Tekintse meg a [Gyakori kérdések](frequently-asked-questions.md#live-streaming
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Élő közvetítés – gyors üzembe helyezés](live-events-wirecast-quickstart.md)
 * [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

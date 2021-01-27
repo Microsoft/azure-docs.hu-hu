@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: cff0c54cf5aa8854273be9502f5cf6df4e0a055b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632738"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879544"
 ---
 # <a name="monitoring-time-series-insights"></a>Figyelés Time Series Insights
 
@@ -27,9 +27,9 @@ Az egyes Time Series Insights-környezetek Azure Portal **áttekintő** lapja az
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 
-A Time Series Insights a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)használatával hoz létre figyelési adatokkal, amely az Azure teljes verem-figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül.
+A Time Series Insights a [Azure monitor](../azure-monitor/overview.md)használatával hoz létre figyelési adatokkal, amely az Azure teljes verem-figyelési szolgáltatása, amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrásokon kívül.
 
-A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)cikkből:
+A következő fogalmakat ismerteti az [Azure-erőforrások Azure Monitorával való monitorozásával foglalkozó](../azure-monitor/insights/monitor-azure-resource.md)cikkből:
 
 - Mi az Azure Monitor?
 - A figyeléshez kapcsolódó költségek
@@ -63,7 +63,7 @@ A következő kategóriákból gyűjthet naplókat Azure Time Series Insights:
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
-A metrikákat a Azure Monitor menüből megnyitva elemezheti Azure Time Series Insights mérőszámait, valamint más Azure-szolgáltatások metrikáit is. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) .
+A metrikákat a Azure Monitor menüből megnyitva elemezheti Azure Time Series Insights mérőszámait, valamint más Azure-szolgáltatások metrikáit is. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../azure-monitor/platform/metrics-getting-started.md) .
 
 A gyűjtött platform metrikáinak listáját itt tekintheti meg: [Monitoring Azure Time Series Insights adatok referenciája](how-to-monitor-tsi-reference.md#metrics)
 
@@ -88,7 +88,7 @@ A Azure Time Series Insights az alábbi táblázatokban tárolja az adattárakat
 |:---|:---|
 | TSIIngress | A bejövő forgalom kategóriából származó adatok tárolására szolgáló tábla. A bejövő forgalom kategóriában nyomon követheti a beáramló folyamat során felmerülő hibákat. Ez a kategória olyan hibákat tartalmaz, amelyek akkor jelentkeznek, amikor eseményeket fogadnak (például egy esemény forrásához való kapcsolódási hibák) és az események feldolgozásának folyamatát (például az események hasznos adatainak elemzésekor felmerülő hibákat).
 
-Az adatok Azure Monitor naplókba való továbbításához létre kell hoznia egy diagnosztikai beállítást, amely erőforrás-naplókat vagy platform-metrikákat küld egy Log Analytics munkaterületre. További információ: [gyűjtemény és útválasztás](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing).
+Az adatok Azure Monitor naplókba való továbbításához létre kell hoznia egy diagnosztikai beállítást, amely erőforrás-naplókat vagy platform-metrikákat küld egy Log Analytics munkaterületre. További információ: [gyűjtemény és útválasztás](../iot-hub/monitor-iot-hub.md#collection-and-routing).
 
 ## <a name="sample-queries"></a>Példák a lekérdezésekre
 
@@ -115,11 +115,11 @@ Az alábbi lekérdezések segítségével figyelheti Azure Time Series Insights 
 
 ## <a name="alerts"></a>Riasztások
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [naplók](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)és a [tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts). A különböző típusú riasztásokhoz előnyök és hátrányok tartoznak.
+Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a rendszeren észlelt problémák azonosítását és megoldását, mielőtt az ügyfelek bejelentkeznek. Riasztásokat állíthat be a [metrikák](../azure-monitor/platform/alerts-metric-overview.md), [naplók](../azure-monitor/platform/alerts-unified-log.md)és a [tevékenység naplójában](../azure-monitor/platform/activity-log-alerts.md). A különböző típusú riasztásokhoz előnyök és hátrányok tartoznak.
 
 A platform metrikái alapján létrehozott riasztási szabályok létrehozásakor vegye figyelembe, hogy a darabszámban összegyűjtött Time Series Insights platform metrikák esetében előfordulhat, hogy egyes összesítések nem lesznek elérhetők vagy használhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Time Series Insights által létrehozott naplók és metrikák hivatkozását a [Azure Time Series Insights monitorozási adatok referenciája](how-to-monitor-tsi-reference.md) tartalmazza.
 * Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .

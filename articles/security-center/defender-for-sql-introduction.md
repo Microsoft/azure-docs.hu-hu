@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755990"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881367"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -27,7 +27,7 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 |----|:----|
 |Kiadás állapota:|**Azure Defender az Azure SQL Database-kiszolgálókhoz** – általánosan elérhető (GA)<br>**Azure Defender a gépeken futó SQL-kiszolgálókhoz** – általánosan elérhető (GA) |
 |Árképzési|Az **Azure Defender for SQL** -t alkotó két csomag számlázása [a díjszabási oldalon](security-center-pricing.md) látható módon történik|
-|Védett SQL-verziók:|[SQL Azure-beli virtuális gépeken](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure arc-kompatibilis SQL-kiszolgálók](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Helyszíni SQL-kiszolgálók a Windows rendszerű gépeken az Azure arc nélkül<br>Önálló Azure SQL- [adatbázisok](../azure-sql/database/single-database-overview.md) és [rugalmas készletek](../azure-sql/database/elastic-pool-overview.md)<br>[Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure szinapszis Analytics (korábban SQL DW) dedikált SQL-készlet](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Védett SQL-verziók:|[SQL Azure-beli virtuális gépeken](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure arc-kompatibilis SQL-kiszolgálók](/sql/sql-server/azure-arc/overview)<br>Helyszíni SQL-kiszolgálók a Windows rendszerű gépeken az Azure arc nélkül<br>Önálló Azure SQL- [adatbázisok](../azure-sql/database/single-database-overview.md) és [rugalmas készletek](../azure-sql/database/elastic-pool-overview.md)<br>[Felügyelt Azure SQL-példány](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure szinapszis Analytics (korábban SQL DW) dedikált SQL-készlet](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov<br>![Igen ](./media/icons/yes-icon.png) China gov (**részleges**: a riasztások részhalmaza és az SQL Server sebezhetőségi felmérése. A viselkedési veszélyforrások elleni védelem nem érhető el.)|
 |||
 
@@ -43,7 +43,7 @@ Az SQL-hez készült Azure Defender két Azure Defender-csomagot tartalmaz, amel
 - Az **Azure Defender az SQL-kiszolgálókon a gépeken** kiterjeszti az Azure-natív SQL-kiszolgálók védelmét, így teljes mértékben támogatja a hibrid környezeteket, és védelmet biztosít az Azure-ban, más felhőalapú környezetekben és akár helyszíni gépeken üzemeltetett SQL-kiszolgálóknak (az összes támogatott verziónak).
     - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Helyszíni SQL Server-kiszolgálók:
-        - [Azure Arc-kompatibilis SQL Server (előzetes verzió)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc-kompatibilis SQL Server (előzetes verzió)](/sql/sql-server/azure-arc/overview)
         - [Windows rendszerű gépeken futó SQL Server Azure arc nélkül](../azure-monitor/platform/agent-windows.md)
 
 

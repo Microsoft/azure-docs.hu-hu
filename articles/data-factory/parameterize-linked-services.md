@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232063"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895390"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
@@ -27,6 +27,9 @@ A Data Factory felhasználói felületét a Azure Portal vagy egy programozási 
 
 > [!TIP]
 > Azt javasoljuk, hogy ne parametrizálja jelszavakat vagy titkos kódokat. A Azure Key Vault az összes kapcsolódó karakterláncot tárolja, és parametrizálja a *titkos nevet*.
+
+> [!Note]
+> A "-" paramétert a paraméterek neveiben a "-" kifejezés használata esetén javasolt használni, amíg a hibát nem oldja meg.
 
 A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
 

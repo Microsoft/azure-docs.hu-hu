@@ -1,26 +1,11 @@
 ---
-title: Media Services metrikák és diagnosztikai naplók a Azure Monitor
-titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan figyelheti Azure Media Services metrikáit és a diagnosztikai naplókat Azure Monitor használatával.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 11/02/2020
-ms.author: inhenkel
-ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685172"
+title: Media Services metrikák és diagnosztikai naplók Azure Monitor: Azure Media Services Leírás: megtudhatja, hogyan figyelheti Azure Media Services metrikáit és a diagnosztikai naplókat Azure Monitor használatával.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: konceptuális MS. Date: 11/02/2020 MS. Author: inhenkel
+
 ---
+
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése a Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -44,7 +29,7 @@ Media Services támogatja a következő erőforrások figyelési metrikáit:
 
 A következő fiók metrikáit figyelheti.
 
-|Metrika neve|Megjelenített név|Leírás|
+|Metrika neve|Megjelenített név|Description|
 |---|---|---|
 |AssetCount|Eszközök száma|A fiókban lévő eszközök.|
 |AssetQuota|Eszköz kvótája|A fiókban lévő eszköz kvótája.|
@@ -62,7 +47,7 @@ Tekintse át [a fiók kvótáit és korlátozásait](limits-quotas-constraints.m
 
 A következő Media Services [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) metrikáit támogatja:
 
-|Metrika neve|Megjelenített név|Leírás|
+|Metrika neve|Megjelenített név|Description|
 |---|---|---|
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
 |Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|

@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897858"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881044"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -22,7 +22,7 @@ Az AzCopy egy parancssori segédprogram, amellyel blobokat és fájlokat másolh
 > [!NOTE]
 > Ha olyan tartalmat keres, amely segítséget nyújt a AzCopy megkezdéséhez, tekintse meg a következő cikkeket:
 > - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-> - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+> - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
 > - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 > - [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ A rendelkezésre álló naplózási szintek a következők:,,,,, `NONE` `DEBUG` 
 Ha el szeretné távolítani az összes csomagot és naplófájlt a helyi gépről, hogy lemezterületet szabadítson fel, használja az `azcopy jobs clean` parancsot.
 
 Csak egy feladatokhoz társított csomag és naplófájlok eltávolításához használja a következőt: `azcopy jobs rm <job-id>` . Cserélje le a példában szereplő helyőrzőt a feladatokhoz tartozó azonosítójú elemre `<job-id>` .
-
-

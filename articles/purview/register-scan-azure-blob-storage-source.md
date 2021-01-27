@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 9fc5c115486c7cbf84fc0bd98ff7996c674f2e24
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694814"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880641"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Az Azure Blob Storage regisztrálása és vizsgálata
 
@@ -45,7 +45,7 @@ Ha a **felügyelt identitást** választja, a csatlakozás beállításához el�
 1. Állítsa be a **szerepkört** a **blob-Adatolvasó tárolásához** , és adja meg az Azure hatáskörébe tartozó fiók nevét a beviteli mező **kiválasztása** területen. Ezt követően válassza a **Mentés** lehetőséget, hogy ezt a szerepkör-hozzárendelést a hatáskörébe tartozó fiókjához adja.
 
 > [!Note]
-> További részletekért tekintse meg a [blobok és várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](https://docs.microsoft.com/azure/storage/common/storage-auth-aad) című témakör lépéseit.
+> További részletekért tekintse meg a [blobok és várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../storage/common/storage-auth-aad.md) című témakör lépéseit.
 
 ### <a name="account-key"></a>Fiók kulcsa
 

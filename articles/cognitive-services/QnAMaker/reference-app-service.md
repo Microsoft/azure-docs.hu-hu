@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345668"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896460"
 ---
 # <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
@@ -34,6 +34,7 @@ Az egyes beállításokat az Alkalmazásbeállítások listáján keresztül is 
 |UserAppInsightsAppId|Csevegési napló és telemetria|
 |UserAppInsightsKey|Csevegési napló és telemetria|
 |UserAppInsightsName|Csevegési napló és telemetria|
+|QNAMAKER_EXTENSION_VERSION|Mindig a _legújabb_ értékre van állítva. Ez a beállítás inicializálja a QnAMaker-hely bővítményt a App Serviceban.|
 
 A módosítások végrehajtása után **újra kell indítania** a szolgáltatást a Azure Portal **Áttekintés** lapjáról.
 
@@ -81,6 +82,6 @@ A App Service-csomag nem használatos QnA Maker felügyelt (előzetes verzió).
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a tudásbázisba importálni kívánt dokumentumok és URL-címek [formátumáról](reference-document-format-guidelines.md) .

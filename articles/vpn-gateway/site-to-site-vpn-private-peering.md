@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657890"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880525"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Helyek közötti VPN-kapcsolat konfigurálása ExpressRoute-alapú privát kapcsolatok használatával
 
@@ -72,7 +72,7 @@ Mindkét példában az Azure a VPN-kapcsolaton keresztül küldi el a forgalmat 
 
 ## <a name="portal-steps"></a><a name="portal"></a>A portál lépései
 
-1. Helyek közötti kapcsolat konfigurálása. A lépéseket a helyek közötti [konfiguráció](vpn-gateway-howto-site-to-site-resource-manager-portal.md) című cikkben találja. Ügyeljen arra, hogy az átjáróhoz egy zóna-redundáns átjáró SKU-t válasszon. 
+1. Helyek közötti kapcsolat konfigurálása. A lépéseket a helyek közötti [konfiguráció](./tutorial-site-to-site-portal.md) című cikkben találja. Ügyeljen arra, hogy az átjáróhoz egy zóna-redundáns átjáró SKU-t válasszon. 
 
    A redundáns SKU-ket az SKU végén "AZ" értékkel kell elvégezni. Például: **VpnGw1AZ**. Zóna – a redundáns átjárók csak olyan régiókban érhetők el, ahol elérhető a rendelkezésre állási zóna szolgáltatás. További információ a rendelkezésre állási zónákat támogató régiókkal kapcsolatban: a [rendelkezésre állási zónákat támogató régiók](../availability-zones/az-region.md).
 
@@ -80,7 +80,7 @@ Mindkét példában az Azure a VPN-kapcsolaton keresztül küldi el a forgalmat 
 1. Engedélyezze a magánhálózati IP-címeket az átjárón. Válassza a **konfiguráció** lehetőséget, majd állítsa be az **átjáró magánhálózati IP-címei** **beállítást.** A módosítások mentéséhez válassza a **Mentés** gombot.
 1. Az **Áttekintés** lapon válassza a **továbbiak** lehetőséget a magánhálózati IP-cím megtekintéséhez. Jegyezze fel ezt az információt, hogy később a konfigurációs lépések során is használni lehessen.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Áttekintő lap" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Áttekintő oldal" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. Ha engedélyezni szeretné az **Azure magánhálózati IP-cím használatát** a kapcsolatban, válassza a  **Konfigurálás** lehetőséget. Állítsa be az **Azure Private IP-cím használata** **engedélyezve** beállítást, majd kattintson a **Mentés** gombra.
 
    :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Átjáró magánhálózati IP-címei – engedélyezve":::
@@ -89,7 +89,7 @@ Mindkét példában az Azure a VPN-kapcsolaton keresztül küldi el a forgalmat 
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell-lépések
 
-1. Helyek közötti kapcsolat konfigurálása. A lépésekért tekintse meg a [helyek közötti VPN konfigurálása](vpn-gateway-howto-site-to-site-resource-manager-portal.md) című cikket. Ügyeljen arra, hogy az átjáróhoz egy zóna-redundáns átjáró SKU-t válasszon. A redundáns SKU-ket az SKU végén "AZ" értékkel kell elvégezni. Például: VpnGw1AZ.
+1. Helyek közötti kapcsolat konfigurálása. A lépésekért tekintse meg a [helyek közötti VPN konfigurálása](./tutorial-site-to-site-portal.md) című cikket. Ügyeljen arra, hogy az átjáróhoz egy zóna-redundáns átjáró SKU-t válasszon. A redundáns SKU-ket az SKU végén "AZ" értékkel kell elvégezni. Például: VpnGw1AZ.
 1. Állítsa be úgy a jelzőt, hogy a magánhálózati IP-címet használja az átjárón a következő PowerShell-parancsok használatával:
 
    ```azurepowershell-interactive
@@ -109,6 +109,6 @@ Mindkét példában az Azure a VPN-kapcsolaton keresztül küldi el a forgalmat 
 1. A tűzfalon Pingelje a 2. lépésben írt privát IP-címet. A ExpressRoute privát kapcsolaton keresztül elérhetőnek kell lennie.
 1. Ezt a magánhálózati IP-címet használja távoli IP-ként a helyszíni tűzfalon, hogy a helyek közötti alagutat létrehozza a ExpressRoute privát társának.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a VPN Gatewayről: [Mi az VPN Gateway?](vpn-gateway-about-vpngateways.md)

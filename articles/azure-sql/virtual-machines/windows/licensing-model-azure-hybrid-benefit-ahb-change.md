@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357908"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879830"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure-beli, SQL-t futtató virtuális gépek licencmodelljének módosítása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Az Azure-beli virtuális gépek három licenccel rendelkeznek, amelyek SQL Serve
 
 Azure Hybrid Benefit lehetővé teszi a frissítési garanciával rendelkező SQL Server-licencek használatát az Azure-beli virtuális gépeken. A Azure Hybrid Benefit használata esetén az ügyfelek nem számítanak fel díjat a virtuális gépeken SQL Server licencek esetében. Azonban továbbra is fizetniük kell a mögöttes Felhőbeli számítás (azaz az alaparány), a tárterület és a biztonsági másolatok költségeiért. Emellett a szolgáltatások használatára vonatkozó I/O-díjat is fizetniük kell (ha vannak ilyenek).
 
-A Microsoft-termékekkel kapcsolatos feltételek szerint: "a felhasználóknak jelezniük kell, hogy a Azure SQL Database (felügyelt példány, rugalmas készlet és önálló adatbázis), Azure Data Factory, SQL Server Integration Services vagy SQL Server Virtual Machines Azure Hybrid Benefit a munkaterhelések Azure-ban való konfigurálásakor SQL Server."
+A Microsoft- [termékekkel kapcsolatos feltételek](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS)szerint: "a felhasználóknak jelezniük kell, hogy a Azure SQL Database (felügyelt példány, rugalmas készlet és önálló adatbázis), Azure Data Factory, SQL Server Integration Services vagy SQL Server Virtual Machines Azure Hybrid Benefit a munkaterhelések Azure-ban való konfigurálásakor SQL Server."
 
 Ha az Azure-beli virtuális gépen SQL Server Azure Hybrid Benefit használatát szeretné jelezni, és a megfelelőnek kell lennie, három lehetősége van:
 
@@ -142,7 +142,7 @@ Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [r
 Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózati adapterrel rendelkeznek. A licencelési modell módosítása előtt távolítsa el az egyik hálózati adaptert. Bár a licenc modell módosítása után a hálózati adaptert visszaállíthatja a virtuális géphez, a Azure Portal, például az automatikus biztonsági mentés és a javítások nem lesznek többé támogatottak. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért tekintse át a következő cikkeket: 
 

@@ -1,5 +1,5 @@
 ---
-title: Media Services diagnosztikai naplók figyelése Azure Monitor használatával | Microsoft Docs
+title: Media Services diagnosztikai naplók figyelése Azure Monitor használatával
 description: Ez a cikk bemutatja, hogyan irányíthatja át és tekintheti meg a diagnosztikai naplókat Azure Monitor használatával.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c666228a8a82083c319aa6c2d7fd161f7e623f4
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707761"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897968"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
@@ -37,17 +37,17 @@ Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
 
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
-1. Navigáljon a Media Services fiókjához, és kattintson a **figyelés**lehetőségre a **diagnosztikai beállítások** elemre. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül.
+1. Navigáljon a Media Services fiókjához, és kattintson a **figyelés** lehetőségre a **diagnosztikai beállítások** elemre. Itt láthatja az előfizetésben lévő összes olyan erőforrást, amely monitorozási adatokat készít az Azure Monitoron keresztül.
 
     ![Képernyőfelvétel: a figyelés szakasz diagnosztikai beállításainak kiemelése.](media/media-services-diagnostic-logs/logs01.png)
 
-1. Kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+1. Kattintson a **diagnosztikai beállítás hozzáadása** elemre.
 
    Az erőforrások diagnosztikai beállítása annak definíciója, hogy *milyen* monitorozási adatokat kell átirányítani egy adott erőforrásból, és *hová* kell kerülniük ezeknek a monitorozási adatoknak.
 
 1. A megjelenő szakaszban adjon egy **nevet** a beállításnak, és jelölje be az **Archiválás tárfiókba** jelölőnégyzetet.
 
-    Válassza ki azt a Storage-fiókot, amelyhez naplókat szeretne küldeni, majd nyomja meg **az OK**gombot.
+    Válassza ki azt a Storage-fiókot, amelyhez naplókat szeretne küldeni, majd nyomja meg **az OK** gombot.
 1. Jelölje be a **Napló** és a **Metrika** alatti jelölőnégyzeteket. Az erőforrás típusától függően előfordulhat, hogy csak az egyik lehetőség jelenik meg. Ezek a jelölőnégyzetek szabályozzák, hogy a napló- és metrikaadatok milyen, az erőforrástípushoz elérhető kategóriái kerülnek a kiválasztott célra, amely ebben az esetben a tárfiók.
 
    ![Diagnosztikai beállítások szakasz](media/media-services-diagnostic-logs/logs02.png)
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Példa:
+Például:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -94,7 +94,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 1. A portálban navigáljon a bal oldali navigációs sávon található **Tárfiókok** szakaszhoz.
 1. Azonosítsa az előző szakaszban létrehozott tárfiókot, és kattintson rá.
-1. Kattintson a **Blobok**elemre, majd a tároló címkézett elemzések **– naplók – keydeliveryrequests**elemre. Ez az a tároló, amelyben a naplók szerepelnek. A figyelési adatok az erőforrás-azonosító alapján, majd dátum és idő szerint vannak kiosztva a tárolókban.
+1. Kattintson a **Blobok** elemre, majd a tároló címkézett elemzések **– naplók – keydeliveryrequests** elemre. Ez az a tároló, amelyben a naplók szerepelnek. A figyelési adatok az erőforrás-azonosító alapján, majd dátum és idő szerint vannak kiosztva a tárolókban.
 1. Az erőforrás-azonosító, dátum és idő tárolóiba kattintva keresse meg a PT1H.json fájlt. Kattintson a PT1H.json fájlra, majd a **Letöltés** gombra.
 
  Most megtekintheti a tárfiókban tárolt JSON-eseményt.
@@ -183,7 +183,7 @@ Előfordulhat, hogy akár öt percet is várnia kell, mielőtt az esemény megje
 
 ## <a name="see-also"></a>Lásd még
 
-* [Azure Monitor metrikák](../../azure-monitor/platform/data-platform.md)
+* [Azure Monitor-metrikák](../../azure-monitor/platform/data-platform.md)
 * [Diagnosztikai naplók Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
 * [Az Azure-erőforrások naplózási adatainak gyűjtése és felhasználása](../../azure-monitor/platform/platform-logs-overview.md)
 

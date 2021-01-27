@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 12/07/2020
-ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853747"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879764"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -195,13 +195,13 @@ Az egyes árakat (amelyeknek a beállításaik attól függően, hogy milyen be�
 Az egyes ajánlati típusok árának megadásával kapcsolatos részletekért tekintse meg a következő cikkeket:
 
 - [Azure-alkalmazásajánlat létrehozása](create-new-azure-apps-offer.md)
-- [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md)
+- [Azure Container-ajánlat létrehozása](./create-azure-container-offer.md)
 - [Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása](azure-vm-create.md)
 - [Tanácsadási szolgáltatásajánlat létrehozása](./create-consulting-service-offer.md)
 - [Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations-ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)
 - [Microsoft Dynamics 365 Business Central-ajánlat létrehozása](partner-center-portal/create-new-business-central-offer.md)
 - [IoT Edge-modulajánlat létrehozása](partner-center-portal/azure-iot-edge-module-creation.md)
-- [Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása](partner-center-portal/create-new-managed-service-offer.md)
+- [Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása](./plan-managed-service-offer.md)
 - [Power BI-alkalmazás létrehozása](partner-center-portal/create-power-bi-app-offer.md)
 - [SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

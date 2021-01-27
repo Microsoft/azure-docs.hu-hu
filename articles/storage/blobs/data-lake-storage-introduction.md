@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c4d04e25bf8f7d981c998baafb468f04b66eaf1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913096"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879898"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 bemutatása
 
@@ -39,7 +39,7 @@ Emellett a Data Lake Storage Gen2 nagyon költséghatékony, mert az [Azure Blob
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>A Data Lake Storage Gen2 főbb funkciói
 
--   **Hadoop-kompatibilis hozzáférés**: a Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint a [HADOOP elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](data-lake-storage-abfs-driver.md) (az adateléréshez használatos) minden Apache Hadoop környezeten belül elérhető. Ezek a környezetek közé tartoznak az [Azure HDInsight](../../hdinsight/index.yml)*,* a [Azure Databricks](/azure/databricks/)és az [Azure szinapszis Analytics](/azure/synapse-analytics).
+-   **Hadoop-kompatibilis hozzáférés**: a Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint a [HADOOP elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](data-lake-storage-abfs-driver.md) (az adateléréshez használatos) minden Apache Hadoop környezeten belül elérhető. Ezek a környezetek közé tartoznak az [Azure HDInsight](../../hdinsight/index.yml)*,* a [Azure Databricks](/azure/databricks/)és az [Azure szinapszis Analytics](../../synapse-analytics/index.yml).
 
 -   **A POSIX-engedélyek felülbírálása**: a Data Lake Gen2 biztonsági modellje támogatja az ACL és a POSIX engedélyeket, valamint a Data Lake Storage Gen2ra vonatkozó további részletességet. A beállítások a Storage Exploreron vagy olyan keretrendszereken keresztül konfigurálhatók, mint a kaptár és a Spark.
 

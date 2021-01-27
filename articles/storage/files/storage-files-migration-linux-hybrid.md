@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 46bcfd48d8fdfb228670b87df166c1ad8de61e52
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626350"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879982"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás Linuxról hibrid Felhőbeli üzembe helyezésre Azure File Sync
 
@@ -220,5 +220,5 @@ A következő szakaszban található hivatkozásra kattintva megtudhatja, hogyan
 További információ az Azure-fájlmegosztás és a Azure File Sync. A következő cikkek speciális beállításokat, ajánlott eljárásokat és hibaelhárítási segítséget tartalmaznak. Ezek a cikkek szükség szerint az [Azure file share-dokumentációra](storage-files-introduction.md) mutató hivatkozást tartalmaznak.
 
 * [Azure File Sync áttekintése](./storage-sync-files-planning.md)
-* [Azure File Sync telepítési útmutató](storage-files-deployment-guide.md)
+* [Azure File Sync telepítési útmutató](./storage-how-to-create-file-share.md)
 * [Azure File Sync-hibaelhárítás](storage-sync-files-troubleshoot.md)

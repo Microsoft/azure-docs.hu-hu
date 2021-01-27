@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 34bbf34d53c44dcef7b8e128a93ee64201423c3e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183668"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897037"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrálás Azure Monitor naplókkal
 
@@ -196,7 +196,7 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 - Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
-- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
 - Ha többet szeretne megtudni a különböző keresési lekérdezések létrehozásáról és az Automation-állapot konfigurációs naplófájljainak Azure Monitor-naplókkal való áttekintéséről, tekintse meg a naplók [keresése a Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md)című témakört.
