@@ -1,14 +1,14 @@
 ---
 title: HIPAA HITRUST 9,2 tervezet minta áttekintése
 description: A HIPAA HITRUST 9,2 tervezet mintájának áttekintése. Ez a Blueprint-minta segít az ügyfeleknek az adott HIPAA HITRUST 9,2-vezérlők értékelésében.
-ms.date: 09/04/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 4df6f05019976b3de1172cc5127c27ac00fe3c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd65b6113f291457096bacc02bdbcfd92d6e0f84
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89493678"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915544"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>HIPAA HITRUST 9,2 tervezet minta
 
@@ -37,7 +37,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg a **HIPAA HITRUST** tervrajz mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
+1. Keresse meg a **HIPAA HITRUST** tervrajz mintát _más minták_ alatt, és válassza **a minta használata** lehetőséget.
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
@@ -60,7 +60,7 @@ A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött
 
 ### <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
@@ -161,7 +161,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |HITRUST/HIPAA ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Windows tűzfal: Private: egyedi küldésű válasz engedélyezése |Megadja, hogy a fokozott biztonságú Windows tűzfal engedélyezi-e a helyi számítógép számára, hogy egyedi küldésű válaszokat kapjon a kimenő csoportos küldésű vagy szórásos üzenetekre; a privát profilhoz. |
 |HITRUST/HIPAA ellenőrzése és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Windows tűzfal: nyilvános: egyedi küldésű válasz engedélyezése |Megadja, hogy a fokozott biztonságú Windows tűzfal engedélyezi-e a helyi számítógép számára, hogy egyedi küldésű válaszokat kapjon a kimenő csoportos küldésű vagy szórásos üzenetekre; a nyilvános profilhoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További cikkek a tervekről és a használatukról:
 

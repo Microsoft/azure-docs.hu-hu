@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: lekérdezések kezelése Azure Portalban'
 description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést, és megosztja az új lekérdezést a Azure Portal többi részével.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057926"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916679"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
 
@@ -46,23 +46,23 @@ A privát lekérdezések csak az őket létrehozó fiók számára érhetők el 
 
    A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-os).
 
-1. Válassza a **Mentés** vagy a **Mentés másként**lehetőséget, írja be a **virtuális gépek száma operációs rendszer** szerint a nevet, hagyja a típust **privát lekérdezésként**, majd kattintson **a Mentés gombra** a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**.
+1. Válassza a **Mentés** vagy a **Mentés másként** lehetőséget, írja be a **virtuális gépek száma operációs rendszer** szerint a nevet, hagyja a típust **privát lekérdezésként**, majd kattintson **a Mentés gombra** a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**.
 
 1. Lépjen távolabb az Azure Resource Graph Explorerben a Azure Portal, majd térjen vissza. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és az **1. lekérdezés** lapot adta vissza.
 
-1. Válassza **a lekérdezés megnyitása**lehetőséget. Győződjön meg arról, hogy a típus **privát lekérdezés**. Az operációs rendszer most már a **lekérdezés neve** listában megjelenik a mentett nevek **száma virtuális gépek** . Amikor kiválasztja a mentett lekérdezés cím hivatkozását, a rendszer betölti egy új lapra a lekérdezés nevével.
+1. Válassza **a lekérdezés megnyitása** lehetőséget. Győződjön meg arról, hogy a típus **privát lekérdezés**. Az operációs rendszer most már a **lekérdezés neve** listában megjelenik a mentett nevek **száma virtuális gépek** . Amikor kiválasztja a mentett lekérdezés cím hivatkozását, a rendszer betölti egy új lapra a lekérdezés nevével.
 
    > [!NOTE] 
    > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Ha új mentett lekérdezést szeretne létrehozni ebből a nyílt lekérdezésből, válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
 
-1. A mentett lekérdezés törléséhez válassza ismét **a lekérdezés megnyitása** lehetőséget, és ellenőrizze, hogy a **Type (típus** ) mező **privát lekérdezésre**van-e beállítva. A mentett lekérdezés sorában `Count VMs by OS` kattintson a **Törlés** (Lomtár ikon) elemre. A megerősítő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
+1. A mentett lekérdezés törléséhez válassza ismét **a lekérdezés megnyitása** lehetőséget, és ellenőrizze, hogy a **Type (típus** ) mező **privát lekérdezésre** van-e beállítva. A mentett lekérdezés sorában `Count VMs by OS` kattintson a **Törlés** (Lomtár ikon) elemre. A megerősítő párbeszédpanelen válassza az **Igen** lehetőséget a lekérdezés törlésének befejezéséhez.
    Ezután zárjuk be a **lekérdezés megnyitása** ablaktáblát.
 
 ## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
 
 Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource Manager-erőforrás. Ez azt jelenti, hogy a lekérdezés egy erőforráscsoport számára lesz mentve, felügyelhető és szabályozható az Azure RBAC, és az erőforrás-zárolásokkal is védelmet biztosíthat. Erőforrásként bárki, aki rendelkezik a megfelelő engedélyekkel, láthatja és használhatja azt. Új megosztott lekérdezés létrehozásához kövesse az alábbi lépéseket:
 
-1. A portál menüjében válassza a **minden szolgáltatás**lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt, és válassza ki az **Erőforrásgrafikon-kezelőt**.
+1. A portál menüjében válassza a **minden szolgáltatás** lehetőséget, vagy használja az összes oldal tetején található Azure Search mezőt, és válassza ki az **Erőforrásgrafikon-kezelőt**.
 
 1. Az Azure Resource Graph Explorer **lekérdezés 1** lapján adja meg a következő lekérdezést:
 
@@ -76,28 +76,28 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
    A lekérdezéssel kapcsolatos további információkért lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](../samples/starter.md#count-os).
 
-1. Válassza a **Mentés** vagy **a Mentés másként**lehetőséget.
+1. Válassza a **Mentés** vagy **a Mentés másként** lehetőséget.
 
    :::image type="content" source="../media/create-share-query/save-shared-query-buttons.png" alt-text="Az új lekérdezés mentése a Save (Mentés) gomb használatával" border="false":::
 
 1. A **lekérdezés mentése** ablaktáblán adja meg a **virtuális gépek száma operációs rendszer szerint** a nevet.
 
-1. Módosítsa a típust **megosztott lekérdezésre**, állítsa a leírást a **virtuális gépek számának az operációs rendszer típusa**szerint, és állítsa be az **előfizetést** a lekérdezési erőforrás létrehozási helyének megadásához.
+1. Módosítsa a típust **megosztott lekérdezésre**, állítsa a leírást a **virtuális gépek számának az operációs rendszer típusa** szerint, és állítsa be az **előfizetést** a lekérdezési erőforrás létrehozási helyének megadásához.
 
-1. Hagyja bejelölve a **Közzététel az erőforráshoz – Graph – lekérdezések erőforráscsoport** jelölőnégyzetet, és az **erőforráscsoport helye** az USA **nyugati középső**régiója.
+1. Hagyja bejelölve a **Közzététel az erőforráshoz – Graph – lekérdezések erőforráscsoport** jelölőnégyzetet, és az **erőforráscsoport helye** az USA **nyugati középső** régiója.
 
 1. Kattintson a Save ( **Mentés** ) gombra a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**. Az erőforrás **-gráf-lekérdezések** erőforráscsoport első használatakor a Mentés a vártnál hosszabb időt vesz igénybe, mert az erőforráscsoport létrejön.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Az új lekérdezés mentése a Save (Mentés) gomb használatával" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Az új lekérdezés mentése megosztott lekérdezésként" border="false":::
 
    > [!NOTE] 
    > Ha meg szeretné adni egy meglévő erőforráscsoport nevét, akkor törölheti a **Közzététel az erőforrás-gráf-lekérdezések erőforráscsoporthoz** jelölőnégyzetet. A lekérdezések alapértelmezett megnevezett erőforráscsoport használatával könnyebben derítheti fel a megosztott lekérdezéseket. Emellett nyilvánvalóvá teszi az erőforráscsoport célját. A meglévő engedélyek alapján azonban dönthet úgy, hogy egy meglévő erőforráscsoportot választ ki biztonsági okokból.
 
 1. Lépjen távolabb az Azure Resource Graph Explorerben a Azure Portal, majd térjen vissza. Figyelje meg, hogy a mentett lekérdezés már nem jelenik meg, és az **1. lekérdezés** lapot adta vissza.
 
-1. Válassza **a lekérdezés megnyitása**lehetőséget. Ellenőrizze, hogy a típus a **megosztott lekérdezésre** van-e beállítva, és hogy az **előfizetés** és az **erőforráscsoport** kombinációja egyezik-e a lekérdezés mentésekor. A mentett **darabszámú virtuális gépek operációsrendszer** -elem alapján most megjelenik a **lekérdezés neve** listában. Válassza ki a mentett lekérdezés cím hivatkozását egy új lapra való betöltéshez a lekérdezés nevével. Megosztott lekérdezésként megjelenít egy ikont a cím melletti lapon, és megoszthatja azt.
+1. Válassza **a lekérdezés megnyitása** lehetőséget. Ellenőrizze, hogy a típus a **megosztott lekérdezésre** van-e beállítva, és hogy az **előfizetés** és az **erőforráscsoport** kombinációja egyezik-e a lekérdezés mentésekor. A mentett **darabszámú virtuális gépek operációsrendszer** -elem alapján most megjelenik a **lekérdezés neve** listában. Válassza ki a mentett lekérdezés cím hivatkozását egy új lapra való betöltéshez a lekérdezés nevével. Megosztott lekérdezésként megjelenít egy ikont a cím melletti lapon, és megoszthatja azt.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Az új lekérdezés mentése a Save (Mentés) gomb használatával" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="A megosztott lekérdezés ikonjának megjelenítése" border="false":::
 
    > [!NOTE] 
    > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Új mentett lekérdezés létrehozásához válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.

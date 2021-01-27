@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757440"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915709"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -114,10 +114,10 @@ A Azure Backup támogatja a titkosítást az átvitel közbeni és a nyugalmi ad
 
 **Gép** | **Átvitel közben** | **Nyugalmi állapotban**
 --- | --- | ---
-**Helyszíni Windows rendszerű gépek DPM/MABS nélkül** | ![Igen][green] | ![Igen][green]
-**Azure-beli virtuális gépek** | ![Igen][green] | ![Igen][green]
-**Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek DPM-mel** | ![Igen][green] | ![Igen][green]
-**Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek MABS-mel** | ![Igen][green] | ![Igen][green]
+**Helyszíni Windows rendszerű gépek DPM/MABS nélkül** | ![Igen][green] | ![Yes][green]
+**Azure-beli virtuális gépek** | ![Igen][green] | ![Yes][green]
+**Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek DPM-mel** | ![Igen][green] | ![Yes][green]
+**Helyszíni Windows-számítógépek vagy Azure-beli virtuális gépek MABS-mel** | ![Igen][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Tömörítés támogatása
 
@@ -130,7 +130,7 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 --- | --- | ---
 **Helyszíni Windows rendszerű gépek közvetlen biztonsági mentése** | NA | ![Igen][green]
 **Azure-beli virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | NA | NA
-**Biztonsági mentés helyszíni/Azure-alapú gépeken a MABS/DPM használatával** | ![Igen][green] | ![Igen][green]
+**Biztonsági mentés helyszíni/Azure-alapú gépeken a MABS/DPM használatával** | ![Igen][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Megőrzési korlátok
 
@@ -150,12 +150,12 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Az Azure-beli virtuális gépek felügyelt és nem felügyelt lemezekkel egyaránt támogatottak. Klasszikus virtuális gépek esetén nem támogatott. | Minden Azure-beli nyilvános régió.  |
-| SQL/SAP HANA | Igen                                                          | Az összes nyilvános régió Franciaország kivételével |
-| MARS-ügynök/helyszíni  | Nem                                                           | N/A               |
-| AFS (Azure-fájlmegosztás)                 | Nem                                                           | N/A               |
+| Azure VM               | Az Azure-beli virtuális gépek felügyelt és nem felügyelt lemezekkel egyaránt támogatottak. Klasszikus virtuális gépek esetén nem támogatott. | Az összes nyilvános Azure-régióban elérhető, kivéve a Közép-ausztráliai, Közép-Ausztrália, Dél-Afrika északi régiója, Észak-Európa, Észak-Svájc, Középnyugat-Németország, Kelet-Norvégia. <br>Az ezekben a régiókban használattal kapcsolatos információkért forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | Előzetes verzióban                                                      | Az összes nyilvános Azure-régióban elérhető, kivéve a Közép-ausztráliai, Közép-Ausztrália, Dél-Afrika északi régiója, Észak-Európa, Észak-Svájc, Középnyugat-Németország, Kelet-Norvégia. <br>Az ezekben a régiókban használattal kapcsolatos információkért forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| MARS-ügynök/helyszíni  | No                                                           | N/A               |
+| AFS (Azure-fájlmegosztás)                 | No                                                           | N/A               |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](backup-support-matrix-iaas.md) az Azure virtuális gépek biztonsági mentésének támogatási mátrixát.
 

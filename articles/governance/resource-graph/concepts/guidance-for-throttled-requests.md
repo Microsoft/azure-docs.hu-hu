@@ -1,15 +1,15 @@
 ---
 title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan csoportosíthat, lépcsőzetesen, oldalszámozást és lekérdezéseket végezhet párhuzamosan, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056174"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917707"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -132,7 +132,7 @@ A szabályozás érvénybe léptetése miatt a lekérdezéseket érdemes lépcs�
   |---------------------|-----|------|-------|-------|
   | Időtartam (mp) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Íme egy példa arra, hogy miként kell betartani a szabályozás fejléceit az Azure Resource Graph lekérdezése során:
+Íme egy példa arra, hogy miként kell betartani a szabályozási fejléceket az Azure Resource Graph lekérdezése során:
 
 ```csharp
 while (/* Need to query more? */)
@@ -233,7 +233,7 @@ Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 
 
 Ha a fenti javaslatok gyakorlása után is szabályozza a szabályozást, lépjen kapcsolatba a csapatával a következő címen: [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
-Adja meg a következő adatokat:
+Adja meg az alábbi adatokat:
 
 - A speciális használati eset és az üzleti illesztőprogram magasabb szabályozási korlátot igényel.
 - Hány erőforráshoz férhet hozzá? Hányat ad vissza egyetlen lekérdezésből?

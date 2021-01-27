@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953049"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918212"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban
 
@@ -98,6 +98,14 @@ Webalkalmazások esetén létre kell hoznia egy alkalmazás titkos kulcsát. Ezt
 1. Kattintson a **Save (Mentés** ) gombra a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket használja az alkalmazás kódjában található alkalmazás-titokként.
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>AZONOSÍTÓ jogkivonat implicit engedélyezésének engedélyezése
+
+Az implicit támogatás meghatározó jellemzője, hogy a jogkivonatok, például az azonosító és a hozzáférési jogkivonatok közvetlenül a Azure AD B2Cból lesznek visszaadva az alkalmazásnak. A webalkalmazások, például ASP.NET Core webalkalmazások esetében, [https://jwt.ms](https://jwt.ms) amelyek azonosító jogkivonatot kérnek közvetlenül az engedélyezési végponttól, az alkalmazás regisztrációjában engedélyezze az implicit engedélyezési folyamatot.
+
+1. A bal oldali menüben kattintson a **kezelés** elemre, majd válassza a **hitelesítés** lehetőséget.
+1. Az implicit Engedélyezés területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

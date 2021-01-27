@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757542"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917832"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -30,9 +30,6 @@ Az ügyfél által felügyelt kulcs olyan [dedikált fürtökön](../log-query/l
 Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy az SSD-adatmennyiséget a 2021 első felében az ügyfél által felügyelt kulccsal titkosítjuk.
 
 Log Analytics dedikált fürtök kapacitás foglalási [díjszabási modellt](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) használnak, amely 1000 GB/nap.
-
-> [!IMPORTANT]
-> Az ideiglenes kapacitás megkötése miatt a fürt létrehozása előtt előzetes regisztrációra van szükség. A névjegyek a Microsofthoz, vagy a támogatási kérelem megnyitása a feliratkozási azonosítók regisztrálásához.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Az ügyfél által felügyelt kulcs működése Azure Monitor
 
@@ -68,7 +65,6 @@ A következő szabályok érvényesek:
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed kulcs létesítésének lépései
 
-1. Előfizetés regisztrálása a fürt létrehozásának engedélyezéséhez
 1. Azure Key Vault létrehozása és a kulcs tárolása
 1. Fürt létrehozása
 1. Engedélyek megadása a Key Vault számára
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>Előfizetés engedélyezése
-
-Az előfizetések azonosítóinak megadásához használja a névjegyeit a Microsoft vagy a Log Analytics támogatási kérelmének megnyitásához.
 
 ## <a name="storing-encryption-key-kek"></a>Titkosítási kulcs (KEK) tárolása
 
@@ -498,7 +490,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
   **Munkaterület leválasztása**
   -  404 – a munkaterület nem található. A megadott munkaterület nem létezik vagy törölték.
   -  409 – a munkaterület hivatkozása vagy a művelet leválasztása folyamatban.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [log Analytics dedikált fürt számlázásáról](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
 - A [log Analytics-munkaterületek megfelelő kialakításának](../platform/design-logs-deployment.md) megismerése

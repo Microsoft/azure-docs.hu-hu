@@ -1,14 +1,14 @@
 ---
 title: A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
 description: A CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005605"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918416"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
 
@@ -104,7 +104,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
 |Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További cikkek a tervekről és a használatukról:
 

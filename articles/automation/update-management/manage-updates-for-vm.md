@@ -4,14 +4,13 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a Update Management 
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222841"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915982"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>A virtuális gépek frissítéseinek és javításának kezelése
 
@@ -35,11 +34,13 @@ Update Management a munkaterületen belüli hatókör-konfigurációval célozza
 
 Mielőtt telepítené a számítógépekre a szoftverfrissítéseket, tekintse át az engedélyezett gépek frissítési megfelelőségi felmérésének eredményeit. Minden szoftverfrissítés esetében a megfelelőségi állapot rögzítése történik, majd a kiértékelés után a rendszer a begyűjtést és a naplókban Azure Monitor való továbbítását is elvégzi.
 
-Windows rendszerű gépen a megfelelőségi vizsgálat alapértelmezés szerint 12 óránként fut. Az ütemezett vizsgálat mellett a frissítés megfelelőségének vizsgálata a Windows-ügynök újraindítása és a frissítés telepítése előtt 15 Log Analytics percen belül megkezdődik. Érdemes áttekinteni a Windows Update-ügyfél Update Management használatával történő [konfigurálásának](configure-wuagent.md) javaslatait is, hogy elkerülje azokat a problémákat, amelyek megakadályozzák a megfelelő felügyeletet.
+Windows rendszerű gépen a megfelelőségi vizsgálat alapértelmezés szerint 12 óránként fut, és a Windows-ügynök Log Analytics ügynökének 15 percen belül indul újra. A rendszer ezután továbbítja az értékelési adatforrást a munkaterületre, és frissíti a **frissítések** táblát. A frissítés telepítése előtt és után a rendszer a frissítés megfelelőségi vizsgálatát végzi a hiányzó frissítések azonosításához, de a rendszer nem használja az eredményeket a táblázatban szereplő értékelési információk frissítéséhez.
+
+Fontos, hogy áttekintse a Windows Update-ügyfél Update Management használatával történő [konfigurálásának](configure-wuagent.md) javaslatait, hogy elkerülje az esetleges problémák kezelését.
 
 Linux rendszerű gépek esetén a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Ha a Linux rendszerhez készült Log Analytics-ügynök újra lett indítva, a megfelelőségi vizsgálat 15 percen belül megkezdődik.
 
-A megfelelőségi eredményeket a rendszer minden egyes kiértékelni kívánt gép Update Management ismerteti. A felügyelethez engedélyezett új gépek esetében akár 30 percet is igénybe vehet, hogy az irányítópulton megjelenjenek a frissített adatok.
+A megfelelőségi eredményeket a rendszer minden egyes kiértékelni kívánt gép Update Management ismerteti. Akár 30 percet is igénybe vehet, hogy az irányítópult naprakész adatok jelenjenek meg a felügyeletre engedélyezett új gépről.
 
 Tekintse át a [szoftverfrissítések figyelése](view-update-assessments.md) című témakört, és ismerkedjen meg a megfelelőségi eredmények megtekintésével.
 

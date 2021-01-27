@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: az első JavaScript-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépéseket követve engedélyezheti az erőforrás-gráf függvénytárát a JavaScripthez, és futtathatja az első lekérdezést.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057416"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917521"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása JavaScript használatával
 

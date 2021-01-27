@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bff15cbc8827f4a0eb09a243e01b2cdb95ba5f2f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681353"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917093"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
@@ -26,8 +26,7 @@ Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyors�
 
 ### <a name="industry-leading-sql"></a>Piacvezető SQL
 
-* A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer, amely lehetővé teszi a vállalatok számára az adattárházak és az adatvirtualizációs forgatókönyvek megvalósítását standard és ismerős T-SQL-élmények használatával. Emellett kibővíti az SQL képességeit a streaming és a gépi tanulási forgatókönyvek kezeléséhez.
-
+* A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer a t-SQL-hez, amely lehetővé teszi az adattárházak és az adatvirtualizációs forgatókönyvek használatát, és kiterjeszti a t-SQL-t a folyamatos átviteli és gépi tanulási helyzet
 * A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is kínál, amelyek az igényeinek megfelelő felhasználási és számlázási lehetőségeket kínálnak. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatok hatékony feldolgozásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
 * A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
 * A AI és az SQL integrálása **gépi tanulási** modellekkel az adatpontszámhoz a [T-SQL prediktív függvény](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával

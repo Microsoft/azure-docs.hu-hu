@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071602"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916133"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -209,7 +209,7 @@ Ha a gépet az egyik csoportból a másikba helyezi át, a rendszer az alkalmaz�
 
 1. Válassza ki a célcsoportot, és válassza a **gép áthelyezése** lehetőséget.
 
-1. A módosítások mentéséhez válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 
 

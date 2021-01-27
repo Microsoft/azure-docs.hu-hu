@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a házirend-definíciók, a különböző SDK-k és a Kubernetes-bővítmények létrehozásával kapcsolatos problémákat.
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897071"
+ms.locfileid: "98917743"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>A Azure Policy használatával kapcsolatos hibák elhárítása
 
@@ -36,13 +36,14 @@ Egy házirend-definícióban helytelen vagy nem létező alias van használatban
 
 #### <a name="resolution"></a>Feloldás
 
-Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez nyissa meg a [Visual Studio Code Azure Policy bővítményét](../how-to/extension-for-vscode.md) vagy az SDK-t. Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
+Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez nyissa meg a [Visual Studio Code Azure Policy bővítményét](../how-to/extension-for-vscode.md) vagy az SDK-t.
+Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
 
 ### <a name="scenario-evaluation-details-arent-up-to-date"></a>Forgatókönyv: a kiértékelés részletei nem naprakészek
 
 #### <a name="issue"></a>Probléma
 
-Egy erőforrás nincs *elindítva* állapotban, vagy a megfelelőségi adatok nem aktuálisak.
+Egy erőforrás nincs _elindítva_ állapotban, vagy a megfelelőségi adatok nem aktuálisak.
 
 #### <a name="cause"></a>Ok
 
@@ -90,7 +91,8 @@ Olyan erőforrásra van szükség, amelyről Azure Policy, hogy a művelet nem z
 
 #### <a name="cause"></a>Ok
 
-A házirend-hozzárendelés _le_ lett állítva egy [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) -beállításhoz. Amíg a **enforcementMode** le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
+A házirend-hozzárendelés _le_ lett állítva egy [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) -beállításhoz.
+Amíg a **enforcementMode** le van tiltva, a házirend hatálya nem kényszerített, és nincs bejegyzés a tevékenység naplójában.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -101,7 +103,7 @@ A szabályzat-hozzárendelés kényszerítésének hibakeresése a következő m
 1. Ha Azure PowerShell vagy a REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_ van.
 1. Ellenőrizze a [szabályzatdefiníciós módot](../concepts/definition-structure.md#mode):
-   - A üzemmódnak az `all` összes erőforrás-típushoz kell tartoznia.
+   - A üzemmódnak minden erőforrástípus kell lennie `all` .
    - A mód akkor kell `indexed` , ha a házirend-definíció ellenőrzi a címkéket vagy a helyet.
 1. Ügyeljen arra, hogy az erőforrás hatóköre ne legyen [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy ne legyen [kivétel](../concepts/exemption-structure.md).
 1. Ellenőrizze, hogy az erőforrás-tartalom megfelel-e a szabályzat logikájának. Ezt [egy http Archive (har) nyomkövetés rögzítésével](../../../azure-portal/capture-browser-trace.md) vagy a Azure Resource Manager sablon (ARM-sablon) tulajdonságainak áttekintésével teheti meg.
@@ -186,7 +188,7 @@ A korábban a vendég konfiguráció DeployIfNotExists-definíciókban használt
 
 #### <a name="resolution"></a>Feloldás
 
-A hibát okozó definíciók *[elavult]* néven jelennek meg, és azokat a házirend-definíciók váltja fel, amelyek az előfeltételeket a felhasználó által hozzárendelt felügyelt identitások eltávolítása nélkül kezelik. Manuális lépésre van szükség. Törölje a (z) *[elavult]* jelölésű meglévő szabályzat-hozzárendeléseket, és cserélje le azokat a frissített előfeltétel-házirend kezdeményezésre, valamint az eredetivel megegyező nevű szabályzat-definícióra.
+Azok a definíciók, amelyek korábban a problémát okozták, _\[ elavultként \]_ jelennek meg, és azokat a házirend-definíciók váltja fel, amelyek az előfeltételeket a felhasználóhoz rendelt felügyelt identitások eltávolítása nélkül kezelik Manuális lépésre van szükség. Törölje az _\[ elavultként \]_ megjelölt házirend-hozzárendeléseket, és cserélje le azokat a frissített előfeltétel-házirend kezdeményezésre, valamint az eredetivel megegyező nevű szabályzat-definícióra.
 
 Részletes tájékoztatásért tekintse meg a [vendég konfigurációs naplózási szabályzatok című blogbejegyzésben megjelent fontos módosítást](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
 
@@ -226,11 +228,11 @@ A bővítmény nem tudja elérni a Azure Policy szolgáltatás végpontját, és
 Ez a hiba akkor fordul elő, ha a _Add-Pod-Identity_ telepítve van a fürtön, és a _Kube_ hüvelyek nem zárhatók ki a _HRE-Pod-Identity_ szolgáltatásban.
 
 A _HRE-Pod-Identity_ összetevő csomópont felügyelt identitás (NMI) hüvelye módosítja a csomópontok iptables-et az Azure-példány metaadatainak végpontjának lehallgatására. Ez a beállítás azt jelenti, hogy a metaadat-végpontra irányuló kérelmeket a NMI észleli, még akkor is, ha a pod nem használja a _HRE-Pod-Identity-_ t.
-A *AzurePodIdentityException* -CUSTOMRESOURCEDEFINITION (CRD) úgy konfigurálható, hogy tájékoztassa a _HRE-Pod-Identity-_ t, hogy a CRD által meghatározott címkékből származó összes metaadat-végpontra irányuló kérések a NMI-ben végzett feldolgozás nélkül legyenek proxyn.
+A _AzurePodIdentityException_ -CUSTOMRESOURCEDEFINITION (CRD) úgy konfigurálható, hogy tájékoztassa a _HRE-Pod-Identity-_ t, hogy a CRD által meghatározott címkékből származó összes metaadat-végpontra irányuló kérések a NMI-ben végzett feldolgozás nélkül legyenek proxyn.
 
 #### <a name="resolution"></a>Feloldás
 
-A `kubernetes.azure.com/managedby: aks` *AzurePodIdentityException* CRD konfigurálásával zárja ki a _Kube-System_ névtérben található címkével ellátott rendszerhüvelyeket a _HRE-Pod-Identity_ objektumban.
+A `kubernetes.azure.com/managedby: aks` _AzurePodIdentityException_ CRD konfigurálásával zárja ki a _Kube-System_ névtérben található címkével ellátott rendszerhüvelyeket a _HRE-Pod-Identity_ objektumban.
 
 További információ: [a Azure Active Directory (Azure ad) Pod-identitás letiltása egy adott Pod/alkalmazáshoz](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 
@@ -264,11 +266,11 @@ spec:
 A bővítmény elérheti a Azure Policy szolgáltatás végpontját, de a kiegészítő naplók a következő hibák valamelyikét jelenítik meg:
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.`
+  https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
 - `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
-StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error.`
+  StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+  Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>Ok
 

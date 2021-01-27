@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 980e830716b66b63c8f2dc6e641a88af26d44871
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027064"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918043"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -29,7 +29,7 @@ Ez a cikk az Azure AD-bérlő felhasználói fiókjaihoz társított jelszóház
 
 ## <a name="username-policies"></a><a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Felhasználónév-házirendek
 
-Minden, az Azure AD-be bejelentkező fióknak rendelkeznie kell egy egyedi egyszerű felhasználónév (UPN) attribútum értékkel, amely hozzá van rendelve a fiókjához. A helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetet használó hibrid környezetekben az Azure AD-val az Azure AD Connect használatával szinkronizálva, alapértelmezés szerint az Azure AD UPN a helyszíni UPN-re van beállítva.
+Minden, az Azure AD-be bejelentkező fióknak rendelkeznie kell egy egyedi egyszerű felhasználónév (UPN) attribútum értékkel, amely hozzá van rendelve a fiókjához. A helyszíni Active Directory Domain Services (AD DS) környezetet használó hibrid környezetekben az Azure AD-val az Azure AD Connect használatával szinkronizálva, alapértelmezés szerint az Azure AD UPN a helyszíni UPN-re van beállítva.
 
 Az alábbi táblázat azokat a felhasználóneveket ismerteti, amelyek az Azure AD-vel szinkronizált helyszíni AD DS fiókokra vonatkoznak, valamint a közvetlenül az Azure AD-ben létrehozott felhőalapú felhasználói fiókok esetében:
 
@@ -75,6 +75,7 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például e-mai
   * Partneri Tier1-támogatás
   * Partneri szint-támogatás
   * Exchange-rendszergazda
+  * Postaláda-rendszergazda
   * Skype Vállalati verzió-rendszergazda
   * Felhasználói rendszergazda
   * Címtár-írók
@@ -85,10 +86,12 @@ A kétkapus szabályzathoz két hitelesítési adat szükséges, például e-mai
   * Biztonsági rendszergazda
   * Kiemelt szerepkörű rendszergazda
   * Intune-rendszergazda
+  * Azure AD-hez csatlakoztatott eszköz helyi rendszergazdája
   * Alkalmazásproxy szolgáltatás rendszergazdája
   * Dynamics 365-rendszergazda
   * Power BI-szolgáltatásadminisztrátor
   * Hitelesítés rendszergazdája
+  * Jelszókezelő
   * Kiemelt jogosultságú hitelesítés rendszergazdája
 
 * Ha 30 nap telt el egy próbaverziós előfizetésben; vagy

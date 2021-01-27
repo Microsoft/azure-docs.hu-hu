@@ -1,14 +1,14 @@
 ---
 title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203466"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917421"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -144,14 +144,14 @@ A **resourceId** minden észlelt változási eseménye a következő tulajdonsá
 - **changeId** – ez az érték egyedi az adott erőforráshoz. Habár a **changeId** karakterlánc esetenként más tulajdonságokat is tartalmazhat, csak egyedinek kell lennie.
 - **beforeSnapshot** – annak az erőforrás-pillanatképnek a **snapshotId** és **időbélyegét** tartalmazza, amelyet a rendszer a változás észlelése előtt hozott.
 - **afterSnapshot** – az erőforrás-pillanatkép **snapshotId** és **időbélyegét** tartalmazza, amelyet a rendszer a változás észlelése után hozott.
-- **changeType** – a **BeforeSnapshot** és a **afterSnapshot**közötti teljes módosítási rekordra vonatkozóan észlelt változás típusát írja le. Az értékek a következők: _Létrehozás_, _frissítés_és _Törlés_. A **propertyChanges** tulajdonság tömbje csak akkor szerepel, ha a **changeType** _frissítése_történik.
-- **propertyChanges** – a tulajdonságok ezen tömbje részletezi az összes olyan erőforrás-tulajdonságot, amely a **BeforeSnapshot** és a **afterSnapshot**között frissült:
+- **changeType** – a **BeforeSnapshot** és a **afterSnapshot** közötti teljes módosítási rekordra vonatkozóan észlelt változás típusát írja le. Az értékek a következők: _Létrehozás_, _frissítés_ és _Törlés_. A **propertyChanges** tulajdonság tömbje csak akkor szerepel, ha a **changeType** _frissítése_ történik.
+- **propertyChanges** – a tulajdonságok ezen tömbje részletezi az összes olyan erőforrás-tulajdonságot, amely a **BeforeSnapshot** és a **afterSnapshot** között frissült:
   - **propertyName** – a megváltoztatott erőforrás-tulajdonság neve.
   - **changeCategory** – ismerteti, hogy mi történt a módosítással. Az értékek a következők: _rendszer_ és _felhasználó_.
   - **changeType** – az egyes erőforrás-tulajdonságokra vonatkozóan észlelt változás típusát írja le.
     Értékek: _Insert_, _Update_, _Remove_.
-  - **beforeValue** – az erőforrás tulajdonság értéke a **beforeSnapshot**. A **ChangeType** _beszúrásakor_nem jelenik meg.
-  - **afterValue** – az erőforrás tulajdonság értéke a **afterSnapshot**. A **ChangeType** _eltávolításakor_nem jelenik meg.
+  - **beforeValue** – az erőforrás tulajdonság értéke a **beforeSnapshot**. A **ChangeType** _beszúrásakor_ nem jelenik meg.
+  - **afterValue** – az erőforrás tulajdonság értéke a **afterSnapshot**. A **ChangeType** _eltávolításakor_ nem jelenik meg.
 
 ## <a name="compare-resource-changes"></a>Erőforrás-módosítások összehasonlítása
 
@@ -279,7 +279,7 @@ A válasz a következőhöz hasonlóan néz ki:
 }
 ```
 
-a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép készítésének időpontját és a tulajdonságokat. A módosítás néhány ponton történt a pillanatképek között. Az előző példát megtekintve láthatjuk, hogy a módosított tulajdonság **supportsHttpsTrafficOnly**volt.
+a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép készítésének időpontját és a tulajdonságokat. A módosítás néhány ponton történt a pillanatképek között. Az előző példát megtekintve láthatjuk, hogy a módosított tulajdonság **supportsHttpsTrafficOnly** volt.
 
 Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 

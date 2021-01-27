@@ -1,15 +1,15 @@
 ---
 title: Nagy méretű adathalmazok kezelése
 description: Megtudhatja, hogyan kérheti le, formázhatja, lapozhatja és kihagyhatja a nagyméretű adatkészletek rekordjait az Azure Resource Graph használata közben.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59f69738bf9fe25cb739539b7a1f93e4499d781a
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 1eaabfdd78712966f3b21d869259a312db31b7bc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826028"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917690"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -65,7 +65,7 @@ A [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/re
 ## <a name="paging-results"></a>Lapozás eredményei
 
 Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
- **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**. a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban nem ad vissza további rekordokat. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
+ **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**. a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban több rekord nem lett visszaadva. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
 
  a **resultTruncated** akkor **igaz** , ha a lapozás le van tiltva vagy nem lehetséges, mert nincs `id` oszlop, vagy ha kevesebb erőforrás érhető el, mint a lekérdezés. Ha a **resultTruncated** értéke **igaz**, a **$skipToken** tulajdonság nincs beállítva.
 
@@ -168,7 +168,7 @@ request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, opt
 response = client.resources(request)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915726"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -46,9 +46,9 @@ A Restore Option **Cross region Restore (CRR)** lehetővé teszi az adatvisszaá
 
 A következő adatforrásokat támogatja:
 
-- Azure-beli virtuális gépek
-- Azure-beli virtuális gépeken üzemeltetett SQL-adatbázisok
-- Azure-beli virtuális gépeken üzemeltetett SAP HANA adatbázisok
+- Azure-beli virtuális gépek (általánosan elérhető)
+- Azure-beli virtuális gépeken üzemeltetett SQL-adatbázisok (előzetes verzió)
+- Azure-beli virtuális gépeken üzemeltetett adatbázisok SAP HANA (előzetes verzió)
 
 A régiók közötti visszaállítás a következőket teszi lehetővé:
 
@@ -65,11 +65,12 @@ Mivel ez a folyamat tárolási szinten van, [díjszabási vonzatok](https://azur
 >Előkészületek:
 >
 >- A támogatott felügyelt típusok és régiók listáját a [támogatási mátrixban](backup-support-matrix.md#cross-region-restore) tekintheti meg.
->- A régión belüli visszaállítás (CRR) szolgáltatás most már az összes Azure-beli nyilvános régióban meg van jelenítve.
+>- Az Azure-beli virtuális gépek régió-visszaállítási (CRR) funkciója mostantól általánosan elérhető az összes Azure-beli nyilvános régióban.
+>- Az SQL és SAP HANA adatbázisok régiók közötti visszaállítása előzetes verzióként érhető el az összes Azure-beli nyilvános régióban.
 >- A CRR bármely GRS-tárolóhoz engedélyezhető a tár szintjén (alapértelmezés szerint kikapcsolva).
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
 >- Az Azure-beli virtuális gépekhez jelenleg CRR csak az Azure Resource Manger Azure-beli virtuális gépek esetében támogatott. A klasszikus Azure-beli virtuális gépek nem támogatottak.  Ha a további felügyeleti típusok támogatják a CRR-t, akkor a **rendszer automatikusan** regisztrálja őket.
->- A régiók közötti visszaállítás jelenleg nem állítható vissza GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet.
+>- A régiók közötti visszaállítás **jelenleg nem állítható vissza** GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet.
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
 

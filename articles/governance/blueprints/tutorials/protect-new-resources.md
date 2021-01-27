@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: új erőforrások megvédése zárolásokkal'
 description: Ebben az oktatóanyagban az Azure-tervrajzok erőforrás-zárolási lehetőségeit csak olvasható módon használja, és nem törli az újonnan telepített erőforrások elleni védelemhez.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048570"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915407"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
 
@@ -33,28 +33,28 @@ Először hozza létre a terv definícióját.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
-1. Az **első lépések** oldalon, a bal oldalon válassza a **Létrehozás** **a terv létrehozása**alatt lehetőséget.
+1. Az **első lépések** oldalon, a bal oldalon válassza a **Létrehozás** **a terv létrehozása** alatt lehetőséget.
 
-1. Keresse meg az oldal tetején található **üres terv** tervezetét. Válassza **az indítás üres tervtel**lehetőséget.
+1. Keresse meg az oldal tetején található **üres terv** tervezetét. Válassza **az indítás üres tervtel** lehetőséget.
 
 1. Adja meg ezt az információt az **alapok** lapon:
 
-   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a **zárolt storageaccount**nevet fogjuk használni.
-   - **Terv leírása**: adja meg a terv definíciójának leírását. **Az üzembe helyezett erőforrásokra vonatkozó terv-erőforrás-zárolás tesztelésére**használható.
+   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a **zárolt storageaccount** nevet fogjuk használni.
+   - **Terv leírása**: adja meg a terv definíciójának leírását. **Az üzembe helyezett erőforrásokra vonatkozó terv-erőforrás-zárolás tesztelésére** használható.
    - **Definíció helye**: kattintson a három pontot ábrázoló gombra (...), majd válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a terv definícióját.
 
 1. Válassza ki az oldal tetején található **összetevők fület** , vagy válassza a Next (tovább) gombot **:** az oldal alján található összetevők.
 
 1. Erőforráscsoport hozzáadása az előfizetési szinten:
-   1. Válassza ki az összetevő **hozzáadása** sort az **előfizetés**alatt.
-   1. Válassza az **erőforráscsoport** elemet az összetevő **típusa**területen.
-   1. Állítsa az összetevő **megjelenítendő nevét** **RGtoLock**értékre.
-   1. Hagyja üresen az **erőforráscsoport neve** és **helye** mezőket, de győződjön meg arról, hogy az egyes tulajdonságokon a jelölőnégyzet be van jelölve, hogy **dinamikus paramétereket**lehessen használni.
+   1. Válassza ki az összetevő **hozzáadása** sort az **előfizetés** alatt.
+   1. Válassza az **erőforráscsoport** elemet az összetevő **típusa** területen.
+   1. Állítsa az összetevő **megjelenítendő nevét** **RGtoLock** értékre.
+   1. Hagyja üresen az **erőforráscsoport neve** és **helye** mezőket, de győződjön meg arról, hogy az egyes tulajdonságokon a jelölőnégyzet be van jelölve, hogy **dinamikus paramétereket** lehessen használni.
    1. A **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
 
 1. Sablon hozzáadása az erőforráscsoport alatt:
    1. Válassza a **RGtoLock** bejegyzés alatt az összetevők **hozzáadása** sort.
-   1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusa**területen, állítsa a **lelet megjelenítendő nevét** **StorageAccount**értékre, és hagyja üresen a **leírást** .
+   1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusa** területen, állítsa a **lelet megjelenítendő nevét** **StorageAccount** értékre, és hagyja üresen a **leírást** .
    1. A **sablon** lapon illessze be a következő ARM-sablont a szerkesztő mezőbe. A sablon beillesztése után a **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
 
    ```json
@@ -134,9 +134,9 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
    - **Alapvető beállítások**
 
      - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban található, ahol a terv definícióját mentette. Ha egynél több előfizetést választ ki, az egyes előfizetésekhez hozzárendelés jön létre a beírt paraméterek használatával.
-     - **Hozzárendelés neve**: a név előre fel van töltve a terv definíciójának neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviseljék, ezért módosítsa a hozzárendelés nevét a **hozzárendelés-zárolt-storageaccount-TestingBPLocks**értékre.
+     - **Hozzárendelés neve**: a név előre fel van töltve a terv definíciójának neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviseljék, ezért módosítsa a hozzárendelés nevét a **hozzárendelés-zárolt-storageaccount-TestingBPLocks** értékre.
      - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Ebben az oktatóanyagban válassza az **USA 2. keleti**régióját.
+       Ebben az oktatóanyagban válassza az **USA 2. keleti** régióját.
      - **Terv definíciójának verziója**: válassza ki a közzétett **1,0** -es verziót a terv definíciójában.
 
    - **Hozzárendelés zárolása**
@@ -153,7 +153,7 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
 
      |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Név|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Name|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
      |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA 2. nyugati régiója|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
      |StorageAccount|Resource Manager-sablon|Tárfióktípus (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték _Standard_LRS_.|
 
@@ -181,17 +181,17 @@ A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és az ARM-
 
 1. Jelölje be a **megtagadási hozzárendelések** lapot.
 
-   A terv-hozzárendelés [megtagadási hozzárendelést](../../../role-based-access-control/deny-assignments.md) hozott létre a központilag telepített erőforráscsoporthoz, hogy kikényszerítse az **írásvédett** terv zárolási módját. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogokkal rendelkezik a **szerepkör-hozzárendelések** lapon bizonyos műveletek elvégzéséhez. A Megtagadás hozzárendelés az _összes rendszerbiztonsági tagra_hatással van.
+   A terv-hozzárendelés [megtagadási hozzárendelést](../../../role-based-access-control/deny-assignments.md) hozott létre a központilag telepített erőforráscsoporthoz, hogy kikényszerítse az **írásvédett** terv zárolási módját. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogokkal rendelkezik a **szerepkör-hozzárendelések** lapon bizonyos műveletek elvégzéséhez. A Megtagadás hozzárendelés az _összes rendszerbiztonsági tagra_ hatással van.
 
    További információ a megtagadási hozzárendelésből származó rendszerbiztonsági tag kizárásáról: [tervrajzok erőforrás-zárolás](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
 
 1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza ki a **megtagadott engedélyek** lapot.
 
-   A megtagadási hozzárendelés megakadályozza a és a **\*** **művelet** konfigurációjának összes műveletét, de az olvasási hozzáférés engedélyezése a **NotActions** ** \* /READ** kizárásával.
+   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\* *_ és az _* művelet** konfigurációjában, de az olvasási hozzáférést a **\* /READ** kizárásával teszi **lehetővé.**
 
 1. A Azure Portal navigációs menüben válassza a **TestingBPLocks-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a **TestingBPLocks** nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 
-   A portál értesítésének **törlési erőforráscsoport-TestingBPLocks sikertelen** . A hiba azt jelzi, hogy a fióknak van engedélye az erőforráscsoport törlésére, a hozzáférés megtagadva a terv-hozzárendeléssel. Ne feledje, hogy a terv hozzárendelése során a **csak olvasható** terv zárolási módot jelöltük ki. A terv zárolása megakadályozza, hogy egy olyan fiók, amely nem rendelkezik engedéllyel, akár _tulajdonossal_is, törölheti az erőforrást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+   A portál értesítésének **törlési erőforráscsoport-TestingBPLocks sikertelen** . A hiba azt jelzi, hogy a fióknak van engedélye az erőforráscsoport törlésére, a hozzáférés megtagadva a terv-hozzárendeléssel. Ne feledje, hogy a terv hozzárendelése során a **csak olvasható** terv zárolási módot jelöltük ki. A terv zárolása megakadályozza, hogy egy olyan fiók, amely nem rendelkezik engedéllyel, akár _tulajdonossal_ is, törölheti az erőforrást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
 Ezek a lépések bemutatják, hogy a telepített erőforrások mostantól a nem kívánt törlést megakadályozó, olyan fiókkal is védve vannak, amelyik jogosult az erőforrások törlésére.
 
@@ -207,7 +207,7 @@ Az utolsó lépés a terv definíciójának hozzárendelésének eltávolítása
 
    A terv-hozzárendelés eltávolításakor a terv zárolásait is eltávolítja a rendszer. Az erőforrásokat újra törölheti egy megfelelő engedélyekkel rendelkező fiókkal.
 
-1. Az Azure menüben válassza az **erőforráscsoportok** lehetőséget, majd válassza a **TestingBPLocks**lehetőséget.
+1. Az Azure menüben válassza az **erőforráscsoportok** lehetőséget, majd válassza a **TestingBPLocks** lehetőséget.
 
 1. Válassza a bal oldali **hozzáférés-vezérlés (iam)** lapot, majd válassza ki a **szerepkör-hozzárendelések** lapot.
 
@@ -222,7 +222,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
 - Erőforráscsoport _TestingBPLocks_
 - Terv definíciója _zárolva – storageaccount_
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan teheti elérhetővé az Azure-tervezetekkel üzembe helyezett új erőforrásokat. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

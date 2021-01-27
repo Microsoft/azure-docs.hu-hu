@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 01/27/2021
 ms.author: memildin
-ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784948"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916463"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -46,6 +46,7 @@ A januári frissítések a következők:
 - [35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Az ajánlatok szűrt listájának CSV-exportálása](#csv-export-of-filtered-list-of-recommendations)
 - [A "nem alkalmazható" erőforrások mostantól "megfelelőként" jelennek meg Azure Policy értékelésekben](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
+- [A biztonságos pontszámra és a megfelelőségi előírások folyamatos exportálásával kapcsolatos heti Pillanatképek exportálása (előzetes verzió)](#export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview)
 
 
 ### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Az Azure biztonsági teljesítményteszt mostantól az alapértelmezett házirend-kezdeményezés a Azure Security Center
@@ -224,6 +225,18 @@ Korábban a javaslathoz kiértékelt és a **nem** megfelelőnek talált erőfor
 Az egyetlen hatása a Azure Policy, ahol a megfelelő erőforrások száma növekedni fog. Azure Security Center a biztonságos pontszáma nem lesz hatással.
 
 
+### <a name="export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview"></a>A biztonságos pontszámra és a megfelelőségi előírások folyamatos exportálásával kapcsolatos heti Pillanatképek exportálása (előzetes verzió)
+
+Új előzetes verziójú funkciót adtunk hozzá a [folyamatos exportálási](continuous-export.md) eszközökhöz a biztonságos pontszámok és a szabályozási megfelelőségi adatmennyiségek heti pillanatképének exportálásához.
+
+Ha folyamatos exportálást határoz meg, állítsa be az Exportálás gyakoriságát:
+
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="A folyamatos exportálás gyakoriságának kiválasztása":::
+
+- **Streaming** – az értékelések valós időben lesznek elküldve, amikor egy erőforrás állapota frissül (ha nem történik frissítés, a rendszer nem küldi el az adatküldést).
+- **Pillanatképek** – az összes megfelelőségi értékelés aktuális állapotának pillanatképét hetente küldi el a rendszer (ez egy előzetes verziójú funkció a biztonságos pontszámok és a szabályozási megfelelőségi adatok heti pillanatképének elkészítéséhez).
+
+További információ a funkció teljes képességeiről a Security Center- [adat folyamatos exportálásával](continuous-export.md)
 
 ## <a name="december-2020"></a>2020. december
 

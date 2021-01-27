@@ -3,12 +3,12 @@ title: Az Azure Disk Backup áttekintése
 description: További információ az Azure Disk Backup megoldásról.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733030"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915508"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Az Azure Disk Backup áttekintése (előzetes verzió)
 
@@ -53,7 +53,7 @@ Tekintse át az Azure-lemez biztonsági mentését olyan helyzetekben, ahol:
 
 ## <a name="how-the-backup-and-restore-process-works"></a>A biztonsági mentési és visszaállítási folyamat működése
 
-- Az Azure-fájlmegosztás biztonsági mentésének konfigurálásának első lépése a [Backup](backup-vault-overview.md)-tároló létrehozása. A tároló a különböző munkaterhelések között konfigurált biztonsági másolatok összevont nézetét jeleníti meg.
+- Az Azure Managed Disks szolgáltatás biztonsági mentésének konfigurálásának első lépése a [Backup-tároló](backup-vault-overview.md)létrehozása. A tároló a különböző munkaterhelések között konfigurált biztonsági másolatok összevont nézetét jeleníti meg.
 
 - Ezután hozzon létre egy biztonsági mentési szabályzatot, amely lehetővé teszi a biztonsági mentési gyakoriság és a megőrzés időtartamának konfigurálását.
 
@@ -73,6 +73,6 @@ Tekintse át az Azure-lemez biztonsági mentését olyan helyzetekben, ahol:
 
 Azure Backup egy pillanatkép-életciklus-kezelési megoldást kínál az Azure-lemezek védelméhez. A Azure Backup által létrehozott lemez-pillanatképeket az Azure-előfizetésében található erőforráscsoport tárolja, és a **Pillanatképek tárolásával** kapcsolatos díjat számítunk fel. A pillanatkép díjszabásával kapcsolatos további információkért tekintse meg a [felügyelt lemez díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) . Mivel a pillanatképeket nem másolja a Backup-tárolóba, Azure Backup nem számít fel díjat a **védett példányok** díja, és a **biztonsági mentési tárolási** költségek nem érvényesek. Emellett a növekményes Pillanatképek a legutóbbi pillanatkép óta elfoglalják a változási változásokat, és a szülő által felügyelt lemezek tárolási típusától függetlenül mindig a standard szintű tárolóban tárolódnak, és a standard szintű tárolás díjszabása alapján számítunk fel díjat. Így költséghatékony megoldás az Azure Disk Backup.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Disk Backup támogatási mátrixa](disk-backup-support-matrix.md)

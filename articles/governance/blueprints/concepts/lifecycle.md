@@ -1,14 +1,14 @@
 ---
 title: A terv életciklusának megismerése
 description: Megtudhatja, hogy milyen életciklussal rendelkezik a tervrajzok definíciója, és részletezi az egyes szakaszokat, beleértve a terv-Hozzárendelések frissítését és eltávolítását
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721a198b5732af01c6712e86bc0c8e8ef543b404
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049706"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918517"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure Blueprint életciklusának megismerése
 
@@ -34,13 +34,13 @@ Hozzon létre és szerkesszen egy tervet [Azure Portal](../create-blueprint-port
 
 ## <a name="publishing-a-blueprint"></a>Tervezet közzététele
 
-Ha az összes tervezett módosítás **vázlatos** módban történt, **közzé** kell tenni a hozzárendeléshez, és elérhetővé teheti azt. A terv **közzétett** verziója nem módosítható. A **Közzététel**után a terv egy másik ikonnal jelenik meg, mint a **tervezetek** , és a megadott verziószámot jeleníti meg a **legújabb verzió** oszlopban.
+Ha az összes tervezett módosítás **vázlatos** módban történt, **közzé** kell tenni a hozzárendeléshez, és elérhetővé teheti azt. A terv **közzétett** verziója nem módosítható. A **Közzététel** után a terv egy másik ikonnal jelenik meg, mint a **tervezetek** , és a megadott verziószámot jeleníti meg a **legújabb verzió** oszlopban.
 
 Tegyen közzé egy tervet [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) vagy [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
 ## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>A terv új verziójának létrehozása és szerkesztése
 
-A terv **közzétett** verziója nem módosítható. A terv új verziója azonban felvehető a meglévő tervbe, és szükség szerint módosítható. Módosításokat végezhet egy meglévő terv szerkesztésével. Az új módosítások mentésekor a terv már nem **közzétett módosításokat**tartalmaz. Ezek a változások a terv új **vázlatos** változata.
+A terv **közzétett** verziója nem módosítható. A terv új verziója azonban felvehető a meglévő tervbe, és szükség szerint módosítható. Módosításokat végezhet egy meglévő terv szerkesztésével. Az új módosítások mentésekor a terv már nem **közzétett módosításokat** tartalmaz. Ezek a változások a terv új **vázlatos** változata.
 
 Szerkesszen egy tervet a [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
 
@@ -66,7 +66,7 @@ A tervrajzok minden verziója egy egyedi objektum, amelyet egyénileg lehet **k�
 
 1. Válassza a **közzétett verziók** fület, és keresse meg a törölni kívánt verziót.
 
-1. Kattintson a jobb gombbal a törölni kívánt verzióra, majd válassza a **verzió törlése**lehetőséget.
+1. Kattintson a jobb gombbal a törölni kívánt verzióra, majd válassza a **verzió törlése** lehetőséget.
 
 ## <a name="deleting-the-blueprint"></a>A terv törlése
 
@@ -79,7 +79,7 @@ Egy terv törlése a [Azure Portal](../create-blueprint-portal.md#delete-a-bluep
 
 ## <a name="assignments"></a>Hozzárendelések
 
-Az életciklus során több pont is van, és egy terv rendelhető hozzá egy előfizetéshez. Ha **közzéteszi**a terv egy verziójának a módját, az adott verziót hozzá lehet rendelni egy előfizetéshez. Ez az életciklus lehetővé teszi, hogy egy terv egy újabb verziójának fejlesztésekor felhasználja és aktívan hozzárendelje a tervrajzok verzióját.
+Az életciklus során több pont is van, és egy terv rendelhető hozzá egy előfizetéshez. Ha **közzéteszi** a terv egy verziójának a módját, az adott verziót hozzá lehet rendelni egy előfizetéshez. Ez az életciklus lehetővé teszi, hogy egy terv egy újabb verziójának fejlesztésekor felhasználja és aktívan hozzárendelje a tervrajzok verzióját.
 
 A tervrajzok verziójának kiosztásakor fontos megérteni, hogy hol vannak hozzárendelve, és hogy milyen paramétereket rendeltek hozzájuk. A paraméterek lehetnek statikusak vagy dinamikusak. További információ: [statikus és dinamikus paraméterek](./parameters.md).
 

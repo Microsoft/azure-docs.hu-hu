@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832709"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916784"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
@@ -25,6 +25,8 @@ A **folyamatos exportálással** teljes mértékben testreszabhatja, hogy *mi* t
 - Az SQL Server-kiszolgálók biztonsági rések felmérésével kapcsolatos összes közepes vagy magasabb súlyossági megállapítást egy adott Log Analytics-munkaterületre kell elküldeni
 - Konkrét javaslatok érkeznek egy Event hub-vagy Log Analytics-munkaterületre, amikor létrehozzák őket 
 - Az előfizetés biztonságos pontszámát egy Log Analytics munkaterületre küldi a rendszer, ha a vezérlőelem pontszáma 0,01 vagy újabb értékkel változik 
+
+Annak ellenére, hogy a szolgáltatás neve *folyamatos*, akkor is lehetőség van arra, hogy a biztonságos pontszám vagy a szabályozási megfelelőségi adatmennyiségről is exportáljon heti pillanatképeket.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Analytics munkaterületekre vagy az Azure Event Hubsra.
 
@@ -42,7 +44,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|<ul><li>**Biztonsági rendszergazda** vagy az erőforráscsoport **tulajdonosa**</li><li>Írási engedélyek a célként megadott erőforráshoz</li><li>Ha az alábbiakban ismertetett Azure Policy "DeployIfNotExist" szabályzatot használja, a szabályzatok hozzárendelésére vonatkozó engedélyekre is szüksége lesz</li></ul>|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov (az Event hub-hoz)|
 |||
 
 
@@ -78,6 +80,10 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     Itt láthatja az exportálási beállításokat. Minden elérhető exportálási célponthoz van egy lap. 
 
 1. Válassza ki az exportálni kívánt adattípust, és válasszon az egyes típusok szűrőinek közül (például csak a nagy súlyosságú riasztások exportálása).
+1. Válassza ki a megfelelő exportálási gyakoriságot:
+    - **Streaming** – az értékelések valós időben lesznek elküldve, amikor egy erőforrás állapota frissül (ha nem történik frissítés, a rendszer nem küldi el az adatküldést).
+    - **Pillanatképek** – az összes megfelelőségi értékelés aktuális állapotának pillanatképét hetente küldi el a rendszer (ez egy előzetes verziójú funkció a biztonságos pontszámok és a szabályozási megfelelőségi adatok heti pillanatképének elkészítéséhez).
+
 1. Ha a kijelölés magában foglalja a javaslatok egyikét is, a sebezhetőségi felmérés eredményei együttesen is felvehetők:
     - A sebezhetőségi felmérés eredményeit az SQL-adatbázisokban szervizelni kell
     - A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)
@@ -90,7 +96,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="use-the-rest-api"></a>[**A REST API használata**](#tab/rest-api)
 
@@ -249,7 +255,7 @@ Igen! Vegye figyelembe, hogy sok Security Center riasztás csak akkor érhető e
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 

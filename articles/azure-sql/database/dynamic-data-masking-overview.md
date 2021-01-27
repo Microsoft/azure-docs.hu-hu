@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787688"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918077"
 ---
 # <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ A Azure SQL Database, az Azure SQL felügyelt példánya és az Azure szinapszis
 
 A dinamikus adatmaszkolás azzal segít megelőzni a bizalmas adatokhoz való jogosulatlan hozzáférést, hogy az ügyfél által meghatározhatóvá teszi az alkalmazásrétegre gyakorolt minimális következményekkel felfedhető bizalmas adatok menyiségét. Ez a szabályzatalapú biztonsági funkció elrejti a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja.
 
-Előfordulhat például, hogy egy Call Center egyik szolgáltatása az e-mail-címük több számjegye alapján azonosítja a hívókat, de ezeket az adatelemeket nem szabad teljes mértékben kitenni a szolgáltatás képviselőjének. Olyan maszkolási szabály is meghatározható, amely az összes e-mail-címet elrejti az összes lekérdezés eredmény-készletében. Egy másik példaként egy megfelelő adatmaszkot is meghatározhat a személyes adatainak védelme érdekében, így a fejlesztők a megfelelőségi rendeletek megszegése nélkül is lekérhetik a termelési környezeteket a hibaelhárításhoz.
+Előfordulhat például, hogy egy Call Center egyik szolgáltatása azonosítja a hívót az e-mail-címük több karakterének megerősítésével, de a teljes e-mail-címet nem szabad felderíteni a szolgáltatás képviselőjének. Olyan maszkolási szabály is meghatározható, amely az összes e-mail-címet elrejti az összes lekérdezés eredmény-készletében. Egy másik példaként egy megfelelő adatmaszkot is meghatározhat a személyes adatainak védelme érdekében, így a fejlesztők a megfelelőségi rendeletek megszegése nélkül is lekérhetik a termelési környezeteket a hibaelhárításhoz.
 
 ## <a name="dynamic-data-masking-basics"></a>Dinamikus adatmaszkolás alapjai
 
@@ -84,6 +84,6 @@ A REST API használatával programozott módon kezelheti az adatmaszkolási szab
 
 A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, a kiszolgáló rendszergazdája vagy a szerepköralapú hozzáférés-vezérlés (RBAC) [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) szerepkör használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)

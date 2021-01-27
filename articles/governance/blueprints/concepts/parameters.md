@@ -1,14 +1,14 @@
 ---
 title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, valamint azt, hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dbf7ec02e89eac791ec3e17202a5ab13a04b81d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918534"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paraméterek használatával
 
@@ -34,9 +34,9 @@ Míg az ARM- _sablon összetevői_ támogatják a **SecureString** és a **secur
 - Key Vault titkos kód neve
 - Key Vault Secret-verzió
 
-Ha a terv **-hozzárendelés rendszer által hozzárendelt felügyelt identitást**használ, a hivatkozott Key Vaultnak ugyanabban az előfizetésben _kell lennie_ , mint a terv definíciója.
+Ha a terv **-hozzárendelés rendszer által hozzárendelt felügyelt identitást** használ, a hivatkozott Key Vaultnak ugyanabban az előfizetésben _kell lennie_ , mint a terv definíciója.
 
-Ha a terv-hozzárendelés **felhasználó által hozzárendelt felügyelt identitást**használ, _akkor_ a hivatkozott Key Vault központi előfizetésben létezhet. A felügyelt identitásnak megfelelő jogosultságokat kell biztosítania a Key Vault a terv hozzárendelése előtt.
+Ha a terv-hozzárendelés **felhasználó által hozzárendelt felügyelt identitást** használ, _akkor_ a hivatkozott Key Vault központi előfizetésben létezhet. A felügyelt identitásnak megfelelő jogosultságokat kell biztosítania a Key Vault a terv hozzárendelése előtt.
 
 > [!IMPORTANT]
 > Mindkét esetben a Key Vaultnak engedélyeznie kell a hozzáférést a Azure Resource Manager számára a **hozzáférési házirendek** lapon konfigurált **sablonok telepítéséhez** . A szolgáltatás engedélyezésével kapcsolatos útmutatásért lásd: [Key Vault – a sablonok telepítésének engedélyezése](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
@@ -47,7 +47,7 @@ További információ a Azure Key Vaultről: [Key Vault áttekintése](../../../
 
 ### <a name="static-parameters"></a>Statikus paraméterek
 
-A terv definíciójában definiált paraméterérték **statikus paraméternek**nevezzük, mert a terv minden használata az adott statikus értéket használó összetevőt fogja telepíteni. Az erőforráscsoport példájában, míg az erőforráscsoport neve nem jelent értelmet, érdemes lehet a helyet is megtenni. Ezt követően a terv minden hozzárendelése létrehozza az erőforráscsoportot, amit a hozzárendelés során meghívott, ugyanazon a helyen. Ez a rugalmasság lehetővé teszi, hogy szelektíven határozza meg, hogy mit kell megadnia a szükséges módon, és hogy mi módosítható a hozzárendelés során.
+A terv definíciójában definiált paraméterérték **statikus paraméternek** nevezzük, mert a terv minden használata az adott statikus értéket használó összetevőt fogja telepíteni. Az erőforráscsoport példájában, míg az erőforráscsoport neve nem jelent értelmet, érdemes lehet a helyet is megtenni. Ezt követően a terv minden hozzárendelése létrehozza az erőforráscsoportot, amit a hozzárendelés során meghívott, ugyanazon a helyen. Ez a rugalmasság lehetővé teszi, hogy szelektíven határozza meg, hogy mit kell megadnia a szükséges módon, és hogy mi módosítható a hozzárendelés során.
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statikus paraméterek beállítása a portálon
 
@@ -57,7 +57,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 1. Válasszon ki egy meglévő tervrajzot, majd válassza a **terv szerkesztése** vagy a **+ terv létrehozása** lehetőséget, és töltse ki az adatokat az **alapok** lapon.
 
-1. Válassza a **Next (tovább):** összetevők **Artifacts** elemet, vagy válassza ki az összetevők lapot.
+1. Válassza a **Next (tovább):** összetevők  elemet, vagy válassza ki az összetevők lapot.
 
 1. A tervhez hozzáadott összetevők, amelyekben a paraméter beállításai a **Paraméterek** oszlopban kitöltött **Y paraméterek X betűjét** jelenítik meg. Az összetevő paramétereinek szerkesztéséhez válassza ki az összetevőt tartalmazó sort.
 
@@ -65,7 +65,7 @@ A terv definíciójában definiált paraméterérték **statikus paraméternek**
 
 1. Az összetevő **szerkesztése** oldalon a kiválasztott összetevőnek megfelelő érték beállítások jelennek meg. Az összetevő minden paramétere rendelkezik egy címmel, egy érték mezővel és egy jelölőnégyzettel. Jelölje be a jelölőnégyzetet, hogy ne legyen bejelölve **statikus paraméterként**. Az alábbi példában csak a _hely_ **statikus paraméter** , mert nincs bejelölve, és az _erőforráscsoport neve_ be van jelölve.
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Képernyőkép a terv meghatározásáról és a Kiemelt Y paraméterek X-ről." border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Képernyőkép a statikus paraméterekről egy tervrajz-összetevőn." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Statikus paraméterek beállítása REST API
 
@@ -130,7 +130,7 @@ A következő REST API példa létrehoz egy szerepkör-hozzárendelési összete
   }
   ```
 
-Ebben a példában a **principalIds** tulajdonság a **tulajdonosi** terv szintje paramétert használja a értékének használatával `[parameters('owners')]` . Ha a paramétert egy olyan összetevőn állítja be, amely egy terv szintű paramétert használ, továbbra is egy **statikus paraméterre**mutat. A tervrajzi szint paraméter nem állítható be a terv hozzárendelése során, és az egyes hozzárendelések esetében ugyanaz az érték lesz.
+Ebben a példában a **principalIds** tulajdonság a **tulajdonosi** terv szintje paramétert használja a értékének használatával `[parameters('owners')]` . Ha a paramétert egy olyan összetevőn állítja be, amely egy terv szintű paramétert használ, továbbra is egy **statikus paraméterre** mutat. A tervrajzi szint paraméter nem állítható be a terv hozzárendelése során, és az egyes hozzárendelések esetében ugyanaz az érték lesz.
 
 ##### <a name="artifact-level-parameter"></a>Összetevő szintje paraméter
 
@@ -176,11 +176,11 @@ A statikus paraméter ellentéte egy **dinamikus paraméter**. Ez a paraméter n
 
 1. A **terv kiosztása** lapon keresse meg az összetevő **paramétereinek** szakaszát. Minden olyan összetevő, amely legalább egy **dinamikus paraméterrel** rendelkezik, megjeleníti az összetevőt és a konfigurációs beállításokat. Adja meg a szükséges értékeket a paraméterekhez a terv kiosztása előtt. Az alábbi példában a _Name_ egy **dinamikus paraméter** , amelyet meg kell határozni a terv hozzárendelésének befejezéséhez.
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Képernyőkép a terv meghatározásáról és a Kiemelt Y paraméterek X-ről." border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Képernyőfelvétel: dinamikus paraméterek beállítása a terv hozzárendelésekor." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Dinamikus paraméterek beállítása REST API
 
-A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név**és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevő összes többi paramétere a **Paraméterek** és az **\<name\>** **érték** kulcspár alapján van definiálva. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
+A **dinamikus paraméterek** a hozzárendelés során történő beállítása közvetlenül az érték megadásával történik. A függvények, például a [Parameters ()](../reference/blueprint-functions.md#parameters)függvény helyett a megadott érték egy megfelelő karakterlánc. Az erőforráscsoport összetevői a "sablon neve", a **név** és a **hely** tulajdonságaiban vannak meghatározva. A befoglalt összetevő összes többi paramétere a **Paraméterek** és az **\<name\>** **érték** kulcspár alapján van definiálva. Ha a terv olyan dinamikus paraméterre van konfigurálva, amely nincs megadva a hozzárendelés során, a hozzárendelés sikertelen lesz.
 
 - REST API URI
 

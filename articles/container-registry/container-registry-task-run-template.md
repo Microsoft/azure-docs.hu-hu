@@ -3,12 +3,12 @@ title: Gyors feladat futtatása sablonnal
 description: Az ACR-feladatok futtatásával rendszerképeket hozhat létre Azure Resource Manager sablon használatával
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927768"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916065"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>ACR-feladatok futtatása Resource Manager-sablonok használatával
 
@@ -42,13 +42,13 @@ Ebben a példában adja meg a következő sablon paramétereinek értékeit:
 |Paraméter  |Érték  |
 |---------|---------|
 |registryName     |A létrehozott beállításjegyzék egyedi neve         |
-|tárház     |Cél adattár a felépítési feladathoz        |
+|repository     |Cél adattár a felépítési feladathoz        |
 |taskRunName     |A feladat futtatásának neve, amely a képcímkét adja meg |
 |sourceLocation     |A felépítési feladat távoli környezete, például: https://github.com/Azure-Samples/acr-build-helloworld-node . A tárház gyökerében található Docker egy kisméretű Node.js webalkalmazáshoz hoz létre egy tároló-rendszerképet. Ha kívánja, használja a tárházat a létrehozási környezetként.         |
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal. Ez a példa létrehozza és leküldi a *HelloWorld-Node: TestRun-* rendszerképet egy *mycontainerregistry*nevű beállításjegyzékbe.
+Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal. Ez a példa létrehozza és leküldi a *HelloWorld-Node: TestRun-* rendszerképet egy *mycontainerregistry* nevű beállításjegyzékbe.
 
 ```azurecli
 az deployment group create \
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 Az előző parancs a paramétereket a parancssorban adja át. Ha szükséges, adja át őket egy [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md).
@@ -112,7 +112,7 @@ A kimenet a feladat futtatási naplóját jeleníti meg.
 A Azure Portal is megtekintheti a feladat futtatási naplóját. 
 
 1. Navigáljon a tároló beállításjegyzékéhez
-2. A **szolgáltatások**területen válassza a **feladatok**  >  **Futtatás**lehetőséget.
+2. A **szolgáltatások** területen válassza a **feladatok**  >  **Futtatás** lehetőséget.
 3. Válassza ki a futtatási azonosítót, ebben az esetben a *CA1*. 
 
 A portál megjeleníti a feladat futtatási naplóját.
@@ -141,8 +141,8 @@ Demonstrációs célokra hozzon létre egy külön tároló-beállításjegyzék
 
 Hozzon létre egy Docker, amely lekéri az alaprendszerképet az alapszintű beállításjegyzékből. Hajtsa végre a következő lépéseket a GitHub-tárház helyi villájában, például: `https://github.com/myGitHubID/acr-build-helloworld-node.git` .
 
-1. A GitHub felhasználói felületén válassza az **új fájl létrehozása**lehetőséget.
-1. Nevezze el a fájlt *Docker* , és illessze be a következő tartalmakat. Helyettesítse be a *mybaseregistry*beállításjegyzékbeli nevét.
+1. A GitHub felhasználói felületén válassza az **új fájl létrehozása** lehetőséget.
+1. Nevezze el a fájlt *Docker* , és illessze be a következő tartalmakat. Helyettesítse be a *mybaseregistry* beállításjegyzékbeli nevét.
     ```
     FROM mybaseregistry.azurecr.io/baseimages/node:9-alpine
     COPY . /src
@@ -150,7 +150,7 @@ Hozzon létre egy Docker, amely lekéri az alaprendszerképet az alapszintű be�
     EXPOSE 80
     CMD ["node", "/src/server.js"]
     ```
- 1. Válassza az **új fájl véglegesítés**lehetőséget.
+ 1. Válassza az **új fájl véglegesítés** lehetőséget.
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
@@ -182,17 +182,17 @@ Ebben a példában adja meg a következő sablon paramétereinek értékeit:
 |Paraméter  |Érték  |
 |---------|---------|
 |registryName     |Azon beállításjegyzék neve, amelyben a rendszerkép épül  |
-|tárház     |Cél adattár a felépítési feladathoz        |
+|repository     |Cél adattár a felépítési feladathoz        |
 |taskRunName     |A feladat futtatásának neve, amely a képcímkét adja meg |
 |userAssignedIdentity |A feladatban engedélyezett, felhasználó által hozzárendelt identitás erőforrás-azonosítója|
 |customRegistryIdentity | A felhasználó által hozzárendelt identitás ügyfél-azonosítója engedélyezve a feladatban, amely az egyéni beállításjegyzékkel való hitelesítéshez használatos |
 |customRegistry |A feladatban elért egyéni beállításjegyzék bejelentkezési kiszolgálójának neve, például *mybaseregistry.azurecr.IO*|
-|sourceLocation     |A felépítési feladat távoli környezete, például * https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
+|sourceLocation     |A felépítési feladat távoli környezete, például *https://github.com/ \<your-GitHub-ID\> /ACR-Build-HelloWorld-Node.* |
 |dockerFilePath | A Docker elérési útja a távoli környezetben, a rendszerkép felépítéséhez. |
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal. Ez a példa létrehozza és leküldi a *HelloWorld-Node: TestRun-* rendszerképet egy *mycontainerregistry*nevű beállításjegyzékbe. A kiinduló rendszerkép a *mybaseregistry.azurecr.IO*.
+Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal. Ez a példa létrehozza és leküldi a *HelloWorld-Node: TestRun-* rendszerképet egy *mycontainerregistry* nevű beállításjegyzékbe. A kiinduló rendszerkép a *mybaseregistry.azurecr.IO*.
 
 ```azurecli
 az deployment group create \
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```
@@ -233,7 +233,7 @@ basetask
 
 A futtatási napló megtekintéséhez tekintse meg az [előző szakasz](#view-run-log)lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * Az [ACR GitHub](https://github.com/Azure/acr/tree/master/docs/tasks/run-as-deployment)-tárházában további példákat talál a sablonra.
  * A sablon tulajdonságaival kapcsolatos részletekért tekintse meg a feladatok [futtatására](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/taskruns) és a [feladatokra](/azure/templates/microsoft.containerregistry/2019-06-01-preview/registries/tasks)vonatkozó sablon-referenciát.

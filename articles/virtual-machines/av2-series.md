@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3419b54fa18058583d81909f7fca0f20dc4b0dd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650748"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917133"
 ---
 # <a name="av2-series"></a>Av2-sorozat
 
@@ -24,6 +24,7 @@ A Av2 sorozatú virtuális gépek számos különböző hardvereszközön és pr
 [Élő áttelepítés](maintenance-and-updates.md): támogatott <br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott <br>
 [VM-generáció támogatása](generation-2.md): 1. generáció <br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): nem támogatott<br>
 <br>
 
 | Méret | virtuális mag | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Maximális Temp Storage átviteli sebessége: IOPS/olvasási MBps/írási MBps | Adatlemezek maximális száma/átviteli sebesség: IOPS | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps)
