@@ -4,15 +4,15 @@ description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozha
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 01/26/2021
+ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896884"
+ms.locfileid: "98874608"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
@@ -58,7 +58,7 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | USA 2. nyugati régiója        |                |                      |                     |                |
 
 
-\* Ha többet szeretne megtudni a Availability Zones és az elérhető szolgáltatások támogatásáról ezekben a régiókban, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével. Az Availability Zonest támogató közelgő régiókkal kapcsolatban lásd: [Azure földrajzi](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)területek.
+Ha többet szeretne megtudni a Availability Zones és az elérhető szolgáltatások támogatásáról ezekben a régiókban, lépjen kapcsolatba a Microsoft értékesítési vagy ügyfélszolgálati képviselőjével. Az Availability Zonest támogató közelgő régiókkal kapcsolatban lásd: [Azure földrajzi](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)területek.
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Availability Zones támogató Azure-szolgáltatások
@@ -143,7 +143,7 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
 | Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
 | Virtual Machines: M sorozat                      |      : large_blue_diamond:  |
-| Virtuális WAN                                     |      : large_blue_diamond:  |
+| Virtual WAN                                     |      : large_blue_diamond:  |
 
 
 **Nem regionális**
@@ -194,7 +194,7 @@ A rendelkezésre állási zónában üzembe helyezett virtuális gépekhez nem k
 - [Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása](../aks/availability-zones.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Régiók és rendelkezésre állási zónák az Azure-ban](az-overview.md)
