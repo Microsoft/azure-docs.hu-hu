@@ -1,14 +1,14 @@
 ---
 title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan teszi lehetővé az erőforrások összetett lekérdezését az előfizetések és a bérlők között.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 8e61dadc44a2b07066f7bac761c366c746cef1f1
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057773"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919141"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
@@ -23,7 +23,7 @@ Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
 > Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history) 
->  _vizuális diff_elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
+>  _vizuális diff_ elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -44,7 +44,7 @@ Az Azure Resource Graph segítségével a következőket teheti:
 ## <a name="how-resource-graph-is-kept-current"></a>Az erőforrás-gráf naprakészen tartása
 
 Az Azure-erőforrások frissítésekor a változás erőforrás-kezelője értesíti az erőforrás-diagramot.
-Az erőforrás-gráf ezután frissíti az adatbázisát. Az erőforrás-gráf emellett normál _teljes vizsgálatot_is végez. Ez a vizsgálat biztosítja, hogy az erőforrás-gráf-adat aktuális, ha kimaradt értesítések vannak, vagy ha egy erőforrást a Resource Manageren kívülről frissítenek.
+Az erőforrás-gráf ezután frissíti az adatbázisát. Az erőforrás-gráf emellett normál _teljes vizsgálatot_ is végez. Ez a vizsgálat biztosítja, hogy az erőforrás-gráf-adat aktuális, ha kimaradt értesítések vannak, vagy ha egy erőforrást a Resource Manageren kívülről frissítenek.
 
 > [!NOTE]
 > Az erőforrás-gráf a `GET` -t használja az egyes erőforrás-szolgáltatók legújabb, nem előzetes VERZIÓJÚ API-jával a tulajdonságok és értékek összegyűjtéséhez. Ennek eredményeképpen előfordulhat, hogy a várt tulajdonság nem érhető el. Bizonyos esetekben a használt API-verzió felülbírálva lett, hogy az eredményekben még több aktuális vagy széles körben használt tulajdonság legyen elérhető. A környezet teljes listájáért tekintse meg az [API-verzió megjelenítése az egyes erőforrástípus](./samples/advanced.md#apiversion) -mintákhoz című témakört.

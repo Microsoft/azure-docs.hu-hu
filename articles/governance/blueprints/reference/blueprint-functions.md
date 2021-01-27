@@ -1,14 +1,14 @@
 ---
 title: Az Azure BluePrints funkciói
 description: Ismerteti azokat a funkciókat, amelyek az Azure-tervrajzok és-hozzárendelések tervrajzi összetevőihez használhatók.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: reference
-ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050760"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919274"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
 
@@ -34,9 +34,9 @@ Egy olyan objektumot ad vissza, amely az adott tervrajz-összetevők kimenetéve
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| artifactName |Igen |sztring |Egy tervrajz-összetevő neve. |
+| artifactName |Yes |sztring |Egy tervrajz-összetevő neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -123,10 +123,10 @@ Több karakterlánc-értéket egyesít, és visszaadja az összefűzött karakte
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| karakterlánc1 |Igen |sztring |Az Összefűzés első értéke. |
-| További argumentumok |Nem |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
+| karakterlánc1 |Yes |sztring |Az Összefűzés első értéke. |
+| További argumentumok |No |sztring |További értékek szekvenciális sorrendben az összefűzéshez |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -148,9 +148,9 @@ Egy terv paramétereinek értékét adja vissza. A megadott paraméter nevét me
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -269,9 +269,9 @@ Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Igen |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
+| placeholderName |Yes |sztring |A visszaadni kívánt erőforráscsoport-összetevő helyőrző neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 

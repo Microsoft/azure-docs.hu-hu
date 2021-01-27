@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919952"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Gyorsított hálózatkezeléssel rendelkező, Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 
@@ -56,11 +56,9 @@ Az Azure-katalógusból az alábbi disztribúciók támogatottak:
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
 ### <a name="supported-vm-instances"></a>Támogatott VM-példányok
-A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja 2 vagy több vCPU.  A támogatott adatsorozatok a következők: D/DSv2 és F/FS
+A gyorsított hálózatkezelést a legtöbb általános célú és a számítási optimalizált példány mérete támogatja 2 vagy több vCPU. A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy több vCPU rendelkező virtuálisgép-példányok támogatják. 
 
-A feleznie támogató példányokon a gyorsított hálózatkezelést a 4 vagy több vCPU rendelkező virtuálisgép-példányok támogatják. Támogatott adatsorozatok: D/Dsv3, D/Dsv4, DD/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS és MS/Mmsv2.
-
-A virtuálisgép-példányokkal kapcsolatos további információkért lásd: Linux rendszerű [virtuális gépek mérete](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A gyorsított hálózatkezelés támogatását az egyes [virtuálisgép-méretek](../virtual-machines/sizes.md) dokumentációjában találja. 
 
 ### <a name="custom-images"></a>Egyéni rendszerképek
 Ha egyéni rendszerképet használ, és a rendszerkép támogatja a gyorsított hálózatkezelést, győződjön meg arról, hogy a szükséges illesztőprogramok működnek a Mellanox ConnectX-3 és a ConnectX-4 LX hálózati adapterek használatával az Azure-ban.

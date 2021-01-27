@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927413"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920290"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions kötési kifejezés mintái
 
-Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése* . A fájl *function.jsján* és a függvény paraméterei és kódjában használhat olyan kifejezéseket, amelyek különböző forrásokból származó értékekre vannak feloldva.
+Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése*. A fájl *function.jsján* és a függvény paraméterei és kódjában használhat olyan kifejezéseket, amelyek különböző forrásokból származó értékekre vannak feloldva.
 
 A legtöbb ilyen kifejezés könnyen azonosítható, mivel kapcsos zárójelek között vannak. Egy üzenetsor-kiváltó függvényben például a rendszer `{queueTrigger}` feloldja az üzenetsor-üzenet szövegét. Ha `path` egy blob kimeneti kötés tulajdonsága `container/{queueTrigger}` és a függvény üzenetsor-üzenettel aktiválódik `HelloWorld` , a rendszer létrehoz egy nevű blobot `HelloWorld` .
 
@@ -164,6 +164,7 @@ Az Azure üzenetsor-tárolói trigger például a következő tulajdonságokat t
 Ezek a metaadat-értékek a fájl tulajdonságainál *function.js* érhetők el. Tegyük fel például, hogy üzenetsor-triggert használ, és az üzenetsor-üzenet tartalmazza az olvasni kívánt blob nevét. A fájl *function.js* a `queueTrigger` blob tulajdonságban használhatja a metadata tulajdonságot a `path` következő példában látható módon:
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ Ezek a metaadat-értékek a fájl tulajdonságainál *function.js* érhetők el.
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 Az egyes triggerek metaadat-tulajdonságainak részletes ismertetését a megfelelő hivatkozási cikk ismerteti. Példa: [üzenetsor-trigger metaadatainak](functions-bindings-storage-queue-trigger.md#message-metadata). A dokumentáció a portál Integration ( **integrálás** ) lapján, a kötési konfiguráció terület alatti **dokumentáció** szakaszban is elérhető.  
@@ -292,7 +294,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>GUID-azonosítók létrehozása
 
-A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* .
+A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
 
 ```json
 {
@@ -305,7 +307,7 @@ A `{rand-guid}` kötési kifejezés létrehoz egy GUID azonosítót. Egy fájl k
 
 ## <a name="current-time"></a>Aktuális idő
 
-A kötési kifejezés a következőhöz lesz `DateTime` feloldva: `DateTime.UtcNow` . Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *2018-02-16T17-59-55Z.txt* .
+A kötési kifejezés a következőhöz lesz `DateTime` feloldva: `DateTime.UtcNow` . Egy fájl következő blob-elérési útja `function.json` létrehoz egy blobot egy olyan névvel, mint a *2018-02-16T17-59-55Z.txt*.
 
 ```json
 {

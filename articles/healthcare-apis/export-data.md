@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737608"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920257"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -46,16 +46,17 @@ Két kötelező fejléc-paraméternek kell megadnia $export feladatokhoz. Az ér
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 A FHIR készült Azure API a következő lekérdezési paramétereket támogatja. A paraméterek mindegyike opcionális:
-|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Leírás|
+
+|Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Description|
 |------------------------|---|------------|
-| \_outputFormat | Igen | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
-| \_mivel | Igen | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
-| \_típusa | Igen | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
-| \_typefilter | Igen | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
-| \_tároló | Nem |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
+| \_outputFormat | Yes | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
+| \_mivel | Yes | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
+| \_típusa | Yes | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
+| \_typefilter | Yes | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
+| \_tároló | No |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan exportálhatja a FHIR-erőforrásokat $export parancs használatával. Következő lépésként megtudhatja, hogyan exportálhatja a de azonosított információkat:
  

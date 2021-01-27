@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895764"
+ms.locfileid: "98919207"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni kiosztási szabályzatok használata
 
@@ -78,8 +78,11 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 3. A Azure Cloud Shell használatával hozza létre a **contoso kenyérpirítók Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Az IoT hub hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
 
-    Az alábbi példa egy *contoso-kenyérpirítós-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098** helyett. Az egyéni kiosztási szabályzathoz tartozó példa programkódjának `-toasters-` a hub nevében kell lennie.
+    Az alábbi példa egy *contoso-kenyérpirítós-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098** helyett. 
 
+    > [!CAUTION]
+    > Az egyéni kiosztási szabályzathoz tartozó Azure-függvény kódjához a `-toasters-` hub neve alkarakterlánc szükséges. Ügyeljen arra, hogy a szükséges kenyérpirítók alsztringet tartalmazó nevet használja.
+    
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
@@ -88,7 +91,10 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 4. A Azure Cloud Shell használatával hozza létre a **contoso Heat szivattyúk Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Ez az IoT hub a *contoso-US-Resource-Group*-hoz is hozzá lesz adva.
 
-    A következő példa egy *contoso-heatpumps-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098** helyett. Az egyéni kiosztási szabályzathoz tartozó példa programkódjának `-heatpumps-` a hub nevében kell lennie.
+    A következő példa egy *contoso-heatpumps-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098** helyett. 
+
+    > [!CAUTION]
+    > Az egyéni kiosztási szabályzathoz tartozó Azure-függvény kódjához a `-heatpumps-` hub neve alkarakterlánc szükséges. Ügyeljen arra, hogy a szükséges heatpumps-karakterláncot tartalmazó nevet használja.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -98,14 +104,14 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 5. A IoT hubokat a DPS-erőforráshoz kell kapcsolni. 
 
-    Futtassa az alábbi két parancsot az imént létrehozott hubok kapcsolódási karakterláncának lekéréséhez:
+    Futtassa az alábbi két parancsot az imént létrehozott hubok kapcsolódási karakterláncának lekéréséhez. Cserélje le a hub-erőforrások nevét az egyes parancsokban kiválasztott nevekre:
 
     ```azurecli-interactive 
     hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
     hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
     ```
 
-    Futtassa a következő parancsokat a hubok a DPS-erőforráshoz való összekapcsolásához:
+    Futtassa a következő parancsokat a hubok a DPS-erőforráshoz való összekapcsolásához. Cserélje le a DPS-erőforrás nevét az egyes parancsokban kiválasztott névre:
 
     ```azurecli-interactive 
     az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
@@ -346,56 +352,59 @@ A jelen cikkben szereplő példához használja a következő két eszköz regis
 * **breakroom499-contoso-tstrsd-007**
 * **mainbuilding167-contoso-hpsd-088**
 
-### <a name="linux-workstations"></a>Linux-munkaállomások
 
-Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsait az alábbi példában látható módon.
-
-1. Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
-
-    ```bash
-    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
-
-    REG_ID1=breakroom499-contoso-tstrsd-007
-    REG_ID2=mainbuilding167-contoso-hpsd-088
-
-    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-
-    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-    ```
-
-    ```bash
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
-
-### <a name="windows-based-workstations"></a>Windows-alapú munkaállomások
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Ha Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
 
-1. Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
 
-    ```powershell
-    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+```powershell
+$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-    $REG_ID1='breakroom499-contoso-tstrsd-007'
-    $REG_ID2='mainbuilding167-contoso-hpsd-088'
+$REG_ID1='breakroom499-contoso-tstrsd-007'
+$REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($KEY)
-    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-    $derivedkey1 = [Convert]::ToBase64String($sig1)
-    $derivedkey2 = [Convert]::ToBase64String($sig2)
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+$derivedkey1 = [Convert]::ToBase64String($sig1)
+$derivedkey2 = [Convert]::ToBase64String($sig2)
 
-    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-    ```
+echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+```
 
-    ```powershell
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
+```powershell
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsait az alábbi példában látható módon.
+
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
+
+```bash
+KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+
+REG_ID1=breakroom499-contoso-tstrsd-007
+REG_ID2=mainbuilding167-contoso-hpsd-088
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+
+echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+```
+
+```bash
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+---
 
 A szimulált eszközök a származtatott eszközök kulcsait az egyes regisztrációs AZONOSÍTÓkkal fogják használni a szimmetrikus kulcs igazolásának elvégzéséhez.
 

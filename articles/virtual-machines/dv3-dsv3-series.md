@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 3d0735b99de3e0c68b48747d69e4720a9cbb3416
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d38b395ec4e4a3e9f3550e6a891ad4785dae8597
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500699"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919748"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 és DSv3 sorozat
 
@@ -34,6 +34,7 @@ Az Dv3 sorozatú virtuális gépek Intel® Hyper-Threading technológiával rend
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális Temp Storage átviteli sebessége: IOPS/olvasási MBps/írási MBps | Hálózati adapterek maximális száma/sávszélesség |
@@ -58,6 +59,7 @@ Az Dsv3 sorozatú virtuális gépek Intel® Hyper-Threading technológiával ren
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | A burst gyorsítótárban tárolt és az ideiglenes tárolási sebesség maximális száma: IOPS/MBps<sup>1</sup> | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Nem gyorsítótárazott lemez maximális adatátviteli sebessége: IOPS/MBps<sup>1</sup> | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
@@ -85,6 +87,6 @@ Az Dsv3 sorozatú virtuális gépek Intel® Hyper-Threading technológiával ren
 - [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 - További információ a lemezek típusairól: [milyen típusú lemezek érhetők el az Azure-ban?](disks-types.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

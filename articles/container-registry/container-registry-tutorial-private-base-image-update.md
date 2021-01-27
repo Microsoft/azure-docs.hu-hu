@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban egy Azure Container Registry feladat konfi
 ms.topic: tutorial
 ms.date: 11/20/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 50eb89ccfafa27a7dcb0e97f21d14feec0ef9525
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ce06e792fd5a4582e77d18313052ea91a38121a8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030440"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920207"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy másik privát tároló beállításjegyzékében 
 
@@ -91,7 +91,7 @@ az acr task create \
     --registry $ACR_NAME \
     --name baseexample2 \
     --image helloworld:{{.Run.ID}} \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file Dockerfile-app \
     --git-access-token $GIT_PAT \
     --arg REGISTRY_NAME=$BASE_ACR.azurecr.io \
@@ -259,7 +259,7 @@ A tároló leállításához és eltávolításához futtassa a következő para
 docker stop updatedapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására a rendszerkép alapként szolgáló rendszerképének frissítése esetén. Most lépjen a következő oktatóanyagra, amelyből megtudhatja, hogyan indíthat el műveleteket egy meghatározott ütemterven.
 

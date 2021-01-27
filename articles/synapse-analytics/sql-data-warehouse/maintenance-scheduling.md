@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210983"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920375"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Karbantartási ütemtervek használata a szolgáltatások frissítéseinek és karbantartásának kezeléséhez
 
@@ -38,7 +38,7 @@ Service Health értesítésekkel való integráció és a Resource Health-ellen�
 A 24 órás előzetes értesítés megelőzi a DWC400c és az alacsonyabb rétegekhez nem tartozó karbantartási eseményeket.
 
 > [!NOTE]
-> Abban az esetben, ha egy kritikus idejű frissítést kell telepíteni, a speciális értesítési idők jelentősen csökkenthetők.
+> Abban az esetben, ha egy kritikus idejű frissítést kell telepíteni, a speciális értesítési idők jelentősen csökkenthetők. Ez a frissítés kritikus jellege miatt egy azonosított karbantartási időszakon kívül is előfordulhat.
 
 Ha a karbantartás megkezdése előtt értesítést kapott, de a karbantartás nem hajtható végre az értesítésben megadott időszakban, a rendszer lemondási értesítést fog kapni. A karbantartás ekkor folytatódik a következő ütemezett karbantartási időszakban.
 
@@ -56,7 +56,7 @@ A szinapszis SQL-készletre alkalmazott karbantartási ütemterv megtekintéséh
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza ki a megtekinteni kívánt szinapszis SQL-készletet.
-3. Megnyílik a kiválasztott szinapszis SQL-készlet az Áttekintés panelen. Az adatraktárra alkalmazott karbantartási ütemterv a **karbantartási ütemterv**alatt jelenik meg.
+3. Megnyílik a kiválasztott szinapszis SQL-készlet az Áttekintés panelen. Az adatraktárra alkalmazott karbantartási ütemterv a **karbantartási ütemterv** alatt jelenik meg.
 
 ![Áttekintés panel](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
@@ -94,7 +94,7 @@ Az előzetes verzió során előfordulhat, hogy egyes régiók még nem támogat
 
    ![A régió elérhetőségével kapcsolatos üzenet](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) információ a riasztások létrehozásáról, megtekintéséről és kezeléséről Azure monitor használatával.
 - [További](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) információ a napló riasztási szabályaival kapcsolatos webhook-műveletekről.

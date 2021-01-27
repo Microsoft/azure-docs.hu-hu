@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 67780c725466707f347e9009a77099786cc64939
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bff754211cb1a8bf9336a9ada4db2c8189d13a21
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133293"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919680"
 ---
 # <a name="nvv4-series"></a>NVv4 sorozat 
 
@@ -27,7 +27,7 @@ A NVv4 sorozatú virtuális gépeket az [AMD Radeon ösztön MI25](https://www.a
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
-Gyorsított hálózatkezelés: támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (MBps) |

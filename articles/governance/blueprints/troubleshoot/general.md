@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani a tervezetek létrehozásával, hozzárendelésével és eltávolításával kapcsolatos problémákat, például a szabályzat megsértését és a terv paramétereinek funkcióit.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058284"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918844"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
 
@@ -22,7 +22,7 @@ Számos hiba lesz a terv egy hatókörhöz való hozzárendelésének eredménye
 
 1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról, és a keresőmező segítségével szűrje a terv-hozzárendeléseket a sikertelen hozzárendelés megkereséséhez. A hozzárendelések tábláját a **kiépítési állapot** oszlopban is rendezheti, ha az összes sikertelen hozzárendelést együtt szeretné látni.
 
-1. Válassza ki a _sikertelen_ állapotú tervet, vagy kattintson a jobb gombbal, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
+1. Válassza ki a _sikertelen_ állapotú tervet, vagy kattintson a jobb gombbal, és válassza a **hozzárendelés részleteinek megtekintése** lehetőséget.
 
 1. Egy piros szalagcím figyelmeztetése, hogy a hozzárendelés meghiúsult a terv-hozzárendelés oldal tetején. További részletekért kattintson a szalagcímen bárhová.
 
@@ -83,4 +83,4 @@ Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további t�
 
 - Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 - Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
-- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+- Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

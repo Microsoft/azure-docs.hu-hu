@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: az első REST API lekérdezés'
 description: Ebben a rövid útmutatóban követheti az erőforrás-gráf végpontjának meghívásához REST API és az első lekérdezés futtatásához szükséges lépéseket.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 670ceba95d937be278c44c34704cb844eead480d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566078"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920054"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a REST API használatával
 
@@ -30,7 +30,7 @@ Az Azure Resource Graph specifikációi: [Azure Resource graph REST API](/rest/a
 
 ### <a name="rest-api-and-powershell"></a>A REST API és a PowerShell
 
-Ha még nem választott eszközt a REST API-hívások kezeléséhez, ennek az útmutatónak a keretében érdemes a PowerShellt használnia. Az alábbi mintakód egy fejlécet kap az Azure-beli hitelesítéshez. Hozzon létre egy hitelesítési fejlécet, vagy más néven **tulajdonosi jogkivonatot** , és adja meg a kapcsolódáshoz szükséges REST API URI-t a paraméterekkel vagy egy **kérelemtörzzsel** :
+Ha még nem választott eszközt a REST API-hívások kezeléséhez, ennek az útmutatónak a keretében érdemes a PowerShellt használnia. Az alábbi mintakód egy fejlécet kap az Azure-beli hitelesítéshez. Hozzon létre egy hitelesítési fejlécet, vagy más néven **tulajdonosi jogkivonatot**, és adja meg a kapcsolódáshoz szükséges REST API URI-t a paraméterekkel vagy egy **kérelemtörzzsel**:
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell

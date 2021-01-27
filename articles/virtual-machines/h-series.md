@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 656113df50936acf6f9a6b7e9cc8cb01a8aec2a8
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 8ba3311a67098ac04cc62161935b067e465fed57
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931750"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920139"
 ---
 # <a name="h-series"></a>H-sorozat
 
@@ -25,6 +25,7 @@ A H-sorozatú virtuális gépeket nagy CPU-gyakorisággal vagy nagy memóriával
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): nem támogatott<br>
 <br>
 
 | Méret | vCPU | Processzor | Memória (GiB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tároló (GiB) | Adatlemezek max. száma | Lemezek max. teljesítménye: IOPS | Maximális Ethernet-Vnic |

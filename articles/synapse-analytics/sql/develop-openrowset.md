@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5d79c296163dfcb1d81b4713f8a8673485950e05
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734747"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919765"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -121,7 +121,7 @@ Az alábbiakban megtalálhatja a megfelelő <storage account path> értékeket, 
 | Azure Blob Storage         | wasb [s]  | \<container>@\<storage_account>. blob.core.windows.net/path/file |
 | Azure Data Lake Storage Gen1 | http [s]  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | http [s]  | \<storage_account>. dfs.core.windows.net/Path/file   |
-| Azure Data Lake Storage Gen2 | aufs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Storage Gen2 | abfs [s]  | [\<file_system>@\<account_name>. dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -395,6 +395,6 @@ WITH (
 AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972eaf3aa20324bc68ce24d2b7c0db041bb8baa4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653655"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918636"
 ---
 # <a name="m-series"></a>M sorozat
 
@@ -27,6 +27,7 @@ Az M sorozatú virtuális gépek funkciójának Intel &reg; Hyper-Threading tech
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Írásgyorsító](./how-to-enable-write-accelerator.md): támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma|Várt hálózati sávszélesség (Mbps) |
@@ -46,7 +47,7 @@ Az M sorozatú virtuális gépek funkciójának Intel &reg; Hyper-Threading tech
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> több mint 64 vCPU a következő támogatott vendég operációs rendszer egyikét igényli: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 és Red Hat Enterprise Linux, CentOS 7,3 vagy Oracle Linux 7,3, lis 4.2.1.
+<sup>1</sup> több mint 64 vCPU a következő támogatott vendég verziók egyikét igényli: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 és Red Hat Enterprise Linux, CentOS 7,3 vagy Oracle Linux 7,3, lis 4.2.1.
 
 <sup>2</sup> a példány egyetlen ügyfél számára dedikált hardveren van elkülönítve.
 

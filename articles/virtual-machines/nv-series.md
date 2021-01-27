@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 62f27a07c868cc9cc7f37a7b26ab38127946e3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba7342409d309fceeb7cfe50c152f2548f29bec
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919731"
 ---
 # <a name="nv-series"></a>NV sorozat
 
@@ -25,6 +25,7 @@ Az NV-példányokban minden GPU egy RÁCSos licenccel rendelkezik. Ez a licenc l
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): nem támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomások | Virtuális alkalmazások |

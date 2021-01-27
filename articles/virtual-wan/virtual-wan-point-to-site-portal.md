@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411201"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919066"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -24,6 +24,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális WAN létrehozása
 > * Pont–hely konfiguráció létrehozása
 > * Virtuális központ létrehozása
+> * Ügyfél-címkészlet kiválasztása
 > * DNS-kiszolgálók meghatározása
 > * VPN-ügyfél profiljának konfigurációs csomagjának előállítása
 > * VPN-ügyfelek konfigurálása
@@ -48,6 +49,11 @@ A pont – hely (P2S) konfiguráció határozza meg a távoli ügyfelek csatlako
 ## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>Virtuális központ és átjáró létrehozása
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
+
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> P2S-ügyfél-címkészlet kiválasztása
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>DNS-kiszolgáló meghatározása
 
@@ -74,7 +80,9 @@ Miután befejezte az ügyfél konfigurálását, csatlakozhat.
 1. Az **Áttekintés** oldalon a térképen lévő minden pont egy hubot jelöl.
 1. A **hubok és kapcsolatok** szakaszban megtekintheti a hub állapotát, a helyet, a régiót, a VPN-kapcsolat állapotát és a bejövő és kimenő bájtokat.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Erőforrások felszabadítása
+
+
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 
@@ -82,7 +90,7 @@ Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGrou
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális WAN-ról további információt a következő témakörben talál:
 

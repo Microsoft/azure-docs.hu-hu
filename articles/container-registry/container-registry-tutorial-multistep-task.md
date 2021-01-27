@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy A
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: be5c8c4012267dc7ce6362502c806a9f238732b7
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562888"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920274"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: többlépéses tároló-munkafolyamat futtatása a felhőben a forráskód elküldésekor
 
@@ -78,7 +78,7 @@ Most hozza létre a feladatot a következő az [ACR Task Create][az-acr-task-cre
 az acr task create \
     --registry $ACR_NAME \
     --name example1 \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file taskmulti.yaml \
     --git-access-token $GIT_PAT
 ```
@@ -108,7 +108,7 @@ A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbiho
   "step": {
     "baseImageDependencies": null,
     "contextAccessToken": null,
-    "contextPath": "https://github.com/gituser/acr-build-helloworld-node.git",
+    "contextPath": "https://github.com/gituser/acr-build-helloworld-node.git#main",
     "taskFilePath": "taskmulti.yaml",
     "type": "FileTask",
     "values": [],
@@ -127,7 +127,7 @@ A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbiho
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
           "branch": "main",
-          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
+          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git#main",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
         },
@@ -311,7 +311,7 @@ A korábban definiált rendszerhéj-környezeti változók használatával hozza
 az acr task create \
     --registry $ACR_NAME \
     --name example2 \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.io
@@ -433,7 +433,7 @@ The push refers to repository [mycontainerregistrydate.azurecr.io/hello-world]
 Run ID: cf1g was successful after 46s
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre több lépésből álló, többtárolós alapú feladatokat, amelyek automatikusan aktiválódnak a forráskódnak a git-tárházba való beléptetése során. A többlépéses feladatok speciális funkciói, többek között a párhuzamos és a függő lépések végrehajtásával kapcsolatban lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md). Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre olyan feladatokat, amelyek a tárolórendszerképek alapként szolgáló rendszerképeinek frissítésekor aktiválnak összeállításokat.
 

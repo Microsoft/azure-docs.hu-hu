@@ -225,7 +225,7 @@
           href: livestream.md
     - name: Az Azure Sentinel eltávolítása
       href: offboard.md
-- name: Referencia (új!)
+- name: Referencia
   items:
     - name: Azure RBAC-szerepkörök
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: A listák kezelése REST-API-val
           href: watchlist-with-rest-api.md
+    - name: Azure Monitor adathivatkozás
+      href: /azure/azure-monitor/reference/
     - name: Az Azure Sentinel Logic Apps-összekötője
       href: /connectors/azuresentinel/
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
+    - name: Adatforrás sémájának referenciája
+      href: data-source-schema-reference.md
+    - name: Kusto Query Language
+      items:
+        - name: Kusto-lekérdezés áttekintése
+          href: /azure/data-explorer/kusto/query/
+        - name: Kusto lekérdezési nyelv rövid leírása
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA-bővítések
       href: ueba-enrichments.md
 - name: További források

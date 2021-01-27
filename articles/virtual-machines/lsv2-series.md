@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a08b5db19aab19402aa3c93cfa23ce7b39a0a838
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498421"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918688"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -32,6 +32,7 @@ A Lsv2 sorozat nagy átviteli sebességű, kis késleltetésű, közvetlenül le
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 Feltört: támogatott<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 <br>
 
 | Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Nem gyorsítótárazott adatlemez átviteli sebessége (IOPs/MBps)<sup>4</sup> | A nem gyorsítótárazott adatlemezek maximális adatátviteli sebessége (IOPs/MBps)<sup>5</sup>| Adatlemezek maximális száma | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps) |
@@ -87,6 +88,6 @@ Feltört: támogatott<br>
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

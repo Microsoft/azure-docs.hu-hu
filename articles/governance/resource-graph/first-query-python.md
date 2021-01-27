@@ -1,15 +1,15 @@
 ---
 title: 'Rövid útmutató: az első Python-lekérdezés'
 description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Pythonhoz készült Resource Graph-függvénytárat, és futtathatja az első lekérdezést.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 01e0fd5bfbc5f353474c8305eefc044390c3586a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-python
+ms.openlocfilehash: 6fc7b8f6a6fa7cde8d10dec6a4b2b834d41325e6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845109"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920122"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Python használatával
 
@@ -56,7 +56,7 @@ Ha engedélyezni szeretné a Python számára az Azure Resource Graph lekérdez�
    > [!NOTE]
    > Ha a Python telepítve van az összes felhasználó számára, akkor ezeket a parancsokat emelt szintű konzolról kell futtatni.
 
-1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-resourcegraph`**2.0.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és **9.0.0** `azure-cli-core` legalább **2.5.0** -nek kell lennie.
+1. Ellenőrizze, hogy telepítve vannak-e a kódtárak. `azure-mgmt-resourcegraph`**2.0.0** vagy magasabbnak kell lennie, vagy 9.0.0 vagy magasabbnak kell lennie `azure-mgmt-resource` , és  `azure-cli-core` legalább **2.5.0** -nek kell lennie.
 
    ```bash
    # Check each installed library

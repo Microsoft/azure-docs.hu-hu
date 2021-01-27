@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786717"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919544"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a Elastic Database eszközökkel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,13 +85,15 @@ A minta letöltéséhez és futtatásához kövesse az alábbi lépéseket:
 
 1. Töltse le az [Azure SQL-első lépések minta rugalmas adatbázis-eszközeit](https://github.com/Azure/elastic-db-tools). Bontsa ki a mintát egy kiválasztott helyre.
 
-2. Projekt létrehozásához nyissa meg a *ElasticScaleStarterKit. SLN* megoldást a *C#* könyvtárból.
+2. Projekt létrehozásához nyissa meg a *ElasticDatabaseTools. SLN* megoldást a *rugalmas-db-Tools-Master* könyvtárból. 
 
-3. A minta projekthez tartozó megoldásban nyissa meg a *app.config* fájlt. Ezután a fájl utasításait követve adja hozzá a kiszolgáló nevét és a bejelentkezési adatait (Felhasználónév és jelszó).
+3. Állítsa be a *ElasticScaleStarterKit* projektet indítási projektként.
 
-4. Hozza létre és futtassa az alkalmazást. Ha a rendszer kéri, engedélyezze a Visual Studio számára a megoldás NuGet-csomagjainak visszaállítását. Ez a művelet letölti a rugalmas adatbázis ügyféloldali függvénytárának legújabb verzióját a NuGet webhelyről.
+4. A *ElasticScaleStarterKit* projektben nyissa meg a *App.config* fájlt. Ezután a fájl utasításait követve adja hozzá a kiszolgáló nevét és a bejelentkezési adatait (Felhasználónév és jelszó).
 
-5. Ha többet szeretne megtudni az ügyféloldali kódtár képességeiről, kísérletezzen a különböző lehetőségekkel. Figyelje meg, hogy az alkalmazás hogyan veszi át a konzol kimenetét, és nyugodtan vizsgálja meg a jelenetek mögötti kódot.
+5. Hozza létre és futtassa az alkalmazást. Ha a rendszer kéri, engedélyezze a Visual Studio számára a megoldás NuGet-csomagjainak visszaállítását. Ez a művelet letölti a rugalmas adatbázis ügyféloldali függvénytárának legújabb verzióját a NuGet webhelyről.
+
+6. Ha többet szeretne megtudni az ügyféloldali kódtár képességeiről, kísérletezzen a különböző lehetőségekkel. Figyelje meg, hogy az alkalmazás hogyan veszi át a konzol kimenetét, és nyugodtan vizsgálja meg a jelenetek mögötti kódot.
 
    ![Előrehaladás][4]
 
@@ -102,19 +104,19 @@ Gratulálunk! Sikeresen felépítette és futtatta az első felhalmozott alkalma
 
 ## <a name="key-pieces-of-the-code-sample"></a>A mintakód legfontosabb darabjai
 
-* Szegmensek **és szegmens térképek kezelése** : a kód azt mutatja be, hogyan használhatók a *ShardManagementUtils.cs* -fájlban a szegmensek, tartományok és leképezések. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).  
+* Szegmensek **és szegmens térképek kezelése**: a kód azt mutatja be, hogyan használhatók a *ShardManagementUtils.cs* -fájlban a szegmensek, tartományok és leképezések. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).  
 
-* **Adatfüggő útválasztás** : a jobb oldali szegmenshez tartozó tranzakciók útválasztása a *DataDependentRoutingSample.cs* fájlban látható. További információ: [az Adatkezeléstől függő útválasztás](https://go.microsoft.com/?linkid=9862596).
+* **Adatfüggő útválasztás**: a jobb oldali szegmenshez tartozó tranzakciók útválasztása a *DataDependentRoutingSample.cs* fájlban látható. További információ: [az Adatkezeléstől függő útválasztás](https://go.microsoft.com/?linkid=9862596).
 
-* **Több szegmensre történő lekérdezés** : a *MultiShardQuerySample.cs* -fájlban láthatók a több szegmens közötti lekérdezések. További információ: [több szegmensből álló lekérdezés](https://go.microsoft.com/?linkid=9862597).
+* **Több szegmensre történő lekérdezés**: a *MultiShardQuerySample.cs* -fájlban láthatók a több szegmens közötti lekérdezések. További információ: [több szegmensből álló lekérdezés](https://go.microsoft.com/?linkid=9862597).
 
 * **Üres** szegmensek hozzáadása: az új üres szegmensek ismétlődő hozzáadását a *CreateShardSample.cs* -fájlban található kód hajtja végre. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Egyéb rugalmas skálázási műveletek
 
-* **Meglévő szegmens felosztása** : a szegmensek felosztására szolgáló képességeket a felosztott egyesítési eszköz is megadja. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
+* **Meglévő szegmens felosztása**: a szegmensek felosztására szolgáló képességeket a felosztott egyesítési eszköz is megadja. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
 
-* A meglévő szegmensek **egyesítése** : a szegmens egyesítéseket a felosztási egyesítés eszköz használatával is elvégezheti. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
+* A meglévő szegmensek **egyesítése**: a szegmens egyesítéseket a felosztási egyesítés eszköz használatával is elvégezheti. További információ: adatok áthelyezése a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md).
 
 ## <a name="cost"></a>Költségek
 

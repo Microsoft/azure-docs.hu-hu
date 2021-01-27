@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751988"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920443"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Riasztások letiltása az Azure Defenderből
 
@@ -23,10 +23,10 @@ Ez az oldal azt ismerteti, hogyan használhatja a riasztások letiltási szabál
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:| Általánosan elérhető |
+|Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes<br>(A legtöbb biztonsági riasztás csak az Azure Defenderrel érhető el)|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** és a **tulajdonos** létrehozhat/törölhet szabályokat.<br>A **biztonsági olvasó** és az **olvasó** megtekintheti a szabályokat.|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -142,7 +142,7 @@ A REST API a következő letiltási szabályokra vonatkozó HTTP-metódusok:
 A részletekért és a használati példákért tekintse meg az [API dokumentációját](/rest/api/securitycenter/). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az Azure Security Center letiltási szabályait ismerteti, amelyek automatikusan elmulasztják a nemkívánatos riasztásokat.
 

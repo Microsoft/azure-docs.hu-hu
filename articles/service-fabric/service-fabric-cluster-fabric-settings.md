@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095270"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919782"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetén testreszabhatja a beállításokat, ha frissíti a *ClusterConfig.js* fájlt, és végrehajtja a fürtön a konfiguráció frissítését. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -521,7 +521,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |AutoDetectAvailableResources|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Ez a konfiguráció elindítja a rendelkezésre álló erőforrások automatikus észlelését a csomóponton (CPU és memória), ha ez a konfiguráció igaz értékre van állítva. a valós kapacitások beolvasása után kijavítani fogjuk, ha a felhasználó hibás csomópont-kapacitást adott meg, vagy egyáltalán nem definiálta őket, ha a konfiguráció hamis értékre van állítva, a felhasználó által megadott hibás csomópont-kapacitások de nem fogjuk kijavítani őket; azt jelenti, hogy a felhasználó szeretné, hogy a csomópontok >ként legyenek meghatározva, mint a csomópont, vagy ha a kapacitás nincs meghatározva; a rendszer korlátlan kapacitást feltételez |
 |BalancingDelayAfterNewNode | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az új csomópont hozzáadása után ne kezdjen el kiegyenlíteni tevékenységeket ezen az időszakon belül. |
 |BalancingDelayAfterNodeDown | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az adott időszakon belül ne kezdjen el kiegyenlíteni tevékenységeket egy csomópont leállási eseménye után. |
-|BlockNodeInUpgradeConstraintPriority | Int, az alapértelmezett érték 0 |Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás  |
+|BlockNodeInUpgradeConstraintPriority | Int, az alapértelmezett érték-1 |Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás  |
 |CapacityConstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, az alapértelmezett érték 20 | Dinamikus|Meghatározza, hogy a rendszer hány alkalommal ResourceBalancer el a kiállított mozgásokat a diagnosztika végrehajtása előtt, és az állapottal kapcsolatos figyelmeztetések kibocsátása megtörténjen. Negatív: nincsenek kibocsátva figyelmeztetések ebben a feltételben. |
 |ConstraintFixPartialDelayAfterNewNode | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az új csomópont hozzáadása után a DDo nem oldja meg a FaultDomain és a UpgradeDomain korlátozás megsértését ezen az időtartamon belül. |

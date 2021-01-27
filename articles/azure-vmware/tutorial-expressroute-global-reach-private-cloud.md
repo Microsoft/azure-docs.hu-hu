@@ -2,13 +2,13 @@
 title: Oktatóanyag – helyszíni környezetek saját felhőbe
 description: Megtudhatja, hogyan hozhat létre ExpressRoute Global Reach-társítást egy Azure VMware-megoldásban található privát felhőbe.
 ms.topic: tutorial
-ms.date: 1/5/2021
-ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/27/2021
+ms.openlocfilehash: e7b1e349f67fe63f63183c0ff6d1522498c65f8c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913158"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918721"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
 
@@ -16,7 +16,7 @@ A ExpressRoute Global Reach összekapcsolja a helyszíni környezetet az Azure V
 
 Az [Azure – Private felhő hálózatkezelésének konfigurálásakor](tutorial-configure-networking.md) használt ExpressRoute-áramkör engedélyezési kulcsok létrehozását és használatát igényli.  Már használt egy engedélyezési kulcsot a ExpressRoute áramkörből, és ebben az oktatóanyagban egy másodikat fog létrehozni a helyszíni ExpressRoute-áramkörhöz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Második engedélyezési kulcs létrehozása a _Circuit 2_, a Private Cloud ExpressRoute áramkörhöz
@@ -33,7 +33,7 @@ Mielőtt engedélyezi a kapcsolatot a két ExpressRoute-áramkör között a Exp
 - Kapcsolat létesítése egy Azure VMware-megoldás saját ExpressRoute-áramkörével és egy Azure-beli virtuális hálózatban (VNet) található ExpressRoute-átjáróval, amely a _2. áramköri_ eljárásokból áll.  
 - Egy különálló, működő ExpressRoute-áramkör, amely a helyszíni környezetek Azure-hoz való összekapcsolására szolgál – amely az _1. áramköri_ eljárás perspektívája.
 - Egy/29 nem átfedésben lévő [hálózati címterület](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) a ExpressRoute Global REACH-társításhoz.
-- Győződjön meg arról, hogy az összes útválasztó, beleértve a ExpressRoute-szolgáltató szolgáltatást, támogatja a 4 bájtos autonóm rendszer számát (ASN). Az Azure VMware-megoldás 4 bájtos nyilvános ASN használ az útvonalak reklámozására.
+- Győződjön meg arról, hogy minden átjáró, beleértve a ExpressRoute-szolgáltató szolgáltatását, támogatja a 4 bájtos autonóm rendszer számát (ASN). Az Azure VMware-megoldás 4 bájtos nyilvános ASN használ a hirdetési útvonalakhoz.
 
 > [!TIP]
 > Ezeknek az előfeltételeknek a kontextusában a helyszíni ExpressRoute áramkör _1_, a saját Felhőbeli ExpressRoute áramkör pedig egy másik előfizetésben és _2_. címkével ellátott áramkörben található. 

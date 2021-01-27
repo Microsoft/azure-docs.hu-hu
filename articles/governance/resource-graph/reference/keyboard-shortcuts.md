@@ -1,15 +1,15 @@
 ---
 title: Billentyűparancsok az Azure Resource Graph Explorerben Azure Portal
 description: A Azure Portal Azure Resource Graph Explorer támogatja a billentyűparancsokat a műveletek végrehajtásához és a Navigálás megkönnyítéséhez.
-ms.date: 10/21/2020
+ms.date: 01/27/2021
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 70777db630a654dc61aad697561583a02c0ccc25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340121"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919091"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Az Azure Resource Graph Explorerrel használható billentyűparancsok
 

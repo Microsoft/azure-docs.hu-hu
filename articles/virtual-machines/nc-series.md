@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 97b5d6bc6f19e07ea7c980b98c1e7986c59dc546
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 40eed41dbaa3314c00faebf1c2452aaa6fb46dc9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585411"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920090"
 ---
 # <a name="nc-series"></a>NC sorozat
 
@@ -23,6 +23,7 @@ Az NC sorozatú virtuális gépeket az [NVIDIA Tesla K80](https://www.nvidia.com
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): nem támogatott<br>
 NVIDIA NVLink Interconnect: nem támogatott<br>
 <br>
 

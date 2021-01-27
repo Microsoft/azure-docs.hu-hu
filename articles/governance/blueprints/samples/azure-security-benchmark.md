@@ -1,18 +1,18 @@
 ---
 title: Azure-biztonsági teljesítményteszt tervmintájának áttekintése
 description: Az Azure-biztonsági teljesítményteszt tervmintájának áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057586"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919239"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Az Azure Security benchmark tervének mintája
 
-Az Azure-biztonsági teljesítményteszt az [Azure Policy](../../policy/overview.md) használatával biztosít irányítási korlátokat, amelyek segítségével felmérheti az [Azure-biztonsági teljesítményteszt](../../../security/benchmarks/overview.md) adott vezérlőit. Ez a tervminta lehetővé teszi az ügyfelek számára, hogy bármely olyan, az Azure által üzembe helyezett architektúrához üzembe helyezzenek egy alapvető szabályzatkészletet, amelyhez implementálni szeretnék az Azure-biztonsági teljesítményteszt vezérlőit.
+Az Azure Security benchmark Blueprint minta az irányítási őr-síneket olyan [Azure Policy](../../policy/overview.md) segítségével biztosítja, amelyek segítenek az [Azure Security benchmark v1](../../../security/benchmarks/overview.md) -vezérlők értékelésében. Ez a tervminta lehetővé teszi az ügyfelek számára, hogy bármely olyan, az Azure által üzembe helyezett architektúrához üzembe helyezzenek egy alapvető szabályzatkészletet, amelyhez implementálni szeretnék az Azure-biztonsági teljesítményteszt vezérlőit.
 
 ## <a name="control-mapping"></a>Vezérlőelem-leképezés
 
@@ -37,7 +37,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg az **Azure Security teljesítményteszt** tervezetét _más minták_ alatt, és válassza ki a nevet a minta kiválasztásához.
+1. Keresse meg az **Azure Security teljesítményteszt v1** tervezetének mintáját _más minták_ alatt, és válassza ki a nevet a minta kiválasztásához.
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
@@ -60,7 +60,7 @@ A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött
 
 ### <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 1cbd4c92ec4c124cfd384f45a4cd6f47fdc60be6
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 3821ef790728117df52bf534d75729347a0d8c9f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180166"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919901"
 ---
 # <a name="dcsv2-series"></a>DCsv2 sorozat
 
@@ -26,6 +26,7 @@ Példa a használati esetekre: a bizalmas többrésztvevős adatmegosztás, a cs
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 2. generáció<br>
+[Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 
 * A Standard_DC8_v2 kivételével
 

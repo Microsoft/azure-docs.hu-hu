@@ -1,14 +1,14 @@
 ---
 title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892727"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919342"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -31,7 +31,7 @@ Szinte minden, amit az Azure-tervezetekben szeretne felvenni az üzembe helyezé
 
 Az Azure-tervezetek esetében a terv meghatározása (mit _kell_ telepíteni) és a terv-hozzárendelés (mi _volt_ az üzembe helyezett) közötti kapcsolat megmarad. E kapcsolatnak köszönhetően hatékonyabban követhetők nyomon és naplózhatók az üzembe helyezett összetevők. Az Azure-tervrajzok egyszerre több előfizetést is frissíthetnek, amelyekre ugyanezen terv vonatkozik.
 
-Nem kell választania egy ARM-sablon és egy terv között. Minden tervezet nulla vagy több ARM _-sablonból_állhat. Ez a támogatás azt jelenti, hogy az ARM-sablonok könyvtárainak fejlesztésére és karbantartására tett korábbi erőfeszítések az Azure-tervezetekben újrafelhasználhatók.
+Nem kell választania egy ARM-sablon és egy terv között. Minden tervezet nulla vagy több ARM _-sablonból_ állhat. Ez a támogatás azt jelenti, hogy az ARM-sablonok könyvtárainak fejlesztésére és karbantartására tett korábbi erőfeszítések az Azure-tervezetekben újrafelhasználhatók.
 
 ## <a name="how-its-different-from-azure-policy"></a>Eltérések az Azure Policyhez képest
 
@@ -47,7 +47,7 @@ A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ e
 
 A terv összetevőkből áll _._ Az Azure-tervezetek jelenleg a következő erőforrásokat támogatják összetevőkként:
 
-|Erőforrás  | Hierarchialehetőségek| Leírás  |
+|Erőforrás  | Hierarchialehetőségek| Description  |
 |---------|---------|---------|
 |Erőforráscsoportok | Előfizetés | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezek a helyőrző erőforráscsoportok lehetővé teszik az erőforrások rendszerezését, és a benne foglalt szabályzatok és szerepkör-hozzárendelési összetevők és ARM-sablonok hatókör-korlátozását. |
 |ARM-sablon | Előfizetés, erőforráscsoport | A sablonok, beleértve a beágyazott és a csatolt sablonokat, összetett környezetek létrehozásához használatosak. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
@@ -70,7 +70,7 @@ További információkért tekintse meg a [tervparamétereket](./concepts/parame
 ### <a name="blueprint-publishing"></a>Tervek közzététele
 
 Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen áll a hozzárendelésre, **közzé kell tenni**. A közzétételhez meg kell adni egy **verzió** sztringet (ez betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 20 karakter hosszú lehet), valamint **változási megjegyzések** is megadhatók, de ez nem kötelező. A **verzió** megkülönbözteti a tervet annak jövőbeli módosított változataitól, és lehetővé teszi az egyes verziók hozzárendelését. A verziókezelés azt is jelenti, hogy egy adott terv különböző **verziói** is hozzárendelhetők ugyanahhoz az előfizetéshez. Ha a tervben további változások történnek, a **közzétett** 
- **verzió** továbbra is létezik, ahogy a nem **közzétett módosítások**is. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
+ **verzió** továbbra is létezik, ahogy a nem **közzétett módosítások** is. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
 
 ## <a name="blueprint-assignment"></a>Tervek hozzárendelése
 
@@ -108,7 +108,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 
 A következő beépített szerepkörök érhetők el:
 
-|Azure-szerepkör | Leírás |
+|Azure-szerepkör | Description |
 |-|-|
 |[Tulajdonos](../../role-based-access-control/built-in-roles.md#owner) | A többi engedélyen kívül minden Azure Blueprint kapcsolódó engedélyt tartalmaz. |
 |[Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) | Más engedélyek mellett létrehozhat és törölhet tervrajz-definíciókat, de nem rendelkezik terv-hozzárendelési engedélyekkel. |
@@ -126,10 +126,10 @@ Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
 |Objektum|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|
-|Terv|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
+|Terv|Name|betűk, számok, kötőjelek és időszakok|48|
 |Terv|Verzió|betűk, számok, kötőjelek és időszakok|20|
-|Tervek hozzárendelése|Name (Név)|betűk, számok, kötőjelek és időszakok|90|
-|Tervrajz-összetevő|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
+|Tervek hozzárendelése|Name|betűk, számok, kötőjelek és időszakok|90|
+|Tervrajz-összetevő|Name|betűk, számok, kötőjelek és időszakok|48|
 
 ## <a name="video-overview"></a>Videó – áttekintés
 

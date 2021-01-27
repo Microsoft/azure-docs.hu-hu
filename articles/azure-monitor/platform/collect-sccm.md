@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/28/2019
-ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 11/30/2020
+ms.openlocfilehash: ec19396d782bf34e85001892159c0ce785487f09
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008973"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918889"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
 A Microsoft Endpoint Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtési adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
+
+> [!IMPORTANT]
+> A Configuration Manager 2010-es verziótól kezdődően ez a szolgáltatás elavult.<!-- 8269855 --> További információ: [Configuration Manager eltávolított és elavult funkciói](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,7 +115,7 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 
 9. A kapcsolatok létrehozásának és konfigurálásának megkezdéséhez tekintse át a beállításokat a **Beállítások megerősítése** lapon, majd a **tovább** gombra kattintva.
 
-10. Ha a konfiguráció elkészült, megjelenik a **Befejezés** lap. Válassza a **Bezárás** lehetőséget. 
+10. Ha a konfiguráció elkészült, megjelenik a **Befejezés** lap. Válassza a **Bezárás** gombot. 
 
 Miután csatolta Configuration Managert a Azure Monitorhoz, hozzáadhat vagy eltávolíthat gyűjteményeket, és megtekintheti a kapcsolat tulajdonságait.
 
@@ -147,7 +150,7 @@ A gyűjtemények importálása után láthatja, hány számítógépet észlelt 
 
 Ha rákattint valamelyikre, a naplófájl-szerkesztő megnyílik az összes importált csoport vagy az egyes csoportokhoz tartozó összes számítógép között. A [naplóbeli keresés](../log-query/log-query-overview.md)használatával további részletes elemzéseket végezhet a gyűjtemény tagsági adataiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [naplók keresési](../log-query/log-query-overview.md) funkciójának használatával megtekintheti a Configuration Manager adataival kapcsolatos részletes információkat.
 

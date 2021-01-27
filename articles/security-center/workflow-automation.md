@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900842"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919527"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center eseményindítóra adott válaszok automatizálása
 
@@ -38,7 +38,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
 1. A Security Center oldalsávján válassza a **munkafolyamat-automatizálás** elemet.
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Munkafolyamat-automatizálások listája":::
 
     Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
 
@@ -46,25 +46,14 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
     Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
     1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
+    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az "SQL" kifejezést tartalmazó biztonsági riasztást hoz létre.
 
         > [!NOTE]
-        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat" tartalmaz, például az **SQL-adatbázisokra vonatkozó sebezhetőségi felmérési eredményeket kell szervizelni** , a logikai alkalmazás nem aktiválódik minden új biztonsági keresésnél. csak a szülő javaslat állapotának megváltozásakor.
+        > Ha az trigger olyan javaslat, amely "alárendelt – ajánlásokat" tartalmaz, például az **SQL-adatbázisokra vonatkozó sebezhetőségi felmérési eredményeket kell szervizelni**, a logikai alkalmazás nem aktiválódik minden új biztonsági keresésnél. csak a szülő javaslat állapotának megváltozásakor.
 
     1. Az a logikai alkalmazás, amely az aktiválási feltételek teljesülése esetén fog futni. 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
-
-    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
-
-1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
-
-    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
-    1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
-
-        > [!NOTE]
-        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Munkafolyamat-automatizálások ablaktábla hozzáadása":::
 
 1. A műveletek szakaszban kattintson az **új létrehozása** lehetőségre a logikai alkalmazás létrehozási folyamatának megkezdéséhez.
 
@@ -127,33 +116,11 @@ A szabályzatok megvalósítása:
     > [!TIP]
     > Ezeket a Azure Policy keresésével is megtalálhatja:
     > 1. Nyissa meg Azure Policy.
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
-
-    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
-
-1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
-
-    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
-    1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
-
-        > [!NOTE]
-        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Hozzáférés Azure Policy":::
     > 2. A Azure Policy menüben válassza a **definíciók** lehetőséget, és keressen rájuk név alapján. 
 
 1. A megfelelő Azure Policy lapon válassza a **hozzárendelés** lehetőséget.
-    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
-
-    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
-
-1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
-
-    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
-    1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
-
-        > [!NOTE]
-        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat":::
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="A Azure Policy kiosztása":::
 
 1. Nyissa meg az egyes lapokat, és adja meg a kívánt paramétereket:
     1. Az **alapvető beállítások** lapon állítsa be a házirend hatókörét. A központosított felügyelet használatához rendelje hozzá a szabályzatot a munkafolyamat-automatizálási konfigurációt használó előfizetéseket tartalmazó felügyeleti csoporthoz. 
@@ -162,18 +129,7 @@ A szabályzatok megvalósítása:
         > Minden paraméterhez tartozik egy elemleírás, amely ismerteti az Ön számára elérhető lehetőségeket.
         >
         > Azure Policy paraméterek lapja (1) hozzáférést biztosít a hasonló konfigurációs beállításokhoz, mint Security Center munkafolyamat-automatizálási lapja (2).
-        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="Munkafolyamat-automatizálások listája&quot;:::
-
-    Ebből a lapról új Automation-szabályokat hozhat létre, valamint engedélyezheti, letilthatja vagy törölheti a meglévőket.
-
-1. Új munkafolyamat definiálásához kattintson a **munkafolyamat-automatizálás hozzáadása** lehetőségre. 
-
-    Megjelenik egy ablaktábla az új automatizálási beállításokkal. Itt megadhatja a következőket:
-    1. Az automatizálás neve és leírása.
-    1. Az automatikus munkafolyamatot kezdeményező eseményindítók. Előfordulhat például, hogy azt szeretné, hogy a logikai alkalmazás akkor fusson, amikor az &quot;SQL&quot; kifejezést tartalmazó biztonsági riasztást hoz létre.
-
-        > [!NOTE]
-        > Ha az trigger olyan javaslat, amely &quot;alárendelt – ajánlásokat" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="A paraméterek összehasonlítása a munkafolyamat-automatizálásban Azure Policy" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. Ha a hozzárendelést meglévő előfizetésekre szeretné alkalmazni, nyissa meg a **szervizelés** lapot, és válassza a Szervizelési feladat létrehozása lehetőséget.
 

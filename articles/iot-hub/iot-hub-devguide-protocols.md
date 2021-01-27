@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016000"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919025"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Hivatkozás – kommunikációs protokoll kiválasztása
 
@@ -42,7 +42,7 @@ A következő táblázat a választott protokollhoz nyújt magas szintű javasla
 
 A következő szempontokat kell figyelembe vennie, amikor kijelöli a protokollt az eszközök közötti kommunikációhoz:
 
-* **Felhő – eszköz minta**. A HTTPS nem rendelkezik hatékony módszerrel a kiszolgáló leküldésének megvalósításához. Így ha a HTTPS protokollt használja, az eszközök lekérdezése IoT Hub a felhőből az eszközre irányuló üzenetekhez. Ez a megközelítés nem hatékony az eszköz és a IoT Hub esetében is. A jelenlegi HTTPS-irányelvek alatt minden eszköznek 25 percenként kell lekérdezni az üzeneteket. A MQTT és a AMQP támogatja a kiszolgáló leküldését a felhőből az eszközre irányuló üzenetek fogadásakor. Lehetővé teszik az üzenetek azonnali leküldését IoT Hubról az eszközre. Ha a kézbesítés késése aggodalomra ad okot, a MQTT vagy a AMQP a legjobb használatú protokollok. A ritkán csatlakoztatott eszközök esetében a HTTPS is működik.
+* **Felhő – eszköz minta**. A HTTPS nem rendelkezik hatékony módszerrel a kiszolgáló leküldésének megvalósításához. Így ha a HTTPS protokollt használja, az eszközök lekérdezése IoT Hub a felhőből az eszközre irányuló üzenetekhez. Ez a megközelítés nem hatékony az eszköz és a IoT Hub esetében is. A jelenlegi HTTPS-irányelvek alatt minden eszköznek 25 percenként kell lekérdezni az üzeneteket. Ha több HTTPS-t ad meg, a kérések szabályozása IoT Hub eredményez. A MQTT és a AMQP támogatja a kiszolgáló leküldését a felhőből az eszközre irányuló üzenetek fogadásakor. Lehetővé teszik az üzenetek azonnali leküldését IoT Hubról az eszközre. Ha a kézbesítés késése aggodalomra ad okot, a MQTT vagy a AMQP a legjobb használatú protokollok. A ritkán csatlakoztatott eszközök esetében a HTTPS is működik.
 
 * **Mező-átjárók**. A MQTT és a HTTPS a TLS-kapcsolaton keresztül csak egyetlen eszköz identitását (az eszköz AZONOSÍTÓját és a hitelesítő adatokat) támogatják. Ezért ezek a protokollok nem támogatottak olyan, a [mezőkhöz tartozó átjárók](iot-hub-devguide-endpoints.md#field-gateways) esetében, amelyek több eszköz identitását igénylik a több eszközt használó, vagy a felsőbb rétegbeli kapcsolatoknak a IoT hub. Az ilyen átjárók olyan protokollt használhatnak, amely egy kapcsolaton (például AMQP) több eszköz-identitást is támogat a felsőbb réteg forgalmához.
 

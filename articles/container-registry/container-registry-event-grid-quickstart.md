@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b4038bb232c14278e838f2c34706dcc103def7e4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694390"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919663"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
 
@@ -25,7 +25,7 @@ A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljutt
 
 - A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa `RESOURCE_GROUP_NAME` egy másik értékre.
 
@@ -144,7 +144,7 @@ Most, hogy már működik a minta alkalmazás, és előfizetett a beállításje
 A következő Azure CLI-parancs végrehajtásával hozzon létre egy tároló-rendszerképet egy GitHub-tárház tartalmából. Alapértelmezés szerint az ACR-feladatok automatikusan leküldenek egy sikeresen létrehozott rendszerképet a beállításjegyzékbe, amely létrehozza az `ImagePushed` eseményt.
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
 ```
 
 A következőhöz hasonló kimenetnek kell megjelennie, míg az ACR-feladatok buildek, majd leküldi a rendszerképet. A következő minta kimenete rövidítve lett csonkítva.
@@ -218,7 +218,7 @@ A Event Grid dokumentációjában találhatja meg az Azure Container Registry es
 
 [Container Registry Azure Event Gridi esemény sémája](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy tároló-beállításjegyzéket, amely egy ACR-feladatokból álló képet készített, törölte azt, és felhasználta a beállításjegyzék eseményeit Event Grid egy minta alkalmazással. Ezután lépjen be az ACR-feladatok oktatóanyagba, ahol többet tudhat meg a Felhőbeli tároló-lemezképek létrehozásáról, beleértve az alapszintű lemezkép frissítésének automatizált buildeit is:
 

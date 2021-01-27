@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740878"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920426"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Erőforrások megismerése és kezelése az eszközök leltározásával
 
@@ -43,7 +43,7 @@ Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan nö
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Minden felhasználó|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -150,7 +150,7 @@ Ha a díjszabás vagy az ügynök figyelése nem vonatkozik egy erőforrásra, a
 
 :::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Egyes erőforrások üres információkat jelenítenek meg az ügynök figyelése vagy az Azure Defender oszlopaiban":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a Azure Security Center eszköz leltározási lapját ismerteti.
 

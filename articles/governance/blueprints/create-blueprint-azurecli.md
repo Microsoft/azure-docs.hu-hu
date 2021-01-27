@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: terv létrehozása az Azure CLI-vel'
 description: Ebben a rövid útmutatóban Azure-tervezeteket használ az összetevők létrehozásához, definiálásához és üzembe helyezéséhez az Azure CLI használatával.
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875211"
+ms.locfileid: "98920240"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Gyors útmutató: Azure Blueprint megadása és hozzárendelése az Azure CLI-vel
 
@@ -167,6 +167,9 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > Mac gépen történő használata esetén `az blueprint` a helyére `\` írja `/` be az elérési utat tartalmazó paraméterek értékét. Ebben az esetben a **Paraméterek** értéke a következő lesz: `artifacts/policyTags.json` .
+
 1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat. Ez a példa az _Apply címkét és az alapértelmezett értékét_ használja a beépített szabályzathoz a (z) GUID azonosítóval `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
    - JSON-fájl – artifacts\policyStorageTags.jsbekapcsolva
@@ -193,6 +196,9 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > Mac gépen történő használata esetén `az blueprint` a helyére `\` írja `/` be az elérési utat tartalmazó paraméterek értékét. Ebben az esetben a **Paraméterek** értéke a következő lesz: `artifacts/policyStorageTags.json` .
 
 1. Sablon hozzáadása az erőforráscsoport alatt. Az ARM-sablonhoz tartozó **template** paraméter tartalmazza a sablon normál JSON-összetevőit. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A terv paraméterei a sablonhoz a paraméter **paramétereinek** használatával és a sablon JSON-ban érhetők el, amelyet a kulcs-érték párok az érték beadására használnak. A terv és a sablon paramétereinek nevei megegyeznek.
 
@@ -276,6 +282,9 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > Mac gépen történő használata esetén `az blueprint` a helyére `\` írja `/` be az elérési utat tartalmazó paraméterek értékét. Ebben az esetben a **sablon** értéke lesz `artifacts/templateStorage.json` , és a **Paraméterek** válnak `artifacts/templateStorageParams.json` .
 
 1. Szerepkör-hozzárendelés hozzáadása az erőforráscsoport alatt. Az előző szerepkör-hozzárendelési bejegyzéshez hasonlóan az alábbi példa a **Tulajdonos** szerepkör definíciós azonosítóját használja, és egy másik paramétert ad neki a tervből. Ez a példa a _tulajdonos_ beépített szerepkörét használja egy GUID-azonosítóval `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` .
 
@@ -372,7 +381,7 @@ Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori mű
 az blueprint assignment delete --name 'assignMyBlueprint'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, hozzárendelt és eltávolított egy tervet az Azure CLI-vel. Ha többet szeretne megtudni az Azure-tervezetekről, folytassa a terv életciklusával foglalkozó cikkel.
 

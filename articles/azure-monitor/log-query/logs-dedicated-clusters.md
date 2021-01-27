@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609944"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920223"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -25,9 +25,6 @@ A dedikált fürtöket igénylő képességek a következők:
 - **[Több munkaterület](../log-query/cross-workspace-query.md)** – ha egy ügyfél több munkaterületet használ az éles környezetben, érdemes lehet dedikált fürtöt használni. A több munkaterületre kiterjedő lekérdezések gyorsabban futnak, ha az összes munkaterület ugyanazon a fürtön található. Az is előfordulhat, hogy a dedikált fürt használata a hozzárendelt kapacitás foglalási szintjeinek figyelembevételével költséghatékony, és az összes munkaterületre vonatkozik, és az összes munkaterületére érvényes, még akkor is, ha ezek némelyike kicsi, és nem jogosult a kapacitás foglalási kedvezményére.
 
 A dedikált fürtök esetében az ügyfeleknek legalább 1 TB-os adatfeldolgozási kapacitással kell véglegesíteni. A dedikált fürtre történő áttelepítés egyszerű. Nincs adatvesztés vagy-szolgáltatás megszakítása. 
-
-> [!IMPORTANT]
-> A dedikált fürtök jóváhagyva és teljes mértékben támogatottak az éles környezetben üzemelő példányok esetében. Az ideiglenes kapacitás megkötése miatt azonban a szolgáltatás használatához előzetes regisztráció szükséges. Az előfizetések azonosítóinak megadásához használja a Microsoft névjegyeit.
 
 ## <a name="management"></a>Kezelés 
 

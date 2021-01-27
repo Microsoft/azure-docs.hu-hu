@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232777"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919629"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -26,7 +26,7 @@ Az Azure AD használati feltételeinek szabályzata egyszerű módszert biztosí
 
 ## <a name="overview-videos"></a>Áttekintő videók
 
-A következő videó a használati feltételekkel kapcsolatos szabályzatok gyors áttekintését tartalmazza.
+A következő videó rövid áttekintést nyújt a felhasználási feltételekről.
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
@@ -117,7 +117,7 @@ Miután elvégezte a használati feltételekkel kapcsolatos szabályzat dokument
 
     ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
-   | Sablon | Leírás |
+   | Sablon | Description |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie, és be kell jelentkeznie. |
@@ -183,7 +183,7 @@ Az Azure AD-naplók használatának megkezdéséhez kövesse az alábbi eljárá
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>A használati feltételek a felhasználók számára
 
-Miután létrehozta és kikényszeríti a használati feltételeket, a hatókörben lévő felhasználók a bejelentkezéskor a következő képernyőt fogják látni.
+Miután létrehozta és kikényszeríti a használati feltételekre vonatkozó szabályzatot, a hatókörben lévő felhasználók a bejelentkezéskor a következő képernyőt fogják látni.
 
 ![Használati feltételek, amelyek akkor jelennek meg, amikor a felhasználó bejelentkezik](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ A felhasználók megtekinthetik a használati feltételeket, és szükség eset�
 
 ![Használati feltételek megtekintése a nagyítási gombokkal](./media/terms-of-use/zoom-buttons.png)
 
-A következő képernyőn látható, hogyan néz ki a használati feltételek a mobileszközök esetében.
+A következő képernyőn látható, hogyan néz ki a használati feltételekre vonatkozó házirend a mobileszközök esetében.
 
 ![Használati feltételek, amelyek akkor jelennek meg, amikor egy felhasználó bejelentkezik egy mobileszközön](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Szerkesztheti a Használati szabályzatok bizonyos részleteit, de nem módosít
     - Előnézet **Frissíthet egy meglévő használati feltételeket tartalmazó** dokumentumot
     - Hozzáadhat egy nyelvet egy meglévő felhasználási feltételekhez
 
-   Ha más beállításokat szeretne módosítani, például a PDF-dokumentumot, a felhasználóknak minden eszközhöz meg kell egyezniük, le kell fogadniuk az időtartamot, az újbóli elfogadás vagy a feltételes hozzáférési szabályzat előtt létre kell hoznia egy új használati feltételeket.
+   Ha más beállításokat szeretne módosítani, például a PDF-dokumentumot, a felhasználóknak minden eszközhöz meg kell egyezniük, le kell kötnie az elfogadást, az időtartamot az újbóli elfogadás előtt, vagy a feltételes hozzáférési szabályzatot, létre kell hoznia egy új felhasználási feltételeket tartalmazó házirendet.
 
     ![Más nyelvi beállítások megjelenítésének szerkesztése ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Szerkesztheti a Használati szabályzatok bizonyos részleteit, de nem módosít
 7.  Miután feltöltötte az új PDF-fájlt, és eldöntötte az újrafogadást, kattintson a panel alján található Hozzáadás gombra.
 8.  Ekkor megjelenik a legfrissebb verzió a dokumentum oszlopban.
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>Használati feltételek korábbi verzióinak megtekintése
+## <a name="view-previous-versions-of-a-tou"></a>Felhasználási feltételek korábbi verzióinak megtekintése
 
 1.  Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a https://aka.ms/catou címen.
 2.  Válassza ki a használati feltételek szabályzatát, amelynek korábbi verzióit meg szeretné tekinteni.
@@ -269,9 +269,9 @@ Szerkesztheti a Használati szabályzatok bizonyos részleteit, de nem módosít
 5.  Azt is megteheti, hogy kijelöl egy adott verziót a **verzió**  legördülő menüből, hogy megtudja, ki fogadta el az adott verziót.
 
 
-## <a name="add-a-terms-of-use-language"></a>Használati feltételek nyelvének megadása
+## <a name="add-a-tou-language"></a>Felhasználási nyelv hozzáadása
 
-Az alábbi eljárás a használati feltételek nyelvének hozzáadását ismerteti.
+Az alábbi eljárás azt ismerteti, hogyan adhat hozzá egy felhasználási nyelvet.
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 1. Válassza ki a szerkeszteni kívánt használati szabályzatot.
@@ -295,10 +295,10 @@ A támogatott platformok és szoftverek listáját itt találja.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Egyéb |
 > | --- | --- | --- | --- | --- |
-> | **Natív alkalmazás** | Igen | Igen | Igen |  |
-> | **Microsoft Edge** | Igen | Igen | Igen |  |
-> | **Internet Explorer** | Igen | Igen | Igen |  |
-> | **Chrome (kiterjesztéssel)** | Igen | Igen | Igen |  |
+> | **Natív alkalmazás** | Igen | Igen | Yes |  |
+> | **Microsoft Edge** | Igen | Igen | Yes |  |
+> | **Internet Explorer** | Igen | Igen | Yes |  |
+> | **Chrome (kiterjesztéssel)** | Igen | Igen | Yes |  |
 
 Az eszközönkénti használati feltételek a következő korlátozásokkal rendelkeznek:
 
@@ -344,9 +344,13 @@ A régi használati szabályzatokat a következő eljárással törölheti.
 
    A használati feltételek már nem jelennek meg.
 
-## <a name="deleted-users-and-active-terms-of-use"></a>Törölt felhasználók és az aktív használati feltételek
+## <a name="user-acceptance-record-deletion"></a>Felhasználói elfogadási rekord törlése
 
-Alapértelmezés szerint a törölt felhasználók 30 napig még törölt állapotban megmaradnak az Azure AD-ban, amely idő alatt szükség esetén egy rendszergazda visszaállíthatja őket. A felhasználók 30 nap után véglegesen törlődnek. Emellett a Azure Active Directory portál használatával a globális rendszergazda explicit módon [véglegesen törölheti a nemrég törölt felhasználókat](../fundamentals/active-directory-users-restore.md) az adott időszak elérésekor. Az egyik felhasználó véglegesen törölve lett, az adott felhasználóra vonatkozó további adatok el lesznek távolítva az aktív használati feltételekről. A törölt felhasználókkal kapcsolatos naplózási információk az auditnaplóban maradnak.
+A felhasználói elfogadási rekordok törlődnek:
+
+- Ha a rendszergazda explicit módon törli a felhasználási feltételeket. Ha ez történik, az adott felhasználási feltételekhez társított összes elfogadási rekord is törlődik.
+- Ha a bérlő elveszíti a prémium szintű Azure Active Directory licencét.
+- A bérlő törlése után.
 
 ## <a name="policy-changes"></a>A szabályzatok változásai
 
@@ -432,6 +436,6 @@ A: Ha az Azure AD használati feltételeit és az [Intune használati](/intune/t
 **K: milyen végpontokat használnak a használati feltételek a hitelesítéshez?**<br />
 A: a Használati feltételek a következő végpontokat használja a hitelesítéshez: https://tokenprovider.termsofuse.identitygovernance.azure.com és https://account.activedirectory.windowsazure.com . Ha a szervezete rendelkezik a beléptetéshez szükséges URL-címek listájával, ezeket a végpontokat fel kell vennie az engedélyezési listára, valamint a bejelentkezéshez használt Azure AD-végpontokat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md)

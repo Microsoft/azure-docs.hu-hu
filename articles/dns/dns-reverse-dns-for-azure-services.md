@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965629"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919867"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Fordított DNS konfigurálása az Azure-ban üzemeltetett szolgáltatásokhoz
 
@@ -33,7 +33,7 @@ A cikk elolvasása előtt Ismerkedjen meg a [fordított DNS és az Azure-támoga
 Azure DNS a számítási erőforrások (például a virtuális gépek, a virtuálisgép-méretezési csoportok vagy a Service Fabric fürtök) PublicIpAddress-erőforráson keresztül érhetők el. A fordított DNS-keresések a PublicIpAddress "ReverseFqdn" tulajdonságának használatával konfigurálhatók.
 
 
-A fordított DNS jelenleg nem támogatott a Azure App Service számára.
+A fordított DNS jelenleg nem támogatott a Azure App Service és a Application Gateway.
 
 ## <a name="validation-of-reverse-dns-records"></a>Fordított DNS-rekordok ellenőrzése
 

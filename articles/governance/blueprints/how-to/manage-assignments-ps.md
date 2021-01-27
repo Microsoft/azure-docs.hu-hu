@@ -1,14 +1,14 @@
 ---
 title: Hozzárendelések kezelése a PowerShell-lel
 description: Megtudhatja, hogyan kezelheti a terv-hozzárendeléseket a hivatalos Azure-tervezetek PowerShell-modullal, az. Blueprint használatával.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051406"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919376"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Hozzárendelések kezelése a PowerShell-lel
 
@@ -49,7 +49,7 @@ A PowerShellhez készült Azure BluePrints modul az az **. Blueprint**.
 ## <a name="get-blueprint-definitions"></a>Tervezet-definíciók beolvasása
 
 A hozzárendelések használatának első lépése gyakran hivatkozik egy terv meghatározására.
-A `Get-AzBlueprint` parancsmag egy vagy több tervrajz-definíciót kap. A parancsmag egy felügyeleti csoportból `-ManagementGroupId {mgId}` vagy egy előfizetéssel is beolvashatja a tervrajz-definíciókat `-SubscriptionId {subId}` . A **Name** paraméter egy terv definícióját kapja meg, de a **ManagementGroupId** vagy a **SubscriptionId**használatával kell használni. A **verzió** használható a **névvel** , hogy világosabb legyen a terv definíciója. A **verzió**helyett a kapcsoló a `-LatestPublished` legutóbb közzétett verziót fogja megragadni.
+A `Get-AzBlueprint` parancsmag egy vagy több tervrajz-definíciót kap. A parancsmag egy felügyeleti csoportból `-ManagementGroupId {mgId}` vagy egy előfizetéssel is beolvashatja a tervrajz-definíciókat `-SubscriptionId {subId}` . A **Name** paraméter egy terv definícióját kapja meg, de a **ManagementGroupId** vagy a **SubscriptionId** használatával kell használni. A **verzió** használható a **névvel** , hogy világosabb legyen a terv definíciója. A **verzió** helyett a kapcsoló a `-LatestPublished` legutóbb közzétett verziót fogja megragadni.
 
 Az alábbi példa a `Get-AzBlueprint` "101-BluePrints-definition-Subscription" nevű tervrajz-definíció összes verziójának lekérését használja egy adott előfizetésből `{subId}` :
 
@@ -164,7 +164,7 @@ Ha a terv-hozzárendelés még nem létezik, akkor a parancsmaggal hozhatja lét
   - Ha nincs megadva erőforráscsoport-paraméter, és nincs **defaultValue**, az erőforráscsoport paraméter nem választható
 - **AssignmentFile** (nem kötelező)
   - A terv-hozzárendelések JSON-fájlhoz való megjelenítésének elérési útja
-  - Ez a paraméter egy olyan PowerShell-paraméterérték része, amely csak a **nevet**, a **tervrajzot**és a **SubscriptionId**tartalmazza, valamint a közös paramétereket.
+  - Ez a paraméter egy olyan PowerShell-paraméterérték része, amely csak a **nevet**, a **tervrajzot** és a **SubscriptionId** tartalmazza, valamint a közös paramétereket.
 
 ### <a name="example-1-provide-parameters"></a>1. példa: paraméterek megadása
 
@@ -205,7 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>2. példa: JSON-hozzárendelési definíciós fájl használata
 
-A következő példa majdnem ugyanazt a hozzárendelést hozza létre, mint az [1. példa](#example-1-provide-parameters). A paramétereknek a parancsmaghoz való átadása helyett a példa egy JSON-hozzárendelés definíciós fájljának és a **AssignmentFile** paraméternek a használatát mutatja be. Emellett a **excludedPrincipals** tulajdonság a **zárolások**részeként van konfigurálva. Nincs PowerShell-paraméter a **excludedPrincipals** számára, és a tulajdonság csak úgy konfigurálható, hogy a JSON-hozzárendelés definíciós fájlján keresztül beállítja.
+A következő példa majdnem ugyanazt a hozzárendelést hozza létre, mint az [1. példa](#example-1-provide-parameters). A paramétereknek a parancsmaghoz való átadása helyett a példa egy JSON-hozzárendelés definíciós fájljának és a **AssignmentFile** paraméternek a használatát mutatja be. Emellett a **excludedPrincipals** tulajdonság a **zárolások** részeként van konfigurálva. Nincs PowerShell-paraméter a **excludedPrincipals** számára, és a tulajdonság csak úgy konfigurálható, hogy a JSON-hozzárendelés definíciós fájlján keresztül beállítja.
 
 ```json
 {
@@ -250,7 +250,7 @@ A felhasználó által hozzárendelt felügyelt identitáshoz tartozó JSON-hozz
 
 ## <a name="update-blueprint-assignments"></a>Terv-hozzárendelések frissítése
 
-Előfordulhat, hogy egy már létrehozott terv-hozzárendelést kell frissítenie. A `Set-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag a parancsmag által megegyező paraméterek többségét veszi igénybe `New-AzBlueprintAssignment` , így a hozzárendelésen beállított minden adat frissül. A kivételek a következők: _név_, _terv_és _SubscriptionId_. Csak a megadott értékek frissülnek.
+Előfordulhat, hogy egy már létrehozott terv-hozzárendelést kell frissítenie. A `Set-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag a parancsmag által megegyező paraméterek többségét veszi igénybe `New-AzBlueprintAssignment` , így a hozzárendelésen beállított minden adat frissül. A kivételek a következők: _név_, _terv_ és _SubscriptionId_. Csak a megadott értékek frissülnek.
 
 Annak megismeréséhez, hogy mi történik a terv-hozzárendelések frissítésekor, tekintse meg [a hozzárendelések frissítésének szabályait](./update-existing-assignments.md#rules-for-updating-assignments).
 
@@ -320,7 +320,7 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="remove-blueprint-assignments"></a>Terv-hozzárendelések eltávolítása
 
-Ha a terv-hozzárendelés eltávolításához szükséges idő, a `Remove-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag **neve** vagy **inputobject elemnél** alapján határozza meg, hogy melyik tervrajz-hozzárendelést kívánja eltávolítani. **SubscriptionId** A SubscriptionId _megadása kötelező_ , és minden esetben meg kell adni.
+Ha a terv-hozzárendelés eltávolításához szükséges idő, a `Remove-AzBlueprintAssignment` parancsmag kezeli ezt a műveletet. A parancsmag **neve** vagy **inputobject elemnél** alapján határozza meg, hogy melyik tervrajz-hozzárendelést kívánja eltávolítani.  A SubscriptionId _megadása kötelező_ , és minden esetben meg kell adni.
 
 Az alábbi példa egy meglévő terv-hozzárendelést olvas be a következővel, `Get-AzBlueprintAssignment` majd eltávolítja azt a megadott előfizetésből `{subId}` :
 

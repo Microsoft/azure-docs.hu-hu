@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660644"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920020"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660644"
 
 Ez a cikk azokat az erőforrásokat sorolja fel, amelyek segítségével további információkhoz juthat az Azure Sentinel használatáról.
 
-Azure Logic Apps összekötők: <https://docs.microsoft.com/connectors/>
+- **Azure Logic apps összekötők**: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Naplózás és jelentéskészítés
@@ -86,10 +86,25 @@ Ezeket az adatok megtekinthetők úgy, hogy az Azure-tevékenység naplójában 
 
 ## <a name="blogs-and-forums"></a>Blogok és fórumok
 
-Tegye fel kérdéseit az Azure Sentinel [TechCommunity-területére](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) .
+Szeretjük a felhasználóink meghallgatását!
 
-Tekintse meg az Azure Sentinel blogbejegyzéseit a [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) és a [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+- **Tegye fel kérdéseit** az Azure Sentinel [TechCommunity-területére](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) . 
+
+- **Javaslatok küldése a** [felhasználói](https://feedback.azure.com/forums/920458-azure-sentinel) hangprogramon keresztüli tökéletesítésekhez.
+
+- **Tekintse meg és véleményezze** az Azure Sentinel blogbejegyzéseit:
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+Az Azure biztonsági és megfelelőségi szolgáltatásával kapcsolatos további információkért tekintse meg a [Microsoft Azure biztonsági és megfelelőségi blogot](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a dokumentumban az Azure Sentinel használatakor hasznos erőforrások listáját olvashatja. Az Azure biztonságával és megfelelőségével kapcsolatos további információkat a [Microsoft Azure biztonsági és megfelelőségi blogjában](/archive/blogs/azuresecurity/)talál.
+
+> [!div class="nextstepaction"]
+> [Minősítés beszerzése!](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [Ügyfelek használati eseteinek beolvasása](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

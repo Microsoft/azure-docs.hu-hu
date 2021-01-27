@@ -11,16 +11,21 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358344"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919935"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>A PTA letiltása a következő használatakor: Azure AD Connect "ne konfigurálja"
+# <a name="disable-pta-when-using-azure-ad-connect"></a>A PTA letiltása a Azure AD Connect használatakor
 
-Ha áteresztő hitelesítést használ a Azure AD Connecthoz, és úgy állította be, hogy "nincs konfigurálva", akkor letilthatja. Ha a PTA-et letiltja, az alábbi parancsmagokkal végezhető el. 
+Ha áteresztő hitelesítést használ a Azure AD Connecthoz, és úgy állította be, hogy **"nincs konfigurálva"**, akkor letilthatja. 
+
+>[!NOTE]
+>Ha a PHS már engedélyezve van, akkor a PTA letiltásával a bérlői tartalékot PHS.
+
+Ha a PTA-et letiltja, az alábbi parancsmagokkal végezhető el. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő előfeltételek szükségesek:
@@ -53,6 +58,6 @@ Ha nem rendelkezik ügynök-géppel, akkor a következő paranccsal telepítheti
 2. Telepítse a szolgáltatást: `.\AADConnectAuthAgentSetup.exe` vagy `.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével](how-to-connect-pta.md)

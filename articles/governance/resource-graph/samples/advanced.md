@@ -1,14 +1,14 @@
 ---
 title: Összetett lekérdezési példák
 description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve az oszlopok használatát, a használt címkék felsorolását és az erőforrások reguláris kifejezésekkel való egyeztetését.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b0a13fb798a9403b240c97fb207bf9b76e01028f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005401"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918870"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
 
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 ## <a name="list-all-extensions-installed-on-a-virtual-machine"></a><a name="join-vmextension"></a>A virtuális gépre telepített összes bővítmény felsorolása
 
 Először is ez a lekérdezés a `extend` virtuális gépek erőforrástípus alapján kéri le az azonosítót nagybetűs ( `toupper()` ) azonosítóként, az operációs rendszer nevének és típusának beolvasásához, valamint a virtuális gép méretének lekéréséhez.
-Az erőforrás-azonosító nagybetűs beszerzése jó módszer arra, hogy felkészüljenek egy másik tulajdonsághoz való csatlakozásra. Ezt követően a lekérdezés a `join` _leftouter_ használatával beolvassa a virtuálisgép-bővítményeket a bővítmény-azonosító felső tokozásának megfelelő módon **kind** `substring` . Az azonosító "/Extensions/" előtti része \<ExtensionName\> megegyezik a virtuális gépek azonosítójának formátumával, ezért ezt a tulajdonságot használjuk `join` . `summarize` Ezután a a virtuálisgép-bővítmény nevével együtt használja `make_list` az egyes bővítmények nevének összevonására, ahol az _azonosító_, a _OSName_, a _OSType_ és a _VMSize_ ugyanaz, mint egyetlen tömb tulajdonság. Végül `order by` pedig az alsó tokozású _OSName_ az **Asc**. Alapértelmezés szerint `order by` csökkenő.
+Az erőforrás-azonosító nagybetűs beszerzése jó módszer arra, hogy felkészüljenek egy másik tulajdonsághoz való csatlakozásra. Ezt követően a lekérdezés a `join` _leftouter_ használatával beolvassa a virtuálisgép-bővítményeket a bővítmény-azonosító felső tokozásának megfelelő módon  `substring` . Az azonosító "/Extensions/" előtti része \<ExtensionName\> megegyezik a virtuális gépek azonosítójának formátumával, ezért ezt a tulajdonságot használjuk `join` . `summarize` Ezután a a virtuálisgép-bővítmény nevével együtt használja `make_list` az egyes bővítmények nevének összevonására, ahol az _azonosító_, a _OSName_, a _OSType_ és a _VMSize_ ugyanaz, mint egyetlen tömb tulajdonság. Végül `order by` pedig az alsó tokozású _OSName_ az **Asc**. Alapértelmezés szerint `order by` csökkenő.
 
 ```kusto
 Resources
@@ -423,7 +423,7 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 
 ## <a name="find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag"></a>Adott címkével rendelkező Storage-fiókok keresése az erőforráscsoporthoz
 
-Az alábbi lekérdezés belső használatával **inner** `join` csatlakozik a Storage-fiókokhoz olyan erőforrás-csoportokkal, amelyekben a kis-és nagybetűket megkülönböztető címke neve és a címke értéke szerepel.
+Az alábbi lekérdezés belső használatával  `join` csatlakozik a Storage-fiókokhoz olyan erőforrás-csoportokkal, amelyekben a kis-és nagybetűket megkülönböztető címke neve és a címke értéke szerepel.
 
 ```kusto
 Resources
@@ -700,7 +700,7 @@ Search-AzGraph -Query "GuestConfigurationResources | where properties.compliance
 
 - Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20extend%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%20%7C%20where%20machine%20%3D%3D%20'MACHINENAME'%20%7C%20project%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20name%2C%20machine%2C%20resourceGroup%2C%20subscriptionId" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezések](starter.md)mintáit.
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
