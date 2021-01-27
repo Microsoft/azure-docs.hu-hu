@@ -1,29 +1,11 @@
 ---
-title: Az Azure Media Services v3 áttekintése
-titleSuffix: Azure Media Services
-description: A Azure Media Services v3 magas szintű áttekintése, amely rövid útmutatókra, oktatóanyagokra és kódokra mutató hivatkozásokat tartalmaz.
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: azure media services, stream, szórás, élő, offline
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308959"
+title: Azure Media Services v3 Áttekintés: Azure Media Services Leírás: az Azure Media Services v3 magas szintű áttekintése, amely rövid útmutatókra, oktatóanyagokra és mintakód-mintákra mutató hivatkozásokat tartalmaz.
+szolgáltatások: Media-Services documentationcenter: na Author: IngridAtMicrosoft Manager: femila Editor: ' ' Tags: ' ' Keywords: Azure Media Services, stream, Broadcast, Live, offline
+
+MS. Service: Media-Services MS. devlang: több MS. topic: Áttekintés ms.tgt_pltfrm: több MS. munkaterhelés: Media MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: MVC
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Ügyfél szándéka: fejlesztőként vagy tartalomszolgáltatóként szeretnék kódolni, adatfolyamként (igény szerint vagy élő verzióban) elemezni a médiatartalom tartalmát, hogy az ügyfeleim: megtekintheti a tartalmakat a böngészők és az eszközök széles köréről, értékes információkhoz juthat a rögzített tartalmakról.
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

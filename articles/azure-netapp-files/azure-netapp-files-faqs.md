@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: a8286768dac33e48bc4d7c4dce0d9934da08c319
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736071"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881418"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -263,7 +263,7 @@ Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetAp
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Használhatok Azure NetApp Files NFS-vagy SMB-köteteket az Azure VMware-megoldással (AVS)?
 
-Az Azure NetApp Files NFS-kötetek csatlakoztathatók AVS Windows-alapú virtuális gépeken vagy Linux rendszerű virtuális gépeken. Azure NetApp Files SMB-megosztásokat az AVS Windows rendszerű virtuális gépeken is leképezheti. További részletekért lásd: [Azure NetApp Files Azure VMware-megoldással]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md).  
+Az Azure NetApp Files NFS-kötetek csatlakoztathatók AVS Windows-alapú virtuális gépeken vagy Linux rendszerű virtuális gépeken. Azure NetApp Files SMB-megosztásokat az AVS Windows rendszerű virtuális gépeken is leképezheti. További részletekért lásd: [Azure NetApp Files Azure VMware-megoldással]( ../azure-vmware/netapp-files-with-azure-vmware-solution.md).  
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Mely régiók támogatottak Azure NetApp Files NFS-vagy SMB-kötetek Azure VMware-megoldással (AVS) való használatához?
 

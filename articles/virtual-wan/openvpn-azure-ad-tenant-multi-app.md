@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e25ef7f55492be4ee491b9ebbbef4aa1eb03c80b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043438"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898087"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory (AD) bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -115,7 +115,7 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
     ![A képernyőképen az imént létrehozott kapcsolathoz tartozó csatlakoztatás gomb látható.](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
-5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást** .
+5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**.
 
     ![A képernyőfelvételen a kapcsolat bontása lehetőséggel összekapcsolt állapotban látható.](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
@@ -141,6 +141,14 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 3. Jelentkezzen be a hitelesítő adataival.
 
+    ![3. diagnosztika](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+
+4. A diagnosztika eredményeinek megtekintése.
+
+    ![A következő képernyőfelvételen látható a kapcsolatok futtatásának diagnosztizálása gomb.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+
+3. Jelentkezzen be a hitelesítő adataival.
+
     ![Képernyőfelvétel: a művelet bejelentkezési párbeszédpanelje.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
 
 4. A diagnosztika eredményeinek megtekintése.
@@ -155,7 +163,7 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 

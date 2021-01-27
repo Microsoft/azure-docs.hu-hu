@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827512"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882484"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 
@@ -94,7 +94,7 @@ A jobb alsó oldalon található további információk a HANA nagyméretű pél
 - 4. változat
 
 A 4. változat a nagy méretű HANA-példányok legújabb architektúrája, amely az Azure-beli virtuális gépek és a 4. változatban vagy sorokban üzembe helyezett HANA nagyméretű példányok közötti hálózati késés jelentős javításával rendelkezik.
-Egy másik nagyon fontos információ található az Áttekintés jobb alsó sarkában, az Azure közelségi elhelyezési csoportjának nevével, amelyet a rendszer automatikusan hoz létre az egyes üzembe helyezett HANA nagyméretű példányok egységéhez. Az SAP-alkalmazás rétegét futtató Azure-beli virtuális gépek üzembe helyezése során a földrajzi elhelyezési csoportra kell hivatkozni. A HANA nagyméretű példány-egységhez társított [Azure Proximity elhelyezési csoport](../../linux/co-location.md) használatával győződjön meg arról, hogy az Azure-beli virtuális gépek üzembe helyezése a Hana nagyméretű példány-egység közelében történik. A közelségi elhelyezési csoportok segítségével megkeresheti az SAP-alkalmazás rétegét ugyanabban az Azure-adatközpontban, mint a 4. változatban üzemeltetett HANA nagyméretű példány-egységeket az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
+Egy másik nagyon fontos információ található az Áttekintés jobb alsó sarkában, az Azure közelségi elhelyezési csoportjának nevével, amelyet a rendszer automatikusan hoz létre az egyes üzembe helyezett HANA nagyméretű példányok egységéhez. Az SAP-alkalmazás rétegét futtató Azure-beli virtuális gépek üzembe helyezése során a földrajzi elhelyezési csoportra kell hivatkozni. A HANA nagyméretű példány-egységhez társított [Azure Proximity elhelyezési csoport](../../co-location.md) használatával győződjön meg arról, hogy az Azure-beli virtuális gépek üzembe helyezése a Hana nagyméretű példány-egység közelében történik. A közelségi elhelyezési csoportok segítségével megkeresheti az SAP-alkalmazás rétegét ugyanabban az Azure-adatközpontban, mint a 4. változatban üzemeltetett HANA nagyméretű példány-egységeket az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
 
 A fejléc jobb oldali oszlopában egy további mező tájékoztatja a HANA nagyméretű példány egységének energiagazdálkodási állapotáról.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services élő események hibakódja | Microsoft Docs
+title: Azure Media Services élő események hibakódja
 description: Ez a cikk az élő események hibakódait sorolja fel.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 310e70bc8c7ddbf3bcd37d4f0276fe04c2979e73
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291534"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897849"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services élő események hibakódja
 
@@ -30,7 +30,7 @@ Az ebben a szakaszban szereplő táblázatok az [élő események](live-events-o
 
 Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) eseményeire, a következő hibák valamelyikét láthatja a [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)  eseményből.
 
-| Eredménykód | Leírás |
+| Eredménykód | Description |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Helytelen betöltési URL-cím |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | A kódoló IP-címe nem található a beállított IP-engedélyezési listán |
@@ -48,7 +48,7 @@ Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) ese
 
 A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) eseményből.
 
-|Eredménykód|Leírás|
+|Eredménykód|Description|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|Az RTMP-munkamenet időtúllépést követően időtúllépést követett el az engedélyezett időkorlát után.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|A videó-vagy hangFLVTag időbélyege érvénytelen az RTMP-kódolótól.|

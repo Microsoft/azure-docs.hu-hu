@@ -2,18 +2,15 @@
 title: A megosztott erőforrásokkal kapcsolatos problémák elhárítása Azure Automation
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation megosztott erőforrásokkal kapcsolatos problémákat.
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187166"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896291"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Megosztott erőforrásokkal kapcsolatos problémák elhárítása
 
@@ -33,7 +30,7 @@ Mivel a PowerShell-modulok importálása összetett, többlépéses folyamat, el
 
 #### <a name="resolution"></a>Feloldás
 
-A probléma megoldásához el kell távolítania a [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) parancsmag használatával beragadt modult. Ezután újra megpróbálkozhat a modul importálásával.
+A probléma megoldásához el kell távolítania a [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) parancsmag használatával beragadt modult. Ezután újra megpróbálkozhat a modul importálásával.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Néhány gyakori ok, amiért előfordulhat, hogy egy modul nem importálható si
 * A struktúra nem felel meg az Automation által igényelt struktúrának.
 * A modul egy másik, az Automation-fiókba nem telepített modultól függ.
 * A modulban hiányzik a függőségei a mappában.
-* A [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) parancsmag a modul feltöltésére használatos, és nem biztosította a teljes tárterület elérési útját, vagy nem töltötte be a modult nyilvánosan elérhető URL-cím használatával.
+* A [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) parancsmag a modul feltöltésére használatos, és nem biztosította a teljes tárterület elérési útját, vagy nem töltötte be a modult nyilvánosan elérhető URL-cím használatával.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -136,7 +133,7 @@ Nem rendelkezik a futtató fiók létrehozásához vagy frissítéséhez szüks�
 
 Futtató fiók létrehozásához vagy frissítéséhez megfelelő [engedélyekkel](../manage-runas-account.md#permissions) kell rendelkeznie a futtató fiók által használt különféle erőforrásokhoz. 
 
-Ha a probléma egy zárolás miatt van, ellenőrizze, hogy a zárolást el lehet-e távolítani. Ezután lépjen a Azure Portal zárolt erőforrásra, kattintson a jobb gombbal a zárolásra, majd válassza a **Törlés**lehetőséget.
+Ha a probléma egy zárolás miatt van, ellenőrizze, hogy a zárolást el lehet-e távolítani. Ezután lépjen a Azure Portal zárolt erőforrásra, kattintson a jobb gombbal a zárolásra, majd válassza a **Törlés** lehetőséget.
 
 ### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Forgatókönyv: a runbook végrehajtásakor a "nem található" GetPerAdapterInfo "nevű belépési pont nem található a (z) iplpapi.dll DLL-fájlban
 
@@ -162,11 +159,11 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha ez a cikk nem oldja meg a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . Ez a hivatalos Microsoft Azure fiók az Azure-Közösség megfelelő erőforrásokhoz való csatlakoztatásához: válaszok, támogatás és szakértők.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.
 

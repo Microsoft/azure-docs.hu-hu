@@ -1,5 +1,5 @@
 ---
-title: Egyéni átalakítás kódolása Media Services v3 REST-Azure használatával | Microsoft Docs
+title: Egyéni átalakítás kódolása Media Services v3 REST-Azure használatával
 description: Ez a témakör azt mutatja be, hogyan használható a Azure Media Services v3 egy egyéni átalakítás a REST használatával történő kódolásához.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2cfc0db2f95b21c872dd2ed0cf4fbf675a8d6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295631"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897611"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Kódolás egyéni átalakítással – REST
 
@@ -137,7 +137,7 @@ Ebben a példában először adunk hozzá egy AacAudio réteget a hangkódolásh
 
 Ebben a példában egy olyan **átalakítót** hozunk létre, amely a korábban definiált egyéni beállításkészlet alapján lett létrehozva. Átalakítás létrehozásakor először a [Get](/rest/api/media/transforms/get) paranccsal ellenőrizze, hogy az egyik már létezik-e. Ha az átalakítás létezik, használja újra. 
 
-A letöltött Poster gyűjteményében válassza az **átalakítások és feladatok** -> **Létrehozás vagy frissítés átalakítás**lehetőséget.
+A letöltött Poster gyűjteményében válassza az **átalakítások és feladatok** -> **Létrehozás vagy frissítés átalakítás** lehetőséget.
 
 A **put** HTTP-kérelem módszere a következőhöz hasonló:
 
@@ -147,7 +147,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 Válassza a **törzs** fület, és cserélje le a törzset a [korábban megadott](#define-a-custom-preset)JSON-kódra. Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt.
 
-Válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra. 
 
 Ahhoz Media Services, hogy az átalakítást a megadott videóra vagy hangra alkalmazza, el kell küldenie egy feladatot az átalakítás alatt. Ha egy teljes példát mutat be, amely bemutatja, hogyan küldhet el egy feladatot egy átalakítás alatt, tekintse meg az [oktatóanyag: Stream video Files – Rest](stream-files-tutorial-with-rest.md)című témakört.
 

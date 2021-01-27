@@ -1,16 +1,16 @@
 ---
-author: hophanms
-ms.author: hophan
+author: amberz
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: ac83f455d2af82c3f6970077fccb17f07e53cccc
+ms.author: amberz
+ms.openlocfilehash: bf872feae9c3a7ca94e5252872adee2b653f5524
 ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900986"
+ms.locfileid: "98896127"
 ---
 ## <a name="creating-and-running-a-scan"></a>Vizsgálat létrehozása és futtatása
 
@@ -27,19 +27,19 @@ ms.locfileid: "98900986"
 
 1. Válassza ki az adatforráshoz való kapcsolódáshoz szükséges hitelesítő adatokat. 
 
-   :::image type="content" source="media/manage-scans/set-up-scan.png" alt-text="Vizsgálat beállítása":::
+   :::image type="content" source="media/manage-scans/set-up-scan-data-explorer.png" alt-text="Vizsgálat beállítása":::
 
 1. A vizsgálat hatókörét az adatforrás adott részeire (például mappák, gyűjtemények vagy sémák) szűkítheti a lista megfelelő elemeinek ellenőrzésével.
 
-   :::image type="content" source="media/manage-scans/scope-your-scan.png" alt-text="A vizsgálat hatóköre":::
+   :::image type="content" source="media/manage-scans/scope-your-scan-data-explorer.png" alt-text="A vizsgálat hatóköre":::
 
 1. Válassza a vizsgálathoz beállított vizsgálati szabályt. Választhat, hogy a rendszer alapértelmezett értéke, a meglévő egyéni beállítások vagy egy új beágyazott elem van-e létrehozva.
 
-   :::image type="content" source="media/manage-scans/scan-rule-set.png" alt-text="Szabálykészlet ellenőrzése":::
+   :::image type="content" source="media/manage-scans/scan-rule-set-data-explorer.png" alt-text="Szabálykészlet ellenőrzése":::
 
 1. Válassza ki a vizsgálati triggert. Beállíthat egy ütemtervet, vagy futtathatja a vizsgálatot egyszer.
 
-   :::image type="content" source="media/manage-scans/trigger-scan.png" alt-text="eseményindító":::
+   :::image type="content" source="media/manage-scans/trigger-scan-data-explorer.png" alt-text="eseményindító":::
 
 1. Tekintse át a vizsgálatot, és válassza a **Mentés és Futtatás** lehetőséget.
 

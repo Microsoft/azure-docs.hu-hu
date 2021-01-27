@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 8fd23e52f045ba007d4b3b48b5e2e4269df53975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b47498127996698d53946eb2aaf54368132ae7f9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336105"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877985"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>Méretezési csoport létrehozása speciális rendszerképből a PowerShell használatával 
 
-Hozzon létre egy virtuális gépet egy megosztott rendszerkép- [gyűjteményben](shared-image-galleries.md) tárolt speciális rendszerkép-verzióból Azure PowerShell használatával. Ha általánosított rendszerkép-verzió használatával szeretne létrehozni egy méretezési készletet, tekintse [meg a méretezési csoport példányainak általánosított rendszerkép-verzióból történő létrehozását](instance-generalized-image-version-powershell.md)ismertető témakört.
+Hozzon létre egy virtuális gépet egy megosztott rendszerkép- [gyűjteményben](../virtual-machines/shared-image-galleries.md) tárolt speciális rendszerkép-verzióból Azure PowerShell használatával. Ha általánosított rendszerkép-verzió használatával szeretne létrehozni egy méretezési készletet, tekintse [meg a méretezési csoport példányainak általánosított rendszerkép-verzióból történő létrehozását](instance-generalized-image-version-powershell.md)ismertető témakört.
 
 Ha a katalógusban egy speciális rendszerkép található, létrehozhat egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss) parancsmag használatával. 
 
@@ -26,7 +26,7 @@ Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak 
 
 Vegye figyelembe, hogy egy adott rendszerkép-verzió használata azt jelenti, hogy az Automation sikertelen lehet, ha az adott rendszerkép verziója nem érhető el, mert törölték vagy eltávolították a régióból. Javasoljuk, hogy az új virtuális gép létrehozásához használja a rendszerkép-definíció AZONOSÍTÓját, kivéve, ha egy adott rendszerkép-verzióra van szükség.
 
-Az alábbi példák létrehoznak egy *myScaleSet*nevű méretezési csoportot a *MyVMSSRG* erőforráscsoporthoz a *SouthCentralUS* helyen. A méretezési csoport a *myImageDefinition* rendszerképből lesz létrehozva a *myGalleryRG* erőforráscsoport *MyGallery* -rendszerkép galériájában. Ha a rendszer kéri, állítsa be a saját rendszergazdai hitelesítő adatait a méretezési csoport virtuálisgép-példányaihoz.
+Az alábbi példák létrehoznak egy *myScaleSet* nevű méretezési csoportot a *MyVMSSRG* erőforráscsoporthoz a *SouthCentralUS* helyen. A méretezési csoport a *myImageDefinition* rendszerképből lesz létrehozva a *myGalleryRG* erőforráscsoport *MyGallery* -rendszerkép galériájában. Ha a rendszer kéri, állítsa be a saját rendszergazdai hitelesítő adatait a méretezési csoport virtuálisgép-példányaihoz.
 
 
 
@@ -133,8 +133,8 @@ New-AzVmss `
 
 A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása és konfigurálása néhány percet vesz igénybe.
 
-## <a name="next-steps"></a>Következő lépések
-Az [Azure rendszerkép-szerkesztő (előzetes verzió)](../virtual-machines/linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](../virtual-machines/linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját.  
+## <a name="next-steps"></a>További lépések
+Az [Azure rendszerkép-szerkesztő (előzetes verzió)](../virtual-machines/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](../virtual-machines/linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját.  
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
 
@@ -142,5 +142,4 @@ Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrá
 - [Rendszerkép-definíció létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Rendszerképverzió létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](../virtual-machines/troubleshooting-shared-images.md)című témakört.
-
+A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](../virtual-machines/shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](../virtual-machines/troubleshooting-shared-images.md)című témakört.

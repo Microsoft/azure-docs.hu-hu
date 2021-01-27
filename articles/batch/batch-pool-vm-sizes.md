@@ -4,12 +4,12 @@ description: Az elérhető virtuálisgép-méretek és operációsrendszer-verzi
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895230"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897493"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének és rendszerképének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -35,40 +35,38 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | DC | Nem támogatott |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
-| <sup>1</sup> . Dav4 | Minden méret |
-| <sup>1</sup> . Dasv4 | Minden méret |
+| Dav4 | Minden méret |
+| Dasv4 | Minden méret |
 | Ddv4, Ddsv4 |  Minden méret |
 | DV4, Dsv4 | Nem támogatott |
 | Ev3, Esv3 | Minden méret, kivéve a E64is_v3 |
-| <sup>1</sup> . Eav4 | Minden méret |
-| <sup>1</sup> . Easv4 | Minden méret |
+| Eav4 | Minden méret |
+| Easv4 | Minden méret |
 | Edv4, Edsv4 |  Minden méret |
 | Ev4, Esv4 | Nem támogatott |
 | F, FS | Minden méret |
 | Fsv2 | Minden méret |
 | G, GS | Minden méret |
 | H | Minden méret |
-| HB<sup>1</sup> | Minden méret |
-| <sup>1</sup> . HBv2 | Minden méret |
-| HC<sup>1</sup> | Minden méret |
+| HB | Minden méret |
+| HBv2 | Minden méret |
+| HIBRID kapcsolat | Minden méret |
 | Ls | Minden méret |
-| <sup>1</sup> . Lsv2 | Minden méret |
-| M<sup>1</sup> | Minden méret |
-| Mv2<sup>1, 2</sup> | Minden méret |
+| Lsv2 | Minden méret |
+| M | Minden méret |
+| <sup>1</sup> . Mv2 | Minden méret |
 | NC | Minden méret |
-| <sup>1</sup> . NCv2 | Minden méret |
-| <sup>1</sup> . NCv3 | Minden méret |
+| NCv2 | Minden méret |
+| NCv3 | Minden méret |
 | NCasT4_v3 | Nincs – még nem érhető el |
-| <sup>1</sup> . nd | Minden méret |
-| <sup>1</sup> . NDv2 | Nincs – még nem érhető el |
+| ND | Minden méret |
+| NDv2 | Nincs – még nem érhető el |
 | NV | Minden méret |
-| <sup>1</sup> . NVv3 | Minden méret |
-| <sup>1</sup> . NVv4 | Minden méret |
+| NVv3 | Minden méret |
+| NVv4 | Minden méret |
 | SAP HANA | Nem támogatott |
 
-<sup>1</sup> ezek a virtuálisgép-sorozatok lefoglalhatók a virtuális gépek konfigurációjában található batch-készletekben, de létre kell hoznia egy új batch-fiókot, és egy adott [kvóta növelését](batch-quota-limit.md#increase-a-quota)kell kérnie. Ez a korlátozás akkor törlődik, ha a virtuálisgép-sorozatok vCPU-kvótája teljes mértékben támogatott a Batch-fiókok esetében.
-
-<sup>2</sup> ezek a virtuálisgép-sorozatok csak a 2. generációs virtuálisgép-rendszerképekkel használhatók.
+<sup>1</sup> ezek a virtuálisgép-sorozatok csak a 2. generációs virtuálisgép-rendszerképekkel használhatók.
 
 ### <a name="using-generation-2-vm-images"></a>A 2. generációs VM-rendszerképek használata
 
@@ -105,7 +103,7 @@ A következő API-k egyikével visszaállíthatja a Batch által jelenleg támog
 - PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch Pool által támogatott – lemezképek](/cli/azure/batch/pool/supported-images)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - További információ a számítási igényű virtuálisgép-méretek használatáról: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).

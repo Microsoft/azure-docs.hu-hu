@@ -1,24 +1,16 @@
 ---
 title: A Microsoft Azure Automation esetében az eset megnyitásakor begyűjtött adatok | Microsoft Docs
 description: Ez a cikk ismerteti azokat az információkat, amelyeket össze kell gyűjteni, mielőtt megnyitná a Azure Automation Microsoft Azure támogatással rendelkező esetet.
-services: virtual-machines-windows, azure-resource-manager
-documentationcenter: ''
-author: v-miegge
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue, azure-resource-manager
-ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
+services: automation
+ms.subservice: ''
 ms.topic: troubleshooting
 ms.date: 09/23/2019
-ms.author: v-miegge
-ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d2c0cf780b992d7bb464969c50d60ffa5093e8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684845"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896562"
 ---
 # <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Összegyűjtendő adatok egy Microsoft Azure Automation-eset megnyitásakor
 
@@ -58,9 +50,9 @@ Gyűjtse össze a Tudásbázis 4034605. cikkében ismertetett alapszintű adatok
 
 2. Gyűjtse össze a feladatokhoz tartozó AZONOSÍTÓJÚ feladatot, amely a következő hibával rendelkezik:
 
-   1. A Azure Portal lépjen az Automation- **fiókok**elemre.
+   1. A Azure Portal lépjen az Automation- **fiókok** elemre.
    2. Válassza ki a hibaelhárításhoz használt Automation-fiókot, és jegyezze fel a nevet.
-   3. Válassza a **feladatok**lehetőséget.
+   3. Válassza a **feladatok** lehetőséget.
    4. Válassza ki a hibaelhárításhoz szükséges feladatot.
    5. A feladatok összegzése ablaktáblán keresse meg a GUID értéket a **Job ID**-ben.
 
@@ -70,9 +62,9 @@ Gyűjtse össze a Tudásbázis 4034605. cikkében ismertetett alapszintű adatok
 
 4. A naplófájlok összegyűjtése:
 
-   1. A Azure Portal lépjen az Automation- **fiókok**elemre.
+   1. A Azure Portal lépjen az Automation- **fiókok** elemre.
    2. Válassza ki a hibaelhárításhoz használt Automation-fiókot.
-   3. Válassza a **feladatok**lehetőséget.
+   3. Válassza a **feladatok** lehetőséget.
    4. Válassza ki a hibaelhárításhoz szükséges feladatot.
    5. Válassza ki **az összes naplót**.
    6. Az eredményül kapott ablaktáblában Gyűjtse össze az adatokat.
@@ -87,10 +79,10 @@ Az [alapszintű adatelemeken](#basic-data)kívül az alábbi adatokat is össze 
 * Képernyőképek az összes hibaüzenetről.
 * Képernyőképek az aktuális modulokról és azok verziószámáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740715"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879561"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Adatok megjelenítése Azure Time Series Insightsról Power BI
 
@@ -112,10 +112,10 @@ Most, hogy importálta az adatPower BIba, ideje, hogy készítsen egy jelentést
 Miután létrehozta a jelentést, közzéteheti Power BI Reporting Services szolgáltatásban, és megoszthatja másokkal a szervezetében.
 
 ## <a name="advanced-editing"></a>Speciális szerkesztés
-Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné a lekérdezést (például a dátum/idő vagy a környezeti azonosító paramétereit), ezt a Power BI Speciális szerkesztő funkcióján keresztül teheti meg. A [Power bi dokumentációjában](https://docs.microsoft.com/power-bi/desktop-query-overview) tájékozódhat arról, hogyan végezheti el a módosításokat a **Power Query szerkesztő** használatával. 
+Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné a lekérdezést (például a dátum/idő vagy a környezeti azonosító paramétereit), ezt a Power BI Speciális szerkesztő funkcióján keresztül teheti meg. A [Power bi dokumentációjában](/power-bi/desktop-query-overview) tájékozódhat arról, hogyan végezheti el a módosításokat a **Power Query szerkesztő** használatával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [Power bi asztalról](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* További információ a [Power bi asztalról](/power-bi/desktop-query-overview).
 
 * További információ az Azure Time Series Insights Gen2 lévő [adatlekérdezésekről](concepts-query-overview.md) .

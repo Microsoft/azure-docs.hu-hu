@@ -1,25 +1,9 @@
 ---
-title: Élő események és élő kimenetek – fogalmak a Azure Media Services v3-ban
-titleSuffix: Azure Media Services
-description: Ez a témakör áttekintést nyújt az élő eseményekről és a Azure Media Services v3 élő kimenetéről.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: conceptual
-ms.date: 10/23/2020
-ms.author: inhenkel
-ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741824"
+title: élő események és élő kimenetek fogalmak a Azure Media Services v3-ben: Azure Media Services Leírás: Ez a témakör áttekintést nyújt az élő eseményekről és a Azure Media Services v3 élő kimenetéről.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: ne MS. topic: konceptuális MS. Date: 10/23/2020 MS. Author: inhenkel
+
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
 
@@ -71,7 +55,7 @@ Az élő kódoló kimenetében található felbontásokat és bitrátákat az el
 
 ## <a name="creating-live-events"></a>Élő események létrehozása
 
-### <a name="options"></a>Lehetőségek
+### <a name="options"></a>Beállítások
 
 Élő események létrehozásakor a következő beállításokat adhatja meg:
 
@@ -150,7 +134,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
     |---|---|---|
     |REST|[Properties. vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |parancssori felület|[--Vanity-URL](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-Token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Élő bemeneti URL-címek elnevezési szabályai
 

@@ -1,5 +1,5 @@
 ---
-title: Jel leíró hangsávok a Azure Media Services v3-vel | Microsoft Docs
+title: A jel leíró hangsávok a Azure Media Services v3
 description: Kövesse az oktatóanyag lépéseit egy fájl feltöltéséhez, a videó kódolásához, a leíró hangsávok hozzáadásához és a tartalom továbbításához a Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0bd2002e8f6f233361dd85cc08cfbd97ca23ed60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 155e79f8d42988d8498c52c0f930bc03bc599cf0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291262"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898220"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Jel leíró hangsávok
 
@@ -78,7 +78,7 @@ A következő függvény elküld egy feladatot.
 
 A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Javasoljuk, hogy a Event Grid használatával várjon, amíg a feladatok befejeződik.
 
-A feladatok általában a következő állapotokon haladnak át: **ütemezett**, **várólistán**lévő, **feldolgozás**, **befejezett** (végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
+A feladatok általában a következő állapotokon haladnak át: **ütemezett**, **várólistán** lévő, **feldolgozás**, **befejezett** (végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
 További információ: [Event Grid események feldolgozása](reacting-to-media-services-events.md).
 
@@ -221,7 +221,7 @@ Míg a témakörben szereplő minta a streaminget tárgyalja, ugyanazt a hívás
 
 ### <a name="get-streaming-urls"></a>Streamelési URL-címek lekérdezése
 
-Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streaminglocators) , beolvashatja a streaming URL-címeket, ahogy az a **GetStreamingURLs**-ban is látható. URL-cím létrehozásához összefűzni kell a [streaming Endpoint](/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start**parancsot.
+Most, hogy létrejött a [folyamatos átviteli lokátor](/rest/api/media/streaminglocators) , beolvashatja a streaming URL-címeket, ahogy az a **GetStreamingURLs**-ban is látható. URL-cím létrehozásához összefűzni kell a [streaming Endpoint](/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot.
 
 > [!NOTE]
 > Ebben a metódusban szüksége lesz a kimeneti eszköz **folyamatos átviteli lokátorának** létrehozásakor használt locatorName.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202657"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878121"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-alapú biztonsági alapkonfiguráció Azure webalkalmazási tűzfalhoz
 
@@ -406,7 +406,7 @@ Kövesse Security Center a inaktív adatok titkosítására és a titkosításra
 
 Az Azure-WAF megelőzési módban blokkolja a szabályok által észlelt behatolásokat és támadásokat. A támadó "403 jogosulatlan hozzáférés" kivételt kap, és a kapcsolat bezárult. A megelőzési mód rögzíti az ilyen támadásokat a WAF-naplókban.
 
-- [Application Gateway és Azure Security Center közötti integráció áttekintése](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [Application Gateway és Azure Security Center közötti integráció áttekintése](../security-center/security-center-partner-integration.md)
 
 - [WAF módok Application Gateway](ag/ag-overview.md#waf-modes)
 
@@ -721,7 +721,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

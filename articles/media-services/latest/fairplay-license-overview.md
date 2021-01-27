@@ -1,5 +1,5 @@
 ---
-title: A Media Services és az Apple FairPlay licencének támogatása – Azure | Microsoft Docs
+title: A Media Services és az Apple FairPlay-licencek támogatása – Azure
 description: Ez a témakör áttekintést nyújt az Apple FairPlay-licencekre vonatkozó követelményekről és konfigurációról.
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f93567e2502612ebdf4bc6e67de0138b18657a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018732"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897594"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása
 
@@ -120,6 +120,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További [információ a DRM elleni védelemről](protect-with-drm.md)

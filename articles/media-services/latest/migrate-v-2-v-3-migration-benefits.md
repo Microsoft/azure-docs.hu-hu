@@ -1,5 +1,5 @@
 ---
-title: '1. lépés: a Media Services API v3-ra való Migrálás előnyeinek megismerése | Microsoft Docs'
+title: 1. lépés – a Media Services API v3-re való Migrálás előnyeinek megismerése
 description: Ez a cikk a Media Services v2-ről v3-re való Migrálás előnyeit sorolja fel.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1e3fae35ff249b4435cf2fdcd2bf691bc393d56
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5980da900cd1394d5d9a9ddf99063662cad3c88b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690441"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898375"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>1. lépés – a Media Services API v3-re való Migrálás előnyeinek megismerése
 

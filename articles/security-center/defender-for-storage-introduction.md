@@ -7,19 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606725"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881384"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Az Azure Defender tároláshoz bemutatása
 
 
 Az **Azure Defender for Storage** egy olyan Azure-alapú biztonsági intelligencia, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kihasználásához. A biztonsági AI és a [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) speciális képességeinek kihasználásával környezetfüggő biztonsági riasztásokat és ajánlásokat biztosít.
 
-A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a riasztások a Azure Security Centerba vannak integrálva, és e-mailben is elküldhető az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos javaslatokkal kapcsolatban.
+A biztonsági riasztások akkor aktiválódnak, ha a tevékenységben rendellenességek történnek. Ezek a riasztások a Azure Security Centerba vannak integrálva, és e-mailben is elküldhető az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos javaslatokkal kapcsolatban.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -54,7 +54,7 @@ A biztonsági riasztások akkor aktiválódnak, ha:
 A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat. A riasztások exportálhatók az Azure Sentinelbe vagy bármely más harmadik féltől származó SIEM vagy más külső eszközre.
 
 > [!TIP]
-> Javasoljuk, hogy az [Azure Defender for Storage](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) szolgáltatást az előfizetés szintjén konfigurálja, de az [Egyéni Storage-fiókok esetében is konfigurálható](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
+> Javasoljuk, hogy az [Azure Defender for Storage](../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center) szolgáltatást az előfizetés szintjén konfigurálja, de az [Egyéni Storage-fiókok esetében is konfigurálható](../storage/common/azure-defender-storage-configure.md?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Mi a kivonatoló hírnevének elemzése kártevők számára?

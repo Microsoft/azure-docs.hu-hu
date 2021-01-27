@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032813"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898562"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure-költségek kezelésének tervezése
 
@@ -125,7 +125,7 @@ Tekintse át a [Javaslatok alapján történő költségoptimalizálás](../cost
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrálás számlázási és használati API-kkal
 
-Használja az Azure [számlázási](/rest/api/billing/) és [használati](/rest/api/consumption/) API-jait a számlázással és a költségekkel kapcsolatos adatok programozott módon való lekéréséhez. A RateCard API és a Usage API együttes használatával lekérhető a számlázott használat. További információkért tekintse meg az [Információk a Microsoft Azure-erőforrások igénybevételéről](../manage/usage-rate-card-overview.md) szakaszt.
+Használja az Azure [számlázási](/rest/api/billing/) és [használati](/rest/api/consumption/) API-jait a számlázással és a költségekkel kapcsolatos adatok programozott módon való lekéréséhez. A RateCard API és a Usage API együttes használatával lekérhető a számlázott használat. További információkért tekintse meg az [Információk a Microsoft Azure-erőforrások igénybevételéről](../manage/consumption-api-overview.md#usage-details-api) szakaszt.
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> További forrásanyagok és különleges esetek
 

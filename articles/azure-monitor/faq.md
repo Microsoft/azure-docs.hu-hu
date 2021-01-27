@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746798"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878935"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -380,6 +380,12 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 * Ha nincs ügyféloldali parancsfájl, beállíthatja [a cookie-kat a kiszolgálón](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Ha egy valós felhasználó különböző böngészőkben használja a webhelyét, vagy ha privát vagy inkognitóbani böngészést vagy különböző gépeket használ, a rendszer egynél többször veszi fel őket.
 * A bejelentkezett felhasználók számítógépek és böngészők közötti azonosításához vegyen fel egy hívást a [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users)szolgáltatásba.
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Hogyan hoz Application Insights az eszköz adatait (böngésző, operációs rendszer, nyelv, modell)?
+
+A böngésző átadja a felhasználói ügynök sztringjét a kérelem HTTP-fejlécében, a Application Insights betöltési szolgáltatás pedig [ua-elemzőt](https://github.com/ua-parser/uap-core) használ az adattáblákban és a élményekben látható mezők létrehozásához. Ennek eredményeképpen Application Insights felhasználók nem módosíthatják ezeket a mezőket.
+
+Esetenként előfordulhat, hogy az adatok hiányoznak vagy pontatlanok, ha a felhasználó vagy a vállalat letiltja a felhasználói ügynök küldését a böngésző beállításaiban. Emellett előfordulhat, hogy az [ua-elemző regexek](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) nem tartalmazzák az összes eszközre vonatkozó információt, vagy a Application Insights nem fogadták el a legújabb frissítéseket.
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Engedélyeztem mindent Application Insights?
 | Mit kell látnia? | Útmutató | Miért szeretné |

@@ -3,16 +3,16 @@ title: Bepillantást nyerhet a Backup Center használatával
 description: Ismerje meg, hogyan elemezheti a korábbi trendeket, és mélyebb elemzéseket készíthet a biztonsági mentésekről a Backup Center használatával.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173749"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893693"
 ---
-# <a name="obtain-insights-using-backup-center"></a>Bepillantást nyerhet a Backup Center használatával
+# <a name="obtain-insights-using-backup-center-preview"></a>Eredmények beszerzése a Backup Center (előzetes verzió) használatával
 
-A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekintéséhez a Backup Center egy felületet biztosít a [biztonsági mentési jelentésekhez](configure-reports.md), amely [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. A biztonsági mentési jelentések a következő képességeket kínálja:
+A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekintéséhez a Backup Center egy felületet biztosít a [biztonsági mentési jelentésekhez (előzetes verzió)](configure-reports.md), amely [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. A biztonsági mentési jelentések a következő képességeket kínálja:
 
 - A Felhőbeli tárhely kiosztása és előrejelzése.
 
@@ -24,7 +24,7 @@ A korábbi trendek elemzéséhez és a biztonsági másolatok mélyebb betekint�
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-- A biztonsági mentési jelentések jelenleg nem érhetők el Azure Database for PostgreSQL kiszolgáló biztonsági mentéséhez.
+- A biztonsági mentési jelentések (előzetes verzió) jelenleg nem érhetők el Azure Database for PostgreSQL kiszolgáló biztonsági mentéséhez.
 
 - A támogatott és nem támogatott forgatókönyvek részletes listáját a [támogatási mátrixban](backup-center-support-matrix.md) találja.
 

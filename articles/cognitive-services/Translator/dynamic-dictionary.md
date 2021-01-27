@@ -3,19 +3,19 @@ title: Dinamikus szótár – Translator
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk az Azure Cognitive Services Translator dinamikus szótár funkciójának használatát ismerteti.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: de45867e717f001ab54e16c4b21f04494affd326
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: ebfccb6fed46db65f6a70937516552f5280c8016
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996981"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897764"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Dinamikus szótár használata
 

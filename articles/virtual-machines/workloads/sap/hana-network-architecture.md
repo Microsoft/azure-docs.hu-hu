@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5ed932488551918bb0bfeb7dc9ffcb2f59b6d152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195738"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878901"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúrája
 
@@ -76,7 +76,7 @@ Az Azure-beli SAP-üzemelő példányok közötti különbségek a következők:
 
 A HANA nagyméretű példányok bélyegének 3. változatában a virtuális gépek és a HANA nagyméretű példány-egységek közötti hálózati késés nagyobb lehet, mint a szokásos virtuálisgép-hálózat típusú hálózati adatelérési késés. Az Azure-régiótól függ, hogy a mért értékek meghaladják az SAP-Megjegyzés átlaga alatt besorolt 0,7 – MS menetidő-késést [#1100926 – gyakori kérdések: hálózati teljesítmény](https://launchpad.support.sap.com/#/notes/1100926/E). Az Azure-régiótól és az eszköztől függ, hogy az Azure-beli virtuális gép és a HANA nagyméretű példányok egysége közötti hálózati kétirányú késések mérhetőek-e, a mért késés akár 2 ezredmásodperc is lehet. Az ügyfelek ugyanakkor SAP HANA nagyméretű példányon sikeresen telepítenek SAP HANA-alapú üzemi SAP-alkalmazásokat. Győződjön meg róla, hogy alaposan tesztelje üzleti folyamatait az Azure HANA nagyméretű példányán. Egy új, ExpressRoute gyors elérési úttal rendelkező funkció képes csökkenteni a nagy méretű HANA-példányok és az Azure-beli alkalmazás-rétegbeli virtuális gépek közötti hálózati késést (lásd alább). 
 
-A HANA nagyméretű példányok bélyegének 4. változatában a HANA nagy példányszámú bélyegző közelében üzembe helyezett Azure-beli virtuális gépek közötti hálózati késés az [SAP-megjegyzés #1100926 – GYIK: hálózati teljesítmény](https://launchpad.support.sap.com/#/notes/1100926/E) , ha az Azure ExpressRoute gyors elérési útja konfigurálva van (lásd alább). Ahhoz, hogy az Azure-beli virtuális gépeket a 4. változatban található HANA nagyméretű példányokhoz közel lehessen helyezni, ki kell használni az [Azure Proximity-elhelyezési csoportokat](../../linux/co-location.md). A közelségi elhelyezési csoportok segítségével megkeresheti az SAP-alkalmazás rétegét ugyanabban az Azure-adatközpontban, mint a 4. változatban üzemeltetett HANA nagyméretű példány-egységeket az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
+A HANA nagyméretű példányok bélyegének 4. változatában a HANA nagy példányszámú bélyegző közelében üzembe helyezett Azure-beli virtuális gépek közötti hálózati késés az [SAP-megjegyzés #1100926 – GYIK: hálózati teljesítmény](https://launchpad.support.sap.com/#/notes/1100926/E) , ha az Azure ExpressRoute gyors elérési útja konfigurálva van (lásd alább). Ahhoz, hogy az Azure-beli virtuális gépeket a 4. változatban található HANA nagyméretű példányokhoz közel lehessen helyezni, ki kell használni az [Azure Proximity-elhelyezési csoportokat](../../co-location.md). A közelségi elhelyezési csoportok segítségével megkeresheti az SAP-alkalmazás rétegét ugyanabban az Azure-adatközpontban, mint a 4. változatban üzemeltetett HANA nagyméretű példány-egységeket az [Azure Proximity-elhelyezési csoportok az SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
 
 Ahhoz, hogy a determinisztikus hálózati késést biztosítson a virtuális gépek és a HANA nagyméretű példányai között, elengedhetetlen a ExpressRoute Gateway SKU választása. A helyszíni és a virtuális gépek közötti adatforgalomtól eltérően a virtuális gépek és a HANA nagyméretű példányok közötti forgalmi mintázat kisebb, de nagy mennyiségű kérést és adatmennyiséget képes kialakítani. Az ilyen adattörések kezeléséhez kifejezetten ajánlott az UltraPerformance Gateway SKU használata. A HANA Large instances SKU II Type osztálya esetében a UltraPerformance átjáró SKU-jának ExpressRoute-átjáróként való használatát kötelező megadni.
 

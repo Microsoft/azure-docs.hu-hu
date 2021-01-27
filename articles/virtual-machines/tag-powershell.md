@@ -7,17 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 1efb512923caed97126bdb4ee6267c6a9b57f251
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bf13d5c0caeb0bf31a383cd23155a6856c81c53b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594969"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897391"
 ---
 # <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>Virtuális gép címkézése az Azure-ban a PowerShell használatával
 
 Ez a cikk bemutatja, hogyan címkézheti a virtuális gépeket az Azure-ban a PowerShell használatával. A címkék felhasználó által definiált kulcs/érték párok, amelyek közvetlenül egy erőforráson vagy erőforráscsoporton helyezhetők el. Az Azure jelenleg legfeljebb 50 címkét támogat erőforrás és erőforráscsoport szerint. A címkéket a létrehozáskor vagy egy meglévő erőforráshoz való hozzáadáskor lehet elhelyezni egy erőforráson. Ha a virtuális gépet az Azure CLI-vel szeretné felcímkézni, tekintse meg a [virtuális gép címkézése az Azure-ban az Azure parancssori felület használatával](tag-cli.md)című témakört.
-
 
 A `Get-AzVM` parancsmag használatával megtekintheti a virtuális géphez tartozó címkék aktuális listáját.
 
@@ -84,8 +83,7 @@ Environment   Production
 Location      MyLocation
 ```
 
-
-**Következő lépések**
+### <a name="next-steps"></a>Következő lépések
 
 - Az Azure-erőforrások címkézésével kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md) és [címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md).
-- Ha szeretné megtekinteni, hogyan segíthetnek az Azure-erőforrások használatának kezelésében, tekintse meg [Az Azure-számla megismerése](../cost-management-billing/understand/review-individual-bill.md) és [a Microsoft Azure erőforrás-felhasználás betekintését](../cost-management-billing/manage/usage-rate-card-overview.md)ismertető témakört.
+- Ha szeretné megtekinteni, hogyan segíthet az Azure-erőforrások használatának kezelésében, tekintse meg [Az Azure-számla ismertetése](../cost-management-billing/understand/review-individual-bill.md)című témakört.

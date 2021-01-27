@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034088"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879393"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Gépi tanulási folyamatok közzététele és nyomon követése
 
@@ -32,7 +32,7 @@ A gépi tanulási folyamatok a gépi tanulási feladatok újrafelhasználható m
 
 * [Állítsa be a fejlesztési környezetet](how-to-configure-environment.md) az Azure Machine learning SDK telepítéséhez, vagy használjon olyan [Azure Machine learning számítási példányt](concept-compute-instance.md) , amelyen már telepítve van az SDK
 
-* Hozzon létre és futtasson egy gépi tanulási folyamatot, például a következő [oktatóanyaggal: Azure Machine learning folyamat létrehozása a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md). További lehetőségek: [Machine learning-folyamatok létrehozása és futtatása Azure Machine learning SDK-val](how-to-create-your-first-pipeline.md)
+* Hozzon létre és futtasson egy gépi tanulási folyamatot, például a következő [oktatóanyaggal: Azure Machine learning folyamat létrehozása a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md). További lehetőségek: [Machine learning-folyamatok létrehozása és futtatása Azure Machine learning SDK-val](./how-to-create-machine-learning-pipelines.md)
 
 ## <a name="publish-a-pipeline"></a>Folyamat közzététele
 
@@ -362,7 +362,7 @@ p.disable()
 
 A használatával újra engedélyezheti `p.enable()` . További információ: PublishedPipeline- [osztály](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) referenciája.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ezeket a Jupyter-jegyzetfüzeteket a githubon](https://aka.ms/aml-pipeline-readme) a gépi tanulási folyamatok további megismeréséhez használhatja.
 - Tekintse meg a [azureml-pipeline-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) csomag és a azureml-folyamatok – [STEPs](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) csomag SDK-referenciáját.

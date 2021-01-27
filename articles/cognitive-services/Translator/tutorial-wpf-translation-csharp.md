@@ -3,20 +3,20 @@ title: 'Oktatóanyag: fordítási alkalmazás létrehozása WPF, C#-Translator h
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy WPF-alkalmazást hoz létre a szöveg fordításához, a nyelvfelismerés és a helyesírás-ellenőrzés végrehajtásához egyetlen előfizetési kulccsal.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9ebcbadbc8b502121b25393c7761794bcd3f07e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023616"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897105"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
@@ -38,7 +38,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes szolgáltatásokhoz tartozó API-referenciák tallózásához kövesse a hivatkozást.
 
-| Szolgáltatás | Funkció | Leírás |
+| Szolgáltatás | Szolgáltatás | Leírás |
 |---------|---------|-------------|
 | Translator | [Nyelvek beolvasása](./reference/v3-0-languages.md) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
 | Translator | [Fordítása](./reference/v3-0-translate.md) | Szöveg fordítása több mint 70 nyelvre. |

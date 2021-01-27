@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 – gyakori kérdések | Microsoft Docs
+title: Azure Media Services v3 – gyakori kérdések
 description: Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897560"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -269,6 +269,6 @@ A letöltési sebesség javítása kétféleképpen lehetséges:
   * Ügyfél által vezérelt: a lejátszó alkalmazás automatikusan kiválasztja, vagy a felhasználó kiválasztja a videó minőségi réteget és a letöltendő hangsávokat.
   * Felügyelt szolgáltatás: a Azure Media Services dinamikus jegyzékfájl funkciójának használatával létrehozhat egy (globális) szűrőt, amely korlátozza a HLS lejátszási lista vagy kötőjel MPD használatát egyetlen videó minőségi rétegre és kiválasztott hangsávokra. Ezután a felhasználók számára megjelenített letöltési URL-cím tartalmazza ezt a szűrőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Media Services v3 – áttekintés](media-services-overview.md)

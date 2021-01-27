@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee4a09df0f95cb809db0e5c0e63d195ee5cfdff
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426333"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896935"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrálás az Orchestratorből az Azure Automationbe (bétaverzió)
 
@@ -24,7 +24,7 @@ Az áttelepítés első lépése a [System Center Orchestrator áttelepítési e
 
 ## <a name="import-the-standard-activities-module"></a>A standard tevékenységek modul importálása
 
-Importálja a [standard tevékenységek modult](/system-center/orchestrator/standard-activities?view=sc-orch-2019) Azure Automationba. Ide tartoznak a szabványos Orchestrator-tevékenységek konvertált verziói, amelyek a grafikus runbookok konvertálhatók.
+Importálja a [standard tevékenységek modult](/system-center/orchestrator/standard-activities) Azure Automationba. Ide tartoznak a szabványos Orchestrator-tevékenységek konvertált verziói, amelyek a grafikus runbookok konvertálhatók.
 
 ## <a name="import-orchestrator-integration-modules"></a>Orchestrator-integrációs modulok importálása
 
@@ -32,7 +32,7 @@ A Microsoft [integrációs csomagokat](/previous-versions/system-center/packs/hh
 
 ## <a name="convert-integration-packs"></a>Integrációs csomagok konvertálása
 
-Az [Integration Pack Converter](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) használatával a [Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) használatával létrehozott integrációs csomagokat átalakíthatja PowerShell-alapú integrációs modulokba, amelyek Azure Automation vagy Service Management Automationba importálhatók. Az integrációs csomag átalakítójának futtatásakor egy varázsló jelenik meg, amely lehetővé teszi egy integrációs csomag (. OIP) fájljának kiválasztását. A varázsló ezután felsorolja az integrációs csomagban szereplő tevékenységeket, és lehetővé teszi az áttelepíteni kívánt tevékenységek kiválasztását. A varázsló befejezése után létrehoz egy integrációs modult, amely tartalmazza a megfelelő parancsmagot az eredeti integrációs csomagban lévő összes tevékenységhez.
+Az [Integration Pack Converter](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard) használatával a [Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) használatával létrehozott integrációs csomagokat átalakíthatja PowerShell-alapú integrációs modulokba, amelyek Azure Automation vagy Service Management Automationba importálhatók. Az integrációs csomag átalakítójának futtatásakor egy varázsló jelenik meg, amely lehetővé teszi egy integrációs csomag (. OIP) fájljának kiválasztását. A varázsló ezután felsorolja az integrációs csomagban szereplő tevékenységeket, és lehetővé teszi az áttelepíteni kívánt tevékenységek kiválasztását. A varázsló befejezése után létrehoz egy integrációs modult, amely tartalmazza a megfelelő parancsmagot az eredeti integrációs csomagban lévő összes tevékenységhez.
 
 > [!NOTE]
 > Az integrációs csomag átalakítója nem használható olyan integrációs csomagok átalakítására, amelyek nem a OIT-mel lettek létrehozva. A Microsoft olyan integrációs csomagokat is biztosít, amelyek jelenleg nem alakíthatók át ezzel az eszközzel. Az integrációs csomagok konvertált verziói letölthetők, így Azure Automation vagy Service Management Automation telepíthetik őket.
@@ -73,7 +73,7 @@ ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <s
 * Modul – a runbookok lévő tevékenységeket tartalmazó integrációs modulok vesszővel tagolt listája.
 * OutputFolder – a mappa elérési útja a konvertált grafikus runbookok létrehozásához.
 
-A következő példában szereplő parancs egy **MyRunbooks.ois_export**nevű exportálási fájlba konvertálja a runbookok.  Ezek a runbookok a Active Directory és Data Protection Manager integrációs csomagokat használják.
+A következő példában szereplő parancs egy **MyRunbooks.ois_export** nevű exportálási fájlba konvertálja a runbookok.  Ezek a runbookok a Active Directory és Data Protection Manager integrációs csomagokat használják.
 
 ```powershell
 ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
@@ -92,7 +92,7 @@ A Runbook-átalakító a következő naplófájlokat hozza létre a konvertált 
 
 A Runbook-átalakító egy vagy több runbookok tartalmazó Orchestrator származó exportálási fájllal működik.  Létrehoz egy megfelelő Azure Automation runbook az exportálási fájl minden egyes Orchestrator-runbook.  
 
-A runbook Orchestrator-ből való exportálásához kattintson a jobb gombbal a runbook nevére a Runbook Designer, majd válassza az **Exportálás**lehetőséget.  A mappában lévő összes runbookok exportálásához kattintson a jobb gombbal a mappa nevére, és válassza az **Exportálás**lehetőséget.
+A runbook Orchestrator-ből való exportálásához kattintson a jobb gombbal a runbook nevére a Runbook Designer, majd válassza az **Exportálás** lehetőséget.  A mappában lévő összes runbookok exportálásához kattintson a jobb gombbal a mappa nevére, és válassza az **Exportálás** lehetőséget.
 
 ### <a name="convert-runbook-activities"></a>Runbook-tevékenységek konvertálása
 
@@ -118,7 +118,7 @@ Ennek a stratégiának az az oka, hogy a legjobban tükrözze a Orchestrator run
 
 ### <a name="invoke-runbook-activity"></a>Runbook-tevékenység meghívása
 
-A runbookok a Orchestrator más runbookok indítanak el a `Invoke Runbook` tevékenységgel. Ha az átalakítás alatt álló runbook tartalmazza ezt a tevékenységet `Wait for completion` , és a beállítás be van állítva, akkor létrejön egy runbook-tevékenység a konvertált runbook.  Ha a `Wait for completion` beállítás nincs megadva, akkor létrejön egy munkafolyamat-parancsfájl tevékenység, amely a [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával indítja el a runbook. A konvertált runbook Azure Automationba való importálása után módosítania kell a tevékenységet a tevékenységben megadott adatokkal.
+A runbookok a Orchestrator más runbookok indítanak el a `Invoke Runbook` tevékenységgel. Ha az átalakítás alatt álló runbook tartalmazza ezt a tevékenységet `Wait for completion` , és a beállítás be van állítva, akkor létrejön egy runbook-tevékenység a konvertált runbook.  Ha a `Wait for completion` beállítás nincs megadva, akkor létrejön egy munkafolyamat-parancsfájl tevékenység, amely a [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) használatával indítja el a runbook. A konvertált runbook Azure Automationba való importálása után módosítania kell a tevékenységet a tevékenységben megadott adatokkal.
 
 ## <a name="create-orchestrator-assets"></a>Orchestrator-eszközök létrehozása
 

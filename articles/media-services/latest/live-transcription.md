@@ -1,26 +1,9 @@
 ---
-title: Élő átírás
-titleSuffix: Azure Media Services
-description: Ismerkedjen meg Azure Media Services élő átírással.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291415"
+title: élő átirat: Azure Media Services Leírás: Ismerkedjen meg Azure Media Services élő átírással.  
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: ne MS. topic: útmutató MS. Date: 08/31/2020 MS. Author: inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>Élő átírás (előzetes verzió)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -39,7 +22,7 @@ Az élő átírás a következő régiókban érhető el:
 - Nyugat-Európa
 - Észak-Európa
 - USA keleti régiója
-- USA középső régiója
+- Az USA középső régiója
 - USA déli középső régiója
 - USA 2. nyugati régiója
 - Dél-Brazília

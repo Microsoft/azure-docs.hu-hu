@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0dc68bd7dacf0cd7f4be9732d45831e2dbb712c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186401"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897003"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Automation állapot konfigurációjának engedélyezése
 
@@ -34,13 +34,13 @@ Azure-beli virtuális gép engedélyezése a [Azure Portalon](https://portal.azu
 
 1. Navigáljon ahhoz a Azure Automation-fiókhoz, amelyben engedélyezni szeretné a virtuális gépeket. 
 
-2. Az állapot konfigurációja lapon válassza a **csomópontok** lapot, majd kattintson a **Hozzáadás**gombra.
+2. Az állapot konfigurációja lapon válassza a **csomópontok** lapot, majd kattintson a **Hozzáadás** gombra.
 
 3. Válassza ki az engedélyezni kívánt virtuális gépet.
 
-4. Ha a gépen nincs telepítve a PowerShell desired State bővítmény, és a tápellátási állapot fut, kattintson a **kapcsolat**gombra.
+4. Ha a gépen nincs telepítve a PowerShell desired State bővítmény, és a tápellátási állapot fut, kattintson a **kapcsolat** gombra.
 
-5. A **regisztráció**alatt adja meg a [PowerShell DSC helyi Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig) a használati esethez szükséges értékeket. Opcionálisan megadhat egy csomópont-konfigurációt, amelyet a virtuális géphez szeretne rendelni.
+5. A **regisztráció** alatt adja meg a [PowerShell DSC helyi Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig) a használati esethez szükséges értékeket. Opcionálisan megadhat egy csomópont-konfigurációt, amelyet a virtuális géphez szeretne rendelni.
 
 ![virtuális gép engedélyezése](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -73,7 +73,7 @@ Engedélyezheti a helyszíni vagy más felhőalapú környezetekben (például A
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a **metaconfigurations** mappát az engedélyezni kívánt gépekre. Ezután adjon hozzá kódot a [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) helyi hívásához a gépeken.
+1. Ha nem tudja távolról alkalmazni a PowerShell DSC-metaconfigurations, másolja a **metaconfigurations** mappát az engedélyezni kívánt gépekre. Ezután adjon hozzá kódot a [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) helyi hívásához a gépeken.
 1. A Azure Portal vagy a parancsmagok használatával ellenőrizze, hogy a gépek a Azure Automation-fiókban regisztrált állapot-konfigurációs csomópontként jelennek-e meg.
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>Fizikai/virtuális Linux rendszerű gépek engedélyezése
@@ -123,7 +123,7 @@ A gépek állapot-konfigurálásának engedélyezéséhez létrehozhat egy DSC- 
 > [!NOTE]
 > A DSC-metaconfigurations azokat a titkokat tartalmazzák, amelyek szükségesek a gép automatizálási fiókban való engedélyezéséhez a felügyelethez. Ügyeljen arra, hogy megfelelően megvédje a létrehozott DSC-metaconfigurations, vagy törölje azokat a használat után.
 
-A metaconfigurations proxy-támogatását a [helyi Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)vezérli, amely a Windows PowerShell DSC-motor. Az LCD ChipOnGlas az összes cél csomóponton fut, és felelős a DSC metaconfiguration-szkriptben található konfigurációs erőforrások meghívásához. A metaconfiguration a-ben, a-ben, a- `ProxyURL` `ProxyCredential` ben `ConfigurationRepositoryWeb` és a `ResourceRepositoryWeb` blokkokban igény szerint, a és a tulajdonságokat is beleértve `ReportServerWeb` . Példa az URL-beállításra `ProxyURL = "http://172.16.3.6:3128";` . A `ProxyCredential` tulajdonság egy `PSCredential` objektumra van beállítva, a [hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)című témakörben leírtak szerint. 
+A metaconfigurations proxy-támogatását a [helyi Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)vezérli, amely a Windows PowerShell DSC-motor. Az LCD ChipOnGlas az összes cél csomóponton fut, és felelős a DSC metaconfiguration-szkriptben található konfigurációs erőforrások meghívásához. A metaconfiguration a-ben, a-ben, a- `ProxyURL` `ProxyCredential` ben `ConfigurationRepositoryWeb` és a `ResourceRepositoryWeb` blokkokban igény szerint, a és a tulajdonságokat is beleértve `ReportServerWeb` . Példa az URL-beállításra `ProxyURL = "http://172.16.3.6:3128";` . A `ProxyCredential` tulajdonság egy `PSCredential` objektumra van beállítva, a [hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md)című témakörben leírtak szerint. 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC-metaconfigurations létrehozása DSC-konfiguráció használatával
 
@@ -249,7 +249,7 @@ A metaconfigurations proxy-támogatását a [helyi Configuration Manager](/power
 
 1. Ha `ReportOnly` nincs beállítva, a gépek a DSC-állapotinformációkat Azure Automation állapot-konfigurációra és lekéréses konfigurációra vagy PowerShell-modulokra jelentik. Adja meg a paramétereket ennek megfelelően a `ConfigurationRepositoryWeb` , `ResourceRepositoryWeb` és `ReportServerWeb` blokkokban.
 
-1. Futtassa a szkriptet. Most már rendelkeznie kell egy **DscMetaConfigs**nevű munkakönyvtár-mappával, amely tartalmazza a PowerShell DSC-metaconfigurations, amely lehetővé teszi a gépek engedélyezését (rendszergazdaként).
+1. Futtassa a szkriptet. Most már rendelkeznie kell egy **DscMetaConfigs** nevű munkakönyvtár-mappával, amely tartalmazza a PowerShell DSC-metaconfigurations, amely lehetővé teszi a gépek engedélyezését (rendszergazdaként).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
@@ -260,7 +260,7 @@ A metaconfigurations proxy-támogatását a [helyi Configuration Manager](/power
 Ha a PowerShell DSC LCD alapértékei megfelelnek a használati esetnek, és engedélyezni szeretné a gépek lekérését és jelentését Azure Automation állapot konfigurálására, egyszerűen létrehozhatja a szükséges DSC-metaconfigurations az Azure Automation-parancsmagok használatával.
 
 1. Nyissa meg a PowerShell-konzolt vagy a VSCode rendszergazdaként egy gépen a helyi környezetben.
-2. Kapcsolódás Azure Resource Manager a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)használatával.
+2. Kapcsolódás Azure Resource Manager a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount)használatával.
 3. Töltse le a PowerShell DSC-metaconfigurations azon gépekhez, amelyeket engedélyezni kíván az Automation-fiókból, amelyben csomópontokat állít be.
 
    ```powershell
@@ -317,15 +317,15 @@ Az állapot-konfigurációval egyszerűen engedélyezheti az Azure Windows rends
 Az Azure-beli virtuális gép kívánt állapotára vonatkozó konfigurációs bővítmény állapotának megtekintése:
 
 1. A Azure Portal navigáljon az engedélyezett virtuális géphez.
-2. Kattintson a **bővítmények** elemre a **Beállítások**területen. 
-3. Most válassza a **DSC** vagy a **DSCForLinux**lehetőséget az operációs rendszertől függően. 
-4. További részletekért kattintson a **részletes állapot megtekintése**lehetőségre.
+2. Kattintson a **bővítmények** elemre a **Beállítások** területen. 
+3. Most válassza a **DSC** vagy a **DSCForLinux** lehetőséget az operációs rendszertől függően. 
+4. További részletekért kattintson a **részletes állapot megtekintése** lehetőségre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
-- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 - A folyamatos üzembe helyezési folyamat során Azure Automation állapot konfigurációjának használatával kapcsolatban lásd: a [folyamatos üzembe helyezés beállítása a csokoládéval](automation-dsc-cd-chocolatey.md).
 - Hibaelhárítási információk: [Azure Automation állapot-konfiguráció hibaelhárítása](./troubleshoot/desired-state-configuration.md).

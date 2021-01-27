@@ -4,12 +4,12 @@ description: Hyperledger Fabric Consortium-hálózat üzembe helyezése és konf
 ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060316"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897258"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -294,7 +294,7 @@ A társ-szervezet ügyfelétől futtassa a parancsot, hogy a megadott csatornán
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>` egy szóközzel elválasztott lista a társ-csomópontok számára. Példa:
+`<anchorPeersList>` egy szóközzel elválasztott lista a társ-csomópontok számára. Például:
 
   - Állítsa be `<anchorPeersList>` úgy, `"peer1"` hogy csak a peer1 csomópontot adja meg a horgony társként.
   - Állítsa be `<anchorPeersList>` úgy, `"peer1" "peer3"` hogy a peer1 és a peer3 csomópontokat is horgonyként adja meg.
@@ -317,7 +317,7 @@ CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
-# CC_PATH contains the path where your chaincode is placed.
+# CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
 # If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
@@ -351,7 +351,7 @@ Adja át a (z) és a (z) és a (z) argumentumok példányának nevét és szók�
 
 A gyűjtemény konfigurációs JSON-fájlját a jelző használatával is átadhatja `--collections-config` . Vagy állítsa be az átmeneti argumentumokat a jelző használatával a `-t` privát tranzakciókhoz használt chaincode-példányok létrehozásakor.
 
-Példa:
+Például:
 
 ```bash
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
@@ -385,7 +385,7 @@ Futtassa a következő parancsot a chaincode lekérdezéséhez:
 ```bash
 ./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-A társak jóváhagyása olyan társak, ahol a chaincode telepítve van, és a rendszer a tranzakciók végrehajtásához hívja. Be kell állítania `<endorsingPeers>` a társ-csomópontok nevét az aktuális társ-szervezetből. Egy adott chaincode és csatorna-kombinációhoz tartozó, szóközökkel elválasztott társítások listázása. Például: `-p "peer1" "peer3"`.
+A társak jóváhagyása olyan társak, ahol a chaincode telepítve van, és a rendszer a tranzakciók végrehajtásához hívja. Be kell állítania `<endorsingPeers>` a társ-csomópontok nevét az aktuális társ-szervezetből. Egy adott chaincode és csatorna-kombinációhoz tartozó, szóközökkel elválasztott társítások listázása. Példa: `-p "peer1" "peer3"`.
 
 Ha a *azhlfTool* -t használja a chaincode telepítéséhez, adja át a társ-csomópontok nevét a jóváhagyó társ argumentum értékeként. A Chaincode az adott szervezet minden társ-csomópontjára telepítve van. 
 

@@ -101,13 +101,11 @@
   items:
     - name: Batch-fiókok kezelése
       items:
-        - name: Saját fiók kezelése
-          href: batch-manage-account-basics.md
-        - name: Batch-fiókok kezelése a portálon
+        - name: Batch-fiókok kezelése a Azure Portalban
           href: batch-account-create-portal.md
         - name: Batch-fiókok kezelése a Batch Management .NET használatával
           href: batch-management-dotnet.md
-        - name: Költségelemzés és költségvetések
+        - name: A Cost Analysis és a költségkeretek beállítása
           href: budget.md
         - name: Privát végpontok használata Batch-fiókokkal
           href: private-connectivity.md

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fb1c6f2b541e537bcb52c55fcfd87bbebe37b8e5
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: c4871c3de8028eec1b6184c1d03ac2180b50f57d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831941"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881350"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process Agent az Azure Spring Cloud-ban (előzetes verzió)
 
@@ -83,7 +83,7 @@ A bal oldali navigációs ablaktáblán kattintson a **Application Insights** go
 
   [![IPA 8](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* A bal oldali navigációs ablaktáblán kattintson a **rendelkezésre állás** lehetőségre a webalkalmazások rendelkezésre állásának és rugalmasságának figyeléséhez [Application Insightsban rendelkezésre állási tesztek](/azure/azure-monitor/app/monitor-web-app-availability)létrehozásával.
+* A bal oldali navigációs ablaktáblán kattintson a **rendelkezésre állás** lehetőségre a webalkalmazások rendelkezésre állásának és rugalmasságának figyeléséhez [Application Insightsban rendelkezésre állási tesztek](../azure-monitor/app/monitor-web-app-availability.md)létrehozásával.
 
   [![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
@@ -140,7 +140,7 @@ az spring-cloud app-insights update --disable –name "assignedName" –resource
 
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Elosztott nyomkövetés használata az Azure Spring Cloud használatával](spring-cloud-tutorial-distributed-tracing.md)
 * [Naplók és metrikák elemzése](diagnostic-services.md)
-* [Adatfolyam-naplók valós időben](spring-cloud-howto-log-streaming.md)
+* [Naplók streamelése valós időben](spring-cloud-howto-log-streaming.md)

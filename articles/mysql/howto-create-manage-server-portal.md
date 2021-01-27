@@ -1,21 +1,25 @@
 ---
 title: Kiszolgáló kezelése – Azure Portal – Azure Database for MySQL
 description: Megtudhatja, hogyan kezelheti Azure Database for MySQL-kiszolgálókat a Azure Portal.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 3/18/2020
-ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541453"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897985"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure Database for MySQL-kiszolgáló kezelése a Azure Portal használatával
 
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MySQL-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
+
+> [!NOTE]
+> Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+>
 
 ## <a name="sign-in"></a>Bejelentkezés
 
@@ -33,7 +37,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 Általános célúról a memóriára optimalizált és fordítva is méretezhető. A kiszolgáló létrehozása után az alapszintű csomagra való váltás nem támogatott.
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
 2. Válassza ki az **általános célú** vagy a **memória optimalizált** elemet attól függően, hogy mit kíván méretezni.
 
@@ -46,7 +50,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 ### <a name="scale-vcores-up-or-down"></a>Méretezési virtuális mag felfelé vagy lefelé
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
 2. Módosítsa a **virtuális mag** beállítást úgy, hogy áthelyezi a csúszkát a kívánt értékre.
 
@@ -59,7 +63,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 ### <a name="scale-storage-up"></a>A tárterület felskálázása
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
 2. Módosítsa a **tárolási** beállításokat úgy, hogy a csúszkát felfelé helyezi a kívánt értékre.
 
@@ -83,6 +87,13 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
    :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Képernyőkép a Azure Portalről a jelszó alaphelyzetbe állításához és a mentéshez Azure Database for MySQL":::
 
 3. Az új jelszó mentéséhez kattintson **az OK gombra** .
+ 
+
+> [!IMPORTANT]
+> A kiszolgáló rendszergazdai jelszavának alaphelyzetbe állítása automatikusan visszaállítja a kiszolgáló-rendszergazdai jogosultságokat az alapértelmezett értékre. Ha véletlenül visszavonta egy vagy több kiszolgáló-rendszergazdai jogosultságot, érdemes lehet alaphelyzetbe állítani a kiszolgáló-rendszergazdai jelszót.
+   
+> [!NOTE]
+> A kiszolgáló-rendszergazda felhasználó alapértelmezés szerint a következő jogosultságokkal rendelkezik: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCIÁk, INDEX, ALTER, adatbázisok megjelenítése, ideiglenes táblák létrehozása, táblák ZÁROLÁSa, végrehajtás, REPLIKÁLÁSi SLAVE, replikációs ügyfél, a nézet létrehozása, megjelenítés, létrehozás, RUTIN, ALTER RUTIN, felhasználó létrehozása, esemény, ESEMÉNYINDÍTÓ
 
 ## <a name="delete-a-server"></a>Kiszolgáló törlése
 

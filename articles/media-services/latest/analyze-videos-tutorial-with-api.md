@@ -1,6 +1,5 @@
 ---
 title: Videók elemzése a Media Services v3
-titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan elemezheti a videókat Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3ca3197e786bbfac20bec2370d2aa920ad2c4df
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265864"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891522"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
 
@@ -108,13 +107,13 @@ A kimeneti [objektum](/rest/api/media/assets) tárolja a feladat eredményeit. A
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Átalakítás és videókat elemző feladat létrehozása
 
-A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak**nevezzük. További információ: [átalakítások és feladatok](./transforms-jobs-concept.md). Az ebben az oktatóanyagban leírt minta meghatároz egy receptet a megadott videó elemzésére.
+A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak** nevezzük. További információ: [átalakítások és feladatok](./transforms-jobs-concept.md). Az ebben az oktatóanyagban leírt minta meghatároz egy receptet a megadott videó elemzésére.
 
 #### <a name="transform"></a>Átalakítás
 
 Egy új [átalakításpéldány](/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A **TransformOutput** egy kötelező paraméter. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a rendszer a **VideoAnalyzerPreset** -készletet használja, és a nyelvet ("en-us") adja át a konstruktorának ( `new VideoAnalyzerPreset("en-US")` ). Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón.
 
-**Átalakítás**létrehozásakor először ellenőrizze, hogy a **Get** metódus használatával már létezik-e már az alábbi kódban látható módon. A Media Services 3-as verziója esetében a **Get** metódusok **null** értéket adnak vissza, ha az entitás nem létezik (a kis- és nagybetűket meg nem különböztető névellenőrzés történik).
+**Átalakítás** létrehozásakor először ellenőrizze, hogy a **Get** metódus használatával már létezik-e már az alábbi kódban látható módon. A Media Services 3-as verziója esetében a **Get** metódusok **null** értéket adnak vissza, ha az entitás nem létezik (a kis- és nagybetűket meg nem különböztető névellenőrzés történik).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 
@@ -182,7 +181,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

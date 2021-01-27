@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: HT
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166216"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897425"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Az Azure-beli számlázási információkhoz való hozzáférés kezelése
 
@@ -38,7 +38,7 @@ A fiókadminisztrátor úgy biztosíthat hozzáférést az Azure számlázási a
 - Olvasó
 - Számlázási olvasó
 
-Ezek a szerepkörök hozzáféréssel rendelkeznek a számlázási adatokhoz az [Azure Portalon](https://portal.azure.com/). Azok a személyek, akikhez hozzá lett rendelve ez a szerepkör, a [Billing API-k](usage-rate-card-overview.md) használatával a számlákat és a használati részleteket is lekérhetik programozott módon.
+Ezek a szerepkörök hozzáféréssel rendelkeznek a számlázási adatokhoz az [Azure Portalon](https://portal.azure.com/). Azok a személyek, akikhez hozzá lett rendelve ez a szerepkör, a [Billing API-k](consumption-api-overview.md#usage-details-api) használatával a számlákat és a használati részleteket is lekérhetik programozott módon.
 
 A szerepkörök hozzárendeléséhez lásd: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
@@ -59,7 +59,7 @@ Ha a fiókadminisztrátor hozzárendelte a megfelelő szerepköröket a felhaszn
 
     ![Képernyőkép az előfizetések kiválasztásáról](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Válassza a **Számlák** , majd a **Számlához való hozzáférés** lehetőséget.
+1. Válassza a **Számlák**, majd a **Számlához való hozzáférés** lehetőséget.
 
     ![Képernyőkép a számlákhoz való hozzáférés delegálásáról](./media/manage-billing-access/aa-optin01.png)
 

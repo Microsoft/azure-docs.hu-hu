@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 416f997475e35f8e784679ca0826f7af38d756c7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750900"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880304"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -29,7 +29,7 @@ Ennek a rövid útmutatónak a követésével megismerheti a következőket:
 > * Alapszintű Steeltoe .NET Core-projekt létrehozása
 > * Azure Spring Cloud Service-példány kiépítése
 > * Az alkalmazás létrehozása és üzembe helyezése nyilvános végponttal
-> * Adatfolyam-naplók valós időben
+> * Naplók streamelése valós időben
 
 Az ebben a rövid útmutatóban használt alkalmazás kódja egy .NET Core web API-projekt sablonnal létrehozott egyszerű alkalmazás. A példa elvégzése után az alkalmazás elérhető lesz az interneten, és a Azure Portal és az Azure CLI használatával felügyelhető.
 
@@ -216,7 +216,7 @@ Az alábbi eljárás az Azure Spring Cloud egy példányát hozza létre a Azure
 
    ![ASC ikon hozzáadása](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-1. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
+1. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Tekintse meg a következő útmutatót:
 
    * **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
    * **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot. Az itt megadott nevet a későbbi lépésekben fogjuk használni **\<resource group name\>** .
@@ -269,7 +269,7 @@ Az alkalmazás a következő példához hasonló JSON-adatokkal tér vissza:
 [{"date":"2020-09-08T21:01:50.0198835+00:00","temperatureC":14,"temperatureF":57,"summary":"Bracing"},{"date":"2020-09-09T21:01:50.0200697+00:00","temperatureC":-14,"temperatureF":7,"summary":"Bracing"},{"date":"2020-09-10T21:01:50.0200715+00:00","temperatureC":27,"temperatureF":80,"summary":"Freezing"},{"date":"2020-09-11T21:01:50.0200717+00:00","temperatureC":18,"temperatureF":64,"summary":"Chilly"},{"date":"2020-09-12T21:01:50.0200719+00:00","temperatureC":16,"temperatureF":60,"summary":"Chilly"}]
 ```
 
-## <a name="stream-logs-in-real-time"></a>Adatfolyam-naplók valós időben
+## <a name="stream-logs-in-real-time"></a>Naplók streamelése valós időben
 
 A következő parancs használatával valós idejű naplókat kaphat az alkalmazásból.
 
@@ -332,7 +332,7 @@ Ez a rövid útmutató a következőket ismerteti:
 > * Alapszintű Spring Cloud-projekt létrehozása
 > * Szolgáltatási példány kiépítése
 > * Az alkalmazás létrehozása és üzembe helyezése nyilvános végponttal
-> * Adatfolyam-naplók valós időben
+> * Naplók streamelése valós időben
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -351,9 +351,6 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Inicializálás lap](media/spring-cloud-quickstart-java/initializr-page.png)
-
-> [!NOTE]
-> A Spring boot 2,4-as számú, az alkalmazások és az Eureka közötti TLS-hitelesítéssel kapcsolatos hibát észlelt, és jelenleg a Spring Közösséggel dolgozik a megoldásban. A megkerülő megoldásért tekintse meg a [gyakori kérdéseket](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) .
 
 1. Kattintson a **generált** elemre, ha az összes függőség be van állítva. Töltse le és csomagolja ki a csomagot, majd hozzon létre egy webes vezérlőt egy egyszerű webalkalmazáshoz a `src/main/java/com/example/hellospring/HelloController.java` következőképpen:
 
@@ -389,7 +386,7 @@ Az alábbi eljárás az Azure Spring Cloud egy példányát hozza létre a Azure
 
     ![ASC ikon hozzáadása](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
+5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Tekintse meg a következő útmutatót:
     - **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
     - **Erőforráscsoport**: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
     - **Szolgáltatás adatai/neve**: adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
@@ -517,7 +514,7 @@ Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 > * Alapszintű Azure Spring Cloud-projekt létrehozása
 > * Szolgáltatási példány kiépítése
 > * Az alkalmazás létrehozása és üzembe helyezése nyilvános végponttal
-> * Adatfolyam-naplók valós időben
+> * Naplók streamelése valós időben
 
 Ha többet szeretne megtudni arról, hogyan használhatók az Azure Spring-funkciók, folytassa a gyors üzembe helyezési sorozattal, amely egy minta alkalmazást telepít az Azure Spring Cloud-ba:
 

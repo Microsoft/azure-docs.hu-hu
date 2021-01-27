@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566920"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897510"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Oktatóanyag: Hyper-V virtuális gépek felderítése kiszolgáló-értékeléssel
 
@@ -20,7 +20,7 @@ Az Azure-ba való Migrálás részeként felderítheti a helyszíni leltárt és
 
 Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel a helyszíni Hyper-V virtuális gépeket (VM) a Azure Migrate: Server Assessment Tool eszközzel, egy egyszerű Azure Migrate berendezés használatával. A berendezést Hyper-V virtuális gépként kell üzembe helyezni a gép és a teljesítmény metaadatainak folyamatos felderítése érdekében.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure-fiók beállítása
@@ -83,7 +83,7 @@ A Hyper-V-gazdagépeket manuálisan vagy parancsfájl használatával is előké
 
 **Lépés** | **Parancsfájl** | **Kézi**
 --- | --- | ---
-Gazdagépre vonatkozó követelmények ellenőrzése | Ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.<br/><br/>Engedélyezi a WinRM szolgáltatást, és megnyitja a 5985 (HTTP) és a 5986 (HTTPS) portot a gazdagépen (a metaadat-gyűjteményhez szükséges). | A gazdagépen a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszernek kell futnia.<br/><br/> Ellenőrizze, hogy a bejövő kapcsolatok engedélyezve vannak-e a WinRM 5985-es portján (HTTP), hogy a készülék csatlakozni tud-e a lekéréses virtuális gépek metaadatainak és teljesítményadatait a CIM (CIM) munkamenet használatával.
+Gazdagépre vonatkozó követelmények ellenőrzése | Ellenőrzi, hogy a gazdagép a Hyper-V támogatott verzióját és a Hyper-V szerepkört futtatja-e.<br/><br/>Engedélyezi a WinRM szolgáltatást, és megnyitja a 5985 (HTTP) és a 5986 (HTTPS) portot a gazdagépen (a metaadat-gyűjteményhez szükséges). | A gazdagépen a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszernek kell futnia.<br/><br/> Ellenőrizze, hogy a bejövő kapcsolatok engedélyezve vannak-e a WinRM 5985-es portján (HTTP), hogy a készülék csatlakozni tud-e a lekéréses virtuális gépek metaadatainak és teljesítményadatait a CIM (CIM) munkamenet használatával.<br/><br/> A parancsfájl jelenleg nem támogatott olyan gazdagépeken, amelyek nem angol nyelvű területi beállítással rendelkeznek.  
 PowerShell-verzió ellenőrzése | Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e. | Győződjön meg arról, hogy a PowerShell 4,0-es vagy újabb verzióját futtatja a Hyper-V-gazdagépen.
 Fiók létrehozása | Ellenőrzi, hogy rendelkezik-e a megfelelő engedélyekkel a Hyper-V-gazdagépen.<br/><br/> Lehetővé teszi, hogy a megfelelő engedélyekkel rendelkező helyi felhasználói fiókot hozzon létre. | 1. lehetőség: a Hyper-V gazdagéphez rendszergazdai hozzáféréssel rendelkező fiók előkészítése.<br/><br/> 2. lehetőség: helyi rendszergazdai fiók vagy tartományi rendszergazdai fiók előkészítése, és a fiók hozzáadása a következő csoportokhoz: távfelügyeleti felhasználók, Hyper-V-rendszergazdák és Teljesítményfigyelő felhasználók.
 A PowerShell távelérésének engedélyezése | Engedélyezi a PowerShell távelérést a gazdagépen, így a Azure Migrate készülék PowerShell-parancsokat futtathat a gazdagépen egy WinRM-kapcsolaton keresztül. | A beállításhoz minden gazdagépen nyisson meg egy PowerShell-konzolt rendszergazdaként, és futtassa a következő parancsot: ``` powershell Enable-PSRemoting -force ```
@@ -293,7 +293,7 @@ A felderítés befejezését követően ellenőrizheti, hogy a virtuális gépek
 1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Hyper-V virtuális gépek kiértékelése Azure-](tutorial-assess-hyper-v.md) beli virtuális gépekre való Migrálás céljából.
 - [Tekintse át a](migrate-appliance.md#collected-data---hyper-v) berendezés által a felderítés során gyűjtött adatokat.

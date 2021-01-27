@@ -1,6 +1,5 @@
 ---
 title: Dinamikus csomagolás a Azure Media Services v3-ban
-titleSuffix: Azure Media Services
 description: Ez a cikk áttekintést nyújt a Azure Media Services dinamikus csomagolásáról.
 author: myoungerman
 manager: femila
@@ -14,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016825"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897645"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
@@ -112,7 +111,7 @@ Tekintse meg a szabványos kódoló [-formátumok és-kodekek](media-encoder-sta
 
 Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). 
 
-Az alábbi gyakori munkafolyamat a *dinamikus csomagolással*folytatott élő közvetítéshez használható:
+Az alábbi gyakori munkafolyamat a *dinamikus csomagolással* folytatott élő közvetítéshez használható:
 
 1. Hozzon létre egy [élő eseményt](live-events-outputs-concept.md).
 1. Szerezze be a betöltési URL-címet, és konfigurálja a helyszíni kódolót úgy, hogy az URL-cím használatával küldje el a hozzájárulási csatornát.
@@ -124,7 +123,7 @@ Az alábbi gyakori munkafolyamat a *dinamikus csomagolással*folytatott élő k�
 1. Szerezze be annak a streaming-végpontnak az állomásnevét, amelyről streamet szeretne továbbítani.
 1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-címeket hozhat létre. A *folyamatos átviteli végpont* gondoskodik a megfelelő jegyzékfájl és kérések kiszolgálásáról a különböző formátumokban.
 
-Ez az ábra az élő adatfolyamok *dinamikus csomagolással*való működésének munkafolyamatát mutatja be:
+Ez az ábra az élő adatfolyamok *dinamikus csomagolással* való működésének munkafolyamatát mutatja be:
 
 ![A dinamikus csomagolással rendelkező, átmenő kódolásra szolgáló munkafolyamat ábrája](./media/live-streaming/pass-through.svg)
 
@@ -135,7 +134,7 @@ További információ a Media Services v3 élő közvetítéséről: [élő köz
 A dinamikus csomagolás támogatja az MP4-tároló fájlformátumában lévő videofájlokat, és a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmaz.
 
 > [!NOTE]
-> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással*tesztelt felbontások is megoldhatók.
+> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, *dinamikus csomagolással* tesztelt felbontások is megoldhatók.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Dinamikus csomagolás által támogatott hangkodekek
 
@@ -177,7 +176,7 @@ Media Services a dinamikus csomagolás jelenleg nem támogatja a [Dolby Digital]
 
 ## <a name="manifests"></a>Jegyzékek
 
-Media Services *dinamikus csomagolásban*a HLS, MPEG-DASH és Smooth streaming adatfolyam-ügyfél-jegyzékfájlok dinamikusan jönnek létre az URL-cím kiválasztó alapján.  
+Media Services *dinamikus csomagolásban* a HLS, MPEG-DASH és Smooth streaming adatfolyam-ügyfél-jegyzékfájlok dinamikusan jönnek létre az URL-cím kiválasztó alapján.  
 
 A jegyzékfájlok olyan adatfolyam-metaadatokat tartalmaznak, mint például a követés típusa (hang, videó vagy szöveg), a nyomon követési idő, a kezdő és a befejező időpont, a bitráta (Tulajdonságok), a nyelvek nyomon követése, a megjelenítési időszak (rögzített időtartamú ablak) és a video codec (FourCC). Arra is utasítja a lejátszót, hogy a következő töredéket olvassa be a rendelkezésre álló, valamint a helyükre tartozó következő lejátszható videó-töredékek adatainak megadásával. A töredékek (vagy szegmensek) a videotartalom tényleges "darabjai".
 

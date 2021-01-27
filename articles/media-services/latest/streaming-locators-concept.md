@@ -1,5 +1,5 @@
 ---
-title: Streaming-lokátorok a Azure Media Servicesban | Microsoft Docs
+title: Streaming-lokátorok a Azure Media Services
 description: Ez a cikk azt ismerteti, hogy milyen a folyamatos átviteli lokátorok, és hogyan használják őket a Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297960"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898138"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
@@ -25,7 +25,7 @@ Ahhoz, hogy a kimeneti adategységben található videók elérhetők legyenek a
 
 Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az **adatfolyam-kereső** azonnal érvényes az API-hívások létrehozása után, és addig tart, amíg meg nem történik a törlés, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat. 
 
-**Adatfolyam-kereső**létrehozásakor meg kell adnia egy **eszköz** nevét és egy **streaming Policy** -nevet. További információkért tekintse át a következők témaköröket:
+**Adatfolyam-kereső** létrehozásakor meg kell adnia egy **eszköz** nevét és egy **streaming Policy** -nevet. További információkért tekintse át a következők témaköröket:
 
 * [Adategységek](assets-concept.md)
 * [Folyamatos átviteli házirendek](streaming-policy-concept.md)

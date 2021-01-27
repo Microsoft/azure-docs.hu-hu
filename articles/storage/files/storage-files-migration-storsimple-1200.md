@@ -1,5 +1,5 @@
 ---
-title: StorSimple 1200 Migrálás Azure File Syncre
+title: StorSimple 1200 migrálása az Azure File Syncre
 description: Megtudhatja, hogyan telepíthet át egy StorSimple 1200 sorozatú virtuális készüléket Azure File Syncba.
 author: fauhse
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630481"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882280"
 ---
-# <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 Migrálás Azure File Syncre
+# <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 migrálása az Azure File Syncre
 
 A StorSimple 1200 sorozat egy virtuális berendezés, amely egy helyszíni adatközpontban fut. Az adatok áttelepíthetők a készülékről egy Azure File Sync környezetbe. A Azure File Sync az alapértelmezett és a stratégiai hosszú távú Azure-szolgáltatás, amelyet a StorSimple berendezések áttelepíthetnek.
 
@@ -234,5 +234,5 @@ Ha ez megtörténik, tekintse meg a **hivatkozást Azure file Sync hibaelhárít
 Azure File Sync tartalom:
 
 * [Az AFS áttekintése](./storage-sync-files-planning.md)
-* [Az AFS telepítési útmutatója](storage-files-deployment-guide.md)
+* [Az AFS telepítési útmutatója](./storage-how-to-create-file-share.md)
 * [AFS – hibaelhárítás](storage-sync-files-troubleshoot.md)

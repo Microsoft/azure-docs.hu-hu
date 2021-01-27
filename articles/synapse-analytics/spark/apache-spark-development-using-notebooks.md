@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120954"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898494"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Szinapszis Studio-jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -104,7 +104,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Leírás |  
+|Magic parancs |Nyelv | Description |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -303,6 +303,8 @@ Nem támogatott.
 # <a name="preview-notebook"></a>[Előnézeti jegyzetfüzet](#tab/preview)
 
 ```%run <notebook path>```A Magic paranccsal hivatkozhat egy másik jegyzetfüzetre az aktuális jegyzetfüzet környezetében. A hivatkozási jegyzetfüzetben definiált összes változó elérhető az aktuális jegyzetfüzetben. ```%run``` a Magic parancs támogatja a beágyazott hívásokat, de nem támogatja a rekurzív hívásokat. Kivételt fog kapni, ha az utasítás mélysége ötnél nagyobb. ```%run``` a parancs jelenleg csak a támogatja a jegyzetfüzet elérési útjának paraméterként való továbbítását. 
+
+Példa: ``` %run /path/notebookA ```.
 
 ---
 

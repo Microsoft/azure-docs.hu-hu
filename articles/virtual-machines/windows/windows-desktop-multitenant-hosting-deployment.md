@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: mimckitt
-ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 8268e305946a19f4f74ff790e680d6bd3faa2b29
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210324"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881435"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
 A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. További információ: több- [bérlős üzemeltetés a Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -39,7 +39,7 @@ rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus
 rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
 ```
 
-További információ az elérhető lemezképekről: [Azure Marketplace virtuálisgép-rendszerképek keresése és használata Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)
+További információ az elérhető lemezképekről: [Azure Marketplace virtuálisgép-rendszerképek keresése és használata Azure PowerShell](./cli-ps-findimage.md)
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>A több-bérlős üzemeltetési jogosultságok beszerzése 
 A több-bérlős üzemeltetési jogosultságok beszerzéséhez és a Windows 10 rendszerképeinek Azure-felhasználókon való futtatásához a következő előfizetések egyike szükséges: 

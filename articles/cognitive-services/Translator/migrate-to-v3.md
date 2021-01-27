@@ -3,19 +3,19 @@ title: Migrálás v3-Fordítóba
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a v2-ről az Azure Cognitive Services Translator-ra történő Migrálás megkönnyítését ismerteti.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.author: lajanuar
+ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028233"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896833"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 – v3 Migrálás
 
@@ -141,7 +141,7 @@ A fordító egyik verziója sem hoz létre egy rekordot a fordításokról. A fo
 * [Jogi információk Microsoft Azure](https://azure.microsoft.com/support/legal)
 * [Online Szolgáltatások Feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A V 3.0 dokumentációjának megtekintése](reference/v3-0-reference.md)

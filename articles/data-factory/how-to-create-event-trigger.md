@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 495dda603a8ab8ce2983e010ea23856df5a094ef
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146007"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897122"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Olyan eseményindító létrehozása, amely egy adott eseményre válaszul futtat egy folyamatot
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ A szolgáltatás tíz percen belüli bevezetéséhez és bemutatásához tekints
 
 
 > [!NOTE]
-> A cikkben ismertetett integráció a [Azure Event Gridtól](https://azure.microsoft.com/services/event-grid/)függ. Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). A *Microsoft. EventGrid/eventSubscriptions/* * művelet végrehajtásához képesnek kell lennie. Ez a művelet a EventGrid EventSubscription közreműködő beépített szerepkörének részét képezi.
+> A cikkben ismertetett integráció a [Azure Event Gridtól](https://azure.microsoft.com/services/event-grid/)függ. Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). A *Microsoft. EventGrid/eventSubscriptions/** művelet végrehajtásához képesnek kell lennie. Ez a művelet a EventGrid EventSubscription közreműködő beépített szerepkörének részét képezi.
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
@@ -50,12 +50,16 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy eseményvezérelt ese
 1. Válassza ki a Storage-fiókját az Azure-előfizetés legördülő menüből, vagy manuálisan használja a Storage-fiókja erőforrás-AZONOSÍTÓját. Válassza ki, hogy melyik tárolón történjen az események betöltése. A tároló kiválasztása nem kötelező, de ne felhagyható, hogy az összes tároló kijelölése nagy számú eseményt eredményezhet.
 
    > [!NOTE]
-   > Az Event trigger jelenleg csak a Azure Data Lake Storage Gen2 és az általános célú 2-es verziójú Storage-fiókokat támogatja. Legalább *tulajdonosi* hozzáféréssel kell rendelkeznie a Storage-fiókhoz.  Egy Azure Event Grid korlátozás miatt Azure Data Factory csak a legfeljebb 500 eseményindítót támogatja.
+   > Az Event trigger jelenleg csak a Azure Data Lake Storage Gen2 és az általános célú 2-es verziójú Storage-fiókokat támogatja. Egy Azure Event Grid korlátozás miatt Azure Data Factory csak a legfeljebb 500 eseményindítót támogatja.
+
+   > [!NOTE]
+   > Új eseményindító létrehozásához és módosításához a Data Factory való bejelentkezéshez használt Azure-fióknak legalább *tulajdonos* engedéllyel kell rendelkeznie a Storage-fiókhoz. Nincs szükség további engedélyre: a Azure Data Factory tartozó szolgáltatásnév _nem_ igényel külön engedélyt a Storage-fiókhoz vagy a Event Gridhoz.
 
 1. A **blob** elérési útja és a **blob elérési** útja a tulajdonságok segítségével megadhatja azokat a tárolókat, mappákat és blob-neveket, amelyekhez eseményeket szeretne kapni. Az esemény-eseményindítónak legalább egy ilyen tulajdonságot meg kell határoznia. Különböző mintákat használhat a **blob elérési útjához** , a **blob elérési útja** pedig tulajdonságok használatával végződik, ahogy az ebben a cikkben szereplő példákban is látható.
 
     * **A blob elérési útja a következőket veszi kezdettel:** A blob elérési útnak a mappa elérési útjával kell kezdődnie. Az érvényes értékek `2018/` a következők: és `2018/april/shoes.csv` . Ez a mező nem választható ki, ha nincs kiválasztva tároló.
     * **A blob elérési útja az alábbiakkal végződik:** A blob elérési útjának fájlnevet vagy kiterjesztést kell végződnie. Az érvényes értékek `shoes.csv` a következők: és `.csv` . A tároló és a mappa neve nem kötelező, de ha meg van adva, egy szegmensnek kell elválasztani őket `/blobs/` . Egy "Orders" nevű tároló például a következő értékkel rendelkezhet: `/orders/blobs/2018/april/shoes.csv` . Ha bármilyen tárolóban szeretne megadni egy mappát, hagyja ki a kezdő "/" karaktert. Például egy `april/shoes.csv` eseményt indít el bármely `shoes.csv` , a mappában található "April" nevű fájlon bármely tárolóban. 
+    * Megjegyzés: a blob elérési útja a (z) karakterrel **kezdődik** **, és az** csak az Eseményindítóban engedélyezett mintázatnak felel meg. Az trigger típusa nem támogatja más típusú helyettesítő karakterek használatát.
 
 1. Válassza ki, hogy az eseményindító válaszol-e a **blob által létrehozott** eseményre, a **blob törölt** eseményére vagy mindkettőre. A megadott tárolási helyen minden esemény elindítja az eseményindítóhoz társított Data Factory folyamatokat.
 
@@ -63,7 +67,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy eseményvezérelt ese
 
 1. Válassza ki, hogy az trigger kihagyja-e a blobokat nulla bájttal.
 
-1. Miután konfigurálta az aktiválást, kattintson a **Next (tovább) gombra: az adatelőnézet** . Ezen a képernyőn láthatók azok a meglévő Blobok, amelyek megfelelnek az esemény-eseményindító konfigurációjának. Győződjön meg arról, hogy adott szűrőket adott meg. A túl széles szűrők konfigurálása nagy számú, létrehozott/törölt fájlhoz is tartozhat, és jelentősen befolyásolhatja a költségeket. A szűrési feltételek ellenőrzése után kattintson a **Befejezés** gombra.
+1. Miután konfigurálta az aktiválást, kattintson a **Next (tovább) gombra: az adatelőnézet**. Ezen a képernyőn láthatók azok a meglévő Blobok, amelyek megfelelnek az esemény-eseményindító konfigurációjának. Győződjön meg arról, hogy adott szűrőket adott meg. A túl széles szűrők konfigurálása nagy számú, létrehozott/törölt fájlhoz is tartozhat, és jelentősen befolyásolhatja a költségeket. A szűrési feltételek ellenőrzése után kattintson a **Befejezés** gombra.
 
     ![Esemény-eseményindító adatelőnézete](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
@@ -94,7 +98,7 @@ Ez a szakasz az eseményvezérelt eseményindítók beállításait mutatja be.
 > [!IMPORTANT]
 > Az `/blobs/` elérési út szegmensét az alábbi példákban látható módon kell megadnia, amikor tárolót, mappát, tárolót, fájlt vagy tárolót, mappát és fájlt ad meg. A **blobPathBeginsWith** esetében a Data Factory felhasználói felület automatikusan hozzáadja a `/blobs/` mappa és a tároló nevét az trigger JSON-ban.
 
-| Tulajdonság | Példa | Description |
+| Tulajdonság | Példa | Leírás |
 |---|---|---|
 | **A blob elérési útja** | `/containername/` | Eseményeket fogad a tárolóban lévő összes blobhoz. |
 | **A blob elérési útja** | `/containername/blobs/foldername/` | Eseményeket fogad a tárolóban és a mappában található összes blobhoz `containername` `foldername` . |

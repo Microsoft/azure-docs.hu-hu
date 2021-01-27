@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017236"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879173"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>A Azure Firewall használata a privát végpontoknak szánt forgalom vizsgálatára
 
@@ -92,7 +92,7 @@ Bizonyos korlátozások vonatkoznak a megvalósításra: a központba való Migr
 Ez az architektúra akkor valósítható meg, ha a következővel konfigurálta a helyszíni hálózathoz való kapcsolódást: 
 
 * [ExpressRoute](..\expressroute\expressroute-introduction.md)
-* [Helyek közötti VPN](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md) 
+* [Helyek közötti VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 
 
 Ha a biztonsági követelmények megkövetelik, hogy az ügyfél a privát végpontokon keresztül elérhető szolgáltatásokra legyen továbbítva egy biztonsági berendezésen keresztül, akkor ezt a forgatókönyvet kell telepíteni.
 
@@ -174,7 +174,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre.  |
     | **Példány adatai** |  |
     | Virtuális gép neve | Adja meg a **myVM**. |
-    | Region | Válassza ki az USA **déli középső** régióját. |
+    | Régió | Válassza ki az USA **déli középső** régióját. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza az **Ubuntu Server 18,04 LTS-Gen1** lehetőséget. |
     | Méret | Válassza a **Standard_B2s** lehetőséget. |
@@ -208,7 +208,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
 2. Írja be a **tűzfal** kifejezést a keresőmezőbe, majd nyomja le az **ENTER** billentyűt.
 
@@ -223,7 +223,7 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
     | Name | Adja meg a **myAzureFirewall**. |
-    | Region | Válassza az **USA déli középső** régióját. |
+    | Régió | Válassza az **USA déli középső** régióját. |
     | A rendelkezésre állási zóna | Hagyja meg az alapértelmezett **nincs** értéket. |
     | Válasszon egy virtuális hálózatot    |    Válassza a **meglévő használata** lehetőséget.    |
     | Virtuális hálózat    |    Válassza a **myAzFwVNet** lehetőséget.    |
@@ -309,7 +309,7 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. |
     | **Példány adatai** | |
     | Name | Adja meg a **SQLPrivateEndpoint**. |
-    | Region | Válassza ki az USA **déli középső** régióját. |
+    | Régió | Válassza ki az USA **déli középső** régióját. |
 
 6. Válassza ki az **erőforrás** lapot, vagy válassza a **Next (tovább** ) gombot az oldal alján.
 
@@ -339,7 +339,7 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
 
 10. Válassza a **felülvizsgálat + létrehozás** lapot, vagy válassza a lap alján található **felülvizsgálat + létrehozás** elemet.
 
-11. Kattintson a **Létrehozás** gombra.
+11. Válassza a **Létrehozás** lehetőséget.
 
 12. A végpont létrehozása után válassza a **tűzfalak és virtuális hálózatok** lehetőséget a **Biztonság** területen.
 
@@ -461,12 +461,12 @@ Ez a szabály lehetővé teszi az előző lépésekben létrehozott tűzfalon ke
     | Művelet | Adja meg az **Engedélyezés** értéket. |
     | **Szabályok** |  |
     | **FQDN-címkék** | |
-    | Név  | Hagyja üresen.  |
+    | Name  | Hagyja üresen.  |
     | Forrás típusa | Hagyja meg az alapértelmezett **IP-címet**.    |
     | Forrás | Hagyja üresen. |
     | FQDN-címkék | Hagyja meg az alapértelmezett **0 beállítást**. |
     | **Cél teljes tartománynevek** | |
-    | Név | Adja meg a **SQLPrivateEndpoint**.    |
+    | Name | Adja meg a **SQLPrivateEndpoint**.    |
     | Forrás típusa | Hagyja meg az alapértelmezett **IP-címet**. |
     | Forrás | Adja meg a **10.1.0.0/16** értéket. |
     | Protokoll: Port | Adja meg az **MSSQL: 1433** értéket. |
@@ -483,7 +483,7 @@ Ebben a szakaszban egy útválasztási táblázatot hozunk létre egy egyéni ú
 
 Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális hálózati **myPEVNet** a Azure Firewall keresztül.
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
 2. Írja be a keresőmezőbe az **útválasztási táblázat** kifejezést, majd nyomja le az **ENTER** billentyűt.
 
@@ -497,8 +497,8 @@ Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális há
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
-    | Region | Válassza az **USA déli középső** régióját. |
-    | Név | Adja meg **a alhálózat-to-AzureFirewall** értéket. |
+    | Régió | Válassza az **USA déli középső** régióját. |
+    | Name | Adja meg **a alhálózat-to-AzureFirewall** értéket. |
     | Átjáró-útvonalak propagálása | Válassza a **Nem** lehetőséget. |
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
