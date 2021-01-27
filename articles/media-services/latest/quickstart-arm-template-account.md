@@ -1,25 +1,11 @@
 ---
-title: Media Services Account ARM-sablon
-titleSuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan hozhat létre egy Media Services-fiókot ARM-sablon használatával.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879646"
+title: Media Services fiók ARM-sablon: Azure Media Services Leírás: Ez a cikk bemutatja, hogyan hozhat létre Media Services-fiókot ARM-sablon használatával.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: gyors üzembe helyezés MS. Date: 11/24/2020 MS. Author: inhenkel MS. Custom: subject-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>Rövid útmutató: Media Services Account ARM-sablon
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -272,7 +258,7 @@ az group delete --name {name of the resource group}
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az ARM-sablonok használatáról, kövesse a sablon létrehozása paraméterekkel, változókkal és egyéb műveletekkel című témakört.
 

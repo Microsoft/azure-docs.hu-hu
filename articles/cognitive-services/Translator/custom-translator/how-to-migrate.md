@@ -2,19 +2,19 @@
 title: Áttelepíti a Microsoft Translator hub-munkaterületet és-projekteket? -Egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk azt ismerteti, hogyan telepítheti át a hub-munkaterületet és-projekteket az Azure Cognitive Services Custom Translator szolgáltatásba.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368285"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895711"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
@@ -130,20 +130,20 @@ Ha részletesebb áttelepítési jelentést szeretne készíteni a projektekről
 
 Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit hasonlítja össze.
 
-| Funkció | Hub | Custom Translator |
+| Szolgáltatás | Hub | Custom Translator |
 | ------- | :-: | :---------------: |
 | Testreszabási funkció állapota    | Általános elérhetőség    | Általános elérhetőség |
 | Szöveges API-verzió    | 2. verzió     | V3  |
 | SMT testreszabása    | Igen    | Nem |
 | NMT testreszabása    | Nem    | Igen |
 | Új Unified Speech Services testreszabása    | Nem    | Igen |
-| Nincs nyomkövetés | Igen | Igen |
+| Nincs nyomkövetés | Igen | Yes |
 
 ## <a name="new-languages"></a>Új nyelvek
 
 Ha Ön olyan Közösség vagy szervezet, amely a fordító új nyelvi rendszerének létrehozására dolgozik, további információkért tekintse meg a [custommt@microsoft.com](mailto:custommt@microsoft.com) következőt:.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modell betanítása](how-to-train-model.md).
 - Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](../reference/v3-0-translate.md?tabs=curl)-n keresztül.

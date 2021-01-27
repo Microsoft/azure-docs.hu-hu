@@ -1,5 +1,5 @@
 ---
-title: Reagálás Azure Media Services eseményekre | Microsoft Docs
+title: Azure Media Services eseményekre való reagálás
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Event Grid az Media Services eseményekre való előfizetéshez.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d4479914ffee6cf667a5f6db2fd665baf2b857c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289154"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895645"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-események kezelése
 

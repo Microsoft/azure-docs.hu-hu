@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394601"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879494"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>VPN-eszközök konfigurációs parancsfájljainak letöltése S2S VPN-kapcsolatokhoz
 
@@ -34,7 +34,7 @@ A létesítmények közötti VPN-kapcsolat egy Azure-beli VPN-átjáróból, egy
 3. Azure VPN-kapcsolat létrehozása és konfigurálása az Azure VPN Gateway és a helyi hálózati átjáró között
 4. A helyi hálózati átjáró által jelölt helyszíni VPN-eszköz konfigurálása a tényleges S2S VPN-alagút létrehozásához az Azure VPN Gateway használatával
 
-Az Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), a [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)vagy a [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)használatával az 1 – 3. lépést végezheti el. Az utolsó lépés magában foglalja a helyszíni VPN-eszközök konfigurálását az Azure-on kívül. Ez a funkció lehetővé teszi, hogy letöltse a VPN-eszköz konfigurációs parancsfájlját az Azure VPN Gateway, a virtuális hálózat és a helyszíni hálózati címek előtagjai és a VPN-kapcsolat tulajdonságai, valamint a már kitöltött adatok megfelelő értékeivel. A parancsfájlt kiindulási pontként használhatja, vagy a parancsfájlt közvetlenül a helyszíni VPN-eszközökre is alkalmazhatja a konfigurációs konzolon keresztül.
+Az Azure [Portal](./tutorial-site-to-site-portal.md), a [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)vagy a [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)használatával az 1 – 3. lépést végezheti el. Az utolsó lépés magában foglalja a helyszíni VPN-eszközök konfigurálását az Azure-on kívül. Ez a funkció lehetővé teszi, hogy letöltse a VPN-eszköz konfigurációs parancsfájlját az Azure VPN Gateway, a virtuális hálózat és a helyszíni hálózati címek előtagjai és a VPN-kapcsolat tulajdonságai, valamint a már kitöltött adatok megfelelő értékeivel. A parancsfájlt kiindulási pontként használhatja, vagy a parancsfájlt közvetlenül a helyszíni VPN-eszközökre is alkalmazhatja a konfigurációs konzolon keresztül.
 
 > [!IMPORTANT]
 > * Az egyes VPN-eszközök konfigurációs parancsfájljainak szintaxisa eltérő, és nagymértékben függ a modelltől és a belső vezérlőprogram verziójától. Különös figyelmet fordít az eszköz modelljére és a verzióra vonatkozó információkra az elérhető sablonokkal szemben.
@@ -49,7 +49,7 @@ Az Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), a 
 
 Hozzon létre egy Azure VPN Gatewayt, egy helyi hálózati átjárót és egy kapcsolati erőforrást, amely összeköti a kettőt. A következő oldal végigvezeti a lépéseken:
 
-* [Helyek közötti kapcsolat létrehozása az Azure Portalon](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Helyek közötti kapcsolat létrehozása az Azure Portalon](./tutorial-site-to-site-portal.md)
 
 A kapcsolati erőforrás létrehozása után kövesse az alábbi utasításokat a VPN-eszköz konfigurációs parancsfájljainak letöltéséhez:
 
@@ -97,6 +97,6 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 A konfigurációs parancsfájl letöltése és ellenőrzése után a következő lépés a parancsfájl alkalmazása a VPN-eszközre. A tényleges eljárás a VPN-eszköz és a modellek alapján változhat. Tekintse át a VPN-eszközök üzemeltetési kézikönyveit vagy a használati útmutató lapjait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Folytassa a [helyek közötti kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-portal.md)konfigurálását.
+Folytassa a [helyek közötti kapcsolat](./tutorial-site-to-site-portal.md)konfigurálását.

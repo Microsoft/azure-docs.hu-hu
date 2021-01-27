@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410215"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879714"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure-titkosítás áttekintése
 
@@ -45,11 +45,11 @@ Az ügyféloldali titkosítással a felhőalapú szolgáltatók nem férnek hozz
 
 A három kiszolgálóoldali titkosítási modell különböző kulcskezelő jellemzőket kínál, amelyeket az igényei szerint választhat:
 
-- **Szolgáltatás által felügyelt kulcsok** : az alacsony terhelésű felügyelet és kényelem kombinációját biztosítja.
+- **Szolgáltatás által felügyelt kulcsok**: az alacsony terhelésű felügyelet és kényelem kombinációját biztosítja.
 
-- **Ügyfél által felügyelt kulcsok** : lehetővé teszi a kulcsok vezérlését, beleértve a saját kulcsok használatát (BYOK), vagy újakat is létrehozhat.
+- **Ügyfél által felügyelt kulcsok**: lehetővé teszi a kulcsok vezérlését, beleértve a saját kulcsok használatát (BYOK), vagy újakat is létrehozhat.
 
-- **Szolgáltatás által felügyelt kulcsok az ügyfél által vezérelt hardverben** : lehetővé teszi, hogy a Microsoft vezérlőn kívül a védett adattárban lévő kulcsokat kezelje. Ezt a tulajdonságot a saját kulcs (HYOK) neve tárolja. Azonban a konfiguráció összetett, és a legtöbb Azure-szolgáltatás nem támogatja ezt a modellt.
+- **Szolgáltatás által felügyelt kulcsok az ügyfél által vezérelt hardverben**: lehetővé teszi, hogy a Microsoft vezérlőn kívül a védett adattárban lévő kulcsokat kezelje. Ezt a tulajdonságot a saját kulcs (HYOK) neve tárolja. Azonban a konfiguráció összetett, és a legtöbb Azure-szolgáltatás nem támogatja ezt a modellt.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -179,9 +179,9 @@ A helyek közötti VPN Gateway-kapcsolattal a helyszíni hálózatot egy IPsec/I
 
 A helyek közötti VPN-kapcsolat a Azure Portal, a PowerShell vagy az Azure CLI használatával konfigurálható egy virtuális hálózathoz.
 
-További információ:
+További információkért lásd:
 
-[Helyek közötti kapcsolat létrehozása a Azure Portalban](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Helyek közötti kapcsolat létrehozása a Azure Portalban](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [Helyek közötti kapcsolat létrehozása a PowerShellben](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
@@ -202,7 +202,7 @@ A Key Vault leveszi a vállalatok válláról a hardveres biztonsági modulok (H
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure biztonsági szolgáltatásainak áttekintése](./overview.md)
-- [Az Azure hálózati biztonság áttekintése](network-overview.md)
+- [A nagyvállalati hálózati biztonság áttekintése](network-overview.md)
 - [Az Azure Database biztonsági áttekintése](../../azure-sql/database/security-overview.md)
 - [Az Azure Virtual Machines biztonsági áttekintése](virtual-machines-overview.md)
 - [Adat-titkosítás inaktív állapotban](encryption-atrest.md)

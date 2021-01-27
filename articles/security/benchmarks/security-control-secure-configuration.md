@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409025"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880169"
 ---
 # <a name="security-control-secure-configuration"></a>Biztonsági ellenőrzés: biztonságos konfiguráció
 
@@ -88,9 +88,9 @@ Azt is vegye figyelembe, hogy a Microsoft által közzétett Azure Marketplace v
 
 - [Windows rendszerű virtuális gép létrehozása a Azure Portalban](../../virtual-machines/windows/quick-create-portal.md)
 
-- [A virtuálisgép-sablon letöltésével kapcsolatos információk](../../virtual-machines/windows/download-template.md)
+- [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: az Azure-erőforrások biztonságos tárolása
 
@@ -118,7 +118,7 @@ Ha egyéni lemezképeket használ, az Azure szerepköralapú hozzáférés-vezé
 
 - [Az Azure RBAC konfigurálása](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Megosztott képgyűjtemény – áttekintés](../../virtual-machines/windows/shared-image-galleries.md)
+- [Megosztott képgyűjtemény – áttekintés](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: az Azure-erőforrások konfigurációs felügyeleti eszközeinek üzembe helyezése
 
@@ -128,7 +128,7 @@ Ha egyéni lemezképeket használ, az Azure szerepköralapú hozzáférés-vezé
 
 Az Azure-erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Az Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre az Azure-erőforrások hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Az adott erőforrásokhoz kapcsolódó beépített szabályzat-definíciókat is igénybe vehet.  Emellett Azure Automation használatával is telepítheti a konfigurációs módosításokat.
 
-- [Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
+- [Az Azure Policy konfigurálása és kezelése](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Aliasok használata](../../governance/policy/concepts/definition-structure.md#aliases)
 
@@ -194,7 +194,7 @@ Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások
 |--|--|--|
 | 7,13 | 18,1, 18,7 | Ügyfél |
 
-Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze. 
+Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A Credential Scanner a felfedezett hitelesítő adatok biztonságosabb helyre, például az Azure Key Vaultba való áthelyezésére is javaslatot tesz. 
 
 - [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 

@@ -1,24 +1,8 @@
 ---
-title: Azure Media Services események tárolása az Azure-ban Log Analytics
-titleSuffix: Azure Media Services
-description: Megtudhatja, hogyan tárolhatja Azure Media Services eseményeit az Azure Log Analyticsban.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/24/2020
-ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016995"
+title: Azure Media Services események tárolása az Azure-ban Log Analytics: Azure Media Services Leírás: megtudhatja, hogyan tárolhatja Azure Media Services eseményeit az Azure Log Analyticsban.
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. munkaterhelés: MS. topic: oktatóanyag MS. Date: 08/24/2020 MS. Author: inhenkel
 ---
+
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Oktatóanyag: Azure Media Services-események tárolása az Azure-ban Log Analytics
 
 ## <a name="azure-media-services-events"></a>Események Azure Media Services
@@ -49,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 1. Ha még nem tette meg, hozzon létre egy [log Analytics](../../azure-monitor/learn/quick-create-workspace.md) munkaterületet a Azure Portalban. Szüksége lesz a munkaterület-AZONOSÍTÓra és az egyik kulcsra, hogy a böngészőablak nyitva legyen. Ezután nyissa meg a portált egy másik lapon vagy ablakban.
 
-1. Navigáljon a Azure Media Services-fiókjához, és válassza az **események**lehetőséget. Ekkor megjelenik az Azure Media Services eseményekre való feliratkozás összes módszere.
+1. Navigáljon a Azure Media Services-fiókjához, és válassza az **események** lehetőséget. Ekkor megjelenik az Azure Media Services eseményekre való feliratkozás összes módszere.
     > [!div class="mx-imgBorder"]
     > ![Azure Media Services portál](media/tutorial-events-log-analytics/select-events-01a.png)
 
@@ -76,7 +60,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 1. Válassza a **Mentés másként** lehetőséget.
 
-1. Adjon nevet a logikai alkalmazásnak.  Az erőforráscsoport alapértelmezés szerint ki van választva. Hagyja meg a többi beállítást a kívánt módon, majd válassza a **Létrehozás**lehetőséget.  A rendszer visszaadja az Azure-Kezdőlap képernyőjét.
+1. Adjon nevet a logikai alkalmazásnak.  Az erőforráscsoport alapértelmezés szerint ki van választva. Hagyja meg a többi beállítást a kívánt módon, majd válassza a **Létrehozás** lehetőséget.  A rendszer visszaadja az Azure-Kezdőlap képernyőjét.
     > [!div class="mx-imgBorder"]
     > ![Logikai alkalmazás elnevezési felülete](media/tutorial-events-log-analytics/give-logic-app-name-06a.png)
 
@@ -86,9 +70,9 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
 
 1. Ha a portál visszatér a kezdőképernyőn, térjen vissza az imént létrehozott logikai alkalmazáshoz, és keresse meg az alkalmazás nevére vonatkozó összes erőforrást.
 
-1. Válassza ki az alkalmazást, majd válassza a **Logic app Designer**elemet. Ekkor megnyílik a tervező ablaktábla.
+1. Válassza ki az alkalmazást, majd válassza a **Logic app Designer** elemet. Ekkor megnyílik a tervező ablaktábla.
 
-1. Válassza az **+ új lépés**lehetőséget.
+1. Válassza az **+ új lépés** lehetőséget.
 
 1. Mivel az eseményeket az Azure Log Analytics szolgáltatásba kívánja leküldeni, keressen rá az "Azure Log Analytics" kifejezésre, és válassza az "Azure Log Analytics adatgyűjtő" lehetőséget.
     > [!div class="mx-imgBorder"]
@@ -106,7 +90,7 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
     > [!div class="mx-imgBorder"]
     > ![Munkaterület-azonosító másolása](media/tutorial-events-log-analytics/copy-workspace-id.png)
 
-1. A másik böngésző lapon vagy ablakban az Azure Log Analytics adatgyűjtője lapon válassza az **adatküldés**lehetőséget, adja meg a kapcsolatok nevét, majd illessze be a *munkaterület* -azonosítót a **munkaterület-azonosító** mezőbe.
+1. A másik böngésző lapon vagy ablakban az Azure Log Analytics adatgyűjtője lapon válassza az **adatküldés** lehetőséget, adja meg a kapcsolatok nevét, majd illessze be a *munkaterület* -azonosítót a **munkaterület-azonosító** mezőbe.
 
 1. Térjen vissza a munkaterület-tallózó lapra vagy az ablakba, és másolja a *munkaterület kulcsát*.
     > [!div class="mx-imgBorder"]
@@ -114,11 +98,11 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
 
 1. A másik böngésző lapon vagy ablakban illessze be a *munkaterület* kulcsát a **munkaterület kulcs** mezőjébe.
 
-1. Kattintson a **Létrehozás** gombra. Most létrehozza a JSON-kérés törzsét és az egyéni napló nevét.
+1. Válassza a **Létrehozás** lehetőséget. Most létrehozza a JSON-kérés törzsét és az egyéni napló nevét.
 
 1. Válassza a **JSON-kérelem törzse** mezőt.  Ekkor megjelenik a **dinamikus tartalom hozzáadására** szolgáló hivatkozás.
 
-1. Válassza a **dinamikus tartalom hozzáadása** lehetőséget, majd válassza a **témakör**lehetőséget.
+1. Válassza a **dinamikus tartalom hozzáadása** lehetőséget, majd válassza a **témakör** lehetőséget.
 
 1. Tegye ugyanezt az **Egyéni napló neveként**.
     > [!div class="mx-imgBorder"]
@@ -136,7 +120,7 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
 
 1. Kattintson a **Mentés** gombra.
 
-1. Az ellenőrzéshez válassza a **Logic app Designer**elemet.
+1. Az ellenőrzéshez válassza a **Logic app Designer** elemet.
     > [!div class="mx-imgBorder"]
     > ![A törzs és a függvény lépéseinek ellenőrzése](media/tutorial-events-log-analytics/verify-changes-to-json.png)
 
@@ -148,11 +132,11 @@ Most, hogy előfizetett az esemény (ek) ra, hozzon létre egy műveletet.
 
 A tényleges működésének teszteléséhez hozzon létre egy élő eseményt Azure Media Servicesban. Hozzon létre egy RTMP élő eseményt, és használja az FFmpeg-t egy "élő" stream küldésére egy. mp4-mintakód alapján. Az esemény létrehozása után szerezze be az RTMP betöltési URL-címét.
 
-1. A Media Services-fiókban válassza az **élő közvetítés**lehetőséget.
+1. A Media Services-fiókban válassza az **élő közvetítés** lehetőséget.
     > [!div class="mx-imgBorder"]
     > ![Azure Media Services élő esemény létrehozása](media/tutorial-events-log-analytics/live-event.png)
 
-1. Válassza az **élő esemény hozzáadása**lehetőséget.
+1. Válassza az **élő esemény hozzáadása** lehetőséget.
 
 1. Írjon be egy nevet az **élő esemény neve** mezőbe. (A **Leírás** mező megadása nem kötelező.)
 
@@ -174,9 +158,9 @@ A tényleges működésének teszteléséhez hozzon létre egy élő eseményt A
 
 1. Válassza az **összes jogot a tartalom vagy fájl használatához** ... jelölőnégyzetet.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  Ekkor megjelennek az élő események listája, és megjelenik az élő esemény betöltési URL-címe.
+1. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.  Ekkor megjelennek az élő események listája, és megjelenik az élő esemény betöltési URL-címe.
 
 1. Másolja a betöltési **URL-címet** a vágólapra.
 
@@ -216,7 +200,7 @@ Az élő streamtel Azure Media Services a logikai alkalmazás folyamatát kivál
 
 1. Navigáljon a korábban létrehozott Log Analytics munkaterületre.
 
-1. Válassza a **naplók**lehetőséget.
+1. Válassza a **naplók** lehetőséget.
 1. Zárjuk be a példában szereplő lekérdezések előugró ablakát.
 1. A rendszer egyéni naplókat listáz. Kattintson a lefelé mutató nyílra a kibontásához. Ekkor megjelenik az esemény neve `MicrosoftMediaLiveEventEncoderConnected` .
 1. Válassza ki az esemény nevét a kibontásához.

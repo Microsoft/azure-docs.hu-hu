@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95526119"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880708"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Blokkblobtárolás teljesítményszintjei
 
@@ -65,7 +65,7 @@ A standard szintű teljesítmény a különböző [hozzáférési szinteket](sto
 
 A meglévő standard teljesítményű Storage-fiókok nem konvertálhatók prémium szintű teljesítményű blokk blob Storage-fiókra. A prémium szintű teljesítményű Storage-fiókba való átlépéshez létre kell hoznia egy BlockBlobStorage-fiókot, és át kell telepítenie az új fiókba. További információt a BlockBlobStorage- [fiók létrehozása](storage-blob-create-account-block-blob.md)című témakörben talál.
 
-A Blobok Storage-fiókok közötti másolásához használhatja a [AzCopy](../common/storage-use-azcopy-blobs.md) parancssori eszköz legújabb verzióját. Más eszközök, például a Azure Data Factory az adatáthelyezéshez és-átalakításhoz is elérhetők.
+A Blobok Storage-fiókok közötti másolásához használhatja a [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) parancssori eszköz legújabb verzióját. Más eszközök, például a Azure Data Factory az adatáthelyezéshez és-átalakításhoz is elérhetők.
 
 ## <a name="blob-lifecycle-management"></a>BLOB-életciklus kezelése
 
@@ -78,7 +78,7 @@ További információ: [Az Azure Blob Storage életciklusának kezelése](storag
 
 A prémium szintű blokk blob Storage-fiókban tárolt adatok nem helyezhetők át a gyakori, a ritka elérésű és az archív rétegek között. Egy blokk blob Storage-fiókból is másolhat blobokat egy *másik* fiókban lévő gyors elérési szinthez. Az adatok egy másik fiókba való másolásához használja a [put blokkot az URL](/rest/api/storageservices/put-block-from-url) API vagy a [AzCopy v10](../common/storage-use-azcopy-v10.md)használatával. A **put blokk from URL** API szinkron módon másolja az adatok a kiszolgálón. A hívás csak azt követően fejeződik be, hogy az összes adatok át lettek helyezve az eredeti kiszolgáló helyéről a célhelyre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Értékelje ki a GPv2-és blob Storage-fiókokban a gyakori, ritka elérésű és archív archívumokat.
 

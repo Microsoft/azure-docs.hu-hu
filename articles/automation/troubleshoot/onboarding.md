@@ -2,15 +2,15 @@
 title: A szolgáltatások központi telepítésével kapcsolatos problémák elhárítása Azure Automation
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation szolgáltatások telepítésekor felmerülő problémákat.
 services: automation
+ms.subservice: ''
 ms.date: 06/30/2020
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.topic: troubleshooting
+ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070486"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896511"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Szolgáltatás üzembehelyezési problémáinak elhárítása
 
@@ -100,7 +100,7 @@ Lehetséges, hogy módosította a lekérdezést, vagy megváltoztatta a rendszer
 
 #### <a name="resolution"></a>Feloldás
 
-Törölheti a szolgáltatás lekérdezését, majd ismét engedélyezheti a szolgáltatást, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterület **mentett keresések**területén található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított szolgáltatás neve. Ha több funkció is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések**alatt.
+Törölheti a szolgáltatás lekérdezését, majd ismét engedélyezheti a szolgáltatást, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterület **mentett keresések** területén található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított szolgáltatás neve. Ha több funkció is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések** alatt.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Forgatókönyv: PolicyViolation
 
@@ -148,7 +148,7 @@ Ha ezeket használja, távolítsa el a munkaterület következő funkcióinak er
 A szolgáltatás erőforrásainak eltávolítása után megszüntetheti a munkaterület összekapcsolását. Fontos, hogy a munkaterületről és az Automation-fiókból törölje a meglévő összetevőkből származó összes összetevőt:
 
 * Update Management esetén távolítsa el az Automation-fiókból a **frissítési központi telepítéseket (ütemterveket)** .
-* Start/Stop VMS During off-hours esetén távolítsa el az Automation-fiókban lévő funkció-összetevők zárolásait a **Beállítások**  >  **zárolása**alatt. További információ: [a szolgáltatás eltávolítása](../automation-solution-vm-management.md#remove-the-feature).
+* Start/Stop VMS During off-hours esetén távolítsa el az Automation-fiókban lévő funkció-összetevők zárolásait a **Beállítások**  >  **zárolása** alatt. További információ: [a szolgáltatás eltávolítása](../automation-solution-vm-management.md#remove-the-feature).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>A Windows-bővítményekkel kapcsolatos hibák Log Analytics
 
@@ -243,4 +243,4 @@ Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, pr
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.

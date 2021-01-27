@@ -3,19 +3,19 @@ title: Kérelmek korlátai – Translator
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a fordítóra vonatkozó kérelmek korlátozásait sorolja fel. A díjak a karakterek száma alapján merülnek fel, a kérelmek gyakorisága pedig a 5 000 karakteres korlátot kéri. A karakterkészletek az előfizetés-alapúak, a F0 pedig óránként 2 000 000 karakterre van korlátozva.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016496"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895407"
 ---
 # <a name="request-limits-for-translator"></a>Fordítói kérelmek korlátai
 
@@ -80,5 +80,5 @@ A [BreakSentence](./reference/v3-0-break-sentence.md) függvény használatakor 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
-* [Regionális elérhetőség](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+* [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 * [3-as verziójú Translator-referencia](./reference/v3-0-reference.md)

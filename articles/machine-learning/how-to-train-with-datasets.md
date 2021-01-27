@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539677"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881686"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Modellek betanítása Azure Machine Learning adatkészletekkel 
 
 Ebből a cikkből megtudhatja, hogyan dolgozhat [Azure Machine learning adatkészletekkel](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) a gépi tanulási modellek betanításához.  Az adatkészleteket a helyi vagy távoli számítási célhelyen is használhatja, és nem kell aggódnia a kapcsolatok karakterláncai vagy az adatelérési utak miatt. 
 
-Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési funkciókkal, például a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), a [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) és a [Azure Machine learning folyamatokkal](how-to-create-your-first-pipeline.md).
+Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési funkciókkal, például a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), a [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) és a [Azure Machine learning folyamatokkal](./how-to-create-machine-learning-pipelines.md).
 
 Ha nem áll készen arra, hogy az adatokat a modell betanításához is elérhetővé tegye, de az adatokat a jegyzetfüzetbe szeretné betölteni az adatfeltáráshoz, olvassa el [az adatkészletben található információk megismerése című részt](how-to-create-register-datasets.md#explore-data). 
 
@@ -263,7 +263,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 * **Az adatkészlet inicializálása nem sikerült: várakozás a csatlakoztatási pont készenléti időkorlátja**: 
-  * Ha nem rendelkezik kimenő [hálózati biztonsági csoportra](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) vonatkozó szabályokkal, és a-t használja `azureml-sdk>=1.12.0` , a frissítés `azureml-dataset-runtime` és a függőségek a legújabbak lesznek az adott alverziónál, vagy ha fut, akkor hozza létre újra a környezetet, hogy az a javítással rendelkezzen a legújabb javítással. 
+  * Ha nem rendelkezik kimenő [hálózati biztonsági csoportra](../virtual-network/network-security-groups-overview.md) vonatkozó szabályokkal, és a-t használja `azureml-sdk>=1.12.0` , a frissítés `azureml-dataset-runtime` és a függőségek a legújabbak lesznek az adott alverziónál, vagy ha fut, akkor hozza létre újra a környezetet, hogy az a javítással rendelkezzen a legújabb javítással. 
   * Ha a `azureml-sdk<1.12.0` -t használja, frissítsen a legújabb verzióra.
   * Ha kimenő NSG-szabályokkal rendelkezik, győződjön meg arról, hogy van egy kimenő szabály, amely engedélyezi a szolgáltatás címkéjének minden forgalmát `AzureResourceMonitor` .
 
@@ -293,4 +293,4 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
 
 * [Képosztályozási modellek betanítása](https://aka.ms/filedataset-samplenotebook) a FileDatasets.
 
-* [Adatkészletek betanítása a folyamatok használatával](how-to-create-your-first-pipeline.md).
+* [Adatkészletek betanítása a folyamatok használatával](./how-to-create-machine-learning-pipelines.md).

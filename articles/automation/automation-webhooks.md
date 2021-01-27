@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073529"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894762"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
 
@@ -31,7 +31,7 @@ A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webh
 |:--- |:--- |
 | Név |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
 | URL-cím |A webhook URL-címe. Ez az az egyedi címnek, amelyet az ügyfél HTTP-BEJEGYZÉSsel hív meg, hogy elindítsa a webhookhoz csatolt runbook. A webhook létrehozásakor automatikusan létrejön. Nem adhat meg egyéni URL-címet. <br> <br> Az URL-cím olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi, hogy egy harmadik féltől származó rendszer további hitelesítés nélkül hívja meg a runbook. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból a webhook létrehozásakor csak a Azure Portal URL-címét tekintheti meg. A jövőbeli használatra biztonságos helyen jegyezze fel az URL-címet. |
-| Lejárati dátum | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
+| Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
 | Engedélyezve | Ez a beállítás azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha a tulajdonságot letiltva értékre állítja, akkor egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot akkor állíthatja be, amikor létrehozza a webhookot vagy bármely más időt a létrehozása után. |
 
 ## <a name="parameters-used-when-the-webhook-starts-a-runbook"></a>A webhook runbook indításakor használt paraméterek
@@ -95,7 +95,7 @@ Vegye figyelembe a következő stratégiákat:
 
 A következő eljárással hozhat létre egy új webhookot, amely egy runbook kapcsolódik a Azure Portal.
 
-1. A Azure Portal Runbookok lapján kattintson arra a runbook, amelyet a webhook elkezd megtekinteni a runbook részleteit. Győződjön meg arról, hogy a runbook **állapota** mező **közzé**van téve.
+1. A Azure Portal Runbookok lapján kattintson arra a runbook, amelyet a webhook elkezd megtekinteni a runbook részleteit. Győződjön meg arról, hogy a runbook **állapota** mező **közzé** van téve.
 2. Kattintson a **webhook** elemre az oldal tetején a webhook hozzáadása lap megnyitásához.
 3. Kattintson az **új webhook létrehozása** elemre a webhook létrehozása lap megnyitásához.
 4. Töltse ki a webhook **neve** és **lejárati dátuma** mezőket, és adja meg, hogy engedélyezni kell-e. A tulajdonságokkal kapcsolatos további információkért tekintse meg a [webhook tulajdonságai](#webhook-properties) című témakört.
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Az ügyfél a kérelemből a következő visszatérési kódok egyikét kapja meg `POST` .
 
-| Code | Szöveg | Leírás |
+| Code | Szöveg | Description |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |A kérést elfogadták, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérés |A kérelmet a következő okok egyike miatt nem fogadták el: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>Az URL-címben szereplő jogkivonat érvénytelen.</li>  </ul> |
@@ -142,16 +142,16 @@ Webhook létrehozásakor az érvényességi időtartam tíz év, amely után az 
 Kiterjesztheti azt a webhookot, amely nem érte el a lejárati idejét. Webhook kiterjesztése:
 
 1. Navigáljon a webhookot tartalmazó runbook. 
-2. Válassza a **webhookok** lehetőséget az **erőforrások**területen. 
+2. Válassza a **webhookok** lehetőséget az **erőforrások** területen. 
 3. Kattintson a terjeszteni kívánt webhookra. 
-4. A webhook lapon válassza ki az új lejárati dátumot és időpontot, majd kattintson a **Mentés**gombra.
+4. A webhook lapon válassza ki az új lejárati dátumot és időpontot, majd kattintson a **Mentés** gombra.
 
 ## <a name="sample-runbook"></a>Minta runbook
 
-A következő minta-runbook fogadja a webhook-adatkapcsolatot, és elindítja a kérés törzsében megadott virtuális gépeket. A runbook teszteléséhez az Automation-fiók **runbookok**területén kattintson a **runbook létrehozása**lehetőségre. Ha nem tudja, hogyan hozhat létre runbook, tekintse meg [a Runbook létrehozását](automation-quickstart-create-runbook.md)ismertető témakört.
+A következő minta-runbook fogadja a webhook-adatkapcsolatot, és elindítja a kérés törzsében megadott virtuális gépeket. A runbook teszteléséhez az Automation-fiók **runbookok** területén kattintson a **runbook létrehozása** lehetőségre. Ha nem tudja, hogyan hozhat létre runbook, tekintse meg [a Runbook létrehozását](automation-quickstart-create-runbook.md)ismertető témakört.
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
 ```powershell
 param

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure Spring Cloud üzembe helyezése virtuális hálózaton
+title: Azure Spring Cloud üzembe helyezése virtuális hálózaton
 description: Azure Spring Cloud üzembe helyezése virtuális hálózaton (VNet injekció).
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587723"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880599"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése virtuális hálózaton
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Azure Spring Cloud üzembe helyezése virtuális hálózaton
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
@@ -25,6 +25,9 @@ Az üzembe helyezés a következőket teszi lehetővé:
 * Az Azure Spring Cloud apps és a Service Runtime elkülönítése az internetről a vállalati hálózaton.
 * Az Azure Spring Cloud interakciója a helyszíni adatközpontokban vagy más virtuális hálózatokban lévő Azure-szolgáltatásokban található rendszerekkel.
 * Az Azure Spring Cloud bejövő és kimenő hálózati kommunikációjának szabályozása az ügyfelek számára.
+
+> [!Note]
+> Az Azure-beli virtuális hálózatot csak akkor választhatja ki, ha új Azure Spring Cloud Service-példányt hoz létre. Az Azure Spring Cloud létrehozása után nem lehet másik virtuális hálózat használatára váltani.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +66,7 @@ Ha már rendelkezik virtuális hálózattal egy Azure Spring Cloud-példány üz
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Név             |Adja meg az **Azure-Spring-Cloud-vnet**.                 |
+    |Name             |Adja meg az **Azure-Spring-Cloud-vnet**.                 |
     |Hely         |Válassza az **USA keleti régiója** lehetőséget.                               |
 
 1. Válassza a **Tovább: IP-címek** lehetőséget.
@@ -74,9 +77,10 @@ Ha már rendelkezik virtuális hálózattal egy Azure Spring Cloud-példány üz
 
 1. Válassza az **alhálózat hozzáadása** újra lehetőséget, majd adja meg az **alhálózat nevét** és az alhálózati **címtartományt**. Adja meg például az **alkalmazások-alhálózat** és a **10.1.1.0/28** értéket. Ezután válassza a **Hozzáadás** elemet.
 
-1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Hagyja a többi értéket alapértelmezettként, majd válassza a **Létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Hagyja a többi értéket alapértelmezettként, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Szolgáltatás engedélyének megadása a virtuális hálózat számára
+Az Azure Spring Cloud **tulajdonosi** engedélyre van szüksége a virtuális hálózatához, hogy további üzembe helyezéshez és karbantartáshoz biztosítson egy dedikált és dinamikus szolgáltatásnevet a virtuális hálózaton.
 
 Válassza ki a korábban létrehozott **Azure-Spring-Cloud-vnet** virtuális hálózatot.
 
@@ -160,9 +164,9 @@ Ezek a hálózati erőforrások az előző képen létrehozott virtuális háló
    > [!Important]
    > Az erőforráscsoportok teljes mértékben az Azure Spring Cloud szolgáltatással kezelhetők. Ne *töröljön manuálisan semmilyen* erőforrást, vagy ne módosítsa a-t.
 
-## <a name="limitations"></a>Korlátozások
+## <a name="using-smaller-subnet-ranges"></a>Kisebb alhálózati tartományok használata
 
-Egy kis alhálózat-tartomány menti az IP-címeket, de korlátozásokat biztosít az Azure Spring Cloud-példányok maximális számú alkalmazás-példánya számára.
+Ez a táblázat az Azure Spring Cloud által támogatott, kisebb alhálózati tartományokat használó alkalmazás-példányok maximális számát jeleníti meg.
 
 | Alkalmazás-alhálózat CIDR | Összes IP-cím | Elérhető IP-címek | Alkalmazás-példányok maximális száma                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |
@@ -176,7 +180,7 @@ Az alhálózatok esetében öt IP-cím van fenntartva az Azure-ban, és legaláb
 
 A szolgáltatás futásidejű alhálózata esetében a minimális méret/28. Ez a méret nem befolyásolja az alkalmazások példányainak számát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 

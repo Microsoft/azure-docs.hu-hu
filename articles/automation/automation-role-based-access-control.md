@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003701"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895917"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
@@ -319,7 +319,7 @@ Eltávolíthat egy olyan felhasználó hozzáférési engedélyét, aki nem keze
 
 Az Automation-fiókokhoz a következő [Azure PowerShell parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával is konfigurálhat szerepköralapú hozzáférést:
 
-A [Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja a Azure Active Directoryban elérhető összes Azure-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
+A [Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition) felsorolja a Azure Active Directoryban elérhető összes Azure-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) felsorolja az Azure szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
+A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) felsorolja az Azure szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
 **Példa:** A következő parancsmag használatával listázhatja az összes felhasználót és azok szerepkörét egy Automation-fiókon belül.
 
@@ -360,7 +360,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-A [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) használatával a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférést egy adott hatókörhöz rendelheti hozzá.
+A [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférést egy adott hatókörhöz rendelheti hozzá.
 
 **Példa:** A következő parancs használatával rendelje hozzá az Automation-operátor szerepkört egy felhasználóhoz az Automation-fiók hatókörében.
 
@@ -382,7 +382,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-A [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) használatával távolíthatja el egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
+A [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment) használatával távolíthatja el egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
 
 **Példa:** A következő parancs használatával távolítsa el a felhasználót az Automation-operátori szerepkörből az Automation-fiók hatókörében.
 
@@ -431,7 +431,7 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ![Csak az indításhoz van hozzáférése](media/automation-role-based-access-control/automation-only-start.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni az Azure RBAC a PowerShell használatával kapcsolatban, tekintse meg az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)című részt.
 * A runbookok típusaival kapcsolatos részletekért lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).

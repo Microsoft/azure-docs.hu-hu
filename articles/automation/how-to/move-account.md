@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185551"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896646"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation-fiók áthelyezése másik előfizetésre
 
@@ -41,7 +41,7 @@ A munkaterület Automation-fiókból való leválasztásához el kell távolíta
 
     ![Képernyőfelvétel a szolgáltatás erőforrásainak törléséről a Azure Portal](../media/move-account/delete-solutions.png)
 
-Ha szeretné, törölheti az erőforrásokat a [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) parancsmag használatával:
+Ha szeretné, törölheti az erőforrásokat a [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource) parancsmag használatával:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -72,15 +72,15 @@ Start/Stop VMs during off-hours esetén el kell távolítania a szolgáltatás �
     > [!NOTE]
     > Ha nem lát riasztási szabályt a szabályok lapon, a letiltott riasztások megjelenítéséhez módosítsa az **állapot** mezőt **Letiltva** értékre. 
 
-4. A riasztási szabályok eltávolításakor el kell távolítania Start/Stop VMs during off-hours értesítésekhez létrehozott műveleti csoportot. A Azure Portal válassza a riasztások **figyelése**  >  **Alerts**  >  **műveleti csoportok kezelése**lehetőséget.
+4. A riasztási szabályok eltávolításakor el kell távolítania Start/Stop VMs during off-hours értesítésekhez létrehozott műveleti csoportot. A Azure Portal válassza a riasztások **figyelése**  >    >  **műveleti csoportok kezelése** lehetőséget.
 
-5. Válassza a **StartStop_VM_Notification**lehetőséget. 
+5. Válassza a **StartStop_VM_Notification** lehetőséget. 
 
-6. A műveleti csoport lapon válassza a **Törlés**lehetőséget.
+6. A műveleti csoport lapon válassza a **Törlés** lehetőséget.
 
     ![A műveleti csoport oldalának képernyőképe](../media/move-account/delete-action-group.png)
 
-Ha szeretné, törölheti a műveleti csoportot a [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) parancsmag használatával:
+Ha szeretné, törölheti a műveleti csoportot a [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup) parancsmag használatával:
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -90,7 +90,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 
 Most már leválaszthatja a munkaterületet:
 
-1. A Azure Portal válassza az **Automation-fiókhoz**  >  **kapcsolódó erőforrások**  >  **csatolt munkaterület**elemet. 
+1. A Azure Portal válassza az **Automation-fiókhoz**  >  **kapcsolódó erőforrások**  >  **csatolt munkaterület** elemet. 
 
 2. Válassza a **munkaterület** megszüntetése lehetőséget a munkaterület Automation-fiókból való leválasztásához.
 
@@ -100,7 +100,7 @@ Most már leválaszthatja a munkaterületet:
 
 Most már áthelyezheti az Automation-fiókját és a runbookok is. 
 
-1. A Azure Portal tallózással keresse meg az Automation-fiókja erőforrás-csoportját. Válassza **Move**  >  **az áthelyezés másik előfizetésre**lehetőséget.
+1. A Azure Portal tallózással keresse meg az Automation-fiókja erőforrás-csoportját. Válassza   >  **az áthelyezés másik előfizetésre** lehetőséget.
 
     ![Képernyőkép az erőforráscsoport oldaláról, áthelyezés másik előfizetésre](../media/move-account/move-resources.png)
 
@@ -110,7 +110,7 @@ Most már áthelyezheti az Automation-fiókját és a runbookok is.
 
 A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való hitelesítéshez Azure Active Directory egyszerű szolgáltatásnevet hoznak létre. Az előfizetések módosításakor az Automation-fiók már nem használja a meglévő futtató fiókot. A futtató fiókok újbóli létrehozása:
 
-1. Nyissa meg az Automation-fiókját az új előfizetésben, és válassza a **fiók beállításai**alatt a **futtató fiókok** elemet. Láthatja, hogy a futtató fiókok már nem teljesek.
+1. Nyissa meg az Automation-fiókját az új előfizetésben, és válassza a **fiók beállításai** alatt a **futtató fiókok** elemet. Láthatja, hogy a futtató fiókok már nem teljesek.
 
     ![Képernyőkép a futtató fiókokról, hiányos megjelenítéssel](../media/move-account/run-as-accounts.png)
 
@@ -119,7 +119,7 @@ A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való
     > [!NOTE]
     > Ha nem rendelkezik a futtató fiókok létrehozásához vagy megtekintéséhez szükséges engedélyekkel, tekintse meg a következő üzenetet: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` További információért lásd a [futtató fiókok konfigurálásához szükséges engedélyeket](../manage-runas-account.md#permissions).
 
-3. Miután törölte a futtató fiókokat, válassza a **Létrehozás** az Azure-beli **futtató fiókban**lehetőséget. 
+3. Miután törölte a futtató fiókokat, válassza a **Létrehozás** az Azure-beli **futtató fiókban** lehetőséget. 
 
 4. Az Azure-beli futtató fiók hozzáadása lapon válassza a **Létrehozás** lehetőséget a futtató fiók és az egyszerű szolgáltatásnév létrehozásához. 
 
@@ -129,13 +129,13 @@ A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való
 
 A futtató fiókok újbóli létrehozása után újra engedélyeznie kell azokat a szolgáltatásokat, amelyeket az áthelyezés előtt eltávolítottak:
 
-1. A Change Tracking és a leltár bekapcsolásához válassza a **change Tracking és a leltár** elemet az Automation-fiókban. Válassza ki az áthelyezett Log Analytics munkaterületet, majd válassza az **Engedélyezés**lehetőséget.
+1. A Change Tracking és a leltár bekapcsolásához válassza a **change Tracking és a leltár** elemet az Automation-fiókban. Válassza ki az áthelyezett Log Analytics munkaterületet, majd válassza az **Engedélyezés** lehetőséget.
 
 2. Ismételje meg az 1. lépést Update Management esetén.
 
     ![Az áthelyezett Automation-fiókban található szolgáltatások ismételt engedélyezését bemutató képernyőkép](../media/move-account/reenable-solutions.png)
 
-3. A szolgáltatásokkal engedélyezett gépek a meglévő Log Analytics munkaterület csatlakoztatásakor láthatók. A Start/Stop VMs during off-hours funkció bekapcsolásához újra engedélyeznie kell azt. A **kapcsolódó erőforrások**területen válassza a **virtuális gépek indítása/leállítása**további  >  **információk és a megoldás**létrehozásának engedélyezése lehetőséget a  >  **Create** telepítés elindításához.
+3. A szolgáltatásokkal engedélyezett gépek a meglévő Log Analytics munkaterület csatlakoztatásakor láthatók. A Start/Stop VMs during off-hours funkció bekapcsolásához újra engedélyeznie kell azt. A **kapcsolódó erőforrások** területen válassza a **virtuális gépek indítása/leállítása** további  >  **információk és a megoldás** létrehozásának engedélyezése lehetőséget a  >   telepítés elindításához.
 
 4. A megoldás hozzáadása lapon válassza ki a Log Analytics-munkaterületet és az Automation-fiókot.
 
@@ -155,6 +155,6 @@ Az áthelyezés befejeződése után ellenőrizze, hogy az alábbi képességek 
 |Frissítéskezelés|Ellenőrizze, hogy látja-e a gépeket, és hogy kifogástalanok-e.</br>Futtasson egy teszt szoftverfrissítés központi telepítését.|[Az Update Management hibáinak megoldása](../troubleshoot/update-management.md)|
 |Megosztott erőforrások|Győződjön meg arról, hogy az összes megosztott erőforrás, például a [hitelesítő adatok](../shared-resources/credentials.md) és a [változók](../shared-resources/variables.md)láthatók.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások Azure-ban való áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/management/move-support-resources.md).

@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011965"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880135"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Példa: űrlap-felismerő egyéni képességének létrehozása
 
@@ -30,7 +30,7 @@ Ebben az Azure Cognitive Search készségkészlet példaként megtudhatja, hogya
 
 ## <a name="train-your-model"></a>A modell betanítása
 
-Ennek a képességnek a használata előtt be kell tanítania egy űrlap-felismerő modellt a bemeneti űrlapjaira. Kövesse a [curl](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) rövid útmutatóját, és ismerkedjen meg a modellek betanításával. Használhatja az ebben a rövid útmutatóban található mintaűrlapok használatát, vagy használhatja a saját adatait is. A modell betanítása után másolja az azonosító értékét egy biztonságos helyre.
+Ennek a képességnek a használata előtt be kell tanítania egy űrlap-felismerő modellt a bemeneti űrlapjaira. Kövesse a [curl](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api) rövid útmutatóját, és ismerkedjen meg a modellek betanításával. Használhatja az ebben a rövid útmutatóban található mintaűrlapok használatát, vagy használhatja a saját adatait is. A modell betanítása után másolja az azonosító értékét egy biztonságos helyre.
 
 ## <a name="set-up-the-custom-skill"></a>Az egyéni képesség beállítása
 

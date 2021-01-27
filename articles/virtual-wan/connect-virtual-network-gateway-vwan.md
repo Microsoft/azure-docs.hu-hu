@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880372"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (virtuális hálózati átjáró) összekötése virtuális WAN-kapcsolattal
 
@@ -91,7 +91,7 @@ Ebben a szakaszban az előző szakaszban létrehozott összes helyhez letölti a
 
 Ebben a szakaszban két Azure VPN Gateway helyi hálózati átjárót hoz létre. Az előző lépésből származó konfigurációs fájlok tartalmazzák az átjáró konfigurációs beállításait. Ezekkel a beállításokkal hozhatja létre és konfigurálhatja az Azure VPN Gateway helyi hálózati átjárókat.
 
-1. Hozza létre a helyi hálózati átjárót ezekkel a beállításokkal. VPN Gateway helyi hálózati átjáró létrehozásával kapcsolatos további információkért tekintse meg a [helyi hálózati átjáró létrehozása](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)című cikket VPN Gateway.
+1. Hozza létre a helyi hálózati átjárót ezekkel a beállításokkal. VPN Gateway helyi hálózati átjáró létrehozásával kapcsolatos további információkért tekintse meg a [helyi hálózati átjáró létrehozása](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)című cikket VPN Gateway.
 
    * **IP-cím** – használja a *gatewayconfiguration* számára megjelenített Instance0 IP-címet a konfigurációs fájlból.
    * **BGP** – ha a kapcsolat meghaladja a BGP-t, válassza a **BGP-beállítások konfigurálása** lehetőséget, és adja meg az ASN "65515" értéket. Adja meg a BGP-társ IP-címét. Használja az "Instance0 BgpPeeringAddresses" beállítást a *gatewayconfiguration* a konfigurációs fájlból.
@@ -105,7 +105,7 @@ Ebben a szakaszban két Azure VPN Gateway helyi hálózati átjárót hoz létre
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. kapcsolatok létrehozása
 
-Ebben a szakaszban kapcsolatot hoz létre a VPN Gateway helyi hálózati átjárók és a virtuális hálózati átjáró között. VPN Gateway kapcsolatok létrehozásával kapcsolatos lépésekért lásd: [Kapcsolatok konfigurálása](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
+Ebben a szakaszban kapcsolatot hoz létre a VPN Gateway helyi hálózati átjárók és a virtuális hálózati átjáró között. VPN Gateway kapcsolatok létrehozásával kapcsolatos lépésekért lásd: [Kapcsolatok konfigurálása](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection).
 
 1. A portálon navigáljon a virtuális hálózati átjáróhoz, és kattintson a **kapcsolatok** elemre. A Kapcsolatok lapon kattintson a **+Hozzáadás** elemre a **Kapcsolat hozzáadása** lap megnyitásához.
 2. A **kapcsolatok hozzáadása** lapon adja meg a következő értékeket a kapcsolatban:
@@ -138,7 +138,7 @@ A kapcsolat teszteléséhez hozzon létre két virtuális gépet, egyet a VPN Ga
 4. A virtuális hálózati kapcsolatok létrehozásához kattintson **az OK** gombra.
 5. A kapcsolat már be van állítva a virtuális gépek között. Képesnek kell lennie arra, hogy egy virtuális gépet Pingelje a másikból, kivéve, ha vannak olyan tűzfalak vagy más szabályzatok, amelyek blokkolja a kommunikációt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Egyéni IPsec-házirend konfigurálásának lépéseiért lásd: [Egyéni IPsec-házirend konfigurálása a virtuális WAN-](virtual-wan-custom-ipsec-portal.md)hoz.
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).

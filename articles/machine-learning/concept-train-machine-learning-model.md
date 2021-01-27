@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683482"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880944"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -76,7 +76,7 @@ Adja meg az iterációkat, a hiperparaméter beállításait, a featurization é
 A gépi tanulási folyamatokban a korábban említett tanítási módszerek is használhatók. A folyamatok többet mutatnak a munkafolyamatok létrehozásáról, így többek között a modellek betanítását is magukban foglalják. Egy folyamat során a modelleket automatizált gépi tanulás vagy futtatási konfigurációk használatával taníthatja be.
 
 * [Mik a Azure Machine Learning ML-folyamatok?](concept-ml-pipelines.md)
-* [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](how-to-create-your-first-pipeline.md)
+* [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](./how-to-create-machine-learning-pipelines.md)
 * [Oktatóanyag: Azure Machine Learning-folyamatok használata a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md)
 * [Példák: példák a gépi tanulási folyamatokra Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Példák: folyamat automatikus gépi tanulással](https://aka.ms/pl-automl)
@@ -141,6 +141,6 @@ A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platf
 
 A VS Code bővítmény használatával futtathatja és kezelheti a betanítási feladatokat. További információt a [vs Code erőforrás-kezelési útmutatója](how-to-manage-resources-vscode.md#experiments) című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [konfigurálhat egy tanítási futtatást](how-to-set-up-training-targets.md).

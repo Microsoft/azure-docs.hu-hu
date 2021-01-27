@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554015"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880203"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Az adatátalakítás Azure Machine Learning Designerben
 
@@ -52,11 +52,7 @@ A minta adatkészlet importálásához kövesse az alábbi lépéseket.
 
 1. Húzza a **felnőtt népszámlálás jövedelmének bináris besorolási** adatkészletét a vászonra.
 
-1. Válassza ki a **felnőtt népszámlálás-bevétel** adatkészletének modulját.
-
-1. A vászon jobb oldalán megjelenő részletek ablaktáblán válassza a **kimenetek** lehetőséget.
-
-1. Megjelenítés ikon kiválasztása ![ikon megjelenítése](media/how-to-designer-transform-data/visualize-icon.png).
+1. Kattintson a jobb gombbal a **felnőtt népszámlálás bevételi** adatkészlet modulra , és válassza az  >  **adatkészlet kimenetének** megjelenítése lehetőséget.
 
 1. Az adatkészlet megismeréséhez használja az adatelőnézet ablakot. Ügyeljen a "natív ország" oszlop értékeire.
 
@@ -74,7 +70,7 @@ Ebben a szakaszban az [Adatfelosztási modul](algorithm-module-reference/split-d
 
 1. A vászontól jobbra található modul részletei ablaktáblán állítsa be a **felosztási módot** **reguláris kifejezésre**.
 
-1. Adja meg a **reguláris kifejezést** : `\"native-country" United-States` .
+1. Adja meg a **reguláris kifejezést**: `\"native-country" United-States` .
 
     A **reguláris kifejezés** mód egyetlen oszlopot tesztel egy értékhez. További információ az adatfelosztási modulról: a kapcsolódó [algoritmus moduljának hivatkozási lapja](algorithm-module-reference/split-data.md).
 
@@ -103,13 +99,13 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
 
 1. A vászontól jobbra a modul részletei ablaktábláján adja meg a következő beállításokat:
     
-    **Adattár típusa** : Azure Blob Storage
+    **Adattár típusa**: Azure Blob Storage
 
-    **Adattár** : válasszon ki egy meglévő adattárat, vagy válassza az "új adattár" lehetőséget a létrehozáshoz.
+    **Adattár**: válasszon ki egy meglévő adattárat, vagy válassza az "új adattár" lehetőséget a létrehozáshoz.
 
-    **Elérési út** : `/data/us-income`
+    **Elérési út**: `/data/us-income`
 
-    **Fájl formátuma** : CSV
+    **Fájl formátuma**: CSV
 
     > [!NOTE]
     > Ez a cikk azt feltételezi, hogy van hozzáférése az aktuális Azure Machine Learning munkaterülethez regisztrált adattárhoz. Az adattár beállításával kapcsolatos utasításokért lásd: [Kapcsolódás az Azure Storage Serviceshez](how-to-connect-data-ui.md#create-datastores).
@@ -120,13 +116,13 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
 
 1. A vászontól jobbra a modul részletei ablaktábláján adja meg a következő beállításokat:
     
-    **Adattár típusa** : Azure Blob Storage
+    **Adattár típusa**: Azure Blob Storage
 
-    **Adattár** : válassza ki a fenti adattárat
+    **Adattár**: válassza ki a fenti adattárat
 
-    **Elérési út** : `/data/non-us-income`
+    **Elérési út**: `/data/non-us-income`
 
-    **Fájl formátuma** : CSV
+    **Fájl formátuma**: CSV
 
 1. Erősítse meg, hogy az **adatexportálási** **modul a** **felosztott** adatmennyiség bal oldali portjához csatlakozik `/data/us-income` .
 
@@ -172,7 +168,7 @@ Ugorja át ezt a szakaszt, ha továbbra is az útmutató 2. részében kívánja
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan alakíthat át egy adatkészletet, és hogyan mentheti egy regisztrált adattárba.
 

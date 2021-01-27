@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 82e154d8261d5fb24ce63e6266f2dfe8d8622e70
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787063"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880220"
 ---
-# <a name="create-a-cloud-service-extended-support-using-azure-powershell"></a>Felhőalapú szolgáltatás (kiterjesztett támogatás) létrehozása Azure PowerShell használatával
+# <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Felhőalapú szolgáltatás (kiterjesztett támogatás) üzembe helyezése Azure PowerShell használatával
 
 Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult olyan Cloud Services (bővített támogatás) üzembe helyezéséhez az Azure-ban, amely több szerepkörrel (webrole és WorkerRole) és a távoli asztali bővítménnyel rendelkezik. 
 
@@ -23,28 +23,31 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
 > A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat. 
+## <a name="before-you-begin"></a>Előkészületek
 
-3. Telepítés az. felhőszolgáltatás PowerShell-modul  
+Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozza létre a kapcsolódó erőforrásokat. 
+
+## <a name="deploy-a-cloud-services-extended-support"></a>Cloud Services üzembe helyezése (kiterjesztett támogatás)
+1. Telepítés az. felhőszolgáltatás PowerShell-modul  
 
     ```powershell
     Install-Module -Name Az.CloudService 
     ```
 
-4. Új erőforráscsoport létrehozása. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.   
+2. Új erőforráscsoport létrehozása. Ez a lépés nem kötelező, ha meglévő erőforráscsoportot használ.   
 
     ```powershell
     New-AzResourceGroup -ResourceGroupName “ContosOrg” -Location “East US” 
     ```
 
-5. Hozzon létre egy Storage-fiókot és-tárolót, amelyet a rendszer a Cloud Service-csomag (. cspkg) és a szolgáltatás-konfigurációs (. cscfg) fájlok tárolására fog használni. A Storage-fiók nevének egyedi nevet kell használnia. 
+3. Hozzon létre egy Storage-fiókot és-tárolót, amelyet a rendszer a Cloud Service-csomag (. cspkg) és a szolgáltatás-konfigurációs (. cscfg) fájlok tárolására fog használni. A Storage-fiók nevének egyedi nevet kell használnia. 
 
     ```powershell
     $storageAccount = New-AzStorageAccount -ResourceGroupName “ContosOrg” -Name “contosostorageaccount” -Location “East US” -SkuName “Standard_RAGRS” -Kind “StorageV2” 
     $container = New-AzStorageContainer -Name “ContosoContainer” -Context $storageAccount.Context -Permission Blob 
     ```
 
-6. Töltse fel a Cloud Service-csomagot (cspkg) a Storage-fiókba.
+4. Töltse fel a Cloud Service-csomagot (cspkg) a Storage-fiókba.
 
     ```powershell
     $tokenStartTime = Get-Date 
@@ -55,7 +58,7 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     ```
  
 
-7.  Töltse fel a Cloud Service-konfigurációt (cscfg) a Storage-fiókba. 
+5.  Töltse fel a Cloud Service-konfigurációt (cscfg) a Storage-fiókba. 
 
     ```powershell
     $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container ContosoContainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
@@ -63,20 +66,20 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     $cscfgUrl = $cscfgBlob.ICloudBlob.Uri.AbsoluteUri + $cscfgToken 
     ```
 
-8. Hozzon létre egy virtuális hálózatot és egy alhálózatot. Ez a lépés nem kötelező, ha meglévő hálózatot és alhálózatot használ. Ez a példa egyetlen virtuális hálózatot és alhálózatot használ a Cloud Service-szerepkörökhöz (webrole és WorkerRole). 
+6. Hozzon létre egy virtuális hálózatot és egy alhálózatot. Ez a lépés nem kötelező, ha meglévő hálózatot és alhálózatot használ. Ez a példa egyetlen virtuális hálózatot és alhálózatot használ a Cloud Service-szerepkörökhöz (webrole és WorkerRole). 
 
     ```powershell
     $subnet = New-AzVirtualNetworkSubnetConfig -Name "ContosoWebTier1" -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-9. Hozzon létre egy nyilvános IP-címet, és (opcionálisan) állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. Ha statikus IP-címet használ, akkor a szolgáltatás konfigurációs fájljában Fenntartott IPra kell hivatkoznia.  
+7. Hozzon létre egy nyilvános IP-címet, és (opcionálisan) állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. Ha statikus IP-címet használ, akkor a szolgáltatás konfigurációs fájljában Fenntartott IPra kell hivatkoznia.  
 
     ```powershell
     $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
     ```
 
-10. Hozzon létre egy hálózati profil objektumot, és rendeljen nyilvános IP-címet a platform létrehozott Load Balancer felületéhez.  
+8. Hozzon létre egy hálózati profil objektumot, és rendeljen nyilvános IP-címet a platform létrehozott Load Balancer felületéhez.  
 
     ```powershell
     $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  
@@ -85,13 +88,13 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-11. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+9. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
     ```
 
-13. Frissítse a Key Vault hozzáférési szabályzatot, és adja meg a tanúsítvány engedélyeit a felhasználói fiókjához. 
+10. Frissítse a Key Vault hozzáférési szabályzatot, és adja meg a tanúsítvány engedélyeit a felhasználói fiókjához. 
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
@@ -104,14 +107,14 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     ```
  
 
-14. Ebben a példában egy önaláírt tanúsítványt fogunk hozzáadni egy Key Vaulthoz. A tanúsítvány ujjlenyomatát hozzá kell adni a Cloud Service konfigurációs (. cscfg) fájlhoz a Cloud Service-szerepkörökben való üzembe helyezéshez. 
+11. Ebben a példában egy önaláírt tanúsítványt fogunk hozzáadni egy Key Vaulthoz. A tanúsítvány ujjlenyomatát hozzá kell adni a Cloud Service konfigurációs (. cscfg) fájlhoz a Cloud Service-szerepkörökben való üzembe helyezéshez. 
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -CertificatePolicy $Policy 
     ```
  
-15. Hozzon létre egy operációsrendszer-profilt a memóriában lévő objektumban. Az operációs rendszer profilja meghatározza a Cloud Service szerepköreihez társított tanúsítványokat. Ez lesz az előző lépésben létrehozott tanúsítvány. 
+12. Hozzon létre egy operációsrendszer-profilt a memóriában lévő objektumban. Az operációs rendszer profilja meghatározza a Cloud Service szerepköreihez társított tanúsítványokat. Ez lesz az előző lépésben létrehozott tanúsítvány. 
 
     ```powershell
     $keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault 
@@ -120,7 +123,7 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     $osProfile = @{secret = @($secretGroup)} 
     ```
 
-16. Hozzon létre egy szerepkör-profilt a memóriában lévő objektumban. A szerepkör-profil egy adott szerepkör-specifikus tulajdonságokat definiál, például a nevet, a kapacitást és a szintet. Ebben a példában két szerepkört definiálunk: frontendRole és backendRole. A szerepkör-profil adatainak meg kell egyezniük a konfigurációs (cscfg) fájl-és szolgáltatás-definíciós (csdef) fájlban megadott szerepkör-konfigurációval. 
+13. Hozzon létre egy szerepkör-profilt a memóriában lévő objektumban. A szerepkör-profil egy adott szerepkör-specifikus tulajdonságokat definiál, például a nevet, a kapacitást és a szintet. Ebben a példában két szerepkört definiálunk: frontendRole és backendRole. A szerepkör-profil adatainak meg kell egyezniük a konfigurációs (cscfg) fájl-és szolgáltatás-definíciós (csdef) fájlban megadott szerepkör-konfigurációval. 
 
     ```powershell
     $frontendRole = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2 
@@ -128,7 +131,7 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     $roleProfile = @{role = @($frontendRole, $backendRole)} 
     ```
 
-17. Választható Hozzon létre egy olyan bővítmény-profilt a memóriában lévő objektumban, amelyet hozzá szeretne adni a felhőalapú szolgáltatáshoz. Ebben a példában az RDP-bővítményt fogjuk hozzáadni. 
+14. Választható Hozzon létre egy olyan bővítmény-profilt a memóriában lévő objektumban, amelyet hozzá szeretne adni a felhőalapú szolgáltatáshoz. Ebben a példában az RDP-bővítményt fogjuk hozzáadni. 
 
     ```powershell
     $credential = Get-Credential 
@@ -138,13 +141,13 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
     $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
     ```
-18. Választható Adja meg a címkéket a felhőalapú szolgáltatáshoz hozzáadni kívánt PowerShell-kivonatoló táblázatként. 
+15. Választható Adja meg a címkéket a felhőalapú szolgáltatáshoz hozzáadni kívánt PowerShell-kivonatoló táblázatként. 
 
     ```powershell
     $tag=@{"Owner" = "Contoso"} 
     ```
 
-19. Felhőalapú szolgáltatás központi telepítésének létrehozása a profil objektumaival & SAS URL-címekkel.
+17. Felhőalapú szolgáltatás központi telepítésének létrehozása a profil objektumaival & SAS URL-címekkel.
 
     ```powershell
     $cloudService = New-AzCloudService ` 
@@ -164,3 +167,4 @@ Ez a cikk bemutatja, hogyan használhatja a `Az.CloudService` PowerShell-modult 
 ## <a name="next-steps"></a>További lépések 
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
+- Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)

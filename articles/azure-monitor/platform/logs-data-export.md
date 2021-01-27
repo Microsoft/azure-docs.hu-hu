@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804944"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895968"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
 
 ## <a name="overview"></a>Áttekintés
-Miután az adatexportálás be van állítva a Log Analytics munkaterületre, a munkaterület kiválasztott tábláiba eljuttatott új adategységek automatikusan a Storage-fiókjába vagy az Event hub-ba kerülnek, közel valós időben.
+Miután a Log Analytics munkaterületre konfigurálta az adatexportálást, a munkaterület kiválasztott tábláiba eljuttatott új adategységeket a rendszer automatikusan exportálja a Storage-fiókba az óránkénti hozzáfűzési blobokban vagy az Event hub-ban közel valós időben.
 
 ![Az adatexportálás áttekintése](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további dí
 ## <a name="export-destinations"></a>Célhelyek exportálása
 
 ### <a name="storage-account"></a>A(z)
-Az adatküldés a Storage-fiókok számára közel valós időben történik, mivel Azure Monitor. Az adatexportálási konfiguráció egy tárolót hoz létre a Storage *-* fiókban lévő összes táblához a (z) nevű tárolóban, amelyet a tábla neve követ. Például a tábla *SecurityEvent* egy *am-SecurityEvent* nevű tárolóba fog elküldeni.
+Az adatküldés a Storage-fiókokba történik, mivel eléri Azure Monitor és óránkénti hozzáfűzési blobokban tárolja azokat. Az adatexportálási konfiguráció egy tárolót hoz létre a Storage *-* fiókban lévő összes táblához a (z) nevű tárolóban, amelyet a tábla neve követ. Például a tábla *SecurityEvent* egy *am-SecurityEvent* nevű tárolóba fog elküldeni.
 
 A Storage-fiók blobjának elérési útja a következő: *WorkspaceResourceId =/Subscriptions/Subscription-ID/resourcegroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d =/h =/m = \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js*. Mivel a hozzáfűzési Blobok a Storage-ban lévő 50K-írásokra korlátozódnak, az exportált Blobok száma kiterjeszthető, ha a Hozzáfűzések száma magas. Ilyen esetben a Blobok elnevezési mintája PT1H_ #. JSON lesz, ahol a # a növekményes Blobok száma.
 
@@ -728,6 +728,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

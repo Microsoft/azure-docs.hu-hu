@@ -3,17 +3,17 @@ title: Egyéni kiosztási szabályzatok az Azure IoT Hub Device Provisioning Ser
 description: Egyéni kiosztási szabályzatok használata az Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2019
+ms.date: 01/26/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571640"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895764"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni kiosztási szabályzatok használata
 
@@ -66,7 +66,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. A Azure Cloud Shell használatával hozzon létre egy eszköz-kiépítési szolgáltatást az az [IOT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. A kiépítési szolgáltatás hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
+2. A Azure Cloud Shell használatával hozzon létre egy Device kiépítési szolgáltatást (DPS) az az [IOT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. A kiépítési szolgáltatás hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
 
     Az alábbi példa egy *contoso-kiépítés-Service-1098* nevű kiépítési szolgáltatást hoz létre a *westus* helyen. Egyedi szolgáltatásnevet kell használnia. Hozzon létre saját utótagot a szolgáltatás nevében a **1098** helyett.
 
@@ -96,6 +96,25 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
     A parancs végrehajtása több percet is igénybe vehet.
 
+5. A IoT hubokat a DPS-erőforráshoz kell kapcsolni. 
+
+    Futtassa az alábbi két parancsot az imént létrehozott hubok kapcsolódási karakterláncának lekéréséhez:
+
+    ```azurecli-interactive 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    Futtassa a következő parancsokat a hubok a DPS-erőforráshoz való összekapcsolásához:
+
+    ```azurecli-interactive 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location westus
+    ```
+
+
+
+
 ## <a name="create-the-custom-allocation-function"></a>Az egyéni foglalási függvény létrehozása
 
 Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egyéni foglalási szabályzatot. Ez a függvény határozza meg, hogy melyik IoT hub-eszközt kell regisztrálni ahhoz, hogy a regisztrációs azonosítója tartalmazza a következő karakterláncot: **contoso-tstrsd-007** vagy **-contoso-hpsd-088**. Azt is beállítja, hogy az eszköz egy kenyérpirító vagy egy hőszivattyú legyen.
@@ -114,6 +133,8 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
     **Futásidejű verem**: válassza a **.net Core** elemet a legördülő menüből.
 
+    **Verzió**: válassza a **3,1** elemet a legördülő menüből.
+
     **Régió**: válassza ki ugyanazt a régiót, mint az erőforráscsoportot. Ez a példa az **USA nyugati** régióját használja.
 
     > [!NOTE]
@@ -123,19 +144,15 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
 4. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a Function alkalmazás létrehozásához. Az üzembe helyezés eltarthat néhány percig. Ha befejeződik, válassza **az Ugrás erőforráshoz** lehetőséget.
 
-5. Az új függvény hozzáadásához az Function app **– Áttekintés** lap bal oldali panelén kattintson a **+** **funkciók** elem melletti gombra.
+5. A Function app **– Áttekintés** lap bal oldali paneljén kattintson a **függvények** , majd a **+ Hozzáadás** lehetőségre egy új függvény hozzáadásához.
 
-    ![Függvény hozzáadása a függvényalkalmazás](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. A **függvény hozzáadása** lapon kattintson a **http-trigger** elemre, majd kattintson a **Hozzáadás** gombra.
 
-6. A **.net – első lépések lap Azure functions** a **központi telepítési környezet kiválasztása** lépésnél válassza ki a **portálon belüli** csempét, majd kattintson a **Folytatás** gombra.
+7. A következő lapon kattintson a **Code + test (kód + tesztelés**) elemre. Ez lehetővé teszi a **HttpTrigger1** nevű függvény kódjának szerkesztését. A **Run. CSX** fájlt szerkesztésre kell megnyitni.
 
-    ![Válassza ki a portál fejlesztési környezetét](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. A szükséges NuGet-csomagok hivatkozása. A kezdeti eszköz Twin csomag létrehozásához az egyéni foglalási függvény két NuGet-csomagban definiált osztályokat használ, amelyeket be kell töltenie az üzemeltetési környezetbe. Azure Functions esetén a NuGet-csomagokat egy *function. Proj* fájl használatával hivatkozik. Ebben a lépésben menti a *function. Proj* fájlt, és feltölti a szükséges szerelvényekhez.  További információ: NuGet- [csomagok használata Azure functions használatával](../azure-functions/functions-reference-csharp.md#using-nuget-packages).
 
-7. A következő lapon a **függvény létrehozása** lépésnél válassza ki a **webhook + API** csempét, majd kattintson a **Létrehozás** elemre. Létrejön egy **HttpTrigger1** nevű függvény, és a portál megjeleníti a **Run. CSX** fájl tartalmát.
-
-8. A szükséges NuGet-csomagok hivatkozása. A kezdeti eszköz Twin csomag létrehozásához az egyéni foglalási függvény két NuGet-csomagban definiált osztályokat használ, amelyeket be kell töltenie az üzemeltetési környezetbe. A Azure Functions a NuGet-csomagokat egy *function. Host* fájl hivatkozik. Ebben a lépésben egy *function. Host* fájlt ment és tölt fel.
-
-    1. Másolja a következő sorokat a kedvenc szerkesztőjébe, és mentse a fájlt a számítógépre a *function. Host* néven.
+    1. Másolja a következő sorokat a kedvenc szerkesztőjébe, és mentse a fájlt a számítógépre a *function. Proj* néven.
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -143,21 +160,15 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. A **HttpTrigger1** függvénynél bontsa ki az ablak jobb oldalán található **fájlok megtekintése** lapot.
+    2. Kattintson a Kódszerkesztő fölött található **feltöltés** gombra a *function. Proj* fájl feltöltéséhez. A feltöltés után válassza ki a fájlt a Kódszerkesztő használatával a legördülő listából a tartalom ellenőrzéséhez.
 
-        ![Megnyitott fájlok megtekintése](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. Válassza a **feltöltés** lehetőséget, keresse meg a **function. Proj** fájlt, és válassza a **Megnyitás** lehetőséget a fájl feltöltéséhez.
-
-        ![Fájl feltöltése elem kiválasztása](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. Cserélje le a **HttpTrigger1** függvény kódját a következő kódra, majd válassza a **Mentés** lehetőséget:
+9. Győződjön meg arról, hogy a **HttpTrigger1** a *Run. CSX* van kiválasztva a Kódszerkesztő alkalmazásban. Cserélje le a **HttpTrigger1** függvény kódját a következő kódra, majd válassza a **Mentés** lehetőséget:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -314,29 +325,15 @@ Ebben a szakaszban egy új beléptetési csoportot fog létrehozni, amely az egy
 
     **Válassza ki, hogyan szeretné hozzárendelni az eszközöket a** **központokhoz: válassza az egyéni (Azure-függvény használata)** lehetőséget.
 
+    **Előfizetés**: válassza ki azt az előfizetést, amelyben létrehozta az Azure-függvényt.
+
+    **Függvényalkalmazás**: válassza ki a Function alkalmazást név szerint. Ebben a példában a **contoso-Function-app-1098** volt használatban.
+
+    **Function**: válassza ki a **HttpTrigger1** függvényt.
+
     ![Egyéni foglalási beléptetési csoport hozzáadása a szimmetrikus kulcs igazolásához](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. A **beléptetési csoport hozzáadása** lapon válassza az **új IoT hub csatolása** lehetőséget az új kiosztott IoT-hubok összekapcsolásához.
-
-    Hajtsa végre ezt a lépést mindkét kiosztott IoT-hubhoz.
-
-    **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben létrehozta a kiosztott IoT hubokat.
-
-    **IoT hub**: válassza ki a létrehozott részlegi hubok egyikét.
-
-    **Hozzáférési szabályzat**: válassza a **iothubowner** lehetőséget.
-
-    ![A IoT-hubok összekapcsolása a létesítési szolgáltatással](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. A **regisztrációs csoport hozzáadásakor**, ha a IoT hubok is össze lettek kapcsolva, ki kell választania azokat IoT hub csoportként a beléptetési csoport számára az alábbi ábrán látható módon:
-
-    ![Az üzembe helyezési központ csoportjának létrehozása a regisztrációhoz](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. A **regisztrációs csoport hozzáadása** lapon görgessen le az **Azure-függvény kiválasztása** szakaszhoz, és válassza ki az előző szakaszban létrehozott Function alkalmazást. Ezután válassza ki a létrehozott függvényt, és válassza a mentés lehetőséget a beléptetési csoport mentéséhez.
-
-    ![Válassza ki a függvényt, és mentse a beléptetési csoportot](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. Miután mentette a beléptetést, nyissa meg újra, és jegyezze fel az **elsődleges kulcsot**. Először mentenie kell a beléptetést, hogy a kulcsok létrejöttek legyenek. A rendszer ezt a kulcsot használja a szimulált eszközökhöz tartozó egyedi eszközök kulcsának létrehozásához.
+4. Miután mentette a beléptetést, nyissa meg újra, és jegyezze fel az **elsődleges kulcsot**. Először mentenie kell a beléptetést, hogy a kulcsok létrejöttek legyenek. A rendszer ezt a kulcsot használja a szimulált eszközökhöz tartozó egyedi eszközök kulcsának létrehozásához.
 
 ## <a name="derive-unique-device-keys"></a>Egyedi eszköz kulcsának származtatása
 
@@ -386,7 +383,7 @@ Ha Windows-alapú munkaállomást használ, a PowerShell használatával hozhatj
     $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
     $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $hmacsha256.key = [Convert]::FromBase64String($KEY)
     $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
     $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
     $derivedkey1 = [Convert]::ToBase64String($sig1)
@@ -559,7 +556,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 Az alábbi táblázat a várt forgatókönyveket és az eredményül kapott hibakódokat mutatja. Ez a táblázat segítséget nyújt az egyéni kiosztási házirendekkel kapcsolatos hibák elhárításához a Azure Functions.
 
-| Használati példa | Regisztrációs eredmény a kiépítési szolgáltatástól | Az SDK-eredmények kiépítés |
+| Eset | Regisztrációs eredmény a kiépítési szolgáltatástól | Az SDK-eredmények kiépítés |
 | -------- | --------------------------------------------- | ------------------------ |
 | A webhook a 200 OK értéket adja vissza a "iotHubHostName" értékkel egy érvényes IoT hub-állomásnévre. | Eredmény állapota: hozzárendelve  | Az SDK visszaadja a PROV_DEVICE_RESULT_OK a hub információi mellett |
 | A webhook 200 OK értéket ad vissza a válaszban szereplő "iotHubHostName" értékkel, de üres sztringre vagy NULL értékre van állítva. | Eredmény állapota: sikertelen<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | Az SDK visszaadja PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
@@ -588,7 +585,7 @@ Az erőforráscsoport törlése név szerint:
 
 4. A rendszer kérni fogja, hogy erősítse meg az erőforráscsoport törlését. A megerősítéshez írja be ismét az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 * További részletekért lásd: [az előzőleg](how-to-unprovision-devices.md) kiépített eszközök kiépítése.

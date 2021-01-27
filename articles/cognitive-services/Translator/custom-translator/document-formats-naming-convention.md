@@ -2,19 +2,19 @@
 title: Dokumentumok formátumai és elnevezési konvenciói – egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: Ez egy útmutató a dokumentumok formátumáról és elnevezési konvencióról az egyéni fordítóban. Ez a fogalom segíti a dokumentumok nevének jobb kezelését, és az ütközések elkerülését.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507246"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895849"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>A dokumentumok formátuma és elnevezési konvenció útmutatója
 
@@ -22,7 +22,7 @@ Az egyéni fordításhoz használt fájloknak legalább **négy** karakter hossz
 
 Ez a táblázat a fordítási rendszer összeállításához használható összes támogatott fájlformátumot tartalmazza:
 
-| Formátum            | Bővítmények   | Leírás                                                                                                                                                                                                                                                                    |
+| Formátum            | Bővítmények   | Description                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF. XLIFF | Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.                                                                                                                                                              |
 | TMX               | . TMX         | Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.                                                                                                                                                              |

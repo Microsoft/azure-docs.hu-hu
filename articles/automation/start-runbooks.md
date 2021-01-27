@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c5166785ad8c82c114fb7193cd49716536b408
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187268"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896596"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Runbook indítása az Azure Automationben
 
@@ -77,7 +77,7 @@ Smith
 
 Ha a paraméter egy tömb, például [Array] vagy [string []], akkor a következő JSON formátummal küldheti el az értékek listáját: *[érték1, érték2, érték3]*. Ezeknek az értékek csak egyszerű típusok lehetnek.
 
-A következő tesztrunbook elfogad egy *user*nevű paramétert.
+A következő tesztrunbook elfogad egy *user* nevű paramétert.
 
 ```powershell
 Workflow Test-Parameters
@@ -138,20 +138,20 @@ jsmith
 ## <a name="start-a-runbook-with-the-azure-portal"></a>Runbook elindítása a Azure Portal
 
 1. A Azure Portal válassza az **Automation** lehetőséget, majd kattintson az Automation-fiók nevére.
-2. A központi menüben válassza a **runbookok**lehetőséget.
-3. A Runbookok lapon válasszon ki egy runbook, majd kattintson az **Indítás**gombra.
+2. A központi menüben válassza a **runbookok** lehetőséget.
+3. A Runbookok lapon válasszon ki egy runbook, majd kattintson az **Indítás** gombra.
 4. Ha a runbook paraméterekkel rendelkezik, a rendszer felszólítja, hogy adjon meg értékeket az egyes paraméterekhez tartozó szövegmezővel. A paraméterekkel kapcsolatos további információkért lásd: [Runbook paraméterek](#work-with-runbook-parameters).
 5. A feladatok ablaktáblán megtekintheti a runbook-feladatok állapotát.
 
 ## <a name="start-a-runbook-with-powershell"></a>Runbook elindítása a PowerShell-lel
 
-A [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával elindíthat egy Runbook a Windows PowerShell segítségével. Az alábbi mintakód egy **test-runbook**nevű runbook indít el.
+A [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) használatával elindíthat egy Runbook a Windows PowerShell segítségével. Az alábbi mintakód egy **test-runbook** nevű runbook indít el.
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook` egy olyan runbook ad vissza, amelyet a rendszer az állapot nyomon követésére használhat a elindítása után. Ezt követően a [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) használatával meghatározhatja a feladatok állapotát, és lekérheti a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) a kimenet lekéréséhez. Az alábbi példa elindítja a **test-runbook**nevű runbook, megvárja, amíg befejeződik, majd megjeleníti a kimenetét.
+`Start-AzAutomationRunbook` egy olyan runbook ad vissza, amelyet a rendszer az állapot nyomon követésére használhat a elindítása után. Ezt követően a [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) használatával meghatározhatja a feladatok állapotát, és lekérheti a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) a kimenet lekéréséhez. Az alábbi példa elindítja a **test-runbook** nevű runbook, megvárja, amíg befejeződik, majd megjeleníti a kimenetét.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"
@@ -177,7 +177,7 @@ $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A runbook-kezelés részleteiért lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
 * A PowerShell részleteiért lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).

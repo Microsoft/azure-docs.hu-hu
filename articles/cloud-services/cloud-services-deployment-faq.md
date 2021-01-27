@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742216"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896477"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Üzembe helyezési problémák az Azure Cloud Services (klasszikus) szolgáltatásban: gyakori kérdések (GYIK)
 
@@ -52,7 +52,7 @@ A felhőalapú szolgáltatás telepítése meghiúsulhat, ha a lefoglalni kívá
 
 Az előfizetéshez tartozó aktuális használati/kvótát a portálon is nyomon követheti: Azure Portal => Subscriptions => \<appropriate subscription>   => "használat + kvóta".
 
-Az erőforrás-használat/fogyasztással kapcsolatos információk a Azure-számlázási API-k használatával is beolvashatók. Lásd: [Azure Resource használati API (előzetes verzió)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Az erőforrás-használat/fogyasztással kapcsolatos információk a Azure-számlázási API-k használatával is beolvashatók. Lásd: az [Azure felhasználási API áttekintése](../cost-management-billing/manage/consumption-api-overview.md).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Hogyan változtathatom meg egy üzembe helyezett Cloud Service-beli virtuális gép méretét az újbóli üzembe helyezése nélkül?
 Az üzembe helyezett felhőalapú szolgáltatások virtuálisgép-mérete nem módosítható újbóli üzembe helyezés nélkül. A virtuális gép mérete a CSDEF van beépítve, amely csak újbóli telepítéssel frissíthető.

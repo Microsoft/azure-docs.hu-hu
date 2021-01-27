@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ba3005b1ec36e4b2406084368a3aabd778c17716
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449426"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896189"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
 
@@ -425,6 +425,116 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>Memória módosítása, Kubernetes-feldolgozó csomópontra vonatkozó korlátozások
+
+A Kubernetes Worker csomópont memória-vagy processzor-korlátainak módosításához hajtsa végre a következő lépéseket:
+
+1. [Kapcsolódjon az eszköz PowerShell-felületéhez](#connect-to-the-powershell-interface).
+1. A munkavégző csomópont aktuális erőforrásainak és a szerepkör beállításainak lekéréséhez futtassa a következő parancsot:
+
+    `Get-AzureDataBoxEdgeRole`
+
+    Íme egy minta kimenet. Jegyezze fel a és a szakaszban szereplő értékeket `Name` `Compute` `Resources` . `MemoryInBytes` és `ProcessorCount` a Kubernetes Worker csomóponthoz tartozó aktuálisan hozzárendelt értékek memóriáját és processzorának darabszámát jelöli.  
+
+    ```powershell
+    [10.100.10.10]: PS>Get-AzureDataBoxEdgeRole
+    ImageDetail                : Name:mcr.microsoft.com/azureiotedge-agent
+                                 Tag:1.0
+                                 PlatformType:Linux
+    EdgeDeviceConnectionString :
+    IotDeviceConnectionString  :
+    HubHostName                : ase-srp-007.azure-devices.net
+    IotDeviceId                : srp-007-storagegateway
+    EdgeDeviceId               : srp-007-edge
+    Version                    :
+    Id                         : 6ebeff9f-84c5-49a7-890c-f5e05520a506
+    Name                       : IotRole
+    Type                       : IOT
+    Resources                  : Compute:
+                                 MemoryInBytes:34359738368
+                                 ProcessorCount:12
+                                 VMProfile:
+    
+                                 Storage:
+                                 EndpointMap:
+                                 EndpointId:c0721210-23c2-4d16-bca6-c80e171a0781
+                                 TargetPath:mysmbedgecloudshare1
+                                 Name:mysmbedgecloudshare1
+                                 Protocol:SMB
+    
+                                 EndpointId:6557c3b6-d3c5-4f94-aaa0-6b7313ab5c74
+                                 TargetPath:mysmbedgelocalshare
+                                 Name:mysmbedgelocalshare
+                                 Protocol:SMB
+                                 RootFileSystemStorageSizeInBytes:0
+    
+    HostPlatform               : KubernetesCluster
+    State                      : Created
+    PlatformType               : Linux
+    HostPlatformInstanceId     : 994632cb-853e-41c5-a9cd-05b36ddbb190
+    IsHostPlatformOwner        : True
+    IsCreated                  : True    
+    [10.100.10.10]: PS>
+    ```
+    
+1. A következő parancs futtatásával módosíthatja a munkavégző csomópont memóriájának és processzorának értékeit:
+
+    Set-AzureDataBoxEdgeRoleCompute – név <Name value from the output of Get-AzureDataBoxEdgeRole> – memória <Value in Bytes> -ProcessorCount <nem. magok>
+
+    Íme egy minta kimenet. 
+    
+    ```powershell
+    [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16
+    
+    ImageDetail                : Name:mcr.microsoft.com/azureiotedge-agent
+                                 Tag:1.0
+                                 PlatformType:Linux
+    
+    EdgeDeviceConnectionString :
+    IotDeviceConnectionString  :
+    HubHostName                : ase-srp-007.azure-devices.net
+    IotDeviceId                : srp-007-storagegateway
+    EdgeDeviceId               : srp-007-edge
+    Version                    :
+    Id                         : 6ebeff9f-84c5-49a7-890c-f5e05520a506
+    Name                       : IotRole
+    Type                       : IOT
+    Resources                  : Compute:
+                                 MemoryInBytes:34359738368
+                                 ProcessorCount:16
+                                 VMProfile:
+    
+                                 Storage:
+                                 EndpointMap:
+                                 EndpointId:c0721210-23c2-4d16-bca6-c80e171a0781
+                                 TargetPath:mysmbedgecloudshare1
+                                 Name:mysmbedgecloudshare1
+                                 Protocol:SMB
+    
+                                 EndpointId:6557c3b6-d3c5-4f94-aaa0-6b7313ab5c74
+                                 TargetPath:mysmbedgelocalshare
+                                 Name:mysmbedgelocalshare
+                                 Protocol:SMB
+    
+                                 RootFileSystemStorageSizeInBytes:0
+    
+    HostPlatform               : KubernetesCluster
+    State                      : Created
+    PlatformType               : Linux
+    HostPlatformInstanceId     : 994632cb-853e-41c5-a9cd-05b36ddbb190
+    IsHostPlatformOwner        : True
+    IsCreated                  : True
+    
+    [10.100.10.10]: PS>    
+    ```
+
+A memória és a processzor használatának módosításakor kövesse az alábbi irányelveket.
+
+- Az alapértelmezett memória az eszköz specifikációjának 25%-a.
+- Az alapértelmezett processzorok száma az eszköz specifikációjának 30%-a.
+- A memória és a processzor értékének módosításakor azt javasoljuk, hogy az értékek 15% – 65%-a az eszköz memóriája és a processzorok száma között legyenek módosítva. 
+- Az 65%-os felső korlátot javasoljuk, hogy elegendő erőforrás legyen a rendszerösszetevőkhöz. 
+
 ## <a name="connect-to-bmc"></a>Kapcsolódás BMC-hez
 
 A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti és kezelheti az eszközt. Ez a szakasz azokat a parancsmagokat ismerteti, amelyek segítségével kezelhető a BMC-konfiguráció. A parancsmagok bármelyikének futtatása előtt [kapcsolódjon az eszköz PowerShell-felületéhez](#connect-to-the-powershell-interface).
@@ -489,6 +599,6 @@ A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti é
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) üzembe helyezése Azure Portalban.

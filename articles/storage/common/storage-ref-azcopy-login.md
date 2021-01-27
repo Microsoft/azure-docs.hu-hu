@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4740870dd2d9748aad55150ce1946e3eb666619
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285271"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878358"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -37,7 +37,7 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>Kapcsolódó fogalmi cikkek
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
-- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
+- [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](./storage-use-azcopy-v10.md#transfer-data)
 - [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
@@ -97,7 +97,7 @@ A rendszer egy `/path/to/my/cert` PEM-vagy PKCS12/pfx-profil-fájl elérési út
 
 `--certificate-path` a tanúsítványon alapuló egyszerű szolgáltatás hitelesítése esetén kötelező.
 
-## <a name="options"></a>Lehetőségek
+## <a name="options"></a>Beállítások
 
 **--HRE-Endpoint** karakterlánc a használni kívánt Azure Active Directory végpont. Az alapértelmezett érték ( https://login.microsoftonline.com) megfelelő a globális Azure-felhőhöz. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Nem szükséges a Managed Service Identityhoz.
 

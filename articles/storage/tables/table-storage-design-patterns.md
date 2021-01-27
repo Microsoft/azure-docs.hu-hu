@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019225"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879595"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk a Table service-megoldásokkal való használatra alkalmas mintákat ismerteti. Azt is megtudhatja, hogyan lehet gyakorlatilag a más Table Storage-kialakítási cikkekben tárgyalt problémák és kompromisszumok kezelésére. A következő ábra összefoglalja a különböző minták közötti kapcsolatokat:  
@@ -711,7 +711,7 @@ Kivételek történtek, ha a Storage ügyféloldali kódtár egy EGT hajt végre
 Azt is gondolja át, hogy a terv hogyan befolyásolja az ügyfélalkalmazás a párhuzamossági és frissítési műveleteket.  
 
 ### <a name="managing-concurrency"></a>Az egyidejűség kezelése
-Alapértelmezés szerint a Table szolgáltatás a **beszúrási**, **egyesítési** és **törlési** műveletek szintjén hajtja végre az optimista egyidejűségi ellenőrzéseket, bár lehetséges, hogy egy ügyfél kényszeríti a Table szolgáltatást, hogy megkerülje ezeket az ellenőrzéseket. További információ arról, hogyan kezeli a Table szolgáltatás a párhuzamosságot: az  [Egyidejűség kezelése Microsoft Azure Storageban](../../storage/common/storage-concurrency.md).  
+Alapértelmezés szerint a Table szolgáltatás a **beszúrási**, **egyesítési** és **törlési** műveletek szintjén hajtja végre az optimista egyidejűségi ellenőrzéseket, bár lehetséges, hogy egy ügyfél kényszeríti a Table szolgáltatást, hogy megkerülje ezeket az ellenőrzéseket. További információ arról, hogyan kezeli a Table szolgáltatás a párhuzamosságot: az  [Egyidejűség kezelése Microsoft Azure Storageban](../blobs/concurrency-manage.md).  
 
 ### <a name="merge-or-replace"></a>Egyesítés vagy csere
 A **TableOperation** osztály **replace** metódusa mindig a Table Service teljes entitását váltja fel. Ha nem tartalmaz tulajdonságot a kérelemben, ha az adott tulajdonság létezik a tárolt entitásban, a kérelem eltávolítja a tulajdonságot a tárolt entitásból. Hacsak nem szeretne explicit módon eltávolítani egy tulajdonságot egy tárolt entitásból, a kérelemben szereplő összes tulajdonságot fel kell vennie.  

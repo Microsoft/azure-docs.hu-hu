@@ -4,15 +4,15 @@ description: Ismerje meg az Azure-beli régiókat és Availability Zoneseket, ho
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 01/26/2021
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b19f5c3ae0666a0b0e9b0255f848f5924d9d3910
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0b67f113fb8ab3835419a75697e60a732d4ee390
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874739"
+ms.locfileid: "98896053"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -22,7 +22,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Leírás |
+| Kifejezés vagy fogalom | Description |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -152,10 +152,10 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |                                       | Virtual Machines: Ev4-Series                      |                                                      |
 > |                                       | Virtual Machines: Fsv2-Series                     |                                                      |
 > |                                       | Virtual Machines: M sorozat                        |                                                      |
-> |                                       | Virtual WAN                                       |                                                      |
+> |                                       | Virtuális WAN                                       |                                                      |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-Availability Zones támogató régiók](az-region.md)
 - [Gyorssablonok](https://aka.ms/azqs)

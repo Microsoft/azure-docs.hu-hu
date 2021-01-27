@@ -3,12 +3,12 @@ title: Üzenet-replikálás és régiók közötti összevonás – Azure Servic
 description: Ez a cikk áttekintést nyújt az esemény-replikálásról és a régiók közötti összevonásról Azure Service Bus.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803272"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880827"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>Üzenetreplikáció és régiók közötti összevonás
 
@@ -150,13 +150,13 @@ Azure Functions az [Azure által felügyelt identitásban](../active-directory/m
 
 Azure Functions továbbá lehetővé teszi, hogy a replikációs feladatok közvetlenül integrálva legyenek az Azure-beli virtuális hálózatokkal és [szolgáltatás-végpontokkal](../virtual-network/virtual-network-service-endpoints-overview.md) az összes Azure Messaging-szolgáltatáshoz, és könnyen integrálható legyen a [Azure monitor](../azure-monitor/overview.md).
 
-A legjelentősebb Azure Functions az [azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), az [Azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), a [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)és az [Azure Queue Storage](/azure/azure-functions/functions-bindings-storage-queue), az egyéni bővítmények a [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)és a [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)számára előre összeállított, skálázható eseményindítókkal és kimeneti kötésekkel rendelkeznek. A legtöbb eseményindító dinamikusan alkalmazkodik az adatátviteli igényekhez azáltal, hogy a dokumentált metrikák alapján a párhuzamosan végrehajtás alatt álló példányok számát megnöveli. 
+A legjelentősebb Azure Functions az [azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), az [Azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), a [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)és az [Azure Queue Storage](../azure-functions/functions-bindings-storage-queue.md), az egyéni bővítmények a [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)és a [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)számára előre összeállított, skálázható eseményindítókkal és kimeneti kötésekkel rendelkeznek. A legtöbb eseményindító dinamikusan alkalmazkodik az adatátviteli igényekhez azáltal, hogy a dokumentált metrikák alapján a párhuzamosan végrehajtás alatt álló példányok számát megnöveli. 
 
 A Azure Functions fogyasztási csomaggal az előre elkészített eseményindítók akár nullára is csökkenthetők, amíg nem állnak rendelkezésre üzenetek a replikáláshoz, ami azt jelenti, hogy a konfiguráció méretezése a biztonsági mentésre készen áll. A használati terv használatának hátránya, hogy a replikálási feladatok "felébrednek" késése jelentősen meghaladja azokat a üzemeltetési terveket, amelyeken az infrastruktúra fut.  
 
 Ezzel szemben a leggyakoribb replikációs motorok az üzenetküldéshez és az események elvégzéséhez, például a Apache Kafka [MirrorMaker](http://kafka.apache.org/documentation/#basic_ops_mirror_maker) megköveteli egy üzemeltetési környezet megadását és a replikációs motor méretezését. Ez magában foglalja a biztonsági és hálózati funkciók konfigurálását és integrálását, valamint a figyelési adatok áramlását, és így továbbra sem lehet egyéni replikációs feladatokat beszúrni a folyamatba. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben számos összevonási mintát ismertetünk, és kifejtjük Azure Functions szerepét az Azure-beli esemény-és üzenetkezelési replikálási futtatókörnyezetként. 
 
@@ -167,4 +167,4 @@ Ezután érdemes elolvasnia, hogyan állíthat be egy replikátor alkalmazást a
 - [Események továbbítása az Azure Event Hubsba](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
 - [Események beolvasása az Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
-[1]: ./media/service-bus-auto-forwarding/IC628632.gif 
+[1]: ./media/service-bus-auto-forwarding/IC628632.gif

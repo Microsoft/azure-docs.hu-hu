@@ -3,14 +3,14 @@ title: A Backup Center áttekintése
 description: Ez a cikk áttekintést nyújt az Azure-hoz készült Backup Centerről.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: b42fcc782eb50c061ab7617ea0ef1f3344fee4e9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173738"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893609"
 ---
-# <a name="overview-of-backup-center"></a>A Backup Center áttekintése
+# <a name="overview-of-backup-center-preview"></a>A Backup Center áttekintése (előzetes verzió)
 
 A Backup Center **egyetlen egységes felügyeleti élményt** nyújt az Azure-ban a nagyvállalatok számára a nagy méretű biztonsági másolatok szabályozására, figyelésére, üzemeltetésére és elemzésére. Ezért az Azure natív felügyeleti tapasztalataival összhangban van.
 
@@ -22,7 +22,7 @@ A Backup Center legfontosabb előnyei a következők:
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-* A biztonsági mentési központ jelenleg támogatott az Azure-beli virtuális gépek biztonsági mentéséhez és a Azure Database for PostgreSQL Server biztonsági mentéshez.
+* A Backup Center jelenleg támogatott az Azure virtuális gépek biztonsági mentése, az SQL az Azure VM Backup szolgáltatásban, SAP HANA az Azure virtuális gépek biztonsági mentése, Azure Files biztonsági mentés és a Azure Database for PostgreSQL kiszolgáló biztonsági mentése.
 * A támogatott és nem támogatott forgatókönyvek részletes listáját a [támogatási mátrixban](backup-center-support-matrix.md) találja.
 
 ## <a name="get-started"></a>Bevezetés

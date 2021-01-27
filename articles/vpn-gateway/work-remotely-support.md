@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440823"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880084"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Távoli munka Azure VPN Gateway pont – hely kapcsolattal
 
@@ -65,7 +65,7 @@ Magas szinten a következő lépések szükségesek ahhoz, hogy a felhasználók
 4. Konfigurálja a helyszíni eszközt az Azure-beli virtuális hálózati átjáróhoz való kapcsolódáshoz.
 5. A pont – hely profil letöltése a Azure Portalról és terjesztés az ügyfeleknek
 
-A két hálózat közötti pont-pont típusú VPN-alagút beállításával kapcsolatos további információkért tekintse meg [ezt a hivatkozást](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+A két hálózat közötti pont-pont típusú VPN-alagút beállításával kapcsolatos további információkért tekintse meg [ezt a hivatkozást](./tutorial-site-to-site-portal.md).
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>A natív Azure tanúsítványalapú hitelesítéssel kapcsolatos gyakori kérdések
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555967"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879932"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány regisztrálása és bevizsgálása
 
@@ -34,13 +34,13 @@ Az Azure-beli hatáskörébe nem használhatók a [nézetek](/sql/relational-dat
 
 - Ha még nem rendelkezik ilyennel, hozzon létre egy új hatáskörébe tartozó fiókot.
 
-- [Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](../azure-sql/managed-instance/public-endpoint-configure.md)
     > [!Note]
     > A szervezetnek képesnek kell lennie arra, hogy nyilvános végpontot engedélyezzen, mivel a hatáskörébe **nem támogatja a saját végpontot** . Ha privát végpontot használ, a vizsgálat sikertelen lesz.
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Hitelesítés beállítása vizsgálathoz
 
-Hitelesítés Azure SQL Database felügyelt példány vizsgálatához. Ha új hitelesítést kell létrehoznia, engedélyeznie kell az [adatbázis-hozzáférést SQL Database felügyelt példányhoz](/azure/azure-sql/database/logins-create-manage). A hatáskörébe három hitelesítési módszer létezik:
+Hitelesítés Azure SQL Database felügyelt példány vizsgálatához. Ha új hitelesítést kell létrehoznia, engedélyeznie kell az [adatbázis-hozzáférést SQL Database felügyelt példányhoz](../azure-sql/database/logins-create-manage.md). A hatáskörébe három hitelesítési módszer létezik:
 
 - SQL-hitelesítés
 - Szolgáltatásnév
@@ -85,8 +85,8 @@ Egyszerű szolgáltatásnév használatához használhat egy meglévőt, vagy l�
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Az Azure AD-hitelesítés konfigurálása az adatbázis-fiókban
 
 Az egyszerű szolgáltatásnak vagy a felügyelt identitásnak engedéllyel kell rendelkeznie az adatbázis, a sémák és a táblák metaadatainak beszerzéséhez. Emellett képesnek kell lennie a táblázatok lekérdezésére is a besoroláshoz.
-- [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](/azure/azure-sql/database/authentication-aad-configure)
-- Hozzon létre egy Azure AD-felhasználót Azure SQL Database felügyelt példányban az [Azure ad-identitásokhoz hozzárendelt, foglalt felhasználók létrehozásához](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) szükséges előfeltételeket és oktatóanyagot követve
+- [Azure AD-hitelesítés konfigurálása és kezelése az Azure SQL-sel](../azure-sql/database/authentication-aad-configure.md)
+- Hozzon létre egy Azure AD-felhasználót Azure SQL Database felügyelt példányban az [Azure ad-identitásokhoz hozzárendelt, foglalt felhasználók létrehozásához](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) szükséges előfeltételeket és oktatóanyagot követve
 - Hozzárendelés `db_owner` (**ajánlott**) engedély az identitáshoz
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Egyszerű szolgáltatásnév hozzáadása a Key vaulthoz és a hatáskörébe hitelesítő adataihoz
@@ -144,7 +144,7 @@ Az adatbázis-kiszolgálónak engedélyeznie kell az Azure-kapcsolatokat. Ez leh
 > [!NOTE]
 > A vizsgálat törlése nem törli a korábbi Azure SQL Database felügyelt példányok vizsgálatainak eszközeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

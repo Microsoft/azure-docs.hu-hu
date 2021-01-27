@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: ffc056a97d3c0fd14bab186614015a9352a34077
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 74e09e61a6132858d716686bdb6687bb670f0d33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015147"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879511"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
 
@@ -53,7 +53,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Olyan függvény létrehozása Azure Functionsban, amely az Azure cache-be tud írni egy Redis
 
-1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) című szakaszát. Ez a szakasz bemutatja, hogyan hozhat létre egy Function-alkalmazást és egy [http által aktivált függvényt Azure Functionsban](../azure-functions/functions-create-first-azure-function.md#create-function)a csharp nyelvének használatával.  
+1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-get-started.md) című szakaszát. Ez a szakasz bemutatja, hogyan hozhat létre egy Function-alkalmazást és egy [http által aktivált függvényt Azure Functionsban](../azure-functions/functions-get-started.md)a csharp nyelvének használatával.  
 
 2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. Cserélje le a **" \<your Azure Cache for Redis connection string goes here\> "** karakterláncot az Azure cache Redis az előző szakaszban lekért elsődleges kapcsolatok karakterláncára. 
 

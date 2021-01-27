@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060231"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878290"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -66,7 +66,7 @@ A Azure Portal használatával a Media Graph diagnosztizálását közvetlen mó
     * 500 – hiba történt a IoT Edge futtatókörnyezetben.
 
     > [!TIP]
-    > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** útmutatóként.
+    > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** útmutatóként.
 ### <a name="post-deployment-direct-method-error-code"></a>Üzembe helyezés utáni hiba: közvetlen metódus hibakódja
 1. Ha állapotot kap `501 code` , győződjön meg arról, hogy a közvetlen metódus neve pontos. Ha a metódus neve és a kérelmek hasznos adatai pontosak, akkor az eredményeket a siker Code = 200 értékkel együtt kell megkapnia. 
 1. Ha a kérelem hasznos adatai pontatlanok, akkor egy olyan állapotot `400 code` és egy válasz-adattartalmat fog kapni, amely a közvetlen metódus hívásával segít a probléma diagnosztizálásában.
@@ -96,7 +96,7 @@ Az élő videó elemzése IoT Edge modulként van telepítve a IoT Edge eszköz�
 * [A IoT Edge modul üzembe helyezése sikeresen megtörtént, majd eltűnik az eszközről](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
     > [!TIP]
-    > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** útmutatóként.
+    > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** útmutatóként.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Külső modulok használata élő videó-elemzéssel
 
 A Media Graph bővítmény processzorait használó élő videó-elemzések kiterjeszthetik a Media Graphot, hogy más IoT Edge-moduloktól származó adatok küldésére és fogadására HTTP vagy gRPC protokollok használatával. Egy [adott példaként](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)ez a Media Graph képkockákat küldhet képként egy külső következtetési modulba, mint például a Yolo v3, és HTTP protokoll használatával fogadja a JSON-alapú elemzési eredményeket. Ilyen topológiában az események rendeltetése többnyire az IoT hub. Olyan helyzetekben, amikor nem látja a következtetési eseményeket a központban, ellenőrizze a következőket:
@@ -213,7 +213,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
 
 1. Válassza a **Frissítés** lehetőséget.
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Egy sikeres érvényesítési üzenet a zöld szalagcím alatt lesz közzétéve.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Frissítse a **modul Identity Twin** értékét, hogy az DebugLogsDirectory paraméterre mutasson, amely arra a könyvtárra mutat, amelyben a naplók gyűjtése történik:
 
     a. A **modulok** táblázatban válassza a **lvaEdge** lehetőséget.  
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-A [gRPC-ben a .net-ben a naplózás és a diagnosztika](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) útmutatást nyújt bizonyos diagnosztikai naplók gRPC-kiszolgálókról történő összegyűjtéséhez. 
+A [gRPC-ben a .net-ben a naplózás és a diagnosztika](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) útmutatást nyújt bizonyos diagnosztikai naplók gRPC-kiszolgálókról történő összegyűjtéséhez. 
 
 ### <a name="a-failed-grpc-connection"></a>Sikertelen gRPC-kapcsolatok 
 
@@ -282,7 +282,7 @@ Ha egy gráf aktív, és egy kameráról áramlik, a rendszer az élő videó An
 
 Az élő videó elemzése nem figyeli vagy nem nyújt hardveres erőforrás-figyelést. A fejlesztőknek a hardvergyártók figyelési megoldásait is használniuk kell. Ha azonban Kubernetes-tárolókat használ, az eszközt a [Kubernetes-irányítópult](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)használatával figyelheti. 
 
-a .NET Core-dokumentumok gRPC emellett értékes információkat is megoszthatnak a [teljesítmény bevált eljárásaival](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) és a [terheléselosztással](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true)kapcsolatban.  
+a .NET Core-dokumentumok gRPC emellett értékes információkat is megoszthatnak a [teljesítmény bevált eljárásaival](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1) és a [terheléselosztással](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing)kapcsolatban.  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>Egy következtetési kiszolgáló hibaelhárítása, ha nem kap semmilyen képkockát és kap egy "ismeretlen" protokollhiba 
 
@@ -296,7 +296,7 @@ Több dolgot is megtehet a problémával kapcsolatos további információk megs
    ```
 
    Ha a parancs egy rövid, zagyva szövegű karakterláncot ad vissza, akkor a Telnet sikeresen megnyitotta a kapcsolódást a következtetési kiszolgálóhoz, és megnyit egy bináris gRPC csatornát. Ha ezt nem látja, akkor a Telnet hálózati hibát jelez. 
-* A következtetési kiszolgálón engedélyezheti a további naplózást a gRPC-könyvtárban. Ez további információkat is biztosíthat a gRPC csatornáról. Ez a nyelvtől függően változik, a [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true)-ra vonatkozó utasításokat itt találja. 
+* A következtetési kiszolgálón engedélyezheti a további naplózást a gRPC-könyvtárban. Ez további információkat is biztosíthat a gRPC csatornáról. Ez a nyelvtől függően változik, a [C#](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1)-ra vonatkozó utasításokat itt találja. 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>További rendszerképek kiválogatása a gRPC pufferből anélkül, hogy vissza kellene küldenie az első puffer eredményét.
 

@@ -2,19 +2,15 @@
 title: Azure Automation Start/Stop VMs during off-hours problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Start/Stop VMs during off-hours funkció használata során felmerülő problémákat.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187149"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896274"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours problémák elhárítása
 
@@ -113,7 +109,7 @@ Tekintse át az alábbi listát a lehetséges megoldásokról:
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* Ellenőrizze, hogy a [futtató fiókja](../manage-runas-account.md) rendelkezik-e megfelelő engedélyekkel az elindítani vagy leállítani kívánt virtuális gépekhez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd: gyors útmutató [: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md). Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai**területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
+* Ellenőrizze, hogy a [futtató fiókja](../manage-runas-account.md) rendelkezik-e megfelelő engedélyekkel az elindítani vagy leállítani kívánt virtuális gépekhez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd: gyors útmutató [: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md). Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai** területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
 
 * Előfordulhat, hogy a virtuális gépeket nem lehet elindítani vagy leállítani, ha explicit módon ki vannak zárva. A kizárt virtuális gépeket abban az `External_ExcludeVMNames` Automation-fiókban lévő változóban kell beállítani, amelyre a szolgáltatás telepítve van. Az alábbi példa bemutatja, hogyan kérdezheti le ezt az értéket a PowerShell használatával.
 
@@ -154,7 +150,7 @@ Tekintse át az alábbi listát a lehetséges megoldásokról:
 
 * A virtuális gépek indításához és leállításához az Automation-fiókhoz tartozó futtató fióknak megfelelő engedélyekkel kell rendelkeznie a virtuális géphez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd: gyors útmutató [: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md). Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai** területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
 * Ha a virtuális gép a probléma megkezdése vagy felszabadítása során problémákba ütközik, előfordulhat, hogy a virtuális gépen probléma merül fel. Ilyenek például egy olyan frissítés, amely akkor lép életbe, amikor a virtuális gép le van állítva, és a szolgáltatás leáll. Nyissa meg a virtuális gép erőforrását, **és ellenőrizze, hogy vannak-e** hibák a naplókban. Előfordulhat, hogy megpróbál bejelentkezni a virtuális gépre, hogy ellenőrizze, van-e hiba az eseménynaplókban. A virtuális gép hibaelhárításával kapcsolatos további tudnivalókért tekintse meg az Azure-beli [virtuális gépek hibaelhárítása](../../virtual-machines/troubleshooting/index.yml)című témakört.
-* Ellenőrizze, hogy vannak-e hibák a [feladatok streamben](../automation-runbook-execution.md#job-statuses) . A portálon nyissa meg az Automation-fiókját, és válassza a **feladatok** **automatizálása**lehetőséget.
+* Ellenőrizze, hogy vannak-e hibák a [feladatok streamben](../automation-runbook-execution.md#job-statuses) . A portálon nyissa meg az Automation-fiókját, és válassza a **feladatok** **automatizálása** lehetőséget.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Forgatókönyv: az egyéni runbook nem sikerül elindítani vagy leállítani a virtuális gépeket
 
@@ -164,7 +160,7 @@ Létrehozott egy egyéni runbook, vagy letöltött egyet a PowerShell-galériab�
 
 ### <a name="cause"></a>Ok
 
-A hiba számos oka lehet. Nyissa meg az Automation-fiókját a Azure Portal, és válassza a **feladatok** **automatizálása**lehetőséget. A **feladatok** lapon keresse meg a runbook feladatait, és tekintse meg a feladatok hibáit.
+A hiba számos oka lehet. Nyissa meg az Automation-fiókját a Azure Portal, és válassza a **feladatok** **automatizálása** lehetőséget. A **feladatok** lapon keresse meg a runbook feladatait, és tekintse meg a feladatok hibáit.
 
 ### <a name="resolution"></a>Feloldás
 
@@ -203,13 +199,13 @@ Ezt a problémát egy nem megfelelően konfigurált vagy lejárt futtató fiók 
 
 ### <a name="resolution"></a>Feloldás
 
-Annak ellenőrzéséhez, hogy a futtató fiók megfelelően van-e konfigurálva, lépjen a Azure Portal Automation-fiókjába, és válassza a **fiók beállításai**alatt a **futtató fiókok** elemet. Ha egy futtató fiók helytelenül van konfigurálva vagy lejárt, az állapot megjeleníti a feltételt.
+Annak ellenőrzéséhez, hogy a futtató fiók megfelelően van-e konfigurálva, lépjen a Azure Portal Automation-fiókjába, és válassza a **fiók beállításai** alatt a **futtató fiókok** elemet. Ha egy futtató fiók helytelenül van konfigurálva vagy lejárt, az állapot megjeleníti a feltételt.
 
 Ha a futtató fiók helytelenül van konfigurálva, törölje és hozza létre újra a futtató fiókot. További információ: [Azure Automation futtató fiókok kezelése](../manage-runas-account.md).
 
 Ha a tanúsítvány lejárt a futtató fiókhoz, kövesse az [önaláírt tanúsítvány megújításának](../manage-runas-account.md#cert-renewal) lépéseit a tanúsítvány megújításához.
 
-Ha hiányoznak az engedélyek, tekintse [meg a rövid útmutató: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md)című témakört. Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai**területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
+Ha hiányoznak az engedélyek, tekintse [meg a rövid útmutató: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md)című témakört. Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai** területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
 
 ## <a name="scenario-my-problem-isnt-listed-here"></a><a name="other"></a>Forgatókönyv: a probléma nem szerepel a listán
 
@@ -228,10 +224,10 @@ A szolgáltatás régi és elavult verziója sokszor hibákat okozhat.
 
 Sok hiba elhárításához távolítsa el és [frissítse Start/Stop VMS During off-hours](../automation-solution-vm-management.md#update-the-feature). A [feladatok adatfolyamait](../automation-runbook-execution.md#job-statuses) is megtekintheti, ha hibákat keres. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.

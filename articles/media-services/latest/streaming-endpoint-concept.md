@@ -1,24 +1,10 @@
 ---
-title: Folyamatos átviteli végpontok (forrás)
-titleSuffix: Azure Media Services
-description: Ismerje meg az adatfolyam-végpontokat (forrás), a dinamikus csomagolást és a streaming szolgáltatást, amely közvetlenül az ügyfél vagy egy Content Delivery Network (CDN) számára biztosít tartalmat.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 02/13/2020
-ms.author: inhenkel
-ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882874"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Kötelező mezők. További információ: aka.ms/skyeye/meta.
+title: streaming-végpontok (forrás): Azure Media Services Leírás: Ismerje meg a streaming endpoints (forrás), a dinamikus csomagolást és a streaming Service-t, amely közvetlenül az ügyfél vagy egy Content Delivery Network (CDN) számára biztosít tartalmat. szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 02/13/2020 MS. Author: inhenkel
 ---
+
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
 
 Microsoft Azure Media Services a [folyamatos átviteli végpontok](/rest/api/media/streamingendpoints) egy dinamikus (igény szerinti) csomagolást és forrást jelentenek, amely az élő és az igény szerinti tartalmat közvetlenül egy ügyfél-alkalmazáshoz irányítja, amely a közös Streaming Media protokollok (HLS vagy Dash) egyikét használja. Emellett az adatfolyam- **végpont** dinamikus (igény szerinti) titkosítást biztosít az iparági vezető DRMs számára. 
@@ -51,7 +37,7 @@ A folyamatos átviteli egység maximális korlátja általában 10. Lépjen kapc
 
 A táblázat a típusokat írja le:
 
-|Típus|Skálázási egységek|Leírás|
+|Típus|Skálázási egységek|Description|
 |--------|--------|--------|  
 |**Standard**|0|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely módosítható a prémium típusra `scaleUnits` .|
 |**Prémium**|>0|**Prémium** szintű A streaming-végpontok speciális számítási feladatokhoz és dedikált és skálázható sávszélesség-kapacitás biztosításához alkalmasak. A **prémium** típusra a `scaleUnits` (folyamatos átviteli egységek) beállításával léphet be. `scaleUnits` dedikált kimenő kapacitást kínál, amely 200 Mbps-os növekményekben vásárolható meg. A **prémium** típus használata esetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
@@ -68,11 +54,11 @@ Szolgáltatás|Standard|Prémium
 Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
-Dinamikus titkosítás|Igen|Igen
-Dinamikus csomagolás|Igen|Igen
+Dinamikus titkosítás|Igen|Yes
+Dinamikus csomagolás|Igen|Yes
 Méretezés|Automatikus méretezés a célként megadott átviteli sebességgel.|További SUs
-IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Igen
-Progresszív letöltés|Igen|Igen
+IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Yes
+Progresszív letöltés|Igen|Yes
 Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többségét ajánljuk.|Professzionális használat.
 
 <sup>1</sup> csak akkor használható közvetlenül a folyamatos átviteli végponton, ha a CDN nincs engedélyezve a végponton.<br/>
@@ -165,10 +151,10 @@ Lásd az alábbi cikkeket:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Dinamikus csomagolás](dynamic-packaging-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Streamvégpontok kezelése](manage-streaming-endpoints-howto.md)

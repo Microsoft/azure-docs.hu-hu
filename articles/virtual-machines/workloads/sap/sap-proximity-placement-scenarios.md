@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: ee28f25e766940eb51e92b61fd782b97fd888705
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827223"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879612"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.
@@ -30,11 +30,11 @@ A hálózaton töltött idő a lekérdezés az alkalmazás szintjéről az adatb
 
 Számos Azure-régióban az adatközpontok száma nőtt. Ugyanakkor az ügyfelek, különösen a magas szintű SAP-rendszerek esetében, az M vagy Mv2 család speciális VM SKU-ában, vagy a HANA nagyméretű példányain használják. Ezek az Azure-beli virtuálisgép-típusok nem minden esetben érhetők el minden olyan adatközpontban, amely az Azure-régiót egészíti ki. Ezek a tények létrehozhatnak lehetőségeket az SAP-alkalmazási réteg és az SAP adatbázis-kezelői réteg közötti hálózati késés optimalizálása érdekében.
 
-A hálózati késés optimalizálása érdekében az Azure [közelségi csoportokat](../../linux/co-location.md)biztosít. A közelségi csoportok használatával kényszerítheti a különböző virtuálisgép-típusok csoportosítását egyetlen Azure-adatközpontba, hogy optimalizálni tudja a különböző virtuálisgép-típusok közötti hálózati késést a lehető legjobb módon. Az első virtuális gép ilyen közelségi csoportba való üzembe helyezésének folyamata során a virtuális gép egy adott adatközponthoz lesz kötve. Ahogy az a kérdés, hogy a jelen perspektívában is hangzik, a konstrukció használata bizonyos korlátozásokat is bemutat:
+A hálózati késés optimalizálása érdekében az Azure [közelségi csoportokat](../../co-location.md)biztosít. A közelségi csoportok használatával kényszerítheti a különböző virtuálisgép-típusok csoportosítását egyetlen Azure-adatközpontba, hogy optimalizálni tudja a különböző virtuálisgép-típusok közötti hálózati késést a lehető legjobb módon. Az első virtuális gép ilyen közelségi csoportba való üzembe helyezésének folyamata során a virtuális gép egy adott adatközponthoz lesz kötve. Ahogy az a kérdés, hogy a jelen perspektívában is hangzik, a konstrukció használata bizonyos korlátozásokat is bemutat:
 
 - Nem feltételezhető, hogy minden Azure-beli VM-típus elérhető minden Azure-adatközpontban. Ennek eredményeképpen a különböző virtuálisgép-típusok kombinációja korlátozott lehet a közelségi elhelyezési csoporton belül. Ezek a korlátozások azért fordulnak elő, mert az adott virtuálisgép-típus futtatásához szükséges gazdagép-hardver nem szerepel az adatközpontban, amelybe az elhelyezési csoport telepítve lett
 - Az egyazon virtuális gépek részeinek átméretezése során a rendszer nem tudja automatikusan feltételezni, hogy az új virtuálisgép-típus ugyanabban az adatközpontban érhető el, mint a közelségi elhelyezési csoport részét képező többi virtuális gép.
-- Mivel az Azure leszereli a hardvert, előfordulhat, hogy bizonyos virtuális gépeket egy másik Azure-adatközpontba kényszerít. Ebben az esetben a részletekért olvassa el a dokumentumok közös elhelyezésének [erőforrásait a jobb késés](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups) érdekében.  
+- Mivel az Azure leszereli a hardvert, előfordulhat, hogy bizonyos virtuális gépeket egy másik Azure-adatközpontba kényszerít. Ebben az esetben a részletekért olvassa el a dokumentumok közös elhelyezésének [erőforrásait a jobb késés](../../co-location.md#planned-maintenance-and-proximity-placement-groups) érdekében.  
 
 > [!IMPORTANT]
 > A lehetséges korlátozások miatt a közelségi elhelyezési csoportokat kell használni:

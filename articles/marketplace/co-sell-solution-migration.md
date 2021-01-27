@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043778"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880355"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>A OCP GTM közös értékesítési megoldásainak áttelepítése a kereskedelmi piactérre
 
@@ -44,7 +44,7 @@ Miután regisztrált a kereskedelmi piactéren, készítse elő a megoldásait a
 
 Kövesse az alábbi lépéseket a megoldások OCP GTM való importálása előtt:
 
-1. Látogasson el a vállalat [közzétevői listájára](https://partner.microsoft.com/dashboard/account/v3/publishers/list). Ez magában foglalja a fiók tulajdonosát, feletteseit és fejlesztőit, akik hozzáférés-közzétételi jogosultsággal rendelkeznek. További információ a [partneri központ felhasználói szerepköreiről](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions).
+1. Látogasson el a vállalat [közzétevői listájára](https://partner.microsoft.com/dashboard/account/v3/publishers/list). Ez magában foglalja a fiók tulajdonosát, feletteseit és fejlesztőit, akik hozzáférés-közzétételi jogosultsággal rendelkeznek. További információ a [partneri központ felhasználói szerepköreiről](./partner-center-portal/manage-account.md#define-user-roles-and-permissions).
 2. Kérje meg az egyik felsorolt partnert, hogy a felhasználók a kereskedelmi piactéren *vezetőként* vagy *fejlesztőként* [vegyenek fel felhasználókat](https://partner.microsoft.com/dashboard/account/usermanagement) , mivel csak ezek a szerepkörök szerkeszthetik és tehetik közzé a megoldásokat.
 3. Működjön együtt a fejlesztővel, hogy a megoldásokat a OCP GTM-fiókjából a kereskedelmi piactérre helyezze át.
 4. Döntse el, hogy a következők közül melyiket kívánja elvégezni:
@@ -156,4 +156,3 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 - [Viszonteladás CSP-partnereken keresztül](cloud-solution-providers.md)
 - [Közös értékesítésű anyagok beküldése a partner Centerben](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - A [Gyakori kérdések](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) megtekintése (PDF)
-

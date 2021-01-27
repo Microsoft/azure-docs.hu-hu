@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 2c21f84b9a10db504afb8ead67ae479518a0afba
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603313"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879948"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure-beli hatáskörébe metrikák a Azure Monitor
 
@@ -64,10 +64,10 @@ A következő táblázat tartalmazza a Azure Portal vizsgálatához elérhető m
 
 | Metrika neve | Metrika névtere | Összesítés típusa | Leírás |
 | ------------------- | ------------------- | ------------------- | ----------------- |
-| Ellenőrzés megszakítva | Automatizált vizsgálat | Összeg <br> Darabszám | A megszakított adatforrás összesítése az időszak során |
-| A vizsgálat befejeződött | Automatizált vizsgálat | Összeg <br> Darabszám | A befejezett adatforrás összesítése az időszak során |
-| Sikertelen vizsgálat | Automatizált vizsgálat | Összeg <br> Darabszám | A sikertelen adatforrás összesítése az időszak során |
-| Vizsgálat ideje elvégezve | Automatizált vizsgálat | Min <br> Max <br> Összeg <br> Átlag | A vizsgálatok során elvégzett teljes idő összesítése az időszakon belül |
+| Ellenőrzés megszakítva | Automatizált vizsgálat | Sum <br> Darabszám | A megszakított adatforrás összesítése az időszak során |
+| A vizsgálat befejeződött | Automatizált vizsgálat | Sum <br> Darabszám | A befejezett adatforrás összesítése az időszak során |
+| Sikertelen vizsgálat | Automatizált vizsgálat | Sum <br> Darabszám | A sikertelen adatforrás összesítése az időszak során |
+| Vizsgálat ideje elvégezve | Automatizált vizsgálat | Min <br> Max <br> Sum <br> Átlag | A vizsgálatok során elvégzett teljes idő összesítése az időszakon belül |
 
 ## <a name="diagnostic-logs-to-azure-storage-account"></a>Diagnosztikai naplók az Azure Storage-fiókba
 
@@ -79,11 +79,11 @@ Kövesse az Azure-beli hatáskörébe tartozó fiók diagnosztikai beállítása
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="A diagnosztikai napló létrehozását bemutató képernyőkép." lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
-2. Naplózza az eseményeket egy Storage-fiókba. A diagnosztikai naplók archiválásához dedikált Storage-fiók használata javasolt. Ezt a cikket követve [hozzon létre egy Storage-fiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+2. Naplózza az eseményeket egy Storage-fiókba. A diagnosztikai naplók archiválásához dedikált Storage-fiók használata javasolt. Ezt a cikket követve [hozzon létre egy Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal).
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="A diagnosztikai naplóhoz tartozó Storage-fiók hozzárendelését bemutató képernyőkép." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Akár 15 percet is igénybe vehet, és megkezdheti a naplók fogadását az újonnan létrehozott Storage-fiókban. [Lásd: az Azure Storage-fiókban található erőforrás-naplók adatmegőrzési és sémája](../azure-monitor/platform/resource-logs-collect-storage.md). A diagnosztikai naplók konfigurálása után az események a Storage-fiókba áramlanak.
+Akár 15 percet is igénybe vehet, és megkezdheti a naplók fogadását az újonnan létrehozott Storage-fiókban. [Lásd: az Azure Storage-fiókban található erőforrás-naplók adatmegőrzési és sémája](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). A diagnosztikai naplók konfigurálása után az események a Storage-fiókba áramlanak.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

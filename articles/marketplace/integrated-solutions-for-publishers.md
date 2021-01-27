@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621348"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880270"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
@@ -32,13 +32,13 @@ Az integrált megoldások programjának áttekintéséhez tekintse meg a [partne
 ## <a name="eligibility-criteria"></a>Megfelelőségi feltételek
 
 * A résztvevő partnereknek MPN-AZONOSÍTÓval kell rendelkezniük.
-* A résztvevő szolgáltatók számára készen kell lennie a [közös értékesítésre](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
-* A résztvevő szoftvergyártóknak az [IP-címek közös értékesítésének](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)kell lenniük.
+* A résztvevő szolgáltatók számára készen kell lennie a [közös értékesítésre](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
+* A résztvevő szoftvergyártóknak az [IP-címek közös értékesítésének](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)kell lenniük.
 * Legalább egy résztvevő partnernek a következő területek egyikében kell lennie a Gold kompetenciának:
     - Alkalmazásfejlesztés
     - Alkalmazásintegráció
     - Alkalmazások életciklus-kezelése
-    - Felhőalapú platform
+    - Felhőplatform
     - Adatelemzés
     - Adatközpont
     - Adatplatform

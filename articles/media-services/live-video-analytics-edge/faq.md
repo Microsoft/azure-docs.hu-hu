@@ -3,18 +3,18 @@ title: Élő videó-elemzés IoT Edge GYIK-ban – Azure
 description: Ez a cikk a IoT Edge élő videó-elemzésekkel kapcsolatos gyakori kérdésekre ad választ.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: f9ef26b9b64bd8a0bad7c83960f2d235ed6461cb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762877"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880050"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Élő video Analytics IoT Edge GYIK
 
 Ez a cikk a Azure IoT Edge élő videó-elemzésekkel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **Milyen rendszerváltozókat használhatok a Graph topológia definíciójában?**
 
@@ -230,7 +230,7 @@ Igen. A Prometheus-mérőszámokat felhasználhatja, és közzéteheti őket az 
 
 **Használhatom Azure Monitor a saját adathordozó-diagramok állapotának, metrikáinak és teljesítményének megtekintéséhez a felhőben vagy a peremen?**
 
-Igen, támogatjuk ezt a megközelítést. További információ: [Azure monitor mérőszámok áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Igen, támogatjuk ezt a megközelítést. További információ: [Azure monitor mérőszámok áttekintése](../../azure-monitor/platform/data-platform-metrics.md).
 
 **Vannak olyan eszközök, amelyek megkönnyítik a Media Services IoT Edge modul figyelését?**
 

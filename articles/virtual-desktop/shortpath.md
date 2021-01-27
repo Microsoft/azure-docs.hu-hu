@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134398"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876698"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows rendszerű virtuális asztali RDP-Shortpath (előzetes verzió)
 
@@ -58,7 +58,7 @@ Az alábbi ábra áttekintést nyújt az RDP Shortpath hálózati kapcsolatról.
 Az RDP-Shortpath támogatásához a Windows rendszerű virtuális asztali ügyfélnek közvetlen rámutatnia kell a munkamenet-gazdagépre. A következő technológiák egyikének használatával közvetlen áttekintést kaphat:
 
 * [Privát ExpressRoute](../expressroute/expressroute-circuit-peerings.md)
-* [Helyek közötti VPN (IPsec-alapú)](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Helyek közötti VPN (IPsec-alapú)](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Pont – hely típusú VPN (IPsec-alapú)](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [Nyilvános IP-cím hozzárendelése](../virtual-network/virtual-network-public-ip-address.md)
 
@@ -253,7 +253,7 @@ Egy adott munkamenet-állomás RDP-Shortpath letiltásához a következő Csopor
 Ezt a nyilvános előzetes verziót szeretném hallani a tapasztalatairól!
 * Kérdések, kérések, megjegyzések és egyéb visszajelzések esetén [használja ezt a visszajelzési űrlapot](https://aka.ms/RDPShortpathFeedback).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Windows rendszerű virtuális asztali hálózati kapcsolat megismeréséhez tekintse meg a [Windows rendszerű virtuális asztali hálózati kapcsolat ismertetése](network-connectivity.md)című témakört.
 * A Windows rendszerű virtuális asztali szolgáltatások szolgáltatásminőség (QoS) szolgáltatásának megkezdéséhez lásd: [a Windows rendszerű virtuális asztali szolgáltatás szolgáltatásminőség (QoS) implementálása](rdp-quality-of-service-qos.md).

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354993"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880406"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Ajánlott eljárások az Azure Database for MySQL – egyetlen kiszolgáló optimális teljesítményéhez
 
@@ -46,9 +46,9 @@ Az új kapcsolatok létrehozása mindig költséges és időigényes feladat. Am
 
 Az Azure Database for MySQL teljesítményének bevált gyakorlata, hogy elegendő RAM-memóriát foglaljon le, így a munkakészletek majdnem teljesen a memóriában találhatók. 
 
-- Ellenőrizze, hogy a használt memória százalékos aránya eléri-e a [határértékeket](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) a [MySQL-kiszolgáló metrikái](https://docs.microsoft.com/azure/mysql/concepts-monitoring)alapján. 
+- Ellenőrizze, hogy a használt memória százalékos aránya eléri-e a [határértékeket](./concepts-pricing-tiers.md) a [MySQL-kiszolgáló metrikái](./concepts-monitoring.md)alapján. 
 - Állítsa be az ilyen számú riasztást annak biztosítására, hogy mivel a kiszolgálók elérik a korlátozásokat, megteheti a kijavításához szükséges lépéseket. A meghatározott korlátok alapján ellenőrizze, hogy az adatbázis-SKU felskálázása – akár magasabb számítási méretre, akár jobb árképzési szinten – a teljesítmény drámai növekedését eredményezi. 
-- Vertikális felskálázás, amíg a teljesítménybeli számok nem csökkennek jelentősen a skálázási művelet után. Az adatbázis-példány metrikáinak figyelésével kapcsolatos információkért lásd: [MySQL db-metrikák](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics).
+- Vertikális felskálázás, amíg a teljesítménybeli számok nem csökkennek jelentősen a skálázási művelet után. Az adatbázis-példány metrikáinak figyelésével kapcsolatos információkért lásd: [MySQL db-metrikák](./concepts-monitoring.md#metrics).
 
 ## <a name="next-steps"></a>További lépések
 

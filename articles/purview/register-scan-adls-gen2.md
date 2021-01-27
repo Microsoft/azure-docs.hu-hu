@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694806"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882399"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 regisztrálása és vizsgálata
 
@@ -48,7 +48,7 @@ Ha a **felügyelt identitást** választja, a csatlakozás beállításához el�
 1. Állítsa be a **szerepkört** a **blob-Adatolvasó tárolásához** , és adja meg az Azure hatáskörébe tartozó fiók nevét a beviteli mező **kiválasztása** területen. Ezt követően válassza a **Mentés** lehetőséget, hogy ezt a szerepkör-hozzárendelést a hatáskörébe tartozó fiókjához adja.
 
 > [!Note]
-> További részletekért tekintse meg a [blobok és várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](https://docs.microsoft.com/azure/storage/common/storage-auth-aad) című témakör lépéseit.
+> További részletekért tekintse meg a [blobok és várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../storage/common/storage-auth-aad.md) című témakör lépéseit.
 
 #### <a name="account-key"></a>Fiók kulcsa
 
