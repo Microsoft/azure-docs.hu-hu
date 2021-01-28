@@ -1,18 +1,15 @@
 ---
 title: Apache Kafka számítási feladatok migrálása az Azure HDInsight 4,0
 description: Megtudhatja, hogyan telepítheti át Apache Kafka számítási feladatait a 3,6-es HDInsight a HDInsight 4,0-ra.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3967a5d96c35e4bac88dcd9a6c1fa95b78a6b2b1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80437017"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939110"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka számítási feladatok migrálása az Azure HDInsight 4,0
 
@@ -82,7 +79,7 @@ Az áttelepítés befejezéséhez hajtsa végre a következő lépéseket:
 
 1. **Szükség szerint távolítsa el a régi fürtöt, és tesztelje az alkalmazásokat.** Ha a kapcsoló elkészült, és megfelelően működik, távolítsa el a régi HDInsight 3,6 Kafka-fürtöt, valamint a tesztben használt gyártókat és fogyasztókat igény szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Kafka HDInsight-fürtök teljesítményoptimalizálása](apache-kafka-performance-tuning.md)
 * [Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával](apache-kafka-get-started.md)

@@ -7,12 +7,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 0a3fdb776643e2cf817c50fb9b716f7315151e21
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a21d088680855b74e7259028ed7ef55165707c56
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223414"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938685"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>Azure nyilvános IP-konfiguráció áthelyezése másik régióba Azure PowerShell használatával
 
@@ -44,19 +44,19 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Sablon exportálása és üzembe helyezése parancsfájlból
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Szerezze be annak a nyilvános IP-nek az erőforrás-AZONOSÍTÓját, amelyet át szeretne helyezni a célként megadott régióba, és helyezze egy változóba a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)használatával:
+2. Szerezze be annak a nyilvános IP-nek az erőforrás-AZONOSÍTÓját, amelyet át szeretne helyezni a célként megadott régióba, és helyezze egy változóba a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress)használatával:
 
     ```azurepowershell-interactive
     $sourcePubIPID = (Get-AzPublicIPaddress -Name <source-public-ip-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportálja a forrásként szolgáló virtuális hálózatot egy. JSON-fájlba abba a könyvtárba, amelyben az [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)parancsot futtatja:
+3. Exportálja a forrásként szolgáló virtuális hálózatot egy. JSON-fájlba abba a könyvtárba, amelyben az [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup)parancsot futtatja:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -109,7 +109,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
              ]             
     ```
   
-7. A régióbeli hely kódjának beszerzéséhez használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) Azure PowerShell parancsmagot a következő parancs futtatásával:
+7. A régióbeli hely kódjának beszerzéséhez használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) Azure PowerShell parancsmagot a következő parancs futtatásával:
 
     ```azurepowershell-interactive
 
@@ -165,12 +165,12 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 
 9. Mentse a **\<resource-group-name> . JSON** fájlt.
 
-10. Hozzon létre egy erőforráscsoportot a céltartományban a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő cél nyilvános IP-címhez.
+10. Hozzon létre egy erőforráscsoportot a céltartományban a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával telepítendő cél nyilvános IP-címhez.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Telepítse a szerkesztett **\<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)használatával:
 
     ```azurepowershell-interactive
 
@@ -178,7 +178,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
     
     ```
 
-12. A cél régióban létrehozott erőforrások ellenőrzéséhez használja a [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) és a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+12. A cél régióban létrehozott erőforrások ellenőrzéséhez használja a [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) és a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
     
     ```azurepowershell-interactive
 
@@ -193,7 +193,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
     ```
 ## <a name="discard"></a>Elvetés 
 
-Ha a központi telepítés után szeretné elindítani vagy elvetni a nyilvános IP-címet a célhelyen, törölje a célhelyen létrehozott erőforráscsoportot, és az áthelyezett nyilvános IP-címet törli a rendszer.  Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Ha a központi telepítés után szeretné elindítani vagy elvetni a nyilvános IP-címet a célhelyen, törölje a célhelyen létrehozott erőforráscsoportot, és az áthelyezett nyilvános IP-címet törli a rendszer.  Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -203,7 +203,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-A módosítások elvégzéséhez és a virtuális hálózat áthelyezésének befejezéséhez törölje a forrás virtuális hálózatot vagy az erőforráscsoportot a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) vagy a [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0):
+A módosítások elvégzéséhez és a virtuális hálózat áthelyezésének befejezéséhez törölje a forrás virtuális hálózatot vagy az erőforráscsoportot a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) vagy a [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress):
 
 ```azurepowershell-interactive
 

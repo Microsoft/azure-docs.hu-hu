@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567634"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937601"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect Sync v2 végpont API 
 A Microsoft új végpontot (API-t) helyezett üzembe a Azure AD Connect számára, amely javítja a szinkronizálási szolgáltatás műveleteinek teljesítményét Azure Active Directory. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a következőket támogatja:
@@ -176,9 +176,9 @@ Ha engedélyezte a v2-végpontot, és vissza kell állítania a visszaállítás
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések  
  
 **Mikor lesz az új végpont a frissítések és az új telepítések alapértelmezett értéke?**  
-</br>A AADConnect új kiadását tervezzük a 2021-es januári letöltéshez. Ez a kiadás alapértelmezés szerint a v2 végpontot fogja használni, és lehetővé teszi, hogy további konfiguráció nélkül engedélyezze az 50 000-nél nagyobb szinkronizálási csoportokat. Ezt a kiadást később közzé fogjuk tenni a jogosult kiszolgálókra való automatikus verziófrissítéshez.
+</br>A AADConnect új kiadását tervezzük a letöltéshez a 2021 februárjában. Ez a kiadás alapértelmezés szerint a v2 végpontot fogja használni, és lehetővé teszi, hogy további konfiguráció nélkül engedélyezze az 50 000-nél nagyobb szinkronizálási csoportokat. Ezt a kiadást később közzé fogjuk tenni a jogosult kiszolgálókra való automatikus verziófrissítéshez.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

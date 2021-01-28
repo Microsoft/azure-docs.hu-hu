@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020604"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939895"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD a Custom Speechhez
 
@@ -73,7 +73,7 @@ A legtöbb csapatnak manuális felülvizsgálati és jóváhagyási folyamatra v
 
 A következő eszközök használhatók a Custom Speech CI/CD Automation munkafolyamataihoz:
 
-- Azure [CLI](/cli/azure/?view=azure-cli-latest) az Azure-szolgáltatás egyszerű hitelesítésének létrehozásához, az Azure-előfizetések lekérdezéséhez és a tesztelési eredmények tárolásához az Azure blobban.
+- Azure [CLI](/cli/azure/) az Azure-szolgáltatás egyszerű hitelesítésének létrehozásához, az Azure-előfizetések lekérdezéséhez és a tesztelési eredmények tárolásához az Azure blobban.
 - Az [Azure SPEECH CLI](spx-overview.md) segítségével a parancssorból vagy egy automatizált munkafolyamatból dolgozhat a Speech szolgáltatással.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>DevOps-megoldás a Custom Speech GitHub-műveletek használatával
@@ -88,7 +88,7 @@ A [beszédfelismerési DevOps-sablon](https://github.com/Azure-Samples/Speech-Se
 - Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
 - Futtassa a CD-munkafolyamatot, és hozzon létre egy végpontot, amikor a WER fejleszti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a DevOps és a Speech:
 

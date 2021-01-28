@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756139"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937824"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -109,7 +109,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel későbbi használatra. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
-1. A **kijelentkezési URL** beállítása a következőre: `https://localhost:44316/Account/EndSession` .
+1. Az **előtérben kijelentkezési URL-cím** beállítása a következőre: `https://localhost:44316/Account/EndSession` .
 1. Az **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
 1. Kattintson a **Mentés** gombra.
 1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
@@ -227,7 +227,7 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 1. Térjen vissza a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki a **DotNet-web-Daemon-v2** alkalmazást.
-1. Az alkalmazás **hitelesítés** lapján frissítse a **kijelentkezési URL-** mezőket a szolgáltatás címével. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. Az alkalmazáshoz tartozó **hitelesítés** lapon frissítse az **előtérben KIJELENTKEZÉSI URL-címeket** a szolgáltatás címével. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession` .
 1. A **branding (védjegyezés** ) menüben frissítse a **Kezdőlap URL-** címét a szolgáltatás címére. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Mentse a konfigurációt.
 1. Adja hozzá ugyanazt az URL-címet a **hitelesítési**  >  **átirányítási URI** -k menü értékeinek listájához. Ha több átirányítási URL-címmel rendelkezik, győződjön meg arról, hogy van egy új bejegyzés, amely az App Service URI azonosítóját használja az egyes átirányítási URL-címekhez.
@@ -247,7 +247,7 @@ Ha hibát talál a MSAL.NET-ben, akkor emelje fel a problémát a [MSAL.net GitH
 
 A javaslatok megadásához nyissa meg a [felhasználói hang lapot](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Microsoft Identity platformot használó Daemon-alkalmazások létrehozásáról a védett webes API-k eléréséhez:
 

@@ -3,16 +3,13 @@ title: Nem áll rendelkezésre elegendő tartalék tartomány a HDInsight az Azu
 description: A fürt létrehozása nem sikerült, mert nem áll rendelkezésre elegendő tartalék tartomány a régióban az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 070ba5ecb6f151099c13082eee650c5720e63b2a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532594"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939050"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Forgatókönyv: a fürt létrehozása `not sufficient fault domains in region` Az Azure HDInsight miatt nem sikerült
 

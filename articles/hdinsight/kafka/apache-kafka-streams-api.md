@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: Az Apache Kafka Streams API használata – Azure HDInsight '
 description: Oktatóanyag – megtudhatja, hogyan használhatja a Apache Kafka Streams API-t a Kafka on HDInsight. Az API segítségével streamfeldolgozást végezhet a témakörök között a Kafkában.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 7a5982cb96891b3c0724007aa98527a07daba0fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532555"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939199"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Oktatóanyag: Apache Kafka Streams API használata az Azure HDInsight
 
@@ -43,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
@@ -260,7 +257,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 

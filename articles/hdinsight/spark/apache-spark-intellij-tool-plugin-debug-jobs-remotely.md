@@ -1,19 +1,16 @@
 ---
 title: 'Azure Toolkit: Apache Spark alkalmazások távoli hibakeresése – Azure HDInsight'
 description: Ismerje meg, hogyan használhatja a Azure Toolkit for IntelliJ HDInsight-eszközeit a HDInsight-fürtökön futó Spark-alkalmazások távoli hibakereséséhez VPN-en keresztül.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789463"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940354"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával
 
@@ -299,7 +296,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![IntelliJ IDEA hibakereső konzol kimenete](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
 
-## <a name="next-steps"></a><a name="seealso"></a>További lépések
+## <a name="next-steps"></a><a name="seealso"></a>Következő lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 

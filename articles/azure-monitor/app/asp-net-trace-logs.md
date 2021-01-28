@@ -4,12 +4,12 @@ description: A nyomkövetés, a NLog vagy a Log4Net által létrehozott naplók 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920345"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937561"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>A .NET/.NET Core és a Python nyomkövetési naplók megismerése Application Insights
 
@@ -85,7 +85,7 @@ Ha a log4net vagy az NLog-t részesíti előnyben, használja a következőket:
 ```
 
 ## <a name="use-eventsource-events"></a>EventSource-események használata
-Konfigurálhatja a [System. Diagnostics. Trace. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) eseményeket, amelyeket a rendszer a nyomkövetési Application Insights küldendő. Először telepítse a `Microsoft.ApplicationInsights.EventSourceListener` NuGet csomagot. Ezután szerkessze a `TelemetryModules` [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) fájl szakaszát.
+Konfigurálhatja a [System. Diagnostics. Trace. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) eseményeket, amelyeket a rendszer a nyomkövetési Application Insights küldendő. Először telepítse a `Microsoft.ApplicationInsights.EventSourceListener` NuGet csomagot. Ezután szerkessze a `TelemetryModules` [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) fájl szakaszát.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -203,7 +203,7 @@ Ha a Java SDK-t használja, használja a [Java log-adaptereket](./java-trace-log
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>A konfigurációs eszközben nincs naplózási adapter beállítás
 * Először telepítse a naplózási keretrendszert.
-* Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web.configban* van konfigurálva](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
+* Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web.configban* van konfigurálva](/dotnet/api/system.diagnostics.eventlogtracelistener).
 * Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban válassza az **eszközök**  >  **bővítmények és frissítések** menüpontot, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>A "rendszerállapot-kulcs nem lehet üres" hibaüzenet jelenik meg

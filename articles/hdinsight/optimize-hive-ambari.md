@@ -1,18 +1,15 @@
 ---
 title: Apache Hive optimalizálása az Apache Ambari az Azure HDInsight
 description: A Apache Hive konfigurálásához és optimalizálásához használja az Apache Ambari webes FELÜLETét.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084358"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939256"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Apache Hive optimalizálása az Apache Ambari az Azure HDInsight
 
@@ -37,7 +34,7 @@ A kaptár két végrehajtó motort biztosít: Apache Hadoop MapReduce és Apache
 
 ## <a name="tune-mappers"></a>Leképezések hangolása
 
-A Hadoop egyetlen fájlt próbál*map*felosztani több fájlba, és párhuzamosan dolgozza fel az eredményül kapott fájlokat. A leképezések száma a felosztások számától függ. A következő két konfigurációs paraméter a TEZ-végrehajtó motor felosztásának számát hajtja végre:
+A Hadoop egyetlen fájlt próbálfelosztani több fájlba, és párhuzamosan dolgozza fel az eredményül kapott fájlokat. A leképezések száma a felosztások számától függ. A következő két konfigurációs paraméter a TEZ-végrehajtó motor felosztásának számát hajtja végre:
 
 * `tez.grouping.min-size`: Egy csoportosított felosztás méretének alsó korlátja, amelynek alapértelmezett értéke 16 MB (16 777 216 bájt).
 * `tez.grouping.max-size`: Egy csoportosított felosztás felső korlátja, amelynek alapértelmezett értéke 1 GB (1 073 741 824 bájt).
@@ -100,7 +97,7 @@ A struktúra soronként dolgozza fel az adatsort. A vektorizációt a Kaptárat 
 
 Alapértelmezés szerint a kaptár egy olyan szabályt követ, amely egy optimális lekérdezés-végrehajtási tervet keres. A Cost-based Optimization (CBO) több tervet értékel ki egy lekérdezés végrehajtásához. És minden csomaghoz hozzárendel egy díjat, majd meghatározza a lekérdezés végrehajtásának legolcsóbb tervét.
 
-A CBO engedélyezéséhez lépjen a **kaptár**-  >  **konfigurációk**  >  **beállításaihoz** , és keresse meg a **Cost-alapú optimalizáló engedélyezése**lehetőséget, majd kapcsolja be a váltás gombot a **be**értékre.
+A CBO engedélyezéséhez lépjen a **kaptár**-  >  **konfigurációk**  >  **beállításaihoz** , és keresse meg a **Cost-alapú optimalizáló engedélyezése** lehetőséget, majd kapcsolja be a váltás gombot a **be** értékre.
 
 ![HDInsight-alapú optimalizáló](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -134,10 +131,10 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlkiterjesztés | Feloszthatók? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | Nem |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Igen |
+| Gzip | Gzip | DEFLATE | `.gz` | No |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
 | LZO | `Lzop` | LZO | `.lzo` | Igen, ha indexelve van |
-| Snappy | N/A | Snappy | Snappy | Nem |
+| Snappy | N/A | Snappy | Snappy | No |
 
 Általános szabály, hogy a tömörítési módszer megosztója fontos, ellenkező esetben a rendszer néhány leképezést hoz létre. Ha a bemeneti adatok szöveg, `bzip2` a legjobb megoldás. Az ork formátum esetében a Snappy a leggyorsabb tömörítési lehetőség.
 
@@ -152,13 +149,13 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 1. Egyéni beállítás hozzáadása:
 
-    a. Navigáljon a **kaptár**  >  **konfigurációk**  >  **speciális**  >  **Egyéni struktúra-hely**elemre.
+    a. Navigáljon a **kaptár**  >  **konfigurációk**  >  **speciális**  >  **Egyéni struktúra-hely** elemre.
 
     b. Válassza a **tulajdonság hozzáadása...** lehetőséget az egyéni struktúra – hely ablaktábla alján.
 
     c. A tulajdonság hozzáadása ablakban adja meg `mapred.map.output.compression.codec` a kulcsot és `org.apache.hadoop.io.compress.SnappyCodec` az értéket.
 
-    d. Válassza a **Hozzáadás** lehetőséget.
+    d. Válassza a **Hozzáadás** elemet.
 
     !["Apache Hive egyéni tulajdonság hozzáadása"](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -193,7 +190,7 @@ A struktúra lehetővé teszi, hogy dinamikus partíciókat hozzon létre, amiko
 
 1. Ahhoz, hogy a struktúra dinamikus partíciókat végezzen, a `hive.exec.dynamic.partition` paraméter értékének igaznak kell lennie (az alapértelmezett beállítás).
 
-1. Módosítsa a dinamikus partíciós módot a *szigorú*értékre. Szigorú módban legalább egy partíciónak statikusnak kell lennie. Ezzel a beállítással megakadályozható, hogy a WHERE záradékban a partíciós szűrő nélküli lekérdezések, azaz az összes partíciót ellenőrző lekérdezések *szigorú* megakadályozása. Navigáljon a kaptár- **konfigurációk** lapra, és állítsa a `hive.exec.dynamic.partition.mode` **szigorú**értékre. Az alapértelmezett érték nem **szigorú**.
+1. Módosítsa a dinamikus partíciós módot a *szigorú* értékre. Szigorú módban legalább egy partíciónak statikusnak kell lennie. Ezzel a beállítással megakadályozható, hogy a WHERE záradékban a partíciós szűrő nélküli lekérdezések, azaz az összes partíciót ellenőrző lekérdezések *szigorú* megakadályozása. Navigáljon a kaptár- **konfigurációk** lapra, és állítsa a `hive.exec.dynamic.partition.mode` **szigorú** értékre. Az alapértelmezett érték nem **szigorú**.
 
 1. A létrehozandó dinamikus partíciók számának korlátozásához módosítsa a `hive.exec.max.dynamic.partitions` paramétert. Az alapértelmezett érték a 5000.
 
@@ -241,7 +238,7 @@ További javaslatok a kaptár-végrehajtó motor optimalizálásához:
 | `tez.am.container.idle.release-timeout-min.millis` | 20000 + | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000 + | 20000 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETtel](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

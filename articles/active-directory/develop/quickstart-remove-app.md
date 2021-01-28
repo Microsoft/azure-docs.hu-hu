@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 12074b6dc5d27c0d28ceea5ab6d266d1f02ecbe2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754541"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938179"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>A Microsoft Identity platformmal regisztrált alkalmazások eltávolítása
 
@@ -37,7 +37,7 @@ A következő fejezetekben megismerheti a következőket:
 
 A saját maga vagy a szervezete által regisztrált alkalmazásokat egy alkalmazás- és egy szolgáltatásnév-objektum is jelöli a bérlőn. További információkért tekintse meg [az alkalmazás- és szolgáltatásnév-objektumokat](./app-objects-and-service-principals.md) ismertető cikket.
 
-Az alkalmazás törléséhez az alkalmazás tulajdonosaként kell szerepelnie, vagy rendszergazdai jogosultságokkal kell rendelkeznie.
+Egy alkalmazás törléséhez az alkalmazás tulajdonosaként vagy rendszergazdai jogosultságokkal kell szerepelnie.
 
 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
@@ -51,6 +51,6 @@ Ha az **alkalmazásregisztrációkat** egy bérlő kontextusában tekinti meg, a
 
 Egy alkalmazás az Ön könyvtárához való hozzáférésének eltávolításához (a hozzájárulás megadása után) a vállalati rendszergazdának el kell távolítania az alkalmazás szolgáltatásnevét. A rendszergazdának globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure Portalon keresztül távolíthatja el az alkalmazást, vagy az [Azure AD PowerShell-parancsmagok](/previous-versions/azure/jj151815(v=azure.100)) használatával törölheti a hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [alkalmazások és szolgáltatások egyszerű objektumairól](app-objects-and-service-principals.md) a Microsoft Identity platformon.

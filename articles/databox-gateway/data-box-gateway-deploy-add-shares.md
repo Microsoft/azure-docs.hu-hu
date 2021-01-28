@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: aaa75988e1177590a0ff6f4ca2e00f92de68789f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583464"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937199"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: adatok átvitele Azure Data Box Gateway
 
@@ -57,7 +57,7 @@ A megosztás létrehozásához hajtsa végre a következő eljárást:
 
     3. Adjon meg egy tárfiókot, ahol a megosztás tárolva lesz. A rendszer létrehoz egy tárolót a tárfiókban az újonnan létrehozott megosztás nevével, ha még nem létezik ilyen. Ha létezik, akkor a rendszer a meglévő tárolót használja.
        > [!IMPORTANT]
-       > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Győződjön meg arról, hogy a használt Azure Storage-fiók nem rendelkezik módosíthatatlansági-házirendekkel, ha Data Box Gateway eszközzel használja. További információ: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
     4. Válassza ki a **tárolási szolgáltatást** a blokkblobok, lapblobok vagy fájlok közül. A kiválasztott szolgáltatástípustól függ, hogy az Azure milyen formátumban tárolja az adatokat. Ebben az esetben például azt szeretnénk, hogy az adatok blokkblobokban legyenek tárolva az Azure-ban, ezért a Blokkblob lehetőséget választjuk. Ha a Lapblob lehetőséget választja, biztosítania kell az adatok 512 bájtos igazítását. A VHDX például mindig 512 bájtos igazítású.
    
@@ -139,7 +139,7 @@ Az eszközhöz csatlakoztatott Linux-ügyfélen hajtsa végre a következő elj�
 > - A fájlok megosztásból való törlése nem törli a bejegyzéseket a tárfiókból.
 > - Ha az `rsync` Adatmásolást használja, akkor `rsync -a` a beállítás nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

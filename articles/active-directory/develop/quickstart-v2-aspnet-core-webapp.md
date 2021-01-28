@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05e14b5bdc2f603ffe802b12ed33b7b57be25b69
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754505"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938207"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
@@ -56,13 +56,13 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Válassza a **Regisztráció** lehetőséget.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 > 1. Az **átirányítási URI**-k területen válassza az **URI hozzáadása** lehetőséget, majd írja be a értéket `https://localhost:44321/signin-oidc` .
-> 1. Adja meg a **kijelentkezési URL-címét** `https://localhost:44321/signout-oidc` .
+> 1. Adja meg az **előtérben kijelentkezési URL-címet** `https://localhost:44321/signout-oidc` .
 > 1. Az **Implicit engedély** területen válassza az **Azonosítói jogkivonatok** elemet.
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia a válasz URL-címeket a és a értékkel, `https://localhost:44321/` `https://localhost:44321/signin-oidc` hozzá kell adnia a kijelentkezési URL-címet, valamint az `https://localhost:44321/signout-oidc` engedélyezési végpont által kiállított azonosító jogkivonatokat.
+> Ennek a rövid útmutatónak a mintájában a és a () egy **átirányítási URI-ja** és `https://localhost:44321/` `https://localhost:44321/signin-oidc` egy **előtérben kijelentkezési URL-cím** szükséges `https://localhost:44321/signout-oidc` . Az engedélyezési végpont kiállítja a kérelmek AZONOSÍTÓjának jogkivonatait.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -150,7 +150,7 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 A sort tartalmazó vonal `.AddMicrosoftIdentityWebApp` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezután be van állítva a Microsoft Identity platform használatával történő bejelentkezésre a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |
@@ -180,7 +180,7 @@ A vezérlő vagy vezérlő metódusait az attribútum használatával lehet véd
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ASP.NET Core oktatóanyagot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek az alábbiakat mutatják be:
 

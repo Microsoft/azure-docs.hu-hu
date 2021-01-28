@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753003"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937851"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
 
@@ -222,19 +222,19 @@ További információért lásd a [kijelentkezési kérelem küldése](v2-protoc
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Az alkalmazás regisztrálása során regisztrálnia kell a kijelentkezés utáni URI-t. Az oktatóanyagban a `https://localhost:44321/signout-oidc` **hitelesítés** lapon, a **Speciális beállítások** szakasz **kijelentkezési URL-címe** mezőjében regisztrált. Részletekért lásd: [ a webApp alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
+Az alkalmazás regisztrálása során regisztrálnia kell egy előtérben kijelentkezési URL-címet. Az oktatóanyagban a `https://localhost:44321/signout-oidc` **hitelesítés** oldalon a **kijelentkezési URL-cím** mezőben regisztrálta a regisztrációt. Részletekért lásd: [a webApp alkalmazás regisztrálása](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Az alkalmazás regisztrálása során regisztrálnia kell a kijelentkezés utáni URI-t. Az oktatóanyagban a `https://localhost:44308/Account/EndSession` **hitelesítés** lapon, a **Speciális beállítások** szakasz **kijelentkezési URL-címe** mezőjében regisztrált. Részletekért lásd: [a webApp alkalmazás regisztrálása](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
+Az alkalmazás regisztrálása során nem kell regisztrálnia egy extra előtérben kijelentkezési URL-címet. A rendszer visszahívja az alkalmazást a fő URL-címére. 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az alkalmazás regisztrálása során regisztrálnia kell a kijelentkezés utáni URI-t. Az oktatóanyagban a `http://localhost:8080/msal4jsample/sign_out` **hitelesítés** lapon, a **Speciális beállítások** szakasz **kijelentkezési URL-címe** mezőjében regisztrált.
+Az alkalmazás regisztrálásához nem szükséges előtérben kijelentkezési URL-cím.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alkalmazás regisztrálása során nem kell regisztrálnia egy további kijelentkezési URL-címet. A rendszer visszahívja az alkalmazást a fő URL-címére.
+Az alkalmazás regisztrálása során nem kell regisztrálnia egy extra előtérben kijelentkezési URL-címet. A rendszer visszahívja az alkalmazást a fő URL-címére.
 
 ---
 
@@ -336,7 +336,7 @@ A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalma
 - Meghívások `Signout()` , amelyek lehetővé teszi, hogy az OpenID Connect middleware kapcsolatba lépjen a Microsoft Identity platform- `logout` végponttal. A végpont ekkor:
 
   - Törli a munkamenet-cookie-t a böngészőből.
-  - A kijelentkezési URL-címet hívja vissza. Alapértelmezés szerint a kijelentkezési URL-cím megjeleníti a kijelentkezett nézet [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs). Ez az oldal a MIcrosoft. Identity. Web részeként is elérhető.
+  - A kijelentkezés utáni átirányítási URI-t hívja vissza. Alapértelmezés szerint a kijelentkezés utáni átirányítási URI a kijelentkezett nézet [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)jeleníti meg. Ez az oldal a Microsoft. Identity. Web részeként is elérhető.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -431,6 +431,6 @@ A Python rövid útmutatójában a kijelentkezés utáni átirányítási URI cs
 
 Ha többet szeretne megtudni a kijelentkezésről, olvassa el az [Open ID csatlakozással](./v2-protocols-oidc.md)elérhető protokoll dokumentációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-web-app-sign-user-production.md).

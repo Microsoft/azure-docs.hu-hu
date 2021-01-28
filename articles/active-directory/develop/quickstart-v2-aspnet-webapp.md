@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 122262ff6d49174b19773800f2db8c7d29506bb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754416"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938153"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
@@ -59,7 +59,8 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
-> Ahhoz, hogy a rövid útmutatóhoz tartozó kódminta működjön, hozzá kell adnia egy válasz URL-t a következő formában: `https://localhost:44368/`.
+> Ennek a rövid útmutatónak a mintakód egy **átirányítási URI** -t igényel `https://localhost:44368/` .
+
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -165,7 +166,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
@@ -206,7 +207,7 @@ A vezérlők vagy a vezérlők műveletei az `[Authorize]` attribútummal védhe
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

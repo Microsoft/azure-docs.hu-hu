@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a577b50a561cb5b829e453c523e0bd18a70e1a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dcfaef2f518028762958477a5b0d326acc237d1f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741677"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938429"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>A kombinált biztonsági információk regisztrációjának engedélyezése a Azure Active Directoryban
 
 A kombinált regisztráció előtt a felhasználók az Azure AD-Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerekkel használták az Azure AD Multi-Factor Authentication és a SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A közös regisztráció révén a felhasználók egyszer regisztrálhatnak, és igénybe vehetik az Azure AD Multi-Factor Authentication és a SSPR előnyeit.
 
 > [!NOTE]
-> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz. December 2020 14-én kezdődően az egyetlen felhasználóval rendelkező Azure AD-bérlők automatikusan engedélyezve lesznek a kombinált regisztrációhoz.
+> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz. 
 
 Annak érdekében, hogy az új felület engedélyezése előtt megértse a funkcionalitást és a hatásokat, tekintse meg a [kombinált biztonsági információk regisztrációjának fogalmait](concept-registration-mfa-sspr-combined.md).
 
@@ -86,7 +86,7 @@ A következő lépések végrehajtásával hozzon létre egy szabályzatot, amel
 1. Állítsa a **Házirend engedélyezése** kapcsolót **Be** állásba.
 1. A szabályzat véglegesítéséhez válassza a **Létrehozás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha segítségre van szüksége, olvassa el a [kombinált biztonsági információk regisztrációjának hibaelhárítása](howto-registration-mfa-sspr-combined-troubleshoot.md) vagy [a mi az Azure ad feltételes hozzáférés a hely feltételének](../conditional-access/location-condition.md) ismertetése című témakört.
 

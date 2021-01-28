@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682462"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937293"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Útmutató: az arc szolgáltatás használatakor felhasználható késés csökkentése
 
@@ -34,7 +34,7 @@ Ez a témakör az Azure-Cognitive Services használatának késésének lehetsé
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Lassú kapcsolat a kognitív szolgáltatás és egy távoli URL-cím között
 
-Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek az Ön által megadott távoli URL-címről szereznek be adatforrást. Például a Face szolgáltatás [DetectWithUrlAsync metódusának](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) meghívásakor megadhatja egy olyan rendszerkép URL-címét, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
+Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek az Ön által megadott távoli URL-címről szereznek be adatforrást. Például a Face szolgáltatás [DetectWithUrlAsync metódusának](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) meghívásakor megadhatja egy olyan rendszerkép URL-címét, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>Nagyméretű feltöltés mérete
 
-Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek egy feltöltött fájlból szereznek be adatforrást. Ha például a Face szolgáltatás [DetectWithStreamAsync metódusát](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) hívja meg, feltöltheti azt a rendszerképet, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
+Egyes Azure-Cognitive Services olyan metódusokat biztosítanak, amelyek egy feltöltött fájlból szereznek be adatforrást. Ha például a Face szolgáltatás [DetectWithStreamAsync metódusát](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_) hívja meg, feltöltheti azt a rendszerképet, amelyben a szolgáltatás megpróbálja felderíteni az arcokat.
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -97,4 +97,4 @@ Ebben az útmutatóban megtanulta, hogyan csökkentheti a késést a Face szolg�
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
 - [Dokumentáció (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Hivatkozási dokumentáció (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [Hivatkozási dokumentáció (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754490"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938238"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Gyors útmutató: ASP.NET Core webalkalmazás, amely a felhasználók nevében jelentkezik be, és Microsoft Graph
 
@@ -55,7 +55,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Adja meg a **átirányítási URI-ját** `https://localhost:44321/signin-oidc` .
 > 1. Válassza a **Regisztráció** lehetőséget.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
-> 1. Adja meg a **kijelentkezési URL-címét** `https://localhost:44321/signout-oidc` .
+> 1. Adja meg az **előtérben kijelentkezési URL-címet** `https://localhost:44321/signout-oidc` .
 > 1. Kattintson a **Mentés** gombra.
 > 1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.
 > 1. Adjon meg egy **leírást**, például: `clientsecret1` .
@@ -64,7 +64,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia a válasz URL-címeket a következőként `https://localhost:44321/signin-oidc` , a kijelentkezési URL-címet pedig adja hozzá: `https://localhost:44321/signout-oidc` .
+> Ennek a rövid útmutatónak a mintája az alkalmazás regisztrálásához szükséges **átirányítási URI** `https://localhost:44321/signin-oidc` **-t és előcsatornán belüli kijelentkezési URL-címet** igényli `https://localhost:44321/signout-oidc` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -168,7 +168,7 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 A sort tartalmazó vonal `.AddMicrosoftIdentityWebApp` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt a [Microsoft. Identity. Web](microsoft-identity-web.md)biztosíthatja. Ezután be van állítva a Microsoft Identity platform használatával történő bejelentkezésre a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |
@@ -211,7 +211,7 @@ public async Task<IActionResult> Index()
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a rövid útmutatóban hivatkozott ASP.NET Core kódot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek a következőket mutatják be:
 

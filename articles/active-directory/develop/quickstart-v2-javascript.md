@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 131cb325e3581a135be7a88f26c59637d35bc5f3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754155"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937957"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -61,7 +61,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a kód mintája ebben a rövid útmutatóban működjön, hozzá kell adnia a `redirectUri` as `http://localhost:3000/` és az **implicit** engedélyezést.
+> Ennek a rövid útmutatónak a mintakód egy **átirányítási URI** -t igényel `http://localhost:3000/` , és lehetővé teszi az **implicit engedélyezést**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
 >
@@ -202,7 +202,7 @@ A gyors üzembe helyezési kód azt is bemutatja, hogyan inicializálható a MSA
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > |`clientId`     | A Azure Portalban regisztrált alkalmazás alkalmazás-azonosítója.|
 > |`authority`    | Választható A fiók típusát támogató szolgáltatói URL-cím, a konfiguráció szakaszban korábban leírtak szerint. Az alapértelmezett szolgáltató: `https://login.microsoftonline.com/common` . |
@@ -230,7 +230,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `scopes`   | Választható Olyan hatóköröket tartalmaz, amelyeket a rendszer a bejelentkezési időben a felhasználói beleküldéshez kér. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ). |
 
@@ -260,7 +260,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `scopes`   | Az API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz. Például `[ "mail.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ).|
 
@@ -293,7 +293,7 @@ myMSALObj.acquireTokenPopup(requestObj)
 > [!NOTE]
 > Ez a rövid útmutató a `loginRedirect` és a `acquireTokenRedirect` metódusokat használja a Microsoft Internet Explorerrel, mert az Internet Explorer felugró ablakok kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutatóhoz tartozó alkalmazás létrehozásával kapcsolatos részletes útmutatót a következő témakörben talál:
 

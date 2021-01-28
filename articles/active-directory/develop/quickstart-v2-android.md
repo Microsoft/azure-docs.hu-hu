@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 42a054f211d2509dee4e9e55eeb3ea82fa46da9d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6d05c4ba6af860616e5afdfba2378ad9b17fcc77
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754584"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938255"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -35,7 +35,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
->  Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI-t, amely kompatibilis a hitelesítési közvetítővel.
+>  Ennek a rövid útmutatónak a mintakód egy átirányítási URI-t igényel, amely kompatibilis a hitelesítési közvetítővel.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
 >
@@ -478,7 +478,7 @@ A konfigurációs fájl [auth_config_single_account.jstól](#auth_config_single_
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be az Android-oktatóanyagba, amelyben létrehoz egy olyan Android-alkalmazást, amely a Microsoft Identity platform hozzáférési jogkivonatát kapja, és a használatával hívja meg a Microsoft Graph API-t.
 

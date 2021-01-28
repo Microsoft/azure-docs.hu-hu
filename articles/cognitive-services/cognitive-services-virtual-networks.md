@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: aahi
-ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97034020"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940051"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatainak konfigurálása
 
@@ -341,9 +341,6 @@ Adja meg az engedélyezett internetes címtartományt az űrlapon [CIDR-jelölé
 
 Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok olyan címeket tartalmaznak, amelyek a, a és a rendszertől kezdődnek `10.*` `172.16.*`  -  `172.31.*` `192.168.*` .
 
-   > [!NOTE]
-   > Az IP-hálózati szabályok nem befolyásolják a Cognitive Services erőforrással azonos Azure-régióból származó kérelmeket. A [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) használatával engedélyezze az azonos régiókra vonatkozó kérelmeket.
-
 Jelenleg csak IPV4-címek támogatottak. Minden Cognitive Services erőforrás akár 100 IP hálózati szabályt is támogat, amelyek a [virtuális hálózati szabályokkal](#grant-access-from-a-virtual-network)kombinálhatók.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>A helyszíni hálózatokhoz való hozzáférés konfigurálása
@@ -542,7 +539,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](./what-are-cognitive-services.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

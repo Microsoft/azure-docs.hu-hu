@@ -1,19 +1,16 @@
 ---
 title: A HDInsight Azure Data Lake Storage Gen1 áttekintése
 description: A HDInsight Data Lake Storage Gen1 áttekintése.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b598494500124ca4a70e8e2d7bfef023fbf7d498
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4ac1a48733d104e7674acbc13bfbb1e7a4cf02b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938876"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>A HDInsight Azure Data Lake Storage Gen1 áttekintése
 
@@ -81,7 +78,7 @@ A következő URI használatával férhet hozzá az adataihoz Data Lake Storage 
 
 A Data Lake Storage Gen1 lévő adatok elérésével kapcsolatos további információkért lásd: [a tárolt adatokon elérhető műveletek](../data-lake-store/data-lake-store-get-started-portal.md#properties).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Storage Gen2 bemutatása](../storage/blobs/data-lake-storage-introduction.md)
 * [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)

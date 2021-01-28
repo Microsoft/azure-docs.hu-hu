@@ -1,18 +1,15 @@
 ---
 title: Apache Spark teljesítmény – Azure HDInsight IO cache (előzetes verzió)
 description: Ismerje meg az Azure HDInsight IO cache-t, és hogyan használhatja a Apache Spark teljesítményének javítására.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081757"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940137"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával
 
@@ -38,7 +35,7 @@ Az Azure HDInsight IO gyorsítótára alapértelmezés szerint inaktiválva van 
 
 1. Válassza ki a bal oldali **i/o-gyorsítótár** szolgáltatást.
 
-1. Válassza a **műveletek** (**szolgáltatási műveletek** a HDI 3,6-ben) és az **aktiválás**lehetőséget.
+1. Válassza a **műveletek** (**szolgáltatási műveletek** a HDI 3,6-ben) és az **aktiválás** lehetőséget.
 
     ![Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben")
 
@@ -59,7 +56,7 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Görgessen le, és bontsa ki az **Egyéni Core-site** terület elemet.
 
-1. Keresse meg a **Hadoop. cache. adat. fullion. százalék**tulajdonságot.
+1. Keresse meg a **Hadoop. cache. adat. fullion. százalék** tulajdonságot.
 
 1. Módosítsa az értéket a mezőben.
 
@@ -67,14 +64,14 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Kattintson a jobb felső sarokban található **Mentés** gombra.
 
-1. Válassza az **Újraindítási**  >  **újraindítás minden érintett**elemet.
+1. Válassza az **Újraindítási**  >  **újraindítás minden érintett** elemet.
 
     ![Az Apache Ambari újraindítja az összes érintett](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
 
-1. Válassza **az összes újraindításának megerősítése**lehetőséget.
+1. Válassza **az összes újraindításának megerősítése** lehetőséget.
 
 Ha ez nem működik, tiltsa le az IO cache-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az IO cache-ről, beleértve a teljesítménnyel kapcsolatos teljesítményteszteket ebben a blogbejegyzésben: [Apache Spark a feladatok akár 9x sebességre is felgyorsítják a HDINSIGHT IO cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/) -t

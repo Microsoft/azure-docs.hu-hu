@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f9c9cb3b1891383d4c1f0d579cf5990eee9f7826
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 98110723063ee2a2c9deb75fc931655e18e5bc95
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754175"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938061"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
@@ -63,7 +63,7 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a kód mintája ebben a rövid útmutatóban működjön, hozzá kell adnia a `redirectUri` as-t `http://localhost:3000/` .
+> Ennek a rövid útmutatónak a mintakód egy **átirányítási URI** -t igényel `http://localhost:3000/` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
 >
@@ -195,7 +195,7 @@ Ha Node.js van telepítve, a legújabb verziót a Node.js Package Manager (NPM) 
 npm install @azure/msal-browser
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a rövid útmutatóban használt alkalmazás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a következő oktatóanyagot:
 

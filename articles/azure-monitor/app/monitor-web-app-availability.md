@@ -4,12 +4,12 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198662"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937412"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -23,12 +23,12 @@ A rendelkezésre állási tesztek három típusa létezik:
 
 * [URL-ping teszt](#create-a-url-ping-test): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
 * [Többlépéses webes teszt](availability-multistep.md): a webes kérések sorozatának rögzítése, amely az összetettebb forgatókönyvek tesztelésére használható. A többlépéses webes tesztek a Visual Studio Enterprise-ban jönnek létre, és a portálra lesznek feltöltve a végrehajtáshoz.
-* [Egyéni nyomon követési rendelkezésre állási tesztek](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a `TrackAvailability()` metódus segítségével küldheti el az eredményeket Application Insights.
+* [Egyéni nyomon követési rendelkezésre állási tesztek](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a `TrackAvailability()` metódus segítségével küldheti el az eredményeket Application Insights.
 
 **Application Insights erőforráson akár 100 rendelkezésre állási tesztet is létrehozhat.**
 
 > [!IMPORTANT]
-> Az [URL ping teszt](#create-a-url-ping-test) és a [többlépéses webes teszt](availability-multistep.md) is a nyilvános internetes DNS-infrastruktúrára támaszkodik a tesztelt végpontok tartománynevének feloldásához. Ez azt jelenti, hogy ha saját DNS használ, meg kell győződnie arról, hogy a teszt minden tartománynevét a nyilvános tartománynév-kiszolgálók is feloldhatók, vagy ha ez nem lehetséges, az [Egyéni nyomkövetési rendelkezésre állási teszteket](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) is használhatja helyette.
+> Az [URL ping teszt](#create-a-url-ping-test) és a [többlépéses webes teszt](availability-multistep.md) is a nyilvános internetes DNS-infrastruktúrára támaszkodik a tesztelt végpontok tartománynevének feloldásához. Ez azt jelenti, hogy ha saját DNS használ, meg kell győződnie arról, hogy a teszt minden tartománynevét a nyilvános tartománynév-kiszolgálók is feloldhatók, vagy ha ez nem lehetséges, az [Egyéni nyomkövetési rendelkezésre állási teszteket](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) is használhatja helyette.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
@@ -95,7 +95,7 @@ A következő populációs címkék használhatók a Geo-Location attribútumhoz
 |----------------------------------------|-------------------|
 | Kelet-Ausztrália                         | EMEA-au-Syd-Edge  |
 | Dél-Brazília                           | LATAM-br-GRU-Edge |
-| USA középső régiója                             | US-FL-Mia-Edge    |
+| Az USA középső régiója                             | US-FL-Mia-Edge    |
 | Kelet-Ázsia                              | APAC-HK-hkn-azr   |
 | USA keleti régiója                                | USA-VA-Ash-azr     |
 | Dél-Franciaország (korábban Franciaország középső régiója) | EMEA – CH-ZRH – Edge  |

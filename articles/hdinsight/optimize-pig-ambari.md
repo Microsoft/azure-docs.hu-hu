@@ -1,18 +1,15 @@
 ---
 title: Az Apache Pig és az Apache Ambari optimalizálása az Azure HDInsight
 description: Az Apache Ambari webes FELÜLETének használatával konfigurálhatja és optimalizálhatja az Apache Pig-t.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: d6f20780ccd90d83631ce07411820fb8c9280c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084086"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939008"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Az Apache Pig és az Apache Ambari optimalizálása az Azure HDInsight
 
@@ -83,7 +80,7 @@ A leképezések számát a tulajdonság módosításával szabályozhatja `pig.m
 
 A rendszer a paraméter alapján számítja ki a szűkítők számát `pig.exec.reducers.bytes.per.reducer` . A paraméter a redukáló által feldolgozott bájtok számát adja meg, alapértelmezés szerint 1 GB. A szűkítők maximális számának korlátozásához állítsa a `pig.exec.reducers.max` tulajdonságot a 999 alapértelmezett értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETtel](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

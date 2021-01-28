@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064300"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937854"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Az Azure Portal regisztrációs mezői egyéni fejlesztésű alkalmazásokhoz
 
@@ -61,7 +61,7 @@ Miután kitöltötte a fenti mezőket, az alkalmazás regisztrálva lesz a Azure
 
 | Mező           | Leírás        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kijelentkezési URL-cím      | Ez az egyszeri kijelentkezés kijelentkezési URL-címe. Az Azure AD kijelentkezési kérelmet küld erre az URL-címre, ha a felhasználó bármely más regisztrált alkalmazás használatával törli a munkamenetét az Azure AD-vel.|
+| Előcsatornás kijelentkezési URL-cím      | Ez az egyszeri kijelentkezés kijelentkezési URL-címe. Az Azure AD kijelentkezési kérelmet küld erre az URL-címre, ha a felhasználó bármely más regisztrált alkalmazás használatával törli a munkamenetét az Azure AD-vel.|
 | Támogatott fióktípusok  | Ezzel a kapcsolóval adható meg, hogy az alkalmazást több bérlő is használhatja-e. Ez általában azt jelenti, hogy a külső szervezetek használhatják az alkalmazást úgy, hogy regisztrálják a bérlőben, és hozzáférést biztosítanak a szervezet adataihoz.|
 | Átirányítási URL-címek      | Az átirányítás vagy válasz, az URL-címek azok a végpontok, ahol az Azure AD visszaadja az alkalmazás által kért jogkivonatokat. Natív alkalmazások esetén a sikeres hitelesítés után a felhasználó elküldése történik. Az Azure AD ellenőrzi, hogy az alkalmazás által a OAuth 2,0 kérelemben megadott átirányítási URI megfelel-e a portálon regisztrált értékek egyikének.|
 

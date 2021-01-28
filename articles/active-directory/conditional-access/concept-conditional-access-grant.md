@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938388"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -121,7 +121,9 @@ A feltételes hozzáférési házirendben megkövetelheti, hogy az [Intune app P
 
 Ennek a támogatásnak a kihasználása érdekében a feltételes hozzáférés megköveteli, hogy az eszköz regisztrálva legyen Azure Active Directoryban, amelyhez közvetítő alkalmazást kell használni. Ez lehet az iOS-es Microsoft Authenticator vagy az androidos eszközökre készült Microsoft Intune vállalati portál. Ha egy közvetítő alkalmazás nincs telepítve az eszközön, amikor a felhasználó megkísérli a hitelesítést, a rendszer átirányítja a felhasználót az App Store-ba a Broker alkalmazás telepítéséhez.
 
-Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
+Az alkalmazásoknak az **INTUNE SDK** **-val kell rendelkezniük, és meg** kell felelniük bizonyos egyéb követelményeknek a beállítás támogatásához. Az Intune SDK-val alkalmazásokat végrehajtó fejlesztők további információkat találhatnak az SDK dokumentációjában a követelményekről.
+
+A következő ügyfélalkalmazások megerősítették a beállítás támogatását:
 
 - Microsoft-Cortana
 - Microsoft Edge

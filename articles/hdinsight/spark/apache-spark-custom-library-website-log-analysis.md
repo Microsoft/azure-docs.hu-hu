@@ -1,19 +1,16 @@
 ---
 title: Webhelyek naplóinak elemzése Python-tárakkal a Sparkban – Azure
 description: Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egyéni kódtár használatával a Spark on Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822369"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940309"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelyek naplóinak elemzése egyéni Python-kódtár használatával Apache Spark-fürttel a HDInsight-on
 
@@ -198,7 +195,7 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
 
 1. Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a jegyzetfüzetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a következő cikkekkel:
 

@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eea2e587a075d774a25f479ec61575a002b57f75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937819"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Érvényesítési eltérések támogatott fióktípus (signInAudience) alapján
 
@@ -24,9 +24,9 @@ Amikor a fejlesztők számára a Microsoft Identity platformmal regisztrál egy 
 
 A lehetőségek a következők:
 
-- *AzureADMyOrg*: csak a szervezeti könyvtárban lévő azon fiókok, amelyeken az alkalmazás regisztrálva van (egybérlős)
-- *AzureADMultipleOrgs*: bármely szervezeti címtár fiókjai (több-bérlős)
-- *AzureADandPersonalMicrosoftAccount*: fiókok bármely szervezeti címtárban (több-bérlős) és személyes Microsoft-fiókokban (például Skype, Xbox és Outlook.com)
+- **AzureADMyOrg**: csak a szervezeti könyvtárban lévő azon fiókok, amelyeken az alkalmazás regisztrálva van (egybérlős).
+- **AzureADMultipleOrgs**: bármely szervezeti könyvtárban (több-bérlős) lévő fiókok.
+- **AzureADandPersonalMicrosoftAccount**: fiókok bármely szervezeti címtárban (több-bérlős) és személyes Microsoft-fiókokban (például Skype, Xbox és Outlook.com).
 
 A regisztrált alkalmazások esetében a támogatott fióktípus értékét az alkalmazás **hitelesítés** szakaszában találja. `signInAudience`A **jegyzékfájlban** található tulajdonság alatt is megtalálhatja.
 
@@ -44,11 +44,11 @@ Tekintse meg a következő táblázatot a különböző támogatott fióktípus 
 | Az API által definiált hatókörök ( `oauth2Permissions` ) | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán | A hatókör nevének maximális hossza 120 karakter <br><br> Nincs korlát * a definiált hatókörök számán |  A hatókör nevének maximális hossza 40 karakter <br><br> Legfeljebb 100 hatókör definiálva | 
 | Felhatalmazott ügyfélalkalmazások ( `preAuthorizedApplications` ) | Nincs korlát * | Nincs korlát * | Maximális 500 összesen <br><br> Legfeljebb 100 ügyfél-alkalmazás definiálva <br><br> Ügyfél által definiált maximális 30 hatókör | 
 | appRoles | Támogatott <br> Nincs korlát * | Támogatott <br> Nincs korlát * | Nem támogatott | 
-| Kijelentkezési URL-cím | http://localhost engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | http://localhost engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | <br><br> https://localhost engedélyezett, http://localhost sikertelen a MSA <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> HTTP-séma használata nem engedélyezett <br><br> A helyettesítő karakterek használata nem támogatott | 
+| Előcsatornás kijelentkezési URL-cím | https://localhost engedélyezett <br><br> `http` a séma használata nem engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | https://localhost engedélyezett <br><br> `http` a séma használata nem engedélyezett <br><br> Legfeljebb 255 karakter hosszú lehet | <br><br> https://localhost engedélyezett, http://localhost sikertelen a MSA <br><br> Legfeljebb 255 karakter hosszú lehet <br><br> `http` a séma használata nem engedélyezett <br><br> A helyettesítő karakterek használata nem támogatott | 
 
-* Az alkalmazás-objektum összes gyűjteményi tulajdonságában a 1000-es elemek globális korlátja
+* Az alkalmazás-objektum összes gyűjteményi tulajdonságában a 1000-es elemek globális korlátja látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tudnivalók az [alkalmazások regisztrálásáról](app-objects-and-service-principals.md)
-- Az [alkalmazás jegyzékfájljának](reference-app-manifest.md) megismerése
+- További információ az [alkalmazások regisztrálásáról](app-objects-and-service-principals.md).
+- Az [alkalmazás jegyzékfájljának](reference-app-manifest.md)megismerése.

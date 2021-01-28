@@ -1,19 +1,16 @@
 ---
 title: Működővé tenni adatelemzési folyamat – Azure
 description: Állítson be és futtasson egy olyan adatfolyamatot, amelyet új adatfeldolgozás aktivál, és rövid eredményeket állít elő.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504418"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939529"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -39,7 +36,7 @@ Az alábbi ábrán a példa folyamat látható.
 
 Ez a folyamat egy HDInsight Hadoop-fürtön futó Apache Oozie-t használ.
 
-A Oozie a *műveletek*, *munkafolyamatok*és *koordinátorok*tekintetében ismerteti a folyamatokat. A műveletek határozzák meg a ténylegesen végrehajtandó munkát, például egy struktúra-lekérdezés futtatását. A munkafolyamatok határozzák meg a műveletek sorát. A koordinátorok határozzák meg a munkafolyamat futtatásának ütemtervét. A koordinátorok is várhatják az új adatmennyiséget, mielőtt elindítja a munkafolyamat egy példányát.
+A Oozie a *műveletek*, *munkafolyamatok* és *koordinátorok* tekintetében ismerteti a folyamatokat. A műveletek határozzák meg a ténylegesen végrehajtandó munkát, például egy struktúra-lekérdezés futtatását. A munkafolyamatok határozzák meg a műveletek sorát. A koordinátorok határozzák meg a munkafolyamat futtatásának ütemtervét. A koordinátorok is várhatják az új adatmennyiséget, mielőtt elindítja a munkafolyamat egy példányát.
 
 Az alábbi ábrán a példa Oozie folyamatának magas szintű kialakítása látható.
 
@@ -53,7 +50,7 @@ Ehhez a folyamathoz egy Azure SQL Database és egy HDInsight Hadoop-fürtnek kel
 
 1. Hozzon létre egy Azure SQL Database. Lásd: [Azure SQL Database létrehozása a Azure Portalban](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Annak biztosítása érdekében, hogy a HDInsight-fürt hozzáférhessen a csatlakoztatott Azure SQL Databasehoz, konfigurálja Azure SQL Database tűzfalszabályok, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek a kiszolgálóhoz. Ezt a beállítást a Azure Portalban engedélyezheti a **kiszolgáló tűzfalának beállítása**elem kiválasztásával, majd az **Azure-szolgáltatások és-erőforrások engedélyezésének engedélyezése** elemre **kattintva Azure SQL Databasehoz** is elérheti ezt a kiszolgálót. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)foglalkozó témakörben talál.
+1. Annak biztosítása érdekében, hogy a HDInsight-fürt hozzáférhessen a csatlakoztatott Azure SQL Databasehoz, konfigurálja Azure SQL Database tűzfalszabályok, hogy az Azure-szolgáltatások és-erőforrások hozzáférjenek a kiszolgálóhoz. Ezt a beállítást a Azure Portalban engedélyezheti a **kiszolgáló tűzfalának beállítása** elem kiválasztásával, majd az **Azure-szolgáltatások és-erőforrások engedélyezésének engedélyezése** elemre **kattintva Azure SQL Databasehoz** is elérheti ezt a kiszolgálót. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)foglalkozó témakörben talál.
 
 1. A [query Editor](../azure-sql/database/single-database-create-quickstart.md#query-the-database) használatával hajtsa végre a következő SQL-utasításokat a `dailyflights` folyamat minden egyes futtatása során az összesített adatokat tároló tábla létrehozásához.
 
@@ -78,7 +75,7 @@ A Azure SQL Database most már készen áll.
 
 ### <a name="provision-an-apache-hadoop-cluster"></a>Apache Hadoop-fürt kiépítése
 
-Hozzon létre egy Apache Hadoop fürtöt egyéni metaadattár. A fürt létrehozása során a portálon a **Storage (tárolás** ) lapon győződjön meg arról, hogy a SQL Database a **metaadattár beállítások**alatt van kiválasztva. A metaadattár kiválasztásával kapcsolatos további információkért lásd: [Egyéni Metaadattár kiválasztása a fürt létrehozása során](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation). További információ a fürtök létrehozásáról: Ismerkedés a [HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+Hozzon létre egy Apache Hadoop fürtöt egyéni metaadattár. A fürt létrehozása során a portálon a **Storage (tárolás** ) lapon győződjön meg arról, hogy a SQL Database a **metaadattár beállítások** alatt van kiválasztva. A metaadattár kiválasztásával kapcsolatos további információkért lásd: [Egyéni Metaadattár kiválasztása a fürt létrehozása során](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation). További információ a fürtök létrehozásáról: Ismerkedés a [HDInsight Linux rendszeren](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="verify-ssh-tunneling-set-up"></a>Az SSH-alagút beállításának ellenőrzése
 
@@ -132,7 +129,7 @@ A mintaadatok mostantól elérhetők. A folyamat azonban két kaptár-táblázat
 
 1. Jelentkezzen be a Ambari. ehhez lépjen a következőre: `http://headnodehost:8080` .
 
-2. A szolgáltatások listájából válassza a **struktúra**elemet.
+2. A szolgáltatások listájából válassza a **struktúra** elemet.
 
     ![Az Apache Ambari Services-lista struktúra kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
@@ -234,7 +231,7 @@ Ezután frissítse az adott környezet értékeit. A szöveg alatti tábla össz
     | --- | --- |
     | nameNode | A HDInsight-fürthöz csatolt Azure Storage-tároló teljes elérési útja. |
     | jobTracker | A belső állomásnév az aktív fürthöz tartozó szál főcsomópontja számára. A Ambari kezdőlapján válassza a szálak lehetőséget a szolgáltatások listájából, majd válassza az Active Resource Manager lehetőséget. Az állomásnév URI-ja megjelenik az oldal tetején. Fűzze hozzá a 8050-es portot. |
-    | queueName | A kaptár-műveletek ütemezésekor használt fonal-várólista neve. Hagyja meg az alapértelmezett értéket. |
+    | queueName | A kaptár-műveletek ütemezésekor használt fonal-várólista neve. Hagyja meg az alapértelmezett beállítást. |
     | oozie.use.system. Libpath | Igaz értékre kell lépnie. |
     | Alkalmazás gyökérkönyvtárán | Annak az Azure Storage-almappának az elérési útja, ahol a Oozie-munkafolyamatot és a támogató fájlokat telepíti. |
     | oozie. WF. Application. Path | A futtatandó Oozie munkafolyamat helye `workflow.xml` . |
@@ -416,11 +413,11 @@ A bash-munkamenet SZOLGÁLTATÁSKAPCSOLÓDÁSI pontjának használatával üzemb
     oozie job -config job.properties -run
     ```
 
-1. Figyelje meg az állapotot a Oozie webkonzol használatával. A Ambari-on belül válassza a **Oozie**, a **gyors hivatkozások**, majd a **Oozie webkonzol**lehetőséget. A **munkafolyamat-feladatok** lapon válassza a **minden feladat**lehetőséget.
+1. Figyelje meg az állapotot a Oozie webkonzol használatával. A Ambari-on belül válassza a **Oozie**, a **gyors hivatkozások**, majd a **Oozie webkonzol** lehetőséget. A **munkafolyamat-feladatok** lapon válassza a **minden feladat** lehetőséget.
 
     ![HDI oozie webkonzol-munkafolyamatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. Ha az állapot sikeres, a beszúrt sorok megjelenítéséhez kérdezze le a SQL Database táblát. A Azure Portal használatával navigáljon a SQL Database ablaktáblához, válassza az **eszközök**lehetőséget, majd nyissa meg a **lekérdezés-szerkesztőt**.
+1. Ha az állapot sikeres, a beszúrt sorok megjelenítéséhez kérdezze le a SQL Database táblát. A Azure Portal használatával navigáljon a SQL Database ablaktáblához, válassza az **eszközök** lehetőséget, majd nyissa meg a **lekérdezés-szerkesztőt**.
 
     ```sql
     SELECT * FROM dailyflights

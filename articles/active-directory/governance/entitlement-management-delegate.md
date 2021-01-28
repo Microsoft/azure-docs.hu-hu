@@ -3,7 +3,7 @@ title: Delegálás és szerepkörök a jogosultságok kezelésében – Azure AD
 description: Megtudhatja, hogyan delegálhatja a rendszergazdák és a projektmenedzserek hozzáférési irányítását, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746677"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937671"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -65,18 +65,18 @@ Az alábbi ábrán a marketing, a Pénzügy és a jogi részleg erőforrásaival
 
 A delegálás után a marketing részleg a következő táblázathoz hasonló szerepkörökkel rendelkezhet.
 
-| Felhasználó | Feladat szerepköre | Azure AD-szerepkör | Jogosultsági felügyeleti szerepkör |
+| User | Feladat szerepköre | Azure AD-szerepkör | Jogosultsági felügyeleti szerepkör |
 | --- | --- | --- | --- |
 | Hana | Rendszergazda | Globális rendszergazda vagy felhasználói rendszergazda |  |
-| Elemér | Marketing Manager | Felhasználó | Katalógus létrehozója és katalógusának tulajdonosa |
-| Bob | Marketing-érdeklődő | Felhasználó | Katalógus tulajdonosa |
-| Jessica | Marketing projektmenedzser | Felhasználó | A Package Manager elérése |
+| Elemér | Marketing Manager | User | Katalógus létrehozója és katalógusának tulajdonosa |
+| Bob | Marketing-érdeklődő | User | Katalógus tulajdonosa |
+| Jessica | Marketing projektmenedzser | User | A Package Manager elérése |
 
 ## <a name="entitlement-management-roles"></a>Jogosultsági felügyeleti szerepkörök
 
 A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a jogosultságok felügyeletére vonatkoznak.
 
-| Jogosultsági felügyeleti szerepkör | Leírás |
+| Jogosultsági felügyeleti szerepkör | Description |
 | --- | --- |
 | Katalógus létrehozója | Katalógusok létrehozása és kezelése. Általában az a rendszergazda, aki nem globális rendszergazda, vagy erőforrás-tulajdonos az erőforrások gyűjteménye számára. A katalógust létrehozó személy automatikusan a katalógus első katalógusának tulajdonosa lesz, és további katalógus-tulajdonosokat is hozzáadhat. A katalógus-létrehozó nem tudja kezelni vagy megtekinteni azokat a katalógusokat, amelyeket nem a saját, és nem adhatnak hozzá olyan erőforrásokat, amelyek nem a katalógusba tartoznak. Ha a katalógus létrehozójának egy másik katalógust kell kezelnie, vagy nem a saját erőforrásokat kell hozzáadnia, kérheti, hogy a katalógus vagy az erőforrás közös tulajdonosa legyen. |
 | Katalógus tulajdonosa | Meglévő katalógusok szerkesztése és kezelése. Általában rendszergazda vagy erőforrás-tulajdonos, vagy a katalógus tulajdonosának kijelölt felhasználója. |
@@ -85,7 +85,7 @@ A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a 
 
 Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is rendelkezik jogosultságokkal, bár ezek nem szerepkörök.
 
-| Jobb | Leírás |
+| Jobb | Description |
 | --- | --- |
 | Jóváhagyó | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
 | Requestor (Kérelmező) | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
@@ -118,28 +118,28 @@ A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosults�
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Erőforrások katalógusba való felvételéhez szükséges szerepkörök
 
-A globális rendszergazdák hozzáadhatnak vagy eltávolíthatnak bármely csoportot (felhőalapú biztonsági csoportokat vagy felhőalapú Microsoft 365-csoportokat), alkalmazást vagy SharePoint Online-webhelyet egy katalógusban. A felhasználó rendszergazdája hozzáadhat vagy eltávolíthat bármely csoportot vagy alkalmazást egy katalógusban, kivéve a címtárbeli szerepkörhöz hozzárendelhető csoportokat.
+A globális rendszergazdák hozzáadhatnak vagy eltávolíthatnak bármely csoportot (felhőalapú biztonsági csoportokat vagy felhőalapú Microsoft 365-csoportokat), alkalmazást vagy SharePoint Online-webhelyet egy katalógusban. A felhasználó rendszergazdája hozzáadhat vagy eltávolíthat bármely csoportot vagy alkalmazást egy katalógusban, kivéve a címtárbeli szerepkörhöz hozzárendelhető csoportokat. Vegye figyelembe, hogy a felhasználói rendszergazdák kezelhetik a címtárbeli szerepkörhöz hozzárendelhető csoportokat tartalmazó katalógus hozzáférési csomagjait.
 
 Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhasználói rendszergazda, csoportok, alkalmazások vagy SharePoint Online-helyek katalógusba való felvételéhez a *felhasználónak rendelkeznie kell a szükséges* Azure ad-címtárbeli szerepkörrel és a katalógus tulajdonosi jogosultsági kezelési szerepkörével. A következő táblázat felsorolja azokat a szerepkör-kombinációkat, amelyek szükségesek az erőforrások katalógushoz való hozzáadásához. Az erőforrások katalógusból való eltávolításához ugyanazokat a szerepköröket kell megadnia.
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Hozzáadhat Microsoft 365 csoportot | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globális rendszergazda](../roles/permissions-reference.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Felhasználói rendszergazda](../roles/permissions-reference.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Globális rendszergazda](../roles/permissions-reference.md) | n.a. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Felhasználói rendszergazda](../roles/permissions-reference.md) | n.a. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
 | [Teams szolgáltatás rendszergazdája](../roles/permissions-reference.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
 | [SharePoint-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Alkalmazás-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | [Cloud Application Administrator](../roles/permissions-reference.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
-| Felhasználó | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
+| User | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
 
 > [!NOTE]
 > Ha a felhasználó egy biztonsági csoportot vagy Microsoft 365 csoportot ad hozzá, akkor a csoport nem lehet szerepkörhöz hozzárendelhető. Ha a felhasználó olyan csoportot ad hozzá, amely a hozzáférési csomag létrehozásakor szerepkörhöz rendelhető, akkor a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. További információ: [a szerepkörhöz hozzárendelhető csoport létrehozása Azure Active Directoryban](../roles/groups-create-eligible.md).
 
 Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../roles/delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési szabályozás delegálása a katalógus-létrehozók számára](entitlement-management-delegate-catalog.md)
 - [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)

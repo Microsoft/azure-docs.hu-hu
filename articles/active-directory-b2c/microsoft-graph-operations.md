@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805234"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938491"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
@@ -35,18 +35,29 @@ Ha az MS Graph APIt szeretné használni, és a Azure AD B2C-bérlő erőforrás
 - [Felhasználó frissítése](/graph/api/user-update)
 - [Felhasználó törlése](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>Felhasználói telefonszámok kezelése
+## <a name="user-phone-number-management-beta"></a>Felhasználói telefonszámok kezelése (bétaverzió)
+
+A felhasználó által az [SMS-és hanghívások](identity-provider-local.md#phone-sign-in-preview)vagy a [többtényezős hitelesítés](multi-factor-authentication.md)használatával történő bejelentkezéshez használható telefonszám. További információ: [Azure ad Authentication Methods API](/graph/api/resources/phoneauthenticationmethod).
 
 - [Hozzáadás](/graph/api/authentication-post-phonemethods)
-- [Lekérés](/graph/api/b2cauthenticationmethodspolicy-get)
-- [Frissítés](/graph/api/b2cauthenticationmethodspolicy-update)
+- [Lista](/graph/api/authentication-list-phonemethods)
+- [Lekérés](/graph/api/phoneauthenticationmethod-get)
+- [Frissítés](/graph/api/phoneauthenticationmethod-update)
 - [Törlés](/graph/api/phoneauthenticationmethod-delete)
 
-A felhasználó bejelentkezési telefonszámának kezelésével kapcsolatos további információkért lásd: [B2C hitelesítési módszerek](/graph/api/resources/b2cauthenticationmethodspolicy).
+## <a name="self-service-password-reset-email-address-beta"></a>Önkiszolgáló jelszó-visszaállítási e-mail-cím (bétaverzió)
 
-## <a name="identity-providers-user-flow"></a>Identitás-szolgáltatók (felhasználói folyamat)
+E-mail-cím, amelyet a felhasználó a [Felhasználónév bejelentkezési fiók](identity-provider-local.md#username-sign-in)jelszavának megpihenésére használhat. További információ: [Azure ad Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
 
-Kezelheti az Azure AD B2C bérlője felhasználói folyamatai számára elérhető identitás-szolgáltatókat.
+- [Hozzáadás](/graph/api/emailauthenticationmethod-post)
+- [Lista](/graph/api/emailauthenticationmethod-list)
+- [Lekérés](/graph/api/emailauthenticationmethod-get)
+- [Frissítés](/graph/api/emailauthenticationmethod-update)
+- [Törlés](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>Identitásszolgáltatók
+
+Kezelheti az Azure AD B2C bérlője felhasználói folyamatai számára elérhető [identitás-szolgáltatókat](add-identity-provider.md) .
 
 - [Az Azure AD B2C bérlőben regisztrált identitás-szolgáltatók listázása](/graph/api/identityprovider-list)
 - [Identitás-szolgáltató létrehozása](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +73,13 @@ A regisztrációhoz, a bejelentkezéshez, a kombinált regisztrációhoz, a beje
 - [Felhasználói folyamat létrehozása](/graph/api/identitycontainer-post-b2cuserflows)
 - [Felhasználói folyamat beszerzése](/graph/api/b2cidentityuserflow-get)
 - [Felhasználói folyamat törlése](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a>Felhasználói folyamat hitelesítési módszerei (bétaverzió)
+
+Válassza ki azt a mechanizmust, amellyel a felhasználók helyi fiókokon keresztül regisztrálhatnak. A helyi fiókok azok a fiókok, amelyekben az Azure AD az identitást. További információ: [b2cAuthenticationMethodsPolicy erőforrástípus](/graph/api/resources/b2cauthenticationmethodspolicy).
+
+- [Lekérés](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Frissítés](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>Egyéni szabályzatok
 

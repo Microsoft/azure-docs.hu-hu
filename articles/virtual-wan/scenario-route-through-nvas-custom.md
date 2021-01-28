@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e51d7d00120f6facb0fb53a8e379d157ae79ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938575"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Forgatókönyv: forgalom továbbítása NVA keresztül egyéni beállítások használatával
 
@@ -32,7 +32,7 @@ A következő táblázat összefoglalja az ebben a forgatókönyvben támogatott
 | Forrás          | Művelet|Küllők|Szolgáltatás VNet|Ágak|Internet|
 |---|---|:---:|:---:|:---:|:---:|:---:|
 | **Küllők**| ->| közvetlenül |közvetlenül | a Service VNet |Peremhálózati VNet |
-| **Szolgáltatás VNet**| ->| közvetlenül |n/a| közvetlenül | |
+| **Szolgáltatás VNet**| ->| közvetlenül |n.a.| közvetlenül | |
 | **Ágak** | ->| a Service VNet |közvetlenül| közvetlenül |  |
 
 A kapcsolati mátrix minden cellája azt írja le, hogy a kapcsolat közvetlenül a virtuális WAN-on vagy egy NVA rendelkező virtuális hálózatokon keresztül áramlik-e. 
@@ -58,16 +58,19 @@ Három különböző csatlakozási minta van, amelyek három útválasztási tá
   * Társított útválasztási táblázat: **alapértelmezett**
   * Propagálás az útválasztási táblákba: **RT_SHARED** és **alapértelmezett**
 
+> [!NOTE] 
+> Győződjön meg arról, hogy a küllős virtuális hálózatok nem propagálják az alapértelmezett címkét. Ez biztosítja, hogy az ágaktól a küllő virtuális hálózatok érkező forgalom továbbítva legyen a NVA.
+
 Ezek a statikus útvonalak biztosítják, hogy a virtuális hálózat és az ág felé irányuló forgalom a szolgáltatás VNet (VNet 4) keresztül haladjon a NVA:
 
-| Leírás | Útválasztási táblázat | Statikus útvonal              |
+| Description | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | Ágak    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
 | NVA küllők  | Alapértelmezett     | 10.1.0.0/16 – > vnet4conn  |
 
 Most már használhatja a virtuális WAN-t, hogy kiválassza a megfelelő kapcsolódási lehetőséget a csomagok küldéséhez. A virtuális WAN-t is kell használnia, hogy kiválassza a csomagok fogadásakor végrehajtandó helyes műveletet. Ehhez a következő módon használhatja a kapcsolatok útválasztási táblázatait:
 
-| Leírás | Kapcsolat | Statikus útvonal            |
+| Description | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |
@@ -78,9 +81,9 @@ További információ: [a virtuális központ útválasztása](about-virtual-hub
 
 Itt látható a cikkben korábban ismertetett architektúra ábrája.
 
-Egy hub **1. hub**néven található.
+Egy hub **1. hub** néven található.
 
-* Az **1. hub** közvetlenül kapcsolódik a NVA virtuális hálózatok **VNet 4** és a **VNet 5**rendszerhez.
+* Az **1. hub** közvetlenül kapcsolódik a NVA virtuális hálózatok **VNet 4** és a **VNet 5** rendszerhez.
 
 * Az 1., 2. és 3. virtuális hálózatok közötti adatforgalmat, valamint az ágakat a **VNet 4 NVA** -10.4.0.5 keresztül kell eljárni.
 
@@ -94,11 +97,11 @@ Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket 
 
 1. Ahhoz, hogy az internetre kötött forgalom a VNet 5 használatával menjen végig, a virtuális hálózatok 1, 2 és 3 értékre van szüksége, hogy közvetlenül kapcsolódjon a virtuális hálózati kapcsolaton keresztül a VNet 5-öt. Szükség van egy felhasználó által definiált útvonalra is, amely a 0.0.0.0/0 és a következő ugrási 10.5.0.5 virtuális hálózatokban van beállítva. A virtuális WAN jelenleg nem engedélyezi a következő ugrási NVA a 0.0.0.0/0 virtuális központban.
 
-1. A Azure Portal lépjen a virtuális hubhoz, és hozzon létre egy **RT_Shared**nevű egyéni útválasztási táblázatot. Ez a táblázat az útvonalakat az összes virtuális hálózatról és ág-kapcsolatról történő propagálás útján tanulja meg. Ezt az üres táblázatot a következő ábrán láthatja.
+1. A Azure Portal lépjen a virtuális hubhoz, és hozzon létre egy **RT_Shared** nevű egyéni útválasztási táblázatot. Ez a táblázat az útvonalakat az összes virtuális hálózatról és ág-kapcsolatról történő propagálás útján tanulja meg. Ezt az üres táblázatot a következő ábrán láthatja.
 
    * **Útvonalak:** Nincs szükség statikus útvonalak hozzáadására.
 
-   * **Társítás:** Válassza a 4. és az 5. virtuális hálózatok, ami azt jelenti, hogy ezeknek a virtuális hálózatoknak a kapcsolatai az útválasztási táblázat **RT_Sharedhoz**vannak hozzárendelve.
+   * **Társítás:** Válassza a 4. és az 5. virtuális hálózatok, ami azt jelenti, hogy ezeknek a virtuális hálózatoknak a kapcsolatai az útválasztási táblázat **RT_Sharedhoz** vannak hozzárendelve.
 
    * **Propagálás:** Mivel azt szeretné, hogy az összes ág és virtuális hálózati kapcsolat dinamikusan terjessze az útvonalakat az útválasztási táblázatba, válassza az ágak és az összes virtuális hálózat lehetőséget.
 
@@ -120,7 +123,7 @@ Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket 
 
    * **Propagálás forrása:** Győződjön meg arról, hogy az ágak (VPN/ER/P2S) beállítás van kiválasztva, így biztosítva, hogy a helyszíni kapcsolatok propagálják az útvonalakat az alapértelmezett útválasztási táblázatba.
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="A hálózati architektúra ábrája." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Munkafolyamat diagramja" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Következő lépések
 

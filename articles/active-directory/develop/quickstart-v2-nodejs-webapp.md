@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178279"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937928"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -37,14 +37,14 @@ Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutat
 1. Adja meg az alkalmazás **nevét** , például: `MyWebApp` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 1. A **támogatott fióktípus** szakaszban válassza a fiókok lehetőséget a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)**.
 
-    Ha egynél több átirányítási URI van, ezeket az alkalmazás sikeres létrehozása után később hozzá kell adnia a **hitelesítés** lapon.
+    Ha egynél több átirányítási URI van, akkor az alkalmazás sikeres létrehozása után később adja hozzá ezeket a **hitelesítés** lapról.
 
 1. Az alkalmazás létrehozásához válassza a **regisztráció** lehetőséget.
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Erre az értékre szüksége lesz ahhoz, hogy az alkalmazást később konfigurálja a projektben.
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 1. Válassza **a platform**  >  **web** hozzáadása lehetőséget. 
 1. Az **átirányítási URI** -k szakaszban adja meg a értéket `http://localhost:3000/auth/openid/return` .
-1. Adja meg a **kijelentkezési URL-címet** `https://localhost:3000` .
+1. Adja meg az **előtérben kijelentkezési URL-címet** `https://localhost:3000` .
 1. Az implicit támogatás szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](./v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
 1. Válassza a **Konfigurálás** lehetőséget.
 1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.

@@ -3,7 +3,7 @@ title: Oktatóanyag – hozzáférési csomag létrehozása – Azure AD-jogosul
 description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631285"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937893"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -70,7 +70,7 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
     | Name | Címtárszerepkör |
     | --- | --- |
     | **Rendszergazda1** | Globális rendszergazda<br/>-vagy-<br/>Felhasználói rendszergazda |
-    | **Requestor1** | Felhasználó |
+    | **Requestor1** | User |
 
 1. Hozzon létre egy **marketing-erőforrások** nevű Azure ad biztonsági csoportot a **hozzárendelt** tagsági típussal.
 
@@ -119,7 +119,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
     ![Új hozzáférési csomag – erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >A hozzáférési csomaghoz hozzáadott szerepkör-hozzárendelhető csoportok a **szerepkörökhöz hozzárendelhető** altípussal lesznek jelezve. Az Azure AD-szerepkörökhöz hozzárendelhető csoportokkal kapcsolatos további részletekért tekintse meg a [szerepkörhöz hozzárendelhető csoport létrehozása](../roles/groups-create-eligible.md) a Azure Active Directoryban című témakört. Ha nem jelenik meg a felvenni kívánt szerepkörrel rendelkező csoport, vagy ha nem tudja felvenni, győződjön meg arról, hogy rendelkezik a szükséges Azure AD-szerepkörrel és jogosultság-kezelési szerepkörrel a művelet végrehajtásához. Előfordulhat, hogy meg kell kérnie valakit, aki a szükséges szerepkörökkel hozzáadja az erőforrást a katalógushoz. További információ: a [szükséges szerepkörök az erőforrások katalógushoz való hozzáadásához](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >A hozzáférési csomaghoz hozzáadott szerepkör-hozzárendelhető csoportok a **szerepkörökhöz hozzárendelhető** altípussal lesznek jelezve. Az Azure AD-szerepkörökhöz hozzárendelhető csoportokkal kapcsolatos további részletekért tekintse meg a [szerepkörhöz hozzárendelhető csoport létrehozása](../roles/groups-create-eligible.md) a Azure Active Directoryban című témakört. Ne feledje, hogy ha egy szerepkör-hozzárendelésre jogosult csoport megtalálható egy hozzáférési csomag katalógusában, a jogosultságok kezelésében felügyeletre jogosult rendszergazda felhasználók, beleértve a globális rendszergazdákat, a felhasználói rendszergazdákat és a katalógus tulajdonosait, a katalógusban is vezérelhetik a hozzáférési csomagokat, így kiválaszthatják, hogy kik adhatók hozzá ezekhez a csoportokhoz. Ha nem jelenik meg a felvenni kívánt szerepkörrel rendelkező csoport, vagy ha nem tudja felvenni, győződjön meg arról, hogy rendelkezik a szükséges Azure AD-szerepkörrel és jogosultság-kezelési szerepkörrel a művelet végrehajtásához. Előfordulhat, hogy meg kell kérnie valakit, aki a szükséges szerepkörökkel hozzáadja az erőforrást a katalógushoz. További információ: a [szükséges szerepkörök az erőforrások katalógushoz való hozzáadásához](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > [Dinamikus csoportok](../enterprise-users/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök is nem érhetők el. Ez az elvárt működés.
@@ -141,7 +141,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
     ![Új hozzáférési csomag – kérelmek lap – felhasználók és csoportok kiválasztása](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-16. Válassza a **Kiválasztás** lehetőséget.
+16. Kattintson a **Kiválasztás** elemre.
 
 17. Görgessen le a **jóváhagyás** és a **kérelmek engedélyezése** szakaszban.
 

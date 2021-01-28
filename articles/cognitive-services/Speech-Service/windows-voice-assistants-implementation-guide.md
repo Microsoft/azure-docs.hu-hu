@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024772"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939862"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Hangsegédek implementálása Windows rendszeren
 
@@ -30,7 +30,7 @@ Ez az útmutató végigvezeti a Windowson futó hangsegédek létrehozásának f
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Győződjön meg arról, hogy a mikrofon elérhető és elérhető, majd figyelje az állapotát
 
-A MVA szüksége van egy mikrofonra, és elérhetővé válik, hogy képes legyen a hangalapú aktiválás észlelésére. A [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), a [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)és a [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) osztály használatával megkeresheti a mikrofon adatvédelmi hozzáférését, az eszköz jelenlétét és az eszköz állapotát (például Volume és Mute).
+A MVA szüksége van egy mikrofonra, és elérhetővé válik, hogy képes legyen a hangalapú aktiválás észlelésére. A [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability), a [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher)és a [MediaCapture](/uwp/api/windows.media.capture.mediacapture) osztály használatával megkeresheti a mikrofon adatvédelmi hozzáférését, az eszköz jelenlétét és az eszköz állapotát (például Volume és Mute).
 
 ### <a name="register-the-application-with-the-background-service"></a>Az alkalmazás regisztrálása a háttérben futó szolgáltatásban
 
@@ -38,7 +38,7 @@ Ahhoz, hogy a MVA az alkalmazást a háttérben indítsa el, az alkalmazást reg
 
 ### <a name="unlock-the-limited-access-feature"></a>A korlátozott hozzáférés funkció zárolásának feloldása
 
-A hangsegéd funkció zárolásának feloldásához használja a Microsoft által biztosított korlátozott hozzáférésű szolgáltatás kulcsát. Ehhez használja a Windows SDK [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) osztályát.
+A hangsegéd funkció zárolásának feloldásához használja a Microsoft által biztosított korlátozott hozzáférésű szolgáltatás kulcsát. Ehhez használja a Windows SDK [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) osztályát.
 
 ### <a name="register-the-keyword-for-the-application"></a>Az alkalmazáshoz tartozó kulcsszó regisztrálása
 
@@ -86,7 +86,7 @@ Ha a hangügynök alkalmazást a hang aktiválja, a következő lépés annak el
 
 ### <a name="retrieve-activation-audio"></a>Aktiválási hang beolvasása
 
-Hozzon létre egy [AudioGraph](/uwp/api/windows.media.audio.audiograph) , és adja át a következőnek: `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Ezzel betölti a gráf hangpufferét, amely *körülbelül 3 másodpercet vesz igénybe, mielőtt a rendszer észlelte a kulcsszót*. Ez a további vezető hang a kulcsszó hosszának és a beszélő sebességének széles választékát tartalmazza. Ezt követően az [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) eseményt a hanggráfból kezelheti a hangadatok lekéréséhez.
+Hozzon létre egy [AudioGraph](/uwp/api/windows.media.audio.audiograph) , és adja át a következőnek: `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Ezzel betölti a gráf hangpufferét, amely *körülbelül 3 másodpercet vesz igénybe, mielőtt a rendszer észlelte a kulcsszót*. Ez a további vezető hang a kulcsszó hosszának és a beszélő sebességének széles választékát tartalmazza. Ezt követően az [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted) eseményt a hanggráfból kezelheti a hangadatok lekéréséhez.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408005"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937621"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Közvetlen egyszeri bejelentkezés az Azure Active Directoryba
 
@@ -35,8 +35,13 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 ![Zökkenőmentes egyszeri Sign-On](./media/how-to-connect-sso/sso1.png)
 
->[!IMPORTANT]
->A zökkenőmentes egyszeri bejelentkezéshez a felhasználó eszközének csak **tartományhoz csatlakoztatottnak** kell lennie, de az [Azure ad-hez csatlakoztatott](../devices/concept-azure-ad-join.md) vagy [hibrid Azure ad-hez csatlakoztatott](../devices/concept-azure-ad-join-hybrid.md) eszközökön nem használható. Az egyszeri bejelentkezés az Azure AD-ben, a hibrid Azure AD-hez csatlakoztatott és az Azure AD által regisztrált eszközök az [elsődleges frissítési jogkivonat](../devices/concept-primary-refresh-token.md)alapján működik.
+## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Egyszeri bejelentkezés az elsődleges frissítési jogkivonat és a zökkenőmentes SSO használatával
+
+A Windows 10 esetében ajánlott az egyszeri bejelentkezést használni az elsődleges frissítési jogkivonat (PRT) használatával. Windows 7 és 8,1 esetén a zökkenőmentes SSO használatát javasoljuk.
+A zökkenőmentes egyszeri bejelentkezéshez a felhasználó eszközének tartományhoz csatlakoztatottnak kell lennie, de a Windows 10 [Azure ad-hez csatlakoztatott eszközökön](../devices/concept-azure-ad-join.md) vagy a [hibrid Azure ad-hez csatlakoztatott eszközökön](../devices/concept-azure-ad-join-hybrid.md)nem használható. Egyszeri bejelentkezés az Azure AD-hez csatlakoztatott, hibrid Azure AD-hez csatlakoztatott és az Azure AD által regisztrált eszközök az [elsődleges frissítési jogkivonat (PRT)](../devices/concept-primary-refresh-token.md) alapján működnek
+
+Egyszeri bejelentkezés a PRT-n keresztül, ha az eszközök regisztrálva vannak az Azure AD-ben a hibrid Azure AD-hez, az Azure AD-hez csatlakoztatott vagy a személyes regisztrált eszközökhöz munkahelyi vagy iskolai fiókkal. További információ arról, hogyan működik az SSO a PRT használatával a Windows 10 rendszerben: [elsődleges frissítési jogkivonat (PRT) és Azure ad](../devices/concept-primary-refresh-token.md)
+
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
@@ -63,10 +68,10 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
-|Windows 8.1|Igen\*|Igen\*\*\*|Igen|Igen\*\*\*|N/A
-|Windows 8|Igen\*|N.A.|Igen|Igen\*\*\*|N/A
-|Windows 7|Igen\*|N.A.|Igen|Igen\*\*\*|N/A
+|Windows 10|Igen\*|Igen|Yes|Igen\*\*\*|N/A
+|Windows 8.1|Yes\*|Igen\*\*\*|Yes|Igen\*\*\*|N/A
+|Windows 8|Yes\*|N.A.|Igen|Igen\*\*\*|N/A
+|Windows 7|Yes\*|N.A.|Igen|Igen\*\*\*|N/A
 |Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Igen|Igen\*\*\*|N/A
 |Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
@@ -79,10 +84,7 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 \*\*\*\*A Microsoft Edge 77-es vagy újabb verziójára van szükség.
 
->[!NOTE]
->A Windows 10 esetében ajánlott az Azure [ad JOIN](../devices/concept-azure-ad-join.md) használata az Azure ad-vel való optimális egyszeri bejelentkezéshez.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
 - [**Üzembe helyezési terv**](../manage-apps/plan-sso-deployment.md) – lépésenkénti üzembe helyezési terv.

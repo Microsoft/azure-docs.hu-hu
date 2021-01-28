@@ -1,19 +1,16 @@
 ---
 title: Mi az Azure HDInsight?
 description: Bevezetés a HDInsight, valamint a Apache Hadoop és Apache Spark technológiai verembe és összetevőkbe, beleértve a Kafka, a kaptár, a Storm és a HBase big data elemzés céljából.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: a1ef441943ec3c29770e0964b3c1132f86239b42
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d1c32bf749850ac40e23c1a9cb9c5cd7755d45c6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127413"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939441"
 ---
 # <a name="what-is-azure-hdinsight"></a>Mi az az Azure HDInsight?
 
@@ -79,7 +76,7 @@ A HDInsight segítségével kiterjesztheti a meglévő helyszíni big data-infra
 
 A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tartalmaz, például lehetővé teszi összetevők, segédprogramok és nyelvek hozzáadását. A HDInsight a következő fürttípusokat kínálja:
 
-|Fürt típusa | Leírás |
+|Fürt típusa | Description |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Egy keretrendszer, amely HDFS, fonal-erőforrás-kezelést és egyszerű MapReduce programozási modellt használ a Batch-adatokat párhuzamosan feldolgozni és elemezni.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Egy nyílt forráskódú, párhuzamos feldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big-adatelemzési alkalmazások teljesítményének növelése érdekében. Lásd: [Mi a Apache Spark a HDInsight-ben?](./spark/apache-spark-overview.md)|

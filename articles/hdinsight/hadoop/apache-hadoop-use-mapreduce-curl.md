@@ -1,19 +1,16 @@
 ---
 title: A MapReduce és a curl használata Apache Hadoop HDInsight-Azure-ban
 description: Ismerje meg, hogyan futtathat MapReduce-feladatokat Apache Hadoop a HDInsight a curl használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90dc2c7220caf5bd72b7086adc275934652e150
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207718"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939691"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a REST használatával
 
@@ -169,7 +166,7 @@ Vagy:
 
 Ezeket a fájlokat az [Azure CLI](/cli/azure/install-azure-cli)használatával listázhatja és letöltheti. Az Azure CLI Azure Blob Storage-hoz való használatáról további információt a rövid útmutató [: Blobok létrehozása, letöltése és listázása az Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md)használatával című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Hadoop a HDInsight-ben való használatával kapcsolatos egyéb módszerekről:
 

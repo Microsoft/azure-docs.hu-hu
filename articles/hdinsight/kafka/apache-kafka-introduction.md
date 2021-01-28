@@ -1,19 +1,16 @@
 ---
 title: A HDInsight-alapú Apache Kafka bemutatása – Azure
 description: 'Ismerje meg a HDInsight-alapú Apache Kafkát: Mi ez, mire való, hol találhat rá példákat, és hol találhatja meg az első lépésekre vonatkozó információt?'
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449553"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939269"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Mi az Azure HDInsight Apache Kafka
 
@@ -61,7 +58,7 @@ A partíciók csomópontok közötti duplikálásához a rendszer replikációt 
 
 Néhány gyakori feladat és minta, amelyek a HDInsight-alapú Kafkával elvégezhetők:
 
-|Használat |Leírás |
+|Használat |Description |
 |---|---|
 |Apache Kafka-adatmennyiség replikálása|A Kafka biztosítja a MirrorMaker segédprogramot, amely a Kafka-fürtök között replikálja az adatgyűjtést. További információ a MirrorMaker használatáról: [Apache Kafka témakörök replikálása Apache Kafka a HDInsight](apache-kafka-mirroring.md).|
 |Közzététel – előfizetés üzenetkezelési mintája|A Kafka egy termelői API-t biztosít a rekordok egy Kafka-témakörbe való közzétételéhez. A fogyasztói API-ra a témakörökre való feliratkozáskor van szükség. További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md).|
@@ -73,7 +70,7 @@ Néhány gyakori feladat és minta, amelyek a HDInsight-alapú Kafkával elvége
 |Összesítés|Az adatfolyam-feldolgozás használatával a különböző streamekről származó információk összevonhatók az adatoknak az operatív adatokba való összevonásához és központosításához.|
 |Átalakítás|Az adatfolyam-feldolgozás használatával több bemeneti témakörből származó adatok egyesíthetők és bővíthetők egy vagy több kimeneti témakörbe.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

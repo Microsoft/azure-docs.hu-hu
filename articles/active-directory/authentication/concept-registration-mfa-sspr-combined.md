@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938478"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Összevont biztonsági információk regisztrálása Azure Active Directory – áttekintés
 
 A kombinált regisztráció előtt a felhasználók az Azure AD-Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszereit külön-külön regisztrálták. Az emberek zavarosak voltak, hogy hasonló módszerek voltak használatban Multi-Factor Authentication és SSPR, de mindkét szolgáltatáshoz regisztrálniuk kellett őket. A kombinált regisztráció révén a felhasználók egyszer regisztrálhatnak, és a Multi-Factor Authentication és a SSPR előnyeit is igénybe vehetik.
 
 > [!NOTE]
-> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz. December 2020 14-én kezdődően az egyetlen felhasználóval rendelkező Azure AD-bérlők automatikusan engedélyezve lesznek a kombinált regisztrációhoz.
+> Az Azure AD-bérlők augusztus 2020 15-én kezdődően automatikusan engedélyezve lesznek a kombinált regisztrációhoz. 
 
 Ez a cikk a kombinált biztonsági regisztrációt ismerteti. A kombinált biztonsági regisztráció megkezdéséhez tekintse meg a következő cikket:
 
@@ -56,13 +56,13 @@ A kombinált regisztráció a következő hitelesítési módszereket és művel
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Egyéb hitelesítő alkalmazás | Igen (legfeljebb 5) | Nem | Igen |
 | Hardver jogkivonata | Nem | Nem | Igen |
-| Telefon | Igen | Igen | Igen |
-| Másik telefon | Igen | Igen | Igen |
-| Munkahelyi telefon | Igen | Igen | Igen |
-| E-mail | Igen | Igen | Igen |
+| Telefon | Igen | Igen | Yes |
+| Másik telefon | Igen | Igen | Yes |
+| Munkahelyi telefon | Igen | Igen | Yes |
+| E-mail | Igen | Igen | Yes |
 | Biztonsági kérdések | Igen | Nem | Igen |
 | Alkalmazásjelszavak. | Igen | Nem | Igen |
-| FIDO2 biztonsági kulcsok<br />*Felügyelt mód csak a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapról*| Igen | Igen | Igen |
+| FIDO2 biztonsági kulcsok<br />*Felügyelt mód csak a [biztonsági adatok](https://mysignins.microsoft.com/security-info) lapról*| Igen | Igen | Yes |
 
 > [!NOTE]
 > Az alkalmazás jelszavai csak az Multi-Factor Authentication számára kikényszerített felhasználók számára érhetők el. Az alkalmazás jelszavai nem érhetők el azokhoz a felhasználókhoz, akik számára engedélyezett a Multi-Factor Authentication egy feltételes hozzáférési szabályzaton keresztül.
