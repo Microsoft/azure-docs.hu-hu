@@ -68,7 +68,7 @@
             - name: Alapvető beállítások
               href: data-lake-analytics-u-sql-get-started.md
             - name: Nyelvi referencia
-              href: 'https://docs.microsoft.com/u-sql'
+              href: /u-sql
             - name: Katalógus
               href: data-lake-analytics-u-sql-catalog.md
             - name: Felhasználó által definiált operátorok

@@ -1,19 +1,16 @@
 ---
 title: A ML Services-fürt kezelése a HDInsight-ben – Azure
 description: Ismerje meg, hogyan kezelheti az Azure HDInsight különböző feladatait a ML Services-fürtökön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536283"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930558"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>A ML Services-fürt kezelése az Azure HDInsight
 
@@ -21,7 +18,7 @@ Ebből a cikkből megtudhatja, hogyan kezelheti az Azure HDInsight meglévő ML-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához** .
+* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához**.
 
 * Secure Shell- (SSH-) ügyfél: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: az [SSH használata a HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -31,8 +28,8 @@ Engedélyezheti több egyidejű felhasználó számára a HDInsight ML-szolgált
 
 ![HDI Azure Portal bejelentkezési paraméterek](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **Fürt bejelentkezési felhasználóneve** : HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. Ez a HTTP-felhasználó fér hozzá az Apache Ambari felhasználói felületéhez, Apache Hadoop a fonal felhasználói felületéhez, valamint az egyéb felhasználói felületi összetevőkhöz.
-- **Secure Shell- (SSH-) felhasználónév** : SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
+- **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. Ez a HTTP-felhasználó fér hozzá az Apache Ambari felhasználói felületéhez, Apache Hadoop a fonal felhasználói felületéhez, valamint az egyéb felhasználói felületi összetevőkhöz.
+- **Secure Shell- (SSH-) felhasználónév**: SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
 
 A HDInsight ML Services-fürtben használt R Studio Server Community verziója csak a Linux-felhasználónevet és-jelszót fogadja bejelentkezési mechanizmusként. Nem támogatja a jogkivonatok átadását. Ha tehát az R Studio első alkalommal próbál hozzáférni egy ML Services-fürtön, kétszer kell bejelentkeznie.
 
@@ -74,7 +71,7 @@ Ha a rendszer az "aktuális Kerberos-jelszó:" üzenetet kéri, csak nyomja meg 
 
 A RStudio elérése `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Ha első alkalommal jelentkezik be a fürt létrehozása után, adja meg a fürt rendszergazdai hitelesítő adatait, majd a létrehozott SSH-felhasználói hitelesítő adatokat. Ha nem ez az első bejelentkezés, csak a létrehozott SSH-felhasználó hitelesítő adatait adja meg.
 
-Az eredeti hitelesítő adatokkal (alapértelmezés szerint ez a *sshuser* ) párhuzamosan is bejelentkezhet egy másik böngészőablakból.
+Az eredeti hitelesítő adatokkal (alapértelmezés szerint ez a *sshuser*) párhuzamosan is bejelentkezhet egy másik böngészőablakból.
 
 Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gyökérjogosultságokkal a Linux rendszerben, de ugyanolyan hozzáférésük van a távoli HDFS- és WASB-tárolón az összes fájlhoz.
 
@@ -203,9 +200,9 @@ Ha az R-csomagokat a fürt munkavégző csomópontjain szeretné telepíteni, pa
 
      * A **bash-parancsfájl URI azonosítójának** megadása:  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Ez az a szkript, amely további R-csomagokat telepít a munkavégző csomóponton.
 
-   * Jelölje be a jelölőnégyzetet a **feldolgozóhoz** .
+   * Jelölje be a jelölőnégyzetet a **feldolgozóhoz**.
 
-   * **Paraméterek** : A telepíteni kívánt R csomagok. Például: `bitops stringr arules`
+   * **Paraméterek**: A telepíteni kívánt R csomagok. Például: `bitops stringr arules`
 
    * Jelölje be a jelölőnégyzetet a **parancsfájl működésének** megőrzéséhez.  
 

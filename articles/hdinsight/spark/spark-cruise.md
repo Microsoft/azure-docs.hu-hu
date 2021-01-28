@@ -1,28 +1,25 @@
 ---
 title: A SparkCruise használata az Azure HDInsight Apache Spark lekérdezések felgyorsításához
 description: Megtudhatja, hogyan használhatja a SparkCruise optimalizálási platformot Apache Spark lekérdezések hatékonyságának növelése érdekében.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649057"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928271"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>SparkCruise az Azure HDInsight
 
-Ez a dokumentum az Azure HDInsight szolgáltatás *SparkCruise*ismerteti, amely automatikusan újrahasznosítja Apache Spark számításokat a lekérdezés hatékonyságának növelése érdekében.
+Ez a dokumentum az Azure HDInsight szolgáltatás *SparkCruise* ismerteti, amely automatikusan újrahasznosítja Apache Spark számításokat a lekérdezés hatékonyságának növelése érdekében.
 
 ## <a name="overview"></a>Áttekintés
 
 Az olyan elemzési platformon futtatott lekérdezések, mint például a Apache Spark, egy kisebb allekérdezéseket tartalmazó lekérdezési tervbe vannak kibontva. Ezek az allekérdezések többször is megjelennek a lekérdezési csomagok között több lekérdezés esetében. Minden alkalommal, amikor azok bekövetkeznek, újra végre lesznek hajtva az eredmények visszaküldéséhez. A lekérdezés ismételt végrehajtása azonban nem hatékony, és szükségtelen számítási költségekhez vezethet.
 
-A *SparkCruise* olyan számítási feladatok optimalizálási platformja, amely felhasználhatja a gyakori számításokat, csökkentve a lekérdezés végrehajtásának teljes idejét és az adatátviteli költségeket. A platform egy *anyagbeli nézet*fogalmát használja, amely egy olyan lekérdezés, amelynek az eredményei előre számított formában vannak tárolva. Ezek az eredmények ezután újra felhasználhatók, ha a lekérdezés később ismét megjelenik, ahelyett, hogy újra feldolgozta az eredményeket.
+A *SparkCruise* olyan számítási feladatok optimalizálási platformja, amely felhasználhatja a gyakori számításokat, csökkentve a lekérdezés végrehajtásának teljes idejét és az adatátviteli költségeket. A platform egy *anyagbeli nézet* fogalmát használja, amely egy olyan lekérdezés, amelynek az eredményei előre számított formában vannak tárolva. Ezek az eredmények ezután újra felhasználhatók, ha a lekérdezés később ismét megjelenik, ahelyett, hogy újra feldolgozta az eredményeket.
 
 ## <a name="setup-and-installation"></a>Beállítás és telepítés
 
@@ -146,7 +143,7 @@ A visszajelzési fájlok, az anyagbeli altervek és a lekérdezési naplók megm
 sudo /opt/peregrine/analyze/peregrine.sh clean
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A SparkCruise előnyeinek meghatározása a számítási feladatok beolvasása jegyzetfüzet használatával](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával](apache-spark-improve-performance-iocache.md)

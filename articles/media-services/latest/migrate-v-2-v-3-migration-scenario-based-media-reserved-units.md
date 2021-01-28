@@ -1,5 +1,5 @@
 ---
-title: A Media szolgáltatás számára fenntartott egységek (MRUs) forgatókönyv-alapú áttelepítési útmutatója
+title: A Media szolgáltatás számára fenntartott egységek (MRUs) áttelepítési útmutatója
 description: Ez a cikk olyan forgatókönyv-alapú útmutatást nyújt, amely segítséget nyújt a Azure Media Services v2-ről a v3-re való Migrálás során.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 375b4ecdc6153162b3a819b831af152ce390a5dc
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 5ca01bcea348b866c0f40f82ebe90dc31d032739
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898324"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927076"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>A Media szolgáltatás számára fenntartott egységek (MRUs) forgatókönyv-alapú áttelepítési útmutatója
 

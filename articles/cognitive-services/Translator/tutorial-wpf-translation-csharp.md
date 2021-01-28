@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ebcbadbc8b502121b25393c7761794bcd3f07e8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897105"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927474"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
-Ebben az oktatóanyagban egy olyan [Windows megjelenítési alaprendszer (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) alkalmazást fog létrehozni, amely az Azure Cognitive Servicest használja a szöveges fordításhoz, a nyelvfelismerés és a helyesírás-ellenőrzéshez egyetlen előfizetési kulccsal. Az alkalmazás az API-kat a fordítótól és a [Bing spell Checktól](https://azure.microsoft.com/services/cognitive-services/spell-check/)hívja meg.
+Ebben az oktatóanyagban egy olyan [Windows megjelenítési alaprendszer (WPF)](/visualstudio/designers/getting-started-with-wpf) alkalmazást fog létrehozni, amely az Azure Cognitive Servicest használja a szöveges fordításhoz, a nyelvfelismerés és a helyesírás-ellenőrzéshez egyetlen előfizetési kulccsal. Az alkalmazás az API-kat a fordítótól és a [Bing spell Checktól](https://azure.microsoft.com/services/cognitive-services/spell-check/)hívja meg.
 
 Mi az a WPF? Ez egy felhasználói felületi keretrendszer, amely asztali ügyfélprogramokat hoz létre. A WPF fejlesztői platform számos alkalmazás-fejlesztési funkciót támogat, többek között az alkalmazás-modellt, az erőforrásokat, a vezérlőket, a grafikát, az elrendezést, az adatkötéseket, a dokumentumokat és a biztonságot. Ez a .NET-keretrendszer egy részhalmaza, így ha korábban a ASP.NET vagy a Windows Forms használatával már létrehozott alkalmazásokat a .NET-keretrendszerrel, a programozási élménynek ismerősnek kell lennie. A WPF az Extensible app Markup Language (XAML) használatával biztosít egy deklaratív modellt az alkalmazások programozásához, amelyet a következő szakaszokban fogunk áttekinteni.
 
@@ -90,7 +90,7 @@ Vegyünk fel szerelvényeket a projektbe objektumok szerializálásához és des
 1. Miután hozzáadta ezeket a hivatkozásokat a projekthez, a **Reference Manager** bezárásához kattintson **az OK** gombra.
 
 > [!NOTE]
-> Ha többet szeretne megtudni a szerelvények hivatkozásairól, tekintse meg a következő témakört [: útmutató: hivatkozás hozzáadása vagy eltávolítása a Reference Manager használatával](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Ha többet szeretne megtudni a szerelvények hivatkozásairól, tekintse meg a következő témakört [: útmutató: hivatkozás hozzáadása vagy eltávolítása a Reference Manager használatával](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager).
 
 ### <a name="install-newtonsoftjson"></a>NewtonSoft.Jstelepítése
 

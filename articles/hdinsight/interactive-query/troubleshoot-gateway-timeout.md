@@ -1,18 +1,15 @@
 ---
 title: Kivételt jelent az Apache Ambari kaptár nézet lekérdezésének futtatása az Azure HDInsight
 description: Hibaelhárítási lépések Apache Hive lekérdezések futtatásakor az Apache Ambari kaptár nézetben az Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547384"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933017"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Kivételt jelent az Apache Ambari kaptár nézet lekérdezésének futtatása az Azure HDInsight
 
@@ -54,13 +51,13 @@ Néhány általános javaslat a helyzet javítására:
 
 * Ha külső kaptár metaadattár használ, ellenőrizze az adatbázis-metrikákat, és győződjön meg arról, hogy az adatbázis nincs túlterhelve. Érdemes lehet méretezni a metaadattár-adatbázis rétegét.
 
-* Győződjön meg arról, hogy a Parallel Ops be van kapcsolva (Ez lehetővé teszi, hogy a HTTP-kezelő szálak párhuzamosan fussanak). Az érték ellenőrzéséhez indítsa el az [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) , és navigáljon a **kaptár**  >  - **konfigurációk**  >  **speciális**  >  **Egyéni struktúra-helyéhez** . A értékének a következőnek kell `hive.server2.parallel.ops.in.session` lennie: `true` .
+* Győződjön meg arról, hogy a Parallel Ops be van kapcsolva (Ez lehetővé teszi, hogy a HTTP-kezelő szálak párhuzamosan fussanak). Az érték ellenőrzéséhez indítsa el az [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) , és navigáljon a **kaptár**  >  -**konfigurációk**  >  **speciális**  >  **Egyéni struktúra-helyéhez**. A értékének a következőnek kell `hive.server2.parallel.ops.in.session` lennie: `true` .
 
 * Győződjön meg arról, hogy a fürt virtuális gép SKU-jának nem túl kicsi a terheléshez. Érdemes lehet több fürt között felosztani a munkát. További információ: [fürt típusának kiválasztása](../hdinsight-capacity-planning.md#choose-a-cluster-type).
 
 * Ha a Ranger telepítve van a fürtön, ellenőrizze, hogy van-e túl sok olyan Ranger-házirend, amelyet ki kell értékelni az egyes lekérdezésekhez. Ismétlődő vagy szükségtelen házirendek megkeresése.
 
-* Győződjön meg arról, hogy a **HiveServer2 halom mérete** érték a Ambari. Navigáljon a **struktúra** -  >  **konfigurációk**  >  **beállításainak**  >  **optimalizálása** elemre. Győződjön meg arról, hogy az érték nagyobb, mint 10 GB. A teljesítmény optimalizálása érdekében szükség szerint módosítsa a teljesítményt.
+* Győződjön meg arról, hogy a **HiveServer2 halom mérete** érték a Ambari. Navigáljon a **struktúra**-  >  **konfigurációk**  >  **beállításainak**  >  **optimalizálása** elemre. Győződjön meg arról, hogy az érték nagyobb, mint 10 GB. A teljesítmény optimalizálása érdekében szükség szerint módosítsa a teljesítményt.
 
 * Győződjön meg arról, hogy a kaptár lekérdezése megfelelően van-e beállítva. További információ: [Apache Hive lekérdezések optimalizálása az Azure HDInsight-ben](../hdinsight-hadoop-optimize-hive-query.md).
 

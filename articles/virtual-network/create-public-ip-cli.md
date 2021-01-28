@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4d2f339f5a1339b5f249172170fed54c91f1dc24
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223533"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927195"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Rövid útmutató: nyilvános IP-cím létrehozása az Azure CLI használatával
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan hozható létre nyilvános IP-cím erőforrás az Az
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) **myResourceGroup** nevű **eastus2** helyen.
+Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create) **myResourceGroup** nevű **eastus2** helyen.
 
 ```azurecli-interactive
   az group create \
@@ -46,7 +46,7 @@ Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group?vie
 >[!NOTE]
 >A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
-Az [az Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy standard zóna – REDUNDÁNS nyilvános IP-címet a **myStandardZRPublicIP** nevű **myResourceGroup**.
+Az [az Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal hozzon létre egy standard zóna – REDUNDÁNS nyilvános IP-címet a **myStandardZRPublicIP** nevű **myResourceGroup**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -76,7 +76,7 @@ Vegye figyelembe, hogy a zónák fenti beállításai csak a [Availability Zones
 >[!NOTE]
 >A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
 
-Az [az Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy szabványos nyilvános IP-címet, amely egy **myStandardPublicIP** nevű, nem zónákból álló erőforrás a **myResourceGroup**-ben.
+Az [az Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal hozzon létre egy szabványos nyilvános IP-címet, amely egy **myStandardPublicIP** nevű, nem zónákból álló erőforrás a **myResourceGroup**-ben.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Ez a kijelölés minden régióban érvényes, és a szabványos nyilvános IP-c
 
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-create-public-ip-basic)
 
-Az [az Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal hozzon létre egy **myBasicPublicIP** nevű alapszintű statikus nyilvános IP-címet a **myResourceGroup**-ben.  Az alapszintű nyilvános IP-címek nem rendelkeznek a rendelkezésre állási zónák fogalmával.
+Az [az Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal hozzon létre egy **myBasicPublicIP** nevű alapszintű statikus nyilvános IP-címet a **myResourceGroup**-ben.  Az alapszintű nyilvános IP-címek nem rendelkeznek a rendelkezésre állási zónák fogalmával.
 
 ```azurecli-interactive
   az network public-ip create \
