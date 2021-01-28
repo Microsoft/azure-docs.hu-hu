@@ -1,19 +1,16 @@
 ---
 title: Adatok lekérdezése HDFS-kompatibilis Azure Storage-ból – Azure HDInsight
 description: Ismerje meg, hogyan kérdezheti le az Azure Storage és a Azure Data Lake Storage adatait az elemzés eredményeinek tárolásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547435"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945432"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -44,23 +41,23 @@ Egy blob-tároló megosztása, mivel a több fürt alapértelmezett fájlrendsze
 
 ## <a name="access-files-from-within-cluster"></a>Fájlok elérése a fürtön belülről
 
-Több módon is hozzáférhet a Data Lake Storage lévő fájlokhoz egy HDInsight-fürtről. Az URI-séma titkosítatlan hozzáférést biztosít (a *wasb:* előtaggal) és a TLS titkosított hozzáférését ( *wasbs* ). Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
+Több módon is hozzáférhet a Data Lake Storage lévő fájlokhoz egy HDInsight-fürtről. Az URI-séma titkosítatlan hozzáférést biztosít (a *wasb:* előtaggal) és a TLS titkosított hozzáférését ( *wasbs*). Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
 
-* **A teljes név használatával** . Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
+* **A teljes név használatával**. Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **A rövidített elérésiút-formátum használatával** . Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
+* **A rövidített elérésiút-formátum használatával**. Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **A relatív elérési út használatával** . Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
+* **A relatív elérési út használatával**. Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
 
     ```
     /<file.path>/

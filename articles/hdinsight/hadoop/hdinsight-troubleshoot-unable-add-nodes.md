@@ -3,16 +3,13 @@ title: Nem lehet csomópontokat hozzáadni az Azure HDInsight-fürthöz
 description: A csomópontok Apache Hadoop fürthöz való hozzáadása az Azure HDInsight-ben – problémamegoldás
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 089eab563c83384bdb7e1681044fa89f5eb7f6c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b11d1edef2f3a6fa0fb39c76d1f25ec05ff15d07
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014669"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944325"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>Forgatókönyv: nem lehet csomópontokat hozzáadni az Azure HDInsight-fürthöz
 
@@ -36,6 +33,6 @@ A [fürt mérete](../hdinsight-scaling-best-practices.md) funkció használatáv
 
 * Ha egy adott hely magkvótáját szeretné növelni, hozzon létre egy támogatási jegyet a HDInsight magkvóta-növeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

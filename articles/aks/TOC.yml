@@ -59,7 +59,7 @@
           href: ./security-controls-policy.md
     - name: Hálózat
       href: concepts-network.md
-    - name: Storage
+    - name: Tárolás
       href: concepts-storage.md
     - name: Méretezés
       href: concepts-scale.md
@@ -296,8 +296,8 @@
         - name: Azure Monitor tárolókhoz
           href: ../azure-monitor/insights/container-insights-overview.md
           maintainContext: true
-        - name: A fő összetevőnaplók megtekintése
-          href: view-master-logs.md
+        - name: A vezérlő síkja összetevő naplófájljainak megtekintése
+          href: view-control-plane-logs.md
         - name: Kubelet-naplók megtekintése
           href: kubelet-logs.md
         - name: Tárolóadatok megtekintése valós időben

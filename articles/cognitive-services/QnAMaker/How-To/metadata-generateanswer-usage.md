@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c250868c9d470ee85f765f693aff3e21320fc45e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f92b8c4835e42e758085e0434ee926fbabce5a38
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346188"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936245"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -136,7 +136,7 @@ Az előző JSON egy, a 38,5%-os pontszámmal válaszol.
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>QnA Maker használata a C robottal #
 
-A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?preserve-view=true&view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)-val:
+A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)-val:
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -275,9 +275,9 @@ A alkalmazásban a közzétett kb, a `isTest=false` vagy a teszt Tudásbázis ha
 
 ## <a name="common-http-errors"></a>Gyakori HTTP-hibák
 
-|Kód|Magyarázat|
+|Code|Magyarázat|
 |:--|--|
-|2xx|Success|
+|2xx|Siker|
 |400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|
 |400|A kérelem törzse helytelen, mert a JSON hiányzik, helytelenül formázott vagy túl nagy.|
 |401|Érvénytelen kulcs|
@@ -285,7 +285,7 @@ A alkalmazásban a közzétett kb, a `isTest=false` vagy a teszt Tudásbázis ha
 |404|A KB nem létezik|
 |410|Ez az API elavult, és már nem érhető el|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel a Poster vagy a curl segítségével [választ](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) kaphat.
 

@@ -1,18 +1,15 @@
 ---
 title: Apache Spark irányelvek az Azure HDInsight
 description: Útmutató a Apache Spark Azure HDInsight való használatához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545565"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938812"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark irányelvek
 
@@ -56,14 +53,14 @@ Ez a cikk a Apache Spark Azure HDInsight való használatának különböző ir�
 | Apache Hive a HDInsight | [Apache Spark és Apache Hive integrálása a méhkas Warehouse-összekötővel](../interactive-query/apache-hive-warehouse-connector.md) |
 | HDInsight-alapú Apache HBase | [Az Apache Spark használata Apache HBase-adatok írására és olvasására](../hdinsight-using-spark-query-hbase.md) |
 | Apache Kafka a HDInsight | [Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Az Azure szinapszis hivatkozása Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
+| Azure Cosmos DB | [Azure Cosmos DB-hez készült Azure Synapse Link](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>Mik a tárolási lehetőségeim?
 
 | Beállítás | Dokumentumok |
 |---|---|
 | 2. generációs Azure Data Lake Storage | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| Azure Data Lake Storage Gen1 | [Azure Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
+| 1. generációs Azure Data Lake Storage | [Azure Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob Storage | [Az Azure Storage és az Azure HDInsight-fürtök együttes használata](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>Következő lépések

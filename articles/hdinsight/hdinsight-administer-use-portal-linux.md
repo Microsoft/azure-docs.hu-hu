@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop-fürtök kezelése a HDInsight-ben Azure Portal használatával
 description: Ismerje meg, hogyan hozhat létre és kezelhet Azure HDInsight-fürtöket a Azure Portal használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012807"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942831"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -228,7 +225,7 @@ A jelszó a fürt összes csomópontján módosul.
    | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Név |"SSH hitelesítő adatok módosítása" |
+   | Name |"SSH hitelesítő adatok módosítása" |
    | Bash-parancsfájl URI-ja |A changecredentials.sh-fájl URI-ja |
    | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
    | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. |
@@ -264,7 +261,7 @@ A fürt [kezdőlapjának](#homePage) **fürt mérete** csempéje megjeleníti a 
 - [Apache Hive használata a HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 - [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanult néhány alapvető felügyeleti funkciót. További tudnivalókért olvassa el a következő cikket:
 

@@ -3,16 +3,13 @@ title: A HDP frissítése nem & az Azure HDInsight Apache Phoenix nézeteiben sz
 description: A HDP frissítése nem okoz semmilyen adatApache Phoenix-nézetet az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: c3f4a532607fed242ac0351b0cc1cfc592771084
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f68e227e10a85b7e1d98dcabbfb870933059ec04
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540041"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936929"
 ---
 # <a name="scenario-hdp-upgrade-causes-no-data-in-apache-phoenix-views-in-azure-hdinsight"></a>Forgatókönyv: a HDP frissítése nem okoz semmilyen adatApache Phoenix-nézetet az Azure HDInsight
 
@@ -30,7 +27,7 @@ A nézetekhez tartozó index tábla (a nézet összes indexét egyetlen fizikai 
 
 A frissítés után dobja el és hozza létre újból az összes nézet indexét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
