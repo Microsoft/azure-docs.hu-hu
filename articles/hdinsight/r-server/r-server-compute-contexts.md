@@ -1,19 +1,16 @@
 ---
 title: Számítási környezeti lehetőségek a HDInsight ML-szolgáltatásaihoz – Azure
 description: Ismerje meg a különböző számítási környezeti lehetőségeket, amelyek a HDInsight ML-szolgáltatásaival rendelkező felhasználók számára elérhetők
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536334"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943954"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz
 
@@ -29,8 +26,8 @@ Az [Azure HDInsight ml-szolgáltatásai](r-server-overview.md) az R-alapú elemz
 
 Általánosságban elmondható, hogy egy, az Edge-csomóponton található ML Services-fürtön futó R-szkript az adott csomóponton az R-tolmácson belül fut. A kivételek a RevoScaleR függvényt meghívó lépések. A RevoScaleR-hívások olyan számítási környezetben futnak, amelyet a RevoScaleR számítási környezetének beállítása határoz meg.  Ha az R-szkriptet egy peremhálózati csomópontról futtatja, a számítási környezet lehetséges értékei a következők:
 
-- helyi szekvenciális ( *helyi* )
-- helyi párhuzamos ( *localpar* )
+- helyi szekvenciális (*helyi*)
+- helyi párhuzamos (*localpar*)
 - Leképezés csökkentése
 - Spark
 

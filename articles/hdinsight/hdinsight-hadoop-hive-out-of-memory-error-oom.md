@@ -2,19 +2,16 @@
 title: Memóriabeli hiba elhárítása az Azure HDInsight
 description: A HDInsight-ben észlelt memória-hiba elhárítása. Az ügyfél forgatókönyve több nagyméretű tábla lekérdezése.
 keywords: kevés a memória, a bácsi, a kaptár beállításai
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546177"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945708"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive memóriájában észlelt hiba elhárítása
 
@@ -91,7 +88,7 @@ Támogatási és mérnöki csapatunk közösen talált egy olyan problémát, am
 
 "A kaptár. Auto. convert. JOIN. noconditionaltask = true, ellenőrizze a noconditionaltask. size értéket, és ha a térképhez való csatlakozásnál a táblázatok mérete nem haladja meg a noconditionaltask. a terv mérete miatt a csomaghoz való csatlakozást eredményező probléma az, hogy a számítás nem veszi figyelembe a különböző szórótábla megvalósításával járó terhelést, ha a bemeneti méretek összege kisebb, mint a kisméretű lekérdezések noconditionaltask mérete."
 
-Az hive-site.xml fájlban a **kaptár. Auto. convert. JOIN. noconditionaltask** értéke **true (igaz** ):
+Az hive-site.xml fájlban a **kaptár. Auto. convert. JOIN. noconditionaltask** értéke **true (igaz**):
 
 ```xml
 <property>
@@ -109,10 +106,10 @@ Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyo
 
 ![Tez-tároló memória diagramja: a hiba a memóriában](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Ahogy a blogbejegyzés is sugallja, a következő két memória-beállítás határozza meg a halom tárolójának memóriáját: **kaptár. TEZ. Container. size** és **kaptár. TEZ. Java. eldönti** . Tapasztalataink szerint a memórián kívüli kivétel nem azt jelenti, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halom mérete (kaptár. TEZ. Java. döntve) túl kicsi. Tehát amikor megjelenik a memória, megpróbálkozhat a **kaptár. TEZ. Java.** kiemeléssel. Szükség esetén előfordulhat, hogy a **kaptár. TEZ. Container. size** értékre kell emelkednie. A **Java.** kikapcsolási beállításnak a **container. size** 80%-ának kell lennie.
+Ahogy a blogbejegyzés is sugallja, a következő két memória-beállítás határozza meg a halom tárolójának memóriáját: **kaptár. TEZ. Container. size** és **kaptár. TEZ. Java. eldönti**. Tapasztalataink szerint a memórián kívüli kivétel nem azt jelenti, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halom mérete (kaptár. TEZ. Java. döntve) túl kicsi. Tehát amikor megjelenik a memória, megpróbálkozhat a **kaptár. TEZ. Java.** kiemeléssel. Szükség esetén előfordulhat, hogy a **kaptár. TEZ. Container. size** értékre kell emelkednie. A **Java.** kikapcsolási beállításnak a **container. size** 80%-ának kell lennie.
 
 > [!NOTE]  
-> A **kaptár. TEZ. Java. döntő** beállításnak mindig kisebbnek kell lennie, mint a **kaptár. TEZ. Container. size** .
+> A **kaptár. TEZ. Java. döntő** beállításnak mindig kisebbnek kell lennie, mint a **kaptár. TEZ. Container. size**.
 
 Mivel a D12-gép 28 GB memóriával rendelkezik, úgy döntöttünk, hogy 10 GB-nyi (10240 MB) méretű tárolót használ, és az 80%-ot a Javához rendeli.
 

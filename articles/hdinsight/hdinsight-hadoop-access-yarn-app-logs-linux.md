@@ -1,19 +1,16 @@
 ---
 title: Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz – Azure HDInsight
 description: Megtudhatja, hogyan érheti el a fonal-alkalmazási naplókat egy Linux-alapú HDInsight-(Apache Hadoop-) fürtön a parancssori felület és a webböngésző használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0eb7dec2fd4ee327905acdea7a07456221bcbd46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001949"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946008"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight
 
@@ -21,7 +18,7 @@ Megtudhatja, hogyan érheti el a naplókat [Apache HADOOP fonalak](https://hadoo
 
 ## <a name="what-is-apache-yarn"></a>Mi az Apache-fonal?
 
-A FONALak több programozási modellt támogatnak (Apache Hadoop MapReduce is) az erőforrás-kezelés leválasztásával az alkalmazás ütemezése/monitorozása során. A fonal globális *`ResourceManager`* (RM), munkavégző-csomópontos *Csomópontkezelők* (ApplicationMasters) és alkalmazáson belüli *ApplicationMasters* (AMs) használ. Az per-Application AM egyezteti az erőforrásokat (processzor, memória, lemez, hálózat) az alkalmazásnak az RM-vel való futtatásához. Az RM úgy működik, hogy az ilyen erőforrásokat *tárolóként* adja meg. Az AM feladata az RM által hozzárendelt tárolók állapotának nyomon követése. Egy alkalmazás az alkalmazás természetétől függően számos tárolót igényelhet.
+A FONALak több programozási modellt támogatnak (Apache Hadoop MapReduce is) az erőforrás-kezelés leválasztásával az alkalmazás ütemezése/monitorozása során. A fonal globális *`ResourceManager`* (RM), munkavégző-csomópontos *Csomópontkezelők* (ApplicationMasters) és alkalmazáson belüli  (AMs) használ. Az per-Application AM egyezteti az erőforrásokat (processzor, memória, lemez, hálózat) az alkalmazásnak az RM-vel való futtatásához. Az RM úgy működik, hogy az ilyen erőforrásokat *tárolóként* adja meg. Az AM feladata az RM által hozzárendelt tárolók állapotának nyomon követése. Egy alkalmazás az alkalmazás természetétől függően számos tárolót igényelhet.
 
 Minden alkalmazás több *alkalmazási kísérletből* állhat. Ha egy alkalmazás meghibásodik, előfordulhat, hogy a rendszer újrapróbálkozik új kísérletként. Minden kísérlet egy tárolóban fut. Bizonyos értelemben a tárolók a FONALas alkalmazások által végzett Munkaegységek kontextusát biztosítják. A tároló környezetében elvégzett összes munka az egyetlen feldolgozó csomóponton történik, amelyen a tárolót adták. További információért lásd a [Hadoop: fonal-alkalmazások írása](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)vagy a [Apache Hadoop fonalak](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
 
@@ -163,7 +160,7 @@ A fonal `ResourceManager` felhasználói felülete a fürt átjárócsomópontho
 
     Megjelenik a FONALak naplóira mutató hivatkozások listája.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Hadoop-architektúra a HDInsightban](hdinsight-hadoop-architecture.md)
 * [Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal](hdinsight-troubleshoot-yarn.md)

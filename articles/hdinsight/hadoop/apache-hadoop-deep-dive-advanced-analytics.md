@@ -1,19 +1,16 @@
 ---
 title: Deep Dive – fejlett Analitika – Azure HDInsight
 description: Ismerje meg, hogy a fejlett elemzési algoritmusok hogyan használják a big data Azure HDInsight való feldolgozását.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821502"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946663"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -114,7 +111,7 @@ Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy p
 
 A megoldás teljes körű megvalósításához kövesse [az oktatóanyagot](../spark/apache-spark-microsoft-cognitive-toolkit.md) : hozzon létre egy HDInsight Spark-fürtöt, telepítse a Cognitive Toolkitt, és futtassa a 10 000-es SZÁMú CIFAR-rendszerképekből álló Jupyter notebook.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Apache Hive és Azure Machine Learning
 

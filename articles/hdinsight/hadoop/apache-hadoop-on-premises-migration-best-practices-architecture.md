@@ -1,19 +1,17 @@
 ---
 title: 'Architektúra: helyszíni Apache Hadoop az Azure HDInsight'
 description: Ismerje meg az architektúrával kapcsolatos ajánlott eljárásokat a helyszíni Hadoop-fürtök Azure HDInsight történő áttelepítéséhez.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533733"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946443"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
 
@@ -30,7 +28,7 @@ Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kial
 |Kötegelt feldolgozás (ETL/ELT)|Hadoop, Spark|
 |Adatraktározás|Hadoop, Spark, interaktív lekérdezés|
 |IoT/streaming|Kafka, Storm, Spark|
-|NoSQL tranzakciós feldolgozás|A HBase|
+|NoSQL tranzakciós feldolgozás|HBase|
 |Interaktív és gyorsabb lekérdezések memórián belüli gyorsítótárazással|Interaktív lekérdezés|
 |Adattudomány|ML szolgáltatások, Spark|
 
@@ -46,7 +44,7 @@ A következő táblázat a HDInsight-fürtök létrehozásához használható k�
 |[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
 |[Python SDK](/python/api/overview/azure/hdinsight)||||X|
 |[Java SDK](/java/api/overview/azure/hdinsight)||||X|
-|[Azure Resource Manager sablonok](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
+|[Azure Resource Manager-sablonok](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 További információkért lásd a [fürtök típusai a HDInsight](../hadoop/apache-hadoop-introduction.md)című cikket.
 

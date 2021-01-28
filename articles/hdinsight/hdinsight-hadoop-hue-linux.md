@@ -1,19 +1,16 @@
 ---
 title: Hue a Hadoop on HDInsight Linux-alapú fürtökön – Azure
 description: Megtudhatja, hogyan telepítheti a Hue-t a HDInsight-fürtökre, és hogyan használhatja a bújtatást a kérések Színezetbe irányításához A Hue használatával böngészhet a tárolóban, és futtathatja a kaptár vagy a Pig-t.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945685"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata a HDInsight Hadoop-fürtökön
 
@@ -45,7 +42,7 @@ Használja az alábbi táblázatban szereplő információkat a parancsfájl-mű
 |Tulajdonság |Érték |
 |---|---|
 |Parancsfájl típusa:|– Egyéni|
-|Name (Név)|A Hue telepítése|
+|Name|A Hue telepítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Csomópont típusa (i):|Head|
 
@@ -91,7 +88,7 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 
     ![HDInsight Hue-portál a kaptár-szerkesztő használatával](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Struktúra használata")
 
-2. Az **assziszt** lapon az **adatbázis** területen tekintse meg a **hivesampletable** . Ez egy minta tábla, amely a HDInsight összes Hadoop-fürtjével együtt kapható. Adjon meg egy minta lekérdezést a jobb oldali ablaktáblán, és tekintse meg az alábbi ablaktábla **eredmények** lapján látható kimenetet, ahogy az a képernyőfelvételen látható.
+2. Az **assziszt** lapon az **adatbázis** területen tekintse meg a **hivesampletable**. Ez egy minta tábla, amely a HDInsight összes Hadoop-fürtjével együtt kapható. Adjon meg egy minta lekérdezést a jobb oldali ablaktáblán, és tekintse meg az alábbi ablaktábla **eredmények** lapján látható kimenetet, ahogy az a képernyőfelvételen látható.
 
     ![HDInsight Hue-portál struktúrájának lekérdezése](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Struktúra-lekérdezés futtatása")
 
@@ -127,6 +124,6 @@ Normál fürtökön csak egy felhasználói fiók használható a Hue használat
 
 1. A Hue megérti a WebHDFS, miközben a HDInsight-fürtök az Azure Storage-t használják a használatával `wasbs://` . Így a parancsfájl-művelettel használt egyéni szkript telepíti a WebWasb-t, amely egy WebHDFS-kompatibilis szolgáltatás, amely a WASB-re mutat. Tehát bár a Hue Portal a HDFS (például ha az egérmutatót a **fájlkezelőben** helyezi át), akkor a WASB kell értelmezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Telepítse az R-t a HDInsight-fürtökön](./r-server/r-server-overview.md). A fürt testreszabásával telepítse az R-t a HDInsight Hadoop-fürtökön. Az R egy nyílt forráskódú nyelv és környezet statisztikai számítástechnikai szolgáltatásokhoz. Több száz beépített statisztikai funkciót és saját programozási nyelvet biztosít, amely ötvözi a funkcionális és az objektumorientált programozás szempontjait. Emellett kiterjedt grafikus képességeket is biztosít.

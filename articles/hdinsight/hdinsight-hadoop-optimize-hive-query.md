@@ -1,19 +1,16 @@
 ---
 title: Kaptár-lekérdezések optimalizálása az Azure HDInsight
 description: Ez a cikk azt ismerteti, hogyan optimalizálhatja Apache Hive lekérdezéseit az Azure HDInsight-ben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910882"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945569"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
 
@@ -53,11 +50,11 @@ Az [Apache TEZ](https://tez.apache.org/) egy alternatív végrehajtási motor a 
 
 A TEZ az alábbiak miatt gyorsabb:
 
-* **Irányított aciklikus gráf (Dag) végrehajtása egyetlen feladatokként a MapReduce motorban** . A DAG megköveteli, hogy az egyes Mapper-készleteket egy szűkítő-készlet követi. Ez a követelmény több MapReduce-feladat kikapcsolását okozza az egyes struktúra-lekérdezésekhez. A TEZ nem rendelkezik ilyen korlátozással, és feldolgozhatja a komplex DAG-t, mivel egy feladat minimalizálja a feladat indítási terhelését.
-* **Elkerüli a szükségtelen írásokat** . Több feladat is feldolgozza ugyanazt a kaptár-lekérdezést a MapReduce motorban. Az egyes MapReduce-feladatok kimenete a köztes adatok HDFS van írva. Mivel a TEZ lekicsinyíti a feladatok számát az egyes struktúra-lekérdezésekhez, el tudja kerülni a szükségtelen írásokat.
-* Az **indítási késések csökkentése** . A TEZ jobban képes az indítási késleltetés minimalizálására azáltal, hogy csökkenti az elindításához szükséges leképezések számát, és a teljes optimalizálást is javítja.
-* **Tárolók újrafelhasználása** . Amikor lehetséges, a TEZ újra fogja használni a tárolókat, hogy a rendszer csökkenti a tárolók indításának késleltetését.
-* **Folyamatos optimalizálási technikák** . A fordítási fázisban hagyományosan optimalizálás történt. A bemenetekkel kapcsolatban azonban további információk érhetők el, amelyek lehetővé teszik a jobb optimalizálást a futtatókörnyezet során. A TEZ folyamatos optimalizálási technikákat használ, amelyek lehetővé teszik, hogy a csomagot a futásidejű fázisba optimalizálja.
+* **Irányított aciklikus gráf (Dag) végrehajtása egyetlen feladatokként a MapReduce motorban**. A DAG megköveteli, hogy az egyes Mapper-készleteket egy szűkítő-készlet követi. Ez a követelmény több MapReduce-feladat kikapcsolását okozza az egyes struktúra-lekérdezésekhez. A TEZ nem rendelkezik ilyen korlátozással, és feldolgozhatja a komplex DAG-t, mivel egy feladat minimalizálja a feladat indítási terhelését.
+* **Elkerüli a szükségtelen írásokat**. Több feladat is feldolgozza ugyanazt a kaptár-lekérdezést a MapReduce motorban. Az egyes MapReduce-feladatok kimenete a köztes adatok HDFS van írva. Mivel a TEZ lekicsinyíti a feladatok számát az egyes struktúra-lekérdezésekhez, el tudja kerülni a szükségtelen írásokat.
+* Az **indítási késések csökkentése**. A TEZ jobban képes az indítási késleltetés minimalizálására azáltal, hogy csökkenti az elindításához szükséges leképezések számát, és a teljes optimalizálást is javítja.
+* **Tárolók újrafelhasználása**. Amikor lehetséges, a TEZ újra fogja használni a tárolókat, hogy a rendszer csökkenti a tárolók indításának késleltetését.
+* **Folyamatos optimalizálási technikák**. A fordítási fázisban hagyományosan optimalizálás történt. A bemenetekkel kapcsolatban azonban további információk érhetők el, amelyek lehetővé teszik a jobb optimalizálást a futtatókörnyezet során. A TEZ folyamatos optimalizálási technikákat használ, amelyek lehetővé teszik, hogy a csomagot a futásidejű fázisba optimalizálja.
 
 További információ ezekről a fogalmakról: [Apache TEZ](https://tez.apache.org/).
 
@@ -130,11 +127,11 @@ További információ: [particionált táblák](https://cwiki.apache.org/conflue
 
 ## <a name="use-the-orcfile-format"></a>ORCFile formátum használata
 
-A struktúra a különböző fájlformátumokat támogatja. Példa:
+A struktúra a különböző fájlformátumokat támogatja. Például:
 
-* **Text (szöveg** ): az alapértelmezett fájlformátum, és a legtöbb esetben működik.
-* **Avro** : az együttműködési helyzetekben jól működik.
-* **Ork/parketta** : a legmegfelelőbb a teljesítményhez.
+* **Text (szöveg**): az alapértelmezett fájlformátum, és a legtöbb esetben működik.
+* **Avro**: az együttműködési helyzetekben jól működik.
+* **Ork/parketta**: a legmegfelelőbb a teljesítményhez.
 
 Az ork (optimalizált sor oszlopos) formátuma igen hatékony módszer a struktúra-adatok tárolására. Más formátumokhoz képest az ork a következő előnyökkel jár:
 
@@ -156,7 +153,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ezután szúrja be az adatait az ork táblába az előkészítési táblából. Példa:
+Ezután szúrja be az adatait az ork táblába az előkészítési táblából. Például:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -199,7 +196,7 @@ Több optimalizálási módszer is megvizsgálható, például:
 
 * **Struktúra-gyűjtő:** olyan technika, amely lehetővé teszi, hogy a lekérdezési teljesítmény optimalizálása érdekében a nagy mennyiségű adat fürtbe vagy szegmentálásba kerüljön.
 * **Csatlakozás optimalizálása:** a kaptár lekérdezés-végrehajtásának optimalizálása az összekapcsolások hatékonyságának növelése és a felhasználói célzások szükségességének csökkentése érdekében. További információ: [JOIN Optimization (csatlakozás optimalizálása](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)).
-* **Növelje a szűkítőket** .
+* **Növelje a szűkítőket**.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505482"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944166"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Riasztási szabályok vagy műveleti szabályok frissítése, ha a célként megadott erőforrás egy másik Azure-régióba kerül át
 
@@ -76,7 +76,7 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
 ### <a name="change-scope-of-a-rule-from-the-azure-portal"></a>Szabály hatókörének módosítása a Azure Portal
 
 1. A gombra kattintva nyissa meg az előző lépésben azonosított szabályt.
-2. Az **erőforrás**területen kattintson a **Szerkesztés** elemre, és módosítsa a hatókört igény szerint.
+2. Az **erőforrás** területen kattintson a **Szerkesztés** elemre, és módosítsa a hatókört igény szerint.
 3. Szükség szerint módosítsa a szabály egyéb tulajdonságait.
 4. Kattintson a **Mentés** gombra.
 
@@ -88,7 +88,7 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
    1. Navigáljon az erőforráscsoportok szakaszhoz a portálon, és nyissa meg a szabályt tartalmazó erőforráscsoportot.
    2. Az Áttekintés szakaszban jelölje be a **rejtett típus megjelenítése** jelölőnégyzetet, majd a megfelelő típusú szabály szerint szűrje a szűrőt.
    3. A részletek megtekintéséhez válassza ki a megfelelő szabályt.
-   4. A **Beállítások**területen válassza a **sablon exportálása**lehetőséget.
+   4. A **Beállítások** területen válassza a **sablon exportálása** lehetőséget.
 2. Módosítsa a sablont. Szükség esetén két szabályra osztható (amelyek a fentiekben leírtak szerint a metrikus riasztások bizonyos eseteire vonatkoznak).
 3. Telepítse újra a sablont.
 
@@ -106,10 +106,10 @@ Ha a hatókörben lévő erőforrások **közül csak néhány** lett áthelyezv
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Szabály hatókörének módosítása az Azure CLI használatával
 
-1.  A meglévő szabály beszerzése ([metrikus riasztások](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [műveletnapló riasztásai](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+1.  A meglévő szabály beszerzése ([metrikus riasztások](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [műveletnapló riasztásai](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  A szabály hatókörének frissítése közvetlenül ([metrikus riasztások](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [műveletnapló riasztásai](/cli/azure/monitor/activity-log/alert/scope))
 3.  Szükség esetén két szabályra osztható (amelyek a fentiekben leírtak szerint a metrikus riasztások bizonyos eseteire vonatkoznak).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Riasztási értesítések](alerts-troubleshoot.md), a [metrikus riasztások](alerts-troubleshoot-metric.md)és a [naplózási riasztások](alerts-troubleshoot-log.md)egyéb problémáinak kijavításáról. 

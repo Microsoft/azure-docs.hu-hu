@@ -2,18 +2,15 @@
 title: Azure Storage-megoldások a HDInsight-beli ML-szolgáltatásokhoz – Azure
 description: További információ a HDInsight ML-szolgáltatásaival elérhető különböző tárolási lehetőségekről
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855293"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943913"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások az Azure HDInsight ML-szolgáltatásaihoz
 
@@ -21,18 +18,18 @@ A HDInsight ML-szolgáltatásai különböző tárolási megoldásokat használh
 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
 - [1. generációs Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Azure file Storage](https://azure.microsoft.com/services/storage/files/)
+- [Azure File Storage](https://azure.microsoft.com/services/storage/files/)
 
 Lehetősége van több Azure Storage-fiók vagy-tároló elérésére is a HDInsight-fürttel. Az Azure file Storage egy kényelmes adattárolási lehetőség a peremhálózati csomóponton, amely lehetővé teszi egy Azure Storage-fájlmegosztás csatlakoztatását, például a Linux fájlrendszert. Az Azure-fájlmegosztás azonban bármely olyan rendszer számára csatlakoztatható és használható, amely támogatott operációs rendszerrel rendelkezik, például Windows vagy Linux.
 
-Ha Apache Hadoop fürtöt hoz létre a HDInsight-ben, akkor egy **Azure Blob Storage** -fiókot vagy **Data Lake Storage Gen1**kell megadnia. A fiókból egy adott tároló tárolja a létrehozott fürt fájlrendszerét (például a Hadoop elosztott fájlrendszer). További információt és útmutatást a következő témakörben talál:
+Ha Apache Hadoop fürtöt hoz létre a HDInsight-ben, akkor egy **Azure Blob Storage** -fiókot vagy **Data Lake Storage Gen1** kell megadnia. A fiókból egy adott tároló tárolja a létrehozott fürt fájlrendszerét (például a Hadoop elosztott fájlrendszer). További információt és útmutatást a következő témakörben talál:
 
 - [Az Azure Blob Storage használata a HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Azure Blob Storage-fiókok használata ML Services-fürttel
 
-Ha több Storage-fiókot adott meg a ML-szolgáltatások fürtjének létrehozásakor, az alábbi utasítások azt ismertetik, hogyan használhatók másodlagos fiókok az adathozzáféréshez és a műveletekhez egy ML-szolgáltatások fürtjén. Tegyük fel, hogy a következő Storage-fiókok és-tárolók: **storage1** és a **container1**nevű alapértelmezett tároló, valamint a **storage2** és a **container2**.
+Ha több Storage-fiókot adott meg a ML-szolgáltatások fürtjének létrehozásakor, az alábbi utasítások azt ismertetik, hogyan használhatók másodlagos fiókok az adathozzáféréshez és a műveletekhez egy ML-szolgáltatások fürtjén. Tegyük fel, hogy a következő Storage-fiókok és-tárolók: **storage1** és a **container1** nevű alapértelmezett tároló, valamint a **storage2** és a **container2**.
 
 > [!WARNING]  
 > A teljesítmény érdekében a HDInsight-fürt ugyanabban az adatközpontban jön létre, mint a megadott elsődleges Storage-fiók. A HDInsight-fürttől eltérő helyen lévő Storage-fiók használata nem támogatott.
@@ -120,11 +117,11 @@ Data Lake Storage Gen1 a HDInsight-fürthöz társított Azure Active Directory 
 
 1. A HDInsight-fürt létrehozásakor válassza ki a **fürt Azure ad-identitás** lehetőséget az **adatforrás** lapon.
 
-2. A **fürt Azure ad-identitása** párbeszédpanel **Active Directory-szolgáltatás kiválasztása**területén válassza az **új létrehozása**lehetőséget.
+2. A **fürt Azure ad-identitása** párbeszédpanel **Active Directory-szolgáltatás kiválasztása** területén válassza az **új létrehozása** lehetőséget.
 
 Miután megadta a szolgáltatásnév nevét, és létrehoz egy jelszót, kattintson a ADLS- **hozzáférés kezelése** elemre az egyszerű szolgáltatásnév a Data Lake Storage való hozzárendeléséhez.
 
-Egy vagy több Data Lake Storage Gen1-fiókhoz is hozzá lehet adni egy fürthöz való hozzáférést a fürt létrehozása után. Nyissa meg a Data Lake Storage Gen1 Azure Portal bejegyzését, és lépjen a **Adatkezelő > Access > Hozzáadás**gombra.
+Egy vagy több Data Lake Storage Gen1-fiókhoz is hozzá lehet adni egy fürthöz való hozzáférést a fürt létrehozása után. Nyissa meg a Data Lake Storage Gen1 Azure Portal bejegyzését, és lépjen a **Adatkezelő > Access > Hozzáadás** gombra.
 
 ### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Data Lake Storage Gen1 elérése a HDInsight ML-szolgáltatásaiból
 

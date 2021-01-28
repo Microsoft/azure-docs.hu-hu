@@ -4,17 +4,16 @@ description: Gyakori kérdések a HDInsight
 keywords: gyakori kérdések, GYIK
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882398"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946023"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Gyakori kérdések
 
@@ -178,7 +177,7 @@ A virtuális gépek tartományhoz való csatlakoztatásához tartományvezérlő
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Használhatok önaláírt tanúsítványt egy HRE-DS Secure LDAP-beállításban, és kiépíteni egy ESP-fürtöt?
 
-A hitelesítésszolgáltató által kiállított tanúsítvány használata ajánlott. Az ESP esetében azonban az önaláírt tanúsítványok használata is támogatott. További információ:
+A hitelesítésszolgáltató által kiállított tanúsítvány használata ajánlott. Az ESP esetében azonban az önaláírt tanúsítványok használata is támogatott. További információkért lásd:
 
 - [Az Active Directory Domain Services engedélyezése](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -213,7 +212,7 @@ A LLAP biztonsági okokból (Apache Ranger) van engedélyezve, nem pedig a telje
 A cél kétféleképpen valósítható meg: 1 – újból létrehozhatja a fürtöt, és hozzáadhatja a további csoportot a fürt létrehozásakor. Ha hatókörön belüli szinkronizálást használ a HRE-DS-ben, győződjön meg arról, hogy a B csoport szerepel a hatókörön belüli szinkronizálásban.
 2 – a csoport hozzáadása az ESP-fürt létrehozásához használt előző csoport beágyazott alcsoportjaként. Ha például egy csoporttal hozta létre az ESP-fürtöt `A` , később a csoportba `B` beágyazott alcsoportként, `A` majd körülbelül egy óra elteltével szinkronizálja, és automatikusan elérhetővé válik a fürtben. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Hozzáadhatok Azure Data Lake Storage Gen2 egy meglévő HDInsight-fürthöz további Storage-fiókként?
 
@@ -255,7 +254,7 @@ done
 
 Jelenleg nem létezik Ranger beépülő modul a blob Storage-hoz és Azure Data Lake Storage Gen1 vagy Gen2. Az ESP-fürtök esetében Azure Data Lake Storaget kell használnia. A HDFS-eszközök használatával a fájlrendszer szintjén legalább a részletes kiőrlési engedélyeket manuálisan is beállíthatja. Emellett a Azure Data Lake Storage használatakor az ESP-fürtök a fájlrendszer-hozzáférés-vezérlést Azure Active Directory használatával hajtják végre a fürt szintjén. 
 
-Az adathozzáférési szabályzatokat a Azure Storage Explorer használatával rendelheti hozzá a felhasználók biztonsági csoportjaihoz. További információ:
+Az adathozzáférési szabályzatokat a Azure Storage Explorer használatával rendelheti hozzá a felhasználók biztonsági csoportjaihoz. További információkért lásd:
 
 - [Hogyan az Azure AD-felhasználók számára a kaptár vagy más szolgáltatások használatával történő adatlekérdezésre vonatkozó engedélyeket Data Lake Storage Gen2.](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Fájl-és könyvtár-szintű engedélyek beállítása Azure Storage Explorer és Azure Data Lake Storage Gen2 használatával](../storage/blobs/data-lake-storage-explorer.md)

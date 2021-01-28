@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5d06c251ce16aff56a3645f5032cce4e27d5fc9e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 412556f3bd517539fc8ccad94c4de52226f16597
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216886"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946222"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Hálózati biztonsági csoport erőforrás-naplózása
 
@@ -93,7 +93,7 @@ Naplók megtekintése és elemzése. További információt a [naplók megtekint
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure CLI-t a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a parancssori felületet a számítógépről futtatja, akkor a 2.0.38 vagy újabb verzióra van szükség. Futtassa a parancsot a `az --version` számítógépen, és keresse meg a telepített verziót. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört. Ha helyileg futtatja a CLI-t, akkor az Azure-ba való bejelentkezéshez is futtatnia kell `az login` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
+Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja az Azure CLI-t a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a parancssori felületet a számítógépről futtatja, akkor a 2.0.38 vagy újabb verzióra van szükség. Futtassa a parancsot a `az --version` számítógépen, és keresse meg a telepített verziót. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. Ha helyileg futtatja a CLI-t, akkor az Azure-ba való bejelentkezéshez is futtatnia kell `az login` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
 Az erőforrás-naplózás engedélyezéséhez egy meglévő NSG azonosítóra van szükség. Ha nem rendelkezik meglévő NSG, létrehozhat egyet az [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)paranccsal.
 

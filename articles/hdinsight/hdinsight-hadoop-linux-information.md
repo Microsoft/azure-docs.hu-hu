@@ -1,19 +1,16 @@
 ---
 title: Tippek a Hadoop Linux-alapú HDInsight való használatához – Azure
 description: A Linux-alapú HDInsight-(Hadoop-) fürtöket az Azure-felhőben futó, ismerős Linux-környezetekben implementálhatja.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945653"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -24,9 +21,9 @@ Az Azure HDInsight-fürtök az Azure-felhőben futó, ismerős Linux-környezete
 A jelen dokumentumban ismertetett lépések többsége a következő segédprogramokat használja, amelyeket esetleg telepíteni kell a rendszerre.
 
 * [curl](https://curl.haxx.se/) – a web-alapú szolgáltatásokkal való kommunikációra szolgál.
-* **jQ** , parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* **jQ**, parancssori JSON-processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 * [Azure CLI](/cli/azure/install-azure-cli) – az Azure-szolgáltatások távoli felügyeletére szolgál.
-* **Egy SSH-ügyfél** . További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Egy SSH-ügyfél**. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Felhasználók
 
@@ -92,8 +89,8 @@ További információ: [Apache Hadoop Services által használt portok a HDInsig
 
 A Hadoop kapcsolatos fájlok a fürtcsomópontokon találhatók `/usr/hdp` . Ez a könyvtár a következő alkönyvtárakat tartalmazza:
 
-* **2.6.5.3009-43** : a könyvtár neve a HDInsight által használt Hadoop platform verziója. A fürtön lévő szám különbözhet az itt felsoroltak számától.
-* **jelenlegi** : Ez a könyvtár a **2.6.5.3009-43** könyvtár alkönyvtáraira mutató hivatkozásokat tartalmaz. Ez a könyvtár létezik, így nem kell megjegyeznünk a verziószámot.
+* **2.6.5.3009-43**: a könyvtár neve a HDInsight által használt Hadoop platform verziója. A fürtön lévő szám különbözhet az itt felsoroltak számától.
+* **jelenlegi**: Ez a könyvtár a **2.6.5.3009-43** könyvtár alkönyvtáraira mutató hivatkozásokat tartalmaz. Ez a könyvtár létezik, így nem kell megjegyeznünk a verziószámot.
 
 Például az adatfájlok és a JAR-fájlok a Hadoop elosztott fájlrendszer címen és címen találhatók `/example` `/HdiSamples` .
 
@@ -189,7 +186,7 @@ A tárolási adatokat a Azure Portal használatával is megkeresheti a következ
 
 A HDInsight-fürtön kívül különböző módokon férhet hozzá az adatokhoz. Az alábbiakban néhány olyan segédprogramot és SDK-t találhat, amelyek segítségével dolgozhat az adataival:
 
-Ha az __Azure Blob Storage__ -t használja, tekintse meg a következő hivatkozásokat az adatai eléréséhez:
+Ha az __Azure Blob Storage__-t használja, tekintse meg a következő hivatkozásokat az adatai eléréséhez:
 
 * [Azure CLI](/cli/azure/install-az-cli2): Command-Line felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy a `az storage blob` blob-specifikus parancsok használatához.
 * [blobxfer.py](https://github.com/Azure/blobxfer): a Blobok Azure Storage-ban való használatához használható Python-szkript.
@@ -247,7 +244,7 @@ Ha egy összetevő más verzióját szeretné használni, töltse fel a szüksé
 >
 > Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. Ez a probléma megoldásához vezethet, vagy megkérdezheti, hogy a nyílt forráskódú technológiákhoz elérhető csatornákat szeretne-e felvenni. Többek között számos közösségi webhely használható, például: [Microsoft Q&a HDInsight-hez tartozó kérdés oldalát](/answers/topics/azure-hdinsight.html) [https://stackoverflow.com](https://stackoverflow.com) . Emellett az Apache-projektek is rendelkeznek projekt-webhelyekkel [https://apache.org](https://apache.org) , például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari REST API használatával](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)

@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858586"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944982"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -161,7 +161,7 @@ Azure SQL Database rendelkezik egy "forrás" particionálás nevű egyedi partic
 
 #### <a name="isolation-level"></a>Elkülönítési szint
 
-Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)című témakört.
+Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](/sql/connect/jdbc/understanding-isolation-levels)című témakört.
 
 #### <a name="read-using-query"></a>Olvasás a lekérdezés használatával
 
@@ -208,7 +208,7 @@ Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok l
 ![Indexek letiltása](media/data-flow/disable-indexes-sql.png "Indexek letiltása")
 
 > [!WARNING]
-> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints) ismerteti.
+> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](/sql/relational-databases/indexes/disable-indexes-and-constraints) ismerteti.
 
 #### <a name="scaling-up-your-database"></a>Az adatbázis vertikális felskálázása
 
@@ -216,7 +216,7 @@ Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok l
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure szinapszis Analytics-mosogatók
 
-Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi az ADF számára az [SQL Copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) használatával történő írást, amely hatékonyan tölti fel az adatmennyiséget. Az átmeneti tárolás használatakor Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia.
+Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi az ADF számára az [SQL Copy parancs](/sql/t-sql/statements/copy-into-transact-sql) használatával történő írást, amely hatékonyan tölti fel az adatmennyiséget. Az átmeneti tárolás használatakor Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia.
 
 Az előkészítésen kívül ugyanezek az ajánlott eljárások az Azure szinapszis Analyticsre is érvényesek Azure SQL Databaseként.
 
@@ -318,7 +318,7 @@ Az adatfolyamatok lehetővé teszik, hogy csoportosítsa a mosogatókat csoporto
 
 A folyamat "fogadó tulajdonságai" szakasza alatt az adatfolyamatok végrehajtása művelettel bekapcsolhatja a párhuzamos fogadó betöltését. Ha engedélyezi a "Futtatás párhuzamosan" lehetőséget, akkor az adatfolyamatokat a csatlakoztatott mosdóba kell írni, nem pedig szekvenciális módon. A párhuzamos lehetőség kihasználásához a nyelők csoportba kell tartoznia, és ugyanahhoz az adatfolyamhoz kell csatlakoznia egy új ág vagy feltételes felosztás használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 

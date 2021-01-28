@@ -10,33 +10,33 @@ keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív megold�
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: e276d96e8a81b435ec4d0c270cf818555d512ae0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c52d935738916ebc546315d9913d7a48c77cbf9a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368899"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945010"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure Command-Line Interface (CLI) használatával
 
-Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)való használatának megkezdéséhez használható.
+Ez a rövid útmutató az Azure Cognitive Services [Azure parancssori felületen (CLI)](/cli/azure/install-azure-cli)való használatának megkezdéséhez használható.
 
 Az Azure Cognitive Services a REST API-kkal rendelkező felhőalapú szolgáltatások és az ügyféloldali kódtár SDK-k, amelyek segítségével a fejlesztők kognitív intelligenciát hozhatnak létre az alkalmazásokban anélkül, hogy közvetlen mesterséges intelligencia (AI) vagy adattudományi ismereteket vagy ismereteiket kellene létrehozniuk. Az Azure Cognitive Services lehetővé teszi, hogy a fejlesztők könnyen hozzá tudják adni a kognitív funkciókat az alkalmazásaikban olyan kognitív megoldásokkal, amelyek megtekinthetik, meghallgatják, megértették, megértik, sőt, akár
 
 A Cognitive Services az Azure-előfizetésében létrehozott Azure- [erőforrások](../azure-resource-manager/management/manage-resources-portal.md) jelölik. Az erőforrás létrehozása után az Ön által létrehozott kulcsokkal és végponttal hitelesítheti alkalmazásait.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan regisztrálhat az Azure Cognitive Servicesra, és hogyan hozhat létre egy olyan fiókot, amely az [Azure parancssori felületének (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)használatával egyetlen szolgáltatást vagy többszolgáltatásos előfizetéssel rendelkezik. Ezeket a szolgáltatásokat az Azure- [erőforrások](../azure-resource-manager/management/manage-resources-portal.md)képviselik, amelyek lehetővé teszik egy vagy több azure-Cognitive Services API-khoz való kapcsolódást.
+Ebből a rövid útmutatóból megtudhatja, hogyan regisztrálhat az Azure Cognitive Servicesra, és hogyan hozhat létre egy olyan fiókot, amely az [Azure parancssori felületének (CLI)](/cli/azure/install-azure-cli)használatával egyetlen szolgáltatást vagy többszolgáltatásos előfizetéssel rendelkezik. Ezeket a szolgáltatásokat az Azure- [erőforrások](../azure-resource-manager/management/manage-resources-portal.md)képviselik, amelyek lehetővé teszik egy vagy több azure-Cognitive Services API-khoz való kapcsolódást.
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Érvényes Azure-előfizetés – [hozzon létre egyet](https://azure.microsoft.com/free/cognitive-services) ingyen.
-* Az [Azure parancssori felülete (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Az [Azure parancssori felülete (CLI)](/cli/azure/install-azure-cli)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Az Azure CLI telepítése és bejelentkezés
 
-Telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t. Ha be szeretné jelentkezni a CLI helyi telepítésére, futtassa az az [login](/cli/azure/reference-index#az-login) parancsot:
+Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t. Ha be szeretné jelentkezni a CLI helyi telepítésére, futtassa az az [login](/cli/azure/reference-index#az-login) parancsot:
 
 ```azurecli-interactive
 az login
@@ -80,7 +80,7 @@ az group create \
 
 ### <a name="multi-service"></a>Több szolgáltatás
 
-| Szolgáltatás                    | Erőforrás                      |
+| Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
 | Több szolgáltatás. További részletekért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/) oldalt.            | `CognitiveServices`     |
 
@@ -90,9 +90,9 @@ az group create \
 
 ### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Erőforrás                      |
+| Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
-| Számítógépes látástechnológia            | `ComputerVision`          |
+| Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
 | Arcfelismerés                       | `Face`                    |
@@ -101,7 +101,7 @@ az group create \
 
 ### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Erőforrás                  |
+| Szolgáltatás            | Altípus                  |
 |--------------------|-----------------------|
 | Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
@@ -109,16 +109,16 @@ az group create \
 | Bing Search        | `Bing.Search.v7`      |
 | Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Beszéd
+### <a name="speech"></a>Speech
 
-| Szolgáltatás            | Erőforrás                 |
+| Szolgáltatás            | Altípus                 |
 |--------------------|----------------------|
 | Beszédszolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 ### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Erőforrás                |
+| Szolgáltatás            | Altípus                |
 |--------------------|---------------------|
 | Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -128,13 +128,13 @@ az group create \
 
 ### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Erőforrás               |
+| Szolgáltatás           | Altípus               |
 |-------------------|--------------------|
 | Anomáliadetektor  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 
-Az elérhető kognitív szolgáltatás "típusai" listáját az az [cognitiveservices Account List-kinds](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) paranccsal találja:
+Az elérhető kognitív szolgáltatás "típusai" listáját az az [cognitiveservices Account List-kinds](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-kinds) paranccsal találja:
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -142,7 +142,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>Új erőforrás hozzáadása az erőforráscsoporthoz
 
-Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja az az [cognitiveservices Account Create](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) parancsot. Ezzel a paranccsal új számlázandó erőforrást adhat hozzá a korábban létrehozott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet:
+Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja az az [cognitiveservices Account Create](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-create) parancsot. Ezzel a paranccsal új számlázandó erőforrást adhat hozzá a korábban létrehozott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet:
 
 Az alábbi paranccsal létrehozhat egy F0 (ingyenes) erőforrást az anomália-detektorhoz `anomaly-detector-resource` .
 
@@ -160,13 +160,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>Az erőforrás kulcsainak beolvasása
 
-A Command-Line felület (CLI) helyi telepítésére való bejelentkezéshez használja az az [login](/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
+A Command-Line felület (CLI) helyi telepítésére való bejelentkezéshez használja az az [login](/cli/azure/reference-index#az-login) parancsot.
 
 ```azurecli-interactive
 az login
 ```
 
-A kognitív szolgáltatás erőforrásaihoz tartozó kulcsok beszerzéséhez használja az az [cognitiveservices Account Keys List](/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) parancsot.
+A kognitív szolgáltatás erőforrásaihoz tartozó kulcsok beszerzéséhez használja az az [cognitiveservices Account Keys List](/cli/azure/cognitiveservices/account/keys#az-cognitiveservices-account-keys-list) parancsot.
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -185,7 +185,7 @@ A díjszabási szintek (és a felszámított összeg) a hitelesítési adatok ha
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Az erőforrás aktuális kvótájának beolvasása
 
-Használja az az [cognitiveservices Account List-](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) use parancsot a kognitív szolgáltatás erőforrásai használatának megszerzéséhez.
+Használja az az [cognitiveservices Account List-](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-usage) use parancsot a kognitív szolgáltatás erőforrásai használatának megszerzéséhez.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

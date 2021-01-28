@@ -1,18 +1,15 @@
 ---
 title: Lemezterület kezelése az Azure HDInsight
 description: Hibaelhárítási lépések és lehetséges megoldások a lemezterülettel kapcsolatos problémák kezeléséhez az Azure HDInsight-fürtökkel való interakció során.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
-ms.openlocfilehash: 82044796cca3e135c15e750d6706fe504622ebdb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7164494cb08c4b419b9e4d96075ace3e52187497
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540346"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944827"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Lemezterület kezelése az Azure HDInsight
 
@@ -22,7 +19,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. Navigáljon a **kaptár**  >  **konfigurációk**  >  **speciális**  >  **speciális kaptár-log4j** . Tekintse át a következő beállításokat:
+1. Navigáljon a **kaptár**  >  **konfigurációk**  >  **speciális**  >  **speciális kaptár-log4j**. Tekintse át a következő beállításokat:
 
     * `hive.root.logger=DEBUG,RFA`. Ez az alapértelmezett érték, és a [naplózási szintet](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) módosítsa a `INFO` kevesebb napló bejegyzéseinek kinyomtatásához.
 
@@ -38,7 +35,7 @@ Tekintse át a következő konfigurációkat:
 
     1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-    1. Navigáljon a **struktúra** -  >  **konfigurációk**  >  **speciális**  >  **erőforrás-kezelőjéhez** . Ellenőrizze, hogy be van-e jelölve a **naplózási összesítés engedélyezése** jelölőnégyzet. Ha le van tiltva, a name csomópontok helyileg megőrzik a naplókat, és nem összesítik azokat a távoli tárolóban az alkalmazás befejezésekor vagy megszakításakor.
+    1. Navigáljon a **struktúra**-  >  **konfigurációk**  >  **speciális**  >  **erőforrás-kezelőjéhez**. Ellenőrizze, hogy be van-e jelölve a **naplózási összesítés engedélyezése** jelölőnégyzet. Ha le van tiltva, a name csomópontok helyileg megőrzik a naplókat, és nem összesítik azokat a távoli tárolóban az alkalmazás befejezésekor vagy megszakításakor.
 
 * Győződjön meg arról, hogy a fürt mérete megfelelő a számítási feladathoz. Lehetséges, hogy a számítási feladat nemrég módosult, vagy előfordulhat, hogy a fürt átméretezése megtörtént. A fürt vertikális [Felskálázása nagyobb számítási](../hdinsight-scaling-best-practices.md) feladatokhoz.
 

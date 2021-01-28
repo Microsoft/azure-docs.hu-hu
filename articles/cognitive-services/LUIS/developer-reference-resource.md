@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: db9a915749799ee366d645994bd0d18c53530f40
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 08a1965aadf8f50625e54d7c5e3b3f6a44c0bbd4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946178"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK, REST és CLI fejlesztői erőforrások a Language Understandinghoz (LUIS)
 
@@ -25,7 +25,7 @@ Az eszközön alapuló dokumentáció keresése:
 
 * [Azure CLI](/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
-* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
+* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/#cognitive_services)
 
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Szerzői és előrejelzési kérelmek Language Understanding
@@ -88,10 +88,10 @@ Az [alkalmazás sémája](app-schema-definition.md) importálva van, `.json` vag
 
 |Nyelv |Dokumentáció|Csomag|Rövid útmutatók|
 |--|--|--|--|
-|C#|[Tartalomkészítés](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Jóslás](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet készítése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet előrejelzése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Tartalomkészítés](./client-libraries-rest-api.md?pivots=rest-api)<br>[Lekérdezések előrejelzése](./client-libraries-rest-api.md?pivots=rest-api)|
-|Indítás|[Szerzői műveletek és előrejelzések](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
-|Java|[Szerzői műveletek és előrejelzések](/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven-készítés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-előrejelzés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Tartalomkészítés](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Jóslás](/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM készítése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Tartalomkészítés](./client-libraries-rest-api.md?pivots=rest-api)<br>[Jóslás](./client-libraries-rest-api.md?pivots=rest-api)|
+|C#|[Tartalomkészítés](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring)</br>[Jóslás](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime)|[NuGet készítése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet előrejelzése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Tartalomkészítés](./client-libraries-rest-api.md?pivots=rest-api)<br>[Lekérdezések előrejelzése](./client-libraries-rest-api.md?pivots=rest-api)|
+|Go|[Szerzői műveletek és előrejelzések](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
+|Java|[Szerzői műveletek és előrejelzések](/java/api/overview/azure/cognitiveservices/client/languageunderstanding)|[Maven-készítés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-előrejelzés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
+|JavaScript|[Tartalomkészítés](/javascript/api/@azure/cognitiveservices-luis-authoring/)<br>[Jóslás](/javascript/api/@azure/cognitiveservices-luis-runtime/)|[NPM készítése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Tartalomkészítés](./client-libraries-rest-api.md?pivots=rest-api)<br>[Jóslás](./client-libraries-rest-api.md?pivots=rest-api)|
 |Python|[Szerzői műveletek és előrejelzések](./client-libraries-rest-api.md?pivots=rest-api)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tartalomkészítés](./client-libraries-rest-api.md?pivots=rest-api)<br>[Jóslás](./client-libraries-rest-api.md?pivots=rest-api)|
 
 
@@ -123,7 +123,7 @@ A bot Framework [számos eszközt](https://github.com/microsoft/botbuilder-tools
 * A [robot Framework zeneszerzője](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrált fejlesztői eszköz a fejlesztők és a több-fegyelmi csapatok számára a robotok és a társalgási tapasztalatok létrehozásához a Microsoft bot Framework használatával
 * [Robot Framework-minták](https://github.com/microsoft/botbuilder-samples) – #C, JavaScript, írógéppel és Python
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A gyakori http- [hibakódok](luis-reference-response-codes.md) ismertetése
 * Az API-k és SDK-k [hivatkozási dokumentációja](../../index.yml)

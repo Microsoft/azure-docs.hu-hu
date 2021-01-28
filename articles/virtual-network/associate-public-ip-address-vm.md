@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223023"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945155"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Nyilvános IP-cím hozzárendelése virtuális géphez
 
@@ -65,7 +65,7 @@ Használhatja a [Azure Portal](#azure-portal), az Azure [parancssori felületét
 Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)-t, vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi CLI-parancsok **kipróbálása** gombját. A **kipróbálás** gombra kattintva meghívja a Cloud shell, amelybe bejelentkezhet az Azure-fiókjába.
 
 1. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be az Azure-ba a használatával `az login` .
-2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. A nyilvános IP-cím IP-konfigurációhoz való hozzárendeléséhez használja az az [Network NIC-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) parancsot. A következő példa egy *myVMPublicIP* nevű meglévő nyilvános IP-címet társít a *ipconfigmyVM* nevű meglévő hálózati adapter nevű *myVMVMNic* , amely egy *myResourceGroup* nevű erőforráscsoport.
+2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. A nyilvános IP-cím IP-konfigurációhoz való hozzárendeléséhez használja az az [Network NIC-IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) parancsot. A következő példa egy *myVMPublicIP* nevű meglévő nyilvános IP-címet társít a *ipconfigmyVM* nevű meglévő hálózati adapter nevű *myVMVMNic* , amely egy *myResourceGroup* nevű erőforráscsoport.
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
      --public-ip-address myVMPublicIP
    ```
 
-   - Ha nem rendelkezik meglévő nyilvános IP-címmel, akkor hozzon létre egyet az az [Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) paranccsal. A következő parancs például egy *myVMPublicIP* nevű nyilvános IP-címet hoz létre egy *myResourceGroup* nevű erőforráscsoporthoz.
+   - Ha nem rendelkezik meglévő nyilvános IP-címmel, akkor hozzon létre egyet az az [Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal. A következő parancs például egy *myVMPublicIP* nevű nyilvános IP-címet hoz létre egy *myResourceGroup* nevű erőforráscsoporthoz.
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +84,7 @@ Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
      > [!NOTE]
      > Az előző parancs egy nyilvános IP-címet hoz létre, amely alapértelmezett értékekkel rendelkezik számos, a testre szabható beállításhoz. Az összes nyilvános IP-cím beállításával kapcsolatos további tudnivalókért tekintse meg [a nyilvános IP-cím létrehozása](virtual-network-public-ip-address.md#create-a-public-ip-address)című témakört. A cím az egyes Azure-régiókban használt nyilvános IP-címek készletéhez van hozzárendelve. Az egyes régiókban használt címkészlet listáját itt tekintheti meg: [Microsoft Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
 
-   - Ha nem ismeri a virtuális géphez csatlakoztatott hálózati adapter nevét, az az [VM NIC List](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) paranccsal tekintheti meg őket. A következő parancs például felsorolja a *myVM* nevű virtuális géphez csatolt hálózati adapterek nevét egy *myResourceGroup* nevű erőforráscsoport:
+   - Ha nem ismeri a virtuális géphez csatlakoztatott hálózati adapter nevét, az az [VM NIC List](/cli/azure/vm/nic#az-vm-nic-list) paranccsal tekintheti meg őket. A következő parancs például felsorolja a *myVM* nevű virtuális géphez csatolt hálózati adapterek nevét egy *myResourceGroup* nevű erőforráscsoport:
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +98,13 @@ Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
 
      Az előző példában a *myVMVMNic* a hálózati adapter neve.
 
-   - Ha nem ismeri a hálózati adapter IP-konfigurációjának nevét, az az [Network NIC IP-config List](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) paranccsal kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter IP-konfigurációinak neveit egy *myResourceGroup* nevű erőforráscsoport:
+   - Ha nem ismeri a hálózati adapter IP-konfigurációjának nevét, az az [Network NIC IP-config List](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) paranccsal kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter IP-konfigurációinak neveit egy *myResourceGroup* nevű erőforráscsoport:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. Tekintse meg az IP-konfigurációhoz rendelt nyilvános IP-címet az az [VM List-IP-Addresss](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) paranccsal. A következő példa egy *myVM* nevű meglévő virtuális géphez HOZZÁRENDELT IP-címeket mutatja be egy *myResourceGroup* nevű erőforráscsoporthoz.
+3. Tekintse meg az IP-konfigurációhoz rendelt nyilvános IP-címet az az [VM List-IP-Addresss](/cli/azure/vm#az-vm-list-ip-addresses) paranccsal. A következő példa egy *myVM* nevű meglévő virtuális géphez HOZZÁRENDELT IP-címeket mutatja be egy *myResourceGroup* nevű erőforráscsoporthoz.
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table

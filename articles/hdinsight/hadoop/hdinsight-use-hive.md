@@ -1,19 +1,16 @@
 ---
 title: Mi az Apache Hive és a HiveQL – Azure HDInsight
 description: A Apache Hive egy adattárház-rendszer Apache Hadoop számára. A kaptárban tárolt adatlekérdezéseket a Transact-SQL-hez hasonló HiveQL használatával kérdezheti le. Ebből a dokumentumból megtudhatja, hogyan használható a kaptár és a HiveQL az Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540397"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944286"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
 
@@ -23,12 +20,12 @@ A struktúra lehetővé teszi a nagy strukturálatlan adatmennyiségek struktúr
 
 A HDInsight többféle típusú fürtöt biztosít, amelyek meghatározott számítási feladatokhoz vannak hangolva. A következő típusú fürtök leggyakrabban a kaptár-lekérdezésekhez használatosak:
 
-|Fürt típusa |Leírás|
+|Fürt típusa |Description|
 |---|---|
 |Interaktív lekérdezés|Hadoop-fürt, amely [kis késleltetésű analitikai feldolgozási (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkciókat biztosít az interaktív lekérdezések válaszideje érdekében. További információ: az [interaktív lekérdezés elindítása a HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentumban.|
 |Hadoop|Hadoop-fürt, amely a kötegelt feldolgozási feladatokhoz van beállítva. További információ: [Start with apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) Document.|
 |Spark|A Apache Spark beépített funkcionalitással rendelkezik a struktúra használatáról. További információ: [Start with apache Spark on HDInsight](../spark/apache-spark-jupyter-spark-sql.md) Document.|
-|A HBase|A HiveQL használható az Apache HBase tárolt adatlekérdezéshez. További információ: az [Apache HBase használata a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) -dokumentumban.|
+|HBase|A HiveQL használható az Apache HBase tárolt adatlekérdezéshez. További információ: az [Apache HBase használata a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) -dokumentumban.|
 
 ## <a name="how-to-use-hive"></a>A kaptár használata
 
@@ -72,14 +69,14 @@ A kaptár által támogatott fájlformátumokkal kapcsolatos további informáci
 
 A struktúra két típusú táblát hozhat létre:
 
-* __Belső__ : a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a `/hive/warehouse/` fürt alapértelmezett tárolójában található.
+* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a `/hive/warehouse/` fürt alapértelmezett tárolójában található.
 
     Belső táblák használata, ha a következő feltételek valamelyike teljesül:
 
     * Az adatmennyiség ideiglenes.
     * Azt szeretné, hogy a struktúra kezelje a tábla és az adatmennyiség életciklusát.
 
-* __Külső__ : a rendszer az adatraktáron kívül tárolja az adattárolást. Az adattárolás a fürt által elérhető bármely tárolóban lehetséges.
+* __Külső__: a rendszer az adatraktáron kívül tárolja az adattárolást. Az adattárolás a fürt által elérhető bármely tárolóban lehetséges.
 
     Külső táblák használata, ha a következő feltételek valamelyike teljesül:
 
@@ -207,7 +204,7 @@ További információt az [Azure Feature Pack](/sql/integration-services/azure-f
 
 Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie és a kaptár használatával kapcsolatos további információkért tekintse meg az [Apache Oozie használata munkafolyamat-dokumentum definiálásához és futtatásához](../hdinsight-use-oozie-linux-mac.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogy mi a kaptár, és hogyan használható a Hadoop-ben a HDInsight-ben, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight szolgáltatással való munkavégzés más módszereit.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f37d0779f245301b3750329658a580dc3f9e42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328870"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946207"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>A Windows Azure Diagnostics bővítmény (WAD) telepítése és konfigurálása
 Az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) olyan Azure monitor ügynöke, amely a vendég operációs rendszerből és az Azure-beli virtuális gépek és egyéb számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a Windows diagnosztikai bővítmény telepítését és konfigurálását, valamint az adatok tárolásának és az Azure Storage-fiókban tárolt információk leírásának ismertetését.
@@ -57,7 +57,7 @@ A diagnosztikai bővítményt telepítheti és konfigurálhatja egy különáll�
 
    ![Összeomlási memóriaképek](media/diagnostics-extension-windows-install/crash-dumps.png)
 
-8. A **mosogatók** lapon megadhatja, hogy az Azure Storage-tól eltérő helyen kívánja-e elküldeni az adatküldést. Ha **Azure monitor**választja, a vendég teljesítményadatokat a rendszer a Azure monitor metrikák számára küldi el. Az Event hub-fogadó nem konfigurálható a Azure Portal használatával.
+8. A **mosogatók** lapon megadhatja, hogy az Azure Storage-tól eltérő helyen kívánja-e elküldeni az adatküldést. Ha **Azure monitor** választja, a vendég teljesítményadatokat a rendszer a Azure monitor metrikák számára küldi el. Az Event hub-fogadó nem konfigurálható a Azure Portal használatával.
 
    ![Képernyőfelvétel: a mosdók lap, amelyen engedélyezve van a diagnosztikai adatküldés Azure Monitor lehetőség.](media/diagnostics-extension-windows-install/sinks.png)
    
@@ -65,7 +65,7 @@ A diagnosztikai bővítményt telepítheti és konfigurálhatja egy különáll�
    
    ![Felügyelt entitás](media/diagnostics-extension-windows-install/managed-entity.png)
 
-9. Az **ügynökben**módosíthatja a Storage-fiókot, beállíthatja a lemezkvótaot, és megadhatja, hogy a diagnosztikai infrastruktúra naplóit szeretné-e gyűjteni.  
+9. Az **ügynökben** módosíthatja a Storage-fiókot, beállíthatja a lemezkvótaot, és megadhatja, hogy a diagnosztikai infrastruktúra naplóit szeretné-e gyűjteni.  
 
    ![Képernyőfelvétel: az ügynök lap, amely a Storage-fiók beállítását tartalmazza.](media/diagnostics-extension-windows-install/agent.png)
 
@@ -78,7 +78,7 @@ A diagnosztikai bővítményt telepítheti és konfigurálhatja egy különáll�
 Lásd: [figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager sablonok](../../virtual-machines/extensions/diagnostics-template.md) a diagnosztikai bővítmény üzembe helyezéséhez Azure Resource Manager-sablonokkal. 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
-Az Azure CLI használatával a Azure Diagnostics-bővítményt telepítheti egy meglévő virtuális gépre az az [VM Extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) paranccsal az alábbi példában látható módon. 
+Az Azure CLI használatával a Azure Diagnostics-bővítményt telepítheti egy meglévő virtuális gépre az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal az alábbi példában látható módon. 
 
 ```azurecli
 az vm extension set \
@@ -192,19 +192,19 @@ Lásd még: a [PowerShell használata a Azure Diagnostics Windows rendszerű vir
 A következő táblázat felsorolja a diagnosztikai bővítményből összegyűjtött különböző típusú adatokat, valamint azt, hogy táblázatként vagy blobként vannak tárolva. A táblákban tárolt adattárolók a nyilvános konfiguráció [StorageType beállításától](diagnostics-extension-schema-windows.md#publicconfig-element) függően a blobokban is tárolhatók.
 
 
-| Adatok | Tárolási típus | Leírás |
+| Adatok | Tárolási típus | Description |
 |:---|:---|:---|
-| WADDiagnosticInfrastructureLogsTable | Táblázat | A diagnosztikai figyelő és a konfiguráció módosításai. |
-| WADDirectoriesTable | Táblázat | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
-| WadLogsTable | Táblázat | A nyomkövetési figyelő használatával kódban írt naplók. |
-| WADPerformanceCountersTable | Táblázat | Teljesítményszámlálók. |
-| WADWindowsEventLogsTable | Táblázat | Windows-eseménynaplók. |
+| WADDiagnosticInfrastructureLogsTable | Tábla | A diagnosztikai figyelő és a konfiguráció módosításai. |
+| WADDirectoriesTable | Tábla | A diagnosztikai figyelő által figyelt címtárak.  Ez magában foglalja az IIS-naplókat, az IIS sikertelen kérelmek naplóit és az egyéni címtárakat.  A blob naplófájljának helye a tároló mezőben van megadva, és a blob neve a RelativePath mezőben található.  A AbsolutePath mező a fájl helyét és nevét jelzi, ahogy az Azure-beli virtuális gépen létezett. |
+| WadLogsTable | Tábla | A nyomkövetési figyelő használatával kódban írt naplók. |
+| WADPerformanceCountersTable | Tábla | Teljesítményszámlálók. |
+| WADWindowsEventLogsTable | Tábla | Windows-eseménynaplók. |
 | wad-IIS-failedreqlogfiles | Blob | Az IIS sikertelen kérelmek naplóiból származó információkat tartalmaz. |
 | wad-IIS-LogFiles | Blob | AZ IIS-naplókkal kapcsolatos információkat tartalmaz. |
 | Egyéni | Blob | Egyéni tároló, amely a diagnosztikai figyelő által figyelt könyvtárak konfigurálásán alapul.  A blob-tároló neve a WADDirectoriesTable-ben lesz meghatározva. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Eszközök a diagnosztikai adatgyűjtés megtekintéséhez
-Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Példa:
+Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való átvitelük után. Például:
 
 * Kiszolgálókezelő a Visual Studióban – ha telepítette a Microsoft Visual studióhoz készült Azure-eszközöket, a Server Explorerben az Azure Storage csomópont használatával megtekintheti az Azure Storage-fiókok írásvédett blob-és táblázat-adatait. A helyi Storage Emulator-fiókból és az Azure-hoz létrehozott Storage-fiókoktól származó adatok is megjeleníthetők. További információ: [Storage-erőforrások tallózása és kezelése a Server Explorerben](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.

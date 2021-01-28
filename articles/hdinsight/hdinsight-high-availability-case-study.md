@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight, magasan elérhető megoldás architektúra-esettanulmány
 description: Ez a cikk egy lehetséges Azure HDInsight-megoldási architektúrával kapcsolatos kitalált esettanulmány.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855038"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945362"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight, magasan elérhető megoldás architektúra-esettanulmány
 
@@ -68,9 +65,9 @@ Fontos megállapítani, hogy milyen minimális üzleti funkciókra van szükség
 
 Az alábbi képen a contoso kiskereskedelmi magas rendelkezésre állású vész-helyreállítási architektúrája látható.
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso kiskereskedelmi architektúra":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso-megoldás":::
 
-**Kafka** A Kafka [aktív – passzív](hdinsight-business-continuity-architecture.md#apache-kafka) replikálást használ a Kafka-témakörök az elsődleges régióból a másodlagos régióba való tükrözéséhez. A Kafka-replikáció alternatívája lehet a Kafka mindkét régióban való létrehozása.
+ A Kafka [aktív – passzív](hdinsight-business-continuity-architecture.md#apache-kafka) replikálást használ a Kafka-témakörök az elsődleges régióból a másodlagos régióba való tükrözéséhez. A Kafka-replikáció alternatívája lehet a Kafka mindkét régióban való létrehozása.
 
 A **kaptár és a Spark** [aktív elsődleges – igény szerinti másodlagos](hdinsight-business-continuity-architecture.md#apache-spark) replikációs modelleket használ a normál időpontokban. A struktúra replikálási folyamata rendszeresen fut, és a kaptár Azure SQL-metaadattár és a kaptár Storage-fiókjának replikációját kíséri. A Spark Storage-fiókot az ADF DistCP használatával rendszeresen replikálja a rendszer. A fürtök átmeneti jellege segít optimalizálni a költségeket. A replikálások 4 óránként vannak ütemezve, hogy egy RPO, amely az öt órás követelményen belül jól látható.
 

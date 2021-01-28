@@ -7,19 +7,19 @@ author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: abfac23ad37d750a6d7ef84e5dec2559904ebb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 196a1d580bd5888a6604c3f98b108e39c08a3412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496304"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945023"
 ---
 # <a name="azure-monitor-cli-samples"></a>CLI-minták Azure Monitor
 Ez a cikk a parancssori felület (CLI) parancsait mutatja be Azure Monitor szolgáltatások elérésének megkönnyítéséhez. A Azure Monitor lehetővé teszi a Cloud Services, a Virtual Machines és a Web Apps autoskálázását, illetve riasztási értesítések küldését vagy webes URL-címek meghívását a konfigurált telemetria-adatok értékei alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem telepítette az Azure CLI-t, kövesse az [Azure CLI telepítésének](/cli/azure/install-azure-cli)utasításait. A [Azure Cloud Shell](/azure/cloud-shell) használatával a CLI-t interaktív módon is futtathatja a böngészőben. Tekintse meg az összes elérhető parancs teljes hivatkozását a [Azure monitor CLI-referenciában](/cli/azure/monitor?view=azure-cli-latest). 
+Ha még nem telepítette az Azure CLI-t, kövesse az [Azure CLI telepítésének](/cli/azure/install-azure-cli)utasításait. A [Azure Cloud Shell](/azure/cloud-shell) használatával a CLI-t interaktív módon is futtathatja a böngészőben. Tekintse meg az összes elérhető parancs teljes hivatkozását a [Azure monitor CLI-referenciában](/cli/azure/monitor). 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Első lépésként jelentkezzen be az Azure-fiókjába.

@@ -3,17 +3,16 @@ title: Azure HDInsight létrehozása – Azure Data Lake Storage Gen2 – Azure 
 description: Ismerje meg, hogyan használhatja a Azure Data Lake Storage Gen2 Azure HDInsight-fürtökkel az Azure CLI használatával.
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 09/17/2020
-ms.openlocfilehash: 4ffe5acce831435d3771a2eb48a90b16f584c92a
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: bbc1cd27d5c16eddd3aaad748c34445e5017e209
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704010"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945493"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>Fürt létrehozása Data Lake Storage Gen2 az Azure CLI használatával
 
@@ -34,7 +33,7 @@ A Data Lake Storage Gen2 for Storage szolgáltatást használó HDInsight-fürt 
 
 [Letöltheti a minta sablonfájl fájlját](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) , és [letöltheti a minta paramétereinek fájlját](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). A sablon és az Azure CLI-kódrészlet használata előtt cserélje le a következő helyőrzőket a megfelelő értékekre:
 
-| Helyőrző | Leírás |
+| Helyőrző | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
 | `<RESOURCEGROUPNAME>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |
@@ -114,7 +113,7 @@ az group delete \
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen létrehozott egy HDInsight-fürtöt. Most megtudhatja, hogyan dolgozhat a fürttel.
 

@@ -1,19 +1,16 @@
 ---
 title: Az Excel és a Apache Hadoop összekötése Power Query-Azure HDInsight
 description: Ismerje meg, hogyan használhatja ki az üzleti intelligencia összetevőit, és hogyan férhet hozzá az Excelhez Power Query az Hadoop-on tárolt adatokhoz a HDInsight-on.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397113"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946707"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Az Excel és a Apache Hadoop összekötése Power Query használatával
 
@@ -53,13 +50,13 @@ Az Excelhez készült Power Query beépülő modul megkönnyíti az adatok impor
 
        ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
 
-       **Megjegyzés:** Ha nem látja a **Power Query** menüt, lépjen a **file**  >  **Options**  >  **bővítmények**menüpontra, majd a lap alján található legördülő lista **kezelés** mezőjében válassza a **com-bővítmények** lehetőséget. Kattintson a **Go... (ugrás)** gombra, és ellenőrizze, hogy az Excel-bővítményhez tartozó Power Query jelölőnégyzet be van-e jelölve.
+       **Megjegyzés:** Ha nem látja a **Power Query** menüt, lépjen a **file**  >  **Options**  >  **bővítmények** menüpontra, majd a lap alján található legördülő lista **kezelés** mezőjében válassza a **com-bővítmények** lehetőséget. Kattintson a **Go... (ugrás)** gombra, és ellenőrizze, hogy az Excel-bővítményhez tartozó Power Query jelölőnégyzet be van-e jelölve.
 
-       **Megjegyzés:** A Power Query lehetővé teszi az adatok HDFS történő importálását **más forrásokból**való kiválasztással.
+       **Megjegyzés:** A Power Query lehetővé teszi az adatok HDFS történő importálását **más forrásokból** való kiválasztással.
 
-1. Az **Azure HDInsight (HDFS)** párbeszédpanel **fiók neve vagy URL** szövege mezőjébe írja be a fürthöz társított Azure Blob Storage-fiók nevét. Ezután válassza az **OK** gombot. Ez a fiók lehet az alapértelmezett Storage-fiók vagy egy társított Storage-fiók.  A formátum `https://StorageAccountName.blob.core.windows.net/`.
+1. Az **Azure HDInsight (HDFS)** párbeszédpanel **fiók neve vagy URL** szövege mezőjébe írja be a fürthöz társított Azure Blob Storage-fiók nevét. Ez után válassza az **OK** gombot. Ez a fiók lehet az alapértelmezett Storage-fiók vagy egy társított Storage-fiók.  A formátum `https://StorageAccountName.blob.core.windows.net/`.
 
-1. A **fiók kulcsa**mezőben adja meg a blob Storage-fiók kulcsát, majd válassza a **kapcsolat**lehetőséget. (A fiók adatait csak akkor kell megadnia, amikor először fér hozzá ehhez a tárolóhoz.)
+1. A **fiók kulcsa** mezőben adja meg a blob Storage-fiók kulcsát, majd válassza a **kapcsolat** lehetőséget. (A fiók adatait csak akkor kell megadnia, amikor először fér hozzá ehhez a tárolóhoz.)
 
 1. A lekérdezés-szerkesztő bal oldalán található **navigátor** ablaktáblán kattintson duplán a fürthöz társított blob Storage-tároló nevére. Alapértelmezés szerint a tároló neve ugyanaz a neve, mint a fürt neve.
 
@@ -67,7 +64,7 @@ Az Excelhez készült Power Query beépülő modul megkönnyíti az adatok impor
 
     ![HDI Excel Power Query – adatimportálás](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
 
-1. Ha szeretné, átnevezheti az oszlopnevek nevét. Ha elkészült, válassza a **bezárás & betöltés**lehetőséget.  A rendszer betöltötte az adatait a munkafüzetbe:
+1. Ha szeretné, átnevezheti az oszlopnevek nevét. Ha elkészült, válassza a **bezárás & betöltés** lehetőséget.  A rendszer betöltötte az adatait a munkafüzetbe:
 
     ![HDI Excel Power Query importált táblázat](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
 

@@ -1,19 +1,16 @@
 ---
 title: Mi az Apache Hadoop és a MapReduce – Azure HDInsight
 description: Bevezetés a HDInsight, valamint a Apache Hadoop Technology stackbe és összetevőkbe.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e3fc23dd220a8d9764a64c453e9fb856307ac47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899624"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946516"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Mi Apache Hadoop az Azure HDInsight?
 
@@ -27,9 +24,9 @@ A HDInsighton elérhető Hadoop-technológiák összetevőinek megtekintése: [A
 
 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) olyan szoftver-keretrendszer, amely nagy mennyiségű adat feldolgozására szolgáló feladatokat ír. A bemeneti adatok felosztása független adattömbökbe történik. Minden adathalmaz feldolgozása párhuzamosan történik a fürt csomópontjai között. A MapReduce-feladatok két függvényből állnak:
 
-* **Mapper** : a bemeneti adatokat használja, elemzi (általában szűrési és rendezési műveletekkel), és rekordok (kulcs-érték párok) bocsát ki.
+* **Mapper**: a bemeneti adatokat használja, elemzi (általában szűrési és rendezési műveletekkel), és rekordok (kulcs-érték párok) bocsát ki.
 
-* **Szűkítő** : felhasználja a Mapper által kibocsátott rekordok, és olyan összegző műveletet hajt végre, amely létrehoz egy kisebb, kombinált eredményt a Mapper adataiból.
+* **Szűkítő**: felhasználja a Mapper által kibocsátott rekordok, és olyan összegző műveletet hajt végre, amely létrehoz egy kisebb, kombinált eredményt a Mapper adataiból.
 
 A következő ábrán látható egy alapszintű Word Count MapReduce-feladat példája:
 

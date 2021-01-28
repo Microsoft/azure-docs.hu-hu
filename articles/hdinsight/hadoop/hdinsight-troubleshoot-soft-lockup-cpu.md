@@ -3,16 +3,13 @@ title: Hiba az Azure HDInsight-fürtön
 description: Az Azure HDInsight-fürtben található kernel syslogs szolgáltatásban megjelenik a watchdog BUG Soft kizárható PROCESSZORa
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 33990e40507f088962fd8d8efd241de5d2fcc63b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d9d7b0fc21660dd22ff92bbe2de38c759c440ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944335"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Forgatókönyv: "watchdog: BUG: Soft lefagyás-CPU" hiba egy Azure HDInsight-fürtből
 
@@ -46,7 +43,7 @@ Kernel-javítás alkalmazása. Az alábbi szkript frissíti a Linux-kernelt, és
 
     Válassza a parancsfájl megtartása **művelet...** lehetőséget, ha azt szeretné, hogy az új csomópontok hozzáadásakor végrehajtsa a parancsfájlt.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Várjon, amíg a végrehajtás sikeres lesz.
 

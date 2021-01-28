@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 87cc8af9206daa1f1e959b8abd8beb3e7f8ff2f2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bec221f762213fa8576ccef30e9b6a27aa708f01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880994"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944148"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -105,7 +105,7 @@ A parancsok megkereséséhez tekintse meg a cikkek bármelyikét.
 
 | Szolgáltatás | Cikk |
 |--------|-----------|
-|Azure Blob Storage |[Fájlok feltöltése az Azure Blob Storage-ba](storage-use-azcopy-blobs-upload.md)<br><br>[Blobok letöltése az Azure Blob Storage-ból](storage-use-azcopy-blobs-download.md)<br><br>[Blobok másolása az Azure Storage-fiókok között](storage-use-azcopy-blobs-copy.md)<br><br>[Szinkronizálás az Azure Blob Storage szolgáltatással](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob Storage |[Fájlok feltöltése az Azure Blob Storageba](storage-use-azcopy-blobs-upload.md)<br><br>[Blobok letöltése az Azure-ból Blob Storage](storage-use-azcopy-blobs-download.md)<br><br>[Blobok másolása az Azure Storage-fiókok között](storage-use-azcopy-blobs-copy.md)<br><br>[Szinkronizálás az Azure Blob Storage](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)|
 |Amazon S3|[Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)|
 |Azure Stack Storage|[Adatok átvitele a AzCopy és a Azure Stack Storage szolgáltatással](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
@@ -167,6 +167,6 @@ Ha a AzCopy előző verzióját kell használnia, tekintse meg az alábbi hivatk
 
 - [AzCopy Linux rendszeren (v7)](/previous-versions/azure/storage/storage-use-azcopy-linux)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van, problémája vagy általános visszajelzése van, küldje el őket [a GitHub](https://github.com/Azure/azure-storage-azcopy) oldalon.

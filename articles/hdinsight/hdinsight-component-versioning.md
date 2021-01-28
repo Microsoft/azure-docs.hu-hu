@@ -1,19 +1,16 @@
 ---
 title: Összetevők és verziók Apache Hadoop – Azure HDInsight
 description: Ismerje meg az Azure HDInsight Apache Hadoop összetevőit és verzióit.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 82297b81ebe99301574e99ef438cc81c711dbeff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 07db57ee36d39454e8a247be11dac4a9c51af3af
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533684"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946102"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -45,7 +42,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.4.4         | 2.3.2.                      |
 | Apache Livy            | 0,5           | 0,4.                        |
-| Apache Kafka           | 2.1.1         | 1,1                         |
+| Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
@@ -77,8 +74,8 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 
 | HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |Igen |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 30., 2021 |Június 30., 2021 |Igen |Igen |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |Yes |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 30., 2021 |Június 30., 2021 |Igen |Yes |
 
 * Kiterjesztjük bizonyos HDInsight 3,6-fürtök támogatási időkeretét
 
@@ -88,11 +85,11 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight 3,6 Spark             | 2.3               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 Spark             | 2,2               | Kivonulás június 30-ig, 2020          |                             |
 | HDInsight 3,6 Spark             | 2.1               | Kivonulás június 30-ig, 2020          |                             |
-| HDInsight 3,6 Kafka             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Kafka             | 1,0               | 2020. június 30-án megszűnt.         |                             |
-| HDInsight 3,6 HBase             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Kafka             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Kafka             | 1.0               | 2020. június 30-án megszűnt.         |                             |
+| HDInsight 3,6 HBase             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 interaktív lekérdezés | 2.1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Storm             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
+| HDInsight 3,6 Storm             | 1.1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 ML-szolgáltatások      | 9,3               | Dec. 31.2020                      | Dec. 31.2020                |
 
 > [!NOTE]

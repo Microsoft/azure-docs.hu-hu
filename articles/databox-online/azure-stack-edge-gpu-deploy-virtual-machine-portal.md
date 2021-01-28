@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763455"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944950"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a Azure Portal használatával
 
@@ -22,6 +22,9 @@ Létrehozhat és kezelhet virtuális gépeket Azure Stack peremhálózati eszkö
 
 Ez a cikk Azure Stack Edge Pro GPU-ra, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkozik. 
 
+> [!IMPORTANT] 
+> Javasoljuk, hogy engedélyezze a többtényezős hitelesítést azon felhasználó számára, aki a felhőből az eszközre telepített virtuális gépeket felügyeli.
+        
 ## <a name="vm-deployment-workflow"></a>Virtuális gép üzembe helyezésének munkafolyamata
 
 Az üzembe helyezési munkafolyamat magas szintű összefoglalása a következő:
@@ -200,6 +203,6 @@ A Windows rendszerű virtuális gépekhez való kapcsolódáshoz kövesse az al�
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Stack Edge Pro-eszköz felügyeletével kapcsolatos információkért lásd: a[helyi webes felhasználói felület használata a Azure stack Edge Pro felügyeletéhez](azure-stack-edge-manage-access-power-connectivity-mode.md).

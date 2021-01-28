@@ -2,19 +2,16 @@
 title: Ismerje meg, hogyan használhat egy Apache Hadoop Sandboxot, Emulator-Azure HDInsight
 description: 'Az Apache Hadoop ökoszisztéma használatának megismeréséhez beállíthatja, hogy egy Azure-beli virtuális gépen Hadoop-munkaterületet állítson be a Hortonworks-ben. '
 keywords: Hadoop Emulator, Hadoop homokozó
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547962"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946614"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 

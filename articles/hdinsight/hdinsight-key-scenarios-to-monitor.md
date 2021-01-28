@@ -1,19 +1,16 @@
 ---
 title: A fürt teljesítményének figyelése – Azure HDInsight
 description: Apache Hadoop-fürtök állapotának és teljesítményének figyelése az Azure HDInsight-ben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014244"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945348"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -27,7 +24,7 @@ A Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthatják, ha a für
 
 Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és betöltéséről, jelentkezzen be a [Ambari webes felhasználói felületére](hdinsight-hadoop-manage-ambari.md), majd válassza a **gazdagépek** lapot. A gazdagépek teljes tartományneveik szerepelnek a felsorolásban. Az egyes gazdagépek működési állapotát színes állapot kijelzője mutatja:
 
-| Szín | Leírás |
+| Szín | Description |
 | --- | --- |
 | Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
@@ -122,7 +119,7 @@ A lemezterülettel kapcsolatos problémákkal kapcsolatos további információk
 > [!NOTE]  
 > Ha nagy méretű fájlokat szeretne megőrizni, de hozzájárul a kevés lemezterülettel kapcsolatos probléma megoldásához, fel kell mérnie a HDInsight-fürtöt, és újra kell indítania a szolgáltatásokat. Miután elvégezte ezt az eljárást, és néhány percet várni fog, megfigyelheti, hogy a tárterület fel van szabadítva, és a rendszer visszaállítja a csomópont szokásos teljesítményét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürtök hibaelhárításával és figyelésével kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

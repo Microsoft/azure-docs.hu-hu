@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220252"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944901"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
 
@@ -60,7 +60,7 @@ Hibaüzenet:
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**OK**: elérte az Integration Runtime kapacitási korlátját. Lehet, hogy nagy mennyiségű adatfolyamot futtat ugyanazon integrációs modul egyidejű használatával. Részletekért lásd az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
+**OK**: elérte az Integration Runtime kapacitási korlátját. Lehet, hogy nagy mennyiségű adatfolyamot futtat ugyanazon integrációs modul egyidejű használatával. Részletekért lásd az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) .
 
 **Megoldás**:
  
@@ -76,13 +76,13 @@ Azure Data Factory kiértékeli az összes levél szintű tevékenység eredmén
 **Resolution** (Osztás)
 
 1. Tevékenység szintű ellenőrzések végrehajtása a [folyamat hibáinak és hibáinak kezelésével](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
-1. A Azure Logic Apps használatával rendszeres időközönként figyelheti a folyamatokat a [gyár lekérdezését](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)követően.
+1. A Azure Logic Apps használatával rendszeres időközönként figyelheti a folyamatokat a [gyár lekérdezését](/rest/api/datafactory/pipelineruns/querybyfactory)követően.
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
 
 Előfordulhat, hogy a sikertelen Data Factory folyamatokat nem kell figyelnie, például 5 percet. A folyamatot a végpont használatával kérdezheti le és szűrheti a folyamat futtatását egy adatok gyárában. 
 
-Állítson be egy Azure Logic app-alkalmazást, amely 5 percenként lekérdezi az összes meghiúsult folyamatot a következő témakörben leírtak szerint: [query by Factory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory). Ezt követően az incidenseket bejelenthetjük a Ticketing rendszerbe.
+Állítson be egy Azure Logic app-alkalmazást, amely 5 percenként lekérdezi az összes meghiúsult folyamatot a következő témakörben leírtak szerint: [query by Factory](/rest/api/datafactory/pipelineruns/querybyfactory). Ezt követően az incidenseket bejelenthetjük a Ticketing rendszerbe.
 
 További információ: [értesítések küldése Data Factoryről, 2. rész](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
 

@@ -1,18 +1,15 @@
 ---
 title: Apache Sqoop-feladatok futtatása az Azure HDInsight (Apache Hadoop)
 description: Megtudhatja, hogyan használhatja a Azure PowerShell egy munkaállomásról a Sqoop importálásának és exportálásának futtatására egy Hadoop-fürt és egy Azure SQL Database között.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545225"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946422"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop használata a Hadooppal a HDInsightban
 
@@ -97,9 +94,9 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
 
     A [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) neve lesz  `<ClusterName>dbserver` . Az adatbázis neve lesz `<ClusterName>db` . A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu` .
 
-3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** .
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**.
 
-4. Válassza a **Vásárlás** lehetőséget. Egy új csempe jelenik meg, amely a központi telepítés elküldését Template deployment. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
+4. Válassza a **Beszerzés** lehetőséget. Egy új csempe jelenik meg, amely a központi telepítés elküldését Template deployment. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
 
 ## <a name="run-sqoop-jobs"></a>Sqoop-feladatok futtatása
 

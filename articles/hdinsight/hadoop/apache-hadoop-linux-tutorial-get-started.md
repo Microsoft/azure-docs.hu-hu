@@ -1,19 +1,16 @@
 ---
 title: 'Rövid útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight Resource Manager-sablon használatával'
 description: Ebben a rövid útmutatóban Apache Hadoop-fürtöt hoz létre az Azure HDInsight Resource Manager-sablon használatával
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 02fd3e366b146937fb2d5775938dc9d74a275ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1a76406c1a8a55996b4c099e04f0925daaa74c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856539"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946525"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-arm-template"></a>Rövid útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
@@ -53,10 +50,10 @@ Két Azure-erőforrás van definiálva a sablonban:
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |Előfizetés|A legördülő listában válassza ki a fürthöz használt Azure-előfizetést.|
-    |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
+    |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
     |Hely|Az érték automatikusan kitöltődik az erőforráscsoporthoz használt hellyel.|
     |Fürt neve|Adjon meg egy globálisan egyedi nevet. Ehhez a sablonhoz csak kisbetűket és számokat használjon.|
-    |Fürt típusa | Válassza a **Hadoop**lehetőséget. |
+    |Fürt típusa | Válassza a **Hadoop** lehetőséget. |
     |Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
     |Fürt bejelentkezési jelszava|Adja meg a jelszót. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" "). |
     |SSH-Felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a **sshuser** .|
@@ -69,7 +66,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
     ![A HDInsight Linux elindítja a Resource Manager-sablont a portálon](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Hadoop-fürt üzembe helyezése a HDInsight-ben a Azure Portal és egy Resource Group Manager-sablon használatával")
 
-1. Tekintse át a **használati**feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás**lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+1. Tekintse át a **használati** feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás** lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
@@ -85,13 +82,13 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 > [!NOTE]  
 > Ha *azonnal* továbblép a következő oktatóanyagra, amelyben megismerheti, hogyan futtathat ETL-műveleteket a Hadoop használatával a HDInsighton, érdemes lehet futva hagyni a fürtöt. Ennek az az oka, hogy az oktatóanyagban újra létre kell hoznia egy Hadoop-fürtöt. Ha azonban nem azonnal folytatja a következő oktatóanyaggal, most törölnie kell a fürtöt.
 
-A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetőséget.
+A Azure Portal navigáljon a fürthöz, és válassza a **Törlés** lehetőséget.
 
 ![HDInsight-fürt törlése a portálról](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-delete-cluster.png "HDInsight-fürt törlése a portálról")
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Apache Hadoop-fürtöt a HDInsight ARM-sablon használatával. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 

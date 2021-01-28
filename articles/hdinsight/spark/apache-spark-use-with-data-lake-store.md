@@ -2,18 +2,15 @@
 title: Azure Data Lake Storage Gen1 elemzése a HDInsight Apache Spark
 description: Apache Spark feladatok futtatása a Azure Data Lake Storage Gen1 tárolt adatok elemzéséhez
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ad8239b3403d37a9e4c79de481fb9cb26306e243
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821162"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946324"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Az HDInsight Spark-fürt használata Data Lake Storage Gen1ban lévő adatelemzéshez
 
@@ -141,7 +138,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Önálló Scala-alkalmazás létrehozása Apache Spark fürtön való futtatáshoz](apache-spark-create-standalone-application.md)
 * [HDInsight-eszközök használata a Azure Toolkit for IntelliJban Apache Spark alkalmazások létrehozásához a HDInsight Spark Linux-fürthöz](apache-spark-intellij-tool-plugin.md)

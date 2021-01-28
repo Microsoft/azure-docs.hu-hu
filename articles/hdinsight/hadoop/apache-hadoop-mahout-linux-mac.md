@@ -1,19 +1,16 @@
 ---
 title: Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
 description: Ismerje meg, hogy az Apache Mahout Machine learning-kódtár segítségével hogyan hozhatja elő a filmkészítési javaslatokat a HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207676"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946489"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
 
@@ -33,11 +30,11 @@ A Mahout által biztosított függvények egyike egy ajánlási motor. Ez a moto
 
 A következő munkafolyamat egy egyszerűsített példa, amely a Movie-adatbevitelt használja:
 
-* **Közös előfordulás**: Joe, Alice és Bob minden tetszett *Star Wars*, *a birodalom*visszatér, és *visszaküldi a jedit*. A Mahout határozza meg, hogy a fenti filmek egyike, a másik kettőhöz hasonlóan a felhasználók is hasonlóak.
+* **Közös előfordulás**: Joe, Alice és Bob minden tetszett *Star Wars*, *a birodalom* visszatér, és *visszaküldi a jedit*. A Mahout határozza meg, hogy a fenti filmek egyike, a másik kettőhöz hasonlóan a felhasználók is hasonlóak.
 
-* **Együttes előfordulás**: Bob és Alice is tetszett *a Phantom árnyak*, *a klónok támadása*és *a Sith bosszúja*. A Mahout határozza meg, hogy az előző három filmhez hasonló felhasználók is szeretik a három filmet.
+* **Együttes előfordulás**: Bob és Alice is tetszett *a Phantom árnyak*, *a klónok támadása* és *a Sith bosszúja*. A Mahout határozza meg, hogy az előző három filmhez hasonló felhasználók is szeretik a három filmet.
 
-* **Hasonlósági javaslat**: mivel Joe tetszett az első három film, a Mahout olyan filmeket keres, amelyeket mások hasonló beállításokkal kedveltek, de Joe nem figyelt (tetszett/értékelt). Ebben az esetben a Mahout *a Phantom árnyak*, a *klónok támadását*és *a Sith bosszúját*javasolja.
+* **Hasonlósági javaslat**: mivel Joe tetszett az első három film, a Mahout olyan filmeket keres, amelyeket mások hasonló beállításokkal kedveltek, de Joe nem figyelt (tetszett/értékelt). Ebben az esetben a Mahout *a Phantom árnyak*, a *klónok támadását* és *a Sith bosszúját* javasolja.
 
 ### <a name="understanding-the-data"></a>Az adatgyűjtés ismertetése
 
@@ -160,7 +157,7 @@ A ben található adat a,, `user-ratings.txt` és és rendszer struktúrája, `u
    print "------------------------"
    ```
 
-    Nyomja le a **CTRL-X**, az **Y**billentyűt, és végül **adja meg** az adatmentést.
+    Nyomja le a **CTRL-X**, az **Y** billentyűt, és végül **adja meg** az adatmentést.
 
 4. Futtassa a Python-szkriptet. Az alábbi parancs feltételezi, hogy abban a könyvtárban van, ahol az összes fájl le lett töltve:
 
@@ -203,7 +200,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatja a Mahout-t, Fedezze fel a HDInsight-on tárolt adatkezelés egyéb módszereit:
 

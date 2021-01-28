@@ -1,19 +1,16 @@
 ---
 title: A .NET és a Hadoop MapReduce használata Linux-alapú HDInsight – Azure
 description: Ismerje meg, hogyan használhatók a .NET-alkalmazások a streaming MapReduce Linux-alapú HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: a6e9bea5d600771a7754142a4df4c0af503ccf5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075484"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945592"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET-megoldások migrálása Windows-alapú HDInsight Linux-alapú HDInsight
 
@@ -34,15 +31,15 @@ A [.net-hordozhatósági elemző](https://marketplace.visualstudio.com/items?ite
 
 1. Telepítse a [.net-hordozhatósági elemzőt](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). A telepítés során válassza ki a használni kívánt Visual Studio-verziót.
 
-2. A Visual Studio 2015-ból __Analyze__válassza  >  a__hordozhatósági elemző beállításainak__elemzése lehetőséget, és győződjön meg arról, hogy a __4,5__ be van jelölve a __mono__ szakaszban.
+2. A Visual Studio 2015-ból válassza  >  a __hordozhatósági elemző beállításainak__ elemzése lehetőséget, és győződjön meg arról, hogy a __4,5__ be van jelölve a __mono__ szakaszban.
 
     ![4,5 az analizátor beállításainál a Mono szakaszban be van jelölve](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     A konfiguráció mentéséhez kattintson __az OK gombra__ .
 
-3. Válassza __Analyze__az elemzés a  >  __szerelvények hordozhatóságának__elemzése lehetőséget. Válassza ki a megoldást tartalmazó szerelvényt, majd válassza a __Megnyitás__ lehetőséget az elemzés megkezdéséhez.
+3. Válassza az elemzés a  >  __szerelvények hordozhatóságának__ elemzése lehetőséget. Válassza ki a megoldást tartalmazó szerelvényt, majd válassza a __Megnyitás__ lehetőséget az elemzés megkezdéséhez.
 
-4. Az elemzések befejezése után válassza __Analyze__az  >  __elemzés megtekintése jelentések__elemzése lehetőséget. A __hordozhatósági elemzés eredményei__között válassza a __jelentés megnyitása__ lehetőséget a jelentés megnyitásához.
+4. Az elemzések befejezése után válassza az  >  __elemzés megtekintése jelentések__ elemzése lehetőséget. A __hordozhatósági elemzés eredményei__ között válassza a __jelentés megnyitása__ lehetőséget a jelentés megnyitásához.
 
     ![A hordozhatósági elemző eredményei párbeszédpanel](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
@@ -65,7 +62,7 @@ A naplók elérésével kapcsolatos további információkért tekintse meg a k�
 
 * [Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A C# és a MapReduce használata a HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 

@@ -1,40 +1,37 @@
 ---
 title: Apache Hadoop feladatok elküldése a HDInsight-ben
 description: Apache Hadoop feladatok elküldése az Azure HDInsight Microsoft .NET SDK, Curl vagy PowerShell használatával
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: ce53e02c587086a34a9967bb09ba047858af52e8
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 52a5fcbc68d7efdce5724e39ee7bc25581ceb0ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628932"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944185"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Apache Hadoop feladatok elküldése a HDInsight-ben
 
 Apache Hadoop feladatokat az Azure HDInsight-ben is elküldheti a HDInsight, a curl vagy a Azure PowerShell Microsoft .NET SDK használatával.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
-- **.net SDK** :
+- **.net SDK**:
 
   - [Nem interaktív hitelesítéssel rendelkező .NET-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [Apache Hive lekérdezések futtatása a HDInsight .NET SDK használatával](apache-hadoop-use-hive-dotnet-sdk.md)
   - [Apache Sqoop-feladatok futtatása a HDInsight .NET Apache Hadoop SDK használatával](apache-hadoop-use-sqoop-dotnet-sdk.md)
   - [MapReduce-feladatok futtatása a HDInsight .NET SDK használatával](apache-hadoop-use-mapreduce-dotnet-sdk.md)
 
-- **curl** :
+- **curl**:
 
   - [Apache Hive-lekérdezések futtatása a HDInsight Apache Hadoop a curl használatával](apache-hadoop-use-hive-curl.md)
   - [Apache Sqoop-feladatok futtatása a HDInsight Apache Hadoop használatával a curl használatával](apache-hadoop-use-sqoop-curl.md)
   - [MapReduce-feladatok futtatása a HDInsight Apache Hadoop használatával a curl használatával](apache-hadoop-use-mapreduce-curl.md)
 
-- **PowerShell** :
+- **PowerShell**:
 
   - [Apache Hive lekérdezések futtatása a PowerShell használatával](apache-hadoop-use-hive-powershell.md)
   - [Az Apache Sqoop használata Apache Hadoop a HDInsight](apache-hadoop-use-sqoop-powershell.md)

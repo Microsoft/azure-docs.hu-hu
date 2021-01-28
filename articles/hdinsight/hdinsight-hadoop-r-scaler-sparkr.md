@@ -1,19 +1,16 @@
 ---
 title: A skálázhatóság és a Spark használata az Azure HDInsight
 description: A skálázhatóság és a Sparker használata az adatkezeléshez és a modellek fejlesztéséhez az Azure HDInsight ML-szolgáltatásaival
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628694"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945506"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>A Scaleer és a Spark kombinálása a HDInsight-ben
 

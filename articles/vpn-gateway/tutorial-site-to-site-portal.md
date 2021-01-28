@@ -7,12 +7,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
-ms.openlocfilehash: d078d4b106136c95d67eb467bc16e22e2bb91c5c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747356"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945209"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>Oktatóanyag: helyek közötti kapcsolat létrehozása a Azure Portalban
 
@@ -85,7 +85,7 @@ Hozzon létre egy VPN-átjárót a következő értékek használatával:
 
 Az átjáró nyilvános IP-címét az átjáró **Áttekintés** oldalán tekintheti meg.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Áttekintő lap":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Áttekintő oldal":::
 
 Ha további információkat szeretne látni a nyilvános IP-cím objektumról, kattintson a **nyilvános IP-cím** melletti név/IP-cím hivatkozásra.
 
@@ -153,7 +153,7 @@ Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több 
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>További konfigurációs megfontolások
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>További konfigurációs megfontolások
 
 A S2S-konfigurációk többféleképpen testreszabhatók. További információért tekintse át a következő cikkeket:
 
@@ -173,7 +173,7 @@ Ha nem folytatja az alkalmazás használatát, vagy folytassa a következő okta
 
 1. Adja meg az erőforráscsoport **nevét, írja be az erőforráscsoport nevét** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A S2S-kapcsolatok konfigurálása után P2S-kapcsolatokat adhat hozzá ugyanahhoz az átjáróhoz.
 

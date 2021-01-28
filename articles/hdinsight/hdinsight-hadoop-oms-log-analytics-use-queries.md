@@ -1,19 +1,16 @@
 ---
 title: Azure Monitor naplók lekérdezése az Azure HDInsight-fürtök figyeléséhez
 description: Megtudhatja, hogyan futtathat lekérdezéseket Azure Monitor naplókon a HDInsight-fürtön futó feladatok figyeléséhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: c2ddcd8ea3524b4afdfa7f70d21f0cba96975f72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9213f36ec33939c3df3b56d21822aa3b6a17c03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085361"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945610"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez
 
@@ -34,7 +31,7 @@ Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
 
 1. Nyissa meg a HDInsight-fürthöz társított Log Analytics munkaterületet a Azure Portal.
 1. Az **Általános** területen válassza a **Naplók** elemet.
-1. Írja be a következő lekérdezést a keresőmezőbe, hogy megkeresse az összes rendelkezésre álló metrikát a Azure Monitor naplók használatára konfigurált összes HDInsight-fürthöz, majd válassza a **Futtatás**lehetőséget. Tekintse át az eredményeket.
+1. Írja be a következő lekérdezést a keresőmezőbe, hogy megkeresse az összes rendelkezésre álló metrikát a Azure Monitor naplók használatára konfigurált összes HDInsight-fürthöz, majd válassza a **Futtatás** lehetőséget. Tekintse át az eredményeket.
 
     ```kusto
     search *
@@ -44,7 +41,7 @@ Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
 
 1. A bal oldali menüben válassza a **szűrő** fület.
 
-1. A **típus**területen válassza a **szívverés**lehetőséget. Ezután válassza az **alkalmaz & Futtatás**elemet.
+1. A **típus** területen válassza a **szívverés** lehetőséget. Ezután válassza az **alkalmaz & Futtatás** elemet.
 
     ![log Analytics-keresés – specifikus mérőszámok](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Konkrét mérőszámok keresése")
 
@@ -95,7 +92,7 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
 1. Nyissa meg a HDInsight-fürthöz társított Log Analytics munkaterületet a Azure Portal.
 1. Az **Általános** területen válassza a **Naplók** elemet.
-1. Futtassa a következő lekérdezést, amelyen riasztást szeretne létrehozni, majd válassza a **Futtatás**lehetőséget.
+1. Futtassa a következő lekérdezést, amelyen riasztást szeretne létrehozni, majd válassza a **Futtatás** lehetőséget.
 
     ```kusto
     metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
@@ -107,7 +104,7 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
     ![Lekérdezés megadása alert1 létrehozásához](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Lekérdezés megadása alert1 létrehozásához")
 
-1. A **szabály létrehozása** ablakban adja meg a lekérdezést és egyéb adatokat a riasztás létrehozásához, majd válassza a **riasztási szabály létrehozása**lehetőséget.
+1. A **szabály létrehozása** ablakban adja meg a lekérdezést és egyéb adatokat a riasztás létrehozásához, majd válassza a **riasztási szabály létrehozása** lehetőséget.
 
     ![Lekérdezés megadása alert2 létrehozásához](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Lekérdezés megadása alert2 létrehozásához")
 
@@ -115,13 +112,13 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
 1. Nyissa meg az Log Analytics munkaterületet a Azure Portal.
 
-1. A bal oldali menüben a **figyelés**területen válassza a **riasztások**lehetőséget.
+1. A bal oldali menüben a **figyelés** területen válassza a **riasztások** lehetőséget.
 
-1. A felső részen válassza a **riasztási szabályok kezelése**lehetőséget.
+1. A felső részen válassza a **riasztási szabályok kezelése** lehetőséget.
 
 1. Válassza ki a szerkeszteni vagy törölni kívánt riasztást.
 
-1. A következő lehetőségek közül választhat: **Mentés**, **Elvetés**, **Letiltás**és **Törlés**.
+1. A következő lehetőségek közül választhat: **Mentés**, **Elvetés**, **Letiltás** és **Törlés**.
 
     ![HDInsight Azure Monitor naplók riasztás törlésének szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

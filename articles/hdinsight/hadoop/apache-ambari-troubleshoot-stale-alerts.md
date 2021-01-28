@@ -1,18 +1,15 @@
 ---
 title: Az Apache Ambari elavult riasztások az Azure HDInsight
 description: A HDInsight-ben az Apache Ambari elavult riasztások lehetséges okainak és megoldásainak megvitatása és elemzése.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533835"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946725"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Forgatókönyv: az Apache Ambari elavult riasztások az Azure HDInsight
 
@@ -84,6 +81,6 @@ Ha a probléma nem szerepel itt, vagy nem tudja megoldani a problémát, látoga
 
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a Twitteren. Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
 
-* Ha további segítségre van szüksége, nyújtson be egy támogatási kérést a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Ide kattintva válassza a Súgó ( **?** ) lehetőséget a portál menüjében, vagy nyissa meg a **Súgó + támogatás** ablaktáblát. További információ: [Azure-támogatási kérelem létrehozása](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
+* Ha további segítségre van szüksége, nyújtson be egy támogatási kérést a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Ide kattintva válassza a Súgó (**?**) lehetőséget a portál menüjében, vagy nyissa meg a **Súgó + támogatás** ablaktáblát. További információ: [Azure-támogatási kérelem létrehozása](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Az előfizetés-kezelés és a számlázás támogatását a Microsoft Azure-előfizetés tartalmazza. A technikai támogatás az Azure- [támogatási csomagokon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

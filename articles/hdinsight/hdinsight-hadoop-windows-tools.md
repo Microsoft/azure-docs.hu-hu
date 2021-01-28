@@ -1,19 +1,16 @@
 ---
 title: Windows rendszerű számítógép használata a Hadoop a HDInsight-ben – Azure
 description: Munka Windows rendszerű SZÁMÍTÓGÉPRŐL a Hadoop a HDInsight-ben. Fürtök kezelése és lekérdezése a PowerShell-lel, a Visual Studióval és a Linux-eszközökkel. Big data-megoldások fejlesztése a .NET-tel.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 770c73cb6f1309e64cd44c5a1b1570899108e4e7
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d0d389e8d9458cd6b43b50e24cec030baca740af
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821043"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945327"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Munka Apache Hadoop ökoszisztémán a HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL
 
@@ -92,7 +89,7 @@ Ha olyan helyzetbe kerül, ahol olyan eszközt vagy technológiát kell használ
 
 Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.  További információ: [Azure Command-Line Interface (CLI)](/cli/azure/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha most ismerkedik a Linux-alapú fürtökkel, tekintse meg a következő cikkeket:
 * [Apache Hadoop, Apache Kafka, Apache Spark vagy más fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md)

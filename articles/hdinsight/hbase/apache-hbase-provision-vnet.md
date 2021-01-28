@@ -1,19 +1,16 @@
 ---
 title: HBase-fürtök létrehozása egy Virtual Networkban – Azure
 description: A HBase használatának első lépései az Azure HDInsight. Ismerje meg, hogyan hozhat létre HDInsight HBase-fürtöket az Azure Virtual Network.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087741"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946127"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-fürtök létrehozása a HDInsight-ben az Azure-ban Virtual Network
 
@@ -49,16 +46,16 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-1. Az **Egyéni telepítés** párbeszédpanelen válassza a **Sablon szerkesztése**lehetőséget.
+1. Az **Egyéni telepítés** párbeszédpanelen válassza a **Sablon szerkesztése** lehetőséget.
 
-1. Az 165. sorban módosítsa az értéket a következőre: `Standard_A3` `Standard_A4_V2` . Ez után válassza a **Mentés** lehetőséget.
+1. Az 165. sorban módosítsa az értéket a következőre: `Standard_A3` `Standard_A4_V2` . Kattintson a **Mentés** gombra.
 
 1. Fejezze be a fennmaradó sablont a következő információkkal:
 
     |Tulajdonság |Érték |
     |---|---|
     |Előfizetés|Válasszon ki egy Azure-előfizetést, amely a HDInsight-fürt, a függő Storage-fiók és az Azure virtuális hálózat létrehozásához használatos.|
-    Erőforráscsoport|Válassza az **új létrehozása**lehetőséget, és adjon meg egy új erőforráscsoport-nevet.|
+    Erőforráscsoport|Válassza az **új létrehozása** lehetőséget, és adjon meg egy új erőforráscsoport-nevet.|
     |Hely|Válasszon egy helyet az erőforráscsoportnak.|
     |Fürt neve|Adja meg a létrehozandó Hadoop-fürt nevét.|
     |Fürt bejelentkezési felhasználónevének és jelszavának megadása|Az alapértelmezett Felhasználónév a **rendszergazda**. Adja meg a jelszót.|
@@ -66,7 +63,7 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 
     Válassza **az Elfogadom a fenti feltételeket és a fent leírt feltételeket**.
 
-1. Válassza a **Vásárlás** lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrehozása után kiválaszthatja a fürtöt a portálon a megnyitásához.
+1. Válassza a **Beszerzés** lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrehozása után kiválaszthatja a fürtöt a portálon a megnyitásához.
 
 A cikk befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésére vonatkozó utasításokért lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](../hdinsight-administer-use-portal-linux.md#delete-clusters).
 
@@ -144,7 +141,7 @@ Ha ezt az információt Java-alkalmazásokban szeretné használni, kövesse az 
 > [!NOTE]  
 > További információ az Azure-beli virtuális hálózatok névfeloldásáról, beleértve a saját DNS-kiszolgáló használatának módját: [névfeloldás (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre Apache HBase-fürtöt. További információ:
 

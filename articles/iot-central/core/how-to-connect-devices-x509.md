@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121824"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944639"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
 
@@ -199,7 +199,7 @@ Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
 1. Másolja a _mytestselfcertprimary_key. PEM_ és _mytestselfcertprimary_cert. PEM_ fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (JavaScript) oktatóanyag](./tutorial-connect-device.md)befejezése után használta.
 
-1. Módosítsa a következő módon használt környezeti változókat:
+1. Módosítsa a fenti mintában használt környezeti változókat a következőképpen:
 
     ```cmd/sh
     set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary

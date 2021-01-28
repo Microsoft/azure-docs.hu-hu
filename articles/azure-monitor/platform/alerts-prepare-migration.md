@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358781"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944481"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
@@ -30,7 +30,7 @@ A következő táblázat a klasszikus és az új riasztások programozott interf
 | Telepítési parancsfájl típusa | Klasszikus riasztások | Új metrikai riasztások |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [Microsoft. bepillantások/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. bepillantások/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az monitor Alert](/cli/azure/monitor/alert)        | [az monitor Metrics Alert](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [Referencia](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referencia](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sablon | [Klasszikus riasztások esetén](./alerts-enable-template.md)|[Új metrikai riasztások esetén](./alerts-metric-create-templates.md)|
 

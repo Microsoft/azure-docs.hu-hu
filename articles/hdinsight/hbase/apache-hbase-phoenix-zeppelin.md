@@ -1,19 +1,16 @@
 ---
 title: Apache Base-lekérdezések futtatása az Azure HDInsight Apache Phoenix
 description: Ismerje meg, hogy az Apache Zeppelin használatával hogyan futtathat Apache Base-lekérdezéseket a Phoenixben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542794"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944766"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Az Apache Zeppelin használatával Apache Phoenix lekérdezéseket futtathat az Apache HBase az Azure HDInsight
 

@@ -1,19 +1,16 @@
 ---
 title: Feladatok elküldése az R Tools for Visual Studio alkalmazásból – Azure HDInsight
 description: R-feladatok elküldése a helyi Visual Studio-gépről egy HDInsight-fürtre.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943940"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -21,7 +18,7 @@ A Visual studióhoz készült [R Tools](https://marketplace.visualstudio.com/ite
 
 A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](/visualstudio/rtvs/interactive-repl) (REPL), az IntelliSense (kód befejezése), az r-könyvtárakon keresztüli [vizualizációk](/visualstudio/rtvs/visualizing-data) , például a ggplot2 és a ggviz, az [r-kód hibakeresése](/visualstudio/rtvs/debugging)stb.
 
-## <a name="set-up-your-environment"></a>Saját környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 1. [A Visual studióhoz készült R Tools](/visualstudio/rtvs/installing-r-tools-for-visual-studio)telepítése.
 
@@ -131,7 +128,7 @@ Ha egy Microsoft ML Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
     rxStopEngine(mySparkCluster)
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz](r-server-compute-contexts.md)
 * A [scaleer és a sparker ötvözi](../hdinsight-hadoop-r-scaler-sparkr.md) a légitársaság repülési késési előrejelzéseit.

@@ -1,25 +1,22 @@
 ---
 title: 'Oktatóanyag: az Azure HDInsight Apache Spark-beli adatelemzések elemzése Power BI'
 description: Oktatóanyag – a Microsoft Power BI használata a tárolt HDInsight-fürtök megjelenítéséhez Apache Spark
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 285c6c05a1a216303ee9d8019093c963cad60aa0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821281"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946483"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatelemzés a HDInsight Power BI használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg a Microsoft Power BIt az Azure HDInsight lévő Apache Spark-fürtökben lévő adatmegjelenítéshez.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Spark-adatok vizualizációja a Power BI használatával
 
@@ -175,7 +172,7 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan jelenítheti meg a Microsoft Power BIt az Azure HDInsight lévő Apache Spark-fürtökben lévő információk megjelenítéséhez. A következő cikkből megtudhatja, hogyan hozhat létre gépi tanulási alkalmazást.
 

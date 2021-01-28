@@ -1,19 +1,16 @@
 ---
 title: Hadoop figyelése és kezelése a Ambari REST API – Azure HDInsight
 description: Ismerje meg, hogyan használhatja a Ambari az Hadoop-fürtök figyelésére és kezelésére az Azure HDInsight. Ebből a dokumentumból megtudhatja, hogyan használható a HDInsight-fürtökhöz tartozó Ambari-REST API.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546075"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945573"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -37,11 +34,11 @@ Az Apache Ambari megkönnyíti a Hadoop-fürtök felügyeletét és figyelését
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Alapszintű Uniform Resource Identifier a Ambari REST API-hoz
 
- A HDInsight Ambari REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket** .  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
+ A HDInsight Ambari REST API alapszintű Uniform Resource Identifier (URI) `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , ahol a a `CLUSTERNAME` fürt neve.  Az URI-k fürtjének nevei **megkülönböztetik a kis-és nagybetűket**.  Míg a fürt neve az URI () teljes tartományneve (FQDN) része, a kis-és nagybetűk megkülönböztetése `CLUSTERNAME.azurehdinsight.net` , az URI-n belüli más előfordulások megkülönböztetik a kis-és nagybetűket.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Használja a rendszergazdai fiók nevét (az alapértelmezett a **rendszergazda** ) és a jelszót, amelyet a fürt létrehozásakor adott meg.
+A HDInsight Ambari-hez való csatlakozáshoz HTTPS szükséges. Használja a rendszergazdai fiók nevét (az alapértelmezett a **rendszergazda**) és a jelszót, amelyet a fürt létrehozásakor adott meg.
 
 Enterprise Security Package-fürtök esetében a helyett `admin` használjon egy teljesen minősített felhasználónevet, például: `username@domain.onmicrosoft.com` .
 

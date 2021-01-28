@@ -1,18 +1,15 @@
 ---
 title: Az Apache Oozie hibáinak megoldása az Azure HDInsight
 description: Bizonyos Apache Oozie hibák elhárítása az Azure HDInsight-ben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: edbe5274de8576fccb29e1e69d260a6531d4ab05
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2cdd20a5d639f74916657edc3f73183a403204a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287402"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944660"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Az Apache Oozie hibáinak megoldása az Azure HDInsight
 

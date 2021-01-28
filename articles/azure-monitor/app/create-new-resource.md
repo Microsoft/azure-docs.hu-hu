@@ -3,12 +3,12 @@ title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906369"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944591"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
@@ -94,7 +94,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-A parancsmag teljes PowerShell-dokumentációját és a kialakítási kulcs beolvasásának megismeréséhez tekintse meg a [Azure PowerShell dokumentációját](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+A parancsmag teljes PowerShell-dokumentációját és a kialakítási kulcs beolvasásának megismeréséhez tekintse meg a [Azure PowerShell dokumentációját](/powershell/module/az.applicationinsights/new-azapplicationinsights).
 
 ### <a name="azure-cli-preview"></a>Azure CLI (előzetes verzió)
 
@@ -151,7 +151,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs beolvasásának megismeréséhez tekintse meg az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs beolvasásának megismeréséhez tekintse meg az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
 
 ## <a name="next-steps"></a>Következő lépések
 * [Diagnosztikai keresés](./diagnostic-search.md)

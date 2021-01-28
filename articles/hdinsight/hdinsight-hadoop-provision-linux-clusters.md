@@ -1,19 +1,16 @@
 ---
 title: Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
 description: Hadoop-, Kafka-, Spark-, HBase-, R Server-vagy Storm-fürtöket állíthat be a HDInsight böngészőből, a klasszikus Azure CLI-ből, a Azure PowerShell, a REST-ból vagy az SDK-ból.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546126"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945550"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával
 
@@ -39,7 +36,7 @@ A következő táblázat a HDInsight-fürtök beállításához használható k�
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
-| [Azure Resource Manager sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure Resource Manager-sablonok](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Ez a cikk végigvezeti a telepítőn a [Azure Portalon](https://portal.azure.com), ahol HDInsight-fürtöt hozhat létre.
 
@@ -92,7 +89,7 @@ Válassza ki a fürthöz tartozó HDInsight verzióját. További információ: 
 
 A HDInsight-fürtök esetében két felhasználói fiókot is beállíthat a fürt létrehozása során:
 
-* Fürt bejelentkezési felhasználóneve: az alapértelmezett Felhasználónév a *rendszergazda* . A Azure Portal alapszintű konfigurációját használja. Néha "fürt felhasználó" vagy "HTTP-felhasználó" néven is ismert.
+* Fürt bejelentkezési felhasználóneve: az alapértelmezett Felhasználónév a *rendszergazda*. A Azure Portal alapszintű konfigurációját használja. Néha "fürt felhasználó" vagy "HTTP-felhasználó" néven is ismert.
 * Secure Shell-(SSH-) Felhasználónév: a fürt SSH-n keresztüli kapcsolódásához használatos. További információ: az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 A HTTP-Felhasználónév a következő korlátozásokkal rendelkezik:
@@ -108,7 +105,7 @@ Az SSH-Felhasználónév a következő korlátozásokkal rendelkezik:
 * Maximális hossz: 64
 * Fenntartott nevek: Hadoop, felhasználók, oozie, struktúra, mapred, ambari-QA, Zookeeper, TEZ, hdfs, sqoop, fonal, hcat, AMS, hbase, Storm, Administrator, admin, felhasználó, Felhasználó1, test, Felhasználó2, test1, user3, Rendszergazda1, 1, 123, a, actuser, adm, admin2, ASPNET, Backup, konzol, David, vendég, János, tulajdonos, gyökér, kiszolgáló, SQL, támogatás, support_388945a0, sys, teszt2, test3, user4, user5, Spark
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ![Fürt tárolási beállításai: HDFS-kompatibilis végpontok](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
@@ -117,10 +114,10 @@ Bár a Hadoop helyszíni telepítése a elosztott fájlrendszer Hadoop (HDFS) ha
 A HDInsight-fürtök a következő tárolási lehetőségeket használhatják:
 
 * 2. generációs Azure Data Lake Storage
-* Azure Data Lake Storage Gen1
+* 1. generációs Azure Data Lake Storage
 * Azure Storage általános célú v2
 * Azure Storage általános célú v1
-* Azure Storage Block-blob ( **csak másodlagos tárolóként támogatott** )
+* Azure Storage Block-blob (**csak másodlagos tárolóként támogatott**)
 
 További információ a tárolási lehetőségekről a HDInsight használatával: a [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használatra](hdinsight-hadoop-compare-storage-options.md).
 
@@ -172,7 +169,7 @@ A Ambari a HDInsight-fürtök figyelésére, a konfiguráció módosítására, 
 
 ### <a name="enterprise-security-package"></a>Vállalati biztonsági csomag
 
-A Hadoop, a Spark, a HBase, a Kafka és az interaktív lekérdezési fürt típusainál engedélyezheti a **Enterprise Security Package** . Ez a csomag lehetővé teszi, hogy az Apache Ranger használatával biztonságosabb fürtöt lehessen beállítani, és integrálja Azure Active Directory. További információ: [a vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).
+A Hadoop, a Spark, a HBase, a Kafka és az interaktív lekérdezési fürt típusainál engedélyezheti a **Enterprise Security Package**. Ez a csomag lehetővé teszi, hogy az Apache Ranger használatával biztonságosabb fürtöt lehessen beállítani, és integrálja Azure Active Directory. További információ: [a vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).
 
 A nagyvállalati biztonsági csomag lehetővé teszi a HDInsight integrálását Active Directory és Apache Ranger használatával. A vállalati biztonsági csomag használatával több felhasználó is létrehozható.
 
@@ -215,7 +212,7 @@ Mindegyik fürt típusa saját számú csomóponttal, csomópontok terminológi�
 | Típus | Csomópontok | Ábra |
 | --- | --- | --- |
 | Hadoop |Fő csomópont (2), munkavégző csomópont (1 +) |![HDInsight Hadoop](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| A HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
+| HBase |Head Server (2), régió-kiszolgáló (1 +), fő/ZooKeeper csomópont (3) |![HDInsight HBase-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
 | Storm |Nimbus csomópont (2), felügyeleti kiszolgáló (1 +), ZooKeeper csomópont (3) |![HDInsight Storm-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
 | Spark |Fő csomópont (2), munkavégző csomópont (1 +), ZooKeeper-csomópont (3) (az A1-es ZooKeeper VM-mérethez ingyenes) |![HDInsight Spark-fürt típusának beállítása](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
@@ -290,7 +287,7 @@ Időnként a következő konfigurációs fájlokat szeretné konfigurálni a lé
 
 További információ: HDInsight- [fürtök testreszabása a bootstrap használatával](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 * [Mik azok a HDInsight, a Apache Hadoop ökoszisztémák és a Hadoop-fürtök?](hadoop/apache-hadoop-introduction.md)

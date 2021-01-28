@@ -1,19 +1,16 @@
 ---
 title: Java-MapReduce létrehozása a Apache Hadoophoz – Azure HDInsight
 description: Ismerje meg, hogyan hozhat létre egy Java-alapú MapReduce-alkalmazást az Apache Maven használatával, majd hogyan futtathatja a Hadoop az Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996032"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946654"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce-programok fejlesztése a HDInsight Apache Hadoop
 
@@ -98,7 +95,7 @@ A `<scope>provided</scope>` Maven azt jelzi, hogy ezek a függőségek nem tölt
 > [!IMPORTANT]
 > A használt verziónak meg kell egyeznie a fürtben lévő Hadoop-verzióval. További információ a verziókról: HDInsight- [összetevő verziószámozási](../hdinsight-component-versioning.md) dokumentuma.
 
-### <a name="build-configuration"></a>Konfiguráció létrehozása
+### <a name="build-configuration"></a>Buildelési konfiguráció
 
 A Maven beépülő moduljai lehetővé teszik a projekt összeállítási szakaszainak testreszabását. Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs beállítások hozzáadására szolgál.
 
@@ -281,7 +278,7 @@ A következő lépésekkel `scp` másolhatja a jar-t az Apache HBase elsődleges
     zenith  2
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan fejleszthet Java MapReduce-feladatot. A HDInsight használatával kapcsolatos egyéb módszerekről a következő dokumentumokban talál további információt.
 

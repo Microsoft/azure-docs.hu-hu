@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop-fürtök létrehozása webböngésző használatával, Azure HDInsight
 description: Megtudhatja, hogyan hozhat létre Apache Hadoop-, Apache HBase-, Apache Storm-vagy Apache Spark-fürtöket a HDInsight. Használja a webböngészőt és a Azure Portal.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541706"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945821"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
 
@@ -52,8 +49,8 @@ Az **alapok** lapon adja meg a következő információkat:
 |Fürt neve|Adjon meg egy globálisan egyedi nevet.|
 |Régió|A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.|
 |Fürt típusa|A lista megnyitásához kattintson a **fürt típusának kiválasztása** elemre. Válassza ki a kívánt fürt típusát a listából. A HDInsight-fürtök különböző típusokból származnak. Azok a munkaterhelésnek vagy technológiának felelnek meg, amelyhez a fürt be van hangolva. Nincs támogatott módszer a több típust egyesítő fürt létrehozásához.|
-|Verzió|A legördülő listából válassza ki a kívánt **verziót** . Ha nem tudja, mit kell választania, használja az alapértelmezett verziót. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
-|Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda** .|
+|Verzió|A legördülő listából válassza ki a kívánt **verziót**. Ha nem tudja, mit kell választania, használja az alapértelmezett verziót. További tájékoztatás a [HDInsight cluster versions](hdinsight-component-versioning.md) (A HDInsight-fürtök verziói) című cikkben olvasható.|
+|Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
 |Fürt bejelentkezési jelszava|Adja meg a jelszót.|
 |Fürt bejelentkezési jelszavának megerősítése|Írja be újra a jelszót|
 |Secure Shell- (SSH-) felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a **sshuser** .|
@@ -72,9 +69,9 @@ Válassza a **Tovább: Storage >>** a következő lapra való továbblépés el�
 
 Az **elsődleges tároló típusa** legördülő listából válassza ki az alapértelmezett tárolási típust. A később betöltendő mezők a kiválasztás alapján változnak. **Azure Storage** esetén:
 
-1. A **kiválasztási módszer** esetében válassza **a kiválasztás listából lehetőséget** , vagy **használja a hozzáférési kulcsot** .
+1. A **kiválasztási módszer** esetében válassza **a kiválasztás listából lehetőséget**, vagy **használja a hozzáférési kulcsot**.
     * Válassza ki a **listából** az **elsődleges Storage-fiókot** a legördülő listából, vagy válassza az **új létrehozása** lehetőséget.
-    * A **hozzáférési kulcs használatához** adja meg a **Storage-fiók nevét** . Ezután adja meg a **hozzáférési kulcsot** .
+    * A **hozzáférési kulcs használatához** adja meg a **Storage-fiók nevét**. Ezután adja meg a **hozzáférési kulcsot**.
 
 1. A **tároló** mezőben fogadja el az alapértelmezett értéket, vagy adjon meg egy újat.
 

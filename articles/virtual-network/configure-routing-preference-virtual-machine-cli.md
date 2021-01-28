@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d375b860c6b23fd6033e985e23c6f12dfe9a3c68
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7673a42afa3b85a2aaf3f11f5e9b74fd46d48488
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223567"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945088"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Útválasztási beállítások konfigurálása virtuális géphez az Azure CLI használatával
 
@@ -58,7 +58,7 @@ A virtuális gép üzembe helyezése előtt létre kell hoznia a támogató hál
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-Hozzon létre egy hálózati biztonsági csoportot a VNet bejövő és kimenő kommunikációját szabályozó szabályokhoz az [az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
+Hozzon létre egy hálózati biztonsági csoportot a VNet bejövő és kimenő kommunikációját szabályozó szabályokhoz az [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create)
 
 ```azurecli
 az network nsg create \
@@ -69,7 +69,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) paranccsal. Az alábbi példa egy *myVNET* nevű virtuális hálózatot hoz létre az alhálózatok *mySubNet*:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) paranccsal. Az alábbi példa egy *myVNET* nevű virtuális hálózatot hoz létre az alhálózatok *mySubNet*:
 
 ```azurecli
 # Create a virtual network
@@ -89,7 +89,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>Hálózati adapter létrehozása
 
-Hozzon létre egy virtuális hálózati adaptert a virtuális GÉPHEZ az [az Network NIC Create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)paranccsal. A következő példa egy virtuális hálózati adaptert hoz létre, amelyet a virtuális GÉPHEZ fog csatolni.
+Hozzon létre egy virtuális hálózati adaptert a virtuális GÉPHEZ az [az Network NIC Create](/cli/azure/network/nic#az-network-nic-create)paranccsal. A következő példa egy virtuális hálózati adaptert hoz létre, amelyet a virtuális GÉPHEZ fog csatolni.
 
 ```azurecli-interactive
 # Create a NIC
@@ -105,7 +105,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) paranccsal. A következő példa egy Windows Server 2019 rendszerű virtuális GÉPET és a szükséges virtuális hálózati összetevőket hozza létre, ha azok még nem léteznek.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. A következő példa egy Windows Server 2019 rendszerű virtuális GÉPET és a szükséges virtuális hálózati összetevőket hozza létre, ha azok még nem léteznek.
 
 ```azurecli
 az vm create \

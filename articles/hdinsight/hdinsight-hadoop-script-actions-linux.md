@@ -1,18 +1,15 @@
 ---
 title: Parancsfájl-műveletek fejlesztése az Azure HDInsight-fürtök testreszabásához
 description: Ismerje meg, hogyan szabhatók testre a HDInsight-fürtök a bash-parancsfájlok használatával. A parancsfájl-műveletek lehetővé teszik parancsfájlok futtatását a fürt létrehozása során vagy után a fürt konfigurációs beállításainak módosításához vagy további szoftverek telepítéséhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629442"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945473"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
@@ -235,7 +232,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 A parancsfájlban a következő segítők használhatók:
 
-| Segítő használata | Leírás |
+| Segítő használata | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Letölt egy fájlt a forrás URI-ból a megadott elérési útra. Alapértelmezés szerint nem írja felül a meglévő fájlt. |
 | `untar_file TARFILE DESTDIR` |Kibont egy tar-fájlt (a használatával `-xf` ) a cél könyvtárába. |
@@ -290,7 +287,7 @@ A fürtök testreszabásához használt parancsfájlokat a következő helyekre 
 
 * A fürthöz társított __további Storage-fiók__ .
 
-* __Nyilvánosan olvasható URI__ . Például egy URL-cím a OneDrive-on, a Dropboxban vagy más file hosting szolgáltatásban tárolt adatelérési ponthoz.
+* __Nyilvánosan olvasható URI__. Például egy URL-cím a OneDrive-on, a Dropboxban vagy más file hosting szolgáltatásban tárolt adatelérési ponthoz.
 
 * Egy __Azure Data Lake Storage fiók__ , amely a HDInsight-fürthöz van társítva. A Azure Data Lake Storage és a HDInsight használatával kapcsolatos további információkért lásd [: gyors útmutató: fürtök beállítása a HDInsight-ben](./hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -332,13 +329,13 @@ A Microsoft példákat biztosít a HDInsight-fürtön található összetevők t
 
 A fejlesztett parancsfájlok használatakor a következő hibák merülhetnek fel:
 
-**Hiba** : `$'\r': command not found` . Időnként ezt követi `syntax error: unexpected end of file` .
+**Hiba**: `$'\r': command not found` . Időnként ezt követi `syntax error: unexpected end of file` .
 
-*OK* : Ez a hiba akkor következik be, amikor egy parancsfájl SORAI a CRLF-sel végződik. A UNIX rendszerű rendszerek csak a TT-t várnak a sor végéig.
+*OK*: Ez a hiba akkor következik be, amikor egy parancsfájl SORAI a CRLF-sel végződik. A UNIX rendszerű rendszerek csak a TT-t várnak a sor végéig.
 
 Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-környezetben készíti el, mivel a CRLF egy, a Windows számos szövegszerkesztője számára végződő közös vonal.
 
-*Megoldás* : Ha a szövegszerkesztőben lehetőség van, válassza a Unix-formátum vagy a LF lehetőséget a sor befejezéséhez. A következő parancsokat is használhatja egy UNIX rendszeren a CRLF egy LF-re való módosításához:
+*Megoldás*: Ha a szövegszerkesztőben lehetőség van, válassza a Unix-formátum vagy a LF lehetőséget a sor befejezéséhez. A következő parancsokat is használhatja egy UNIX rendszeren a CRLF egy LF-re való módosításához:
 
 > [!NOTE]  
 > A következő parancsok nagyjából egyenértékűek, ha módosítani kell a CRLF sort a LF értékre. Válasszon egyet a rendszeren elérhető segédprogramok alapján.
@@ -350,11 +347,11 @@ Ez a probléma leggyakrabban akkor fordul elő, ha a parancsfájlt Windows-körn
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Közvetlenül módosítja a fájlt |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |A fájl egy olyan verziót tartalmaz, amely csak LF végződéssel rendelkezik. |
 
-**Hiba** : `line 1: #!/usr/bin/env: No such file or directory` .
+**Hiba**: `line 1: #!/usr/bin/env: No such file or directory` .
 
-*OK* : Ez a hiba akkor fordul elő, ha a parancsfájl UTF-8-as, bájtos rendelési JELLEL (BOM) lett mentve.
+*OK*: Ez a hiba akkor fordul elő, ha a parancsfájl UTF-8-as, bájtos rendelési JELLEL (BOM) lett mentve.
 
-*Megoldás* : mentse a fájlt ASCII-ként, vagy egy ANYAGJEGYZÉK nélküli UTF-8-ként. Az alábbi parancsot Linux vagy UNIX rendszerű rendszeren is használhatja az ANYAGJEGYZÉK nélküli fájl létrehozásához:
+*Megoldás*: mentse a fájlt ASCII-ként, vagy egy ANYAGJEGYZÉK nélküli UTF-8-ként. Az alábbi parancsot Linux vagy UNIX rendszerű rendszeren is használhatja az ANYAGJEGYZÉK nélküli fájl létrehozásához:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE

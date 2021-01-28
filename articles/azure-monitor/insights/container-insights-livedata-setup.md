@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók val�
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050782"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943848"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -19,7 +19,7 @@ Ez a szolgáltatás a következő módszereket támogatja a naplók, események 
 
 - AK Kubernetes RBAC-hitelesítés nélkül engedélyezve
 - AK engedélyezve a Kubernetes RBAC-engedélyezéssel
-    - A fürt szerepkörének kötési **[CLUSTERMONITORINGUSER](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true) konfigurált AK**
+    - A fürt szerepkörének kötési **[CLUSTERMONITORINGUSER](/rest/api/aks/managedclusters/listclustermonitoringusercredentials) konfigurált AK**
 - Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezéssel engedélyezett AK
 
 Ezek az utasítások rendszergazdai hozzáférést igényelnek a Kubernetes-fürthöz, és ha úgy konfigurálja, hogy az Azure Active Directory (AD) felhasználó-hitelesítésre, rendszergazdai hozzáférés az Azure AD-hoz.
@@ -136,6 +136,6 @@ Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a 
 
 Az AK-fürt **ClusterRoleBinding** konfigurálásával kapcsolatos további segítségért lásd: [Kubernetes RBAC-kötés létrehozása](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a hitelesítést, a fürtből valós időben megtekintheti a [metrikákat](container-insights-livedata-metrics.md), a [központi telepítéseket](container-insights-livedata-deployments.md), valamint az [eseményeket és a naplókat](container-insights-livedata-overview.md) .

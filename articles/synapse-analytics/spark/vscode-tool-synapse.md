@@ -2,19 +2,19 @@
 title: Oktatóanyag – Spark & kaptár eszközei a VSCode-hez (Spark-alkalmazás)
 description: Oktatóanyag – a VSCode Spark & struktúrájának eszközei a Pythonban írt Spark-alkalmazások fejlesztéséhez és kiszolgáló nélküli Apache Spark készletbe való beküldéséhez.
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: eb4a4c2c8d1d52690a07b784640d20d96ff2d600
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445678"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943772"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazások létrehozása a VSCode a szinapszis-munkaterület használatával
 
@@ -38,7 +38,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. A menüsávban navigáljon a **View**  >  **bővítmények** megtekintéséhez.
+2. A menüsávban navigáljon a   >  **bővítmények** megtekintéséhez.
 
 3. A keresőmezőbe írja be a **Spark & kaptár** kifejezést.
 
@@ -68,7 +68,7 @@ Jelentkezzen be az Azure-előfizetésbe a Spark-készletekhez való kapcsolódá
 
 Az Azure-hoz való kapcsolódáshoz kövesse az alábbi lépéseket:
 
-1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
+1. A menüsávban navigáljon a   >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
 
      ![A Spark & struktúra eszközei a Visual Studio Code-beli bejelentkezéshez](./media/vscode-tool-synapse/hdinsight-for-vscode-extension-login.png)
 
@@ -130,7 +130,7 @@ for (word, count) in sortedCollection:
 
      ![a pyspark kernel telepítése](./media/vscode-tool-synapse/install-the-pyspark-kernel.png)
 
-5. Ha később is telepítenie kell, navigáljon a fájl beállításait **tartalmazó**  >  **Preference**  >  **Beállítások** területére, majd törölje a jelet a **Hdinsight: a Pyspark kihagyása** jelölőnégyzet bejelölésének engedélyezése lehetőségre. 
+5. Ha később is telepítenie kell, navigáljon a fájl beállításait **tartalmazó**  >    >  **Beállítások** területére, majd törölje a jelet a **Hdinsight: a Pyspark kihagyása** jelölőnégyzet bejelölésének engedélyezése lehetőségre. 
     
      ![pyspark-telepítés kihagyásának engedélyezése](./media/vscode-tool-synapse/enable-skip-pyspark-installation.png)
 
@@ -278,7 +278,7 @@ Az Azure Explorerben különböző műveleteket hajthat végre a Spark & kaptár
 ![ismert problémák](./media/vscode-tool-synapse/known-issue.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

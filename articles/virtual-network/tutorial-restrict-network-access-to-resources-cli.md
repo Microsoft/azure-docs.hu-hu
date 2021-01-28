@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946287"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>A virtuális hálózati szolgáltatásbeli végpontokkal való hálózati hozzáférés korlátozása az Azure CLI használatával
 
@@ -326,7 +326,7 @@ A hozzáférés megtagadva, és hibaüzenet jelenik meg `mount error(13): Permis
 
 Lépjen ki az SSH-munkamenetből a *myVmPublic* virtuális gépre.
 
-A számítógépről próbálja meg megtekinteni a Storage-fiókban lévő megosztásokat az [az Storage Share List](/cli/azure/storage/share?view=azure-cli-latest)paranccsal. Cserélje `<account-name>` le `<account-key>` a és a elemet a Storage-fiók nevére és kulcsára a [Storage-fiók létrehozásakor](#create-a-storage-account):
+A számítógépről próbálja meg megtekinteni a Storage-fiókban lévő megosztásokat az [az Storage Share List](/cli/azure/storage/share)paranccsal. Cserélje `<account-name>` le `<account-key>` a és a elemet a Storage-fiók nevére és kulcsára a [Storage-fiók létrehozásakor](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

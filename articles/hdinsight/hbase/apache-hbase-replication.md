@@ -1,19 +1,16 @@
 ---
 title: HBase-fürt replikálása virtuális hálózatokban – Azure HDInsight
 description: Megtudhatja, hogyan állíthatja be a HBase-replikációt az egyik HDInsight-verzióról a másikra a terheléselosztás, a magas rendelkezésre állás, a nulla leállás utáni áttelepítés és a frissítések, valamint a vész-helyreállítási folyamat
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021792"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946407"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-fürt replikálásának beállítása az Azure Virtual Networks szolgáltatásban
 
@@ -305,7 +302,7 @@ A következő lépések azt ismertetik, hogyan hívható meg a parancsfájl műv
       >
       > Ez az útmutató feltételezi, hogy az hn1 aktív átjárócsomóponthoz. Ellenőrizze, hogy a fürt azonosítsa-e az aktív fő csomópontot.
 
-6. Kattintson a **Létrehozás** gombra. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
+6. Válassza a **Létrehozás** lehetőséget. A szkript futása hosszabb ideig is eltarthat, különösen a **-COPYDATA** argumentum használatakor.
 
 Szükséges argumentumok:
 
@@ -406,7 +403,7 @@ A `print_usage()` [szkript](https://raw.githubusercontent.com/Azure/hbase-utils/
 > Ha törölni kívánja a fürtöt, győződjön meg róla, hogy eltávolítja a forrás-fürt társ-listájából. Ezt úgy teheti meg, hogy a (z) remove_peer "1" parancsot futtatja a hbase-rendszerhéjban. Ha ez nem sikerül, akkor előfordulhat, hogy a fürterőforrás nem működik megfelelően.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan állíthatja be az Apache HBase-replikációt egy virtuális hálózaton belül vagy két virtuális hálózat között. A HDInsight és az Apache HBase kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

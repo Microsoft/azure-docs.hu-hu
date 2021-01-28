@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight-fürt konfigurációinak testreszabása a bootstrap használatával
 description: Ismerje meg, hogyan szabhatja testre a HDInsight-fürt konfigurációját a .NET, a PowerShell és a Resource Manager-sablonok használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547486"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945750"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-fürtök testreszabása a bootstrap használatával
 
@@ -21,7 +18,7 @@ A rendszerindítási parancsfájlok lehetővé teszik, hogy programozott módon 
 
 A HDInsight-fürt létrehozásakor három módszer van a konfigurációs fájlok beállításainak beállítására:
 
-* Az Azure PowerShell használata
+* Azure PowerShell használatával
 * A .NET SDK használata
 * Azure Resource Manager sablon használata
 
@@ -50,7 +47,7 @@ További információ a HDInsight-fürt további összetevőinek a létrehozás 
 
 * Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/).
 
-## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
 A következő PowerShell-kód testreszab egy [Apache Hive](https://hive.apache.org/) konfigurációt:
 
@@ -86,9 +83,9 @@ A [függelékben](#appendix-powershell-sample)található egy teljes körűen m�
 **A módosítás ellenőrzése:**
 
 1. Navigáljon a helyére, ahol a a `https://CLUSTERNAME.azurehdinsight.net/` `CLUSTERNAME` fürt neve.
-1. A bal oldali menüben navigáljon a **struktúra** -  >  **konfigurációk**  >  **speciális** elemre.
+1. A bal oldali menüben navigáljon a **struktúra**-  >  **konfigurációk**  >  **speciális** elemre.
 1. Bontsa ki a **speciális kaptár-site** elemet.
-1. Keresse meg a **kaptár. metaadattár. Client. socket. timeout** értéket, és erősítse meg, hogy az érték **90-es** .
+1. Keresse meg a **kaptár. metaadattár. Client. socket. timeout** értéket, és erősítse meg, hogy az érték **90-es**.
 
 Néhány példa más konfigurációs fájlok testreszabására:
 

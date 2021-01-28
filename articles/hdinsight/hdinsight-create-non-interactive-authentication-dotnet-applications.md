@@ -1,19 +1,16 @@
 ---
 title: Nem interaktív hitelesítéssel rendelkező .NET-alkalmazás – Azure HDInsight
 description: Ismerje meg, hogyan hozhat létre nem interaktív hitelesítési Microsoft .NET alkalmazásokat az Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 121c5850ef47999f54d206b95b69e10775d3e5c9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946088"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Nem interaktív hitelesítéssel rendelkező .NET HDInsight-alkalmazás létrehozása
 
@@ -39,7 +36,7 @@ Rendeljen hozzá egy [szerepkört](../role-based-access-control/built-in-roles.m
 1. Navigáljon ahhoz a HDInsight-fürthöz tartozó erőforráscsoporthoz, amelyen a kaptár-lekérdezést a cikk későbbi részében futtatni fogja. Ha nagy számú erőforráscsoportot használ, a szűrőt használva megkeresheti a kívánt csoportot.
 1. Az erőforráscsoport menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
 1. Válassza ki a **szerepkör-hozzárendelések** lapot az aktuális szerepkör-hozzárendelések megtekintéséhez.
-1. A lap tetején válassza a **+ Hozzáadás**lehetőséget.
+1. A lap tetején válassza a **+ Hozzáadás** lehetőséget.
 1. Kövesse az utasításokat, és adja hozzá a tulajdonosi szerepkört az Azure AD-alkalmazáshoz. Miután sikeresen hozzáadta a szerepkört, az alkalmazás megjelenik a tulajdonos szerepkör alatt.
 
 ## <a name="develop-an-hdinsight-client-application"></a>HDInsight-ügyfélalkalmazás fejlesztése

@@ -1,19 +1,16 @@
 ---
 title: HDInsight-fürt naplófájljainak kezelése – Azure HDInsight
 description: Határozza meg a HDInsight-tevékenység naplófájljainak típusait, méretét és adatmegőrzési szabályzatait.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546024"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945266"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -81,7 +78,7 @@ A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari né
 
 ![Apache Ambari-rendszergazdai verem és verziók](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-A Ambari felhasználói felületének használatával letöltheti a fürt egy adott gazdagépén (vagy csomópontján) futó bármely (vagy az összes) szolgáltatás konfigurációját.  Válassza a **gazdagépek** menüt, majd a kívánt gazdagépre mutató hivatkozást. A gazdagép lapján válassza a **gazdagép műveletek** gombot, majd **töltse le az ügyfél konfigurációit** .
+A Ambari felhasználói felületének használatával letöltheti a fürt egy adott gazdagépén (vagy csomópontján) futó bármely (vagy az összes) szolgáltatás konfigurációját.  Válassza a **gazdagépek** menüt, majd a kívánt gazdagépre mutató hivatkozást. A gazdagép lapján válassza a **gazdagép műveletek** gombot, majd **töltse le az ügyfél konfigurációit**.
 
 ![Apache Ambari letöltési gazdagép-ügyfél konfigurációja](./media/hdinsight-log-management/download-client-configs.png)
 

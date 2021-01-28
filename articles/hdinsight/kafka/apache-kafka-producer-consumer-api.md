@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: Apache Kafka producer & fogyasztói API-k – Azure HDInsight'
 description: Ismerkedjen meg az Apache Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával. Ez az oktatóanyag ezen API-k használatát mutatja be egy Java-alkalmazásból futtatott Kafka on HDInsighttal.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629306"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945175"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -36,7 +33,7 @@ Az API-król további információkat az Apache dokumentációjának [Producer A
 * Apache Kafka a HDInsight-fürtön. A fürt létrehozásával kapcsolatos további információkért tekintse [meg a Start with apache Kafka on HDInsight](apache-kafka-get-started.md)című témakört.
 * A [Java Developer Kit (JDK) 8-as verziója](/azure/developer/java/fundamentals/java-jdk-long-term-support) vagy azzal egyenértékű, például OpenJDK.
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
-* Egy SSH-ügyfél, például a Putty. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél, például a Putty. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
@@ -213,15 +210,15 @@ Az ugyanazon csoportban található ügyfelek általi felhasználás kezelése a
 > [!IMPORTANT]  
 > A fogyasztói csoportban található fogyasztói példányok száma nem haladhatja meg a partíciók számát. Ebben a példában egy fogyasztói csoport legfeljebb nyolc fogyasztót tartalmazhat, mivel a témakörben ennyi partíció található. Emellett lehet több, legfeljebb nyolc fogyasztóval rendelkező fogyasztói csoportja is.
 
-A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül* , hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül* , hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
+A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül*, hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül*, hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
 
 ## <a name="common-issues-faced"></a>Gyakori problémák
 
 1. A **témakör létrehozása sikertelen** Ha a fürtön engedélyezve van a vállalati biztonsági csomag, használja az [előre elkészített jar-fájlokat a gyártó és a fogyasztó számára](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Az ESP jar a programkódból is létrehozható az [ `DomainJoined-Producer-Consumer` alkönyvtárban](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). A gyártó és a fogyasztó tulajdonságai további tulajdonságot `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` biztosítanak az ESP-kompatibilis fürtökhöz.
 
-2. **Nem sikerült az ESP-kompatibilis fürtökön** : Ha a termelés és a felhasználás művelet meghiúsul, és ESP-t használó fürtöt használ, ellenőrizze, hogy a felhasználó szerepel `kafka` -e az összes Ranger-házirendben. Ha nincs jelen, adja hozzá az összes Ranger-szabályzathoz.
+2. **Nem sikerült az ESP-kompatibilis fürtökön**: Ha a termelés és a felhasználás művelet meghiúsul, és ESP-t használó fürtöt használ, ellenőrizze, hogy a felhasználó szerepel `kafka` -e az összes Ranger-házirendben. Ha nincs jelen, adja hozzá az összes Ranger-szabályzathoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 

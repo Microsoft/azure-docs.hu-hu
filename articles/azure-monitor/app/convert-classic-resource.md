@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights klasszikus erőforrás migrálása mun
 description: Ismerje meg a Azure Monitor Application Insights klasszikus erőforrás új munkaterület-alapú modellre való frissítéséhez szükséges lépéseket.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536523"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945100"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Áttelepítés munkaterületen alapuló Application Insights erőforrásokra
 
@@ -114,7 +114,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-A parancshoz tartozó teljes Azure CLI-dokumentációért lásd az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-update).
+A parancshoz tartozó teljes Azure CLI-dokumentációért lásd az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -237,7 +237,7 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 
 Az áttelepítés előtt nem kell módosítania az összes módosítást, de ez az üzenet arra figyelmezteti, hogy az aktuális Application Insights megőrzési beállításai nem az alapértelmezett 90 napos megőrzési időtartamra vannak beállítva. Ez a figyelmeztető üzenet azt jelenti, hogy módosítani szeretné a Log Analytics munkaterület megőrzési beállításait a Migrálás és az új adatok betöltésének megkezdése előtt. 
 
-A log Analytics aktuális megőrzési beállításait az **általános** használat szakaszban tekintheti meg,  >  a **becsült költségek**  >  **Data Retention** pedig az log Analytics felhasználói felületen. Ez a beállítás befolyásolja, hogy mennyi ideig tárolja a rendszer az új betöltött adatot, miután áttelepítette Application Insights erőforrását.
+A log Analytics aktuális megőrzési beállításait az **általános** használat szakaszban tekintheti meg,  >  a **becsült költségek**  >   pedig az log Analytics felhasználói felületen. Ez a beállítás befolyásolja, hogy mennyi ideig tárolja a rendszer az új betöltött adatot, miután áttelepítette Application Insights erőforrását.
 
 ## <a name="next-steps"></a>Következő lépések
 

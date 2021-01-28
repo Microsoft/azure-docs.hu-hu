@@ -1,19 +1,16 @@
 ---
 title: Data Lake Storage Gen1 használata a Hadoop az Azure HDInsight
 description: Megtudhatja, hogyan kérdezheti le az adatait a Azure Data Lake Storage Gen1ból, és hogyan tárolhatja az elemzés eredményeit.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539836"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945410"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel
 
@@ -43,8 +40,8 @@ Jelenleg csak néhány HDInsight-fürt típusa/verziója támogatja a Data Lake 
 | A HDInsight-fürt típusa | Data Lake Storage Gen1 alapértelmezett tárolóként | Data Lake Storage Gen1 további tárterületként| Jegyzetek |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight 4,0-es verzió | Nem | Nem |A ADLS Gen1 nem támogatott a HDInsight 4,0 |
-| A HDInsight 3.6-os verziója | Igen | Igen | HBase kivételével|
-| A HDInsight 3.5-ös verziója | Igen | Igen | HBase kivételével|
+| A HDInsight 3.6-os verziója | Igen | Yes | HBase kivételével|
+| A HDInsight 3.5-ös verziója | Igen | Yes | HBase kivételével|
 | A HDInsight 3.4-es verziója | Nem | Igen | |
 | A HDInsight 3.3-as verziója | Nem | Nem | |
 | A HDInsight 3.2-es verziója | Nem | Igen | |
@@ -62,7 +59,7 @@ Ha a HDInsight Data Lake Storage Gen1 alapértelmezett tárolóként van telepí
 * Az 1. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster1storage`
 * A 2. fürt a következő elérési utat használhatja: `adl://mydatalakestore/cluster2storage`
 
-Figyelje meg, hogy mindkét fürt ugyanazt a Data Lake Storage Gen1 fiókot használja **mydatalakestore** . Minden fürt hozzáfér a saját gyökérszintű fájlrendszeréhez Data Lake Storageban. A Azure Portal üzembe helyezési élménye arra kéri, hogy adjon meg egy mappanevet, például a **/Clusters/ \<clustername>** a gyökér elérési útjához.
+Figyelje meg, hogy mindkét fürt ugyanazt a Data Lake Storage Gen1 fiókot használja **mydatalakestore**. Minden fürt hozzáfér a saját gyökérszintű fájlrendszeréhez Data Lake Storageban. A Azure Portal üzembe helyezési élménye arra kéri, hogy adjon meg egy mappanevet, például a **/Clusters/ \<clustername>** a gyökér elérési útjához.
 
 A Data Lake Storage Gen1 alapértelmezett tárolóként való használatához meg kell adnia az egyszerű szolgáltatás elérését a következő elérési utakhoz:
 
@@ -137,19 +134,19 @@ A hozzáférés-vezérlési modellel kapcsolatos további információkért lás
 
 Több módon is hozzáférhet a Data Lake Storage lévő fájlokhoz egy HDInsight-fürtről.
 
-* **A teljes név használatával** . Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
+* **A teljes név használatával**. Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **A rövidített elérésiút-formátum használatával** . Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
+* **A rövidített elérésiút-formátum használatával**. Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
 
     ```
     adl:///<file path>
     ```
 
-* **A relatív elérési út használatával** . Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
+* **A relatív elérési út használatával**. Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
 
     ```
     /<file.path>/
@@ -214,7 +211,7 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Tároló elérési útjának azonosítása a Ambari
 
-A konfigurált alapértelmezett tároló teljes elérési útjának azonosításához lépjen a **HDFS** -konfigurációk elemre,  >  **Configs** és adja meg `fs.defaultFS` a szűrő beviteli mezőjét.
+A konfigurált alapértelmezett tároló teljes elérési útjának azonosításához lépjen a **HDFS**-konfigurációk elemre,  >   és adja meg `fs.defaultFS` a szűrő beviteli mezőjét.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1hoz hozzáféréssel rendelkező HDInsight-fürtök létrehozása
 

@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka méretezés – Azure-HDInsight
 description: Útmutató az Azure HDInsight-beli Apache Kafka-fürtök felügyelt lemezeinek a méretezhetőséget javító konfigurálásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: 586094f9e6ee696487064dcfea68af0bfc26c1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22642ae94ea01a798b1eab639c93fda31f87581
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649108"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944050"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
 
@@ -50,7 +47,7 @@ Egy Kafka-fürt egy feldolgozó csomópontjára jutó lenezek számának beáll�
 
 Megtalálhatja a teljes sablont, amely bemutatja, hogyan konfigurálhatja a felügyelt lemezeket a szolgáltatásban [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsight-Apache Kafka használatáról a következő dokumentumokban talál további információt:
 

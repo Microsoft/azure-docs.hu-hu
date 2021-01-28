@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AK-fürt 
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99c4ecb6c8b77f1576f25816ba486ed262249c32
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 476934d84d8ffc63336ec620432db3507b2cbb34
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695697"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943840"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókhoz készült Azure Monitorral való monitorozásának leállítása
 
@@ -18,7 +18,7 @@ Miután engedélyezte az AK-fürt figyelését, leállíthatja a fürt figyelés
 
 ## <a name="azure-cli"></a>Azure CLI
 
-A tárolók Azure Monitor letiltásához használja az az [AK disable-addons](/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) parancsot. A parancs eltávolítja az ügynököt a fürtcsomópontokből, nem távolítja el a megoldást, vagy a már összegyűjtött és a Azure Monitor erőforrásban tárolt adatokat.  
+A tárolók Azure Monitor letiltásához használja az az [AK disable-addons](/cli/azure/aks#az-aks-disable-addons) parancsot. A parancs eltávolítja az ügynököt a fürtcsomópontokből, nem távolítja el a megoldást, vagy a már összegyűjtött és a Azure Monitor erőforrásban tárolt adatokat.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -163,6 +163,6 @@ ProvisioningState       : Succeeded
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterületek törlésének módját, tekintse meg az [Azure log Analytics munkaterület törlése a Azure Portal](../platform/delete-workspace.md)használatával című témakört. Ne felejtse el a 4. lépésben korábban átmásolt **munkaterület-erőforrás azonosítóját** , amelyre szüksége lesz.

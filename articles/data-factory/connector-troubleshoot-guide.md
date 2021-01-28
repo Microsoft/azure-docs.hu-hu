@@ -9,12 +9,12 @@ ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4b586b95232af2a154993523402f81ee88a22cda
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967123"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946157"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -22,7 +22,7 @@ ms.locfileid: "97967123"
 
 Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszereit vizsgálja.
   
-## <a name="azure-blob-storage"></a>Azure Blob-tároló
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code-azurebloboperationfailed"></a>Hibakód: AzureBlobOperationFailed
 
@@ -121,10 +121,10 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: a CosmosDbSqlApi művelete találatot észlelt.
 
-- **Javaslat**: vizsgálja meg a hibát a részletek között. Tekintse meg a [CosmosDb Súgó dokumentumát](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk). Ha segítségre van szüksége, forduljon a CosmosDb csapatához.
+- **Javaslat**: vizsgálja meg a hibát a részletek között. Tekintse meg a [CosmosDb Súgó dokumentumát](../cosmos-db/troubleshoot-dot-net-sdk.md). Ha segítségre van szüksége, forduljon a CosmosDb csapatához.
 
 
-## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+## <a name="azure-data-lake-storage-gen1"></a>1. generációs Azure Data Lake Storage
 
 ### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Hibaüzenet: az alapul szolgáló kapcsolat bezárult: nem sikerült létrehozni a megbízhatósági kapcsolatot az SSL/TLS biztonságos csatorna számára.
 
@@ -168,7 +168,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **Megoldás**: több perc elteltével futtassa újra a másolási tevékenységet.
 
 
-## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
 
 ### <a name="error-code-adlsgen2operationfailed"></a>Hibakód: ADLSGen2OperationFailed
 
@@ -198,7 +198,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
     - Ellenőrizze, hogy van-e olyan speciális hálózati beállítás, mint a ExpressRoute, és győződjön meg arról, hogy a hálózatban elegendő sávszélesség van. Azt javasoljuk, hogy csökkentse a saját üzemeltetésű IR egyidejű feladatok beállítását, ha a teljes sávszélesség alacsony, és ezzel elkerülhető, hogy a hálózati erőforrások versenye több egyidejű feladaton keresztül történjen.
 
-    - A nem bináris másoláshoz használjon kisebb blokk-méretet, hogy csökkentse az időtúllépési hibát, ha a fájl mérete közepes vagy kicsi. Tekintse át a [blob Storage Put blokkot](https://docs.microsoft.com/rest/api/storageservices/put-block).
+    - A nem bináris másoláshoz használjon kisebb blokk-méretet, hogy csökkentse az időtúllépési hibát, ha a fájl mérete közepes vagy kicsi. Tekintse át a [blob Storage Put blokkot](/rest/api/storageservices/put-block).
 
        Az egyéni blokk méretének megadásához szerkessze a tulajdonságot a. JSON-szerkesztőben:
         ```
@@ -243,7 +243,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenetben a "SqlException" szerepel, akkor a SQL Database a hibát jelző hiba miatt nem sikerült.
 
-- **Javaslat**: a jelen dokumentációban található SQL-hibakód alapján keressen további részleteket: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
+- **Javaslat**: a jelen dokumentációban található SQL-hibakód alapján keressen további részleteket: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Ha további segítségre van szüksége, lépjen kapcsolatba az Azure SQL ügyfélszolgálatával.
 
 - **OK**: Ha ez egy átmeneti probléma (például instabil hálózati kapcsolatok), akkor az újrapróbálkozáshoz adja a tevékenység-szabályzatot, hogy enyhítse.
 
@@ -260,13 +260,13 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenetben a "SqlException" szerepel, akkor a SQL Database a hibát jelző hiba miatt nem sikerült.
 
-- **Javaslat**: Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). A legújabb verziójú SQL-hibákat is el tudja dobni. Tekintse át a [részletes dokumentációt](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
+- **Javaslat**: Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). Ez a legújabb SQL-hibákat is képes jelezni. Tekintse át a [részletes dokumentációt](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
 
-    Az SQL-problémák elhárításához a jelen dokumentációban keresse meg az SQL-hibakódot a további részletekért: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
+    Az SQL-problémák elhárításához a jelen dokumentációban keresse meg az SQL-hibakódot a további részletekért: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Ha további segítségre van szüksége, lépjen kapcsolatba az Azure SQL ügyfélszolgálatával.
 
 - **OK**: Ha a hibaüzenet "PdwManagedToNativeInteropException"-t tartalmaz, általában a forrás-és a fogadó oszlop méretének eltérése okozta.
 
-- **Javaslat**: a forrás-és a fogadó oszlopok méretének megkeresése. Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
+- **Javaslat**: a forrás-és a fogadó oszlopok méretének megkeresése. Ha további segítségre van szüksége, lépjen kapcsolatba az Azure SQL ügyfélszolgálatával.
 
 - **OK**: Ha a hibaüzenet "InvalidOperationException"-t tartalmaz, általában érvénytelen bemeneti adatok okozzák.
 
@@ -486,7 +486,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Megoldás**: próbálkozzon a következő lépésekkel a probléma megoldásához:
 
-    1. Alkalmazza az SQL-fogadó [hibatűrését](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance), különösen a "redirectIncompatibleRowSettings", hogy elhárítsa, mely sorokban van a probléma.
+    1. Alkalmazza az SQL-fogadó [hibatűrését](./copy-activity-fault-tolerance.md), különösen a "redirectIncompatibleRowSettings", hogy elhárítsa, mely sorokban van a probléma.
 
         > [!NOTE]
         > Vegye észre, hogy a hibatűréshez további végrehajtási idő is vezethet, ami magasabb költségeket eredményezhet.

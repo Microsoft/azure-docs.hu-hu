@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348067"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945066"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -173,7 +173,7 @@ Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontj
 
 ### <a name="create-resources-in-the-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
 
-Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat.
+Az [Azure CLI](/cli/azure/install-azure-cli) használatával egyenként hozhatja létre az erőforrásokat.
 
 Erőforrás `kind` :
 
@@ -211,7 +211,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. A jobb felső sarokban válassza ki a felhasználói fiókot, majd válassza a **Beállítások** lehetőséget.
-1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Válassza a **Mentés** lehetőséget.
+1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
 

@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v3. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 3-as vagy újabb verziójában üzemeltetett Azure Monitor használatával.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695675"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944542"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v3 konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -30,7 +30,7 @@ A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Ku
 A tárolók Azure Monitor a következő támogatott módszerek használatával engedélyezhető az új, illetve egy vagy több Azure Red Hat-OpenShift üzemelő példányhoz:
 
 - Egy meglévő fürt Azure Portal vagy Azure Resource Manager sablon használatával.
-- Új fürt Azure Resource Manager sablon használatával vagy új fürt létrehozásakor az [Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)használatával.
+- Új fürt Azure Resource Manager sablon használatával vagy új fürt létrehozásakor az [Azure CLI](/cli/azure/openshift#az-openshift-create)használatával.
 
 ## <a name="supported-and-unsupported-features"></a>Támogatott és nem támogatott funkciók
 
@@ -244,7 +244,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
     provisioningState       : Succeeded
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a figyelés engedélyezve van a RedHat OpenShift-fürt és a rajtuk futó munkaterhelések állapotának és erőforrás-felhasználásának összegyűjtéséhez, Ismerje meg, [hogyan használhatja](container-insights-analyze.md) a Azure monitor for containers szolgáltatást.
 

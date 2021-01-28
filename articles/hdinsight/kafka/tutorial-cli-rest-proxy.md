@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: Apache Kafka REST proxyval rendelkező fürt létrehozása a HDInsight-ben az Azure CLI használatával'
 description: Megtudhatja, hogyan hajthat végre Apache Kafka műveleteket egy Kafka REST-proxy használatával az Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539479"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944031"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Oktatóanyag: Apache Kafka REST proxyval rendelkező fürt létrehozása a HDInsight-ben az Azure CLI használatával
 
@@ -56,8 +53,8 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
     |location|Cserélje le a helyet egy olyan régióra, amelyben a fürt létre lesz hozva. Az érvényes helyszínek listáját a következő paranccsal használhatja: `az account list-locations`|
     |clusterName|Cserélje le a CLUSTERNAME-t az új fürthöz tartozó globálisan egyedi névre.|
     |storageAccount|Cserélje le a STORAGEACCOUNTNAME nevet az új Storage-fiók nevére.|
-    |httpPassword|Cserélje le a jelszót a fürt bejelentkezési azonosítójának jelszavára, **rendszergazdaként** .|
-    |sshPassword|Cserélje le a jelszót jelszóval a Secure Shell username, **sshuser** .|
+    |httpPassword|Cserélje le a jelszót a fürt bejelentkezési azonosítójának jelszavára, **rendszergazdaként**.|
+    |sshPassword|Cserélje le a jelszót jelszóval a Secure Shell username, **sshuser**.|
     |securityGroupName|Cserélje le a SECURITYGROUPNAME-t az ügyfél HRE biztonsági csoportjának nevére a Kafka Rest proxyhoz. A változó a `--kafka-client-group-name` (z) paraméteréhez lesz átadva `az-hdinsight-create` .|
     |securityGroupID|Cserélje le a SECURITYGROUPID-t az ügyfél HRE biztonsági csoportjának azonosítója a Kafka Rest proxyhoz. A változó a `--kafka-client-group-id` (z) paraméteréhez lesz átadva `az-hdinsight-create` .|
     |storageContainer|Ehhez az oktatóanyaghoz a fürt által használt Storage-tárolót kell hagyni. Ez a változó a fürt nevével lesz beállítva.|
@@ -130,7 +127,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
         |Paraméter | Leírás|
         |---|---|
-        |– típus|Az értéknek **Kafka** -nek kell lennie.|
+        |– típus|Az értéknek **Kafka**-nek kell lennie.|
         |--workernode-adatlemezek/csomópont|A munkavégző csomópontok által használandó adatlemezek száma. A HDInsight Kafka csak adatlemezek esetén támogatott. Ez az oktatóanyag a **2** értéket használja.|
 
     1. A Kafka REST proxyhoz szükséges paraméterek:
@@ -173,7 +170,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
     A fürt létrehozási folyamata több percet is igénybe vehet. Általában körülbelül 15.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 

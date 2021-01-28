@@ -2,19 +2,16 @@
 title: Apache Hadoop & Visual Studio Data Lake-eszközök – Azure HDInsight
 description: Ismerje meg, hogyan telepítheti és használhatja a Visual studióhoz készült Data Lake-eszközöket. Az eszköz használatával csatlakozhat Apache Hadoop fürtökhöz az Azure HDInsight, majd futtathatja a kaptár-lekérdezéseket.
 keywords: hadoop-eszközök,hive-lekérdezés,visual studio,visual studio hadoop
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 56154f7e5ebd71e1b6580bec55ca57520eb126ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d8e9784ea21bf5f2b6902e3d93c5c09c1ec5670
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548013"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944557"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio használata az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához
 
@@ -88,7 +85,7 @@ Csatlakozás az Azure-előfizetéshez:
 
 2. A **Start** ablakban válassza a **Folytatás kód nélkül** lehetőséget.
 
-3. Az ide menüsorban válassza a **View**  >  **Server Explorer** megtekintése lehetőséget.
+3. Az ide menüsorban válassza a   >  **Server Explorer** megtekintése lehetőséget.
 
 4. A **Server Explorerben** kattintson a jobb gombbal az **Azure** elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez** lehetőséget, és fejezze be a hitelesítési folyamatot. A **Server Explorerben** bontsa ki az **Azure**  >  **HDInsight** a meglévő HDInsight-fürtök listájának megtekintéséhez.
 
@@ -96,7 +93,7 @@ Csatlakozás az Azure-előfizetéshez:
 
    ![HDInsight, Server Explorer, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png)
 
-6. Bontson ki egy HDInsight-fürtöt. A fürt a kaptár- **adatbázisok** csomópontjait tartalmazza. Emellett egy alapértelmezett Storage-fiók, minden további társított Storage-fiók és **Hadoop-szolgáltatás naplója** . Ennél jobban is kibonthatja az elemeket.
+6. Bontson ki egy HDInsight-fürtöt. A fürt a kaptár- **adatbázisok** csomópontjait tartalmazza. Emellett egy alapértelmezett Storage-fiók, minden további társított Storage-fiók és **Hadoop-szolgáltatás naplója**. Ennél jobban is kibonthatja az elemeket.
 
 Miután csatlakozott az Azure-előfizetéshez, végrehajthatja a következő feladatokat.
 
@@ -125,11 +122,11 @@ HDInsight-fürt összekapcsolása:
 
 1. Kattintson a jobb gombbal a **HDInsight** elemre, majd válassza a **HDInsight-fürt csatolása** lehetőséget a **HDInsight-fürt csatolása** párbeszédpanel megjelenítéséhez.
 
-2. Adja meg a **kapcsolatok URL-címét** az űrlapon `https://CLUSTERNAME.azurehdinsight.net` . A **fürt neve** automatikusan betöltődik az URL-cím fürt neve részével, amikor egy másik mezőre lép. Ezután adjon meg egy **felhasználónevet** és egy **jelszót** , majd kattintson a **Tovább gombra** .
+2. Adja meg a **kapcsolatok URL-címét** az űrlapon `https://CLUSTERNAME.azurehdinsight.net` . A **fürt neve** automatikusan betöltődik az URL-cím fürt neve részével, amikor egy másik mezőre lép. Ezután adjon meg egy **felhasználónevet** és egy **jelszót**, majd kattintson a **Tovább gombra**.
 
     ![Fürt, HDInsight, Visual Studio csatolása](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. Válassza a **Befejezés** lehetőséget. Ha a fürt csatolása sikeres, a fürt megjelenik a **HDInsight** csomópont alatt.
+3. Válassza a **Befejezés** gombot. Ha a fürt csatolása sikeres, a fürt megjelenik a **HDInsight** csomópont alatt.
 
 Egy csatolt fürt frissítéséhez kattintson a jobb gombbal a fürtre, és válassza a **Szerkesztés** lehetőséget. Ezután frissítheti a fürt adatait.
 
@@ -141,7 +138,7 @@ A Server Explorer eszközből láthatja az alapértelmezett tárfiókot és az �
 
 ![A Visual Studio kapcsolódó erőforrásainak Data Lake eszközei a Server Explorerben](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png)
 
-Kattintson a jobb gombbal a tárolóra, és válassza a **tároló megtekintése** lehetőséget a tároló tartalmának megtekintéséhez. Egy tároló megnyitása után az eszköztár gombjaival **frissítheti** a tartalmat, **feltöltheti a blobokat** , **törölheti a kiválasztott** blobokat, **megnyithatja a blobot** , és letöltheti ( **mentheti a Mentés másként** ) kiválasztott blobokat.
+Kattintson a jobb gombbal a tárolóra, és válassza a **tároló megtekintése** lehetőséget a tároló tartalmának megtekintéséhez. Egy tároló megnyitása után az eszköztár gombjaival **frissítheti** a tartalmat, **feltöltheti a blobokat**, **törölheti a kiválasztott** blobokat, **megnyithatja a blobot**, és letöltheti (**mentheti a Mentés másként**) kiválasztott blobokat.
 
 ![Tárolók listája és blob-műveletek, HDInsight-fürt, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png)
 
@@ -166,7 +163,7 @@ A fürtből válassza a **kaptár adatbázisok**  >  **alapértelmezett**  >  **
 
 * A séma megtekintése `hivesampletable` :
 
-    Bontsa ki a **hivesampletable** . Megjelennek az oszlopok nevei és adattípusai `hivesampletable` .
+    Bontsa ki a **hivesampletable**. Megjelennek az oszlopok nevei és adattípusai `hivesampletable` .
 
 * Az adatmegjelenítés `hivesampletable` :
 
@@ -237,7 +234,7 @@ Ad-hoc lekérdezés létrehozása és futtatása:
 
         ![Batch mód, kaptár ad-hoc lekérdezés, HDInsight-fürt, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)
 
-        Ha a speciális küldés lehetőséget választja, megjelenik a **parancsfájl elküldése** párbeszédpanel. Adja meg a **feladatok nevét** , **argumentumait** , a **további konfigurációkat** és az **állapot könyvtárat** a parancsfájlhoz.
+        Ha a speciális küldés lehetőséget választja, megjelenik a **parancsfájl elküldése** párbeszédpanel. Adja meg a **feladatok nevét**, **argumentumait**, a **további konfigurációkat** és az **állapot könyvtárat** a parancsfájlhoz.
 
         ![Parancsfájl elküldése párbeszédpanel, kaptár alkalmi lekérdezés, HDInsight-fürt, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png)
 
@@ -250,9 +247,9 @@ Hive-megoldás létrehozása és futtatása:
 
 1. A menüsávban válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
-2. Az **új projekt létrehozása** ablakban jelölje be a keresőmezőbe, és írja be a **kaptár** kifejezést. Ezután válassza ki a **kaptár alkalmazást** , és kattintson a **Tovább gombra** .
+2. Az **új projekt létrehozása** ablakban jelölje be a keresőmezőbe, és írja be a **kaptár** kifejezést. Ezután válassza ki a **kaptár alkalmazást** , és kattintson a **Tovább gombra**.
 
-3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét** , válassza ki vagy hozza létre a projekt **helyét** , majd válassza a **Létrehozás** lehetőséget.
+3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, válassza ki vagy hozza létre a projekt **helyét**, majd válassza a **Létrehozás** lehetőséget.
 
     ![Új kaptár-alkalmazás, az új projekt ablakának konfigurálása, HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png)
 
@@ -266,7 +263,7 @@ A feladatok összegzése némileg eltér a **Batch** és az **interaktív** mód
 
 A **frissítés** ikon használatával frissítse az állapotot, amíg a feladatok állapota **Befejezettre** nem változik.  
 
-* A feladatok részletei a **Batch** -módból lapon válassza ki a lenti hivatkozásokat a **feladatütemezés** , a **feladatok kimenete** vagy a **Projektnapló** megtekintéséhez, vagy a **fonalak naplófájljainak megtekintéséhez** .
+* A feladatok részletei a **Batch** -módból lapon válassza ki a lenti hivatkozásokat a **feladatütemezés**, a **feladatok kimenete** vagy a **Projektnapló** megtekintéséhez, vagy a **fonalak naplófájljainak megtekintéséhez**.
 
 * Az **interaktív** módból származó feladatok részleteiért tekintse meg a **kimeneti** és **HiveServer2 kimeneti** ablaktáblákat.
 
@@ -312,9 +309,9 @@ Hive-feladatok megtekintése:
 
 1. A menüsávban válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
-2. A **Start** ablakban jelölje be a keresőmezőbe, és írja be a **Pig** kifejezést. Ezután válassza a **Pig-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra** .
+2. A **Start** ablakban jelölje be a keresőmezőbe, és írja be a **Pig** kifejezést. Ezután válassza a **Pig-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
 
-3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét** , majd válasszon ki vagy hozzon létre egy **helyet** a projekt számára. Ezután válassza a **Létrehozás** elemet.
+3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, majd válasszon ki vagy hozzon létre egy **helyet** a projekt számára. Ezután kattintson a **Létrehozás** elemre.
 
 4. Az IDE- **megoldáskezelő** ablaktáblán kattintson duplán a **script. Pig** elemre a parancsfájl megnyitásához.
 

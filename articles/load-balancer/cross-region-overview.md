@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737676"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946266"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -143,11 +143,13 @@ A régiók közötti terheléselosztó a megfelelő regionális terheléseloszt�
 
 * Az állapot-mintavétel jelenleg nem konfigurálható. Az alapértelmezett állapot-mintavétel 20 másodpercenként automatikusan gyűjti a regionális terheléselosztó rendelkezésre állási adatait. 
 
+* Az Azure kubernetes szolgáltatás (ak) jelenleg nem integrálható a régiók közötti Load Balancer. A kapcsolat elvesztését el kell végezni, ha egy több régióból álló Load Balancer állít be egy, az AK-val üzembe helyezett nyilvános Load Balancer előtt.
+
 ## <a name="pricing-and-sla"></a>Díjszabás és SLA
 A régión kívüli terheléselosztó a standard Load Balancer [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) -át osztja meg.
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A régiók közötti terheléselosztó létrehozásához tekintse meg [az oktatóanyag: régiók közötti terheléselosztó létrehozása a Azure Portal használatával című oktatóanyagot](tutorial-cross-region-portal.md) .
 - Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) standard regionális terheléselosztó létrehozásához.

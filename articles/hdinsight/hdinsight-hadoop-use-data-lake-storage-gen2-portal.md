@@ -3,17 +3,16 @@ title: Azure HDInsight-Azure Data Lake Storage Gen2 létrehozása – portál
 description: Ismerje meg, hogyan használhatja a Azure Data Lake Storage Gen2t az Azure HDInsight-fürtökkel a portál használatával.
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858792"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945390"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Hozzon létre egy fürtöt Data Lake Storage Gen2 használatával a Azure Portal
 
@@ -21,7 +20,7 @@ A Azure Portal egy webalapú felügyeleti eszköz a Microsoft Azure felhőben ü
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 A Data Lake Storage Gen2 for Storage szolgáltatást használó HDInsight-fürt létrehozásához kövesse az alábbi lépéseket egy hierarchikus névtérrel rendelkező Storage-fiók konfigurálásához.
 
@@ -30,8 +29,8 @@ A Data Lake Storage Gen2 for Storage szolgáltatást használó HDInsight-fürt 
 Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha még nem rendelkezik ilyennel.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
-1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás**elemre.
+1. A bal felső sarokban kattintson az **erőforrás létrehozása** elemre.
+1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás** elemre.
 1. Kattintson a **Létrehozás** lehetőségre.
 1. Adja meg a felügyelt identitás nevét, válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet.
 1. Kattintson a **Létrehozás** lehetőségre.
@@ -45,14 +44,14 @@ További információ arról, hogyan működnek a felügyelt identitások az Azu
 Hozzon létre egy Azure Data Lake Storage Gen2hoz használandó Storage-fiókot.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
-1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók**elemre.
+1. A bal felső sarokban kattintson az **erőforrás létrehozása** elemre.
+1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók** elemre.
 1. Kattintson a **Létrehozás** lehetőségre.
 1. A **Storage-fiók létrehozása** képernyőn:
     1. Válassza ki a megfelelő előfizetést és erőforráscsoportot.
     1. Adja meg a Storage-fiók nevét Data Lake Storage Gen2.
     1. Kattintson a **speciális** fülre.
-    1. Kattintson a **Data Lake Storage Gen2**alatt található **hierarchikus névtér** melletti **engedélyezve** lehetőségre.
+    1. Kattintson a **Data Lake Storage Gen2** alatt található **hierarchikus névtér** melletti **engedélyezve** lehetőségre.
     1. Kattintson a **Felülvizsgálat + létrehozás** elemre.
     1. Kattintson a **Létrehozás** gombra
 
@@ -70,17 +69,17 @@ Rendelje hozzá a felügyelt identitást a Storage- **blob adattulajdonosi** sze
     ![A Storage hozzáférés-vezérlési beállításait ábrázoló képernyőfelvétel](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
 1. Új szerepkör hozzáadásához kattintson a **+ szerepkör-hozzárendelés hozzáadása** gombra.
-1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **Storage blob-adat tulajdonosi** szerepkörét. Ezután válassza ki azt az előfizetést, amelynek a felügyelt identitás-és Storage-fiókja van. Ezután a Keresés gombra kattintva keresse meg a korábban létrehozott, felhasználó által hozzárendelt felügyelt identitást. Végül válassza ki a felügyelt identitást, és a rendszer a **kijelölt tagok**területen jelenik meg.
+1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **Storage blob-adat tulajdonosi** szerepkörét. Ezután válassza ki azt az előfizetést, amelynek a felügyelt identitás-és Storage-fiókja van. Ezután a Keresés gombra kattintva keresse meg a korábban létrehozott, felhasználó által hozzárendelt felügyelt identitást. Végül válassza ki a felügyelt identitást, és a rendszer a **kijelölt tagok** területen jelenik meg.
 
     ![Az Azure-szerepkörök hozzárendelését bemutató képernyőkép](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Kattintson a **Mentés** gombra. A kiválasztott felhasználó által hozzárendelt identitás mostantól a kiválasztott szerepkör alatt szerepel.
 1. A kezdeti beállítás befejezése után létrehozhat egy fürtöt a portálon keresztül. A fürtnek ugyanabban az Azure-régióban kell lennie, mint a Storage-fióknak. A fürt létrehozási menüjének **tárterület** lapján válassza a következő beállításokat:
 
-    * Az **elsődleges tároló típusa**beállításnál válassza a **Azure Data Lake Storage Gen2**lehetőséget.
-    * Az **elsődleges Storage-fiók**területen keresse meg és válassza ki az újonnan létrehozott Storage-fiókot Data Lake Storage Gen2 tárolóval.
+    * Az **elsődleges tároló típusa** beállításnál válassza a **Azure Data Lake Storage Gen2** lehetőséget.
+    * Az **elsődleges Storage-fiók** területen keresse meg és válassza ki az újonnan létrehozott Storage-fiókot Data Lake Storage Gen2 tárolóval.
 
-    * Az **identitás**területen válassza ki az újonnan létrehozott, felhasználó által hozzárendelt felügyelt identitást.
+    * Az **identitás** területen válassza ki az újonnan létrehozott, felhasználó által hozzárendelt felügyelt identitást.
 
         ![A Data Lake Storage Gen2 Azure HDInsight való használatának tárolási beállításai](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 

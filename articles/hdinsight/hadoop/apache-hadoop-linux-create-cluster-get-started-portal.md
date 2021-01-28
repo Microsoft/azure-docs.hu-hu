@@ -2,19 +2,16 @@
 title: 'Gyors útmutató: Apache Hadoop, Apache Hive & Azure HDInsight-portál'
 description: Ebben a rövid útmutatóban egy HDInsight Hadoop-fürt létrehozásához használja a Azure Portal
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
-ms.openlocfilehash: 02990ce287aa423481c1bfe8ec5e2a8a4cfdb555
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858489"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946597"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -32,7 +29,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
-1. A felső menüben válassza az **+ erőforrás létrehozása**lehetőséget.
+1. A felső menüben válassza az **+ erőforrás létrehozása** lehetőséget.
 
     ![Erőforrás-HDInsight fürt létrehozása](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "Erőforrás-HDInsight fürt létrehozása")
 
@@ -43,10 +40,10 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |Tulajdonság  |Leírás  |
     |---------|---------|
     |Előfizetés    |  A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
-    |Erőforráscsoport     | A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
+    |Erőforráscsoport     | A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
     |Fürt neve   | Adjon meg egy globálisan egyedi nevet. A név legfeljebb 59 karaktert tartalmazhat, beleértve a betűket, számokat és kötőjeleket. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Region    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
-    |Fürt típusa| Válassza a **fürt típusának kiválasztása**lehetőséget. Ezután válassza a **Hadoop** lehetőséget.|
+    |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
+    |Fürt típusa| Válassza a **fürt típusának kiválasztása** lehetőséget. Ezután válassza a **Hadoop** lehetőséget.|
     |Verzió|A legördülő listából válassza ki a kívánt **verziót**. Ha nem tudja, mit kell választania, használja az alapértelmezett verziót.|
     |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
     |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
@@ -62,7 +59,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |---------|---------|
     |Elsődleges tároló típusa|Használja az alapértelmezett értéket az **Azure Storage**-ban.|
     |Kiválasztási módszer|Használja az alapértelmezett értéket a **listából**.|
-    |Az elsődleges tárfiók|A legördülő listából válasszon ki egy meglévő Storage-fiókot, vagy válassza az **új létrehozása**lehetőséget. Új fiók létrehozásakor a névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.|
+    |Az elsődleges tárfiók|A legördülő listából válasszon ki egy meglévő Storage-fiókot, vagy válassza az **új létrehozása** lehetőséget. Új fiók létrehozásakor a névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.|
     |Tároló|Használja az automatikusan feltöltött értéket.|
 
     ![HDInsight Linux – első lépések – a fürt tárolási értékeinek megadása](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "Tárolási értékek megadása HDInsight-fürt létrehozásához")
@@ -75,7 +72,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
 
     ![HDInsight Linux – első lépések – fürt összefoglalása](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "HDInsight Linux – első lépések – fürt összefoglalása")
 
-1. Kattintson a **Létrehozás** gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+1. Válassza a **Létrehozás** lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
     A fürt létrehozása után megjelenik a fürt áttekintési oldala az Azure Portalon.
 
@@ -141,7 +138,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 3. Válassza az **Erőforráscsoport törlése** lehetőséget a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforráscsoport törléséhez. Vegye figyelembe, hogy az erőforráscsoport törlése a tárfiókot is törli. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Linux-alapú HDInsight-fürtöt egy Resource Manager-sablonnal, és hogyan hajthat végre alapszintű kaptár-lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 

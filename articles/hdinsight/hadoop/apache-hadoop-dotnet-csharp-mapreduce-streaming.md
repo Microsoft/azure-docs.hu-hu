@@ -1,19 +1,16 @@
 ---
 title: A C# és a MapReduce használata a Hadoop-ben a HDInsight-Azure-ban
 description: Ismerje meg, hogyan hozhat létre MapReduce-megoldásokat a C# használatával a Apache Hadoop Azure HDInsight való létrehozásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 4153b612b4b15883f28517d806acf6b340a94e49
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543049"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946627"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>A C# és a MapReduce streaming használata Apache Hadoop HDInsight
 
@@ -147,7 +144,7 @@ Az alkalmazás létrehozása után hozza létre a */bin/Debug/reducer.exe* -fáj
 
 Ezután fel kell töltenie a *Mapper* és a *redukáló* alkalmazásokat a HDInsight-tárolóba.
 
-1. A Visual Studióban válassza **View** a  >  **Server Explorer** megtekintése lehetőséget.
+1. A Visual Studióban válassza a  >  **Server Explorer** megtekintése lehetőséget.
 
 1. Kattintson a jobb gombbal az **Azure** elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
@@ -183,7 +180,7 @@ Az alábbi eljárás azt ismerteti, hogyan futtathat MapReduce-feladatokat SSH-m
 
 1. A MapReduce-feladatok elindításához használja a következő parancsok egyikét:
 
-   * Ha az alapértelmezett tároló az **Azure Storage** :
+   * Ha az alapértelmezett tároló az **Azure Storage**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -194,7 +191,7 @@ Az alábbi eljárás azt ismerteti, hogyan futtathat MapReduce-feladatokat SSH-m
             -output /example/wordcountout
         ```
 
-    * Ha az alapértelmezett tárterület **Data Lake Storage Gen1** :
+    * Ha az alapértelmezett tárterület **Data Lake Storage Gen1**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
@@ -205,7 +202,7 @@ Az alábbi eljárás azt ismerteti, hogyan futtathat MapReduce-feladatokat SSH-m
             -output /example/wordcountout
         ```
 
-   * Ha az alapértelmezett tárterület **Data Lake Storage Gen2** :
+   * Ha az alapértelmezett tárterület **Data Lake Storage Gen2**:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \

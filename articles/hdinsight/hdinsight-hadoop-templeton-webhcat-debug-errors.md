@@ -1,19 +1,16 @@
 ---
 title: Webhcaten-hibák megértése és megoldása a HDInsight-ben – Azure
 description: Ismerkedjen meg a Webhcaten által a HDInsight-on visszaadott gyakori hibákkal és azok megoldásával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285688"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945465"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A WebHCattől kapott hibák megértése és megoldása HDInsightban
 
@@ -39,7 +36,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 ## <a name="too-many-requests"></a>Túl sok kérelem
 
-**Http-állapotkód** : 429
+**Http-állapotkód**: 429
 
 | Ok | Feloldás |
 | --- | --- |
@@ -47,7 +44,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 ## <a name="server-unavailable"></a>A kiszolgáló nem érhető el
 
-**Http-állapotkód** : 503
+**Http-állapotkód**: 503
 
 | Ok | Feloldás |
 | --- | --- |
@@ -55,7 +52,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 ## <a name="bad-request-content-could-not-find-job"></a>Helytelen kérelem tartalma: nem található a feladattípus.
 
-**Http-állapotkód** : 400
+**Http-állapotkód**: 400
 
 | Ok | Feloldás |
 | --- | --- |
@@ -65,7 +62,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 ## <a name="bad-gateway"></a>Hibás átjáró
 
-**Http-állapotkód** : 502
+**Http-állapotkód**: 502
 
 | Ok | Feloldás |
 | --- | --- |

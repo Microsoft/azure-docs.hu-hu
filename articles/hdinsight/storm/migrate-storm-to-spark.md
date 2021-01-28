@@ -1,18 +1,15 @@
 ---
 title: Telepítse át az Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark
 description: A Apache Storm számítási feladatok áttelepítésének különbségei és áttelepítése a Spark streaming vagy a Spark strukturált streaming számára.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081196"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944791"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Telepítse át az Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark
 
@@ -39,7 +36,7 @@ Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozás
 |---|---|---|---|
 |**Esemény-feldolgozási garancia**|Legalább egyszer <br> Pontosan egyszer (Trident) |[Pontosan egyszer](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Pontosan egyszer](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Feldolgozási modell**|Valós idejű <br> Micro batch (Trident) |Micro batch |Micro batch |
-|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|Nem|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Nyelvek**|Java stb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark streaming vs Spark strukturált streaming
@@ -67,7 +64,7 @@ A Storm-topológiák több összetevőből állnak, amelyek egy irányított aci
 
 A Storm a következő három démonból áll, amelyek megőrzik a Storm-fürt működését.
 
-|Démon |Leírás |
+|Démon |Description |
 |---|---|
 |Nimbus|A Hadoop JobTracker hasonlóan a kód a fürt körének terjesztése, valamint a feladatok gépekhez és a hibák figyeléséhez való hozzárendelésének feladata.|
 |Zookeeper|A fürt koordinálásához használatos.|
@@ -104,7 +101,7 @@ A Spark strukturált streaming az adatstreamet olyan táblaként jelöli, amely 
 
 A strukturált adatfolyamban az adatok beérkeznek a rendszerbe, és azonnal bekerülnek egy bemeneti táblába. Olyan lekérdezéseket írhat (a DataFrame és az adatkészlet API-k használatával), amelyek a bemeneti táblán műveleteket hajtanak végre.
 
-A lekérdezés kimenete egy *Result (eredmény) táblázatot*eredményez, amely a lekérdezés eredményét tartalmazza. A külső adattár, például a kapcsolódó adatbázis eredményeinek táblázatában is megrajzolhat egy adatforrást.
+A lekérdezés kimenete egy *Result (eredmény) táblázatot* eredményez, amely a lekérdezés eredményét tartalmazza. A külső adattár, például a kapcsolódó adatbázis eredményeinek táblázatában is megrajzolhat egy adatforrást.
 
 Az adatok bemeneti táblából való feldolgozásának időzítését az aktiválási intervallum vezérli. Alapértelmezés szerint az trigger intervalluma nulla, így a strukturált adatfolyam a megérkezése után azonnal feldolgozza az adatfeldolgozást. A gyakorlatban ez azt jelenti, hogy amint a strukturált adatfolyam feldolgozása befejeződött az előző lekérdezés futtatásával, egy másik feldolgozást indít el az újonnan fogadott összes adattal. Az indítást beállíthatja úgy, hogy intervallumban fusson, hogy a folyamatos átviteli adatkötegek feldolgozása időalapú kötegekben történjen.
 
@@ -147,7 +144,7 @@ Ha az alkalmazást a Storm-ből az egyik Spark streaming API-ra szeretné áttel
     > [!div class="mx-imgBorder"]
     > ![szükség szerint távolítsa el a régi HDInsight-fürtöket](./media/migrate-storm-to-spark/remove-old-clusters1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Storm, a Spark streaming és a Spark strukturált streaming szolgáltatással kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 

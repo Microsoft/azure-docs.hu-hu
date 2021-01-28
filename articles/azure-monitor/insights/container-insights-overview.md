@@ -3,12 +3,12 @@ title: A tárolók Azure Monitor áttekintése | Microsoft Docs
 description: Ez a cikk azokat a tárolókat ismerteti Azure Monitor, amelyek az AK-tárolók bevezetési megoldását figyelik, valamint a általa nyújtott értéket az AK-fürtök és az Azure-Container Instances állapotának figyelésével.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21a0e506082b58473870baed014ede16665e837
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317157"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943796"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Tárolókhoz készült Azure Monitor – áttekintés
 
@@ -17,7 +17,7 @@ A tárolók Azure Monitor a-ben üzembe helyezett tároló-munkaterhelések telj
 - Az [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md) üzemeltetett fürtök Managed Kubernetes
 - Az Azure-ban üzemeltetett önfelügyelt Kubernetes-fürtök az [AK motor](https://github.com/Azure/aks-engine) használatával
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910&preserve-view=true) vagy helyszíni környezetben üzemeltetett, önállóan felügyelt Kubernetes-fürtök
+- [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) vagy helyszíni környezetben üzemeltetett, önállóan felügyelt Kubernetes-fürtök
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure arc-kompatibilis Kubernetes](../../azure-arc/kubernetes/overview.md) (előzetes verzió)
 
@@ -31,7 +31,7 @@ A tárolók Azure Monitor a teljesítmény láthatóságát azáltal, hogy a mé
 
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>Mit nyújt a tárolók Azure Monitor?
 
-A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó átfogó figyelési élményt nyújt. Ezek a funkciók lehetővé teszik a Linux és a Windows Server 2019 operációs rendszert futtató Kubernetes-fürt teljesítményének és állapotának, valamint a tároló munkaterhelésének megismerését. A tárolók Azure Monitor a következőket teheti:
+A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó átfogó figyelési élményt nyújt. Ezek a funkciók lehetővé teszik a Linux és a Windows Server 2019 operációs rendszert futtató Kubernetes-fürt teljesítményének és állapotának, valamint a tároló munkaterhelésének megismerését. A tárolókhoz készült Azure Monitor használatával megteheti a következőket:
 
 * Azonosítsa a csomóponton futó AK-tárolókat, valamint a processzor és a memória átlagos kihasználtságát. Ez az információ segít azonosítani az erőforrás szűk keresztmetszeteit.
 * Azonosítsa a tároló-csoportok és a Azure Container Instancesban üzemeltetett tárolók processzorát és memóriájának kihasználtságát.
@@ -40,7 +40,7 @@ A tárolók Azure Monitor a Azure Monitor különböző funkcióit használó á
 * Ismerje meg a fürt viselkedését az átlag és a legnagyobb terhelések alatt. Ez a tudás segíthet a kapacitási igények azonosításában és a fürt által fenntartott maximális terhelés meghatározásában.
 * Riasztásokat állíthat be, amelyekkel proaktívan értesítheti Önt, vagy rögzítheti azt, ha a csomópontokon vagy tárolókban a CPU és a memória kihasználtsága túllépi a küszöbértékeket, vagy ha az infrastruktúra vagy a csomópontok állapota összesítéssel a fürt állapota megváltozik.
 * A [Prometheus](https://prometheus.io/docs/introduction/overview/) -nal integrálva megtekintheti a csomópontokból és Kubernetes származó alkalmazások és munkaterhelések mérőszámait, és [lekérdezésekkel](container-insights-log-search.md) egyéni riasztásokat, irányítópultokat és részletes elemzéseket készíthet.
-* Figyelheti a tároló munkaterheléseit [, amelyek](https://github.com/Azure/aks-engine) a helyszíni és az [AK](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)-os motoron üzemelnek Azure stack.
+* Figyelheti a tároló munkaterheléseit [, amelyek](https://github.com/Azure/aks-engine) a helyszíni és az [AK](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)-os motoron üzemelnek Azure stack.
 * [Az Azure Red Hat OpenShift üzembe helyezett tároló-](../../openshift/intro-openshift.md)munkaterhelések figyelése.
 
     >[!NOTE]

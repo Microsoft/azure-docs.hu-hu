@@ -1,18 +1,15 @@
 ---
 title: Magas rendelkezésre állású összetevők az Azure HDInsight
 description: A HDInsight-fürtök által használt különféle magas rendelkezésre állású összetevők áttekintése.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539717"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945303"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
@@ -65,7 +62,7 @@ A Microsoft támogatja a négy apache-szolgáltatást a következő táblázatba
 
 Mindegyik HDInsight-fürt két átjárócsomópontokkal rendelkezik aktív és készenléti módban. A HDInsight HA szolgáltatások csak a átjárócsomópontokkal futnak. Ezeknek a szolgáltatásoknak mindig az aktív átjárócsomóponthoz kell futniuk, és karbantartási módba kell állítaniuk a készenléti átjárócsomóponthoz.
 
-HA a Apache ZooKeeper HDInsight megfelelő állapotait szeretné fenntartani, és gyors feladatátvételt szeretne biztosítani, az aktív átjárócsomóponthoz-választást az elosztott alkalmazások koordinációs szolgáltatása biztosítja. A HDInsight Emellett néhány háttérben futó Java-folyamatot is kiépít, amelyek a HDInsight HEKTÁRos szolgáltatások feladatátvételi eljárását hangolják össze. Ezek a szolgáltatások a következők: a fő feladatátvevő vezérlő, a Slave feladatátvételi vezérlő, a *Master-ha-Service* és a *Slave-ha-Service* .
+HA a Apache ZooKeeper HDInsight megfelelő állapotait szeretné fenntartani, és gyors feladatátvételt szeretne biztosítani, az aktív átjárócsomóponthoz-választást az elosztott alkalmazások koordinációs szolgáltatása biztosítja. A HDInsight Emellett néhány háttérben futó Java-folyamatot is kiépít, amelyek a HDInsight HEKTÁRos szolgáltatások feladatátvételi eljárását hangolják össze. Ezek a szolgáltatások a következők: a fő feladatátvevő vezérlő, a Slave feladatátvételi vezérlő, a *Master-ha-Service* és a *Slave-ha-Service*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 

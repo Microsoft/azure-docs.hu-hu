@@ -1,19 +1,16 @@
 ---
 title: Működővé tenni ML-szolgáltatások a HDInsight-ben – Azure
 description: Ismerje meg, hogyan működővé tenni az adatmodellt, hogy előrejelzéseket készítsen az Azure HDInsight ML-szolgáltatásaival.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536266"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944005"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
 
@@ -21,7 +18,7 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához** .
+* Egy ML Services-fürt a HDInsight-on. Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , majd a **ml-szolgáltatások** kiválasztása a **fürt típusához**.
 
 * Secure Shell- (SSH-) ügyfél: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtathat parancsokat. További információ: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -54,7 +51,7 @@ Miután a HDInsight-ben használta a ML Services-fürtöt az adatmodellezés bef
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához** .
+1. A választható lehetőségek közül választhat. Válassza az első lehetőséget, ahogyan az a következő képernyőképen is látható, a **operacionalizálási ml Server konfigurálásához**.
 
     ![R Server felügyeleti segédprogram kiválasztása](./media/r-server-operationalize/admin-util-one-box-1.png)
 
@@ -163,9 +160,9 @@ A munkavégző csomópontok leszereléséhez kövesse az alábbi lépéseket:
 * Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **leszerelés** elemre.
 * Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **adatcsomópontok** > kattintson a **Leállítás** gombra.
 * Válassza a **műveletek**  >  **kiválasztott gazdagépek**  >  **csomópontkezelők** > kattintson a **Leállítás** gombra.
-* Válassza **Actions**  >  a **kijelölt gazdagépek** gazdagépek  >  **Hosts** > kattintson **az összes összetevő leállítása** elemre.
+* Válassza   >  a **kijelölt gazdagépek** gazdagépek  >   > kattintson **az összes összetevő leállítása** elemre.
 * Szüntesse meg a feldolgozó csomópontok kijelölését, és jelölje ki az átjárócsomópontokat.
-* Válassza **Actions**  >  a **kijelölt gazdagépek** > " **gazdagépek**  >  **újraindítása az összes összetevőt** .
+* Válassza   >  a **kijelölt gazdagépek** > "**gazdagépek**  >  **újraindítása az összes összetevőt**.
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. lépés: a számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomópont (ok) számára
 

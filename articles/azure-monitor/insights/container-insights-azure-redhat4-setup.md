@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v4. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994540"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944524"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v4. x konfigurálása Azure Monitor for containers szolgáltatással
 
@@ -20,7 +20,7 @@ A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Ku
 
 Az ebben a cikkben ismertetett támogatott módszerek használatával engedélyezheti a tárolók Azure Monitorét az Azure Red Hat OpenShift v4. x egy vagy több meglévő példányához.
 
-Meglévő fürt esetén futtassa ezt a [bash-szkriptet az Azure CLI-ben](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true).
+Meglévő fürt esetén futtassa ezt a [bash-szkriptet az Azure CLI-ben](/cli/azure/openshift#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Támogatott és nem támogatott funkciók
 
@@ -97,7 +97,7 @@ Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az al
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-1. Másolja a **SubscriptionId**értékét.
+1. Másolja a **SubscriptionId** értékét.
 
 1. Váltson arra az előfizetésre, amely a Log Analytics munkaterületet üzemelteti, a következő parancs futtatásával:
 
@@ -111,7 +111,7 @@ Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az al
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója**alá.
+1. A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója** alá.
 
 1. A figyelés engedélyezéséhez futtassa a következő parancsot. Cserélje le a `azureAroV4ClusterResourceId` , `logAnalyticsWorkspaceResourceId` , és paraméterek értékeit `kubeContext` .
 
@@ -133,7 +133,7 @@ Ebben a szakaszban a letöltött bash-szkript használatával engedélyezheti az
 
 Ebben a példában nem kell előzetesen létrehoznia vagy megadnia egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot azáltal, hogy létrehoz egy alapértelmezett munkaterületet a fürt előfizetésének alapértelmezett erőforrás-csoportjában, ha még nem létezik a régióban.
 
-A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region> *formátuma.  
+A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region>* formátuma.  
 
 Cserélje le a és a `azureAroV4ClusterResourceId` paraméterek értékeit `kubeContext` .
 
@@ -154,15 +154,15 @@ A tárolók Azure Monitor több fürtből álló nézete kiemeli az Azure Red Ha
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali ablaktáblán vagy a kezdőlapon válassza a **Azure monitor**lehetőséget.
+1. A bal oldali ablaktáblán vagy a kezdőlapon válassza a **Azure monitor** lehetőséget.
 
-1. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget.
+1. Az **áttekintések** szakaszban válassza a **tárolók** lehetőséget.
 
-1. A **figyelő-tárolók** lapon válassza a nem **figyelt fürtök**lehetőséget.
+1. A **figyelő-tárolók** lapon válassza a nem **figyelt fürtök** lehetőséget.
 
-1. A nem figyelt fürtök listájában jelölje ki a fürtöt, majd válassza az **Engedélyezés**lehetőséget.
+1. A nem figyelt fürtök listájában jelölje ki a fürtöt, majd válassza az **Engedélyezés** lehetőséget.
 
-    A lista eredményeit a **fürt típusa** oszlopban található **ARO** érték megkeresésével azonosíthatja. Miután kiválasztotta az **Engedélyezés**lehetőséget, a rendszer átirányítja erre a cikkre.
+    A lista eredményeit a **fürt típusa** oszlopban található **ARO** érték megkeresésével azonosíthatja. Miután kiválasztotta az **Engedélyezés** lehetőséget, a rendszer átirányítja erre a cikkre.
 
 ## <a name="next-steps"></a>Következő lépések
 

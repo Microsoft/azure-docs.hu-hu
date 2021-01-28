@@ -3,12 +3,12 @@ title: Azure Monitor engedélyezése a tárolók számára | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994072"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943825"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
 
@@ -21,7 +21,7 @@ Ez a cikk áttekintést nyújt a tárolók Azure Monitorának beállításához 
 
 A szolgáltatásban üzemeltetett, önállóan felügyelt Kubernetes-fürtökön üzembe helyezett munkaterhelések teljesítményét is figyelemmel kísérheti:
 - Azure, az AK- [motor](https://github.com/Azure/aks-engine) használatával
-- [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) vagy helyszíni, az AK-motor használatával.
+- [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) vagy helyszíni, az AK-motor használatával.
 
 A következő támogatott módszerek bármelyikével engedélyezheti a tárolók Azure Monitorét egy új központi telepítéshez vagy egy vagy több Kubernetes meglévő központi telepítéséhez:
 
@@ -63,7 +63,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő k
 
 A tárolók Azure Monitor hivatalosan a következő konfigurációkat támogatják:
 
-- Környezetek: az Azure Red Hat OpenShift, a helyszíni Kubernetes, valamint az Azure-ban és Azure Stack található AK-motor. További információkért tekintse [meg a Azure stack AK-motorját](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+- Környezetek: az Azure Red Hat OpenShift, a helyszíni Kubernetes, valamint az Azure-ban és Azure Stack található AK-motor. További információkért tekintse [meg a Azure stack AK-motorját](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint az [Azure Kubernetes szolgáltatásban (ak)](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Hálózati tűzfalra vonatkozó követelmények
@@ -80,7 +80,7 @@ A következő táblázat felsorolja azokat a proxy-és tűzfal-konfigurációs a
 
 A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Leírás | 
+|Ügynök erőforrása|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.cn` | 443 | OMS bevezetése |
@@ -88,7 +88,7 @@ A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfiguráci�
 
 Az alábbi táblázat az Azure US government proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Leírás | 
+|Ügynök erőforrása|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.us` | 443 | OMS bevezetése |
@@ -112,12 +112,12 @@ Az ügynök új verziójának felszabadításakor a rendszer automatikusan friss
 
 A tárolók Azure Monitorának engedélyezéséhez használja az alábbi táblázatban leírt módszerek egyikét:
 
-| Központi telepítés állapota | Módszer | Leírás |
+| Központi telepítés állapota | Metódus | Leírás |
 |------------------|--------|-------------|
 | Új Kubernetes-fürt | [AK-fürt létrehozása az Azure CLI használatával](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Engedélyezheti az Azure CLI használatával létrehozott új AK-fürtök figyelését. |
 | | [AK-fürt létrehozása a Terraform használatával](container-insights-enable-new-cluster.md#enable-using-terraform)| A nyílt forráskódú eszköz Terraform használatával engedélyezheti a figyelést a létrehozott új AK-fürtökhöz. |
 | | [OpenShift-fürt létrehozása Azure Resource Manager sablon használatával](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Engedélyezheti az előre konfigurált Azure Resource Manager sablonnal létrehozott új OpenShift-fürtök figyelését. |
-| | [OpenShift-fürt létrehozása az Azure CLI használatával](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Ha új OpenShift-fürtöt telepít az Azure CLI használatával, akkor engedélyezheti a figyelést. |
+| | [OpenShift-fürt létrehozása az Azure CLI használatával](/cli/azure/openshift#az-openshift-create) | Ha új OpenShift-fürtöt telepít az Azure CLI használatával, akkor engedélyezheti a figyelést. |
 | Meglévő Kubernetes-fürt | [AK-fürt figyelésének engedélyezése az Azure CLI használatával](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Az Azure CLI használatával már üzembe helyezett AK-fürtök figyelését is engedélyezheti. |
 | |[Az AK-fürt engedélyezése a Terraform használatával](container-insights-enable-existing-clusters.md#enable-using-terraform) | A nyílt forráskódú eszköz Terraform használatával engedélyezheti a figyelést a már üzembe helyezett AK-fürtökön. |
 | | [Az AK-fürtök engedélyezése Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Engedélyezheti a figyelést egy vagy több AK-fürtön, amelyek már telepítve vannak a Azure Monitor több fürtből álló oldaláról. |

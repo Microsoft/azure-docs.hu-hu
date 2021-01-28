@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 3cc79edf50c4f056f413292d2d43aa8cf8e65136
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: c755ee0ee91156da9910a9d43c891c87f86cd430
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683474"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945037"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Resource Manager-sablonok – minták Log Analytics munkaterületekhez Azure Monitor
 Ez a cikk mintákat [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz log Analytics munkaterületek létrehozásához és konfigurálásához Azure monitorban. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -610,7 +610,7 @@ Az alábbi minta [egyéni naplók](../platform/data-sources-custom-logs.md) gyű
 
 ### <a name="notes"></a>Jegyzetek
 
-- Az elválasztó karakterek és a kinyerések konfigurálása összetett lehet. Ha segítségre van szüksége, egyéni naplót határozhat meg a Azure Portal használatával, valamint a konfiguráció lekérése a [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) és a **-Kind** beállítás használatával a **szokás**.
+- Az elválasztó karakterek és a kinyerések konfigurálása összetett lehet. Ha segítségre van szüksége, egyéni naplót határozhat meg a Azure Portal használatával, valamint a konfiguráció lekérése a [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource) és a **-Kind** beállítás használatával a **szokás**.
 
   
 ### <a name="template-file"></a>Sablonfájl
@@ -822,7 +822,7 @@ Az alábbi minta egy meglévő munkaterülethez hozzáadja az [IIS-naplók](../p
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 * [További információ a log Analytics munkaterületekről](../learn/quick-create-workspace.md).

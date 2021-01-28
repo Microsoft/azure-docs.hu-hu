@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968585"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944521"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Biztonsági és hozzáférés-vezérlési problémák elhárítása Azure Data Factory
 
@@ -49,13 +49,13 @@ A problémát általában az alábbi tényezők okozzák:
 
 * Ha **saját** üzemeltetésű integrációs modult használ, ellenőrizze a proxy-, a tűzfal-és a hálózati beállításokat, mert az ugyanahhoz az adattárhoz való csatlakozás sikeres lehet, ha Azure IR használ. A forgatókönyv hibáinak megoldásához tekintse meg a következőt:
 
-   * [Saját üzemeltetésű IR-portok és tűzfalak](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Azure Data Lake Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [Saját üzemeltetésű IR-portok és tűzfalak](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Azure Data Lake Storage-összekötő](./connector-azure-data-lake-store.md)
   
 * Ha **Azure IR** használ, próbálja meg letiltani az adattár tűzfalbeállítások beállítását. Ez a módszer a következő két helyzetben képes megoldani a problémákat:
   
-   * [Azure IR IP-címek](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) nem szerepelnek az engedélyezési listán.
-   * A *megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz* funkció ki van kapcsolva az [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) és [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
+   * [Azure IR IP-címek](./azure-integration-runtime-ip-addresses.md) nem szerepelnek az engedélyezési listán.
+   * A *megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz* funkció ki van kapcsolva az [Azure Blob Storage](./connector-azure-blob-storage.md#supported-capabilities) és [Azure Data Lake Storage Gen 2](./connector-azure-data-lake-storage.md#supported-capabilities).
    * Az *Azure-szolgáltatásokhoz való hozzáférés engedélyezése* beállítás nincs engedélyezve a Azure Data Lake Storage Gen1.
 
 Ha az előző módszerek egyike sem működik, forduljon a Microsofthoz segítségért.
@@ -88,7 +88,7 @@ Annak ellenőrzéséhez, hogy a Data Factory teljes tartományneve (FQDN) fel va
 #### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához tegye a következőket:
-- Tekintse meg [Azure Data Factory cikkhez tartozó Azure Private-hivatkozást](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) . Az utasítás a magánhálózati DNS-zóna vagy-kiszolgáló konfigurálására szolgál az Data Factory FQDN magánhálózati IP-címhez való feloldásához.
+- Tekintse meg [Azure Data Factory cikkhez tartozó Azure Private-hivatkozást](./data-factory-private-link.md#dns-changes-for-private-endpoints) . Az utasítás a magánhálózati DNS-zóna vagy-kiszolgáló konfigurálására szolgál az Data Factory FQDN magánhálózati IP-címhez való feloldásához.
 
 - Javasoljuk, hogy használjon egy egyéni DNS-t hosszú távú megoldásként. Ha azonban nem szeretné konfigurálni a magánhálózati DNS-zónát vagy-kiszolgálót, próbálja meg a következő ideiglenes megoldást:
 
@@ -120,7 +120,7 @@ A problémát a virtuális gép okozhatja, amelyben a saját üzemeltetésű int
  
 A probléma megoldásához tegye a következőket:
 
-1. Nyissa meg a [gyárak – frissítés](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) lapot.
+1. Nyissa meg a [gyárak – frissítés](/rest/api/datafactory/Factories/Update) lapot.
 
 1. A jobb felső sarokban kattintson a **TRY IT (kipróbálás** ) gombra.
 1. A **Paraméterek** területen végezze el a szükséges információkat. 
@@ -146,7 +146,7 @@ A probléma megoldásához tegye a következőket:
 
 **2\. megoldás**
 
-A probléma megoldásához nyissa meg a [Azure Data Factory Azure-beli privát hivatkozását](https://docs.microsoft.com/azure/data-factory/data-factory-private-link).
+A probléma megoldásához nyissa meg a [Azure Data Factory Azure-beli privát hivatkozását](./data-factory-private-link.md).
 
 Próbálja meg engedélyezni a nyilvános hálózati hozzáférést a felhasználói felületen a következő képernyőképen látható módon:
 

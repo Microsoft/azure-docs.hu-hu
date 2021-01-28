@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop architektúra – Azure HDInsight
 description: Ismerteti Apache Hadoop tárolását és feldolgozását az Azure HDInsight-fürtökön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541944"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945909"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
@@ -37,7 +34,7 @@ Amikor egy MapReduce-alkalmazás egy fürtön fut, a erőforráskezelő biztosí
 
 A erőforráskezelő egy webkiszolgáló-folyamatot is futtat, amely webes felhasználói felületet biztosít az alkalmazások állapotának figyeléséhez.
 
-Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri ( *egyezteti* ) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni.
+Amikor egy felhasználó elküld egy MapReduce alkalmazást a fürtön való futtatásra, az alkalmazás a erőforráskezelő lesz elküldve. A erőforráskezelő pedig kioszt egy tárolót az elérhető NodeManager-csomópontokon. A NodeManager-csomópontok, ahol az alkalmazás ténylegesen fut. Az első lefoglalt tároló egy ApplicationMaster nevű speciális alkalmazást futtat. Ennek a ApplicationMaster az a feladata, hogy az elküldött alkalmazás futtatásához szükséges további tárolók formájában beszerezze az erőforrásokat. A ApplicationMaster megvizsgálja az alkalmazás szakaszait, például a térképi fázist és a szakasz csökkentését, valamint azt, hogy mekkora mennyiségű adatok feldolgozása szükséges. A ApplicationMaster ezután megkéri (*egyezteti*) az erőforrásokat a erőforráskezelő az alkalmazás nevében. A erőforráskezelő a fürt Csomópontkezelők származó erőforrásokat biztosít ahhoz a ApplicationMaster, amelyet az alkalmazás végrehajtásához kíván használni.
 
 A Csomópontkezelők futtatják az alkalmazást alkotó feladatokat, majd jelentést készítenek az előrehaladásról és az állapotról a ApplicationMaster. A ApplicationMaster visszaküldi az alkalmazás állapotát a erőforráskezelő. A erőforráskezelő bármilyen eredményt ad vissza az ügyfélnek.
 

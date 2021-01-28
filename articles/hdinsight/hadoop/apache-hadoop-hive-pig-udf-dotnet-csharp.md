@@ -1,19 +1,16 @@
 ---
 title: C#, Apache Hive & Apache Pig on Apache Hadoop – Azure HDInsight
 description: Megtudhatja, hogyan használhat C# nyelvű, felhasználó által definiált függvényeket az Azure HDInsight Apache Hive és Apache Pig streaming szolgáltatásával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: e99d68d31f1da4dcb3ef1086a2bbd90f0ab30410
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023125"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946543"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Felhasználó által definiált C#-függvények használata Apache Hive és Apache Pig használatával a HDInsight-on Apache Hadoop
 
@@ -58,7 +55,7 @@ C#-projekt létrehozása egy Apache Hive UDF-hez:
 
 3. Az **új projekt létrehozása** ablakban válassza ki a **Console app (.NET-keretrendszer)** sablont (a C# verzióját). Ezután kattintson a **Tovább** gombra.
 
-4. Az **új projekt konfigurálása** ablakban adja meg az *HiveCSharp* **projekt nevét** , és navigáljon az új projekt mentéséhez, vagy hozzon létre egy **helyet** . Ezután válassza a **Létrehozás** elemet.
+4. Az **új projekt konfigurálása** ablakban adja meg az *HiveCSharp* **projekt nevét** , és navigáljon az új projekt mentéséhez, vagy hozzon létre egy **helyet** . Ezután kattintson a **Létrehozás** elemre.
 
 5. A Visual Studio IDE-ben cserélje le a *program.cs* tartalmát a következő kódra:
 
@@ -111,7 +108,7 @@ C#-projekt létrehozása egy Apache Hive UDF-hez:
     }
     ```
 
-6. A menüsávban válassza a Build **Build**  >  **Build megoldás** elemet a projekt létrehozásához.
+6. A menüsávban válassza a Build   >  **Build megoldás** elemet a projekt létrehozásához.
 
 7. A megoldás lezárása.
 
@@ -125,7 +122,7 @@ C#-projekt létrehozása egy Apache Hive UDF-hez:
 
 3. Az **új projekt létrehozása** ablakban válassza ki a **Console app (.NET-keretrendszer)** sablont (a C# verzióját). Ezután kattintson a **Tovább** gombra.
 
-4. Az **új projekt konfigurálása** ablakban adja meg a *PigUDF* **projekt nevét** , és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután válassza a **Létrehozás** elemet.
+4. Az **új projekt konfigurálása** ablakban adja meg a *PigUDF* **projekt nevét** , és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután kattintson a **Létrehozás** elemre.
 
 5. A Visual Studio IDE-ben cserélje le a *program.cs* tartalmát a következő kódra:
 
@@ -168,7 +165,7 @@ C#-projekt létrehozása egy Apache Hive UDF-hez:
 
 Ezután töltse fel a kaptár és a Pig UDF alkalmazásokat a Storage-ba egy HDInsight-fürtön.
 
-1. A Visual Studióban navigáljon **View** a  >  **Server Explorer** megtekintése elemre.
+1. A Visual Studióban navigáljon a  >  **Server Explorer** megtekintése elemre.
 
 1. A **Server Explorerben** kattintson a jobb gombbal az **Azure** elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
@@ -196,7 +193,7 @@ Ezután töltse fel a kaptár és a Pig UDF alkalmazásokat a Storage-ba egy HDI
 
 Most már futtathat egy kaptár-lekérdezést, amely a kaptár UDF-alkalmazást használja.
 
-1. A Visual Studióban navigáljon **View** a  >  **Server Explorer** megtekintése elemre.
+1. A Visual Studióban navigáljon a  >  **Server Explorer** megtekintése elemre.
 
 2. Bontsa ki az **Azure** elemet, majd bontsa ki a **HDInsight** elemet.
 
@@ -269,7 +266,7 @@ A Pig UDF-alkalmazást használó Pig-feladatot is futtathat.
 
 5. `exit`A sertésből való kilépéshez használatos.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használható a .NET-keretrendszer alkalmazása a kaptárból és a Pig on HDInsight. Ha szeretné megtudni, hogyan használhatja a Pythont a kaptárral és a Malactal, tekintse meg [a Python használata Apache Hive és az Apache Pig használatát a HDInsight-ben](python-udf-hdinsight.md)című témakört.
 

@@ -1,19 +1,16 @@
 ---
 title: Migrálás a HDInsight Azure Resource Manager eszközeire
 description: Migrálás a HDInsight-fürtök Azure Resource Manager fejlesztői eszközeire
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629476"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945771"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrálás Azure Resource Manager-alapú fejlesztői eszközökre HDInsight-fürtökhöz
 
@@ -83,7 +80,7 @@ Az Apache Hadoop MapReduce, Apache Hive és Apache Pig interaktív módon tört�
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell migrálása a Azure Resource Managerba
 A Azure Resource Manager módban Azure PowerShell általános információi a [Azure PowerShell Azure Resource Manager használatával](../azure-resource-manager/management/manage-resources-powershell.md)találhatók.
 
-A Azure PowerShell Resource Manager-parancsmagok az ASM-parancsmagokkal egymás mellett telepíthetők. A két mód parancsmagja megkülönböztethető a nevük alapján.  A Resource Manager módban a *AzHDInsight* a régebbi Azure Service Management módban a *AzureHDInsight* összehasonlításával összehasonlított parancsmagok nevei szerepelnek.  Például: *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . A paraméterek és kapcsolók tartalmazhatnak híreket, és a Resource Manager használatakor számos új paraméter érhető el.  Például számos parancsmaghoz szükség van egy *ResourceGroupName* nevű új kapcsolóra.
+A Azure PowerShell Resource Manager-parancsmagok az ASM-parancsmagokkal egymás mellett telepíthetők. A két mód parancsmagja megkülönböztethető a nevük alapján.  A Resource Manager módban a *AzHDInsight* a régebbi Azure Service Management módban a *AzureHDInsight* összehasonlításával összehasonlított parancsmagok nevei szerepelnek.  Például: *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster*. A paraméterek és kapcsolók tartalmazhatnak híreket, és a Resource Manager használatakor számos új paraméter érhető el.  Például számos parancsmaghoz szükség van egy *ResourceGroupName* nevű új kapcsolóra.
 
 A HDInsight-parancsmagok használata előtt csatlakoznia kell az Azure-fiókjához, és létre kell hoznia egy új erőforráscsoportot:
 
@@ -135,16 +132,16 @@ A következő új parancsmagok csak Resource Manager módban érhetők el.
 **Parancsfájl-művelettel kapcsolatos parancsmagok:**
 
 * **Get-AzHDInsightPersistedScriptAction: lekérdezi** a fürt megőrzött parancsfájl-műveleteit, és időrendi sorrendben sorolja fel őket, vagy lekéri a megadott megőrzött parancsfájl részleteit. 
-* **Get-AzHDInsightScriptActionHistory** : lekéri egy fürt parancsfájl-műveleti előzményeit, és fordított időrendi sorrendben listázza azt, vagy lekéri egy korábban végrehajtott parancsfájl-művelet részleteit. 
-* **Remove-AzHDInsightPersistedScriptAction** : eltávolít egy megőrzött parancsfájl-műveletet egy HDInsight-fürtből.
-* **Set-AzHDInsightPersistedScriptAction** : egy korábban végrehajtott parancsfájl-művelet beállítása megőrzött parancsfájl-műveletnek.
-* **Submit-AzHDInsightScriptAction** : új parancsfájl-műveletet küld egy Azure HDInsight-fürtnek. 
+* **Get-AzHDInsightScriptActionHistory**: lekéri egy fürt parancsfájl-műveleti előzményeit, és fordított időrendi sorrendben listázza azt, vagy lekéri egy korábban végrehajtott parancsfájl-művelet részleteit. 
+* **Remove-AzHDInsightPersistedScriptAction**: eltávolít egy megőrzött parancsfájl-műveletet egy HDInsight-fürtből.
+* **Set-AzHDInsightPersistedScriptAction**: egy korábban végrehajtott parancsfájl-művelet beállítása megőrzött parancsfájl-műveletnek.
+* **Submit-AzHDInsightScriptAction**: új parancsfájl-műveletet küld egy Azure HDInsight-fürtnek. 
 
 További használati információk: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md).
 
 **A fürt identitásával kapcsolatos parancsmagok:**
 
-* **Add-AzHDInsightClusterIdentity** : fürt identitását hozzáadja egy fürtkonfiguráció-objektumhoz, hogy a HDInsight-fürt hozzáférhessen Azure Data Lake Storagehoz. Lásd: [HDInsight-fürt létrehozása a Data Lake Storage Azure PowerShell használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Add-AzHDInsightClusterIdentity**: fürt identitását hozzáadja egy fürtkonfiguráció-objektumhoz, hogy a HDInsight-fürt hozzáférhessen Azure Data Lake Storagehoz. Lásd: [HDInsight-fürt létrehozása a Data Lake Storage Azure PowerShell használatával](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**

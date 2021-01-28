@@ -4,12 +4,12 @@ description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Azure
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 3d02b6e70d0832b92ae88db237b4c554b92e7f3b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 155a0963146860431cb44c255e1e1d1aca3ae344
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875070"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943875"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
@@ -19,7 +19,7 @@ Az új SDK önmagában nem végez telemetria-gyűjteményt. Ehelyett más jól i
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-Az [Application INSIGHTS SDK for Worker szolgáltatás](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ideális a nem HTTP-alapú alkalmazásokhoz, függetlenül attól, hogy hol vagy hogyan futnak. Ha az alkalmazás fut, és hálózati kapcsolattal rendelkezik az Azure-hoz, a telemetria gyűjthet. A Application Insights figyelése mindenhol támogatott a .NET Core-ban. Ez a csomag az újonnan bevezetett [.net core 3,0 Worker Service](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)-ben, a [ASP.net Core 2.1/2.2-ben](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true), a konzolon futó alkalmazások (.net Core/.NET Framework) háttérbeli feladatai között használható.
+Az [Application INSIGHTS SDK for Worker szolgáltatás](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ideális a nem HTTP-alapú alkalmazásokhoz, függetlenül attól, hogy hol vagy hogyan futnak. Ha az alkalmazás fut, és hálózati kapcsolattal rendelkezik az Azure-hoz, a telemetria gyűjthet. A Application Insights figyelése mindenhol támogatott a .NET Core-ban. Ez a csomag az újonnan bevezetett [.net core 3,0 Worker Service](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)-ben, a [ASP.net Core 2.1/2.2-ben](/aspnet/core/fundamentals/host/hosted-services), a konzolon futó alkalmazások (.net Core/.NET Framework) háttérbeli feladatai között használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -134,7 +134,7 @@ VAGY `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Az üzemeltetett szolgáltatásokkal ASP.NET Core háttérbeli feladatok
 
-[Ez a](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) dokumentum ismerteti, hogyan hozhat létre háttérbeli feladatokat ASP.net Core 2.1/2.2 alkalmazásban.
+[Ez a](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio) dokumentum ismerteti, hogyan hozhat létre háttérbeli feladatokat ASP.net Core 2.1/2.2 alkalmazásban.
 
 A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) van megosztva
 
@@ -317,7 +317,7 @@ A függőségi gyűjtemény alapértelmezés szerint engedélyezve van. [Ez](asp
 
 ### <a name="manually-tracking-additional-telemetry"></a>További telemetria manuális követése
 
-Habár az SDK automatikusan gyűjti a telemetria a fentiekben leírtak szerint, a legtöbb esetben a felhasználónak további telemetria kell küldenie Application Insights szolgáltatásnak. A további telemetria követésének ajánlott módja a `TelemetryClient` függőségi befecskendezésből származó példány beszerzése, majd az egyik támogatott API-módszer meghívása `TrackXXX()` [API](api-custom-events-metrics.md) . Egy másik tipikus használati eset a [műveletek egyéni nyomon követése](custom-operations-tracking.md). Ezt a megközelítést a fenti feldolgozói példákban mutatjuk be.
+Habár az SDK automatikusan gyűjti a telemetria a fentiekben leírtak szerint, a legtöbb esetben a felhasználónak további telemetria kell küldenie Application Insights szolgáltatásnak. A további telemetria követésének ajánlott módja a `TelemetryClient` függőségi befecskendezésből származó példány beszerzése, majd az egyik támogatott API-módszer meghívása `TrackXXX()` [](api-custom-events-metrics.md) . Egy másik tipikus használati eset a [műveletek egyéni nyomon követése](custom-operations-tracking.md). Ezt a megközelítést a fenti feldolgozói példákban mutatjuk be.
 
 ## <a name="configure-the-application-insights-sdk"></a>A Application Insights SDK konfigurálása
 
@@ -563,9 +563,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net Core Console-alkalmazás](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Használja ezt a mintát, ha a .NET Core (2,0 vagy újabb) vagy a .NET Framework (4.7.2 vagy újabb) nyelven írt konzol alkalmazást használ
 
-[ASP .net Core háttérbeli feladatok a HostedServices](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Akkor használja ezt a mintát, ha a Asp.Net Core 2.1/2.2-es verzióban van, és a háttérben elvégzendő feladatokat az [alábbi](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) hivatalos útmutatás alapján hozza létre
+[ASP .net Core háttérbeli feladatok a HostedServices](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Akkor használja ezt a mintát, ha a Asp.Net Core 2.1/2.2-es verzióban van, és a háttérben elvégzendő feladatokat az [alábbi](/aspnet/core/fundamentals/host/hosted-services) hivatalos útmutatás alapján hozza létre
 
-[.Net Core 3,0 Worker szolgáltatás](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Akkor használja ezt a mintát, ha a .NET Core 3,0 Worker szolgáltatásalkalmazás az [alábbi](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template) hivatalos útmutatás szerint van
+[.Net Core 3,0 Worker szolgáltatás](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Akkor használja ezt a mintát, ha a .NET Core 3,0 Worker szolgáltatásalkalmazás az [alábbi](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template) hivatalos útmutatás szerint van
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 

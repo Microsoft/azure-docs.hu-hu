@@ -1,18 +1,15 @@
 ---
 title: Tartományi fiókok SSH-hozzáférésének kezelése az Azure HDInsight
 description: Az Azure AD-fiókokhoz való SSH-hozzáférés kezelésének lépései a HDInsight-ben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 5be992ef8375f98b3c5978d8b71dc92ce9f91123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fab06f5e269f311f798c096a6465c8c6ce75fc2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081502"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946748"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>Tartományi fiókok SSH-hozzáférésének kezelése az Azure HDInsight
 
@@ -60,7 +57,7 @@ Az SSH-hitelesítési napló beírása `/var/log/auth.log` . Ha a helyi vagy tar
 
 A részletes naplózás engedélyezéséhez újra kell indítania `sshd` a `-d` kapcsolót. `/usr/sbin/sshd -d`Az is előfordulhat, `sshd` hogy egyéni porton (például 2222) is futtatható, így nem kell leállítania a fő SSH démont. `-v`Az SSH-ügyféllel is használhat további naplókat (a hibák ügyféloldali nézetét).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése Enterprise Security Package](./apache-domain-joined-manage.md)
 * [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).

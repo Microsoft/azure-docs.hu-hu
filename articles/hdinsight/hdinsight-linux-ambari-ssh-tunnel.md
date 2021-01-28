@@ -1,19 +1,16 @@
 ---
 title: Az SSH-alagút használata az Azure HDInsight eléréséhez
 description: Ismerje meg, hogyan használható az SSH-alagút a Linux-alapú HDInsight-csomópontokon üzemeltetett webes erőforrások biztonságos tallózásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075552"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945294"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Az Apache Ambari webes felhasználói felületének, a JobHistory, a NameNode, az Apache Oozie és más felületének eléréséhez használja az SSH-bújtatást
 
@@ -42,7 +39,7 @@ A [Secure Shell (SSH) bújtatás](https://en.wikipedia.org/wiki/Tunneling_protoc
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Egy webböngésző, amely SOCKS5 proxy használatára konfigurálható.
 
@@ -83,7 +80,7 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
 
 ### <a name="create-or-load-a-session"></a>Munkamenet létrehozása vagy betöltése
 
-1. Nyissa meg a PuTTY eszközt, és győződjön meg arról, hogy a bal oldali menüben a **munkamenet** be van jelölve. Ha már mentett egy munkamenetet, válassza ki a munkamenet nevét a **mentett munkamenetek** listából, és válassza a **Betöltés**lehetőséget.
+1. Nyissa meg a PuTTY eszközt, és győződjön meg arról, hogy a bal oldali menüben a **munkamenet** be van jelölve. Ha már mentett egy munkamenetet, válassza ki a munkamenet nevét a **mentett munkamenetek** listából, és válassza a **Betöltés** lehetőséget.
 
 1. Ha még nem rendelkezik mentett munkamenettel, adja meg a kapcsolati adatait:
 
@@ -97,7 +94,7 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
 
     ![HDInsight-munkamenet létrehozása](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-1. A párbeszédpanel bal oldalán található **Kategória** szakaszban bontsa ki a **kapcsolatok**csomópontot, bontsa ki az **SSH**elemet, majd válassza az **alagutak**lehetőséget.
+1. A párbeszédpanel bal oldalán található **Kategória** szakaszban bontsa ki a **kapcsolatok** csomópontot, bontsa ki az **SSH** elemet, majd válassza az **alagutak** lehetőséget.
 
 1. Adja meg az alábbi információkat az **SSH-port továbbítási formáját vezérlő beállításokhoz** :
 
@@ -140,12 +137,12 @@ A fürt létrejötte után a következő lépésekkel ellenőrizheti, hogy elér
 
     ![Apache Ambari hdfs szolgáltatás kiválasztva](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
-3. Ha megjelenik a HDFS szolgáltatás adatai, válassza a **gyors hivatkozások**lehetőséget. Megjelenik a fürt fő csomópontjainak listája. Válassza ki az egyik fő csomópontot, majd válassza a **NameNode felhasználói felület**lehetőséget.
+3. Ha megjelenik a HDFS szolgáltatás adatai, válassza a **gyors hivatkozások** lehetőséget. Megjelenik a fürt fő csomópontjainak listája. Válassza ki az egyik fő csomópontot, majd válassza a **NameNode felhasználói felület** lehetőséget.
 
     ![A gyors menü kibontott képe](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
 
     > [!NOTE]  
-    > Ha a __gyors hivatkozások__lehetőséget választja, akkor a várakozási mutatót is elérheti. Ez az állapot akkor fordulhat elő, ha lassú internetkapcsolattal rendelkezik. Várjon egy percet vagy kettőt, amíg az adatok beérkeznek a kiszolgálóról, majd próbálja megismételni a listát.
+    > Ha a __gyors hivatkozások__ lehetőséget választja, akkor a várakozási mutatót is elérheti. Ez az állapot akkor fordulhat elő, ha lassú internetkapcsolattal rendelkezik. Várjon egy percet vagy kettőt, amíg az adatok beérkeznek a kiszolgálóról, majd próbálja megismételni a listát.
     >
     > Előfordulhat, hogy a **gyors hivatkozások** menü egyes bejegyzéseinek kivágása a képernyő jobb oldalán lehetséges. Ha igen, bontsa ki a menüt az egérrel, és a jobbra mutató nyílra kattintva görgessen a képernyő jobb oldalára, és tekintse meg a menü hátralévő részét.
 
@@ -156,7 +153,7 @@ A fürt létrejötte után a következő lépésekkel ellenőrizheti, hogy elér
     > [!NOTE]  
     > Figyelje meg az oldal URL-címét; a következőhöz hasonlónak kell lennie: `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` . Ez az URI a csomópont belső teljesen minősített tartománynevét (FQDN) használja, és csak SSH-alagút használata esetén érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre és használhat egy SSH-alagutat, tekintse meg a következő dokumentumot a Ambari használatának egyéb módjaihoz:
 

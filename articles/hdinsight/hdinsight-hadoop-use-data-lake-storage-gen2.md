@@ -1,19 +1,16 @@
 ---
 title: Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 description: Ismerje meg, hogyan használhatja a Azure Data Lake Storage Gen2t az Azure HDInsight-fürtökkel.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744585"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945378"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel
 
@@ -28,7 +25,7 @@ A fürt létrehozási lehetőségeinek Data Lake Storage Gen2 használatával t�
 A Data Lake Storage Gen2 tárolási lehetőségként érhető el szinte minden Azure HDInsight-fürthöz, alapértelmezettként és egy további Storage-fiókként is. A HBase azonban csak egyetlen fiókkal rendelkezhet Data Lake Storage Gen2.
 
 > [!Note]  
-> Miután kiválasztotta a Data Lake Storage Gen2 **elsődleges tárolási típusként** , nem választhat Data Lake Storage Gen1 további tárolóként.
+> Miután kiválasztotta a Data Lake Storage Gen2 **elsődleges tárolási típusként**, nem választhat Data Lake Storage Gen1 további tárolóként.
 
 ## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>HDInsight-fürtök létrehozása Data Lake Storage Gen2 használatával
 
@@ -66,19 +63,19 @@ A felhasználók számára az adatlekérdezésre vonatkozó engedélyek megadás
 
 Több módon is hozzáférhet a Data Lake Storage Gen2 lévő fájlokhoz egy HDInsight-fürtről.
 
-* **A teljes név használatával** . Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
+* **A teljes név használatával**. Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **A rövidített elérésiút-formátum használatával** . Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
+* **A rövidített elérésiút-formátum használatával**. Ezzel a módszerrel az elérési utat a fürt gyökerére cseréli le a következővel:
 
     ```
     abfs:///<file.path>/
     ```
 
-* **A relatív elérési út használatával** . Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
+* **A relatív elérési út használatával**. Ezzel a módszerrel csak az elérni kívánt fájl relatív elérési útját adja meg.
 
     ```
     /<file.path>/

@@ -3,16 +3,15 @@ title: Részletes szerepköralapú hozzáférés az Azure HDInsight-fürthöz
 description: Ismerje meg az áttelepítés részeként szükséges módosításokat a HDInsight-fürtök részletes szerepköralapú hozzáféréséhez.
 author: tylerfox
 ms.author: tyfox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533308"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944093"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -26,7 +25,7 @@ Korábban a HDInsight API-val a tulajdonosi, közreműködő vagy olvasó [Azure
 
 Egy új [HDInsight-fürtszolgáltatási](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) szerepkört is bevezetünk, amely lehetővé teszi a titkok beolvasását anélkül, hogy a közreműködő vagy a tulajdonos rendszergazdai engedélyeit kellene megadnia. Összegezve:
 
-| Role                                  | Korábban                                                                                       | Továbbítás folyamatban       |
+| Szerepkör                                  | Korábban                                                                                       | Továbbítás folyamatban       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Olvasó                                | – Olvasási hozzáférés, beleértve a titkokat is.                                                                   | – Olvasási hozzáférés, a titkok **kivételével** |           |   |   |
 | HDInsight-fürt operátora<br>(Új szerepkör) | N/A                                                                                              | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat         |   |   |
