@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: Apache Spark streaming & Apache Kafka – Azure HDInsight'
 description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban az adatok továbbítása a Spark on HDInsight Jupyter Notebook használatával végezhető el.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d352fc86f4451f60951b84929ad5d9450c1003d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821128"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942796"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
@@ -21,7 +18,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használhatók az [Apache Spark strukt
 
 A Spark strukturált streaming egy Spark SQL-re épülő stream-feldolgozó motor. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében.  
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Fürtök létrehozása Azure Resource Manager sablon használatával
@@ -156,7 +153,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
 3. Olvassa el a **használati** feltételeket, majd válassza **az Elfogadom a fenti feltételeket és** kikötéseket lehetőséget.
 
-4. Válassza a **Vásárlás** lehetőséget.
+4. Válassza a **Beszerzés** lehetőséget.
 
 > [!NOTE]  
 > A fürtök létrehozása 20 percig is eltarthat.
@@ -329,7 +326,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 >
 > A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja Apache Spark strukturált adatfolyamot. Adatok írása és olvasása Apache Kafkaról a HDInsight-on. A következő hivatkozásra kattintva megtudhatja, hogyan használhatja a Apache Stormt a Kafka használatával.
 

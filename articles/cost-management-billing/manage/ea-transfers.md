@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 01/27/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f5555662c6cb5f44be3959ec3d22d1cf1953674d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030093"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943682"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-átvitelek
 
@@ -55,22 +55,22 @@ A regisztrációátvitel a következő esetben megfontolandó:
 - A regisztráció lejárt/meghosszabbított állapotban van, és egy új szerződés egyeztetése folyamatban van.
 - Több regisztrációval rendelkezik, és egyetlen regisztráció keretében szeretné összevonni az összes fiókot és számlázást.
 
-Ez a szakasz csak tájékoztató célt szolgál, mert a műveletet vállalati rendszergazda nem végezheti el. Egy vállalati regisztráció egy újba történő átviteléhez támogatási kérés leadása szükséges.
+Ez a szakasz csak tájékoztató célt szolgál, mert a műveletet vállalati rendszergazda nem végezheti el. Támogatási kérelemre van szükség egy vállalati beléptetés új rendszerbe való átviteléhez, kivéve, ha a regisztráció az [automatikus beléptetési átvitelre](#auto-enrollment-transfer)jogosult.
 
 Ha egy teljes vállalati regisztráció átvitelét kéri egy regisztrációba, a következő műveletek mennek végbe:
 
 - A rendszer az összes Azure-szolgáltatást, előfizetést, fiókot, részleget, valamint a teljes regisztrációs struktúrát átviszi az új célregisztrációba, az EA-részlegek rendszergazdáival együtt.
 - A regisztráció állapota _Átvitt_ értékre módosul. Az átvitt regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet elérni.
-- Az átvitt regisztrációkhoz nem adhat hozzá szerepköröket vagy előfizetéseket. Az átvitt állapot megakadályozza a regisztráció további használatának felszámítását.
+- Az átvitt regisztrációkhoz nem adhat hozzá szerepköröket vagy előfizetéseket. Az átvitt állapot megakadályozza a regisztráción belüli további használatot.
 - A szerződés fennmaradó előrefizetési Azure-egyenlege elveszik, a későbbi időszakokkal együtt.
--    Ha a regisztráció, amelyről az átvitelt végzi, rendelkezik megvásárolt fenntartott példányokkal, a fenntartott példány vételára továbbra is a forrásregisztrációban marad, azonban a fenntartott példány összes előnye az új regisztrációban lesz elérhető.
--    A Marketplace-en kifizetett egyszeri vételár és a régi regisztrációban felmerült fix havi díjak nem lesznek áthelyezve az új regisztrációba. A használatalapú Marketplace-díjak átvitele megtörténik.
+-    Ha az Ön által átvitt beléptetés az RI-beszerzésekkel van elküldve, az RI-vásárlási díj továbbra is a forrás-regisztrációban marad, azonban az új regisztráció során a rendszer az összes RI kedvezményt átadja.
+-    A piactér egyszeri vásárlási díja és a régi regisztráció során már felmerülő havi rögzített díjak nem kerülnek át az új regisztrációra. A használatalapú Marketplace-díjak átvitele megtörténik.
 
 ### <a name="effective-transfer-date"></a>Átvitel hatálybalépési dátuma
 
 Az átvitel hatályba lépésének napja a célregisztráció kezdődátuma vagy egy későbbi időpont lehet.
 
-A forrásregisztráció használatának költsége az Azure-előrefizetési keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az átvitel dátuma utáni használat átkerül az új regisztrációba, és ennek megfelelően kell majd érte fizetni.
+A forrásregisztráció használatának költsége az Azure-előrefizetési keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az érvénybe léptetési dátum után megjelenő használat az új regisztrációra és számlázásra kerül.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -78,13 +78,24 @@ A regisztrációátvitel kérésekor adja meg az alábbi adatokat:
 
 - A forrásregisztrációhoz a regisztrációs számot.
 - A célregisztrációhoz az átvitel céljának regisztrációs számát.
-- A regisztrációátvitel hatálybalépési dátuma lehet a célregisztráció kezdő dátuma vagy egy későbbi időpont. A kiválasztott dátum nem lehet hatással a már kiállított túlhasználati számlákban feltüntetett használatra.
+- A regisztrációátvitel hatálybalépési dátuma lehet a célregisztráció kezdő dátuma vagy egy későbbi időpont. A kiválasztott dátum nem befolyásolhatja a már kibocsátott túlhasználati számla használatát.
 
 Egyéb szempontok, amelyeket érdemes észben tartani a regisztrációk átvitele előtt:
 
 - A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására.
 - Ha egy regisztrációátvitel nem felel meg az elvárásainak, vegye fontolóra a fiókátvitelt.
 - A forrásregisztráció állapota átvitt lesz, és ezt a regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet majd elérni.
+
+### <a name="auto-enrollment-transfer"></a>Automatikus beléptetési átvitel
+
+Láthatja, hogy egy beléptetési állapot **átadása** akkor is lehetséges, ha nem küldött támogatási jegyet a beléptetési átvitel igényléséhez. Az **átvitt** állapot az automatikus beléptetési továbbítási folyamat eredményeiből származik. Ahhoz, hogy az automatikus regisztrálási folyamat a megújítási kifejezésben szerepeljen, néhány elemnek szerepelnie kell az új szerződésben:
+
+- Előzetes regisztrációs szám (az EA Portalon léteznie kell)
+- Az előző regisztrációs szám lejárati dátuma egy nappal az új szerződés hatályba lépésének napja előtt
+- Az új szerződés egy olyan számlázott Azure-előfizetési rendeléssel rendelkezik, amely aktuális dátummal vagy visszakeltezett rendelkezik
+- Az új regisztráció az EA portálon jön létre
+
+Ha nincs hiányzó használati adatok az EA-portálon a korábbi regisztráció és az új regisztráció között, akkor nem kell létrehoznia az átvitel támogatási jegyét.
 
 ### <a name="azure-prepayment"></a>Azure-előrefizetés
 

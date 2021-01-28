@@ -1,18 +1,15 @@
 ---
 title: Az Apache HBase optimalizálása az Apache Ambari az Azure HDInsight
 description: Az Apache Ambari webes FELÜLETének használatával konfigurálhatja és optimalizálhatja az Apache HBase.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: b262e07bd07320e4b10b12a2f2cf07b97e58c61e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307e9decad35c20885fbe550cc1f7de58c9386c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821698"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942596"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Az Apache HBase optimalizálása az Apache Ambari az Azure HDInsight
 
@@ -46,7 +43,7 @@ A blokk gyorsítótára az olvasási gyorsítótár. A méretet a paraméter sza
 
 ### <a name="memstore-size"></a>Memstore mérete
 
-A rendszer az összes módosítást a *Memstore*nevezett memória-pufferben tárolja. Ez a puffer növeli a lemezre egyetlen művelet során írható összes adatmennyiséget. Emellett a legutóbbi szerkesztésekhez is felgyorsítja a hozzáférést. A Memstore méretét a következő két paraméter határozza meg:
+A rendszer az összes módosítást a *Memstore* nevezett memória-pufferben tárolja. Ez a puffer növeli a lemezre egyetlen művelet során írható összes adatmennyiséget. Emellett a legutóbbi szerkesztésekhez is felgyorsítja a hozzáférést. A Memstore méretét a következő két paraméter határozza meg:
 
 * `hbase.regionserver.global.memstore.UpperLimit`: Meghatározza, hogy a Memstore legfeljebb hány százalékos arányt használhat.
 

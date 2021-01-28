@@ -1,19 +1,16 @@
 ---
 title: Apache Sqoop Apache Hadoop-Azure HDInsight
 description: Ismerje meg, hogyan használható az Apache Sqoop a HDInsight és a Azure SQL Database közötti Apache Hadoop importálására és exportálására.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 6cd522192c498d628490430c46c18c8ae08ad2e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d0d38dee15817e56c2784981365ea331b6a8459
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547010"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943143"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Az Apache Sqoop használatával importálhat és exportálhat adatApache Hadoop a HDInsight és a Azure SQL Database között
 
@@ -25,7 +22,7 @@ Ismerje meg, hogyan használható az Apache Sqoop az Azure HDInsight-beli Apache
 
 * A [tesztkörnyezet üzembe](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) állításának befejezése az [Apache Sqoop és a Hadoop használatával a HDInsight-ben](./hdinsight-use-sqoop.md).
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Az Sqoop ismerete. További információ: [Sqoop felhasználói útmutató](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html).
 
@@ -154,7 +151,7 @@ Az SQL-ből az Azure Storage-ba.
 
 * Előfordulhat, hogy a távoli kapcsolatok fogadásához konfigurálnia kell SQL Server. További információ: az SQL Server adatbázismotor-dokumentumhoz [való csatlakozás hibáinak megoldása](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már megtanulta, hogyan használhatja a Sqoop-t. További információ:
 

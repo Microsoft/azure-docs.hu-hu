@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop MapReduce-példák futtatása a HDInsight-Azure-ban
 description: Ismerkedjen meg a MapReduce-minták használatával a HDInsight-ben található jar-fájlokban. Használja az SSH-t a fürthöz való kapcsolódáshoz, majd használja a Hadoop parancsot a mintavételi feladatok futtatásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207848"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943212"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>A HDInsight-ben található MapReduce-példák futtatása
 
@@ -25,7 +22,7 @@ Megtudhatja, hogyan futtathatja a Apache Hadoop HDInsight-on található MapRedu
 
 * Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>Példák a MapReduce
 
@@ -168,7 +165,7 @@ A minta futtatásához használja a következő parancsot. Ez a parancs 16 térk
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-A parancs által visszaadott érték a **3.14159155000000000000**hasonló. A hivatkozások esetében a PI első 10 decimális helye 3,1415926535.
+A parancs által visszaadott érték a **3.14159155000000000000** hasonló. A hivatkozások esetében a PI első 10 decimális helye 3,1415926535.
 
 ## <a name="10-gb-graysort-example"></a>10 GB Mintarendezés példa
 
@@ -212,7 +209,7 @@ A következő lépésekkel hozhatja végre az adatokat, rendezheti és ellenőri
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan futtathatja a Linux-alapú HDInsight-fürtökben található mintákat. A Pig, a kaptár és a MapReduce HDInsight-vel való használatával kapcsolatos oktatóanyagokat a következő témakörökben találja:
 

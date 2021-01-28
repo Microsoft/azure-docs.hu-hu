@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: érzelmek elemzése Cognitive Services'
-description: Oktatóanyag a Cognitive Services for szentimentális-elemzéshez a Szinapszisban
+description: Ismerje meg, hogyan használhatja a Cognitive Services for szentimentális Analysis szolgáltatást az Azure szinapszis Analytics szolgáltatásban
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,100 +9,106 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 08d5e53facce172c2287c2e341895f0ee38571f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222190"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943697"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Oktatóanyag: érzelmek elemzése a Cognitive Services (előzetes verzió)
 
-Ebből az oktatóanyagból megtudhatja, hogyan gazdagíthatja adatait az Azure Szinapszisban [Cognitive Services](../../cognitive-services/index.yml)segítségével. A [text Analytics](../../cognitive-services/text-analytics/index.yml) képességeket fogjuk használni az érzelmek elemzéséhez. Az Azure szinapszis egyik felhasználója egyszerűen kijelölhet egy olyan táblázatot, amely az érzelmekkel gazdagított szöveges oszlopot tartalmaz. Ezek az érzelmek pozitívak, negatívak, vegyesek vagy semlegesek is lehetnek, és a rendszer a valószínűséget is visszaadja.
+Ebből az oktatóanyagból megtudhatja, hogyan gazdagíthatja adatait az Azure-beli szinapszis-elemzésekben az [azure Cognitive Services](../../cognitive-services/index.yml)használatával. Az [text Analytics](../../cognitive-services/text-analytics/index.yml) képességek segítségével elvégezheti az érzelmek elemzését. 
+
+Az Azure szinapszis egyik felhasználója egyszerűen kiválaszthat egy olyan táblázatot, amely egy szöveges oszlopot tartalmaz az érzelmekkel való gazdagítás érdekében. Ezek az érzelmek pozitívak, negatívak, vegyesek vagy semlegesek lehetnek. A rendszer A valószínűséget is visszaadja.
 
 Ez az oktatóanyag az alábbiakkal foglalkozik:
 
 > [!div class="checklist"]
-> - A szöveg oszlopot tartalmazó Spark Table-adatkészlet beszerzésének lépései az érzelmek elemzéséhez.
-> - Az Azure Szinapszisban az adatText Analytics-Cognitive Services használatával gazdagíthatja az adatgyűjtést a varázsló segítségével.
+> - A kitalált szöveg oszlopot tartalmazó Spark Table-adatkészlet beszerzésének lépései az érzelmek elemzéséhez.
+> - Az Azure Szinapszisban az adatCognitive Services-Text Analytics használatával gazdagíthatja az adatgyűjtést a varázsló segítségével.
 
 Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [Azure szinapszis Analytics-munkaterület](../get-started-create-workspace.md) egy ADLS Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A ADLS Gen2-fájlrendszer **Storage blob-Adatközreműködőinek** kell lennie.
+- Az [Azure szinapszis Analytics-munkaterület](../get-started-create-workspace.md) egy Azure Data Lake Storage Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A Data Lake Storage Gen2 fájlrendszer *tárolási blob-Adatközreműködőinek* kell lennie.
 - Spark-készlet az Azure szinapszis Analytics-munkaterületen. Részletekért lásd: [Spark-készlet létrehozása az Azure szinapszisban](../quickstart-create-sql-pool-studio.md).
-- Az oktatóanyag használata előtt el kell végeznie az oktatóanyagban ismertetett előzetes konfigurálási lépéseket is. [Cognitive Services konfigurálása az Azure szinapszisban](tutorial-configure-cognitive-services-synapse.md).
+- Az oktatóanyag [konfigurálása Cognitive Services az Azure szinapszisban](tutorial-configure-cognitive-services-synapse.md)című témakörben leírt előzetes konfigurációs lépések.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-spark-table"></a>Spark-tábla létrehozása
 
 Ehhez az oktatóanyaghoz szüksége lesz egy Spark-táblázatra.
 
-1. Töltse le a következő CSV-fájlt, amely a Text Analytics adatkészletét tartalmazza: [FabrikamComments.csv](https://github.com/Kaiqb/KaiqbRepo0731190208/blob/master/CognitiveServices/TextAnalytics/FabrikamComments.csv)
+1. Töltse le a [FabrikamComments.csv](https://github.com/Kaiqb/KaiqbRepo0731190208/blob/master/CognitiveServices/TextAnalytics/FabrikamComments.csv) fájlt, amely tartalmazza a Text Analytics adatkészletét. 
 
-1. Töltse fel a fájlt az Azure szinapszis ADLSGen2 Storage-fiókjába.
-![Adatok feltöltése](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00a.png)
+1. Töltse fel a fájlt a Data Lake Storage Gen2 Azure szinapszis Storage-fiókjába.
+  
+   ![Képernyőkép, amely megjeleníti az adatfeltöltési beállításokat.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00a.png)
 
-1. Hozzon létre egy Spark-táblázatot a. csv fájlból úgy, hogy jobb gombbal a fájlra kattint, és kiválasztja az **új jegyzetfüzet – > Spark-tábla létrehozása** lehetőséget.
-![Spark-tábla létrehozása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00b.png)
+1. Hozzon létre egy Spark-táblázatot a. csv fájlból úgy, hogy a jobb gombbal a fájlra kattint, és az **új jegyzetfüzet**  >  **létrehozása Spark táblát** választja.
 
-1. Nevezze el a táblát a Code (kód) cellában, és futtassa a jegyzetfüzetet egy Spark-készleten. Ne felejtse el beállítani a "header = true" értéket.
-![Jegyzetfüzet futtatása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00c.png)
+   ![A Spark-tábla létrehozásának lehetőségeit bemutató képernyőkép.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00b.png)
 
-```python
-%%pyspark
-df = spark.read.load('abfss://default@azuresynapsesa.dfs.core.windows.net/data/FabrikamComments.csv', format='csv'
-## If header exists uncomment line below
-, header=True
-)
-df.write.mode("overwrite").saveAsTable("default.YourTableName")
-```
+1. Nevezze el a táblát a Code (kód) cellában, és futtassa a jegyzetfüzetet egy Spark-készleten. Ne felejtse el beállítani `header=True` .
 
-## <a name="launch-cognitive-services-wizard"></a>Cognitive Services elindítása varázsló
+   ![A jegyzetfüzetek futtatását bemutató képernyőkép.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00c.png)
 
-1. Kattintson a jobb gombbal az előző lépésben létrehozott Spark-táblára. A varázsló megnyitásához válassza a "Machine Learning-> gazdagabbá a meglévő modellel" lehetőséget.
-![Pontozási varázsló indítása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
+   ```python
+   %%pyspark
+   df = spark.read.load('abfss://default@azuresynapsesa.dfs.core.windows.net/data/FabrikamComments.csv', format='csv'
+   ## If a header exists, uncomment the line below
+   , header=True
+   )
+   df.write.mode("overwrite").saveAsTable("default.YourTableName")
+   ```
 
-2. Ekkor megjelenik egy konfigurációs panel, és a rendszer kérni fogja, hogy válasszon ki egy Cognitive Services modellt. Válassza a Text Analytics – Hangulatelemzés elemet.
+## <a name="open-the-cognitive-services-wizard"></a>A Cognitive Services varázsló megnyitása
 
-![Pontozási varázsló indítása – 1. lépés](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00e.png)
+1. Kattintson a jobb gombbal az előző eljárásban létrehozott Spark-táblázatra.   >  A varázsló megnyitásához válassza Machine learning a **meglévő modellel való gazdagítás** elemet.
+
+   ![A pontozási varázsló megnyitására szolgáló beállításokat bemutató képernyőkép.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
+
+2. Megjelenik egy konfigurációs panel, és a rendszer megkéri, hogy válasszon ki egy Cognitive Services modellt. Válassza a **text Analytics – Hangulatelemzés** elemet.
+
+   ![Egy Cognitive Services modell kijelölését bemutató képernyőkép.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00e.png)
 
 ## <a name="provide-authentication-details"></a>Hitelesítő adatok megadása
 
-A Cognitive Services való hitelesítéshez hivatkoznia kell a titkos kulcsra, hogy az a Key Vault használja. Az alábbi bemenetek attól függően változnak, hogy milyen [lépéseket](tutorial-configure-cognitive-services-synapse.md) kell végrehajtania a lépés előtt.
+A Cognitive Services való hitelesítéshez a kulcstartó titkos kódjára kell hivatkoznia. A következő bemenetek a jelen pont előtt elvégzendő [előfeltételektől](tutorial-configure-cognitive-services-synapse.md) függenek.
 
 - **Azure-előfizetés**: válassza ki azt az Azure-előfizetést, amelyhez a Key Vault tartozik.
-- **Cognitive Services fiók**: ez az a Text Analytics erőforrás, amelyhez csatlakozni fog.
-- **Azure Key Vault társított szolgáltatás**: Az előfeltételként szükséges lépések részeként létrehozott egy társított szolgáltatást a Text Analytics-erőforráshoz. Adja meg itt.
-- **Titok neve**: Ez annak a kulcsnak a neve, amely a Key vaultban a Cognitive Services-erőforráshoz való hitelesítés kulcsát tartalmazza.
+- **Cognitive Services fiók**: adja meg azt a Text Analytics-erőforrást, amelyhez csatlakozni fog.
+- **Azure Key Vault társított szolgáltatás**: Az előfeltételként szükséges lépések részeként létrehozott egy társított szolgáltatást a Text Analytics-erőforráshoz. Itt választhatja ki.
+- **Titkos kód neve**: írja be a kulcstartóban található titkos kulcs nevét, amely a Cognitive Services erőforráshoz való hitelesítéshez szükséges kulcsot tartalmazza.
 
-![Azure Key Vault részleteinek megadása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00f.png)
+![A Key Vault hitelesítési adatait bemutató képernyőkép.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00f.png)
 
-## <a name="configure-sentiment-analysis"></a>Hangulatelemzés konfigurálása
+## <a name="configure-sentiment-analysis"></a>A hangulat elemzésének konfigurálása
 
-Ezután konfigurálnia kell a hangulat elemzését. Adja meg a következő adatokat:
-- **Nyelv**: válassza ki annak a szövegnek a nyelvét, amelynek az elemzését el szeretné végezni. Válassza az **en** lehetőséget.
-- **Text (szöveg) oszlop**: ez az adatkészlet azon szöveges oszlopa, amelyet elemezni kíván, hogy meghatározza a véleményét. Válassza a táblázat oszlop **megjegyzése** elemet.
+Ezután konfigurálja az érzelmek elemzését. Válassza ki a következő adatokat:
+- **Nyelv**: válassza az **angol** nyelvet annak a szövegnek a nyelvén, amelynek az elemzését el szeretné végezni.
+- **Szöveges oszlop**: válassza a **Megjegyzés (karakterlánc)** lehetőséget az adatkészlet azon szöveges oszlopa, amelyet elemezni szeretne, hogy meghatározza a véleményét.
 
-Ha elkészült, kattintson a **Jegyzetfüzet megnyitása** lehetőségre. Ez létrehoz egy jegyzetfüzetet az Ön számára az PySpark-kóddal, amely elvégzi az érzelmek elemzését az Azure Cognitive Services.
+Ha elkészült, válassza a **Jegyzetfüzet megnyitása** lehetőséget. Ez létrehoz egy jegyzetfüzetet az Ön számára az PySpark-kóddal, amely a hangulat elemzését végzi az Azure Cognitive Services.
 
-![Hangulatelemzés konfigurálása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00g.png)
+![Képernyőkép, amely az érzelmek elemzésének konfigurálására szolgáló beállításokat jeleníti meg.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00g.png)
 
-## <a name="open-notebook-and-run"></a>Jegyzetfüzet és Futtatás megnyitása
+## <a name="run-the-notebook"></a>A notebook futtatása
 
-Az imént megnyitott jegyzetfüzet a [mmlspark könyvtárat](https://github.com/Azure/mmlspark) használja a kognitív szolgáltatásokhoz való kapcsolódáshoz.
+Az imént megnyitott jegyzetfüzet a [mmlspark könyvtár](https://github.com/Azure/mmlspark) használatával csatlakozik Cognitive Serviceshoz. A megadott Azure Key Vault adatok lehetővé teszik, hogy a tapasztalatok alapján biztonságosan hivatkozzon a titkos kulcsokra.
 
-A megadott Azure Key Vault adatok lehetővé teszik, hogy a tapasztalatok alapján biztonságosan hivatkozzon a titkos kulcsokra.
+Mostantól az összes cella használatával gazdagíthatja adatait az érzelmekkel. Válassza **az összes futtatása** lehetőséget. 
 
-Mostantól az **összes** cella használatával gazdagíthatja adatait az érzelmekkel. Az érzelmek pozitív/negatív/semleges/vegyes értékként lesznek visszaadva, és a rendszer az egyes érzelmeket is felhasználja. További információ a [Cognitive Services-hangulat elemzéséről](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
+Az érzelmek **pozitív**, **negatív**, **semleges** vagy **vegyes** módon lesznek visszaadva. Emellett a valószínűségek alapján is kipróbálhatja. [További információ a Cognitive Servicesbeli érzelmek elemzéséről](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md).
 
-![Hangulatelemzés futtatása](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
+![Képernyőkép, amely az érzelmek elemzését mutatja.](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 
 ## <a name="next-steps"></a>Következő lépések
 - [Oktatóanyag: anomáliák észlelése az Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Oktatóanyag: gépi tanulási modellek pontozása az Azure szinapszis dedikált SQL-készletekben](tutorial-sql-pool-model-scoring-wizard.md)
-- [Az Azure Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)
+- [Az Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)

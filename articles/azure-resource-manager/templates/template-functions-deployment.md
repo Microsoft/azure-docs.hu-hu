@@ -2,13 +2,13 @@
 title: Sablon functions – üzembe helyezés
 description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az üzembe helyezési adatok lekéréséhez.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920508"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943474"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Az ARM-sablonok üzembe helyezési funkciói
 
@@ -29,10 +29,11 @@ Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekérésé
 
 A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy:
 
+* sablon vagy sablon üzembe helyezése spec.
 * olyan sablon telepítése, amely helyi fájl, vagy olyan sablon központi telepítése, amely egy URI-n keresztül elért távoli fájl.
 * egy erőforráscsoport üzembe helyezése vagy az egyik másik hatókör ([Azure-előfizetés](deploy-to-subscription.md), [felügyeleti csoport](deploy-to-management-group.md)vagy [bérlő](deploy-to-tenant.md)) üzembe helyezése.
 
@@ -66,6 +67,31 @@ Távoli sablon erőforráscsoporthoz való telepítésekor: a függvény a köve
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+A sablon specifikációjának erőforráscsoporthoz való telepítésekor: a függvény a következő formátumot adja vissza:
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -185,7 +211,7 @@ Az előző példa a következő objektumot adja vissza:
 
 Információt ad vissza az üzembe helyezéshez használt Azure-környezetről.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza. Az alábbi példa a globális Azure tulajdonságait mutatja be. A szuverén felhők némileg eltérő tulajdonságokat adhatnak vissza.
 
@@ -295,11 +321,11 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott paraméter értéke.
 
@@ -444,11 +470,11 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott változó értéke.
 

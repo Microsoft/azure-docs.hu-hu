@@ -1,26 +1,23 @@
 ---
 title: Mirror Apache Kafka témakörök – Azure HDInsight
 description: Megtudhatja, hogyan használhatja a Apache Kafka tükrözési funkcióját a HDInsight-fürtön található Kafka replikájának fenntartásához a témakörök tükrözésével egy másodlagos fürtre.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428239"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940838"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében
 
 Ismerje meg, hogyan replikálhatja a témaköröket egy másodlagos fürtre a Apache Kafka tükrözési funkciójával. A tükrözést folyamatos folyamatként lehet futtatni, vagy időszakosan használhatja az adatok egyik fürtről a másikra való áttelepítésének módját.
 
 > [!NOTE]
-> Ez a cikk az *engedélyezési*feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 Ebben a példában a tükrözés két HDInsight-fürt közötti replikálásra szolgál. Mindkét fürt különböző virtuális hálózatokban található, különböző adatközpontokban.
 
@@ -68,7 +65,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 
     |Erőforráscsoport | Hely |
     |---|---|
-    | Kafka – elsődleges – RG | USA középső régiója |
+    | Kafka – elsődleges – RG | Az USA középső régiója |
     | Kafka – másodlagos – RG | USA északi középső régiója |
 
 1. Hozzon létre egy új virtuális hálózatot, a Kafka **-Primary-vnet** -t a **Kafka-Primary-RG**-ban. Hagyja meg az alapértelmezett beállításokat.
@@ -81,9 +78,9 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     | Kafka – elsődleges – fürt | Kafka – elsődleges – RG | Kafka – elsődleges – vnet | kafkaprimarystorage |
     | Kafka – másodlagos – fürt | Kafka – másodlagos – RG | Kafka – másodlagos – vnet | kafkasecondarystorage |
 
-1. Hozzon létre virtuális hálózati társításokat. Ez a lépés két társítást hoz létre: egyet a **Kafka-Primary-vnet** és a **Kafka-másodlagos-vnet** , valamint a Kafka- **másodlagos-vnet** és a **Kafka-Primary-vnet**között.
+1. Hozzon létre virtuális hálózati társításokat. Ez a lépés két társítást hoz létre: egyet a **Kafka-Primary-vnet** és a **Kafka-másodlagos-vnet** , valamint a Kafka- **másodlagos-vnet** és a **Kafka-Primary-vnet** között.
     1. Válassza ki a **Kafka-Primary-vnet** virtuális hálózatot.
-    1. Válassza **a** **Beállítások**területen a társítások lehetőséget.
+    1. Válassza **a** **Beállítások** területen a társítások lehetőséget.
     1. Válassza a **Hozzáadás** elemet.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
@@ -94,8 +91,8 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett a Broker IP-címeivel kapcsolódjon.
 
 1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
-1. Válassza a **szolgáltatások**  >  **Kafka**lehetőséget. CliSelectck a **konfigurációk** lapon.
-1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Válassza a **Mentés** lehetőséget.
+1. Válassza a **szolgáltatások**  >  **Kafka** lehetőséget. CliSelectck a **konfigurációk** lapon.
+1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -105,18 +102,18 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Írjon be egy megjegyzést a **konfiguráció mentése** képernyőn, majd kattintson a **Mentés**gombra.
-1. Ha a rendszer konfigurációs figyelmeztetést kér, kattintson a **Folytatás**gombra.
-1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése**elemre.
-1. **Restart**  >  Az újraindítás **szükséges** értesítésnél válassza az**összes érintett újraindítás újraindítása** elemet. Válassza **az összes újraindításának megerősítése**lehetőséget.
+1. Írjon be egy megjegyzést a **konfiguráció mentése** képernyőn, majd kattintson a **Mentés** gombra.
+1. Ha a rendszer konfigurációs figyelmeztetést kér, kattintson a **Folytatás** gombra.
+1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése** elemre.
+1.   >  Az újraindítás **szükséges** értesítésnél válassza az **összes érintett újraindítás újraindítása** elemet. Válassza **az összes újraindításának megerősítése** lehetőséget.
 
     ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>A Kafka beállítása az összes hálózati adapter figyelésére.
     
-1. Maradjon a **konfigurációk** lapon a Kafka- **szolgáltatások**területen  >  **Kafka**. A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot a következőre: `PLAINTEXT://0.0.0.0:9092` .
-1. Válassza a **Mentés** lehetőséget.
-1. Válassza az **Újraindítás**lehetőséget, és **erősítse meg az összes újraindítását**.
+1. Maradjon a **konfigurációk** lapon a Kafka- **szolgáltatások** területen  >  . A **Kafka-átvitelszervező** szakaszban állítsa be a **figyelők** tulajdonságot a következőre: `PLAINTEXT://0.0.0.0:9092` .
+1. Kattintson a **Mentés** gombra.
+1. Válassza az **Újraindítás** lehetőséget, és **erősítse meg az összes újraindítását**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>A Broker IP-címeinek és Zookeeper címeinek rögzítése az elsődleges fürthöz.
 
@@ -201,7 +198,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 
     Ez a fájl az elsődleges Kafka-fürtről való olvasáskor használandó fogyasztói adatokat ismerteti. További információ a fogyasztói konfigurációról: [fogyasztói konfigurációk](https://kafka.apache.org/documentation#consumerconfigs) a Kafka.Apache.org címen.
 
-    A fájl mentéséhez használja a **CTRL + X billentyűkombinációt** **, majd** **írja be**a következőt:.
+    A fájl mentéséhez használja a **CTRL + X billentyűkombinációt** **, majd** **írja be** a következőt:.
 
 1. Mielőtt konfigurálja a másodlagos fürttel kommunikáló gyártót, állítson be egy változót a **másodlagos** fürt Broker IP-címeihez. A változó létrehozásához használja a következő parancsokat:
 
@@ -254,10 +251,10 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
         Ha úgy szeretné beállítani a másodlagos fürtöt, hogy automatikusan hozzon létre témákat, hajtsa végre a következő lépéseket:
 
         1. Nyissa meg a Ambari irányítópultot a másodlagos fürthöz: `https://SECONDARYCLUSTERNAME.azurehdinsight.net` .
-        1. Kattintson a **szolgáltatások**  >  **Kafka**lehetőségre. Kattintson a **konfigurációk** fülre.
+        1. Kattintson a **szolgáltatások**  >  **Kafka** lehetőségre. Kattintson a **konfigurációk** fülre.
         1. A __szűrő__ mezőbe írja be a értékét `auto.create` . Ezzel kiszűri a tulajdonságok listáját, és megjeleníti a `auto.create.topics.enable` beállítást.
-        1. Módosítsa az értéket True értékre `auto.create.topics.enable` , majd válassza a __Mentés__lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
-        1. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__lehetőséget, majd kattintson az __összes érintett újraindítása__elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__lehetőséget.
+        1. Módosítsa az értéket True értékre `auto.create.topics.enable` , majd válassza a __Mentés__ lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
+        1. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__ lehetőséget, majd kattintson az __összes érintett újraindítása__ elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__ lehetőséget.
 
         ![a Kafka automatikus létrehozási témaköreinek engedélyezése](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
@@ -303,7 +300,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 
 A jelen dokumentum lépései különböző Azure-erőforráscsoportok által létrehozott fürtöket hoztak létre. Az összes létrehozott erőforrás törléséhez törölheti a két létrehozott erőforráscsoportot: **Kafka-Primary-RG** és **Kafka-secondary_rg**. Az erőforráscsoportok törlésével eltávolíthatja a dokumentum alapján létrehozott összes erőforrást, beleértve a fürtöket, a virtuális hálózatokat és a Storage-fiókokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használhatja a [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) -t egy [Apache Kafka](https://kafka.apache.org/) -fürt replikájának létrehozásához. Az alábbi hivatkozásokat követve megismerheti a Kafka használatának egyéb módjait:
 

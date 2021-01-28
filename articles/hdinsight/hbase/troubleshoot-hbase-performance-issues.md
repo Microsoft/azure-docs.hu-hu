@@ -1,18 +1,15 @@
 ---
 title: Az Apache HBase teljesítményproblémáinak elhárítása az Azure HDInsightban
 description: Különböző Apache HBase Performance tuning-irányelvek és tippek az optimális teljesítmény az Azure HDInsight-on való beszerzéséhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547894"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942892"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Az Apache HBase teljesítményproblémáinak elhárítása az Azure HDInsightban
 
@@ -75,7 +72,7 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 
 - Növelje a tömörítéshez dedikált szálak számát az alapértelmezett **1** és **4** közötti értékkel. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
 
-- Ne blokkolja `memstore` a kiürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100** -re.
+- Ne blokkolja `memstore` a kiürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100**-re.
 
 - A kiürítések szabályozásához használja az alábbi beállításokat:
 
@@ -104,7 +101,7 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 - RPC-időtúllépések: **3 perc**
 
    - Az RPC-időtúllépések közé tartozik a HBase RPC-időtúllépés, a HBase-ügyfél képolvasó-időtúllépése és a Phoenix-lekérdezés időtúllépése. 
-   - Győződjön meg arról, hogy a `hbase.client.scanner.caching` paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a szolgáltatáshoz kapcsolódó ügyféloldali hibákhoz vezet `OutOfOrderScannerException` . Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100** -re állítjuk be.
+   - Győződjön meg arról, hogy a `hbase.client.scanner.caching` paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a szolgáltatáshoz kapcsolódó ügyféloldali hibákhoz vezet `OutOfOrderScannerException` . Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100**-re állítjuk be.
 
 ## <a name="other-considerations"></a>További szempontok
 

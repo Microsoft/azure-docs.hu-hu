@@ -1,19 +1,16 @@
 ---
 title: Apache Hive használata a PowerShell-lel a HDInsight-Azure-ban
 description: Apache Hive-lekérdezések futtatása a PowerShell használatával Apache Hadoop az Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 43cac81717027b39210d6cd9cb9ad0baa596f50d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545242"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943187"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive lekérdezések futtatása a PowerShell használatával
 
@@ -84,7 +81,7 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > További információ az **itt-sztringekről** : [itt – karakterláncok](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings).
+   > További információ az **itt-sztringekről**: [itt – karakterláncok](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -105,7 +102,7 @@ Ez a parancsmag a STDERR írt adatokat adja vissza a feladatok feldolgozásakor.
 
 Amint láthatja, a Azure PowerShell egyszerű módszert kínál a kaptár-lekérdezések futtatására egy HDInsight-fürtben, figyelheti a feladat állapotát, és lekérheti a kimenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Általános információk a HDInsight-struktúrával kapcsolatban:
 

@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 856aeb4dabc64edc2ade2869fddc3d14cb21a81b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403415"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942166"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása
 
@@ -42,7 +42,7 @@ Ha látja az aktivált riasztást az Azure Portalon, de nem kapta meg a hozzá b
 
 1. **Az "e-mail-Azure Resource Manager szerepkör" művelet típusa?**
 
-    Ez a művelet csak az előfizetési hatókörben és a *felhasználó*típusú Azure Resource Manager szerepkör-hozzárendeléseket vizsgálja.  Győződjön meg arról, hogy az előfizetés szintjén rendelte hozzá a szerepkört, nem pedig az erőforrás vagy az erőforráscsoport szintjén.
+    Ez a művelet csak az előfizetési hatókörben és a *felhasználó* típusú Azure Resource Manager szerepkör-hozzárendeléseket vizsgálja.  Győződjön meg arról, hogy az előfizetés szintjén rendelte hozzá a szerepkört, nem pedig az erőforrás vagy az erőforráscsoport szintjén.
 
 1. **Az e-mail-kiszolgáló és a postaláda külső e-maileket fogad el?**
 
@@ -245,7 +245,7 @@ Ha hiba történt a [műveleti szabály](alerts-action-rules.md)létrehozása, f
 
 1. **Ellenőrizte a műveleti szabály paramétereit?**  
 
-    Győződjön meg a [műveleti szabály dokumentációjában](alerts-action-rules.md)vagy a [műveleti szabály PowerShell set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) parancsának megtekintéséhez. 
+    Győződjön meg a [műveleti szabály dokumentációjában](alerts-action-rules.md)vagy a [műveleti szabály PowerShell set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule) parancsának megtekintéséhez. 
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,16 +3,15 @@ title: Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HD
 description: Megtudhatja, hogyan telepítheti át Apache Hive számítási feladatait a 3,6-es HDInsight a HDInsight 4,0-ra.
 author: msft-tacox
 ms.author: tacox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93dc565055c6eb413a0c277a9891e5fcfab50345
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011506"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941356"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -44,7 +43,7 @@ Használja az alábbi táblázatban szereplő értékeket. Cserélje le a `SQLSE
 |Tulajdonság | Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Név|Struktúra frissítése|
+|Name|Struktúra frissítése|
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Csomópont típusa (i)|Head|
 |Paraméterek|SQLSERVERNAME DATABASENAME FELHASZNÁLÓNÉV JELSZAVA|
@@ -212,7 +211,7 @@ A HDInsight 3,6-fürtön belül két módon hajtható végre a kaptár/LLAP lek�
 
 A HDInsight 4,0-ben a HiveCLI lecserélte a Beeline elemre. A TEZ nézet/struktúra nézet egy GUI-alapú munkafolyamatot biztosít. A HiveCLI egy takarékossági ügyfél az 1. Hiveserver, a Beeline pedig egy JDBC-ügyfél, amely hozzáférést biztosít a 2. Hiveserver. A Beeline használatával bármely más JDBC-kompatibilis adatbázis-végponthoz csatlakozhat. A Beeline a 4,0-es HDInsight-on keresztül érhető el anélkül, hogy telepítésre lenne szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight 4,0 közlemény](../hdinsight-version-release.md)
 * [HDInsight 4,0 Deep Dive](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

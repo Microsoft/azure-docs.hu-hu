@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
 description: Áttekintést nyújt az Azure HDInsight gyorsított írási funkcióról, amely prémium szintű felügyelt lemezeket használ az Apache HBase Write Ahead-napló teljesítményének javítására.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519212"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943037"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
 
@@ -60,7 +57,7 @@ Az alábbi lépések végrehajtásával biztosítható, hogy a rendszer sikeres 
 
 Ha a namenode egy vertikális leskálázás után is a safemode-ba kerül, a hdfs-parancsok használatával végezze el újra a replikált blokkokat, és a hdfs-t biztonságos módból válassza. Ez az újrareplikálás lehetővé teszi a HBase sikeres újraindítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hivatalos Apache HBase dokumentációja az [előre írható log szolgáltatásról](https://hbase.apache.org/book.html#wal)
 * Ha a HDInsight Apache HBase-fürtöt a gyorsított írások használatára szeretné frissíteni, tekintse meg [az Apache HBase-fürt áttelepítését egy új verzióra](apache-hbase-migrate-new-version.md).

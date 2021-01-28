@@ -1,19 +1,16 @@
 ---
 title: Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 description: Ismerje meg, hogyan telepíthet HDInsight-alkalmazásokat Apache Hadoop-fürtökhöz az Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: dca248d217f4fb90d41c0a98a42b5eda4783913f
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825213"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942685"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 
@@ -51,7 +48,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
 1. Jelölje be az Elfogadom a **fenti feltételeket és kikötéseket** jelölőnégyzetet.
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 A telepítés állapotát a portál irányítópultjára rögzített csempén vagy a portál értesítései között (ehhez kattintson a portál felső részén található harang ikonra) követheti.  Az alkalmazás telepítése nagyjából 10 percet vesz igénybe.
 
@@ -139,7 +136,7 @@ Cserélje le a, a `NAME` `CLUSTERNAME` és a `RESOURCEGROUP` értéket a megfele
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [MSDN: Install an HDInsight application](/rest/api/hdinsight/hdinsight-application) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan fejleszthet Resource Manager-sablonokat HDInsight-alkalmazások üzembe helyezéséhez.
 * [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.

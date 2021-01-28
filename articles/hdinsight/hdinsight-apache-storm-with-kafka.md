@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: Apache Storm Apache Kafka-Azure HDInsight'
 description: Megtudhatja, hogyan hozhat létre streamelési folyamatot az Apache Storm és az Apache Kafka on HDInsight használatával. Ebben az oktatóanyagban a KafkaBolt és a KafkaSpout összetevőkkel streamel adatokat a Kafkából.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85963529"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942724"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Storm használata az Apache Kafka on HDInsighttal
 
@@ -366,7 +363,7 @@ streams:
 
 A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák által használt paraméterek átadására használatos. A következő tulajdonságokat határozza meg:
 
-| dev.properties fájl | Leírás |
+| dev.properties fájl | Description |
 | --- | --- |
 | `kafka.zookeeper.hosts` | A Kafka-fürt [Apache ZooKeeper](https://zookeeper.apache.org/) gazdagépei. |
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
@@ -643,7 +640,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhat egy [Apache Storm](https://storm.apache.org/) topológiát a HDInsight való íráshoz és a [Apache Kafka](https://kafka.apache.org/) olvasásához. Azt is megtanulta, hogyan tárolhatók az adattárolók a HDInsight által használt [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilis tárolóban.
 

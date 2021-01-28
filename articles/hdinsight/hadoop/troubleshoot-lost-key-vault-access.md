@@ -1,18 +1,15 @@
 ---
 title: Az Azure HDInsight-fürtök lemezes titkosítása elveszti Key Vault hozzáférését
 description: Hibaelhárítási lépések és lehetséges megoldások Key Vault hozzáférési problémákhoz az Azure HDInsight-fürtökkel való interakció során.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533410"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943115"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Forgatókönyv: a lemez titkosításával rendelkező Azure HDInsight-fürtök elvesztik Key Vault hozzáférését
 
@@ -26,7 +23,7 @@ A Resource Health központ (RHC) riasztása `The HDInsight cluster is unable to 
 
 A riasztás biztosítja, hogy a KV elérhető legyen a fürtcsomópontok között, így biztosítva a hálózati kapcsolat, a KV Health és a hozzáférési szabályzatot a felhasználóhoz rendelt felügyelt identitáshoz. Ez a riasztás csak a közelgő, a csomópontok újraindítására vonatkozó figyelmeztetést jeleníti meg, a fürt továbbra is működni fog, amíg a csomópontok újraindulnak.
 
-Keresse meg az Apache Ambari felhasználói felületét, ahol további információkat talál a **lemezes titkosítási Key Vault állapotáról** . Ez a riasztás részletesen ismerteti az ellenőrzési hibák okát.
+Keresse meg az Apache Ambari felhasználói felületét, ahol további információkat talál a **lemezes titkosítási Key Vault állapotáról**. Ez a riasztás részletesen ismerteti az ellenőrzési hibák okát.
 
 ## <a name="resolution"></a>Feloldás
 

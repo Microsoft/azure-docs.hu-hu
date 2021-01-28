@@ -1,19 +1,16 @@
 ---
 title: Alkalmazás-betekintési naplók elemzése a Spark-Azure HDInsight
 description: Ismerje meg, hogyan exportálhatja az Application Insight-naplókat a blob Storage-ba, majd elemezheti a naplókat a Spark on HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078799"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940479"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights telemetria-naplók elemzése a HDInsight Apache Spark
 
@@ -72,9 +69,9 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
 1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter` oda, ahol a CLUSTERNAME a fürt neve.
 
-2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **PySpark**lehetőséget. Megnyílik egy új, Python-alapú Jupyter Notebookt tartalmazó böngésző lap.
+2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **PySpark** lehetőséget. Megnyílik egy új, Python-alapú Jupyter Notebookt tartalmazó böngésző lap.
 
-3. Az oldal első mezőjében ( **cella**neve) írja be a következő szöveget:
+3. Az oldal első mezőjében ( **cella** neve) írja be a következő szöveget:
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -223,9 +220,9 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
 
 1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter` oda, ahol a CLUSTERNAME a fürt neve.
 
-2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **Scala**lehetőséget. Megjelenik egy új, a Scala-alapú Jupyter Notebook tartalmazó böngésző lap.
+2. A Jupyter lap jobb felső sarkában válassza az **új**, majd a **Scala** lehetőséget. Megjelenik egy új, a Scala-alapú Jupyter Notebook tartalmazó böngésző lap.
 
-3. Az oldal első mezőjében ( **cella**neve) írja be a következő szöveget:
+3. Az oldal első mezőjében ( **cella** neve) írja be a következő szöveget:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
@@ -371,7 +368,7 @@ Az Azure Storage-fiók meglévő fürthöz való hozzáadásához használja a [
     +---------+
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további példákat szeretne használni a Apache Spark használatára az Azure-beli adatkezelési és-szolgáltatásokkal kapcsolatban, tekintse meg a következő dokumentumokat:
 

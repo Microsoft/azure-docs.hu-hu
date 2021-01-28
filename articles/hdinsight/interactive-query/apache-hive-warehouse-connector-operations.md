@@ -3,16 +3,15 @@ title: A kaptár Warehouse-összekötő által támogatott Apache Spark művelet
 description: Ismerje meg a méhkas Warehouse-összekötő különböző képességeit az Azure HDInsight.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: ed3dbe4cb5b9d8b50c028a68feeded170130bfb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20567a1e38686b5d452a5353bc459e7e1125f499
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085837"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941298"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>A kaptár Warehouse-összekötő által támogatott Apache Spark műveletek az Azure HDInsight
 
@@ -140,7 +139,7 @@ Az alábbi lépéseket követve betöltheti a 9999-es localhost porton lévő Sp
 
 A **CTRL + C** billentyűkombinációval állítsa le a netcat a második SSH-munkamenetben. `:q`Az első SSH-munkamenetből való kilépéshez használja a Spark-shellt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HWC-integráció az Apache Sparkkal és az Apache Hive-val](./apache-hive-warehouse-connector.md)
 * [Az interaktív lekérdezés használata HDInsighttal](./apache-interactive-query-get-started.md)

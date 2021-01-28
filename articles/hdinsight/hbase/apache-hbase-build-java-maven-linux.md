@@ -1,19 +1,16 @@
 ---
 title: Az Apache Maven használata Java HBase-ügyfél létrehozásához az Azure HDInsight
 description: Ismerje meg, hogyan hozhat létre egy Java-alapú Apache HBase-alkalmazást az Apache Maven használatával, majd hogyan helyezheti üzembe az Azure HDInsight-HBase.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547911"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942959"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Java-alkalmazások készítése Apache HBase
 
@@ -29,7 +26,7 @@ A jelen dokumentumban leírt lépések az [Apache Maven](https://maven.apache.or
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/).
 
@@ -107,7 +104,7 @@ Ez a szakasz azt jelzi, hogy a projektnek szüksége van a **hbase-Client** és 
 
 A HDInsight-verziókkal és-összetevőkkel kapcsolatos további információkért tekintse meg [a HDInsight-ben elérhető különböző Apache Hadoop összetevőket](../hdinsight-component-versioning.md).
 
-### <a name="build-configuration"></a>Konfiguráció létrehozása
+### <a name="build-configuration"></a>Buildelési konfiguráció
 
 A Maven beépülő moduljai lehetővé teszik a projekt összeállítási szakaszainak testreszabását. Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs beállítások hozzáadására szolgál.
 

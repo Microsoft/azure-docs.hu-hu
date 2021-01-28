@@ -3,17 +3,16 @@ title: Azure HDInsight-fürt létrehozása – hiba szótár
 description: Tudnivalók az Azure HDInsight-fürtök létrehozásakor előforduló hibák elhárításáról
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543100"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943331"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure-HDInsight: fürtök létrehozásával kapcsolatos hibák
 
@@ -24,7 +23,7 @@ Ez a cikk a fürtök létrehozásakor esetlegesen előforduló hibák megoldása
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
 
-**Hiba** : "a parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
+**Hiba**: "a parancsfájl műveleti helye nem érhető el URI: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>1. hibaüzenet
 

@@ -1,19 +1,16 @@
 ---
 title: Twitter-alapú adatelemzés Apache Hive-Azure HDInsight
 description: Ismerje meg, hogyan alakíthatja át a nyers TWitter-információkat a HDInsight a Apache Hive és a Apache Hadoop használatával egy kereshető struktúra-táblázatba.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: fe511ed2d6b724c1215f9986c9d6c50aae076935
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 74a18be37608b2ac0c8a64655fa833753111706a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95971909"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942771"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-adataik elemzése Apache Hive és Apache Hadoop használatával a HDInsight-on
 
@@ -37,7 +34,7 @@ A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) do
    | Mező | Érték |
    |--- |--- |
    | Név |MyHDInsightApp |
-   | Leírás |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | Webhely |`https://www.myhdinsightapp.com` |
 
 4. Válassza az **Igen, elfogadom** lehetőséget, majd válassza **a Twitter-alkalmazás létrehozása** lehetőséget.
@@ -308,7 +305,7 @@ Ezek a parancsok olyan helyen tárolják az adattárakat, amelyet a fürt össze
     > [!NOTE]  
     > Ha módosította a szűrőt a `gettweets.py` parancsfájlban, cserélje le az **Azure** -t a használt szűrők egyikére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan alakíthat át strukturálatlan JSON-adatkészletet egy strukturált [Apache Hive](https://hive.apache.org/) táblázatba. Ha többet szeretne megtudni a HDInsight-beli Kaptárról, tekintse meg a következő dokumentumokat:
 

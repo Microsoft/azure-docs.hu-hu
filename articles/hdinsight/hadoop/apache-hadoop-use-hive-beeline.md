@@ -1,19 +1,16 @@
 ---
 title: Az Apache beines használata a Apache Hive-Azure HDInsight
 description: Ismerje meg, hogyan futtathat kaptár-lekérdezéseket a Hadoop-mel a HDInsight-on a Beeline-ügyfél használatával. A Beeline egy olyan segédprogram, amely a HiveServer2-t a JDBC protokollon keresztül folytatja.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: contperf-fy21q1, contperf-fy21q2
-ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e8b7478ba64da0f99a9b7a710222ff2953795adf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031895"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943202"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 

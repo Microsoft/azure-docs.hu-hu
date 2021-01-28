@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: bc43dc7afb234d410eb17d20beb13cd5cb44bb18
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222513"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943665"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alhálózati delegálás hozzáadása vagy eltávolítása
 
@@ -113,7 +113,7 @@ A beépített [hálózati közreműködő](../role-based-access-control/built-in
 
 Ebben a szakaszban az előző szakaszban létrehozott alhálózatot delegálja egy Azure-szolgáltatáshoz. 
 
-Az [az Network vnet subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) paranccsal frissítse a **mySubnet** nevű alhálózatot egy Azure-szolgáltatás delegálásával.  Ebben a példában a **Microsoft. DBforPostgreSQL/serversv2** a példában szereplő delegáláshoz van használatban:
+Az [az Network vnet subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) paranccsal frissítse a **mySubnet** nevű alhálózatot egy Azure-szolgáltatás delegálásával.  Ebben a példában a **Microsoft. DBforPostgreSQL/serversv2** a példában szereplő delegáláshoz van használatban:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Az [az Network vnet subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ellenőrizze, hogy a szolgáltatás delegálva van-e az alhálózatnak a **szolgáltatásnév** tulajdonság alatt:
+A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Ellenőrizze, hogy a szolgáltatás delegálva van-e az alhálózatnak a **szolgáltatásnév** tulajdonság alatt:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](/cli
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Alhálózati delegálás eltávolítása egy Azure-szolgáltatásból
 
-Az az [Network vnet subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) paranccsal távolítsa el a delegálást a **mySubnet** nevű alhálózatból:
+Az az [Network vnet subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) paranccsal távolítsa el a delegálást a **mySubnet** nevű alhálózatból:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Az az [Network vnet subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli
   --vnet-name myVnet \
   --remove delegations
 ```
-A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Ellenőrizze, hogy a szolgáltatás el lett-e távolítva az alhálózatból a **szolgáltatásnév** tulajdonság alatt:
+A delegálás ellenőrzéséhez használja az [az Network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Ellenőrizze, hogy a szolgáltatás el lett-e távolítva az alhálózatból a **szolgáltatásnév** tulajdonság alatt:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -195,7 +195,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 ```
 ### <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy **myVnet** nevű virtuális hálózatot egy **mySubnet** nevű alhálózattal a New [-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) használatával a **myResourceGroup** [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest)használatával. A virtuális hálózat IP-címe **10.0.0.0/16**. A virtuális hálózaton belüli alhálózat **10.0.0.0/24**.  
+Hozzon létre egy **myVnet** nevű virtuális hálózatot egy **mySubnet** nevű alhálózattal a New [-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) használatával a **myResourceGroup** [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)használatával. A virtuális hálózat IP-címe **10.0.0.0/16**. A virtuális hálózaton belüli alhálózat **10.0.0.0/24**.  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -212,7 +212,7 @@ A beépített [hálózati közreműködő](../role-based-access-control/built-in
 
 Ebben a szakaszban az előző szakaszban létrehozott alhálózatot delegálja egy Azure-szolgáltatáshoz. 
 
-Az [Add-AzDelegation](/powershell/module/az.network/add-azdelegation?view=latest) használatával frissítse a **mySubnet** nevű alhálózatot egy **MyDelegation** nevű delegálással egy Azure-szolgáltatáshoz.  Ebben a példában a **Microsoft. DBforPostgreSQL/serversv2** a példában szereplő delegáláshoz van használatban:
+Az [Add-AzDelegation](/powershell/module/az.network/add-azdelegation) használatával frissítse a **mySubnet** nevű alhálózatot egy **MyDelegation** nevű delegálással egy Azure-szolgáltatáshoz.  Ebben a példában a **Microsoft. DBforPostgreSQL/serversv2** a példában szereplő delegáláshoz van használatban:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -220,7 +220,7 @@ Az [Add-AzDelegation](/powershell/module/az.network/add-azdelegation?view=latest
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-A [Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest) használatával ellenőrizze a delegálást:
+A [Get-AzDelegation](/powershell/module/az.network/get-azdelegation) használatával ellenőrizze a delegálást:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -236,7 +236,7 @@ A [Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest)
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Alhálózati delegálás eltávolítása egy Azure-szolgáltatásból
 
-A [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation?view=latest) használatával távolítsa el a delegálást a **mySubnet** nevű alhálózatból:
+A [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation) használatával távolítsa el a delegálást a **mySubnet** nevű alhálózatból:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -244,7 +244,7 @@ A [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation?view=l
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-A [Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest) használatával ellenőrizze, hogy a delegálás el lett-e távolítva:
+A [Get-AzDelegation](/powershell/module/az.network/get-azdelegation) használatával ellenőrizze, hogy a delegálás el lett-e távolítva:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"

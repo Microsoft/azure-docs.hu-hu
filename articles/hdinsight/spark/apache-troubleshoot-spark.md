@@ -2,18 +2,16 @@
 title: Az Azure HDInsight Apache Spark hibáinak megoldása
 description: Választ kaphat a Apache Spark és az Azure HDInsight való használattal kapcsolatos gyakori kérdésekre.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822148"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942512"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Az Apache Spark hibaelhárítása az Azure HDInsighttal
 
@@ -37,7 +35,7 @@ A Spark konfigurációs értékei a Apache Spark alkalmazás kivételének elker
 
 1. Állítsa be az értéket az ajánlott beállításra. Ehhez a beállításhoz a **2048m** érték használata javasolt.
 
-1. Mentse az értéket, majd mentse a konfigurációt. Válassza a **Mentés** lehetőséget.
+1. Mentse az értéket, majd mentse a konfigurációt. Kattintson a **Mentés** gombra.
 
     ![Érték módosítása 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
@@ -101,7 +99,7 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 [Apache Spark a feladatok beküldését a HDInsight-fürtökön](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

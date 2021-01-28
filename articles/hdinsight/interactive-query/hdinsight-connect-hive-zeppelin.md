@@ -1,25 +1,22 @@
 ---
 title: 'Gyors útmutató: az Azure HDInsight Apache Hive az Apache Zeppelin-vel'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan futtathat Apache Hive lekérdezéseket az Apache Zeppelin használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79367924"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941056"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Gyors útmutató: Apache Hive lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin-vel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan futtathat [Apache Hive](https://hive.apache.org/) -lekérdezéseket az Azure HDInsight-ben az Apache Zeppelin használatával. A HDInsight interaktív lekérdezési fürtök olyan [Apache Zeppelin](https://zeppelin.apache.org/) -jegyzetfüzeteket tartalmaznak, amelyekkel interaktív struktúra-lekérdezéseket futtathat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,16 +30,16 @@ An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozá
 
     ![HDInsight interaktív lekérdezés Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
 
-3. Válassza az **új Megjegyzés létrehozása**lehetőséget.
+3. Válassza az **új Megjegyzés létrehozása** lehetőséget.
 
 4. Az **új Megjegyzés létrehozása** párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
     - Megjegyzés neve: adja meg a jegyzet nevét.
     - Alapértelmezett értelmező: válassza a **JDBC** elemet a legördülő listából.
 
-5. Válassza a **Létrehozás Megjegyzés**lehetőséget.
+5. Válassza a **Létrehozás Megjegyzés** lehetőséget.
 
-6. Adja meg a következő kaptár-lekérdezést a Code (kód) szakaszban, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt:
+6. Adja meg a következő kaptár-lekérdezést a Code (kód) szakaszban, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt:
 
     ```hive
     %jdbc(hive)
@@ -53,7 +50,7 @@ An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozá
 
     Az első sorban található **% JDBC (kaptár)** utasítás azt jelzi, hogy a jegyzetfüzet a kaptár JDBC-értelmező használatát mutatja be.
 
-    A lekérdezés egy **hivesampletable**nevű struktúrás táblát ad vissza.
+    A lekérdezés egy **hivesampletable** nevű struktúrás táblát ad vissza.
 
     A következő két további, a **hivesampletable**-ben futtatott kaptár-lekérdezést hajt végre:
 
@@ -114,7 +111,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan futtathat Apache Hive lekérdezéseket az Azure HDInsight-ben az Apache Zeppelin használatával. A kaptár-lekérdezésekkel kapcsolatos további tudnivalókért a következő cikk bemutatja, hogyan hajthat végre lekérdezéseket a Visual Studióval.
 

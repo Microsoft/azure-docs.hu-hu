@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 690dcca23aedb129090b3bf4f0da8874705b5fcc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555780"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941464"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
@@ -960,7 +960,7 @@ Vegye figyelembe, hogy ez csak akkor érvényes, ha a Integration Runtime Azure-
 
 A legtöbb esetben a Microsoft Base VM-sablonok a Azure Automation kívánt állapot-konfigurációval együtt segíthetnek a biztonsági követelmények teljesítésében és fenntartásában.
 
-* [A virtuálisgép-sablon letöltésével kapcsolatos információk](../virtual-machines/windows/download-template.md)
+* [A virtuálisgép-sablon letöltésével kapcsolatos információk](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Azure Resource Manager sablonok létrehozásával kapcsolatos információk](../virtual-machines/windows/ps-template.md)
 

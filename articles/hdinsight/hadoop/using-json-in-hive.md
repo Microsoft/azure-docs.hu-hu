@@ -1,19 +1,16 @@
 ---
 title: '& feldolgozása JSON elemzése Apache Hive-Azure HDInsight'
 description: Megtudhatja, hogyan használhatja a JSON-dokumentumokat, és hogyan elemezheti őket az Azure HDInsight Apache Hive használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547605"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943070"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok feldolgozása és elemzése Apache Hive használatával az Azure HDInsight
 
@@ -154,7 +151,7 @@ A SerDe a legjobb választás a beágyazott JSON-dokumentumok elemzéséhez. Leh
 
 ## <a name="summary"></a>Összefoglalás
 
-A kiválasztott kaptárban található JSON-operátor típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentummal és egy mezővel keres, válassza ki a kaptár UDF **get_json_object** . Ha egynél több kulcsot keres, akkor használhatja a **json_tuple** . Beágyazott dokumentumok esetén használja a **JSON-SerDe** .
+A kiválasztott kaptárban található JSON-operátor típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentummal és egy mezővel keres, válassza ki a kaptár UDF **get_json_object**. Ha egynél több kulcsot keres, akkor használhatja a **json_tuple**. Beágyazott dokumentumok esetén használja a **JSON-SerDe**.
 
 ## <a name="next-steps"></a>Következő lépések
 

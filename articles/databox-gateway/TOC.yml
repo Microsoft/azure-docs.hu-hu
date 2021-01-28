@@ -1,5 +1,5 @@
 - name: Azure Data Box Gateway-dokumentáció
-  href: /azure/databox-gateway/
+  href: ./index.yml
 - name: Áttekintés
   Expanded: true
   items:

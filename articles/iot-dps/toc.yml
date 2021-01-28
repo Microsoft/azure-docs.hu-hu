@@ -116,10 +116,16 @@
       href: concepts-device-oem-security-practices.md
 - name: Útmutatók
   items:
-    - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: eszközök üzembe helyezése egyéni kiosztási szabályzatokkal
-      href: how-to-use-custom-allocation-policies.md
+    - name: Fejlesztés
+      items:
+        - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz
+          href: how-to-connect-mxchip-iot-devkit.md
+        - name: További adatok küldése eszközökről
+          href: how-to-send-additional-data.md
+        - name: eszközök üzembe helyezése egyéni kiosztási szabályzatokkal
+          href: how-to-use-custom-allocation-policies.md
+        - name: Kommunikáció a DPS-sel az MQTT protokoll használatával
+          href: iot-dps-mqtt-support.md
     - name: Device Provisioning Service kezelése
       items:
         - name: Regisztrációk kezelése – portál
@@ -138,8 +144,6 @@
           href: how-to-control-access.md
         - name: IP-szűrés konfigurálása
           href: iot-dps-ip-filtering.md
-        - name: Device Provisioning Service konfigurálása az Azure CLI-vel
-          href: how-to-manage-dps-with-cli.md
     - name: IoT Edge-eszközök regisztrálása
       items:
         - name: Linux
@@ -148,12 +152,8 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: További adatok küldése eszközökről
-      href: how-to-send-additional-data.md
     - name: Hibaelhárítás
       href: how-to-troubleshoot-dps.md
-    - name: Kommunikáció a DPS-sel az MQTT protokoll használatával
-      href: iot-dps-mqtt-support.md
 - name: Referencia
   items:
     - name: REST API

@@ -1,19 +1,16 @@
 ---
 title: 'Gyors útmutató: Apache HBase-fürt létrehozása sablon használatával – Azure HDInsight'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Apache HBase-fürtöt az Azure HDInsight a Resource Manager-sablonok használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: ee69148f7dfe7a0ba39b4103a736ea09d3f57c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a6b55ee2d665ee38df9a0e0f58260e97f3b81f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855786"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942939"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Gyors útmutató: Apache HBase-fürt létrehozása az Azure HDInsight az ARM-sablon használatával
 
@@ -51,7 +48,7 @@ Két Azure-erőforrás van definiálva a sablonban:
     |Tulajdonság |Leírás |
     |---|---|
     |Előfizetés|A legördülő listában válassza ki a fürthöz használt Azure-előfizetést.|
-    |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
+    |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
     |Hely|Az érték automatikusan kitöltődik az erőforráscsoporthoz használt hellyel.|
     |Fürt neve|Adjon meg egy globálisan egyedi nevet. Ehhez a sablonhoz csak kisbetűket és számokat használjon.|
     |Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
@@ -61,7 +58,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
     ![Resource Manager-sablon HBase üzembe helyezése](./media/quickstart-resource-manager-template/resource-manager-template-hbase.png)
 
-1. Tekintse át a **használati**feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás**lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
+1. Tekintse át a **használati** feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás** lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
@@ -72,13 +69,13 @@ A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog k
 
 A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 
-A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetőséget.
+A Azure Portal navigáljon a fürthöz, és válassza a **Törlés** lehetőséget.
 
 [Resource Manager-sablon HBase törlése](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Apache HBase-fürtöt a HDInsight egy ARM-sablonnal. A következő cikkben megtudhatja, hogyan kérdezheti le a HBase a HDInsight-ben a HBase Shell használatával.
 

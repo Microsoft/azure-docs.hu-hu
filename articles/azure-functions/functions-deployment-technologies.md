@@ -4,12 +4,12 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 51a76adcf25d5d1bc4025eab12073df0886fde3d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681830"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943638"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -33,7 +33,7 @@ Míg az adott függvények központi telepítései a környezetük alapján a le
 
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
-+ [Használatalapú](consumption-plan.md)
++ [Használat](consumption-plan.md)
 + [Prémium](functions-premium-plan.md)
 + [Dedikált (App Service)](dedicated-plan.md)
 
@@ -106,7 +106,7 @@ A következő üzembe helyezési módszerek érhetők el Azure Functionsban.
 
 Külső csomag URL-címével hivatkozhat a Function alkalmazást tartalmazó távoli csomag (. zip) fájlra. A fájl a megadott URL-címről töltődik le, és az alkalmazás [csomag](run-functions-from-deployment-package.md) módban fut.
 
->__Használat:__ Adja hozzá `WEBSITE_RUN_FROM_PACKAGE` az alkalmazás beállításait. A beállítás értékének URL-címnek kell lennie (a futtatni kívánt adott csomagfájl helye). A beállításokat a [portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)is hozzáadhatja.
+>__Használat:__ Adja hozzá [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) az alkalmazás beállításait. A beállítás értékének URL-címnek kell lennie (a futtatni kívánt adott csomagfájl helye). A beállításokat a [portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [Az Azure CLI használatával](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)is hozzáadhatja.
 >
 >Ha az Azure Blob Storage-t használja, használjon egy [közös hozzáférési aláírással (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) rendelkező privát tárolót, amely lehetővé teszi a funkciók elérését a csomaghoz. Az alkalmazás újraindításakor a rendszer lekéri a tartalom egy példányát. A hivatkozásnak érvényesnek kell lennie az alkalmazás élettartamára.
 
@@ -118,7 +118,7 @@ A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-b
 
 >__Használat:__ Üzembe helyezéséhez használja kedvenc ügyfélprogramját: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)vagy a parancssorból a [Azure functions Core Tools](functions-run-local.md#project-file-deployment)használatával. Ezek az eszközök alapértelmezés szerint a zip-telepítést használják, és [a csomagból futnak](run-functions-from-deployment-package.md). A Core Tools és a Visual Studio Code bővítmény lehetővé teszi a [távoli buildek](#remote-build) telepítését a Linux rendszeren való üzembe helyezéskor. Ha a. zip-fájlt manuálisan szeretné telepíteni a Function alkalmazásba, kövesse az [üzembe helyezés a. zip fájlból vagy URL-címről](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)című témakör utasításait.
 
->Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomagból fusson](run-functions-from-deployment-package.md). A csomagból való futtatáshoz állítsa az Alkalmazásbeállítás értéket a következőre: `WEBSITE_RUN_FROM_PACKAGE` `1` . A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára.
+>Ha a zip-telepítés használatával végzi a telepítést, beállíthatja, hogy az alkalmazás [csomagból fusson](run-functions-from-deployment-package.md). A csomagból való futtatáshoz állítsa be a [ `WEBSITE_RUN_FROM_PACKAGE` ] (functions-app-Settings. MD # website_run_from_package Application Setting értéket a következőre: `1` . A zip-telepítést javasoljuk. Gyorsabb betöltési időt eredményez az alkalmazások számára, és ez az alapértelmezett a VS Code, a Visual Studio és az Azure CLI számára.
 
 >__Mikor érdemes használni:__ A zip-telepítés a Azure Functions ajánlott központi telepítési technológiája.
 
@@ -181,7 +181,7 @@ Az FTP használatával közvetlenül átviheti a fájlokat a Azure Functionsba.
 
 A portálon alapuló szerkesztőben közvetlenül szerkesztheti a Function alkalmazásban található fájlokat (lényegében a módosítások mentésekor minden alkalommal üzembe helyezheti őket).
 
->__Használat:__ Ahhoz, hogy szerkeszteni tudja a függvényeket a Azure Portalban, létre kell hoznia [a függvényeket a portálon](./functions-get-started.md). Az igazság egyetlen forrásainak megtartása érdekében bármely más üzembe helyezési módszer használatával a függvény csak olvasható, és nem teszi lehetővé a portál folyamatos szerkesztését. Ha vissza szeretne térni olyan állapotba, amelyben szerkesztheti a fájljait a Azure Portalban, manuálisan is visszakapcsolhatja a szerkesztési módot, `Read/Write` és eltávolíthatja a telepítéshez kapcsolódó alkalmazás-beállításokat (például `WEBSITE_RUN_FROM_PACKAGE` ).
+>__Használat:__ Ahhoz, hogy szerkeszteni tudja a függvényeket a Azure Portalban, létre kell hoznia [a függvényeket a portálon](./functions-get-started.md). Az igazság egyetlen forrásainak megtartása érdekében bármely más üzembe helyezési módszer használatával a függvény csak olvasható, és nem teszi lehetővé a portál folyamatos szerkesztését. Ha vissza szeretne térni olyan állapotba, amelyben szerkesztheti a fájlokat a Azure Portalban, manuálisan is visszakapcsolhatja a szerkesztési módot, `Read/Write` és eltávolíthatja a telepítéssel kapcsolatos összes beállítást (például: [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) ).
 
 >__Mikor érdemes használni:__ A portál jó módszer a Azure Functions megkezdésére. Az intenzívebb fejlesztési munka érdekében javasoljuk, hogy a következő ügyféleszközök egyikét használja:
 >

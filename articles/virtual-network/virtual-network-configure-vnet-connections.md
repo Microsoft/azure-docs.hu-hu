@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: d9a87eca6a6c66d116817ced0f534a75033d48b9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221476"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943649"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
 
@@ -64,7 +64,7 @@ A társítás konfigurációjának vizsgálatához használja a következő met�
 
 ![A virtuális hálózat társítási konfigurációjának ellenőrzéséhez kiválasztott beállítások](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) parancsot a virtuális hálózat társításának beszerzéséhez. Bemutatunk egy példát:
+Azure PowerShell esetén futtassa a [Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) parancsot a virtuális hálózat társításának beszerzéséhez. Bemutatunk egy példát:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -248,13 +248,13 @@ A BGP a több hálózat között is lehetővé teszi az átviteli útválasztás
 
 A BGP-t használó VPN-kapcsolat konfigurálásával kapcsolatban lásd: a [BGP konfigurálása Azure VPN Gateway-átjárón a PowerShell használatával](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Engedélyezze a BGP-t a virtuális hálózati átjárón egy autonóm rendszer (AS) számának létrehozásával. Az alapszintű átjárók nem támogatják a BGP-t. Az átjáró SKU-jának vizsgálatához nyissa meg a Azure Portal **VPN Gateway** paneljének **Áttekintés** szakaszát. Ha az SKU **alapszintű**, akkor módosítania kell az SKU-t (lásd: [az átjáró átméretezése](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) a **VpnGw1**. 
+Engedélyezze a BGP-t a virtuális hálózati átjárón egy autonóm rendszer (AS) számának létrehozásával. Az alapszintű átjárók nem támogatják a BGP-t. Az átjáró SKU-jának vizsgálatához nyissa meg a Azure Portal **VPN Gateway** paneljének **Áttekintés** szakaszát. Ha az SKU **alapszintű**, akkor módosítania kell az SKU-t (lásd: [az átjáró átméretezése](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) a **VpnGw1**. 
 
-Az SKU ellenőrzése 20 – 30 perces állásidőt eredményez. Amint az átjáró megfelelő SKU-val rendelkezik, az AS-számot a [set-AzureRmVirtualNetworkGateway PowerShell-](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) parancsmagot használatával adhatja hozzá. A AS szám konfigurálása után a rendszer automatikusan megadja a BGP-társ IP-címet az átjáró számára.
+Az SKU ellenőrzése 20 – 30 perces állásidőt eredményez. Amint az átjáró megfelelő SKU-val rendelkezik, az AS-számot a [set-AzureRmVirtualNetworkGateway PowerShell-](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) parancsmagot használatával adhatja hozzá. A AS szám konfigurálása után a rendszer automatikusan megadja a BGP-társ IP-címet az átjáró számára.
 
-Manuálisan kell megadnia az `LocalNetworkGateway` as-számot és a BGP-társ-címeket. A `ASN` és az `-BgpPeeringAddress` értékek a [New-AzureRmLocalNetworkGateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) vagy a [set-AzureRmLocalNetworkGateway PowerShell-](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) parancsmagot használatával állíthatók be. Egyes számok az Azure-hoz vannak fenntartva, és nem használhatók fel a BGP és az [azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)című témakörben leírtak szerint.
+Manuálisan kell megadnia az `LocalNetworkGateway` as-számot és a BGP-társ-címeket. A `ASN` és az `-BgpPeeringAddress` értékek a [New-AzureRmLocalNetworkGateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway) vagy a [set-AzureRmLocalNetworkGateway PowerShell-](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway) parancsmagot használatával állíthatók be. Egyes számok az Azure-hoz vannak fenntartva, és nem használhatók fel a BGP és az [azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)című témakörben leírtak szerint.
 
-A kapcsolási objektumnak BGP-kompatibilisnek kell lennie. Az értéket beállíthatja a `-EnableBGP` `$True` [New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) vagy a [set-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)értékre.
+A kapcsolási objektumnak BGP-kompatibilisnek kell lennie. Az értéket beállíthatja a `-EnableBGP` `$True` [New-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection) vagy a [set-AzureRmVirtualNetworkGatewayConnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection)értékre.
 
 ### <a name="validate-the-bgp-configuration"></a>A BGP-konfiguráció ellenőrzése
 

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661797"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942092"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
@@ -107,7 +107,7 @@ Amikor töröl egy Azure-erőforrást, az ahhoz társított metrikariasztási sz
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Metrikus riasztások elkészítése minden alkalommal, amikor a feltétel teljesült
 
-A metrikai riasztások alapértelmezés szerint állapottal rendelkeznek, ezért a rendszer nem indít el további riasztásokat, ha már van egy kilőtt riasztás egy adott idősorozatban. Ha szeretné, hogy egy adott metrikai riasztási szabály állapot nélküli legyen, és a riasztási feltétel teljesülése esetén riasztást kapjon, a riasztási szabályt programozott módon hozza létre (például a [Resource Manager](./alerts-metric-create-templates.md), a [PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1), a [Rest](/rest/api/monitor/metricalerts/createorupdate), a [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)használatával), és állítsa a "false" értékre az *autokockázatcsökkentő* tulajdonságot.
+A metrikai riasztások alapértelmezés szerint állapottal rendelkeznek, ezért a rendszer nem indít el további riasztásokat, ha már van egy kilőtt riasztás egy adott idősorozatban. Ha szeretné, hogy egy adott metrikai riasztási szabály állapot nélküli legyen, és a riasztási feltétel teljesülése esetén riasztást kapjon, a riasztási szabályt programozott módon hozza létre (például a [Resource Manager](./alerts-metric-create-templates.md), a [PowerShell](/powershell/module/az.monitor/), a [Rest](/rest/api/monitor/metricalerts/createorupdate), a [CLI](/cli/azure/monitor/metrics/alert)használatával), és állítsa a "false" értékre az *autokockázatcsökkentő* tulajdonságot.
 
 > [!NOTE] 
 > A metrikai riasztási szabály állapotának megakadályozása megakadályozza a kilőtt riasztások feloldását, tehát még azt követően is, hogy a feltétel már nem teljesült, a kilőtt riasztások a 30 napos adatmegőrzési időszakig megmaradnak.
@@ -175,9 +175,9 @@ A metrikus riasztási szabályok aktuális használatának vizsgálatához köve
 
 ### <a name="from-api"></a>Küldő API
 
-- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API – [List by subscription](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Riasztási szabályok kezelése Resource Manager-sablonok, REST API, PowerShell vagy Azure CLI használatával
 
@@ -196,14 +196,14 @@ Tekintse át a [REST API útmutatót](/rest/api/monitor/metricalerts/) , és ell
 
 Győződjön meg arról, hogy a megfelelő PowerShell-parancsmagokat használja a metrikai riasztásokhoz:
 
-- A metrikariasztások PowerShell-parancsmagjai az [Az.Monitor modulban](/powershell/module/az.monitor/?view=azps-3.6.1) érhetők el
-- Ügyeljen arra, hogy a "v2" végződésű parancsmagokat használja az új (nem klasszikus) metrikai riasztásokhoz (például [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)).
+- A metrikariasztások PowerShell-parancsmagjai az [Az.Monitor modulban](/powershell/module/az.monitor/) érhetők el
+- Ügyeljen arra, hogy a "v2" végződésű parancsmagokat használja az új (nem klasszikus) metrikai riasztásokhoz (például [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)).
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Győződjön meg arról, hogy a megfelelő CLI-parancsokat használja a metrikai riasztásokhoz:
 
-- A metrikaalapú riasztásokra vonatkozó parancssori felületi parancsok a következőképpen kezdődnek: `az monitor metrics alert` Az [Azure CLI-referenciából](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) többet tudhat meg a szintaxisról.
+- A metrikaalapú riasztásokra vonatkozó parancssori felületi parancsok a következőképpen kezdődnek: `az monitor metrics alert` Az [Azure CLI-referenciából](/cli/azure/monitor/metrics/alert) többet tudhat meg a szintaxisról.
 - Itt talál egy [példát a metrikaalapú riasztások parancssori felülettel történő használatára](./alerts-metric.md#with-azure-cli)
 - Ha egyéni metrikához szeretne riasztást beállítani, ügyeljen arra, hogy a metrika nevéhez a megfelelő metrikanévtér előtagját adja meg: NÉVTÉR.METRIKA
 

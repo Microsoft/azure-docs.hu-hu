@@ -1,18 +1,15 @@
 ---
 title: REST API az Apache HBase lekérdezéséhez az Azure HDInsight
 description: Ez a cikk az Apache HBase-összetevők Azure HDInsight-fürtökön való interakciójának hibaelhárítási lépéseit ismerteti.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/08/2020
-ms.openlocfilehash: 1091366ac4d0445a465bc75913baf0f812e6a635
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 636f84c4c6aa097288dc2fb5481dcedd6863409d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629289"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942874"
 ---
 # <a name="rest-api-to-query-apache-hbase-in-azure-hdinsight"></a>REST API az Apache HBase lekérdezéséhez az Azure HDInsight
 

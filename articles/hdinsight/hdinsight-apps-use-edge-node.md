@@ -1,19 +1,16 @@
 ---
 title: Üres peremhálózati csomópontok használata Apache Hadoop fürtökön az Azure HDInsight
 description: Üres peremhálózati csomópont hozzáadása egy HDInsight-fürthöz. Ügyfélként használható, majd tesztelje vagy üzemelteti a HDInsight-alkalmazásait.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010112"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942683"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön a HDInsight-ben
 
@@ -162,7 +159,7 @@ A Azure Portalból törölhet egy peremhálózati csomópontot.
 4. Kattintson a jobb gombbal a törölni kívánt peremhálózati csomópontra, majd válassza a **Törlés** lehetőséget.
 5. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan adhat hozzá egy Edge-csomópontot, és hogyan érheti el a peremhálózati csomópontot. További tudnivalókért olvassa el a következő cikket:
 

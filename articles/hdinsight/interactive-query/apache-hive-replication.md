@@ -1,18 +1,15 @@
 ---
 title: Apache Hive replikáció használata az Azure HDInsight-fürtökben
 description: Ismerje meg, hogyan replikálhatja a HDInsight-fürtökben a kaptár replikációját a Hive-metaadattár és a Azure Data Lake Storage Gen 2 adatközpont replikálásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857741"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941341"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Apache Hive replikáció használata az Azure HDInsight-fürtökben
 
@@ -140,7 +137,7 @@ A növekményes replikáció ugyanezt a folyamatot követi, és a legutolsó rep
 
 A replikációt általában egyirányú módon konfigurálták az elsődleges és a másodlagos között, ahol az elsődleges a kérések olvasására és írására szolgál. A másodlagos fürt csak olvasási kérelmeket biztosít. Az írások engedélyezve vannak a másodlagos esetben, ha vészhelyzet van, de a visszirányú replikálást vissza kell állítani az elsődlegesre.
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Struktúra replikációs diagramja":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Struktúra replikálási mintája":::
 
 Számos mintázat használható a kaptárak replikálásához, beleértve az elsődleges – másodlagos, a hub-és a küllős, valamint a továbbítási funkciókat.
 

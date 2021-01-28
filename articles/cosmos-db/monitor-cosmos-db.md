@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d5cfdca24193b899926bd30995063ed55b3dd3eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532057"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943448"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB monitorozása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB ugyanolyan típusú figyelési adatokat gyűjt, mint az [Azure-e
 
 Az egyes Azure Cosmos-adatbázisokhoz tartozó Azure Portal **áttekintő** lapja az adatbázis-használat rövid áttekintését tartalmazza, beleértve a kérését és az óránkénti számlázási használatot. Ez hasznos információ, de csak kis mennyiségű figyelési adat érhető el. Ezeket az adatokat a rendszer automatikusan gyűjti, és az elemzéshez azonnal elérhetővé válik, miközben a további adatgyűjtést is engedélyezheti néhány konfigurációval.
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Áttekintő lap":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Áttekintő oldal":::
 
 ## <a name="collection-and-routing"></a>Gyűjtés és Útválasztás
 
@@ -90,7 +90,7 @@ Az Azure Cosmos DB összes mérőszáma a névtérben **Cosmos dB standard mér�
 * CollectionName
 * DatabaseName
 * OperationType
-* Region
+* Régió
 * StatusCode
 
 A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](../azure-monitor/platform/metrics-supported.md)listáját láthatja.
@@ -129,7 +129,7 @@ Azure Monitor naplókban található adatkészletek olyan táblákban tárolódn
 
 Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)szerepel. A Azure Cosmos DBhoz gyűjtött erőforrás-naplók típusai listáját az [adatAzure Cosmos DB monitorozása](monitor-cosmos-db-reference.md#resource-logs)című témakörben találhatja meg.
 
-A [műveletnapló](/azure/azure-monitor/platform/activity-log) olyan platform-bejelentkezési Azure, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.  
+A [műveletnapló](../azure-monitor/platform/activity-log.md) olyan platform-bejelentkezési Azure, amely betekintést nyújt az előfizetési szintű eseményekre. Megtekintheti egymástól függetlenül, vagy átirányíthatja Azure Monitor naplókba, ahol a Log Analytics használatával jóval összetettebb lekérdezéseket végezhet.  
 
 A Azure Cosmos DB az alábbi táblázatokban tárolja az adattárakat.
 
@@ -176,7 +176,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 Az alábbi táblázat például az erőforrásokra vonatkozó riasztási szabályokat sorolja fel. A riasztási szabályok részletes listáját a Azure Portalban találja. További információt a [riasztások konfigurálása](create-alerts.md) című cikkben talál.  
 
-| Riasztástípus | Feltétel | Leírás  |
+| Riasztástípus | Feltétel | Description  |
 |:---|:---|:---|
 |Kérelmek egységeinek korlátozása (metrikus riasztás) |Dimenzió neve: StatusCode, operátor: egyenlő, dimenzió értékei: 429  | Riasztás, ha a tároló vagy az adatbázis túllépte a kiosztott átviteli sebességet. |
 |A régió feladatátvétele megtörtént |Operátor: nagyobb, mint, összesítés típusa: darabszám, küszöbérték: 1 | Egyetlen régió feladatátvétele esetén. Ez a riasztás akkor hasznos, ha nem engedélyezte az automatikus feladatátvételt. |
@@ -204,7 +204,7 @@ https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{Reso
 
 További információ: [Azure monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Cosmos DB által létrehozott naplók és metrikák hivatkozását a [Azure Cosmos db monitorozási adatok referenciája](monitor-cosmos-db-reference.md) tartalmazza.
 * Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../azure-monitor/insights/monitor-azure-resource.md) .

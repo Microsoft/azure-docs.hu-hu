@@ -3,23 +3,22 @@ title: Kas Warehouse-összekötő – Apache Zeppelin a Livy használatával –
 description: Ismerje meg, hogyan integrálhatja a méhkas Warehouse-összekötőt az Apache Zeppelin használatával az Azure HDInsight.
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: bccf2b9a3dfe42ca439a45eb1e35cfaff58d0208
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941166"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Az Apache Zeppelin integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
 A HDInsight Spark-fürtök különböző tolmácsokkal rendelkező Apache Zeppelin-jegyzetfüzeteket tartalmaznak. Ebben a cikkben csak a Livy-tolmácsra koncentrálunk, hogy a Spark-táblákat a méhkas Warehouse-összekötő használatával férhessenek hozzá.
 
 > [!NOTE]
-> Ez a cikk az *engedélyezési*feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -49,7 +48,7 @@ A következő konfigurációk szükségesek ahhoz, hogy a Zeppelin-táblákat a 
 
 1. Egy webböngészőből navigáljon `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HDFS/configs` oda, ahol a LLAPCLUSTERNAME az interaktív lekérdezési fürt neve.
 
-1. Navigáljon a **speciális**  >  **Egyéni Core-site**elemre. Válassza a **tulajdonság hozzáadása...** lehetőséget a következő konfigurációk hozzáadásához:
+1. Navigáljon a **speciális**  >  **Egyéni Core-site** elemre. Válassza a **tulajdonság hozzáadása...** lehetőséget a következő konfigurációk hozzáadásához:
 
     | Konfiguráció                 | Érték |
     | ----------------------------- |-------|
@@ -62,7 +61,7 @@ A következő konfigurációk szükségesek ahhoz, hogy a Zeppelin-táblákat a 
 
 1. Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` oda, ahol a CLUSTERNAME a Apache Spark-fürt neve.
 
-1. Bontsa ki az **Egyéni livy2-conf**elemet. Válassza a **tulajdonság hozzáadása...** lehetőséget a következő konfiguráció hozzáadásához:
+1. Bontsa ki az **Egyéni livy2-conf** elemet. Válassza a **tulajdonság hozzáadása...** lehetőséget a következő konfiguráció hozzáadásához:
 
     | Konfiguráció                 | Érték                                      |
     | ----------------------------- |------------------------------------------  |
@@ -96,7 +95,7 @@ A következő konfigurációk szükségesek ahhoz, hogy a Zeppelin-táblákat a 
     |---|---|
     | Livy. Spark. SQL. Kas. hiveserver2. JDBC. URL. Principal | `hive/<llap-headnode>@<AAD-Domain>` |
 
-    * Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` oda, ahol a CLUSTERNAME az interaktív lekérdezési fürt neve. Kattintson a **HiveServer2 Interactive**elemre. Megtekintheti annak a fő csomópontnak a teljes tartománynevét (FQDN), amelyen a LLAP fut, ahogy azt a képernyőképen is látható. Cserélje le `<llap-headnode>` erre az értékre.
+    * Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` oda, ahol a CLUSTERNAME az interaktív lekérdezési fürt neve. Kattintson a **HiveServer2 Interactive** elemre. Megtekintheti annak a fő csomópontnak a teljes tartománynevét (FQDN), amelyen a LLAP fut, ahogy azt a képernyőképen is látható. Cserélje le `<llap-headnode>` erre az értékre.
 
         ![kaptár-összekötő fő csomópontja](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
@@ -142,7 +141,7 @@ hive.executeQuery("select * from testers").show()
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HWC- és Apache Spark-műveletek](./apache-hive-warehouse-connector-operations.md)
 * [HWC-integráció az Apache Sparkkal és az Apache Hive-val](./apache-hive-warehouse-connector.md)

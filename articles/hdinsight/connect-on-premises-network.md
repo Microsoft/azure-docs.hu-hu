@@ -1,19 +1,16 @@
 ---
 title: Az Azure HDInsight összekapcsolása a helyszíni hálózattal
 description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöt egy Azure-Virtual Networkban, majd hogyan csatlakoztatható a helyszíni hálózathoz. Megtudhatja, hogyan konfigurálhatja a névfeloldást a HDInsight és a helyszíni hálózat között egy egyéni DNS-kiszolgáló használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786520"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943407"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -341,7 +338,7 @@ Ha közvetlenül szeretne csatlakozni a HDInsight a virtuális hálózaton keres
     >
     > Például az Apache Ambari egyszerre csak egy fő csomóponton aktív. Ha megpróbál hozzáférni a Ambari egy fő csomóponton, és 404-es hibát ad vissza, akkor a másik fő csomóponton fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális hálózatok HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](./hdinsight-plan-virtual-network-deployment.md).
 

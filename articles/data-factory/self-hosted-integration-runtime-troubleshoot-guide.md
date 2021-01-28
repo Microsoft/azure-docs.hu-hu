@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757678"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942043"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -198,7 +198,7 @@ A következő hiba esetén látható, hogy a *System. ValueTuple* szerelvény hi
  
 " \<LogProperties> \<ErrorInfo> [{" Code ": 0," üzenet ":" a "Npgsql. PoolManager" típus-inicializáló kivételt váltott ki. "," EventType ": 0," kategória ": 5," adat": {} ," MsgId ": NULL," ExceptionType ":" System. TypeInitializationException "," Source ":" Npgsql "," StackTrace ":" "," InnerEventInfos ": [{" code ": 0," Message ":" nem tölthető be a fájl vagy szerelvény "System. ValueTuple, Version = 4.0.2.0, Culture = semleges, PublicKeyToken = XXXXXXXXX" vagy az egyik függősége. A rendszeren nem található a megadott fájl. "," EventType ": 0," kategória ": 5," információ ": {} ," MsgId":NULL,"ExceptionType":"System. IO. FileNotFoundException "," Source ":" Npgsql "," StackTrace ":" "," InnerEventInfos ": []}]}] \</ErrorInfo> \</LogProperties> "
  
-További információ a GAC-ról: [globális szerelvény-gyorsítótár](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+További információ a GAC-ról: [globális szerelvény-gyorsítótár](/dotnet/framework/app-domains/gac).
 
 
 ### <a name="self-hosted-integration-runtime-authentication-key-is-missing"></a>Hiányzik a saját üzemeltetésű Integration Runtime hitelesítési kulcsa
@@ -792,7 +792,7 @@ Előfordulhat, hogy más adatgyárakat (különböző bérlőket) is figyelembe 
 
 A saját üzemeltetésű IR nem osztható meg a bérlők között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

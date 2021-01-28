@@ -1,19 +1,16 @@
 ---
 title: Nyílt forráskódú szoftverek támogatása az Azure HDInsight
 description: A Microsoft Azure a nyílt forráskódú technológiák általános támogatását biztosítja.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fec4cff974031982c782c9265a7d3186d6bb0233
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013870"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942559"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Nyílt forráskódú szoftverek támogatása az Azure HDInsight
 
@@ -48,13 +45,13 @@ A fürt felhasználója a munkaterheléshez bármilyen, a Közösségben elérhe
 
 A HDInsight szolgáltatás számos módszert kínál az egyéni összetevők használatára. Ugyanez a támogatási szint érvényes, függetlenül attól, hogy az összetevő hogyan használható vagy van telepítve a fürtön. Az alábbi táblázat az egyéni összetevők HDInsight-fürtökön használt leggyakoribb módszereit ismerteti:
 
-|Használat |Leírás |
+|Használat |Description |
 |---|---|
 |Feladatbeküldés|Az egyéni összetevőket végrehajtó vagy használó Hadoop vagy más típusú feladatok elküldhető a fürtbe.|
 |Fürt testreszabása|A fürt létrehozása során megadhat további beállításokat és a fürtcsomópontokon telepített egyéni összetevőket.|
 |Példák|A népszerű egyéni összetevők esetében a Microsoft és mások példákat is biztosítanak az összetevők HDInsight-fürtökön való használatára. Ezeket a mintákat támogatás nélkül biztosítjuk.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](./hdinsight-hadoop-customize-cluster-linux.md)
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)

@@ -1,18 +1,15 @@
 ---
 title: A Grafana használata az Azure HDInsight
 description: Ismerje meg, hogyan érheti el a Grafana-irányítópultot Apache Hadoop-fürtökkel az Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083032"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940889"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>A Grafana elérése az Azure HDInsightban
 
@@ -24,7 +21,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop-fürt létrehozása
 
-Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md). A **fürt típusa**beállításnál válassza a **Spark**, **Kafka**, **HBase**vagy **interaktív lekérdezés**lehetőséget.
+Lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md). A **fürt típusa** beállításnál válassza a **Spark**, **Kafka**, **HBase** vagy **interaktív lekérdezés** lehetőséget.
 
 ## <a name="access-the-grafana-dashboard"></a>Hozzáférés a Grafana irányítópulthoz
 
@@ -42,15 +39,15 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
+1. A felső **keresőmezőbe** írja be a **HDInsight** kifejezést.
 
-1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások** területen.
 
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre a létrehozott fürt mellett.
 
 1. Válassza a **Törlés** elemet. Válassza az **Igen** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
 

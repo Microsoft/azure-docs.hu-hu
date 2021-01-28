@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 571dcd41da9be578e69d9a8ad40ed05784ae26a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975572"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941982"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-A [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) meglévő beruházásainak fenntartásához és a kibővített képességek Azure monitor-nal való használatához integrálhatja a Operations Managert a log Analytics munkaterületére. Ez lehetővé teszi, hogy kihasználja Azure Monitor naplók lehetőségeit, miközben továbbra is használja a Operations Manager:
+A [System Center Operations Manager](/system-center/scom/key-concepts) meglévő beruházásainak fenntartásához és a kibővített képességek Azure monitor-nal való használatához integrálhatja a Operations Managert a log Analytics munkaterületére. Ez lehetővé teszi, hogy kihasználja Azure Monitor naplók lehetőségeit, miközben továbbra is használja a Operations Manager:
 
 * Az informatikai szolgáltatások állapotának monitorozása az Operations Managerrel
 * Az incidens- és problémakezelést támogató ITSM-megoldásokkal való integráció megőrzése
@@ -342,7 +342,7 @@ Ha a felügyeleti csoport Log Analytics munkaterületre való újrakapcsolódás
 * A forrás-adathordozón a `\ManagementPacks` System Center 2016 – Operations Manager mappában vagy felette.
 * A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. A Operations Manager 2012, a forrás mappa `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és a 2012 R2 esetében a következő helyen található: `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A funkciók hozzáadásával és az adatok összegyűjtésével kapcsolatban lásd: [Azure monitor megoldások hozzáadása a Solutions Gallery](../insights/solutions.md).
 

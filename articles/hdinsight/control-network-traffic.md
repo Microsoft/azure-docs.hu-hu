@@ -1,18 +1,15 @@
 ---
 title: Hálózati forgalom szabályozása az Azure HDInsight
 description: Megtudhatja, hogyan vezérelheti a bejövő és a kimenő adatforgalmat az Azure HDInsight-fürtökön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543168"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943374"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Hálózati forgalom szabályozása az Azure HDInsight
 
@@ -40,7 +37,7 @@ Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgal
 
 3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
 
-    * __Hálózati biztonsági csoportok__ : engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt. A __KAFKA Rest proxyt__ használó fürtök esetében engedélyezze a __bejövő__ adatforgalmat is a __9400__ -as porton. Ez biztosítja, hogy a Kafka REST-proxykiszolgáló elérhető legyen.
+    * __Hálózati biztonsági csoportok__: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt. A __KAFKA Rest proxyt__ használó fürtök esetében engedélyezze a __bejövő__ adatforgalmat is a __9400__ -as porton. Ez biztosítja, hogy a Kafka REST-proxykiszolgáló elérhető legyen.
 
 A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [hálózati biztonsági csoportok áttekintése](../virtual-network/network-security-groups-overview.md)című témakört.
 

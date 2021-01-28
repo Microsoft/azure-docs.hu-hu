@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight-alkalmazások közzététele
 description: Ismerje meg, hogyan hozhat létre HDInsight-alkalmazásokat, és hogyan teheti közzé azt az Azure Marketplace-en.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007137"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942664"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight-alkalmazást Linux-alapú HDInsight-fürtön is telepíthet. Ebből a cikkből megtudhatja, hogyan tehet közzé egy HDInsight-alkalmazást az Azure Marketplace-en. Az Azure Marketplace-en való közzétételsel kapcsolatos általános információkért tekintse meg az [ajánlat közzététele az Azure piactéren](../marketplace/overview.md)című témakört.
@@ -96,7 +93,7 @@ HDInsight-alkalmazás közzététele:
 8. Töltse fel az alkalmazás csomagolásakor létrehozott. zip fájlt.  
 9. Válassza a **tanúsítvány kérése** lehetőséget. A Microsoft minősítési csapata áttekinti a fájlokat, és tanúsítja a topológiát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [telepíthet HDInsight-alkalmazásokat](hdinsight-apps-install-applications.md) a fürtökbe.
 * Ismerje meg, hogyan [telepíthet egyéni HDInsight-alkalmazásokat](hdinsight-apps-install-custom-applications.md) , és hogyan helyezhet üzembe egy közzé nem tett HDInsight alkalmazást a HDInsight.
 * Megtudhatja, hogyan [használható a parancsfájlok művelet a Linux-alapú HDInsight-fürtök testreszabásához](hdinsight-hadoop-customize-cluster-linux.md) és további alkalmazások hozzáadásához. 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight-fürtök automatikus skálázása
 description: Az automatikus méretezés funkció használatával automatikusan méretezheti az Azure HDInsight-fürtöket ütemterv vagy teljesítménybeli mérőszámok alapján.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629255"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942634"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
@@ -38,7 +35,7 @@ Skálázási típus kiválasztásakor vegye figyelembe a következő tényezőke
 
 Az autoscale folyamatosan figyeli a fürtöt, és a következő metrikákat gyűjti össze:
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |---|---|
 |Függőben lévő CPU összesen|Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges magok teljes száma.|
 |Függőben lévő memória összesen|Az összes függőben lévő tároló végrehajtásának megkezdéséhez szükséges teljes memória (MB).|
@@ -80,7 +77,7 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 \* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Fürt létrehozása terheléselosztási alapú automatikus skálázással
 

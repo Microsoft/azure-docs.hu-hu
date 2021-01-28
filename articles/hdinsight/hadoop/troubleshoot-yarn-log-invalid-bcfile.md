@@ -1,18 +1,15 @@
 ---
 title: Nem sikerült beolvasni az Apache-beli fonal-naplót az Azure HDInsight
 description: Hibaelhárítási lépések és lehetséges megoldások az Azure HDInsight-fürtökkel való interakció során felmerülő problémákhoz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: b6bd7d807916ef53177b11df6ed9ce0b22f530be
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533342"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943048"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Forgatókönyv: nem sikerült beolvasni az Apache-beli fonal-naplót az Azure HDInsight
 
@@ -34,7 +31,7 @@ Az Apache-beli fonal-napló formátumba van összesítve `IndexFile` , amelyet a
 
 1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. A Ambari felhasználói felületén navigáljon **a**  >  **Configs**  >  **speciális**  >  **speciális fonál-helyhez** .
+1. A Ambari felhasználói felületén navigáljon **a**  >    >  **speciális**  >  **speciális fonál-helyhez**.
 
 1. A WASB Storage esetében: az alapértelmezett értéke a (z `yarn.log-aggregation.file-formats` `IndexedFormat,TFile` ). Módosítsa az értéket a következőre: `TFile` .
 

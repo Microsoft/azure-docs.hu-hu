@@ -1,19 +1,16 @@
 ---
 title: Apache Hive & Data Lake Tools for Visual Studio – Azure HDInsight
 description: Ismerje meg, hogy a Visual studióhoz készült Data Lake Tools segítségével hogyan futtathat Apache Hive-lekérdezéseket az Azure HDInsight Apache Hadoop használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076453"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943160"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive-lekérdezések futtatása a Data Lake Tools for Visual Studióval
 
@@ -38,11 +35,11 @@ Hive-lekérdezések létrehozására és futtatására két lehetősége van:
 
 Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végrehajthatók.
 
-1. Indítsa el a **Visual studiót** , és válassza a **Folytatás kód nélkül**lehetőséget.
+1. Indítsa el a **Visual studiót** , és válassza a **Folytatás kód nélkül** lehetőséget.
 
-2. A **Server Explorerben**kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez**... lehetőséget, és fejezze be a bejelentkezési folyamatot.
+2. A **Server Explorerben** kattintson a jobb gombbal az **Azure** elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez**... lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
-3. Bontsa ki a **HDInsight**csomópontot, kattintson a jobb gombbal arra a fürtre, amelyen futtatni szeretné a lekérdezést, majd válassza a **kaptár-lekérdezés írása**lehetőséget.
+3. Bontsa ki a **HDInsight** csomópontot, kattintson a jobb gombbal arra a fürtre, amelyen futtatni szeretné a lekérdezést, majd válassza a **kaptár-lekérdezés írása** lehetőséget.
 
 4. Adja meg a következő kaptár-lekérdezést:
 
@@ -54,15 +51,15 @@ Az alkalmi lekérdezések **kötegelt** vagy **interaktív** módban is végreha
 
     ![Interaktív kaptár-lekérdezés végrehajtása, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
-6. Ha ugyanezt a lekérdezést **Batch** módban szeretné futtatni, a legördülő listát az **Interaktívról** a **kötegbe**kapcsolhatja. A végrehajtási gomb **a végrehajtásról** a **küldésre**változik.
+6. Ha ugyanezt a lekérdezést **Batch** módban szeretné futtatni, a legördülő listát az **Interaktívról** a **kötegbe** kapcsolhatja. A végrehajtási gomb **a végrehajtásról** a **küldésre** változik.
 
     ![Batch-struktúra beküldése – lekérdezés, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Ha például a (z) értéket adja meg `SELECT * FROM` , az IntelliSense felsorolja az összes javasolt táblanév nevét. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják. Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
 
-7. A lekérdezés eszköztáron (a lekérdezés lap alatti és a lekérdezés szövege felett) válassza a **Küldés**lehetőséget, vagy válassza a **Küldés** elem melletti legördülő nyilat, és válassza a **speciális** lehetőséget a legördülő listából. Ha az utóbbi lehetőséget választja,
+7. A lekérdezés eszköztáron (a lekérdezés lap alatti és a lekérdezés szövege felett) válassza a **Küldés** lehetőséget, vagy válassza a **Küldés** elem melletti legördülő nyilat, és válassza a **speciális** lehetőséget a legördülő listából. Ha az utóbbi lehetőséget választja,
 
-8. Ha a speciális küldés lehetőséget választotta, a **parancsfájl elküldése** párbeszédpanelen konfigurálja a **feladatok nevét**, az **argumentumokat**, a **további konfigurációkat**és az **állapot könyvtárat** . Ezután válassza a **Submit (Küldés**) lehetőséget.
+8. Ha a speciális küldés lehetőséget választotta, a **parancsfájl elküldése** párbeszédpanelen konfigurálja a **feladatok nevét**, az **argumentumokat**, a **további konfigurációkat** és az **állapot könyvtárat** . Ezután válassza a **Submit (Küldés**) lehetőséget.
 
     ![Parancsfájl elküldése párbeszédpanel, HDInsight Hadoop-struktúra lekérdezése](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
 
@@ -72,11 +69,11 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
 
 1. Nyissa meg a **Visual studiót**.
 
-2. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
+2. A **Start** ablakban válassza az **új projekt létrehozása** lehetőséget.
 
-3. A **create a New Project (új projekt létrehozása** ) ablakban a **sablonok keresése** mezőbe írja be a *kaptár*kifejezést. Ezután válassza ki a **kaptár alkalmazást** , és kattintson a **Tovább gombra**.
+3. A **create a New Project (új projekt létrehozása** ) ablakban a **sablonok keresése** mezőbe írja be a *kaptár* kifejezést. Ezután válassza ki a **kaptár alkalmazást** , és kattintson a **Tovább gombra**.
 
-4. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, válasszon ki vagy hozzon létre egy **helyet** az új projekthez, majd válassza a **Létrehozás**lehetőséget.
+4. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, válasszon ki vagy hozzon létre egy **helyet** az új projekthez, majd válassza a **Létrehozás** lehetőséget.
 
 5. Nyissa meg a projekttel létrehozott **script. HQL** fájlt, és illessze be a következő HiveQL-utasításokat:
 
@@ -110,7 +107,7 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
 
 6. Válassza ki a lekérdezéshez használni kívánt HDInsight-fürtöt a lekérdezési fájl eszköztárról (amely hasonló megjelenéssel rendelkezik az ad hoc lekérdezési eszköztárhoz). Ezután módosítsa az **interaktív** elemet a **Batch** (ha szükséges) értékre, majd válassza a **Submit (Küldés** ) lehetőséget az utasítások struktúra-feladatokként való futtatásához.
 
-   Megjelenik a **kaptár-feladatok összegzése** , és megjeleníti a futó feladattal kapcsolatos információkat. A **frissítés** hivatkozásra kattintva frissítse a feladatokat, amíg a **feladatok állapota** **Befejezve**nem változik.
+   Megjelenik a **kaptár-feladatok összegzése** , és megjeleníti a futó feladattal kapcsolatos információkat. A **frissítés** hivatkozásra kattintva frissítse a feladatokat, amíg a **feladatok állapota** **Befejezve** nem változik.
 
    ![Befejezett struktúra-feladatok összefoglalása, struktúra alkalmazása, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
@@ -120,7 +117,7 @@ Ha kaptár-lekérdezést szeretne futtatni egy kaptár-alkalmazás létrehozás�
 
 Az alábbi példa az `log4jLogs` előző eljárásban létrehozott táblára támaszkodik, és [létrehoz egy kaptár-alkalmazást](#create-a-hive-application).
 
-1. A **Server Explorerben**kattintson a jobb gombbal a fürtre, és válassza a **kaptár-lekérdezés írása**lehetőséget.
+1. A **Server Explorerben** kattintson a jobb gombbal a fürtre, és válassza a **kaptár-lekérdezés írása** lehetőséget.
 
 2. Adja meg a következő kaptár-lekérdezést:
 
@@ -141,11 +138,11 @@ Az alábbi példa az `log4jLogs` előző eljárásban létrehozott táblára tá
 
     * `INSERT OVERWRITE ... SELECT`: Kijelöli azokat a sorokat `log4jLogs` , amelyek tartalmazzák a táblát `[ERROR]` , majd beszúrja az adatait a `errorLogs` táblába.
 
-3. Szükség esetén módosítsa az **interaktív** elemet a **Batch** szolgáltatásban, majd válassza a **Küldés**lehetőséget.
+3. Szükség esetén módosítsa az **interaktív** elemet a **Batch** szolgáltatásban, majd válassza a **Küldés** lehetőséget.
 
-4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, nyissa meg a **Server Explorert** , és bontsa ki az **Azure**  >  **HDInsight**elemet. Bontsa ki a HDInsight-fürtöt, majd bontsa ki a **kaptár-adatbázisok**  >  **alapértelmezett értéket**. Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
+4. Annak ellenőrzéséhez, hogy a feladatot hozta-e létre, nyissa meg a **Server Explorert** , és bontsa ki az **Azure**  >  **HDInsight** elemet. Bontsa ki a HDInsight-fürtöt, majd bontsa ki a **kaptár-adatbázisok**  >  **alapértelmezett értéket**. Megjelenik a **alkalmazásnaplókat** tábla és a **log4jLogs** tábla.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Amint láthatja, a Visual studióhoz készült HDInsight Tools egyszerű módszert biztosít a HDInsight-beli kaptár-lekérdezésekkel való együttműködésre.
 

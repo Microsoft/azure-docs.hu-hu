@@ -1,19 +1,16 @@
 ---
 title: Mi az Apache HBase az Azure HDInsight?
 description: Az Apache HBase HDInsightban való használatának bevezetése, amely egy, a Hadoop programra épített NoSQL-adatbázis. Megismerheti a használati eseteket, és összehasonlíthatja a HBase programot más Hadoop-fürtökkel.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: afbf9aff09999a34a84d55634a868250fbb6d1ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 98872cc1315d946c63825318d2b98460031e128a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82188960"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942914"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Mi az Apache HBase az Azure HDInsight
 
@@ -45,7 +42,7 @@ A kanonikus használati eset, amelyre a BigTable (és az HBase-t) a webes keres�
 |Valós idejű lekérdezés|A [Apache Phoenix](https://phoenix.apache.org/) az Apache HBase SQL-lekérdezési motorja. A szolgáltatás JDBC-illesztőprogramként érhető el, és lehetővé teszi a HBase-táblák lekérdezését és kezelését az SQL használatával.|
 |A HBase platformként|Az alkalmazások a HBase felett futhatnak adattárolóként. Ilyenek például a Phoenix, a OpenTSDB, `Kiji` a és a Titan. Az alkalmazások integrálhatók is a HBase eszközzel. Ilyenek például a következők: [Apache Hive](https://hive.apache.org/), Apache Pig, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia` és Apache Drill.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Apache HBase használatának első lépései a HDInsight Apache Hadoop](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight-fürtök létrehozása az Azure Virtual Networkön](./apache-hbase-provision-vnet.md)

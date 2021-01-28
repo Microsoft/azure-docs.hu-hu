@@ -1,19 +1,17 @@
 ---
 title: 'Előnyök: helyszíni Apache Hadoop migrálása az Azure HDInsight'
 description: Megismerheti a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítésének motivációját és előnyeit.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331651"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943250"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -101,7 +99,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Fő csomópont konfigurálása|m/y, CPU, lemez stb.|
 |Adatcsomópontok konfigurálása|m/y, CPU, lemez stb.|
 |Peremhálózati csomópontok konfigurálása|m/y, CPU, lemez stb.|
-|HDFS titkosítás?|Igen|
+|HDFS titkosítás?|Yes|
 |Magas rendelkezésre állás|HDFS HA, Metaadattár HA|
 |Vész-helyreállítás/biztonsági mentés|Biztonsági mentési fürt?|  
 |Fürttől függő rendszerek|SQL Server, Teradata, Power BI, MongoDB|
@@ -167,8 +165,8 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |---|---|---|
 |**Témakör**: **infrastruktúra** |||
 | Előnyben részesített régió|USA keleti régiója||
-|VNet előnyben részesített?|Igen||
-|HA/DR szükséges?|Igen||
+|VNet előnyben részesített?|Yes||
+|HA/DR szükséges?|Yes||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
 |**Témakör**:   **adatáthelyezés**  |||
 |Kezdeti betöltési beállítás|DistCp, adatmező, ADF, WANDisco||
@@ -177,25 +175,25 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |**Témakör**:   **& riasztás figyelése** |||
 |Az Azure monitoring & a riasztások és a harmadik féltől származó figyelés integrálása|Az Azure monitoring & riasztások használata||
 |**Témakör**:   **biztonsági beállítások** |||
-|Magán-és védett adatfolyamatok?|Igen||
-|Tartományhoz csatlakoztatott fürt (ESP)?|     Igen||
-|Helyszíni AD-szinkronizáló a felhőbe?|     Igen||
+|Magán-és védett adatfolyamatok?|Yes||
+|Tartományhoz csatlakoztatott fürt (ESP)?|     Yes||
+|Helyszíni AD-szinkronizáló a felhőbe?|     Yes||
 |A szinkronizálni kívánt AD-felhasználók száma?|          100||
-|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
-|Csak Felhőbeli felhasználók?|                 Igen||
-|MFA szükséges?|                       Nem|| 
-|Az adatengedélyezési követelmények?|  Igen||
-|Szerepköralapú hozzáférés-vezérlés?|        Igen||
-|Naplózás szükséges?|                  Igen||
-|Inaktív adatok titkosítása?|          Igen||
-|Adattitkosítás az átvitel során?|       Igen||
+|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Yes||
+|Csak Felhőbeli felhasználók?|                 Yes||
+|MFA szükséges?|                       No|| 
+|Az adatengedélyezési követelmények?|  Yes||
+|Szerepköralapú hozzáférés-vezérlés?|        Yes||
+|Naplózás szükséges?|                  Yes||
+|Inaktív adatok titkosítása?|          Yes||
+|Adattitkosítás az átvitel során?|       Yes||
 |**Témakör**:   **újraarchitektúra beállításai** |||
 |Egyetlen fürt és adott fürtök típusai|Adott fürtök típusai||
 |A tárolók és a távoli tárolók is találhatók?|Távoli tárterület||
 |Kisebb a fürt mérete, mert az adattárolás távolról történik?|Kisebb fürt mérete||
 |Egy nagyméretű fürt helyett több kisebb fürtöt használjon?|Több kisebb fürt használata||
-|Távoli metaadattár használ?|Igen||
-|Megoszthatja a metaadattárak a különböző fürtök között?|Igen||
+|Távoli metaadattár használ?|Yes||
+|Megoszthatja a metaadattárak a különböző fürtök között?|Yes||
 |Felépítési feladatok elkészítése?|Kaptár-feladatok cseréje a Spark-feladatokkal||
 |Az ADF használata az adatelőkészítéshez?|Nem||
 

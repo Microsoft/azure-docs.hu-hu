@@ -3,12 +3,12 @@ title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Doc
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979457"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942416"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
 Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [Azure Application Insightsból][start] a [folyamatos exportálás][export] és a [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával Azure SQL Databaseba. 
@@ -64,7 +64,7 @@ A folyamatos exportálás mindig az adatokat egy Azure Storage-fiókba exportál
 1. Némi adatmennyiséget is felhalmozhat. Dőljön hátra, és hagyja, hogy a felhasználók egy ideig használják az alkalmazást. A telemetria a következő helyen jelenik meg: statisztikai diagramok a [metrika-kezelőben](../platform/metrics-charts.md) és az egyes események a [diagnosztikai keresésben](./diagnostic-search.md). 
    
     És az is, hogy az adatai exportálva lesznek a tárhelyre. 
-2. Vizsgálja meg az exportált adatait a portálon – válassza a **Tallózás**lehetőséget, válassza ki a Storage-fiókját, majd a **tárolók** lehetőséget, vagy a Visual Studióban. A Visual Studióban válassza a **Megtekintés/Cloud Explorer**lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
+2. Vizsgálja meg az exportált adatait a portálon – válassza a **Tallózás** lehetőséget, válassza ki a Storage-fiókját, majd a **tárolók** lehetőséget, vagy a Visual Studióban. A Visual Studióban válassza a **Megtekintés/Cloud Explorer** lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
    
     ![A Visual Studióban nyissa meg a Server Browser, az Azure, a Storage](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -82,9 +82,9 @@ Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatá
 ![Tallózás, kiszolgálók, a kiszolgáló, a beállítások, a tűzfal, az Azure-hoz való hozzáférés engedélyezése](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Tábla létrehozása Azure SQL Databaseban
-Kapcsolódjon az előző szakaszban létrehozott adatbázishoz az előnyben részesített felügyeleti eszközzel. Ebben az útmutatóban a [SQL Server felügyeleti eszközei](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) használatát fogjuk használni.
+Kapcsolódjon az előző szakaszban létrehozott adatbázishoz az előnyben részesített felügyeleti eszközzel. Ebben az útmutatóban a [SQL Server felügyeleti eszközei](/sql/ssms/sql-server-management-studio-ssms) (SSMS) használatát fogjuk használni.
 
-![Csatlakozás az Azure SQL Database-hez](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Kapcsolódás az Azure SQL Database-hez](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Hozzon létre egy új lekérdezést, és hajtsa végre a következő T-SQL-T:
 
@@ -137,7 +137,7 @@ A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics
 
 ![Új stream Analytics-feladatok](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
-Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz**lehetőséget.
+Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz** lehetőséget.
 
 ![A képernyőképen az üzemelő példány sikeres üzenet jelenik meg, majd az erőforrás gombra.](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
