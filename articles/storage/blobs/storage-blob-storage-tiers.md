@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 570fd7f356969bbd37ef6b661334501a062c36df
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165688"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928799"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Hozzáférési szintek Azure Blob Storage – gyakori, ritka elérésű és archív
 
@@ -86,7 +86,7 @@ Az archív hozzáférési szint használati forgatókönyvei például a követk
 - A megfelelőségi és archiválási adatai, amelyeket hosszú ideig kell tárolni, és szinte soha nem fér hozzá
 
 > [!NOTE]
-> Az archiválási szint ZRS, GZRS vagy RA-GZRS fiókok esetén nem támogatott.
+> Az archiválási szint ZRS, GZRS vagy RA-GZRS fiókok esetén nem támogatott. A LRS-ről GRS-re való Migrálás nem támogatott, ha a Storage-fiók blobokat tartalmaz az archiválási szinten.
 
 ## <a name="account-level-tiering"></a>Fiók szintű rétegek
 
@@ -146,7 +146,7 @@ Az alábbi táblázat a prémium szintű, a blob Storage és a gyakori, ritka el
 |                                           | **Prémium szintű teljesítmény**   | **Gyors elérési szint** | **Hűvös szint**       | **Archiválási szint**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Rendelkezésre állás**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
-| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | N.A.                       | 99.99%       | 99.9%               | Offline           |
+| **Rendelkezésre állás** <br> **(RA-GRS olvasások)**  | N/A                       | 99.99%       | 99.9%               | Offline           |
 | **Használati díjak**                         | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Magasabb tárolási költségek, alacsonyabb hozzáférés és tranzakciós költségek | Alacsonyabb tárolási költségek, magasabb hozzáférési és tranzakciós költségek | Legalacsonyabb tárolási költségek, legmagasabb hozzáférési és tranzakciós költségek |
 | **Minimális tárolási időtartam**              | N.A.                       | N.A.          | 30 nap<sup>1</sup> | 180 nap
 | **Késés** <br> **(az első bájtig eltelt idő)** | Egy számjegyű ezredmásodperc | ezredmásodperc | ezredmásodperc        | óra<sup>2</sup> |

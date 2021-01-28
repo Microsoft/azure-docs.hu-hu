@@ -3,16 +3,13 @@ title: Jupyter 404 hiba – "a Cross Origin API blokkolása" – Azure HDInsight
 description: A Jupyter-kiszolgáló 404 "nem található" hibát okozott a "Cross Origin API blokkolása" miatt az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: f2000c3938e7366dd85f36b8de9a8425e91fab8a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 27cd3aff859fd46679679ac12d3acc03fa6da158
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287951"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929444"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Forgatókönyv: a Jupyter-kiszolgáló 404 "nem található" hibát okozott a "Cross Origin API blokkolása" miatt az Azure HDInsight
 

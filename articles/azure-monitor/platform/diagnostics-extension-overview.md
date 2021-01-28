@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d424a22a26119dcb3ef6a0e5c4f3dc0c13b1aa4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007996"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927585"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Az Azure Diagnostics bővítmény áttekintése
 A Azure Diagnostics Extension olyan [Azure monitor ügynöke](agents-overview.md) , amely az Azure számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk áttekintést nyújt Azure Diagnostics bővítményről, beleértve az általa támogatott speciális funkciókat, valamint a telepítés és a konfigurálás lehetőségeit. 
@@ -44,13 +44,13 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnosztikai bővítmény (WAD)
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | Windows-eseménynaplók   | Események a Windows-eseménynaplóból. |
 | Teljesítményszámlálók | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | IIS-naplók             | A vendég operációs rendszeren futó IIS-webhelyek használati adatai. |
 | Alkalmazás-naplók     | Az alkalmazás által írt nyomkövetési üzenetek. |
-| .NET EventSource-naplók |Események írása a .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) osztály használatával |
+| .NET EventSource-naplók |Események írása a .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) osztály használatával |
 | [Jegyzékfájl-alapú ETW-naplók](/windows/desktop/etw/about-event-tracing) |Windows esemény-nyomkövetés egy folyamat által generált eseményeket. |
 | Összeomlási memóriaképek (naplók)   | Információ a folyamat állapotáról, ha egy alkalmazás összeomlik. |
 | Fájl alapú naplók    | Az alkalmazás vagy szolgáltatás által létrehozott naplók. |
@@ -59,7 +59,7 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | Rendszernapló | A Linux-eseménynaplózási rendszernek eljuttatott események.   |
 | Teljesítményszámlálók  | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
@@ -72,9 +72,9 @@ Konfiguráljon egy vagy több *adattárolót* az egyéb további célhelyekre va
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnosztikai bővítmény (WAD)
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
-| Azure Monitor metrikák | Teljesítményadatokat gyűjt Azure Monitor Mérőszámokhoz. Lásd: [vendég operációs rendszer metrikáinak küldése a Azure monitor metrikus adatbázisba](collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Azure Monitor-metrikák | Teljesítményadatokat gyűjt Azure Monitor Mérőszámokhoz. Lásd: [vendég operációs rendszer metrikáinak küldése a Azure monitor metrikus adatbázisba](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Az Azure Event Hubs használatával küldhet az Azure-on kívüli adatküldést. Lásd: [Streaming Azure Diagnostics-adatátviteli Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Azure Storage-Blobok | Adatok írása a Blobok számára az Azure Storage-ban a táblák mellett. |
 | Application Insights | Gyűjtsön adatokat a virtuális gépen futó alkalmazásokból, hogy Application Insights, hogy integrálható legyen más alkalmazás-figyeléssel. Lásd: [diagnosztikai információk küldése Application Insightsba](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +85,11 @@ A tárolóban lévő WAD-adatokat egy Log Analytics munkaterületre is gyűjthet
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)
 A LAD az Azure Storage tábláiba írja az adatot. A következő táblázatban található mosogatókat támogatja.
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
 | Event Hubs | Az Azure Event Hubs használatával küldhet az Azure-on kívüli adatküldést. |
 | Azure Storage-Blobok | Adatok írása a Blobok számára az Azure Storage-ban a táblák mellett. |
-| Azure Monitor metrikák | Telepítse a saját Graf-ügynököt a LAD mellett. Lásd: [Egyéni metrikák gyűjtése Linux](collect-custom-metrics-linux-telegraf.md)RENDSZERű virtuális gépekhez a InfluxData-gyártói ügynökkel.
+| Azure Monitor-metrikák | Telepítse a saját Graf-ügynököt a LAD mellett. Lásd: [Egyéni metrikák gyűjtése Linux](collect-custom-metrics-linux-telegraf.md)RENDSZERű virtuális gépekhez a InfluxData-gyártói ügynökkel.
 
 
 ## <a name="installation-and-configuration"></a>Telepítés és konfigurálás
@@ -112,7 +112,7 @@ A Windows és a Linux rendszerhez készült diagnosztikai bővítmény telepít�
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 - [Szolgáltatások monitorozása és diagnosztizálása egy helyi gép fejlesztési beállításánál](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * Ismerkedjen meg a [Azure Diagnostics teljesítményszámlálók használatával](../../cloud-services/diagnostics-performance-counters.md).

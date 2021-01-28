@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207393"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928027"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Biztonsági mentés visszaállítása az Azure-ban Service Fabric
 
@@ -28,11 +28,16 @@ Beállíthat például egy szolgáltatást úgy, hogy biztonsági másolatot ké
 - A visszaállítás elindításához engedélyezni kell a _hiba-elemzési szolgáltatást (FAS)_ a fürtön.
 - A Backup _Restore szolgáltatás (BRS)_ létrehozta a biztonsági mentést.
 - A RESTORE utasítás csak partíción indítható el.
-- A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult [előzetes verzióban].
+- A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult (előzetes verzió).
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Ha a PowerShellGet verziója kisebb, mint a 1.6.0, frissítenie kell a *-AllowPrerelease* jelző támogatásának hozzáadásához:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
@@ -154,7 +159,7 @@ A [partíciós sémában](service-fabric-concepts-partitioning.md#get-started-wi
 
 Ha a partíció-azonosító a másodlagos fürtön van, akkor az `1c42c47f-439e-4e09-98b9-88b8f60800c6` eredeti fürtözött partíció-azonosítóhoz rendelhető hozzá, ha `974bd92a-b395-4631-8a7f-53bd4ae9cf22` összehasonlítja a magas kulcsot és az alacsony kulcsot a _tartományon kívüli particionáláshoz (UniformInt64Partition)_.
 
-A _nevesített particionáláshoz_a név értékét a rendszer összehasonlítja a másodlagos fürtben található cél partíció azonosításához.
+A _nevesített particionáláshoz_ a név értékét a rendszer összehasonlítja a másodlagos fürtben található cél partíció azonosításához.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
@@ -205,15 +210,15 @@ Service Fabric Explorerről is indíthat visszaállítást. Győződjön meg arr
 
     ![Partíció-visszaállítási fájlmegosztás][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Adatvesztés _adatsérülése_ / _data loss_ esetén
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Adatvesztés _adatsérülése_ /  esetén
 
-_Adatvesztés_ vagy _adatsérülés_esetén a megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors partícióhoz tartozó biztonsági másolatok visszaállíthatók a kiválasztott biztonsági másolatokra.
+_Adatvesztés_ vagy _adatsérülés_ esetén a megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors partícióhoz tartozó biztonsági másolatok visszaállíthatók a kiválasztott biztonsági másolatokra.
 
 A következő példa a [megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezése](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Ebben a példában egy biztonsági mentési szabályzat van engedélyezve a partícióhoz, és a szolgáltatás biztonsági mentést készít a kívánt gyakorisággal az Azure Storage-ban.
 
 Válasszon ki egy biztonsági másolatot a  [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)kimenetéről. Ebben a forgatókönyvben a biztonsági mentés ugyanabból a fürtből jön létre, mint korábban.
 
-A visszaállítás elindításához válasszon ki egy biztonsági másolatot a listából. Az _adatvesztés_aktuális / _adatsérülése_esetén válassza a következő biztonsági mentést:
+A visszaállítás elindításához válasszon ki egy biztonsági másolatot a listából. Az _adatvesztés_ aktuális / _adatsérülése_ esetén válassza a következő biztonsági mentést:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -297,7 +302,7 @@ A visszaállítási kérelem a következő sorrendben halad:
     RestoredLsn   : 3552
     ```
     
-3. **Sikeres**, **sikertelen**vagy **időtúllépés**: a kért visszaállítás a következő állapotok bármelyikében elvégezhető. Az egyes állapotok a következő jelentőségű és válasz részletekkel bírnak:
+3. **Sikeres**, **sikertelen** vagy **időtúllépés**: a kért visszaállítás a következő állapotok bármelyikében elvégezhető. Az egyes állapotok a következő jelentőségű és válasz részletekkel bírnak:
     - **Sikeres**: a _sikeres_ visszaállítási állapot visszanyert partíciós állapotot jelez. A partíció a _RestoredEpoch_ és a _RestoredLSN_ állapotot az UTC időponttal együtt jelenti.
 
         ```

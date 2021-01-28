@@ -1,19 +1,16 @@
 ---
 title: 'Rövid útmutató: Apache Storm topológia létrehozása/kezelése – Azure HDInsight'
 description: A rövid útmutatóból megtudhatja, hogyan hozhat létre és figyelheti az Apache Storm topológiát az Azure HDInsight-ben.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86045025"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928857"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rövid útmutató: Apache Storm topológia létrehozása és figyelése az Azure HDInsight
 
@@ -23,9 +20,9 @@ Ebben a rövid útmutatóban egy példát használ az Apache [Storm-Starter](htt
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
+* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa** lehetőséget.
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-the-topology"></a>A topológia létrehozása
 
@@ -49,7 +46,7 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
 1. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben nyissa meg a `https://CLUSTERNAME.azurehdinsight.net/stormui` oldalt. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
 
-2. A **topológia összegzése**területen válassza ki a **WordCount** bejegyzést a **Name (név** ) oszlopban. Megjelennek a topológiával kapcsolatos információk.
+2. A **topológia összegzése** területen válassza ki a **WordCount** bejegyzést a **Name (név** ) oszlopban. Megjelennek a topológiával kapcsolatos információk.
 
     ![A Storm irányítópultja a Storm Starter WordCount-topológiára vonatkozó információkkal.](./media/apache-storm-quickstart/hdi-topology-summary.png)
 
@@ -105,7 +102,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az Apache [Storm-Starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt egy példáját használta egy Apache Storm topológia létrehozásához és figyeléséhez egy meglévő Apache Storm-fürthöz. Folytassa a következő cikkel, amely a Apache Storm topológiák kezelésével és figyelésével kapcsolatos alapvető tudnivalókat ismerteti.
 

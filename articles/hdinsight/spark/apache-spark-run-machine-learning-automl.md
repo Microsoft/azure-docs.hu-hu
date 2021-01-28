@@ -1,18 +1,15 @@
 ---
 title: Azure Machine Learning munkaterhelések futtatása Apache Spark HDInsight
 description: Megtudhatja, hogyan futtathat Azure Machine Learning számítási feladatokat automatikus gépi tanulással (AutoML) az Azure HDInsight Apache Spark.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 4087341a9a96ae56c00972f886ce3cc8891750a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821247"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929730"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
 
@@ -73,7 +70,7 @@ Az adattárt egyszeri regisztrációval is regisztrálhatja a munkaterületen.
 
 Az [automatikus gépi tanulás konfigurációjában](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)be kell állítani a tulajdonságot, `spark_context` hogy a csomag elosztott módban fusson. A `concurrent_iterations` párhuzamosan végrehajtott ismétlések maximális számát megadó tulajdonságot a Spark-alkalmazás végrehajtó magoknál kisebb számra kell beállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az automatizált gépi tanulás mögötti motivációról: [modellek kiadása a Microsoft automatizált gépi tanulásával!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * Az Azure ML automatizált ML-funkcióival kapcsolatos további információkért lásd: [az új automatizált gépi tanulási képességek Azure Machine learning](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)

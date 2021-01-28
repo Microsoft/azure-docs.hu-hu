@@ -1,19 +1,16 @@
 ---
 title: Magasan elérhető Spark streaming-feladatok a FONALban – Azure HDInsight
 description: Apache Spark streaming beállítása magas rendelkezésre állású forgatókönyvhöz az Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086211"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929705"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Apache Spark folyamatos átviteli feladatok létrehozása a FONALral
 
@@ -117,7 +114,7 @@ Ha az ellenőrzőpontok és a WAL + megbízható fogadók használatával szeret
     // to be able to recover on restart, store all offsets in an external database
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark streaming – áttekintés](apache-spark-streaming-overview.md)
 * [Apache Spark streaming-feladatok létrehozása pontosan egyszer az események feldolgozásával](apache-spark-streaming-exactly-once.md)

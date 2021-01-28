@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 686e342eb68e2e5c97bdbae9cd11bdff5819b5d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021830"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927604"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Folyamatos üzembe helyezés az Azure DevOps használatával
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a folyamatos üzembe helye
 > [!div class = "checklist"]
 > * Egyéni parancsokat fejlesztőknek (DEV)
 > * Egyéni parancsok alkalmazása éles környezethez (PROD)
-> * Regisztráció az [Azure-folyamatokra](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
+> * Regisztráció az [Azure-folyamatokra](/azure/devops/pipelines/get-started/pipelines-sign-up)
 
 ## <a name="exportimportpublish"></a>Exportálás/Importálás/közzététel
 
@@ -110,7 +110,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Argumentumok | Leírás |
+    | Argumentumok | Description |
     | ------- | --------------- | ----------- |
     | régió | az alkalmazás régiója, pl. westus2. |
     | subscriptionkey | a beszédfelismerési erőforrás előfizetési kulcsa. |
@@ -168,7 +168,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
 1. Kattintson a Futtatás elemre, majd kattintson a "Job" (Futtatás) elemre.
     A következőt tartalmazó feladatok listája jelenik meg: "alkalmazás importálása" & "betanítás és alkalmazás közzététele"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)

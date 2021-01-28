@@ -5,27 +5,32 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247897"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928034"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Igény szerinti biztonsági mentés az Azure Service Fabric
 
 A megbízható állapot-nyilvántartó szolgáltatások és a Reliable Actors adatok biztonsági mentésével felgyorsíthatja a katasztrófák vagy az adatvesztési helyzetek megoldását.
 
-Az Azure Service Fabric rendelkezik az [adatfeldolgozás rendszeres biztonsági mentéséhez](service-fabric-backuprestoreservice-quickstart-azurecluster.md) szükséges funkciókkal és az adatbiztonsági mentéssel. Az igény szerinti biztonsági mentés azért hasznos, mert a _data loss_ / mögöttes szolgáltatásban vagy annak környezetében tervezett változások miatt védelmet biztosít az adatvesztési_adatsérülés_ ellen.
+Az Azure Service Fabric rendelkezik az [adatfeldolgozás rendszeres biztonsági mentéséhez](service-fabric-backuprestoreservice-quickstart-azurecluster.md) szükséges funkciókkal és az adatbiztonsági mentéssel. Az igény szerinti biztonsági mentés azért hasznos, mert a  / mögöttes szolgáltatásban vagy annak környezetében tervezett változások miatt védelmet biztosít az adatvesztési _adatsérülés_ ellen.
 
 Az igény szerinti biztonsági mentési funkciók hasznosak lehetnek a szolgáltatások állapotának rögzítéséhez, mielőtt manuálisan elindítja a szolgáltatás-vagy szolgáltatási környezet műveletét. Ha például a szolgáltatás verziófrissítése vagy lefokozása során módosítja a szolgáltatás bináris fájljait. Ebben az esetben az igény szerinti biztonsági mentés segít megvédeni az adatsérülést az alkalmazás kódjának hibáival.
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult [előzetes verzióban].
+- A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult (előzetes verzió).
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Ha a PowerShellGet verziója kisebb, mint a 1.6.0, frissítenie kell a *-AllowPrerelease* jelző támogatásának hozzáadásához:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
@@ -149,7 +154,7 @@ Az igény szerinti biztonsági mentési kérelmek a következő állapotokban le
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **Sikeres**, **sikertelen**vagy **időtúllépés**: a kért igény szerinti biztonsági mentés a következő állapotok bármelyikében elvégezhető:
+- **Sikeres**, **sikertelen** vagy **időtúllépés**: a kért igény szerinti biztonsági mentés a következő állapotok bármelyikében elvégezhető:
   - **Sikeres**: a _sikeres biztonsági mentési állapot_ azt jelzi, hogy a partíció állapota sikeresen mentve. A válasz _BackupEpoch_ és _BackupLSN_ biztosít a partícióhoz, valamint az UTC időpontját.
     ```
     BackupState             : Success
@@ -181,7 +186,7 @@ Az igény szerinti biztonsági mentési kérelmek a következő állapotokban le
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [BackupRestore REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)

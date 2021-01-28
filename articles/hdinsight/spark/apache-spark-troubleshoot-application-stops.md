@@ -3,16 +3,13 @@ title: A Apache Spark streaming-alkalmazás 24 nap elteltével leáll az Azure H
 description: Egy Apache Spark streaming-alkalmazás 24 nap elteltével leáll, és nincsenek hibák a naplófájlokban.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 83bdb4a9913ae817204fb37320f5bdb8174d5baf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b702cbf915e4991df4c202564677ea7e0a02f9c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288036"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929463"
 ---
 # <a name="scenario-apache-spark-streaming-application-stops-after-executing-for-24-days-in-azure-hdinsight"></a>Forgatókönyv: Apache Spark folyamatos átviteli alkalmazás az Azure HDInsight 24 napjainak végrehajtása után leáll
 

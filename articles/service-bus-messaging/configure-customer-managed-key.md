@@ -2,26 +2,20 @@
 title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosításához
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3e8f3a599ee5fe40c85a93dd58d36e6cd611c9ea
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 01/26/2021
+ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631766"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928094"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
-A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
+A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Az Service Bus Premium az Azure Storage-t használja az adattároláshoz. Az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal van titkosítva. Ha saját kulcsot (más néven Bring Your Own Key (BYOK) vagy ügyfél által felügyelt kulcsot) használ, az adatok továbbra is a Microsoft által felügyelt kulccsal lesznek titkosítva, a Microsoft által felügyelt kulcs pedig az ügyfél által felügyelt kulcs használatával lesz titkosítva. Ez a funkció lehetővé teszi a Microsoft által felügyelt kulcsok titkosításához használt ügyfél által felügyelt kulcsok elérésének létrehozását, elforgatását, letiltását és visszavonását. A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben.
 
-## <a name="overview"></a>Áttekintés
-A Azure Service Bus mostantól támogatja az inaktív adatok titkosítását a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal (Bring Your Own Key-BYOK). Ez a funkció lehetővé teszi, hogy létrehozza, elforgassa, letiltsa és visszavonja a hozzáférést a Azure Service Bus Rest-titkosításhoz használt ügyfél által felügyelt kulcsokhoz.
-
-A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben.
-
-> [!NOTE]
-> Az ügyfél által felügyelt kulcs a szolgáltatás oldalának titkosítására vonatkozik. 
->   * Ezt a funkciót [Azure Service Bus prémium](service-bus-premium-messaging.md) szint támogatja. A standard szintű Service Bus névterek esetében nem engedélyezhető.
->   * A titkosítás csak új vagy üres névterekhez engedélyezhető. Ha a névtér bármely várólistát vagy témakört tartalmaz, a titkosítási művelet sikertelen lesz.
+Az ügyfél által felügyelt kulcs a szolgáltatás oldalának titkosítására vonatkozik. 
+- Ezt a funkciót [Azure Service Bus prémium](service-bus-premium-messaging.md) szint támogatja. A standard szintű Service Bus névterek esetében nem engedélyezhető.
+- A titkosítás csak új vagy üres névterekhez engedélyezhető. Ha a névtér bármely várólistát vagy témakört tartalmaz, a titkosítási művelet sikertelen lesz.
 
 A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulcshasználat. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 
@@ -70,13 +64,13 @@ Miután engedélyezte az ügyfél által felügyelt kulcsokat, hozzá kell rende
         > [!NOTE]
         > A redundancia érdekében legfeljebb 3 kulcsot adhat hozzá. Abban az esetben, ha a kulcsok egyike lejárt, vagy nem érhető el, a rendszer a többi kulcsot használja a titkosításhoz.
         
-    1. Adja meg a kulcs részleteit, és kattintson a **kiválasztás** elemre. Ez lehetővé teszi a névtérben tárolt adatok titkosítását az ügyfél által felügyelt kulccsal. 
+    1. Adja meg a kulcs részleteit, és kattintson a **kiválasztás** elemre. Ez lehetővé teszi a Microsoft által felügyelt kulcs titkosítását a kulccsal (ügyfél által felügyelt kulcs). 
 
 
     > [!IMPORTANT]
-    > Ha a Geo vész-helyreállítással együtt szeretné használni az ügyfél által felügyelt kulcsot, tekintse át a következőt: 
+    > Ha a Geo vész-helyreállítással együtt szeretné használni az ügyfél által felügyelt kulcsot, tekintse át ezt a szakaszt. 
     >
-    > Ha az ügyfél által felügyelt kulccsal kívánja engedélyezni a titkosítást, a rendszer az Service Bus felügyelt identitására vonatkozó [hozzáférési szabályzatot](../key-vault/general/secure-your-key-vault.md) hoz létre a megadott Azure-kulcstartón. Ez biztosítja az Azure kulcstartónak az Azure Service Bus névtérből való szabályozott hozzáférését.
+    > Ha engedélyezni szeretné a Microsoft által felügyelt kulcs titkosítását egy ügyfél által felügyelt kulccsal, a rendszer a megadott Azure-kulcstartón a Service Bus felügyelt identitására vonatkozó [hozzáférési szabályzatot](../key-vault/general/secure-your-key-vault.md) hoz létre. Ez biztosítja az Azure kulcstartónak az Azure Service Bus névtérből való szabályozott hozzáférését.
     >
     > Ennek oka:
     > 

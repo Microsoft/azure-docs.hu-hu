@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsighton futó Apache Spark-feladatok hibakeresése
 description: Az Azure HDInsight-beli Spark-fürtön futó feladatok nyomon követése és hibakeresése a fonal felhasználói felület, a Spark felhasználói felület és a Spark-előzmények kiszolgáló használatával
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 366c77ff94773163b71845b1ccbc6072c503734a
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: f332416a10aa86cb7e0bc7ba560537955d9f2faa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822301"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930583"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsighton futó Apache Spark-feladatok hibakeresése
 
@@ -104,7 +101,7 @@ A feladatok elvégzése után a rendszer megőrzi a feladattal kapcsolatos infor
 
     ![A Spark History Server által befejezett alkalmazások](./media/apache-spark-job-debugging/view-completed-applications.png "A Spark History Kiszolgáló2 elindítása")
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
 * [Apache Spark feladatok hibakeresése kiterjesztett Spark History Server használatával](apache-azure-spark-history-server.md)

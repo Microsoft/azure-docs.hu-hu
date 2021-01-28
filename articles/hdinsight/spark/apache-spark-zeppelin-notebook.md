@@ -1,19 +1,16 @@
 ---
 title: Zeppelin notebookok & Apache Spark cluster – Azure HDInsight
 description: Részletes útmutató a Apache Spark-fürtökkel rendelkező Zeppelin notebookok Azure HDInsight való használatához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822165"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928473"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebookok használata Apache Spark-fürtökön az Azure HDInsight rendszerében
 
@@ -224,7 +221,7 @@ A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csom�
 
 1. Mentse a módosításokat, és indítsa újra a szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)

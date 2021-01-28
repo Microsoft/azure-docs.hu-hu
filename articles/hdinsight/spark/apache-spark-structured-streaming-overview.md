@@ -1,19 +1,16 @@
 ---
 title: Spark strukturált streaming az Azure HDInsight
 description: Spark strukturált adatfolyam-alkalmazások használata a HDInsight Spark-fürtökön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 46a65720c9998a7a56d0ca269c344f85c5955546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086143"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929492"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Strukturált streaming Apache Spark áttekintése
 
@@ -30,11 +27,11 @@ A strukturált adatfolyam egy hosszú ideig futó lekérdezést hoz létre, amel
 
 ## <a name="streams-as-tables"></a>Adatfolyamok táblázatként
 
-A Spark strukturált streaming olyan adatstreamet jelöl, amely nem megfelelő mélységű, azaz a tábla folyamatosan növekszik, ahogy az új adat érkezik. Ezt a *bemeneti táblázatot* egy hosszan futó lekérdezés folyamatosan dolgozza fel, és egy *kimeneti táblába*küldi az eredményeket:
+A Spark strukturált streaming olyan adatstreamet jelöl, amely nem megfelelő mélységű, azaz a tábla folyamatosan növekszik, ahogy az új adat érkezik. Ezt a *bemeneti táblázatot* egy hosszan futó lekérdezés folyamatosan dolgozza fel, és egy *kimeneti táblába* küldi az eredményeket:
 
 ![Strukturált adatfolyam-koncepció](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-A strukturált adatfolyamban az adatok beérkeznek a rendszerbe, és azonnal bekerülnek egy bemeneti táblába. Olyan lekérdezéseket írhat (a DataFrame és az adatkészlet API-k használatával), amelyek a bemeneti táblán műveleteket hajtanak végre. A lekérdezés kimenete egy másik táblát, az *eredmények táblát*eredményezi. A Results (eredmények) tábla a lekérdezés eredményét tartalmazza, amelyből egy külső adattárra, például egy, a kapcsolódó adatbázisra vonatkozó adatok rajzolása végezhető el. Az adatok bemeneti táblából való feldolgozásának időzítését az *aktiválási intervallum*vezérli. Alapértelmezés szerint az trigger intervalluma nulla, így a strukturált adatfolyam a megérkezése után azonnal feldolgozza az adatfeldolgozást. A gyakorlatban ez azt jelenti, hogy amint a strukturált adatfolyam feldolgozása befejeződött az előző lekérdezés futtatásával, egy másik feldolgozást indít el az újonnan fogadott összes adattal. Az indítást beállíthatja úgy, hogy intervallumban fusson, hogy a folyamatos átviteli adatkötegek feldolgozása időalapú kötegekben történjen.
+A strukturált adatfolyamban az adatok beérkeznek a rendszerbe, és azonnal bekerülnek egy bemeneti táblába. Olyan lekérdezéseket írhat (a DataFrame és az adatkészlet API-k használatával), amelyek a bemeneti táblán műveleteket hajtanak végre. A lekérdezés kimenete egy másik táblát, az *eredmények táblát* eredményezi. A Results (eredmények) tábla a lekérdezés eredményét tartalmazza, amelyből egy külső adattárra, például egy, a kapcsolódó adatbázisra vonatkozó adatok rajzolása végezhető el. Az adatok bemeneti táblából való feldolgozásának időzítését az *aktiválási intervallum* vezérli. Alapértelmezés szerint az trigger intervalluma nulla, így a strukturált adatfolyam a megérkezése után azonnal feldolgozza az adatfeldolgozást. A gyakorlatban ez azt jelenti, hogy amint a strukturált adatfolyam feldolgozása befejeződött az előző lekérdezés futtatásával, egy másik feldolgozást indít el az újonnan fogadott összes adattal. Az indítást beállíthatja úgy, hogy intervallumban fusson, hogy a folyamatos átviteli adatkötegek feldolgozása időalapú kötegekben történjen.
 
 Az eredmények táblázatában szereplő adatokat csak a lekérdezés legutóbbi feldolgozása óta új adatokat (*hozzáfűzési mód*) tartalmazhatják, vagy ha a tábla minden új adattal frissül, így a tábla tartalmazza az összes kimeneti adatokat, mivel az adatfolyam-lekérdezés megkezdődött (*teljes mód*).
 
@@ -148,7 +145,7 @@ A rugalmasság és a hibatűrés biztosításához a strukturált adatfolyam-ell
 
 Az összes alkalmazás állapota a GET kérelemmel is ellenőrizhető egy LIVY-végponton. Végül a LIVY-végpontra vonatkozó TÖRLÉSi kérelem kibocsátásával leállíthatja a futó alkalmazást. A LIVY API-val kapcsolatos részletekért lásd: [távoli feladatok Apache LIVY](apache-spark-livy-rest-interface.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark-fürt létrehozása a HDInsight-ben](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Apache Spark strukturált streaming programozási útmutató](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)

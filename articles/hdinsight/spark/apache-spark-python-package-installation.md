@@ -1,19 +1,16 @@
 ---
 title: Parancsfájl-művelet a Python-csomagokhoz az Azure HDInsight Jupyter
 description: Részletes útmutató a HDInsight Spark-fürtökkel elérhető Jupyter notebookok külső Python-csomagok használatához való konfigurálásához a parancsfájl-művelet használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 21423f7200d25c9a5b3b63d2371e56977cd9d227
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821375"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929824"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -164,7 +161,7 @@ Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Külső csomagok Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

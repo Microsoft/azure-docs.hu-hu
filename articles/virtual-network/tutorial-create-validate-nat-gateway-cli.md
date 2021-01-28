@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e99ee28460c1639a7f0b9dd989bbe5a287a9158c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 457749b353b9b7fabfb137ebe907463bb17158ba
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221819"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98926931"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása az Azure CLI használatával és a NAT szolgáltatás tesztelése
 
@@ -61,7 +61,7 @@ A nyilvános internethez való hozzáféréshez szüksége lesz egy vagy több n
 
 ### <a name="create-a-public-ip-prefix"></a>Nyilvános IP-előtag létrehozása
 
-Használhat egy vagy több nyilvános IP-cím-erőforrást, nyilvános IP-előtagot vagy mindkettőt a NAT-átjáróval. Ehhez a forgatókönyvhöz egy nyilvános IP-előtag-erőforrást adunk hozzá, amely bemutatja a következőt:.   Az [az Network Public-IP előtag Create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) paranccsal hozzon létre egy **myPublicIPprefixsource** nevű nyilvános IP-előtag-erőforrást a **myResourceGroupNAT**.
+Használhat egy vagy több nyilvános IP-cím-erőforrást, nyilvános IP-előtagot vagy mindkettőt a NAT-átjáróval. Ehhez a forgatókönyvhöz egy nyilvános IP-előtag-erőforrást adunk hozzá, amely bemutatja a következőt:.   Az [az Network Public-IP előtag Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) paranccsal hozzon létre egy **myPublicIPprefixsource** nevű nyilvános IP-előtag-erőforrást a **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -77,7 +77,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
   - Egy nyilvános IP-címkészlet és egy nyilvános IP-előtag, amelyet a NAT-átjáró erőforrása lefordított kimenő folyamatokhoz használ.
   - Módosítsa az üresjárati időkorlátot az alapértelmezett 4 perctől 10 percre.
 
-Hozzon létre egy globális Azure NAT-átjárót az [az Network NAT Gateway Create](/cli/azure/network/nat?view=azure-cli-latest) nevű **myNATgateway**. A parancs a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix** is használja. A parancs az üresjárati időkorlátot 10 percre is módosítja.
+Hozzon létre egy globális Azure NAT-átjárót az [az Network NAT Gateway Create](/cli/azure/network/nat) nevű **myNATgateway**. A parancs a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix** is használja. A parancs az üresjárati időkorlátot 10 percre is módosítja.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -144,7 +144,7 @@ Létrehozunk egy nyilvános IP-címet, amely a forrás virtuális gép elérés�
 
 ### <a name="create-an-nsg-for-source-vm"></a>NSG létrehozása a forrásként szolgáló virtuális géphez
 
-Mivel a standard nyilvános IP-címek alapértelmezetten "biztonságosak", létre kell hozni egy NSG, amely lehetővé teszi az SSH-hozzáférés bejövő hozzáférését.  Az Azure NAT szolgáltatás a flow irányának ismerete. Ezt a NSG nem fogja használni a rendszer a kimenő forgalomhoz, ha a NAT-átjáró ugyanazon az alhálózaton van konfigurálva. Az [az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) paranccsal hozzon létre egy **myNSGsource** nevű NSG-erőforrást a **myResourceGroupNAT**-ben.
+Mivel a standard nyilvános IP-címek alapértelmezetten "biztonságosak", létre kell hozni egy NSG, amely lehetővé teszi az SSH-hozzáférés bejövő hozzáférését.  Az Azure NAT szolgáltatás a flow irányának ismerete. Ezt a NSG nem fogja használni a rendszer a kimenő forgalomhoz, ha a NAT-átjáró ugyanazon az alhálózaton van konfigurálva. Az [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) paranccsal hozzon létre egy **myNSGsource** nevű NSG-erőforrást a **myResourceGroupNAT**-ben.
 
 ```azurecli-interactive
   az network nsg create \
@@ -155,7 +155,7 @@ Mivel a standard nyilvános IP-címek alapértelmezetten "biztonságosak", létr
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>SSH-végpont közzététele a forrásoldali virtuális gépen
 
-Hozzunk létre egy szabályt a NSG a forrás virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH** nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGsource** nevű NSG lesz létrehozva.
+Hozzunk létre egy szabályt a NSG a forrás virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH** nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGsource** nevű NSG lesz létrehozva.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -237,7 +237,7 @@ Létrehozunk egy nyilvános IP-címet, amely a forrás virtuális gép elérés�
 
 ### <a name="create-an-nsg-for-destination-vm"></a>NSG létrehozása a cél virtuális géphez
 
-A standard nyilvános IP-címek alapértelmezés szerint "biztonságosak", létre kell hoznia egy NSG, amely engedélyezi a bejövő hozzáférést az SSH-hoz. Az Azure NAT szolgáltatás a flow irányának ismerete. Ezt a NSG nem fogja használni a rendszer a kimenő forgalomhoz, ha a NAT-átjáró ugyanazon az alhálózaton van konfigurálva. Az [az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) paranccsal hozzon létre egy **myNSGdestination** nevű NSG-erőforrást a **myResourceGroupNAT**-ben.
+A standard nyilvános IP-címek alapértelmezés szerint "biztonságosak", létre kell hoznia egy NSG, amely engedélyezi a bejövő hozzáférést az SSH-hoz. Az Azure NAT szolgáltatás a flow irányának ismerete. Ezt a NSG nem fogja használni a rendszer a kimenő forgalomhoz, ha a NAT-átjáró ugyanazon az alhálózaton van konfigurálva. Az [az Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create) paranccsal hozzon létre egy **myNSGdestination** nevű NSG-erőforrást a **myResourceGroupNAT**-ben.
 
 ```azurecli-interactive
     az network nsg create \
@@ -248,7 +248,7 @@ A standard nyilvános IP-címek alapértelmezés szerint "biztonságosak", létr
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>SSH-végpont közzététele a cél virtuális gépen
 
-Hozzunk létre egy szabályt a NSG a cél virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH** nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGdestination** nevű NSG lesz létrehozva.
+Hozzunk létre egy szabályt a NSG a cél virtuális géphez való SSH-hozzáféréshez. Az [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) paranccsal hozzon létre egy **SSH** nevű NSG szabályt. Ez a szabály az erőforráscsoport **MyResourceGroupNAT** **myNSGdestination** nevű NSG lesz létrehozva.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -266,7 +266,7 @@ Hozzunk létre egy szabályt a NSG a cél virtuális géphez való SSH-hozzáfé
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>HTTP-végpont közzététele a cél virtuális gépen
 
-Létre kell hozni egy szabályt a NSG a cél virtuális géphez való HTTP-hozzáféréshez. Az [az Network NSG Rule Create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) paranccsal hozzon létre egy **http** nevű NSG-SZABÁLYT a **myNSGdestination** nevű NSG a **myResourceGroupNAT**-ben.
+Létre kell hozni egy szabályt a NSG a cél virtuális géphez való HTTP-hozzáféréshez. Az [az Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) paranccsal hozzon létre egy **http** nevű NSG-SZABÁLYT a **myNSGdestination** nevű NSG a **myResourceGroupNAT**-ben.
 
 ```azurecli-interactive
     az network nsg rule create \

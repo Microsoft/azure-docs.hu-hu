@@ -2,18 +2,15 @@
 title: A REST-adatok kettős titkosítása
 titleSuffix: Azure HDInsight
 description: Ez a cikk az Azure HDInsight-fürtökön tárolt adatok számára elérhető két titkosítási réteget ismerteti.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359759"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927330"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -111,7 +108,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 1. Válassza a **Hozzáadás** elemet.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Azure Key Vault hozzáférési szabályzat mentése](./media/disk-encryption/add-key-vault-access-policy-save.png)
 

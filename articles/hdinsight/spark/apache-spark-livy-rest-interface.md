@@ -1,19 +1,16 @@
 ---
 title: Feladatok beküldése a Spark-fürtbe az Azure HDInsight Livy Spark használatával
 description: Ismerje meg, hogyan küldhet el a Spark-feladatokat a Apache Spark REST API használatával egy Azure HDInsight-fürtön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: b5795172517ba2e707d66ebe486c51d31575bd0d
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ff63f4fbadd7cb9e7584e2aa045583a35e0363fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821876"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930130"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata távoli feladatok küldéséhez egy HDInsight Spark-fürtre
 
@@ -209,7 +206,7 @@ A HDInsight 3,5-es és újabb fürtökön alapértelmezés szerint letiltja a he
 
 Ha egy Azure-Virtual Networkon belül csatlakozik egy HDInsight Spark-fürthöz, közvetlenül kapcsolódhat a Livy a fürtön. Ebben az esetben a Livy-végpont URL-címe: `http://<IP address of the headnode>:8998/batches` . Itt a **8998** az a port, amelyen a Livy fut a fürt átjárócsomóponthoz. A nem nyilvános portokon található szolgáltatások elérésével kapcsolatos további információkért lásd: [Apache Hadoop Services által használt portok a HDInsight-on](../hdinsight-hadoop-port-settings-for-services.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Livy REST API dokumentáció](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)

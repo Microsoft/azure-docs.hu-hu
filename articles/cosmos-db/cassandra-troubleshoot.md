@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 75ce307056d24f84e9f72f746eb77b09b89e21b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802371"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927490"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API gyakori problémáinak elhárítása
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-A Cassandra API in Azure Cosmos DB egy kompatibilitási réteg, amely a népszerű nyílt forráskódú Apache Cassandra-adatbázishoz nyújt [vezetékes protokoll-támogatást](cassandra-support.md) , és [Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/introduction)-t működtet. A teljes körűen felügyelt natív szolgáltatásként a Azure Cosmos DB [garantálja a Cassandra API rendelkezésre állását, átviteli sebességét és konzisztenciáját](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) . Ezek a garanciák az Apache Cassandra örökölt implementációjában nem lehetségesek. Cassandra API emellett a nulla karbantartási platform működését és a nulla állásidő javítását is lehetővé teszi. Ennek megfelelően számos háttérbeli művelet különbözik az Apache Cassandra-től, ezért a gyakori hibák elkerüléséhez bizonyos beállítások és megközelítések javasoltak. 
+A Cassandra API in Azure Cosmos DB egy kompatibilitási réteg, amely a népszerű nyílt forráskódú Apache Cassandra-adatbázishoz nyújt [vezetékes protokoll-támogatást](cassandra-support.md) , és [Azure Cosmos db](./introduction.md)-t működtet. A teljes körűen felügyelt natív szolgáltatásként a Azure Cosmos DB [garantálja a Cassandra API rendelkezésre állását, átviteli sebességét és konzisztenciáját](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) . Ezek a garanciák az Apache Cassandra örökölt implementációjában nem lehetségesek. Cassandra API emellett a nulla karbantartási platform működését és a nulla állásidő javítását is lehetővé teszi. Ennek megfelelően számos háttérbeli művelet különbözik az Apache Cassandra-től, ezért a gyakori hibák elkerüléséhez bizonyos beállítások és megközelítések javasoltak. 
 
 Ez a cikk a Azure Cosmos DB Cassandra APIt használó alkalmazások általános hibáit és megoldásait ismerteti.
 
@@ -93,8 +93,7 @@ datastax-java-driver {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg Azure Cosmos DB Cassandra API [támogatott szolgáltatásaival](cassandra-support.md) .
 - Megtudhatja, hogyan [telepíthet át natív Apache cassandraről Azure Cosmos DBra Cassandra API](cassandra-migrate-cosmos-db-databricks.md)
-

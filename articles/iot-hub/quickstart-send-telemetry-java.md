@@ -2,7 +2,7 @@
 title: 'Gyors útmutató: telemetria küldése az Azure IoT Hub Javával'
 description: Ebben a rövid útmutatóban két Java-alkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria az IoT Hubról, a felhőben történő feldolgozás érdekében való beolvasásához.
 author: wesmc7777
-manager: philmea
+manager: lizross
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -15,13 +15,13 @@ ms.custom:
 - mqtt
 - devx-track-java
 - devx-track-azurecli
-ms.date: 05/26/2020
-ms.openlocfilehash: 8ac2ada18cdb3c9af4902b28d16fef640f979101
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 01/27/2021
+ms.openlocfilehash: c0f1272bf195c6d5ef2dfe88cc6541f731fa51c8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121441"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928568"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Gyors útmutató: telemetria küldése egy Azure IoT hub-ba, és beolvasása Java-alkalmazással
 
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban telemetria küld az Azure IoT Hubnek, és elolvasha
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?view=azure-java-stable)a **hosszú távú támogatás** alatt válassza a **Java 8** lehetőséget.
+* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)a **hosszú távú támogatás** alatt válassza a **Java 8** lehetőséget.
 
     A Java aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 
@@ -49,7 +49,9 @@ Ebben a rövid útmutatóban telemetria küld az Azure IoT Hubnek, és elolvasha
     mvn --version
     ```
 
-* [Egy minta Java-projekt](https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip).
+* Töltse le vagy klónozott az Azure-IOT-Samples-Java-tárházat az [Azure-IOT-Samples-Java adattár lap](https://github.com/Azure-Samples/azure-iot-samples-java) **Code (kód** ) gombjának használatával. 
+
+    Ez a cikk a [szimulált eszköz](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/simulated-device) és a [READ-D2C-messages](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) mintákat használja az adattárból.
 
 * A 8883-es port megnyitható a tűzfalon. Az ebben a rövid útmutatóban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -113,6 +115,16 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
     Cserélje le a változó értékét `connString` a korábban megjegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice. Java** fájlba.
 
+    ```java
+    public class SimulatedDevice {
+      // The device connection string to authenticate the device with your IoT hub.
+      // Using the Azure CLI:
+      // az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+
+      //private static String connString = "{Your device connection string here}";    
+      private static String connString = "HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}";    
+     ```
+
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás létrehozásához:
 
     ```cmd/sh
@@ -142,6 +154,23 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
     | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | Cserélje le a változó értékét a Event Hubs-kompatibilis végpontra, amelyet korábban jegyzett készített. |
     | `EVENT_HUBS_COMPATIBLE_PATH`     | Cserélje le a változó értékét arra a Event Hubs-kompatibilis elérési útra, amelyet korábban jegyzett készített. |
     | `IOT_HUB_SAS_KEY`                | A változó értékét cserélje le a szolgáltatás elsődleges kulcsára, amelyet korábban jegyzett készített. |
+
+    ```java
+    public class ReadDeviceToCloudMessages {
+    
+      private static final String EH_COMPATIBLE_CONNECTION_STRING_FORMAT = "Endpoint=%s/;EntityPath=%s;"
+          + "SharedAccessKeyName=%s;SharedAccessKey=%s";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_ENDPOINT = "{your Event Hubs compatible endpoint}";
+    
+      // az iot hub show --query properties.eventHubEndpoints.events.path --name {your IoT Hub name}
+      private static final String EVENT_HUBS_COMPATIBLE_PATH = "{your Event Hubs compatible name}";
+    
+      // az iot hub policy show --name service --query primaryKey --hub-name {your IoT Hub name}
+      private static final String IOT_HUB_SAS_KEY = "{your service primary key}";    
+    ```
+
 
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás létrehozásához:
 

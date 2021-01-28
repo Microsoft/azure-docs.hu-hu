@@ -1,19 +1,16 @@
 ---
 title: A Spark beállításainak konfigurálása – Azure HDInsight
 description: Azure HDInsight-fürt Apache Spark beállításainak megtekintése és konfigurálása
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821145"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929746"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -149,7 +146,7 @@ Az alábbi kód azt mutatja be, hogyan lehet módosítani egy Jupyter Notebook f
 
 Az alapvető konfigurációs beállítások figyelésével biztosíthatja, hogy a Spark-feladatok kiszámítható és elvégezhető módon fussanak. Ezek a beállítások segítenek meghatározni a legjobb Spark-fürt konfigurációját az adott számítási feladatokhoz.  Emellett figyelnie kell a hosszan futó és az erőforrás-igényes Spark-feladatok végrehajtását.  A nem megfelelő konfigurációktól, például helytelen méretű végrehajtókkal kapcsolatos memória-nyomást a leggyakoribb kihívások középpontba kerül. Emellett a hosszan futó műveleteket és a feladatokat, amelyek Descartes-alapú műveleteket eredményeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A HDInsight-ben elérhető összetevők és verziók Apache Hadoop?](../hdinsight-component-versioning.md)
 * [Apache Spark-fürt erőforrásainak kezelése a HDInsight-ben](apache-spark-resource-manager.md)

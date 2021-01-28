@@ -1,19 +1,16 @@
 ---
 title: Mi az Apache Spark – Azure HDInsight
 description: Ez a cikk bemutatja a HDInsight-alapú Spark rendszert, és azokat az eseteket, amelyekben a HDInsight-alapú Spark-fürt használható.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: e75661b54ce9a74013938d11ca7f13d9c3698c76
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 9f5121feebbb516e148b0476d6c8280d461237bc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822046"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929990"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
@@ -93,7 +90,7 @@ A HDInsight-alapú Spark széles körű támogatást nyújt a valós idejű elem
 * [A Apache Spark streaming áttekintése](apache-spark-streaming-overview.md)
 * [Strukturált streaming Apache Spark áttekintése](apache-spark-structured-streaming-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az áttekintésben az Azure HDInsight Apache Sparkának alapszintű ismerete van.  A következő cikkekből többet is megtudhat a HDInsight-Apache Sparkről, és létrehozhat egy HDInsight Spark-fürtöt, és további futtathat néhány példa Spark-lekérdezést:
 

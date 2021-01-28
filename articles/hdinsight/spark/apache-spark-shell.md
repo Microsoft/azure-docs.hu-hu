@@ -1,19 +1,16 @@
 ---
 title: Interaktív Spark-rendszerhéj használata az Azure HDInsight
 description: Az interaktív Spark-rendszerhéj olvasási végrehajtást tesz lehetővé a Spark-parancsok egyszerre történő futtatásához és az eredmények megjelenítéséhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
-ms.openlocfilehash: 84298c9073f00f0388a9bcb7405369d7c60bcce1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 324852a967b5de015a9b1e9b465d4b4703e573cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081179"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929682"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Apache Spark futtatása a Spark shellből
 
@@ -114,7 +111,7 @@ A Spark Shell parancs ( `spark-shell` , vagy `pyspark` ) számos parancssori par
 | --csomagok MAVEN_COORDS | Az edényben található, az illesztőprogramra és a végrehajtó classpaths kiterjedő Maven-koordináták vesszővel tagolt listája. Megkeresi a helyi Maven-tárházat, a Maven Central-t, majd a által meghatározott további távoli adattárakat `--repositories` . A koordináták formátuma *GroupID*:*artifactId*:*Version*. | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --fájlok listája | Csak Python esetén a PYTHONPATH elhelyezni kívánt. zip-,. Egg-vagy.-fájlok vesszővel tagolt listája. | `--pyfiles "samples.py"` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse [meg az Azure HDInsight Apache Spark bemutatása](apache-spark-overview.md) című témakört.
 - Lásd: [Apache Spark-fürt létrehozása az Azure HDInsight-ben](apache-spark-jupyter-spark-sql.md) Spark-fürtökkel és-SparkSQL való együttműködéshez.

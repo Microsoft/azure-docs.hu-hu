@@ -1,19 +1,16 @@
 ---
 title: Spark streaming az Azure HDInsight
 description: Apache Spark streaming-alkalmazások használata a HDInsight Spark-fürtökön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929508"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>A Apache Spark streaming áttekintése
 
@@ -31,7 +28,7 @@ A DStream egy absztrakciós réteget biztosít a nyers eseményekre vonatkozó a
 
 Kezdje egyetlen eseménnyel, hogy egy hőmérsékletet Olvasson egy csatlakoztatott termosztátból. Ha ez az esemény megérkezik a Spark streaming-alkalmazásba, az eseményt megbízható módon tárolja a rendszer, ahol több csomóponton replikálódik. Ez a hibatűrés biztosítja, hogy egyetlen csomópont meghibásodása ne okozza az esemény elvesztését. A Spark Core olyan adatstruktúrát használ, amely a fürt több csomópontján keresztül osztja el az adatmennyiséget. Ahol az egyes csomópontok általában a legjobb teljesítmény érdekében fenntartják a saját adataikat a memóriában. Ezt az adatstruktúrát *rugalmasan elosztott adatkészletnek* (RDD) nevezzük.
 
-Mindegyik RDD a *Batch-intervallum*nevű felhasználó által meghatározott időkereten összegyűjtött eseményeket jelöli. Mivel minden egyes batch-intervallum eltelik, egy új RDD állít elő, amely az adott intervallum összes adatait tartalmazza. A RDD folyamatos készletét egy DStream gyűjti. Ha például a Batch-intervallum egy másodperces, a DStream egy olyan köteget bocsát ki másodpercenként, amely egy RDD tartalmaz, amely tartalmazza az adott másodpercben betöltött összes adatot. A DStream feldolgozásakor a hőmérsékleti esemény a következő kötegek egyikében jelenik meg. A Spark streaming-alkalmazás dolgozza fel az eseményeket tartalmazó kötegeket, és végül az egyes RDD tárolt adategységeket is végrehajtja.
+Mindegyik RDD a *Batch-intervallum* nevű felhasználó által meghatározott időkereten összegyűjtött eseményeket jelöli. Mivel minden egyes batch-intervallum eltelik, egy új RDD állít elő, amely az adott intervallum összes adatait tartalmazza. A RDD folyamatos készletét egy DStream gyűjti. Ha például a Batch-intervallum egy másodperces, a DStream egy olyan köteget bocsát ki másodpercenként, amely egy RDD tartalmaz, amely tartalmazza az adott másodpercben betöltött összes adatot. A DStream feldolgozásakor a hőmérsékleti esemény a következő kötegek egyikében jelenik meg. A Spark streaming-alkalmazás dolgozza fel az eseményeket tartalmazó kötegeket, és végül az egyes RDD tárolt adategységeket is végrehajtja.
 
 ![Példa DStream hőmérsékleti eseményekkel](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
@@ -251,7 +248,7 @@ A Spark streaming-alkalmazásokat általában egy JAR-fájlba építjük. Ezutá
 
 Az összes alkalmazás állapota a GET kérelemmel is ellenőrizhető egy LIVY-végponton. Végül a LIVY-végpontra vonatkozó TÖRLÉSi kérelem kibocsátásával leállíthatja a futó alkalmazást. A LIVY API-val kapcsolatos részletekért lásd: [távoli feladatok Apache LIVY](apache-spark-livy-rest-interface.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark-fürt létrehozása a HDInsight-ben](../hdinsight-hadoop-create-linux-clusters-portal.md)
 * [Apache Spark streaming programozási útmutató](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)

@@ -1,19 +1,16 @@
 ---
 title: Kernelek Jupyter Notebook Azure HDInsight Spark-fürtökön
 description: Ismerkedjen meg a PySpark, a PySpark3 és a Spark kernelekkel az Azure HDInsight-alapú Spark-fürtökkel elérhető Jupyter Notebookhoz.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822233"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930394"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernelek Jupyter Notebook Apache Spark-fürtökön az Azure HDInsight
 
@@ -78,7 +75,7 @@ Egy Apache Spark-fürt a HDInsight-ben. További útmutatásért lásd: [Apache 
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Struktúra-lekérdezést hajt végre a sqlContext. Ha a `-o` paramétert átadja, a lekérdezés eredménye a (z)%% helyi Python-kontextusban marad a [pandák](https://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |A későbbi sorokban lévő összes kód helyileg lesz végrehajtva. A kódnak érvényes Python2-kódnak kell lennie, függetlenül attól, hogy melyik kernelt használja. Tehát akkor is, ha a **PySpark3** vagy a **Spark** kernelt választotta a jegyzetfüzet létrehozásakor, ha a `%%local` magict egy cellában használja, akkor a cellának csak érvényes Python2-kóddal kell rendelkeznie. |
    | naplók |`%%logs` |Megjeleníti a naplókat az aktuális Livy-munkamenethez. |
-   | delete |`%%delete -f -s <session number>` |Törli az aktuális Livy-végpont adott munkamenetét. A rendszermaghoz indított munkamenet nem törölhető. |
+   | törlés |`%%delete -f -s <session number>` |Törli az aktuális Livy-végpont adott munkamenetét. A rendszermaghoz indított munkamenet nem törölhető. |
    | tisztítás |`%%cleanup -f` |Törli az aktuális Livy-végpont összes munkamenetét, beleértve a jegyzetfüzetek munkamenetét is. A Force jelző-f megadása kötelező. |
 
    > [!NOTE]  
@@ -141,7 +138,7 @@ A Spark HDInsight-fürtökön található Jupyter-jegyzetfüzetek csak a Google 
 
 Az új kernelek folyamatosan fejlődnek, és idővel kiforrnak. Így az API-k megváltozhatnak, mivel ezek a kernelek kiforrtak. Nagyra értékeljük az új kernelek használata során felmerülő visszajelzéseket. A visszajelzés hasznos lehet ezen kernelek végleges kiadásának alakításában. A megjegyzéseit/visszajelzéseit a cikk alján található **visszajelzések** szakaszban hagyhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 - [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)

@@ -1,19 +1,16 @@
 ---
 title: Microsoft Cognitive Toolkit Apache Spark-Azure HDInsight
 description: Megtudhatja, hogyan alkalmazhat egy betanított Microsoft Cognitive Toolkit mély tanulási modellt a Spark Python API-val egy Azure HDInsight Spark-fürtben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505426"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929970"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit Deep learning-modell használata Azure HDInsight Spark-fürttel
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 050c16670ea0c6df53345216d8dd450c159792ea
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401151"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927466"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -86,9 +86,9 @@ Az új funkciók megtekintéséhez látogasson el a [hangtartalom-létrehozási 
 - **Python/Objective-C**: támogatás hozzáadva az `KeywordRecognizer` API-hoz. A dokumentációt [itt](./custom-keyword-basics.md)találja.
 - **C++/Java/C #**: további támogatás a `HttpHeader` kulcs/érték beállításához a használatával `ServicePropertyChannel::HttpHeader` .
 - **JavaScript**: támogatás hozzáadva az `ConversationTranscriber` API-hoz. [Itt](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)olvashatja el a dokumentációt. 
-- **C++/c #**: új metódus hozzáadva `AudioDataStream FromWavFileInput` (olvasáshoz). WAV-fájlok) [itt (C++)](/cpp/cognitive-services/speech/audiodatastream) és [itt (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
--  **C++/c #/Java/Python/Objective-C/Swift**: a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](/java/api/com.microsoft.cognitiveservices.speech), [itt (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](/objectivec/cognitive-services/speech/).
-- **C#, C++, Java**: felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](/cpp/cognitive-services/speech/connection)és [itt (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
+- **C++/c #**: új metódus hozzáadva `AudioDataStream FromWavFileInput` (olvasáshoz). WAV-fájlok) [itt (C++)](/cpp/cognitive-services/speech/audiodatastream) és [itt (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream).
+-  **C++/c #/Java/Python/Objective-C/Swift**: a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech), itt [(Java)](/java/api/com.microsoft.cognitiveservices.speech), [itt (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech)és [itt (Objective-C/Swift)](/objectivec/cognitive-services/speech/).
+- **C#, C++, Java**: felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection), [itt (C++)](/cpp/cognitive-services/speech/connection)és [itt (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
 - **C++/c #/Java/Python/Objective-C/Swift**: hozzáadva a kiejtés értékelésének támogatása, amely kiértékeli a beszédfelismerési kiejtést, és visszajelzést ad a beszélők pontosságáról és a beszélt hangról. Olvassa el [itt](how-to-pronunciation-assessment.md)a dokumentációt.
 
 **Változás megszakítása**
@@ -387,18 +387,18 @@ Egészségesek maradjanak!
 **Új funkciók**
 - Linux: a Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 támogatása a System for Speech SDK konfigurálására [vonatkozó utasításokkal](./how-to-configure-rhel-centos-7.md) .
 - Linux: a .NET Core C# támogatása a Linux ARM32 és a ARM64. További tudnivalók [itt](./speech-sdk.md?tabs=linux). 
-- C#, C++: a `UtteranceId` (z) `ConversationTranscriptionResult` rendszerhez hozzáadva egy egységes azonosítót az összes köztes és a végső beszédfelismerési eredményben. [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?preserve-view=true&view=azure-dotnet), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)– részletek.
+- C#, C++: a `UtteranceId` (z) `ConversationTranscriptionResult` rendszerhez hozzáadva egy egységes azonosítót az összes köztes és a végső beszédfelismerési eredményben. [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)– részletek.
 - Python: támogatás hozzáadva a rendszerhez `Language ID` . Lásd: speech_sample. a [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)-tárházban.
 - Windows: a Windows platformon az összes Win32 Console-alkalmazáshoz hozzáadott tömörített hangbemeneti formátum támogatása. Részletek [itt](./how-to-use-codec-compressed-audio-input-streams.md). 
 - JavaScript: a NodeJS-ben támogatja a beszédfelismerést (szöveg – beszéd). További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
 - JavaScript: új API-k hozzáadása az összes küldési és fogadási üzenet ellenőrzésének engedélyezéséhez. További információ [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
         
 **Hibajavítások**
-- C#, C++: javítva a probléma, hogy `SendMessageAsync` most bináris típusúként küld bináris üzenetet. [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection)– részletek.
-- C#, C++: javítva a probléma, hogy az `Connection MessageReceived` esemény használata összeomlást okozhat `Recognizer` , ha az objektumot az objektum előtt dobja el a rendszer `Connection` . [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?preserve-view=true&view=azure-dotnet), [C++](/cpp/cognitive-services/speech/connection#messagereceived)– részletek.
+- C#, C++: javítva a probléma, hogy `SendMessageAsync` most bináris típusúként küld bináris üzenetet. [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection)– részletek.
+- C#, C++: javítva a probléma, hogy az `Connection MessageReceived` esemény használata összeomlást okozhat `Recognizer` , ha az objektumot az objektum előtt dobja el a rendszer `Connection` . [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived), [C++](/cpp/cognitive-services/speech/connection#messagereceived)– részletek.
 - Android: a mikrofon hangpufferének mérete a 800ms-ról a 100ms-re csökkent a késés javítása érdekében.
 - Android: kijavított egy [problémát](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) az x86-os Android-emulátorban Android Studioban.
-- JavaScript: támogatás a kínai régiókban az API-val `fromSubscription` . Részletek [itt](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: támogatás a kínai régiókban az API-val `fromSubscription` . Részletek [itt](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#fromsubscription-string--string-). 
 - JavaScript: további hibaüzenetek hozzáadása a NodeJS-től érkező sikertelen kapcsolatok esetén.
         
 **Példák**

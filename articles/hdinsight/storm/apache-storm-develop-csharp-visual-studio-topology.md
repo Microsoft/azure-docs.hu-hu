@@ -2,19 +2,16 @@
 title: Apache Storm-topológiák a Visual Studióval és a C#-Azure HDInsight
 description: Megtudhatja, hogyan hozhat létre Storm-topológiákat a C#-ban. Hozzon létre egy Word Count topológiát a Visual Studióban a Hadoop Tools for Visual Studio használatával.
 ROBOTS: NOINDEX
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000192"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929161"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése a Apache Stormhez a Data Lake Tools for Visual Studio használatával
 
@@ -32,7 +29,7 @@ A C#-topológiák a .NET 4,5-et használják, és a Mono használatával futnak 
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
+Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa** lehetőséget.
 
 ## <a name="install-visual-studio"></a>A Visual Studio telepítése
 
@@ -59,30 +56,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -125,11 +122,11 @@ C#-topológiai projekt létrehozása a Visual Studióban:
 
 1. Nyissa meg a Visual Studiót.
 
-1. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
+1. A **Start** ablakban válassza az **új projekt létrehozása** lehetőséget.
 
-1. Az **új projekt létrehozása** ablakban görgessen a **Storm-alkalmazáshoz**, és válassza a **tovább**lehetőséget.
+1. Az **új projekt létrehozása** ablakban görgessen a **Storm-alkalmazáshoz**, és válassza a **tovább** lehetőséget.
 
-1. Az **új projekt konfigurálása** ablakban adja meg az *WordCount* **projekt nevét** , vagy a projekt **hely** könyvtárának elérési útját, majd kattintson a **Létrehozás**gombra.
+1. Az **új projekt konfigurálása** ablakban adja meg az *WordCount* **projekt nevét** , vagy a projekt **hely** könyvtárának elérési útját, majd kattintson a **Létrehozás** gombra.
 
     ![Storm-alkalmazás, az új projekt konfigurálása párbeszédpanel, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
@@ -221,7 +218,7 @@ Most hozzon létre két Storm-csavart a következő példában:
 
 1. Törölje a meglévő *bolt.cs* -fájlt a projektből.
 
-2. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza **Add**az  >  **új elem**hozzáadása lehetőséget. A listából válassza a **Storm bolt**lehetőséget, majd adja meg a *Splitter.cs* nevet. Az új fájl kódjában módosítsa a névtér nevét a következőre: `WordCount` . Ezután ismételje meg a folyamatot egy *Counter.cs*nevű második bolt létrehozásához.
+2. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza az  >  **új elem** hozzáadása lehetőséget. A listából válassza a **Storm bolt** lehetőséget, majd adja meg a *Splitter.cs* nevet. Az új fájl kódjában módosítsa a névtér nevét a következőre: `WordCount` . Ezután ismételje meg a folyamatot egy *Counter.cs* nevű második bolt létrehozásához.
 
    * *Splitter.cs*: olyan boltot valósít meg, amely a mondatokat egyedi szavakkal osztja szét, és új szavakat bocsát ki.
 
@@ -342,7 +339,7 @@ A kiöntő kibocsátja azokat a mondatokat, amelyeket a rendszer az elosztói bo
 
 Mivel a számláló példány helyileg tárolja a szavak darabszámát, meg kell győződnie arról, hogy az adott szavak ugyanarra a Counter bolt-példányra kerülnek. Minden példány nyomon követi az egyes szavakat. Mivel az elosztói bolt nem tart fenn állapotot, valójában nem számít, hogy az elválasztó melyik példánya fogadja ezt a mondatot.
 
-Nyissa meg a *program.cs*. A fontos módszer `GetTopologyBuilder` , amely a Storm számára elküldött topológia definiálására szolgál. Cserélje le a tartalmát a `GetTopologyBuilder` következő kódra a korábban ismertetett topológia megvalósításához:
+Nyissa meg a *Program.cs* fájlt. A fontos módszer `GetTopologyBuilder` , amely a Storm számára elküldött topológia definiálására szolgál. Cserélje le a tartalmát a `GetTopologyBuilder` következő kódra a korábban ismertetett topológia megvalósításához:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -406,20 +403,20 @@ return topologyBuilder;
 
 Most már készen áll arra, hogy elküldje a topológiát a HDInsight-fürtön.
 
-1. Navigáljon **View**a  >  **Server Explorer**megtekintéséhez.
+1. Navigáljon a  >  **Server Explorer** megtekintéséhez.
 
-1. Kattintson a jobb gombbal az **Azure**elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
+1. Kattintson a jobb gombbal az **Azure** elemre, válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight** lehetőséget.
 
-1. A **topológia beküldése** párbeszédpanel **Storm-fürt** legördülő listájában válassza ki a Storm on HDInsight-fürtöt, majd válassza a **Küldés**lehetőséget. A **kimenet** ablaktábla megtekintésével ellenőrizhető, hogy a Küldés sikeres-e.
+1. A **topológia beküldése** párbeszédpanel **Storm-fürt** legördülő listájában válassza ki a Storm on HDInsight-fürtöt, majd válassza a **Küldés** lehetőséget. A **kimenet** ablaktábla megtekintésével ellenőrizhető, hogy a Küldés sikeres-e.
 
     A topológia sikeres elküldését követően meg kell jelennie a fürt **Storm-topológiák nézetének** ablakának. Válassza ki a **WordCount** -topológiát a listából a futó topológiával kapcsolatos információk megtekintéséhez.
 
     ![Storm topológia nézet ablak, HDInsight-fürt, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**parancsot.
+    > A **Storm-topológiákat** a **Server Explorerben** is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight** csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése** parancsot.
 
     A topológiában található összetevők adatainak megtekintéséhez válasszon ki egy összetevőt a diagramon.
 
@@ -452,7 +449,7 @@ Ahogy azt a **Storm Sample** projekt mutatja be, a konfiguráció alapján beál
 
 A Visual studióhoz Data Lake-eszközöket is használhat hibrid topológiák létrehozásához, ahol egyes összetevők C# nyelven, mások pedig Java-alapúak.
 
-Hibrid topológia esetén például hozzon létre egy projektet, és válassza a **Storm Hybrid Sample**elemet. Ez a minta a következő fogalmakat mutatja be:
+Hibrid topológia esetén például hozzon létre egy projektet, és válassza a **Storm Hybrid Sample** elemet. Ez a minta a következő fogalmakat mutatja be:
 
 * **Java kiöntő** és **C#-bolt**: az `HybridTopology_javaSpout_csharpBolt` osztályban definiálva.
 
@@ -476,7 +473,7 @@ Hibrid topológia létrehozásakor és elküldésekor vegye figyelembe a követk
 
 * A használatával a Java- `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` objektumokból a JSON-be vagy onnan kifelé irányuló adatok szerializálására használható.
 
-* Ha a topológiát a kiszolgálóra küldi, a **további konfigurációk** lehetőséget kell használnia a **Java-fájlok elérési útjának**megadásához. A megadott elérési útnak a Java-osztályokat tartalmazó JAR-fájlokkal rendelkező könyvtárnak kell lennie.
+* Ha a topológiát a kiszolgálóra küldi, a **további konfigurációk** lehetőséget kell használnia a **Java-fájlok elérési útjának** megadásához. A megadott elérési útnak a Java-osztályokat tartalmazó JAR-fájlokkal rendelkező könyvtárnak kell lennie.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
@@ -533,7 +530,7 @@ A SCP.NET-támogatás legújabb kiadásai a NuGet-on keresztül frissültek. Ha 
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-2. A Package Managerben válassza a **frissítések**lehetőséget. Ha elérhető a SCP.NET támogatási csomagjának frissítése, akkor az szerepel a listáján. Válassza a csomag **frissítése** lehetőséget, majd a **módosítások előnézete** párbeszédpanelen kattintson az **OK** gombra a telepítéshez.
+2. A Package Managerben válassza a **frissítések** lehetőséget. Ha elérhető a SCP.NET támogatási csomagjának frissítése, akkor az szerepel a listáján. Válassza a csomag **frissítése** lehetőséget, majd a **módosítások előnézete** párbeszédpanelen kattintson az **OK** gombra a telepítéshez.
 
 > [!IMPORTANT]  
 > Ha a projekt olyan SCP.NET korábbi verziójával lett létrehozva, amely nem használta a NuGet-et, akkor a következő lépéseket kell végrehajtania egy újabb verzióra való frissítéshez:
@@ -568,14 +565,14 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
 > [!WARNING]  
 > A helyi tesztelés csak az alapszintű, C#-alapú topológiák esetében működik. Nem használhat helyi tesztelést olyan hibrid topológiák vagy topológiák esetében, amelyek több streamet használnak.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok**lehetőséget. A projekt tulajdonságai között. Ezután módosítsa a **kimeneti típust** a **Console alkalmazásba**.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok** lehetőséget. A projekt tulajdonságai között. Ezután módosítsa a **kimeneti típust** a **Console alkalmazásba**.
 
    ![HDInsight Storm-alkalmazás, projekt tulajdonságai, kimenet típusa](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > Ne felejtse el módosítani a **kimeneti típust** az **osztály-tárba** , mielőtt telepítené a topológiát a fürtön.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az **Add**  >  **új elem hozzáadása elemet**. Válassza az **osztály**lehetőséget, majd adja meg az *LocalTest.cs* nevet. Végül válassza a **Hozzáadás**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, majd válassza az   >  **új elem hozzáadása elemet**. Válassza az **osztály** lehetőséget, majd adja meg az *LocalTest.cs* nevet. Végül válassza a **Hozzáadás** lehetőséget.
 
 1. Nyissa meg a *LocalTest.cs*, és adja hozzá a következő `using` utasítást a felső részen:
 
@@ -685,9 +682,9 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
     Console.ReadKey();
     ```
 
-1. Mentse a módosításokat, majd válassza az **F5 billentyűt** , vagy **Debug**  >  a projekt elindításához válassza a hibakeresés**megkezdése** lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Amikor `Tests finished` megjelenik, válassza a bármelyik billentyűt az ablak bezárásához.
+1. Mentse a módosításokat, majd válassza az **F5 billentyűt** , vagy   >  a projekt elindításához válassza a hibakeresés **megkezdése** lehetőséget. A konzol ablakának meg kell jelennie, és a tesztek állapotaként kell megjelennie. Amikor `Tests finished` megjelenik, válassza a bármelyik billentyűt az ablak bezárásához.
 
-1. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. (Például: *C: \\ felhasználói \\ \<your_user_name> \\ forrás \\ Repos \\ WordCount \\ WordCount*.) Ezután ebben a könyvtárban nyissa meg a *bin*elemet, majd válassza a *hibakeresés*lehetőséget. A tesztek futtatásakor létrehozott szövegfájlokat meg kell tekinteni: *sentences.txt*, *counter.txt*és *splitter.txt*. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
+1. A **Windows Intéző** segítségével keresse meg a projektet tartalmazó könyvtárat. (Például: *C: \\ felhasználói \\ \<your_user_name> \\ forrás \\ Repos \\ WordCount \\ WordCount*.) Ezután ebben a könyvtárban nyissa meg a *bin* elemet, majd válassza a *hibakeresés* lehetőséget. A tesztek futtatásakor létrehozott szövegfájlokat meg kell tekinteni: *sentences.txt*, *counter.txt* és *splitter.txt*. Nyissa meg az egyes szövegfájlokat, és vizsgálja meg az adatelemzést.
 
    > [!NOTE]  
    > A karakterlánc-adatok az ezekben a fájlokban lévő decimális értékek tömbje is megmaradnak. A `[[97,103,111]]` **splitter.txt** fájlban például a szó a következőt jelenti *:*.
@@ -701,7 +698,7 @@ A használatával egyszerűen naplózhatja a topológiák összetevőinek adatai
 
 `Context.Logger.Info("Component started");`
 
-A naplózott adatok a **Hadoop szolgáltatás naplójából**tekinthetők meg, amely a **Server Explorerben**található. Bontsa ki a Storm on HDInsight-fürtön lévő bejegyzést, majd bontsa ki a **Hadoop-szolgáltatás naplóját**. Végül válassza ki a megtekinteni kívánt naplófájlt.
+A naplózott adatok a **Hadoop szolgáltatás naplójából** tekinthetők meg, amely a **Server Explorerben** található. Bontsa ki a Storm on HDInsight-fürtön lévő bejegyzést, majd bontsa ki a **Hadoop-szolgáltatás naplóját**. Végül válassza ki a megtekinteni kívánt naplófájlt.
 
 > [!NOTE]  
 > A naplókat a fürt által használt Azure Storage-fiók tárolja. A naplók a Visual Studióban való megtekintéséhez be kell jelentkeznie a Storage-fiókot birtokló Azure-előfizetésbe.
@@ -710,9 +707,9 @@ A naplózott adatok a **Hadoop szolgáltatás naplójából**tekinthetők meg, a
 
 A futó topológiában történt hibák megtekintéséhez kövesse az alábbi lépéseket:
 
-1. A **Server Explorerben**kattintson a jobb gombbal a Storm on HDInsight-fürtre, és válassza a **Storm-topológiák megtekintése**lehetőséget.
+1. A **Server Explorerben** kattintson a jobb gombbal a Storm on HDInsight-fürtre, és válassza a **Storm-topológiák megtekintése** lehetőséget.
 
-   A **kiöntő** és a **boltokban**az **utolsó hiba** oszlop az utolsó hibával kapcsolatos információkat tartalmazza.
+   A **kiöntő** és a **boltokban** az **utolsó hiba** oszlop az utolsó hibával kapcsolatos információkat tartalmazza.
 
 2. Válassza ki azt az összetevő **kiöntő azonosítóját** vagy **azonosítóját** , amelynél a hiba szerepel. A Részletek lapon további hibaüzenetek jelennek meg az oldal alján található **hibák** szakaszban.
 

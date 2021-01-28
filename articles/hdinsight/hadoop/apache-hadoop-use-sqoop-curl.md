@@ -1,18 +1,15 @@
 ---
 title: A curl használata az Azure HDInsight Apache Sqoop használatával történő adatexportáláshoz
 description: Útmutató az Apache Sqoop-feladatok távoli elküldéséhez az Azure HDInsight-ben a curl használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076266"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928369"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Apache Sqoop-feladatok futtatása a HDInsight-ben a curl segítségével
 
@@ -99,12 +96,12 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
     curl -G -u %USERNAME%:%PASSWORD% -d user.name=%USERNAME% https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/jobs/%JOBID% | C:\HDI\jq-win64.exe .status.state
     ```
 
-    Ha a feladatok befejeződtek, az állapot **sikeres**lesz.
+    Ha a feladatok befejeződtek, az állapot **sikeres** lesz.
 
    > [!NOTE]  
    > Ez a curl-kérelem egy JavaScript Object Notation (JSON) dokumentumot ad vissza, amely a feladattal kapcsolatos információkkal szolgál. a jQ csak az állapot értékének beolvasására szolgál.
 
-1. Ha a művelet állapota **sikeresen**módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; ebben az esetben: `wasb:///example/data/sqoop/curl` . Ez a címe a `example/data/sqoop/curl` HDInsight-fürt által használt alapértelmezett tároló könyvtárában tárolja a feladatok kimenetét.
+1. Ha a művelet állapota **sikeresen** módosult, az Azure Blob Storage-ból kérheti le a feladatok eredményeit. A `statusdir` lekérdezéssel átadott paraméter tartalmazza a kimeneti fájl helyét; ebben az esetben: `wasb:///example/data/sqoop/curl` . Ez a címe a `example/data/sqoop/curl` HDInsight-fürt által használt alapértelmezett tároló könyvtárában tárolja a feladatok kimenetét.
 
     A stderr és az stdout Blobok eléréséhez használhatja a Azure Portal.
 
@@ -126,7 +123,7 @@ Ahogy az a dokumentumban is látható, használhat egy nyers HTTP-kérést a HDI
 
 A jelen cikkben használt REST-felülettel kapcsolatos további információkért tekintse meg az <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API útmutatót</a>.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Apache Sqoop használata Apache Hadoop HDInsight](hdinsight-use-sqoop.md)
 

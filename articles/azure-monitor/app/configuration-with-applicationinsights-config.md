@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: 7c0759e78b1adc1704acb602daa12cf9cabbe153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d05503c2a22c476d9ab08e8aeb058ca1b9826778
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934803"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928677"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 A Application Insights .NET SDK számos NuGet-csomagot tartalmaz. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t, amely telemetria küld a Application Insightsnak. A [további csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetria *modulokat* és *inicializáló* csomagokat biztosítanak az alkalmazás és a környezet telemetria automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetria-modulokat és-inicializálók beállításait, és beállíthat paramétereket.
@@ -87,7 +87,7 @@ A HTTP [-kérések válaszideje és eredmény-kódjának](../../azure-monitor/ap
 * [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft. ApplicationInsights
-A Microsoft. ApplicationInsights csomag biztosítja az SDK [alapvető API](/dotnet/api/microsoft.applicationinsights?view=azure-dotnet) -ját. A többi telemetria-modul ezt használja, és azt is [használhatja a saját telemetria definiálásához](./api-custom-events-metrics.md).
+A Microsoft. ApplicationInsights csomag biztosítja az SDK [alapvető API](/dotnet/api/microsoft.applicationinsights) -ját. A többi telemetria-modul ezt használja, és azt is [használhatja a saját telemetria definiálásához](./api-custom-events-metrics.md).
 
 * Nincs bejegyzés a ApplicationInsights.configban.
 * [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-csomag. Ha most telepíti ezt a NuGet, a rendszer nem hoz létre. config fájlt.
@@ -285,7 +285,7 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ az API-ról][api].
 
 <!--Link references-->

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288e3f0c048bddb3f3378226889dc519de27764b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441516"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927885"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integrálása Azure Monitor for VMs Térkép funkcióval
 
@@ -45,23 +45,23 @@ Miután telepítette a Service Map felügyeleti csomagot, a Operations Manager o
 
 Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőket:
 
-1. A konfigurációs varázsló megnyitásához a **Service Map áttekintés** ablaktáblán kattintson a **munkaterület hozzáadása**elemre.  
+1. A konfigurációs varázsló megnyitásához a **Service Map áttekintés** ablaktáblán kattintson a **munkaterület hozzáadása** elemre.  
 
     ![Service Map áttekintés panel](media/service-map-scom/scom-configuration.png)
 
-2. A **kapcsolatok konfigurációja** ablakban adja meg a bérlő nevét vagy azonosítóját, az alkalmazás azonosítóját (más néven Felhasználónév vagy clientID), valamint az egyszerű szolgáltatásnév jelszavát, majd kattintson a **tovább**gombra. További információ: egyszerű szolgáltatásnév létrehozása.
+2. A **kapcsolatok konfigurációja** ablakban adja meg a bérlő nevét vagy azonosítóját, az alkalmazás azonosítóját (más néven Felhasználónév vagy clientID), valamint az egyszerű szolgáltatásnév jelszavát, majd kattintson a **tovább** gombra. További információ: egyszerű szolgáltatásnév létrehozása.
 
     ![A kapcsolatok konfigurációs ablaka](media/service-map-scom/scom-config-spn.png)
 
-3. Az **előfizetés kiválasztása** ablakban válassza ki az Azure-előfizetést, az Azure-erőforráscsoportot (amely a log Analytics munkaterületet tartalmazza) és log Analytics munkaterületet, majd kattintson a **tovább**gombra.
+3. Az **előfizetés kiválasztása** ablakban válassza ki az Azure-előfizetést, az Azure-erőforráscsoportot (amely a log Analytics munkaterületet tartalmazza) és log Analytics munkaterületet, majd kattintson a **tovább** gombra.
 
     ![A Operations Manager konfigurációs munkaterület](media/service-map-scom/scom-config-workspace.png)
 
-4. A **gépi csoport kiválasztása** ablakban kiválaszthatja, hogy mely Service Map a Operations Manager szinkronizálni kívánt számítógépcsoportok. Kattintson a számítógépcsoportok **hozzáadása/eltávolítása**elemre, válassza ki a csoportokat az **elérhető**számítógépcsoportok listájából, majd kattintson a **Hozzáadás**gombra.  Amikor befejezte a csoportok kijelölését, kattintson **az OK** gombra a befejezéshez.
+4. A **gépi csoport kiválasztása** ablakban kiválaszthatja, hogy mely Service Map a Operations Manager szinkronizálni kívánt számítógépcsoportok. Kattintson a számítógépcsoportok **hozzáadása/eltávolítása** elemre, válassza ki a csoportokat az **elérhető** számítógépcsoportok listájából, majd kattintson a **Hozzáadás** gombra.  Amikor befejezte a csoportok kijelölését, kattintson **az OK** gombra a befejezéshez.
 
     ![A Operations Manager konfigurációs számítógépcsoportok](media/service-map-scom/scom-config-machine-groups.png)
 
-5. A **kiszolgáló kiválasztása** ablakban a Service Map-kiszolgálók csoportot a Operations Manager és a Térkép funkció között szinkronizálni kívánt kiszolgálókkal konfigurálja. Kattintson a **kiszolgálók hozzáadása/eltávolítása**elemre.
+5. A **kiszolgáló kiválasztása** ablakban a Service Map-kiszolgálók csoportot a Operations Manager és a Térkép funkció között szinkronizálni kívánt kiszolgálókkal konfigurálja. Kattintson a **kiszolgálók hozzáadása/eltávolítása** elemre.
 
     Ahhoz, hogy az integráció egy elosztott alkalmazási diagramot hozzon létre egy kiszolgálóhoz, a kiszolgálónak a következőnek kell lennie:
 
@@ -71,7 +71,7 @@ Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőke
 
      ![A Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
 
-6. Nem kötelező: válassza a minden felügyeleti kiszolgáló erőforráskészlet elemet, hogy kommunikáljon Log Analyticsokkal, majd kattintson a **munkaterület hozzáadása**lehetőségre.
+6. Nem kötelező: válassza a minden felügyeleti kiszolgáló erőforráskészlet elemet, hogy kommunikáljon Log Analyticsokkal, majd kattintson a **munkaterület hozzáadása** lehetőségre.
 
     ![Képernyőfelvétel a Server Pool (kiszolgáló készlet) képernyőről a Microsoft Operations Management Suite munkaterület hozzáadása lehetőséggel az összes felügyeleti kiszolgáló erőforráskészlet kiválasztásával.](media/service-map-scom/scom-config-pool.png)
 
@@ -117,7 +117,7 @@ Ebben az aktuális kiadásban csak egy Log Analytics munkaterületet lehet konfi
 
 ## <a name="configure-rules-and-overrides"></a>Szabályok és felülbírálások konfigurálása
 
-Egy szabály, *Microsoft.SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat Azure monitor for VMS Térkép szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes**paraméter értékét.
+Egy szabály, *Microsoft.SystemCenter. ServiceMapImport. Rule*, rendszeres időközönként beolvassa az adatokat Azure monitor for VMS Térkép szolgáltatásból. A szinkronizálási időköz módosításához felülbírálhatja a szabályt, és módosíthatja a **IntervalMinutes** paraméter értékét.
 
 ![A Operations Manager felülbírálások tulajdonságai ablak](media/service-map-scom/scom-overrides.png)
 
@@ -139,7 +139,7 @@ Az aktuális terv a következő problémákat és korlátozásokat mutatja be:
 Az egyszerű szolgáltatásnév létrehozásával kapcsolatos hivatalos Azure-dokumentációért lásd:
 
 * [Egyszerű szolgáltatásnév létrehozása a PowerShell használatával](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Egyszerű szolgáltatásnév létrehozása az Azure CLI használatával](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Egyszerű szolgáltatásnév létrehozása az Azure CLI használatával](/cli/azure/create-an-azure-service-principal-azure-cli)
 * [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Javaslatok

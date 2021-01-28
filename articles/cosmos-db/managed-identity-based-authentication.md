@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345729"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927405"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a
 
 Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerhez rendelt felügyelt identitásához. Azure Cosmos DB több beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felügyelt identitáshoz. Ebben a megoldásban a következő két szerepkört fogja használni:
 
-|Beépített szerepkör  |Leírás  |
+|Beépített szerepkör  |Description  |
 |---------|---------|
 |[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat. Olvasási/írási kulcsok lekérését teszi lehetővé. |
 |[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
@@ -130,7 +130,7 @@ namespace Monitor
 }
 ```
 
-A rendszer által hozzárendelt felügyelt identitási token beszerzéséhez a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) függvénytárat fogja használni. A jogkivonat lekérésének és a könyvtár további információinak megismeréséhez `Microsoft.Azure.Service.AppAuthentication` tekintse meg a [szolgáltatások közötti hitelesítéssel](../key-vault/general/service-to-service-authentication.md) foglalkozó cikket.
+A rendszer által hozzárendelt felügyelt identitási token beszerzéséhez a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) függvénytárat fogja használni. A jogkivonat lekérésének és a könyvtár további információinak megismeréséhez `Microsoft.Azure.Service.AppAuthentication` tekintse meg a [szolgáltatások közötti hitelesítéssel](/dotnet/api/overview/azure/service-to-service-authentication) foglalkozó cikket.
 
 
 ```csharp
@@ -216,7 +216,7 @@ namespace Monitor
 
 Most már készen áll a [Function alkalmazás üzembe helyezésére](../azure-functions/create-first-function-vs-code-csharp.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tanúsítványalapú hitelesítés Azure Cosmos DB és Azure Active Directory](certificate-based-authentication.md)
 * [Azure Cosmos DB kulcsok védelme Azure Key Vault használatával](access-secrets-from-keyvault.md)

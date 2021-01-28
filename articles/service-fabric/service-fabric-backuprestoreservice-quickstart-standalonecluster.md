@@ -3,12 +3,12 @@ title: Rendszeres biztonsági mentés/visszaállítás az önálló Azure-Servic
 description: Az alkalmazásadatok rendszeres biztonsági mentésének engedélyezéséhez használjon önálló Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4abf1cd4561a40aaafa5c01865eb12882884422
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538585"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927949"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Rendszeres biztonsági mentés és visszaállítás önálló Service Fabric
 > [!div class="op_single_selector"]
@@ -47,11 +47,16 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
 * X. 509 tanúsítvány a biztonsági másolatok tárolásához a tárolóhoz való kapcsolódáshoz szükséges titkok titkosításához. A [cikkből](service-fabric-windows-cluster-x509-security.md) megtudhatja, hogyan szerezzen be vagy hozzon létre egy önaláírt X. 509 tanúsítványt.
 
 * Service Fabric Service Fabric SDK 3,0-es vagy újabb verziójának használatával létrehozott megbízható állapot-nyilvántartó alkalmazás. A .NET Core 2,0-ot célzó alkalmazások esetében az alkalmazást Service Fabric SDK 3,1-es vagy újabb verziójának használatával kell felépíteni.
-* A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult [előzetes verzióban].
+* A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult (előzetes verzió).
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Ha a PowerShellGet verziója kisebb, mint a 1.6.0, frissítenie kell a *-AllowPrerelease* jelző támogatásának hozzáadásához:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
@@ -201,7 +206,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![Alkalmazás biztonsági mentésének engedélyezése][3] 
 
-2. Végül válassza ki a kívánt szabályzatot, és válassza a *biztonsági mentés engedélyezése*lehetőséget.
+2. Végül válassza ki a kívánt szabályzatot, és válassza a *biztonsági mentés engedélyezése* lehetőséget.
 
     ![Házirend kiválasztása][4]
 

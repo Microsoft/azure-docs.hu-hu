@@ -1,19 +1,16 @@
 ---
 title: Spark streaming & pontosan egyszeri események feldolgozása – Azure HDInsight
 description: Apache Spark streaming beállítása egy esemény egyszeri és egyszeri feldolgozásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2018
-ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ba7df665b24a3eba2cd185d85a17bd0ef456b0b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086177"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929670"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-feladatok létrehozása pontosan egyszeri esemény-feldolgozással
 
@@ -39,13 +36,13 @@ A pontosan egyszeri szemantika megköveteli, hogy egyetlen ponton se vesszenek e
 
 ### <a name="replayable-sources"></a>Visszajátszható források
 
-Az a forrás, amellyel a Spark streaming-alkalmazás beolvassa az eseményeket, újra *játszhatónak*kell lennie. Ez azt jelenti, hogy azokban az esetekben, amikor az üzenet beolvasása megtörtént, de a rendszer az üzenet megtartásának vagy feldolgozásának megkezdése előtt meghiúsult, a forrásnak ugyanazt az üzenetet kell megadnia.
+Az a forrás, amellyel a Spark streaming-alkalmazás beolvassa az eseményeket, újra *játszhatónak* kell lennie. Ez azt jelenti, hogy azokban az esetekben, amikor az üzenet beolvasása megtörtént, de a rendszer az üzenet megtartásának vagy feldolgozásának megkezdése előtt meghiúsult, a forrásnak ugyanazt az üzenetet kell megadnia.
 
 Az Azure-ban az Azure Event Hubs és a HDInsight [Apache Kafka](https://kafka.apache.org/) is elérhetővé teszi a visszajátszható forrásokat. Egy olyan hibatűrő fájlrendszer, mint például az [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), az Azure Storage-Blobok vagy a Azure Data Lake Storage, ahol minden adat örökre megmarad, és bármikor újra elolvashatja az adatforrásokat.
 
 ### <a name="reliable-receivers"></a>Megbízható fogadók
 
-A Spark Streamingben a források, például a Event Hubs és a Kafka *megbízható fogadókkal*rendelkeznek, ahol minden fogadó nyomon követi a forrás olvasásának előrehaladását. A megbízható fogadó állapota hibatűrő tárolóban marad, [Apache ZooKeeper](https://zookeeper.apache.org/) vagy a HDFS-ba írt Spark streaming ellenőrzőpontokon belül. Ha egy ilyen fogadó meghibásodik, és később újraindul, akkor azt is megteheti, hogy hol hagyta el.
+A Spark Streamingben a források, például a Event Hubs és a Kafka *megbízható fogadókkal* rendelkeznek, ahol minden fogadó nyomon követi a forrás olvasásának előrehaladását. A megbízható fogadó állapota hibatűrő tárolóban marad, [Apache ZooKeeper](https://zookeeper.apache.org/) vagy a HDFS-ba írt Spark streaming ellenőrzőpontokon belül. Ha egy ilyen fogadó meghibásodik, és később újraindul, akkor azt is megteheti, hogy hol hagyta el.
 
 ### <a name="use-the-write-ahead-log"></a>A Write-Ahead napló használata
 
@@ -87,7 +84,7 @@ Használhat például egy olyan Azure SQL Database tárolt eljárást, amely ese
 
 Egy másik példa egy particionált fájlrendszer, például az Azure Storage-Blobok vagy a Azure Data Lake Storage használatára. Ebben az esetben a fogadó logikának nem kell ellenőriznie a fájl létezését. Ha az eseményt jelképező fájl létezik, egyszerűen felülírja ugyanazokat az adattípusokat. Ellenkező esetben a rendszer létrehoz egy új fájlt a számított útvonalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Spark streaming – áttekintés](apache-spark-streaming-overview.md)
 * [Magasan elérhető Apache Spark folyamatos átviteli feladatok létrehozása Apache Hadoop-FONALban](apache-spark-streaming-high-availability.md)

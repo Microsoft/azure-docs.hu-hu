@@ -1,19 +1,16 @@
 ---
 title: Apache Sqoop-feladatok futtatása a .NET és a HDInsight-Azure használatával
 description: Ismerje meg, hogyan futtathatja az Apache Sqoop importálását és exportálását a HDInsight .NET SDK használatával egy Apache Hadoop-fürt és egy Azure SQL Database között.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
-ms.openlocfilehash: bc4b3019cb8308ea19d86eea7bf886063ea28563
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008284"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928351"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight .NET Apache Hadoop SDK használatával
 
@@ -37,7 +34,7 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, így könnyebben haszn
 
 1. Indítsa el a Visual studiót, és hozzon létre egy C# konzolos alkalmazást.
 
-1. Navigáljon az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolra** , és futtassa a következő parancsot:
+1. Navigáljon az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolra** , és futtassa a következő parancsot:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job

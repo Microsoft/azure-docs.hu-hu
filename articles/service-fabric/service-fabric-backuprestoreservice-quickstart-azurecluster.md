@@ -3,12 +3,12 @@ title: Rendszeres biztonsági mentés és visszaállítás az Azure Service Fabr
 description: Az alkalmazásadatok rendszeres biztonsági mentésének engedélyezéséhez használja Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538670"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927987"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Rendszeres biztonsági mentés és visszaállítás egy Azure Service Fabric-fürtben
 > [!div class="op_single_selector"]
@@ -48,11 +48,16 @@ A Service Fabric API-kat biztosít a következő, rendszeres biztonsági mentés
 * X. 509 tanúsítvány a biztonsági másolatok tárolásához a tárolóhoz való kapcsolódáshoz szükséges titkok titkosításához. A [cikkből](service-fabric-cluster-creation-via-arm.md) megtudhatja, hogyan kérhet le vagy hozhat létre X. 509 tanúsítványt.
 * Service Fabric Service Fabric SDK 3,0-es vagy újabb verziójának használatával létrehozott megbízható állapot-nyilvántartó alkalmazás. A .NET Core 2,0-ot célzó alkalmazások esetében az alkalmazást Service Fabric SDK 3,1-es vagy újabb verziójának használatával kell felépíteni.
 * Azure Storage-fiók létrehozása az alkalmazások biztonsági másolatainak tárolásához.
-* A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult [előzetes verzióban].
+* A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult (előzetes verzió).
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Ha a PowerShellGet verziója kisebb, mint a 1.6.0, frissítenie kell a *-AllowPrerelease* jelző támogatásának hozzáadásához:
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * Győződjön meg arról, hogy a fürt a paranccsal van csatlakoztatva, `Connect-SFCluster` mielőtt konfigurációs kérelmet hozna a Microsoft. ServiceFabric. PowerShell. http modul használatával.
 
@@ -118,7 +123,7 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Rendszeres biztonsági mentés engedélyezése megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors
 A megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezéséhez hajtsa végre a lépéseket. Az alábbi lépések feltételezik
-- A fürt az X. 509 biztonsági _mentési és visszaállítási szolgáltatással_történő beállítás.
+- A fürt az X. 509 biztonsági _mentési és visszaállítási szolgáltatással_ történő beállítás.
 - Megbízható állapot-nyilvántartó szolgáltatás van telepítve a fürtön. Ebben a rövid útmutatóban az alkalmazás URI-ja, `fabric:/SampleApp` az alkalmazáshoz tartozó megbízható állapot-nyilvántartó szolgáltatás URI azonosítója pedig `fabric:/SampleApp/MyStatefulService` . A szolgáltatás egyetlen partícióval van üzembe helyezve, a partíció azonosítója pedig `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 - Az ügyféltanúsítvány és a rendszergazdai szerepkör telepítve van a _saját_ (_személyes_) tárolójában a _CurrentUser_ tanúsítványtárolójának a gépen, ahonnan az alábbi parancsfájlok meghívására kerül sor. Ez a példa a `1b7ebe2174649c45474a4819dafae956712c31d3` tanúsítvány ujjlenyomatát használja. További információ az Ügyféltanúsítványok használatáról: [Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlése](service-fabric-cluster-security-roles.md).
 

@@ -1,19 +1,16 @@
 ---
 title: Mi az az Apache Storm? – Azure HDInsight
 description: Az Apache Stormmal valós időben dolgozhat fel adatfolyamokat. Az Azure HDInsighttal könnyen létrehozhat Storm-fürtöket az Azure-felhőben. A Visual Studióval C# használatával hozhat létre Storm-megoldásokat, amelyeket a HDInsight Storm-fürtjeiben helyezhet üzembe.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 97b1466e6ac1f2c2dfb931655b64b0f9937ba21d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82183262"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928907"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
@@ -63,7 +60,7 @@ Az alapértelmezett konfiguráció szerint az Apache Storm-fürtök csak egyetle
 
 ## <a name="ease-of-use"></a>Egyszerű használat
 
-|Használat |Leírás |
+|Használat |Description |
 |---|---|
 |Secure Shell-(SSH-) kapcsolat|A Storm-fürt fő csomópontjait az interneten keresztül érheti el az SSH használatával. Az SSH használatával közvetlenül futtathat parancsokat a fürtön. További információ: az [SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Webes kapcsolat|Az összes HDInsight-fürt biztosítja a Ambari webes felhasználói felületét. Az Ambari webes felülettel egyszerűen figyelheti, konfigurálhatja és kezelheti a fürtön futó szolgáltatásokat. A Storm felhasználói felülete a Storm-fürtökön is elérhető. A Storm felhasználói felülettel böngészőből figyelhetők és kezelhetők a futó Storm-topológiák. További információkért tekintse meg a [HDInsight kezelése az Apache Ambari webes felülettel](../hdinsight-hadoop-manage-ambari.md) és a [figyelés és kezelés a Apache Storm felhasználói felületi dokumentumok használatával](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) című témakört.|
@@ -146,7 +143,7 @@ A Storm az Apache Log4j 2 használatával naplózza az adatokat. Alapértelmezé
 
 A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt futó Stormra vonatkozó [Java-alapú WordCount](apache-storm-develop-java-topology.md) példában tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Apache Storm on HDInsight valós idejű elemzési megoldásairól:
 
