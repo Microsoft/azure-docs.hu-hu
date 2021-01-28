@@ -1,19 +1,16 @@
 ---
 title: Excel & Apache Hadoop nyílt adatbázis-kapcsolati (ODBC) illesztőprogrammal – Azure HDInsight
 description: Ismerje meg, hogyan állíthatja be és használhatja az Excelhez készült Microsoft kaptár ODBC-illesztőt a Microsoft Excel HDInsight-fürtök adatainak lekérdezéséhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: e9b74cc3bff23848bf63859e7e38bb06599956a3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540771"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946805"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Az Excel és az Apache Hadoop csatlakoztatása az Azure HDInsightban a Microsoft Hive ODBC-illesztővel
 
@@ -53,9 +50,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy struktúra ODBC-ad
    |  Adatforrás neve |Adjon nevet az adatforrásának |
    |  Állomás (ok) |Írja be a következő szöveget: `HDInsightClusterName.azurehdinsight.net`. Például: `myHDICluster.azurehdinsight.net`. Megjegyzés: `HDInsightClusterName-int.azurehdinsight.net` támogatott, ha az ügyfél virtuális gépe ugyanahhoz a virtuális hálózathoz van felhasználva. |
    |  Port |Használja a **443** számú portot. (Ez a port megváltozott a 563-ról 443-ra.) |
-   |  Adatbázis |Használja az **alapértelmezett értéket** . |
+   |  Adatbázis |Használja az **alapértelmezett értéket**. |
    |  Mechanizmus |A **Windows Azure HDInsight szolgáltatás** kiválasztása |
-   |  Felhasználónév |Adja meg a HDInsight-fürt HTTP-felhasználói felhasználónevét. Az alapértelmezett felhasználónév az **admin** . |
+   |  Felhasználónév |Adja meg a HDInsight-fürt HTTP-felhasználói felhasználónevét. Az alapértelmezett felhasználónév az **admin**. |
    |  Jelszó |Adja meg a HDInsight-fürt felhasználói jelszavát. Jelölje be a **Jelszó mentése (titkosított)** jelölőnégyzetet.|
 
 1. Választható lehetőség: válassza a **Speciális beállítások lehetőséget...**  
@@ -82,15 +79,15 @@ A következő lépések leírják, hogyan importálhat egy struktúra-táblázat
 
 1. Nyisson meg egy új vagy egy meglévő munkafüzetet Excelben.
 
-2. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból** az ODBC-ből,  >  **From ODBC** hogy elindítsa a **from ODBC** ablakot.
+2. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból** az ODBC-ből,  >   hogy elindítsa a **from ODBC** ablakot.
 
     ![Az Excel-adatkapcsolatok varázsló megnyitása](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Az Excel-adatkapcsolatok varázsló megnyitása")
 
-3. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra** .
+3. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra**.
 
 4. Az első használathoz egy **ODBC-illesztőprogram** párbeszédablak nyílik meg. A bal oldali menüben válassza a **Windows** lehetőséget. Ezután válassza a **Kapcsolódás** lehetőséget a **navigátor** ablak megnyitásához.
 
-5. A **Navigátorban** navigáljon a **kaptár**  >  **alapértelmezett**  >  **hivesampletable** , majd válassza a **Betöltés** lehetőséget. Néhány percet vesz igénybe, mielőtt az Excelbe importálja az adatimportálást.
+5. A **Navigátorban** navigáljon a **kaptár**  >  **alapértelmezett**  >  **hivesampletable**, majd válassza a **Betöltés** lehetőséget. Néhány percet vesz igénybe, mielőtt az Excelbe importálja az adatimportálást.
 
     ![HDInsight Excel-struktúra ODBC-navigátor](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel-struktúra ODBC-navigátor")
 

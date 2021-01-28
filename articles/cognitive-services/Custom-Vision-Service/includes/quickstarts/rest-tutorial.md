@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: 8890a0132e5f510a0af2862c483206fd025a68d8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cea3db080865727ab9b425f14a172041a54a5414
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256566"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947935"
 ---
 Ismerkedjen meg a Custom Vision REST APIával. Az alábbi lépéseket követve meghívhatja az API-t, és felépítheti a rendszerkép besorolási modelljét. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
 
@@ -216,7 +216,7 @@ A visszaadott JSON-válasz legalább az összes olyan címkét megadja, amelyet 
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy elvégezte a képbesorolási folyamat minden lépését a REST API használatával. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
 
@@ -224,5 +224,5 @@ Most, hogy elvégezte a képbesorolási folyamat minden lépését a REST API ha
 > [Modell tesztelése és újratanítása](../../test-your-model.md)
 
 * [Mi a Custom Vision?](../../overview.md)
-* [API-referenciák dokumentációja (képzés)](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)
+* [API-referenciák dokumentációja (képzés)](/dotnet/api/overview/azure/cognitiveservices/client/customvision)
 * [API-referenciák dokumentációja (előrejelzés)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeae)
