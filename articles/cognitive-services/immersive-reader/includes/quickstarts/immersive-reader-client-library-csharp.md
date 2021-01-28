@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948477"
 ---
 A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
@@ -42,7 +42,7 @@ Hozzon létre egy új projektet a Visual Studióban a ASP.NET Core webalkalmazá
 
 ### <a name="configure-authentication-values"></a>Hitelesítési értékek konfigurálása
 
-Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése** lehetőséget. Ekkor megnyílik egy _secrets.js_ nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1). Cserélje le asecrets.jstartalmát a következőre, és adja _meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
+Kattintson a jobb gombbal a projektre a _megoldáskezelő_ , majd válassza a **felhasználói titkok kezelése** lehetőséget. Ekkor megnyílik egy _secrets.js_ nevű fájl. Ezt a fájlt a verziókövetés nem ellenőrzi. További információ [itt](/aspnet/core/security/app-secrets?tabs=windows). Cserélje le asecrets.jstartalmát a következőre, és adja _meg_ a magával ragadó olvasó erőforrásának létrehozásakor megadott értékeket.
 
 ```json
 {
@@ -65,7 +65,7 @@ Nyissa meg a NuGet csomagkezelő konzolt a **Tools-> NuGet csomagkezelő-> Packa
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>A vezérlő frissítése a jogkivonat beszerzéséhez 
 
-Nyissa meg a _Controllers\HomeController.cs_ , és adja hozzá a következő kódot a fájl elején található _using_ utasítások után.
+Nyissa meg a _Controllers\HomeController.cs_, és adja hozzá a következő kódot a fájl elején található _using_ utasítások után.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -304,6 +304,6 @@ Ha a "magára olvasó" gombra kattint, megjelenik a megjelenő, az oldalon talá
 
 ![Lebilincselő olvasó – C #](../../media/quickstart-csharp/5-viewimmersivereader.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)

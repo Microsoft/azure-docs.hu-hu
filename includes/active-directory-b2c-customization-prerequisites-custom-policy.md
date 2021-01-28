@@ -2,15 +2,15 @@
 author: msmimart
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 12/14/2020
+ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: 8c2d8f03da993985a2d8e319992c2b2f2cfbae6e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: dc664feac6c0ab747f3bccb3fc18f15a3aa882c3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425834"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98947313"
 ---
 * Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](../articles/active-directory-b2c/custom-policy-get-started.md)című témakör lépéseit.
-* Ha még nem tette meg, [regisztráljon egy webalkalmazást Azure Active Directory B2C](../articles/active-directory-b2c/tutorial-register-applications.md).
+* Ha még nem tette meg, [regisztráljon egy webalkalmazást](../articles/active-directory-b2c/tutorial-register-applications.md), és [engedélyezze az azonosító jogkivonat implicit támogatását](../articles/active-directory-b2c/tutorial-register-applications.md#enable-id-token-implicit-grant).
 

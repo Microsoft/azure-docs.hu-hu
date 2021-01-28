@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 8c0715b3570bf60205c83390ab93b272e49e8733
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1c3ed6cc97c6fc77083baa915fac2f5530922eac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371823"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947421"
 ---
 Ismerkedjen meg az Bing Autosuggest ügyféloldali kódtáraval a Go-ban. Az alábbi lépéseket követve telepítheti a könyvtárat, és kipróbálhatja a példákat az alapszintű feladatokhoz.
 
@@ -76,9 +76,9 @@ A környezeti változó hozzáadását követően futtassa a `source .bash_profi
 
 A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt számára, és navigáljon hozzá. A munkaterület három mappát fog tartalmazni:
 
-* **src** : Ez a könyvtár forráskódot és csomagokat tartalmaz. A paranccsal telepített csomagok `go get` itt fognak megjelenni.
-* **pkg** : Ez a könyvtár tartalmazza a lefordított go csomag objektumait. Ezek a fájlok mindegyike rendelkezik `.a` bővítménnyel.
-* **bin** : Ez a könyvtár tartalmazza a futtatásakor létrehozott bináris végrehajtható fájlokat `go install` .
+* **src**: Ez a könyvtár forráskódot és csomagokat tartalmaz. A paranccsal telepített csomagok `go get` itt fognak megjelenni.
+* **pkg**: Ez a könyvtár tartalmazza a lefordított go csomag objektumait. Ezek a fájlok mindegyike rendelkezik `.a` bővítménnyel.
+* **bin**: Ez a könyvtár tartalmazza a futtatásakor létrehozott bináris végrehajtható fájlokat `go install` .
 
 > [!TIP]
 > További információ a [Go-munkaterület](https://golang.org/doc/code.html#Workspaces)struktúrájáról. Ez az útmutató a és a beállításával kapcsolatos információkat tartalmaz `$GOPATH` `$GOROOT` .
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>API-kérelem küldése
 
-Ugyanebben a metódusban az ügyfél [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) metódusával küldhet lekérdezést a bingnek. Ezután ismételje meg a [javaslatok](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) válaszát, és nyomtassa ki az első javaslatot.
+Ugyanebben a metódusban az ügyfél [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) metódusával küldhet lekérdezést a bingnek. Ezután ismételje meg a [javaslatok](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions) válaszát, és nyomtassa ki az első javaslatot.
 
 ```Go
 // This should return the query suggestion "xbox."
@@ -197,7 +197,7 @@ if len(groups) > 0 {
 }
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa a go alkalmazást a `go run [arguments]` paranccsal az alkalmazás könyvtárából.
 
@@ -205,19 +205,19 @@ Futtassa a go alkalmazást a `go run [arguments]` paranccsal az alkalmazás kön
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Egy erőforráscsoport törlése a Azure Portalban](../../../cognitive-services-apis-create-account.md#clean-up-resources).
 * [Egy erőforráscsoport törlése az Azure CLI-ben](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Mi a Bing Autosuggest?](../../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

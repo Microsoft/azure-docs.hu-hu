@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947652"
 ---
 ## <a name="install-the-container"></a>A tároló telepítése
 
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Az üzembe helyezést az Azure Container instance (ACI) használatával is egyszerűbbé teheti. Az ACI egy olyan erőforrás, amely lehetővé teszi a Docker-tárolók igény szerinti futtatását egy felügyelt, kiszolgáló nélküli Azure-környezetben. 
 
-Lásd: a [Azure Container instances használata](../how-tos/text-analytics-how-to-use-container-instances.md) az ACI-erőforrások Azure Portal használatával történő üzembe helyezésének lépéseihez. Az Azure CLI-vel az alábbi PowerShell-szkriptet is használhatja, amely egy ACI-t hoz létre az előfizetésében a tároló képe alapján.  Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.  Az ACI-erőforrások maximális számának korlátozása miatt ne jelölje be ezt a beállítást, ha várhatóan több mint 5 nagy dokumentumot (körülbelül 5000 karaktert) kíván elküldeni.
+Lásd: a [Azure Container instances használata](../../containers/azure-container-instance-recipe.md) az ACI-erőforrások Azure Portal használatával történő üzembe helyezésének lépéseihez. Az Azure CLI-vel az alábbi PowerShell-szkriptet is használhatja, amely egy ACI-t hoz létre az előfizetésében a tároló képe alapján.  Várjon, amíg a szkript befejeződik (körülbelül 25-30 perc) az első kérés elküldése előtt.  Az ACI-erőforrások maximális számának korlátozása miatt ne jelölje be ezt a beállítást, ha várhatóan több mint 5 nagy dokumentumot (körülbelül 5000 karaktert) kíván elküldeni.
 A rendelkezésre állással kapcsolatos információkért tekintse meg az [ACI regionális támogatási](../../../container-instances/container-instances-region-availability.md) cikkét. 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 További információ: NGINX dokumentációja az [NGINX SSL-lezárásáról](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/).
-

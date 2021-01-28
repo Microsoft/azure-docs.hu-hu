@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight-titkosítás átvitel közben
 description: Ismerje meg, hogy az Azure HDInsight-fürtön milyen biztonsági funkciókat biztosít a titkosítás továbbítása.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fb3761ce7839cb4450997da094646b6604aeb895
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049779"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946859"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-titkosítás az Azure HDInsight
 
@@ -47,7 +44,7 @@ Az átvitel közbeni titkosítás engedélyezve van a `isEncryptionInTransitEnab
 
 [Letöltheti a minta sablon és a paraméter fájlját](https://github.com/Azure-Samples/hdinsight-enterprise-security). A sablon és az Azure CLI-kódrészlet használata előtt cserélje le a következő helyőrzőket a megfelelő értékekre:
 
-| Helyőrző | Leírás |
+| Helyőrző | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Az Azure-előfizetés azonosítója |
 | `<RESOURCE_GROUP>` | Az az erőforráscsoport, amelyben létre szeretné hozni az új fürtöt és a Storage-fiókot. |
@@ -76,7 +73,7 @@ az deployment group create --name HDInsightEnterpriseSecDeployment \
     --parameters parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A vállalati biztonság áttekintése az Azure HDInsight](hdinsight-security-overview.md)
 * [Azure Active Directory felhasználók szinkronizálása egy HDInsight-fürttel](../disk-encryption.md).

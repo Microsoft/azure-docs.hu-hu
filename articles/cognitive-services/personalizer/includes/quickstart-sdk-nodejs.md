@@ -8,14 +8,14 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/27/2020
-ms.openlocfilehash: d2b0d4435f681ce6dedea7cace929a03e6782bce
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f050ed5aff63d7e75c45505309b2cf7d18e9ea1a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94372018"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947509"
 ---
-[Dokumentáció](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)  | [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+[Dokumentáció](/javascript/api/@azure/cognitiveservices-personalizer/)  | [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,11 +77,11 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="object-model"></a>Objektummodell
 
-A személyre szabott ügyfél egy [PersonalizerClient](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest) objektum, amely a kulcsot tartalmazó Microsoft. Rest. ServiceClientCredentials használatával hitelesíti az Azure-t.
+A személyre szabott ügyfél egy [PersonalizerClient](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient) objektum, amely a kulcsot tartalmazó Microsoft. Rest. ServiceClientCredentials használatával hitelesíti az Azure-t.
 
-Ha szeretné megkérdezni a tartalom egyetlen legjobb elemét, hozzon létre egy [RankRequest](/javascript/api/@azure/cognitiveservices-personalizer/rankrequest?view=azure-node-latest), majd továbbítsa azt az [ügyfélnek. Rangsor](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest#rank-rankrequest--msrest-requestoptionsbase-) metódusa. A Rank metódus egy RankResponse ad vissza.
+Ha szeretné megkérdezni a tartalom egyetlen legjobb elemét, hozzon létre egy [RankRequest](/javascript/api/@azure/cognitiveservices-personalizer/rankrequest), majd továbbítsa azt az [ügyfélnek. Rangsor](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient#rank-rankrequest--msrest-requestoptionsbase-) metódusa. A Rank metódus egy RankResponse ad vissza.
 
-Ha szeretné elküldeni a személyre szabott jutalmat, hozzon létre egy [RewardRequest](/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest?view=azure-node-latest), majd továbbítsa azt az Events osztály [jutalmazási](/javascript/api/@azure/cognitiveservices-personalizer/events?view=azure-node-latest#reward-string--rewardrequest--servicecallback-void--) metódusának.
+Ha szeretné elküldeni a személyre szabott jutalmat, hozzon létre egy [RewardRequest](/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest), majd továbbítsa azt az Events osztály [jutalmazási](/javascript/api/@azure/cognitiveservices-personalizer/events#reward-string--rewardrequest--servicecallback-void--) metódusának.
 
 A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendszerekben annak meghatározása, hogy milyen hatással van a [jutalom pontszáma](../concept-rewards.md) , és hogy mekkora mértékben lehet egy összetett folyamat, dönthet úgy, hogy idővel változhat. Ennek az egyik elsődleges tervezési döntésnek kell lennie a személyre szabott architektúrában.
 

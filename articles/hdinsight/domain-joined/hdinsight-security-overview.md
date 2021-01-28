@@ -1,19 +1,16 @@
 ---
 title: A vállalati biztonság áttekintése az Azure HDInsight
 description: Ismerje meg a vállalati biztonság Azure HDInsight való biztosításának különböző módszereit.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f4fa1e64e00f2ae027d80960072da7d73d3a89cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537269"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946844"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -21,7 +18,7 @@ Az Azure HDInsight számos módszert kínál a nagyvállalati biztonsági igény
 
 Ez a cikk a biztonsági megoldásokat úgy tekinti meg, hogy a biztonsági megoldásokat négy hagyományos biztonsági pillérre osztja: biztonsági, hitelesítési, engedélyezési és titkosítási szinten.
 
-A cikk emellett bemutatja az **Azure HDInsight Enterprise Security Package (ESP)** , amely Active Directory-alapú hitelesítést, többfelhasználós támogatást és szerepköralapú hozzáférés-vezérlést biztosít a HDInsight-fürtökhöz.
+A cikk emellett bemutatja az **Azure HDInsight Enterprise Security Package (ESP)**, amely Active Directory-alapú hitelesítést, többfelhasználós támogatást és szerepköralapú hozzáférés-vezérlést biztosít a HDInsight-fürtökhöz.
 
 ## <a name="enterprise-security-pillars"></a>Vállalati biztonsági oszlopok
 

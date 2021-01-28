@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1058b93a304dbf6f08d9a3e8f995e123a6dc6631
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356477"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948339"
 ---
 Ismerkedés az Azure Content Moderator Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a PiPy csomagot, és próbálja ki az alapszintű feladatok példáját. 
 
@@ -30,7 +30,7 @@ A Pythonhoz készült Content Moderator ügyféloldali kódtára a következőre
 * Egyéni rendszerkép-lista használata
 * Felülvizsgálat létrehozása
 
-[Dokumentáció](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Dokumentáció](/python/api/overview/azure/cognitiveservices/contentmoderator)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,10 +75,10 @@ A következő osztályok a Content Moderator Python ügyféloldali kódtár főb
 
 |Név|Leírás|
 |---|---|
-|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Ez az osztály minden Content Moderator funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
-|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Ez az osztály lehetővé teszi a képek elemzését a felnőtt tartalmak, a személyes adatok vagy az emberi arcok számára.|
-|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Ez az osztály a nyelv, a káromkodás, a hibák és a személyes adatok szövegének elemzéséhez nyújt funkciókat.|
-[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Ez az osztály a felülvizsgálati API-k funkcionalitását biztosítja, beleértve a feladatok létrehozására, az egyéni munkafolyamatokra és az emberi felülvizsgálatokra vonatkozó módszereket is.|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient)|Ez az osztály minden Content Moderator funkcióhoz szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
+|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations)|Ez az osztály lehetővé teszi a képek elemzését a felnőtt tartalmak, a személyes adatok vagy az emberi arcok számára.|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations)|Ez az osztály a nyelv, a káromkodás, a hibák és a személyes adatok szövegének elemzéséhez nyújt funkciókat.|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations)|Ez az osztály a felülvizsgálati API-k funkcionalitását biztosítja, beleértve a feladatok létrehozására, az egyéni munkafolyamatokra és az emberi felülvizsgálatokra vonatkozó módszereket is.|
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -93,7 +93,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) objektum létrehozásához.
+Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) objektumot a kulccsal, és használja a végpontján egy [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient) objektum létrehozásához.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Ezután adja hozzá a következő kódot a Python-szkripthez.
 
 ## <a name="use-a-custom-terms-list"></a>Egyéni kifejezések listájának használata
 
-A következő kód bemutatja, hogyan kezelheti az egyéni kifejezések listáját a szöveges moderáláshoz. A [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) osztály használatával létrehozhat egy kifejezéseket tartalmazó listát, kezelheti az egyes kifejezéseket, és más szövegeket is megadhat.
+A következő kód bemutatja, hogyan kezelheti az egyéni kifejezések listáját a szöveges moderáláshoz. A [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations) osztály használatával létrehozhat egy kifejezéseket tartalmazó listát, kezelheti az egyes kifejezéseket, és más szövegeket is megadhat.
 
 ### <a name="get-sample-text"></a>Minta szövegének beolvasása
 
@@ -186,7 +186,7 @@ Az alábbi kód használatával törölheti az egyéni kifejezések listáját.
 
 ## <a name="moderate-images"></a>Közepes méretű képek
 
-A következő kód egy Content Moderator ügyfelet használ a [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) objektummal együtt, hogy elemezze a képeket a felnőtteknek és a zamatos tartalomnak.
+A következő kód egy Content Moderator ügyfelet használ a [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations) objektummal együtt, hogy elemezze a képeket a felnőtteknek és a zamatos tartalomnak.
 
 ### <a name="get-sample-images"></a>Mintaképek beolvasása
 
@@ -218,7 +218,7 @@ Az alábbi kód ellenőrzi az emberi arcok képét, és kinyomtatja az eredmény
 
 ## <a name="use-a-custom-image-list"></a>Egyéni rendszerkép-lista használata
 
-A következő kód bemutatja, hogyan kezelheti a lemezképek moderálására szolgáló képek egyéni listáját. Ez a funkció akkor hasznos, ha a platform gyakran ugyanazokat a lemezképeket fogadja, amelyeket ki szeretne próbálni. Az adott lemezképek listájának karbantartásával javíthatja a teljesítményt. A [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) osztály segítségével létrehozhat egy képlistát, kezelheti a listán szereplő egyes lemezképeket, és összehasonlíthatja más képeket.
+A következő kód bemutatja, hogyan kezelheti a lemezképek moderálására szolgáló képek egyéni listáját. Ez a funkció akkor hasznos, ha a platform gyakran ugyanazokat a lemezképeket fogadja, amelyeket ki szeretne próbálni. Az adott lemezképek listájának karbantartásával javíthatja a teljesítményt. A [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations) osztály segítségével létrehozhat egy képlistát, kezelheti a listán szereplő egyes lemezképeket, és összehasonlíthatja más képeket.
 
 Hozza létre a következő szöveges változókat az ebben a forgatókönyvben használni kívánt képurl-címek tárolásához.
 
@@ -296,7 +296,7 @@ A következő kód használatával törölheti az adott rendszerkép listáját.
 
 A Content Moderator Python ügyféloldali kódtár használatával tartalmat adhat a [felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com) , így az emberi moderátorok áttekinthetik azt. További információ a felülvizsgálati eszközről: a [felülvizsgálati eszköz fogalmi útmutatója](../../review-tool-user-guide/human-in-the-loop.md).
 
-A következő kód a [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) osztályt használja a felülvizsgálat létrehozásához, az azonosító lekéréséhez, valamint az adatoknak a felülvizsgálati eszköz webportálon való fogadását követően az emberi bevitel megérkezése után.
+A következő kód a [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations) osztályt használja a felülvizsgálat létrehozásához, az azonosító lekéréséhez, valamint az adatoknak a felülvizsgálati eszköz webportálon való fogadását követően az emberi bevitel megérkezése után.
 
 ### <a name="get-review-credentials"></a>Felülvizsgálati hitelesítő adatok beolvasása
 
@@ -346,7 +346,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator Python-függvénytárat moderálási feladatokra. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 805ee7f5b210a09335b2177b83777c5caa805858
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: aee064a15d465c412d16dd313279168c37af0e98
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147433"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947211"
 ---
 <a name="HOLTop"></a>
 
@@ -28,7 +28,7 @@ a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics)  |  [v3
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
-[v2 dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client)  |  [v2 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -45,7 +45,7 @@ a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics)  |  [v3
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy "„Helló világ!” alkalmazás" projektet egyetlen C# forrásfájl használatával: *program.cs*.
+Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy "Hello World" projektet egyetlen C# forrásfájl használatával: *program.cs*.
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 

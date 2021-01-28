@@ -1,19 +1,16 @@
 ---
 title: Virtuális gépek újraindítása az Azure HDInsight-fürtökhöz
 description: Ismerje meg, hogyan indíthatja újra a nem válaszoló virtuális gépeket az Azure HDInsight-fürtökön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a61735dba60860459d007eb54d4655f41d5ae51a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546466"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946865"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Virtuális gépek újraindítása HDInsight-fürtökhöz
 

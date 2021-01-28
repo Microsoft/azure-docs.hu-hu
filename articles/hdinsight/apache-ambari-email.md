@@ -1,18 +1,15 @@
 ---
 title: 'Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight'
 description: Ez a cikk azt ismerteti, hogyan használható az SendGrid az Apache Ambari az e-mailes értesítésekhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542556"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946964"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight
 
@@ -38,11 +35,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     ![A SendGrid áttekintése az Azure Portalon](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
-1. A bal oldali menüben navigáljon a fiók nevére, majd adja meg a **fiók adatait** .
+1. A bal oldali menüben navigáljon a fiók nevére, majd adja meg a **fiók adatait**.
 
     ![SendGrid-irányítópult navigációja](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
 
-1. A **fiók részletei** lapon jegyezze fel a **felhasználónevet** .
+1. A **fiók részletei** lapon jegyezze fel a **felhasználónevet**.
 
     ![SendGrid-fiók részletei](./media/apache-ambari-email/sendgrid-account-details.png)
 
@@ -63,8 +60,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Név|Adja meg az értesítés nevét.|
     |Csoportok|Konfigurálja a kívánt módon.|
     |Súlyosság|Konfigurálja a kívánt módon.|
-    |Description (Leírás)|Választható.|
-    |Módszer|Hagyjon **e-mailt** .|
+    |Description|Választható.|
+    |Metódus|Hagyjon **e-mailt**.|
     |E-mail cím|Adja meg az e-maileket az értesítések fogadásához, vesszővel elválasztva.|
     |SMTP-kiszolgáló|`smtp.sendgrid.net`|
     |SMTP-port|25 vagy 587 (titkosítatlan/TLS-kapcsolatokhoz).|

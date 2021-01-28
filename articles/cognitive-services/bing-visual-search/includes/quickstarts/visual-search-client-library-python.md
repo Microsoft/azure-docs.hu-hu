@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.openlocfilehash: 1d7664160f1cef405f791628bad0b4e76e3c50f8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3af9b9e4f07d3d88043dcf7f6a262fdf6a3b316c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371912"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948261"
 ---
 Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Visual Search szolgáltatásból a Python ügyféloldali kódtár használatával. Habár a Bing Visual Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 
 
-[Dokumentáció](/python/api/azure-cognitiveservices-search-visualsearch/?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Dokumentáció](/python/api/azure-cognitiveservices-search-visualsearch/)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -104,7 +104,7 @@ Ezzel a rövid útmutatóval megkezdheti a rendszerképek elemzését a Bing Vis
             print("Couldn't find image tags!")
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás készítése](../../tutorial-bing-visual-search-single-page-app.md)

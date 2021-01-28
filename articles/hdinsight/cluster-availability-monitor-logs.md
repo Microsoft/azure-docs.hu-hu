@@ -1,18 +1,15 @@
 ---
 title: A fürt rendelkezésre állásának figyelése Azure Monitor naplókkal a HDInsight-ben
 description: Megtudhatja, hogyan használhatja Azure Monitor naplókat a fürt állapotának és rendelkezésre állásának figyeléséhez.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542539"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946957"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>A fürt rendelkezésre állásának figyelése Azure Monitor naplókkal a HDInsight-ben
 
@@ -40,7 +37,7 @@ Azure Monitor naplózási integráció engedélyezése után (ez eltarthat néh�
 
 A naplók számos példa típusú lekérdezést listáznak, például:
 
-| Lekérdezés neve                      | Description (Leírás)                                                               |
+| Lekérdezés neve                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | A számítógépek rendelkezésre állása ma    | A naplókat küldő számítógépek számának diagramja óránként                     |
 | Szívverések listázása                 | Az összes számítógép szívverésének listázása az elmúlt órában                           |
@@ -74,7 +71,7 @@ Az alább látható **feltétel címére** kattintva fejezze be a jel logikájá
 
 ![Portál riasztás létrehozása szabály feltétele](media/cluster-availability-monitor-logs/portal-condition-title.png)
 
-Ekkor megnyílik a **jel logikájának konfigurálása** .
+Ekkor megnyílik a **jel logikájának konfigurálása**.
 
 A **riasztási logika** szakasz a következőképpen állítható be:
 
@@ -94,12 +91,12 @@ Ha még nem rendelkezik meglévő műveleti csoporttal, kattintson az **új lét
 
 ![Riasztási szabály új műveleti csoportot hoz létre](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
 
-Ekkor megnyílik a **Hozzáadás műveleti csoport** . Válassza ki a **műveleti csoport nevét** , a **rövid nevet** , az **előfizetést** és az **erőforráscsoportot.** A **műveletek** szakaszban válassza ki a **művelet nevét** , és válassza az **E-mail/SMS/leküldés/hang** lehetőséget a **művelet típusaként.**
+Ekkor megnyílik a **Hozzáadás műveleti csoport**. Válassza ki a **műveleti csoport nevét**, a **rövid nevet**, az **előfizetést** és az **erőforráscsoportot.** A **műveletek** szakaszban válassza ki a **művelet nevét** , és válassza az **E-mail/SMS/leküldés/hang** lehetőséget a **művelet típusaként.**
 
 > [!NOTE]
 > Több más művelet is elindítható egy e-mail/SMS/push/hang mellett, például egy Azure-függvény, a LogicApp, a webhook, a ITSM és az Automation Runbook mellett. [tudj meg többet.](../azure-monitor/platform/action-groups.md#action-specific-information)
 
-Ekkor megnyílik az **e-mail/SMS/leküldés/hang** . Válassza ki a címzett **nevét** , **jelölje be** az **e-mail** szövegmezőt, és írjon be egy e-mail-címet, amelyre a riasztást el szeretné juttatni. Válassza az **OK gombot**  **e-mailben, SMS-ben/leküldés/hangban** , majd a **műveleti csoport hozzáadása** elemnél a műveleti csoport konfigurálásának befejezéséhez.
+Ekkor megnyílik az **e-mail/SMS/leküldés/hang**. Válassza ki a címzett **nevét** , **jelölje be** az **e-mail** szövegmezőt, és írjon be egy e-mail-címet, amelyre a riasztást el szeretné juttatni. Válassza az **OK gombot**  **e-mailben, SMS-ben/leküldés/hangban**, majd a **műveleti csoport hozzáadása** elemnél a műveleti csoport konfigurálásának befejezéséhez.
 
 ![Riasztási szabály – hozzáadási műveleti csoport létrehozása](media/cluster-availability-monitor-logs/portal-add-action-group.png)
 

@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882447"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946999"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -40,7 +40,7 @@ Keressen az *Azure Digital Twins* kifejezésre a keresőmezőbe, majd az eredmé
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="A Create (létrehozás) elem kiválasztása az Azure Digital Twins szolgáltatás oldaláról":::
 
-A következő *Erőforrás-létrehozási* oldalon adja meg az alább megadott értékeket:
+A következő **Erőforrás-létrehozási** oldalon adja meg az alább megadott értékeket:
 * **Előfizetés**: az Ön által használt Azure-előfizetés
   - **Erőforráscsoport**: az az erőforráscsoport, amelyben a példányt telepíteni kell. Ha még nem rendelkezik meglévő erőforráscsoporthoz, itt létrehozhat egyet az *új csoport létrehozása* hivatkozásra kattintva és egy új erőforráscsoport nevének megadásával.
 * **Hely**: egy Azure digitális Twins-kompatibilis régió az üzembe helyezéshez. A regionális támogatással kapcsolatos további információkért látogasson el a [*régió (Azure Digital Twins) által elérhető Azure-termékek területére*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
@@ -48,11 +48,21 @@ A következő *Erőforrás-létrehozási* oldalon adja meg az alább megadott é
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="A leírt értékek kitöltése Azure digitális Twins-erőforrások létrehozásához":::
 
-Ha elkészült, válassza a _felülvizsgálat + létrehozás_ elemet. Ekkor megjelenik egy összefoglaló oldal, ahol áttekintheti a megadott példányok részleteit, és elvégezheti a _létrehozást_. 
+Ha elkészült, akkor válassza a **felülvizsgálat + létrehozás** lehetőséget, ha nem szeretne további beállításokat beállítani a példányhoz. Ekkor megjelenik egy összefoglaló oldal, amelyen áttekintheti a megadott példány részleteit, és befejezheti a **létrehozást**. 
+
+Ha további részleteket szeretne megadni a példányhoz, a következő szakasz a további telepítési lapokat ismerteti.
+
+### <a name="additional-setup-options"></a>További telepítési lehetőségek
+
+A telepítés során konfigurálható további beállítások az **Erőforrás-létrehozási** folyamat további lapjainak használatával érhetők el.
+
+* **Hálózatkezelés**: ezen a lapon engedélyezheti a privát végpontokat az [Azure Private-hivatkozással](../private-link/private-link-overview.md) , így megkerülheti a példánya nyilvános hálózatának kockázatát. Útmutatásért lásd [*: útmutató: privát hozzáférés engedélyezése privát hivatkozással*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
+* **Speciális**: ezen a lapon engedélyezheti a [rendszer által felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) a példányhoz, amelyet az események [végpontokra](concepts-route-events.md)való továbbításakor használhat. Útmutatásért lásd [*: útmutató: felügyelt identitások engedélyezése útválasztási eseményekhez*](how-to-enable-managed-identities.md).
+* **Címkék**: ezen a lapon hozzáadhat címkéket a példányhoz, hogy az Azure-erőforrások között szervezzen. További információ az Azure-erőforrásokkal kapcsolatos címkékről: [*erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Sikeres ellenőrzés és fontos értékek összegyűjtése
 
-A *create (létrehozás*) gombra kattintva megtekintheti a példány üzembe helyezésének állapotát az Azure-értesítésekben a portál ikon sávján keresztül. Az értesítés akkor jelenik meg, ha az üzembe helyezés sikeres volt, és a létrehozott példány megtekintéséhez válassza az _Ugrás az erőforráshoz_ gombot.
+Miután befejezte a példány telepítését a **Létrehozás** lehetőség kiválasztásával, megtekintheti a példányok üzembe helyezésének állapotát az Azure-értesítésekben a portál ikon sávján. Az értesítés akkor jelenik meg, ha az üzembe helyezés sikeres volt, és a létrehozott példány megtekintéséhez válassza az _Ugrás az erőforráshoz_ gombot.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="A sikeres telepítést mutató Azure-értesítések, valamint az &quot;Ugrás erőforráshoz&quot; gomb kiemelése":::
 
@@ -98,7 +108,7 @@ Megtekintheti a *hozzáférés-vezérlés (iam) > szerepkör-* hozzárendelések
 
 Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra, és hozzárendelt engedélyekkel rendelkezik a kezeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

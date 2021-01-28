@@ -2,19 +2,16 @@
 title: Fürtök konfigurálása Azure Active Directory-integrációhoz
 titleSuffix: Azure HDInsight
 description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a Active Directory-nal integrált HDInsight-fürtöt a Azure Active Directory Domain Services és a Enterprise Security Package funkció használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631550"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946915"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>HDInsight-fürtök konfigurálása Azure Active Directory integrációhoz Enterprise Security Package
 
@@ -145,7 +142,7 @@ Ha ESP-vel rendelkező HDInsight-fürtöt hoz létre, a következő paraméterek
 
 A létrehozott felügyelt identitás kiválasztható a **felhasználó által hozzárendelt felügyelt identitás** legördülő listából, ha új fürtöt hoz létre.
 
-![Azure HDInsight ESP Active Directory tartományi szolgáltatások felügyelt identitás](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
+![Azure HDInsight ESP Active Directory Domain Services felügyelt identitás](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>Következő lépések
 
