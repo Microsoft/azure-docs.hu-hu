@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344147"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934527"
 ---
 # <a name="secure-azure-digital-twins"></a>Biztonságos Azure digitális Twins
 
@@ -89,11 +89,44 @@ Az alábbi lista azokat a szinteket ismerteti, amelyeken az Azure Digital Twins-
 
 Ha egy felhasználó olyan műveletet próbál végrehajtani, amelyet nem engedélyeznek a szerepkörük, előfordulhat, hogy a szolgáltatáskérelem olvasása hibaüzenetet kap `403 (Forbidden)` . További információt és hibaelhárítási lépéseket a [*Hibaelhárítás: az Azure digitális Twins-kérelem sikertelen állapot: 403 (tiltott)*](troubleshoot-error-403.md)című témakörben talál.
 
+## <a name="managed-identity-for-accessing-other-resources-preview"></a>Felügyelt identitás más erőforrások eléréséhez (előzetes verzió)
+
+Egy Azure digitális Twins-példányhoz tartozó [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md) **felügyelt identitásának** beállítása lehetővé teszi, hogy a példány könnyedén hozzáférhessen más Azure ad-védelemmel ellátott erőforrásokhoz, például a [Azure Key Vaulthoz](../key-vault/general/overview.md). Az identitást az Azure platform felügyeli, és nem igényli semmilyen titok kiépítését és elforgatását. További információ az Azure AD-beli felügyelt identitásokról: [*felügyelt identitások az Azure-erőforrásokhoz*](../active-directory/managed-identities-azure-resources/overview.md). 
+
+Az Azure a felügyelt identitások két típusát támogatja: rendszerhez rendelt és felhasználó által hozzárendelt. Az Azure Digital Twins jelenleg csak a **rendszer által hozzárendelt identitásokat** támogatja. 
+
+Az Azure-beli digitális példányok rendszerhez rendelt felügyelt identitásával hitelesítheti magát egy [Egyéni megadott végponton](concepts-route-events.md#create-an-endpoint). Az Azure Digital Twins támogatja a rendszerhez rendelt identitás-alapú hitelesítést az [Event hub](../event-hubs/event-hubs-about.md) és a [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)   Célhelyek végpontjait, valamint egy [Azure Storage-tároló](../storage/blobs/storage-blobs-introduction.md)   végpontját a [kézbesítetlen levelek eseményeihez](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)   a végpontok jelenleg nem támogatottak a felügyelt identitások esetében.
+
+Az Azure Digital Twins rendszer által felügyelt identitásának engedélyezéséhez és az események irányításához való használatáról a [*útmutató: felügyelt identitás engedélyezése útválasztási eseményekhez (előzetes verzió)*](how-to-enable-managed-identities.md)című témakörben talál útmutatást.
+
+## <a name="private-network-access-with-azure-private-link-preview"></a>Privát hálózati hozzáférés az Azure Private Linktel (előzetes verzió)
+
+Az [Azure Private link](../private-link/private-link-overview.md) egy olyan szolgáltatás, amely lehetővé teszi az Azure-erőforrások (például az [Azure Event Hubs](../event-hubs/event-hubs-about.md), az [Azure Storage](../storage/common/storage-introduction.md)és a [Azure Cosmos db](../cosmos-db/introduction.md)) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését az [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)privát végpontján keresztül. 
+
+Hasonlóképpen, az Azure Digital Twin-példányhoz is használhat privát végpontokat, így lehetővé téve a virtuális hálózatban található ügyfelek számára a példány biztonságos elérését a privát kapcsolaton keresztül. 
+
+A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lévő ügyfél és az Azure Digital Twins-példány közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül halad át, ami kiküszöböli a nyilvános internetre való kitettséget. Itt látható a rendszer vizuális ábrázolása:
+
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="Egy PowerGrid-vállalat hálózatát bemutató ábra, amely Internet/nyilvános felhő nélküli védett VNET, a CityOfTwins nevű Azure digitális Twins-példányon keresztül csatlakozik.":::
+
+Az Azure Digital Twins-példány privát végpontjának konfigurálása lehetővé teszi az Azure-beli digitális Twins-példányok védelmét, valamint a nyilvános kitettség kiiktatását, valamint az adatoknak a VNet való kiszűrése elkerülését.
+
+Az Azure Digital Twins privát hivatkozásának beállításával kapcsolatos útmutatásért tekintse meg az [*útmutató: privát hozzáférés engedélyezése privát kapcsolattal (előzetes verzió)*](how-to-enable-private-link.md)című témakört.
+
+### <a name="design-considerations"></a>Kialakítási szempontok 
+
+Ha az Azure Digital Twins privát hivatkozásával dolgozik, az alábbi szempontokat érdemes figyelembe vennie:
+* **Díjszabás**: díjszabás részleteiért lásd az  [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link). 
+* **Regionális elérhetőség**: az Azure Digital Twins esetében ez a funkció minden olyan Azure-régióban elérhető, ahol elérhető az Azure digitális Twins. 
+* **Privát végpontok maximális száma Azure digitális Twins-példányon**: 10
+
+A privát hivatkozás korlátaival kapcsolatos információkért lásd: az [Azure Private link dokumentációja: korlátozások](../private-link/private-link-service-overview.md#limitations).
+
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
 A **szolgáltatás címkéje** egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával, minimalizálva a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét. A szolgáltatás címkével kapcsolatos további információkért lásd: [*virtuális hálózati címkék*](../virtual-network/service-tags-overview.md). 
 
-A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)vagy Azure Firewallon határozhat meg hálózati hozzáférés-vezérlést   , ha a biztonsági szabályok létrehozásakor a szolgáltatási címkéket használja adott IP-címek helyett. [Azure Firewall](../firewall/service-tags.md) Ha megadja a szolgáltatási címke nevét (ebben az esetben a **AzureDigitalTwins**) a szabály megfelelő *forrás*   vagy *cél*   mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
+A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/network-security-groups-overview.md#security-rules)vagy Azure Firewallon határozhat meg hálózati hozzáférés-vezérlést   , ha a biztonsági szabályok létrehozásakor a szolgáltatási címkéket használja adott IP-címek helyett. [](../firewall/service-tags.md) Ha megadja a szolgáltatási címke nevét (ebben az esetben a **AzureDigitalTwins**) a szabály megfelelő *forrás*   vagy *cél*   mezőjében, engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. 
 
 Alább láthatók a **AzureDigitalTwins** szolgáltatás címkéjének részletei.
 
@@ -113,7 +146,7 @@ A következő lépésekkel érheti el az [Event Route](concepts-route-events.md)
 
 4. Állítsa be az IP-szűrőket a külső erőforrás (ok) ra a *2. lépésből* származó IP-címtartományok használatával.  
 
-5. Rendszeresen frissítse az IP-tartományokat szükség szerint. A tartományok idővel változhatnak, ezért érdemes rendszeresen megnézni ezeket, és szükség esetén frissíteni őket. A frissítések gyakorisága eltérő lehet, de érdemes hetente egyszer megnézni.
+5. Rendszeresen frissítse az IP-tartományokat szükség szerint. A tartományok idővel változhatnak, ezért érdemes rendszeresen megnézni őket, és szükség esetén frissíteni őket. A frissítések gyakorisága eltérő lehet, de érdemes hetente egyszer megnézni.
 
 ## <a name="encryption-of-data-at-rest"></a>Inaktív adatok titkosítása
 
@@ -123,11 +156,11 @@ Az Azure Digital Twins inaktív és átvitel alatt álló adatok titkosítását
 
 Az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. Ennek eredményeképpen, ha egy böngésző-alkalmazásból, egy [API Management (APIM)](../api-management/api-management-key-concepts.md) vagy egy [Power apps](/powerapps/powerapps-overview) -összekötőből REST API hív meg, akkor a rendszer házirend-hibát észlelt.
 
-A hiba elhárításához a következők egyikét teheti:
+A hiba megoldásához hajtsa végre az alábbi műveletek egyikét:
 * A CORS fejlécének leszalaga `Access-Control-Allow-Origin` az üzenetből. Ez a fejléc azt jelzi, hogy a válasz megosztható-e. 
 * Alternatív megoldásként hozzon létre egy CORS-proxyt, és tegye elérhetővé az Azure digitális Twins REST API kérését. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg ezeket a fogalmakat működés közben [*: példány és hitelesítés beállítása*](how-to-set-up-instance-portal.md).
 

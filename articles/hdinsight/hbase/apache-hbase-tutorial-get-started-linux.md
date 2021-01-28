@@ -1,19 +1,16 @@
 ---
 title: Oktatóanyag – az Apache HBase használata az Azure HDInsight
 description: Kövesse ezt az Apache HBase-oktatóanyagot a Hadoop on HDInsight használatának megkezdéséhez. Táblákat hozhat létre a HBase rendszehéjból, és lekérdezheti azokat a Hive eszközzel.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 3aff700493fbdc0c2b8a9a3dcb4dbbafe9b10761
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936051"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
@@ -360,7 +357,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-f�
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett.
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Apache HBase-fürtöt. És hogyan hozhat létre táblákat, és hogyan tekintheti meg a táblák adatait a HBase-rendszerhéjból. Azt is megtanulta, hogyan használható struktúra-lekérdezés a HBase-táblákban található információkhoz. És hogyan használható a HBase C# REST API-k egy HBase tábla létrehozásához és adatok lekérdezéséhez a táblából. További információ:
 

@@ -11,12 +11,12 @@ ms.date: 03/29/2019
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 243a7fd71e7b4f762130db2383f449021129cc62
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 41436da5ed9d82b44a9e1e63fb023c163a9761cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060299"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934230"
 ---
 # <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>REST API-k dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben
 
@@ -27,7 +27,7 @@ REST API-k a kiszámítások kezeléséhez a dedikált SQL-készlet (korábban S
 Az adatraktár-egységek módosításához használja az [adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API. A következő példa beállítja az adatraktár-egységeket a DW1000 adatbázis-MySQLDW, amely a kiszolgáló MyServer található. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
-PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
+PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2020-08-01-preview HTTP/1.1
 Content-Type: application/json; charset=UTF-8
 
 {
@@ -42,7 +42,7 @@ Content-Type: application/json; charset=UTF-8
 Egy adatbázis szüneteltetéséhez használja az [adatbázis szüneteltetése](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API. Az alábbi példa egy Database02 nevű adatbázist szüneteltet egy Kiszolgalo01 nevű kiszolgálón. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
-POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
+POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2020-08-01-preview HTTP/1.1
 ```
 
 ## <a name="resume-compute"></a>Számítás folytatása
@@ -50,7 +50,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 Az adatbázis elindításához használja az [adatbázis folytatása](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API. A következő példa egy Database02 nevű adatbázist indít el egy Kiszolgalo01 nevű kiszolgálón. A kiszolgáló egy ResourceGroup1 nevű Azure-erőforráscsoport.
 
 ```
-POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
+POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2020-08-01-preview HTTP/1.1
 ```
 
 ## <a name="check-database-state"></a>Adatbázis állapotának keresése
@@ -97,6 +97,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: a [számítások kezelése](sql-data-warehouse-manage-compute-overview.md).

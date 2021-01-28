@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 370883b90902dad5a6e222897e68e1d3e9dd2acf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737998"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936269"
 ---
 # <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Rendellenesség-Kiderítő modul üzembe helyezése IoT Edge
 
@@ -24,7 +24,7 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [anomália detektor]
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés használata. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
-* Telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t.
+* Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Egy [IoT hub](../../../iot-hub/iot-hub-create-through-portal.md) és egy [IoT Edge](../../../iot-edge/quickstart-linux.md) eszköz.
 
 [!INCLUDE [Create a Cognitive Services Anomaly Detector resource](../includes/create-anomaly-detector-resource.md)]
@@ -88,7 +88,7 @@ Több módon is ellenőrizheti, hogy a modul fut-e. Keresse meg a szóban forgó
 
 ![Tároló kezdőlapja](../../../../includes/media/cognitive-services-containers-api-documentation/container-webpage.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A tároló rendszerképének áthúzásához és a tároló futtatásához tekintse át a tárolók [telepítése és futtatása](../anomaly-detector-container-configuration.md)
 * A [tárolók konfigurálásának](../anomaly-detector-container-configuration.md) áttekintése konfigurációs beállításokhoz

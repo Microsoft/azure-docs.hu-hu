@@ -4,12 +4,12 @@ description: HTTP-alapú, kiszolgáló nélküli PowerShell-függvény létrehoz
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349248"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935409"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: egy HTTP-triggert használó Azure-függvény használata tároló csoport létrehozásához
 
@@ -105,7 +105,7 @@ A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után 
 
 ## <a name="run-the-function-in-azure"></a>A függvény futtatása az Azure-ban
 
-Miután az üzembe helyezés sikeresen befejeződött, szerezze be a függvény URL-címét. Például az **Azure: functions** területen a Visual Studio Code-ban másolja a **HttpTrigger** függvény URL-címét, vagy kérje le a függvény url-címét a [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Miután az üzembe helyezés sikeresen befejeződött, szerezze be a függvény URL-címét. Például az **Azure: functions** területen a Visual Studio Code-ban másolja a **HttpTrigger** függvény URL-címét, vagy kérje le a függvény url-címét a [Azure Portal](../azure-functions/functions-get-started.md).
 
 A függvény URL-címe a következőket képezi:
 
@@ -189,7 +189,7 @@ Ha már nincs szüksége az oktatóanyagban létrehozott összes erőforrásra, 
 az group delete --name myfunctionapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést végez, és elindítja egy tároló csoport üzembe helyezését. Megtanulta végrehajtani az alábbi műveleteket:
 

@@ -53,6 +53,8 @@
               href: how-to-set-up-instance-powershell.md
             - name: Szkriptes verzió
               href: how-to-set-up-instance-scripted.md
+        - name: Privát hozzáférés engedélyezése Private Linkkel
+          href: how-to-enable-private-link.md
         - name: Alkalmazáshitelesítési kód írása
           href: how-to-authenticate-client.md
         - name: Alkalmazásregisztráció létrehozása
@@ -107,6 +109,8 @@
               href: how-to-manage-routes-apis-cli.md
             - name: Portálverzió
               href: how-to-manage-routes-portal.md
+        - name: Felügyelt identitás engedélyezése útválasztási eseményekhez
+          href: how-to-enable-managed-identities.md
         - name: Integrálás az Azure Mapsszel
           href: how-to-integrate-maps.md
         - name: Integrálás az Azure Time Series Insights szolgáltatással
@@ -153,6 +157,18 @@
       href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
 - name: További források
   items:
+    - name: Digital Twins szolgáltatási korlátok
+      href: reference-service-limits.md
+    - name: Díjszabás és rendelkezésre állás
+      items:
+        - name: Díjszabás
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Régiók és rendelkezésre állás
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+    - name: Ügyfelek adatkérései
+      href: resources-customer-data-requests.md
     - name: API-k és SDK-k
       items:
         - name: Vezérlősík
@@ -243,22 +259,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DTMI-specifikáció
           href: 'https://github.com/Azure/digital-twin-model-identifier'
-    - name: Ügyfelek adatkérései
-      href: resources-customer-data-requests.md
-    - name: Digital Twins szolgáltatási korlátok
-      href: reference-service-limits.md
-    - name: Díjszabás és rendelkezésre állás
-      items:
-        - name: Díjszabás
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: Régiók és rendelkezésre állás
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-    - name: Ügyfelek történetei
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Channel 9-videók
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Ügyfelek történetei
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Azure-eszközök
       items:
         - name: Azure Cloud Shell
@@ -267,7 +271,5 @@
           href: /powershell/azure/
         - name: Azure Portal
           href: 'https://portal.azure.com'
-    - name: Az Azure RBAC dokumentációja
-      href: ../role-based-access-control/overview.md
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md

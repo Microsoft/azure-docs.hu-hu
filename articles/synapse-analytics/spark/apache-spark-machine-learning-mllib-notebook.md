@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: gépi tanulási alkalmazás létrehozása Apache Spark MLlib'
-description: Útmutató arról, hogyan használható a Apache Spark MLlib egy olyan Machine learning-alkalmazás létrehozásához, amely a logisztikai regresszió használatával elemzi az adatkészleteket.
+description: Útmutató arról, hogyan használható a Apache Spark MLlib egy olyan Machine learning-alkalmazás létrehozásához, amely a logisztikai regresszió segítségével osztályozza az adatkészleteket.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 30ddee7c203ef1654972675f610256d1bfb1f21c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 39ba8a5884abb4be9fa0b8e32a292e06738e1550
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116908"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935658"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Oktatóanyag: gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Apache Spark [MLlib](https:/
 
 A SparkML és a MLlib olyan alapvető Spark-kódtárak, amelyek számos, a gépi tanulási feladatokhoz hasznos segédprogramot biztosítanak, beleértve a következőkre alkalmas segédprogramokat:
 
-- Osztályozás
+- Besorolás
 - Regresszió
 - Fürtözés
 - Témakör modellezése
@@ -31,25 +31,25 @@ A SparkML és a MLlib olyan alapvető Spark-kódtárak, amelyek számos, a gépi
 
 ## <a name="understand-classification-and-logistic-regression"></a>A besorolás és a logisztikai regresszió ismertetése
 
-Az *osztályozás*, amely egy népszerű gépi tanulási feladat, a bemeneti adatok kategóriákba rendezésének folyamata. A besorolási algoritmus feladata, hogy kiderítse, hogyan rendeljen hozzá *címkéket* a megadott bemeneti adatokhoz. Tegyük fel például, hogy egy gépi tanulási algoritmus, amely adatokat fogad el bemenetként, és két kategóriába osztja el az állományt: a készleteket, amelyeket érdemes értékesíteni és készleteket tárolni.
+Az *osztályozás*, amely egy népszerű gépi tanulási feladat, a bemeneti adatok kategóriákba rendezésének folyamata. A besorolási algoritmus feladata, hogy kiderítse, hogyan rendeljen hozzá *címkéket* a megadott bemeneti adatokhoz. Tegyük fel például, hogy egy gépi tanulási algoritmus, amely adatokat fogad el bemenetként, és két kategóriába osztja el a készletet: a készleteket, amelyeket érdemes eladni, és a készleteket kell megőrizni.
 
-A *logisztikai regresszió* egy algoritmus, amelyet besoroláshoz használhat. A Spark logisztikai regressziós API-ját *bináris besoroláshoz* vagy a bemeneti adatok két csoportba való besorolásához lehet hasznos. További információ a logisztikai regressziókkal kapcsolatban: [wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
+A *logisztikai regresszió* egy algoritmus, amelyet besoroláshoz használhat. A Spark logisztikai regressziós API-ját *bináris besoroláshoz* vagy a bemeneti adatok két csoportba való besorolásához lehet hasznos. További információ a logisztikai regresszióról: [wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
-Összefoglalva, a logisztikai regressziós folyamat egy *logisztikai függvényt* hoz létre, amellyel előre megjósolható, hogy egy bemeneti vektor egy csoportba vagy a másikba tartozik-e.
+Összefoglalva, a logisztikai regressziós folyamat olyan *logisztikai függvényt* hoz létre, amellyel előre jelezhető, hogy egy bemeneti vektor egy csoportba vagy a másikba tartozik-e.
 
 ## <a name="predictive-analysis-example-on-nyc-taxi-data"></a>Prediktív elemzés – példa a New York-i taxi adataira
 
-Ebben a példában a Spark használatával némi prediktív elemzést végezünk a New York-i taxi TRIPS-adatokról. Az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)segítségével érheti el. Az adatkészlet ezen részhalmaza a Yellow taxi-utakról tartalmaz információkat, beleértve az egyes utazásokkal, a kezdési és befejezési időponttal és a hellyel, a díjszabással és egyéb érdekes attribútumokkal kapcsolatos információkat.
+Ebben a példában a Spark használatával némi prediktív elemzést végezünk a New York-i taxival kapcsolatos tip-adatokról. Az adatokat az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)segítségével érheti el. Az adatkészlet ezen részhalmaza a Yellow taxi-utakról tartalmaz információkat, beleértve az egyes utazásokkal, a kezdési és befejezési időponttal és a hellyel, a díjszabással és egyéb érdekes attribútumokkal kapcsolatos információkat.
 
 > [!IMPORTANT]
-> Az adatok tárolási helyétől való kihúzása további költségekkel járhat.
+> Az adatok tárolási helyétől való kihúzása további költségekkel is jár.
 
 A következő lépésekben olyan modellt fejlesztünk ki, amely azt jelzi, hogy egy adott utazáshoz tartozik-e tipp vagy sem.
 
-## <a name="create-an-apache-spark--machine-learning-model"></a>Apache Spark Machine learning-modell létrehozása
+## <a name="create-an-apache-spark-machine-learning-model"></a>Apache Spark Machine learning-modell létrehozása
 
-1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Az utasításokért lásd: [Jegyzetfüzet létrehozása](../quickstart-apache-spark-notebook.md#create-a-notebook).
-2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt, vagy futtassa a cellát a kód bal oldalán található kék lejátszás ikon használatával.
+1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Útmutatásért lásd: [Jegyzetfüzet létrehozása](../quickstart-apache-spark-notebook.md#create-a-notebook).
+2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a SHIFT + ENTER billentyűkombinációt. Vagy futtassa a cellát a kód bal oldalán található kék lejátszás ikon használatával.
 
     ```python
     import matplotlib.pyplot as plt
@@ -67,11 +67,13 @@ A következő lépésekben olyan modellt fejlesztünk ki, amely azt jelzi, hogy 
 
     A PySpark kernel miatt nem kell explicit módon létrehoznia a környezeteket. A Spark-környezet automatikusan létrejön az első kód cellájának futtatásakor.
 
-## <a name="construct-the-input-dataframe"></a>A bemeneti dataframe felépítése
+## <a name="construct-the-input-dataframe"></a>A bemeneti DataFrame felépítése
 
-Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közvetlenül is lehívhatja a fájlt a memóriába dataframe. Míg az alábbi kód az alapértelmezett beállításokat használja, az adattípusok és egyéb sémák attribútumainak leképezése is kényszeríthető, ha szükséges.
+Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közvetlenül is lehívhatja a fájlt a memóriába DataFrame. Bár az alábbi lépésekben szereplő kód az alapértelmezett beállításokat használja, az adattípusok és egyéb sémák attribútumainak leképezése is kényszeríthető, ha szükséges.
 
-1. A következő sorok futtatásával hozzon létre egy Spark-dataframe a kód egy új cellába való beillesztésével. Ezzel lekéri az adatokat a megnyitott adatkészletek API-n keresztül. Az összes ilyen adatmennyiség körülbelül 1 500 000 000 sort hoz létre. A kiszolgáló nélküli Apache Spark készlet méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezt az adatmennyiséget lejjebb is szűrheti. A következő kódrészlet a start_date és a end_date használatával alkalmaz egy olyan szűrőt, amely egyetlen hónapot ad vissza.
+1. A következő sorok futtatásával hozzon létre egy Spark-DataFrame a kód egy új cellába való beillesztésével. Ez a lépés a megnyitott adatkészletek API-n keresztül kéri le az adatokat. Az összes ilyen adatmennyiség körülbelül 1 500 000 000 sort hoz létre. 
+
+   A kiszolgáló nélküli Apache Spark készlet méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezt az adatmennyiséget lejjebb is szűrheti. Az alábbi kódrészlet egy olyan `start_date` `end_date` szűrőt alkalmaz, amely egy adott havi adatmennyiséget ad vissza.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -82,29 +84,33 @@ Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közv
     filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. Az egyszerű szűrés hátránya, hogy statisztikai szempontból az adatokra vonatkozó elfogultság is bevezethető. Egy másik módszer a Spark-ba épített mintavétel használata. A következő kód csökkenti az adatkészletet körülbelül 2000 sorra, ha a fenti kód után alkalmazza őket. Ezt a mintavételi lépést az egyszerű szűrő helyett, vagy az egyszerű szűrővel együtt lehet használni.
+2. Az egyszerű szűrés hátránya, hogy statisztikai szempontból az adatokra vonatkozó elfogultság is bevezethető. Egy másik módszer a Spark-ba épített mintavétel használata. 
+
+   A következő kód csökkenti az adatkészletet körülbelül 2 000 sorra, ha azt az előző kód után alkalmazza a rendszer. Ezt a mintavételi lépést az egyszerű szűrő helyett, vagy az egyszerű szűrővel együtt használhatja.
 
     ```python
-    # To make development easier, faster and less expensive down sample for now
+    # To make development easier, faster, and less expensive, downsample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-3. Most már megtekintheti az itt olvasható információt. Általában jobb, ha az adatokat egy részhalmazsal szeretné áttekinteni, és nem a teljes készletet az adatkészlet méretétől függően. A következő kód két módszert kínál az adatok megtekintésére: az előző, hogy az alapszintű és az utóbbi egy sokkal gazdagabb Grid-élményt biztosít, valamint az adatok grafikus megjelenítésének képességét.
+3. Most már megtekintheti az itt olvasható információt. Általában jobban áttekintheti az adatokat a teljes készlet helyett egy részhalmazsal az adatkészlet méretétől függően. 
+
+   Az alábbi kód két módszert kínál az adatmegtekintésre. Az első módszer az alapszintű. A második módszer sokkal gazdagabb hálózati élményt nyújt, valamint az adatábrázolási képességet is.
 
     ```python
     #sampled_taxi_df.show(5)
     display(sampled_taxi_df)
     ```
 
-4. A generált adatkészlet méretétől függően, és a jegyzetfüzetet többször kell kísérletezni vagy futtatni, célszerű lehet a munkaterületen helyileg gyorsítótárazni az adatkészletet. Az explicit gyorsítótárazás három módon hajtható végre:
+4. A generált adatkészlet méretétől függően, ha többször kell kísérletezni vagy futtatni a jegyzetfüzetet, érdemes lehet helyileg gyorsítótárazni az adatkészletet a munkaterületen. Az explicit gyorsítótárazás három módon hajtható végre:
 
-   - A dataframe helyi mentése fájlként
-   - A dataframe mentése ideiglenes táblába vagy nézetbe
-   - A dataframe mentése állandó táblázatként
+   - Mentse a DataFrame helyileg a fájlként.
+   - Mentse a DataFrame ideiglenes táblába vagy nézetbe.
+   - Mentse a DataFrame állandó táblaként.
 
-A módszerek első két példája az alábbi példákban szerepel.
+A módszerek közül az első kettő a következő példákban szerepel.
 
-A temp tábla vagy nézet létrehozása különböző hozzáférési útvonalakat biztosít az adatelérési utakhoz, de csak a Spark-példány munkamenetének időtartamára tart.
+Egy ideiglenes tábla vagy nézet létrehozása különböző hozzáférési útvonalakat biztosít az adateléréshez, de csak a Spark-példány munkamenetének idejére tart.
 
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
@@ -112,14 +118,14 @@ sampled_taxi_df.createOrReplaceTempView("nytaxi")
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
-A nyers formában lévő adatforrások gyakran nem alkalmasak arra, hogy közvetlenül a modellbe továbbítsák őket. Egy sor műveletet kell végrehajtani az adatmennyiségen ahhoz, hogy egy olyan állapotba kerüljön, amelyben a modell fel tudja használni azt.
+A nyers formában lévő adatforrások gyakran nem alkalmasak arra, hogy közvetlenül a modellbe továbbítsák őket. Végre kell hajtania egy sor műveletet az adatokon, hogy azok olyan állapotba kerüljön, amelyben a modell fel tudja használni azt.
 
-A négy műveleti osztályt a következő kódban hajtja végre:
+A következő kódban négy műveleti osztályt hajt végre:
 
-- Kiugró/helytelen értékek eltávolítása szűréssel.
+- Kiugró adatok vagy helytelen értékek eltávolítása szűréssel.
 - Az oszlopok eltávolítása nem szükséges.
-- A nyers adatokból származtatott új oszlopok létrehozása, hogy a modell hatékonyabban működjön, más néven featurization.
-- Címkézés – mivel a rendszer bináris besorolást végez (ez lesz a tipp, vagy nem egy adott útvonalon), a tipp összegét 0 vagy 1 értékre kell konvertálnia.
+- A nyers adatokból származtatott új oszlopok létrehozása, hogy a modell hatékonyabban működjön. Ezt a műveletet néha featurization nevezik.
+- Címkézés. Mivel a bináris besorolást végzi (egy adott útvonalon nem lesz tipp, vagy nem az adott utazáson), a tipp értékét 0 vagy 1 értékre kell konvertálnia.
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -139,7 +145,7 @@ taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paym
                                 )
 ```
 
-Ekkor a rendszer a végső funkciók hozzáadásához egy második Pass-t továbbít az adaton.
+Ezután elvégezheti a második továbbítást az adatátvitelhez a végső funkciók hozzáadásához.
 
 ```Python
 taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'passengerCount'\
@@ -155,57 +161,61 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Logisztikai regressziós modell létrehozása
 
-A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár* készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. A `trafficTimeBins` és `weekdayString` oszlopoknak egész szám típusú ábrázolásra kell konvertálniuk. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
+A végső feladat a címkével ellátott adatok átalakítása a logisztikai regresszió használatával elemezhető formátumba. A logisztikai regressziós algoritmus bemenetének a *címke/szolgáltatás vektoros párok* készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelölő számok vektora. 
+
+Ezért a kategorikus oszlopokat számmá kell alakítani. Konkrétan a `trafficTimeBins` és az `weekdayString` oszlopokat egész szám típusú ábrázolásra kell konvertálnia. Az átalakítás végrehajtásához több módszer is rendelkezésre áll. A következő példa az `OneHotEncoder` általános megközelítést alkalmazza.
 
 ```python
-# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
+# Because the sample uses an algorithm that works only with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
 en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayVec")
 
-# Create a new dataframe that has had the encodings applied
+# Create a new DataFrame that has had the encodings applied
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-Ez a művelet egy új dataframe eredményez, amely a megfelelő formátumban lévő összes oszloppal betanítja a modellt.
+Ez a művelet egy új DataFrame eredményez, amely a megfelelő formátumban lévő összes oszloppal betanítja a modellt.
 
 ## <a name="train-a-logistic-regression-model"></a>Logisztikai regressziós modell betanítása
 
-Az első feladata, hogy az adatkészletet egy betanítási csoportba, egy tesztelési vagy érvényesítési csoportba ossza fel. Az itt megjelenő felosztás tetszőleges, és különböző felosztott beállításokkal kell játszania, hogy látható legyen-e a modell hatása.
+Az első feladata, hogy az adatkészletet egy betanítási csoportba, egy tesztelési vagy érvényesítési csoportba ossza fel. A felosztás tetszőleges. Kísérletezzen a különböző felosztási beállításokkal, és ellenőrizze, hogy érintik-e a modellt.
 
 ```python
-#Decide on the split between training and testing data from the dataframe
+# Decide on the split between training and testing data from the DataFrame
 trainingFraction = 0.7
 testingFraction = (1-trainingFraction)
 seed = 1234
 
-# Split the dataframe into test and training dataframes
+# Split the DataFrame into test and training DataFrames
 train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, testingFraction], seed=seed)
 ```
 
-Most, hogy két DataFrames van, a következő feladat a modell képletének létrehozása és futtatása a betanítási DataFrame, majd a tesztelési DataFrame érvényesítve. A különböző kombinációk hatásának megtekintéséhez a modell képletének különböző verzióival kell kísérletezni.
+Most, hogy két DataFrames van, a következő feladat a modell képletének létrehozása és futtatása a betanítási DataFrame. Ezután ellenőrizheti a tesztelési DataFrame. Kísérletezzen a modell képletének különböző verzióival a különböző kombinációk hatásának megtekintéséhez.
 
 > [!Note]
-> A modell mentéséhez szüksége lesz a Storage blob adatközreműködői Azure-szerepkörre. A Storage-fiók területen navigáljon a Access Control (IAM) elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen Storage blob-adatközreműködő Azure-szerepkört a SQL Database-kiszolgálóhoz. Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> A modell mentéséhez szüksége lesz a *Storage blob-adatközreműködői* Azure-szerepkörre. A Storage-fiók területen lépjen a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendelje hozzá a Storage blob adatközreműködői szerepkört a Azure SQL Database-kiszolgálóhoz. Ez a lépés csak tulajdonosi jogosultságokkal rendelkező tagok számára hajtható végre. 
+>
+>A különböző Azure-beli beépített szerepkörökhöz tekintse meg [ezt az útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
-## Create a new LR object for the model
+## Create a new logistic regression object for the model
 logReg = LogisticRegression(maxIter=10, regParam=0.3, labelCol = 'tipped')
 
 ## The formula for the model
 classFormula = RFormula(formula="tipped ~ pickupHour + weekdayVec + passengerCount + tripTimeSecs + tripDistance + fareAmount + paymentType+ trafficTimeBinsVec")
 
-## Undertake training and create an LR model
+## Undertake training and create a logistic regression model
 lrModel = Pipeline(stages=[classFormula, logReg]).fit(train_data_df)
 
-## Saving the model is optional but its another form of inter session cache
+## Saving the model is optional, but it's another form of inter-session cache
 datestamp = datetime.now().strftime('%m-%d-%Y-%s')
 fileName = "lrModel_" + datestamp
 logRegDirfilename = fileName
 lrModel.save(logRegDirfilename)
 
-## Predict tip 1/0 (yes/no) on the test dataset, evaluation using AUROC
+## Predict tip 1/0 (yes/no) on the test dataset; evaluation using area under ROC
 predictions = lrModel.transform(test_data_df)
 predictionAndLabels = predictions.select("label","prediction").rdd
 metrics = BinaryClassificationMetrics(predictionAndLabels)
@@ -223,7 +233,7 @@ Area under ROC = 0.9779470729751403
 Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményeinek indoklásában. A [Roc görbe](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) egy módszer az eredmény áttekintésére.
 
 ```python
-## Plot the ROC curve, no need for pandas as this uses the modelSummary object
+## Plot the ROC curve; no need for pandas, because this uses the modelSummary object
 modelSummary = lrModel.stages[-1].summary
 
 plt.plot([0, 1], [0, 1], 'r--')
@@ -234,13 +244,13 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![ROC-görbe logisztikai regressziós tipp modellhez](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
+![A tip-modellben a logisztikai regresszióhoz tartozó ROC-görbét bemutató gráf.](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>A Spark-példány leállítása
 
-Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. ehhez zárja be a fület, vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot panelen.
+Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához a TAB bezárásával. Vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot paneljén.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 
@@ -251,4 +261,4 @@ Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erő
 - [Apache Spark hivatalos dokumentáció](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> A hivatalos Apache Spark dokumentációja a Spark-konzol használatával működik, amely az Azure szinapszis Sparkon nem érhető el. Ehelyett használjon [jegyzetfüzetet](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) vagy [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -élményt.
+> A hivatalos Apache Spark dokumentációja a Spark-konzollal való használatra támaszkodik, amely nem érhető el Apache Spark az Azure szinapszis Analyticsben. Ehelyett használjon [jegyzetfüzetet](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) vagy [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -élményt.

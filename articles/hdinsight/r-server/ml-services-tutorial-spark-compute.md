@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: az R használata Spark számítási környezetben az Azure HDInsight'
 description: Oktatóanyag – az R és a Spark első lépései egy Azure HDInsight Machine Learning Services-fürtön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545905"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935672"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Oktatóanyag: az R használata Spark számítási környezetben az Azure HDInsight
 
@@ -43,7 +40,7 @@ A RStudio-kiszolgáló a fürt peremhálózati csomópontján fut. Lépjen a kö
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Amikor először jelentkezik be, a hitelesítés kétszer történik meg. Az első hitelesítési kérésnél adja meg a fürt rendszergazdai felhasználónevét és jelszavát (az alapértelmezett érték a *rendszergazda* ). A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót (az alapértelmezett érték a *sshuser* ). A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
+Amikor először jelentkezik be, a hitelesítés kétszer történik meg. Az első hitelesítési kérésnél adja meg a fürt rendszergazdai felhasználónevét és jelszavát (az alapértelmezett érték a *rendszergazda*). A második hitelesítési kérésnél adja meg az SSH-felhasználónevet és a jelszót (az alapértelmezett érték a *sshuser*). A későbbi bejelentkezések csak az SSH hitelesítő adatokat igénylik.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>A mintaadatok letöltése a helyi tárterületre
 
@@ -355,15 +352,15 @@ Számítási környezet használatakor `RxSpark` `createFileSet` az alapértelme
     quit()
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyag befejezése után érdemes lehet törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, gazdasági szempontból érdemes törölni a fürtöket, amikor nincsenek használatban.
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan használhatja az R functions szolgáltatást egy HDInsight Machine Learning Services-fürtön futó Apache Spark. További információkat az következő cikkekben talál:
+Ebben az oktatóanyagban megtanulta, hogyan használhatja az R functions szolgáltatást egy HDInsight Machine Learning Services-fürtön futó Apache Spark. További információért tekintse át a következő cikkeket:
 
 * [Számítási környezeti beállítások Azure HDInsight Machine Learning Services-fürthöz](r-server-compute-contexts.md)
 * [R functions for Spark on Hadoop](/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

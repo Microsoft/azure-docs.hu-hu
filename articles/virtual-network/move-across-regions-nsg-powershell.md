@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0f569c623deb8e6249323cf1925d2c754eac7d42
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ad73ef03aa9623fb724f1397697fac18f659a90c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218824"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934999"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba Azure PowerShell használatával
 
@@ -43,19 +43,19 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Sablon exportálása és üzembe helyezése parancsfájlból
 
-1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+1. Jelentkezzen be az Azure-előfizetésbe a [AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Szerezze be annak a NSG az erőforrás-AZONOSÍTÓját, amelyet át szeretne helyezni a célként megadott régióba, és helyezze egy változóba a [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup?view=azps-2.6.0)használatával:
+2. Szerezze be annak a NSG az erőforrás-AZONOSÍTÓját, amelyet át szeretne helyezni a célként megadott régióba, és helyezze egy változóba a [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)használatával:
 
     ```azurepowershell-interactive
     $sourceNSGID = (Get-AzNetworkSecurityGroup -Name <source-nsg-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportálja a forrás NSG egy. JSON-fájlba abba a könyvtárba, amelybe az [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)parancsot futtatja:
+3. Exportálja a forrás NSG egy. JSON-fájlba abba a könyvtárba, amelybe az [export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup)parancsot futtatja:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
@@ -99,7 +99,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
     ```
   
-7. A régióbeli hely kódjának beszerzéséhez használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) Azure PowerShell parancsmagot a következő parancs futtatásával:
+7. A régióbeli hely kódjának beszerzéséhez használja a [Get-AzLocation](/powershell/module/az.resources/get-azlocation) Azure PowerShell parancsmagot a következő parancs futtatásával:
 
     ```azurepowershell-interactive
 
@@ -173,13 +173,13 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 9. Mentse a **\<resource-group-name> . JSON** fájlt.
 
-10. Hozzon létre egy erőforráscsoportot a cél régióban a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő NSG:
+10. Hozzon létre egy erőforráscsoportot a cél régióban a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával telepítendő NSG:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Telepítse a szerkesztett **\<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)használatával:
 
     ```azurepowershell-interactive
 
@@ -187,7 +187,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     
     ```
 
-12. A cél régióban létrehozott erőforrások ellenőrzéséhez használja a [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) és a [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup?view=azps-2.6.0):
+12. A cél régióban létrehozott erőforrások ellenőrzéséhez használja a [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) és a [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup):
     
     ```azurepowershell-interactive
 
@@ -203,7 +203,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
 
 ## <a name="discard"></a>Elvetés 
 
-Ha az üzembe helyezés után szeretné elindítani vagy elvetni a NSG a célhelyen, törölje a célhelyen létrehozott erőforráscsoportot, és az áthelyezett NSG is törlődni fog.  Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Ha az üzembe helyezés után szeretné elindítani vagy elvetni a NSG a célhelyen, törölje a célhelyen létrehozott erőforráscsoportot, és az áthelyezett NSG is törlődni fog.  Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -213,7 +213,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-A módosítások végrehajtásához és a NSG áthelyezésének befejezéséhez törölje a forrás NSG vagy az erőforráscsoportot, majd használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) vagy a [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup?view=azps-2.6.0):
+A módosítások végrehajtásához és a NSG áthelyezésének befejezéséhez törölje a forrás NSG vagy az erőforráscsoportot, majd használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) vagy a [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup):
 
 ```azurepowershell-interactive
 

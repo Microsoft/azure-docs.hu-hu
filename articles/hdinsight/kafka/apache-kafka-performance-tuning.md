@@ -1,18 +1,15 @@
 ---
 title: Apache Kafka HDInsight-fürtök teljesítményoptimalizálása
 description: Áttekintést nyújt Apache Kafka számítási feladatok Azure HDInsight való optimalizálásához szükséges technikákról.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
-ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d24527efe6adce6f16b7c890f23c755545f5d5a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75494922"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935888"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight-fürtök teljesítményoptimalizálása
 
@@ -80,7 +77,7 @@ Javasoljuk, hogy legalább 3x-os replikálást használjon a Kafka számára az 
 
 A replikációval kapcsolatos további információkért lásd [: Apache Kafka: replikáció](https://kafka.apache.org/documentation/#replication) és [Apache Kafka: a replikációs tényező növelése](https://kafka.apache.org/documentation/#basic_ops_increase_replication_factor).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Napi több trillió esemény feldolgozása az Apache Kafka on Azure használatával](https://azure.microsoft.com/blog/processing-trillions-of-events-per-day-with-apache-kafka-on-azure/)
 * [Mi az a HDInsight-alapú Apache Kafka?](apache-kafka-introduction.md)

@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882161"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935142"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>BLOB Storage és Azure Data Lake Gen2 kimenete Azure Stream Analytics
 
@@ -23,7 +23,7 @@ Az Azure Blob Storage költséghatékony és méretezhető megoldást kínál na
 
 A következő táblázat felsorolja a tulajdonságok nevét, valamint a Blobok vagy ADLS Gen2 kimenetek létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve       | Leírás                                                                      |
+| Tulajdonság neve       | Description                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Kimeneti alias        | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a blob-tárolóba történő irányítására szolgál. |
 | A(z)     | Annak a Storage-fióknak a neve, ahová a kimenetet küldi.               |
@@ -44,7 +44,7 @@ A következő táblázat felsorolja a tulajdonságok nevét, valamint a Blobok v
 Ha a blob Storage-ot kimenetként használja, a következő esetekben létrejön egy új fájl a blobban:
 
 * Ha a fájl túllépi az engedélyezett blokkok maximális számát (jelenleg 50 000). Elérheti a maximálisan megengedett számú blokkot anélkül, hogy elérte a Blobok maximálisan megengedett méretét. Ha például a kimeneti sebesség magas, több bájt/blokk látható, és a fájlméret nagyobb. Ha a kimeneti sebesség alacsony, minden blokk kevesebb adattal rendelkezik, és a fájlméret kisebb.
-* Ha a kimenetben séma változik, és a kimeneti formátumhoz rögzített séma szükséges (CSV és Avro).
+* Ha a kimenetben séma változik, és a kimeneti formátumhoz rögzített séma szükséges (CSV, Avro, Parque).
 * Ha egy feladat újra lett indítva, vagy külsőleg egy felhasználó leállítja és elindítja, vagy belsőleg a rendszerkarbantartáshoz vagy a hiba helyreállításához.
 * Ha a lekérdezés teljesen particionálva van, és minden kimeneti partícióhoz létrejön egy új fájl.
 * Ha a felhasználó töröl egy fájlt vagy egy tárolót a Storage-fiókból.
@@ -60,7 +60,7 @@ A partíciós kulcshoz használja a {Date} és az {Time} tokent az esemény mez�
 
 Az üzenetek maximális méretével kapcsolatban lásd: az [Azure Storage korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). A blob-blokk maximális mérete 4 MB, a Blobok maximális száma pedig 50 000. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A felügyelt identitás (előzetes verzió) használatával hitelesítheti a Azure Stream Analytics feladatot az Azure-ban Blob Storage](blob-output-managed-identity.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)

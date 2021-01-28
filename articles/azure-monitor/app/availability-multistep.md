@@ -3,19 +3,19 @@ title: Többlépéses webes tesztek figyelése – Azure Application Insights
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934851"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
 A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-címek és interakciók rögzített sorozatát. Ebből a cikkből megtudhatja, hogyan hozhat létre többlépéses webes tesztet a Visual Studio Enterprise használatával.
 
 > [!NOTE]
-> A többlépéses webes tesztek a Visual Studio webtest-fájloktól függenek. A rendszer [bejelentette](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , hogy a Visual Studio 2019 a webteszt funkciójának utolsó verziója. Fontos tisztában lenni azzal, hogy a Visual Studio 2019-es webteszt funkciója továbbra is támogatott, és a termék támogatási életciklusa során továbbra is támogatott lesz. A Azure Monitor termék csapata a több lépésből álló rendelkezésre állási tesztek jövőjével kapcsolatos [here](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)kérdéseket tárgyal.  
+> A többlépéses webes tesztek a Visual Studio webtest-fájloktól függenek. A rendszer [bejelentette](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , hogy a Visual Studio 2019 a webteszt funkciójának utolsó verziója. Fontos tisztában lenni azzal, hogy a Visual Studio 2019-es webteszt funkciója továbbra is támogatott, és a termék támogatási életciklusa során továbbra is támogatott lesz. A Azure Monitor termék csapata a több lépésből álló rendelkezésre állási tesztek jövőjével kapcsolatos [](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)kérdéseket tárgyal.  
 > </br>
 > A többlépéses webes tesztek **nem támogatottak** a [Azure Government](../../azure-government/index.yml) felhőben.
 
@@ -25,7 +25,7 @@ A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-c
 * Visual Studio 2017 Enterprise vagy újabb.
 * A Visual Studio webes teljesítmény-és terhelés-tesztelési eszközei.
 
-Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítő**  >  **egyes összetevőit**  >  **, és tesztelje**a  >  **webes teljesítményt és a terheléses tesztelési eszközöket**.
+Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítő**  >  **egyes összetevőit**  >  **, és tesztelje** a  >  **webes teljesítményt és a terheléses tesztelési eszközöket**.
 
 ![Képernyőfelvétel a Visual Studio telepítő felhasználói felületéről a webes teljesítmény és a terhelés-tesztelési eszközök elem melletti jelölőnégyzettel jelölt egyedi összetevőkkel](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -37,11 +37,11 @@ Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa e
 > [!WARNING]
 > A több lépésből álló rögzítő használata már nem ajánlott. A rögzítő a statikus HTML-lapokra, alapszintű interakciókkal lett kifejlesztve, és nem biztosít funkcionális élményt a modern weblapokhoz.
 
-A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért tekintse meg a [hivatalos Visual studio 2019 dokumentációját](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért tekintse meg a [hivatalos Visual studio 2019 dokumentációját](/visualstudio/test/how-to-create-a-web-service-test).
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
-1. A rendelkezésre állás ablaktáblán a Application Insights portálon válassza a **tesztelési**  >  **teszt típusa**  >  **többlépéses webes teszt**lehetőséget.
+1. A rendelkezésre állás ablaktáblán a Application Insights portálon válassza a **tesztelési**  >  **teszt típusa**  >  **többlépéses webes teszt** lehetőséget.
 
 2. A tesztelési helyszínek, a gyakoriság és a riasztás paramétereinek megadása.
 
@@ -106,7 +106,7 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 
 **SAML-hitelesítés**
 
-|Tulajdonság neve| Leírás|
+|Tulajdonság neve| Description|
 |----|-----|
 | Célközönség URI-ja | Az SAML-jogkivonat célközönségének URI-ja.  Ez a Access Control Service (ACS) URI-ja – beleértve az ACS-névteret és a gazdagép nevét. |
 | Tanúsítvány jelszava | Az ügyféltanúsítvány jelszava, amely hozzáférést biztosít a beágyazott titkos kulcshoz. |
@@ -143,7 +143,7 @@ Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitele
 
 Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendelkezésre állási riasztások](availability-alerts.md)
 * [URL pingelése webes tesztek](monitor-web-app-availability.md)

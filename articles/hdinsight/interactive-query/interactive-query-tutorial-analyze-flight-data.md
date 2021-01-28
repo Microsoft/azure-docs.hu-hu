@@ -1,19 +1,16 @@
 ---
 title: 'Oktatóanyag: ETL-műveletek interaktív lekérdezéssel – Azure HDInsight'
 description: Oktatóanyag – megtudhatja, hogyan nyerheti ki az adatokat nyers CSV-adatkészletből. Alakítsa át az interaktív lekérdezés használatával a HDInsight. Ezután töltse be az átalakított adatAzure SQL Databaset az Apache Sqoop használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534583"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935907"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával
 
@@ -34,7 +31,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Egy adatbázis a Azure SQL Databaseban. Az adatbázist célként megadott adattárként használja. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
@@ -287,7 +284,7 @@ Az előző szakaszok során átmásolta az átalakított adatokat a következő 
 
     A tsql eszközből való kilépéshez írja be az `exit` parancsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az adatait az Azure Storage tárolja, így biztonságosan törölheti a fürtöt, ha az nincs használatban. A HDInsight-fürtökért is fizetnie kell, még akkor is, ha nincs használatban. Mivel a fürt díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzékek törlik a fürtöket, ha nincsenek használatban.
 

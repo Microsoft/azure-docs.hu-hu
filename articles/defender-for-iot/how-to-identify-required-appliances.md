@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246570"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937147"
 ---
 # <a name="identify-required-appliances"></a>A szükséges berendezések azonosítása
 
@@ -100,7 +100,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 | Processzor | Intel Xeon Silver 4215 R 3,2 GHz, 11M cache, 8c/16T, 130 W |
 | Lapkakészletének | Intel C621 |
 | Memória | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
-| Storage | 6 x 1,2 – TB SAS 12G Enterprise 10K SFF (2,5 a-ben) Hot-Plug merevlemez – RAID 5 |
+| Tárolás | 6 x 1,2 – TB SAS 12G Enterprise 10K SFF (2,5 a-ben) Hot-Plug merevlemez – RAID 5 |
 | Hálózati vezérlő | Fedélzeti: 2 x 1 GB-os Broadcom BCM5720<br>Fedélzeti LOM: iDRAC 1 – GB-os Broadcom BCM5720<br><br>Külső: 1 x Intel Ethernet i350 QP 1 GB-os kiszolgáló adapter, alacsony profil |
 | Kezelés | HPE iLO – speciális |
 | Eszköz-hozzáférés | Két hátsó USB 3,0<br>Egy elülső USB 2,0<br>Egy belső USB 3,0 |
@@ -109,7 +109,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Leírás | Mennyiség |
+| PN | Description | Mennyiség |
 |--|--|--|
 | P19766 – B21 | HPE DL360 Gen10 8SFF NC műszaki kiszolgáló | 1 |
 | P19766 – B21 | Európa – többnyelvű honosítás | 1 |
@@ -136,7 +136,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 | Processzor | Intel Xeon E-2234, 3,6 GHz, 4C/8T, 71 W |
 | Lapkakészletének | Intel C242 |
 | Memória | 2 x 16 GB-os kettős rangsorú x8 DDR4 – 2666 |
-| Storage | 3 x 1 – TB SATA 6G középvonal 7,2 K SFF (2,5 a-ben) – RAID 5 intelligens tömb P408i – SR-vezérlő |
+| Tárolás | 3 x 1 – TB SATA 6G középvonal 7,2 K SFF (2,5 a-ben) – RAID 5 intelligens tömb P408i – SR-vezérlő |
 | Hálózati vezérlő | A fedélzeten: 2 x 1 GB <br>A fedélzeten: iLO port kártya 1 GB <br>Külső: 1 x HPE Ethernet 1 – GB 4 – Port 366FLR adapter |
 | Kezelés | HPE iLO – speciális |
 | Eszköz-hozzáférés | Elöl: 1 x USB 3,0, 1 x USB iLO szolgáltatási port <br>Hátul: 2 x USB 3,0 <br>Belső: 1 x USB 3,0 |
@@ -171,7 +171,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 | Processzor | Intel Xeon E-2224, 3,4 GHz, 4C, 71 W |
 | Lapkakészletének | Intel C242 |
 | Memória | 1 x 8 – GB kettős rangsorú x8 DDR4 – 2666 |
-| Storage | 2 x 1 – TB SATA 6G középvonal 7,2 K SFF (2,5 a-ben) – RAID 1 intelligens tömb P208i-a |
+| Tárolás | 2 x 1 – TB SATA 6G középvonal 7,2 K SFF (2,5 a-ben) – RAID 1 intelligens tömb P208i-a |
 | Hálózati vezérlő | A fedélzeten: 2 x 1 GB <br>A fedélzeten: iLO port kártya 1 GB <br>Külső: 1 x HPE Ethernet 1 – GB 4 – Port 366FLR adapter |
 | Kezelés | HPE iLO – speciális |
 | Eszköz-hozzáférés | Elöl: 1 x USB 3,0, 1 x USB iLO szolgáltatási port <br>Hátul: 2 x USB 3,0 <br>Belső: 1 x USB 3,0 |
@@ -180,7 +180,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Leírás | Mennyiség |
+| PN | Description | Mennyiség |
 |--|--|--|
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
@@ -203,16 +203,16 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 |--|--|--|--|
 | vCPU | 32 | 8 | 4 |
 | Memória | 32 GB | 32 GB | 8 GB |
-| Storage | 5,6 TB | 1,8 TB | 500 GB |
+| Tárolás | 5,6 TB | 1,8 TB | 500 GB |
 
 ### <a name="on-premises-management-console-appliance"></a>Helyszíni felügyeleti konzol berendezése
 
 | Típus | Enterprise |
 |--|--|
-| Leírás | Virtuális berendezés vállalati telepítési típusokhoz |
+| Description | Virtuális berendezés vállalati telepítési típusokhoz |
 | vCPU | 8 |
 | Memória | 32 GB |
-| Storage | 1,8 TB |
+| Tárolás | 1,8 TB |
 
 Támogatott hypervisorok: VMware ESXi 5,0-es és újabb verzió, Hyper-V
 
@@ -225,7 +225,7 @@ Ez a szakasz azokat a további készülékeket részletezi, amelyeket a Microsof
 | Kép | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="Vállalati központi telepítési típus."::: |
 | Modellezés | Dell PowerEdge R340 XL |
 | Portok figyelése | Legfeljebb kilenc RJ45 vagy hat OPT |
-| Maximális sávszélesség [1](#anchortext2)| 1G MB/mp |
+| Maximális sávszélesség [1](#anchortext2)| 1 GB/s |
 | Maximálisan védett eszközök | 10,000 |
 
 <a id="anchortext2">Egy</a> A sávszélesség kapacitása a protokollok eloszlása függvényében változhat.
@@ -244,7 +244,7 @@ A készülék megvásárlása után nyissa meg a **Defender for IoT**  >  **Netw
 | Processzor | Intel Xeon E-2144G 3,6 GHz, 8P cache, 4C/8T, Turbo (71 W) |
 | Lapkakészletének | Intel C246 |
 | Memória | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
-| Storage | 3 x 2 – TB 7,2 K RPM SATA 6 – Gbps 512n 3,5 – Hot-Plug merevlemez – RAID 5 |
+| Tárolás | 3 x 2 – TB 7,2 K RPM SATA 6 – Gbps 512n 3,5 – Hot-Plug merevlemez – RAID 5 |
 | Hálózati vezérlő | Fedélzeti: 2 x 1 GB-os Broadcom BCM5720<br>Fedélzeti LOM: iDRAC 1 – GB-os Broadcom BCM5720 <br><br>Külső: 1 x Intel Ethernet i350 QP 1 GB-os kiszolgáló adapter, alacsony profil |
 | Kezelés | iDRAC kilenc vállalat |
 | Eszköz-hozzáférés | Két hátsó USB 3,0 <br> Egy elülső USB 3,0 |
@@ -255,7 +255,7 @@ A készülék megvásárlása után nyissa meg a **Defender for IoT**  >  **Netw
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 ANYAGJEGYZÉK.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók az Azure Defender for IoT telepítéséről](how-to-install-software.md)
 

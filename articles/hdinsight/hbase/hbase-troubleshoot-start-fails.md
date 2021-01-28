@@ -3,16 +3,13 @@ title: Az Apache HBase Master nem indul el az Azure HDInsight
 description: Az Apache HBase Master (HMaster) nem indul el az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c30077d0d8f359e93745b53755f9dae998073d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539972"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936907"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Az Apache HBase Master (HMaster) nem indul el az Azure HDInsight
 
@@ -83,7 +80,7 @@ Ez a probléma akkor fordulhat elő, ha sok olyan táblája és régiója van, a
 
 ### <a name="resolution"></a>Feloldás
 
-1. Az Apache Ambari felhasználói felületén nyissa meg a **HBase**  >  **konfigurációit** . Az egyéni `hbase-site.xml` fájlban adja hozzá a következő beállítást:
+1. Az Apache Ambari felhasználói felületén nyissa meg a **HBase**  >  **konfigurációit**. Az egyéni `hbase-site.xml` fájlban adja hozzá a következő beállítást:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,7 +110,7 @@ Hosszú `regionserver` JVM GC szüneteltetése. A Szüneteltetés `regionserver`
 
 Módosítsa a Zookeeper-munkamenet időtúllépését, nem csak a `hbase-site` beállítást, `zookeeper.session.timeout` hanem a Zookeeper `zoo.cfg` beállítást is `maxSessionTimeout` .
 
-1. A Ambari felhasználói felületének eléréséhez nyissa meg a **HBase-> configs-> beállításokat** , az időtúllépések szakaszban, és módosítsa a Zookeeper-munkamenet időtúllépésének értékét.
+1. A Ambari felhasználói felületének eléréséhez nyissa meg a **HBase-> configs-> beállításokat**, az időtúllépések szakaszban, és módosítsa a Zookeeper-munkamenet időtúllépésének értékét.
 
 1. A Ambari felhasználói felületének eléréséhez nyissa meg a **Zookeeper-> configs-> egyéni** lehetőséget `zoo.cfg` , és adja hozzá a következő beállítást, vagy módosítsa azt. Győződjön meg arról, hogy az érték megegyezik a HBase `zookeeper.session.timeout` .
 

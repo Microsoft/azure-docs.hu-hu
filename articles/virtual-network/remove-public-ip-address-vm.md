@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709963"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934202"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Nyilvános IP-cím leválasztása egy Azure-beli virtuális gépről 
 
@@ -30,7 +30,7 @@ A virtuális gép nyilvános IP-címének leválasztásához használhatja a [Az
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Tallózással keresse meg vagy keresse meg azt a virtuális gépet, amelyhez a nyilvános IP-címet le szeretné kapcsolni, majd válassza ki azt.
-3. A virtuális gép lapon válassza az **Áttekintés**lehetőséget, válassza ki a nyilvános IP-címet, ahogyan az a következő képen látható:
+3. A virtuális gép lapon válassza az **Áttekintés** lehetőséget, válassza ki a nyilvános IP-címet, ahogyan az a következő képen látható:
 
    ![Nyilvános IP-cím kiválasztása](./media/remove-public-ip-address/remove-public-ip-address-2.png)
 
@@ -38,14 +38,14 @@ A virtuális gép nyilvános IP-címének leválasztásához használhatja a [Az
 
     ![Nyilvános IP-cím leválasztása](./media/remove-public-ip-address/remove-public-ip-address-3.png)
 
-5. A **nyilvános IP-cím**leválasztása területen válassza az **Igen**lehetőséget.
+5. A **nyilvános IP-cím** leválasztása területen válassza az **Igen** lehetőséget.
 
 ## <a name="azure-cli"></a>Azure CLI
 
 Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)-t, vagy használja a Azure Cloud shell. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki az alábbi CLI-parancsok **kipróbálása** gombját. A **kipróbálás** gombra kattintva meghívja a Cloud shell, amelybe bejelentkezhet az Azure-fiókjába.
 
 1. Ha a parancssori felületet a Bashben helyileg használja, jelentkezzen be az Azure-ba a használatával `az login` .
-2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. A nyilvános IP-cím IP-konfigurációból való leválasztásához használja az az [Network NIC-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) parancsot. Az alábbi példa egy *myVMPublicIP* nevű nyilvános IP-címet választ ki egy *myVMVMNic* nevű meglévő hálózati adapter *ipconfigmyVM* nevű IP-konfigurációból, amely egy *myVM* nevű virtuális géphez van csatolva egy *myResourceGroup*nevű erőforráscsoporthoz.
+2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. A nyilvános IP-cím IP-konfigurációból való leválasztásához használja az az [Network NIC-IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) parancsot. Az alábbi példa egy *myVMPublicIP* nevű nyilvános IP-címet választ ki egy *myVMVMNic* nevű meglévő hálózati adapter *ipconfigmyVM* nevű IP-konfigurációból, amely egy *myVM* nevű virtuális géphez van csatolva egy *myResourceGroup* nevű erőforráscsoporthoz.
   
    ```azurecli-interactive
     az network nic ip-config update \
@@ -55,7 +55,7 @@ Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
     --remove PublicIpAddress
    ```
 
-   Ha nem ismeri a virtuális géphez csatlakoztatott hálózati adapter nevét, az az [VM NIC List](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) paranccsal tekintheti meg őket. A következő parancs például felsorolja a *myVM* nevű virtuális géphez csatolt hálózati adapterek nevét egy *myResourceGroup*nevű erőforráscsoport:
+   Ha nem ismeri a virtuális géphez csatlakoztatott hálózati adapter nevét, az az [VM NIC List](/cli/azure/vm/nic#az-vm-nic-list) paranccsal tekintheti meg őket. A következő parancs például felsorolja a *myVM* nevű virtuális géphez csatolt hálózati adapterek nevét egy *myResourceGroup* nevű erőforráscsoport:
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -69,13 +69,13 @@ Telepítse az [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
 
      Az előző példában a *myVMVMNic* a hálózati adapter neve.
 
-   - Ha nem ismeri a hálózati adapter IP-konfigurációjának nevét, az az [Network NIC IP-config List](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) paranccsal kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter nyilvános IP-konfigurációinak neveit egy *myResourceGroup*nevű erőforráscsoport:
+   - Ha nem ismeri a hálózati adapter IP-konfigurációjának nevét, az az [Network NIC IP-config List](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) paranccsal kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter nyilvános IP-konfigurációinak neveit egy *myResourceGroup* nevű erőforráscsoport:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-   - Ha nem ismeri a hálózati adapter nyilvános IP-konfigurációjának nevét, az az [Network NIC IP-config show](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-show) parancs használatával kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter nyilvános IP-konfigurációinak neveit egy *myResourceGroup*nevű erőforráscsoport:
+   - Ha nem ismeri a hálózati adapter nyilvános IP-konfigurációjának nevét, az az [Network NIC IP-config show](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-show) parancs használatával kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter nyilvános IP-konfigurációinak neveit egy *myResourceGroup* nevű erőforráscsoport:
 
      ```azurecli-interactive
      az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id
@@ -89,7 +89,7 @@ Telepítse a [PowerShellt](/powershell/azure/install-az-ps), vagy használja a A
 1. Ha helyileg használja a PowerShellt, jelentkezzen be az Azure-ba a használatával `Connect-AzAccount` .
 2. A nyilvános IP-cím egy virtuális géphez csatolt hálózati adapter IP-konfigurációjához van társítva. Hálózati adapter beszerzéséhez használja a [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) parancsot. Állítsa a nyilvános IP-cím értéket NULL értékre, majd a [set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) parancs használatával írja az új IP-konfigurációt a hálózati adapterre.
 
-   Az alábbi példa egy *myVMPublicIP* nevű nyilvános IP-címet választ ki egy *myVMVMNic* nevű hálózati adapterről, amely egy *myVM*nevű virtuális géphez van csatolva. Minden erőforrás egy *myResourceGroup*nevű erőforráscsoport.
+   Az alábbi példa egy *myVMPublicIP* nevű nyilvános IP-címet választ ki egy *myVMVMNic* nevű hálózati adapterről, amely egy *myVM* nevű virtuális géphez van csatolva. Minden erőforrás egy *myResourceGroup* nevű erőforráscsoport.
   
    ```azurepowershell
     $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroup myResourceGroup
@@ -97,7 +97,7 @@ Telepítse a [PowerShellt](/powershell/azure/install-az-ps), vagy használja a A
     Set-AzNetworkInterface -NetworkInterface $nic
    ```
 
-  - Ha nem ismeri a virtuális géphez csatolt hálózati adapter nevét, a [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) paranccsal megtekintheti őket. A következő parancs például felsorolja a *myVM* nevű virtuális géphez csatolt hálózati adapterek nevét egy *myResourceGroup*nevű erőforráscsoport:
+  - Ha nem ismeri a virtuális géphez csatolt hálózati adapter nevét, a [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) paranccsal megtekintheti őket. A következő parancs például felsorolja a *myVM* nevű virtuális géphez csatolt hálózati adapterek nevét egy *myResourceGroup* nevű erőforráscsoport:
 
     ```azurepowershell
     $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
@@ -110,7 +110,7 @@ Telepítse a [PowerShellt](/powershell/azure/install-az-ps), vagy használja a A
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-   - Ha nem ismeri a hálózati adapter IP-konfigurációjának nevét, a [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) paranccsal kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter IP-konfigurációinak neveit egy *myResourceGroup*nevű erőforráscsoport:
+   - Ha nem ismeri a hálózati adapter IP-konfigurációjának nevét, a [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) paranccsal kérheti le őket. A következő parancs például felsorolja a *myVMVMNic* nevű hálózati adapter IP-konfigurációinak neveit egy *myResourceGroup* nevű erőforráscsoport:
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
@@ -123,6 +123,6 @@ Telepítse a [PowerShellt](/powershell/azure/install-az-ps), vagy használja a A
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM"
      ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [rendeljen hozzá egy nyilvános IP-címet egy virtuális géphez](associate-public-ip-address-vm.md).

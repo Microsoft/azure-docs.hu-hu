@@ -4,12 +4,12 @@ description: Lemezképek vagy más összetevők gyűjteményének átvitele egy 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932600"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935353"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -39,7 +39,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 
   Ha szükséges, hozzon létre egy Storage-fiókot az [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) -vel vagy más eszközökkel. 
 
-  Hozzon létre egy BLOB-tárolót az összetevők átviteléhez az egyes fiókokban. Hozzon létre például egy *átvitel*nevű tárolót. Két vagy több adatátviteli folyamat is megoszthatja ugyanazt a Storage-fiókot, de eltérő tárolási tároló-hatóköröket kell használnia.
+  Hozzon létre egy BLOB-tárolót az összetevők átviteléhez az egyes fiókokban. Hozzon létre például egy *átvitel* nevű tárolót. Két vagy több adatátviteli folyamat is megoszthatja ugyanazt a Storage-fiókot, de eltérő tárolási tároló-hatóköröket kell használnia.
 * **Kulcstartók** – kulcstartók szükségesek a forrás-és cél Storage-fiókok eléréséhez használt sas-jogkivonat-titkok tárolásához. Hozza létre a forrás és a cél kulcstartót ugyanabban az Azure-előfizetésben vagy előfizetésben, mint a forrás-és a cél-nyilvántartó. Demonstrációs célokra a cikkben használt sablonok és parancsok azt is feltételezik, hogy a forrás-és a célként megadott kulcstároló a forrás-és a cél-nyilvántartóval megegyező erőforráscsoportokat található. A gyakori erőforráscsoportok használata nem kötelező, de leegyszerűsíti a cikkben használt sablonokat és parancsokat.
 
    Ha szükséges, hozzon létre kulcstartókat az [Azure CLI](../key-vault/secrets/quick-create-cli.md) -vel vagy más eszközökkel.
@@ -188,7 +188,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Példa:
+A parancs kimenetében jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show]paranccsal. Például:
 
 ```azurecli
 EXPORT_RES_ID=$(az deployment group show \
@@ -253,7 +253,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show] parancs futtatásával. Példa:
+Ha manuálisan szeretné futtatni az importálást, jegyezze fel a folyamat erőforrás-AZONOSÍTÓját ( `id` ). Ezt az értéket egy környezeti változóban is tárolhatja későbbi használatra az az [Deployment Group show][az-deployment-group-show] parancs futtatásával. Például:
 
 ```azurecli
 IMPORT_RES_ID=$(az deployment group show \
@@ -281,7 +281,7 @@ Adja meg a következő paraméterérték értékét a fájlban `azuredeploy.para
 
 Ha azonos tulajdonságokkal rendelkező PipelineRun-erőforrást telepít újra, akkor a [forceUpdateTag](#redeploy-pipelinerun-resource) tulajdonságot is használni kell.
 
-Futtassa az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot a PipelineRun-erőforrás létrehozásához. A következő példa az üzembe helyezési *exportPipelineRun*nevezi át.
+Futtassa az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot a PipelineRun-erőforrás létrehozásához. A következő példa az üzembe helyezési *exportPipelineRun* nevezi át.
 
 ```azurecli
 az deployment group create \
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>BLOB átvitele (nem kötelező) 
 
-A AzCopy eszköz vagy más módszerek használatával a [blob-adatok átvitele](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) a forrás Storage-fiókból a cél Storage-fiókba.
+A AzCopy eszköz vagy más módszerek használatával a [blob-adatok átvitele](../storage/common/storage-use-azcopy-v10.md#transfer-data) a forrás Storage-fiókból a cél Storage-fiókba.
 
 A következő parancs például a [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) myblob lévő *átvitel* tárolóból másolja át az *átvitel* tárolóba a cél fiókba. Ha a blob létezik a cél fiókban, az felülírva van. A hitelesítés SAS-jogkivonatokat használ a forrás és a cél tárolók megfelelő engedélyeivel. (A jogkivonatok létrehozásának lépései nem jelennek meg.)
 
@@ -377,7 +377,7 @@ az acr repository list --name <target-registry-name>
 
 ## <a name="redeploy-pipelinerun-resource"></a>PipelineRun-erőforrás újbóli üzembe helyezése
 
-Ha *azonos tulajdonságokkal*rendelkező PipelineRun-erőforrást telepít újra, ki kell használnia a **forceUpdateTag** tulajdonságot. Ez a tulajdonság azt jelzi, hogy a PipelineRun-erőforrást újra létre kell hozni, még akkor is, ha a konfiguráció nem változott. Győződjön meg arról, hogy a forceUpdateTag minden alkalommal más, amikor újratelepíti a PipelineRun-erőforrást. Az alábbi példa újból létrehoz egy PipelineRun az exportáláshoz. Az aktuális datetime érték a forceUpdateTag beállítására szolgál, így biztosítva, hogy ez a tulajdonság mindig egyedi legyen.
+Ha *azonos tulajdonságokkal* rendelkező PipelineRun-erőforrást telepít újra, ki kell használnia a **forceUpdateTag** tulajdonságot. Ez a tulajdonság azt jelzi, hogy a PipelineRun-erőforrást újra létre kell hozni, még akkor is, ha a konfiguráció nem változott. Győződjön meg arról, hogy a forceUpdateTag minden alkalommal más, amikor újratelepíti a PipelineRun-erőforrást. Az alábbi példa újból létrehoz egy PipelineRun az exportáláshoz. Az aktuális datetime érték a forceUpdateTag beállítására szolgál, így biztosítva, hogy ez a tulajdonság mindig egyedi legyen.
 
 ```console
 CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`

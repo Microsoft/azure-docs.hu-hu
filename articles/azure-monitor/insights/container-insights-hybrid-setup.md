@@ -3,12 +3,12 @@ title: Hibrid Kubernetes-fürtök konfigurálása a Azure Monitor for containers
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890462"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936405"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
@@ -21,7 +21,7 @@ A következő konfigurációk hivatalosan támogatottak a tárolók Azure Monito
 - Környezetben
 
     - Helyszíni Kubernetes
-    - AK-motor az Azure-ban és a Azure Stack. További információ: AK-beli [motor on Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
+    - AK-motor az Azure-ban és a Azure Stack. További információ: AK-beli [motor on Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)
     - A [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 4-es és újabb verziója, helyszíni vagy más felhőalapú környezetek.
 
 - A Kubernetes és a támogatási szabályzat verziói ugyanazok, mint a [támogatott AK](../../aks/supported-kubernetes-versions.md)-verziók.
@@ -202,7 +202,7 @@ A következő lépésekkel azonosíthatja a Log Analytics munkaterület teljes e
     }
     ```
 
-7. Szerkessze a **workspaceResourceId** értékeit a 3. lépésben átmásolt értékkel, és a **WorkspaceRegion** másolja a **régió** értékét az Azure CLI parancs futtatása után az [monitor log-Analytics Workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true)paranccsal.
+7. Szerkessze a **workspaceResourceId** értékeit a 3. lépésben átmásolt értékkel, és a **WorkspaceRegion** másolja a **régió** értékét az Azure CLI parancs futtatása után az [monitor log-Analytics Workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true)paranccsal.
 
 8. Mentse ezt a fájlt containerSolutionParams.jsként egy helyi mappába.
 
@@ -303,7 +303,7 @@ Ebben a szakaszban az Azure Monitor tárolók számára telepíti a tároló üg
 
 Megadhat egy addont az AK-motor fürt specifikációjának JSON-fájljában (más néven API-modellként). Ebben az addon-ben adja meg az Log Analytics-munkaterület Base64 kódolású verzióját `WorkspaceGUID` és a `WorkspaceKey` begyűjtött megfigyelési adatokat tároló munkaterületet. Az `WorkspaceGUID` előző szakaszban található és az `WorkspaceKey` 1. és a 2. lépést is megtalálhatja.
 
-Az Azure Stack hub-fürt támogatott API-definíciói a következő példában találhatók: [kubernetes-container-monitoring_existing_workspace_id_and_key.js](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Pontosabban keresse meg az **addons** tulajdonságot a **kubernetesConfig** -ben:
+Az Azure Stack hub-fürt támogatott API-definíciói a következő példában találhatók: [kubernetes-container-monitoring_existing_workspace_id_and_key.js](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Pontosabban keresse meg az **addons** tulajdonságot a **kubernetesConfig**-ben:
 
 ```json
 "orchestratorType": "Kubernetes",
@@ -349,7 +349,7 @@ A proxy konfigurációs értékének szintaxisa a következő: `[protocol://][us
 
 Például: `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-Ha a protokollt **http** -ként adta meg, a HTTP-kérelmek SSL/TLS biztonságos kapcsolat használatával jönnek létre. A proxykiszolgáló támogatja az SSL/TLS protokollokat.
+Ha a protokollt **http**-ként adta meg, a HTTP-kérelmek SSL/TLS biztonságos kapcsolat használatával jönnek létre. A proxykiszolgáló támogatja az SSL/TLS protokollokat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

@@ -3,14 +3,14 @@ title: Modulok kezelése az Azure Automationben
 description: Ez a cikk azt ismerteti, hogyan használhatók a PowerShell-modulok a runbookok és a DSC-erőforrásokban lévő parancsmagok engedélyezéséhez a DSC-konfigurációkban.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 01/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458149"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936639"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
 
@@ -25,10 +25,18 @@ Azure Automation számos PowerShell-modult használ a runbookok-és DSC-erőforr
 
 Automation-fiók létrehozásakor a Azure Automation alapértelmezés szerint importál egyes modulokat. Lásd: [alapértelmezett modulok](#default-modules).
 
+## <a name="sandboxes"></a>Tesztkörnyezetek
+
 Amikor az Automation végrehajtja a runbook és a DSC fordítási feladatait, betölti a modulokat a runbookok futtatható és a DSC-konfigurációk fordítására szolgáló sandboxba. Az Automation emellett automatikusan elhelyez minden DSC-erőforrást a modulokban a DSC lekérési kiszolgálón. A gépek lehívhatják az erőforrásokat a DSC-konfigurációk alkalmazása során.
 
 >[!NOTE]
 >Ügyeljen arra, hogy csak azokat a modulokat importálja, amelyeket a runbookok és a DSC-konfigurációk igényelnek. Nem javasoljuk a gyökér importálását az modulban. Számos más modult tartalmaz, amelyek esetleg nem szükségesek, ami teljesítménnyel kapcsolatos problémákat okozhat. Importálja az egyes modulokat, például az az. számítási helyet.
+
+A felhőalapú sandbox legfeljebb 48 rendszerhívást támogat, és minden más hívást biztonsági okokból korlátoz. Más funkciók, például a hitelesítő adatok kezelése és egyes hálózatkezelések nem támogatottak a felhőalapú homokozóban.
+
+A tartalmazott modulok és parancsmagok száma miatt nehéz megállapítani, hogy mely parancsmagok nem támogatott hívásokat hajtanak végre. Általánosságban olyan parancsmagokkal kapcsolatos problémák merültek fel, amelyekhez emelt szintű hozzáférés szükséges, hitelesítő adatokat kell megadni paraméterként vagy a hálózatkezeléshez kapcsolódó parancsmagokat. A teljes verem hálózati műveleteket végrehajtó parancsmagok nem támogatottak a homokozóban, beleértve a [AipService](/powershell/module/aipservice/connect-aipservice) a AipService PowerShell-modulból és a [feloldási DnsName](/powershell/module/dnsclient/resolve-dnsname) az dnsclient modulból.
+
+Ezek az ismert korlátozások a homokozóban. Az ajánlott Áthidaló megoldás a [hibrid Runbook-feldolgozók](../automation-hybrid-runbook-worker.md) üzembe helyezése vagy [Azure functions](../../azure-functions/functions-overview.md)használata.
 
 ## <a name="default-modules"></a>Alapértelmezett modulok
 
@@ -62,7 +70,7 @@ Az Automation nem importálja automatikusan az új vagy meglévő Automation-fi�
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |
-| xDSCDomainjoin | 1,1 |
+| xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
@@ -134,14 +142,14 @@ Az az modul az Automation-fiókba való importálása nem importálja automatiku
 
 Az az modulokat a Azure Portal importálhatja. Ne feledje, hogy csak a szükséges modulokat importálja, nem a teljes az. Automation-modult. Mivel az [az. accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) a többi az modultól való függőség, ügyeljen arra, hogy a modult minden más előtt importálja.
 
-1. Az Automation-fiókban a **megosztott erőforrások**területen válassza a **modulok**elemet.
-2. Válassza a **Tallózás**katalógus lehetőséget.  
+1. Az Automation-fiókban a **megosztott erőforrások** területen válassza a **modulok** elemet.
+2. Válassza a **Tallózás** katalógus lehetőséget.  
 3. A keresősáv mezőben adja meg a modul nevét (például: `Az.Accounts` ).
 4. A PowerShell-modul lapon válassza az **Importálás** lehetőséget, hogy importálja a modult az Automation-fiókjába.
 
     ![Képernyőfelvétel a modulok automatizálási fiókba való importálásáról](../media/modules/import-module.png)
 
-Ezt az importálást a [PowerShell-Galéria](https://www.powershellgallery.com)keresztül is végrehajthatja, ha az importálni kívánt modulra keres rá. Ha megtalálta a modult, jelölje ki, majd kattintson a **Azure Automation** fülre. Válassza **a Azure Automation üzembe helyezés**lehetőséget.
+Ezt az importálást a [PowerShell-Galéria](https://www.powershellgallery.com)keresztül is végrehajthatja, ha az importálni kívánt modulra keres rá. Ha megtalálta a modult, jelölje ki, majd kattintson a **Azure Automation** fülre. Válassza **a Azure Automation üzembe helyezés** lehetőséget.
 
 ![Képernyőfelvétel a modulok közvetlen importálásáról PowerShell-galéria](../media/modules/import-gallery.png)
 
@@ -316,8 +324,8 @@ Ez a szakasz számos módszert határoz meg, amelyekkel modulokat importálhat a
 Modul importálása a Azure Portalban:
 
 1. Nyissa meg az Automation-fiókját.
-2. A **megosztott erőforrások**területen válassza a **modulok**elemet.
-3. Válassza **a modul hozzáadása**lehetőséget.
+2. A **megosztott erőforrások** területen válassza a **modulok** elemet.
+3. Válassza **a modul hozzáadása** lehetőséget.
 4. Válassza ki a modult tartalmazó **. zip** fájlt.
 5. Kattintson **az OK** gombra az importálási folyamat megkezdéséhez.
 
@@ -344,16 +352,16 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 Modul importálása közvetlenül a PowerShell-galériaról:
 
 1. Keresse meg https://www.powershellgallery.com az importálni kívánt modult, és keresse meg.
-2. A **telepítési beállítások**alatt, a **Azure Automation** lapon válassza a **telepítés a Azure Automation**lehetőséget. Ez a művelet megnyitja a Azure Portal. 
+2. A **telepítési beállítások** alatt, a **Azure Automation** lapon válassza a **telepítés a Azure Automation** lehetőséget. Ez a művelet megnyitja a Azure Portal. 
 3. Az importálás lapon válassza ki az Automation-fiókját, és kattintson az **OK gombra**.
 
 ![A PowerShell-galéria importálási modul képernyőképe](../media/modules/powershell-gallery.png)
 
 PowerShell-galéria modul importálása közvetlenül az Automation-fiókból:
 
-1. A **megosztott erőforrások**területen válassza a **modulok**elemet. 
-2. Válassza a **Tallózás**katalógus lehetőséget, majd keresse meg a katalógusban a modult. 
-3. Válassza ki az importálni kívánt modult, és válassza az **Importálás**lehetőséget. 
+1. A **megosztott erőforrások** területen válassza a **modulok** elemet. 
+2. Válassza a **Tallózás** katalógus lehetőséget, majd keresse meg a katalógusban a modult. 
+3. Válassza ki az importálni kívánt modult, és válassza az **Importálás** lehetőséget. 
 4. Az importálási folyamat elindításához kattintson **az OK gombra** .
 
 ![Képernyőkép a PowerShell-galéria modul importálásáról a Azure Portal](../media/modules/gallery-azure-portal.png)
@@ -366,9 +374,9 @@ Ha problémája van egy modullal, vagy vissza kell állítania egy modul egy kor
 
 Modul eltávolítása a Azure Portalban:
 
-1. Nyissa meg az Automation-fiókját. A **megosztott erőforrások**területen válassza a **modulok**elemet.
+1. Nyissa meg az Automation-fiókját. A **megosztott erőforrások** területen válassza a **modulok** elemet.
 2. Válassza ki az eltávolítani kívánt modult.
-3. A modul lapon válassza a **Törlés**lehetőséget. Ha ez a modul az [alapértelmezett modulok](#default-modules)egyike, az visszagörget az Automation-fiók létrehozásakor létezett verzióra.
+3. A modul lapon válassza a **Törlés** lehetőséget. Ha ez a modul az [alapértelmezett modulok](#default-modules)egyike, az visszagörget az Automation-fiók létrehozásakor létezett verzióra.
 
 ### <a name="delete-modules-by-using-powershell"></a>Modulok törlése a PowerShell használatával
 
@@ -378,7 +386,7 @@ Modul a PowerShell használatával történő eltávolításához futtassa a kö
 Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Azure PowerShell modulok használatával kapcsolatos további információkért lásd: [az Azure PowerShell](/powershell/azure/get-started-azureps)használatának első lépései.
 

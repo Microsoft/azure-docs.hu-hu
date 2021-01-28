@@ -1,5 +1,5 @@
 ---
-title: Leküldés Data Factory Lineage-adatként az Azure hatáskörébe
+title: Data Factory-életútadatok leküldése az Azure Purview-ba
 description: Tudnivalók a Data Factory Lineage-adatainak az Azure-beli hatáskörébe való leküldéséről
 services: data-factory
 ms.author: lle
@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 6b50c9440a958bc1398e79ddf3c5a0984816ec45
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e87a9d677fee94d410099db1da80a56b5539048c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603276"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935469"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Leküldés Data Factory Lineage-adatként az Azure hatáskörébe (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban a Data Factory felhasználói felületét fogja haszná
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * **Azure Data Factory**. Ha nem rendelkezik Azure Data Factoryval, tekintse meg [a Azure Data Factory létrehozása](./quickstart-create-data-factory-portal.md)című témakört.
-* **Azure-beli hatáskörébe tartozó fiók**. A hatáskörébe tartozó fiók rögzíti az adatelőállító által létrehozott összes Lineage-adatmennyiséget. Ha nem rendelkezik Azure-beli hatáskörébe-fiókkal, tekintse meg [Az Azure-beli rendszer létrehozása](https://docs.microsoft.com/azure/purview/create-catalog-portal)című témakört.
+* **Azure-beli hatáskörébe tartozó fiók**. A hatáskörébe tartozó fiók rögzíti az adatelőállító által létrehozott összes Lineage-adatmennyiséget. Ha nem rendelkezik Azure-beli hatáskörébe-fiókkal, tekintse meg [Az Azure-beli rendszer létrehozása](../purview/create-catalog-portal.md)című témakört.
 
 
 ## <a name="run-data-factory-activities-and-push-lineage-data-to-azure-purview"></a>Data Factory tevékenységek futtatása és a leküldés az Azure hatáskörébe
@@ -75,7 +75,7 @@ Megtekintheti az SSIS-csomag végrehajtásához kapcsolódó adatbányászati in
 > [!NOTE] 
 > A SSIS-csomag végrehajtásának elvégzéséhez csak a forrás-és a célhelyet támogatjuk. Az átalakítási vonal még nem támogatott.
 
-## <a name="next-steps"></a>További lépések
-[A katalógus Lineage felhasználói útmutatója](https://docs.microsoft.com/azure/purview/catalog-lineage-user-guide)
+## <a name="next-steps"></a>Következő lépések
+[A katalógus Lineage felhasználói útmutatója](../purview/catalog-lineage-user-guide.md)
 
 [Data Factory összekötése az Azure hatáskörébe](connect-data-factory-to-azure-purview.md)

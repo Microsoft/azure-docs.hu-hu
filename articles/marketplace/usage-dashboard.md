@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934402"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>A Használat irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center használati irányítópultján tartalmaz információkat. Ez az irányítópult megjeleníti az összes virtuális gépet (VM), amely normalizált használatot, nyers használatot és mért számlázási mérőszámokat kínál három külön lapon: a virtuális gép normalizált használata, a virtuális gép nyers használata és a mért számlázási használat.
 
-A partner Center használati irányítópultjának **kereskedelmi piactér** területén való eléréséhez válassza a **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **használat** elemzése lehetőséget.
+A partner Center használati irányítópultjának **kereskedelmi piactér** területén való eléréséhez válassza a **[](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **használat** elemzése lehetőséget.
 
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
@@ -135,7 +135,7 @@ _**1. táblázat: az adatszótár kifejezése**_
 | Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. |
 | DeploymentMethod | Elavult | Elavult (ugyanaz a definíció, mint az ajánlat típusa)
  |
-| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa. |
+| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név különbözhet az ügyfél Azure-előfizetésében szereplő névvel. |
 | Usage Date (Használat dátuma) | Usage Date (Használat dátuma) | A használati események generálásának dátuma a használati alapú eszközökhöz. |
 | IsMultisolution | Többmegoldásos | Azt jelzi, hogy az ajánlat egy többmegoldásos ajánlat típusa-e. |
 | Új ügyfél | Elavult | Elavult |
@@ -186,7 +186,7 @@ Ha több egyéni mérőszámot használó ajánlata van, a mért számlázási h
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

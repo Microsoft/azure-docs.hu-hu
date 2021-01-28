@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734539"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934736"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -23,7 +23,7 @@ A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis – personcount | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. A zónát teljes egészében egyetlen kamerának kell tartalmaznia ahhoz, hogy a PersonCount pontos összeget rögzítsen. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis – personcrossingline | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -32,7 +32,7 @@ A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
 Az összes művelet a `.debug` verzióban is elérhető, amely képes megjeleníteni a képkockákat a feldolgozás során. A `xhost +` képkockák és események megjelenítésének engedélyezéséhez futtatnia kell a gazdagépen.
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. debug | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. debug | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -43,7 +43,7 @@ A térbeli elemzések videó AI-modulként is futtathatók [élő video Analytic
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. livevideoanalytics | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. livevideoanalytics | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -57,11 +57,11 @@ Az élő videó elemzési műveletei a verzióban is elérhetők `.debug` (pl. c
 
 Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 
-| Üzemeltetési paraméterek| Leírás|
+| Üzemeltetési paraméterek| Description|
 |---------|---------|
 | Művelet azonosítója | A fenti tábla műveleti azonosítója.|
 | engedélyezve | Boolean: true vagy FALSE|
-| VIDEO_URL| A kamera eszközhöz tartozó RTSP URL-cím (példa: `rtsp://username:password@url` ). A térbeli elemzés támogatja a H. 264 kódolású adatfolyamot RTSP, http vagy MP4 használatával. A Video_URL AES-titkosítást használó, titkosított Base64-karakterlánc-értékként is megadható, és ha a videó URL-címe el van titkosítva, `KEY_ENV` és `IV_ENV` környezeti változókként kell megadni. A kulcsok és a titkosítás létrehozásához használható minta-segédprogram [itt](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0)található. |
+| VIDEO_URL| A kamera eszközhöz tartozó RTSP URL-cím (példa: `rtsp://username:password@url` ). A térbeli elemzés támogatja a H. 264 kódolású adatfolyamot RTSP, http vagy MP4 használatával. A Video_URL AES-titkosítást használó, titkosított Base64-karakterlánc-értékként is megadható, és ha a videó URL-címe el van titkosítva, `KEY_ENV` és `IV_ENV` környezeti változókként kell megadni. A kulcsok és a titkosítás létrehozásához használható minta-segédprogram [itt](/dotnet/api/system.security.cryptography.aesmanaged)található. |
 | VIDEO_SOURCE_ID | A kamera-eszköz vagy a videó stream rövid neve. Ezt a rendszer az esemény JSON-kimenetével adja vissza.|
 | VIDEO_IS_LIVE| A kamera eszközei esetében igaz; hamis a rögzített videókhoz.|
 | VIDEO_DECODE_GPU_INDEX| A videó keretének dekódolására szolgáló GPU. Alapértelmezés szerint 0. Azonosnak kell lennie a `gpu_index` többi csomópont-konfigurációval `VICA_NODE_CONFIG` , például: `DETECTOR_NODE_CONFIG` .|
@@ -122,7 +122,7 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -167,7 +167,7 @@ Ez egy példa egy olyan JSON-bemenetre a SPACEANALYTICS_CONFIG paraméter szám�
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `lines` | list| Sorok listája.|
 | `name` | sztring| A sor rövid neve.|
@@ -213,7 +213,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -247,7 +247,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -964,11 +964,11 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
       }
   }
   ```
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)

@@ -1,19 +1,16 @@
 ---
 title: CPU Core kvóta-növelési kérelem – Azure HDInsight
 description: Ismerje meg az előfizetéshez lefoglalt CPU-magok növelésének folyamatát.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539411"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935831"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Kvóta-növelés az Azure HDInsight
 
@@ -42,13 +39,13 @@ A kvóta növeléséhez hajtsa végre a következő lépéseket:
 1. Válassza az **Új támogatási kérelem** lehetőséget.
 1. Az **Alapvető beállítások** lapon található **Új támogatási kérelem** oldalon válassza ki a következő beállításokat:
 
-   - **Probléma típusa** : **szolgáltatás-és előfizetési korlátok (kvóták)**
-   - **Előfizetés** : a módosítani kívánt előfizetés
-   - **Kvóta típusa** : **HDInsight**
+   - **Probléma típusa**: **szolgáltatás-és előfizetési korlátok (kvóták)**
+   - **Előfizetés**: a módosítani kívánt előfizetés
+   - **Kvóta típusa**: **HDInsight**
 
      ![Támogatási kérelem létrehozása az HDInsight Core-kvóta növeléséhez](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. Válassza a **tovább lehetőséget: megoldások >>** .
+1. Válassza a **tovább lehetőséget: megoldások >>**.
 1. A **részletek** lapon adja meg a probléma leírását, válassza ki a probléma súlyosságát, az előnyben részesített kapcsolattartási módszert és az egyéb kötelező mezőket. Az alább felsorolt sablonnal biztosíthatja a szükséges információk megadását. A kvóta-növelési kérelmeket az Azure Capacity csapat értékeli ki, nem pedig a HDInsight termék csapata. Minél több teljes információt ad meg, annál valószínűbb, hogy a kérést jóvá fogja hagyni.
 
     ```
