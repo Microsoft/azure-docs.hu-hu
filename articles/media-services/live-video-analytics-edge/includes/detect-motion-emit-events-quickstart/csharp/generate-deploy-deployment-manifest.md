@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32027695f914257ef245d920f00fc1d1976fa791
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89566905"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956291"
 ---
 Az üzembe helyezési jegyzék meghatározza, hogy a rendszer mely modulokat telepíti egy peremhálózati eszközre. Emellett meghatározza a modulok konfigurációs beállításait is. 
 
@@ -14,12 +14,19 @@ Kövesse az alábbi lépéseket a jegyzékfájlnak a sablonból való létrehoz�
 1. Az **Azure IOT hub** panel mellett válassza a **További műveletek** ikont a IoT hub kapcsolódási karakterlánc beállításához. A karakterláncot a *src/Cloud-to-Device-Console-app/appsettings.js* fájlból másolhatja. 
 
     ![IOT-kapcsolatok karakterláncának beállítása](../../../media/quickstarts/set-iotconnection-string.png)
-1. Kattintson a jobb gombbal **az src/Edge/deployment.template.js** elemre, és válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget.
+
+> [!NOTE]
+> Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
+1. Kattintson a jobb gombbal **az src/Edge/deployment.template.js** elemre, és válassza a **IoT Edge üzembe helyezési jegyzék előállítása** lehetőséget.
 
     ![A IoT Edge üzembe helyezési jegyzékének előállítása](../../../media/quickstarts/generate-iot-edge-deployment-manifest.png)
 
     Ehhez a művelethez létre kell hoznia egy *deployment.amd64.js* nevű jegyzékfájlt az *src/Edge/config* mappában.
-1. Kattintson a jobb gombbal az **src/Edge/config/deployment.amd64.js**elemre, válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget, majd válassza ki a peremhálózati eszköz nevét.
+1. Kattintson a jobb gombbal az **src/Edge/config/deployment.amd64.js** elemre, válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget, majd válassza ki a peremhálózati eszköz nevét.
 
     ![Központi telepítés létrehozása egyetlen eszközhöz](../../../media/quickstarts/create-deployment-single-device.png)
 
@@ -27,12 +34,12 @@ Kövesse az alábbi lépéseket a jegyzékfájlnak a sablonból való létrehoz�
 1. Körülbelül 30 másodperc elteltével frissítse az Azure IoT Hubt az ablak bal alsó sarkában. A peremhálózati eszköz mostantól a következő központilag telepített modulokat mutatja:
 
     * Élő videó-elemzés a IoT Edgeon (modul neve `lvaEdge` )
-    * Valós idejű Streaming Protocol (RTSP) szimulátor (modul neve `rtspsim` )
+    * Real-Time Streaming Protocol (RTSP) szimulátor (modul neve `rtspsim` )
 
 Az RTSP-szimulátor modul egy élő videó streamet szimulál egy olyan videofájl használatával, amelyet a peremhálózati eszközre másoltak, amikor futtatta az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 
 > [!NOTE]
-> Ha saját peremhálózati eszközt használ a telepítési parancsfájlból kiépített helyett, nyissa meg a peremhálózati eszközét, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal**az ehhez a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
+> Ha saját peremhálózati eszközt használ a telepítési parancsfájlból kiépített helyett, nyissa meg a peremhálózati eszközét, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal** az ehhez a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
 
 ```
 mkdir /home/lvaadmin/samples      

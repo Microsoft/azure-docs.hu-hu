@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791930"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954868"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Oktatóanyag: több X. 509 eszköz kiépítése beléptetési csoportok használatával
 
@@ -353,6 +353,9 @@ A nem Windows rendszerű eszközökön a tanúsítványláncot átadhatja a kód
 
 Windows-alapú eszközökön hozzá kell adnia az aláíró tanúsítványokat (root és Intermediate) egy Windows- [tanúsítványtárolóhoz](/windows/win32/secauthn/certificate-stores). Ellenkező esetben az aláíró tanúsítványok nem lesznek átirányítva a DPS-re egy biztonságos csatorna Transport Layer Security (TLS) protokollal.
 
+> [!TIP]
+> Az OpenSSL-t a biztonságos csatorna (Schannel) helyett a C SDK-val is lehet használni. Az OpenSSL használatával kapcsolatos további információkért lásd: [az OpenSSL használata az SDK-ban](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#using-openssl-in-the-sdk).
+
 Az aláíró tanúsítványok hozzáadása a tanúsítványtárolóhoz Windows-alapú eszközökön:
 
 1. Egy git bash-parancssorban navigáljon az `certs` aláíró tanúsítványokat tartalmazó alkönyvtárhoz, és alakítsa át azokat a `.pfx` következőképpen.
@@ -462,7 +465,7 @@ Ha befejezte az eszköz ügyféloldali mintájának tesztelését és vizsgálat
 1. Kattintson a **tanúsítványok** elemre a DPS-ben. Az oktatóanyagban feltöltött és ellenőrzött összes tanúsítvány esetében kattintson a tanúsítványra, és a **Törlés** gombra kattintva távolítsa el.
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközöket** a hubhoz. Jelölje be az oktatóanyagban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet. Kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy X. 509 eszközt telepített egy egyéni HSM használatával az IoT hub-ra. Ha szeretné megtudni, hogyan lehet IoT-eszközöket több hubhoz kiépíteni, folytassa a következő oktatóanyaggal. 
 

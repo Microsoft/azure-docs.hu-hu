@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946999"
+ms.locfileid: "98953750"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure digitális Twins-példány és-hitelesítés beállítása (portál)
 
@@ -56,8 +56,8 @@ Ha további részleteket szeretne megadni a példányhoz, a következő szakasz 
 
 A telepítés során konfigurálható további beállítások az **Erőforrás-létrehozási** folyamat további lapjainak használatával érhetők el.
 
-* **Hálózatkezelés**: ezen a lapon engedélyezheti a privát végpontokat az [Azure Private-hivatkozással](../private-link/private-link-overview.md) , így megkerülheti a példánya nyilvános hálózatának kockázatát. Útmutatásért lásd [*: útmutató: privát hozzáférés engedélyezése privát hivatkozással*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
-* **Speciális**: ezen a lapon engedélyezheti a [rendszer által felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) a példányhoz, amelyet az események [végpontokra](concepts-route-events.md)való továbbításakor használhat. Útmutatásért lásd [*: útmutató: felügyelt identitások engedélyezése útválasztási eseményekhez*](how-to-enable-managed-identities.md).
+* **Hálózatkezelés**: ezen a lapon engedélyezheti a privát végpontokat az [Azure Private-hivatkozással](../private-link/private-link-overview.md) , így megkerülheti a példánya nyilvános hálózatának kockázatát. Útmutatásért lásd [*: útmutató: privát hozzáférés engedélyezése privát hivatkozással (előzetes verzió)*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
+* **Speciális**: ezen a lapon engedélyezheti a [rendszer által felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) a példányhoz, amelyet az események [végpontokra](concepts-route-events.md)való továbbításakor használhat. Útmutatásért lásd [*: útmutató: felügyelt identitások engedélyezése útválasztási eseményekhez (előzetes verzió)*](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation).
 * **Címkék**: ezen a lapon hozzáadhat címkéket a példányhoz, hogy az Azure-erőforrások között szervezzen. További információ az Azure-erőforrásokkal kapcsolatos címkékről: [*erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Sikeres ellenőrzés és fontos értékek összegyűjtése

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805184"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954614"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 kibocsátási megjegyzései
 
@@ -77,13 +77,12 @@ Az alábbi táblázat az előző kiadásokból származó ismert problémák ös
 |**16.**|Tanúsítványok |Bizonyos példányokban a helyi felhasználói felületen a tanúsítvány állapota több másodpercig is eltarthat a frissítéshez. |A helyi felhasználói felületen a következő forgatókönyvek befolyásolhatják a műveletet.<ul><li>**Állapot** oszlop a **tanúsítványok** lapon.</li><li>**Biztonsági** csempe az **első lépések** oldalon.</li><li>**Konfigurációs** csempe az **Áttekintés** oldalon.</li></ul>  |
 |**17.**|IoT Edge |A IoT Edge használatával központilag telepített modulok nem használhatják a gazdagép hálózatot. | |
 |**18.**|Számítás + Kubernetes |A számítási/Kubernetes nem támogatja az NTLM webproxyt. ||
-|**19.**|Számítás + web proxy + frissítés |Ha a számítási szolgáltatás webproxyval van konfigurálva, a számítási frissítés sikertelen lehet. |Javasoljuk, hogy a frissítés előtt tiltsa le a számítást. |
-|**20.**|Kubernetes + frissítés |A korábbi szoftververziók, például az 2008-es kiadásokban olyan versenyhelyzet-frissítési probléma merül fel, amelynek hatására a frissítés meghiúsul a ClusterConnectionException. |Az újabb buildek használata segít elkerülni ezt a problémát. Ha továbbra is ezt a problémát látja, a megkerülő megoldással próbálja megismételni a frissítést, és működnie kell.|
+|**19.**|Kubernetes + frissítés |A korábbi szoftververziók, például az 2008-es kiadásokban olyan versenyhelyzet-frissítési probléma merül fel, amelynek hatására a frissítés meghiúsul a ClusterConnectionException. |Az újabb buildek használata segít elkerülni ezt a problémát. Ha továbbra is ezt a problémát látja, a megkerülő megoldással próbálja megismételni a frissítést, és működnie kell.|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az eszköz frissítése](azure-stack-edge-gpu-install-update.md)

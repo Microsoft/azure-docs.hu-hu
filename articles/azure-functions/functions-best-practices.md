@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84697690"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954783"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Az Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -112,11 +112,11 @@ A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  P
 
 A `host.json` Function alkalmazásban található fájl lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot. Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
 
-A host.jsfájljának beállításai az alkalmazáson belüli összes függvényre érvényesek a függvény *egyetlen példányán* belül. Ha például két HTTP-függvényt és kérést tartalmazó Function alkalmazást használ [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) , a http-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a függvény alkalmazása 10 példányra van méretezve, a két függvény hatékonyan engedélyezi az 250 egyidejű kérelmeket (10 példány * 25 egyidejű kérelem/példány). 
+A host.jsfájljának beállításai az alkalmazáson belüli összes függvényre érvényesek a függvény *egyetlen példányán* belül. Ha például két HTTP-függvényt és kérést tartalmazó Function alkalmazást használ [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) , a http-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a függvény alkalmazása 10 példányra van méretezve, a tíz függvény hatékonyan engedélyezi a 250 egyidejű kérelmeket (10 példány * 25 egyidejű kérelem/példány). 
 
 További gazdagép-konfigurációs beállítások találhatók a [host.json Configuration cikkben](functions-host-json.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

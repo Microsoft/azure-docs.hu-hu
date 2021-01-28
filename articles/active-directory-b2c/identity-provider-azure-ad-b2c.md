@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538177"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953920"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Regisztráció és bejelentkezés beállítása egy másik Azure AD B2C bérlő Azure AD B2C fiókjából
 
@@ -105,7 +105,18 @@ Alkalmazás létrehozásához.
     - **Vezetéknév**: *family_name*
     - **E-mail**: *e-mail*
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
+
+## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>Azure AD B2C identitás-szolgáltató hozzáadása felhasználói folyamathoz 
+
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Azure AD B2C identitás-szolgáltatót.
+1. A **közösségi identitás-szolgáltatók** területen válassza a **Fabrikam** lehetőséget.
+1. Kattintson a **Mentés** gombra.
+1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **felhasználói folyamat futtatása** elemre.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a *Fabrikam* lehetőséget a másik Azure ad B2C Bérlővel való bejelentkezéshez.
 
 ::: zone-end
 
@@ -125,9 +136,9 @@ A Azure AD B2C bérlőben korábban létrehozott alkalmazás-kulcsot kell tárol
 1. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
 1. Válassza a **Létrehozás** lehetőséget.
 
-## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
+## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>Azure AD B2C konfigurálása identitás-szolgáltatóként
 
-Ha azt szeretné, hogy a felhasználók a másik Azure AD B2C (Fabrikam) használatával jelentkezzenek be, meg kell adnia a többi Azure AD B2Ct jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
+Annak engedélyezéséhez, hogy a felhasználók egy másik Azure AD B2C bérlőtől (Fabrikam) származó fiókkal jelentkezzenek be, meg kell határoznia a többi Azure AD B2C olyan jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
 A jogcímek szolgáltatóként való megAzure AD B2C adásához vegyen fel egy Azure AD B2C a **ClaimsProvider** elemhez a szabályzat bővítmény fájljában.
 
@@ -139,7 +150,7 @@ A jogcímek szolgáltatóként való megAzure AD B2C adásához vegyen fel egy A
       <Domain>fabrikam.com</Domain>
       <DisplayName>Federation with Fabrikam tenant</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Fabrikam-OpenIdConnect">
+        <TechnicalProfile Id="AzureADB2CFabrikam-OpenIdConnect">
         <DisplayName>Fabrikam</DisplayName>
         <Protocol Name="OpenIdConnect"/>
         <Metadata>
@@ -188,86 +199,32 @@ A jogcímek szolgáltatóként való megAzure AD B2C adásához vegyen fel egy A
     |CryptographicKeys| Frissítse a **StorageReferenceId** értékét a korábban létrehozott házirend-kulcs nevére. Például: `B2C_1A_FabrikamAppSecret`.| 
     
 
-### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Most úgy konfigurálta a szabályzatot, hogy Azure AD B2C tudja, hogyan kommunikálhat a másik Azure AD B2C Bérlővel. Próbálja megismételni a szabályzat kiterjesztési fájljának feltöltését, hogy megbizonyosodjon róla, hogy eddig nincs probléma.
 
-1. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése** lehetőséget.
-1. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
-1. Kattintson a **Feltöltés** gombra.
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADB2CFabrikamExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADB2CFabrikamExchange" TechnicalProfileReferenceId="AzureADB2CFabrikam-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs és bejelentkezési oldalakon még nem érhető el. Ha elérhetővé szeretné tenni, hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az Azure AD Identity Provider is legyen:
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Nyissa meg a *TrustFrameworkBase.xml* fájlt az alapszintű csomagból.
-1. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
-1. Nyissa meg a *TrustFrameworkExtensions.xmlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
-1. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
-1. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInFabrikam`.
-
-### <a name="display-the-button"></a>A gomb megjelenítése
-
-A **ClaimsProviderSelection** elem hasonló a regisztrációs vagy bejelentkezési oldalon található Identity Provider gombhoz. Ha Azure AD B2C **ClaimsProviderSelection** elemet ad hozzá, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
-
-1. Keresse meg a **OrchestrationStep** elemet, amely `Order="1"` a *TrustFrameworkExtensions.xmlban* létrehozott felhasználói útra vonatkozik.
-1. A **ClaimsProviderSelections** területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `FabrikamExchange` :
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="FabrikamExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>Gomb csatolása egy művelethez
-
-Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy a másik Azure AD B2C kommunikáljon a tokenek fogadásához. Csatolja a gombot egy művelethez az Azure AD B2C jogcím-szolgáltató technikai profiljának összekapcsolásával:
-
-1. Keresse meg a felhasználói útra kiterjedő **OrchestrationStep** `Order="2"` .
-1. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId** használt **azonosítóhoz** :
-
-    ```xml
-    <ClaimsExchange Id="FabrikamExchange" TechnicalProfileReferenceId="Fabrikam-OpenIdConnect" />
-    ```
-
-    Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil **azonosítójával** . Például: `Fabrikam-OpenIdConnect`.
-
-1. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end
 
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-b2c-identity-provider-to-a-user-flow"></a>Azure AD B2C identitás-szolgáltató hozzáadása felhasználói folyamathoz 
-
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
-1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Azure AD B2C identitás-szolgáltatót.
-1. A **közösségi identitás-szolgáltatók** területen válassza a **Fabrikam** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
-1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
-1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
-1. A regisztrációs vagy bejelentkezési oldalon válassza a *Fabrikam* lehetőséget a másik Azure ad B2C Bérlővel való bejelentkezéshez.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-
-## <a name="update-and-test-the-relying-party-file"></a>A függő entitás fájljának frissítése és tesztelése
-
-Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott felhasználói utat.
-
-1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInFabrikam.xmlra*.
-1. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInFabrikam`.
-1. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például: `http://contoso.com/B2C_1A_signup_signin_fabrikam`.
-1. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy megfeleljen a korábban létrehozott felhasználói út azonosítójának. Például: *SignUpSignInFabrikam*.
-1. Mentse a módosításokat, és töltse fel a fájlt.
-1. Az **Egyéni házirendek** területen válassza ki az új szabályzatot a listában.
-1. Az **alkalmazás kiválasztása** legördülő menüben válassza ki a korábban létrehozott Azure ad B2C alkalmazást. Például: *testapp1*.
-1. Válassza a **Futtatás most** lehetőséget 
-1. A regisztrációs vagy bejelentkezési oldalon válassza a *Fabrikam* lehetőséget a másik Azure ad B2C Bérlővel való bejelentkezéshez.
-
-::: zone-end
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [adhat át más Azure ad B2C tokent az alkalmazásnak](idp-pass-through-user-flow.md).

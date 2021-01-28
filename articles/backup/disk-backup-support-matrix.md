@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és az Azure Disk Ba
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757474"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954698"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Az Azure Disk Backup támogatási mátrixa (előzetes verzió)
 
@@ -66,6 +66,8 @@ További régiók lesznek bejelentve, amikor elérhetővé válnak.
 
 - A felügyelt lemezek [privát hivatkozásai](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) lehetővé teszik a felügyelt lemezek exportálásának és importálásának korlátozását úgy, hogy az csak az Azure-beli virtuális hálózaton belül történjen. Az Azure Disk Backup támogatja a privát végpontokkal rendelkező lemezek biztonsági mentését. Ez nem tartalmazza a privát végponton keresztül elérhető biztonsági mentési vagy Pillanatképek elérését.
 
-## <a name="next-steps"></a>További lépések
+- Az előzetes verzió ideje alatt nem tilthatja le a biztonsági mentést, így a biztonsági mentés **leállítása és a biztonsági mentési adat megőrzése** nem támogatott. Törölhet egy biztonsági mentési példányt, amely nem csak leállítja a biztonsági mentést, hanem törli az összes biztonsági mentési adatkészletet is.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-Managed Disks biztonsági mentése](backup-managed-disks.md)

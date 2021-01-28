@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 7d1b4b3542f6914d413a5e29e57baa15e7a53346
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012784"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955732"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow összekötése IT-szolgáltatásmenedzsmenti csatoló
 
@@ -122,7 +122,7 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást.
    | --- | --- |
    | **Kapcsolat neve**   | Adja meg annak a ServiceNow-példánynak a nevét, amelyhez csatlakozni kíván a ITSMC. Ezt a nevet később Log Analytics a ITSM-munkaelemek konfigurálásakor és részletes elemzések megtekintésekor is használhatja. |
    | **Partner típusa**   | Válassza a **ServiceNow** lehetőséget. |
-   | **Kiszolgáló URL-címe**   | Adja meg annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek egy támogatott SaaS-verzióra kell mutatnia, az utótag *. servicenow.com*.|
+   | **Kiszolgáló URL-címe**   | Adja meg annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek egy támogatott SaaS-verzióra kell mutatnia, az utótag *. servicenow.com* (például: https://XXXXX.service-now.com/) .|
    | **Felhasználónév**   | Adja meg a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást.|
    | **Jelszó**   | Adja meg a felhasználónévhez tartozó jelszót. **Megjegyzés**: a Felhasználónév és a jelszó csak hitelesítési tokenek létrehozásához használatos. Ezeket a rendszer nem tárolja bárhol a ITSMC szolgáltatáson belül.  |
    | **Ügyfél-azonosító**   | Adja meg a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót. Az ügyfél-azonosító és a titkos kód létrehozásával kapcsolatos további információkért tekintse meg a [OAuth beállítása](https://wiki.servicenow.com/index.php?title=OAuth_Setup)című témakört. |
@@ -142,7 +142,7 @@ Sikeres csatlakozás és szinkronizálás esetén:
 > [!NOTE]
 > A ServiceNow óránkénti kérelmekre érvényesek. A korlát konfigurálásához adja meg a **bejövő REST API ráta korlátozását** a ServiceNow-példányon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [ITSM-csatoló áttekintése](itsmc-overview.md)
 * [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)

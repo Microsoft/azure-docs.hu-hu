@@ -1,5 +1,5 @@
 ---
-title: Felhők és régiók, amelyekben Azure Media Services v3 elérhető
+title: Felhők és régiók a Azure Media Services v3 számára
 description: Ez a cikk a végpontokhoz és a-kódokhoz használt URL-címekről nyújt útmutatást a régiók számára.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,14 +8,14 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74f30ebb766ea34603c0a30455837c47222967c0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319632"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954327"
 ---
-# <a name="regional-code-names-and-endpoints"></a>Területi kódok nevei és végpontok
+# <a name="regional-code-names-and-endpoints"></a>Regionális kódnevek és végpontok
 
 ### <a name="region-code-name"></a>Régiókód neve
 
@@ -84,7 +84,7 @@ A következő végpontokat fontos tudni, hogy mikor csatlakozhat Media Services-
 ## <a name="see-also"></a>Lásd még
 
 * [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Területi kódok nevei és végpontok](azure-regions-code-names.md)
+* [Regionális kódnevek és végpontok](azure-regions-code-names.md)
 * [Azure földrajzi területek](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure-beli helyszínek](https://azure.microsoft.com/global-infrastructure/locations/)
 

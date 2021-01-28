@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 251b15f72c3216ad3ff4b2983c8cbbd2d9ec6579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3497551616b96dc04e2dbdec28d0bf84a11afde0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618250"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954597"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-gpu-device"></a>Üzembe helyezési ellenőrzőlista a Azure Stack Edge Pro GPU-eszközhöz  
 
@@ -41,7 +41,7 @@ Az alábbi ellenőrzőlista segítségével gondoskodhat róla, hogy a Azure Sta
 | Aktiválás  | Aktiválási kulcs megkövetelése az Azure Stack Edge Pro/Data Box Gateway erőforrásból.    | A generált kulcs 3 nap múlva lejár. |
 
 <!--
-| (Optional) MAC Address            | If MAC address needs to be whitelisted, get the address of the connected port from local UI of the device. |                                                                                                                   |
+| (Optional) MAC Address            | If MAC address needs to be on the allowed list, get the address of the connected port from local UI of the device. |                                                                                                                   |
 | (Optional) Network switch port    | Device hosts Hyper-V VMs for compute. Some network switch port configurations don’t accommodate these setups by default.                                                                                                        |                                                                                                                   |-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Videó kivágása Azure Media Services REST-kódolással
+title: Videó kivágása Media Services REST-kódolással
 description: Ez a témakör azt ismerteti, hogyan lehet videót alklipet használni Azure Media Services REST használatával történő kódoláskor
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: 524da91d55bad29a5f7c6dcec0eecc245b9954fd
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6c287e168289082b2bd717a2706dd011c7115691
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511909"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955666"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Videó kivágása Media Services-REST kódolással
 
@@ -84,6 +84,6 @@ A jelen témakörben ismertetett lépések végrehajtásához a következőket k
 
     Ekkor megjelenik a **Válasz** a létrehozott és elküldött feladatra vonatkozó információkkal, valamint a feladatok állapotával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kódolás egyéni átalakítással](custom-preset-rest-howto.md) 

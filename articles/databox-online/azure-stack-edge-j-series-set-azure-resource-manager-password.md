@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8ecd1a99d41dc1391e6dba129d50eb53a67843d1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578790"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955350"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Resource Manager jelszavának beállítása Azure Stack Edge Pro GPU-eszközön
 
@@ -21,53 +21,55 @@ ms.locfileid: "94578790"
 
 Ez a cikk a Azure Resource Manager jelszavának beállítását ismerteti. Ezt a jelszót kell megadnia, amikor a Azure Resource Manager használatával csatlakozik az eszköz helyi API-khoz.
 
-A jelszóbeállítási eljárás eltérő lehet attól függően, hogy az Azure Portal- vagy a PowerShell-parancsmagok vannak-e használatban. Ezeket az eljárásokat a következő szakaszokban ismertetjük.
+<!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Jelszó alaphelyzetbe állítása a Azure Portal használatával
 
-1. A Azure Portal lépjen az eszköz kezeléséhez létrehozott Azure Stack Edge-erőforráshoz. Ugrás az **Edge-számításra > első lépések**.
-
-2. A jobb oldali panelen, a parancssávon válassza ki az **Edge ARM-jelszó alaphelyzetbe állítása** elemet. 
+1. A Azure Portal lépjen az eszköz kezeléséhez létrehozott Azure Stack Edge-erőforráshoz. Ugrás az **Edge services > Cloud Storage-átjáróra**.
 
     ![A EdgeARM felhasználói jelszavának visszaállítása 1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. Az **EdgeArm felhasználói jelszó alaphelyzetbe állítása** panelen adjon meg egy jelszót az eszköz helyi API-khoz való kapcsolódáshoz a Azure Resource Manager használatával. Erősítse meg a jelszót, és válassza a **visszaállítás** lehetőséget.
+2. A jobb oldali panelen, a parancssávon válassza ki az **Edge ARM-jelszó alaphelyzetbe állítása** elemet. 
 
     ![A EdgeARM felhasználói jelszavának visszaállítása 2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
+3. Az **EdgeArm felhasználói jelszó alaphelyzetbe állítása** panelen adjon meg egy jelszót az eszköz helyi API-khoz való kapcsolódáshoz a Azure Resource Manager használatával. Erősítse meg a jelszót, és válassza a **visszaállítás** lehetőséget.
+
+    ![A EdgeARM felhasználói jelszavának visszaállítása 3](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-3.png)
 
 
-## <a name="reset-password-via-powershell"></a>Jelszó alaphelyzetbe állítása a PowerShell használatával
 
-1. Az Azure Portalon nyissa meg az eszköz kezeléséhez létrehozott Azure Stack Edge-erőforrást. Jegyezze fel a következő paramétereket az **Áttekintés** oldalon.
+<!--## Reset password via PowerShell
 
-    - Azure Stack peremhálózati erőforrás neve
-    - Előfizetés azonosítója
+1. In the Azure Portal, go to the Azure Stack Edge resource you created to manage your device. Make a note of the following parameters in the **Overview** page.
 
-2. Lépjen a **beállítások > Tulajdonságok menüpontra**. Jegyezze fel a következő paramétereket a **Tulajdonságok** lapon.
+    - Azure Stack Edge resource name
+    - Subscription ID
 
-    - Erőforráscsoport
-    - A rendszer titkosítási kulcsa: válassza a nézet lehetőséget, majd másolja a **titkosítási kulcsot**.
+2. Go to **Settings > Properties**. Make a note of the following parameters in the **Properties** page.
 
-    ![A lekérési-titkosítási kulcs beolvasása](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
+    - Resource group
+    - CIK encryption key: Select view and then copy the **Encryption Key**.
+
+    ![Get CIK encryption key](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
-3. Azonosítson egy jelszót, amelyet a Azure Resource Managerhoz való kapcsolódáshoz fog használni.
+3. Identify a password that you will use to connect to Azure Resource Manager.
 
-4. Indítsa el a Cloud shellt. Válassza a jobb felső sarokban található ikont:
+4. Start the cloud shell. Select on the icon in the top right corner:
 
-    ![Cloud Shell indítása](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
+    ![Start cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
 
-    Előfordulhat, hogy a Cloud Shell elindítása után a PowerShellre kell váltania.
+    Once the cloud shell has started, you may need to switch to PowerShell.
 
-    ![Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
+    ![Cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. Környezet beállítása. Típus:
+5. Set context. Type:
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
-    Itt látható egy mintakimenet:
+    Here is a sample output:
 
     
     ```azurepowershell
@@ -80,11 +82,11 @@ A jelszóbeállítási eljárás eltérő lehet attól függően, hogy az Azure 
         PS Azure:/
     ```
     
-5.  Ha régi PS-modulokkal rendelkezik, telepítenie kell azokat.
+5.  If you have any old PS modules, you need to install those.
 
     `Remove-Module  Az.DataBoxEdge -force`
 
-    Íme egy minta kimenet. Ebben a példában nem voltak telepítve régi modulok.
+    Here is a sample output. In this example, there were no old modules to be installed.
 
     
     ```azurepowershell
@@ -99,7 +101,7 @@ A jelszóbeállítási eljárás eltérő lehet attól függően, hogy az Azure 
         PS Azure:\
     ```
 
-6. A következő parancsok letöltik és futtatnak egy parancsfájlt a PowerShell-modulok telepítéséhez.
+6. Next set of commands will download and run a script to install PowerShell modules.
     
     ```azurepowershell
         cd ~/clouddrive
@@ -108,7 +110,7 @@ A jelszóbeállítási eljárás eltérő lehet attól függően, hogy az Azure 
         Import-Module ~/clouddrive/Az.DataBoxEdge/Az.DataBoxEdge.psd1 -Force
     ```
 
-7. A következő parancsokban meg kell adnia az erőforrás nevét, az erőforráscsoport nevét, a titkosítási kulcsot és az előző lépésben azonosított jelszót.
+7. In the next set of commands, you'll need to provide the resource name, resource group name, encryption key, and the password you identified in the previous step.
 
     ```azurepowershell
     $devicename = "<Azure Stack Edge resource name>"
@@ -116,18 +118,18 @@ A jelszóbeállítási eljárás eltérő lehet attól függően, hogy az Azure 
     $cik = "<Encryption key>"
     $password = "<Password>"
     ```
-    A jelszó és a titkosítási kulcs paramétereit biztonságos karakterláncként kell átadni. A következő parancsmagok segítségével alakítsa át a jelszót és a titkosítási kulcsot a karakterláncok védelmére.
+    The password and encryption key parameters must be passed as secure strings. Use the following cmdlets to convert the password and encryption key to secure strings.
 
     ```azurepowershell
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    A jelszó alaphelyzetbe állításához használja a fentiekben generált biztonságos karakterláncokat paraméterként a Set-AzDataBoxEdgeUser parancsmagban. Használja ugyanazt az erőforráscsoportot, amelyet az Azure Stack Edge Pro/Data Box Gateway erőforrás létrehozásakor használt.
+    Use the above generated secure strings as parameters in the Set-AzDataBoxEdgeUser cmdlet to reset the password. Use the same resource group that you used when creating the Azure Stack Edge Pro/Data Box Gateway resource.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
     ```
-    Itt látható a minta kimenete.
+    Here is the sample output.
     
     ```azurepowershell
     PS /home/aseuser/clouddrive> $devicename = "myaseresource"
@@ -144,7 +146,7 @@ A jelszóbeállítási eljárás eltérő lehet attól függően, hogy az Azure 
     
         PS /home/aseuser/clouddrive>
     ```
-A Azure Resource Managerhoz való kapcsolódáshoz használja az új jelszót.
+Use the new password to connect to Azure Resource Manager.-->
 
 ## <a name="next-steps"></a>Következő lépések
 

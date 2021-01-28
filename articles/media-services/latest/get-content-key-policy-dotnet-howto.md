@@ -1,5 +1,5 @@
 ---
-title: Aláírási kulcs beszerzése egy házirendből Azure Media Services v3 .NET használatával
+title: Aláíró kulcs beszerzése egy házirend .NET-ből
 description: Ez a témakör bemutatja, hogyan szerezhet be egy aláíró kulcsot a meglévő házirendből Media Services v3 .NET SDK használatával.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7107a2acdc0ca430797245125ca903f7414908da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1436561f7c82446038c231fadec3bd62c94d4ff9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427077"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955105"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Aláírókulcs lekérése a meglévő szabályzatból
 
@@ -39,10 +39,10 @@ A Secrets ContentKeyPolicy példa a [EncryptWithDRM](https://github.com/Azure-Sa
 
 ## <a name="get-contentkeypolicy-with-secrets"></a>ContentKeyPolicy beolvasása a titkokkal 
 
-A kulcs eléréséhez használja a **GetPolicyPropertiesWithSecretsAsync**az alábbi példában látható módon.
+A kulcs eléréséhez használja a **GetPolicyPropertiesWithSecretsAsync** az alábbi példában látható módon.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md) 

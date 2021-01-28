@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119458"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955649"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Élő videó-elemzések frissítése IoT Edge 1,0 – 2,0
 
@@ -19,7 +19,7 @@ Ez a cikk ismerteti a különbségeket és azokat a különböző szempontokat, 
 ## <a name="change-list"></a>Lista módosítása
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Leírás|
+> |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Description|
 > |-------------|----------|---------|---------|
 > |Tároló képe|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft közzétett Docker-rendszerképek az élő videók elemzéséhez Azure IoT Edge|
 > |**MediaGraph-csomópontok** |    |   |   |
@@ -37,7 +37,7 @@ Az üzembe helyezési sablonban keresse meg az élő videó Analytics IoT Edge m
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-Ha nem módosította az élő videó-elemzés nevét IoT Edge modulban, keresse meg a `lvaEdge` modul csomópontját.
+> Ha nem módosította az élő videó-elemzés nevét IoT Edge modulban, keresse meg a `lvaEdge` modul csomópontját.
 
 ### <a name="topology-file-changes"></a>Topológiai fájl módosításai
 A topológia fájljaiban győződjön meg róla, **`apiVersion`** hogy a 2,0 értékre van állítva
@@ -58,9 +58,9 @@ A topológia fájljaiban győződjön meg róla, **`apiVersion`** hogy a 2,0 ér
 >Az egy **`outputSelectors`** opcionális tulajdonság. Ha ez nincs használatban, akkor a Media Graph továbbítja a hanganyagot (ha engedélyezve van), és a videót az RTSP-kameráról a folyamat során. 
 
 * A `MediaGraphHttpExtension` és a `MediaGraphGrpcExtension` processzorok esetében jegyezze fel a következő módosításokat:  
-    * **Rendszerkép tulajdonságai**
-        * `MediaGraphImageFormatEncoded` már nem támogatott. 
-        * Ehelyett használja a vagy a vagy a parancsot **`MediaGraphImageFormatBmp`** **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** . Példa:
+    #### <a name="image-properties"></a>Rendszerkép tulajdonságai
+    * `MediaGraphImageFormatEncoded` már nem támogatott. 
+      * Ehelyett használja a vagy a vagy a parancsot **`MediaGraphImageFormatBmp`** **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** . Példa:
         ```
         "image": {
                 "scale": 
@@ -94,14 +94,14 @@ A topológia fájljaiban győződjön meg róla, **`apiVersion`** hogy a 2,0 ér
         >[!NOTE]
         > A pixelFormat lehetséges értékei a következők:,,, `yuv420p` `rgb565be` `rgb565le` `rgb555be` , `rgb555le` , `rgb24` , `bgr24` , `argb` ,, `rgba` `abgr` , `bgra`  
 
-    * **extensionConfiguration a Grpc bővítmény processzorához**  
-        * A `MediaGraphGrpcExtension` processzorban egy új nevű tulajdonság **`extensionConfiguration`** érhető el, amely egy opcionális karakterlánc, amely a gRPC-szerződés részeként használható. Ezzel a mezővel bármilyen adattovábbítható a következtetési kiszolgálónak, és meghatározhatja, hogy a következtetési kiszolgáló hogyan használja ezeket az adattípusokat.  
-        Ennek a tulajdonságnak az egyik használati esete, ha több AI-modellt is csomagolt egyetlen következtetési kiszolgálóként. Ezzel a tulajdonsággal nem kell minden AI-modellhez ki kell mutatnia egy csomópontot. Ehelyett a Graph-példányokhoz, mint a bővítmények szolgáltatója, megadhatja, hogyan válassza ki a különböző AI-modelleket a **`extensionConfiguration`** tulajdonsággal és a végrehajtás során, a LVA továbbítja ezt a karakterláncot a következtetést felhasználó kiszolgálónak, amely ezt a parancsot használhatja a kívánt AI-modell meghívásához.  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>extensionConfiguration a Grpc bővítmény processzorához  
+    * A `MediaGraphGrpcExtension` processzorban egy új nevű tulajdonság **`extensionConfiguration`** érhető el, amely egy opcionális karakterlánc, amely a gRPC-szerződés részeként használható. Ezzel a mezővel bármilyen adattovábbítható a következtetési kiszolgálónak, és meghatározhatja, hogy a következtetési kiszolgáló hogyan használja ezeket az adattípusokat.  
+    Ennek a tulajdonságnak az egyik használati esete, ha több AI-modellt is csomagolt egyetlen következtetési kiszolgálóként. Ezzel a tulajdonsággal nem kell minden AI-modellhez ki kell mutatnia egy csomópontot. Ehelyett a Graph-példányokhoz, mint a bővítmények szolgáltatója, megadhatja, hogyan válassza ki a különböző AI-modelleket a **`extensionConfiguration`** tulajdonsággal és a végrehajtás során, a LVA továbbítja ezt a karakterláncot a következtetést felhasználó kiszolgálónak, amely ezt a parancsot használhatja a kívánt AI-modell meghívásához.  
 
-    * **AI-összeállítás**
-        * A Live Video Analytics 2,0 mostantól támogatja a több, mint egy Media Graph-bővítményt használó processzor használatát a topológián belül. Az RTSP kamerából különböző AI-modellekre is átadhatja az adathordozó-képkockákat egymás után párhuzamosan, vagy a kettő kombinációjával. Tekintse meg a minta topológiát, amely két, egymás után használt AI-modellt mutat be.
+    #### <a name="ai-composition"></a>AI-összeállítás
+    * A Live Video Analytics 2,0 mostantól támogatja a több, mint egy Media Graph-bővítményt használó processzor használatát a topológián belül. Az RTSP kamerából különböző AI-modellekre is átadhatja az adathordozó-képkockákat egymás után párhuzamosan, vagy a kettő kombinációjával. Tekintse meg a minta topológiát, amely két, egymás után használt AI-modellt mutat be.
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>Lemezterület-kezelés fogadó csomópontokkal
 * A **file mosogató** csomópontban megadhatja, hogy mekkora lemezterületet használhat az élő videó-elemzés IoT Edge modulban a feldolgozott lemezképek tárolásához. Ehhez adja hozzá a mezőt a **`maximumSizeMiB`** FileSink csomóponthoz. A minta file mosogató csomópont a következő:
     ```
     "sinks": [
@@ -154,6 +154,7 @@ A topológia fájljaiban győződjön meg róla, **`apiVersion`** hogy a 2,0 ér
     >[!NOTE]
     >  A **file mosogató** elérési útja az Alapkönyvtár elérési útjára és a fájlnév mintára van felosztva, **míg az objektum elérési** útja magában foglalja az Alapkönyvtár elérési útját.  
 
+### <a name="frame-rate-management"></a>A frame rate kezelése
 * **`MediaGraphFrameRateFilterProcessor`** a **IoT Edge 2,0 modul Live Video Analytics szolgáltatásában** elavult.
     * A bejövő videó feldolgozásra való mintavételezéséhez adja hozzá a **`samplingOptions`** tulajdonságot a MediaGraph bővítmény processzorokhoz ( `MediaGraphHttpExtension` vagy `MediaGraphGrpcExtension` )  
      ```
@@ -169,7 +170,7 @@ Ezzel a kiadással a a (Azure Monitor) mérőszámok küldésére használható.
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Az események osztályozása":::
 
-A Docker használatával könnyedén létrehozhat egy, a saját konfigurációval rendelkező Grafi rendszerképet. További információ erről a [figyelés és naplózás](monitoring-logging.md#azure-monitor-collection-via-telegraf) lapon található.
+A Docker használatával könnyedén létrehozhat egy, a saját konfigurációval rendelkező Grafi rendszerképet. További információ a [figyelés és naplózás](monitoring-logging.md#azure-monitor-collection-via-telegraf) oldalon található.
 
 ## <a name="next-steps"></a>Következő lépések
 

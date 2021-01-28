@@ -1,5 +1,5 @@
 ---
-title: Távoli fájl és stream kódolása Azure Media Services v3 használatával
+title: Távoli fájl és stream kódolása Media Services használatával
 description: Kövesse ennek az oktatóanyagnak a lépéseit egy fájl URL-cím alapján történő kódolásához és a tartalom továbbításához Azure Media Services a REST használatával.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 21f7203af267f53d37e26390ea73c896ea9db76e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059568"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953988"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST
 
@@ -408,7 +408,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

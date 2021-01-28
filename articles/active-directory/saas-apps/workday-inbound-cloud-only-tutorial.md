@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358592"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954089"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása az Azure AD-beli felhasználók üzembe helyezéséhez
 Ennek az oktatóanyagnak a célja, hogy megmutassa a munkavégző adatok munkanapokból Azure Active Directoryba való kiépítéséhez szükséges lépéseket. 
@@ -95,7 +95,7 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
 2. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
 
-3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás** lehetőséget.
 
 4. Válassza az **alkalmazás hozzáadása** lehetőséget, majd válassza az **összes** kategóriát.
 
@@ -115,9 +115,9 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
    
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -206,13 +206,13 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* [További információ az Azure AD és a munkanap-integrációs forgatókönyvekről és a webszolgáltatás-hívásokról](../app-provisioning/workday-integration-reference.md)
 * [További információ a bejövő kiépítés támogatott munkanapokhoz tartozó attribútumairól](../app-provisioning/workday-attribute-reference.md)
 * [Tudnivalók a munkanap visszaírási konfigurálásáról](workday-writeback-tutorial.md)
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
-* [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
 * [Útmutató a kiépítési konfigurációk exportálásához és importálásához](../app-provisioning/export-import-provisioning-configuration.md)
 
 

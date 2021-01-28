@@ -210,14 +210,20 @@
               href: service-bus-auto-forwarding.md
             - name: Tranzakciófeldolgozás
               href: service-bus-transactions.md
-        - name: Átfogó nyomkövetés és diagnosztika
-          href: service-bus-end-to-end-tracing.md
         - name: Többrétegű Service Bus-alkalmazás felépítése
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
     - name: Migrate (Áttelepítés)
       items:
         - name: Migrálás az ActiveMQ-ból az Azure Service Busba
           href: migrate-jms-activemq-to-servicebus.md
+    - name: Monitor
+      items:
+        - name: Átfogó nyomkövetés és diagnosztika
+          href: service-bus-end-to-end-tracing.md
+        - name: Diagnosztikai naplók
+          href: service-bus-diagnostic-logs.md
+        - name: Azure Monitor metrikák
+          href: service-bus-metrics-azure-monitor.md
     - name: Integrálás
       items:
         - name: Integrálás a RabbitMQ-val
@@ -228,12 +234,8 @@
           href: automate-update-messaging-units.md
         - name: Entitások üzembe helyezése az Azure PowerShell használatával
           href: service-bus-manage-with-ps.md
-        - name: A Service Bus monitorozása az Azure Monitorral
-          href: service-bus-metrics-azure-monitor.md
         - name: A Service Bus felügyeleti könyvtárai
           href: service-bus-management-libraries.md
-        - name: Erőforrásnaplók
-          href: service-bus-diagnostic-logs.md
         - name: Üzenetküldési entitások felfüggesztése és újraaktiválása
           href: entity-suspend.md
         - name: A Service Bus Explorer használata adatműveletek a Service Buson való végrehajtásához

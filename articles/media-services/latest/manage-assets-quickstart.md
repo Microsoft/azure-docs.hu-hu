@@ -1,17 +1,17 @@
 ---
-title: Tartalom feltöltése, kódolása és továbbítása a portál használatával – Azure
+title: A portál használata tartalom feltöltéséhez, kódolásához és streameléséhez
 description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet fel, kódolhat és továbbíthat tartalmakat Azure Media Services használatával a portálon.
 ms.topic: quickstart
 ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 0793c8abee27ca415feba313efb029daf092bec9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3831892b6cd241643b3e5753689f768d59e27704
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683012"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955970"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 

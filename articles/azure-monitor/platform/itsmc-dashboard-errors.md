@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762760"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955683"
 ---
 # <a name="errors-in-the-connector-status-section"></a>Hibák az összekötő állapota szakaszban
 
@@ -66,6 +66,10 @@ Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatot
 
 * **Hiba**: "probléma történt. Nem lehetett lekérni a kapcsolat részleteit. " Ez a hiba akkor jelenik meg, amikor az ügyfél definiálja az ITSM műveleti csoportot.
 
-    **OK**: az újonnan létrehozott ITSM-csatoló még befejezte a kezdeti szinkronizálást.
+    **OK**: Ez a hiba akkor jelenik meg, ha:
+    * Az újonnan létrehozott ITSM-csatoló még befejezte a kezdeti szinkronizálást.
+    * Az összekötő nincs megfelelően definiálva.
 
-    **Megoldás**: új ITSM-összekötő létrehozásakor ITSM-csatoló elindítja az információk szinkronizálását a ITSM rendszerből, például a munkaelemek sablonjait és a munkaelemeket. Az [itt](./itsmc-resync-servicenow.md)leírtak szerint szinkronizálja a ITSM-csatoló egy új frissítési jogkivonat létrehozásához.
+    **Megoldás**: 
+    * Új ITSM-összekötő létrehozásakor ITSM-csatoló elindítja az információk szinkronizálását a ITSM rendszerből, például a munkaelemek sablonjait és a munkaelemeket. Az [itt](./itsmc-resync-servicenow.md)leírtak szerint szinkronizálja a ITSM-csatoló egy új frissítési jogkivonat létrehozásához.
+    * Tekintse át a kapcsolat részleteit a ITSM-összekötőben az [itt](./itsmc-connections-servicenow.md#create-a-connection) leírtak szerint, és ellenőrizze, hogy a ITSM-összekötő sikeresen [szinkronizálható](./itsmc-resync-servicenow.md)-e.

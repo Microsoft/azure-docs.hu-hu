@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ebefd5ccec321e8c3d580109c3b3c9dc8ba310c3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 39c9cbdbe8be5c068f9426b53f312563e01a77bc
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532004"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956294"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
@@ -87,6 +87,13 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     Ellenkező esetben a bal alsó sarokban található **Azure IOT hub** panel közelében válassza a **További műveletek** ikont, majd válassza a **IoT hub a kapcsolatok karakterláncának beállítása** lehetőséget. A karakterláncot a *appsettings.js* fájlból másolhatja. Vagy a megfelelő IoT hub a Visual Studio Code-ban való konfigurálásának biztosításához használja az [IoT hub kiválasztása parancsot](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
 
     ![IoT Hub a kapcsolatok karakterlánca](../../../media/quickstarts/iot-hub-connection-string-grpc.png)
+
+> [!NOTE]
+> Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. Kattintson a jobb gombbal az *src/Edge/config/* *deployment.grpcyolov3icpu.amd64.js* elemre, és válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget.
 
     ![üzembe helyezési egyetlen eszköz létrehozása](../../../media/quickstarts/create-deployment-single-device-grpc.png)
@@ -97,7 +104,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     * A **rtspsim** modul, amely egy RTSP-kiszolgálót szimulál, és egy élő videó-hírcsatorna forrásaként működik.
 
         > [!NOTE]
-        > Ha saját peremhálózati eszközt használ a telepítési parancsfájlból kiépített helyett, nyissa meg a peremhálózati eszközét, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal** az ehhez a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
+        > A fenti lépések feltételezik, hogy a telepítési parancsfájl által létrehozott virtuális gépet használja. Ha ehelyett saját Edge-eszközt használ, lépjen a peremhálózati eszközre, és futtassa az alábbi parancsokat **rendszergazdai jogosultságokkal** a rövid útmutatóhoz használt minta videofájl lekéréséhez és tárolásához:  
 
         ```
         mkdir /home/lvaadmin/samples

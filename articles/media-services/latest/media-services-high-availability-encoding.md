@@ -1,5 +1,5 @@
 ---
-title: Magas rendelkezésre állás a Media Services és a videó igény szerint (VOD)
+title: Magas rendelkezésre állás Media Services videó igény szerint
 description: Ez a cikk áttekintést nyújt a VOD-alkalmazások magas rendelkezésre állásának megkönnyítésére használható Azure-szolgáltatásokról.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494953"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955851"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Magas rendelkezésre állás a Media Services és a videó igény szerint (VOD)
 
@@ -39,7 +39,7 @@ A példában használt szolgáltatások a következők:
 | Ikon | Név | Leírás |
 | :--: | ---- | ----------- |
 |![Ez a Media Services-fiók ikonja.](media/media-services-high-availability-encoding/azure-media-services.svg)| Media Services-fiók | **Leírás:**<br>A Media Services fiók az Azure-ban a médiatartalom kezelésére, titkosítására, kódolására, elemzésére és továbbítására szolgáló kiindulópont. Egy Azure Storage-fiók erőforráshoz van társítva. A fióknak és az összes társított tárterületnek ugyanahhoz az Azure-előfizetéshez kell tartoznia.<br><br>**VOD használata:**<br>Ezek a szolgáltatások a videó-és hangeszközök kódolására és továbbítására használhatók.  A magas rendelkezésre állás érdekében legalább két Media Services fiókot kell beállítania, amelyek mindegyike egy másik régióban található. [További információ a Azure Media Servicesról](media-services-overview.md). |
-|![Ez a Storage-fiók ikonja.](media/media-services-high-availability-encoding/storage-account.svg)| Tárfiók | **Leírás:**<br>Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: Blobok, fájlok, várólisták, táblák és lemezek. Az adatok a világon bárhonnan elérhetők HTTP-n vagy HTTPS-en keresztül.<br><br>Az egyes régiókban minden Media Services fióknak ugyanabban a régióban kell lennie.<br><br>**VOD használata:**<br>A bemeneti és kimeneti adatokat a VOD-feldolgozáshoz és a folyamatos átvitelhez is tárolhatja. [További információ az Azure Storage-ról](../../storage/common/storage-introduction.md). |
+|![Ez a Storage-fiók ikonja.](media/media-services-high-availability-encoding/storage-account.svg)| A(z) | **Leírás:**<br>Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: Blobok, fájlok, várólisták, táblák és lemezek. Az adatok a világon bárhonnan elérhetők HTTP-n vagy HTTPS-en keresztül.<br><br>Az egyes régiókban minden Media Services fióknak ugyanabban a régióban kell lennie.<br><br>**VOD használata:**<br>A bemeneti és kimeneti adatokat a VOD-feldolgozáshoz és a folyamatos átvitelhez is tárolhatja. [További információ az Azure Storage-ról](../../storage/common/storage-introduction.md). |
 |![Ez az Azure Storage üzenetsor ikonja.](media/media-services-high-availability-encoding/storage-account-queue.svg)| Azure Storage Queue | **Leírás:**<br>Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők.<br><br>**VOD használata:**<br>A várólisták segítségével üzeneteket küldhet és fogadhat, hogy a különböző modulok között összehangolja a tevékenységeket. A minta egy Azure Storage-várólistát használ, de az Azure más típusú várólistákat is biztosít, például a Service Bus és Service Fabric megbízható várólistákat, amelyek jobban illeszkednek az igényeihez. [További információ az Azure üzenetsorről](../../storage/queues/storage-queues-introduction.md). |
 |![Ez a Azure Cosmos DB ikon.](media/media-services-high-availability-encoding/azure-cosmos-db.svg)| Azure Cosmos DB  | **Leírás:**<br>A Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása, amely egymástól függetlenül méretezi az átviteli sebességet és a tárterületet a globálisan tetszőleges számú Azure-régióban.<br><br>**VOD használata:**<br>A táblák a feladatok kimeneti állapotára vonatkozó rekordok tárolására és az egyes Media Services-példányok állapotának nyomon követésére használhatók. Az Media Services API-nak az egyes hívások állapotát is nyomon követheti/rögzítheti. [További információ a Azure Cosmos DBról](../../cosmos-db/introduction.md).  |
 |![Ez a felügyelt identitás ikonja.](media/media-services-high-availability-encoding/managed-identity.svg)| Felügyelt identitás | **Leírás:**<br>A felügyelt identitás az Azure AD egyik funkciója, amely automatikusan felügyelt identitást biztosít az Azure AD-ben. A hitelesítés bármely olyan szolgáltatáshoz használható, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt is, a hitelesítő adatok kódban való tárolása nélkül.<br><br>**VOD használata:**<br>Azure Functions a felügyelt identitás használatával hitelesítheti Media Services példányokat a Key Vaulthoz való kapcsolódáshoz. [További információ a felügyelt identitásról](../../active-directory/managed-identities-azure-resources/overview.md). |
@@ -85,6 +85,6 @@ Ez a magas szintű diagram a rendelkezésre álló minta architektúráját muta
     * Ha az ütemezett állapot olyan feladatokkal rendelkezik, amelyek egy adott régióra vonatkozóan ésszerű időn belül nem fejlettek a feldolgozási állapotra, távolítsa el a régiót a jelenleg használt fiókok listájáról. Az üzleti igényektől függően dönthet úgy, hogy azonnal megszakítja a feladatokat, és visszaküldi azokat a másik régióba. Vagy további időt adhat nekik, hogy a következő állapotba lépjenek.
     * Ha egy régiót eltávolítottak a fiók listájából, figyelje a helyreállítást a listához való hozzáadás előtt. A regionális állapot a régió meglévő feladatain keresztül figyelhető (ha nem lettek megszakítva és nem lettek elküldve), a fiók egy adott időtartam után visszakerül a listához, és az operátorok figyelik az Azure-kommunikációt az olyan kimaradások miatt, amelyek hatással lehetnek a Azure Media Servicesra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Példák a [kód](/samples/browse/?products=azure-media-services) megadására

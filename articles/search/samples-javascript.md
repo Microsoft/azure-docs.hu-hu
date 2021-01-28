@@ -7,62 +7,66 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 09a9ca2ad1b1f1e5578ecc5d35a85c81b32a5b1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 01/27/2021
+ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511746"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955020"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>JavaScript-kód minták az Azure Cognitive Search
 
-Ismerje meg az Azure Cognitive Search funkcióit és funkcióit bemutató JavaScript-kód mintáit. Az elsődleges Tárházak a következők:
+Ismerje meg az Azure Cognitive Search-megoldás funkcióit és munkafolyamatait bemutató JavaScript-kód mintáit. Ezek a minták az Azure [**Cognitive Search ügyféloldali kódtárat**](/javascript/api/overview/azure/search-documents-readme) használják a [**Javascripthez készült Azure SDK**](/azure/developer/javascript/)-hoz, amelyet a következő hivatkozások segítségével vizsgálhat meg.
 
-| Adattár | Leírás |
-|------------|-------------|
-| [Azure-SDK-for-js/Tree/Master/SDK/keresés/keresés – dokumentumok](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents) | Az Azure SDK csapata által előállított minták, amelyek az SDK-ban a Azure.Search.Documents-ügyfél kódtárat szállítanak. A különböző API-k meghívásához tekintse át az [egységre vonatkozó teszteket](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test) is az ügyféloldali kódtár számára. |
-| [Azure-Samples/Azure-Search-JavaScript-Samples](https://github.com/Azure-Samples/azure-search-javascript-samples) | Az útmutató cikkeihez kapcsolódó kódrészletek, beleértve a gyors üzembe helyezést [: keresési index létrehozása a JavaScriptben](search-get-started-javascript.md).|
+| Cél | Hivatkozás |
+|--------|------|
+| Csomag letöltése | [www.npmjs.com/package/@azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) |
+| API-referencia | [@azure/search-documents](/javascript/api/@azure/search-documents/)  |
+| API-tesztelési esetek | [github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test) |
+| Forráskód | [github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents)  |
 
-> [!Tip]
-> Próbálja ki a [minták böngészőt](/samples/browse/?languages=javascript&products=azure-cognitive-search) a githubon a Microsoft Code-minták kereséséhez, termék, szolgáltatás és nyelv szerint szűrve.
+## <a name="sdk-samples"></a>SDK-minták
 
-## <a name="javascript-sdk-samples"></a>JavaScript SDK-minták
+Az Azure SDK Fejlesztői csapatának az API használatának bemutatása. Ezeket a mintákat az [**Azure-SDK-for-js/Tree/Master/SDK/Search/Search-Documents/Samples**](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) on githubon találja meg.
 
-A Javához készült Azure SDK számos mintát és egy [első lépéseket tartalmazó oldalt](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/README.md#getting-started) tartalmaz, amely a csomagok telepítésére, az ügyfél beállítására és a hibaelhárításra terjed ki. Az oldal az alábbi, az Ön kényelmét szolgáló példákat is ismerteti.
+### <a name="javascript-sdk-samples"></a>JavaScript SDK-minták
 
-| Példák | Leírás |
+| Példák | Description |
 |---------|-------------|
 | [indexek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | Bemutatja a [keresési indexek](search-what-is-an-index.md)létrehozását, frissítését, beolvasását, listázását és törlését. Ez a minta egy szolgáltatási statisztikai mintát is tartalmaz. |
 | [dataSourceConnections (indexek esetében)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat és törölhet indexelő adatforrásokat, amelyek a [támogatott Azure-adatforrások](search-indexer-overview.md#supported-data-sources)indexelő alapú indexeléséhez szükségesek. |
-| [indexelők](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat, állíthat vissza és törölhet [Indexelő](search-indexer-overview.md).|
+| [indexelők](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  Bemutatja, hogyan lehet [Indexelő](search-indexer-overview.md)létrehozni, frissíteni, beolvasni, listázni, visszaállítani és törölni.|
 | [Készségkészlet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat és törölhet olyan [szakértelmével](cognitive-search-working-with-skillsets.md) , amelyek indexelő, valamint az indexelés során mesterségesen alapuló dúsítást végeznek. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | Bemutatja a [szinonimák leképezésének](search-synonyms.md)létrehozását, frissítését, beolvasását, listázását és törlését.  |
 | [Lekérdezések](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | A lekérdezés-végrehajtást a Microsoft által üzemeltetett írásvédett nyilvános indexen mutatja be.  |
 
-## <a name="typescript-samples"></a>Írógéppel minták
+### <a name="typescript-samples"></a>Írógéppel minták
 
-Az SDK emellett olyan írógéppel-példákat is tartalmaz, amelyek az Ön kényelme érdekében itt láthatók.
-
-| Példák | Leírás |
+| Példák | Description |
 |---------|-------------|
 | [indexek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | Bemutatja a [keresési indexek](search-what-is-an-index.md)létrehozását, frissítését, beolvasását, listázását és törlését. Ez a minta egy szolgáltatási statisztikai mintát is tartalmaz. |
 | [dataSourceConnections (indexek esetében)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat és törölhet indexelő adatforrásokat, amelyek a [támogatott Azure-adatforrások](search-indexer-overview.md#supported-data-sources)indexelő alapú indexeléséhez szükségesek. |
-| [indexelők](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat, állíthat vissza és törölhet [Indexelő](search-indexer-overview.md).|
+| [indexelők](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  Bemutatja, hogyan lehet [Indexelő](search-indexer-overview.md)létrehozni, frissíteni, beolvasni, listázni, visszaállítani és törölni.|
 | [Készségkészlet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   Bemutatja, hogyan hozhat létre, frissíthet, kérhet le, listázhat és törölhet olyan [szakértelmével](cognitive-search-working-with-skillsets.md) , amelyek indexelő, valamint az indexelés során mesterségesen alapuló dúsítást végeznek. |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | Bemutatja a [szinonimák leképezésének](search-synonyms.md)létrehozását, frissítését, beolvasását, listázását és törlését.  |
 | [Lekérdezések](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | A lekérdezés-végrehajtást a Microsoft által üzemeltetett írásvédett nyilvános indexen mutatja be.  |
 
-## <a name="documentation-samples"></a>Dokumentáció – minták
+## <a name="doc-samples"></a>Doc-minták
 
-Az alábbi példákban az [Azure Cognitive Search dokumentációjában](./index.yml)szerepel egy kapcsolódó cikk.
+A Cognitive Search csapata által bemutatott funkciók és munkafolyamatok. Ezen minták közül sokat az oktatóanyagok, a rövid útmutatók és a útmutató cikkek tartalmaznak. Ezeket a mintákat az [**Azure-Samples/Azure-Search-JavaScript-Samples**](https://github.com/Azure-Samples/azure-search-javascript-samples) on GitHub webhelyen találja.
 
-| Példák | Leírás | 
-|---------|-------------|
-| [QuickStart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet a JavaScriptben](search-get-started-javascript.md).  |
+| Példák | Cikk |
+|---------|---------|
+| [QuickStart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet a JavaScriptben](search-get-started-javascript.md). Ez a cikk a keresési indexek mintaadatok használatával történő létrehozásához, betöltéséhez és lekérdezéséhez szükséges alapszintű munkafolyamatot ismerteti. |
 
-## <a name="standalone-samples"></a>Önálló minták
+> [!Tip]
+> Próbálja ki a [minták böngészőt](/samples/browse/?languages=javascript&products=azure-cognitive-search) a githubon a Microsoft Code-minták kereséséhez, termék, szolgáltatás és nyelv szerint szűrve.
 
-| Példák | Leírás |
+## <a name="other-samples"></a>Egyéb minták
+
+A Cognitive Search csapata a következő mintákat is közzéteszi, de a dokumentációban nem hivatkozik rá. A kapcsolódó readme-fájlok használati utasításokat tartalmaznak.
+
+| Példák | Description |
 |---------|-------------|
 | [Azure-Search – reagálás – sablon](https://github.com/dereklegenzoff/azure-search-react-template) | Sablon megválaszolása az Azure Cognitive Search (github.com) |

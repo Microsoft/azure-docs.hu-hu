@@ -1741,7 +1741,7 @@
         - name: Biztonsági másolat készítése több virtuális gépről
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Visszaállítási lehetőségek
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Támogatási mátrix
           href: ../backup/backup-support-matrix-iaas.md
         - name: Díjszabás

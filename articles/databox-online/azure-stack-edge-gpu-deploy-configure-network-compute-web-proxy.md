@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778716"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954648"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Network for Azure Stack Edge Pro konfigurálása GPU-val
 
@@ -132,7 +132,8 @@ Ez egy opcionális konfiguráció.
 
 > [!IMPORTANT]
 > * Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge Pro-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne a **none** értékre állítsa be. Az NTLM nem támogatott.
->* A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához. Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható. Általában az átlátszó proxyk jól működnek Azure Stack Edge Pro-val. Nem transzparens webes proxyk nem támogatottak.
+> * A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához. 
+> * Az átlátszó proxyk jól működnek Azure Stack Edge Pro-val. Olyan nem transzparens proxyk esetében, amelyek az összes forgalmat feltartóztatják és olvasják (a proxykiszolgálóhoz telepített saját tanúsítványokon keresztül), töltse fel a proxy tanúsítványának nyilvános kulcsát az Azure Stack Edge Pro-eszközön lévő aláíró láncba. Ezután konfigurálhatja a proxykiszolgáló beállításait az Azure Stack Edge-eszközön. További információ: [saját tanúsítványok használata és feltöltés a helyi felhasználói felületen](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.
@@ -154,7 +155,7 @@ Ez egy opcionális konfiguráció.
 2. A beállítások alkalmazása után kattintson a **Tovább gombra: eszköz**.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/27/2021
+ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534670"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954681"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -71,7 +71,10 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 
 Ha további részleteket szeretne megtudni a rendelkezésre álló számítási sorozatokról, tekintse meg az Azure virtuális gép dokumentációját, amely a [feltört (B sorozatú)](../../virtual-machines/sizes-b-series-burstable.md), [általános célú (Ddsv4 sorozat)](../../virtual-machines/ddv4-ddsv4-series.md)és a [memóriára optimalizált (Edsv4-sorozat)](../../virtual-machines/edv4-edsv4-series.md).
 
-## <a name="storage"></a>Storage
+>[!NOTE]
+>A [feltört (B sorozatos)](../../virtual-machines/sizes-b-series-burstable.md) számítási réteg esetében, ha a kiszolgáló újraindul, például a felhasználó által kezdeményezett, tervezett vagy nem tervezett karbantartás miatt, előfordulhat, hogy a halmozott kredit elvész. Ennek az az oka, hogy amikor a Azure Database for MySQL újraindítják, akkor a halmozott kreditek megmaradnak. Tervezőrendszer, amikor a Azure Database for MySQL-kiszolgáló új csomóponton kezdi meg a frisst, kezdeti jóváírást kap. További információért olvassa el a [feltört (B sorozatú) gyakori kérdések](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)című témakört.
+
+## <a name="storage"></a>Tárolás
 
 A kiépített tárterület a rugalmas kiszolgáló számára elérhető tárolókapacitás mennyisége. A tároló az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a MySQL-kiszolgálói naplók tárolására szolgál. Az összes számítási szinten a támogatott minimális tárterület 5 GiB, a maximum pedig 16 TiB. A tárterület 1 GiB-onként méretezhető, és a kiszolgáló létrehozása után méretezhető.
 
@@ -132,7 +135,7 @@ Ha többet szeretne megtudni a maximálisan érvényes IOPS, a számítási és 
 
 A maximális tényleges IOPS függ a maximális rendelkezésre álló IOPS, a számítási mérettől számítva. Tekintse meg az alábbi képletet, és tekintse meg a nem *gyorsítótárazott lemez maximális átviteli sebességét: IOPS/Mbps* a [B sorozat](../../virtual-machines/sizes-b-series-burstable.md), a [Ddsv4 sorozat](../../virtual-machines/ddv4-ddsv4-series.md)és a [Edsv4 sorozat](../../virtual-machines/edv4-edsv4-series.md) dokumentációjában.
 
-**Max. effektív IOPS** = minimális ( *"a gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/Mbps"* , a számítási méret, a kiépített, GIB * 3)
+**Max. effektív IOPS** = minimális (*"a gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/Mbps"* , a számítási méret, a kiépített, GIB * 3)
 
 Az I/O-használatot a Azure Portalban (Azure Monitor) figyelheti az [IO százalék](./concepts-monitoring.md) metrika használatával. Ha több IOPS van szüksége, meg kell ismernie, hogy korlátozva van-e a számítási méret vagy a kiépített tárterület. A kiszolgáló kiépített számítási vagy tárolási méretének skálázása.
 
@@ -153,7 +156,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időszakának 
 
 ## <a name="pricing"></a>Díjszabás
 
-A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/MySQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) a kiválasztott lehetőségek alapján a **számítási és tárolási** lap havi költségét jeleníti meg. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása** , majd az **adatbázisok** kategóriát, és a beállítások testreszabásához válassza a **Azure Database for MySQL** és a **rugalmas kiszolgáló** lehetőséget.
+A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/MySQL/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) a kiválasztott lehetőségek alapján a **számítási és tárolási** lap havi költségét jeleníti meg. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és a beállítások testreszabásához válassza a **Azure Database for MySQL** és a **rugalmas kiszolgáló** lehetőséget.
 
 Ha optimalizálni szeretné a kiszolgáló költségeit, akkor a következő tippeket kell figyelembe vennie:
 

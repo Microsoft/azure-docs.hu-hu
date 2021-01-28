@@ -1,9 +1,25 @@
 ---
-title: Azure Media Services DRM titkosítási és licencelési szolgáltatás: Azure Media Services Leírás: Ismerje meg, hogyan használható a DRM Dynamic encryption és a License Delivery Service a Microsoft PlayReady, a Google Widevine vagy az Apple FairPlay-licencekkel titkosított adatfolyamok továbbítására.
-szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: oktatóanyag MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: seodec18
-
+title: Media Services DRM titkosítás és licencek kézbesítése
+description: Ismerje meg, hogyan használható a DRM Dynamic encryption és a License Delivery Service a Microsoft PlayReady, a Google Widevine vagy az Apple FairPlay-licenccel titkosított adatfolyamok továbbítására.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955173"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Oktatóanyag: a DRM dinamikus titkosításának és a licenc-kézbesítési szolgáltatásnak a használata
 

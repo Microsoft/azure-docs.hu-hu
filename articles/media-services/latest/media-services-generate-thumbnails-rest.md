@@ -1,5 +1,5 @@
 ---
-title: Aláírási kulcs beszerzése egy házirendből Azure Media Services v3 .NET használatával
+title: Miniatűrök előállítása Media Encoder Standard REST használatával
 description: Ez a cikk azt mutatja be, hogyan használható a REST egy eszköz kódolásához és a miniatűrök létrehozásához egyszerre Media Encoder Standard használatával.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 75b8fd53836cce02816413afaeb656c3ac3f8796
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f4456a65f422c23da73f36dd74680fbb598db186
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935404"
+ms.locfileid: "98955834"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Bélyegképek előállítása a Encoder standard és a REST használatával
 

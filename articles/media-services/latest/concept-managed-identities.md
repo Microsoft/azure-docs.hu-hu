@@ -1,5 +1,5 @@
 ---
-title: Felügyelt identitások és megbízható tárolás a Media Services szolgáltatással
+title: Felügyelt identitások és megbízható tárolók
 description: A Media Services felügyelt identitásokkal is használhatók a megbízható tárolás engedélyezéséhez.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499356"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956174"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>Felügyelt identitások és megbízható tárolás a Media Services szolgáltatással
 
@@ -55,6 +55,6 @@ Ezek az oktatóanyagok a fent említett forgatókönyveket is tartalmazzák.
 - [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](tutorial-byok-portal.md)
 - [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](tutorial-byok-postman.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogy az Ön és az Azure-alkalmazások milyen felügyelt identitásokkal rendelkeznek, tekintse meg az [Azure ad által felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.

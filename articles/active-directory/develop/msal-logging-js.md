@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8604a38bc310cc884c2b5e99efe7a47ae5e787d7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: d7463e3376847a219750254548c25ca79f4cdfb6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763405"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954817"
 ---
 # <a name="logging-in-msaljs"></a>Naplózás az MSAL.js-ben
 
@@ -56,6 +56,6 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákért tekintse meg a [Microsoft Identity platform Code Samples](sample-v2-code.md)című témakört.

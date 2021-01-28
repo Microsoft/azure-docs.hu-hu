@@ -12,37 +12,34 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0c1e9e6da02478f5e4703676b74fc8247a4f619b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9656da8be086724482f129efab323e02b73e117e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753525"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954960"
 ---
 # <a name="single-page-application-move-to-production"></a>Egyoldalas alkalmazás: áthelyezés éles környezetbe
 
-Most, hogy már tudja, hogyan szerezzen be tokent a webes API-k hívásához, Ismerje meg, hogyan helyezheti át az éles környezetbe.
+Most, hogy már tudja, hogyan szerezzen be tokent a webes API-k meghívásához, itt néhány megfontolandó szempontot figyelembe kell venni, amikor az alkalmazást éles környezetbe helyezi.
 
-## <a name="improve-your-app"></a>Az alkalmazás fejlesztése
-
-[Engedélyezze a naplózást](msal-logging.md) , hogy az alkalmazás előállítása készen álljon.
-
-## <a name="test-your-integration"></a>Az integráció tesztelése
-
-Tesztelje az integrációt a [Microsoft Identity platform Integration ellenőrzőlista](identity-platform-integration-checklist.md)követésével.
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="deploy-your-app"></a>Az alkalmazás üzembe helyezése
 
 Tekintse meg az [üzembe helyezési mintát](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3) , amelyből megtudhatja, hogyan helyezheti üzembe a Spa-és webes API-projektjeit az Azure Storage és az Azure app Services használatával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="code-samples"></a>Kódminták
 
-- A gyors üzembe helyezési minta részletes bemutatása, amely leírja, hogyan lehet bejelentkezni a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a **Microsoft Graph API** meghívásához **MSAL.js**: [JavaScript Spa oktatóanyag](./tutorial-v2-javascript-spa.md)használatával.
+Ezek a kódok több fő műveletet mutatnak be egy egyoldalas alkalmazáshoz.
+- [SPA ASP.net-háttérrel](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi): a saját háttérbeli webes API-k (ASP.net Core) jogkivonatait **MSAL.js** használatával szerezheti be.
 
-- Ez a minta azt mutatja be, hogyan lehet jogkivonatokat beolvasni a saját háttérbeli webes API-hoz (ASP.NET Core) a **MSAL.js**: [SPA és egy ASP.net-háttér](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)használatával.
+- [Node.js web API (Azure ad](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2): a háttérbeli webes API (Node.js) hozzáférési jogkivonatának ellenőrzése a **Passport-Azure-ad** használatával.
 
-- Minta, amely bemutatja, hogyan lehet érvényesíteni a háttérbeli webes API-hoz (Node.js) tartozó hozzáférési jogkivonatokat a **Passport-Azure-ad**: [Node.js web API (Azure ad](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)) használatával.
+- [Spa és Azure ad B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp): a **MSAL.js** használata a **Azure Active Directory B2C** (Azure ad B2C) szolgáltatásban regisztrált alkalmazásokban való bejelentkezéshez.
 
-- Ez a minta azt mutatja be, hogyan használhatók a **MSAL.js** a **Azure Active Directory B2C** (Azure ad B2C) szolgáltatásban regisztrált alkalmazásokban lévő felhasználók bejelentkezéséhez: [Azure ad B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
+- [Node.js web API (Azure ad B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi): a **Passport-Azure-AD** használata a **Azure Active Directory B2C** (Azure ad B2C) szolgáltatásban regisztrált alkalmazások hozzáférési jogkivonatának érvényesítéséhez.
 
-- Minta, amely bemutatja, hogyan használható a **Passport-Azure-ad** a **Azure Active Directory B2C** (Azure ad B2C) szolgáltatásban regisztrált alkalmazások hozzáférési jogkivonatának érvényesítéséhez: [Node.js web API (Azure ad B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
+## <a name="next-steps"></a>Következő lépések
+
+- [JavaScript Spa oktatóanyag](./tutorial-v2-javascript-spa.md): részletes útmutató a felhasználók bejelentkezéséhez és hozzáférési token beszerzéséhez a **Microsoft Graph API** **MSAL.js** használatával történő meghívásához.

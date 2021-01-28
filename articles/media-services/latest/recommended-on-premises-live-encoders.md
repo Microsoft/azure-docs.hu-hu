@@ -1,5 +1,5 @@
 ---
-title: Media Services által ajánlott élő adatfolyam-kódolók – Azure
+title: Media Services által ajánlott élő adatfolyam-kódolók
 description: Ismerkedjen meg a Media Services által ajánlott élő streaming helyszíni kódolókkal
 services: media-services
 keywords: kódolás; kódolók; adathordozó
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 6d54a4167739775d3c09740f25a883314e048c65
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bf282b3fbba0f22cd41c0420014c46ddb7c958eb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895169"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955139"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Ellenőrzött helyszíni élő adatfolyam-kódolók
 

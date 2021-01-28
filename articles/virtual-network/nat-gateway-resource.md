@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223380"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954664"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT Gateway-erőforrásokkal
 
@@ -92,7 +92,7 @@ Az ebben a példában használt Azure Resource Manager sablonról további infor
 
 Tekintse át ezt a szakaszt, és ismerkedjen meg a virtuális hálózatok NAT-beli kialakításával kapcsolatos szempontokkal.  
 
-1. [Cost Optimization](#cost-optimization)
+1. [Költségoptimalizálás](#cost-optimization)
 1. [A bejövő és a kimenő együttes létezése](#coexistence-of-inbound-and-outbound)
 2. [Alapszintű erőforrások kezelése](#managing-basic-resources)
 3. [Rendelkezésre állási zónák](#availability-zones)
@@ -339,6 +339,7 @@ A SNAT-portok 5 másodperc elteltével újra felhasználhatók ugyanarra a cél 
 - A NAT kompatibilis a standard SKU nyilvános IP-címmel, a nyilvános IP-előtaggal és a terheléselosztó erőforrásaival.   Az alapszintű erőforrások (például az alapszintű Load Balancer) és a belőlük származtatott termékek nem kompatibilisek a NAT-val.  Az alapszintű erőforrásokat a NAT-mel nem konfigurált alhálózatra kell helyezni.
 - Az IPv4-címek családja támogatott.  A NAT nem támogatja az IPv6-cím családját.  A NAT nem helyezhető üzembe IPv6-előtaggal rendelkező alhálózaton.
 - A NAT nem tud több virtuális hálózatot kifogni.
+- Az IP-töredezettség nem támogatott.
 
 ## <a name="suggestions"></a>Javaslatok
 

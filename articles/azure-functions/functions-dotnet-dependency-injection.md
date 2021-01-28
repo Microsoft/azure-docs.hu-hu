@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706932"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955088"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -190,7 +190,7 @@ A naplózási szintekkel kapcsolatos további információkért lásd: a [napló
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Leírás|
+|Szolgáltatástípus|Élettartama|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -257,6 +257,24 @@ public class HttpTrigger
 
 A beállításokkal kapcsolatos további részletekért tekintse meg a [ASP.net Core beállítások mintáját](/aspnet/core/fundamentals/configuration/options) .
 
+## <a name="using-aspnet-core-user-secrets"></a>ASP.NET Core felhasználói titkok használata
+
+Helyi fejlesztés esetén ASP.NET Core biztosít egy [titkos kezelői eszközt](/aspnet/core/security/app-secrets#secret-manager) , amely lehetővé teszi a titkos adatok tárolását a projekt gyökerén kívül. Ez kevésbé valószínű, hogy a titkokat véletlenül véglegesítik a verziókövetés. A Azure Functions Core Tools (3.0.3233 vagy újabb verzió) automatikusan beolvassa a ASP.NET Core Secret Manager által létrehozott titkokat.
+
+Ha .NET Azure Functions projektet szeretne konfigurálni a felhasználói titkok használatára, futtassa a következő parancsot a projekt gyökerében.
+
+```bash
+dotnet user-secrets init
+```
+
+Ezután használja a `dotnet user-secrets set` parancsot a titkok létrehozásához vagy frissítéséhez.
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+A felhasználói titkok értékének a Function alkalmazás kódjában való eléréséhez használja a következőt: `IConfiguration` vagy `IOptions` .
+
 ## <a name="customizing-configuration-sources"></a>Konfigurációs források testreszabása
 
 > [!NOTE]
@@ -310,7 +328,7 @@ Alapértelmezés szerint a konfigurációs fájlok (például *aappsettings.js* 
 > [!IMPORTANT]
 > A felhasználási vagy prémium csomagokban futó Function apps esetében az eseményindítókban használt konfigurációs értékek módosítása a skálázási hibákhoz vezethet. Ha az osztály ezen tulajdonságok bármelyikét megváltoztatja, a `FunctionsStartup` Function app indítási hibát eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

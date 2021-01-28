@@ -1,15 +1,15 @@
 ---
-ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 729839c8e881f507e103c4644c012d8dffc5c8c6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060590"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956295"
 ---
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 * IoT Hub
-* Tárfiók
+* A(z)
 * Azure Media Services fiók
 * Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../../../../iot-edge/how-to-install-iot-edge.md) telepítve
 
@@ -26,7 +26,20 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    A szkript sikeres befejeződése után az előfizetésben szereplő összes szükséges erőforrást látnia kell.
+    A szkript sikeres befejeződése után az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript összesen 12 erőforrást állít be:
+    1. **Folyamatos átviteli végpont** – ez segítséget nyújt a rögzített AMS-eszköz lejátszásában.
+    1. **Virtuális gép** – ez egy virtuális gép, amely a peremhálózati eszközként fog működni.
+    1. **Lemez** – ez egy olyan tárolóeszköz, amely a virtuális géphez van csatolva adathordozók és összetevők tárolásához.
+    1. **Hálózati biztonsági csoport** – az Azure-beli virtuális hálózatokon lévő Azure-erőforrások felé irányuló és onnan érkező hálózati forgalom szűrésére szolgál.
+    1. **Hálózati adapter** – lehetővé teszi, hogy egy Azure-beli virtuális gép kommunikáljon az internettel, az Azure-ral és más erőforrásokkal.
+    1. **Megerősített kapcsolat** – ez lehetővé teszi, hogy a böngésző és a Azure Portal használatával kapcsolódjon a virtuális géphez.
+    1. **Nyilvános IP-cím** – lehetővé teszi, hogy az Azure-erőforrások kommunikáljanak az internettel és a nyilvánosan elérhető Azure-szolgáltatásokkal
+    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **IoT hub** – ez egy központi üzenetsor, amely a IoT-alkalmazás, a IoT Edge-modulok és az általa kezelt eszközök közötti kétirányú kommunikációra szolgál.
+    1. **Media Service-fiók** – ez segíti az Azure-beli médiatartalmak felügyeletét és továbbítását.
+    1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Container Registry** – ez segít a privát Docker-tárolók rendszerképeinek és a kapcsolódó összetevők tárolásában és kezelésében.
+
 1. A szkript befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A *~/clouddrive/LVA-Sample* könyvtárban néhány fájl jelenik meg. Ebben a rövid útmutatóban a következők szerepelnek:
 
      * ***~/clouddrive/LVA-Sample/Edge-Deployment/.env** _ – ez a fájl olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.

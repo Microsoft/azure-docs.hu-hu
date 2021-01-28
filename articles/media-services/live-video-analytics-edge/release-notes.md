@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954395"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -35,7 +35,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 > A rövid útmutatók és oktatóanyagokban az üzembe helyezési jegyzékek a 2 (Live-Video-Analytics: 2) címkét használják. Ezért az ilyen jegyzékfájlok újbóli üzembe helyezéséhez frissítenie kell a modult a peremhálózati > eszközökön.
 ### <a name="bug-fixes"></a>Hibajavítások 
 
-* A mezők `ActivationSignalOffset` `MinimumActivationTime` és `MaximumActivationTime` a Signal Gate-processzorok helytelenül lettek beállítva a szükséges tulajdonságokként. Ezek a tulajdonságok mostantól **opcionálisak** .
+* A `ActivationSignalOffset` `MinimumActivationTime` `MaximumActivationTime` Signal Gate-feldolgozók mezői nem voltak megfelelően beállítva a kötelező tulajdonságok. Ezek a tulajdonságok mostantól **opcionálisak** .
 * Rögzített egy használati hiba, amely hatására az élő videó Analytics IoT Edge modul összeomlása esetén bizonyos régiókban való üzembe helyezéskor összeomlik.
 
 <hr width=100%>
@@ -48,7 +48,7 @@ Ez a kiadás a IoT Edge Live Video Analytics nyilvános előzetes verziójának 
 ```
 ### <a name="module-updates"></a>Modul frissítései
 * Több mint egy HTTP-bővítmény processzorának és a gRPC-bővítmény processzorának a támogatása gráf-topológián.
-* A lemezterület-kezelés támogatása a fogadó csomópontok számára.
+* A lemezterület-kezelés támogatása a fogadó [csomópontok számára](upgrading-lva-module.md#disk-space-management-with-sink-nodes).
 * `MediaGraphGrpcExtension` a csomópont mostantól támogatja a [extensionConfiguration](grpc-extension-protocol.md) tulajdonságot több AI-modell használatára egyetlen gRPC-kiszolgálón belül.
 * Az élő videó Analytics modul metrikáinak begyűjtésének támogatása a [Prometheus formátumban](https://prometheus.io/docs/practices/naming/). További információ a [metrikák gyűjtéséről és a Azure monitor való megtekintéséről.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * Lehetőség van a kimenet kijelölésének szűrésére. **Csak hang-** vagy **video-** , illetve **hang-és video** -átadható is lehet, ha bármilyen gráf-csomóponthoz segítségére van szüksége `outputSelectors` . 
@@ -56,7 +56,7 @@ Ez a kiadás a IoT Edge Live Video Analytics nyilvános előzetes verziójának 
     * A frame rate Management mostantól elérhető a Graph bővítmény processzor-csomópontjain belül.
 
 ### <a name="visual-studio-code-extension"></a>Visual Studio Code-bővítmény
-* Megjelent [az élő videók elemzése IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – egy Visual Studio Code-bővítmény, amely segít a LVA-diagramok kezelésében. Ez a bővítmény a **LVA 2,0 modullal** működik együtt, és a nagy teljesítményű és könnyen használható grafikus felülettel rendelkező adathordozó-diagramok szerkesztését és kezelését kínálja.
+* Megjelent [az élő videók elemzése IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) – egy Visual Studio Code-bővítmény, amely segít a LVA-diagramok kezelésében. Ez a bővítmény a **LVA 2,0 modullal** működik együtt, és a lapos gráfok egyszerű és könnyen használható grafikus felülettel való szerkesztését és kezelését kínálja.
 ## <a name="september-22-2020"></a>Szeptember 22., 2020
 
 Ez a kiadási címke a modul szeptember 2020 frissítésére szolgál:
@@ -76,7 +76,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 ### <a name="documentation-updates"></a>Dokumentációfrissítések
 
 * Az Azure Stack Edge-eszközökön a IoT Edge élő videó-elemzések használatával kapcsolatos [utasítások](deploy-azure-stack-edge-how-to.md) érhetők el.
-* Új oktatóanyag a forgatókönyvek adott számítógépes szemléletű modelljeinek [Custom Vision szolgáltatással](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) való fejlesztéséről, valamint az [élő videók valós idejű elemzéséhez](custom-vision-tutorial.md) .
+* Új oktatóanyag a forgatókönyv-specifikus számítógépes szemléletű modellek fejlesztéséhez [Custom Vision szolgáltatás](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) használatával és az [élő videók valós idejű elemzéséhez](custom-vision-tutorial.md) .
 
 <hr width=100%>
 
@@ -93,15 +93,15 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="module-updates"></a>Modul frissítései
 
-* Mostantól nagy adatátviteli teljesítményt érhet el az élő videók elemzése IoT Edge és egyéni bővítménye között a gRPC Framework használatával. A kezdéshez tekintse meg [ezt](analyze-live-video-use-your-grpc-model-quickstart.md) a témakört.
+* Mostantól nagy adatátviteli teljesítményt érhet el az élő videók elemzése IoT Edge és egyéni bővítménye között a gRPC Framework használatával. A kezdéshez tekintse meg [a](analyze-live-video-use-your-grpc-model-quickstart.md) rövid útmutatót.
 * Az élő videó-elemzések szélesebb regionális telepítése, és csak a Cloud Service frissült.  
-* Az élő videó Analytics immár 25 további régióban érhető el világszerte. Itt látható az összes elérhető régió [listája](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) .  
+* Az élő videó elemzése mostantól 25 további régióban érhető el szerte a világon. Itt látható az összes elérhető régió [listája](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) .  
 * A gyors [üzembe helyezés beállítása](https://aka.ms/lva-edge/setup-resources-for-samples) az új régiók támogatásával is frissült.
     * Nincs olyan művelet, aki már beállított erőforrásokat
 
 ### <a name="bug-fixes"></a>Hibajavítások 
 
-* Elavult Azure-bővítmény használatának eltávolítása a parancsfájl beállítása
+* Elavult Azure-bővítmény használatának eltávolítása a telepítési parancsfájlban
 
 <hr width=100%>
 
@@ -118,7 +118,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 
 ### <a name="module-updates"></a>Modul frissítései
 
-* Most már létrehozhat olyan gráf-topológiákat, amelyek rendelkeznek egy objektum-fogadó csomóponttal, valamint egy file fogadó csomópontot a Signal Gate processzor csomópontján. Példaként tekintse meg [ezt](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) a témakört.
+* Most már létrehozhat olyan gráf-topológiákat, amelyekhez tartozik egy eszköz fogadó csomópontja, valamint egy file mosogató csomópont a Signal Gate processzor csomópontján. Tekintse meg [a topológiát](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files) példaként.
 
 ### <a name="bug-fixes"></a>Hibajavítások
 

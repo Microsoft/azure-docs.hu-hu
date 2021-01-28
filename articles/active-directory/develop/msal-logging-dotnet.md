@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47576265c9b1a20f801231abe2fb37a929d5a27c
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: da36ce0a956e0c3ed369a676960bdb9b5c5b1199
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763424"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954834"
 ---
 # <a name="logging-in-msalnet"></a>Naplózás az MSAL.NET-ben
 
@@ -63,6 +63,6 @@ class Program
 > [!TIP]
  > Tekintse meg a [MSAL.net wikit](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) a MSAL.net-naplózási és egyéb mintákhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákért tekintse meg a [Microsoft Identity platform Code Samples](sample-v2-code.md)című témakört.

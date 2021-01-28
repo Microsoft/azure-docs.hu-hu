@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631936"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955766"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -59,7 +59,21 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-A szkript sikeres befejeződése után az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát **`Microsoft.Devices/IotHubs`** , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia.  
+    A szkript sikeres befejeződése után az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript összesen 12 erőforrást állít be:
+    1. **Folyamatos átviteli végpont** – ez segítséget nyújt a rögzített AMS-eszköz lejátszásában.
+    1. **Virtuális gép** – ez egy virtuális gép, amely a peremhálózati eszközként fog működni.
+    1. **Lemez** – ez egy olyan tárolóeszköz, amely a virtuális géphez van csatolva adathordozók és összetevők tárolásához.
+    1. **Hálózati biztonsági csoport** – az Azure-beli virtuális hálózatokon lévő Azure-erőforrások felé irányuló és onnan érkező hálózati forgalom szűrésére szolgál.
+    1. **Hálózati adapter** – lehetővé teszi, hogy egy Azure-beli virtuális gép kommunikáljon az internettel, az Azure-ral és más erőforrásokkal.
+    1. **Megerősített kapcsolat** – ez lehetővé teszi, hogy a böngésző és a Azure Portal használatával kapcsolódjon a virtuális géphez.
+    1. **Nyilvános IP-cím** – lehetővé teszi, hogy az Azure-erőforrások kommunikáljanak az internettel és a nyilvánosan elérhető Azure-szolgáltatásokkal
+    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **IoT hub** – ez egy központi üzenetsor, amely a IoT-alkalmazás, a IoT Edge-modulok és az általa kezelt eszközök közötti kétirányú kommunikációra szolgál.
+    1. **Media Service-fiók** – ez segíti az Azure-beli médiatartalmak felügyeletét és továbbítását.
+    1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Container Registry** – ez segít a privát Docker-tárolók rendszerképeinek és a kapcsolódó összetevők tárolásában és kezelésében.
+
+A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát **`Microsoft.Devices/IotHubs`** , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia.  
 
 > [!NOTE]
 > A szkript a **_~/clouddrive/LVA-Sample/_* _ könyvtárban is létrehoz néhány konfigurációs fájlt. Ezekre a fájlokra később szükség lesz a rövid útmutatóban.
@@ -101,6 +115,12 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
 1. Az **Explorer** lap bal alsó sarkában válassza az **Azure IoT hub** elemet.
 1. A helyi menü megjelenítéséhez kattintson a **További beállítások** ikonra. Ezután válassza a **IoT hub a kapcsolatok karakterláncának beállítása** lehetőséget.
 1. Amikor megjelenik egy beviteli mező, adja meg IoT Hub kapcsolódási karakterláncát. Cloud Shell a (z) *~/clouddrive/lva-sample/appsettings.js*.
+
+> [!NOTE]
+> Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 Ha a kapcsolatok sikeresek, megjelenik az Edge-eszközök listája. Legalább egy **LVA-Sample-Device** nevű eszközt kell látnia. Mostantól kezelheti IoT Edge eszközeit, és a helyi menüben használhatja az Azure IoT Hubt. A peremhálózati eszközön üzembe helyezett modulok megtekintéséhez a **LVA – minta-eszköz** területen bontsa ki a **modulok** csomópontot.
 

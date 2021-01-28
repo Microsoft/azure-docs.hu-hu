@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890529"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954293"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>A Microsoft Spark segédprogramok bemutatása
 
@@ -39,10 +39,6 @@ A következő URL-címen keresztül férhet hozzá ADLS Gen2hoz a szinapszis Spa
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-<!-- ### Configure access to Azure Blob Storage  -->
-
-:::zone pivot = "programming-language-python"
-
 ### <a name="configure-access-to-azure-blob-storage"></a>Azure-Blob Storage hozzáférésének konfigurálása  
 
 A szinapszis kihasználja a **közös hozzáférésű aláírást (SAS)** az Azure Blob Storage eléréséhez. Ha el szeretné kerülni, hogy az SAS-kulcsok a kódban legyenek kitéve, javasoljuk, hogy hozzon létre egy új társított szolgáltatást a szinapszis munkaterületen az elérni kívánt Azure Blob Storage-fiókkal.
@@ -62,6 +58,8 @@ Az Azure Blob Storage a következő URL-címen keresztül férhet hozzá a szina
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 Íme egy példa a következő kódra:
+
+:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -86,26 +84,6 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
-### <a name="configure-access-to-azure-blob-storage"></a>Azure-Blob Storage hozzáférésének konfigurálása  
-
-A szinapszis kihasználja a **közös hozzáférésű aláírást (SAS)** az Azure Blob Storage eléréséhez. Ha el szeretné kerülni, hogy az SAS-kulcsok a kódban legyenek kitéve, javasoljuk, hogy hozzon létre egy új társított szolgáltatást a szinapszis munkaterületen az elérni kívánt Azure Blob Storage-fiókkal.
-
-Kövesse az alábbi lépéseket egy új társított szolgáltatás Azure Blob Storage-fiókhoz való hozzáadásához:
-
-1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
-2. Válassza a **kezelés** lehetőséget a bal oldali panelen, és válassza a **társított szolgáltatások** lehetőséget a **külső kapcsolatok** alatt.
-3. Az **Azure Blob Storage** az **új társított szolgáltatás** panelen keresse meg a jobb oldalon.
-4. Válassza a **Folytatás** lehetőséget.
-5. Válassza ki az Azure Blob Storage fiókot a társított szolgáltatás nevének eléréséhez és konfigurálásához. Azt javasoljuk, hogy a **hitelesítési módszerhez** használja a **fiók kulcsát** .
-6. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások helyességének ellenőrzéséhez.
-7. A módosítások mentéséhez válassza az első **Létrehozás** lehetőséget, majd kattintson az **összes közzététele** elemre. 
-
-Az Azure Blob Storage a következő URL-címen keresztül férhet hozzá a szinapszis Sparkhoz:
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-Íme egy példa a következő kódra:
-
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -123,27 +101,6 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
-
-
-### <a name="configure-access-to-azure-blob-storage"></a>Azure-Blob Storage hozzáférésének konfigurálása  
-
-A szinapszis kihasználja a **közös hozzáférésű aláírást (SAS)** az Azure Blob Storage eléréséhez. Ha el szeretné kerülni, hogy az SAS-kulcsok a kódban legyenek kitéve, javasoljuk, hogy hozzon létre egy új társított szolgáltatást a szinapszis munkaterületen az elérni kívánt Azure Blob Storage-fiókkal.
-
-Kövesse az alábbi lépéseket egy új társított szolgáltatás Azure Blob Storage-fiókhoz való hozzáadásához:
-
-1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
-2. Válassza a **kezelés** lehetőséget a bal oldali panelen, és válassza a **társított szolgáltatások** lehetőséget a **külső kapcsolatok** alatt.
-3. Az **Azure Blob Storage** az **új társított szolgáltatás** panelen keresse meg a jobb oldalon.
-4. Válassza a **Folytatás** lehetőséget.
-5. Válassza ki az Azure Blob Storage fiókot a társított szolgáltatás nevének eléréséhez és konfigurálásához. Azt javasoljuk, hogy a **hitelesítési módszerhez** használja a **fiók kulcsát** .
-6. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások helyességének ellenőrzéséhez.
-7. A módosítások mentéséhez válassza az első **Létrehozás** lehetőséget, majd kattintson az **összes közzététele** elemre. 
-
-Az Azure Blob Storage a következő URL-címen keresztül férhet hozzá a szinapszis Sparkhoz:
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-Íme egy példa a következő kódra:
 
 ```csharp
 var blob_account_name = "";  // replace with your blob name

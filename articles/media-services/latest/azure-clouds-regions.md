@@ -1,5 +1,5 @@
 ---
-title: A Azure Media Services v3-felhők és-régiók rendelkezésre állása
+title: Azure Media Services v3-régiók rendelkezésre állása
 description: Ez a cikk olyan Azure-felhőket és-régiókat mutat be, amelyekben Azure Media Services v3 elérhető.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 91df515703b4b6b368b07482fad1aa8b781281f6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242589"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954446"
 ---
 # <a name="azure-media-services-v3-clouds-and-regions-availability"></a>A Azure Media Services v3-felhők és-régiók rendelkezésre állása
 
@@ -66,7 +66,7 @@ A jobb oldali navigációs sávon megkeresheti az Önt érdeklő régiót.
 ## <a name="see-also"></a>Lásd még
 
 * [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Területi kódok nevei és végpontok](azure-regions-code-names.md)
+* [Regionális kódnevek és végpontok](azure-regions-code-names.md)
 * [Azure földrajzi területek](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure-beli helyszínek](https://azure.microsoft.com/global-infrastructure/locations/)
 

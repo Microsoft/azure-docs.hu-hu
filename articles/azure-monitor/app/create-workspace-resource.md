@@ -3,12 +3,12 @@ title: Új Azure Monitor Application Insights munkaterület-alapú erőforrás l
 description: Ismerkedjen meg az új Azure Monitor Application Insights munkaterület-alapú erőforrások engedélyezéséhez szükséges lépésekkel.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9d1ef158b8096c12c36673b62f87e1d02be69175
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f1cc7db7eea4485ad40062a0e11a76dc14234b41
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936468"
+ms.locfileid: "98956045"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások
 
@@ -33,6 +33,7 @@ A munkaterület-alapú Application Insights lehetővé teszi Azure Monitor és L
 
 Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre egy Application Insights erőforrást:
 
+[!div class="mx-imgBorder"]
 ![Munkaterület-alapú Application Insights erőforrás](./media/create-workspace-resource/create-workspace-based.png)
 
 Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../learn/quick-create-workspace.md).

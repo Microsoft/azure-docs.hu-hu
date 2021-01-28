@@ -41,22 +41,22 @@
       items:
         - name: Információ a virtuális központ útválasztásáról
           href: about-virtual-hub-routing.md
-        - name: Útválasztási forgatókönyvek
-          items:
-            - name: Bármely elemek között
-              href: scenario-any-to-any.md
-            - name: Virtuális hálózatok elkülönítése
-              href: scenario-isolate-vnets.md
-            - name: Virtuális hálózatok elkülönítése – egyéni
-              href: scenario-isolate-vnets-custom.md
-            - name: Megosztott szolgáltatások virtuális hálózatai
-              href: scenario-shared-services-vnet.md
-            - name: Útvonal NVA-n keresztül
-              href: scenario-route-through-nva.md
-            - name: Útvonal NVA-n keresztül – egyéni
-              href: scenario-route-through-nvas-custom.md
-            - name: Azure Firewall – egyéni
-              href: scenario-route-between-vnets-firewall.md
+    - name: Útválasztási forgatókönyvek
+      items:
+        - name: Bármely elemek között
+          href: scenario-any-to-any.md
+        - name: Virtuális hálózatok elkülönítése
+          href: scenario-isolate-vnets.md
+        - name: Virtuális hálózatok elkülönítése – egyéni
+          href: scenario-isolate-vnets-custom.md
+        - name: Megosztott szolgáltatások virtuális hálózatai
+          href: scenario-shared-services-vnet.md
+        - name: Útvonal NVA-n keresztül
+          href: scenario-route-through-nva.md
+        - name: Útvonal NVA-n keresztül – egyéni
+          href: scenario-route-through-nvas-custom.md
+        - name: Azure Firewall – egyéni
+          href: scenario-route-between-vnets-firewall.md
     - name: Figyelés
       items:
         - name: Azure Monitor Insights virtuális WAN-hoz

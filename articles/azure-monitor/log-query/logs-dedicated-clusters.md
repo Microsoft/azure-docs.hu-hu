@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920223"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954749"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -81,10 +81,12 @@ A következő tulajdonságokat kell megadni:
 
 A *fürterőforrás* létrehozása után további tulajdonságokat (például *SKU*, * keyVaultProperties vagy *billingType*) is szerkeszthet. További részletekért lásd alább.
 
+Régiónként legfeljebb 2 aktív fürt lehet. Ha a fürt törölve van, a rendszer 14 napig is fenntart. Régiónként (aktív vagy nemrégiben törölt) legfeljebb 4 fenntartott fürt lehet.
+
 > [!WARNING]
 > A fürt létrehozása elindítja az erőforrás-kiosztást és az üzembe helyezést. A művelet elvégzése akár egy órát is igénybe vehet. Azt javasoljuk, hogy aszinkron módon futtassa.
 
-A fürtöket létrehozó felhasználói fióknak rendelkeznie kell a szabványos Azure-Erőforrás-létrehozási engedéllyel: `Microsoft.Resources/deployments/*` és a fürt írási engedélyével `(Microsoft.OperationalInsights/clusters/write)` .
+A fürtöket létrehozó felhasználói fióknak rendelkeznie kell a szabványos Azure-Erőforrás-létrehozási engedéllyel: `Microsoft.Resources/deployments/*` és a fürt írási engedélye úgy, hogy `Microsoft.OperationalInsights/clusters/write` az adott művelet vagy vagy a szerepkör-hozzárendelései vannak `Microsoft.OperationalInsights/*` `*/write` .
 
 ### <a name="create"></a>Létrehozás 
 
@@ -503,7 +505,9 @@ Fürt törléséhez használja a következő REST-hívást:
 
 ## <a name="limits-and-constraints"></a>Korlátok és megkötések
 
-- A fürt maximális száma régiónként és az előfizetés 2
+- Az aktív fürtök maximális száma régiónként és előfizetésben 2
+
+- A fenntartott fürtök maximális száma (aktív vagy legutóbb törölve) régiónként és előfizetésben 4 
 
 - A fürthöz csatolt munkaterületek maximális száma 1000
 

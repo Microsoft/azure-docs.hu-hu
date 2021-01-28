@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services élő stream létrehozása a OBS Studióval
+title: Élő stream létrehozása a OBS Studióval
 description: Megtudhatja, hogyan hozhat létre Azure Media Services élő streamet a portál és a OBS Studio használatával
 services: media-services
 ms.service: media-services
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
-ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89265507"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956072"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Azure Media Services élő stream létrehozása a OBS
 
@@ -89,11 +89,11 @@ A OBS egy alapértelmezett jelenettel kezdődik, de nincsenek bemenetek kijelöl
 
    ![OBS-források menü kiválasztva](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
 
-1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK**gombra. Ekkor megnyílik a **videoeszköz tulajdonságai** menü.
+1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK** gombra. Ekkor megnyílik a **videoeszköz tulajdonságai** menü.
 
    ![Új OBS menü megnyitása meglévő kijelölés hozzáadásával](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
 
-1. Az **eszköz** legördülő listából válassza ki a szóráshoz használni kívánt videó bemenetet. Hagyja a többi beállítást egyelőre, és kattintson az **OK**gombra. A bemeneti forrás hozzá lesz adva a **források** panelhez, és a videó bemeneti nézete megjelenik az **előnézet** területen.
+1. Az **eszköz** legördülő listából válassza ki a szóráshoz használni kívánt videó bemenetet. Hagyja a többi beállítást egyelőre, és kattintson az **OK** gombra. A bemeneti forrás hozzá lesz adva a **források** panelhez, és a videó bemeneti nézete megjelenik az **előnézet** területen.
 
    ![OBS kamera beállításai](media/live-events-obs-quickstart/live-event-surface-camera.png)
 
@@ -105,7 +105,7 @@ A OBS egy alapértelmezett jelenettel kezdődik, de nincsenek bemenetek kijelöl
 
    ![OBS-források menü a kijelölt hangeszközzel](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
 
-1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK**gombra. Ekkor megnyílik a **hangbemenet rögzítése menü tulajdonságai** .
+1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK** gombra. Ekkor megnyílik a **hangbemenet rögzítése menü tulajdonságai** .
 
    ![OBS hangforrása a meglévő kijelölés hozzáadásával ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
 
@@ -149,11 +149,11 @@ A következő eljárásban visszatérhet Azure Media Services a böngészőben a
 
    ![OBS kimeneti beállításai](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
 
-1. Hagyja változatlanul a beállítások hátralévő részét, és kattintson **az OK**gombra.
+1. Hagyja változatlanul a beállítások hátralévő részét, és kattintson **az OK** gombra.
 
 ### <a name="start-streaming"></a>Streaming indítása
 
-1. A **vezérlők** panelen kattintson a **streaming indítása**lehetőségre.
+1. A **vezérlők** panelen kattintson a **streaming indítása** lehetőségre.
 
     ![OBS Start streaming gomb](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
 
@@ -176,7 +176,7 @@ Ez a rész beállítja a kimeneteket, és lehetővé teszi az élő stream rögz
 
    ![Lokátor neve mező](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. A képernyő minden más elemének kihagyása egyelőre.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>A kimeneti szórás lejátszása Azure Media Player használatával
 
@@ -190,7 +190,7 @@ Ez a rész beállítja a kimeneteket, és lehetővé teszi az élő stream rögz
 
 Ha úgy gondolja, hogy elég tartalmat továbbított, állítsa le a szórást.
 
-1. A portálon válassza a **Leállítás**lehetőséget.
+1. A portálon válassza a **Leállítás** lehetőséget.
 
 1. A OBS területen válassza a **továbbítás leállítása** gombot a **vezérlők** panelen. Ez a lépés leállítja a szórást a OBS.
 
@@ -198,11 +198,11 @@ Ha úgy gondolja, hogy elég tartalmat továbbított, állítsa le a szórást.
 
 A létrehozott kimenet elérhető az igény szerinti folyamatos átvitelhez, ha a streaming végpontja fut.
 
-1. Nyissa meg az Media Services listáját, és válassza az **eszközök**elemet.
+1. Nyissa meg az Media Services listáját, és válassza az **eszközök** elemet.
 1. Keresse meg a korábban létrehozott esemény kimenetét, és válassza ki az eszközre mutató hivatkozást. Megnyílik az eszköz kimenete lap.
 1. Másolja a streaming URL-címet az adott eszközhöz tartozó videolejátszó alá.
 1. Térjen vissza Azure Media Player a böngészőben, és illessze be a streaming URL-címet az URL mezőbe.
-1. Válassza a **lejátszó frissítése**lehetőséget.
+1. Válassza a **lejátszó frissítése** lehetőséget.
 1. Az igény szerinti eszköz megtekintéséhez válassza a videó **Lejátszás** ikonját.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -212,14 +212,14 @@ A létrehozott kimenet elérhető az igény szerinti folyamatos átvitelhez, ha 
 
 A folyamatos átviteli végpont leállítása:
 
-1. A Media Services listában válassza a **folyamatos átviteli végpontok**lehetőséget.
+1. A Media Services listában válassza a **folyamatos átviteli végpontok** lehetőséget.
 2. Válassza ki a korábban elindított alapértelmezett adatfolyam-végpontot. Ez a lépés megnyitja a végpont lapját.
-3. Válassza a **Leállítás**lehetőséget.
+3. Válassza a **Leállítás** lehetőséget.
 
 > [!TIP]
 > Ha nem szeretné megtartani az adott eseményből származó eszközöket, ne felejtse el törölni őket, hogy ne kelljen fizetnie a tárterületért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Élő események és élő kimenetek Media Services](./live-events-outputs-concept.md)

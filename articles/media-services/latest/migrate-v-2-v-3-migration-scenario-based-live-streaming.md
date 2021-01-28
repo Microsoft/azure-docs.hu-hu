@@ -1,5 +1,5 @@
 ---
-title: Media Services v2 – v3 áttelepítési útmutató az élő közvetítéshez
+title: Media Services élő adatfolyam-áttelepítési útmutató
 description: Ez a cikk élő közvetítési forgatókönyv-alapú útmutatást nyújt, amely segítséget nyújt az Azure Media Services v2-ről a v3-re való áttelepítéshez.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 02ae0f7e8723e9c4543a4ef681e3a1164b183a7a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927125"
+ms.locfileid: "98955292"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Élő közvetítés forgatókönyv-alapú áttelepítési útmutatója
 

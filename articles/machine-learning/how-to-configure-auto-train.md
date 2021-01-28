@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600060"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954715"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -203,15 +203,53 @@ Besorolás | Regresszió | Idősoros előrejelzés
 ### <a name="primary-metric"></a>Elsődleges metrika
 A `primary metric` paraméter határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
 
+Az automatikus gépi tanuláshoz használt elsődleges metrika számos tényezőtől függ. Javasoljuk, hogy az elsődleges szempont az üzleti igényeknek leginkább megfelelő mérőszám kiválasztása. Ezután vegye figyelembe, hogy a metrika megfelelő-e az adatkészlet-profilhoz (adatméret, tartomány, osztály eloszlás stb.).
+
 Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanulás eredményeinek megismeréséhez](how-to-understand-automated-ml.md).
 
 |Besorolás | Regresszió | Idősoros előrejelzés
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>Besorolási forgatókönyvek elsődleges metrikái 
+
+A küszöbértékeket követő mérőszámok, például a,, `accuracy` `average_precision_score_weighted` `norm_macro_recall` és `precision_score_weighted` nem optimalizálható a nagyon kis méretű adatkészletek esetében, igen nagy méretűek az osztályuk (osztály egyensúlyhiánya), vagy ha a várt metrika értéke nagyon közel 0,0 vagy 1,0. Ezekben az esetekben `AUC_weighted` jobb választás lehet az elsődleges metrika számára. Az automatizált gépi tanulás befejezése után kiválaszthatja a nyertes modellt az üzleti igényeknek leginkább megfelelő mérőszám alapján.
+
+| Metric | Példa használati eset (ek) |
+| ------ | ------- |
+| `accuracy` | Képek besorolása, a hangulat elemzése, a forgalom előrejelzése |
+| `AUC_weighted` | Csalások észlelése, képbesorolás, rendellenességek észlelése/levélszemét észlelése |
+| `average_precision_score_weighted` | Hangulatelemzés |
+| `norm_macro_recall` | Forgalom előrejelzése |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>Regressziós forgatókönyvek elsődleges metrikái
+
+A hasonló mérőszámok `r2_score` `spearman_correlation` jobban reprezentálják a modell minőségét, ha a megjósolható érték skálája több nagyságrenddel is kiterjed. A fizetések becslése például a $20000 és a 100 000 USD közötti fizetés, a skála azonban nagyon magas, és a $100M tartományba tartozik. 
+
+`normalized_mean_absolute_error` és `normalized_root_mean_squared_error` ebben az esetben a $20000 előrejelzési hibát is megegyeznek egy olyan feldolgozónál, amely egy 20 millió dolláros fizetéssel rendelkezik, és a munkatársa $20m-t használ. A valóságban azonban csak a $20 USD-es fizetéstől számított 20000-érték nagyon közel van (egy kis 0,1%-os relatív különbség), míg a $30k-ból $20000 off nem zárul le (nagy 67% relatív különbség). `normalized_mean_absolute_error` és akkor `normalized_root_mean_squared_error` lehet hasznos, ha az előre jelzett értékek hasonló léptékben vannak.
+
+| Metric | Példa használati eset (ek) |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Ár előrejelzése (ház/termék/tipp), pontszám-előrejelzés áttekintése |
+| `r2_score` | Repülőjegy-késés, fizetési becslés, hibajavítási idő |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>Az idősorozat-előrejelzési forgatókönyvek elsődleges metrikái
+
+Lásd a fenti regressziós megjegyzéseket.
+
+| Metric | Példa használati eset (ek) |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Árak előrejelzése (előrejelzés), leltározás optimalizálása, kereslet-előrejelzés |
+| `r2_score` | Árak előrejelzése (előrejelzés), leltározás optimalizálása, kereslet-előrejelzés |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>Az adatfeaturization
 
@@ -219,7 +257,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok automatikusan m
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a [AutoMLConfig objektum](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization elfogadott beállításait tartalmazza. 
 
-|Featurization-konfiguráció | Leírás |
+|Featurization-konfiguráció | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**.|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem kell automatikusan elvégezni.|
@@ -479,7 +517,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
         - `pip uninstall PyJWT` a parancs-rendszerhéjban, és adja meg `y` a megerősítést.
         - Telepítés a használatával `pip install 'PyJWT<2.0.0'` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

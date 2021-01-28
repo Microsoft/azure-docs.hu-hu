@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120410"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954259"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és ve
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
     ```
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy az 3.0.1-es vagy újabb verziót használja. Az az. Storage verzióját a következő parancs futtatásával tekintheti meg:  
+    > Győződjön meg arról, hogy a 3.0.1-es **verziót** használja. Az az. Storage verzióját a következő parancs futtatásával tekintheti meg:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
@@ -187,8 +187,8 @@ A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-
 | Külső adatforrás       | Előtag | Storage-fiók elérési útja                                |
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
-| Azure Data Lake Storage Gen1 | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| 2\. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
+| 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| 2. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
 
 A kiszolgáló-hatókörű hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
 

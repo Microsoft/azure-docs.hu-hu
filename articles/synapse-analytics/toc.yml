@@ -96,6 +96,8 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Biztonság
           items:
+            - name: Biztonsági vezérlők Azure Policy
+              href: ./security-controls-policy.md
             - name: Titkosítás
               href: ./security/workspaces-encryption.md
             - name: Hálózati biztonság

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359731"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954004"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből munkanapokra
 Ennek az oktatóanyagnak a célja, hogy megmutassa az attribútumok Azure AD-ből munkanapokra történő visszaírási elvégzendő lépéseket. A munkanap visszaírási kiépítési alkalmazás támogatja az értékek hozzárendelését a következő munkanap-attribútumokhoz:
@@ -56,11 +56,11 @@ Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasznál
 
 2. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
 
-3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás** lehetőséget.
 
 4. Válassza az **alkalmazás hozzáadása** lehetőséget, majd válassza az **összes** kategóriát.
 
-5. Keresse meg a **munkanap visszaírási** , és adja hozzá az alkalmazást a katalógusból.
+5. Keresse meg a **munkanap visszaírási**, és adja hozzá az alkalmazást a katalógusból.
 
 6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
@@ -170,8 +170,9 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 * Ha a visszaírási alkalmazás a másodlagos telefonszámok frissítésére van konfigurálva, nem helyettesíti a meglévő másodlagos telefonszámot a munkanapokon. Hozzáadja még egy másodlagos telefonszámot a feldolgozói rekordhoz. Ehhez a viselkedéshez nem kerülő megoldás. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* [További információ az Azure AD és a munkanap-integrációs forgatókönyvekről és a webszolgáltatás-hívásokról](../app-provisioning/workday-integration-reference.md)
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
 * [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)

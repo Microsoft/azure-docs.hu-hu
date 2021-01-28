@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878290"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954412"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -97,6 +97,17 @@ Az élő videó elemzése IoT Edge modulként van telepítve a IoT Edge eszköz�
 
     > [!TIP]
     > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** útmutatóként.
+
+Az **[élő videó elemzési erőforrásainak telepítési parancsfájljának](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)** futtatásakor problémák merülhetnek fel. Gyakori problémák a következők:
+
+* Olyan előfizetés használata, amely nem rendelkezik tulajdonosi jogosultságokkal. Ez azt eredményezi, hogy a parancsfájl **ForbiddenError** vagy **AuthorizationFailed** hiba miatt meghiúsul.
+    * A probléma megkezdéséhez győződjön meg arról, hogy rendelkezik a használni kívánt előfizetéshez tartozó **tulajdonosi** jogosultságokkal. Ha saját maga nem tudja megtenni, lépjen kapcsolatba az előfizetés rendszergazdájával, és adja meg a megfelelő jogosultságokat.
+* **A sablon központi telepítése a szabályzat megsértése miatt nem sikerült.**
+    * A probléma megoldásához működjön együtt a rendszergazdával, és győződjön meg arról, hogy a hívás (ok) hoz létre virtuális gépet az SSH-hitelesítés blokkolásának mellőzéséhez. Erre nem lesz szükség, mert olyan biztonságos megerősített hálózatot használunk, amely felhasználónevet és jelszót igényel az Azure-erőforrásokkal való kommunikációhoz. Ezeket a hitelesítő adatokat a rendszer a **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** fájlban tárolja Cloud Shell a virtuális gép sikeres létrehozása, üzembe helyezése és a IoT hubhoz való csatolása után.
+* A telepítési parancsfájl nem tud létrehozni egyszerű szolgáltatásnevet és/vagy Azure-erőforrásokat.
+    * A probléma megkezdéséhez ellenőrizze, hogy az előfizetés és az Azure-bérlő nem érte el a maximális szolgáltatási korlátot. További információ az [Azure ad szolgáltatás korlátairól és korlátozásáról](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) , valamint az [Azure-előfizetések és-szolgáltatások korlátairól, kvótáinak és megkötéséről.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+
+
 ### <a name="live-video-analytics-working-with-external-modules"></a>Külső modulok használata élő videó-elemzéssel
 
 A Media Graph bővítmény processzorait használó élő videó-elemzések kiterjeszthetik a Media Graphot, hogy más IoT Edge-moduloktól származó adatok küldésére és fogadására HTTP vagy gRPC protokollok használatával. Egy [adott példaként](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)ez a Media Graph képkockákat küldhet képként egy külső következtetési modulba, mint például a Yolo v3, és HTTP protokoll használatával fogadja a JSON-alapú elemzési eredményeket. Ilyen topológiában az események rendeltetése többnyire az IoT hub. Olyan helyzetekben, amikor nem látja a következtetési eseményeket a központban, ellenőrizze a következőket:
@@ -314,6 +325,6 @@ A gRPC-kiszolgáló élő videó-elemzéssel való használatához a közös mem
 1. Ezután futtathatja a feldolgozási logikát, ha a kívánt számú képkockával rendelkezik.
 1. Ha elkészült, visszaállíthatja az eredményül kapott eredményeket az élő videó elemzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: eseményvezérelt videofelvétel a felhőben és a felhőből való lejátszás](event-based-video-recording-tutorial.md)

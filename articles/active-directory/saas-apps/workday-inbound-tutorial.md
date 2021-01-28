@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569552"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954216"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -157,7 +157,7 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
 
 1. Keresse meg és válassza ki az előző lépésben létrehozott biztonsági csoportot. 
    >[!div class="mx-imgBorder"]
-   >![Biztonsági csoport kiválasztása](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![Biztonsági csoport kiválasztása](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. Kattintson a csoport neve melletti három pontra (...), majd a menüben válassza a **biztonsági csoport > tartományi engedélyek fenntartása biztonsági csoport számára** elemet.
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ Ebben a lépésben az "üzleti folyamatok biztonsága" házirend engedélyeit fo
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>A kiépítési ügynök telepítési előfeltételei
 
-A következő szakasz folytatásához tekintse át a [kiépítési ügynök telepítésének előfeltételeit](../cloud-provisioning/how-to-prerequisites.md) . 
+A következő szakasz folytatásához tekintse át a [kiépítési ügynök telepítésének előfeltételeit](../cloud-sync/how-to-prerequisites.md) . 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>A felhasználó üzembe helyezésének beállítása munkahelyről Active Directory
 
@@ -267,7 +267,7 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a mu
 
 A helyszíni Active Directory való kiépítéshez a létesítési ügynököt olyan tartományhoz csatlakoztatott kiszolgálóra kell telepíteni, amely hálózati hozzáféréssel rendelkezik a kívánt Active Directory tartomány (ok) hoz.
 
-Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az ügynök [ **telepítése** című szakaszban](../cloud-provisioning/how-to-install.md) felsorolt lépéseket az ügynök konfigurálásának befejezéséhez.
+Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és kövesse az ügynök [ **telepítése** című szakaszban](../cloud-sync/how-to-install.md) felsorolt lépéseket az ügynök konfigurálásának befejezéséhez.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>3. rész: a kiépítési alkalmazásban konfigurálja a munkanapokhoz és a Active Directoryhoz való kapcsolódást.
 Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a Azure Portal. 
@@ -284,9 +284,9 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
 
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -336,7 +336,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
       * Operátor: nem NULL
 
    > [!TIP]
-   > Amikor első alkalommal konfigurálja a kiépítési alkalmazást, meg kell vizsgálnia és ellenőriznie kell az attribútumok hozzárendeléseit és kifejezéseit, hogy biztosan megadja a kívánt eredményt. A Microsoft azt javasolja, hogy a **forrás objektum hatókörében** lévő hatókör-szűrők használatával tesztelje a leképezéseket néhány, munkanapokon tesztelő felhasználóval. Miután meggyőződött arról, hogy a leképezések működnek, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
+   > Amikor első alkalommal konfigurálja a kiépítési alkalmazást, meg kell vizsgálnia és ellenőriznie kell az attribútumok hozzárendeléseit és kifejezéseit, hogy biztosan megadja a kívánt eredményt. A Microsoft azt javasolja, hogy a **forrás objektum hatókörében** és [az igény szerinti kiépítés alatt a hatókör-](../app-provisioning/provision-on-demand.md) [szűrők](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) használatával tesztelje a leképezéseket a munkanapokon néhány tesztelési felhasználóval. Miután meggyőződött arról, hogy a leképezések működnek, távolítsa el a szűrőt, vagy fokozatosan bontsa ki, hogy több felhasználót is tartalmazzon.
 
    > [!CAUTION] 
    > A kiépítési motor alapértelmezett viselkedése, hogy letiltsa/törölje a hatókörön kívüli felhasználókat. Előfordulhat, hogy az AD-integrációhoz nem lehet szükség az adott munkanapon belül. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyása](../app-provisioning/skip-out-of-scope-deletions.md) című cikket.
@@ -1063,9 +1063,10 @@ Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** ka
 
 Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, elemzéseket végez, vagy 30 napon belül nem nyújt betekintést. Ezért az Azure AD kiépítési szolgáltatás 30 napon belül nem tárolja, dolgozza fel és nem őrzi meg az összes adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* [További információ az Azure AD és a munkanap-integrációs forgatókönyvekről és a webszolgáltatás-hívásokról](../app-provisioning/workday-integration-reference.md)
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)
-* [Ismerje meg, hogyan integrálhat más SaaS-alkalmazásokat a Azure Active Directory](tutorial-list.md)
+* [Tudnivalók a munkanap visszaírási konfigurálásáról](workday-writeback-tutorial.md)
 * [Ismerje meg, hogyan használhatja a Microsoft Graph API-kat a kiépítési konfigurációk kezeléséhez](/graph/api/resources/synchronization-overview)

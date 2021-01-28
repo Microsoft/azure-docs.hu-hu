@@ -7,30 +7,28 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/27/2021
+ms.openlocfilehash: 5567cf3bf606b08ce430f9189467d796498ae691
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498999"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953903"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET (C#) kód minták az Azure Cognitive Search
 
-Ismerje meg az Azure Cognitive Search funkcióit és funkcióit bemutató C#-kódrészleteket. Az elsődleges Tárházak a következők:
+Ismerje meg az Azure Cognitive Search-megoldás funkcióit és munkafolyamatait bemutató C#-kódrészleteket. Ezek a minták az Azure [**Cognitive Search ügyféloldali kódtárat**](/dotnet/api/overview/azure/search) használják a [**.net-hez készült Azure SDK**](/dotnet/azure/)-hoz, amelyet a következő hivatkozások segítségével vizsgálhat meg.
 
-| Adattár | Description |
-|------------|-------------|
-| [Azure-SDK-for-net/SDK/Search/Azure.Search.Documents/Samples/](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/samples) | Az Azure SDK csapata által előállított minták, amelyek az SDK-ban a Azure.Search.Documents-ügyfél kódtárat szállítanak. A különböző API-k meghívásához tekintse át az [egységre vonatkozó teszteket](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/tests) is az ügyféloldali kódtár számára. |
-| [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) | A dokumentációban szereplő cikkeket kísérő példák, beleértve [a .net-ügyfél függvénytárának használatát](search-howto-dotnet-sdk.md).|
-| [Azure-Samples/Search-DotNet-első lépések](https://github.com/Azure-Samples/search-dotnet-getting-started) | A dokumentációban szereplő gyors útmutatókat és oktatóanyagokat tartalmazó minták.|
+| Cél | Hivatkozás |
+|--------|------|
+| Csomag letöltése | [www.nuget.org/packages/Azure.Search.Documents/](https://www.nuget.org/packages/Azure.Search.Documents/) |
+| API-referencia | [azure.search.documents](/dotnet/api/azure.search.documents)  |
+| API-tesztelési esetek | [github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/tesztek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/tests) |
+| Forráskód | [github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/src](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/src)  |
 
-> [!Tip]
-> Próbálja ki a [minták böngészőt](/samples/browse/?languages=csharp&products=azure-cognitive-search) a githubon a Microsoft Code-minták kereséséhez, termék, szolgáltatás és nyelv szerint szűrve.
+## <a name="sdk-samples"></a>SDK-minták
 
-## <a name="net-sdk-samples"></a>.NET SDK-minták
-
-A .NET-hez készült Azure SDK számos mintát tartalmaz, valamint egy, az egyes tartalmakat leíró [mintát](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/README.md) . Az alábbi lista az Ön kényelmét szolgálja.
+Az Azure SDK Fejlesztői csapatának az API használatának bemutatása. Ezek a minták az [**Azure/Azure-SDK-for-net/Tree/Master/SDK/Search/Azure.Search.Documents/Samples**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/) on githubon találhatók meg.
 
 | Példák | Description |
 |---------|-------------|
@@ -42,23 +40,28 @@ A .NET-hez készült Azure SDK számos mintát tartalmaz, valamint egy, az egyes
 | [Dokumentumok indexelése (leküldéses modell)](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample05_IndexingDocuments.md) | A "leküldéses" modell indexelése, amely JSON-adattartalom küldését teszi lehetővé egy szolgáltatás indexéhez.   |
 | [Titkosítási kulcs mintája](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample06_EncryptedIndex.md) | Azt mutatja be, hogy az ügyfél által felügyelt titkosítási kulcs segítségével további védelmi réteget adhat hozzá a bizalmas tartalomhoz.  |
 
-## <a name="documentation-samples"></a>Dokumentáció – minták
+## <a name="doc-samples"></a>Doc-minták
 
-Az alábbi példákban az [Azure Cognitive Search dokumentációjában](./index.yml)szerepel egy kapcsolódó cikk.
+A Cognitive Search csapata által bemutatott funkciók és munkafolyamatok. Ezen minták közül sokat az oktatóanyagok, a rövid útmutatók és a útmutató cikkek tartalmaznak. Ezeket a mintákat az Azure-Samples [**/Azure-Search-DotNet-Samples**](https://github.com/Azure-Samples/azure-search-dotnet-samples) és az [**Azure-Samples/Search-DotNet-Getting-Started**](https://github.com/Azure-Samples/search-dotnet-getting-started/) on GitHub webhelyen találja.
 
-| Példák | Description |
+| Példák | Cikk  |
 |---------|-------------|
-| [QuickStart](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet ](search-get-started-dotnet.md).  |
-| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | Forráskód a [.net Ügyféloldali kódtár használatához](search-howto-dotnet-sdk.md) |
-| [DotNetHowToSynonyms](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)  | A lekérdezési bővítéshez szinonimákat tartalmazó listát kell használni, amely az indexen kívüli, egyeztethető kifejezéseket biztosít. Ez a példa a következő [példában szerepel: szinonimák hozzáadása a C#-ban](search-synonyms-tutorial-sdk.md). |
-| [DotNetToIndexers](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) | Az indexelő szolgáltatáshoz kapcsolódó kódrészletek mögötti forráskód különböző cikkekben. Ebből a példából megtudhatja, hogyan konfigurálhat olyan indexelő, amely egy ütemtervet, egy mező-hozzárendelést és egy paramétert tartalmaz.  |
-| [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)  | Forráskód az [ügyfél által felügyelt kulcsok adattitkosításhoz való konfigurálásához](search-security-manage-encryption-keys.md) |
+| [QuickStart](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Forráskód a gyors üzembe helyezéshez [: hozzon létre egy keresési indexet ](search-get-started-dotnet.md). Ez a cikk a keresési indexek mintaadatok használatával történő létrehozásához, betöltéséhez és lekérdezéséhez szükséges alapszintű munkafolyamatot ismerteti. |
+| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | Forráskód a [.net-ügyfél függvénytárának használatához](search-howto-dotnet-sdk.md). Ez a cikk az alapszintű munkafolyamaton halad végig, de részletesebben és az API-használatról is tárgyal.  |
+| [DotNetHowToSynonyms](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)  | Forráskód [például: szinonimák hozzáadása a C#-ban](search-synonyms-tutorial-sdk.md). A lekérdezési bővítéshez szinonimákat tartalmazó listát kell használni, amely az indexen kívüli, egyeztethető kifejezéseket biztosít. |
+| [DotNetToIndexers](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) | [Oktatóanyag: az Azure SQL-adatkészletek indexelése a .net SDK használatával](search-indexer-tutorial.md). Ebből a cikkből megtudhatja, hogyan konfigurálhat olyan Azure SQL-indexelő, amely rendelkezik ütemezett, mező-hozzárendelésekkel és paraméterekkel.  |
+| [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)  | Forráskód az [ügyfél által felügyelt kulcsok adattitkosításhoz való konfigurálásához](search-security-manage-encryption-keys.md). |
 | [Az első alkalmazás létrehozása C-ben #](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11) |  [Oktatóanyag: az első keresési alkalmazás létrehozása](tutorial-csharp-create-first-app.md). Habár a legtöbb minta a konzolos alkalmazások, ez az MVC-példa egy weboldalt használ a Sample Hotels-index előfizetéséhez, amely az alapszintű keresés, a tördelés, az automatikus kiegészítés és a javasolt lekérdezések, dimenziók és szűrők megjelenítésére szolgál. |
 | [több adatforrások](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources)  | [Oktatóanyaghoz tartozó forráskód: több adatforrásból származó index](tutorial-multiple-data-sources.md). |
 |  [optimalizálás – adatindexelés](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing) | [Oktatóanyag: az indexelés optimalizálása a leküldéses API-val](tutorial-optimize-indexing-push-api.md).  |
 | [oktatóanyag – AI-gazdagodás](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/tutorial-ai-enrichment)  | [Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .net SDK használatával](cognitive-search-tutorial-blob-dotnet.md).  |
 
-## <a name="standalone-samples-and-solutions"></a>Önálló minták és megoldások
+> [!Tip]
+> Próbálja ki a [minták böngészőt](/samples/browse/?languages=csharp&products=azure-cognitive-search) a githubon a Microsoft Code-minták kereséséhez, termék, szolgáltatás és nyelv szerint szűrve.
+
+## <a name="other-samples"></a>Egyéb minták
+
+A Cognitive Search csapata a következő mintákat is közzéteszi, de a dokumentációban nem hivatkozik rá. A kapcsolódó readme-fájlok használati utasításokat tartalmaznak.
 
 | Példák | Description |
 |---------|-------------|

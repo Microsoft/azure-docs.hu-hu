@@ -1,5 +1,5 @@
 ---
-title: Az Video.js-lejátszó használata a Azure Media Services
+title: A Video.js lejátszó használata a Azure Media Services
 description: Ez a cikk azt ismerteti, hogyan használható a HTML-videó objektum és a JavaScript a Azure Media Services
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 99e17db99842546b7f595d62f82f8bacb0ee6a8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b357705de04ed4c2be3223f9dd07f61f75d970
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329703"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954580"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Az Video.js-lejátszó használata a Azure Media Services
 

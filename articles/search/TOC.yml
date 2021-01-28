@@ -91,7 +91,7 @@
     - name: Python-példák
       href: samples-python.md
     - name: REST-minták
-      href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
+      href: samples-rest.md
 - name: Alapelvek
   items:
     - name: Teljes szöveges keresés

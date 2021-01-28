@@ -104,6 +104,8 @@
           href: overview-managed-identity.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás

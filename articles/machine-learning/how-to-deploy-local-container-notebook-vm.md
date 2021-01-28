@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527309"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954546"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
@@ -38,11 +38,12 @@ Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure
 
 A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, amely bemutatja a helyi központi telepítéseket. A következő lépésekkel töltse be a jegyzetfüzetet, és telepítse a modellt webszolgáltatásként a virtuális gépen:
 
-1. [Azure Machine learning Studióban](https://ml.azure.com)válassza ki a Azure Machine learning számítási példányokat.
+1. [Azure Machine learning studióból](https://ml.azure.com)válassza a "jegyzetfüzetek" lehetőséget, majd válassza a How-to-use-azureml/Deployment/Deploy-to-local/Register-Model-Deploy-local. ipynb elemet a "minta notebookok" területen. A jegyzetfüzet klónozása a felhasználói mappába.
 
-1. Nyissa meg az `samples-*` alkönyvtárat, majd nyissa meg a t `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` . A Megnyitás után futtassa a jegyzetfüzetet.
+1. Keresse meg az 1. lépésben klónozott jegyzetfüzetet, válasszon ki vagy hozzon létre egy számítási példányt a jegyzetfüzet futtatásához.
 
     ![Képernyőkép a futó helyi szolgáltatásról a notebookon](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+
 
 1. A jegyzetfüzet megjeleníti azt az URL-címet és portot, amelyen a szolgáltatás fut. Például: `https://localhost:6789`. A portot tartalmazó cellát is futtathatja a `print('Local service port: {}'.format(local_service.port))` port megjelenítéséhez.
 

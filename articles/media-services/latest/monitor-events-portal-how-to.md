@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services események figyelése Event Gridekkel a portálon
+title: Media Services események figyelése Event Grid portálon
 description: Ez a cikk bemutatja, hogyan fizethet elő Event Gridre az Azure Media Services események figyelése érdekében.
 services: media-services
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 65459dbdf8eaa92525fa20eda158f4beacf58780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1a74ee1668594d2e28bed0ad36793bf47653fe
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294373"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955258"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services-események létrehozása és monitorozása az Event Griddel az Azure Portalon
 
@@ -55,7 +55,7 @@ Ha átvált a "Azure Event Grid Viewer" webhelyre, akkor azt láthatja, hogy mé
 
 A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni az eseményeket.
 
-1. A portálon válassza ki a Media Services fiókját, és válassza az **események**lehetőséget.
+1. A portálon válassza ki a Media Services fiókját, és válassza az **események** lehetőséget.
 1. Ha eseményeket szeretne küldeni a megjelenítő alkalmazásba, használjon egy webhookot a végponthoz. 
 
    ![Webhook kiválasztása](./media/monitor-events-portal/select-web-hook.png)

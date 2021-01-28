@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f660bd17954afb4ae02da77e93d4d9cc36f3d355
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 560caa7e29ce12b58e151a1362aaf2c662646f13
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763418"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954800"
 ---
 # <a name="logging-in-msal-for-python"></a>Naplózás a Pythonhoz készült MSAL-ben
 
@@ -52,7 +52,7 @@ A standard Python-naplózással bármit naplózhat, amit csak szeretne, de Ön f
 
 A Pythonban történő naplózással kapcsolatos további információkért tekintse meg a Python  [naplózása: útmutató](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákért tekintse meg a [Microsoft Identity platform Code Samples](sample-v2-code.md)című témakört.
 

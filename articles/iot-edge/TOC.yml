@@ -110,7 +110,7 @@
         - name: IoT Edge-tanúsítványok
           href: iot-edge-certs.md
         - name: Bizalmas számítások
-          href: deploy-trusted-applications.md
+          href: deploy-confidential-applications.md
     - name: Platformtámogatás
       href: support.md
     - name: Éles környezetben való üzembe helyezés feladatlistája

@@ -1,5 +1,5 @@
 ---
-title: Videofájlok továbbítása Azure Media Services és az Azure CLI-vel
+title: Videofájlok továbbítása Azure Media Services CLI-vel
 description: Kövesse az oktatóanyag lépéseit, hogy az Azure CLI-vel hozzon létre egy új Azure Media Services fiókot, kódoljon egy fájlt, és továbbítsa a Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c78205d7e2b41628de9e8b92c9fa5506e82158cb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954496"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és a videó továbbítása az Azure CLI-vel
 
@@ -337,7 +337,7 @@ Bemutatunk egy példát:
 
 1. Nyisson meg egy webböngészőt, és lépjen a következőre: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL-cím** mezőbe illessze be az előző szakaszban létrehozott URL-címet. Az URL-címet HLS, Dash vagy Smooth formátumban is beillesztheti. A Azure Media Player automatikusan egy megfelelő adatfolyam-protokollt használ a lejátszáshoz az eszközön.
-3. Válassza a **lejátszó frissítése**lehetőséget.
+3. Válassza a **lejátszó frissítése** lehetőséget.
 
 >[!NOTE]
 >Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott.
@@ -352,6 +352,6 @@ Futtassa ezt az Azure CLI-parancsot:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Media Services áttekintése](media-services-overview.md)

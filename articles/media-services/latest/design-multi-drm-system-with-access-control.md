@@ -1,5 +1,5 @@
 ---
-title: Multi-DRM Content Protection rendszer – Azure Media Services v3
+title: Multi-DRM Content Protection rendszer
 description: Ebből a cikkből megtudhatja, hogyan tervezhet meg több DRM-mel rendelkező tartalomkezelő rendszerét Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298198"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954901"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése
 
@@ -229,7 +229,7 @@ A megvalósítással kapcsolatos problémák megoldásához használja az alább
     <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
     ```
 
-    A [JWT-dekóderben](http://jwt.calebb.net/)az **AUD** és az **ISS**jelenik meg, ahogy az a JWT is látható:
+    A [JWT-dekóderben](http://jwt.calebb.net/)az **AUD** és az **ISS** jelenik meg, ahogy az a JWT is látható:
 
     ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 

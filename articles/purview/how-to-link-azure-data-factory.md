@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723880"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954182"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>A Azure Data Factory és az Azure hatáskörébe való kapcsolódás
 
@@ -69,12 +69,22 @@ Kövesse az alábbi lépéseket egy meglévő Data Factory fióknak a hatáskör
 >[!Note]
 >Most már legfeljebb 10 adatgyár hozzáadását támogatjuk egyszerre. Ha egyszerre több mint 10 adatgyárat szeretne felvenni, küldjön egy támogatási jegyet.
 
+### <a name="how-does-the-authentication-work"></a>Hogyan működik a hitelesítés?
+
+Ha a hatáskörébe tartozó felhasználó olyan Data Factory regisztrál, amelyhez hozzáférése van, a következő történik a háttérben:
+
+1. A **Data Factory MSI** bekerül a hatáskörébe RBAC szerepkörbe: a **hatáskörébe tartozó adat-kurátor**.
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="A Azure Data Factory MSI-t bemutató képernyőkép." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. A Data Factory folyamatot újra kell végrehajtani, hogy a leszármazási metaadatok vissza legyenek küldve a hatáskörébe.
+3. A végrehajtás után a Data Factory metaadatokat a rendszer leküldi a hatáskörébe.
 
 ### <a name="remove-data-factory-connections"></a>Az adatgyári kapcsolatok eltávolítása
 Egy adatfeldolgozó-kapcsolatok eltávolításához tegye a következőket:
 
 1. A **Data Factory kapcsolat** lapon kattintson a **Remove (Eltávolítás** ) gombra egy vagy több adatfeldolgozó-kapcsolat mellett.
-1. Válassza a **megerősítés** lehetőséget az előugró ablakban a kiválasztott adatfeldolgozó-kapcsolatok törléséhez.
+2. Válassza a **megerősítés** lehetőséget az előugró ablakban a kiválasztott adatfeldolgozó-kapcsolatok törléséhez.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="A kapcsolatok eltávolítására szolgáló adatüzemek kiválasztását bemutató képernyőkép." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
@@ -99,27 +109,27 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 
 | Adattárolási rendszerek | Forrásként támogatott | Fogadóként támogatott |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Igen | Igen (csak nem bináris másolat) |
-| ADLS Gen2 | Igen | Igen |
-| Azure-blob | Igen | Igen |
-| Azure Cosmos DB (SQL API) | Igen | Igen |
-| Azure Cosmos DB (Mongo API) | Igen | Igen |
-| Azure Cognitive Search | Igen | Igen |
-| Azure Data Explorer | Igen | Igen |
-| Azure Database for Maria DB \* | Igen | Igen |
-| MYSQL-hez készült Azure-adatbázis \* | Igen | Igen |
-| Azure Database for PostgreSQL \* | Igen | Igen |
+| ADLS Gen1 | Yes | Igen (csak nem bináris másolat) |
+| ADLS Gen2 | Igen | Yes |
+| Azure-blob | Igen | Yes |
+| Azure Cosmos DB (SQL API) | Igen | Yes |
+| Azure Cosmos DB (Mongo API) | Igen | Yes |
+| Azure Cognitive Search | Igen | Yes |
+| Azure Data Explorer | Igen | Yes |
+| Azure Database for Maria DB \* | Igen | Yes |
+| MYSQL-hez készült Azure-adatbázis \* | Igen | Yes |
+| Azure Database for PostgreSQL \* | Igen | Yes |
 | Azure File Storage | Igen | Igen |
-| Azure Table Storage | Igen | Igen |
-| Azure SQL Database \* | Igen | Igen |
-| Azure SQL MI \* | Igen | Igen |
-| Azure szinapszis Analytics (korábban SQL DW) \* | Igen | Igen |
-| SQL Server helyszíni (szükséges) \* | Igen | Igen |
+| Azure Table Storage | Igen | Yes |
+| Azure SQL Database \* | Igen | Yes |
+| Azure SQL MI \* | Igen | Yes |
+| Azure szinapszis Analytics (korábban SQL DW) \* | Igen | Yes |
+| SQL Server helyszíni (szükséges) \* | Igen | Yes |
 | Amazon S3 | Igen | Igen |
-| Teradata | Igen | Igen |
-| SAP S4 Hana | Igen | Igen |
-| SAP ECC | Igen | Igen |
-| Hive | Igen | Igen |
+| Teradata | Igen | Yes |
+| SAP S4 Hana | Igen | Yes |
+| SAP ECC | Igen | Yes |
+| Hive | Igen | Yes |
 
 > [!Note]
 > A Lineage funkció Data Factory másolási tevékenységben bizonyos teljesítménybeli terheléssel rendelkezik. Azok számára, akik az adat-előállítói kapcsolatokat a hatáskörébe tartoznak, előfordulhat, hogy bizonyos másolási feladatok végrehajtása tovább tart. A hatás többnyire nem elhanyagolható. Ha a másolási feladatok a szokásosnál hosszabb ideig tartanak, lépjen kapcsolatba az ügyfélszolgálattal.
@@ -128,24 +138,24 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 
 | Adattárolási rendszerek | Támogatott |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Igen |
-| ADLS Gen2 | Igen |
-| Azure-blob | Igen |
-| Azure SQL Database \* | Igen |
-| Azure szinapszis Analytics (korábban SQL DW) \* | Igen |
+| ADLS Gen1 | Yes |
+| ADLS Gen2 | Yes |
+| Azure-blob | Yes |
+| Azure SQL Database \* | Yes |
+| Azure szinapszis Analytics (korábban SQL DW) \* | Yes |
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory SSIS-csomag támogatásának végrehajtása
 
 | Adattárolási rendszerek | Támogatott |
 | ------------------- | ------------------- | ----------------- |
-| Azure-blob | Igen |
-| ADLS Gen1 | Igen |
-| ADLS Gen2 | Igen |
-| Azure SQL Database \* | Igen |
-| Azure SQL MI \*| Igen |
-| Azure szinapszis Analytics (korábban SQL DW) \* | Igen |
-| SQL Server helyszíni \* | Igen |
-| Azure File Storage | Igen |
+| Azure-blob | Yes |
+| ADLS Gen1 | Yes |
+| ADLS Gen2 | Yes |
+| Azure SQL Database \* | Yes |
+| Azure SQL MI \*| Yes |
+| Azure szinapszis Analytics (korábban SQL DW) \* | Yes |
+| SQL Server helyszíni \* | Yes |
+| Azure File Storage | Yes |
 
 *\* Az SQL (Azure és a helyszíni) forgatókönyvek esetében az Azure-beli környezet nem támogatja a tárolt eljárásokat vagy parancsfájlokat a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 
@@ -212,7 +222,7 @@ A következő példában egy Azure Data Lake Gen2-erőforrást állítunk elő e
 
 :::image type="content" source="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png" alt-text="Az erőforrás-készlet kifejlődését ábrázoló képernyőkép." lightbox="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A katalógus Lineage felhasználói útmutatója](catalog-lineage-user-guide.md)
 - [Hivatkozás az Azure-beli adatmegosztásra a Lineage számára](how-to-link-azure-data-share.md)

@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: Megjelenítési formátum
       href: reference-markdown-format.md
+    - name: Privát hivatkozások
+      href: reference-private-endpoint.md
     - name: Kötegelt tesztelési formátum
       href: reference-tsv-format-batch-testing.md
     - name: Titkosítás

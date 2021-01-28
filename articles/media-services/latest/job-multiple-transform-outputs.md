@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services-feladatok létrehozása több átalakító kimenettel
+title: Több átalakítási kimenettel rendelkező feladatok létrehozása
 description: Ez a témakör bemutatja, hogyan hozhat létre több átalakítási kimenettel rendelkező Azure Media Services feladatot.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e5fe12b02503aff625a1cc2c39a71abcdf3dab0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296783"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954140"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Több átalakítási kimenettel rendelkező feladatok létrehozása
 
