@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955766"
+ms.locfileid: "98986547"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -31,7 +31,7 @@ Az alábbi videót részletesen megtekintheti a IoT Edge élő videó-elemzésse
   > Szüksége lesz egy Azure-előfizetésre, amely az egyszerű szolgáltatások létrehozásához szükséges engedélyekkel rendelkezik (ez a **tulajdonosi szerepkör** ). Ha nem rendelkezik a megfelelő engedélyekkel, lépjen kapcsolatba a fiók rendszergazdájával, és adja meg a megfelelő engedélyeket.  
 
 * A [Visual Studio Code](https://code.visualstudio.com/) a fejlesztői gépen. Győződjön meg arról, hogy rendelkezik az [Azure IoT Tools bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Győződjön meg arról, hogy a fejlesztői számítógép hálózata csatlakozik a speciális üzenetsor-kezelési protokoll (AMQP) engedélyezéséhez a 5671-es porton keresztül. Ez a telepítő lehetővé teszi az Azure IoT-eszközök számára az Azure IoT Hub való kommunikációt.
+* Győződjön meg arról, hogy a fejlesztői számítógép hálózata csatlakozik a speciális üzenetsor-kezelési protokoll (AMQP) számára a kimenő forgalom 5671-as portján keresztül. Ez a telepítő lehetővé teszi az Azure IoT-eszközök számára az Azure IoT Hub való kommunikációt.
 
 > [!TIP]
 > Előfordulhat, hogy a rendszer a Docker telepítésére kéri az Azure IoT-eszközök bővítményének telepítésekor. Nyugodtan hagyja figyelmen kívül a kérdést.
@@ -67,7 +67,7 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     1. **Hálózati adapter** – lehetővé teszi, hogy egy Azure-beli virtuális gép kommunikáljon az internettel, az Azure-ral és más erőforrásokkal.
     1. **Megerősített kapcsolat** – ez lehetővé teszi, hogy a böngésző és a Azure Portal használatával kapcsolódjon a virtuális géphez.
     1. **Nyilvános IP-cím** – lehetővé teszi, hogy az Azure-erőforrások kommunikáljanak az internettel és a nyilvánosan elérhető Azure-szolgáltatásokkal
-    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Virtuális hálózat** – az Azure-erőforrások, például a virtuális gépek számos típusa lehetővé teszi, hogy biztonságosan kommunikáljanak egymással, az internettel és a helyszíni hálózatokkal. További információ a [virtuális hálózatokról](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
     1. **IoT hub** – ez egy központi üzenetsor, amely a IoT-alkalmazás, a IoT Edge-modulok és az általa kezelt eszközök közötti kétirányú kommunikációra szolgál.
     1. **Media Service-fiók** – ez segíti az Azure-beli médiatartalmak felügyeletét és továbbítását.
     1. **Storage-fiók** – rendelkeznie kell egy elsődleges Storage-fiókkal, és tetszőleges számú másodlagos Storage-fiók társítható a Media Services-fiókjához. További információ: [Azure Storage-fiókok Azure Media Services fiókokkal](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
@@ -165,7 +165,7 @@ A modul összes [gráf topológiájának](media-graph-concept.md#media-graph-top
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet meghívása
 
-A meghívásához szükséges lépéseket követve `GraphTopologyList` meghívhatja a `GraphTopologySet` Graph- [topológia](media-graph-concept.md#media-graph-topologies-and-instances)beállítását. A következő JSON-t használja hasznos adattartalomként.
+Ahogy korábban is tette, `GraphTopologySet` megkezdheti a [Graph-topológia](media-graph-concept.md#media-graph-topologies-and-instances)beállítását. A következő JSON-t használja hasznos adattartalomként.
 
 ```
 {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756674"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986602"
 ---
 # <a name="manage-security-policies"></a>Biztonsági szabályzatok kezelése
 
@@ -54,7 +54,7 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 1. Megjelenik az adott előfizetés vagy felügyeleti csoport biztonsági szabályzat lapja. Megjeleníti az elérhető és hozzárendelt házirendeket.
 
-   ![házirend lap](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Security Center biztonsági házirend lapja" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > Ha az alapértelmezett szabályzat mellett "MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
@@ -102,7 +102,7 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
 1. Security Center a **házirend & megfelelőség** szakaszban válassza a **biztonsági házirend** elemet.
 
-   ![házirendek kezelése](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="A házirend-kezelési folyamat elindítása Azure Security Center":::
 
 2. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelyhez le szeretné tiltani a javaslatot.
 
@@ -111,7 +111,7 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
 1. Válassza a **hatályos szabályzat megtekintése** lehetőséget.
 
-   ![házirend megtekintése](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="Az előfizetéshez hozzárendelt hatályos szabályzat megnyitása":::
 
 1. Válassza ki a hozzárendelt szabályzatot.
 
@@ -126,10 +126,8 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
    > [!NOTE]
    > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.
 
-
-
-## <a name="next-steps"></a>További lépések
-Ez a cikk a biztonsági szabályzatokat ismerteti. A kapcsolódó információk a következő cikkekben találhatók:
+## <a name="next-steps"></a>Következő lépések
+Ez az oldal a biztonsági szabályzatokat ismerteti. A kapcsolódó információkat a következő lapokon tekintheti meg:
 
 - [Ismerje meg, hogyan állíthatja be a szabályzatokat a PowerShell használatával](../governance/policy/assign-policy-powershell.md) - 
 - [Megtudhatja, hogyan szerkesztheti a biztonsági házirendeket Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954259"
+ms.locfileid: "98986954"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -102,9 +102,10 @@ A tűzfallal védett tárhely felhasználói identitáson keresztüli elérésé
 Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és vegyen fel egy kivételt a szinapszis-munkaterületre.
 
 1. A PowerShell megnyitása vagy a [PowerShell telepítése](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. Telepítse a frissített az. Storage-modul: 
+2. Telepítse az az. Storage 3.0.1-modult és az az. szinapszis 0.7.0: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
     > Győződjön meg arról, hogy a 3.0.1-es **verziót** használja. Az az. Storage verzióját a következő parancs futtatásával tekintheti meg:  
@@ -121,16 +122,23 @@ Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és ve
     - Erőforráscsoport neve – a szinapszis munkaterület áttekintésében találhatja meg Azure Portal.
     - Fióknév – a tűzfalszabályok által védett Storage-fiók neve.
     - Bérlő azonosítója – a bérlői adatok Azure Active Directory Azure Portalban találhatja meg.
-    - Erőforrás-azonosító – Azure Portal a szinapszis munkaterület áttekintésében találhatja meg.
+    - Munkaterület neve – a szinapszis munkaterület neve.
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy az erőforrás-azonosító megfelel a sablonnak.
+    > Győződjön meg arról, hogy az erőforrás-azonosító megfelel ennek a sablonnak a resourceId változó nyomtatásban.
     >
     > Fontos, hogy a **resourcegroups** -et kisbetűvel írja.
     > Példa egy erőforrás-azonosítóra: 
@@ -145,7 +153,14 @@ Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és ve
 6. Ellenőrizze, hogy a szabály alkalmazva lett-e a Storage-fiókban: 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>Felügyelt identitás

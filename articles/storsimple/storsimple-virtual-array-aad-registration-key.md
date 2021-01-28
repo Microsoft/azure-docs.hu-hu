@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d750b3a85741bb4761b640848f01e5917760b5aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75332498ac59dc46a7a079eff4c25e02b2a6cb9b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261090"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986937"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Az új hitelesítés használata a StorSimple
 
@@ -53,7 +53,7 @@ Ha StorSimple virtuális tömböt használ, a következő táblázat segítség�
 
 | Ha az eszköz fut  | Végezze el a következő műveletet                                    |
 |----------------------------|--------------------------------------------------------------|
-| A 1,0-es vagy újabb frissítés offline állapotú. <br> Megjelenik egy riasztás arról, hogy az URL-cím nem engedélyezett.| 1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys). <br> 3. hajtsa végre a 1-5-es lépéseket a [virtuális tömb Windows PowerShell-felületéhez való kapcsolódáshoz](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. a `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
+| A 1,0-es vagy újabb frissítés offline állapotú. <br> Megjelenik egy riasztás arról, hogy az URL-cím nem allowlisted.| 1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys). <br> 3. hajtsa végre a 1-5-es lépéseket a [virtuális tömb Windows PowerShell-felületéhez való kapcsolódáshoz](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. a `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | Frissítse a 1,0-es vagy újabb verziót, és az eszköz online állapotú.| Semmit nem kell tenni.                                       |
 | Az 0,6-es vagy korábbi verzió frissítése, az eszköz offline állapotban van. | 1. [töltse le a 1,0-es frissítést a Catalog Server használatával](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [alkalmazza a 1,0-es frissítést a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys). <br>4. hajtsa végre a 1-5-es lépéseket a [virtuális tömb Windows PowerShell-felületéhez való kapcsolódáshoz](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. a `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | Az 0,6-es vagy korábbi frissítés, és az eszköz online állapotú | A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet.<br> Telepítse a 1,0-es frissítést a Azure Portal. |
@@ -72,11 +72,11 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>A HRE szolgáltatás regisztrációs kulcsának előállítása
 
-1. A **StorSimple Eszközkezelő**lépjen a **felügyeleti &gt; ** **kulcsok**elemre.
+1. A **StorSimple Eszközkezelő** lépjen a **felügyeleti &gt;** **kulcsok** elemre.
     
     ![Ugrás a kulcsokra](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 
-2. Kattintson a **kulcs előállítása**elemre.
+2. Kattintson a **kulcs előállítása** elemre.
 
     ![Kattintson az újragenerált elemre.](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
 

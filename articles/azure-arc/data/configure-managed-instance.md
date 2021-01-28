@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 37ba4f10365fca4292171c3bd2d9a3e7d00045bb
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311128"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985869"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Az Azure arc használatára képes SQL felügyelt példány konfigurálása
 
@@ -60,13 +60,13 @@ Ezen beállítások bármelyikének módosításához kövesse az alábbi lépé
    traceflag0 = 1204
    ```
 
-1. Másolja a `mssql-custom.conf` fájlt a `/var/opt/mssql` `mssql-miaa` tárolóba a pod `master-0` -ban. Cserélje le `<namespaceName>` a nevet a Big Data-fürt nevére.
+1. Másolja a `mssql-custom.conf` fájlt a `/var/opt/mssql` `arc-sqlmi` tárolóba a pod `master-0` -ban. Cserélje le `<namespaceName>` a helyére azt a névteret, amelyre a példány telepítve van.
 
    ```bash
    kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
    ```
 
-1. Indítsa újra SQL Server példányt.  Cserélje le `<namespaceName>` a nevet a Big Data-fürt nevére.
+1. Indítsa újra az SQL felügyelt példányát.  Cserélje le `<namespaceName>` a helyére azt a névteret, amelyre a példány telepítve van.
 
    ```bash
    kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash

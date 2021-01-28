@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880742"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986462"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -84,7 +84,7 @@ A Transact Publishing forgatókönyvek esetében az előfizetéstől függően 3
 
 Az ajánlati típusok és a számlázási modellek használata mellett egy ajánlat értékesítésére is lehetősége van, és az egyeztetett, az ügylet-specifikus díjszabással vagy az egyéni konfigurációkkal is elvégezheti a tranzakciót. Mind a három Transact közzétételi lehetőség támogatja a privát ajánlatokat.
 
-Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a nyilvánosan elérhető ajánlat. Kedvezményes ajánlatokat vagy prémium szintű ajánlatot is használhat az ajánlathoz. Egy vagy több ügyfél számára elérhetővé teheti a saját Azure-előfizetését az ajánlat szintjén.
+Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a nyilvánosan elérhető ajánlat. Kedvezményes ajánlatokat vagy prémium szintű ajánlatot is használhat az ajánlathoz. A privát ajánlatokat egy vagy több ügyfél számára is elérhetővé teheti, ha allowlisting az Azure-előfizetését az ajánlat szintjén.
 
 ### <a name="commercial-marketplace-service-fees"></a>Kereskedelmi Piactéri szolgáltatási díjak
 
@@ -203,7 +203,7 @@ A Transact Publishing beállítás csak a következő Piactéri ajánlatok eset�
 
 - **SaaS-alkalmazás** – több-bérlős megoldásnak kell lennie, a hitelesítéshez [Azure Active Directoryt](https://azure.microsoft.com/services/active-directory/) kell használnia, és integrálni kell a [SaaS-megvalósítási API](partner-center-portal/pc-saas-fulfillment-api-v2.md)-kkal. Az Azure-infrastruktúra használatának felügyelete és számlázása közvetlenül Önnek (a partnernek) történik, ezért az Azure-infrastruktúra használati díjait és a szoftveres licencelési díjakat egyetlen költségként kell elszámolni. Részletes útmutatásért lásd: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](./create-new-saas-offer.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
 - Tekintse át a közzétételi mintákat az online áruházban példákat arra, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

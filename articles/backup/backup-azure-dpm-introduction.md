@@ -3,12 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002859"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985631"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -48,7 +48,7 @@ Támogatott fájltípusok | Ezek a fájltípusok biztonsági mentést készíthe
 Nem támogatott fájltípusok | <li>Kis-és nagybetűket megkülönböztető fájlrendszerrel rendelkező kiszolgálók<li> rögzített hivatkozások (kihagyva)<li> újraelemzési pontok (kihagyva)<li> titkosított és tömörített (kihagyva)<li> titkosított és ritka (kihagyva)<li> Tömörített Stream<li> adatfolyam elemzése
 Helyi tárhely | Minden olyan gépnek, amelyről biztonsági másolatot szeretne készíteni, rendelkeznie kell helyi szabad tárterülettel, amely a biztonsági mentés alatt álló adatmennyiség legalább 5%-a. Például a 100 GB adat biztonsági mentéséhez legalább 5 GB szabad terület szükséges a semmiből.
 Tár tárolója | A Azure Backup-tárolóba felhasználható adatmennyiségnek nincs korlátja, de az adatforrások (például virtuális gépek vagy adatbázisok) mérete nem haladhatja meg a 54 400 GB-ot.
-Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **A Microsoft-partnerekkel** válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
+Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/> URLs<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP-címek<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>**A Microsoft-partnerekkel** válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2. vagy újabb kumulatív frissítést a DPM SP1 verzióhoz. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk bemutatja, hogyan helyezheti üzembe a Azure Backup-ügynök legújabb verzióját, más néven a Microsoft Azure Recovery Service (MARS) ügynököt. Ha a korábbi verziót telepítette, frissítsen a legújabb verzióra, és győződjön meg arról, hogy a biztonsági mentés a várt módon működik-e.
 
 Mielőtt elkezdené, szüksége lesz egy Azure-fiókra, amelyen engedélyezve van a Azure Backup funkció. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ a [Azure Backup díjszabásáról](https://azure.microsoft.com/pricing/details/backup/).

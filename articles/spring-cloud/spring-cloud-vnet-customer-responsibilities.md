@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 63fbac0919e06b29377afacaaa5708d195c6b319
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887251"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986853"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Az Azure Spring Cloud VNET való futtatásának felhasználói feladatai
 Ez a dokumentum az Azure Spring Cloud virtuális hálózatban való használatának specifikációit tartalmazza.
@@ -57,6 +57,9 @@ A Azure Firewall teljes tartománynevet (FQDN) tartalmazó **AzureKubernetesServ
   | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory hitelesítés. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft-csomagok tárháza. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | A szükséges bináris fájlok, például a kubenet és az Azure CNI telepítéséhez szükséges tárház. |
+  | *mscrl.microsoft.com* | HTTPS: 80 | A Microsoft tanúsítványlánc szükséges elérési útjai. |
+  | *crl.microsoft.com* | HTTPS: 80 | A Microsoft tanúsítványlánc szükséges elérési útjai. |
+  | *crl3.digicert.com* | HTTPS: 80 | harmadik féltől származó SSL-tanúsítványlánc elérési útjai. |
 
 ## <a name="see-also"></a>Lásd még
 * [Hozzáférés az alkalmazáshoz egy magánhálózati hálózaton](spring-cloud-access-app-virtual-network.md)

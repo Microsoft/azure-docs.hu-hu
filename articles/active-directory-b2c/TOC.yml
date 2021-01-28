@@ -452,6 +452,8 @@
           href: user-migration.md
 - name: Referencia
   items:
+    - name: Szolgáltatási korlátozások
+      href: service-limits.md
     - name: Alkalmazásregisztrációk
       href: app-registrations-training-guide.md
     - name: Számlázási modell

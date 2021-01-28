@@ -3,12 +3,12 @@ title: Azure Backup Server telepítése az Azure Stacken
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a munkaterhelések védeleméhez vagy biztonsági mentéséhez Azure Stackban.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970233"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987005"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -112,7 +112,7 @@ A Recovery Services tároló tárolási replikációs lehetőséggel választhat
 A tárreplikációs beállítás szerkesztése:
 
 1. Válassza ki a tárolót a tároló irányítópultjának és a beállítások menü megnyitásához. Ha a **Beállítások** menü nem nyílik meg, válassza a **minden beállítás** elemet a tároló irányítópultján.
-2. A **Beállítások** menüben válassza ki a biztonsági mentési **infrastruktúra**biztonsági  >  **mentése konfiguráció** elemet a **biztonsági mentési konfiguráció** menü megnyitásához. A **biztonsági mentés konfigurálása** menüben válassza a tároló replikációja lehetőséget.
+2. A **Beállítások** menüben válassza ki a biztonsági mentési **infrastruktúra** biztonsági  >  **mentése konfiguráció** elemet a **biztonsági mentési konfiguráció** menü megnyitásához. A **biztonsági mentés konfigurálása** menüben válassza a tároló replikációja lehetőséget.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -121,7 +121,7 @@ A tárreplikációs beállítás szerkesztése:
 Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup Server-telepítőt a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=55269)töltheti le. Recovery Services-tároló konfigurálása közben letöltheti Azure Backup Server telepítőjét is. A következő lépések végigvezetik a telepítő letöltésének lépésein a Azure Portal egy Recovery Services-tároló konfigurálása során.
 
 1. A Azure Stack virtuális gépről [Jelentkezzen be az Azure-előfizetésbe a Azure Portal](https://portal.azure.com/).
-2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
+2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget.
 
     ![Válassza a minden szolgáltatás lehetőséget a főmenüben](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
@@ -143,7 +143,7 @@ Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup
 
     ![Backup-goals-default-Opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. A biztonsági mentés menüben, a **Hol van a** számítási feladat fut menüben válassza **a**helyszíni lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** legördülő menüből válassza ki a védelemmel ellátni kívánt munkaterheléseket Azure Backup Server használatával. Ha nem tudja biztosan, hogy melyik számítási feladatot szeretné kiválasztani, válassza a **Hyper-V Virtual Machines** , majd az **infrastruktúra előkészítése**lehetőséget.
+6. A biztonsági mentés menüben, a **Hol van a** számítási feladat fut menüben válassza **a** helyszíni lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** legördülő menüből válassza ki a védelemmel ellátni kívánt munkaterheléseket Azure Backup Server használatával. Ha nem tudja biztosan, hogy melyik számítási feladatot szeretné kiválasztani, válassza a **Hyper-V Virtual Machines** , majd az **infrastruktúra előkészítése** lehetőséget.
 
     ![a helyszíni és a számítási feladatok céljaként](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
@@ -155,11 +155,11 @@ Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup
 
     Megnyílik a Azure Backup Server letölthető fájljait futtató Microsoft-weblap.
 
-8. A Microsoft Azure Backup kiszolgáló letöltése lapon válassza ki a kívánt nyelvet, majd kattintson a **Letöltés**gombra.
+8. A Microsoft Azure Backup kiszolgáló letöltése lapon válassza ki a kívánt nyelvet, majd kattintson a **Letöltés** gombra.
 
     ![Megnyílik a letöltőközpontban](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. A Azure Backup Server-telepítő nyolc fájlból áll – egy telepítőből és hét. bin fájlból. A **fájlnév** jelölőnégyzet bejelölésével jelölje ki az összes szükséges fájlt, majd kattintson a **tovább**gombra. Töltse le az összes fájlt ugyanabba a mappába.
+9. A Azure Backup Server-telepítő nyolc fájlból áll – egy telepítőből és hét. bin fájlból. A **fájlnév** jelölőnégyzet bejelölésével jelölje ki az összes szükséges fájlt, majd kattintson a **tovább** gombra. Töltse le az összes fájlt ugyanabba a mappába.
 
     ![Letöltőközpont, kiválasztott fájlok](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
@@ -171,7 +171,7 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
 ![MABS-telepítő letöltése](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. A telepítés elindításához a letöltött fájlok listájából válassza a **MicrosoftAzureBackupserverInstaller.exe**lehetőséget.
+1. A telepítés elindításához a letöltött fájlok listájából válassza a **MicrosoftAzureBackupserverInstaller.exe** lehetőséget.
 
     > [!WARNING]
     > A telepítőfájlok kibontásához legalább 4 GB szabad terület szükséges.
@@ -181,11 +181,11 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
     ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. Válassza ki a Azure Backup Server-fájlok elérési útját, és kattintson a **tovább**gombra.
+3. Válassza ki a Azure Backup Server-fájlok elérési útját, és kattintson a **tovább** gombra.
 
    ![Célhely kiválasztása a fájlokhoz](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Ellenőrizze a kinyerési helyet, majd válassza a **Kibontás**lehetőséget.
+4. Ellenőrizze a kinyerési helyet, majd válassza a **Kibontás** lehetőséget.
 
    ![Kibontási hely ellenőrzése](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
@@ -193,7 +193,7 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
    ![A varázsló fájlok kibontása](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. A kinyerési folyamat befejezése után válassza a **Befejezés**lehetőséget. Alapértelmezés szerint a **végrehajtás setup.exe** van kiválasztva. Ha a **Befejezés**lehetőséget választja, Setup.exe a Microsoft Azure Backup kiszolgálót telepíti a megadott helyre.
+6. A kinyerési folyamat befejezése után válassza a **Befejezés** lehetőséget. Alapértelmezés szerint a **végrehajtás setup.exe** van kiválasztva. Ha a **Befejezés** lehetőséget választja, Setup.exe a Microsoft Azure Backup kiszolgálót telepíti a megadott helyre.
 
    ![A telepítő kibontja Microsoft Azure Backup Server Files](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
@@ -205,7 +205,7 @@ Az előző lépésben a **Befejezés** gombra kattintva lépjen ki a kinyerési 
 
 Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Backup Server telepítő Data Protection Manager és DPM mutató hivatkozásokat fog látni. Bár Azure Backup Server és Data Protection Manager különálló termékek, ezek a termékek szorosan kapcsolódnak egymáshoz.
 
-1. A telepítővarázsló elindításához válassza a **Microsoft Azure Backup-kiszolgáló**lehetőséget.
+1. A telepítővarázsló elindításához válassza a **Microsoft Azure Backup-kiszolgáló** lehetőséget.
 
    ![Microsoft Azure Backup kiszolgáló kiválasztása](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
@@ -225,7 +225,7 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Azure Backup Server – a telepítés előfeltételei nem teljesülnek](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure Backup a kiszolgálónak SQL Server szükséges. A Azure Backup Server telepítési csomagja a megfelelő SQL Server bináris fájljaival van ellátva. Ha saját SQL-telepítést szeretne használni, a következőt használhatja:. Az ajánlott lehetőség azonban lehetővé teszi, hogy a telepítő új SQL Server-példányt adjon hozzá. Az **ellenőrzés és telepítés**lehetőséggel biztosíthatja, hogy a választott környezettel működjön.
+4. Microsoft Azure Backup a kiszolgálónak SQL Server szükséges. A Azure Backup Server telepítési csomagja a megfelelő SQL Server bináris fájljaival van ellátva. Ha saját SQL-telepítést szeretne használni, a következőt használhatja:. Az ajánlott lehetőség azonban lehetővé teszi, hogy a telepítő új SQL Server-példányt adjon hozzá. Az **ellenőrzés és telepítés** lehetőséggel biztosíthatja, hogy a választott környezettel működjön.
 
    > [!NOTE]
    > Azure Backup Server nem fog működni egy távoli SQL Server-példánnyal. A Azure Backup Server által használt példánynak helyinek kell lennie.
@@ -233,13 +233,13 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Azure Backup Server – SQL-beállítások](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    Ha ellenőrizte, hogy a virtuális gép rendelkezik-e a Azure Backup Server telepítéséhez szükséges előfeltételekkel, válassza a **tovább**lehetőséget.
+    Ha ellenőrizte, hogy a virtuális gép rendelkezik-e a Azure Backup Server telepítéséhez szükséges előfeltételekkel, válassza a **tovább** lehetőséget.
 
     ![Azure Backup Server – teljesített követelmények](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    Ha hiba lép fel a gép újraindítására vonatkozó javaslattal, indítsa újra a gépet. A gép újraindítása után indítsa újra a telepítőt, és amikor az **SQL-beállítások** képernyőre kattint, válassza az **újbóli vizsgálat**lehetőséget.
+    Ha hiba lép fel a gép újraindítására vonatkozó javaslattal, indítsa újra a gépet. A gép újraindítása után indítsa újra a telepítőt, és amikor az **SQL-beállítások** képernyőre kattint, válassza az **újbóli vizsgálat** lehetőséget.
 
-5. A **telepítési beállítások**területen adjon meg egy helyet a Microsoft Azure Backup Server-fájlok telepítéséhez, majd válassza a **tovább**lehetőséget.
+5. A **telepítési beállítások** területen adjon meg egy helyet a Microsoft Azure Backup Server-fájlok telepítéséhez, majd válassza a **tovább** lehetőséget.
 
     ![Adja meg a fájlok telepítésének helyét](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
@@ -249,7 +249,7 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Biztonsági beállítások képernyő](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
-7. A **Microsoft Update** a bejelentkezési képernyőn válassza ki, hogy szeretné-e használni a *Microsoft Update* a frissítések kereséséhez, majd válassza a **tovább**lehetőséget.
+7. A **Microsoft Update** a bejelentkezési képernyőn válassza ki, hogy szeretné-e használni a *Microsoft Update* a frissítések kereséséhez, majd válassza a **tovább** lehetőséget.
 
    > [!NOTE]
    > Javasoljuk, hogy Windows Update átirányítást a Microsoft Updatera, amely biztonsági és fontos frissítéseket kínál a Windows és más termékek, például a Microsoft Azure Backup-kiszolgáló számára.
@@ -257,17 +257,17 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Microsoft Update Opt-In képernyő](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
-8. Tekintse át a *Beállítások összegzését* , és válassza a **telepítés**lehetőséget.
+8. Tekintse át a *Beállítások összegzését* , és válassza a **telepítés** lehetőséget.
 
     ![Beállítások összefoglalása](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
     Amikor Azure Backup Server befejezi a telepítést, a telepítő azonnal elindítja a Microsoft Azure Recovery Services Agent telepítőjét.
 
-9. Megnyílik az Microsoft Azure Recovery Services ügynök telepítője, és ellenőrzi az internetkapcsolatot. Ha az internetkapcsolat elérhető, folytassa a telepítést. Ha nincs kapcsolat, adja meg a proxy adatait az internethez való csatlakozáshoz. A proxybeállítások megadása után válassza a **tovább**lehetőséget.
+9. Megnyílik az Microsoft Azure Recovery Services ügynök telepítője, és ellenőrzi az internetkapcsolatot. Ha az internetkapcsolat elérhető, folytassa a telepítést. Ha nincs kapcsolat, adja meg a proxy adatait az internethez való csatlakozáshoz. A proxybeállítások megadása után válassza a **tovább** lehetőséget.
 
     ![Proxy konfigurálása](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. A Microsoft Azure Recovery Services-ügynök telepítéséhez válassza a **telepítés**lehetőséget.
+10. A Microsoft Azure Recovery Services-ügynök telepítéséhez válassza a **telepítés** lehetőséget.
 
     ![Ügynök telepítése](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
@@ -287,17 +287,17 @@ Azure Backup Server a megosztási kódot a Data Protection Manager. A Azure Back
 
     ![Tároló-azonosító menü](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    A tár **hitelesítő adatainak kiválasztása** párbeszédpanelen lépjen a letöltési helyre, válassza ki a tároló hitelesítő adatait, majd kattintson a **Megnyitás**gombra.
+    A tár **hitelesítő adatainak kiválasztása** párbeszédpanelen lépjen a letöltési helyre, válassza ki a tároló hitelesítő adatait, majd kattintson a **Megnyitás** gombra.
 
-    A hitelesítő adatok elérési útja megjelenik a tároló azonosítási menüjében. Kattintson a **tovább** gombra a **titkosítási beállításokhoz**való továbblépés előtt.
+    A hitelesítő adatok elérési útja megjelenik a tároló azonosítási menüjében. Kattintson a **tovább** gombra a **titkosítási beállításokhoz** való továbblépés előtt.
 
-14. A **titkosítási beállítások** párbeszédpanelen adjon meg egy jelszót a biztonsági másolat titkosításához, valamint egy helyet a jelszó tárolásához, és kattintson a **tovább**gombra.
+14. A **titkosítási beállítások** párbeszédpanelen adjon meg egy jelszót a biztonsági másolat titkosításához, valamint egy helyet a jelszó tárolásához, és kattintson a **tovább** gombra.
 
     ![Titkosítási beállítások](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
     Megadhatja a saját jelszavát, vagy a jelszó-előállító használatával létrehozhat egyet. A jelszó a tiéd, és a Microsoft nem menti és nem kezeli ezt a jelszót. A katasztrófa előkészítéséhez mentse a jelszót egy elérhető helyen.
 
-    A **tovább**gombra kattintva a Azure Backup Server regisztrálva van a Recovery Services-tárolóban. A telepítő folytatja a SQL Server telepítését és a Azure Backup Server.
+    A **tovább** gombra kattintva a Azure Backup Server regisztrálva van a Recovery Services-tárolóban. A telepítő folytatja a SQL Server telepítését és a Azure Backup Server.
 
     ![A telepítő telepíti az SQL-t és a Azure Backup Server](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
 
@@ -335,22 +335,28 @@ Ha már ismeri az Azure-kapcsolat állapotát és az Azure-előfizetést, az al�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Helyreállítás a kapcsolat elvesztése miatt
 
-Ha egy tűzfal vagy egy proxy megakadályozza az Azure-hoz való hozzáférést, adja hozzá a következő tartományi címeket a tűzfal/proxy profil engedélyezési listájában:
+Ha a számítógépén korlátozott az Internet-hozzáférés, győződjön meg arról, hogy a számítógépen vagy a proxyn a tűzfalbeállítások a következő URL-címek és IP-címek használatát teszik lehetővé:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* URL-címek
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-címek
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
-Ha az Azure-hoz való kapcsolódást visszaállítja a Azure Backup Server, az Azure-előfizetés állapota határozza meg a végrehajtandó műveleteket. Ha a kiszolgáló **csatlakoztatva**van, a [hálózati kapcsolat](backup-mabs-install-azure-stack.md#network-connectivity) táblázatban található táblázat használatával tekintheti meg az elérhető műveleteket.
+
+Ha az Azure-hoz való kapcsolódást visszaállítja a Azure Backup Server, az Azure-előfizetés állapota határozza meg a végrehajtandó műveleteket. Ha a kiszolgáló **csatlakoztatva** van, a [hálózati kapcsolat](backup-mabs-install-azure-stack.md#network-connectivity) táblázatban található táblázat használatával tekintheti meg az elérhető műveleteket.
 
 ### <a name="handling-subscription-states"></a>Előfizetési állapotok kezelésére
 
 Lehetséges, hogy az Azure-előfizetést *lejárt* vagy *kiépített* állapotról *aktív* állapotra szeretné módosítani. Az előfizetés állapota nem *aktív*:
 
-- *Az előfizetés*megszüntetése közben elveszíti a funkciót. Az előfizetés *aktívra*való visszaállítása a biztonsági mentési/visszaállítási funkciót újítja meg. Ha a helyi lemezen lévő biztonsági mentési adatok tárolása elég nagy, a biztonsági mentési adatok lekérése megmaradt. Az Azure-beli biztonsági mentési adatgyűjtés azonban visszavonhatatlanul elvész, ha az előfizetés a *kiépített* állapotba kerül.
-- Amíg egy előfizetés *lejárt*, elveszíti a funkciót. Az ütemezett biztonsági mentések nem futnak, amíg *lejárt*egy előfizetés.
+- *Az előfizetés* megszüntetése közben elveszíti a funkciót. Az előfizetés *aktívra* való visszaállítása a biztonsági mentési/visszaállítási funkciót újítja meg. Ha a helyi lemezen lévő biztonsági mentési adatok tárolása elég nagy, a biztonsági mentési adatok lekérése megmaradt. Az Azure-beli biztonsági mentési adatgyűjtés azonban visszavonhatatlanul elvész, ha az előfizetés a *kiépített* állapotba kerül.
+- Amíg egy előfizetés *lejárt*, elveszíti a funkciót. Az ütemezett biztonsági mentések nem futnak, amíg *lejárt* egy előfizetés.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

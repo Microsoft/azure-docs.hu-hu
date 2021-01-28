@@ -96,6 +96,8 @@
       items:
         - name: 'Mi az az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL?'
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
+        - name: Korlátozások
+          href: limitations-postgresql-hyperscale.md
     - name: Rövid útmutatók
       items:
         - name: Támogatott verziók

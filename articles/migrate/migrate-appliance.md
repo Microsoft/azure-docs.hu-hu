@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 17ac10fd4e48043b79db5448fad2f29c5eb3f2a3
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754130"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986819"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -45,7 +45,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 
 **Követelmény** | **VMware** 
 --- | ---
-**Engedélyek** | A készülék webalkalmazásának helyi vagy távoli eléréséhez tartományi rendszergazdának vagy helyi rendszergazdának kell lennie a készülék számítógépén.
+**Engedélyek** | Ha helyileg vagy távolról szeretné elérni a készülék webalkalmazását, rendelkeznie kell egy helyi vagy tartományi felhasználói fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a berendezés-kiszolgálón.
 **Berendezés összetevői** | A berendezés a következő összetevőkből áll:<br/><br/> - **Felügyeleti alkalmazás**: ez egy webalkalmazás felhasználói bevitelhez a készülék üzembe helyezése során. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/> - **Felderítési ügynök**: az ügynök a számítógép-konfigurációs adatokat gyűjti. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/>- **Gyűjtő ügynök**: az ügynök teljesítményadatokat gyűjt. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/>- **Automatikus frissítési szolgáltatás**: a készülék összetevőinek frissítése (24 óránként fut).<br/>- **DRA-ügynök**: a virtuális gépek replikálását és a replikált számítógépek és az Azure közötti kommunikáció koordinálását koordinálja. Csak akkor használható, ha a VMware virtuális gépeket az Azure-ba replikálja ügynök nélküli Migrálás használatával.<br/>- **Átjáró**: replikált adatokat küld az Azure-nak. Csak akkor használható, ha a VMware virtuális gépeket az Azure-ba replikálja ügynök nélküli Migrálás használatával.
 **Támogatott központi telepítés** | Üzembe helyezés VMware virtuális gépen a petesejtek sablonnal.<br/><br/> Üzembe helyezés VMware-alapú virtuális gépként vagy fizikai gépen PowerShell-telepítési parancsfájl használatával.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
@@ -65,7 +65,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 
 **Követelmény** | **Hyper-V** 
 --- | ---
-**Engedélyek** | A készülék webalkalmazásának helyi vagy távoli eléréséhez tartományi rendszergazdának vagy helyi rendszergazdának kell lennie a készülék számítógépén.
+**Engedélyek** | Ha helyileg vagy távolról szeretné elérni a készülék webalkalmazását, rendelkeznie kell egy helyi vagy tartományi felhasználói fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a berendezés-kiszolgálón.
 **Berendezés összetevői** | A berendezés a következő összetevőkből áll:<br/><br/>- **Felügyeleti alkalmazás**: ez egy webalkalmazás felhasználói bevitelhez a készülék üzembe helyezése során. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/> - **Felderítési ügynök**: az ügynök a számítógép-konfigurációs adatokat gyűjti. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/>- **Gyűjtő ügynök**: az ügynök teljesítményadatokat gyűjt. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/>- **Automatikus frissítési szolgáltatás**: a készülék összetevőinek frissítése (24 óránként fut).
 **Támogatott központi telepítés** | Hyper-V virtuális gépként történő üzembe helyezése VHD-sablonnal.<br/><br/> Telepítsen Hyper-V virtuális gépet vagy fizikai gépet PowerShell telepítési parancsfájl használatával.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
@@ -82,7 +82,7 @@ A *Hyper-V követelményei** | Ha a készüléket a VHD sablonnal telepíti, a A
 
 **Követelmény** | **Fizikai** 
 --- | ---
-**Engedélyek** | A készülék webalkalmazásának helyi vagy távoli eléréséhez tartományi rendszergazdának vagy helyi rendszergazdának kell lennie a készülék számítógépén.
+**Engedélyek** | Ha helyileg vagy távolról szeretné elérni a készülék webalkalmazását, rendelkeznie kell egy helyi vagy tartományi felhasználói fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a berendezés-kiszolgálón.
 **Berendezés összetevői** | A berendezés a következő összetevőkből áll: <br/><br/> - **Felügyeleti alkalmazás**: ez egy webalkalmazás felhasználói bevitelhez a készülék üzembe helyezése során. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/> - **Felderítési ügynök**: az ügynök a számítógép-konfigurációs adatokat gyűjti. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/>- **Gyűjtő ügynök**: az ügynök teljesítményadatokat gyűjt. A gépeknek az Azure-ba való áttelepítéshez való kiértékeléséhez használatos.<br/>- **Automatikus frissítési szolgáltatás**: a készülék összetevőinek frissítése (24 óránként fut).
 **Támogatott központi telepítés** | Telepítsen dedikált fizikai gépet vagy virtuális gépet egy PowerShell telepítési parancsfájl használatával. A szkript letölthető a portálról.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
@@ -183,7 +183,7 @@ IPv6-címek | vm.Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Név | tároló. GetType (). név
+Name | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
@@ -230,7 +230,7 @@ Itt találja azokat a funkciókat, amelyeket a készülék az alkalmazások feld
 
 **Adatok**  | **PowerShell-parancsmag** | **Tulajdonság**
 --- | --- | ---
-Név  | Get-WindowsFeature  | Név
+Name  | Get-WindowsFeature  | Name
 Szolgáltatás típusa | Get-WindowsFeature  | FeatureType
 Szülő  | Get-WindowsFeature  | Szülő
 
@@ -240,7 +240,7 @@ Itt találja azokat az SQL Server-metaadatokat, amelyeket a készülék a Micros
 
 **Adatok**  | **Beállításjegyzékbeli hely**  | **Kulcs**
 --- | --- | ---
-Név  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
 Kiadás  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Kiadás 
 Szervizcsomag  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verzió  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verzió 
@@ -251,7 +251,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 Adatok  | WMI-osztály  | WMI-osztály tulajdonsága
 --- | --- | ---
-Név  | Win32_operatingsystem  | Képaláírás
+Name  | Win32_operatingsystem  | Képaláírás
 Verzió  | Win32_operatingsystem  | Verzió
 Architektúra  | Win32_operatingsystem  | OSArchitecture
 
@@ -261,7 +261,7 @@ Itt láthatók a telepített alkalmazásadatok, amelyeket a készülék az alkal
 
 Adatok  | Parancs
 --- | --- 
-Név | RPM, dpkg-Query, Snap
+Name | RPM, dpkg-Query, Snap
 Verzió | RPM, dpkg-Query, Snap
 Szolgáltató | RPM, dpkg-Query, Snap
 
@@ -271,7 +271,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 **Adatok**  | **Parancs** 
 --- | --- | ---
-Név <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektúra | uname
 
 
@@ -499,7 +499,7 @@ A készülék Configuration managerének beadásához:
 
 A Vezérlőpulton való ellenőrzéshez:
 
-1. A készüléken kattintson a **Start**  >  **Vezérlőpult**  >  **programok és szolgáltatások** indítása elemére.
+1. A készüléken kattintson a   >  **Vezérlőpult**  >  **programok és szolgáltatások** indítása elemére.
 2. A listában keresse meg a berendezés-szolgáltatások verzióját.
 
     ![A Vezérlőpult verziójának ellenőrzése](./media/migrate-appliance/programs-features.png)
@@ -525,7 +525,7 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a készüléket a VMware rendszerhez.
 - [Ismerje meg, hogyan](how-to-set-up-appliance-hyper-v.md) állíthatja be a készüléket a Hyper-V-hez.

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609054"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985886"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport létrehozása
 
@@ -78,9 +78,16 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 #azdata arc postgres server create -n postgres01 --workers 2
 ```
 
+> [!IMPORTANT]
+> - A biztonsági mentéshez használt tárolási osztály (_--Storage-Class-Backups-SCB_) alapértelmezett értéke az adatkezelő adattároló osztálya, ha nincs megadva.
+> - A kiszolgálócsoport egy különálló kiszolgálócsoport (például a időpontra történő visszaállítás) visszaállításához úgy kell beállítania a ReadWriteMany, hogy a virtuális adategységeket használja az adatelérési mód használatával. Ehhez a kiszolgálócsoport létrehozásakor van szükség. Létrehozása után nem módosítható. További részletekért olvassa el a következőt:
+>    - [A biztonsági mentéssel és visszaállítással kapcsolatos szakasz](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Ez a szakasz az Azure arc-kompatibilis PostgreSQL-nagy kapacitású korlátozásait ismerteti](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+
+
 > [!NOTE]
 > - **Más parancssori paraméterek is elérhetők.  A lehetőségek teljes listáját a futtatásával tekintheti meg `azdata arc postgres server create --help` .**
-> - A biztonsági mentéshez használt tárolási osztály (_--Storage-Class-Backups-SCB_) alapértelmezett értéke az adatkezelő adattároló osztálya, ha nincs megadva.
+
 > - A--Volume-size-* paraméterek által elfogadott egység egy Kubernetes-erőforrás mennyisége (egy egész szám, amelyet a fenti SI-K egyike is elegendő (T, G, M, K, m), vagy a két megfelelője (ti, GI, mi, ki)).
 > - A névnek 12 vagy kevesebb karakterből kell állnia, és meg kell felelnie a DNS elnevezési konvencióinak.
 > - A rendszer kérni fogja, hogy adja meg a _postgres_ standard rendszergazdai jogú felhasználó jelszavát.  Az interaktív kérdés kihagyható úgy, hogy a `AZDATA_PASSWORD` create parancs futtatása előtt beállítja a munkamenet környezeti változóját.
@@ -183,7 +190,7 @@ Most már csatlakozhat bármelyik psql:
 psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a Azure Database for PostgreSQL nagy kapacitású kapcsolatos fogalmakat és útmutatókat az adatok több PostgreSQL nagy kapacitású-csomóponton keresztüli terjesztéséhez, valamint a Azure Database for PostgreSQL nagy kapacitású teljesítményének kihasználása érdekében. :
     * [Csomópontok és táblák](../../postgresql/concepts-hyperscale-nodes.md)

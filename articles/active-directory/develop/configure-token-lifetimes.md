@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2529c6c3b0f9d188e1ce8062c05f62f3e980ef50
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805225"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986413"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)
 Megadhatja a Microsoft Identity platform által kiadott hozzáférés, SAML vagy azonosító jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. További információért olvassa el a [konfigurálható jogkivonat élettartamait](active-directory-configurable-token-lifetimes.md).
@@ -38,7 +38,7 @@ A kezdéshez hajtsa végre a következő lépéseket:
 1. A szervezetben létrehozott összes házirend megtekintéséhez futtassa a [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot.  A fent felsorolt alapértelmezett értékektől eltérő, meghatározott tulajdonságértékeket használó eredmények a nyugdíjazás hatókörében vannak.
 
     ```powershell
-    Get-AzureADPolicy -All
+    Get-AzureADPolicy -All $true
     ```
 
 1. Ha szeretné megtekinteni, hogy mely alkalmazások és szolgáltatások vannak összekapcsolva egy adott házirenddel, akkor a következő [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) parancsmagot kell lecserélnie a **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** bármely házirend-azonosítóval való lecserélésével. Ezután eldöntheti, hogy konfigurálja-e a feltételes hozzáférés bejelentkezési gyakoriságát, vagy az Azure AD alapértelmezett értékeivel marad-e.
@@ -210,5 +210,5 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
 
     Most már rendelkezik a szolgáltatáshoz tartozó eredeti házirenddel, és az új szabályzat beállítása a szervezet alapértelmezett házirendje. Fontos megjegyezni, hogy az egyszerű szolgáltatásokra alkalmazott szabályzatok elsőbbséget élveznek a szervezet alapértelmezett házirendjeivel szemben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg az Azure AD feltételes hozzáférésének [hitelesítési munkamenet-kezelési képességeit](../conditional-access/howto-conditional-access-session-lifetime.md) .

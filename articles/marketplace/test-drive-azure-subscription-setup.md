@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/09/2020
-ms.openlocfilehash: 6f74f3b1f5aad153903ba5d290a290973203a875
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489386"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986124"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Azure Marketplace-előfizetés beállítása üzemeltetett tesztelési meghajtókhoz
 
@@ -65,12 +65,12 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
     15. Titkos kód létrehozása a Azure AD alkalmazáshoz:
         1. Az **alkalmazás kezelése** lapon válassza a **tanúsítvány és titkos kulcsok** elemet.
         2. Az ügyfél titkos kulcsa területen válassza az **új ügyfél titka** lehetőséget.
-        3. Adjon meg egy leírást, például a *Test Drive* -t, és válasszon ki egy megfelelő időtartamot. A teszt meghajtó a kulcs lejárata után megszakad, ekkor új kulcsot kell létrehoznia, és meg kell adnia a AppSource.
+        3. Adjon meg egy leírást, például a *Test Drive*-t, és válasszon ki egy megfelelő időtartamot. A teszt meghajtó a kulcs lejárata után megszakad, ekkor új kulcsot kell létrehoznia, és meg kell adnia a AppSource.
         4. Az Azure-alkalmazás titkos kódjának létrehozásához válassza a **Hozzáadás** lehetőséget. Másolja ezt az értéket, mert a panel fürdik után eltűnik. Erre az értékre később szükség lesz a tesztelési meghajtó konfigurálásakor.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Ügyfél titkos kulcsának hozzáadása.":::
 
-5. Időnként a vártnál hosszabb időt vesz igénybe, hogy szinkronizáljon egy felhasználót az Azure AD-ből egy CRM-példányba. Ennek támogatásához hozzáadunk egy folyamatot, amely kikényszeríti a szinkronizálási felhasználót, de az Azure AD-alkalmazást a partner központ engedélyezési listájának kell megadnia. Ehhez tekintse meg a [felhasználó szinkronizálása a Customer engagement-példánnyal](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md)című témakört.
+5. Időnként a vártnál hosszabb időt vesz igénybe, hogy szinkronizáljon egy felhasználót az Azure AD-ből egy CRM-példányba. Ennek támogatásához hozzáadunk egy folyamatot a szinkronizálási felhasználó kényszerítéséhez, de az Azure AD-alkalmazást allowlisted kell a partner Center számára. Ehhez tekintse meg a [felhasználó szinkronizálása a Customer engagement-példánnyal](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md)című témakört.
 6. Adja hozzá az egyszerű szolgáltatásnév szerepkört az alkalmazáshoz, hogy az Azure AD-alkalmazás eltávolítsa a felhasználókat az Azure-bérlőből.
     1. Nyisson meg egy rendszergazdai szintű PowerShell-parancssort.
     2. Install-Module MSOnline (futtassa ezt a parancsot, ha nincs telepítve a MSOnline).
@@ -83,7 +83,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
 
 7. Adja hozzá a fenti létrehozott Azure-alkalmazást alkalmazás-felhasználóként a test Drive CRM-példányhoz.
     1. Új felhasználó hozzáadása **Azure Active Directoryban**. A felhasználó létrehozásához csak a **név** és a **Felhasználónév** érték (ugyanahhoz a bérlőhöz tartozó) szükséges, ezért a többi mezőt hagyja alapértelmezettként. Másolja a username értéket.
-    2. Jelentkezzen be a **CRM-példányba** , és válassza a **Setting**  >  **biztonsági**  >  **felhasználók** beállítása lehetőséget.
+    2. Jelentkezzen be a **CRM-példányba** , és válassza a   >  **biztonsági**  >  **felhasználók** beállítása lehetőséget.
     3. Módosítsa a nézetet az **alkalmazás felhasználóira**.
 
         :::image type="content" source="./media/test-drive/application-users.png" alt-text="Felhasználói fiók adatainak beállítása.":::
@@ -135,7 +135,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
     14. Titkos kód létrehozása a Azure AD alkalmazáshoz:
         1. Az **alkalmazás kezelése** lapon válassza a **tanúsítvány és titkos kulcsok** elemet.
         2. Az ügyfél titkos kulcsa területen válassza az **új ügyfél titka** lehetőséget.
-        3. Adjon meg egy leírást, például a *Test Drive* -t, és válasszon ki egy megfelelő időtartamot. A teszt meghajtó a kulcs lejárata után megszakad, ekkor új kulcsot kell létrehoznia, és meg kell adnia a AppSource.
+        3. Adjon meg egy leírást, például a *Test Drive*-t, és válasszon ki egy megfelelő időtartamot. A teszt meghajtó a kulcs lejárata után megszakad, ekkor új kulcsot kell létrehoznia, és meg kell adnia a AppSource.
         4. Az Azure-alkalmazás titkos kódjának létrehozásához válassza a **Hozzáadás** lehetőséget. Másolja ezt az értéket, mert a panel fürdik után eltűnik. Erre az értékre később szükség lesz a tesztelési meghajtó konfigurálásakor.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Ügyfél titkos kulcsának hozzáadása.":::

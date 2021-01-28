@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1fc768890e932d1f17ad111b4681b75721ae1e06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecc2e98d4c6c58e11b2bdc86b623f31d828cabc0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148099"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985920"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású Server Group elhelyezése
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 Az architektúra a következőképpen jeleníthető meg:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="4 csomópont logikai ábrázolása egy Kubernetes-fürtben csoportosítva":::
 
 A Kubernetes-fürt egyetlen Azure arc-adatvezérlőt és egy Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport-kiszolgálót üzemeltet. Ez a kiszolgálócsoport három PostgreSQL-példányból áll: egy koordinátorból és két feldolgozóból áll.
 
@@ -60,30 +60,30 @@ A következő kimenetet hozza létre:
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          9h
-postgres01-1         3/3     Running   0          9h
-postgres01-2         3/3     Running   0          9h
+postgres01c-0         3/3     Running   0          9h
+postgres01w-0         3/3     Running   0          9h
+postgres01w-1         3/3     Running   0          9h
 ```
 Ezek a hüvelyek egy PostgreSQL-példányt futtatnak. Együtt alkotják az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportot:
 
 ```output
 Pod name        Role in the server group
-postgres01-0  Coordinator
-postgres01-1    Worker
-postgres01-2    Worker
+postgres01c-0 Coordinator
+postgres01w-0   Worker
+postgres01w-1   Worker
 ```
 
 ## <a name="placement"></a>Elhelyezés
 Nézzük meg, hogyan helyezi el a Kubernetes a csoport hüvelyeit. Írja le az egyes Pod-ket, és azonosítsa, hogy a Kubernetes-fürt mely fizikai csomópontján vannak elhelyezve. A koordinátor számára például futtassa a következő parancsot:
 
 ```console
-kubectl describe pod postgres01-0 -n arc3
+kubectl describe pod postgres01c-0 -n arc3
 ```
 
 A következő kimenetet hozza létre:
 
 ```output
-Name:         postgres01-0
+Name:         postgres01c-0
 Namespace:    arc3
 Priority:     0
 Node:         aks-agentpool-42715708-vmss000000
@@ -101,7 +101,7 @@ Ahogy ezt a parancsot az egyes hüvelyek esetében futtatjuk, az aktuális elhel
 Továbbá jegyezze fel a hüvelyek leírását is, az egyes Pod-gazdagépek nevét. A második feldolgozóhoz például futtassa a következő parancsot:
 
 ```console
-kubectl describe pod postgres01-2 -n arc3
+kubectl describe pod postgres01w-1 -n arc3
 ```
 
 A következő kimenetet hozza létre:
@@ -129,7 +129,7 @@ Az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport rész
 
 Az architektúra a következőképpen néz ki:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3 hüvely külön csomópontokra helyezve":::
 
 Ez azt jelenti, hogy ezen a ponton az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport részét képező PostgreSQL-példányok a Kubernetes-tárolóban található adott fizikai gazdagépen futnak. Ez a legjobb konfiguráció, amellyel az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport legtöbbje kihasználható, mivel minden szerepkör (koordinátor és dolgozó) az egyes fizikai csomópontok erőforrásait használja. Ezeket az erőforrásokat a rendszer nem osztja meg több PostgreSQL-szerepkör között.
 
@@ -172,23 +172,23 @@ kubectl get pods -n arc3
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          11h
-postgres01-1         3/3     Running   0          11h
-postgres01-2         3/3     Running   0          11h
-postgres01-3         3/3     Running   0          5m2s
+postgres01c-0         3/3     Running   0          11h
+postgres01w-0         3/3     Running   0          11h
+postgres01w-1         3/3     Running   0          11h
+postgres01w-2         3/3     Running   0          5m2s
 ```
 
 És írja le az új Pod-t annak azonosítására, hogy a Kubernetes-fürt mely fizikai csomópontjain fut.
 Futtassa a következő parancsot:
 
 ```console
-kubectl describe pod postgres01-3 -n arc3
+kubectl describe pod postgres01w-2 -n arc3
 ```
 
 Az üzemeltetési csomópont nevének azonosítása:
 
 ```output
-Name:         postgres01-3
+Name:         postgres01w-2
 Namespace:    arc3
 Priority:     0
 Node:         aks-agentpool-42715708-vmss000000
@@ -203,11 +203,24 @@ A PostgreSQL-példányok elhelyezése a fürt fizikai csomópontjain most:
 |Feldolgozói|postgres01 – 2|AK-agentpool-42715708-vmss000003
 |Feldolgozói|postgres01 – 3|AK-agentpool-42715708-vmss000000
 
-Figyelje meg, hogy az új feldolgozó (postgres01-3) Pod-je ugyanarra a csomópontra került, mint a koordinátor. 
+Figyelje meg, hogy az új feldolgozó (postgres01w-2) Pod-je ugyanarra a csomópontra került, mint a koordinátor. 
 
 Az architektúra a következőképpen néz ki:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="4 csomópontos AK-fürt Azure Portal" szolgáltatás, amely figyelemmel kíséri az adatkezelő rendelkezésre állását.|AK-agentpool-42715708-vmss000000
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Negyedik Pod ugyanazon a csomóponton, mint a koordinátor":::
+
+Miért nem az új feldolgozó/Pod kerül a Kubernetes-fürt (ak-agentpool-42715708-vmss000003) fennmaradó fizikai csomópontjára?
+
+Ennek az az oka, hogy a Kubernetes-fürt utolsó fizikai csomópontja több hüvelyt üzemeltet, amelyek az Azure arc-kompatibilis adatszolgáltatások futtatásához szükséges további összetevőket működtetnek. A Kubernetes azt vizsgálta, hogy a legjobb jelölt – az ütemezés időpontjában – a további dolgozó üzemeltetése az AK-agentpool-42715708-vmss000000 fizikai csomópont. 
+
+Ugyanazokat a parancsokat használja, mint a fentiekben; láthatjuk, hogy az egyes fizikai csomópontok hol találhatók:
+
+|Egyéb hüvelyek nevei\* |Használat|A hüvelyt üzemeltető fizikai csomópont Kubernetes
+|----|----|----
+|bootstrapper – jh48b|Ez egy olyan szolgáltatás, amely kezeli a bejövő kérelmeket olyan egyéni erőforrások létrehozásához, szerkesztéséhez és törléséhez, mint például az SQL felügyelt példányai, a PostgreSQL nagy kapacitású-kiszolgálócsoportok és az adatkezelők|AK-agentpool-42715708-vmss000003
+|vezérlés – gwmbs||AK-agentpool-42715708-vmss000002
+|controldb – 0|Ez a vezérlő adattár, amely az adatkezelő konfigurációjának és állapotának tárolására szolgál.|AK-agentpool-42715708-vmss000001
+|controlwd-zzjp7|Ez a "Watch Dog" szolgáltatás, amely figyelemmel kíséri az adatkezelő rendelkezésre állását.|AK-agentpool-42715708-vmss000000
 |logsdb – 0|Ez egy rugalmas keresési példány, amely az összes arc adatszolgáltatási hüvelyben gyűjtött összes napló tárolására szolgál. Elasticsearch, fogadja az `Fluentbit` egyes Pod-tárolók adatait|AK-agentpool-42715708-vmss000003
 |logsui-5fzv5|Ez egy Kibana-példány, amely a rugalmas keresési adatbázisra épül, és egy log Analytics grafikus felhasználói felületet mutat be.|AK-agentpool-42715708-vmss000003
 |metricsdb – 0|Ez egy InfluxDB-példány, amely az összes arc adatszolgáltatási hüvelyben gyűjtött összes metrika tárolására szolgál. InfluxDB, fogadja az `Telegraf` egyes Pod-tárolók adatait|AK-agentpool-42715708-vmss000000
@@ -222,7 +235,7 @@ Az architektúra a következőképpen néz ki:
 
 Az architektúra a következőképpen néz ki:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="A névtérben lévő összes hüvely a különböző csomópontokon":::
 
 Ez azt jelenti, hogy az Azure arc-kompatibilis postgres nagy kapacitású-kiszolgálócsoport koordinátor-csomópontjai (Pod 1) ugyanazokkal a fizikai erőforrásokkal rendelkeznek, mint a kiszolgálócsoport harmadik feldolgozói csomópontjának (Pod 4). Ez elfogadható, mivel a koordinátor csomópont általában nagyon kevés erőforrást használ a feldolgozó csomópontok által használthoz képest. Ebből a következtetésből kikövetkeztetheti, hogy körültekintően kell kiválasztania:
 - a Kubernetes-fürt mérete és az egyes fizikai csomópontok jellemzői (memória, virtuális mag)
@@ -246,16 +259,16 @@ Vegyünk fel egy ötödik csomópontot az AK-fürthöz:
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure Portal az elrendezés előtt":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure Portal az elrendezés után":::
     :::column-end:::
 :::row-end:::
 
 Az architektúra a következőképpen néz ki:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Logikai elrendezés a Kubernetes-fürtön a frissítés után":::
 
 Nézzük meg, hogy az ív-adatkezelő névterének milyen hüvelyei futnak az új AK fizikai csomóponton a parancs futtatásával:
 
@@ -265,7 +278,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 És frissítjük a rendszer architektúrájának ábrázolását:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Minden hüvely a fürt logikai diagramján":::
 
 Bemutatjuk, hogy a Kubernetes-fürt új fizikai csomópontja csak az Azure arc-adatszolgáltatásokhoz szükséges metrikákat üzemelteti. Vegye figyelembe, hogy ebben a példában csak az ív-adatvezérlő névterére koncentrálunk, a többi hüvelyt nem jelöljük.
 
@@ -305,46 +318,46 @@ kubectl get pods -n arc3
 
 NAME                 READY   STATUS    RESTARTS   AGE
 …
-postgres01-0         3/3     Running   0          13h
-postgres01-1         3/3     Running   0          13h
-postgres01-2         3/3     Running   0          13h
-postgres01-3         3/3     Running   0          179m
-postgres01-4         3/3     Running   0          3m13s
+postgres01c-0         3/3     Running   0          13h
+postgres01w-0         3/3     Running   0          13h
+postgres01w-1         3/3     Running   0          13h
+postgres01w-2         3/3     Running   0          179m
+postgres01w-3         3/3     Running   0          3m13s
 ```
 
 A kiszolgálócsoport alakja mostantól:
 
 |Kiszolgálói csoport szerepköre|Kiszolgálócsoport Pod
 |----|-----
-|Coordinator|postgres01 – 0
-|Feldolgozói|postgres01 – 1
-|Feldolgozói|postgres01 – 2
-|Feldolgozói|postgres01 – 3
-|Feldolgozói|postgres01 – 4
+|Coordinator|postgres01c – 0
+|Feldolgozói|postgres01w – 0
+|Feldolgozói|postgres01w – 1
+|Feldolgozói|postgres01w – 2
+|Feldolgozói|postgres01w – 3
 
-Írja le a postgres01-4 Pod-t annak azonosítására, hogy milyen fizikai csomópontot üzemeltet:
+Írja le a postgres01w-3 Pod-t annak azonosítására, hogy milyen fizikai csomópontot üzemeltet:
 
 ```console
-kubectl describe pod postgres01-4 -n arc3
+kubectl describe pod postgres01w-3 -n arc3
 ```
 
 És figyelje meg, milyen hüvely fut:
 
 |Kiszolgálói csoport szerepköre|Kiszolgálócsoport Pod| Pod
 |----|-----|------
-|Coordinator|postgres01 – 0|AK-agentpool-42715708-vmss000000
-|Feldolgozói|postgres01 – 1|AK-agentpool-42715708-vmss000002
-|Feldolgozói|postgres01 – 2|AK-agentpool-42715708-vmss000003
-|Feldolgozói|postgres01 – 3|AK-agentpool-42715708-vmss000000
-|Feldolgozói|postgres01 – 4|AK-agentpool-42715708-vmss000004
+|Coordinator|postgres01c – 0|AK-agentpool-42715708-vmss000000
+|Feldolgozói|postgres01w – 0|AK-agentpool-42715708-vmss000002
+|Feldolgozói|postgres01w – 1|AK-agentpool-42715708-vmss000003
+|Feldolgozói|postgres01w – 2|AK-agentpool-42715708-vmss000000
+|Feldolgozói|postgres01w – 3|AK-agentpool-42715708-vmss000004
 
 Az architektúra pedig így néz ki:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="4 csomópontos AK-fürt Azure Portal":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="A Kubernetes a legújabb Pod-t a legalacsonyabb használatú csomóponton ütemezheti":::
 
 A Kubernetes az új PostgreSQL Pod-t a Kubernetes-fürt legkevésbé betöltött fizikai csomópontjában ütemezhette.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Annak érdekében, hogy a lehető leghatékonyabban kihasználhassák az Azure arc-kompatibilis kiszolgálócsoport méretezésének és teljesítményének horizontális felskálázását, az erőforrás-tartalmat a Kubernetes-fürtön belül érdemes elkerülni:
 - Az Azure arc engedélyezett PostgreSQL nagy kapacitású-kiszolgálócsoport és az ugyanazon Kubernetes-fürtön futó egyéb munkaterhelések között

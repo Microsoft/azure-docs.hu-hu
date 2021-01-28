@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrások
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510090"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986495"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -203,7 +203,7 @@ Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatár
 
 
 > [!NOTE]
-> Bár ez nem ajánlott, az eszközök olyan jogkivonatokkal is felhasználhatók, amelyek hozzáférést biztosítanak az Event hub-hoz vagy a névtérhez. Minden olyan eszköz, amelyik ezt a jogkivonatot tárolja, közvetlenül is küldhet üzeneteket az adott Event hub-nak. Emellett az eszköz nem lehet feketelistára állítani az adott Event hubhoz való küldéssel.
+> Bár ez nem ajánlott, az eszközök olyan jogkivonatokkal is felhasználhatók, amelyek hozzáférést biztosítanak az Event hub-hoz vagy a névtérhez. Minden olyan eszköz, amelyik ezt a jogkivonatot tárolja, közvetlenül is küldhet üzeneteket az adott Event hub-nak. Emellett az eszköz nem blocklisted el az adott Event hubhoz való küldéstől.
 > 
 > A konkrét és a részletes hatóköröket mindig ajánlott megadni.
 
@@ -218,7 +218,7 @@ Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatár
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs ügyfelek hitelesítése SAS használatával 
 A Event Hubs gyártók által generált adatokból felhasznált háttérbeli alkalmazások hitelesítéséhez Event Hubs jogkivonat-hitelesítéshez az szükséges, hogy az ügyfelek rendelkezzenek a **felügyeleti jogokkal vagy** a Event Hubs névtér vagy az Event hub-példányhoz vagy a témakörhöz rendelt **figyelési** jogosultságokkal. Az adatok felhasználása Event Hubs fogyasztói csoportok használatával történik. Míg a SAS-szabályzat részletes hatókört biztosít, ez a hatókör csak az entitás szintjén van meghatározva, és nem a fogyasztói szinten. Ez azt jelenti, hogy a névtér szintjén vagy az Event hub-példányon vagy a témakör szintjén megadott jogosultságok az adott entitás fogyasztói csoportjaira lesznek alkalmazva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Engedélyezés SAS használatával](authenticate-shared-access-signature.md)
