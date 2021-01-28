@@ -1,19 +1,16 @@
 ---
 title: Az Azure HDInsight-verziókhoz tartozó Hortonworks kibocsátási megjegyzések
 description: Ismerje meg az Azure HDInsight Apache Hadoop összetevőit és verzióit.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: aa20e048db2b68d8f953b06745570759de5f2e9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07cfa4d4a1698629a36d75deab2f74c89f948475
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190571"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931113"
 ---
 # <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>A HDInsight-verziókhoz tartozó Hortonworks kibocsátási megjegyzések
 
@@ -48,7 +45,7 @@ A szakasz hivatkozásokat tartalmaz a Hortonworks adatplatform-disztribúciók �
 
 * A HDInsight-fürt 1,6-es verziója olyan Hadoop-eloszlást használ, amely a 1,1-es [Hortonworks-Adatplatformon][hdp-1-1-0]alapul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-alapú Apache Hadoop-összetevők](./hdinsight-component-versioning.md)
 * [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

@@ -1,19 +1,16 @@
 ---
 title: SCP.NET programozási útmutató a Storm in Azure HDInsight
 description: Útmutató a SCP.NET létrehozásához. NET-alapú Storm-topológiák az Azure HDInsight-ben futó Storm használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000141"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932646"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP programozási útmutató az Azure HDInsight Apache Storm
 
@@ -37,7 +34,7 @@ A Storm-ben egy alkalmazás-topológia definiál egy számítási diagramot. A t
 
 A bemeneti adatokat a topológiába beinjektáló csomópontok neve _kiöntő_. Ezeket az adatsorokra használhatja. A bemeneti adatok származhatnak olyan forrásokból, mint a naplófájlok, a tranzakciós adatbázisok vagy a rendszerteljesítmény-számlálók.
 
-A bemeneti és kimeneti adatfolyamatokkal rendelkező csomópontokat a rendszer _csavaroknak_nevezzük. A tényleges adatszűrést, kiválasztásokat és összesítést végzik.
+A bemeneti és kimeneti adatfolyamatokkal rendelkező csomópontokat a rendszer _csavaroknak_ nevezzük. A tényleges adatszűrést, kiválasztásokat és összesítést végzik.
 
 Az SCP támogatja a legjobb erőfeszítéseket, legalább egyszer, és pontosan egyszer az adatfeldolgozást.
 
@@ -95,7 +92,7 @@ public interface ISCPSpout : ISCPPlugin
 
 A **NextTuple** hívásakor a C#-kód egy vagy több rekordok is kibocsáthat. Ha nincs probléma a kibocsátással, ez a módszer bármilyen kibocsátása nélkül visszatérhet.
 
-A **NextTuple**, az **ACK**és a **Fail** metódusok mindegyike szoros hurokban van meghívva egy C#-folyamat egyetlen szálában. Ha nincs rekordok a kibocsátáshoz, rövid ideig **NextTuple** az alvó állapotot, például 10 ezredmásodpercet. Ez az alvó üzemmód segít elkerülni a CPU rendelkezésre állásának pazarlását.
+A **NextTuple**, az **ACK** és a **Fail** metódusok mindegyike szoros hurokban van meghívva egy C#-folyamat egyetlen szálában. Ha nincs rekordok a kibocsátáshoz, rövid ideig **NextTuple** az alvó állapotot, például 10 ezredmásodpercet. Ez az alvó üzemmód segít elkerülni a CPU rendelkezésre állásának pazarlását.
 
 A **ACK** és a **Fail** metódust csak akkor hívja meg a rendszer, ha a specifikációs fájl engedélyezi a visszaigazolási mechanizmust. A *emlékeztetése helyreállításkor* paraméter a visszaigazolt vagy sikertelen rekordot azonosítja. Ha a nyugtázás nem tranzakciós topológiában van engedélyezve, a következő **kibocsátó** függvényt kell használni a kiöntőben:
 
@@ -133,7 +130,7 @@ public interface ISCPTxSpout : ISCPPlugin
 }
 ```
 
-Akárcsak a nem tranzakciós partnerekhez, a **NextTx**, az **ACK**és a **Fail utasításhoz** hasonlóan minden egyes C#-folyamat egyetlen szálának szűk hurkot kell hívnia. Ha nincs rekordok a kibocsátáshoz, rövid ideig **NextTx** az alvó állapotot, például 10 ezredmásodpercet. Ez az alvó üzemmód segít elkerülni a CPU rendelkezésre állásának pazarlását.
+Akárcsak a nem tranzakciós partnerekhez, a **NextTx**, az **ACK** és a **Fail utasításhoz** hasonlóan minden egyes C#-folyamat egyetlen szálának szűk hurkot kell hívnia. Ha nincs rekordok a kibocsátáshoz, rövid ideig **NextTx** az alvó állapotot, például 10 ezredmásodpercet. Ez az alvó üzemmód segít elkerülni a CPU rendelkezésre állásának pazarlását.
 
 Ha a **NextTx** új tranzakció elindítását hívja meg, a *emlékeztetése helyreállításkor* kimeneti paraméter azonosítja a tranzakciót. A tranzakciót **ACK** -ban is használják, és a művelet **meghiúsul**. Az **NextTx** metódus képes a Java-oldalra kibocsátani az adatait. A rendszer a ZooKeeper tárolja az adatvisszajátszás támogatásához. Mivel a ZooKeeper kapacitása korlátozott, a kódnak csak a metaadatokat kell kibocsátania, a tranzakciós kiöntőban nem pedig tömeges adatokat.
 
@@ -161,11 +158,11 @@ A SCP.NET egy új **ISCPBatchBolt** objektumot hoz létre az egyes **StormTxAtte
 
 ## <a name="object-model"></a>Objektummodell
 
-A SCP.NET egy egyszerű, a fejlesztők számára elérhető billentyűparancsokat is biztosít a programhoz. Az objektumok a **kontextus**, a **Állapottárolója**és a **SCPRuntime**. Ezeket a szakasz tárgyalja.
+A SCP.NET egy egyszerű, a fejlesztők számára elérhető billentyűparancsokat is biztosít a programhoz. Az objektumok a **kontextus**, a **Állapottárolója** és a **SCPRuntime**. Ezeket a szakasz tárgyalja.
 
 ### <a name="context"></a>Környezet
 
-A **környezeti** objektum egy futó környezetet biztosít az alkalmazás számára. A **ISCPSpout**, a **ISCPBolt**, a **ISCPTxSpout**vagy a **ISCPBatchBolt** minden **ISCPPlugin** -példánya egy megfelelő **környezeti** példánnyal rendelkezik. A **környezet** által biztosított funkciók a következő két részre vannak osztva:
+A **környezeti** objektum egy futó környezetet biztosít az alkalmazás számára. A **ISCPSpout**, a **ISCPBolt**, a **ISCPTxSpout** vagy a **ISCPBatchBolt** minden **ISCPPlugin** -példánya egy megfelelő **környezeti** példánnyal rendelkezik. A **környezet** által biztosított funkciók a következő két részre vannak osztva:
 
 * A teljes C# folyamat során elérhető statikus rész
 * A dinamikus rész, amely csak az adott **környezeti** példány esetében érhető el
@@ -373,13 +370,13 @@ Az **inicializálási** módszer inicializálja a szolgáltatáskapcsolódási p
 
 Az **LaunchPlugin** metódus elindítja az üzenetfeldolgozási hurkot. Ebben a hurokban a C# beépülő modul a Java-oldalról fogad üzeneteket. Ezek az üzenetek rekordok és vezérlési jeleket tartalmaznak. A beépülő modul ezután feldolgozza az üzeneteket, például a kód által megadott Interface metódus meghívásával.
 
-A **LaunchPlugin** bemeneti paramétere a delegált. A metódus olyan objektumot adhat vissza, amely megvalósítja a **ISCPSpout**, a **ISCPBolt**, a **ISCPTxSpout**vagy a **ISCPBatchBolt** felületet.
+A **LaunchPlugin** bemeneti paramétere a delegált. A metódus olyan objektumot adhat vissza, amely megvalósítja a **ISCPSpout**, a **ISCPBolt**, a **ISCPTxSpout** vagy a **ISCPBatchBolt** felületet.
 
 ```csharp
 public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary<string, Object> parms);
 ```
 
-A **ISCPBatchBolt**egy **StormTxAttempt** objektumot is beszerezhet a *Paraméterek* paraméterből, és megítélheti, hogy a kísérlet egy újrajátszott kísérlet. Az újrapróbálkozási kísérletek keresése gyakran történik a véglegesítő Bolton. A cikk későbbi részében a HelloWorldTx példa azt mutatja be, hogy ez az ellenőrzési szolgáltatás.
+A **ISCPBatchBolt** egy **StormTxAttempt** objektumot is beszerezhet a *Paraméterek* paraméterből, és megítélheti, hogy a kísérlet egy újrajátszott kísérlet. Az újrapróbálkozási kísérletek keresése gyakran történik a véglegesítő Bolton. A cikk későbbi részében a HelloWorldTx példa azt mutatja be, hogy ez az ellenőrzési szolgáltatás.
 
 Az SCP beépülő modulok általában két módban futtathatók: helyi tesztelési mód és normál mód.
 
@@ -434,19 +431,19 @@ A **runSpec** parancs használatával a topológiai specifikációkat közvetlen
 
 A SCP.NET a következő függvényeket adta hozzá a tranzakciós topológiák definiálásához:
 
-| Új függvény | Paraméterek | Leírás |
+| Új függvény | Paraméterek | Description |
 | --- | --- | --- |
 | **TX – topolopy** |*topológia – név*<br />*kiöntő – Térkép*<br />*bolt – Térkép* |Egy tranzakciós topológiát határoz meg a topológia nevével, a kiöntő definíciók leképezésével és a csavarok definíciós térképével. |
-| **SCP – TX-kiöntő** |*exec-név*<br />*args*<br />*mezők* |Egy tranzakciós kiöntőt határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok*által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a kiöntő kimeneti mezőit. |
+| **SCP – TX-kiöntő** |*exec-név*<br />*args*<br />*mezők* |Egy tranzakciós kiöntőt határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok* által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a kiöntő kimeneti mezőit. |
 | **SCP-TX-batch-bolt** |*exec-név*<br />*args*<br />*mezők* |Egy tranzakciós batch-csavart definiál. A függvény futtatja az *exec-Name* és az *argumentumok* által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a bolt kimeneti mezőit. |
-| **SCP-TX-commit-bolt** |*exec-név*<br />*args*<br />*mezők* |Tranzakciós véglegesítő boltot határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok*által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a bolt kimeneti mezőit. |
+| **SCP-TX-commit-bolt** |*exec-név*<br />*args*<br />*mezők* |Tranzakciós véglegesítő boltot határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok* által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a bolt kimeneti mezőit. |
 | **nontx – topológia** |*topológia – név*<br />*kiöntő – Térkép*<br />*bolt – Térkép* |A nem tranzakciós topológiát definiálja a topológia nevével, a kiöntő definíciók leképezésével és a csavarok definíciós térképével. |
-| **SCP – kiöntő** |*exec-név*<br />*args*<br />*mezők*<br />*paraméterek* |Nem tranzakciós kiöntőt határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok*által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a kiöntő kimeneti mezőit.<br /><br />A *Parameters* paraméter megadása nem kötelező. Használatával olyan paramétereket adhat meg, mint például a "nem tranzakciós. ACK. enabled". |
-| **SCP – bolt** |*exec-név*<br />*args*<br />*mezők*<br />*paraméterek* |Nem tranzakciós csavar definiálása. A függvény futtatja az *exec-Name* és az *argumentumok*által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a bolt kimeneti mezőit.<br /><br />A *Parameters* paraméter megadása nem kötelező. Használatával olyan paramétereket adhat meg, mint például a "nem tranzakciós. ACK. enabled". |
+| **SCP – kiöntő** |*exec-név*<br />*args*<br />*mezők*<br />*paraméterek* |Nem tranzakciós kiöntőt határoz meg. A függvény futtatja az *exec-Name* és az *argumentumok* által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a kiöntő kimeneti mezőit.<br /><br />A *Parameters* paraméter megadása nem kötelező. Használatával olyan paramétereket adhat meg, mint például a "nem tranzakciós. ACK. enabled". |
+| **SCP – bolt** |*exec-név*<br />*args*<br />*mezők*<br />*paraméterek* |Nem tranzakciós csavar definiálása. A függvény futtatja az *exec-Name* és az *argumentumok* által megadott alkalmazást.<br /><br />A *Fields* paraméter határozza meg a bolt kimeneti mezőit.<br /><br />A *Parameters* paraméter megadása nem kötelező. Használatával olyan paramétereket adhat meg, mint például a "nem tranzakciós. ACK. enabled". |
 
 A SCP.NET a következő kulcsszavakat definiálja:
 
-| Kulcsszó | Leírás |
+| Kulcsszó | Description |
 | --- | --- |
 | **: név** |A topológia neve |
 | **: topológia** |Az előző táblázat függvényeit használó topológia és beépített függvények |
@@ -683,7 +680,7 @@ Itt `"plugin.name"` van megadva, `"SCPHost.exe"` amelyet az scp SDK biztosít. A
 
 1. A DLL neve, amely `"HelloWorld.dll"` ebben a példában található.
 1. Az osztály neve, amely ebben a `"Scp.App.HelloWorld.Generator"` példában szerepel.
-1. Egy nyilvános statikus metódus neve, amely meghívható a **ISCPPlugin**egy példányának beszerzéséhez.
+1. Egy nyilvános statikus metódus neve, amely meghívható a **ISCPPlugin** egy példányának beszerzéséhez.
 
 Gazdagép módban a kód lefordítása DLL-ként a SZOLGÁLTATÁSKAPCSOLÓDÁSI pont platformjának meghívásához. Mivel a platform a teljes feldolgozási logika teljes körű felügyeletét teszi elérhetővé, javasoljuk, hogy a topológiát SCP-gazdagép módban küldje el. Így egyszerűbbé válik a fejlesztési élmény. Emellett nagyobb rugalmasságot és jobb visszamenőleges kompatibilitást biztosít a későbbi kiadásokhoz.
 
@@ -728,7 +725,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-A következő HelloWorldTx példa bemutatja a tranzakciós topológia megvalósítását. A példában egy **generátor**nevű kiöntő, egy **részleges darabszámú**batch-bolt és egy **Count-Sum**nevű véglegesítő bolt szerepel. A példa három meglévő szövegfájlt is tartalmaz: DataSource0.txt, DataSource1.txt és DataSource2.txt.
+A következő HelloWorldTx példa bemutatja a tranzakciós topológia megvalósítását. A példában egy **generátor** nevű kiöntő, egy **részleges darabszámú** batch-bolt és egy **Count-Sum** nevű véglegesítő bolt szerepel. A példa három meglévő szövegfájlt is tartalmaz: DataSource0.txt, DataSource1.txt és DataSource2.txt.
 
 Az egyes tranzakciókban a kiöntő **generátor** véletlenszerűen kiválasztja a meglévő három fájlból származó két fájlt, és kibocsátja a két fájlnevet a **részleges számú** boltba. A **részleges számú** bolt:
 

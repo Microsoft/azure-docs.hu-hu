@@ -1,18 +1,15 @@
 ---
 title: Interaktív lekérdezési fürt méretezési útmutatója az Azure HDInsight
 description: Interaktív lekérdezés-méretezési útmutató az Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a81eff1dcf48996c319933aa4dd46170043b943b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7baa9340a1f0a99b94bfcbe535c73d0b502e2a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83664934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933066"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Interaktív lekérdezési fürt méretezési útmutatója az Azure HDInsight
 
@@ -155,7 +152,7 @@ A D14 v2 esetében ajánlott ezt az értéket **2048 MB**-ra beállítani.
 
 Javasoljuk, hogy a számítási feladatokhoz megfelelő értéket állítsa be úgy, hogy ez az érték túl alacsony legyen, nem használhatja az autoconvert funkciót. Ha túl magasra állítja a beállítást, a GC-szüneteltetést eredményezhet, ami hátrányosan befolyásolhatja a lekérdezési teljesítményt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Átjáróval kapcsolatos irányelvek](gateway-best-practices.md)
 * [Magabiztosabbá válni Apache TEZ Memory tuning – lépésről lépésre](https://community.cloudera.com/t5/Community-Articles/Demystify-Apache-Tez-Memory-Tuning-Step-by-Step/ta-p/245279)

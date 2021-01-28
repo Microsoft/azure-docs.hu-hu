@@ -1,18 +1,15 @@
 ---
 title: HDInsight 4,0 – Áttekintés – Azure
 description: A HDInsight 3.6 és a HDInsight 4.0 funkcióinak, korlátainak és frissítési ajánlásainak összehasonlítása.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 0d732fd484e9ca4788204d726286503296bec8ab
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 694acc0005e90d8299d46528f83ba68ea3fcf1c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822097"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931186"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -105,7 +102,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A Spark SQL Ranger integrációja a sor-és az oszlop biztonsága elavult
 * A Spark 2,4 és a Kafka 2,1 a HDInsight 4,0-ban érhető el, így a Spark 2,3 és a Kafka 1,1 már nem támogatott. Javasoljuk, hogy a Spark 2,4 & Kafka 2,1-es vagy újabb verzióját használja a HDInsight 4,0-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HBase áttelepítési útmutató](./hbase/apache-hbase-migrate-new-version.md)
 * [Struktúra áttelepítési útmutatója](./interactive-query/apache-hive-migrate-workloads.md)

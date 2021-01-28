@@ -1,19 +1,16 @@
 ---
 title: Adatfolyam-méretezés az Azure HDInsight
 description: Skálázható Apache-fürtökkel rendelkező adatfolyamok használata az Azure HDInsight-ben.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b2dfe9da55548f2648f847a9d7c2cb3478e6bad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022717"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931712"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
@@ -61,7 +58,7 @@ A Apache Spark három fő paramétert használ a környezet konfigurálásához 
 
 Ez a három paraméter a fürt szintjén konfigurálható a fürtön futó összes alkalmazás esetében, és az egyes alkalmazásokhoz is megadható. További információ: Apache Spark- [fürtök erőforrásainak kezelése](spark/apache-spark-resource-manager.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Apache Storm topológia létrehozása és figyelése az Azure HDInsight](storm/apache-storm-quickstart.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](storm/apache-storm-example-topology.md)

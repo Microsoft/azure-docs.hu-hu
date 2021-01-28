@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561307"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932542"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Folyamatos integráció és folyamatos kézbesítési munkafolyamatok LUIS DevOps
 
@@ -41,7 +41,7 @@ Az alábbi eszközöket használhatja a LUIS-alapú automatizálási munkafolyam
 
 * A [bot Framework Tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) a Luis-alkalmazásokkal és-verziókkal,-kiképzéssel, teszteléssel és a Luis szolgáltatáson belüli közzétételével használható.
 
-* Azure [CLI](/cli/azure/?view=azure-cli-latest) az Azure-előfizetések lekérdezéséhez, a Luis Authoring and előrejelzési kulcsok beolvasásához, valamint az Automation-hitelesítéshez használt Azure- [szolgáltatás](/cli/azure/ad/sp?view=azure-cli-latest) létrehozásához.
+* Azure [CLI](/cli/azure/) az Azure-előfizetések lekérdezéséhez, a Luis Authoring and előrejelzési kulcsok beolvasásához, valamint az Automation-hitelesítéshez használt Azure- [szolgáltatás](/cli/azure/ad/sp) létrehozásához.
 
 * [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) eszköz a [Luis-alkalmazások teszteléséhez](luis-concept-devops-testing.md) és a tesztek eredményeinek elemzéséhez.
 
@@ -96,7 +96,7 @@ Az alkalmazások verziójának központi telepítésének egyéb lehetőségei a
 
 Általában azt javasoljuk, hogy csak a nem éles környezetekhez, például a fejlesztéshez és az előkészítéshez végezzen folyamatos teljesítést. A legtöbb csapatnak manuális felülvizsgálati és jóváhagyási folyamatra van szüksége az éles környezetbe történő üzembe helyezéshez. Éles környezetben érdemes lehet meggyőződni arról, hogy a fejlesztői csapat kulcsfontosságú tagjai támogatásra vagy alacsony forgalmú időszakokra vonatkozóan állnak rendelkezésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával
 * Megtudhatja, hogyan írhat egy [GitHub-műveletek munkafolyamatot a NLU. DevOps](https://github.com/Azure-Samples/LUIS-DevOps-Template/blob/master/docs/4-pipeline.md)

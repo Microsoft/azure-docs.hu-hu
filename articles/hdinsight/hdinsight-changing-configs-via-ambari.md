@@ -1,19 +1,16 @@
 ---
 title: Fürtök optimalizálása Apache Ambari az Azure HDInsight
 description: Az Apache Ambari webes FELÜLETének használatával konfigurálhatja és optimalizálhatja az Azure HDInsight-fürtöket.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: 52eb1b6c89ff02cb44fe731c2463ab02c284f26c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14268e58296554cedc9488e48b41719421797a57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086449"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933286"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>Fürtök optimalizálása Apache Ambari az Azure HDInsight
 
@@ -43,7 +40,7 @@ Az NameNode Java-halom méretének módosítása:
 
     ![Apache Ambari HDFS-konfiguráció](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
-1. A Java- **NameNode**beállításának megkeresése. A **szűrő** szövegmezővel egy adott beállítást is beírhat, és megkeresheti azt. Válassza a **toll** ikont a beállítás neve mellett.
+1. A Java- **NameNode** beállításának megkeresése. A **szűrő** szövegmezővel egy adott beállítást is beírhat, és megkeresheti azt. Válassza a **toll** ikont a beállítás neve mellett.
 
     ![Apache Ambari NameNode Java halom mérete](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
@@ -59,7 +56,7 @@ Az NameNode Java-halom méretének módosítása:
 
     !["Apache Ambari-mentési konfigurációk"](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes FELÜLETtel](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

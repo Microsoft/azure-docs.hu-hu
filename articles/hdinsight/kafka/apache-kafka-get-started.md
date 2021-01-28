@@ -1,19 +1,16 @@
 ---
 title: 'Gyors útmutató: Apache Kafka beállítása a HDInsight Azure Portal használatával'
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure Portal használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534600"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932901"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -29,7 +26,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
@@ -53,8 +50,8 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
     |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
     |Fürt típusa| A lista megnyitásához válassza a **fürt típusának kiválasztása** lehetőséget. A listából válassza a **Kafka** lehetőséget a fürt típusaként.|
     |Verzió|A fürt típusának alapértelmezett verziója lesz megadva. Ha más verziót szeretne megadni, válasszon a legördülő listából.|
-    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda** . A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
-    |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser** .  SSH-felhasználónévként más nevet is megadhat. |
+    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
+    |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót szeretné használni az SSH-felhasználó számára, mint a fürt bejelentkezési felhasználójának.|
 
    ![A fürt alapalapjainak Azure Portal létrehozása](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
@@ -69,8 +66,8 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
     |Tulajdonság  |Leírás  |
     |---------|---------|
-    |Elsődleges tároló típusa|Használja az alapértelmezett értéket az **Azure Storage** -ban.|
-    |Kiválasztási módszer|Használja az alapértelmezett értéket a **listából** .|
+    |Elsődleges tároló típusa|Használja az alapértelmezett értéket az **Azure Storage**-ban.|
+    |Kiválasztási módszer|Használja az alapértelmezett értéket a **listából**.|
     |Az elsődleges tárfiók|A legördülő listából válasszon ki egy meglévő Storage-fiókot, vagy válassza az **új létrehozása** lehetőséget. Új fiók létrehozásakor a névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.|
     |Tároló|Használja az automatikusan feltöltött értéket.|
 
@@ -285,7 +282,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára példaként tekintse meg a [Apache Kafka producer és fogyasztói API HDInsight-](apache-kafka-producer-consumer-api.md) dokumentummal című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A jelen rövid útmutató által létrehozott erőforrások törléséhez törölheti az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 

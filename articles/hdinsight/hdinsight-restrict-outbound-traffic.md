@@ -1,19 +1,16 @@
 ---
 title: Kimenő hálózati forgalom korlátozásának konfigurálása – Azure HDInsight
 description: Ismerje meg, hogyan konfigurálhatja az Azure HDInsight-fürtök kimenő hálózati forgalmának korlátozását.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048674"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932133"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -69,13 +66,13 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     **FQDN-címkék szakasz**
 
-    | Név | Forrás címe | FQDN címke | Megjegyzések |
+    | Name | Forrás címe | FQDN címke | Jegyzetek |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | A HDI-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynevek szakasz**
 
-    | Név | Forrásoldali címek | Protokoll:Port | Cél teljes tartománynevek | Megjegyzések |
+    | Name | Forrásoldali címek | Protokoll:Port | Cél teljes tartománynevek | Jegyzetek |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
@@ -103,7 +100,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **A szolgáltatás címkéi szakasza**
 
-    | Név | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Megjegyzések |
+    | Name | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Jegyzetek |
     | --- | --- | --- | --- | --- | --- |
     | Rule_5 | TCP | * | SQL | 1433 | Ha a HDInsight által biztosított alapértelmezett SQL Server-kiszolgálókat használja, állítson be egy hálózati szabályt az SQL-hez tartozó szolgáltatás címkék szakaszában, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. Ha egyéni SQL Servert használ a Ambari, a Oozie, a Ranger és a kaptár metaadattárak, akkor csak a saját egyéni SQL-kiszolgálóira kell engedélyeznie a forgalmat.|
     | Rule_6 | TCP | * | Azure Monitor | * | választható Azok az ügyfelek, akik automatikus méretezési funkciót terveznek, hozzá kell adni ezt a szabályt. |
@@ -178,7 +175,7 @@ A tűzfal sikeres beállítása után a belső végpont ( `https://CLUSTERNAME-i
 
 A nyilvános végpont ( `https://CLUSTERNAME.azurehdinsight.net` ) vagy SSH-végpont () használatához győződjön `CLUSTERNAME-ssh.azurehdinsight.net` meg arról, hogy a megfelelő útvonalak vannak az útválasztási táblázatban és a NSG-szabályokban, hogy elkerülje az [](../firewall/integrate-lb.md)aszimmetrikus útválasztási probléma magyarázatát. Ebben az esetben engedélyeznie kell az ügyfél IP-címét a bejövő NSG-szabályokban, és hozzá kell adnia azt a felhasználó által megadott útválasztási táblázathoz a következő ugrási beállítással `internet` . Ha az Útválasztás helytelenül van beállítva, időtúllépési hiba jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)
 * [Hálózati virtuális berendezés konfigurálása](./network-virtual-appliance.md)

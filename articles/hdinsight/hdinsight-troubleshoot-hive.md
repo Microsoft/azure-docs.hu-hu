@@ -3,17 +3,14 @@ title: A kaptár hibáinak megoldása az Azure HDInsight
 description: Választ kaphat a Apache Hive és az Azure HDInsight való használattal kapcsolatos gyakori kérdésekre.
 keywords: Azure HDInsight, struktúra, GYIK, hibaelhárítási útmutató, gyakori kérdések
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288958"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931451"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Az Apache Hive hibaelhárítása az Azure HDInsighttal
 
@@ -120,17 +117,17 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
    Meg kell adnia egy példaként szolgáló programot az első argumentumként.
 
    A program érvényes nevei a következők:
-    - **ContainerReuseAnalyzer** : tárolók ismételt újrafelhasználásának részletei egy Dag-ben
-    - **CriticalPath** : a Dag kritikus elérési útját keresi
-    - **LocalityAnalyzer** : a területi adatok kinyomtatása egy Dag-ben
-    - **ShuffleTimeAnalyzer** : a megcsoszogott idő részleteinek elemzése egy Dag-ben
-    - **SkewAnalyzer** : az elferdítés részleteinek elemzése egy Dag-ben
-    - **SlowNodeAnalyzer** : csomópont adatainak nyomtatása Dag-ben
-    - **SlowTaskIdentifier** : lassú feladat adatainak nyomtatása egy Dag-ben
-    - **SlowestVertexAnalyzer** : a leglassabb csúcspont-Részletek nyomtatása egy Dag-ben
-    - **SpillAnalyzer** : a nyomtatási kiömlés részletei egy Dag-ben
-    - **TaskConcurrencyAnalyzer** : a feladat egyidejűségi adatainak nyomtatása egy Dag-ben
-    - **VertexLevelCriticalPathAnalyzer** : megkeresi a kritikus elérési utat a vertex szinten egy Dag-ben
+    - **ContainerReuseAnalyzer**: tárolók ismételt újrafelhasználásának részletei egy Dag-ben
+    - **CriticalPath**: a Dag kritikus elérési útját keresi
+    - **LocalityAnalyzer**: a területi adatok kinyomtatása egy Dag-ben
+    - **ShuffleTimeAnalyzer**: a megcsoszogott idő részleteinek elemzése egy Dag-ben
+    - **SkewAnalyzer**: az elferdítés részleteinek elemzése egy Dag-ben
+    - **SlowNodeAnalyzer**: csomópont adatainak nyomtatása Dag-ben
+    - **SlowTaskIdentifier**: lassú feladat adatainak nyomtatása egy Dag-ben
+    - **SlowestVertexAnalyzer**: a leglassabb csúcspont-Részletek nyomtatása egy Dag-ben
+    - **SpillAnalyzer**: a nyomtatási kiömlés részletei egy Dag-ben
+    - **TaskConcurrencyAnalyzer**: a feladat egyidejűségi adatainak nyomtatása egy Dag-ben
+    - **VertexLevelCriticalPathAnalyzer**: megkeresi a kritikus elérési utat a vertex szinten egy Dag-ben
 
 ### <a name="additional-reading"></a>További információ
 

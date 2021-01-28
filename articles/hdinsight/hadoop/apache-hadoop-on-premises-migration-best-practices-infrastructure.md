@@ -1,19 +1,16 @@
 ---
 title: 'Infrastruktúra: helyszíni Apache Hadoop az Azure HDInsight'
 description: Ismerje meg a helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárásokat.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542301"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932152"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -101,7 +98,7 @@ A HDInsight előre megírt parancsfájlokat biztosít a következő összetevők
 
 A parancsfájlok műveletei az Azure Marketplace-en is HDInsight-alkalmazásként közzétehetők.
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - [Külső gyártótól származó Apache Hadoop alkalmazások telepítése a HDInsight-on](../hdinsight-apps-install-applications.md)
 - [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](../hdinsight-hadoop-customize-cluster-linux.md)
@@ -172,7 +169,7 @@ A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a 
 > [!Note]  
 > A HDInsight jelenleg nem támogatja a kényszerített bújtatást. A kényszerített bújtatás egy olyan alhálózat-beállítás, amely az eszközre irányuló kimenő internetes forgalmat ellenőrzés és naplózás céljából kényszeríti. Távolítsa el a kényszerített bújtatást, mielőtt telepítené a HDInsight egy alhálózatba, vagy hozzon létre egy új alhálózatot a HDInsight. A HDInsight emellett nem támogatja a kimenő hálózati kapcsolatok korlátozását.
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - [Azure Virtual-Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
@@ -181,7 +178,7 @@ További információkat az következő cikkekben talál:
 
 A HDInsight támogatja a [virtuális hálózati szolgáltatás-végpontokat](../../virtual-network/virtual-network-service-endpoints-overview.md), amelyek lehetővé teszik az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos db és SQL-adatbázisokhoz való biztonságos kapcsolódást. A szolgáltatás-végpont Azure HDInsight való engedélyezésével a forgalom a biztonságos útvonalon halad át az Azure-adatközponton belül. Ezzel a fokozott biztonsággal a hálózati rétegben zárolhatja big data Storage-fiókjait a megadott virtuális hálózatokra (virtuális hálózatok), és továbbra is zökkenőmentesen használhatja a HDInsight-fürtöket az adateléréshez és a feldolgozáshoz.
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - [Virtuális hálózati szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [A HDInsight biztonság növelése a szolgáltatási végpontokkal](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)

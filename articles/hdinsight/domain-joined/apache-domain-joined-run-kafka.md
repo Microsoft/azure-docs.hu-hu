@@ -1,24 +1,21 @@
 ---
 title: Oktatóanyag – Apache Kafka & Enterprise Security – Azure HDInsight
 description: Oktatóanyag – megtudhatja, hogyan konfigurálhatja a Kafka Apache Ranger-szabályzatait az Azure HDInsight Enterprise Security Package használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010129"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933689"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
 Ismerje meg, hogyan konfigurálhatja az Apache Ranger-házirendeket Enterprise Security Package (ESP) Apache Kafka-fürtökhöz. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales` és `marketingspend` témakörökhöz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tartományi felhasználók létrehozása
@@ -144,7 +141,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
    > [!NOTE]  
    > Ebben az oktatóanyagban használja az Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem a Producer-Consumer projekt alatt, amely nem tartományhoz csatlakoztatott forgatókönyvek esetén).
 
-4. **sales_user1** `salesevents` A következő parancs végrehajtásával ellenőrizze, hogy a sales_user1 tud-e előállítani a témakörbe:
+4.  `salesevents` A következő parancs végrehajtásával ellenőrizze, hogy a sales_user1 tud-e előállítani a témakörbe:
 
    ```bash
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
@@ -227,7 +224,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-f�
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem Producer-Consumer a tartományhoz csatlakoztatott forgatókönyvek esetében).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ügyfél által felügyelt kulcson alapuló lemeztitkosítás](../disk-encryption.md)

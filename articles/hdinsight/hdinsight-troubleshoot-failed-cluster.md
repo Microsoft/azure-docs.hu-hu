@@ -1,19 +1,16 @@
 ---
 title: Lassú vagy sikertelen feladat hibáinak megoldása az Azure HDInsight-fürtön
 description: Lassú vagy sikertelen feladat diagnosztizálása és megoldása egy Azure HDInsight-fürtön.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de5fa6c881f808bcd580f6fae3329d579573d876
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022700"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931535"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy HDInsight-fürt lassú vagy meghibásodott feladatának hibaelhárítása
 
@@ -259,7 +256,7 @@ A fürtlemez forrásának diagnosztizálásához indítson el egy új fürtöt u
 5. Folytassa, amíg az összes lépés hiba nélkül fut.
 6. Ha befejezte a tesztelési fürt hibakeresését, törölje azt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes felületével](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight-naplók elemzése](./hdinsight-troubleshoot-guide.md)

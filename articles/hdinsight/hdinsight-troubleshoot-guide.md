@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight – hibaelhárítási útmutatók
 description: Az Azure HDInsight hibáinak megoldása. A részletes dokumentációból megtudhatja, hogyan használhatja a HDInsight-t a Apache Hive, a Apache Spark, az Apache-fonal, az Apache HBase, a HDFS és a Apache Storm gyakori problémáinak megoldásához.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 828dc99c6eb01d7cdbfdbdc9eec8a96eeef52d88
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 901ed34e6b4498f2a50a6dfaf389e60b97dedc0d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821621"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931475"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Az Azure HDInsight hibáinak megoldása
 
@@ -34,6 +31,6 @@ ms.locfileid: "97821621"
 | Hibák | - [Webhcaten-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [OutofMemory-hiba elhárításának Apache Hive beállításai](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Eszközök | - [Apache Hive lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ eszköz](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Eclipse eszköz](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode eszköz](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio-eszköz](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -1,19 +1,16 @@
 ---
 title: MapReduce-feladatok elküldése a HDInsight .NET SDK-val – Azure
 description: Ismerje meg, hogyan küldhet MapReduce-feladatokat az Azure HDInsight Apache Hadoop a HDInsight .NET SDK használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489540"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932187"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce feladatok futtatása HDInsight .NET SDK segítségével
 
@@ -36,7 +33,7 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, amelyek megkönnyítik
 
 1. Indítsa el a Visual studiót, és hozzon létre egy C# konzolos alkalmazást.
 
-1. Lépjen az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolra** , és írja be a következő parancsot:
+1. Lépjen az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolra** , és írja be a következő parancsot:
 
     ```   
     Install-Package Microsoft.Azure.Management.HDInsight.Job

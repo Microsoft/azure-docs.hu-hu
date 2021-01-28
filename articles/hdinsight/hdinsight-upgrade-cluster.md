@@ -2,19 +2,17 @@
 title: Fürt átmigrálása újabb verzióra
 titleSuffix: Azure HDInsight
 description: Útmutató az Azure HDInsight-fürt újabb verzióra való átváltásához.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04da5d668515fe96d50d4e6a7d0f5ff1c4c48c27
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085888"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931384"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt migrálása egy újabb verzióra
 
@@ -53,7 +51,7 @@ A következő dokumentumok útmutatást nyújtanak bizonyos számítási feladat
 
 Az adatbázis biztonsági mentésével és visszaállításával kapcsolatos további információkért lásd: [adatbázis helyreállítása Azure SQL Databaseban automatikus adatbázis-biztonsági mentések használatával](../azure-sql/database/recovery-using-backups.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan hozhat létre Linux-alapú HDInsight-fürtöket](hdinsight-hadoop-provision-linux-clusters.md)
 * [Csatlakozás a HDInsighthoz SSH-val](hdinsight-hadoop-linux-use-ssh-unix.md)

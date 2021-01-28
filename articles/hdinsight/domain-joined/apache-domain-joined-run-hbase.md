@@ -2,23 +2,20 @@
 title: Apache HBase & Enterprise Security Package – Azure HDInsight
 description: Oktatóanyag – megtudhatja, hogyan konfigurálhatja az Apache Ranger-szabályzatokat az Azure HDInsight-ben való HBase az Enterprise Security Package használatával.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993635"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933727"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
 Ismerje meg, hogyan konfigurálhatja az Apache Ranger-házirendeket Enterprise Security Package (ESP) Apache HBase-fürtökhöz. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-szabályzatot hoz létre, hogy korlátozza a hozzáférést egy HBase-táblában lévő különböző oszlopokhoz.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tartományi felhasználók létrehozása
@@ -241,7 +238,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-f�
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Apache HBase első lépései](../hbase/apache-hbase-tutorial-get-started-linux.md)

@@ -1,18 +1,16 @@
 ---
 title: Hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight
 description: A HDInsight szolgáltatás-címkék használatával engedélyezheti a fürtre irányuló bejövő forgalmat az állapot-és felügyeleti szolgáltatások csomópontjairól anélkül, hogy IP-címeket kellene hozzáadnia a NSG.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022751"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931770"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Az Azure HDInsight NSG szolgáltatásának címkéi
 
@@ -123,7 +121,7 @@ Ha például a fürt a régióban lett létrehozva `East US 2` , akkor a követk
 
 A *németországi Közép* -és *Kelet-Németország* régiójában lévő fürtökön két szolgáltatási címkét kell engedélyezni: `HDInsight.GermanyCentral` és `HDInsight.GermanyNortheast` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati biztonsági csoportok: szolgáltatás címkéi](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)

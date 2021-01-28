@@ -1,19 +1,17 @@
 ---
 title: Fürtök méretének méretezése – Azure HDInsight
 description: Apache Hadoop-fürt rugalmas méretezése az Azure HDInsight-beli munkaterhelésnek megfelelően
-author: hrasheed-msft
 ms.author: ashish
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022768"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932057"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -268,7 +266,7 @@ A skálázási művelet elvégzése után néhány percen belül automatikusan k
     balancer
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight-fürtök automatikus skálázása](hdinsight-autoscale-clusters.md)
 

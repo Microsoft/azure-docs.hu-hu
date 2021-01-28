@@ -1,19 +1,16 @@
 ---
 title: 'Azure Toolkit for IntelliJ: Spark-alkalmazás – HDInsight'
 description: A Azure Toolkit for IntelliJ használatával a Scala-ben írt Spark-alkalmazásokat fejlesztheti, és beküldheti azokat egy HDInsight Spark-fürtbe.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: b70de1915e6c068bd658dff60776085075412789
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0b2c2a91ba9d029bcf24b0980d0a2339194e6d8a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024010"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931037"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Apache Spark alkalmazások létrehozása a HDInsight-fürthöz Azure Toolkit for IntelliJ használatával
 
@@ -47,7 +44,7 @@ A Scala beépülő modul telepítésének lépései:
 
 1. Nyissa meg az IntelliJ IDEA-t.
 
-2. Az üdvözlőképernyőn kattintson a plugins **konfigurálása** elemre  >  **Plugins** a **plugins** ablak megnyitásához.
+2. Az üdvözlőképernyőn kattintson a plugins **konfigurálása** elemre  >   a **plugins** ablak megnyitásához.
 
     ![IntelliJ IDEA – a Scala beépülő modul engedélyezése](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
@@ -84,7 +81,7 @@ A Scala beépülő modul telepítésének lépései:
 
     ![Az Apache Spark SDK kiválasztása](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
-7. Válassza a **Befejezés** lehetőséget.  A projekt elérhetővé válása néhány percet igénybe vehet.
+7. Válassza a **Befejezés** gombot.  A projekt elérhetővé válása néhány percet igénybe vehet.
 
 8. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez hajtsa végre a következő lépéseket:
 
@@ -478,7 +475,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 ![Azure Portal törli a HDInsight-fürtöt](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a Azure Toolkit for IntelliJ beépülő modult a [Scala](https://www.scala-lang.org/)-ban írt Apache Spark-alkalmazások fejlesztéséhez. Ezután Beküldte őket egy HDInsight Spark-fürtbe közvetlenül a IntelliJ integrált fejlesztői környezetből (IDE). A következő cikkből megtudhatja, hogy a Apache Sparkban regisztrált információk Hogyan tölthetők be egy BI Analytics-eszközbe, például Power BIba.
 

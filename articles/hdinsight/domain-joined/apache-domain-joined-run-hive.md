@@ -3,17 +3,16 @@ title: Az Apache Ranger Apache Hive házirendjei – Azure HDInsight
 description: Ismerje meg, hogyan konfigurálhatja az Apache Ranger-szabályzatokat a Kaptárhoz egy Azure HDInsight-szolgáltatásban Enterprise Security Package használatával.
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8ebc03d0847414730c51b899be4cf6586d064696
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544936"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932240"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 
@@ -56,7 +55,7 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |---|---|
     |Házirend neve|Read-hivesampletable-all|
     |Struktúra-adatbázis|alapértelmezett|
-    |table|hivesampletable|
+    |tábla|hivesampletable|
     |Struktúra oszlop|*|
     |Felhasználó kiválasztása|hiveuser1|
     |Engedélyek|Válassza|
@@ -74,7 +73,7 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |---|---|
     |Házirend neve|Read-hivesampletable-devicemake|
     |Struktúra-adatbázis|alapértelmezett|
-    |table|hivesampletable|
+    |tábla|hivesampletable|
     |Struktúra oszlop|ClientID, devicemake|
     |Felhasználó kiválasztása|hiveuser2|
     |Engedélyek|Válassza|
@@ -88,7 +87,7 @@ Az utasítások a [Hive ODBC-adatforrás létrehozása](../hadoop/apache-hadoop-
  | Adatforrás neve | Adjon nevet az adatforrásának |
  | Gazdagép | Adja meg a CLUSTERNAME.azurehdinsight.net. Például: sajatHDICluster.azurehdinsight.net |
  | Port | Használja a **443** számú portot. (Ez a port megváltozott a 563-ról 443-ra.) |
- | Adatbázis | Használja az **alapértelmezett értéket** . |
+ | Adatbázis | Használja az **alapértelmezett értéket**. |
  | Hive Server típusa | Válassza ki a **Hive Server 2** típust |
  | Mechanizmus | Válassza ki az **Azure HDInsight szolgáltatást** |
  | HTTP elérési útja | Hagyja üresen. |
@@ -103,11 +102,11 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
 1. Nyisson meg egy új vagy egy meglévő munkafüzetet Excelben.
 
-1. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból** az ODBC-ből,  >  **From ODBC** hogy elindítsa a **from ODBC** ablakot.
+1. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból** az ODBC-ből,  >   hogy elindítsa a **from ODBC** ablakot.
 
     ![Az adatkapcsolatok varázsló megnyitása](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra** .
+1. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra**.
 
 1. Az első használathoz egy **ODBC-illesztőprogram** párbeszédablak nyílik meg. A bal oldali menüben válassza a **Windows** lehetőséget. Ezután válassza a **Kapcsolódás** lehetőséget a **navigátor** ablak megnyitásához.
 
@@ -115,7 +114,7 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
 1. Válassza a **hivesampletable** lehetőséget, majd kattintson a **tovább** gombra.
 
-1. Válassza a **Befejezés** lehetőséget.
+1. Válassza a **Befejezés** gombot.
 
 1. Az **Adatok importálása** párbeszédpanelen módosíthatja vagy megadhatja a lekérdezést. Ehhez válassza a **Tulajdonságok** lehetőséget. Ez eltarthat néhány másodpercig.
 

@@ -1,19 +1,16 @@
 ---
 title: Fürt kapacitásának megtervezése az Azure HDInsight
 description: Azonosíthatja az Azure HDInsight-fürtök kapacitásának és teljesítményének tervezésével kapcsolatos legfontosabb kérdéseket.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45cfa90f2156dba87cbec2b6313bc24e5d030572
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83714746"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933235"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -66,7 +63,7 @@ A fürt típusa határozza meg a HDInsight-fürt futtatására beállított munk
 
 Minden egyes fürt típusa csomópont típusú, és mindegyik csomópont típusa speciális beállításokkal rendelkezik a virtuálisgép-mérethez és-típushoz.
 
-Az alkalmazás optimális méretének meghatározásához a fürt kapacitásának teljesítménytesztét és a jelzett méret növelését is megnövelheti. Használhat például egy szimulált munkaterhelést vagy egy *Kanári-lekérdezést*is. Futtassa a szimulált számítási feladatokat különböző méretű fürtökön. A kívánt teljesítmény eléréséig fokozatosan növelje a méretet. Egy Kanári-lekérdezést időnként beillesztheti a többi éles lekérdezésbe, hogy megjelenjen-e elegendő erőforrás a fürtben.
+Az alkalmazás optimális méretének meghatározásához a fürt kapacitásának teljesítménytesztét és a jelzett méret növelését is megnövelheti. Használhat például egy szimulált munkaterhelést vagy egy *Kanári-lekérdezést* is. Futtassa a szimulált számítási feladatokat különböző méretű fürtökön. A kívánt teljesítmény eléréséig fokozatosan növelje a méretet. Egy Kanári-lekérdezést időnként beillesztheti a többi éles lekérdezésbe, hogy megjelenjen-e elegendő erőforrás a fürtben.
 
 A számítási feladatok megfelelő virtuálisgép-családjának kiválasztásával kapcsolatos további információkért lásd: [a fürt megfelelő virtuálisgép-méretének kiválasztása](hdinsight-selecting-vm-size.md).
 
@@ -93,7 +90,7 @@ Időnként hibák merülhetnek fel több Térkép párhuzamos végrehajtása, va
 
 Az előfizetési kvóták kezelésével kapcsolatos további információkért lásd: [kvóta növelésének kérése](quota-increase-request.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HDInsight-fürtök beállítása a Apache Hadoop-, Spark-, Kafka-és egyéb szolgáltatásokkal](hdinsight-hadoop-provision-linux-clusters.md): megtudhatja, hogyan állíthatja be és konfigurálhatja a fürtöket a HDInsight-ben.
 * A [fürt teljesítményének figyelése](hdinsight-key-scenarios-to-monitor.md): megismerheti a HDInsight-fürt azon főbb forgatókönyveit, amelyek hatással lehetnek a fürt kapacitására.

@@ -1,19 +1,16 @@
 ---
 title: Az Azure HDInsight üzletmenet-folytonossági architektúrái
 description: Ez a cikk a HDInsight különböző lehetséges üzleti folytonossági architektúráit ismerteti
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f74309370f1489714013344116e7feb9551fbfd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344113"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933453"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Az Azure HDInsight üzletmenet-folytonossági architektúrái
 
@@ -204,7 +201,7 @@ Az elsődleges és a másodlagos Ranger-házirendek replikálásával a másodla
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="HDInsight Enterprise Security Package architektúra":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

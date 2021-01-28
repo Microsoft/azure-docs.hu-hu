@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek teljesítményének figyelése – Azure App
 description: Alkalmazások teljesítményének figyelése Azure-beli virtuális gépekhez és Azure-beli virtuálisgép-méretezési csoportokhoz. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677943"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933914"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban
 
@@ -49,7 +49,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure Virtual 
 > A Application Insights-ügynök telepítése előtt szüksége lesz egy kapcsolódó karakterláncra. [Hozzon létre egy új Application Insights-erőforrást](./create-new-resource.md) , vagy másolja a kapcsolatok karakterláncát egy meglévő Application ininsight-erőforrásból.
 
 > [!NOTE]
-> Újdonság a PowerShellben? Tekintse meg az [első lépéseket ismertető útmutatót](/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Újdonság a PowerShellben? Tekintse meg az [első lépéseket ismertető útmutatót](/powershell/azure/get-started-azureps).
 
 A Application Insights-ügynök telepítése vagy frissítése Azure-beli virtuális gépekhez bővítményként
 ```powershell

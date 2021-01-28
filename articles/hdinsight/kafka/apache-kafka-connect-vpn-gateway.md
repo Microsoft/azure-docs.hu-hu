@@ -1,19 +1,16 @@
 ---
 title: Kapcsolódás a Kafka-hoz Virtual Networks használatával – Azure HDInsight
 description: Ismerje meg, hogyan kapcsolódhat közvetlenül a Kafka on HDInsight egy Azure-Virtual Networkon keresztül. Ismerje meg, hogyan csatlakozhat a Kafka-hez a fejlesztői ügyfelektől egy VPN-átjáróval vagy a helyszíni hálózatban lévő ügyfelekkel a VPN Gateway eszköz használatával.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873466"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933037"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafkához HDInsight-on egy Azure-beli virtuális hálózaton keresztül
 
@@ -276,15 +273,15 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
     ![Apache Ambari-mentési konfiguráció](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
+9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__ lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
 
     ![Szolgáltatási műveletek, a karbantartás bekapcsolásával](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
+10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__ lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
 
     ![Újraindítás gomb az összes érintett Kiemelt újraindítással](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
+11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__ lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
 
 ### <a name="connect-to-the-vpn-gateway"></a>Csatlakozás a VPN-átjáróhoz
 
@@ -339,7 +336,7 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
 
     Cserélje le a `'kafka_broker'` bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
 
-   * Ha __szoftveres VPN-ügyfelet__használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
+   * Ha __szoftveres VPN-ügyfelet__ használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
 
    * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 
@@ -362,7 +359,7 @@ A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-g
 
     Cserélje le a `'kafka_broker'` bejegyzéseket a szakasz 1. lépésében visszaadott címekre:
 
-    * Ha __szoftveres VPN-ügyfelet__használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
+    * Ha __szoftveres VPN-ügyfelet__ használ, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok IP-címére.
 
     * Ha engedélyezte a névfeloldást __egy egyéni DNS-kiszolgálón__, cserélje le a `kafka_broker` bejegyzéseket a munkavégző csomópontok teljes tartománynevére.
 

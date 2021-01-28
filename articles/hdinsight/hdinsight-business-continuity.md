@@ -1,23 +1,20 @@
 ---
 title: Az Azure HDInsight üzletmenet folytonossága
 description: Ez a cikk áttekintést nyújt az ajánlott eljárásokról, az egyrégiós elérhetőségről és az Azure HDInsight üzletmenet-folytonossági tervezésének optimalizálási lehetőségeiről.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546942"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933307"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Az Azure HDInsight üzletmenet folytonossága
 
-Az Azure HDInsight-fürtök számos olyan Azure-szolgáltatástól függenek, mint a Storage, az adatbázisok, a Active Directory, a Active Directory tartományi szolgáltatások, a Hálózatkezelés és a Key Vault. Egy jól megtervezett, nagy rendelkezésre állású és hibatűrő elemzési alkalmazást úgy kell kialakítani, hogy az adott szolgáltatások közül egy vagy több esetében is ellenálljanak a regionális vagy helyi fennakadásoknak. Ez a cikk áttekintést nyújt az ajánlott eljárásokról, az egyrégiós rendelkezésre állásról, valamint az üzletmenet folytonosságának megtervezéséhez szükséges optimalizálási lehetőségekről.
+Az Azure HDInsight-fürtök számos olyan Azure-szolgáltatástól függenek, mint a Storage, az adatbázisok, a Active Directory, a Active Directory Domain Services, a Hálózatkezelés és a Key Vault. Egy jól megtervezett, nagy rendelkezésre állású és hibatűrő elemzési alkalmazást úgy kell kialakítani, hogy az adott szolgáltatások közül egy vagy több esetében is ellenálljanak a regionális vagy helyi fennakadásoknak. Ez a cikk áttekintést nyújt az ajánlott eljárásokról, az egyrégiós rendelkezésre állásról, valamint az üzletmenet folytonosságának megtervezéséhez szükséges optimalizálási lehetőségekről.
 
 ## <a name="general-best-practices"></a>Általános ajánlott eljárások
 
@@ -53,7 +50,7 @@ Az alapszintű HDInsight rendszer a következő összetevőket tartalmaz. Minden
 
 Más opcionális szolgáltatások is használhatók, például Azure Key Vault és Azure Data Factory.
 
-:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="Adatátalakítási és-adatkezelési rétegek":::
+:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="HDInsight-összetevők":::
 
 ### <a name="azure-hdinsight-cluster-compute"></a>Azure HDInsight-fürt (számítás)
 
@@ -124,7 +121,7 @@ Az üzletmenet folytonosságának javítása a régiók közötti magas rendelke
 |Üzleti funkciók |Az elsődleges másodlagos üzleti funkciók teljes körű működésének megkövetelése |Értékelje ki, hogy futtatható-e a másodlagos üzleti funkciók minimális kritikus részhalmazával.|
 |Kapcsolatok |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 

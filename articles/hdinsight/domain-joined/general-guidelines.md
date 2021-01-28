@@ -1,18 +1,15 @@
 ---
 title: A vállalati biztonsági általános irányelvek az Azure HDInsight
 description: Néhány ajánlott eljárás, amely megkönnyíti a Enterprise Security Package üzembe helyezését és felügyeletét.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530265"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933570"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>A vállalati biztonsági általános információk és irányelvek az Azure HDInsight
 
@@ -171,7 +168,7 @@ Leggyakoribb okok:
 
 A HDInsight-Ambari befolyásoló tulajdonságok teljes listáját lásd: [AMBARI LDAP-hitelesítés beállítása](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Konfigurációk Enterprise Security Package Azure Active Directory Domain Services a HDInsight-ben](./apache-domain-joined-configure-using-azure-adds.md)
 

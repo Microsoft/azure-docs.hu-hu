@@ -2,19 +2,16 @@
 title: Az Azure HDInsight-fürt megfelelő virtuálisgép-méretének kiválasztása
 description: Megtudhatja, hogyan választhatja ki a HDInsight-fürthöz megfelelő virtuálisgép-méretet.
 keywords: VM-méretek, szektorcsoport-méretek, fürtkonfiguráció
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535314"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931784"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>A virtuális gép megfelelő méretének kiválasztása az Azure HDInsight-fürthöz
 
@@ -43,7 +40,7 @@ Az Azure-beli virtuálisgép-családok különböző használati esetekre vannak
 | [Belépési szint](../virtual-machines/sizes-general.md)          | A, Av2  | A CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez és a teszteléshez. Ezek gazdaságos, és alacsony díjszabású lehetőséget biztosítanak az Azure megkezdésére. |
 | [Általános célú](../virtual-machines/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
 | [Számításoptimalizált](../virtual-machines/sizes-compute.md)        | F           | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára.        |
-| [Memóriaoptimalizált](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Magas memória-processzor arány. Ideális választás a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
+| [Memóriaoptimalizált](../virtual-machines/sizes-memory.md)         | Esv3, Ev3  | Magas memória-processzor arány. Ideális választások a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
 
 - A HDInsight által támogatott régiókban elérhető virtuálisgép-példányok díjszabásával kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 

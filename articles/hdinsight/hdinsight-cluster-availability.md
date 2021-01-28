@@ -1,19 +1,16 @@
 ---
 title: A fürt rendelkezésre állásának figyelése az Apache Ambari az Azure HDInsight
 description: Ismerje meg, hogyan használható az Apache Ambari a fürt állapotának és rendelkezésre állásának figyelésére.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34f752d4c3d50d5f680e317b2724b1e631537f32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533563"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933189"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>A fürt rendelkezésre állásának figyelése az Apache Ambari az Azure HDInsight
 
@@ -55,7 +52,7 @@ A riasztási definíciók és állapotuk megjelenítéséhez válassza a **riasz
 
 A Ambari számos előre meghatározott riasztást kínál a rendelkezésre állással kapcsolatban, beleértve a következőket:
 
-| Riasztás neve                        | Description (Leírás)   |
+| Riasztás neve                        | Description   |
 |---|---|
 | DataNode állapotának összegzése           | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha nem kifogástalan állapotú Adatcsomópontok van|
 | NameNode magas rendelkezésre állási állapota | Ez a szolgáltatási szintű riasztás akkor aktiválódik, ha az aktív NameNode vagy a készenléti NameNode nem fut.|

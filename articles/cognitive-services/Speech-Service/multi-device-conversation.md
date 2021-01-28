@@ -1,7 +1,7 @@
 ---
 title: Multi-Device beszélgetés (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: ''
+description: A többeszközes beszélgetés révén egyszerűen hozhat létre beszéd-vagy szöveges beszélgetést több ügyfél között, és koordinálhatja a közöttük küldött üzeneteket.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025174"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932427"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Mi a multi-Device beszélgetés (előzetes verzió)?
 
@@ -37,7 +37,7 @@ Míg a [**társalgási átirat**](conversation-transcription.md) egyetlen eszkö
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
 - **Valós idejű átirat** – mindenki megkapja a beszélgetés átiratát, így a szöveg valós időben is követhető, vagy később is elmenthető.
-- **Valós idejű fordítás** – a szöveges fordításhoz több mint 60 [támogatott nyelv](language-support.md#text-languages) használható, a felhasználók lefordítják a beszélgetést az előnyben részesített nyelv (ek) re.
+- **Valós idejű fordítás** – a szöveges fordításhoz több mint 70 [támogatott nyelv](language-support.md#text-languages) használható, a felhasználók lefordítják a beszélgetést az előnyben részesített nyelv (ek) re.
 - **Olvasható átiratok** – az átírás és a fordítás könnyen követhető, írásjelekkel és mondatokkal.
 - **Hang-vagy szövegbevitel** – minden felhasználó tud beszélni vagy beírni a saját eszközén, attól függően, hogy milyen nyelvi támogatási lehetőségek vannak engedélyezve a résztvevő által választott nyelven. Kérjük, tekintse meg a [nyelvi támogatást](language-support.md#speech-to-text).
 - **Üzenetküldés** – a többeszközes beszélgetési szolgáltatás az egyik ügyfél által küldött üzeneteket az összes többi felhasználó számára továbbítja, a választott nyelv (ek) szerint.
@@ -58,9 +58,6 @@ A valós idejű átírás és a fordítás segíthet a különböző nyelveket b
 ### <a name="presentations"></a>Bemutatók
 
 Emellett feliratok is megadhatók a bemutatók és előadások számára a képernyőn és a célközönség tagjainak saját eszközein is. Miután a célközönség csatlakozott a beszélgetési kódhoz, a saját eszközén láthatják a átiratot a kívánt nyelven.
-
-> [!NOTE]
-> Ha szeretné megtekinteni egy példát, tekintse meg a [bemutató fordítót](https://www.microsoft.com/translator/apps/presentation-translator/), amely egy PowerPoint-bővítmény, amely a multi-Device beszélgetési szolgáltatást használja. A fájlt [innen](https://download.cnet.com/s/powerpoint-add-in/) töltheti le.
 
 ## <a name="how-it-works"></a>Működés
 

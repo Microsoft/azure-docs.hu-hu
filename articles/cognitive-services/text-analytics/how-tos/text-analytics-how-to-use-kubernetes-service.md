@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017861"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932436"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Text Analytics tároló üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -27,7 +27,7 @@ Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg k
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services).
 * Egy szövegszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
-* Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van.
+* Az [Azure CLI](/cli/azure/install-azure-cli) telepítve van.
 * A [KUBERNETES CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) telepítve van.
 * Egy megfelelő árképzési szintű Azure-erőforrás. Nem minden díjszabási csomag működik ezzel a tárolóval:
     * Az **Azure Text Analytics** erőforrás csak a F0 vagy a standard szintű árképzési szinttel rendelkezik.
@@ -57,7 +57,7 @@ Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg k
 
 **_
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 _ További [Cognitive Services tárolók](../../cognitive-services-container-support.md) használata
 * A [text Analytics csatlakoztatott szolgáltatás](../index.yml) használata

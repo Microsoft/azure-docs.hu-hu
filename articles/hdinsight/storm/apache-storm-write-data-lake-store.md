@@ -2,18 +2,15 @@
 title: 'Oktatóanyag: a HDInsight Apache Storm a Storage-ban – Azure/Data Lake'
 description: Oktatóanyag – Ismerje meg, hogy a Apache Storm használatával hogyan írhat a HDFS-kompatibilis tárolóba az Azure HDInsight.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545446"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932554"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Oktatóanyag: írás Apache Hadoop HDFS az Azure HDInsight Apache Stormból
 
@@ -36,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * A fürtök elsődleges tárolójának [URI-sémája](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Ez az `wasb://` Azure Storage számára lenne `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetén `adl://` . Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` .  Lásd még: [biztonságos átvitel](../../storage/common/storage-require-secure-transfer.md).
 
@@ -160,7 +157,7 @@ További információ a parancsfájlnak a fürthöz való használatáról: [HDI
     hdfs.url: wasbs:///
     ```
 
-    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ , majd az __Y__ billentyűt, és végül __írja be__ a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
+    A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__, majd az __Y__ billentyűt, és végül __írja be__ a következőt:. A fájl értékei a tárolási URL-címet és annak a könyvtárnak a nevét írják be, amelybe az adatok bekerülnek.
 
 1. A topológia elindításához használja a következő parancsot:
 
@@ -199,7 +196,7 @@ A Storm-topológiák Leállításig futnak, vagy a fürt törlődik. A topológi
 storm kill hdfswriter
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
@@ -209,7 +206,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Apache Stormt a Apache Storm által a HDInsight-ben használt HDFS-kompatibilis tárolóba való íráshoz.
 

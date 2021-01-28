@@ -1,19 +1,16 @@
 ---
 title: Az Azure Kubernetes szolgáltatás használata a Kafka on HDInsight
 description: Ismerje meg, hogyan használható a Kafka a HDInsight az Azure Kubernetes szolgáltatásban (ak) üzemeltetett tárolók rendszerképein.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485681"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933028"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Azure Kubernetes szolgáltatás használata a HDInsight-mel való Apache Kafka
 
@@ -58,7 +55,7 @@ Ha még nem rendelkezik AK-fürttel, az alábbi dokumentumok egyikével megtudha
 * [Azure Kubernetes Service (ak) fürt üzembe helyezése – parancssori felület](../../aks/kubernetes-walkthrough.md)
 
 > [!IMPORTANT]  
-> Az AK egy virtuális hálózatot hoz létre a telepítés során egy **további** erőforráscsoporthoz. A további erőforráscsoport a **MC_resourceGroup_AKSclusterName_location**elnevezési konvencióját követi.  
+> Az AK egy virtuális hálózatot hoz létre a telepítés során egy **további** erőforráscsoporthoz. A további erőforráscsoport a **MC_resourceGroup_AKSclusterName_location** elnevezési konvencióját követi.  
 > Ez a hálózat a következő szakaszban a HDInsight számára létrehozotthoz van összefoglalva.
 
 ## <a name="configure-virtual-network-peering"></a>Virtuális hálózati társak konfigurálása
@@ -69,11 +66,11 @@ Ha még nem rendelkezik AK-fürttel, az alábbi dokumentumok egyikével megtudha
 
 2. Az erőforráscsoport területen válassza ki a __virtuális hálózati__ erőforrást. Jegyezze fel a nevet későbbi felhasználásra.
 
-3. A **Beállítások**területen válassza a __címterület__lehetőséget. Jegyezze fel a felsorolt címterület méretét.
+3. A **Beállítások** területen válassza a __Címtartomány__ elemet. Jegyezze fel a felsorolt címterület méretét.
 
 ### <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Virtuális hálózat HDInsight való létrehozásához navigáljon a __+ erőforrás létrehozása__  >  __hálózatkezelés__  >  __virtuális hálózat__elemre.
+1. Virtuális hálózat HDInsight való létrehozásához navigáljon a __+ erőforrás létrehozása__  >  __hálózatkezelés__  >  __virtuális hálózat__ elemre.
 
 1. Hozza létre a hálózatot a következő irányelvek alapján bizonyos tulajdonságok esetében:
 
@@ -86,7 +83,7 @@ Ha még nem rendelkezik AK-fürttel, az alábbi dokumentumok egyikével megtudha
 
 ### <a name="configure-peering"></a>Társviszony-létesítés konfigurálása
 
-1. A HDInsight hálózat és az AK-fürt közötti társítás konfigurálásához __válassza ki a__virtuális hálózatot, majd válassza a társítások lehetőséget.
+1. A HDInsight hálózat és az AK-fürt közötti társítás konfigurálásához __válassza ki a__ virtuális hálózatot, majd válassza a társítások lehetőséget.
 
 1. Válassza a __+ Hozzáadás__ lehetőséget, és használja az alábbi értékeket az űrlap feltöltéséhez:
 
@@ -140,15 +137,15 @@ A következő lépésekkel konfigurálhatja a Kafka-t, hogy a tartománynevek he
 
     ![Apache Ambari-mentési konfiguráció](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
-9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
+9. Ha meg szeretné akadályozni a Kafka újraindításakor fellépő hibákat, használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód bekapcsolása__ lehetőséget. A művelet befejezéséhez kattintson az OK gombra.
 
     ![Szolgáltatási műveletek, a karbantartás bekapcsolásával](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
 
-10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
+10. A Kafka újraindításához használja az __Újraindítás__ gombot, és válassza az __összes érintett újraindítása__ lehetőséget. Erősítse meg az újraindítást, majd használja az __OK__ gombot a művelet befejeződése után.
 
     ![Újraindítás gomb az összes érintett Kiemelt újraindítással](./media/apache-kafka-azure-container-services/restart-required-button.png)
 
-11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
+11. A karbantartási mód letiltásához használja a __szolgáltatási műveletek__ gombot, és válassza a __karbantartási mód kikapcsolása__ lehetőséget. A művelet befejezéséhez kattintson **az OK gombra** .
 
 ## <a name="test-the-configuration"></a>A konfiguráció tesztelése
 

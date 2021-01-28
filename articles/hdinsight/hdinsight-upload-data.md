@@ -1,19 +1,16 @@
 ---
 title: Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
 description: Megtudhatja, hogyan tölthet fel és férhet hozzá Apache Hadoop feladatok adataihoz a HDInsight-ben. Használja a klasszikus Azure CLI-t, Azure Storage Explorer, Azure PowerShell, a Hadoop parancssort vagy a Sqoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534821"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931344"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
 
@@ -99,7 +96,7 @@ A Azure Data Factory szolgáltatás egy teljes körűen felügyelt szolgáltatá
 |Tárolási típus|Dokumentáció|
 |----|----|
 |Azure Blob Storage|[Adatok másolása az Azure Blob Storage-be vagy onnan máshová az Azure Data Factoryvel](../data-factory/connector-azure-blob-storage.md)|
-|Azure Data Lake Storage Gen1|[Adatok másolása Azure Data Lake Storage Gen1ba vagy onnan a Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
+|1. generációs Azure Data Lake Storage|[Adatok másolása Azure Data Lake Storage Gen1ba vagy onnan a Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
 |2. generációs Azure Data Lake Storage |[Betöltés az Azure Data Lake Storage Gen2ba Azure Data Factory](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
@@ -121,7 +118,7 @@ Az Azure Storage egy Azure SDK-val is elérhető a következő programozási nye
 
 Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure-letöltések](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette, hogyan szerezhet be információkat a HDInsight-ba, olvassa el a következő cikkeket az elemzés elsajátításához:
 
