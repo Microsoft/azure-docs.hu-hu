@@ -1,17 +1,17 @@
 ---
 title: Kiszolgálói paraméterek – Azure Database for MySQL
 description: Ez a témakör az Azure Database for MySQL kiszolgálói paramétereinek konfigurálásához nyújt útmutatást.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534908"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951310"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -59,7 +59,7 @@ A rövid lekérdezések teljesítményével kapcsolatos problémák javítása �
 
 Azure Database for MySQL a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*. 
 
-A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz** ) lehet.
+A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz**) lehet.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -108,7 +108,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 A MySQL a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ban tárolja a InnoDB táblát. A [System tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
 
-A Azure Database for MySQL a legnagyobb, **4 TB** -os, egyetlen adatfájlban támogatott. Ha az adatbázis mérete meghaladja a 4 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablespace-ban. Ha 4 TB-nál nagyobb méretű tábla van, használja a partíciós táblát.
+A Azure Database for MySQL a legnagyobb, **4 TB**-os, egyetlen adatfájlban támogatott. Ha az adatbázis mérete meghaladja a 4 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablespace-ban. Ha 4 TB-nál nagyobb méretű tábla van, használja a partíciós táblát.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -261,6 +261,18 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 |Memóriaoptimalizált|8|16777216|1024|536870912|
 |Memóriaoptimalizált|16|16777216|1024|1073741824|
 |Memóriaoptimalizált|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>InnoDB puffer-készlet bemelegedési
+Azure Database for MySQL kiszolgáló újraindítása után a rendszer betölti a lemezen lévő adatlapokat, mivel a rendszer a táblákat kérdezi le. Ez nagyobb késést és lassabb teljesítményt eredményez a lekérdezések első végrehajtásakor. Ez nem fogadható el a késésre érzékeny munkaterhelések esetében. A InnoDB-puffer használatával a bemelegedési idő lerövidíti a bemelegedési időszakot azáltal, hogy az újraindítás előtt újra betölti a pufferben lévő lemezeket, és nem várta a DML-t, vagy KIVÁLASZTJA a műveleteket a megfelelő sorok eléréséhez.
+
+Csökkentheti a bemelegedési időszakot a Azure Database for MySQL kiszolgáló újraindítása után, amely teljesítménybeli előnyt jelent a [InnoDB-puffer kiszolgálói paramétereinek](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)konfigurálásával. A InnoDB az egyes pufferek legutóbb használt lapjainak százalékos arányát menti a kiszolgáló leállításakor, és visszaállítja ezeket a lapokat a kiszolgáló indításakor.
+
+Azt is fontos megjegyezni, hogy a jobb teljesítmény a kiszolgáló hosszú indítási ideje alapján történik. Ha ez a paraméter engedélyezve van, a kiszolgáló indítási és újraindítási ideje a kiszolgálón kiépített IOPS függően növekedni fog. Javasoljuk, hogy tesztelje és figyelje az újraindítási időt annak biztosítására, hogy az indítási/újraindítási teljesítmény elfogadható legyen, mivel a kiszolgáló ebben az időszakban nem érhető el. Ezt a paramétert nem ajánlott használni, ha a IOPS kiépített értéke kisebb, mint 1000 IOPS (vagy más szóval, ha a kiépített tároló kisebb, mint a 335GB.
+
+A puffer állapotának mentése a kiszolgáló leállítására beállított kiszolgáló paraméterében a következőre: `innodb_buffer_pool_dump_at_shutdown` `ON` . Hasonlóképpen állítsa be a kiszolgálói paramétert a `innodb_buffer_pool_load_at_startup` `ON` puffer-készlet állapotának visszaállításához a kiszolgáló indításakor. A kiszolgáló paraméter értékének csökkentésével és finomhangolásával szabályozhatja az indítási és újraindítási hatást, a `innodb_buffer_pool_dump_pct` paraméter pedig a következőre van beállítva: `25` .
+
+> [!Note]
+> A InnoDB puffer-készlet bemelegedési paramétereit csak az általános célú tároló kiszolgálók támogatják, legfeljebb 16 TB tárhellyel. További információ a [Azure Database for MySQL tárolási lehetőségeiről](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 
 ### <a name="time_zone"></a>time_zone
 

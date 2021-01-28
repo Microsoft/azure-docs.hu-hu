@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 869c4ac5cde7d1e50be0f2f738d8a0ce6de5e625
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044288"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951716"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Oktatóanyag: rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -57,7 +57,7 @@ Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https:
    ![Erőforráscsoport](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroupsymbol.png)
 
 4. Válassza az **erőforráscsoport** lehetőséget.
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 6. Az **erőforráscsoport neve** alatt adja meg az erőforráscsoport nevét. Írja be például az **SQL-ha-RG** értéket.
 7. Ha több Azure-előfizetéssel rendelkezik, ellenőrizze, hogy az előfizetés az Azure-előfizetés, amelyben létre kívánja hozni a rendelkezésre állási csoportot.
 8. Válasszon ki egy helyet. A hely az az Azure-régió, ahol létre szeretné hozni a rendelkezésre állási csoportot. Ez a cikk egy Azure-beli hely összes erőforrását felépíti.
@@ -91,9 +91,9 @@ A virtuális hálózat létrehozása a Azure Portalban:
    | **Mező** | Érték |
    | --- | --- |
    | **Név** |autoHAVNET |
-   | **Címtér** |10.33.0.0/24 |
+   | **Címtér** |10.0.0.0/24 |
    | **Alhálózat neve** |Rendszergazda |
-   | **Alhálózati címtartomány** |10.33.0.0/29 |
+   | **Alhálózati címtartomány** |10.0.0.0/29 |
    | **Előfizetés** |Itt adhatja meg a használni kívánt előfizetést. Az **előfizetés** üres, ha csak egy előfizetéssel rendelkezik. |
    | **Erőforráscsoport** |Válassza a **meglévő használata** lehetőséget, és válassza ki az erőforráscsoport nevét. |
    | **Hely** |Itt adhatja meg az Azure helyét. |
@@ -102,7 +102,7 @@ A virtuális hálózat létrehozása a Azure Portalban:
 
    A példa az alhálózati név **rendszergazdáját** használja. Ez az alhálózat a tartományvezérlők számára érhető el.
 
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
    ![A virtuális hálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
@@ -180,7 +180,7 @@ Két virtuális gép létrehozásához ismételje meg a fenti lépéseket. Nevez
 * ad-másodlagos-tartományvezérlő
 
   > [!NOTE]
-  > Az **ad-másodlagos-tartományvezérlő** virtuális gép nem kötelező, hogy magas rendelkezésre állást biztosítson Active Directory tartományi szolgáltatások számára.
+  > Az **ad-másodlagos-tartományvezérlő** virtuális gép nem kötelező, hogy magas rendelkezésre állást biztosítson Active Directory Domain Services számára.
   >
 
 A következő táblázat a két gép beállításait mutatja be:
@@ -191,7 +191,7 @@ A következő táblázat a két gép beállításait mutatja be:
 | **Virtuális merevlemez típusa** |SSD |
 | **Felhasználónév** |Rdfe |
 | **Jelszó** |Contoso! 0000 |
-| **Előfizetés** |*Az Ön előfizetése* |
+| **Előfizetés** |*Az előfizetése* |
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*Tartózkodási hely* |
 | **Méret** |DS1_V2 |
@@ -226,7 +226,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     ![Kiszolgálókezelő – Szerepkörök hozzáadása](./media/availability-group-manually-configure-prerequisites-tutorial-/22-addfeatures.png)
 
 5. Kattintson a **tovább** gombra, amíg el nem jut a **kiszolgálói szerepkörök** szakaszhoz.
-6. Válassza ki a **Active Directory tartományi szolgáltatások** és a **DNS-kiszolgálói** szerepköröket. Ha a rendszer kéri, adja meg a szerepkörökhöz szükséges további szolgáltatásokat.
+6. Válassza ki a **Active Directory Domain Services** és a **DNS-kiszolgálói** szerepköröket. Ha a rendszer kéri, adja meg a szerepkörökhöz szükséges további szolgáltatásokat.
 
    > [!NOTE]
    > A Windows arra figyelmeztet, hogy nincs statikus IP-cím. Ha teszteli a konfigurációt, válassza a **Folytatás** lehetőséget. Éles környezetekben állítsa az IP-címet statikusra a Azure Portalban, vagy a [PowerShell használatával állítsa be a tartományvezérlő számítógépének statikus IP-címét](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip).
@@ -243,7 +243,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     ![AD DS párbeszédpanel a DNS-kiszolgáló virtuális gépén](./media/availability-group-manually-configure-prerequisites-tutorial-/24-addsmore.png)
     
 12. A **minden kiszolgáló feladat részletei** párbeszédpanel **művelet** oszlopában válassza a **kiszolgáló előléptetése tartományvezérlővé** lehetőséget.
-13. A **Active Directory tartományi szolgáltatások konfigurációs varázslóban** a következő értékeket használja:
+13. A **Active Directory Domain Services konfigurációs varázslóban** a következő értékeket használja:
 
     | **Oldal** | Beállítás |
     | --- | --- |
@@ -305,7 +305,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 
     ![Kiszolgálókezelő – Szerepkörök hozzáadása](./media/availability-group-manually-configure-prerequisites-tutorial-/22-addfeatures.png)
 11. Kattintson a **tovább** gombra, amíg el nem jut a **kiszolgálói szerepkörök** szakaszhoz.
-12. Válassza ki a **Active Directory tartományi szolgáltatások** és a **DNS-kiszolgálói** szerepköröket. Ha a rendszer kéri, adja meg a szerepkörökhöz szükséges további szolgáltatásokat.
+12. Válassza ki a **Active Directory Domain Services** és a **DNS-kiszolgálói** szerepköröket. Ha a rendszer kéri, adja meg a szerepkörökhöz szükséges további szolgáltatásokat.
 13. A szolgáltatások telepítésének befejezését követően térjen vissza a **Kiszolgálókezelő** irányítópultra.
 14. Válassza az új **AD DS** lehetőséget a bal oldali ablaktáblán.
 15. A sárga figyelmeztető sávban válassza a **továbbiak** hivatkozást.
@@ -571,6 +571,6 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 Ismételje meg ezeket a lépéseket a második SQL Server VM.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [SQL Server always on rendelkezésre állási csoport létrehozása az Azure-ban Virtual Machines](availability-group-manually-configure-tutorial.md)

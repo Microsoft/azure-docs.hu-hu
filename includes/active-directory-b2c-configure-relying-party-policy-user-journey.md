@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/18/2021
+ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: f94076f06fb13bae2a26e8ab6003d7574a2dacfd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98674233"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98951526"
 ---
 ## <a name="configure-the-relying-party-policy"></a>A függő entitás házirendjének konfigurálása
 
@@ -33,11 +33,5 @@ Az alábbi példában a `CustomSignUpOrSignIn` felhasználói útra a **Referenc
 1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
 1. Válassza az **egyéni házirend feltöltése** lehetőséget, majd töltse fel a módosított két házirendet, a következő sorrendben: a kiterjesztési szabályzatot, például `TrustFrameworkExtensions.xml` a függő entitás házirendjét, például: `SignUpSignIn.xml` .
 
-## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
-1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin`
-1. **Alkalmazás** esetén válasszon ki egy korábban regisztrált webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **Futtatás most** gombra.
-
-Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 

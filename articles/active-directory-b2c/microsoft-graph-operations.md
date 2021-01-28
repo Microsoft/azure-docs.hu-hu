@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938491"
+ms.locfileid: "98952230"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
 
@@ -45,9 +45,13 @@ A felhasználó által az [SMS-és hanghívások](identity-provider-local.md#pho
 - [Frissítés](/graph/api/phoneauthenticationmethod-update)
 - [Törlés](/graph/api/phoneauthenticationmethod-delete)
 
+Megjegyzés: a [lista](/graph/api/authentication-list-phonemethods) művelet csak az engedélyezett telefonszámokat adja vissza. A következő telefonszámot engedélyezni kell a List műveletekkel való használatra. 
+
+![Telefonos bejelentkezés engedélyezése](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
 ## <a name="self-service-password-reset-email-address-beta"></a>Önkiszolgáló jelszó-visszaállítási e-mail-cím (bétaverzió)
 
-E-mail-cím, amelyet a felhasználó a [Felhasználónév bejelentkezési fiók](identity-provider-local.md#username-sign-in)jelszavának megpihenésére használhat. További információ: [Azure ad Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
+E-mail-cím, amelyet a [Felhasználónév bejelentkezési fiókja](identity-provider-local.md#username-sign-in) használhat a jelszó alaphelyzetbe állításához. További információ: [Azure ad Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
 
 - [Hozzáadás](/graph/api/emailauthenticationmethod-post)
 - [Lista](/graph/api/emailauthenticationmethod-list)

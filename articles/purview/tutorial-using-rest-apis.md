@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951243"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Oktatóanyag: a REST API-k használata
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure hatáskörébe REST API-kat. Bárki, aki egy Azure hatáskörébe tartozó katalógusba kívánja elküldeni az adatok beküldését, belefoglalja a katalógusba egy automatizált folyamat részeként, vagy saját felhasználói élményt hozhat létre a katalógusban a REST API-k használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -92,7 +92,7 @@ Az Azure hatáskörébe az új szolgáltatásnév megbízhatóságának beállí
 
 1. Az alapértelmezett, a **felhasználó, a csoport vagy az egyszerű szolgáltatásnév** elhagyása a **hozzáférés kiosztásával**
 
-1. A **válassza ki** a felhasználó nevét, Azure Active Directory csoportot vagy szolgáltatásnevet, amelyet hozzá kíván rendelni, majd kattintson a nevére a találatok ablaktáblán.
+1. A **kiválasztás** mezőben adja meg a hozzárendelni kívánt Previosly nevű egyszerű szolgáltatásnév nevét, majd kattintson a nevére az eredmények ablaktábláján.
 
 1. Kattintson a **Mentés** gombra.
 

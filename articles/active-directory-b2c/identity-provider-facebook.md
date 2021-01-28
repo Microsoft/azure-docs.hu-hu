@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598871"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952674"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
@@ -69,14 +69,14 @@ Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felha
 1. Adjon meg egy **nevet**. Például: *Facebook*.
 1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott Facebook-alkalmazás alkalmazás-azonosítóját.
 1. Az **ügyfél titka** mezőben adja meg a rögzített alkalmazás titkát.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Facebook-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Facebook-identitás szolgáltatóját.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **Facebook** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása** elemre.
@@ -84,6 +84,21 @@ Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felha
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
+
+A Azure AD B2C bérlőben korábban rögzített alkalmazás-titkos kulcsot kell tárolnia.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
+3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
+5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+6. A **Beállítások** területen válassza a lehetőséget `Manual` .
+7. Adja meg a szabályzat kulcsának **nevét** . Például: `FacebookSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
+8. A **Secret (titkos** kód) mezőben adja meg az alkalmazás korábban rögzített titkát.
+9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
+10. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Facebook-fiók konfigurálása identitás-szolgáltatóként
 
@@ -107,6 +122,6 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [adhat hozzá Facebook-tokent az alkalmazásához](idp-pass-through-user-flow.md).
