@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708991"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054686"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rövid útmutató: Logic Apps-munkafolyamatdefiníciók létrehozása és kezelése a Visual Studio Code használatával
 
@@ -23,6 +23,8 @@ Habár ugyanezeket a feladatokat a [Azure Portal](https://portal.azure.com) és 
 Ebben a cikkben ugyanezt a logikai alkalmazást hozhatja [létre ebből a](../logic-apps/quickstart-create-first-logic-app-workflow.md)rövid útmutatóból, amely az alapfogalmakra összpontosít. Azt is [megtudhatja, hogyan hozhatja létre a példás alkalmazást a Visual Studióban](quickstart-create-logic-apps-with-visual-studio.md), és [hogyan hozhat létre és kezelhet alkalmazásokat az Azure Command-Line felületen (Azure CLI)](quickstart-logic-apps-azure-cli.md). A Visual Studio Code-ban a logikai alkalmazás a következő példához hasonlóan néz ki:
 
 ![Példa a logikai alkalmazás munkafolyamatának definíciója](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkkel:
 
@@ -49,6 +51,8 @@ Mielőtt nekikezdene, győződjön meg arról, hogy rendelkezik a következőkke
     ![A bővítmény megfelelő telepítésének megerősítése](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
     További információ: [bővítmény piactér](https://code.visualstudio.com/docs/editor/extension-gallery). A bővítmény nyílt forráskódú verziójának beszerzéséhez látogasson el a [Azure Logic apps-bővítményt a Visual Studio Code](https://github.com/Microsoft/vscode-azurelogicapps)-hoz a githubon.
+
+* Ha a logikai alkalmazásnak olyan tűzfalon keresztül kell kommunikálnia, amely adott IP-címekre korlátozza a forgalmat, *akkor a* tűzfalnak engedélyeznie kell a hozzáférést a Logic Apps szolgáltatás vagy futtatókörnyezet által használt [bejövő](logic-apps-limits-and-config.md#inbound) és [kimenő](logic-apps-limits-and-config.md#outbound) IP-címekhez abban az Azure-régióban, ahol a logikai alkalmazás létezik. Ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md#managed-api-connectors)is használ, például az Office 365 Outlook Connectort vagy az SQL Connectort, vagy [Egyéni összekötőket](/connectors/custom-connectors/)használ, a tűzfalnak engedélyeznie kell a hozzáférést a logikai alkalmazás Azure-régiójában lévő *összes* [felügyelt összekötő kimenő IP-címéhez](logic-apps-limits-and-config.md#outbound) .
 
 <a name="access-azure"></a>
 
@@ -304,7 +308,7 @@ A Visual Studio Code-ban megnyithatja és áttekintheti a logikai alkalmazás ko
 
       A Visual Studio Code a kiválasztott verziót a jelenlegi verzióra mozdítja elő, és új számot rendel hozzá a előléptetett verzióhoz. A korábban aktuális verzió már a előléptetett verzió alatt jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Állapot-nyilvántartó és állapot nélküli logikai alkalmazások létrehozása a Visual Studio Code-ban (előzetes verzió)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

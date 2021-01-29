@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 39645e8bd370dfd518d570c3088c56a22aa77748
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927039"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055042"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureBotService** | Azure Bot Service. | Kimenő | Nem | Nem |
 | **AzureCloud** | Minden [adatközpont nyilvános IP-címe](https://www.microsoft.com/download/details.aspx?id=56519). | Kimenő | Igen | Yes |
 | **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Ez a címke vagy a címke által jelzett IP-címek segítségével biztosítható, hogy az indexelő biztonságos hozzáférést biztosítson az adatforrásokhoz. További részletekért tekintse meg az [Indexelő kapcsolati dokumentációját](../search/search-indexer-troubleshooting.md#connection-errors) . <br/><br/> *Megjegyzés*: a keresési szolgáltatás IP-címe nem szerepel az ehhez a szolgáltatási címkéhez tartozó IP-címtartományok listájában, és **hozzá kell adni** az adatforrások IP-tűzfalához is. | Bejövő | Nem | Nem |
-| **AzureConnectors** | Azure Logic Apps összekötők a mintavétel/háttér kapcsolatokhoz. | Bejövő | Igen | Yes |
+| **AzureConnectors** | Ez a címke a felügyelt összekötők számára használt IP-címeket mutatja be, amelyek a bejövő webhookok visszahívását teszik elérhetővé a Azure Logic Apps szolgáltatásnak és a hozzájuk kapcsolódó szolgáltatásoknak (például az Azure Storage vagy az Azure Event Hubs). | Bejövő/kimenő | Igen | Yes |
 | **AzureContainerRegistry** | Azure Container Registry. | Kimenő | Igen | Yes |
 | **AzureCosmosDB** | Azure Cosmos DB. | Kimenő | Igen | Yes |
 | **AzureDatabricks** | Azure Databricks. | Mindkettő | Nem | Nem |

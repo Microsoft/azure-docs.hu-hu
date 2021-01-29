@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451580"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054788"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
 
@@ -36,7 +36,7 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * A Logic Apps által támogatott e-mail-szolgáltató (például Office 365 Outlook, Outlook.com vagy Gmail) által üzemeltetett e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/).
 
@@ -46,6 +46,8 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
   > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Az [ingyenes Microsoft Azure Storage Explorer](https://storageexplorer.com/) letöltése és telepítése. Az eszköz segítségével ellenőrizheti, hogy a Storage-tároló megfelelően van-e beállítva.
+
+* Ha a logikai alkalmazásnak olyan tűzfalon keresztül kell kommunikálnia, amely adott IP-címekre korlátozza a forgalmat, *akkor a* tűzfalnak engedélyeznie kell a hozzáférést a Logic Apps szolgáltatás vagy futtatókörnyezet által használt [bejövő](logic-apps-limits-and-config.md#inbound) és [kimenő](logic-apps-limits-and-config.md#outbound) IP-címekhez abban az Azure-régióban, ahol a logikai alkalmazás létezik. Ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md#managed-api-connectors)is használ, például az Office 365 Outlook Connectort vagy az SQL Connectort, vagy [Egyéni összekötőket](/connectors/custom-connectors/)használ, a tűzfalnak engedélyeznie kell a hozzáférést a logikai alkalmazás Azure-régiójában lévő *összes* [felügyelt összekötő kimenő IP-címéhez](logic-apps-limits-and-config.md#outbound) .
 
 ## <a name="set-up-storage-to-save-attachments"></a>Tároló beállítása a mellékletek mentésére
 
@@ -86,7 +88,7 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
 
       ![A tárfiók nevének és kulcsának másolása és mentése](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   A tárfiók hozzáférési kulcsát az [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) vagy az [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) használatával is lekérheti.
+   A tárfiók hozzáférési kulcsát az [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) vagy az [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list) használatával is lekérheti.
 
 1. Hozzon létre egy Blob Storage-tárolót az e-mail-mellékletek számára.
 
@@ -96,13 +98,13 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
 
    1. Ha megnyílik a **Tárolók** lap, az eszköztáron válassza a **Tároló** elemet.
 
-   1. Az **új tároló** területen adja meg `attachments` a tároló nevét. A **nyilvános hozzáférés szintje** területen válassza a **tároló (névtelen olvasási hozzáférés tárolók és Blobok számára)** elemet  >  **OK**.
+   1. Az **új tároló** területen adja meg `attachments` a tároló nevét. A **nyilvános hozzáférés szintje** területen válassza a **tároló (névtelen olvasási hozzáférés tárolók és Blobok számára)** elemet  >  .
 
       Amikor elkészült, a Storage-tárolót a tárfiókjában találja itt, az Azure Portalon:
 
       ![Befejezett Storage-tároló](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Tároló létrehozásához használhatja a [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) vagy az [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)-t is.
+   Tároló létrehozásához használhatja a [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) vagy az [Azure CLI](/cli/azure/storage/container#az-storage-container-create)-t is.
 
 Ezután csatlakoztassa a Storage Explorert a tárfiókhoz.
 
@@ -114,7 +116,7 @@ Most csatlakoztassa a Storage Explorert a tárfiókjához, így ellenőrizheti, 
 
    A Storage Explorer kérni fogja a kapcsolatot a tárfiókhoz.
 
-1. A **Kapcsolódás az Azure Storage-hoz** panelen válassza **a Storage-fiók nevének és kulcsának használata** lehetőséget  >  **Next**.
+1. A **Kapcsolódás az Azure Storage-hoz** panelen válassza **a Storage-fiók nevének és kulcsának használata** lehetőséget  >  .
 
    ![Storage Explorer – Csatlakozás tárfiókhoz](./media/tutorial-process-email-attachments-workflow/storage-explorer-choose-storage-account.png)
 
@@ -149,7 +151,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    | **Hely** | USA nyugati régiója | A korábban is használt régió |
    | **Futtatókörnyezeti verem** | Elsődleges nyelv | Válasszon olyan futtatókörnyezetet, amely támogatja kedvenc funkciójának programozási nyelvét. Válassza a **.net** lehetőséget a C# és az F # függvények számára. |
    | **Storage** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a Storage-fiók tartalmazza a Function-alkalmazásokat, és eltér a korábban létrehozott Storage-fióktól az e-mail-mellékletek számára. |
-   | **Application Insights** | Letiltás | Az alkalmazás figyelésének bekapcsolása a [Application Insightssal](../azure-monitor/app/app-insights-overview.md), de ebben az oktatóanyagban válassza az alkalmazás **letiltása** lehetőséget  >  **Apply**. |
+   | **Application Insights** | Letiltás | Az alkalmazás figyelésének bekapcsolása a [Application Insightssal](../azure-monitor/app/app-insights-overview.md), de ebben az oktatóanyagban válassza az alkalmazás **letiltása** lehetőséget  >  . |
    ||||
 
    Ha a Function alkalmazás nem nyílik meg automatikusan az üzembe helyezés után, a [Azure Portal](https://portal.azure.com) keresőmezőbe keresse meg és válassza a **függvényalkalmazás** lehetőséget. A **függvényalkalmazás** alatt válassza ki a Function alkalmazást.
@@ -278,8 +280,8 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
       | **Mappa** | Beérkezett üzenetek | Az ellenőrizni kívánt e-mail-mappa |
-      | **Melléklettel rendelkezik** | Igen | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. |
-      | **Mellékletek is** | Igen | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
+      | **Melléklettel rendelkezik** | Yes | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. |
+      | **Mellékletek is** | Yes | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
       | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma |
       | **Gyakoriság** | Minute | Az ellenőrzések közötti intervallumok időegysége |
       ||||
@@ -440,7 +442,7 @@ Ezután adjon hozzá egy műveletet, amely egy blobot hoz létre a tárolóban a
    | Beállítás | Érték | Leírás |
    | ------- | ----- | ----------- |
    | **Kapcsolat neve** | AttachmentStorageConnection | A kapcsolat leíró neve |
-   | **Storage-fiók** | attachmentstorageacct | A mellékletek mentéséhez korábban létrehozott tárfiók neve |
+   | **Tárfiók** | attachmentstorageacct | A mellékletek mentéséhez korábban létrehozott tárfiók neve |
    ||||
 
 1. Nevezze át a **Blob létrehozása** műveletet a következő leírással: `Create blob for email body`
@@ -601,7 +603,7 @@ Ezután adjon meg egy műveletet, hogy a logikai alkalmazás egy e-mail-üzenete
 
    | Beállítás | Érték | Jegyzetek |
    | ------- | ----- | ----- |
-   | **Hogy** | <*címzett-e-mail-cím*> | Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Ide:** | <*címzett-e-mail-cím*> | Tesztelési célokra használhatja a saját e-mail-címét. |
    | **Tárgy**  | ```ASAP - Review applicant for position:```**Tárgy** | Az e-mail tárgya, amelyet használni kíván. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából az **Új e-mail érkezésekor** mellett válassza a **Tárgy** mezőt. |
    | **Törzs** | ```Please review new applicant:``` <p>```Applicant name:```**Innen** : <p>```Application file location:``` **Elérési út** <p>```Application email content:``` **Törzs** | Az e-mail szövegtörzsének tartalma. Kattintson a mezőn belülre, írja be a példa szöveget, majd a dinamikus tartalomlistából válassza az alábbi mezőket: <p>- A **Feladó** mezőt az **Új e-mail érkezésekor** alatt </br>- Az **Elérési út** mezőt a **Blob létrehozása az e-mail törzséhez** alatt </br>- A **Törzs** mezőt a **Call RemoveHTMLFunction to clean email body** (A RemoveHTMLFunction meghívása az e-mail-törzs megtisztításához) alatt |
    ||||
@@ -682,7 +684,7 @@ Ha már nincs szükség erre a mintára, törölje a logikai alkalmazást és a 
 
 1. Amikor megjelenik a megerősítő ablaktábla, adja meg az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban létrehoztunk egy logikai alkalmazást e-mail mellékletek, feldolgozására és tárolására Azure-szolgáltatások, például az Azure Storage és az Azure Functions integrálásával. Most megismerkedhet a logikai alkalmazások létrehozásához használható egyéb összekötőkkel.
 

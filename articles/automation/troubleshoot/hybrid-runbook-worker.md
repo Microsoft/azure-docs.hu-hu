@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 11/25/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896494"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055331"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
@@ -106,7 +106,7 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a futtató [fiókot](../manage-runas-account.md) egy olyan runbook próbálja meg használni, amely olyan hibrid runbook-feldolgozón fut, amelyen a futtató fiók tanúsítványa nincs jelen. A hibrid Runbook-feldolgozók alapértelmezés szerint nem helyileg rendelkeznek a tanúsítvány eszközzel. A futtató fiók működéséhez az szükséges, hogy az eszköz megfelelően működjön.
+Ez a hiba akkor fordul elő, ha a futtató [fiókot](../automation-security-overview.md#run-as-accounts) egy olyan runbook próbálja meg használni, amely olyan hibrid runbook-feldolgozón fut, amelyen a futtató fiók tanúsítványa nincs jelen. A hibrid Runbook-feldolgozók alapértelmezés szerint nem helyileg rendelkeznek a tanúsítvány eszközzel. A futtató fiók működéséhez az szükséges, hogy az eszköz megfelelően működjön.
 
 #### <a name="resolution"></a>Feloldás
 

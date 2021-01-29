@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322512"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054771"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
@@ -87,11 +87,11 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 1. [Töltse le és futtassa az átjáró telepítőjét egy helyi számítógépen](https://aka.ms/on-premises-data-gateway-installer).
 
-1. Tekintse át a minimális követelményeket, tartsa meg az alapértelmezett telepítési útvonalat, fogadja el a használati feltételeket, majd válassza a **telepítés**lehetőséget.
+1. Tekintse át a minimális követelményeket, tartsa meg az alapértelmezett telepítési útvonalat, fogadja el a használati feltételeket, majd válassza a **telepítés** lehetőséget.
 
    ![A követelmények áttekintése és a használati feltételek elfogadása](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. Az átjáró sikeres telepítése után adja meg az Azure-fiókhoz tartozó e-mail-címet, majd válassza a **Bejelentkezés**lehetőséget, például:
+1. Az átjáró sikeres telepítése után adja meg az Azure-fiókhoz tartozó e-mail-címet, majd válassza a **Bejelentkezés** lehetőséget, például:
 
    ![Bejelentkezés munkahelyi vagy iskolai fiókkal](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
@@ -112,35 +112,41 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
    > [!IMPORTANT]
    > Mentse és őrizze meg a helyreállítási kulcsot biztonságos helyen. Erre a kulcsra akkor van szükség, ha módosítani szeretné az átjárók helyét, áthelyezését, helyreállítását vagy átvételét.
 
-   Vegye figyelembe, hogy **egy meglévő átjáró fürthöz való hozzáadás**lehetősége, amelyet akkor kell kiválasztani, amikor további átjárókat telepít a [magas rendelkezésre állású forgatókönyvekhez](#high-availability).
+   Vegye figyelembe, hogy **egy meglévő átjáró fürthöz való hozzáadás** lehetősége, amelyet akkor kell kiválasztani, amikor további átjárókat telepít a [magas rendelkezésre állású forgatókönyvekhez](#high-availability).
 
 1. Győződjön meg arról, hogy az átjáró Cloud Service-hez és Azure Service Bus az átjáró által használt [üzenetküldési példányhoz](../service-bus-messaging/service-bus-messaging-overview.md) tartozó régiót használja. Alapértelmezés szerint ez a régió ugyanaz a hely, mint az Azure AD-bérlő az Azure-fiókjához.
 
    ![Az átjáró szolgáltatás és a Service Bus régiójának megerősítése](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. Az alapértelmezett régió elfogadásához válassza a **Konfigurálás**lehetőséget. Ha azonban az alapértelmezett régió nem az Önhöz legközelebb eső, akkor módosíthatja a régiót.
+1. Az alapértelmezett régió elfogadásához válassza a **Konfigurálás** lehetőséget. Ha azonban az alapértelmezett régió nem az Önhöz legközelebb eső, akkor módosíthatja a régiót.
 
    *Miért érdemes módosítani a régiót az átjáró telepítésekor?*
 
    Például a késés csökkentése érdekében előfordulhat, hogy az átjáró régióját a logikai alkalmazással megegyező régióra változtatja. Vagy a helyszíni adatforráshoz legközelebb eső régiót is kiválaszthatja. Az *Azure* -beli átjáró-erőforrás és a logikai alkalmazás különböző helyekkel rendelkezhet.
 
-   1. Az aktuális régió mellett válassza a **régió módosítása**lehetőséget.
+   1. Az aktuális régió mellett válassza a **régió módosítása** lehetőséget.
 
       ![Az aktuális átjáró régiójának módosítása](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. A következő lapon nyissa meg a **régió kiválasztása** listát, válassza ki a kívánt régiót, majd válassza a **kész**lehetőséget.
+   1. A következő lapon nyissa meg a **régió kiválasztása** listát, válassza ki a kívánt régiót, majd válassza a **kész** lehetőséget.
 
       ![Válasszon másik régiót az átjáró szolgáltatáshoz](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Tekintse át a végső megerősítési ablakban található információkat. Ez a példa ugyanazt a fiókot használja a Logic Apps, a Power BI, a Power apps és a Power automatizáláshoz, így az átjáró elérhető az összes szolgáltatáshoz. Ha elkészült, válassza a **Bezárás**lehetőséget.
+1. Tekintse át a végső megerősítési ablakban található információkat. Ez a példa ugyanazt a fiókot használja a Logic Apps, a Power BI, a Power apps és a Power automatizáláshoz, így az átjáró elérhető az összes szolgáltatáshoz. Ha elkészült, válassza a **Bezárás** lehetőséget.
 
    ![Az adatátjáró adatainak megerősítése](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. Most [hozza létre az Azure-erőforrást az átjáró telepítéséhez](../logic-apps/logic-apps-gateway-connection.md).
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>A kommunikációs beállítások keresése vagy módosítása
 
-A helyszíni adatátjáró függ a felhőalapú kapcsolat [Azure Service Bus üzenetkezeléstől](../service-bus-messaging/service-bus-messaging-overview.md) , és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül elérhesse az internetet, ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus üzenetkezelést. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információt az alábbi témakörökben talál:
+A helyszíni adatátjáró függ a felhőalapú kapcsolat [Azure Service Bus üzenetkezeléstől](../service-bus-messaging/service-bus-messaging-overview.md) , és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül elérhesse az internetet, ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus üzenetkezelést. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat.
+
+Ilyen eset például, ha olyan egyéni összekötőket használ, amelyek helyszíni erőforrásokhoz férnek hozzá a helyszíni adatátjáró-erőforrás használatával az Azure-ban. Ha olyan tűzfallal is rendelkezik, amely adott IP-címekre korlátozza a forgalmat, be kell állítania az átjáró telepítését, hogy engedélyezze a hozzáférést a megfelelő *felügyelt összekötők [kimenő IP-címeihez](logic-apps-limits-and-config.md#outbound)*. Az ugyanabban a régióban *található logikai alkalmazások* ugyanazt az IP-címtartományt használják.
+
+További információt az alábbi témakörökben talál:
 
 * [Helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
 * [Helyszíni adatátjáró proxybeállításainak konfigurálása](/data-integration/gateway/service-gateway-proxy)
@@ -155,7 +161,7 @@ Ha el szeretné kerülni a helyszíni adathozzáféréshez szükséges egyetlen 
 
 * Az elsődleges átjárónak az átjáró frissítését november 2017 vagy újabb verzióra kell futtatnia.
 
-Miután beállította az elsődleges átjárót, amikor egy másik átjárót telepít, válassza a **Hozzáadás meglévő átjáró-fürthöz**lehetőséget, válassza ki az elsődleges átjárót, amely az első telepített átjáró, és adja meg az adott átjáró helyreállítási kulcsát. További információ: [magas rendelkezésre állású fürtök helyszíni adatátjáróhoz](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Miután beállította az elsődleges átjárót, amikor egy másik átjárót telepít, válassza a **Hozzáadás meglévő átjáró-fürthöz** lehetőséget, válassza ki az elsődleges átjárót, amely az első telepített átjáró, és adja meg az adott átjáró helyreállítási kulcsát. További információ: [magas rendelkezésre állású fürtök helyszíni adatátjáróhoz](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
@@ -171,7 +177,7 @@ Ha módosítania kell az átjáró helyét, helyezze át az átjáró telepíté
 
 1. A telepítő megnyitása után jelentkezzen be ugyanazzal az Azure-fiókkal, amelyet az átjáró telepítéséhez használt.
 
-1. Válassza a **meglévő átjáró áttelepíteni, visszaállítása vagy átvétele**lehetőséget  >  **Next**, például:
+1. Válassza a **meglévő átjáró áttelepíteni, visszaállítása vagy átvétele** lehetőséget  >  , például:
 
    ![Válassza a "meglévő átjáró migrálása, visszaállítása vagy átvétele" lehetőséget.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -179,7 +185,7 @@ Ha módosítania kell az átjáró helyét, helyezze át az átjáró telepíté
 
    ![Átjáró kiválasztása és helyreállítási kulcs megadása](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. A régió módosításához válassza a **régió módosítása**lehetőséget, és válassza ki az új régiót.
+1. A régió módosításához válassza a **régió módosítása** lehetőséget, és válassza ki az új régiót.
 
 1. Ha elkészült, válassza a **Konfigurálás** lehetőséget a feladat befejezéséhez.
 

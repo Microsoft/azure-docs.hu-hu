@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682647"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054508"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -20,7 +20,7 @@ ms.locfileid: "98682647"
 
 Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ehhez először be kell állítani az eseményeket fogadó **végpontokat**. Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
 
-Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán az [Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)-k, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)és az [Azure Digital Twins CLI](how-to-use-cli.md)használatával.
+Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [REST API](/rest/api/azure-digitaltwins/)-kkal, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-val és az [Azure digitális Twins parancssori](how-to-use-cli.md)felületével.
 
 Azt is megteheti, hogy a végpontokat és útvonalakat is felügyeli a [Azure Portal](https://portal.azure.com). A jelen cikk a portált használó verziója esetén olvassa el a következő témakört [*: útmutató: végpontok és útvonalak kezelése (portál)*](how-to-manage-routes-portal.md).
 
@@ -42,51 +42,31 @@ Ezek a példányok által létrehozható támogatott típusú végpontok:
 
 További információ a különböző végpontok típusairól: [*választás az Azure Messaging Services között*](../event-grid/compare-messaging-services.md).
 
-Ahhoz, hogy egy végpontot az Azure digitális Ikrekhöz lehessen kapcsolni, a végponthoz használt Event Grid-témakör, az Event hub vagy a Service Bus már léteznie kell. 
+Ez a szakasz ismerteti, hogyan hozhatja létre ezeket a végpontokat az Azure CLI használatával. A végpontokat a [DigitalTwinsEndpoint vezérlő síkja API](/rest/api/digital-twins/controlplane/endpoints)-k használatával is kezelheti.
 
-### <a name="create-an-event-grid-endpoint"></a>Event Grid végpont létrehozása
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-Az alábbi példa bemutatja, hogyan hozhat létre Event Grid típusú végpontot az Azure CLI használatával.
+### <a name="create-the-endpoint"></a>A végpont létrehozása
 
-Először hozzon létre egy Event Grid-témakört. Használhatja az alábbi parancsot, vagy további részletekben tekintse meg a lépéseket. Ehhez látogasson el a Event Grid *Egyéni események* rövid útmutatójának [ *Egyéni témakör létrehozása* szakaszára](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) .
+Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az `az dt endpoint create` [Azure Digital Twins CLI](how-to-use-cli.md)-vel való parancs használatával. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
 
-```azurecli-interactive
-az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
-```
-
-> [!TIP]
-> Futtassa a következő parancsot az Azure-régiók azon neveinek listájához, amelyek átadhatók az Azure CLI parancsaihoz:
-> ```azurecli-interactive
-> az account list-locations -o table
-> ```
-
-Miután létrehozta a témakört, összekapcsolhatja azt az Azure Digital Twins-val a következő [Azure digitális Twins CLI-paranccsal](how-to-use-cli.md):
+Event Grid végpont létrehozása:
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, az `--endpoint-name` argumentummal megadott néven. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet [később a jelen cikkben](#create-an-event-route) , az Azure Digital Twins szolgáltatás API használatával hozhat létre.
+Event Hubs végpont létrehozása:
+```azurecli-interactive
+az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
+```
 
-### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Event Hubs vagy Service Bus végpont létrehozása
-
-Event Hubs vagy Service Bus végpontok létrehozásának folyamata hasonló a fent látható Event Grid folyamathoz.
-
-Először hozza létre a végpontként használni kívánt erőforrásokat. A következők szükségesek:
-* Service Bus: _Service Bus névtér_, _Service Bus témakör_, _engedélyezési szabály_
-* Event Hubs: _Event Hubs névtér_, _Event hub_, _engedélyezési szabály_
-
-Ezután használja a következő parancsokat a végpontok létrehozásához az Azure Digital Twinsban: 
-
-* Service Bus témakör végpontjának hozzáadása (egy előre létrehozott Service Bus erőforrást igényel)
+Service Bus témakör végpontjának létrehozása:
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-* Event Hubs végpont hozzáadása (előre létrehozott Event Hubs erőforrást igényel)
-```azurecli-interactive
-az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
-```
+A parancsok sikeres futtatása után az Event Grid, az Event hub vagy a Service Bus témakör az Azure digitális Twins-beli végpontként lesz elérhető, az `--endpoint-name` argumentummal megadott néven. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Végpont létrehozása a kézbesítetlen levelekkel
 
@@ -121,15 +101,15 @@ Az alábbi lépéseket követve állíthatja be ezeket a tárolási erőforráso
     
 #### <a name="configure-the-endpoint"></a>A végpont konfigurálása
 
-Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, létre kell hoznia a végpontot a Azure Resource Manager API-k használatával. 
+Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, akkor a Azure Resource Manager API-k használatával hozhatja létre a végpontot. 
 
 1. Először a [Azure Resource Manager API-k dokumentációjának](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) használatával állítson be egy végpont létrehozására vonatkozó kérést, és töltse ki a szükséges kérési paramétereket. 
 
-1. Ezután vegyen fel egy `deadLetterSecret` mezőt a tulajdonságok objektumba a **kérelem törzsében** . Állítsa ezt az értéket az alábbi sablon alapján, amely a Storage-fiók neve, a tároló neve és az SAS-jogkivonat értékének az [előző szakaszban](#set-up-storage-resources)összegyűjtött URL-címét tartalmazza.
+2. Ezután vegyen fel egy `deadLetterSecret` mezőt a tulajdonságok objektumba a **kérelem törzsében** . Állítsa ezt az értéket az alábbi sablon alapján, amely a Storage-fiók neve, a tároló neve és az SAS-jogkivonat értékének az [előző szakaszban](#set-up-storage-resources)összegyűjtött URL-címét tartalmazza.
       
   :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
 
-1. Küldje el a kérést a végpont létrehozásához.
+3. Küldje el a kérést a végpont létrehozásához.
 
 A kérelem strukturálásával kapcsolatos további információkért tekintse meg az Azure digitális Twins REST API dokumentációját: [endpoints-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
@@ -169,10 +149,6 @@ Itt látható egy példa a [kettős létrehozási értesítésre](how-to-interpr
 
 ## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
 
-Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elküldéséhez meg kell határoznia egy **esemény-útvonalat**. Az Azure Digital Twins **EventRoutes API-jai** lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül. További információk az esemény-útvonalakról a [*fogalmakban: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md).
-
-Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-t használják.
-
 **Előfeltétel**: a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
 
 > [!NOTE]
@@ -180,9 +156,7 @@ Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/a
 >
 > Ha a folyamat futtatásakor ezt a folyamatot szeretné használni, akkor érdemes lehet ezt megvárnia, ha 2-3 perc várakozási idő alatt a végponti szolgáltatás befejezi a telepítést, mielőtt továbblép az útvonal beállítására.
 
-### <a name="creation-code-with-apis-and-the-c-sdk"></a>Kód létrehozása API-kkal és C# SDK-val
-
-Az események útvonala az [adatsík API](how-to-use-apis-sdks.md#overview-data-plane-apis)-k használatával van definiálva. 
+Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elküldéséhez meg kell határoznia egy **esemény-útvonalat**. Az esemény-útvonalak a rendszer és az alárendelt szolgáltatások összekapcsolására szolgálnak.
 
 Az útvonalak definíciója a következő elemeket tartalmazza:
 * A használni kívánt útvonal neve
@@ -193,6 +167,12 @@ Ha nincs útvonal neve, az Azure digitális Ikreken kívül egyetlen üzenet sem
 
 Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus kijelölését. 
 
+Az esemény-útvonalak az Azure Digital Twins [ **EventRoutes** adatsík API](/rest/api/digital-twins/dataplane/eventroutes) -k vagy [ **az DT Route** CLI-parancsok](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)segítségével hozhatók létre. A szakasz további részében a létrehozás folyamata látható.
+
+### <a name="create-routes-with-the-apis-and-c-sdk"></a>Útvonalak létrehozása az API-kkal és a C# SDK-val
+
+Az események útvonalának definiálásának egyik módja az [adatsík API](how-to-use-apis-sdks.md#overview-data-plane-apis)-k használata. Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-t használják.
+
 `CreateOrReplaceEventRouteAsync` egy esemény-útvonal hozzáadására szolgáló SDK-hívás. Íme egy példa a használatra:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
@@ -200,11 +180,17 @@ Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus ki
 > [!TIP]
 > Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
 
-### <a name="event-route-sample-code"></a>Event Route-mintakód
+#### <a name="event-route-sample-sdk-code"></a>Event Route minta SDK-kód
 
-Az alábbi példa bemutatja, hogyan hozhat létre, listázhat és törölhet egy esemény-útvonalat:
+Az alábbi példa bemutatja, hogyan hozhat létre, listázhat és törölhet egy esemény-útvonalat a C# SDK-val:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="FullEventRouteSample":::
+
+### <a name="create-routes-with-the-cli"></a>Útvonalak létrehozása a parancssori felülettel
+
+Az útvonalakat az az [DT Route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) paranccsal is kezelheti az Azure Digital Twins CLI-hez. 
+
+További információ a parancssori felület használatáról és a rendelkezésre álló parancsokról [*: útmutató: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 ## <a name="filter-events"></a>Események szűrése
 
@@ -222,10 +208,6 @@ Szűrő hozzáadásához használhat egy PUT kérelmet a *https://{saját-Azure-
 Itt láthatók a támogatott útválasztási szűrők. A *szűrő szöveg sémája* oszlopban található részletek használatával cserélje le a `<filter-text>` helyőrzőt a fenti kérelem törzsében.
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
-
-## <a name="manage-endpoints-and-routes-with-cli"></a>Végpontok és útvonalak kezelése a CLI-vel
-
-A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelhetők. További információ a parancssori felület használatáról és a rendelkezésre álló parancsokról [*: útmutató: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 

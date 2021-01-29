@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 9bbd4da77d2892064906dc7ae272bcc770b6bdc4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694927"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055280"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli automatikus skálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
 
-Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)vonatkozik.
+Azure Monitor az automata méretezés csak a [virtuálisgép-méretezési csoportokra](https://azure.microsoft.com/services/virtual-machine-scale-sets/), a [Cloud Servicesra](https://azure.microsoft.com/services/cloud-services/), a [app Service-web Appsra](https://azure.microsoft.com/services/app-service/web/)és a [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)vonatkozik.
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Az előfizetéshez tartozó automatikus skálázási beállítások felderítése
 
@@ -115,36 +115,9 @@ Az **autoskálázás engedélyezése** és a **Mentés** lehetőségre kattintva
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Forgalom átirányítása kifogástalan állapotú példányokra (App Service)
 
-Ha több példányra bővíti a méretezést, App Service végezhet állapot-ellenőrzéseket a példányokon, hogy csak az egészséges példányokra irányítsa a forgalmat. Ehhez nyissa meg a portált a App Service, majd a **figyelés** területen válassza az **állapot-ellenőrzés** lehetőséget. Válassza az **Engedélyezés** lehetőséget, és adjon meg egy érvényes URL-útvonalat az alkalmazáson, például: `/health` vagy `/api/health` . Kattintson a **Mentés** gombra.
+<a id="health-check-path"></a>
 
-A szolgáltatás ARM-sablonokkal való engedélyezéséhez állítsa az `healthcheckpath` erőforrás tulajdonságát `Microsoft.Web/sites` a hely állapot-ellenőrzési útvonalára, például: `"/api/health/"` . A funkció letiltásához állítsa vissza a tulajdonságot az üres karakterláncra `""` .
-
-### <a name="health-check-path"></a>Állapot-ellenőrzési útvonal
-
-Az elérési útnak egy percen belül kell válaszolnia a 200 és a 299 közötti állapotkódot (beleértve a szolgáltatást is). Ha az elérési út egy percen belül nem válaszol, vagy a tartományon kívüli állapotkódot ad vissza, akkor a példány "nem megfelelő" állapotnak minősül. A App Service nem követi a 30x (301, 302, 307 stb.) az állapot-ellenőrzési útvonalra való átirányítást – ezek az állapotkódok nem kifogástalannak minősülnek. Az állapot-ellenőrzési funkció a App Service hitelesítési és engedélyezési funkcióival integrálódik, a rendszer akkor is eléri a végpontot, ha ezek a biztonsági funkciók engedélyezve vannak. Ha saját hitelesítési rendszerét használja, az állapot-ellenőrzési útvonalnak engedélyeznie kell a névtelen hozzáférést. Ha a hely csak HTTP **-t** engedélyez, a Healthcheck kérelmet a rendszer http-n keresztül küldi **el.**
-
-Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
-
-#### <a name="security"></a>Biztonság 
-
-A nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniük a kitett API-k biztonsági követelményeinek. Az Healthcheck végpont biztonságossá tételéhez először olyan szolgáltatásokat kell használnia, mint például az [IP-korlátozások](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule), az [ügyféltanúsítványok](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule)vagy egy Virtual Network az alkalmazáshoz való hozzáférés korlátozásához. A Healthcheck végpontot úgy is biztonságossá teheti, hogy a `User-Agent` bejövő kérelemnek megfelel `ReadyForRequest/1.0` . A User-Agentt nem lehet meghamisítani, mert a kérést az előző biztonsági funkciók már biztosították.
-
-### <a name="behavior"></a>Működés
-
-Az állapot-ellenőrzési útvonal megadásakor App Service fogja pingelni az elérési utat az összes példányon. Ha a sikeres válasz kódja 5 pingelés után nem érkezik meg, akkor a példány "nem megfelelő" állapotnak minősül. A nem kifogástalan állapotú példányok kimaradnak a terheléselosztó forgása alól, ha 2 vagy több példányra van kibővítve, és [alapszintű](../../app-service/overview-hosting-plans.md) vagy magasabb. Megadhatja, hogy a sikertelen pingelések száma az `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` alkalmazás beállításával történjen. Ez az Alkalmazásbeállítások 2 és 10 közötti egész számra állítható be. Ha például ezt a értékre állítja `2` , a rendszer a példányokat két sikertelen pingelés után eltávolítja a terheléselosztó közül. Emellett, ha a vertikális felskálázást végzi, App Service az állapot-ellenőrzési útvonal pingelésével biztosítja, hogy az új példányok készen álljanak a kérelmekre a terheléselosztó hozzáadása előtt.
-
-> [!NOTE]
-> Ne feledje, hogy az App Service-tervet 2 vagy több példányra kell méretezni, és **alapszintű vagy magasabbnak** kell lennie ahhoz, hogy a terheléselosztó kizárása megtörténjen. Ha csak 1 példánya van, akkor nem lesz eltávolítva a terheléselosztó közül, még akkor sem, ha az állapota nem megfelelő. 
-
-Emellett az állapot-ellenőrzési útvonal pingelése a példányok hozzáadásakor vagy újraindításakor történik, például a Felskálázási műveletek, a manuális újraindítások vagy a kód üzembe helyezése az SCM-helyen. Ha az állapot-ellenőrzés ezen műveletek során meghiúsul, a rendszer nem adja hozzá a sikertelen példányokat a terheléselosztó számára. Ez megakadályozza, hogy ezek a műveletek negatív hatással legyenek az alkalmazás rendelkezésre állására.
-
-A Healthcheck használatakor a fennmaradó kifogástalan állapotú példányok megnövekedett terhelést tapasztalhatnak. A fennmaradó példányok túlnyomó számának elkerülése érdekében a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag 4 példányra van kibővítve, és 3 nem kifogástalan állapotú, legfeljebb 2 lesz kizárva a terheléselosztó forgásból. A másik 2 példány (1 kifogástalan és 1 sérült) továbbra is fogadja a kéréseket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. Ha szeretné felülbírálni ezt a viselkedést, a `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` és a közötti értékre állíthatja az alkalmazás beállítását `0` `100` . Ha magasabb értékre állítja ezt a beállítást, a rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50).
-
-Ha egy példányon egy órán belül az állapot-ellenőrzés meghiúsul, a rendszer lecseréli a példányt. Legfeljebb egy példány óránként lesz lecserélve, és App Service-csomag esetében legfeljebb három példány naponta.
-
-### <a name="monitoring"></a>Figyelés
-
-Az alkalmazás állapot-ellenőrzési útvonalának megadása után Azure Monitor használatával figyelheti a webhely állapotát. A portál **állapot-ellenőrzési** paneljén kattintson a felső eszköztár **metrikái** elemére. Ekkor megnyílik egy új panel, amelyen megtekintheti a hely korábbi állapotának állapotát, és létrehozhat egy új riasztási szabályt. A helyek figyelésével kapcsolatos további információkért [tekintse meg a következő útmutatót: Azure monitor](../../app-service/web-sites-monitor.md).
+Ha az Azure-webalkalmazás több példányra van kibővítve, App Service végezhet állapot-ellenőrzéseket a példányokon, hogy átirányítsa a forgalmat az egészséges példányokra. További információért tekintse [meg ezt a cikket app Service állapot-ellenőrzését ismertető cikkben](../../app-service/monitor-instances-health-check.md).
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Az autoskálázás áthelyezése egy másik régióba
 Ez a szakasz azt ismerteti, hogyan helyezheti át az Azure-beli autoskálázást egy másik régióba ugyanazon előfizetés és erőforráscsoport alatt. Az autoskálázási beállítások áthelyezéséhez REST API használható.
@@ -160,7 +133,7 @@ A forrás régióban az autoscale beállítással létrehozott [diagnosztikai be
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>További információ az erőforrások Azure-régiók közötti áthelyezéséről
 Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vész-helyreállításról, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

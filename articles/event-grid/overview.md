@@ -2,13 +2,13 @@
 title: Mi az Azure Event Grid?
 description: Eseményazonosító küldése a forrástól a kezelőknek Azure Event Grid használatával. Hozzon létre eseményvezérelt alkalmazásokat, és integrálja az Azure-szolgáltatásokat.
 ms.topic: overview
-ms.date: 09/24/2020
-ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 01/28/2021
+ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576682"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055134"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -20,7 +20,7 @@ Azure Event Grid üzembe helyezése a rendelkezésre állás maximalizálása é
 
 Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 
-:::image type="content" source="./media/overview/functional-model.png" alt-text="A források és a kezelők Event Grid modellje" lightbox="./media/overview/functional-model.png":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="A források és a kezelők Event Grid modellje" lightbox="./media/overview/functional-model-big.png":::
 
 Ez a rendszerkép azt mutatja be, hogy Event Grid hogyan csatlakozik a forrásokhoz és a kezelőhöz, és nem a támogatott integrációk átfogó listája.
 
@@ -42,6 +42,7 @@ Jelenleg az alábbi Azure-szolgáltatások támogatják az események küldésé
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure-előfizetések](event-schema-subscriptions.md)
+- [Azure Cache for Redis](event-schema-azure-cache.md)
 
 ## <a name="event-handlers"></a>Eseménykezelők
 

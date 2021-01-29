@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: Azure használati REST API
       href: /rest/api/consumption
-    - name: Resource Manager-sablon
+    - name: Felhasználás REST API ARM költségvetési sablon
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API-minták
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: Cost Management – Azure PowerShell
+    - name: A Cost Management Azure PowerShell-parancsmagjai
       href: /powershell/module/Az.CostManagement
     - name: Számlázásautomatizálási forgatókönyvek
       href: manage/cost-management-automation-scenarios.md
-    - name: Az Azure számlázási API áttekintése
+    - name: Az Azure kiskereskedelmi díjszabása REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure számlázási REST API
       href: /rest/api/billing
@@ -400,25 +400,21 @@
       href: manage/consumption-api-overview.md
     - name: Azure használati REST API
       href: /rest/api/consumption
-    - name: RateCard REST API
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: Használati REST API
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: A vállalati jelentéskészítés áttekintése
+    - name: A vállalati jelentéskészítés REST API áttekintése
       href: manage/enterprise-api.md
-    - name: Vállalati jelentéskészítési REST API
+    - name: Vállalati jelentéskészítés – REST API-k
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Lefoglalások
       items:
         - name: Reservations REST API
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: Reservations – Azure PowerShell
+        - name: Azure PowerShell-parancsmagok foglaláshoz
           href: /powershell/module/azurerm.reservations
-        - name: Reservations – parancssori felület
+        - name: Azure CLI a foglalásokhoz
           href: /cli/azure/reservations/reservation
-        - name: Cost Management – Consumption Usage Details REST API
+        - name: Használat részletei REST API
           href: /rest/api/consumption/usagedetails
-        - name: Cost Management – Consumption Reservations Details REST API
+        - name: Foglalások részletei REST API
           href: /rest/api/consumption/reservationsdetails
 - name: További források
   items:

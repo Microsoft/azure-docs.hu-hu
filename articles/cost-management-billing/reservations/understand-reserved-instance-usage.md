@@ -9,16 +9,16 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 522b67e62e7ad8560bb48e8d056ca6daeeb45251
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: f6aad15d70157dda110fce233fbdafb7f3d896ad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350908"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055059"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Használatalapú fizetéses egyéni előfizetés Azure-beli foglalása használatának ismertetése
 
-A foglalási használatot a [Foglalás lapon](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) szereplő foglalásazonosító és az [Azure-fiókportálon](https://account.azure.com) található használati fájl használatával értékelheti.
+A foglalási használat kiértékeléséhez használja a ReservationId a [foglalás oldalon](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) és a használati fájlból a [Azure Portal](https://portal.azure.com) .
 
 Ha Ön egy Nagyvállalati Szerződéssel rendelkező ügyfél, tekintse meg [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md) című cikket.
 

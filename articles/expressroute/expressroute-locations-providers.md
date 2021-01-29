@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 120261cdb902fbdd089c73320a847191005f149b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9129ed0c91e7a91af1dfac7c048db2f424d59283
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740584"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055025"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -114,7 +114,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Délkelet-Ausztrália | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | n.a. | 10G, 100G | Claro, C3ntro, Equinix, Megaport, Neutrona hálózatok |
 | **Milánó** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | n.a. | 10G | Colt, Equinix, Fastweb, IRIDEOS, Retelit |
-| **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | n.a. | 10G, 100G | Cologix |
+| **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | n.a. | 10G, 100G | Cologix, Megaport |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n.a. | 10G, 100G | Bell Canada, Cologix, Fibrenoire, Megaport, Telus, Zayo |
 | **Mumbai** | Tata Communications | 2 | Nyugat-India | 10G | DE-CIX, globális CloudXchange (GCX), bizalom jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | 2 | Nyugat-India | 10G | Airtel, Sify, Vodafone Idea |
@@ -145,7 +145,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Tokió** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | Kelet-Japán | 10G, 100G | Aryaka Networks Networks,&T NetBond, BBIX, British Telecom, CenturyLink Cloud csatlakozik, Colt, Equinix, Internet Initiative Japan Inc.-IIJ, Megaport, NTT Communications, NTT EAST, Orange, Softbank, Verizon |
 | **Tokyo2** | [TOKIÓBAN](https://www.attokyo.com/) | 2 | Kelet-Japán | 10G, 100G | Tokió, Megaport, Tokai Communications |
 | **Toronto** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | Közép-Kanada | 10G, 100G | &T NetBond, Bell Canada, CenturyLink Cloud kapcsolatba, Cologix, Equinix, IX REACH Megaport, Telus, Verizon, Zayo |
-| **Vancouver** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | n.a. | 10G | Cologix, Telus |
+| **Vancouver** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | n.a. | 10G | Cologix, Megaport, Telus |
 | **Washington DC** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | USA keleti régiója, USA 2. keleti régiója | 10G, 100G | Aryaka Networks hálózatok,&T NetBond, British Telecom, CenturyLink Cloud-kapcsolat, Cologix, Colt, Comcast, Coresite, Equinix, Internet2, felhő, IX elérés, 3. szintű kommunikáció, Megaport, Neutrona hálózatok, NTT Communications, Orange, PacketFabric, SES, sprint, Tata Communications, Telia Carrier, Verizon, Zayo |
 | **Washington DC2** | [Coresite Restonban](https://www.coresite.com/data-center-locations/northern-virginia-washington-dc) | 1 | USA keleti régiója, USA 2. keleti régiója | 10G, 100G | CenturyLink Cloud-kapcsolat, Coresite, Intelsat, Megaport, Viasat, Zayo | 
 | **Zürich** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | Észak-Svájc | 10G, 100G | Eqinix, felhőalapú, Interxion, Megaport, Swisscom |
@@ -250,7 +250,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Észak-Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Dél-Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

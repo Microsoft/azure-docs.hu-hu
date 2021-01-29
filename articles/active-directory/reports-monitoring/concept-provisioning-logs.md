@@ -1,6 +1,6 @@
 ---
-title: Naplók kiépítés a Azure Active Directory portálon (előzetes verzió) | Microsoft Docs
-description: A naplók kiépítési jelentéseinek bemutatása a Azure Active Directory portálon
+title: A naplók üzembe helyezésének áttekintése a Azure Portalban (előzetes verzió) | Microsoft Docs
+description: Bemutatjuk, hogyan lehet bevezetni a naplózási jelentéseket Azure Active Directory a Azure Portal keresztül.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,27 +17,27 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8c1932cd02cae5e92ee1f6011f952a3e59260388
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726301"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054940"
 ---
-# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
+# <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>A naplók kiépítési naplóinak áttekintése a Azure Portalban (előzetes verzió)
 
 A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a következő összetevőkből áll:
 
-- **Tevékenység** 
-    - **Bejelentkezések** – a felügyelt alkalmazások használatáról és a felhasználói bejelentkezési tevékenységekről szóló információk.
-    - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
-    - **Naplók** kiosztása – rendszertevékenység nyújtása az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
+- Tevékenység: 
+    - **Bejelentkezések**: a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról szóló információk.
+    - [Naplók](concept-audit-logs.md): rendszertevékenység-információk a felhasználók és csoportok kezelésével, a felügyelt alkalmazásokkal és a címtárral kapcsolatos tevékenységekkel kapcsolatban.
+    - **Naplók** kiosztása: rendszertevékenység az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
 
-- **Biztonság** 
-    - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek.
-    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+- Biztonság: 
+    - **Kockázatos bejelentkezések**: a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók tulajdonosának nem jogos tulajdonosa hajt végre.
+    - A **kockázatnak** kitett felhasználók: egy [kockázatos felhasználó](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
-Ez a témakör áttekintést nyújt a kiépítési naplókról. A következő kérdésekre adnak választ: 
+Ez a témakör áttekintést nyújt a kiépítési naplókról. A naplók választ adnak a következő kérdésekre: 
 
 * Milyen csoportokat sikerült létrehozni a ServiceNow-ben?
 * Milyen felhasználókat sikerült eltávolítani az Adobe-ból?
@@ -45,30 +45,29 @@ Ez a témakör áttekintést nyújt a kiépítési naplókról. A következő k�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
-* Az alkalmazás tulajdonosai megtekinthetik a saját alkalmazások naplóit
+Ezek a felhasználók a kiépítési naplókból férhetnek hozzá az adatkészletekhez:
+
+* Alkalmazás tulajdonosai (saját alkalmazások naplói)
 * Felhasználók a biztonsági rendszergazda, a biztonsági olvasó, a jelentéskészítő, az alkalmazás rendszergazdája és a Felhőbeli alkalmazás rendszergazdai szerepkörei
 * Egyéni szerepkörbe tartozó felhasználók a [provisioningLogs engedéllyel](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
-* Globális rendszergazdák
+* Globális rendszergazda
 
 
-### <a name="what-azure-ad-license-do-you-need-to-access-provisioning-activities"></a>Milyen Azure AD-licencre van szükség a kiépítési tevékenységekhez való hozzáféréshez?
-
-A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy láthassa a teljes kiépítési tevékenység jelentését. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. 
+A kiépítési tevékenység jelentésének megtekintéséhez a bérlőnek hozzá kell rendelnie egy prémium szintű Azure AD-licencet. Az Azure AD-kiadás frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md)témakört. 
 
 
 ## <a name="ways-of-interacting-with-the-provisioning-logs"></a>A kiépítési naplókkal való interakció módjai 
-Az ügyfelek négyféle módon vehetik igénybe a kiépítési naplókat:
+Az ügyfelek négyféle módon kezelhetik a kiépítési naplókat:
 
-1. A naplók elérése a Azure Portal az alább leírtak szerint.
-1. A kiépítési naplók továbbítása a [Azure monitorba](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics), amely lehetővé teszi a kiterjesztett adatmegőrzést, az egyéni irányítópultok, riasztások és lekérdezések létrehozását.
-1. A kiépítési naplók [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -ját kérdezi le.
-1. A kiépítési naplók letöltése CSV-fájlként vagy JSON-ként.
+- A naplók elérése a Azure Portalról a következő szakaszban leírtak szerint.
+- A kiépítési naplók továbbítása a [Azure monitorba](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics). Ez a módszer lehetővé teszi a kiterjesztett adatmegőrzést, valamint az egyéni irányítópultok, riasztások és lekérdezések létrehozását.
+- A kiépítési naplók [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) -ját kérdezi le.
+- A kiépítési naplók letöltése CSV-vagy JSON-fájlként.
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>A naplók elérése a Azure Portal
-A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
+A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplók lehetőséget a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
 
-![Üzembehelyezési naplók](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
+![Képernyőkép, amely a kiépítési naplókhoz való hozzáférésre vonatkozó beállításokat jeleníti meg.](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
 
 
 A kiépítési napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
@@ -81,39 +80,44 @@ A kiépítési napló egy alapértelmezett listanézet, amely a következőket j
 - A dátum
 
 
-![Alapértelmezett oszlopok](./media/concept-provisioning-logs/default-columns.png "Alapértelmezett oszlopok")
+![Képernyőfelvétel: az alapértelmezett oszlopok megjelenítése egy kiépítési naplóban.](./media/concept-provisioning-logs/default-columns.png "Alapértelmezett oszlopok")
 
-A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
+A listanézet kiválasztásával testreszabhatja az eszköztár **oszlopok** elemét.
 
-![Oszlop kiválasztása](./media/concept-provisioning-logs/column-chooser.png "Oszlop kiválasztása")
+![Képernyőkép, amely az oszlopok testreszabására szolgáló gombot jeleníti meg.](./media/concept-provisioning-logs/column-chooser.png "Oszlop kiválasztása")
 
-További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített mezőket.
+Ez a terület lehetővé teszi további mezők megjelenítését vagy a már megjelenített mezők eltávolítását.
 
-![Elérhető oszlopok](./media/concept-provisioning-logs/available-columns.png "Elérhető oszlopok")
+![Képernyőkép, amely néhány kiválasztott oszlopot jelenít meg.](./media/concept-provisioning-logs/available-columns.png "Elérhető oszlopok")
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Képernyőkép, amely részletes információkat jelenít meg.](./media/concept-provisioning-logs/steps.png "Szűrő")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
 
-A kiépítési adatait szűrheti. Egyes szűrési értékek dinamikusan vannak feltöltve a bérlő alapján. Ha például nem rendelkezik létrehozási eseményekkel a bérlőben, a létrehozáshoz nem lesz szűrő lehetőség.
+A kiépítési adatait szűrheti. Egyes szűrési értékek dinamikusan vannak feltöltve a bérlő alapján. Ha például nem rendelkezik "Create" eseményekkel a bérlőben, nem lesz egy szűrő **létrehozása** lehetőség.
+
 Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
-- Identitás
-- Date
-- Állapot
-- Művelet
+- **Identitás**
+- **Date**
+- **Állapot**
+- **Művelet**
 
 
-![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrő")
+![A szűrési értékeket bemutató képernyőkép.](./media/concept-provisioning-logs/default-filter.png "Szűrő")
 
-Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
+Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. 
+
+Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a Salesforce-be, a forrás azonosítója az Azure AD-ben a felhasználó objektumazonosító. A cél azonosító a felhasználó azonosítója a Salesforce-ben. Ha munkahelyről Active Directoryra épít, a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. 
+
+> [!NOTE]
+> Lehet, hogy a felhasználó neve nem mindig szerepel az **Identity** oszlopban. Mindig egy azonosító lesz. 
 
 
-A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek:
+A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz. Lehetséges értékek:
 
 - 1 hónap
 - 7 nap
@@ -123,186 +127,146 @@ Lehetséges értékek:
 
 Amikor kiválaszt egy egyéni időkeretet, beállíthatja a kezdési és a befejezési dátumot.
 
-
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
-- Mind
-- Siker
-- Hiba
-- Kimarad
+- **Mind**
+- **Siker**
+- **Hiba**
+- **Kimarad**
 
+A **művelet** szűrője lehetővé teszi a következő műveletek szűrését:
 
+- **Létrehozás** 
+- **Frissítés**
+- **Törlés**
+- **Letiltás**
+- **Egyéb**
 
-A **művelet** szűrője lehetővé teszi a következő szűrését:
+Az alapértelmezett nézet szűrői mellett a következő szűrőket is beállíthatja.
 
-- Létrehozás 
-- Frissítés
-- Törlés
-- Letiltás
-- Egyéb
+![A szűrőként felvehető mezőket bemutató képernyőkép.](./media/concept-provisioning-logs/add-filter.png "Válasszon ki egy mezőt")
 
-Emellett az alapértelmezett nézet szűrői esetében a következő szűrőket is beállíthatja:
+- **Job ID**: a rendszer minden olyan alkalmazáshoz társít egy egyedi azonosítójú feladatot, amelyhez engedélyezte az üzembe helyezést.   
 
-- AZONOSÍTÓJÚ feladatok
-- Ciklus azonosítója
-- Változás azonosítója
-- Forrás azonosítója
-- Cél azonosítója
-- Alkalmazás
+- **Ciklus azonosítója**: a ciklus azonosítója egyedileg azonosítja a létesítési ciklust. Ezt az azonosítót a terméktámogatással is megoszthatja, hogy megkeresse a ciklust, amelyben ez az esemény történt.
 
+- **Változás azonosítója**: a MÓDOSÍTÁSi azonosító a kiépítési esemény egyedi azonosítója. Ezt az azonosítót a terméktámogatással is megoszthatja a kiépítési esemény megkereséséhez.   
 
-![Válasszon ki egy mezőt](./media/concept-provisioning-logs/add-filter.png "Válasszon ki egy mezőt")
+- **Forrásoldali rendszer**: megadhatja, hogy hol kell kiépíteni az identitást. Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, akkor a forrásoldali rendszer az Azure AD. 
 
+- Célrendszer: megadhatja, hogy az identitás hol legyen kiépítve a **szolgáltatásba**. Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, akkor a rendszer ServiceNow. 
 
-- **Job ID** – a rendszer minden olyan alkalmazáshoz társít egy egyedi azonosítójú feladatot, amelyhez engedélyezte az üzembe helyezést.   
-
-- **Ciklus azonosítója** – egyedi módon azonosítja a létesítési ciklust. Ezt az azonosítót megoszthatja a támogatással, hogy megkeresse azt a ciklust, amelyben ez az esemény történt.
-
-- A kiépítési esemény egyedi azonosítójának **módosítása** . Megoszthatja ezt az azonosítót, hogy támogassa a kiépítési esemény megkeresését.   
-
-
-- **Forrásoldali rendszer** – lehetővé teszi annak megadását, hogy az identitás honnan legyen kiépítve. Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, akkor a forrásoldali rendszer az Azure AD. 
-
-- Célrendszer – lehetővé teszi annak megadását, hogy az identitás hol legyen kiépítve a **szolgáltatásba** . Ha például egy objektumot kiépít az Azure AD-ből a ServiceNow-be, a rendszer ServiceNow. 
-
-- **Alkalmazás** – lehetővé teszi, hogy csak az adott karakterláncot tartalmazó megjelenítendő névvel rendelkező alkalmazások rekordjait jelenítse meg.
-
- 
+- **Alkalmazás**: csak azok a rekordok jelennek meg, amelyek megjelenítendő neve egy adott sztringet tartalmaz.
 
 ## <a name="provisioning-details"></a>Kiépítés részletei 
 
-Amikor kiválaszt egy elemet a kiépítési lista nézetben, az elemről további részleteket talál.
-A részletek a következő kategóriák alapján vannak csoportosítva:
+Amikor kiválaszt egy elemet a kiépítési lista nézetben, az elemről további részleteket talál. A részletek a következő lapokra vannak csoportosítva.
 
-- Lépések
+![Képernyőkép, amely a kiépítési részleteket tartalmazó négy lapot mutatja.](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
 
-- Hibák és javaslatok
+- **Lépések**: egy objektum kiépítéséhez szükséges lépések felvázolása. Az objektumok kiépítés négy lépésből állhat:
+  
+  1. Importálja az objektumot.
+  1. Annak megállapítása, hogy az objektum hatókörben van-e.
+  1. Egyezik a forrás és a cél közötti objektummal.
+  1. Az objektum kiépítése (létrehozás, frissítés, törlés vagy Letiltás).
 
-- Módosított tulajdonságok
+  ![Képernyőkép: a kiépítési lépések a lépések lapon láthatók.](./media/concept-provisioning-logs/steps.png "Szűrő")
 
-- Összefoglalás
+- **Hibaelhárítási & javaslatok**: megadja a hibakódot és az okot. A hiba adatai csak akkor érhetők el, ha hiba történik.
 
+- **Módosított tulajdonságok**: a régi értéket és az új értéket jeleníti meg. Ha nincs régi érték, az oszlop üres.
 
-![Kiépítés részletei](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
-
-
-
-### <a name="steps"></a>Lépések
-
-A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepelnek. Az objektumok kiépítés négy lépésből állhat: 
-
-- Objektum importálása
-- Annak megállapítása, hogy az objektum hatókörben van-e
-- Objektum egyeztetése a forrás és a cél között
-- Objektum kiépítése (művelet elvégzése – ez lehet létrehozás, frissítés, törlés vagy Letiltás)
-
-
-
-![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrő")
-
-
-### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
-
-
-A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba adatai csak meghibásodás esetén érhetők el. 
-
-
-### <a name="modified-properties"></a>Módosított tulajdonságok
-
-A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
-
-### <a name="summary"></a>Összefoglalás
-
-Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
+- **Összefoglalás**: áttekintést nyújt az objektumról a forrás-és a célszámítógépeken.
 
 ## <a name="download-logs-as-csv-or-json"></a>Naplók letöltése CSV-ként vagy JSON-ként
 
-A kiépítési naplókat később is letöltheti, ha a Azure Portal lévő naplókra navigál, és a letöltés gombra kattint. A rendszer a kiválasztott szűrési feltételek alapján szűri a fájlt. Előfordulhat, hogy a lehető legpontosabban szeretné megtenni a szűrőket, hogy csökkentse a letöltéshez szükséges időt és a letöltés méretét. A CSV-letöltés három fájlba van bontva:
+A kiépítési naplók későbbi használatra való letöltéséhez nyissa meg a Azure Portal naplóit, és válassza a **Letöltés** lehetőséget. A rendszer a kiválasztott szűrési feltételek alapján szűri a fájlt. A szűrőket a lehető legpontosabb módon végezze el a letöltés méretének és időpontjának csökkentése érdekében. 
 
-* ProvisioningLogs: az összes naplót letölti, a kiépítési lépések és a módosított tulajdonságok kivételével.
-* ProvisioningLogs_ProvisioningSteps: a kiépítési lépéseket és a módosítási azonosítót tartalmazza. A módosítási azonosító segítségével csatlakozhat az eseményhez a másik két fájllal.
-* ProvisioningLogs_ModifiedProperties: a módosított attribútumokat és a módosítási azonosítót tartalmazza. A módosítási azonosító segítségével csatlakozhat az eseményhez a másik két fájllal.
+A CSV letöltése három fájlt tartalmaz:
 
-#### <a name="opening-the-json-file"></a>A JSON-fájl megnyitása
-A JSON-fájl megnyitásához használjon egy szövegszerkesztőt, például a [Microsoft Visual Studio Code](https://aka.ms/vscode)-ot. A Visual Studio Code megkönnyíti az olvasást a szintaxis kiemelésének megadásával. A JSON-fájl nem szerkeszthető formátumban is megnyitható böngészőkkel, például a [Microsoft Edge](https://aka.ms/msedge) használatával. 
+* **ProvisioningLogs**: az összes naplót letölti, a kiépítési lépések és a módosított tulajdonságok kivételével.
+* **ProvisioningLogs_ProvisioningSteps**: a kiépítési lépéseket és a módosítási azonosítót tartalmazza. A Change ID használatával csatlakozhat az eseményhez a másik két fájllal.
+* **ProvisioningLogs_ModifiedProperties**: a módosított attribútumokat és a módosítási azonosítót tartalmazza. A Change ID használatával csatlakozhat az eseményhez a másik két fájllal.
 
-#### <a name="prettifying-the-json-file"></a>A JSON-fájl prettifying
-A letöltött JSON-fájl a letöltés méretének csökkentése érdekében minified formátumban van letöltve. Ez a megoldás viszont nehezen olvasható lehet. Tekintse meg a következő két lehetőséget a fájl szépít:
+#### <a name="open-the-json-file"></a>A JSON-fájl megnyitása
+A JSON-fájl megnyitásához használjon egy szövegszerkesztőt, például a [Microsoft Visual Studio Code](https://aka.ms/vscode)-ot. A Visual Studio Code megkönnyíti a fájl olvasását a szintaxis kiemelésének megadásával. A JSON-fájlt nem szerkeszthető formátumban, például a [Microsoft Edge](https://aka.ms/msedge)böngészőben is megnyithatja. 
 
-1. A JSON formázása a Visual Studio Code használatával
+#### <a name="prettify-the-json-file"></a>A JSON-fájl szépít
+A letöltött JSON-fájl a letöltés méretének csökkentése érdekében minified formátumban van letöltve. Ez a formátum nehézvé teszi a hasznos adatok olvasását. Tekintse meg a következő két lehetőséget a fájl szépít:
 
-Kövesse az [itt](https://code.visualstudio.com/docs/languages/json#_formatting) megadott utasításokat a JSON-fájl Visual Studio Code használatával történő formázásához.
+- [A JSON formázásához használja a Visual Studio Code-](https://code.visualstudio.com/docs/languages/json#_formatting)ot.
 
-2. A JSON formázása a PowerShell használatával
+- A JSON formázásához használja a PowerShellt. Ez a szkript a JSON-t olyan formátumban jeleníti meg, amely lapokat és szóközöket tartalmaz: 
 
-Ez a szkript a JSON-t egy prettified formátumban jeleníti meg, tabulátorokkal és szóközökkel. 
+  ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
-` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+  `$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
 
-`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+#### <a name="parse-the-json-file"></a>A JSON-fájl elemzése
 
-#### <a name="parsing-the-json-file"></a>A JSON-fájl elemzése
+Íme néhány példa arra, hogy hogyan dolgozhat a JSON-fájllal a PowerShell használatával. Bármilyen programozási nyelvet használhat, amellyel Ön is kényelmesen használható.  
 
-Íme néhány példa arra, hogy hogyan használható a JSON-fájl a PowerShell használatával. Bármilyen programozási nyelvet használhat, amellyel Ön is kényelmesen használható.  
-
-Először [olvassa el a JSON-fájlt a](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) következő futtatásával:
+Először [olvassa el a JSON-fájlt a](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) következő parancs futtatásával:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
-Most már elemezheti az adatait a forgatókönyv szerint. Íme néhány példa erre: 
+Most már az adott forgatókönyvnek megfelelően elemezheti az adatelemzést. Bemutatunk néhány példát: 
 
-1. A JsonFile összes jobIDs kimenete
+- A JSON-fájlban lévő összes azonosítójú feladattípus kimenete:
 
-`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+  `foreach ($provitem in $JSONContent) { $provitem.jobId }`
 
-2. Az összes changeIds kimenetének kihagyása, ha a művelet "létrehozás"
+- Az összes olyan változási azonosító kimenete, amelynél a művelet "létrehozás":
 
-`foreach ($provitem in $JSONContent) { `
-`   if ($provItem.action -eq 'Create') {`
-`       $provitem.changeId `
-`   }`
-`}`
+  `foreach ($provitem in $JSONContent) { `
+  `   if ($provItem.action -eq 'Create') {`
+  `       $provitem.changeId `
+  `   }`
+  `}`
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-- Ha ingyenes kiadással rendelkezik, a Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést. A kiépítési naplók 30 napon túli megőrzés céljából közzétehetők a [log Analyticsben](../app-provisioning/application-provisioning-log-analytics.md) . 
+Az alábbi tippek és szempontok a kiépítési jelentésekhez:
 
-- A Change ID attribútum egyedi azonosítóként használható. Ez például a terméktámogatással való interakció esetén hasznos.
+- Ha ingyenes kiadással rendelkezik, a Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést. A kiépítési naplókat úgy teheti közzé, hogy a 30 napon túli megőrzésre [log Analytics](../app-provisioning/application-provisioning-log-analytics.md) . 
 
-- A kihagyott eseményeket a hatókörön kívüli felhasználók számára is megtekintheti. Ez várható, különösen akkor, ha a szinkronizálási hatókör az összes felhasználóra és csoportra van beállítva. A szolgáltatás a bérlő összes objektumát kiértékeli, még a hatókörön kívül is. 
+- A Change ID attribútum egyedi azonosítóként használható. Ez akkor hasznos, ha például a terméktámogatással kommunikál.
 
-- A kiépítési naplók jelenleg nem érhetők el a kormányzati felhőben. Ha nem tudja elérni a kiépítési naplókat, használja a naplókat ideiglenes megkerülő megoldásként. 
+- Előfordulhat, hogy a nem hatókörben lévő felhasználók számára a kihagyott események láthatók. Ez várható, különösen akkor, ha a szinkronizálási hatókör az összes felhasználóra és csoportra van beállítva. A szolgáltatás a bérlő összes objektumát kiértékeli, még a hatókörön kívül is. 
 
-- A kiépítési naplók nem jelenítik meg a szerepkör-importálásokat (az AWS, a SalesForce és a ZenDesk esetében érvényesek). A szerepkör-importálások naplófájljai a naplókban találhatók. 
+- A kiépítési naplók jelenleg nem érhetők el a kormányzati felhőben. Ha nem fér hozzá a kiépítési naplókhoz, használja a naplókat ideiglenes megkerülő megoldásként. 
+
+- A kiépítési naplók nem jelenítik meg a szerepkör-importálásokat (az AWS, a Salesforce és a zendesk esetében érvényesek). A szerepkör-importálások naplóit a naplókban találja. 
 
 ## <a name="error-codes"></a>Hibakódok
 
-Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban esetlegesen felmerülő hibák. A hiányzó hibakódok esetében küldjön visszajelzést az oldal alján található hivatkozás használatával. 
+A következő táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban talált hibák. A hiányzó hibakódok esetén az oldal alján található hivatkozás használatával küldjön visszajelzést. 
 
-|Hibakód|Leírás|
+|Hibakód|Description|
 |---|---|
-|Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban, vagy tekintse át a megfelelő attribútum-konfigurációt, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. Az egyeztetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át az alábbi [dokumentációt](../app-provisioning/customize-application-attributes.md) .|
-|TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést fogad. Semmi teendő. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|
-|InternalServerError |A célalkalmazás váratlan hibát adott vissza. Előfordulhat, hogy egy szolgáltatási probléma van a célalkalmazás számára, amely megakadályozza ennek működését. Ez a kísérlet 40 percen belül automatikusan kimarad.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, jogosulatlan| Az Azure AD képes volt hitelesíteni a megcélzott alkalmazást, de nem jogosult a frissítés végrehajtására. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md).|
-|UnprocessableEntity|A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy a célalkalmazás konfigurációja nem megfelelő, vagy a célalkalmazás olyan szolgáltatási problémával jár, amely megakadályozza ennek működését.|
-|WebExceptionProtocolError |HTTP protokoll hiba történt a célalkalmazáshoz való csatlakozás során. Semmi teendő. Ez a kísérlet 40 percen belül automatikusan kimarad.|
-|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó újraegyezésének kényszerítéséhez az MS Graph API használatával [indítsa újra a feladatot](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). A kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. Emellett törli a kiépítési szolgáltatás által a működéshez használt gyorsítótárat is, ami azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és bizonyos kiépítési eseményeket el lehet dobni.|
-|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy előfordulhat, hogy probléma van a célalkalmazás szolgáltatással, amely megakadályozza ennek működését. Tekintse át a célalkalmazás által biztosított utasításokat és a vonatkozó alkalmazási [oktatóanyagot](../saas-apps/tutorial-list.md). |
-|MandatoryFieldsMissing, MissingValues |A felhasználó nem hozható létre, mert hiányoznak a szükséges értékek. Javítsa ki a hiányzó attribútum-értékeket a forrás rekordban, vagy tekintse át a megfelelő attribútumok konfigurációját, hogy a kötelező mezők ne legyenek kihagyva. [További](../app-provisioning/customize-application-attributes.md) információ a megfeleltetési attribútumok konfigurálásáról.|
-|SchemaAttributeNotFound |A művelet nem hajtható végre, mert egy olyan attribútum lett megadva, amely nem létezik a célalkalmazás alkalmazásban. Tekintse meg az attribútumok testreszabásával kapcsolatos [dokumentációt](../app-provisioning/customize-application-attributes.md) , és győződjön meg arról, hogy a konfiguráció helyes.|
+|Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban. Vagy tekintse át az egyező attribútumok konfigurációját, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. A megfeleltetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át a [dokumentációt](../app-provisioning/customize-application-attributes.md) .|
+|TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést kapott. Semmit nem kell tennie. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|
+|InternalServerError |A célalkalmazás váratlan hibát adott vissza. Előfordulhat, hogy a célalkalmazás szolgáltatással kapcsolatos probléma miatt ez nem működik. Ez a kísérlet 40 percen belül automatikusan kimarad.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, jogosulatlan| Az Azure AD hitelesített a célalkalmazás használatával, de nem jogosult a frissítés végrehajtására. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md).|
+|UnprocessableEntity|A célalkalmazás váratlan választ adott vissza. Lehet, hogy a célalkalmazás konfigurációja nem megfelelő, vagy a célalkalmazás szolgáltatással kapcsolatos problémája miatt ez nem működik.|
+|WebExceptionProtocolError |HTTP-protokollhiba történt a célalkalmazás csatlakozásakor. Semmi teendő. Ez a kísérlet 40 percen belül automatikusan kimarad.|
+|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó új megfeleltetésének kényszerítéséhez a Microsoft Graph API használatával [indítsa újra a feladatot](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). <br><br>A kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. A kiépítés újraindítása törli azt a gyorsítótárat is, amelyet a kiépítési szolgáltatás a működéséhez használ. Ez azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és előfordulhat, hogy bizonyos kiépítési események el lesznek dobva.|
+|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy a célalkalmazás szolgáltatással kapcsolatos problémája miatt ez nem működik. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](../saas-apps/tutorial-list.md). |
+|MandatoryFieldsMissing, MissingValues |A felhasználó nem hozható létre, mert hiányoznak a szükséges értékek. Javítsa ki a hiányzó attribútum-értékeket a forrás rekordban, vagy tekintse át a megfelelő attribútum-konfigurációt, hogy a kötelező mezők ne legyenek kihagyva. [További](../app-provisioning/customize-application-attributes.md) információ a megfeleltetési attribútumok konfigurálásáról.|
+|SchemaAttributeNotFound |Nem sikerült végrehajtani a műveletet, mert olyan attribútum lett megadva, amely nem létezik a célalkalmazás alkalmazásban. Tekintse meg az attribútumok testreszabásával kapcsolatos [dokumentációt](../app-provisioning/customize-application-attributes.md) , és győződjön meg arról, hogy a konfiguráció helyes.|
 |InternalError |Belső szolgáltatási hiba történt az Azure AD-létesítési szolgáltatásban. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
-|InvalidDomain |A műveletet nem lehetett végrehajtani, mert egy attribútumérték érvénytelen tartománynevet tartalmaz. Frissítse a tartománynevet a felhasználón, vagy adja hozzá azt a célalkalmazás engedélyezett listájához. |
-|Időtúllépés |A műveletet nem lehetett befejezni, mert a célalkalmazás túl sokáig tartott a válaszadáshoz. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
-|LicenseLimitExceeded|A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. Több licenc beszerzése a célalkalmazás számára, vagy a felhasználói hozzárendelések és az attribútum-hozzárendelési konfiguráció áttekintése, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.|
-|DuplicateTargetEntries  |A műveletet nem lehetett befejezni, mert a célalkalmazás több felhasználója található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](../app-provisioning/customize-application-attributes.md)leírtak szerint.|
-|DuplicateSourceEntries | A műveletet nem lehetett befejezni, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](../app-provisioning/customize-application-attributes.md)leírtak szerint.|
-|ImportSkipped | Az egyes felhasználók kiértékelése után a rendszer megkísérli importálni a felhasználót a forrásrendszer használatával. Ez a hiba általában akkor fordul elő, ha az importálandó felhasználó hiányzik az attribútum-hozzárendelésekben definiált megfelelő tulajdonság. A megfelelő attribútumhoz tartozó felhasználói objektumon nincs megadva érték, nem értékelhető ki a hatókör, a megfeleltetés vagy az Exportálás módosítása. Vegye figyelembe, hogy a hiba jelenléte nem jelzi, hogy a felhasználó hatókörben van, mivel még nem értékelte ki a hatókört a felhasználó számára.|
-|EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. A kihagyás oka az lehet, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már meglévő a célszámítógépen, és nincs szükség további módosításokra.|
-|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Amikor lekéréses kérelmet küld egy felhasználó vagy csoport beolvasására, a válaszban több felhasználót vagy csoportot kaptunk. A rendszer csak egy felhasználót vagy csoportot várt a válaszban. Ha [például](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)lekéri egy csoport lekérését, és egy szűrőt biztosít a tagok kizárásához, és a scim-végpont visszaadja a tagokat, ezt a hibát fogjuk kidobni.|
+|InvalidDomain |Nem sikerült végrehajtani a műveletet, mert egy attribútum értéke érvénytelen tartománynevet tartalmaz. Frissítse a tartománynevet a felhasználón, vagy adja hozzá azt a célalkalmazás engedélyezett listájához. |
+|Időtúllépés |Nem sikerült befejezni a műveletet, mert a célalkalmazás túl sokáig tartott a válaszadáshoz. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
+|LicenseLimitExceeded|Nem sikerült létrehozni a felhasználót a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. Több licenc beszerzése a célalkalmazás számára. Vagy tekintse át a felhasználói hozzárendelések és attribútumok megfeleltetésének konfigurációját, és győződjön meg arról, hogy a megfelelő felhasználók hozzá vannak rendelve a megfelelő attribútumokhoz.|
+|DuplicateTargetEntries  |Nem sikerült befejezni a műveletet, mert a célalkalmazás egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy [konfigurálja újra az attribútumok leképezéseit](../app-provisioning/customize-application-attributes.md).|
+|DuplicateSourceEntries | Nem sikerült befejezni a műveletet, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy [konfigurálja újra az attribútumok leképezéseit](../app-provisioning/customize-application-attributes.md).|
+|ImportSkipped | Amikor minden felhasználó kiértékelése megtörténik, a rendszer megpróbálja importálni a felhasználót a forrás rendszerből. Ez a hiba általában akkor fordul elő, ha az importálandó felhasználó hiányzik az attribútum-hozzárendelésekben definiált megfelelő tulajdonsággal. A megfelelő attribútum felhasználói objektumában nem szerepel érték, a rendszer nem tudja kiértékelni a hatókört, a megfeleltetést vagy az exportálási módosításokat. Vegye figyelembe, hogy a hiba jelenléte nem jelzi, hogy a felhasználó hatókörben van, mert még nem értékelte ki a hatókört a felhasználó számára.|
+|EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. Lehetséges, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már létezett a megcélzott rendszeren, és nincs szükség további módosításokra.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Egy felhasználó vagy csoport lekérésére vonatkozó GET kérelem több felhasználót vagy csoportot kapott a válaszban. A rendszer arra vár, hogy csak egy felhasználót vagy csoportot kapjon a válaszban. Ha [például](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)egy Get kérést kap egy csoport lekérésére, és egy szűrőt biztosít a tagok kizárásához, és a tartományok közötti IDENTITÁSKEZELÉS (scim) végpont visszaadja a tagokat, ezt a hibaüzenetet fogja kapni.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A felhasználó kiépítési állapotának megtekintése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](../app-provisioning/application-provisioning-config-problem.md)
-* [Naplók kiépítés gráf API-val](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Graph API az üzembe helyezési naplókhoz](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

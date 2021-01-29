@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 65d6151536eb92e2ab9b740a99984fb0b5977cab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dfeca64804ceb522046e5c0dc10702575f60aad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256874"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054585"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory AppSource minősítésének beolvasása
 
@@ -74,7 +74,7 @@ Az ügyfél által vezetett próbaverzió az a tapasztalat, amellyel a AppSource
 
 A partneri próbaidőszakot akkor használhatja, ha egy manuális vagy hosszú távú műveletnek a felhasználó/vállalat kiépítéséhez kell történnie – például az alkalmazásnak olyan virtuális gépeket, adatbázis-példányokat vagy műveleteket kell kiépítenie, amelyek végrehajtása sok időt is igénybe vehet. Ebben az esetben, miután a felhasználó kiválasztja a **kérelem próbaverziója** gombot, és kitölti az űrlapot, a AppSource elküldi a felhasználó kapcsolattartási adatait. Amikor megkapja ezeket az információkat, kiépítheti a környezetet, és elküldheti az utasításokat a felhasználónak a próbaverziós felület elérésének módjával kapcsolatban:<br/><br/>
 
-1. A felhasználó megkeresi az alkalmazást a AppSource webhelyen, majd kiválasztja a **kapcsolat**lehetőséget.
+1. A felhasználó megkeresi az alkalmazást a AppSource webhelyen, majd kiválasztja a **kapcsolat** lehetőséget.
 
     ![Kapcsolatfelvétel a partner által vezetett próbaverziós felhasználói felülettel](./media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png)
 
@@ -104,9 +104,9 @@ A AppSource-próbaverzióval kapcsolatos további információkért tekintse meg
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Az Azure AD-integrációhoz a [stack Overflowt](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) használjuk a Közösséggel a támogatás biztosításához.
+Az Azure AD-integrációhoz a [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-active-directory.html) a-t használjuk a Közösségben, hogy támogatást nyújtsanak.
 
-Javasoljuk, hogy először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései szerepelnek a [ `[azure-active-directory]` és `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)a címkével.
+Javasoljuk, hogy Kérdezzen rá kérdéseket a Microsoft Q&először, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései szerepelnek a címkével [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) .
 
 A következő Megjegyzések szakaszban visszajelzéseket adhat meg, és segítheti a tartalom pontosítását és kialakítását.
 

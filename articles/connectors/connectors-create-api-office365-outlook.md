@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682995"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055076"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mailek, partneradatok és naptárak kezelése az Office 365 Outlookban az Azure Logic Apps használatával
 
@@ -92,17 +92,19 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 ## <a name="connect-using-other-accounts"></a>Kapcsolat más fiókok használatával
 
-Ha olyan fiókkal próbál csatlakozni az Outlookhoz, amely az Azure-ba jelenleg be van jelentkezve, akkor előfordulhat, hogy [egyszeri bejelentkezéses (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) hibák jelentkeznek. Ez a probléma akkor fordul elő, ha egy fiókkal jelentkezik be a Azure Portalba, de egy másik fiókot használ a csatlakozás létrehozásához. A Logic app Designer arra vár, hogy az Azure-ba bejelentkezett fiókot használja. A probléma megoldásához a következő lehetőségek közül választhat:
+Ha olyan fiókkal próbál csatlakozni az Outlookhoz, amely az Azure-ba jelenleg be van jelentkezve, akkor előfordulhat, hogy [egyszeri bejelentkezéses (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) hibák jelentkeznek. Ez a probléma akkor fordul elő, ha egy fiókkal jelentkezik be a Azure Portalba, de egy másik fiókot használ a csatlakozás létrehozásához. A tervező elvárja, hogy a Azure Portalba bejelentkezett fiókot használja. A probléma megoldásához a következő lehetőségek közül választhat:
 
-* A másik fiók beállítása **közreműködőként** a logikai alkalmazás erőforráscsoporthoz.
+* Állítsa be a másik fiókot a logikai alkalmazás erőforráscsoport **közreműködői** szerepkörével.
 
-  1. A logikai alkalmazás erőforráscsoport menüjében válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Állítsa be a másik fiókot a **közreműködő** szerepkörrel. További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+  1. A logikai alkalmazás erőforráscsoport menüjében válassza a **hozzáférés-vezérlés (iam)** lehetőséget. Állítsa be a másik fiókot a **közreműködő** szerepkörrel. 
+  
+     További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
 
-  1. Ha bejelentkezett a Azure Portalba munkahelyi vagy iskolai fiókjával, jelentkezzen ki, majd jelentkezzen be újra a másik fiókkal. Most már létrehozhat egy, az Outlookhoz való kapcsolódást a másik fiók használatával.
+  1. Miután beállította ezt a szerepkört, jelentkezzen be a Azure Portalba azzal a fiókkal, amely már közreműködői engedélyekkel rendelkezik. Mostantól használhatja ezt a fiókot az Outlookhoz való kapcsolódás létrehozásához.
 
 * Állítsa be a másik fiókot úgy, hogy a munkahelyi vagy iskolai fiókja "Send as" engedélyekkel rendelkezik.
 
-   Ha rendszergazdai jogosultságokkal rendelkezik, a szolgáltatásfiók postaládájában állítsa be a munkahelyi vagy iskolai fiókját a **Send as** vagy **a Send** as engedélyekkel. További információkért lásd: [postaláda-engedélyek megadása egy másik felhasználó számára – rendszergazdai Súgó](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Ezután a munkahelyi vagy iskolai fiókkal hozhatja létre a kapcsolatokat. Most olyan eseményindítók vagy műveletek esetén, ahol megadhatja a küldőt, használhatja a szolgáltatásfiók e-mail-címét.
+   Ha rendszergazdai jogosultságokkal rendelkezik, a szolgáltatásfiók postaládájában állítsa be a munkahelyi vagy iskolai fiókját a **Send as** vagy az **Send** as (küldés másként) engedélyekkel. További információkért lásd: [postaláda-engedélyek megadása egy másik felhasználó számára – rendszergazdai Súgó](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Ezután a munkahelyi vagy iskolai fiókkal hozhatja létre a kapcsolatokat. Most olyan eseményindítók vagy műveletek esetén, ahol megadhatja a küldőt, használhatja a szolgáltatásfiók e-mail-címét.
 
    Például az **e-mailek küldése** művelet opcionális paraméterrel rendelkezik, **a (küldés másként)** lehetőséggel, amelyet hozzáadhat a művelethez, és használhatja a szolgáltatásfiók e-mail-címét feladóként. A paraméter hozzáadásához kövesse az alábbi lépéseket:
 

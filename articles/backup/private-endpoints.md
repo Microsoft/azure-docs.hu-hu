@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b1412a79fa6137ce1f8c73d5875e52b6382048fa
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0d9d77c139896f9067f73943dbb213fc655f00f6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986971"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054872"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -32,7 +32,7 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 
 Habár a privát végpontok engedélyezve vannak a tárolóhoz, az SQL-és SAP HANA-munkaterhelések biztonsági mentésére és helyreállítására szolgálnak az Azure-beli virtuális gépeken és a MARS-ügynök biztonsági mentésében. A tárolót más számítási feladatok biztonsági mentéséhez is használhatja (a saját végpontokat azonban nem igénylik). Az SQL és a SAP HANA számítási feladatainak és a MARS-ügynök használatával történő biztonsági mentésének kiegészítéseként az Azure-beli virtuális gépek biztonsági mentésére szolgáló fájlok helyreállítására is használhatók a privát végpontok. További információkért tekintse meg a következő táblázatot:
 
-| Munkaterhelések biztonsági mentése az Azure-beli virtuális gépen (SQL, SAP HANA), biztonsági mentés a MARS-ügynök használatával | A privát végpontok használata ajánlott a biztonsági mentéshez és a visszaállításhoz anélkül, hogy engedélyezni kellene a-t a virtuális hálózatok Azure Backup vagy Azure Storage-beli IP-címeinek/teljes tartománynevének listázásához. |
+| Munkaterhelések biztonsági mentése az Azure-beli virtuális gépen (SQL, SAP HANA), biztonsági mentés a MARS-ügynök használatával | A privát végpontok használata ajánlott a biztonsági mentés és a helyreállítás engedélyezéséhez anélkül, hogy a virtuális hálózatokról Azure Backup vagy Azure Storage-ra vonatkozó IP-címeket/teljes tartományneveket kellene engedélyezési. Ebben az esetben győződjön meg arról, hogy az SQL Database-t futtató virtuális gépek hozzáférhetnek az Azure AD IP-címeihez vagy teljes tartománynevéhez. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Azure-beli virtuális gép biztonsági mentése**                                         | A virtuális gép biztonsági mentése nem igényli, hogy bármely IP-cím vagy teljes tartománynév számára engedélyezze a hozzáférést. Így nincs szükség privát végpontokra a lemezek biztonsági mentéséhez és visszaállításához.  <br><br>   A privát végpontokat tartalmazó tárolóból származó fájlok helyreállítása azonban olyan virtuális hálózatokra korlátozódik, amelyek a tárolóhoz privát végpontot tartalmaznak. <br><br>    A ACL'ed nem felügyelt lemezek használata esetén győződjön meg arról, hogy a lemezeket tartalmazó Storage-fiók lehetővé teszi a **megbízható Microsoft-szolgáltatások** elérését, ha az ACL'ed. |
 | **Azure Files biztonsági mentés**                                      | Azure Files biztonsági mentéseket a helyi Storage-fiók tárolja. Így nincs szükség privát végpontokra a biztonsági mentéshez és a visszaállításhoz. |
@@ -386,7 +386,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 #### <a name="create-dns-zones-for-custom-dns-servers"></a>DNS-zónák létrehozása egyéni DNS-kiszolgálókhoz
 
-Létre kell hoznia három privát DNS-zónát, és csatolnia kell őket a virtuális hálózathoz.
+Létre kell hoznia három privát DNS-zónát, és csatolnia kell őket a virtuális hálózathoz. Ne feledje, hogy a blob és a várólista használatával ellentétben a Backup szolgáltatás nyilvános URL-címei nem regisztrálják az Azure nyilvános DNS-ben az átirányítást a privát kapcsolat DNS-zónái számára. 
 
 | **Zóna**                                                     | **Szolgáltatás** |
 | ------------------------------------------------------------ | ----------- |

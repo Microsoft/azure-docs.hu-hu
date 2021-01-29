@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Blob Storage Library v12 – .NET'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a .NET-hez egy tároló és egy blob (Object) tárolóban lévő blob létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
+title: 'Gyors útmutató: Azure Blob Storage Library v12-.NET'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a .NET-hez készült Azure Blob Storage Client Library 12-es verziója a tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/24/2020
@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8cb8c193e09e841a8401cbb0a6ac78ce87afa01c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8f27743d8680f5e73e1f7bb7a3f7bd6ff2e0464
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021707"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054720"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Blob Storage Client Library V12 a .NET-hez
 
-Ismerkedés a .NET-hez készült Azure Blob Storage ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+Ismerkedés az Azure Blob Storage a .NET-hez készült ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 
-Használja az Azure Blob Storage ügyféloldali kódtárat a .NET-hez a következőhöz:
+Az Azure Blob Storage a .NET-hez készült ügyféloldali kódtár a következőhöz használható:
 
 * Tároló létrehozása
 * Blob feltöltése az Azure Storage-ba
@@ -44,13 +44,13 @@ További források:
 
 ## <a name="setting-up"></a>Beállítás
 
-Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a .NET-hez készült Azure Blob Storage ügyféloldali kódtáraval való együttműködéshez.
+Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Blob Storage .NET-hez készült ügyféloldali kódtár használatával.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
 Hozzon létre egy *BlobQuickstartV12* nevű .net Core-alkalmazást.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
@@ -70,7 +70,7 @@ Hozzon létre egy *BlobQuickstartV12* nevű .net Core-alkalmazást.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Miközben még mindig az alkalmazás könyvtárában van, telepítse az Azure Blob Storage ügyféloldali kódtárat a .NET-csomaghoz a `dotnet add package` parancs használatával.
+Noha még mindig az alkalmazás könyvtárában van, telepítse az Azure Blob Storage .NET-csomaghoz készült ügyféloldali kódtárat a `dotnet add package` paranccsal.
 
 ```console
 dotnet add package Azure.Storage.Blobs
@@ -128,7 +128,7 @@ Használja az alábbi .NET-osztályokat a következő erőforrásokkal való int
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket a .NET-hez készült Azure Blob Storage ügyféloldali kódtára használatával:
+Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következőket az Azure Blob Storage .NET-hez készült ügyféloldali kódtár használatával:
 
 * [A kapcsolati sztring lekérése](#get-the-connection-string)
 * [Tároló létrehozása](#create-a-container)
@@ -144,7 +144,7 @@ Az alábbi kód a Storage- [kapcsolatok karakterláncának konfigurálása](#con
 Adja hozzá ezt a kódot a `Main` metódushoz:
 
 ```csharp
-Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Blob Storage v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -287,7 +287,7 @@ dotnet run
 Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
-Azure Blob storage v12 - .NET quickstart sample
+Azure Blob Storage v12 - .NET quickstart sample
 
 Uploading to Blob storage as blob:
          https://mystorageacct.blob.core.windows.net/quickstartblobs60c70d78-8d93-43ae-954d-8322058cfd64/quickstart2fe6c5b4-7918-46cb-96f4-8c4c5cb2fd31.txt
@@ -308,7 +308,7 @@ A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappá
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

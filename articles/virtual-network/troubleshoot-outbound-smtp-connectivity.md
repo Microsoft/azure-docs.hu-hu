@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883112"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054854"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
 
@@ -27,7 +27,7 @@ Ez a viselkedési változás csak az 2017. november 15. után létrehozott előf
 
 ## <a name="recommended-method-of-sending-email"></a>E-mailek küldésének ajánlott módja
 
-Javasoljuk, hogy hitelesített SMTP Relay-szolgáltatásokat használjon az Azure-beli virtuális gépekről vagy Azure App Serviceról küldött e-mailek küldéséhez. (Ezek a továbbító szolgáltatások jellemzően a 587-es vagy 443-es TCP-porton keresztül csatlakoznak, de más portokat is támogatnak.) Ezek a szolgáltatások az IP-címek és a tartományok hírnevének fenntartására szolgálnak, hogy a harmadik féltől származó e-mail-szolgáltatók elutasítsák az üzeneteket. A [SendGrid](https://sendgrid.com/partners/azure/) egy ilyen SMTP-továbbító szolgáltatás, de mások is vannak. Előfordulhat, hogy egy, a helyszínen futó biztonságos SMTP-továbbító szolgáltatást is tartalmaz, amelyet használhat.
+Javasoljuk, hogy hitelesített SMTP Relay-szolgáltatásokat használjon az Azure-beli virtuális gépekről vagy Azure App Serviceról küldött e-mailek küldéséhez. (Ezek a továbbító szolgáltatások jellemzően a 587-es TCP-porton keresztül csatlakoznak, de más portokat is támogatnak.) Ezek a szolgáltatások az IP-címek és a tartományok hírnevének fenntartására szolgálnak, hogy a harmadik féltől származó e-mail-szolgáltatók elutasítsák az üzeneteket. A [SendGrid](https://sendgrid.com/partners/azure/) egy ilyen SMTP-továbbító szolgáltatás, de mások is vannak. Előfordulhat, hogy egy, a helyszínen futó biztonságos SMTP-továbbító szolgáltatást is tartalmaz, amelyet használhat.
 
 Az e-mailes kézbesítési szolgáltatások használata nem korlátozódik az Azure-ban, az előfizetés típusától függetlenül.
 

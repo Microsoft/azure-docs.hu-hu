@@ -99,6 +99,8 @@
           href: spring-cloud-howto-application-insights.md
         - name: A Resilience4J áramkör-megszakító metrikái
           href: spring-cloud-howto-circuit-breaker-metrics.md
+        - name: Strukturált alkalmazás naplója
+          href: spring-cloud-structured-app-log.md
     - name: Network (Hálózat)
       items:
         - name: Azure Spring Cloud üzembe helyezése virtuális hálózaton

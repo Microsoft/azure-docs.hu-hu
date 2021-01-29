@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 12/08/2020
+ms.date: 01/27/2021
 ms.author: curtand
-ms.openlocfilehash: 7b3af7c5bd55e748b1d1f4cf8f192797187da30a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901796"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054838"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator Androidhoz a nyilvános felhőben Kínában
 
 Az Androidhoz készült Microsoft Authenticator alkalmazás letölthető Kínában. A Google Play Áruház Kínában nem érhető el, ezért az alkalmazást le kell tölteni a többi kínai alkalmazás-Piactérről. Az Androidhoz készült Microsoft Authenticator alkalmazás jelenleg a következő kínai áruházakban érhető el:
 
-- [Baidu](https://shouji.baidu.com/software/26638379.html)
 - [Lenovo](https://www.lenovomm.com/appdetail/com.azure.authenticator/20197724)
 - [Huawei](https://appgallery.cloud.huawei.com/uowap/index.html#/detailApp/C100262999?source=appshare&subsource=C100262999&shareTo=weixin&locale=zh_CN)
 - [Samsung Galaxy áruház](http://apps.samsung.com/appquery/appDetail.as?appId=com.azure.authenticator)
@@ -50,13 +49,13 @@ A többtényezős hitelesítéshez használt leküldéses értesítések haszná
 
 Microsoft Authenticator funkció | Rendelkezésre állás Kínában
 ------------------------------- | ---------------------
-MFA-regisztráció leküldéses értesítések használatával | Nem
-Előzetesen létező MFA-fiók, amely leküldéses értesítésekkel ellenőrzi az identitást | Nem
-Előzetesen létező MFA-fiók az értesítések manuális vizsgálatával | Igen
-MFA-regisztráció/hitelesítés csak TOTP/ellenőrző kódok használatával | Igen
-Telefonos bejelentkezési regisztráció | Nem
-Meglévő telefonos bejelentkezés leküldéses értesítések használatával | Nem
-Meglévő telefonos bejelentkezési ellenőrzés a hitelesítési kérelmek kézi ellenőrzésének elvégzésével | Igen
+MFA-regisztráció leküldéses értesítések használatával | No
+Előzetesen létező MFA-fiók, amely leküldéses értesítésekkel ellenőrzi az identitást | No
+Előzetesen létező MFA-fiók az értesítések manuális vizsgálatával | Yes
+MFA-regisztráció/hitelesítés csak TOTP/ellenőrző kódok használatával | Yes
+Telefonos bejelentkezési regisztráció | No
+Meglévő telefonos bejelentkezés leküldéses értesítések használatával | No
+Meglévő telefonos bejelentkezési ellenőrzés a hitelesítési kérelmek kézi ellenőrzésének elvégzésével | Yes
 A személyes Microsoft-fiókok hitelesítő alkalmazásának támogatása | Nem
 
 ## <a name="next-steps"></a>Következő lépések

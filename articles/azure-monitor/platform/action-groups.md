@@ -3,15 +3,15 @@ title: Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 description: Megtudhatja, hogyan hozhat létre és kezelhet műveleti csoportokat a Azure Portalban.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 01/28/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 08cf66edaa67ab1853a3b246afb9364b431445c6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735293"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055110"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -328,141 +328,10 @@ A webhookok feldolgozása a következő szabályok alapján történik
 - A második és a harmadik próbálkozás 30 másodpercet vár a válaszra.
 - Miután a 3 kísérlet a webhook meghívására nem sikerült, a műveleti csoport 15 percig nem fogja hívni a végpontot.
 
-Forrás IP-címtartományok:
+Tekintse meg a [műveleti csoport IP](../app/ip-addresses.md) -címeit a forrás IP-címtartományok számára.
 
- - 13.66.60.119/32
- - 13.66.143.220/30
- - 13.66.202.14/32
- - 13.66.248.225/32
- - 13.66.249.211/32
- - 13.67.10.124/30
- - 13.69.109.132/30
- - 13.71.199.112/30
- - 13.77.53.216/30
- - 13.77.172.102/32
- - 13.77.183.209/32
- - 13.78.109.156/30
- - 13.84.49.247/32
- - 13.84.51.172/32
- - 13.84.52.58/32
- - 13.86.221.220/30
- - 13.106.38.142/32
- - 13.106.38.148/32
- - 13.106.54.3/32
- - 13.106.54.19/32
- - 13.106.57.181/32
- - 13.106.57.196/31
- - 20.38.149.132/30
- - 20.42.64.36/30
- - 20.43.121.124/30
- - 20.44.17.220/30
- - 20.45.123.236/30
- - 20.72.27.152/30
- - 20.150.172.228/30
- - 20.192.238.124/30
- - 20.193.202.4/30
- - 40.68.195.137/32
- - 40.68.201.58/32
- - 40.68.201.65/32
- - 40.68.201.206/32
- - 40.68.201.211/32
- - 40.68.204.18/32
- - 40.115.37.106/32
- - 40.121.219.215/32
- - 40.121.221.62/32
- - 40.121.222.201/32
- - 40.121.223.186/32
- - 51.104.9.100/30
- - 52.183.20.244/32
- - 52.183.31.0/32
- - 52.183.94.59/32
- - 52.184.145.166/32
- - 191.233.50.4/30
- - 191.233.207.64/26
- - 2603:1000:4:402::178/125
- - 2603:1000:104:402::178/125
- - 2603:1010:6:402::178/125
- - 2603:1010:101:402::178/125
- - 2603:1010:304:402::178/125
- - 2603:1010:404:402::178/125
- - 2603:1020:5:402::178/125
- - 2603:1020:206:402::178/125
- - 2603:1020:305:402::178/125
- - 2603:1020:405:402::178/125
- - 2603:1020:605:402::178/125
- - 2603:1020:705:402::178/125
- - 2603:1020:805:402::178/125
- - 2603:1020:905:402::178/125
- - 2603:1020: A04:402:: 178/125
- - 2603:1020: B04:402:: 178/125
- - 2603:1020: C04:402:: 178/125
- - 2603:1020: D04:402:: 178/125
- - 2603:1020: E04:402:: 178/125
- - 2603:1020: f04:402:: 178/125
- - 2603:1020:1004:800:: F8/125
- - 2603:1020:1104:400::178/125
- - 2603:1030: f:400:: 978/125
- - 2603:1030:10:402::178/125
- - 2603:1030:104:402::178/125
- - 2603:1030:107:400:: F0/125
- - 2603:1030:210:402::178/125
- - 2603:1030:40b: 400:: 978/125
- - 2603:1030:40c: 402:: 178/125
- - 2603:1030:504:802:: F8/125
- - 2603:1030:608:402::178/125
- - 2603:1030:807:402::178/125
- - 2603:1030: A07:402:: 8f8/125
- - 2603:1030: B04:402:: 178/125
- - 2603:1030: C06:400:: 978/125
- - 2603:1030: F05:402:: 178/125
- - 2603:1030:1005:402::178/125
- - 2603:1040:5:402::178/125
- - 2603:1040:207:402::178/125
- - 2603:1040:407:402::178/125
- - 2603:1040:606:402::178/125
- - 2603:1040:806:402::178/125
- - 2603:1040:904:402::178/125
- - 2603:1040: A06:402:: 178/125
- - 2603:1040: B04:402:: 178/125
- - 2603:1040: C06:402:: 178/125
- - 2603:1040: D04:800:: F8/125
- - 2603:1040: F05:402:: 178/125
- - 2603:1040:1104:400::178/125
- - 2603:1050:6:402::178/125
- - 2603:1050:403:400:: 1f8/125
 
-Ha frissítéseket szeretne kapni ezen IP-címek változásairól, javasoljuk, hogy állítson be egy Service Health riasztást, amely figyeli a műveleti csoportok szolgáltatással kapcsolatos tájékoztató értesítéseket.
-
-Előfordulhat, hogy egy műveleti csoportban korlátozott számú webhook-művelet van.
-
-A forrás IP-címek gyakori frissítései elég időt igényelnek a webhookban. A *ActionGroup* **szolgáltatással** való használata megkönnyíti az IP-címek gyakori frissítéseinek manuális összetettségét. A fent megosztva a forrás IP-címek tartományának előtagjait a Microsoft automatikusan felügyeli a **Service tag** által felölelt módon.
-
-#### <a name="service-tag"></a>Szolgáltatás címkéje
-A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatás címkéjét a címek változásával, minimalizálva a ActionGroup vonatkozó hálózati biztonsági szabályok gyakori frissítéseinek összetettségét.
-
-1. Azure Portal az Azure-szolgáltatások területen keresse meg a *hálózati biztonsági csoportot*.
-2. Kattintson a **Hozzáadás** gombra, és hozzon létre egy hálózati biztonsági csoportot.
-
-   1. Adja hozzá az erőforráscsoport nevét, majd adja meg a *példány részleteit*.
-   1. Kattintson a **felülvizsgálat + létrehozás** elemre, majd a *Létrehozás* gombra.
-   
-   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Példa hálózati biztonsági csoport létrehozására."border="true":::
-
-3. Nyissa meg az erőforráscsoportot, majd kattintson a létrehozott *hálózati biztonsági csoportra* .
-
-    1. Válassza a *bejövő biztonsági szabályok* lehetőséget.
-    1. Kattintson a **Hozzáadás** gombra.
-    
-    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Példa szolgáltatási címke hozzáadására."border="true":::
-
-4. Ekkor megnyílik egy új ablak a jobb oldali ablaktáblán.
-    1.  Forrás kiválasztása: **szolgáltatás címkéje**
-    1.  Forrásoldali szolgáltatás címkéje: **ActionGroup**
-    1.  Kattintson a **Hozzáadás** parancsra.
-    
-    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](./itsmc-overview.md).

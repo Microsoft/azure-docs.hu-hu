@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 4856b572182646827b8016212bbb4c1b28f440ab
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1eeb4542242415c38a585643fd74a6a60e8e526f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740873"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054991"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-kapcsolati partnerek és társviszony-létesítési helyszínek
 
@@ -132,7 +132,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Washington, D.C. |
 | **LG CNS** |Támogatott |Támogatott |Busan, Szöul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Támogatott |Támogatott |Fokváros, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Genf, Hongkong, Hong Kong2, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oszaka, Oslo, Perth, Québec város, San Antonio, Seattle, Szilícium-völgy, Szingapúr, Szingapúr2, Stavanger, Stockholm, Sydney, Sydney2, Tokió, Tokyo2 Toronto, Washington, D.C., Washington DC2, Zürich |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Genf, Hongkong, Hong Kong2, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Minneapolis, Montreal, New York, Oszaka, Oslo, Perth, Québec város, San Antonio, Seattle, Szilícium-völgy, Szingapúr, Szingapúr2, Stavanger, Stockholm, Sydney, Sydney2, Tokió, Tokyo2 Toronto, Vancouver, Washington, D.C., Washington DC2, Zürich |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |Támogatott |Támogatott |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Támogatott |Támogatott |Dallas, Los Angeles, Miami, Sao Paulo, Washington, D.C. |
 | **[Következő generációs adatelemek](https://vantage-dc-cardiff.co.uk/)** |Támogatott |Támogatott |Newport (Wales) |
@@ -370,7 +370,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Dél-Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Ausztrália |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

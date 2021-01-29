@@ -2,15 +2,16 @@
 title: Azure Automation Update Management engedélyezése az Automation-fiókból
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management Automation-fiókból.
 services: automation
+ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: b97e1e61401697204f79004e4678e6f2286f4a98
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 06a29cd07a870e7553d599b5f719943acb259c2a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380538"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054923"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Az Update Management engedélyezése Automation-fiókból
 
@@ -22,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan használhatja az Automation-fiókját a környez
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](../index.yml) a gépek kezeléséhez.
+* Egy [Automation-fiók](../automation-security-overview.md) a gépek kezeléséhez.
 * Az arc-kompatibilis kiszolgálókon regisztrált Azure-beli [virtuális gépek](../../virtual-machines/windows/quick-create-portal.md)vagy virtuális gépek vagy kiszolgálók. A nem Azure-beli virtuális gépeknek vagy kiszolgálóknak telepítve kell lennie a Windows vagy Linux rendszerhez készült [log Analytics ügynöknek](../../azure-monitor/platform/log-analytics-agent.md) , és az Automation-fiókhoz társított munkaterületre kell jelentenie Update Management engedélyezve van a rendszerben. Javasoljuk, hogy a Windows vagy Linux rendszerhez készült Log Analytics Agent telepítéséhez először csatlakoztassa a gépet az [Azure arc-kompatibilis kiszolgálókhoz](../../azure-arc/servers/overview.md), majd a Azure Policy használatával rendelje hozzá a [log Analytics-ügynök üzembe helyezését a *Linux* vagy a *Windows* Azure arc Machines](../../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Ha a gépeket Azure Monitor for VMs használatával kívánja figyelni, Ehelyett használja a [Azure monitor for VMS engedélyezése](../../governance/policy/samples/built-in-initiatives.md#monitoring) kezdeményezést.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba

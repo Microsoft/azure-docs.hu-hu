@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348287"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054737"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -89,7 +89,7 @@ További információért lásd a [számítási és tárolási fogalmakat](conce
 
 A MySQL az egyik népszerű adatbázismotor a webes és mobil alkalmazások futtatásához. Számos ügyfelünk a saját online oktatási szolgáltatásaihoz, a video streaming-szolgáltatásokhoz, a digitális fizetési megoldásokhoz, az e-kereskedelmi platformokhoz, a szerencsejáték-szolgáltatásokhoz, a hírek portálokhoz, a kormányzati és az egészségügyi webhelyekhez használható. Ezek a szolgáltatások a webes vagy mobil alkalmazások forgalmának növeléséhez és méretezéséhez szükségesek.
 
-Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett kifejlesztve, és át lett telepítve az [Azure-beli virtuálisgép-méretezési csoportokon](../../virtual-machine-scale-sets/overview.md)vagy az Azure app Services-on való futtatásra,   vagy az [Azure App Services](../../app-service/overview.md)    [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md)való futtatásra. A virtuálisgép-méretezési csoport, a App Service vagy az AK az alapul szolgáló infrastruktúrának megfelelően egyszerűsíti az alkalmazások skálázását azáltal, hogy azonnal kiépíti az új virtuális gépeket, és replikálja az alkalmazás állapot nélküli összetevőit, hogy azok a kérések ellátására szolgálnak, de gyakran az adatbázis a központosított állapot-nyilvántartó összetevőként végződik.
+Az alkalmazások oldalon az alkalmazás általában Java vagy PHP nyelven lett kifejlesztve, és át lett telepítve az [Azure-beli virtuálisgép-méretezési csoportokon](../../virtual-machine-scale-sets/overview.md)vagy az Azure app Services-on való futtatásra,   vagy az [](../../app-service/overview.md)    [Azure Kubernetes szolgáltatásban (ak)](../../aks/intro-kubernetes.md)való futtatásra. A virtuálisgép-méretezési csoport, a App Service vagy az AK az alapul szolgáló infrastruktúrának megfelelően egyszerűsíti az alkalmazások skálázását azáltal, hogy azonnal kiépíti az új virtuális gépeket, és replikálja az alkalmazás állapot nélküli összetevőit, hogy azok a kérések ellátására szolgálnak, de gyakran az adatbázis a központosított állapot-nyilvántartó összetevőként végződik.
 
 Az olvasási replika funkció lehetővé teszi az adatok replikálását egy Azure Database for MySQL rugalmas kiszolgálóról egy írásvédett kiszolgálóra. A forrás-kiszolgálóról **legfeljebb 10 replikára** lehet replikálni. A replikák aszinkron módon frissülnek a MySQL motor natív [bináris naplójának (BinLog) fájljának pozíció-alapú replikációs technológiájának](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)használatával. A terheléselosztó proxy-megoldásait, például a [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) -t használva zökkenőmentesen kibővítheti az alkalmazás számítási feladatait a replikák olvasására az alkalmazás újraszámítási díja nélkül. 
 
@@ -121,7 +121,7 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 További információért tekintse meg a [figyelési fogalmakat](concepts-monitoring.md) .
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
@@ -132,20 +132,22 @@ A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi 
 
 A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A Azure Database for MySQL rugalmas kiszolgálója jelenleg a következő Azure-régiókban érhető el:
 
-- Nyugat-Európa
-- Észak-Európa
-- Az Egyesült Királyság déli régiója
-- USA 2. keleti régiója
-- USA 2. nyugati régiója
-- USA középső régiója
-- USA keleti régiója
-- Közép-Kanada
-- Délkelet-Ázsia
-- Dél-Korea középső régiója
-- Kelet-Japán
-- Kelet-Ausztrália
+| Régió | Magas rendelkezésre állás | 
+| --- | --- |
+| Nyugat-Európa | :heavy_check_mark: | 
+| Észak-Európa | :heavy_check_mark: | 
+| Az Egyesült Királyság déli régiója | x | 
+| USA 2. keleti régiója | :heavy_check_mark: | 
+| USA 2. nyugati régiója | :heavy_check_mark: | 
+| Az USA középső régiója | x | 
+| USA keleti régiója | :heavy_check_mark: | 
+| Közép-Kanada | x | 
+| Délkelet-Ázsia | :heavy_check_mark: | 
+| Dél-Korea középső régiója | x | 
+| Kelet-Japán | x | 
+| Kelet-Ausztrália | :heavy_check_mark: |
 
-Hamarosan új kiszolgálók hozzáadásán dolgozunk.
+Hamarosan új régiókat fogunk hozzáadni.
 
 ## <a name="contacts"></a>Kapcsolattartók
 Ha bármilyen kérdése vagy javaslata van Azure Database for MySQL rugalmas kiszolgálón, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask Az Azure db for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek). Ez az e-mail-cím nem technikai támogatási alias.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563398"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054821"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
@@ -90,7 +90,7 @@ ms.locfileid: "97563398"
 - [Önkiszolgáló alkalmazás-hozzáférés használata](access-panel-manage-self-service-access.md)
 - [Az Azure AD saját alkalmazásaiból alkalmazásba való bejelentkezéssel kapcsolatos problémák elhárítása](application-sign-in-other-problem-access-panel.md)
 - [Jelszóalapú egyszeri bejelentkezés hibaelhárítása az Azure AD-ben](troubleshoot-password-based-sso.md)
-- [Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
+- [Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése](my-apps-deployment-plan.md)
 - [Mi az az egyszeri bejelentkezés (SSO)?](what-is-single-sign-on.md)
 - [A Azure Active Directoryban lévő, nem megfelelő jogosultságokkal rendelkező vagy gyanús alkalmazásokra vonatkozó teendők](manage-application-permissions.md)
 - [Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben](add-application-portal-configure.md)

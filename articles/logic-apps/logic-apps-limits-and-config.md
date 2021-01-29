@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/22/2021
-ms.openlocfilehash: b16e95c231096b7b37175cda5233019696fba19c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 01/25/2021
+ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726515"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054754"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -380,27 +380,42 @@ Ha letilt egy logikai alkalmazást, a rendszer nem hoz létre új futtatásokat.
 Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat.
 
 <a name="configuration"></a>
+<a name="firewall-ip-configuration"></a>
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Tűzfal konfigurációja: IP-címek és szolgáltatás-Címkék
 
-A bejövő és kimenő hívásokhoz Azure Logic Apps által használt IP-címek attól a régiótól függenek, ahol a logikai alkalmazás létezik. Az ugyanabban a régióban *található logikai alkalmazások* ugyanazt az IP-címtartományt használják. Bizonyos [automatizálási](/power-automate/getting-started) hívások, például a **http** és a **http + OpenAPI** kérelmek, közvetlenül a Azure Logic apps szolgáltatáson keresztül érhetők el, és az itt felsorolt IP-címekről érkeznek. További információ a Power automatizáló által használt IP-címekről: [korlátok és konfiguráció a Power automatizálásban](/flow/limits-and-config#ip-address-configuration).
+Ha a logikai alkalmazásnak olyan tűzfalon keresztül kell kommunikálnia, amely adott IP-címekre *korlátozza a forgalmat* , a tűzfalnak engedélyeznie kell a hozzáférést a Logic Apps szolgáltatás vagy futtatókörnyezet által használt [bejövő](#inbound) és [kimenő](#outbound) IP-címekhez abban az Azure-régióban, ahol a logikai alkalmazás létezik. Az ugyanabban a régióban *található logikai alkalmazások* ugyanazt az IP-címtartományt használják.
 
-> [!TIP]
-> A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében igény szerint használhatja a [szolgáltatás címkéit](../virtual-network/service-tags-overview.md), és nem kell megadnia az egyes régiók Logic apps IP-címeit a jelen szakasz későbbi részében leírtak szerint.
-> Ezek a címkék azokon a régiókban működnek, ahol a Logic Apps szolgáltatás elérhető:
->
-> * **LogicAppsManagement**: a Logic Apps szolgáltatás bejövő IP-címeinek előtagjait jelöli.
-> * **LogicApps**: a Logic Apps szolgáltatás kimenő IP-címeinek előtagjait jelöli.
+Például az USA nyugati régiójában lévő Logic apps által a beépített triggerek és műveletek (például a [http-eseményindító vagy-művelet](../connectors/connectors-native-http.md)) által küldött vagy fogadott alkalmazások támogatásához a tűzfalnak engedélyeznie kell a hozzáférést az *összes* Logic Apps szolgáltatás bejövő IP-címéhez, *valamint* az USA nyugati régiójában található kimenő IP-címekhez.
 
-* Az [Azure China 21Vianet](/azure/china/)esetében a rögzített vagy fenntartott IP-címek nem érhetők el az [Egyéni összekötők](../logic-apps/custom-connector-overview.md) és a [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)számára, például az Azure Storage, az SQL Server, az Office 365 Outlook stb.
+Ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md#managed-api-connectors)is használ, például az Office 365 Outlook Connectort vagy az SQL Connectort, vagy [Egyéni összekötőket](/connectors/custom-connectors/)használ, a tűzfalnak engedélyeznie kell a hozzáférést a logikai alkalmazás Azure-régiójában lévő *összes* [felügyelt összekötő kimenő IP-címéhez](#outbound) . Továbbá, ha olyan egyéni összekötőket használ, amelyek helyszíni erőforrásokhoz férnek hozzá az [Azure helyszíni adatátjáró-erőforrásán](logic-apps-gateway-connection.md)keresztül, akkor be kell állítania az átjáró telepítését, hogy engedélyezze a hozzáférést a megfelelő *felügyelt összekötők [kimenő IP-címeihez](#outbound)*.
 
-* Ha támogatni szeretné a logikai alkalmazások által a [http](../connectors/connectors-native-http.md), a [http + a hencegés](../connectors/connectors-native-http-swagger.md)és más HTTP-kérések által közvetlenül elvégezhető hívásokat, állítsa be a tűzfalat a Logic Apps szolgáltatás által használt összes [bejövő](#inbound) *és* [kimenő](#outbound) IP-címmel, azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a jelen szakasz **bejövő** és **kimenő** fejlécei alatt jelennek meg, és régiónként vannak rendezve.
+Az átjáró kommunikációs beállításainak beállításával kapcsolatos további információkért tekintse meg a következő témaköröket:
 
-* A [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors) által kezdeményezett hívások támogatásához állítsa be a tűzfalat az összekötők által használt *összes* [kimenő](#outbound) IP-címmel azon régiók alapján, ahol a logikai alkalmazások léteznek. Ezek a címek a szakasz **kimenő** fejlécében jelennek meg, és régiónként vannak rendezve.
+* [Helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
+* [Helyszíni adatátjáró proxybeállításainak konfigurálása](/data-integration/gateway/service-gateway-proxy)
 
-* Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások kommunikációjának engedélyezéséhez győződjön meg arról, hogy [megnyitotta ezeket a portokat](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+<a name="ip-setup-considerations"></a>
 
-* Ha a logikai alkalmazások problémákba ütközik a [tűzfalakat és tűzfalszabályokat](../storage/common/storage-network-security.md)használó Azure Storage-fiókokhoz való hozzáférés során, a [hozzáférés engedélyezéséhez számos lehetőség](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)áll rendelkezésére.
+### <a name="firewall-ip-configuration-considerations"></a>A tűzfal IP-konfigurációjának szempontjai
+
+A tűzfal IP-címekkel való beállítása előtt tekintse át a következő szempontokat:
+
+* Ha [energiagazdálkodást](/power-automate/getting-started)használ, néhány művelet, például a **http** és a **http + OpenAPI**, közvetlenül a Azure Logic apps szolgáltatáson keresztül érhető el, és az itt felsorolt IP-címekről származik. További információ a Power automatizáló által használt IP-címekről: [korlátok és konfiguráció a Power automatizáláshoz](/flow/limits-and-config#ip-address-configuration).
+
+* Az [Azure China 21Vianet](/azure/china/)esetében a rögzített vagy fenntartott IP-címek nem érhetők el [Egyéni összekötők](../logic-apps/custom-connector-overview.md) és [felügyelt összekötők](../connectors/apis-list.md#managed-api-connectors)esetén, például az Azure Storage, a SQL Server, az Office 365 Outlook stb.
+
+* Ha a logikai alkalmazások egy [integrációs szolgáltatási környezetben (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md)futnak, győződjön meg arról, hogy a [portok is meg vannak nyitva](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+
+* A létrehozni kívánt biztonsági szabályok leegyszerűsítése érdekében igény szerint használhatja a [szolgáltatás címkéit](../virtual-network/service-tags-overview.md) ahelyett, hogy az egyes régiókban IP-cím előtagjait kellene megadnia. Ezek a címkék azokon a régiókban működnek, ahol a Logic Apps szolgáltatás elérhető:
+
+  * **LogicAppsManagement**: a Logic Apps szolgáltatás bejövő IP-címeinek előtagjait jelöli.
+
+  * **LogicApps**: a Logic Apps szolgáltatás kimenő IP-címeinek előtagjait jelöli.
+
+  * **AzureConnectors**: a felügyelt összekötők IP-címének előtagjait jelöli, amelyek a bejövő webhookok visszahívását végzik a Logic apps szolgáltatáshoz és a hozzájuk tartozó szolgáltatásokhoz, például az Azure Storage-hoz vagy az Azure Event Hubshoz.
+
+* Ha a logikai alkalmazások problémákba ütközik a [tűzfalakat és tűzfalszabályokat](../storage/common/storage-network-security.md)használó Azure Storage-fiókokhoz való hozzáférés során, a [hozzáférés engedélyezéséhez számos más lehetőség is rendelkezésre](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)áll.
 
   A Logic apps például nem fér hozzá közvetlenül a tűzfalszabályok használatát használó Storage-fiókokhoz, és ugyanabban a régióban található. Ha azonban engedélyezi a [kimenő IP-címeket a felügyelt összekötők számára a régióban](../logic-apps/logic-apps-limits-and-config.md#outbound), a logikai alkalmazások hozzáférhetnek egy másik régióban található Storage-fiókokhoz, kivéve ha az Azure Table Storage vagy az Azure Queue Storage-összekötőt használja. Table Storage vagy Queue Storage eléréséhez használhatja a HTTP-triggert és a műveleteket. További lehetőségek: hozzáférés a [Storage-fiókokhoz a tűzfalak mögött](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
@@ -411,9 +426,7 @@ A bejövő és kimenő hívásokhoz Azure Logic Apps által használt IP-címek 
 Ez a szakasz csak a Azure Logic Apps szolgáltatás bejövő IP-címeit sorolja fel. Ha Azure Government van, tekintse meg [Azure Government bejövő IP-címeket](#azure-government-inbound).
 
 > [!TIP]
-> A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében igény szerint [használhatja a](../virtual-network/service-tags-overview.md) **LogicAppsManagement**, és nem kell megadnia a bejövő Logic apps IP-címek előtagjait az egyes régiókban.
-> A felügyelt összekötők esetében igény szerint használhatja a **AzureConnectors** szolgáltatás címkéjét, és nem kell megadnia a bejövő felügyelt összekötő IP-címének előtagjait az egyes régiókban.
-> Ezek a címkék azokon a régiókban működnek, ahol a Logic Apps szolgáltatás elérhető.
+> A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében igény szerint [használhatja a](../virtual-network/service-tags-overview.md) **LogicAppsManagement**, és nem kell megadnia a bejövő Logic apps IP-címek előtagjait az egyes régiókban. Igény szerint a **AzureConnectors** szolgáltatás címkéjét is használhatja a felügyelt összekötők számára, amelyek beérkező webhook-visszahívásokat végeznek a Logic Apps szolgáltatásba ahelyett, hogy a bejövő felügyelt összekötő IP-címeinek megadásával megadják az egyes régiókat. Ezek a címkék azokon a régiókban működnek, ahol a Logic Apps szolgáltatás elérhető.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -479,8 +492,7 @@ Ez a szakasz csak a Azure Logic Apps szolgáltatás bejövő IP-címeit sorolja 
 Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők kimenő IP-címeit sorolja fel. Ha Azure Government van, tekintse meg a [Azure Government-kimenő IP-címek](#azure-government-outbound)című témakört.
 
 > [!TIP]
-> A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében igény szerint [használhatja a](../virtual-network/service-tags-overview.md) **LogicApps**, és nem kell megadnia a kimenő Logic apps IP-cím előtagjait az egyes régiókban.
-> Ez a címke azon régiók között működik, ahol a Logic Apps szolgáltatás elérhető. 
+> A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében igény szerint [használhatja a](../virtual-network/service-tags-overview.md) **LogicApps**, és nem kell megadnia a kimenő Logic apps IP-cím előtagjait az egyes régiókban. Igény szerint a **AzureConnectors** szolgáltatás címkéjét is használhatja a felügyelt összekötők számára, amelyek kimenő hívásokat végeznek a saját szolgáltatásaikban, például az Azure Storage-ban vagy az Azure Event Hubs-ban, nem pedig a kimenő felügyelt összekötők IP-címeinek megadását az egyes régiókban. Ezek a címkék azokon a régiókban működnek, ahol a Logic Apps szolgáltatás elérhető.
 
 <a name="multi-tenant-outbound"></a>
 
@@ -539,7 +551,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 | USA-beli államigazgatás – Virginia | 13.72.54.205, 52.227.138.30, 52.227.152.44 | 52.127.42.128 - 52.127.42.143, 52.227.143.61, 52.227.162.91 |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhatja létre első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * Tudnivalók a [gyakori példákról és forgatókönyvekről](../logic-apps/logic-apps-examples-and-scenarios.md)

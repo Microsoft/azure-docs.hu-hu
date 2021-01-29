@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894847"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055348"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell-modulok frissítése
 
@@ -23,7 +23,7 @@ A leggyakoribb PowerShell-modulok alapértelmezés szerint az egyes Automation-f
 
 Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatok hatását, győződjön meg róla, hogy tesztelni és érvényesíteni szeretné a frissítéseket. Ha nem rendelkezik erre a célra szánt dedikált Automation-fiókkal, érdemes lehet létrehozni egy másikat, hogy tesztelje a runbookok fejlesztésének számos különböző forgatókönyvét. Ennek a tesztelésnek tartalmaznia kell az ismétlődő módosításokat, például a PowerShell-modulok frissítését.
 
-Győződjön meg arról, hogy az Automation-fiókja rendelkezik az Azure-beli [futtató fiók hitelesítő adatainak](manage-runas-account.md) létrehozásával.
+Győződjön meg arról, hogy az Automation-fiókja létrehoz egy Azure-beli [futtató fiókot](automation-security-overview.md#run-as-accounts) .
 
 Ha helyileg fejleszti a parancsfájlokat, akkor azt javasoljuk, hogy az Automation-fiókban lévő, a tesztelés során azonos verziójú modulokat is ugyanazzal az eredménnyel kapja meg. Az eredmények ellenőrzése és a szükséges módosítások alkalmazása után áthelyezheti a módosításokat az éles környezetbe.
 

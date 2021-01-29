@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható az Azure Custom Vision egy olyan 
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060529"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055365"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -51,7 +51,6 @@ A Kezdés előtt olvassa el a következő cikkeket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
 ::: zone-end
@@ -59,6 +58,10 @@ A Kezdés előtt olvassa el a következő cikkeket:
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
 ::: zone-end
+
+> [!IMPORTANT]
+> Ez a Custom Vision modul csak **Intel x86 és amd64** architektúrákat támogat. A folytatás előtt ellenőrizze a peremhálózati eszköz architektúráját.
+
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
 Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a **CTRL + N billentyűkombinációt**, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintésekor vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. 
@@ -81,6 +84,9 @@ A HTTP-bővítmény csomópont egy proxy szerepét játssza le.  Ez a mező alap
 Ahogy a neve Custom Vision sugallja, használhatja a saját egyéni objektum-Kiderítő vagy a Felhőbeli besorolás létrehozásához. Egyszerű, könnyen használható és intuitív kezelőfelületet biztosít a felhőben vagy az Edge-n keresztül üzembe helyezhető Custom Vision modellek kiépítéséhez.
 
 A Toy Truck-detektor létrehozásához kövesse a rövid útmutató [: Object detektor létrehozása a Custom Vision webhelyről](../../cognitive-services/custom-vision-service/get-started-build-detector.md)című témakör lépéseit.
+
+> [!IMPORTANT]
+> Ez a Custom Vision modul csak az **Intel x86 és az AMD64** architektúrát támogatja. A folytatás előtt ellenőrizze a peremhálózati eszköz architektúráját.
 
 További megjegyzések:
  
@@ -388,7 +394,7 @@ Jegyezze fel a következő információkat az előző üzenetekben:
 
 Ha más oktatóanyagokat vagy gyors útmutatókat szeretne kipróbálni, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

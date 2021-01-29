@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage Library V12 – Java'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a javára tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a Java-hoz készült Azure Blob Storage Client Library 12-es verziója, és hogyan hozható létre tároló és blob (Object) tároló. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5c34cea5d8222a246462bfadde66fd8a5ddbec7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501124"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054703"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Java V12 SDK-val
 
@@ -37,7 +37,7 @@ További források:
 
 ## <a name="setting-up"></a>Beállítás
 
-Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure Blob Storage-ügyfélhez készült, a Javával való együttműködéshez.
+Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a Javához készült Azure Blob Storage ügyféloldali kódtár V12-es verziójának használatával.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
@@ -183,7 +183,7 @@ A következő Java-osztályok használhatók az alábbi erőforrásokkal való k
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket az Azure Blob Storage ügyféloldali kódtára Javához:
+Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következőket az Azure Blob Storage Javához készült ügyféloldali kódtár használatával:
 
 * [A kapcsolati sztring lekérése](#get-the-connection-string)
 * [Tároló létrehozása](#create-a-container)
@@ -199,7 +199,7 @@ Az alábbi kód a Storage- [kapcsolatok karakterláncának konfigurálása](#con
 Adja hozzá ezt a kódot a `Main` metódushoz:
 
 ```java
-System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
+System.out.println("Azure Blob Storage v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -342,7 +342,7 @@ mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonTh
 Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
-Azure Blob storage v12 - Java quickstart sample
+Azure Blob Storage v12 - Java quickstart sample
 
 Uploading to Blob storage as blob:
         https://mystorageacct.blob.core.windows.net/quickstartblobsf9aa68a5-260e-47e6-bea2-2dcfcfa1fd9a/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
@@ -364,7 +364,7 @@ A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappá
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Java használatával.
 

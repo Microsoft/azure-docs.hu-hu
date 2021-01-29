@@ -1,4 +1,4 @@
-- name: Felhasználói súgódokumentáció
+- name: Felhasználói súgó dokumentációja
   href: index.yml
 - name: Kétlépéses ellenőrzés súgója
   items:
@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: Fiókok biztonsági mentése és helyreállítása
       href: user-help-auth-app-backup-recovery.md
+    - name: Jelszavak importálása a hitelesítő alkalmazásba
+      href: user-help-authenticator-app-import-passwords.md
     - name: GYIK
       href: user-help-auth-app-faq.md
 - name: A Saját fiók portál súgója

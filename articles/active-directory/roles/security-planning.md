@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12f262347938720a9d5a95e070d792a83ac9188c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740805"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055246"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -147,9 +147,10 @@ Ha a kezdeti globális rendszergazdák felhasználják a meglévő Microsoft-fi�
 
 A személyes e-mail-fiókokat rendszeresen a Cyber-támadók végzik, a személyes e-mail-címeket nem fogadja el a globális rendszergazdai fiókok számára. Az internetes kockázatok rendszergazdai jogosultságokkal való elkülönítéséhez hozzon létre dedikált fiókokat minden rendszergazda jogosultságokkal rendelkező felhasználó számára.
 
-* Ügyeljen arra, hogy a felhasználók a globális rendszergazdai feladatok elvégzéséhez külön fiókokat hozzanak létre
-* Győződjön meg arról, hogy a globális rendszergazdák nem véletlenül nyitnak meg e-maileket, vagy futtassanak programokat a rendszergazdai fiókjaikkal
-* Győződjön meg arról, hogy ezek a fiókok rendelkeznek e-mail-címmel egy működő postaládába
+* Ügyeljen arra, hogy a felhasználók számára a globális rendszergazdai feladatok elvégzéséhez külön fiókot hozzon létre.
+* Győződjön meg arról, hogy a globális rendszergazdák nem véletlenül nyitnak meg e-maileket, vagy futtassanak programokat a rendszergazdai fiókjaikkal.
+* Győződjön meg arról, hogy ezek a fiókok rendelkeznek e-mail-címmel egy működő postaládába.
+* A globális rendszergazda (és más kiemelt csoportok) fiókjai csak felhőalapú fiókok lehetnek, amelyek nem kapcsolódnak a helyszíni Active Directoryhoz.
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Győződjön meg arról, hogy a rendszergazdai fiókok jelszavai nemrég módosultak
 
@@ -359,7 +360,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Műveletek
+* Üzemeltetés
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások
@@ -464,7 +465,7 @@ További információ arról, hogyan kezeli a Microsoft Office 365 a biztonsági
 
 **Válasz:** A nem Kiemelt fiókok használata az összes felhasználó és a legtöbb rendszergazda számára. Kezdje azzal, hogy kifejleszti a szervezeti lábnyomot, és meghatározza, hogy mely néhány rendszergazdai fióknak kell jogosultságot biztosítania. És figyelés az újonnan létrehozott rendszergazda felhasználók számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Microsoft adatvédelmi központ a termékbiztonság számára](https://www.microsoft.com/trustcenter/security) – a Microsoft Cloud Products és Services biztonsági funkciói
 

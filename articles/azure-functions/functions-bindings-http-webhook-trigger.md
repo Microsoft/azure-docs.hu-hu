@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695645"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054957"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -448,7 +448,7 @@ A fájl *function.js* :
         {
             "type": "http",
             "direction": "out",
-            "name": "res"
+            "name": "$return"
         }
     ]
 }
@@ -547,13 +547,13 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `HttpTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa** | n.a.| Kötelező – a következőre kell beállítani: `httpTrigger` . |
 | **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
 | **név** | n.a.| Kötelező – a kérelem vagy a kérelem törzse függvény kódjában használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy a függvény meghívásához szükség van-e a kulcsokra, ha vannak ilyenek. Az engedélyezési szint az alábbi értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs szükség API-kulcsra.</li><li><code>function</code>&mdash;Function-specifikus API-kulcs szükséges. Ez az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A főkulcs megadása kötelező.</li></ul> További információt az [engedélyezési kulcsok](#authorization-keys)című szakaszban talál. |
-| **methods** |**Módszerek** | A függvény által válaszoló HTTP-metódusok tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusra válaszol. Lásd: [a http-végpont testreszabása](#customize-the-http-endpoint). |
+| **módszerek** |**Metódusok** | A függvény által válaszoló HTTP-metódusok tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusra válaszol. Lásd: [a http-végpont testreszabása](#customize-the-http-endpoint). |
 | **route** | **Útvonal** | Meghatározza azt az útválasztási sablont, amely azt szabályozza, hogy a függvény milyen URL-címeket válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>` . További információ: [a http-végpont testreszabása](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Csak az 1. x verziójú futtatókörnyezet esetében támogatott._<br/><br/>Konfigurálja a HTTP-triggert, amely [webhook](https://en.wikipedia.org/wiki/Webhook) -fogadóként működik a megadott szolgáltatónál. `methods`Ha ezt a tulajdonságot beállítja, ne állítsa be a tulajdonságot. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpont egy adott szolgáltató logikája nélkül. Ez a beállítás csak a HTTP POST és a tartalomtípus használatával korlátozza a kérelmeket `application/json` .</li><li><code>github</code>&mdash;A függvény válaszol a [GitHub-webhookokra](https://developer.github.com/webhooks/). Ne használja a  _authLevel_ tulajdonságot GitHub-webhookokkal. További információt a cikk későbbi, a GitHub-webhookok című szakaszában talál.</li><li><code>slack</code>&mdash;A függvény válaszol a [Slack webhookokra](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonságot Slack webhookokkal. További információt a cikk későbbi, a Slack webhookok című szakaszában talál.</li></ul>|
 
@@ -927,6 +927,6 @@ A HTTP-kérés hossza legfeljebb 100 MB (104 857 600 bájt), az URL-cím hossza 
 Ha a HTTP-triggert használó függvény 230 másodpercen belül nem fejeződik be, akkor a [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) időtúllépést jelez, és http 502-hibát ad vissza. A függvény továbbra is futni fog, de nem tud HTTP-választ adni. A hosszú ideig futó függvények esetében javasoljuk, hogy kövesse az aszinkron mintákat, és olyan helyet küldjön vissza, amelyben pingelheti a kérés állapotát. További információ a függvények futtatásának időtartamáról: [skálázás és üzemeltetés – fogyasztási terv](functions-scale.md#timeout).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [HTTP-válasz visszaadása függvényből](./functions-bindings-http-webhook-output.md)

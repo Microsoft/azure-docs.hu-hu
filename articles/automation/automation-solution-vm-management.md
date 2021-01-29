@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372157"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055381"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours áttekintése
 
@@ -37,7 +37,7 @@ A jelenlegi szolgáltatás korlátai a következők:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A virtuális gépek indítása és leállítása a munkaidőn kívül funkció runbookok egy Azure-beli [futtató fiókkal](./manage-runas-account.md)működik. A futtató fiók az előnyben részesített hitelesítési módszer, mert a tanúsítvány-hitelesítést használ olyan jelszó helyett, amely esetleg lejáró vagy gyakran változhat.
+- A virtuális gépek indítása és leállítása a munkaidőn kívül funkció runbookok egy Azure-beli [futtató fiókkal](./automation-security-overview.md#run-as-accounts)működik. A futtató fiók az előnyben részesített hitelesítési módszer, mert a tanúsítvány-hitelesítést használ olyan jelszó helyett, amely esetleg lejáró vagy gyakran változhat.
 
 - A csatolt Automation-fióknak és a Log Analytics munkaterületnek ugyanabban az erőforráscsoporthoz kell lennie.
 
@@ -79,7 +79,7 @@ Ha egy meglévő Automation-fiókkal és Log Analytics munkaterülettel kívánj
 Az új Automation-fiókkal és Log Analytics munkaterülettel engedélyezheti a virtuális gépeket a Start/Stop VMs during off-hours szolgáltatáshoz. Ebben az esetben az előző szakaszban meghatározott engedélyekre, valamint az ebben a szakaszban meghatározott engedélyekre van szükség. A következő szerepköröket is meg kell adnia:
 
 - Co-Administrator az előfizetésen. Ez a szerepkör szükséges a klasszikus futtató fiók létrehozásához, ha a klasszikus virtuális gépeket fogja kezelni. Alapértelmezés szerint a [klasszikus futtató fiókok](automation-create-standalone-account.md#create-a-classic-run-as-account) már nem jönnek létre.
-- Tagság az [Azure ad](../active-directory/roles/permissions-reference.md) -alkalmazás fejlesztői szerepkörében. A futtató fiókok konfigurálásával kapcsolatos további információkért lásd: [engedélyek a futtató fiókok konfigurálására](manage-runas-account.md#permissions).
+- Tagság az [Azure ad](../active-directory/roles/permissions-reference.md) -alkalmazás fejlesztői szerepkörében. A futtató fiókok konfigurálásával kapcsolatos további információkért lásd: [engedélyek a futtató fiókok konfigurálására](automation-security-overview.md#permissions).
 - Közreműködő az előfizetésen vagy a következő engedélyeken.
 
 | Engedély |Hatókör|
@@ -106,7 +106,7 @@ A következő táblázat felsorolja azokat a runbookok, amelyeket a szolgáltat�
 
 Az összes szülő runbookok tartalmazza a `WhatIf` paramétert. Ha igaz értékre van állítva, a paraméter támogatja a runbook által a paraméter nélkül futtatott pontos viselkedést, és ellenőrzi, hogy a megfelelő virtuális gépek célozva vannak-e. A runbook csak akkor hajtja végre a definiált műveleteit, ha a `WhatIf` paraméter értéke hamis.
 
-|Forgatókönyv | Paraméterek | Leírás|
+|Forgatókönyv | Paraméterek | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Meghívva a szülő runbook. Ez a runbook a riasztásokat erőforrás-alapon hozza létre az automatikus leállítási forgatókönyvhöz.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true vagy FALSE  | Létrehozza vagy frissíti az Azure riasztási szabályokat a célként megadott előfizetésben vagy erőforráscsoportok virtuális gépeken. <br> `VMList` a a virtuális gépek vesszővel tagolt listája (szóközök nélkül), például: `vm1,vm2,vm3` .<br> `WhatIf` lehetővé teszi a runbook logika érvényesítését a végrehajtás nélkül.|
@@ -150,7 +150,7 @@ A következő táblázat felsorolja az Automation-fiókban létrehozott változ�
 >[!NOTE]
 >A változó esetében `External_WaitTimeForVMRetryInSeconds` az alapértelmezett érték 600 és 2100 között frissült. 
 
-Minden forgatókönyvben a `External_Start_ResourceGroupNames`  `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` virtuális gépek megcélzásához szükséges változók, valamint a **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**és **ScheduledStartStop_Parent** runbookok vesszővel elválasztott virtuálisgép-listája szerepel. Ez azt eredményezi, hogy a virtuális gépeknek meg kell egyezniük a cél erőforráscsoporthoz az indítási és leállítási műveletek elvégzéséhez. A logika a Azure Policyhoz hasonlóan működik, amelyekben megcélozhatja az előfizetést vagy az erőforráscsoportot, valamint az újonnan létrehozott virtuális gépek által örökölt műveleteket is. Ezzel a módszerrel elkerülhető, hogy minden virtuális gép esetében külön ütemtervet kell fenntartani, és a felügyelet megkezdődik, és a méretezési folyamat leáll.
+Minden forgatókönyvben a `External_Start_ResourceGroupNames`  `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` virtuális gépek megcélzásához szükséges változók, valamint a **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** és **ScheduledStartStop_Parent** runbookok vesszővel elválasztott virtuálisgép-listája szerepel. Ez azt eredményezi, hogy a virtuális gépeknek meg kell egyezniük a cél erőforráscsoporthoz az indítási és leállítási műveletek elvégzéséhez. A logika a Azure Policyhoz hasonlóan működik, amelyekben megcélozhatja az előfizetést vagy az erőforráscsoportot, valamint az újonnan létrehozott virtuális gépek által örökölt műveleteket is. Ezzel a módszerrel elkerülhető, hogy minden virtuális gép esetében külön ütemtervet kell fenntartani, és a felügyelet megkezdődik, és a méretezési folyamat leáll.
 
 ### <a name="schedules"></a>Ütemezések
 
@@ -158,7 +158,7 @@ A következő táblázat az Automation-fiókban létrehozott alapértelmezett ü
 
 Ne engedélyezze az összes ütemtervet, mert ez az átfedésben lévő ütemezett műveleteket is létrehozhatja. Érdemes eldönteni, hogy mely optimalizálásokat kívánja elvégezni, és ennek megfelelően módosítania kell azokat. További magyarázatért tekintse meg az Áttekintés szakaszban található példákat.
 
-|Ütemterv neve | Frequency | Leírás|
+|Ütemterv neve | Gyakoriság | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | A **AutoStop_CreateAlert_Parent** runbook 8 óránként futtatja, ami viszont leállítja a virtuálisgép-alapú értékeket `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` és `External_ExcludeVMNames` változókat. Másik lehetőségként megadhatja a virtuális gépek vesszővel tagolt listáját a `VMList` paraméter használatával.|
 |Scheduled_StopVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook minden nap paraméterével futtatja `Stop` a megadott időpontban. A automatikusan leállítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak. A kapcsolódó ütemezett ütemezés engedélyezése **– StartVM**.|
@@ -191,7 +191,7 @@ A szolgáltatás használatának megkezdéséhez kövesse a [Start/Stop VMS Duri
 
 Az engedélyezett funkció eléréséhez használja a következő mechanizmusok egyikét:
 
-* Az Automation-fiókjából válassza a **virtuális gép indítása/leállítása** **kapcsolódó erőforrások**lehetőséget. A virtuális gép indítása/leállítása lapon válassza **a megoldás kezelése a virtuálisgép** - **megoldások indítása/leállítása**lehetőséget.
+* Az Automation-fiókjából válassza a **virtuális gép indítása/leállítása** **kapcsolódó erőforrások** lehetőséget. A virtuális gép indítása/leállítása lapon válassza **a megoldás kezelése a virtuálisgép** - **megoldások indítása/leállítása** lehetőséget.
 
 * Navigáljon az Automation-fiókjához társított Log Analytics munkaterületre. Miután kiválasztotta a munkaterületet, válassza a bal oldali ablaktábla **megoldások** elemét. A megoldások lapon válassza a **Start-Stop-VM [munkaterület]** elemet a listából.  
 
@@ -211,11 +211,11 @@ Ha már nincs szüksége a szolgáltatás használatára, törölheti az Automat
 
 Start/Stop VMs during off-hours törlése:
 
-1. Az Automation-fiókban válassza a **kapcsolódó erőforrások**alatt található **csatolt munkaterület** lehetőséget.
+1. Az Automation-fiókban válassza a **kapcsolódó erőforrások** alatt található **csatolt munkaterület** lehetőséget.
 
-2. Válassza **a ugrás munkaterületre**lehetőséget.
+2. Válassza **a ugrás munkaterületre** lehetőséget.
 
-3. Kattintson az **általános**területen a **megoldások** elemre. 
+3. Kattintson az **általános** területen a **megoldások** elemre. 
 
 4. A megoldások lapon válassza a **Start-Stop-VM [munkaterület]** elemet. 
 
@@ -223,7 +223,7 @@ Start/Stop VMs during off-hours törlése:
 
 6. A megoldás törlése ablakban erősítse meg, hogy törölni kívánja a szolgáltatást.
 
-7. Az információk ellenőrzése és a szolgáltatás törlése után nyomon követheti a menüből kiválasztott **értesítések**szakaszban található előrehaladást. Az eltávolítási folyamat után visszatért a megoldások oldalára.
+7. Az információk ellenőrzése és a szolgáltatás törlése után nyomon követheti a menüből kiválasztott **értesítések** szakaszban található előrehaladást. Az eltávolítási folyamat után visszatért a megoldások oldalára.
 
 8. Az Automation-fiók és Log Analytics munkaterület nem törlődik a folyamat részeként. Ha nem szeretné megtartani a Log Analytics munkaterületet, manuálisan kell törölnie a Azure Portalból:
 

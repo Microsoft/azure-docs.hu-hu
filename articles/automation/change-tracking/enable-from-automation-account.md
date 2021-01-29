@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677305"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055161"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>A Change Tracking és az Inventory engedélyezése Automation-fiókból
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használható az Automation-fiókja a virtuális
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](../index.yml) a gépek kezeléséhez.
+* Egy [Automation-fiók](../automation-security-overview.md) a gépek kezeléséhez.
 * Egy [virtuális gép](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -67,7 +67,7 @@ A manuálisan telepített gépeket vagy számítógépeket, amelyeket a munkater
 
 3. Az összes rendelkezésre álló gép Change Tracking és leltárának engedélyezéséhez válassza az Engedélyezés lehetőséget az összes **elérhető gépen** a **gépek kezelése** lapon. Ez a művelet letiltja a vezérlőt, hogy egyenként vegyen fel gépeket, és hozzáadja a munkaterületnek jelentő összes gépet a számítógépcsoport mentett keresési lekérdezéséhez. Ha be van jelölve, ez a művelet letiltja a **számítógépek kezelése** lehetőséget.
 
-4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen** . Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nem maradt hatókör-konfiguráció.
+4. Az összes rendelkezésre álló és jövőbeli gép funkciójának engedélyezéséhez válassza az **Engedélyezés lehetőséget az összes rendelkezésre álló és jövőbeli gépen**. Ez a beállítás törli a mentett keresés és a hatókör konfigurációját a munkaterületről, és megnyitja a szolgáltatást a munkaterületnek jelentett összes Azure-beli és nem Azure-beli gép számára. Ha bejelöli ezt a jelölőnégyzetet, ez a művelet véglegesen letiltja a **gépek kezelése** lehetőséget, mivel nem maradt hatókör-konfiguráció.
 
     > [!NOTE]
     > Mivel ez a lehetőség törli a mentett keresés és a hatókör konfigurációját a Log Analyticson belül, fontos, hogy a beállítás kiválasztása előtt távolítsa el az összes törlési zárolást a Log Analytics munkaterületen. Ha nem, akkor a beállítás nem távolítja el a konfigurációkat, ezért azokat manuálisan kell eltávolítania.

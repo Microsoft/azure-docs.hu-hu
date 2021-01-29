@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d14e4808d5bec03dff9406f37e63ee4c76e601f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b318ed0d5cd97ca7c020097dff25516f0783c70e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033221"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055297"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>A csoportra vonatkozó adatokhoz hozzáférő alkalmazások csoportbeli tulajdonosi engedélyének konfigurálása
 
@@ -74,7 +74,7 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 1. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
 
-    | Beállítás       | Típus         | Leírás  |
+    | Beállítás       | Típus         | Description  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |
@@ -124,4 +124,4 @@ További tudnivalók:
 * [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
 Segítség kérése vagy válaszok keresése a kérdéseire:
-* [Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure AD a Microsoft Q&A ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
