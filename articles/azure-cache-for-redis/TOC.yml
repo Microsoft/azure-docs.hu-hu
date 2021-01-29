@@ -45,6 +45,14 @@
       items:
         - name: A Spring Boot Initializer használata
           href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Események irányítása Azure Portal
+          href: cache-event-grid-quickstart-portal.md
+        - name: Események irányítása az Azure CLI-vel
+          href: cache-event-grid-quickstart-cli.md
+        - name: Események irányítása a PowerShell-lel
+          href: cache-event-grid-quickstart-powershell.md
     - name: Ranglisták létrehozása
       href: cache-web-app-cache-aside-leaderboard.md
     - name: Gépi tanulási modell üzembe helyezése
@@ -128,6 +136,8 @@
           href: cache-administration.md#schedule-updates
         - name: A redis-cli.exe hozzáférésének konfigurálása
           href: cache-how-to-redis-cli-tool.md
+        - name: Az Azure cache közzététele Redis-eseményekhez
+          href: cache-event-grid.md
         - name: A TLS 1.0 és 1.1 eltávolítása
           href: cache-remove-tls-10-11.md
         - name: Kezelés – GYIK

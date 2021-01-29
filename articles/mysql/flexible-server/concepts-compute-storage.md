@@ -1,17 +1,17 @@
 ---
 title: Számítási és tárolási lehetőségek – Azure Database for MySQL – rugalmas kiszolgáló
 description: Ez a cikk a Azure Database for MySQL rugalmas kiszolgáló számítási és tárolási lehetőségeit ismerteti.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2021
+ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954681"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052346"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -72,7 +72,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 Ha további részleteket szeretne megtudni a rendelkezésre álló számítási sorozatokról, tekintse meg az Azure virtuális gép dokumentációját, amely a [feltört (B sorozatú)](../../virtual-machines/sizes-b-series-burstable.md), [általános célú (Ddsv4 sorozat)](../../virtual-machines/ddv4-ddsv4-series.md)és a [memóriára optimalizált (Edsv4-sorozat)](../../virtual-machines/edv4-edsv4-series.md).
 
 >[!NOTE]
->A [feltört (B sorozatos)](../../virtual-machines/sizes-b-series-burstable.md) számítási réteg esetében, ha a kiszolgáló újraindul, például a felhasználó által kezdeményezett, tervezett vagy nem tervezett karbantartás miatt, előfordulhat, hogy a halmozott kredit elvész. Ennek az az oka, hogy amikor a Azure Database for MySQL újraindítják, akkor a halmozott kreditek megmaradnak. Tervezőrendszer, amikor a Azure Database for MySQL-kiszolgáló új csomóponton kezdi meg a frisst, kezdeti jóváírást kap. További információért olvassa el a [feltört (B sorozatú) gyakori kérdések](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)című témakört.
+>Ha a virtuális gép indítása/leállítása vagy újraindítása után a kihasználható [(B sorozatos) számítási réteg](../../virtual-machines/sizes-b-series-burstable.md) elvész, előfordulhat, hogy a kreditek elvesznek. További információ: [feltört (B sorozatú) gyakori kérdések](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Tárolás
 

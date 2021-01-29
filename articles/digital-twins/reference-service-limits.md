@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 87061d378be97bf669fd569c0408f247b9e8dc5d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 165fa23cf3965d3017b15c27fedc2846f97d8d11
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091787"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054399"
 ---
-# <a name="service-limits"></a>Szolgáltatási korlátozások
+# <a name="azure-digital-twins-service-limits"></a>Azure digitális Twins szolgáltatás korlátai
 
 Ezek a szolgáltatási korlátok az Azure Digital Twins szolgáltatásban.
 
 > [!NOTE]
-> A szolgáltatás egyes területein állítható korlátok vannak. Ezt az alábbi táblázatok tartalmazzák az *állítható?* oszlop szerint. Ha a korlát módosítható, az *állítható?* érték *Igen* .
+> A szolgáltatás egyes területein állítható korlátok vannak. Ezt az alábbi táblázatok tartalmazzák az *állítható?* oszlop szerint. Ha a korlát módosítható, az *állítható?* érték *Igen*.
 >
 > Ha vállalata megköveteli, hogy az alapértelmezett korlát fölé állítson be egy állítható korlátot vagy kvótát, további erőforrásokat kérhet le [egy támogatási jegy megnyitásával](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

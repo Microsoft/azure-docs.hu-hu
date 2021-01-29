@@ -143,6 +143,8 @@
           href: batch-sig-images.md
         - name: Készlet létrehozása felügyelt rendszerkép erőforrással
           href: batch-custom-images.md
+        - name: Készlet létrehozása Availability Zones között
+          href: create-pool-availability-zones.md
         - name: Készlet létrehozása a lemeztitkosítás engedélyezése mellett
           href: disk-encryption.md
         - name: Készlet létrehozása egy virtuális hálózaton belül

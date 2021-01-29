@@ -13,18 +13,15 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 425809339cf4c468293801460fdeb79d9e467968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 562162e0bd42b0a46b2b0c6d44ca9b37f1841750
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565599"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052860"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Prémium szintű Azure Active Directory-kiadások – Regisztráció
 Azure-előfizetésével vásárolhat és rendelhet Azure Active Directory (Azure AD) prémium szintű kiadásokat. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
-
-> [!NOTE]
->Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
 
 Az Active Directory Premium 1 vagy Premium 2-re történő regisztráció előtt először határozza meg, melyik előfizetést vagy csomagot kívánja használni a létezők közül:
 

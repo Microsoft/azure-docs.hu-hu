@@ -4,17 +4,17 @@ description: Az Azure Cost Management + Billing szolgáltatásaival a számláz�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/28/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34034a99641d75e44783cb5b87af8948b4db1628
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029940"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051093"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Mi az az Azure Cost Management + Billing?
 
@@ -43,11 +43,11 @@ A számlázási fiók az Azure-ba való regisztráció során jön létre. A sz�
 
 Az Azure Portal jelenleg a következő típusú számlázási fiókokat támogatja:
 
-- **Microsoft Online Services Program**: A Microsoft Online Services Program egyéni számlázási fiókjai akkor jönnek létre, amikor az Azure webhelyén keresztül regisztrál az Azure-ba. Erre példa az ingyenes Azure-fiók, a használatalapú fizetést használó fiók és a Visual Studio-előfizetés.
+- **Microsoft Online Services Program**: A Microsoft Online Services Program egyéni számlázási fiókjai akkor jönnek létre, amikor az Azure webhelyén keresztül regisztrál az Azure-ba. Ha például egy [ingyenes Azure-fiókra](./manage/create-free-services.md)regisztrál, az utólagos elszámolású díjszabással vagy a Visual Studio-előfizetővel kell eljárnia.
 
 - **Nagyvállalati Szerződés**: Nagyvállalati Szerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet Nagyvállalati Szerződést (EA) köt az Azure használatára.
 
-- **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy használatalapú fizetést használó fiókot, vagy frissíti ingyenes Azure-fiókját, külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez.
+- **Microsoft-ügyfélszerződés**: A Microsoft-ügyfélszerződéshez tartozó számlázási fiók akkor jön létre, amikor a szervezet a Microsoft képviselőjével együttműködve Microsoft-ügyfélszerződést köt. Egyes régiókban, ha a felhasználó az Azure-webhelyen regisztrál egy használatalapú fizetést használó fiókot, vagy frissíti [ingyenes Azure-fiókját](./manage/create-free-services.md), külön számlázási fiókot kaphat a Microsoft-ügyfélszerződéshez.
 
 ### <a name="scopes-for-billing-accounts"></a>A számlázási fiókok hatóköre
 A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet megtekinteni és kezelni a számlázást. Itt lehet kezelni a számlázási adatokat, a fizetéseket, a számlákat, és itt történik az általános fiókkezelés.

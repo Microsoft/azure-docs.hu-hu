@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 915a0d75622a98b33f647041f3c3b622cb5236b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900321"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053720"
 ---
 # <a name="send-an-email-from-a-runbook"></a>E-mail küldése runbookból
 
@@ -21,7 +21,7 @@ E-mailt küldhet egy runbook a [SendGrid](https://sendgrid.com/solutions) a Powe
 * Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel,  [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Egy SendGrid-fiók](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
 * [Automation-fiók](./index.yml) az **az** moduljaival.
-* [Futtató fiók](./manage-runas-account.md) a runbook tárolásához és végrehajtásához.
+* [Futtató fiók](./automation-security-overview.md#run-as-accounts) a runbook tárolásához és végrehajtásához.
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
 
@@ -74,7 +74,7 @@ Ha Azure Key Vaultt szeretne használni a runbook belül, a következő moduloka
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Runbook létrehozása e-mailek küldéséhez
 
-Miután létrehozott egy Key Vault és tárolta az `SendGrid` API-kulcsot, ideje létrehozni azt a runbook, amely lekéri az API-kulcsot, és elküld egy e-mailt. Egy olyan runbook használjon, amely `AzureRunAsConnection` [futtató fiókként](./manage-runas-account.md) hitelesíti az Azure-t a titkos kulcs lekéréséhez Azure Key Vault. Meghívjuk a **Send-GridMailMessage** runbook. Módosíthatja a példaként használt PowerShell-szkriptet, és felhasználhatja azt különböző forgatókönyvek esetén.
+Miután létrehozott egy Key Vault és tárolta az `SendGrid` API-kulcsot, ideje létrehozni azt a runbook, amely lekéri az API-kulcsot, és elküld egy e-mailt. Egy olyan runbook használjon, amely `AzureRunAsConnection` [futtató fiókként](./automation-security-overview.md#run-as-accounts) hitelesíti az Azure-t a titkos kulcs lekéréséhez Azure Key Vault. Meghívjuk a **Send-GridMailMessage** runbook. Módosíthatja a példaként használt PowerShell-szkriptet, és felhasználhatja azt különböző forgatókönyvek esetén.
 
 1. Nyissa meg Azure Automation-fiókját.
 2. A **folyamat automatizálása** területen válassza a **runbookok** lehetőséget.

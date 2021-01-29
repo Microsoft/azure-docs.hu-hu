@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b14dcb9ce2f2426d8d1496541022602a114cb6e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 61b45d6f6414b1e8e1f48f6d46957b21b9b8c58b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209669"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052498"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>A Change Tracking és az Inventory engedélyezése Azure-beli virtuális gépről
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használható egy Azure-beli virtuális gép a [
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](../index.yml) a gépek kezeléséhez.
+* Egy [Automation-fiók](../automation-security-overview.md) a gépek kezeléséhez.
 * Egy [virtuális gép](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -35,7 +35,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 2. Válassza ki azt a virtuális gépet, amelynek engedélyezni szeretné a Change Tracking és a leltárt. A virtuális gépek bármelyik régióban létezhetnek, az Automation-fiókja helyétől függetlenül.
 
-3. A virtuális gép lapon válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció**felügyelete alatt.
+3. A virtuális gép lapon válassza a **leltár** vagy a **változások követése** lehetőséget a **konfiguráció** felügyelete alatt.
 
 4. Rendelkeznie kell `Microsoft.OperationalInsights/workspaces/read` engedéllyel annak megállapításához, hogy a virtuális gép engedélyezve van-e a munkaterületen. További információ a szükséges engedélyekről: [szolgáltatások telepítési engedélyei](../automation-role-based-access-control.md#feature-setup-permissions). Ha többet szeretne megtudni arról, hogyan engedélyezheti egyszerre több gépet, tekintse meg az [Automation-fiók Change Tracking és leltározásának engedélyezése](enable-from-automation-account.md)című témakört.
 

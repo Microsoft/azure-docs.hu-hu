@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078833"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053907"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -65,7 +65,7 @@ Ha ideiglenes fájlokat kell létrehoznia a runbook logikájának részeként, a
 
 A hibrid homokozóval a `C:\temp` hibrid Runbook-feldolgozók tárterületének rendelkezésre állása alapján lehet használni. Az Azure-beli virtuális gépekre vonatkozó javaslatok azonban nem használhatják az [ideiglenes lemezt](../virtual-machines/managed-disks-overview.md#temporary-disk) Windows vagy Linux rendszeren a megőrizni kívánt adatmennyiséghez.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 A runbookok tartalmaznia kell a logikai [erőforrásokat](/rest/api/resources/resources), például a virtuális gépeket, a hálózatot és az erőforrásokat a hálózaton. Az erőforrások egy Azure-előfizetéshez vannak kötve, és a megfelelő hitelesítő adatok megkövetelése az erőforrásokhoz való runbookok. A runbook erőforrásainak kezelésével kapcsolatos példát az [erőforrások kezelése](manage-runbooks.md#handle-resources)című témakörben talál.
 
@@ -112,7 +112,7 @@ A Log Analytics-ügynökhöz és a **nxautomation** -fiókhoz elérhető naplók
 
 ## <a name="runbook-permissions"></a>Runbook-engedélyek
 
-A runbook engedélyekkel kell rendelkeznie az Azure-ba történő hitelesítéshez a hitelesítő adatokkal. Lásd: [Azure Automation futtató fiókok kezelése](manage-runas-account.md).
+A runbook engedélyekkel kell rendelkeznie az Azure-ba történő hitelesítéshez a hitelesítő adatokkal. Lásd: [Azure Automation hitelesítés áttekintése](automation-security-overview.md).
 
 ## <a name="modules"></a>Modulok
 
@@ -139,6 +139,7 @@ A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti. Megt
 
 | Állapot | Leírás |
 |:--- |:--- |
+| Aktiválása |A rendszer aktiválja a feladatot. |
 | Befejeződött |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Nem sikerült elindítani egy PowerShell-runbook, vagy kivétel történt a feladatokban. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
 | Sikertelen, várakozás erőforrásokra |A feladatot nem sikerült végrehajtani, mert elérte a [valós megosztási](#fair-share) korlátot háromszor, és ugyanabból az ellenőrzőpontból vagy a runbook elejétől indul el. |

@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 84aec5031dd8d19f8f2ad0aa32185002add378b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618076"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053979"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Jelszóalapú egyszeri bejelentkezés hibaelhárítása az Azure AD-ben
 
 Ha jelszó-alapú egyszeri bejelentkezést (SSO) szeretne használni az alkalmazásokban, telepítenie kell a böngésző kiterjesztését. A bővítmény automatikusan töltődik le, ha olyan alkalmazást választ, amely jelszó alapú egyszeri bejelentkezéshez van konfigurálva. Ha szeretne többet megtudni az alkalmazások végfelhasználói perspektívából való használatáról, tekintse meg [az alkalmazások portál súgóját](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="my-apps-browser-extension-not-installed"></a>Nincs telepítve az alkalmazások böngésző bővítménye
-Győződjön meg arról, hogy a böngésző bővítmény telepítve van. További információ: [Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md). 
+Győződjön meg arról, hogy a böngésző bővítmény telepítve van. További információ: [Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése](my-apps-deployment-plan.md). 
 
 ## <a name="single-sign-on-not-configured"></a>Az egyszeri bejelentkezés nincs konfigurálva
 Győződjön meg arról, hogy a jelszó-alapú egyszeri bejelentkezés konfigurálva van. További információ: [jelszó alapú egyszeri bejelentkezés konfigurálása](configure-password-single-sign-on-non-gallery-applications.md).
@@ -98,7 +98,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést az automatikus bejelentkezési mez�
 7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a bal oldali navigációs ablaktáblán.
 8. Válassza a **jelszó alapú bejelentkezési** mód lehetőséget.
 9. Adja meg a **bejelentkezési URL-címet**, amely annak az oldalnak az URL-címe, ahol a felhasználók megadják a felhasználónevét és jelszavát a bejelentkezéshez. Győződjön *meg arról, hogy a bejelentkezési mezők láthatók az Ön által megadott URL-címen a lapon*.
-10. Válassza a **Save** (Mentés) lehetőséget.
+10. Kattintson a **Mentés** gombra.
     A rendszer automatikusan lekaparja a lapot a Felhasználónév és a jelszó beviteli mezőihez. Mostantól az Azure AD használatával biztonságosan továbbíthatja a jelszavakat az alkalmazásba a saját alkalmazások böngésző bővítménnyel.
 
 ### <a name="manually-capture-sign-in-fields-for-an-app"></a>Egy alkalmazás bejelentkezési mezőinek manuális rögzítése
@@ -120,7 +120,7 @@ Ha a jelszó-alapú egyszeri bejelentkezést szeretné beállítani egy alkalmaz
 10. Válassza **a *&lt; AppName &gt;* jelszavának egyszeri bejelentkezési beállításainak konfigurálása** lehetőséget.
 11. Jelölje be **a bejelentkezési mezők manuális észlelése** jelölőnégyzetet.
 14. Kattintson az **OK** gombra.
-15. Válassza a **Save** (Mentés) lehetőséget.
+15. Kattintson a **Mentés** gombra.
 16. Az alkalmazások használatához kövesse az utasításokat.
 
 
@@ -245,6 +245,6 @@ Az alábbi információk ismertetik, hogy az egyes értesítési elemek mit jele
     Például   ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
-* [Saját alkalmazások üzembe helyezésének megtervezése](access-panel-deployment-plan.md)
+* [Saját alkalmazások üzembe helyezésének megtervezése](my-apps-deployment-plan.md)

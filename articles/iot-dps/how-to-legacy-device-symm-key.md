@@ -3,17 +3,17 @@ title: Eszközök kiépítése szimmetrikus kulcsokkal – Azure IoT Hub Device 
 description: A szimmetrikus kulcsok használata eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásának (DPS) példányával
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/13/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: eliotga
-ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+manager: lizross
+ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967312"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051109"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Eszközök kiépítése szimmetrikus kulcsú beléptetési csoportok használatával
 
@@ -21,9 +21,7 @@ Ez a cikk bemutatja, hogyan lehet biztonságosan kiépíteni több szimmetrikus 
 
 Egyes eszközökhöz nem tartozhat tanúsítvány, TPM vagy más olyan biztonsági funkció, amely az eszköz biztonságos azonosítására szolgál. A Device kiépítési szolgáltatás magában foglalja a [szimmetrikus kulcs igazolását](concepts-symmetric-key-attestation.md). A szimmetrikus kulcs igazolása az eszközök azonosítására szolgál olyan egyedi információk alapján, mint például a MAC-címe vagy a sorozatszám.
 
-Ha egyszerűen telepítheti a [hardveres biztonsági modult (HSM)](concepts-service.md#hardware-security-module) és a tanúsítványt, akkor ez jobb megoldás lehet az eszközök azonosításához és üzembe helyezéséhez. Mivel ez a megközelítés lehetővé teszi, hogy megkerüljék az összes eszközre telepített kód frissítését, és nem rendelkezik az eszköz lemezképében beágyazott titkos kulccsal.
-
-Ez a cikk azt feltételezi, hogy egyik HSM vagy tanúsítvány sem életképes megoldás. Azonban feltételezhető, hogy az eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásával valamilyen módon frissítheti az eszköz kódját. 
+Ha egyszerűen telepítheti a [hardveres biztonsági modult (HSM)](concepts-service.md#hardware-security-module) és a tanúsítványt, akkor ez jobb megoldás lehet az eszközök azonosításához és üzembe helyezéséhez. A HSM használatával megkerülheti az összes eszközre telepített kód frissítését, és nem rendelkezik az eszköz lemezképében beágyazott titkos kulccsal. Ez a cikk azt feltételezi, hogy egyik HSM vagy tanúsítvány sem életképes megoldás. Azonban feltételezhető, hogy az eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásával valamilyen módon frissítheti az eszköz kódját. 
 
 A cikk azt is feltételezi, hogy az eszköz frissítése biztonságos környezetben történik, hogy megakadályozza a főcsoporti kulcs vagy a származtatott eszköz kulcsának jogosulatlan elérését.
 
@@ -142,39 +140,18 @@ Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk,
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
+Egyedi regisztrációs azonosítók létrehozása minden eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
 
 
 ## <a name="derive-a-device-key"></a>Eszköz kulcsának származtatása 
 
-Az eszköz kulcsának létrehozásához használja a csoport főkulcsát az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC](https://wikipedia.org/wiki/HMAC) számításához, és Base64 formátumra alakítsa át az eredményt.
+Az eszközök kulcsának létrehozásához használja a beléptetési csoport főkulcsát az egyes eszközök regisztrációs AZONOSÍTÓjának [HMAC](https://wikipedia.org/wiki/HMAC) számításához. Az eredmény ezután Base64 formátumba konvertálódik minden eszközön.
 
 > [!WARNING]
-> Az eszköz kódjának csak az adott eszköz származtatott eszköz kulcsát kell tartalmaznia. Ne foglalja bele a csoport főkulcsát az eszköz kódjába. A feltört főkulcs veszélyeztetheti az általa hitelesített összes eszköz biztonságát.
+> Az eszköz kódjának csak az adott eszközhöz tartozó származtatott eszköz kulcsát kell tartalmaznia. Ne foglalja bele a csoport főkulcsát az eszköz kódjába. A feltört főkulcs veszélyeztetheti az általa hitelesített összes eszköz biztonságát.
 
 
-#### <a name="linux-workstations"></a>Linux-munkaállomások
-
-Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
-
-Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
-
-Cserélje le a **REG_ID** értékét a regisztrációs azonosítóra.
-
-```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
-```
-
-
-#### <a name="windows-based-workstations"></a>Windows-alapú munkaállomások
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Ha Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
 
@@ -197,8 +174,29 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
+# <a name="linux"></a>[Linux](#tab/linux)
 
-Az eszköz a származtatott eszköz kulcsát az egyedi regisztrációs azonosítójával fogja használni a kiépítés során a beléptetési csoportba tartozó szimmetrikus kulcs igazolásának elvégzéséhez.
+Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
+
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
+
+Cserélje le a **REG_ID** értékét a regisztrációs azonosítóra.
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+---
+
+A kiépítés során minden eszköz a származtatott eszköz kulcsát és egyedi regisztrációs AZONOSÍTÓját használja a beléptetési csoportba tartozó szimmetrikus kulcs igazolásának végrehajtásához.
 
 
 
@@ -206,7 +204,7 @@ Az eszköz a származtatott eszköz kulcsát az egyedi regisztrációs azonosít
 
 Ebben a szakaszban a korábban beállított Azure IoT C SDK-ban található **prov \_ dev \_ Client \_ minta** nevű kiépítési mintát fogja frissíteni. 
 
-Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a kiépítési kérést az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat azt eredményezi, hogy az eszköz fel lesz ismerve, és hozzá lesz rendelve a beléptetési csoportban konfigurált IoT hubhoz.
+Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a kiépítési kérést az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat azt eredményezi, hogy az eszköz fel lesz ismerve, és hozzá lesz rendelve a beléptetési csoportban konfigurált IoT hubhoz. Ez minden olyan eszköz esetében teljesül, amelyet a beléptetési csoport használatával kell kiépíteni.
 
 1. Az Azure Portalon válassza ki az eszközkiépítési szolgáltatás **Áttekintés** lapját, és jegyezze fel az **_Azonosító hatóköre_** értéket.
 
@@ -280,10 +278,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 ## <a name="security-concerns"></a>Biztonsági okokból
 
-Ügyeljen arra, hogy ez a rendszerkép részét képező származtatott eszköz kulcsát elhagyja, amely nem ajánlott biztonsági megoldás. Ez az egyik oka annak, hogy a biztonság és a könnyű használat Milyen kompromisszumokat jelent. 
-
-
-
+Vegye figyelembe, hogy ez a rendszerkép részét képező származtatott eszköz kulcsát minden eszköz esetében elhagyja, ami nem ajánlott biztonsági megoldás. Ez az egyik ok, amiért a biztonság és a könnyű használat gyakran kompromisszumot jelent. A saját igényei alapján teljes mértékben ellenőriznie kell az eszközök biztonságát.
 
 
 ## <a name="next-steps"></a>Következő lépések

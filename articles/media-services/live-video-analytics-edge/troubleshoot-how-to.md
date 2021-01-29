@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954412"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051295"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -107,7 +107,8 @@ Az **[élő videó elemzési erőforrásainak telepítési parancsfájljának](h
 * A telepítési parancsfájl nem tud létrehozni egyszerű szolgáltatásnevet és/vagy Azure-erőforrásokat.
     * A probléma megkezdéséhez ellenőrizze, hogy az előfizetés és az Azure-bérlő nem érte el a maximális szolgáltatási korlátot. További információ az [Azure ad szolgáltatás korlátairól és korlátozásáról](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) , valamint az [Azure-előfizetések és-szolgáltatások korlátairól, kvótáinak és megkötéséről.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
 
-
+> [!TIP]
+> Ha további problémák merülhetnek fel, amelyekhez segítségre lehet szüksége, **[Gyűjtse össze a naplókat, és nyújtson be egy támogatási jegyet](#collect-logs-for-submitting-a-support-ticket)**. A következő címen küldhet nekünk egy e-mailt a címen: **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .
 ### <a name="live-video-analytics-working-with-external-modules"></a>Külső modulok használata élő videó-elemzéssel
 
 A Media Graph bővítmény processzorait használó élő videó-elemzések kiterjeszthetik a Media Graphot, hogy más IoT Edge-moduloktól származó adatok küldésére és fogadására HTTP vagy gRPC protokollok használatával. Egy [adott példaként](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)ez a Media Graph képkockákat küldhet képként egy külső következtetési modulba, mint például a Yolo v3, és HTTP protokoll használatával fogadja a JSON-alapú elemzési eredményeket. Ilyen topológiában az események rendeltetése többnyire az IoT hub. Olyan helyzetekben, amikor nem látja a következtetési eseményeket a központban, ellenőrizze a következőket:

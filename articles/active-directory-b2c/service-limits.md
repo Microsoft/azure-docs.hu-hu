@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b980624ebf55c3666bcc7dd1d60f681d788c95ae
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 866af8b992374492286f47357f108a01f35e560b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98987047"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051041"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C szolgáltatási korlátok és korlátozások
 
@@ -40,17 +40,15 @@ A következő táblázat a Azure AD B2C szolgáltatás felügyeleti konfiguráci
 |Kategória  |Korlát  |
 |---------|---------|
 |Alkalmazások száma Azure AD B2C bérlőn   |250           |
-|Házirendek száma Azure AD B2C bérlőn       |200          |
-|Fájl maximális mérete      |400 KB          |
 |Hatókörök száma egy alkalmazásban        |1000          |
-|Egyéni attribútumok száma felhasználónként <sup>1</sup>       |100         |
+|[Egyéni attribútumok](user-profile-attributes.md#extension-attributes)száma felhasználónként   <sup>1</sup>       |100         |
 |Átirányítási URL-címek száma egy alkalmazásban       |100         |
 |Kijelentkezési URL-címek száma egy alkalmazásban        |1          |
 |Karakterlánc-korlát/attribútum      |250 karakter          |
 |B2C-bérlők száma/előfizetés      |20         |
 |[Öröklési](custom-policy-overview.md#inheritance-model) szintek az egyéni házirendekben     |10         |
-|Házirendek száma Azure AD B2C bérlőn      |200         |
-|Fájl maximális mérete      |400 KB         |
+|Házirendek száma Azure AD B2C bérlőn      |200          |
+|Fájl maximális mérete      |400 KB          |
 
 <sup>1</sup> lásd még [Az Azure ad szolgáltatás korlátozásait és korlátozásait](../active-directory/enterprise-users/directory-service-limits-restrictions.md).
 

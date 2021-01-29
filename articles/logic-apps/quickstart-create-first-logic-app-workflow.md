@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455062"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052042"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Rövid útmutató: az első Logic Apps munkafolyamat létrehozása – Azure Portal
 
@@ -30,11 +30,14 @@ Ha szeretné megismerni, hogyan hozhatja létre és kezelheti az első logikai a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nem rendelkezik ilyennel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-fiók és -előfizetés. Ha még nem rendelkezik ilyennel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 * Egy Logic Apps által támogatott szolgáltatásból (például Office 365 Outlook vagy Outlook.com) származó e-mail-fiók. Más támogatott e-mail-szolgáltatók esetén [tekintse át az összekötők listáját](/connectors/).
 
     > [!IMPORTANT]
     > Ha a [Gmail-összekötőt](/connectors/gmail/)használja, vegye figyelembe, hogy csak a G Suite-fiókok használhatják ezt az összekötőt Logic apps korlátozás nélkül. Ha rendelkezik egy fogyasztói Gmail-fiókkal, akkor csak a Google által jóváhagyott szolgáltatásokkal használhatja ezt az összekötőt, kivéve, ha [létrehoz egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel való hitelesítéshez használ](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Ha a logikai alkalmazásnak olyan tűzfalon keresztül kell kommunikálnia, amely adott IP-címekre korlátozza a forgalmat, *akkor a* tűzfalnak engedélyeznie kell a hozzáférést a Logic Apps szolgáltatás vagy futtatókörnyezet által használt [bejövő](logic-apps-limits-and-config.md#inbound) és [kimenő](logic-apps-limits-and-config.md#outbound) IP-címekhez abban az Azure-régióban, ahol a logikai alkalmazás létezik. Ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md#managed-api-connectors)is használ, például az Office 365 Outlook Connectort vagy az SQL Connectort, vagy [Egyéni összekötőket](/connectors/custom-connectors/)használ, a tűzfalnak engedélyeznie kell a hozzáférést a logikai alkalmazás Azure-régiójában lévő *összes* [felügyelt összekötő kimenő IP-címéhez](logic-apps-limits-and-config.md#outbound) .
 
 <a name="create-logic-app"></a>
 
@@ -51,7 +54,7 @@ Ha szeretné megismerni, hogyan hozhatja létre és kezelheti az első logikai a
    ![Képernyőfelvétel: Logic Apps szolgáltatás lapja Azure Portal, a Logic apps-lista és a kiválasztott gomb, "Hozzáadás".](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. A **logikai alkalmazás** ablaktáblán adja meg a logikai alkalmazás alapvető adatait és beállításait. Hozzon létre egy új [erőforráscsoportot](../azure-resource-manager/management/overview.md#terminology) a példában szereplő logikai alkalmazáshoz.
-    
+
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Név** | <*logikai alkalmazás neve*> | A logikai alkalmazás neve, amelynek egyedinek kell lennie a régiók között. A név csak betűket, számokat, kötőjeleket ( `-` ), aláhúzásokat ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "My-First-Logic-app" kifejezést használja. |
@@ -222,7 +225,7 @@ Ha végzett a minta logikai alkalmazás tesztelésével, törölje a logikai alk
 
    ![Képernyőfelvétel: Azure Portal a megerősítő ablaktáblával, és a törlendő erőforráscsoport-név.](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta az első logikai alkalmazását a Azure Portalban, amely egy RSS-hírcsatornát keres egy ütemezett frissítésekhez, és e-mailben értesítést küld az egyes új hírcsatorna-elemekről. 
 

@@ -2,19 +2,15 @@
 title: Azure Automation-fiók áthelyezése másik előfizetésre
 description: Ez a cikk azt ismerteti, hogyan helyezheti át az Automation-fiókját egy másik előfizetésbe.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896646"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051024"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation-fiók áthelyezése másik előfizetésre
 
@@ -108,7 +104,7 @@ Most már áthelyezheti az Automation-fiókját és a runbookok is.
 
 ## <a name="re-create-run-as-accounts"></a>Futtató fiókok újbóli létrehozása
 
-A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való hitelesítéshez Azure Active Directory egyszerű szolgáltatásnevet hoznak létre. Az előfizetések módosításakor az Automation-fiók már nem használja a meglévő futtató fiókot. A futtató fiókok újbóli létrehozása:
+A [futtató fiókok](../automation-security-overview.md#run-as-accounts) az Azure-erőforrásokkal való hitelesítéshez Azure Active Directory egyszerű szolgáltatásnevet hoznak létre. Az előfizetések módosításakor az Automation-fiók már nem használja a meglévő futtató fiókot. A futtató fiókok újbóli létrehozása:
 
 1. Nyissa meg az Automation-fiókját az új előfizetésben, és válassza a **fiók beállításai** alatt a **futtató fiókok** elemet. Láthatja, hogy a futtató fiókok már nem teljesek.
 
@@ -117,7 +113,7 @@ A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való
 2. Törölje a futtató fiókokat egy időben, a **Tulajdonságok** lapon a **Törlés** lehetőség kiválasztásával. 
 
     > [!NOTE]
-    > Ha nem rendelkezik a futtató fiókok létrehozásához vagy megtekintéséhez szükséges engedélyekkel, tekintse meg a következő üzenetet: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` További információért lásd a [futtató fiókok konfigurálásához szükséges engedélyeket](../manage-runas-account.md#permissions).
+    > Ha nem rendelkezik a futtató fiókok létrehozásához vagy megtekintéséhez szükséges engedélyekkel, tekintse meg a következő üzenetet: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` További információért lásd a [futtató fiókok konfigurálásához szükséges engedélyeket](../automation-security-overview.md#permissions).
 
 3. Miután törölte a futtató fiókokat, válassza a **Létrehozás** az Azure-beli **futtató fiókban** lehetőséget. 
 

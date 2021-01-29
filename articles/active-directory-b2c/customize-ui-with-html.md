@@ -1,33 +1,33 @@
 ---
-title: A kezelőfelület testreszabása
+title: A felhasználói felület testreszabása HTML-sablonokkal
 titleSuffix: Azure AD B2C
-description: Megtudhatja, hogyan szabhatja testre a Azure Active Directory B2Ct használó alkalmazásai felhasználói felületét.
+description: Megtudhatja, hogyan szabhatja testre a felhasználói felületet a Azure Active Directory B2C-t használó alkalmazásaihoz tartozó HTML-sablonokkal.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058667"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050543"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>A felhasználói felület testreszabása HTML-sablonokkal Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 A Azure Active Directory B2C (Azure AD B2C) felhasználói felületének védjegyezése és testreszabása az ügyfelek számára a zökkenőmentes felhasználói élményt nyújtja az alkalmazásában. Ezek a tapasztalatok közé tartozik a regisztráció, a bejelentkezés, a profil szerkesztése és a jelszó-visszaállítás. Ez a cikk bemutatja a felhasználói felület (UI) testreszabásának módszereit. 
 
 > [!TIP]
-> Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, kipróbálhatja a [vállalati védjegyezés](company-branding.md) funkciót.
+> Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, kipróbálhatja a [vállalati védjegyezés](customize-ui.md) funkciót.
 
 ## <a name="custom-html-and-css-overview"></a>Egyéni HTML és CSS – áttekintés
 
@@ -59,7 +59,7 @@ Ahelyett, hogy az egyéni oldal tartalmait a semmiből hozza létre, testreszabh
 
 A következő táblázat felsorolja a Azure AD B2C által biztosított alapértelmezett oldal tartalmát. Töltse le a fájlokat, és használja kiindulási pontként a saját egyéni oldalai létrehozásához.
 
-| Alapértelmezett lap | Leírás | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
+| Alapértelmezett lap | Description | Tartalom definíciójának azonosítója<br/>(csak egyéni házirend) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap**. Ez az oldal akkor jelenik meg, ha kivételt vagy hibát észlel. | *API. error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Saját maga által érvényesített oldal**. Ezt a fájlt egyéni oldalként használhatja a közösségi fiók regisztrálása lap, a helyi fiók regisztrálása oldal, a helyi fiók bejelentkezési oldala, a jelszó alaphelyzetbe állítása és egyebek. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. | *API. localaccountsignin*, API. *localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -374,7 +374,7 @@ A minta használata:
 
 1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/ocean_blue` vagy `/slate_gray` .
 1. Töltse fel a sablon mappájában és a mappában található összes fájlt a `/assets` blob Storage-ba az előző szakaszokban leírtak szerint.
-1. Ezután nyissa meg a `\*.html` vagy a gyökérkönyvtárában található `/ocean_blue` `/slate_gray` összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Példa:
+1. Ezután nyissa meg a `\*.html` vagy a gyökérkönyvtárában található `/ocean_blue` `/slate_gray` összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Például:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -387,7 +387,15 @@ A minta használata:
 1. Most módosítsa a szabályzatot, amely a korábban említett HTML-fájlra mutat.
 1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \* . HTML fájlok között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="use-company-branding-assets-in-custom-html"></a>Vállalati arculati eszközök használata egyéni HTML-kódban
+
+Ha egyéni HTML-kódban szeretné használni a [vállalati védjegyezési](customize-ui.md#configure-company-branding) eszközöket, adja hozzá a következő címkéket a `<div id="api">` címkén kívül. A képforrást a háttérkép és a szalagcím emblémája helyettesíti.
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan engedélyezheti az [ügyféloldali JavaScript-kódokat](javascript-and-page-layout.md).
-

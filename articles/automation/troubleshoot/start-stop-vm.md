@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896274"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053584"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours problémák elhárítása
 
@@ -109,7 +109,7 @@ Tekintse át az alábbi listát a lehetséges megoldásokról:
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* Ellenőrizze, hogy a [futtató fiókja](../manage-runas-account.md) rendelkezik-e megfelelő engedélyekkel az elindítani vagy leállítani kívánt virtuális gépekhez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd: gyors útmutató [: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md). Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai** területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
+* Ellenőrizze, hogy a [futtató fiókja](../automation-security-overview.md#run-as-accounts) rendelkezik-e megfelelő engedélyekkel az elindítani vagy leállítani kívánt virtuális gépekhez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd: gyors útmutató [: a felhasználóhoz rendelt szerepkörök megtekintése a Azure Portal használatával](../../role-based-access-control/check-access.md). Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-AZONOSÍTÓját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjával. Válassza a **fiók beállításai** területen a **futtató fiókok** lehetőséget, majd válassza ki a megfelelő futtató fiókot.
 
 * Előfordulhat, hogy a virtuális gépeket nem lehet elindítani vagy leállítani, ha explicit módon ki vannak zárva. A kizárt virtuális gépeket abban az `External_ExcludeVMNames` Automation-fiókban lévő változóban kell beállítani, amelyre a szolgáltatás telepítve van. Az alábbi példa bemutatja, hogyan kérdezheti le ezt az értéket a PowerShell használatával.
 
@@ -201,7 +201,7 @@ Ezt a problémát egy nem megfelelően konfigurált vagy lejárt futtató fiók 
 
 Annak ellenőrzéséhez, hogy a futtató fiók megfelelően van-e konfigurálva, lépjen a Azure Portal Automation-fiókjába, és válassza a **fiók beállításai** alatt a **futtató fiókok** elemet. Ha egy futtató fiók helytelenül van konfigurálva vagy lejárt, az állapot megjeleníti a feltételt.
 
-Ha a futtató fiók helytelenül van konfigurálva, törölje és hozza létre újra a futtató fiókot. További információ: [Azure Automation futtató fiókok kezelése](../manage-runas-account.md).
+Ha a futtató fiók helytelenül van konfigurálva, törölje és hozza létre újra a futtató fiókot. További információ: [Azure Automation futtató fiókok](../automation-security-overview.md#run-as-accounts).
 
 Ha a tanúsítvány lejárt a futtató fiókhoz, kövesse az [önaláírt tanúsítvány megújításának](../manage-runas-account.md#cert-renewal) lépéseit a tanúsítvány megújításához.
 

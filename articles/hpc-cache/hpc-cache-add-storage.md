@@ -4,14 +4,14 @@ description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsít�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 01/28/2021
 ms.author: v-erkel
-ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657176"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054365"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -165,19 +165,21 @@ Egy NFS-tárolási cél különböző beállításokkal rendelkezik a blob Stora
 
 Amikor egy NFS Storage rendszerre mutató tárolási célt hoz létre, ki kell választania az adott cél használati modelljét. Ez a modell határozza meg, hogyan gyorsítótárazza az adatait.
 
+A beépített használati modellek segítségével kiválaszthatja, hogyan egyenlítheti ki a gyors választ az elavult adatok beszerzésének kockázatával. Ha optimalizálni szeretné a fájl olvasási sebességét, előfordulhat, hogy nem érdekli, hogy a gyorsítótárban lévő fájlok be vannak-e jelölve a háttérbeli fájlokban. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek legyenek a távoli tárterülettel, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
+
 Három beállítás érhető el:
 
 * **Súlyos, ritka írások olvasása** – ezt a beállítást akkor használja, ha a statikus vagy ritkán módosított fájlok olvasási hozzáférését szeretné felgyorsítani.
 
-  Ez a beállítás gyorsítótárazza az ügyfelek által olvasott fájlokat, de azonnal átadja az írást a háttér-tárolóra. A gyorsítótárban tárolt fájlokat a rendszer soha nem hasonlítja össze az NFS-tároló kötetén található fájlokkal.
+  Ez a beállítás gyorsítótárazza az ügyfelek által olvasott fájlokat, de azonnal átadja az írást a háttér-tárolóra. A gyorsítótárban tárolt fájlok nincsenek automatikusan összehasonlítva az NFS-tároló kötetén található fájlokkal. (További információért olvassa el az alábbi megjegyzést a háttér-ellenőrzésről.)
 
-  Ne használja ezt a beállítást, ha fennáll a kockázata annak, hogy egy fájl közvetlenül a tárolási rendszeren módosul, anélkül, hogy először a gyorsítótárba kellene írni. Ha ez történik, a rendszer soha nem frissíti a fájl gyorsítótárazott verzióját a háttér változásaival, és az adathalmaz inkonzisztens lehet.
+  Ne használja ezt a beállítást, ha fennáll a kockázata annak, hogy egy fájl közvetlenül a tárolási rendszeren módosul, anélkül, hogy először a gyorsítótárba kellene írni. Ha ez történik, a fájl gyorsítótárazott verziója nem lesz szinkronizálva a háttér-fájllal.
 
 * **15%-nál nagyobb írások** – ez a beállítás az olvasási és írási teljesítményt is felgyorsítja. Ha ezt a beállítást használja, az összes ügyfélnek az Azure HPC cache-en keresztül kell hozzáférnie a fájlokhoz ahelyett, hogy közvetlenül a háttér-tárolót kellene csatlakoztatnia. A gyorsítótárazott fájlok legutóbbi módosításai a háttérben nem tárolódnak.
 
-  Ebben a használati modellben a gyorsítótárban lévő fájlokat a rendszer nem ellenőrzi a háttérben tárolt fájlokon. A rendszer azt feltételezi, hogy a fájl gyorsítótárazott verziója nagyobb áramerősséget mutat. A gyorsítótárban lévő módosított fájl a háttér-tárolási rendszerbe kerül, miután a gyorsítótárban egy óra elteltével további módosítások nélkül megtörtént.
+  Ebben a használati modellben a gyorsítótárban lévő fájlokat a rendszer csak a háttérbeli tároló fájljain, nyolc óránként ellenőrzi. A rendszer azt feltételezi, hogy a fájl gyorsítótárazott verziója nagyobb áramerősséget mutat. A gyorsítótárban lévő módosított fájl a háttér-tárolási rendszerbe kerül, miután a gyorsítótárban egy óra elteltével további módosítások nélkül megtörtént.
 
-* Az **ügyfelek az NFS-célhelyre írhatnak, és megkerülik a gyorsítótárat** – ezt a beállítást akkor válassza, ha a munkafolyamatban lévő bármelyik ügyfél közvetlenül a tárolási rendszerbe írja az adatait anélkül, hogy először a gyorsítótárba írna. Az ügyfelek által igényelt fájlok gyorsítótárazva vannak, de a fájloknak az ügyfélről történő módosításai azonnal visszakerülnek a háttérrendszer-tároló rendszerbe.
+* Az **ügyfelek az NFS-célhelyre írhatnak, és megkerülik a gyorsítótárat** – ezt a beállítást akkor válassza, ha a munkafolyamatban lévő bármelyik ügyfél közvetlenül a tárolási rendszerbe írja az adatait anélkül, hogy először a gyorsítótárba írna, vagy ha az adatkonzisztenciát szeretné optimalizálni. Az ügyfelek által igényelt fájlok gyorsítótárazva vannak, de a fájloknak az ügyfélről történő módosításai azonnal visszakerülnek a háttérrendszer-tároló rendszerbe.
 
   Ezzel a használati modellel a gyorsítótárban lévő fájlokat a rendszer gyakran ellenőrzi a frissítések háttérbeli verzióiban. Ez az ellenőrzés lehetővé teszi, hogy a fájlok a gyorsítótáron kívülre legyenek módosítva az adatkonzisztencia fenntartása mellett.
 
@@ -186,8 +188,11 @@ Ez a táblázat a használati modell eltéréseit foglalja össze:
 | Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
 |-------------------------------|--------------|-----------------------|--------------------------|
 | Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincs                     |
-| 15%-nál nagyobb írások       | Olvasás/írás   | Soha                 | 1 óra                   |
+| 15%-nál nagyobb írások       | Olvasás/írás   | 8 óra               | 1 óra                   |
 | Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincs                     |
+
+> [!NOTE]
+> A **háttér-ellenőrzési** érték azt jelzi, hogy a gyorsítótár automatikusan összehasonlítja-e a fájljait a távoli tárolóban lévő forrásfájlokat. Azonban az Azure HPC cache-gyorsítótárat kényszerítheti a fájlok összehasonlítására egy readdirplus kérelmet tartalmazó címtár-művelet végrehajtásával. A Readdirplus egy szabványos NFS API (más néven kiterjesztett olvasás), amely a címtár metaadatait adja vissza, ami miatt a gyorsítótár összehasonlítja és frissíti a fájlokat.
 
 ### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
 

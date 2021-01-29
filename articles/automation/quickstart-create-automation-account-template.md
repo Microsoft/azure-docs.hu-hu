@@ -3,22 +3,18 @@ title: 'Rövid útmutató: Automation-fiók létrehozása – Azure-sablon'
 titleSuffix: Azure Automation
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Automation-fiókot a Azure Resource Manager sablon használatával.
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078952"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050668"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rövid útmutató: Automation-fiók létrehozása ARM-sablon használatával
 
@@ -44,7 +40,7 @@ Ez a sablon a következőket hajtja végre:
 * A fiókhoz hozzáadja a minta Automation-runbookok.
 
 >[!NOTE]
->ARM-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiókok kezelése](manage-runas-account.md)című témakört.
+>ARM-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiók létrehozása](create-run-as-account.md)című témakört.
 
 A lépések elvégzése után be kell állítania az Automation-fiókhoz tartozó [diagnosztikai beállításokat](automation-manage-send-joblogs-log-analytics.md) , hogy a runbook-feladatok állapotát és a feladatok adatfolyamait a csatolt log Analytics munkaterületre küldje.
 
@@ -108,11 +104,11 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
 2. A Azure Portal nyissa meg az imént létrehozott Automation-fiókot. 
 
-3. A bal oldali panelen válassza a **runbookok**lehetőséget. A **runbookok** lapon a lista három oktatóanyag-runbookok hozott létre az Automation-fiókkal.
+3. A bal oldali panelen válassza a **runbookok** lehetőséget. A **runbookok** lapon a lista három oktatóanyag-runbookok hozott létre az Automation-fiókkal.
 
     ![Az Automation-fiókkal létrehozott runbookok oktatóanyag](./media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
 
-4. A bal oldali panelen válassza a **csatolt munkaterület**lehetőséget. A **csatolt munkaterület** lapon megjelenik az Automation-fiókhoz korábban megadott log Analytics munkaterület.
+4. A bal oldali panelen válassza a **csatolt munkaterület** lehetőséget. A **csatolt munkaterület** lapon megjelenik az Automation-fiókhoz korábban megadott log Analytics munkaterület.
 
     ![Az Log Analytics munkaterülethez csatolt Automation-fiók](./media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
 

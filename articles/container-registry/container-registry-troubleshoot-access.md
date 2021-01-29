@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351793"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052161"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -40,6 +40,8 @@ A következők közül egyet vagy többet is tartalmazhat:
 Futtassa az az [ACR renézz-Health](/cli/azure/acr#az-acr-check-health) parancsot, hogy további információkat kapjon a beállításjegyzék-környezet állapotáról, és igény szerint hozzáférhessen a cél beállításjegyzékhez. Például bizonyos hálózati kapcsolatok vagy konfigurációs problémák diagnosztizálása. 
 
 A példákat az [Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md) ismertető szakaszban találja. Ha a rendszer hibákat jelez, tekintse át a hibákra vonatkozó [referenciát](container-registry-health-error-reference.md) és a javasolt megoldásokat a következő fejezetekben.
+
+Ha problémákat tapasztal az Azure Kubernetes szolgáltatás beállításjegyzék-wih, futtassa az az [AK-ellenőrzés – ACR](/cli/azure/aks#az_aks_check_acr) parancsot annak ellenőrzéséhez, hogy a beállításjegyzék elérhető-e az AK-fürtről.
 
 > [!NOTE]
 > Bizonyos hálózati kapcsolati tünetek akkor is előfordulhatnak, ha a beállításjegyzék-hitelesítéssel vagy-engedélyezéssel kapcsolatos probléma merül fel. Lásd: a [beállításjegyzék bejelentkezési hibáinak megoldása](container-registry-troubleshoot-login.md).
@@ -130,13 +132,13 @@ Kapcsolódó hivatkozások:
 * [Azure Container Registry Azure biztonsági alapterve](security-baseline.md)
 * [Az Azure Container Registry ajánlott eljárásai](container-registry-best-practices.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
 
 * A beállításjegyzék egyéb hibaelhárítási témakörei a következők:
   * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md) 
-  * [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
+  * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
 * [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)

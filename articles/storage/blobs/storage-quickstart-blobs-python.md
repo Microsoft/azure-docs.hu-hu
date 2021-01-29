@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Azure Blob Storage Library V12 – Python'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a Pythonhoz a tárolók és Blobok blob (Object) tárolóban történő létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használható a Pythonhoz készült Azure Blob Storage Client Library 12-es verziója, és hogyan hozható létre tároló és blob (Object) tároló. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/24/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dbac832165c57e14e737372e12c4f4b2f3039c0d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b35144c1ff4de9324086629bc764caea4bef98b6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995257"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052736"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Python V12 SDK-val
 
@@ -36,7 +36,7 @@ További források:
 
 ## <a name="setting-up"></a>Beállítás
 
-Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a Pythonhoz készült Azure Blob Storage ügyféloldali kódtáraval való együttműködéshez.
+Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a Pythonhoz készült Azure Blob Storage ügyféloldali kódtár V12-es verziójának használatával.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
@@ -62,7 +62,7 @@ Hozzon létre egy *blob-Gyorsindítás-V12* nevű Python-alkalmazást.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Az alkalmazás könyvtára alatt telepítse az Azure Blob Storage ügyféloldali kódtárat a Python-csomaghoz a parancs használatával `pip install` .
+Miközben továbbra is az alkalmazás könyvtára, telepítse az Azure Blob Storage a Python-csomaghoz készült ügyféloldali kódtárat a `pip install` paranccsal.
 
 ```console
 pip install azure-storage-blob
@@ -85,7 +85,7 @@ A projekt könyvtárából:
     from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
     try:
-        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
+        print("Azure Blob Storage v" + __version__ + " - Python quickstart sample")
         # Quick start code goes here
     except Exception as ex:
         print('Exception:')
@@ -116,7 +116,7 @@ A következő Python-osztályok használata az alábbi erőforrásokkal való in
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Azure Blob Storage ügyféloldali kódtára használatával:
+Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következőket az Azure Blob Storage Pythonhoz készült ügyféloldali kódtár használatával:
 
 * [A kapcsolati sztring lekérése](#get-the-connection-string)
 * [Tároló létrehozása](#create-a-container)
@@ -261,7 +261,7 @@ python blob-quickstart-v12.py
 Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
-Azure Blob storage v12 - Python quickstart sample
+Azure Blob Storage v12 - Python quickstart sample
 
 Uploading to Azure Storage as blob:
         quickstartcf275796-2188-4057-b6fb-038352e35038.txt
@@ -283,7 +283,7 @@ A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappá
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Python használatával.
 

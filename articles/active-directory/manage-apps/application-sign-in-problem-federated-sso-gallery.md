@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b828a23805c6d3ab544dd2b9f78b45a3327cde
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586346"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053397"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során
 Az alábbi bejelentkezési problémák elhárítása érdekében javasoljuk, hogy a következő lépésekkel jobban diagnosztizálja és automatizálja a megoldási lépéseket:
 
-- Telepítse a [Saját alkalmazások biztonságos böngészőbővítményt](./access-panel-deployment-plan.md), így az Azure Active Directory (Azure AD) jobb diagnosztikát és megoldást biztosíthat az Azure Portalon található tesztkörnyezet használatakor.
+- Telepítse a [Saját alkalmazások biztonságos böngészőbővítményt](my-apps-deployment-plan.md), így az Azure Active Directory (Azure AD) jobb diagnosztikát és megoldást biztosíthat az Azure Portalon található tesztkörnyezet használatakor.
 - Reprodukálja a hibát a tesztkörnyezet használatával az Azure Portal alkalmazáskonfigurációs oldalán. További információ az [SAML-alapú egyszeri bejelentkezési alkalmazások hibakereséséről](./debug-saml-sso-issues.md)
 
 Ha a Azure Portal a saját alkalmazások biztonságos böngésző bővítménnyel használja a [tesztelési](./debug-saml-sso-issues.md) funkciót, az alábbi lépéseket nem kell manuálisan végrehajtania az SAML-alapú egyszeri bejelentkezés konfigurációjának megnyitásához.

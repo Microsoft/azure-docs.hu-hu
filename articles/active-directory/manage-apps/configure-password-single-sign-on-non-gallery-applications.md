@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 7f9d29fee78c01dd3b1ee79d564297fa0cef14d3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2bb190ea01098e8e7b21a00f54fc37cd817f3743
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219878"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053279"
 ---
 # <a name="understand-password-based-single-sign-on"></a>Jelszó alapú egyszeri bejelentkezés ismertetése
 
@@ -54,7 +54,7 @@ Az Azure AD használata az identitás-szolgáltatóként (identitásszolgáltat�
 A rövid útmutató [sorozatában](view-applications-portal.md)megtudhatta, hogyan adhat hozzá egy alkalmazást a bérlőhöz, ami lehetővé teszi, hogy az Azure ad tudja, hogy az alkalmazás identitás-szolgáltatója (identitásszolgáltató) használja. Néhány alkalmazás már előre konfigurálva van, és az Azure AD-katalógusban jelenik meg. A többi alkalmazás nem szerepel a katalógusban, és létre kell hoznia egy általános alkalmazást, és manuálisan kell konfigurálnia. Az alkalmazástól függően előfordulhat, hogy a jelszó-alapú egyszeri bejelentkezés beállítás nem érhető el. Ha nem jelenik meg a jelszó-alapú beállítási lista az alkalmazás egyszeri bejelentkezési oldalán, akkor nem érhető el.
 
 > [!IMPORTANT]
-> A jelszó-alapú egyszeri bejelentkezéshez a saját alkalmazások böngésző bővítmény szükséges. További információt a [saját alkalmazások telepítésének megtervezése](access-panel-deployment-plan.md)című témakörben talál.
+> A jelszó-alapú egyszeri bejelentkezéshez a saját alkalmazások böngésző bővítmény szükséges. További információt a [saját alkalmazások telepítésének megtervezése](my-apps-deployment-plan.md)című témakörben talál.
 
 A jelszó-alapú egyszeri bejelentkezés konfigurációs lapja egyszerű. Csak az alkalmazás által használt bejelentkezési oldal URL-címét tartalmazza. A karakterláncnak a Felhasználónév beviteli mezőjét tartalmazó oldalnak kell lennie.
 

@@ -10,12 +10,12 @@ ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498574"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053771"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -57,6 +57,12 @@ Az Azure Repos és a GitHub engedélyei függetlenek Data Factory engedélyeitő
 > [!IMPORTANT]
 > A **Data Factory közreműködő** szerepkörrel rendelkező Resource Manager-sablonok nem emelik fel az engedélyeiket. Ha például olyan sablont telepít, amely egy Azure-beli virtuális gépet hoz létre, és nem rendelkezik virtuális gépek létrehozásához szükséges engedéllyel, akkor a központi telepítés engedélyezési hibával meghiúsul.
 
+> [!IMPORTANT]
+> A közzétételi kontextusban mindkét módban a **Microsoft. DataFactory/Factorys/writes** engedély szükséges.
+
+- Ez az engedély csak akkor szükséges az élő módban, ha az ügyfél módosítja a globális paramétereket.
+- Ezt az engedélyt mindig a git módban kell megadni, mivel az ügyfél által közzétett minden alkalommal, mert az utolsó véglegesítő azonosítóval rendelkező gyári objektum frissül.
+
 ### <a name="custom-scenarios-and-custom-roles"></a>Egyéni forgatókönyvek és egyéni szerepkörök
 
 Előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adat-előállító felhasználók számára. Például:
@@ -90,7 +96,7 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
 
   Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a  **Közzététel** és az **összes közzététel** gombhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
 

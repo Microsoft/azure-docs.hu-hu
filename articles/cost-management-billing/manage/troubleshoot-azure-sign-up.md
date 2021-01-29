@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344487"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054161"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
@@ -139,19 +139,18 @@ Töltse ki a Megállapodást.
 
 ## <a name="other-issues"></a>Egyéb problémák
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Nem lehet aktiválni az olyan Azure-kedvezménycsomagokat, mint az MSDN, a BizSpark, a BizSpark Plus vagy az MPN
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Nem aktiválható az Azure-beli juttatási csomag, például a Visual Studio, a BizSpark, a BizSparkPlus vagy az MPN
 
 Ellenőrizze, hogy a megfelelő bejelentkezési hitelesítő adatokat használja-e. Ezután tekintse meg a kedvezményprogramot, és ellenőrizze, hogy jogosult-e erre.
-- MSDN
-  - Az [MSDN-fiók lapján](https://msdn.microsoft.com/subscriptions/manage/default.aspx) ellenőrizze a jogosultsági állapotát.
-  - Ha nem tudja ellenőrizni az állapotát, forduljon az [MSDN-előfizetések ügyfélszolgálati központjához](/previous-versions/mappoint/aa493452(v=msdn.10)).
+- Visual Studio
+  - Ellenőrizze a jogosultsági állapotát a [Visual Studio-fiók oldalán](https://my.visualstudio.com/Benefits).
+  - Ha nem tudja ellenőrizni az állapotát, forduljon [Visual Studio Subscription támogatási szolgálathoz](https://visualstudio.microsoft.com/subscriptions/support/).
 - Microsoft for Startups
   - Microsoft for Startups-jogosultsági állapotának ellenőrzéséhez jelentkezzen be a [Microsoft for Startups portáljára](https://startups.microsoft.com/#start-two).
   - Ha nem tudja ellenőrizni az állapotát, kérjen segítséget a [Microsoft for Startups fórumain](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN
   - Jogosultsági állapota ellenőrzéséhez jelentkezzen be az [MPN portáljára](https://mspartner.microsoft.com/Pages/Locale.aspx). Ha rendelkezik a megfelelő [Cloud Platform-kompetenciákkal](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx), lehetséges, hogy további kedvezményekre is jogosult.
   - Ha nem tudja ellenőrizni az állapotát, forduljon az [MPN ügyfélszolgálatához](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Nem lehet aktiválni az új Azure in Open-előfizetést
 

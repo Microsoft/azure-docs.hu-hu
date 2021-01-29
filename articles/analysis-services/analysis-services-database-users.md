@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013593"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054093"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
 
@@ -28,13 +28,15 @@ A szerepkör engedélyei a következők:
 
 Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és felhasználókat vagy csoportokat adhat hozzá ezekhez a szerepkörökhöz a Visual Studióban Analysis Services projektek használatával. A kiszolgálókon való üzembe helyezéskor SQL Server Management Studio (SSMS), [Analysis Services PowerShell-parancsmagok](/analysis-services/powershell/analysis-services-powershell-reference)vagy [táblázatos modell parancsnyelv](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) használatával adhat hozzá vagy távolíthat el szerepköröket és felhasználói tagokat.
 
-**Biztonsági csoport**hozzáadásakor használja a t `obj:groupid@tenantid` .
+**Biztonsági csoport** hozzáadásakor használja a t `obj:groupid@tenantid` .
+
+**Egyszerű szolgáltatásnév** hozzáadásakor `app:appid@tenantid` .
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Szerepkörök és felhasználók hozzáadása vagy kezelése a Visual Studióban  
   
-1.  A **táblázatos modell Explorerben**kattintson a jobb gombbal a **szerepkörök**elemre.  
+1.  A **táblázatos modell Explorerben** kattintson a jobb gombbal a **szerepkörök** elemre.  
   
-2.  A **szerepkör-kezelőben**kattintson az **új**elemre.  
+2.  A **szerepkör-kezelőben** kattintson az **új** elemre.  
   
 3.  Adja meg a szerepkör nevét.  
   
@@ -45,16 +47,16 @@ Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és 
     |Engedély|Description|  
     |----------------|-----------------|  
     |**Nincs**|A tagok nem tudják olvasni vagy módosítani a modell sémáját, és nem tudják lekérdezni az adatlekérdezéseket.|  
-    |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
+    |**Olvasni**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
     |**Olvasás és feldolgozás**|A tagok adatlekérdezéseket végezhetnek (a sor szintű szűrők alapján), és futtathatják a folyamatokat, és az összes műveletet feldolgozzák, de nem módosíthatják a modell sémáját.|  
     |**Folyamat**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem olvasható vagy nem módosítható, és nem lehet lekérdezni az adatlekérdezéseket.|  
     |**Rendszergazda**|A tagok módosíthatják a modell sémáját, és lekérhetik az összes adatlekérdezést.|   
   
 5.  Ha a létrehozandó szerepkör olvasási vagy olvasási és feldolgozási engedéllyel rendelkezik, akkor a DAX-képletek használatával hozzáadhat sorokhoz tartozó szűrőket. Kattintson a **sorok szűrők** fülre, majd jelöljön ki egy táblát, majd kattintson a **DAX-szűrő** mezőre, majd írjon be egy DAX-képletet.
   
-6.  Kattintson a **tagok**  >  **külső hozzáadása**elemre.  
+6.  Kattintson a **tagok**  >  **külső hozzáadása** elemre.  
   
-8.  A **külső tag hozzáadása**területen adja meg a bérlői Azure ad-beli felhasználókat vagy csoportokat e-mail-cím szerint. Miután rákattintott az OK gombra, és lezárta a szerepkör-kezelőt, a szerepkörök és szerepkörök tagjai megjelennek a táblázatos modell Explorerben. 
+8.  A **külső tag hozzáadása** területen adja meg a bérlői Azure ad-beli felhasználókat vagy csoportokat e-mail-cím szerint. Miután rákattintott az OK gombra, és lezárta a szerepkör-kezelőt, a szerepkörök és szerepkörök tagjai megjelennek a táblázatos modell Explorerben. 
  
      ![Szerepkörök és felhasználók a táblázatos modell Explorerben](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
@@ -65,9 +67,9 @@ Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és 
 
 Szerepkörök és felhasználók egy központilag telepített modell-adatbázishoz való hozzáadásához kiszolgálói rendszergazdaként vagy már egy rendszergazdai engedélyekkel rendelkező adatbázis-szerepkörben kell csatlakoznia a kiszolgálóhoz.
 
-1. Az Object Exporer kattintson a jobb gombbal a **szerepkörök**  >  **Új szerepkör**elemre.
+1. Az Object Exporer kattintson a jobb gombbal a **szerepkörök**  >  **Új szerepkör** elemre.
 
-2. A **szerepkör létrehozása**területen adja meg a szerepkör nevét és leírását.
+2. A **szerepkör létrehozása** területen adja meg a szerepkör nevét és leírását.
 
 3. Válasszon ki egy engedélyt.
 
@@ -75,13 +77,13 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
    |----------------|-----------------|  
    |**Teljes hozzáférés (rendszergazda)**|A tagok módosíthatják a modell sémáját, feldolgozhatják és lekérhetik az összes adatlekérdezést.| 
    |**Adatbázis feldolgozása**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
-   |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
+   |**Olvasni**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
   
-4. Kattintson a **tagság**elemre, majd adjon meg egy felhasználót vagy csoportot a bérlő Azure ad-ban e-mail-cím szerint.
+4. Kattintson a **tagság** elemre, majd adjon meg egy felhasználót vagy csoportot a bérlő Azure ad-ban e-mail-cím szerint.
 
      ![Felhasználó hozzáadása](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. Ha a létrehozandó szerepkör olvasási engedéllyel rendelkezik, akkor egy DAX-képlet használatával adhat hozzá sor szűrőket. Kattintson a **sorok szűrők**elemre, jelöljön ki egy táblát, majd írjon be egy DAX-képletet a **DAX-szűrő** mezőbe. 
+5. Ha a létrehozandó szerepkör olvasási engedéllyel rendelkezik, akkor egy DAX-képlet használatával adhat hozzá sor szűrőket. Kattintson a **sorok szűrők** elemre, jelöljön ki egy táblát, majd írjon be egy DAX-képletet a **DAX-szűrő** mezőbe. 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Szerepkörök és felhasználók hozzáadása TMSL-parancsfájl használatával
 
@@ -137,7 +139,7 @@ A sorok szűrői csak olvasási és olvasási és feldolgozási engedélyekkel r
   
 A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha egy táblának több kapcsolata van, a szűrők az aktív kapcsolat biztonságát alkalmazzák. A sorok szűrői a kapcsolódó táblákhoz definiált más sorokkal vannak összemetszve, például:  
   
-|Táblázat|DAX-kifejezés|  
+|Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
 |Régió|= Régió [ország] = "USA"|  
 |ProductCategory|= ProductCategory [név] = "kerékpárok"|  

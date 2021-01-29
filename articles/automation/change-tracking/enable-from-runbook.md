@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 842b0a92ba4a2cb6b3ceb54675ef95f9c8275311
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209723"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052617"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>A Change Tracking és az Inventory engedélyezése runbookból
 
@@ -44,9 +44,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. A Azure Portal navigáljon az **Automation-fiókokhoz**. Az **Automation-fiókok** lapon válassza ki a fiókját a listából.
 
-1. Az Automation-fiókban válassza a **leltár** vagy **change Tracking** lehetőséget a **konfiguráció kezelése**területen.
+1. Az Automation-fiókban válassza a **leltár** vagy **change Tracking** lehetőséget a **konfiguráció kezelése** területen.
 
-1. Válassza ki a Log Analytics munkaterületet, majd kattintson az **Engedélyezés**gombra. A leltár vagy Change Tracking engedélyezésekor megjelenik egy szalagcím.
+1. Válassza ki a Log Analytics munkaterületet, majd kattintson az **Engedélyezés** gombra. A leltár vagy Change Tracking engedélyezésekor megjelenik egy szalagcím.
 
     ![A Change Tracking és az Inventory engedélyezése](media/enable-from-automation-account/enable-feature.png)
 
@@ -54,7 +54,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. OperationalInsights](/powershell/module/az.operationalinsights) modult, hogy sikeresen engedélyezze Update Management a virtuális gépek számára a runbook.
 
-1. Az Automation-fiókban válassza a **megosztott erőforrások**alatt található **modulok** elemet.
+1. Az Automation-fiókban válassza a **megosztott erőforrások** alatt található **modulok** elemet.
 
 2. Az Azure-modulok a legújabb verzióra frissítéséhez válassza az **Azure-modulok frissítése** lehetőséget.
 
@@ -62,7 +62,7 @@ Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. Ope
 
     ![Modulok frissítése](media/enable-from-runbook/update-modules.png)
 
-4. Visszatérés a **modulokhoz** a **megosztott erőforrások**területen.
+4. Visszatérés a **modulokhoz** a **megosztott erőforrások** területen.
 
 5. Válassza a **Tallózás** katalógus lehetőséget a modul-gyűjtemény megnyitásához.
 
@@ -74,11 +74,11 @@ Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. Ope
 
 Ha a Change Tracking és a leltár engedélyezve van, hozzáadhat egy Azure-beli virtuális gépet a szolgáltatás általi felügyelethez.
 
-1. Az Automation-fiókban válassza a **változások követése** vagy **leltározás** elemet a **konfiguráció**felügyelete alatt.
+1. Az Automation-fiókban válassza a **változások követése** vagy **leltározás** elemet a **konfiguráció** felügyelete alatt.
 
 2. Kattintson az Azure-beli **virtuális gépek hozzáadása** lehetőségre a virtuális gép hozzáadásához.
 
-3. Válassza ki a virtuális gépet a listából, és kattintson az **Engedélyezés**gombra. Ez a művelet engedélyezi a virtuális gép Change Tracking és leltározását.
+3. Válassza ki a virtuális gépet a listából, és kattintson az **Engedélyezés** gombra. Ez a művelet engedélyezi a virtuális gép Change Tracking és leltározását.
 
    ![Virtuális gép Change Trackingának és leltározásának engedélyezése](media/enable-from-runbook/enable-azure-vm.png)
 
@@ -87,11 +87,11 @@ Ha a Change Tracking és a leltár engedélyezve van, hozzáadhat egy Azure-beli
 
 ## <a name="import-a-runbook-to-enable-change-tracking-and-inventory"></a>Runbook importálása a Change Tracking és a leltár engedélyezéséhez
 
-1. Az Automation-fiókban válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
+1. Az Automation-fiókban válassza a **runbookok** lehetőséget a **folyamat automatizálása** alatt.
 
 2. Kattintson a **Böngészés a katalógusban** gombra.
 
-3. Keressen rá az **Update és a Change Tracking**kifejezésre.
+3. Keressen rá az **Update és a Change Tracking** kifejezésre.
 
 4. Válassza ki a runbook, és kattintson az **Importálás** elemre a **Forrás megtekintése** lapon.
 
@@ -99,7 +99,7 @@ Ha a Change Tracking és a leltár engedélyezve van, hozzáadhat egy Azure-beli
 
    ![Runbook importálása a telepítőhöz](media/enable-from-runbook/import-from-gallery.png)
 
-6. A **Runbook** lapon jelölje be az **enable-MultipleSolution** Runbook, majd kattintson a **Szerkesztés**gombra. A szöveges szerkesztőben válassza a  **Közzététel**lehetőséget.
+6. A **Runbook** lapon jelölje be az **enable-MultipleSolution** Runbook, majd kattintson a **Szerkesztés** gombra. A szöveges szerkesztőben válassza a  **Közzététel** lehetőséget.
 
 7. Amikor a rendszer rákérdez a megerősítésre, kattintson az **Igen** gombra a runbook közzétételéhez.
 

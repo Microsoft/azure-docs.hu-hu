@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734827"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052804"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Hitelesítő adatok kezelése az Azure Automationben
 
@@ -115,7 +115,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-Az Azure-ban való hitelesítéshez hitelesítő adatokat is használhat a [AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával. A legtöbb esetben a [futtató fiókot](../manage-runas-account.md) kell használnia, és a [Get-AzAutomationConnection](../automation-connections.md)használatával kell lekérnie a kapcsolatokat.
+Az Azure-ban való hitelesítéshez hitelesítő adatokat is használhat a [AzAccount](/powershell/module/az.accounts/connect-azaccount)használatával. A legtöbb esetben a [futtató fiókot](../automation-security-overview.md#run-as-accounts) kell használnia, és a [Get-AzAutomationConnection](../automation-connections.md)használatával kell lekérnie a kapcsolatokat.
 
 ```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -172,7 +172,7 @@ Az alábbi képen egy példa látható a hitelesítő adatok grafikus runbook va
 
 Habár a Azure Automation DSC-konfigurációja a hitelesítő adatokkal is működhet a használatával `Get-AutomationPSCredential` , a hitelesítő adatokat a paraméterek segítségével is átadhatják. További információ: [konfigurációk fordítása Azure Automation DSC-ben](../automation-dsc-compile.md#credential-assets).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

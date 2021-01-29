@@ -3,12 +3,12 @@ title: A beállításjegyzékbe való bejelentkezés hibáinak megoldása
 description: Az Azure Container registrybe való bejelentkezés során felmerülő gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379502"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052078"
 ---
 # <a name="troubleshoot-registry-login"></a>Beállításjegyzékbeli bejelentkezés – problémamegoldás
 
@@ -39,6 +39,8 @@ A következők közül egyet vagy többet is tartalmazhat:
 Futtassa az az [ACR renézz-Health](/cli/azure/acr#az-acr-check-health) parancsot, hogy további információkat kapjon a beállításjegyzék-környezet állapotáról, és igény szerint hozzáférhessen a cél beállításjegyzékhez. Például diagnosztizálhatja a Docker konfigurációs hibáit, vagy Azure Active Directory a bejelentkezési problémákat. 
 
 A példákat az [Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md) ismertető szakaszban találja. Ha a rendszer hibákat jelez, tekintse át a hibákra vonatkozó [referenciát](container-registry-health-error-reference.md) és a javasolt megoldásokat a következő fejezetekben.
+
+Ha problémákat tapasztal az Azure Kubernetes szolgáltatás beállításjegyzék-wih, futtassa az az [AK-ellenőrzés – ACR](/cli/azure/aks#az_aks_check_acr) parancsot annak ellenőrzéséhez, hogy a beállításjegyzék elérhető-e az AK-fürtről.
 
 > [!NOTE]
 > Néhány hitelesítési vagy engedélyezési hiba akkor is előfordulhat, ha olyan tűzfal vagy hálózati konfiguráció van, amely megakadályozza a beállításjegyzék elérését. Lásd: [a beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md).
@@ -77,9 +79,9 @@ Kapcsolódó hivatkozások:
 Tekintse át a forgatókönyvhöz használt hitelesítő adatok érvényességét, vagy egy beállításjegyzék tulajdonosa adta meg. Néhány lehetséges probléma:
 
 * Ha Active Directory egyszerű szolgáltatást használ, ügyeljen arra, hogy a Active Directory bérlőben a megfelelő hitelesítő adatokat használja:
-  * Felhasználónév – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító* )
-  * Jelszó – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok* )
-* Ha egy Azure-szolgáltatást, például az Azure Kubernetes Service-t vagy az Azure DevOps-t használja a beállításjegyzék eléréséhez, erősítse meg a szolgáltatás beállításjegyzék-konfigurációját.
+  * Felhasználónév – egyszerű szolgáltatásnév alkalmazásának azonosítója (más néven *ügyfél-azonosító*)
+  * Jelszó – egyszerű szolgáltatás jelszava (más néven *ügyfél-titok*)
+* Ha egy Azure-szolgáltatást, például az Azure Kubernetes Service-t vagy az Azure DevOps-t használja a beállításjegyzék eléréséhez, erősítse meg a szolgáltatás beállításjegyzék-konfigurációját. 
 * Ha `az acr login` a kapcsolóval futtatta a `--expose-token` beállításjegyzék-bejelentkezést a Docker-démon használata nélkül, győződjön meg arról, hogy a felhasználónévvel van hitelesítve `00000000-0000-0000-0000-000000000000` .
 * Ha a beállításjegyzék [Névtelen lekéréses hozzáférésre](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)van konfigurálva, akkor az előző Docker-bejelentkezésből tárolt meglévő Docker-hitelesítő adatok megakadályozhatják a névtelen hozzáférést. Futtassa `docker logout` a parancsot a névtelen lekérési művelet a beállításjegyzékben való megkísérlése előtt.
 
@@ -143,7 +145,7 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
 
 * A beállításjegyzék egyéb hibaelhárítási témakörei a következők:
   * [A beállításjegyzék hálózati problémáinak elhárítása](container-registry-troubleshoot-access.md)
-  * [Regisztrációs adatbázis teljesítményproblémáinak elhárítása](container-registry-troubleshoot-performance.md)
+  * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
 * [Microsoft Q&A](/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/) – az Ön által megadott információk alapján egy gyors diagnosztika is futtatható a beállításjegyzékben található hitelesítési hibák esetén.

@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: Automation-fiók létrehozása Resource Manager-sablonnal
           href: quickstart-create-automation-account-template.md
+        - name: Futtató fiók
+          items:
+            - name: Futtató fiók létrehozása
+              href: create-run-as-account.md
+            - name: Futtató fiók törlése
+              href: delete-run-as-account.md
+            - name: Futtató fiók kezelése
+              href: manage-runas-account.md
         - name: Hitelesítés konfigurálása az Amazon Web Services segítségével
           href: automation-config-aws-account.md
         - name: Hitelesítés konfigurálása az Azure AD-vel
           href: automation-use-azure-ad.md
-        - name: Automation által használt DNS-rekord kezelése
+        - name: Az Automation által használt DNS-rekordok kezelése
           href: how-to/automation-region-dns-records.md
-        - name: Automation-futtatófiók kezelése
-          href: manage-runas-account.md
         - name: Privát csatlakozás Automation-fiókhoz
           href: how-to/private-link-security.md
         - name: Szerepköri engedélyek és biztonság kezelése

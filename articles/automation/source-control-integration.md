@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579453"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050770"
 ---
 # <a name="use-source-control-integration"></a>Verziókövetés-integrálás használata
 
@@ -29,7 +29,7 @@ A Azure Automation háromféle verziókövetés használatát támogatja:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy forrásoldali vezérlő adattár (GitHub vagy Azure Repos)
-* [Futtató fiók](manage-runas-account.md)
+* [Futtató fiók](automation-security-overview.md#run-as-accounts)
 * A [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban, beleértve a `Az.Accounts` modult (az a modul megfelelője `AzureRM.Profile` )
 
 > [!NOTE]
@@ -47,7 +47,7 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
 
     ![Forrás vezérlőelem kiválasztása](./media/source-control-integration/select-source-control.png)
 
-2. Válassza a **forrás vezérlőelem típusát** , majd kattintson a **hitelesítés** elemre.
+2. Válassza a **forrás vezérlőelem típusát**, majd kattintson a **hitelesítés** elemre.
 
 3. Megnyílik egy böngészőablak, amely felszólítja a bejelentkezésre. A hitelesítés befejezéséhez kövesse az utasításokat.
 
@@ -62,14 +62,14 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
     |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például **/Runbooks**. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
     |<sup>1</sup> . automatikus szinkronizálás     | Az automatikus szinkronizálás bekapcsolásának vagy kikapcsolásának beállítása a verziókövetés adattárában.        |
     |Runbook közzététele     | Annak beállítása, hogy a runbookok automatikusan közzé legyenek-e téve a forrás-vezérlőelemről való szinkronizálás után, vagy más módon.           |
-    |Leírás     | A verziókövetés további részleteit megadó szöveg        |
+    |Description     | A verziókövetés további részleteit megadó szöveg        |
 
     <sup>1</sup> ha engedélyezni szeretné az automatikus szinkronizálást a verziókövetés Azure Repos-integrációjának konfigurálásakor, a projekt rendszergazdájának kell lennie.
 
    ![Verziókövetés összegzése](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Előfordulhat, hogy a forrásként szolgáló adattárházhoz tartozó bejelentkezési azonosító eltér a Azure Portalhoz tartozó bejelentkezési adatoktól. Győződjön meg arról, hogy a verziókövetés konfigurálásakor a forrás vezérlő adattárának megfelelő fiókkal van bejelentkezve. Ha kétségei vannak, nyisson meg egy új fület a böngészőben, jelentkezzen ki a **dev.Azure.com** , a **visualstudio.com** vagy a **GitHub.com** -ből, és próbálkozzon újra a verziókövetés használatával.
+> Előfordulhat, hogy a forrásként szolgáló adattárházhoz tartozó bejelentkezési azonosító eltér a Azure Portalhoz tartozó bejelentkezési adatoktól. Győződjön meg arról, hogy a verziókövetés konfigurálásakor a forrás vezérlő adattárának megfelelő fiókkal van bejelentkezve. Ha kétségei vannak, nyisson meg egy új fület a böngészőben, jelentkezzen ki a **dev.Azure.com**, a **visualstudio.com** vagy a **GitHub.com**-ből, és próbálkozzon újra a verziókövetés használatával.
 
 ### <a name="configure-source-control-in-powershell"></a>A verziókövetés konfigurálása a PowerShellben
 
@@ -209,4 +209,4 @@ Jelenleg nem használhatja a Azure Portal a PAT in Source vezérlőben való fri
 ## <a name="next-steps"></a>Következő lépések
 
 * A verziókövetés Azure Automationban való integrálásához tekintse meg a [Azure Automation: verziókövetés integrálása a Azure Automationban](https://azure.microsoft.com/blog/azure-automation-source-control-13/)című témakört.  
-* A runbook a Visual Studio online-ban való integrálásához tekintse meg a következőt [: Azure Automation: a runbook-vezérlés integrálása a Visual Studio online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)-ban.
+* A runbook a Visual Studio Codespaces való integrálásához tekintse meg a következőt [: Azure Automation: runbook-verziókövetés integrálása a Visual Studio Codespaces használatával](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).

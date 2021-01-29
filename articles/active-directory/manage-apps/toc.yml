@@ -50,7 +50,7 @@
         - name: A katalógusban nem szereplő alkalmazások megtervezése
           href: non-gallery-apps.md
         - name: Saját alkalmazások üzembe helyezésének megtervezése
-          href: access-panel-deployment-plan.md
+          href: my-apps-deployment-plan.md
     - name: Egyszeri bejelentkezés
       items:
         - name: Egyszeri bejelentkezés üzembe helyezésének tervezése

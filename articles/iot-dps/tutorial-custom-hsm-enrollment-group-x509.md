@@ -3,23 +3,25 @@ title: Oktatóanyag – X. 509 eszközök kiépítése az Azure IoT Hubba egyén
 description: Ez az oktatóanyag beléptetési csoportokat használ. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre X. 509-eszközöket egyéni hardveres biztonsági modul (HSM) és az Azure IoT Hub Device Provisioning Service (DPS) C Device SDK használatával.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/18/2020
+ms.date: 01/28/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954868"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052363"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Oktatóanyag: több X. 509 eszköz kiépítése beléptetési csoportok használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan IoT-eszközök csoportjait, amelyek X. 509 tanúsítványokat használnak a hitelesítéshez. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -ból származó mintakód használatával IoT-eszközként kiépítheti a fejlesztői gépet. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan IoT-eszközök csoportjait, amelyek X. 509 tanúsítványokat használnak a hitelesítéshez. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) minta-eszköz kódját a fejlesztői gépen hajtja végre az X. 509 eszközök kiépítésének szimulálása érdekében. Valós eszközökön az eszköz kódja üzembe helyezése és futtatása a IoT-eszközről.
 
-Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
+Az oktatóanyag folytatása előtt győződjön meg arról, hogy legalább végrehajtotta a [IoT hub Device Provisioning Service beállítása a Azure Portalban](quick-setup-auto-provision.md) című témakör lépéseit. Továbbá ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. 
+
+Az Azure IoT-eszközök kiépítési szolgáltatása két típusú regisztrációt támogat a kiépítési eszközökhöz:
 
 * [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
 * [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
@@ -27,8 +29,6 @@ Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt tám
 Ez az oktatóanyag hasonló a korábbi oktatóanyagokhoz, amelyek bemutatják, hogyan használhatók a beléptetési csoportok az eszközök készletének kiépítéséhez. Ebben az oktatóanyagban azonban a szimmetrikus kulcsok helyett X. 509 tanúsítványokat fogunk használni. Tekintse át az ebben a szakaszban található korábbi oktatóanyagokat a [szimmetrikus kulcsok](./concepts-symmetric-key-attestation.md)használatával történő egyszerű megközelítéshez.
 
 Ez az oktatóanyag bemutatja az [Egyéni HSM-mintát](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) , amely a hardveres biztonságos tárolással való együttműködésre szolgáló helyettes implementációt biztosít. A [hardveres biztonsági modul (HSM)](./concepts-service.md#hardware-security-module) a biztonságos, hardveres tárolásra szolgál az eszközök titkaihoz. A HSM használható szimmetrikus kulccsal, X. 509 tanúsítvánnyal vagy TPM-igazolással, hogy biztonságos tárhelyet biztosítson a titkok számára. Az eszköz titkos kulcsainak hardveres tárolása nem kötelező, de erősen ajánlott a bizalmas adatok, például az eszköz tanúsítványa titkos kulcsának védelmére.
-
-Ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. Győződjön meg arról is, hogy végrehajtotta a [IoT hub Device Provisioning Service beállítása a Azure Portal az](quick-setup-auto-provision.md) oktatóanyag folytatása előtt című témakör lépéseit. 
 
 
 Ebben az oktatóanyagban a következő célkitűzéseket fogja végrehajtani:
@@ -44,9 +44,11 @@ Ebben az oktatóanyagban a következő célkitűzéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
+A következő előfeltételek az eszközök szimulálásához használt Windows-fejlesztési környezethez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott. 
+
+    A Visual Studio ebben a cikkben a IoT-eszközökre telepítendő eszköz mintakód összeállítására szolgál.  Ez nem jelenti azt, hogy a Visual Studio maga az eszközön szükséges.
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
@@ -106,7 +108,7 @@ Ebben a szakaszban előkészítjük az [Azure IoT C SDK](https://github.com/Azur
 
 ## <a name="create-an-x509-certificate-chain"></a>X. 509 tanúsítványlánc létrehozása
 
-Ebben a szakaszban három tanúsítványból álló X. 509 tanúsítványláncot fog előállítani az oktatóanyag teszteléséhez. A tanúsítványok a következő hierarchiát fogják tartalmazni.
+Ebben a szakaszban három tanúsítványból álló X. 509 tanúsítványláncot fog előállítani az egyes eszközöknek az Oktatóanyaggal való teszteléséhez. A tanúsítványok a következő hierarchiát fogják tartalmazni.
 
 ![Oktatóanyag – eszköz tanúsítványának lánca](./media/tutorial-custom-hsm-enrollment-group-x509/example-device-cert-chain.png#lightbox)
 
@@ -114,15 +116,17 @@ Ebben a szakaszban három tanúsítványból álló X. 509 tanúsítványláncot
 
 [Köztes tanúsítvány](concepts-x509-attestation.md#intermediate-certificate): gyakori, hogy a köztes tanúsítványok az eszközöket a termékcsoportok, a céges részlegek vagy más feltételek alapján, logikailag csoportosítva használják. Ez az oktatóanyag egy közbenső tanúsítványból álló tanúsítványlánc használatát fogja használni. A köztes tanúsítványt a főtanúsítvány fogja aláírni. Ez a tanúsítvány a DPS-ben létrehozott beléptetési csoportban is használatos az eszközök logikai csoportosításához. Ez a konfiguráció lehetővé teszi az olyan eszközök teljes csoportjának felügyeletét, amelyeknek az eszköz-tanúsítványai ugyanazzal a közbenső tanúsítvánnyal vannak aláírva. Az eszközök egy csoportjának engedélyezéséhez vagy letiltásához létrehozhat regisztrációs csoportokat. Az eszközök egy csoportjának letiltásával kapcsolatos további információkért lásd: [X. 509 közbenső vagy legfelső szintű hitelesítésszolgáltatói tanúsítvány tiltása egy regisztrációs csoport használatával](how-to-revoke-device-access-portal.md#disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group)
 
-[Eszköz tanúsítványa](concepts-x509-attestation.md#end-entity-leaf-certificate): az eszköz (levél) tanúsítványát a köztes tanúsítvány írja alá, és a titkos kulccsal együtt tárolja az eszközön. Az eszköz ezt a tanúsítványt és titkos kulcsot fogja bemutatni, valamint a tanúsítvány-láncot a kiépítés megkísérlése során. 
+[Eszközök tanúsítványainak](concepts-x509-attestation.md#end-entity-leaf-certificate): az eszköz (levél) tanúsítványait a köztes tanúsítvány írja alá, és a titkos kulccsal együtt tárolja az eszközön. Ideális esetben ezek a bizalmas elemek biztonságosan lesznek tárolva egy HSM-mel. Minden eszköz megkapja a tanúsítványát és a titkos kulcsát, valamint a tanúsítvány-láncot a kiépítés megkísérlése során. 
 
-A tanúsítványlánc létrehozása:
+#### <a name="create-root-and-intermediate-certificates"></a>Gyökér-és köztes tanúsítványok létrehozása
+
+A tanúsítványlánc gyökerének és közbenső részének létrehozása:
 
 1. Nyisson meg egy git bash parancssort. Hajtsa végre az 1. és a 2. lépést a [minták és oktatóanyagok tesztelési hitelesítésszolgáltatói tanúsítványainak kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials)című részében található bash rendszerhéj-utasítások használatával.
 
-    Ez a lépés létrehoz egy munkakönyvtárat a tanúsítvány parancsfájljaihoz, és létrehozza a példában szereplő legfelső szintű és köztes tanúsítványt a tanúsítványlánc számára az OpenSSL használatával. 
-
-    Figyelje meg az önaláírt főtanúsítvány helyét bemutató kimenetet. Ez a tanúsítvány [igazolja, hogy a](how-to-verify-certificates.md) tulajdonjog ellenőrzése később megtörténik.
+    Ez létrehoz egy munkakönyvtárat a tanúsítvány parancsfájljaihoz, és létrehozza a példában szereplő legfelső szintű és köztes tanúsítványt a tanúsítványlánc számára az OpenSSL használatával. 
+    
+2. Figyelje meg az önaláírt főtanúsítvány helyét bemutató kimenetet. Ez a tanúsítvány [igazolja, hogy a](how-to-verify-certificates.md) tulajdonjog ellenőrzése később megtörténik.
 
     ```output
     Creating the Root CA Certificate
@@ -142,8 +146,8 @@ A tanúsítványlánc létrehozása:
                 Not After : Nov 22 21:30:30 2020 GMT
             Subject: CN=Azure IoT Hub CA Cert Test Only
     ```        
-
-    Figyelje meg azt a kimenetet, amely a főtanúsítvány által aláírt/kiállított köztes tanúsítvány helyét mutatja. A rendszer ezt a tanúsítványt fogja használni a később létrehozandó beléptetési csoporttal.
+    
+3. Figyelje meg azt a kimenetet, amely a főtanúsítvány által aláírt/kiállított köztes tanúsítvány helyét mutatja. A rendszer ezt a tanúsítványt fogja használni a később létrehozandó beléptetési csoporttal.
 
     ```output
     Intermediate CA Certificate Generated At:
@@ -161,8 +165,12 @@ A tanúsítványlánc létrehozása:
                 Not After : Nov 22 21:30:33 2020 GMT
             Subject: CN=Azure IoT Hub Intermediate Cert Test Only
     ```    
+    
+#### <a name="create-device-certificates"></a>Eszközök tanúsítványainak létrehozása
 
-2. Ezután futtassa a következő parancsot egy olyan új eszköz/levél tanúsítvány létrehozásához, amelynek tulajdonos neve paraméterként szolgál. Használja az oktatóanyaghoz megadott példa tulajdonos nevét `custom-hsm-device-01` . Ez a tulajdonos neve lesz a IoT eszköz azonosítója. 
+A köztes tanúsítvány által aláírt eszköz-tanúsítványok létrehozása a láncban:
+
+1. A következő parancs futtatásával hozzon létre egy új eszközt/levél-tanúsítványt, amelynek tulajdonos neve paraméterként szolgál. Használja az oktatóanyaghoz megadott példa tulajdonos nevét `custom-hsm-device-01` . Ez a tulajdonos neve lesz a IoT eszköz azonosítója. 
 
     > [!WARNING]
     > Ne használjon szóközt a tulajdonos nevében. A tulajdonos neve a kiépített IoT-eszköz azonosítója. Az eszköz AZONOSÍTÓjának szabályait kell követnie. További információ: [eszköz identitásának tulajdonságai](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
@@ -192,13 +200,13 @@ A tanúsítványlánc létrehozása:
             Subject: CN=custom-hsm-device-01
     ```    
     
-3. Futtassa a következő parancsot egy teljes tanúsítványlánc. PEM fájl létrehozásához, amely tartalmazza az új eszköz tanúsítványát.
+2. Futtassa a következő parancsot egy teljes tanúsítványlánc. PEM fájl létrehozásához, amely tartalmazza az új eszköz tanúsítványát `custom-hsm-device-01` .
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-01-full-chain.cert.pem && cd ..
     ```
 
-    Használjon egy szövegszerkesztőt, és nyissa meg a tanúsítványlánc fájlt *./certs/New-Device-Full-Chain.CERT.PEM*. A tanúsítványlánc szövege mindhárom tanúsítvány teljes láncát tartalmazza. Az oktatóanyag későbbi részében ezt a szöveget fogja használni az egyéni HSM-kóddal rendelkező tanúsítványláncként.
+    Használjon egy szövegszerkesztőt, és nyissa meg a tanúsítványlánc fájlt *./certs/New-Device-01-Full-Chain.CERT.PEM*. A tanúsítványlánc szövege mindhárom tanúsítvány teljes láncát tartalmazza. Ezt a szöveget fogja használni az oktatóanyag későbbi részében az egyéni HSM-eszköz kódjához tartozó tanúsítványláncként `custom-hsm-device-01` .
 
     A teljes lánc szövege a következő formátumú:
  
@@ -214,115 +222,25 @@ A tanúsítványlánc létrehozása:
     -----END CERTIFICATE-----
     ```
 
-5. Figyelje meg, hogy az új eszköz tanúsítványának titkos kulcsa a *./Private/New-Device.key.PEM*. Az eszköznek a kiépítés során szüksége lesz a kulcs szövegére. A szöveget később a rendszer hozzáadja az egyéni HSM-példához.
+3. Figyelje meg, hogy az új eszköz tanúsítványának titkos kulcsa a *./Private/New-Device.key.PEM*. Nevezze át ezt a kulcsfájl *./Private/New-Device-01.key.PEM* az `custom-hsm-device-01` eszközhöz. Az eszköznek a kiépítés során szüksége lesz a kulcs szövegére. A szöveget később a rendszer hozzáadja az egyéni HSM-példához.
+
+    ```bash
+    $ mv private/new-device.key.pem private/new-device-01.key.pem
+    ```
 
     > [!WARNING]
     > A tanúsítványok szövege csak a nyilvános kulcsokra vonatkozó információkat tartalmazza. 
     >
     > Az eszköznek azonban hozzá kell férnie az eszköz tanúsítványához tartozó titkos kulcshoz is. Erre azért van szükség, mert az eszköznek a kiépítés megkísérlése során az adott kulcs futtatásával kell végrehajtania a hitelesítést. Ennek a kulcsnak az érzékenysége az egyik fő oka annak, hogy a hardveres tárterületet egy valós HSM-ben érdemes használni a titkos kulcsok biztonságossá tételéhez.
 
+4. Ismételje meg a 1-3. lépést egy második, eszköz-AZONOSÍTÓval rendelkező eszköz esetében `custom-hsm-device-02` . A következő értékeket használja az eszközhöz:
 
-
-## <a name="configure-the-custom-hsm-stub-code"></a>Egyéni HSM-helyettes kód konfigurálása
-
-A tényleges biztonságos hardver-alapú tárolással való interakció sajátosságai a hardvertől függően változnak. Ennek eredményeképpen az eszköz által az oktatóanyagban használt tanúsítványlánc az egyéni HSM-hardcoded lesz. A valós forgatókönyvekben a tanúsítványlánc a tényleges HSM-hardveren lesz tárolva, hogy jobb biztonságot nyújtson a bizalmas adatok számára. Az ebben a mintában látható helyettes metódusokhoz hasonló metódusokat a rendszer úgy valósítja meg, hogy beolvassa a hardveres tárterület titkait. 
-
-Amíg a HSM hardver nem szükséges, nem ajánlott bizalmas adatokat, például a tanúsítvány titkos kulcsát, a forráskódba bejelölve. Ez a kulcs mindenki számára elérhetővé teszi, aki megtekintheti a kódot. Ez a cikk csak a tanuláshoz nyújt segítséget.
-
-A következő oktatóanyaghoz tartozó egyéni HSM-helyettes kód frissítése:
-
-1. Indítsa el a Visual studiót, és nyissa meg az `cmake` Azure-IOT-SDK-c git-tárház gyökerében létrehozott könyvtárban létrehozott új megoldási fájlt. A megoldás fájljának neve `azure_iot_sdks.sln` .
-
-2. Megoldáskezelő a Visual studióhoz navigáljon **Provisioning_Samples > custom_hsm_example > forrásfájlokat** , és nyissa meg a *Custom_hsm_example. c* fájlt.
-
-3. Frissítse a karakterlánc-konstans karakterlánc-értékét `COMMON_NAME` az eszköz tanúsítványának létrehozásakor használt köznapi név használatával.
-
-    ```c
-    static const char* const COMMON_NAME = "custom-hsm-device-01";
-    ```
-
-4. Ugyanebben a fájlban frissítenie kell az állandó sztring sztring értékét a `CERTIFICATE` *./certs/New-Device-Full-Chain.CERT.PEM* fájlba mentett tanúsítványlánc szövege alapján a tanúsítványok létrehozása után.
-
-    A tanúsítvány szövegének szintaxisának az alábbi mintát kell követnie, és a Visual Studio nem végez további szóközöket vagy elemzést.
-
-    ```c
-    // <Device/leaf cert>
-    // <intermediates>
-    // <root>
-    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
-        ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----";        
-    ```
-
-    Ebben a lépésben a karakterlánc értékének megfelelő frissítése nagyon unalmas lehet, és hiba miatt változhat. A git bash-parancssorban a megfelelő szintaxis létrehozásához másolja ki és illessze be az alábbi bash shell-parancsokat a git bash parancssorába, majd nyomja le az **ENTER** billentyűt. Ezek a parancsok a `CERTIFICATE` karakterlánc konstans értékének szintaxisát fogják eredményezni.
-
-    ```Bash
-    input="./certs/new-device-full-chain.cert.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    Másolja és illessze be a kimeneti tanúsítvány szövegét az új állandó értékhez. 
-
-
-5. Ugyanebben a fájlban az állandó karakterlánc értékét `PRIVATE_KEY` is frissíteni kell az eszköz tanúsítványának titkos kulcsával.
-
-    A titkos kulcs szövegének szintaxisának az alábbi mintát kell követnie, és a Visual Studio nem végez további szóközöket vagy elemzést.
-
-    ```c
-    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
-        ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
-    "-----END RSA PRIVATE KEY-----";
-    ```
-
-    A karakterlánc értékének megfelelő frissítése ebben a lépésben nagyon unalmas lehet, és a hiba is fennáll. A git bash-parancssorban a megfelelő szintaxis létrehozásához másolja ki és illessze be a következő bash shell-parancsokat, majd nyomja le az **ENTER** billentyűt. Ezek a parancsok a `PRIVATE_KEY` karakterlánc konstans értékének szintaxisát fogják eredményezni.
-
-    ```Bash
-    input="./private/new-device.key.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    Másolja és illessze be a kimeneti titkos kulcs szövegét az új állandó értékhez. 
-
-6. Mentse a *custom_hsm_example. c*.
-
+    |   Description                 |  Érték  |
+    | :---------------------------- | :--------- |
+    | Tulajdonos neve                  | `custom-hsm-device-02` |
+    | Teljes tanúsítványlánc fájlja   | *./certs/new-device-02-full-chain.cert.pem* |
+    | Titkos kulcs fájlneve          | *Private/New-Device-02. key. PEM* |
+    
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>A főtanúsítvány tulajdonjogának ellenőrzése
 
@@ -411,21 +329,23 @@ Az aláíró tanúsítványok mostantól megbízhatók a Windows-alapú eszköz�
 
 ## <a name="configure-the-provisioning-device-code"></a>A kiépítési eszköz kódjának konfigurálása
 
-Ebben a szakaszban a mintakód frissítésével kiépítheti az eszközt az eszköz kiépítési szolgáltatásának példányával. Ha az eszköz hitelesítése megtörtént, akkor az eszköz kiépítési szolgáltatásának példányához társított IoT hub lesz hozzárendelve.
+Ebben a szakaszban a mintakód a Device kiépítési szolgáltatás példányával kapcsolatos információkkal frissül. Ha egy eszköz hitelesítése megtörtént, a rendszer egy, az ebben a szakaszban konfigurált Device kiépítési szolgáltatási példányhoz társított IoT hub-hoz rendel hozzá.
 
 1. A Azure Portal válassza az eszközök kiépítési szolgáltatásának **Áttekintés** lapját, és jegyezze fel az **_azonosító hatókörének_** értékét.
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Megoldáskezelő a Visual studióhoz navigáljon **Provisioning_Samples > prov_dev_client_sample > forrásfájlokat** , és nyissa meg a *Prov_dev_client_sample. c* fájlt.
+2. Indítsa el a Visual studiót, és nyissa meg az `cmake` Azure-IOT-SDK-c git-tárház gyökerében létrehozott könyvtárban létrehozott új megoldási fájlt. A megoldás fájljának neve `azure_iot_sdks.sln` .
 
-3. Keresse meg az `id_scope` állandót, és cserélje le az értékét a korábban kimásolt **Azonosító hatóköre** értékre. 
+3. Megoldáskezelő a Visual studióhoz navigáljon **Provisioning_Samples > prov_dev_client_sample > forrásfájlokat** , és nyissa meg a *Prov_dev_client_sample. c* fájlt.
+
+4. Keresse meg az `id_scope` állandót, és cserélje le az értékét a korábban kimásolt **Azonosító hatóköre** értékre. 
 
     ```c
     static const char* id_scope = "0ne00000A0A";
     ```
 
-4. Keresse meg a `main()` függvény definícióját ugyanebben a fájlban. Győződjön meg arról, `hsm_type` hogy a változó a `SECURE_DEVICE_TYPE_X509` lent látható módon van beállítva.
+5. Keresse meg a `main()` függvény definícióját ugyanebben a fájlban. Győződjön meg arról, `hsm_type` hogy a változó a `SECURE_DEVICE_TYPE_X509` lent látható módon van beállítva.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -434,11 +354,110 @@ Ebben a szakaszban a mintakód frissítésével kiépítheti az eszközt az eszk
     //hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-5. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget.
+6. Kattintson a jobb gombbal a **prov\_dev\_client\_sample** projektre, és válassza a **Beállítás kezdőprojektként** lehetőséget.
+
+
+## <a name="configure-the-custom-hsm-stub-code"></a>Egyéni HSM-helyettes kód konfigurálása
+
+A tényleges biztonságos hardver-alapú tárolással való interakció sajátosságai a hardvertől függően változnak. Ennek eredményeképpen az oktatóanyagban szereplő szimulált eszközök által használt hardcoded az egyéni HSM-stub-kódban lesznek felhasználva. A valós forgatókönyvekben a tanúsítványlánc a tényleges HSM-hardveren lesz tárolva, hogy jobb biztonságot nyújtson a bizalmas adatok számára. Az ebben a mintában használt stub-metódusokhoz hasonló módszerek lesznek megvalósítva, hogy beolvassák az adott hardveres tárterület titkait. 
+
+Amíg a HSM hardver nem szükséges, ajánlott a bizalmas adatok, például a tanúsítvány titkos kulcsainak védelemmel ellátni. Ha egy tényleges HSM-t hívott meg a minta, a titkos kulcs nem lesz jelen a forráskódban. A forráskódban található kulcs minden olyan felhasználó számára elérhetővé teszi a kulcsot, aki megtekintheti a kódot. Ez a cikk csak a tanuláshoz nyújt segítséget.
+
+A következő lépések végrehajtásával frissítheti az egyéni HSM-helyettes kódját, hogy szimulálja az AZONOSÍTÓval rendelkező eszköz identitását `custom-hsm-device-01` :
+
+1. Megoldáskezelő a Visual studióhoz navigáljon **Provisioning_Samples > custom_hsm_example > forrásfájlokat** , és nyissa meg a *Custom_hsm_example. c* fájlt.
+
+2. Frissítse a karakterlánc-konstans karakterlánc-értékét `COMMON_NAME` az eszköz tanúsítványának létrehozásakor használt köznapi név használatával.
+
+    ```c
+    static const char* const COMMON_NAME = "custom-hsm-device-01";
+    ```
+
+3. Ugyanebben a fájlban frissítenie kell az állandó sztring sztring értékét a `CERTIFICATE` *./certs/New-Device-01-Full-Chain.CERT.PEM* fájlba mentett tanúsítványlánc szövege alapján a tanúsítványok létrehozása után.
+
+    A tanúsítvány szövegének szintaxisának az alábbi mintát kell követnie, és a Visual Studio nem végez további szóközöket vagy elemzést.
+
+    ```c
+    // <Device/leaf cert>
+    // <intermediates>
+    // <root>
+    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
+        ...
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
+    ```
+
+    Ebben a lépésben a karakterlánc értékének megfelelő frissítése nagyon unalmas lehet, és hiba miatt változhat. A git bash-parancssorban a megfelelő szintaxis létrehozásához másolja ki és illessze be az alábbi bash shell-parancsokat a git bash parancssorába, majd nyomja le az **ENTER** billentyűt. Ezek a parancsok a `CERTIFICATE` karakterlánc konstans értékének szintaxisát fogják eredményezni.
+
+    ```Bash
+    input="./certs/new-device-01-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Másolja és illessze be a kimeneti tanúsítvány szövegét az új állandó értékhez. 
+
+
+4. Ugyanebben a fájlban az állandó karakterlánc értékét `PRIVATE_KEY` is frissíteni kell az eszköz tanúsítványának titkos kulcsával.
+
+    A titkos kulcs szövegének szintaxisának az alábbi mintát kell követnie, és a Visual Studio nem végez további szóközöket vagy elemzést.
+
+    ```c
+    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
+        ...
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
+    ```
+
+    A karakterlánc értékének megfelelő frissítése ebben a lépésben nagyon unalmas lehet, és a hiba is fennáll. A git bash-parancssorban a megfelelő szintaxis létrehozásához másolja ki és illessze be a következő bash shell-parancsokat, majd nyomja le az **ENTER** billentyűt. Ezek a parancsok a `PRIVATE_KEY` karakterlánc konstans értékének szintaxisát fogják eredményezni.
+
+    ```Bash
+    input="./private/new-device-01.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Másolja és illessze be a kimeneti titkos kulcs szövegét az új állandó értékhez. 
+
+5. Mentse a *custom_hsm_example. c*.
 
 6. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. Amikor a rendszer rákérdez a projekt újraépítésére, válassza az **Igen** lehetőséget a projekt újraépítéséhez a futtatása előtt.
 
-    Az alábbi kimenet egy példa arra, hogy a kiépítési eszköz ügyfél-mintája sikeresen elindult-e, és csatlakozik a kiépítési szolgáltatáshoz. Az eszköz hozzá lett rendelve egy IoT hubhoz, és regisztrálva van:
+    A következő kimenet egy példa a szimulált eszköz `custom-hsm-device-01` sikeres rendszerindítására és a kiépítési szolgáltatáshoz való csatlakozásra. Az eszköz hozzá lett rendelve egy IoT hubhoz, és regisztrálva van:
 
     ```cmd
     Provisioning API Version: 1.3.9
@@ -455,6 +474,29 @@ Ebben a szakaszban a mintakód frissítésével kiépítheti az eszközt az eszk
 7. A portálon navigáljon a kiépítési szolgáltatáshoz társított IoT hubhoz, és válassza a IoT- **eszközök** lapot. Az X. 509 eszköznek a központba való sikeres kiépítés után az eszköz azonosítója megjelenik az **IoT-eszközök** panelen, és az *állapota* **engedélyezett**. Előfordulhat, hogy a felül található **refresh (frissítés** ) gombra kell kattintania. 
 
     ![Az egyéni HSM-eszköz regisztrálva van az IoT hub-ban](./media/tutorial-custom-hsm-enrollment-group-x509/hub-provisioned-custom-hsm-x509-device.png) 
+
+8. Ismételje meg a 1-7. lépést egy második, eszköz-AZONOSÍTÓval rendelkező eszköz esetében `custom-hsm-device-02` . A következő értékeket használja az eszközhöz:
+
+    |   Description                 |  Érték  |
+    | :---------------------------- | :--------- |
+    | `COMMON_NAME`                 | `"custom-hsm-device-02"` |
+    | Teljes tanúsítványlánc        | Szöveg előállítása a használatával `input="./certs/new-device-02-full-chain.cert.pem"` |
+    | Titkos kulcs                   | Szöveg előállítása a használatával `input="./private/new-device-02.key.pem"` |
+
+    A következő kimenet egy példa a szimulált eszköz `custom-hsm-device-02` sikeres rendszerindítására és a kiépítési szolgáltatáshoz való csatlakozásra. Az eszköz hozzá lett rendelve egy IoT hubhoz, és regisztrálva van:
+
+    ```cmd
+    Provisioning API Version: 1.3.9
+    
+    Registering Device
+    
+    Provisioning Status: PROV_DEVICE_REG_STATUS_CONNECTED
+    Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
+    
+    Registration Information received from service: test-docs-hub.azure-devices.net, deviceId: custom-hsm-device-02
+    Press enter key to exit:
+    ```
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

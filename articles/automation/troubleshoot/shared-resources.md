@@ -3,14 +3,14 @@ title: A megosztott erőforrásokkal kapcsolatos problémák elhárítása Azure
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation megosztott erőforrásokkal kapcsolatos problémákat.
 services: automation
 ms.subservice: ''
-ms.date: 03/12/2019
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896291"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053619"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Megosztott erőforrásokkal kapcsolatos problémák elhárítása
 
@@ -131,7 +131,7 @@ Nem rendelkezik a futtató fiók létrehozásához vagy frissítéséhez szüks�
 
 #### <a name="resolution"></a>Feloldás
 
-Futtató fiók létrehozásához vagy frissítéséhez megfelelő [engedélyekkel](../manage-runas-account.md#permissions) kell rendelkeznie a futtató fiók által használt különféle erőforrásokhoz. 
+Futtató fiók létrehozásához vagy frissítéséhez megfelelő [engedélyekkel](../automation-security-overview.md#permissions) kell rendelkeznie a futtató fiók által használt különféle erőforrásokhoz.
 
 Ha a probléma egy zárolás miatt van, ellenőrizze, hogy a zárolást el lehet-e távolítani. Ezután lépjen a Azure Portal zárolt erőforrásra, kattintson a jobb gombbal a zárolásra, majd válassza a **Törlés** lehetőséget.
 
@@ -147,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Ok
 
-Ezt a hibát valószínűleg egy helytelenül konfigurált [futtató fiók](../manage-runas-account.md)okozza.
+Ezt a hibát valószínűleg egy helytelenül konfigurált [futtató fiók](../automation-security-overview.md)okozza.
 
 #### <a name="resolution"></a>Feloldás
 
@@ -166,4 +166,3 @@ Ha ez a cikk nem oldja meg a problémát, próbálja ki a következő csatornák
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
 * Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . Ez a hivatalos Microsoft Azure fiók az Azure-Közösség megfelelő erőforrásokhoz való csatlakoztatásához: válaszok, támogatás és szakértők.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.
-

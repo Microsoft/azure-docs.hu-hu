@@ -4,15 +4,15 @@ description: Azure biztonsági alapkonfiguráció automatizáláshoz
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737252"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052753"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure biztonsági alapkonfiguráció automatizáláshoz
 
@@ -336,11 +336,11 @@ A hibrid Runbook Worker szolgáltatás használatakor azonban a Azure Security C
 
 **Útmutató**: Azure Active Directory beépített rendszergazdai szerepkörök használata, amelyek explicit módon hozzárendelhetők, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez. Ha Automation-fiók futtató fiókokat használ a runbookok, győződjön meg arról, hogy az ilyen egyszerű szolgáltatásokat a leltárban is nyomon követik, mivel ezek gyakran megemelt jogosultságokkal rendelkeznek. Törölje a nem használt futtató fiókokat a kitett támadási felület minimalizálásához.
 
-* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [Futtató fiók vagy klasszikus futtató fiók törlése](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Futtató fiók vagy klasszikus futtató fiók törlése](./delete-run-as-account.md)
 
 * [Azure Automation futtató fiók kezelése](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 * [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-* [Futtató fiók vagy klasszikus futtató fiók törlése](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Futtató fiók vagy klasszikus futtató fiók törlése](./delete-run-as-account.md)
 
 * [Azure Automation futtató fiók kezelése](./manage-runas-account.md)
 
@@ -454,7 +454,7 @@ A Microsoft-szolgáltatásokhoz igénybe vehet egy igény szerinti vagy elég ho
 
 * [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
-* [Futtató fiók vagy klasszikus futtató fiók törlése](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Futtató fiók vagy klasszikus futtató fiók törlése](./delete-run-as-account.md)
 
 * [Azure Automation futtató fiók kezelése](./manage-runas-account.md)
 
@@ -696,7 +696,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
 * [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -724,7 +724,7 @@ Ha az Azure Virtual Machines által támogatott hibrid Runbook-feldolgozókat ha
 
 * [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Futtató fiók vagy klasszikus futtató fiók törlése](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Futtató fiók vagy klasszikus futtató fiók törlése](./delete-run-as-account.md)
 
 * [Azure Automation futtató fiók kezelése](./manage-runas-account.md)
 
@@ -836,7 +836,7 @@ Az adaptív alkalmazás-vezérlés intelligens, automatizált, teljes körű meg
 
 **Útmutató**: a hibrid Runbook-feldolgozói szolgáltatás használatakor, valamint a parancsfájlok típusától függően használhat operációs rendszer-specifikus konfigurációkat vagy harmadik féltől származó erőforrásokat, hogy korlátozza a felhasználók számára az Azure számítási erőforrásokon belüli parancsfájlok végrehajtását. Emellett kihasználhatja Azure Security Center adaptív alkalmazás vezérlőelemeit is, hogy csak a hitelesített szoftverek fussanak, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines.
 
-* [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Azure Security Center adaptív alkalmazás-vezérlők használata](../security-center/security-center-adaptive-application.md)
 
@@ -878,7 +878,7 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 Az Azure-erőforrások biztonságos alapkonfigurációjának megfelelően Azure Security Center javaslatokat is alkalmazhat.
 
-* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében](../governance/policy/tutorials/create-and-manage.md)
 
@@ -942,7 +942,7 @@ A legtöbb esetben a Azure Automation állapot-konfigurációval kombinált Micr
 
 * [Az ARM-sablonok létrehozásával kapcsolatos információk](../virtual-machines/windows/ps-template.md)
 
-* [Egyéni virtuális merevlemez feltöltése az Azure-ba](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Egyéni virtuális merevlemez feltöltése az Azure-ba](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -952,7 +952,7 @@ A legtöbb esetben a Azure Automation állapot-konfigurációval kombinált Micr
 
 **Útmutató**: az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti a kódokat, például az egyéni Azure-szabályzatokat, a Azure Resource Manager sablonokat és a kívánt állapotú konfigurációs parancsfájlokat. Az Azure DevOps felügyelt erőforrásainak eléréséhez engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy a Azure Active Directoryban definiált csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van. A verziókövetés integrációs funkciójával naprakészen tarthatja a runbookok az Automation-fiókban a verziókövetés adattárában található parancsfájlok használatával.
 
-* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 * [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -1134,7 +1134,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Bevezetés a Azure Automationba](./automation-intro.md)
 
-* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1160,7 +1160,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Bevezetés a Azure Automationba](./automation-intro.md)
 
-* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok biztonsági mentése az Azure-ban](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1176,7 +1176,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Az ügyfél által felügyelt kulcsok használata Automation-fiókhoz](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1190,7 +1190,7 @@ A verziókövetés integrációs funkciójával naprakészen tarthatja a runbook
 
 A verziókövetés integrációs funkciójával naprakészen tarthatja a runbookok az Automation-fiókban a verziókövetés adattárában található parancsfájlok használatával.
 
-* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 * [Engedélyek és csoportok az Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -1290,7 +1290,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

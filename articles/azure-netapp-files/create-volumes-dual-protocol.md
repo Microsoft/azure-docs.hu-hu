@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726680"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052413"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -51,6 +51,7 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
     | `Unix`    | NFS   | NFSv3 mód BITS   | UNIX  | NFS és Windows   |
     | `Ntfs`    | Windows   | NTFS ACL-ek     | NTFS  |NFS és Windows|
 * Az NTFS biztonsági stílusú kötetet az NFS használatával csatlakoztató UNIX-felhasználók Windows-felhasználóként lesznek hitelesítve a `root` UNIX `root` és `pcuser` az összes többi felhasználó számára. Győződjön meg arról, hogy ezek a felhasználói fiókok léteznek a Active Directory a kötet csatlakoztatása előtt, amikor az NFS-t használja. 
+* Ha nagyméretű topológiákkal rendelkezik, és a `Unix` biztonsági stílust kettős protokollos kötettel vagy bővített csoportokkal rendelkező LDAP-vel használja, akkor előfordulhat, hogy Azure NetApp Files nem fér hozzá a topológiákban lévő összes kiszolgálóhoz.  Ha ez a helyzet fordul elő, segítségért forduljon a fiók csapatához.  <!-- NFSAAS-15123 --> 
 * A kettős protokollú kötetek létrehozásához nincs szükség kiszolgálói legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra. Csak akkor szükséges, ha engedélyezve van a TLS protokollon keresztüli LDAP.
 
 
@@ -136,7 +137,7 @@ A következő attribútumokat kell beállítania az LDAP-felhasználók és az L
 
 Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) című témakör útmutatását.  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
 * [Kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)

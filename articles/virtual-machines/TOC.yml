@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: Meglévő bash-szkript futtatása
               href: ./linux/cloudinit-bash-script.md
-            - name: Meglévő virtuális gépek előkészítése a cloud-initre
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: Linux-rendszerképek létrehozása kiépítési ügynök nélkül
           href: ./linux/no-agent.md
         - name: A Linux-ügynök üzembe helyezésének letiltása
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: Biztonság
+          items:
+            - name: Az Azure Policy biztonsági vezérlői
+              href: ./security-controls-policy-image-builder.md
         - name: VNET használata
           items:
             - name: parancssori felület
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH-kapcsolat
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP-kapcsolat
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: Hozzáférés-vezérlők használata

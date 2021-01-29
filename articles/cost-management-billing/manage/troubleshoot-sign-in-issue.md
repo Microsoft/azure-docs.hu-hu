@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132329"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050470"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Az Azure-előfizetés bejelentkezési hibáinak elhárítása
 
@@ -32,7 +32,7 @@ Ha az internetböngésző oldala lefagy, próbálkozzon az alábbi lépésekkel,
 - Használjon másik internetböngészőt.
 - Használjon privát böngészési módot a böngészőben:
 
-   - **Edge:** Nyissa meg a **Beállítások** elemet (a profilképe mellett lévő három pont), válassza az **Új InPrivate-ablak** lehetőséget, majd nyissa meg az [Azure Portalt](https://portal.azure.com/) vagy az [Azure Fiókközpontot](https://account.azure.com/Subscriptions), és jelentkezzen be. 
+   - **Edge:** Nyissa meg a **beállításokat** (a profil képe alapján a három pontot), válassza az **új InPrivate-ablak** lehetőséget, majd keresse meg és jelentkezzen be a [Azure Portalba](https://portal.azure.com/). 
    - **Chrome:** Válassza az **Inkognitó** módot.
    - **Safari:** Válassza a **Fájl**, majd az **Új privát ablak** elemet.
 
@@ -53,7 +53,7 @@ A hiba elhárításához próbálkozzon az alábbi módszerekkel:
    - **Chrome:** Válassza a **Beállítások** lehetőséget, majd az **Adatvédelem és biztonság** területen kattintson a **Böngészési adatok törlése** elemre.
 - Állítsa vissza a böngésző alapértelmezett beállításait.
 - Használjon privát böngészési módot a böngészőben. 
-   - **Edge:** Nyissa meg a **Beállítások** elemet (a profilképe mellett lévő három pont), válassza az **Új InPrivate-ablak** lehetőséget, majd nyissa meg az [Azure Portalt](https://portal.azure.com/) vagy az [Azure Fiókközpontot](https://account.azure.com/Subscriptions), és jelentkezzen be. 
+   - **Edge:** Nyissa meg a **beállításokat** (a profil képe alapján a három pontot), válassza az **új InPrivate-ablak** lehetőséget, majd keresse meg és jelentkezzen be a [Azure Portalba](https://portal.azure.com/). 
    - **Chrome:** Válassza az **Inkognitó** módot.
    - **Safari:** Válassza a **Fájl**, majd az **Új privát ablak** elemet.
 

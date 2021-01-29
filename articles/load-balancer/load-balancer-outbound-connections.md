@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878222"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052822"
 ---
 # <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
 
@@ -66,7 +66,7 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
  | Nyilvános Load Balancer vagy önálló | [SNAT (forrás hálózati címfordítás)](#snat) </br> nincs használatban. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (biztonsági tartalom beágyazása) |
 
 
- #### <a name="description"></a>Leírás
+ #### <a name="description"></a>Description
 
 
  Az Azure a példány hálózati adapterének IP-konfigurációjához hozzárendelt nyilvános IP-címet használja az összes kimenő folyamathoz. A példányhoz minden elérhető ideiglenes port tartozik. Nem számít, hogy a virtuális gép terheléselosztás alatt áll-e. Ez a forgatókönyv elsőbbséget élvez a többiekkel szemben. 
@@ -80,10 +80,10 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
- | Nyilvános Load Balancer | A terheléselosztó felületi IP-címeinek használata a [SNAT](#snat).| TCP </br> UDP |
+ | Standard nyilvános Load Balancer | A terheléselosztó felületi IP-címeinek használata a [SNAT](#snat).| TCP </br> UDP |
 
 
- #### <a name="description"></a>Leírás
+ #### <a name="description"></a>Description
 
 
  A terheléselosztó erőforrás egy kimenő szabállyal vagy egy terheléselosztási szabállyal van konfigurálva, amely engedélyezi az alapértelmezett SNAT. Ez a szabály a nyilvános IP-frontend és a háttér-készlet közötti kapcsolat létrehozására szolgál. 
@@ -103,15 +103,25 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
 
  Ebben a kontextusban a SNAT használt ideiglenes portok neve SNAT-portok. Erősen ajánlott, hogy a [Kimenő szabályok](./outbound-rules.md) explicit módon legyenek konfigurálva. Ha az alapértelmezett SNAT egy terheléselosztási szabályon keresztül használja, az SNAT-portok előre le vannak foglalva az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírtak szerint.
 
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>3. forgatókönyv: a virtuális gép nyilvános IP-cím nélküli és a szabványos belső Load Balancer mögött
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>3. forgatókönyv: nyilvános IP nélküli virtuális gép és alapszintű Load Balancer
+
+ | Szövetségek | Metódus | IP-protokollok |
+ | ------------ | ------ | ------------ |
+ | Standard belső terheléselosztó | Nincs internetkapcsolat.| Nincs |
+
+ #### <a name="description"></a>Description
+ 
+Standard belső terheléselosztó használata esetén a SNAT nem használ ideiglenes IP-címeket. Ez alapértelmezés szerint támogatja a biztonságot, és gondoskodik arról, hogy az erőforrás által használt összes IP-cím konfigurálható legyen, és le legyen foglalva. Ha standard belső terheléselosztó használatakor szeretne kimenő kapcsolatot létesíteni az internettel, állítson be egy példány szintű nyilvános IP-címet, hogy kövesse a viselkedését (1. forgatókönyv) [#scenario1], vagy vegye fel a háttérbeli példányokat egy standard nyilvános Load balancerbe egy olyan kimenő szabállyal, amely a belső terheléselosztó additon van konfigurálva a (2. forgatókönyv) [#scenario2] működésének követéséhez. 
+
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>4. forgatókönyv: nyilvános IP nélküli virtuális gép és az alapszintű Load Balancer mögött
 
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
  |Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
 
- #### <a name="description"></a>Leírás
+ #### <a name="description"></a>Description
 
 
  Amikor a virtuális gép létrehoz egy kimenő folyamatot, az Azure lefordítja a forrás IP-címet egy dinamikusan lefoglalt nyilvános forrás IP-címére. Ez a nyilvános IP-cím **nem konfigurálható** , és nem foglalható le. Ez a cím nem számít az előfizetés nyilvános IP-erőforrásának korlátja alapján. 
@@ -126,7 +136,6 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
 
 
  Ne használja ezt a forgatókönyvet az IP-címek engedélyezési listához való hozzáadásához. Használja az 1. vagy a 2. forgatókönyvet, ahol explicit módon deklarálja a kimenő viselkedést. Az [SNAT](#snat) -portok az [alapértelmezett SNAT-portok kiosztási táblájában](#snatporttable)leírt módon vannak lefoglalva.
-
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Kimerített portok
 
@@ -190,7 +199,7 @@ További információ az Azure Virtual Network NAT-ról: [Mi az az azure Virtual
   * A TCP SNAT-portok több kapcsolathoz is használhatók ugyanahhoz a cél IP-címhez, ha a célként megadott portok eltérőek.
 *   A SNAT kimerültség akkor következik be, amikor egy háttérbeli példány kifogyott a megadott SNAT-portok közül. A terheléselosztó továbbra is használhat fel nem használt SNAT-portokat. Ha a háttérbeli példány SNAT-portjai meghaladják a megadott SNAT-portokat, nem fog tudni új kimenő kapcsolatokat létesíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 *   [A kimenő kapcsolatok hibáinak elhárítása a SNAT kimerülése miatt](./troubleshoot-outbound-connection.md)
 *   [Tekintse át az SNAT mérőszámait](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation) , és ismerkedjen meg a megfelelő szűrési, felosztási és megtekintési módszerekkel.

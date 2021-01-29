@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5f207a0b5f829e952c92133a66313f49e9352f51
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658723"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053208"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -62,7 +62,7 @@ Kétféleképpen engedélyezheti a felhasználók számára az alkalmazások egy
 
 Az Azure AD jelszó-alapú egyszeri bejelentkezéshez való használatához olyan böngésző-bővítményt kell telepíteni, amely biztonságosan kéri le a hitelesítő adatokat, és kitölti a bejelentkezési űrlapokat. Definiáljon egy mechanizmust a bővítmény a [támogatott böngészőkkel](../user-help/my-apps-portal-end-user-access.md)való üzembe helyezéséhez. A lehetőségek a következők:
 
-- [Csoportházirend az Internet Explorerben](./access-panel-deployment-plan.md)
+- [Csoportházirend az Internet Explorerben](my-apps-deployment-plan.md)
 - [Configuration Manager az Internet Explorerben](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](../user-help/my-apps-portal-end-user-access.md)
 
@@ -203,7 +203,7 @@ A kommunikációs terv megvalósítása. Győződjön meg arról, hogy a végfel
 
 Az alábbi tesztelési esetek használatával teszteket végezhet a vállalat által birtokolt és a személyes eszközökön, így biztosítva, hogy az SSO-konfigurációk a várt módon működnek. Az alábbi forgatókönyvek azt feltételezik, hogy egy felhasználó egy alkalmazás URL-címére navigál, és a szolgáltató által kezdeményezett hitelesítési folyamaton (SP által kezdeményezett hitelesítési folyamaton) keresztül zajlik.
 
-| Használati eset | A várt eredmény az SP által kezdeményezett hitelesítési folyamathoz felhasználó szerint |
+| Eset | A várt eredmény az SP által kezdeményezett hitelesítési folyamathoz felhasználó szerint |
 |----------|---------------------------------------------------|
 | Jelentkezzen be az alkalmazásba az IE-vel a Corpnet-on. | Az integrált Windows-hitelesítés (IWA) további kérések nélkül történik. |
 | Jelentkezzen be az alkalmazásba az IE-ben, miközben az új bejelentkezési kísérlettel Corpnet ki. | Űrlapalapú kérés a AD FS kiszolgálón. A felhasználó sikeresen bejelentkezik, és a böngésző kéri az MFA-t. |

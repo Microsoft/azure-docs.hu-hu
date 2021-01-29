@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9552d1a0c7bdb73dbcf739144a3ab9f746705664
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997494"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053363"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
 
@@ -118,7 +118,7 @@ Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhet
 > A naplózási színész felhasználói környezete jelenleg minden esetben hiányzik. Ez egy ismert korlátozás az előzetes verzióban.
 
 
-|Használati eset  |Naplózási szolgáltatás  |Naplózási kategória  |Naplózási tevékenység  |Könyvvizsgálói színész  |Naplózási naplók korlátai  |
+|Eset  |Naplózási szolgáltatás  |Naplózási kategória  |Naplózási tevékenység  |Könyvvizsgálói színész  |Naplózási naplók korlátai  |
 |---------|---------|---------|---------|---------|---------|
 |A beleegyező kérelem munkafolyamatát engedélyező rendszergazda        |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend létrehozása sablon          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet            |
 |Rendszergazda letilthatja a beleegyező kérelem munkafolyamatát       |Hozzáférési felülvizsgálatok           |UserManagement           |Irányítási házirend sablonjának törlése          |Alkalmazás környezete            |Jelenleg nem található a felhasználói környezet           |
@@ -149,7 +149,7 @@ Nem, most a kérelmezőknek csak e-mail-értesítéseken keresztül kaphatják m
  
 Ha aggódik a rendszergazdai jóváhagyás megadásával, és a bérlő összes felhasználója számára lehetővé teszi az alkalmazás használatát, javasoljuk, hogy tiltsa le a kérést. Ezután adja meg manuálisan a rendszergazdai jóváhagyást az alkalmazáshoz való hozzáférés korlátozásával, a felhasználó hozzárendelésének megkövetelésével, valamint a felhasználók vagy csoportok az alkalmazáshoz való hozzárendelésével. További információ: [felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazásokkal való hozzájárulásról: [Azure Active Directory beleegyezési keretrendszer](../develop/consent-framework.md).
 
@@ -159,4 +159,4 @@ További információ az alkalmazásokkal való hozzájárulásról: [Azure Acti
 
 [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
-[Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD a Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

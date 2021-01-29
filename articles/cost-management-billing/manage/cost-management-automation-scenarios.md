@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 01/26/2021
 ms.author: banders
-ms.openlocfilehash: 40eb6bbb952596e015be7c1ed29dbefb3fb6016d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12c13b8a65296fb0ee74e0ee0449b604facf2f48
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897713"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051261"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatizálási forgatókönyvek a számlázáshoz és költségkezeléshez
 
@@ -49,8 +49,8 @@ A számlázási és költségkezelési API-kat számos forgatókönyvben haszná
 | Használati adatok               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Billing Periods             |             X             |         X        |           X          |         X        |                    |           |
 | Számlák                    |             X             |         X        |           X          |         X        |                    |           |
-| RateCard                    |             X             |                  |           X          |         X        |          X         |           |
-| Unrated Usage               |             X             |                  |           X          |                  |          X         |           |
+| Azure kiskereskedelmi árak                    |             X             |                  |           X          |         X        |                    |           |
+
 
 > [!NOTE]
 > A forgatókönyv–API leképezés nem terjed ki a nagyvállalati használati API-kra. Ha lehetséges, az új fejlesztési forgatókönyvekhez használjon általános használati API-kat.
@@ -74,9 +74,7 @@ A Web Direct- és a nagyvállalati ügyfelek a következő API-kat használhatj�
 
 -    [Usage Details API](/rest/api/consumption/usagedetails): Lekérheti a Microsofttól származó összes Azure-erőforrás díj- és használati adatait. Az információk használati adatokra vonatkozó rekordok formájában jelennek meg, amelyek jelenleg naponta mérőnként egyszer vannak kibocsátva. Az adatokkal összeadhatja az összes erőforrás költségét, vagy megvizsgálhatja az adott erőforrások költségeit/használati adatait.
 
--    [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)): Web Direct-ügyfélként lekérheti a mérési díjakat. Ezután a visszaadott adatokat az erőforrás-használati adatokkal együtt használva manuálisan számíthatja ki a várt számlát.
-
--    [Unrated Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)): Lekérheti a nyers használati adatokat, mielőtt az Azure bármilyen mérést/díjazást végezne.
+-    [Azure-beli kiskereskedelmi árak](/rest/api/cost-management/retail-prices/azure-retail-prices): a díjszabás díjszabása az utólagos elszámolású díjszabással érhető el. Ezután a visszaadott adatokat az erőforrás-használati adatokkal együtt használva manuálisan számíthatja ki a várt számlát.
 
 ### <a name="billing"></a>Számlázás
 -    [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Meghatározhatja az elemezni kívánt számlázási időszakot, valamint az időszak számlaazonosítóját. Az Invoices API-val számlaazonosítókat használhat.
@@ -107,16 +105,6 @@ Ezek az API-k hasonló funkciókkal rendelkeznek, és ugyanazokat a széles kör
 
 - A használati API-k minden ügyfél számára elérhetők, néhány kivétellel. További információt az [Azure-használati API-k áttekintésében](consumption-api-overview.md) és az [Azure-használati API-k referenciái](/rest/api/consumption/) között talál. A megadott API-kat a legújabb fejlesztési forgatókönyvekhez ajánljuk.
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Mi a különbség a Usage Details API és a Usage API között?
-Ezek az API-k alapvetően eltérő adatokat biztosítanak:
-
-- A [Usage Details API](/rest/api/consumption/usagedetails) Azure-használati és -költségadatokat nyújt mérőpéldányonként. A megadott adatok már áthaladtak az Azure-beli költségmérő rendszeren, és más lehetséges módosításokkal együtt lettek alkalmazva rájuk a költségek:
-
-   - Az előre kifizetett Azure-előrefizetés használata miatt szükséges módosítások
-   - Az Azure által felfedezett használati eltérések miatt szükséges módosítások
-
-- A [Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) nyers Azure-használati adatokat nyújt, mielőtt azok áthaladnának az Azure-beli költségmérési rendszeren. Előfordulhat, hogy ezek az adatok nem feleltethetők meg az Azure költségmérő rendszerén áthaladt használati adatokkal vagy költségmennyiségekkel.
-
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Mi a különbség az Invoice API és a Usage Details API között?
 Ezek az API-k ugyanazon adatok különböző nézeteit nyújtják:
 
@@ -129,9 +117,9 @@ Ezek az API-k hasonló adatokat nyújtanak, de különböző közönségekkel re
 
 - A [Price Sheet API](/rest/api/consumption/pricesheet) a nagyvállalati ügyfelek számára egyeztetett egyéni díjszabást nyújt.
 
-- A [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) a Web Direct-ügyfelekre érvényes nyilvános díjszabást nyújtja.
+- Az [Azure kiskereskedelmi díjszabás API](/rest/api/cost-management/retail-prices/azure-retail-prices) nyilvános, utólagos elszámolású díjszabást biztosít, amely a web Direct-ügyfelekre vonatkozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a REST API-k díjszabásáról az összes Azure-szolgáltatásra vonatkozóan: az [Azure kiskereskedelmi árainak áttekintése](/rest/api/cost-management/retail-prices/azure-retail-prices).
 

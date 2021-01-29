@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049286"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050515"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -50,12 +50,12 @@ Az Azure-függvények digitális kettős események feldolgozására való beál
 
 ## <a name="create-an-endpoint"></a>Végpont létrehozása
 
-Az események útvonalának definiálásához a fejlesztőknek először meg kell határozniuk a végpontokat. A **végpont** az Azure Digital ikreken kívüli cél, amely támogatja az útvonal-kapcsolatokat. A támogatott célhelyek a következők:
+Eseményútvonal definiálásához az a fejlesztőknek először végpontokat kell definiálniuk. A **végpont** az Azure Digital ikreken kívüli cél, amely támogatja az útvonal-kapcsolatokat. A támogatott célhelyek a következők:
 * Egyéni témakörök Event Grid
 * Eseményközpont
 * Service Bus
 
-Végpont létrehozásához használhatja az Azure Digital Twins [**Control sík API-kat**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins), a [**CLI-parancsokat**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)vagy a [**Azure Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins). 
+Végpont létrehozásához használhatja az Azure Digital Twins [REST API-kat, a CLI-parancsokat](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)vagy a [Azure Portal](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins).
 
 A végpontok meghatározásakor a következőket kell megadnia:
 * A végpont neve
@@ -71,7 +71,7 @@ A vezérlési síkon elérhető Endpoint API-k a következők:
 
 ## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
  
-Eseményvezérelt útvonal létrehozásához használhatja az Azure Digital Twins [**adatsík API-kat**](how-to-manage-routes-apis-cli.md#create-an-event-route), a [**CLI-parancsokat**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)vagy a [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
+Esemény-útvonal létrehozásához használhatja az Azure Digital Twins [REST API-kat, a CLI-parancsokat](how-to-manage-routes-apis-cli.md#create-an-event-route)vagy a [Azure Portal](how-to-manage-routes-portal.md#create-an-event-route).
 
 Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateOrReplaceEventRouteAsync` [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) -hívás használatával: 
 
@@ -85,8 +85,6 @@ Eseményvezérelt útvonal létrehozásához használhatja az Azure Digital Twin
 
 > [!TIP]
 > Minden SDK-függvény szinkron és aszinkron verzióban érhető el.
-
-Az útvonalakat az [Azure Digital Twins CLI](how-to-use-cli.md)használatával is létrehozhatja.
 
 ## <a name="dead-letter-events"></a>Kézbesítetlen levelek eseményei
 
@@ -109,7 +107,7 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: események útvonalának beállítása és kezelése:
 * [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md)

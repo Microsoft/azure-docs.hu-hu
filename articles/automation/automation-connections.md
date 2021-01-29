@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733994"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054263"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
 
@@ -35,7 +35,7 @@ A Azure Automation a következő beépített kapcsolattípus-típusokat teszi el
 * `AzureServicePrincipal` – Az Azure-beli futtató fiók által használt kapcsolatokat jelöli.
 * `AzureClassicCertificate` – A klasszikus Azure-beli futtató fiók által használt kapcsolatokat jelöli.
 
-A legtöbb esetben nem kell létrehoznia egy kapcsolódási erőforrást, mert a [futtató fiók](manage-runas-account.md)létrehozásakor jön létre.
+A legtöbb esetben nem kell létrehoznia egy kapcsolódási erőforrást, mert a [futtató fiók](automation-security-overview.md)létrehozásakor jön létre.
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>PowerShell-parancsmagok a kapcsolatok eléréséhez
 
@@ -52,7 +52,7 @@ Az alábbi táblázatban található parancsmagok automatizálási kapcsolatokat
 
 A következő táblázatban található belső parancsmag a runbookok és a DSC-konfigurációk kapcsolatainak elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](shared-resources/modules.md#internal-cmdlets).
 
-|Belső parancsmag|Leírás|
+|Belső parancsmag|Description|
 |---|---|
 |`Get-AutomationConnection` | Lekéri a kapcsolatok különböző mezőinek értékeit, és visszaadja őket [szórótábla](/powershell/module/microsoft.powershell.core/about/about_hash_tables). Ezt a szórótábla a megfelelő parancsokkal használhatja a runbook vagy a DSC-konfigurációban.|
 
@@ -192,7 +192,7 @@ Az alábbi ábrán egy példa látható, hogy egy grafikus runbook egy kapcsolat
 
 ![kapcsolatok beolvasása](media/automation-connections/automation-get-connection-object.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a kapcsolatok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](shared-resources/modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](automation-runbook-execution.md).

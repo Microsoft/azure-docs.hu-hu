@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 2e09607dde118ce25e5d2e5311e7614f2f18a590
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890730"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053567"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Gépek célállapotba történő konfigurálása
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban egy egyszerű DSC- [konfigurációt](/powershell/script
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](./manage-runas-account.md) kapcsolatos részt.
+- Egy Azure Automation-fiókra. Az Automation-fiók és a hozzá tartozó követelmények megismeréséhez tekintse meg az [Automation-fiók hitelesítésének áttekintése](./automation-security-overview.md)című témakört.
 - Egy Azure Resource Manager Windows Server 2008 R2 vagy újabb rendszert futtató virtuális gép (klasszikus). A virtuális gépek létrehozásával kapcsolatos utasításokért lásd: az [első Windows rendszerű virtuális gép létrehozása a Azure Portal](../virtual-machines/windows/quick-create-portal.md).
 - Azure PowerShell modul 3,6-es vagy újabb verziója. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
 - A kívánt állapot-konfiguráció (DSC) ismerete. A DSC-vel kapcsolatos információkért lásd: a [Windows PowerShell kívánt állapot konfigurációjának áttekintése](/powershell/scripting/dsc/overview/overview).
@@ -49,7 +49,6 @@ Connect-AzAccount
 ```
 
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Konfiguráció létrehozása és feltöltése Azure Automation
-
 
 Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **TestConfig.ps1ként**.
 

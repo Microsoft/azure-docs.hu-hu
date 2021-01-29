@@ -2,19 +2,15 @@
 title: Ismerkedés a Azure Automation állapot-konfigurációval
 description: Ez a cikk azt ismerteti, hogyan végezheti el a leggyakoribb feladatokat Azure Automation állapot-konfigurációban.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 25f5e92aa8aa211782bc238781c59b9ca0511173
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897241"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051498"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés a Azure Automation állapot-konfigurációval
 
@@ -26,7 +22,7 @@ Ha azt szeretné, hogy a jelen cikkben ismertetett lépések végrehajtása nél
 
 A cikkben szereplő példák végrehajtásához a következők szükségesek:
 
-- Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](./manage-runas-account.md) kapcsolatos részt.
+- Egy Azure Automation-fiókra. Az Automation-fiók és a hozzá tartozó követelmények megismeréséhez tekintse meg az [Automation-fiók hitelesítésének áttekintése](./automation-security-overview.md)című témakört.
 - Egy [támogatott operációs rendszert](automation-dsc-overview.md#operating-system-requirements)futtató Azure Resource Manager virtuális gép (klasszikus). A virtuális gépek létrehozásával kapcsolatos információkért tekintse meg a [Windows virtuális gép létrehozása az Azure Portallal](../virtual-machines/windows/quick-create-portal.md) című cikket.
 
 ## <a name="create-a-dsc-configuration"></a>DSC-konfiguráció létrehozása

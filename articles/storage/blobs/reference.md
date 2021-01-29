@@ -1,6 +1,6 @@
 ---
-title: Azure Blob Storage-referencia
-description: Keresse meg az Azure Blob Storage API-referenciáját, a readme-fájlokat és az ügyféloldali függvénytár-csomagokat.
+title: Azure Blob Storage-referenciák
+description: Az Azure Blob Storage API-referenciák, a readme-fájlok és az ügyféloldali kódtár csomagjainak megkeresése.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/10/2020
@@ -8,24 +8,24 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 04eca391fd02e18d4faed5e4f435e44e5675c4bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70178a955fe4afcfc0c695d34e3c1466773d802d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912280"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054076"
 ---
-# <a name="azure-blob-storage-reference"></a>Azure Blob Storage-referencia
+# <a name="azure-blob-storage-reference"></a>Azure Blob Storage-referenciák
 
 Az Azure Blob Storage API-referenciák, a függvénytár-csomagok, a readme-fájlok és az első lépések cikkeinek megkeresése.
 
 ## <a name="net-client-libraries"></a>.NET-ügyféloldali kódtárak
 
-Az alábbi táblázat az Azure Blob Storage .NET API-k referenciáit és mintáit tartalmazza.
+Az alábbi táblázat az Azure Blob Storage .NET API-k hivatkozásait és mintáit tartalmazza.
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Az Azure Blob Storage ügyféloldali kódtára a .NET-hez](/dotnet/api/overview/azure/storage.blobs-readme) | [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)](./storage-quickstart-blobs-dotnet.md) |
+| 12. x | [Azure Blob Storage .NET-hez készült ügyféloldali kódtár](/dotnet/api/overview/azure/storage.blobs-readme) | [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Gyors útmutató: Azure Blob Storage Client Library V12 a .NET-hez](./storage-quickstart-blobs-dotnet.md) |
 | 11. x | [Microsoft. Azure. Storage. blob névtér](/dotnet/api/microsoft.azure.storage.blob) | [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>Tárolókezelés
@@ -46,7 +46,7 @@ Az alábbi táblázat az Azure Storage adatátviteli .NET API-jai dokumentáció
 
 ## <a name="java-client-libraries"></a>Java-ügyféloldali kódtárak
 
-Az alábbi táblázat az Azure Blob Storage Java API-k hivatkozásait és mintáit tartalmazza.
+Az alábbi táblázat az Azure Blob Storage Java API-k dokumentációját és mintáit tartalmazza.
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -63,7 +63,7 @@ Az alábbi táblázat az Azure Storage Management Java API-jai dokumentációjá
 
 ## <a name="python-client-libraries"></a>Python-ügyféloldali kódtárak
 
-Az alábbi táblázat az Azure Blob Storage Python API-k hivatkozásait és mintáit tartalmazza.
+Az alábbi táblázat az Azure Blob Storage Python API-k dokumentációját és mintáit sorolja fel.
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,7 +72,7 @@ Az alábbi táblázat az Azure Blob Storage Python API-k hivatkozásait és mint
 
 ## <a name="javascript-client-libraries"></a>JavaScript-ügyféloldali kódtárak
 
-Az alábbi táblázat az Azure Blob Storage JavaScript API-jai dokumentációját és mintáit sorolja fel.
+Az alábbi táblázat az Azure Blob Storage JavaScript API-k dokumentációját és mintáit sorolja fel.
 
 |  Verzió  | Dokumentáció | Csomag | Gyorsútmutató |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -81,7 +81,7 @@ Az alábbi táblázat az Azure Blob Storage JavaScript API-jai dokumentációjá
 
 ## <a name="rest-apis"></a>REST API-k
 
-Az alábbi táblázat az Azure Blob Storage REST API-k hivatkozásait és mintáit tartalmazza.
+Az alábbi táblázat az Azure Blob Storage REST API-k dokumentációját és mintáit tartalmazza.
 
 | Dokumentáció | Áttekintés |
 | ----------------------- | -------- |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895545"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051651"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
 
@@ -59,10 +59,10 @@ Ha a forgatókönyve a következő, érdemes megfontolnia a mátrix útválaszt�
 
 | Azure Maps API | A kérelemben szereplő lekérdezések maximális száma | Területek elkerülése | Tehergépkocsi-és elektromos járművek útválasztása | A fordulópontok és az utazási ügynök optimalizálása | Támogató pontok |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Útvonal irányának beolvasása | 1 | | X | X | |
-| Útvonal irányának elküldése | 1 | X | X | X | X |
-| Útvonal-utasítások kötegének közzététele | 700 | | X | X | |
-| Útvonal-mátrix küldése | 700 | | X | | |
+| Útvonal irányának beolvasása | 1 | | ✔ | ✔ | |
+| Útvonal irányának elküldése | 1 | ✔ | ✔ | ✔ | ✔ |
+| Útvonal-utasítások kötegének közzététele | 700 | | ✔ | ✔ | |
+| Útvonal-mátrix küldése | 700 | | ✔ | | |
 
 Ha többet szeretne megtudni az elektromos járművek útválasztási képességeiről, tekintse meg a következő oktatóanyagot, amely bemutatja, hogyan [irányíthatók az elektromos járművek Azure Notebooks a Python használatával](tutorial-ev-routing.md).
 

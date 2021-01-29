@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 2be1c7f76055cad1cf8b51938a65c7bbe6b2917e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881078"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053960"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -67,7 +67,11 @@ Válasz **: forduljon** a rendszergazdához, és tudassa velük, hogy nem tudja 
 
 **K**: milyen adatkezelési tárolót használ a hitelesítő az Ön nevében, és hogyan törölhetem?
 
-**A**: a hitelesítő alkalmazás háromféle típusú információt gyűjt:<ul><li>A fiók hozzáadásakor megadott fiókadatok. Ezeket az adatvesztést a fiók eltávolításával távolíthatja el.</li><li>A csak az alkalmazásban maradó diagnosztikai naplófájlok, amíg be nem jelöli a **naplók küldése** lehetőséget az alkalmazás **Súgó** menüjében a naplók a Microsoftnak való elküldéséhez. Ezek a naplók személyes, például e-mail-címeket, kiszolgálói címeket vagy IP-címeket is tartalmazhatnak. Tartalmazhatnak olyan eszközöket is, mint az eszköz neve és az operációs rendszer verziója. A gyűjtött személyes adatok az alkalmazással kapcsolatos problémák elhárításához szükséges információkra korlátozódnak. Ezeket a naplófájlokat bármikor megtekintheti az alkalmazásban az összegyűjtött adatok megtekintéséhez. A naplófájlok elküldésekor a hitelesítési alkalmazás-mérnökök csak az ügyfél által jelentett problémák megoldására használják azokat.</li><li>Nem személyes azonosításra alkalmas használati adatok, például "a fiók hozzáadása a folyamathoz/sikeres Hozzáadás fiókhoz" vagy "értesítés jóváhagyva". Ezek az adatai a mérnöki döntések szerves részét képezik. A használat segít megállapítani, hogy hol javíthatjuk az alkalmazásokat az Ön számára fontos módokon. Ezt az adatgyűjtési értesítést akkor láthatja, amikor első alkalommal használja az alkalmazást. Ezt követően tájékoztatja, hogy az alkalmazás **Beállítások** lapján ki lehet kapcsolni. Ezt a beállítást bármikor be-és kikapcsolhatja.</li></ul>
+**A**: a hitelesítő alkalmazás háromféle típusú információt gyűjt:
+
+- A fiók hozzáadásakor megadott fiókadatok. Ezeket az adatvesztést a fiók eltávolításával távolíthatja el.
+- A csak az alkalmazásban maradó diagnosztikai naplófájlok, amíg el nem **küld visszajelzést** az alkalmazás felső menüjében, hogy naplókat küldjön a Microsoftnak. Ezek a naplók személyes, például e-mail-címeket, kiszolgálói címeket vagy IP-címeket is tartalmazhatnak. Tartalmazhatnak olyan eszközöket is, mint az eszköz neve és az operációs rendszer verziója. A gyűjtött személyes adatok az alkalmazással kapcsolatos problémák elhárításához szükséges információkra korlátozódnak. Ezeket a naplófájlokat bármikor megtekintheti az alkalmazásban az összegyűjtött adatok megtekintéséhez. A naplófájlok elküldésekor a hitelesítési alkalmazás-mérnökök csak az ügyfél által jelentett problémák megoldására használják azokat.
+- Nem személyes azonosításra alkalmas használati adatok, például "a fiók hozzáadása a folyamathoz/sikeres Hozzáadás fiókhoz" vagy "értesítés jóváhagyva". Ezek az adatai a mérnöki döntések szerves részét képezik. A használat segít megállapítani, hogy hol javíthatjuk az alkalmazásokat az Ön számára fontos módokon. Ezt az adatgyűjtési értesítést akkor láthatja, amikor első alkalommal használja az alkalmazást. Arról tájékoztatja, hogy ki lehet kapcsolni az alkalmazás **Beállítások**   lapján. Ezt a beállítást bármikor be-és kikapcsolhatja.
 
 ### <a name="codes-in-the-app"></a>Az alkalmazásban szereplő kódok
 
@@ -102,7 +106,7 @@ Válasz **: forduljon** a rendszergazdához, és tudassa velük, hogy nem tudja 
 
 **K**: Miért csak az alkalmazás megnyitásakor kapok értesítéseket? Az alkalmazás bezárásakor nem kapok értesítést.
 
-**A**: Ha értesítést kap, de nem riasztást, még a Ringer-on is, ellenőrizze az alkalmazás beállításait. Győződjön meg arról, hogy az alkalmazás be van kapcsolva a hang használatára, vagy az értesítések vibrálása. Ha egyáltalán nem kap értesítést, ellenőrizze a következő feltételeket:<ul><li>A telefonja nem zavarja vagy nem halk módot? Ezek az üzemmódok megakadályozhatják, hogy az alkalmazások értesítéseket küldjenek.</li><li>Más alkalmazásokból is kaphat értesítéseket? Ha nem, akkor probléma lehet a telefon hálózati kapcsolataival vagy az Android vagy az Apple értesítési csatornával. Megpróbálkozhat a hálózati kapcsolatainak a telefonos beállításokkal való feloldásával. Előfordulhat, hogy a szolgáltatóval kell kommunikálnia az Android-vagy az Apple Notifications-csatornával kapcsolatos segítségért.</li><li>Kaphat-e értesítéseket az alkalmazás egyes fiókjaihoz, de másokat nem? Ha igen, távolítsa el a problémás fiókot az alkalmazásból, adja hozzá újból az értesítéseket, és ellenőrizze, hogy a probléma kijavítva van-e.</li></ul>Ha kipróbálta ezeket a lépéseket, és továbbra is problémába ütközik, javasoljuk, hogy küldje el a naplófájlokat a diagnosztika számára. Nyissa meg az alkalmazást, lépjen a **súgóra**, majd válassza a **naplók küldése** lehetőséget. Ezután nyissa meg a [Microsoft Authenticator alkalmazás fórumot](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) , és mondja el nekünk a megjelenő problémát és a megjelenő lépéseket.
+**A**: Ha értesítést kap, de nem riasztást, még a Ringer-on is, ellenőrizze az alkalmazás beállításait. Győződjön meg arról, hogy az alkalmazás be van kapcsolva a hang használatára, vagy az értesítések vibrálása. Ha egyáltalán nem kap értesítést, ellenőrizze a következő feltételeket:<ul><li>A telefonja nem zavarja vagy nem halk módot? Ezek az üzemmódok megakadályozhatják, hogy az alkalmazások értesítéseket küldjenek.</li><li>Más alkalmazásokból is kaphat értesítéseket? Ha nem, akkor probléma lehet a telefon hálózati kapcsolataival vagy az Android vagy az Apple értesítési csatornával. Megpróbálkozhat a hálózati kapcsolatainak a telefonos beállításokkal való feloldásával. Előfordulhat, hogy a szolgáltatóval kell kommunikálnia az Android-vagy az Apple Notifications-csatornával kapcsolatos segítségért.</li><li>Kaphat-e értesítéseket az alkalmazás egyes fiókjaihoz, de másokat nem? Ha igen, távolítsa el a problémás fiókot az alkalmazásból, adja hozzá újból az értesítéseket, és ellenőrizze, hogy a probléma kijavítva van-e.</li></ul>Ha kipróbálta ezeket a lépéseket, és továbbra is problémába ütközik, javasoljuk, hogy küldje el a naplófájlokat a diagnosztika számára. Nyissa meg az alkalmazást, lépjen az alkalmazás legfelső szintű menüjébe, majd válassza a **visszajelzés küldése** lehetőséget. Ezután nyissa meg a [Microsoft Authenticator alkalmazás fórumát](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) , és tájékoztassa a Microsoftot a megjelenő problémáról és a szükséges lépésekről.
 
 ### <a name="switch-to-push-notifications"></a>Váltás leküldéses értesítésekre
 
@@ -204,13 +208,13 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **K**: az Apple Watch Companion-alkalmazás összeomlott. Elküldhetem az összeomlási naplókat, hogy meg lehessen vizsgálni?
 
-**A**: először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános** elemre, majd kattintson az **elemzés megtekintése** elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok** területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a hitelesítő eszközt a telefonján, és illessze be a vágólapra a **megosztás az alkalmazás-fejlesztők** szövegmezőbe a **naplók küldése** oldalon.</li></ol>
+**A**: először is meg kell győződnie arról, hogy Ön úgy döntött, hogy megosztja az elemzést velünk. Ha Ön Testflighthoz-felhasználó, már regisztrálva van. Ellenkező esetben lépjen a **beállítások > adatvédelem > elemzés** lehetőségre, és válassza az **iPhone megosztása & az elemzés** és a **megosztás az alkalmazások fejlesztői** lehetőségeivel lehetőséget.<br>A regisztrációt követően megpróbálhatja reprodukálni az összeomlást, hogy a rendszer automatikusan elküldje az összeomlási naplókat a vizsgálathoz. Ha azonban nem tudja reprodukálni az összeomlást, manuálisan is átmásolhatja a naplófájlokat, és elküldheti azokat nekünk.<ol><li>Nyissa meg a Watch alkalmazást a telefonján, lépjen a **beállítások > általános** elemre, majd kattintson az **elemzés megtekintése** elemre.</li><li>Keresse meg a megfelelő összeomlást a **settings > Privacy > analytics > Analytics-adatok** területen, majd manuálisan másolja a teljes szöveget.</li><li>Nyissa meg a hitelesítő eszközt a telefonján, és illessze be a vágólapra a bemásolt szöveget a  **probléma elhárítása** című szakaszban leírtak szerint **?** a  **visszajelzés küldése** lapon. </li></ol>
 
-## <a name="autofill-for-consumers"></a>Automatikus kitöltés a felhasználók számára
+## <a name="autofill-with-authenticator"></a>Automatikus kitöltés a hitelesítő használatával
 
-**K**: mi a hitelesítő automatikus kitöltése?
+**K**: mi a hitelesítő automatikus kitöltés?
 
-**A**: a hitelesítő alkalmazás mostantól biztonságosan tárolja és kitölti a jelszavakat a telefonon felkeresett alkalmazásokon és webhelyeken. Az automatikus kitöltés eszközzel szinkronizálhatja és kihasználhatja az iOS-és Android-eszközökön található jelszavait. Miután beállította a hitelesítő alkalmazást automatikus kitöltés-szolgáltatóként a telefonján, a jelszó mentését teszi elérhetővé, amikor beírja őket egy webhelyre vagy egy alkalmazás bejelentkezési oldalára. A jelszavak a [Microsoft-fiók](https://account.microsoft.com/account) részeként lesznek mentve, és akkor is elérhetők, amikor bejelentkezik a Microsoft Edge-be a Microsoft-fiók.
+**A**: a hitelesítő alkalmazás mostantól biztonságosan tárolja és kitölti a jelszavakat a telefonon felkeresett alkalmazásokon és webhelyeken. Az automatikus kitöltés eszközzel szinkronizálhatja és kihasználhatja az iOS-és Android-eszközökön található jelszavait. Miután beállította a hitelesítő alkalmazást automatikus kitöltési szolgáltatóként a telefonján, a jelszó mentésével megadhatja a jelszavát, amikor beírja őket egy webhelyre vagy egy alkalmazás bejelentkezési oldalára. A jelszavak a [személyes Microsoft-fiók](https://account.microsoft.com/account) részeként lesznek mentve, és akkor is elérhetők, amikor bejelentkezik a Microsoft Edge-be a személyes Microsoft-fiók.
 
 **K**: milyen adatokat tud hitelesíteni a hitelesítő?
 
@@ -221,23 +225,22 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 **A**: kövesse az alábbi lépéseket:
 
 1. Nyissa meg a hitelesítő alkalmazást.
-1. A **Beta** alatt található **Beállítások** területen kapcsolja be az **Automatikus kitöltés funkciót**.
 1. A hitelesítő **jelszavak** lapján válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, és jelentkezzen be a [Microsoft-fiók](https://account.microsoft.com/account)használatával. Ez a funkció jelenleg csak a Microsoft-fiókokat támogatja, és még nem támogatja a munkahelyi vagy iskolai fiókokat.
 
 **K**: hogyan a hitelesítő az alapértelmezett automatikus kitöltés szolgáltatót a telefonon?
 
 **A**: kövesse az alábbi lépéseket:
 
-1. Nyissa meg a hitelesítő beállításokat, majd a **Beta** bekapcsolása elemnél válassza az **Automatikus kitöltés** **beállítást**.
-1. Az alkalmazás **jelszavak** lapján jelentkezzen be [Microsoft-fiók](https://account.microsoft.com/account)használatával.
+1. Nyissa meg a hitelesítő alkalmazást.
+1. Az alkalmazás **jelszavak** lapján válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget, és jelentkezzen be a [Microsoft-fiók](https://account.microsoft.com/account)használatával.
 1. Tegye a következők egyikét:
 
    - Az iOS-es **Beállítások** részen válassza ki az automatikus kitöltés beállítás **bekapcsolása** beállítást az automatikus kitöltés beállításai szakaszban, hogy megtudja, hogyan állíthatja be a hitelesítő alapértelmezett automatikus kitöltés-szolgáltatóként.
-   - Az Androidban a **Beállítások** területen válassza az automatikus kitöltés- **szolgáltatóként** lehetőséget az automatikus kitöltés beállításai szakaszban a hitelesítő alapértelmezett automatikus kitöltés-szolgáltatóként való beállításához.
+   - Az Androidban a **Beállítások** területen válassza az automatikus kitöltés- **szolgáltatóként** lehetőséget az automatikus kitöltés beállításai szakaszban.
 
-**K**: mi történik, ha az **Automatikus kitöltés** kapcsoló szürkén jelenik meg a beállítások között?
+**K**: mi történik, ha az **Automatikus kitöltés** kapcsoló nem érhető el a beállítások között?
 
-**A**: az automatikus kitöltés jelenleg bétaverzióban van, és még nincs engedélyezve minden szervezet vagy fióktípus esetében. Ha a **beállításokban** lévő **Automatikus kitöltés** kapcsoló szürkén jelenik meg, akkor valószínű, hogy a hitelesítő alkalmazást használja a munkahelyi fiókjával. Ezt a funkciót olyan eszközön használhatja, amelyen a munkahelyi fiók nincs hozzáadva. Ha a szervezete együttműködik a Microsofttal, az **Automatikus kitöltés** kapcsoló akkor is engedélyezve lesz, ha egy munkahelyi fiókot adnak a hitelesítő szolgáltatáshoz.
+**A**: Ha az automatikus kitöltés nem érhető el a hitelesítő számára, annak oka az lehet, hogy az automatikus kitöltés még nem engedélyezett a szervezet vagy a fiók típusa számára. Ezt a funkciót olyan eszközön használhatja, amelyen nincs hozzáadva a munkahelyi vagy iskolai fiókja. Ha többet szeretne megtudni arról, hogyan engedélyezhető az automatikus kitöltés a szervezet számára, olvassa el [az automatikus kitöltés a rendszergazdák](#autofill-for-it-admins)számára című témakört.
 
 **K**: hogyan a jelszavak szinkronizálásának leállítása?
 
@@ -247,34 +250,30 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **A**: a hitelesítő alkalmazás már magas szintű biztonságot nyújt a többtényezős hitelesítéshez és a fiókok kezeléséhez, és ugyanez a magas biztonsági sáv is ki van bővítve a jelszavak kezelésére.
 
-- A **hitelesítő alkalmazásnak erős hitelesítésre van szüksége**: a hitelesítésbe való bejelentkezéshez második tényező szükséges. Ez azt jelenti, hogy a hitelesítő alkalmazás jelszavai nem érhetők el, még akkor sem, ha valaki rendelkezik a Microsoft-fiók jelszavával.
-- Az adatok automatikus kitöltése a **biometria és a PIN-kód használatával történik**: az alkalmazás vagy hely jelszavának automatikus kitöltéséhez a hitelesítő megköveteli a biometrikus vagy az eszköz PIN-kódját. Ezzel biztosíthatja, hogy még akkor is, ha valaki más fér hozzá az eszközhöz, nem tudja kitölteni vagy megtekinteni a jelszavát, mert nem tudta megadni a biometrikus vagy az eszköz PIN-kódját. Emellett a felhasználók nem tudják megnyitni a jelszavak lapot, hacsak nem biztosítanak biometrikus vagy PIN-kódot, még akkor sem, ha kikapcsolják az alkalmazás beállításaiban az alkalmazások zárolását.
-- **Titkosított jelszavak az eszközön: az** eszközön lévő jelszavak titkosítva vannak, és a titkosítási/visszafejtési kulcsok soha nem tárolódnak, és mindig menet közben jönnek létre. A jelszavak csak akkor lettek visszafejtve, ha a felhasználó az automatikus kitöltés vagy a felhasználó szeretné megtekinteni a jelszót, és mindkettő biometrikus vagy PIN-kódot igényel.
-- **Felhő-és hálózati biztonság**: a felhőben lévő jelszavak csak akkor lesznek titkosítva és visszafejtve, amikor elérik az eszközt. A jelszavak szinkronizálása SSL-védelemmel ellátott HTTPS-kapcsolaton keresztül történik, amely biztosítja, hogy a támadók ne hallgatózik a bizalmas adatokra a szinkronizálás során. Azt is javasoljuk, hogy ellenőrizze, hogy a hálózaton keresztül szinkronizált adatok a kriptográfiai kivonatos függvények (pontosabban a kivonatoló alapú üzenet-hitelesítési kód) használatával legyenek szinkronizálva.
+- A **hitelesítő alkalmazásnak erős hitelesítésre van szüksége**: a hitelesítésbe való bejelentkezéshez második tényező szükséges. Ez azt jelenti, hogy a hitelesítő alkalmazás jelszavai akkor is védve vannak, ha valaki rendelkezik a Microsoft-fiók jelszavával.
+- Az adatok automatikus kitöltése a **biometria és a PIN-kód használatával történik**: az alkalmazás vagy hely jelszavának automatikus kitöltéséhez a hitelesítő megköveteli a biometrikus vagy az eszköz PIN-kódját. Ez segít az extra biztonság hozzáadásában, így még akkor is, ha valaki más fér hozzá az eszközhöz, nem tudja kitölteni vagy megtekinteni a jelszavát, mert nem tudják megadni a biometrikus vagy az eszköz PIN-kódját. Emellett a felhasználók nem tudják megnyitni a jelszavak lapot, hacsak nem biztosítanak biometrikus vagy PIN-kódot, még akkor sem, ha kikapcsolják az alkalmazás beállításaiban az alkalmazások zárolását.
+- **Titkosított jelszavak az eszközön: az** eszközön lévő jelszavak titkosítva vannak, és a titkosítási/visszafejtési kulcsok soha nem tárolódnak, és szükség esetén mindig létrejönnek. A jelszavak csak akkor lettek visszafejtve, ha a felhasználó az automatikus kitöltés vagy a felhasználó szeretné megtekinteni a jelszót, és mindkettő biometrikus vagy PIN-kódot igényel.
+- **Felhő-és hálózati biztonság**: a felhőben lévő jelszavak csak akkor lesznek titkosítva és visszafejtve, amikor elérik az eszközt. A jelszavakat egy SSL-védelemmel ellátott HTTPS-kapcsolaton keresztül szinkronizálja a rendszer, ami segít megakadályozni, hogy a támadók lehallgatják a bizalmas adatokat a szinkronizálás során. Azt is javasoljuk, hogy ellenőrizze, hogy a hálózaton keresztül szinkronizált adatok a kriptográfiai kivonatos függvények (pontosabban a kivonatoló alapú üzenet-hitelesítési kód) használatával legyenek szinkronizálva.
 
 ## <a name="autofill-for-it-admins"></a>Automatikus kitöltés a rendszergazdák számára
 
 **K**: az alkalmazottak vagy a tanulók a jelszó automatikus kitöltését használják a hitelesítő alkalmazásban?
 
-**A**: nem. Az automatikus kitöltés szolgáltatás jelenleg bétaverzióban van, és még nincs engedélyezve az összes szervezet vagy fióktípus esetében. Ha az alkalmazott vagy tanuló felvette a munkahelyi vagy iskolai fiókját Microsoft Authenticator alkalmazásba, a jelszavak automatikus kitöltése nem lesz elérhető. A korlátozás alól kivételt képez, ha az alkalmazott vagy a tanuló a munkahelyi vagy iskolai fiókját hozzáadja a Microsoft felhőalapú multi-Factor Authentication szolgáltatáshoz [külső vagy harmadik féltől származó fiókkal](user-help-auth-app-add-non-ms-account.md).
-
-**K**: elérhetővé tehetem az automatikus kitöltés funkciót az alkalmazottak (vagy diákok) számára?
-
-**A**: igen. Annak engedélyezéséhez, hogy a vállalat vagy az iskola egy engedélyezési listához is felvehető legyenek az alkalmazottak vagy a tanulók számára. Forduljon a támogatási szolgálathoz vagy a Microsoft-kapcsolattartóhoz az engedélyezési listához való hozzáadáshoz. Emellett, ha Ön a szervezete informatikai rendszergazdája, kitöltheti az űrlapot is, hogy kifejezze érdeklődését, hogy az a [hitelesítő az automatikus](https://aka.ms/RequestAutofillInAuthenticator)kitöltéshez való csatlakozást a vállalati engedélyezési listához.
+Válasz **: igen**, az automatikus kitöltés mostantól a legtöbb vállalati felhasználó számára is működik, még akkor is, ha a hitelesítő alkalmazáshoz munkahelyi vagy iskolai fiók van hozzáadva. Kitöltheti a szervezete számára az automatikus kitöltés (Engedélyezés vagy megtagadás) beállítást, és [elküldheti azt a hitelesítő csapatnak](https://aka.ms/ConfigureAutofillInAuthenticator).
 
 **K**: a felhasználók munkahelyi vagy iskolai fiókjának jelszava automatikusan szinkronizálva lesz?
 
 **A**: nem. A jelszó automatikus kitöltése nem fogja szinkronizálni a felhasználók munkahelyi vagy iskolai fiókjának jelszavát. Ha a felhasználók egy webhelyet vagy alkalmazást látogatnak meg, a hitelesítő felajánlja a webhely vagy alkalmazás jelszavának mentését, és a rendszer csak akkor menti a jelszót, ha a felhasználó kiválasztja.
   
-**K**: engedélyezhető-e a-lista csak bizonyos felhasználóinak listázása az automatikus kitöltés érdekében?
+**K**: a saját szervezetem egyes felhasználói engedélyezési csak az automatikus kitöltés?
 
-**A**: nem. A vállalatok jelenleg csak az összes felhasználó számára engedélyezhetik a jelszavak automatikus kitöltését. Ezeket a vezérlőket fokozatosan bővítjük.
+**A**: nem. A vállalatok jelenleg csak az összes felhasználó számára engedélyezhetik a jelszavak automatikus kitöltését.
 
 **K**: mit tegyek, ha az alkalmazottak vagy a tanulók több munkahelyi vagy iskolai fiókkal rendelkeznek? Az alkalmazottak például több vállalattól vagy iskolától származó fiókkal rendelkeznek a Microsoft Authenticatorban.
 
 **A**: a hitelesítő alkalmazásban hozzáadott összes vállalatot vagy iskolát engedélyezni kell – az alkalmazás tulajdonosának a hitelesítő szolgáltatásban történő automatikus kitöltéséhez. A korlátozás alól kivételt képez, ha az alkalmazott vagy a tanuló a munkahelyi vagy iskolai fiókját hozzáadja a Microsoft felhőalapú multi-Factor Authentication szolgáltatáshoz [külső vagy harmadik féltől származó fiókkal](user-help-auth-app-add-non-ms-account.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha nem sikerül beszereznie a személyes Microsoft-fiók ellenőrzési kódját, tekintse meg az **ellenőrző kód problémáinak elhárítása** című szakaszt a [Microsoft-fiók biztonsági adatok & ellenőrző kódok](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) című cikkben.
 

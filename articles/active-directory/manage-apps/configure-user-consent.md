@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c279b7f4ec2d70e7eb6a97abf02cfbf4f2ef87f0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 184263badc909881f597213a222272bd675fc362
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033612"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051974"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
@@ -81,7 +81,7 @@ Ha engedélyezni szeretné a felhasználói hozzájárulást, válassza ki, hogy
 
 A helyére írja be az `{consent-policy-id}` alkalmazni kívánt szabályzat azonosítóját. Kiválaszthat egy létrehozott [egyéni alkalmazás-engedélyezési szabályzatot](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , vagy a következő beépített szabályzatok közül választhat:
 
-| ID (Azonosító) | Leírás |
+| ID (Azonosító) | Description |
 |:---|:------------|
 | Microsoft-User-default – alacsony | **A felhasználók jóváhagyásának engedélyezése az ellenőrzött közzétevők alkalmazásai számára a kiválasztott engedélyekhez**<br /> Korlátozott felhasználói jóváhagyás engedélyezése csak az ellenőrzött közzétevők és a bérlőben regisztrált alkalmazások alkalmazásai számára, és csak az "alacsony hatás" besorolású engedélyek esetében. (Ne felejtse el [besorolni az engedélyeket](configure-permission-classifications.md) annak kiválasztásához, hogy a felhasználók milyen engedélyeket adhatnak meg.) |
 | Microsoft-User-default-Legacy | **Felhasználói beleegyezett alkalmazások engedélyezése**<br /> Ez a beállítás lehetővé teszi, hogy minden felhasználó beleegyezést kérjen minden olyan engedélyhez, amely nem igényel rendszergazdai hozzájárulást bármely alkalmazáshoz |
@@ -145,7 +145,7 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 1. A beállítások értékének megismerése:
 
-    | Beállítás       | Típus         | Leírás  |
+    | Beállítás       | Típus         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 
@@ -185,4 +185,4 @@ További tudnivalók:
 * [Engedélyek és beleegyezett a Microsoft Identity platform](../develop/v2-permissions-and-consent.md)
 
 Segítség kérése vagy válaszok keresése a kérdéseire:
-* [Azure AD a StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure AD a Microsoft Q&A-ben.](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e14bed3158fac1f8bed15f913dc8b7eddbbb96
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6250aef5ec69c65dcdfe457a56d4e077b31af4d1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985954"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051668"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
@@ -56,7 +56,7 @@ Minden alkalmazáshoz különböző attribútumok szükségesek egy felhasznál�
 |--|--|--|
 |loginName|userName (Felhasználónév)|userPrincipalName|
 |firstName|name.givenName|givenName|
-|lastName|név. lastName|lastName|
+|lastName|name.familyName|Vezetéknév|
 |workMail|e-mailek [type EQ "work"]. Value|Mail|
 |manager|manager|manager|
 |címke|urn: IETF: params: scim: sémák: bővítmény: 2.0: CustomExtension: címke|extensionAttribute1|

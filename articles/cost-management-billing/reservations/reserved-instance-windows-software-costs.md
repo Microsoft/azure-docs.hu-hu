@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/28/2021
 ms.author: banders
-ms.openlocfilehash: 625c40ea17cf20449f1be241a1605a80bf6a73f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 464e129314a369c14dcc6bc6c16eadf5f8bcf01f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353000"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052989"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure-beli fenntartott VM-példányok által nem tartalmazott szoftverköltségek
 
@@ -61,7 +61,7 @@ A virtuális gép fenntartott példánya és az SQL számára fenntartott kapaci
 
 ## <a name="get-rates-for-azure-meters"></a>Az Azure-beli mérők díjainak lekérése
 
-Az Azure RateCard API-n keresztül minden mérő díját lekérheti. Az Azure-beli mérők díjainak lekéréséhez szükséges információkért lásd az [Azure-előfizetésben használt erőforrások ár- és metaadat-információinak lekérése](/previous-versions/azure/reference/mt219004(v=azure.100)) részben.
+Az egyes mérőszámok díjait az Azure kiskereskedelmi díjszabás API-val érheti el. Az Azure Meter díjszabásával kapcsolatos információkért lásd: az [Azure kiskereskedelmi árainak áttekintése](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ## <a name="next-steps"></a>Következő lépések
 Az Azure-beli foglalásokkal kapcsolatos további információkért olvassa el a következő cikkeket:

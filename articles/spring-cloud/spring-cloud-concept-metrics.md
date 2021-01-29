@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755478"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051600"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -121,6 +121,7 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| 0. generációs GC-darabszám  | Gen-0-GC-darabszám | Darabszám        | A 0. generációs Garbage gyűjtemények másodpercenkénti száma. |
 >| 1. generációs GC-darabszám  | Gen-1 – GC-darabszám | Darabszám        | Az 1. generációs Garbage gyűjtemények másodpercenkénti száma |
 >| 2. generációs GC-darabszám  | Gen-2 – GC – darabszám | Darabszám        | A 2. generációs Garbage gyűjtemények másodpercenkénti száma. |
+>| Idő a GC-ben      | timein – GC      | Százalék      | A szemét-gyűjteményben az utolsó betakarítás óta eltelt idő százalékos aránya. |
 >| 0. generációs halom mérete | Gen-0 – méret     | Bájt        | 0. generációs halom mérete. |
 >| 1. generációs halom mérete | 1. generációs méret     | Bájt        | 1. generációs halom mérete |
 >| 2. generációs halom mérete | 2. generációs méret     | Bájt        | 2. generációs halom mérete. |
@@ -176,7 +177,7 @@ További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-co
 
 * [Naplók és mérőszámok elemzése diagnosztikai beállításokkal](./diagnostic-services.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: tavaszi Felhőbeli erőforrások figyelése riasztások és műveleti csoportok használatával](./spring-cloud-tutorial-alerts-action-groups.md)
 

@@ -1,18 +1,18 @@
 ---
 title: Átmeneti környezet beállítása az Azure Spring Cloud-ban | Microsoft Docs
 description: Ismerje meg, hogyan használható a kék-zöld üzembe helyezés az Azure Spring Cloud használatával
-author: bmitchell287
+author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090709"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053063"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
 
@@ -22,7 +22,8 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az átmeneti üzembe helye
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy már üzembe helyezte a PiggyMetrics alkalmazást az [Azure Spring Cloud-alkalmazás elindításáról szóló oktatóanyagban](./spring-cloud-quickstart.md). A PiggyMetrics három alkalmazást tartalmaz: "Gateway", "Account-Service" és "Auth-Service".  
+* Egy futó alkalmazás.  Lásd [: gyors útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md).
+* Azure CLI [Asc bővítmény](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
 Ha ehhez a példához egy másik alkalmazást szeretne használni, egyszerű módosítást kell végeznie az alkalmazás nyilvános részén.  Ez a változás megkülönbözteti az átmeneti üzembe helyezést az éles környezetben.
 
@@ -39,51 +40,84 @@ Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alább
 az extension add --name spring-cloud
 ```
     
-## <a name="view-all-deployments"></a>Az összes üzemelő példány megtekintése
+## <a name="view-apps-and-deployments"></a>Alkalmazások és központi telepítések megtekintése
 
-Nyissa meg a szolgáltatási példányt a Azure Portalban, és válassza a **központi telepítés kezelése** lehetőséget az összes központi telepítés megtekintéséhez. További részletek megtekintéséhez kiválaszthatja az egyes központi telepítéseket.
+A telepített alkalmazásokat a következő eljárásokkal tekintheti meg.
+
+1. Nyissa meg az Azure Spring Cloud-példányát a Azure Portal.
+
+1. A bal oldali navigációs ablaktáblán nyissa meg a **központi telepítéseket**.
+
+    [![Központi telepítés – elavult](media/spring-cloud-blue-green-staging/deployments.png)](media/spring-cloud-blue-green-staging/deployments.png)
+
+1. Nyissa meg az "alkalmazások" panelt a szolgáltatási példányhoz tartozó alkalmazások megtekintéséhez.
+
+    [![Alkalmazások – irányítópult](media/spring-cloud-blue-green-staging/app-dashboard.png)](media/spring-cloud-blue-green-staging/app-dashboard.png)
+
+1. Rákattinthat egy alkalmazásra, és megtekintheti a részleteket.
+
+    [![Alkalmazások – áttekintés](media/spring-cloud-blue-green-staging/app-overview.png)](media/spring-cloud-blue-green-staging/app-overview.png)
+
+1. A **központi telepítések** panel megnyitásával tekintheti meg az alkalmazás összes központi telepítését. Az üzembe helyezési rács mutatja, hogy a telepítés éles vagy átmeneti.
+
+    [![Központi telepítések irányítópultja](media/spring-cloud-blue-green-staging/deployments-dashboard.png)](media/spring-cloud-blue-green-staging/deployments-dashboard.png)
+
+1. Az üzembe helyezés áttekintését a központi telepítés nevére kattintva tekintheti meg. Ebben az esetben az egyetlen központi telepítés neve *alapértelmezett*.
+
+    [![Központi telepítések áttekintése](media/spring-cloud-blue-green-staging/deployments-overview.png)](media/spring-cloud-blue-green-staging/deployments-overview.png)
+    
 
 ## <a name="create-a-staging-deployment"></a>Előkészítési központi telepítés létrehozása
 
-1. A helyi fejlesztési környezetben végezze el a PiggyMetrics-átjáró alkalmazás kis módosítását. Például módosítsa az *átjáró/forrás/fő/erőforrás/statikus/CSS/Launch. css* fájl színét. Így egyszerűen megkülönböztetheti a két üzemelő példányt. A jar-csomag létrehozásához futtassa a következő parancsot: 
+1. A helyi fejlesztési környezetben végezze el az alkalmazás kis módosítását. Így egyszerűen megkülönböztetheti a két üzemelő példányt. A jar-csomag létrehozásához futtassa a következő parancsot: 
 
     ```console
-    mvn clean package
+    mvn clean package -DskipTests
     ```
 
 1. Az Azure CLI-ben hozzon létre egy új központi telepítést, és adja meg a "zöld" átmeneti telepítési nevet.
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app gateway -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
     ```
 
-1. Az üzembe helyezés sikeres befejeződése után nyissa meg az átjáró lapját az **alkalmazás irányítópultján**, és tekintse meg az összes példányát a bal oldali **alkalmazás példányai** lapon.
+1. Miután a CLI üzembe helyezése sikeresen befejeződött, nyissa meg az **alkalmazás irányítópultját**, és tekintse meg az összes példányát a bal oldali **központi telepítések** lapon.
+
+   [![Központi telepítések irányítópult zöld üzembe helyezés után](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)
+
   
 > [!NOTE]
 > A felderítési állapot *OUT_OF_SERVICE* , így az ellenőrzés befejeződése előtt a rendszer nem irányítja át a forgalmat ehhez a központi telepítéshez.
 
 ## <a name="verify-the-staging-deployment"></a>Az átmeneti telepítés ellenőrzése
 
-1. Térjen vissza a **központi telepítés kezelése** lapra, és válassza ki az új központi telepítést. Az üzembe helyezési állapotnak *futnia*kell. A **tartomány kiosztása/megszüntetése** gomb szürkén jelenik meg, mert a környezet átmeneti környezet.
-
-1. Az **Áttekintés** ablaktáblán egy **teszt végpontot**kell látnia. Másolja és illessze be egy új böngészőablakba, és megjelenik az új PiggyMetrics oldal.
+Annak ellenőrzéséhez, hogy a zöld átmeneti fejlesztés működik-e:
+1. Lépjen az **üzembe helyezések** pontra, és kattintson az `green` **átmeneti telepítésre**.
+1. Az **Áttekintés** lapon kattintson a **teszt végpontra**.
+1. Ekkor megnyílik a módosításokat bemutató előkészítési Build.
 
 >[!TIP]
 > * Győződjön meg arról, hogy a tesztelési végpont perjel (/) karakterrel végződik, hogy a CSS-fájl megfelelően van-e betöltve.  
 > * Ha a böngésző megköveteli a bejelentkezési hitelesítő adatok megadását a lap megtekintéséhez, használja az [URL-címet](https://www.urldecoder.org/) a teszt végpont dekódolásához. Az URL-cím dekódolása egy "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green" formátumú URL-címet ad vissza.  Ezt az űrlapot használhatja a végpont eléréséhez.
 
 >[!NOTE]    
-> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a termelésre egyaránt érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját ( `server.servlet.context-path` ) a konfigurációs kiszolgálón a *somepath*értékre állítja, a zöld telepítés elérési útja a "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green/somepath/..." értékre változik.
+> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a termelésre egyaránt érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját ( `server.servlet.context-path` ) a konfigurációs kiszolgálón a *somepath* értékre állítja, a zöld telepítés elérési útja a "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.IO/Gateway/Green/somepath/..." értékre változik.
  
  Ha ezen a ponton látogatja meg a nyilvános alkalmazás-átjárót, az új módosítás nélkül látnia kell a régi oldalt.
     
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>A zöld telepítés beállítása éles környezetként
 
-1. Miután ellenőrizte a változást az átmeneti környezetben, leküldheti azt az éles környezetbe. Térjen vissza a **központi telepítés felügyeletéhez**, és jelölje be az **átjáró** alkalmazás jelölőnégyzetet.
+1. Miután ellenőrizte a változást az átmeneti környezetben, leküldheti azt az éles környezetbe. Térjen vissza a **központi telepítés felügyeletéhez**, és válassza ki a jelenleg használt alkalmazást `Production` .
 
-2. Válassza a **telepítés beállítása**lehetőséget.
-3. Az **éles üzembe helyezés** listában válassza a **zöld**lehetőséget, majd kattintson az **alkalmaz**gombra.
-4. Nyissa meg az átjáró alkalmazás **Áttekintés** lapját. Ha már hozzárendelt egy tartományt az átjáró-alkalmazáshoz, az URL-cím megjelenik az **Áttekintés** ablaktáblán. A módosított PiggyMetrics megtekintéséhez válassza ki az URL-címet, és lépjen a webhelyre.
+1. A **regisztrációs állapot** után kattintson a három pontra, majd állítsa be a termelési buildet a értékre `staging` .
+
+   [![Üzembe helyezések előkészítési központi telepítésének beállítása](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
+
+1. Térjen vissza a **központi telepítés kezelése** lapra.  A `green` központi telepítés központi telepítési állapota megjelenik. Most már fut a futó éles környezet.
+
+   [![Központi telepítés előkészítési eredményének beállítása](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
+
+1. Másolja és illessze be az URL-címet egy új böngészőablakba, és az új alkalmazás oldalának meg kell jelennie a módosításaival.
 
 >[!NOTE]
 > Miután beállította a zöld telepítést üzemi környezetként, az előző üzemelő példány lesz az átmeneti üzembe helyezés.
@@ -108,4 +142,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md)
+* [CI/CD az Azure Spring Cloud-hoz](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-cicd?branch=pr-en-us-142929&pivots=programming-language-java)

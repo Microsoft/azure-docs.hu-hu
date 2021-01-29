@@ -8,17 +8,67 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 050c16670ea0c6df53345216d8dd450c159792ea
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eec2919eddc4c9631c3153d6016485d64d368902
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927466"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050854"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
+
+## <a name="speech-sdk-1150-2021-january-release"></a>Speech SDK 1.15.0:2021 – januári kiadás
+
+**Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+
+**Fejlesztései**
+- Elindítottunk egy több kiadásos erőfeszítést a Speech SDK memóriahasználat és a lemez helyigényének csökkentése érdekében. Első lépésként jelentős fájlméret-csökkentést hajtottunk végre a legtöbb platformon megosztott könyvtárakban. Az 1,14-es kiadáshoz képest:
+  - 64 bites UWP-kompatibilis Windows-kódtárak körülbelül 30%-kal kisebbek;
+  - a 32 bites Windows-kódtárak még nem látják a mérettel kapcsolatos továbbfejlesztéseket.
+  - A Linux-kódtárak 20-25%-kal kisebbek;
+  - Az Android-kódtárak 3-5%-kal kisebbek;
+
+**Új funkciók**
+- **All**: az egyéni TTS-hangokhoz hozzáadott 48kHz-formátum, amely javítja az olyan egyéni hangok hangminőségét, amelyek natív kimeneti mintavételi díjai magasabbak, mint a 24kHz.
+- **Összes**: az egyéni hang beállításának támogatása a `EndpointId` következőn keresztül ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId), [Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)). A módosítás előtt az egyéni hangvezérelt felhasználóknak a végponti URL-címet a metódus használatával kell beállítaniuk `FromEndpoint` . Az ügyfelek mostantól ugyanúgy használhatják a `FromSubscription` metódust, mint a nyilvános hangokat, majd a beállítás alapján megadhatják a telepítési azonosítót `EndpointId` . Ez egyszerűbbé teszi az egyéni hangok beállítását. 
+- **C++/c #/Java/Objective-C/Python**: `IntentRecognizer` a mostantól támogatja az összes leképezést tartalmazó JSON-eredmény konfigurálását, és nem csak a metóduson keresztüli, URI-paraméter használatával történő leképezést `LanguageUnderstandingModel FromEndpoint` `verbose=true` . Ebben a cikkben a [GitHub-probléma #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880). A frissített dokumentáció [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents)található.
+- **C++/c #/Java**: `DialogServiceConnector` ([c++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) mostantól egy `StopListeningAsync()` metódus kísérhető `ListenOnceAsync()` . Ez azonnal leállítja a hangrögzítést, és az eredmény kihasználása érdekében tökéletesen megvárja a "Leállítás most" gomb megnyomásával.
+- **C++/c #/Java/JavaScript**: `DialogServiceConnector` ([c++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector?view=azure-node-latest)) most már van egy új `TurnStatusReceived` eseménykezelő. Ezek a választható események megfelelnek [`ITurnContext`](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.iturncontext?view=botbuilder-dotnet-stable) a robot összes felbontásának, és jelentést küldenek a végrehajtással kapcsolatos hibákról, például a nem kezelt kivételek, időtúllépés vagy a közvetlen vonalas beszéd és a robot közötti hálózati csökkenés eredményeképpen. `TurnStatusReceived` megkönnyíti a hibákra vonatkozó feltételek megválaszolását. Ha például egy robot túl sokáig tart egy háttérbeli adatbázis-lekérdezésen (például egy termék keresésekor), `TurnStatusReceived` lehetővé teszi az ügyfél számára, hogy a "Sajnáljuk, nem elég értem, hogy próbálja meg újra" vagy valami hasonló.
+- **C++/c #**: a [Speech SDK nuget csomagja](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) mostantól támogatja a Windows ARM/ARM64 asztali natív bináris fájljait (a UWP már támogatott), hogy a beszédfelismerési SDK több virtuálisgép-típushoz is hasznos legyen.
+- **Java**: [`DialogServiceConnector`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable) most már van olyan `setSpeechActivityTemplate()` metódusa, amely szándékosan ki lett zárva a korábbi nyelvről. Ez egyenértékű a tulajdonság beállításával `Conversation_Speech_Activity_Template` , és azt kéri, hogy a közvetlen vonalas szolgáltatás által létrehozott összes jövőbeli bot Framework-tevékenység egyesítse a megadott tartalmat a JSON-adattartalomban.
+- **Java**: az [`Connection`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable) osztályban már van egy `MessageReceived` esemény, hasonlóan más programozási nyelvekhez (C++, C#). Ez az esemény alacsony szintű hozzáférést biztosít a bejövő adatokhoz a szolgáltatásból, és hasznos lehet a diagnosztika és a hibakeresés számára.
+- **JavaScript**: [`BotFrameworkConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/botframeworkconfig) most már rendelkezik `fromHost()` és `fromEndpoint()` gyári metódusokkal, amelyek leegyszerűsítik az egyéni szolgáltatási helyszínek használatát és a tulajdonságok manuális beállítását. A szabványosított opcionálisan `botId` nem alapértelmezett robotot is használhat a konfigurációs gyárakban.
+- **JavaScript**: a WebSocket-tömörítéshez hozzáadott string Control tulajdonság. A teljesítmény miatt a WebSocket-tömörítést alapértelmezés szerint letiltottuk. Ez az alacsony sávszélességű forgatókönyvek esetében is újraengedélyezhető. További részletek [.](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/propertyid) Ebben a cikkben a [GitHub-probléma #242](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/242).
+- **JavaScript**: támogatás hozzáadva a kiejtés értékeléséhez a Speech kiejtés kiértékelésének engedélyezéséhez. [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-javascript)találja a rövid útmutatót.
+
+**Hibajavítások**
+- **Összes** (kivéve a JavaScriptet): Javítva lett a 1,14-es verzióban a regresszió, amelyben túl sok memóriát foglalt le a felismerő.
+- **C++**: rögzített egy adatgyűjtési problémát a `DialogServiceConnector` [GitHub-probléma #794ával](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/794)kapcsolatban.
+- **C#**: kijavított egy hibát a szál leállításával kapcsolatban, amely miatt az objektumok körülbelül egy másodpercig blokkolva lettek.
+- **C++/c #/Java**: kijavítottunk egy kivételt, amely megakadályozza, hogy egy alkalmazás a beszédfelismerési engedélyezési jogkivonatot vagy a tevékenység sablonját egynél többször állítsa be `DialogServiceConnector` .
+- **C++/c #/Java**: rögzített egy felismerő összeomlást a Teardown-beli versenyhelyzet miatt.
+- **JavaScript**: [`DialogServiceConnector`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector) korábban nem tisztelte a `botId` gyárában megadott választható paramétert `BotFrameworkConfig` . Ehhez manuálisan kell beállítani a `botId` lekérdezési karakterlánc paramétert egy nem alapértelmezett robot használatára. A rendszer kijavította a hibát, és a `botId` `BotFrameworkConfig` gyárakhoz megadott értékeket tiszteletben tartja és fogja használni, beleértve az új `fromHost()` és a `fromEndpoint()` kiegészítéseiket is. Ez a `applicationId` paraméterre is vonatkozik `CustomCommandsConfig` .
+- **JavaScript**: rögzített [GitHub-probléma #881](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/881), amely lehetővé teszi a felismerő objektum ismételt használatát.
+- **JavaScript**: kijavított egy hibát, amelyben a SKD többször is elküldve `speech.config` egy TTS-munkamenetben, a sávszélesség pazarlásával.
+- **JavaScript**: egyszerűsített hibakezelés a mikrofon engedélyezésével kapcsolatban, amely lehetővé teszi, hogy több leíró üzenetet lehessen felkészíteni, ha a felhasználó nem engedélyezte a mikrofonos bevitelt a böngészőben.
+- **JavaScript**: rögzített [GitHub-probléma #249](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/249) , ahol a hibák beírása `ConversationTranslator` és `ConversationTranscriber` fordítási hiba történt az írógéppel használó felhasználók számára.
+- **Objective-C**: kijavított egy problémát, amelyben a GStreamer-Build nem sikerült az iOS-hez a Xcode 11,4-ben, a [GitHub-probléma #911ával](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/911).
+- **Python**: rögzített [GitHub-probléma #870](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/870), a "DeprecationWarning: az imp modul eltávolítása a importlib javára".
+
+**Példák**
+- A [from-file minta for JavaScript böngésző](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/browser/from-file/index.html) mostantól a beszédfelismerési fájlokat használja. Ebben a cikkben a [GitHub-probléma #884](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/884).
+
+## <a name="speech-cli-also-known-as-spx-2021-january-release"></a>Speech CLI (más néven SPX): 2021 – januári kiadás
+
+**Új funkciók**
+- A Speech CLI mostantól NuGet- [csomagként](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech.CLI/) érhető el, és a .net CLI-n keresztül telepíthető .net globális eszközként, amely a Shell/Command sort hívja meg.
+- A [Custom Speech DevOps-sablon](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) tárháza frissítve lett a Speech CLI használatára Custom Speech munkafolyamataihoz.
+
+**COVID-19 rövidített tesztelés**: mivel a folyamatos világjárvány továbbra is megköveteli, hogy a mérnökök otthonról is működjenek, a pre-pandémiás manuális ellenőrző parancsfájlok jelentősen csökkentek. Kevesebb, kevesebb konfigurációval rendelkező eszközt vizsgálunk, és a környezettel kapcsolatos hibák valószínűsége megnő. A rendszer továbbra is szigorúan ellenőrzi az automatizálás nagy készletét. Ha nem valószínű, hogy kihagytak valamit, kérjük, tudassa velünk a [githubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen).<br>
+Egészségesek maradjanak!
 
 ## <a name="text-to-speech-2020-december-release"></a>Szöveg-beszéd 2020 – decemberi kiadás
 

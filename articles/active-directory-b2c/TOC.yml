@@ -188,14 +188,17 @@
       items:
         - name: Felhasználó által megadott adatok konfigurálása
           href: configure-user-input.md
-        - name: A felhasználói felület testreszabása vállalati arculattal
-          href: company-branding.md
+        - name: A felhasználói felület testreszabása
+          displayName: company branding
+          href: customize-ui.md
         - name: A felhasználói felület testreszabása HTML-sablonnal
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript és oldalelrendezések
           href: javascript-and-page-layout.md
         - name: Nyelv testreszabása
           href: language-customization.md
+          displayName: localization
         - name: Jelszó bonyolultsága
           href: password-complexity.md
         - name: E-mailes ellenőrzés letiltása
@@ -259,12 +262,13 @@
           items:
             - name: Naplók gyűjtése az Application Insights használatával
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: Szabályzat érvényesítése
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
         - name: Használatelemzés
           href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
         - name: Referencia
           items:
             - name: TrustFrameworkPolicy

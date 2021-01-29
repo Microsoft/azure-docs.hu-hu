@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/27/2020
-ms.openlocfilehash: ff195f7a0071c06d5309f95f77e32ae75f584f82
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 8181097425045e5b1ed838c5fcc08b0069185908
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749164"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051957"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Automatizált feladatok, folyamatok és munkafolyamatok létrehozása az Azure Logic Apps használatával – Visual Studio
 
@@ -60,6 +60,8 @@ Ebben a rövid útmutatóban ugyanazt a logikai alkalmazást hozza létre a Visu
   > [!IMPORTANT]
   > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
+* Ha a logikai alkalmazásnak olyan tűzfalon keresztül kell kommunikálnia, amely adott IP-címekre korlátozza a forgalmat, *akkor a* tűzfalnak engedélyeznie kell a hozzáférést a Logic Apps szolgáltatás vagy futtatókörnyezet által használt [bejövő](logic-apps-limits-and-config.md#inbound) és [kimenő](logic-apps-limits-and-config.md#outbound) IP-címekhez abban az Azure-régióban, ahol a logikai alkalmazás létezik. Ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md#managed-api-connectors)is használ, például az Office 365 Outlook Connectort vagy az SQL Connectort, vagy [Egyéni összekötőket](/connectors/custom-connectors/)használ, a tűzfalnak engedélyeznie kell a hozzáférést a logikai alkalmazás Azure-régiójában lévő *összes* [felügyelt összekötő kimenő IP-címéhez](logic-apps-limits-and-config.md#outbound) .
+
 <a name="azure-government"></a>
 
 ## <a name="set-up-visual-studio-for-azure-government"></a>Visual Studio beállítása az Azure Governmenthez
@@ -72,7 +74,7 @@ Használhatja az [Azure Environment választó Visual Studio bővítményt](http
 
 A Azure Logic Apps Azure Government-előfizetésekkel való együttműködéshez [hozzá kell adnia egy felderítési végpontot a Azure Government Cloud a Visual studióhoz](../azure-government/documentation-government-connect-vs.md). Mielőtt azonban *bejelentkezne a Visual studióba a Azure Government-fiókjával*, át kell neveznie a felderítési végpont hozzáadása után generált JSON-fájlt a következő lépések végrehajtásával:
 
-1. Zárjuk be a Visual studiót.
+1. Zárja be a Visual Studiót.
 
 1. Keresse meg a létrehozott JSON-fájlt `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` ezen a helyen:
 
@@ -113,9 +115,9 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    1. Az **új projekt létrehozása** mezőben válassza ki a Visual C# vagy a Visual Basic **Azure erőforráscsoport** -projektjét. Kattintson a **Tovább** gombra.
 
-   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Kattintson a **Létrehozás** gombra.
+   1. Adja meg a használni kívánt Azure-erőforráscsoport nevét és a projekt egyéb információit. Válassza a **Létrehozás** lehetőséget.
 
-1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Kattintson az **OK** gombra.
+1. A sablon listából válassza ki a **logikai alkalmazás** sablonját. Válassza az **OK** lehetőséget.
 
    ![Logikaialkalmazás-sablon kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -140,7 +142,7 @@ Ha rendelkezik az Azure erőforráscsoport-projekttel, hozzon létre egy logikai
 
    ![Azure-előfizetés, erőforráscsoport és erőforrás helyének kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Beállítás | Példaérték | Leírás |
+   | Beállítás | Példaérték | Description |
    | ------- | ------------- | ----------- |
    | Felhasználói fiók | Fabrikam <br> sophia-owen@fabrikam.com | A fiók, amelyet a Visual studióba való bejelentkezéskor használt |
    | **Előfizetés** | Utólagos, használatalapú fizetés <br> (sophia-owen@fabrikam.com) | Az Azure-előfizetés és a társított fiók neve |
@@ -172,7 +174,7 @@ Ezután adjon hozzá egy RSS- [eseményindítót](../logic-apps/logic-apps-overv
 
 A logikai alkalmazás futtatása és tesztelése előtt telepítse az alkalmazást az Azure-ba a Visual studióból.
 
-1. Megoldáskezelő a projekt helyi menüjében válassza az **Deploy**  >  **új** telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
+1. Megoldáskezelő a projekt helyi menüjében válassza az   >  **új** telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
 
    ![A logikai alkalmazás üzemelő példányának létrehozása](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
@@ -230,7 +232,7 @@ Ha elkészült a logikai alkalmazással, törölje a logikai alkalmazást és a 
 
 1. Törölje a Visual Studio-megoldást a helyi számítógépről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy logikai alkalmazást állított össze, helyezett üzembe és futtatott a Visual Studióval. A Logic apps és a Visual Studio használatával végzett speciális üzembe helyezés kezelésével és végrehajtásával kapcsolatos információkért tekintse meg a következő cikkeket:
 

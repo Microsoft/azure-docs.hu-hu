@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bc7893746cbb98a2d4adc4dabb39e22d015ab2c8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937824"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050397"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -237,9 +237,9 @@ Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#registe
 
 ## <a name="get-help"></a>Segítség kérése
 
-A [stack overflow](http://stackoverflow.com/questions/tagged/msal) segítségével kaphat támogatást a Közösségtől.
-Először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést.
-Győződjön meg arról, hogy a kérdései vagy megjegyzései "adal", "msal" és "DotNet" címkével rendelkeznek.
+A [Microsoft Q&a](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) használatával kaphat támogatást a Közösségtől.
+Tegye fel kérdéseit a Microsoft Q&először, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést.
+Győződjön meg arról, hogy a kérdései vagy megjegyzései az "Azure-ad-adal-elavulttá", az "Azure-ad-msal" és a "DotNet-standard" címkével rendelkeznek.
 
 Ha hibát talál a mintában, vegye fel a problémát a GitHub- [problémákra](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues).
 

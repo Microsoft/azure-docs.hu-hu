@@ -2,14 +2,14 @@
 title: Szolgáltatási kvóták és korlátok
 description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját
 ms.topic: conceptual
-ms.date: 12/29/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814635"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052380"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -33,19 +33,7 @@ Azt is vegye figyelembe, hogy a kvóták nem garantált értékek. A kvóták a 
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Magok kvótái a Batch szolgáltatás módban
 
-A dedikált alapkvóták betartatása folyamatban van, és az összes batch-fiókra vonatkozóan a módosításokat a 2021. január végéig elérhetővé teszik.
-
-A Batch által támogatott összes virtuálisgép-sorozathoz alapvető kvóták tartoznak, amelyek a portál **kvóták** lapján jelennek meg. A virtuálisgép-sorozatokra vonatkozó kvóták a lent részletezett támogatási kéréssel frissíthetők.
-
-A meglévő mechanizmus fokozatos kiépítését követően a virtuálisgép-sorozatokra vonatkozó kvóta-korlátok nincsenek bejelölve, csak a fiók teljes kvóta-korlátja kényszerítve. Ez azt jelenti, hogy előfordulhat, hogy a virtuálisgép-sorozatok kvótája által jelzettnél több magot is le kell foglalni, a teljes fiókra vonatkozó kvóta korlátja alapján.
-
-A frissített mechanizmus a teljes fiókra vonatkozó kvóta mellett kikényszeríti a virtuálisgép-sorozatokra vonatkozó kvótákat is. Az új mechanizmusra való áttérés részeként előfordulhat, hogy a virtuálisgép-sorozat kvótájának frissítése a lefoglalási hibák elkerülése érdekében – a legutóbbi hónapokban használt virtuálisgép-sorozatok a teljes fiókra vonatkozó kvótájának megfelelően frissülnek. Ez a módosítás nem teszi lehetővé a már elérhetőnél nagyobb kapacitás használatát.
-
-Az alábbiak ellenőrzésével megállapítható, hogy engedélyezve van-e a virtuálisgép-sorozat kvótájának kényszerítése batch-fiókhoz:
-
-* A Batch-fiók [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API-tulajdonsága.
-
-* A portál batch-fiókok **kvótái** lapjának szövege.
+A Batch által támogatott összes virtuálisgép-sorozathoz alapvető kvóták tartoznak, amelyek a portál **kvóták** lapján jelennek meg. A virtuálisgép-sorozatokra vonatkozó kvóták a lent részletezett támogatási kéréssel frissíthetők. A dedikált csomópontok esetében a Batch az egyes virtuálisgép-sorozatokra vonatkozó alapkvóta-korlátot, valamint a teljes batch-fiók teljes kvóta-korlátját alkalmazza. Az alacsony prioritású csomópontok esetében a Batch csak a Batch-fiókhoz tartozó összes alapvető kvótát érvényesíti a különböző virtuálisgép-sorozatok megkülönböztetése nélkül.
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Magok kvótái felhasználói előfizetési módban
 
@@ -150,7 +138,7 @@ Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigur�
 
 Ezek az erőforrások a Batch-készlet létrehozásakor megadott virtuális hálózatot tartalmazó előfizetésben vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha nagyméretű készlet-központi telepítéseket tervez egy virtuális hálózaton, ellenőrizze az előfizetéshez tartozó kvótákat ezekhez az erőforrásokhoz. Ha szükséges, a **Súgó és támogatás** lehetőség kiválasztásával növelje a Azure Portal növekedését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
 * Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
