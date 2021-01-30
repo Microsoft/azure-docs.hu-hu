@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791358"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093757"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának átmeneti csatlakoztatási hibáinak elhárítása
 
@@ -134,9 +134,9 @@ Ha az ügyfélprogram SQL Database a .NET-keretrendszer **System. SqlClient. Sql
 
 Amikor létrehozza a **SqlConnection** objektumhoz tartozó [kapcsolódási karakterláncot](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) , az értékeket a következő paraméterek között kell összehangolni:
 
-- **ConnectRetryCount** : &nbsp; &nbsp; az alapértelmezett érték 1. A tartomány 0 és 255 között van.
-- **ConnectRetryInterval** : &nbsp; &nbsp; az alapértelmezett érték 10 másodperc. A tartomány értéke 1 – 60.
-- **Kapcsolat időtúllépése** : &nbsp; &nbsp; az alapértelmezett érték 15 másodperc. A tartomány 0 és 2147483647 között van.
+- **ConnectRetryCount**: &nbsp; &nbsp; az alapértelmezett érték 1. A tartomány 0 és 255 között van.
+- **ConnectRetryInterval**: &nbsp; &nbsp; az alapértelmezett érték 10 másodperc. A tartomány értéke 1 – 60.
+- **Kapcsolat időtúllépése**: &nbsp; &nbsp; az alapértelmezett érték 15 másodperc. A tartomány 0 és 2147483647 között van.
 
 Pontosabban a kiválasztott értékeknek a következő egyenlőséget kell elvégezniük: kapcsolat időtúllépése = ConnectRetryCount * ConnectionRetryInterval
 
@@ -189,7 +189,7 @@ További információ: [a tűzfalbeállítások konfigurálása a SQL Databaseba
 Ha például egy Windows rendszerű számítógépen futtatja az ügyfélszoftvert, a gazdagépen a Windows tűzfal segítségével nyissa meg a 1433-es portot.
 
 1. Nyissa meg a Vezérlőpultot.
-2. **A Vezérlőpult összes elemének kijelölése a**  >  **Windows tűzfal**  >  **Speciális beállítások**  >  **Kimenő szabályok**  >  **műveletek**  >  **új szabály** .
+2. **A Vezérlőpult összes elemének kijelölése a**  >  **Windows tűzfal**  >  **Speciális beállítások**  >  **Kimenő szabályok**  >  **műveletek**  >  **új szabály**.
 
 Ha az ügyfélprogram egy Azure-beli virtuális gépen (VM) üzemel, olvassa el [a 1433-es portot a ADO.NET 4,5 és a SQL Database](adonet-v12-develop-direct-route-ports.md).
 
@@ -276,7 +276,7 @@ Az Enterprise Library 6 (EntLib60) .NET által felügyelt osztályokat kínál a
 
 Íme néhány Transact-SQL SELECT utasítás, amely a hibák naplóit és egyéb információkat kérdezi le.
 
-| Napló lekérdezése | Leírás |
+| Napló lekérdezése | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) nézet az egyes eseményekkel kapcsolatos információkat tartalmaz, amelyekben átmeneti hibák vagy csatlakozási hibák okozhatnak.<br/><br/>Ideális esetben összekapcsolhatja a **start_time** vagy **end_time** értékeket, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |A [sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) nézet a további diagnosztikai események összesített számát kínálja.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
@@ -331,7 +331,7 @@ Az Enterprise Library 6 (EntLib60) olyan .NET-osztályok keretrendszere, amely s
 Az átmeneti hibák kezelésére szolgáló újrapróbálkozási logika egy olyan rész, amelyben a EntLib60 segíthet. További információkért lásd [: 4 – kitartás, az összes diadal titka: az átmeneti hibák kezelésére szolgáló alkalmazás blokkjának használata](/previous-versions/msp-n-p/dn440719(v=pandp.60)).
 
 > [!NOTE]
-> A EntLib60 forráskódja elérhető nyilvános letöltésre a [letöltőközpontban](https://go.microsoft.com/fwlink/p/?LinkID=290898). A Microsoft nem tervezi, hogy további frissítéseket vagy karbantartási frissítéseket EntLib.
+> A EntLib60 forráskódja elérhető nyilvános letöltésre a [letöltőközpontban](https://github.com/MicrosoftArchive/enterprise-library). A Microsoft nem tervezi, hogy további frissítéseket vagy karbantartási frissítéseket EntLib.
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
@@ -447,7 +447,7 @@ public bool IsTransient(Exception ex)
 
 - [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](connect-query-content-reference-guide.md#libraries)
 - [Kapcsolatok készletezése (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- Az újrapróbálkozások [ *Retrying* egy Pythonban írt, az Apache 2,0 licenccel rendelkező általános célú](https://pypi.python.org/pypi/retrying) újrapróbálkozási könyvtár, amely leegyszerűsíti az újrapróbálkozási viselkedés feladatát a bármit.
+- Az újrapróbálkozások [  egy Pythonban írt, az Apache 2,0 licenccel rendelkező általános célú](https://pypi.python.org/pypi/retrying) újrapróbálkozási könyvtár, amely leegyszerűsíti az újrapróbálkozási viselkedés feladatát a bármit.
 
 <!-- Link references. -->
 

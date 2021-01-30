@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge számítási feladatok üzembe helyezése
 keywords: Kubernetes, arc, Azure, K8s, tárolók
-ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103976"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091647"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge számítási feladatok üzembe helyezése (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Azure arc és a Azure IoT Edge nagyon jól kiegészíti egymás képességeit
 
 * Használja [IoT Edge támogatását a Kubernetes](https://aka.ms/edgek8sdoc) számára az Azure arc Flux-kezelőjén keresztül történő üzembe helyezéshez.
 
-* Töltse le a IoT Edge Helm diagram [**Values. YAML**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) fájlját, és cserélje le a fájl végén található **deviceConnectionString** helyőrzőt az 1. lépésben feljegyzett értékre. Az egyéb támogatott diagramok telepítési beállításait igény szerint állíthatja be. Hozzon létre egy névteret a IoT Edge munkaterhelés számára, és hozzon létre egy titkos kulcsot:
+* Töltse le a IoT Edge Helm diagram [**Values. YAML**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) fájlját, és cserélje le a fájl végén található **deviceConnectionString** helyőrzőt az 1. lépésben feljegyzett értékre. Az egyéb támogatott diagramok telepítési beállításait igény szerint állíthatja be. Hozzon létre egy névteret a IoT Edge munkaterhelés számára, és hozzon létre egy titkos kulcsot:
 
     ```
     $ kubectl create ns iotedge
@@ -69,6 +69,6 @@ A konfigurációt a használatával távolíthatja el:
 az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

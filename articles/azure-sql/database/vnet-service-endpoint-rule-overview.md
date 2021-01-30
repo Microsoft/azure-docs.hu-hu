@@ -11,18 +11,18 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: d480239c0eb99ed48c13ec2fdb5b052574acc318
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092499"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095358"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
+# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatásvégpontok és szabályok használata kiszolgálókhoz az Azure SQL Database-ben
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázisok és a rugalmas készletek kiszolgálója [Azure SQL Database](sql-database-paas-overview.md) vagy az [Azure szinapszis Analyticsben](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) lévő adatbázisaiban a virtuális hálózatok adott alhálózatai által továbbított kommunikációt fogadja-e. Ez a cikk azt ismerteti, hogy a virtuális hálózati szabályok miért hasznosak a SQL Database és az Azure szinapszis Analytics szolgáltatásban való kommunikáció biztonságos engedélyezéséhez.
+A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázisok és a rugalmas készletek kiszolgálója [Azure SQL Database](sql-database-paas-overview.md) vagy a dedikált SQL-készlet (korábban SQL DW) adatbázisai az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) szolgáltatásban a virtuális hálózatok adott alhálózatáról érkező kommunikációt fogadják-e. Ez a cikk azt ismerteti, hogy a virtuális hálózati szabályok miért hasznosak a SQL Database és az Azure szinapszis Analytics szolgáltatásban való kommunikáció biztonságos engedélyezéséhez.
 
 > [!NOTE]
 > Ez a cikk a SQL Database és az Azure szinapszis Analytics szolgáltatásra is vonatkozik. Az egyszerűség kedvéért az *adatbázis* kifejezés a SQL Database és az Azure szinapszis Analytics mindkét adatbázisára vonatkozik. Hasonlóképpen, a *kiszolgálóra* mutató hivatkozások a SQL Database és az Azure szinapszis Analytics szolgáltatást futtató [logikai SQL Serverre](logical-servers.md) hivatkoznak.

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/05/2020
+ms.date: 01/29/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879477"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090858"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
@@ -222,14 +222,9 @@ Ez a rendszergazda kezeli az Azure AD-szervezetek és a külső identitás-szolg
 * Azure AD-szervezetek alkalmazottak és partnerek számára: az összevonások (például a Gmailtel együtt) azonnali hatással lesznek az összes olyan vendég meghívóra, amely még nincs beváltva. Lásd: [a Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói](../external-identities/google-federation.md)számára.
 * Azure Active Directory B2C szervezetek: az összevonás (például a Facebook vagy egy másik Azure AD-szervezet) hozzáadása nem befolyásolja azonnal a végfelhasználói folyamatokat, amíg az identitás-szolgáltató hozzá nem adódik a felhasználói folyamatokban (más néven beépített szabályzathoz). Lásd: [Microsoft-fiók konfigurálása identitás-szolgáltatóként](../../active-directory-b2c/identity-provider-microsoft-account.md) egy példához. A felhasználói folyamatok módosításához a "B2C felhasználói folyamat rendszergazdája" korlátozott szerepkörre van szükség.
 
-### <a name="global-administrator--company-administrator"></a>[Globális rendszergazda/vállalati rendszergazda](#company-administrator-permissions)
+### <a name="global-administrator"></a>[Globális rendszergazda](#global-administrator-permissions)
 
-Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Active Directory összes felügyeleti funkciójához, valamint olyan szolgáltatásokhoz, amelyek olyan Azure Active Directory identitásokat használnak, mint például a Microsoft 365 Security Center, a Microsoft 365 megfelelőségi központ, az Exchange Online, a SharePoint Online és a Skype vállalati online verzió. A globális rendszergazdák [továbbá az Azure](../../role-based-access-control/elevate-access-global-admin.md) -előfizetések és-felügyeleti csoportok kezelésére is jogosultak. Ez lehetővé teszi, hogy a globális rendszergazdák teljes hozzáférést kapjanak az összes Azure-erőforráshoz a megfelelő Azure AD-bérlő használatával. Az Azure AD-szervezetre feliratkozik személy globális rendszergazda lesz. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák bármely felhasználó és az összes többi rendszergazda jelszavát is alaphelyzetbe állíthatják.
-
-> [!NOTE]
-> A Microsoft Graph API-ban és az Azure AD PowerShellben ez a szerepkör a "vállalati rendszergazda" néven van azonosítva. Ez a [Azure Portal](https://portal.azure.com)globális rendszergazdája.
->
->
+Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Active Directory összes felügyeleti funkciójához, valamint olyan szolgáltatásokhoz, amelyek olyan Azure Active Directory identitásokat használnak, mint például a Microsoft 365 Security Center, a Microsoft 365 megfelelőségi központ, az Exchange Online, a SharePoint Online és a Skype vállalati online verzió. A globális rendszergazdák továbbá az Azure-előfizetések és-felügyeleti csoportok kezeléséhez is [hozzáférhetnek](../../role-based-access-control/elevate-access-global-admin.md) . Ez lehetővé teszi, hogy a globális rendszergazdák teljes hozzáférést kapjanak az összes Azure-erőforráshoz a megfelelő Azure AD-bérlő használatával. Az Azure AD-szervezetre feliratkozik személy globális rendszergazda lesz. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák alaphelyzetbe állíthatják bármely felhasználó és az összes többi rendszergazda jelszavát.
 
 ### <a name="global-reader"></a>[Globális olvasó](#global-reader-permissions)
 
@@ -327,7 +322,7 @@ A modern kereskedelmi felhasználói szerepkörrel rendelkező felhasználók á
 
 * **Önkiszolgáló vásárlás a Microsoft 365 felügyeleti központban** – az önkiszolgáló vásárlás lehetővé teszi a felhasználóknak az új termékek kipróbálását a saját maguk általi megvásárlásával vagy regisztrálásával. Ezeket a termékeket a felügyeleti központban kezelheti. Azok a felhasználók, akik önkiszolgáló vásárlást végeznek, egy szerepkört kapnak a kereskedelmi rendszeren, és a modern kereskedelmi felhasználói szerepkört, hogy a vásárlásokat a felügyeleti központban tudják kezelni. A rendszergazdák letilthatják az önkiszolgáló vásárlásokat (Power BI, energiagazdálkodási alkalmazások, automatizálás) a [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell)használatával. További információért olvassa el az [önkiszolgáló vásárlással kapcsolatos gyakori kérdéseket](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
 * **Vásárlások a Microsoft kereskedelmi piactérről**  – az önkiszolgáló vásárláshoz hasonlóan, amikor egy felhasználó terméket vagy szolgáltatást vásárol Microsoft AppSource vagy Azure piactéren, a modern kereskedelmi felhasználói szerepkör hozzá lesz rendelve, ha nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel. Bizonyos esetekben előfordulhat, hogy a felhasználók nem tudják a vásárlásokat letiltani. További információ: [Microsoft kereskedelmi piactér](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
-* A Microsoft **javaslatai** – a javaslat a Microsoft hivatalos ajánlata a Microsoft termékeinek és szolgáltatásainak megvásárlására. Ha a javaslatot elfogadó személy nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel az Azure AD-ben, akkor a javaslatot és a modern kereskedelmi felhasználói szerepkört is hozzárendeli a felügyeleti központhoz. Amikor hozzáférnek a felügyeleti központhoz, csak azok a funkciók használhatók, amelyeket a kereskedelmi jellemző szerepköre is jogosult.
+* A Microsoft **javaslatai** – a javaslat a Microsoft hivatalos ajánlata a Microsoft termékeinek és szolgáltatásainak megvásárlására. Ha a javaslatot elfogadó személy nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel az Azure AD-ben, akkor a javaslatot és a modern kereskedelmi felhasználói szerepkört a felügyeleti központ eléréséhez is hozzá kell rendelni. Amikor hozzáférnek a felügyeleti központhoz, csak azok a funkciók használhatók, amelyeket a kereskedelmi jellemző szerepköre is jogosult.
 * **Commerce-specifikus szerepkörök** – egyes felhasználók kereskedelmi-specifikus szerepköröket kapnak. Ha a felhasználó nem globális vagy számlázási rendszergazda, akkor a modern kereskedelmi felhasználói szerepkört kapják meg, hogy hozzáférhessenek a felügyeleti központhoz.  
 
 Ha a modern kereskedelmi felhasználói szerepkör nincs hozzárendelve egy felhasználóhoz, akkor elveszti a hozzáférést Microsoft 365 felügyeleti központhoz. Ha bármilyen terméket kezelnek, akár saját maguk, akár a szervezete számára, nem lesznek képesek a felügyeletre. Ez magában foglalhatja a licencek hozzárendelését, a fizetési módok módosítását, a számlák kifizetését, valamint az előfizetések kezeléséhez szükséges egyéb feladatokat.
@@ -747,9 +742,9 @@ Teljes hozzáférés az eszközök felügyeletéhez az Azure AD-ben.
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 
-### <a name="company-administrator-permissions"></a>Vállalati rendszergazdai engedélyek
+### <a name="global-administrator-permissions"></a>Globális rendszergazdai engedélyek
 
-Az Azure ad-identitásokat használó Azure AD-és Microsoft-szolgáltatások összes aspektusát képes kezelni. Ezt a szerepkört globális rendszergazdai szerepkörnek is nevezzük. 
+Az Azure ad-identitásokat használó Azure AD-és Microsoft-szolgáltatások összes aspektusát képes kezelni.
 
 > [!NOTE]
 > Ez a szerepkör a Azure Active Directoryon kívül további engedélyekkel rendelkezik. További információ: a fenti szerepkör leírása.
@@ -1749,10 +1744,12 @@ Biztonsági események létrehozása és kezelése.
 | Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Microsoft Cloud App Security olvasása és konfigurálása. |
 | Microsoft. Directory/identityProtection/allProperties/READ | A Microsoft. HRE. identityProtection összes erőforrásának olvasása. |
 | Microsoft. Directory/privilegedIdentityManagement/allProperties/READ | A Microsoft. HRE. privilegedIdentityManagement összes erőforrásának olvasása. |
+| Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása. |
 | Microsoft. Intune/allEntities/allTasks | Az Intune összes aspektusának kezelése. |
 | Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | A biztonsági & megfelelőségi központ olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Windows. defenderAdvancedThreatProtection/allEntities/READ | A Windows Defender komplex veszélyforrások elleni védelem olvasása és konfigurálása. |
+
 
 ### <a name="security-reader-permissions"></a>Biztonsági olvasó engedélyei
 
@@ -2068,7 +2065,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 User | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

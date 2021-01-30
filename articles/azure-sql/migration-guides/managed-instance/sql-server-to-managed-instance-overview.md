@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358877"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093975"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -172,7 +172,7 @@ Az SQL-bejelentkezéseket a forrás SQL Server áthelyezheti az Azure SQL felüg
 
 Alapértelmezés szerint a Azure Database Migration Service csak az SQL-bejelentkezések áttelepítését támogatja. Engedélyezheti azonban a Windows-bejelentkezések átmásolásának lehetőségét a következővel:
 
-Annak biztosítása, hogy a célként megadott SQL felügyelt példány Azure AD olvasási hozzáféréssel rendelkezik, amely a Azure Portal által a **vállalati rendszergazda** vagy **globális rendszergazda** szerepkörrel rendelkező felhasználó által is konfigurálható.
+Annak biztosítása, hogy a célként megadott SQL felügyelt példány Azure AD olvasási hozzáféréssel rendelkezik, amely a **globális rendszergazdai** szerepkörrel rendelkező felhasználó által Azure Portal konfigurálható.
 A Azure Database Migration Service-példány konfigurálása a Windows felhasználói/csoportos bejelentkezési áttelepítésének engedélyezéséhez, amely a Azure Portal használatával állítható be a konfiguráció lapon. A beállítás engedélyezése után indítsa újra a szolgáltatást, hogy a módosítások érvénybe lépnek.
 
 A szolgáltatás újraindítása után a Windows felhasználói/csoportos bejelentkezések megjelennek az áttelepítéshez elérhető bejelentkezések listájában. Az áttelepített Windows felhasználói/csoportos bejelentkezések esetében a rendszer felszólítja a társított tartománynév megadására. A szolgáltatás felhasználói fiókjai (tartománynév: NT AUTHORITY) és virtuális felhasználói fiókok (a tartománynév NT SZOLGÁLTATÁSsal) nem támogatottak.
@@ -203,7 +203,7 @@ Egyes szolgáltatások csak akkor érhetők el, ha az [adatbázis kompatibilitá
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Leírás  |
+|Objektum  |Description  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve az Azure SQL MI-t is.|

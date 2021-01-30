@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 15f66e836a2900349007fb5068a172b89f39d4de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9953b51dc93738093ef56f9dbc64b4e1165cc40c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352796"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091395"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -181,7 +181,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 
 Ahogy az előző kimenetben látható, az első Pod a 0. csomóponton fut, amely a rendelkezésre állási zónában található `eastus2-1` . A második Pod a 2. csomóponton fut, amely a (z `eastus2-3` ) és a (z) 4. csomópontjában található `eastus2-2` . További konfiguráció nélkül a Kubernetes a három rendelkezésre állási zónában helyesen terjeszti a hüvelyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási zónákat használó AK-fürtöt. A magasan elérhető fürtökkel kapcsolatos további szempontokat lásd: [ajánlott eljárások az üzletmenet folytonossága és a vész-helyreállítás az AK-ban][best-practices-bc-dr].
 
@@ -204,4 +204,4 @@ Ez a cikk részletesen ismerteti, hogyan hozhat létre rendelkezésre állási z
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
-[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/labels-annotations-taints/

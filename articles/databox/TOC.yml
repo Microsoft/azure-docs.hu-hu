@@ -76,6 +76,8 @@
               items:
                 - name: Biztonsági alapkonfiguráció
                   href: security-baseline.md
+                - name: Az Azure Policy biztonsági vezérlői
+                  href: ./security-controls-policy.md
                 - name: Biztonság áttekintése
                   href: data-box-security.md
             - name: ACL-ek és metaadatok átvitele

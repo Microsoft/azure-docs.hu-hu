@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Automation
 description: Felsorolja Azure Policy Azure Automation számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 author: mgoedtel
 ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1179f1f56b0393efdc5e2f9ad3e7aa4cf75d8448
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 7d5a2e54d74180ba5015cf6b99852bbd1cc0c354
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795702"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092925"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Automation
 
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-automation](../../includes/policy/standards/byrp/microsoft.automation.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

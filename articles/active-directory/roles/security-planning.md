@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055246"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090790"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
 
@@ -40,7 +40,7 @@ Az emelt szintű hozzáférés biztonságossá tételéhez a következő módos�
 Az emelt szintű hozzáférést a Microsoft szolgáltatásokban felügyelt és jelentett módon biztosíthatja. Ha helyszíni rendszergazdai fiókokkal rendelkezik, tekintse meg a helyszíni és a hibrid rendszerjogosultságú hozzáférésre vonatkozó útmutatást Active Directory a [privilegizált hozzáférés biztosításához](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 > [!NOTE]
-> A jelen cikkben található útmutatás elsősorban a P1 és P2 csomagokban található Azure Active Directory prémium szintű Azure Active Directory-funkciókra vonatkozik. A P2 prémium szintű Azure Active Directory az EMS E5 Suite és a Microsoft 365 E5 csomag része. Ez az útmutató feltételezi, hogy a szervezete már rendelkezik a felhasználók számára megvásárolt prémium szintű Azure AD P2-licencekkel. Ha nem rendelkezik ezekkel a licencekkel, előfordulhat, hogy néhány útmutató nem vonatkozik a szervezetére. Emellett a jelen cikkben a globális rendszergazda (vagy globális rendszergazda) kifejezés ugyanazt jelenti, mint a "vállalati rendszergazda" vagy a "bérlői rendszergazda".
+> A jelen cikkben található útmutatás elsősorban a P1 és P2 csomagokban található Azure Active Directory prémium szintű Azure Active Directory-funkciókra vonatkozik. A P2 prémium szintű Azure Active Directory az EMS E5 Suite és a Microsoft 365 E5 csomag része. Ez az útmutató feltételezi, hogy a szervezete már rendelkezik a felhasználók számára megvásárolt prémium szintű Azure AD P2-licencekkel. Ha nem rendelkezik ezekkel a licencekkel, előfordulhat, hogy néhány útmutató nem vonatkozik a szervezetére. Emellett a jelen cikkben a globális rendszergazda kifejezés a "vállalati rendszergazda" vagy a "bérlői rendszergazda" kifejezést is jelenti.
 
 ## <a name="develop-a-roadmap"></a>Ütemterv kidolgozása
 
@@ -147,7 +147,7 @@ Ha a kezdeti globális rendszergazdák felhasználják a meglévő Microsoft-fi�
 
 A személyes e-mail-fiókokat rendszeresen a Cyber-támadók végzik, a személyes e-mail-címeket nem fogadja el a globális rendszergazdai fiókok számára. Az internetes kockázatok rendszergazdai jogosultságokkal való elkülönítéséhez hozzon létre dedikált fiókokat minden rendszergazda jogosultságokkal rendelkező felhasználó számára.
 
-* Ügyeljen arra, hogy a felhasználók számára a globális rendszergazdai feladatok elvégzéséhez külön fiókot hozzon létre.
+* Ügyeljen arra, hogy a felhasználók számára a globális rendszergazdai feladatok elvégzéséhez külön fiókokat hozzon létre.
 * Győződjön meg arról, hogy a globális rendszergazdák nem véletlenül nyitnak meg e-maileket, vagy futtassanak programokat a rendszergazdai fiókjaikkal.
 * Győződjön meg arról, hogy ezek a fiókok rendelkeznek e-mail-címmel egy működő postaládába.
 * A globális rendszergazda (és más kiemelt csoportok) fiókjai csak felhőalapú fiókok lehetnek, amelyek nem kapcsolódnak a helyszíni Active Directoryhoz.
@@ -431,7 +431,7 @@ További információ arról, hogyan kezeli a Microsoft Office 365 a biztonsági
 
 **K:** Mi a teendő, ha még nem hajtottam végre biztonságos hozzáférési összetevőket?
 
-**Válasz:** Adjon meg legalább két, a fiókhoz tartozó, az MFA-t a Kiemelt rendszergazdai fiókokhoz, és válassza el a felhasználói fiókokat a globális rendszergazdai fiókokból.
+**Válasz:** Adjon meg legalább két, a többtényezős fiókokat, rendeljen MFA-t a Kiemelt rendszergazdai fiókokhoz, és válassza el a felhasználói fiókokat a globális rendszergazdai fiókokból.
 
 **K:** Mi az a leggyakoribb probléma, amelyet először kell megoldani?
 

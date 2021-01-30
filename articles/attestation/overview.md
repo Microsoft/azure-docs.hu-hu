@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610148"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093376"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (előzetes verzió)
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
-A Microsoft Azure igazolás (előzetes verzió) egy egységes megoldás, amellyel távolról ellenőrizhető a platform megbízhatósága és a benne futó bináris fájlok integritása. A szolgáltatás támogatja a platformmegbízhatósági modulok (TPM-EK) által támogatott platformok igazolását, és lehetővé teszi a megbízható végrehajtási környezetek (pólók) állapotának igazolását, mint például az [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX enklávéhoz) enklávék és a [virtualizálás-alapú biztonsági](/windows-hardware/design/device-experiences/oem-vbs) (vbs) enklávék. 
+Az Microsoft Azure igazolás egy egységes megoldás, amely távolról ellenőrzi a platform megbízhatóságát és a rajta futó bináris fájlok integritását. A szolgáltatás támogatja a platformmegbízhatósági modulok (TPM-EK) által támogatott platformok igazolását, és lehetővé teszi a megbízható végrehajtási környezetek (pólók) állapotának igazolását, mint például az [Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX enklávéhoz) enklávék és a [virtualizálás-alapú biztonsági](/windows-hardware/design/device-experiences/oem-vbs) (vbs) enklávék. 
 
 Az igazolás egy folyamat, amely azt mutatja be, hogy a szoftver bináris fájljai megfelelően lettek-e létrehozva egy megbízható platformon. A távoli függő entitások így biztosak lehetnek abban, hogy csak az ilyen jellegű szoftverek megbízható hardveren futnak. Az Azure-igazolás egy egységesített ügyfél-szolgáltatás és keretrendszer az igazoláshoz.
 

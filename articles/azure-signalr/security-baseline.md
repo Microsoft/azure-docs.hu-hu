@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b750d4cc911dc72b60974171dd884b373921fad5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734596"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093964"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azure Security alapterv az Azure Signaler szolgáltatáshoz
 
@@ -220,7 +220,7 @@ Az Azure Advanced Threat Protection (ATP) olyan biztonsági megoldás, amely Act
 
 **Útmutató**: a legfontosabb beépített szerepkörök Azure Active Directory (Azure ad) globális rendszergazda és a Kiemelt szerepkörű rendszergazda, mivel a két szerepkörhöz hozzárendelt felhasználók delegálhatja a rendszergazdai szerepköröket:
 
-- Globális rendszergazda/vállalati rendszergazda: az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek az Azure AD összes felügyeleti funkciójához, valamint az Azure AD-identitásokat használó szolgáltatásokhoz.
+- Globális rendszergazda: az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek az Azure AD összes felügyeleti funkciójához, valamint az Azure AD-identitásokat használó szolgáltatásokhoz.
 
 - Kiemelt szerepkörű rendszergazda: az ehhez a szerepkörhöz tartozó felhasználók kezelhetik a szerepkör-hozzárendeléseket Azure Active Directory (Azure AD), valamint a Azure AD Privileged Identity Management (PIM) szolgáltatásban. Emellett ez a szerepkör lehetővé teszi a PIM és a felügyeleti egységek valamennyi aspektusának kezelését.
 
@@ -875,7 +875,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

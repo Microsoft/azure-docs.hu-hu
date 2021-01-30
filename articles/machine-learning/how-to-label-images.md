@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060367"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096966"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -63,11 +63,7 @@ Az Azure lehetővé teszi a **Küldés** gombot, amikor címkézte az összes k�
 
 Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új rendszerképekkel a munkahelyi sorból.
 
-### <a name="assisted-machine-learning-preview"></a>Támogatott gépi tanulás (előzetes verzió) 
-
-> [!IMPORTANT]
-> A támogatott gépi tanulás jelenleg nyilvános előzetes verzióban érhető el.
-> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="assisted-machine-learning"></a>Támogatott gépi tanulás
 
 Előfordulhat, hogy a gépi tanulási algoritmusok aktiválva vannak. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
 
@@ -75,7 +71,14 @@ Előfordulhat, hogy a gépi tanulási algoritmusok aktiválva vannak. Ha ezek az
 
 * Egy későbbi időpontban a projekt neve mellett előre **címkézett feladatokat** láthat.  A képek ezután egy gépi tanulási besorolási modellből származó javasolt címkével jelennek meg. A Machine learning modellnek nincs 100%-os pontossága. Habár csak olyan rendszerképeket használunk, amelyek esetében a modell magabiztos, előfordulhat, hogy ezek a képek még mindig helytelenül vannak megjelölve.  Ha ezeket a címkéket látja, javítsa ki a helytelen címkéket az oldal elküldése előtt.  
 
-* Az objektum-észlelési modellek esetében előfordulhat, hogy a határolókeret és a címkék már jelen vannak.  A lap elküldése előtt javítsa ki a megfelelőt.
+* Az objektumok azonosítására szolgáló modellek esetében előfordulhat, hogy a határolókeret és a címkék már jelen vannak.  A lap elküldése előtt javítsa ki a megfelelőt.
+
+* A szegmentálási modellek esetében előfordulhat, hogy a sokszögek és a címkék már jelen vannak.  A lap elküldése előtt javítsa ki a megfelelőt. 
+
+    > [!IMPORTANT]
+    > A (előzetes) verzióban felsorolt szolgáltatások nyilvános előzetes verzióban érhetők el.   
+    > Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Különösen a címkézési projekt korai szakaszában a gépi tanulási modell csak akkor lehet elég pontos, ha a képek kis részhalmazát szeretné előre megjelölni. Miután megcímkézte a lemezképeket, a címkézési projekt visszatér a manuális címkézéshez, hogy további adatokat gyűjtsön a következő kör betanításához. Az idő múlásával a modell nagyobb biztonságban lesz a képek nagyobb hányadával kapcsolatban, így a projekt későbbi feladataihoz is hozzájárul.
 
@@ -156,7 +159,7 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](./tutorial-train-models-with-aml.md)
 

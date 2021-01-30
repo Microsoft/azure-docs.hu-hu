@@ -38,7 +38,7 @@
           href: ./hdinsight-sdk-python-samples.md
         - name: Azure-minták böngészője
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
-    - name: Fogalmak
+    - name: Alapelvek
       items:
         - name: Apache-összetevők a HDInsighton
           href: ./hdinsight-component-versioning.md
@@ -278,6 +278,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Az Azure Policy beépített elemei
+          href: ./policy-reference.md
     - name: További források
       items:
         - name: Kiadások

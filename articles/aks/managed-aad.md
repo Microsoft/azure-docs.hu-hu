@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 534c355961bb87a816f5ba50a3cc2d397e544a15
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684185"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072308"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AK által felügyelt Azure Active Directory integráció
 
@@ -46,7 +46,6 @@ kubelogin --version
 ```
 
 [Ezeket az utasításokat](https://kubernetes.io/docs/tasks/tools/install-kubectl/) más operációs rendszerekhez használhatja.
-
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -188,6 +187,50 @@ Ha el szeretné érni a fürtöt, kövesse az alábbi [lépéseket.][access-clus
 
 Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. [`kubelogin`](https://github.com/Azure/kubelogin)A paranccsal hozzáférhet a fürthöz nem interaktív egyszerű szolgáltatás-bejelentkezéssel.
 
+## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Feltételes hozzáférés használata az Azure AD-vel és az AK-val
+
+Ha az Azure AD-t az AK-fürthöz integrálja, a [feltételes hozzáférést][aad-conditional-access] is használhatja a fürthöz való hozzáférés szabályozására.
+
+> [!NOTE]
+> Az Azure AD feltételes hozzáférés prémium szintű Azure AD képesség.
+
+A következő lépések végrehajtásával hozhat létre például egy olyan feltételes hozzáférési szabályzatot, amelyet AK-val kell használni:
+
+1. A Azure Portal tetején keresse meg és válassza a Azure Active Directory lehetőséget.
+1. A bal oldali Azure Active Directory menüjében válassza a *vállalati alkalmazások* lehetőséget.
+1. A bal oldali vállalati alkalmazások menüjében válassza a *feltételes hozzáférés* lehetőséget.
+1. A bal oldali feltételes hozzáférés menüben válassza a *házirendek* , majd az *új* szabályzat lehetőséget.
+    :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="Feltételes hozzáférési szabályzat hozzáadása":::
+1. Adja meg a szabályzat nevét, például: *AK-Policy*.
+1. Válassza a *felhasználók és csoportok* lehetőséget, majd a *Belefoglalás* területen válassza a *felhasználók és csoportok kiválasztása* lehetőséget. Válassza ki azokat a felhasználókat és csoportokat, amelyeken alkalmazni szeretné a szabályzatot. Ehhez a példához válassza ki ugyanazt az Azure AD-csoportot, amely rendszergazdai hozzáféréssel rendelkezik a fürthöz.
+    :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="Felhasználók vagy csoportok kiválasztása a feltételes hozzáférési szabályzat alkalmazásához":::
+1. Válassza a *felhőalapú alkalmazások vagy műveletek* lehetőséget, majd a *Belefoglalás* területen válassza az *alkalmazások kiválasztása* lehetőséget. Keresse meg az *Azure Kubernetes szolgáltatást* , és válassza az *Azure Kubernetes Service HRE Server* lehetőséget.
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="Az Azure Kubernetes Service AD Server kiválasztása a feltételes hozzáférési szabályzat alkalmazásához":::
+1. A *Hozzáférés-vezérlés* alatt válassza ki az *Engedélyezés* elemet. Válassza a *hozzáférés engedélyezése* lehetőséget, majd az *eszköz megfelelőként való megjelölésének megkövetelése* beállítást.
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="Csak a megfelelő eszközök engedélyezése a feltételes hozzáférési házirendhez":::
+1. A *házirend engedélyezése* területen válassza *a* be, majd a *Létrehozás* lehetőséget.
+    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="A feltételes hozzáférési szabályzat engedélyezése":::
+
+Szerezze be a fürt eléréséhez szükséges felhasználói hitelesítő adatokat, például:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+A bejelentkezéshez kövesse az utasításokat.
+
+A `kubectl get nodes` parancs használatával tekintse meg a fürt csomópontjait:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Az utasításokat követve jelentkezzen be újra. Figyelje meg, hogy a rendszer sikeresen bejelentkezett, de a rendszergazdának szüksége van arra, hogy az Azure AD által felügyelt eszköz hozzáférjen az erőforráshoz.
+
+A Azure Portal navigáljon a Azure Active Directory elemre, válassza a *vállalati alkalmazások* lehetőséget, majd a *tevékenység* területen válassza a *bejelentkezések* lehetőséget. Figyelje *meg, hogy* a felül található bejegyzés *sikertelen* , és a sikeres *feltételes hozzáférés* .  Válassza ki a bejegyzést, majd válassza a *feltételes hozzáférés* lehetőséget a *részletek* területen. Figyelje meg, hogy a feltételes hozzáférési szabályzata megjelenik.
+
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Sikertelen bejelentkezési bejegyzés a feltételes hozzáférési szabályzat miatt":::
+
 ## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Azure RBAC-integrációról a Kubernetes-hitelesítéshez][azure-rbac-integration]
@@ -202,6 +245,7 @@ Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integ
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347482"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096440"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
 
@@ -78,7 +78,7 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor opcionál
 
 Íme néhány további érdeklődő felügyeleti erőforrás:
 
-- [A kereskedelmi piactér ajánlatának ügyfelei](commercial-marketplace-get-customer-leads.md)
+- [Érdeklődők a kereskedelmi piactéri ajánlattól](commercial-marketplace-get-customer-leads.md)
 - [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések](../lead-management-faq.md#common-questions-about-lead-management)
 - [Az érdeklődők konfigurálásával kapcsolatos hibák elhárítása](../lead-management-faq.md#publishing-config-errors)
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
@@ -131,7 +131,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 > [!NOTE]
 > Az ajánlat részleteit nem kötelező angol nyelven megadni, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -149,7 +149,7 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 Adja meg az ajánlat részletesebb leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -184,7 +184,7 @@ Meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és t
 
 A **támogatási kapcsolattartó** szakaszban adja meg a **támogatási webhely** webcímet, ahol a partnerek az ajánlat támogatását a globális Azure-ban, Azure Governmentban vagy mindkettőben elérhetővé teszik.
 
-A **CSP-program elérhetősége** szakaszban adja meg a hivatkozást ( **CSP-program marketing-anyagok** ), ahol a CSP-partnerek megtalálhatják az ajánlathoz tartozó értékesítési anyagokat.
+A **CSP-program elérhetősége** szakaszban adja meg a hivatkozást (**CSP-program marketing-anyagok**), ahol a CSP-partnerek megtalálhatják az ajánlathoz tartozó értékesítési anyagokat.
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
@@ -234,9 +234,9 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 3. Támogatási címe (hivatkozás)
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
-6. Név
-7. Összegzés
-8. Leírás
+6. Name
+7. Összefoglalás
+8. Description
 9. Hasznos hivatkozások
 10. Képernyőképek/videók
 
@@ -305,8 +305,8 @@ A csomagok létrehozása után a **terv áttekintése** lap a következőket jel
 
 A terv áttekintésében elérhető műveletek a csomag aktuális állapotától függően változnak. Ezek közé tartoznak például az alábbiak:
 
-- **Piszkozat törlése** : Ha a terv állapota vázlat.
-- **Eladási terv leállítása** : Ha a csomag állapota élőben van közzétéve.
+- **Piszkozat törlése**: Ha a terv állapota vázlat.
+- **Eladási terv leállítása**: Ha a csomag állapota élőben van közzétéve.
 
 ### <a name="create-new-plan"></a>Új csomag létrehozása
 
@@ -319,7 +319,7 @@ A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek ezt a nevet látj
 > [!NOTE]
 > A terv azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Kattintson a **Létrehozás** gombra.
+Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -327,7 +327,7 @@ Ezen a lapon konfigurálhatja, hogy a terv mely felhők számára legyen elérhe
 
 #### <a name="azure-regions"></a>Azure-régiók
 
-Az IoT Edge modulhoz készült összes csomag automatikusan elérhető az **Azure Global** -ban.  A tervét az ügyfelek használhatják a piactért használó összes globális Azure-régióban. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](../marketplace-geo-availability-currencies.md).
+Az IoT Edge modulhoz készült összes csomag automatikusan elérhető az **Azure Global**-ban.  A tervét az ügyfelek használhatják a piactért használó összes globális Azure-régióban. Részletekért lásd: a [földrajzi Elérhetőség és a pénznemek támogatása](../marketplace-geo-availability-currencies.md).
 
 Válassza a [Azure Government](../../azure-government/documentation-government-welcome.md) lehetőséget a megoldás megjelenítéséhez. Ez egy kormányzati közösségi felhő, amely az Egyesült Államok szövetségi, állami és helyi vagy törzsi szerveinek ügyfeleinek, valamint az azok kiszolgálására jogosult partnereknek szóló szabályozott hozzáféréssel rendelkezik. Közzétevőként Ön felelős a felhőalapú Közösség megfelelőségi ellenőrzésével, biztonsági intézkedéseivel és ajánlott eljárásaival. A Azure Government fizikailag elkülönített adatközpontokat és hálózatokat használ (csak az Egyesült Államokban található). A Azure Government való [Közzététel](../../azure-government/documentation-government-manage-marketplace-partners.md) előtt tesztelje és erősítse meg a megoldást az adott területen belül, mivel az eredmények eltérőek lehetnek. A megoldás előkészítéséhez és teszteléséhez kérjen egy próbaverziós fiókot [Microsoft Azure Government próbaverzióból](https://azure.microsoft.com/global-infrastructure/government/request/).
 
@@ -403,15 +403,15 @@ A címkék használatával több platformot is megcélozhat, és a modul-tárol�
 
 A **rendszerkép-tárház részletei** lapon adja meg a következő információkat.
 
-**Válassza ki a rendszerkép forrását** : válassza a **Azure Container Registry** lehetőséget.
+**Válassza ki a rendszerkép forrását**: válassza a **Azure Container Registry** lehetőséget.
 
-**Azure-előfizetési azonosító** : adja meg azt az előfizetés-azonosítót, amelyben az erőforrás-használatot jelenteni kell, és a szolgáltatás számlázása a tároló képét tartalmazó Azure Container Registryért. Ezt az azonosítót a Azure Portal [előfizetések oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) találja.
+**Azure-előfizetési azonosító**: adja meg azt az előfizetés-azonosítót, amelyben az erőforrás-használatot jelenteni kell, és a szolgáltatás számlázása a tároló képét tartalmazó Azure Container Registryért. Ezt az azonosítót a Azure Portal [előfizetések oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) találja.
 
-**Azure-erőforráscsoport neve** : adja meg az [erőforráscsoport](../../azure-resource-manager/management/manage-resource-groups-portal.md) nevét, amely tartalmazza a Azure Container Registry a tároló képével. Az erőforráscsoport számára elérhetőnek kell lennie az előfizetés-AZONOSÍTÓban (fent). A nevet a Azure Portal [erőforráscsoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
+**Azure-erőforráscsoport neve**: adja meg az [erőforráscsoport](../../azure-resource-manager/management/manage-resource-groups-portal.md) nevét, amely tartalmazza a Azure Container Registry a tároló képével. Az erőforráscsoport számára elérhetőnek kell lennie az előfizetés-AZONOSÍTÓban (fent). A nevet a Azure Portal [erőforráscsoportok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) lapján találja.
 
-Az **Azure Container Registry neve** : adja meg annak a [Azure Container Registry](../../container-registry/container-registry-intro.md) a nevét, amely tartalmazza a tároló képét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell lennie. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
+Az **Azure Container Registry neve**: adja meg annak a [Azure Container Registry](../../container-registry/container-registry-intro.md) a nevét, amely tartalmazza a tároló képét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell lennie. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
 
-A **Azure Container Registry rendszergazdai felhasználóneve** : adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure Command-Line Interface (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
+A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure Command-Line Interface (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
@@ -419,7 +419,7 @@ A **Azure Container Registry rendszergazdai felhasználóneve** : adja meg a tá
 
 1. Rendszergazdai felhasználó
 
-<br>**A Azure Container Registryhoz tartozó jelszó** : adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](/cli/azure/acr/credential#az-acr-credential-show) kérheti le.
+<br>**A Azure Container Registryhoz tartozó jelszó**: adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](/cli/azure/acr/credential#az-acr-credential-show) kérheti le.
 
 :::image type="content" source="media/example-iot-access-keys.png" alt-text="A Azure Portal a Hívóbetű képernyőjét mutatja.":::
 
@@ -430,6 +430,9 @@ A **Azure Container Registry rendszergazdai felhasználóneve** : adja meg a tá
 3. Jelszó
 
 **A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon** találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](../../container-registry/container-registry-repositories.md). A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
+
+> [!NOTE]
+> Az Edge-modul minősítéséhez nem támogatott a titkosított Azure Container Registry. Azure Container Registry a titkosítás engedélyezése nélkül kell létrehozni.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Képcímkék az ajánlat új verzióihoz
 
@@ -443,7 +446,7 @@ Adja meg a IoT Edge modul üzembe helyezésének leggyakoribb beállításait. A
 
 **Alapértelmezett útvonalak**. Az IoT Edge hub a modulok, a IoT Hub és az eszközök közötti kommunikációt kezeli. Megadhat útvonalakat a modulok és a IoT Hub közötti adatbevitelhez és kimenethez, ami lehetővé teszi a rugalmasságot, hogy olyan üzeneteket küldjön, amelyekre szükségük van anélkül, hogy további szolgáltatásokat kellene feldolgoznia az üzenetek feldolgozásához vagy további kód írásához. Az útvonalak név/érték párok használatával vannak kialakítva. Legfeljebb öt alapértelmezett útvonal-nevet határozhat meg, amelyek mindegyike legfeljebb 512 karakter hosszú lehet.
 
-Ügyeljen arra, hogy a megfelelő [útvonal-szintaxist](../../iot-edge/module-composition.md#declare-routes)használja az útvonal értékeként (ez általában a következő:/üzenet/* a $upstream). Ez azt jelenti, hogy a modulok által küldött összes üzenet a IoT Hub. A modulra való hivatkozáshoz használja az alapértelmezett modul nevét, amely az **ajánlat neve** , szóközök vagy speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME>-konvenciót, hogy az ügyfelek tudják, hogy frissíteniük kell ezt az információt. IoT Edge útvonalakkal kapcsolatos további információkért lásd: [útvonalak deklarálása](../../iot-edge/module-composition.md#declare-routes)).
+Ügyeljen arra, hogy a megfelelő [útvonal-szintaxist](../../iot-edge/module-composition.md#declare-routes)használja az útvonal értékeként (ez általában a következő:/üzenet/* a $upstream). Ez azt jelenti, hogy a modulok által küldött összes üzenet a IoT Hub. A modulra való hivatkozáshoz használja az alapértelmezett modul nevét, amely az **ajánlat neve**, szóközök vagy speciális karakterek nélkül. Ha más, még nem ismert modulokra szeretne hivatkozni, használja a <FROM_MODULE_NAME>-konvenciót, hogy az ügyfelek tudják, hogy frissíteniük kell ezt az információt. IoT Edge útvonalakkal kapcsolatos további információkért lásd: [útvonalak deklarálása](../../iot-edge/module-composition.md#declare-routes)).
 
 Ha például a modul ContosoModule figyeli a ContosoInput és a kimeneti adatok bemeneteit a ContosoOutput-on, érdemes megadnia a következő két alapértelmezett útvonalat:
 

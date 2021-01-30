@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bb4ff3198764a35bebc124ee1ce99a93428693d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632567"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095955"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>A Azure Data Factory UX problémáinak elhárítása
 
@@ -28,7 +28,7 @@ Ez a cikk a Azure Data Factory UX gyakori hibaelhárítási módszereit vizsgál
 
 ### <a name="third-party-cookies-blocked"></a>A harmadik féltől származó cookie-k blokkolva
 
-Az ADF UX böngésző-cookie-kat használ a felhasználói munkamenet megőrzéséhez, és lehetővé teszi az interaktív fejlesztési és monitorozási élmények használatát. Lehetséges, hogy a böngésző blokkolja a harmadik féltől származó cookie-kat, mert inkognitóban-munkamenetet használ, vagy ha engedélyezve van az ad blocker. A harmadik féltől származó cookie-k blokkolása problémákat okozhat a portál betöltésekor, például egy üres lapra irányítja át, https://adf.azure.com/accesstoken.html vagy figyelmeztető üzenetet kap arról, hogy a harmadik féltől származó cookie-k le vannak tiltva. A probléma megoldásához engedélyezze a harmadik féltől származó cookie-k beállításait a böngészőben a következő lépések végrehajtásával:
+Az ADF UX böngésző-cookie-kat használ a felhasználói munkamenet megőrzéséhez, és lehetővé teszi az interaktív fejlesztési és monitorozási élmények használatát. Lehetséges, hogy a böngésző blokkolja a harmadik féltől származó cookie-kat, mert inkognitóban-munkamenetet használ, vagy ha engedélyezve van az ad blocker. A harmadik féltől származó cookie-k blokkolása problémákat okozhat a portál betöltésekor, például egy üres lapra való átirányítással, https://adf.azure.com/accesstoken.html vagy egy figyelmeztető üzenet beszerzésével, amely azt jelzi, hogy a harmadik féltől származó cookie-k le vannak tiltva. A probléma megoldásához engedélyezze a harmadik féltől származó cookie-k beállításait a böngészőben a következő lépések végrehajtásával:
 
 ### <a name="google-chrome"></a>Google Chrome
 
@@ -42,7 +42,7 @@ Az ADF UX böngésző-cookie-kat használ a felhasználói munkamenet megőrzés
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Csak a cookie-k használatának engedélyezése az ADF UX számára
 Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen engedélyezheti az ADF UX használatát:
-1. Látogasson el a **Chrome://Settings/Cookies** .
+1. Látogasson el a **Chrome://Settings/Cookies**.
 1. Válassza a **Hozzáadás** lehetőséget a **helyek területen a cookie-k mindig használható** lehetőséggel 
 
     ![Az ADF UX hozzáadása az engedélyezett helyekhez a Chrome-ban](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
@@ -63,7 +63,7 @@ Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen e
 
 Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen engedélyezheti az ADF UX használatát:
 
-1. Látogasson el a **Edge://Settings/Content/Cookies** .
+1. Látogasson el a **Edge://Settings/Content/Cookies**.
 1. Az **Engedélyezés** szakaszban válassza a **Hozzáadás** elemet, és adja hozzá a **ADF.Azure.com** helyet. 
 
     ![Az ADF UX hozzáadása az engedélyezett helyekhez az Edge-ben](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ Ha nem kívánja engedélyezni az összes cookie-t, igény szerint egyszerűen e
 
 ## <a name="connection-failed-on-adf-ux"></a>Nem sikerült kapcsolódni az ADF UX-hez
 
-Előfordulhat, hogy a "kapcsolódás sikertelen" hibát észlelt az ADF UX-ben az alábbi képernyőképhez hasonlóan, miután a **Kapcsolódás** , az **előnézet** stb. elemre kattintott.
+Előfordulhat, hogy a "kapcsolódás sikertelen" hibát észlelt az ADF UX-ben az alábbi képernyőképhez hasonlóan, miután a **Kapcsolódás**, az **előnézet** stb. elemre kattintott.
 
 ![Sikertelen volt a hozzáférés](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 Ebben az esetben először próbálkozhat ugyanazzal a művelettel a böngészőben a InPrivate-böngészési módban is.
 
-Ha továbbra sem működik, a böngészőben nyomja meg az F12 billentyűt a **fejlesztői eszközök** megnyitásához. Nyissa meg a **hálózat** lapot, ellenőrizze a **gyorsítótár letiltását** , próbálja megismételni a sikertelen műveletet, és keresse meg a sikertelen kérelmet (piros színnel).
+Ha továbbra sem működik, a böngészőben nyomja meg az F12 billentyűt a **fejlesztői eszközök** megnyitásához. Nyissa meg a **hálózat** lapot, ellenőrizze a **gyorsítótár letiltását**, próbálja megismételni a sikertelen műveletet, és keresse meg a sikertelen kérelmet (piros színnel).
 
 ![Sikertelen kérelem](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Ezután keresse meg az **állomásnév** (ebben az esetben a **dpnortheurope.SVC.DataFactory.Azure.com** ) nevet a sikertelen kérelem **URL-címében** .
+Ezután keresse meg az **állomásnév** (ebben az esetben a **dpnortheurope.SVC.DataFactory.Azure.com**) nevet a sikertelen kérelem **URL-címében** .
 
 Írja be a **gazdagép nevét** közvetlenül a böngésző címsorában. Ha a böngészőben a 404 jelenik meg, ez általában azt jelenti, hogy az ügyfél oldalán ok van, és a probléma az ADF szolgáltatás oldalán található. A támogatási jegyet az ADF UX-hibaüzenetből származó **tevékenység-azonosítóval** együtt küldheti.
 

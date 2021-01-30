@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661593"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092720"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -120,7 +120,7 @@ A második Event hub létrehozásához használhatja az alábbi Azure CLI-utasí
 3. Hozzon létre egy [engedélyezési szabályt](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) a küldési és fogadási engedélyekkel. Adja meg a szabály nevét.
 
     ```azurecli-interactive
-        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>A függvény konfigurálása
@@ -149,7 +149,7 @@ A következő lépésben környezeti változókat kell beállítania a Function 
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
-2. A függvényalkalmazásban hozzon létre egy, a kapcsolati sztringet tartalmazó alkalmazásbeállítást:
+2. Az eredményből származó *primaryConnectionString* érték használatával hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a kapcsolódási karakterláncot:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -163,7 +163,9 @@ Ezután állítson be egy Time Series Insights-példányt, amely a második (ÁM
     1. Válassza ki a **Gen2 (L1)** árképzési szintet.
     2. Ehhez a környezethez ki kell választania egy **idősorozat-azonosítót** . Az idősorozat-azonosító legfeljebb három olyan érték lehet, amelyet a Time Series Insightsban lévő adatok kereséséhez fog használni. Ebben az oktatóanyagban használhatja a **$dtId**. További információ az azonosító érték kiválasztásáról az [*ajánlott eljárásokban az idősorozat-azonosító kiválasztásához*](../time-series-insights/how-to-select-tsid.md).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="A létrehozási portál UX Time Series Insights-környezethez. A Gen2 (L1) árképzési szintje van kiválasztva, az idősorozat-azonosító tulajdonság neve pedig $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="A létrehozási portál UX Time Series Insights-környezethez. Válassza ki az előfizetését, az erőforráscsoportot és a helyet a megfelelő legördülő listából, és válassza ki a környezet nevét." lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+        
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="A létrehozási portál UX Time Series Insights-környezethez. A Gen2 (L1) árképzési szintje van kiválasztva, az idősorozat-azonosító tulajdonság neve pedig $dtId" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. Válassza a Next (tovább) gombot **: eseményforrás** , és válassza ki az ÁME Event hub-információkat a korábbi verziók közül. Emellett új Event Hubs fogyasztói csoportot is létre kell hoznia.
     

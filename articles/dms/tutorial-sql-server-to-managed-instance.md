@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 210d5b06cfe417f581995ad5b356d62e1c35a6d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 995fe7bc81b0fae75ebf93338722c21bd12bde49
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972614"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095573"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása egy felügyelt Azure SQL-példányra a DMS használatával
 
@@ -25,7 +25,7 @@ A Azure Database Migration Service használatával telepítheti át az adatbázi
 
 Ebben az oktatóanyagban áttelepíti a **Adventureworks2012** -adatbázist a SQL Server helyszíni példányáról egy SQL felügyelt példányra Azure Database Migration Service használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > - Hozzon létre egy Azure Database Migration Service-példányt.
@@ -66,7 +66,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     >[!NOTE]
     >Alapértelmezés szerint a Azure Database Migration Service csak az SQL-bejelentkezések áttelepítését támogatja. Engedélyezheti azonban a Windows-bejelentkezések átmásolásának lehetőségét a következővel:
     >
-    >- Annak biztosítása, hogy a célként megadott SQL felügyelt példány HRE olvasási hozzáféréssel rendelkezik, amely a Azure Portal által a **vállalati rendszergazda** vagy **globális rendszergazda** szerepkörrel rendelkező felhasználó által megadható.
+    >- Annak biztosítása, hogy a célként megadott SQL felügyelt példány HRE olvasási hozzáféréssel rendelkezik, amely a **globális rendszergazdai** szerepkörrel rendelkező felhasználó által Azure Portal konfigurálható.
     >- A Azure Database Migration Service-példány konfigurálása a Windows felhasználói/csoportos bejelentkezési áttelepítésének engedélyezéséhez, amely a Azure Portal használatával állítható be a konfiguráció lapon. A beállítás engedélyezése után indítsa újra a szolgáltatást, hogy a módosítások érvénybe lépnek.
     >
     > A szolgáltatás újraindítása után a Windows felhasználói/csoportos bejelentkezések megjelennek az áttelepítéshez elérhető bejelentkezések listájában. Az áttelepített Windows felhasználói/csoportos bejelentkezések esetében a rendszer felszólítja a társított tartománynév megadására. A szolgáltatás felhasználói fiókjai (tartománynév: NT AUTHORITY) és virtuális felhasználói fiókok (a tartománynév NT SZOLGÁLTATÁSsal) nem támogatottak.
@@ -243,7 +243,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 3. Ellenőrizze, hogy a cél-adatbázis a célként megadott SQL felügyelt példány környezetében van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha egy oktatóanyag azt mutatja be, hogyan lehet áttelepíteni egy adatbázist az SQL felügyelt példányára a T-SQL Restore paranccsal, tekintse meg a [biztonsági mentés visszaállítása SQL felügyelt példányra a Restore paranccsal](../azure-sql/managed-instance/restore-sample-database-quickstart.md)című témakört.
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).

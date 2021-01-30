@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: bc7893746cbb98a2d4adc4dabb39e22d015ab2c8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d4f8ab190d0418fbb25dad2cd7af231eabfe0f02
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050397"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090255"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -45,7 +45,7 @@ Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Conne
 
 Ebben a példában a "Daemon" összetevő egy API-vezérlő `SyncController.cs` . A vezérlő hívásakor a rendszer lekéri az ügyfél Azure Active Directory (Azure AD) bérlőben lévő felhasználók listáját a Microsoft Graph. `SyncController.cs` egy AJAX-hívás indítja el a webalkalmazásban. A .NET- [hez készült Microsoft Authentication Library (MSAL)](msal-overview.md) használatával szerzi be Microsoft Graph hozzáférési jogkivonatát.
 
-Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfelei számára, meg kell adnia egy módot arra, hogy az ügyfelek "regisztráljanak" vagy "csatlakozzanak" az alkalmazáshoz a vállalati adatszolgáltatásokhoz. A kapcsolati folyamat során a vállalati rendszergazda először közvetlenül az *alkalmazáshoz ad engedélyeket* , így nem interaktív módon férhet hozzá a vállalati adatbázisokhoz a bejelentkezett felhasználó jelenléte nélkül. A példában szereplő logika többsége azt mutatja be, hogyan valósítható meg ez a kapcsolódási folyamat az Identity platform [rendszergazdai engedélyezési](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) végpontjának használatával.
+Mivel az alkalmazás egy több-bérlős alkalmazás a Microsoft üzleti ügyfelei számára, meg kell adnia egy módot arra, hogy az ügyfelek "regisztráljanak" vagy "csatlakozzanak" az alkalmazáshoz a vállalati adatszolgáltatásokhoz. A kapcsolati folyamat során a globális rendszergazda először közvetlenül az *alkalmazáshoz ad engedélyeket* , így nem interaktív módon férhet hozzá a vállalati adatbázisokhoz a bejelentkezett felhasználó jelenléte nélkül. A példában szereplő logika többsége azt mutatja be, hogyan valósítható meg ez a kapcsolódási folyamat az Identity platform [rendszergazdai engedélyezési](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) végpontjának használatával.
 
 ![A diagram az Azure-hoz csatlakozó három helyi elemmel rendelkező UserSync-alkalmazást mutatja be, a Start dot Auth pedig interaktív módon beolvassa a tokent az Azure A D-hez való csatlakozáshoz, így a rendszergazda beleegyezik az Azure-ba való csatlakozáshoz, és a SyncController Microsoft Graphhoz való csatlakozáshoz.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 

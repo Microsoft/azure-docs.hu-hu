@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: fe4c17b74cd786d03bd19257dea190a21ecaa9f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219249"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095641"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezések problémái az Azure-ban
 
@@ -30,7 +30,7 @@ Előfordulhat, hogy a virtuális gép vagy a VPN-kapcsolattal kapcsolatos probl�
 A harmadik féltől származó NVA és az Azure platformmal való integrációjának technikai támogatását a NVA gyártója biztosítja.
 
 > [!NOTE]
-> Ha van olyan kapcsolat vagy útválasztási probléma, amely egy NVA tartalmaz, forduljon közvetlenül [a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) .
+> Ha van olyan kapcsolat vagy útválasztási probléma, amely egy NVA tartalmaz, forduljon közvetlenül [a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -52,7 +52,7 @@ A harmadik féltől származó NVA és az Azure platformmal való integrációj�
 
 ## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Az Azure-beli NVA minimális konfigurációs követelményeinek ellenõrzése
 
-Minden NVA rendelkezik az Azure-ban megfelelő működéséhez szükséges alapszintű konfigurációs követelményekkel. A következő szakasz az alapvető konfigurációk ellenőrzésének lépéseit ismerteti. További információért [forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Minden NVA rendelkezik az Azure-ban megfelelő működéséhez szükséges alapszintű konfigurációs követelményekkel. A következő szakasz az alapvető konfigurációk ellenőrzésének lépéseit ismerteti. További információért [forduljon a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655).
 
 **Győződjön meg arról, hogy engedélyezve van-e az IP-továbbítás a NVA**
 
@@ -112,17 +112,17 @@ A PowerShell használata
     ```console
    netstat -an | grep -i listen
     ```
-2. Ha nem látja azt a TCP-portot, amelyet az eredmények listájában szereplő NVA szoftver használ, konfigurálnia kell az alkalmazást a NVA és a virtuális gépen, hogy figyelje és reagáljon a portokat elérő forgalomra. [Szükség esetén forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Ha nem látja azt a TCP-portot, amelyet az eredmények listájában szereplő NVA szoftver használ, konfigurálnia kell az alkalmazást a NVA és a virtuális gépen, hogy figyelje és reagáljon a portokat elérő forgalomra. [Szükség esetén forduljon a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="check-nva-performance"></a>NVA teljesítményének megtekintése
 
 ### <a name="validate-vm-cpu"></a>Virtuális gép PROCESSZORának ellenőrzése
 
-Ha a CPU-használat a 100 százalékhoz közeledik, akkor előfordulhat, hogy problémák lépnek fel a hálózati csomagok elejtésére. A virtuális gép átlagos CPU-jelentést küld egy adott időtartományhoz a Azure Portalban. A CPU-tüske során vizsgálja meg, hogy a vendég virtuális gép melyik folyamata okozza a nagy CPU-t, és ha lehetséges, csökkentse a problémát. Előfordulhat, hogy a virtuális gépet át kell méreteznie egy nagyobb SKU-méretre, vagy a virtuálisgép-méretezési csoportnál növelje a példányszámot, vagy állítsa a CPU-használat automatikus méretezésére. A problémák bármelyike esetén [segítségért forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), igény szerint.
+Ha a CPU-használat a 100 százalékhoz közeledik, akkor előfordulhat, hogy problémák lépnek fel a hálózati csomagok elejtésére. A virtuális gép átlagos CPU-jelentést küld egy adott időtartományhoz a Azure Portalban. A CPU-tüske során vizsgálja meg, hogy a vendég virtuális gép melyik folyamata okozza a nagy CPU-t, és ha lehetséges, csökkentse a problémát. Előfordulhat, hogy a virtuális gépet át kell méreteznie egy nagyobb SKU-méretre, vagy a virtuálisgép-méretezési csoportnál növelje a példányszámot, vagy állítsa a CPU-használat automatikus méretezésére. A problémák bármelyike esetén [segítségért forduljon a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655), igény szerint.
 
 ### <a name="validate-vm-network-statistics"></a>Virtuálisgép-hálózati statisztika ellenőrzése
 
-Ha a virtuálisgép-hálózat tüskéket használ, vagy magas kihasználtságú időszakokat jelenít meg, akkor előfordulhat, hogy a virtuális gép SKU-os méretének növelésére van szüksége a magasabb átviteli sebesség érdekében. A virtuális gépet a gyorsított hálózatkezelés engedélyezésével is újra üzembe helyezheti. Annak ellenőrzéséhez, hogy a NVA támogatja-e a gyorsított hálózatkezelési funkciót, szükség esetén [forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Ha a virtuálisgép-hálózat tüskéket használ, vagy magas kihasználtságú időszakokat jelenít meg, akkor előfordulhat, hogy a virtuális gép SKU-os méretének növelésére van szüksége a magasabb átviteli sebesség érdekében. A virtuális gépet a gyorsított hálózatkezelés engedélyezésével is újra üzembe helyezheti. Annak ellenőrzéséhez, hogy a NVA támogatja-e a gyorsított hálózatkezelési funkciót, szükség esetén [forduljon a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="advanced-network-administrator-troubleshooting"></a>A hálózati rendszergazda speciális hibaelhárítása
 
@@ -146,4 +146,4 @@ Rögzítse egyidejű hálózati nyomkövetést a forrásoldali virtuális gépen
 
 Ha nem látja a háttérbeli virtuális gép nyomkövetéséhez bejövő csomagokat, valószínűleg egy NSG vagy egy UDR zavarja, vagy a NVA útválasztási táblái helytelenek.
 
-Ha a csomagok beérkeznek, de nincs válasz, akkor a virtuálisgép-alkalmazáshoz vagy a tűzfalhoz kapcsolódó problémáról lehet szó. A problémák bármelyike esetén [a szükséges segítségért forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Ha a csomagok beérkeznek, de nincs válasz, akkor a virtuálisgép-alkalmazáshoz vagy a tűzfalhoz kapcsolódó problémáról lehet szó. A problémák bármelyike esetén [a szükséges segítségért forduljon a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655).

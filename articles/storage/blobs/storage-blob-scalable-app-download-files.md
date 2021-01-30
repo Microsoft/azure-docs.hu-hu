@@ -4,16 +4,16 @@ description: Megismerkedhet nagy mennyiségű véletlenszerű adat letöltésév
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/20/2018
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 466a61fd27fd9eeb32d004af1ab6bb43503e6233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acfaed10cf627e87691a3068ad0b8cffe9d3b2ee
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020728"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096288"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból
 
@@ -34,7 +34,7 @@ Az oktatóanyag teljesítéséhez el kell végeznie az előző Storage-oktatóan
 
  Használja az alábbi parancsot a helyi gépén, ha egy távoli asztali munkamenetet szeretne létrehozni a virtuális géppel. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére. Ha a rendszer erre kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
 
-```
+```console
 mstsc /v:<publicIpAddress>
 ```
 
@@ -46,8 +46,10 @@ Az előző oktatóanyagban csak a tárfiókba töltött fel fájlokat. Nyissa me
 public static void Main(string[] args)
 {
     Console.WriteLine("Azure Blob storage performance and scalability sample");
-    // Set threading and default connection limit to 100 to ensure multiple threads and connections can be opened.
-    // This is in addition to parallelism with the storage client library that is defined in the functions below.
+    // Set threading and default connection limit to 100 to 
+    // ensure multiple threads and connections can be opened.
+    // This is in addition to parallelism with the storage 
+    // client library that is defined in the functions below.
     ThreadPool.SetMinThreads(100, 4);
     ServicePointManager.DefaultConnectionLimit = 100; // (Or More)
 
@@ -55,11 +57,12 @@ public static void Main(string[] args)
     try
     {
         // Call the UploadFilesAsync function.
-        UploadFilesAsync().GetAwaiter().GetResult();
+        // await UploadFilesAsync();
 
-        // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files.
-        // DownloadFilesAsync().GetAwaiter().GetResult();
+        // Uncomment the following line to enable downloading of files from the storage account.
+        // This is commented out initially to support the tutorial at 
+        // https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files
+        await DownloadFilesAsync();
     }
     catch (Exception ex)
     {
@@ -68,11 +71,13 @@ public static void Main(string[] args)
     }
     finally
     {
-        // The following function will delete the container and all files contained in them.  This is commented out initially
-        // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files has you upload only for one tutorial and download for the other. 
+        // The following function will delete the container and all files contained in them.
+        // This is commented out initially as the tutorial at 
+        // https://docs.microsoft.com/azure/storage/blobs/storage-blob-scalable-app-download-files
+        // has you upload only for one tutorial and download for the other.
         if (!exception)
         {
-            // DeleteExistingContainersAsync().GetAwaiter().GetResult();
+            // await DeleteExistingContainersAsync();
         }
         Console.WriteLine("Press any key to exit the application");
         Console.ReadKey();
@@ -82,7 +87,7 @@ public static void Main(string[] args)
 
 Az alkalmazás frissítését követően újra létre kell hoznia az alkalmazást. Nyisson meg egy `Command Prompt` elemet, és keresse meg a következőt: `D:\git\storage-dotnet-perf-scale-app`. Az alkalmazás újbóli létrehozása a `dotnet build` futtatásával történik, az alábbi példában látható módon:
 
-```
+```console
 dotnet build
 ```
 
@@ -92,33 +97,44 @@ Most, hogy az alkalmazás újra létre lett hozva, futtathatja az alkalmazást a
 
 Az alkalmazás futtatásához írja be a következőt: `dotnet run`.
 
-```
+```console
 dotnet run
 ```
 
-Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. Az alkalmazás egyszerre 10 blobon halad végig a [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) metódussal a tárolókban, majd letölti azokat a helyi gépre a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódussal.
-Az alábbi táblázatban az egyes letöltött blobokhoz megadott [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) paraméter látható.
+A következő példában az `DownloadFilesAsync` feladat látható:
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. A [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) metódussal megismétli a blobokat, és letölti azokat a helyi gépre a [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) metódus használatával.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Scalable.cs" id="Snippet_DownloadFilesAsync":::
+
+# <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
+
+Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. A Blobok 10-én a [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync) metódus használatával, a tárolókban, és a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus használatával töltik le őket a helyi gépre.
+
+A következő táblázat az egyes Blobok letöltéséhez megadott [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) mutatja be.
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| hamis| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és tárolása megtörtént-e.   |
 
-A következő példában az `DownloadFilesAsync` feladat látható:
-
 ```csharp
 private static async Task DownloadFilesAsync()
 {
     CloudBlobClient blobClient = GetCloudBlobClient();
 
-    // Define the BlobRequestOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
+    // Define the BlobRequestOptions on the download, including disabling MD5 
+    // hash validation for this example, this improves the download speed.
     BlobRequestOptions options = new BlobRequestOptions
     {
         DisableContentMD5Validation = true,
         StoreBlobContentMD5 = false
     };
 
-    // Retrieve the list of containers in the storage account.  Create a directory and configure variables for use later.
+    // Retrieve the list of containers in the storage account.
+    // Create a directory and configure variables for use later.
     BlobContinuationToken continuationToken = null;
     List<CloudBlobContainer> containers = new List<CloudBlobContainer>();
     do
@@ -140,7 +156,8 @@ private static async Task DownloadFilesAsync()
         int max_outstanding = 100;
         int completed_count = 0;
 
-        // Create a new instance of the SemaphoreSlim class to define the number of threads to use in the application.
+        // Create a new instance of the SemaphoreSlim class to
+        // define the number of threads to use in the application.
         SemaphoreSlim sem = new SemaphoreSlim(max_outstanding, max_outstanding);
 
         // Iterate through the containers
@@ -148,7 +165,7 @@ private static async Task DownloadFilesAsync()
         {
             do
             {
-                // Return the blobs from the container lazily 10 at a time.
+                // Return the blobs from the container, 10 at a time.
                 resultSegment = await container.ListBlobsSegmentedAsync(null, true, BlobListingDetails.All, 10, continuationToken, null, null);
                 continuationToken = resultSegment.ContinuationToken;
                 {
@@ -188,26 +205,28 @@ private static async Task DownloadFilesAsync()
 }
 ```
 
+---
+
 ### <a name="validate-the-connections"></a>A kapcsolatok ellenőrzése
 
-A fájlok letöltése közben ellenőrizheti a tárfiók egyidejű kapcsolatainak számát. Nyisson meg egy `Command Prompt` elemet, és írja be a következőt: `netstat -a | find /c "blob:https"`. Ez a parancs a `netstat` használatával mutatja a jelenleg megnyitott kapcsolatok számát. A következő példa egy ahhoz hasonló kimenetet mutat be, mint amit akkor láthat, ha saját maga futtatja az oktatóanyagot. Ahogy a példában látható, több mint 280 kapcsolat volt megnyitva a véletlenszerű fájlok tárfiókból történő letöltése közben.
+A fájlok letöltése közben ellenőrizheti a tárfiók egyidejű kapcsolatainak számát. Nyisson meg egy konzol ablakot és írja be a következőt: `netstat -a | find /c "blob:https"` . Ez a parancs a jelenleg megnyitott kapcsolatok számát jeleníti meg. Ahogy az alábbi példában látható, több mint 280 kapcsolat is megnyitotta a fájlok a Storage-fiókból való letöltésekor.
 
-```
+```console
 C:\>netstat -a | find /c "blob:https"
 289
 
 C:\>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A sorozat harmadik részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókból történő letöltésével, például a következőkkel:
+A sorozat harmadik részében megtanulta, hogyan lehet nagy mennyiségű adatforrást letölteni egy Storage-fiókból, beleértve a következőket:
 
 > [!div class="checklist"]
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
 
-A sorozat negyedik részében az átviteli sebességgel és a késéssel kapcsolatos mérőszámok portálon történő ellenőrzésével ismerkedhet meg.
+A portálon az átviteli sebesség és a késés mérőszámának ellenőrzéséhez nyissa meg a sorozat negyedik részét.
 
 > [!div class="nextstepaction"]
 > [Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése a portálon](storage-blob-scalable-app-verify-metrics.md)

@@ -86,6 +86,8 @@
       items:
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
 - name: Útmutatók
   items:
     - name: Méretezés

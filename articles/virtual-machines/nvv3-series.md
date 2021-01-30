@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ceefcb41dec1ce40d55f412ba51cb1b2cc02daea
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c1238a45a7175101253f43e6bbd199ff1c913650
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919697"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095656"
 ---
 # <a name="nvv3-series"></a>NVv3 sorozat
 
@@ -27,6 +27,7 @@ A NVv3-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc leh
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) | Virtuális munkaállomások | Virtuális alkalmazások |

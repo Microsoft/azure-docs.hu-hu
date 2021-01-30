@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2c46e8a7cae9ddba9606abf75ac022e804fde9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760059"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062500"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>GPU-t támogató IoT-modul üzembe helyezése az Azure Marketplace-en Azure Stack Edge Pro GPU-eszközön
 
@@ -32,7 +32,7 @@ A cikkben található GPU-minta modul a PyTorch és a TensorFlow teljesítményt
 
 Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Hozzáférése van egy GPU-t támogató 1 csomópontos Azure Stack peremhálózati eszközhöz. Ez az eszköz egy Azure-erőforrással van aktiválva. 
+- Hozzáférése van egy GPU-t támogató 1 csomópontos Azure Stack peremhálózati eszközhöz. Ezt az eszközt egy Azure-beli erőforrás aktiválta. 
 - Konfigurálta az eszközön a számítást. Kövesse az [oktatóanyag: számítás konfigurálása az Azure stack Edge-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md)című témakör lépéseit.
 - A következő fejlesztői erőforrások egy Windows-ügyfélen:
     - [Visual Studio Code](https://code.visualstudio.com/)  
@@ -49,11 +49,11 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
     ![Keresési GPU-minta modul](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/search-gpu-sample-module-1.png)
 
-3. Válassza a **Letöltés most**lehetőséget.
+3. Válassza a **Letöltés most** lehetőséget.
 
     ![Minta modul beolvasása](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/get-sample-module-1.png)
 
-4. A **tovább** gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát. 
+4. A **tovább** gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát. 
 
     ![2. mintavételi modul beolvasása](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
@@ -63,31 +63,29 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 6. Adja meg annak a IoT Hub szolgáltatásnak a nevét, amelyet az Azure Stack Edge Pro-eszköz konfigurálásakor hozott létre. A IoT Hub szolgáltatás nevének megkereséséhez nyissa meg az eszközhöz társított Azure Stack Edge-erőforrást Azure Portal. 
 
-    1. A bal oldali ablaktábla menüjében válassza az **Edge számítás > első lépések**lehetőséget. 
-
-    1. Az **Edge-számítás konfigurálása** csempén válassza a **konfiguráció megtekintése**lehetőséget. 
+    1. A bal oldali ablaktábla menüjében válassza az **Edge services > IoT Edge** lehetőséget. 
 
         ![Számítási konfiguráció megtekintése](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/view-config-1.png)
 
-    1. Az **Edge számítási konfiguráció** paneljén:
+    1. Válassza a **Tulajdonságok** lehetőséget. 
 
         1. Jegyezze fel a IoT Hub szolgáltatást, amely akkor jött létre, amikor a Azure Stack Edge Pro-eszközön konfigurálta a számítást.
         2. Jegyezze fel annak a IoT Edge eszköznek a nevét, amelyet a számítás beállításakor hozott létre. Ezt a nevet fogja használni a következő lépésben.
 
         ![Peremhálózati számítási konfiguráció](media/azure-stack-edge-gpu-deploy-sample-module/view-compute-config-1.png)
 
-10. Válassza **a telepítés eszközre**lehetőséget.
+10. Válassza **a telepítés eszközre** lehetőséget.
 
-11. Adja meg a IoT Edge eszköz nevét, vagy válassza az **eszköz keresése**elemet a   hub-ban regisztrált eszközök között.
+11. Adja meg a IoT Edge eszköz nevét, vagy válassza az **eszköz keresése** elemet a hub-ban regisztrált eszközök között.
 
     ![Eszköz keresése](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/find-device-1.png)
 
-12. Válassza a **Létrehozás**lehetőséget   a központi telepítési jegyzék konfigurálásának szabványos folyamatának folytatásához, beleértve a további modulok hozzáadását, ha szükséges. Az új modul adatai, például a rendszerkép URI-ja, a létrehozási beállítások és a kívánt tulajdonságok előre definiálva vannak, de módosíthatók.
+12. Válassza a **Létrehozás** lehetőséget a központi telepítési jegyzék konfigurálásának szabványos folyamatának folytatásához, beleértve a további modulok hozzáadását, ha szükséges. Az új modul adatai, például a rendszerkép URI-ja, a létrehozási beállítások és a kívánt tulajdonságok előre definiálva vannak, de módosíthatók.
 
     ![Kattintás a Létrehozás gombra](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/target-devices-iot-edge-module-1.png)
 
 
-13. Ellenőrizze, hogy a modul telepítve van-e a IoT Hub a Azure Portalban. Válassza ki az eszközt, válassza a **modulok beállítása**elemet,   és a modult a **IoT Edge modulok**szakaszban kell megadnia   .
+13. Ellenőrizze, hogy a modul telepítve van-e a IoT Hub a Azure Portalban. Válassza ki az eszközt, válassza a **modulok beállítása** elemet, és a modult a **IoT Edge modulok** szakaszban kell megadnia.
 
     ![Válassza a létrehozás 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
@@ -97,9 +95,9 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 2. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. Ebben az esetben válassza ki az Azure Stack Edge Pro-eszköz üzembe helyezéséhez használt előfizetést, és válassza ki az Azure Stack Edge Pro-eszközhöz létrehozott IoT Edge eszközt. Ez akkor fordul elő, ha a számítást a korábbi lépések Azure Portalján keresztül konfigurálja.
 
-3. A VS Code Explorerben bontsa ki az Azure IoT Hub szakaszt. Az **eszközök**területen az Azure stack Edge Pro-eszköznek megfelelő IoT Edge eszközt kell látnia. 
+3. A VS Code Explorerben bontsa ki az Azure IoT Hub szakaszt. Az **eszközök** területen az Azure stack Edge Pro-eszköznek megfelelő IoT Edge eszközt kell látnia. 
 
-    1. Válassza ki az eszközt, kattintson a jobb gombbal, majd válassza a **figyelés beépített esemény végpontja**lehetőséget.
+    1. Válassza ki az eszközt, kattintson a jobb gombbal, majd válassza a **figyelés beépített esemény végpontja** lehetőséget.
   
         ![Figyelés indítása](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 

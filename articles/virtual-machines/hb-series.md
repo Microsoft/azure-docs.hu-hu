@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 86841910e7fee1cebc2f081a7a9f2159c689437b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 964ed9b7d2631d4a545a53a0dc2d89d978406c49
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919833"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096830"
 ---
 # <a name="hb-series"></a>HB-sorozat
 
@@ -28,6 +28,7 @@ A HB sorozatú virtuális gépek 100 GB/s Mellanox EDR InfiniBand rendelkeznek. 
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br>
 
 | Méret | vCPU | Processzor | Memória (GiB) | Memória sávszélessége GB/s | Alapszintű CPU-gyakoriság (GHz) | Teljes magok gyakorisága (GHz, csúcs) | Egymagos gyakoriság (GHz, csúcs) | RDMA teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tároló (GiB) | Adatlemezek max. száma | Maximális Ethernet-Vnic |

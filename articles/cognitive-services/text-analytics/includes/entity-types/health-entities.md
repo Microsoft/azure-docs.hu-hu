@@ -9,15 +9,13 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 614d0fe69cee88791559758d5e08dda66672669b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147621"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097267"
 ---
-## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Text Analytics állapot-kategóriák, entitások és attribútumok esetében
-
 Az [egészségügyi Text Analytics](../../how-tos/text-analytics-for-health.md) a következő kategóriákban észleli az orvosi fogalmakat.  (Vegye figyelembe, hogy a tároló előzetes verziója csak az angol nyelvű szöveget támogatja, és az egyes tárolók rendszerképében csak egyetlen modell-verzió van megadva.)
 
 

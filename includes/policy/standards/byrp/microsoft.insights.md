@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0ba9a31c2b7cb76f7630c2d8dbde02d420c7c8c5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: be367ed401ac0748f0d4f65bfa6643f08d767cc1
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98860106"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093284"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
@@ -154,6 +154,17 @@ További információ erről a megfelelőségi szabványról: [HIPAA HITRUST 9,2
 |Rendszergazdai és operátori naplók |1270.09 ad1System. 12 – 09.ad |A szervezet biztosítja, hogy a megfelelő naplózás engedélyezve legyen a rendszergazdai tevékenységek naplózása érdekében; a rendszergazda és a kezelő rendszeresen ellenőrzi a rendszergazdákat és a naplókat. |[A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |Rendszergazdai és operátori naplók |1271.09 ad1System. 1 – 09.ad |A rendszer-és hálózati rendszergazdák felügyeletén kívül felügyelt behatolásjelző rendszer a rendszer-és hálózati adminisztrációs tevékenységek megfelelőségének figyelésére szolgál. |[A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |Hálózati vezérlők |0860.09 m1Organizational. 9-09. m |A szervezet hivatalosan felügyeli a hálózatban lévő berendezéseket, beleértve a felhasználói területeken lévő berendezéseket is. |[Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9c29499-c1d1-4195-99bd-2ec9e3a9dc89) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForNSG_Deploy.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz elérhető beépített Azure Policy hogyan képezi le a megfelelőségi szabványt, tekintse meg a [Azure Policy szabályozási megfelelősége – ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+További információ erről a megfelelőségi szabványról: [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Működési biztonság |12.4.1 |Események naplózása |[Diagnosztikai beállítás naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|Működési biztonság |12.4.3 |Rendszergazdai és operátori naplók |[Diagnosztikai beállítás naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|Működési biztonság |12.4.4 |Óra szinkronizálása |[Diagnosztikai beállítás naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

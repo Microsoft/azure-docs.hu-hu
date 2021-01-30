@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c925eb4e9cbd9fa5df472844d7e3bcae278c2102
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 329393fb1e4ea7959d78f1a6b40614812be2b0b5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98859589"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093789"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
@@ -58,6 +58,16 @@ További információ erről a megfelelőségi szabványról: [HIPAA HITRUST 9,2
 |Hálózati kapcsolatok vezérlése |0814.01 n1Organizational. 12-01. n |A felhasználók a belső hálózathoz való kapcsolódás lehetőségét a hozzáférés-vezérlési házirend, valamint a klinikai és üzleti alkalmazások követelményeinek megfelelően a felügyelt felületeken a megtagadási és a megengedett kivételek alapján korlátozzák. |[Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 |Külső felekkel kapcsolatos kockázatok azonosítása |1451.05 iCSPOrganizational. 2-05. i |A Cloud Service Providers olyan vezérlőket tervez és valósít meg, amelyek az adatbiztonsági kockázatokat a feladatok, a szerepköralapú hozzáférés és a legalacsonyabb jogosultságú hozzáférés megfelelő elkülönítésével, valamint az ellátási láncban lévő összes munkatárs számára biztosítják. |[Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 |Online tranzakciók |0946.09 y2Organizational. 14-09. y |A szervezetnek a tranzakcióban részt vevő felek mindegyike számára szükséges a titkosítás és az elektronikus aláírások használata. |[Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz elérhető beépített Azure Policy hogyan képezi le a megfelelőségi szabványt, tekintse meg a [Azure Policy szabályozási megfelelősége – ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+További információ erről a megfelelőségi szabványról: [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Titkosítás |10.1.1 |A titkosítási vezérlők használatára vonatkozó szabályzat |[Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
+|Kommunikációs biztonság |13.2.1 |Adatátviteli szabályzatok és eljárások |[Csak a Redis-hez készült Azure cache biztonságos kapcsolatainak engedélyezése szükséges](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F22bee202-a82f-4305-9a2a-6d7f44d4dedb) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_AuditSSLPort_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

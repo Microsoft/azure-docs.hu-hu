@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: d623d7b7ec25c096ebf54c030cf302e0a72e7fb2
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064076"
+ms.locfileid: "99072404"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Oracle Database 19c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépeken Azure Backup használatával
 
@@ -21,7 +21,7 @@ Ez a cikk Azure Backup használatát mutatja be a virtuálisgép-lemezek lemezes
 
 > [!div class="checklist"]
 >
-> * Az adatbázis biztonsági mentése az Application konzisztens biztonsági mentéssel
+> * Az adatbázis biztonsági mentése az alkalmazással konzisztens biztonsági mentéssel
 > * Az adatbázis visszaállítása és helyreállítása helyreállítási pontról
 > * A virtuális gép visszaállítása helyreállítási pontról
 
@@ -39,19 +39,19 @@ A környezet előkészítéséhez végezze el a következő lépéseket:
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-Ha Secure Shell-(SSH-) munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet és az állomásnév kombinációját a `<publicIpAddress>` virtuális gép értékére.
+1. Ha Secure Shell-(SSH-) munkamenetet szeretne létrehozni a virtuális géppel, használja a következő parancsot. Cserélje le az IP-címet és az állomásnév kombinációját a `<publicIpAddress>` virtuális gép értékére.
     
    ```bash
    ssh azureuser@<publicIpAddress>
    ```
    
-Váltson a *root* felhasználóra:
+1. Váltson a *root* felhasználóra:
 
    ```bash
    sudo su -
    ```
     
-Adja hozzá az Oracle-felhasználót a */etc/sudoers* fájlhoz:
+1. Adja hozzá az Oracle-felhasználót a */etc/sudoers* fájlhoz:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
@@ -59,9 +59,9 @@ Adja hozzá az Oracle-felhasználót a */etc/sudoers* fájlhoz:
 
 ### <a name="prepare-the-database"></a>Az adatbázis előkészítése
 
-1. Ez a lépés azt feltételezi, hogy rendelkezik egy *vmoracle19c* nevű virtuális gépen futó Oracle-példánnyal (*teszttel*).
+Ez a lépés azt feltételezi, hogy rendelkezik egy *vmoracle19c* nevű virtuális gépen futó Oracle-példánnyal (*teszttel*).
 
-   Felhasználó váltása az *Oracle* -felhasználóra:
+1. Felhasználó váltása az *Oracle* -felhasználóra:
  
    ```bash
     sudo su - oracle
@@ -205,19 +205,19 @@ Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony me
 
 A Azure Backup szolgáltatás olyan [keretrendszert](../../../backup/backup-azure-linux-app-consistent.md) biztosít a Windows és Linux rendszerű virtuális gépek biztonsági mentése során az alkalmazások konzisztenciájához, mint például az Oracle, a MySQL, a Mongo db, a SAP HANA és a PostGreSQL. Ebbe beletartozik egy előzetes parancsfájl meghívása (az alkalmazások fokozatos leválasztása), mielőtt pillanatképet készít a lemezekről, és meghívja az utólagos parancsfájlt (az alkalmazások feloldásához szükséges parancsokat) a pillanatkép befejezése után, hogy az alkalmazásokat a normál módba adja vissza. A minta előtti parancsfájlokat és a parancsfájlokat a GitHubon is elérhetővé teheti, így a parancsfájlok létrehozása és karbantartása az Ön felelőssége. 
 
-Most Azure Backup egy továbbfejlesztett, előre megírt parancsfájlokat és parancsfájl-közzétételi keretrendszert biztosít, ahol a Azure Backup szolgáltatás a kiválasztott alkalmazásokhoz csomagolt előkészítő parancsfájlokat és parancsfájlok futtatását teszi lehetővé. Azure Backup felhasználó csak az alkalmazás nevét kell megadnia, majd az Azure virtuális gép biztonsági mentése automatikusan meghívja a megfelelő utólagos parancsfájlokat. A becsomagolt előzetes parancsfájlokat és a parancsfájlok utáni parancsfájlokat a Azure Backup csapata tartja karban, így a felhasználók biztosíthatják a parancsfájlok támogatását, tulajdonlását és érvényességét. Jelenleg a továbbfejlesztett keretrendszer támogatott alkalmazásai az ***Oracle és a MySQL** _, és a jövőben több alkalmazási típus is várható.
+Most Azure Backup egy továbbfejlesztett, előre megírt parancsfájlokat és parancsfájl-közzétételi keretrendszert biztosít, ahol a Azure Backup szolgáltatás a kiválasztott alkalmazásokhoz csomagolt előkészítő parancsfájlokat és parancsfájlok futtatását teszi lehetővé. Azure Backup felhasználó csak az alkalmazás nevét kell megadnia, majd az Azure virtuális gép biztonsági mentése automatikusan meghívja a megfelelő utólagos parancsfájlokat. A becsomagolt előzetes parancsfájlokat és a parancsfájlok utáni parancsfájlokat a Azure Backup csapata tartja karban, így a felhasználók biztosíthatják a parancsfájlok támogatását, tulajdonlását és érvényességét. Jelenleg a továbbfejlesztett keretrendszer támogatott alkalmazásai az *Oracle* és a *MySQL*.
 
-Ebben a szakaszban Azure Backup továbbfejlesztett keretrendszert használ az alkalmazás-konzisztens Pillanatképek futtatásához a futó virtuális gépen és az Oracle-adatbázisban. Az adatbázis biztonsági mentési módba kerül, amely lehetővé teszi a tranzakciós szempontból konzisztens online biztonsági mentést, miközben Azure Backup pillanatképet készít a virtuális gépek lemezéről. A pillanatkép a tárterület teljes másolata, és nem növekményes vagy másolási írási pillanatkép, ezért ez egy hatékony médium az adatbázis visszaállításához. Az Azure Backup Application konzisztens pillanatképek használatának előnye, hogy rendkívül gyorsan igénybe vehetik az adatbázis nagy részét, és a pillanatképek a végrehajtásuk után azonnal használhatók a visszaállítási műveletekhez, anélkül, hogy meg kellene várni a Recovery Services-tárolóba való átvitelre.
+Ebben a szakaszban Azure Backup továbbfejlesztett keretrendszert használ a futó virtuális gép és az Oracle-adatbázis alkalmazás-konzisztens pillanatképének készítéséhez. Az adatbázis biztonsági mentési módba kerül, amely lehetővé teszi a tranzakciós szempontból konzisztens online biztonsági mentést, miközben Azure Backup pillanatképet készít a virtuális gépek lemezéről. A pillanatkép a tárterület teljes másolata, és nem növekményes vagy másolási írási pillanatkép, ezért ez egy hatékony médium az adatbázis visszaállításához. A Azure Backup alkalmazás-konzisztens pillanatképek használatának előnye, hogy rendkívül gyorsan elvégezhetik az adatbázis nagy mennyiségét, és a pillanatképek a létrehozásuk után azonnal használhatók a visszaállítási műveletekhez anélkül, hogy meg kellene várni a Recovery Services-tárolóba való átvitelre.
 
 Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végre a következő lépéseket:
 
-1. Készítse elő a környezetet az alkalmazások konzisztens biztonsági mentéséhez.
-1. Az alkalmazások konzisztens biztonsági mentésének beállítása.
-1. Alkalmazás konzisztens biztonsági másolatának elindítása a virtuális gépen
+1. A környezet előkészítése az alkalmazással konzisztens biztonsági mentésre.
+1. Alkalmazás-konzisztens biztonsági másolatok beállítása.
+1. Aktiválja a virtuális gép egy alkalmazással konzisztens biztonsági mentését.
 
-### <a name="prepare-the-environment-for-application-consistent-backup"></a>A környezet előkészítése az alkalmazások konzisztens biztonsági mentéséhez
+### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>A környezet előkészítése az alkalmazással konzisztens biztonsági mentésre
 
-1. Váltson az _ *root** felhasználóra:
+1. Váltson a *root* felhasználóra:
 
    ```bash
    sudo su -
@@ -229,7 +229,7 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    useradd -G backupdba azbackup
    ```
    
-2. Biztonsági mentési felhasználói környezet beállítása:
+2. A biztonsági mentési felhasználói környezet beállítása:
 
    ```bash
    echo "export ORACLE_SID=test" >> ~azbackup/.bashrc
@@ -237,16 +237,15 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    echo export PATH='$ORACLE_HOME'/bin:'$PATH' >> ~azbackup/.bashrc
    ```
    
-3. Külső hitelesítés beállítása az új biztonsági mentési felhasználóhoz. 
-   A biztonsági mentési felhasználónak külső hitelesítéssel kell tudnia hozzáférni az adatbázishoz, így nem kell jelszót feltennie.
+3. Külső hitelesítés beállítása az új biztonsági mentési felhasználóhoz. A biztonsági mentési felhasználónak külső hitelesítéssel kell tudnia hozzáférni az adatbázishoz, így nem kell jelszót feltennie.
 
-   Először váltson vissza az **Oracle** -felhasználóra:
+   Először váltson vissza az *Oracle* -felhasználóra:
 
    ```bash
    su - oracle
    ```
 
-   Jelentkezzen be az adatbázisba a SQLPlus használatával, és keresse meg a külső hitelesítés alapértelmezett beállításait.
+   Jelentkezzen be az adatbázisba a SQLPlus használatával, és keresse meg a külső hitelesítés alapértelmezett beállításait:
    
    ```bash
    sqlplus / as sysdba
@@ -254,7 +253,7 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    SQL> show parameter remote_os_authent
    ```
    
-   A kimenetnek a következőnek kell megjelennie 
+   A kimenetnek az alábbi példához hasonlóan kell kinéznie: 
 
    ```output
    NAME                                 TYPE        VALUE
@@ -263,23 +262,30 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    remote_os_authent                    boolean     FALSE
    ```
 
-   Most hozzon létre egy adatbázis-felhasználói azbackup külsőleg, és adja meg a sysbackup jogosultságot:
+   Most hozzon létre egy adatbázis-felhasználói *azbackup* külsőleg, és adja meg a sysbackup jogosultságot:
    
    ```bash
    SQL> CREATE USER ops$azbackup IDENTIFIED EXTERNALLY;
    SQL> GRANT CREATE SESSION, ALTER SESSION, SYSBACKUP TO ops$azbackup;
    ```
 
-   >[!IMPORTANT] 
-   >Ha "ORA-46953" hibaüzenetet kap: a jelszó fájlja nem 12,2 formátumú. "  a fenti engedélyezési utasítás futtatásakor kövesse az alábbi lépéseket a orapwd-fájl 12,2 formátumra való áttelepítéséhez:
+   > [!IMPORTANT] 
+   > Ha `ORA-46953: The password file is not in the 12.2 format.`  az utasítás futtatásakor hibaüzenetet kap `GRANT` , kövesse az alábbi lépéseket a orapwd-fájl 12,2 formátumra való áttelepítéséhez:
    >
-   >Lépjen ki a SQLPlus, helyezze át a régi formátumú jelszót egy új névre, telepítse át a jelszót, majd távolítsa el a régi fájlt. Az alábbi parancsok futtatása után futtassa újra a fenti engedélyezési műveletet a SQLPlus-ben.
-   
-   ```bash
-   mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
-   orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
-   rm $ORACLE_HOME/dbs/orapwtest.tmp
-   ```
+   > 1. Kilépés a SQLPlus.
+   > 1. Helyezze át a jelszavas fájlt a régi formátummal egy új névre.
+   > 1. Telepítse át a jelszót tartalmazó fájlt.
+   > 1. Távolítsa el a régi fájlt.
+   > 1. Futtassa az alábbi parancsot:
+   >
+   >    ```bash
+   >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
+   >    orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
+   >    rm $ORACLE_HOME/dbs/orapwtest.tmp
+   >    ```
+   >
+   > 1. Futtassa újra a `GRANT` műveletet a SQLPlus-ben.
+   >
    
 4. Tárolt eljárás létrehozása a biztonsági mentési üzenetek naplózásához az adatbázis riasztási naplójába:
 
@@ -300,20 +306,24 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    SQL> QUIT
    ```
    
-### <a name="set-up-application-consistent-backups"></a>Alkalmazások konzisztens biztonsági mentéseinak beállítása  
+### <a name="set-up-application-consistent-backups"></a>Alkalmazás-konzisztens biztonsági másolatok beállítása  
 
-1. Váltás a root felhasználóra 
+1. Váltson a *root* felhasználóra:
+
    ```bash
    sudo su -
    ```
 
-2. Az alkalmazás konzisztens biztonsági mentési munkakönyvtárának létrehozása
+2. Hozza létre az alkalmazás-konzisztens biztonsági mentési munkakönyvtárat:
+
    ```bash
    if [ ! -d "/etc/azure" ]; then
       sudo mkdir /etc/azure
    fi
    ```
-3. Hozzon létre egy fájlt a/etc/Azure könyvtárban a **munkaterhelés. conf** nevű fájlban az alábbi tartalommal, amelynek a következővel kell kezdődnie: `[workload]` . A következő parancs létrehozza majd a fájlt, és feltölti a tartalmat:
+
+3. Hozzon létre egy fájlt a *munkaterhelés. conf* nevű */etc/Azure* könyvtárban az alábbi tartalommal, amelynek a következővel kell kezdődnie: `[workload]` . A következő parancs létrehozza majd a fájlt, és feltölti a tartalmat:
+
    ```bash
    echo "[workload]
    workload_name = oracle
@@ -321,14 +331,16 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
    ```
-1. Töltse le a preOracleMaster. SQL és a postOracleMaster. SQL parancsfájlokat a [GitHub-adattárból](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) , és másolja őket a/etc/Azure könyvtárba.
 
-4. A fájlengedélyek módosítása
-   ```bash
+4. Töltse le a preOracleMaster. SQL és a postOracleMaster. SQL parancsfájlt a [GitHub-tárházból](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) , és másolja őket a */etc/Azure* könyvtárba.
+
+5. A fájlengedélyek módosítása
+
+```bash
    chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
-### <a name="trigger-application-consistent-backup-of-the-vm"></a>Alkalmazás konzisztens biztonsági másolatának elindítása a virtuális gépen
+### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Alkalmazás-konzisztens biztonsági másolat elindítása a virtuális gépen
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -375,7 +387,8 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
    ```azurecli
    az backup vault create --location eastus --name myVault --resource-group rg-oracle
    ```
-2. Biztonsági másolatok védelmének engedélyezése a virtuális gépen
+
+2. Biztonsági mentési védelem engedélyezése a virtuális gép számára:
 
    ```azurecli
    az backup protection enable-for-vm \
@@ -384,7 +397,8 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
       --vm vmoracle19c \
       --policy-name DefaultPolicy
    ```
-3. Indítsa el a biztonsági mentést, és ne várja meg a biztonsági mentést az alapértelmezett időpontra (05:00 kor UTC). 
+
+3. Indítsa el a biztonsági mentést, és ne várja meg a biztonsági mentést az alapértelmezett menetrend szerint (5 UTC): 
 
    ```azurecli
    az backup protection backup-now \
@@ -394,7 +408,8 @@ Az adatbázis biztonsági mentésének Azure Backup használatához hajtsa végr
       --container-name vmoracle19c \
       --item-name vmoracle19c 
    ```
-   A és a használatával is figyelheti a biztonsági mentési feladatok állapotát. `az backup job list``az backup job show`
+
+   A és a használatával nyomon követheti a biztonsági mentési feladatok állapotát `az backup job list` `az backup job show` .
 
 ---
 
@@ -433,15 +448,15 @@ A cikk későbbi részében megtudhatja, hogyan tesztelheti a helyreállítási 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A Azure Portal keresse meg a *myVault* Recovery Services-tárolók elemét, és kattintson rá.
+1. A Azure Portal keresse meg a *myVault* Recovery Services-tárolók elemet, és válassza ki.
 
     ![Recovery Services-tárolók myVault biztonsági másolati elemei](./media/oracle-backup-recovery/recovery-service-06.png)
 
-2. Az **Áttekintés** panelen válassza a **biztonsági másolati elemek** lehetőséget, majd a * Azure-beli *_virtuális gép_* _.
+2. Az **Áttekintés** panelen válassza a **biztonsági másolati elemek elemet** , majd az **Azure virtuális gép** kiválasztása lehetőséget, amelynek az Anon – nulla biztonsági mentési elemek száma szerepel a listában.
 
     ![Recovery Services tárolók Azure-beli virtuális gép biztonsági mentési elemeinek száma](./media/oracle-backup-recovery/recovery-service-07.png)
 
-3. A Backups elemek (Azure Virtual Machines) lapon megjelenik a virtuális gép _ *vmoracle19c** listája. Kattintson a jobb oldalon található három pontra a menü megnyitásához, majd válassza a **fájl helyreállítása** lehetőséget.
+3. A biztonsági mentések elemei (Azure Virtual Machines) lapon megjelenik a virtuális gép **vmoracle19c** . Kattintson a jobb oldalon található három pontra a menü megnyitásához, majd válassza a **fájl helyreállítása** lehetőséget.
 
     ![Képernyőkép a Recovery Services-tárolók fájljának helyreállítási oldaláról](./media/oracle-backup-recovery/recovery-service-08.png)
 
@@ -455,6 +470,7 @@ A cikk későbbi részében megtudhatja, hogyan tesztelheti a helyreállítási 
 
     > [!IMPORTANT]
     > Az alábbi példában ellenőrizze, hogy az IP-cím és a mappa értékét frissíti-e. Az értékeknek arra a mappára kell leképezni, ahová a fájlt mentette.
+    >
 
     ```bash
     $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -500,6 +516,7 @@ Az alábbi példa bemutatja, hogyan helyezheti át a fájlt a virtuális gépre 
 
 > [!IMPORTANT]
 > Az alábbi példában ellenőrizze, hogy az IP-cím és a mappa értékét frissíti-e. Az értékeknek arra a mappára kell leképezni, ahová a fájlt mentette.
+>
 
 ```bash
 $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -510,7 +527,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 1. Hozzon létre egy visszaállítási csatlakoztatási pontot, és másolja a parancsfájlt.
 
-    A következő példában hozzon létre egy **_/Restore_* _ könyvtárat ahhoz, hogy a pillanatképet csatlakoztatni lehessen, helyezze át a fájlt a könyvtárba, és módosítsa a fájlt úgy, hogy a legfelső szintű felhasználó és a végrehajtható fájl tulajdonosa legyen.
+    A következő példában hozzon létre egy */Restore* könyvtárat ahhoz, hogy csatlakoztatni lehessen a pillanatképet, helyezze át a fájlt a könyvtárba, és módosítsa a fájlt úgy, hogy az a legfelső szintű felhasználó és a végrehajtható fájl tulajdonosa legyen.
 
     ```bash 
     ssh azureuser@<publicIpAddress>
@@ -528,7 +545,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     ./vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py
     ```
 
-    Az alábbi példa azt mutatja be, hogy mit kell látni az előző szkript futtatása után. Ha a rendszer felszólítja a folytatásra, írja be a következőt: _ * Y * *.
+    Az alábbi példa azt mutatja be, hogy mit kell látni az előző szkript futtatása után. Ha a rendszer felszólítja a folytatásra, írja be az **Y** értéket.
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -676,30 +693,28 @@ A teljes virtuális gép visszaállításához hajtsa végre a következő lép�
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Hozzon létre egy Storage-fiókot az előkészítéshez:
-   
-   File Storage konfigurálása a Azure Portal
+1. Hozzon létre egy Storage-fiókot az előkészítéshez a Azure Portal.
 
-   A Azure Portal válassza a **_+ erőforrás létrehozása_* _ lehetőséget, és keresse meg és válassza ki a _*_Storage-fiók_*_ elemet.
+   1. A Azure Portal válassza az **+ erőforrás létrehozása** elemet, és keresse meg és válassza ki a **Storage-fiók** elemet.
     
-   ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/storage-1.png)
+      ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/storage-1.png)
     
     
-   A Storage-fiók létrehozása lapon válassza ki a meglévő erőforráscsoport _*_RG-Oracle_*_ nevet, nevezze el a Storage-fiók _*_oracrestore_*_ , és válassza a _*_Storage v2 (GeneralPurpose v2)_*_ fiókot a fiók típusa beállításnál. Módosítsa a replikációt _*_helyileg redundáns tárolóra (LRS)_*_ , és állítsa be a teljesítményt a _*_standard_*_ értékre. Győződjön meg arról, hogy a hely ugyanahhoz a régióhoz van beállítva, mint az erőforráscsoport összes többi erőforrása. 
+   1. A Storage-fiók létrehozása lapon válassza ki a meglévő erőforráscsoport **RG-Oracle** nevet, nevezze el a Storage-fiók **oracrestore** , és válassza a **Storage v2 (GeneralPurpose v2)** fiókot a fiók típusa beállításnál. Módosítsa a replikációt **helyileg redundáns tárolóra (LRS)** , és állítsa be a teljesítményt a **standard** értékre. Győződjön meg arról, hogy a hely ugyanahhoz a régióhoz van beállítva, mint az erőforráscsoport összes többi erőforrása. 
     
-   ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/recovery-storage-1.png)
+      ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/recovery-storage-1.png)
    
-   Kattintson a felülvizsgálat + Létrehozás elemre, majd a Létrehozás gombra.
+   1. Kattintson a felülvizsgálat + Létrehozás elemre, majd a Létrehozás gombra.
 
-2. A Azure Portal keresse meg a _myVault * Recovery Services tárolók elemét, és kattintson rá.
+2. A Azure Portal keresse meg a *myVault* Recovery Services-tárolók elemét, és kattintson rá.
 
     ![Recovery Services-tárolók myVault biztonsági másolati elemei](./media/oracle-backup-recovery/recovery-service-06.png)
     
-3.  Az **Áttekintés** panelen válassza a **biztonsági másolati elemek** lehetőséget, majd a * Azure-beli *_virtuális gép_* _.
+3.  Az **Áttekintés** panelen válassza a **biztonsági másolati elemek elemet** , majd az **Azure virtuális gép** kiválasztása lehetőséget, amelynek az Anon – nulla biztonsági mentési elemek száma szerepel a listában.
 
     ![Recovery Services tárolók Azure-beli virtuális gép biztonsági mentési elemeinek száma](./media/oracle-backup-recovery/recovery-service-07.png)
 
-4.  A biztonsági mentések elemei (Azure Virtual Machines) lapon a virtuális gép _ *vmoracle19c** szerepel a listában. Kattintson a virtuális gép nevére.
+4.  A biztonsági másolati elemek (Azure Virtual Machines) lapon a virtuális gép **vmoracle19c** látható. Kattintson a virtuális gép nevére.
 
     ![Helyreállítási virtuális gép lapja](./media/oracle-backup-recovery/recover-vm-02.png)
 
@@ -916,11 +931,11 @@ A virtuális gép visszaállítása után újra hozzá kell rendelnie az eredeti
 
 ### <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-* A virtuális géphez való kapcsolódáshoz használja a következő parancsfájlt:
+A virtuális géphez való kapcsolódáshoz használja a következő parancsfájlt:
 
-    ```azurecli
-    ssh <publicIpAddress>
-    ```
+```azurecli
+ssh <publicIpAddress>
+```
 
 ### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>Az adatbázis elindítása a csatlakoztatási fázishoz és a helyreállítás elvégzéséhez
 

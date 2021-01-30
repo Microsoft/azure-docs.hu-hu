@@ -57,6 +57,14 @@
           href: security-baseline.md
 - name: Útmutatók
   items:
+    - name: Az Azure Logic Apps előzetes verziója
+      items:
+        - name: Az Azure Logic Apps előzetes verziójának áttekintése
+          href: logic-apps-overview-preview.md
+        - name: Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása – Azure Portal
+          href: create-stateful-stateless-workflows-azure-portal.md
+        - name: Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása – Visual Studio Code
+          href: create-stateful-stateless-workflows-visual-studio-code.md
     - name: Fejlesztés
       items:
         - name: Létrehozás előre összeállított sablonokból
@@ -67,14 +75,6 @@
           href: logic-apps-move-from-mabs.md
         - name: Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
           href: export-from-microsoft-flow-logic-app-template.md
-        - name: Az Azure Logic Apps előzetes verziója
-          items:
-            - name: Az Azure Logic Apps előzetes verziójának áttekintése
-              href: logic-apps-overview-preview.md
-            - name: Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása – Azure Portal
-              href: create-stateful-stateless-workflows-azure-portal.md
-            - name: Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása – Visual Studio Code
-              href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Logikai alkalmazások meghívása a Power Automate-ből és a PowerAppsből
           href: call-from-power-automate-power-apps.md
         - name: Munkafolyamat futtatásának szabályozása
@@ -330,6 +330,8 @@
           href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Integrációs szolgáltatási környezetek kezelése
           href: ise-manage-integration-service-environment.md
+        - name: Költségtervezés és a költségek kezelése
+          href: plan-manage-costs.md
         - name: Logikai alkalmazás erőforrásainak áthelyezése
           href: move-logic-app-resources.md
         - name: Migrálás a legfrissebb sémára

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005860"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096423"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Vészhelyreállítás és az eszköz feladatátvétele a StorSimple Virtual Arrayhez az Azure Portalon keresztül
 
@@ -156,7 +156,7 @@ A következő lépések végrehajtásával állíthatja vissza az eszközt egy c
     1. Jelölje ki, majd kattintson arra a StorSimple-eszközre, amelyet célként használt eszközként a feladatátvételi folyamathoz.
     2. Lépjen a **beállítások > felügyeleti > megosztások** (vagy a **kötetek** , ha az iSCSI-kiszolgáló). A **megosztások** panelen megtekintheti az összes megosztást (kötetet) a régi eszközről.
         ![Képernyőkép az eszközök panelről. A célként megadott eszköz online állapotú.](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. [Létre kell hoznia egy DNS-aliast](https://support.microsoft.com/kb/168322) , hogy az összes csatlakozni próbáló alkalmazás átirányítva legyen az új eszközre.
+14. [Létre kell hoznia egy DNS-aliast](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322) , hogy az összes csatlakozni próbáló alkalmazás átirányítva legyen az új eszközre.
 
 ## <a name="errors-during-dr"></a>Hibák a DR
 
@@ -178,6 +178,6 @@ Az üzletmenet folytonossága vész-helyreállítási (BCDR) forgatókönyv akko
 
 Ha vannak olyan StorSimple-eszközök, amelyek közvetlenül a katasztrófa előtt lettek regisztrálva, akkor előfordulhat, hogy ezeket a StorSimple-eszközöket törölni kell. A katasztrófa után újból létrehozhatja és konfigurálhatja ezeket az eszközöket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet arról, hogyan [felügyelheti a StorSimple virtuális tömböt a helyi webes felhasználói felület használatával](storsimple-ova-web-ui-admin.md).

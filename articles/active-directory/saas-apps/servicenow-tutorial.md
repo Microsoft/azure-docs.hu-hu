@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353608"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow
 
@@ -36,7 +36,7 @@ Első lépésként a következő elemeket kell megadnia:
 * ServiceNow egyszeri bejelentkezést (SSO) engedélyező előfizetés.
 * A ServiceNow esetében a ServiceNow egy példánya vagy bérlője a Calgary, Kingston, London, Madrid, New York, Orlando és Párizs vagy újabb verziókat támogatja.
 * A ServiceNow Express esetében a ServiceNow Express, a Helsinki vagy újabb verzió példánya.
-* Az ServiceNow-bérlőnek engedélyezve kell lennie a [több szolgáltató egyszeri bejelentkezés beépülő moduljának](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) .
+* Az ServiceNow-bérlőnek engedélyezve kell lennie a [több szolgáltató egyszeri bejelentkezés beépülő moduljának](https://old.wiki/index.php/Multiple_Provider_Single_Sign-On#gsc.tab=0) .
 * Az automatikus konfiguráláshoz engedélyezze a többszörös szolgáltató beépülő modult a ServiceNow.
 * A klasszikus ServiceNow (Mobile) alkalmazás telepítéséhez lépjen a megfelelő tárolóba, és keresse meg a klasszikus ServiceNow alkalmazást. Ezután töltse le.
 
@@ -133,7 +133,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
    1. A **név** mezőbe írja be a következőt: `B.Simon` .  
    1. A **Felhasználónév** mezőbe írja be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -340,7 +340,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
         e. Válassza az **Advanced** (Speciális) lehetőséget. A **felhasználó mezőbe** írja be az **e-mail címet**.
 
         > [!NOTE]
-        > Az Azure AD úgy is beállítható, hogy az Azure AD felhasználói AZONOSÍTÓját (egyszerű felhasználónév) vagy az e-mail-címet az SAML-jogkivonatban egyedi azonosítóként bocsátja ki. Ehhez nyissa meg a Azure Portal **ServiceNow**  >  **Attributes**  >  **-attribútumok egyszeri bejelentkezés** szakaszát, és rendelje hozzá a kívánt mezőt a **NameIdentifier** attribútumhoz. Az Azure AD kiválasztott attribútumának (például az egyszerű felhasználónév) értékének meg kell egyeznie a megadott mező ServiceNow (például user_name) tárolt értékével.
+        > Az Azure AD úgy is beállítható, hogy az Azure AD felhasználói AZONOSÍTÓját (egyszerű felhasználónév) vagy az e-mail-címet az SAML-jogkivonatban egyedi azonosítóként bocsátja ki. Ehhez nyissa meg a Azure Portal **ServiceNow**  >    >  **-attribútumok egyszeri bejelentkezés** szakaszát, és rendelje hozzá a kívánt mezőt a **NameIdentifier** attribútumhoz. Az Azure AD kiválasztott attribútumának (például az egyszerű felhasználónév) értékének meg kell egyeznie a megadott mező ServiceNow (például user_name) tárolt értékével.
 
         : Válassza az oldal jobb felső sarkában található **kapcsolatok tesztelése** lehetőséget.
 
@@ -446,7 +446,7 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Ser
     e. A **felhasználó mezőben** adja meg az **e-mail címet**.
 
     > [!NOTE]
-    > Az Azure AD úgy is beállítható, hogy az Azure AD felhasználói AZONOSÍTÓját (egyszerű felhasználónév) vagy az e-mail-címet az SAML-jogkivonatban egyedi azonosítóként bocsátja ki. Ehhez nyissa meg a Azure Portal **ServiceNow**  >  **Attributes**  >  **-attribútumok egyszeri bejelentkezés** szakaszát, és rendelje hozzá a kívánt mezőt a **NameIdentifier** attribútumhoz. Az Azure AD kiválasztott attribútumának (például az egyszerű felhasználónév) értékének meg kell egyeznie a megadott mező ServiceNow (például user_name) tárolt értékével.
+    > Az Azure AD úgy is beállítható, hogy az Azure AD felhasználói AZONOSÍTÓját (egyszerű felhasználónév) vagy az e-mail-címet az SAML-jogkivonatban egyedi azonosítóként bocsátja ki. Ehhez nyissa meg a Azure Portal **ServiceNow**  >    >  **-attribútumok egyszeri bejelentkezés** szakaszát, és rendelje hozzá a kívánt mezőt a **NameIdentifier** attribútumhoz. Az Azure AD kiválasztott attribútumának (például az egyszerű felhasználónév) értékének meg kell egyeznie a megadott mező ServiceNow (például user_name) tárolt értékével.
 
     f. Kattintson a **Mentés** gombra.
 

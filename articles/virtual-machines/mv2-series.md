@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 0c279916eb25c5ffe0b0b655818dd1a07849e582
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917461"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091714"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
@@ -27,6 +27,7 @@ Az Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techno
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Írásgyorsító](./how-to-enable-write-accelerator.md): támogatott<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br>
 
 |Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma | Várt hálózati sávszélesség (Mbps) |

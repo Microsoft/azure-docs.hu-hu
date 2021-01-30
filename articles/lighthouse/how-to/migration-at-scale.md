@@ -1,27 +1,27 @@
 ---
-title: Áttelepítési projektek kezelése Azure Migrate
+title: Azure Migrate projektek kezelése az Azure Lighthouse-vel
 description: Ismerje meg, hogyan használható hatékonyan a Azure Migrate a delegált ügyfelek erőforrásain.
-ms.date: 12/4/2020
+ms.date: 01/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8e8ba21881ea5dad36ae640632b6307cd9a22a73
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788943"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093608"
 ---
-# <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Áttelepítési projektek kezelése Azure Migrate
+# <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Azure Migrate projektek kezelése az Azure Lighthouse-vel
 
-Szolgáltatóként több ügyfél-bérlőt is felkészített az [Azure világítótoronyba](../overview.md). Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy egyszerre több Azure Active Directory (Azure AD) bérlőre kiterjedő műveleteket hajtsanak végre, így hatékonyabbá téve a felügyeleti feladatokat.
+Ez a témakör áttekintést nyújt arról, hogy az [Azure Lighthouse](../overview.md) hogyan segít a [Azure Migrate](../../migrate/migrate-services-overview.md) skálázható módon történő használatát több Azure Active Directory (Azure ad-) bérlőn keresztül.
 
-A [Azure Migrate](../../migrate/migrate-services-overview.md) központosított központot biztosít az Azure helyszíni kiszolgálóira, infrastruktúrára, alkalmazásokra és adatszolgáltatásokra való kiértékeléséhez és átköltöztetéséhez. Az értékeléseket és a nagy mennyiségű áttelepítést végző partnereket általában a [CSP (Cloud Solution Provider) előfizetési modell](/partner-center/customers-revoke-admin-privileges) használatával, vagy [egy vendég felhasználó létrehozásával, az ügyfél bérlője](../../active-directory/external-identities/what-is-b2b.md)számára külön kell elérniük.
+Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy egyszerre több bérlőn is elvégezzék a műveleteket, így hatékonyabbá téve a felügyeleti feladatokat.
+
+A Azure Migrate központosított központot biztosít az Azure helyszíni kiszolgálóira, infrastruktúrára, alkalmazásokra és adatszolgáltatásokra való kiértékeléséhez és átköltöztetéséhez. Az értékeléseket és a nagy mennyiségű áttelepítést végző partnereket általában a [CSP (Cloud Solution Provider) előfizetési modell](/partner-center/customers-revoke-admin-privileges) használatával, vagy [egy vendég felhasználó létrehozásával, az ügyfél bérlője](../../active-directory/external-identities/what-is-b2b.md)számára külön kell elérniük.
 
 Az Azure Lighthouse és a Azure Migrate integrációja lehetővé teszi, hogy a szolgáltatók több különböző ügyfél számára is felfedezzék, értékeljék és áttelepítsek a számítási feladatokat, miközben lehetővé teszik, hogy az ügyfelek teljes körű láthatóságot és irányítást nyújtsanak a környezetekhez Az Azure-beli delegált erőforrás-kezelésen keresztül a szolgáltatók egyetlen nézettel rendelkeznek az összes olyan Azure Migrate-projektről, amelyet több ügyfél bérlője kezel.
 
 > [!NOTE]
 > Az Azure világítótoronyban a partnerek a helyszíni VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók és az AWS/GCP példányok felderítését, értékelését és áttelepítését is elvégezhetik. A [VMWare virtuális gépek áttelepítésének](../../migrate/server-migrate-overview.md)két lehetősége van. Jelenleg csak az ügynök-alapú áttelepítési módszer használható, ha egy áttelepítési projekten dolgozik egy delegált ügyfél-előfizetésben; az ügynök nélküli replikációt használó Migrálás jelenleg nem támogatott az ügyfél hatókörének delegált hozzáférésén keresztül.
-
-Ez a témakör áttekintést nyújt a [Azure Migrate](../../migrate/migrate-services-overview.md) skálázható módon történő használatáról.
 
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, ez az útmutató az [Azure Lighthouse-t használó vállalatoknak is vonatkozik több bérlő kezelésére](../concepts/enterprise.md).
@@ -72,11 +72,11 @@ Megjegyzés: a telepítés előtt módosítania kell a paramétert a környezetn
 
 ## <a name="partner-recognition-for-customer-migrations"></a>Partneri felismerés az ügyfelek áttelepítéséhez
 
-A [Microsoft Partner Network](https://partner.microsoft.com)tagjaként összekapcsolhatja a Partner azonosítóját a delegált ügyfelek erőforrásainak kezeléséhez használt hitelesítő adatokkal. A Microsoft a partneri rendszergazdai kapcsolaton (PAL) keresztül befolyásolhatja a szervezete által az ügyfelek számára végrehajtott feladatok, például az áttelepítési projektek alapján gyakorolt hatást és az Azure által felhasznált bevételt.
+A [Microsoft Partner Network](https://partner.microsoft.com)tagjaként összekapcsolhatja a Partner azonosítóját a delegált ügyfelek erőforrásainak kezeléséhez használt hitelesítő adatokkal. Ez lehetővé teszi, hogy a Microsoft az ügyfelek számára végrehajtott feladatok, például az áttelepítési projektek alapján befolyásolja és az Azure által felhasznált bevételt a szervezet számára.
 
 További információért lásd [a partnerazonosító a delegált erőforrásokra gyakorolt hatás nyomon követéséhez történő csatolását](partner-earned-credit.md) ismertető részt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A [Azure Migrate](../../migrate/migrate-services-overview.md)megismerése.
-- További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
+- További információ a [Azure Migrateról](../../migrate/migrate-services-overview.md).
+- Ismerje meg az Azure Lighthouse által támogatott egyéb, [több-bérlős felügyeleti tapasztalatokat](../concepts/cross-tenant-management-experience.md) .
