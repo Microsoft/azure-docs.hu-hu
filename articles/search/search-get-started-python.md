@@ -1,32 +1,32 @@
 ---
 title: 'Gyors útmutató: keresési index létrehozása a Pythonban'
 titleSuffix: Azure Cognitive Search
-description: Ismerteti, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket Python, jegyzetfüzetek és a Azure.Documents használatával. Keresési könyvtár.
+description: Megtudhatja, hogyan hozhat létre keresési indexet, tölthet be és futtathat lekérdezéseket Python, Jupyter Notebook és a Azure.Documents használatával. Keresés a Pythonhoz készült ügyféloldali kódtáraban.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/19/2020
+ms.date: 01/29/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861867"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071630"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rövid útmutató: Azure Cognitive Search index létrehozása Pythonban Jupyter-jegyzetfüzetek használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Pythonban Jupyter Notebook használatával
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
-> * [PowerShell (REST)](./search-get-started-powershell.md)
-> * [C#](./search-get-started-dotnet.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
 > * [REST](search-get-started-rest.md)
 > * [Portál](search-get-started-portal.md)
 >
 
-Hozzon létre egy Jupyter Notebook, amely létrehoz, betölt és lekérdez egy Azure Cognitive Search indexet a Python és az [Azure-Search-Documents Library](/python/api/overview/azure/search-documents-readme) használatával a Pythonhoz készült Azure SDK-ban. Ez a cikk bemutatja, hogyan hozhat létre egy jegyzetfüzetet lépésről lépésre. Azt is megteheti, hogy [letölti és futtatja a kész Jupyter Python notebookot](https://github.com/Azure-Samples/azure-search-python-samples).
+Hozzon létre egy jegyzetfüzetet, amely létrehoz, betölt és lekérdez egy Azure Cognitive Search indexet a Python és az [Azure-Search-Documents Library](/python/api/overview/azure/search-documents-readme) használatával a Pythonhoz készült Azure SDK-ban. Ez a cikk bemutatja, hogyan hozhat létre egy jegyzetfüzetet lépésről lépésre. Azt is megteheti, hogy [letölti és futtatja a kész Jupyter Python notebookot](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +38,7 @@ Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szük
 
 * [Azure-Search – dokumentumok csomag](https://pypi.org/project/azure-search-documents/)
 
-* [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz az ingyenes szintet használhatja. 
+* [Hozzon létre egy keresési szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz az ingyenes szintet használhatja. 
 
 ## <a name="copy-a-key-and-url"></a>Kulcs és URL-cím másolása
 
@@ -48,13 +48,13 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
+   ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="connect-to-azure-cognitive-search"></a>Kapcsolódás az Azure Cognitive Searchhoz
 
-Ebben a feladatban indítson el egy Jupyter Notebook, és ellenőrizze, hogy tud-e csatlakozni az Azure Cognitive Searchhoz. Ezt úgy teheti meg, hogy az indexek listáját kéri le a szolgáltatásból. A Anaconda3-mel rendelkező Windows rendszeren a anaconda Navigator használatával indíthat el egy jegyzetfüzetet.
+Ebben a feladatban indítsa el Jupyter Notebook és ellenőrizze, hogy tud-e csatlakozni az Azure Cognitive Searchhoz. Ezt úgy teheti meg, hogy az indexek listáját kéri le a szolgáltatásból. A Anaconda3-mel rendelkező Windows rendszeren a anaconda Navigator használatával indíthat el egy jegyzetfüzetet.
 
 1. Hozzon létre egy új Python3 notebookot.
 
@@ -63,7 +63,7 @@ Ebben a feladatban indítson el egy Jupyter Notebook, és ellenőrizze, hogy tud
    ```python
     !pip install azure-search-documents --pre
     !pip show azure-search-documents
-
+    
     import os
     from azure.core.credentials import AzureKeyCredential
     from azure.search.documents.indexes import SearchIndexClient 
@@ -82,17 +82,17 @@ Ebben a feladatban indítson el egy Jupyter Notebook, és ellenőrizze, hogy tud
 1. A második cellában adja meg azokat a kérelmeket, amelyek minden kérelemnél állandók lesznek. Adja meg a keresési szolgáltatás nevét, a felügyeleti API-kulcsot és a lekérdezési API-kulcsot, amelyet az előző lépésben másolt. Ez a cella az adott műveletekhez használt ügyfeleket is beállítja: [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) index létrehozásához és [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) az index lekérdezéséhez.
 
    ```python
-    service_name = ["SEARCH_ENDPOINT - do not include search.windows.net"]
-    admin_key = ["Cognitive Search Admin API Key"]
-
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
     index_name = "hotels-quickstart"
-
+    
     # Create an SDK client
     endpoint = "https://{}.search.windows.net/".format(service_name)
     admin_client = SearchIndexClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
-
+    
     search_client = SearchClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
@@ -121,6 +121,7 @@ Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíció
 1. A következő cellában illessze be a következő példát egy cellába a séma megadásához.
 
     ```python
+    # Specify the index schema
     name = index_name
     fields = [
             SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
@@ -128,13 +129,13 @@ Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíció
             SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
             SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
             SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
-
+        
             SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
-
+    
             SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
             SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
             SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
-
+    
             ComplexField(name="Address", fields=[
                 SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
                 SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
@@ -150,20 +151,20 @@ Az index neve "Hotels-Gyorsindítás", és az alább látható mező-definíció
 
 1. Egy másik cellában alakítsa ki a kérelmet. Ez a create_index kérelem célja a keresési szolgáltatás indexek gyűjteménye, és egy [SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) hoz létre az előző cellában megadott index séma alapján.
 
-   ```python
+    ```python
     index = SearchIndex(
         name=name,
         fields=fields,
         scoring_profiles=scoring_profiles,
         suggesters = suggester,
         cors_options=cors_options)
-
+    
     try:
         result = admin_client.create_index(index)
         print ('Index', result.name, 'created')
     except Exception as ex:
         print (ex)
-   ```
+    ```
 
 1. Futtassa az egyes lépéseket.
 
@@ -176,8 +177,7 @@ Dokumentumok betöltéséhez hozzon létre egy dokumentum-gyűjteményt a művel
 1. Egy új cellában négy olyan dokumentumot adjon meg, amelyek megfelelnek az index sémának. Minden dokumentumhoz meg kell adni egy feltöltési műveletet.
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -255,98 +255,96 @@ Dokumentumok betöltéséhez hozzon létre egy dokumentum-gyűjteményt a művel
             }
         }
     ]
-    }
     ```  
 
 1. Egy másik cellában alakítsa ki a kérelmet. Ez a upload_documents kérelem célja a Hotels-rövid útmutató tárgymutatójának docs-gyűjteménye, és az előző lépésben megadott dokumentumok leküldése a Cognitive Search indexbe.
 
-
-   ```python
+    ```python
     try:
         result = search_client.upload_documents(documents=documents)
         print("Upload of new document succeeded: {}".format(result[0].succeeded))
     except Exception as ex:
         print (ex.message)
-   ```
+    ```
 
 1. Futtassa az egyes lépéseket a dokumentumok a keresési szolgáltatásban lévő indexbe való leküldéséhez.
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [keresési dokumentumok REST API](/rest/api/searchservice/search-documents)használatával.
+Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [keresési dokumentumok (REST)](/rest/api/searchservice/search-documents)használatával.
 
 1. Ehhez a művelethez használja a search_client. Ez a lekérdezés egy üres keresést () hajt végre `search=*` , és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Mivel nincsenek feltételek, a rendszer az összes dokumentumot belefoglalja az eredményekbe. Ez a lekérdezés csak két mezőt nyomtat ki az egyes dokumentumokban. Emellett hozzáadja az `include_total_count=True` összes dokumentum (4) számát az eredményekben.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", include_total_count=True)
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. A következő lekérdezés teljes kifejezést ad hozzá a keresési kifejezéshez ("WiFi"). Ez a lekérdezés azt adja meg, hogy az eredmények csak az utasításban szereplő mezőket tartalmazzák `select` . A visszaadott mezők korlátozása csökkenti a huzalon visszaadott adatmennyiséget, és csökkenti a keresési késést.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
-   ```
+    ```
 
 1. Ezután alkalmazzon egy szűrési kifejezést, és csak azokat a szállodákat adja vissza, amelyeknek a értéke 4, a csökkenő sorrendben rendezve.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
-
+    
     for result in results:
         print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
-   ```
+    ```
 
 1. Hozzáadás `search_fields` a hatókör-lekérdezéshez, amely egyetlen mezőhöz illeszkedik.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
-
+    
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Az aspektusok olyan címkék, amelyek dimenziós navigációs struktúra összeállítására használhatók. Ez a lekérdezés a kategória aspektusait és számát adja vissza.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", facets=["Category"])
-
+    
     facets = results.get_facets()
-
+    
     for facet in facets["Category"]:
         print("    {}".format(facet))
-   ```
+    ```
 
 1. Ebben a példában egy adott dokumentumot keresünk a kulcsa alapján. Általában egy dokumentumot kell visszaadnia, amikor a felhasználó egy keresési eredményben lévő dokumentumra kattint.
 
-   ```python
+    ```python
     result = search_client.get_document(key="3")
-
+    
     print("Details for hotel '3' are:")
-    print("        Name: {}".format(result["HotelName"]))
-    print("      Rating: {}".format(result["Rating"]))
-    print("    Category: {}".format(result["Category"]))
-   ```
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
 1. Ebben a példában az automatikus kiegészítés funkciót fogjuk használni. Ezt általában egy keresőmező használja, hogy a felhasználó a keresőmezőbe írja be a lehetséges egyezések automatikus kiegészítését.
 
    Az index létrehozásakor a rendszer az "SG" nevű javaslatot is létrehozta a kérelem részeként. A javaslat definíciója határozza meg, hogy mely mezők használhatók a javaslatokra vonatkozó lehetséges egyezések kereséséhez. Ebben a példában ezek a mezők a következők: "Tags", "címe/város", "címe/ország". Az automatikus kiegészítés szimulálása érdekében a "SA" betűket adja át részleges karakterláncként. A [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) automatikus kiegészítési metódusa visszaküldi a lehetséges kifejezéseket.
 
-   ```python
+    ```python
     search_suggestion = 'sa'
     results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
-
+    
     print("Autocomplete for:", search_suggestion)
     for result in results:
         print (result['text'])
-   ```
+    ```
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

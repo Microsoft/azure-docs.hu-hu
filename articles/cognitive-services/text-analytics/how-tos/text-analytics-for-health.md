@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 01/21/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683525"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99088938"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -26,8 +26,8 @@ ms.locfileid: "97683525"
 
 A Text Analytics for Health a Text Analytics API szolgáltatás egyik funkciója, amely kinyeri és felcímkézi az olyan strukturálatlan szövegekből származó releváns egészségügyi információkat, mint az orvos megjegyzései, a mentesítési összefoglalók, a klinikai dokumentumok és az elektronikus egészségügyi rekordok.  A szolgáltatás két módon használható: 
 
-* A web-alapú API (aszinkron) 
-* Docker-tároló (szinkron)   
+* [A web-alapú API (aszinkron)](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
+* [Docker-tároló (szinkron)](#hosted-asynchronous-web-api-response)   
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
@@ -35,7 +35,7 @@ A Text Analytics for Health a Text Analytics API szolgáltatás egyik funkciója
 
 Az állapot Text Analytics az elnevezett entitások felismerése, a relációk kinyerése, az entitások kivonása és az angol nyelvű szöveggel összekapcsoló entitások a strukturálatlan klinikai és bioorvosi szövegek elemzését végzik.
 
-### <a name="named-entity-recognition"></a>[Elnevezett entitások felismerése](#tab/ner)
+### <a name="named-entity-recognition"></a>[Megnevezett entitások felismerése](#tab/ner)
 
 A nevesített entitások felismerése észleli a strukturálatlan szövegben említett szavakat és kifejezéseket, amelyek egy vagy több szemantikai típushoz társíthatók, például a diagnosztika, a gyógyszer neve, a tünet/aláírás vagy az életkor.
 
@@ -436,7 +436,7 @@ A kapcsolat extrakciós kimenete a kapcsolat *forrására* és *CÉLJÁra* vonat
 ]
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Elnevezett entitások kategóriái](../named-entity-types.md)

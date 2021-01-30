@@ -1,6 +1,6 @@
 ---
-title: Az Azure Blob Storage figyelése | Microsoft Docs
-description: Ismerje meg, hogyan figyelheti az Azure Blob Storage teljesítményét és rendelkezésre állását. Az Azure Blob Storage-adatok figyelése, a konfiguráció megismerése és a metrikák és a naplók adatainak elemzése.
+title: Az Azure Blob Storage monitorozása | Microsoft Docs
+description: Ismerje meg, hogyan figyelheti az Azure Blob Storage teljesítményét és rendelkezésre állását. Az Azure Blob Storage adatainak figyelése, a konfiguráció megismerése és a metrika és a naplózási adatok elemzése.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 76f266ec915754b5746f06a340b21146b84fa711
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590766"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071664"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Az Azure Blob Storage figyelése
 
-Ha olyan kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendelkezik, amelyek az Azure-erőforrásokra támaszkodnak, ezeket az erőforrásokat szeretné figyelni a rendelkezésre állás, a teljesítmény és a művelet szempontjából. Ez a cikk az Azure Blob Storage által generált figyelési információkat ismerteti, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatriasztások elemzéséhez.
+Ha olyan kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendelkezik, amelyek az Azure-erőforrásokra támaszkodnak, ezeket az erőforrásokat szeretné figyelni a rendelkezésre állás, a teljesítmény és a művelet szempontjából. Ez a cikk az Azure Blob Storage által generált figyelési információkat ismerteti, valamint azt, hogy miként használhatók a Azure Monitor funkciói a riasztások elemzésére ezen az adattárban.
 
 > [!NOTE]
 > Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták és a táblák naplófájljainak naplózását. Ez a funkció a Azure Resource Manager üzemi modellel létrehozott összes Storage-fiókhoz elérhető. Lásd: a [Storage-fiók áttekintése](../common/storage-account-overview.md).
@@ -28,7 +28,7 @@ Ha olyan kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendel
 Az egyes blob Storage-erőforrások Azure Portal **áttekintő** lapja az erőforrások felhasználásának rövid nézetét tartalmazza, például a kérelmeket és az óránkénti számlázást. Ezek az információk hasznosak, de csak kis mennyiségű figyelési adat érhető el. Az adatok némelyikét automatikusan gyűjti a rendszer, és az erőforrás létrehozásakor az elemzéshez azonnal elérhetővé válik. További típusú adatgyűjtést is engedélyezhet néhány konfigurációval.
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
-Az Azure Blob Storage [Azure monitor](../../azure-monitor/overview.md)használatával hoz létre figyelési adatgyűjtési szolgáltatást, amely az Azure-ban teljes verem-figyelési szolgáltatás. A Azure Monitor a funkciók teljes készletét biztosítja az Azure-erőforrások és-erőforrások figyelésére más felhőkben és a helyszínen. 
+Az Azure Blob Storage a [Azure monitor](../../azure-monitor/overview.md)használatával hozza létre a figyelési adataikat, amely az Azure-ban teljes verem-figyelési szolgáltatás. A Azure Monitor a funkciók teljes készletét biztosítja az Azure-erőforrások és-erőforrások figyelésére más felhőkben és a helyszínen. 
 
 A cikkből megtudhatja [, hogyan figyelheti az Azure-erőforrásokat a Azure monitor,](../../azure-monitor/insights/monitor-azure-resource.md) amely leírja a következőket:
 
@@ -42,9 +42,9 @@ Az alábbi, az Azure Storage-ból gyűjtött adatok leírásával a cikk a köve
 
 ## <a name="monitoring-data"></a>Adatok monitorozása
 
-Az Azure Blob Storage ugyanolyan típusú megfigyelési adatokat gyűjt, mint a többi Azure-erőforrás, amelyek az Azure- [erőforrások adatainak monitorozása](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)című témakörben olvashatók. 
+Az Azure Blob Storage ugyanolyan típusú figyelési adatokat gyűjt, mint az Azure- [erőforrások monitorozásával](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)kapcsolatos egyéb Azure-erőforrások. 
 
-Tekintse meg az Azure Blob [Storage figyelési adatait](monitor-blob-storage-reference.md) ismertető témakört, amely részletes információkat tartalmaz az Azure Blob Storage által létrehozott mérőszámokról és naplókról.
+Az Azure Blob Storage által létrehozott mérőszámokra és naplókra vonatkozó részletes információkért tekintse meg az [azure blob Storage monitorozási adatok referenciáját](monitor-blob-storage-reference.md) .
 
 A Azure Monitor metrikái és naplói csak Azure Resource Manager Storage-fiókokat támogatják. A Azure Monitor nem támogatja a klasszikus Storage-fiókokat. Ha metrikákat vagy naplókat szeretne használni egy klasszikus Storage-fiókon, át kell telepítenie egy Azure Resource Manager Storage-fiókba. Lásd: [áttelepítés Azure Resource Managerra](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
@@ -76,7 +76,7 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Nyissa meg a tárfiókot.
 
@@ -279,12 +279,12 @@ A dimenziókat támogató metrikák esetében szűrheti a mérőszámot a kívá
 
 Az Azure Storage által támogatott dimenziók teljes listájáért lásd: [mérőszámok méretei](monitor-blob-storage-reference.md#metrics-dimensions).
 
-Az Azure Blob Storage metrikái a következő névterekben találhatók: 
+Az Azure Blob Storage mérőszámai ezekben a névterekben találhatók: 
 
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/blobServices
 
-Az Azure Blob Storage-t tartalmazó összes Azure Monitor támogatási mérőszámok listáját lásd: [Azure monitor támogatott metrikák](../../azure-monitor/platform/metrics-supported.md).
+Az Azure Blob Storaget tartalmazó összes Azure Monitor támogatási mérőszámok listáját itt tekintheti meg: [Azure monitor támogatott metrikák](../../azure-monitor/platform/metrics-supported.md).
 
 
 ### <a name="accessing-metrics"></a>Metrikák elérése
@@ -483,7 +483,7 @@ N/A.
 
 Az erőforrás-naplókat megadhatja blobként egy Storage-fiókban, az Event-adatként vagy a log analitikus lekérdezésekkel.
 
-A naplókban megjelenő mezők részletes ismertetését az [Azure Blob Storage figyelési adatreferenciája](monitor-blob-storage-reference.md)című témakörben tekintheti meg.
+Az ezekben a naplókban megjelenő mezők részletes ismertetését lásd: [Azure Blob Storage monitoring-információk referenciája](monitor-blob-storage-reference.md).
 
 > [!NOTE]
 > Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták, a táblák, a Premium Storage-fiókok általános célú v1-ben és az általános célú v2 Storage-fiókokban való naplózását. A klasszikus Storage-fiókok nem támogatottak.
@@ -601,6 +601,6 @@ Nem. Az Azure-beli számítási szolgáltatás támogatja a lemezek mérőszáma
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure Blob Storage által létrehozott naplók és mérőszámok ismertetését az [Azure Blob Storage figyelési adatokra vonatkozó dokumentációjában](monitor-blob-storage-reference.md)tekintheti meg.
+- Az Azure Blob Storage által létrehozott naplók és mérőszámok ismertetését az [azure blob Storage monitorozási adatok referenciája](monitor-blob-storage-reference.md)című témakörben tekintheti meg.
 - Az Azure-erőforrások monitorozásával kapcsolatos további információkért lásd: [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md).
 - A metrikák áttelepítésével kapcsolatos további információkért lásd: [Azure Storage-metrikák áttelepítése](../common/storage-metrics-migration.md).

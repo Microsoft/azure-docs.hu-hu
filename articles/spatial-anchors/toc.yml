@@ -83,6 +83,8 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: A C++/WinRT-ben
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: Durva újrahonosítás használata rögzített munkamenet nélkül
+      href: how-tos/use-coarse-relocalization-without-anchor-session.md
     - name: Projekt beállítása
       items:
         - name: C++/WinRT

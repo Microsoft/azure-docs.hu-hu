@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6784c69c049945f3bd4977ecd647d57ec59bf9f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa18959d0dc78dedf8b57dc120ab6744afa9051f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232632"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070593"
 ---
 # <a name="configure-dns-forwarding-on-an-azure-red-hat-openshift-4-cluster"></a>DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4 fürtön
 
-A DNS-továbbítás Azure Red Hat OpenShift-fürtön való konfigurálásához módosítania kell a DNS-kezelőt. Ez a módosítás lehetővé teszi, hogy az alkalmazás-hüvelyek a fürtön belül fussanak a fürtön kívüli privát DNS-kiszolgálón tárolt nevek feloldásához. Ezeket a lépéseket a 4,3-es OpenShift [itt](https://docs.openshift.com/container-platform/4.3/networking/dns-operator.html)találja.
+A DNS-továbbítás Azure Red Hat OpenShift-fürtön való konfigurálásához módosítania kell a DNS-kezelőt. Ez a módosítás lehetővé teszi, hogy az alkalmazás-hüvelyek a fürtön belül fussanak a fürtön kívüli privát DNS-kiszolgálón tárolt nevek feloldásához. Ezeket a lépéseket a 4,6-es OpenShift [itt](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html)találja.
 
 Ha például a *. example.com összes DNS-kérelmét továbbítani kívánja egy DNS-kiszolgáló 192.168.100.10, az operátor konfigurációját a következő futtatásával módosíthatja:
  
@@ -38,5 +38,5 @@ spec:
 
 Mentse a fájlt, és zárja be a szerkesztőt.
 
-## <a name="next-steps"></a>További lépések
-A DNS-továbbítással kapcsolatos további információkért tekintse meg a következőt: [OpenShift 4,3.](https://docs.openshift.com/container-platform/4.3/networking/dns-operator.html)
+## <a name="next-steps"></a>Következő lépések
+A DNS-továbbítással kapcsolatos további információkért tekintse meg a következőt: [OpenShift 4,6.](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html)

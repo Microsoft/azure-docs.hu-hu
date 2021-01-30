@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c1da45115303bb0a67d6ff796a40ef47c24224a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287432"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071596"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault alapvető fogalmak
 
@@ -23,37 +23,35 @@ A Azure Key Vault egy felhőalapú szolgáltatás a titkok biztonságos tárolá
 
 További fontos feltételek:
 
-- **Bérlő** : A bérlő az a cég vagy intézmény, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. Leggyakrabban a szervezet Azure-és Microsoft 365 szolgáltatásaira utal.
+- **Bérlő**: A bérlő az a cég vagy intézmény, amely egy Microsoft-felhőszolgáltatás egy adott példányát birtokolja és kezeli. Leggyakrabban a szervezet Azure-és Microsoft 365 szolgáltatásaira utal.
 
-- **Kulcstartó-tulajdonos** : Létrehozhat egy Key Vaultot, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett naplózást is beállíthat, amellyel naplózhatja a titkos kulcsok és a kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek, és elvégezhetik a kapcsolódó feladatokat.
+- **Kulcstartó-tulajdonos**: Létrehozhat egy Key Vaultot, amely felett teljes körű hozzáféréssel és irányítással rendelkezik. Emellett naplózást is beállíthat, amellyel naplózhatja a titkos kulcsok és a kulcsok elérését. A kulcsok életciklusát a rendszergazdák kezelhetik. Kiadhatnak új kulcsverziókat, biztonsági másolatokat készíthetnek, és elvégezhetik a kapcsolódó feladatokat.
 
-- **Kulcstartóhasználó** : A kulcstartóhasználó műveleteket hajthat végre a Key Vaultban található objektumokon, ha a kulcstartó-tulajdonos felruházta hozzáféréssel. Az elérhető műveletek a kiosztott jogosultságoktól függnek.
+- **Kulcstartóhasználó**: A kulcstartóhasználó műveleteket hajthat végre a Key Vaultban található objektumokon, ha a kulcstartó-tulajdonos felruházta hozzáféréssel. Az elérhető műveletek a kiosztott jogosultságoktól függnek.
 
-- **Felügyelt HSM-rendszergazdák** : a rendszergazdai szerepkörhöz hozzárendelt felhasználók teljes mértékben szabályozzák a FELÜGYELt HSM-készleteket. Több szerepkör-hozzárendelést is létrehozhatnak a más felhasználók számára vezérelt hozzáférés delegálására.
+- **Felügyelt HSM-rendszergazdák**: a rendszergazdai szerepkörhöz hozzárendelt felhasználók teljes mértékben szabályozzák a FELÜGYELt HSM-készleteket. Több szerepkör-hozzárendelést is létrehozhatnak a más felhasználók számára vezérelt hozzáférés delegálására.
 
-- **Felügyelt HSM titkosítási felelős/felhasználó** : általában olyan beépített szerepkörök, amelyek a felügyelt HSM-kulcsok használatával titkosítási műveleteket végző felhasználókhoz vagy egyszerű szolgáltatásokhoz vannak rendelve. A kriptográfiai felhasználók új kulcsokat hozhatnak létre, de nem törölhetnek kulcsokat.
+- **Felügyelt HSM titkosítási felelős/felhasználó**: általában olyan beépített szerepkörök, amelyek a felügyelt HSM-kulcsok használatával titkosítási műveleteket végző felhasználókhoz vagy egyszerű szolgáltatásokhoz vannak rendelve. A kriptográfiai felhasználók új kulcsokat hozhatnak létre, de nem törölhetnek kulcsokat.
 
-- **Felügyelt HSM titkosítási szolgáltatás titkosítása** : beépített szerepkör, amely általában egy szolgáltatásfiók által felügyelt szolgáltatás identitásához (pl. Storage-fiókhoz) van rendelve az ügyfelek által felügyelt kulccsal való inaktív adatok titkosításához.
+- **Felügyelt HSM titkosítási szolgáltatás titkosítása**: beépített szerepkör, amely általában egy szolgáltatásfiók által felügyelt szolgáltatás identitásához (pl. Storage-fiókhoz) van rendelve az ügyfelek által felügyelt kulccsal való inaktív adatok titkosításához.
 
-- **Erőforrás** : Az erőforrás egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. Gyakori példák a virtuális gép, a Storage-fiók, a webalkalmazás, az adatbázis és a virtuális hálózat. Sokkal több van.
+- **Erőforrás**: Az erőforrás egy olyan kezelhető elem, amely az Azure-on keresztül érhető el. Gyakori példák a virtuális gép, a Storage-fiók, a webalkalmazás, az adatbázis és a virtuális hálózat. Sokkal több van.
 
-- **Erőforráscsoport** : Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A cég számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
+- **Erőforráscsoport**: Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A cég számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között.
 
-- **Rendszerbiztonsági tag** : az Azure rendszerbiztonsági tagja olyan biztonsági identitás, amelyet a felhasználó által létrehozott alkalmazások, szolgáltatások és automatizálási eszközök használnak az adott Azure-erőforrások eléréséhez. Egy adott szerepkörrel rendelkező "felhasználói identitásnak" (Felhasználónév és jelszó vagy tanúsítvány) kell lennie, és szigorúan szabályozott engedélyekkel kell rendelkezniük. Egy rendszerbiztonsági tag esetében csak bizonyos dolgokra van szükség, az általános felhasználói identitástól eltérően. Ez növeli a biztonságot, ha csak a felügyeleti feladatainak végrehajtásához szükséges minimális jogosultsági szintet adja meg. Az alkalmazással vagy szolgáltatással használt rendszerbiztonsági tag neve kifejezetten **egyszerű szolgáltatásnév**.
+- **Rendszerbiztonsági tag**: az Azure rendszerbiztonsági tagja olyan biztonsági identitás, amelyet a felhasználó által létrehozott alkalmazások, szolgáltatások és automatizálási eszközök használnak az adott Azure-erőforrások eléréséhez. Egy adott szerepkörrel rendelkező "felhasználói identitásnak" (Felhasználónév és jelszó vagy tanúsítvány) kell lennie, és szigorúan szabályozott engedélyekkel kell rendelkezniük. Egy rendszerbiztonsági tag esetében csak bizonyos dolgokra van szükség, az általános felhasználói identitástól eltérően. Ez növeli a biztonságot, ha csak a felügyeleti feladatainak végrehajtásához szükséges minimális jogosultsági szintet adja meg. Az alkalmazással vagy szolgáltatással használt rendszerbiztonsági tag neve kifejezetten **egyszerű szolgáltatásnév**.
 
 - [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md): Az Azure AD egy bérlő Active Directory-szolgáltatása. Minden címtárhoz tartozik egy vagy több tartomány. Egy címtárhoz számos előfizetés tartozhat, de csak egyetlen bérlő.
 
-- **Azure-bérlő azonosítója** : A bérlőazonosító egy egyedi módszer az Azure AD-példány azonosítására az Azure-előfizetésen belül.
+- **Azure-bérlő azonosítója**: A bérlőazonosító egy egyedi módszer az Azure AD-példány azonosítására az Azure-előfizetésen belül.
 
-- **Felügyelt identitások** : Azure Key Vault lehetővé teszi a hitelesítő adatok és egyéb kulcsok és titkos kódok biztonságos tárolását, de a kódnak hitelesítenie kell a Key Vault a lekéréséhez. A felügyelt identitás használatával egyszerűbbé válik a probléma megoldása azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak az Azure AD-ben. Ezzel az identitással anélkül végezhet hitelesítést a Key Vaultban vagy bármely, Azure AD-hitelesítést támogató szolgáltatásban, hogy a hitelesítő adatokat a kódban kellene tárolnia. További információkért tekintse meg az alábbi ábrát, valamint az [Azure-erőforrások felügyelt identitásának áttekintését](../../active-directory/managed-identities-azure-resources/overview.md).
-
-    ![Az Azure-erőforrások felügyelt identitások működésének diagramja](../media/key-vault-whatis/msi.png)
+- **Felügyelt identitások**: Azure Key Vault lehetővé teszi a hitelesítő adatok és egyéb kulcsok és titkos kódok biztonságos tárolását, de a kódnak hitelesítenie kell a Key Vault a lekéréséhez. A felügyelt identitás használatával egyszerűbbé válik a probléma megoldása azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak az Azure AD-ben. Ezzel az identitással anélkül végezhet hitelesítést a Key Vaultban vagy bármely, Azure AD-hitelesítést támogató szolgáltatásban, hogy a hitelesítő adatokat a kódban kellene tárolnia. További információkért tekintse meg az alábbi ábrát, valamint az [Azure-erőforrások felügyelt identitásának áttekintését](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="authentication"></a>Hitelesítés
 A Key Vaultkal végzett műveletekhez először hitelesítenie kell magát. A Key Vault háromféleképpen lehet hitelesíteni:
 
 - [Felügyelt identitások az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md): amikor egy Azure-beli virtuális gépre telepít egy alkalmazást, olyan identitást rendelhet hozzá a virtuális géphez, amely hozzáféréssel rendelkezik a Key Vaulthoz. Az identitásokat [más Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md)is hozzárendelheti. Ennek a megközelítésnek az az előnye, hogy az alkalmazás vagy szolgáltatás nem kezeli az első titok rotációját. Az Azure automatikusan elforgatja az identitást. Ajánlott eljárásként javasoljuk ezt a megközelítést. 
-- **Egyszerű szolgáltatásnév és tanúsítvány** : használhat egy egyszerű szolgáltatásnevet és egy hozzá tartozó, Key Vaulthoz hozzáféréssel rendelkező tanúsítványt. Ezt a megközelítést nem javasoljuk, mert az alkalmazás tulajdonosának vagy fejlesztőének el kell forgatnia a tanúsítványt.
+- **Egyszerű szolgáltatásnév és tanúsítvány**: használhat egy egyszerű szolgáltatásnevet és egy hozzá tartozó, Key Vaulthoz hozzáféréssel rendelkező tanúsítványt. Ezt a megközelítést nem javasoljuk, mert az alkalmazás tulajdonosának vagy fejlesztőének el kell forgatnia a tanúsítványt.
 - **Egyszerű szolgáltatásnév és titkos** kód: bár a Key Vault való hitelesítéshez használhat egy egyszerű szolgáltatásnevet és egy titkos kulcsot, a rendszer nem javasolja. Nem nehéz automatikusan elforgatni a Key Vault hitelesítéséhez használt rendszerindítási titkot.
 
 

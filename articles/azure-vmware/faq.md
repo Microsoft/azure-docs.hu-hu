@@ -2,13 +2,13 @@
 title: Gyakori kérdések
 description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 1/14/2021
-ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 1/27/2021
+ms.openlocfilehash: 3ef3d1b9e6fc76b5f09acf8c300dbea901b4aef2
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062087"
+ms.locfileid: "99072268"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -79,6 +79,12 @@ Nem. A belső Azure Load Balancer csak az Azure IaaS virtuális gépeket támoga
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Használható meglévő ExpressRoute-átjáró az Azure VMware-megoldáshoz való kapcsolódáshoz?
 Igen. Egy meglévő ExpressRoute-átjáró használatával csatlakozhat az Azure VMware-megoldáshoz, ha nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot. Ahhoz, hogy a ExpressRoute-en keresztül hozzáférhessen az Azure VMware-megoldáshoz a helyszínen, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.
+
+### <a name="why-does-azure-vmware-solution-use-a-public-4-byte-autonomous-system-number-asn"></a>Miért használja az Azure VMware-megoldás a nyilvános 4 bájtos autonóm rendszer számát (ASN)?
+Az Azure VMware-megoldás a hivatalosan regisztrált nyilvános 4 bájtos ASN használja annak biztosítására, hogy soha ne ütközzön a saját ASN az ügyfél útválasztási útvonalán az Azure VMware megoldásba.
+ 
+### <a name="how-can-i-use-expressroute-to-connect-to-azure-vmware-solution-if-the-on-premises-expressroute-carrier-partnersisps-dont-support-4-byte-asn"></a>Hogyan használható a ExpressRoute az Azure VMware-megoldáshoz való kapcsolódásra, ha a helyszíni ExpressRoute-szolgáltatói partnerek/internetszolgáltatók nem támogatják a 4 bájtos ASN-t?
+Az Azure VMware-megoldáshoz az ExpressRoute-n keresztül történő kapcsolódás egyetlen módja a környezet és a helyszíni ExpressRoute partnerek/internetszolgáltatók támogatják a 4 bájtos ASN-t, vagy visszamenőleges kompatibilitást biztosítanak 4 bájt és 2 bájt közötti ASN-értékkel a BGP-előtag ASN elérési útja hirdetményben.
 
 ## <a name="compute-network-storage-and-backup"></a>Számítás, hálózat, tárolás és biztonsági mentés
 

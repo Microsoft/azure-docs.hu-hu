@@ -4,8 +4,6 @@
   items:
     - name: Az Azure Digital Twins bemutatása
       href: overview.md
-    - name: Eltérések a korábbi kiadáshoz képest
-      href: overview-differences.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -169,6 +167,8 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
     - name: Ügyfelek adatkérései
       href: resources-customer-data-requests.md
+    - name: Eltérések az eredeti kiadástól
+      href: resources-compare-original-release.md
     - name: API-k és SDK-k
       items:
         - name: Vezérlősík

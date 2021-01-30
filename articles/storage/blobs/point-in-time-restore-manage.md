@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762890"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071647"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben
 
@@ -187,6 +187,17 @@ az storage blob restore \
     --no-wait
 ```
 
+Egy visszaállítási művelet tulajdonságainak megtekintéséhez hívja az az [Storage Account show](/cli/azure/storage/account#az_storage_account_show) parancsot, és bontsa ki a **blobRestoreStatus** tulajdonságot. Az alábbi példa bemutatja, hogyan ellenőrizhető az **állapot** tulajdonság.
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource_group> \ 
+    --expand blobRestoreStatus \
+    --query blobRestoreStatus.status \
+    --output tsv
+```
+
 Az az **Storage blob Restore** parancs szinkron módon történő futtatásához és a végrehajtás letiltásához, amíg a visszaállítási művelet be nem fejeződik, hagyja ki a `--no-wait` paramétert.
 
 ---
@@ -301,7 +312,7 @@ Az az **Storage blob Restore** parancs szinkron módon történő futtatásához
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Időponthoz való visszaállítás a blokk Blobok esetében](point-in-time-restore-overview.md)
 - [Helyreállítható törlés](./soft-delete-blob-overview.md)

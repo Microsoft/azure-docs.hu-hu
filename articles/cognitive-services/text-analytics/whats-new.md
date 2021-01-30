@@ -8,19 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652844"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090671"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
+
+## <a name="january-2021"></a>2021. január
+
+* A `2021-01-15` modell verziója az [elnevezett Entity Recognition](how-tos/text-analytics-how-to-entity-linking.md) v3. x-nek, amely a következőt biztosítja: 
+  * Bővített nyelvi támogatás [számos általános entitási kategóriához](named-entity-types.md). 
+  * Az általános entitások kategóriáinak továbbfejlesztett AI-minősége az összes támogatott v3 nyelv esetében. 
+
+* A `2021-01-05` [nyelvi észlelés](how-tos/text-analytics-how-to-language-detection.md)modell-verziója, amely további [nyelvi támogatást](language-support.md?tabs=language-detection)biztosít.
 
 ## <a name="december-2020"></a>2020. december
 
@@ -66,7 +74,7 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
 ### <a name="text-analytics-for-health-container-updates"></a>Text Analytics az állapot-tároló frissítéseihez
 
 A következő frissítések csak az Text Analytics az állapotfigyelő tárolóra vonatkozó szeptemberi kiadására vonatkoznak.
-* Az új Model-Version címkével rendelkező új tároló `1.1.013530001-amd64-preview` -rendszerkép `2020-09-03` megjelent a containerpreview adattárban. 
+* Az új Model-Version címkével rendelkező új tároló `1.1.013530001-amd64-preview` -rendszerkép `2020-09-03` megjelent a tároló előzetes adattárában. 
 * A modell verziója az entitások felismerésének, a rövidítések észlelésének és a késések fejlesztésének fejlesztését teszi lehetővé.
 
 > [!div class="nextstepaction"]
@@ -242,4 +250,4 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 * [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
-* [Kulcskifejezések kinyerése](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)

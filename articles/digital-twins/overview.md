@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664027"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071681"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -94,10 +94,10 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 ## <a name="service-limits"></a>Szolgáltatási korlátozások
 
-Az Azure Digital Twins-korlátok listáját a következő témakörben találhatja [*: referenciák: szolgáltatási korlátok*](reference-service-limits.md).
+Az Azure Digital Twins-korlátok listáját az [*Azure digitális Twins szolgáltatás korlátai*](reference-service-limits.md)című részben tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha már használta az Azure Digital Twins első előzetes kiadását (2018. október), Ismerje meg, hogy mi változott: [*Áttekintés: az első kiadástól való eltérések*](overview-differences.md).
+* Ismerkedjen meg az Azure Digital Twins szolgáltatással a gyors üzembe helyezési útmutatóban: rövid útmutató [*: példa a forgatókönyvek megismerésére*](quickstart-adt-explorer.md).
 
-Vagy folytassa a munkát az Azure Digital Twins szolgáltatással a gyors üzembe helyezési útmutatóval: rövid útmutató [*: példa a forgatókönyvek megismerésére*](quickstart-adt-explorer.md).
+* Vagy kezdjen el olvasni az Azure digitális Twins fogalmait a [*fogalmakkal: egyéni modellek*](concepts-models.md).

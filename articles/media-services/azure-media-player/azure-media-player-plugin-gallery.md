@@ -6,22 +6,22 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87282483"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089342"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player beépülő modul gyűjteménye #
 
 ## <a name="plugins"></a>Beépülő modulok ##
 
-| Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Leírás    |
+| Beépülő modul neve                         | Bemutató URL-címe                    | Forráskód                | Description    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | További funkciók                 | | | |
 | **Új!** AMP360Video                | [Bemutató](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | A beépülő modul lehetővé teszi a 360 videó megjelenítését az amp vagy az asztalon vagy a VR-kompatibilis eszközökön. A teljes dokumentáció [itt](https://doc.babylonjs.com/extensions/amp360video)érhető el: |
-|  Sprite tipp                         | [Bemutató](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) beépülő modul a videó miniatűr képének megjelenítéséhez, amely Azure Media Services (AMS) Media Encoder Standard (MES) alapján jön létre. |
+|  Sprite tipp                         | [Bemutató](https://www.smwcentral.net/?p=section&a=details&id=10301)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Player (AMP) beépülő modul a videó miniatűr képének megjelenítéséhez, amely Azure Media Services (AMS) Media Encoder Standard (MES) alapján jön létre. |
 | Diagnosztika átfedésben                 | [Bemutató](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | Ez a beépülő modul a következőt jeleníti meg: az összes kulcsfontosságú paraméter, a videó statisztikái, a videolejátszás életciklusának összes eseménye, valamint a DRM-védelemmel kapcsolatos információk, például a Key ID, a licenc-megszerzési URL-címek,                                                                                                                                                                      |
 | Frame rate és időkód kalkulátor | Nincs elérhető bemutató | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | Ez a beépülő modul kiszámítja a videó képkocka arányát az `tfhd` / `trun` első MPEG-Dash videó töredékének MP4-mezői alapján, elemezi az időméretezési értéket az MPEG-Dash ügyfél-jegyzékfájlból, valamint lehetővé teszi az időkód létrehozását egy adott abszolút időtartamra a lejátszótól (valamint a játékosnak az időkód által megadott abszolút időt is biztosít) |
 | <strike>Lejátszás sebessége</strike>                      | [Bemutató](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | Ez a beépülő modul lehetővé teszi a nézők számára a videó sebességének szabályozását. *Vegye figyelembe, hogy ez a funkció automatikusan elérhető az AMP v 2.0.0 + verzióban, de alapértelmezés szerint le van tiltva.* Ha szeretné megtudni, hogyan engedélyezheti, tekintse meg a mintákat [itt](https://github.com/Azure-Samples/azure-media-player-samples) |
@@ -40,6 +40,6 @@ ms.locfileid: "87282483"
 | Közösségi                              | | | |
 | Megosztás                               | [Bemutató](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Ez a beépülő modul egy megosztás gombot ad hozzá a lejátszó vezérlőelem sávjához, így a nézők megoszthatják a barátaikat a Facebook, a Twitter vagy a LinkedIn használatával. |
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

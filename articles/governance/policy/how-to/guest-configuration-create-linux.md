@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfiguráci
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755871"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070689"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -204,7 +204,17 @@ A parancsmag a PowerShell-folyamatból is támogatja a bemenetet. A parancsmag k
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-A következő lépés a fájl közzététele az Azure Blob Storageban.  A parancshoz `Publish-GuestConfigurationPackage` a `Az.Storage` modul szükséges.
+A következő lépés a fájl közzététele az Azure Blob Storageban. A parancshoz `Publish-GuestConfigurationPackage` a `Az.Storage` modul szükséges.
+
+A parancsmag paraméterei `Publish-GuestConfigurationPackage` :
+
+- **Elérési út**: a közzétenni kívánt csomag helye
+- **ResourceGroupName**: az erőforráscsoport neve, ahol a Storage-fiók található
+- **StorageAccountName**: annak a Storage-fióknak a neve, amelyben közzé kell tenni a csomagot
+- **StorageContainerName**: (default: *guestconfiguration*) a Storage-fiókban lévő tároló neve
+- **Kényszerített**: felülírja a meglévő csomagot a Storage-fiókban ugyanazzal a névvel
+
+Az alábbi példa közzéteszi a csomagot egy "guestconfiguration" nevű tárolási tárolóban.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
@@ -394,7 +404,7 @@ Az Key Vault hozzáférési szabályzatnak lehetővé kell tennie a számítási
 
 A tartalom közzététele után fűzze hozzá a nevet és az értéket tartalmazó címkét az `GuestConfigPolicyCertificateValidation` `enabled` összes olyan virtuális géphez, amelynél szükség van a kód aláírására. Tekintse meg azokat a [mintákat](../samples/built-in-policies.md#tags) , amelyekkel a címkék a Azure Policy használatával méretezhetők. A címke betartása után a parancsmag használatával generált szabályzat-definíció `New-GuestConfigurationPolicy` engedélyezi a követelményt a vendég konfigurációs bővítményen keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
 - Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](./programmatically-create.md).

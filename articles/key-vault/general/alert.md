@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934594"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070661"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Figyelés és riasztás a Azure Key Vault
 
@@ -203,12 +203,13 @@ Tekintse meg a következő konfigurációs paramétereket.
 
 7. A riasztás létrehozása 
 
-
-## <a name="next-steps"></a>További lépések
-
-Gratulálunk, sikeresen létrehozott egy figyelési irányítópultot és konfigurált riasztásokat a kulcstartóhoz. Ha követte a fenti lépéseket, e-mail-riasztásokat kell kapnia, amikor a kulcstartó megfelel a konfigurált riasztási feltételeknek. Erre mutat példát az alábbi ábra. Az ebben a cikkben beállított eszközök használatával aktívan figyelheti a kulcstartó állapotát. 
-
 ### <a name="example-email-alert"></a>Példa e-mail riasztásra 
 
 > [!div class="mx-imgBorder"]
 > ![Képernyőfelvétel: az e-mail-riasztások konfigurálásához szükséges információk kiemelése.](../media/alert-20.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+Gratulálunk, sikeresen létrehozott egy figyelési irányítópultot és konfigurált riasztásokat a kulcstartóhoz. Ha követte a fenti lépéseket, e-mail-riasztásokat kell kapnia, amikor a kulcstartó megfelel a konfigurált riasztási feltételeknek. Erre mutat példát az alábbi ábra. Az ebben a cikkben beállított eszközök használatával aktívan figyelheti a kulcstartó állapotát. 
+
+

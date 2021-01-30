@@ -43,9 +43,11 @@
   items:
     - name: Alapfogalmak
       href: basic-concepts.md
+    - name: Ajánlott eljárások
+      href: best-practices.md
     - name: Biztonság
       items:
-        - name: Biztonsági áttekintés
+        - name: Áttekintés
           href: security-overview.md
         - name: Biztonságos hozzáférés egy kulcstartóhoz
           href: secure-your-key-vault.md

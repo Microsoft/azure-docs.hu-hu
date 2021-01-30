@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442184"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071900"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása
 
@@ -43,13 +43,13 @@ Megtagadási lista hozzáadása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **Azure Active Directory**  >  **felhasználó**  >  **felhasználói beállításait**.
-3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
-4. Az **együttműködési korlátozások**területen válassza **a meghívások megtagadása a megadott tartományokra**lehetőséget.
-5. A **céltartomány**területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Példa:
+3. A **külső felhasználók** területen válassza a **külső együttműködési beállítások kezelése** lehetőséget.
+4. Az **együttműködési korlátozások** területen válassza **a meghívások megtagadása a megadott tartományokra** lehetőséget.
+5. A **céltartomány** területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
 
    ![A megtagadási beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/DenyListSettings.png)
  
-6. Ha elkészült, kattintson a **Mentés**gombra.
+6. Ha elkészült, kattintson a **Mentés** gombra.
 
 Miután beállította a házirendet, ha egy felhasználót egy letiltott tartományból próbál meghívni, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
  
@@ -64,13 +64,13 @@ Engedélyezési lista hozzáadása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **Azure Active Directory**  >  **felhasználó**  >  **felhasználói beállításait**.
-3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
-4. Az **együttműködési korlátozások**területen jelölje be **a csak a megadott tartományokra vonatkozó meghívások engedélyezése (a legszigorúbb)** jelölőnégyzetet.
-5. A **céltartomány**területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Példa:
+3. A **külső felhasználók** területen válassza a **külső együttműködési beállítások kezelése** lehetőséget.
+4. Az **együttműködési korlátozások** területen jelölje be **a csak a megadott tartományokra vonatkozó meghívások engedélyezése (a legszigorúbb)** jelölőnégyzetet.
+5. A **céltartomány** területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
 
    ![Az engedélyezési beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/AllowListSettings.png)
  
-6. Ha elkészült, kattintson a **Mentés**gombra.
+6. Ha elkészült, kattintson a **Mentés** gombra.
 
 Miután beállította a házirendet, ha olyan tartományból próbál meg felhasználót meghívni, amely nem szerepel az engedélyezési listán, megjelenik egy üzenet, amely azt jelzi, hogy a felhasználó tartománya jelenleg le van tiltva a Meghívási szabályzatban.
 
@@ -126,7 +126,7 @@ Ha a modul nincs telepítve, vagy nem rendelkezik a szükséges verzióval, hajt
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>A szabályzat konfigurálásához használja a AzureADPolicy-parancsmagokat.
 
-Engedélyezési vagy megtagadási lista létrehozásához használja a [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Az alábbi példa bemutatja, hogyan állíthat be egy megtagadási listát, amely letiltja a "live.com" tartományt.
+Engedélyezési vagy megtagadási lista létrehozásához használja a [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot. Az alábbi példa bemutatja, hogyan állíthat be egy megtagadási listát, amely letiltja a "live.com" tartományt.
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,25 +140,25 @@ A következő példában ugyanaz a példa látható, de a házirend-definíció 
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
+Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot. Például:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
+A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot. Például:
 
 ```powershell
-$currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
+$currentpolicy = Get-AzureADPolicy -All $true | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-A szabályzat eltávolításához használja a [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
+A szabályzat eltávolításához használja a [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) parancsmagot. Például:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD B2B áttekintése: [Mi az az Azure ad B2B Collaboration?](what-is-b2b.md)
 - További információ a feltételes hozzáférésről és a B2B együttműködésről: [feltételes hozzáférés a B2B együttműködés felhasználói](conditional-access.md)számára.

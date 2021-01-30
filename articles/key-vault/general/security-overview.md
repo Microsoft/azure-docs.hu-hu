@@ -9,22 +9,21 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c4e9f0cd6a7421f5be29200816bb00a56b141367
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937655"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071565"
 ---
-# <a name="azure-key-vault-security-overview"></a>Azure Key Vault biztonsági áttekintés
+# <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
 A Azure Key Vault használatával védi a felhőben a titkosítási kulcsokat és a titkos kódokat, például a tanúsítványokat, a kapcsolódási karakterláncokat és a jelszavakat. Bizalmas és üzleti szempontból kritikus fontosságú adatok tárolásához lépéseket kell tennie a tárolók és a bennük tárolt adatok biztonságának maximalizálása érdekében.
 
-Ez a cikk a Azure Key Vault biztonsági funkcióinak és ajánlott eljárásainak áttekintését tartalmazza. A javaslatok átfogó listáját az [Azure biztonsági teljesítményteszte](../../security/benchmarks/introduction.md)alapján tekintheti meg a [Azure Key Vault biztonsági alaptervében](security-baseline.md).
+Ez a cikk a Azure Key Vault biztonsági funkcióinak és ajánlott eljárásainak áttekintését tartalmazza. 
 
-## <a name="general-guidance"></a>Általános útmutatás
-
-Javasoljuk, hogy a tárolót egy alkalmazás/környezet (fejlesztés, üzem előtti és éles üzem) alapján használja. Ez segít abban, hogy ne ossza meg a titkokat a környezetek között, és a fenyegetést is csökkenti a szabálysértés esetén.
+> [!NOTE]
+> A Azure Key Vault biztonsági javaslatainak átfogó listáját a [Azure Key Vault biztonsági](security-baseline.md)alapkonfigurációjában tekintheti meg.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
@@ -109,20 +108,9 @@ Azure Key Vault a Soft-delete és a Purge Protection lehetővé teszi a törölt
 
 A tárolóban lévő objektumok frissítését, törlését és létrehozását is rendszeresen vissza kell vennie a tárolóba.  
 
-Azure PowerShell biztonsági mentési parancsok:
-
-* [Biztonsági mentési tanúsítvány](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [Biztonsági mentési kulcs](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [Biztonsági másolat titka](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Azure CLI biztonsági mentési parancsok
-
-* [Biztonsági mentési tanúsítvány](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [Biztonsági mentési kulcs](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [Biztonsági másolat titka](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
-
-
 ## <a name="next-steps"></a>Következő lépések
 
-- [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
+- [Azure Key Vault biztonsági alapterv](security-baseline.md)
+- [Azure Key Vault ajánlott eljárások](security-baseline.md)
+- [Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz](overview-vnet-service-endpoints.md)
 - [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)

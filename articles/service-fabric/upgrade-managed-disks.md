@@ -3,12 +3,12 @@ title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
 description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c374c4536309a13abcf8c882b041a9c5357878e5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316162"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090654"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
@@ -16,7 +16,7 @@ Az [Azure Managed](../virtual-machines/managed-disks-overview.md) Disks az aján
 
 Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissítésének általános stratégiája a következő:
 
-1. Helyezzen üzembe egy, az adott csomópont típusú, másképpen duplikált virtuálisgép-méretezési készletet, de a virtuálisgép- [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) `osDisk` méretezési csoport telepítési sablonjának szakaszához hozzáadott managedDisk objektummal. Az új méretezési csoportnak ugyanahhoz a terheléselosztó/IP-címhez kell tartoznia, mint az eredeti, így az ügyfelek nem tapasztalnak szolgáltatás-kimaradást az áttelepítés során.
+1. Helyezzen üzembe egy, az adott csomópont típusú, másképpen duplikált virtuálisgép-méretezési készletet, de a virtuálisgép- [](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) `osDisk` méretezési csoport telepítési sablonjának szakaszához hozzáadott managedDisk objektummal. Az új méretezési csoportnak ugyanahhoz a terheléselosztó/IP-címhez kell tartoznia, mint az eredeti, így az ügyfelek nem tapasztalnak szolgáltatás-kimaradást az áttelepítés során.
 
 2. Ha az eredeti és a frissített méretezési csoportok is futnak egymás mellett, tiltsa le az eredeti csomópont-példányokat egy időben, hogy a rendszerszolgáltatások (vagy az állapot-nyilvántartó szolgáltatások replikái) át legyenek telepítve az új méretezési csoportba.
 
@@ -30,11 +30,11 @@ Ez a cikk végigvezeti egy példa-fürt elsődleges csomópont-típusának a fel
 > [!CAUTION]
 > Ezt az eljárást csak akkor fogja tapasztalni, ha a fürt DNS-függőségeivel rendelkezik (például [Service Fabric Explorerhoz](service-fabric-visualizing-your-cluster.md)való hozzáféréskor). Az [előtér-szolgáltatásokra vonatkozó ajánlott eljárás](/azure/architecture/microservices/design/gateway) az, hogy a csomópontok típusai előtt valamilyen [terheléselosztó](/azure/architecture/guide/technology-choices/load-balancing-overview) legyen elérhető, hogy leállás nélkül lehessen lecserélni a csomópontokat.
 
-Az alábbi [sablonok és parancsmagok](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a frissítési forgatókönyv elvégzéséhez használni kívánt Azure Resource Manager. A sablon módosításait a [frissített méretezési csoport üzembe helyezése az alábbi elsődleges csomópont-típushoz című](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  részben találja.
+Az alábbi [sablonok és parancsmagok](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) a frissítési forgatókönyv elvégzéséhez használni kívánt Azure Resource Manager. A sablon módosításait a [frissített méretezési csoport üzembe helyezése az alábbi elsődleges csomópont-típushoz című](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  részben találja.
 
 ## <a name="set-up-the-test-cluster"></a>A tesztelési fürt beállítása
 
-Állítsa be a kezdeti Service Fabric tesztelési fürtöt. Először [töltse le](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a forgatókönyv végrehajtásához használni kívánt Azure Resource Manager-mintákat.
+Állítsa be a kezdeti Service Fabric tesztelési fürtöt. Először [töltse le](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) a forgatókönyv végrehajtásához használni kívánt Azure Resource Manager-mintákat.
 
 Ezután jelentkezzen be az Azure-fiókjába.
 
@@ -156,7 +156,7 @@ Ezzel készen áll a frissítési eljárás megkezdésére.
 
 ## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Továbbfejlesztett méretezési csoport üzembe helyezése az elsődleges csomópont típusaként
 
-A csomópontok frissítéséhez vagy *vertikális méretezéséhez*telepíteni kell a csomópont típusú virtuálisgép-méretezési csoport egy másolatát, amely egyébként azonos az eredeti méretezési csoporttal (többek között a következőre való hivatkozással, `nodeTypeRef` `subnet` és), kivéve, `loadBalancerBackendAddressPools` hogy az tartalmazza a kívánt frissítést/módosításokat, valamint a saját külön alhálózatát és a bejövő NAT-címkészletet. Mivel elsődleges csomópont-típust frissítünk, az új méretezési csoport elsődlegesként () lesz megjelölve `isPrimary: true` , ugyanúgy, mint az eredeti méretezési csoport. (A nem elsődleges csomópont típusú frissítésekhez egyszerűen hagyja ki ezt.)
+A csomópontok frissítéséhez vagy *vertikális méretezéséhez* telepíteni kell a csomópont típusú virtuálisgép-méretezési csoport egy másolatát, amely egyébként azonos az eredeti méretezési csoporttal (többek között a következőre való hivatkozással, `nodeTypeRef` `subnet` és), kivéve, `loadBalancerBackendAddressPools` hogy az tartalmazza a kívánt frissítést/módosításokat, valamint a saját külön alhálózatát és a bejövő NAT-címkészletet. Mivel elsődleges csomópont-típust frissítünk, az új méretezési csoport elsődlegesként () lesz megjelölve `isPrimary: true` , ugyanúgy, mint az eredeti méretezési csoport. (A nem elsődleges csomópont típusú frissítésekhez egyszerűen hagyja ki ezt.)
 
 Az egyszerűség kedvéért a szükséges módosítások már az *upgrade-1NodeType-2ScaleSets-ManagedDisks* [sablonban](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) és a [Parameters](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) fájlokban is megtörténtek.
 
@@ -215,7 +215,7 @@ A központi telepítési sablon `variables` szakaszban adja meg az új méretez�
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
 ```
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Források
 
 A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva ezeket a dolgokat:
 
@@ -275,7 +275,7 @@ A frissített konfiguráció üzembe helyezéséhez először szerezzen be több
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **A Key Vault erőforrás-azonosítója.** A Azure Portal Key Vault válassza a **Tulajdonságok**  >  **erőforrás-azonosító**elemet:
+* **A Key Vault erőforrás-azonosítója.** A Azure Portal Key Vault válassza a **Tulajdonságok**  >  **erőforrás-azonosító** elemet:
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
@@ -347,7 +347,7 @@ Service Fabric Explorer az eltávolított csomópontok (és így a *fürt állap
 
 ![A hibás állapotú letiltott csomópontok megjelenítése Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
 
-Távolítsa el az elavult csomópontokat a Service Fabric-fürtből a fürt állapotának *OK*értékre való visszaállításához.
+Távolítsa el az elavult csomópontokat a Service Fabric-fürtből a fürt állapotának *OK* értékre való visszaállításához.
 
 ```powershell
 # Remove node states for the deleted scale set
@@ -373,6 +373,6 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 Lásd még:
 
-* [Minta: fürtcsomópontok frissítése az Azure Managed Disks használatára](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [Minta: fürtcsomópontok frissítése az Azure Managed Disks használatára](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)
 
 * [Vertikális skálázási megfontolások](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)
