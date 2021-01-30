@@ -4,15 +4,13 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc00f4de95d22eec71f9b1b2504b00f506232dc
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015425"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214546"
 ---
-Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-es ingyenes havi e-mailek hozzáférést biztosítanak a speciális jelentéskészítéshez és elemzésekhez, valamint [az összes API][all APIs] -hoz (web, SMTP, Event, parse stb.). A SendGrid által biztosított további szolgáltatásokról a [SendGrid Solutions][SendGrid Solutions] oldalán talál információkat.
-
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid-fiók regisztrálása
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. A Azure Portal menüben vagy a kezdőlapon válassza az **erőforrás létrehozása** lehetőséget.
@@ -30,7 +28,7 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-
 8. Hozzon létre egy új **Erőforráscsoportot** vagy használjon egy meglévőt.
 9. A **Tarifacsomag** szakaszban válassza ki azt a SendGrid-csomagot, amelyre regisztrálni kíván.
 
-    ![Képernyőkép az új SendGrid-fiók létrehozása párbeszédpanel megnyitásáról és az ingyenes díjszabási csomag kiválasztásáról.][sendgrid-pricing]
+    ![Képernyőkép az új SendGrid-fiók létrehozása párbeszédpanel megnyitásáról a díjszabási csomag kiválasztása szakaszban][sendgrid-pricing]
 10. Adjon meg egy **Promóciókódot**, ha rendelkezik ilyennel.
 11. Adja meg a **kapcsolattartási adatait**.
 12. Tekintse át és fogadja el a **Jogi feltételeket**.

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c5c1fd202b52c8708ab067ca802481f4d4bb4e27
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 744343fe99b276da0264f9a7e40442f754b01169
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956290"
+ms.locfileid: "99214682"
 ---
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
@@ -15,7 +15,7 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az [Azure Cloud Shellt](https://shell.azure.com).
+1. Nyissa meg az [Azure Cloud Shellt](https://ms.portal.azure.com/#cloudshell/).
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
