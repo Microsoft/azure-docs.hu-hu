@@ -1,18 +1,18 @@
 ---
 title: Az Azure Storage szolgáltatásra vonatkozó megfelelőségi szabályozás Azure Policy
 description: Felsorolja Azure Policy az Azure Storage-hoz elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e75afab48bd4ae18e536b013d9b75f252de641f6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 600f948bd0864231b24cfd07e457bdea64d9fd88
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795404"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094135"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Az Azure Storage szolgáltatásra vonatkozó megfelelőségi szabályozás Azure Policy
 
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../../governance/policy/concepts
 
 [!INCLUDE [azure-policy-compliancecontrols-storage](../../../includes/policy/standards/byrp/microsoft.storage.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

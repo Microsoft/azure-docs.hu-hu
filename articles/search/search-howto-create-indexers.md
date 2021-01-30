@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 0483030312493dde9a50ab9000fbe29f19bfaff4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064163"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097640"
 ---
 # <a name="create-a-search-indexer"></a>Keresési indexelő létrehozása
 
-A keresési indexelő egy automatizált munkafolyamatot biztosít a dokumentumok és tartalmak külső adatforrásból történő átviteléhez a keresési szolgáltatás keresési indexéhez. Az eredetileg tervezett módon Kinyeri a szöveget és a metaadatokat az Azure-adatforrásokból, szerializálja a dokumentumokat a JSON-be, és átadja az eredményül kapott dokumentumokat egy keresőmotornak az indexeléshez. Azóta kiterjesztették a [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítés támogatására a tartalom feldolgozásához. 
+A keresési indexelő egy automatizált munkafolyamatot biztosít a dokumentumok és tartalmak külső adatforrásból történő átviteléhez a keresési szolgáltatás keresési indexéhez. Az eredetileg megtervezett módon Kinyeri a szöveget és a metaadatokat egy Azure-adatforrásból, szerializálja a dokumentumokat a JSON-be, és átadja az eredményül kapott dokumentumokat a keresőmotornak az indexeléshez. Azóta kiterjesztették a [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítés támogatására a tartalom feldolgozásához. 
 
-Az indexelő használata jelentősen csökkenti az íráshoz szükséges kód mennyiségét és összetettségét. Ez a cikk az indexelő szerkezetét és felépítését, a forrás-specifikus indexelő és a [szakértelmével](cognitive-search-working-with-skillsets.md)megvizsgálása előtt helyezi üzembe.
+Az indexelő használata jelentősen csökkenti az íráshoz szükséges kód mennyiségét és összetettségét. Ebből a cikkből megtudhatja, hogyan hozhat létre egy indexelő a forrás-specifikus indexelő és [szakértelmével](cognitive-search-working-with-skillsets.md)fejlettebb munkájának előkészítéséhez.
 
 ## <a name="whats-an-indexer-definition"></a>Mi az indexelő definíciója?
 
-Az indexelő olyan szöveges indexeléshez használatos, amely a forrás mezőkből származó szöveget a tárgymutató mezőibe vagy az olyan mesterséges feldolgozásra használja, amely elemzi a nem differenciált szöveget a struktúra számára, vagy elemzi a képeket a szövegre és az információkra. A következő index-definíciók jellemzőek arra, amit bármelyik forgatókönyvhöz létre lehet hozni.
+Az indexelő olyan szöveges indexeléshez használatos, amely alfanumerikus tartalmat olvas be a forrás mezőiből index mezőkbe, vagy olyan AI-alapú feldolgozásra, amely elemzi a nem differenciált szöveget a struktúra számára, vagy elemzi a képeket a szövegre és az információkra, továbbá hozzáadja a tartalmat egy indexhez. A következő index-definíciók jellemzőek arra, amit bármelyik forgatókönyvhöz létre lehet hozni.
 
 ### <a name="indexers-for-text-content"></a>Szöveges tartalom indexelése
 
-Az indexelő eredeti célja, hogy leegyszerűsítse az index betöltésének összetett folyamatát azáltal, hogy olyan mechanizmust biztosít, amely lehetővé teszi a szöveg és a numerikus tartalom összekapcsolását egy adatforrásból, a tartalmat JSON-dokumentumként szerializálja, és ezeket a dokumentumokat kikapcsolja a keresőmotorban az indexeléshez. Ez még mindig elsődleges használati eset, és ehhez a művelethez létre kell hoznia egy indexelő az ebben a szakaszban meghatározott tulajdonságokkal.
+Az indexelő eredeti célja, hogy leegyszerűsítse az index betöltésének összetett folyamatát azáltal, hogy olyan mechanizmust biztosít, amely lehetővé teszi a szöveg és a numerikus tartalom összekapcsolását egy adatforrásból, a tartalmat JSON-dokumentumként szerializálja, és ezeket a dokumentumokat kikapcsolja a keresőmotorban az indexeléshez. Ez még mindig elsődleges használati eset, és ehhez a művelethez létre kell hoznia egy indexelő az alábbi példában megadott tulajdonságokkal.
 
 ```json
 {
@@ -42,17 +42,18 @@ Az indexelő eredeti célja, hogy leegyszerűsítse az index betöltésének ös
   "fieldMappings": [ optional unless there are field discrepancies that need resolution]
 }
 ```
-A **`name`** , a **`dataSourceName`** és a **`targetIndexName`**  Tulajdonságok szükségesek, és attól függően, hogy az indexelő Hogyan jön létre, az indexelő futtatása előtt az adatforrás és az index is léteznie kell. 
 
-A **`parameters`** tulajdonság a futási idő viselkedését tájékoztatja, például azt, hogy hány hibát kell elfogadnia a teljes feladat végrehajtása előtt. A paraméterek emellett a forrás-specifikus viselkedést is megadhatják. Ha például a forrás blob Storage, beállíthat egy olyan paramétert, amely a következő fájlkiterjesztések alapján szűr: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+A **`name`** , a **`dataSourceName`** és a **`targetIndexName`**  Tulajdonságok szükségesek, és attól függően, hogy miként hozza létre az indexelő, az indexelő futtatása előtt a szolgáltatásban már léteznie kell az adatforrás és az index is. 
 
-A **`field mappings`** tulajdonság a forrás – cél mezők explicit módon történő leképezésére szolgál, ha ezek a mezők név vagy típus szerint eltérőek. Más tulajdonságok (nem láthatók), az ütemezés megadására, a indexelő letiltott állapotú létrehozására, illetve a REST-adatok kiegészítő titkosításának titkosítási kulcsának megadására szolgálnak.
+A **`parameters`** tulajdonság módosítja a futási idő viselkedését, például azt, hogy hány hibát kell elfogadnia, mielőtt a teljes feladatot elmulasztja. A paraméterek emellett a forrás-specifikus viselkedést is megadhatják. Ha például a forrás blob Storage, beállíthat egy olyan paramétert, amely a következő fájlkiterjesztések alapján szűr: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+
+A **`field mappings`** tulajdonság a forrás – cél mezők explicit módon történő leképezésére szolgál, ha ezek a mezők név vagy típus szerint eltérőek. Más tulajdonságok (nem láthatók), az [Ütemezés megadására](search-howto-schedule-indexers.md), a indexelő letiltott állapotú létrehozására, illetve a REST-adatok kiegészítő titkosításának [titkosítási kulcsának](search-security-manage-encryption-keys.md) megadására szolgálnak.
 
 ### <a name="indexers-for-ai-indexing"></a>Az AI-indexelés indexelő
 
-Mivel az indexelő az a mechanizmus, amellyel a Search szolgáltatás kimenő kérelmeket küld, az indexelő kiterjeszthetők a mesterséges intelligencia-bővítés támogatására, a használati esethez szükséges lépések és objektumok hozzáadásával.
+Mivel az indexelő az a mechanizmus, amellyel a Search szolgáltatás kimenő kérelmeket küld, az indexelő kibővült a mesterséges intelligenciák támogatására, az infrastruktúra és objektumok hozzáadására a használati eset megvalósításához.
 
-A fenti tulajdonságok és paraméterek az AI-bővítést végző indexelő adatokra vonatkoznak, és három olyan tulajdonság hozzáadásával, amelyek a mesterséges intelligenciával kapcsolatos alkoholtartalom-növeléshez tartoznak: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (csak előnézet és REST). 
+A fenti tulajdonságok és paraméterek az AI-bővítést végrehajtó indexelő adatokra vonatkoznak. A következő tulajdonságok jellemzőek az AI-dúsításra: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (csak előnézet és REST). 
 
 ```json
 {
@@ -74,7 +75,7 @@ A fenti tulajdonságok és paraméterek az AI-bővítést végző indexelő adat
 }
 ```
 
-Az AI-bővítés a jelen cikk hatókörén kívül esik. További információ [: szakértelmével használata az Azure Cognitive Search-ban](cognitive-search-working-with-skillsets.md) vagy [KÉSZSÉGKÉSZLET létrehozása (REST)](/rest/api/searchservice/create-skillset).
+Az AI-bővítés a jelen cikk hatókörén kívül esik. További információt a következő cikkekben talál: [AI-gazdagodás](cognitive-search-concept-intro.md), [szakértelmével az Azure Cognitive Searchban](cognitive-search-working-with-skillsets.md), és [készségkészlet létrehozása (REST)](/rest/api/searchservice/create-skillset).
 
 ## <a name="choose-an-indexer-client-and-create-the-indexer"></a>Válasszon egy indexelő ügyfelet, és hozza létre az Indexelő
 
@@ -90,7 +91,7 @@ Az összes [szolgáltatási szintet](search-limits-quotas-capacity.md#indexer-li
 
 ### <a name="use-azure-portal-to-create-an-indexer"></a>Indexelő létrehozása a Azure Portal használatával
 
-A portál két lehetőséget kínál az indexelő létrehozására: az [**adatimportálás**](search-import-data-portal.md) és az **új indexelő** , amely mezőket biztosít az indexelő definíciójának megadásához. A varázsló egyedi, hogy létrehozza az összes szükséges elemet. Más megközelítésekhez az szükséges, hogy az adatforrás és az index előre definiálva legyen.
+A portál két lehetőséget kínál az indexelő létrehozásához: az [**adat importálása varázsló**](search-import-data-portal.md) és az **új indexelő** , amely mezőket biztosít az indexelő definíciójának meghatározásához. A varázsló egyedi, hogy létrehozza az összes szükséges elemet. Más megközelítésekhez az szükséges, hogy az adatforrás és az index előre definiálva legyen.
 
 A következő képernyőképen látható, hogy hol találhatók ezek a funkciók a portálon. 
 
@@ -120,11 +121,20 @@ Cognitive Search az Azure SDK-k általánosan elérhető funkciókat implementá
 
 ## <a name="run-the-indexer"></a>Az indexelő futtatása
 
-Az indexelő automatikusan elindul, amikor létrehozza az Indexelő szolgáltatást a szolgáltatásban. Ez az igazság pillanata, ahol megtudhatja, hogy vannak-e adatforrás-kapcsolódási hibák, mező-hozzárendelési problémák vagy készségkészlet problémák. Az [Indexelő létrehozásához](/rest/api/searchservice/create-indexer) vagy az [Indexelő frissítéséhez](/rest/api/searchservice/update-indexer) egy interaktív HTTP-kérelem fog futni. Egy olyan program futtatása, amely meghívja a SearchIndexerClient metódusokat, egy indexelő is futni fog.
+Az indexelő automatikusan elindul, amikor létrehozza az Indexelő szolgáltatást a szolgáltatásban. Ez az igazság pillanata, ahol megtudhatja, hogy vannak-e adatforrás-kapcsolódási hibák, mező-hozzárendelési problémák vagy készségkészlet problémák. 
 
-Ha el szeretné kerülni, hogy az indexelő azonnal fusson a létrehozáskor, vegye **`disabled=true`** fel az indexelési definícióba.
+Az indexelő több módon is futtatható:
 
-Az indexelő létezése után igény szerint futtathatja a [Run indexelő (REST)](/rest/api/searchservice/run-indexer) vagy egy egyenértékű SDK-metódus használatával. Vagy állítsa be az indexelő [ütemezését](search-howto-schedule-indexers.md) , hogy rendszeres időközönként meghívja a feldolgozást. 
++ A definíció hozzáadásához vagy módosításához, illetve az indexelő futtatásához küldjön HTTP-kérést az [Indexelő létrehozásához](/rest/api/searchservice/create-indexer) vagy az [Indexelő frissítéséhez](/rest/api/searchservice/update-indexer) .
+
++ HTTP-kérelem küldése az [Indexelő futtatásához](/rest/api/searchservice/run-indexer) , hogy a definíció módosítása nélkül hajtson végre egy indexelő.
+
++ Futtasson egy programot, amely meghívja a SearchIndexerClient metódusokat a létrehozás, a frissítés vagy a Futtatás számára.
+
+> [!NOTE]
+> Ha el szeretné kerülni, hogy az indexelő azonnal fusson a létrehozáskor, vegye **`disabled=true`** fel az indexelési definícióba.
+
+Azt is megteheti, hogy az indexelő [Ütemezés](search-howto-schedule-indexers.md) szerint rendszeres időközönként meghívja a feldolgozást. 
 
 Az ütemezett feldolgozás általában egybeesik a módosított tartalom növekményes indexelésének szükségességével. Az észlelési logika a forrás-platformokba beépített képesség. Az indexelő automatikusan észleli a blob-tároló módosításait. A változások észlelésének más adatforrásokban való kihasználásával kapcsolatos útmutatásért tekintse meg az indexelő docs az egyes adatforrásokhoz:
 
@@ -135,9 +145,9 @@ Az ütemezett feldolgozás általában egybeesik a módosított tartalom növekm
 
 ## <a name="know-your-data"></a>Az adatai ismerete
 
-Az indexelő egy táblázatos sort vár, amelyben minden egyes sor teljes vagy részleges keresési dokumentumnak lesz az indexben. Gyakran előfordul, hogy egy sor és az eredményül kapott keresési dokumentum között egy teljes körű levelezés látható, amelyben az összes mező fel van sorakozva. Az indexelő segítségével azonban csak egy dokumentum egy részét hozhatja létre, például ha több indexelő vagy megközelítést használ az index kiépítéséhez. 
+Az indexelő egy táblázatos sort vár, amelyben minden egyes sor teljes vagy részleges keresési dokumentumnak lesz az indexben. Gyakran előfordul, hogy van egy-az-egyhez típusú levelezés egy sor és az eredményül kapott keresési dokumentum között, ahol a sorban lévő összes mező teljes mértékben feltölti az egyes dokumentumokat. Az indexelő segítségével azonban csak egy dokumentum egy részét hozhatja létre, például ha több indexelő vagy megközelítést használ az index kiépítéséhez. 
 
-Ha a viszonyítási adatokat egy sorba állítja, előfordulhat, hogy létre kell hoznia egy SQL-nézetet, vagy olyan lekérdezést kell létrehoznia, amely ugyanabban a sorban a szülő-és alárendelt rekordokat adja vissza. Például a beépített szállodák minta adatkészlete egy SQL-adatbázis, amelynek 50 rekordja van (egy az egyes szállodákhoz), a kapcsolódó táblázatban lévő szobák rekordjaihoz csatolva. Az a lekérdezés, amely a kollektív adatokat egy sorba állítja, az összes szállodai rekordban beágyazza az összes helyiség-információt JSON-dokumentumba. A beágyazott helyiség adatait egy olyan lekérdezés hozza létre, amely a **for JSON Auto** záradékot használja. A technikával kapcsolatos további információkért tekintse meg [a beágyazott JSON-t visszaadó lekérdezést](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Ez csak egy példa; más módszereket is megtalálhat, amelyek ugyanazt a hatást fogják eredményezni.
+Ha a viszonyítási adatokat egy sorba állítja, létre kell hoznia egy SQL-nézetet, vagy olyan lekérdezést kell létrehoznia, amely ugyanabban a sorban a szülő-és alárendelt rekordokat adja vissza. Például a beépített szállodák minta adatkészlete egy SQL-adatbázis, amelynek 50 rekordja van (egy az egyes szállodákhoz), a kapcsolódó táblázatban lévő szobák rekordjaihoz csatolva. Az a lekérdezés, amely a kollektív adatokat egy sorba állítja, az összes szállodai rekordban beágyazza az összes helyiség-információt JSON-dokumentumba. A beágyazott helyiség adatait egy olyan lekérdezés hozza létre, amely a **for JSON Auto** záradékot használja. A technikával kapcsolatos további információkért tekintse meg [a beágyazott JSON-t visszaadó lekérdezést](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Ez csak egy példa; más módszereket is megtalálhat, amelyek ugyanazt a hatást fogják eredményezni.
 
 Az összeolvasztott adatok mellett fontos, hogy csak kereshető adatok legyenek lekérdezve. A kereshető adatértékek alfanumerikusak. Cognitive Search nem tud bármilyen formátumú bináris adaton keresni, bár a képfájlok szöveges leírását kinyerheti és kikövetkeztetheti (lásd: [AI](cognitive-search-concept-intro.md)-bővítés) kereshető tartalom létrehozásához. Hasonlóképpen, az AI-bővítés használatával a nagyméretű szövegeket természetes nyelvi modellekkel elemezheti, hogy megkeresse a szerkezetet vagy a kapcsolódó információkat, és új tartalmat adjon hozzá a keresési dokumentumokhoz.
 
@@ -147,7 +157,7 @@ Mivel az indexelő nem javítja az adatproblémákat, szükség lehet az adattis
 
 EMLÉKEZTETVE arra, hogy az indexelő a keresési dokumentumokat a keresőmotorban adják át indexelésre. Az indexelő olyan tulajdonságokkal rendelkeznek, amelyek a végrehajtási viselkedést határozzák meg, az index sémája olyan tulajdonságokkal rendelkezik, amelyek a karakterláncok indexelését befolyásolják (csak a karakterláncok elemzése és a jogkivonatos). Az elemzői hozzárendeléstől függően az indexelt karakterláncok eltérőek lehetnek az Ön által átadott adatoktól. Kiértékelheti az elemzők hatásait az elemzés [szövege (REST)](/rest/api/searchservice/test-analyzer)használatával. További információ az elemzők használatáról: [elemzők a szöveg feldolgozásához](search-analyzers.md).
 
-Az indexelő csak a mezők nevét és típusát jelöli. Nincs olyan ellenőrzési lépés, amely biztosítja, hogy a bejövő tartalom helyes legyen az index megfelelő keresési mezőjénél. Ellenőrzési lépésként futtathat lekérdezéseket a teljes dokumentumokat vagy a kijelölt mezőket visszaadó, feltöltött indexhez. Az indexek tartalmának lekérdezésével kapcsolatos további információkért lásd: [alapszintű lekérdezés létrehozása](search-query-create.md).
+Az indexelő az indexekkel való interakciója szempontjából az indexelő csak a mezők nevét és típusát ellenőrzi. Nincs olyan ellenőrzési lépés, amely biztosítja, hogy a bejövő tartalom helyes legyen az index megfelelő keresési mezőjénél. Ellenőrzési lépésként futtathat lekérdezéseket a teljes dokumentumokat vagy a kijelölt mezőket visszaadó, feltöltött indexhez. Az indexek tartalmának lekérdezésével kapcsolatos további információkért lásd: [alapszintű lekérdezés létrehozása](search-query-create.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

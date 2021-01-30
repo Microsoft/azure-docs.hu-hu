@@ -4,12 +4,12 @@ description: Módosíthatja Azure Portal alapértelmezett beállításait, hogy 
 keywords: beállítások, időtúllépés, nyelv, regionális
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745638"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094110"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Az Azure Portal beállításainak kezelése
 
@@ -91,7 +91,7 @@ Ha a rendszergazda engedélyezte a tétlenségi időtúllépési szabályzatot, 
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>A könyvtár időtúllépési beállításának módosítása (rendszergazda)
 
-A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) a munkamenet kijelentkezése előtt a maximális üresjárati időt is kikényszerítik. Az inaktivitás időtúllépési beállítása a könyvtár szintjén érvényes. A beállítás érvénybe lép az új munkamenetek esetében. Azonnal nem lesz érvényes a már bejelentkezett felhasználókra. További információ a címtárakról: [Active Directory tartományi szolgáltatások Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
+A [globális rendszergazdai szerepkör rendszergazdái](../active-directory/roles/permissions-reference.md#global-administrator) a munkamenet kijelentkezése előtt a maximális üresjárati időt is kikényszerítik. Az inaktivitás időtúllépési beállítása a könyvtár szintjén érvényes. A beállítás érvénybe lép az új munkamenetek esetében. Azonnal nem lesz érvényes a már bejelentkezett felhasználókra. További információ a címtárakról: [Active Directory Domain Services Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
 
 Ha Ön globális rendszergazda, és a Azure Portal összes felhasználójának üresjárati időtúllépési beállítását szeretné kényszeríteni, kövesse az alábbi lépéseket:
 
@@ -170,7 +170,7 @@ Az **alkalmaz** gombra kattintva frissítheti a nyelvi és a területi formátum
 >Ezek a nyelvi és területi beállítások csak a Azure Portal érintik. Az új lapon vagy ablakban megnyitott dokumentációs hivatkozások a böngésző nyelvi beállításai segítségével határozzák meg a megjelenítendő nyelvet.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Billentyűparancsok a Azure Portal](azure-portal-keyboard-shortcuts.md)
 - [Támogatott böngészők és eszközök](azure-portal-supported-browsers-devices.md)

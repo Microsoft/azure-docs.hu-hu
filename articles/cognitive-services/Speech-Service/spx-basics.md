@@ -1,27 +1,27 @@
 ---
-title: Beszédfelismerési parancssori felület alapjai
+title: Speech CLI rövid útmutató – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan használható a beszédfelismerési szolgáltatás a Speech parancssori felülettel, és ne legyen minimális beállítású a Speech CLI használatával.
+description: Ismerkedés az Azure Speech CLI-vel. A beszédfelismerési szolgáltatásokkal, például a beszéd szöveggel, a beszéd szöveggel és a beszédfelismeréssel folytatott kommunikációhoz kód írása nélkül is használható.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 01/13/2021
 ms.author: trbye
-ms.openlocfilehash: 57f23f1fc0441ac50487cb3008c0b0f84f4b4e78
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 4a6c7b36665c7a38534ce8e470bc8b327c274d95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209576"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "99095180"
 ---
-# <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
+# <a name="get-started-with-the-azure-speech-cli"></a>Ismerkedés az Azure Speech CLI-vel
 
-Ebből a cikkből megtudhatja, hogyan használhatja a beszédfelismerési parancssori felületet a beszédfelismerési szolgáltatás alapszintű felhasználási mintái, kód írása nélkül. A beszédfelismerési szolgáltatás fő funkcióit gyorsan kipróbálhatja fejlesztési környezetek létrehozása vagy kód írása nélkül, így ellenőrizheti, hogy a használati esetek megfelelően teljesíthetők-e. A Speech CLI éles használatra kész, és felhasználható az egyszerű munkafolyamatok automatizálására a Speech szolgáltatásban, a `.bat` vagy a rendszerhéj parancsfájljainak használatával.
+Ebből a cikkből megtudhatja, hogyan használhatja a Speech parancssori felületet a beszédfelismerési szolgáltatásokhoz, például a beszédekhez, szövegekhez és beszédekhez, valamint kód írása nélkül. A Speech CLI éles használatra kész, és felhasználható az egyszerű munkafolyamatok automatizálására a Speech szolgáltatásban, a `.bat` vagy a rendszerhéj parancsfájljainak használatával.
 
-Ez a cikk azt feltételezi, hogy a parancssor, a terminál vagy a PowerShell használatával dolgozik.
+Ez a cikk azt feltételezi, hogy a parancssorból, a terminálból vagy a PowerShellből dolgozik.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -29,188 +29,114 @@ Ez a cikk azt feltételezi, hogy a parancssor, a terminál vagy a PowerShell has
 
 Ez a szakasz néhány alapszintű SPX-parancsot mutat be, amelyek gyakran hasznosak az első alkalommal történő teszteléshez és kísérletezéshez. Először az alábbi parancs futtatásával tekintse meg az eszközre épített súgót.
 
-```shell
+```console
 spx
 ```
 
-Figyelje meg a **következőt:** súgótémakörök a parancssori paraméterektől jobbra. Ezeket a parancsokat megadhatja az alparancsok részletes súgójának megjelenítéséhez.
-
 A súgótémakörök kulcsszava alapján is megkereshetők. Adja meg például a következő parancsot a Speech CLI használati példák listájának megtekintéséhez:
 
-```shell
+```console
 spx help find --topics "examples"
 ```
 
 A következő parancs megadásával tekintheti meg a felismerési parancs beállításait:
 
-```shell
+```console
 spx help recognize
 ```
 
-Most a Speech CLI használatával végezze el a beszédfelismerést a rendszer alapértelmezett mikrofonjának használatával. 
+A jobb oldali oszlopban szereplő további Súgó parancsok. Ezeket a parancsokat megadhatja az alparancsokkal kapcsolatos részletes súgó megjelenítéséhez.
 
->[!WARNING]
-> Ha Docker-tárolót használ, a parancs nem fog működni.
+## <a name="speech-to-text-speech-recognition"></a>Beszéd – szöveg (beszédfelismerés)
+
+A beszédfelismerési parancssori felület használatával alakítsa át a beszédet szöveggé (beszédfelismerés) a rendszer alapértelmezett mikrofonjának használatával. A parancs beírása után az SPX megkezdi a hang figyelését az aktuális aktív bemeneti eszközön, és leállítja az **ENTER** billentyűt. A rendszer ezután felismeri és átalakítja a rögzített beszédet a konzol kimenetében lévő szövegre.
+
+>[!IMPORTANT]
+> Ha Docker-tárolót használ, a `--microphone` nem fog működni.
 
 Futtassa ezt a parancsot:
 
-```shell
+```console
 spx recognize --microphone
 ```
 
 A Speech CLI használatával hangfájlból is felismerheti a beszédet.
 
-```shell
+```console
 spx recognize --file /path/to/file.wav
 ```
+
 > [!TIP]
 > Ha egy Docker-tárolóban lévő hangfájlból készít beszédet, győződjön meg arról, hogy a hangfájl az előző lépésben csatlakoztatott könyvtárban található.
 
-A parancs beírása után az SPX megkezdi a hang figyelését az aktuális aktív bemeneti eszközön, és a megnyomása után leáll `ENTER` . A rendszer ezután felismeri és átalakítja a rögzített beszédet a konzol kimenetében lévő szövegre. A beszédfelismerési parancssori felület használatával egyszerűen elvégezhető a szöveg és a beszéd szintézise is. 
+Ne felejtse el, ha elakad, vagy szeretne többet megtudni a Speech CLI felismerési lehetőségeiről, csak gépelje be a következőt:
 
-A következő parancs futtatásakor a beírt szöveg bemenetként fog megjelenni, és a szintetizált beszédet a jelenlegi aktív kimeneti eszközre írja.
+```console
+spx help recognize
+```
 
-```shell
+## <a name="text-to-speech-speech-synthesis"></a>Szöveg-beszéd (Speech szintézis)
+
+Az alábbi parancs futtatásával bemenetként fog megjelenni a szöveg, és a szintetizált beszédet a jelenlegi aktív kimeneti eszközre (például a számítógép-hangszórókra) is kiírja.
+
+```console
 spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 ```
 
-A beszédfelismerésen és a szintézisen kívül a beszédfelismerési parancssori felülettel is elvégezheti a fordítást. A fenti beszédfelismerési parancshoz hasonlóan a következő parancs futtatásával rögzítheti a hangot az alapértelmezett mikrofonból, és elvégezheti a fordítást a célnyelv szövegére.
+A szintetizált kimenet fájlba is menthető. Ebben a példában egy nevű fájlt hozunk létre a `my-sample.wav` könyvtárban, amelyet a parancs futtat.
 
-```shell
-spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
+```console
+spx synthesize --text "We hope that you enjoy using the Speech CLI." --audio output my-sample.wav
 ```
 
-Ebben a parancsban meg kell adnia a forrást (a fordítás nyelvét) és a célként megadott (nyelvről **lefordítható** **)** nyelveket. Az `--microphone` argumentum használatával a rendszer meghallgatja az aktuális aktív bemeneti eszköz hangját, és a lenyomás után leáll `ENTER` . A kimenet egy szöveges fájlba írt szöveg fordítása a célként megadott nyelvre.
+Ezek a példák azt feltételezik, hogy az angol nyelvű tesztelést végzi. A beszédfelismerést azonban számos nyelven támogatjuk. Ezzel a paranccsal lekérheti a hangok teljes listáját, vagy megkeresheti a [nyelvi támogatás lapot](./language-support.md).
+
+```console
+spx synthesize --voices
+```
+
+A felderített hangok egyikét használja.
+
+```console
+spx synthesize --text "Bienvenue chez moi." --voice fr-CA-Caroline --speakers
+```
+
+Ne felejtse el, ha elakad, vagy szeretne többet megtudni a Speech CLI szintézisi lehetőségeiről, csak gépelje be a következőt:
+
+```console
+spx help synthesize
+```
+
+## <a name="speech-to-text-translation"></a>Beszéd – szöveg fordítása
+
+A beszédfelismerési parancssori felülettel a szöveg fordítását is elvégezheti. Futtassa ezt a parancsot az alapértelmezett mikrofon hangjának rögzítéséhez, és szövegként adja ki a fordítást. Ne feledje, hogy a és a nyelvet a paranccsal kell megadnia `source` `target` `translate` .
+
+```console
+spx translate --microphone --source en-US --target ru-RU
+```
+
+Több nyelvre való fordításkor külön nyelvi kódokat kell megválasztani `;` .
+
+```console
+spx translate --microphone --source en-US --target ru-RU;fr-FR;es-ES
+```
+
+Ha menteni szeretné a fordítás kimenetét, használja a `--output` jelzőt. Ebben a példában egy fájlból is beolvasunk egy fájlt.
+
+```console
+spx translate --file /some/file/path/input.wav --source en-US --target ru-RU --output file /some/file/path/russian_translation.txt
+```
 
 > [!NOTE]
 > Tekintse meg az összes támogatott nyelv listáját a [nyelvi és területi beállításban](language-support.md) a megfelelő területi beállításokkal.
 
-### <a name="configuration-files-in-the-datastore"></a>Konfigurációs fájlok az adattárban
+Ne felejtse el, ha elakad, vagy szeretne többet megtudni a Speech CLI fordítási lehetőségeiről, csak gépelje be a következőt:
 
-A Speech CLI működése a konfigurációs fájlok beállításai alapján is hivatkozhat, amelyet a beszédfelismerési CLI-hívásokban egy szimbólum használatával lehet megtekinteni \@ .
-A Speech CLI új beállítást ment egy új `./spx/data` alkönyvtárban, amelyet a rendszer az aktuális munkakönyvtárban hoz létre.
-A konfigurációs érték keresésekor a Speech CLI a jelenlegi munkakönyvtárban, majd az adattárolóban, majd más adattárolókban `./spx/data` is megjelenik, beleértve a bináris írásvédett adattárat is `spx` .
-Korábban az adattárat használta a és az `@key` `@region` értékek mentéséhez, így nem kell megadnia azokat az egyes parancssori hívásokkal.
-A konfigurációs fájlokat is használhatja a saját konfigurációs beállításainak tárolásához, vagy akár az URL-címek vagy más, futásidőben generált dinamikus tartalom továbbítására is.
-
-Ez a szakasz egy konfigurációs fájl használatát mutatja be a helyi adattárban a parancs beállításainak a használatával történő tárolásához és beolvasásához `spx config` , valamint a beszédfelismerési CLI kimenetének a kapcsolóval való tárolásához `--output` .
-
-A következő példa törli a `@my.defaults` konfigurációs fájlt, hozzáadja a kulcs-érték párokat a fájlban lévő **kulcshoz** és **régióhoz** , és a konfigurációt használja a hívásához `spx recognize` .
-
-```shell
-spx config @my.defaults --clear
-spx config @my.defaults --add key 000072626F6E20697320636F6F6C0000
-spx config @my.defaults --add region westus
-
-spx config @my.defaults
-
-spx recognize --nodefaults @my.defaults --file hello.wav
-```
-
-Dinamikus tartalmat is írhat egy konfigurációs fájlba. Az alábbi parancs például létrehoz egy egyéni beszédfelismerési modellt, és egy konfigurációs fájlban tárolja az új modell URL-címét. A következő parancs megvárja, amíg az URL-ben lévő modell használatra készen áll a visszatérés előtt.
-
-```shell
-spx csr model create --name "Example 4" --datasets @my.datasets.txt --output url @my.model.txt
-spx csr model status --model @my.model.txt --wait
-```
-
-A következő példa két URL-címet ír a `@my.datasets.txt` konfigurációs fájlba.
-Ebben az esetben hozzáadhat egy `--output` opcionális **hozzáadási** kulcsszót egy konfigurációs fájl létrehozásához, vagy hozzáfűzheti azt a meglévőhöz.
-
-
-```shell
-spx csr dataset create --name "LM" --kind Language --content https://crbn.us/data.txt --output url @my.datasets.txt
-spx csr dataset create --name "AM" --kind Acoustic --content https://crbn.us/audio.zip --output add url @my.datasets.txt
-
-spx config @my.datasets.txt
-```
-
-Az adattár-fájlokkal kapcsolatos további részletekért, beleértve az alapértelmezett konfigurációs fájlok ( `@spx.default` , `@default.config` és `@*.default.config` a parancsokra vonatkozó alapértelmezett beállítások) használatát, adja meg a következő parancsot:
-
-```shell
-spx help advanced setup
-```
-
-## <a name="batch-operations"></a>Batch-műveletek
-
-Az előző szakaszban található parancsok nagyszerűen ismertetik a beszédfelismerési szolgáltatás működésének gyors megismerését. Ha azonban azt állapítja meg, hogy a használati esetek teljesíthetők-e, valószínű, hogy egy már meglévő bemeneti tartományon kell végrehajtania a kötegelt műveleteket, hogy megtudja, hogyan kezelje a szolgáltatás a különböző forgatókönyveket. Ez a szakasz a következőket mutatja be:
-
-* A Batch Speech Recognition futtatása hangfájlok könyvtárán
-* Iteráció egy `.tsv` fájlon keresztül és a köteg szöveg-beszéd szintézisének futtatása
-
-## <a name="batch-speech-recognition"></a>Batch-beszédfelismerés
-
-Ha a hangfájlok könyvtára egyszerűen fut, a beszédfelismerési parancssori felület segítségével gyorsan futtathatja a Batch-Speech felismerést. Egyszerűen futtassa a következő parancsot, amely a könyvtárára mutat a `--files` paranccsal. Ebben a példában hozzáfűzi `\*.wav` a címtárhoz, hogy felismerje `.wav` a dir mappában található összes fájlt. Emellett adja meg `--threads` azt az argumentumot, amely 10 párhuzamos szálon futtatja az elismerést.
-
-> [!NOTE]
-> Az `--threads` argumentumot a következő szakaszban is használhatja a `spx synthesize` parancsokhoz, és az elérhető szálak a CPU és a jelenlegi terhelési aránytól függenek.
-
-```shell
-spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\speech_output.tsv --threads 10
-```
-
-A felismert beszédfelismerési kimenet az `speech_output.tsv` argumentum használatával íródik `--output file` . A következő példa a kimeneti fájl szerkezetét szemlélteti.
-
-```output
-audio.input.id    recognizer.session.started.sessionid    recognizer.recognized.result.text
-sample_1    07baa2f8d9fd4fbcb9faea451ce05475    A sample wave file.
-sample_2    8f9b378f6d0b42f99522f1173492f013    Sample text synthesized.
-```
-
-## <a name="synthesize-speech-to-a-file"></a>Beszéd készítése fájlba
-
-A következő parancs futtatásával módosíthatja a hangszórók kimenetét egy `.wav` fájlba.
-
-```bash
-spx synthesize --text "The speech synthesizer greets you!" --audio output greetings.wav
-```
-
-A Speech CLI a természetes nyelvet angol nyelven hozza létre a `greetings.wav` hangfájlba.
-A Windowsban a hangfájlt a beírásával is lejátszhatja `start greetings.wav` .
-
-
-## <a name="batch-text-to-speech-synthesis"></a>Köteg szövege – beszéd szintézis
-
-A Batch szöveg-beszéd futtatásának legegyszerűbb módja egy új `.tsv` (tabulátorral tagolt) fájl létrehozása, és a parancs kihasználása a `--foreach` beszédfelismerési CLI-ben. Vegye figyelembe a következő fájlt `text_synthesis.tsv` :
-
-<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
-
-```input
-audio.output    text
-C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
-```
-
- Ezután futtasson egy parancsot, hogy mutasson rá `text_synthesis.tsv` , végezze el a szintézist az egyes `text` mezőkön, és az eredményt fájlként írja a megfelelő `audio.output` elérési útra `.wav` . 
-
-```shell
-spx synthesize --foreach in @C:\your\path\to\text_synthesis.tsv
-```
-
-Ez a parancs megegyezik a `spx synthesize --text Sample text to synthesize --audio output C:\batch_wav_output\wav_1.wav` fájl **minden egyes** rekordjára vonatkozó futtatással `.tsv` . Néhány Tudnivaló:
-
-* Az oszlopfejlécek és a `audio.output` a `text` parancssori argumentumok, illetve a `--audio output` `--text` . Több részből álló parancssori argumentumok `--audio output` , mint például a szóközök nélküli fájlban, a kezdő kötőjelek és a sztringeket elválasztó időszakok, például: `audio.output` . A többi meglévő parancssori argumentum további oszlopként is hozzáadható a fájlhoz a minta használatával.
-* Ha a fájl így formázva van, nem szükséges további argumentumokat átadni a következőhöz: `--foreach` .
-* Ügyeljen arra, hogy az egyes értékeket a `.tsv` with a **lapon** válassza el.
-
-Ha azonban a `.tsv` következő példához hasonló fájllal rendelkezik, olyan oszlopfejléceket, amelyek **nem egyeznek** a parancssori argumentumokkal:
-
-<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
-
-```input
-wav_path    str_text
-C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
-```
-
-Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás következő szintaxisával `--foreach` . Ez a fenti hívás.
-
-```shell
-spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
+```console
+spx help translate
 ```
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Fejezze be a beszédfelismerési vagy [beszédfelismerési](get-started-text-to-speech.md?pivots=programmer-tool-spx) útmutatókat [a Speech CLI](get-started-speech-to-text.md?pivots=programmer-tool-spx) használatával.
+* [A Speech parancssori felület konfigurációs beállításai](./spx-data-store-configuration.md)
+* [Batch-műveletek a Speech CLI-vel](./spx-batch-operations.md)

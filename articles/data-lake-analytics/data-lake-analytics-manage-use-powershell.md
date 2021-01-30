@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2f56fc285ed263b4b58985b5df620740a33cb3f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220312"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092351"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 
@@ -136,7 +136,7 @@ Az alapértelmezett Data Lake Store fiókot az adatforrások listájának szűr�
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault }
 ```
 
-### <a name="add-a-data-source"></a>Adatforrások felvétele
+### <a name="add-a-data-source"></a>Adatforrás hozzáadása
 
 ```powershell
 
@@ -241,7 +241,7 @@ A `-Result` paraméter használatával ellenőrizze, hogy a Befejezett feladatok
 
 * Lemondva
 * Sikertelen
-* Nincsenek
+* Nincs
 * Sikeres
 
 ``` powershell
@@ -298,7 +298,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ## <a name="analyzing-job-history"></a>A feladatok előzményeinek elemzése
 
-A Data Lake Analyticsben futtatott feladatok előzményeinek elemzése Azure PowerShell használatával hatékony módszer. A használatával betekintést nyerhet a használatba és a költséghatékonyságba. További információ: a [Job History Analysis Sample repo](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
+A Data Lake Analyticsben futtatott feladatok előzményeinek elemzése Azure PowerShell használatával hatékony módszer. A használatával betekintést nyerhet a használatba és a költséghatékonyságba. További információ: a [Job History Analysis Sample repo](https://github.com/jpalbright31/data-lake-analytics-powershell-job-history-analysis)  
 
 ## <a name="list-job-pipelines-and-recurrences"></a>Feladatokhoz tartozó folyamatok és ismétlődések listázása
 
@@ -551,5 +551,5 @@ Azure-erőforráscsoport-sablont is használhat a következő minta használatá
 
 ## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-* A Data Lake Analytics használatának első lépései az [Azure portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [Azure parancssori](data-lake-analytics-get-started-cli.md) felületének Azure Portal Azure PowerShell
+* A Data Lake Analytics használatának első lépései az [](data-lake-analytics-get-started-portal.md)  |  [](data-lake-analytics-get-started-powershell.md)  |  [Azure parancssori](data-lake-analytics-get-started-cli.md) felületének Azure Portal Azure PowerShell
 * Azure Data Lake Analytics kezelése [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md) használatával

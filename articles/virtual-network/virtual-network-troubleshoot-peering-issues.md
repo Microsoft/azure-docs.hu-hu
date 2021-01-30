@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222887"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096389"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
@@ -87,7 +87,7 @@ Kövesse a következő témakörben ismertetett lépéseket: [VPN Gateway tranzi
 További információ: [Service láncolása](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
-> Ha segítségre van szüksége egy NVA beállításához, [forduljon a NVA gyártójához](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+> Ha segítségre van szüksége egy NVA beállításához, [forduljon a NVA gyártójához](https://mskb.pkisolutions.com/kb/2984655).
 
 A NVA-eszközök beállításával és útválasztásával kapcsolatos segítségért lásd: a [hálózati virtuális berendezések problémái az Azure-ban](./virtual-network-troubleshoot-nva.md).
 
@@ -190,7 +190,7 @@ Pont – hely kapcsolatok esetén:
 
 A hub-hálózatnak tartalmaznia kell egy NVA. Konfigurálja a UDR olyan küllőit, amelyek NVA vannak beállítva a következő ugrásként, és engedélyezze a **továbbított forgalom** engedélyezését a hub virtuális hálózaton.
 
-További információ: a [szolgáltatás láncolása](./virtual-network-peering-overview.md#service-chaining), és a követelmények megvitatása a választott [NVA-gyártóval](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) .
+További információ: a [szolgáltatás láncolása](./virtual-network-peering-overview.md#service-chaining), és a követelmények megvitatása a választott [NVA-gyártóval](https://mskb.pkisolutions.com/kb/2984655) .
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Sugaras hálózati kapcsolat problémáinak megoldása különböző régiókban található küllős virtuális hálózatok között
 

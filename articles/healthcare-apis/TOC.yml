@@ -127,6 +127,10 @@
           href: iot-data-flow.md
         - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) leképezési sablonjai
           href: iot-mapping-templates.md
+    - name: Biztonság
+      items:
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
 - name: További források
   items:
     - name: GYIK

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 15d01a8ac21264bf57ee7e65147e3989cd631b15
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011880"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095556"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows és Linux rendszerhez készült Log Analytics-ügynök kezelése és karbantartása
 
@@ -243,7 +243,7 @@ Az ügynök letöltött fájlja egy, a IExpress-mel létrehozott, önálló tele
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Az ügynök telepítési fájljainak kibontásához emelt szintű parancssorból futtassa a parancsot, `extract MMASetup-<platform>.exe` és kérni fogja a fájlok kinyerésének elérési útját. Azt is megteheti, hogy az argumentumok átadásával megadhatja az elérési utat `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . A IExpress által támogatott parancssori kapcsolókról további információt a [IExpress parancssori kapcsolói](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) című témakörben talál, majd az igényeinek megfelelően frissítheti a példát.
+2. Az ügynök telepítési fájljainak kibontásához emelt szintű parancssorból futtassa a parancsot, `extract MMASetup-<platform>.exe` és kérni fogja a fájlok kinyerésének elérési útját. Azt is megteheti, hogy az argumentumok átadásával megadhatja az elérési utat `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . A IExpress által támogatott parancssori kapcsolókról további információt a [IExpress parancssori kapcsolói](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/197147) című témakörben talál, majd az igényeinek megfelelően frissítheti a példát.
 
 3. A parancssorba írja be a következőt: `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` .
 
@@ -290,7 +290,7 @@ A következő lépések végrehajtásával konfigurálhatja a Linux rendszerhez 
 
 3. A (z) rendszer újraindítása: `sudo /opt/omi/bin/service_control restart`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémák merülnek fel a Linux-ügynök telepítésekor vagy felügyeletekor, tekintse át [a Linux-ügynök hibaelhárítását ismertető témakört](agent-linux-troubleshoot.md) .
 

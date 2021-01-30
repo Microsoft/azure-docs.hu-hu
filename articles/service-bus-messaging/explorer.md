@@ -3,12 +3,12 @@ title: Azure Service Bus Explorer használata adatműveletek végrehajtásához 
 description: Ez a cikk azt ismerteti, hogyan használható a portálon alapuló Azure Service Bus Explorer a Azure Service Bus adatok eléréséhez.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684841"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092217"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer használata adatműveletek végrehajtásához Service Bus (előzetes verzió)
 
@@ -37,9 +37,9 @@ A Service Bus Explorer eszköz használatához a következő feladatokat kell el
     - [Rövid útmutató – várólisták létrehozása](service-bus-quickstart-portal.md)
     - [Gyors útmutató – témakörök létrehozása](service-bus-quickstart-topics-subscriptions-portal.md)
 - Győződjön meg arról, hogy tagja a következő szerepkörök egyikének a névtéren: 
-    - [Service Bus adattulajdonos](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
-    - [Közreműködő](../role-based-access-control/built-in-roles.md#contributor) 
-    - [Tulajdonos](/role-based-access-control/built-in-roles.md#owner)
+    - [Service Bus adattulajdonos](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
+    - [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor) 
+    - [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>A Service Bus Explorer használata

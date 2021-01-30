@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/06/2021
+ms.date: 01/29/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876597"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095906"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -25,6 +25,61 @@ A Windows rendszerű virtuális asztali frissítések rendszeres időközönkén
 - Hibajavítások
 
 Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+
+## <a name="client-updates"></a>Ügyfelek frissítései
+
+Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távoli asztali szolgáltatások-ügyfelek frissítéseinek megismeréséhez:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
+- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="fslogix-updates"></a>FSLogix-frissítések
+
+Kíváncsi a FSLogix legújabb frissítéseire? Tekintse [meg a FSLogix újdonságait](/fslogix/whats-new.md).
+
+## <a name="january-2021"></a>2021. január
+
+A következők módosultak a januári 2021-ben:
+
+### <a name="new-windows-virtual-desktop-offer"></a>Új Windowsos virtuális asztali ajánlat
+
+Az új ügyfelek 30 százalékot takarítanak meg a Windows rendszerű virtuális asztali számítási költségeknél a D sorozat és a BS sorozatú virtuális gépek számára, akár 90 napig, a natív Microsoft-megoldás használatakor. Ezt az ajánlatot a Azure Portal 2021. március 31. előtt is beválthatja. További információt a [Windows rendszerű virtuális asztali ajánlatról szóló oldalon](https://azure.microsoft.com/services/virtual-desktop/offer/)olvashat.
+
+### <a name="networksecuritygrouprules-value-change"></a>networkSecurityGroupRules értékének változása 
+
+A Azure Resource Manager beágyazott sablonban a networkSecurityGroupRules alapértelmezett értékét módosították egy objektumból egy tömbre. Ez megakadályozza az esetleges hibákat, ha a managedDisks-customimagevm.js-t használja a networkSecurityGroupRules értékének megadása nélkül. Ez nem módosult, és visszamenőlegesen kompatibilis.
+
+### <a name="fslogix-hotfix-update"></a>FSLogix gyorsjavítás frissítése
+
+Megjelent a FSLogix, a 2009-es verzió HF_01 (2.9.7654.46150) az előző kiadásban felmerülő problémák megoldásához (2.9.7621.30127). Javasoljuk, hogy a lehető leghamarabb állítsa le az előző verziót, és frissítse a FSLogix.
+
+További információkért tekintse [meg a FSLogix újdonságai](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)című cikk kibocsátási megjegyzéseit.
+
+### <a name="azure-portal-experience-improvements"></a>Azure Portal a tapasztalatok fejlesztése
+
+A Azure Portal élményét a következő továbbfejlesztettük:
+
+- Mostantól közvetlenül is hozzáadhat helyi virtuálisgép-rendszergazdai hitelesítő adatokat ahelyett, hogy hozzá kellene adnia egy helyi fiókot, amely a Active Directory tartományhoz való csatlakozás fiókjának hitelesítő adataival lett létrehozva.
+- A felhasználók mostantól külön lapokon is felsorolják az egyéni és a csoportos hozzárendeléseket az egyes felhasználók és csoportok számára.
+- A Windows rendszerű virtuális asztali ügynök verziószáma már látható a gazdagép-készletek virtuális gépek áttekintésében.
+- Tömeges törlés lett hozzáadva a gazdagép-készletekhez és az alkalmazás-csoportokhoz.
+- Mostantól engedélyezheti vagy letilthatja a kiürítési módot több munkamenet-gazdagép számára a gazdagép-készletekben.
+- Eltávolította a nyilvános IP-címet a virtuális gép részletei lapon.
+
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Windows rendszerű virtuális asztali ügynök hibaelhárítása
+
+Nemrég állítottuk be a [Windows rendszerű virtuális asztali ügynök hibaelhárítási útmutatóját](troubleshoot-agent.md) , amely segítséget nyújt az olyan ügyfelek számára, akik gyakori problémákat észleltek.
+
+### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender az Endpoint Integration szolgáltatáshoz
+
+Mostantól általánosan elérhető a Microsoft Defender az Endpoint Integration szolgáltatáshoz. Ez a funkció lehetővé teszi, hogy a Windows rendszerű virtuális asztali gépek ugyanazzal a vizsgálattal szolgálják a helyi Windows 10-es gépeket. Ha a Windows 10 Enterprise több munkamenetet használja, a Microsoft Defender for Endpoint akár 50 egyidejű felhasználói kapcsolatot is támogat, így megtakaríthatja a Windows 10 Enterprise többmunkamenetes és a Microsoft Defender for Endpoint megbízhatóságát. További információkért tekintse meg a [blogbejegyzésben](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
+
+### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azure biztonsági alapkonfiguráció a Windows rendszerű virtuális asztali gépekhez
+
+Nemrég közzétettünk egy cikket a Windows rendszerű virtuális asztali környezethez készült [Azure biztonsági alaptervről](security-baseline.md) , amelyről fel szeretné hívni a figyelmét. Ezek az irányelvek az Azure biztonsági teljesítményteszt 2,0-es verzióról a Windows rendszerű virtuális asztalra való alkalmazásával kapcsolatos információkat tartalmaznak. Az Azure biztonsági teljesítményteszt ismerteti azokat a beállításokat és gyakorlatokat, amelyeket az Azure-beli felhőalapú megoldások biztonságossá tételéhez használ.
 
 ## <a name="december-2020"></a>2020. december
 
@@ -258,16 +313,6 @@ Javítottunk a Microsoft Teams for Windows Virtual Desktop szolgáltatásban. Am
 
 További információt [a blogbejegyzésben](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)talál.
 
-## <a name="client-updates"></a>Ügyfelek frissítései
-
-Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távoli asztali szolgáltatások-ügyfelek frissítéseinek megismeréséhez:
-
-- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
-- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
-- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
-- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
-- [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a jövőbeli tervekkel a [Microsoft 365 Windows rendszerű virtuális asztali menetrendben](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).

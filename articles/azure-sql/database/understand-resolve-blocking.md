@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725786"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093308"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database blokkolási problémák ismertetése és megoldása
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -371,14 +371,14 @@ Ezeket a forgatókönyveket a következő forgatókönyvek fogják kibővíteni.
 
 ## <a name="see-also"></a>Lásd még
 
-* [Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban](/monitor-tune-overview.md)
+* [Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban](/azure/azure-sql/database/monitor-tune-overview)
 * [Teljesítmény figyelése a lekérdezési tároló használatával](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [Tranzakciók zárolása és a sorok verziókezelése – útmutató](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [TRANZAKCIÓ ELKÜLÖNÍTÉSI SZINTJÉNEK BEÁLLÍTÁSA](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)
 * [Gyorsútmutató: Bővített események az SQL Serveren](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 * [Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez](intelligent-insights-overview.md)
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Azure SQL Database: a teljesítmény finomhangolásának javítása automatikus hangolással](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
 * [Azure SQL Database teljesítmény javítása automatikus hangolással](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)

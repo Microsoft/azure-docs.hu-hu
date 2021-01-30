@@ -172,6 +172,8 @@
           href: concept-enterprise-security.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
     - name: Felelősségteljes ML
       items:
         - name: Felelősségteljes ML áttekintése
@@ -609,6 +611,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Felhasználói fórum
       href: /answers/topics/azure-machine-learning.html
+    - name: Microsoft Learn
+      href: /learn/browse/?expanded=azure&products=azure-machine-learning
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Machine Learning-termékeink összehasonlítása

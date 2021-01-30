@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 12/22/2020
-ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233593"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096491"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database-adatbázisok tárterületének kezelése
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -219,7 +219,7 @@ Ha csökkenti a parancsokat, a futás közben hatással van az adatbázis teljes
 
 Érdemes figyelembe vennie az adatbázisfájlok zsugorodásának lehetséges negatív teljesítményre gyakorolt hatását is, lásd alább az [**indexek újraépítése**](#rebuild-indexes) szakaszt.
 
-További információ erről a parancsról: [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
+További információ erről a parancsról: [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Automatikus zsugorodás
 
@@ -239,7 +239,7 @@ További információ erről a parancsról: [adatbázis-beállítási](/sql/t-sq
 
 Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatbázis maximális méretével kapcsolatos információkért lásd:
   - [Azure SQL Database virtuális mag-alapú beszerzési modell korlátai egyetlen adatbázishoz](resource-limits-vcore-single-databases.md)

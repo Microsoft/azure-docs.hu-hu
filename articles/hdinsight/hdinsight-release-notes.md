@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 76bf9376d3eb33153584f74c9d0d9196706428ae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932093"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092234"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -49,6 +49,9 @@ A HDInsight hozzáadta a hálózati biztonsági csoportokat (NSG) és a felhaszn
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.
+
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>A .NET Apache Spark 1.0.0-hoz való feltörésének változása
+A HDInsight bevezeti a .NET első jelentős kiadását Apache Spark a következő kiadásban. Biztosítja a Spark 2.4. x és a Spark 3.0. x DataFrame API-teljességét más funkciókkal együtt. Ennek a főverziónak a módosításait a rendszer a kód és a folyamatok frissítéséhez szükséges lépések megértéséhez tekinti át [ebben az áttelepítési GUID azonosítóban](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) . További információ [itt](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
 
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>A fürt alapértelmezett virtuálisgép-mérete a Ev3 családra lesz módosítva
 A következő kiadástól kezdve (a január végéig) az alapértelmezett fürt virtuálisgép-méretei a D családtól a Ev3 családig változnak. Ez a változás a főcsomópontokra és a munkavégző csomópontokra vonatkozik. A módosítás elkerüléséhez határozza meg az ARM-sablonban használni kívánt virtuális gépek méretét.

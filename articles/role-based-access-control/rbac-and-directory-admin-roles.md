@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 0b43f30c25767a135b98b756d61ed2535e1fbd22
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862605"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092200"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök
 
@@ -99,7 +99,7 @@ Az Azure AD-szerepkörök használatával kezelhetők az Azure AD-erőforrások 
 
 | Azure AD-szerepkör | Engedélyek | Jegyzetek |
 | --- | --- | --- |
-| [Globális rendszergazda](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
+| [Globális rendszergazda](../active-directory/roles/permissions-reference.md#global-administrator-permissions) | <ul><li>Kezeli az Azure Active Directory összes rendszergazdai funkciójához való hozzáférést, valamint az Azure Active Directoryban összevont szolgáltatásokat.</li><li>Rendszergazdai szerepköröket rendelhet másokhoz.</li><li>Bármely felhasználó és az összes többi rendszergazda jelszavát visszaállíthatja.</li></ul> | Az Azure Active Directory-bérlőre regisztráló személy lesz a globális rendszergazda. |
 | [Felhasználói rendszergazda](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>A felhasználók és csoportok minden összetevőjét létrehozhatja és kezelheti.</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li><li>Módosíthatja a felhasználók, az ügyfélszolgálati rendszergazdák és egyéb felhasználói rendszergazdák jelszavát.</li></ul> |  |
 | [Számlázási rendszergazda](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>Vásárlásokat hajthat végre.</li><li>Előfizetések kezelése</li><li>Támogatási jegyek kezelése</li><li>Monitorozhatja a szolgáltatás állapotát.</li></ul> |  |
 
@@ -107,7 +107,7 @@ A Azure Portal az Azure AD-szerepkörök listáját láthatja a **szerepkörök 
 
 ![Azure AD-szerepkörök a Azure Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
-## <a name="differences-between-azure-roles-and-azure-ad-roles"></a>Az Azure-szerepkörök és az Azure AD-szerepkörök közötti különbségek
+## <a name="differences-between-azure-roles-and-azure-ad-roles"></a>Az Azure-szerepkörök és az Azure AD-szerepkörök közti különbségek
 
 Az Azure-szerepkörök magas szinten szabályozzák az Azure-erőforrások kezelésére vonatkozó engedélyeket, míg az Azure AD-szerepkörök a Azure Active Directory erőforrások kezeléséhez szükséges engedélyeket szabályozzák. A következő táblázat a fontosabb különbségeket ismerteti.
 
@@ -129,5 +129,5 @@ Számos Azure AD-szerepkör az Azure AD-t és Microsoft 365-t, például a glob�
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](overview.md)
-- [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../active-directory/roles/permissions-reference.md)
+- [Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban](../active-directory/roles/permissions-reference.md)
 - [Klasszikus Azure-előfizetés rendszergazdái](classic-administrators.md)

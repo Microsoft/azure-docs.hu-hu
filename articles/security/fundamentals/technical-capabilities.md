@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 575486a89cd078325b76fa684ff9bd3d59a619c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844267"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092768"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -68,7 +68,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Egyszeri bejelentkezés
 
-- Multi-Factor Authentication
+- Többtényezős hitelesítés
 
 - Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 
@@ -78,7 +78,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Privileged Identity Management
 
-- Identitásvédelem
+- Identity protection
 
 #### <a name="single-sign-on"></a>Egyszeri bejelentkezés
 
@@ -90,7 +90,7 @@ Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint pé
 
 Nem csak a felhasználóknak nem kell több felhasználónevet és jelszót kezelnie, az alkalmazások hozzáférését a szervezeti csoportok és az alkalmazotti állapotuk alapján automatikusan kiépítheti vagy kiépítheti. Az [Azure ad olyan biztonsági és hozzáférési irányítási vezérlőket vezet be](../../active-directory/manage-apps/view-applications-portal.md) , amelyek segítségével központilag kezelheti a felhasználók hozzáférését az SaaS-alkalmazásokon keresztül.
 
-#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+#### <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Az [Azure AD multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget ad hozzá a felhasználói bejelentkezésekhez és tranzakciókra. Az [MFA segít megvédeni](../../active-directory/authentication/concept-mfa-howitworks.md) az adathozzáférést az adatkezeléshez és az alkalmazásokhoz, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést tesz lehetővé számos ellenőrzési lehetőség – telefonhívás, szöveges üzenet vagy Mobile apps-értesítés, valamint ellenőrző kód és külső OAuth-tokenek – használatával.
 
@@ -140,7 +140,7 @@ A Azure AD Privileged Identity Management a következőket teszi lehetővé:
 
 - A Kiemelt szerepkörhöz való hozzáférésre vonatkozó riasztások beszerzése
 
-#### <a name="identity-protection"></a>Identitásvédelem
+#### <a name="identity-protection"></a>Identity protection
 
 A [Azure ad Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection meglévő Azure Active Directory anomáliák észlelési képességeit használja (az Azure AD rendellenes tevékenységi jelentésein keresztül érhető el), és új kockázati észlelési típusokat vezet be, amelyek valós időben észlelik a rendellenességeket.
 
@@ -181,7 +181,7 @@ Azon szervezetek esetében, amelyeknek a helyszíni és az Azure-ban található
 
 Olyan szervezeteknek, amelyeknek a helyszínen lévő egyik munkaállomásról az Azure-ba kell védeniük a hozzáférést, a [pont – hely típusú VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)használatával.
 
-Nagyobb adatkészletek helyezhetők át egy dedikált nagy sebességű WAN-kapcsolaton, például a [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Ha úgy dönt, hogy a ExpressRoute-t használja, az [SSL/TLS](https://support.microsoft.com/kb/257591) vagy más protokollok használatával is titkosíthatja az alkalmazásokat az alkalmazás szintjén.
+Nagyobb adatkészletek helyezhetők át egy dedikált nagy sebességű WAN-kapcsolaton, például a [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Ha úgy dönt, hogy a ExpressRoute-t használja, az [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) vagy más protokollok használatával is titkosíthatja az alkalmazásokat az alkalmazás szintjén.
 
 Ha az Azure Storage-t az Azure Portalon keresztül használja, az összes tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](/rest/api/storageservices/) HTTPS protokollon keresztül is használható az [Azure storage](https://azure.microsoft.com/services/storage/) és a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)használatára.
 
@@ -339,7 +339,7 @@ Ezzel a módszerrel különböző forrásokból is összevonhatja az adatait, í
 
 A Security Center a potenciális biztonsági hiányosságok azonosítása érdekében elemzi az Azure-erőforrások biztonsági állapotát. A javaslatok listája végigvezeti Önt a szükséges szabályozási folyamatok konfigurálásának folyamatán.
 
-Példák erre vonatkozóan:
+Példák:
 
 - Kártevőirtók kiépítése a kártékony szoftverek azonosításához és eltávolításához
 

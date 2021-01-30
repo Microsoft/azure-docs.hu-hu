@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009764"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093195"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
@@ -47,7 +47,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 >   ```
 > * Ha a tűzfal egy Active Directory házirenden keresztül van beállítva, a következő parancsfájlt használhatja az ideiglenes hozzáféréshez. 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,7 +88,7 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 
 #### <a name="mitigation-4-remote-registry"></a>4. mérséklés: távoli beállításjegyzék 
 
-A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)használatához kövesse az alábbi lépéseket.
+A [Távoli beállításjegyzék](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)használatához kövesse az alábbi lépéseket.
 
 1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt, majd nyissa meg a **file**  >  **Kapcsolódás hálózati beállításjegyzéket**.
 
@@ -102,11 +102,11 @@ A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-t
 
 3.  Indítsa újra a szolgáltatást. Mivel ez a távoli beállításjegyzék használatával nem hajtható végre, a távoli szolgáltatási konzolt kell használnia.
 
-4.  Nyissa meg a **Services. msc**egy példányát.
+4.  Nyissa meg a **Services. msc** egy példányát.
 
 5.  Kattintson a **szolgáltatások (helyi)** elemre.
 
-6.  Válassza **a Kapcsolódás másik számítógéphez**lehetőséget.
+6.  Válassza **a Kapcsolódás másik számítógéphez** lehetőséget.
 
 7.  Adja meg a probléma virtuális gép **magánhálózati IP-címét (dip)** .
 
@@ -126,7 +126,7 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
 
 4.  A módosítások elvégzése előtt hozzon létre egy másolatot a \Windows\System32\Config mappából abban az esetben, ha a módosítások visszaállítására van szükség.
 
-5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe). 
+5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe). 
 
 6.  Ebben a hibaelhárítási eljárásban a struktúrákat BROKENSYSTEM és BROKENSOFTWARE-ként csatlakoztatjuk.
 

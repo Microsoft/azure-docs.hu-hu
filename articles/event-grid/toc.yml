@@ -192,6 +192,8 @@
       items:
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
         - name: Eseménykezelőknek történő eseménykézbesítés hitelesítése
           href: security-authentication.md
         - name: Közzétételi ügyfelek hitelesítése

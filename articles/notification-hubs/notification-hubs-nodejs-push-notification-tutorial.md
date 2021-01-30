@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ef6ef85ea9d256303852e4b281071da455ebb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250419"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097673"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és Node.js
 
@@ -82,10 +82,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 Szerezze be a `connectionstring` [Azure Portal] a kapcsolatok értékét a következő lépések végrehajtásával:
 
-1. A bal oldali navigációs panelen kattintson a **Tallózás**gombra.
-2. Válassza a **Notification Hubs**lehetőséget, majd keresse meg azt a hubot, amelyet a mintához használni kíván. Ha segítségre van szüksége egy új értesítési központ létrehozásához, tekintse meg a [Windows áruház első lépések oktatóanyagát](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
+1. A bal oldali navigációs panelen kattintson a **Tallózás** gombra.
+2. Válassza a **Notification Hubs** lehetőséget, majd keresse meg azt a hubot, amelyet a mintához használni kíván. Ha segítségre van szüksége egy új értesítési központ létrehozásához, tekintse meg a [Windows áruház első lépések oktatóanyagát](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 3. Válassza a **Beállítások** lehetőséget.
-4. Kattintson a **hozzáférési házirendek**elemre. Megtekintheti a megosztott és a teljes hozzáférésű kapcsolati karakterláncokat is.
+4. Kattintson a **hozzáférési házirendek** elemre. Megtekintheti a megosztott és a teljes hozzáférésű kapcsolati karakterláncokat is.
 
 ![Azure Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -109,7 +109,7 @@ Az `GcmService` objektum egy `send` metódust biztosít, amellyel leküldéses �
 - **Hasznos** adat – az üzenet JSON-vagy nyers karakterlánc-adattartalma.
 - **Visszahívás** – a visszahívási függvény.
 
-A hasznos adatok formátumával kapcsolatos további információkért tekintse meg a hasznos adatokat ismertető [dokumentációt](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
+A hasznos adatok formátumával kapcsolatos további információkért tekintse meg a hasznos adatokat ismertető [dokumentációt](https://payload.readthedocs.io/en/latest/).
 
 A következő kód a `GcmService` által közzétett példányt használja a `NotificationHubService` leküldéses értesítés küldésére az összes regisztrált ügyfélnek.
 
@@ -155,7 +155,7 @@ Az `MpnsService` objektum olyan `send` metódust biztosít, amellyel leküldése
 
 - **Címkék** – a címke azonosítója. Ha nincs megadva címke, a rendszer az értesítést az összes ügyfélnek küldi el.
 - **Hasznos** adatok – az üzenet XML-adattartalma.
-- **TargetName**  -  TargetName `toast` bejelentési értesítésekhez. `token` csempe értesítéseihez.
+-   -  TargetName `toast` bejelentési értesítésekhez. `token` csempe értesítéseihez.
 - **NotificationClass** – az értesítés prioritása. Az érvényes értékekhez tekintse meg a [kiszolgálói dokumentum leküldéses értesítéseinek http-](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) **fejléc elemei** című szakaszát.
 - **Beállítások** – nem kötelező kérelmek fejléce.
 - **Visszahívás** – a visszahívási függvény.

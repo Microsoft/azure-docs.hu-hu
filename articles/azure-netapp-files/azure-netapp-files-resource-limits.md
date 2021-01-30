@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511933"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095391"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Az Azure NetApp Files erőforráskorlátai
 
@@ -31,23 +31,25 @@ Az alábbi táblázat a Azure NetApp Files erőforrás-korlátozásait ismerteti
 
 |  Erőforrás  |  Alapértelmezett korlát  |  A támogatási kérelem alapján állítható  |
 |----------------|---------------------|--------------------------------------|
-|  A NetApp-fiókok száma Azure-régiónként/előfizetés szerint  |  10    |  Igen   |
-|  Kapacitási készletek száma NetApp-fiókban   |    25     |   Igen   |
-|  Kötetek száma előfizetéskor   |    500     |   Igen   |
-|  Kötetek száma kapacitási készlet szerint     |    500   |    Igen     |
-|  Pillanatképek másodpercenkénti száma       |    255     |    Nem        |
-|  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    Nem    |
-|  A VNet lévő használt IP-címek száma (beleértve az azonnal összetartozó virtuális hálózatok is) Azure NetApp Files   |    1000   |    Nem   |
-|  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    Nem  |
-|  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   Nem   |
-|  Egyetlen kötet minimális mérete    |    100 GiB    |    Nem    |
-|  Egyetlen kötet maximális mérete     |    100 TiB    |    Nem    |
-|  Egyetlen fájl maximális mérete     |    16 TiB    |    Nem    |    
-|  A címtár metaadatainak maximális mérete egyetlen címtárban      |    320 MB    |    Nem    |    
-|  Fájlok maximális száma ([maxfiles](#maxfiles))/kötet     |    100 000 000    |    Igen    |    
-|  Minimálisan hozzárendelt teljesítmény manuális QoS-kötethez     |    1 MiB/s   |    Nem    |    
-|  A manuális QoS-kötethez hozzárendelt maximális átviteli sebesség     |    4 500 MiB/s    |    Nem    |    
-|  Régiók közötti replikálási adatvédelmi kötetek (cél kötetei) száma     |    5    |    Igen    |     
+|  A NetApp-fiókok száma Azure-régiónként/előfizetés szerint  |  10    |  Yes   |
+|  Kapacitási készletek száma NetApp-fiókban   |    25     |   Yes   |
+|  Kötetek száma előfizetéskor   |    500     |   Yes   |
+|  Kötetek száma kapacitási készlet szerint     |    500   |    Yes     |
+|  Pillanatképek másodpercenkénti száma       |    255     |    No        |
+|  Azure NetApp Files (Microsoft. NetApp/kötetek) számára az Azure-ban delegált alhálózatok száma Virtual Network    |   1   |    No    |
+|  A VNet lévő használt IP-címek száma (beleértve az azonnal összetartozó virtuális hálózatok is) Azure NetApp Files   |    1000   |    No   |
+|  Egyetlen kapacitású készlet minimális mérete   |  4 TiB     |    No  |
+|  Egyetlen kapacitású készlet maximális mérete    |  500 TiB   |   No   |
+|  Egyetlen kötet minimális mérete    |    100 GiB    |    No    |
+|  Egyetlen kötet maximális mérete     |    100 TiB    |    No    |
+|  Egyetlen fájl maximális mérete     |    16 TiB    |    No    |    
+|  A címtár metaadatainak maximális mérete egyetlen címtárban      |    320 MB    |    No    |    
+|  Fájlok maximális száma ([maxfiles](#maxfiles))/kötet     |    100 000 000    |    Yes    |    
+|  Minimálisan hozzárendelt teljesítmény manuális QoS-kötethez     |    1 MiB/s   |    No    |    
+|  A manuális QoS-kötethez hozzárendelt maximális átviteli sebesség     |    4 500 MiB/s    |    No    |    
+|  Régiók közötti replikálási adatvédelmi kötetek (cél kötetei) száma     |    5    |    Yes    |     
+
+Ha szeretné megtekinteni, hogy egy könyvtár eléri-e a könyvtár metaadatainak maximális méretét (320 MB), tekintse [meg a hogyan annak megállapítása, hogy a címtár eléri-e a korlát méretét](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size).   
 
 További információ: a [kapacitások kezelésével kapcsolatos gyakori kérdések](azure-netapp-files-faqs.md#capacity-management-faqs).
 

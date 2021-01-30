@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540474"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095181"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -19,9 +19,15 @@ ms.locfileid: "98540474"
 Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telepítéséhez:
 
 1. Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Ha először telepíti az elsőt, újraindításra lehet szükség.
-2. Töltse le a Speech CLI [zip-archívumát](https://aka.ms/speech/spx-zips.zip), majd bontsa ki.
-3. Nyissa meg azt a könyvtárat, ahová kicsomagolta `spx-zips` . Ez a mappa számos platformon tartalmaz programfájlokat a Speech CLI-hez. 
-4. Bontsa ki a platform ( `spx-net471` a .NET-keretrendszer 4,7-es vagy a .net Core 3,0-es verziójához készült) fájljait `spx-netcore-win-x64` egy x64-es processzoron. Ne feledje, hogy ezt a könyvtárat fogja futtatni `spx` .
+1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux.md)-ot.
+2. Telepítse a Speech CLI-t a NuGet használatával a következő parancs megadásával:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
+
+`spx`A SPEECH parancssori felület súgójának megjelenítéséhez írja be a következőt:.
+
+> [!NOTE]
+> A NuGet alternatívájaként letöltheti és kicsomagolhatja a Speech CLI zip- [archívumot](https://aka.ms/speech/spx-zips.zip), megkeresheti és kinyerheti a platformot a `spx-zips` címtárból, és hozzáadhatja a `spx` **rendszerútvonal** -változó elérési útját.
 
 ### <a name="run-the-speech-cli"></a>A Speech CLI futtatása
 
@@ -43,15 +49,16 @@ Ha fájlba, például egy Jegyzettömbbe vagy egy webböngészőbe (például a 
 
 A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-es PROCESSZORon:
 
-1. Telepítse a [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)-ot.
-2. Töltse le a Speech CLI [zip-archívumát](https://aka.ms/speech/spx-zips.zip), majd bontsa ki.
-3. Nyissa meg a `spx-zips` letöltésből kibontott gyökérkönyvtárat, és bontsa `spx-netcore-30-linux-x64` ki az új `~/spx` könyvtárat.
-4. A terminálban írja be a következő parancsokat:
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux.md)-ot.
+2. Telepítse a Speech CLI-t a NuGet használatával a következő parancs megadásával:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 `spx`A SPEECH parancssori felület súgójának megjelenítéséhez írja be a következőt:.
+
+> [!NOTE]
+> A NuGet alternatívájaként letöltheti a bináris fájlokat a [zip Archive](https://aka.ms/speech/spx-zips.zip)-ben, kinyerheti `spx-netcore-30-linux-x64` azt egy új `~/spx` könyvtárba, begépelheti a `sudo chmod +r+x spx` bináris fájlt, és hozzáadhatja az elérési utat a `~/spx` path rendszerváltozóhoz.
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-telepítés (Windows, Linux, macOS)](#tab/dockerinstall)
 

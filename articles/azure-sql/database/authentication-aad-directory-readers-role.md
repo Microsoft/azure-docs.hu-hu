@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 2374b1fb7f355b336c713a8a3240eacc8b1f188c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675076"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094556"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Az Azure SQL Azure Active Directory Directory-olvasói szerepköre
 
@@ -37,7 +37,7 @@ A **címtár-olvasók** szerepkör a következőhöz szükséges:
 
 ## <a name="assigning-the-directory-readers-role"></a>A Directory-olvasók szerepkör kiosztása
 
-Ahhoz, hogy a [**címtár-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) szerepkört identitáshoz rendelje, a [globális rendszergazda](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) vagy a [Kiemelt szerepkörű rendszergazda](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) jogosultságokkal rendelkező felhasználóra van szükség. Azok a felhasználók, akik gyakran kezelnek vagy telepítenek SQL Database, SQL felügyelt példányt vagy Azure Szinapszisot, nem férhetnek hozzá ezekhez a magas jogosultsági szintű szerepkörökhöz. Ez gyakran okoz szövődményeket olyan felhasználók számára, akik nem tervezett Azure SQL-erőforrásokat hoznak létre, vagy segítségre van szükségük olyan magas jogosultsági szintű szerepkörű tagoktól, amelyek gyakran nem érhetők el nagyméretű szervezetekben.
+Ahhoz, hogy a [**címtár-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) szerepkört identitáshoz rendelje, a [globális rendszergazda](../../active-directory/roles/permissions-reference.md#global-administrator) vagy a [Kiemelt szerepkörű rendszergazda](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) jogosultságokkal rendelkező felhasználóra van szükség. Azok a felhasználók, akik gyakran kezelnek vagy telepítenek SQL Database, SQL felügyelt példányt vagy Azure Szinapszisot, nem férhetnek hozzá ezekhez a magas jogosultsági szintű szerepkörökhöz. Ez gyakran okoz szövődményeket olyan felhasználók számára, akik nem tervezett Azure SQL-erőforrásokat hoznak létre, vagy segítségre van szükségük olyan magas jogosultsági szintű szerepkörű tagoktól, amelyek gyakran nem érhetők el nagyméretű szervezetekben.
 
 SQL felügyelt példány esetén a **címtár-olvasók** szerepkört hozzá kell rendelni a felügyelt példány identitásához, mielőtt beállít [egy Azure ad-rendszergazdát a felügyelt példányhoz](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). 
 
@@ -45,7 +45,7 @@ A címtár- **olvasók** szerepkörnek a kiszolgáló identitáshoz való hozzá
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>A Directory-olvasók szerepkör megadása egy Azure AD-csoportnak
 
-A jelenleg **nyilvános előzetes** verzióban elérhető [globális rendszergazda](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) vagy [Kiemelt szerepkörű rendszergazda](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) létrehoz egy Azure ad-csoportot, és hozzárendeli a [**címtár-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyt a csoporthoz. Ez lehetővé teszi a csoport tagjai számára az Azure AD-Graph API elérését. Ezen kívül az Azure AD-felhasználók, akik ennek a csoportnak a tulajdonosai, jogosultak új tagok hozzárendelésére a csoport számára, beleértve az Azure SQL logikai kiszolgálók identitásait is.
+A jelenleg **nyilvános előzetes** verzióban elérhető [globális rendszergazda](../../active-directory/roles/permissions-reference.md#global-administrator) vagy [Kiemelt szerepkörű rendszergazda](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) létrehoz egy Azure ad-csoportot, és hozzárendeli a [**címtár-olvasók**](../../active-directory/roles/permissions-reference.md#directory-readers) engedélyt a csoporthoz. Ez lehetővé teszi a csoport tagjai számára az Azure AD-Graph API elérését. Ezen kívül az Azure AD-felhasználók, akik ennek a csoportnak a tulajdonosai, jogosultak új tagok hozzárendelésére a csoport számára, beleértve az Azure SQL logikai kiszolgálók identitásait is.
 
 Ennél a megoldásnál továbbra is magas jogosultsági szintű felhasználó (globális rendszergazda vagy Kiemelt szerepkörű rendszergazda) létrehozására van szükség a csoportok létrehozásához és a felhasználók egyszeri tevékenységhez való hozzárendeléséhez, de az Azure AD-csoport tulajdonosai további tagokat is hozzárendelhet. Így a jövőben nem kell magas jogosultsági szintű felhasználót bevezetni az Azure AD-bérlőben található összes SQL-adatbázis, SQL-felügyelt példány vagy Azure szinapszis-kiszolgáló konfigurálásához.
 

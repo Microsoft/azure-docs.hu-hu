@@ -190,6 +190,8 @@
           href: how-to-delete-project.md
         - name: Az Azure Migrate előző verziójának használata
           href: migrate-v1.md
+        - name: Áttelepítési projektek kezelése az Azure Lighthouse-vel
+          href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: Hibaelhárítás
   items:
     - name: Általános

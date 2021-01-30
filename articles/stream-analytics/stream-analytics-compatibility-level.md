@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015980"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094083"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -43,7 +43,7 @@ A Azure Portal a feladatokhoz tartozó kompatibilitási szint frissítése:
 4. Válassza ki a kívánt kompatibilitási szint értékét.
 5. Kattintson a lap alján található **Mentés** gombra.
 
-![Stream Analytics kompatibilitási szintje Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Stream Analytics kompatibilitási szintje Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 A kompatibilitási szint frissítésekor a T-Compiler érvényesíti a feladatot a kiválasztott kompatibilitási szintnek megfelelő szintaxissal.
 
@@ -148,7 +148,7 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 
 **1,1 szint:** A dátum/idő/zóna információi és a DATETIME típus között nincs automatikus konverzió. Ennek eredményeképpen az időzóna-információk és az eredeti formázás is megmarad. Ha azonban a NVARCHAR (MAX) mezőt egy DATETIME kifejezés részeként használja a lekérdezésben (például), a rendszer a DATETIME típusúra konvertálja a számítást, és elveszíti az eredeti formáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics bemenetek hibáinak megoldása](stream-analytics-troubleshoot-input.md)
 * [Erőforrás-állapot Stream Analytics](./stream-analytics-troubleshoot-query.md)

@@ -1,17 +1,17 @@
 ---
 title: A zóna redundáns, magas rendelkezésre állásának áttekintése Azure Database for MySQL rugalmas kiszolgálóval
 description: Ismerje meg a zóna redundáns magas rendelkezésre állásának fogalmait Azure Database for MySQL rugalmas kiszolgálóval
-author: mksuni
-ms.author: sumuth
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 01/29/2021
+ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241184"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097117"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Magas rendelkezésre állási fogalmak Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -48,7 +48,7 @@ A különböző replikációs állapotok az alábbiakban láthatók:
 -   A készenléti replikát a rendszer egy pontos virtuálisgép-konfigurációban telepíti, mint például a virtuális mag, a Storage, a hálózati beállítások (VNET, tűzfal) stb.
 -   A magas rendelkezésre állás letiltásával lehetősége van a készenléti replika eltávolítására.
 -   Az automatikus biztonsági mentések pillanatkép-alapúak, amelyeket az elsődleges adatbázis-kiszolgálóról végeznek el, és amelyeket egy zóna redundáns tárolóban tárolnak.
--   Feladatátvételi esemény esetén új készenléti replikát kell kiépíteni az eredeti elsődleges rendelkezésre állási zónában.
+-   Feladatátvétel esetén Azure Database for MySQL a rugalmas kiszolgáló automatikusan feladatátvételt hajt végre a készenléti replikára, ha a magas rendelkezésre állás engedélyezve van. A magas rendelkezésre állás beállítása figyeli az elsődleges kiszolgálót, és ismét online állapotba helyezi.
 -   Az ügyfelek mindig az elsődleges adatbázis-kiszolgálóhoz csatlakoznak.
 -   Ha van adatbázis-összeomlási vagy csomópont-meghibásodás, az újraindítást a rendszer először ugyanazon a csomóponton kísérli meg. Ha ez nem sikerül, az automatikus feladatátvétel aktiválódik.
 -   A kiszolgáló újraindításának lehetősége a statikus kiszolgálói paraméterek módosításainak kiválasztásához.

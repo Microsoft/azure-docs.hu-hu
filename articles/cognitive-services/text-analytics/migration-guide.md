@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656954"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096321"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrálás a Text Analytics API 3. x verziójára
 
@@ -46,9 +46,6 @@ A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
 
 ### <a name="feature-changes"></a>Szolgáltatások módosításai
 
-> [!NOTE] 
-> Jelenleg a [v3 entitások kategóriái](named-entity-types.md) csak angol és spanyol nyelvű szövegben lesznek visszaadva. Az API az 2,1-es verziót adja vissza más nyelveken található kérelmek esetében, amennyiben azok a 2,1-es verzióban támogatottak.
-
 Az 2,1-es verzióban a Text Analytics API egy végpontot használ az elnevezett entitások felismeréséhez és az entitások összekapcsolásához. A 3. verzió kiterjesztett névvel ellátott entitások észlelését teszi lehetővé, és külön végpontokat használ a meghívásos és az entitások összekapcsolására A 3.1-es verziótól kezdődően (előzetes verzió: 1) a személyes `pii` és az egészségügyi információk is észlelhetők `phi` . 
 
 ### <a name="steps-to-migrate"></a>Az áttelepíteni kívánt lépések
@@ -74,6 +71,35 @@ A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
+#### <a name="version-21-entity-categories"></a>2,1-es verziójú entitások kategóriái
+
+A következő táblázat felsorolja a (z) v 2.1-ben visszaadott entitási kategóriákat.
+
+| Kategória   | Leírás                          |
+|------------|--------------------------------------|
+| Személy   |   Személyek nevei.  |
+|Hely    | Természetes és emberi által készített tereptárgyak, struktúrák, földrajzi funkciók és geopolitikai entitások |
+|Szervezet | Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban. |
+| PhoneNumber | Telefonszámok (csak az USA-beli és az EU-telefonszámok). |
+| E-mail | E-mail-címek. |
+| URL-cím | Webhelyek URL-címei. |
+| IP | Hálózati IP-címek. |
+| DateTime | Dátum és napszakok.| 
+| Date | Naptári dátumok. |
+| Idő | Napszakok |
+| Dátumtartomány | Dátumtartomány. |
+| Időtartomány | Időtartományok. |
+| Időtartam | Időtartamok. |
+| Beállítás | Beállítás, ismétlődő időpontok. |
+| Mennyiség | Számok és numerikus mennyiségek. |
+| Szám | Számok. |
+| Százalék | Százalékos.|
+| Sorszám | Sorszámok száma |
+| Életkor | Alábbi korhatárt szabja. |
+| Pénznem | Valuták. |
+| Dimenzió | Méretek és mérések. |
+| Hőmérséklet | Hőmérsékletek. |
+
 ## <a name="language-detection"></a>[Nyelvfelismerés](#tab/language-detection)
 
 ### <a name="feature-changes"></a>Szolgáltatások módosításai 
@@ -95,7 +121,7 @@ A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-## <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
+## <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
 ### <a name="feature-changes"></a>Szolgáltatások módosításai 
 

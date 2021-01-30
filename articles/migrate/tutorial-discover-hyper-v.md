@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8b46d08da87565d133962c23e8281b221544d9ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897510"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092517"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Oktatóanyag: Hyper-V virtuális gépek felderítése kiszolgáló-értékeléssel
 
@@ -87,7 +87,7 @@ Gazdagépre vonatkozó követelmények ellenőrzése | Ellenőrzi, hogy a gazdag
 PowerShell-verzió ellenőrzése | Ellenőrzi, hogy a parancsfájlt egy támogatott PowerShell-verzión futtatja-e. | Győződjön meg arról, hogy a PowerShell 4,0-es vagy újabb verzióját futtatja a Hyper-V-gazdagépen.
 Fiók létrehozása | Ellenőrzi, hogy rendelkezik-e a megfelelő engedélyekkel a Hyper-V-gazdagépen.<br/><br/> Lehetővé teszi, hogy a megfelelő engedélyekkel rendelkező helyi felhasználói fiókot hozzon létre. | 1. lehetőség: a Hyper-V gazdagéphez rendszergazdai hozzáféréssel rendelkező fiók előkészítése.<br/><br/> 2. lehetőség: helyi rendszergazdai fiók vagy tartományi rendszergazdai fiók előkészítése, és a fiók hozzáadása a következő csoportokhoz: távfelügyeleti felhasználók, Hyper-V-rendszergazdák és Teljesítményfigyelő felhasználók.
 A PowerShell távelérésének engedélyezése | Engedélyezi a PowerShell távelérést a gazdagépen, így a Azure Migrate készülék PowerShell-parancsokat futtathat a gazdagépen egy WinRM-kapcsolaton keresztül. | A beállításhoz minden gazdagépen nyisson meg egy PowerShell-konzolt rendszergazdaként, és futtassa a következő parancsot: ``` powershell Enable-PSRemoting -force ```
-A Hyper-V integrációs szolgáltatások beállítása | Ellenőrzi, hogy a Hyper-V integrációs szolgáltatások engedélyezve vannak-e a gazdagép által kezelt összes virtuális gépen. | [Engedélyezze a Hyper-V integrációs szolgáltatásokat](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) minden egyes virtuális gépen.<br/><br/> Ha a Windows Server 2003-et futtatja, [kövesse az alábbi utasításokat](prepare-windows-server-2003-migration.md).
+A Hyper-V integrációs szolgáltatások beállítása | Ellenőrzi, hogy a Hyper-V integrációs szolgáltatások engedélyezve vannak-e a gazdagép által kezelt összes virtuális gépen. | [Engedélyezze a Hyper-V integrációs szolgáltatásokat](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) minden egyes virtuális gépen.<br/><br/> Ha a Windows Server 2003-et futtatja, [kövesse az alábbi utasításokat](prepare-windows-server-2003-migration.md).
 Hitelesítő adatok delegálása, ha a VM-lemezek távoli SMB-megosztásokon találhatók | Hitelesítő adatok delegálása | A parancs futtatásával engedélyezheti a CredSSP számára a hitelesítő adatok delegálását a Hyper-V virtuális gépeket futtató gazdagépeken az SMB-megosztásokon lévő lemezekkel: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Ezt a parancsot távolról is futtathatja az összes Hyper-V-gazdagépen.<br/><br/> Ha új gazdagép-csomópontokat ad hozzá egy fürthöz, azt a rendszer automatikusan hozzáadja a felderítéshez, de manuálisan kell engedélyeznie a CredSSP.<br/><br/> A készülék beállításakor a CredSSP beállításával állíthatja be a [készüléket](#delegate-credentials-for-smb-vhds). 
 
 ### <a name="run-the-script"></a>A szkript futtatása
