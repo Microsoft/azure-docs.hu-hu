@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964711"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071052"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
@@ -81,7 +81,7 @@ A csomópontok a frissítés részeként újraindulnak.
 
 ### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Használhatom a Prometheus-t az alkalmazásaim figyelésére?
 
-A Prometheus előre telepítve és konfigurálva van az Azure Red Hat OpenShift 4. x fürtökhöz. További információ a [fürtök figyeléséről](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html).
+A Prometheus előre telepítve és konfigurálva van az Azure Red Hat OpenShift 4. x fürtökhöz. További információ a [fürtök figyeléséről](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html).
 
 Az Azure Red Hat OpenShift 3,11-fürtök esetében a Prometheus-t üzembe helyezheti a névtérben, és figyelheti az alkalmazásokat a névtérben. További információ: [a Prometheus-példány üzembe helyezése az Azure Red Hat OpenShift-fürtben](howto-deploy-prometheus.md).
 
@@ -97,7 +97,7 @@ Az alapul szolgáló virtuális gépek naplófájljait a felügyelt szolgáltat�
 
 ### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>Hogyan érhetik el az ügyfelek az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb problémákhoz hasonló műveleteket végezzenek. Nem úgy tűnik, hogy a kubectl-t egy Azure Red Hat OpenShift-fürtön futtatom.
 
-Az Azure Red Hat OpenShift 4. x fürtök esetében a OpenShift webkonzol a csomópont szintjén található összes mérőszámot tartalmazza. További információ: Red Hat dokumentáció a [fürt adatainak megtekintéséhez](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html).
+Az Azure Red Hat OpenShift 4. x fürtök esetében a OpenShift webkonzol a csomópont szintjén található összes mérőszámot tartalmazza. További információ: Red Hat dokumentáció a [fürt adatainak megtekintéséhez](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html).
 
 Az Azure Red Hat OpenShift 3,11-fürtök esetében az ügyfelek a következő paranccsal érhetik el a CPU-/memória-metrikákat a csomópont szintjén: parancs `oc adm top nodes` vagy `kubectl top nodes` az ügyfél-rendszergazda fürt szerepkör. Az ügyfelek a (z) parancshoz tartozó CPU-/memória-metrikákat is használhatják `pods` `oc adm top pods` `kubectl top pods` .
 
@@ -116,18 +116,18 @@ Adott címkék használatakor körültekintően kell eljárni:
 - Az állomásnév nem használható. Az állomásnév gyakran a frissítésekkel és frissítésekkel lesz elforgatva, és a változás garantált.
 - Ha az ügyfél egy adott címkére vagy egy központi telepítési stratégiára vonatkozó kéréssel rendelkezik, akkor ez a megoldás a mérnöki erőfeszítésekhez szükséges, és jelenleg nem támogatott.
 
-További információ: a [Pod elhelyezésének szabályozása](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html).
+További információ: a [Pod elhelyezésének szabályozása](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html).
 
 ### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>A rendszerkép beállításjegyzéke külsőleg is elérhető, így olyan eszközöket is használhatok, mint például a Jenkins?
 
 4. x fürtök esetén ki kell tenni egy biztonságos beállításjegyzéket, és konfigurálnia kell a hitelesítést. További információt a következő Red Hat dokumentációban talál:
 
-- [Beállításjegyzék kimutatása](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
-- [A beállításjegyzék elérése](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+- [Beállításjegyzék kimutatása](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+- [A beállításjegyzék elérése](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
 
 3,11-fürtök esetén a Docker-rendszerkép beállításjegyzéke elérhető. A Docker-beállításjegyzék elérhető innen: `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Azure Container Registry is használhatja.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Telepíthetek fürtöt meglévő virtuális hálózatra?
 
@@ -181,28 +181,28 @@ oc adm policy \
 
 További információkért tekintse meg a fürt verziójának önálló kiépítés letiltására vonatkozó OpenShift dokumentációját:
 
-- [Önálló kiépítés letiltása 4,3-fürtökben](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [Önálló kiépítés letiltása 4,6-fürtökben](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
 - [Önálló kiépítés letiltása 3,11-fürtökben](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Mely UNIX-jogosultságok érhetők el a Masters/infra/app-csomópontok számára a IaaS-ben?
 
-4. x fürtök esetén a csomópont-hozzáférés a fürt – rendszergazda szerepkörön keresztül érhető el. További információ: [KUBERNETES RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x fürtök esetén a csomópont-hozzáférés a fürt – rendszergazda szerepkörön keresztül érhető el. További információ: [KUBERNETES RBAC – áttekintés](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 3,11-fürtök esetében a Node-hozzáférés tiltott.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Milyen OCP-jogosultságokkal rendelkezik? Fürt – rendszergazda? Projekt – rendszergazda?
 
-4. x fürtök esetén a fürt – rendszergazda szerepkör elérhető. További információ: [KUBERNETES RBAC – áttekintés](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+4. x fürtök esetén a fürt – rendszergazda szerepkör elérhető. További információ: [KUBERNETES RBAC – áttekintés](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 3,11-fürtök esetében további részletekért tekintse meg a [Fürtfelügyelő áttekintését](https://docs.openshift.com/aro/admin_guide/index.html) .
 
 ### <a name="which-identity-providers-are-available"></a>Mely identitás-szolgáltatók érhetők el?
 
-4. x fürtök esetén a saját identitás-szolgáltatót kell konfigurálnia. További információ: a Red Hat dokumentációja az Identity-előállítók [konfigurálásáról](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html).
+4. x fürtök esetén a saját identitás-szolgáltatót kell konfigurálnia. További információ: a Red Hat dokumentációja az [identitás-szolgáltatók konfigurálásáról](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html).
 
 3,11-fürtök esetében az Azure AD-integrációt használhatja. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="is-data-on-my-cluster-encrypted"></a>A fürtön lévő adatai titkosítva vannak?
 
@@ -210,13 +210,13 @@ Alapértelmezés szerint az adatok titkosítva vannak a nyugalmi állapotban. Az
 
 ### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>A etcd-ben tárolt adatforgalom az Azure Red Hat OpenShift van titkosítva?
 
-Az Azure Red Hat OpenShift 4 fürtök esetében az adattitkosítás alapértelmezés szerint nem történik meg, de engedélyezheti a titkosítást. További információ: a [etcd titkosításának](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html)útmutatója.
+Az Azure Red Hat OpenShift 4 fürtök esetében az adattitkosítás alapértelmezés szerint nem történik meg, de engedélyezheti a titkosítást. További információ: a [etcd titkosításának](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html)útmutatója.
 
 3,11-fürtök esetében az adattitkosítás nem a etcd szinten történik. A titkosítás bekapcsolásának lehetősége jelenleg nem támogatott. A OpenShift támogatja ezt a funkciót, de mérnöki erőfeszítésekre van szükség a közúti térképen való működéshez. Az adatátvitel a lemez szintjén történik. További információkért tekintse meg az [adatok titkosítása az adattár rétegében](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) című témakört.
 
 ### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Választhatunk bármilyen állandó tárolási megoldást, például a OCS-t? 
 
-4. x fürtök esetében az Azure Disk (Premium_LRS) alapértelmezett tárolási osztályként van konfigurálva. További tárhely-szolgáltatók esetén, valamint a konfigurációs adatokhoz (beleértve az Azure-fájlt is) tekintse meg a Red Hat dokumentációját az [állandó tárterületen](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
+4. x fürtök esetében az Azure Disk (Premium_LRS) alapértelmezett tárolási osztályként van konfigurálva. További tárhely-szolgáltatók esetén, valamint a konfigurációs adatokhoz (beleértve az Azure-fájlt is) tekintse meg a Red Hat dokumentációját az [állandó tárterületen](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html).
 
 3,11-fürtök esetében alapértelmezés szerint két tárolási osztály van megadva: az egyik az Azure Disk (Premium_LRS) és egy Azure-fájl.
 

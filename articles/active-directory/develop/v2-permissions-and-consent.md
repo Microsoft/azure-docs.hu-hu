@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756059"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090187"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Engedélyek és beleegyezett a Microsoft Identity platform
 
@@ -164,7 +164,7 @@ Ha az alkalmazás az alkalmazásra vonatkozó engedélyeket kér, és a rendszer
 
 Miután a rendszergazdai jogosultsággal rendelkező végpontot használja a rendszergazdai engedély megadásához, elkészült. A felhasználóknak semmilyen további műveletet nem kell elvégezniük. A rendszergazdai jogosultság megadását követően a felhasználók egy tipikus hitelesítési folyamaton keresztül kaphatnak hozzáférési jogkivonatot. Az eredményül kapott hozzáférési jogkivonat rendelkezik a beleegyezési engedélyekkel.
 
-Ha a vállalati rendszergazda az alkalmazást használja, és az engedélyezés végpontra irányítja, a Microsoft Identity platform észleli a felhasználó szerepkörét. Megkérdezi, hogy a vállalat rendszergazdája a teljes bérlő nevében kíván-e hozzájárulni a kért engedélyekhez. Ehelyett egy dedikált rendszergazdai engedélyezési végpont használatával proaktív módon kérheti a rendszergazdát, hogy engedélyezze a teljes bérlő nevében engedélyt. Ez a végpont az alkalmazás engedélyeinek kérelmezéséhez is szükséges. Az alkalmazás engedélyei nem kérhetők az engedélyezés végpontjának használatával.
+Ha egy globális rendszergazda az alkalmazást használja, és az engedélyezés végpontra irányítja, a Microsoft Identity platform észleli a felhasználó szerepkörét. Megkérdezi, hogy a globális rendszergazda szeretne-e hozzájárulni a teljes bérlő nevében a kért engedélyekhez. Ehelyett egy dedikált rendszergazdai engedélyezési végpont használatával proaktív módon kérheti a rendszergazdát, hogy engedélyezze a teljes bérlő nevében engedélyt. Ez a végpont az alkalmazás engedélyeinek kérelmezéséhez is szükséges. Az alkalmazás engedélyei nem kérhetők az engedélyezés végpontjának használatával.
 
 Ha követi ezeket a lépéseket, az alkalmazás engedélyt kérhet a bérlő összes felhasználója számára, beleértve a rendszergazdai korlátozás alá eső hatóköröket is. Ez a művelet magas jogosultsággal rendelkezik. A műveletet csak akkor használja, ha a forgatókönyvhöz szükséges.
 
@@ -355,7 +355,7 @@ Egyes erőforrás-URI-k záró perjeltel rendelkeznek, például a `https://cont
 
 Hibaelhárítási lépések: [váratlan hiba történt az alkalmazáshoz való belelépéskor](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [AZONOSÍTÓ tokenek a Microsoft Identity platformon](id-tokens.md)
 * [Hozzáférési tokenek a Microsoft Identity platformon](access-tokens.md)

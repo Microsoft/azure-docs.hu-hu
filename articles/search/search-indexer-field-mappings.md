@@ -3,19 +3,17 @@ title: Mezőleképezések az indexelőkben
 titleSuffix: Azure Cognitive Search
 description: Az indexelő mező-hozzárendelések konfigurálása a mezőnevek és az adatábrázolások közötti különbségek kiszámításához.
 manager: nitinme
-author: mattmsft
-ms.author: magottei
-ms.devlang: rest-api
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.date: 01/28/2021
+ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358932"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063179"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -46,7 +44,7 @@ A mező-hozzárendelések az `fieldMappings` Indexelő definíciójának tömbje
 > [!NOTE]
 > Ha nincsenek hozzáadva mező-hozzárendelések, az indexelő feltételezi, hogy az adatforrást tartalmazó mezőket az azonos nevű index mezőkhöz kell rendelni. Mező-hozzárendelés hozzáadásával eltávolítja ezeket az alapértelmezett mező-hozzárendeléseket a forrás és a cél mezőhöz. Egyes indexelő, például [a blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md), alapértelmezett mező-hozzárendeléseket adhatnak hozzá az index kulcs mezőjéhez.
 
-## <a name="map-fields-using-the-rest-api"></a>Mezők leképezése a REST API használatával
+## <a name="map-fields-using-rest"></a>Mezők leképezése a REST használatával
 
 Az [Indexelő](/rest/api/searchservice/create-Indexer) API-kérelem használatával új indexelő létrehozásakor mező-hozzárendeléseket adhat hozzá. Az [Indexelő](/rest/api/searchservice/update-indexer) API-kérelem használatával kezelheti egy meglévő indexelő mező-hozzárendeléseit.
 
@@ -77,9 +75,8 @@ A forrás mező több mező-hozzárendelésre is hivatkozhat. Az alábbi példa 
 > [!NOTE]
 > Az Azure Cognitive Search a kis-és nagybetűk megkülönböztetésének összehasonlításával oldja fel a mezők és függvények nevét a mezők leképezésében. Ez kényelmes (nem kell beolvasnia az összes burkolatot), de az azt jelenti, hogy az adatforrás vagy az index nem rendelkezhet olyan mezőkkel, amelyek csak esettől eltérőek lehetnek.  
 >
->
 
-## <a name="map-fields-using-the-net-sdk"></a>Mezők leképezése a .NET SDK használatával
+## <a name="map-fields-using-net"></a>Mezők leképezése a .NET használatával
 
 A [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) osztály segítségével definiálhatja a mezők leképezéseit a .net SDK-ban, amely tartalmazza a tulajdonságokat, valamint a `SourceFieldName` `TargetFieldName` választható `MappingFunction` hivatkozást.
 

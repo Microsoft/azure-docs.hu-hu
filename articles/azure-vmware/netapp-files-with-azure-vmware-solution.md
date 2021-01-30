@@ -3,12 +3,12 @@ title: Azure NetApp Files Azure VMware-megoldással
 description: A Azure NetApp Files és az Azure VMware megoldás virtuális gépei segítségével áttelepítheti és szinkronizálhatja a helyszíni kiszolgálók, az Azure VMware-megoldás virtuális gépei és a Felhőbeli infrastruktúrák közötti adatátvitelt.
 ms.topic: how-to
 ms.date: 01/20/2021
-ms.openlocfilehash: 97a9172dfbed2722d4af0abbd6231a0367dc4e3c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b712b25130a8bed19bd784d2c45c18a55a582be6
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798458"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062978"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files Azure VMware-megoldással
 
@@ -101,8 +101,8 @@ A következőkben csak néhány meggyőző Azure NetApp Files használati eset v
 - Távoli asztali szolgáltatások profil kezelése
 - Fájlmegosztás az Azure VMware-megoldásban
 
-## <a name="next-steps"></a>További lépések
-- A [Azure NetApp Files erőforrás-korlátainak](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)megismerése.
-- Lásd: [Azure NetApp Files hálózati tervezéssel kapcsolatos irányelvek](../azure-netapp-files/azure-netapp-files-network-topologies.md).
-- A [Azure NetApp Files kötetek régiók közötti replikálásának](../azure-netapp-files/cross-region-replication-introduction.md)megismerése. 
-- Tekintse meg [a Azure NetApp Files kapcsolatos gyakori kérdéseket](../azure-netapp-files/azure-netapp-files-faqs.md).
+## <a name="next-steps"></a>Következő lépések
+- [Az Azure NetApp Files erőforráskorlátai](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
+- [Az Azure NetApp Files hálózattervezési irányelvei](../azure-netapp-files/azure-netapp-files-network-topologies.md)
+- [Azure NetApp Files kötetek régiók közötti replikációja](../azure-netapp-files/cross-region-replication-introduction.md) 
+- [Gyakori kérdések az Azure NetApp Filesról](../azure-netapp-files/azure-netapp-files-faqs.md)

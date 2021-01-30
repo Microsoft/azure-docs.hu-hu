@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ff8aa6688d8a838fa2e06d2eef546025cdd9213f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340053"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063196"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Indexelő kapcsolatainak elkészítése privát végponton keresztül
 
@@ -27,7 +27,7 @@ Az indexelő kapcsolódási módszere a következő két követelményre vonatko
 
 ## <a name="shared-private-link-resources-management-apis"></a>Megosztott privát kapcsolatok erőforrásainak kezelési API-jai
 
-Az Azure Cognitive Search API-kkal létrehozott biztonságos erőforrások privát végpontait *megosztott magánhálózati kapcsolati erőforrásoknak*nevezzük. Ennek az az oka, hogy az [Azure Private link szolgáltatással](https://azure.microsoft.com/services/private-link/)integrált erőforráshoz (például egy Storage-fiókhoz) való hozzáférés "megosztás".
+Az Azure Cognitive Search API-kkal létrehozott biztonságos erőforrások privát végpontait *megosztott magánhálózati kapcsolati erőforrásoknak* nevezzük. Ennek az az oka, hogy az [Azure Private link szolgáltatással](https://azure.microsoft.com/services/private-link/)integrált erőforráshoz (például egy Storage-fiókhoz) való hozzáférés "megosztás".
 
 A felügyeleti REST API az Azure Cognitive Search [CreateOrUpdate](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) műveletet biztosít, amellyel konfigurálhatja az Azure Cognitive Search indexelő szolgáltatáshoz való hozzáférést.
 
@@ -47,7 +47,7 @@ Az alábbi táblázat azokat az Azure-erőforrásokat sorolja fel, amelyekhez ki
 
 A [támogatott API-k listájának](/rest/api/searchmanagement/privatelinkresources/listsupported)használatával lekérdezheti azokat az Azure-erőforrásokat is, amelyek esetében a kimenő magánhálózati végpontok kapcsolatai támogatottak.
 
-A cikk további részében a [ARMClient](https://github.com/projectkudu/ARMClient) és a [Poster](https://www.postman.com/) API-k együttes használatával mutatjuk be a REST API hívásokat.
+A cikk további részében az [Azure CLI](https://docs.microsoft.com/cli/azure/) (vagy a [ARMClient](https://github.com/projectkudu/ARMClient) , ha szeretné) és a [Poster](https://www.postman.com/) (vagy bármely más http-ügyfél, például a [curl](https://curl.se/) ) kombinációja az REST API-hívások bemutatására szolgál.
 
 > [!NOTE]
 > A cikkben szereplő példák a következő feltételezéseken alapulnak:
@@ -69,7 +69,11 @@ Konfigurálja úgy a Storage-fiókot, hogy [csak adott alhálózatokról engedé
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>1. lépés: megosztott magánhálózati kapcsolati erőforrás létrehozása a Storage-fiókhoz
 
-Ahhoz, hogy az Azure Cognitive Search egy kimenő magánhálózati végponti kapcsolódást hozzon létre a Storage-fiókhoz, végezze el a következő API-hívást: 
+Ha szeretné, hogy az Azure Cognitive Search hozzon létre egy kimenő magánhálózati végponti kapcsolódást a Storage-fiókhoz, hajtsa végre az alábbi API-hívást, például az [Azure CLI](https://docs.microsoft.com/cli/azure/)-vel: 
+
+`az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
+
+Vagy ha szívesebben szeretné használni a [ARMClient](https://github.com/projectkudu/ARMClient)-t:
 
 `armclient PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 create-pe.json`
 
@@ -98,7 +102,11 @@ Ahogy az összes aszinkron Azure-művelet esetében, a `PUT` hívás egy olyan f
 
 `"Azure-AsyncOperation": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
 
-Ezt az URI-t időnként lekérdezheti a művelet állapotának beszerzéséhez. A folytatás előtt azt javasoljuk, hogy várjon, amíg a megosztott magánhálózati kapcsolat erőforrás-művelete elérte a terminál állapotát (azaz a művelet állapota *sikeres*volt).
+Ezt az URI-t időnként lekérdezheti a művelet állapotának beszerzéséhez. A folytatás előtt azt javasoljuk, hogy várjon, amíg a megosztott magánhálózati kapcsolat erőforrás-művelete elérte a terminál állapotát (azaz a művelet állapota *sikeres* volt).
+
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01`
+
+Vagy a ARMClient használata:
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
 
@@ -119,7 +127,7 @@ Ezt az URI-t időnként lekérdezheti a művelet állapotának beszerzéséhez. 
 
    ![Képernyőkép a Azure Portalről, amely a "Private Endpoint connections" panelt jeleníti meg.](media\search-indexer-howto-secure-access\storage-privateendpoint-approval.png)
 
-1. Válassza ki azt a privát végpontot, amelyet az Azure Cognitive Search hozott létre. A **privát végpont** oszlopban azonosítsa a magánhálózati végponti kapcsolatokat az előző API-ban megadott névvel, válassza a **jóváhagyás**lehetőséget, majd adjon meg egy megfelelő üzenetet. Az üzenet tartalma nem jelentős. 
+1. Válassza ki azt a privát végpontot, amelyet az Azure Cognitive Search hozott létre. A **privát végpont** oszlopban azonosítsa a magánhálózati végponti kapcsolatokat az előző API-ban megadott névvel, válassza a **jóváhagyás** lehetőséget, majd adjon meg egy megfelelő üzenetet. Az üzenet tartalma nem jelentős. 
 
    Győződjön meg arról, hogy a magánhálózati végponti kapcsolatok a következő képernyőképen látható módon jelennek meg. A portálon az állapot frissítése egy-két percet is igénybe vehet.
 
@@ -130,6 +138,10 @@ A magánhálózati végponti kapcsolatfelvételi kérelem jóváhagyása után a
 ### <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>2b. lépés: a megosztott magánhálózati kapcsolati erőforrás állapotának lekérdezése
 
 Annak ellenőrzéséhez, hogy a megosztott magánhálózati kapcsolati erőforrás jóváhagyása után frissült-e, szerezze be az állapotát a [Get API](/rest/api/searchmanagement/sharedprivatelinkresources/get)használatával.
+
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
+
+Vagy a ARMClient használata:
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 

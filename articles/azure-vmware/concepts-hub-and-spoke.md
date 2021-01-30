@@ -3,12 +3,12 @@ title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálás
 description: Ismerje meg, hogyan integrálhat egy Azure-beli VMware-megoldás üzembe helyezését az Azure-ban a sugaras architektúrával.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901385"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062745"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
@@ -76,7 +76,7 @@ Mivel az ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatl
   :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware-megoldás a hub virtuális hálózati forgalmához" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
-Az Azure VMware megoldás hálózatkezelésével és a kapcsolati fogalmakkal kapcsolatos további részleteket az [Azure VMware megoldás termékdokumentációjában](./concepts-networking.md)talál.
+Az Azure VMware megoldás hálózatkezelésével és a kapcsolati fogalmakkal kapcsolatos további információkért tekintse meg az [Azure VMware-megoldás termékdokumentációját](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Forgalom szegmentálása
 
@@ -103,7 +103,7 @@ Egy második szintű forgalmi szegmentálás a küllők és a hub hálózati biz
 
 Az Azure Application Gateway v1-es és v2-es verziója olyan webalkalmazásokkal lett tesztelve, amelyek az Azure VMware megoldás virtuális gépein futnak háttér-készletként. A Application Gateway jelenleg az egyetlen támogatott módszer az Azure VMware-alapú virtuális gépeken futó webalkalmazások interneten keresztüli elérhetővé tétele érdekében. A belső felhasználók számára is biztonságosan teheti elérhetővé az alkalmazásokat.
 
-A részletekért és a követelményekért tekintse át [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) Azure VMware-megoldásra vonatkozó cikket.
+További információkért tekintse meg az Azure VMware-megoldásra vonatkozó cikket [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md).
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="A forgalom szegmentálásának második szintje a hálózati biztonsági csoportok használatával" border="false":::
 

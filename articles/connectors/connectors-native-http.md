@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292455"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062995"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből
 
@@ -46,9 +46,9 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg az üres logikai alkalmazást a Logic app Designerben.
 
-1. A tervező keresési mezőjében válassza a **beépített**lehetőséget. A keresőmezőbe írja be `http` szűrőként a kifejezést. Az **Eseményindítók** listából válassza ki a **http** -eseményindítót.
+1. A tervező keresési mezőjében válassza a **beépített** lehetőséget. A keresőmezőbe írja be `http` szűrőként a kifejezést. Az **Eseményindítók** listából válassza ki a **http** -eseményindítót.
 
-   ![Válassza a HTTP-trigger lehetőséget.](./media/connectors-native-http/select-http-trigger.png)
+   ![HTTP-trigger kiválasztása](./media/connectors-native-http/select-http-trigger.png)
 
    Ez a példa átnevezi a triggert a "HTTP trigger" névre, hogy a lépésnek legyen egy leíró neve. A példa később egy HTTP-műveletet is felvesz, és mindkét névnek egyedinek kell lennie.
 
@@ -56,7 +56,7 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
    ![HTTP-trigger paramétereinek megadása](./media/connectors-native-http/http-trigger-parameters.png)
 
-   Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
+   Ha a **none** értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
    * [Hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
    * [Az erőforrásokhoz való hozzáférés hitelesítése felügyelt identitásokkal](../logic-apps/create-managed-service-identity.md)
@@ -65,7 +65,7 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
 1. Folytassa a logikai alkalmazás munkafolyamatának kialakítását olyan műveletekkel, amelyek az eseményindító indításakor futnak.
 
-1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 <a name="http-action"></a>
 
@@ -77,11 +77,11 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
    Ez a példa a HTTP-triggert használja első lépésként.
 
-1. Válassza ki azt a lépést, ahol a HTTP-műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
+1. Válassza ki azt a lépést, ahol a HTTP-műveletet hozzá szeretné adni, majd kattintson az **új lépés** gombra.
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
-1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `http` szűrőként a kifejezést. A **műveletek** listából válassza ki a **http** -műveletet.
+1. A **válasszon műveletet** területen válassza a **beépített** lehetőséget. A keresőmezőbe írja be `http` szűrőként a kifejezést. A **műveletek** listából válassza ki a **http** -műveletet.
 
    ![HTTP-művelet kiválasztása](./media/connectors-native-http/select-http-action.png)
 
@@ -91,20 +91,20 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
    ![HTTP-műveleti paraméterek megadása](./media/connectors-native-http/http-action-parameters.png)
 
-   Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
+   Ha a **none** értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. A HTTP-n elérhető hitelesítési típusokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
    * [Hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
    * [Az erőforrásokhoz való hozzáférés hitelesítése felügyelt identitásokkal](../logic-apps/create-managed-service-identity.md)
 
 1. Más elérhető paraméterek hozzáadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt paramétereket.
 
-1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, ne felejtse el menteni a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ## <a name="trigger-and-action-outputs"></a>Trigger-és műveleti kimenetek
 
 Itt talál további információt a HTTP-triggerből vagy-műveletből származó kimenetekről, ami visszaadja ezt az információt:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 |----------|------|-------------|
 | `headers` | JSON-objektum | A kérelemben szereplő fejlécek |
 | `body` | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
@@ -209,7 +209,7 @@ Időnként előfordulhat, hogy bizonyos helyzetekben a HTTP-művelet aszinkron v
 
 1. A Logic app Designerben a HTTP-művelet címsorán válassza az ellipszisek (**..**.) gombot, amely megnyitja a művelet beállításait.
 
-1. Keresse meg az **aszinkron minta** beállítást, kapcsolja **ki** a beállítást, ha engedélyezve van, és válassza a **kész**lehetőséget.
+1. Keresse meg az **aszinkron minta** beállítást, kapcsolja **ki** a beállítást, ha engedélyezve van, és válassza a **kész** lehetőséget.
 
    ![Az "aszinkron minta" beállítás letiltása](./media/connectors-native-http/disable-asynchronous-pattern-setting.png)
 
@@ -249,7 +249,7 @@ Ha egy HTTP-trigger vagy-művelet tartalmazza ezeket a fejléceket, Logic Apps e
 
 * `Accept-*` fejlécek, kivéve a következőt: `Accept-version`
 * `Allow`
-* `Content-*` a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és `Content-Type`
+* `Content-*` fejlécek, kivéve a `Content-Disposition` , `Content-Encoding` , és a `Content-Type` post és Put műveletek használatakor, de nem tartalmazza a Get műveletekhez
 * `Cookie`
 * `Expires`
 * `Host`

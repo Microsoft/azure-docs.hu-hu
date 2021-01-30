@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266323"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090960"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure-erőforrások felügyelt identitásának használata Azure-beli virtuális gépen a bejelentkezéshez 
 
@@ -90,12 +90,7 @@ A következő válaszok például azt jelezhetik, hogy a virtuális gép felügy
 - PowerShell: *meghívó-webkérés: nem lehet csatlakozni a távoli kiszolgálóhoz*
 - CLI: *MSI: nem sikerült beolvasni a tokent a `http://localhost:50342/oauth2/token` következő hibával: "HTTPConnectionPool (host =" localhost ", Port = 50342)* 
 
-Ha ezen hibák valamelyikét megkapja, térjen vissza az Azure-beli virtuális géphez a [Azure Portal](https://portal.azure.com) és:
-
-- Lépjen az **Identity (identitás** ) lapra, és győződjön meg róla, hogy a **rendszer hozzárendelve** értéke "igen".
-- Lépjen a **bővítmények** lapra, és győződjön meg arról, hogy a felügyelt identitások az Azure-erőforrások bővítményhez **(a 2019 januári verzióra tervezettek)** üzembe helyezése sikeresen megtörtént.
-
-Ha valamelyik helytelen, lehetséges, hogy újra telepítenie kell az Azure-erőforrásokhoz tartozó felügyelt identitásokat az erőforráson, vagy hibaelhárítást kell végeznie az üzembe helyezési hiba miatt. Ha segítségre van szüksége a virtuálisgép-konfigurációval kapcsolatban, tekintse [meg a felügyelt identitások konfigurálása az Azure-erőforrásokhoz a Azure Portal segítségével](qs-configure-portal-windows-vm.md) című témakört.
+Ha ezen hibák valamelyike megjelenik, térjen vissza az Azure-beli virtuális géphez a [Azure Portal](https://portal.azure.com) , és nyissa meg az **Identity (identitás** ) lapot, és gondoskodjon róla, hogy a **rendszer hozzárendelve** legyen az "igen" értékre.
 
 ## <a name="next-steps"></a>Következő lépések
 

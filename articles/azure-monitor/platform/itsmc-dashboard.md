@@ -1,63 +1,62 @@
 ---
 title: Hibák vizsgálata az irányítópult használatával
-description: Ez a dokumentum az irányítópult használatával végzett hibák vizsgálatával kapcsolatos információkat tartalmaz
+description: Ez a dokumentum a ITSMC-irányítópulton előforduló hibákról tartalmaz információkat.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ebd59e637e498b8088fe9a302b1bb12efdf2c173
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599026"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089275"
 ---
-# <a name="error-investigation-using-the-dashboard"></a>Hibák vizsgálata az irányítópult használatával
+# <a name="investigate-errors-by-using-the-itsmc-dashboard"></a>Hibák vizsgálata a ITSMC-irányítópult használatával
 
-Ez az oldal az ITSM-összekötő irányítópultjának információit tartalmazza. Ez az irányítópult segítséget nyújt az ITSM-összekötő állapotának vizsgálatához.
+Ez a cikk a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) irányítópultról tartalmaz információkat. Az irányítópult segítségével megvizsgálhatja a ITSMC állapotát.
 
-## <a name="how-to-view-the-dashboard"></a>Az irányítópult megtekintése
+## <a name="view-the-dashboard"></a>Az irányítópult megtekintése
 
-Az irányítópulton található hibák megtekintéséhez kövesse a következő lépéseket:
+Az irányítópult megnyitásához kövesse az alábbi lépéseket.
 
-1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati (*a munkaterület neve*)**:
+1. Válassza a **minden erőforrás** elemet, majd keresse meg **a ügyfélszolgálati (*a munkaterület nevét*)**.
 
-   ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-definition/create-new-connection-from-resource.png)
+   ![Képernyőkép, amely az Azure-szolgáltatások erőforrásait jeleníti meg.](media/itsmc-definition/create-new-connection-from-resource.png)
 
-2. A bal oldali ablaktábla **munkaterület-adatforrások** területén válassza a **ITSM-kapcsolatok** elemet:
+1. A bal oldali ablaktáblán válassza a **munkaterület-adatforrások** lehetőséget, majd válassza az **ITSM kapcsolatok** elemet.
 
-   ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok menüpontot.](media/itsmc-overview/add-new-itsm-connection.png)
+   ![Képernyőfelvétel: a ITSM-kapcsolatok kiválasztása a munkahelyi adatforrások között.](media/itsmc-overview/add-new-itsm-connection.png)
 
-3. A bal oldali mező **Összegzés** területén **it-szolgáltatásmenedzsmenti csatoló** válassza az **Összefoglalás megtekintése** lehetőséget:
+1. Az összefoglalás **szakaszban az** összefoglalás **megtekintése** elemre kattintva megtekintheti az összegző diagramot.
 
-    ![A megtekintés összegzését bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+    ![Az összefoglalás szakaszban az összefoglalás megtekintése lehetőséget megjelenítő képernyőkép.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
 
-4. A bal oldali mező **Összegzés** területén **it-szolgáltatásmenedzsmenti csatoló** kattintson a gráfra:
+1. Válassza ki a diagramot az **Összefoglalás** szakaszban az irányítópult megnyitásához.
 
-    ![A diagramot bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+    ![Az összegző gráf kijelölését bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
 
-5. Az irányítópult használatával áttekintheti az összekötő állapotát és hibáit.
-    ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/connector-dashboard.png)
+1. Tekintse át az irányítópult állapotát, valamint az összekötővel kapcsolatos esetleges hibákat.
+    ![Az irányítópultot megjelenítő képernyőkép.](media/itsmc-resync-servicenow/connector-dashboard.png)
 
-## <a name="dashboard-elements"></a>Irányítópult-elemek
+## <a name="understand-dashboard-elements"></a>Irányítópult-elemek ismertetése
 
-Az irányítópult a ITSM eszközre a jelen összekötő használatával továbbított riasztásokkal kapcsolatos információkat tartalmaz.
-Az irányítópult négy részre oszlik:
+Az irányítópult a ITSM eszközbe a jelen összekötő használatával továbbított riasztásokkal kapcsolatos információkat tartalmaz.
 
-1. Munkaelem létrehozva: a gráf és az alábbi táblázat a munkaelemek számát tartalmazza típus szerint. Ha a diagramra vagy a táblázatra kattint, további részleteket láthat a munkaelemekről.
-    ![Képernyőkép, amely a létrehozott munkaelemet jeleníti meg.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
-2. Érintett számítógépek: a táblák tartalmazzák a konfigurációs elemeket létrehozó konfigurációs elemek részleteit.
-    A táblák soraira kattintva további részleteket is megtudhat a konfigurációs elemekről.
-    A tábla csak korlátozott számú sort tartalmaz, ha meg szeretné tekinteni az összes listát, amelyre rákattinthat az "összes megjelenítése" lehetőségre.
-    ![Az érintett számítógépeket bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
-3. Összekötő állapota: a gráf és az alábbi táblázat az összekötő állapotával kapcsolatos üzeneteket tartalmaz. A táblázat soraiban található gráfra kattintva további részleteket tudhat meg az összekötő állapota üzenetekről.
-    A tábla csak korlátozott számú sort tartalmaz, ha meg szeretné tekinteni az összes listát, amelyre rákattinthat az "összes megjelenítése" lehetőségre.
+Az irányítópult négy szakaszra oszlik:
 
-    A táblázatban található üzenetekre vonatkozó részleteket [itt](itsmc-dashboard-errors.md)tekintheti meg.
+- **Létrehozott MUNKAelemek**: a gráf és a tábla a munkaelemek típus szerinti számát jeleníti meg. Válassza ki a gráfot vagy a táblázatot, ahol többet tudhat meg a munkaelemekről.
+      ![A munkaelemek létrehozásáról szóló szakaszt bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+- Érintett **számítógépek**: a tábla a munkaelemeket létrehozó konfigurációs elemek részleteit tartalmazza.
+      A konfigurációs elemekkel kapcsolatos további részletekért válassza a táblák sorait.
+      A tábla korlátozott számú sort tartalmaz. A teljes lista megtekintéséhez válassza az **összes** megjelenítése lehetőséget.
+      ![A befolyásolt számítógépek szakaszt bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+- **Összekötő állapota**: a gráf és a tábla az összekötő állapotával kapcsolatos információkat jeleníti meg. További részletekért válassza ki a diagramot vagy az üzeneteket a táblázatban. A tábla korlátozott számú sort mutat be. A teljes lista megtekintéséhez válassza az **összes** megjelenítése lehetőséget.
+      ![Képernyőkép, amely az összekötő állapota szakaszt jeleníti meg.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+- **Riasztási szabályok**: Ez a szakasz a észlelt riasztási szabályok számával kapcsolatos információkat tartalmazza. Az észlelt szabályokkal kapcsolatos további részletekért válassza a táblák sorait. A tábla korlátozott számú sorral rendelkezik. A teljes lista megtekintéséhez válassza az **összes** megjelenítése lehetőséget.
+      ![A riasztási szabályok szakaszt bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
-    ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
-4. Riasztási szabályok: a táblák tartalmazzák az észlelt riasztási szabályok számával kapcsolatos információkat.
-    A táblák soraira kattintva további részleteket is megtudhat az észlelt szabályokról.
-    A tábla csak korlátozott számú sort tartalmaz, ha meg szeretné tekinteni az összes listát, amelyre rákattinthat az "összes megjelenítése" lehetőségre.
-    ![A riasztási szabályokat bemutató képernyőkép.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
+## <a name="next-steps"></a>Következő lépések
+
+Tekintse meg az [Összekötők állapotával kapcsolatos gyakori hibákat](itsmc-dashboard-errors.md).

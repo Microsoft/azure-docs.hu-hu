@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740346"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089224"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>A Azure Active Directory szerepköreinek megismerése
 
@@ -61,10 +61,10 @@ A következő táblázat segítséget nyújt a szerepkör-kategóriák megismer�
 Kategória | Szerepkör
 ---- | ----
 Azure AD-specifikus szerepkörök | alkalmazás-rendszergazda<br>Alkalmazásfejlesztő<br>Hitelesítés rendszergazdája<br>B2C IEF kulcskészlet rendszergazdája<br>B2C IEF házirend rendszergazdája<br>Felhőalkalmazás-rendszergazda<br>Felhőalapú eszköz rendszergazdája<br>Feltételes hozzáférésű rendszergazda<br>Eszközrendszergazdák<br>Directory-olvasók<br>Címtár-szinkronizálási fiókok<br>Címtár-írók<br>Külső azonosító – felhasználói folyamat rendszergazdája<br>Külső azonosító felhasználói flow-attribútumának rendszergazdája<br>Külső identitás-szolgáltató rendszergazdája<br>Csoportok rendszergazdája<br>Vendég meghívója<br>Segélyszolgálat rendszergazdája<br>Hibrid identitás-rendszergazda<br>Licenc rendszergazdája<br>Partneri Tier1-támogatás<br>Partneri szint-támogatás<br>Jelszó-rendszergazda<br>Kiemelt jogosultságú hitelesítés rendszergazdája<br>Kiemelt szerepkörű rendszergazda<br>Jelentések olvasója<br>Felhasználói fiók rendszergazdája
-Szolgáltatások közötti szerepkörök | Vállalati rendszergazda<br>Megfelelőségi rendszergazda<br>Megfelelőségi adatkezelő<br>Globális olvasó<br>Biztonsági rendszergazda<br>Biztonsági operátor<br>Biztonsági olvasó<br>Szolgáltatás-támogatási rendszergazda
+Szolgáltatások közötti szerepkörök | Globális rendszergazda<br>Megfelelőségi rendszergazda<br>Megfelelőségi adatkezelő<br>Globális olvasó<br>Biztonsági rendszergazda<br>Biztonsági operátor<br>Biztonsági olvasó<br>Szolgáltatás-támogatási rendszergazda
 Szolgáltatás-specifikus szerepkörök | Azure DevOps-rendszergazda<br>Azure Information Protection rendszergazda<br>Számlázási adminisztrátor<br>CRM szolgáltatás rendszergazdája<br>Ügyfél-kulcstároló hozzáférési jóváhagyója<br>Asztali elemzési rendszergazda<br>Exchange szolgáltatás rendszergazdája<br>Az Áttekintés rendszergazdája<br>Üzleti vezető<br>Intune szolgáltatás rendszergazdája<br>Kaizala-rendszergazda<br>Lync szolgáltatás rendszergazdája<br>A Message Center adatvédelmi olvasója<br>Üzenetközpont-olvasó<br>Modern kereskedelmi felhasználó<br>Hálózati rendszergazda<br>Office-alkalmazások rendszergazdája<br>Power BI-szolgáltatásadminisztrátor<br>Energiagazdálkodási platform rendszergazdája<br>Nyomtató rendszergazdája<br>Nyomtató technikusa<br>Keresés a Rendszergazdában<br>Keresési szerkesztő<br>SharePoint szolgáltatás rendszergazdája<br>Csapatok kommunikációs rendszergazdája<br>Csapat kommunikációs támogató mérnök<br>A Teams Communications támogatási szakértője<br>Csapatok eszközeinek rendszergazdája<br>Teams szolgáltatás rendszergazdája
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD szerepköralapú hozzáférés-vezérlésének áttekintése](custom-overview.md)
 - Szerepkör-hozzárendelések létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](custom-create.md) használatával

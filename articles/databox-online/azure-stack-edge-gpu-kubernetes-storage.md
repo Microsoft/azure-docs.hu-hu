@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448698"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063312"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes a Azure Stack Edge Pro GPU-eszközön
 
@@ -79,11 +79,11 @@ A következő lépések történnek:
 
 Az Azure Stack Edge Pro-eszközön a statikusan kiépített `PersistentVolumes` eszközök a tárolási képességek használatával jönnek létre. Ha kiépít egy megosztást, és **használja a megosztás az Edge használatával számítási** lehetőséget, ez a művelet automatikusan létrehoz egy PV-erőforrást a Kubernetes-fürtben.
 
-![Helyi megosztás létrehozása a Azure Portalban statikus kiépítés esetén](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![Helyi megosztás létrehozása a Azure Portalban statikus kiépítés esetén](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 A Felhőbeli rétegek használatához létrehozhat egy Edge-Felhőbeli megosztást a megosztás az Edge számítási funkcióval lehetőséggel való használatával. A rendszer automatikusan létrehoz egy PV-t ehhez a megosztáshoz. A peremhálózati megosztásba írt alkalmazásadatok a felhőbe vannak bontva. 
 
-![Felhőalapú megosztás létrehozása Azure Portal statikus kiépítés esetén](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![Felhőalapú megosztás létrehozása Azure Portal statikus kiépítés esetén](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 SMB-és NFS-megosztásokat is létrehozhat a Azure Stack Edge Pro-eszközön lévő PVs statikus kiépítéséhez. A PV kiépítés után egy PVC-t fog küldeni a tároló igényléséhez. Íme egy példa egy olyan PVC-telepítésre, `yaml` amely a tárterületet állítja be, és az Ön által kiépített megosztásokat használja.
 
@@ -143,7 +143,7 @@ Előfordulhat, hogy az üzembe helyezett munkaterheléstől függően ki kell v�
 A hozzáférési módokkal kapcsolatos további információkért lásd: [Kubernetes-kötetek hozzáférési módja](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A statikus kiépítésének megismeréséhez `PersistentVolume` lásd:
 

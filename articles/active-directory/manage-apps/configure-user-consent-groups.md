@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: b318ed0d5cd97ca7c020097dff25516f0783c70e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 719bdd6a4d629bb4a35e7e11631670b0340e72a6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055297"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090010"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>A csoportra vonatkozó adatokhoz hozzáférő alkalmazások csoportbeli tulajdonosi engedélyének konfigurálása
 
@@ -31,7 +31,7 @@ Beállíthatja, hogy mely felhasználók férjenek hozzá a csoportjaihoz vagy a
 
 Az alábbi lépéseket követve kezelheti a csoport tulajdonosának a csoportra vonatkozó adatokhoz való hozzáférését:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator).
 2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **beleegyezett és engedélyek**  >  **felhasználói beleegyező beállításait**.
 3. Az **adatokhoz hozzáférő alkalmazások csoport tulajdonosi engedélye** területen válassza ki az engedélyezni kívánt beállítást.
 4. A beállítások mentéséhez kattintson a **Mentés** gombra.

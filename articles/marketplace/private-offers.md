@@ -6,62 +6,69 @@ ms.service: marketplace
 ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 07/01/2020
-ms.openlocfilehash: fdd8c752e8cf610ef3c32e1af91b3ad6454c0813
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/28/2021
+ms.openlocfilehash: 786ecbf553ace6a90515347e8138eeb6e022589b
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95971701"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063096"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privát ajánlatok a Microsoft kereskedelmi piactéren
 
-A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát ajánlatai lehetővé teszik a kiadók számára, hogy olyan csomagokat hozzanak létre, amelyek csak a célcsoportok számára láthatók. Ez a cikk a privát ajánlatok lehetőségeit és előnyeit ismerteti.
+A privát ajánlatok, más néven a privát csomagok lehetővé teszik a kiadók számára, hogy olyan csomagokat hozzanak létre, amelyek csak a célközönség számára láthatók. Ez a cikk a privát ajánlatok lehetőségeit és előnyeit ismerteti.
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>A vállalati ajánlatok feloldása privát ajánlatokkal
 
-A nagyvállalati ügyfelek egyre gyakrabban használják online piactéreket a felhőalapú megoldások keresésére, kipróbálására és megvásárlására. A privát ajánlatokkal a kiadók a piactéren testre szabott megoldásokat használhatnak a megcélzott ügyfelekkel a vállalatok által igényelt képességekkel:
+A privát ajánlatok létrehozásával a kiadók olyan testreszabott megoldásokat használhatnak, amelyek a vállalat által igényelt képességeket biztosítanak a felhasználóknak:
 
-- Az *egyeztetett díjszabás* lehetővé teszi, hogy a kiadók a nyilvánosan elérhető ajánlatokból származó kedvezményeket és off-listázási díjszabást terjesszenek.
-- A *privát feltételek és kikötések* lehetővé teszik a kiadók számára a használati feltételek egy adott ügyfélhez való személyre szabását.
-- A *speciális konfigurációk* lehetővé teszik a kiadók számára a Virtual Machines, az Azure-alkalmazások és az SaaS-alkalmazások személyre szabását az ügyfelek igényei szerint. Ez a beállítás azt is lehetővé teszi, hogy a kiadók az új termékek funkcióinak előzetes hozzáférését is megadják, mielőtt szélesebb körben kellene elindítani az összes ügyfelet
+- Az _egyeztetett díjszabás_ lehetővé teszi, hogy a kiadók a nyilvánosan elérhető ajánlatokból származó kedvezményeket és off-listázási díjszabást terjesszenek.
+- A _privát feltételek és kikötések_ lehetővé teszik a kiadók számára a használati feltételek egy adott ügyfélhez való személyre szabását.
+- A _speciális konfigurációk_ lehetővé teszik a kiadók számára a Virtual Machines, az Azure-alkalmazások és a szolgáltatott szoftverek (SaaS) személyre szabását az ügyfelek igényei szerint. Ez a beállítás azt is lehetővé teszi, hogy a kiadók előzetes hozzáférést biztosítanak az új termékek szolgáltatásaihoz, mielőtt az összes ügyfélnek elindítsák azokat.
 
-A privát ajánlatok lehetővé teszik a kiadók számára, hogy kihasználják a nyilvános piactér skálázhatóságát és globális rendelkezésre állását, valamint az egyéni ajánlatok és konfigurációk egyeztetéséhez és megvalósításához szükséges rugalmasságot és irányítást. Ezek a funkciók együttesen nyitják meg az ajtót a Felhőbeli piactérek erős nagyvállalati bevezetéséhez. A vállalatok mostantól megvásárolhatják és értékesíthetik a várható és a keresletet.
+A privát ajánlatok lehetővé teszik a kiadók számára, hogy kihasználják a nyilvános piactér skálázhatóságát és globális rendelkezésre állását, valamint az egyéni ajánlatok és konfigurációk egyeztetéséhez és megvalósításához szükséges rugalmasságot és irányítást. A vállalatok mostantól a várt módon vásárolhatnak és értékesíthetők 
 
-Mostantól elérhetők a virtuális gépek, az Azure-alkalmazások (megoldás-sablonok vagy felügyelt alkalmazások) és az SaaS-alkalmazások.
-
-<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](). Customers can be granted or revoked access to private offers in minutes.
---->
-
-## <a name="creating-private-offers-using-plans"></a>Privát ajánlatok létrehozása csomagok használatával
+## <a name="create-private-offers-using-plans"></a>Privát ajánlatok létrehozása csomagok használatával
 
 A *csomagokkal rendelkező új vagy meglévő ajánlatok* esetében a kiadók egyszerűen létrehozhatnak új, privát változatokat új csomagok (korábbi nevén SKU) létrehozásával és magánjellegűként való megjelölésével. Minden ajánlat legfeljebb 45 privát csomaggal rendelkezhet.
 
 <!--- [Private SKUs]() --->
 
-A Private-csomagok egy ajánlat összetevői, és csak a megtervezett ügyfelek számára láthatók és megvásárolhatóak. A privát csomagok felhasználhatják a nyilvános csomagokhoz már közzétett alaplemezképeket és/vagy ajánlati metaadatokat. Ez a beállítás lehetővé teszi, hogy a kiadók a nyilvános ajánlatok több privát változatát is létrehozzák anélkül, hogy ugyanazon alaprendszerkép több verzióját kellene közzétenniük, és a metaadatokat is el kellene készíteni. A virtuális gépek és az Azure-alkalmazások esetében csak akkor érhető el, ha egy privát csomag nyilvános csomaggal rendelkező alaprendszerképet oszt meg, az ajánlat alaprendszerképének minden módosítása az adott alaprendszerkép használatával lesz propagálva az összes nyilvános és privát csomagra.
+A Private-csomagok a következő típusú ajánlatokhoz érhetők el:
 
-Az olyan *új ajánlatok esetében, amelyek csak privát csomagokat foglalnak magukban*, a kiadók az ajánlatokat bármely más ajánlatként hozhatják létre, majd megjelölik magánjellegűként a terveket. Azok az ajánlatok, amelyek csak privát csomagokkal rendelkeznek, nem lesznek felderíthetők vagy elérhetők a Microsoft kereskedelmi piactéren, illetve az ajánlathoz nem társított ügyfelek által [Azure Portal](https://azure.microsoft.com/features/azure-portal/) .
+- Azure-beli virtuális gép
+- Azure-alkalmazás (megoldási sablonként vagy felügyelt alkalmazásként implementálva)
+- Felügyelt szolgáltatás
+- SaaS-ajánlatok
 
-A Private-csomagok az Azure globális és Azure Government egyaránt elérhetők.
+A Private-csomagok egy ajánlat összetevői, és csak a megtervezett ügyfelek számára láthatók és megvásárolhatóak. A privát csomagok csak a megcélzó ügyfelek számára láthatók és megvásárolhatóak.  Privát csomagok is elérhetők az Azure globális és Azure Government ügyfelei számára.
+
+A privát csomagok felhasználhatják a nyilvános csomagokhoz már közzétett alaplemezképeket és/vagy ajánlati metaadatokat. Ez a beállítás lehetővé teszi, hogy a kiadók a nyilvános ajánlatok több privát változatát is létrehozzák anélkül, hogy ugyanazon alaprendszerkép több verzióját kellene közzétenni, és a metaadatokat is. Az Azure-beli virtuális gépek és az Azure-alkalmazások esetében csak akkor érhető el, ha egy privát csomag nyilvános csomaggal rendelkező alaprendszerképet oszt meg, az ajánlat alaprendszerképének minden változása az adott alaprendszerkép használatával lesz propagálva az összes nyilvános és privát csomagon.
+
+Az olyan *új ajánlatok esetében, amelyek csak privát csomagokat foglalnak magukban*, a kiadók az ajánlatokat bármely más ajánlatként hozhatják létre, majd megjelölik magánjellegűként a terveket. Azok az ajánlatok, amelyek csak privát csomagokkal rendelkeznek, nem lesznek felderíthetők, vagy az ajánlathoz nem társított ügyfelek által [Azure Portal](https://azure.microsoft.com/features/azure-portal/) elérhetők.
 
 >[!NOTE]
 >A csak privát csomagokat tartalmazó ajánlat nem jelenik meg a nyilvános Azure piactéren vagy AppSource.
 
-## <a name="targeting-customers-with-private-offers"></a>Ügyfelek célzása privát ajánlatokkal
+## <a name="target-customers-with-private-offers"></a>Ügyfelek megcélzása privát ajánlatokkal
 
-A kiadók az új és a meglévő privát ajánlatok esetében is megcélozhatja az ügyfeleket az előfizetés-azonosítók használatával. A virtuális gépet vagy Azure-alkalmazási ajánlatot használó közzétevők egy egyéni Azure-előfizetés-AZONOSÍTÓra korlátozhatja a privát csomag rendelkezésre állását, vagy akár 20 000 Azure-előfizetési azonosítóval rendelkező CSV-t is feltölthet. A SaaS-alkalmazások privát ajánlatának használata során a kiadók hozzárendelhet egy bérlői azonosítót, hogy korlátozzák a privát csomag rendelkezésre állását a manuális vagy CSV-feltöltési módszer használatával.
+A kiadók az új és a meglévő privát ajánlatok esetében is megcélozhatja az ügyfeleket az előfizetés-azonosítók használatával. Az Azure-beli virtuális gépek, az Azure-alkalmazások és a felügyelt szolgáltatások ajánlatai esetében a kiadók egy egyéni Azure-előfizetési AZONOSÍTÓra korlátozhatja a privát csomag rendelkezésre állását, vagy akár 10 000 Azure-előfizetés azonosítóját tartalmazó CSV-t is feltölthet Az SaaS-ajánlatok esetében a kiadók hozzárendelhet egy Azure Active Directory bérlői azonosítót, hogy korlátozzák a privát csomag rendelkezésre állását a manuális vagy CSV-feltöltési módszer használatával.
 
-Az ajánlat minősítése és közzététele után az ügyfelek perceken belül frissíthetik vagy eltávolíthatják a csomagot a privát előfizetések szinkronizálása funkció használatával. Ez a funkció lehetővé teszi a kiadók számára, hogy gyorsan és egyszerűen frissítse azon ügyfelek listáját, amelyekhez a privát csomag az ajánlat hitelesítése vagy közzététele nélkül jelenik meg.
-
->[!NOTE]
->Az Azure gov alkalmazhatósága: a (z) magán-ajánlatok (vagy pontosabban: Private-csomagok) elérhetők a gov cloudhoz, mint bármely más ajánlat. Egy csomag az állapotot magánjellegűről nyilvánosra is átválthatja, és fordítva. Az ajánlat elérhetővé tételére használt felhő a partneri központon keresztül konfigurálható. 
+Az ajánlat minősítésének és közzétételének megtörténtét követően a privát előfizetések szinkronizálása funkció használatával frissítheti vagy eltávolíthatja a csomagot. Ez a funkció lehetővé teszi a kiadók számára, hogy gyorsan és egyszerűen frissítse azon ügyfelek listáját, amelyekhez a privát csomag az ajánlat hitelesítése vagy közzététele nélkül jelenik meg.
 
 ## <a name="deploying-private-offers"></a>Privát ajánlatok üzembe helyezése
 
-A privát ajánlatok csak a [Azure Portalon](https://azure.microsoft.com/features/azure-portal/) keresztül érhetők el, és nem jelennek meg [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en. Ha többet szeretne megtudni arról, hogyan lehet közzétenni a különböző kereskedelmi piactér online áruházait, tekintse meg [a közzétételi lehetőség meghatározása](./determine-your-listing-type.md)című témakört.
+Miután bejelentkezett a Azure Portalba, az ügyfelek az alábbi lépéseket követve választhatják ki saját ajánlatait.
 
-Miután bejelentkezett a Azure Portalba, az ügyfelek kiválaszthatják a piactér navigációs elemét a privát ajánlatokhoz való hozzáféréshez. A privát ajánlatok is megjelennek a keresési eredmények között, és parancssorból és Azure Resource Manager-sablonokból is üzembe helyezhetők, mint bármely más ajánlat.
+1. Jelentkezzen be [Azure Portal](https://ms.portal.azure.com/).
+1. Az **Azure-szolgáltatások** területen válassza **az erőforrás létrehozása** lehetőséget.
+1. Az **új** lapon az **Azure Marketplace** mellett kattintson az **összes** megjelenítése elemre. Megjelenik a piactér lap.
+1. A bal oldali navigációs sávon válassza a **privát ajánlatok** lehetőséget.
+
+> [!NOTE]
+> A privát ajánlatok csak [Azure Portalban](https://azure.microsoft.com/features/azure-portal/)felderíthetők. Nem jelennek meg [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en. Ha többet szeretne megtudni arról, hogyan lehet közzétenni a különböző kereskedelmi piactér online áruházait, tekintse meg a [listázási lehetőségek bemutatása](./determine-your-listing-type.md)című témakört.
+
+A privát ajánlatok is megjelennek a keresési eredmények között, és parancssorból és Azure Resource Manager-sablonokból is üzembe helyezhetők, mint bármely más ajánlat.
 
 ![[Privát ajánlatok]](./media/marketplace-publishers-guide/private-offer.png)
 

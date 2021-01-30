@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b1c0e91b08fff80c0308c0ead5fabce903421adc
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649568"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090120"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -108,7 +108,7 @@ Az összekötő egy ügyféltanúsítványt használ az alkalmazásproxy szolgá
 Az összekötő első beállításakor a következő flow-események lépnek életbe:
 
 1. A szolgáltatáshoz való regisztráció az összekötő telepítésének részeként történik. A rendszer felszólítja a felhasználókat az Azure AD-rendszergazdai hitelesítő adataik megadására. Ekkor a hitelesítésből beszerzett token jelenik meg az Azure AD Application Proxy szolgáltatásban.
-2. Az alkalmazásproxy szolgáltatás kiértékeli a jogkivonatot. Ellenőrzi, hogy a felhasználó a bérlő vállalati rendszergazdája-e. Ha a felhasználó nem rendszergazda, a folyamat megszakad.
+2. Az alkalmazásproxy szolgáltatás kiértékeli a jogkivonatot. Ellenőrzi, hogy a felhasználó a bérlő globális rendszergazdája-e. Ha a felhasználó nem rendszergazda, a folyamat megszakad.
 3. Az összekötő létrehoz egy ügyféltanúsítvány-kérelmet, és továbbítja azt a jogkivonattal együtt az alkalmazásproxy szolgáltatásnak. A szolgáltatás pedig ellenőrzi a jogkivonatot, és aláírja az ügyféltanúsítvány-kérelmet.
 4. Az összekötő az ügyféltanúsítványt használja az alkalmazásproxy szolgáltatással folytatott jövőbeli kommunikációhoz.
 5. Az összekötő a szolgáltatásból a rendszerkonfigurációs adatok kezdeti lekérését végzi az ügyféltanúsítvány használatával, és most már készen áll a kérelmekre.

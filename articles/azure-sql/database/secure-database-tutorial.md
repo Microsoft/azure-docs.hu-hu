@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985858"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089292"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ További tudnivalókat a [Azure SQL Database biztonsági áttekintése](./securi
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- [Az SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Egy [kiszolgáló](logical-servers.md) és egy önálló adatbázis
   - Létrehozás a [Azure Portal](single-database-create-quickstart.md), a [CLI](az-cli-script-samples-content-guide.md)vagy a [PowerShell használatával](powershell-script-content-guide.md)
 
@@ -124,7 +124,7 @@ Az Azure AD-rendszergazda beállítása:
     ![az Active Directory kiválasztása](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
-    > A feladat végrehajtásához "vállalati rendszergazda" vagy "globális rendszergazda" értékűnek kell lennie.
+    > A feladat elvégzéséhez globális rendszergazdának kell lennie.
 
 1. A **rendszergazda hozzáadása** lapon keresse meg és válassza ki az ad felhasználót vagy csoportot, majd válassza a **kiválasztás** lehetőséget. A Active Directory összes tagja és csoportja szerepel a felsorolásban, és a szürkén megadott bejegyzések nem támogatottak Azure AD-rendszergazdákként. Lásd: [Azure ad-szolgáltatások és korlátozások](authentication-aad-overview.md#azure-ad-features-and-limitations).
 

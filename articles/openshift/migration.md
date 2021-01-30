@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: Migrálás, ARO, openshift, Red Hat
-ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469745"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071035"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrálás az Azure Red Hat OpenShift 3,11-ről az Azure Red Hat OpenShift 4-re
 
@@ -75,13 +75,13 @@ az aro create \
 
 Ahhoz, hogy a felhasználók kapcsolatba lépjenek az Azure Red Hat OpenShift, először hitelesíteniük kell magukat a fürtön. A hitelesítési réteg azonosítja az Azure Red Hat OpenShift API-hoz érkező kérésekhez társított felhasználót. Az engedélyezési réteg ezután a kérelmező felhasználóval kapcsolatos információkat használ annak megállapítására, hogy a kérelem engedélyezett-e.
 
-Egy Azure Red Hat OpenShift-fürt létrehozásakor létrejön egy ideiglenes rendszergazda felhasználó. [Kapcsolódjon a fürthöz](tutorial-connect-cluster.md), vegyen fel felhasználókat és csoportokat, és [konfigurálja a megfelelő engedélyeket](https://docs.openshift.com/aro/4/authentication/understanding-authentication.html) mindkettőhöz.
+Egy Azure Red Hat OpenShift-fürt létrehozásakor létrejön egy ideiglenes rendszergazda felhasználó. [Kapcsolódjon a fürthöz](tutorial-connect-cluster.md), vegyen fel felhasználókat és csoportokat, és [konfigurálja a megfelelő engedélyeket](https://docs.openshift.com/container-platform/4.6/authentication/understanding-authentication.html) mindkettőhöz.
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
-Az Azure Red Hat OpenShift 4 néhány különböző operátort használ a hálózat beállításához a fürtben: a [fürt hálózati kezelője](https://docs.openshift.com/aro/4/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), a [DNS-operátor](https://docs.openshift.com/aro/4/networking/dns-operator.html)és a [Bejövő forgalom kezelője](https://docs.openshift.com/aro/4/networking/ingress-operator.html). Az Azure Red Hat OpenShift 4 fürt hálózatkezelésének beállításával kapcsolatos további információkért tekintse meg a hálózatkezelés [diagramot](concepts-networking.md) és a [hálózatkezelés megismerését](https://docs.openshift.com/aro/4/networking/understanding-networking.html)ismertető témakört.
+Az Azure Red Hat OpenShift 4 néhány különböző operátort használ a hálózat beállításához a fürtben: a [fürt hálózati kezelője](https://docs.openshift.com/container-platform/4.6/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), a [DNS-operátor](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html)és a [Bejövő forgalom kezelője](https://docs.openshift.com/container-platform/4.6/networking/ingress-operator.html). Az Azure Red Hat OpenShift 4 fürt hálózatkezelésének beállításával kapcsolatos további információkért tekintse meg a hálózatkezelés [diagramot](concepts-networking.md) és a [hálózatkezelés megismerését](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html)ismertető témakört.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 Az Azure Red Hat OpenShift 4 a következő PersistentVolume beépülő modulokat támogatja:
 
 - AWS rugalmas blokk-tároló (EBS)
@@ -98,13 +98,13 @@ A tárolási típusok konfigurálásával kapcsolatos információkért lásd: a
 
 ### <a name="registry"></a>Regisztrációs adatbázis
 
-Az Azure Red Hat OpenShift 4 képes képeket készíteni a forráskódból, üzembe helyezheti és felügyelheti az életciklusát. Ennek engedélyezéséhez az Azure Red Hat OpenShift 4 [belső, integrált tároló lemezkép-regisztrációs adatbázist](https://docs.openshift.com/aro/4/registry/registry-options.html) biztosít, amely az Azure Red Hat OpenShift-környezetben üzembe helyezhető a lemezképek helyi kezeléséhez.
+Az Azure Red Hat OpenShift 4 képes képeket készíteni a forráskódból, üzembe helyezheti és felügyelheti az életciklusát. Ennek engedélyezéséhez az Azure Red Hat OpenShift 4 [belső, integrált tároló lemezkép-regisztrációs adatbázist](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) biztosít, amely az Azure Red Hat OpenShift-környezetben üzembe helyezhető a lemezképek helyi kezeléséhez.
 
-Ha külső beállításjegyzékeket használ, például a [Azure Container Registry](../container-registry/index.yml), a [Red Hat Quay-jegyzékeket](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)vagy egy [hitelesítést engedélyező Red Hat-regisztrációt](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), kövesse a hitelesítő adatok megadásához szükséges lépéseket a fürt számára, hogy a fürt hozzáférjen a tárházhoz.
+Ha külső beállításjegyzékeket használ, például a [Azure Container Registry](../container-registry/index.yml), a [Red Hat Quay-jegyzékeket](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)vagy egy [hitelesítést engedélyező Red Hat-regisztrációt](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), kövesse a hitelesítő adatok megadásához szükséges lépéseket a fürt számára, hogy a fürt hozzáférjen a tárházhoz.
 
 ### <a name="monitoring"></a>Figyelés
 
-Az Azure Red Hat OpenShift tartalmaz egy előre konfigurált, előre telepített és önfrissítő figyelési veremet, amely a Prometheus nyílt forráskódú projekten és a tágabb ökoszisztémán alapul. Lehetővé teszi a fürt összetevőinek figyelését, és riasztásokat tartalmaz, amelyek azonnal értesítik a fürt rendszergazdáit az esetleges problémákról és a Grafana-irányítópultokról. A fürt figyelési vereme csak az Azure Red Hat OpenShift-fürtök figyelésére használható. További információ: [a fürtök figyelése az Azure Red Hat OpenShift](https://docs.openshift.com/aro/4/monitoring/cluster_monitoring/about-cluster-monitoring.html).
+Az Azure Red Hat OpenShift tartalmaz egy előre konfigurált, előre telepített és önfrissítő figyelési veremet, amely a Prometheus nyílt forráskódú projekten és a tágabb ökoszisztémán alapul. Lehetővé teszi a fürt összetevőinek figyelését, és riasztásokat tartalmaz, amelyek azonnal értesítik a fürt rendszergazdáit az esetleges problémákról és a Grafana-irányítópultokról. A fürt figyelési vereme csak az Azure Red Hat OpenShift-fürtök figyelésére használható. További információ: [a fürtök figyelése az Azure Red Hat OpenShift](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
 Ha [Azure monitort használ a tárolók számára az Azure Red Hat OpenShift 3,11](../azure-monitor/insights/container-insights-azure-redhat-setup.md)-hez, Azure monitor engedélyezheti a tárolók számára az [Azure Red Hat OpenShift 4 fürtöket](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) , és továbbra is használhatja ugyanazt a log Analytics munkaterületet.
 
@@ -127,4 +127,4 @@ az openshift delete --name $CLUSTER_NAME
                     [--yes]
 ```
 ## <a name="next-steps"></a>Következő lépések
-Tekintse meg a Red Hat által biztosított Azure Red Hat OpenShift-dokumentációt [itt](https://docs.openshift.com/aro/4/welcome/index.html).
+Tekintse meg a Red Hat [OpenShift dokumentációját](https://docs.openshift.com/container-platform/4.6/welcome/index.html).

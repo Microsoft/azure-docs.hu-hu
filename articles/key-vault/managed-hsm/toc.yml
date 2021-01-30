@@ -9,6 +9,8 @@
   items:
     - name: parancssori felület
       href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
     - name: Azure Resource Manager-sablon
       href: quick-create-template.md
 - name: Oktatóanyagok

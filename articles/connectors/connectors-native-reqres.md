@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920814"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063012"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
@@ -56,8 +56,8 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL-CÍM** | nEz egy | Igen | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
-   | **Kérelem törzsének JSON-sémája** | `schema` | Nem | A bejövő kérelem törzsében található tulajdonságokat és értékeket leíró JSON-séma |
+   | **HTTP POST URL-CÍM** | nEz egy | Yes | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
+   | **Kérelem törzsének JSON-sémája** | `schema` | No | A bejövő kérelem törzsében található tulajdonságokat és értékeket leíró JSON-séma |
    |||||
 
 1. A **kérelem törzse JSON-sémája** mezőben opcionálisan megadhat egy JSON-sémát, amely leírja a beérkező kérelem törzsét, például:
@@ -163,8 +163,8 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **Metódus** | `method` | Nem | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
-   | **Relatív elérési út** | `relativePath` | Nem | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
+   | **Metódus** | `method` | No | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
+   | **Relatív elérési út** | `relativePath` | No | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
    |||||
 
    Ez a példa hozzáadja a **Method** tulajdonságot:
@@ -216,7 +216,7 @@ Ha a kérelem triggert használja a bejövő kérések kezelésére, modellezhet
 > Ha a Response művelet tartalmazza ezeket a fejléceket, Logic Apps eltávolítja ezeket a fejléceket a generált válaszüzenetből anélkül, hogy a rendszer figyelmeztetést vagy hibát mutat:
 >
 > * `Allow`
-> * `Content-*` a következő kivételekkel: `Content-Disposition` , `Content-Encoding` és `Content-Type`
+> * `Content-*` fejlécek, kivéve a `Content-Disposition` , `Content-Encoding` , és a `Content-Type` post és Put műveletek használatakor, de nem tartalmazza a Get műveletekhez
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -255,9 +255,9 @@ Ha a kérelem triggert használja a bejövő kérések kezelésére, modellezhet
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **Állapotkód** | `statusCode` | Igen | A válaszban visszaadni kívánt állapotkód |
-   | **Fejlécek** | `headers` | Nem | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |
-   | **Törzs** | `body` | Nem | A válasz törzse |
+   | **Állapotkód** | `statusCode` | Yes | A válaszban visszaadni kívánt állapotkód |
+   | **Fejlécek** | `headers` | No | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |
+   | **Törzs** | `body` | No | A válasz törzse |
    |||||
 
 1. Ha további tulajdonságokat szeretne megadni, például egy JSON-sémát a válasz törzséhez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.

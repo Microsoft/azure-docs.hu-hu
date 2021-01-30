@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955732"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089258"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow összekötése IT-szolgáltatásmenedzsmenti csatoló
 
@@ -125,7 +125,7 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást.
    | **Kiszolgáló URL-címe**   | Adja meg annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek egy támogatott SaaS-verzióra kell mutatnia, az utótag *. servicenow.com* (például: https://XXXXX.service-now.com/) .|
    | **Felhasználónév**   | Adja meg a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást.|
    | **Jelszó**   | Adja meg a felhasználónévhez tartozó jelszót. **Megjegyzés**: a Felhasználónév és a jelszó csak hitelesítési tokenek létrehozásához használatos. Ezeket a rendszer nem tárolja bárhol a ITSMC szolgáltatáson belül.  |
-   | **Ügyfél-azonosító**   | Adja meg a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót. Az ügyfél-azonosító és a titkos kód létrehozásával kapcsolatos további információkért tekintse meg a [OAuth beállítása](https://wiki.servicenow.com/index.php?title=OAuth_Setup)című témakört. |
+   | **Ügyfél-azonosító**   | Adja meg a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót. Az ügyfél-azonosító és a titkos kód létrehozásával kapcsolatos további információkért tekintse meg a [OAuth beállítása](https://old.wiki/index.php/OAuth_Setup)című témakört. |
    | **Ügyfél titka**   | Adja meg az AZONOSÍTÓhoz generált ügyfél-titkos kulcsot.   |
    | **Adatszinkronizálás hatóköre (nap)** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. A korlát 120 nap. |
    | **Szinkronizálandó munkaelemek**   | Válassza ki azokat a ServiceNow munkaelemeket, amelyeket szinkronizálni szeretne az Azure Log Analytics a ITSMC keresztül. A kijelölt értékeket a rendszer a Log Analyticsba importálja. A lehetőségek az incidensek és a módosítási kérelmek.|

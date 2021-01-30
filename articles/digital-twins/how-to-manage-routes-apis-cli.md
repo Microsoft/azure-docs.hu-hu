@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054508"
+ms.locfileid: "99071698"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -48,7 +48,7 @@ Ez a szakasz ismerteti, hogyan hozhatja létre ezeket a végpontokat az Azure CL
 
 ### <a name="create-the-endpoint"></a>A végpont létrehozása
 
-Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az `az dt endpoint create` [Azure Digital Twins CLI](how-to-use-cli.md)-vel való parancs használatával. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
+Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az [Azure Digital Twins CLI](how-to-use-cli.md)-hez készült az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) paranccsal. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
 
 Event Grid végpont létrehozása:
 
@@ -56,21 +56,39 @@ Event Grid végpont létrehozása:
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Event Hubs végpont létrehozása:
+Event Hubs végpont létrehozása (kulcs alapú hitelesítés):
 ```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Service Bus témakör végpontjának létrehozása:
+Service Bus témakör végpontjának (kulcs alapú hitelesítés) létrehozása:
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 A parancsok sikeres futtatása után az Event Grid, az Event hub vagy a Service Bus témakör az Azure digitális Twins-beli végpontként lesz elérhető, az `--endpoint-name` argumentummal megadott néven. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
 
+#### <a name="create-an-endpoint-with-identity-based-authentication"></a>Végpont létrehozása identitás-alapú hitelesítéssel
+
+Létrehozhat egy identitás-alapú hitelesítést tartalmazó végpontot is, hogy a végpontot [felügyelt identitással](concepts-security.md#managed-identity-for-accessing-other-resources-preview)használja. Ez a beállítás csak az Event hub és a Service Bus típusú végpontok esetében érhető el (Event Grid esetén nem támogatott).
+
+Az ilyen típusú végpont létrehozására szolgáló CLI-parancs alább látható. A következő értékeknek kell megadnia a helyőrzőket a parancsban:
+* Az Azure Digital Twins-példány Azure-erőforrás-azonosítója
+* végpont neve
+* végpont típusa
+* a végpont erőforrásának névtere
+* az Event hub vagy a Service Bus témakör neve
+* Az Azure Digital Twins-példány helye
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Végpont létrehozása a kézbesítetlen levelekkel
 
 Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük.
+
+Az Azure Digital Twins [CLI](how-to-use-cli.md) vagy a [Control Plant API](how-to-use-apis-sdks.md#overview-control-plane-apis)-k használatával beállítható, hogy a kézbesítetlen üzenetek engedélyezve legyenek.
 
 A kézbesítetlen levelekről további információt a [*fogalmak: események útvonalai*](concepts-route-events.md#dead-letter-events)című témakörben talál. A leállási végpontok bekapcsolásával kapcsolatos útmutatásért folytassa a szakasz további részében leírtakat.
 
@@ -78,7 +96,7 @@ A kézbesítetlen levelekről további információt a [*fogalmak: események ú
 
 A kézbesítetlen levelek helyének [beállítása előtt](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) rendelkeznie kell egy, az Azure-fiókban [beállított tárolóval](../storage/common/storage-account-create.md?tabs=azure-portal) . 
 
-A tároló URL-címét meg kell adnia a végpont létrehozásakor. A kézbesítetlen levelek helye a végpontnak egy [sas-tokent](../storage/common/storage-sas-overview.md)tartalmazó tároló URL-ként lesz megadva. Ennek a tokennek engedélyre van szüksége a `write` Storage-fiókban lévő cél tárolóhoz. A teljesen formázott URL-cím formátuma: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` .
+A tárolóhoz tartozó URI-t a későbbiekben a végpont létrehozásakor adja meg. A kézbesítetlen levelek helye a végpontnak egy [sas-tokent](../storage/common/storage-sas-overview.md)tartalmazó tároló URI-ként lesz megadva. Ennek a tokennek engedélyre van szüksége a `write` Storage-fiókban lévő cél tárolóhoz. A teljesen formázott **Kézbesítetlen sas URI** formátuma: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>` .
 
 Az alábbi lépéseket követve állíthatja be ezeket a tárolási erőforrásokat az Azure-fiókjában, hogy előkészítse a végponti kapcsolatok beállítását a következő szakaszban.
 
@@ -99,25 +117,44 @@ Az alábbi lépéseket követve állíthatja be ezeket a tárolási erőforráso
 
     :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="A kézbesítetlen levél titkos kódjában használandó SAS-token másolása." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
     
-#### <a name="configure-the-endpoint"></a>A végpont konfigurálása
+#### <a name="create-the-dead-letter-endpoint"></a>A kézbesítetlen levél végpontjának létrehozása
 
-Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, akkor a Azure Resource Manager API-k használatával hozhatja létre a végpontot. 
+Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, adja hozzá a következő kézbesítetlen levelek paramétert az az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) parancshoz az [Azure Digital Twins CLI](how-to-use-cli.md)-hez.
 
-1. Először a [Azure Resource Manager API-k dokumentációjának](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) használatával állítson be egy végpont létrehozására vonatkozó kérést, és töltse ki a szükséges kérési paramétereket. 
+A paraméter értéke a **Kézbesítetlen levél sas URI-ja** , amely a Storage-fiók neve, a tároló neve és az [előző szakaszban](#set-up-storage-resources)összegyűjtött sas-token. Ez a paraméter létrehozza a végpontot a kulcs alapú hitelesítéssel.
 
-2. Ezután vegyen fel egy `deadLetterSecret` mezőt a tulajdonságok objektumba a **kérelem törzsében** . Állítsa ezt az értéket az alábbi sablon alapján, amely a Storage-fiók neve, a tároló neve és az SAS-jogkivonat értékének az [előző szakaszban](#set-up-storage-resources)összegyűjtött URL-címét tartalmazza.
-      
-  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+```azurecli
+--deadletter-sas-uri https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>
+```
 
-3. Küldje el a kérést a végpont létrehozásához.
+Adja hozzá ezt a paramétert a végpont-létrehozási parancsok végéhez a végpont [*létrehozása*](#create-the-endpoint) szakaszból, hogy létrehozzon egy olyan végpontot a kívánt típusból, amelynél engedélyezve van a kézbesítetlen üzenetek használata.
 
-A kérelem strukturálásával kapcsolatos további információkért tekintse meg az Azure digitális Twins REST API dokumentációját: [endpoints-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Azt is megteheti, hogy a parancssori felület helyett az [Azure Digital Twins Control Plant API](how-to-use-apis-sdks.md#overview-control-plane-apis) -k használatával is létrehoz kézbesítetlen levelek végpontokat. Ehhez tekintse meg a [DigitalTwinsEndpoint dokumentációját](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) , és tekintse át a kérelem strukturálása és a kézbesítetlen levelek paramétereinek hozzáadása című témakört.
 
-### <a name="message-storage-schema"></a>Üzenet tárolási sémája
+#### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>Kézbesítetlen levélbeli végpont létrehozása identitás-alapú hitelesítéssel
+
+Létrehozhat egy olyan kézbesítetlen betűs végpontot is, amely rendelkezik identitás-alapú hitelesítéssel a végpont [felügyelt identitással](concepts-security.md#managed-identity-for-accessing-other-resources-preview)való használatához. Ez a beállítás csak az Event hub és a Service Bus típusú végpontok esetében érhető el (Event Grid esetén nem támogatott).
+
+Az ilyen típusú végpont létrehozásához használja ugyanazt a CLI-parancsot a korábbi verzióról, ha [identitás-alapú hitelesítéssel szeretne létrehozni egy végpontot](#create-an-endpoint-with-identity-based-authentication), amely egy további mező a JSON-adattartalomban `deadLetterUri` .
+
+Az alábbi értékeket kell csatlakoztatnia a helyőrzőhöz a parancsban:
+* Az Azure Digital Twins-példány Azure-erőforrás-azonosítója
+* végpont neve
+* végpont típusa
+* a végpont erőforrásának névtere
+* az Event hub vagy a Service Bus témakör neve
+* **Kézbesítetlen levél sas URI-ja** – részletek: Storage-fiók neve, tároló neve
+* Az Azure Digital Twins-példány helye
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\", \"deadLetterUri\": \"https://<storage-account-name>.blob.core.windows.net/<container-name>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
+#### <a name="message-storage-schema"></a>Üzenet tárolási sémája
 
 Miután beállította a végpontot a kézbesítetlen üzenetek beállításával, a rendszer a következő formátumban tárolja a kézbesítetlen üzeneteket a Storage-fiókban:
 
-`{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
+`{container}/{endpoint-name}/{year}/{month}/{day}/{hour}/{event-ID}.json`
 
 A kézbesítetlen üzenetek megegyeznek az eredeti végpontnak kézbesíteni kívánt eredeti esemény sémájával.
 
@@ -128,7 +165,7 @@ Itt látható egy példa a [kettős létrehozási értesítésre](how-to-interpr
   "specversion": "1.0",
   "id": "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "Microsoft.DigitalTwins.Twin.Create",
-  "source": "<yourInstance>.api.<yourregion>.da.azuredigitaltwins-test.net",
+  "source": "<your-instance>.api.<your-region>.da.azuredigitaltwins-test.net",
   "data": {
     "$dtId": "<yourInstance>xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "$etag": "W/\"xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx\"",

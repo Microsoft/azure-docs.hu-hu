@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326811"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062896"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -81,13 +81,13 @@ Azure Security Center nem igényel telepítést. További információkért teki
 
 Az Azure arc kiterjeszti az Azure-felügyeletet bármely infrastruktúrára, beleértve az Azure VMware-megoldást, a helyszíni vagy más felhőalapú platformokat.
 
-- Lásd: [hibrid gépek összekapcsolása az Azure](../azure-arc/servers/onboard-service-principal.md) -ba az Azure arc-kompatibilis kiszolgálók több Windows-vagy Linux-alapú virtuális gép számára történő engedélyezéséhez.
+- Az Azure arc-kompatibilis kiszolgálók több Windows-vagy Linux-alapú virtuális gépen való engedélyezésével kapcsolatban lásd: [hibrid gépek összekapcsolása az Azure](../azure-arc/servers/onboard-service-principal.md)-ban, nagy léptékben.
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Hibrid Kubernetes-fürtök előkészítése ív-kompatibilis Kubernetes
 
 Az Azure-beli VMware-megoldási környezetben üzemeltetett Kubernetes-fürtöket az Azure arc-kompatibilis Kubernetes használatával lehet csatlakoztatni. 
 
-- Lásd: [Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+- További információ: [Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 
 ### <a name="deploy-the-log-analytics-agent"></a>A Log Analytics-ügynök üzembe helyezése
 

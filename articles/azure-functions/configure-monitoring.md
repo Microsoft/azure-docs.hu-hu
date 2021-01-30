@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztatható a Function app Application In
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684708"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070140"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -246,7 +246,7 @@ Ha a **Létrehozás** lehetőséget választja, a rendszer létrehoz egy Applica
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Hozzáadás meglévő Function-alkalmazáshoz 
 
-Ha nem hoztak létre Application Insights erőforrásokat a Function alkalmazással, a következő lépésekkel hozhatja létre az erőforrást. Ezután hozzáadhatja a kialakítási kulcsot az adott erőforrásból a Function [alkalmazásban](functions-how-to-use-azure-function-app-settings.md#settings) .
+Ha egy Application Insights erőforrás nem lett létrehozva a Function alkalmazással, a következő lépésekkel hozza létre az erőforrást. Ezután hozzáadhatja a kialakítási kulcsot az adott erőforrásból a Function [alkalmazásban](functions-how-to-use-azure-function-app-settings.md#settings) .
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a **Function app** elemet, majd válassza ki a Function alkalmazást. 
 
@@ -271,6 +271,30 @@ Ha nem hoztak létre Application Insights erőforrásokat a Function alkalmazás
 
 > [!NOTE]
 > A függvények korábbi verziói beépített figyelést használnak, ami már nem ajánlott. Ha egy ilyen Function alkalmazáshoz Application Insights integrációt engedélyez, le kell [tiltania a beépített naplózást](#disable-built-in-logging)is.  
+
+## <a name="query-scale-controller-logs"></a>A méretezési vezérlő naplófájljainak lekérdezése
+
+A méretezési vezérlő naplózásának és a Application Insights integrációjának engedélyezése után a Application Insights naplóbeli kereséssel kérdezheti le a kibocsátott skálázási vezérlő naplóit. A skálázási vezérlő naplóit a `traces` gyűjtemény a **ScaleControllerLogs** kategóriában tárolja.
+
+A következő lekérdezéssel megkeresheti az aktuális Function alkalmazáshoz tartozó összes méretezési vezérlő naplóját a megadott időtartamon belül:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+A következő lekérdezés kibontja az előző lekérdezést, hogy bemutassa, hogyan lehet csak a skála változását jelző naplókat beolvasni:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="disable-built-in-logging"></a>A beépített naplózás letiltása
 

@@ -64,6 +64,8 @@
           href: api-management-error-handling-policies.md
     - name: Biztonság
       items:
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Előfizetések

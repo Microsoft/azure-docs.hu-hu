@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702954"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090366"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Oktatóanyag: a kulcsnélküli konfiguráció konfigurálása Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a kulcsnélküli architektúra diagramját mutatja](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók kiválaszthatják a bejelentkezést és a regisztrációt, és beírja a felhasználónevet
 | 2. | Az alkalmazás elküldi a felhasználói attribútumokat a Azure AD B2C identitás-ellenőrzéshez.
@@ -86,7 +86,7 @@ Az identitás-szolgáltató konfigurálásához kövesse az alábbi lépéseket:
    |Tulajdonság | Érték |
    |:-----| :-----------|
    | Név   | Kulcsnélküli |
-   | Metaadatok URL-címe | Szúrja be az üzemeltetett kulcsnélküli hitelesítési alkalmazás URI-JÁT, amelyet a megadott elérési út, például a https://keyless.auth/.well-known/openid-configuration |
+   | Metaadatok URL-címe | Szúrja be az üzemeltetett kulcsnélküli hitelesítési alkalmazás URI-JÁT, majd a megadott elérési utat, például: " https://keyless.auth/.well-known/openid-configuration " |
    | Titkos ügyfélkulcs | A kulcsnélküli hitelesítési példányhoz társított titok – nem ugyanaz, mint a korábban konfigurált. Helyezzen be egy tetszőleges összetett karakterláncot. Ezt a titkot később a kulcsnélküli tároló konfigurációjában fogjuk használni.|
    | Ügyfél-azonosító | Az ügyfél azonosítója. Ezt az azonosítót később a kulcsnélküli tároló konfigurációjában fogjuk használni.|
    | Hatókör | OpenID |
@@ -153,7 +153,7 @@ A B2C-azonosítók listáján szereplő új OIDC-azonosítónak kell megjelennie
 
 5. A kulcsnélküli hívás a folyamat során, a felhasználói attribútum létrehozása után lesz meghívva. Ha a folyamat hiányos, ellenőrizze, hogy a felhasználó nincs-e mentve a címtárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

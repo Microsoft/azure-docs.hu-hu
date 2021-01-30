@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533786"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070834"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Végpontok és útvonalak kezelése az Azure Digital Twins-ban (portál)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ezt úgy teheti meg, hogy először beállítja az eseményeket fogadó **végpontokat** . Ezután létrehozhat olyan [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
+Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ehhez először be kell állítani az eseményeket fogadó **végpontokat**. Ezután létrehozhat olyan [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
 
 Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [Azure Portal](https://portal.azure.com)használatával.
 
@@ -33,11 +33,11 @@ Azt is megteheti, hogy a végpontokat és útvonalakat az [Event Routes API](/re
 
 Ezeket a részleteket a [Azure Portal](https://portal.azure.com) a példány beállítása után találhatja meg. Jelentkezzen be a portálra, és keresse meg a példány nevét a portál keresési sávján.
  
-:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Képernyőkép: Azure Portal keresési sáv.":::
+:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Képernyőkép: Azure Portal keresési sáv." lightbox="media/how-to-manage-routes-portal/search-field-portal.png":::
 
-Válassza ki a példányát az eredmények közül, és tekintse meg a példány részletek lapját:
+Válassza ki a példányt az eredmények közül, és tekintse meg ezeket az adatokat a példány áttekintésében:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Képernyőkép a ADT-példány részleteiről." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Képernyőkép az Azure Digital Twins-példány áttekintés oldaláról. A név és az erőforráscsoport ki van emelve.":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Végpont létrehozása az Azure Digital Twins számára
 
@@ -48,89 +48,65 @@ Ezek a példányok által létrehozható támogatott típusú végpontok:
 
 További információ a különböző végpontok típusairól: [*választás az Azure Messaging Services között*](../event-grid/compare-messaging-services.md).
 
-Ahhoz, hogy egy végpontot az Azure digitális Ikrekhöz lehessen kapcsolni, a végponthoz használt Event Grid-témakör, az Event hub vagy a Service Bus már léteznie kell. 
+Ez a szakasz azt ismerteti, hogyan hozható létre a végpontok egyike a [Azure Portal](https://portal.azure.com).
 
-### <a name="create-an-event-grid-endpoint"></a>Event Grid végpont létrehozása
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-**Előfeltétel** : hozzon létre egy Event Grid-témakört a Event Grid *Egyéni események* rövid útmutatójának [ *Egyéni témakör létrehozása* című szakaszában](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) ismertetett lépéseket követve.
+### <a name="create-the-endpoint"></a>A végpont létrehozása 
 
-Miután létrehozta a témakört, összekapcsolhatja azt az Azure Digital ikrek szolgáltatásban az Azure Digital Twins példányának oldaláról a [Azure Portalban](https://portal.azure.com) (a példány a nevét a portál keresési sávjába írja be).
+Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Új végpont létrehozásához nyissa meg a példányának lapját a [Azure Portalban](https://portal.azure.com) (a példány megkereséséhez írja be a nevét a portál keresési sávjába).
 
-A példány menüben válassza a _végpontok_ lehetőséget. Ezután az alábbi *végpontok* lapról válassza a *+ végpont létrehozása* lehetőséget. 
+1. A példány menüben válassza a _végpontok_ lehetőséget. Ezután az alábbi *végpontok* lapról válassza a *+ végpont létrehozása* lehetőséget. Ekkor megnyílik a *végpont létrehozása* lap, ahol a következő lépésekben található mezőket kell kitöltenie.
 
-A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Event Grid_ típusú végpontot a megfelelő választógomb kiválasztásával. Fejezze be a további részleteket: adjon meg egy nevet a végpontnak a _név_ mezőben, válassza ki az _előfizetését_ a legördülő listából, és válassza ki az előre létrehozott  _Event Grid témakört_ a harmadik legördülő menüből.
+    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Képernyőkép: Event Grid típusú végpont létrehozása." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
 
-Ezután hozza létre a végpontot a _Save (Mentés_ ) parancs megnyomásával.
+1. Adja meg a végpont **nevét** , és válassza ki a **végpont típusát**.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Képernyőkép: Event Grid típusú végpont létrehozása.":::
+1. Hajtsa végre a végpont típusához szükséges egyéb adatokat, beleértve az előfizetést és a [fent](#prerequisite-create-endpoint-resources)leírt végponti erőforrásokat.
+    1. Az Event hub és a Service Bus végpontok esetében ki kell választania egy **hitelesítési típust**. Ha a végpontot [felügyelt identitással](concepts-security.md#managed-identity-for-accessing-other-resources-preview) szeretné használni az Azure Digital Twins-példányhoz, használhatja a kulcs alapú hitelesítést egy előre létrehozott engedélyezési szabállyal vagy egy identitás-alapú hitelesítéssel. 
 
-Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg az értesítés ikont a felső Azure Portal sávban: 
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="Képernyőkép az Event hub típusú végpont létrehozásáról." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Képernyőkép az értesítésről a végpont létrehozásának ellenőrzéséhez." border="false":::
+1. Fejezze be a végpont létrehozását a _Save (Mentés_) gombra kattintva.
+
+>[!IMPORTANT]
+> Ahhoz, hogy sikeresen használhassa az identitás-alapú hitelesítést a végponthoz, létre kell hoznia egy felügyelt identitást a példányhoz a következő témakörben ismertetett lépéseket követve [*: felügyelt identitás engedélyezése útválasztási eseményekhez (előzetes verzió)*](how-to-enable-managed-identities.md).
+
+A végpont létrehozása után ellenőrizheti, hogy a végpont sikeresen létrejött-e az értesítés ikonjának a felső Azure Portal sávban való ellenőrzésével: 
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Képernyőkép az értesítésről a végpont létrehozásának ellenőrzéséhez. A portál felső sávján a harang alakú ikon van kiválasztva, és a &quot;végpont ADT – eh-Endpoint sikeresen létrehozva&quot; értesítés jelenik meg.":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
 
 Megtekintheti az Azure Digital Twins-példány *végpontok* lapján létrehozott végpontot is.
 
-Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
-
-Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
-
-### <a name="create-an-event-hubs-endpoint"></a>Event Hubs végpont létrehozása
-
-**Előfeltételek** : 
-* Szüksége lesz egy _Event Hubs névtérre_ és egy _Event hub_ -ra. Hozzon létre mindkettőt a Event Hubs [*Event hub*](../event-hubs/event-hubs-create.md) -útmutató létrehozása című témakör lépéseit követve.
-* Szüksége lesz egy _engedélyezési szabályra_. Ennek létrehozásához tekintse meg a Event Hubs a [*hozzáférés engedélyezése Event Hubs erőforrásokhoz a megosztott hozzáférési aláírások használatával*](../event-hubs/authorize-access-shared-access-signature.md) című cikket.
-
-Nyissa meg az Azure Digital Twins-példány részletek lapját a [Azure Portalban](https://portal.azure.com) (a nevét megkeresheti a portál keresési sávjában).
-
-A példány menüben válassza a _végpontok_ lehetőséget. Ezután az alábbi *végpontok* lapról válassza a *+ végpont létrehozása* lehetőséget. 
-
-A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Event hub_ típusú végpontot a megfelelő választógomb kiválasztásával. Adja meg a végpont nevét a _név_ mezőben. Ezután válassza ki az _előfizetését_ , és az előre létrehozott _Event hub-névteret_ , az _Event hub_ -t és az _engedélyezési szabályt_ a megfelelő legördülő listából.
-
-Ezután hozza létre a végpontot a _Save (Mentés_ ) parancs megnyomásával.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Képernyőkép: Event Hubs típusú végpont létrehozása.":::
-
-Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg az értesítés ikont a felső Azure Portal sávban. 
-
-Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
-
-Az Event hub mostantól végpontként érhető el az Azure digitális Twins-ban, a _név_ mezőben megadott név alatt. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
-
-### <a name="create-a-service-bus-endpoint"></a>Service Bus végpont létrehozása
-
-**Előfeltételek** : 
-* Szüksége lesz egy _Service Bus névtérre_ és egy _Service Bus témakörre_. Hozza létre mindkét műveletet a Service Bus [*témakörök és előfizetések létrehozása*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) című rövid útmutató lépéseivel. Nem kell befejeznie a [*létrehozási előfizetéseket a témakör*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic) szakaszhoz.
-* Szüksége lesz egy _engedélyezési szabályra_. Ennek létrehozásához tekintse meg a Service Bus [*hitelesítési és engedélyezési*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature) cikket.
-
-Nyissa meg az Azure Digital Twins-példány részletek lapját a [Azure Portalban](https://portal.azure.com) (a nevét megkeresheti a portál keresési sávjában).
-
-A példány menüben válassza a _végpontok_ lehetőséget. Ezután az alábbi *végpontok* lapról válassza a *+ végpont létrehozása* lehetőséget. 
-
-A megnyíló *végpont létrehozása* oldalon létrehozhat egy _Service Bus_ típusú végpontot a megfelelő választógomb kiválasztásával. Adja meg a végpont nevét a _név_ mezőben. Ezután válassza ki az _előfizetését_ , és az előre létrehozott _Service Bus névteret_ , _Service Bus témakört_ és az _engedélyezési szabályt_ a megfelelő legördülő listából.
-
-Ezután hozza létre a végpontot a _Save (Mentés_ ) parancs megnyomásával.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Képernyőkép: Service Bus típusú végpont létrehozása.":::
-
-Ha ellenőrizni szeretné, hogy a végpont sikeresen létrejött-e, tekintse meg az értesítés ikont a felső Azure Portal sávban. 
-
-Ha a végpont létrehozása sikertelen, figyelje meg a hibaüzenetet, és néhány perc múlva próbálkozzon újra.
-
-A Service Bus témakör az Azure digitális Twins-beli végpontként érhető el, a _név mezőben megadott_ név alatt. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
+Az Event Grid, az Event hub vagy a Service Bus témakör az Azure digitális Twins-beli végpontként érhető el, a végponthoz választott néven. Ezt a nevet általában egy **esemény-útvonal** céljaként fogja használni, amelyet később fog létrehozni [ebben a cikkben](#create-an-event-route).
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Végpont létrehozása a kézbesítetlen levelekkel
 
 Ha egy végpont nem tud eseményt kézbesíteni egy adott időszakon belül, vagy ha az eseményt bizonyos számú alkalommal próbálta kézbesíteni, akkor a kézbesítetlen eseményt elküldheti egy Storage-fiókba. Ezt a folyamatot **Kézbesítetlen levélnek** nevezzük.
 
-Ha olyan végpontot szeretne létrehozni, amelyen engedélyezve van a kézbesítetlen üzenetek használata, az [ARM API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) -kkal létre kell hoznia a végpontot a Azure Portal helyett.
+Ha olyan végpontot szeretne létrehozni, amelyen engedélyezve van a kézbesítetlen üzenetek használata, a [CLI-parancsokat](how-to-use-cli.md) vagy a [sík API-kat](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kell használnia a végpont létrehozásához, nem pedig a Azure Portal.
 
-Az API-kkal kapcsolatos utasításokért tekintse meg a jelen cikk [*API-k és parancssori felületének*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) verzióját.
+Ezekről az eszközökről a jelen cikk [*API-k és CLI-*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) verziójában talál útmutatást.
 
 ## <a name="create-an-event-route"></a>Esemény útvonalának létrehozása
 
 Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elküldéséhez meg kell határoznia egy **esemény-útvonalat**. Ezek az útvonalak lehetővé teszik a fejlesztők számára, hogy az események áramlását a rendszeren és az alárendelt szolgáltatásokon keresztül továbbítsák. További információk az esemény-útvonalakról a [*fogalmakban: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md).
 
-**Előfeltétel** : a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
+**Előfeltétel**: a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
 
 >[!NOTE]
 >Ha nemrég telepítette a végpontokat, ellenőrizze, hogy készen állnak-e a telepítésre, **mielőtt** új esemény-útvonalra próbálja használni őket. Ha nem tudja beállítani az útvonalat, mert a végpontok nem állnak készen, várjon néhány percet, és próbálkozzon újra.
@@ -140,7 +116,7 @@ Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elkül
 Az események útvonalának definíciója az alábbi elemeket tartalmazza:
 * A használni kívánt útvonal neve
 * A használni kívánt végpont neve
-* Egy szűrő, amely meghatározza, hogy mely eseményeket küldi a rendszer a végpontnak.
+* Egy szűrő, amely meghatározza, hogy mely események kerülnek a végponthoz
     - Ha le szeretné tiltani az útvonalat, hogy ne küldjön eseményeket, használja a `false`
     - Ha olyan útvonalat szeretne engedélyezni, amely nem rendelkezik adott szűréssel, használja a szűrő értékét `true`
     - A más típusú szűrők részleteiről az alábbi, az [*Események szűrése*](#filter-events) című szakaszban olvashat.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673613"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Oktatóanyag: Azure Active Directory integráció a hídhoz
 
@@ -106,7 +106,7 @@ Az Azure AD egyszeri bejelentkezés a Bridge használatával történő konfigur
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.bridgeapp.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez vegye fel a kapcsolatot a [Bridge ügyfél-támogatási csapatával](https://community.bridgeapp.com/community/help) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez vegye fel a kapcsolatot a [Bridge ügyfél-támogatási csapatával](https://community.bridgeapp.com/hc/en-us/community/topics) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (RAW)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
@@ -124,7 +124,7 @@ Az Azure AD egyszeri bejelentkezés a Bridge használatával történő konfigur
 
 ### <a name="configure-bridge-single-sign-on"></a>A Bridge egyetlen Sign-On konfigurálása
 
-Az egyszeri bejelentkezés a **Bridge** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portal a [Bridge támogatási csapatának](https://community.bridgeapp.com/community/help). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés a **Bridge** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portal a [Bridge támogatási csapatának](https://community.bridgeapp.com/hc/en-us/community/topics). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -149,7 +149,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -179,7 +179,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-bridge-test-user"></a>Híd-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Bridge-ben. Működjön együtt a [Bridge támogatási csapatával](https://community.bridgeapp.com/community/help) , és vegye fel a felhasználókat a Bridge platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Bridge-ben. Működjön együtt a [Bridge támogatási csapatával](https://community.bridgeapp.com/hc/en-us/community/topics) , és vegye fel a felhasználókat a Bridge platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

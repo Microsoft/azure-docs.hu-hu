@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 6d1fd873de3313678875a8c167b90fafb8ede7ae
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061649"
+ms.locfileid: "99072052"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Az Azure Red Hat OpenShift (ARO) hálózati fogalmak
 
-Ez az útmutató áttekintést nyújt a hálózatkezelésről az Azure Red Hat-OpenShift a OpenShift 4 fürtökön, valamint egy diagramot és a fontos végpontok listáját. Az alapvető OpenShift hálózati fogalmakkal kapcsolatos további információkért tekintse meg az [Azure Red Hat OpenShift 4 hálózatkezelési dokumentációját](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
+Ez az útmutató áttekintést nyújt a hálózatkezelésről az Azure Red Hat-OpenShift a OpenShift 4 fürtökön, valamint egy diagramot és a fontos végpontok listáját. Az alapvető OpenShift hálózati fogalmakkal kapcsolatos további információkért tekintse meg az [Azure Red Hat OpenShift 4 hálózatkezelési dokumentációját](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html).
 
 ![Azure Red Hat OpenShift 4 hálózati diagram](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,7 +64,7 @@ Az alábbi lista az Azure Red Hat OpenShift-fürt fontos hálózati összetevői
 
 ## <a name="networking-basics-in-openshift"></a>Hálózatkezelés alapjai a OpenShift-ben
 
-A OpenShift szoftver által definiált hálózatkezelés [(Sdn)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) az VSwitch [(OVS)](https://www.openvswitch.org/), a Container Network Interface (CNI) specifikáción alapuló OpenFlow implementáció használatával konfigurálja az átfedési hálózatot. Az SDN különböző beépülő modulok használatát támogatja – a hálózati házirend az Azure Red Hat-on az OpenShift 4-ben használt beépülő modul. Az SDN felügyeli az összes hálózati kommunikációt, így a virtuális hálózatokon nincs szükség további útvonalakra a pod-alapú kommunikáció eléréséhez.
+A OpenShift szoftver által definiált hálózatkezelés [(Sdn)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) az VSwitch [(OVS)](https://www.openvswitch.org/), a Container Network Interface (CNI) specifikáción alapuló OpenFlow implementáció használatával konfigurálja az átfedési hálózatot. Az SDN különböző beépülő modulok használatát támogatja – a hálózati házirend az Azure Red Hat-on az OpenShift 4-ben használt beépülő modul. Az SDN felügyeli az összes hálózati kommunikációt, így a virtuális hálózatokon nincs szükség további útvonalakra a pod-alapú kommunikáció eléréséhez.
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Hálózatkezelés az Azure Red Hat OpenShift
 
@@ -79,7 +79,7 @@ A következő hálózatkezelési funkciók az Azure Red Hat OpenShift vonatkozna
 * A pod CIDR minimális/18 méretűnek kell lennie. (A pod-hálózat nem irányítható IP-címek, és csak a OpenShift SDN-ben használható.)
 * Az egyes csomópontok kiosztása/23 alhálózat (512 IP-cím) a hüvelye számára. Ez az érték nem módosítható.
 * Nem csatlakoztathat Pod-t több hálózathoz.
-* Nem konfigurálhatja a kimenő forgalomra vonatkozó statikus IP-címet. (Ez egy OpenShift funkció. További információ: a [kimenő IP](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)-címek konfigurálása.
+* Nem konfigurálhatja a kimenő forgalomra vonatkozó statikus IP-címet. (Ez egy OpenShift funkció. További információ: a [kimenő IP](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html)-címek konfigurálása.
 
 ## <a name="network-settings"></a>Hálózati beállítások
 
@@ -98,7 +98,7 @@ A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában
 Nyilvánosan látható API-kiszolgáló esetén nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.
 
 ## <a name="domain-forwarding"></a>Tartomány továbbítása
-Az Azure Red Hat OpenShift az CoreDNS-t használja. A tartomány továbbítása konfigurálható. Saját DNS-t nem lehet a virtuális hálózatokhoz. További információ: a [DNS-továbbítás használatának](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator)dokumentációja.
+Az Azure Red Hat OpenShift az CoreDNS-t használja. A tartomány továbbítása konfigurálható. Saját DNS-t nem lehet a virtuális hálózatokhoz. További információ: a [DNS-továbbítás használatának](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator)dokumentációja.
 
 ## <a name="whats-new-in-openshift-45"></a>Az OpenShift 4,5 újdonságai
 

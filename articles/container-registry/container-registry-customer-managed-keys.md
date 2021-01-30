@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Container Registry titkosítását, valamint a
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620442"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062728"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -54,7 +54,7 @@ A cikkben szereplő Azure CLI-lépések használatához az Azure CLI-es vagy új
 
 ## <a name="enable-customer-managed-key---cli"></a>Ügyfél által felügyelt kulcs engedélyezése – parancssori felület
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Szükség esetén futtassa az az [Group Create][az-group-create] parancsot egy erőforráscsoport létrehozásához a kulcstartó, a tároló-beállításjegyzék és az egyéb szükséges erőforrások létrehozásához.
 
@@ -534,7 +534,7 @@ A beállításjegyzék rendszerhez rendelt identitásának engedélyezése a por
 
 1. A portálon navigáljon a beállításjegyzékhez.
 1. Válassza a **Beállítások**  >   **identitás** lehetőséget.
-1. A **rendszer által hozzárendelve** beállításnál állítsa be **a** következőt: **állapot** . Válassza a **Save** (Mentés) lehetőséget.
+1. A **rendszer által hozzárendelve** beállításnál állítsa be **a** következőt: **állapot** . Kattintson a **Mentés** gombra.
 1. Másolja az identitás **objektum-azonosítóját** .
 
 Az identitás hozzáférésének biztosítása a kulcstartóhoz:
@@ -566,15 +566,20 @@ Az előző lépések elvégzése után forgassa el a kulcsot egy új kulccsal a 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="removing-user-assigned-identity"></a>Felhasználó által hozzárendelt identitás eltávolítása
+### <a name="removing-managed-identity"></a>Felügyelt identitás eltávolítása
 
-Ha egy, a titkosításhoz használt beállításjegyzékből próbál egy felhasználó által hozzárendelt identitást eltávolítani, a következőhöz hasonló hibaüzenet jelenhet meg:
+
+Ha egy, a titkosítás konfigurálására szolgáló beállításjegyzékből kísérli meg eltávolítani a felhasználó által hozzárendelt vagy rendszerhez rendelt felügyelt identitást, a következőhöz hasonló hibaüzenet jelenhet meg:
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-A titkosítási kulcs nem módosítható (elforgatható). Ha ez a probléma merül fel, először újra hozzá kell rendelnie az identitást a hibaüzenetben megjelenő GUID azonosító használatával. Például:
+A titkosítási kulcs nem módosítható (elforgatható). A megoldás lépései a titkosításhoz használt identitás típusától függenek.
+
+**Felhasználó által hozzárendelt identitás**
+
+Ha ez a probléma felhasználó által hozzárendelt identitással fordul elő, először újra hozzá kell rendelnie az identitást a hibaüzenetben megjelenő GUID azonosítóval. Például:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
@@ -582,7 +587,12 @@ az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxx
         
 Ezután a kulcs módosítása és egy másik identitás hozzárendelése után eltávolíthatja az eredeti, felhasználó által hozzárendelt identitást.
 
-## <a name="next-steps"></a>További lépések
+**Rendszer által hozzárendelt identitás**
+
+Ha a probléma rendszerhez rendelt identitással fordul elő, [hozzon létre egy Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/) , amely segítséget nyújt az identitás helyreállításához.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [Az Azure-](../security/fundamentals/encryption-atrest.md)beli inaktív adatok titkosításáról.
 * További információ a hozzáférési házirendekről és a [kulcstartóhoz való hozzáférés biztonságossá](../key-vault/general/secure-your-key-vault.md)tételéről.

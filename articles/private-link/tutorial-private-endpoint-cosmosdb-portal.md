@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631949"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063467"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás Azure Cosmos-fiókhoz Azure Private-végpont használatával
 
@@ -72,7 +72,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -127,7 +127,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | NIC hálózati biztonsági csoport | **Basic**|
     | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
    
-5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
+5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -218,19 +218,19 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs ablaktáblán.
 
-2. Válassza a **myResourceGroup** lehetőséget.
+1. Válassza a **myResourceGroup** lehetőséget.
 
-3. Válassza a **myVM** lehetőséget.
+1. Válassza a **myVM** lehetőséget.
 
-4. A **myVM** áttekintés lapján válassza a **kapcsolat** , majd a **megerősített** lehetőséget.
+1. A **myVM** áttekintés lapján válassza a **kapcsolat** , majd a **megerősített** lehetőséget.
 
-5. Válassza a kék **használat Bastion** gombot.
+1. Válassza a kék **használat Bastion** gombot.
 
-6. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-7. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
+1. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
 
-8. Írja be a következő szöveget: `nslookup <cosmosdb-account-name>.documents.azure.com`. Cserélje le az helyére az **\<cosmosdb-account-name>** előző lépésekben létrehozott Cosmos db fiók nevét. 
+1. Adja meg `nslookup <cosmosdb-account-name>.documents.azure.com` és ellenőrizze a névfeloldást. Cserélje le az helyére az **\<cosmosdb-account-name>** előző lépésekben létrehozott Cosmos db fiók nevét. 
 
     ```powershell
     Server:  UnKnown
@@ -241,28 +241,31 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
     Address:  10.1.0.5
     Aliases:  mycosmosdb8675.documents.azure.com
     ```
-
     A rendszer a **10.1.0.5** magánhálózati IP-címét adja vissza a Cosmos db fiók nevéhez.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
+    
+1. Azure Cosmos DB elsődleges kapcsolatok karakterláncának beszerzése a portálról. Az érvényes kapcsolatok karakterláncának formátuma a (z):
+   
+   SQL API-fiókok esetén: `https://<accountName>.documents.azure.com:443/;AccountKey=<accountKey>;` a MongoDB Azure Cosmos db API-hoz: `mongodb://<accountName>:<accountKey>@cdbmongo36.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false`
 
-9. Telepítse a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) a virtuális gépre.
+1. Telepítse a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) a virtuális gépre.
 
-10. A **Microsoft Azure Storage Explorer** telepítése után válassza a **Befejezés** lehetőséget.  Az alkalmazás megnyitásához hagyja bejelölve a jelölőnégyzetet.
+1. A **Microsoft Azure Storage Explorer** telepítése után válassza a **Befejezés** lehetőséget.  Az alkalmazás megnyitásához hagyja bejelölve a jelölőnégyzetet.
 
-11. A **Kapcsolódás az Azure Storage-hoz** képernyőn válassza a **Mégse** lehetőséget.
+1. A **Kapcsolódás az Azure Storage-hoz** képernyőn válassza a **Mégse** lehetőséget.
 
-12. A Storage Explorer kattintson a jobb gombbal **Cosmos db fiókok** elemre, és válassza a **Kapcsolódás a** következőhöz: Cosmos db.
+1. A Storage Explorer kattintson a jobb gombbal **Cosmos db fiókok** elemre, és válassza a **Kapcsolódás a** következőhöz: Cosmos db.
 
-13. Hagyja meg az alapértelmezett **SQL** -t a **Select API** alatt.
+1. Hagyja meg az alapértelmezett **SQL** -t a **Select API** alatt.
 
-14. Illessze be az előző lépésekben másolt Cosmos DB fiókból a **kapcsolatok karakterlánca alatt található** mezőbe.
+1. Illessze be az előző lépésekben másolt Cosmos DB fiókból a **kapcsolatok karakterlánca alatt található** mezőbe.
 
-15. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-16. Ellenőrizze, hogy helyesek-e a beállítások a **kapcsolatok összegzésében**.  
+1. Ellenőrizze, hogy helyesek-e a beállítások a **kapcsolatok összegzésében**.  
 
-17. Válassza a **Kapcsolódás** lehetőséget.
+1. Válassza a **Kapcsolódás** lehetőséget.
 
-18. A **myVM** létesített kapcsolatok lezárása.
+1. A **myVM** létesített kapcsolatok lezárása.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

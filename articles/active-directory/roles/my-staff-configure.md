@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 501fe17734be1e73ffc516a7b94300445c331e86
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740142"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090943"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Felhasználók kezelése a munkatársaival (előzetes verzió)
 
@@ -89,7 +89,7 @@ A következő szerepkörök jogosultak a felhasználó jelszavának alaphelyzetb
 
 - [Hitelesítés rendszergazdája](permissions-reference.md#authentication-administrator)
 - [Kiemelt jogosultságú hitelesítés rendszergazdája](permissions-reference.md#privileged-authentication-administrator)
-- [Globális rendszergazda](permissions-reference.md#global-administrator--company-administrator)
+- [Globális rendszergazda](permissions-reference.md#global-administrator)
 - [Segélyszolgálat rendszergazdája](permissions-reference.md#helpdesk-administrator)
 - [Felhasználói rendszergazda](permissions-reference.md#user-administrator)
 - [Jelszókezelő](permissions-reference.md#password-administrator)
@@ -117,7 +117,7 @@ A felhasználó telefonszámának kezeléséhez a következő szerepkörök egyi
 
 - [Hitelesítés rendszergazdája](permissions-reference.md#authentication-administrator)
 - [Kiemelt jogosultságú hitelesítés rendszergazdája](permissions-reference.md#privileged-authentication-administrator)
-- [Globális rendszergazda](permissions-reference.md#global-administrator--company-administrator)
+- [Globális rendszergazda](permissions-reference.md#global-administrator)
 
 ## <a name="search"></a>Keresés
 
@@ -129,7 +129,7 @@ Egy AU-n belül is kereshet egy felhasználót. Ehhez használja a felhasználó
 
 A naplókat megtekintheti a munkatársaim által a Azure Active Directory portálon végrehajtott műveletekhez. Ha a naplót egy, a munkatársain végrehajtott művelet hozta létre, akkor ez a naplózási esemény további részletei között jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Munkatársak felhasználói dokumentációja](../user-help/my-staff-team-manager.md) 
  [Felügyeleti egységek dokumentációja](administrative-units.md)

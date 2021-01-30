@@ -6,25 +6,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: aee064a15d465c412d16dd313279168c37af0e98
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e71d9b4006d0353b094306424ba0fe99c581279
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947211"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090728"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-a [v 3.1 dokumentációja](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+a [v 3.1 dokumentációja](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet)  |  [v3 függvénytár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3 minta](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-21"></a>[2,1-es verzió](#tab/version-2)
 
@@ -812,8 +812,7 @@ Key phrases:
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-> [!CAUTION]
-> Az elemzési művelet használatához győződjön meg arról, hogy az Azure-erőforrás standard szintű díjszabást használ.
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
 Hozzon létre egy nevű új függvényt `AnalyzeOperationExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `StartAnalyzeOperationBatch()` függvényt. A visszaadott `AnalyzeOperation` objektum tartalmazni fogja a `Operation` illesztőfelület-objektumát a következőhöz: `AnalyzeOperationResult` . Mivel ez egy hosszan futó művelet, a `await` (z `operation.WaitForCompletionAsync()` ) értékre a frissítéshez. A `WaitForCompletionAsync()` befejezését követően a gyűjteményt frissíteni kell a alkalmazásban `operation.Value` . Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
 

@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 184263badc909881f597213a222272bd675fc362
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 992f082c5157521ea7f0d8a681557d6c7cc3dc04
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051974"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089985"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
@@ -48,7 +48,7 @@ Ha kiválasztja, hogy mely alkalmazás-jóváhagyási szabályzatok érvényesek
 
 A felhasználói beleegyező beállítások konfigurálása a Azure Portal használatával:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator).
 1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **beleegyezett és engedélyek**  >  **felhasználói beleegyező beállításait**.
 1. **Az alkalmazások felhasználói beleegyezike** területen válassza ki, hogy az összes felhasználóra vonatkozóan melyik beleegyező beállítást szeretné konfigurálni.
 1. A beállítások mentéséhez kattintson a **Mentés** gombra.

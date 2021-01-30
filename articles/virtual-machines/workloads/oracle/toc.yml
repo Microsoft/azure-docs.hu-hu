@@ -30,6 +30,12 @@
       href: oracle-reference-architecture.md
     - name: Oracle-adatbázis tervezése
       href: oracle-design.md
+    - name: Oracle Database biztonsági mentési stratégiák
+      href: oracle-database-backup-strategies.md
+    - name: Oracle Database biztonsági mentés az Azure Storage használatával
+      href: oracle-database-backup-azure-storage.md
+    - name: Oracle Database biztonsági mentés a Azure Backup használatával
+      href: oracle-database-backup-azure-backup.md
     - name: Vészhelyreállítási lehetőségek az Oracle-ben
       href: oracle-disaster-recovery.md
 - name: Útmutatók

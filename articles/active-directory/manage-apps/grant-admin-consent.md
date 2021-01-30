@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fd102bad45bf482cb9a9750bf05e862b9c91e8e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: eaf8f92ec2c7d9653595b3249521582620670aaf
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055212"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089953"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz
 
@@ -27,7 +27,7 @@ További információ az alkalmazásokkal való hozzájárulásról: [Azure Acti
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A bérlői szintű rendszergazdai jóváhagyás megadása megköveteli, hogy [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), [alkalmazás-rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [felhőalapú alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator)jelentkezzen be.
+A bérlői szintű rendszergazdai jóváhagyás megadása megköveteli, hogy [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator), [alkalmazás-rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [felhőalapú alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator)jelentkezzen be.
 
 > [!IMPORTANT]
 > Ha egy alkalmazás teljes körű rendszergazdai jogosultsággal rendelkezik, az összes felhasználó be tud jelentkezni az alkalmazásba, kivéve, ha úgy van konfigurálva, hogy felhasználói hozzárendelést igényeljen. Ha szeretné korlátozni, hogy mely felhasználók jelentkezhetnek be egy alkalmazásba, megkövetelheti a felhasználói hozzárendelést, majd felhasználókat vagy csoportokat rendelhet hozzá az alkalmazáshoz. További információ: [felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
@@ -47,7 +47,7 @@ Ha az alkalmazás már üzembe lett helyezve a bérlőben, a bérlői szintű re
 
 A bérlői szintű rendszergazdai jóváhagyás biztosítása a **vállalati alkalmazásokban** felsorolt alkalmazásokhoz:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), alkalmazás- [rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator), alkalmazás- [rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator).
 2. Válassza **Azure Active Directory** majd a **vállalati alkalmazások** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez bérlői szintű rendszergazdai jogosultságot szeretne adni.
 4. Válassza az **engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre.
@@ -63,7 +63,7 @@ A szervezet által fejlesztett, vagy közvetlenül az Azure AD-bérlőben regisz
 
 A bérlői szintű rendszergazdai jóváhagyás engedélyezése **Alkalmazásregisztrációktól**:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator--company-administrator), alkalmazás- [rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) [globális rendszergazdaként](../roles/permissions-reference.md#global-administrator), alkalmazás- [rendszergazdaként](../roles/permissions-reference.md#application-administrator)vagy [Felhőbeli alkalmazás-rendszergazdaként](../roles/permissions-reference.md#cloud-application-administrator).
 2. Válassza a **Azure Active Directory** majd **Alkalmazásregisztrációk** lehetőséget.
 3. Válassza ki azt az alkalmazást, amelyhez bérlői szintű rendszergazdai jogosultságot szeretne adni.
 4. Válassza az **API-engedélyek** lehetőséget, majd kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre.

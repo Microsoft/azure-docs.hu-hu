@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 345b82d8120be52066ce6f834b7f2338b6c3bfd0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 6b5df6d6eaedd4d7d1793c35db37e06b4478f2b8
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623298"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072068"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése (Android)
 
@@ -92,7 +92,7 @@ Szükség van egy _szolgáltatás-kapcsolati karakterláncra_ is, amely lehetőv
 **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
 ```azurecli-interactive
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 Jegyezze fel a szolgáltatáskapcsolati sztringet, amely a következőképpen néz ki:

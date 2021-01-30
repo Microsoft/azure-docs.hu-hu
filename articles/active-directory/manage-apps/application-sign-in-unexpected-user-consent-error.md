@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 25515c29ae3e5623b447232ed6f935a668a58c3a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658485"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090069"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt az alkalmazáshoz való beleegyezett művelet végrehajtásakor
 
@@ -35,7 +35,7 @@ Bizonyos feltételeknek igaznak kell lennie ahhoz, hogy egy felhasználó beleeg
 * **AADSTS90093:** &lt; a clientAppDisplayName &gt; egy vagy több olyan engedélyt kér, amelynek Ön nem jogosult a jóváhagyásra. Forduljon a rendszergazdához, aki beleegyezik az alkalmazásba az Ön nevében.
 * **AADSTS90094:** &lt; &gt; a clientAppDisplayName engedélyre van szüksége a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
-Ez a hiba akkor fordul elő, ha egy olyan felhasználó, aki nem vállalati rendszergazda, olyan alkalmazást próbál meg használni, amely csak a rendszergazda által biztosított engedélyeket kér. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
+Ez a hiba akkor fordul elő, ha egy olyan felhasználó, aki nem globális rendszergazda, olyan alkalmazást próbál meg használni, amely csak a rendszergazda által biztosított engedélyeket kér. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
 
 Ez a hiba akkor is előfordulhat, ha a felhasználók nem tudnak beleegyezést adni egy alkalmazásba, mert a Microsoft észleli, hogy az engedélyek iránti kérelem kockázatos. Ebben az esetben a rendszer naplózási eseményt is naplóz a "ApplicationManagement" kategóriába, a "beleegyezés az alkalmazásba" és a "kockázatos alkalmazás észlelése" állapot miatt.
 
@@ -44,7 +44,7 @@ Egy másik forgatókönyv, amelyben ez a hiba akkor fordulhat elő, ha a felhasz
 ## <a name="policy-prevents-granting-permissions-error"></a>A szabályzat megakadályozza az engedélyek megadását
 * **AADSTS90093:** A tenantDisplayName rendszergazdája &lt; olyan &gt; szabályzatot állított be, amely megakadályozza az &lt; alkalmazás nevének megadását &gt; a kért engedélyek alapján. Forduljon a &lt; tenantDisplayName rendszergazdájához &gt; , aki az Ön nevében engedélyeket adhat az alkalmazásnak.
 
-Ez a hiba akkor fordul elő, ha a vállalati rendszergazda kikapcsolja a felhasználók által az alkalmazásokhoz való hozzáférés lehetőségét, és a nem rendszergazda felhasználó olyan alkalmazást próbál meg használni, amelyik beleegyezik. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
+Ez a hiba akkor fordul elő, ha a globális rendszergazda kikapcsolja a felhasználók által az alkalmazásokhoz való hozzáférés lehetőségét, és a nem rendszergazda felhasználó olyan alkalmazást próbál használni, amely beleegyezik. Ezt a hibát feloldható egy rendszergazda, aki a szervezet nevében hozzáférést biztosít az alkalmazáshoz.
 
 ## <a name="intermittent-problem-error"></a>Átmeneti hiba történt
 * **AADSTS90090:** Úgy tűnik, hogy a bejelentkezési folyamat időszakos hibát észlelt, és rögzíti a clientAppDisplayName megadására megkísérelt engedélyeket &lt; &gt; . próbálkozzon újra később.

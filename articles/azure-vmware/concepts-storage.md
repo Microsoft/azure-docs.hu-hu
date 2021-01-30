@@ -3,12 +3,12 @@ title: Fogalmak – tárolás
 description: Ismerje meg az Azure VMware-megoldás privát felhők legfontosabb tárolási funkcióit.
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289247"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062795"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware megoldás tárolási fogalmak
 
@@ -32,7 +32,7 @@ a vSAN adattárolók alapértelmezés szerint a REST titkosítást használják.
 
 ## <a name="scaling"></a>Méretezés
 
-A natív fürt tárolókapacitása méretezhető úgy, hogy gazdagépeket ad hozzá egy fürthöz. A gazdagépeket használó fürtök esetén a teljes fürtre kiterjedő kapacitást 15,4 TB-kal növelik minden további állomással. A GP-gazdagépekkel létrehozott fürtökön az egyes további gazdagépek esetében 7,7 TB-kal nőtt a nyers kapacitása. Mindkét típusú fürtben a gazdagépek körülbelül 10 percet vesznek fel a fürtbe. A fürtök méretezésével kapcsolatos utasításokért tekintse meg a [privát felhő méretezése című oktatóanyagot][tutorial-scale-private-cloud] .
+A natív fürt tárolókapacitása méretezhető úgy, hogy gazdagépeket ad hozzá egy fürthöz. A gazdagépeket használó fürtök esetén a teljes fürtre kiterjedő kapacitást 15,4 TB-kal növelik minden további állomással. A GP-gazdagépekkel létrehozott fürtökön az egyes további gazdagépek esetében 7,7 TB-kal nőtt a nyers kapacitása. Mindkét típusú fürtben a gazdagépek körülbelül 10 percet vesznek fel a fürtbe. A fürtök méretezésével kapcsolatos utasításokért tekintse meg a [privát felhő méretezése című oktatóanyagot][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Azure Storage-integráció
 

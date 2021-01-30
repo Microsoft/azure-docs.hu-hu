@@ -3,16 +3,16 @@ title: Partneri szerepvállalás – Microsoft kereskedelmi piactér
 description: A Microsoft partner Center közös értékesítési programja a partnereknek segítséget nyújt a jelentős ügyfélkör eléréséhez és új értékesítések létrehozásához.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/2/2020
-ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/29/2021
+ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880287"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063079"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -22,7 +22,7 @@ A közös értékesítésre szolgáló program a **szellemi tulajdon (IP) révé
 
 - A **közös értékesítésre kész** ajánlatok a Microsoft Field Sellers számára érhetők el. A Microsoft-értékesítők használatakor a közös értékesítési program segítséget nyújt a Microsoft által felügyelt ügyfelek nagy közösségének, hogy együttműködjön az üzleti növekedés felgyorsítására szolgáló értékesítési lehetőségekkel.
 
-    ![Diagram, amely bemutatja, hogyan történik a közös értékesítés a Microsoft által felügyelt ügyfeleken megosztva, elfogadva és megnyert értékesítési érdeklődők esetén.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Diagram, amely bemutatja, hogyan történik a közös értékesítés a Microsoft által felügyelt ügyfeleken megosztva, elfogadva és megnyert értékesítési érdeklődők esetén.":::
 
 - **Közös értékesítésű incentivized** Az IP-címek a Microsoft értékesítési csoportjaival együttműködve, az alább felsorolt Piactéri előnyök mellett is igénybe vehetik a Microsoft Field Sellers ösztönzőit.</li></ul>
 
@@ -63,7 +63,7 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
 
 1. A bal oldali menüben válassza a **közös értékesítés a Microsofttal** lehetőséget.
 
-    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.":::
+    [![Ez a rendszerkép a közös értékesítés helyét mutatja a Microsoft lapon.](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
 1. Adja meg az alapszintű tőzsdei adatokat, amelyek segítségével a Microsoft-értékesítők gyorsan rendezhetik és felfedezhetik az ajánlatot a **Listázás** szakaszban. (*Kötelező: minden mező.*)
 
@@ -71,31 +71,22 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
 
 1. Adja meg az ajánlat részleteit, és töltse fel a biztosítékokat a **dokumentumok** szakaszban. A Microsoft Sellers ezeket az információkat az ajánlat ajánlása és értékesítése céljából fogja használni. *(Kötelező: megoldás/ajánlat egy-pager és megoldás/ajánlat pitch Deck. Az Azure IP közös értékesítésének incentivized állapotának eléréséhez szükséges: hivatkozás architektúra diagram.)*
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Ez a rendszerkép a dokumentumok szakaszt jeleníti meg a közös értékesítés lapon.":::
+    [![Ez a rendszerkép a dokumentumok szakaszt jeleníti meg a közös értékesítés lapon.](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
 
 1. Töltse fel az értékesítési kapcsolattartási adatokat a **névjegyek** szakaszban. Előfordulhat, hogy a Microsoft-értékesítők felhasználhatják ezeket a partnereket az ajánlatával kapcsolatos további információk igényléséhez. (*Kötelező: kapcsolat minden olyan földrajzi helyhez, ahol az ajánlat elérhetővé válik.*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Ez a rendszerkép a kapcsolatok szakaszt jeleníti meg a közös értékesítés lapon.":::
+    [![Ez a rendszerkép a kapcsolatok szakaszt jeleníti meg a közös értékesítés lapon.](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
 
 1. A folytatás előtt mentse a piszkozatot.
 1. Miután elvégezte az ajánlat összes szükséges részét, elküldheti azt véleményezésre és közzétételre. A jobb felső sarokban válassza a **felülvizsgálat és közzététel** lehetőséget. Tekintse át az ajánlat részleteit, majd válassza a **Közzététel** lehetőséget.
-1. Miután meggyőződött arról, hogy teljesítette az [Ön által követett közös értékesítési állapotra vonatkozó feltételeket](#co-sell-publishing-steps-and-requirements), kövesse az alábbi útmutatást az ajánlat közös értékesítésre való kiválasztásához:
-    1. **Ha rendelkezik Microsoft partner-kezelővel (pl.: PDM)** , segítségért forduljon a partner kezelőjéhez. Végigvezetik a nevezési folyamaton, amely a használatra kész állapotot és az Azure IP-címek közös értékesítését vagy Business Applications közös értékesítésű incentivized (ha van ilyen).
-
-    1. **Ha nem rendelkezik Microsoft partner-kezelővel (pl. PDM):** [önjelöltség a Cloud Enable Desk (CED) használatával](https://aka.ms/cednominate). Válassza a "készen áll a Ready-Selling" lehetőséget a "kívánt CED Services" legördülő menüben:
-
-        :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Ez a rendszerkép a CED legördülő listáját jeleníti meg a közös értékesítések felülvizsgálatának kéréséhez.":::
-
-    A folyamat elvégzéséhez a CED fogja elérni.
 
 ## <a name="see-your-offers-co-sell-status"></a>Az ajánlat közös értékesítéssel kapcsolatos állapotának megtekintése
 
 A [kereskedelmi piactéren a közös értékesítés lehetőséggel](commercial-marketplace-co-sell.md)rendelkező ajánlatok esetében az ajánlat áttekintés lapján láthatja az ajánlat aktuális közös értékesítésének állapotát:
 
- :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Ez a rendszerkép az ajánlatok aktuális közös értékesítési állapotát jeleníti meg.":::
+[![Ez a rendszerkép az ajánlatok aktuális közös értékesítési állapotát jeleníti meg.](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Microsofttal való értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).
 - További információ a [kereskedelmi piactéren elérhető közös értékesítési lehetőségekről](commercial-marketplace-co-sell.md).

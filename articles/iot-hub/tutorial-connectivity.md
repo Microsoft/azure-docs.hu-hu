@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621444"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070381"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban az Azure IoT Hub portál eszközeivel és az Azure CLI 
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Az eszközhitelesítés ellenőrzése
 > * Az eszközről a felhőbe irányuló kapcsolat ellenőrzése
@@ -176,7 +176,7 @@ Miután egy eszköz csatlakozik, általában telemetriát próbál küldeni az I
 Először kérje le a szimulált eszköz aktuális kapcsolati sztringjét a következő paranccsal:
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 Az üzeneteket küldő szimulált eszköz futtatásához navigáljon a letöltött kód **IOT-hub\Tutorials\ConnectivityTests** mappájába.

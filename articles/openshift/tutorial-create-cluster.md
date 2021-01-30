@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 10/26/2020
-ms.openlocfilehash: 7b0aead6ada87ca259c838f3f56e68f1030302a2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 909385b4f670d084a9357b6ac2840a9458604667
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675725"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063029"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -92,7 +92,7 @@ Ha a fürthöz egyéni tartományt ad meg, vegye figyelembe a következő szempo
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
-Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálózatot tartalmaz.
+Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálózatot tartalmaz. Ha van olyan meglévő virtuális hálózata, amely megfelel az igényeinek, kihagyhatja ezt a lépést.
 
 1. **Állítsa be a következő változókat abban a rendszerhéj-környezetben, amelyben végre fogja hajtani a `az` parancsokat.**
 
@@ -131,7 +131,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 2. **Hozzon létre egy virtuális hálózatot.**
 
-   A OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtökhöz két üres alhálózattal rendelkező virtuális hálózat szükséges a fő-és munkavégző csomópontokhoz.
+   A OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtökhöz két üres alhálózattal rendelkező virtuális hálózat szükséges a fő-és munkavégző csomópontokhoz. Létrehozhat egy új virtuális hálózatot, vagy használhat meglévő virtuális hálózatot is.
 
    Hozzon létre egy új virtuális hálózatot ugyanabban az erőforráscsoportban, amelyet korábban hozott létre:
 

@@ -5,67 +5,40 @@ description: Az Azure Cognitive Search indexek állapotának, előrehaladásána
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 0107dfb24ddad2a5b0f9f0ab12d2fe701466e385
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.date: 01/28/2021
+ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372829"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063269"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
 
-Az Azure Cognitive Search minden indexelő aktuális és korábbi futtatásával kapcsolatos állapot-és figyelési információkat biztosít.
+Az indexelő feldolgozását figyelheti a Azure Portal, vagy programozott módon, REST-hívásokkal vagy egy Azure SDK-val. Az indexelő állapotán kívül az indítási és befejezési időpontokat, valamint egy adott Futtatás részletes hibáit és figyelmeztetéseit is áttekintheti.
 
-Az indexelő figyelése a következő esetekben hasznos:
+## <a name="monitor-using-azure-portal"></a>Figyelés Azure Portal használatával
 
-* Egy indexelő előrehaladásának nyomon követése egy folyamatban lévő futtatás során.
-* Tekintse át a folyamatban vagy az előző indexelő futtatásának eredményét.
-* Azonosíthatja a legfelső szintű indexelő hibákat, valamint az indexelt dokumentumok egyes dokumentumaival kapcsolatos hibákat és figyelmeztetéseket.
-
-## <a name="get-status-and-history"></a>Állapot és előzmények beolvasása
-
-Az indexelő figyelési információit többféleképpen is elérheti, többek között:
-
-* A [Azure Portal](#portal)
-* A [REST API](#restapi) használata
-* A [.net SDK](#dotnetsdk) használata
-
-A rendelkezésre álló indexelő-figyelési információk tartalmazzák a következőket (bár az adatformátumok eltérőek a használt hozzáférési módszer alapján):
-
-* Az indexelő állapotával kapcsolatos információk
-* Az indexelő legutóbbi futtatásával kapcsolatos információk, beleértve az állapotát, a kezdési és befejezési időpontokat, valamint a részletes hibákat és figyelmeztetéseket.
-* A korábbi indexelő futtatások listája, valamint az állapotuk, az eredmények, a hibák és a figyelmeztetések.
-
-A nagyméretű adatmennyiséget feldolgozó indexelő hosszú időt vehetnek igénybe. A több millió forrásoldali dokumentumot kezelő indexelő például 24 óráig futhatnak, majd a szinte azonnal újraindulnak. Előfordulhat, hogy a nagy mennyiségű indexelő állapota mindig a portálon **van folyamatban** . Még ha egy indexelő is fut, a részletek a folyamatban lévő és a korábbi futtatások esetében is elérhetők.
-
-<a name="portal"></a>
-
-## <a name="monitor-using-the-portal"></a>Figyelés a portál használatával
-
-Az összes indexelő állapotát megtekintheti a keresési szolgáltatás áttekintés lapján lévő **Indexelő** listában.
+Az összes indexelő aktuális állapotát megtekintheti a keresési szolgáltatás áttekintés lapján. A portál oldalai néhány percenként frissülnek, így az új indexelő azonnal nem jelenik meg.
 
    ![Indexelő lista](media/search-monitor-indexers/indexers-list.png "Indexelő lista")
 
-Az indexelő végrehajtásakor a listában szereplő állapot megjelenik a **folyamatban** , és a **docs sikeres** értéke az eddig feldolgozott dokumentumok számát mutatja. Eltarthat néhány percig, amíg a portál az indexelő állapotának és a dokumentumok számának frissítésére is képes.
+| Állapot | Leírás |
+|--------|-------------|
+| **Folyamatban** | Aktív végrehajtást jelez. A portál részleges információkat fog jelenteni. Az indexelés előrehaladtával megtekintheti, hogy a **docs sikeres** értékének növekedése válaszként történt-e. A nagyméretű adatmennyiséget feldolgozó indexelő hosszú időt vehetnek igénybe. A több millió forrásoldali dokumentumot kezelő indexelő például 24 óráig futhatnak, majd a szinte azonnal újraindulnak. Előfordulhat, hogy a nagy mennyiségű indexelő állapota mindig a portálon **van folyamatban** . Még ha egy indexelő is fut, a részletek a folyamatban lévő és a korábbi futtatások esetében is elérhetők. |
+| **Siker** | Azt jelzi, hogy a Futtatás sikeres volt. Az indexelő futása akkor is sikeres lehet, ha az egyes dokumentumok hibákkal rendelkeznek, ha a hibák száma kisebb, mint az indexelő **nem megfelelő elemek maximális** beállítása. |
+| **Sikertelen** | A hibák száma túllépte a **hibás elemek maximális** számát, és az indexelés leállt. |
+| **Reset** | Az indexelő belső módosítás-követési állapota alaphelyzetbe állt. Az indexelő teljes egészében fut, az összes dokumentum frissítése nélkül, és nem csak az újabb időbélyegekkel rendelkezők. |
 
-Sikeres **sikert** mutat egy indexelő, amelynek a legutóbbi futtatása sikeres volt. Az indexelő futása akkor is sikeres lehet, ha az egyes dokumentumok hibákkal rendelkeznek, ha a hibák száma kisebb, mint az indexelő **nem megfelelő elemek maximális** beállítása.
-
-Ha a legutóbbi Futtatás hibával fejeződött be, az állapot **nem sikerült**. Az alaphelyzetbe **állítás** állapot azt jelenti, hogy az indexelő változás-követési állapota alaphelyzetbe áll.
-
-Kattintson a listában szereplő indexelő elemre az indexelő jelenlegi és legutóbbi futtatásával kapcsolatos további részletek megtekintéséhez.
+A listában szereplő indexelő elemre kattintva további részleteket tudhat meg az indexelő jelenlegi és legutóbbi futtatásáról.
 
    ![Indexelő Összegzés és végrehajtási előzmények](media/search-monitor-indexers/indexer-summary.png "Indexelő Összegzés és végrehajtási előzmények")
 
 Az **Indexelő összegző** diagram a legutóbbi futtatásokban feldolgozott dokumentumok számának gráfját jeleníti meg.
 
-A **végrehajtás részletei** listán legfeljebb 50 a legutóbbi végrehajtás eredményei.
-
-Kattintson egy végrehajtási eredményre a listában, hogy megtekintse a futtatási jellemzőket. Ez magában foglalja az indítási és befejezési időpontokat, valamint az esetleges hibákat és figyelmeztetéseket.
+A **végrehajtás részletei** listán legfeljebb 50 a legutóbbi végrehajtás eredményei. Kattintson egy végrehajtási eredményre a listában, hogy megtekintse a futtatási jellemzőket. Ez magában foglalja az indítási és befejezési időpontokat, valamint az esetleges hibákat és figyelmeztetéseket.
 
    ![Indexelő végrehajtásának részletei](media/search-monitor-indexers/indexer-execution.png "Indexelő végrehajtásának részletei")
 
@@ -73,13 +46,11 @@ Ha a Futtatás során dokumentált problémák léptek fel, azok a hibák és fi
 
    ![Indexelő adatai hibákkal](media/search-monitor-indexers/indexer-execution-error.png "Indexelő adatai hibákkal")
 
-A figyelmeztetések gyakran előfordulnak bizonyos típusú indexelő típusokban, és nem mindig jeleznek problémát. A kognitív szolgáltatásokat használó indexelő például figyelmeztetést jelenthetnek, ha a kép-vagy PDF-fájlok nem tartalmaznak feldolgozni kívánt szöveget.
+A figyelmeztetések gyakran előfordulnak bizonyos típusú indexelő típusokban, és nem mindig jeleznek problémát. A kognitív szolgáltatásokat használó indexelő például figyelmeztetést jelenthetnek, ha a kép-vagy PDF-fájlok nem tartalmaznak feldolgozni kívánt szöveget. 
 
 További információ az indexelő hibáiról és a figyelmeztetésekről: [Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása](search-indexer-troubleshooting.md).
 
-<a name="restapi"></a>
-
-## <a name="monitor-using-rest-apis"></a>Figyelés REST API-k használatával
+## <a name="monitor-using-get-indexer-status-rest-api"></a>Figyelő az indexelő állapotának lekérése (REST API) használatával
 
 Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](/rest/api/searchservice/get-indexer-status)kérheti le:
 
@@ -122,15 +93,13 @@ A végrehajtási előzmények akár a 50 legutóbbi futtatását is tartalmazzá
 
 Figyelje meg, hogy két különböző állapotüzenetek vannak. A legfelső szintű állapot az indexelő esetében van. A **futó** indexelő állapota azt jelenti, hogy az indexelő helyesen van beállítva, és elérhető a futtatásához, de nem, hogy éppen fut.
 
-Az indexelő minden futtatása saját állapottal rendelkezik, amely azt jelzi, hogy az adott végrehajtás folyamatban van-e ( **fut** ), vagy már befejeződött **sikeres** , **transientFailure** vagy **persistentFailure** állapottal. 
+Az indexelő minden futtatása saját állapottal rendelkezik, amely azt jelzi, hogy az adott végrehajtás folyamatban van-e (**fut**), vagy már befejeződött **sikeres**, **transientFailure** vagy **persistentFailure** állapottal. 
 
 Ha egy indexelő visszaáll a Change Tracking állapotának frissítésére, egy külön végrehajtási előzmény kerül a **visszaállítási** állapotba.
 
-Az állapotkódok és az indexelő adatainak figyelésével kapcsolatos további információkért lásd: [GetIndexerStatus](/rest/api/searchservice/get-indexer-status).
+Az állapotkódok és az indexelő adatainak figyelésével kapcsolatos további információkért lásd: az [Indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status).
 
-<a name="dotnetsdk"></a>
-
-## <a name="monitor-using-the-net-sdk"></a>Figyelés a .NET SDK használatával
+## <a name="monitor-using-net"></a>Figyelés a .NET használatával
 
 Az Azure Cognitive Search .NET SDK-t használva a következő C#-példa adatokat ír az indexelő állapotára, valamint a legutóbbi (vagy folyamatban lévő), a konzolon futtatott eredményekre.
 
@@ -180,11 +149,11 @@ Latest run
 
 Figyelje meg, hogy két különböző állapotüzenetek vannak. A legfelső szintű állapot az indexelő állapota. A **futó** indexelő állapota azt jelenti, hogy az indexelő helyesen van beállítva, és végrehajtásra elérhető, de nem az éppen végrehajtás alatt áll.
 
-Az indexelő minden futtatása saját állapottal rendelkezik, hogy az adott végrehajtás folyamatban van-e ( **fut** ), vagy már befejeződött **sikeres** vagy **TransientError** állapottal. 
+Az indexelő minden futtatása saját állapottal rendelkezik, hogy az adott végrehajtás folyamatban van-e (**fut**), vagy már befejeződött **sikeres** vagy **TransientError** állapottal. 
 
 Ha egy indexelő visszaáll a változás követési állapotának frissítésére, egy külön előzmény kerül a **visszaállítási** állapotba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az állapotkódok és az indexelő figyelési információkkal kapcsolatos további információkért tekintse meg a következő API-referenciát:
 

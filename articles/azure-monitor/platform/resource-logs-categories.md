@@ -3,13 +3,13 @@ title: Azure Monitor erőforrás-naplók támogatott szolgáltatásai és kateg�
 description: Azure Monitor az Azure-erőforrás-naplók támogatott szolgáltatásainak és az esemény sémájának ismertetése.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 12/09/2020
-ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/29/2021
+ms.openlocfilehash: 02488e1a3ff26acf9ff318a2d5c09115aaba8df9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232247"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070746"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
 
@@ -23,7 +23,9 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="costs"></a>Költségek
 
-Az adatok a Log Analyticsba, az Azure Storage-ba és/vagy az Event Hubbe való küldésével és tárolásával kapcsolatos költségek. Előfordulhat, hogy a költségeket az ilyen helyszínekre való beszerzéshez és a megtartásához kell fizetnie.  Az erőforrás-naplók egy adattípusok, amelyeket elküldhet a következő helyszínekre. Az [erőforrás-naplók egyes kategóriáinak exportálására további költségek vonatkoznak](https://azure.microsoft.com/pricing/details/monitor/) , míg mások az exportálási költségek nélkül. Az export Cost-specifikusak az alábbi táblázatban láthatók.
+Az adatok a Log Analyticsba, az Azure Storage-ba és/vagy az Event Hubbe való küldésével és tárolásával kapcsolatos költségek. Előfordulhat, hogy a költségeket az ilyen helyszínekre való beszerzéshez és a megtartásához kell fizetnie.  Az erőforrás-naplók egy adattípusok, amelyeket elküldhet a következő helyszínekre. 
+
+Az erőforrás-naplók egyes kategóriáinak exportálására további díj vonatkozik. Az exportálási költségekkel rendelkező naplók az alábbi táblázatban láthatók. A díjszabással kapcsolatos további információkért tekintse meg a platform naplók című szakaszt a [Azure monitor díjszabása lapon](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplózási kategóriák/erőforrás típusok
 
@@ -31,859 +33,950 @@ Az alábbi lista felsorolja az egyes erőforrástípusok számára elérhető na
 
 Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ha úgy érzi, hogy hiányzik egy erőforrás, tekintse meg az erőforrás-specifikus dokumentációt. Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
-Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyzést.
+Ha úgy gondolja, hogy valami hiányzik, akkor a cikk alján megnyithatja a GitHub-megjegyzést.
+## <a name="microsoftaaddomainservices"></a>Microsoft. HRE/domainServices
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AccountLogon|AccountLogon|No|
+|AccountManagement|AccountManagement|No|
+|DetailTracking|DetailTracking|No|
+|DirectoryServiceAccess|DirectoryServiceAccess|No|
+|LogonLogoff|LogonLogoff|No|
+|ObjectAccess|ObjectAccess|No|
+|PolicyChange|PolicyChange|No|
+|PrivilegeUse|PrivilegeUse|No|
+|SystemSecurity|SystemSecurity|No|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Motor|Motor|
-|Szolgáltatás|Szolgáltatás|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Motor|Motor|No|
+|Szolgáltatás|Szolgáltatás|No|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|GatewayLogs|A ApiManagement-átjáróval kapcsolatos naplók|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|GatewayLogs|A ApiManagement-átjáróval kapcsolatos naplók|
+
+## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|HttpRequest|HTTP-kérelmek|Yes|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ApplicationConsole|Application Console|No|
+|SystemLogs|Rendszernaplók|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ApplicationConsole|Application Console|
-|SystemLogs|Rendszernaplók|
+
+## <a name="microsoftattestationattestationproviders"></a>Microsoft. igazolás/attestationProviders
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AuditEvent|AuditEvent-üzenet naplójának kategóriája|No|
+|HIBA|Hibaüzenet naplójának kategóriája|No|
+|INF|Tájékoztató üzenet naplójának kategóriája|No|
+|Figyelem|Figyelmeztető üzenet naplójának kategóriája|No|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DscNodeStatus|DSC-csomópont állapota|
-|JobLogs|Feladatok naplói|
-|JobStreams|Feladatok adatfolyamai|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DscNodeStatus|DSC-csomópont állapota|No|
+|JobLogs|Feladatok naplói|No|
+|JobStreams|Feladatok adatfolyamai|No|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ServiceLog|Szolgáltatási naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ServiceLog|Szolgáltatási naplók|No|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/munkaterületek
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|BaiClusterEvent|BaiClusterEvent|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|
-|BaiJobEvent|BaiJobEvent|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|No|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|No|
+|BaiJobEvent|BaiJobEvent|No|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockchain/blockchainMembers
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|BlockchainApplication|Blockchain-alkalmazás|
-|FabricOrderer|Háló-sorrend|
-|FabricPeer|Háló társ|
-|Proxy|Proxy|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BlockchainApplication|Blockchain-alkalmazás|No|
+|FabricOrderer|Háló-sorrend|No|
+|FabricPeer|Háló társ|No|
+|Proxy|Proxy|No|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. Blockchain/cordaMembers
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BlockchainApplication|Blockchain-alkalmazás|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|BlockchainApplication|Blockchain-alkalmazás|
+
+## <a name="microsoftbotservicebotservices"></a>Microsoft. botservice/botservices
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BotRequest|A csatornáktól érkező kérések a robotba|No|
+|DependencyRequest|Függőségi kérelmek|No|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|WebApplicationFirewallLogs|Webalkalmazási tűzfal naplófájljai|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|WebApplicationFirewallLogs|Webes alkalmazási tűzfal naplófájljai|No|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profilok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AzureCdnAccessLog|Azure CDN hozzáférési napló|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AzureCdnAccessLog|Azure CDN hozzáférési napló|No|
+|FrontDoorAccessLog|FrontDoor hozzáférési naplója|Yes|
+|FrontDoorHealthProbeLog|FrontDoor állapot mintavételi naplója|Yes|
+|FrontDoorWebApplicationFirewallLog|FrontDoor WebApplicationFirewall-napló|Yes|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/profilok/végpontok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|CoreAnalytics|Lekéri a végpont metrikáit, például a sávszélességet, a kimenő adatokat stb.|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|CoreAnalytics|Lekéri a végpont metrikáit, például a sávszélességet, a kimenő adatokat stb.|No|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|No|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/fiókok
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Naplók|No|
+|RequestResponse|Kérelmek és válaszok naplói|No|
+|Nyomkövetés|Nyomkövetési naplók|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Naplózás|Naplók|
-|RequestResponse|Kérelmek és válaszok naplói|
-|Nyomkövetés|Nyomkövetési naplók|
+
+## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft. Communication/CommunicationServices
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ChatOperational|Operatív csevegési naplók|No|
+|SMSOperational|Operatív SMS-naplók|No|
+|Használat|Használati rekordok|No|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/nyilvántartók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ContainerRegistryLoginEvents|Bejelentkezési események|
-|ContainerRegistryRepositoryEvents|RepositoryEvent-naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ContainerRegistryLoginEvents|Bejelentkezési események|No|
+|ContainerRegistryRepositoryEvents|RepositoryEvent-naplók|No|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|fürt – automéretező|Kubernetes-fürt autoskálázása|
-|Kube – apiserver|Kubernetes API-kiszolgáló|
-|Kube – naplózás|Kubernetes naplózása|
-|Kube – vezérlő – kezelő|Kubernetes Controller Manager|
-|Kube – ütemező|Kubernetes Scheduler|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|fürt – automéretező|Kubernetes-fürt autoskálázása|No|
+|őr|őr|No|
+|Kube – apiserver|Kubernetes API-kiszolgáló|No|
+|Kube – naplózás|Kubernetes naplózása|No|
+|Kube – naplózás – rendszergazda|Kubernetes naplózási felügyeleti naplók|No|
+|Kube – vezérlő – kezelő|Kubernetes Controller Manager|No|
+|Kube – ütemező|Kubernetes Scheduler|No|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AuditLogs|MiniRP-hívások naplófájljai|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AuditLogs|MiniRP-hívások naplófájljai|
+
+## <a name="microsoftd365customerinsightsinstances"></a>Microsoft. D365CustomerInsights/példányok
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Események naplózása|No|
+|Működik|Működési események|No|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/munkaterületek
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|fiókok|Databricks-fiókok|No|
+|fürtök|Databricks-fürtök|No|
+|dbfs|Databricks fájlrendszer|No|
+|instancePools|Példányok készletei|No|
+|feladatok|Databricks-feladatok|No|
+|jegyzetfüzet|Databricks-jegyzetfüzet|No|
+|titkok|Databricks titkai|No|
+|sqlPermissions|Databricks SQLPermissions|No|
+|SSH|Databricks SSH|No|
+|munkaterület|Databricks-munkaterület|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|fiókok|Databricks-fiókok|
-|fürtök|Databricks-fürtök|
-|dbfs|Databricks fájlrendszer|
-|instancePools|Példányok készletei|
-|feladatok|Databricks-feladatok|
-|jegyzetfüzet|Databricks-jegyzetfüzet|
-|titkok|Databricks titkai|
-|sqlPermissions|Databricks SQLPermissions|
-|SSH|Databricks SSH|
-|munkaterület|Databricks-munkaterület|
+
+## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft. DataCollaboration/munkaterületek
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|CollaborationAudit|Együttműködés naplózása|Yes|
+|DataAssets|Adategységek|No|
+|Pipelines|Pipelines|No|
+|Javaslatok|Javaslatok|No|
+|Parancsfájlok|Parancsfájlok|No|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ActivityRuns|Folyamat-futtatási tevékenység naplója|No|
+|PipelineRuns|Folyamat-futtatási napló|No|
+|SSISIntegrationRuntimeLogs|SSIS Integration Runtime-naplók|No|
+|SSISPackageEventMessageContext|SSIS-csomag – esemény üzenetének környezete|No|
+|SSISPackageEventMessages|SSIS-csomag – esemény üzenetei|No|
+|SSISPackageExecutableStatistics|SSIS csomag végrehajtható fájljainak statisztikája|No|
+|SSISPackageExecutionComponentPhases|SSIS-csomag végrehajtási összetevőjének fázisai|No|
+|SSISPackageExecutionDataStatistics|SSIS csomag exeution adatok statisztikája|No|
+|TriggerRuns|Trigger futtatási naplója|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ActivityRuns|Folyamat-futtatási tevékenység naplója|
-|PipelineRuns|Folyamat-futtatási napló|
-|TriggerRuns|Trigger futtatási naplója|
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/fiókok
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Naplók|No|
+|Kérelmek|Kérelmek naplói|No|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Naplózás|Naplók|
-|Kérelmek|Kérelmek naplói|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Naplók|No|
+|Kérelmek|Kérelmek naplói|No|
 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/fiókok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ReceivedShareSnapshots|Fogadott megosztási Pillanatképek|
-|SentShareSnapshots|Eljuttatott megosztási Pillanatképek|
-|Megosztások|Megosztások|
-|ShareSubscriptions|Előfizetések megosztása|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ReceivedShareSnapshots|Fogadott megosztási Pillanatképek|No|
+|SentShareSnapshots|Eljuttatott megosztási Pillanatképek|No|
+|Megosztások|Megosztások|No|
+|ShareSubscriptions|Előfizetések megosztása|No|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/kiszolgálók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|MySqlAuditLogs|MariaDB naplófájlok|
-|MySqlSlowLogs|MariaDB-kiszolgáló naplófájljai|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|MySqlAuditLogs|MariaDB naplófájlok|No|
+|MySqlSlowLogs|MariaDB-kiszolgáló naplófájljai|No|
 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|MySqlAuditLogs|MySQL-naplók|
-|MySqlSlowLogs|Lassú MySQL-naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|MySqlAuditLogs|MySQL-naplók|No|
+|MySqlSlowLogs|Lassú MySQL-naplók|No|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/kiszolgálók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|MySqlAuditLogs|MySQL-naplók|
-|MySqlSlowLogs|MySQL-kiszolgáló naplófájljai|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|MySqlAuditLogs|MySQL-naplók|No|
+|MySqlSlowLogs|MySQL-kiszolgáló naplófájljai|No|
 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|No|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
-|QueryStoreRuntimeStatistics|PostgreSQL Query Store futásidejű statisztikái|
-|QueryStoreWaitStatistics|PostgreSQL lekérdezési tár várakozási statisztikái|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|No|
+|QueryStoreRuntimeStatistics|PostgreSQL Query Store futásidejű statisztikái|No|
+|QueryStoreWaitStatistics|PostgreSQL lekérdezési tár várakozási statisztikái|No|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-kiszolgáló naplófájljai|No|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Checkpoint|Checkpoint|
-|Hiba|Hiba|
-|Kezelés|Kezelés|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Checkpoint|Checkpoint|No|
+|Hiba|Hiba|No|
+|Kezelés|Kezelés|No|
 
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Checkpoint|Checkpoint|
-|Kapcsolat|Kapcsolat|
-|Hiba|Hiba|
-|Gazdagép regisztrációja|Gazdagép regisztrációja|
-|Kezelés|Kezelés|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AgentHealthStatus|AgentHealthStatus|No|
+|Checkpoint|Checkpoint|No|
+|Kapcsolat|Kapcsolat|No|
+|Hiba|Hiba|No|
+|Gazdagép regisztrációja|Gazdagép regisztrációja|No|
+|Kezelés|Kezelés|No|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/munkaterületek
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Checkpoint|Checkpoint|No|
+|Hiba|Hiba|No|
+|Adatcsatorna|Adatcsatorna|No|
+|Kezelés|Kezelés|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Checkpoint|Checkpoint|
-|Hiba|Hiba|
-|Adatcsatorna|Adatcsatorna|
-|Kezelés|Kezelés|
+
+## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft. Devices/ElasticPools/IotHubTenants
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|C2DCommands|C2D parancsok|No|
+|C2DTwinOperations|C2D – két művelet|No|
+|Konfigurációk|Konfigurációk|No|
+|Kapcsolatok|Kapcsolatok|No|
+|D2CTwinOperations|D2CTwinOperations|No|
+|DeviceIdentityOperations|Eszköz-identitási műveletek|No|
+|DeviceStreams|Eszköz streamek (előzetes verzió)|No|
+|DeviceTelemetry|Eszköztelemetria|No|
+|DirectMethods|Közvetlen metódusok|No|
+|DistributedTracing|Elosztott nyomkövetés (előzetes verzió)|No|
+|FileUploadOperations|Fájlfeltöltés-műveletek|No|
+|JobsOperations|Feladatok műveletei|No|
+|Útvonalak|Útvonalak|No|
+|TwinQueries|Dupla lekérdezés|No|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|C2DCommands|C2D parancsok|
-|C2DTwinOperations|C2D – két művelet|
-|Konfigurációk|Konfigurációk|
-|Kapcsolatok|Kapcsolatok|
-|D2CTwinOperations|D2CTwinOperations|
-|DeviceIdentityOperations|Eszköz-identitási műveletek|
-|DeviceStreams|Eszköz streamek (előzetes verzió)|
-|DeviceTelemetry|Eszköztelemetria|
-|DirectMethods|Közvetlen metódusok|
-|DistributedTracing|Elosztott nyomkövetés (előzetes verzió)|
-|FileUploadOperations|Fájlfeltöltés-műveletek|
-|JobsOperations|Feladatok műveletei|
-|Útvonalak|Útvonalak|
-|TwinQueries|Dupla lekérdezés|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|C2DCommands|C2D parancsok|No|
+|C2DTwinOperations|C2D – két művelet|No|
+|Konfigurációk|Konfigurációk|No|
+|Kapcsolatok|Kapcsolatok|No|
+|D2CTwinOperations|D2CTwinOperations|No|
+|DeviceIdentityOperations|Eszköz-identitási műveletek|No|
+|DeviceStreams|Eszköz streamek (előzetes verzió)|No|
+|DeviceTelemetry|Eszköztelemetria|No|
+|DirectMethods|Közvetlen metódusok|No|
+|DistributedTracing|Elosztott nyomkövetés (előzetes verzió)|No|
+|FileUploadOperations|Fájlfeltöltés-műveletek|No|
+|JobsOperations|Feladatok műveletei|No|
+|Útvonalak|Útvonalak|No|
+|TwinQueries|Dupla lekérdezés|No|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DeviceOperations|Eszköz műveletei|No|
+|ServiceOperations|Szolgáltatási műveletek|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DeviceOperations|Eszköz műveletei|
-|ServiceOperations|Szolgáltatási műveletek|
+
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft. DigitalTwins/digitalTwinsInstances
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DigitalTwinsOperation|DigitalTwinsOperation|No|
+|EventRoutesOperation|EventRoutesOperation|No|
+|ModelsOperation|ModelsOperation|No|
+|QueryOperation|QueryOperation|No|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|CassandraRequests|CassandraRequests|
-|ControlPlaneRequests|ControlPlaneRequests|
-|DataPlaneRequests|DataPlaneRequests|
-|GremlinRequests|GremlinRequests|
-|MongoRequests|MongoRequests|
-|PartitionKeyRUConsumption|PartitionKeyRUConsumption|
-|PartitionKeyStatistics|PartitionKeyStatistics|
-|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|CassandraRequests|CassandraRequests|No|
+|ControlPlaneRequests|ControlPlaneRequests|No|
+|DataPlaneRequests|DataPlaneRequests|No|
+|GremlinRequests|GremlinRequests|No|
+|MongoRequests|MongoRequests|No|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|No|
+|PartitionKeyStatistics|PartitionKeyStatistics|No|
+|QueryRuntimeStatistics|QueryRuntimeStatistics|No|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DeliveryFailures|Kézbesítési hibák naplói|No|
+|PublishFailures|Sikertelen naplók közzététele|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DeliveryFailures|Kézbesítési hibák naplói|
-|PublishFailures|Sikertelen naplók közzététele|
+
+## <a name="microsofteventgridpartnernamespaces"></a>Microsoft. EventGrid/partnerNamespaces
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DeliveryFailures|Kézbesítési hibák naplói|No|
+|PublishFailures|Sikertelen naplók közzététele|No|
+
+
+## <a name="microsofteventgridpartnertopics"></a>Microsoft. EventGrid/partnerTopics
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DeliveryFailures|Kézbesítési hibák naplói|No|
 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DeliveryFailures|Kézbesítési hibák naplói|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DeliveryFailures|Kézbesítési hibák naplói|No|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DeliveryFailures|Kézbesítési hibák naplói|
-|PublishFailures|Sikertelen naplók közzététele|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DeliveryFailures|Kézbesítési hibák naplói|No|
+|PublishFailures|Sikertelen naplók közzététele|No|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/névterek
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ArchiveLogs|Archiválási naplók|No|
+|AutoScaleLogs|Naplók automatikus méretezése|No|
+|CustomerManagedKeyUserLogs|Ügyfél által felügyelt kulcsok naplói|No|
+|EventHubVNetConnectionEvent|VNet/IP-szűrési kapcsolatok naplófájljai|No|
+|KafkaCoordinatorLogs|Kafka-koordinátor naplói|No|
+|KafkaUserErrorLogs|Kafka felhasználói hibák naplói|No|
+|OperationalLogs|Operatív naplók|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ArchiveLogs|Archiválási naplók|
-|AutoScaleLogs|Naplók automatikus méretezése|
-|CustomerManagedKeyUserLogs|Ügyfél által felügyelt kulcsok naplói|
-|EventHubVNetConnectionEvent|VNet/IP-szűrési kapcsolatok naplófájljai|
-|KafkaCoordinatorLogs|Kafka-koordinátor naplói|
-|KafkaUserErrorLogs|Kafka felhasználói hibák naplói|
-|OperationalLogs|Operatív naplók|
+
+## <a name="microsoftexperimentationexperimentworkspaces"></a>Microsoft. kísérletezés/experimentWorkspaces
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Kérés|Kérés|No|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/szolgáltatások
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AuditLogs|Naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AuditLogs|Naplók|No|
 
 
-## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/AutoscaleSettings
+## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/autoscalesettings
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AutoscaleEvaluations|Az autoscale-értékelések|
-|AutoscaleScaleActions|Méretezési műveletek az autoskálázáshoz|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AutoscaleEvaluations|Az autoscale-értékelések|No|
+|AutoscaleScaleActions|Méretezési műveletek az autoskálázáshoz|No|
 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AppAvailabilityResults|Rendelkezésre állási eredmények|No|
+|AppBrowserTimings|Böngésző időzítése|No|
+|AppDependencies|Függőségek|No|
+|AppEvents|Események|No|
+|AppExceptions|Kivételek|No|
+|AppMetrics|Mérőszámok|No|
+|AppPageViews|Lapok nézetei|No|
+|AppPerformanceCounters|Teljesítményszámlálók|No|
+|AppRequests|Kérelmek|No|
+|AppSystemEvents|Rendszeresemények|No|
+|AppTraces|Hívásláncok|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AppAvailabilityResults|Rendelkezésre állási eredmények|
-|AppBrowserTimings|Böngésző időzítése|
-|AppDependencies|Függőségek|
-|AppEvents|Események|
-|AppExceptions|Kivételek|
-|AppMetrics|Mérőszámok|
-|AppPageViews|Lapok nézetei|
-|AppPerformanceCounters|Teljesítményszámlálók|
-|AppRequests|Kérelmek|
-|AppSystemEvents|Rendszeresemények|
-|AppTraces|Hívásláncok|
+
+## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Naplózás|No|
+|Kimenő forgalom|Kimenő forgalom|No|
+|Bejövő forgalom|Bejövő forgalom|No|
+|Működik|Működik|No|
+|Nyomkövetés|Nyomkövetés|No|
+|UserDefinedFunction|UserDefinedFunction|No|
+
+
+## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. kulcstartó/managedhsms
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AuditEvent|Esemény naplózása|No|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AuditEvent|Naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AuditEvent|Naplók|No|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Parancs|Parancs|
-|FailedIngestion|Sikertelen betöltési műveletek|
-|IngestionBatching|Ingestion batching|
-|Lekérdezés|Lekérdezés|
-|SucceededIngestion|Sikeres betöltési műveletek|
-|TableDetails|Táblázat részletei|
-|TableUsageStatistics|Táblázat-használati statisztika|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Parancs|Parancs|No|
+|FailedIngestion|Sikertelen betöltési műveletek|No|
+|IngestionBatching|Ingestion batching|No|
+|Lekérdezés|Lekérdezés|No|
+|SucceededIngestion|Sikeres betöltési műveletek|No|
+|TableDetails|Táblázat részletei|No|
+|TableUsageStatistics|Táblázat-használati statisztika|No|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|No|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/munkafolyamatok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|WorkflowRuntime|Munkafolyamat futásidejű diagnosztikai eseményei|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|WorkflowRuntime|Munkafolyamat futásidejű diagnosztikai eseményei|No|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/munkaterületek
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AmlComputeClusterEvent|AmlComputeClusterEvent|
-|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
-|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|
-|AmlComputeJobEvent|AmlComputeJobEvent|
-|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AmlComputeClusterEvent|AmlComputeClusterEvent|No|
+|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|No|
+|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|No|
+|AmlComputeJobEvent|AmlComputeJobEvent|No|
+|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|No|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|KeyDeliveryRequests|Kulcsok kézbesítésére vonatkozó kérelmek|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|KeyDeliveryRequests|Kulcsok kézbesítésére vonatkozó kérelmek|No|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ApplicationGatewayAccessLog|Hozzáférési napló Application Gateway|
-|ApplicationGatewayFirewallLog|Application Gateway tűzfal naplója|
-|ApplicationGatewayPerformanceLog|Application Gateway Teljesítménynapló|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ApplicationGatewayAccessLog|Hozzáférési napló Application Gateway|No|
+|ApplicationGatewayFirewallLog|Application Gateway tűzfal naplója|No|
+|ApplicationGatewayPerformanceLog|Application Gateway Teljesítménynapló|No|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AzureFirewallApplicationRule|Azure Firewall alkalmazási szabály|
-|AzureFirewallNetworkRule|Azure Firewall hálózati szabály|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AzureFirewallApplicationRule|Azure Firewall alkalmazási szabály|No|
+|AzureFirewallDnsProxy|Azure Firewall DNS-proxy|No|
+|AzureFirewallNetworkRule|Azure Firewall hálózati szabály|No|
 
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|BastionAuditLogs|Megerősített naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BastionAuditLogs|Megerősített naplók|No|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|PeeringRouteLog|Egyenrangú útválasztási táblázat naplói|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|PeeringRouteLog|Egyenrangú útválasztási táblázat naplói|No|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|FrontdoorAccessLog|Frontdoor hozzáférési naplója|
-|FrontdoorWebApplicationFirewallLog|Frontdoor webalkalmazási tűzfal naplója|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|FrontdoorAccessLog|Frontdoor hozzáférési naplója|No|
+|FrontdoorWebApplicationFirewallLog|Frontdoor webalkalmazási tűzfal naplója|No|
 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|LoadBalancerAlertEvent|Riasztási események Load Balancer|
-|LoadBalancerProbeHealthStatus|Load Balancer mintavétel állapotának állapota|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|LoadBalancerAlertEvent|Riasztási események Load Balancer|No|
+|LoadBalancerProbeHealthStatus|Load Balancer mintavétel állapotának állapota|No|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|No|
+|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|No|
+|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport szabályának számlálója|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|NetworkSecurityGroupEvent|Hálózati biztonsági csoport eseménye|
-|NetworkSecurityGroupFlowEvent|Hálózati biztonsági csoportra vonatkozó szabály folyamatának eseménye|
-|NetworkSecurityGroupRuleCounter|Hálózati biztonsági csoport szabályának számlálója|
+
+## <a name="microsoftnetworkp2svpngateways"></a>Microsoft. Network/p2sVpnGateways
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|No|
+|IKEDiagnosticLog|IKE diagnosztikai naplók|No|
+|P2SDiagnosticLog|P2S diagnosztikai naplók|No|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/nyilvános IP
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DDoSMitigationFlowLogs|A DDoS-elhárítási döntések folyamatának naplói|
-|DDoSMitigationReports|A DDoS enyhítésének jelentései|
-|DDoSProtectionNotifications|DDoS Protection-értesítések|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DDoSMitigationFlowLogs|A DDoS-elhárítási döntések folyamatának naplói|No|
+|DDoSMitigationReports|A DDoS enyhítésének jelentései|No|
+|DDoSProtectionNotifications|DDoS Protection-értesítések|No|
 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|ProbeHealthStatusEvents|Traffic Manager mintavételi állapot eredményeinek eseménye|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ProbeHealthStatusEvents|Traffic Manager mintavételi állapot eredményeinek eseménye|No|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|
-|IKEDiagnosticLog|IKE diagnosztikai naplók|
-|P2SDiagnosticLog|P2S diagnosztikai naplók|
-|RouteDiagnosticLog|Diagnosztikai naplók irányítása|
-|TunnelDiagnosticLog|Alagutak diagnosztikai naplói|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|No|
+|IKEDiagnosticLog|IKE diagnosztikai naplók|No|
+|P2SDiagnosticLog|P2S diagnosztikai naplók|No|
+|RouteDiagnosticLog|Diagnosztikai naplók irányítása|No|
+|TunnelDiagnosticLog|Alagutak diagnosztikai naplói|No|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|VMProtectionAlerts|VM-védelmi riasztások|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|VMProtectionAlerts|VM-védelmi riasztások|
+
+## <a name="microsoftnetworkvpngateways"></a>Microsoft. Network/vpnGateways
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|GatewayDiagnosticLog|Átjáró diagnosztikai naplói|No|
+|IKEDiagnosticLog|IKE diagnosztikai naplók|No|
+|RouteDiagnosticLog|Diagnosztikai naplók irányítása|No|
+|TunnelDiagnosticLog|Alagutak diagnosztikai naplói|No|
+
+
+## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft. NotificationHubs/névterek
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|OperationalLogs|Operatív naplók|No|
+
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/munkaterületek
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Naplózás|Naplók|No|
+
+
+## <a name="microsoftpowerbitenants"></a>Microsoft. PowerBI/bérlők
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Motor|Motor|No|
+
+
+## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft. PowerBI/bérlők/munkaterületek
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Motor|Motor|No|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitások
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Motor|Motor|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Motor|Motor|
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/fiókok
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|No|
+
+
+## <a name="microsoftpurviewaccounts"></a>Microsoft. hatáskörébe/fiókok
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|No|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. Recoveryservices szolgáltatónál/tárolók
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AddonAzureBackupAlerts|Addon Azure Backup riasztási adatkezelési|
-|AddonAzureBackupJobs|Addon Azure Backup feladatok adatai|
-|AddonAzureBackupPolicy|Addon Azure Backup házirend-adatbázis|
-|AddonAzureBackupProtectedInstance|Addon Azure Backup védett példányok adatvédelme|
-|AddonAzureBackupStorage|Addon Azure Backup Storage-beli adattárak|
-|AzureBackupReport|Jelentéskészítési adatgyűjtés Azure Backup|
-|AzureSiteRecoveryEvents|Események Azure Site Recovery|
-|AzureSiteRecoveryJobs|Azure Site Recovery feladatok|
-|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery védett lemez adatváltozása|
-|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery helyreállítási pontok|
-|AzureSiteRecoveryReplicatedItems|Replikált elemek Azure Site Recovery|
-|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery replikációs adatok feltöltési sebessége|
-|AzureSiteRecoveryReplicationStats|Azure Site Recovery replikációs statisztika|
-|CoreAzureBackup|Alapvető Azure Backup-adathalmazok|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AddonAzureBackupAlerts|Addon Azure Backup riasztási adatkezelési|No|
+|AddonAzureBackupJobs|Addon Azure Backup feladatok adatai|No|
+|AddonAzureBackupPolicy|Addon Azure Backup házirend-adatbázis|No|
+|AddonAzureBackupProtectedInstance|Addon Azure Backup védett példányok adatvédelme|No|
+|AddonAzureBackupStorage|Addon Azure Backup Storage-beli adattárak|No|
+|AzureBackupReport|Jelentéskészítési adatgyűjtés Azure Backup|No|
+|AzureSiteRecoveryEvents|Események Azure Site Recovery|No|
+|AzureSiteRecoveryJobs|Azure Site Recovery feladatok|No|
+|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery védett lemez adatváltozása|No|
+|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery helyreállítási pontok|No|
+|AzureSiteRecoveryReplicatedItems|Replikált elemek Azure Site Recovery|No|
+|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery replikációs adatok feltöltési sebessége|No|
+|AzureSiteRecoveryReplicationStats|Azure Site Recovery replikációs statisztika|No|
+|CoreAzureBackup|Alapvető Azure Backup-adathalmazok|No|
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/névterek
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|HybridConnectionsEvent|HybridConnections események|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|HybridConnectionsEvent|HybridConnections események|No|
+|HybridConnectionsLogs|HybridConnectionsLogs|No|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|OperationLogs|Műveleti naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|OperationLogs|Műveleti naplók|No|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/névterek
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|OperationalLogs|Operatív naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|OperationalLogs|Operatív naplók|No|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/szignáló
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AllLogs|Az Azure Signaler szolgáltatás naplói.|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AllLogs|Az Azure Signaler szolgáltatás naplói.|No|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DevOpsOperationsAudit|Devops-műveletek naplófájljai|
-|ResourceUsageStats|Erőforrás-használati statisztika|
-|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DevOpsOperationsAudit|Devops-műveletek naplófájljai|No|
+|ResourceUsageStats|Erőforrás-használati statisztika|No|
+|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|No|
 
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/adatbázisok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Hibák|Hibák|
-|QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|
-|QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|
-|SQLInsights|SQL-ismeretek|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Hibák|Hibák|No|
+|QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|No|
+|QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|No|
+|SQLInsights|SQL-ismeretek|No|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AutomaticTuning|Automatikus hangolás|
-|Blokkok|Blokkok|
-|DatabaseWaitStatistics|Adatbázis várakozási statisztikája|
-|Holtpontok|Holtpontok|
-|DevOpsOperationsAudit|Devops-műveletek naplófájljai|
-|DmsWorkers|DMS-feldolgozók|
-|Hibák|Hibák|
-|ExecRequests|Exec-kérelmek|
-|QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|
-|QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|
-|RequestSteps|Kérelem lépései|
-|SQLInsights|SQL-ismeretek|
-|SqlRequests|SQL-kérelmek|
-|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
-|Időtúllépések|Időtúllépések|
-|Megvárja|Megvárja|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AutomaticTuning|Automatikus hangolás|No|
+|Blokkok|Blokkok|No|
+|DatabaseWaitStatistics|Adatbázis várakozási statisztikája|No|
+|Holtpontok|Holtpontok|No|
+|DevOpsOperationsAudit|Devops-műveletek naplófájljai|No|
+|DmsWorkers|DMS-feldolgozók|No|
+|Hibák|Hibák|No|
+|ExecRequests|Exec-kérelmek|No|
+|QueryStoreRuntimeStatistics|Lekérdezési tár futásidejű statisztikái|No|
+|QueryStoreWaitStatistics|Lekérdezési tároló várakozási statisztikája|No|
+|RequestSteps|Kérelem lépései|No|
+|SQLInsights|SQL-ismeretek|No|
+|SqlRequests|SQL-kérelmek|No|
+|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|No|
+|Időtúllépések|Időtúllépések|No|
+|Megvárja|Megvárja|No|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
- 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-Exportálási költség: a [Azure monitor díjszabási oldal](https://azure.microsoft.com/pricing/details/monitor/) platform naplók szakaszában leírt módon kell fizetni. 
- 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|Tartalomkészítés|Tartalomkészítés|
-|Futtatási|Futtatási|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Tartalomkészítés|Tartalomkészítés|No|
+|Futtatási|Futtatási|No|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. szinapszis/munkaterületek
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|BuiltinSqlReqsEnded|A beépített SQL Pool-kérelmek véget ért|
-|GatewayApiRequests|Szinapszis Gateway API-kérelmek|
-|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
-|SynapseRbacOperations|Szinapszis RBAC-műveletek|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BuiltinSqlReqsEnded|A beépített SQL Pool-kérelmek véget ért|No|
+|GatewayApiRequests|Szinapszis Gateway API-kérelmek|No|
+|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|No|
+|SynapseRbacOperations|Szinapszis RBAC-műveletek|No|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. szinapszis/munkaterületek/bigDataPools
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|BigDataPoolAppsEnded|A Big adattár-alkalmazások véget ért|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|BigDataPoolAppsEnded|A Big adattár-alkalmazások véget ért|No|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. szinapszis/munkaterületek/sqlPools
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|DmsWorkers|DMS-feldolgozók|No|
+|ExecRequests|Exec-kérelmek|No|
+|RequestSteps|Kérelem lépései|No|
+|SqlRequests|SQL-kérelmek|No|
+|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|No|
+|Megvárja|Megvárja|No|
 
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|DmsWorkers|DMS-feldolgozók|
-|ExecRequests|Exec-kérelmek|
-|RequestSteps|Kérelem lépései|
-|SqlRequests|SQL-kérelmek|
-|SQLSecurityAuditEvents|SQL biztonsági naplózási esemény|
-|Megvárja|Megvárja|
+
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/Environments
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Bejövő forgalom|Bejövő forgalom|No|
+|Kezelés|Kezelés|No|
+
+
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/Environments/eventsources
+
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|Bejövő forgalom|Bejövő forgalom|No|
+|Kezelés|Kezelés|No|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-Exportálási díj: ingyenes 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AppServiceEnvironmentPlatformLogs|App Service Environment platform naplói|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AppServiceEnvironmentPlatformLogs|App Service Environment platform naplói|No|
 
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/Sites
 
-Exportálási díj: ingyenes 
-
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AppServiceAppLogs|App Service alkalmazás naplófájljai|
-|AppServiceAuditLogs|Hozzáférés-naplózási naplók|
-|AppServiceConsoleLogs|App Service konzol naplófájljai|
-|AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|
-|AppServiceHTTPLogs|HTTP-naplók|
-|FunctionAppLogs|Function Application-naplók|
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|A víruskereső naplófájljainak jelentése|No|
+|AppServiceAppLogs|App Service alkalmazás naplófájljai|No|
+|AppServiceAuditLogs|Hozzáférés-naplózási naplók|No|
+|AppServiceConsoleLogs|App Service konzol naplófájljai|No|
+|AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|No|
+|AppServiceHTTPLogs|HTTP-naplók|No|
+|AppServiceIPSecAuditLogs|IPSecurity naplófájlok|No|
+|AppServicePlatformLogs|App Service platform naplói|No|
+|FunctionAppLogs|Function Application-naplók|No|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Slots
 
-Exportálási díj: ingyenes 
+|Kategória|Kategória megjelenítendő neve|Exportálandó költségek|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|A víruskereső naplófájljainak jelentése|No|
+|AppServiceAppLogs|App Service alkalmazás naplófájljai|No|
+|AppServiceAuditLogs|Hozzáférés-naplózási naplók|No|
+|AppServiceConsoleLogs|App Service konzol naplófájljai|No|
+|AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|No|
+|AppServiceHTTPLogs|HTTP-naplók|No|
+|AppServiceIPSecAuditLogs|IPSecurity naplófájlok|No|
+|AppServicePlatformLogs|App Service platform naplói|No|
+|FunctionAppLogs|Function Application-naplók|No|
 
-
-|Kategória |Kategória megjelenítendő neve|
-|---|---|
-|AppServiceAppLogs|App Service alkalmazás naplófájljai|
-|AppServiceAuditLogs|Hozzáférés-naplózási naplók|
-|AppServiceConsoleLogs|App Service konzol naplófájljai|
-|AppServiceFileAuditLogs|Webhely tartalmának változási naplófájljai|
-|AppServiceHTTPLogs|HTTP-naplók|
-|FunctionAppLogs|Function Application-naplók|
 
 
 ## <a name="next-steps"></a>Következő lépések

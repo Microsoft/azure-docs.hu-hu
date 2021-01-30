@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434991"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063383"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Oktatóanyag: hozzáférés Microsoft Graph a biztonságos alkalmazásból felhasználóként
 
@@ -85,7 +85,7 @@ Ha ezt a kódot egy minta alkalmazás részeként szeretné látni, tekintse [me
 
 ### <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
 
-Telepítse a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) és a [Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet-csomagokat a projektbe a Visual Studióban található .net Core parancssori felület vagy a Package Manager konzol használatával.
+Telepítse a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) és a [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet-csomagokat a projektbe a Visual Studióban található .net Core parancssori felület vagy a Package Manager konzol használatával.
 
 # <a name="command-line"></a>[Parancssor](#tab/command-line)
 
@@ -94,7 +94,7 @@ Nyisson meg egy parancssort, és váltson arra a könyvtárra, amely tartalmazza
 Futtassa a telepítési parancsokat.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 
 dotnet add package Microsoft.Identity.Web
 ```
@@ -105,7 +105,7 @@ Nyissa meg a projektet/megoldást a Visual Studióban, és nyissa meg **a konzol
 
 Futtassa a telepítési parancsokat.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```

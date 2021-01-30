@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdc96df548a4a3df2b789759889b85835e1382a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1eacba47e68310dd45976bcd9ddff052fa193436
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860728"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090137"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Törölt Microsoft 365 csoport visszaállítása Azure Active Directory
 
@@ -32,8 +32,8 @@ A csoportok visszaállításához szükséges engedély az alábbiak bármelyike
 Szerepkör | Engedélyek
 --------- | ---------
 Globális rendszergazda, csoport rendszergazdája, partner szint-támogatás és Intune-rendszergazda | Visszaállíthatja az összes törölt Microsoft 365 csoportot
-Felhasználói rendszergazda és partner Tier1-támogatás | Visszaállíthatja az összes törölt Microsoft 365 csoportot, kivéve azokat a csoportokat, amelyek a vállalati rendszergazda szerepkörhöz vannak rendelve
-Felhasználó | Visszaállíthatja az összes törölt Microsoft 365 csoportot.
+Felhasználói rendszergazda és partner Tier1-támogatás | Visszaállíthatja az összes törölt Microsoft 365 csoportot, kivéve azokat a csoportokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve
+User | Visszaállíthatja az összes törölt Microsoft 365 csoportot.
 
 ## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>A visszaállításhoz elérhető törölt Microsoft 365 csoportok megtekintése és kezelése
 

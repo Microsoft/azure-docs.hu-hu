@@ -3,25 +3,25 @@ title: Az Azure költségeinek elemzése a Power BI-alkalmazással
 description: Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2020
+ms.date: 1/29/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: HT
+ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413241"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070157"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
 Ez a cikk ismerteti az Azure Cost Management Power BI-alkalmazás telepítését és használatát. Az alkalmazás segít az Azure-költségek a Power BI-ban való elemzésében és kezelésében. Az alkalmazással monitorozhatja a költségeket és a használati trendeket, továbbá költségoptimalizálási lehetőségeket azonosíthat a kiadások csökkentése érdekében.
 
-Az alkalmazást használhatja eredeti formájában, de az igényeinek megfelelően személyre is szabhatja az alapértelmezett szűrők, nézetek és vizualizációk kibővítésével. Ezt követően további adatokat csatlakoztathat személyre szabott jelentések létrehozásához, hogy átfogó képet kapjon a teljes üzleti költségről.
+A Azure Cost Management Power BI alkalmazás jelenleg csak [nagyvállalati szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/)rendelkező ügyfeleket támogat.
 
-Az Azure Cost Management Power BI-alkalmazás jelenleg csak a [Nagyvállalati Szerződéssel](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező ügyfeleket támogatja.
+Az alkalmazás korlátozza a testreszabhatóság kiszabását. Ha szeretné módosítani és kiterjeszteni az alapértelmezett szűrőket, nézeteket és vizualizációkat az igényeinek megfelelően testre szabva, használja a [Azure Cost Management-összekötőt Power bi Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management) helyett. Az Azure Cost Management-összekötővel más forrásokból származó további adatokhoz is csatlakozhat, így testreszabott jelentéseket hozhat létre, amelyekkel átfogó képet kaphat a teljes üzleti díjszabásról. Az összekötő támogatja a Microsoft ügyfél-szerződéseit is.
 
 > [!NOTE]
 > A Power BI-sablonalkalmazások nem támogatják a PBIX-fájl letöltését.
@@ -46,7 +46,7 @@ Az alkalmazás telepítése:
   ![Bevezetés az új alkalmazás használatába – Csatlakozás](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
 9. A megjelenő párbeszédablakban adja meg EA regisztrációs számát a **BillingProfileIdOrEnrollmentNumber** értékeként. Adja meg, hogy hány hónapnyi adatot kíván lekérni. Hagyja meg a **Regisztrációs szám** alapértelmezett **Hatókör** értékét, majd válassza a **Következő** lehetőséget.  
   ![EA regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját* , majd válassza a **Bejelentkezés** lehetőséget.  
+10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját*, majd válassza a **Bejelentkezés** lehetőséget.  
   ![Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, az alapértelmezett értékekkel.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. A telepítés utolsó lépésében csatlakozni kell az EA-regisztrációhoz, amihez [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiók szükséges. Válassza a **Bejelentkezés** elemet az EA-regisztrációval való hitelesítéshez. Ez a lépés egy adatfrissítési műveletet is elindít a Power BI-ban.  
   ![Csatlakozás EA-regisztrációhoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -80,7 +80,7 @@ Az alkalmazásban az alábbi jelentések érhetők el.
 
 ![Azure Hybrid Benefit – Teljes jelentés](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
-A jelentés azokat a Windows rendszerű virtuális gépeket is azonosítja, amelyeken a Hybrid Benefit **engedélyezett** , de _kevesebb, mint_ 8 vCPU-val rendelkeznek. Azt is megmutatja, ha a Hybrid Benefit **nincs engedélyezve** , de 8 _vagy több_ vCPU van. Ez az információ segíti a Hybrid Benefit teljes kihasználását. Használja az előnyt a legdrágább virtuális gépén, hogy maximalizálhassa a potenciális megtakarítást.
+A jelentés azokat a Windows rendszerű virtuális gépeket is azonosítja, amelyeken a Hybrid Benefit **engedélyezett**, de _kevesebb, mint_ 8 vCPU-val rendelkeznek. Azt is megmutatja, ha a Hybrid Benefit **nincs engedélyezve**, de 8 _vagy több_ vCPU van. Ez az információ segíti a Hybrid Benefit teljes kihasználását. Használja az előnyt a legdrágább virtuális gépén, hogy maximalizálhassa a potenciális megtakarítást.
 
 ![Azure Hybrid Benefits – Kevesebb, mint 8 vCPU, és a vCPU-k nincsenek engedélyezve](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
