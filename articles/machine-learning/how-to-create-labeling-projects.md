@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059840"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097540"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -24,7 +24,7 @@ Megtudhatja, hogyan hozhat létre és futtathat adatcímkéző projekteket Azure
 ## <a name="data-labeling-capabilities"></a>Adatcímkéző képességek
 
 > [!Important]
-> Jelenleg csak a képbesorolás és az objektum-azonosító címkézési projektek támogatottak. Emellett az adatlemezképeknek elérhetőnek kell lenniük egy Azure Blob-adattárban. (Ha nem rendelkezik meglévő adattárral, képeket tölthet fel a projekt létrehozása során.)
+> Az adatlemezképeknek elérhetőnek kell lenniük egy Azure Blob-adattárban. (Ha nem rendelkezik meglévő adattárral, képeket tölthet fel a projekt létrehozása során.)
 
 A Azure Machine Learning adatfelirat központi hely a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez:
  - Az adatok, címkék és csoporttagok összehangolása a címkézési feladatok hatékony kezelésére. 
@@ -37,7 +37,7 @@ A Azure Machine Learning adatfelirat központi hely a címkézési projektek lé
 * A címkével ellátni kívánt, helyi vagy Azure Blob Storage-beli adatfájlok.
 * Az alkalmazni kívánt címkék halmaza.
 * A címkézésre vonatkozó utasítások.
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-a-data-labeling-project"></a>Adatcímkéző projekt létrehozása
@@ -53,6 +53,11 @@ Projekt létrehozásához válassza a **projekt hozzáadása** lehetőséget. Ad
 * Válassza a **Képbesorolás többosztályos** projektek számára lehetőséget, ha csak *egyetlen címkét* szeretne alkalmazni egy képcsoportból egy képből.
 * Válassza a **Képbesorolás több címkét** a projektekhez lehetőséget, ha egy *vagy több* címkét szeretne alkalmazni egy képcsoportból egy képből. Előfordulhat például, hogy egy kutya fényképét a *kutya* és a *nappali* is címkézi.
 * Válassza az **objektum azonosítása (határolókeret)** lehetőséget a projektek esetében, ha címkét és egy határoló mezőt szeretne hozzárendelni egy képen található minden objektumhoz.
+* Válassza a **példányok szegmentálása (sokszög) (előzetes verzió)** lehetőséget a projektekhez, ha egy címkét szeretne hozzárendelni, és rajzoljon egy sokszöget a képen belül minden objektumhoz.
+
+> [!IMPORTANT]
+> A példányok szegmentálása nyilvános előzetes verzióban érhető el.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha készen áll a folytatásra, válassza a **tovább** lehetőséget.
 
@@ -141,6 +146,7 @@ A határoló mezőkhöz a következő fontos kérdések tartoznak:
 
 A **ml-támogatott címkézési** oldal lehetővé teszi az automatikus gépi tanulási modellek aktiválását a címkézési feladat felgyorsításához. A címkézési projekt elején a rendszer véletlenszerű sorrendben rendezi a képeket a lehetséges torzulások csökkentése érdekében. A betanított modellben azonban megjelennek az adatkészletben található összes torzítás is. Ha például a lemezképek 80%-a egyetlen osztályból áll, akkor a modell betanításához használt adatmennyiség körülbelül 80%-a az adott osztály lesz. Ez a képzés nem tartalmazza az aktív tanulást.
 
+
 Válassza a *ml támogatott címkézés engedélyezése* lehetőséget, és adjon meg egy GPU-t a támogatott címkézés engedélyezéséhez, amely két fázisból áll:
 * Fürtözés
 * Előcímkézés
@@ -150,7 +156,7 @@ A támogatott címkézés indításához szükséges címkézett képek pontos s
 Mivel a végső címkék továbbra is a Labeler származó adatokra támaszkodnak, ezt a technológiát néha *emberinek is nevezik a hurok* címkézése során.
 
 > [!NOTE]
-> A ML-ben támogatott adatfeliratok nem támogatják a [virtuális hálózat](how-to-network-security-overview.md)mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatcímkézéshez nem alapértelmezett Storage-fiókot kell használnia. A nem alapértelmezett Storage-fiók a virtuális hálózat mögött is biztonságossá tehető. 
+> A ML-ben támogatott adatfeliratok nem támogatják a [virtuális hálózat](how-to-network-security-overview.md)mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatcímkézéshez nem alapértelmezett Storage-fiókot kell használnia. A nem alapértelmezett Storage-fiók a virtuális hálózat mögött is biztonságossá tehető.
 
 ### <a name="clustering"></a>Fürtözés
 
@@ -261,7 +267,7 @@ Ha ezeket a problémákat látja, használja ezeket a tippeket.
 |Az ESC billentyű lenyomásával az objektumok észlelése során a rendszer nulla méretű címkét hoz létre a bal felső sarokban. Az ebben az állapotban lévő címkék elküldése sikertelen.     |   Törölje a címkét a mellette lévő kereszt jelre kattintva.  |
 |Nem lehet feladat-készletet hozzárendelni egy adott Labeler.     |   Ez az aktuális kiadás ismert korlátozása.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: az első képbesorolási címkézési projekt létrehozása](tutorial-labeling.md).
 * [Képbesorolás vagy objektum-észlelési](how-to-label-images.md) lemezképek címkézése

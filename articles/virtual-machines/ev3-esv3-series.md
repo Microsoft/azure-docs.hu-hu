@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 1a0943c9f87960f9fcec074941b6e8ead81d92af
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 537a301ef2c3ba1bb5ed34d92c8784655c79d97f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917909"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097472"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 és Esv3 sorozat
 
@@ -33,6 +33,7 @@ Az Ev3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techno
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-generáció támogatása](generation-2.md): 1. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Hálózati adapterek max. száma/hálózati sávszélesség |
@@ -64,6 +65,7 @@ Az Esv3 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techn
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolási sebesség: IOPS/MBps (gyorsítótár mérete GiB-ban) | A burst gyorsítótár és a temp Storage átviteli sebessége: IOPS/MBps<sup>3</sup> | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps |  Nem gyorsítótárazott lemez adatátviteli sebessége: IOPS/MBps<sup>3</sup>| Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
