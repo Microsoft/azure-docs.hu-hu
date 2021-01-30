@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee27f429dbfd1e550a45bbc26413a1c259c4fbe
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058758"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092368"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Tűzfalszabály engedélyezése vagy letiltása egy Azure-beli virtuális gép vendég operációs rendszeréhez
 
@@ -95,9 +95,9 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
 
 #### <a name="mitigation-4-remote-registry"></a>4. mérséklés: távoli beállításjegyzék
 
-Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton található másik virtuális gépen is elérhető, akkor a másik virtuális GÉPEN is használhatja a [távoli beállításjegyzéket](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) .
+Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton található másik virtuális gépen is elérhető, akkor a másik virtuális GÉPEN is használhatja a [távoli beállításjegyzéket](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837) .
 
-1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe), majd válassza a **fájl**  >  **összekapcsolása hálózati beállításjegyzék**lehetőséget.
+1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (regedit.exe), majd válassza a **fájl**  >  **összekapcsolása hálózati beállításjegyzék** lehetőséget.
 
 2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, majd adja meg a következő értékeket:
 
@@ -113,7 +113,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
     
         *Célszámítógép*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-in-TCP
 
-        Ezután módosítsa az **aktív = True** **értéket az aktív = false**értékre:
+        Ezután módosítsa az **aktív = True** **értéket az aktív = false** értékre:
         
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -142,7 +142,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
 7.  Keresse meg, majd nyissa meg a \windows\system32\config\SYSTEM fájlt. 
 
     > [!Note]
-    > A rendszer megkéri a nevet. Adja meg a **BROKENSYSTEM**, majd bontsa ki a **HKEY_LOCAL_MACHINE**elemet. Ekkor megjelenik egy **BROKENSYSTEM**nevű további kulcs. Ebben a hibaelhárításban a probléma-struktúrákat **BROKENSYSTEM**-ként csatlakoztatjuk.
+    > A rendszer megkéri a nevet. Adja meg a **BROKENSYSTEM**, majd bontsa ki a **HKEY_LOCAL_MACHINE** elemet. Ekkor megjelenik egy **BROKENSYSTEM** nevű további kulcs. Ebben a hibaelhárításban a probléma-struktúrákat **BROKENSYSTEM**-ként csatlakoztatjuk.
 
 8.  Hajtsa végre a következő módosításokat az BROKENSYSTEM ág esetében:
 
@@ -152,7 +152,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
     
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
         
-        Ezután módosítsa az **aktív = FALSE értéket** **aktív = True**értékre.
+        Ezután módosítsa az **aktív = FALSE értéket** **aktív = True** értékre.
         
         `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -160,7 +160,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        Ezután módosítsa az **aktív = True** **értéket aktív = false**értékre.
+        Ezután módosítsa az **aktív = True** **értéket aktív = false** értékre.
         
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
