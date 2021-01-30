@@ -16,6 +16,10 @@
       href: tutorial-delete-cluster.md
 - name: Útmutatók
   items:
+    - name: Fürtműveletek
+      items:
+        - name: ARO-fürt frissítése
+          href: howto-upgrade.md
     - name: Hálózatkezelés
       items:
         - name: Privát ARO-fürt létrehozása
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: A beépített tárolóregisztrációs adatbázis használata
           href: built-in-container-registry.md
+        - name: Az Azure Container Registry használata
+          href: howto-use-acr-with-aro.md
     - name: Biztonság és hitelesítés
       items:
         - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (CLI)

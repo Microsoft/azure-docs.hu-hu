@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944588"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062188"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link az Azure Data Factoryhez
 
@@ -48,7 +48,7 @@ A Azure Data Factory saját hivatkozásának támogatásával a következőket t
 * Hozzon létre egy privát végpontot a virtuális hálózaton.
 * Engedélyezze a magánhálózati kapcsolatokat egy adott adatelőállító-példánnyal. 
 
-A Azure Data Factory szolgáltatással folytatott kommunikáció a privát kapcsolaton keresztül érhető el, és segít a biztonságos privát kapcsolat biztosításában. Nem kell konfigurálnia az előző tartományt és portot egy virtuális hálózaton vagy a vállalati tűzfalon, hogy biztonságosabban biztosítsa erőforrásai védelmét.  
+A Azure Data Factory szolgáltatással folytatott kommunikáció a privát kapcsolaton keresztül érhető el, és segít a biztonságos privát kapcsolat biztosításában. 
 
 ![Azure Data Factory architektúrához tartozó privát hivatkozás ábrája.](./media/data-factory-private-link/private-link-architecture.png)
 
@@ -62,6 +62,9 @@ A Private link Service minden korábbi kommunikációs csatornán való engedél
 
    > [!NOTE]
    > A jelenleg nem támogatott funkciók esetében továbbra is konfigurálnia kell a korábban említett tartományt és portot a virtuális hálózaton vagy a vállalati tűzfalon. 
+
+   > [!NOTE]
+   > A Azure Data Factory privát végponton keresztül történő csatlakozás csak a saját üzemeltetésű integrációs modulra vonatkozik a adat-előállítóban. A szinapszis nem támogatja.
 
 > [!WARNING]
 > Társított szolgáltatás létrehozásakor győződjön meg arról, hogy a hitelesítő adatai egy Azure Key vaultban vannak tárolva. Ellenkező esetben a hitelesítő adatok nem fognak működni, ha engedélyezi a Azure Data Factoryban található privát hivatkozást.

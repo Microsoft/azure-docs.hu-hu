@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 99fd79fb6c51f577d9b62d15ac006b068a685bcf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756544"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062711"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe
 
@@ -32,20 +32,17 @@ Ha olyan Daemon-alkalmazást hoz létre, amely több bérlőn is futtatható, me
 
 Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a műveleteket. További információ: a teljes bérlő belefoglalásának [kérelmezése](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>További lépések
-
-Íme néhány hivatkozás, amely segítséget nyújt a további információk megismeréséhez:
+## <a name="code-samples"></a>Kódminták
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- Gyors útmutató: [token beszerzése és Microsoft Graph API meghívása egy konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-netcore-daemon.md).
 - Dokumentáció a következőhöz:
   - [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)-példányok.
   - [AcquireTokenForClient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)meghívása.
 - Egyéb minták/oktatóanyagok:
-  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) egy egyszerű .net Core Daemon Console-alkalmazás, amely megjeleníti a bérlők lekérdezési Microsoft Graph felhasználóit.
+  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) egy kis .net Core Daemon Console alkalmazást tartalmaz, amely megjeleníti a bérlők lekérdezési Microsoft Graph felhasználóit.
 
     ![Minta Daemon-alkalmazás topológiája](media/scenario-daemon-app/daemon-app-sample.svg)
 
@@ -57,12 +54,18 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+---
+
+## <a name="next-steps"></a>Következő lépések
+
+Íme néhány hivatkozás, amely segítséget nyújt a további információk megismeréséhez:
+
 # <a name="python"></a>[Python](#tab/python)
 
 Próbálja ki [, hogyan szerezzen be tokent, és hívja meg Microsoft Graph API-t egy Python-konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-python-daemon.md).
 
 # <a name="java"></a>[Java](#tab/java)
 
-A MSAL Java jelenleg nyilvános előzetes verzióban érhető el. További információ: [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
+Próbálja ki a rövid útmutató [beszerzése tokent, és hívja meg Microsoft Graph API-t egy Java-konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-java-daemon.md).
 
 ---

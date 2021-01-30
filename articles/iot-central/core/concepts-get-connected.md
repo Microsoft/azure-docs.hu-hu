@@ -1,8 +1,8 @@
 ---
 title: Eszköz csatlakoztatása az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure-beli eszközök csatlakoztatásával kapcsolatos főbb fogalmakat IoT Central
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: dominicbetts
+ms.author: dobett
 ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789770"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062678"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -234,11 +234,8 @@ Az Azure-eszközök SDK-k az eszköz kódjának megvalósítására szolgáló l
 A IoT Hub az összes eszköz kommunikációja a következő IoT Hub kapcsolódási lehetőségeket használja:
 
 - [Eszközről a felhőbe irányuló üzenetkezelés](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [A felhőből az eszközre irányuló üzenetküldés](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
+- [A felhőből az eszközre irányuló üzenetküldés](../../iot-hub/iot-hub-devguide-messages-c2d.md)
 - [Eszköz ikrek](../../iot-hub/iot-hub-devguide-device-twins.md)
-
-> [!NOTE]
-> Az Azure mostantól támogatja
 
 Az alábbi táblázat összefoglalja, hogy az Azure IoT Central-eszköz funkciói hogyan képezhetők le IoT Hub funkciókra:
 
@@ -266,7 +263,7 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, használja a Azu
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

@@ -3,18 +3,18 @@ title: Gyakori kérdések
 description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218586"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062087"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
 Ebben a cikkben az Azure VMware-megoldással kapcsolatos gyakori kérdésekre fogunk válaszolni.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
@@ -258,7 +258,7 @@ A VMware HCX Enterprise Azure VMware-megoldásként érhető el *előzetes* verz
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hogyan az Azure VMware-megoldáshoz tartozó gazdagép-kvóta növelését?
 
-A CSP által felügyelt előfizetések esetén az ügyfélnek el kell küldenie a kérést a partnernek. A partner csapat ezután a Microsofttal folytatja a kvóta növelését az előfizetéshez. A részletekért lásd: az [Azure VMware-megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md) . 
+A CSP által felügyelt előfizetések esetén az ügyfélnek el kell küldenie a kérést a partnernek. A partner csapat ezután a Microsofttal folytatja a kvóta növelését az előfizetéshez. További információ: [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md). 
 
 EA-előfizetések esetén kövesse az alábbi eljárást. Először a következőkre lesz szüksége:
 

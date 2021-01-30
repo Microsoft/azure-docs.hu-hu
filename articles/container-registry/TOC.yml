@@ -157,6 +157,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: Gyakori problémák észlelése
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: GYIK
               href: container-registry-faq.md
 - name: Feladatok

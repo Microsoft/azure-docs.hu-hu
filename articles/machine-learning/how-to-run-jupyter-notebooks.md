@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685578"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061834"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -255,89 +255,6 @@ A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 |---------|---------|
 |  Zöld |Kernel csatlakoztatva, tétlen, foglalt|
 |  Szürke |A kernel nincs csatlakoztatva |
-
-## <a name="shortcut-keys"></a>Billentyűparancsok
-A Jupyter-jegyzetfüzetekhez hasonlóan a Azure Machine Learning Studio notebookok modális felhasználói felülettel rendelkeznek. A billentyűzet különböző műveleteket végez, attól függően, hogy a jegyzetfüzet-cella milyen módban van. Azure Machine Learning Studio jegyzetfüzetek az alábbi két módot támogatják egy adott kódú cellához: parancs mód és szerkesztési mód.
-
-### <a name="command-mode-shortcuts"></a>Parancs mód parancsikonjai
-
-A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja le `ESC` vagy az egér használatával válassza ki a cella szerkesztő területén kívüli lehetőséget.  Az aktív cella bal oldali szegélye kék és tömör, a **Futtatás** gombja pedig kék.
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Jegyzetfüzet-cella parancs módban ":::
-
-| Helyi                      | Leírás                          |
-| ----------------------------- | ------------------------------------|
-| Enter                         | A szerkesztési mód megnyitása             |        
-| Shift + Enter                 | Cella futtatása, válassza az alábbi lehetőséget         |     
-| Vezérlő/parancs + ENTER       | Cella futtatása                            |
-| ALT + ENTER                   | Cella futtatása, kód cellájának beszúrása lent    |
-| Vezérlő/parancs + ALT + ENTER | Cella futtatása, Markdown-cella beszúrása alul|
-| ALT + R                       | Az összes futtatása      |                       
-| Y                             | Cella konvertálása kódra    |                         
-| M                             | Cella konvertálása Markdown  |                       
-| Fel/K                          | Cella kijelölése    |               
-| Lefelé/J                        | Válassza ki az alábbi cellát    |               
-| A                             | A fenti kód cellájának beszúrása  |            
-| B                             | Az alábbi kód cellájának beszúrása   |           
-| Control/Command + Shift + A   | A fenti Markdown cella beszúrása    |      
-| Control/Command + Shift + B   | Az alábbi Markdown-cella beszúrása   |       
-| X                             | Kijelölt cella kivágása    |               
-| C                             | Kijelölt cella másolása   |               
-| Shift + V                     | A fent kiválasztott cella beillesztése           |
-| V                             | Lenti kijelölt cella beillesztése    |       
-| D D                           | Kijelölt cella törlése|                
-| O                             | Kimenet váltása         |              
-| SHIFT + O                     | Kimenet görgetésének váltása   |          
-| ÉN                           | Kernel megszakítása |                   
-| 0 0                           | Kernel újraindítása |                     
-| Shift + szóköz                 | Görgetés felfelé  |                         
-| Space (Szóköz)                         | Görgetés lefelé|
-| Tab                           | Fókusz módosítása a következő fókuszálható elemre (ha a TAB trap le van tiltva)|
-| Vezérlő/parancs + S           | Jegyzetfüzet mentése |                      
-| 1                             | Módosítás H1-re|                       
-| 2                             | Váltás a H2-re|                        
-| 3                             | Váltás H3-re|                        
-| 4                             | Váltás H4-re |                       
-| 5                             | Váltás a H5-re |                       
-| 6                             | Váltás a H6 |                       
-
-### <a name="edit-mode-shortcuts"></a>Szerkesztési mód parancsikonjai
-
-A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, hogy lenyomja `Enter` vagy felhasználja az egeret a cella szerkesztői területein való kiválasztáshoz. Az aktív cella bal oldali szegélyének zöld színűnek kell lennie, és a Futtatás gombja zöld színnel van **elindítva** . A kurzor rákérdez a cellában szerkesztési módban is látható.
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Jegyzetfüzet-cella szerkesztési módban":::
-
-A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat Azure Machine Learning jegyzetfüzetekben lévő kódokat szerkesztési módban.
-
-| Helyi                      | Leírás|                                     
-| ----------------------------- | ----------------------------------------------- |
-| Escape                        | Adja meg a parancs módját|  
-| Vezérlő/parancs + szóköz       | IntelliSense aktiválása |
-| Shift + Enter                 | Cella futtatása, válassza az alábbi lehetőséget |                         
-| Vezérlő/parancs + ENTER       | Cella futtatása  |                                      
-| ALT + ENTER                   | Cella futtatása, kód cellájának beszúrása lent  |              
-| Vezérlő/parancs + ALT + ENTER | Cella futtatása, Markdown-cella beszúrása alul  |          
-| ALT + R                       | Az összes cella futtatása     |                              
-| Fel                            | Kurzor feljebb vagy az előző cellában    |             
-| Le                          | Kurzor mozgatása lefelé vagy a következő cellába |                  
-| Vezérlő/parancs + S           | Jegyzetfüzet mentése   |                                
-| Vezérlés/Command + fel          | Ugrás a cella elejére   |                             
-| Vezérlő/parancs + lefelé        | Ugrás a cella végére |                                 
-| Tab                           | Kód befejezése vagy behúzása (ha engedélyezve van a TAB trap) |
-| Vezérlő/parancs + M           | Tab-trap engedélyezése/letiltása  |                       
-| Control/Command +]           | Behúzás |                                         
-| Control/Command + [           | Kihúzás  |                                        
-| Control/Command + A           | Az összes kijelölése|                                      
-| Vezérlő/parancs + Z           | Visszavonás |                                           
-| Control/Command + Shift + Z   | Ismétlés |                                           
-| Control/Command + Y           | Ismétlés |                                           
-| Control/Command + Home        | Ugrás a cella elejére|                                
-| Vezérlő/parancs + vége         | Ugrás a cella végére   |                               
-| Vezérlő/parancs + balra        | Ugrás egy szóval balra |                               
-| Control/Command + Right       | Egy szó jobbra |                              
-| Control/Command + Backspace   | A Word törlése előtt |                             
-| Vezérlő/parancs + törlés      | Szó törlése a következő után |                              
-| Control/Command +/           | Megjegyzés bekapcsolása a cu-on
 
 ## <a name="find-compute-details"></a>Számítási részletek keresése
 

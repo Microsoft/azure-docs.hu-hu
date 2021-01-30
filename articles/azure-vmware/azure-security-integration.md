@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás virtuális gépei a Azure Security Center integ
 description: Ismerje meg, hogyan védhető az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel egyetlen irányítópultról Azure Security Center.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937338"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061464"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
 
@@ -45,7 +45,7 @@ A Log Analytics munkaterület az Azure Sentinel szolgáltatással konfigurálhat
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
-A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre lesz szüksége. Tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalből](../azure-monitor/learn/quick-create-workspace.md)című témakör lépéseit. 
+A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre lesz szüksége. További információ: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Az Azure VMware megoldás virtuális gépei Security Center üzembe helyezése és konfigurálása
 
@@ -156,9 +156,9 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat sza
 
     - Név
     - Leírás
-    - Taktikát
+    - Taktikák
     - Súlyosság
-    - status
+    - Állapot
 
     Válassza a **Tovább: szabály logikai >beállítása** lehetőséget.
 
@@ -176,8 +176,8 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat sza
     - Entitások leképezése
     - Lekérdezés ütemezése
     - Riasztás küszöbértéke
-    - Esemény csoportosítása
-    - Elnyomása
+    - Események csoportosítása
+    - Mellőzés
 
     Kattintson a **Tovább** gombra.
 
@@ -229,7 +229,7 @@ Létrehozhat lekérdezéseket, vagy használhatja a rendelkezésre álló előre
     - Leírás
     - Egyéni lekérdezés
     - Leképezés megadása
-    - Taktikát
+    - Taktikák
     
 3. Válassza a **Létrehozás** lehetőséget. Ezután kiválaszthatja a létrehozott lekérdezést, **futtathatja a lekérdezést**, és **megtekintheti az eredményeket**.
 

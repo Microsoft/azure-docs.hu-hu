@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3d6e9d1d66425655f0db5751a28746b6a6a31c86
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631765"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062560"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Oktatóanyag: hozzáférés Microsoft Graph egy biztonságos alkalmazásból az alkalmazással
 
@@ -125,9 +125,9 @@ A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) os
 
 Ha ezt a kódot egy minta alkalmazás részeként szeretné látni, tekintse [meg a githubon található mintát](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
 
-### <a name="install-the-microsoftgraph-client-library-package"></a>A Microsoft. Graph ügyféloldali kódtár csomagjának telepítése
+### <a name="install-the-microsoftidentitywebmicrosoftgraph-client-library-package"></a>A Microsoft. Identity. Web. MicrosoftGraph ügyféloldali kódtár csomagjának telepítése
 
-Telepítse a [Microsoft. Graph NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Graph) a projektbe a .net Core parancssori felület vagy a Visual Studio Package Manager konzoljának használatával.
+Telepítse a [Microsoft. Identity. Web. MicrosoftGraph NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) a projektbe a .net Core parancssori felület vagy a Visual Studióban található Package Manager konzol használatával.
 
 # <a name="command-line"></a>[Parancssor](#tab/command-line)
 
@@ -136,7 +136,7 @@ Nyisson meg egy parancssort, és váltson arra a könyvtárra, amely tartalmazza
 Futtassa a telepítési parancsokat.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 # <a name="package-manager"></a>[Csomagkezelő](#tab/package-manager)
@@ -145,7 +145,7 @@ Nyissa meg a projektet/megoldást a Visual Studióban, és nyissa meg **a konzol
 
 Futtassa a telepítési parancsokat.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 ---

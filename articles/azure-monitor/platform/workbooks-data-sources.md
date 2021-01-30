@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927906"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061950"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor munkafüzetek adatforrásai
 
@@ -59,7 +59,7 @@ Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást
 
 ## <a name="azure-data-explorer"></a>Azure Data Explorer
 
-A munkafüzetek mostantól támogatják az [Azure adatkezelő](/azure/data-explorer/) -fürtökről való lekérdezést a hatékony [Kusto](/azure/kusto/query/index) -lekérdezési nyelvvel.   
+A munkafüzetek mostantól támogatják az [Azure adatkezelő](/azure/data-explorer/) -fürtökről való lekérdezést a hatékony [Kusto](/azure/kusto/query/index) -lekérdezési nyelvvel.
 
 ![Képernyőfelvétel a Kusto-lekérdezési ablakról](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást
 
 ![Képernyőkép – a riasztások lekérdezése, amely az állapot-szűrőlisták listáját jeleníti meg.](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>Változás elemzése (előzetes verzió)
+
+Ha az [Application Change Analysis](../app/change-analysis.md) adatforrásként szeretné lekérdezni a lekérdezés vezérlőelemet, használja az *adatforrás* legördülő listát, és válassza az *elemzés módosítása (előzetes verzió)* lehetőséget, és válasszon ki egy erőforrást. Az elmúlt 14 nap változásai láthatók. A *szint* legördülő lista a "fontos", a "normál" és a "zajos" változások közötti szűrésre használható, és ez a legördülő lista támogatja a [legördülő lista](workbooks-dropdowns.md)típusú munkafüzet-paramétereket.
+
+> [!div class="mx-imgBorder"]
+> ![Képernyőkép egy módosítási elemzést tartalmazó munkafüzetről](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>Adatok egyesítése különböző forrásokból
+
+Gyakran szükséges a különböző forrásokból származó adatok egyesítése, amelyek javítják az elemzések élményét. Egy példa a kapcsolódó metrikai adatokkal kapcsolatos aktív riasztási információk kibővítésére. Ez lehetővé teszi a felhasználók számára, hogy nem csak a hatást (aktív riasztást) lássák, de a lehetséges okokat is (például magas CPU-használatot). A figyelési tartomány számos olyan correlatable-adatforrással rendelkezik, amelyek gyakran kritikus fontosságúak az osztályozási és a diagnosztikai munkafolyamatokban.
+
+A munkafüzetek nem csak a különböző adatforrások lekérdezését teszik lehetővé, hanem egyszerű vezérlőket is biztosítanak, amelyek lehetővé teszik az adategyesítést, illetve az információk összekapcsolását a részletes elemzések megadásával. A `merge` vezérlő az elérésének módja.
+
+Az alábbi példában a log Analytics virtuálisgép-teljesítményadatokat tartalmazó riasztási adat kombinálható a részletes elemzések rácsának beszerzéséhez.
+
+> [!div class="mx-imgBorder"]
+> ![Egy, a riasztásokat és a log Analytics-adatmennyiségeket egyesítő egyesítési vezérlőelemet tartalmazó munkafüzet képernyőképe](./media/workbooks-data-sources/merge-control.png)
+
+A munkafüzetek számos egyesítést támogatnak:
+
+* Belső egyedi illesztés
+* Teljes belső illesztés
+* Teljes külső illesztés
+* Bal oldali külső illesztés
+* Jobb oldali külső illesztés
+* Balra félig illesztés
+* Jobb fél illesztés
+* Bal oldali csatlakozás
+* Jobb anti-JOIN
+* Union
+* Ismétlődő tábla
+
 ## <a name="json"></a>JSON
 
 A JSON-szolgáltató lehetővé teszi a statikus JSON-tartalmak lekérdezési eredményének létrehozását. A paraméterek leggyakrabban a statikus értékek legördülő paramétereinek létrehozásához használatosak. A rendszer automatikusan átalakítja az egyszerű JSON-tömböket vagy-objektumokat a rács soraiba és oszlopaiba.  A további specifikus viselkedés érdekében a Results (eredmények) és a JSONPath beállítások segítségével konfigurálhatja az oszlopokat.
+
+Ez a szolgáltató támogatja a [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="alerts-preview"></a>Riasztások (előzetes verzió)
 
@@ -94,7 +128,7 @@ A JSON-szolgáltató lehetővé teszi a statikus JSON-tartalmak lekérdezési er
 
 A munkafüzetek lehetővé teszik a felhasználók számára, hogy megjelenítsék az erőforrásaikkal kapcsolatos aktív riasztásokat. Korlátozások: a riasztások adatforrásának olvasási hozzáféréssel kell rendelkeznie az előfizetéshez az erőforrások lekérdezése érdekében, és előfordulhat, hogy nem jeleníti meg az újabb típusú riasztásokat. 
 
-Ha szeretné, hogy a lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüben válassza a _riasztások (előzetes verzió)_ lehetőséget, majd válassza ki a célként használandó előfizetéseket, erőforráscsoportokat vagy erőforrásokat. A riasztási szűrő legördülő lista használatával kiválaszthatja az elemzési igényekhez tartozó riasztások érdekes részhalmazát.
+Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüben válassza a _riasztások (előzetes verzió)_ lehetőséget, majd válassza ki a célként használandó előfizetéseket, erőforráscsoportokat vagy erőforrásokat. A riasztási szűrő legördülő lista használatával kiválaszthatja az elemzési igényekhez tartozó riasztások érdekes részhalmazát.
 
 ## <a name="custom-endpoint"></a>Egyéni végpont
 
@@ -102,10 +136,12 @@ A munkafüzetek bármilyen külső forrásból származó adatok beolvasását t
 
 Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást, az _adatforrás_ legördülő menüjéből válassza az _Egyéni végpont_ lehetőséget. Adja meg a megfelelő paramétereket, például,, `Http method` `url` `headers` `url parameters` és/vagy `body` . Győződjön meg arról, hogy az adatforrás támogatja a [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) , máskülönben a kérelem sikertelen lesz.
 
-Ha nem szeretne automatikusan hívásokat kezdeményezni a nem megbízható gazdagépekhez sablonok használatakor, a felhasználónak megbízhatóként kell megjelölni a használt gazdagépeket. Ezt úgy teheti meg, hogy a _Hozzáadás megbízhatóként_ gombra kattint, vagy ha megbízható gazdagépként hozzáadja a munkafüzet-beállításokhoz. Ezek a beállítások a webes feldolgozók IndexDb támogató böngészőkben lesznek mentve. További információ [itt](https://caniuse.com/#feat=indexeddb)található.
+Ha nem szeretne automatikusan hívásokat kezdeményezni a nem megbízható gazdagépekhez sablonok használatakor, a felhasználónak megbízhatóként kell megjelölni a használt gazdagépeket. Ezt úgy teheti meg, hogy a _Hozzáadás megbízhatóként_ gombra kattint, vagy ha megbízható gazdagépként hozzáadja a munkafüzet-beállításokhoz. Ezek a beállítások a [webes feldolgozókkal IndexDb támogató böngészőkben](https://caniuse.com/#feat=indexeddb)lesznek mentve.
 
 > [!NOTE]
 > Ne írjon semmilyen titkot a következő mezők egyikéhez sem (,, `headers` `parameters` `body` , `url` ), mert a munkafüzet összes felhasználója számára láthatóvá válik.
+
+Ez a szolgáltató támogatja a [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

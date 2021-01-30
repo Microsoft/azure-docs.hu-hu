@@ -2,17 +2,19 @@
 title: Hiba a beállításjegyzék állapotának ellenőrzéséhez
 description: Hibakódok és lehetséges megoldások olyan problémákra, amelyek a Azure Container Registry
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565598"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061868"
 ---
 # <a name="health-check-error-reference"></a>Állapot-ellenőrzési hiba referenciája
 
 Az alábbi információk az az [ACR állapotfelmérés][az-acr-check-health] parancs által visszaadott hibakódokról találhatók. Minden hiba esetén a lehetséges megoldások szerepelnek a felsorolásban.
+
+A futtatásáról további információt `az acr check-healh` [Az Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md)ismertető témakörben talál.
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -49,6 +51,12 @@ Ez a hiba azt jelenti, hogy a parancssori ügyfél nem található a CLI-ben, am
 Ez a hiba azt jelenti, hogy a CLI nem tudta meghatározni a Helm telepített verzióját. Ez akkor fordulhat elő, ha az Azure CLI verziója (vagy a Helm-verzió) elavult.
 
 *Lehetséges megoldások*: frissítés az Azure CLI legújabb verziójára vagy az ajánlott Helm-verzióra; futtassa manuálisan a parancsot, és vizsgálja meg a hibaüzenetet.
+
+## <a name="cmk_error"></a>CMK_ERROR
+
+Ez a hiba azt jelenti, hogy a beállításjegyzék nem fér hozzá az ügyfél által felügyelt kulccsal a beállításjegyzék titkosításának konfigurálásához használt felhasználó által hozzárendelt vagy sysem által hozzárendelt felügyelt identitáshoz. Lehet, hogy törölték a felügyelt identitást.  
+
+*Lehetséges megoldás*: a probléma megoldásához és a kulcs másik felügyelt identitással történő elforgatásához tekintse meg [a felhasználó által hozzárendelt identitás](container-registry-customer-managed-keys.md#troubleshoot)hibaelhárításának lépéseit.
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742777"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061851"
 ---
 # <a name="install-net-on-azure-cloud-services-classic-roles"></a>A .NET telepítése Azure Cloud Services (klasszikus) szerepkörökre
 
@@ -32,7 +32,7 @@ Ha a .NET-et a webes és feldolgozói szerepkörökön szeretné telepíteni, fo
 ## <a name="add-the-net-installer-to-your-project"></a>A .NET-telepítő hozzáadása a projekthez
 A .NET-keretrendszerhez készült web Installer letöltéséhez válassza ki a telepíteni kívánt verziót:
 
-* [.NET-keretrendszer 4,8 web Installer](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET-keretrendszer 4,8 web Installer](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [.NET-keretrendszer 4.7.2 web Installer](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET-keretrendszer 4.6.2 web Installer](https://www.microsoft.com/download/details.aspx?id=53345)
 

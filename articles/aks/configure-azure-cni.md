@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan konfigurálhatja az Azure CNI (Advanced) háló
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 0a6ea45156477c0d0e95b9d345cffe1a75c773b6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: afb98acf903f90ead137c9b372d33ce82b89f7b5
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917807"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062217"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -63,7 +63,7 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
-| Portál | 110 | 30 | No |
+| Portál | 110 | 110 (a csomópont-készletek lapon van konfigurálva) | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
 

@@ -68,6 +68,8 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konzol-démon
           href: quickstart-v2-python-daemon.md
+        - name: Java-konzol démon
+          href: quickstart-v2-java-daemon.md
 - name: Oktatóanyagok
   items:
     - name: Egyoldalas alkalmazás (SPA)

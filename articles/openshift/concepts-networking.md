@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 6d1fd873de3313678875a8c167b90fafb8ede7ae
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093519"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061649"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Az Azure Red Hat OpenShift (ARO) hálózati fogalmak
 
@@ -68,12 +68,15 @@ A OpenShift szoftver által definiált hálózatkezelés [(Sdn)](https://docs.op
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Hálózatkezelés az Azure Red Hat OpenShift
 
-A következő hálózatkezelési funkciók az Azure Red Hat OpenShift vonatkoznak:
+A következő hálózatkezelési funkciók az Azure Red Hat OpenShift vonatkoznak:  
 * A felhasználók létrehozhatják az ARO-fürtöt egy meglévő virtuális hálózaton, vagy létrehozhatnak egy virtuális hálózatot az ARO-fürt létrehozásakor.
 * A pod és a Service Network CIDRs konfigurálható.
 * A csomópontok és a főkiszolgálók eltérő alhálózatokban találhatók.
 * A csomópontoknak és a főkiszolgálók virtuális hálózati alhálózatának minimális/27-nek kell lennie.
-* A pod CIDR minimális/18 méretűnek kell lennie (a pod hálózat nem irányítható IP-címek, és csak a OpenShift SDN-ben használatos).
+* Az alapértelmezett Pod CIDR a 10.128.0.0/14.
+* Az alapértelmezett szolgáltatás CIDR a 172.30.0.0/16.
+* A pod és a Service Network CIDRs nem fedik át a hálózaton használt többi címtartományt, és nem lehetnek a fürt virtuális hálózati IP-címének tartományán belül.
+* A pod CIDR minimális/18 méretűnek kell lennie. (A pod-hálózat nem irányítható IP-címek, és csak a OpenShift SDN-ben használható.)
 * Az egyes csomópontok kiosztása/23 alhálózat (512 IP-cím) a hüvelye számára. Ez az érték nem módosítható.
 * Nem csatlakoztathat Pod-t több hálózathoz.
 * Nem konfigurálhatja a kimenő forgalomra vonatkozó statikus IP-címet. (Ez egy OpenShift funkció. További információ: a [kimenő IP](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)-címek konfigurálása.

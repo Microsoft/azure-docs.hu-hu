@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448627"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061807"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>A Azure Stack Edge Pro GPU hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
 
@@ -54,7 +54,7 @@ A munkafolyamat alaphelyzetbe állítása nem igényli, hogy a felhasználó fel
 
 1. A Azure Portal lépjen az **áttekintés > rendszergazdai jelszó visszaállítása** elemre.
 
-    ![Képernyőfelvétel: az eszköz alaphelyzetbe állítása jelszó kiválasztásával.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Képernyőfelvétel: az eszköz alaphelyzetbe állítása jelszó kiválasztásával.](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Adja meg az új jelszót, majd erősítse meg. A megadott jelszónak 8 és 16 karakter közöttinek kell lennie. A jelszónak legalább hármat tartalmaznia kell a következő karakterek közül: nagybetűk, kisbetűk, számok és speciális karakterek. Válassza az **Alaphelyzetbe állítás** lehetőséget.
@@ -171,6 +171,6 @@ A fizikai eszköz a helyi webes felhasználói felülettel állítható le vagy 
 > [!NOTE]
 > Ha leállítja a fizikai eszközt, a bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-manage-shares.md).

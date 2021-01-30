@@ -698,10 +698,12 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Függőség létrehozása átfedésmentes ablak eseményindítójához
           href: tumbling-window-trigger-dependency.md
-    - name: Lineage
+    - name: Adatkatalógus és adatgazdálkodás
       items:
         - name: Data Factory csatlakozása az Azure Purview-hoz
           href: connect-data-factory-to-azure-purview.md
+        - name: Az ADF-ben lévő adatfelderítés és-vizsgálat a hatáskörébe
+          href: how-to-discover-explore-purview-data.md
     - name: Forgatókönyvek
       items:
         - name: Data Lake- és EDW-adatmigrálás
@@ -796,10 +798,6 @@
       href: /python/api/overview/azure/datafactory
 - name: További források
   items:
-    - name: Adatfolyamok számára fenntartott kapacitás áttekintése
-      href: data-flow-reserved-capacity-overview.md
-    - name: Az adatforgalom ismertetése a foglalási díjakról
-      href: data-flow-understand-reservation-charges.md
     - name: Tanulmányok
       href: whitepapers.md
     - name: GYIK
