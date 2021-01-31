@@ -1,21 +1,21 @@
 ---
 title: Ajánlott eljárások a teljesítményhez – Azure Database for MySQL
-description: Ez a cikk a Azure Database for MySQL teljesítményének figyeléséhez és finomhangolásához ajánlott eljárásokat ismerteti.
-author: mksuni
-ms.author: sumuth
+description: Ez a cikk néhány, a Azure Database for MySQL teljesítményének figyelésére és hangolására vonatkozó javaslatot ismertet.
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/28/2021
+ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880406"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217754"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Ajánlott eljárások az Azure Database for MySQL – egyetlen kiszolgáló optimális teljesítményéhez
 
-Ismerje meg az ajánlott eljárásokat a legjobb teljesítmény érdekében, miközben a Azure Database for MySQL egyetlen kiszolgálóval dolgozik. Ahogy új képességeket adunk a platformhoz, továbbra is pontosítjuk az ebben a szakaszban részletezett ajánlott eljárásokat.
+Ismerje meg, hogyan érheti el a legjobb teljesítményt a Azure Database for MySQL egyetlen kiszolgálóval való munka során. Ahogy új képességeket adunk a platformhoz, az ebben a szakaszban ismertetett javaslatokat továbbra is finomítjuk.
 
 ## <a name="physical-proximity"></a>Fizikai közelség
 
@@ -23,7 +23,7 @@ Ismerje meg az ajánlott eljárásokat a legjobb teljesítmény érdekében, mik
 
 ## <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
 
-Ha Azure-beli virtuális gépet, Azure Kubernetes vagy App Services használ, gyorsított hálózatkezelést használhat az alkalmazáskiszolgáló számára. A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál.
+Ha Azure-beli virtuális gépet, Azure Kubernetes vagy App Services használ, használjon gyorsított hálózatkezelést az alkalmazáskiszolgáló számára. A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, nagy mértékben javítja hálózati teljesítményét. Ez a nagy teljesítményű elérési út megkerüli a gazdagépet a DataPath, csökkenti a késést, a vibrálás és a CPU-kihasználtságot, és a legszigorúbb hálózati számítási feladatokhoz használja a támogatott virtuálisgép-típusoknál.
 
 ## <a name="connection-efficiency"></a>A kapcsolatok hatékonysága
 
@@ -49,8 +49,25 @@ Az Azure Database for MySQL teljesítményének bevált gyakorlata, hogy elegend
 - Ellenőrizze, hogy a használt memória százalékos aránya eléri-e a [határértékeket](./concepts-pricing-tiers.md) a [MySQL-kiszolgáló metrikái](./concepts-monitoring.md)alapján. 
 - Állítsa be az ilyen számú riasztást annak biztosítására, hogy mivel a kiszolgálók elérik a korlátozásokat, megteheti a kijavításához szükséges lépéseket. A meghatározott korlátok alapján ellenőrizze, hogy az adatbázis-SKU felskálázása – akár magasabb számítási méretre, akár jobb árképzési szinten – a teljesítmény drámai növekedését eredményezi. 
 - Vertikális felskálázás, amíg a teljesítménybeli számok nem csökkennek jelentősen a skálázási művelet után. Az adatbázis-példány metrikáinak figyelésével kapcsolatos információkért lásd: [MySQL db-metrikák](./concepts-monitoring.md#metrics).
+ 
+## <a name="use-innodb-buffer-pool-warmup"></a>InnoDB-puffer használata – bemelegedési
 
-## <a name="next-steps"></a>További lépések
+Azure Database for MySQL kiszolgáló újraindítása után a rendszer betölti a tárolóban lévő adatlapokat, mivel a rendszer lekérdezi a táblákat, ami nagyobb késést és lassabb teljesítményt eredményez a lekérdezések első végrehajtásakor. Ez nem fogadható el a késésre érzékeny munkaterhelések esetében. 
+
+A InnoDB-puffer használatával a bemelegedési idő lerövidíti a bemelegedési időszakot azáltal, hogy az újraindítás előtt újra betölti a pufferben lévő lemezeket, és nem várta a DML-t, vagy KIVÁLASZTJA a műveleteket a megfelelő sorok eléréséhez.
+
+A Azure Database for MySQL-kiszolgáló újraindítása után csökkentheti a bemelegedési időszakot, amely a [InnoDB puffer-kiszolgáló paramétereinek](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)konfigurálásával teljesítménybeli előnyt jelent. A InnoDB az egyes pufferek legutóbb használt lapjainak százalékos arányát menti a kiszolgáló leállításakor, és visszaállítja ezeket a lapokat a kiszolgáló indításakor.
+
+Azt is fontos megjegyezni, hogy a jobb teljesítmény a kiszolgáló hosszú indítási ideje alapján történik. Ha ez a paraméter engedélyezve van, a kiszolgáló indítási és újraindítási ideje várhatóan a kiszolgálón kiépített IOPS függően növekszik. 
+
+Javasoljuk, hogy tesztelje és figyelje az újraindítási időt annak biztosítására, hogy az indítási/újraindítási teljesítmény elfogadható legyen, mivel a kiszolgáló ebben az időszakban nem érhető el. Ezt a paramétert nem ajánlott a 1000-nél kevesebb kiosztott IOPS használni (vagy más szóval, ha a tároló kiosztott értéke kisebb, mint 335 GB).
+
+Ha menteni szeretné a puffer állapotát a kiszolgáló leállításakor, állítsa a Server paramétert a következőre: `innodb_buffer_pool_dump_at_shutdown` `ON` . Hasonlóképpen állítsa be a kiszolgálói paramétert a `innodb_buffer_pool_load_at_startup` `ON` puffer-készlet állapotának visszaállításához a kiszolgáló indításakor. A kiszolgáló paraméter értékének csökkentésével és finomhangolásával szabályozhatja az indítási és újraindítási időpontra gyakorolt hatást `innodb_buffer_pool_dump_pct` . Alapértelmezés szerint ez a paraméter a következőre van beállítva: `25` .
+
+> [!Note]
+> A InnoDB puffer-készlet bemelegedési paramétereit csak az általános célú tároló kiszolgálók támogatják, legfeljebb 16 TB tárhellyel. További információ a [Azure Database for MySQL tárolási lehetőségeiről](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Ajánlott eljárás a kiszolgálói műveletek Azure Database for MySQL használatával](concept-operation-excellence-best-practices.md) <br/>
 - [Ajánlott eljárás a Azure Database for MySQL monitorozásához](concept-monitoring-best-practices.md)<br/>

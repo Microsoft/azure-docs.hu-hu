@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 11/12/2020
-ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/29/2021
+ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170616"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219230"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -31,6 +31,10 @@ A naplózási eseményeket a következő módon irányíthatja át:
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
 Ebből a cikkből megtudhatja, hogyan viheti át a naplókat egy Azure Log Analytics-munkaterületre. Ezután létrehozhat egy irányítópultot, vagy létrehozhat olyan riasztásokat, amelyek Azure AD B2C felhasználói tevékenységeken alapulnak.
+
+> [!IMPORTANT]
+> Ha Azure AD B2C naplókat különböző figyelési megoldásokra vagy tárházba kívánja átvinni, vegye figyelembe a következőket. Azure AD B2C a naplók személyes adatfájlokat tartalmaznak. Ezeket az adatfeldolgozást olyan módon kell feldolgozni, amely gondoskodik a személyes adat megfelelő biztonságáról, beleértve a jogosulatlan vagy törvénytelen feldolgozás elleni védelmet a megfelelő technikai vagy szervezeti intézkedések használatával.
+
 
 ## <a name="deployment-overview"></a>Az üzembe helyezés áttekintése
 
@@ -100,7 +104,7 @@ Ezután létre fog hozni egy Azure Resource Manager sablont, amely Azure AD B2C 
    | Mező   | Meghatározás |
    |---------|------------|
    | Előfizetés |  Válassza ki azt az Azure-előfizetést tartalmazó könyvtárat, amelyben az *Azure-ad-B2C-monitor* erőforráscsoport létrejött. |
-   | Region| Válassza ki azt a régiót, ahol az erőforrást telepíteni kívánja.  | 
+   | Régió| Válassza ki azt a régiót, ahol az erőforrást telepíteni kívánja.  | 
    | MSP-ajánlat neve| A definíciót leíró név. Például *Azure ad B2C figyelés*.  |
    | MSP-ajánlat leírása| Az ajánlat rövid leírása. Például *engedélyezi a Azure AD B2C Azure monitorét*.|
    | Bérlői azonosító kezeli| A Azure AD B2C bérlő (más néven címtár-azonosító) **bérlői azonosítója** . |

@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757406"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218111"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -150,6 +150,7 @@ Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtu�
 Azure-beli virtuális gépek biztonsági mentése zárolásokkal | Nem felügyelt virtuális gépek esetén nem támogatott. <br><br> Felügyelt virtuális gépek esetén támogatott.
 [Spot virtuális gépek](../virtual-machines/spot-vms.md) | Támogatott. Azure Backup a helyszíni virtuális gépeket normál Azure-beli virtuális gépekként visszaállítja.
 [Dedikált Azure-gazdagép](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Támogatott
+Különálló Azure-beli virtuális gépek Windows-tárolóhelyek konfigurálása | Támogatott 
 
 ## <a name="vm-storage-support"></a>VM-tároló támogatása
 
@@ -209,10 +210,10 @@ Az adatbiztonságot:
 
 **Gép** | **Átvitel közben** | **Nyugalmi állapotban**
 --- | --- | ---
-Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Igen][green]
-Azure-beli virtuális gépek | ![Igen][green] | ![Igen][green]
-Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
-Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
+Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Yes][green]
+Azure-beli virtuális gépek | ![Igen][green] | ![Yes][green]
+Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Yes][green]
+Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Yes][green]
 
 ## <a name="vm-compression-support"></a>VM-tömörítés támogatása
 
@@ -225,7 +226,7 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 --- | --- | ---
 Helyszíni Windows rendszerű gépek DPM/MABS nélkül | NA | ![Igen][green]
 Azure-beli virtuális gépek | NA | NA
-Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
+Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Yes][green]
 Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
 
 ## <a name="next-steps"></a>Következő lépések

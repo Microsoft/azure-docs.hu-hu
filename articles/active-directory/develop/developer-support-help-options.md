@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1d50e0ed6ac67ed1595b289d27bd08a089840308
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bce9479d063d091eb4fa68d2452d8a4218d45db9
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051906"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219943"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
@@ -36,7 +36,7 @@ Ha a fejlesztéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a
 
 ### <a name="scoped-search"></a>Hatókörön belüli keresés
 
-A gyorsabb eredmény érdekében a keresés hatókörét a Microsoft Q&A, a dokumentáció és a kód mintákat a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
+A gyorsabb eredmény érdekében a keresés a [Microsoft Q&](https://docs.microsoft.com/answers/products/)a dokumentációt, a kód mintáit pedig a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
 
 ```
 {Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
@@ -53,9 +53,9 @@ Ahol *{a keresési kifejezések}* megfelelnek a keresési kulcsszavaknak.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
 
-A Microsoft Q&a a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
+A [Microsoft Q&](https://docs.microsoft.com/answers/products/) a a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést a Microsoft Q&A-nek. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
+Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést a [Microsoft Q&a](https://docs.microsoft.com/answers/products/) -nek. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
 
 |Összetevő/régió  | Címkék |
 |---------|---------|
@@ -65,9 +65,9 @@ Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést a M
 | [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-ad-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-ad-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
-| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
+| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
-Az alábbi bejegyzések a Microsoft Q&egy olyan tippeket tartalmaznak, amelyekkel kérdéseket tehet fel, és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
+Az alábbi bejegyzések a [Microsoft Q&egy olyan](https://docs.microsoft.com/answers/products/) tippeket tartalmaznak, amelyekkel kérdéseket tehet fel, és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
 
 * [Hogyan tegyen fel egy jó kérdést](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
 * [Minimális, teljes és ellenőrizhető példa létrehozása](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)

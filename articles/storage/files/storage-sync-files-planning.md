@@ -4,16 +4,16 @@ description: Tervezze meg a Azure File Sync-vel történő telepítést, amely l
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898104"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219476"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -302,48 +302,16 @@ További információ az átvitel közbeni titkosításról: [biztonságos átvi
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Az Azure file Sync régió rendelkezésre állása
-Azure File Sync a következő régiókban érhető el:
 
-| Azure-felhő | Földrajzi régió | Azure-régió | Régiókód |
-|-------------|-------------------|--------------|-------------|
-| Nyilvános | Ázsia | Kelet-Ázsia | `eastasia` |
-| Nyilvános | Ázsia | Délkelet-Ázsia | `southeastasia` |
-| Nyilvános | Ausztrália | Kelet-Ausztrália | `australiaeast` |
-| Nyilvános | Ausztrália | Délkelet-Ausztrália | `australiasoutheast` |
-| Nyilvános | Brazília | Dél-Brazília | `brazilsouth` |
-| Nyilvános | Kanada | Közép-Kanada | `canadacentral` |
-| Nyilvános | Kanada | Kelet-Kanada | `canadaeast` |
-| Nyilvános | Európa | Észak-Európa | `northeurope` |
-| Nyilvános | Európa | Nyugat-Európa | `westeurope` |
-| Nyilvános | Franciaország | Közép-Franciaország | `francecentral` |
-| Nyilvános | Franciaország | Dél-Franciaország * | `francesouth` |
-| Nyilvános | India | Közép-India | `centralindia` |
-| Nyilvános | India | Dél-India | `southindia` |
-| Nyilvános | Japán | Kelet-Japán | `japaneast` |
-| Nyilvános | Japán | Nyugat-Japán | `japanwest` |
-| Nyilvános | Dél-Korea | Dél-Korea középső régiója | `koreacentral` |
-| Nyilvános | Dél-Korea | Dél-Korea déli régiója | `koreasouth` |
-| Nyilvános | Dél-afrikai Köztársaság | Dél-Afrika északi régiója | `southafricanorth` |
-| Nyilvános | Dél-afrikai Köztársaság | Dél-Afrika nyugati régiója * | `southafricawest` |
-| Nyilvános | EAE | Az Egyesült Arab Emírségek középső régiója * | `uaecentral` |
-| Nyilvános | EAE | Észak-Egyesült Arab | `uaenorth` |
-| Nyilvános | Egyesült Királyság | Az Egyesült Királyság déli régiója | `uksouth` |
-| Nyilvános | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | `ukwest` |
-| Nyilvános | USA | Az USA középső régiója | `centralus` |
-| Nyilvános | USA | USA keleti régiója | `eastus` |
-| Nyilvános | USA | USA 2. keleti régiója | `eastus2` |
-| Nyilvános | USA | USA északi középső régiója | `northcentralus` |
-| Nyilvános | USA | USA déli középső régiója | `southcentralus` |
-| Nyilvános | USA | USA nyugati középső régiója | `westcentralus` |
-| Nyilvános | USA | USA nyugati régiója | `westus` |
-| Nyilvános | USA | USA 2. nyugati régiója | `westus2` |
-| US Gov | USA | USA-beli államigazgatás – Arizona | `usgovarizona` |
-| US Gov | USA | USA-beli államigazgatás – Texas | `usgovtexas` |
-| US Gov | USA | USA-beli államigazgatás – Virginia | `usgovvirginia` |
+A regionális elérhetőséget lásd: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
-A Azure File Sync csak olyan Azure-fájlmegosztás szinkronizálását támogatja, amely ugyanabban a régióban található, mint a Storage Sync szolgáltatás.
+A következő régiókban szükséges az Azure Storage-hoz való hozzáférés kérése, mielőtt a Azure File Synct is használhassa:
 
-A csillaggal jelölt régiók esetében kapcsolatba kell lépnie az Azure támogatási szolgálatával, hogy az ezekben a régiókban hozzáférést kérjen az Azure Storage-hoz. A folyamat [ebben a dokumentumban](https://azure.microsoft.com/global-infrastructure/geographies/)található.
+- Dél-Franciaország
+- Dél-Afrika nyugati régiója
+- UAE középső régiója
+
+Ha hozzáférést szeretne kérni ezeknek a régióknak, kövesse a [jelen dokumentumban](https://azure.microsoft.com/global-infrastructure/geographies/)leírt eljárást.
 
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]

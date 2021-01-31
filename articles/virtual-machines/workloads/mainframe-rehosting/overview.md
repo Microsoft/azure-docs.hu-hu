@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835527"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220751"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>A nagyszámítógépek Azure-beli virtuális gépeken való üzemeltetése
 
@@ -70,7 +70,7 @@ Első lépések:
 
 Az IBM DB2 pureScale-környezet az Azure-hoz készült adatbázis-fürtöt biztosít. Nem azonos az eredeti környezettel, de hasonló rendelkezésre állást és méretezést biztosít, mint az IBM DB2 a párhuzamos Sysplex-telepítésben futó z/OS-hez.
 
-Első lépésként tekintse [meg az IBM DB2 pureScale az Azure](../../linux/ibm-db2-purescale-azure.md)-ban című témakört.
+Első lépésként tekintse [meg az IBM DB2 pureScale az Azure](.//ibm/ibm-db2-purescale-azure.md)-ban című témakört.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -92,7 +92,7 @@ Az Azure IaaS, például a virtuális gépek esetében az adott rendszerfunkció
 
 A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](../../sizes.md) -és [Windows](../../sizes.md) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a szolgáltatások igény szerinti [skálázása](/azure/architecture/best-practices/auto-scaling) használaton alapuló számlázási modell keretében történik.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 A felhőben számos rugalmas és skálázható tárolási lehetőség áll rendelkezésre, és csak azért kell fizetnie, amire szüksége van. Az [Azure Storage](../../../storage/common/storage-introduction.md) egy nagymértékben méretezhető objektum-tárolót biztosít az adatobjektumokhoz, egy fájlrendszer-szolgáltatáshoz a felhőhöz, egy megbízható üzenetkezelési tárolóhoz és egy NoSQL-tárolóhoz. A virtuális gépek esetében a felügyelt és a nem felügyelt lemezek állandó, biztonságos lemezes tárolást biztosítanak.
 

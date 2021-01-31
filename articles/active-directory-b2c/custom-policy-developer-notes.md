@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516092"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218774"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -29,7 +29,7 @@ Habár a rendelkezésre álló egyéni házirend-lehetőségek többsége már �
 ## <a name="features-that-are-generally-available"></a>Általánosan elérhető funkciók
 
 - Egyéni hitelesítési felhasználói utazások létrehozása és feltöltése egyéni szabályzatok használatával.
-    - A felhasználói útvonalak lépésenkénti ismertetése a jogcímek szolgáltatói közötti cseréjeként.
+    - A felhasználói utazások részletes leírását a jogcímek szolgáltatói közötti váltással.
     - Feltételes elágazás definiálása felhasználói útvonalakon.
 - A REST API-kompatibilis szolgáltatásokkal való együttműködés az egyéni hitelesítési felhasználói útvonalakon.
 - A összevonása az OpenIDConnect protokollnak megfelelő identitás-szolgáltatókkal.
@@ -44,7 +44,7 @@ Az egyéni házirend-készletet használó fejlesztőknek be kell tartaniuk a k�
 - Ismerkedjen meg az egyéni szabályzatok és a kulcs/titkok kezelésének konfigurációs nyelvével. További információ: [TrustFrameworkPolicy](trustframeworkpolicy.md).
 - A forgatókönyvek és az egyéni integrációk saját tulajdonba vételét. Dokumentálja a munkáját, és tájékoztassa az élő hely szervezetét.
 - Végezzen tesztelési módszert.
-- A szoftverfejlesztés és az előkészítési ajánlott eljárások követése legalább egy fejlesztési és tesztelési környezettel, valamint egy éles környezettel.
+- Kövesse a szoftverfejlesztés és az előkészítéssel kapcsolatos ajánlott eljárásokat. Legalább egy fejlesztési és tesztelési környezetet ajánlott használni.
 - Tájékozódjon arról, hogy az Ön által integrált identitás-szolgáltatók és szolgáltatások milyen új fejleményeket mutatnak be. Például nyomon követheti a titkok és a szolgáltatás ütemezett és nem ütemezett változásainak változásait.
 - Állítsa be az aktív figyelést, és figyelje az éles környezetek érzékenységét. További információ a Application Insights integrálásáról [: Azure Active Directory B2C: naplók gyűjtése](analytics-with-application-insights.md).
 - Lépjen kapcsolatba az Azure-előfizetésben aktuálisan használt e-mail címekkel, és válaszoljon a Microsoft Live-site Team-e-mailekre.
@@ -58,12 +58,12 @@ Az egyéni házirend-készletet használó fejlesztőknek be kell tartaniuk a k�
 
 ## <a name="features-by-stage-and-known-issues"></a>Funkciók szakasz és ismert problémák alapján
 
-Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors fejlesztés alatt állnak. A következő táblázat a szolgáltatások és az összetevők rendelkezésre állásának indexét tartalmazza.
+Az egyéni házirend-képességek állandó fejlesztés alatt állnak. A következő táblázat a szolgáltatások és az összetevők rendelkezésre állásának indexét tartalmazza.
 
 
 ### <a name="protocols-and-authorization-flows"></a>Protokollok és engedélyezési folyamatok
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-engedélyezési kód](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 engedélyezési kód a PKCE |  |  | X | [Nyilvános ügyfelek és egyoldalas alkalmazások](authorization-code-flow.md)  |
@@ -76,7 +76,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="identify-providers-federation"></a>Szolgáltatók összevonásának azonosítása 
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Például: Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Például: Facebook.  |
@@ -87,7 +87,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="rest-api-integration"></a>REST API integráció
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [REST API egyszerű hitelesítéssel](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [REST API ügyféltanúsítvány-alapú hitelesítéssel](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -95,7 +95,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="component-support"></a>Összetevő-támogatás
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Telefonos faktoros hitelesítés](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure AD MFA-hitelesítés](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -110,7 +110,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="app-ief-integration"></a>IEF-integráció
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Lekérdezési karakterlánc paraméter `domain_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
 | Lekérdezési karakterlánc paraméter `login_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
@@ -121,7 +121,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Alapértelmezett egyszeri bejelentkezés munkamenet-szolgáltatója](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Külső bejelentkezési munkamenet-szolgáltató](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
@@ -131,7 +131,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="security"></a>Biztonság
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Házirend-kulcsok – generál, manuális, feltöltés |  |  | X |  |
 | Szabályzat kulcsai – RSA/CERT, Secrets |  |  | X |  |
@@ -139,15 +139,15 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
-| Funkció | Fejlesztés | Előnézet | FE | Jegyzetek |
+| Szolgáltatás | Fejlesztés | Előnézet | FE | Jegyzetek |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal – IEF UX |  |  | X |  |
 | Szabályzat feltöltése |  |  | X |  |
 | [Felhasználói Application Insightsi naplók](troubleshoot-with-application-insights.md) |  | X |  | A fejlesztés során hibaelhárításra szolgál.  |
-| [Eseménynaplók Application Insights](application-insights-technical-profile.md) |  | X |  | Az élesben használt felhasználói folyamatok figyelésére szolgál. |
+| [Eseménynaplók Application Insights](analytics-with-application-insights.md) |  | X |  | Az élesben használt felhasználói folyamatok figyelésére szolgál. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Győződjön [meg arról, hogy elérhetők-e a Microsoft Graph műveletek Azure ad B2C](microsoft-graph-operations.md)
 - További információ [az egyéni házirendekről és a felhasználói folyamatokkal kapcsolatos különbségekről](custom-policy-overview.md).

@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968349"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219994"
 ---
 # <a name="ibm-workloads-on-azure"></a>IBM számítási feladatok az Azure-ban
 
 Számos, a z/OS-alapú IBM-es nagyszámítógépes számítási feladat replikálható az Azure-ban a funkciók elvesztése nélkül, és anélkül, hogy a felhasználók még a mögöttes rendszerek változásait is észrevették. Az Azure-beli alkalmazások újraüzemeltetése biztosítja a szükséges nagyvállalati funkciókat, valamint a felhő rugalmasságát, rendelkezésre állását és lehetséges költségmegtakarítását.
 
-Az Azure támogatja az integrációt a meglévő IBM mainframe-környezetekkel, lehetővé téve a applicates, hogy szükség esetén hibrid megoldásokat futtasson, és az idő múlásával áttelepítse azokat. Habár teljes mértékben újraírhatók a meglévő Nagyvállalati alkalmazások az Azure-hoz, sokkal gyakoribb, hogy áthelyezi őket. Az újraírással az áttelepítési projektek költségeit, összetettségét és időpontját adhatja meg. Az újraüzemeltetéssel a következőket teheti:
+Az Azure támogatja a meglévő IBM mainframe-környezetekkel való integrációt, lehetővé téve az alkalmazások átirányítását, és szükség esetén hibrid megoldások futtatását, valamint az idő múlásával történő Migrálás. Habár teljes mértékben újraírhatók a meglévő Nagyvállalati alkalmazások az Azure-hoz, sokkal gyakoribb, hogy áthelyezi őket. Az újraírással az áttelepítési projektek költségeit, összetettségét és időpontját adhatja meg. Az újraüzemeltetéssel a következőket teheti:
 
 - Alkalmazások áthelyezése felhőalapú emulátorba.
 
@@ -41,4 +41,4 @@ Egy kiterjedt partneri ökoszisztéma segíti az IBM mainframe rendszerek áttel
 - [Mainframe-áttelepítés: mítoszok és tények](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Az IBM&T fejlesztési és tesztelési környezet telepítése az Azure-ban](./install-ibm-z-environment.md)
 - [Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben](./demo.md)
-- [IBM DB2-pureScale az Azure-ban](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2-pureScale az Azure-ban](ibm-db2-purescale-azure.md)

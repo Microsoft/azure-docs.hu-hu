@@ -266,9 +266,6 @@
             - name: Szabályzat érvényesítése
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
-        - name: Használatelemzés
-          href: analytics-with-application-insights.md
-          displayName: 'application insights, app insights'
         - name: Referencia
           items:
             - name: TrustFrameworkPolicy
@@ -321,8 +318,6 @@
                   items:
                     - name: A technikai profilok ellenőrzésének ismertetése
                       href: validation-technical-profile.md
-                    - name: Application Insights
-                      href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
                     - name: Azure AD többtényezős hitelesítés
@@ -422,9 +417,6 @@
           displayName: 'migrate, b2clogin, owin'
     - name: Automation
       items:
-        - name: Azure Monitor
-          href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
         - name: Microsoft Graph API
           href: microsoft-graph-operations.md
           displayName: 'account, accounts, msgraph, ms graph, graph'
@@ -434,14 +426,23 @@
         - name: Szabályzatok kezelése a PowerShell-lel
           href: manage-custom-policies-powershell.md
           displayName: 'scripting, scripts, psh, custom policy'
-    - name: Naplók
-      href: view-audit-logs.md
     - name: Felhasználók kezelése – Azure Portal
       href: manage-users-portal.md
       displayName: 'create users, add users, delete users'
     - name: Biztonságos API Management API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Naplók és figyelés
+      items:
+        - name: Naplók
+          href: view-audit-logs.md
+          displayName: 'log, logs, logging, usage, events'
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events'
+        - name: Használatelemzés
+          href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
     - name: Megfelelőség
       items:
         - name: Felhasználói hozzáférés

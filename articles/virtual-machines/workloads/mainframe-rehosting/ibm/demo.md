@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968400"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219438"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben
 
@@ -57,7 +57,7 @@ A ADCD adathordozóhoz való hozzáférés szükséges. Az alábbi lépések fel
 
 4. Adja meg a rész leírását vagy a cikkszám értéket, majd kattintson a **Finder** elemre.
 
-5. Ha a theproduct név alapján szeretné megjeleníteni és megtekinteni, kattintson a betűrendes sorrend listára.
+5. Ha a termék neve alapján szeretné megjeleníteni és megtekinteni, kattintson a betűrendes sorrend listára.
 
 6. Válassza ki az **összes operációs** rendszert az **operációs rendszer mezőben**, és a **nyelvek mező** **összes nyelvét** . Ezután kattintson az **Indítás** gombra.
 
@@ -187,10 +187,10 @@ A lemezkép most már üzembe helyezhető, és készen áll arra, hogy csatlakoz
 
 Gratulálunk! Mostantól egy IBM mainframe-környezetet futtat az Azure-ban.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 - [Mainframe-áttelepítés: mítoszok és tények](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2-pureScale az Azure-ban](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2-pureScale az Azure-ban](ibm-db2-purescale-azure.md)
 - [Hibaelhárítás](../../../troubleshooting/index.yml)
 - [Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

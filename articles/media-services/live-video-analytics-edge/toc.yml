@@ -128,3 +128,9 @@
       href: production-readiness.md
     - name: Átláthatóság és a felelősségteljes MI alapelvei
       href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'

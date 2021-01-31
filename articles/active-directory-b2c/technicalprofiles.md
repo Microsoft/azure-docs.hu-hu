@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861859"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219672"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A technikai profil egy beépített mechanizmust biztosít a különböző típusú felekkel való kommunikációhoz Azure Active Directory B2C (Azure AD B2C) egyéni szabályzatának használatával. A technikai profilok a Azure AD B2C Bérlővel való kommunikációhoz, felhasználó létrehozásához vagy felhasználói profil beolvasásához használhatók. A technikai profil önérvényesíthető úgy, hogy lehetővé tegye a felhasználóval való interakciót. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, majd jelenítse meg a regisztrációs lapot vagy a jelszó-visszaállítási lapot.
+A technikai profil olyan keretrendszert biztosít, amely beépített mechanizmussal rendelkezik a különböző típusú felekkel való kommunikációhoz. A technikai profilok a Azure AD B2C Bérlővel való kommunikációhoz, felhasználó létrehozásához vagy felhasználói profil beolvasásához használhatók. A technikai profil önérvényesíthető úgy, hogy lehetővé tegye a felhasználóval való interakciót. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, majd jelenítse meg a regisztrációs lapot vagy a jelszó-visszaállítási lapot.
 
 ## <a name="type-of-technical-profiles"></a>Technikai profilok típusa
 
 A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 
-- [Application Insights](application-insights-technical-profile.md) – az Event-adatok küldése a [Application Insightsnak](../azure-monitor/app/app-insights-overview.md).
+- [Application Insights](analytics-with-application-insights.md) – az Event-adatok küldése a [Application Insightsnak](../azure-monitor/app/app-insights-overview.md).
 - [Azure Active Directory](active-directory-technical-profile.md) – támogatást nyújt a Azure Active Directory B2C felhasználói felügyelethez.
 - [Azure ad multi-Factor Authentication](multi-factor-auth-technical-profile.md) – támogatást nyújt a telefonszámok ellenőrzéséhez az azure ad multi-Factor Authentication (MFA) használatával. 
 - [Jogcím-átalakítás](claims-transformation-technical-profile.md) – hívja meg a kimeneti jogcímek átalakítását a jogcímek értékeinek módosításához, a jogcímek érvényesítéséhez, illetve a kimeneti jogcímek alapértelmezett értékének megadásához.
@@ -47,7 +47,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 
 ## <a name="technical-profile-flow"></a>Technikai profil folyamata
 
-A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemeneti jogcímeket, a jogcímek átalakítását és a konfigurált féllel folytatott kommunikációt, például egy identitás-szolgáltatót, REST API vagy Azure AD címtárszolgáltatás-szolgáltatást kell küldenie. A folyamat befejezése után a technikai profil visszaadja a kimeneti jogcímeket, és a kimeneti jogcímek átalakítását is futtathatja. A következő ábra a technikai profilban hivatkozott átalakítások és leképezések feldolgozását mutatja be. Függetlenül attól, hogy a technikai profil milyen fél által kommunikál, a jogcímek átalakításának végrehajtása után a technikai profilból származó kimeneti jogcímeket a rendszer azonnal a jogcím-táskában tárolja.
+A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. Először olvassa el a bemeneti jogcímeket, futtassa a jogcím-átalakítást. Ezután kommunikáljon a konfigurált féllel, például egy identitás-szolgáltatóval, REST API vagy az Azure AD Directory Services szolgáltatással. A folyamat befejezése után a technikai profil visszaadja a kimeneti jogcímeket, és a kimeneti jogcímek átalakítását is futtathatja. A következő ábra a technikai profilban hivatkozott átalakítások és leképezések feldolgozását mutatja be. A jogcím-átalakítás végrehajtása után a rendszer azonnal tárolja a kimeneti jogcímeket a jogcímek táskájában. Függetlenül attól, hogy a technikai profil milyen fél számára működik együtt.
 
 ![A műszaki profil folyamatát ábrázoló diagram](./media/technical-profiles/technical-profile-flow.png)
 
@@ -64,7 +64,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 1. **Kimeneti jogcím-átalakítások** – a technikai profil befejezése után Azure ad B2C futtatja a kimeneti [jogcímek átalakítását](claimstransformations.md). 
 1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil adatai a munkamenetre maradnak, az [egyszeri bejelentkezés munkamenet-kezelésének](custom-policy-reference-sso.md)használatával.
 
-A **TechnicalProfiles** elem a jogcím-szolgáltató által támogatott technikai profilok készletét tartalmazza. Minden jogcím-szolgáltatónak rendelkeznie kell egy vagy több olyan technikai profillal, amely meghatározza a végpontokat és a jogcím-szolgáltatóval való kommunikációhoz szükséges protokollokat. A jogcím-szolgáltató több technikai profillal is rendelkezhet.
+A **TechnicalProfiles** elem a jogcím-szolgáltató által támogatott technikai profilok készletét tartalmazza. Minden jogcím-szolgáltatónak rendelkeznie kell legalább egy technikai profillal. A technikai profil határozza meg a végpontokat és a jogcím-szolgáltatóval való kommunikációhoz szükséges protokollokat. A jogcím-szolgáltató több technikai profillal is rendelkezhet.
 
 ```xml
 <ClaimsProvider>
@@ -86,24 +86,24 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 |---------|---------|---------|
-| Id | Igen | A technikai profil egyedi azonosítója. A technikai profil hivatkozhat erre az azonosítóra a házirend fájljának más elemeiről. Például: **OrchestrationSteps** és **ValidationTechnicalProfile**. |
+| Id | Yes | A technikai profil egyedi azonosítója. A technikai profil hivatkozhat erre az azonosítóra a házirend fájljának más elemeiről. Például: **OrchestrationSteps** és **ValidationTechnicalProfile**. |
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Tartomány | 0:1 | A technikai profil tartományneve. Ha például a technikai profil megadja a Facebook-identitás szolgáltatóját, a tartománynév Facebook.com. |
 | DisplayName | 1:1 | A technikai profil megjelenítendő neve. |
-| Leírás | 0:1 | A technikai profil leírása. |
+| Description | 0:1 | A technikai profil leírása. |
 | Protokoll | 1:1 | A másik féllel folytatott kommunikációhoz használt protokoll. |
-| Metaadatok | 0:1 | Kulcs/érték párok gyűjteménye, amelyeket a protokoll használ a végponttal való kommunikációhoz a tranzakció során. |
+| Metaadatok | 0:1 | Kulcs/érték gyűjtemény, amely a technikai profil viselkedését vezérli. |
 | InputTokenFormat | 0:1 | A bemeneti jogkivonat formátuma. Lehetséges értékek: `JSON` ,,, `JWT` `SAML11` vagy `SAML2` . Az `JWT` érték az IETF-specifikációnak megfelelő JSON web tokent jelöl. Az `SAML11` érték az SAML 1,1 biztonsági jogkivonatot jelöli, mint az Oasis-specifikáció.  Az `SAML2` érték az SAML 2,0 biztonsági jogkivonatot jelöli, mint az Oasis-specifikáció. |
 | OutputTokenFormat | 0:1 | A kimeneti token formátuma. Lehetséges értékek: `JSON` ,,, `JWT` `SAML11` vagy `SAML2` . |
 | CryptographicKeys | 0:1 | A technikai profilban használt titkosítási kulcsok listája. |
 | InputClaimsTransformations | 0:1 | A jogcímek átalakítására korábban meghatározott hivatkozások listája, amelyeket végre kell hajtani ahhoz, hogy a jogcímeket a jogcím-szolgáltató vagy a függő entitás megkapja. |
 | Szabályzattípushoz | 0:1 | A korábban meghatározott, a technikai profilban bemenetként használt jogcím-típusokra mutató hivatkozások listája. |
-| PersistedClaims | 0:1 | A korábban meghatározott, a jogcím-szolgáltató által a technikai profilhoz kapcsolódó jogcímek számára megőrzött hivatkozások listája. |
-| DisplayClaims | 0:1 | A korábban meghatározott, a jogcím-szolgáltató által a saját igényeknek megfelelő [technikai profilhoz](self-asserted-technical-profile.md)kapcsolódó jogcímek által bemutatott típusokra mutató hivatkozásokat tartalmazó lista. A DisplayClaims szolgáltatás jelenleg **előzetes** verzióban érhető el. |
+| PersistedClaims | 0:1 | Azoknak a korábban meghatározott hivatkozásoknak a listája, amelyeket a technikai profil megtart a jogcímek típusaihoz. |
+| DisplayClaims | 0:1 | A korábban meghatározott, az [önérvényesített technikai profil](self-asserted-technical-profile.md)által megjelenített jogcím-típusokra mutató hivatkozásokat tartalmazó lista. A DisplayClaims szolgáltatás jelenleg **előzetes** verzióban érhető el. |
 | OutputClaims | 0:1 | A korábban meghatározott, a technikai profilban kimenetként használt jogcím-típusokra mutató hivatkozások listája. |
 | OutputClaimsTransformations | 0:1 | A korábban meghatározott, a jogcím-átalakításokra mutató hivatkozásokat tartalmazó lista, amelyet a jogcím-szolgáltatótól érkező jogcímek fogadása után kell végrehajtani. |
 | ValidationTechnicalProfiles | 0: n | Azon egyéb műszaki profilokra mutató hivatkozások listája, amelyeket a technikai profil az ellenőrzési célokra használ. További információ: [érvényesítési technikai profil](validation-technical-profile.md)|
@@ -120,16 +120,16 @@ A **protokoll** meghatározza a másik féllel folytatott kommunikációhoz hasz
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` vagy `None` . |
-| Kezelő | Nem | Ha a protokoll neve értékre van állítva `Proprietary` , adja meg annak a szerelvénynek a teljesen minősített nevét, amelyet a Azure ad B2C használ a protokollkezelő meghatározásához. |
+| Név | Yes | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` vagy `None` . |
+| Kezelő | No | Ha a protokoll neve értékre van állítva `Proprietary` , adja meg annak a szerelvénynek a nevét, amelyet a Azure ad B2C használ a protokollkezelő meghatározásához. |
 
 ## <a name="metadata"></a>Metaadatok
 
 A **metaadat** elem egy adott protokollhoz tartozó konfigurációs beállításokat tartalmazza. A támogatott metaadatok listáját a [technikai profil](#type-of-technical-profiles) megfelelő specifikációja tartalmazza. A **metaadat** -elemek a következő elemet tartalmazzák:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
-| Elem | 0: n | A technikai profilhoz kapcsolódó metaadatok. Az egyes technikai profilok különböző metaadat-elemekből állnak. További információt a technikai profilok típusai című szakaszban talál. |
+| Elem | 0: n | A technikai profilhoz kapcsolódó metaadatok. Az egyes technikai profilok különböző metaadat-elemekből állnak. További információ: technikai profilok típusai szakasz.  |
 
 ### <a name="item"></a>Elem
 
@@ -137,7 +137,7 @@ A **metadata** elem **Item** eleme a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Kulcs | Igen | A metaadat-kulcs. A metaadat-elemek listájának megtekintéséhez tekintse meg az egyes [műszaki profilok típusait](#type-of-technical-profiles). |
+| Kulcs | Yes | A metaadat-kulcs. A metaadat-elemek listájának megtekintéséhez tekintse meg az egyes [műszaki profilok típusait](#type-of-technical-profiles). |
 
 Az alábbi példa a [OAuth2-technikai profilhoz](oauth2-technical-profile.md#metadata)kapcsolódó metaadatok használatát szemlélteti.
 
@@ -173,7 +173,7 @@ Az alábbi példa a [REST API technikai profilhoz](restful-technical-profile.md#
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
-A Azure AD B2C a titkokat és a tanúsítványokat [házirend-kulcsok](policy-keys-overview.md) formájában tárolja, hogy megbízhatóan hozzon létre megbízhatósági kapcsolatot az általa integrált szolgáltatásokkal. A végrehajtás alatt álló technikai profilban Azure AD B2C lekéri a titkosítási kulcsokat Azure AD B2C szabályzat kulcsaiból, majd a kulcsokat a megbízhatóság létrehozása, a titkosítás vagy a jogkivonat aláírása alapján használja. Ezek a megbízhatósági kapcsolatok a következőkből állnak:
+Ha megbízhatósági kapcsolatot szeretne létesíteni a szolgáltatással együtt, Azure AD B2C a titkokat és tanúsítványokat a [szabályzat kulcsainak](policy-keys-overview.md)formájában tárolja. A-t végrehajtó technikai profil során Azure AD B2C lekéri a titkosítási kulcsokat Azure AD B2C szabályzat kulcsaiból. Ezután a kulcsok megbízhatóságát, titkosítását vagy aláírását használja. Ezek a megbízhatósági kapcsolatok a következőkből állnak:
 
 - Összevonás a [OAuth1](oauth1-technical-profile.md#cryptographic-keys), a [OAuth2](oauth2-technical-profile.md#cryptographic-keys)és az [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) Identity Providers használatával
 - A [REST API-szolgáltatásokkal](secure-rest-api.md) való csatlakozás biztonságossá tétele
@@ -181,7 +181,7 @@ A Azure AD B2C a titkokat és a tanúsítványokat [házirend-kulcsok](policy-ke
 
 A **CryptographicKeys** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Kulcs | 1: n | A technikai profilban használt titkosítási kulcs. |
 
@@ -191,18 +191,18 @@ A **Key** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Nem | Egy adott kulcspár egyedi azonosítója, amelyet a rendszer a házirend fájljának más elemeiből hivatkozik. |
-| StorageReferenceId | Igen | A termékazonosító más elemeitől hivatkozott tárolási kulcstároló-tárolók egyike. |
+| Id | No | Egy adott kulcspár egyedi azonosítója, amelyet a rendszer a házirend fájljának más elemeiből hivatkozik. |
+| StorageReferenceId | Yes | A termékazonosító más elemeitől hivatkozott tárolási kulcstároló-tárolók egyike. |
 
 ## <a name="input-claims-transformations"></a>Bemeneti jogcím-átalakítások
 
 A **InputClaimsTransformations** elem olyan bemeneti jogcím-átalakítási elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosításához vagy újak létrehozásához használatosak. 
 
-A jogcím-átalakítási gyűjtemény korábbi jogcím-átalakításának kimeneti jogcímei a következő bemeneti jogcím-átalakítási jogcímek lehetnek, ami lehetővé teszi, hogy a jogcímek átalakításának sorozatot adja meg egymástól függően.
+A jogcím-átalakítási gyűjtemény korábbi jogcím-átalakításának kimeneti jogcímei a következő bemeneti jogcím-átalakításhoz tartozó bemeneti jogcímek lehetnek, amelyek lehetővé teszik, hogy a jogcímek átalakításának folyamata egymástól függ.
 
 A **InputClaimsTransformations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Egy jogcím-átalakítás azonosítója, amelyet el kell végezni, mielőtt a rendszer a jogcímeket elküldi a jogcím-szolgáltatónak vagy a függő entitásnak. A jogcímek átalakításával módosíthatók a meglévő ClaimsSchema-jogcímek, vagy újak is létrehozhatók. |
 
@@ -212,7 +212,7 @@ A **InputClaimsTransformation** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
+| ReferenceId | Yes | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
 
 A következő műszaki profilok hivatkoznak a **CreateOtherMailsFromEmail** jogcím-átalakításra. A jogcím-átalakítás hozzáadja a jogcím értékét `email` a `otherMails` gyűjteményhez, mielőtt megőrzi az adattárat.
 
@@ -241,7 +241,7 @@ A **szabályzattípushoz** jogcímeket vesz fel a jogcímek táskából, és a t
 
 A **szabályzattípushoz** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -251,13 +251,13 @@ A **InputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DefaultValue | Nem | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
-| PartnerClaimType | Nem | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
+| ClaimTypeReferenceId | Yes | Jogcím típusának azonosítója A jogcím már definiálva van a jogcímek sémája szakaszban a házirend fájljában vagy a szülő házirend fájljában. |
+| DefaultValue | No | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
+| PartnerClaimType | No | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
 
 ## <a name="display-claims"></a>Jogcímek megjelenítése
 
-A **DisplayClaims** elem tartalmazza azon jogcímek listáját, [amelyeket a](self-asserted-technical-profile.md) rendszer a felhasználótól származó adatok gyűjtésére szolgáló képernyőn fog megjeleníteni. A megjelenítési jogcímek gyűjteménybe belefoglalhatja a [jogcím típusára](claimsschema.md)vagy egy Ön által létrehozott [DisplayControl](display-controls.md) mutató hivatkozást is. 
+A **DisplayClaims** elem tartalmazza a képernyőn megjeleníteni kívánt jogcímek listáját, hogy adatokat gyűjtsön a felhasználótól. A megjelenítési jogcímek gyűjteménybe belefoglalhatja a [jogcím típusára](claimsschema.md)vagy egy Ön által létrehozott [DisplayControl](display-controls.md) mutató hivatkozást is. 
 
 - A jogcím típusa a képernyőn megjelenő jogcímre mutató hivatkozás. 
   - Ha szeretné kényszeríteni a felhasználót, hogy adjon meg egy értéket egy adott jogcím számára, állítsa a **DisplayClaim** elem **kötelező** attribútumát a következőre: `true` .
@@ -269,7 +269,7 @@ A **DisplayClaims** elemeinek sorrendje határozza meg, hogy a Azure ad B2C mily
 
 A **DisplayClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -279,9 +279,9 @@ A **DisplayClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Nem | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DisplayControlReferenceId | Nem | A ClaimsSchema szakaszban már definiált [megjelenítési vezérlő](display-controls.md) azonosítója a házirend fájljában vagy a szülő házirend fájljában. |
-| Kötelező | Nem | Azt jelzi, hogy szükséges-e a megjelenítési jogcím. |
+| ClaimTypeReferenceId | No | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DisplayControlReferenceId | No | A ClaimsSchema szakaszban már definiált [megjelenítési vezérlő](display-controls.md) azonosítója a házirend fájljában vagy a szülő házirend fájljában. |
+| Kötelező | No | Azt jelzi, hogy szükséges-e a megjelenítési jogcím. |
 
 Az alábbi példa azt szemlélteti, hogyan használhatók a megjelenítési jogcímek és a vezérlőelemek a saját maga által vezérelt technikai profilokban.
 
@@ -315,7 +315,7 @@ A jogcím neve az [Azure ad attribútum](user-profile-attributes.md) neve, kivé
 
 A **PersistedClaims** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | A megmaradó jogcím típusa. |
 
@@ -325,9 +325,9 @@ A **PersistedClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DefaultValue | Nem | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
-| PartnerClaimType | Nem | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
+| ClaimTypeReferenceId | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DefaultValue | No | A jogcím létrehozásához használandó alapértelmezett érték, ha a jogcím nem létezik. |
+| PartnerClaimType | No | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
 
 A következő példában a **HRE-UserWriteUsingLogonEmail** technikai profil vagy az [alapszintű csomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts), amely új helyi fiókot hoz létre, a következő jogcímeket őrzi meg:
 
@@ -346,7 +346,7 @@ A következő példában a **HRE-UserWriteUsingLogonEmail** technikai profil vag
 
 A **OutputClaims** a technikai profil befejezése után visszaadott jogcímek gyűjteménye. Ezeket a jogcímeket a következő előkészítési lépésekben vagy a kimeneti jogcímek átalakításában használhatja. A **OutputClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1: n | A várt kimeneti jogcím típusa. |
 
@@ -356,20 +356,20 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
-| DefaultValue | Nem | A jogcím létrehozásához használt alapértelmezett érték, ha a ClaimTypeReferenceId által jelzett jogcím nem létezik, így az eredményül kapott jogcímet a technikai profil InputClaim használhatja. |
-|AlwaysUseDefaultValue |Nem |Az alapértelmezett érték használatának kényszerítése.  |
-| PartnerClaimType | Nem | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha a PartnerClaimType attribútum nincs megadva, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típusra rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
+| ClaimTypeReferenceId | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájl vagy a szülő házirend fájljában. |
+| DefaultValue | No | A jogcím létrehozásához használandó alapértelmezett érték, ha a jogcím nem létezik. |
+|AlwaysUseDefaultValue |No |Az alapértelmezett érték használatának kényszerítése.  |
+| PartnerClaimType | No | Azon külső partner jogcím-típusának azonosítója, amelyhez a megadott házirend-jogcím típusa le van képezve. Ha nincs megadva a partner jogcím Type attribútuma, a rendszer a megadott házirend-jogcím típusát az azonos nevű partner jogcím-típushoz rendeli. Akkor használja ezt a tulajdonságot, ha a jogcím típusának neve eltér a másik féltől. Például az első jogcím neve "givenName", míg a partner "first_name" nevű jogcímet használ. |
 
 ## <a name="output-claims-transformations"></a>Kimeneti jogcímek átalakítása
 
-A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak. A végrehajtás után a kimeneti jogcímek vissza lesznek helyezve a jogcím-táskába. Ezeket a jogcímeket használhatja a következő előkészítési lépésekben.
+A **OutputClaimsTransformations** elem **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja. A kimeneti jogcímek átalakításával módosíthatók a kimeneti jogcímek, vagy újakat hozhatnak fel. A végrehajtás után a kimeneti jogcímek vissza lesznek helyezve a jogcím-táskába. Ezeket a jogcímeket használhatja a következő előkészítési lépésekben.
 
 A jogcím-átalakítási gyűjtemény korábbi jogcím-átalakításának kimeneti jogcímei a következő bemeneti jogcím-átalakítási jogcímek lehetnek, ami lehetővé teszi, hogy a jogcímek átalakításának sorozatot adja meg egymástól függően.
 
 A **OutputClaimsTransformations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | A jogcímek átalakításának a jogcím-szolgáltatóba vagy a függő entitásba való elküldése előtt végrehajtandó azonosítók. A jogcímek átalakításával módosíthatók a meglévő ClaimsSchema-jogcímek, vagy újak is létrehozhatók. |
 
@@ -379,7 +379,7 @@ A **OutputClaimsTransformation** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
+| ReferenceId | Yes | Egy jogcímek átalakításának azonosítója, amely már definiálva van a házirend fájljában vagy a szülő házirend fájljában. |
 
 A következő műszaki profil a AssertAccountEnabledIsTrue jogcím-átalakításra hivatkozik annak kiértékeléséhez, hogy a fiók engedélyezve van-e, vagy sem a `accountEnabled` jogcímnek a címtárból való elolvasása után    
 
@@ -404,7 +404,7 @@ A következő műszaki profil a AssertAccountEnabledIsTrue jogcím-átalakítás
 
 ## <a name="validation-technical-profiles"></a>Ellenőrzési technikai profilok
 
-Az érvényesítési technikai profil egy [önérvényesített technikai profilban](self-asserted-technical-profile.md#validation-technical-profiles)található hivatkozó kimeneti jogcímek egy részének vagy egészének ellenőrzésére szolgál. Az érvényesítési technikai profil bármely protokoll, például [Azure Active Directory](active-directory-technical-profile.md) vagy [REST API](restful-technical-profile.md)általános műszaki profilja. Az érvényesítési technikai profil visszaadja a kimeneti jogcímeket, vagy visszaadja a hibakódot. A hibaüzenet a felhasználó képernyőjén jelenik meg, így a felhasználó újra próbálkozik.
+Az érvényesítési technikai profil a kimeneti jogcímek érvényesítésére szolgál egy [önérvényesített technikai profilban](self-asserted-technical-profile.md#validation-technical-profiles). Az érvényesítési technikai profil bármely protokoll, például [Azure Active Directory](active-directory-technical-profile.md) vagy [REST API](restful-technical-profile.md)általános műszaki profilja. Az érvényesítési technikai profil visszaadja a kimeneti jogcímeket, vagy visszaadja a hibakódot. A hibaüzenet a felhasználó képernyőjén jelenik meg, így a felhasználó újra próbálkozik.
 
 Az alábbi ábra azt szemlélteti, hogyan használja a Azure AD B2C egy érvényesítési technikai profilt a felhasználói hitelesítő adatok ellenőrzéséhez
 
@@ -412,7 +412,7 @@ Az alábbi ábra azt szemlélteti, hogyan használja a Azure AD B2C egy érvény
 
 A **ValidationTechnicalProfiles** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A felhasználható műszaki profilok azonosítói a hivatkozó technikai profil kimeneti jogcímeinek némelyikét vagy mindegyikét ellenőrzik. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó technikai profil kimeneti jogcímeiben. |
 
@@ -422,7 +422,7 @@ A **ValidationTechnicalProfile** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
+| ReferenceId | Yes | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
 
 ## <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -430,17 +430,19 @@ A **SubjectNamingInfo** definiálja a jogkivonatokban használt tulajdonos nevé
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ClaimType | Igen | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájljában. |
+| ClaimType | Yes | Egy jogcím-típus azonosítója már definiálva van a ClaimsSchema szakaszban a házirend fájljában. |
 
 ## <a name="include-technical-profile"></a>Technikai profil belefoglalása
 
-A műszaki profilok tartalmazhatnak egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához. A **IncludeTechnicalProfile** elem arra a közös műszaki profilra hivatkozik, amelyből a technikai profil származik. A házirend-elemek redundancia és összetettsége csökkentése érdekében használja a befoglalást, ha több technikai profillal rendelkezik, amelyek osztoznak az alapvető elemeken. Használjon közös technikai profilt a közös konfigurációval együtt, valamint olyan konkrét feladattal kapcsolatos technikai profilokat, amelyek tartalmazzák a közös technikai profilt. Tegyük fel például, hogy rendelkezik egy [REST API technikai profillal](restful-technical-profile.md) egyetlen végponttal, ahol különböző jogcímeket kell elküldenie különböző forgatókönyvekhez. Hozzon létre egy közös technikai profilt a megosztott funkciókkal, például a REST API végpont URI-JÁT, a metaadatokat, a hitelesítési típust és a titkosítási kulcsokat. Ezután hozzon létre konkrét, a közös technikai profilt tartalmazó technikai profilokat, adja hozzá a bemeneti jogcímeket, a kimeneti jogcímeket, vagy írja felül az adott technikai profilhoz tartozó REST API végponti URI-t.
+A műszaki profilok tartalmazhatnak egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához. A **IncludeTechnicalProfile** elem arra a közös műszaki profilra hivatkozik, amelyből a technikai profil származik. A házirend-elemek redundancia és összetettsége csökkentése érdekében használja a befoglalást, ha több technikai profillal rendelkezik, amelyek osztoznak az alapvető elemeken. Használjon közös technikai profilt a közös konfigurációval együtt, valamint olyan konkrét feladattal kapcsolatos technikai profilokat, amelyek tartalmazzák a közös technikai profilt. 
+
+Tegyük fel, hogy van egy [REST API technikai profilja](restful-technical-profile.md) egyetlen végponttal, ahol különféle jogcímeket kell elküldenie különböző forgatókönyvekhez. Hozzon létre egy közös technikai profilt a megosztott funkciókkal, például a REST API végpont URI-JÁT, a metaadatokat, a hitelesítési típust és a titkosítási kulcsokat. Hozzon létre konkrét feladattal kapcsolatos technikai profilokat, amelyek tartalmazzák a közös technikai profilt. Ezután adja hozzá a bemeneti jogcímeket, a kimeneti jogcímeket, vagy írja felül az adott technikai profilhoz tartozó REST API végponti URI-t.
 
 A **IncludeTechnicalProfile** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend fájljában vagy a szülő házirend fájljában már definiált technikai profil azonosítója. |
+| ReferenceId | Yes | A házirend fájljában vagy a szülő házirend fájljában már definiált technikai profil azonosítója. |
 
 
 Az alábbi példa a felvétel használatát szemlélteti:
@@ -549,7 +551,7 @@ A **UseTechnicalProfileForSessionManagement** elem hivatkozása az [egyszeri bej
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
+| ReferenceId | Yes | A házirend-fájlban vagy a szülő-házirend fájlban már definiált technikai profil azonosítója. |
 
 ## <a name="enabled-for-user-journeys"></a>Felhasználói utazások engedélyezése
 
@@ -561,7 +563,10 @@ A felhasználói utazás [ClaimsProviderSelections](userjourneys.md#claimsprovid
 - **OnItemExistenceInStringCollectionClaim**, csak akkor hajtható végre, ha egy elem létezik egy karakterlánc-gyűjtési jogcímben.
 - A **OnItemAbsenceInStringCollectionClaim** csak akkor hajtható végre, ha egy objektum nem létezik karakterlánc-gyűjteményi jogcímben.
 
-A **OnClaimsExistence**, a **OnItemExistenceInStringCollectionClaim** vagy a **OnItemAbsenceInStringCollectionClaim** használatával a következő metaadatokat kell megadnia: a **ClaimTypeOnWhichToEnable** meghatározza a jogcímek kiértékelésének típusát, a **ClaimValueOnWhichToEnable** pedig az összehasonlítani kívánt értéket adja meg.
+A **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** vagy **OnItemAbsenceInStringCollectionClaim** használatával a következő metaadatokat kell megadnia: 
+
+- **ClaimTypeOnWhichToEnable** – meghatározza a jogcím típusát, amelyet ki kell értékelni.
+- **ClaimValueOnWhichToEnable** – az összehasonlítandó értéket adja meg.
 
 A következő technikai profilt csak akkor hajtja végre a rendszer, ha a **identityProviders** karakterlánc-gyűjtemény a következők értékét tartalmazza `facebook.com` :
 

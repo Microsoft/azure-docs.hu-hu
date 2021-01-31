@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d24192cb2f648a20a8f776b92f765bc6055ecf71
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 5d8890198308379d837f3b486b4d0efc987249e3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807274"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220404"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[A Kubernetes szolgáltatás (ak) Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |A (z) Azure Policy bővítmény a Kubernetes szolgáltatáshoz (ak) kibővíti a forgalomirányító v3-t, egy, az Open Policy Agent (OPA) beléptetési vezérlőt, amely központosított, konzisztens módon alkalmazható a fürtökön. |Naplózás, letiltva |[1.0.1 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
+|[A Kubernetes szolgáltatás (ak) Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |A (z) Azure Policy bővítmény a Kubernetes szolgáltatáshoz (ak) kibővíti a forgalomirányító v3-t, egy, az Open Policy Agent (OPA) beléptetési vezérlőt, amely központosított, konzisztens módon alkalmazható a fürtökön. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Az Azure Kubernetes Service-fürtökben az operációs rendszer és az adatlemezek titkosítása az ügyfél által felügyelt kulcsok használatával történik](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Az operációs rendszer és az adatlemezek az ügyfél által felügyelt kulcsokkal történő titkosítása nagyobb mértékű szabályozást és nagyobb rugalmasságot biztosít a kulcskezelő szolgáltatásban. Ez egy gyakori követelmény számos szabályozási és iparági megfelelőségi szabványban. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |
 |[Azure Policy bővítmény üzembe helyezése az Azure Kubernetes Service-fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Az Azure Kubernetes Service (ak) fürtök megfelelőségi állapotának kezeléséhez és jelentéséhez használja a Azure Policy bővítményt. További információ: [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[GitOps üzembe helyezése a Kubernetes-fürtön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Ez a szabályzat egy "sourceControlConfiguration" nevű Kubernetes-fürtöket helyez üzembe, így biztosítva, hogy a fürtök a definiált git-tárházból kapják meg az igazság forrását. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |

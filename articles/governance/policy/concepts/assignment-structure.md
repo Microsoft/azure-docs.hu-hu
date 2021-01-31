@@ -1,14 +1,14 @@
 ---
 title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
-ms.date: 09/22/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904072"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219566"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -22,6 +22,7 @@ A JSON használatával szabályzat-hozzárendelést hozhat létre. A szabályzat
 - kényszerítési mód
 - kizárt hatókörök
 - házirend-definíció
+- nem megfelelőségi üzenetek
 - parameters
 
 Például a következő JSON egy szabályzat-hozzárendelést mutat be _DoNotEnforce_ módban dinamikus paraméterekkel:
@@ -37,6 +38,11 @@ Például a következő JSON egy szabályzat-hozzárendelést mutat be _DoNotEnf
         "enforcementMode": "DoNotEnforce",
         "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "nonComplianceMessages": [
+            {
+                "message": "Resource names must start with 'DeptA' and end with '-LC'."
+            }
+        ],
         "parameters": {
             "prefix": {
                 "value": "DeptA"
@@ -61,16 +67,16 @@ A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, 
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Description |
 |-|-|-|-|-|-|
-|Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
+|Engedélyezve |Alapértelmezett |sztring |Igen |Yes |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
 |Disabled (Letiltva) |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
 
 Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.
 
 ## <a name="excluded-scopes"></a>Kizárt hatókörök
 
-A hozzárendelés **hatóköre** tartalmazza az összes gyermek erőforrás-tárolót és gyermek erőforrást. Ha a gyermek erőforrás-tároló vagy a gyermek erőforrás nem rendelkezik a definíció alkalmazásával, akkor a **notScopes**beállításával mindegyik _kizárható_ a kiértékelésből. Ez a tulajdonság egy tömb, amely lehetővé teszi egy vagy több erőforrás-tároló vagy erőforrás kiszámítását a kiértékelésből. a **notScopes** a kezdeti hozzárendelés létrehozása után adhatók hozzá vagy frissíthetők.
+A hozzárendelés **hatóköre** tartalmazza az összes gyermek erőforrás-tárolót és gyermek erőforrást. Ha a gyermek erőforrás-tároló vagy a gyermek erőforrás nem rendelkezik a definíció alkalmazásával, akkor a **notScopes** beállításával mindegyik _kizárható_ a kiértékelésből. Ez a tulajdonság egy tömb, amely lehetővé teszi egy vagy több erőforrás-tároló vagy erőforrás kiszámítását a kiértékelésből. a **notScopes** a kezdeti hozzárendelés létrehozása után adhatók hozzá vagy frissíthetők.
 
 > [!NOTE]
 > A _kizárt_ erőforrások nem azonosak a _mentesített_ erőforrásokkal. További információ: [a hatókör megismerése Azure Policy](./scope.md).
@@ -79,6 +85,32 @@ A hozzárendelés **hatóköre** tartalmazza az összes gyermek erőforrás-tár
 
 Ebben a mezőben egy házirend-definíció vagy egy kezdeményezési definíció teljes elérési útjának kell szerepelnie.
 `policyDefinitionId` karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./initiative-definition-structure.md) használjon.
+
+## <a name="non-compliance-messages"></a>Nem megfelelőségi üzenetek
+
+Ha olyan egyéni üzenetet szeretne beállítani, amely leírja, hogy egy erőforrás miért nem felel meg a szabályzatnak vagy a kezdeményezési definíciónak, állítsa be `nonComplianceMessages` a hozzárendelés definíciójában. Ez a csomópont a bejegyzések tömbje `message` . Ez az egyéni üzenet a nem megfelelőségre vonatkozó alapértelmezett hibaüzeneten felül nem kötelező.
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    }
+]
+```
+
+Ha a hozzárendelés egy kezdeményezésre van beállítva, különböző üzenetek konfigurálhatók a kezdeményezés minden egyes házirend-definíciójában. Az üzenetek a `policyDefinitionReferenceId` kezdeményezési definícióban konfigurált értéket használják. Részletekért lásd: [tulajdonság-definíciók tulajdonságai](./initiative-definition-structure.md#policy-definition-properties).
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    },
+    {
+        "message": "Message for just this policy definition by reference ID",
+        "policyDefinitionReferenceId": "10420126870854049575"
+    }
+]
+```
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -95,7 +127,7 @@ A szabályzat-hozzárendelés ezen szegmense megadja a szabályzat- [definíció
 }
 ```
 
-Ebben a példában a házirend-definícióban korábban definiált paraméterek a `prefix` és a `suffix` . Ez az adott szabályzat `prefix` -hozzárendelés a **depta** és `suffix` a **-LC**értékre van szabva. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
+Ebben a példában a házirend-definícióban korábban definiált paraméterek a `prefix` és a `suffix` . Ez az adott szabályzat `prefix` -hozzárendelés a **depta** és `suffix` a **-LC** értékre van szabva. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
 
 ## <a name="next-steps"></a>Következő lépések
 

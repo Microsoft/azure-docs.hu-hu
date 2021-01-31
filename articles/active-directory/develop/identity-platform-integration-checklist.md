@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755264"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219960"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -68,7 +68,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 ![](./media/active-directory-integration-checklist/checkbox-two.svg)a jelölőnégyzet modern hitelesítési megoldásokat használ (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) a felhasználók biztonságos bejelentkezéséhez.
 
-![](./media/active-directory-integration-checklist/checkbox-two.svg)a jelölőnégyzet nem közvetlenül olyan protokollok ellen, mint a OAuth 2,0 és az Open id. Ehelyett használja a [Microsoft hitelesítési függvénytárát (MSAL)](msal-overview.md). A MSAL-kódtárak biztonságos módon csomagolják a biztonsági protokollokat egy könnyen használható könyvtárban, és beépített támogatást biztosít a [feltételes hozzáférési](../conditional-access/overview.md) forgatókönyvek, az eszközre érvényes [egyszeri bejelentkezés (SSO)](../manage-apps/what-is-single-sign-on.md)és a beépített jogkivonat-gyorsítótárazás támogatásához. További információkért tekintse meg a Microsoft által támogatott [ügyféloldali kódtárak](reference-v2-libraries.md#microsoft-supported-client-libraries) és a [köztes kódtárak](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) listáját, valamint a [kompatibilis, harmadik féltől származó ügyféloldali kódtárak](reference-v2-libraries.md#compatible-client-libraries)listáját.<br/><br/>Ha meg kell adnia a hitelesítési protokollok kódját, olyan módszertant kell követnie, mint például a [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Ügyeljen arra, hogy az egyes protokollokra vonatkozó szabványok részletes leírásában a biztonsági szempontokat kell figyelembe venni.
+![](./media/active-directory-integration-checklist/checkbox-two.svg)a jelölőnégyzet nem közvetlenül olyan protokollok ellen, mint a OAuth 2,0 és az Open id. Ehelyett használja a [Microsoft hitelesítési függvénytárát (MSAL)](msal-overview.md). A MSAL-kódtárak biztonságos módon csomagolják a biztonsági protokollokat egy könnyen használható könyvtárban, és beépített támogatást biztosít a [feltételes hozzáférési](../conditional-access/overview.md) forgatókönyvek, az eszközre érvényes [egyszeri bejelentkezés (SSO)](../manage-apps/what-is-single-sign-on.md)és a beépített jogkivonat-gyorsítótárazás támogatásához. További információ: a Microsoft által támogatott [ügyféloldali kódtárak](reference-v2-libraries.md)listája. Ha meg kell adnia a hitelesítési protokollok kódját, kövesse a [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) vagy más hasonló fejlesztési módszertant. Ügyeljen arra, hogy az egyes protokollokra vonatkozó szabványok részletes leírásában a biztonsági szempontokat kell figyelembe venni.
 
 ![Jelölje ](./media/active-directory-integration-checklist/checkbox-two.svg) be a meglévő alkalmazások migrálása [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) szolgáltatásból a [Microsoft hitelesítési könyvtárra](msal-overview.md)jelölőnégyzetet. A MSAL a Microsoft legújabb Identity platform-megoldása, és a ADAL előnyben részesített. A szolgáltatás .NET, JavaScript, Android, iOS, macOS rendszeren érhető el, és a Python és a Java nyilvános előzetes verziójában is elérhető. További információ a [ADAL.net](msal-net-migration.md), a [ADAL.js](msal-compare-msal-js-and-adal-js.md)és a [ADAL.net és az iOS Broker-](msal-net-migration-ios-broker.md) alkalmazások áttelepítéséről.
 

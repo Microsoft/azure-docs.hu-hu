@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090671"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220700"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -28,7 +28,12 @@ A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szere
   * Bővített nyelvi támogatás [számos általános entitási kategóriához](named-entity-types.md). 
   * Az általános entitások kategóriáinak továbbfejlesztett AI-minősége az összes támogatott v3 nyelv esetében. 
 
-* A `2021-01-05` [nyelvi észlelés](how-tos/text-analytics-how-to-language-detection.md)modell-verziója, amely további [nyelvi támogatást](language-support.md?tabs=language-detection)biztosít.
+* A `2021-01-05` [nyelvi észlelési](how-tos/text-analytics-how-to-language-detection.md)modell verziója, amely további [nyelvi támogatást](language-support.md?tabs=language-detection)biztosít.
+
+Ezek a modell-verziók jelenleg nem érhetők el az USA keleti régiójában. 
+
+> [!div class="nextstepaction"]
+> [További információ az új tanulási modellről](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)
 
 ## <a name="december-2020"></a>2020. december
 

@@ -1,19 +1,19 @@
 ---
 title: Beépített szabályzat-definíciók Azure Stack Edge-hez
 description: Felsorolja Azure Policy Azure Stack Edge beépített szabályzat-definícióit. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 ms.subservice: edge
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: e99b44023018b8a6e7c77ced6bc8f9ce182545cc
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 072c19f1c2f0306a6fcc55b73748a014a7c998f3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806050"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217907"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stack-edge"></a>Azure Stack Edge beépített definíciói Azure Policy
 

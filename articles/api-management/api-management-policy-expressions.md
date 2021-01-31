@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076861"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219315"
 ---
 # <a name="api-management-policy-expressions"></a>API Management házirend-kifejezések
 Ez a cikk a házirend-kifejezések szintaxisát ismerteti a C# 7-es verziójában. Mindegyik kifejezés rendelkezik hozzáféréssel a implicit módon megadott [környezeti](api-management-policy-expressions.md#ContextVariables) változóhoz, valamint a .NET-keretrendszer engedélyezett [részhalmazához](api-management-policy-expressions.md#CLRTypes) .
@@ -156,7 +156,7 @@ A következő táblázat a .NET-keretrendszer típusait és azok tagjait sorolja
 |System. Security. kriptográfia. SymmetricAlgorithm|Mind|
 |System. Security. kriptográfia. X509Certificates. PublicKey|Mind|
 |System. Security. kriptográfia. X509Certificates. RSACertificateExtensions|Mind|
-|System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Név|
+|System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Name|
 |System. Security. kriptográfia. X509Certificates. X509|Mind|
 |System. Security. kriptográfia. X509Certificates. X509certificate2)|Mind|
 |System. Security. kriptográfia. X509Certificates. X509ContentType|Mind|
@@ -220,7 +220,7 @@ Egy nevű változó `context` implicit módon elérhető minden házirend- [kife
 |<a id="ref-context-request-headers"></a>karakterlánc-környezet Request. headers. GetValueOrDefault (headerName: karakterlánc, defaultValue: string)|headerName: karakterlánc<br /><br /> defaultValue: karakterlánc<br /><br /> A vesszővel tagolt kérelmek fejlécének értékét adja vissza, vagy `defaultValue` Ha a fejléc nem található.|
 |<a id="ref-context-response"></a>összefüggésben. Válasz|Törzs: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary<karakterlánc, karakterlánc [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|
 |<a id="ref-context-response-headers"></a>karakterlánc-környezet Response. headers. GetValueOrDefault (headerName: karakterlánc, defaultValue: karakterlánc)|headerName: karakterlánc<br /><br /> defaultValue: karakterlánc<br /><br /> A vesszővel tagolt válasz fejlécének értékét adja vissza, vagy `defaultValue` Ha a fejléc nem található.|
-|<a id="ref-context-subscription"></a>összefüggésben. Előfizetés|CreatedTime: dátum és idő<br /><br /> EndDate: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kulcs: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> PrimaryKey: karakterlánc<br /><br /> Értesítésiközpont: karakterlánc<br /><br /> StartDate: DateTime?|
+|<a id="ref-context-subscription"></a>összefüggésben. Előfizetés|CreatedDate: dátum és idő<br /><br /> EndDate: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kulcs: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> PrimaryKey: karakterlánc<br /><br /> Értesítésiközpont: karakterlánc<br /><br /> StartDate: DateTime?|
 |<a id="ref-context-user"></a>összefüggésben. Felhasználói|E-mail: karakterlánc<br /><br /> FirstName: karakterlánc<br /><br /> Csoportok: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Azonosító: karakterlánc<br /><br /> Identitások: IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: sztring<br /><br /> Megjegyzés: karakterlánc<br /><br /> RegistrationDate: dátum és idő|
 |<a id="ref-iapi"></a>IApi|Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Protokollok: IEnumerable<karakterlánc\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Azonosító: karakterlánc<br /><br /> Name: karakterlánc|
@@ -253,4 +253,4 @@ További információ a házirendek használatáról:
 + [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](./policy-reference.md)
++ [Szabályzatminták](./policy-reference.md)

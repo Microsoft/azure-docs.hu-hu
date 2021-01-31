@@ -3,19 +3,24 @@ title: Kerberos kulcsszolgáltató proxy Windows rendszerű virtuális asztal be
 description: Windows rendszerű virtuális asztali címkészlet beállítása Kerberos kulcsszolgáltató proxy használatára.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f123659941eaeb3b8ceeb6a999abf836eb9cf5ea
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 102ddc1c8937c66a92416ddb6d5f2d25f2a3c349
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798384"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219655"
 ---
-# <a name="configure-a-kerberos-key-distribution-center-proxy"></a>Kerberos kulcsszolgáltató proxy konfigurálása
+# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos kulcsszolgáltató proxy konfigurálása (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a Kerberos Key Distribiution Center (KDC) proxyt a gazdagép-készlethez. Ez a proxy lehetővé teszi a szervezetek számára, hogy a vállalat határain kívül Kerberos hitelesítést végezzenek. A KDC-proxy használatával például engedélyezheti a külső ügyfelek intelligens kártyás hitelesítését.
+> [!IMPORTANT]
+> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ez a cikk bemutatja, hogyan konfigurálhat egy Kerberos kulcsszolgáltató (KDC) proxyt (előzetes verzió) a gazdagép-készlethez. Ez a proxy lehetővé teszi a szervezetek számára, hogy a vállalat határain kívül Kerberos hitelesítést végezzenek. A KDC-proxy használatával például engedélyezheti a külső ügyfelek intelligens kártyás hitelesítését.
 
 ## <a name="how-to-configure-the-kdc-proxy"></a>A KDC-proxy konfigurálása
 
@@ -41,6 +46,6 @@ A KDC-proxy konfigurálása:
 
 6. A kiválasztott gazdagépnek most meg kell kezdenie az RDP-kapcsolati fájlok kiírását a megadott kdcproxyname-mezővel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Távoli asztali szolgáltatások RDGateway szerepköre egy KDC proxy szolgáltatást tartalmaz. Lásd: [a RD-átjáró szerepkör telepítése a Windows rendszerű virtuális asztalon](rd-gateway-role.md) , hogy a Windows rendszerű virtuális asztali környezetnek hogyan kell beállítania egyet.

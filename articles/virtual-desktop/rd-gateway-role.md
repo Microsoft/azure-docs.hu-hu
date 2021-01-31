@@ -3,19 +3,24 @@ title: A Windows rendszerű virtuális asztali RD-átjáró szerepkör üzembe h
 description: A RD-átjáró szerepkör üzembe helyezése a Windows rendszerű virtuális asztalon.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca3c36f339d5cbca6d5b5990415fba180ae42a13
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798436"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220819"
 ---
-# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop"></a>A RD-átjáró szerepkör üzembe helyezése a Windows rendszerű virtuális asztalon
+# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>A RD-átjáró szerepkör üzembe helyezése a Windows Virtual Desktopban (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a Távoli asztali átjáró-kiszolgálókat a környezetében. A kiszolgálói szerepköröket fizikai gépekre vagy virtuális gépekre is telepítheti attól függően, hogy helyszíni, felhőalapú vagy hibrid környezetet hoz-e létre.
+> [!IMPORTANT]
+> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ebből a cikkből megtudhatja, hogyan használhatja a RD-átjáró szerepkört (előzetes verzió) Távoli asztali átjáró-kiszolgálók üzembe helyezéséhez a környezetben. A kiszolgálói szerepköröket fizikai gépekre vagy virtuális gépekre is telepítheti attól függően, hogy helyszíni, felhőalapú vagy hibrid környezetet hoz-e létre.
 
 ## <a name="install-the-rd-gateway-role"></a>Az RD-átjáró szerepkör telepítése
 
@@ -66,6 +71,6 @@ A RD-átjáró szerepkör konfigurálása:
 >[!NOTE]
 >Mivel a RD-átjáró szerepkör nyilvánosnak kellene lennie, javasoljuk, hogy nyilvánosan kiállított tanúsítványt használjon. Ha saját maga által kiállított tanúsítványt használ, az összes ügyfelet előre be kell állítania a tanúsítvány megbízhatósági láncával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha magas rendelkezésre állást szeretne adni a RD-átjáró-szerepkörhöz, tekintse meg [a magas rendelkezésre állás hozzáadása a távoli asztali webes és átjáró webes](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha)felületéhez című témakört.

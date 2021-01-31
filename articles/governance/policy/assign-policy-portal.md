@@ -1,14 +1,14 @@
 ---
 title: 'Rövid útmutató: új szabályzat-hozzárendelés a portálon'
 description: Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: quickstart
-ms.openlocfilehash: 51ca2f9e5d3f3df9304804ba3da2c5c5ceb0c19b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e5cbf31e897b5be404327efa254eb90ead990f5f
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875308"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220887"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
@@ -25,17 +25,17 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és hozzárendeli a felügyelt lemezek házirend-definícióját _nem használó naplózási virtuális gépeket_ .
 
-1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
+1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás** lehetőség kiválasztásával, majd a **szabályzat** keresésével és kiválasztásával.
 
    :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
-   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="Képernyőkép a hozzárendelések lap kiválasztásáról a házirend áttekintése lapon." border="false":::
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Képernyőkép a &quot;szabályzat hozzárendelése&quot; lehetőség kiválasztásáról a hozzárendelések lapon." border="false":::
 
 1. A **házirend kiosztása** lapon állítsa be a **hatókört** úgy, hogy kiválasztja a három pontot, majd kiválasztja a felügyeleti csoportot vagy az előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután használja a **Select (kiválasztás** ) gombot a **hatókör** lap alján.
 
@@ -53,14 +53,26 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
 
 1. Keresse meg a _Felügyelt lemezeket nem használó virtuális gépek naplózása_ definíciót a szabályzatdefiníciók listájában. Válassza ki ezt a házirendet, majd használja a **kiválasztás** gombot.
 
-   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="Képernyőkép az elérhető definíciók szűréséről." border="false":::
 
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. A példánkban meghagyjuk a _Felügyelt lemezeket nem használó virtuális gépek naplózása_ értéket. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.
    A **Hozzárendelte** mező automatikusan ki lesz töltve az alapján, hogy ki van bejelentkezve. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
+1. Hagyja _engedélyezve_ a szabályzat kényszerítését. További információ: [szabályzat-hozzárendelés – kényszerítési mód](./concepts/assignment-structure.md#enforcement-mode).
+
+1. Kattintson a **tovább** gombra a lap alján, vagy a lap tetején található **Parameters (paraméterek** ) lapon a hozzárendelés varázsló következő szegmensére való áttéréshez.
+
+1. Ha a házirend-definíció az **alapok** lapon a paraméterek között van kiválasztva, akkor ezen a lapon konfigurálhatók. Mivel a _felügyelt lemezeket nem használó naplózási virtuális gépek nem rendelkeznek_ paraméterrel, a lap alján található **tovább** gombra kattintva vagy az oldal tetején lévő **szervizelés** lapon lépjen a hozzárendelés varázsló következő szegmensére.
+
 1. A **Felügyelt identitás létrehozása** jelölőnégyzetet hagyja üresen. Ezt a _jelölőnégyzetet be kell jelölni_ , ha a házirend vagy kezdeményezés olyan házirendet tartalmaz, amely a [deployIfNotExists](./concepts/effects.md#deployifnotexists) vagy a [módosítás](./concepts/effects.md#modify) hatásával rendelkezik. Mivel a rövid útmutatóhoz használt szabályzat nem, hagyja üresen. További információkért lásd a [felügyelt identitásokat](../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](./how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Válassza a **Hozzárendelés** elemet.
+1. Kattintson a lap alján található **tovább** gombra, vagy a lap tetején található **nem megfelelőségi üzenetek** lapfülre, hogy a hozzárendelés varázsló következő szegmensére váltson.
+
+1. A **nem megfelelőségi üzenetnek** a _virtuális gépekre történő beállításához felügyelt lemezt kell használnia_. Ez az egyéni üzenet akkor jelenik meg, ha egy erőforrást megtagadnak vagy a nem megfelelő erőforrásokat a normál kiértékelés során.
+
+1. Kattintson a **tovább** gombra az oldal alján vagy a lap tetején található **felülvizsgálat + létrehozás** lapon a hozzárendelés varázsló következő szegmensére való áttéréshez.
+
+1. Tekintse át a kiválasztott beállításokat, majd kattintson a **Létrehozás** gombra a lap alján.
 
 Most már készen áll a nem megfelelő erőforrások azonosítására a környezet megfelelőségi állapotának megismerése érdekében.
 
@@ -68,9 +80,9 @@ Most már készen áll a nem megfelelő erőforrások azonosítására a környe
 
 A lap bal oldalán kattintson a **megfelelőség** elemre. Ezután keresse meg _azokat a naplózási virtuális gépeket, amelyek nem használják a felügyelt lemezeken_ létrehozott házirend-hozzárendelést.
 
-:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
+:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Képernyőkép a megfelelőségi részletekről a szabályzat megfelelősége lapon." border="false":::
 
-Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **nem megfelelő erőforrások**alatt jelennek meg.
+Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **nem megfelelő erőforrások** alatt jelennek meg.
 
 Ha a meglévő erőforrások kiértékelésekor egy feltétel igaznak bizonyul, ezek az erőforrások a szabályzatnak nem megfelelőként lesznek megjelölve. A következő táblázat azt mutatja be, hogyan működnek együtt a szabályzatok különböző hatásai a feltételek kiértékelésével a megfelelőségi állapot eléréséhez. Bár a Azure Portalban nem jelenik meg a kiértékelési logika, a megfelelőségi állapot eredményei jelennek meg. A megfelelőségi állapotok eredménye lehet megfelelő vagy nem megfelelő.
 
@@ -90,9 +102,9 @@ A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépések
 
 1. Válassza a **Megfelelőség** (vagy **Hozzárendelések**) elemet az Azure Policy oldal bal oldalán, és keresse meg a létrehozott _Felügyelt lemezeket nem használó virtuális gépek naplózása_ szabályzat-hozzárendelést.
 
-1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését _nem használó naplózási virtuális gépekre_ , és válassza a **hozzárendelés törlése**lehetőséget.
+1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését _nem használó naplózási virtuális gépekre_ , és válassza a **hozzárendelés törlése** lehetőséget.
 
-   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Képernyőkép a szabályzatok kereséséről az összes szolgáltatásban." border="false":::
+   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Képernyőfelvétel: a helyi menü használatával törölhet egy hozzárendelést a megfelelőség lapról." border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
 

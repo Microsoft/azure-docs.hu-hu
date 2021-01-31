@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.custom: references_regions
+ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696091"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220904"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files kötetek régiók közötti replikációja
 
@@ -28,26 +29,31 @@ A Azure NetApp Files replikációs funkció adatvédelmet biztosít a régiók k
 > [!IMPORTANT]
 > A régiók közötti replikációs szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Be kell küldenie egy várólistára vonatkozó kérelmet a szolgáltatás eléréséhez a [Azure NetApp Files régiók közötti replikációs várólista-küldési lapon](https://aka.ms/anfcrrpreviewsignup). Várjon egy hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól a régiók közötti replikációs szolgáltatás használata előtt.
 
-## <a name="supported-region-pairs"></a>Támogatott régió párok
+## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Támogatott régiók közötti replikációs párok
 
-A Azure NetApp Files kötet replikációja jelenleg a következő rögzített régió párokban érhető el:  
+Azure NetApp Files mennyiségi replikálás támogatott a különböző [Azure regionális párok](/azure/best-practices-availability-paired-regions#azure-regional-pairs) és nem párok között. A Azure NetApp Files kötet replikációja jelenleg a következő régiókban érhető el:  
 
-* USA nyugati régiója és USA keleti régiója
-* USA 2. nyugati régiója és USA keleti régiója 
-* USA déli középső régiója és USA középső régiója 
-* USA déli középső régiója és USA keleti régiója
-* USA déli középső régiója és USA 2. keleti régiója 
-* USA keleti régiója és USA 2. keleti régiója  
-* USA 2. keleti régiója és az USA középső régiója 
+### <a name="azure-regional-pairs"></a>Azure regionális párok
+
+* USA keleti régiója és USA nyugati régiója
+* USA 2. keleti régiója és az USA középső régiója
 * Kelet-Ausztrália és Délkelet-Ausztrália
 * Közép-Kanada és Kelet-Kanada
-* Közép-India és Dél-India
+* Dél-India és Közép-India 
 * Középnyugat-Németország és Észak-Németország
 * Kelet-japán és Nyugat-Japán
 * Észak-Európa és Nyugat-Európa
-* Délkelet-Ázsia és Kelet-Ausztrália
-* Egyesült Királyság déli régiója és Középnyugat-Németország
 * Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója
+
+### <a name="azure-regional-non-pairs"></a>Azure regionális nem párok
+
+*   USA 2. nyugati régiója és az USA keleti régiója
+*   USA déli középső régiója és az USA középső régiója
+*   USA déli középső régiója és USA keleti régiója
+*   USA déli középső régiója és USA 2. keleti régiója
+*   USA keleti régiója és USA 2. keleti régiója
+*   Kelet-Ausztrália és Délkelet-Ázsia 
+*   Középnyugat-Németország és Egyesült Királyság déli régiója
 
 ## <a name="service-level-objectives"></a>Szolgáltatási szintű célkitűzések
 
@@ -111,7 +117,7 @@ Ezért a 2. hónap végéig a teljes régiók közötti replikálási díj a kö
 
 A 2. hónapra vonatkozó normál Azure NetApp Files tárolási kapacitás díja a cél kötetre vonatkozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
 * [Kötetreplikáció létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
