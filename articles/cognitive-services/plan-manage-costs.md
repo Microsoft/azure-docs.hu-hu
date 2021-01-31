@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 61eb7d06773428074940d153b01d23b13468795d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788824"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221377"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Az Azure Cognitive Services költségeinek megtervezése és kezelése
 
@@ -64,6 +64,32 @@ QnA Maker erőforrások törlését követően a következő erőforrások tová
 
 Az Azure-előfizetéssel (korábban pénzügyi kötelezettségvállalásnak nevezett) Kredittel Cognitive Services díjat fizethet. Az Azure-beli előfizetési kreditek azonban nem használhatók fel a harmadik féltől származó termékekhez és szolgáltatásokhoz, például az Azure piactéren fizetendő díjakért.
 
+## <a name="monitor-costs"></a>Költségek figyelése
+
+<!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
+
+Az Azure-erőforrások Cognitive Services használatával történő használatakor a költségek is felmerülnek. Az Azure Erőforrás-használati egység költségei időintervallumok (másodperc, perc, óra és nap) vagy egységenkénti használat szerint változnak (bájt, megabájt stb.). A kognitív szolgáltatás (vagy Cognitive Services) elindulásakor a költségek felmerülnek, és a költségek [elemzésében](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)láthatja a költségeket.
+
+A Cost Analysis használatakor a különböző időintervallumokhoz tartozó grafikonok és táblák Cognitive Services költségeit tekintheti meg. Néhány példa: nap, aktuális és előző hónap, év. A költségeket a költségvetésekkel és az előre jelzett költségekkel is megtekintheti. A hosszabb nézetekre való áttérés a kiadások trendjeinek azonosításához nyújt segítséget. Itt láthatja, hogy hol történt a túltöltés. Ha létrehozta a költségvetést, azt is megteheti, hogy megtekintheti a túllépések helyét.
+
+Cognitive Services költségek megtekintése a Cost Analysis szolgáltatásban:
+
+1. Jelentkezzen be az Azure portálra.
+2. Nyissa meg a hatókört a Azure Portalban, és válassza a menü **Cost Analysis** elemét. Például lépjen az **előfizetések** elemre, válasszon ki egy előfizetést a listából, majd válassza a menü  **Cost Analysis** elemét. Válassza ki a **hatókört** , hogy másik hatókörre váltson a Cost Analysis szolgáltatásban.
+3. Alapértelmezés szerint a szolgáltatások díjszabása az első fánk-diagramon látható. Válassza ki a diagram Cognitive Services feliratú részét.
+
+A tényleges havi költségek akkor jelennek meg, amikor először nyitja meg a Cost Analysis-t. Az alábbi példa az összes havi használati költséget mutatja be.
+
+:::image type="content" source="./media/cost-management/all-costs.png" alt-text="Példa az előfizetés halmozott költségeire":::
+
+- Egy szolgáltatás (például a Cognitive Services) szűk költségeihez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév** lehetőséget. Ezután válassza a **Cognitive Services** lehetőséget.
+
+Íme egy példa, amely csak a Cognitive Services költségeire mutat.
+
+:::image type="content" source="./media/cost-management/cognitive-services-costs.png" alt-text="Példa a Cognitive Services összesített költségeire":::
+
+Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régiók (helyszínek) és a Cognitive Services az erőforráscsoport költségei is megjelennek. Itt megtekintheti saját költségeit.
+
 ## <a name="create-budgets"></a>Költségvetések létrehozása
 
 A költségek kezeléséhez [költségvetéseket](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) és [riasztásokat](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) hozhat létre, amelyek automatikusan figyelmeztetik az érdekelt feleket a rendellenes kiadásokról és a túlköltekezési kockázatokról. A riasztások a költségvetés és a költségek küszöbértékei alapján működnek. Az Azure-előfizetésekhez és-erőforráscsoportokhöz költségvetést és riasztásokat hoznak létre, így azok a teljes költségű figyelési stratégia részeként hasznosak. 
@@ -74,14 +100,7 @@ A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgálta
 
 A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. A pénzügyi csapat például az Excelben vagy a Power BI használatával elemezheti az adatforrást. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-<!--
-## Other ways to manage and reduce costs for Cognitive Services
-
-Work with Dean to complete this section in 2021.
-
--->
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.

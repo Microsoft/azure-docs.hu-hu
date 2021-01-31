@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: tartalom moderátora, tartalom moderálása
-ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8ad9c135fea4e582e6ba47764d0401936f8c295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905213"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221176"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Content Moderator kipróbálása a weben
 
@@ -88,6 +88,6 @@ Vagy folytassa a következő lépésekkel a kód moderálási API-jai használat
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja saját maga a moderálási API-kat az alkalmazásban.
-- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy az ügyféloldali kódtár követésével [vagy REST API](client-libraries.md) rövid útmutatóval képeket kereshet, és felderítheti a lehetséges felnőtteket és a zamatos tartalmakat címkék, megbízhatósági pontszámok és más kinyert adatok használatával.
-- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy kövessen egy [ügyféloldali kódtárat, vagy REST API](client-libraries.md) rövid útmutatóban a szöveges tartalom vizsgálatához a lehetséges trágárság, a gépi támogatású nemkívánatos szöveg besorolása (előzetes verzió) és a személyes adatokat.
+- Rendszerkép-moderálás implementálása. Az [API-konzollal](try-image-api.md) vagy egy rövid útmutatóval ellenőrizheti a képeket, és felderítheti [a potenciális](client-libraries.md) felnőtt és a zamatos tartalmakat címkék, megbízhatósági pontszámok és egyéb kinyert adatok használatával.
+- Szöveges moderálás implementálása. Használja az [API-konzolt](try-text-api.md) , vagy [kövessen egy rövid útmutatót a szöveges](client-libraries.md) tartalom vizsgálatához a lehetséges trágárság, a személyes adatokat és az egyéb nemkívánatos szöveg ellenőrzéséhez.
 - Videó-moderálás implementálása. Kövesse a [videó moderálásának útmutatóját a C#-](video-moderation-api.md) hoz a videók vizsgálatához és a potenciális felnőtt és a zamatos tartalmak észleléséhez. 

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785595"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221108"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési problémák elhárítása Storage Analytics-naplók használatával
 
@@ -27,7 +27,7 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 
 ## <a name="recommended-steps"></a>Javasolt lépések
 
-1. Töltse le a [Storage Analytics naplókat](./storage-analytics-logging.md#download-storage-logging-log-data).
+1. Töltse le a [Storage Analytics naplókat](./manage-storage-analytics-logs.md#download-storage-logging-log-data).
 
 2. A következő PowerShell-parancsfájl használatával alakítsa át a nyers formátumú naplókat táblázatos formátumba:
 
@@ -97,7 +97,7 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 
    A következő táblázat a nagy késleltetésű OperationType és a RequestStatus eredményekkel kapcsolatos információkat tartalmaz:
 
-   | BLOB típusa |RequestStatus =<br>Success|RequestStatus =<br>Sas NetworkError|Ajánlás|
+   | BLOB típusa |RequestStatus =<br>Siker|RequestStatus =<br>Sas NetworkError|Ajánlás|
    |---|---|---|---|
    |GetBlob|Igen|Nem|[**GetBlob művelet:** RequestStatus = sikeres](#getblob-operation-requeststatus--success)|
    |GetBlob|Nem|Igen|[**GetBlob művelet:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|

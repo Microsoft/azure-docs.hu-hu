@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: képek felismerése, képfelismerési alkalmazás, egyéni jövőkép
-ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131695"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221244"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Gyors útmutató: osztályozó létrehozása a Custom Vision webhellyel
 
@@ -71,7 +71,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 Ebben a szakaszban fel kell töltenie és manuálisan címkézheti a képeket az osztályozó betanításához. 
 
-1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__ lehetőséget. Válassza a __Megnyitás__ lehetőséget a címkézésre való áttéréshez. A címke kiválasztása a feltöltésre kijelölt rendszerképek teljes csoportjára lesz alkalmazva, így a képeket külön csoportokban is feltöltheti a kívánt címkék szerint. Az egyes képek címkéit a feltöltésük után is módosíthatja.
+1. Képek hozzáadásához válassza a __képek hozzáadása__ lehetőséget, majd válassza a __helyi fájlok tallózása__ lehetőséget. Válassza a __Megnyitás__ lehetőséget a címkézésre való áttéréshez. A címke kiválasztása a feltöltésre kijelölt rendszerképek teljes csoportjára lesz alkalmazva, így az alkalmazott címkék szerint egyszerűbb a képek külön csoportba való feltöltése. Az egyes képek címkéit a feltöltésük után is módosíthatja.
 
     ![A képek hozzáadása vezérlő megjelenik a bal felső sarokban, és az alsó középen lévő gomb.](./media/getting-started-build-a-classifier/add-images01.png)
 

@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845547"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221091"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -202,7 +202,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
    1. Kattintson ide **+** új címke létrehozásához.
    1. Adja meg a címke nevét.
    1. Nyomja le az ENTER billentyűt a címke mentéséhez.
-1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához. A _v 2.1 előzetes verziójában. 2_ a _kijelölési jelek_ , például a választógombok és a jelölőnégyzetek megadására is lehetőség van. Az űrlap-felismerő azonosítja, hogy a kijelölési jel "kijelölt" vagy "nem kijelölt" értékű-e.
+1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához. A _v 2.1 preview. 2_ API-ban a _kiválasztási jelek_ , például a választógombok és a jelölőnégyzetek megadására is lehetőség van. Az űrlap-felismerő azonosítja, hogy a kijelölési jel "kijelölt" vagy "nem kijelölt" értékű-e.
 1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
     > [!Tip]
     > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket.
@@ -290,7 +290,7 @@ Ez a funkció jelenleg a 2.1-es verzióban érhető el. előnézet.
 
 A Model Compose segítségével akár 100 modellt is létrehozhat egyetlen modellazonosítóhoz. Ha ezzel a létrehozott modellazonosítóval hívja meg az Elemzés funkciót, a Form Recognizer először besorolja a beküldött űrlapot, párosítja a neki leginkább megfelelő modellel, majd az adott modell eredményeit adja vissza. Ez akkor hasznos, ha a beérkező űrlapok számos sablon egyikéhez tartozhatnak.
 
-A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (egyesítési nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. A felugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
+A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (egyesítési nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak. Kattintson a "levélírás" gombra. Az előugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model komponált UX nézet.":::
 
@@ -323,7 +323,7 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. fott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha saját eszközt szeretne felépíteni a betanítási adatok címkézéséhez, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 

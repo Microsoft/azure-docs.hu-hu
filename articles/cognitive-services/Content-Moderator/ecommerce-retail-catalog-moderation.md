@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6d105528404c99f7273687fcdea6972b4212fcf1
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 211f58e26ec89c393bf9f91cc3a05044c6b1e802
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913687"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221278"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: az e-kereskedelmi termékkel foglalkozó közepesen súlyos rendszerképek az Azure Content Moderator
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Cognitive Servicest, beleértve a Content Moderatoreket, hogy az e-kereskedelmi forgatókönyvek termékeinek besorolását és mérsékelt termékeit. Computer Vision és Custom Vision segítségével címkéket (címkéket) alkalmazhat a képekre, majd létrehoz egy Team reviewot, amely a Content Moderator gépi tanuláson alapuló technológiáit kombinálja az emberi felülvizsgálati csapatokkal, és intelligens moderációs rendszert biztosít.
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Cognitive Servicest, beleértve a Content Moderatoreket, hogy az e-kereskedelmi forgatókönyvek termékeinek besorolását és mérsékelt termékeit. Computer Vision és Custom Vision segítségével címkéket (címkéket) alkalmazhat a képekre, majd létrehoz egy csapat-áttekintést, amely a Content Moderator gépi tanuláson alapuló technológiáit kombinálja az emberi felülvizsgálati csapatokkal intelligens moderációs rendszer biztosításához.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -48,14 +48,14 @@ Tekintse át a [Content moderator kipróbálása a webes](quick-start.md) útmut
 
 ## <a name="create-custom-moderation-tags"></a>Egyéni moderálási Címkék létrehozása
 
-Ezután hozzon létre egyéni címkéket a felülvizsgálati eszközben (lásd a [címkék](./review-tool-user-guide/configure.md#tags) cikket, ha segítségre van szüksége ehhez a folyamathoz). Ebben az esetben a következő címkéket fogjuk hozzáadni: **Celebrity** , **USA** , **Flag** , **Toy** és **Pen** . Az összes címkének nem kell észlelhető kategóriának lennie Computer Visionban (például **híresség** ); hozzáadhat saját egyéni címkéket is, ha a Custom Vision osztályozó betanításával később felismeri őket.
+Ezután hozzon létre egyéni címkéket a felülvizsgálati eszközben (lásd a [címkék](./review-tool-user-guide/configure.md#tags) cikket, ha segítségre van szüksége ehhez a folyamathoz). Ebben az esetben a következő címkéket fogjuk hozzáadni: **Celebrity**, **USA**, **Flag**, **Toy** és **Pen**. Az összes címkének nem kell észlelhető kategóriának lennie Computer Visionban (például **híresség**); hozzáadhat saját egyéni címkéket is, ha a Custom Vision osztályozó betanításával később felismeri őket.
 
 ![Egyéni címkék konfigurálása](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített** , majd a **Visual C#** , majd a **Console app (.NET-keretrendszer)** elemet.
-1. Nevezze el az alkalmazás **EcommerceModeration** , majd kattintson **az OK** gombra.
+1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített**, majd a **Visual C#**, majd a **Console app (.NET-keretrendszer)** elemet.
+1. Nevezze el az alkalmazás **EcommerceModeration**, majd kattintson **az OK gombra**.
 1. Ha egy meglévő megoldáshoz adja hozzá ezt a projektet, válassza ki ezt a projektet egyetlen indítási projektként.
 
 Ez az oktatóanyag kiemeli a projekt központi részét képező kódot, de nem fedi le a kód minden sorát. Másolja a _program.cs_ teljes tartalmát a minta projektből (az [e-kereskedelmi katalógus moderálása](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) az új projekt _program.cs_ -fájljába. Ezután a következő szakaszokból megismerheti, hogyan működik a projekt, és hogyan használhatja azt.

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998566"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221026"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Azure Database for MySQL privát hivatkozás létrehozása és kezelése a portál használatával
 
@@ -60,7 +60,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Region | Válassza a **Nyugat-Európa** régiót. |
+    | Régió | Válassza a **Nyugat-Európa** régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2** értéket. |
@@ -145,7 +145,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Példány részletei** |  |
     | Name | Adja meg a *myPrivateEndpoint* nevet. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    |Region|Válassza a **Nyugat-Európa** régiót.|
+    |Régió|Válassza a **Nyugat-Európa** régiót.|
     |||
 
 5. Válassza a **Tovább: erőforrás** elemet.
@@ -201,7 +201,7 @@ A **myVm** létrehozása után az alábbi módon csatlakozhat az internetről:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
+        > Előfordulhat, hogy a   >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 1. Válassza az **OK** lehetőséget.
 
@@ -223,6 +223,8 @@ A **myVm** létrehozása után az alábbi módon csatlakozhat az internetről:
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
     ```
+    > [!NOTE]
+    > Ha a nyilvános hozzáférés le van tiltva a tűzfal beállításai között Azure Database for MySQL-egyetlen kiszolgálón. Ezek a ping és Telnet tesztek a tűzfal beállításaitól függetlenül sikeresek lesznek. Ezek a tesztek biztosítják a hálózati kapcsolatot.
 
 3. Tesztelje a MySQL-kiszolgáló magánhálózati kapcsolati kapcsolatát bármely elérhető ügyfél használatával. Az alábbi példában a [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) használatával végeztem el a műveletet.
 
@@ -252,7 +254,7 @@ Ha végzett a magánhálózati végpont, a MySQL-kiszolgáló és a virtuális g
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MySQLt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MySQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](../private-link/private-endpoint-overview.md).
 

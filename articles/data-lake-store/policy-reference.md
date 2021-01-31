@@ -1,18 +1,18 @@
 ---
 title: A Azure Data Lake Storage Gen1 beépített szabályzat-definíciói
 description: A Azure Data Lake Storage Gen1 Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 25db09f087d88e7d4171fe4335aef62ec338de1b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 18bd78fc115695483245ecdc385d5c2d7d37dbf8
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805769"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221125"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>A Azure Data Lake Storage Gen1 beépített definíciói Azure Policy
 

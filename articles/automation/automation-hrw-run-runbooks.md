@@ -3,14 +3,14 @@ title: Azure Automation runbookok futtatása hibrid Runbook-feldolgozón
 description: Ez a cikk azt ismerteti, hogyan futtathatók a runbookok a helyi adatközpontban vagy más Felhőbeli szolgáltatónál a hibrid Runbook-feldolgozóval.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8ea668ab2266a1deae108542687c89f3a221568e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896969"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220973"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -94,6 +94,10 @@ A következő eljárással adhatja meg a futtató fiókot egy hibrid Runbook Wor
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Futtató fiók tanúsítványának telepítése
 
 Az erőforrások Azure-ban való üzembe helyezéséhez szükséges automatizált felépítési folyamat részeként szükség lehet a helyszíni rendszerekhez való hozzáférésre, hogy támogassa a feladatait vagy lépéseit a telepítési sorozatban. Ha a futtató fiók használatával szeretne hitelesítést biztosítani az Azure-ban, telepítenie kell a futtató fiók tanúsítványát.
+
+>[!NOTE]
+>Ez a PowerShell-runbook jelenleg nem LInux rendszerű gépeken fut. Csak Windows rendszerű gépeken fut.
+>
 
 A következő PowerShell-runbook, az **export-RunAsCertificateToHybridWorker néven exportálja** a futtató tanúsítványt a Azure Automation-fiókjából. A runbook letölti és importálja a tanúsítványt a helyi számítógép tanúsítványtárolójában egy olyan hibrid Runbook-feldolgozón, amely ugyanahhoz a fiókhoz csatlakozik. Miután befejezte ezt a lépést, a runbook ellenőrzi, hogy a feldolgozó sikeresen tud-e hitelesíteni az Azure-ban a futtató fiók használatával.
 

@@ -483,8 +483,10 @@
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Figyelés (klasszikus)
           items:
-            - name: Figyelés az Azure Portalon (klasszikus)
-              href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Metrikák engedélyezése és kezelése (klasszikus)
+              href: ../common/manage-storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Naplók engedélyezése és kezelése (klasszikus)
+              href: ../common/manage-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hibaelhárítás
           items:
             - name: Késési problémák

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 4c0017a36d84973a4d99c49a5ea33faeb189b35f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639338"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221210"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>A Windows rendszerű virtuális asztali hálózati kapcsolat ismertetése
 
@@ -50,7 +50,7 @@ Az ügyfélkapcsolati folyamat alább látható:
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
 
-A TLS 1,2 az ügyfelek és a munkamenet-gazdagépek által a Windows rendszerű virtuális asztali infrastruktúra összetevőihez kezdeményezett összes kapcsolathoz használatos.
+A TLS 1,2 az ügyfelek és a munkamenet-gazdagépek által a Windows rendszerű virtuális asztali infrastruktúra összetevőihez kezdeményezett összes kapcsolathoz használatos. A Windows virtuális asztal ugyanazt a TLS 1,2 titkosítási algoritmust használja, mint az [Azure bejárati ajtó](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Fontos annak biztosítása, hogy az ügyfélszámítógépek és a munkamenet-gazdagépek is használhatják ezeket a titkosítási modulokat.
 A fordított kapcsolat átviteléhez az ügyfél és a munkamenet-állomás is csatlakozik a Windows rendszerű virtuális asztali átjáróhoz. A TCP-kapcsolat létrehozása után az ügyfél vagy a munkamenet-állomás érvényesíti a Windows rendszerű virtuális asztali átjáró tanúsítványát.
 Az alapszintű átvitel létrehozása után az RDP egy beágyazott TLS-kapcsolatot hoz létre az ügyfél és a munkamenet-állomás között a munkamenet-gazdagép tanúsítványainak használatával. Alapértelmezés szerint az RDP-titkosításhoz használt tanúsítványt az operációs rendszer saját maga hozza létre a telepítés során. Ha kívánja, az ügyfelek központilag felügyelt tanúsítványokat telepíthetnek a vállalati hitelesítésszolgáltató által kiadott tanúsítványok alapján. A tanúsítványok konfigurálásával kapcsolatos további információkért lásd a [Windows Server dokumentációját](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

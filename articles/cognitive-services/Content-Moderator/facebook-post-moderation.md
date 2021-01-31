@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913670"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220990"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
 
@@ -48,11 +48,11 @@ Tekintse át a [Content moderator kipróbálása a webes](quick-start.md) útmut
 
 ## <a name="configure-image-moderation-workflow"></a>Képek moderálási munkafolyamatának konfigurálása
 
-Egyéni rendszerkép-munkafolyamatok létrehozásához tekintse [meg a Definiálás, tesztelés és használat munkafolyamatok](review-tool-user-guide/workflows.md) útmutatót. A Content Moderator ezt a munkafolyamatot fogja használni a képek Facebookban való automatikus ellenőrzéséhez és a felülvizsgálati eszköz elküldéséhez. Jegyezze fel a munkafolyamat **nevét** .
+Egyéni rendszerkép-munkafolyamatok létrehozásához tekintse [meg a Definiálás, tesztelés és használat munkafolyamatok](review-tool-user-guide/workflows.md) útmutatót. A Content Moderator ezt a munkafolyamatot fogja használni a képek Facebookban való automatikus ellenőrzéséhez és a felülvizsgálati eszköz elküldéséhez. Jegyezze fel a munkafolyamat **nevét**.
 
 ## <a name="configure-text-moderation-workflow"></a>Szöveges moderálási munkafolyamat konfigurálása
 
-Ismét tekintse meg a [munkafolyamatok meghatározása, tesztelése és használata](review-tool-user-guide/workflows.md) útmutatót; Ezúttal hozzon létre egy egyéni szöveges munkafolyamatot. A Content Moderator ezt a munkafolyamatot fogja használni a szöveges tartalom automatikus vizsgálatához. Jegyezze fel a munkafolyamat **nevét** .
+Ismét tekintse meg a [munkafolyamatok meghatározása, tesztelése és használata](review-tool-user-guide/workflows.md) útmutatót; Ezúttal hozzon létre egy egyéni szöveges munkafolyamatot. A Content Moderator ezt a munkafolyamatot fogja használni a szöveges tartalom automatikus vizsgálatához. Jegyezze fel a munkafolyamat **nevét**.
 
 ![Szövegalapú munkafolyamat konfigurálása](images/text-workflow-configure.PNG)
 
@@ -68,7 +68,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 1. Nyissa meg az újonnan létrehozott függvényalkalmazás.
 1. Az alkalmazáson belül lépjen a **platform szolgáltatások** lapra, és válassza a **konfiguráció** lehetőséget. A következő lap **Alkalmazásbeállítások** szakaszában válassza az **új Alkalmazásbeállítás** lehetőséget a következő kulcs/érték párok hozzáadásához:
     
-    | Alkalmazás-beállítás neve | value   | 
+    | Alkalmazás-beállítás neve | érték   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | A Content Moderator csapatazonosítójának beállítása  | 
     | `cm:SubscriptionKey` | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](./review-tool-user-guide/configure.md#credentials) |
@@ -86,8 +86,8 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
     ![Azure Functions panel a funkció hozzáadása gomb kiemelve.](images/new-function.png)
 
     1. Kattintson a **http-triggert** tartalmazó csempére.
-    1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény** .
-    1. Kattintson a **Létrehozás** gombra.
+    1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
+    1. Kattintson a **Létrehozás** lehetőségre.
     1. Cserélje le a **Run. CSX** tartalmát a **FbListener/Run. CSX** tartalmára.
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
@@ -105,28 +105,28 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
     ![Facebook fejlesztői oldal](images/facebook-developer-app.png)
 
     1. Lépjen a [Facebook fejlesztői webhelyére](https://developers.facebook.com/).
-    1. Kattintson a **My Apps** (Saját alkalmazások) elemre.
+    1. Válassza a **saját alkalmazások** lehetőséget.
     1. Adjon hozzá egy új alkalmazást.
-    1. nevezze el valamit
+    1. Adjon meg egy nevet
     1. **Webhookok kiválasztása – > beállítása**
     1. Válassza az **oldal** lehetőséget a legördülő menüből, és válassza az **előfizetés erre az objektumra** lehetőséget.
-    1. Visszahívási URL-címként adja meg **FBListener URL** -címét, valamint a **Függvényalkalmazás beállításai** területen konfigurált **Ellenőrzési jogkivonatot** .
+    1. Visszahívási URL-címként adja meg **FBListener URL**-címét, valamint a **Függvényalkalmazás beállításai** területen konfigurált **Ellenőrzési jogkivonatot**.
     1. Ha a feliratkozás megtörtént, görgessen le a hírcsatornához, és kattintson a **Feliratkozás** gombra.
-    1. Kattintson a **hírcsatorna** -sor **tesztelés** gombjára, hogy tesztüzenet küldjön a FBListener Azure-függvénynek, majd nyomja meg a **Küldés a saját kiszolgálóra** gombot. Ekkor meg kell jelennie a FBListener érkező kérésnek.
+    1. A **hírcsatorna** -sor **tesztelés** gombjára kattintva Tesztüzenet küldése a FBListener Azure-függvénynek, majd a **Küldés a saját kiszolgálóra** gomb megnyomásával. Ekkor meg kell jelennie a FBListener érkező kérésnek.
 
 1. Facebook-oldal létrehozása.
 
     > [!IMPORTANT]
     > 2018-ben a Facebook a Facebook-alkalmazások szigorúbb ellenőrzését is végrehajtotta. A 2., 3. és 4. szakaszt nem fogja tudni végrehajtani, ha az alkalmazást a Facebook felülvizsgálati csapata nem tekinti át és hagyta jóvá.
 
-    1. Lépjen a [Facebookra](https://www.facebook.com/bookmarks/pages), és hozzon létre egy **új Facebook-oldalt** .
+    1. Lépjen a [Facebookra](https://www.facebook.com/bookmarks/pages), és hozzon létre egy **új Facebook-oldalt**.
     1. Az alábbi lépéseket követve engedélyezze a Facebook alkalmazás számára az oldalhoz való hozzáférést:
         1. Nyissa meg a [Graph API Explorert](https://developers.facebook.com/tools/explorer/).
         1. Válassza az **alkalmazás** lehetőséget.
         1. Válassza a **Page Access Token** (Oldalhozzáférési jogkivonat) elemet, majd küldjön egy **GET** kérést.
-        1. A válaszban kattintson a **Page ID** (Oldal azonosítója) elemre.
+        1. Válassza ki az **oldal azonosítóját** a válaszban.
         1. Fűzze hozzá a **/subscribed_apps** sztringet az URL-címhez, majd küldjön egy **GET** (üres válasz) kérést.
-        1. Küldjön el egy **POST** kérést. A következő választ fogja kapni: **success: true** .
+        1. Küldjön el egy **POST** kérést. A következő választ fogja kapni: **success: true**.
 
 3. Lejárati idővel nem rendelkező Graph API hozzáférési jogkivonat létrehozása.
 
@@ -159,7 +159,7 @@ A megoldás a Facebook-oldalon közzétett összes képet és szöveget elküldi
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban egy olyan programot állít be, amely a termékek rendszerképeinek elemzésére szolgál, és lehetővé teszi a felülvizsgálati csapat számára, hogy megalapozott döntéseket hozhasson a tartalom moderálásával kapcsolatban. Következő lépésként tekintse meg a képek moderálásának részleteit.
+Ebben az oktatóanyagban egy olyan programot állít be, amellyel elemezheti a termék rendszerképeit, megcímkézheti a termékeket, és lehetővé teheti, hogy a felülvizsgálati csapat tájékozott döntéseket hozhasson a tartalom moderálásával kapcsolatban. Következő lépésként tekintse meg a képek moderálásának részleteit.
 
 > [!div class="nextstepaction"]
 > [Képmoderálás](./image-moderation-api.md)

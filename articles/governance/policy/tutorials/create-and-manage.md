@@ -1,14 +1,14 @@
 ---
 title: 'Oktatóanyag: szabályzatok létrehozása a megfelelőség kikényszerítása érdekében'
 description: Ebben az oktatóanyagban szabályzatokat alkalmaz a szabványok betartatására, a költségek szabályozására, a biztonság fenntartására és a vállalati szintű tervezési alapelvek kiszabására.
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: tutorial
-ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005435"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221193"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 
@@ -71,6 +71,10 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 1. Ne törölje **a Szervizelési feladat létrehozása műveletet** . Ez a mező lehetővé teszi egy feladat létrehozását, amely az új vagy frissített erőforrások mellett módosítja a meglévő erőforrásokat. További információ: [erőforrások szervizelése](../how-to/remediate-resources.md).
 
 1. A **felügyelt identitás létrehozása automatikusan be** van jelölve, mivel ez a házirend-definíció a [módosítás](../concepts/effects.md#modify) hatását használja. Az **engedélyek** a házirend-definíció alapján automatikusan a _közreműködőre_ vannak beállítva. További információkért lásd a [felügyelt identitásokat](../../../active-directory/managed-identities-azure-resources/overview.md) és a [szervizelési biztonsági működését](../how-to/remediate-resources.md#how-remediation-security-works).
+
+1. Válassza a **nem megfelelőségi üzenetek** fület a varázsló tetején.
+
+1. A **nem megfelelőségi üzenet** beállítása _Ehhez az erőforráshoz nem tartozik a szükséges címkével_. Ez az egyéni üzenet akkor jelenik meg, ha egy erőforrást megtagadnak vagy a nem megfelelő erőforrásokat a normál kiértékelés során.
 
 1. Válassza a **felülvizsgálat + létrehozás** fület a varázsló tetején.
 
@@ -544,7 +548,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - Feloldott egy nem megfelelő vagy elutasított erőforrást
 > - Megvalósított egy új szabályzatot a vállalaton belül
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

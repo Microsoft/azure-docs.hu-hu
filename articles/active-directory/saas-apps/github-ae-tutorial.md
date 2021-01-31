@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 3628cb6dbb397b561ff91ba6b6747293a39fd602
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632783"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHub AE-vel
 
@@ -71,7 +71,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal a **GITHUB AE** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -93,11 +93,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![image](common/default-attributes.png)
 
-1. A fentieken kívül a GitHub AE-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
-    
-    | Name |  Forrás attribútum|
-    | ----------- | --------- |
-    | adminisztrátor | true |
+1. **Felhasználói attribútumok & jogcímek** szerkesztése.
+
+1. Kattintson az **új jogcím hozzáadása** lehetőségre, és adja meg a nevet **rendszergazdaként** a szövegmezőben.
+
+1. Bontsa ki a **jogcím feltételeit** , és válassza a **tagok** lehetőséget a **felhasználói típus** közül
+
+1. Kattintson a **csoportok kiválasztása** elemre, és keresse meg azt a **csoportot** , amelyhez be kívánja vonni ezt a jogcímet, ahol a tagjainak rendszergazdáknak kell lenniük a GHAE.
+
+1. Válassza ki a **forrás** **attribútumát** , és adja meg a **true** **értéket az értékhez**. 
+
+10. Kattintson a **Mentés** gombra.
+
+    ![jogcím kezelése](./media/github-ae-tutorial/administrator.png)
 
     > [!NOTE]
     > A jogcím hozzáadására vonatkozó utasítások megismeréséhez kövesse a [hivatkozást](https://docs.github.com/en/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad).
