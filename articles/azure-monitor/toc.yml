@@ -329,6 +329,8 @@
               href: platform/data-sources-linux-applications.md
             - name: IIS-naplók
               href: platform/data-sources-iis-logs.md
+            - name: Windows esemény-nyomkövetési az adatgyűjtést
+              href: platform/data-sources-event-tracing-windows.md
             - name: Egyéni naplók
               href: platform/data-sources-custom-logs.md
             - name: Egyéni mezők

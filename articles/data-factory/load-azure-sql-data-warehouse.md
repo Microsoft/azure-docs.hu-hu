@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/29/2020
+ms.openlocfilehash: 8071b0fb08f6456b4eb59a3dae875ab0c90ab64d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005429"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223498"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
@@ -126,7 +126,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     b. Az **új társított szolgáltatás** oldalon válassza ki a Storage-fiókját, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.
 
-    c. A **Speciális beállítások** szakaszban válassza a **típus alapértelmezett használata** lehetőséget, majd kattintson a **tovább** gombra.
+    c. Törölje az **alapértelmezett típus használata** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![A bázisterület konfigurálása](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

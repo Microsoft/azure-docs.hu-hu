@@ -10,13 +10,13 @@ ms.service: multiple
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/11/2019
-ms.openlocfilehash: bb9f2673eb080ee2919297fcbb5199f99d176bce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/29/2021
+ms.openlocfilehash: 1d9e43aafbe1f9fdd48596c54138075e23a25590
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013683"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222916"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Cosmos DB-ben (SQL API) az Azure Data Factory használatával
 
@@ -160,6 +160,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 | lekérdezés |Az adatolvasás Azure Cosmos DB lekérdezésének megadásához.<br/><br/>Példa:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Ha nincs megadva, a rendszer az SQL-utasítást hajtja végre: `select <columns defined in structure> from mycollection` |
 | preferredRegions | Azoknak a régióknak az előnyben részesített listája, amelyekhez csatlakozni kíván az adatok Cosmos DBból való beolvasása során. | No |
 | pageSize | A lekérdezési eredményben szereplő dokumentumok száma oldalanként. Az alapértelmezett érték a "-1", ami azt jelenti, hogy a szolgáltatás oldalsó dinamikus oldalának mérete legfeljebb 1000. | No |
+| detectDatetime | Azt határozza meg, hogy a rendszer a dátumokat a dokumentumokban szereplő karakterlánc-értékek alapján vizsgálja-e. Az engedélyezett értékek: **true** (alapértelmezett), **false**. | No |
 
 Ha "DocumentDbCollectionSource" típusú forrást használ, továbbra is támogatja a-t a visszafelé való kompatibilitás érdekében. Azt javasoljuk, hogy használja az új modellt, amely gazdagabb képességeket biztosít az adatok Cosmos DBból való másolásához.
 
@@ -204,7 +205,7 @@ Ha Cosmos DBről másol adatokból, kivéve, ha [JSON-dokumentumokat kíván exp
 
 Az adatAzure Cosmos DB (SQL API) másolásához állítsa a fogadó **típust** a másolás tevékenység **DocumentDbCollectionSink**. 
 
-A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
+A másolási tevékenység fogadója szakasz a következő  tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
@@ -295,13 +296,16 @@ A Azure Cosmos DB vonatkozó beállítások a fogadó átalakítás **Beállít�
 * Nincs: a gyűjteményhez nem kerül sor művelet.
 * Újból létrehozva: a gyűjtemény eldobása és újbóli létrehozása megtörténik
 
-**Köteg mérete**: azt határozza meg, hogy hány sort kell megírni az egyes gyűjtők. A nagyobb méretű kötegek növelik a tömörítési és a memória-optimalizálást, de a gyorsítótárban tárolt adatmennyiség miatt kifogytak a memória
+**Batch-méret**: egy egész szám, amely azt jelöli, hogy hány objektumot ír a rendszer az egyes kötegekben Cosmos db gyűjteménybe. Általában az alapértelmezett batch-mérettől kezdve elegendő. Az érték további finomhangolásához vegye figyelembe a következőket:
+
+- Cosmos DB korlátozza az egyszeri kérelmek méretét 2 MB-ra. A képlet a "kérelem mérete = egyetlen dokumentum mérete * batch size". Ha a "kérés mérete túl nagy" hibaüzenet jelenik meg, csökkentse a Batch méret értékét.
+- Minél nagyobb a köteg mérete, annál jobb átviteli sebességű ADF érhető el, míg a számítási feladatok elvégzéséhez elegendő RUs kiosztása szükséges.
 
 **Partíciós kulcs:** Adjon meg egy karakterláncot, amely a gyűjtemény partíciós kulcsát jelöli. Például: ```/movies/title```
 
 **Átviteli sebesség:** Adja meg a CosmosDB-gyűjteményre alkalmazni kívánt RUs számának nem kötelező értékét az adott adatfolyam minden egyes végrehajtásához. Minimális értéke 400.
 
-**Írási átviteli sebesség költségvetése:** Egész szám, amely a tömeges betöltési Spark-feladatokhoz lefoglalni kívánt RUs számát jelöli. Ez a szám a gyűjteményhez lefoglalt teljes átviteli sebességen kívül esik.
+**Írási átviteli sebesség költségvetése:** Egy egész szám, amely az adatfolyam-írási művelethez lefoglalni kívánt RUs-t jelöli, a gyűjteményhez lefoglalt teljes átviteli sebességtől számítva.
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 
@@ -324,6 +328,6 @@ Séma – agnosztikus másolás:
 
 Ha például SQL Serverról Azure Cosmos DBra végez áttelepítést, a másolási tevékenység könnyedén leképezheti a táblázatos adatokat a forrásból a JSON-dokumentumok Cosmos DBba való lelapulása érdekében. Bizonyos esetekben érdemes lehet újratervezni az adatmodellt úgy, hogy optimalizálja a NoSQL használati eseteit az [Azure Cosmos db adatmodellezése](../cosmos-db/modeling-data.md)alapján, például az adatok denormalizálása egy JSON-dokumentumban található összes kapcsolódó alelem beágyazásával. Ilyen esetben tekintse át [ezt a cikket](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md) , amely bemutatja, hogyan érheti el Azure Data Factory másolási tevékenység használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintheti meg. lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

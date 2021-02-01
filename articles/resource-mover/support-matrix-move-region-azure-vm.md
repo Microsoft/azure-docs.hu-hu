@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572187"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222798"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -154,7 +154,7 @@ Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | 1684
 --- | --- | ---
 Hálózati adapter | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során. 
 Belső terheléselosztó | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
-Nyilvános Load Balancer | Egyelőre nem támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
+Nyilvános Load Balancer | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Nyilvános IP-cím | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.<br/><br/> A nyilvános IP-cím a régióra jellemző, és az áthelyezés után nem lesz megtartva a célként megadott régióban. Tartsa szem előtt, ha módosítja a hálózati beállításokat (beleértve a terheléselosztási szabályokat is) a célhelyen.
 Hálózati biztonsági csoporttal | Támogatott | Válasszon egy meglévő erőforrást a célként megadott régióban, vagy hozzon létre egy új erőforrást az előkészítési folyamat során.  
 Fenntartott (statikus) IP-cím | Támogatott | Jelenleg nem konfigurálható. Az érték alapértelmezés szerint a forrás értékét. <br/><br/> Ha a forrás virtuális gépen lévő hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózatnak ugyanaz az IP-címe, akkor a cél virtuális géphez van rendelve.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik ugyanazzal az IP-címmel, akkor a virtuális gép kezdeményezésének áthelyezése sikertelen lesz.
@@ -172,7 +172,7 @@ Az áthelyezni kívánt Azure-beli virtuális gépeknek kimenő hozzáférésre 
 
 **Név** | **Azure nyilvános felhő** | **Részletek** 
 --- | --- | --- 
-Storage | `*.blob.core.windows.net`  | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. 
+Tárolás | `*.blob.core.windows.net`  | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. 
 Azure Active Directory | `login.microsoftonline.com`  | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. 
 Replikáció | `*.hypervrecoverymanager.windowsazure.com` | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. 
 Service Bus | `*.servicebus.windows.net` | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. 
@@ -188,6 +188,6 @@ Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsola
 - Javasoljuk, hogy tesztelje a szabályokat nem éles környezetben. [Tekintse át a példákat](../site-recovery/azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon [egy Azure-beli virtuális gépet](tutorial-move-region-virtual-machines.md) egy másik régióba helyezni az erőforrás-mozgató használatával.

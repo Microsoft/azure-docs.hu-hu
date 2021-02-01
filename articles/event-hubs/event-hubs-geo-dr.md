@@ -3,18 +3,18 @@ title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e0a207630898eb7fe7613acb311364a64f9b38b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681683"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222882"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 
 Az adatfeldolgozási erőforrások katasztrofális leállása elleni rugalmasság számos vállalat számára szükséges, és bizonyos esetekben az iparági szabályozásoknak is meg kell követelniük. 
 
-Az Azure Event Hubs már az egyes gépek katasztrofális meghibásodásának kockázatát, vagy akár az adatközponton belüli több meghibásodási tartományra kiterjedő fürtöket is végrehajtja, és olyan átlátható hibák észlelését és feladatátvételi mechanizmusokat valósít meg, amelyekkel a szolgáltatás továbbra is a biztos szolgáltatási szinten fog működni, és jellemzően az ilyen hibák esetén általában észrevehető megszakítások nélkül. Ha egy Event Hubs névtér lett létrehozva a [rendelkezésre állási zónák](../availability-zones/az-overview.md)számára engedélyezett beállítással, a kockázat kiesési kockázat a három fizikailag különálló létesítmény között tovább terjed, és a szolgáltatás elegendő kapacitási tartalékokkal rendelkezik, amelyek azonnal megbirkóznak a teljes létesítmény teljes, katasztrofális elvesztésével. 
+Az Azure Event Hubs már az egyes gépek katasztrofális meghibásodásának kockázatát, vagy akár az adatközponton belüli több meghibásodási tartományra kiterjedő fürtöket is végrehajtja, és olyan átlátható hibák észlelését és feladatátvételi mechanizmusokat valósít meg, amelyekkel a szolgáltatás továbbra is a biztos szolgáltatási szinten fog működni, és jellemzően az ilyen hibák esetén általában észrevehető megszakítások nélkül. Ha egy Event Hubs névtér lett létrehozva a [rendelkezésre állási zónák](../availability-zones/az-overview.md)számára engedélyezett beállítással, a kiesési kockázat tovább terjed három, fizikailag elkülönített létesítmény között, és a szolgáltatás elegendő kapacitási tartalékokkal rendelkezik, hogy azonnal megbirkózzanak a teljes létesítmény teljes, katasztrofális elvesztésével. 
 
 A rendelkezésre állási zónák támogatásával rendelkező összes aktív Azure Event Hubs-fürt a súlyos hardveres hibákkal szembeni rugalmasságot és a teljes adatközpont-létesítmények katasztrofális elvesztését is biztosítja. Mégis előfordulhat, hogy súlyos helyzetek merülnek fel a fizikai megsemmisüléssel szemben, hogy még ezek az intézkedések is nem megfelelő védelmet biztosítanak. 
 
@@ -23,7 +23,7 @@ A Event Hubs geo-vész-helyreállítási funkció úgy lett kialakítva, hogy k�
 A Geo-Disaster helyreállítási funkciója biztosítja, hogy a rendszer a névtér (Event Hubs, fogyasztói csoportok és beállítások) teljes konfigurációját folyamatosan replikálja egy elsődleges névtérről egy másodlagos névtérre, ha párosítva van, és lehetővé teszi, hogy a csak egyszer használható feladatátvételt kezdeményezzen az elsődlegesről a másodlagosra, bármikor. A feladatátvételi áthelyezés a névtér kiválasztott aliasának nevét a másodlagos névtérre irányítja át, majd megszakítja a párosítást. A feladatátvétel majdnem azonnal megkezdődik. 
 
 > [!IMPORTANT]
-> A szolgáltatás lehetővé teszi, hogy a műveletek pillanatnyi folytonossága ugyanazzal a konfigurációval történjen, de **az esemény-adatok replikálását nem**. Kivéve, ha a katasztrófa az összes zóna elvesztését okozta, az esemény adatai megmaradnak az elsődleges Event hub-ban a feladatátvétel visszaszerzése után, és a korábbi események a hozzáférés visszaállítása után is beszerezhetők. Az események replikálása és a megfelelő névterek aktív/aktív konfigurációkban való üzemeltetése az kimaradások és a katasztrófák megbirkózása érdekében ne támaszkodjon erre a földrajzi katasztrófa utáni helyreállítási szolgáltatásra, de kövesse a [replikálási útmutatót](event-hubs-federation-overview.md).  
+> A szolgáltatás lehetővé teszi, hogy a műveletek pillanatnyi folytonossága ugyanazzal a konfigurációval történjen, de **az esemény-adatok replikálását nem**. Kivéve, ha a katasztrófa az összes zóna elvesztését okozta, a feladatátvétel után az elsődleges esemény központjában megőrzött esemény-adatok helyreállítható, és a korábbi események a hozzáférés visszaállítása után is beszerezhetők. Az események replikálása és a megfelelő névterek aktív/aktív konfigurációkban való üzemeltetése az kimaradások és a katasztrófák megbirkózása érdekében ne támaszkodjon erre a földrajzi katasztrófa utáni helyreállítási szolgáltatásra, de kövesse a [replikálási útmutatót](event-hubs-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Kimaradások és katasztrófák
 
@@ -56,10 +56,10 @@ Az elsődleges és a másodlagos névterek következő kombinációi támogatott
 
 | Elsődleges névtér | Másodlagos névtér | Támogatott | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Igen | 
-| Standard | Dedikált | Igen | 
-| Dedikált | Dedikált | Igen | 
-| Dedikált | Standard | Nem | 
+| Standard | Standard | Yes | 
+| Standard | Dedikált | Yes | 
+| Dedikált | Dedikált | Yes | 
+| Dedikált | Standard | No | 
 
 > [!NOTE]
 > Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 

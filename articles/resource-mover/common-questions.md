@@ -5,20 +5,20 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600653"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222815"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
 Ez a cikk az Azure- [erőforrás-mozgatóval](overview.md)kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="is-resource-mover-generally-available"></a>Általánosan elérhető az erőforrás-mozgató?
 
@@ -62,7 +62,7 @@ Igen, mind a tranzit, mind a nyugalmi állapotban.
 
 ### <a name="how-is-managed-identity-used-in-resource-mover"></a>Hogyan használják a felügyelt identitást az erőforrás-mozgató?
 
-A [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity (MIS)) Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure ad-ben.
+A [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity (MSI)) Azure-szolgáltatásokat biztosít az Azure ad-ben automatikusan felügyelt identitással.
 - Az erőforrás-mozgató felügyelt identitást használ, hogy az Azure-előfizetések hozzáférjenek az erőforrások régiók közötti áthelyezéséhez.
 - Az áthelyezési gyűjteménynek szüksége van egy rendszerhez rendelt identitásra, amely hozzáféréssel rendelkezik az áthelyezni kívánt erőforrásokat tartalmazó előfizetéshez.
 
@@ -74,7 +74,7 @@ A [felügyelt identitás](../active-directory/managed-identities-azure-resources
 Az Azure Resource Mover felügyelt identitásának eléréséhez legalább a következő engedélyekre van szükség: 
 
 - Engedély a felhasználói előfizetésben lévő erőforrások írásához/létrehozásához, amely a *közreműködő* szerepkörrel érhető el. 
-- Engedély szerepkör-hozzárendelések létrehozásához. Általában elérhető a *tulajdonos* vagy a *felhasználó hozzáférés-felügyeleti* szerepköreivel, illetve olyan egyéni szerepkörrel, amely rendelkezik a *Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély* hozzárendelésével. Ez az engedély nem szükséges, ha az adatmegosztási erőforrás felügyelt identitása már hozzáférést kap az Azure-adattárhoz. 
+- Engedély szerepkör-hozzárendelések létrehozásához. Általában elérhető a *tulajdonos* vagy a *felhasználó hozzáférés-felügyeleti* szerepköreivel, illetve olyan egyéni szerepkörrel, amely rendelkezik a *Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély* hozzárendelésével. Erre az engedélyre nincs szükség, ha az adatmegosztási erőforrás felügyelt identitása már hozzáféréssel rendelkezik az Azure-adattárhoz. 
  
 Amikor erőforrásokat ad hozzá a Resource Mover hubhoz a portálon, az engedélyek kezelése automatikus, ha a felhasználó rendelkezik a fent ismertetett engedélyekkel. Ha erőforrásokat ad hozzá a PowerShell-lel, manuálisan rendelje hozzá az engedélyeket.
 
@@ -87,7 +87,7 @@ Amikor erőforrásokat ad hozzá a Resource Mover hubhoz a portálon, az engedé
 --- | ---
 Ha első alkalommal ad hozzá egy erőforrást, Ön nem *közreműködő* és *felhasználói hozzáférésű rendszergazda* (vagy *tulajdonos*). | Az előfizetéshez tartozó *közreműködői* és *felhasználói hozzáférési rendszergazdai* (vagy *tulajdonosi*) engedélyekkel rendelkező fiókot használjon.
 Az erőforrás-mozgató felügyelt identitás nem rendelkezik a szükséges szerepkörrel. | Adja hozzá a közreműködő és a felhasználói hozzáférés rendszergazdai szerepkört.
-Az erőforrás-mozgató felügyelt identitás *none*értékre lett visszaállítva. | Egy rendszerhez rendelt identitás újraengedélyezése a gyűjtemény áthelyezése > **identitásban**. Azt is megteheti, hogy újra hozzáadja az erőforrást a **Hozzáadás erőforrásokhoz**, ami ugyanezt teszi.  
+Az erőforrás-mozgató felügyelt identitás *none* értékre lett visszaállítva. | Egy rendszerhez rendelt identitás újraengedélyezése a gyűjtemény áthelyezése > **identitásban**. Azt is megteheti, hogy újra hozzáadja az erőforrást a **Hozzáadás erőforrásokhoz**, ami ugyanezt teszi.  
 Az előfizetés átkerült egy másik bérlőre. | Tiltsa le, majd engedélyezze a felügyelt identitást az áthelyezési gyűjtemény számára.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Hogyan végezhetek együtt több lépést?

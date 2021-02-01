@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724016"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223406"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -363,7 +363,7 @@ Igen. Lásd: [Egyéni DNS konfigurálása az Azure SQL felügyelt példányaihoz
 
 **Használhatok DNS-frissítést?**
 
-Jelenleg nem biztosítunk olyan szolgáltatást, amely frissíti a DNS-kiszolgáló konfigurációját a felügyelt SQL-példányhoz.
+Igen. Lásd: [a virtuális hálózat DNS-kiszolgálóinak szinkronizálása beállítás az SQL felügyelt példányának virtuális fürtjén](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md).
 
 A DNS-konfigurációt a rendszer végül frissíti:
 

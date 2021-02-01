@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567418"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223277"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag erőforrás-szerepköreinek módosítása az Azure AD-jogosultságok kezelésében
 
@@ -37,7 +37,7 @@ Ha erőforrásokat kell hozzáadnia egy hozzáférési csomaghoz, ellenőrizze, 
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **katalógus** elemre, majd nyissa meg a katalógust.
 
@@ -53,11 +53,11 @@ Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjte
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson az **erőforrás-szerepkörök**elemre.
+1. A bal oldali menüben kattintson az **erőforrás-szerepkörök** elemre.
 
 1. Kattintson az **erőforrás-Szerepkörök hozzáadása** elemre, hogy megnyissa az erőforrás-Szerepkörök hozzáadása a csomaghoz lapot.
 
@@ -90,14 +90,14 @@ További információ: csoportok és [Microsoft 365 csoportok és Microsoft Team
 
     Miután kiválasztotta a csoportot vagy a csapatot, az **altípus** oszlopban a következő altípusok egyike jelenik meg:
 
-    | Altípus | Leírás |
+    | Altípus | Description |
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
     | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
     | Microsoft 365 | Microsoft 365 csoport, amely nem engedélyezett a csapat számára. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
     | Csoport | Microsoft 365 csoportok, amelyeken engedélyezve van a csoport. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
 
-1. A **szerepkör** listából válassza a **tulajdonos** vagy a **tag**elemet.
+1. A **szerepkör** listából válassza a **tulajdonos** vagy a **tag** elemet.
 
     Általában kiválasztja a tag szerepkört. Ha a tulajdonos szerepkört választja, a felhasználók más tagokat vagy tulajdonosokat is hozzáadhatnak vagy eltávolíthatnak.
 
@@ -144,7 +144,13 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
 1. Az **erőforrás-szerepkörök felvétele a csomagba** lapon kattintson a **SharePoint-helyek** elemre a SharePoint Online-webhelyek kiválasztása panel megnyitásához.
 
-1. Válassza ki azokat a SharePoint Online-webhelyeket, amelyeket fel szeretne venni a hozzáférési csomagba.
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint-helyek kiválasztása – portál nézet":::
+
+1. Ha a SharePointhoz [több földrajzi](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) hely van engedélyezve, válassza ki azt a környezetet, amelyben a helyeket ki szeretné választani.
+    
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint multi-Geo-helyek kiválasztása":::
+
+1. Ha a többszörös földrajzi hely nincs engedélyezve, nem kell kiválasztania egy környezetet. Válassza ki azokat a SharePoint Online-webhelyeket, amelyeket fel szeretne venni a hozzáférési csomagba.
 
     ![Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint Online-webhelyek kiválasztása](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
@@ -162,15 +168,15 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson az **erőforrás-szerepkörök**elemre.
+1. A bal oldali menüben kattintson az **erőforrás-szerepkörök** elemre.
 
 1. Az erőforrás-szerepkörök listájában keresse meg az eltávolítani kívánt erőforrás-szerepkört.
 
-1. Kattintson a három pontra (**..**.), majd az **erőforrás-szerepkör eltávolítása**elemre.
+1. Kattintson a három pontra (**..**.), majd az **erőforrás-szerepkör eltávolítása** elemre.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók számára a rendszer automatikusan visszavonja a hozzáférését erre az erőforrás-szerepkörre, ha az eltávolításra kerül.
 

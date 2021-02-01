@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089258"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223389"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow összekötése IT-szolgáltatásmenedzsmenti csatoló
 
@@ -29,10 +29,11 @@ További információ a ITSMC telepítéséről: [a it-szolgáltatásmenedzsment
 
 ### <a name="oauth-setup"></a>OAuth-telepítő
 
-A ServiceNow támogatott verziói a következők: Orlando, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki és Genf.
+A ServiceNow támogatott verziói a következők: Párizs, Orlandó, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki és Genf.
 
 A ServiceNow-rendszergazdáknak a ServiceNow-példányhoz meg kell adniuk az ügyfél-azonosítót és az ügyfél titkos kulcsát. Szükség szerint tekintse meg a következő információkat:
 
+- [OAuth beállítása Párizshoz](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth beállítása az Orlando-hoz](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [A New York-i OAuth beállítása](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth beállítása Madridhoz](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

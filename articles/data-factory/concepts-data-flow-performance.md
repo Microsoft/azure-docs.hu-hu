@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 01/29/2021
+ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944982"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222939"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -244,7 +244,7 @@ Az **egyetlen fájlba történő kimenet** egyetlen partícióba egyesíti az ö
 
 A CosmosDB való íráskor az átviteli sebesség és a köteg méretének módosítása az adatáramlás végrehajtása során javíthatja a teljesítményt. Ezek a módosítások csak az adatfolyam-tevékenységek futtatásakor lépnek érvénybe, és a következtetést követően visszatérnek az eredeti gyűjtemény beállításaihoz. 
 
-**Köteg mérete:** Kiszámítja az adatainak durva sorszámát, és győződjön meg arról, hogy a sor mérete * batch mérete kisebb, mint 2 000 000. Ha igen, növelje a köteg méretét, hogy jobb teljesítményt kapjon
+**Köteg mérete:** Általában az alapértelmezett batch-mérettől kezdve elegendő. Az érték további finomhangolásához számítsa ki az adatainak durva mennyiségét, és győződjön meg arról, hogy az objektum mérete * a Batch mérete kisebb, mint 2 MB. Ha igen, növelheti a köteg méretét, hogy jobb átviteli sebességet kapjon.
 
 **Átviteli sebesség:** Itt állíthatja be a nagyobb átviteli sebesség beállítást, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb RU-költségek magas átviteli sebességen alapulnak.
 

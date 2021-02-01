@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353170"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222865"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
@@ -94,13 +94,13 @@ Mostantól különböző nyelveken található tudásbázisok is megadhatók ugy
 
 ### <a name="ingest-data-sources"></a>Adatforrások betöltése
 
-Egy Tudásbázis létrehozásához a következő betöltött [adatforrások](../index.yml) egyikét használhatja:
+Egy Tudásbázis létrehozásához a következő betöltött [adatforrások](../Concepts/data-sources-and-content.md) egyikét használhatja:
 
 * Nyilvános URL-cím
 * Privát SharePoint URL-címe
 * Fájl
 
-A betöltési folyamat a [támogatott tartalomtípusokat](../index.yml) Markdown alakítja. A válasz további szerkesztése a Markdown- *mel* történik. A Tudásbázis létrehozása után szerkesztheti a [QnA párokat](question-answer-set.md) a QnA Maker-portálon, [Rich Text authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)használatával.
+A betöltési folyamat a [támogatott tartalomtípusokat](../reference-document-format-guidelines.md) Markdown alakítja. A válasz további szerkesztése a Markdown- *mel* történik. A Tudásbázis létrehozása után szerkesztheti a [QnA párokat](question-answer-set.md) a QnA Maker-portálon, [Rich Text authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)használatával.
 
 ### <a name="data-format-considerations"></a>Adatformátumra vonatkozó megfontolások
 
@@ -124,7 +124,7 @@ Meg kell terveznie a beszélgetési folyamatát egy hurkoval, hogy a felhasznál
 
 A közreműködők más fejlesztők is lehetnek, akik megosztják a Tudásbázis-alkalmazás teljes fejlesztői veremét, vagy csak a tudásbázist használják.
 
-A Tudásbázis authoring számos [szerepköralapú hozzáférési engedélyt](../index.yml) támogat, amelyeket a Azure Portal alkalmaz a közreműködő képességei hatókörének korlátozására.
+A Tudásbázis authoring számos [szerepköralapú hozzáférési engedélyt](../reference-role-based-access-control.md) támogat, amelyeket a Azure Portal alkalmaz a közreműködő képességei hatókörének korlátozására.
 
 ## <a name="integration-with-client-applications"></a>Integráció az ügyfélalkalmazások alkalmazásával
 
@@ -223,7 +223,7 @@ A Tudásbázis megosztja a Cognitive Search indexet az QnA Maker erőforrás min
 
 Ahhoz, hogy _ugyanaz a pontszám_ legyen a `test` és a `production` Tudásbázisban, el kell különíteni egy QnA Maker erőforrást egyetlen tudásbázisba. Ebben az architektúrában az erőforrásnak csak az elkülönített batch-teszt után kell élnie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md)
 * [Kérdés-válasz párok](question-answer-set.md)
