@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757711"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226471"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -83,7 +83,7 @@ További információ ezekről a javaslatokról a [biztonsági javaslatok hivatk
 
 **Változás becsült dátuma:** Q2 2021
 
-Az **SQL-adatbázisokban lévő bizalmas adatokra** vonatkozó ajánlás aktuális verzióját az **adatok besorolása** biztonsági ellenőrzés alá kell sorolni, és egy új, a Microsoft adatbesorolási stratégiájának jobban illeszkedő verziójára kell lecserélni. Ennek eredményeképpen:
+Az **SQL-adatbázisokban a bizalmas adatokra** vonatkozó ajánlás aktuális **verzióját a Microsoft adatbesorolási** stratégiájával jobban illeszkedő új verzióra cseréli a rendszer. Ennek eredményeképpen:
 
 - A javaslat a továbbiakban nem lesz hatással a biztonságos pontszámra
 - A biztonsági vezérlő ("adatbesorolás alkalmazása") már nem lesz hatással a biztonságos pontszámra
@@ -91,6 +91,6 @@ Az **SQL-adatbázisokban lévő bizalmas adatokra** vonatkozó ajánlás aktuál
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A termék legutóbbi módosításaival kapcsolatban tekintse [meg az Újdonságok a Azure Security Center?](release-notes.md)című témakört.

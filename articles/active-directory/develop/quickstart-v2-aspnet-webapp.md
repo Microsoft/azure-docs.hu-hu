@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 122262ff6d49174b19773800f2db8c7d29506bb9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938153"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225765"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
@@ -54,7 +54,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Adja meg az alkalmazás **nevét** , például: `ASPNET-Quickstart` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 > 1. Adja hozzá `https://localhost:44368/` az **ÁTirányítási URI**-t, majd válassza a **regisztráció** lehetőséget.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
-> 1. Az **implicit támogatás** alszakasza alatt válassza az **azonosító tokenek** lehetőséget.
+> 1. Az **implicit engedélyezés és a hibrid folyamatok** szakaszban válassza az **azonosító tokenek** elemet.
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -166,7 +166,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |

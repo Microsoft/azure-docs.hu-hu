@@ -1,18 +1,18 @@
 ---
 title: Egyéni beállítások konfigurálása
 description: Konfigurálja a teljes Azure App Service környezetre vonatkozó beállításokat. Megtudhatja, hogyan teheti meg Azure Resource Manager-sablonokkal.
-author: stefsch
+author: ccompy
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 10/03/2020
-ms.author: stefsch
+ms.date: 01/29/2021
+ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713287"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226389"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service környezetek egyéni konfigurációs beállításai
 ## <a name="overview"></a>Áttekintés
@@ -61,7 +61,7 @@ Ha például egy App Service Environment négy előtérrel rendelkezik, a konfig
 
 ## <a name="enable-internal-encryption"></a>Belső titkosítás engedélyezése
 
-A App Service Environment fekete Box-rendszerként működik, ahol a belső összetevők vagy a rendszeren belüli kommunikáció nem látható. A nagyobb átviteli sebesség engedélyezéséhez a titkosítás alapértelmezés szerint nincs engedélyezve a belső összetevők között. A rendszer biztonságban van, mivel a forgalom teljesen elérhetetlenné válik a figyeléshez vagy a hozzáféréshez. Ha a megfelelőségi követelmény azonban az, hogy az adatok elérési útja teljes titkosítást igényel a végponttól a végéig, a clusterSetting lehetővé teszi ezt a lehetőséget.  
+A App Service Environment fekete Box-rendszerként működik, ahol a belső összetevők vagy a rendszeren belüli kommunikáció nem látható. A nagyobb átviteli sebesség engedélyezéséhez a titkosítás alapértelmezés szerint nincs engedélyezve a belső összetevők között. A rendszer biztonságban van, mivel a forgalom nem érhető el a figyeléshez vagy a hozzáféréshez. Ha a megfelelőségi követelmény azonban az, hogy az adatok elérési útja teljes titkosítást igényel a végponttól egészen a végéig, a teljes adatelérési út titkosítása clusterSetting is engedélyezhető.  
 
 ```json
 "clusterSettings": [
@@ -71,10 +71,10 @@ A App Service Environment fekete Box-rendszerként működik, ahol a belső öss
     }
 ],
 ```
-Ezzel titkosítja a belső hálózati forgalmat az előtérben és a feldolgozók között, titkosítja a lapozófájlt, és titkosítja a munkavégző lemezeket is. A InternalEncryption-clusterSetting engedélyezése után hatással lehet a rendszer teljesítményére. Ha a módosítást engedélyezi a InternalEncryption engedélyezéséhez, a beadása instabil állapotban lesz, amíg a változást teljes mértékben nem propagálja. A változtatások teljes propagálása eltarthat néhány óráig, attól függően, hogy hány példányt használ a központilag. Kifejezetten javasoljuk, hogy ezt a szolgáltatást a szolgáltatón kívül ne engedélyezze. Ha ezt egy aktívan használt benyújtó eszközön kell engedélyeznie, javasoljuk, hogy a művelet befejeződése előtt irányítsa át a forgalmat egy biztonsági mentési környezetbe. 
+Ha a InternalEncryption értéke TRUE (igaz) értékre van állítva, a belső hálózati forgalmat az előtérben és a dolgozók között titkosítja, titkosítja a lapozófájlt, és titkosítja a munkavégző lemezeket. A InternalEncryption-clusterSetting engedélyezése után hatással lehet a rendszer teljesítményére. Ha a módosítást engedélyezi a InternalEncryption engedélyezéséhez, a beadása instabil állapotban lesz, amíg a változást teljes mértékben nem propagálja. A változtatások teljes propagálása eltarthat néhány óráig, attól függően, hogy hány példányt használ a központilag. Azt javasoljuk, hogy a InternalEncryption ne engedélyezze a központilag, amíg használatban van. Ha a InternalEncryption-t aktív használatú benyújtó eszközön kell engedélyeznie, javasoljuk, hogy a művelet befejeződése előtt irányítsa át a forgalmat egy biztonsági mentési környezetbe. 
 
 
-## <a name="disable-tls-10-and-tls-11"></a>A TLS 1,0 és a TLS 1,1 letiltása
+## <a name="disable-tls-10-and-tls-11"></a>A TLS 1.0 és a TLS 1.1 letiltása
 
 Ha egy alkalmazáson keresztül szeretné kezelni a TLS-beállításokat, akkor használhatja a [TLS-beállítások érvényesítése](../configure-ssl-bindings.md#enforce-tls-versions) dokumentációban ismertetett útmutatást. 
 
@@ -92,13 +92,13 @@ Ha le szeretné tiltani az összes bejövő TLS 1,0-és TLS 1,1-forgalmat egy ki
 A beállítás neve 1,0, de ha be van állítva, akkor a TLS 1,0 és a TLS 1,1 is letiltja.
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS titkosítási csomag sorrendjének módosítása
-Egy másik kérdés az ügyfelektől, ha módosíthatják a kiszolgáló által egyeztetett titkosítási algoritmusok listáját, és ez a **clusterSettings** az alább látható módon történő módosításával is megvalósítható. A rendelkezésre álló titkosítási csomagok listáját [ebből az MSDN-cikkből](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)lehet lekérni.
+A benyújtó a titkosítási csomag alapértelmezett értékről történő módosítását támogatja. A több-bérlős szolgáltatásban használt titkosítási algoritmusok alapértelmezett készlete ugyanaz. A titkosító csomagok módosítása hatással van egy teljes App Service központi telepítésre, ami csak az egybérlős bevezetésben lehetséges. A kiegészítő csomaghoz két titkosító csomag szükséges; TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 és TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256. Ha a szolgáltatót a legerősebb és legkevesebb titkosítási csomaggal szeretné üzemeltetni, akkor csak a két szükséges titkosítási algoritmust használja. Ha úgy szeretné konfigurálni a bejelentését, hogy csak a szükséges titkosítási algoritmusokat használja, módosítsa a **clusterSettings** az alább látható módon. 
 
 ```json
 "clusterSettings": [
     {
         "name": "FrontEndSSLCipherSuiteOrder",
-        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+        "value": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     }
 ],
 ```

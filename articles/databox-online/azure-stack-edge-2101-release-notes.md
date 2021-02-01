@@ -6,18 +6,18 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/29/2021
+ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 025694dc020bb18ce66574bac476f34034353721
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 7c1f78f405a67687168457448f62d46a39da165f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072599"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225124"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Azure Stack Edge Pro a FPGA 2101 kibocsátási megjegyzésekkel
 
-A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Stack Edge Pro 2101-es kiadásának feloldott hibáit a beépített Field programozható Gate array (FPGA) segítségével.
+A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Stack Edge Pro 2101-es kiadásának feloldott hibáit egy beépített mezővel (FPGA).
 
 A kibocsátási megjegyzések folyamatosan frissülnek. A megkerülő megoldással kapcsolatos kritikus problémák észlelése esetén a rendszer hozzáadja azokat. Az Azure Stack Edge-eszköz üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.  
 
@@ -38,7 +38,6 @@ Ez a kiadás a következő frissítéseket is tartalmazza:
 
 - Az összes kumulatív Windows-frissítés és a .NET-keretrendszer frissítései a 2020-es verzióban jelennek meg.
 - A alaplapi felügyeleti vezérlő (BMC) belső vezérlőprogram-verziója a 3.32.32.32-ről a 3.36.36.36-re frissül a gyári telepítés során, hogy az újabb Dell tápegységekkel való inkompatibilitást foglalkozzon.
-- A Azure Data Box Gateway statikus IP-címét a rendszer megőrzi a szoftverfrissítések között.
 - Ez a kiadás támogatja IoT Edge 1.0.9.3 Azure Stack Edge-eszközökön.
 
 ## <a name="known-issues-in-this-release"></a>Az ebben a kiadásban ismert problémák

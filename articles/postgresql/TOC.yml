@@ -611,6 +611,8 @@
           items:
             - name: Figyelés és hangolás
               href: concepts-hyperscale-monitoring.md
+            - name: Naplók
+              href: concepts-hyperscale-audit.md
         - name: Beállítási lehetőségek
           href: concepts-hyperscale-configuration-options.md
         - name: Előre fizetés fenntartott kapacitásért

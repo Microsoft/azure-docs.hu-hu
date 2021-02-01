@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfiguráci
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 9d9a66ddad5bd3511d5372f62558af35cfcb5616
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070689"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226607"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -291,6 +291,27 @@ describe file(attr_path) do
 end
 ```
 
+Adja hozzá a konfigurációban a **AttributesYmlContent** tulajdonságot bármilyen karakterlánccal, értékeként.
+A vendég konfigurációs ügynök automatikusan létrehozza a YAML-fájlt, amelyet az inspec az attribútumok tárolására használ. Lásd az alábbi példát.
+
+```powershell
+Configuration AuditFilePathExists
+{
+    Import-DscResource -ModuleName 'GuestConfiguration'
+
+    Node AuditFilePathExists
+    {
+        ChefInSpecResource 'Audit Linux path exists'
+        {
+            Name = 'linux-path'
+            AttributesYmlContent = "fromParameter"
+        }
+    }
+}
+```
+
+Fordítsa újra a MOF-fájlt a jelen dokumentumban szereplő példák alapján.
+
 A parancsmagok `New-GuestConfigurationPolicy` `Test-GuestConfigurationPolicyPackage` tartalmazzák a **paraméter** nevű paramétert. Ez a paraméter egy szórótábla tartalmaz, amely tartalmazza az egyes paraméterek összes részletét, és automatikusan létrehozza az egyes Azure Policy-definíciók létrehozásához használt fájlok összes szükséges részét.
 
 Az alábbi példa egy házirend-definíciót hoz létre egy fájl elérési útjának naplózásához, ahol a felhasználó a házirend-hozzárendelés időpontjában megadja az elérési utat.
@@ -300,10 +321,10 @@ $PolicyParameterInfo = @(
     @{
         Name = 'FilePath'                             # Policy parameter name (mandatory)
         DisplayName = 'File path.'                    # Policy parameter display name (mandatory)
-        Description = "File path to be audited."      # Policy parameter description (optional)
-        ResourceType = "ChefInSpecResource"           # Configuration resource type (mandatory)
+        Description = 'File path to be audited.'      # Policy parameter description (optional)
+        ResourceType = 'ChefInSpecResource'           # Configuration resource type (mandatory)
         ResourceId = 'Audit Linux path exists'        # Configuration resource property name (mandatory)
-        ResourcePropertyName = "AttributesYmlContent" # Configuration resource property name (mandatory)
+        ResourcePropertyName = 'AttributesYmlContent' # Configuration resource property name (mandatory)
         DefaultValue = '/tmp'                         # Policy parameter default value (optional)
     }
 )
@@ -316,26 +337,10 @@ New-GuestConfigurationPolicy
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
     -Parameter $PolicyParameterInfo `
+    -Platform 'Linux' `
     -Version 1.0.0
 ```
 
-Linux-házirendek esetében adja meg a konfiguráció **AttributesYmlContent** tulajdonságát, és szükség szerint írja felül az értékeket. A vendég konfigurációs ügynök automatikusan létrehozza a YAML-fájlt, amelyet az inspec az attribútumok tárolására használ. Lásd az alábbi példát.
-
-```powershell
-Configuration AuditFilePathExists
-{
-    Import-DscResource -ModuleName 'GuestConfiguration'
-
-    Node AuditFilePathExists
-    {
-        ChefInSpecResource 'Audit Linux path exists'
-        {
-            Name = 'linux-path'
-            AttributesYmlContent = "path: /tmp"
-        }
-    }
-}
-```
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 

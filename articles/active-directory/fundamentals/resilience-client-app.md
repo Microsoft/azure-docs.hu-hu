@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724908"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226590"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Növelje a hitelesítés és az engedélyezés rugalmasságát a fejleszthető ügyfélalkalmazások esetében
 
@@ -178,7 +178,7 @@ Habár a CAE a korai fázisokban van, olyan ügyfélalkalmazások fejlesztésér
 
 Ha erőforrás-API-kat fejleszt, javasoljuk, hogy vegyen részt a [megosztott jelek és események WG](https://openid.net/wg/sse/)-ben. Ezzel a csoporttal együttműködve engedélyezheti a Microsoft identitás-és erőforrás-szolgáltatói közötti biztonsági események megosztását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A folyamatos hozzáférés kiértékelését engedélyező API-k használata az alkalmazásokban](../develop/app-resilience-continuous-access-evaluation.md)
 - [Rugalmasság létrehozása Daemon-alkalmazásokban](resilience-daemon-app.md)

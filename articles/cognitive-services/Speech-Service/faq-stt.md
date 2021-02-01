@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072173"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226556"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
 Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: mi a különbség az alapmodell és a szöveges modell egyéni beszéde között?**
 
@@ -83,7 +83,7 @@ Egy kis idő elteltével az alapmodelleket és az egyéni modelleket is kivonjá
 
 **K: a rendszer naplózza a kérelmeket?**
 
-**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *tartalom naplózása ebből a végpontból* lehetőséget, amikor [Egyéni végpontot hoz létre](./how-to-custom-speech-train-model.md). Az egyéni végpontok létrehozása nélkül is engedélyezheti a hangnaplózást a [SPEECH SDK](speech-sdk.md) -ban a kérelmek alapján. A kérések hang-és felismerési eredményei mindkét esetben a biztonságos tárolóban lesznek tárolva. A Microsoft tulajdonában lévő tárolót használó előfizetések esetén 30 napig lesznek elérhetők.
+**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *tartalom naplózása ebből a végpontból* lehetőséget, amikor [Egyéni végpontot hoz létre](how-to-custom-speech-train-model.md#deploy-a-custom-model). Az egyéni végpontok létrehozása nélkül is engedélyezheti a hangnaplózást a [SPEECH SDK](how-to-use-logging.md) -ban a kérelmek alapján. A kérések hang-és felismerési eredményei mindkét esetben a biztonságos tárolóban lesznek tárolva. A Microsoft tulajdonában lévő tárolót használó előfizetések esetén 30 napig lesznek elérhetők.
 
 A naplózott fájlokat a Speech Studio központi telepítési lapján exportálhatja, ha olyan egyéni végpontot használ, amelyen engedélyezve van a *naplózási tartalom ebből a végpontból* . Ha az SDK-n keresztül engedélyezte a hangnaplózást, hívja meg az [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) -t a fájlok eléréséhez.
 

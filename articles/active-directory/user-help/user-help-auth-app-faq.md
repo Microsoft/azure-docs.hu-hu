@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053960"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226522"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -238,7 +238,7 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
    - Az iOS-es **Beállítások** részen válassza ki az automatikus kitöltés beállítás **bekapcsolása** beállítást az automatikus kitöltés beállításai szakaszban, hogy megtudja, hogyan állíthatja be a hitelesítő alapértelmezett automatikus kitöltés-szolgáltatóként.
    - Az Androidban a **Beállítások** területen válassza az automatikus kitöltés- **szolgáltatóként** lehetőséget az automatikus kitöltés beállításai szakaszban.
 
-**K**: mi történik, ha az **Automatikus kitöltés** kapcsoló nem érhető el a beállítások között?
+**K**: mi történik, ha az **Automatikus kitöltés** nem érhető el a beállítások között?
 
 **A**: Ha az automatikus kitöltés nem érhető el a hitelesítő számára, annak oka az lehet, hogy az automatikus kitöltés még nem engedélyezett a szervezet vagy a fiók típusa számára. Ezt a funkciót olyan eszközön használhatja, amelyen nincs hozzáadva a munkahelyi vagy iskolai fiókja. Ha többet szeretne megtudni arról, hogyan engedélyezhető az automatikus kitöltés a szervezet számára, olvassa el [az automatikus kitöltés a rendszergazdák](#autofill-for-it-admins)számára című témakört.
 

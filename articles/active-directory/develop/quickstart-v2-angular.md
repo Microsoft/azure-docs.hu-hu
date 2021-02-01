@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 161b7fcf4660ddb9515f0b82887f416d83598bdc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754439"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225799"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
@@ -49,11 +49,11 @@ Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely be
 > 1. Ha a fiókja több bérlőhöz fér hozzá, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 > 1. Kövesse az utasításokat [egy egyoldalas alkalmazás regisztrálásához](./scenario-spa-app-registration.md) a Azure Portal.
 > 1. Vegyen fel egy új platformot az alkalmazás regisztrációjának **hitelesítés** ablaktábláján, és regisztrálja az átirányítási URI-t: `http://localhost:4200/` .
-> 1. Ez a rövid útmutató az [implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md)használja. Adja meg az **azonosító jogkivonatok** és a **hozzáférési tokenek** **implicit engedélyezési** beállításait. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazás bejelentkezik a felhasználókba, és meghívja az API-t.
+> 1. Ez a rövid útmutató az [implicit engedélyezési folyamatot](v2-oauth2-implicit-grant-flow.md)használja. Az **implicit engedélyezés és a hibrid folyamatok** szakaszban válassza az **azonosító tokenek** és a **hozzáférési tokenek** elemet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazás bejelentkezik a felhasználókba, és meghívja az API-t.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI **http://localhost:4200/** -t, és engedélyeznie kell az **implicit engedélyezést**.
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI **http://localhost:4200/** -t, és engedélyeznie kell a * * * * implicit Grant * * értéket.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
 >
@@ -137,7 +137,7 @@ Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés** lehet�
 ![Diagram, amely bemutatja, hogyan működik a jelen rövid útmutatóban szereplő minta alkalmazás](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
 

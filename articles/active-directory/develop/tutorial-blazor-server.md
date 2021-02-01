@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569878"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226017"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez
 
@@ -40,7 +40,7 @@ Minden Azure Active Directory (Azure AD) hitelesítést használó alkalmazást 
 - **Támogatott fióktípus** esetén **csak a szervezeti címtárban** válassza a fiókok lehetőséget.
 - Hagyja meg az **átirányítási URI** legördülő listát a web értékre, és írja be a **következőt** : `https://localhost:5001/signin-oidc` . A vércse-on futó alkalmazások alapértelmezett portja 5001. Ha az alkalmazás egy másik porton érhető el, a portszámot a helyett kell megadnia `5001` .
 
-A **hitelesítés**  >  **implicit megadása** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
+A **kezelés** területen válassza a **hitelesítés**  >  **implicit engedélyezés és a hibrid folyamatok** elemet. Válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** lehetőséget, majd kattintson a **Mentés** gombra.
 
 Végül, mivel az alkalmazás meghívja a védett API-t (ebben az esetben Microsoft Graph), az ügyfél titkos kulcsára van szükség ahhoz, hogy igazolja az identitását, amikor hozzáférési jogkivonatot kér az API meghívásához.
 
@@ -201,7 +201,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-server/final-app-2.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hívhat meg olyan webalkalmazásokat, amelyek a többrészes forgatókönyvek felhasználói számára jelentkeznek be:
 

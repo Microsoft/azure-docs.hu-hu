@@ -1,5 +1,5 @@
 ---
-title: Szinapszis RBAC szerepkörei
+title: Synapse RBAC-szerepkörök
 description: Ez a cikk a beépített szinapszis RBAC-szerepköröket ismerteti
 author: billgib
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 1ffbb5579ea19d7d608dd9c9d600342cd89d371c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572796"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225074"
 ---
 # <a name="synapse-rbac-roles"></a>Szinapszis RBAC szerepkörei
 
@@ -37,9 +37,9 @@ A következő táblázat ismerteti azokat a beépített szerepköröket és hat�
 >[!Note]
 > A bármely hatókörben található szinapszis RBAC szerepkörrel rendelkező felhasználók automatikusan a szinapszis felhasználói szerepkörrel rendelkeznek a munkaterület hatókörében. 
 
-|Role |Engedélyek|Hatókörök|
+|Szerepkör |Engedélyek|Hatókörök|
 |---|---|-----|
-|Szinapszis-rendszergazda  |Teljes szinapszis-hozzáférés a kiszolgáló nélküli SQL-készletekhez, Apache Spark készletekhez és az integrációs modulokhoz.  Magában foglalja a létrehozási, olvasási, frissítési és törlési hozzáférést az összes közzétett kód összetevőhöz.  Magában foglalja a számítási operátort, a csatolt Data Manager és a hitelesítő adatok felhasználói engedélyeit a munkaterület rendszer-identitásának hitelesítő adatain.  Magában foglalja a szinapszis RBAC szerepköreinek hozzárendelését.  A számítási erőforrások létrehozásához, törléséhez és kezeléséhez Azure-engedélyek szükségesek. </br></br>_Az összetevők olvasása és írása </br> a Spark-tevékenységekre vonatkozó összes műveletet elvégezheti. </br> Megtekintheti a Spark Pool-naplók megtekintésével megtekintheti </br> a mentett jegyzetfüzeteket és a folyamat kimeneteit használhatja </br> a társított szolgáltatások vagy a hitelesítő adatok által tárolt titkos kulcsok SQL </br> Server nélküli végpontokhoz való kapcsolódáshoz, valamint az `db_datareader` `db_datawriter` `connect` `grant` engedélyek </br> hozzárendelését és visszavonását a jelenlegi hatókörben található RBAC szerepkörökhöz._|Munkaterület </br> Spark-készlet<br/>Integrációs modul </br>Társított szolgáltatások</br>Hitelesítő adat |
+|Szinapszis-rendszergazda  |Teljes szinapszis-hozzáférés a kiszolgáló nélküli SQL-készletekhez, Apache Spark készletekhez és az integrációs modulokhoz.  Magában foglalja a létrehozási, olvasási, frissítési és törlési hozzáférést az összes közzétett kód összetevőhöz.  Magában foglalja a számítási operátort, a csatolt Data Manager és a hitelesítő adatok felhasználói engedélyeit a munkaterület rendszer-identitásának hitelesítő adatain.  Magában foglalja a szinapszis RBAC szerepköreinek hozzárendelését. A szinapszis-rendszergazda mellett az Azure-tulajdonosok is hozzárendelhet szinapszis RBAC-szerepköröket. A számítási erőforrások létrehozásához, törléséhez és kezeléséhez Azure-engedélyek szükségesek. </br></br>_Az összetevők olvasása és írása </br> a Spark-tevékenységekre vonatkozó összes műveletet elvégezheti. </br> Megtekintheti a Spark Pool-naplók megtekintésével megtekintheti </br> a mentett jegyzetfüzeteket és a folyamat kimeneteit használhatja </br> a társított szolgáltatások vagy a hitelesítő adatok által tárolt titkos kulcsok SQL </br> Server nélküli végpontokhoz való kapcsolódáshoz, valamint az `db_datareader` `db_datawriter` `connect` `grant` engedélyek </br> hozzárendelését és visszavonását a jelenlegi hatókörben található RBAC szerepkörökhöz._|Munkaterület </br> Spark-készlet<br/>Integrációs modul </br>Társított szolgáltatások</br>Hitelesítő adat |
 |Szinapszis Apache Spark rendszergazdája</br>|Teljes szinapszis-hozzáférés Apache Spark készletekhez.  A közzétett Spark-feladatokhoz tartozó definíciók, jegyzetfüzetek és kimenetek, valamint a könyvtárak, a társított szolgáltatások és a hitelesítő adatok elérésének létrehozása, olvasása, frissítése és törlése.  Olvasási hozzáférést tartalmaz az összes többi közzétett kód összetevőhöz. Nem tartalmazza a hitelesítő adatok használatára és a folyamatok futtatására vonatkozó engedélyt. Nem tartalmazza a hozzáférés megadását. </br></br>_A Spark-összetevőkre vonatkozó összes művelet elvégezhető </br> a Spark-tevékenységekre vonatkozó összes művelet végrehajtásakor_|Munkaterület</br>Spark-készlet|
 |Szinapszis SQL-rendszergazda|Teljes szinapszis-hozzáférés a kiszolgáló nélküli SQL-készletekhez.  A közzétett SQL-parancsfájlok, hitelesítő adatok és társított szolgáltatások elérésének létrehozása, olvasása, frissítése és törlése.  Olvasási hozzáférést tartalmaz az összes többi közzétett kód összetevőhöz.  Nem tartalmazza a hitelesítő adatok használatára és a folyamatok futtatására vonatkozó engedélyt. Nem tartalmazza a hozzáférés megadását. </br></br>*Az SQL-parancsfájlok összes művelete az SQL <br/> `db_datareader` -,, `db_datawriter` `connect` -és `grant` engedélyekkel rendelkező SQL Server nélküli végpontokhoz is csatlakozhat.*|Munkaterület|
 |Szinapszis közreműködője|Teljes szinapszis-hozzáférés a kiszolgáló nélküli SQL-készletekhez, Apache Spark készletekhez, integrációs futtatókörnyezetekhez.  Magában foglalja a létrehozási, olvasási, frissítési és törlési hozzáférést az összes közzétett kód összetevőhöz és azok kimenetéhez, beleértve a hitelesítő adatokat és a társított szolgáltatásokat.  Magában foglalja a számítási operátor engedélyeit. Nem tartalmazza a hitelesítő adatok használatára és a folyamatok futtatására vonatkozó engedélyt. Nem tartalmazza a hozzáférés megadását. </br></br>_Az összetevők olvasása és írása megtekintheti </br> a mentett jegyzetfüzeteket, és a folyamat kimenete megteheti az </br> összes művelet </br> megtekintheti a Spark-készleteket_|Munkaterület </br> Spark-készlet<br/> Integrációs modul|
@@ -58,7 +58,7 @@ A következő táblázat ismerteti azokat a beépített szerepköröket és hat�
 
 A következő táblázat felsorolja a beépített szerepköröket és az egyes támogatott műveleteket/engedélyeket.
 
-Role|Műveletek
+Szerepkör|Műveletek
 --|--
 Szinapszis-rendszergazda|munkaterületek/olvasás</br>munkaterületek/roleAssignments/írás, törlés</br>munkaterületek/managedPrivateEndpoint/írás, törlés</br>munkaterületek/bigDataPools/useCompute/művelet</br>munkaterületek/bigDataPools/viewLogs/művelet</br>munkaterületek/integrationRuntimes/useCompute/művelet</br>munkaterületek/összetevők/olvasás</br>munkaterületek/jegyzetfüzetek/írás, törlés</br>munkaterületek/sparkJobDefinitions/írás, törlés</br>munkaterületek/sqlScripts/írás, törlés</br>munkaterületek/adatfolyamok/írás, törlés</br>munkaterületek/folyamatok/írás, törlés</br>munkaterületek/triggerek/írás, törlés</br>munkaterületek/adatkészletek/írás, törlés</br>munkaterületek/könyvtárak/írás, törlés</br>munkaterületek/linkedServices/írás, törlés</br>munkaterületek/hitelesítő adatok/írás, törlés</br>munkaterületek/jegyzetfüzetek/viewOutputs/művelet</br>munkaterületek/folyamatok/viewOutputs/művelet</br>munkaterületek/linkedServices/useSecret/művelet</br>munkaterületek/hitelesítő adatok/useSecret/művelet|
 |Szinapszis Apache Spark rendszergazdája|munkaterületek/olvasás</br>munkaterületek/bigDataPools/useCompute/művelet</br>munkaterületek/bigDataPools/viewLogs/művelet</br>munkaterületek/jegyzetfüzetek/viewOutputs/művelet</br>munkaterületek/összetevők/olvasás</br>munkaterületek/jegyzetfüzetek/írás, törlés</br>munkaterületek/sparkJobDefinitions/írás, törlés</br>munkaterületek/könyvtárak/írás, törlés</br>munkaterületek/linkedServices/írás, törlés</br>munkaterületek/hitelesítő adatok/írás, törlés|
@@ -75,7 +75,7 @@ Szinapszis-rendszergazda|munkaterületek/olvasás</br>munkaterületek/roleAssign
 
 Az alábbi táblázat felsorolja a szinapszis-műveleteket és a beépített szerepköröket, amelyek lehetővé teszik a következő műveleteket:
 
-Művelet|Role
+Művelet|Szerepkör
 --|--
 munkaterületek/olvasás|Szinapszis-rendszergazda</br>Szinapszis Apache Spark rendszergazdája</br>Szinapszis SQL-rendszergazda</br>Szinapszis közreműködője</br>Szinapszis-összetevő közzétevője</br>Szinapszis-összetevő felhasználója</br>Szinapszis számítási operátor </br>Szinapszis hitelesítő felhasználója</br>Szinapszis csatolt Data Manager</br>Szinapszis-felhasználó 
 munkaterületek/roleAssignments/írás, törlés|Szinapszis-rendszergazda
@@ -117,7 +117,7 @@ Hitelesítő adat |Szinapszis-rendszergazda </br>Szinapszis hitelesítő felhasz
 >[!note]
 >Az összes összetevő-szerepkör és művelet hatóköre a munkaterület szintjén történik. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg [, hogyan tekintheti át a munkaterületek szinapszis-RBAC szerepkör-hozzárendeléseit](./how-to-review-synapse-rbac-role-assignments.md) .
 

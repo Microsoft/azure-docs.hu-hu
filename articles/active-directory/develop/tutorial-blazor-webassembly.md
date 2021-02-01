@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680265"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226422"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
@@ -42,7 +42,7 @@ Minden Azure Active Directory (Azure AD) hitelesítést használó alkalmazást 
 - **Támogatott fióktípus** esetén **csak a szervezeti címtárban** válassza a fiókok lehetőséget.
 - Hagyja meg az **átirányítási URI** legördülő listát a web értékre, és írja be a **következőt** : `https://localhost:5001/authentication/login-callback` . A vércse-on futó alkalmazások alapértelmezett portja 5001. Ha az alkalmazás egy másik porton érhető el, a portszámot a helyett kell megadnia `5001` .
 
-A regisztrálás után a **hitelesítés**  >  **implicit megadása** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetét, majd kattintson a **Save (Mentés** ) gombra.
+Regisztráció után a **kezelés** területen válassza a **hitelesítés**  >  **implicit engedélyezés és a hibrid folyamatok** lehetőséget. Válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** lehetőséget, majd kattintson a **Mentés** gombra.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>Az alkalmazás létrehozása a a .NET Core parancssori felülete használatával
 
@@ -80,7 +80,7 @@ A sablon azon összetevői, amelyek engedélyezik az Azure AD-be való bejelentk
 
 A [Microsoft Graph](/graph/overview) olyan API-kat tartalmaz, amelyek hozzáférést biztosítanak a felhasználók Microsoft 365 adataihoz, és támogatja a Microsoft Identity platform által kiállított jogkivonatokat, ami a megfelelő védett API-t használja példaként. Ebben a szakaszban kódot adhat hozzá a Microsoft Graph hívásához, és megjeleníti a felhasználó e-mail-címeit az alkalmazás "beolvasása" lapján.
 
-Ez a szakasz a védett API-k névvel ellátott ügyfél használatával történő meghívására szolgáló közös megközelítéssel íródott. Ugyanezt a módszert használhatja más védett API-k meghívásához is. Ha azonban az alkalmazásból Microsoft Graph meghívását tervezi, a Graph SDK használatával csökkentheti a kihelyezhető elemet. A .NET docs útmutatást tartalmaz a [Graph SDK használatáról](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
+Ez a szakasz a védett API-k névvel ellátott ügyfél használatával történő meghívására szolgáló közös megközelítéssel íródott. Ugyanezt a módszert használhatja más védett API-k meghívásához is. Ha azonban az alkalmazásból Microsoft Graph meghívását tervezi, a Graph SDK használatával csökkentheti a kihelyezhető elemet. A .NET docs útmutatást tartalmaz a [Graph SDK használatáról](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0&preserve-view=true).
 
 Mielőtt elkezdené, jelentkezzen ki az alkalmazásból, mert a szükséges engedélyeket módosítja, és az aktuális jogkivonat nem fog működni. Ha még nem tette meg, futtassa újra az alkalmazást, és válassza a **kijelentkezés** lehetőséget az alábbi kód frissítése előtt.
 

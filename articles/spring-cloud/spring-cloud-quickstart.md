@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 416f997475e35f8e784679ca0826f7af38d756c7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3c07d64fd046766521e030b6ee1b88a590246e24
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880304"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226169"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -416,7 +416,7 @@ Az alábbi eljárás az Azure CLI használatával hozza létre és telepíti az 
 1. Hozza létre az alkalmazást a hozzárendelt nyilvános végponttal:
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
     ```
 
 1. Telepítse az alkalmazás jar-fájlját ( `target\hellospring-0.0.1-SNAPSHOT.jar` Windows rendszeren):
@@ -506,7 +506,7 @@ Az előző lépésekben olyan Azure-erőforrásokat hozott létre, amelyek tová
 az group delete --name <your resource group name; for example: hellospring-1558400876966-rg> --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

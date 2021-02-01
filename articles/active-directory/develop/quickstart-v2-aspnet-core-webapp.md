@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 05e14b5bdc2f603ffe802b12ed33b7b57be25b69
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938207"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225833"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 
@@ -57,7 +57,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 > 1. Az **átirányítási URI**-k területen válassza az **URI hozzáadása** lehetőséget, majd írja be a értéket `https://localhost:44321/signin-oidc` .
 > 1. Adja meg az **előtérben kijelentkezési URL-címet** `https://localhost:44321/signout-oidc` .
-> 1. Az **Implicit engedély** területen válassza az **Azonosítói jogkivonatok** elemet.
+> 1. Az **implicit engedélyezés és a hibrid folyamatok** területen válassza az **azonosító tokenek** lehetőséget.
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -150,7 +150,7 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 A sort tartalmazó vonal `.AddMicrosoftIdentityWebApp` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezután be van állítva a Microsoft Identity platform használatával történő bejelentkezésre a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |

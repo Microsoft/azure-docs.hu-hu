@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 01/27/2021
+ms.date: 02/01/2021
 ms.topic: sample
-ms.openlocfilehash: 7865a3ea5be374f36de70e62c7bc215fc88d04a5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915692"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225141"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -28,7 +28,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [FedRAMP High](./fedramp-h/index.md) | Szabályzatkészletet biztosít a FedRAMP High előírásainak való megfeleléshez. |
 | [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md) | Szabályzatkészletet biztosít a HIPAA HITRUST előírásainak való megfeleléshez. |
 | [IRS 1075](./irs-1075/index.md) | Az IRS 1075 megfelelőségi guardrails biztosít.|
-| [ISO 27001](./iso27001/index.md) | Védőkorlátokat biztosít az ISO 27001 szabványnak való megfelelőséghez. |
+| [ISO 27001](./iso-27001-2013.md) | Védőkorlátokat biztosít az ISO 27001 szabványnak való megfelelőséghez. |
 | [ISO 27001 – Megosztott szolgáltatások](./iso27001-shared/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak az ISO 27001-tanúsítvány megszerzéséhez. |
 | [ISO 27001 App Service Environment/SQL Database-számításifeladat](./iso27001-ase-sql-workload/index.md) | Több infrastruktúrát biztosít az [ISO 27001 Shared Services](./iso27001-shared/index.md) Blueprint minta számára. |
 | [Média](./media/index.md) | Szabályzatkészletet biztosít a Média MPAA előírásainak való megfeleléshez. |

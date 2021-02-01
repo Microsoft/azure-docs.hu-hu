@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d790b466f669ed067863b6643c8f59662eb628a7
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753068"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226438"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -275,7 +275,7 @@ A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure
 1. Válassza a **Regisztráció** lehetőséget.
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
-1. Az **implicit támogatás** szakaszban válassza az **azonosító tokenek** és a **hozzáférési tokenek** elemet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. Az **implicit engedélyezés és a hibrid folyamatok** szakaszban válassza az **azonosító tokenek** és a **hozzáférési tokenek** elemet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
 1. Kattintson a **Mentés** gombra.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
@@ -508,7 +508,7 @@ A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelke
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló forgatókönyvek sorozatában.
 

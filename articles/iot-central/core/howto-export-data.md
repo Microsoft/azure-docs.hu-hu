@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760893"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226061"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
@@ -166,7 +166,7 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
 
 1. Ha végzett az Exportálás beállításával, válassza a **Mentés** lehetőséget. Néhány perc elteltével az adatai megjelennek a célhelyen.
 
-## <a name="export-contents-and-format"></a>Tartalom és formátum exportálása
+## <a name="destinations"></a>Célhelyek
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage célhely
 
@@ -187,7 +187,7 @@ Az üzenet jegyzetek vagy Rendszertulajdonságok táska tartalmazza a,, `iotcent
 
 Webhookok célhelye esetén a rendszer a közel valós időben is exportálja az adategységeket. Az üzenet törzsében lévő adatformátum megegyezik a Event Hubs és Service Bus.
 
-### <a name="telemetry-format"></a>Telemetria formátuma
+## <a name="telemetry-format"></a>Telemetria formátuma
 
 Minden exportált üzenet a teljes üzenet normalizált formáját tartalmazza, amelyet az eszköz küld az üzenet törzsében. Az üzenet JSON formátumú, és UTF-8-ként van kódolva. Az egyes üzenetekben található információk a következők:
 
@@ -231,6 +231,102 @@ Az alábbi példa egy exportált telemetria üzenetet mutat be:
     "messageProperties": {
       "messageProp": "value"
     }
+}
+```
+
+### <a name="message-properties"></a>Üzenet tulajdonságai
+
+A telemetria-üzenetek a telemetria-adattartalom mellett metaadatokat is tartalmazhatnak. Az előző kódrészlet példákat mutat be a rendszerüzenetekre, például a és a szolgáltatásra `deviceId` `enqueuedTime` . Ha többet szeretne megtudni a rendszerüzenetek tulajdonságairól, tekintse meg a [D2C IoT hub üzeneteinek rendszertulajdonságait](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).
+
+Ha egyéni metaadatokat kell hozzáadnia a telemetria-üzenetekhez, hozzáadhat tulajdonságokat a telemetria-üzenetekhez. Például ha az eszköz létrehozza az üzenetet, hozzá kell adnia egy időbélyeget.
+
+A következő kódrészletből megtudhatja, hogyan adhatja hozzá a `iothub-creation-time-utc` tulajdonságot az üzenethez, amikor létrehozza azt az eszközön:
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
+
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+A következő kódrészlet ezt a tulajdonságot mutatja be a blob Storage-ba exportált üzenetben:
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
 }
 ```
 
@@ -284,6 +380,6 @@ Az alábbi táblázat az [örökölt adatexportálás](howto-export-data-legacy.
 | Támogatott alkalmazások verziói | V2, V3 | Csak v3 |
 | Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan használhatja az új adatexportálást, egy javasolt következő lépés az [elemzések használatának](./howto-create-analytics.md) megismerése IoT Central

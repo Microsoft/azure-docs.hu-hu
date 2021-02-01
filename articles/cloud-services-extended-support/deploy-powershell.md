@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ef9a7704dfc67032a601b995d41ef24273711317
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880220"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225529"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Felhőalapú szolgáltatás (kiterjesztett támogatás) üzembe helyezése Azure PowerShell használatával
 
@@ -88,7 +88,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+9. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. Győződjön meg arról, hogy engedélyezte a "hozzáférési szabályzatok" (a portálon) hozzáférését az "Azure Virtual Machines for Deployment" és a "Azure Resource Manager for template Deployment" eléréséhez. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
@@ -138,6 +138,8 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     $expiration = (Get-Date).AddYears(1) 
     $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
 
+    $storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "contosostorageaccount"
+    $configFile = "<WAD configuration file path>"
     $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
     ```
@@ -164,7 +166,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     -Tag $tag 
     ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
 - Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)

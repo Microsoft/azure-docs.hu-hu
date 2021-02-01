@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756411"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226338"
 ---
 # <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
@@ -47,7 +47,7 @@ A következő lépésekkel adhat hozzá átirányítási URI-t egy MSAL.js 2,0-e
 1. A Azure Portal válassza ki az alkalmazás [regisztrációjának létrehozásakor](#create-the-app-registration)korábban létrehozott regisztrációs alkalmazást.
 1. A **kezelés** területen válassza   >  **a hitelesítés platform hozzáadása** elemet.
 1. A **webalkalmazások** területen válassza az **egylapos alkalmazás** csempét.
-1. Az **átirányítási** URI-k területen adjon meg egy [átirányítási URI](reply-url.md)-t. Ne **jelölje be az** **implicit engedélyezés** jelölőnégyzetet.
+1. Az **átirányítási** URI-k területen adjon meg egy [átirányítási URI](reply-url.md)-t. Ne **jelölje be** a jelölőnégyzetet az **implicit engedélyezés és a hibrid folyamatok** területen.
 1. Válassza a **Konfigurálás** lehetőséget az átirányítási URI hozzáadásának befejezéséhez.
 
 Ezzel befejezte az egyoldalas alkalmazás (SPA) regisztrációját, és konfigurált egy átirányítási URI-t, amelybe az ügyfél átirányítja az ügyfelet, és a rendszer minden biztonsági jogkivonatot elküld. Ha az átirányítási URI-t egy **egyoldalas alkalmazás** csempével konfigurálja a **platform hozzáadása** panelen, az alkalmazás regisztrációja úgy van konfigurálva, hogy támogassa az engedélyezési kódot a PKCE és a CORS használatával.
@@ -62,7 +62,7 @@ A következő lépésekkel adhat hozzá átirányítási URI-t egy egyoldalas al
 1. A **kezelés** területen válassza   >  **a hitelesítés platform hozzáadása** elemet.
 1. A **webalkalmazások** területen válassza az **egylapos alkalmazás** csempét.
 1. Az **átirányítási** URI-k területen adjon meg egy [átirányítási URI](reply-url.md)-t.
-1. Az **implicit folyamat** engedélyezése:
+1. Az **implicit engedélyezés és a hibrid folyamatok** engedélyezése:
     - Ha az alkalmazás bejelentkezik a felhasználók között, válassza az **azonosító tokenek** lehetőséget.
     - Ha az alkalmazásnak egy védett webes API-t is meg kell hívnia, válassza a **hozzáférési jogkivonatok** lehetőséget. További információ ezekről a jogkivonat-típusokról: [azonosító jogkivonatok](id-tokens.md) és [hozzáférési tokenek](access-tokens.md).
 1. Válassza a **Konfigurálás** lehetőséget az átirányítási URI hozzáadásának befejezéséhez.
@@ -79,6 +79,6 @@ Ahogy korábban említettük, a MSAL.js 1,3-et használó egylapos alkalmazások
 
 Ha az alkalmazás regisztrációja által képviselt összes éles üzemi egyoldalas alkalmazás a MSAL.js 2,0 és az engedélyezési kód folyamatát használja, törölje a jelet az alkalmazás regisztrációjának hitelesítése ablaktáblán a Azure Portal az implicit engedélyezési beállítások **jelölőnégyzetből** . Az MSAL.js 1. x és az implicit folyamat használatával folytatott alkalmazások továbbra is működhetnek, azonban ha az implicit folyamat engedélyezve van (be van jelölve).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazás kódjának konfigurálásával használhatja az előző lépések során létrehozott regisztrációs alkalmazást: az [alkalmazás kódjának konfigurálása](scenario-spa-app-configuration.md).

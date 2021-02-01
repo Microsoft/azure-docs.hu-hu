@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178619"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225816"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -84,8 +84,8 @@ MSAL.js alkalmazásának engedélyezése a szuverén felhők esetében:
 1. Az **Áttekintés** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
     Ez az oktatóanyag megköveteli az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)engedélyezését. 
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
-1. Az **implicit támogatás** területen válassza az **azonosító tokenek** és a **hozzáférési tokenek** elemet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Válassza a **Mentés** lehetőséget.
+1. Az **implicit engedélyezés és a hibrid folyamatok** területen válassza az **azonosító tokenek** és a **hozzáférési tokenek** lehetőséget. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>2. lépés: a webkiszolgáló vagy projekt beállítása
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934736"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226051"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -23,7 +23,7 @@ A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
-| Műveleti azonosító| Description|
+| Műveleti azonosító| Leírás|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis – personcount | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. A zónát teljes egészében egyetlen kamerának kell tartalmaznia ahhoz, hogy a PersonCount pontos összeget rögzítsen. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis – personcrossingline | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -32,7 +32,7 @@ A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
 Az összes művelet a `.debug` verzióban is elérhető, amely képes megjeleníteni a képkockákat a feldolgozás során. A `xhost +` képkockák és események megjelenítésének engedélyezéséhez futtatnia kell a gazdagépen.
 
-| Műveleti azonosító| Description|
+| Műveleti azonosító| Leírás|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. debug | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. debug | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -43,7 +43,7 @@ A térbeli elemzések videó AI-modulként is futtathatók [élő video Analytic
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Műveleti azonosító| Description|
+| Műveleti azonosító| Leírás|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. livevideoanalytics | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. livevideoanalytics | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -57,7 +57,7 @@ Az élő videó elemzési műveletei a verzióban is elérhetők `.debug` (pl. c
 
 Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 
-| Üzemeltetési paraméterek| Description|
+| Üzemeltetési paraméterek| Leírás|
 |---------|---------|
 | Művelet azonosítója | A fenti tábla műveleti azonosítója.|
 | engedélyezve | Boolean: true vagy FALSE|
@@ -122,7 +122,7 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -130,7 +130,7 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 | `threshold` | float| Az események akkor egressed, ha az AI-modellek megbízhatósága nagyobb vagy egyenlő ez az érték. |
 | `type` | sztring| A **cognitiveservices. vízió. spatialanalysis-personcount** esetében ennek a következőnek kell lennie: `count` .|
 | `trigger` | sztring| Egy esemény küldésére szolgáló eseményindító típusa. A támogatott értékek olyan `event` események küldésére szolgálnak, amikor a darabszám megváltozik vagy `interval` rendszeres időközönként küldi el az eseményeket, függetlenül attól, hogy a szám módosult-e.
-| `interval` | sztring| Egy idő másodpercben, ameddig a rendszer összesíti a személyeket, mielőtt egy eseményt kilőtték. A művelet továbbra is állandó arányban elemzi a jelenetet, és visszaadja az adott intervallum leggyakoribb számlálóját. Az összesítési időköz a és a értékre is érvényes `event` `interval` .|
+| `output_frequency` | int | Az események egressed aránya. Ha `output_frequency` = x, minden X esemény egressed, pl. `output_frequency` = 2: minden más esemény kimenet. A a és a is `output_frequency` alkalmazható `event` `interval` . |
 | `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja).|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>A cognitiveservices. vízió. spatialanalysis-personcrossingline vonal konfigurációja
@@ -167,7 +167,7 @@ Ez egy példa egy olyan JSON-bemenetre a SPACEANALYTICS_CONFIG paraméter szám�
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `lines` | list| Sorok listája.|
 | `name` | sztring| A sor rövid neve.|
@@ -213,7 +213,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -247,7 +247,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -255,8 +255,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 | `threshold` | float| Az események akkor egressed, ha az AI-modellek megbízhatósága nagyobb vagy egyenlő ez az érték. |
 | `type` | sztring| A **cognitiveservices. vízió. spatialanalysis-persondistance** esetében ennek a következőnek kell lennie: `people_distance` .|
 | `trigger` | sztring| Egy esemény küldésére szolgáló eseményindító típusa. A támogatott értékek olyan `event` események küldésére szolgálnak, amikor a darabszám megváltozik vagy `interval` rendszeres időközönként küldi el az eseményeket, függetlenül attól, hogy a szám módosult-e.
-| `interval` | sztring | Egy idő másodpercben, amely szerint a szabálysértések összesítése megtörténik az esemény elindítását megelőzően. Az összesítési időköz a és a értékre is érvényes `event` `interval` .|
-| `output_frequency` | int | Az események egressed aránya. Ha `output_frequency` = x, minden X esemény egressed, pl. `output_frequency` = 2: minden más esemény kimenet. A output_frequency a és a is `event` alkalmazható `interval` .|
+| `output_frequency` | int | Az események egressed aránya. Ha `output_frequency` = x, minden X esemény egressed, pl. `output_frequency` = 2: minden más esemény kimenet. A a és a is `output_frequency` alkalmazható `event` `interval` .|
 | `minimum_distance_threshold` | float| A távolság a lábon, amely egy "TooClose" eseményt indít el, ha az emberek kisebbek, mint a távolságok egymástól.|
 | `maximum_distance_threshold` | float| A távolság a lábon, amely egy "TooFar" eseményt indít el, ha az emberek nagyobbak, mint a távolságok egymástól.|
 | `focus` | sztring| Az események kiszámításához használt, a személyre vonatkozó határoló mezőben lévő pont helye. A fókusz értéke lehet `footprint` (a személy lábnyoma), `bottom_center` (a személy határoló mezőjének alsó középpontja), `center` (a személy határoló mezőjének középpontja).|
@@ -964,7 +963,7 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
       }
   }
   ```
-| Név | Típus| Description|
+| Név | Típus| Leírás|
 |---------|---------|---------|
 | `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
 

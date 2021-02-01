@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ddd676a1e0b3d8f554b007974b62eb8c0c2ca9c1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756517"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226355"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó asztali alkalmazás: áthelyezés éles környezetbe
 
@@ -39,7 +39,7 @@ Előfordulhat például, hogy két erőforrással rendelkezik, amelyek mindegyik
 - `https://mytenant.onmicrosoft.com/customerapi` a hatókörökkel `customer.read` és `customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi` a hatókörökkel `vendor.read` és `vendor.write`
 
-Ebben a példában a `.WithAdditionalPromptToConsent` paraméterrel rendelkező módosítót használja `extraScopesToConsent` .
+Ebben a példában a `.WithExtraScopesToConsent` paraméterrel rendelkező módosítót használja `extraScopesToConsent` .
 
 Ilyenek például a következők:
 
@@ -106,6 +106,11 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 A személyes Microsoft-fiókok felhasználói számára a kívánt viselkedés az összes natív ügyfél (asztali vagy mobil alkalmazás) hívása, amely engedélyezi a jóváhagyást. A natív ügyfél-identitás eredendően nem biztonságos, ami ellentétben áll a bizalmas ügyfélalkalmazás identitásával. A bizalmas ügyfélalkalmazások a Microsoft Identity platformmal titokban cserélik identitását. A Microsoft Identity platform úgy döntött, hogy csökkenti a fogyasztói szolgáltatások biztonságának kockázatát azáltal, hogy minden alkalommal, amikor az alkalmazás engedélyt kap, a felhasználó hozzájárulását kéri.
 
-## <a name="next-steps"></a>További lépések
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+## <a name="next-steps"></a>Következő lépések
+
+További minták kipróbálásához tekintse meg az [asztali és mobil nyilvános ügyfélalkalmazások](sample-v2-code.md#desktop-and-mobile-public-client-apps)című témakört.
+
+
+

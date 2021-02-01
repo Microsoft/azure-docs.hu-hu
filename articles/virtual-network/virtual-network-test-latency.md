@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219258"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226405"
 ---
 # <a name="test-vm-network-latency"></a>Virtuális gép hálózati késleltetésének tesztelése
 
@@ -45,7 +45,7 @@ Ezzel a módszerrel mérhető a hálózati késés két virtuális gép között
 ### <a name="tools-for-testing"></a>Tesztelési eszközök
 A késés méréséhez két különböző eszköz-lehetőség közül választhat:
 
-* Windows-alapú rendszerek esetén: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Windows-alapú rendszerek esetén: [latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
 * Linux-alapú rendszerek esetén: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 Ezeknek az eszközöknek a használatával biztosíthatja, hogy csak a TCP-vagy UDP-adatátviteli időt mérjük, ne ICMP (ping) vagy más, az alkalmazások által nem használt csomagok, és ne befolyásolják a teljesítményüket.

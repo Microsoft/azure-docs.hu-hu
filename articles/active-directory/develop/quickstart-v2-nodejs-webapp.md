@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: ab3677ede2805fc8ecb076e8a40da605c038b54b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937928"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225630"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -45,7 +45,7 @@ Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutat
 1. Válassza **a platform**  >  **web** hozzáadása lehetőséget. 
 1. Az **átirányítási URI** -k szakaszban adja meg a értéket `http://localhost:3000/auth/openid/return` .
 1. Adja meg az **előtérben kijelentkezési URL-címet** `https://localhost:3000` .
-1. Az implicit támogatás szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](./v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
+1. Az **implicit engedélyezési és hibrid folyamatok** szakaszban válassza az **azonosító tokenek** lehetőséget, mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](./v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
 1. Válassza a **Konfigurálás** lehetőséget.
 1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.
 1. Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).

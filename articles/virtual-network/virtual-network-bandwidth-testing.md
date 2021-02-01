@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 27cc55978582468c759603571bd8b0e69f29db5d
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221442"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226573"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 
@@ -52,9 +52,9 @@ Feladó paraméterei: ntttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>NTTTCP beolvasása a virtuális gépekre.
 
-Töltse le a legújabb verziót: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Töltse le a legújabb verziót: https://github.com/microsoft/ntttcp/releases/download/v5.35/NTttcp.exe
 
-Vagy keressen rá, ha áthelyezte: <https://www.bing.com/search?q=ntttcp+download> \< --először meg kell nyomnia
+Vagy tekintse meg a legfelső szintű GitHub oldalt: <https://github.com/microsoft/ntttcp>\
 
 Fontolja meg a NTTTCP különálló mappába helyezését, például a c: \\ Tools
 

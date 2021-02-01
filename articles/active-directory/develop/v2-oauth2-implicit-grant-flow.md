@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f3598c6f072d09d7e427db66dcfbf8721b92a3a1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752748"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226488"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity platform és implicit engedélyezési folyamat
 
@@ -44,7 +44,7 @@ Az alábbi ábrán látható, hogy a teljes implicit bejelentkezési folyamat ho
 Ahhoz, hogy először aláírja a felhasználót az alkalmazásba, elküldheti az [OpenID Connect](v2-protocols-oidc.md) hitelesítési kérését, és lekérheti a `id_token` Microsoft Identity platformot.
 
 > [!IMPORTANT]
-> Egy azonosító jogkivonat és/vagy hozzáférési jogkivonat sikeres igényléséhez az alkalmazásnak a [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon való regisztrálásához engedélyezve kell lennie a megfelelő implicit engedélyezési folyamatnak, az **azonosító tokenek** **és a.** **hozzáférési tokenek** kiválasztásával. Ha nincs engedélyezve, `unsupported_response` hibaüzenetet ad vissza: **a (z) "response_type" bemeneti paraméter megadott értéke nem engedélyezett ehhez az ügyfélhez. A várt érték a "code"**
+> Egy azonosító jogkivonat és/vagy hozzáférési jogkivonat sikeres igényléséhez az alkalmazásnak a [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon való regisztrálásához engedélyezve kell lennie a megfelelő implicit engedélyezési folyamatnak, az **azonosító tokenek** és a **hozzáférési tokenek** kiválasztásával az **implicit engedélyezési és a hibrid folyamatok** szakaszban. Ha nincs engedélyezve, a rendszer `unsupported_response` hibaüzenetet küld: `The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'`
 
 ```
 // Line breaks for legibility only
@@ -210,7 +210,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 | `tenant` |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints). |
 | `post_logout_redirect_uri` | ajánlott | A felhasználó által a kijelentkezés befejeződése után visszaadott URL-cím. Ennek az értéknek meg kell egyeznie az alkalmazáshoz regisztrált átirányítási URI-k egyikével. Ha nem szerepel, a felhasználó egy általános üzenetet fog megjeleníteni a Microsoft Identity platformon. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ugorjon a [MSAL js-mintákra](sample-v2-code.md) az első lépések kódolásához.
 * Tekintse át az [engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md) újabb, jobb alternatíva az implicit támogatáshoz. 

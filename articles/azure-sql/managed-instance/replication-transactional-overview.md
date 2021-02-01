@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790814"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225343"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Tranzakciós replikáció az Azure SQL felügyelt példányaival (előzetes verzió)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,11 +39,11 @@ A tranzakciós replikálás használatával leküldheti az Azure SQL felügyelt 
 
 ### <a name="components"></a>Összetevők
 
-A tranzakciós replikáció legfontosabb összetevői a **közzétevő** , a **terjesztő** és az **előfizető** , ahogyan az a következő képen látható:  
+A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **terjesztő** és az **előfizető**, ahogyan az a következő képen látható:  
 
 ![replikálás SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nem | Igen |
 | **Terjesztő** | Nem | Igen|
@@ -109,7 +109,7 @@ A tranzakciós replikáció a következő esetekben hasznos:
 | Kategória | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
 | Előnyök | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után |
-| Hátrányok | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
+| Hátrányok | – Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
 ## <a name="common-configurations"></a>Gyakori konfigurációk
 
@@ -197,7 +197,7 @@ A tranzakciós replikáció konfigurálásával kapcsolatos további informáci�
 - [Replikáció konfigurálása egy SQL felügyelt példány közzétevője és előfizetője között](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Replikáció konfigurálása egy felügyelt SQL-példány közzétevője, az SQL felügyelt példány-terjesztője és SQL Server előfizető között](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Hozzon létre egy kiadványt](/sql/relational-databases/replication/publish/create-a-publication).
-- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks** ). )
+- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription) , amely a kiszolgáló nevét használja előfizetőként (például `N'azuresqldbdns.database.windows.net` a (z) Azure SQL Database nevű adatbázist a céladatbázisként (például **AdventureWorks**). )
 
 ## <a name="see-also"></a>Lásd még  
 

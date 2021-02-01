@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2af8db1a6e8c774f1004b380c8aaaa06ba61d8c3
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 4814a12a870d5317ad91c3514327ba0daad7ed69
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862339"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225370"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -506,7 +506,7 @@ Ha úgy szeretné konfigurálni az Azure-fájlok szinkronizálását, hogy a tű
 ![A tűzfal és a virtuális hálózat beállításainak konfigurálása az Azure file Sync szolgáltatással való együttműködéshez](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
 ## <a name="onboarding-with-azure-file-sync"></a>Előkészítés Azure File Sync
-A javasolt lépések a Azure File Sync beléptetése az elsőre nulla állásidővel, miközben a teljes fájl-hűség és a hozzáférés-vezérlési lista (ACL) megőrzése a következő:
+A Azure File Sync első alkalommal történő bevezetésének ajánlott lépései a nulla állásidővel, miközben a teljes fájl-hűség és a hozzáférés-vezérlési lista (ACL) megőrzése a következő:
  
 1. Helyezzen üzembe egy Storage Sync szolgáltatást.
 1. Hozzon létre egy szinkronizálási csoportot.
@@ -626,7 +626,7 @@ DFS-R központi telepítésének áttelepítése Azure File Syncre:
 
 További információ: [Azure file Sync együttműködés elosztott fájlrendszer (DFS)](storage-sync-files-planning.md#distributed-file-system-dfs)szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync kiszolgáló-végpont hozzáadása vagy eltávolítása](storage-sync-files-server-endpoint.md)
 - [Kiszolgáló regisztrálása vagy törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

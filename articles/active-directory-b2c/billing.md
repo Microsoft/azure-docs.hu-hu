@@ -7,23 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/01/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949785"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225208"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
 
 A Azure Active Directory B2C (Azure AD B2C) díjszabása a havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a számlázási modell a Azure AD B2C bérlőre és az [Azure ad vendég felhasználói együttműködésre (B2B)](../active-directory/external-identities/external-identities-pricing.md)is vonatkozik. A MAU számlázási szolgáltatással csökkentheti a költségeket, és az ingyenes szintet, valamint a rugalmas és kiszámítható díjszabást kínál. Ebből a cikkből megismerheti a MAU-számlázást, összekapcsolhatja Azure AD B2C bérlőit egy előfizetéssel, és módosíthatja az árképzési szintet.
 
 > [!IMPORTANT]
-> Ez a cikk nem tartalmazza a díjszabás részleteit. A használati számlázással és a díjszabással kapcsolatos legfrissebb információkért tekintse meg a [Azure Active Directory B2C díjszabását](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Ez a cikk nem tartalmazza a díjszabás részleteit. A használati számlázással és a díjszabással kapcsolatos legfrissebb információkért tekintse meg a [Azure Active Directory B2C díjszabását](https://azure.microsoft.com/pricing/details/active-directory-b2c/). Tekintse meg az [Azure ad B2C régió rendelkezésre állását és az adattárolási adatokat](data-residency.md) , amelyekből megtudhatja, hol érhetők el a Azure ad B2C szolgáltatás, és hol tárolódnak a felhasználói adatok.
 
 ## <a name="what-do-i-need-to-do"></a>Mit kell tennem?
 
@@ -61,12 +61,12 @@ Azure AD B2C bérlőhöz kapcsolódó előfizetés használható Azure AD B2C ha
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a használni kívánt Azure-előfizetést tartalmazza (*nem* pedig a Azure ad B2C bérlőt tartalmazó könyvtár).
 3. Válassza az **erőforrás létrehozása** lehetőséget, írja be a `Active Directory B2C` **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C** lehetőséget.
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 5. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel** lehetőséget.
 6. Válasszon ki egy **Azure ad B2C bérlőt** a legördülő listából. Csak azok a bérlők jelennek meg, amelyekhez Ön globális rendszergazda, és amelyek még nem kapcsolódnak előfizetéshez. A **Azure ad B2C erőforrás neve** mező a kiválasztott Azure ad B2C-bérlő tartománynevével van feltöltve.
 7. Válasszon ki egy aktív Azure- **előfizetést** , amelynek Ön a rendszergazdája.
 8. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, majd adja meg az **erőforráscsoport helyét**. Az erőforráscsoport beállításai nincsenek hatással a Azure AD B2C bérlői helyére, teljesítményére vagy számlázási állapotára.
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
     ![A Azure Portal Azure AD B2C erőforrás-létrehozási lapja](./media/billing/portal-01-create-b2c-resource-page.png)
 
@@ -78,7 +78,7 @@ A bérlőt a Azure AD B2C Bérlővel használni kívánt funkciók alapján kell
 
 Az árképzési szintek módosításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely az Azure B2C-bérlőhöz kapcsolódó Azure-előfizetést tartalmazza (*ne* válassza ki a Azure ad B2C bérlőt).
 

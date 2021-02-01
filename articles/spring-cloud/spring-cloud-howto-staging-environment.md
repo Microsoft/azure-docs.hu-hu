@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991a335207fc29cef7b243d7e520dd5f62ff691f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053063"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226108"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Átmeneti környezet beállítása az Azure Spring Cloud-ban
 
@@ -22,6 +22,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az átmeneti üzembe helye
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* Azure Spring Cloud-példány *standard* **díjszabási szinttel**.
 * Egy futó alkalmazás.  Lásd [: gyors útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése](spring-cloud-quickstart.md).
 * Azure CLI [Asc bővítmény](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
@@ -78,7 +79,7 @@ A telepített alkalmazásokat a következő eljárásokkal tekintheti meg.
 1. Az Azure CLI-ben hozzon létre egy új központi telepítést, és adja meg a "zöld" átmeneti telepítési nevet.
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app <appName> -n green --jar-path gateway/target/gateway.jar
     ```
 
 1. Miután a CLI üzembe helyezése sikeresen befejeződött, nyissa meg az **alkalmazás irányítópultját**, és tekintse meg az összes példányát a bal oldali **központi telepítések** lapon.
@@ -113,11 +114,11 @@ Annak ellenőrzéséhez, hogy a zöld átmeneti fejlesztés működik-e:
 
    [![Üzembe helyezések előkészítési központi telepítésének beállítása](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
 
-1. Térjen vissza a **központi telepítés kezelése** lapra.  A `green` központi telepítés központi telepítési állapota megjelenik. Most már fut a futó éles környezet.
+1. Térjen vissza a **központi telepítés kezelése** lapra. Állítsa be a központi telepítést a következőre: `green` `production` . A beállítás befejeződése után a `green` központi telepítés állapota megjelenik.  Most már fut a futó éles környezet.
 
    [![Központi telepítés előkészítési eredményének beállítása](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
 
-1. Másolja és illessze be az URL-címet egy új böngészőablakba, és az új alkalmazás oldalának meg kell jelennie a módosításaival.
+1. Az alkalmazás URL-címének meg kell jelennie a módosításokat.
 
 >[!NOTE]
 > Miután beállította a zöld telepítést üzemi környezetként, az előző üzemelő példány lesz az átmeneti üzembe helyezés.

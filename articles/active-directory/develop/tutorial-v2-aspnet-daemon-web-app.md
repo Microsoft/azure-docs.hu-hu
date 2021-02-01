@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a85ae227d45c8de6c3d04e4a058ebf9715421ca2
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: a5f0a7d8221e970c8c1aa3c1ddffbfc56f2d5715
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222065"
+ms.locfileid: "99226186"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -110,7 +110,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel későbbi használatra. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 1. Az **előtérben kijelentkezési URL-cím** beállítása a következőre: `https://localhost:44316/Account/EndSession` .
-1. Az **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
+1. Az **implicit engedélyezés és a hibrid folyamatok** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
 1. Kattintson a **Mentés** gombra.
 1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet. 

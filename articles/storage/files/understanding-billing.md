@@ -1,23 +1,45 @@
 ---
-title: A Azure Files számlázás ismertetése | Microsoft Docs
+title: Azure Files számlázás ismertetése | Microsoft Docs
 description: Ismerje meg, hogyan értelmezheti az Azure-fájlmegosztás kiépített és utólagos elszámolású számlázási modelljeit.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632478"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226641"
 ---
-# <a name="understanding-azure-files-billing"></a>Azure Files számlázás ismertetése
+# <a name="understand-azure-files-billing"></a>Azure Files számlázás ismertetése
 Azure Files két különböző számlázási modellt biztosít: kiépített és utólagos elszámolású. A kiépített modell csak a prémium szintű fájlmegosztás esetében érhető el, amelyek a **FileStorage** -fiókban üzembe helyezett fájlmegosztás. Az utólagos elszámolású modell csak a standard fájlmegosztás esetében érhető el, amelyek az **általános célú 2-es verziójú (GPv2)** Storage-fiókban üzembe helyezett fájlmegosztás. Ez a cikk azt ismerteti, hogyan működik mindkét modell a havi Azure Files számla megismerése érdekében.
 
-A Azure Files aktuális díjszabása a [Azure Files díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/files/)található.
+Azure Files díjszabási információkért lásd: [Azure Files díjszabási oldal](https://azure.microsoft.com/pricing/details/storage/files/).
+
+## <a name="storage-units"></a>Tárolóegységek    
+A Azure Files Base-2 mértékegységet használ a tárolási kapacitás (KiB, MiB, GiB és TiB) ábrázolására. Előfordulhat, hogy az operációs rendszer nem használja ugyanazt a mértékegységet vagy leltározási rendszert.
+
+### <a name="windows"></a>Windows
+
+A Windows operációs rendszer és a Azure Files a tárolási kapacitás mértéke a Base-2 számlálási rendszerrel együtt, de az egységek címkézése eltérő. Azure Files megcímkézi a tárolási kapacitását a 2. alap mértékegységgel, miközben a Windows felcímkézi a tárolási kapacitását az alapszintű 10 mértékegységben. A tárolási kapacitás jelentésekor a Windows nem alakítja át a tárolási kapacitását a Base-2 értékről a 10-es verzióra.
+
+|Betűszó  |Definíció  |Unit (Egység)  |A Windows a következőképpen jelenik meg  |
+|---------|---------|---------|---------|
+|KiB     |1 024 bájt         |Bináris prefixum         |KB (kilobájt)         |
+|MiB     |1 024 KiB (1 048 576 bájt)         |Bináris prefixum         |MB (megabájt)         |
+|GiB     |1024 MiB (1 073 741 824 bájt)         |gibibájtnak         |GB (gigabájt)         |
+|TiB     |1024 GiB (1 099 511 627 776 bájt)         |tebibyte         |TB (terabájt)         |
+
+### <a name="macos"></a>macOS
+
+Ismerje meg, hogy az [iOS és a MacOS hogyan jelent adattárolási kapacitást](https://support.apple.com/HT201402) az Apple webhelyén annak meghatározásához, hogy melyik leltározási rendszert használják.
+
+### <a name="linux"></a>Linux
+
+Az egyes operációs rendszerek vagy szoftverek külön leltározási rendszert is felhasználhatnak. Tekintse meg a dokumentációt annak meghatározásához, hogyan jelentik a tárolási kapacitást.
 
 ## <a name="provisioned-model"></a>Kiépített modell
 Azure Files a prémium szintű fájlmegosztás számára kiépített modellt használ. Egy kiépített üzleti modellben proaktív módon megadhatja a Azure Files szolgáltatásnak, hogy a tárolási követelményei milyenek, és nem a használatuk alapján történik. Ez hasonló a helyszíni hardveres vásárláshoz, abban az esetben, ha egy bizonyos mennyiségű tárterülettel rendelkező Azure-fájlmegosztást kiépít, a tárterületért kell fizetnie, függetlenül attól, hogy használja-e, vagy sem, ugyanúgy, mint a helyszíni fizikai adathordozók költségeinek kifizetését. A helyszíni fizikai adathordozótól eltérően a kiosztott fájlmegosztás a tárterülettől és az i/o-teljesítménytől függően dinamikusan méretezhető.
@@ -77,7 +99,7 @@ Ha a tranzakció optimalizált szintjében ritkán használt munkaterhelést hel
 
 Hasonlóképpen, ha a ritkán használt munkaterhelést a hűvös szinten helyezi el, a tranzakciós költségek sokkal többet fizetnek, de kevesebbet az adattárolási költségekért. Ez olyan helyzetet eredményezhet, amelynél a tranzakciós díjak megnövekedett költségei megnövelik a megtakarítást a csökkent adattárolási ár miatt, így több pénzért kell fizetnie, mint amennyire a tranzakció optimalizálva lenne. Bizonyos használati szintek esetében előfordulhat, hogy a gyors elérési szint a leggazdaságosabb szint, a lassú elérésű szint pedig drágább lesz, mint a tranzakciós optimalizálva.
 
-A számítási feladatok és a tevékenységek szintje határozza meg a normál fájlmegosztás legköltséghatékonyabb szintjét. A gyakorlatban a leghatékonyabb megoldás a legjobb módszer, ha a megosztás tényleges erőforrás-felhasználását (tárolt adatok, írási tranzakciók stb.) vizsgálja.
+A számítási feladatok és a tevékenységek szintje határozza meg a normál fájlmegosztás legköltséghatékonyabb szintjét. A gyakorlatban a leghatékonyabb csomag kiválasztásának legjobb módja a megosztás tényleges erőforrás-felhasználásának megvizsgálása (tárolt adatok, írási tranzakciók stb.).
 
 ### <a name="what-are-transactions"></a>Mik azok a tranzakciók?
 A tranzakciók Azure Files a fájlmegosztás tartalmának feltöltésére, letöltésére vagy egyéb módon történő módosítására irányuló műveletek vagy kérelmek. A fájlmegosztás során végrehajtott minden művelet egy vagy több tranzakcióra, valamint az utólagos elszámolású számlázási modellt használó standard megosztásokra fordítja le a tranzakciós költségeket.
@@ -92,7 +114,7 @@ A tranzakciók Azure Files a fájlmegosztás tartalmának feltöltésére, letö
 > [!Note]  
 > Az NFS 4,1 csak a prémium szintű fájlmegosztás esetében érhető el, amelyek a kiépített számlázási modellt használják, a tranzakciók nem befolyásolják a prémium szintű fájlmegosztás számlázását.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Azure Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/files/).
 - [Azure Files központi telepítésének megtervezése](./storage-files-planning.md) és [a Azure file Sync üzembe helyezésének tervezése](./storage-sync-files-planning.md).
 - [Hozzon létre egy fájlmegosztást](./storage-how-to-create-file-share.md) , és [telepítse a Azure file Sync](./storage-sync-files-deployment-guide.md).

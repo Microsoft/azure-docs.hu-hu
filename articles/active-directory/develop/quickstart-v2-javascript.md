@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 131cb325e3581a135be7a88f26c59637d35bc5f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937957"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225714"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -55,8 +55,9 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 > 1. Válassza a **Regisztráció** lehetőséget. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
-> 1. A **platform-konfigurációk** területen válassza **a platform hozzáadása** lehetőséget. Ekkor megnyílik egy panel a bal oldalon. Itt válassza ki a **webalkalmazások** régiót.
-> 1. Továbbra is a bal oldalon adja meg az **átirányítási URI** értékét `http://localhost:3000/` . Ezután válassza a **hozzáférési jogkivonat** és az **azonosító token** lehetőséget.
+> 1. A **platform konfigurációk** területen  >  **adjon hozzá egy platformot**. Válassza a **web** lehetőséget.
+> 1. Állítsa be az **átirányítási URI** értékét a következőre: `http://localhost:3000/` . 
+> 1. Válassza ki a **hozzáférési jogkivonatokat** és az **azonosító jogkivonatokat** az **implicit engedélyezési és a hibrid folyamatok**  alatt.
 > 1. Válassza a **Konfigurálás** lehetőséget.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -202,7 +203,7 @@ A gyors üzembe helyezési kód azt is bemutatja, hogyan inicializálható a MSA
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > |`clientId`     | A Azure Portalban regisztrált alkalmazás alkalmazás-azonosítója.|
 > |`authority`    | Választható A fiók típusát támogató szolgáltatói URL-cím, a konfiguráció szakaszban korábban leírtak szerint. Az alapértelmezett szolgáltató: `https://login.microsoftonline.com/common` . |
@@ -230,7 +231,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `scopes`   | Választható Olyan hatóköröket tartalmaz, amelyeket a rendszer a bejelentkezési időben a felhasználói beleküldéshez kér. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ). |
 
@@ -260,7 +261,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `scopes`   | Az API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz. Például `[ "mail.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ).|
 

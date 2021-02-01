@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 0b977944f3a531365487b9655820e5d8f85e13d0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861881"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225915"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -55,9 +55,9 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 #### <a name="performance"></a>Teljesítmény
 
-A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.
+A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van.
 
-#### <a name="cost"></a>Költség
+#### <a name="cost"></a>Költségek
 
 Bár a S2D-fürtök a szükséges teljesítményt érik el, a nagyvállalati ügyfelek számára költséges költség, különösen a kis-és közepes méretű vállalkozások (SMB) ügyfelei számára. Ebben a megoldásban a vállalatok a Storage-lemezekért fizetnek, valamint a megosztások lemezeit használó virtuális gépek költségeit.
 
@@ -92,7 +92,7 @@ Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali k�
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.
 - A fő lemezképet tartalmazó Storage-fióknak ugyanabban a régióban és előfizetésben kell lennie, ahol a virtuális gépek üzembe lettek kiépítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 

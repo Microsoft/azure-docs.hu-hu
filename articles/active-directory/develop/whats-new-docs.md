@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 0beaef9162f4bdb540764a100243c579b40d1324
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755959"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225479"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform docs: Újdonságok
 
@@ -24,13 +24,25 @@ ms.locfileid: "98755959"
 
 ## <a name="january-2021"></a>2021. január
 
+### <a name="new-articles"></a>Új cikkek
+
+- [Naplózás az Androidhoz készült MSAL-ben](msal-logging-android.md)
+- [Naplózás az MSAL.NET-ben](msal-logging-dotnet.md)
+- [Naplózás az iOS-hez/macOS-hez készült MSAL-ben](msal-logging-ios.md)
+- [Naplózás a Javához készült MSAL-ben](msal-logging-java.md)
+- [Naplózás az MSAL.js-ben](msal-logging-js.md)
+- [Naplózás a Pythonhoz készült MSAL-ben](msal-logging-python.md)
+
 ### <a name="updated-articles"></a>Frissített cikkek
 
+- [Közzétevő ellenőrzésének hibaelhárítása](troubleshoot-publisher-verification.md)
+- [Alkalmazásmodell](application-model.md)
 - [Hitelesítés és engedélyezés](authentication-vs-authorization.md)
 - [Útmutató: az Azure AD-alkalmazás korlátozása egy Azure AD-bérlőben lévő felhasználók köré](howto-restrict-your-app-to-a-set-of-users.md)
 - [Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján](v2-permissions-and-consent.md)
 - [Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)](active-directory-configurable-token-lifetimes.md)
 - [Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)](configure-token-lifetimes.md)
+- [Microsoft Identity platform hitelesítési kódtárak](reference-v2-libraries.md)
 - [Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md)
 
 ## <a name="december-2020"></a>2020. december
