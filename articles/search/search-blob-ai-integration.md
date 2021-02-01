@@ -1,5 +1,5 @@
 ---
-title: A blob Storage-beli adatkezelési szolgáltatással való Ismerkedés
+title: A mesterséges intelligencia használata a blob tartalmának gazdagítása érdekében
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg az Azure Cognitive Search természetes nyelvi és képelemzési képességeit, valamint azt, hogy ezek a folyamatok hogyan vonatkoznak az Azure-blobokban tárolt tartalomra.
 manager: nitinme
@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a0d32f00bd3c7f8daa2984bdc7c9b9dfb5add218
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362797"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222048"
 ---
-# <a name="use-ai-to-understand-blob-storage-data"></a>A blob Storage-beli adatkezelési szolgáltatással való Ismerkedés
+# <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>A mesterséges intelligencia használata a blob-tartalmak feldolgozásához és elemzéséhez az Azure-ban Cognitive Search
 
-Az Azure Blob Storage-ban tárolt adatokat gyakran különböző strukturálatlan tartalmak, például képek, hosszú szöveges, PDF-és Office-dokumentumok. Az Azure Cognitive Search AI-képességeinek használatával számos módon megismerheti és kinyerheti a Blobok értékes információit. Példák a mesterséges intelligenciát tartalmazó tartalom alkalmazására:
+Az Azure Blob Storage-ban, amely képekből vagy hosszú, nem differenciált szövegből áll, mély tanulási elemzést végezhet az alárendelt alkalmazások számára hasznos értékes információk feltárásához és kinyeréséhez. [AI](cognitive-search-concept-intro.md)-bővítéssel a következőket teheti:
 
 + Képekből származó szöveg kinyerése az optikai karakterfelismeréssel (OCR)
 + Jelenet leírása vagy Címkék készítése egy fényképből
@@ -26,23 +26,23 @@ Az Azure Blob Storage-ban tárolt adatokat gyakran különböző strukturálatla
 
 Habár előfordulhat, hogy csak az egyik ilyen AI-képességre van szüksége, közösen kombinálja őket ugyanabba a folyamatba (például a szöveg kinyerése egy beolvasott képből, majd a benne hivatkozott összes dátum és hely megkeresése). Az is gyakori, hogy az egyéni AI-vagy gépi tanulási folyamatokat élvonalbeli külső csomagok vagy házon belüli modellek formájában, valamint az Ön igényeinek megfelelően alakítottuk ki.
 
-A mesterséges intelligencia-gazdagítás új adatokat hoz létre, amelyeket szövegként rögzítettek, mezőkben tárolva. A bővítés után a teljes szöveges kereséssel elérheti ezeket az információkat egy keresési indexből, vagy az Azure Storage-ba is elküldheti a bővített dokumentumokat, így új alkalmazási élményeket érhet el, amelyek magukban foglalják a felderítési vagy elemzési forgatókönyvek adatait. 
+Bár a keresési indexelő által támogatott adatforrásokhoz is alkalmazhat mesterséges intelligenciát, a Blobok a leggyakrabban használt struktúrák a dúsítási folyamatokban. Az eredmények bekerülnek egy keresési indexbe a teljes szöveges kereséshez, vagy átirányítják az Azure Storage-ba az új alkalmazások bevezetéséhez, amely magában foglalja a felderítési vagy elemzési forgatókönyvek adatainak feltárását is. 
 
 Ebben a cikkben egy széles lencsén keresztül tekintjük meg a mesterséges intelligenciát, hogy gyorsan fel lehessen fogni a teljes folyamatot, a blobokban lévő nyers adatok átalakításával, vagy egy keresési indexben vagy egy Tudásbázisban.
 
 ## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>Mit jelent a blob-adatelemzés a mesterséges intelligenciával
 
-Az *AI* -bővítés az Azure Cognitive Search indexelési architektúrájának része, amely integrálja a Microsoft vagy az Ön által megadott egyéni AI-t a beépített mesterséges intelligenciával. Segít olyan végpontok közötti forgatókönyvek megvalósításában, amelyekben a blobokat (a meglévőket és az újakat is beleértve, vagy azok frissítését) kell feldolgoznia. a képek és a szövegek kinyeréséhez nyissa meg az összes formátumot 
+Az *AI* -bővítés az Azure Cognitive Search indexelési architektúrájának része, amely a Microsofttól vagy az Ön által megadott egyéni tanulási modellekkel integrálja a gépi tanulási modelleket. Segít olyan végpontok közötti forgatókönyvek megvalósításában, amelyekben a blobokat (a meglévőket és az újakat is beleértve, vagy azok frissítését) kell feldolgoznia. a képek és a szövegek kinyeréséhez nyissa meg az összes formátumot 
 
 A bemenetek a Blobok egyetlen tárolóban, az Azure Blob Storage-ban. A Blobok szinte bármilyen típusú szöveges vagy képi adatok lehetnek. 
 
 A kimenet mindig keresési index, amely a gyors szöveges kereséshez, a lekérésekhez és a feltáráshoz használható az ügyfélalkalmazások számára. Emellett a kimenet olyan [*Tudásbázis*](knowledge-store-concept-intro.md) is lehet, amely az Azure-blobokban vagy az adatelemzési számítási feladatokban lévő eszközökön (például Power bi vagy adatelemző munkaterhelésekben) lévő, a kibővített dokumentumokat is kibővíti
 
-A két között a folyamat architektúrája. A folyamat az *Indexelő* szolgáltatáson alapul, amelyhez hozzárendelhet egy *készségkészlet*, amely egy vagy több, a mesterséges intelligenciát biztosító *szaktudásból* áll. A folyamat célja, hogy olyan *dúsított dokumentumokat* hozzon létre, amelyek nyers tartalomként jelennek meg, de további szerkezetet, környezetet és információt vesznek fel a folyamaton keresztül. Az indexelés során a rendszer felhasználja a bővített dokumentumokat, így fordított indexeket és más, teljes szöveges keresésben vagy feltárásban és elemzésben használt struktúrákat hozhat létre.
+A két között a folyamat architektúrája. A folyamat alapja az [*Indexelő*](search-indexer-overview.md), amelyhez hozzárendelhet egy [*készségkészlet*](cognitive-search-working-with-skillsets.md), amely egy vagy több, a mesterséges intelligenciát biztosító *szaktudásból* áll. A folyamat célja, hogy olyan *dúsított dokumentumokat* hozzon létre, amelyek nyers tartalomként adják meg a folyamatot, de további szerkezetet, környezetet és információt vesznek fel, miközben a folyamaton keresztül haladnak. Az indexelés során a rendszer felhasználja a bővített dokumentumokat, így fordított indexeket és más, teljes szöveges keresésben vagy feltárásban és elemzésben használt struktúrákat hozhat létre.
 
 ## <a name="required-resources"></a>Szükséges erőforrások
 
-Szüksége van az Azure Blob Storage-ra, az Azure Cognitive Searchra és egy olyan harmadik szolgáltatásra vagy mechanizmusra, amely a mesterséges intelligenciát biztosítja:
+Az Azure Blob Storage és az Azure Cognitive Search mellett a mesterséges intelligenciát biztosító harmadik szolgáltatásra vagy mechanizmusra is szüksége lesz:
 
 + A beépített AI-hoz Cognitive Search az Azure Cognitive Services a látási és a természetes nyelvi feldolgozási API-kkal integrálható. Az optikai karakterfelismerés (OCR), a képelemzés vagy a természetes nyelvi feldolgozás (nyelvfelismerés, szöveg fordítása, entitások felismerése, fő kifejezés kibontása) hozzáadásához [Cognitive Services-erőforrást csatolhat](cognitive-search-attach-cognitive-services.md) . 
 
@@ -58,7 +58,7 @@ Az alábbi részek részletesebben ismertetik az összetevőket és a munkafolya
 
 ## <a name="use-a-blob-indexer"></a>BLOB-indexelő használata
 
-Az AI-bővítés egy indexelési folyamat bővítménye, és az Azure Cognitive Searchban ezek a folyamatok egy *Indexelő*fölé épülnek. Az indexelő egy adatforrást támogató alszolgáltatás, amely belső logikával rendelkezik a mintavételi adatokhoz, a metaadatok beolvasásához, az adatok lekéréséhez és az adatok natív formátumokból való szerializálásához a további importáláshoz. Az indexelő gyakran saját maguk használják az importáláshoz, elkülönítve az AI-től, de ha mesterséges intelligenciát szeretne létrehozni, szüksége lesz egy indexelő és egy készségkészlet. Ez a szakasz kiemeli az Indexelő; a következő szakasz a szakértelmével koncentrál.
+Az AI-bővítés egy indexelési folyamat bővítménye, és az Azure Cognitive Searchban ezek a folyamatok egy *Indexelő* fölé épülnek. Az indexelő egy adatforrást támogató alszolgáltatás, amely belső logikával rendelkezik a mintavételi adatokhoz, a metaadatok beolvasásához, az adatok lekéréséhez és az adatok natív formátumokból való szerializálásához a további importáláshoz. Az indexelő gyakran saját maguk használják az importáláshoz, elkülönítve az AI-től, de ha mesterséges intelligenciát szeretne létrehozni, szüksége lesz egy indexelő és egy készségkészlet. Ez a szakasz kiemeli az Indexelő; a következő szakasz a szakértelmével koncentrál.
 
 Az Azure Storage-beli Blobok indexelése a [blob indexelő](search-howto-indexing-azure-blob-storage.md)használatával történik. Az indexelő az **adatimportálás** varázsló, egy REST API vagy egy SDK használatával hívható meg. A rendszer meghívja a blob-indexelő, ha az indexelő által használt adatforrás egy Azure Blob-tároló. A Blobok egy részhalmazának indexeléséhez létrehozhat egy virtuális könyvtárat, amelyet aztán paraméterként adhat át, vagy szűrheti a fájltípusok kiterjesztését.
 

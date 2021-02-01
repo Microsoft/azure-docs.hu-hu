@@ -230,7 +230,7 @@
           items:
             - name: Keresés blobokban
               href: search-blob-storage-integration.md
-            - name: A mesterséges intelligenciát használó blobok ismertetése
+            - name: Mesterséges intelligenciát használó Blobok
               href: search-blob-ai-integration.md
             - name: Blobindexelő konfigurálása
               href: search-howto-indexing-azure-blob-storage.md

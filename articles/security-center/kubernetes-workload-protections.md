@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131338"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222183"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -62,7 +62,7 @@ A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővít
         > [!TIP]
         > A javaslat öt különböző biztonsági vezérlőben szerepel, és nem számít, hogy melyiket választotta ki a következő lépésben.
 
-    1. A biztonsági vezérlők bármelyikén válassza ki a javaslatot azon erőforrások megtekintéséhez, amelyekre telepíteni tudja a hozzáadást.
+    1. A biztonsági vezérlők bármelyikén válassza ki a javaslatot azon erőforrások megtekintéséhez, amelyekre telepíteni tudja a bővítményt.
     1. Válassza ki a megfelelő fürtöt, és javítsa ki a **szervizelést**.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="A (z) * * Azure Policy bővítmény Kubernetes való telepítéséhez és engedélyezéséhez telepíteni és engedélyezni kell a fürtökön * *":::
@@ -102,7 +102,7 @@ A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővít
     1. Válassza az "ASC alapértelmezett" lehetőséget.
     1. Nyissa meg a **Parameters (paraméterek** ) fület, és szükség szerint módosítsa az értékeket.
     1. Válassza a **felülvizsgálat + mentés** lehetőséget.
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 
 1. A javaslatok bármelyikének érvénybe léptetéséhez 

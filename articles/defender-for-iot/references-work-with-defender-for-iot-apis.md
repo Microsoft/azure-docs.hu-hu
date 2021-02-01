@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624574"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222105"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender a IoT-érzékelő és a felügyeleti konzol API-jai számára
 
@@ -56,33 +56,31 @@ Jogkivonat létrehozása:
 
 Ez a szakasz a következő érzékelő API-kat ismerteti:
 
-- /api/v1/devices
+- [Eszköz információinak beolvasása –/API/v1/Devices](#retrieve-device-information---apiv1devices)
 
-- /api/v1/devices/connections
+- [Eszköz csatlakoztatási információinak beolvasása –/API/v1/Devices/Connections](#retrieve-device-connection-information---apiv1devicesconnections)
 
-- /api/v1/devices/cves
+- [Információk beolvasása a CVEs-/API/v1/Devices/cves](#retrieve-information-on-cves---apiv1devicescves)
 
-- /api/v1/alerts
+- [Riasztási információk beolvasása –/API/v1/Alerts](#retrieve-alert-information---apiv1alerts)
 
-- /api/v1/events
+- [Idősor eseményeinek beolvasása –/API/v1/Events](#retrieve-timeline-events---apiv1events)
 
-- /api/v1/reports/vulnerabilities/devices
+- [Sebezhetőségi adatok beolvasása –/API/v1/Reports/Vulnerabilities/Devices](#retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices)
 
-- /api/v1/reports/vulnerabilities/security
+- [Biztonsági rések beolvasása –/API/v1/Reports/Vulnerabilities/Security](#retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity)
 
-- /api/v1/reports/vulnerabilities/operational
+- [Működési biztonsági rések beolvasása –/API/v1/Reports/Vulnerabilities/Operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- /api/external/authentication/validation
+- [Felhasználói hitelesítő adatok érvényesítése –/API/External/Authentication/Validation](#validate-user-credentials---apiexternalauthenticationvalidation)
 
-- /External/Authentication/set_password
+- [Jelszó módosítása –/External/Authentication/set_password](#change-password---externalauthenticationset_password)
 
-- /External/Authentication/set_password_by_admin
+- [Felhasználói jelszó frissítése Rendszerfelügyeleti webszolgáltatások által –/External/Authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
 
-### <a name="retrieve-device-information"></a>Eszköz adatainak beolvasása
+### <a name="retrieve-device-information---apiv1devices"></a>Eszköz információinak beolvasása –/API/v1/Devices
 
 Ezzel az API-val lekérheti az összes olyan eszköz listáját, amelyet a Defender for IoT érzékelő észlelt.
-
-#### <a name="apiv1devices"></a>/api/v1/devices
 
 #### <a name="method"></a>Metódus
 
@@ -112,38 +110,38 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **id** | Numerikus | Nem | - |
-| **erőforrásrekordjaiba** | JSON-tömb | Igen | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
-| **name** | Sztring | Nem | - |
-| **típusa** | Sztring | Nem | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
-| **macAddresses** | JSON-tömb | Igen | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
-| **operatingSystem** | Sztring | Igen | - |
-| **engineeringStation** | Logikai | Nem | Igaz vagy hamis |
-| **szkenner** | Logikai | Nem | Igaz vagy hamis |
-| **jogosult** | Logikai | Nem | Igaz vagy hamis |
-| **gyártó** | Sztring | Igen | - |
-| **protokollok** | JSON-tömb | Igen | Protokoll objektum |
-| **belső vezérlőprogram** | JSON-tömb | Igen | Belső vezérlőprogram objektuma |
+| **id** | Numerikus | No | - |
+| **erőforrásrekordjaiba** | JSON-tömb | Yes | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
+| **name** | Sztring | No | - |
+| **típusa** | Sztring | No | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
+| **macAddresses** | JSON-tömb | Yes | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
+| **operatingSystem** | Sztring | Yes | - |
+| **engineeringStation** | Logikai | No | Igaz vagy hamis |
+| **szkenner** | Logikai | No | Igaz vagy hamis |
+| **jogosult** | Logikai | No | Igaz vagy hamis |
+| **gyártó** | Sztring | Yes | - |
+| **protokollok** | JSON-tömb | Yes | Protokoll objektum |
+| **belső vezérlőprogram** | JSON-tömb | Yes | Belső vezérlőprogram objektuma |
 
 #### <a name="protocol-fields"></a>Protokoll mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Név** | Sztring | Nem |  |
-| **Címek** | JSON-tömb | Igen | Fő vagy numerikus értékek |
+| **Név** | Sztring | No |  |
+| **Címek** | JSON-tömb | Yes | Fő vagy numerikus értékek |
 
 #### <a name="firmware-fields"></a>Belső vezérlőprogram mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **sorozatszám** | Sztring | Nem | N/A vagy a tényleges érték |
-| **modell** | Sztring | Nem | N/A vagy a tényleges érték |
-| **firmwareVersion** | Dupla | Nem | N/A vagy a tényleges érték |
-| **additionalData** | Sztring | Nem | N/A vagy a tényleges érték |
-| **moduleAddress** | Sztring | Nem | N/A vagy a tényleges érték |
-| **rack** | Sztring | Nem | N/A vagy a tényleges érték |
-| **slot** | Sztring | Nem | N/A vagy a tényleges érték |
-| **Cím** | Sztring | Nem | N/A vagy a tényleges érték |
+| **sorozatszám** | Sztring | No | N/A vagy a tényleges érték |
+| **modell** | Sztring | No | N/A vagy a tényleges érték |
+| **firmwareVersion** | Dupla | No | N/A vagy a tényleges érték |
+| **additionalData** | Sztring | No | N/A vagy a tényleges érték |
+| **moduleAddress** | Sztring | No | N/A vagy a tényleges érték |
+| **rack** | Sztring | No | N/A vagy a tényleges érték |
+| **slot** | Sztring | No | N/A vagy a tényleges érték |
+| **Cím** | Sztring | No | N/A vagy a tényleges érték |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -279,11 +277,15 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 ]
 ```
 
-### <a name="retrieve-device-connection-information"></a>Eszköz csatlakoztatási adatainak beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Devices | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https: <span> //127 <span> . 0.0.1/API/v1/Devices? engedélyezett = True |
+
+### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>Eszköz csatlakoztatási információinak beolvasása –/API/v1/Devices/Connections
 
 Ezzel az API-val egy eszközön lévő összes kapcsolat listáját kérheti le.
-
-#### <a name="apiv1devicesconnections"></a>/api/v1/devices/connections
 
 #### <a name="method"></a>Metódus
 
@@ -333,19 +335,19 @@ Az eszközök kapcsolatait képviselő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **firstDeviceId** | Numerikus | Nem | - |
-| **secondDeviceId** | Numerikus | Nem | - |
-| **lastSeen** | Numerikus | Nem | EPOCH (UTC) |
-| **felderített** | Numerikus | Nem | EPOCH (UTC) |
-| **portok** | Szám tömb | Nem | - |
-| **protokollok** | JSON-tömb | Nem | Protokoll mező |
+| **firstDeviceId** | Numerikus | No | - |
+| **secondDeviceId** | Numerikus | No | - |
+| **lastSeen** | Numerikus | No | EPOCH (UTC) |
+| **felderített** | Numerikus | No | EPOCH (UTC) |
+| **portok** | Szám tömb | No | - |
+| **protokollok** | JSON-tömb | No | Protokoll mező |
 
 #### <a name="protocol-field"></a>Protokoll mező
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **name** | Sztring | Nem | - |
-| **parancsok** | Sztringtömb | Nem | - |
+| **name** | Sztring | No | - |
+| **parancsok** | Sztringtömb | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -447,11 +449,17 @@ Az eszközök kapcsolatait képviselő JSON-objektumok tömbje.
 ]
 ```
 
-### <a name="retrieve-information-on-cves"></a>Információk beolvasása a CVEs
+#### <a name="curl-command"></a>Curl parancs
+
+> [!div class="mx-tdBreakAll"]
+> | Típus | API-k | Példa |
+> |--|--|--|
+> | GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Devices/Connections | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/v1/Devices/Connections |
+> | GET | Curl-k-H "Authorization: <AUTH_TOKEN>" "https://<IP_ADDRESS>/API/v1/Devices/ <deviceId> /Connections? lastActiveInMinutes =&discoveredBefore =&discoveredAfter =" | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/API/v1/Devices/2/Connections? lastActiveInMinutes = 20&discoveredBefore = 1594550986000&discoveredAfter = 1594550986000 ' |
+
+### <a name="retrieve-information-on-cves---apiv1devicescves"></a>Információk beolvasása a CVEs-/API/v1/Devices/cves
 
 Ezzel az API-val lekérheti a hálózatban lévő eszközökön észlelt összes ismert CVEs listáját.
-
-#### <a name="apiv1devicescves"></a>/api/v1/devices/cves
 
 #### <a name="method"></a>Metódus
 
@@ -491,11 +499,11 @@ Az IP-címeken azonosított CVEs jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **cveId** | Sztring | Nem | - |
-| **IP-cím** | Sztring | Nem | IP-cím |
-| **pontszám** | Sztring | Nem | 0,0 – 10,0 |
-| **attackVector** | Sztring | Nem | Hálózat, szomszédos hálózat, helyi vagy fizikai |
-| **Leírás** | Sztring | Nem | - |
+| **cveId** | Sztring | No | - |
+| **IP-cím** | Sztring | No | IP-cím |
+| **pontszám** | Sztring | No | 0,0 – 10,0 |
+| **attackVector** | Sztring | No | Hálózat, szomszédos hálózat, helyi vagy fizikai |
+| **Leírás** | Sztring | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -557,11 +565,16 @@ Az IP-címeken azonosított CVEs jelölő JSON-objektumok tömbje.
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>Riasztási adatok beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Devices/cves | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/v1/Devices/cves |
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Devices/ <deviceIpAddress> /cves? Top = | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/v1/Devices/10.10.10.15/cves? top = 50 |
+
+### <a name="retrieve-alert-information---apiv1alerts"></a>Riasztási információk beolvasása –/API/v1/Alerts
 
 Ezzel az API-val lekérheti az összes olyan riasztás listáját, amelyeket a Defender IoT-érzékelő észlelt.
-
-#### <a name="apiv1alerts"></a>/api/v1/alerts
 
 #### <a name="method"></a>Metódus
 
@@ -605,21 +618,21 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **ID (Azonosító)** | Numerikus | Nem | - |
-| **idő** | Numerikus | Nem | EPOCH (UTC) |
-| **cím** | Sztring | Nem | - |
-| **üzenetet** | Sztring | Nem | - |
-| **Súlyosság** | Sztring | Nem | Figyelmeztetés, másodlagos, fő vagy kritikus |
-| **motor** | Sztring | Nem | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
-| **sourceDevice** | Numerikus | Igen | Eszközazonosító |
-| **destinationDevice** | Numerikus | Igen | Eszközazonosító |
-| **additionalInformation** | További információ objektum | Igen | - |
+| **ID (Azonosító)** | Numerikus | No | - |
+| **idő** | Numerikus | No | EPOCH (UTC) |
+| **cím** | Sztring | No | - |
+| **üzenetet** | Sztring | No | - |
+| **Súlyosság** | Sztring | No | Figyelmeztetés, másodlagos, fő vagy kritikus |
+| **motor** | Sztring | No | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
+| **sourceDevice** | Numerikus | Yes | Eszközazonosító |
+| **destinationDevice** | Numerikus | Yes | Eszközazonosító |
+| **additionalInformation** | További információ objektum | Yes | - |
 
 #### <a name="additional-information-fields"></a>További információ mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Leírás** | Sztring | Nem | - |
+| **Leírás** | Sztring | No | - |
 | **információk** | JSON-tömb | Nem | Sztring |
 
 #### <a name="response-example"></a>Példa válaszra
@@ -685,11 +698,16 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 
 ```
 
-### <a name="retrieve-timeline-events"></a>Idővonal eseményeinek beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+> [!div class="mx-tdBreakAll"]
+> | Típus | API-k | Példa |
+> |--|--|--|
+> | GET | Curl-k-H "hitelesítés: <AUTH_TOKEN>" "https://<IP_ADDRESS>/API/v1/Alerts? State =&fromTime =&toTime =&típus =" | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" "https:/ <span> /127.0.0.1/API/v1/Alerts? állapot = kezeletlen&fromTime = 1594550986000&toTime = 1594550986001&típus = leválasztások" |
+
+### <a name="retrieve-timeline-events---apiv1events"></a>Idősor eseményeinek beolvasása –/API/v1/Events
 
 Ezzel az API-val az esemény idővonalára jelentett események listáját kérheti le.
-
-#### <a name="apiv1events"></a>/api/v1/events
 
 #### <a name="method"></a>Metódus
 
@@ -723,11 +741,11 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|--|
-| **időbélyeg** | Numerikus | Nem | EPOCH (UTC) |
-| **cím** | Sztring | Nem | - |
-| **Súlyosság** | Sztring | Nem | INFORMÁCIÓ, értesítés vagy riasztás |
-| **tulajdonosa** | Sztring | Igen | Ha az esemény manuálisan lett létrehozva, akkor ez a mező tartalmazza az eseményt létrehozó felhasználónevet. |
-| **tartalom** | Sztring | Nem | - |
+| **időbélyeg** | Numerikus | No | EPOCH (UTC) |
+| **cím** | Sztring | No | - |
+| **Súlyosság** | Sztring | No | INFORMÁCIÓ, értesítés vagy riasztás |
+| **tulajdonosa** | Sztring | Yes | Ha az esemény manuálisan lett létrehozva, akkor ez a mező tartalmazza az eseményt létrehozó felhasználónevet. |
+| **tartalom** | Sztring | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -802,11 +820,15 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 
 ```
 
-### <a name="retrieve-vulnerability-information"></a>Sebezhetőségi adatok beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" "https://<IP_ADDRESS>/API/v1/Events? minutesTimeFrame =&típus =" | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/API/v1/Events? minutesTimeFrame = 20&típus = DEVICE_CONNECTION_CREATED ' |
+
+### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>Sebezhetőségi adatok beolvasása –/API/v1/Reports/Vulnerabilities/Devices
 
 Ezzel az API-val megkérheti a sebezhetőségi felmérés eredményeit az egyes eszközökön.
-
-#### <a name="apiv1reportsvulnerabilitiesdevices"></a>/api/v1/reports/vulnerabilities/devices
 
 #### <a name="method"></a>Metódus
 
@@ -832,74 +854,74 @@ Az eszköz objektum a következőket tartalmazza:
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **name** | Sztring | Nem | - |
-| **erőforrásrekordjaiba** | JSON-tömb | Nem | - |
-| **securityScore** | Numerikus | Nem | - |
-| **gyártó** | Sztring | Igen |  |
-| **firmwareVersion** | Sztring | Igen | - |
-| **modell** | Sztring | Igen | - |
-| **isWirelessAccessPoint** | Logikai | Nem | Igaz vagy hamis |
-| **operatingSystem** | Operációs rendszer objektuma | Igen | - |
-| **biztonsági rések** | Sebezhetőségi objektum | Igen | - |
+| **name** | Sztring | No | - |
+| **erőforrásrekordjaiba** | JSON-tömb | No | - |
+| **securityScore** | Numerikus | No | - |
+| **gyártó** | Sztring | Yes |  |
+| **firmwareVersion** | Sztring | Yes | - |
+| **modell** | Sztring | Yes | - |
+| **isWirelessAccessPoint** | Logikai | No | Igaz vagy hamis |
+| **operatingSystem** | Operációs rendszer objektuma | Yes | - |
+| **biztonsági rések** | Sebezhetőségi objektum | Yes | - |
 
 #### <a name="operating-system-fields"></a>Operációs rendszer mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Név** | Sztring | Igen | - |
-| **Típus** | Sztring | Igen | - |
-| **Verzió** | Sztring | Igen | - |
-| **latestVersion** | Sztring | Igen | - |
+| **Név** | Sztring | Yes | - |
+| **Típus** | Sztring | Yes | - |
+| **Verzió** | Sztring | Yes | - |
+| **latestVersion** | Sztring | Yes | - |
 
 #### <a name="vulnerabilities-fields"></a>Biztonsági rések mezői
  
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **antiViruses** | JSON-tömb | Igen | Vírusvédelmi nevek |
-| **plainTextPasswords** | JSON-tömb | Igen | Jelszó-objektumok |
-| **remoteAccess** | JSON-tömb | Igen | Távelérési objektumok |
-| **isBackupServer** | Logikai | Nem | Igaz vagy hamis |
-| **openedPorts** | JSON-tömb | Igen | Megnyitott portok objektumai |
-| **isEngineeringStation** | Logikai | Nem | Igaz vagy hamis |
-| **isKnownScanner** | Logikai | Nem | Igaz vagy hamis |
-| **cves** | JSON-tömb | Igen | CVE-objektumok |
-| **isUnauthorized** | Logikai | Nem | Igaz vagy hamis |
-| **malwareIndicationsDetected** | Logikai | Nem | Igaz vagy hamis |
-| **weakAuthentication** | JSON-tömb | Igen | Gyenge hitelesítést használó észlelt alkalmazások |
+| **antiViruses** | JSON-tömb | Yes | Vírusvédelmi nevek |
+| **plainTextPasswords** | JSON-tömb | Yes | Jelszó-objektumok |
+| **remoteAccess** | JSON-tömb | Yes | Távelérési objektumok |
+| **isBackupServer** | Logikai | No | Igaz vagy hamis |
+| **openedPorts** | JSON-tömb | Yes | Megnyitott portok objektumai |
+| **isEngineeringStation** | Logikai | No | Igaz vagy hamis |
+| **isKnownScanner** | Logikai | No | Igaz vagy hamis |
+| **cves** | JSON-tömb | Yes | CVE-objektumok |
+| **isUnauthorized** | Logikai | No | Igaz vagy hamis |
+| **malwareIndicationsDetected** | Logikai | No | Igaz vagy hamis |
+| **weakAuthentication** | JSON-tömb | Yes | Gyenge hitelesítést használó észlelt alkalmazások |
 
 #### <a name="password-fields"></a>Jelszó mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **alaphelyzetbe állítása** | Sztring | Nem | - |
-| **protokoll** | Sztring | Nem | - |
-| **erősségét** | Sztring | Nem | Nagyon gyenge, gyenge, közepes vagy erős |
+| **alaphelyzetbe állítása** | Sztring | No | - |
+| **protokoll** | Sztring | No | - |
+| **erősségét** | Sztring | No | Nagyon gyenge, gyenge, közepes vagy erős |
 
 #### <a name="remote-access-fields"></a>Távelérési mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Port** | Numerikus | Nem | - |
-| **közlekedési** | Sztring | Nem | TCP vagy UDP |
-| **ügyfél** | Sztring | Nem | IP-cím |
-| **clientSoftware** | Sztring | Nem | SSH, VNC, távoli asztal vagy csapat megjelenítője |
+| **Port** | Numerikus | No | - |
+| **közlekedési** | Sztring | No | TCP vagy UDP |
+| **ügyfél** | Sztring | No | IP-cím |
+| **clientSoftware** | Sztring | No | SSH, VNC, távoli asztal vagy csapat megjelenítője |
 
 #### <a name="open-port-fields"></a>Port mezőinek megnyitása
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Port** | Numerikus | Nem | - |
-| **közlekedési** | Sztring | Nem | TCP vagy UDP |
-| **protokoll** | Sztring | Igen | - |
-| **isConflictingWithFirewall** | Logikai | Nem | Igaz vagy hamis |
+| **Port** | Numerikus | No | - |
+| **közlekedési** | Sztring | No | TCP vagy UDP |
+| **protokoll** | Sztring | Yes | - |
+| **isConflictingWithFirewall** | Logikai | No | Igaz vagy hamis |
 
 #### <a name="cve-fields"></a>CVE-mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **ID (Azonosító)** | Sztring | Nem | - |
-| **pontszám** | Numerikus | Nem | Dupla |
-| **Leírás** | Sztring | Nem | - |
+| **ID (Azonosító)** | Sztring | No | - |
+| **pontszám** | Numerikus | No | Dupla |
+| **Leírás** | Sztring | No | - |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -1052,13 +1074,17 @@ Az eszköz objektum a következőket tartalmazza:
 
 ```
 
-### <a name="retrieve-security-vulnerabilities"></a>Biztonsági rések beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Reports/Vulnerabilities/Devices | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/v1/Reports/Vulnerabilities/Devices |
+
+### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>Biztonsági rések beolvasása –/API/v1/Reports/Vulnerabilities/Security
 
 Ezzel az API-val egy általános sebezhetőségi felmérés eredményeit kérheti le. Ez az értékelés betekintést nyújt a rendszerek biztonsági szintjébe.
 
 Ez az értékelés az általános hálózati és rendszerinformáción alapul, nem egy adott eszköz kiértékelésén.
-
-#### <a name="apiv1reportsvulnerabilitiessecurity"></a>/api/v1/reports/vulnerabilities/security
 
 #### <a name="method"></a>Metódus
 
@@ -1295,11 +1321,15 @@ A vizsgált eredményeket jelölő JSON-objektum. Minden kulcs lehet üres. Elle
 
 ```
 
-### <a name="retrieve-operational-vulnerabilities"></a>Működési biztonsági rések beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Reports/Vulnerabilities/Security | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/v1/Reports/Vulnerabilities/Security |
+
+### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>Működési biztonsági rések beolvasása –/API/v1/Reports/Vulnerabilities/Operational
 
 Ezzel az API-val egy általános sebezhetőségi felmérés eredményeit kérheti le. Ez az értékelés betekintést nyújt a hálózat működési állapotára. A szolgáltatás általános hálózati és rendszerinformáción alapul, nem egy adott eszköz kiértékelésével.
-
-#### <a name="apiv1reportsvulnerabilitiesoperational"></a>/api/v1/reports/vulnerabilities/operational
 
 #### <a name="method"></a>Metódus
 
@@ -1333,7 +1363,7 @@ A vizsgált eredményeket jelölő JSON-objektum. Mindegyik kulcs az eredmények
 | Mező neve | Típus | Értékek listája |
 |--|--|--|
 | s **címek** | Numerikus | - |
-| **hálózati** | Sztring | IP-cím |
+| **network** | Sztring | IP-cím |
 | **mask** | Sztring | Alhálózati maszk |
 
 **protocolProblems**
@@ -1488,13 +1518,17 @@ A vizsgált eredményeket jelölő JSON-objektum. Mindegyik kulcs az eredmények
 
 ```
 
-### <a name="validate-user-credentials"></a>Felhasználói hitelesítő adatok érvényesítése
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/v1/Reports/Vulnerabilities/Operational | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/v1/Reports/Vulnerabilities/Operational |
+
+### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>Felhasználói hitelesítő adatok érvényesítése –/API/External/Authentication/Validation
 
 Ezzel az API-val ellenőrizheti a Defender IoT felhasználónevét és jelszavát. A IoT összes felhasználói szerepköre az API-val is működhet.
 
 Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
-
-#### <a name="apiexternalauthenticationvalidation"></a>/api/external/authentication/validation
 
 #### <a name="method"></a>Metódus
 
@@ -1508,8 +1542,8 @@ Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
 
 #### <a name="request-example"></a>Példa kérésre
 
@@ -1551,11 +1585,15 @@ response:
 
 ```
 
-### <a name="change-password"></a>Change password
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/API/External/Authentication/Validation | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/API/External/Authentication/Validation |
+
+### <a name="change-password---externalauthenticationset_password"></a>Jelszó módosítása –/External/Authentication/set_password
 
 Ezzel az API-val engedélyezheti, hogy a felhasználók megváltoztassák a saját jelszavukat. A IoT összes felhasználói szerepköre az API-val is működhet. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
-
-#### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
 #### <a name="method"></a>Metódus
 
@@ -1617,15 +1655,19 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
+| **new_password** | Sztring | No |
 
-### <a name="user-password-update-by-system-admin"></a>Felhasználói jelszó frissítése rendszergazda szerint
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| POST | Curl-k-d ' {"username": "<USER_NAME>", "password": "<CURRENT_PASSWORD>", "new_password": "<NEW_PASSWORD>"} "-H" Content-Type: Application/JSON "https://<IP_ADDRESS>/API/External/Authentication/set_password | Curl-k-d ' {"username": "myUser", "password": " 1234@abcd ", "new_password": " abcd@1234 "} "-H" Content-Type: Application/JSON "https:/ <span> /127.0.0.1/API/External/Authentication/set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Felhasználói jelszó frissítése Rendszerfelügyeleti webszolgáltatások által –/External/Authentication/set_password_by_admin
 
 Ezzel az API-val engedélyezheti a rendszergazdáknak a megadott felhasználók jelszavainak módosítását. A IoT rendszergazda felhasználói szerepkörei az API-val is működhetnek. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
 #### <a name="method"></a>Metódus
 
@@ -1692,10 +1734,17 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **admin_username** | Sztring | Nem |
-| **admin_password** | Sztring | Nem |
-| **username** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **admin_username** | Sztring | No |
+| **admin_password** | Sztring | No |
+| **username** | Sztring | No |
+| **new_password** | Sztring | No |
+
+#### <a name="curl-command"></a>Curl parancs
+
+> [!div class="mx-tdBreakAll"]
+> | Típus | API-k | Példa |
+> |--|--|--|
+> | POST | Curl-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "username": "<USER_NAME>", "new_password": "<NEW_PASSWORD>"} "-H" Content-Type: Application/JSON "https://<IP_ADDRESS>/API/External/Authentication/set_password_by_admin | Curl-k-d ' {"admin_user": "adminUser", "admin_password": " 1234@abcd ", "username": "myUser", "new_password": " abcd@1234 "} "-H" Content-Type: Application/JSON "https:/ <span> /127.0.0.1/API/External/Authentication/set_password_by_admin |
 
 ## <a name="on-premises-management-console-api-specifications"></a>A helyszíni felügyeleti konzol API-specifikációi
 
@@ -1726,23 +1775,17 @@ Az itt definiált API-k csak olvasási kizárási szabályként jelennek meg a h
 
 ```
 
-#### <a name="change-password"></a>Change password
+#### <a name="change-password---externalauthenticationset_password"></a>Jelszó módosítása –/External/Authentication/set_password
 
 Ezzel az API-val engedélyezheti, hogy a felhasználók megváltoztassák a saját jelszavukat. A IoT összes felhasználói szerepköre az API-val is működhet. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
 
-- **/External/Authentication/set_password**
-
-#### <a name="user-password-update-by-system-admin"></a>Felhasználói jelszó frissítése rendszergazda szerint
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Felhasználói jelszó frissítése Rendszerfelügyeleti webszolgáltatások által –/External/Authentication/set_password_by_admin
 
 Ezzel az API-val engedélyezheti, hogy a rendszergazdák módosítsák a jelszavakat bizonyos felhasználók számára. A IoT rendszergazdai szerepkörrel rendelkező Defender képes együttműködni az API-val. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
 
-- **/External/Authentication/set_password_by_admin**
-
-### <a name="retrieve-device-information"></a>Eszköz adatainak beolvasása
+### <a name="retrieve-device-information---externalv1devices"></a>Eszköz információinak beolvasása –/External/v1/Devices
 
 Ez az API a Defender által a helyszíni felügyeleti konzolhoz csatlakozó IoT érzékelők számára észlelt összes eszköz listáját kéri le.
-
-- **/external/v1/devices**
 
 #### <a name="method"></a>Metódus
 
@@ -1784,40 +1827,40 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **sensorId** | Numerikus | Nem | - |
-| **Zónaazonosító** | Numerikus | Igen | - |
-| **siteId** | Numerikus | Igen | - |
-| **erőforrásrekordjaiba** | JSON-tömb | Igen | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
-| **name** | Sztring | Nem | - |
-| **típusa** | Sztring | Nem | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
-| **macAddresses** | JSON-tömb | Igen | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
-| **operatingSystem** | Sztring | Igen | - |
-| **engineeringStation** | Logikai | Nem | Igaz vagy hamis |
-| **szkenner** | Logikai | Nem | Igaz vagy hamis |
-| **jogosult** | Logikai | Nem | Igaz vagy hamis |
-| **gyártó** | Sztring | Igen | - |
-| **Protokollok** | JSON-tömb | Igen | Protokoll objektum |
-| **belső vezérlőprogram** | JSON-tömb | Igen | Belső vezérlőprogram objektuma |
+| **sensorId** | Numerikus | No | - |
+| **Zónaazonosító** | Numerikus | Yes | - |
+| **siteId** | Numerikus | Yes | - |
+| **erőforrásrekordjaiba** | JSON-tömb | Yes | IP-címek (a két hálózati adapterrel rendelkező eszközök esetében több cím is lehet) |
+| **name** | Sztring | No | - |
+| **típusa** | Sztring | No | Ismeretlen, mérnöki állomás, PLC, HMI, történész, tartományvezérlő, adatbázis-kiszolgáló, vezeték nélküli hozzáférési pont, útválasztó, kapcsoló, kiszolgáló, munkaállomás, IP-kamera, nyomtató, tűzfal, terminál, VPN Gateway, Internet vagy csoportos küldés és szórás |
+| **macAddresses** | JSON-tömb | Yes | MAC-címek (két hálózati adapterrel rendelkező eszköz esetén több cím is lehet) |
+| **operatingSystem** | Sztring | Yes | - |
+| **engineeringStation** | Logikai | No | Igaz vagy hamis |
+| **szkenner** | Logikai | No | Igaz vagy hamis |
+| **jogosult** | Logikai | No | Igaz vagy hamis |
+| **gyártó** | Sztring | Yes | - |
+| **Protokollok** | JSON-tömb | Yes | Protokoll objektum |
+| **belső vezérlőprogram** | JSON-tömb | Yes | Belső vezérlőprogram objektuma |
 
 #### <a name="protocol-fields"></a>Protokoll mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| Name | Sztring | Nem | - |
-| Címek | JSON-tömb | Igen | Fő vagy numerikus értékek |
+| Name | Sztring | No | - |
+| Címek | JSON-tömb | Yes | Fő vagy numerikus értékek |
 
 #### <a name="firmware-fields"></a>Belső vezérlőprogram mezői
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **sorozatszám** | Sztring | Nem | N/A vagy a tényleges érték |
-| **modell** | Sztring | Nem | N/A vagy a tényleges érték |
-| **firmwareVersion** | Dupla | Nem | N/A vagy a tényleges érték |
-| **additionalData** | Sztring | Nem | N/A vagy a tényleges érték |
-| **moduleAddress** | Sztring | Nem | N/A vagy a tényleges érték |
-| **rack** | Sztring | Nem | N/A vagy a tényleges érték |
-| **slot** | Sztring | Nem | N/A vagy a tényleges érték |
-| **Cím** | Sztring | Nem | N/A vagy a tényleges érték |
+| **sorozatszám** | Sztring | No | N/A vagy a tényleges érték |
+| **modell** | Sztring | No | N/A vagy a tényleges érték |
+| **firmwareVersion** | Dupla | No | N/A vagy a tényleges érték |
+| **additionalData** | Sztring | No | N/A vagy a tényleges érték |
+| **moduleAddress** | Sztring | No | N/A vagy a tényleges érték |
+| **rack** | Sztring | No | N/A vagy a tényleges érték |
+| **slot** | Sztring | No | N/A vagy a tényleges érték |
+| **Cím** | Sztring | No | N/A vagy a tényleges érték |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -1959,11 +2002,15 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>Riasztási adatok beolvasása
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" "https://<>IP_ADDRESS>/External/v1/Devices? siteId =&zónaazonosító =&sensorId =&engedélyezett =" | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/External/v1/Devices? siteId = 1&zónaazonosító = 2&sensorId = 5&engedélyezett = igaz ' |
+
+### <a name="retrieve-alert-information---externalv1alerts"></a>Riasztási információk beolvasása –/External/v1/Alerts
 
 Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni felügyeleti konzolról.
-
-#### <a name="externalv1alerts"></a>/external/v1/alerts
 
 #### <a name="method"></a>Metódus
 
@@ -2001,21 +2048,21 @@ Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni fel
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **ID (Azonosító)** | Numerikus | Nem | - |
-| **idő** | Numerikus | Nem | EPOCH (UTC) |
-| **cím** | Sztring | Nem | - |
-| **üzenetet** | Sztring | Nem | - |
-| **Súlyosság** | Sztring | Nem | Figyelmeztetés, másodlagos, fő vagy kritikus |
-| **motor** | Sztring | Nem | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
-| **sourceDevice** | Numerikus | Igen | Eszközazonosító |
-| **destinationDevice** | Numerikus | Igen | Eszközazonosító |
-| **additionalInformation** | További információ objektum | Igen | - |
+| **ID (Azonosító)** | Numerikus | No | - |
+| **idő** | Numerikus | No | EPOCH (UTC) |
+| **cím** | Sztring | No | - |
+| **üzenetet** | Sztring | No | - |
+| **Súlyosság** | Sztring | No | Figyelmeztetés, másodlagos, fő vagy kritikus |
+| **motor** | Sztring | No | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
+| **sourceDevice** | Numerikus | Yes | Eszközazonosító |
+| **destinationDevice** | Numerikus | Yes | Eszközazonosító |
+| **additionalInformation** | További információ objektum | Yes | - |
 
 #### <a name="additional-information-fields"></a>További információ mezők
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **Leírás** | Sztring | Nem | - |
+| **Leírás** | Sztring | No | - |
 | **információk** | JSON-tömb | Nem | Sztring |
 
 #### <a name="response-example"></a>Példa válaszra
@@ -2116,6 +2163,13 @@ Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni fel
 ]
 ```
 
+#### <a name="curl-command"></a>Curl parancs
+
+> [!div class="mx-tdBreakAll"]
+> | Típus | API-k | Példa |
+> |--|--|--|
+> | GET | Curl-k-H "hitelesítés: <AUTH_TOKEN>" "https://<>IP_ADDRESS>/External/v1/Alerts? State =&zónaazonosító =&fromTime =&toTime =&siteId =&érzékelő =" | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/External/v1/Alerts? állapot = kezeletlen&zónaazonosító = 1&fromTime = 0&toTime = 1594551777000&siteId = 1&érzékelő = 1 " |
+
 ### <a name="qradar-alerts"></a>QRadar-riasztások
 
 A QRadar-integráció a Defender for IoT segítségével azonosíthatja a Defender által a IoT által generált riasztásokat, és műveleteket hajthat végre ezekkel a riasztásokkal. A QRadar fogadja a Defender for IoT adatait, majd felveszi a kapcsolatot a nyilvános API helyszíni felügyeleti konzol összetevőjével.
@@ -2156,7 +2210,7 @@ JSON-objektum, amely az UUID-t tartalmazó riasztáson végrehajtandó művelete
 
 | Név | Típus | Nullázható | Értékek listája |
 |--|--|--|--|
-| **művelet** | Sztring | Nem | leíró vagy handleAndLearn |
+| **művelet** | Sztring | No | leíró vagy handleAndLearn |
 
 #### <a name="request-example"></a>Példa kérésre
 
@@ -2178,13 +2232,13 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 #### <a name="response-fields"></a>Válasz mezői
 
 
-| Név | Típus | Nullázható | Leírás |
+| Név | Típus | Nullázható | Description |
 |--|--|--|--|
-| **tartalom/hiba** | Sztring | Nem | Ha a kérelem sikeres, megjelenik a Content (tartalom) tulajdonság. Ellenkező esetben a hiba tulajdonság jelenik meg. |
+| **tartalom/hiba** | Sztring | No | Ha a kérelem sikeres, megjelenik a Content (tartalom) tulajdonság. Ellenkező esetben a hiba tulajdonság jelenik meg. |
 
 #### <a name="possible-content-values"></a>Lehetséges tartalom értékei
 
-| Állapotkód | Tartalom értéke | Leírás |
+| Állapotkód | Tartalom értéke | Description |
 |--|--|--|
 | 200 | A riasztások frissítési kérelme sikeresen befejeződött. | A frissítési kérelem sikeresen befejeződött. Nincsenek megjegyzések. |
 | 200 | A riasztás már kezelt (**Handle**). | A riasztást a rendszer már kezelte, amikor a riasztáshoz tartozó leíró kérés érkezett.<br />A riasztást továbbra is **kezeli** a rendszer. |
@@ -2213,15 +2267,19 @@ Az eszközöket jelölő JSON-objektumok tömbje.
 }
 ```
 
-### <a name="alert-exclusions-maintenance-window"></a>Riasztás kizárása (karbantartási időszak)
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| PUT | Curl-k-X PUT-d {"Action": " <ACTION> "} "-H" hitelesítés: <AUTH_TOKEN> "https://<IP_ADDRESS>/External/v1/Alerts/<UUID> | Curl-k-X PUT-d {művelet ":" Handle "}"-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/External/v1/Alerts/1-1594550943000 |
+
+### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>Riasztás kizárása (karbantartási időszak) –/external/v1/maintenanceWindow
 
 Adja meg azokat a feltételeket, amelyekben a rendszer nem küld riasztásokat. Például megadhatja és frissítheti a leállítási és indítási időpontokat, az olyan eszközöket és alhálózatokat, amelyeket ki kell zárni a riasztások kiváltásakor, vagy a kizárni kívánt IoT-motorok védelmezőjét. Előfordulhat például, hogy a karbantartási időszak során le szeretné állítani az összes riasztás riasztási kézbesítését, kivéve a kritikus eszközökön észlelt kártevő-riasztásokat.
 
 Az itt definiált API-k csak olvasási kizárási szabályként jelennek meg a helyszíni felügyeleti konzol **riasztás kizárások** ablakában.
 
 :::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="A riasztás kizárása ablak, amely az összes kizárási szabályt megjeleníti. ":::
-
-#### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
 #### <a name="method---post"></a>Metódus – közzététel
 
@@ -2367,11 +2425,18 @@ A karbantartási időszakra vonatkozó műveleteket jelölő JSON-objektumok tö
 | **ttl** | Numerikus | - | igen |
 | **operationType** | Sztring | Az értékek a következők: "OPEN", "UPDATE" és "Bezárás" | nem |
 
-### <a name="authenticate-user-credentials"></a>Felhasználói hitelesítő adatok hitelesítése
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| POST | Curl-k-X POST-d {"ticketId": "<TICKET_ID>", TTL ": <TIME_TO_LIVE>," motorok ": [<ENGINE1, ENGINE2... ENGINEn>], "sensorIds": [<SENSOR_ID1, SENSOR_ID2... SENSOR_IDn>], "alhálózatok": [<SUBNET1, SUBNET2 ALHÁLÓZATTAL... SUBNETn>]} "-H" hitelesítés: <AUTH_TOKEN> "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | Curl-k-X POST-d {"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf", "TTL": "20", "motorok": ["ANOMÁLIa"], "sensorIds": ["5", "3"], "alhálózatok": ["10.0.0.3"]} "-H" Authorization: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| PUT | Curl-k-X PUT-d {"ticketId": "<TICKET_ID>", TTL ":" <TIME_TO_LIVE> "}"-H "hitelesítés: <AUTH_TOKEN>" https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | Curl-k-X PUT-d {"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf", "TTL": "20"} "-H" hitelesítés: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| DELETE | Curl-k-X DELETE-d ' {"ticketId": "<TICKET_ID>"} "-H" engedélyezés: <AUTH_TOKEN> "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow | Curl-k-X DELETE-d ' {"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"} "-H" hitelesítés: 1234b734a9244d54ab8d40aedddcabcd "https:/ <span> /127.0.0.1/External/v1/maintenanceWindow |
+| GET | Curl-k-H "Authorization: <AUTH_TOKEN>" "https://<IP_ADDRESS>/external/v1/maintenanceWindow? fromDate =&toDate =&ticketId =&tokenName =" | Curl-k-H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" ' https:/ <span> /127.0.0.1/External/v1/maintenanceWindow? fromDate = 2020-01-01&toDate = 2020-07-14&ticketId = a5fe99c-d914-4bda-9332-307384fe40bf&tokenName = a " |
+
+### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>Felhasználói hitelesítő adatok hitelesítése –/External/Authentication/Validation
 
 Ezzel az API-val érvényesítheti a felhasználói hitelesítő adatokat. A IoT összes felhasználói szerepköre az API-val is működhet. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
-
-#### <a name="externalauthenticationvalidation"></a>/external/authentication/validation
 
 #### <a name="method"></a>Metódus
 
@@ -2411,8 +2476,8 @@ A műveleti állapot részleteit tartalmazó üzenet sztringje:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
 
 #### <a name="response-example"></a>Példa válaszra
 
@@ -2426,11 +2491,15 @@ response:
 }
 ```
 
-### <a name="change-password"></a>Change password
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| POST | Curl-k-d ' {"username": "<USER_NAME>", "password": "PASSWORD"} "https://<IP_ADDRESS>/External/Authentication/Validation" | Curl-k-d ' {"username": "myUser", "password": " 1234@abcd "} "" https:/ <span> /127.0.0.1/External/Authentication/Validation " |
+
+### <a name="change-password---externalauthenticationset_password"></a>Jelszó módosítása –/External/Authentication/set_password
 
 Ezzel az API-val engedélyezheti, hogy a felhasználók megváltoztassák a saját jelszavukat. A IoT összes felhasználói szerepköre az API-val is működhet. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
-
-#### <a name="externalauthenticationset_password"></a>/External/Authentication/set_password
 
 #### <a name="method"></a>Metódus
 
@@ -2492,15 +2561,19 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **username** | Sztring | Nem |
-| **alaphelyzetbe állítása** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **username** | Sztring | No |
+| **alaphelyzetbe állítása** | Sztring | No |
+| **new_password** | Sztring | No |
 
-### <a name="user-password-update-by-system-admin"></a>Felhasználói jelszó frissítése rendszergazda szerint
+#### <a name="curl-command"></a>Curl parancs
+
+| Típus | API-k | Példa |
+|--|--|--|
+| POST | Curl-k-d ' {"username": "<USER_NAME>", "password": "<CURRENT_PASSWORD>", "new_password": "<NEW_PASSWORD>"} "-H" Content-Type: Application/JSON "https://<IP_ADDRESS>/External/Authentication/set_password | Curl-k-d ' {"username": "myUser", "password": " 1234@abcd ", "new_password": " abcd@1234 "} "-H" Content-Type: Application/JSON "https:/ <span> /127.0.0.1/External/Authentication/set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Felhasználói jelszó frissítése Rendszerfelügyeleti webszolgáltatások által –/External/Authentication/set_password_by_admin
 
 Ezzel az API-val engedélyezheti a rendszergazdáknak a megadott felhasználók jelszavainak módosítását. A IoT rendszergazdai szerepkörrel rendelkező Defender képes együttműködni az API-val. Ehhez az API-hoz nem szükséges a IoT hozzáférési tokenhez tartozó Defender használata.
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/External/Authentication/set_password_by_admin
 
 #### <a name="method"></a>Metódus
 
@@ -2567,11 +2640,20 @@ response:
 
 | **Név** | **Típus** | **Nullázható** |
 |--|--|--|
-| **admin_username** | Sztring | Nem |
-| **admin_password** | Sztring | Nem |
-| **username** | Sztring | Nem |
-| **new_password** | Sztring | Nem |
+| **admin_username** | Sztring | No |
+| **admin_password** | Sztring | No |
+| **username** | Sztring | No |
+| **new_password** | Sztring | No |
 
-## <a name="see-also"></a>Lásd még
-[Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
- Az [eszközök leltárában szereplő összes vállalati érzékelő észlelésének vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+#### <a name="curl-command"></a>Curl parancs
+
+> [!div class="mx-tdBreakAll"]
+> | Típus | API-k | Példa |
+> |--|--|--|
+> | POST | Curl-k-d ' {"admin_username": "<ADMIN_USERNAME>", "admin_password": "<ADMIN_PASSWORD>", "username": "<USER_NAME>", "new_password": "<NEW_PASSWORD>"} "-H" Content-Type: Application/JSON "https://<IP_ADDRESS>/External/Authentication/set_password_by_admin | Curl-k-d ' {"admin_user": "adminUser", "admin_password": " 1234@abcd ", "username": "myUser", "new_password": " abcd@1234 "} "-H" Content-Type: Application/JSON "https:/ <span> /127.0.0.1/External/Authentication/set_password_by_admin |
+
+## <a name="next-steps"></a>Következő lépések
+
+- [Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+
+- [Egy eszközkészlet összes vállalati érzékelője általi észlelések vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
