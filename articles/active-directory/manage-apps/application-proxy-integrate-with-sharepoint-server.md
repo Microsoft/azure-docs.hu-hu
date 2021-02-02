@@ -4,7 +4,7 @@ description: Ismerteti a helyszíni SharePoint Server és az Azure AD Applicatio
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c318c539b1c09761ed81e7602808e415fdaf8b80
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658179"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258681"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével
 
@@ -188,7 +188,7 @@ A KCD konfigurálásához hajtsa végre az alábbi lépéseket minden összeköt
 1. Keresse meg az Azure AD proxy-összekötőt futtató számítógépet. Ebben a példában ez a SharePoint-kiszolgáló.
 1. Kattintson duplán a számítógépre, majd válassza a **Delegálás** lapot.
 1. Győződjön meg arról, hogy a delegálási beállítások úgy vannak beállítva, hogy a **számítógép csak a megadott szolgáltatások delegálására legyen megbízható**. Ezután válassza **a bármely hitelesítési protokoll használata** lehetőséget.
-1. Válassza a **Hozzáadás** gombot, válassza a **felhasználók vagy számítógépek** lehetőséget, és keresse meg a SharePoint-alkalmazáskészlet fiókját. Például: `Contoso\spapppool`.
+1. Válassza a **Hozzáadás** gombot, válassza a **felhasználók vagy számítógépek** lehetőséget, és keresse meg a SharePoint-alkalmazáskészlet fiókját. Példa: `Contoso\spapppool`.
 1. Az SPN-lista listában válassza ki azt, amelyet korábban hozott létre a szolgáltatásfiók számára.
 1. Kattintson **az OK gombra** , majd kattintson ismét **az OK** gombra a módosítások mentéséhez.
   

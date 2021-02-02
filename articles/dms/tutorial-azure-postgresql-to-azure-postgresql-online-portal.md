@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 772fc9f21f36a1487e2e3a1acbe644f9fd12e0f4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 545359cd68c18fea8bf1369a57226d024489f293
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563194"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258930"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure DB for PostgreSQL-hez – egyetlen kiszolgáló online a DMS használatával a Azure Portal
 
@@ -54,7 +54,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * [Hozzon létre egy Azure Database for PostgreSQL-kiszolgálót](../postgresql/quickstart-create-server-database-portal.md) , vagy [hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálót](../postgresql/quickstart-create-hyperscale-portal.md) célként szolgáló adatbázis-kiszolgálóként, amelybe áttelepíti az adatátvitelt.
 * Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Servicehoz a Azure Resource Manager üzembe helyezési modell használatával. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](../virtual-network/index.yml), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
 
-* Győződjön meg arról, hogy a virtuális hálózat hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő bejövő kommunikációs portokat a Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
+* Győződjön meg arról, hogy a virtuális hálózat hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő kimenő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
 * Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](../azure-sql/database/firewall-configure.md) a Azure Database for PostgreSQL forráshoz, hogy a Azure Database Migration Service hozzáférjen a forrás-adatbázisokhoz. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
 * Hozzon létre egy kiszolgálói szintű [Tűzfalszabály](../azure-sql/database/firewall-configure.md) a Azure Database for PostgreSQL céljához, hogy engedélyezze a Azure Database Migration Service számára a célként megadott adatbázisokhoz való hozzáférést. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
 * [Engedélyezze a logikai replikációt](../postgresql/concepts-logical.md) az Azure-adatbázis PostgreSQL-forrásához. 
@@ -306,7 +306,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 > [!NOTE]
 > A Azure Database Migration Service a Azure Database for PostgreSQL-egyetlen kiszolgálón a csökkentett állásidővel rendelkező főverziók frissítésére használható. Először konfigurálnia kell egy céladatbázis-t a kívánt magasabb PostgreSQL-verzióval, a hálózati beállításokkal és paraméterekkel. Ezután kezdeményezheti az áttelepítést a célként megadott adatbázisokra a fent ismertetett eljárás használatával. A cél adatbázis-kiszolgálóra való átváltás követően frissítheti az alkalmazás-kapcsolódási karakterláncot, hogy az a cél adatbázis-kiszolgálóra mutasson. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](./dms-overview.md).

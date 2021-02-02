@@ -1,24 +1,51 @@
 ---
 title: Az Azure Active Directory-alkalmazások kezelésének újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory-alkalmazások kezeléséhez.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+manager: daveba
+ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054821"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258574"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
 Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
+
+## <a name="january-2021"></a>2021. január
+
+### <a name="new-articles"></a>Új cikkek
+- [Az alkalmazások konfigurációjának megtervezése Azure Active Directory](my-apps-deployment-plan.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+- [Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor](application-proxy-connector-installation-problem.md)
+- [Jelszóalapú egyszeri bejelentkezés hibaelhárítása az Azure AD-ben](troubleshoot-password-based-sso.md)
+- [Alkalmazások kezelése – ajánlott eljárások](application-management-fundamentals.md)
+- [Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal](plan-an-application-integration.md)
+- [Mi az alkalmazáskezelés?](what-is-application-management.md)
+- [Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések](application-proxy-faq.md)
+- [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Üzletági alkalmazások fejlesztése a Azure Active Directory](developer-guidance-for-integrating-applications.md)
+- [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
+- [A csatolt bejelentkezés ismertetése](configure-linked-sign-on.md)
+- [Jelszó alapú egyszeri bejelentkezés ismertetése](configure-password-single-sign-on-non-gallery-applications.md)
+- [SAML-alapú egyszeri bejelentkezés ismertetése](configure-saml-single-sign-on.md)
+- [Alkalmazások Azure Active Directory való hozzáadásával vagy eltávolításával kapcsolatos gyakori problémák elhárítása](troubleshoot-adding-apps.md)
+- [Alkalmazások megtekintése az Azure AD-Bérlővel az Identitáskezelés kezeléséhez](application-types.md)
+- [A felhasználók Azure Active Directory alkalmazásokhoz való hozzárendelésének ismertetése](ways-users-get-assigned-to-applications.md)
+- [Gyors útmutató: alkalmazás törlése a Azure Active Directory (Azure AD) bérlőből](delete-application-portal.md)
+- [Távoli asztal közzététele Azure AD-alkalmazásproxy használatával](application-proxy-integrate-with-remote-desktop-services.md)
+- [A Azure Active Directoryban lévő, nem megfelelő jogosultságokkal rendelkező vagy gyanús alkalmazásokra vonatkozó teendők](manage-application-permissions.md)
+
 
 ## <a name="december-2020"></a>2020. december
 

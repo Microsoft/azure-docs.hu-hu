@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fdefcabdda64402610f115832976ec9f7af81b80
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609037"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258829"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Ismert problémák/áttelepítési korlátozások a PostgreSQL-ből származó online áttelepítéssel a PostgreSQL-hez készült Azure DB-be
 
@@ -123,3 +123,4 @@ Ha az AWS RDS PostgreSQL-ről a Azure Database for PostgreSQLra próbál online 
 - Több tábla ugyanazzal a névvel való áttelepítése, de egy másik eset (például Tábla1, TÁBLA1 és tábla1) kiszámíthatatlan működést eredményezhet, ezért nem támogatott.
 - A (z) [CREATE | feldolgozásának módosítása ALTER | DROP | CSONKOLT] a Table DDLs nem támogatott.
 - Azure Database Migration Service egyetlen áttelepítési tevékenység legfeljebb négy adatbázist tud fogadni.
+- A pg_largeobject tábla migrálása nem támogatott. 

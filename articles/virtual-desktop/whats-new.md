@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095906"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258795"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -38,7 +38,7 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 
 ## <a name="fslogix-updates"></a>FSLogix-frissítések
 
-Kíváncsi a FSLogix legújabb frissítéseire? Tekintse [meg a FSLogix újdonságait](/fslogix/whats-new.md).
+Kíváncsi a FSLogix legújabb frissítéseire? Tekintse [meg a FSLogix újdonságait](/fslogix/whats-new).
 
 ## <a name="january-2021"></a>2021. január
 

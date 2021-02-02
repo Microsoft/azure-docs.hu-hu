@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 02/07/2019
-ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/01/2021
+ms.openlocfilehash: 5771f95da7b63c6c16bb581b84cc28c4b838ec27
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747340"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259016"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
 
@@ -23,7 +23,8 @@ Egy ügyfélalkalmazás egy [Rest APIon](https://www.hl7.org/fhir/http.html)kere
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy FHIR-végpont az Azure-ban. Ezt beállíthatja a felügyelt Azure API-FHIR vagy az Azure-hoz készült nyílt forráskódú FHIR-kiszolgáló használatával. A felügyelt Azure API beállítása a FHIR [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)vagy [Azure CLI](fhir-paas-cli-quickstart.md)használatával.
-- Egy  [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) , amelyet a FHIR szolgáltatás eléréséhez fog használni
+- Egy  [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) , amelyet a FHIR szolgáltatás eléréséhez fog használni.
+- A FHIR szolgáltatás eléréséhez engedélyeket kapott (például "FHIR adatközreműködői") az ügyfélalkalmazás számára. További információ: [configure Azure RBAC for FHIR](https://docs.microsoft.com/azure/healthcare-apis/configure-azure-rbac)
 - A Posting telepítése megtörtént. A következő címről kérheti le: [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR-kiszolgáló és-hitelesítés részletei
@@ -127,7 +128,7 @@ Ha megismétli a beteges keresést, a következőt kell látnia:
 
 ![Beteg létrehozva](media/tutorial-postman/postman-patient-found.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy FHIR API-t adott hozzá a Poster használatával. Olvassa el a támogatott funkciók szakasz támogatott API-funkcióit ismertető szakaszt.
  

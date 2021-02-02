@@ -1,7 +1,7 @@
 ---
 title: A Azure Active Directory külső identitások újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory külső identitások számára.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,21 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 84adb08231589ae636c6a6926a4019a8a070a62e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562378"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258863"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory külső identitások: Újdonságok
 
 Üdvözli a Azure Active Directory külső identitások dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A külső identitások szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
 
+## <a name="january-2021"></a>2021. január
+
+### <a name="updated-articles"></a>Frissített cikkek
+- [Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása](allow-deny-list.md)
+- [Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba](add-users-information-worker.md)
+
+
 ## <a name="december-2020"></a>2020. december
 
 ### <a name="updated-articles"></a>Frissített cikkek
-
 - [Azure Active Directory B2B-együttműködés – gyakori kérdések](faq.md)
 - [Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára](google-federation.md)
 - [Külső identitások identitás-szolgáltatói](identity-providers.md)

@@ -118,9 +118,8 @@
         - name: Azure AD a Batch Managementtel
           href: batch-aad-auth-management.md
         - name: A Key Vault biztonságos elérése a Batch használatával
+          displayName: 'credential, certificate'
           href: credential-access-key-vault.md
-        - name: Tanúsítványok használata a Batch szolgáltatással
-          href: batch-certificates.md
     - name: Fájlok és alkalmazások másolása készletcsomópontokba
       items:
         - name: Alkalmazások és adatok másolása készletcsomópontokba

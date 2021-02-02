@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966649"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258541"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Oktatóanyag: egyéni foglalási szabályzatok használata az eszközök kiépítési szolgáltatásával (DPS)
 
@@ -347,7 +347,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. A `main()` függvényben keresse meg a hívást a következőhöz: `Prov_Device_Register_Device()` . Közvetlenül a hívás előtt adja hozzá a következő sornyi kódot, amely használatával [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) Egyéni JSON-adattartalmat adhat át a kiépítés során. Ezzel további információkat adhat meg az egyéni foglalási funkciókhoz. Ez az eszköz típusának átadására is használható a regisztrációs azonosító vizsgálata helyett.
+6. A `main()` függvényben keresse meg a hívást a következőhöz: `Prov_Device_Register_Device()` . Közvetlenül a hívás előtt adja hozzá a következő sornyi kódot, amely használatával [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) Egyéni JSON-adattartalmat adhat át a kiépítés során. Ezzel további információkat adhat meg az egyéni foglalási funkciókhoz. Ez az eszköz típusának átadására is használható a regisztrációs azonosító vizsgálata helyett. További információ az egyéni adattartalomnak a DPS használatával történő elküldéséről és fogadásáról: [adattartalom átvitele az eszközök és a DPS között](how-to-send-additional-data.md).
 
     ```c
     // An example custom payload

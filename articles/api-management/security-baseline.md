@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201076"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258557"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -90,15 +90,11 @@ A belső vnet API Management kiépített, a Application Gateway előtérrel val�
 
 Megjegyzés: Ez a funkció a API Management prémium és fejlesztői szintjein érhető el.
 
-Az elosztott szolgáltatásmegtagadási (DDoS) támadások elleni védelem érdekében engedélyezze a Azure DDoS Protection szabványt a API Management-telepítéshez társított vnet.
-
 A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt internetes IP-címekkel.
 
 * [API Management integrálása belső VNET a Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Az Azure Application Gateway ismertetése](../application-gateway/index.yml)
-
-* [A Azure DDoS Protection standard konfigurálása](../ddos-protection/manage-ddos-protection.md)
 
 * [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
@@ -184,8 +180,7 @@ Vigyázat: Ha a API Management alhálózaton NSG konfigurál, a megnyitható por
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
-**Útmutató**: az Azure API Management üzemelő példányokhoz kapcsolódó hálózati beállítások szabványos biztonsági konfigurációinak meghatározása és implementálása. Használjon Azure Policy aliasokat a "Microsoft. ApiManagement" és a "Microsoft. Network" névterekben, hogy egyéni házirendeket hozzon létre az Azure API Management üzemelő példányok és a kapcsolódó erőforrások hálózati konfigurációjának naplózásához vagy érvényesítéséhez. Az Azure-beli virtuális hálózatok beépített szabályzat-definícióit is igénybe vehetjük, például:
-- DDoS Protection a standardot engedélyezni kell
+**Útmutató**: az Azure API Management üzemelő példányokhoz kapcsolódó hálózati beállítások szabványos biztonsági konfigurációinak meghatározása és implementálása. Használjon Azure Policy aliasokat a "Microsoft. ApiManagement" és a "Microsoft. Network" névterekben, hogy egyéni házirendeket hozzon létre az Azure API Management üzemelő példányok és a kapcsolódó erőforrások hálózati konfigurációjának naplózásához vagy érvényesítéséhez. 
 
 Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-környezeteket a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek egyetlen terv szerinti definícióban való kicsomagolásával. A tervet egyszerűen alkalmazhatja új előfizetésekre, környezetekre, valamint a verziószámozáson keresztül történő finomhangolásra és felügyeletre.
 

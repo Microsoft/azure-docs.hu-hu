@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
-ms.openlocfilehash: 73c2aba3028f42621f241bd8f295e83e0ef96e68
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: e1ccf55d38a9a3a5a1d0a3622c90dd7b51e5e477
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540606"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258490"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>A MongoDB-műveletekre vonatkozó Azure Cosmos DB API-k arányának korlátozására vonatkozó hibák megelőzése
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -20,7 +20,6 @@ ms.locfileid: "98540606"
 A MongoDB-műveletek Azure Cosmos DB API-ját a ráta korlátozásával (16500/429) kapcsolatos hibák léphetnek fel, ha meghaladják a gyűjtemény átviteli korlátját (RUs). 
 
 Engedélyezheti a kiszolgálóoldali újrapróbálkozás (SSR) szolgáltatást, és lehetővé teheti a kiszolgáló számára a műveletek automatikus megismétlését. A kéréseket a rendszer a fiókban lévő összes gyűjtemény rövid késleltetése után újrapróbálkozik. Ez a funkció kényelmes alternatíva a ráta-korlátozó hibák kezelésére az ügyfélalkalmazás számára.
-
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -36,8 +35,33 @@ Engedélyezheti a kiszolgálóoldali újrapróbálkozás (SSR) szolgáltatást, 
 
 :::image type="content" source="./media/prevent-rate-limiting-errors/portal-features-server-side-retry.png" alt-text="A MongoDB Azure Cosmos DB API-hoz készült kiszolgálóoldali újrapróbálkozás funkciójának képernyőképe":::
 
+## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-## <a name="next-steps"></a>További lépések
+1. Ellenőrizze, hogy a SSR szolgáltatás már engedélyezve van-e a fiókjában:
+```bash
+az cosmosdb show --name accountname --resource-group resourcegroupname
+```
+2. **Engedélyezés** Az adatbázis-fiókban található összes gyűjteményhez tartozó SSR. A módosítás érvénybe léptetése akár 15min is eltarthat.
+```bash
+az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
+```
+A következő parancs **letiltja** az adatbázis-fiókban lévő összes gyűjteményhez tartozó SSR-t. A módosítás érvénybe léptetése akár 15min is eltarthat.
+```bash
+az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
+```
+
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
+* Hogyan történik a kérelmek újrapróbálása?
+    * A kéréseket a rendszer folyamatosan újrapróbálkozik (újra és újra), amíg a 60 másodperces időkorlát el nem éri. Ha elérte az időtúllépést, az ügyfél [ExceededTimeLimit-kivételt fog kapni (50)](mongodb-troubleshoot.md).
+*  Hogyan figyelhető meg a SSR hatása?
+    *  Megtekintheti a Cosmos DB metrikák ablaktáblán a kiszolgálóoldali újrapróbált hibák (429s) korlátozásának mértékét. Ne feledje, hogy ezek a hibák nem az ügyfélre mutatnak, amikor a SSR engedélyezve van, mivel azokat a rendszer kezeli és újrapróbálkozza. 
+    *  A "estimatedDelayFromRateLimitingInMilliseconds" bejegyzést tartalmazó naplóbejegyzések a [Cosmos db erőforrás-naplókban](cosmosdb-monitor-resource-logs.md)kereshetők.
+*  Befolyásolja a rendszer a konzisztencia szintjét?
+    *  A SSR nem befolyásolja a kérelmek konzisztenciáját. A rendszer újrapróbálkozik a kérelmekkel, ha korlátozott a díjszabás (429-es hiba miatt). 
+*  Befolyásolja-e az SSR bármilyen típusú hibát, amelyet az ügyfelem fogadni fog?
+    *  Nem, a SSR csak a kiszolgáló-oldal újbóli kipróbálásával befolyásolja a sebesség-korlátozó hibákat (429s). Ezzel a szolgáltatással megakadályozható, hogy az ügyfélalkalmazás a ráta korlátozásával kapcsolatos hibákat kezeljen. Az összes [többi hiba](mongodb-troubleshoot.md) a-ügyfélre lép. 
+
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a gyakori hibák elhárításáról, tekintse meg ezt a cikket:
 

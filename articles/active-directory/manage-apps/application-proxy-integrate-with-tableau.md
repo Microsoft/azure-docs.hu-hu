@@ -3,7 +3,7 @@ title: Azure Active Directory Application Proxy és tabló | Microsoft Docs
 description: Ismerje meg, hogyan használható a Azure Active Directory (Azure AD) alkalmazásproxy a Tablós környezet távelérésének biztosításához.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6720a5ad963bc73e11ef7b46150e946521928c01
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764502"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258625"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory Application Proxy és tabló 
 
@@ -52,11 +52,11 @@ A következő esetében:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) alkalmazás-rendszergazdaként. 
 
-2. Válassza **Azure Active Directory > vállalati alkalmazások**lehetőséget. 
+2. Válassza **Azure Active Directory > vállalati alkalmazások** lehetőséget. 
 
 3. A panel tetején kattintson a **Hozzáadás** gombra. 
 
-4. Válassza **a helyszíni alkalmazás**lehetőséget. 
+4. Válassza **a helyszíni alkalmazás** lehetőséget. 
 
 5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkkal. A beállításokhoz a következő útmutatást használhatja: 
 
@@ -66,11 +66,11 @@ A következő esetében:
 
 6. A panel tetején kattintson a **Hozzáadás** gombra. Ekkor megjelenik az alkalmazás, és megnyílik a gyors üzembe helyezés menü. 
 
-7. A gyors üzembe helyezés menüben válassza a **felhasználó kiosztása teszteléshez**lehetőséget, és adjon hozzá legalább egy felhasználót az alkalmazáshoz. Győződjön meg arról, hogy a teszt fiók hozzáfér a helyszíni alkalmazáshoz. 
+7. A gyors üzembe helyezés menüben válassza a **felhasználó kiosztása teszteléshez** lehetőséget, és adjon hozzá legalább egy felhasználót az alkalmazáshoz. Győződjön meg arról, hogy a teszt fiók hozzáfér a helyszíni alkalmazáshoz. 
 
 8. Válassza a **hozzárendelés** lehetőséget a felhasználói teszt hozzárendelésének mentéséhez. 
 
-9. Választható Az App Management lapon válassza az **egyszeri bejelentkezés**lehetőséget. Válassza az **integrált Windows-hitelesítés** lehetőséget a legördülő menüből, és töltse ki a szükséges mezőket a tabló konfigurációja alapján. Kattintson a **Mentés** gombra. 
+9. Választható Az App Management lapon válassza az **egyszeri bejelentkezés** lehetőséget. Válassza az **integrált Windows-hitelesítés** lehetőséget a legördülő menüből, és töltse ki a szükséges mezőket a tabló konfigurációja alapján. Kattintson a **Mentés** gombra. 
 
  
 
@@ -80,7 +80,7 @@ Az alkalmazás most már készen áll a tesztelésre. Nyissa meg a tabló közz�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure AD Application Proxyról: [biztonságos távoli hozzáférés biztosítása a helyszíni alkalmazásokhoz](application-proxy.md).
 
