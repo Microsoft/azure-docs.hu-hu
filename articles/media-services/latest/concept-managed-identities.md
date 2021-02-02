@@ -1,45 +1,40 @@
 ---
-title: Felügyelt identitások és megbízható tárolók
-description: A Media Services felügyelt identitásokkal is használhatók a megbízható tárolás engedélyezéséhez.
+title: Felügyelt identitások
+description: A Media Services az Azure által felügyelt identitásokkal használható.
+keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956174"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258439"
 ---
-# <a name="managed-identities-and-trusted-storage-with-media-services"></a>Felügyelt identitások és megbízható tárolás a Media Services szolgáltatással
+# <a name="managed-identities"></a>Felügyelt identitások
 
-A Media Services [felügyelt identitásokkal](../../active-directory/managed-identities-azure-resources/overview.md) is használhatók a megbízható tárolás engedélyezéséhez. Media Services fiók létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Media Services rendszerhitelesítéssel érheti el a Storage-fiókot. Media Services ellenőrzi, hogy a Media Services fiók és a Storage-fiók ugyanahhoz az előfizetéshez tartozik-e, és ellenőrzi, hogy a társítást hozzáadó felhasználó hozzáfér-e a Storage-fiókhoz Azure Resource Manager RBAC.
+A fejlesztők számára gyakori kihívás a titkok és a hitelesítő adatok kezelése a különböző szolgáltatások közötti kommunikáció biztonságossá tételéhez. Az Azure-ban a felügyelt identitások nem teszik lehetővé, hogy a fejlesztők a hitelesítő adatok kezeléséhez a személyazonosságot az Azure AD-ben, az Azure AD-ben pedig Azure Active Directory (Azure AD-) tokenek beszerzéséhez használják.
 
-## <a name="trusted-storage"></a>Megbízható tárterület
-
-Ha azonban tűzfalat szeretne használni a Storage-fiók biztonságossá tételéhez, felügyelt identitás-hitelesítést kell használnia. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz.  A megbízható Microsoft-szolgáltatásokkal kapcsolatos további információkért lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-## <a name="media-services-managed-identity-scenarios"></a>Media Services által felügyelt identitási forgatókönyvek
-
-Jelenleg két forgatókönyv áll rendelkezésre, ahol a felügyelt identitás használható a Media Services használatával:
+Jelenleg két forgatókönyv használható a felügyelt identitások használatára a Media Services használatával:
 
 - A Storage-fiókok eléréséhez használja a Media Services fiók felügyelt identitását.
 
 - A Media Services fiók felügyelt identitásával férhet hozzá az ügyfelek kulcsaihoz Key Vaulthoz.
 
-A következő két szakasz a két forgatókönyv különbségeit írja le.
+A következő két szakasz ismerteti a két forgatókönyv lépéseit.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>A Media Services fiók felügyelt identitásának használata a Storage-fiókok eléréséhez
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>A Media Services fiók felügyelt identitásának használata a Storage-fiókok eléréséhez
 
 1. Hozzon létre egy Media Services fiókot felügyelt identitással.
 1. Adja meg a felügyelt identitás elsődleges hozzáférését egy Ön által birtokolt Storage-fiókhoz.
 1. Media Services ezután a felügyelt identitás használatával férhet hozzá a Storage-fiókhoz az Ön nevében.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>A Media Services fiók felügyelt identitásával férhet hozzá az ügyfelek kulcsaihoz Key Vaulthoz
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>A Media Services fiók felügyelt identitásával férhet hozzá az ügyfelek kulcsaihoz Key Vaulthoz
 
 1. Hozzon létre egy Media Services fiókot felügyelt identitással.
 1. Adja meg a felügyelt identitás elsődleges hozzáférését egy Ön által birtokolt Key Vaulthoz.
