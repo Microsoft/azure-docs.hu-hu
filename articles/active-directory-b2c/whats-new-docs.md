@@ -1,7 +1,7 @@
 ---
 title: Újdonságok a Azure Active Directory vállalat – ügyfél (B2C) szolgáltatásban
 description: Új és frissített dokumentáció a Azure Active Directory üzleti – ügyfél (B2C) szolgáltatáshoz.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,53 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e58f54d991cd190aba6eeb851e6cf2aec78e695
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559727"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255169"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Újdonságok
 
 Üdvözli a Azure Active Directory B2C dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A B2C szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../active-directory/fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>2021. január
+
+### <a name="new-articles"></a>Új cikkek
+
+- [A Azure Active Directory B2C felhasználói felületének testreszabása](customize-ui.md)
+- [Azure Active Directory B2C szolgáltatási korlátok és korlátozások](service-limits.md)
+- [Regisztráció és bejelentkezés beállítása egy másik Azure AD B2C bérlő Azure AD B2C fiókjából](identity-provider-azure-ad-b2c.md)
+- [A helyi fiók identitás-szolgáltatójának beállítása](identity-provider-local.md)
+- [Bejelentkezési folyamat beállítása Azure Active Directory B2C](add-sign-in-policy.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [A felhasználó viselkedésének nyomon követése Azure Active Directory B2C a Application Insights használatával](analytics-with-application-insights.md)
+- [TechnicalProfiles](technicalprofiles.md)
+- [A felhasználói felület testreszabása HTML-sablonokkal Azure Active Directory B2C](customize-ui-with-html.md)
+- [Azure AD B2C kezelése Microsoft Graph](microsoft-graph-operations.md)
+- [AD FS hozzáadása SAML-identitás-szolgáltatóként egyéni szabályzatok használatával Azure Active Directory B2C](identity-provider-adfs.md)
+- [Salesforce SAML-szolgáltatóval való bejelentkezés beállítása SAML protokoll használatával Azure Active Directory B2C](identity-provider-salesforce-saml.md)
+- [Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban](tutorial-register-applications.md)
+- [Egy Amazon-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C](identity-provider-amazon.md)
+- [Regisztráció és bejelentkezés beállítása egy másik Azure AD B2C bérlő Azure AD B2C fiókjából](identity-provider-azure-ad-b2c.md)
+- [Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C](identity-provider-azure-ad-multi-tenant.md)
+- [Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C](identity-provider-azure-ad-single-tenant.md)
+- [Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával](identity-provider-facebook.md)
+- [Hozzon létre egy GitHub-fiókkal történő regisztrációt és bejelentkezést Azure Active Directory B2C](identity-provider-github.md)
+- [Regisztráció és bejelentkezés beállítása Google-fiókkal Azure Active Directory B2C használatával](identity-provider-google.md)
+- [ID.me-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C](identity-provider-id-me.md)
+- [Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával](identity-provider-linkedin.md)
+- [Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C](identity-provider-microsoft-account.md)
+- [Egy QQ-fiókkal történő bejelentkezés és bejelentkezés beállítása Azure Active Directory B2C](identity-provider-qq.md)
+- [Salesforce-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C](identity-provider-salesforce.md)
+- [Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával](identity-provider-twitter.md)
+- [WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C](identity-provider-wechat.md)
+- [WeiBo-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C](identity-provider-weibo.md)
+- [Egyéni szabályzatok Azure AD B2C áttekintése](custom-policy-trust-frameworks.md)
+
 
 ## <a name="december-2020"></a>2020. december
 

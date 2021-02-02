@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741728"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255373"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok elleni védelem Azure Active Directory intelligens zárolással
 
@@ -40,7 +40,7 @@ Az intelligens zárolás használata nem garantálja, hogy egy valódi felhaszn�
 * Az egyes Azure AD-adatközpontok egymástól függetlenül nyomon követik a zárolást. A felhasználók (*threshold_limit * datacenter_count*) a kísérletek száma, ha a felhasználó minden adatközpontot elér.
 * Az intelligens zárolás ismerős helyet és ismeretlen helyet használ a rossz színész és a valódi felhasználó közötti különbségtételhez. A nem ismerős és ismerős helyszínek külön zárolási számlálókkal rendelkeznek.
 
-Az intelligens zárolás olyan hibrid környezetekben integrálható, amelyek jelszavas kivonatoló szinkronizálást vagy átmenő hitelesítést használnak a helyszíni Active Directory tartományi szolgáltatások (AD DS) fiókok a támadók általi zárolásának biztosításához. Ha intelligens zárolási szabályzatokat állít be az Azure AD-ben, akkor a támadások kiszűrhetők a helyszíni AD DS elérése előtt.
+Az intelligens zárolás olyan hibrid környezetekben integrálható, amelyek jelszavas kivonatoló szinkronizálást vagy átmenő hitelesítést használnak a helyszíni Active Directory Domain Services (AD DS) fiókok a támadók általi zárolásának biztosításához. Ha intelligens zárolási szabályzatokat állít be az Azure AD-ben, akkor a támadások kiszűrhetők a helyszíni AD DS elérése előtt.
 
 [Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)használatakor a következő szempontokat kell figyelembe venni:
 
@@ -90,7 +90,9 @@ Az intelligens zárolási küszöbérték kiváltása esetén a következő üze
 
 *A fiók átmenetileg zárolva van, hogy megakadályozza a jogosulatlan használatot. Próbálkozzon újra később, és ha még mindig problémája van, forduljon a rendszergazdához.*
 
-## <a name="next-steps"></a>További lépések
+Az intelligens zárolás tesztelésekor előfordulhat, hogy a bejelentkezési kéréseket különböző adatközpontok kezelik az Azure AD hitelesítési szolgáltatás földrajzilag elosztott és terheléselosztásos jellege miatt. Ebben az esetben, mivel az egyes Azure AD-adatközpontok egymástól függetlenül nyomon követik a zárolást, több időt vehet igénybe, mint a zárolást okozó kísérletek száma. A felhasználó (*threshold_limit * datacenter_count*) a hibás próbálkozások száma, ha a felhasználó a zárolás előtt minden adatközpontot elér.
+
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure ad jelszavas védelme érdekében egyéni tiltott jelszavakat is konfigurálhat](tutorial-configure-custom-password-protection.md)a további tapasztalatok testreszabásához.
 

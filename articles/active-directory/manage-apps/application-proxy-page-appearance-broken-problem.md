@@ -4,7 +4,7 @@ description: Útmutatás arra az esetre, ha a lap nem jelenik meg megfelelően a
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780847494da0ec5cd4eb8ab76f1e46125b8a7f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b09e7b15427eb33e1e85edd89f4c8a37c4a3eb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764417"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254654"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Az alkalmazás lap nem jelenik meg megfelelően egy alkalmazásproxy-alkalmazáshoz
 
@@ -39,5 +39,5 @@ Ha nem lehetséges az összes erőforrás közzététele ugyanazon az alkalmazá
 
 Ehhez az [Egyéni tartományok](application-proxy-configure-custom-domain.md) megoldás használatát javasoljuk. Ez a megoldás azonban megköveteli, hogy a tartományhoz tartozó tanúsítvány tulajdonosa legyen, és az alkalmazásai teljes tartománynevet (FQDN) használnak. További lehetőségekért tekintse meg a [hibás csatolások dokumentációját](application-proxy-page-links-broken-problem.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Alkalmazások közzététele az Azure AD-alkalmazásproxyval](application-proxy-add-on-premises-application.md)

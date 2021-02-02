@@ -4,7 +4,7 @@ description: A saját alkalmazások gyűjteményekkel testre szabhatja az alkalm
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,12 @@ ms.date: 02/10/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967ac34ddb736f58f66639181cdf10e4aaa8ffab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656785"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254982"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Gyűjtemények létrehozása a Saját alkalmazások portálon
 
@@ -69,7 +69,7 @@ Gyűjtemény létrehozásához rendelkeznie kell egy prémium szintű Azure AD P
 
    ![Felhasználók és csoportok hozzáadása](media/acces-panel-collections/add-users-and-groups.png)
 
-11. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Megjelenik az új gyűjtemény tulajdonságai.
+11. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Megjelenik az új gyűjtemény tulajdonságai.
 
 
 ## <a name="view-audit-logs"></a>Auditnaplók megtekintése
@@ -83,7 +83,7 @@ A naplók rögzítik az alkalmazás-gyűjtemények műveleteit, beleértve a gy�
 * Önkiszolgáló alkalmazás hozzáadása (végfelhasználó)
 * Önkiszolgáló alkalmazás törlése (végfelhasználó)
 
-A naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** vállalati alkalmazások naplóinak kiválasztásával érheti el  >  **Enterprise Applications**  >  **Audit logs** a tevékenység szakaszban. A **szolgáltatás** területen válassza **a saját alkalmazások** lehetőséget.
+A naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** vállalati alkalmazások naplóinak kiválasztásával érheti el  >    >   a tevékenység szakaszban. A **szolgáltatás** területen válassza **a saját alkalmazások** lehetőséget.
 
 ## <a name="get-support-for-my-account-pages"></a>Fiókhoz tartozó lapok támogatásának beolvasása
 

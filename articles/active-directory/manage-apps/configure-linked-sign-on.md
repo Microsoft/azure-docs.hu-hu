@@ -3,7 +3,7 @@ title: A Azure Active Directory csatolt bejelentkezésének megismerése
 description: A Azure Active Directory csatolt bejelentkezésének megismerése.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: b5d7cd303c8478f848ee89095d040030b702cde5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3e2d3ab6a23ce588c3aa393e5096ac75e88a5365
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219810"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255283"
 ---
 # <a name="understand-linked-sign-on"></a>A csatolt bejelentkezés ismertetése
 
