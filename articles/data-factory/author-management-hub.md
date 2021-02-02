@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: c3366b7ba0eb0b49d4d5b89481b7bed843e52c8e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486130"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428997"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Felügyeleti központ Azure Data Factory
 
@@ -40,7 +40,11 @@ Az integrációs modul egy Azure Data Factory által használt számítási infr
 
 ### <a name="git-configuration"></a>Git-konfiguráció
 
-Megtekintheti és szerkesztheti a beállított git-tárház beállításait a felügyeleti központban. További információért olvassa [el a Azure Data Factory a verziókövetés](source-control.md)című témakört.
+A git-vel kapcsolatos összes információt megtekintheti/szerkesztheti a felügyeleti központ git-konfigurációs beállításai között. 
+
+A legutóbb közzétett véglegesítő információk is fel vannak sorolva, és segíthetnek megérteni a pontos véglegesítés, amelyet legutóbb közzétettek és telepítettek a környezetek között. Emellett hasznos lehet, ha éles javításokat végez a környezetben.
+
+További információért olvassa [el a Azure Data Factory a verziókövetés](source-control.md)című témakört.
 
 ![Git-tárház kezelése](media/author-management-hub/management-hub-git.png)
 
@@ -52,7 +56,7 @@ Ha szeretné felülbírálni a létrehozott Resource Manager-sablon paraméterei
 
 ## <a name="manage-authoring"></a>Szerzői műveletek kezelése
 
-### <a name="triggers"></a>Eseményindítók
+### <a name="triggers"></a>Triggerek
 
 Az eseményindítók határozzák meg, hogy a folyamat mikor fusson. Az eseményindítók jelenleg egy falióra-ütemezéssel, rendszeres időközönként működnek, vagy egy eseménytől függenek. További információért olvassa el az [trigger-végrehajtást](concepts-pipeline-execution-triggers.md#trigger-execution)ismertető témakört. A felügyeleti központban létrehozhat, szerkeszthet, törölhet vagy megtekintheti az trigger aktuális állapotát.
 
@@ -64,7 +68,7 @@ A globális paraméterek állandók egy olyan adatelőállítón keresztül, ame
 
 ![Globális paraméterek létrehozása](media/author-global-parameters/create-global-parameter-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [konfigurálhat git-tárházat](source-control.md) az ADF-hez
 

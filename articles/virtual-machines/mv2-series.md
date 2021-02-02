@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 962fb8cbd4c64aa2ef625b478afa587099234617
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091714"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427634"
 ---
 # <a name="mv2-series"></a>Mv2 sorozat
 
@@ -24,7 +24,7 @@ Az Mv2 sorozatú virtuális gépek funkciójának Intel® Hyper-Threading techno
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
-[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+[VM-létrehozási támogatás](generation-2.md): 2. generáció<br>
 [Írásgyorsító](./how-to-enable-write-accelerator.md): támogatott<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>

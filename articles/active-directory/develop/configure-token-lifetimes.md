@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 19330af5e4c0e4962993d0ed89ec9bcd4a50514a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3ec94543a53e3e5b7709801de8f4cf1dde3fc3d9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986413"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428115"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)
 Megadhatja a Microsoft Identity platform által kiadott hozzáférés, SAML vagy azonosító jogkivonatok élettartamát. Beállíthatja a cégen belüli összes alkalmazás jogkivonatának élettartamát több-bérlős alkalmazások (több cég) vagy munkahelyen belüli adott szolgáltatásnév esetén. További információért olvassa el a [konfigurálható jogkivonat élettartamait](active-directory-configurable-token-lifetimes.md).
@@ -85,11 +85,11 @@ Ebben a példában olyan házirendet hoz létre, amely megköveteli, hogy a felh
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>Jogkivonat élettartamára vonatkozó szabályzatok létrehozása frissítési és munkamenet-tokenekhez
 > [!IMPORTANT]
-> A május 2020-től kezdve az új bérlők nem konfigurálhatják a frissítési és a munkamenet-jogkivonat élettartamát.  A meglévő konfigurációval rendelkező bérlők 2021 január 30-ig módosíthatják a frissítési és a munkamenet-jogkivonat-szabályzatokat.  A Azure Active Directory a házirendekben a meglévő frissítési és munkamenet-jogkivonat konfigurációját a 2021. január 30. után nem fogja megbecsülni. A kivonulás után továbbra is konfigurálhatja a hozzáférés, az SAML és az azonosító token élettartamát.
+> 2021. január 30-ig nem konfigurálhatja a frissítési és a munkamenet-jogkivonat élettartamát. Azure Active Directory már nem veszi figyelembe a frissítési és a munkamenet-jogkivonat konfigurációját a meglévő házirendekben.  A meglévő tokenek lejártát követően kiadott új jogkivonatok mostantól az [alapértelmezett konfigurációra](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)vannak beállítva. Továbbra is konfigurálhatja a hozzáférés, az SAML és az azonosító token élettartamát a frissítés és a munkamenet-jogkivonat konfigurációjának kivonása után.
+>
+> A meglévő jogkivonat élettartama nem változik. A lejárat után a rendszer egy új jogkivonatot ad ki az alapértelmezett érték alapján.
 >
 > Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, olvassa el a [hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel című szakaszt](../conditional-access/howto-conditional-access-session-lifetime.md).
->
-> Ha a lejárati dátum után nem kíván feltételes hozzáférést használni, a frissítési és a munkamenet-token az adott dátum [alapértelmezett konfigurációjához](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) lesz beállítva, és többé nem fogja tudni módosítani az élettartamát.
 
 ### <a name="manage-an-organizations-default-policy"></a>A szervezet alapértelmezett házirendjének kezelése
 Ebben a példában olyan házirendet hoz létre, amely lehetővé teszi, hogy a felhasználók a teljes szervezeten belül ritkábban jelentkezzenek be. Ehhez hozzon létre egy jogkivonat-élettartam-szabályzatot az egytényezős frissítési tokenekhez, amelyet a rendszer a szervezeten belül alkalmaz. A szabályzatot a szervezet minden alkalmazására, valamint minden olyan egyszerű szolgáltatásnév alkalmazza, amely még nem rendelkezik házirend-beállítással.

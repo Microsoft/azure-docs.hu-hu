@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090858"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428774"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
@@ -69,13 +69,7 @@ Az ebben a szerepkörben lévő felhasználók létrehozhatnak alkalmazás-regis
 
 ### <a name="authentication-administrator"></a>[Hitelesítés rendszergazdája](#authentication-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számára megadhatják vagy alaphelyzetbe állíthatják a nem jelszavas hitelesítő adatokat, és az összes felhasználó jelszavait módosíthatják. A hitelesítő rendszergazdák megkövetelhetik, hogy a nem rendszergazdák vagy bizonyos szerepkörökhöz rendelt felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy...), és visszavonhatók az MFA-t az **eszközön**, amely a következő bejelentkezéskor az MFA-t kéri. Ezek a műveletek csak azokra a felhasználókra vonatkoznak, akik nem rendszergazdák, vagy akik a következő szerepkörök közül egyet vagy többet rendelnek hozzá:
-
-* Hitelesítés rendszergazdája
-* Directory-olvasók
-* Vendég meghívója
-* Üzenetközpont-olvasó
-* Jelentések olvasója
+Az ezzel a szerepkörrel rendelkező felhasználók egyes felhasználók számára megadhatják vagy alaphelyzetbe állíthatják a nem jelszavas hitelesítő adatokat, és az összes felhasználó jelszavait módosíthatják. A hitelesítő rendszergazdák megkövetelhetik, hogy a nem rendszergazdák vagy bizonyos szerepkörökhöz rendelt felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy...), és visszavonhatók az MFA-t az **eszközön**, amely a következő bejelentkezéskor az MFA-t kéri. Azt határozza meg, hogy a hitelesítési rendszergazda alaphelyzetbe állíthatja-e a felhasználó jelszavát, a felhasználó által hozzárendelt szerepkörtől függ. A hitelesítési rendszergazda által a jelszavakat alaphelyzetbe állító szerepkörök listáját itt tekintheti meg: [jelszó-visszaállítási engedélyek](#password-reset-permissions).
 
 Az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-administrator) szerepköre jogosult az ismételt regisztrációra és a többtényezős hitelesítésre az összes felhasználó számára.
 
@@ -253,14 +247,7 @@ Az ebben a szerepkörben lévő felhasználók kezelhetik Azure Active Directory
 
 ### <a name="helpdesk-administrator"></a>[Segélyszolgálat rendszergazdája](#helpdesk-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat, érvénytelenítik a frissítési jogkivonatokat, kezelhetik a szolgáltatási kérelmeket, és figyelik a szolgáltatás állapotát A frissítési jogkivonat érvénytelenítése kényszeríti a felhasználót, hogy jelentkezzen be újra. Az ügyfélszolgálati rendszergazdák alaphelyzetbe állíthatja a jelszavakat, és érvénytelenítheti azokat a más felhasználók frissítési jogkivonatait, akik nem rendszergazdák vagy csak a következő szerepkörökhöz vannak rendelve:
-
-* Directory-olvasók
-* Vendég meghívója
-* Segélyszolgálat rendszergazdája
-* Üzenetközpont-olvasó
-* Jelszó-rendszergazda
-* Jelentések olvasója
+Az ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat, érvénytelenítik a frissítési jogkivonatokat, kezelhetik a szolgáltatási kérelmeket, és figyelik a szolgáltatás állapotát A frissítési jogkivonat érvénytelenítése kényszeríti a felhasználót, hogy jelentkezzen be újra. Azt határozza meg, hogy egy segélyszolgálat rendszergazdája visszaállíthatja-e a felhasználó jelszavát, és a frissítési tokenek érvénytelenítése a felhasználó által hozzárendelt szerepkörtől függ. Az ügyfélszolgálati rendszergazda által a frissítési tokenek jelszavának alaphelyzetbe állításához használt szerepkörök listáját lásd: [jelszó-visszaállítási engedélyek](#password-reset-permissions).
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -271,7 +258,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavak
 >- Az Azure AD-n kívül más szolgáltatásokban, például az Exchange Online-ban, az Office biztonsági és megfelelőségi központban és a humán erőforrás-rendszerekben található rendszergazdák.
 >- Nem rendszergazdák, például vezetők, jogi tanácsadás és emberi erőforrások alkalmazottai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz.
 
-A rendszergazdai engedélyek delegálása a felhasználók alkészletei között és a házirendek a felhasználók egy részhalmazára való alkalmazása a [felügyeleti egységekkel (mostantól nyilvános előzetes](administrative-units.md)verzióban) is lehetséges.
+A rendszergazdai engedélyek delegálása a felhasználók alkészletei között és a házirendek a felhasználók egy részhalmazára való alkalmazása a [felügyeleti egységekkel](administrative-units.md)lehetséges.
 
 Ezt a szerepkört korábban "password Administrator" néven nevezték a [Azure Portal](https://portal.azure.com/). A "segélyszolgálat rendszergazdája" neve az Azure AD-ben már megegyezik a nevével az Azure AD PowerShellben és a Microsoft Graph API-ban.
 
@@ -344,11 +331,7 @@ Ne használja. Ez a szerepkör elavult, és a jövőben el lesz távolítva az A
 
 ### <a name="password-administrator"></a>[Jelszó-rendszergazda](#password-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók korlátozottan kezelhetik a jelszavakat. Ez a szerepkör nem teszi lehetővé a szolgáltatási kérelmek felügyeletét vagy a szolgáltatás állapotának figyelését. A jelszó-rendszergazdák alaphelyzetbe állíthatják más felhasználók jelszavát, akik nem rendszergazdák vagy csak a következő szerepkörök tagjai:
-
-* Directory-olvasók
-* Vendég meghívója
-* Jelszó-rendszergazda
+Az ezzel a szerepkörrel rendelkező felhasználók korlátozottan kezelhetik a jelszavakat. Ez a szerepkör nem teszi lehetővé a szolgáltatási kérelmek felügyeletét vagy a szolgáltatás állapotának figyelését. Azt határozza meg, hogy a jelszó-rendszergazda alaphelyzetbe állíthatja-e a felhasználó jelszavát, a felhasználó által hozzárendelt szerepkörtől függ. A jelszó-rendszergazda által a jelszavak alaphelyzetbe állításához használt szerepkörök listáját itt tekintheti meg: [jelszó-visszaállítási engedélyek](#password-reset-permissions).
 
 ### <a name="power-bi-administrator"></a>[Power BI rendszergazda](#power-bi-service-administrator-permissions)
 
@@ -371,13 +354,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók regisztrálhatják a nyomtat
 
 ### <a name="privileged-authentication-administrator"></a>[Kiemelt jogosultságú hitelesítés rendszergazdája](#privileged-authentication-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók az összes felhasználóra vonatkozóan állíthatnak be vagy állíthatnak vissza nem jelszavas hitelesítő adatokat, beleértve a globális rendszergazdákat is, és frissíthetik az összes felhasználó jelszavát. A privilegizált hitelesítő rendszergazdák kényszerítheti a felhasználókat, hogy újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például az MFA vagy a (z) A [hitelesítési rendszergazda](#authentication-administrator) szerepkör csak a nem rendszergazdák és a következő Azure ad-szerepkörökhöz rendelt felhasználók számára kényszerítheti újra a regisztrációt és az MFA-t:
-
-* Hitelesítés rendszergazdája
-* Directory-olvasók
-* Vendég meghívója
-* Üzenetközpont-olvasó
-* Jelentések olvasója
+Az ezzel a szerepkörrel rendelkező felhasználók az összes felhasználóra vonatkozóan állíthatnak be vagy állíthatnak vissza nem jelszavas hitelesítő adatokat, beleértve a globális rendszergazdákat is, és frissíthetik az összes felhasználó jelszavát. A privilegizált hitelesítő rendszergazdák kényszerítheti a felhasználókat, hogy újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például az MFA vagy a (z)
 
 ### <a name="privileged-role-administrator"></a>[Kiemelt szerepkörű rendszergazda](#privileged-role-administrator-permissions)
 
@@ -500,11 +477,12 @@ Az ezzel a szerepkörrel rendelkező felhasználók hozzáférhetnek a bérlői 
 
 Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasználókat, és kezelhetik a felhasználók minden aspektusát bizonyos korlátozásokkal (lásd a táblázatot), és frissíthetik a jelszó-elévülési házirendeket. Emellett az ezzel a szerepkörrel rendelkező felhasználók az összes csoportot is létrehozhatják és kezelhetik. Ez a szerepkör magában foglalja a felhasználói nézetek létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését is. A felhasználói rendszergazdáknak nincs engedélye arra, hogy a legtöbb rendszergazdai szerepkörbe tartozó felhasználókhoz felhasználói tulajdonságokat kezeljenek. Az ehhez a szerepkörhöz tartozó felhasználó nem rendelkezik az MFA felügyeletéhez szükséges engedélyekkel. A korlátozás alól kivételt képező szerepkörök az alábbi táblázatban láthatók.
 
-| **Engedély** | **Elvégezhető** |
+| Felhasználói rendszergazdai engedély | Jegyzetek |
 | --- | --- |
-|Általános engedélyek|<p>Felhasználók és csoportok létrehozása</p><p>Felhasználói nézetek létrehozása és kezelése</p><p>Office-támogatási jegyek kezelése<p>Jelszó-elévülési szabályzatok frissítése|
-| <p>Minden felhasználónál, beleértve az összes rendszergazdát</p>|<p>Licencek kezelése</p><p>Az összes felhasználói tulajdonság kezelése az egyszerű felhasználónév kivételével</p>
-| Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Directory-olvasók<li>Csoportok rendszergazdája<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelszó-rendszergazda<li>Jelentések olvasója<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Új jelszó létrehozása</p><p>Eszköz kulcsainak frissítése</p>|
+| Felhasználók és csoportok létrehozása<br/>Felhasználói nézetek létrehozása és kezelése<br/>Office-támogatási jegyek kezelése<br/>Jelszó-elévülési szabályzatok frissítése |  |
+| Licencek kezelése<br/>Az összes felhasználói tulajdonság kezelése az egyszerű felhasználónév kivételével | Minden felhasználóra vonatkozik, beleértve az összes rendszergazdát is |
+| Törlés és visszaállítás<br/>Letiltás és engedélyezés<br/>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet<br/>Eszköz kulcsainak frissítése | Azokra a felhasználókra vonatkozik, akik nem rendszergazdák vagy a következő szerepkörök valamelyikében vannak:<ul><li>Segélyszolgálat rendszergazdája</li><li>Nem szerepkörrel rendelkező felhasználó</li><li>Felhasználói rendszergazda</li></ul> |
+| Frissítési tokenek érvénytelenítése<br/>Új jelszó létrehozása | A felhasználói rendszergazda által a frissítési tokenek jelszavának alaphelyzetbe állításához szükséges szerepkörök listáját lásd: jelszó- [visszaállítási engedélyek](#password-reset-permissions). |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -572,6 +550,7 @@ Az alkalmazás-regisztrációk és a vállalati alkalmazások minden aspektusát
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="application-developer-permissions"></a>Alkalmazás-fejlesztői engedélyek
 
@@ -647,6 +626,7 @@ A Azure Information Protection szolgáltatás összes aspektusát képes kezelni
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF kulcskészlet rendszergazdai engedélyei
 
@@ -725,6 +705,7 @@ Az alkalmazás-regisztráció és a vállalati alkalmazások minden aspektusát 
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Felhőalapú eszköz rendszergazdai engedélyei
 
@@ -2064,6 +2045,31 @@ Vendégfelhasználó | Nem látható, mert nem használható  | NA
 Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 User | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>Jelszó-visszaállítási engedélyek
+
+Az oszlopfejlécek a jelszavak alaphelyzetbe állítására használható szerepköröket jelölik. A tábla sorai tartalmazzák azokat a szerepköröket, amelyek esetében a jelszó alaphelyzetbe állítható.
+
+A jelszó alaphelyzetbe állítható | Hitelesítési rendszergazda | Segélyszolgálat rendszergazdája | Jelszó-rendszergazda | Felhasználói rendszergazda | Privilegizált hitelesítési rendszergazda | Globális rendszergazda
+------ | ------ | ------ | ------ | ------ | ------ | ------
+Hitelesítési rendszergazda | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Directory-olvasók | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Globális rendszergazda | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+Csoportok rendszergazdája | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Vendég | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Vendég meghívója | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Segélyszolgálat rendszergazdája | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Üzenetközpont-olvasó | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Jelszó-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Privilegizált hitelesítési rendszergazda | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Kiemelt szerepkörű rendszergazda | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Jelentések olvasója | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Korlátozott vendég | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Felhasználó (nincs rendszergazdai szerepkör) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Felhasználói rendszergazda | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Használati összesítő jelentések olvasója | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* A globális rendszergazda nem tudja eltávolítani a saját globális rendszergazdai hozzárendelését. Ezzel megelőzhető, hogy egy szervezetnek 0 globális rendszergazdája legyen.
 
 ## <a name="next-steps"></a>Következő lépések
 

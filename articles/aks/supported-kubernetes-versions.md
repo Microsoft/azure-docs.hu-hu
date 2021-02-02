@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 587078f1f084d002e4d725ca3be64bcec36b4c45
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3ed5c2c1c95822717981f7d30b91edd244420c59
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734647"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427685"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -138,7 +138,6 @@ A korábbi kiadási előzményekért lásd: [Kubernetes](https://en.wikipedia.or
 
 |  K8s verziója | Felsőbb rétegbeli kiadás  | AK – előzetes verzió  | AK-GA  | Elhasználódott |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep – 19-19  | Jan 2019   | Mar 2020  | Jan 2021| 
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mar-23-20  | 2020. május   | Augusztus 2020  | 1,21 GA | 
 | 1,19  | Aug-04-20  | Sep 2020   | November 2020  | 1,22 GA | 
@@ -187,7 +186,7 @@ A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x* 1.13. x ver
 
 Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürt frissítésével kapcsolatos további információkért lásd: [Azure Kubernetes Service (ak) fürt frissítése][aks-upgrade].
 

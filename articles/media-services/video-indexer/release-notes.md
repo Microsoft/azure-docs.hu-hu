@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/06/2021
+ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120087"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427658"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -30,7 +30,23 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Hibajavítások
 * Elavult funkciók
 
-##  <a name="december-2020"></a>2020. december
+## <a name="january-2021"></a>2021. január
+
+### <a name="video-indexer-is-deployed-on-us-government-cloud"></a>Video Indexer üzembe helyezése az USA kormányzati felhőben 
+
+Most már létrehozhat egy Video Indexer fizetős fiókot az USA kormányzati felhőben Virginia és Arizona régióban. Video Indexer ingyenes próbaverziós ajánlat nem érhető el az említett régióban. További információért látogasson el Video Indexer dokumentációra. 
+
+### <a name="video-indexer-deployed-in-the-india-central-region"></a>Az India középső régiójában üzembe helyezett Video Indexer 
+
+Most már létrehozhat egy Video Indexer fizetős fiókot az indiai középső régióban. 
+
+### <a name="new-dark-mode-for-the-video-indexer-website-experience"></a>Új sötét mód a Video Indexer webhely felhasználói felületéhez
+
+A Video Indexer webhely tapasztalatai már sötét módban is elérhetők. A sötét mód engedélyezéséhez nyissa meg a Beállítások panelt, és kapcsolja be a **sötét mód** beállítást. 
+
+:::image type="content" source="./media/release-notes/dark-mode.png" alt-text="Sötét üzemmód beállítása":::
+
+## <a name="december-2020"></a>2020. december
 
 ### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>A Nyugat-Svájc és a Észak-Svájc üzembe helyezett Video Indexer
 

@@ -10,21 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024976"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428419"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez
+
+## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>Az AI-rendszerek megvalósításakor figyelembe veendő általános szempontok 
+
+Ez a cikk kifejezetten a szintetikus beszédekről és az egyéni neurális hanganyagokról beszél, valamint a technológia felelősségteljes felhasználásának legfontosabb szempontjairól. Általánosságban azonban több dolgot kell figyelembe vennie, hogy miként kell megfontolnia az AI-alapú termékek és szolgáltatások használatának és megvalósításának eldöntését: 
+
+* Jól teljesít a termék vagy a szolgáltatás a forgatókönyvben? Mielőtt üzembe helyezi a AI-t a forgatókönyvben, tesztelje, hogyan hajtja végre a valós idejű adatok használatát, és győződjön meg róla, hogy a szükséges pontosságot biztosítani tudja. 
+* Felkészültünk a hibák azonosítására és reagálására? A mesterséges intelligenciát használó termékek és funkciók nem lesznek mindig 100%-os pontossággal, ezért érdemes megfontolni, hogy miként azonosíthatja és reagálhat az esetlegesen előforduló hibákra. 
+
+## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Általános irányelvek a szintetikus hangtechnológia használatához 
 Íme a Microsoft általános tervezési irányelvei a szintetikus hangtechnológia használatához. Ezek olyan tanulmányokban lettek kifejlesztve, amelyeket a Microsoft hangtehetségekkel, fogyasztókkal, valamint a beszédfelismerési rendellenességekkel foglalkozó személyekkel folytatott a szintetikus hang felelősségteljes fejlesztése érdekében.
 
-## <a name="general-considerations"></a>Általános megfontolások
 A szintetikus beszédfelismerési technológiák üzembe helyezéséhez a következő irányelvek vonatkoznak a legtöbb forgatókönyvre.
 
 ### <a name="disclose-when-the-voice-is-synthetic"></a>Kitakarás, ha a hang szintetikus
 Ha azt kívánja, hogy egy hang ne legyen a számítógép által létrehozva, akkor az nem csupán a félrevezető következményekkel jár, hanem növeli a bizalmat a szervezeten belül is. További információ a [közzétételről](concepts-disclosure-guidelines.md).
+
+A Microsoft megköveteli ügyfelei számára, hogy felfedik az egyéni neurális hangfelismerések szintetikus természetét a felhasználók számára. 
+* Győződjön meg arról, hogy megfelelő nyilvánosságra hozatalt biztosít a célközönségeknek, különösen akkor, ha jól ismert személyek hangját használják, és az azt kézbesítő személytől származó információkra vonatkozó ítéletet tesznek közzé, függetlenül attól, hogy azok tudatosan vagy tudattalan vannak.  Például a közzététel szóbeli megosztása lehet a szórás elején. További információért látogasson el a [közzétételi mintákra](concepts-disclosure-patterns.md).   
+* Érdemes lehet a szülők vagy más feleknek megfelelő nyilvánosságra hozni a kiskorúak és gyermekek számára tervezett használati eseteket – ha a használati eset a kiskorúak vagy gyermekek számára készült, meg kell győződnie arról, hogy a szülők vagy a jogi őrök képesek megérteni a szintetikus média használatával kapcsolatos információkat, és a megfelelő döntést a kiskorúak vagy gyermekek számára a felhasználói élmény igénybe vehetik. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Válassza ki a megfelelő hangtípusokat a forgatókönyvhöz
 Körültekintően vegye figyelembe a használat kontextusát és a szintetikus hang használatával járó lehetséges károkat. Előfordulhat például, hogy a nagy megbízhatóságú szintetikus hangok nem megfelelőek a magas kockázatú helyzetekben, például a személyes üzenetkezelés, a pénzügyi tranzakciók vagy az emberi alkalmazkodást vagy az empátiát igénylő összetett helyzetekben. Előfordulhat, hogy a felhasználók a hangtípusokra vonatkozóan eltérő elvárásokat is tartalmazhatnak. Például, ha egy szintetikus hang alapján olvas be bizalmas híreket, néhány felhasználó inkább empatikus és emberi jellegűebb olvasást szeretne a hírekből, míg mások inkább monoton, elfogulatlan hangvételt igényelnek. Vegye fontolóra az alkalmazás tesztelését a felhasználói beállítások jobb megismerése érdekében.
@@ -39,8 +51,9 @@ A nem egyértelmű, tranzakciós forgatókönyvek (például a Call Support Cent
 A hangtehetségek, például a hangszínészek, a szintetikus hangok létrehozásához a következő iránymutatás vonatkozik.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Értelmes beleegyezett a hangtehetségből
-A hangtehetségek elvárják, hogy szabályozzák a hangbetűkészletét (hogyan és hol lesznek használatban), és hogy a használat során kompenzálva legyenek. A rendszertulajdonosoknak ezért explicit írásos engedélyt kell kapniuk a hangtehetségtől, és egyértelmű szerződéses specifikációkat kell használniuk a használati esetekről, a használat időtartamáról, a kárenyhítésről stb. Bizonyos hangtehetségek nem ismerik a technológia lehetséges kártékony felhasználását, és a rendszertulajdonosok által a technológia képességeivel kapcsolatos ismeretekkel kell rendelkezniük. A hangtehetségről és a belefoglalásról további információért olvassa el a hangvételi [feladatokkal kapcsolatos](/legal/cognitive-services/speech-service/disclosure-voice-talent)tudnivalókat.
+A hangtehetségeknek szabályoznia kell a hangmodelljét (hogyan és hol lesznek használatban), és kompenzálni kell a használatukat. A Microsoft az egyéni hangvételt igénylő ügyfeleknek kifejezetten írásos engedélyt kell kapniuk a hangtehetségtől a szintetikus hang létrehozásához  Ha egy jól ismert személy szintetikus hangját hozza létre, meg kell adnia egy módszert a hang mögötti személynek a tartalom szerkesztéséhez vagy jóváhagyásához.
 
+Bizonyos hangtehetségek nem ismerik a technológia lehetséges kártékony felhasználását, és a rendszertulajdonosok által a technológia képességeivel kapcsolatos ismeretekkel kell rendelkezniük. A Microsoft megköveteli, hogy az ügyfelek közvetlenül a hangtehetséggel vagy a hangvételi tehetséggel megosszák a Microsoft által a hangvételi [feladatokkal kapcsolatos információkat](/legal/cognitive-services/speech-service/disclosure-voice-talent) , amelyek a szintetikus hangok fejlesztését és a szöveg és a beszédfelismerési szolgáltatások együttes használatát ismertetik.
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>A beszédfelismerési rendellenességekkel kapcsolatos megfontolások
 Ha beszédfelismerési rendellenességgel rendelkező személyekkel dolgozik, a szintetikus hangtechnológia létrehozásához vagy üzembe helyezéséhez a következő irányelvek érvényesek.

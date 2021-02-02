@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 36eac4c60e0d7fd54ec304f0f17c2ecb454f0629
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: ce37e26730fbef9e5e40fd95190727062f9044ac
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063459"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428939"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory összekötése az Azure hatáskörébe (előzetes verzió)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -36,7 +36,7 @@ Az Azure hatáskörébe egy új felhőalapú szolgáltatás, amellyel az adatkez
 3. A csatlakozás után látnia kell a hatáskörébe tartozó fiók nevét a TAB **hatáskörébe fiókban**. 
 4. Az adatkereséshez használhatja a Azure Data Factory portál felső központjának keresési sávját. 
 
-Ha az Azure hatáskörébe tartozó fiók Data Factory való regisztrálása után a figyelmeztetés az Azure adatfaktor-portálon jelenik meg, a probléma megoldásához kövesse az alábbi lépéseket:
+Ha az Azure hatáskörébe tartozó fiók Data Factory való regisztrálása után a figyelmeztetést látja Azure Data Factory portálon, a probléma megoldásához kövesse az alábbi lépéseket:
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Képernyőkép a hatáskörébe tartozó fiók regisztrálásával kapcsolatos figyelmeztetésről.":::
 

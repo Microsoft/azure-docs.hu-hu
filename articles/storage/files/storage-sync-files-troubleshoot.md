@@ -4,15 +4,15 @@ description: A Azure File Sync üzemelő példányok gyakori problémáinak elh�
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/15/2021
+ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 65a1f8ef82ba9ec35e01a61d9682ebed0b9ba04c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878799"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428334"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -210,18 +210,10 @@ Azon a kiszolgálón, amely a "kapcsolat nélküli állapotban" üzenet jelenik 
         - A TLS-parancsmagok használatához lásd: [TLS titkosítási csomag rendelésének konfigurálása TLS PowerShell-parancsmagok használatával](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         A Azure File Sync jelenleg a következő titkosítási csomagokat támogatja a TLS 1,2 protokollhoz:  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
-        - TLS_RSA_WITH_AES_256_GCM_SHA384  
-        - TLS_RSA_WITH_AES_128_GCM_SHA256  
-        - TLS_RSA_WITH_AES_256_CBC_SHA256  
-        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Ha a **GetNextJob a következő állapottal fejeződött be:-2134347764** van naplózva, a kiszolgáló nem tud kommunikálni a Azure file Sync szolgáltatással egy lejárt vagy törölt tanúsítvány miatt.  
     - Futtassa a következő PowerShell-parancsot a kiszolgálón a hitelesítéshez használt tanúsítvány alaphelyzetbe állításához:

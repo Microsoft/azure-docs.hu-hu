@@ -8,25 +8,24 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6895a47bc6d99a09408ca002ec48405a5c78682
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: ba000fd4cf79f2bb4a176bd7d5c33fc2dfff3781
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255678"
+ms.locfileid: "99428402"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése
 
 Alkalmazás-fejlesztőként használhatja a tartományok közötti Identitáskezelés (SCIM) felhasználói felügyeleti API-t, hogy lehetővé váljon a felhasználók és csoportok automatikus kiépítés az alkalmazás és az Azure AD között. Ez a cikk bemutatja, hogyan hozhat létre egy SCIM-végpontot, és hogyan integrálható az Azure AD kiépítési szolgáltatásával. A SCIM-specifikáció általános felhasználói sémát biztosít az üzembe helyezéshez. Az olyan összevonási szabványokkal együtt, mint az SAML vagy az OpenID Connect, a SCIM teljes körű, szabványokon alapuló megoldást biztosít a rendszergazdáknak a hozzáférés-kezeléshez.
 
-A SCIM a két végpont szabványosított definíciója: egy `/Users` végpont és egy `/Groups` végpont. Általános REST-műveleteket használ az objektumok létrehozásához, frissítéséhez és törléséhez, valamint egy előre definiált sémát az általános attribútumok, például a csoportnév, a Felhasználónév, az utónév, a vezetéknév és az e-mailek számára. A SCIM 2,0 REST API-t kínáló alkalmazások csökkenthetik vagy megszüntethetik a saját felhasználói felügyeleti API-k használatával végzett munkát. A megfelelő SCIM-ügyfelek például megtudhatják, hogyan hozhat létre egy JSON-objektum HTTP-BEJEGYZÉSét a `/Users` végpontra új felhasználói bejegyzés létrehozásához. Ahelyett, hogy némileg eltérő API-ra lenne szüksége ugyanahhoz az alapszintű műveletekhez, a SCIM szabványnak megfelelő alkalmazások azonnal kihasználhatják a meglévő ügyfeleket, eszközöket és kódokat. 
-
 ![Kiépítés az Azure AD-ből egy SCIM-val rendelkező alkalmazásba](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+
+A SCIM a két végpont szabványosított definíciója: egy `/Users` végpont és egy `/Groups` végpont. Általános REST-műveleteket használ az objektumok létrehozásához, frissítéséhez és törléséhez, valamint egy előre definiált sémát az általános attribútumok, például a csoportnév, a Felhasználónév, az utónév, a vezetéknév és az e-mailek számára. A SCIM 2,0 REST API-t kínáló alkalmazások csökkenthetik vagy megszüntethetik a saját felhasználói felügyeleti API-k használatával végzett munkát. A megfelelő SCIM-ügyfelek például megtudhatják, hogyan hozhat létre egy JSON-objektum HTTP-BEJEGYZÉSét a `/Users` végpontra új felhasználói bejegyzés létrehozásához. Ahelyett, hogy némileg eltérő API-ra lenne szüksége ugyanahhoz az alapszintű műveletekhez, a SCIM szabványnak megfelelő alkalmazások azonnal kihasználhatják a meglévő ügyfeleket, eszközöket és kódokat. 
 
 A SCIM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) által meghatározott általános felhasználói objektum sémája és REST API-k lehetővé teszik az identitás-szolgáltatók és az alkalmazások könnyebb integrálását. Az SCIM-végpontot felépítő alkalmazás-fejlesztők az egyéni munka nélkül is integrálhatók bármely SCIM-kompatibilis ügyféllel.
 
@@ -70,6 +69,7 @@ A fent definiált séma az alábbi JSON-adattartalommal lesz ábrázolva. Vegye 
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen@testuser.com",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "familyName":"Jensen",
@@ -914,7 +914,7 @@ Küldjön egy GET kérelmet a jogkivonat-vezérlőnek, hogy érvényes tulajdono
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>A felhasználók kiépítésének és megszüntetésének kezelési felépítése
 
-***1. példa. A szolgáltatás lekérdezése a megfelelő felhasználóhoz** _
+***1. példa. A szolgáltatás lekérdezése egy megfelelő felhasználó számára***
 
 Azure Active Directory lekérdezi a szolgáltatást az `externalId` Azure ad-beli felhasználó mailNickname attribútumának megfelelő attribútumérték értékkel rendelkező felhasználó számára. A lekérdezés Hypertext Transfer Protocol (HTTP) kérelemként van kifejezve, mint például az a példa, amelyben a jyoung egy, a Azure Active Directory felhasználójának egy mailNickname-mintája.
 
@@ -942,12 +942,12 @@ A mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódus�
 
 A mintául szolgáló lekérdezésben az attribútumhoz megadott értékkel rendelkező felhasználó számára a `externalId` QueryAsync metódusnak átadott argumentumok értékei a következők:
 
-paraméterek. AlternateFilters. Count: 1
+* paraméterek. AlternateFilters. Count: 1
 * paraméterek. AlternateFilters. ElementAt (0). AttributePath: "externalId"
 * paraméterek. AlternateFilters. ElementAt (0). ÖsszehasonlítóOperátor: ÖsszehasonlítóOperátor. Equals
 * paraméterek. AlternateFilter. ElementAt (0). ComparisonValue: "jyoung"
 
-***2. példa. Felhasználó kiépítése** _
+***2. példa. Felhasználó kiépítése***
 
 Ha egy olyan felhasználó számára, aki egy olyan attribútum értékkel rendelkezik `externalId` , amely megfelel a felhasználó mailNickname attribútumának, nem ad vissza felhasználót, Azure Active Directory kéri, hogy a szolgáltatás olyan felhasználót helyezzen üzembe, amely megfelel a Azure Active Directory.  Íme egy példa erre a kérelemre: 
 
@@ -996,7 +996,7 @@ A mintakód a kérést a szolgáltatás szolgáltatójának CreateAsync metódus
 
 A felhasználó kiépítésére vonatkozó kérelemben az erőforrás argumentum értéke a Microsoft. SCIM. Core2EnterpriseUser osztály egy példánya, amely a Microsoft. SCIM. schemas könyvtárban van definiálva.  Ha a felhasználó kiépítésére vonatkozó kérelem sikeres, akkor a metódus megvalósításának várhatóan a Microsoft. SCIM. Core2EnterpriseUser osztály egy példányát kell visszaadnia, az azonosító tulajdonság értéke pedig az újonnan kiosztott felhasználó egyedi azonosítójára van beállítva.  
 
-_*_3. példa. Felhasználó aktuális állapotának lekérdezése_*_ 
+***3. példa. Felhasználó aktuális állapotának lekérdezése*** 
 
 Egy olyan felhasználó frissítéséhez, amely egy SCIM által ellátott identitás-tárolóban létezik, Azure Active Directory folytatja, ha a felhasználó aktuális állapotát kéri a szolgáltatástól a következő kéréssel: 
 
@@ -1020,14 +1020,14 @@ A mintakód a kérést a szolgáltatás szolgáltatójának RetrieveAsync metód
 
 A felhasználó aktuális állapotának lekérésére irányuló kérelem példájában a paraméterek argumentum értékeként megadott objektum tulajdonságainak értékei a következők: 
   
-_ Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn: IETF: paraméterek: scim: sémák: bővítmény: Enterprise: 2.0: user"
 
-***4. példa. A frissítendő Reference attribútum értékének lekérdezése** _ 
+***4. példa. A frissítendő Reference attribútum értékének lekérdezése*** 
 
 Ha frissíteni kell egy hivatkozási attribútumot, akkor Azure Active Directory lekérdezi a szolgáltatást annak meghatározására, hogy a szolgáltatás által elindított, az identitás-tárolóban lévő Reference attribútum aktuális értéke már megegyezik-e az adott attribútum értékével Azure Active Directoryban. A felhasználók számára az egyetlen olyan attribútum, amelynek az aktuális értéke a felettes attribútum, így a jelenlegi érték lekérdezhető. Íme egy példa arra a kérelemre, amely meghatározza, hogy egy felhasználói objektum Manager-attribútuma jelenleg egy bizonyos értékkel rendelkezik-e: a mintakód a kérést a szolgáltatás szolgáltatójának QueryAsync metódusára hívja le. A paraméterek argumentum értékeként megadott objektum tulajdonságainak értéke a következő: 
   
-paraméterek. AlternateFilters. Count: 2
+* paraméterek. AlternateFilters. Count: 2
 * paraméterek. AlternateFilters. ElementAt (x). AttributePath: "azonosító"
 * paraméterek. AlternateFilters. ElementAt (x). ÖsszehasonlítóOperátor: ÖsszehasonlítóOperátor. Equals
 * paraméterek. AlternateFilter. ElementAt (x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1039,7 +1039,7 @@ paraméterek. AlternateFilters. Count: 2
 
 Itt az x index értéke 0 is lehet, az y index értéke pedig 1, vagy az x értéke 1, az y értéke pedig 0, a Filter lekérdezési paraméter kifejezésének sorrendjétől függően.   
 
-***5. példa. Kérelem az Azure AD-ről egy SCIM-szolgáltatásra egy felhasználó frissítéséhez** 
+***5. példa. A felhasználó frissítése az Azure AD-ből egy SCIM-szolgáltatásba*** 
 
 Íme egy példa arra, hogy Azure Active Directory egy SCIM szolgáltatásra irányuló kérést egy felhasználó frissítéséhez: 
 
@@ -1078,7 +1078,7 @@ A mintakód a kérést a szolgáltatás szolgáltatójának UpdateAsync metódus
 
 A felhasználó frissítésére irányuló kérelem példájában a patch argumentum értékeként megadott objektum a következő tulajdonságértékeket tartalmazhatja: 
   
-_ ResourceIdentifier. azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user"
 * (PatchRequest as PatchRequest2). Műveletek. darabszám: 1
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). OperationName: OperationName. Add
@@ -1087,7 +1087,7 @@ _ ResourceIdentifier. azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Hivatkozás: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Érték: 2819c223-7f76-453a-919d-413861904646
 
-***6. példa. Felhasználó kiépítése** _
+***6. példa. Felhasználó kiépítése***
 
 Az Azure AD egy olyan kérelmet küld, amely egy SCIM-szolgáltatás által elküldött identitás-tárolóból kiépíti a felhasználót, például a következőt:
 
@@ -1110,7 +1110,7 @@ A mintakód a kérést a szolgáltatás szolgáltatójának DeleteAsync metódus
 
 A resourceIdentifier argumentum értékeként megadott objektum a következő tulajdonság értékeit írja be a felhasználó megszüntetésére irányuló kérelem példájában: 
 
-_ ResourceIdentifier. azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: user"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>4. lépés: a SCIM-végpont integrálása az Azure AD SCIM-ügyféllel
@@ -1151,8 +1151,8 @@ Az ebben a cikkben ismertetett SCIM-profilt támogató alkalmazások az Azure AD
 7. A **bérlői URL-cím** mezőben adja meg az alkalmazás scim-végpontjának URL-címét. Például: `https://api.contoso.com/scim/`
 8. Ha az SCIM-végpont OAuth-tulajdonosi jogkivonatot igényel az Azure AD-től eltérő kibocsátótól, akkor másolja a szükséges OAuth-tulajdonosi tokent a nem kötelező **titkos jogkivonat** mezőbe. Ha ez a mező üresen marad, az Azure AD az Azure AD-ből kiállított OAuth-tulajdonosi jogkivonatot tartalmaz minden kéréssel. Az Azure AD-t identitás-szolgáltatóként használó alkalmazások ellenőrizhetik ezt az Azure AD-kiállított jogkivonatot. 
    > [!NOTE]
-   > Ez **_nem_* ajánlott üresen hagyni ezt a mezőt, és az Azure ad által generált tokenre támaszkodhat. Ez a lehetőség elsősorban tesztelési célokra használható.
-9. Válassza a _ *test kapcsolat* lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
+   > Ezt a mezőt ***nem*** ajánlott üresen hagyni, és az Azure ad által generált jogkivonatra támaszkodni. Ez a lehetőség elsősorban tesztelési célokra használható.
+9. Válassza a **kapcsolat tesztelése** lehetőséget, hogy Azure Active Directory próbáljon csatlakozni az scim-végponthoz. Ha a kísérlet sikertelen, a rendszer hibaüzenetet jelenít meg.  
 
     > [!NOTE]
     > A SCIM a nem létező felhasználóhoz tartozó végpontot **kérdezi** le, véletlenszerű GUID azonosítóval, amely az Azure ad-konfigurációban kiválasztott egyező tulajdonság. A várt helyes válasz a HTTP 200 OK, amely üres SCIM ListResponse-üzenettel rendelkezik.

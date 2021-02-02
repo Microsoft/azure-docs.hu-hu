@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/01/2020
-ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.date: 02/01/2021
+ms.openlocfilehash: b796b9eb065a221904fe4487c900efa2db1955af
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280425"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429543"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából Azure Data Factory használatával
 
@@ -102,7 +102,7 @@ A SAP BW Open hub társított szolgáltatás a következő tulajdonságokat tám
 | `sncQop` | Az alkalmazni kívánt védelmi szint SNC-minőség.<br/>Akkor érvényes `sncMode` , ha be van kapcsolva. <br/>Az engedélyezett értékek: `1` (hitelesítés), `2` (integritás), `3` (adatvédelem), `8` (alapértelmezett), `9` (maximum). | Nem |
 | `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. A saját üzemeltetésű integrációs modulra van szükség, ahogy azt az [Előfeltételekben](#prerequisites)korábban említettük. |Igen |
 
-**1. példa: Kapcsolódás SAP Application Serverhez**
+### <a name="example-1-connect-to-an-sap-application-server"></a>1. példa: Kapcsolódás SAP Application Serverhez
 
 ```json
 {
@@ -249,9 +249,9 @@ A alkalmazásban `rfcTableOptions` a következő általános SAP-lekérdezési o
 | :------- | :------- |
 | `EQ` | Egyenlő |
 | `NE` | Nem egyenlő |
-| `LT` | Kisebb |
+| `LT` | Kisebb, mint |
 | `LE` | Kisebb vagy egyenlő |
-| `GT` | Nagyobb |
+| `GT` | Nagyobb, mint |
 | `GE` | Nagyobb vagy egyenlő |
 | `IN` | A következőképpen: `TABCLASS IN ('TRANSP', 'INTTAB')` |
 | `LIKE` | A következőképpen: `LIKE 'Emma%'` |
@@ -294,6 +294,60 @@ A alkalmazásban `rfcTableOptions` a következő általános SAP-lekérdezési o
     }
 ]
 ```
+
+## <a name="join-sap-tables"></a>SAP-táblák csatlakoztatása
+
+Az SAP Table Connector jelenleg csak egyetlen táblát támogat az alapértelmezett Function modullal. Több táblázat összevont adateléréséhez az alábbi lépéseket követve kihasználhatja a [customRfcReadTableFunctionModule](#copy-activity-properties) tulajdonságot az SAP Table Connector használatával:
+
+- [Egyéni Function-modult írhat](#create-custom-function-module), amely lehetőségként lekérdezéseket végezhet, és saját logikát alkalmazhat az adat lekéréséhez.
+- Az "egyéni függvény modul" mezőben adja meg az egyéni függvény moduljának nevét.
+- Az "RFC Table Options" paraméternél adja meg a Table JOIN utasítást a Function modulba való beléptetéshez, például: " `<TABLE1>` INNER JOIN `<TABLE2>` on COLUMN0".
+
+Az alábbiakban egy példa látható:
+
+![SAP-táblázat csatlakoztatása](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>Azt is megteheti, hogy az összekapcsolt adatokat az SAP Table Connector által támogatott NÉZETBEN összesíti.
+>A kapcsolódó táblákat is megpróbálhatja kinyerni az Azure-ba való beléptetéshez (például Azure Storage, Azure SQL Database), majd az adatfolyam használatával folytassa a további illesztéssel vagy szűréssel.
+
+## <a name="create-custom-function-module"></a>Egyéni Function modul létrehozása
+
+Az SAP-táblázat esetében jelenleg a [customRfcReadTableFunctionModule](#copy-activity-properties) tulajdonságot támogatjuk a másolási forrásban, amely lehetővé teszi a saját logikáját és feldolgozását.
+
+Rövid útmutatóként itt talál néhány követelményt az "egyéni függvény modul" használatának megkezdéséhez:
+
+- Definíció:
+
+    ![Definíció](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- Az alábbi táblázatba exportálhatja az adatexportálást:
+
+    ![1. táblázat exportálása](./media/connector-sap-table/export-table-1.png) 
+
+    ![2. táblázat exportálása](./media/connector-sap-table/export-table-2.png)
+ 
+Az alábbi ábrán látható, hogyan működik az SAP Table Connector az egyéni Function modullal:
+
+1. SAP-NKH használatával hozhat létre kapcsolatokat az SAP-kiszolgálóval.
+
+1. Hívja meg az "egyéni függvény modul" kifejezést az alábbi paraméterekkel:
+
+    - QUERY_TABLE: Az ADF SAP Table adatkészletben beállított táblanév. 
+    - Elválasztó: Az ADF SAP-tábla forrásában beállított elválasztó karakter. 
+    - SORSZÁM/Option/Fields: Az ADF-táblázat forrásaként beállított sorszám/aggregált beállítás/mezők.
+
+1. A következő módokon érheti el az eredményeket, és elemezheti az adatelemzést:
+
+    1. A sémák beolvasásához elemezze a mezők táblában található értéket.
+
+        ![Értékek értelmezése a mezőkben](./media/connector-sap-table/parse-values.png)
+
+    1. A kimeneti tábla értékeinek lekérésével megtekintheti, hogy melyik tábla tartalmazza ezeket az értékeket.
+
+        ![Értékek beolvasása a kimeneti táblában](./media/connector-sap-table/get-values.png)
+
+    1. Szerezze be az értékeket a OUT_TABLEban, elemezze az adatok elemzését, majd írja be a fogadóba.
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>Az SAP-táblázat adattípus-hozzárendelései
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563732"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428183"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -133,9 +133,6 @@ A [Azure Firewall Manager](../firewall-manager/index.yml) biztosítja a globáli
 
 **5. ábra: biztonságos virtuális központ Azure Firewall**
 
-> [!NOTE]
-> Az Inter-hub tűzfallal való használata jelenleg nem támogatott. A hubok közötti forgalom közvetlenül megkerüli a Azure Firewall az egyes csomópontokon.
-
 A virtuális WAN Azure Firewall a következő globálisan biztonságos tranzit-csatlakozási útvonalakat támogatja. A zárójelben lévő betűk az 5. ábrán láthatók.
 
 * VNet – VNet biztonságos átvitel (e)
@@ -152,6 +149,23 @@ A VNet lehetővé teszi a virtuális hálózatok számára, hogy a virtuális WA
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Ág – Internet vagy harmadik féltől származó biztonsági szolgáltatás (j)
 Az ág – Internet lehetővé teszi, hogy az ágak az internethez kapcsolódjanak a virtuális WAN-központ Azure Firewallján keresztül. Az internetre irányuló, harmadik féltől származó biztonsági szolgáltatásokon keresztüli adatforgalom nem a Azure Firewallon keresztül áramlik. A Azure Firewall Manager használatával az ág – Internet elérési utat a támogatott külső biztonsági szolgáltatással is konfigurálhatja. 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>Ág és ág közötti biztonságos tranzit régió (f)
+
+Az ágak ExpressRoute-áramkörök és/vagy helyek közötti VPN-kapcsolatok használatával csatlakoztathatók egy biztonságos virtuális hubhoz Azure Firewallhoz. Az ágakat csatlakoztathatja a virtuális WAN-hubhoz, amely az ág legközelebb eső régiójában található.
+
+Ez a beállítás lehetővé teszi, hogy a vállalatok az Azure gerincet használják az ágak összekapcsolásához. Bár ez a funkció elérhető, érdemes mérlegelni a fiókirodák Azure-beli virtuális WAN-kapcsolaton keresztül történő csatlakoztatásának előnyeit, valamint a privát WAN használatát.  
+
+> [!NOTE]
+> A tűzfalon keresztüli forgalom helyközi feldolgozása jelenleg nem támogatott. A hubok közötti forgalom a biztonságos virtuális központban található megfelelő ágra lesz irányítva, azonban a forgalom megkerüli a Azure Firewall az egyes csomópontokon.
+
+### <a name="branch-to-vnet-secured-transit-g"></a>Ág – VNet biztonságos átvitel (g)
+
+A VNet biztonságos átvitel lehetővé teszi, hogy az ágak a virtuális WAN-központtal azonos régióban lévő virtuális hálózatokkal, valamint egy másik régióban lévő virtuális WAN-hubhoz csatlakoztatott másik virtuális hálózattal kommunikáljanak egymással.
+
+> [!NOTE]
+> Az Inter-hub tűzfallal való használata jelenleg nem támogatott. A hubok közötti forgalom közvetlenül megkerüli a Azure Firewall az egyes csomópontokon.  Az azonos régióban található virtuális hálózatra irányuló kapcsolódáson keresztüli adatforgalmat a biztonságos központ Azure Firewall fogja feldolgozni.
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Alapértelmezett útvonal (0.0.0.0/0) Hogyan engedélyezése biztonságos virtuális központban
 

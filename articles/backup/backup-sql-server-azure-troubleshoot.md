@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733925"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429466"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -164,7 +164,7 @@ Ha a kifogástalan SQL-példányok visszaállítását szeretné elindítani, ha
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információ](/sql/relational-databases/backup-restore/recovery-models-sql-server).
+| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információk](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -217,7 +217,7 @@ A következő tünetek közül egyet vagy többet kell megvizsgálnia az isméte
 
   - Nincs engedélye a biztonsági mentéssel kapcsolatos műveletek elvégzésére a virtuális gépen.
   - A virtuális gép leállítása, így a biztonsági mentések nem hajthatók végre.
-  - Hálózati problémák.
+  - [Hálózati problémák](#usererrorvminternetconnectivityissue)
 
    ![virtuális gép újbóli regisztrálása](./media/backup-azure-sql-database/re-register-vm.png)
 
@@ -250,7 +250,7 @@ Most rendezze a következő formátumot:
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -279,7 +279,7 @@ A fájl tartalmának a következő formátumúnak kell lennie:
 ]
 ```
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```json
 [
@@ -306,6 +306,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 Ezt a fájlt a visszaállítási művelet elindítása előtt kell elhelyezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Server virtuális gépek (nyilvános előzetes verzió) Azure Backupával kapcsolatos további információkért lásd: [Azure Backup SQL virtuális gépekhez](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

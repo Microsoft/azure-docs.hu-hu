@@ -3,13 +3,13 @@ title: Az Apache HBase optimalizálása az Apache Ambari az Azure HDInsight
 description: Az Apache Ambari webes FELÜLETének használatával konfigurálhatja és optimalizálhatja az Apache HBase.
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/04/2020
-ms.openlocfilehash: 307e9decad35c20885fbe550cc1f7de58c9386c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/01/2021
+ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942596"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428200"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Az Apache HBase optimalizálása az Apache Ambari az Azure HDInsight
 
@@ -18,6 +18,9 @@ Az Apache Ambari egy webes felület a HDInsight-fürtök felügyeletéhez és fi
 Az Apache HBase-konfiguráció a **HBase konfigurációk** lapról módosul. A következő szakaszok ismertetik a HBase teljesítményét befolyásoló fontos konfigurációs beállításokat.
 
 ## <a name="set-hbase_heapsize"></a>HBASE_HEAPSIZE beállítása
+
+> [!NOTE]
+> Ez a cikk a " *Master*" kifejezésre mutató hivatkozásokat tartalmaz, amelyeket a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 A HBase halom mérete határozza meg a *régiók* *és főkiszolgálók* által megabájtban használt maximális halom mennyiségét. Az alapértelmezett érték 1 000 MB. Ezt az értéket be kell hangolni a fürt számítási feladataihoz.
 

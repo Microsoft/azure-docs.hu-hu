@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954783"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428300"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Az Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -63,6 +63,31 @@ Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követ�
 Ha egy üzenetsor-elem már fel lett dolgozva, a függvény nem lehet op.
 
 Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue-trigger.md#poison-messages)dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt. 
+
+## <a name="function-organization-best-practices"></a>Az ajánlott eljárások a szervezeti feladathoz
+
+A megoldás részeként többféle funkciót fejleszthet és tehet közzé. Ezek a függvények gyakran egyetlen Function-alkalmazásba vannak egyesítve, de külön Function-alkalmazásokban is futhatnak. A Premium és a dedikált (App Service) üzemeltetési csomagokban több Function-alkalmazás is megoszthatja ugyanazokat az erőforrásokat, ha ugyanazon a csomagban fut. A függvények és függvények alkalmazásainak csoportosítása hatással lehet a teljes megoldás teljesítményére, méretezésére, konfigurálására, üzembe helyezésére és biztonságára. Nincsenek szabályok, amelyek minden forgatókönyvre érvényesek, ezért vegye figyelembe az ebben a szakaszban található információkat a függvények tervezésekor és fejlesztésekor.
+
+### <a name="organize-functions-for-performance-and-scaling"></a>Függvények szervezése a teljesítményhez és a skálázáshoz
+
+Minden létrehozott függvényhez tartozik egy memória-lábnyom. Habár ez a helyigény általában kicsi, és a Function alkalmazásban túl sok függvény is képes az alkalmazás lassabb indítására az új példányokon. Ez azt is jelenti, hogy a Function app teljes memóriahasználat magasabb lehet. Nehéz megmondani, hogy hány függvényt kell egyetlen alkalmazásban megadni, amely az adott számítási feladattól függ. Ha azonban a függvény nagy mennyiségű adat tárolására van szüksége a memóriában, érdemes lehet kevesebb funkciót felvenni egyetlen alkalmazásban.
+
+Ha több Function alkalmazást is futtat egyetlen prémium szintű csomagban vagy dedikált (App Service) csomagban, ezek az alkalmazások mind együtt méretezhetők. Ha van egy olyan Function-alkalmazás, amely sokkal nagyobb memóriát igényel, mint a többi, akkor az alkalmazás által üzembe helyezett összes példányon aránytalanul nagy mennyiségű memória-erőforrást használ. Mivel ez kevesebb memóriát is igénybe vehet a többi alkalmazás számára az egyes példányokon, érdemes lehet egy nagy memóriát használó Function alkalmazást futtatni, például a saját külön üzemeltetési tervében.
+
+> [!NOTE]
+> A használati [terv](./functions-scale.md)használatakor javasoljuk, hogy minden alkalmazást a saját csomagjában helyezze el, mivel az alkalmazások egymástól függetlenül méretezhetők.
+
+Gondolja át, hogy a függvényeket különböző betöltési profilokkal kívánja-e csoportosítani. Ha például olyan függvényt használ, amely több ezer üzenetsor-üzenetet dolgoz fel, és egy másikat, amely csak alkalmanként fordul elő, de nagy memória-követelményekkel rendelkezik, érdemes lehet külön Function-alkalmazásokban telepíteni őket, hogy saját erőforrásaikat kapjanak, és egymástól függetlenül méretezhetők.
+
+### <a name="organize-functions-for-configuration-and-deployment"></a>Függvények rendszerezése konfiguráláshoz és üzembe helyezéshez
+
+A Function apps tartalmaz egy `host.json` fájlt, amely a függvények és a Azure functions futtatókörnyezet speciális viselkedésének konfigurálására szolgál. A fájl módosításai az `host.json` alkalmazásban található összes függvényre érvényesek. Ha vannak olyan függvények, amelyek egyéni konfigurációt igényelnek, érdemes áthelyezni őket a saját Function alkalmazásba.
+
+A helyi projekt összes funkciója együtt települ az Azure-beli Function alkalmazásban található fájlok készletével. Előfordulhat, hogy külön kell telepítenie az egyes függvényeket, vagy olyan szolgáltatásokat kell használnia, mint például az [üzembe helyezési](./functions-deployment-slots.md) pontok, amelyek nem mások. Ilyen esetekben ezeket a függvényeket (külön programkód-projektekben) a különböző Function apps-alkalmazásokba kell telepítenie.
+
+### <a name="organize-functions-by-privilege"></a>Függvények rendszerezése jogosultság alapján 
+
+A (z) alkalmazás beállításaiban tárolt kapcsolatok és egyéb hitelesítő adatok lehetővé teszi, hogy a Function alkalmazás összes funkciója ugyanazokat az engedélyeket adja meg a társított erőforrásban. Érdemes lehet minimalizálni az adott hitelesítő adatokhoz hozzáféréssel rendelkező függvények számát azáltal, hogy áthelyezi azokat a függvényeket, amelyek nem használják ezeket a hitelesítő adatokat egy különálló Function alkalmazásnak. Mindig használhat olyan technikákat, mint például a függvények [láncolása](/learn/modules/chain-azure-functions-data-using-bindings/) , hogy az adatok áthaladnak a függvények között különböző Function Apps-alkalmazásokban.  
 
 ## <a name="scalability-best-practices"></a>Méretezhetőség – ajánlott eljárások
 

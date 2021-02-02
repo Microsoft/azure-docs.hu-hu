@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.custom: references_regions
+ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572816"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429279"
 ---
 # <a name="basic-concepts"></a>Alapfogalmak
 
@@ -30,9 +31,9 @@ A [JSON webkulcs](https://tools.ietf.org/html/rfc7517) (JWK) egy olyan JSON-adat
 
 Az igazolási szolgáltató a Microsoft. igazolás nevű Azure-erőforrás-szolgáltatóhoz tartozik. Az erőforrás-szolgáltató egy olyan szolgáltatási végpont, amely Azure igazolási REST-szerződést biztosít, és [Azure Resource Manager](../azure-resource-manager/management/overview.md)használatával van üzembe helyezve. Minden igazolási szolgáltató egy konkrét, felderíthető házirendet tart fenn. Az igazolási szolgáltatók minden egyes igazolási típushoz alapértelmezett szabályzattal jönnek létre (vegye figyelembe, hogy a VBS enklávé nem tartalmaz alapértelmezett szabályzatot). A SGX ENKLÁVÉHOZ vonatkozó alapértelmezett szabályzattal kapcsolatos további részletekért tekintse meg az [igazolási szabályzat példáit](policy-examples.md) .
 
-### <a name="regional-default-provider"></a>Regionális alapértelmezett szolgáltató
+### <a name="regional-shared-provider"></a>Regionális megosztott szolgáltató
 
-Az Azure-igazolás minden régióban alapértelmezett szolgáltatót biztosít. Az ügyfelek dönthetnek úgy, hogy az alapértelmezett szolgáltatót használják az igazoláshoz, vagy egyéni szabályzatokkal hoznak létre saját szolgáltatókat. Az alapértelmezett szolgáltatók bármely Azure AD-felhasználó számára elérhetők, és az alapértelmezett szolgáltatóhoz tartozó szabályzat nem módosítható.
+Az Azure igazolása regionális közös szolgáltatót biztosít minden elérhető régióban. Az ügyfelek dönthetnek úgy, hogy a regionális megosztott szolgáltatót használják az igazoláshoz, vagy egyéni szabályzatokkal hoznak létre saját szolgáltatókat. A megosztott szolgáltatók bármely Azure AD-felhasználó számára elérhetők, és a hozzá társított szabályzat nem módosítható.
 
 | Region | Tanúsító URI | 
 |--|--|
@@ -142,7 +143,7 @@ Az Azure Storage-ban tárolt adatok védelme mellett az Azure igazolása Azure D
 Az Azure igazolási példány helyi merevlemez-meghajtóján nem maradnak meg ügyféladatok.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

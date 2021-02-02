@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223406"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428673"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -364,13 +364,6 @@ Igen. Lásd: [Egyéni DNS konfigurálása az Azure SQL felügyelt példányaihoz
 **Használhatok DNS-frissítést?**
 
 Igen. Lásd: [a virtuális hálózat DNS-kiszolgálóinak szinkronizálása beállítás az SQL felügyelt példányának virtuális fürtjén](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md).
-
-A DNS-konfigurációt a rendszer végül frissíti:
-
-- A DHCP-bérlet lejárta után.
-- A platform verziófrissítése.
-
-Megkerülő megoldásként az SQL felügyelt példányát 4 virtuális mag, majd később frissítse. Ez a DNS-konfiguráció frissítésének mellékhatása.
 
 ## <a name="change-time-zone"></a>Időzóna módosítása
 

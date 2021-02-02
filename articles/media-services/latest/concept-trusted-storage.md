@@ -9,31 +9,29 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59c1eb7936bc113f8935d6fa2ad378c6994c3ca9
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99408488"
+ms.locfileid: "99428588"
 ---
 # <a name="trusted-storage-for-media-services"></a>Megbízható tárterület Media Services
 
-Media Services fiók létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Media Services rendszerhitelesítéssel érheti el a Storage-fiókot. Media Services ellenőrzi, hogy a Media Services fiók és a Storage-fiók ugyanahhoz az előfizetéshez tartozik-e, és ellenőrzi, hogy a társítást hozzáadó felhasználó hozzáfér-e a Storage-fiókhoz Azure Resource Manager RBAC.
+Media Services fiók létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Media Services a rendszerhitelesítés vagy a felügyelt identitás-hitelesítés használatával érheti el a Storage-fiókot. Media Services ellenőrzi, hogy a Media Services fiók és a Storage-fiók ugyanahhoz az előfizetéshez tartozik-e, és ellenőrzi, hogy a társítást hozzáadó felhasználó hozzáfér-e a Storage-fiókhoz Azure Resource Manager RBAC.
 
-Ha azonban tűzfalat szeretne használni a Storage-fiók biztonságossá tételéhez és a megbízható tárterület engedélyezéséhez, akkor [felügyelt identitások](concept-managed-identities.md) hitelesítését kell használnia. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz.
+## <a name="trusted-storage-with-a-firewall"></a>Megbízható tárterület tűzfallal
+
+Ha azonban tűzfalat szeretne használni a Storage-fiók biztonságossá tételéhez és a megbízható tárolás engedélyezéséhez, a [felügyelt identitások](concept-managed-identities.md) hitelesítése az előnyben részesített lehetőség. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz.
+
+> [!NOTE]
+> Ahhoz, hogy a Media Services képes legyen olvasni és írni a Storage-fiókot, meg kell adnia az AMS által felügyelt identitás tárolójának blob-adatközreműködői hozzáférését.  Az általános közreműködő szerepkör megadása nem fog működni, mert nem engedélyezi a megfelelő engedélyeket az adatsíkon.
+
+## <a name="further-reading"></a>További információ
 
 A felügyelt identitásokkal rendelkező megbízható tárolók létrehozási módszereinek megismeréséhez olvassa el a [felügyelt identitások és a Media Services](concept-managed-identities.md).
 
-További információ az ügyfél által felügyelt kulcsokról és Key Vaultekről: [saját kulcs használata (ügyfél által felügyelt kulcsok) a Media Services](concept-use-customer-managed-keys-byok.md)
-
 A megbízható Microsoft-szolgáltatásokkal kapcsolatos további információkért lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-## <a name="tutorials"></a>Oktatóanyagok
-
-Ezek az oktatóanyagok a fent említett forgatókönyveket is tartalmazzák.
-
-- [Az ügyfél által felügyelt kulcsok vagy BYOK használata a Azure Portal használatával Media Services](tutorial-byok-portal.md)
-- [Az ügyfél által felügyelt kulcsokat vagy BYOK Media Services REST API használhatja](tutorial-byok-postman.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

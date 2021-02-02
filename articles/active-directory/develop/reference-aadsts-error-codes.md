@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169273"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428031"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -95,6 +95,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS50000 | TokenIssuanceError – probléma van a bejelentkezési szolgáltatással. [Hozzon létre támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a probléma megoldásához. |
 | AADSTS50001 | InvalidResource – az erőforrás le van tiltva vagy nem létezik. Ellenőrizze az alkalmazás kódjában, hogy megadta-e az elérni kívánt erőforrás URL-címét.  |
 | AADSTS50002 | NotAllowedTenant – a bejelentkezés sikertelen volt, mert a bérlőn korlátozott a proxy hozzáférése. Saját bérlői szabályzat esetén módosíthatja a korlátozott bérlői beállításokat a probléma megoldásához. |
+| AADSTS500021 | A (z) {bérlő} bérlő hozzáférése megtagadva. A AADSTS500021 azt jelzi, hogy a bérlői korlátozási szolgáltatás konfigurálva van, és a felhasználó olyan bérlőhöz próbál hozzáférni, amely nem szerepel a fejlécben megadott engedélyezett bérlők listáján `Restrict-Access-To-Tenant` . További információ: a [bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezeléséhez](/azure/active-directory/manage-apps/tenant-restrictions).|
 | AADSTS50003 | MissingSigningKey – a bejelentkezés nem sikerült, mert hiányzik az aláíró kulcs vagy tanúsítvány. Ennek az lehet az oka, hogy az alkalmazásban nem volt konfigurálva aláíró kulcs. Tekintse át a következő helyen ismertetett felbontásokat: [.. /Manage-apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # tanúsítvány-vagy kulcs-nincs konfigurálva](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy az alkalmazás rendszergazdájával. |
 | AADSTS50005 | DevicePolicyError – a felhasználó olyan platformról próbált meg bejelentkezni egy eszközre, amelyet jelenleg nem támogat a feltételes hozzáférési házirend. |
 | AADSTS50006 | Az InvalidSignature-aláírás ellenőrzése sikertelen volt, mert érvénytelen az aláírás. |

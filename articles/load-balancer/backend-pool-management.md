@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8887474f07928462afe7863ffe2b3667ece536dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575299"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429602"
 ---
 # <a name="backend-pool-management"></a>Háttérbeli készlet kezelése
 A háttér-készlet a terheléselosztó kritikus összetevője. A háttér-készlet meghatározza azt az erőforrás-csoportot, amely egy adott terheléselosztási szabály forgalmát fogja szolgálni.
@@ -25,6 +25,8 @@ A háttér-készleteket kétféleképpen lehet konfigurálni:
 A meglévő virtuális gépek és virtuálisgép-méretezési csoportok használata esetén konfigurálja a háttérbeli készletet hálózati adapteren. Ez a módszer az erőforrás és a háttér-készlet közötti legközvetlenebb kapcsolatot hozza létre. 
 
 Ha a háttérbeli készletet egy olyan IP-címtartomány alapján rendeli hozzá, amelyet később virtuális gépek és virtuálisgép-méretezési csoportok létrehozására tervez, konfigurálja a háttér-készletet IP-cím és VNET-azonosító kombinációja szerint.
+
+Az IP-alapú és a NIC-alapú háttér-készleteket egyazon terheléselosztó számára is konfigurálhatja, de nem hozhat létre egyetlen háttérbeli készletet, amely a hálózati adapterek és az azonos készleten belüli IP-címek által megcélozott címeket is ötvözi.
 
 A cikk konfigurációs fejezetei a következőkre összpontosítanak:
 
@@ -527,7 +529,7 @@ Az IP-cím által konfigurált háttér-készlet a következő korlátozásokkal
   * A terheléselosztó által ellátott terheléselosztó vagy szolgáltatások nem helyezhetők el a terheléselosztó háttér-készletében.
   * A bejövő NAT-szabályok nem adhatók meg IP-cím szerint
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan Azure Load Balancer végezheti el a háttérrendszer-készlet felügyeletét, és hogyan konfigurálhatja a háttér-készleteket IP-cím és virtuális hálózat alapján.
 
 További információ a [Azure Load Balancerról](load-balancer-overview.md).

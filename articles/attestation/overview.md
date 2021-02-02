@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093376"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429262"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -67,7 +67,7 @@ Az Azure-igazolás a legjobb választás a pólók igazolására, mivel az a kö
 
 - Egységes keretrendszer több környezet (például TPM, SGX ENKLÁVÉHOZ enklávés és VBS enklávé) igazolásához 
 - Több-bérlős szolgáltatás, amely lehetővé teszi az egyéni igazolási szolgáltatók és házirendek konfigurálását a jogkivonat-generálás korlátozására
-- Olyan alapértelmezett szolgáltatót kínál, amely a felhasználóktól való konfiguráció nélkül képes tanúsítani
+- Olyan regionális közös szolgáltatókat kínál, amelyek a felhasználóktól való konfiguráció nélkül is tanúsítanak
 - A SGX ENKLÁVÉHOZ enklávéban való használat közben védi az adatvédelmet
 - Kiválóan elérhető szolgáltatás 
 

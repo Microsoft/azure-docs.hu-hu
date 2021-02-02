@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398186"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428166"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból az 8000 Series eszközre
 
@@ -137,11 +137,11 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
 2. Szerkessze a kulcsoknak megfelelő értékeket, és cserélje le a következőre:
 
     * `UserName` – A Felhasználónév Azure Portalba való bejelentkezéshez.
-    * `SubscriptionName and SubscriptionId` – Az Azure-előfizetés neve és azonosítója. A StorSimple Eszközkezelő szolgáltatás kezdőlapjának **általános**területén kattintson a **Tulajdonságok**elemre. Másolja a szolgáltatáshoz társított előfizetés nevét és előfizetési AZONOSÍTÓját.
+    * `SubscriptionName and SubscriptionId` – Az Azure-előfizetés neve és azonosítója. A StorSimple Eszközkezelő szolgáltatás kezdőlapjának **általános** területén kattintson a **Tulajdonságok** elemre. Másolja a szolgáltatáshoz társított előfizetés nevét és előfizetési AZONOSÍTÓját.
     * `ResourceName` – A StorSimple Eszközkezelő szolgáltatás neve a Azure Portalban. A szolgáltatás tulajdonságai területen is látható.
     * `ResourceGroup` – A StorSimple Eszközkezelő szolgáltatáshoz társított erőforráscsoport neve a Azure Portal. A szolgáltatás tulajdonságai területen is látható.
     ![Cél eszköz szolgáltatás tulajdonságainak megtekintése](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId` – Azure Active Directory a bérlő AZONOSÍTÓját a Azure Portalban. Jelentkezzen be Microsoft Azure rendszergazdaként. A Microsoft Azure Portal kattintson az **Azure Active Directory**elemre. A **Kezelés** területen kattintson a **Tulajdonságok** elemre. A bérlő azonosítója a **címtár-azonosító** mezőben látható.
+    * `TenantId` – Azure Active Directory a bérlő AZONOSÍTÓját a Azure Portalban. Jelentkezzen be Microsoft Azure rendszergazdaként. A Microsoft Azure Portal kattintson az **Azure Active Directory** elemre. A **Kezelés** területen kattintson a **Tulajdonságok** elemre. A bérlő azonosítója a **címtár-azonosító** mezőben látható.
     ![Azure Active Directory bérlői AZONOSÍTÓjának megkeresése](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Mentse a konfigurációs fájlban végrehajtott módosításokat.
@@ -150,4 +150,4 @@ A StorSimple áttelepítési eszköz telepítéséhez hajtsa végre a következ�
   
 
 ## <a name="next-steps"></a>Következő lépések
-Töltse le az [adatok StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre történő áttelepítésének](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)lépésenkénti útmutatóját.
+Töltse le az [adatok StorSimple 5000-7000-sorozatból egy 8000 sorozatú eszközre történő áttelepítésének](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf)lépésenkénti útmutatóját.

@@ -223,6 +223,8 @@
           href: source-control.md
         - name: Folyamatos integráció és teljesítés
           href: continuous-integration-deployment.md
+        - name: Automatikus közzététel
+          href: continuous-integration-deployment-improvements.md
     - name: Összekötők
       items:
         - name: Összekötők áttekintése

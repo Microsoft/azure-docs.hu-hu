@@ -2,18 +2,20 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Annak megakadályozása, hogy a felhasználók az összes felhasználóra és szerepkörre vonatkozó zárolást alkalmazzanak az Azure-erőforrások frissítésére vagy törlésére.
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802444"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428317"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
-Előfordulhat, hogy egy rendszergazdának zárolnia kell egy előfizetést, erőforráscsoportot vagy erőforrást, így akadályozva meg más vállalati felhasználókat a kritikus erőforrások véletlen törlésében vagy módosításában. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
+Rendszergazdaként zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást, hogy megakadályozza a szervezet más felhasználói számára a kritikus erőforrások véletlen törlését vagy módosítását. A zárolás felülbírálja a felhasználó által esetlegesen felmerülő engedélyeket.
+
+A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
 
 * A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást.
 * A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
@@ -339,7 +341,7 @@ A kérelemben adjon meg egy JSON-objektumot, amely meghatározza a zárolás tul
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az erőforrások logikus rendszerezésével kapcsolatos további információkért lásd: [címkék használata az erőforrások rendszerezéséhez](tag-resources.md).
 * Az előfizetésre vonatkozó korlátozásokat és konvenciókat egyéni szabályzatokkal is alkalmazhat. További információ: [Mi az az Azure Policy?](../../governance/policy/overview.md)
