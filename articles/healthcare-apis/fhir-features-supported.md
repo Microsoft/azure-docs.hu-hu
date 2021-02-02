@@ -6,16 +6,16 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747525"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252117"
 ---
-# <a name="features"></a>Funkciók
+# <a name="features"></a>Szolgáltatások
 
 A FHIR készült Azure API teljes körűen felügyelt üzembe helyezést biztosít az Azure-hoz készült Microsoft FHIR-kiszolgáló számára. A kiszolgáló a [FHIR](https://hl7.org/fhir) standard implementációja. Ez a dokumentum a FHIR-kiszolgáló fő funkcióit sorolja fel.
 
@@ -41,8 +41,8 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 | létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
 | létrehozás (feltételes)           | Igen       | Igen       | Igen       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | keresés                         | Részleges   | Részleges   | Részleges   | Lásd lent                                           |
-| láncolt keresés                 | Nem        | Igen       | Nem        |                                           |
-| fordított láncolt keresés         | Nem        | Nem        | Nem        |                                            |
+| láncolt keresés                 | Nem        | Igen       | Nem        |                                                     |
+| fordított láncolt keresés         | Nem        | Igen       | Nem        |                                                     |
 | képességek                   | Igen       | Igen       | Igen       |                                                     |
 | kötegelt                          | Igen       | Igen       | Igen       |                                                     |
 | tranzakció                    | Nem        | Igen       | Nem        |                                                     |
@@ -72,39 +72,39 @@ Az összes keresési paraméter típusa támogatott.
 |`:exact`               | Igen       | Igen       | Igen       |         |
 |`:contains`            | Igen       | Igen       | Igen       |         |
 |`:text`                | Igen       | Igen       | Igen       |         |
+|`:[type]` referencia  | Igen       | Igen       | Igen       |         |
+|`:not`                 | Igen       | Igen       | Igen       |         |
+|`:below` URI         | Igen       | Igen       | Igen       |         |
+|`:above` URI         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 |`:in` jogkivonat          | Nem        | Nem        | Nem        |         |
 |`:below` jogkivonat       | Nem        | Nem        | Nem        |         |
 |`:above` jogkivonat       | Nem        | Nem        | Nem        |         |
 |`:not-in` jogkivonat      | Nem        | Nem        | Nem        |         |
-|`:[type]` referencia  | Nem        | Nem        | Nem        |         |
-|`:below` URI         | Igen       | Igen       | Igen       |         |
-|`:not`                 | Nem        | Nem        | Nem        |         |
-|`:above` URI         | Nem        | Nem        | Nem        | Probléma [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Gyakori keresési paraméter | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | Igen       | Igen       | Igen       |         |
 | `_lastUpdated`          | Igen       | Igen       | Igen       |         |
 | `_tag`                  | Igen       | Igen       | Igen       |         |
-| `_profile`              | Részleges   | Részleges   | Részleges   | Csak a STU3 esetében támogatott, az R4-ben nem támogatott |
+| `_list`                 | Igen       | Igen       | Igen       |         |
+| `_type`                 | Igen       | Igen       | Igen       | Probléma [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Igen       | Igen       | Igen       |         |
+| `_profile`              | Részleges   | Részleges   | Részleges   | Csak a STU3 esetében támogatott, az R4-ben nem támogatott |
 | `_text`                 | Nem        | Nem        | Nem        |         |
 | `_content`              | Nem        | Nem        | Nem        |         |
-| `_list`                 | Igen       | Igen       | Igen       |         |
 | `_has`                  | Nem        | Nem        | Nem        |         |
-| `_type`                 | Igen       | Igen       | Igen       |         |
 | `_query`                | Nem        | Nem        | Nem        |         |
 | `_filter`               | Nem        | Nem        | Nem        |         |
 
 | Keresési eredmények paraméterei | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Részleges        | Részleges   | Részleges        |   `_sort=_lastUpdated` támogatott       |
+| `_elements`             | Igen       | Igen       | Igen       | Probléma [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
 | `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 100 karakter hosszú lehet. Ha 100-nél magasabbra van állítva, akkor a rendszer csak 100 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
 | `_include`              | Igen       | Igen       | Igen       |A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
-| `_revinclude`           | Igen       | Igen       | Igen       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
+| `_revinclude`           | Igen       | Igen       | Igen       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn [: iteráció támogatása](https://github.com/microsoft/fhir-server/issues/1313). Probléma [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
-| `_total`                | Részleges   | Részleges   | Részleges   | _total = nem és _total = pontos      |
-| `_elements`             | Igen       | Igen       | Igen       |         |
+| `_total`                | Részleges   | Részleges   | Részleges   | `_total=none` és `_total=accurate`      |
+| `_sort`                 | Részleges   | Részleges   | Részleges   |   `_sort=_lastUpdated` támogatott       |
 | `_contained`            | Nem        | Nem        | Nem        |         |
 | `containedType`         | Nem        | Nem        | Nem        |         |
 | `_score`                | Nem        | Nem        | Nem        |         |
@@ -156,7 +156,7 @@ A rendszer teljesítménye az RUs, az egyidejű kapcsolatok és a végrehajtott 
 
 Megjegyzés: Cosmos DB követelmény szerint GB-nál kevesebb tárterületre van szükség a legalább 10 RU/s teljesítményre. További információkért tekintse meg [Cosmos db szolgáltatási kvótákat](../cosmos-db/concepts-limits.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a FHIR készült Azure API támogatott FHIR szolgáltatásairól olvashat. Ezután telepítse az Azure API-t a FHIR-hez.
  

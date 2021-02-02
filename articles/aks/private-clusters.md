@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 56d3b36d17ee044ce7aba2337429c45123801ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734664"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254512"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -130,7 +130,6 @@ A központilag [és küllős architektúrákat](/azure/architecture/reference-ar
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
 * Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
 * Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 
-* A tárolók élő adatAzure Monitor jelenleg nem támogatottak.
 * Miután az ügyfelek frissítették a rekordot a saját DNS-kiszolgálóin, ezek a hüvelyek továbbra is feloldják a apiserver teljes tartománynevét a régebbi IP-címekre a Migrálás után, amíg újra nem indulnak. Az ügyfeleknek újra kell indítaniuk a hostNetwork-hüvelyeket és az alapértelmezett-DNSPolicy hüvelyeket a vezérlési sík áttelepítése után.
 * Ha karbantartást végez a vezérlési síkon, az [AK IP-címe](./limit-egress-traffic.md) változhat. Ebben az esetben frissítenie kell az a rekordot, amely az API-kiszolgáló magánhálózati IP-címére mutat az egyéni DNS-kiszolgálón, és minden egyéni hüvelyt vagy üzemelő példányt újraindít a hostNetwork használatával.
 

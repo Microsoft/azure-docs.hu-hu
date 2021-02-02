@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory-adatkapcsolat összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Megtudhatja, hogyan gyűjthet adatokat Azure Active Directoryről, és hogyan továbbíthatja az Azure AD bejelentkezési naplóit és naplóit az Azure Sentinelbe.
+description: Megtudhatja, hogyan gyűjthet adatokat Azure Active Directoryről, és hogyan továbbíthatja az Azure AD-bejelentkezést, a naplózást és a naplókat az Azure Sentinelbe.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,20 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: eb89d2a4e719e34ad5ea31656dc9e3c02472b07d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802253"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99251981"
 ---
-# <a name="connect-data-from-azure-active-directory-azure-ad"></a>Adatok összekötése Azure Active Directoryról (Azure AD)
+# <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Azure Active Directory-(Azure AD-) adatkapcsolatok összekapcsolhatók az Azure Sentinel szolgáltatással
 
-Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet a [Azure Active Directoryről](../active-directory/fundamentals/active-directory-whatis.md) , és továbbíthatja azt az Azure sentinelbe. Az összekötő segítségével továbbíthatja a [bejelentkezési naplókat](../active-directory/reports-monitoring/concept-sign-ins.md) [és a naplókat](../active-directory/reports-monitoring/concept-audit-logs.md).
+Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet a [Azure Active Directoryről](../active-directory/fundamentals/active-directory-whatis.md) , és továbbíthatja azt az Azure sentinelbe. Az összekötő lehetővé teszi a következő típusú naplók továbbítását:
 
+- [**Bejelentkezési naplók**](../active-directory/reports-monitoring/concept-all-sign-ins.md), amelyek olyan [interaktív felhasználói bejelentkezésekkel](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins) kapcsolatos információkat tartalmaznak, amelyekben a felhasználó hitelesítési tényezőt biztosít.
+
+    Az Azure AD-összekötő immár a bejelentkezési naplók következő három további kategóriáját tartalmazza, melyek mindegyike jelenleg **előzetes** verzióban érhető el:
+    
+    - [**Nem interaktív felhasználói bejelentkezési naplók**](../active-directory/reports-monitoring/concept-all-sign-ins.md#non-interactive-user-sign-ins), amelyek olyan információkat tartalmaznak, amelyek a felhasználó nevében egy ügyfél által végzett bejelentkezésekhez szükségesek, a felhasználótól származó interakció vagy hitelesítési tényező nélkül.
+    
+    - [**Egyszerű bejelentkezési naplók**](../active-directory/reports-monitoring/concept-all-sign-ins.md#service-principal-sign-ins), amelyek olyan alkalmazások és egyszerű szolgáltatások bejelentkezési adatait tartalmazzák, amelyek nem tartalmaznak felhasználókat. Ezekben a bejelentkezésekben az alkalmazás vagy szolgáltatás hitelesítő adatokat szolgáltat a saját nevében az erőforrások hitelesítéséhez vagy eléréséhez.
+    
+    - [**Felügyelt identitású bejelentkezési naplók**](../active-directory/reports-monitoring/concept-all-sign-ins.md#managed-identity-for-azure-resources-sign-ins), amelyek az Azure által felügyelt titkos kulcsokkal rendelkező Azure-erőforrások bejelentkezési adatait tartalmazzák. További információ: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
+
+- [**Naplók**](../active-directory/reports-monitoring/concept-audit-logs.md), amelyek a felhasználók és a csoportok felügyeletére, a felügyelt alkalmazásokra és a címtárbeli tevékenységekre vonatkozó rendszertevékenységgel kapcsolatos információkat tartalmaznak.
+
+- Az Azure AD kiépítési szolgáltatás által kiépített felhasználókra, csoportokra és szerepkörökre vonatkozó rendszertevékenységi adatokat tartalmazó [**naplók üzembe**](../active-directory/reports-monitoring/concept-provisioning-logs.md) helyezése ( **előzetes** verzióban is). 
+
+> [!IMPORTANT]
+> A fentiekben leírtak szerint néhány elérhető naplózási típus jelenleg **előzetes** verzióban érhető el. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A bejelentkezési naplók Azure Sentinelbe való betöltéséhez [prémium szintű Azure ad P2](https://azure.microsoft.com/pricing/details/active-directory/) -előfizetéssel kell rendelkeznie. A Azure Monitor (Log Analytics) és az Azure Sentinel további GB-os díjat is igényelhet.
+- Minden Azure AD-licenc (ingyenes/O365/P1/P2) elegendő a bejelentkezési naplók Azure Sentinelbe való betöltéséhez. A Azure Monitor (Log Analytics) és az Azure Sentinel további GB-os díjat is igényelhet.
 
 - A felhasználónak hozzá kell rendelnie az Azure Sentinel közreműködő szerepkört a munkaterületen.
 
@@ -42,10 +58,7 @@ Az Azure Sentinel beépített összekötője segítségével adatokat gyűjthet 
 
 1. Az adatösszekötők katalógusában válassza a **Azure Active Directory** lehetőséget, majd válassza az **összekötő lap megnyitása** lehetőséget.
 
-1. Jelölje be azon naplók melletti jelölőnégyzeteket, amelyeket az Azure Sentinelbe szeretne továbbítani, majd kattintson a **Kapcsolódás** elemre. A következő típusú naplók közül választhat:
-
-    - **Bejelentkezési naplók**: a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról szóló információk.
-    - **Naplók**: rendszertevékenység-információk a felhasználók és csoportok kezelésével, a felügyelt alkalmazásokkal és a címtárral kapcsolatos tevékenységekkel kapcsolatban.
+1. Jelölje be az Azure Sentinelbe továbbítani kívánt naplók melletti jelölőnégyzeteket (lásd fent), majd kattintson a **Kapcsolódás** elemre.
 
 ## <a name="find-your-data"></a>Az adatai megkeresése
 
@@ -53,10 +66,14 @@ A sikeres kapcsolatok létrejötte után az adat a **naplók** területen, a **L
 
 - `SigninLogs`
 - `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
 
 Az Azure AD-naplók lekérdezéséhez írja be a megfelelő táblanév nevet a lekérdezési ablak tetején.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Azure Active Directory az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg, hogyan [érheti el az adatait és a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

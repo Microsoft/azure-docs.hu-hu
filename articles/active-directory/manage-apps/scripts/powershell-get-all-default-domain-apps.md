@@ -3,7 +3,7 @@ title: PowerShell-példa – alkalmazásproxy-alkalmazások alapértelmezett tar
 description: PowerShell-példa, amely felsorolja az alapértelmezett tartományokat (. msappproxy.net) használó összes Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást.
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d332cff5c83b5081a362826e11d8385152fb89dc
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: dbcee6e2f1a2b4dc955a141b669851d8367d0d0a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861595"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253633"
 ---
 # <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>Az összes alkalmazásproxy-alkalmazás beolvasása az alapértelmezett tartományokkal (. msappproxy.net)
 

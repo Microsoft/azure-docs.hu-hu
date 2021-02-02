@@ -3,7 +3,7 @@ title: Alkalmazások közzététele különálló hálózatokon összekötő cso
 description: Bemutatja, hogyan hozhatók létre és kezelhetők összekötők csoportjai az Azure AD Application Proxyban.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca42137192fefbc669fca775b0deff2f5226c5c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764723"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253832"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával
 
@@ -42,7 +42,7 @@ Az alábbi lépések segítségével tetszőleges számú összekötő-csoportot
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**  >  **alkalmazásproxy lehetőséget**.
-1. Válassza az **új összekötő csoport**lehetőséget. Megjelenik az új összekötő-csoport panel.
+1. Válassza az **új összekötő csoport** lehetőséget. Megjelenik az új összekötő-csoport panel.
 
    ![Megjeleníti az új összekötő csoport kiválasztására szolgáló képernyőt](./media/application-proxy-connector-groups/new-group.png)
 
@@ -126,7 +126,7 @@ Az alábbi példában a vállalat két, az A és B adatközpontot tartalmaz, ame
 
 ![Példa 2 adatközpontot és 2 összekötőt tartalmazó vállalatra](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * [Egyszeri bejelentkezés engedélyezése](what-is-single-sign-on.md)

@@ -4,7 +4,7 @@ description: Az Azure AD Application Proxy-összekötők alapjait ismerteti
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebef93455414c114fb60df9af8ebc629769a33e6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642061"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254428"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Egyéni Kezdőlap beállítása a közzétett alkalmazásokhoz az Azure AD Application Proxy használatával
 
@@ -56,9 +56,9 @@ A Kezdőlap URL-címét a Azure Portal vagy a PowerShell használatával is beá
 Ha módosítani szeretné az alkalmazás kezdőlapjának URL-címét az Azure AD-portálon, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com/) .
-1. Válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk**lehetőséget. Megjelenik a regisztrált alkalmazások listája.
+1. Válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk** lehetőséget. Megjelenik a regisztrált alkalmazások listája.
 1. Válassza ki az alkalmazást a listából. Megjelenik a regisztrált alkalmazás részleteit megjelenítő oldal.
-1. A **kezelés**területen válassza a **branding (védjegyezés**) lehetőséget.
+1. A **kezelés** területen válassza a **branding (védjegyezés**) lehetőséget.
 1. Frissítse a **Kezdőlap URL-címét**  az új elérési úttal.
 
    ![A Kezdőlap URL-címét tartalmazó regisztrált alkalmazás védjegyezési lapja](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
@@ -75,7 +75,7 @@ Egy alkalmazás kezdőlapjának a PowerShell használatával történő konfigur
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell-modul telepítése
 
-Mielőtt egyéni Kezdőlap URL-címet definiál a PowerShell használatával, telepítse az Azure AD PowerShell-modult.A csomagot letöltheti a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), amely a Graph API végpontot használja.
+Mielőtt egyéni Kezdőlap URL-címet definiál a PowerShell használatával, telepítse az Azure AD PowerShell-modult. A csomagot letöltheti a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), amely a Graph API végpontot használja.
 
 A csomag telepítéséhez kövesse az alábbi lépéseket:
 
@@ -115,8 +115,8 @@ Az alkalmazás ObjectId úgy érheti el, hogy a megjelenített név vagy a Kezd�
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
    Azt is megteheti, hogy lekéri az összes alkalmazás listáját, megkeresi az alkalmazás listáját egy adott megjelenítendő névvel vagy kezdőlaptal, majd az alkalmazás ObjectId másolja az alkalmazást.
@@ -169,8 +169,8 @@ Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott é
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
 1. Indítsa újra az alkalmazást annak megerősítéséhez, hogy a Kezdőlap az elvárt módon jelenik meg az első képernyőn.
@@ -178,7 +178,7 @@ Hozza létre a Kezdőlap URL-címét, és frissítse az alkalmazást az adott é
 > [!NOTE]
 > Előfordulhat, hogy az alkalmazáson végzett módosítások visszaállítják a Kezdőlap URL-címét. Ha a Kezdőlap URL-címe alaphelyzetbe áll, a szakasz lépéseit megismételve állíthatja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével](application-proxy-integrate-with-sharepoint-server.md)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)

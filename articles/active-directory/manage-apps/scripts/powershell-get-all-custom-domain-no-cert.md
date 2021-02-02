@@ -3,7 +3,7 @@ title: PowerShell-minta – alkalmazásproxy-alkalmazások tanúsítvány nélk�
 description: PowerShell-példa, amely felsorolja az összes olyan Azure Active Directory (Azure AD) alkalmazásproxy-alkalmazást, amely egyéni tartományokat használ, de nincs feltöltve érvényes TLS/SSL-tanúsítvány.
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49a7c0729fae8eb009bfcbe0661ecaca600dd3ec
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b197206529ca27a2e22cddd64755a9cfee97d44f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861663"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253679"
 ---
 # <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>A tanúsítvány feltöltése nélkül közzétett összes Azure AD-alkalmazásproxy letöltése
 

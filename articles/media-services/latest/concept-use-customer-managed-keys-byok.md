@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: c11bb0e369075c3024824d65290e8aecfa68e6f4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2020
+ms.openlocfilehash: 7e58daf72522071eb7d0031d4ea236a21c6d8bfb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956140"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252321"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Saját kulcs használata (ügyfél által felügyelt kulcsok) a Media Services
 
@@ -36,6 +36,12 @@ Megadhatja a kulcs nevét és a kulcs verziószámát, vagy csak a kulcs nevét.
 
 > [!WARNING]
 > Media Services figyeli az ügyfél kulcsának elérését. Ha az ügyfél kulcsa elérhetetlenné válik (például a kulcs törölve lett, vagy a Key Vault törölve lett, vagy a hozzáférési engedély el lett távolítva), Media Services átváltja a fiókot az ügyfél kulcsának elérhetetlenné válása állapotba (ami gyakorlatilag letiltja a fiókot). A fiók azonban törölhető ebben az állapotban. Az egyetlen támogatott művelet a fiók beolvasása, LISTÁZÁSa és törlése; az összes többi kérés (Encoding, streaming stb.) sikertelen lesz, amíg nem állítja vissza a fiók kulcsának elérését.
+
+## <a name="double-encryption"></a>Dupla titkosítás
+
+Media Services támogatja a kettős titkosítást.  További információ a kettős titkosításról: [Azure Double encryption](../../security/fundamentals/double-encryption.md).
+
+A kettős titkosítás automatikusan engedélyezve van a Media Services fiókban. Az ügyfél által felügyelt kulcsot és a dupla titkosítást azonban külön kell konfigurálnia a Storage-fiókban.
 
 ## <a name="tutorials"></a>Oktatóanyagok
 

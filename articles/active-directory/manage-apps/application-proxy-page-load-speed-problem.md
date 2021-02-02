@@ -4,7 +4,7 @@ description: Az Azure AD Application Proxyával kapcsolatos problémák elhárí
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1dc1b14a917786e124775a4505c53f63238a383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17cb11cc82ede3b51b5502730079618e136d3ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203854"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254474"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Egy alkalmazásproxy-alkalmazás túl sokáig tart a betöltéshez
 
@@ -37,5 +37,5 @@ Előfordulhat, hogy olyan Azure-adatközpontok vannak, amelyek még nem tartalma
 
 A Microsoft a késés javítása érdekében további képességekkel dolgozik. Amint ezek a frissítések elérhetők, a dokumentáció frissülni fog.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)

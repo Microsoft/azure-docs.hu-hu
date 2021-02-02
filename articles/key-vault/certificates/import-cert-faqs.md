@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289514"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254359"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault-tanúsítványok importálása – gyakori kérdések
 
@@ -47,7 +47,7 @@ Ha részletesebben szeretne megtekinteni egy leíró hibát, importálja a tanú
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hogyan oldható fel a "hiba típusa: hozzáférés megtagadva, vagy a felhasználó nem jogosult a tanúsítvány importálására"?
     
-Az importálási művelethez a felhasználónak engedélyeket kell adnia a tanúsítvány importálásához a hozzáférési házirendekben. Ehhez nyissa meg a Key vaultot, és válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása** a  >  tanúsítvány-engedélyek rendszerbiztonsági tag **kiválasztása elemet** ,  >  **Principal** keresse meg a felhasználót, majd adja hozzá a felhasználó e-mail-címét. 
+Az importálási művelethez a felhasználónak engedélyeket kell adnia a tanúsítvány importálásához a hozzáférési házirendekben. Ehhez nyissa meg a Key vaultot, és válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása** a  >  tanúsítvány-engedélyek rendszerbiztonsági tag **kiválasztása elemet**,  >  keresse meg a felhasználót, majd adja hozzá a felhasználó e-mail-címét. 
 
 További információ a tanúsítványokkal kapcsolatos hozzáférési házirendekről: [Tudnivalók a Azure Key Vault tanúsítványokról](./about-certificates.md#certificate-access-control).
 
@@ -62,6 +62,10 @@ További információ: [Get Deleted Certificate Operation](/rest/api/keyvault/ge
 Ezt a hibát két ok okozhatja:    
 * A tanúsítvány tulajdonosának neve legfeljebb 200 karakter hosszú lehet.
 * A tanúsítvány jelszava 200 karakterre van korlátozva.
+
+
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>Hiba: "a megadott PEM X. 509 tanúsítvány tartalma nem várt formátumú. Ellenőrizze, hogy a tanúsítvány érvényes PEM formátumú-e. "
+Ellenőrizze, hogy a PEM-fájl tartalma UNIX-stílusú vonal-elválasztó karaktereket használ-e. `(\n)`
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>Importálhatók a lejárt tanúsítványok Azure Key Vault?
     

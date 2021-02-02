@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786690"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252610"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -528,6 +528,18 @@ Aszinkron kérelem – válasz minta beállítása a logikai alkalmazáshoz az S
 A teljes hibaüzeneteket az SAP-adapter kiterjesztett naplófájljaiban találja. [Kibővített naplófájlt is engedélyezhet az SAP-összekötőhöz](#extended-sap-logging-in-on-premises-data-gateway).
 
 A helyszíni adatátjárók 2020-es és újabb verzióiban az [alkalmazás beállításaiban engedélyezheti az átjáró naplóit](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app). 
+
+* Az alapértelmezett naplózási szint a **Figyelmeztetés**.
+
+* Ha engedélyezi a  **további naplózást** a helyszíni adatátjáró-alkalmazás **diagnosztikai** beállításaiban, a naplózási szint a **tájékoztatási** szintre nő.
+
+* A naplózási szint **részletességének** növeléséhez frissítse a következő beállítást a konfigurációs fájlban. A konfigurációs fájl általában a következő helyen található: `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` .
+
+```json
+<setting name="SapTraceLevel" serializeAs="String">
+   <value>Verbose</value>
+</setting>
+```
 
 A helyszíni adatátjárók esetében az április 2020-es és korábbi verzióiban a naplók alapértelmezés szerint le vannak tiltva.
 
@@ -1338,7 +1350,7 @@ A IDoc küldése művelet használatával kapcsolatos részletes példákért te
 
 Ha nem szeretné, hogy a választható paraméterek ne legyenek **megerősítve a TID** ( `confirmTid` ), tekintse meg a bemutatót, [amely explicit módon megerősíti a tranzakciót](#confirm-transaction-explicitly).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódjon a helyi rendszerekhez](../logic-apps/logic-apps-gateway-connection.md) Azure Logic Appsról.
 

@@ -3,7 +3,7 @@ title: Alkalmazásproxy-alkalmazások hibakeresése – Azure Active Directory |
 description: Azure Active Directory-(Azure AD-) alkalmazásproxy-alkalmazásokkal kapcsolatos hibák elhárítása.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2066030b04feae4e50fee3442a663209801d5875
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555050"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253391"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Alkalmazásproxy alkalmazáshibáinak hibakeresése 
 
@@ -50,7 +50,7 @@ Ez a folyamatábra végigvezeti az alkalmazáshoz való csatlakozás leggyakorib
 |7 | Hálózati késés keresése | Ha az oldal lassan töltődik be, Ismerje meg, hogyan csökkentheti a hálózati késést a [késés csökkentése](application-proxy-network-topology.md#considerations-for-reducing-latency)érdekében. | 
 |8 | További hibaelhárítási Súgó | Ha a probléma továbbra is fennáll, további hibaelhárítási cikkeket talál az [alkalmazásproxy hibaelhárítási dokumentációjában](application-proxy-troubleshoot.md). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * [Alkalmazások közzététele különálló hálózatokon és helyszíneken összekötő csoportok használatával](application-proxy-connector-groups.md)
