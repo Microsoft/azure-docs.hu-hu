@@ -11,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966020"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260163"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>A Windows InfiniBand-illesztőprogram-bővítménye
 
@@ -30,15 +30,15 @@ A Linux rendszerű [virtuális gépekhez](hpc-compute-infiniband-linux.md)Infini
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Ez a bővítmény a következő operációsrendszer-disztribúciókat támogatja, az adott operációsrendszer-verzióhoz tartozó illesztőprogram-támogatástól függően.
+Ez a bővítmény a következő operációsrendszer-disztribúciókat támogatja, az adott operációsrendszer-verzióhoz tartozó illesztőprogram-támogatástól függően. Jegyezze fel a megfelelő InfiniBand hálózati adaptert a H és N sorozatú VM-méretekhez.
 
-| Disztribúció | Verzió |
+| Disztribúció | InfiniBand NIC-illesztőprogramok |
 |---|---|
-| Windows 10 | Mag |
-| Windows Server 2019 | Mag |
-| Windows Server 2016 | Mag |
-| Windows Server 2012 R2 | Mag |
-| Windows Server 2012 | Mag |
+| Windows 10 | CX5, CX6 |
+| Windows Server 2019 | CX5, CX6 |
+| Windows Server 2016 | CX3-Pro, CX5, CX6 |
+| Windows Server 2012 R2 | CX3-Pro, CX5, CX6 |
+| Windows Server 2012 | CX3-Pro, CX5, CX6 |
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
@@ -75,7 +75,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
 | típus | InfiniBandDriverWindows | sztring |
-| typeHandlerVersion | 1,2 | int |
+| typeHandlerVersion | 1.2 | int |
 
 
 

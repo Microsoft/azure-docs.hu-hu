@@ -3,7 +3,7 @@ title: Csoport tulajdonosi engedélyének konfigurálása a csoportok adataihoz 
 description: Ismerje meg, hogy a csoport-és csapattagok hogyan adhatnak hozzá olyan alkalmazásokat, amelyeknek hozzáférésük lesz a csoporthoz vagy a csapathoz.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 719bdd6a4d629bb4a35e7e11631670b0340e72a6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cd1eb98fca9fe25b6672863c02b8a78e57063e5a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090010"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259321"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>A csoportra vonatkozó adatokhoz hozzáférő alkalmazások csoportbeli tulajdonosi engedélyének konfigurálása
 
@@ -74,7 +74,7 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 1. A beállítás értékeinek megismerése. Két beállítási érték határozza meg, hogy mely felhasználók számára engedélyezhető, hogy egy alkalmazás hozzáférhessen a csoport adatait:
 
-    | Beállítás       | Típus         | Description  |
+    | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logikai | Jelző, amely azt jelzi, hogy a csoportok tulajdonosai jogosultak-e a csoportra vonatkozó engedélyek megadására. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | Ha a _EnableGroupSpecificConsent_ értéke "true" (igaz), és ez az érték egy csoport objektumazonosító, akkor az azonosított csoport tagjai jogosultak a csoportokra vonatkozó engedélyek megadására a saját maguknak. |

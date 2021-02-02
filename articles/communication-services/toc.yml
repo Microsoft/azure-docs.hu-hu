@@ -43,6 +43,8 @@
   items:
     - name: Megbízható hitelesítési szolgáltatás létrehozása az Azure Functions használatával
       href: tutorials/trusted-service-tutorial.md
+    - name: Webes alkalmazás előkészítése kommunikációs szolgáltatásokhoz (Node.js)
+      href: tutorials/building-app-start.md
 - name: Fogalmak
   expanded: false
   items:

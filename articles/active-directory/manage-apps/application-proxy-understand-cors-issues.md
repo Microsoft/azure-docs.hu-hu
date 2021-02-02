@@ -3,7 +3,7 @@ title: Az Azure AD Application Proxy CORS kapcsolatos problémák megismerése �
 description: Az Azure AD Application Proxy CORS megismerése, valamint a CORS kapcsolatos problémák azonosítása és megoldása.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b57fc7e3af99819c9b27b6bc796e501d1db02818
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651855"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259168"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Az Azure Active Directory-alkalmazásproxy Proxy CORS-hibáinak megértése és elhárítása
 
@@ -114,7 +114,7 @@ A CORS támogatásához módosíthatja az alkalmazást úgy, hogy a megfelelő �
 
 Bizonyos CORS problémák nem oldhatók fel, például amikor az alkalmazás átirányítja a *login.microsoftonline.com* a hitelesítésre, és a hozzáférési jogkivonat lejár. Ilyenkor a CORS-hívás sikertelen lesz. Ezt a helyzetet úgy lehet áthidalni, ha meghosszabbítja a hozzáférési jogkivonat élettartamát, hogy ne járjon le a felhasználó munkamenete során. Ennek módjáról további információt a [konfigurálható jogkivonat-élettartamok az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md)című témakörben talál.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Azure AD alkalmazás-proxy telepítési útmutató](application-proxy-deployment-plan.md) 
 - [Helyi alkalmazásokhoz való távoli hozzáférés Azure Active Directory Application Proxy](application-proxy.md)

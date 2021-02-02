@@ -3,7 +3,7 @@ title: Alkalmazások végfelhasználói élményei – Azure Active Directory
 description: Azure Active Directory (Azure AD) számos testreszabható módszert kínál az alkalmazások végfelhasználók számára történő központi telepítéséhez a szervezetben.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: 9bcf45cdfbadbf16f48f8f2ac3bd0c6320a2803f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0d3f1cab0637c7409cbc45f4f5a5374b2b5b6a77
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649228"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259253"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>A Azure Active Directory alkalmazások végfelhasználói élményei
 
@@ -72,5 +72,5 @@ Ezek a hivatkozások ugyanazokat a hozzáférés-vezérlési mechanizmusokat has
 ## <a name="next-steps"></a>Következő lépések
 
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
-* [Mi az az egyszeri bejelentkezés?](what-is-single-sign-on.md)
+* [Mi az egyszeri bejelentkezés?](what-is-single-sign-on.md)
 * [Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal](plan-an-application-integration.md)

@@ -3,7 +3,7 @@ title: Annak konfigurálása, hogy a végfelhasználók miként egyeznek az Azur
 description: Megtudhatja, hogyan és mikor férhet hozzá a felhasználók a szervezet adataihoz hozzáférő alkalmazásokhoz.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 992f082c5157521ea7f0d8a681557d6c7cc3dc04
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b6dd95dafbd079e79247110ee227121483dc372e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089985"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259304"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
@@ -81,7 +81,7 @@ Ha engedélyezni szeretné a felhasználói hozzájárulást, válassza ki, hogy
 
 A helyére írja be az `{consent-policy-id}` alkalmazni kívánt szabályzat azonosítóját. Kiválaszthat egy létrehozott [egyéni alkalmazás-engedélyezési szabályzatot](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , vagy a következő beépített szabályzatok közül választhat:
 
-| ID (Azonosító) | Description |
+| ID (Azonosító) | Leírás |
 |:---|:------------|
 | Microsoft-User-default – alacsony | **A felhasználók jóváhagyásának engedélyezése az ellenőrzött közzétevők alkalmazásai számára a kiválasztott engedélyekhez**<br /> Korlátozott felhasználói jóváhagyás engedélyezése csak az ellenőrzött közzétevők és a bérlőben regisztrált alkalmazások alkalmazásai számára, és csak az "alacsony hatás" besorolású engedélyek esetében. (Ne felejtse el [besorolni az engedélyeket](configure-permission-classifications.md) annak kiválasztásához, hogy a felhasználók milyen engedélyeket adhatnak meg.) |
 | Microsoft-User-default-Legacy | **Felhasználói beleegyezett alkalmazások engedélyezése**<br /> Ez a beállítás lehetővé teszi, hogy minden felhasználó beleegyezést kérjen minden olyan engedélyhez, amely nem igényel rendszergazdai hozzájárulást bármely alkalmazáshoz |
@@ -145,7 +145,7 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 1. A beállítások értékének megismerése:
 
-    | Beállítás       | Típus         | Description  |
+    | Beállítás       | Típus         | Leírás  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 

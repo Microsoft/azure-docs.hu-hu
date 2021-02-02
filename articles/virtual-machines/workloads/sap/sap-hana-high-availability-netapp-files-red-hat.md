@@ -11,14 +11,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489207"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259202"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -91,6 +91,7 @@ Először olvassa el a következő SAP-megjegyzéseket és dokumentumokat:
     - [A Microsoft Azure-ban való használathoz telepítse a SAP HANA Red Hat Enterprise Linux.](https://access.redhat.com/solutions/3193782)
     - [SAP HANA skálázási rendszer replikálása a pacemaker-fürtön, ha a HANA-fájlrendszerek NFS-megosztásokon találhatók](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-alkalmazások Microsoft Azure a Azure NetApp Files használatával](https://www.netapp.com/us/media/tr-4746.pdf)
+- [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -694,3 +695,10 @@ Ez a szakasz azt ismerteti, hogyan lehet tesztelni a telepítőt.
     ```
 
    Javasoljuk, hogy alaposan tesztelje a SAP HANA-fürt konfigurációját, és végezze el a [telepítő SAP HANA rendszer-replikáció a RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup)-ben című témakörben ismertetett teszteket is.
+
+## <a name="next-steps"></a>Következő lépések
+
+* [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
+* [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]
+* [Azure Virtual Machines adatbázis-kezelői telepítés az SAP-hoz][dbms-guide]
+* [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

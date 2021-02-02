@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070940"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260248"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -117,7 +117,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 | */443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | **Függőség az Azure Storage-ban**                             | Külső & belső  |
 | */443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) és Azure-beli kulcstartó-függőség                  | Külső & belső  |
 | */1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/SQL                 | **Hozzáférés az Azure SQL-végpontokhoz**                           | Külső & belső  |
-| */433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Hozzáférés az Azure kulcstartóhoz**                           | Külső & belső  |
+| */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Hozzáférés az Azure kulcstartóhoz**                           | Külső & belső  |
 | */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az [Event hub-házirend](api-management-howto-log-event-hubs.md) és a figyelési ügynök közötti függőség | Külső & belső  |
 | */445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a [git](api-management-configuration-repository-git.md) -hez készült Azure-fájlmegosztástól                      | Külső & belső  |
 | */443, 12000                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Állapot-és figyelési bővítmény         | Külső & belső  |
@@ -247,7 +247,7 @@ Az IP-címeket az Azure- **környezet** osztja el. Ha a **globálisan** megjelö
 | Azure Public| Délkelet-Ausztrália| 20.40.160.107|
 | Azure Public| Ausztrália középső régiója| 20.37.52.67|
 | Azure Public| Dél-India| 20.44.33.246|
-| Azure Public| USA középső régiója| 13.86.102.66|
+| Azure Public| Az USA középső régiója| 13.86.102.66|
 | Azure Public| Kelet-Ausztrália| 20.40.125.155|
 | Azure Public| USA 2. nyugati régiója| 51.143.127.203|
 | Azure Public| USA 2. keleti – EUAP| 52.253.229.253|

@@ -4,7 +4,7 @@ description: Ismerteti a helyszíni Power BI és az Azure AD Application Proxy i
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: e9f0959ff51714e8a7e69f58a3e3abeab71e8359
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616898"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259372"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>A Power BI Mobile távoli elérésének engedélyezése Azure AD-alkalmazásproxyval
 
@@ -156,7 +156,7 @@ Ha az alkalmazás a jelentés több percnél hosszabb betöltésére tett kísé
 
 Az Azure AD Application Proxy használatával lehetővé teheti, hogy a Power BI Mobile App a helyszíni Power BI jelentéskészítő kiszolgálóhoz kapcsolódjon, és nem támogatott olyan feltételes hozzáférési szabályzatok használata, amelyeken a Microsoft Power BI alkalmazás jóváhagyott ügyfélalkalmazás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz](application-proxy-configure-native-client-application.md)
 - [Helyszíni jelentéskészítő kiszolgálói jelentések és KPI-k megtekintése a Power BI-mobilalkalmazásokban](/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

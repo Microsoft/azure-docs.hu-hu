@@ -4,7 +4,7 @@ description: Az önkiszolgáló alkalmazás-hozzáférés engedélyezése lehet�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfa7530617830de99d752edcf4545300525ddbe8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9742a21cf00733607237c0eaf548f96b434abb33
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997460"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260214"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Önkiszolgáló alkalmazás-hozzárendelés konfigurálása
 
@@ -81,5 +81,5 @@ Az önkiszolgáló alkalmazások alkalmazáshoz való hozzáférésének engedé
 
 Az önkiszolgáló alkalmazás-konfiguráció befejezése után a felhasználók megkereshetik a saját [alkalmazásaikat](https://myapps.microsoft.com/) , és az önkiszolgáló **Alkalmazások hozzáadása** gombra kattintva megtalálhatják azokat az alkalmazásokat, amelyek engedélyezik az önkiszolgáló hozzáférést. Az üzleti jóváhagyók a saját [alkalmazásaikban](https://myapps.microsoft.com/)is láthatnak értesítést. Engedélyezheti az e-mailek értesítését, ha egy felhasználó hozzáférést kért egy olyan alkalmazáshoz, amelyhez jóváhagyás szükséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre](../enterprise-users/groups-self-service-management.md)

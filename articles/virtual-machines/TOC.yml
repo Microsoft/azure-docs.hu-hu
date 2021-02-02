@@ -1472,30 +1472,11 @@
     - name: Egyéni adatok
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: Telepítés és konfigurálás
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: Linux rendszerű virtuális gép létrehozása
-          href: /azure/developer/ansible/vm-configure
-        - name: Linux rendszerű virtuális gép kezelése
-          href: /azure/developer/ansible/vm-manage
+      href: 'https://docs.microsoft.com/azure/developer/ansible/'
     - name: Terraform
-      items:
-        - name: Telepítés és konfigurálás
-          href: /azure/developer/terraform/install-configure
-        - name: Teljes virtuális gép létrehozása
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: 'https://docs.microsoft.com/azure/developer/terraform/'
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: Jenkins-kiszolgáló létrehozása
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: Skálázás virtuálisgép-ügynökökkel
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: Összetevők közzététele a Storage szolgáltatásban
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: Biztonságos Jenkins
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Hibaelhárítás

@@ -4,7 +4,7 @@ description: Kapcsolja be az Alkalmazásproxyot a Azure Portalban, és telepíts
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a03f3c57d3fbc7efe20055343eab3db33aa8194
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84760048"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259084"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Alkalmazásproxy és Qlik értelem 
 A Azure Active Directory Application Proxy és a Qlik az értelem összevonásával biztosítható, hogy könnyen tudja használni az alkalmazásproxy-t a Qlik-környezethez való távoli hozzáférés biztosításához.  
@@ -38,14 +38,14 @@ Az alkalmazás közzétételéhez kövesse az alábbi lépéseket. Az 1-8-es lé
 
 
 1. Jelentkezzen be az Azure Portalra globális rendszergazdaként. 
-2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. 
+2. Válassza **Azure Active Directory**  >  **vállalati alkalmazások** lehetőséget. 
 3. A panel tetején kattintson a **Hozzáadás** gombra. 
-4. Válassza **a helyszíni alkalmazás**lehetőséget. 
+4. Válassza **a helyszíni alkalmazás** lehetőséget. 
 5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkkal. A beállításokhoz a következő útmutatást használhatja: 
    - **Belső URL-cím**: az alkalmazásnak rendelkeznie kell egy belső URL-címmel, amely maga a QlikSense URL-cím. Például: **https&#58;//demo.qlikemm.com:4244** 
    - **Előhitelesítési módszer**: Azure Active Directory (ajánlott, de nem kötelező) 
 1. Kattintson a panel alján található **Hozzáadás** gombra. Ekkor megjelenik az alkalmazás, és megnyílik a gyors üzembe helyezés menü. 
-2. A gyors üzembe helyezés menüben válassza a **felhasználó kiosztása teszteléshez**lehetőséget, és adjon hozzá legalább egy felhasználót az alkalmazáshoz. Győződjön meg arról, hogy a teszt fiók hozzáfér a helyszíni alkalmazáshoz. 
+2. A gyors üzembe helyezés menüben válassza a **felhasználó kiosztása teszteléshez** lehetőséget, és adjon hozzá legalább egy felhasználót az alkalmazáshoz. Győződjön meg arról, hogy a teszt fiók hozzáfér a helyszíni alkalmazáshoz. 
 3. Válassza a **hozzárendelés** lehetőséget a felhasználói teszt hozzárendelésének mentéséhez. 
 4. Választható Az App Management panelen válassza az egyszeri bejelentkezés lehetőséget. A legördülő menüben válassza a **Kerberos által korlátozott delegálás** lehetőséget, és töltse ki a kötelező mezőket a Qlik-konfiguráció alapján. Kattintson a **Mentés** gombra. 
 
@@ -64,7 +64,7 @@ További információ a Qlik való közzétételről az alkalmazásproxy haszná
 - [Azure AD integrált Windows-hitelesítéssel a Kerberos által korlátozott delegálással a Qlik Sense használatával](https://community.qlik.com/docs/DOC-20183)
 - [Qlik-integráció az Azure AD Application Proxy](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások közzététele az alkalmazásproxy használatával](application-proxy-add-on-premises-application.md)
 - [Alkalmazásproxy-összekötők használata](application-proxy-connector-groups.md)

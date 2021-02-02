@@ -2,7 +2,7 @@
 title: Helyszíni alkalmazások integrálása Cloud App Security-Azure AD-vel
 description: Helyszíni alkalmazás konfigurálása Azure Active Directoryban a Microsoft Cloud App Security (MCAS) szolgáltatással való együttműködéshez. A MCAS feltételes hozzáférést biztosító alkalmazás-vezérlő segítségével valós időben figyelheti és irányíthatja a munkameneteket a feltételes hozzáférési szabályzatok alapján. Ezeket a házirendeket alkalmazhatja a Azure Active Directory (Azure AD) alkalmazásproxy használatát használó helyszíni alkalmazásokra.
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.date: 12/19/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 139f347a3d1bce7a8f841cd1c39cd250b9a2182d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764570"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259355"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>A valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud App Security és Azure Active Directory
 Azure Active Directory (Azure AD) helyszíni alkalmazásának konfigurálása a Microsoft Cloud App Security (MCAS) valós idejű figyeléshez való használatához. A MCAS a feltételes hozzáférést biztosító alkalmazás-vezérlő a feltételes hozzáférési házirendek alapján valós időben figyeli és vezérli a munkameneteket. Ezeket a házirendeket alkalmazhatja a Azure Active Directory (Azure AD) alkalmazásproxy használatát használó helyszíni alkalmazásokra.
@@ -50,7 +50,7 @@ Alkalmazásproxy konfigurálása:
 Helyszíni alkalmazás hozzáadása az Azure AD-hez. A gyors útmutatóért lásd: helyszíni [alkalmazás hozzáadása az Azure ad-](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)hez. Az alkalmazás hozzáadásakor ügyeljen arra, hogy az alábbi két beállítást adja meg a helyszíni **alkalmazás hozzáadása** panelen:
 
 - **Előzetes hitelesítés**: írja be a **Azure Active Directory**.
-- **URL-címek fordítása az alkalmazás törzsében**: válassza az **Igen**lehetőséget.
+- **URL-címek fordítása az alkalmazás törzsében**: válassza az **Igen** lehetőséget.
 
 Ezek a két beállítás szükséges ahhoz, hogy az alkalmazás működjön a MCAS.
 

@@ -7,14 +7,14 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d94bc2fde63090d66da7e98cc239386d958e6bb2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a3ee7f3fca3fff1cd401f26489b01fb9cc4e09c5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950964"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259519"
 ---
-# <a name="how-to-transfer-a-payload-between-device-and-dps"></a>Adattartalom átvitele az eszköz és a DPS között
+# <a name="how-to-transfer-payloads-between-devices-and-dps"></a>A hasznos adatok átvitele az eszközök és a DPS között
 Időnként a DPS-nek több adatokra van szüksége az eszközökről, hogy megfelelően kiépítse őket a megfelelő IoT Hubba, és hogy az adatoknak az eszköznek kell megadniuk. A DPS azonban visszatérhet az eszközre, hogy az ügyféloldali logikát is megkönnyítse. 
 
 ## <a name="when-to-use-it"></a>Mikor lehet használni

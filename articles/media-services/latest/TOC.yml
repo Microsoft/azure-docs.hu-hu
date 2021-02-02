@@ -111,6 +111,8 @@
         - name: Felügyelt identitások és Media Services
           displayName: content protection
           href: concept-managed-identities.md
+        - name: Megbízható tárterület
+          href: concept-trusted-storage.md
         - name: Felhasználó által kezelt kulcsok
           href: concept-use-customer-managed-keys-byok.md
     - name: Objektumok

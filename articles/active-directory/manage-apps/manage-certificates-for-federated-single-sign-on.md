@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan szabhatja testre az összevonási tanúsítván
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87190e9a7aa3c3a26b77220dd0332d65c640bc2e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658995"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259219"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory
 
@@ -63,7 +63,7 @@ Először hozzon létre és mentsen új tanúsítványt más lejárati dátummal
 1. Válassza az **új tanúsítvány** lehetőséget. Egy új sor jelenik meg a tanúsítványok listája alatt, ahol a lejárati dátum alapértelmezett értéke pontosan három év az aktuális dátum után. (A módosítások még nem lettek mentve, így továbbra is módosíthatja a lejárati dátumot.)
 1. Az új tanúsítvány sorában vigye a kurzort a lejárat dátuma oszlop fölé, és válassza a **dátum kiválasztása** ikont (a naptárat). Ekkor megjelenik egy naptár vezérlőelem, amely megjeleníti az új sor aktuális lejárati dátumának napját.
 1. Az új dátum beállításához használja a naptár vezérlőt. Az aktuális dátum és az aktuális dátumot követő három év közötti időpontot állíthatja be.
-1. Válassza a **Mentés** lehetőséget. Az új tanúsítvány mostantól **inaktív** állapottal, a választott lejárati dátummal és egy ujjlenyomattal jelenik meg.
+1. Kattintson a **Mentés** gombra. Az új tanúsítvány mostantól **inaktív** állapottal, a választott lejárati dátummal és egy ujjlenyomattal jelenik meg.
 1. Az **X** érték kiválasztásával térjen vissza a **Set up Single Sign-On for SAML-Preview** oldalára.
 
 ### <a name="upload-and-activate-a-certificate"></a>Tanúsítvány feltöltése és aktiválása
@@ -88,7 +88,7 @@ Az Azure AD e-mailben értesítést küld a 60, 30 és 7 nappal az SAML-tanúsí
 1. A végső e-mail-cím alatt írja be azt az e-mail-címet, amelyre a tanúsítvány lejárati értesítése érkezik, majd nyomja le az ENTER billentyűt.
 1. Ismételje meg az előző lépést minden hozzáadni kívánt e-mail-cím esetében.
 1. Minden törölni kívánt e-mail-cím esetében válassza a **Törlés** ikont (a szemetet is) az e-mail-cím mellett.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az értesítő e-mailt a következő címről küldi: aadnotification@microsoft.com . Ha el szeretné kerülni, hogy az e-mail a levélszemét helyére kerüljön, vegye fel ezt az e-mailt a névjegyalbumba.
 

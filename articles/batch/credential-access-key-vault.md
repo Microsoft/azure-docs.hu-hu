@@ -1,17 +1,17 @@
 ---
-title: A Key Vault biztonságos elérése a Batch használatával
+title: Tanúsítványok és biztonságos hozzáférés Azure Key Vault a Batch használatával
 description: Megtudhatja, hogyan férhet hozzá programozott módon a hitelesítő adataihoz Key Vault a Azure Batch használatával.
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350687"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260129"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>A Key Vault biztonságos elérése a Batch használatával
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Tanúsítványok és biztonságos hozzáférés Azure Key Vault a Batch használatával
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a Batch-csomópontokat a [Azure Key Vault](../key-vault/general/overview.md)tárolt hitelesítő adatok biztonságos eléréséhez. Nincs értelme a rendszergazdai hitelesítő adatoknak a Key Vault-ben való elhelyezésében, majd a Key Vault parancsfájlokból való eléréséhez szükséges merevlemez-kódolási hitelesítő adatokkal. A megoldás egy olyan tanúsítvány használata, amely engedélyezi a Batch-csomópontok számára a Key Vault elérését.
 
@@ -108,7 +108,7 @@ $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPas
 
 Ezek a parancsfájlban használandó hitelesítő adatok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Key Vaultról](../key-vault/general/overview.md).
 - Tekintse át a [Batch Azure biztonsági alaptervét](security-baseline.md).

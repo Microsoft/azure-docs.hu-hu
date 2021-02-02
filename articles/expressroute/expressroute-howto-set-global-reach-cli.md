@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 55f1e4c030dc0e7c8d0011dcff0cc1c9f8fec06e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028063"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260231"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>ExpressRoute-Global Reach konfigurálása az Azure CLI használatával
 
@@ -54,9 +54,9 @@ A ExpressRoute Global Reach bármely két ExpressRoute-áramkör között enged�
 
 Ha a parancsot a kapcsolat engedélyezéséhez futtatja, jegyezze fel a következő követelményeket a paraméterek értékeire:
 
-* a *társ-áramkörnek* a teljes erőforrás-azonosítónak kell lennie. Példa:
+* a *társ-áramkörnek* a teljes erőforrás-azonosítónak kell lennie. Például:
 
-  > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
+  > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
 
 * a címnek "/29" IPv4 *-* alhálózatnak kell lennie (például "10.0.0.0/29"). Ebben az alhálózatban az IP-címeket használjuk a két ExpressRoute-áramkör közötti kapcsolat létesítéséhez. Ebben az alhálózatban nem használhat címeket az Azure-beli virtuális hálózatokban vagy a helyszíni hálózatokban.
 
@@ -149,7 +149,7 @@ Az ```show``` állapot ellenőrzéséhez használja az parancsot.
 
 Ha ez a művelet befejeződik, már nem lesz kapcsolata a helyszíni hálózatok között a ExpressRoute-áramköröken keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a ExpressRoute Global Reach](expressroute-global-reach.md)
 * [ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)

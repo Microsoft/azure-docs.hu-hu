@@ -1,26 +1,26 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 02/01/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96152667"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427181"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="common-limits-for-all-tiers"></a>Általános korlátok az összes szinten
 Az alábbi korlátok az összes szinten gyakoriak. 
 
-| Korlát |  Megjegyzések | Érték |
+| Korlát |  Jegyzetek | Érték |
 | --- |  --- | --- |
 | Event Hubs névterek száma/előfizetés |- |100 |
 | Az Event hubok száma névtérben | Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
@@ -30,13 +30,14 @@ Az alábbi korlátok az összes szinten gyakoriak.
 | Nem EPOCH-fogadók száma fogyasztói csoportonként |- |5 |
 | Engedélyezési szabályok száma névtérben | Az engedélyezési szabályok létrehozására vonatkozó további kérelmeket a rendszer elutasítja.|12 |
 | A GetRuntimeInformation metódushoz tartozó hívások száma |  - | 50 másodpercenként | 
-| A virtuális hálózat (VNet) és az IP-konfigurációs szabályok száma | - | 128 | 
+| Virtuális hálózatok (VNet) száma | - | 128 | 
+| IP-konfigurációs szabályok száma | - | 128 | 
 
 
 ### <a name="basic-vs-standard-tiers"></a>Alapszintű és standard csomag
 Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korlátozásokat mutat be. 
 
-| Korlát | Megjegyzések | Alapszintű | Standard |
+| Korlát | Jegyzetek | Alapszintű | Standard |
 |---|---|--|---|
 | Event Hubs esemény maximális mérete| &nbsp; | 256 KB | 1 MB |
 | Fogyasztói csoportok száma az Event hub-ban | &nbsp; |1 |20 |
@@ -49,7 +50,7 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 
 Tekintse át ezt a [dokumentumot](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) arról, hogyan hozhat létre dedikált Event Hubs-fürtöt a Azure Portal használatával.
 
-| Funkció | Standard | Dedikált |
+| Szolgáltatás | Standard | Dedikált |
 | --- |:---|:---|
 | Sávszélesség | 20 TUs (legfeljebb 40 TUs) | 20 ke |
 | Névterek |  1 | 50/CU |
@@ -66,7 +67,7 @@ Tekintse át ezt a [dokumentumot](../articles/event-hubs/event-hubs-dedicated-cl
 ### <a name="schema-registry-limitations"></a>A séma beállításjegyzékének korlátai
 
 #### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>A standard és a dedikált szint esetében azonos korlátok 
-| Funkció | Korlát | 
+| Jellemző | Korlát | 
 |---|---|
 | Séma-csoport nevének maximális hossza | 50 |  
 | Séma nevének maximális hossza | 100 |    

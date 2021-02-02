@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095181"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427173"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -29,14 +29,6 @@ Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telep
 > [!NOTE]
 > A NuGet alternatívájaként letöltheti és kicsomagolhatja a Speech CLI zip- [archívumot](https://aka.ms/speech/spx-zips.zip), megkeresheti és kinyerheti a platformot a `spx-zips` címtárból, és hozzáadhatja a `spx` **rendszerútvonal** -változó elérési útját.
 
-### <a name="run-the-speech-cli"></a>A Speech CLI futtatása
-
-1. Nyissa meg a parancssort vagy a PowerShellt, majd keresse meg azt a könyvtárat, ahová kibontotta a Speech CLI-t.  
-2. A `spx` SPEECH parancssori felület Súgó parancsainak megtekintéséhez írja be a következőt:.
-
-> [!NOTE]
-> A PowerShell nem vizsgálja a helyi könyvtárat a parancs keresésekor. A PowerShellben váltson a könyvtár helyére, `spx` és hívja meg az eszközt a következő beírásával: `.\spx` .
-> Ha hozzáadja ezt a könyvtárat az elérési úthoz, a PowerShell és a Windows-parancssor `spx` bármely könyvtárból megkereshető, az `.\` előtagot nem beleértve.
 
 ### <a name="font-limitations"></a>Betűkészletre vonatkozó korlátozások
 

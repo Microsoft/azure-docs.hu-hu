@@ -4,7 +4,7 @@ description: Az első féltől származó Microsoft-alkalmazásokhoz az Azure AD
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57deed9d7fb178ba1cdc8d6e954d751752532de4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 79c8d6d072379853d6eca561d372f61dbb8acc8a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654405"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260011"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problémák a Microsoft-alkalmazásba való bejelentkezéskor
 
@@ -85,7 +85,7 @@ A következő gyakori problémákkal találkozhat, amikor a felhasználók nem t
 
   *  Győződjön meg arról, hogy a licenc az elérni **kívánt alkalmazáshoz szükséges** .
 
-- A **Microsoft** **licenccel nem rendelkező Microsoft-alkalmazásokhoz** néhány további dolgot is meg kell néznie:
+- A  **licenccel nem rendelkező Microsoft-alkalmazásokhoz** néhány további dolgot is meg kell néznie:
 
   * Ha az alkalmazás **felhasználói szintű engedélyeket** kér (például "hozzáférés a felhasználó postaládájához"), győződjön meg arról, hogy a felhasználó bejelentkezett az alkalmazásba, és elvégezte a **felhasználói szintű** belefoglalási műveletet, amely lehetővé teszi az alkalmazás számára az adatelérést.
 

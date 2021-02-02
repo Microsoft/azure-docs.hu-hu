@@ -1,7 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Kötelező mezők. További információ: aka.ms/skyeye/meta.
 Cím: Azure Storage-fiókok: Azure Media Services Leírás: megtudhatja, hogyan hozhat létre Azure Media Services használatával használható Azure Storage-fiókot.
-szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 01/05/2021 MS. Author: inhenkel
+szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 01/29/2021 MS. Author: inhenkel
 ---
 
 # <a name="azure-storage-accounts"></a>Azure Storage-fiókok
@@ -19,7 +19,7 @@ Javasoljuk, hogy a GPv2 használja, így kihasználhatja a legújabb funkciókat
 > [!NOTE]
 > Csak a gyors elérési szint támogatott a Azure Media Serviceshoz való használathoz, bár a többi hozzáférési réteg is használható a tárolási költségek csökkentéséhez a nem aktívan használt tartalmak esetében.
 
-Különböző SKU-ket is választhat a Storage-fiókhoz. További információ: Storage- [fiókok](/cli/azure/storage/account?view=azure-cli-latest). Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha azonban az SKU-t éles környezetben választotta, érdemes figyelembe vennie `--sku Standard_RAGRS` , amely az üzletmenet folytonosságát biztosító földrajzi replikációt biztosít.
+Különböző SKU-ket is választhat a Storage-fiókhoz. Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha azonban az SKU-t éles környezetben választotta, érdemes figyelembe vennie `--sku Standard_RAGRS` , amely az üzletmenet folytonosságát biztosító földrajzi replikációt biztosít.
 
 ## <a name="assets-in-a-storage-account"></a>A Storage-fiókban lévő eszközök
 
@@ -32,16 +32,17 @@ A Media Services v3-as verziójában a Storage API-k segítségével tölthet fe
 
 Az adategységek védelméhez az eszközöket a tárolási oldal titkosításával kell titkosítani. A következő táblázat bemutatja, hogyan működik a tárolási oldal titkosítása Media Services v3-ban:
 
-|Titkosítási beállítás|Description|Media Services v3|
+|Titkosítási beállítás|Leírás|Media Services v3|
 |---|---|---|
-|Media Services Storage-titkosítás| AES-256 titkosítás, Media Services által felügyelt kulcs. |Nem támogatott. <sup>(1)</sup>|
+|Media Services Storage-titkosítás| AES-256 titkosítás, Media Services által felügyelt kulcs. |Nem támogatott. <sup>1</sup>|
 |[Tárolási szolgáltatás titkosítása inaktív adatok esetén](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott.|
 |[Storage ügyféloldali titkosítás](../../storage/common/storage-client-side-encryption.md)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vaultban.|Nem támogatott.|
 
 <sup>1</sup> a Media Services v3-as verziójában a Storage encryption (AES-256 encryption) csak a visszamenőleges kompatibilitás érdekében támogatott, ha az eszközök Media Services v2-mel lettek létrehozva, ami azt jelenti, hogy a v3 a meglévő tárolók titkosított eszközeivel működik együtt, de nem teszi lehetővé újak létrehozását.
 
-## <a name="double-encryption"></a>Dupla titkosítás
-Media Services támogatja a kettős titkosítást.  További információ a kettős titkosításról: [Azure Double encryption](../../security/fundamentals/double-encryption.md).
+## <a name="storage-account-double-encryption"></a>Storage-fiók kettős titkosítása
+
+A Storage-fiókok támogatják a kettős titkosítást, de a második réteget explicit módon engedélyezni kell. Lásd: [Az Azure Storage titkosítása a nyugalmi állapotban lévő adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption).  
 
 ## <a name="storage-account-errors"></a>Storage-fiókok hibái
 
@@ -53,10 +54,6 @@ Az alábbiak az elsődleges forgatókönyvek, amelyek a Media Services-fiók a c
 |---|---|
 |A Media Services-fiók vagy a csatolt tárfiókok külön előfizetésekbe lettek migrálva. |Telepítse át a Storage-fiók (ok) t vagy Media Services fiókot úgy, hogy azok mind ugyanabban az előfizetésben legyenek. |
 |A Media Services-fiók egy másik előfizetésben lévő csatolt tárfiókot használ, mivel ez egy régi Media Services-fiók, amikor ez még támogatott volt. Az összes korai Media Services fiók át lett konvertálva a modern Azure Resources Manager-alapú fiókokba, és leválasztott állapottal fog rendelkezni. |Telepítse át a Storage-fiókot vagy Media Services fiókot úgy, hogy azok mind ugyanabban az előfizetésben legyenek.|
-
-## <a name="azure-storage-firewall"></a>Azure Storage-tűzfal
-
-Azure Media Services nem támogatja a Storage-fiókok használatát az Azure Storage-tűzfallal vagy a [magánhálózati végpontokkal](../../storage/common/storage-network-security.md) .
 
 ## <a name="next-steps"></a>Következő lépések
 
