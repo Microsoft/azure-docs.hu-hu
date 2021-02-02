@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860626"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257185"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ha közvetlen kapcsolatot hoz létre egy partner identitásszolgáltató, az ado
 > A közvetlen összevonási vendég felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A közvetlen összevonási felhasználók jelenleg nem tudnak bejelentkezni olyan közös végpontok használatával, amelyek nem rendelkeznek bérlői környezettel. Például a, a, a vagy a használatakor `https://myapps.microsoft.com` `https://portal.azure.com` `https://teams.microsoft.com` hibaüzenetet fog eredményezni.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Mikor van hitelesítve a vendég felhasználó közvetlen összevonással?
-Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Néhány példa:
+Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Íme néhány példa:
  - Ha a vendég felhasználói már beváltották a meghívókat, és ezt követően a szervezethez tartozó közvetlen összevonást is beállította, akkor a vendég felhasználói továbbra is ugyanazt a hitelesítési módszert használják, mint a közvetlen összevonás beállítása előtt.
  - Ha úgy állítja be a közvetlen kapcsolatot egy partner szervezettel, hogy meghívja a vendég felhasználókat, majd a partnervállalat később áthelyezi az Azure AD-be, a már beváltott meghívókat továbbra is a közvetlen összevonás fogja használni, feltéve, hogy a bérlői közvetlen összevonási házirend létezik.
  - Ha közvetlen kapcsolatot töröl egy partner szervezettel, a közvetlen kapcsolatot használó vendég felhasználók nem fognak tudni bejelentkezni.
@@ -78,7 +78,8 @@ Igen. Ha a tartomány még nem lett ellenőrizve, és a bérlő nem ment át a [
 A közvetlen összevonás partner szervezettel való létrehozásakor elsőbbséget élvez az e-mailek egyszeri jelszavas hitelesítése az adott szervezet új vendég felhasználói számára. Ha a vendég felhasználó egyszeri jelszó-hitelesítéssel váltott ki egy meghívót a közvetlen összevonás beállítása előtt, akkor továbbra is egyszer használatos hitelesítő kódot használ. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Egy részlegesen szinkronizált bérlet miatt a közvetlen összevonási címek bejelentkezési problémái vannak?
 Nem, ebben a forgatókönyvben az [egyszeri jelszavas e-mail-](one-time-passcode.md) szolgáltatást kell használni. A "részlegesen szinkronizált bérlet" olyan partner Azure AD-bérlőre vonatkozik, ahol a helyszíni felhasználói identitások nem teljesen szinkronizálva vannak a felhővel. Egy vendég, amelynek identitása még nem létezik a felhőben, de a B2B-meghívás beváltására irányuló kísérlet nem fog tudni bejelentkezni. Az egyszeri jelszó funkció lehetővé teszi a vendég számára a bejelentkezést. A közvetlen összevonási funkciók olyan forgatókönyveket foglalnak magukban, ahol a vendég saját identitásszolgáltató által felügyelt szervezeti fiókkal rendelkezik, de a szervezet egyáltalán nem rendelkezik Azure AD-beli jelenléttel.
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>Ha a közvetlen összevonás egy szervezettel van konfigurálva, minden vendéget el kell juttatni, és be kell váltania egy egyéni meghívót?
+A közvetlen összevonás beállítása nem változtatja meg azon vendég felhasználók hitelesítési módszerét, akik már beváltottak egy meghívót. A vendég felhasználói hitelesítési módszerét frissítheti, ha törli a vendég felhasználói fiókot a címtárból, és meghívja őket.
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>1. lépés: a partner szervezet személyazonosság-szolgáltatójának konfigurálása
 Először is a partnervállalat a szükséges jogcímekhez és a függő entitások megbízhatóságához kell konfigurálnia az identitás-szolgáltatót. 
 
@@ -144,7 +145,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD-portálon
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza ki a **külső identitások**  >  **összes identitás-szolgáltatóját**.
 3. Válassza ki a elemet, majd válassza az **Új SAML/ws-fed identitásszolgáltató** elemet.
 
@@ -192,7 +193,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolat szerkesztését?
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **külső identitások** lehetőséget.
 3. **Az összes Identity Provider** kijelölése
 4. Az **SAML/ws-fed identitás-szolgáltatók** területen válassza ki a szolgáltatót.
@@ -203,7 +204,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 ## <a name="how-do-i-remove-direct-federation"></a>Hogyan a közvetlen összevonás eltávolítása?
 Törölheti a közvetlen összevonási telepítést. Ha így tesz, a meghívónak már beváltott felhasználók nem fognak tudni bejelentkezni. Ha azonban ismét hozzáférést ad az erőforrásokhoz, törölje őket a címtárból, és hívja fel őket. Az Azure AD-portálon lévő közvetlen összevonás eltávolítása az identitás-szolgáltatóval:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **külső identitások** lehetőséget.
 3. Válassza ki **az összes identitás szolgáltatót**.
 4. Válassza ki az identitás-szolgáltatót, majd válassza a **Törlés** lehetőséget. 

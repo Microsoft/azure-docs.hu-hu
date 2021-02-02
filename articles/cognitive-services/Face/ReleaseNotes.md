@@ -10,19 +10,31 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a409d66065a7ccd2b34365bd565202f207ac0e8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e537166352f242d54819477a4dc0051aad684b0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560746"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258082"
 ---
 # <a name="whats-new-in-face-service"></a>A Face szolgáltatás újdonságai
 
 Az Azure Face szolgáltatás folyamatosan frissül. Ebből a cikkből megtudhatja, hogyan maradhat naprakészen a funkciók fejlesztései, a javítások és a dokumentációs frissítések segítségével.
 
+## <a name="january-2021"></a>2021. január
+* A Face API használatakor felhasználható késés csökkentése: a Face csapata közzétett egy új cikket, amely részletezi a késés lehetséges okait a szolgáltatás és a lehetséges kockázatcsökkentő stratégiák használata során. Lásd: [az arc szolgáltatás használata esetén a késés csökkentése](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/how-to-mitigate-latency).
+
+## <a name="december-2020"></a>2020. december
+* Felhasználói konfiguráció a Face ID-tárolóhoz: míg a Face szolgáltatás nem tárolja az ügyfelek lemezképeit, a rendszer a kiszolgálón tárolja a kinyert arc funkció (ka) t. A Face azonosító a Face funkció azonosítója, amelyet a rendszer a [Face-IDENTIFY](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), a [Face-ellenőrzés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)és a [Face-Find hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)módon fog használni. A tárolt Arcfelismerés funkció lejár, és az eredeti észlelési hívás után 24 órával törlődik. Az ügyfelek mostantól meghatározhatják, hogy a rendszer mennyi ideig gyorsítótárazza ezeket a Face-azonosítókat. A maximális érték akár 24 óra is lehet, de a minimális 60 másodperces érték már beállítható. A gyorsítótárazott arc-azonosítók új időtartománya 60 másodperc és 24 óra közötti érték. További részleteket az [arc-észlelési API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) referenciában talál (a *faceIdTimeToLive* paraméter).
+
 ## <a name="november-2020"></a>2020. november
-* Közzétett egy mintaként szolgáló beléptetési alkalmazást, amely bemutatja az ajánlott eljárásokat az értelmes beleegyezett és magas pontosságú Arcfelismerés rendszerek létrehozásához magas minőségi beléptetéssel. A nyílt forráskódú minta a [beléptetési alkalmazás létrehozása](build-enrollment-app.md) útmutatóban és a [githubon](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)érhető el, és készen áll a fejlesztők számára a telepítésére vagy testreszabására.  
+* Közzétett egy mintaként szolgáló beléptetési alkalmazást, amely bemutatja az ajánlott eljárásokat az értelmes belevonáshoz, valamint nagy pontosságú Arcfelismerés-rendszerek létrehozásához kiváló minőségű regisztrációk révén. A nyílt forráskódú minta a [beléptetési alkalmazás létrehozása](build-enrollment-app.md) útmutatóban és a [githubon](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)érhető el, és készen áll a fejlesztők számára a telepítésére vagy testreszabására. 
+
+## <a name="august-2020"></a>2020. augusztus
+* Az inaktív adatok ügyfél által felügyelt titkosítása: a Face szolgáltatás automatikusan titkosítja az adatait a felhőben való megőrzés során. Az arc-szolgáltatás titkosítása védi az adatait, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségeknek. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Az előfizetését az ügyfél által felügyelt kulcsok (CMK) nevű saját kulcsok használatával is kezelheti. További részletek az [ügyfél által felügyelt kulcsokban](https://docs.microsoft.com/azure/cognitive-services/face/face-encryption-of-data-at-rest)találhatók.
+
+## <a name="april-2020"></a>2020. április
+* Új Face API-felismerési modell: az új felismerés 03 modell a legpontosabb modell jelenleg elérhető. Ha Ön új ügyfél, javasoljuk, hogy használja ezt a modellt. A decognition 03 jobb pontosságot biztosít mind a hasonlósági összehasonlításokhoz, mind a személyekre vonatkozó összehasonlításokhoz. További részletekért tekintse meg a következőt: [Arcfelismerés modell megadása](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model).
 
 ## <a name="june-2019"></a>2019. június
 

@@ -3,7 +3,7 @@ title: A SCIM, a Microsoft Graph és az Azure AD használata a felhasználók ki
 description: A SCIM és a Microsoft Graph együttes használatával kiépítheti a felhasználókat, és gazdagíthatja az alkalmazást az általa igénybe venni kívánt adattal.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: ba8dec19443bbafa300144b1aa42b3973cce9e6d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655152"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255627"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 

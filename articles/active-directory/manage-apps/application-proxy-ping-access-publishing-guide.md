@@ -3,7 +3,7 @@ title: Fejléc-alapú hitelesítés a PingAccess for Azure AD Application Proxy
 description: Alkalmazások közzététele a PingAccess és az App proxyval a fejléc-alapú hitelesítés támogatásához.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e09bb0b07112a962b709c380c48f2a656c16097b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 128e053016faf3ed2a9c53ad21f35a13f3ac1265
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663558"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258167"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítés alkalmazásproxyval és PingAccess segítségével történő egyszeri bejelentkezéshez
 
@@ -108,7 +108,7 @@ Most rendeljen hozzá egy felhasználót az alkalmazás teszteléséhez, és vá
 
    ![Fejléc-alapú bejelentkezési képernyő és PingAccess megjelenítése](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ezután ellenőrizze, hogy az átirányítási URL-cím be van-e állítva a külső URL-címre:
 
@@ -168,7 +168,7 @@ Az adatok összegyűjtése:
 1. Válassza ki az alkalmazást.
 1. Az alkalmazás **Alkalmazásregisztrációk** oldalának oldalsávján válassza a **jegyzékfájl** lehetőséget. Megjelenik az alkalmazás regisztrálásához tartozó JSON-kód.
 1. Keresse meg a `acceptMappedClaims` mezőt, és módosítsa az értéket a következőre: `True` .
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="use-of-optional-claims-optional"></a>Választható jogcímek használata (nem kötelező)
 

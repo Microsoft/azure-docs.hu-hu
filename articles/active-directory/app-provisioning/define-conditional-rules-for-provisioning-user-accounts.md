@@ -3,19 +3,19 @@ title: Alkalmazások kiépítése a hatóköri szűrőkkel | Microsoft Docs
 description: Ismerje meg, hogyan használhatók a hatóköri szűrők, hogy megakadályozza az olyan alkalmazásokban lévő objektumok használatát, amelyek támogatják az automatikus felhasználó-kiépítés kiépítési módját, ha egy objektum nem felel meg az üzleti követelményeinek.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861391"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255831"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -105,7 +105,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 10. A **hatóköri szűrő címe** területen adja meg a hatókör-szűrő nevét.
 
-11. Kattintson az **OK** gombra.
+11. Válassza az **OK** lehetőséget.
 
 12. Kattintson ismét az **OK gombra** a **hatókör szűrők** képernyőjén. Szükség esetén ismételje meg a 6-11-es lépést egy másik hatókör-szűrő hozzáadásához.
 

@@ -3,21 +3,21 @@ title: Az alkalmazásokhoz való hozzáférés kezelése az Azure AD-vel
 description: Leírja, hogy Azure Active Directory lehetővé teszi a szervezetek számára, hogy megadják azokat az alkalmazásokat, amelyekhez az egyes felhasználók hozzáférnek.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: c73a5ccd9e16fb5efd9fefca6253701f942c3202
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5afc6aa8f52011eba6d7cfdfaa09b0ab995183e8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367788"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257423"
 ---
-# <a name="managing-access-to-apps"></a>Az alkalmazásokhoz való hozzáférés kezelése
+# <a name="managing-access-to-apps"></a>Alkalmazásokhoz való hozzáférés kezelése
 
 A folyamatos hozzáférés-kezelés, a használat kiértékelése és a jelentéskészítés továbbra is kihívást jelent, miután az alkalmazás integrálva van a szervezet identitási rendszerébe. Sok esetben a rendszergazdáknak vagy az ügyfélszolgálatnak folyamatosan aktív szerepkört kell betartania az alkalmazásaihoz való hozzáférés kezelésében. Időnként a hozzárendelést egy általános vagy egy részlegi informatikai csapat végzi. A hozzárendelési döntés gyakran arra szolgál, hogy az üzleti döntéshozónak legyen delegálva, mielőtt jóváhagyja a hozzárendelést.  Más szervezetek egy meglévő automatizált identitás-és hozzáférés-kezelési rendszerrel (például Role-Based Access Control (RBAC) vagy Attribute-Based Access Control (ABAC) való integrációt fektetnek be. Az integráció és a szabályok fejlesztése is általában specializált és költséges. A felügyeleti megközelítés figyelése vagy jelentése a saját külön, költséges és összetett befektetés.
 

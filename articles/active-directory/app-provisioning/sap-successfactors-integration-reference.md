@@ -3,19 +3,19 @@ title: A Azure Active Directory és az SAP SuccessFactors integrációs referenc
 description: Technikai részletes betekintést az SAP SuccessFactors – HR-vezérelt kiépítés
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: ed97600ca1802629f81f93f4f51c92ad4b1c9bd1
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569453"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256221"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>A Azure Active Directory kiépítés integrálása az SAP SuccessFactors 
 
@@ -307,7 +307,7 @@ Ez a szakasz a különböző írási forgatókönyveket ismerteti. Azt javasolja
 * Az alkalmazottak középső régiójában a vállalati telefon elsődlegesként van beállítva. A write-back alkalmazás nem változtathatja meg ezt, és nem állíthatja be elsődlegesként a mobiltelefont.
 * A visszaírási alkalmazás nem tudja olvasni az elsődleges jelző aktuális beállításait, és ugyanazokat az értékeket használja az írási művelethez. Az attribútumban konfigurált jelző értékek mindig használatban lesznek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan konfigurálhatja a SuccessFactors Active Directory kiépítés céljából](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 * [Ismerje meg, hogyan konfigurálhatja a visszaírási a SuccessFactors-be](../saas-apps/sap-successfactors-writeback-tutorial.md)

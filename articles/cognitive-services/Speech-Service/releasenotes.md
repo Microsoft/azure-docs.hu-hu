@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1c9c07d3770d2b71bee8f8e789022be6f831cc8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4393607d6714bc4c1b10ac89d5ac69c173f8fef4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092868"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257321"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -26,7 +26,7 @@ ms.locfileid: "99092868"
 
 **Kiemelt összefoglalás**
 - Kisebb memória-és lemez-lábnyom, ami hatékonyabbá teszi az SDK-t.
-- Továbbfejlesztett egyéni hangminőség és egyszerű használat. 
+- Az egyéni neurális hang privát előzetes verziójának magasabb szintű hűség-formátuma érhető el.
 - A szándék-felismerő mostantól több, mint a legnépszerűbb szándékot is visszaküldheti, így az ügyfél szándékával külön értékelést készíthet.
 - A hangsegéd vagy a robot mostantól könnyebben beállítható, így azonnal megfigyelheti a figyelést, és hatékonyabban szabályozhatja, hogyan reagáljon a hibákra.
 - Az eszköz teljesítményének növelése a tömörítést nem kötelezővé teszi.
@@ -43,7 +43,7 @@ ms.locfileid: "99092868"
   - Az Android-kódtárak 3-5%-kal kisebbek.
 
 **Új funkciók**
-- **Összes: az** egyéni hangminőség egyre jobb. Az egyéni TTS-hangokhoz hozzáadott 48kHz-formátum, amely az egyéni hangok hangminőségét javítja, amelynek a natív kimeneti mintavételi sebessége magasabb, mint a 24kHz.
+- **Összes**: új 48KHz kimeneti formátumok az egyéni neurális hanghoz a TTS SPEECH szintézis API-n keresztül: Audio48Khz192KBitRateMonoMp3, hang-48KHz-192kbitrate-mono-MP3, Audio48Khz96KBitRateMonoMp3, hang-48KHz-96kbitrate-mono-MP3, Raw48Khz16BitMonoPcm, RAW-48KHz-16bit-mono-PCM, Riff48Khz16BitMonoPcm, riff-48KHz-16bit-mono-PCM.
 - **Összes**: az egyéni hang is könnyebben használható. Az egyéni hang beállításának támogatása a `EndpointId` következőn keresztül: ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId), [Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)). A módosítás előtt az egyéni hangvezérelt felhasználóknak a végponti URL-címet a metódus használatával kell beállítaniuk `FromEndpoint` . Az ügyfelek mostantól ugyanúgy használhatják a `FromSubscription` metódust, mint a nyilvános hangokat, majd a beállítás alapján megadhatják a telepítési azonosítót `EndpointId` . Ez egyszerűbbé teszi az egyéni hangok beállítását. 
 - **C++/c #/Java/Objective-C/Python**: több, mint a legfelső szintű szándék `IntentRecognizer` . Mostantól támogatja az összes leképezést tartalmazó JSON-eredmény konfigurálását, és nem csak a metóduson keresztüli, URI-paraméter használatával történő leképezést `LanguageUnderstandingModel FromEndpoint` `verbose=true` . Ebben a cikkben a [GitHub-probléma #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880). A frissített dokumentáció [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents)található.
 - **C++/c #/Java**: állítsa be a hangsegédet vagy a robotot, és ne hallgassa meg a immediatedly. `DialogServiceConnector` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) mostantól egy `StopListeningAsync()` metódust kell kísérnie `ListenOnceAsync()` . Ez azonnal leállítja a hangrögzítést, és az eredmény kihasználása érdekében tökéletesen megvárja a "Leállítás most" gomb megnyomásával.

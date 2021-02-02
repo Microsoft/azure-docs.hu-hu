@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929565"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256475"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure-alkalmazás konfigurálása – gyakori kérdések
 
@@ -105,7 +105,7 @@ A standard szintről az ingyenes szintre nem lehet visszaminősíteni egy áruh�
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Az alkalmazás-konfigurációra vonatkozó kérelmek száma korlátozva van?
 
-Az ingyenes szinten lévő konfigurációs áruházak napi 1 000 kérésre korlátozódnak. A standard csomag konfigurációs tárolói átmeneti szabályozást tapasztalhatnak, ha a kérések száma óránként meghaladja a 20 000 kérést.
+Az alkalmazás konfigurálásakor a kulcs-értékek olvasásakor az adatok oldalszámozással jelennek meg, és minden kérelem legfeljebb 100 kulcs-értéket tud olvasni. A kulcs-érték írásakor minden kérelem létrehozhat vagy frissíthet egy kulcs-értéket. Ezt a REST API, az App Configuration SDK-k és a konfigurációs szolgáltatók támogatják. Az ingyenes szinten lévő konfigurációs áruházak napi 1 000 kérésre korlátozódnak. A standard csomag konfigurációs tárolói átmeneti szabályozást tapasztalhatnak, ha a kérések száma óránként meghaladja a 20 000 kérést.
 
 Ha egy tároló eléri a korlátot, a 429-as HTTP-állapotkódot fogja visszaadni az összes, az adott időszak lejárta után benyújtott kérelemnél. A `retry-after-ms` Válasz fejléce egy javasolt várakozási időt (ezredmásodpercben) tartalmaz a kérelem újrapróbálkozása előtt.
 

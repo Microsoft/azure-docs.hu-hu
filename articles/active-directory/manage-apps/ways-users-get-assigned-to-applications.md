@@ -3,19 +3,19 @@ title: A felhasználók Azure Active Directory alkalmazásokhoz való hozzárend
 description: Ismerje meg, hogy a felhasználók hogyan vannak hozzárendelve egy olyan alkalmazáshoz, amely Azure Active Directoryt használ az Identitáskezelés kezeléséhez.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: aedcecf528f07d9d7f89c1d5659d8fcd2cb36df2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 161df0446c9478ca0f2b135c1e426f3786b164fc
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016728"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257440"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>A felhasználók Azure Active Directory alkalmazásokhoz való hozzárendelésének ismertetése
 Ebből a cikkből megtudhatja, hogyan rendelhető hozzá a felhasználók egy alkalmazáshoz a bérlőben.
@@ -39,7 +39,7 @@ Ahhoz, hogy egy felhasználó hozzáférjen egy alkalmazáshoz, előbb hozzá ke
 *  Egy [rendszergazda beleegyezett egy alkalmazásba](../develop/howto-convert-app-to-be-multi-tenant.md) , hogy az összes felhasználó használja, majd a felhasználó bejelentkezik az alkalmazásba
 * A felhasználó az alkalmazásba való bejelentkezéssel saját maga [is beleegyezik az alkalmazásba](../develop/howto-convert-app-to-be-multi-tenant.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Gyorsindítás sorozat az alkalmazás-kezelésben](view-applications-portal.md)
 * [Mi az alkalmazáskezelés?](what-is-application-management.md)
 * [Mi az egyszeri bejelentkezés?](what-is-single-sign-on.md)

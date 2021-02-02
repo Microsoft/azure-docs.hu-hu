@@ -4,7 +4,7 @@ description: Az Azure AD Application Proxy használatával elérheti a helyszín
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c44716f045340022c871501609cf582015ba20f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764485"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256609"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>A helyszíni alkalmazások elérése a Microsoft Teams használatával
 
@@ -53,7 +53,7 @@ Miután közzétette az alkalmazást az Application proxyn keresztül, tájékoz
 
 Ha egy csapat tagja felveszi a fület, az megjelenik a csatornán mindenki számára. Az alkalmazáshoz hozzáféréssel rendelkező felhasználók egyszeri bejelentkezéses hozzáférést kapnak a Microsoft Teams szolgáltatáshoz használt hitelesítő adatokhoz. Azok a felhasználók, akik nem rendelkeznek hozzáféréssel az alkalmazáshoz, megtekinthetik a csapat lapjait, de csak akkor vannak letiltva, ha nem ad nekik engedélyeket a helyszíni alkalmazáshoz és az alkalmazás Azure Portal közzétett verziójához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [tehet közzé helyszíni SharePoint-webhelyeket](application-proxy-integrate-with-sharepoint-server.md) alkalmazásproxy használatával.
 - Konfigurálja az alkalmazásokat úgy, hogy az [Egyéni tartományokat](application-proxy-configure-custom-domain.md) használják külső URL-címként.

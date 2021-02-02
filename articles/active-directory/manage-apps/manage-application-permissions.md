@@ -3,7 +3,7 @@ title: Felhasználói és rendszergazdai engedélyek kezelése – Azure Active 
 description: Ismerje meg, hogyan tekintheti át és kezelheti az alkalmazásra vonatkozó engedélyeket az Azure AD-ben. Például visszavonhatja az alkalmazásnak biztosított összes engedélyt.
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1284af82c0779ca57b49a0c4aef4b492a3bf20
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cbd2bc7b9ccc9efe0c6fdf8de02665160667cb8f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054602"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256932"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>A Azure Active Directoryban lévő, nem megfelelő jogosultságokkal rendelkező vagy gyanús alkalmazásokra vonatkozó teendők
 

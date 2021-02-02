@@ -1,23 +1,23 @@
 ---
-title: Az SAML-alapú egyszeri bejelentkezés hibáinak megoldása Azure Active Directory
+title: SAML-alapú egyszeri bejelentkezés hibaelhárítása az Azure Active Directoryban
 description: Az SAML-alapú egyszeri bejelentkezéshez konfigurált Azure AD-alkalmazással kapcsolatos problémák elhárítása.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658876"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257526"
 ---
-# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Az SAML-alapú egyszeri bejelentkezés hibáinak megoldása Azure Active Directory
+# <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés hibaelhárítása az Azure Active Directoryban
 Ha probléma merül fel az alkalmazás konfigurálásakor. Győződjön meg arról, hogy követte az alkalmazáshoz tartozó oktatóanyag összes lépését. Az alkalmazás konfigurációjában az alkalmazás konfigurálásával kapcsolatos dokumentációban talál további tájékoztatást. Azt is megteheti, hogy elérhetővé teszi az [oktatóanyagok listáját az SaaS-alkalmazások Azure Active Directory](../saas-apps/tutorial-list.md) -nal való integrálásához, részletes útmutatást nyújtva.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Nem lehet felvenni az alkalmazás egy másik példányát.
@@ -69,7 +69,7 @@ Az alkalmazás metaadatainak vagy tanúsítványának az Azure AD-ből való let
 
 Az Azure AD nem biztosít URL-címet a metaadatok beszerzéséhez. A metaadatokat csak XML-fájlként lehet beolvasni.
 
-## <a name="customize-saml-claims-sent-to-an-application"></a>Alkalmazásnak eljuttatott SAML-jogcímek testreszabása
+## <a name="customize-saml-claims-sent-to-an-application"></a>Az alkalmazásoknak elküldött SAML-jogcímek testreszabása
 Ha meg szeretné tudni, hogyan szabhatja testre az alkalmazásnak eljuttatott SAML-attribútumok jogcímeit, tekintse meg a következő témakört: [jogcím-hozzárendelés Azure Active Directory](../develop/active-directory-claims-mapping.md)
 
 ## <a name="next-steps"></a>Következő lépések

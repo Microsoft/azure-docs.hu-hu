@@ -3,7 +3,7 @@ title: SAP SuccessFactors-attribútumok referenciája
 description: Megtudhatja, hogy a SuccessFactors mely attribútumait támogatja a SuccessFactors-HR-vezérelt kiépítés
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87808507"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255542"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-attribútumok referenciája
 
@@ -34,7 +34,7 @@ Az alábbi táblázat rögzíti az alapértelmezett SuccessFactors-attribútumok
 
 További attribútumok esetében tekintse meg az [SAP SuccessFactors-integrációs referenciát](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) a séma kiterjesztéséhez. 
 
-| \# | SuccessFactors entitás                  | SuccessFactors attribútum     | Művelet típusa |
+| \# | SuccessFactors entitás                  | SuccessFactors attribútum     | Művelettípus |
 |----|----------------------------------------|------------------------------|----------------|
 | 1  | PerPerson                              | personIdExternal             | Olvasás           |
 | 2  | PerPerson                              | Számú personid                     | Olvasás           |
@@ -45,35 +45,35 @@ További attribútumok esetében tekintse meg az [SAP SuccessFactors-integráci�
 | 7  | PerPersonal                            | lastName                     | Olvasás           |
 | 8  | PerPersonal                            | middleName                   | Olvasás           |
 | 9  | PerPersonal                            | preferredName                | Olvasás           |
-| 10 | Felhasználó                                   | addressLine1                 | Olvasás           |
-| 11 | Felhasználó                                   | addressLine2                 | Olvasás           |
-| 12 | Felhasználó                                   | addressLIne3                 | Olvasás           |
-| 13 | Felhasználó                                   | businessPhone                | Olvasás           |
-| 14 | Felhasználó                                   | cellPhone                    | Olvasás           |
-| 15 | Felhasználó                                   | city                         | Olvasás           |
-| 16 | Felhasználó                                   | ország                      | Olvasás           |
-| 17 | Felhasználó                                   | custom01                     | Olvasás           |
-| 18 | Felhasználó                                   | custom02                     | Olvasás           |
-| 19 | Felhasználó                                   | custom03                     | Olvasás           |
-| 20 | Felhasználó                                   | custom04                     | Olvasás           |
-| 21 | Felhasználó                                   | custom05                     | Olvasás           |
-| 22 | Felhasználó                                   | custom06                     | Olvasás           |
-| 23 | Felhasználó                                   | custom07                     | Olvasás           |
-| 24 | Felhasználó                                   | custom08                     | Olvasás           |
-| 25 | Felhasználó                                   | custom09                     | Olvasás           |
-| 26 | Felhasználó                                   | custom10                     | Olvasás           |
-| 27 | Felhasználó                                   | custom11                     | Olvasás           |
-| 28 | Felhasználó                                   | custom12                     | Olvasás           |
-| 29 | Felhasználó                                   | custom13                     | Olvasás           |
-| 30 | Felhasználó                                   | custom14                     | Olvasás           |
-| 31 | Felhasználó                                   | empId                        | Olvasás           |
-| 32 | Felhasználó                                   | homePhone                    | Olvasás           |
-| 33 | Felhasználó                                   | jobFamily                    | Olvasás           |
-| 34 | Felhasználó                                   | Becenév                     | Olvasás           |
-| 35 | Felhasználó                                   | állapot                        | Olvasás           |
-| 36 | Felhasználó                                   | timeZone                     | Olvasás           |
-| 37 | Felhasználó                                   | username                     | Olvasás           |
-| 38 | Felhasználó                                   | Irányítószám                      | Olvasás           |
+| 10 | User                                   | addressLine1                 | Olvasás           |
+| 11 | User                                   | addressLine2                 | Olvasás           |
+| 12 | User                                   | addressLIne3                 | Olvasás           |
+| 13 | User                                   | businessPhone                | Olvasás           |
+| 14 | User                                   | cellPhone                    | Olvasás           |
+| 15 | User                                   | city                         | Olvasás           |
+| 16 | User                                   | ország                      | Olvasás           |
+| 17 | User                                   | custom01                     | Olvasás           |
+| 18 | User                                   | custom02                     | Olvasás           |
+| 19 | User                                   | custom03                     | Olvasás           |
+| 20 | User                                   | custom04                     | Olvasás           |
+| 21 | User                                   | custom05                     | Olvasás           |
+| 22 | User                                   | custom06                     | Olvasás           |
+| 23 | User                                   | custom07                     | Olvasás           |
+| 24 | User                                   | custom08                     | Olvasás           |
+| 25 | User                                   | custom09                     | Olvasás           |
+| 26 | User                                   | custom10                     | Olvasás           |
+| 27 | User                                   | custom11                     | Olvasás           |
+| 28 | User                                   | custom12                     | Olvasás           |
+| 29 | User                                   | custom13                     | Olvasás           |
+| 30 | User                                   | custom14                     | Olvasás           |
+| 31 | User                                   | empId                        | Olvasás           |
+| 32 | User                                   | homePhone                    | Olvasás           |
+| 33 | User                                   | jobFamily                    | Olvasás           |
+| 34 | User                                   | Becenév                     | Olvasás           |
+| 35 | User                                   | állapot                        | Olvasás           |
+| 36 | User                                   | timeZone                     | Olvasás           |
+| 37 | User                                   | username                     | Olvasás           |
+| 38 | User                                   | Irányítószám                      | Olvasás           |
 | 39 | PerPhone                               | areaCode                     | Olvasás           |
 | 40 | PerPhone                               | Országhívószám                  | Olvasás           |
 | 41 | PerPhone                               | kiterjesztés                    | Olvasás           |
@@ -89,7 +89,7 @@ További attribútumok esetében tekintse meg az [SAP SuccessFactors-integráci�
 | 51 | EmpJob                                 | emplStatus                   | Olvasás           |
 | 52 | EmpJob                                 | endDate                      | Olvasás           |
 | 53 | EmpJob                                 | startDate                    | Olvasás           |
-| 54 | EmpJob                                 | Beosztás                     | Olvasás           |
+| 54 | EmpJob                                 | jobTitle                     | Olvasás           |
 | 55 | EmpJob                                 | pozíció                     | Olvasás           |
 | 65 | EmpJob                                 | customString13               | Olvasás           |
 | 56 | EmpJob                                 | managerId                    | Olvasás           |
@@ -127,18 +127,18 @@ Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmaz
 | 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
 | 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
-| 6  | Felhasználó                                   | addressLine1             | streetAddress                           | NA                                                                                           |
-| 7  | Felhasználó                                   | city                     | l                                       | NA                                                                                           |
-| 8  | Felhasználó                                   | ország                  | co                                      | NA                                                                                           |
-| 9  | Felhasználó                                   | állapot                    | st                                      | NA                                                                                           |
-| 10 | Felhasználó                                   | username                 | samAccountName                          | NA                                                                                           |
-| 11 | Felhasználó                                   | Irányítószám                  | Irányítószám                              | NA                                                                                           |
+| 6  | User                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | User                                   | city                     | l                                       | NA                                                                                           |
+| 8  | User                                   | ország                  | co                                      | NA                                                                                           |
+| 9  | User                                   | állapot                    | st                                      | NA                                                                                           |
+| 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
+| 11 | User                                   | Irányítószám                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | Levelezés                                    | NA                                                                                           |
-| 13 | EmpJob                                 | Beosztás                 | cím                                   | NA                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | cím                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
 | 15 | EmpJob \. vállalati \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
 | 16 | EmpJob \. részleg                     | Részleg               | Részleg                              | NA                                                                                           |
 | 17 | EmpJob \. divízió                       | osztály                 | cég                                 | NA                                                                                           |
 | 18 | EmpJob \. helye                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | EmpJob \. helye                       | officeLocationZipCode    | Irányítószám                              | NA                                                                                           |
+| 19 | EmpJob \. helye                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Ha a activeEmploymentsCount = 0, tiltsa le a account\.                                           |

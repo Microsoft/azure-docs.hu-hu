@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054737"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257457"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -132,20 +132,20 @@ A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi 
 
 A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A Azure Database for MySQL rugalmas kiszolgálója jelenleg a következő Azure-régiókban érhető el:
 
-| Régió | Magas rendelkezésre állás | 
-| --- | --- |
-| Nyugat-Európa | :heavy_check_mark: | 
-| Észak-Európa | :heavy_check_mark: | 
-| Az Egyesült Királyság déli régiója | x | 
-| USA 2. keleti régiója | :heavy_check_mark: | 
-| USA 2. nyugati régiója | :heavy_check_mark: | 
-| Az USA középső régiója | x | 
-| USA keleti régiója | :heavy_check_mark: | 
-| Közép-Kanada | x | 
-| Délkelet-Ázsia | :heavy_check_mark: | 
-| Dél-Korea középső régiója | x | 
-| Kelet-Japán | x | 
-| Kelet-Ausztrália | :heavy_check_mark: |
+| Region | Rendelkezésre állás | Zóna redundáns HA | 
+| --- | --- | --- |
+| Nyugat-Európa | :heavy_check_mark: | :heavy_check_mark: |
+| Észak-Európa | :heavy_check_mark: | :heavy_check_mark: |
+| Az Egyesült Királyság déli régiója | :heavy_check_mark: | x | 
+| USA 2. keleti régiója | :heavy_check_mark: | :heavy_check_mark: |
+| USA 2. nyugati régiója | :heavy_check_mark: | :heavy_check_mark: |
+| Az USA középső régiója | :heavy_check_mark: | x | 
+| USA keleti régiója | :heavy_check_mark: | :heavy_check_mark: |
+| Közép-Kanada | :heavy_check_mark: | x | 
+| Délkelet-Ázsia | :heavy_check_mark: | :heavy_check_mark: |
+| Dél-Korea középső régiója | :heavy_check_mark: | x | 
+| Kelet-Japán | :heavy_check_mark: | x | 
+| Kelet-Ausztrália | :heavy_check_mark: | :heavy_check_mark: |
 
 Hamarosan új régiókat fogunk hozzáadni.
 

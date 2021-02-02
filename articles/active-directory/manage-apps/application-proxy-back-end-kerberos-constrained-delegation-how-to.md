@@ -3,7 +3,7 @@ title: Kerberos által korlátozott delegálás – alkalmazásproxy
 description: A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: c28e79c9a6f8c489a97d360c4fe142d431b5ab5d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656547"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258218"
 ---
-# <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>A Kerberos által korlátozott delegálási konfigurációk hibaelhárítása alkalmazásproxy esetében
+# <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Az alkalmazásproxy Kerberos által korlátozott delegálási konfigurációinak hibaelhárítása
 
 Az egyszeri bejelentkezésnek a közzétett alkalmazásokhoz való eléréséhez elérhető módszerek az egyik alkalmazásból a másikba változhatnak. Az egyik lehetőség, hogy a Azure Active Directory (Azure AD) alkalmazásproxy-ajánlat alapértelmezés szerint a Kerberos által korlátozott delegálás (KCD). Beállíthat egy összekötőt a felhasználók számára, hogy korlátozott Kerberos-hitelesítést futtasson a háttérbeli alkalmazásokhoz.
 

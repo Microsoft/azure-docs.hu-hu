@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan használhatók helyettesítő alkalmazások a A
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997511"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257980"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
 
@@ -45,7 +45,7 @@ A helyettesítő karakterekkel rendelkező alkalmazásokat közzéteheti, ha a b
 
 > http (s)://*.\<domain\>
 
-Például: `http(s)://*.adventure-works.com`.
+Példa: `http(s)://*.adventure-works.com`.
 
 Míg a belső és külső URL-címek különböző tartományokat használhatnak, az ajánlott eljárásnak megfelelőnek kell lennie. Az alkalmazás közzétételekor hibaüzenet jelenik meg, ha az URL-címek egyike nem tartalmaz helyettesítő karaktert.
 
@@ -189,7 +189,7 @@ Mivel a `finance.adventure-works.com` egy konkrétabb URL-cím `*.adventure-work
 
 Ha több alkalmazás van közzétéve a Finance szolgáltatásban, és Ön `finance.adventure-works.com` ellenőrzött tartománnyal rendelkezik, közzétehet egy másik helyettesítő karaktert `*.finance.adventure-works.com` . Mivel ez az általánosnál sokkal pontosabb `*.adventure-works.com` , elsőbbséget élvez, ha egy felhasználó a pénzügyi tartományban található alkalmazáshoz fér hozzá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az **Egyéni tartományokkal** kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Azure ad Application proxy-ban](application-proxy-configure-custom-domain.md)című témakört.
 - További információ az **alkalmazások közzétételéről**: [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)

@@ -3,7 +3,7 @@ title: Az alkalmazások üzembe helyezésének ismert problémái az Azure AD-be
 description: Ismerje meg az Azure AD-ben végzett automatizált alkalmazások üzembe helyezésével kapcsolatos ismert problémákat.
 author: kenwith
 ms.author: kenwith
-manager: celestedg
+manager: daveba
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914348"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256643"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 

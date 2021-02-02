@@ -3,7 +3,7 @@ title: Probléma van a felhasználó üzembe helyezésének egy Azure AD Gallery
 description: Az Azure AD-alkalmazás-katalógusban már felsorolt alkalmazások felhasználó általi üzembe helyezésének konfigurálásakor felmerülő gyakori problémák elhárítása
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994791"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256272"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor
 
@@ -28,7 +28,7 @@ Az alkalmazáshoz való kiépítés beállítására vonatkozó beállítási ok
 
 A szolgáltatás konfigurálása után a szolgáltatás működésével kapcsolatos legtöbb betekintést két helyről lehet kirajzolni:
 
--   **Kiépítési naplók (előzetes verzió)** – a [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure ad lekérdezését a kiépítés hatókörében lévő hozzárendelt felhasználók számára. A cél alkalmazás lekérdezése a felhasználók létezéséhez, a rendszer közötti felhasználói objektumok összehasonlításával. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren. A Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** **Activity** lehetőség kiválasztásával érheti el.
+-   **Kiépítési naplók (előzetes verzió)** – a [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure ad lekérdezését a kiépítés hatókörében lévő hozzárendelt felhasználók számára. A cél alkalmazás lekérdezése a felhasználók létezéséhez, a rendszer közötti felhasználói objektumok összehasonlításával. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren. A Azure Portal kiépítési naplóit a  &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)**  lehetőség kiválasztásával érheti el.
 
 -   **Aktuális állapot –** Egy adott alkalmazás utolsó kiépítési futtatásának összefoglalása látható a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[ alkalmazás neve \] &gt; kiépítési** szakaszban, a képernyő alján a szolgáltatás beállításai alatt. A jelenlegi állapot szakasz azt mutatja, hogy a létesítési ciklus megkezdte-e a felhasználói fiókok kiépítési folyamatát. Megtekintheti a ciklus előrehaladását, és megtekintheti, hogy hány felhasználó és csoport lett kiépítve, és hogy hány szerepkört hozott létre. Ha bármilyen hiba merül fel, a részletek a [kiépítési naplókban (..) találhatók. /Reports-monitoring/Concept-Provisioning-logs.MD? Context = Azure/Active-Directory/felügyelet-alkalmazások/környezet/kezelés-alkalmazások-környezet).
 
@@ -65,5 +65,5 @@ Ha egy felhasználó "kihagyva" állapotba kerül a kiépítési naplókban, nag
 
   * **Csoportok attribútumainak hozzárendelése:** A csoport neve és a csoport adatainak kiépítés a tagokon kívül, ha egyes alkalmazások esetében támogatott. A funkció engedélyezéséhez vagy letiltásához engedélyezze vagy tiltsa le a **kiépítés** lapon megjelenő csoportosítási objektumok **leképezését** . Ha a létesítési csoportok engedélyezve vannak, tekintse át az attribútumok leképezéseit, és győződjön meg arról, hogy a megfelelő mező használatban van a "megfeleltetési azonosító" beállításnál. Ez lehet a megjelenítendő név vagy az e-mail-alias, mivel a csoport és a tagjai nem lesznek kiépítve, ha a megfelelő tulajdonság üres vagy nincs feltöltve az Azure AD-beli csoportokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](user-provisioning.md)

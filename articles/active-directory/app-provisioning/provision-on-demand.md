@@ -3,7 +3,7 @@ title: Igény szerinti felhasználó kiépítése Azure Active Directory haszná
 description: Szinkronizálás kényszerítése
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629012"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255661"
 ---
 # <a name="on-demand-provisioning"></a>Igény szerinti üzembe helyezés
 Igény szerinti kiépítés használatával másodpercek alatt kiépítheti a felhasználókat egy alkalmazásba. A funkció többek között a következőkre használható:
@@ -31,7 +31,7 @@ Igény szerinti kiépítés használatával másodpercek alatt kiépítheti a fe
 1. Lépjen az **összes szolgáltatás**  >  **vállalati alkalmazáshoz**.
 1. Válassza ki az alkalmazást, majd nyissa meg a létesítési konfiguráció lapot.
 1. Konfigurálja úgy a kiépítés konfigurálását, hogy megadja a rendszergazdai hitelesítő adatait.
-1. Válassza **a kiépítés igény szerint**lehetőséget.
+1. Válassza **a kiépítés igény szerint** lehetőséget.
 1. Keressen egy felhasználót az utónév, a vezetéknév, a megjelenítendő név, az egyszerű felhasználónév vagy az e-mail-cím alapján.
    > [!NOTE]
    > A Felhőbeli HR-kiépítési alkalmazásokhoz (munkanap/SuccessFactors AD/Azure AD) a bemeneti érték eltér. A munkanap forgatókönyv esetén adja meg a felhasználó "WID" számát a munkanapokon. SuccessFactors forgatókönyv esetén adja meg a felhasználó "personIdExternal" a SuccessFactors-ben. 
@@ -124,7 +124,7 @@ Végül a kiépítési szolgáltatás végrehajt egy műveletet, például a fel
 
 Íme egy példa arra, hogy mit láthat a felhasználó sikeres igény szerinti kiépítés után:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Képernyőfelvétel: a felhasználó igény szerinti üzembe helyezésének Azure Portal felhasználói felületét jeleníti meg.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="A felhasználó sikeres igény szerinti üzembe helyezését bemutató képernyőkép.":::
 
 #### <a name="view-details"></a>Részletek megtekintése
 

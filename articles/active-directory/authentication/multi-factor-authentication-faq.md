@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a58fbf874339bf287ce1af62e1edb39ec6227d99
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741449"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257102"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure AD-vel kapcsolatban Multi-Factor Authentication
 
@@ -124,7 +124,7 @@ További információ az MFA-szolgáltatókról az [Azure multi-Factor Auth-szol
 
 Bizonyos esetekben igen.
 
-Ha a címtár *felhasználónkénti* Azure multi-Factor Authentication szolgáltatóval rendelkezik, MFA-licenceket adhat hozzá. A licenccel rendelkező felhasználókat nem számítjuk fel a felhasználónkénti fogyasztási számlázás. A licenccel nem rendelkező felhasználók továbbra is engedélyezhetők az MFA-szolgáltatón keresztül. Ha a Multi-Factor Authentication használatára konfigurált összes felhasználóhoz vásárol és rendel hozzá licenceket, akkor törölheti az Azure Multi-Factor Authentication-szolgáltatót. Ha a jövőben több felhasználóval rendelkezik, akkor mindig létrehozhat egy másik felhasználónkénti MFA-szolgáltatót.
+Ha a címtár *felhasználónkénti* Azure multi-Factor Authentication szolgáltatóval rendelkezik, MFA-licenceket adhat hozzá. A licenccel rendelkező felhasználók nem számítanak bele a felhasználónkénti felhasználás szerinti Számlázásba. A licenccel nem rendelkező felhasználók továbbra is engedélyezhetők az MFA-szolgáltatón keresztül. Ha a Multi-Factor Authentication használatára konfigurált összes felhasználóhoz vásárol és rendel hozzá licenceket, akkor törölheti az Azure Multi-Factor Authentication-szolgáltatót. Ha a jövőben több felhasználóval rendelkezik, akkor mindig létrehozhat egy másik felhasználónkénti MFA-szolgáltatót.
 
 Ha a címtárban van egy hitelesítési Azure Multi-Factor Authentication *-* szolgáltató, akkor mindig minden hitelesítés után kell fizetnie, ha az MFA-szolgáltató az előfizetéshez van társítva. Az MFA-licenceket hozzárendelheti a felhasználókhoz, de minden kétlépéses ellenőrzési kérelem esetében továbbra is díjat számítunk fel, függetlenül attól, hogy a hozzárendelt MFA-licenccel rendelkező valakitől származik-e.
 
@@ -254,7 +254,7 @@ A *0x800434D4L* hiba akkor fordul elő, ha egy helyi számítógépen telepítet
 
 Ennek a hibának a megkerülő megoldás, ha külön felhasználói fiókkal rendelkezik a rendszergazdai és a nem rendszergazdai műveletekhez. Később a rendszergazdai fiók és a nem rendszergazdai fiók között is csatolhat postaládákat, így a nem rendszergazdai fiókkal is bejelentkezhet az Outlookba. A megoldással kapcsolatos további információkért tekintse meg, hogy a [rendszergazda hogyan nyithatja meg és tekintheti meg a felhasználó postaládájának tartalmát](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a kérdés itt nem válaszol, a következő támogatási lehetőségek érhetők el:
 

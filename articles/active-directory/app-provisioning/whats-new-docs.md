@@ -1,24 +1,36 @@
 ---
 title: Újdonságok az Azure Active Directory alkalmazás-kiépítés során
 description: Új és frissített dokumentáció a Azure Active Directory alkalmazás üzembe helyezéséhez.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: daveba
+ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562208"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256001"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory alkalmazás üzembe helyezése: Újdonságok
 
 Üdvözli a Azure Active Directory Application kiépítési dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A kiépítési szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>2021. január
+
+### <a name="new-articles"></a>Új cikkek
+- [A Azure Active Directory kiépítés munkanapokkal való integrálása](workday-integration-reference.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+- [Oktatóanyag: minta SCIM-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md)
+- [Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory](customize-application-attributes.md)
+- [A Azure Active Directory kiépítés integrálása az SAP SuccessFactors](sap-successfactors-integration-reference.md)
+- [Alkalmazás üzembe helyezése a karantén állapotában](application-provisioning-quarantine-status.md)
+
 
 ## <a name="december-2020"></a>2020. december
 

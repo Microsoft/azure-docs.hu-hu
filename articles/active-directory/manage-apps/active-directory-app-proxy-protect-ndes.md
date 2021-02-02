@@ -4,7 +4,7 @@ titleSuffix: Azure Active Directory
 description: Útmutatás a Azure Active Directory Application Proxy telepítéséhez a NDES-kiszolgáló elleni védelemhez.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 69193296069765ae6e94ffe97913c136a0d033d9
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709010"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257896"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integráció az Azure AD Application Proxy hálózati eszközök tanúsítványigénylési szolgáltatásának (NDES) kiszolgálóján
 
@@ -94,6 +94,6 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
    * Configuration Manager esetében lépjen a tanúsítvány regisztrációs pontjára, és módosítsa az URL-címet. Ezt az URL-címet kell meghívnia az eszközökre, és be kell mutatnia a feladatát.
    * Az Intune önálló verziójában szerkessze vagy hozzon létre egy új SCEP-házirendet, és adja hozzá az új URL-címet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A NDES-mel integrált Azure-AD Application Proxy alkalmazások közzétételét teszik elérhetővé a felhasználók számára. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](./application-proxy-add-on-premises-application.md).

@@ -3,19 +3,19 @@ title: Oktatóanyag – Azure Active Directory attribútum-hozzárendelések tes
 description: Ismerje meg, hogy az SaaS-alkalmazásokhoz milyen attribútum-hozzárendelések Azure Active Directory az üzleti igények kielégítése érdekében.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: 2a27124ea76d6e5aaa7ec4b8ca36c388718ffb94
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 89b40ac68143c2af0d94434ddedec489a2208839
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761302"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256407"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -334,7 +334,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - A szerepkör attribútumot általában egy kifejezéssel kell leképezni, nem közvetlen hozzárendelést. A szerepkör-hozzárendeléssel kapcsolatos további részletekért lásd a fenti szakaszt. 
 - Noha letilthatja a csoportokat a leképezésekről, a felhasználók letiltása nem támogatott. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)

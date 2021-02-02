@@ -3,7 +3,7 @@ title: A felhasználók nincsenek kiépítve az alkalmazásban
 description: Gyakori hibák elhárítása, ha nem jelenik meg a felhasználók számára az Azure AD-vel való üzembe helyezéshez konfigurált Azure AD Gallery-alkalmazásban megjelenő felhasználó
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 89a5838524daa1959ecf6b4fe3c17d6175ca8553
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 429f993764273d6b6eb23d75d0132b374d5d0ca0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571776"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256354"
 ---
 # <a name="no-users-are-being-provisioned"></a>Egyetlen felhasználó létrehozása sem történt meg 
 >[!NOTE]
@@ -31,7 +31,7 @@ Miután az automatikus kiépítés konfigurálva lett egy alkalmazáshoz (beleé
   
 Ha azt észleli, hogy a felhasználók nincsenek kiépítve, tekintse meg az Azure AD-beli [kiépítési naplókat (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) . Egy adott felhasználó bejegyzéseinek keresése.
 
-A Azure Portal kiépítési naplóit a **Azure Active Directory** &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)** **Activity** lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+A Azure Portal kiépítési naplóit a  &gt; tevékenység szakaszban Azure Active Directory **vállalati alkalmazások** &gt; **kiépítési naplói (előzetes verzió)**  lehetőség kiválasztásával érheti el. A kiépítési adat a felhasználó neve vagy a forrásrendszer vagy a célként megadott rendszer alapján is megkereshető. Részletekért lásd: [kiépítési naplók (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 A kiépítési naplók rögzítik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az Azure AD lekérdezését olyan hozzárendelt felhasználók számára, akik a kiépítés hatókörét képezik, lekérdezik a felhasználók létezését, és összehasonlítják a rendszer közötti felhasználói objektumokat. Ezt követően az összehasonlítás alapján hozzáadhatja, frissítheti vagy letilthatja a felhasználói fiókot a megcélzott rendszeren.
 
@@ -65,6 +65,6 @@ A katalógus egyik alkalmazásának alapértelmezett szerepkörét az "alapérte
 **A 04/16/2020 előtt létrehozott kiépítési konfigurációk viselkedése:** A következő 3 hónapban a viselkedés továbbra is a mai napig folytatódik. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók kimaradnak, és nem lesznek ténylegesen jogosultak. Július 2020 után a viselkedés minden alkalmazás esetében egységes lesz. Nem fogjuk kihagyni a felhasználókat az alapértelmezett hozzáférési szerepkörrel, mert "nem lehet ténylegesen jogosult". Ezt a módosítást a Microsoft végzi, és nincs szükség felhasználói beavatkozásra. Ha szeretné biztosítani, hogy ezek a felhasználók továbbra is kimaradnak, még a módosítás után is alkalmazza a megfelelő hatókörű szűrőket, vagy szüntesse meg a felhasználó hozzárendelését az alkalmazásból, hogy azok ne legyenek a hatókörön belül.  
 
 A változásokkal kapcsolatos kérdéseit a következő címen érheti el: provisioningfeedback@microsoft.com
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

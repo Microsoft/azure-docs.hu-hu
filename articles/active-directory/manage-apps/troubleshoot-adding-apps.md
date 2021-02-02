@@ -3,19 +3,19 @@ title: Alkalmazások Azure Active Directory való hozzáadásával vagy eltávol
 description: Az alkalmazások Azure Active Directory való hozzáadásakor vagy eltávolításakor fellépő gyakori problémák elhárítása.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: dbfc90f01bdd9cc0a831160d06efa1c3952884a2
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108415"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257669"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Alkalmazások Azure Active Directory való hozzáadásával vagy eltávolításával kapcsolatos gyakori problémák elhárítása
 Ebből a cikkből megtudhatja, hogy az emberek milyen gyakori problémákkal szembesülnek az alkalmazások Azure Active Directory való hozzáadásakor vagy eltávolításakor.

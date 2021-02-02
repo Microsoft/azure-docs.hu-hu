@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618535"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256542"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -45,7 +45,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][create-azure-ad-ds-instance].
 * A számítógépre telepített *LDP.exe* eszköz.
-    * Ha szükséges, [telepítse a Távoli kiszolgálófelügyelet eszközei (RSAT)][rsat] *Active Directory tartományi szolgáltatások és az LDAP* szolgáltatáshoz.
+    * Ha szükséges, [telepítse a Távoli kiszolgálófelügyelet eszközei (RSAT)][rsat] *Active Directory Domain Services és az LDAP* szolgáltatáshoz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -213,6 +213,12 @@ A felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezése n�
 
 A hiba gyakori okai a következők: Ha a tartománynév helytelen, a tanúsítvány titkosítási algoritmusa nem *TripleDES-SHA1*, vagy a tanúsítvány hamarosan lejár, vagy már lejárt. Újra létrehozhatja a tanúsítványt érvényes paraméterekkel, majd engedélyezheti a biztonságos LDAP használatát a frissített tanúsítvánnyal.
 
+## <a name="change-an-expiring-certificate"></a>Lejáró tanúsítvány módosítása
+
+1. Hozzon létre egy helyettesítő Secure LDAP-tanúsítványt a [biztonságos LDAP-tanúsítvány létrehozásához](#create-a-certificate-for-secure-ldap)szükséges lépések követésével.
+1. Ha a helyettesítő tanúsítványt az Azure AD DSra szeretné alkalmazni, az Azure AD DS bal oldali menüjében válassza Azure Portal a **Secure LDAP** lehetőséget, majd válassza a **tanúsítvány módosítása** lehetőséget.
+1. Terjessze a tanúsítványt minden olyan ügyfélre, amely biztonságos LDAP használatával csatlakozik. 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Biztonságos LDAP-hozzáférés zárolása az interneten keresztül
 
 Ha az interneten keresztül engedélyezi a biztonságos LDAP-hozzáférést a felügyelt tartományhoz, biztonsági fenyegetést hoz létre. A felügyelt tartomány elérhető az internetről a 636-as TCP-porton. Javasoljuk, hogy a felügyelt tartományhoz való hozzáférést a környezet adott ismert IP-címeire korlátozza. Az Azure-beli hálózati biztonsági csoport szabálya használható a biztonságos LDAP-hozzáférés korlátozására.
@@ -234,7 +240,7 @@ Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hoz
     | Protokoll                          | TCP          |
     | Művelet                            | Engedélyezés        |
     | Prioritás                          | 401          |
-    | Név                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. Ha elkészült, kattintson a **Hozzáadás** gombra a szabály mentéséhez és alkalmazásához.
 

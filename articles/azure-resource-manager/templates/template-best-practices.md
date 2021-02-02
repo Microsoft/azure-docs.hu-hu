@@ -3,12 +3,12 @@ title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok (ARM-sablonok) létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696346"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257997"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
@@ -176,7 +176,7 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 * Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 
@@ -277,13 +277,15 @@ A következő információk hasznosak lehetnek az [erőforrásokkal](template-sy
    > [!NOTE]
    > Annak biztosítása érdekében, hogy a titkos kódok titkosítva legyenek a virtuális gépek és bővítmények paraméterként való átadásakor, használja a `protectedSettings` megfelelő bővítmények tulajdonságát.
 
+* Adja meg az alapértelmezett értékekkel rendelkező tulajdonságok explicit értékeit, amelyek idővel változhatnak. Ha például egy AK-fürtöt telepít, megadhatja vagy kihagyhatja a `kubernetesVersion` tulajdonságot. Ha nem adja meg, akkor [a fürt alapértelmezett értéke az N-1 alverzió és a legújabb javítás](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions). Amikor ARM-sablonnal telepíti a fürtöt, ez az alapértelmezett viselkedés valószínűleg nem a várt érték. A sablon újbóli üzembe helyezése azt eredményezheti, hogy a fürt frissítése váratlanul megszakadt egy új Kubernetes-verzióra. Ehelyett érdemes megadnia egy explicit verziószámot, majd manuálisan módosítania, amikor készen áll a fürt frissítésére.
+
 ## <a name="use-test-toolkit"></a>A test Toolkit használata
 
 Az ARM-sablon tesztelési eszközkészlete egy olyan parancsfájl, amely ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit segítségével megtudhatja, hogyan implementálhatja az ajánlott eljárásokat a sablonban.
 
 A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség a megvalósításának javítására. További információkért lásd: [ARM-sablon tesztelési eszközkészlet használata](test-toolkit.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonfájl struktúrájával kapcsolatos információkért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.

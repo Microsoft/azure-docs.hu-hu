@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322534"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257406"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése és támogatási jegy megnyitása Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetési támogatást nyújt a Azure Active Directoryhoz (Azure AD). A támogatás online és telefonon is elérhető Microsoft Azure fizetős és próbaverziós előfizetésekhez. Telefonos támogatás és online számlázási támogatás más nyelveken is elérhető. 
@@ -41,56 +41,56 @@ Ha nem talál válaszokat önsegítő erőforrásokkal, nyisson meg egy online t
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Támogatási jegy megnyitása az Azure AD-hez a Azure Portal
 
 > [!NOTE]
-> Számlázási vagy előfizetési problémák esetén a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com)kell használnia.
-> 
+> * Számlázási vagy előfizetési problémák esetén a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com)kell használnia.  
+> * Ha Azure AD B2C használ, nyisson meg egy támogatási jegyet úgy, hogy először egy Azure AD-bérlőre vált, amelyhez hozzá van rendelve egy Azure-előfizetés. Ez általában az Ön alkalmazott bérlője vagy az alapértelmezett bérlő, amely az Azure-előfizetésre való regisztráláskor lett létrehozva. További információ: [how an Azure-előfizetés az Azure ad-hez kapcsolódóan](active-directory-how-subscriptions-associated-directory.md).
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
    
-1. Görgessen le a **Hibaelhárítás + támogatás** lehetőséghez, és válassza az **új támogatási kérés**lehetőséget.
+1. Görgessen le a **Hibaelhárítás + támogatás** lehetőséghez, és válassza az **új támogatási kérés** lehetőséget.
    
-1. Az **alapvető beállítások** panelen, a **probléma típusa**beállításnál válassza a **technikai**lehetőséget.
+1. Az **alapvető beállítások** panelen, a **probléma típusa** beállításnál válassza a **technikai** lehetőséget.
 
 1. Válassza ki az **előfizetését**.
 
-1. A **szolgáltatás**mezőben válassza a **Azure Active Directory**lehetőséget.
+1. A **szolgáltatás** mezőben válassza a **Azure Active Directory** lehetőséget.
 
 1. Hozzon létre egy **összefoglalót** a kérelemhez. Az összegzésnek 140 karakternél rövidebbnek kell lennie.
   
 1. Válassza ki a **probléma típusát**, majd válasszon ki egy kategóriát az adott típushoz. Ezen a ponton a problémás kategóriához tartozó önsegítő információk is rendelkezésre állnak.
   
-1. Adja hozzá a probléma további adatait, és kattintson a **tovább**gombra. 
+1. Adja hozzá a probléma további adatait, és kattintson a **tovább** gombra. 
 
-1. Ezen a ponton a **megoldások** paneljén önsegítő megoldásokat és dokumentációt is elérhetővé teszünk. Ha egyik megoldás sem oldja meg a problémát, kattintson a **tovább**gombra. 
+1. Ezen a ponton a **megoldások** paneljén önsegítő megoldásokat és dokumentációt is elérhetővé teszünk. Ha egyik megoldás sem oldja meg a problémát, kattintson a **tovább** gombra. 
 
 1. A **részletek** panelen töltse ki a szükséges adatokat, és válasszon ki egy [súlyosságot](https://azure.microsoft.com/support/plans/response/). 
  
     ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-1. Adja meg a kapcsolattartási adatait, és válassza a **tovább**lehetőséget. 
+1. Adja meg a kapcsolattartási adatait, és válassza a **tovább** lehetőséget. 
 
-1. Adja meg a kapcsolattartási adatait, és válassza a **Létrehozás**lehetőséget.
+1. Adja meg a kapcsolattartási adatait, és válassza a **Létrehozás** lehetőséget.
   ![A probléma kategóriája önsegítő képernyőkép](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Támogatási jegy megnyitása az Azure AD-hez a Microsoft 365 felügyeleti központban
 
 > [!NOTE]
-> Az Azure AD támogatása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) csak rendszergazdák számára érhető el. 
+> Az Azure AD támogatása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) csak rendszergazdák számára érhető el.
 
 1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) egy Enterprise Mobility + Security (EMS) licenccel rendelkező fiókkal.
 
-1. A **támogatás** csempén válassza az **új szolgáltatás kérése**elemet:
+1. A **támogatás** csempén válassza az **új szolgáltatás kérése** elemet:
 
-1. A **támogatás áttekintése** lapon válassza az **Identitáskezelés** vagy **a felhasználó-és tartományi felügyelet**elemet:
+1. A **támogatás áttekintése** lapon válassza az **Identitáskezelés** vagy **a felhasználó-és tartományi felügyelet** elemet:
 
-1. A **szolgáltatás**mezőben válassza ki azt az Azure ad-szolgáltatást, amelyhez támogatást szeretne használni.
+1. A **szolgáltatás** mezőben válassza ki azt az Azure ad-szolgáltatást, amelyhez támogatást szeretne használni.
 
-1. A **tünet**mezőben válasszon ki egy megfelelő tünetet, foglalja össze a problémát, és adja meg a szükséges adatokat, majd kattintson a **tovább**gombra.
+1. A **tünet** mezőben válasszon ki egy megfelelő tünetet, foglalja össze a problémát, és adja meg a szükséges adatokat, majd kattintson a **tovább** gombra.
 
-1. Válassza ki a kínált önsegítő erőforrások egyikét, vagy válassza az **Igen, a folytatás** vagy **a nem lehetőséget, majd a kérelem megszakítása**elemet.
+1. Válassza ki a kínált önsegítő erőforrások egyikét, vagy válassza az **Igen, a folytatás** vagy **a nem lehetőséget, majd a kérelem megszakítása** elemet.
 
-1. Ha folytatja, a rendszer további részleteket kér. Bármilyen olyan fájlt csatolhat, amely a problémát jelképezi, majd kattintson a **tovább**gombra.
+1. Ha folytatja, a rendszer további részleteket kér. Bármilyen olyan fájlt csatolhat, amely a problémát jelképezi, majd kattintson a **tovább** gombra.
 
-1. Adja meg a kapcsolattartási adatait, és válassza a **küldési kérelem**lehetőséget.
+1. Adja meg a kapcsolattartási adatait, és válassza a **küldési kérelem** lehetőséget.
 
 ## <a name="get-phone-support"></a>Telefonos segítség
 

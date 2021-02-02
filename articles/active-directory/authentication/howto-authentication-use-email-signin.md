@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559840"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255967"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
@@ -69,7 +69,7 @@ Az aktuális előzetes verzióban a következő korlátozások érvényesek, ami
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>Bejelentkezési e-mail-címek szinkronizálása az Azure AD-vel
 
-A hagyományos Active Directory tartományi szolgáltatások (AD DS) vagy Active Directory összevonási szolgáltatások (AD FS) (AD FS) hitelesítés közvetlenül a hálózaton történik, és a AD DS-infrastruktúra kezeli. A hibrid hitelesítéssel a felhasználók Ehelyett közvetlenül az Azure AD-be is jelentkezhetnek be.
+A hagyományos Active Directory Domain Services (AD DS) vagy Active Directory összevonási szolgáltatások (AD FS) (AD FS) hitelesítés közvetlenül a hálózaton történik, és a AD DS-infrastruktúra kezeli. A hibrid hitelesítéssel a felhasználók Ehelyett közvetlenül az Azure AD-be is jelentkezhetnek be.
 
 Ennek a hibrid hitelesítési módszernek a támogatásához szinkronizálja helyszíni AD DS környezetét az Azure AD-be a [Azure ad Connect][azure-ad-connect] használatával, és konfigurálja a jelszó-kivonatoló szinkronizálás (PHS) vagy a Pass-Through hitelesítés (PTA ESP) használatára.
 
@@ -113,7 +113,7 @@ Az előzetes verzió ideje alatt a PowerShell használatával jelenleg csak az e
 1. Ellenőrizze, hogy a *HomeRealmDiscoveryPolicy* -házirend már létezik-e a bérlőben a [Get-AzureADPolicy][Get-AzureADPolicy] parancsmag használatával a következőképpen:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. Ha jelenleg nincs beállítva házirend, a parancs nem ad vissza semmit. Ha a rendszer visszaadja a szabályzatot, hagyja ki ezt a lépést, és folytassa a következő lépéssel egy meglévő szabályzat frissítéséhez.
@@ -121,10 +121,22 @@ Az előzetes verzió ideje alatt a PowerShell használatával jelenleg csak az e
     A *HomeRealmDiscoveryPolicy* házirend bérlőhöz való hozzáadásához használja a [New-AzureADPolicy][New-AzureADPolicy] parancsmagot, és állítsa a *AlternateIdLogin* attribútumot *"engedélyezve" értékre: true (igaz* ), ahogy az alábbi példában látható:
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     A szabályzat sikeres létrehozása után a parancs visszaadja a szabályzat AZONOSÍTÓját, ahogy az a következő példában látható:
@@ -156,17 +168,31 @@ Az előzetes verzió ideje alatt a PowerShell használatával jelenleg csak az e
     A következő példa hozzáadja a *AlternateIdLogin* attribútumot, és megőrzi a *AllowCloudPasswordValidation* attribútumot, amely esetleg már be van állítva:
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Győződjön meg arról, hogy a frissített szabályzat megjeleníti a módosításokat, valamint azt, hogy a *AlternateIdLogin* attribútum mostantól engedélyezve van:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 A házirend alkalmazása esetén akár egy órát is igénybe vehet, hogy a felhasználók bejelentkezhetnek az alternatív bejelentkezési AZONOSÍTÓjuk használatával.
@@ -207,7 +233,12 @@ A következő lépések végrehajtásához *bérlői rendszergazdai* engedélyek
 4. Ha a szolgáltatáshoz nem tartozik meglévő szakaszos bevezetési szabályzat, hozzon létre egy új, szakaszos bevezetési házirendet, és jegyezze fel a házirend-azonosítót:
 
    ```powershell
-   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
 5. Keresse meg a szakaszos bevezetési szabályzatba felvenni kívánt csoport directoryObject-AZONOSÍTÓját. Jegyezze fel az *azonosító* paraméternek visszaadott értéket, mert a következő lépésben fogja használni.
@@ -250,10 +281,10 @@ Ha a felhasználók az e-mail-címükkel ütköznek a bejelentkezési események
 1. Győződjön meg arról, hogy az Azure AD- *HomeRealmDiscoveryPolicy* szabályzata *"enabled"* értékre van állítva a *AlternateIdLogin* attribútum: True:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a hibrid identitásról, például a Azure AD alkalmazás proxyról vagy Azure AD Domain Servicesról, tekintse [meg az Azure ad hibrid identitást a helyszíni számítási feladatok eléréséhez és kezeléséhez][hybrid-overview].
 

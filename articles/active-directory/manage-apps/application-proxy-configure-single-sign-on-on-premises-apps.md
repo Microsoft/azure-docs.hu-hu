@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan biztosíthat egyszeri bejelentkezést az SAML-h
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,14 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d51aa7e75d7e94d1c2ac66d7edb92a3ef9395b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 03c688952f37bf9fc91e9dd25e09d9c31cd980d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657465"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257068"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés a helyszíni alkalmazásokhoz alkalmazásproxy használatával
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-alapú egyszeri bejelentkezés helyszíni alkalmazásokhoz alkalmazásproxyval
 
 Az egyszeri bejelentkezést (SSO) az SAML-hitelesítéssel védett helyszíni alkalmazások számára is biztosíthatja, és az alkalmazás-proxyn keresztül távoli hozzáférést biztosíthat ezekhez az alkalmazásokhoz. Az SAML egyszeri bejelentkezéssel az Azure Active Directory (Azure AD) a felhasználó Azure AD-fiókjának használatával hitelesíti az alkalmazást. Az Azure AD a bejelentkezési adatokat kapcsolati protokollon keresztül továbbítja az alkalmazásnak. A felhasználókat az SAML-jogcímek által meghatározott szabályok alapján adott alkalmazási szerepkörökre is leképezheti. A SAML SSO mellett az alkalmazásproxy engedélyezésével a felhasználók külső hozzáféréssel fognak rendelkezni az alkalmazáshoz és a zökkenőmentes SSO-élményhez.
 

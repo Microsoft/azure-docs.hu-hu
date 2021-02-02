@@ -3,7 +3,7 @@ title: Ismerje meg, hogyan integrálható a kiépítés a Azure Active Directory
 description: Ismerje meg, hogyan integrálható a kiépítés a Azure Active Directory Azure Monitor naplóival.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 454d44eecd4eaa6d5c1f50edbd7edb1024ace041
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175100"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256881"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>A kiépítés integrálása Azure Monitor naplókkal
 

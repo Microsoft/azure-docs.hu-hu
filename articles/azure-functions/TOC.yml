@@ -281,9 +281,10 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: Időzítő eseményindító
               href: functions-create-scheduled-function.md
-        - name: Kötések hozzáadása
+        - name: Kapcsolódás szolgáltatásokhoz
           items:
-            - name: Kötés hozzáadása
+            - name: Kapcsolódás a szolgáltatásokhoz
+              displayName: 'bindings,integrate'
               href: add-bindings-existing-function.md
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -395,7 +396,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: Integrálás
       items:
-        - name: Kötések hozzáadása
+        - name: Kapcsolódás szolgáltatásokhoz
           items:
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md

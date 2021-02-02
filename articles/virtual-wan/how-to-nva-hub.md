@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964643"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258065"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Hálózati virtuális berendezés létrehozása Azure-beli virtuális WAN-központban (előzetes verzió)
 
@@ -21,8 +21,7 @@ Ez a cikk bemutatja, hogyan használható a Virtual WAN az Azure-beli erőforrá
 
 A cikkben ismertetett lépések segítséget nyújtanak a **Barracuda CLOUDGEN WAN** hálózati virtuális berendezés létrehozásában a virtuális WAN-központban. Ennek a gyakorlatnak a végrehajtásához a Barracuda Cloud bevezetési eszközt (CPE) és a Barracuda CloudGen WAN-berendezés licencét kell megadnia, mielőtt megkezdené a központi telepítést.
 
-A **Cisco SD-WAN** Azure Virtual WAN-on belüli üzembe helyezési dokumentációjában tekintse [meg a Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)című témakört. A fiók regisztrálásához és a szükséges Cisco SD-WAN-licencek lekéréséhez küldjön e-mailt a Cisco-nak a következő e-mail-címre: vwan_public_preview@external.cisco.com
-
+A **Cisco SD-WAN** Azure Virtual WAN-on belüli üzembe helyezési dokumentációjában tekintse [meg a Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)című témakört. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +95,7 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Mi a virtuális WAN?](virtual-wan-about.md) lapon talál.
 * Ha többet szeretne megtudni a virtuális WAN-központban található NVA, tekintse meg [a virtuális WAN-központ (előzetes verzió) hálózati virtuális berendezéssel](about-nva-hub.md)foglalkozó témakörét.

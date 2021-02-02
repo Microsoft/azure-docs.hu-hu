@@ -1,16 +1,16 @@
 ---
-title: Kötések hozzáadása egy meglévő függvényhez Azure Functions
-description: Megtudhatja, hogyan adhat hozzá kötéseket egy meglévő függvényhez a Azure Functions projektben.
+title: Függvények összekapcsolhatók más Azure-szolgáltatásokkal
+description: Megtudhatja, hogyan adhat hozzá olyan kötéseket, amelyek más Azure-szolgáltatásokhoz kapcsolódnak egy meglévő függvényhez a Azure Functions projektben.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 23b7b05f9a9f9da5a48511ee555e3b6184a74179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c6f5bb8ca5fcf995b8a8d326abbec96f1d2e35
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654123"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258201"
 ---
-# <a name="add-bindings-to-an-existing-function-in-azure-functions"></a>Kötések hozzáadása egy meglévő függvényhez Azure Functions
+# <a name="connect-functions-to-azure-services-using-bindings"></a>Függvények összekapcsolhatók az Azure-szolgáltatásokkal kötések használatával
 
 Amikor létrehoz egy függvényt, a rendszer egy nyelvspecifikus-sablonból adja hozzá a projekthez egy nyelvfüggő aktiváló kódot. Ha a függvényt a bemeneti vagy kimeneti kötések használatával más szolgáltatásokhoz szeretné kapcsolni, a függvényben meghatározott kötési definíciókat kell hozzáadnia. További információ a kötésekről: [Azure functions eseményindítók és kötések fogalmai](functions-triggers-bindings.md).
 
