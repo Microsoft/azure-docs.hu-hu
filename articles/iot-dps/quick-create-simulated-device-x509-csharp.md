@@ -3,18 +3,18 @@ title: 'Gyors útmutató – szimulált X. 509 eszköz kiépítése az Azure-IoT
 description: Rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése az Azure-hoz készült C# eszközoldali SDK-IoT Hub Device Provisioning Service (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2018
+ms.date: 02/01/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 27bb1c97fa082f15642ab9eff6b0bdba357068a2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323974"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430585"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszközoldali SDK-val
 
@@ -35,50 +35,77 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
 
-1. Győződjön meg arról, hogy a [.net Core 2,1 SDK vagy újabb verziója](https://www.microsoft.com/net/download/windows) telepítve van a gépen. 
-
 1. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a telepíteni kívánt `git` eszközök legújabb verzióját, amely tartalmazza a **Git Bash** eszközt, azt a parancssori alkalmazást, amellyel kommunikálhat a helyi Git-adattárral. 
 
 1. Nyisson meg egy parancssort vagy a Git Basht. Az Azure IoT-minták klónozása a C# GitHub-tárházban:
     
-    ```cmd
+    ```bash
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
-## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Önaláírt X.509-eszköztanúsítvány és egyéni regisztrációs bejegyzés létrehozása
+1. Győződjön meg arról, hogy a [.net Core 3.0.0 SDK vagy újabb verziója](https://www.microsoft.com/net/download/windows) telepítve van a gépen. A következő parancs használatával ellenőrizhető a verzió.
 
-Ebben a szakaszban egy önaláírt X.509-tanúsítványt fogunk használni. Fontos szem előtt tartani a következőket:
+    ```bash
+    dotnet --info
+    ```
+
+
+
+## <a name="create-a-self-signed-x509-device-certificate"></a>Önaláírt X.509-eszköztanúsítvány létrehozása
+
+Ebben a szakaszban létrehoz egy önaláírt X. 509 teszt-tanúsítványt `iothubx509device1` a tulajdonos köznapi neve alapján. Fontos szem előtt tartani a következőket:
 
 * Az önaláírt tanúsítványok csak tesztelési célokra alkalmasak, és nem javasolt őket éles környezetben alkalmazni.
 * Az önaláírt tanúsítványok alapértelmezett lejárati ideje 1 év.
+* A IoT eszköz azonosítója a tulajdonos köznapi neve lesz a tanúsítványon. Ügyeljen arra, hogy olyan tulajdonosi nevet használjon, amely megfelel az [eszköz azonosító sztring követelményeinek](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
 
 A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) mintakód használatával hozza létre a szimulált eszköz egyéni beléptetési bejegyzésével használandó tanúsítványt.
 
 
-1. Egy parancssorban módosítsa a könyvtárakat az X.509-eszközkiépítési minta projektkönyvtárára.
+1. A PowerShell-parancssorban módosítsa a könyvtárakat az X. 509 eszköz kiépítési mintájának projekt könyvtárába.
 
-    ```cmd
+    ```powershell
     cd .\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample
     ```
 
-2. A mintakód úgy lett beállítva, hogy egy jelszóval védett PKCS12 formázott fájlban (certificate.pfx) tárolt X.509-tanúsítványokat használja. Emellett egy nyilvános kulcsú tanúsítványfájl (Certificate. cer) szükséges ahhoz, hogy a rövid útmutatóban később egyéni regisztrációt hozzon létre. Önaláírt tanúsítvány és a hozzátartozó .cer és .pfx fájlok létrehozásához futtassa az alábbi parancsot:
+2. A mintakód úgy lett beállítva, hogy egy jelszóval védett PKCS12 formázott fájlban (certificate.pfx) tárolt X.509-tanúsítványokat használja. Emellett egy nyilvános kulcsú tanúsítványfájl (Certificate. cer) szükséges ahhoz, hogy a rövid útmutatóban később egyéni regisztrációt hozzon létre. Az önaláírt tanúsítvány és a hozzá tartozó. cer és. pfx fájlok létrehozásához futtassa a következő parancsot:
 
-    ```cmd
-    powershell .\GenerateTestCertificate.ps1
+    ```powershell
+    PS D:\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample> .\GenerateTestCertificate.ps1 iothubx509device1
     ```
 
-3. A szkript kér egy PFX-jelszót. Jegyezze meg ezt a jelszót, mert a minta futtatásakor használnia kell.
+3. A szkript kér egy PFX-jelszót. Jegyezze meg ezt a jelszót, később újra fel kell használni a minta futtatásakor. A futtatásával elvégezheti `certutil` a tanúsítvány kiírását, és ellenőrizheti a tulajdonos nevét.
 
-    ![ A PFX-jelszó megadása](./media/quick-create-simulated-device-x509-csharp/generate-certificate.png)  
+    ```powershell
+    PS D:\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample> certutil .\certificate.pfx
+    Enter PFX password:
+    ================ Certificate 0 ================
+    ================ Begin Nesting Level 1 ================
+    Element 0:
+    Serial Number: 7b4a0e2af6f40eae4d91b3b7ff05a4ce
+    Issuer: CN=iothubx509device1, O=TEST, C=US
+     NotBefore: 2/1/2021 6:18 PM
+     NotAfter: 2/1/2022 6:28 PM
+    Subject: CN=iothubx509device1, O=TEST, C=US
+    Signature matches Public Key
+    Root Certificate: Subject matches Issuer
+    Cert Hash(sha1): e3eb7b7cc1e2b601486bf8a733887a54cdab8ed6
+    ----------------  End Nesting Level 1  ----------------
+      Provider = Microsoft Strong Cryptographic Provider
+    Signature test passed
+    CertUtil: -dump command completed successfully.    
+    ```
+
+ ## <a name="create-an-individual-enrollment-entry-for-the-device"></a>Egyéni beléptetési bejegyzés létrehozása az eszközhöz
 
 
-4. Jelentkezzen be a Azure Portalba, majd a bal oldali menüben kattintson a **minden erőforrás** gombra, és nyissa meg a kiépítési szolgáltatást.
+1. Jelentkezzen be a Azure Portalba, majd a bal oldali menüben kattintson a **minden erőforrás** gombra, és nyissa meg a kiépítési szolgáltatást.
 
-5. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
+2. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 
-6. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
+3. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
-   - Az *elsődleges tanúsítvány. PEM vagy. cer fájlban*válassza a *fájl kiválasztása* lehetőséget, majd válassza ki az előző lépésekben létrehozott tanúsítványfájl- **tanúsítványt. cer** fájlt.
+   - Az *elsődleges tanúsítvány. PEM vagy. cer fájlban* válassza a *fájl kiválasztása* lehetőséget, majd válassza ki az előző lépésekben létrehozott tanúsítványfájl- **tanúsítványt. cer** fájlt.
    - Az **Eszközazonosító** mezőt hagyja üresen. Az eszköz kiépítésekor a rendszer az eszközazonosítót az X.509-tanúsítványban lévő **iothubx509device1** köznapi névre állítja be. A rendszer ezt a nevet használja az egyéni regisztrációs bejegyzés regisztrációs azonosítójaként s. 
    - Ha kívánja, megadhatja az alábbi információkat is:
        - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
@@ -89,6 +116,8 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
     
    Sikeres regisztráció esetén az X.509 regisztrációs bejegyzés **iothubx509device1** azonosítóval jelenik meg a *Regisztrációs azonosító* oszlopban az *Egyéni regisztrációk* lapon. 
 
+
+
 ## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
 
 1. A kiépítési szolgáltatás **Áttekintés** paneljén jegyezze fel az **_azonosító hatókör_** értékét.
@@ -98,13 +127,35 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
 
 2. Írja be az alábbi parancsot az X.509-eszköz kiépítési mintájának összeállításához és futtatásához. Az `<IDScope>` értéket cserélje le a kiépítési szolgáltatás Azonosító hatóköre értékére. 
 
-    ```cmd
-    dotnet run <IDScope>
+    A tanúsítványfájl alapértelmezett értéke *./Certificate.pfx* , és a rendszer megkéri a. pfx jelszót.  
+
+    ```powershell
+    dotnet run -- -s <IDScope>
     ```
 
-3. Amikor a rendszer kéri, adja meg a korábban létrehozott PFX-fájl jelszavát. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket. 
+    Ha mindent paraméterként szeretne átadni, használhatja a következő példát.
 
-    ![Példa az eszközkimenetre](./media/quick-create-simulated-device-x509-csharp/sample-output.png) 
+    ```powershell
+    dotnet run -- -s 0ne00000A0A -c certificate.pfx -p 1234
+    ```
+
+
+3. Az eszköz csatlakozik a DPS-hez, és hozzá lesz rendelve egy IoT Hubhoz. Az eszköz emellett egy telemetria üzenetet is küld a hubhoz.
+
+    ```output
+    Loading the certificate...
+    Found certificate: 10952E59D13A3E388F88E534444484F52CD3D9E4 CN=iothubx509device1, O=TEST, C=US; PrivateKey: True
+    Using certificate 10952E59D13A3E388F88E534444484F52CD3D9E4 CN=iothubx509device1, O=TEST, C=US
+    Initializing the device provisioning client...
+    Initialized for registration Id iothubx509device1.
+    Registering with the device provisioning service...
+    Registration status: Assigned.
+    Device iothubx509device2 registered to sample-iot-hub1.azure-devices.net.
+    Creating X509 authentication for IoT Hub...
+    Testing the provisioned device with IoT Hub...
+    Sending a telemetry message...
+    Finished.
+    ```
 
 4. Ellenőrizze, hogy a rendszer kiépítette-e az eszközt. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz kapcsolódó IoT hub-ra, az eszköz azonosítója megjelenik a hub **IoT-eszközök** paneljén. 
 
@@ -122,7 +173,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Az **Áttekintés** panel felső részén kattintson a **Törlés** gombra a ablaktábla tetején.  
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Az **Áttekintés** panel felső részén kattintson a **Törlés** gombra a ablaktábla tetején.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a szimulált X. 509 eszközt a Windows rendszerű gépen, és kiépíti azt az IoT hubhoz a portálon elérhető Azure IoT Hub Device Provisioning Service használatával. Az X. 509 eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
 

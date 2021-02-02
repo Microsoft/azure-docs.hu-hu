@@ -8,14 +8,17 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: c794af26fdfe2d3706d8d8d266d0756eff391b50
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747690"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430276"
 ---
-# <a name="how-to-convert-data-to-fhir"></a>Az adatátalakítás FHIR
+# <a name="how-to-convert-data-to-fhir-preview"></a>Az adatátalakítás FHIR (előzetes verzió)
+
+> [!IMPORTANT]
+> Ez a képesség nyilvános előzetes verzióban érhető el, nem vonatkozik rá szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A FHIR készült Azure API-ban található $convert-adatok egyéni végpontja a különböző formátumokból a FHIR-re való adatátalakítást jelenti. Az alapértelmezett sablonként a [FHIR Converter](https://github.com/microsoft/FHIR-Converter) -projektben használja a likvid sablon motorját és a sablonokat. Igény szerint testre szabhatja ezeket a konverziós sablonokat. Jelenleg támogatja a HL7v2-t a FHIR átalakításhoz.
 

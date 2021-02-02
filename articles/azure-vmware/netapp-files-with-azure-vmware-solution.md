@@ -3,12 +3,12 @@ title: Azure NetApp Files Azure VMware-megoldással
 description: A Azure NetApp Files és az Azure VMware megoldás virtuális gépei segítségével áttelepítheti és szinkronizálhatja a helyszíni kiszolgálók, az Azure VMware-megoldás virtuális gépei és a Felhőbeli infrastruktúrák közötti adatátvitelt.
 ms.topic: how-to
 ms.date: 01/20/2021
-ms.openlocfilehash: b712b25130a8bed19bd784d2c45c18a55a582be6
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: b4ffea23606e1829fbf713488f08bc5618180072
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062978"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430062"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files Azure VMware-megoldással
 
@@ -18,7 +18,7 @@ Ebben a cikkben végigvezeti a Azure NetApp Files integrálásának lépésein a
 
 [Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) egy Azure-beli, első féltől származó szolgáltatás áttelepítésre és a legigényesebb vállalati fájl-munkaterhelések futtatására a felhőben, beleértve az adatbázisokat, az SAP-t és a nagy teljesítményű számítástechnikai alkalmazásokat, a kód módosítása nélkül.
 
-### <a name="features"></a>Funkciók
+### <a name="features"></a>Szolgáltatások
 (Szolgáltatások, ahol a Azure NetApp Files használatban vannak.)
 
 - **Active Directory kapcsolatok**: a Azure NetApp Files támogatja [a Active Directory Domain Services és a Azure Active Directory Domain Services](../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#decide-which-domain-services-to-use).
@@ -102,7 +102,10 @@ A következőkben csak néhány meggyőző Azure NetApp Files használati eset v
 - Fájlmegosztás az Azure VMware-megoldásban
 
 ## <a name="next-steps"></a>Következő lépések
-- [Az Azure NetApp Files erőforráskorlátai](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
-- [Az Azure NetApp Files hálózattervezési irányelvei](../azure-netapp-files/azure-netapp-files-network-topologies.md)
-- [Azure NetApp Files kötetek régiók közötti replikációja](../azure-netapp-files/cross-region-replication-introduction.md) 
-- [Gyakori kérdések az Azure NetApp Filesról](../azure-netapp-files/azure-netapp-files-faqs.md)
+
+Miután integrálta Azure NetApp Files az Azure VMware-megoldás munkaterhelésével, érdemes többet megtudni a következőről:
+
+- [A Azure NetApp Files erőforrás-korlátai](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
+- [Útmutatás Azure NetApp Files hálózati tervezéshez](../azure-netapp-files/azure-netapp-files-network-topologies.md).
+- [Azure NetApp Files kötetek régiók közötti replikációja](../azure-netapp-files/cross-region-replication-introduction.md). 
+- [Azure NetApp Filesekkel kapcsolatos gyakori kérdések](../azure-netapp-files/azure-netapp-files-faqs.md).

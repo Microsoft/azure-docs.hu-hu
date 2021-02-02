@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f684aff58f441fb0642779e54de39dff941e818c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878493"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430662"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Az Azure NFS-fájlmegosztás hibáinak megoldása
 
@@ -67,7 +67,6 @@ Az NFS csak a következő konfigurációval rendelkező Storage-fiókokban érhe
 
 - Prémium szint
 - Fiók típusa – FileStorage
-- Redundancia – LRS
 - Régiók – [támogatott régiók listája](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Megoldás
@@ -150,6 +149,17 @@ Az NFS protokoll a 2049-as porton keresztül kommunikál a kiszolgálóval, győ
 #### <a name="solution"></a>Megoldás
 
 A következő parancs futtatásával ellenőrizze, hogy a 2049-es port nyitva van-e az ügyfélen: `telnet <storageaccountnamehere>.file.core.windows.net 2049` . Ha a port nincs megnyitva, nyissa meg.
+
+## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>az ls (fájlok listázása) helytelen/inkonzisztens eredményeket mutat
+
+### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>Ok: inkonzisztencia a gyorsítótárazott értékek és a kiszolgálói fájl metaadatainak értékei között, ha a fájlleíró meg van nyitva
+Előfordulhat, hogy a "fájlok listázása" parancs nem nulla méretű értéket jelenít meg a várt módon, és a legközelebb lévő fájlok listájában a 0 vagy a nagyon régi időbélyegző látható. Ez egy ismert probléma, mert a fájl metaadatainak értékeinek gyorsítótárazása nem konzisztens a fájl megnyitásakor. A következő megkerülő megoldások egyikét használhatja a megoldásához:
+
+#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>1. Áthidaló megoldás: a fájlméret beolvasásához használja az ls-l helyett a WC-c értéket.
+A WC-c használatával mindig beolvashatja a legújabb értéket a kiszolgálóról, és nem lesz inkonzisztencia.
+
+#### <a name="workaround-2-use-noac-mount-flag"></a>2. megkerülő megoldás: használja a "noac" csatlakoztatási jelzőt
+Csatlakoztassa újra a fájlrendszert a "noac" jelzővel a csatlakoztatási parancs használatával. Ez a művelet mindig beolvassa a kiszolgáló összes metaadat-értékét. Ha ezt a megoldást használja, előfordulhat, hogy az összes metaadat-művelethez kisebb teljesítményű teljesítmény szükséges.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

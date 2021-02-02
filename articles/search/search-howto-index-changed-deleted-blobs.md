@@ -7,39 +7,44 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 2e73039418233c97fc20242ed7af7df14c5b47ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/29/2021
+ms.openlocfilehash: b23dabb4388331de9e37ee9db1d4b9d727ccde68
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534777"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430560"
 ---
 # <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Blobok módosítási és törlési észlelésének beállítása az Azure-ban Cognitive Search indexelés
 
-A kezdeti keresési index létrehozása után érdemes lehet úgy konfigurálni a további indexelő feladatokat, hogy csak a kezdeti Futtatás óta létrehozott vagy törölt dokumentumokat szeretnék kiválasztani. Az Azure Blob Storage-ból származó keresési tartalmak esetén a változások észlelése automatikusan történik, ha az indexelést az ütemterv használatával végzi. Alapértelmezés szerint a szolgáltatás csak a módosított blobokat indexeli, ahogy azt a blob `LastModified` időbélyege határozza meg. A keresési indexek által támogatott egyéb adatforrásokkal ellentétben a Blobok mindig rendelkeznek időbélyeg-val, így nem kell manuálisan beállítani a változás-észlelési szabályzatot.
+A kezdeti keresési index létrehozása után előfordulhat, hogy a következő indexelő feladatokkal csak új és módosított dokumentumokat szeretne felvenni. Az Azure Blob Storage-ból származó keresési tartalmak esetén a változások észlelése automatikusan történik, ha az indexelést az ütemterv használatával végzi. Alapértelmezés szerint a szolgáltatás csak a módosított blobokat indexeli, ahogy azt a blob `LastModified` időbélyege határozza meg. A keresési indexek által támogatott egyéb adatforrásokkal ellentétben a Blobok mindig rendelkeznek időbélyeg-val, így nem kell manuálisan beállítani a változás-észlelési szabályzatot.
 
 Bár a változás észlelése egy adott, a törlés észlelése nem. Ha a törölt dokumentumokat szeretné felderíteni, ügyeljen arra, hogy a "Soft Delete" módszert használja. Ha törli a blobokat, a megfelelő dokumentumokat nem távolítja el a rendszer a keresési indexből.
 
-A Soft delete módszert kétféleképpen lehet megvalósítani. Mindkettőről alább olvashat.
+A Soft delete módszer megvalósításának kétféleképpen valósítható meg:
+
++ Natív blob Soft Delete (előzetes verzió), lásd a következőt
++ [Soft delete egyéni metaadatok használatával](#soft-delete-using-custom-metadata)
 
 ## <a name="native-blob-soft-delete-preview"></a>Natív blob – Soft Delete (előzetes verzió)
 
+Ennél a törlési észlelési módszernél a Cognitive Search az Azure Blob Storage [natív blob-törlési](../storage/blobs/soft-delete-blob-overview.md) funkciójával függ, hogy megállapítsa, hogy a Blobok átkerültek-e a törölt állapotba. Ha ebben az állapotban blobokat észlel, a keresési indexelő ezt az információt használja a megfelelő dokumentum az indexből való eltávolításához.
+
 > [!IMPORTANT]
-> A natív Blobok Soft delete támogatása előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2020-06-30-es verziójának előzetes verziója](./search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál vagy .NET SDK-támogatás.
+> A natív Blobok Soft delete támogatása előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2020-06-30-es verziójának előzetes verziója](./search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál vagy .NET SDK-támogatás.
 
-> [!NOTE]
-> Ha a natív blob Soft delete szabályzatot használja, az index dokumentumaihoz tartozó dokumentum kulcsainak blob tulajdonságnak vagy blob-metaadatoknak kell lennie.
+### <a name="prerequisites"></a>Előfeltételek
 
-Ebben a módszerben az Azure Blob Storage által kínált [natív blob-törlési](../storage/blobs/soft-delete-blob-overview.md) funkciót fogja használni. Ha a natív blobos törlés engedélyezve van a Storage-fiókban, az adatforrás natív törlési szabályzattal rendelkezik, és az indexelő olyan blobot talál, amely a törölt állapotba került, az indexelő eltávolítja a dokumentumot az indexből. A Blobok natív törlési szabályzata nem támogatott a Blobok Azure Data Lake Storage Gen2ból való indexelése során.
++ [A Blobok Soft delete engedélyezése](../storage/blobs/soft-delete-blob-enable.md).
++ A bloboknak Azure Blob Storage-tárolóban kell lenniük. A Cognitive Search natív blob törlési szabályzata nem támogatott a Azure Data Lake Storage Gen2 Blobok esetén.
++ Az indexben lévő dokumentumokhoz tartozó dokumentum kulcsait blob-vagy blob-metaadatokként kell leképezni.
++ A `api-version=2020-06-30-Preview` Soft delete támogatásának konfigurálásához a preview REST API () t kell használnia.
 
-Ehhez a következő lépések szükségesek:
+### <a name="how-to-configure-deletion-detection-using-native-soft-delete"></a>Törlési észlelés konfigurálása natív, helyreállítható törlés használatával
 
-1. [Az Azure Blob Storage natív törlésének](../storage/blobs/soft-delete-blob-overview.md)engedélyezése. Azt javasoljuk, hogy az adatmegőrzési szabályzatot olyan értékre állítsa be, amely sokkal nagyobb, mint az indexelő intervallumának ütemezett értéke. Így ha probléma merül fel az indexelő futtatásakor, vagy ha nagy számú dokumentumot szeretne indexelni, akkor elég sok idő van arra, hogy az indexelő feldolgozza a puha törölt blobokat. Az Azure Cognitive Search-indexek csak akkor törölnek egy dokumentumot az indexből, ha a blobot feldolgozza, miközben a rendszer helyreállított állapotban van.
+1. A blob Storage-ban a Soft delete engedélyezésekor állítsa be az adatmegőrzési szabályzatot olyan értékre, amely sokkal nagyobb, mint az indexelő intervallumának ütemezett értéke. Így ha probléma merül fel az indexelő futtatásakor, vagy ha nagy számú dokumentumot szeretne indexelni, akkor elég sok idő van arra, hogy az indexelő feldolgozza a puha törölt blobokat. Az Azure Cognitive Search-indexek csak akkor törölnek egy dokumentumot az indexből, ha a blobot feldolgozza, miközben a rendszer helyreállított állapotban van.
 
-1. Natív blobos törlési észlelési házirend konfigurálása az adatforráson. Erre mutat példát az alábbi ábra. Mivel ez a funkció előzetes verzióban érhető el, az előzetes verziójú REST API kell használnia.
-
-1. Az indexelő futtatása vagy az indexelő beállítása ütemezett futtatásra. Amikor az indexelő futtatja és feldolgozza a blobot, a rendszer eltávolítja a dokumentumot az indexből.
+1. A Cognitive Searchban állítson be egy natív blobos törlési észlelési házirendet az adatforráson. Erre mutat példát az alábbi ábra. Mivel ez a funkció előzetes verzióban érhető el, az előzetes verziójú REST API kell használnia.
 
     ```http
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30-Preview
@@ -56,27 +61,25 @@ Ehhez a következő lépések szükségesek:
     }
     ```
 
-### <a name="reindexing-un-deleted-blobs-using-native-soft-delete-policies"></a>Törölt Blobok újraindexelése (natív törlési szabályzatok használatával)
+1. [Az indexelő futtatása](/rest/api/searchservice/run-indexer) vagy az indexelő beállítása [ütemezett](search-howto-schedule-indexers.md)futtatásra. Ha az indexelő egy olyan blobot futtat és dolgoz fel, amely helyreállítható törlési állapottal rendelkezik, a rendszer eltávolítja a megfelelő keresési dokumentumot az indexből.
 
-Ha töröl egy blobot az Azure Blob Storage-ból, ha a Storage-fiókban engedélyezve van a natív törlés, akkor a blob egy helyreállítható törölt állapotba kerül, és lehetővé teszi a blob törlését a megőrzési időn belül. Ha az indexelő feldolgozása után visszavon egy törlést, akkor az indexelő nem mindig indexeli a visszaállított blobot. Ennek az az oka, hogy az indexelő meghatározza, hogy mely Blobok legyenek indexelve a blob `LastModified` időbélyege alapján. Ha egy nem törölt blob törölve lett, az `LastModified` időbélyege nem frissül, így ha az indexelő már feldolgozta a blobokat a legutóbbi `LastModified` időbélyegekkel, akkor az nem tudja újraindexelni a nem törölt blobot. 
+### <a name="reindexing-undeleted-blobs-using-native-soft-delete-policies"></a>Nem törölt Blobok újraindexelése (natív törlési szabályzatok használatával)
 
-Annak ellenőrzéséhez, hogy egy törölt blob újraindexelve lett-e, frissítenie kell a blob `LastModified` időbélyegét. Ezt úgy teheti meg, ha átmenti a blob metaadatait. Nem kell módosítania a metaadatokat, de a metaadatok újramentése a blob `LastModified` időbélyegét fogja frissíteni, hogy az indexelő tudja, hogy újra kell indexelni ezt a blobot.
+Ha a blob Storage-ban helyreállít egy törölt blobot, az indexelő nem mindig fogja újraindexelni. Ennek az az oka, hogy az indexelő a blob `LastModified` időbélyeg használatával határozza meg, hogy szükséges-e az indexelés. Ha egy nem törölt blob törölve lett, az `LastModified` időbélyeg nem frissül, így ha az indexelő már feldolgozta a blobokat a legutóbbi `LastModified` időbélyegekkel, akkor nem fogja újraindexelni a nem törölt blobot. 
+
+A nem törölt Blobok újraindexelésének biztosításához frissítenie kell a blob `LastModified` időbélyegét. Ezt úgy teheti meg, ha átmenti a blob metaadatait. Nem kell módosítania a metaadatokat, de a metaadatok újramentése a blob `LastModified` időbélyegét fogja frissíteni, hogy az indexelő tudja felvenni.
 
 ## <a name="soft-delete-using-custom-metadata"></a>Soft delete egyéni metaadatok használatával
 
-Ebben a metódusban egy blob metaadatait fogja használni, amely jelzi, ha egy dokumentumot el kell távolítani a keresési indexből. Ennek a módszernek két külön műveletre van szüksége, és törölni kell a keresési dokumentumot az indexből, majd az Azure Storage-ban a blob törlését.
+Ez a metódus egy blob metaadatait használja annak megállapítására, hogy el kell-e távolítani egy keresési dokumentumot az indexből. Ennek a módszernek két külön műveletre van szüksége, és törölni kell a keresési dokumentumot az indexből, majd az Azure Storage-ban a blob törlését.
 
-Ehhez a következő lépések szükségesek:
+A blob Storage-ban és a Cognitive Searchban egyaránt lépéseket kell követni, de nincs más szolgáltatás függőségei. Ezt a képességet az általánosan elérhető API-k támogatják.
 
 1. Adjon hozzá egy egyéni metaadat-érték párokat a blobhoz, hogy jelezze az Azure Cognitive Search, hogy logikailag törölve van.
 
-1. Állítsa be az adatforrásra vonatkozó, a törlési oszlop észlelésére szolgáló házirendet. Erre mutat példát az alábbi ábra.
+1. Állítsa be az adatforrásra vonatkozó, a törlési oszlop észlelésére szolgáló házirendet. Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell, ha a metaadatok tulajdonsága a következő `IsDeleted` értékkel rendelkezik `true` :
 
-1. Miután az indexelő feldolgozta a blobot, és törölte a dokumentumot az indexből, törölheti a blobot az Azure Blob Storage-ban.
-
-Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell, ha a metaadatok tulajdonsága a következő `IsDeleted` értékkel rendelkezik `true` :
-
-```http
+    ```http
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -92,20 +95,18 @@ Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell
             "softDeleteMarkerValue" : "true"
         }
     }
-```
+    ```
 
-### <a name="reindexing-un-deleted-blobs-using-custom-metadata"></a>Törölt Blobok újraindexelése (egyéni metaadatok használatával)
+1. Miután az indexelő feldolgozta a blobot, és törölte a dokumentumot az indexből, törölheti a blobot az Azure Blob Storage-ban.
+
+### <a name="reindexing-undeleted-blobs-using-custom-metadata"></a>Nem törölt Blobok újraindexelése (egyéni metaadatok használatával)
 
 Miután egy indexelő feldolgozza a törölt blobot, és eltávolítja a megfelelő keresési dokumentumot az indexből, nem fogja újra felkeresni a blobot, ha később visszaállítja, ha a blob `LastModified` timestamp régebbi, mint az utolsó indexelő futtatása.
 
 Ha szeretné átindexelni a dokumentumot, módosítsa a `"softDeleteMarkerValue" : "false"` blobot, és futtassa újra az indexelő.
 
-## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
-
-Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/). Ha segítségre van szüksége a meglévő szolgáltatás használatához, tegye fel a kérdését [stack Overflowra](https://stackoverflow.microsoft.com/questions/tagged/18870).
-
 ## <a name="next-steps"></a>Következő lépések
 
-* [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
-* [BLOB-indexelő konfigurálása](search-howto-indexing-azure-blob-storage.md)
-* [A blob indexelésének áttekintése](search-blob-storage-integration.md)
++ [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
++ [BLOB-indexelő konfigurálása](search-howto-indexing-azure-blob-storage.md)
++ [A blob indexelésének áttekintése](search-blob-storage-integration.md)

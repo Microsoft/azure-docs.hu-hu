@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700601"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430079"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -82,6 +82,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft. hatáskörébe](#microsoftpurview) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft. szinapszis](#microsoftsynapse) |
 | **Blockchain** |
 | [Microsoft. Blockchain](#microsoftblockchain) |
 | **AI és gépi tanulás** |
@@ -1369,7 +1370,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/vpnsites/delete | Törli a VPN-hely erőforrását. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/READ | VPN-hely hivatkozásának beolvasása |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -4766,6 +4767,169 @@ Azure-szolgáltatás: [stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/átalakítások/olvasás | Stream Analytics feladatok átalakításának olvasása |
 > | Microsoft. StreamAnalytics/streamingjobs/átalakítás/írás | Stream Analytics feladatok átalakításának írása |
 
+### <a name="microsoftsynapse"></a>Microsoft. szinapszis
+
+Azure-szolgáltatás: [szinapszis Analitika](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Művelet | Leírás |
+> | --- | --- |
+> | Microsoft. szinapszis/checkNameAvailability/művelet | A munkaterület nevének rendelkezésre állását ellenőrzi. |
+> | Microsoft. szinapszis/regisztráció/művelet | Regisztrálja az Azure szinapszis Analytics (munkaterületek) erőforrás-szolgáltatót, és lehetővé teszi a munkaterületek létrehozását. |
+> | Microsoft. szinapszis/regisztráció/művelet | Megszünteti az Azure szinapszis Analytics (munkaterületek) erőforrás-szolgáltató regisztrációját, és letiltja a munkaterületek létrehozását. |
+> | Microsoft. szinapszis/munkaterületek/integrationRuntimes/olvasás | Bármilyen Integration Runtime beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/integrationruntimes/írás | Hozzon létre vagy frissítsen egy integrációs modult. |
+> | Microsoft. szinapszis/munkaterületek/integrationRuntimes/törlés | Tetszőleges Integration Runtime törlése |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/getStatus/művelet | Bármely Integration Runtime állapotának beolvasása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/createExpressSHIRInstallLink/művelet | Integration Runtime telepítési hivatkozás létrehozása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/Start/művelet | Bármely Integration Runtime elindítása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/leállítás/művelet | Bármely Integration Runtime leállítása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/getConnectionInfo/művelet | Bármilyen Integration Runtimehoz tartozó kapcsolatok adatainak beolvasása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/regenerateAuthKey/művelet | Bármely Integration Runtime hitelesítési kulcsának újragenerálta |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/listAuthKeys/művelet | Bármely Integration Runtime hitelesítő kulcsainak listázása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/eltávolítási/művelet | Bármely Integration Runtime csomópont eltávolítása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/monitoringData/művelet | Bármely Integration Runtime figyelési állapotának beolvasása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/syncCredentials/művelet | A hitelesítő adatok szinkronizálása bármilyen Integration Runtime |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/frissítés/művelet | Bármilyen Integration Runtime frissítése |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/removeLinks/művelet | Bármely Integration Runtime hivatkozás eltávolítása |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/enableInteractiveQuery/művelet | Interaktív lekérdezés engedélyezése bármilyen Integration Runtime |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/disableInteractiveQuery/művelet | Interaktív lekérdezés letiltása bármilyen Integration Runtime |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/refreshObjectMetadata/művelet | Objektum metaadatainak frissítése az összes kapcsolódó Futtatókörnyezetnél |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/getObjectMetadata/művelet | Objektum metaadatainak beolvasása bármely kapcsolódó futtatókörnyezethez |
+> | Microsoft. szinapszis/munkaterületek/managedIdentitySqlControlSettings/írás | Felügyelt identitás SQL-vezérlési beállításainak frissítése a munkaterületen |
+> | Microsoft. szinapszis/munkaterületek/managedIdentitySqlControlSettings/olvasás | Felügyelt identitás SQL-vezérlési beállításainak beolvasása |
+> | Microsoft. szinapszis/munkaterületek/scopePools/írás | Hozzon létre vagy frissítsen bármely hatókör-készletet. |
+> | Microsoft. szinapszis/munkaterületek/scopePools/olvasás | Bármely hatókör-készlet olvasása. |
+> | Microsoft. szinapszis/munkaterületek/scopePools/törlés | Törölje a hatókör-készleteket. |
+> | Microsoft. szinapszis/Operations/READ | Olvassa el az elérhető műveleteket az Azure szinapszis Analytics erőforrás-szolgáltatótól. |
+> | Microsoft. szinapszis/munkaterületek/integrationRuntimes/csomópontok/olvasás | Bármely Integration Runtime csomópont beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/integrationRuntimes/csomópontok/törlés | Töröljön egy Integration Runtime csomópontot. |
+> | Microsoft. szinapszis/munkaterület/integrationRuntimes/csomópont/írás | Bármilyen Integration Runtime-csomópont javítása. |
+> | Microsoft. szinapszis/munkaterületek/integrationRuntimes/csomópontok/IP-cím/művelet | Integration Runtime IP-cím beolvasása |
+> | Microsoft. szinapszis/munkaterületek/firewallRules/írás | Hozzon létre vagy frissítsen bármely IP-tűzfalszabály szabályát. |
+> | Microsoft. szinapszis/munkaterületek/firewallRules/olvasás | IP-tűzfalszabály olvasásának szabálya |
+> | Microsoft. szinapszis/munkaterületek/firewallRules/törlés | Töröljön bármely IP-tűzfalszabály-szabályt. |
+> | Microsoft. szinapszis/munkaterület/replaceAllIpFirewallRules/művelet | Lecseréli a munkaterület összes IP-tűzfalszabály-szabályát. |
+> | Microsoft. szinapszis/munkaterületek/írás | Hozzon létre vagy frissítsen egy munkaterületet. |
+> | Microsoft. szinapszis/munkaterületek/olvasás | Bármilyen munkaterület beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/törlés | Törölje az összes munkaterületet. |
+> | Microsoft. szinapszis/munkaterület/checkDefaultStorageAccountStatus/művelet | A Storage-fiók alapértelmezett állapotának ellenőrzése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/írás | Bármilyen SQL Analytics-készlet létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/olvasás | Bármilyen SQL Analytics-készlet olvasása. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/törlés | Töröljön bármilyen SQL Analytics-készletet. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/szüneteltetés/művelet | Szüneteltetheti az SQL Analytics-készleteket. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/folytatás/művelet | Folytassa az SQL Analytics-készleteket. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/restorePoints/művelet | Hozzon létre egy SQL Analytics-készlet visszaállítási pontját. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/áthelyezés/művelet | Nevezze át az SQL Analytics-készleteket. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/dataWarehouseQueries/olvasás | Bármely SQL Analytics-készlet lekérdezésének olvasása. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/geoBackupPolicies/olvasás | Olvassa el az SQL Analytics-készlet földrajzi biztonsági mentési szabályzatait. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/dataWarehouseUserActivities/olvasás | Bármilyen SQL Analytics-készlet felhasználói tevékenységének olvasása. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/restorePoints/olvasás | Olvassa el az SQL Analytics-készlet visszaállítási pontjait. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/restorePoints/delete | Egy visszaállítási pont törlése. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/READ | Olvassa el az SQL Analytics-készlet lekérdezési lépéseit. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/maintenanceWindows/olvasás | Olvassa el az SQL Analytics-készlet karbantartási ablakait. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/maintenanceWindows/írás | Olvassa el az SQL Analytics-készlet karbantartási ablakait. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/maintenanceWindowOptions/olvasás | Olvassa el az SQL Analytics-készlet karbantartási ablakának beállításait. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/replicationLinks/olvasás | Olvassa el az SQL Analytics-készlet replikációs hivatkozásait. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/transparentDataEncryption/olvasás | Olvassa el az SQL Analytics-készlet transzparens adattitkosítás konfigurációját. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/transparentDataEncryption/írás | SQL Analytics-készlet létrehozása vagy frissítése transzparens adattitkosítás konfigurációban. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/transparentDataEncryption/operationResults/READ | Az SQL Analytics-készletek transzparens adattitkosítás konfigurációs művelet eredményeinek beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/auditingSettings/olvasás | Olvassa el az SQL Analytics-készlet naplózási beállításait. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/auditingSettings/írás | SQL Analytics-készlet naplózási beállításainak létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/műveletek/olvasás | Olvassa el az SQL Analytics-készlet összes műveletét. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/használat/olvasás | Bármilyen SQL Analytics-készlet használatának olvasása. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/currentSensitivityLabels/olvasás | Olvassa el az SQL Analytics-készlet aktuális érzékenységi címkéit. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/currentSensitivityLabels/írás | A Batch Update jelenlegi érzékenységi címkéi |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/recommendedSensitivityLabels/olvasás | Olvassa el az SQL Analytics-készlet ajánlott érzékenységi címkéit. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/recommendedSensitivityLabels/írás | A Batch Update ajánlott érzékenységi címkéi |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/olvasás | Olvassa el az SQL Analytics-készlet sémáit. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/olvasás | Olvassa el az SQL Analytics-készlet sémájának táblázatait. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/oszlopok/olvasás | Olvassa el az SQL Analytics-készlet séma-táblázatának összes oszlopát. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/connectionPolicies/olvasás | Olvassa el az SQL Analytics-készletre vonatkozó összes kapcsolódó házirendet. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/vulnerabilityAssessments/olvasás | Olvassa el az SQL Analytics-készlet sebezhetőségi felmérését. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/vulnerabilityAssessments/írás | Az SQL-készlet sebezhetőségi felmérésének létrehozása vagy frissítése |
+> | Microsoft. szinapszis/munkaterület/sqlPools/vulnerabilityAssessments/delete | Törölje az SQL Analytics-készlet sebezhetőségi felmérését. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/vulnerabilityAssessments/vizsgálatok/olvasás | Olvassa el az SQL Analytics-készlet sebezhetőségi felmérésével kapcsolatos összes vizsgálati rekordot. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/vulnerabilityAssessments/Scans/initiateScan/Action | Kezdeményezheti az SQL Analytics-készlet sebezhetőségi felmérési rekordjainak vizsgálatát. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/vulnerabilityAssessments/vizsgálatok/exportálás/művelet | Exportálja az SQL Analytics-készlet sebezhetőségi felmérési rekordjait. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/securityAlertPolicies/olvasás | Olvassa el az SQL Analytics-készlet veszélyforrások észlelésére vonatkozó szabályzatokat. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/securityAlertPolicies/írás | Az SQL Analytics-készlet fenyegetések észlelési házirendjeinek létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/oszlopok/sensitivityLabels/olvasás | Lekéri egy adott oszlop érzékenységi címkéjét. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/oszlopok/sensitivityLabels/engedélyezés/művelet | Bármely SQL Analytics-készlet érzékenységi címkéjének engedélyezése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/oszlopok/sensitivityLabels/letiltás/művelet | Tiltsa le az összes SQL Analytics-készlet érzékenységi címkéjét. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/oszlopok/sensitivityLabels/írás | Bármely SQL Analytics-készlet érzékenységi címkéjének létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sémák/táblák/oszlopok/sensitivityLabels/delete | Törölje az összes SQL Analytics-készlet érzékenységi címkéjét. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/vulnerabilityAssessments/szabályok/alaptervek/olvasás | SQL Analytics-készlet sebezhetőségi felmérési szabály alapkonfigurációjának beolvasása. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/vulnerabilityAssessments/szabályok/alaptervek/írás | Hozza létre vagy frissítse az SQL Analytics-készlet sebezhetőségi felmérési szabályának alaptervét. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/vulnerabilityAssessments/szabályok/alaptervek/törlés | Törölje az SQL Analytics-készlet sebezhetőségi felmérési szabályának alaptervét. |
+> | Microsoft. szinapszis/munkaterületek/operationStatuses/olvasás | Az aszinkron művelet állapotának beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/operationResults/olvasás | Olvassa el az összes aszinkron művelet eredményét. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/operationResults/olvasás | Olvassa el az összes aszinkron művelet eredményét. |
+> | Microsoft. szinapszis/munkaterületek/bigDataPools/írás | Bármely Spark-készlet létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/bigDataPools/olvasás | Bármely Spark-készlet beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/bigDataPools/törlés | Törölje a Spark-készleteket. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/metadataSync/írás | SQL Analytics-készlet metaadat-szinkronizálási konfigurációjának létrehozása vagy frissítése |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/metadataSync/olvasás | SQL Analytics-készlet metaadat-szinkronizálási konfigurációjának olvasása |
+> | Microsoft. szinapszis/munkaterületek/recoverableSqlpools/olvasás | Helyreállítható SQL Analytics-készleteket kap, amelyek az SQL Analytics-készletek földrajzi biztonsági mentését képviselő erőforrások |
+> | Microsoft. szinapszis/munkaterületek/rendszergazdák/írás | Active Directory rendszergazda beállítása a munkaterületen |
+> | Microsoft. szinapszis/munkaterületek/rendszergazdák/olvasás | Munkaterület beolvasása Active Directory rendszergazdája |
+> | Microsoft. szinapszis/munkaterületek/rendszergazdák/törlés | Munkaterület törlése Active Directory rendszergazda |
+> | Microsoft. szinapszis/munkaterületek/privateEndpointConnections/írás | Privát végponti kapcsolatok létrehozása vagy frissítése |
+> | Microsoft. szinapszis/munkaterületek/privateEndpointConnections/olvasás | Bármely privát végponti kapcsolatok olvasása |
+> | Microsoft. szinapszis/munkaterületek/privateEndpointConnections/törlés | Privát végponti kapcsolatok törlése |
+> | Microsoft. szinapszis/munkaterületek/privateLinkResources/olvasás | Privát kapcsolati erőforrások listájának beolvasása |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/bővítmények/olvasás | SQL Analytics-készlet kiterjesztésének beolvasása |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/bővítmények/írás | Egy adott SQL Analytics-készlet kiterjesztésének módosítása |
+> | Microsoft. szinapszis/privateLinkHubs/írás | Hozzon létre bármely PrivateLinkHubs. |
+> | Microsoft. szinapszis/privateLinkHubs/olvasás | Bármilyen PrivateLinkHubs beolvasása. |
+> | Microsoft. szinapszis/privateLinkHubs/delete | PrivateLinkHubs törlése. |
+> | Microsoft. szinapszis/Locations/operationStatuses/READ | Az aszinkron művelet állapotának beolvasása. |
+> | Microsoft. szinapszis/Locations/operationResults/READ | Olvassa el az összes aszinkron művelet eredményét. |
+> | Microsoft. szinapszis/privateLinkHubs/privateLinkResources/READ | Privát kapcsolati erőforrások listájának beolvasása |
+> | Microsoft. szinapszis/privateLinkHubs/privateEndpointConnections/írás | Privát végponti kapcsolatok létrehozása vagy frissítése a PrivateLinkHub-hez |
+> | Microsoft. szinapszis/privateLinkHubs/privateEndpointConnections/READ | A PrivateLinkHub-hez kapcsolódó magánhálózati végponti kapcsolatok olvasása |
+> | Microsoft. szinapszis/privateLinkHubs/privateEndpointConnections/delete | Privát végponti kapcsolatok törlése a PrivateLinkHub |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/operationStatuses/olvasás | Olvassa el az összes aszinkron művelet eredményét. |
+> | Microsoft. szinapszis/munkaterületek/kulcsok/írás | Munkaterület-kulcsok létrehozása vagy frissítése |
+> | Microsoft. szinapszis/munkaterületek/kulcsok/olvasás | Bármely munkaterület-kulcs definíciójának beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/kulcsok/törlés | Törölje a munkaterület kulcsát. |
+> | Microsoft. szinapszis/munkaterületek/könyvtárak/olvasás | Könyvtári összetevők olvasása |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/workloadGroups/olvasás | Felsorolja a kiválasztott SQL-készlet munkaterhelési csoportjait. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/írás | Egy adott munkaterhelés-csoport tulajdonságainak beállítása. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/delete | Elveszít egy adott munkaterhelés-csoportot. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/workloadClassifiers/READ | Felsorolja a kiválasztott SQL Analytics-készlet számítási feladatainak besorolását. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/workloadClassifiers/írás | Beállítja egy adott munkaterhelés-osztályozó tulajdonságainak beállítását. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/workloadClassifiers/delete | Egy adott számítási feladat besorolásának elejtése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/extendedAuditingSettings/olvasás | Olvassa el az SQL Analytics-készlet kiterjesztett naplózási beállításait. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/extendedAuditingSettings/írás | Az SQL Analytics-készlet kiterjesztett naplózási beállításainak létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/dataMaskingPolicies/olvasás | Az SQL Analytics-készlet adatmaszkolási házirendjeinek listájának visszaadása. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/dataMaskingPolicies/írás | SQL Analytics-készlet adatmaszkolási szabályzatának létrehozása vagy frissítése |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/dataMaskingPolicies/szabályok/olvasás | Lekéri az SQL Analytics-készlet adatmaszkolási szabályainak listáját. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/dataMaskingPolicies/szabályok/írás | Létrehoz vagy frissít egy SQL Analytics-készlet adatmaszkolási szabályát. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/oszlopok/olvasás | SQL Analytics-készlet oszlopainak listájának visszaadása |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/sensitivityLabels/olvasás | Lekéri egy adott oszlop érzékenységi címkéjét. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/auditRecords/olvasás | SQL-készlet blob-naplózási rekordjainak beolvasása |
+> | Microsoft. szinapszis/resourceGroups/operationStatuses/READ | Az aszinkron művelet állapotának beolvasása. |
+> | Microsoft. szinapszis/munkaterületek/extendedAuditingSettings/írás | Az SQL Server kiterjesztett naplózási beállításainak létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/extendedAuditingSettings/olvasás | Olvassa el az SQL Server bővített naplózási beállításainak alapértelmezett beállításait. |
+> | Microsoft. szinapszis/munkaterületek/auditingSettings/írás | SQL Server naplózási beállításainak létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/auditingSettings/olvasás | Az SQL Server alapértelmezett naplózási beállításainak olvasása. |
+> | Microsoft. szinapszis/munkaterületek/securityAlertPolicies/írás | SQL Server biztonsági riasztási szabályzatok létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/securityAlertPolicies/olvasás | Olvassa el az SQL Server alapértelmezett biztonsági riasztási házirendjeit. |
+> | Microsoft. szinapszis/munkaterületek/vulnerabilityAssessments/írás | SQL Server biztonsági rések assement-jelentésének létrehozása vagy frissítése. |
+> | Microsoft. szinapszis/munkaterületek/vulnerabilityAssessments/olvasás | Az SQL Server alapértelmezett sebezhetőségi assement jelentésének olvasása. |
+> | Microsoft. szinapszis/munkaterületek/vulnerabilityAssessments/törlés | SQL Server biztonsági rések assement-jelentésének törlése. |
+> | Microsoft. szinapszis/munkaterületek/restorableDroppedSqlPools/olvasás | Lekéri a törölt SQL-készletet, amely visszaállítható. |
+> | Microsoft. szinapszis/munkaterületek/sqlPools/dataWarehouseQueries/lépések/olvasás | Olvassa el az SQL Analytics-készlet lekérdezési lépéseit. |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/operationStatuses/READ | SQL Analytics-készlet munkaterhelés-csoportjának műveleti állapota |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/READ | SQL Analytics-készlet számítási feladatainak besorolási műveletének állapota |
+> | Microsoft. szinapszis/munkaterület/sqlPools/workloadGroups/workloadClassifiers/operationResults/READ | SQL Analytics-készlet számítási feladatainak besorolási műveletének eredménye |
+> | Microsoft. szinapszis/munkaterületek/sqlUsages/olvasás | Az SQL Analytics-készletek számára elérhető használati korlátok beolvasása |
+> | Microsoft. szinapszis/munkaterületek/auditingSettings/operationResults/olvasás | SQL Server naplózási beállítások |
+> | Microsoft. szinapszis/munkaterületek/sqlAdministrators/írás | Active Directory rendszergazda beállítása a munkaterületen |
+> | Microsoft. szinapszis/munkaterületek/sqlAdministrators/olvasás | Munkaterület beolvasása Active Directory rendszergazdája |
+> | Microsoft. szinapszis/munkaterületek/sqlAdministrators/törlés | Munkaterület törlése Active Directory rendszergazda |
+
 ## <a name="blockchain"></a>Blockchain
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockchain
@@ -7730,7 +7894,7 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vCenter/READ | Egy VMware-vCenter tulajdonságainak beolvasása |
 > | Microsoft. OffAzure/VMwareSites/vCenter/Write | A VMware-vCenter létrehozása vagy frissítése |
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -10076,7 +10240,7 @@ Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modellek/írás | Bármely modell létrehozása vagy frissítése |
 > | Microsoft. DigitalTwins/models/delete | Bármely modell törlése |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Beépített Azure-szerepkörök](built-in-roles.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7ee22121fd023f3942eed64bd605bf87b961d893
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736507"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429833"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló-kiszolgálóval
 
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A tabló-kiszolgáló támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-tableau-server-from-the-gallery"></a>Tabló-kiszolgáló hozzáadása a katalógusból
+## <a name="add-tableau-server-from-the-gallery"></a>Tabló-kiszolgáló hozzáadása a katalógusból
 
 A tabló-kiszolgáló az Azure AD-be való integrálásának konfigurálásához fel kell vennie a tabló-kiszolgálót a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
-    > Az előző értékek nem valós értékek. Frissítse az értékeket a tabló-kiszolgáló konfigurációs oldalának tényleges URL-címével és azonosítójával, amelyet az oktatóanyag későbbi részében ismertet.
+    > Az előző értékek nem valós értékek. Frissítse az értékeket a tabló-kiszolgáló konfigurációs oldalának tényleges bejelentkezési URL-címével, azonosítójának és válaszának URL-címével, amelyet az oktatóanyag későbbi részében ismertet.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -123,21 +123,21 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. A **konfiguráció** lapon válassza a **felhasználói identitás & hozzáférés** lehetőséget, majd válassza a **hitelesítési** módszer lapot.
 
-    ![Képernyőfelvétel: a felhasználói identitásból kiválasztott hitelesítés & hozzáférés.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Képernyőfelvétel: a felhasználói identitásból kiválasztott hitelesítés & hozzáférés.](./media/tableauserver-tutorial/auth.png)
 
 3. A **konfiguráció** lapon hajtsa végre a következő lépéseket:
 
-    ![Képernyőfelvétel: a konfigurációs oldal, ahol megadhatja a leírt értékeket.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Képernyőfelvétel: a konfigurációs oldal, ahol megadhatja a leírt értékeket.](./media/tableauserver-tutorial/config.png)
 
     a. A **hitelesítési módszer** beállításnál válassza az SAML lehetőséget.
 
     b. Jelölje be az **SAML-hitelesítés engedélyezése a kiszolgálón** jelölőnégyzetet.
 
-    c. Tabló-kiszolgáló visszatérési URL-címe – a tabló-kiszolgáló felhasználói által elérhető URL-cím, például: `http://tableau_server` . A használata `http://localhost` nem ajánlott. A záró perjelet (például) használó URL-cím használata `http://tableau_server/` nem támogatott. A **tabló-kiszolgáló visszatérési URL-címének** másolása és beillesztése az **URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal
+    c. Tabló-kiszolgáló visszatérési URL-címe – a tabló-kiszolgáló felhasználói által elérhető URL-cím, például: `http://tableau_server` . A használata `http://localhost` nem ajánlott. A záró perjelet (például) használó URL-cím használata `http://tableau_server/` nem támogatott. Másolja a **tabló-kiszolgáló visszatérési URL-címét** , és illessze be az **URL-cím** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    d. SAML-entitás azonosítója – az entitás azonosítója egyedileg azonosítja a tabló-kiszolgáló telepítését a identitásszolgáltató. Itt megadhatja a tabló-kiszolgáló URL-címét, ha szeretné, de nem kell a tabló-kiszolgáló URL-címének lennie. Az **SAML-entitás azonosítójának** másolása és beillesztése az **azonosító** szövegmezőbe az **alapszintű saml-konfiguráció** szakaszának Azure Portal
+    d. SAML-entitás azonosítója – az entitás azonosítója egyedileg azonosítja a tabló-kiszolgáló telepítését a identitásszolgáltató. Itt megadhatja a tabló-kiszolgáló URL-címét, ha szeretné, de nem kell a tabló-kiszolgáló URL-címének lennie. Másolja az **SAML-entitás azonosítóját** , és illessze be az **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    e. Kattintson az **XML letöltése metaadat-fájlra** , és nyissa meg a szövegszerkesztő alkalmazásban. Keresse meg az állítási fogyasztói szolgáltatás URL-címét http post és index 0 értékkel, és másolja az URL-címet. Most illessze be a **Válasz URL** szövegmezőbe az **ALAPszintű SAML-konfiguráció** szakaszának Azure Portal
+    e. Kattintson az **XML letöltése metaadat-fájlra** , és nyissa meg a szövegszerkesztő alkalmazásban. Keresse meg az állítási fogyasztói szolgáltatás URL-címét http post és index 0 értékkel, és másolja az URL-címet. Most illessze be a **Válasz URL** szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában.
 
     f. Keresse meg Azure Portalról letöltött összevonási metaadat-fájlt, majd töltse fel az **SAML-identitásszolgáltató metaadat-fájljába**.
 
@@ -165,9 +165,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen közvetlenül a tabló-kiszolgáló bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások felületén a tabló-kiszolgáló csempére kattint, a rendszer átirányítja a tabló-kiszolgáló bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások felületén a tabló-kiszolgáló csempére kattint, a rendszer átirányítja a tabló-kiszolgáló bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-A tabló-kiszolgáló konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáféréstől. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+A tabló-kiszolgáló konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

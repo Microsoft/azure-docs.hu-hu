@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063179"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430445"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -42,7 +42,7 @@ A mezők leképezése három részből áll:
 A mező-hozzárendelések az `fieldMappings` Indexelő definíciójának tömbje számára lesznek hozzáadva.
 
 > [!NOTE]
-> Ha nincsenek hozzáadva mező-hozzárendelések, az indexelő feltételezi, hogy az adatforrást tartalmazó mezőket az azonos nevű index mezőkhöz kell rendelni. Mező-hozzárendelés hozzáadásával eltávolítja ezeket az alapértelmezett mező-hozzárendeléseket a forrás és a cél mezőhöz. Egyes indexelő, például [a blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md), alapértelmezett mező-hozzárendeléseket adhatnak hozzá az index kulcs mezőjéhez.
+> Ha nincsenek hozzáadva mező-hozzárendelések, az indexelő feltételezi, hogy az adatforrást tartalmazó mezőket az azonos nevű index mezőkhöz kell rendelni. Mező-hozzárendelés hozzáadásával eltávolítja ezeket az alapértelmezett mező-hozzárendeléseket a forrás és a cél mezőhöz. Egyes indexelő, például a [blob Storage-indexelő](search-howto-indexing-azure-blob-storage.md), alapértelmezett mező-hozzárendeléseket adhatnak hozzá az index kulcs mezőjéhez.
 
 ## <a name="map-fields-using-rest"></a>Mezők leképezése a REST használatával
 
@@ -51,7 +51,6 @@ Az [Indexelő](/rest/api/searchservice/create-Indexer) API-kérelem használatá
 Például a következő módon képezhető le egy forrás mezőt egy célként megadott mezőre egy másik névvel:
 
 ```JSON
-
 PUT https://[service name].search.windows.net/indexers/myindexer?api-version=[api-version]
 Content-Type: application/json
 api-key: [admin key]

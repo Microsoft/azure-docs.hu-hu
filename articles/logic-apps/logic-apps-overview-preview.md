@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760635"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430797"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
 
@@ -169,6 +169,8 @@ Az új erőforrástípus esetében alkalmazandó díjszabási modellekkel kapcso
 
 Azure Logic Apps előzetes verzióban ezek a funkciók megváltoztak, vagy jelenleg korlátozottak, nem érhetők el vagy nem támogatottak:
 
+* **Operációs rendszer támogatása**: a Visual Studio Code-ban a tervező jelenleg nem működik Linux operációs rendszeren, de továbbra is telepíthet olyan logikai alkalmazásokat, amelyek a Logic apps előnézet futtatókörnyezetet használják a Linux-alapú virtuális gépekhez. Egyelőre a Visual Studio Code-ban hozhat létre logikai alkalmazásokat Windows vagy macOS rendszeren, majd üzembe helyezheti azt egy Linux-alapú virtuális gépen.
+
 * **Eseményindítók és műveletek**: egyes beépített eseményindítók nem érhetők el, például a csúszó ablak és a köteg. A munkafolyamat elindításához használja a [beépített ismétlődés, kérelem, http, http webhook, Event Hubs vagy Service Bus eseményindítót](../connectors/apis-list.md). A beépített eseményindítók és műveletek natív módon futnak a Azure Logic Apps előnézet futtatókörnyezetben, míg a felügyelt összekötők üzembe helyezése az Azure-ban történik. A tervezőben a beépített eseményindítók és műveletek a **beépített** lapon jelennek meg, míg a felügyelt összekötő-eseményindítók és műveletek az **Azure** lapon jelennek meg.
 
   > [!NOTE]
@@ -261,7 +263,7 @@ Egyetlen logikai alkalmazás definíciója esetében a beágyazott kód művelet
 
 További információ: [Logic app definition Limits](logic-apps-limits-and-config.md#definition-limits).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Azure Portalban](create-stateful-stateless-workflows-azure-portal.md)
 * [Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md)

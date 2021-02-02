@@ -2,18 +2,18 @@
 title: Ügyfél által felügyelt kulcsok konfigurálása a FHIR készült Azure API-hoz
 description: A FHIR Azure API-n keresztül a saját kulcs funkcióját is támogatja a Cosmos DB
 services: healthcare-apis
-author: matjazl
+author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
-ms.author: matjazl
-ms.openlocfilehash: 3879280f56a4b99d8e6e08a9c9ed852ef2cafa68
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.author: ginle
+ms.openlocfilehash: ae78aa80594e46b02d77adcafed961e801780d4f
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747323"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430259"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>Ügyfél által felügyelt kulcsok konfigurálása nyugalmi állapotban
 
@@ -44,7 +44,7 @@ A meglévő FHIR-fiókok esetében az alábbi módon tekintheti meg a kulcs titk
 
 Emellett a megadott kulcs új verzióját is létrehozhatja, amely után az adatok a szolgáltatás megszakítása nélkül lesznek titkosítva az új verzióval. A kulcshoz való hozzáférés eltávolításával is eltávolíthatja az adathozzáférést. Ha a kulcs le van tiltva, a lekérdezések hibát eredményeznek. Ha a kulcs újból engedélyezve van, a lekérdezések ismét sikeresek lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja az ügyfelek által felügyelt kulcsokat a nyugalmi állapotban. Ezután tekintse meg a Azure Cosmos DB GYIK szakaszt: 
  

@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046043"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430628"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
@@ -49,11 +49,11 @@ A virtuális kapcsolók lehetővé teszik a virtuális gép számára a fizikai 
 
 1. Nyissa meg a Hyper-V kezelőjét a Windows rendszerű gépen.
 
-2. A **műveletek** menüben válassza a **Virtual switch Manager**lehetőséget.
+2. A **műveletek** menüben válassza a **Virtual switch Manager** lehetőséget.
 
-3. Válasszon ki egy **külső** virtuális kapcsolót, majd kattintson a **virtuális kapcsoló létrehozása**elemre.
+3. Válasszon ki egy **külső** virtuális kapcsolót, majd kattintson a **virtuális kapcsoló létrehozása** elemre.
 
-4. Adja meg az új virtuális kapcsoló nevét, például **EdgeSwitch**. Győződjön meg arról, hogy a kapcsolattípus **külső hálózatra**van beállítva, majd válassza **az OK gombot**.
+4. Adja meg az új virtuális kapcsoló nevét, például **EdgeSwitch**. Győződjön meg arról, hogy a kapcsolattípus **külső hálózatra** van beállítva, majd válassza **az OK gombot**.
 
 5. Egy előugró ablak figyelmezteti, hogy a hálózati kapcsolat megszakadhat. Válassza az **Igen** lehetőséget a folytatáshoz.
 
@@ -63,11 +63,11 @@ Ha az új virtuális kapcsoló létrehozásakor hibák jelennek meg, győződjö
 
 1. Töltse le a virtuális géphez használni kívánt lemezképfájlt, és mentse helyileg. Például: [ubuntu server 18,04](http://releases.ubuntu.com/18.04/). További információ a IoT Edge eszközök támogatott operációs rendszereiről: [Azure IoT Edge támogatott rendszerek](support.md).
 
-2. A Hyper-V kezelőjében **Action**  >  **New**  >  a **műveletek** menüben válassza az új**virtuális gép** művelet lehetőséget.
+2. A Hyper-V kezelőjében   >    >  a **műveletek** menüben válassza az új **virtuális gép** művelet lehetőséget.
 
 3. Fejezze be az **új virtuális gép varázslót** a következő beállításokkal:
 
-   1. **Generáció megadása**: válassza a **2. generáció**lehetőséget. A 2. generációs virtuális gépeken engedélyezve van a beágyazott virtualizálás, amely a IoT Edge virtuális gépen való futtatásához szükséges.
+   1. **Generáció megadása**: válassza a **2. generáció** lehetőséget. A 2. generációs virtuális gépeken engedélyezve van a beágyazott virtualizálás, amely a IoT Edge virtuális gépen való futtatásához szükséges.
    2. **Hálózatkezelés beállítása**: állítsa be az előző szakaszban létrehozott virtuális kapcsolóhoz való **Kapcsolódás** értékét.
    3. **Telepítési beállítások**: válassza az **operációs rendszer telepítése rendszerindító lemezképfájlból** lehetőséget, és keresse meg a helyileg mentett lemezképfájlt.
 
@@ -79,11 +79,11 @@ Az új virtuális gép létrehozása több percet is igénybe vehet.
 
 A virtuális gép létrehozása után nyissa meg a beállításait a Virtual platformmegbízhatósági modul (TPM) engedélyezéséhez, amely lehetővé teszi az eszköz automatikus kiépítését.
 
-1. A Hyper-V kezelőjében kattintson a jobb gombbal a virtuális gépre, és válassza a **Beállítások**lehetőséget.
+1. A Hyper-V kezelőjében kattintson a jobb gombbal a virtuális gépre, és válassza a **Beállítások** lehetőséget.
 
-2. Navigáljon a **Biztonság**elemre.
+2. Navigáljon a **Biztonság** elemre.
 
-3. Törölje a **biztonságos rendszerindítás engedélyezése**jelölőnégyzet jelölését.
+3. Törölje a **biztonságos rendszerindítás engedélyezése** jelölőnégyzet jelölését.
 
 4. Jelölje be az **engedélyezés platformmegbízhatósági modul**.
 
@@ -112,7 +112,7 @@ A virtuális gépen hozzon létre egy eszközt, amely segítségével lekérheti
    sudo ./tpm_device_provision
    ```
 
-1. A kimeneti ablakban az eszköz **regisztrációs azonosítója** és a **jóváhagyó kulcs**látható. Másolja ezeket az értékeket később, amikor egyéni regisztrációt hoz létre az eszközhöz.
+1. A kimeneti ablakban az eszköz **regisztrációs azonosítója** és a **jóváhagyó kulcs** látható. Másolja ezeket az értékeket később, amikor egyéni regisztrációt hoz létre az eszközhöz.
 
 Ha megkapta a regisztrációs azonosítót és a jóváhagyó kulcsot, folytassa a [IoT hub Device Provisioning Service beállítása](#set-up-the-iot-hub-device-provisioning-service) című szakasztal.
 
@@ -132,7 +132,7 @@ Ha virtuális gép helyett fizikai IoT Edge eszközt használ, hozzon létre egy
    sudo ./tpm_device_provision
    ```
 
-1. Másolja a **regisztrációs azonosító** és a **jóváhagyó kulcs**értékeit. Ezeknek az értékeknek a használatával egyéni regisztrációt hozhat létre az eszközhöz a DPS-ben.
+1. Másolja a **regisztrációs azonosító** és a **jóváhagyó kulcs** értékeit. Ezeknek az értékeknek a használatával egyéni regisztrációt hozhat létre az eszközhöz a DPS-ben.
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>A IoT Hub Device Provisioning Service beállítása
 
@@ -151,11 +151,11 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
 
-2. A **Beállítások**területen válassza a **regisztrációk kezelése**lehetőséget.
+2. A **Beállítások** területen válassza a **regisztrációk kezelése** lehetőséget.
 
 3. Válassza az **Egyéni regisztráció hozzáadása** lehetőséget, majd végezze el a következő lépéseket a beléptetés konfigurálásához:  
 
-   1. A **mechanizmus**beállításnál válassza a **TPM**lehetőséget.
+   1. A **mechanizmus** beállításnál válassza a **TPM** lehetőséget.
 
    2. Adja meg a virtuális gépről másolt **hátirat-kulcsot** és **regisztrációs azonosítót** .
 
@@ -166,7 +166,7 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
    4. A **true (igaz** ) érték kiválasztásával deklarálhatja, hogy a virtuális gép IoT Edge eszköz.
 
-   5. Válassza ki azt a csatolt IoT Hub, amelyhez csatlakoztatni kívánja az eszközt, vagy válassza az **új IoT hub csatolása**lehetőséget. Több hub is kiválasztható, és az eszköz a kiválasztott hozzárendelési házirendnek megfelelően lesz hozzárendelve az egyikhez.
+   5. Válassza ki azt a csatolt IoT Hub, amelyhez csatlakoztatni kívánja az eszközt, vagy válassza az **új IoT hub csatolása** lehetőséget. Több hub is kiválasztható, és az eszköz a kiválasztott hozzárendelési házirendnek megfelelően lesz hozzárendelve az egyikhez.
 
    6. Ha szeretné, adjon hozzá egy címke értéket a **kezdeti eszköz iker állapotához** . A címkék használatával megcélozhatja az eszközök csoportjait a modulok üzembe helyezéséhez. További információ: IoT Edge- [modulok üzembe helyezése nagy léptékben](how-to-deploy-at-scale.md).
 
@@ -205,7 +205,11 @@ Miután telepítette a futtatókörnyezetet az eszközre, konfigurálja az eszk�
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
+
+   Igény szerint a vagy a `always_reprovision_on_startup` `dynamic_reprovisioning` vonalak használatával konfigurálhatja az eszköz újraépítésének viselkedését. Ha egy eszköz úgy van beállítva, hogy a rendszer újraépítse az indítást, a rendszer mindig először a DPS-t próbálja kiépíteni, majd visszatér a kiépítési biztonsági mentéshez, ha az nem sikerül. Ha egy eszköz úgy van beállítva, hogy dinamikusan újra kiépítse magát, IoT Edge újraindítja és újraépíti, ha a rendszer újraépítési eseményt észlel. További információ: [IoT hub eszköz újraépítési fogalmai](../iot-dps/concepts-device-reprovision.md).
 
 1. Frissítse a és a értékét a `scope_id` `registration_id` DPS és az eszköz adataival.
 

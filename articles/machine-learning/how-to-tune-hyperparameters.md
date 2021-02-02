@@ -2,24 +2,23 @@
 title: Modell hiperparaméter finomhangolása
 titleSuffix: Azure Machine Learning
 description: A Azure Machine Learning segítségével automatizálhatja a hiperparaméter finomhangolását a Deep learning és a gépi tanulási modellekhez.
-ms.author: swatig
-author: swatig007
+ms.author: anumamah
+author: Aniththa
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/30/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133858"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430369"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Hiperparaméter a modell finomhangolása Azure Machine Learning
-
 
 A hatékony hiperparaméter-hangolás automatizálása Azure Machine Learning [HyperDrive-csomag](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)használatával. Ismerje meg, hogyan végezheti el a hiperparaméterek beállítása hangolásához szükséges lépéseket a [Azure Machine learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val:
 
@@ -382,6 +381,30 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>Hiperparaméter-hangolási futtatások megjelenítése
 
+Megjelenítheti a hiperparaméter hangolási folyamatait a Azure Machine Learning Studióban, vagy használhat notebook widgetet is.
+
+### <a name="studio"></a>Studio
+
+A [Azure Machine learning Studióban](https://ml.azure.com)megjelenítheti az összes hiperparaméter hangolási futtatást. A kísérleteknek a portálon történő megtekintésével kapcsolatos további információkért lásd: [a futtatási rekordok megtekintése a Studióban](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+
+- **Metrikák diagramja**: Ez a vizualizáció nyomon követi az egyes HyperDrive-gyermekek naplózott metrikáit a hiperparaméter hangolásának időtartama alatt. Minden sor a gyermek futtatását jelöli, és minden pont az elsődleges metrika értékét méri a futtatókörnyezet ismétlésében.  
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="Hiperparaméter-hangolás metrikái diagramja":::
+
+- **Párhuzamos koordináták diagramja**: Ez a vizualizáció az elsődleges metrikai teljesítmény és az egyes hiperparaméter értékek közötti korrelációt mutatja. A diagram interaktív a tengelyek mozgásával (kattintással és húzással), valamint az értékek egyetlen tengelyen való kiemelésével (kattintson és húzással függőlegesen egy tengely mentén, hogy kiemelje a kívánt értékek tartományát).
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="Hiperparaméter hangolása párhuzamos koordináták diagramja":::
+
+- **2 dimenziós pontdiagram**: Ez a vizualizáció a két egyéni hiperparaméterek beállítása közötti korrelációt mutatja a hozzájuk társított elsődleges metrikai értékkel együtt.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="Hyparameter finomhangolása 2 – dimenziós pontdiagram":::
+
+- **3 dimenziós pontdiagram**: Ez a vizualizáció ugyanaz, mint a 2D, de lehetővé teszi az elsődleges metrikai értékkel való korreláció három hiperparaméter-dimenziójának használatát. Azt is megteheti, hogy a diagram áttájolása lehetőségre kattint, és a különböző korrelációkat a 3D térben jeleníti meg.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="3 dimenziós Hyparameter hangolási diagram":::
+
+### <a name="notebook-widget"></a>Jegyzetfüzet widget
+
 A betanítási folyamat előrehaladásának megjelenítéséhez használja a [notebook widgetet](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) . A következő kódrészlet megjeleníti az összes hiperparaméter finomhangolását egy helyen egy Jupyter-jegyzetfüzetben:
 
 ```Python
@@ -391,17 +414,9 @@ RunDetails(hyperdrive_run).show()
 
 Ez a kód egy táblázatot jelenít meg, amely részletesen ismerteti az egyes hiperparaméter-konfigurációk betanítási futtatásait.
 
-![hiperparaméter hangolási táblázat](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
+:::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png" alt-text="Hiperparaméter hangolási táblázat":::
 
-Az egyes futtatások teljesítményét a betanítási folyamatokban is megjelenítheti. 
-
-![hiperparaméter-hangolási ábra](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
-
-Vizuálisan azonosíthatja az egyes hiperparaméterek beállítása teljesítményének és értékének korrelációját egy párhuzamos koordináta-ábra használatával. 
-
-[![hiperparaméter hangolása párhuzamos koordinátákkal](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
-
-Az Azure web Portalon is megjelenítheti az összes hiperparaméter hangolási futtatást. A kísérleteknek a portálon történő megtekintésével kapcsolatos további információkért lásd: [a kísérletek nyomon követése](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+Az egyes futtatások teljesítményét a betanítási folyamatokban is megjelenítheti.
 
 ## <a name="find-the-best-model"></a>A legjobb modell megkeresése
 

@@ -3,14 +3,14 @@ title: Renderelési képességek
 description: A standard Azure Batch funkciói a renderelési munkaterhelések és alkalmazások futtatására szolgálnak. A Batch speciális funkciókat tartalmaz a renderelési feladatok támogatásához.
 author: mscurrell
 ms.author: markscu
-ms.date: 01/14/2021
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234273"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429802"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
 
@@ -32,7 +32,7 @@ A legtöbb renderelési alkalmazáshoz meg kell adni a licenckiszolgáló által
 
 Ha csak az előre telepített alkalmazásokat kell használni, az Azure piactéren megjelenített virtuálisgép-rendszerkép is megadható a készlet konfigurációjában.
 
-Van egy Windows 2016-rendszerkép és egy CentOS-rendszerkép.  Az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en a virtuálisgép-lemezképek a "batch rendering" kifejezésre kereshetnek.
+Egy Windows-rendszerkép és egy CentOS-rendszerkép is rendelkezésre áll.  Az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en a virtuálisgép-lemezképek a "batch rendering" kifejezésre kereshetnek.
 
 Példa a készlet konfigurálására: az [Azure CLI renderelési oktatóanyaga](./tutorial-rendering-cli.md).  A Azure Portal és a Batch Explorer GUI-eszközöket biztosítanak egy renderelési virtuálisgép-rendszerkép kiválasztásához a készlet létrehozásakor.  Ha batch API-t használ, adja meg a következő tulajdonságértékeket a [ImageReference](/rest/api/batchservice/pool/add#imagereference) a készlet létrehozásakor:
 
@@ -70,13 +70,10 @@ Ahhoz, hogy létre tudja hozni a parancssort a renderelési feladatokhoz, meg ke
 
 |Alkalmazás|Alkalmazás végrehajtható fájlja|Környezeti változó|
 |---------|---------|---------|
-|Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
-|Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
-|Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
-|Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray önálló|vray.exe|VRAY_3 VRAY_3.60.4_EXEC|
-Arnold 2017 parancssor|kick.exe|ARNOLD_2017_EXEC|
-|Arnold 2018 parancssor|kick.exe|ARNOLD_2018_EXEC|
+|Autodesk 3ds Max 2021|3dsmaxcmdio.exe|3DSMAX_2021_EXEC|
+|Autodesk Maya 2020|render.exe|MAYA_2020_EXEC|
+|Chaos Group V-Ray önálló|vray.exe|VRAY_4 VRAY_4.10.03_EXEC|
+|Arnold 2020 parancssor|kick.exe|ARNOLD_2020_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
 ## <a name="azure-vm-families"></a>Azure VM-családok
@@ -96,7 +93,7 @@ Az alacsony prioritású virtuális gépek jellemzőivel és a Batch használat�
 A feladatokhoz és a feladatokhoz nem szükségesek megjelenítésre vonatkozó támogatás.  A fő konfigurációs elem a feladat parancssora, amelynek a szükséges alkalmazásra kell hivatkoznia.
 Az Azure Marketplace virtuálisgép-rendszerképeinek használatakor az ajánlott eljárás az, hogy a környezeti változók használatával adja meg az elérési utat és az alkalmazás végrehajtható fájlját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Batch rendering példái között próbálja ki a két oktatóanyagot:
 

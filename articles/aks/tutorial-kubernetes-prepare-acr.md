@@ -3,14 +3,14 @@ title: Az Azure-on futó Kubernetes oktatóanyaga – Tárolóregisztrációs ad
 description: Az Azure Kubernetes Service (AKS) jelen oktatóanyagában egy Azure Container Registry-példányt hozhat létre, és feltöltheti egy mintaalkalmazás tárolórendszerképét.
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 01/31/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9f6ec14cea20192aef7d3010201e6613c5d03a9e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250621"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430964"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
 
@@ -61,7 +61,7 @@ A parancs a *Bejelentkezés sikeres* üzenetet adja vissza, ha befejeződött.
 A meglévő helyi rendszerképek listájának megtekintéséhez használja a [docker images][docker-images] parancsot:
 
 ```console
-$ docker images
+docker images
 ```
 A fenti parancs kimenete a jelenlegi helyi rendszerképek listáját jeleníti meg:
 
@@ -88,8 +88,8 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 
 A címkék kiosztásának ellenőrzéséhez futtassa ismét a [docker images][docker-images] parancsot.
 
-```azurecli
-$ docker images
+```console
+docker images
 ```
 
 Ez felcímkézi a rendszerképet az ACR-példány címével és egy verziószámmal.
@@ -144,7 +144,7 @@ v1
 
 Így most rendelkezik egy privát Azure Container Registry-példányon tárolt tárolórendszerképpel. Ezt a rendszerképet telepítjük az ACR-ből egy Kubernetes-fürtre a következő oktatóanyagban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Container Registry tárolóregisztrációs adatbázist hozott létre, és leküldött egy rendszerképet egy AKS-fürtben való használatra. Megtanulta végrehajtani az alábbi műveleteket:
 

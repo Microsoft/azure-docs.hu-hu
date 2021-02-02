@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: feeed07021e31dfee44fa9372927e45b53131d1e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254053"
+ms.locfileid: "99430411"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során
 Az alábbi bejelentkezési problémák elhárítása érdekében javasoljuk, hogy a következő lépésekkel jobban diagnosztizálja és automatizálja a megoldási lépéseket:
@@ -54,7 +54,7 @@ Győződjön meg arról, hogy az `Issuer` SAML-kérelemben szereplő attribútum
 Az SAML-alapú SSO-konfiguráció lap **alapszintű SAML-konfiguráció** szakaszában ellenőrizze, hogy az azonosító szövegmezőben szereplő érték megegyezik-e a hibában megjelenő azonosító értékével.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válasz címe nem egyezik az alkalmazáshoz konfigurált Válaszcím-címekkel.
-`Error AADSTS50011: The reply address 'https:\//contoso.com' does not match the reply addresses configured for the application.`
+`Error AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '{application identifier}'.`
 
 **Lehetséges ok**
 
