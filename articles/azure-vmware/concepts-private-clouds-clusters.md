@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825071"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474913"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -64,9 +64,12 @@ A Microsoft felelős a NSX-T készülékek életciklus-kezelésért, például a
 
 A Private Cloud vCenter és a NSX-T konfigurációk óránkénti biztonsági mentési ütemtervtel rendelkeznek.  A biztonsági mentések három napig tartanak. Ha biztonsági másolatból kell visszaállítani, nyisson meg egy [támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support) a Azure Portal a visszaállítás kéréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő lépés a [Hálózatkezelés és az összekapcsolási fogalmak](concepts-networking.md)megismerése.
+Most, hogy lefedette ezeket az Azure VMware-megoldás saját Felhőbeli fogalmait, érdemes megismernie az alábbiakat: 
+
+- [Az Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmai](concepts-networking.md).
+- [Azure VMware megoldás tárolási fogalmak](concepts-storage.md).
 
 <!-- LINKS - internal -->
 

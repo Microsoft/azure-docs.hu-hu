@@ -3,12 +3,12 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerkedjen meg az Azure VMware megoldás legfontosabb szempontjaival és hálózati és kapcsolódási eseteivel.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9369c0fff31de4c6575d8e4903420cfa01461bf4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062120"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475420"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmak
 
@@ -58,8 +58,11 @@ Az alábbi ábra a helyszíni és a saját felhő közötti összekapcsolást mu
 A privát felhővel való teljes összekapcsoláshoz engedélyezze a ExpressRoute Global Reach, majd kérjen egy engedélyezési kulcsot és egy privát társ-AZONOSÍTÓt a Azure Portal Global Reachhoz. Az engedélyezési kulcs és a társítási azonosító segítségével Global Reach lehet létrehozni az előfizetésben található ExpressRoute-áramkör és az új privát felhőhöz tartozó ExpressRoute áramkör között. A csatolást követően a két ExpressRoute áramkör a helyi környezetek közötti hálózati forgalmat átirányítja a saját felhőbe.  Az engedélyezési kulcs és a társ-azonosító kérésére és használatára vonatkozó eljárásokkal kapcsolatos további információkért tekintse meg a [ExpressRoute Global REACH-társítások privát felhőbe való létrehozását ismertető oktatóanyagot](tutorial-expressroute-global-reach-private-cloud.md).
 
 ## <a name="next-steps"></a>Következő lépések 
-További információ a [saját Felhőbeli tárolási fogalmakról](concepts-storage.md).
 
+Most, hogy a hálózatra és az összekapcsolásra vonatkozó fogalmakat is érintette, érdemes megismernie az alábbiakat:
+
+- [Azure VMware megoldás tárolási fogalmak](concepts-storage.md).
+- [Az Azure VMware megoldás identitásával kapcsolatos fogalmak](concepts-identity.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

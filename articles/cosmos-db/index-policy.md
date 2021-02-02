@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681650"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475100"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,10 +42,7 @@ Azure Cosmos DB a teljes felhasznált tárterület az adatméret és az index m�
 
 * Az index mérete az indexelési házirendtől függ. Ha az összes tulajdonság indexelve van, akkor az index mérete nagyobb lehet az adatméretnél.
 * Az Adattörléskor az indexek közel folyamatos tömörítéssel állnak. Kis Adattörlés esetén azonban előfordulhat, hogy az index méretének csökkenését nem észleli azonnal.
-* Az index mérete a következő esetekben növekedhet:
-
-  * Partíció felosztásának időtartama – a partíció felosztásának befejezése után a rendszer felszabadítja az index területét.
-  * Partíciók felosztásakor az index terület átmenetileg megnő a partíció felosztása során. 
+* Az index mérete átmenetileg megnő a fizikai partíciók felosztásakor. Az index terület a partíció felosztásának befejeződése után jelenik meg.
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
 
@@ -186,33 +183,35 @@ Az indexelési szabályzatot testre szabhatja, hogy az összes szükséges leké
 
 Ha egy lekérdezés két vagy több tulajdonságon is tartalmaz szűrőket, hasznos lehet összetett indexet létrehozni ezekhez a tulajdonságokhoz.
 
-Vegyük például a következő lekérdezést, amely egy két tulajdonságra vonatkozó esélyegyenlőségi szűrővel rendelkezik:
+Vegyük például a következő lekérdezést, amely az egyenlőség és a tartomány szűrőt is tartalmazta:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18
 ```
 
-Ez a lekérdezés hatékonyabb lesz, kevesebb időt vesz igénybe, és kevesebb RU-t használ, ha a (z) (név ASC, Age ASC) összetett indexet képes kihasználni.
+Ez a lekérdezés hatékonyabb lesz, kevesebb időt vesz igénybe, és kevesebb RU-t használ, ha egy összetett indexet használ `(name ASC, age ASC)` .
 
-A tartományhoz tartozó szűrőkkel rendelkező lekérdezések összetett indexszel is optimalizálható. A lekérdezés azonban csak egyetlen tartományból álló szűrőt tartalmazhat. A tartományhoz tartozó szűrők a következők:,, `>` `<` `<=` , `>=` és `!=` . A tartomány szűrőt az összetett indexben kell megadni.
+A több tartományos szűrőkkel rendelkező lekérdezések összetett indexszel is optimalizálható. Az egyes összetett indexek azonban csak egyetlen tartományos szűrőt tudnak optimalizálni. A tartományhoz tartozó szűrők a következők:,, `>` `<` `<=` , `>=` és `!=` . A tartomány szűrőt az összetett indexben kell megadni.
 
-Vegye figyelembe a következő lekérdezést mind az esélyegyenlőségi, mind a tartományos szűrőkkel:
+Vegye figyelembe a következő lekérdezést egy egyenlőségi szűrővel és két tartományos szűrőkkel:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-Ez a lekérdezés hatékonyabb lesz egy összetett indexszel (név ASC, Age ASC). A lekérdezés azonban nem használ összetett indexet (kor ASC, név ASC), mert az egyenlőségi szűrőket először az összetett indexben kell meghatározni.
+A lekérdezés hatékonyabbá válik a és a összetett indexével `(name ASC, age ASC)` `(name ASC, _ts ASC)` . A lekérdezés azonban nem használ összetett indexet, `(age ASC, name ASC)` mert az egyenlőségi szűrőket tartalmazó tulajdonságokat először meg kell határozni az összetett indexben. Egyetlen összetett index helyett két különálló összetett indexre van szükség, `(name ASC, age ASC, _ts ASC)` mivel minden összetett index csak egyetlen tartományos szűrőt tud optimalizálni.
 
 A következő szempontokat kell figyelembe venni összetett indexek létrehozásához több tulajdonság szűrőit használó lekérdezésekhez
 
+- A szűrési kifejezések több összetett indexet is használhatnak.
 - A lekérdezés szűrője tulajdonságainak meg kell egyezniük az összetett indexben szereplő tulajdonságokkal. Ha egy tulajdonság az összetett indexben szerepel, de nem szerepel a lekérdezésben szűrőként, a lekérdezés nem fogja használni az összetett indexet.
 - Ha egy lekérdezés olyan további tulajdonságokkal rendelkezik a szűrőben, amelyek nem lettek definiálva egy összetett indexben, akkor a lekérdezés kiértékeléséhez az összetett és a tartomány indexek kombinációját fogja használni a rendszer. Ehhez kevesebb RU-t kell használni, mint a csak a tartomány indexeket.
-- Ha egy tulajdonság tartomány-szűrővel ( `>` ,,, `<` `<=` `>=` vagy `!=` ) rendelkezik, akkor ezt a tulajdonságot az összetett indexben kell megadni. Ha egy lekérdezés több tartományból álló szűrővel rendelkezik, nem fogja használni az összetett indexet.
+- Ha egy tulajdonság tartomány-szűrővel ( `>` ,,, `<` `<=` `>=` vagy `!=` ) rendelkezik, akkor ezt a tulajdonságot az összetett indexben kell megadni. Ha egy lekérdezés több tartományból álló szűrővel rendelkezik, több összetett index is kihasználható.
 - Összetett index létrehozásakor, ha több szűrőkkel optimalizálja a lekérdezéseket, az `ORDER` összetett index nem lesz hatással az eredményekre. Ez a tulajdonság nem kötelező.
-- Ha nem definiál összetett indexet egy lekérdezéshez több tulajdonságra vonatkozó szűrőkkel, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető.
-- A (például DARABSZÁM vagy összeg) összesítéssel rendelkező lekérdezések és a szűrők is kihasználhatják az összetett indexeket.
-- A szűrési kifejezések több összetett indexet is használhatnak.
 
 Tekintse át az alábbi példákat, amelyekben összetett index van meghatározva a tulajdonságok neve, kora és időbélyeg:
 
@@ -227,43 +226,76 @@ Tekintse át az alábbi példákat, amelyekben összetett index van meghatározv
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 | ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>A szűrőt és egy ORDER BY záradékot is tartalmazó lekérdezések
+### <a name="queries-with-a-filter-and-order-by"></a>Szűrési és RENDEZÉSi lekérdezések
 
 Ha a lekérdezés egy vagy több tulajdonságra vonatkozik, és az ORDER BY záradékban eltérő tulajdonságokkal rendelkezik, hasznos lehet a szűrőben szereplő tulajdonságokat felvenni a `ORDER BY` záradékba.
 
-Ha például a szűrőben lévő tulajdonságokat hozzáadja a ORDER BY záradékhoz, a következő lekérdezés újraírható egy összetett index kihasználása érdekében:
+Ha például a szűrőben lévő tulajdonságokat hozzáadja a `ORDER BY` záradékhoz, a következő lekérdezés újraírható egy összetett index kihasználása érdekében:
 
 Lekérdezés tartomány-index használatával:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+SELECT *
+FROM c 
+WHERE c.name = "John" 
+ORDER BY c.timestamp
 ```
 
 Lekérdezés összetett index használatával:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John"
+ORDER BY c.name, c.timestamp
 ```
 
-Ugyanazokat a mintákat és lekérdezési optimalizálásokat lehet általánosítani a több egyenlőségi szűrővel rendelkező lekérdezések esetében:
+Ugyanazokat a lekérdezési optimalizálásokat lehet általánosítani a `ORDER BY` szűrőket tartalmazó lekérdezések esetében, figyelembe véve, hogy az egyedi összetett indexek csak a legfeljebb egy tartományos szűrőt támogatják.
 
 Lekérdezés tartomány-index használatával:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.timestamp
 ```
 
 Lekérdezés összetett index használatával:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.name, c.age, c.timestamp
+```
+
+Emellett összetett indexekkel is optimalizálhatja a lekérdezéseket a System functions és a ORDER BY használatával:
+
+Lekérdezés tartomány-index használatával:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.lastName
+```
+
+Lekérdezés összetett index használatával:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.firstName, c.lastName
 ```
 
 A következő szempontokat kell használni összetett indexek létrehozásához egy szűrővel és záradékkal rendelkező lekérdezés optimalizálásához `ORDER BY` :
 
-* Ha a lekérdezés a tulajdonságok alapján szűri, ezeket a záradékban elsőként kell szerepeltetni `ORDER BY` .
-* Ha a lekérdezés több tulajdonságra is szűr, az egyenlőségi szűrőknek a záradék első tulajdonságainak kell lenniük. `ORDER BY`
 * Ha nem definiál összetett indexet egy olyan lekérdezéshez, amely egy tulajdonságra vonatkozó szűrővel rendelkezik, és egy külön `ORDER BY` záradékot használ egy másik tulajdonság használatával, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető, különösen akkor, ha a záradékban szereplő tulajdonság `ORDER BY` magas fokú.
+* Ha a lekérdezés a tulajdonságok alapján szűri, ezeket a záradékban elsőként kell szerepeltetni `ORDER BY` .
+* Ha a lekérdezés több tulajdonságra is szűr, az egyenlőségi szűrőknek a záradék első tulajdonságainak kell lenniük `ORDER BY` .
+* Ha a lekérdezés több tulajdonságra is érvényes, az összetett indexek esetében legfeljebb egy tartomány-szűrő vagy rendszerfüggvény használható. A tartomány szűrőben vagy a rendszerfüggvényben használt tulajdonságot az összetett indexben kell megadni.
 * Az összetett indexek `ORDER BY` több tulajdonsággal rendelkező lekérdezésekhez való létrehozásával, valamint a több tulajdonság szűrőit tartalmazó lekérdezésekkel kapcsolatos megfontolások továbbra is érvényesek.
 
 
@@ -276,6 +308,7 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
 
 ## <a name="modifying-the-indexing-policy"></a>Az indexelési szabályzat módosítása
 

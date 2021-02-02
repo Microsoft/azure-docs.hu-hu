@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403381"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475488"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tippek az AI-bővítéshez az Azure Cognitive Search
 
@@ -100,7 +100,7 @@ A képelemzés még egyszerű esetekre is számításba vehető, így ha a képe
 
 A maximális futási idő a következő szintektől függ: több perc az ingyenes szinten, a számlázható rétegek 24 órás indexelése. Ha a feldolgozás nem hajtható végre egy 24 órás időszakon belül az igény szerinti feldolgozáshoz, váltson ütemezésre, hogy az indexelő feldolgozza a feldolgozást, ahol abbahagyta. 
 
-Az ütemezett indexek esetében az indexelés az utolsó ismert jó dokumentumon folytatja az ütemezést. Ismétlődő ütemezés használatával az indexelő az összes nem feldolgozott lemezkép feldolgozásának idejére áttekintheti az adott lemezképen keresztüli várakozó képeket. Az ütemterv szintaxisával kapcsolatos további információkért lásd [: 3. lépés: Create-an-indexelő](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) , vagy az [Indexelő ütemezhetnek az Azure Cognitive Search](search-howto-schedule-indexers.md).
+Az ütemezett indexek esetében az indexelés az utolsó ismert jó dokumentumon folytatja az ütemezést. Ismétlődő ütemezés használatával az indexelő az összes nem feldolgozott lemezkép feldolgozásának idejére áttekintheti az adott lemezképen keresztüli várakozó képeket. Az ütemterv szintaxisával kapcsolatos további információkért lásd: [az indexelő beosztása](search-howto-schedule-indexers.md).
 
 > [!NOTE]
 > Ha egy indexelő egy bizonyos ütemezésre van beállítva, de többször is meghibásodik ugyanazon a dokumentumon, és minden egyes futtatásakor újra leáll, az indexelő egy ritkábban (legfeljebb legalább 24 óránként) fog futni, amíg a folyamat újból el nem végzi a műveletet.  Ha úgy gondolja, hogy rögzítette a problémát, amely miatt az indexelő egy bizonyos ponton elakadt, igény szerint futtathatja az Indexelő szolgáltatást, és ha a folyamat sikeresen elvégezte az előrehaladást, az indexelő az ütemezési intervallumba ismét visszatér.
@@ -109,12 +109,12 @@ A portálon alapuló indexeléshez (a gyors útmutatóban leírtak szerint) a "F
 
 ## <a name="tip-8-increase-indexing-throughput"></a>8. tipp: az indexelési teljesítmény növelése
 
-[Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több DataSource és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
+[Párhuzamos indexeléshez](search-howto-large-index.md)helyezze az adatait több tárolóba vagy több virtuális mappába ugyanabban a tárolóban. Ezután hozzon létre több adatforrás és indexelő párokat. Az összes indexelő használhatja ugyanazt a készségkészlet, és az azonos keresési indexbe írhat, így a keresési alkalmazásnak nem kell megismernie ezt a particionálást.
 
 ## <a name="see-also"></a>Lásd még
 
 + [Rövid útmutató: AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: az AI-gazdagítás REST API-k megismerése](cognitive-search-tutorial-blob.md)
-+ [Adatforráshoz tartozó hitelesítő adatok megadása](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [BLOB-indexek konfigurálása](search-howto-indexing-azure-blob-storage.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [A dúsított mezők indexhez való leképezése](cognitive-search-output-field-mapping.md)

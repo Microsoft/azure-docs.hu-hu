@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 9ea5fb26a52c967c5296f1a83976e748c86c9e18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763804"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475040"
 ---
-A virtuális gép mérete határozza meg a virtuális gép számára elérhető számítási erőforrások, például a processzor, a GPU és a memória mennyiségét. A virtuális gépeket a számítási feladatok számára megfelelő virtuálisgép-mérettel kell létrehozni. Annak ellenére, hogy az összes gép ugyanazon a hardveren fut, a gépi méretek eltérő korlátokkal rendelkeznek a lemezes hozzáféréshez, ami segíthet a teljes lemezes hozzáférés kezelésében a virtuális gépeken. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.
+A virtuális gép mérete határozza meg a virtuális gép számára elérhető számítási erőforrások (például a processzor, a GPU és a memória) mennyiségét. A virtuális gépeket a számítási feladatok számára megfelelő virtuálisgép-mérettel kell létrehoznia. Annak ellenére, hogy az összes gép ugyanazon a hardveren fut, a gépi méretek eltérő korlátokkal rendelkeznek a lemez-hozzáféréshez. Ez segítséget nyújt a virtuális gépeken a teljes lemezes hozzáférés kezelésében. Ha a munkaterhelés növekszik, akkor átméretezheti a meglévő virtuális gépeket is.
 
-A következő virtuális gépek támogatottak Azure Stack peremhálózati eszközön való létrehozáshoz.
+A következő virtuális gépek támogatottak a Azure Stack peremhálózati eszközön történő létrehozáshoz.
 
 ### <a name="dv2-series"></a>Dv2-sorozat
 |Méret     |vCPU     |Memória (GiB) | Erőforrás lemezének mérete (GiB)  | OPERÁCIÓSRENDSZER-lemez mérete (GiB) | Adatlemezek max. száma | Hálózati adapterek maximális száma |
@@ -40,7 +40,7 @@ A következő virtuális gépek támogatottak Azure Stack peremhálózati eszkö
 |**Standard_DS13_v2**|8   |56  |112|32000 |1000 |16 |8 |
 
 
-További információért látogasson el [általános célú VM-méretek Dv2 sorozatára](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
+További információ: [Dv2 és DSv2 sorozat](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
 
 ### <a name="ncast4_v3-series-preview"></a>NCasT4_v3 sorozat (előzetes verzió)
 
@@ -51,7 +51,7 @@ Ezek a méretek támogatottak az eszközön található GPU-alapú virtuális g�
 |**Standard_NC4as_T4_v3** |4   |28  |180   |1000|1 |16   |4 |
 |**Standard_NC8as_T4_v3** |8   |56  |360   |1000|1 |16  |8 |
 
-További információ: [NCasT4_v3 sorozat a GPU-ra optimalizált VM-méretekben](../articles/virtual-machines/nct4-v3-series.md).
+További információ: [NCasT4_v3 sorozat](../articles/virtual-machines/nct4-v3-series.md).
 
 ### <a name="f-series"></a>F-sorozat
 
@@ -70,5 +70,5 @@ Ez a sorozat számítási feladatokhoz van optimalizálva, és Intel Xeon proces
 | Standard_F8s | 8 | 16 |32 |1000| 32 |  8 |
 | Standard_F16s | 16 | 32 |64 |1000| 64 |  8 |
 
-További információért látogasson el [a Fsv2 sorozatra a számítási optimalizált virtuálisgép-méreteknél](../articles/virtual-machines/fsv2-series.md).
+További információ: [Fsv2 sorozat](../articles/virtual-machines/fsv2-series.md).
 

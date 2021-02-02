@@ -412,6 +412,10 @@
       items:
         - name: Mi az a rugalmas kiszolgáló?
           href: flexible-server/overview.md
+        - name: Támogatott verziók
+          href: flexible-server/concepts-supported-versions.md
+        - name: Számítás és tárolás
+          href: flexible-server/concepts-compute-storage.md
     - name: Rövid útmutatók
       expanded: true
       items:
@@ -437,93 +441,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-    - name: Oktatóanyagok
-      items:
-        - name: WordPress az Azure Kubernetesen
-          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
-        - name: PHP- (Laravel-) alkalmazás buildelése adatbázis használatával
-          href: flexible-server/tutorial-php-database-app.md
-        - name: Csatlakozás privát webalkalmazással
-          href: flexible-server/tutorial-webapp-server-vnet.md
-    - name: Alapelvek
-      items:
-        - name: Kiszolgálók
-          href: flexible-server/concept-servers.md
-        - name: Támogatott verziók
-          href: flexible-server/concepts-supported-versions.md
-        - name: Korlátozások
-          href: flexible-server/concepts-limitations.md
-        - name: Számítás és tárolás
-          href: flexible-server/concepts-compute-storage.md
-        - name: Hálózatkezelés
-          href: flexible-server/concepts-networking.md
-          displayName: 'virtual network, IP address, public access'
-        - name: Karbantartás
-          href: flexible-server/concepts-maintenance.md
-        - name: Az üzletmenet folytonossága
-          items:
-            - name: Az üzletmenet folytonossága – áttekintés
-              href: flexible-server/concepts-business-continuity.md
-            - name: Biztonsági mentés és visszaállítás
-              href: flexible-server/concepts-backup-restore.md
-            - name: Magas rendelkezésre állás
-              href: flexible-server/concepts-high-availability.md
-        - name: Monitorozás és naplók
-          items:
-            - name: Kiszolgálóparaméterek
-              href: flexible-server/concepts-server-parameters.md
-            - name: Lassú lekérdezési naplók
-              href: flexible-server/concepts-slow-query-logs.md
-            - name: Naplók
-              href: flexible-server/concepts-audit-logs.md
-            - name: Mérőszámok
-              href: flexible-server/concepts-monitoring.md
-        - name: Replikáció
-          items:
-            - name: Olvasási replikák
-              href: flexible-server/concepts-read-replicas.md
-    - name: Útmutatók
-      items:
-        - name: Kiszolgáló kezelése
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
-              href: flexible-server/how-to-manage-server-cli.md
-        - name: Karbantartás
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-maintenance-portal.md
-        - name: Kiszolgáló leállítása/indítása
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Kiszolgáló visszaállítása
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-restore-server-portal.md
-        - name: Magas rendelkezésre állás
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-configure-high-availability.md
-        - name: Hálózatkezelés
-          items:
-            - name: Privát hozzáférés (VNet-integráció)
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-manage-virtual-network-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-virtual-network-cli.md
-            - name: Nyilvános hozzáférés (engedélyezett IP-címek)
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-manage-firewall-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
-              items:
-                - name: Kapcsolódás TLS/SSL használatával
-                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Kapcsolódás TLS/SSL használatával
+          href: flexible-server/how-to-connect-tls-ssl.md
         - name: Kiszolgáló paramétereinek konfigurálása
           items:
             - name: Azure Portal
@@ -532,32 +451,104 @@
             - name: Azure CLI
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
-        - name: Monitorozás és naplók
-          items:
-            - name: Riasztások létrehozása metrikákhoz
-              href: flexible-server/how-to-alert-on-metric.md
-            - name: Lassú lekérdezési naplók
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-            - name: Naplók
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-        - name: Kiszolgáló újraindítása
+        - name: Adatbázisok és felhasználók létrehozása
+          href: howto-create-users.md
+          displayName: users
+        - name: Kiszolgáló figyelése
+          href: flexible-server/how-to-alert-on-metric.md
+    - name: Alkalmazásfejlesztés
+      items:
+        - name: WordPress az Azure Kubernetesen
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
+        - name: PHP- (Laravel-) alkalmazás buildelése adatbázis használatával
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Csatlakozás privát webalkalmazással
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Kiszolgálófelügyelet
+      items:
+        - name: Alapelvek
+          href: flexible-server/concept-servers.md
+        - name: Kiszolgálóparaméterek
+          href: flexible-server/concepts-server-parameters.md
+        - name: Korlátozások
+          href: flexible-server/concepts-limitations.md
+        - name: Kiszolgáló kezelése
           items:
             - name: Azure Portal
-              href: flexible-server/how-to-restart-server-portal.md
-        - name: Replikáció
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Kiszolgáló leállítása/elindítása Azure Portal használatával
+          href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Kiszolgáló újraindítása Azure Portal használatával
+          href: flexible-server/how-to-restart-server-portal.md
+    - name: Hálózatkezelés
+      items:
+        - name: Alapelvek
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Privát hozzáférés (VNet-integráció)
           items:
-            - name: Olvasási replikák létrehozása az Azure Portalon
+            - name: Privát hozzáférés konfigurálása Azure Portal használatával
+              href: flexible-server/how-to-manage-virtual-network-portal.md
+            - name: Privát hozzáférés konfigurálása az Azure CLI-vel
+              href: flexible-server/how-to-manage-virtual-network-cli.md
+        - name: Nyilvános hozzáférés (engedélyezett IP-címek)
+          items:
+            - name: Nyilvános hozzáférés konfigurálása Azure Portal használatával
+              href: flexible-server/how-to-manage-firewall-portal.md
+            - name: Nyilvános hozzáférés konfigurálása az Azure CLI-vel
+              href: flexible-server/how-to-manage-firewall-cli.md
+    - name: Szolgáltatás karbantartása
+      items:
+        - name: Ütemezett karbantartás
+          href: flexible-server/concepts-maintenance.md
+        - name: Ütemezett karbantartás konfigurálása Azure Portal használatával
+          href: flexible-server/how-to-maintenance-portal.md
+    - name: Magas rendelkezésre állás
+      items:
+        - name: Az üzletmenet folytonossága – áttekintés
+          href: flexible-server/concepts-business-continuity.md
+        - name: Magas rendelkezésre állás
+          href: flexible-server/concepts-high-availability.md
+        - name: Magas rendelkezésre állás konfigurálása Azure Portal használatával
+          href: flexible-server/how-to-configure-high-availability.md
+    - name: Monitorozás és naplók
+      items:
+        - name: Alapelvek
+          href: flexible-server/concepts-monitoring.md
+        - name: Lassú lekérdezési naplók
+          items:
+            - name: Alapelvek
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Lassú lekérdezési naplók konfigurálása Azure Portal használatával
+              href: flexible-server/how-to-configure-slow-query-logs-portal.md
+        - name: Naplók
+          items:
+            - name: Alapelvek
+              href: flexible-server/concepts-audit-logs.md
+            - name: Naplók konfigurálása
+              href: flexible-server/how-to-configure-audit-logs-portal.md
+    - name: Replikáció
+      items:
+        - name: Olvasási replikák
+          href: flexible-server/concepts-read-replicas.md
+        - name: Olvasási replikák létrehozása
+          items:
+            - name: Olvasási replikák létrehozása Azure Portal használatával
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: Olvasási replikák létrehozása az Azure CLI felületen
+            - name: Olvasási replikák létrehozása az Azure CLI-vel
               href: flexible-server/how-to-read-replicas-cli.md
-        - name: Hibaelhárítás
-          items:
-            - name: Csatlakozási hibák
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+    - name: Biztonsági mentés & visszaállítása
+      items:
+        - name: Alapelvek
+          href: flexible-server/concepts-backup-restore.md
+        - name: Kiszolgáló visszaállítása az Azure Portalon
+          href: flexible-server/how-to-restore-server-portal.md
+    - name: Hibaelhárítás
+      items:
+        - name: Csatlakoztatási hibák elhárítása
+          href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Áttelepítés
   items:
     - name: Adatok migrálása a mysqldump vagy a phpmyadmin használatával

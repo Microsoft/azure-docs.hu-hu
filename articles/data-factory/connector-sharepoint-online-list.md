@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83871914"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474947"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,7 +114,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource**értékre kell állítani. | Igen |
+| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Igen |
 | listName | A SharePoint Online-lista neve. | Igen |
 
 **Példa**
@@ -147,7 +147,7 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource**értékre kell állítani. | Igen |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Igen |
 | lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | Nem |
 
@@ -183,6 +183,9 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 ]
 ```
 
+> [!NOTE]
+> Azure Data Factory nem választhat egynél több *választási* adattípust egy SharePoint Online-lista forrásaként.
+
 ## <a name="data-type-mapping-for-sharepoint-online-list"></a>Adattípusok leképezése a SharePoint Online-listához
 
 Az adatok SharePoint Online-listából való másolása során a rendszer a következő leképezéseket használja a SharePoint Online-lista adattípusai és Azure Data Factory köztes adattípusok között. 
@@ -207,7 +210,7 @@ Az adatok SharePoint Online-listából való másolása során a rendszer a köv
 
 ## <a name="copy-file-from-sharepoint-online"></a>Fájl másolása a SharePoint Online-ból
 
-A SharePoint Online-ból **webes tevékenység** használatával másolhatja a fájlt, amellyel hitelesítheti és megragadhatja a hozzáférési tokent a spongyatől, majd átadhatja azt a későbbi **másolási tevékenységnek** , hogy a **forrásként a http-összekötővel**másolja az
+A SharePoint Online-ból **webes tevékenység** használatával másolhatja a fájlt, amellyel hitelesítheti és megragadhatja a hozzáférési tokent a spongyatől, majd átadhatja azt a későbbi **másolási tevékenységnek** , hogy a **forrásként a http-összekötővel** másolja az
 
 ![SharePoint-másolási folyamat](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
 
@@ -239,6 +242,6 @@ A SharePoint Online-ból **webes tevékenység** használatával másolhatja a f
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

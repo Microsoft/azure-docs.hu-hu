@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 5f9d772a4cc5722201891450707a68fe487acc3a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540649"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475252"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>A Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása
 
@@ -207,7 +207,7 @@ A probléma megoldásához a következő lépésekkel szabadítson fel lemezter�
 Nyisson meg egy PowerShell-ablakot rendszergazdaként, és futtassa a következő parancsmagot:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object*
+Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
 ```
 
 Ha a munkamenet-gazdagép vagy a gazdagépen lévő gazdagépek állapota mindig nem **érhető el** vagy nem **frissíthető**, akkor előfordulhat, hogy az ügynök vagy a verem telepítése sikertelen volt.
@@ -343,7 +343,7 @@ Az ügynök és a rendszerindítási betöltő legújabb verziójának újratele
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép az elérhető munkamenet-gazdagépről](media/hostpool-portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a probléma továbbra is fennáll, hozzon létre egy támogatási esetet, és adja meg a problémával kapcsolatos részletes információkat, valamint azokat a műveleteket, amelyeket el kell végeznie a megoldásához. A következő lista a Windows rendszerű virtuális asztali környezetben felmerülő problémák elhárításához használható egyéb erőforrásokat tartalmaz.
 

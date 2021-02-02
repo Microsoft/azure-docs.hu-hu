@@ -4,12 +4,12 @@ description: Az Azure Kubernetes Service-ben található fürthöz tartozó Azur
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614795"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475437"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -98,11 +98,11 @@ A következő részek részletesen ismertetik a közös delegálásokat, amelyek
 
 Ha Azure Container Registry (ACR) tároló lemezkép-tárolót használ, engedélyeket kell adnia az AK-fürthöz tartozó egyszerű szolgáltatásnév számára a képek olvasásához és lekéréséhez. Jelenleg az ajánlott konfiguráció az az [AK Create][az-aks-create] vagy [az Kaba Update][az-aks-update] parancs használata a beállításjegyzékbe való integráláshoz és az egyszerű szolgáltatásnév megfelelő szerepkörének hozzárendeléséhez. A részletes lépésekért lásd: [hitelesítés a Azure Container Registry az Azure Kubernetes szolgáltatással][aks-to-acr].
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és az alhálózat vagy a nyilvános IP-címek egy másik erőforráscsoporthoz tartoznak. Rendelje hozzá a [hálózati közreműködő][rbac-network-contributor] beépített szerepkört a virtuális hálózaton belüli alhálózathoz. Azt is megteheti, hogy létrehozhat egy [Egyéni szerepkört][rbac-custom-role] , amely jogosult az adott erőforráscsoport hálózati erőforrásainak elérésére. További részletekért lásd: [AK szolgáltatás engedélyei][aks-permissions] .
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 Előfordulhat, hogy egy másik erőforráscsoport meglévő lemez-erőforrásaihoz is hozzá kell férnie. Rendelje hozzá a következő szerepkör-engedélyek egyikét:
 
@@ -128,7 +128,7 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 - Ha nem adott meg konkrét szolgáltatásnevet a további AK CLI-parancsokban, a rendszer az alapértelmezett egyszerű szolgáltatást `~/.azure/aksServicePrincipal.json` használja.  
 - Szükség esetén eltávolíthatja a fájl aksServicePrincipal.jsis, és az AK létrehoz egy új szolgáltatásnevet.
 - Az [az aks create][az-aks-create] használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik.
-    - Az egyszerű szolgáltatásnév törléséhez kérdezze le a *servicePrincipalProfile. clientId* , majd törölje az az [AD App delete][az-ad-app-delete]paranccsal. Cserélje le a következő erőforráscsoportot és a fürtök nevét a saját értékeire:
+    - Az egyszerű szolgáltatásnév törléséhez kérdezze le a *servicePrincipalProfile. clientId* , majd törölje az [az ad SP delete] [az-ad-SP-delete] paranccsal. Cserélje le a következő erőforráscsoportot és a fürtök nevét a saját értékeire:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -152,7 +152,7 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 
 Az egyszerű szolgáltatás hitelesítő adatainak alapértelmezett lejárati ideje egy év. Ha a *aksServicePrincipal.js* fájl egy évnél régebbi, törölje a fájlt, és próbálja meg újból TELEPÍTENI az AK-fürtöt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Active Directory egyszerű szolgáltatásaival kapcsolatos további információkért lásd: [alkalmazás-és egyszerű szolgáltatások objektumai][service-principal].
 

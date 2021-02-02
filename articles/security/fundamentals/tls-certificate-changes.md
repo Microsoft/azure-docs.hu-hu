@@ -9,16 +9,16 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 04b68899b796088bd4b89509a413c7a1fe5369bb
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881248"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475352"
 ---
 # <a name="azure-tls-certificate-changes"></a>Az Azure TLS-tanúsítvány változásai  
 
-A Microsoft frissíti az Azure-szolgáltatásokat, hogy TLS-tanúsítványokat használjanak egy másik legfelső szintű hitelesítésszolgáltatóktól (CA). Ez a változás azért történik, mert az aktuális HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok nem felelnek meg a HITELESÍTÉSSZOLGÁLTATÓ/böngésző alapkonfigurációjának egyik követelményének.
+A Microsoft frissíti az Azure-szolgáltatásokat, hogy TLS-tanúsítványokat használjanak egy másik legfelső szintű hitelesítésszolgáltatóktól (CA). Ez a változás azért történik, mert az aktuális HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok nem felelnek meg a CA/Browser fórum alapkövetelményeinek, és 2021. február 15-én visszavonjuk.
 
 ## <a name="when-will-this-change-happen"></a>Mikor fog történni ez a változás?
 
@@ -89,6 +89,6 @@ Az alábbi módokon derítheti fel, hogy az alkalmazás érintett-e:
     - http://ocsp&#46; msocsp&#46;com
     - http://www&#46; Microsoft&#46;com/pkiops
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdése van, vegye fel velünk a kapcsolatot a [támogatási szolgálattal](https://azure.microsoft.com/support/options/).

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780739"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475539"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Naplók beolvasása IoT Edge központi telepítésből
 
@@ -51,8 +51,8 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -70,8 +70,8 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
 | ID (Azonosító) | sztring | Egy reguláris kifejezés, amely megadja a modul nevét. Egy peremhálózati eszközön több modulnak is megfelel. A [.net reguláris kifejezések](/dotnet/standard/base-types/regular-expressions) formátuma várható. |
 | filter (szűrő) | JSON szakasz | A `id` rekordban szereplő reguláris kifejezésnek megfelelő modulokra alkalmazandó naplózási szűrők. |
 | farok | egész szám | A napló sorainak száma a múltban, a legutóbbi kezdéstől kezdve. Választható. |
-| mivel | egész szám | A naplók csak ennyi idő után térnek vissza, mint az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc), rfc3339 timestamp vagy UNIX timestamp.  Ha mindkettő `tail` és `since` a meg van adva, a rendszer a naplókat először az érték használatával kérdezi le `since` . Ezt követően az `tail` érték az eredményre lesz alkalmazva, és a rendszer a végeredményt adja vissza. Választható. |
-| amíg | egész szám | Csak a megadott időpont előtt, a rfc3339 timestamp, a UNIX timestamp vagy az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc) után ad vissza naplókat. Választható. |
+| mivel | sztring | A naplók csak ennyi idő után térnek vissza, mint az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc), rfc3339 timestamp vagy UNIX timestamp.  Ha mindkettő `tail` és `since` a meg van adva, a rendszer a naplókat először az érték használatával kérdezi le `since` . Ezt követően az `tail` érték az eredményre lesz alkalmazva, és a rendszer a végeredményt adja vissza. Választható. |
+| amíg | sztring | Csak a megadott időpont előtt, a rfc3339 timestamp, a UNIX timestamp vagy az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc) után ad vissza naplókat. Választható. |
 | naplózási szint | egész szám | A naplózási sorok szűrése a megadott naplózási szintnél kisebb vagy azzal egyenlő. A naplófájloknak a javasolt naplózási formátumot kell követniük, és a [syslog súlyossági szintje standard szintűt](https://en.wikipedia.org/wiki/Syslog#Severity_level) kell használniuk. Választható. |
 | regex | sztring | A megadott reguláris kifejezéssel egyező tartalmat tartalmazó naplófájlok szűrése a [.net reguláris kifejezési](/dotnet/standard/base-types/regular-expressions) formátum használatával. Választható. |
 | kódolási | sztring | Vagy `gzip`, vagy `none`. Az alapértelmezett szint a `none`. |
@@ -160,8 +160,8 @@ Ez a metódus a **GetModuleLogs** hasonló JSON-adattartalmat fogad el, a "sas U
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -293,8 +293,8 @@ Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
 |-|-|-|
 | sémaverzióval | sztring | Beállítás értéke `1.0` |
 | Sas URL | karakterlánc (URI) | [Az Azure Blob Storage tárolóhoz írási hozzáféréssel rendelkező közös hozzáférés-aláírási URL-cím](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| mivel | egész szám | A naplók csak ennyi idő után térnek vissza, mint az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc), rfc3339 timestamp vagy UNIX timestamp. Választható. |
-| amíg | egész szám | Csak a megadott időpont előtt, a rfc3339 timestamp, a UNIX timestamp vagy az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc) után ad vissza naplókat. Választható. |
+| mivel | sztring | A naplók csak ennyi idő után térnek vissza, mint az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc), rfc3339 timestamp vagy UNIX timestamp. Választható. |
+| amíg | sztring | Csak a megadott időpont előtt, a rfc3339 timestamp, a UNIX timestamp vagy az időtartam (1 d, 90 m, 2 nap 3 óra 2 perc) után ad vissza naplókat. Választható. |
 | edgeRuntimeOnly | boolean | Ha az értéke igaz, csak a Edge-ügynök, az Edge hub és a Edge biztonsági démon naplóit kell visszaadnia. Alapértelmezett érték: false (hamis).  Választható. |
 
 > [!IMPORTANT]
@@ -397,6 +397,6 @@ A Azure Portalban hívja meg a metódust a metódus nevével `GetTaskStatus` és
 
 ![Közvetlen "GetTaskStatus" metódus hívása Azure Portal](./media/how-to-retrieve-iot-edge-logs/invoke-get-task-status.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai](module-edgeagent-edgehub.md)

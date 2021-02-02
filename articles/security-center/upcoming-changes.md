@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226471"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475590"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -38,7 +38,7 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>A Kubernetes munkaterhelés-védelmi javaslatai hamarosan elérhetők lesznek általánosan elérhetővé (GA)
 
-**Változás becsült dátuma:** Január 2021
+**Változás becsült dátuma:** Február 2021
 
 A [Kubernetes-munkaterhelések védelme](kubernetes-workload-protections.md) című cikkben ismertetett Kubernetes munkaterhelés-védelmi javaslatok jelenleg előzetes verzióban érhetők el. Habár egy javaslat előzetes verzióban érhető el, nem jelenik meg az erőforrás állapota, és nem szerepel a biztonságos pontszám számításában.
 

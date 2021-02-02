@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan azonosíthatja, diagnosztizálhatja és elhár�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905111"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475726"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,6 +62,8 @@ A forgatókönyvhöz kapcsolódó lekérdezési optimalizálások megismeréséh
 - [Adja meg a szükséges elérési utakat az indexelési házirendben.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Az indexet használó rendszerfunkciók ismertetése.](#understand-which-system-functions-use-the-index)
+
+- [A karakterláncrendszer-függvény végrehajtásának javítása.](#improve-string-system-function-execution)
 
 - [Megtudhatja, hogy mely összesített lekérdezések használják az indexet.](#understand-which-aggregate-queries-use-the-index)
 
@@ -198,10 +200,11 @@ Az indexelési házirendhez bármikor hozzáadhat tulajdonságokat, és nincs ha
 
 A legtöbb rendszerfüggvény indexeket használ. Az alábbi lista néhány olyan gyakori karakterlánc-függvényt mutat be, amely indexeket használ:
 
-- STARTSWITH (str_expr1, str_expr2, bool_expr)  
-- TARTALMAZZA (str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- Alsztring (str_expr, num_expr, num_expr) = str_expr, de csak akkor, ha az első num_expr 0
+- StartsWith
+- Contains
+- RegexMatch
+- Bal
+- Alkarakterlánc – de csak akkor, ha az első num_expr 0
 
 Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely nem használja az indexet, és be kell töltenie az egyes dokumentumokat:
 
@@ -210,11 +213,21 @@ Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely n
 | FELSŐ/ALSÓ                             | Ahelyett, hogy a rendszerfüggvényt használja az összehasonlításhoz, a beillesztéskor normalizálja a burkolatot. Egy lekérdezés, például A ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` válik ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematikai függvények (nem összesítések) | Ha egy értéket gyakran kell kiszámítani a lekérdezésben, érdemes az értéket a JSON-dokumentum tulajdonságának megfelelően tárolni. |
 
-------
+### <a name="improve-string-system-function-execution"></a>A karakterláncrendszer-függvény végrehajtásának javítása
 
-Ha egy rendszerfüggvény indexeket használ, és továbbra is magas RU-díjat tartalmaz, akkor próbáljon hozzá hozzáadni `ORDER BY` a lekérdezéshez. Bizonyos esetekben a Hozzáadás `ORDER BY` növelheti a rendszerfunkciók indexelésének kihasználtságát, különösen akkor, ha a lekérdezés hosszú ideig fut, vagy több oldalra is átnyúlik.
+Az indexeket használó egyes rendszerfunkcióknál javíthatja a lekérdezés végrehajtását egy záradék hozzáadásával `ORDER BY` a lekérdezéshez. 
 
-Vegyük például az alábbi lekérdezést a következővel: `CONTAINS` . `CONTAINS` egy indexet kell használnia, de tegyük fel, hogy a megfelelő index hozzáadása után az alábbi lekérdezés futtatásakor továbbra is rendkívül magas RU-díjat számítunk fel:
+Pontosabban, minden olyan rendszerfunkció, amelynek az RU-díja növekszik, mivel a tulajdonság megnövekedésének mértéke is előnyös lehet a `ORDER BY` lekérdezésben. Ezek a lekérdezések egy indexelési vizsgálatot végeznek, így a lekérdezési eredmények rendezése hatékonyabbá teheti a lekérdezést.
+
+Ez az optimalizálás a következő rendszerfunkciók végrehajtásának javítását is lehetővé teheti:
+
+- StartsWith (a kis-és nagybetűk megkülönböztetése = igaz)
+- StringEquals (a kis-és nagybetűk megkülönböztetése = igaz)
+- Contains
+- RegexMatch
+- EndsWith
+
+Vegyük például az alábbi lekérdezést a következővel: `CONTAINS` . `CONTAINS` az indexeket fogja használni, de néha még a releváns index hozzáadása után is, az alábbi lekérdezés futtatásakor továbbra is nagyon magas RU-díjat kell megfigyelni.
 
 Eredeti lekérdezés:
 
@@ -224,13 +237,32 @@ FROM c
 WHERE CONTAINS(c.town, "Sea")
 ```
 
-Frissített lekérdezés `ORDER BY` :
+A lekérdezés-végrehajtást a alábbiak hozzáadásával növelheti `ORDER BY` :
 
 ```sql
 SELECT *
 FROM c
 WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
+```
+
+Ugyanez az optimalizálás segíthet a további szűrőkkel rendelkező lekérdezésekben. Ebben az esetben érdemes az egyenlőségi szűrőket tartalmazó tulajdonságokat is hozzáadni a `ORDER BY` záradékhoz.
+
+Eredeti lekérdezés:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+A lekérdezés-végrehajtást a `ORDER BY` (z) (c.name, c. Town) [összetett indexének](index-policy.md#composite-indexes) hozzáadásával és a következőhöz lehet javítani:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
 ```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Az indexet használó összesített lekérdezések ismertetése
