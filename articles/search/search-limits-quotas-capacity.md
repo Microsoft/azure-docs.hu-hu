@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591344"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493041"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -78,15 +78,15 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 | Erőforrás | Ingyenes &nbsp; <sup>1</sup> | Alapszintű &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N.A. |10 |10 |
-| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N.A. |10 |10 |
-| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N.A. |10 |10 |
-| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N.A. |Korlátlan |Korlátlan |
+| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N/A |10 |10 |
+| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N/A |Korlátlan |Korlátlan |
 | Minimális ütemterv | 5 perc |5 perc |5 perc |5 perc |5 perc |5 perc |5 perc | 5 perc |
-| Maximális futási idő| 1-3 perc |24 óra |24 óra |24 óra |24 óra |N.A.  |24 óra |24 óra |
-| Az indexek maximális futási ideje készségkészlet <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N.A.  |2 óra |2 óra |
-| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N.A.  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4 &nbsp; millió |8 &nbsp; millió |16 &nbsp; millió |N.A. |4 &nbsp; millió |4 &nbsp; millió |
+| Maximális futási idő| 1-3 perc |24 óra |24 óra |24 óra |24 óra |N/A  |24 óra |24 óra |
+| Az indexek maximális futási ideje készségkészlet <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N/A  |2 óra |2 óra |
+| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N/A  |256 |256 |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4 &nbsp; millió |8 &nbsp; millió |16 &nbsp; millió |N/A |4 &nbsp; millió |4 &nbsp; millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -109,7 +109,7 @@ Az indexelő más Azure-erőforrásokhoz is hozzáférhetnek a [megosztott priv�
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Privát végpont-indexelő támogatása | Nem | Igen | Igen | Igen | Igen | Nem | Igen | Igen |
 | Privát végpontok támogatása az indexek számára a készségkészlet<sup>1</sup> | Nem | Nem | Nem | Igen | Igen | Nem | Igen | Igen |
-| Privát végpontok maximális száma | N.A. | 10 vagy 30 | 100 | 400 | 400 | N.A. | 20 | 20 |
+| Privát végpontok maximális száma | N/A | 10 vagy 30 | 100 | 400 | 400 | N/A | 20 | 20 |
 | Maximális eltérő erőforrástípusok<sup>2</sup> | N.A. | 4 | 7 | 15 | 15 | N.A. | 4 | 4 |
 
 <sup>1</sup> a mesterséges intelligencia és a képek elemzése számítási igényű, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényel. Emiatt a magánhálózati kapcsolatok le vannak tiltva az alacsonyabb szinten, hogy elkerülje a keresési szolgáltatás teljesítményére és stabilitására gyakorolt negatív hatást.
@@ -139,7 +139,7 @@ Egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési
 
 ## <a name="throttling-limits"></a>Szabályozási korlátok
 
-A keresési lekérdezési és indexelési kérelmeket a rendszer a maximális kapacitásának megfelelően szabályozza. A szabályozás eltérően viselkedik a különböző API-kkal. A szolgáltatás terhelése alapján a lekérdezési API-k (keresés/javaslat/automatikus kiegészítés) és az indexelő API-k szabályozása dinamikusan történik. Az API-k indexe statikus kérelmekre vonatkozó korlátozásokkal rendelkezik. 
+Az API-kérelmeket a rendszer a maximális kapacitásnak megfelelően szabályozza. A szabályozás eltérően viselkedik a különböző API-kkal. A szolgáltatás terhelése alapján a lekérdezési API-k (keresés/javaslat/automatikus kiegészítés) és az indexelő API-k szabályozása dinamikusan történik. Az API-k és a Service Operations API indexe statikus kérelmekre vonatkozó korlátozásokat tartalmaz. 
 
 Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek:
 
@@ -148,6 +148,10 @@ Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek
 + Index létrehozása (/Indexes POST): 12 percenként, keresési egységenként
 + Index létrehozása vagy frissítése (PUT/Indexes/myindex): 6 másodpercenként/keresési egységenként
 + Index törlése (/Indexes/myindex törlése): 12 percenként/keresési egységenként 
+
+A szolgáltatással kapcsolatos műveletek statikus díjszabási korlátja:
+
++ Szolgáltatási statisztika (GET/servicestats): másodpercenként 4 másodpercenként
 
 ## <a name="api-request-limits"></a>API-kérelmek korlátai
 * Legfeljebb 16 MB/kérelem <sup>1</sup>

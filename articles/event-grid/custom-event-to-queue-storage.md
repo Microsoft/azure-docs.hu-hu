@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: egyéni események küldése a Storage-üzenetsor számára – Event Grid, Azure CLI'
 description: 'Rövid útmutató: a Azure Event Grid és az Azure CLI használatával tehet közzé egy témakört, és feliratkozhat erre az eseményre. A rendszer tárolási üzenetsort használ végpontként.'
-ms.date: 07/07/2020
+ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566316"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493260"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események irányítása az Azure üzenetsor-tárolóba az Azure CLI-vel és a Event Grid
 
@@ -25,7 +25,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure 
 
 Ez a cikk az Azure CLI használatának parancsait ismerteti. 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -116,6 +116,11 @@ done
 A Portalon lépjen a Queue Storage-tárolóhoz, és figyelje meg, hogy az Event Grid elküldte a három eseményt az üzenetsorba.
 
 ![Az üzenetek megjelenítése](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> Ha [Azure üzenetsor-tárolási triggert](../azure-functions/functions-bindings-storage-queue-trigger.md) használ egy olyan várólista Azure functions számára, amely üzeneteket fogad Event Gridtól, a függvény végrehajtásához a következő hibaüzenet jelenhet meg: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> 
+> Ennek az az oka, hogy amikor [Azure üzenetsor-tárolási triggert](../azure-functions/functions-bindings-storage-queue-trigger.md)használ, Azure functions egy **Base64 kódolású karakterláncot** vár, de a Event Grid egyszerű szöveges formátumban küld üzeneteket egy tárolási várólistára. Jelenleg nem lehet konfigurálni a várólista-triggert Azure Functions egyszerű szöveg fogadására. 
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

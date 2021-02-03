@@ -4,23 +4,20 @@ description: Ez a témakör az egyéni tartománynevek saját üzemeltetésű Az
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: gwallace
-editor: ''
 ms.service: api-management
-ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d52bf87b74ae9b1770ed5092738fd05eb9f54fde
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506808"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490996"
 ---
-# <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
+# <a name="configure-a-custom-domain-name-for-a-self-hosted-gateway"></a>Egyéni tartománynév beállítása saját üzemeltetésű átjáróhoz
 
-Ha saját üzemeltetésű [Azure API Management-átjárót](self-hosted-gateway-overview.md) hoz létre, nem rendeli hozzá az állomásnevet, és az IP-címe alapján kell hivatkozni rá. Ez a cikk bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név (más néven állomásnév) egy saját üzemeltetésű átjáróként.
+Ha saját üzemeltetésű [Azure API Management-átjárót](self-hosted-gateway-overview.md)hoz létre, az nem rendelkezik állomásnévvel, és az IP-címe alapján kell hivatkozni rá. Ez a cikk bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név (más néven állomásnév) egy saját üzemeltetésű átjáróra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,24 +31,22 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 - Egy saját üzemeltetésű átjáró. További információ: [a saját üzemeltetésű átjáró kiépítése](api-management-howto-provision-self-hosted-gateway.md)
 -   Az Ön vagy a szervezete tulajdonában álló egyéni tartománynév. Ez a témakör nem nyújt útmutatást az Egyéni tartománynév beszerzéséhez.
 -   A DNS-kiszolgálón tárolt DNS-rekord, amely az egyéni tartománynevet a saját üzemeltetésű átjáró IP-címére képezi le. Ez a témakör nem nyújt útmutatást a DNS-rekordok üzemeltetéséhez.
--   Rendelkeznie kell egy nyilvános és titkos kulccsal rendelkező érvényes tanúsítvánnyal (. PFX). A tulajdonos vagy a tulajdonos alternatív neve (SAN) meg kell egyeznie a tartománynévvel (Ez lehetővé teszi API Management példány számára, hogy biztonságosan tegye elérhetővé a TLS-t).
+-   Rendelkeznie kell egy nyilvános és titkos kulccsal rendelkező érvényes tanúsítvánnyal (. PFX). A tulajdonos vagy a tulajdonos alternatív neve (SAN) meg kell egyeznie a tartománynévvel (Ez lehetővé teszi, hogy az API Management-példány biztonságosan tegye elérhetővé a TLS protokollon keresztüli URL-címeket).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>Egyéni tartományi tanúsítvány hozzáadása a API Management szolgáltatáshoz
 
-1. Válassza ki a **tanúsítványok** elemet a **Biztonság**területen.
-2. Válassza a **+ Hozzáadás** lehetőséget.
-3. Adja meg a tanúsítvány **azonosító** mezőjébe az erőforrás nevét.
-4. Válassza ki a tanúsítványt tartalmazó fájlt (. PFX) kattintson a **tanúsítvány** mezőre vagy a mellette található mappa ikonra.
-5. Adja meg a tanúsítványhoz tartozó jelszót a **jelszó** mezőben.
-6. Válassza a **Létrehozás** lehetőséget a tanúsítvány API Management szolgáltatáshoz való hozzáadásához.
+Egyéni tartományi tanúsítvány hozzáadása (. PFX) fájlt a API Management példányára, vagy hivatkozzon a Azure Key Vault tárolt tanúsítványra. [Az Azure API Managementban az ügyféltanúsítvány-alapú hitelesítés használatával](api-management-howto-mutual-certificates.md)hajtsa végre a következő lépéseket: Secure backend Services.
+
+> [!NOTE]
+> Azt javasoljuk, hogy használjon Key Vault-tanúsítványt a saját üzemeltetésű átjáró tartományhoz.
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Egyéni tartománynév beállítása a saját üzemeltetésű átjáróhoz a Azure Portal használatával
 
-1. Válassza ki az **átjárókat** az **üzembe helyezés és az infrastruktúra**területen.
+1. Válassza ki az **átjárókat** az **üzembe helyezés és az infrastruktúra** területen.
 2. Válassza ki azt a saját üzemeltetésű átjárót, amelyhez konfigurálni kívánja a tartománynevet.
-3. Válassza a **gazdagépek** lehetőséget a **Beállítások**területen.
+3. Válassza a **gazdagépek** lehetőséget a **Beállítások** területen.
 4. Válassza a **+ Hozzáadás** lehetőséget
 5. Adja meg az állomásnév erőforrás nevét a **név** mezőben.
 6. Adja meg a tartomány nevét az **állomásnév** mezőben.
@@ -61,6 +56,6 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > Ezt a beállítást az átjáróhoz konfigurált összes tartománynév megosztja.
 9. A **Hozzáadás** gombra kattintva rendelje hozzá az egyéni tartománynevet a kiválasztott saját üzemeltetésű átjáróhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A szolgáltatás frissítése és méretezése](upgrade-and-scale.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729667"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492671"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>System Center Service Manager összekötése IT-szolgáltatásmenedzsmenti csatoló
 
@@ -32,7 +32,7 @@ Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 
 > [!NOTE]
 > - ITSM-csatoló csak felhőalapú ServiceNow-példányokhoz tud csatlakozni. A helyszíni ServiceNow-példányok jelenleg nem támogatottak.
-> - Ha egyéni [sablonokat](./itsmc-definition.md#template-definitions) kíván használni a SCSM sablonban található "ProjectionType" paraméterrel, a "IncidentManagement! System. Munkatétel. incidens. ProjectionType "
+> - Ha egyéni [sablonokat](./itsmc-definition.md#define-a-template) kíván használni a SCSM sablonban található "ProjectionType" paraméterrel, a "IncidentManagement! System. Munkatétel. incidens. ProjectionType "
 
 ## <a name="connection-procedure"></a>Csatlakoztatási eljárás
 
@@ -163,8 +163,8 @@ A következő minta képe a sikeres kapcsolat részleteit mutatja be:
 
 ![Hibrid kapcsolatok tesztelése](media/itsmc-connections/itsmc-hybrid-connection-test.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [ITSM-csatoló áttekintése](itsmc-overview.md)
+* [Az ITSM-összekötő áttekintése](itsmc-overview.md)
 * [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)

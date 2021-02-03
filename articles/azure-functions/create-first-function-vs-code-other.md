@@ -3,12 +3,12 @@ title: Függvény létrehozása a Go-ban vagy a Rustban a Visual Studio Code-Azu
 description: Megtudhatja, hogyan hozhat létre go-funkciót Azure Functions egyéni kezelőként, majd a Visual Studio Code-ban a Azure Functions bővítménnyel közzéteheti a helyi projektet a kiszolgáló nélküli üzemeltetésben Azure Functions.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 911e2ed263271cff41562f383f231d3ca8181854
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567568"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493658"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: go-vagy Rust-függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -226,7 +226,7 @@ Ezt a projektet a helyi fejlesztési számítógépen is futtathatja az Azure-ba
 
 1. A rendszer egy választ ad vissza, amely a következőhöz hasonlóan néz ki egy böngészőben:
 
-    ![Böngésző – a localhost példa kimenete](../../includes/media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
+    ![Böngésző – a localhost példa kimenete](./media/create-first-function-vs-code-other/functions-test-local-browser.png)
 
 1. A kérésre vonatkozó információk a **terminál** panelen jelennek meg.
 
@@ -308,7 +308,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 1. Válassza ki az Azure ikont a tevékenység sávjában, majd az **Azure: functions** területen válassza az **üzembe helyezés az alkalmazásban** ... gombot.
 
-    ![A projekt közzététele az Azure-ban](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![A projekt közzététele az Azure-ban](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Amikor a rendszer kéri, adja meg az alábbi információkat:
 
@@ -337,19 +337,17 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
     + **Válasszon ki egy Application Insights erőforrást**: válassza a lehetőséget `+ Create Application Insights resource` . Ennek a névnek globálisan egyedinek kell lennie az Azure-on belül. A parancssorban javasolt nevet használhatja.
 
-    + **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . 
+    + **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . A bővítmény megjeleníti az egyes erőforrások állapotát az értesítési terület Azure-ban való létrehozásakor.
 
-1. Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben, és neveket kell használni a Function app neve alapján:
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Értesítés az Azure-erőforrások létrehozásáról":::
 
-    + Egy erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
-    + Szabványos Azure Storage-fiók, amely fenntartja az állapotot és a projektekkel kapcsolatos egyéb információkat.
-    + Egy használati terv, amely a kiszolgáló nélküli Function alkalmazás mögöttes gazdagépét határozza meg. 
-    + Egy Function alkalmazás, amely biztosítja a környezetet a függvény kódjának végrehajtásához. A Function app lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az azonos üzemeltetési csomagban található erőforrások egyszerűbb felügyelete, üzembe helyezése és megosztása érdekében.
-    + A Function alkalmazáshoz csatlakoztatott Application Insights-példány, amely a kiszolgáló nélküli függvény használatát követi nyomon.
+1. Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben:
+
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után megjelenik egy értesítés. 
 
-1. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is. Ha kihagyja az értesítést, válassza a jobb alsó sarokban található harang ikont az újbóli megjelenítéshez.
+4. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is. Ha kihagyja az értesítést, válassza a jobb alsó sarokban található harang ikont az újbóli megjelenítéshez.
 
     ![Teljes értesítés létrehozása](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -357,7 +355,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 [!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az egyéni kezelők Azure Functions](functions-custom-handlers.md)

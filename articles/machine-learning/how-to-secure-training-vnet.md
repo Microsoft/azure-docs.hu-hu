@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029566"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493837"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -62,16 +62,19 @@ Ha [felügyelt Azure Machine learning __számítási célt__](concept-compute-ta
 > * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Machine Learning számítási példánnyal vagy fürttel azonos virtuális hálózatban kell lenniük. 
 > * A számítási példányok Jupyter működéséhez győződjön meg arról, hogy a webes szoftvercsatorna-kommunikáció nincs letiltva. Győződjön meg arról, hogy a hálózat engedélyezi a WebSocket-kapcsolatokat a *. instances.azureml.net és a *. instances.azureml.ms. 
 > * Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a virtuális hálózaton belülről lehet hozzáférni. Ha egyéni DNS-vagy hosts fájlt használ, adjon hozzá egy bejegyzést a `<instance-name>.<region>.instances.azureml.ms` munkaterület privát végpontjának magánhálózati IP-címéhez. További információ az [Egyéni DNS-](./how-to-custom-dns.md) cikkben található.
+> * A számítási fürt/példány telepítéséhez használt alhálózatot nem lehet delegálni más szolgáltatásokhoz, például az ACI-hoz
+> * A virtuális hálózati szolgáltatás végpont-házirendjei nem működnek számítási fürt/példány rendszertárolói fiókok esetén
+
     
 > [!TIP]
 > A Machine Learning számítási példány vagy fürt automatikusan további hálózati erőforrásokat foglal le __a virtuális hálózatot tartalmazó erőforráscsoporthoz__. A szolgáltatás minden számítási példányhoz vagy fürthöz a következő erőforrásokat foglalja le:
 > 
 > * Egy hálózati biztonsági csoport
-> * Egy nyilvános IP-cím
+> * Egy nyilvános IP-cím. Ha rendelkezik olyan Azure-házirenddel, amely tiltja a nyilvános IP-címek létrehozását, akkor a fürt/példányok telepítése sikertelen lesz.
 > * Egy Load Balancer
 > 
 > Fürtök esetében ezeket az erőforrásokat a rendszer minden alkalommal törli (és újból létrehozza), amikor a fürt 0 csomópontra van lebontva, azonban az erőforrásokat a rendszer a példány teljes törlése előtt megtartja (a Leállítás nem távolítja el az erőforrásokat). 
-> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak.
+> Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Ha a virtuális hálózati erőforráscsoport zárolva van, akkor a számítási fürt/példány törlése sikertelen lesz. A terheléselosztó csak a számítási fürt/példány törlése után törölhető.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Szükséges portok

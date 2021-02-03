@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 74009c7e7f2ad28655c9c5322a063a17da96e0c5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735159"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493922"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Meraki-irányítópulttal
 
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![SAML aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
 
-1. Az **SAML aláíró tanúsítvány** szakaszban másolja az **ujjlenyomat értékét** , és mentse a számítógépre.
+1. Az **SAML aláíró tanúsítvány** szakaszban másolja az **ujjlenyomat értékét** , és mentse a számítógépre. Ezt az értéket át kell alakítani, hogy tartalmazza a kettőspontokat, hogy a Meraki-irányítópult megértse azt. Ha például az Azure-ból származó ujjlenyomatot kívánja használni, akkor `C2569F50A4AAEDBB8E` később a `C2:56:9F:50:A4:AA:ED:BB:8E` Meraki-irányítópulton kell megváltoztatnia.
 
     ![Ujjlenyomat értékének másolása](common/copy-thumbprint.png)
 
@@ -165,7 +165,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Meraki-irányítópult – SAML-identitásszolgáltató hozzáadása](./media/meraki-dashboard-tutorial/configure-3.png)
 
-1. Illessze be az **ujjlenyomat** értékét, amelyet a Azure Portal az **X. 590 CERT SHA1 ujjlenyomat** szövegmezőbe másolt. Ezután kattintson a **Mentés** gombra. A mentés után megjelenik a fogyasztói URL-cím. Másolja a fogyasztói URL-címet, és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció szakaszában** .
+1. Illessze be a konvertált **ujjlenyomat** értékét, amelyet a Azure Portal másolt át, és konvertált a megadott formátumban, ahogy azt a korábbi szakasz 9. lépésében említettük, az **X. 590 CERT SHA1 ujjlenyomat** szövegmezőbe. Ezután kattintson a **Mentés** gombra. A mentés után megjelenik a fogyasztói URL-cím. Másolja a fogyasztói URL-címet, és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **ALAPszintű SAML-konfiguráció szakaszában** .
 
     ![Meraki-irányítópult konfigurálása](./media/meraki-dashboard-tutorial/configure-4.png)
 
@@ -194,6 +194,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Meraki irányítópult csempére kattint, automatikusan be kell jelentkeznie arra a Meraki-irányítópultra, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Meraki irányítópult konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztatható a Function app Application In
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070140"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493753"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -229,6 +229,8 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
+Ha a skálázási vezérlő naplózása engedélyezve van, most már le tudja [kérdezni a méretezési vezérlő naplóit](analyze-telemetry-data.md#query-scale-controller-logs). 
+
 ## <a name="enable-application-insights-integration"></a>Application Insights-integráció engedélyezése
 
 Ahhoz, hogy egy Function alkalmazás adatküldést Application Insights, ismernie kell egy Application Insights erőforrás rendszerállapot-kulcsát. A kulcsnak egy **APPINSIGHTS_INSTRUMENTATIONKEY** nevű alkalmazás-beállításban kell lennie.
@@ -271,30 +273,6 @@ Ha egy Application Insights erőforrás nem lett létrehozva a Function alkalmaz
 
 > [!NOTE]
 > A függvények korábbi verziói beépített figyelést használnak, ami már nem ajánlott. Ha egy ilyen Function alkalmazáshoz Application Insights integrációt engedélyez, le kell [tiltania a beépített naplózást](#disable-built-in-logging)is.  
-
-## <a name="query-scale-controller-logs"></a>A méretezési vezérlő naplófájljainak lekérdezése
-
-A méretezési vezérlő naplózásának és a Application Insights integrációjának engedélyezése után a Application Insights naplóbeli kereséssel kérdezheti le a kibocsátott skálázási vezérlő naplóit. A skálázási vezérlő naplóit a `traces` gyűjtemény a **ScaleControllerLogs** kategóriában tárolja.
-
-A következő lekérdezéssel megkeresheti az aktuális Function alkalmazáshoz tartozó összes méretezési vezérlő naplóját a megadott időtartamon belül:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-```
-
-A következő lekérdezés kibontja az előző lekérdezést, hogy bemutassa, hogyan lehet csak a skála változását jelző naplókat beolvasni:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-| where message == "Instance count changed"
-| extend Reason = CustomDimensions.Reason
-| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
-| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
-```
 
 ## <a name="disable-built-in-logging"></a>A beépített naplózás letiltása
 

@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 1/14/2021
-ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/02/2021
+ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222224"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492382"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>A Azure SQL Database és az Azure szinapszis Analytics-kiszolgálók erőforrás-korlátai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -69,7 +69,8 @@ A magas lemezterület-használat során a megoldás a következőkre terjed ki:
 
 - Az adatbázis vagy a rugalmas készlet maximális méretének növelése, vagy további tárhely hozzáadása. Lásd: [önálló adatbázis-erőforrások méretezése](single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](elastic-pool-scale.md).
 - Ha az adatbázis egy rugalmas készletben található, akkor azt is megteheti, hogy az adatbázist a készleten kívülre helyezi, hogy a tárolóhelye ne legyen megosztva más adatbázisokkal.
-- Adatbázis zsugorítása a nem használt terület felszabadításához. További információ: [a tárterület kezelése a Azure SQL Databaseban](file-space-manage.md)
+- Adatbázis zsugorítása a nem használt terület felszabadításához. További információ: [a tárterület kezelése Azure SQL Databaseban](file-space-manage.md).
+- Ellenőrizze, hogy a magas lemezterület-kihasználtságot az állandó verziójú tároló (PVS) méretében lévő tüske okozza-e. A PVS az egyes adatbázisok részét képezi, és a  [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md)megvalósítására szolgál. Az aktuális PVS-méret megállapításához tekintse meg a [PVS hibaelhárítását](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)ismertető témakört. A nagyméretű PVS méretének gyakori oka egy hosszú ideig (órákban) nyitott tranzakció, amely megakadályozza a régebbi verziók törlését a PVS-ben.
 
 ### <a name="sessions-and-workers-requests"></a>Munkamenetek és feldolgozók (kérelmek)
 

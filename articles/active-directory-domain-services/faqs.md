@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: justinha
-ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619733"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491165"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Gyakori kérdések (GYIK) a Azure Active Directory (AD) tartományi szolgáltatásokkal kapcsolatban
 
@@ -106,7 +106,7 @@ A felügyelt tartomány részét képező felhasználói fiókok csatlakozhatnak
 Nem. Nem kap rendszergazdai jogosultságokat a felügyelt tartományon. A tartományi *rendszergazda* és a *vállalati rendszergazdai* jogosultságok nem használhatók a tartományon belül. A helyszíni Active Directory tartományi rendszergazda vagy vállalati rendszergazdai csoportok tagjai nem kapnak tartományi/vállalati rendszergazdai jogosultságokat a felügyelt tartományhoz.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Módosíthatom a csoporttagság a felügyelt tartományokban található LDAP vagy más AD felügyeleti eszközök használatával?
-Azok a felhasználók és csoportok, amelyek Azure Active Directoryról Azure AD Domain Services szinkronizálva, nem módosíthatók, mert a forrás forrása Azure Active Directory. Előfordulhat, hogy a felügyelt tartományból származó bármely felhasználó vagy csoport módosítva lesz.
+Azok a felhasználók és csoportok, amelyek Azure Active Directoryról Azure AD Domain Services szinkronizálva, nem módosíthatók, mert a forrás forrása Azure Active Directory. Ide tartoznak a felhasználók vagy csoportok áthelyezése a AADDC felhasználók által felügyelt szervezeti egységből egy egyéni szervezeti egységbe. Előfordulhat, hogy a felügyelt tartományból származó bármely felhasználó vagy csoport módosítva lesz.  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Mennyi időt vesz igénybe, hogy az Azure AD-címtárban végrehajtott módosítások megjelenjenek a felügyelt tartományban?
 Az Azure AD-címtárban az Azure AD felhasználói felület vagy a PowerShell használatával végzett módosítások automatikusan szinkronizálhatók a felügyelt tartományba. Ez a szinkronizálási folyamat a háttérben fut. Nincs meghatározott időtartam a szinkronizáláshoz az összes objektum módosításának befejezéséhez.
@@ -164,7 +164,7 @@ Az Azure- [szolgáltatások régiónként](https://azure.microsoft.com/regions/#
 
 A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos gyakori problémák megoldásához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure AD Domain Servicesről, tekintse meg a [Mi az a Azure Active Directory Domain Services?](overview.md)című témakört.
 

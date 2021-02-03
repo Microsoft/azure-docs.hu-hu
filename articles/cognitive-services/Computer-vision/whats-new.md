@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738101"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490877"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
@@ -30,6 +30,12 @@ A [térbeli elemzési tároló](spatial-analysis-container.md) új verziója meg
 * A [térbeli elemzési műveletek](spatial-analysis-operations.md) most már úgy is konfigurálhatók, hogy megismerjék, van-e olyan védelmi arc, amely magában foglalja a maszkot. 
     * A (z) és a (z `personcount` ) paraméter konfigurálásával engedélyezhető a maszk besorolása a `personcrossingline` és a `personcrossingpolygon` műveletekhez `ENABLE_FACE_MASK_CLASSIFIER` .
     * Az attribútumokat `face_mask` és a `face_noMask` rendszer a videó streamben észlelt minden személy megbízhatósági pontszámát tartalmazó metaadatként adja vissza.
+* A *personcrossingpolygon* művelet ki lett terjesztve, hogy lehetővé váljon a személy számára a zónában töltött tartózkodási idő kiszámításának engedélyezése. A `type` (z) paramétert beállíthatja a művelet `zonedwelltime` *personZoneDwellTimeEvent* , és egy új típusú esemény is szerepel a `durationMs` zónában töltött személy ezredmásodpercben megadott számával.
+* **Megszakítási változás**: a *personZoneEvent* esemény átnevezve lett a *personZoneEnterExitEvent* névre. Ez az esemény akkor következik be, amikor egy személy belép vagy kilép a zónából, és irányt ad a *personcrossingpolygon* , amely áthaladt a zóna számozott oldalával.
+* A videó URL-címe az összes műveletben "privát paraméterként/elhomályosítva" adható meg. A elhomályosítás most nem kötelező, és csak akkor működik, ha `KEY` `IV` környezeti változókként vannak megadva.
+* A kalibrálás alapértelmezés szerint engedélyezve van az összes művelethez. A letiltásához állítsa be a parancsot `do_calibration: false` .
+* Az automatikus újrakalibrálás támogatása (alapértelmezés szerint letiltva) a `enable_recalibration` paraméterrel, a részletekért tekintse meg a [térbeli elemzési műveleteket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) ismertető témakört.
+* A kamera-kalibrálási paraméterek a következőre: `DETECTOR_NODE_CONFIG` . Részletekért tekintse meg a [térbeli elemzési műveleteket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
 
 
 ## <a name="october-2020"></a>2020. október

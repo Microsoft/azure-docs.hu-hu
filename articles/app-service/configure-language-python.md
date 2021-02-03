@@ -2,15 +2,15 @@
 title: Linux Python-alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a webalkalmazásokat futtató Python-tárolót a Azure Portal és az Azure CLI használatával.
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855056"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493702"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -67,10 +67,13 @@ A Python nem támogatott verzióját a saját tároló rendszerképének létreh
 
 App Service a Oryx nevű Build-rendszer a következő lépéseket hajtja végre az alkalmazás git vagy zip-csomagok használatával történő telepítésekor:
 
-1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` .
+1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` . (A szkript saját maga is futtathat más Python-és Node.js-parancsfájlokat, Pip-és NPM-parancsokat, valamint olyan csomópont-alapú eszközöket, mint a fonal, például a `yarn install` és a `yarn build` .)
+
 1. Futtassa a `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
+
 1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic*. Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
-1. Ha a beállítás megadja az egyéni létrehozás utáni parancsfájlt, `POST_BUILD_COMMAND`
+
+1. Ha a beállítás megadja az egyéni létrehozás utáni parancsfájlt, `POST_BUILD_COMMAND` (A szkript a Python-és Node.js-parancsfájlok, a pip-és a NPM-parancsok, valamint a node-alapú eszközök futtatására is használható.)
 
 Alapértelmezés szerint a `PRE_BUILD_COMMAND` , a `POST_BUILD_COMMAND` és a `DISABLE_COLLECTSTATIC` Beállítások üresek. 
 
@@ -131,6 +134,52 @@ Az alábbi táblázat az Azure-hoz kapcsolódó éles beállításokat ismerteti
 | `ALLOWED_HOSTS` | Éles környezetben a Django megköveteli, hogy az alkalmazás URL-címét tartalmazza a `ALLOWED_HOSTS` *Settings.py* tömbben. Ezt az URL-címet futásidőben kérheti le a kóddal `os.environ['WEBSITE_HOSTNAME']` . App Service automatikusan beállítja a `WEBSITE_HOSTNAME` környezeti változót az alkalmazás URL-címére. |
 | `DATABASES` | Adja meg az adatbázis-kapcsolatok App Service beállításait, és töltse be azokat környezeti változókként a szótár feltöltéséhez [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) . Az értékeket (különösen a felhasználónevet és a jelszót) a [Azure Key Vault titokként](../key-vault/secrets/quick-create-python.md)is tárolhatja. |
 
+## <a name="serve-static-files-for-django-apps"></a>Statikus fájlok kiszolgálása Django-alkalmazásokhoz
+
+Ha a Django-webalkalmazás statikus előtér-fájlokat tartalmaz, először kövesse a Django dokumentációjában található [statikus fájlok kezelésével](https://docs.djangoproject.com/en/3.1/howto/static-files/) kapcsolatos utasításokat.
+
+A App Service a következő módosításokat hajtja végre:
+
+1. A Django és a változók dinamikus beállításához érdemes lehet környezeti változókat (helyi fejlesztés esetén) és Alkalmazásbeállítások (a felhőbe való üzembe helyezéskor) használni `STATIC_URL` `STATIC_ROOT` . Például:    
+
+    ```python
+    STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
+    STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")    
+    ```
+
+    `DJANGO_STATIC_URL` a `DJANGO_STATIC_ROOT` helyi és a Felhőbeli környezetekhez szükség szerint módosítható. Ha például a statikus fájlok létrehozási folyamata egy nevű mappába helyezi őket `django-static` , akkor a `DJANGO_STATIC_URL` gombra kattintva `/django-static/` elkerülheti az alapértelmezett beállítást.
+
+1. Ha olyan előzetes Build parancsfájllal rendelkezik, amely egy másik mappában statikus fájlokat hoz létre, akkor a Django változóban adja meg a mappát, `STATICFILES_DIRS` hogy a Django `collectstatic` folyamata megkeresse őket. Ha például az `yarn build` előtér-mappában fut, és a fonal létrehoz egy `build/static` statikus fájlokat tartalmazó mappát, a következő módon adja meg az adott mappát:
+
+    ```python
+    FRONTEND_DIR = "path-to-frontend-folder" 
+    STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
+    ```
+
+    Itt `FRONTEND_DIR` egy olyan elérési utat hozhat létre, ahol egy Build eszköz, például a szál fut. A környezeti változót és az alkalmazás beállításait igény szerint is használhatja.
+
+1. Adja hozzá `whitenoise` a *requirements.txt* -fájlhoz. A [Whitenoise](http://whitenoise.evans.io/en/stable/) (whitenoise.Evans.IO) egy Python-csomag, amely egyszerűvé teszi az éles Django-alkalmazások számára a saját statikus fájlok kiszolgálását. A Whitenoise kifejezetten azokat a fájlokat szolgálja ki, amelyek a Django változó által megadott mappában találhatók `STATIC_ROOT` .
+
+1. A *Settings.py* -fájlban adja hozzá a következő sort a Whitenoise:
+
+    ```python
+    STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+    ```
+
+1. Módosítsa a `MIDDLEWARE` és a `INSTALLED_APPS` listát is, hogy tartalmazza a Whitenoise:
+
+    ```python
+    MIDDLEWARE = [
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        # Other values follow
+    ]
+
+    INSTALLED_APPS = [
+        "whitenoise.runserver_nostatic",
+        # Other values follow
+    ]
+    ```
+
 ## <a name="container-characteristics"></a>A tároló jellemzői
 
 App Service rendszerbe való üzembe helyezéskor a Python-alkalmazások egy, a [app Service Python GitHub-tárházban](https://github.com/Azure-App-Service/python)meghatározott Linux Docker-tárolón belül futnak. A rendszerkép-konfigurációk a verziószámozási könyvtárakban találhatók.
@@ -150,6 +199,8 @@ Ez a tároló a következő jellemzőkkel rendelkezik:
 
 - App Service automatikusan definiál egy nevű környezeti változót `WEBSITE_HOSTNAME` a webalkalmazás URL-címével, például a következővel: `msdocs-hello-world.azurewebsites.net` . Emellett `WEBSITE_SITE_NAME` az alkalmazás nevét is meghatározza, például: `msdocs-hello-world` . 
    
+- a NPM és a Node.js a tárolóba vannak telepítve, így a node-alapú Build-eszközöket, például a fonalat is futtathatja.
+
 ## <a name="container-startup-process"></a>Tároló indítási folyamata
 
 Rendszerindítás során a Linux-tárolóban lévő App Service a következő lépéseket futtatja:
@@ -270,7 +321,7 @@ Ha például létrehozta az Alkalmazásbeállítás nevű alkalmazást `DATABASE
 ```python
 db_server = os.environ['DATABASE_SERVER']
 ```
-    
+
 ## <a name="detect-https-session"></a>HTTPS-munkamenet észlelése
 
 App Service az [SSL-lezárás](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) a hálózati terheléselosztó esetében történik, így minden HTTPS-kérelem titkosítatlan http-kérésként éri el az alkalmazást. Ha az alkalmazás logikájának ellenőriznie kell, hogy a felhasználói kérések titkosítva vannak-e, vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejlécet.

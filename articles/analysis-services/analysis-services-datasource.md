@@ -4,15 +4,15 @@ description: A táblázatos 1200-es és újabb adatmodellek által támogatott a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685595"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493820"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
 
@@ -128,7 +128,9 @@ Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authenticati
 
 ## <a name="oauth-credentials"></a>OAuth hitelesítő adatai
 
-A 1400-es és újabb kompatibilitási szinten található táblázatos modellek memórián belüli módban, Azure SQL Database, az Azure szinapszis, a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához Power Query használatával állítsa be a hitelesítő adatokat.
+A 1400-es és újabb kompatibilitási szinten található táblázatos modellek *memórián belüli* módban, Azure SQL Database, az Azure szinapszis, a Dynamics 365 és a SharePoint-lista segítségével támogatják a OAuth hitelesítő adatait. Érvényes tokenek létrehozásához Power Query használatával állítsa be a hitelesítő adatokat. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. 
+> [!NOTE]
+> A felügyelt jogkivonat frissítése nem támogatott az átjárón keresztül elért adatforrások esetén. Például egy vagy több adatforráshoz egy vagy több adatforrás van hozzáférése egy átjárón keresztül, és/vagy a [ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) tulajdonság értéke **true (igaz**). 
 
 A OAuth hitelesítő adatai nem támogatják a közvetlen lekérdezési módot.
 

@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b5c99e5dc21c2b93f1c9da3977302a2dd311277f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183982"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491503"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Előfizetés üzembe helyezése ARM-sablonokkal
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A PowerShell üzembe helyezési parancsához használja a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) vagy a **New-AzSubscriptionDeployment**. A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
+A PowerShell üzembe helyezési parancsához használja a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) vagy annak aliasát `New-AzSubscriptionDeployment` . A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -130,7 +130,7 @@ További információt az üzembe helyezési parancsokról és az ARM-sablonok �
 
 Az előfizetési szintű központi telepítések esetében meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat. A [felügyeleti csoportnak](deploy-to-management-group.md) és a [bérlői](deploy-to-tenant.md) példányoknak is helyet kell megadniuk. Az [erőforráscsoport](deploy-to-resource-group.md) -telepítések esetében az erőforráscsoport helye a központi telepítési adattárolási szolgáltatás tárolására szolgál.
 
-Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy** alapértelmezett központi telepítési nevét hozza létre.
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy _azuredeploy.js_ nevű sablon üzembe helyezése például a **azuredeploy** alapértelmezett központi telepítési nevét hozza létre.
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha például létrehoz egy **deployment1** nevű előfizetést a **CentralUS**-ben, akkor később nem hozhat létre újabb telepítést a **deployment1** névvel, de a **westus** helyét. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
@@ -173,9 +173,9 @@ Az erőforráscsoporthoz való központi telepítésre példát az [erőforrásc
 
 ### <a name="scope-to-tenant"></a>Hatókör a bérlőre
 
-A bérlőhöz erőforrásokat is létrehozhat, ha a beállítást a értékre állítja `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
+Ahhoz, hogy erőforrásokat hozzon létre a bérlőn, állítsa be a következőt: `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
 
-A és a beállítással beágyazott központi telepítést is használhat `scope` `location` .
+Beágyazott központi telepítés használatához állítsa be a következőt: `scope` és `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
 
@@ -254,7 +254,7 @@ Több erőforráscsoport létrehozásához használja a [Másolás elemet](copy-
 }
 ```
 
-Az erőforrás-iterációval kapcsolatos további információkért lásd: az [erőforrás több példányának telepítése Azure Resource Manager-sablonokban](./copy-resources.md)és [oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonokkal](./template-tutorial-create-multiple-instances.md).
+Az erőforrás-iterációval kapcsolatos információkért lásd: [erőforrás-iteráció az ARM-sablonokban](./copy-resources.md)és [oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](./template-tutorial-create-multiple-instances.md).
 
 ### <a name="create-resource-group-and-resources"></a>Erőforráscsoport és erőforrások létrehozása
 

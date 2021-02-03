@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d9ad775f91778f95380a19fbe253e2cbbebd3fc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736456"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492433"
 ---
 # <a name="it-service-management-connector-overview"></a>IT-szolgáltatásmenedzsmenti csatoló áttekintése
 
@@ -46,8 +46,8 @@ Az alábbi lépések végrehajtásával kezdheti meg a ITSMC használatát:
 1. [A ITSM-környezet beállítása az Azure-beli riasztások fogadására.](./itsmc-connections.md)
 1. [Az Azure ITSM-megoldás konfigurálása](./itsmc-definition.md#add-it-service-management-connector)
 1. [Konfigurálja az Azure ITSM-összekötőt a ITSM-környezethez.](./itsmc-definition.md#create-an-itsm-connection)
-1. [A műveleti csoport konfigurálása a ITSM-összekötő kihasználása érdekében.](./itsmc-definition.md#use-itsmc)
+1. [A műveleti csoport konfigurálása a ITSM-összekötő kihasználása érdekében.](./itsmc-definition.md#define-a-template)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)

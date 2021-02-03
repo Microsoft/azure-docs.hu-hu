@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183922"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492178"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
@@ -30,7 +30,7 @@ Az RDP és az SSH egy olyan alapvető eszköz, amellyel az Azure-ban futó szám
 
 Ez az ábra egy Azure-alapú központi telepítés architektúráját mutatja be. Ebben a diagramban:
 
-* A megerősített gazdagép üzembe helyezése a virtuális hálózaton történik.
+* A megerősített gazdagép a virtuális hálózatban van telepítve, amely tartalmazza a minimum/27 előtaggal rendelkező AzureBastionSubnet alhálózatot.
 * A felhasználó bármely HTML5 böngésző használatával csatlakozik a Azure Portalhoz.
 * A felhasználó kiválasztja azt a virtuális gépet, amelyhez csatlakozni szeretne.
 * Egyetlen kattintással megnyílik az RDP/SSH-munkamenet a böngészőben.

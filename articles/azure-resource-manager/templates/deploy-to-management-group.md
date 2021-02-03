@@ -3,12 +3,12 @@ title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184016"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491623"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Felügyeleti csoportok üzembe helyezése ARM-sablonokkal
 
@@ -112,7 +112,7 @@ További információt az üzembe helyezési parancsokról és az ARM-sablonok �
 
 Felügyeleti csoport szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat. Az [előfizetés](deploy-to-subscription.md) és a [bérlő](deploy-to-tenant.md) üzembe helyezéséhez is szükség van egy helyre. Az [erőforráscsoport](deploy-to-resource-group.md) -telepítések esetében az erőforráscsoport helye a központi telepítési adattárolási szolgáltatás tárolására szolgál.
 
-Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy.js** nevű sablon üzembe helyezése például a **azuredeploy** alapértelmezett központi telepítési nevét hozza létre.
+Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy _azuredeploy.js_ nevű sablon üzembe helyezése például a **azuredeploy** alapértelmezett központi telepítési nevét hozza létre.
 
 Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha például létrehoz egy felügyeleti csoport központi telepítését a **CentralUS** nevű **deployment1** , akkor később nem hozhat létre újabb telepítést a **deployment1** névvel, de a **westus** helyét. Ha a hibakódot kapja `InvalidDeploymentLocation` , használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
 
@@ -164,9 +164,9 @@ Ha egy felügyeleti csoport központi telepítését szeretné használni az el�
 
 ### <a name="scope-to-tenant"></a>Hatókör a bérlőre
 
-A bérlőhöz erőforrásokat is létrehozhat, ha a beállítást a értékre állítja `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
+Ahhoz, hogy erőforrásokat hozzon létre a bérlőn, állítsa be a következőt: `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
 
-A és a beállítással beágyazott központi telepítést is használhat `scope` `location` .
+Beágyazott központi telepítés használatához állítsa be a következőt: `scope` és `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
@@ -222,7 +222,7 @@ A következő példa létrehoz egy új felügyeleti csoportot a szülőként meg
 
 ## <a name="azure-policy"></a>Azure Policy
 
-A felügyeleti csoportba központilag telepített egyéni házirend-definíciók a felügyeleti csoport bővítményei. Egyéni szabályzat-definíció AZONOSÍTÓjának lekéréséhez használja a [extensionResourceId ()](template-functions-resource.md#extensionresourceid) függvényt. A beépített szabályzat-definíciók a bérlői szintű erőforrások. A beépített szabályzat-definíció AZONOSÍTÓjának lekéréséhez használja a [tenantResourceId](template-functions-resource.md#tenantresourceid) függvényt.
+A felügyeleti csoportba központilag telepített egyéni házirend-definíciók a felügyeleti csoport bővítményei. Egyéni szabályzat-definíció AZONOSÍTÓjának lekéréséhez használja a [extensionResourceId ()](template-functions-resource.md#extensionresourceid) függvényt. A beépített szabályzat-definíciók a bérlői szintű erőforrások. A beépített szabályzat-definíciók AZONOSÍTÓjának lekéréséhez használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt.
 
 Az alábbi példa bemutatja, hogyan [határozhat meg](../../governance/policy/concepts/definition-structure.md) egy házirendet a felügyeleti csoport szintjén, és hogyan rendelheti hozzá.
 

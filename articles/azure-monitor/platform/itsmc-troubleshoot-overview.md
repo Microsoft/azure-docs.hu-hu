@@ -1,87 +1,97 @@
 ---
-title: Hibaelhárítás az ITSM-összekötőben
-description: Hibaelhárítási problémák a IT-szolgáltatásmenedzsmenti csatoló
+title: ITSMC kapcsolatos problémák elhárítása
+description: Megtudhatja, Hogyan oldhatók meg a IT-szolgáltatásmenedzsmenti csatoló gyakori problémái.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: fce20626d5e000c08b8a057671c06a3084534187
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e8ae306a4900bc6e5815f6fc251dfa1b8b22964d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896036"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492416"
 ---
-# <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítás az ITSM-összekötőben
+# <a name="troubleshoot-problems-in-it-service-management-connector"></a>A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos problémák elhárítása
 
-Ez a cikk a ITSM-csatoló és a hibaelhárítással kapcsolatos gyakori problémákat ismerteti.
+Ez a cikk a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) gyakori problémáit és azok hibaelhárítását ismerteti.
 
-Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek találhatók a megfigyelési adataiban. Lehetővé teszik a problémák azonosítását és megcímzését, mielőtt a felhasználók a rendszerértesítéseket.
-Az ügyfél kiválaszthatja, hogyan szeretnének értesítést kapni a riasztásról, függetlenül attól, hogy e-mailben, SMS-ben vagy webhookban, vagy akár egy megoldás automatizálásában is. Egy másik lehetőség, hogy értesítést kapjon a ITSM használatával.
-A ITSM lehetővé teszi a riasztások küldését a külső jegyrendszer, például a ServiceNow számára.
+Azure Monitor proaktívan értesíti Önt a riasztásokról, amikor fontos feltételeket talál a megfigyelési adataiban. Ezek a riasztások segítenek a problémák azonosításában és kezelésében a rendszerüzenetek felhasználói előtt.
 
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Az incidens megjelenítése és elemzése és a kérelmekre vonatkozó adatváltozás
+Kiválaszthatja, hogyan szeretne riasztásokat kapni. Választhatja a levelezés, az SMS vagy a webhook lehetőséget, vagy akár automatizálhatja a megoldást is. 
 
-A kapcsolatok beállításakor a ITSMC legfeljebb 120 napos incidenst tud szinkronizálni, és módosíthatja a kérelmek adatait. Az adatok naplózási rekordjainak sémája a jelen cikk [További információk szakaszában](./itsmc-synced-data.md) található.
+Egy másik lehetőség, hogy értesítést kapjon a ITSMC-on keresztül. A ITSMC lehetőséget biztosít a riasztások küldésére egy külső jegyrendszer, például a ServiceNow számára.
+
+## <a name="use-the-dashboard-to-analyze-incident-and-change-request-data"></a>Az incidens elemzése és a kérelmekre vonatkozó adatváltozás
+
+A kapcsolatok beállításakor a ITSMC legfeljebb 120 napos incidenst tud szinkronizálni, és módosíthatja a kérelmek adatait. Az adatokhoz tartozó log Record-séma beszerzéséhez tekintse [meg a ITSM-termékkel szinkronizált adatok](./itsmc-synced-data.md) című cikket.
 
 A ITSMC irányítópult használatával megjelenítheti az incidenst és módosíthatja a kérelmeket:
 
 ![A ITSMC irányítópultot megjelenítő képernyőkép.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
-Az irányítópult az összekötő állapotáról is tartalmaz információkat, amelyeket kiindulási pontként használhat a kapcsolatokkal kapcsolatos problémák elemzéséhez.
+Az irányítópult az összekötő állapotáról is tartalmaz információkat. Ezt az információt kiindulási pontként használhatja a kapcsolatok problémáinak elemzéséhez. További információ: [hibajelentés az irányítópult használatával](./itsmc-dashboard.md).
 
-Az irányítópult vizsgálatával kapcsolatos további információkért lásd: [hibajelentés az irányítópult használatával](./itsmc-dashboard.md).
-
-### <a name="service-map"></a>Szolgáltatás térképe
+## <a name="use-service-map-to-visualize-incidents"></a>Az incidensek megjelenítésének Service Map használata
 
 A Service Map érintett számítógépeken szinkronizált incidenseket is megjelenítheti.
 
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat a következőképpen tekintheti meg: olyan összekapcsolt rendszerek, amelyek kritikus szolgáltatásokat biztosítanak. Service Map megjeleníti a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat bármely TCP-kapcsolattal rendelkező architektúrán keresztül. Az ügynök telepítésén kívül nincs szükség konfigurációra. További információ: [a Service Map használata](../insights/service-map.md).
+Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat a következőképpen tekintheti meg: olyan összekapcsolt rendszerek, amelyek kritikus szolgáltatásokat biztosítanak. 
 
-Ha Service Map használ, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az itt látható módon:
+Service Map megjeleníti a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat bármely TCP-kapcsolattal rendelkező architektúrán keresztül. Az ügynök telepítésén kívül nincs szükség konfigurációra. További információ: [a Service Map használata](../insights/service-map.md).
+
+Service Map használata esetén megtekintheti az IT Service Management-(ITSM-) megoldásokban létrehozott ügyfélszolgálati elemeket az alábbi példában látható módon:
 
 ![Képernyőkép, amely a Log Analytics képernyőt jeleníti meg.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="common-symptoms---how-should-it-be-resolved"></a>Gyakori tünetek – Hogyan oldható fel?
+## <a name="resolve-problems"></a>Problémák megoldása
 
-Az alábbi lista általános tüneteket tartalmaz, és hogyan oldható meg a megoldás:
+A következő fejezetek a gyakori tüneteket, a lehetséges okokat és a felbontásokat ismertetik. 
 
-* **Tünet**: Ha egy kapcsolat nem tud csatlakozni a ITSM rendszerhez, és hibaüzenet jelenik meg a **kapcsolati üzenet mentésekor** .
+### <a name="a-connection-to-the-itsm-system-fails-and-you-get-an-error-in-saving-connection-message"></a>A ITSM rendszerhez való csatlakozás meghiúsul, és "a kapcsolat mentésekor" hibaüzenet jelenik meg
 
-    **OK**: az ok a lehetőségek egyike lehet:
-    * Helytelen hitelesítő adatok
-     * Nem megfelelő jogosultságok
-     * A webalkalmazást helyesen kell telepíteni
+**OK**: az ok a következő lehetőségek egyike lehet:
 
-    **Megoldás**:
-    * ServiceNow, Cherwell és elővance kapcsolatok esetén:
-        * Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
-        * ServiceNow esetén: Győződjön meg arról, hogy megfelelő jogosultságokkal rendelkezik a megfelelő ITSM-termékben a [](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)kapcsolódás megadásához.
-  * Service Manager kapcsolatok esetén:  
-      * Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat](./itsmc-connections-scsm.md#configure-the-hybrid-connection)létrehozásához szükséges dokumentációban leírtak szerint.  
-* **Tünet**: ismétlődő munkaelemek jönnek létre
+* A hitelesítő adatok helytelenek.
+* A jogosultságok nem elegendőek.
+* A webalkalmazás telepítése helytelen volt.
 
-    **OK**: az ok a két lehetőség egyike lehet:
-    * A riasztáshoz egynél több ITSM művelet van definiálva.
-    * A riasztás megoldódott.
+**Megoldás**:
 
-    **Megoldás**: két megoldás lehet:
-    * Győződjön meg arról, hogy a ITSM műveleti csoport egyetlen riasztással rendelkezik.
-    * ITSM-csatoló a riasztás feloldásakor nem támogatja a munkaelemek állapotának egyeztetését. Létrejön egy új megoldott munkaelem.
-* **Tünet**: a munkaelemek nincsenek létrehozva
+* ServiceNow, Cherwell és elővance kapcsolatok esetén:
+  * Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
+  * A ServiceNow győződjön meg arról, hogy megfelelő [jogosultságokkal](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role) rendelkezik a megfelelő ITSM-termékben.
 
-    **OK**: a hibajelenség néhány oka lehet:
-    * Kód módosítása a ServiceNow oldalon
-    * Helytelen konfigurálási engedélyek
-    * A ServiceNow arányának korlátai túl magasak/alacsonyak
-    * A frissítési jogkivonat lejárt
-    * ITSM-csatoló törölve
+* Service Manager kapcsolatok esetén:  
+  * Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat létrehozásához szükséges dokumentációban](./itsmc-connections-scsm.md#configure-the-hybrid-connection)leírtak szerint.  
 
-    **Megoldás**: megtekintheti az [irányítópultot](itsmc-dashboard.md) , és áttekintheti a hibákat az összekötő állapota szakaszban. Tekintse át a [gyakori hibákat](itsmc-dashboard-errors.md) , és Ismerje meg, hogyan oldja meg a hibát.
+### <a name="duplicate-work-items-are-created"></a>Ismétlődő munkaelemek jönnek létre
 
-* **Tünet**: nem sikerült létrehozni a műveleti csoport ITSM műveletét
+**OK**: az ok a következő két lehetőség egyike lehet:
 
-    **OK**: az újonnan létrehozott ITSM-csatoló még befejezte a kezdeti szinkronizálást.
+* Több ITSM művelet van definiálva a riasztáshoz.
+* A riasztás megoldódott.
 
-    **Megoldás**: áttekintheti a [gyakori felhasználói felületi hibákat](itsmc-dashboard-errors.md#ui-common-errors) , és megtudhatja, hogyan oldja meg a hibát.
+**Megoldás**: két megoldás lehet:
+
+* Győződjön meg arról, hogy a ITSM műveleti csoport egyetlen riasztással rendelkezik.
+* A ITSMC nem támogatja a megfelelő munkahelyi elemek állapotának frissítését riasztás feloldásakor. Hozzon létre egy új megoldott munkaelemet.
+
+### <a name="work-items-are-not-created"></a>A munkaelemek nincsenek létrehozva
+
+**OK**: a tünet több oka is lehet:
+
+* A kód a ServiceNow oldalon lett módosítva.
+* Az engedélyek helytelenül vannak konfigurálva.
+* A ServiceNow arányának korlátai túl magasak vagy túl alacsonyak.
+* A frissítési jogkivonat lejárt.
+* A ITSMC törölve lett.
+
+**Megoldás**: Ellenőrizze az [irányítópultot](itsmc-dashboard.md) , és tekintse át az összekötő állapota című szakaszban található hibákat. Ezután tekintse át a [gyakori hibákat és azok](itsmc-dashboard-errors.md)megoldásait.
+
+### <a name="you-cant-create-an-itsm-action-for-an-action-group"></a>Műveleti csoporthoz nem hozható létre ITSM művelet.
+
+**OK**: az újonnan létrehozott ITSMC-példány még befejezi a kezdeti szinkronizálást.
+
+**Megoldás**: Tekintse át a [gyakori hibákat és azok felbontását](itsmc-dashboard-errors.md).

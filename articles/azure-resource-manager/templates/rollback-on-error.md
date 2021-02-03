@@ -2,25 +2,34 @@
 title: A sikeres üzembe helyezés hibába való visszaállítása
 description: Azt határozza meg, hogy egy sikertelen központi telepítés visszaálljon-e egy sikeres üzembe helyezésre.
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460143"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492212"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Hiba visszaállítása a sikeres központi telepítéshez
 
-Ha egy telepítés meghiúsul, automatikusan újratelepítheti a korábbi, sikeres telepítést az üzembe helyezési előzményekből. Ez a funkció akkor hasznos, ha az infrastruktúra központi telepítésének ismert jó állapota van, és ezt az állapotot szeretné visszaállítani. Számos figyelmeztetés és korlátozás létezik:
+Ha egy telepítés meghiúsul, automatikusan újratelepítheti a korábbi, sikeres telepítést az üzembe helyezési előzményekből. Ez a funkció akkor hasznos, ha az infrastruktúra központi telepítésének ismert jó állapota van, és ezt az állapotot szeretné visszaállítani. Megadhat egy adott korábbi telepítést vagy az utolsó sikeres telepítést.
 
+> [!IMPORTANT]
+> Ez a szolgáltatás egy korábbi üzemelő példány újbóli üzembe helyezésével visszaállít egy sikertelen telepítést. Ez az eredmény eltérő lehet, mint amit a sikertelen telepítés visszavonása elvár. Győződjön meg arról, hogy megérti a korábbi központi telepítés újratelepítésének módját.
+
+## <a name="considerations-for-redeploying"></a>Az újratelepítéssel kapcsolatos megfontolások
+
+A szolgáltatás használata előtt tekintse át az alábbi adatokat az újratelepítés kezelésével kapcsolatban:
+
+- Az előző üzemelő példány a [teljes mód](./deployment-modes.md#complete-mode)használatával fut, még akkor is, ha a korábbi telepítés során [növekményes módot](./deployment-modes.md#incremental-mode) használt. A teljes módban történő ismételt üzembe helyezés váratlan eredményeket eredményezhet, ha a korábbi központi telepítés növekményes használatot használ. A teljes mód azt jelenti, hogy az előző üzemelő példányban nem szereplő összes erőforrás törlődik. Adja meg az erőforráscsoport egyik korábbi központi telepítését, amely az összes erőforrást és azok állapotait képviseli. További információ: [telepítési módok](./deployment-modes.md).
 - Az újratelepítést a rendszer pontosan úgy futtatja, ahogy korábban ugyanazzal a paraméterekkel futtatta. A paraméterek nem módosíthatók.
-- Az előző központi telepítés a [teljes móddal](./deployment-modes.md#complete-mode)fut. A rendszer törli az előző üzemelő példányban nem szereplő erőforrásokat, és minden erőforrás-konfiguráció a korábbi állapotukra van beállítva. Győződjön meg arról, hogy teljes mértékben megértette az [üzembe helyezési módokat](./deployment-modes.md).
 - Az újratelepítés csak az erőforrásokat befolyásolja, az adatváltozások nincsenek hatással.
-- Ezt a funkciót csak az erőforráscsoport-telepítésekhez használhatja, az előfizetés és a felügyeleti csoport szintjén üzemelő példányok nem. Az előfizetési szintű telepítéssel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](./deploy-to-subscription.md).
+- Ezt a funkciót csak az erőforráscsoport-telepítések esetén használhatja. Nem támogatja az előfizetés, a felügyeleti csoport vagy a bérlői szintű üzemelő példányok használatát. Az előfizetési szintű telepítéssel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](./deploy-to-subscription.md).
 - Ezt a lehetőséget csak gyökérszintű központi telepítések esetén használhatja. A beágyazott sablonból történő központi telepítések nem érhetők el az újratelepítéshez.
 
-Ha ezt a beállítást szeretné használni, a központi telepítéseknek egyedi névvel kell rendelkezniük, hogy az előzményekben azonosíthatók legyenek. Ha nem rendelkezik egyedi névvel, akkor az aktuális sikertelen telepítés felülírhatja a korábban sikeres telepítést az előzményekben.
+Ha ezt a beállítást szeretné használni, a központi telepítéseknek egyedi névvel kell rendelkezniük az üzembe helyezési előzményekben. Csak olyan egyedi nevekkel rendelkezhet, amelyeket egy adott központi telepítés azonosítható. Ha nem rendelkezik egyedi névvel, akkor a sikertelen központi telepítés felülírhatja a sikeres telepítést az előzményekben.
+
+Ha olyan korábbi központi telepítést ad meg, amely nem létezik az üzembe helyezési előzményekben, a visszaállítás hibát jelez.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -113,9 +122,7 @@ Ha az aktuális telepítés meghiúsulása esetén a megadott központi telepít
 
 A megadott központi telepítésnek sikeresnek kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A szolgáltatás több régióba való biztonságos kivonásához lásd: [Azure Telepítéskezelő](deployment-manager-overview.md).
-- Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
+- A teljes és a növekményes mód megismeréséhez tekintse meg [Azure Resource Manager telepítési módokat](deployment-modes.md).
 - Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](template-syntax.md)ismertető témakört.
-- A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon üzembe helyezése sas-tokenrel](secure-template-with-sas-token.md).

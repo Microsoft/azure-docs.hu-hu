@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222870"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493719"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Nyilvános IP-címek frissítése
 
-Az Azure-beli nyilvános IP-címek SKU--vagy alap-vagy standard szintűek, amelyekkel a funkciók (beleértve a kiosztási módszert, a rendelkezésre állási zónák kihasználtsága és a hozzájuk társított erőforrások) szempontjait határozzák meg. 
+Az Azure-beli nyilvános IP-címek SKU--vagy alapszintű vagy standard szintűek, amelyek a funkciójuk szempontjait határozzák meg (beleértve a kiosztási módszert, a szolgáltatások támogatását és a hozzájuk társított erőforrásokat is). 
 
 Ebben a cikkben a következő forgatókönyveket tekintjük át:
-* Alapszintű SKU nyilvános IP-címének frissítése standard SKU nyilvános IP-re (a portál, a PowerShell vagy a CLI használatával)
+* Alapszintű SKU nyilvános IP-címének frissítése standard SKU nyilvános IP-re (a PowerShell vagy a parancssori felület használatával)
 * Klasszikus Azure-Fenntartott IP migrálása Azure Resource Manager alapszintű SKU nyilvános IP-címére
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Nyilvános IP-cím frissítése alapszintről standard SKU-ra

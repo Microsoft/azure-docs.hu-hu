@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516542"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493273"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API-fiókba a Azure Databricks használatával
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,9 +114,30 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> A `spark.cassandra.output.concurrent.writes` és a `connections_per_executor_max` konfigurációk fontosak a [ráta korlátozásának](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)elkerüléséhez, ami akkor fordul elő, amikor a kérések Cosmos db meghaladják a kiosztott átviteli sebességet ([kérelmek egységei](./request-units.md)). Előfordulhat, hogy módosítania kell ezeket a beállításokat a Spark-fürtben lévő végrehajtók számától függően, és az egyes rekordok méretének (és így RU-nek) a megcélzott táblákba való beírása is lehetséges.
+> A `spark.cassandra.output.batch.size.rows` `spark.cassandra.output.concurrent.writes` és a `connections_per_executor_max` konfigurációk fontosak a [mérték korlátozása](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)érdekében, ami akkor fordul elő, ha a kérések Azure Cosmos db túllépik a kiépített átviteli sebességet/([kérelmek egységeit](./request-units.md)). Előfordulhat, hogy módosítania kell ezeket a beállításokat a Spark-fürtben lévő végrehajtók számától függően, és az egyes rekordok méretének (és így RU-nek) a megcélzott táblákba való beírása is lehetséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="rate-limiting-429-error"></a>Mérték korlátozása (429 hiba)
+`request rate is large`A fenti beállításoknak a minimális értékekre való csökkentése ellenére előfordulhat, hogy a 429-es hibakód vagy a hiba szövege nem jelenik meg. Az alábbiakban néhány ilyen forgatókönyvet ismertetünk:
+
+- **A táblához lefoglalt átviteli sebesség kevesebb, mint 6000 [kérelem egység](./request-units.md)**. Még a minimális beállítások is lehetővé teszik, hogy a Spark az írásokat az 6000-es számú kérelmek száma alapján hajtsa végre. Ha kiépített egy táblát egy olyan alaptérben, amely megosztott átviteli sebességgel rendelkezik, lehetséges, hogy ez a tábla kevesebb, mint 6000 RUs érhető el futásidőben. Győződjön meg arról, hogy az áttelepíteni kívánt tábla legalább 6000 RUs számára elérhető az áttelepítés futtatásakor, és szükség esetén a dedikált kérési egységek kiosztása a táblához. 
+- **Túlzott adattorzítás nagy mennyiségű adattal**. Ha nagy mennyiségű adattal rendelkezik (azaz táblázatos sorokkal) egy adott táblába való átálláshoz, de jelentős mértékben elferdíti az adatokat (például az ugyanahhoz a partíciós kulcs értékére írt rekordokat), akkor továbbra is használhatja a díjszabást, még akkor is, ha nagy mennyiségű [kérési egység](./request-units.md) van kiépítve a táblában. Ennek az az oka, hogy a kérelmek egységei a fizikai partíciók között egyenlően oszlanak meg, és a nagy adatváltozás miatt a kérések szűk keresztmetszetet jelenthetnek egy adott partícióra vonatkozóan, ami a korlátozást eredményezi. Ebben az esetben javasoljuk, hogy csökkentse a Spark minimális átviteli sebességét, hogy elkerülje a mérték korlátozását, és kényszerítse az áttelepítés lassú futását. Ez a forgatókönyv sokkal gyakoribb lehet a hivatkozás-vagy vezérlési táblázatok áttelepítésekor, ahol a hozzáférés ritkább, de a ferdeség magas lehet. Ha azonban bármilyen más típusú táblázatban jelentős döntés van jelen, érdemes lehet áttekintenie az adatmodellt is, hogy elkerülje a számítási feladatok gyors particionálását az állandó állapotú műveletek során. 
+- **Nem lehet beolvasni a nagy tábla számlálóját**. `select count(*) from table`A Futtatás jelenleg nem támogatott nagyméretű táblák esetén. Megtekintheti a Azure Portal metrikáinak számát (lásd: [hibaelhárítási cikk](cassandra-troubleshoot.md)), de ha egy Spark-feladathoz tartozó nagy méretű tábla számát kell meghatároznia, az adatokat egy ideiglenes táblába másolhatja, majd a Spark SQL használatával lekérheti a darabszámot, például lent ( `<primary key>` az eredményül kapott ideiglenes táblából származó néhány mező helyett).
+
+  ```scala
+  val ReadFromCosmosCassandra = sqlContext
+    .read
+    .format("org.apache.spark.sql.cassandra")
+    .options(cosmosCassandra)
+    .load
+
+  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
+  %sql
+  select count(<primary key>) from CosmosCassandraResult
+  ```
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

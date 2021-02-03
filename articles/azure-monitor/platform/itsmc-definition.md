@@ -7,41 +7,41 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 717a1bc4361ba4a7366f4864c1fe44f93b6f4b5e
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: ba32cfa4bc5cd0b41a210cf88fb598afc3064495
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127855"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492552"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
 :::image type="icon" source="media/itsmc-overview/itsmc-symbol.png":::
 
-Ez a cikk azt ismerteti, hogyan konfigurálható a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) a Log Analytics a munkaelemek központilag kezelhetők.
+Ez a cikk azt ismerteti, hogyan konfigurálható a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) a Log Analytics az IT szolgáltatás-felügyeleti (ITSM) munkaelemek központi kezelésére.
 
 ## <a name="add-it-service-management-connector"></a>IT-szolgáltatásmenedzsmenti csatoló hozzáadása
 
-A kapcsolatok létrehozása előtt hozzá kell adnia a ITSMC.
+A kapcsolatok létrehozása előtt telepítenie kell a ITSMC.
 
 1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget:
 
-   ![Az erőforrás létrehozása menüelemet megjelenítő képernyőkép.](media/itsmc-overview/azure-add-new-resource.png)
+   ![Képernyőkép, amely megjeleníti az erőforrás-létrehozás menüelemét.](media/itsmc-overview/azure-add-new-resource.png)
 
-2. **It-szolgáltatásmenedzsmenti csatoló** keresése az Azure Marketplace-en. Válassza a **Létrehozás** lehetőséget:
+2. **It-szolgáltatásmenedzsmenti csatoló** keresése az Azure Marketplace-en. Ezután válassza a **Létrehozás** elemet:
 
    ![Képernyőkép, amely megjeleníti a létrehozás gombot az Azure piactéren.](media/itsmc-overview/add-itsmc-solution.png)
 
-3. Az **La munkaterület** szakaszban válassza ki azt az Azure log Analytics-munkaterületet, ahol a ITSMC telepíteni kívánja.
-   >[!NOTE]
-   >
-   > * A ITSMC csak Log Analytics munkaterületeken telepíthetők a következő régiókban: USA keleti régiója, USA 2. nyugati régiója, az USA déli középső régiója, az USA nyugati középső régiója, US Gov Arizona, US Gov Virginia, Közép-Kanada, Nyugat-Európa, Dél-Egyesült Királyság, Délkelet-Ázsia, Kelet-Japán, Közép-India és Délkelet-Ausztrália.
+3. Az **La munkaterület** szakaszban válassza ki azt a log Analytics munkaterületet, ahol a ITSMC telepíteni kívánja.
+   > [!NOTE]
+   > A ITSMC-t csak a következő régiókban telepítheti Log Analytics munkaterületeken: USA keleti régiója, USA 2. nyugati régiója, az USA déli középső régiója, az USA nyugati középső régiója, a US Gov Arizona, a US Gov Virginia, a Közép-Európa, Nyugat-Európa, Dél-Ausztrália, Délkelet-Ázsia, Kelet-Japán, Közép-India
 
 4. A **log Analytics munkaterület** szakaszban válassza ki azt az erőforráscsoportot, amelyben létre kívánja hozni a ITSMC-erőforrást:
 
    ![A Log Analytics munkaterület szakaszt bemutató képernyőkép.](media/itsmc-overview/itsmc-solution-workspace.png)
-   >[!NOTE]
-   >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek*.
+   
+   > [!NOTE]
+   > A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek*.
 
 5. Válassza az **OK** lehetőséget.
 
@@ -49,18 +49,14 @@ A ITSMC-erőforrás telepítésekor az ablak jobb felső sarkában megjelenik eg
 
 ## <a name="create-an-itsm-connection"></a>ITSM-kapcsolatok létrehozása
 
-A ITSMC telepítése után létrehozhat egy-egy kapcsolatokat.
-
-A kapcsolatok létrehozásához elő kell készítenie a ITSM eszközt, hogy engedélyezze a ITSMC való kapcsolódást.  
-
-Azon ITSM-termék alapján, amelyhez csatlakozik, válassza a következő hivatkozások egyikét az utasításokhoz:
+A ITSMC telepítése után elő kell prep a ITSM eszközt, hogy engedélyezze a kapcsolódást a ITSMC. Azon ITSM-termék alapján, amelyhez csatlakozni szeretne, válassza a következő hivatkozások egyikét az utasításokhoz:
 
 - [ServiceNow](./itsmc-connections-servicenow.md)
 - [System Center Service Manager](./itsmc-connections-scsm.md)
 - [Cherwell](./itsmc-connections-cherwell.md)
 - [Provance](./itsmc-connections-provance.md)
 
-Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapcsolatok létrehozásához:
+Miután elő a ITSM eszközt, hajtsa végre a következő lépéseket a kapcsolatok létrehozásához:
 
 1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati (*a munkaterület neve*)**:
 
@@ -69,9 +65,10 @@ Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapc
 1. A bal oldali ablaktábla **munkaterület-adatforrások** területén válassza a **ITSM-kapcsolatok** elemet:
 
    ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok menüpontot.](media/itsmc-overview/add-new-itsm-connection.png)
+
 1. Válassza a **kapcsolatok hozzáadása** lehetőséget.
 
-1. A ITSM termékek/szolgáltatások című témakörben leírtak szerint határozza meg a kapcsolódási beállításokat:
+1. Az Ön által használt ITSM-termék alapján határozza meg a kapcsolódási beállításokat:
 
     - [ServiceNow](./itsmc-connections-servicenow.md)
     - [System Center Service Manager](./itsmc-connections-scsm.md)
@@ -79,31 +76,24 @@ Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapc
     - [Provance](./itsmc-connections-provance.md)
 
    > [!NOTE]
+   > Alapértelmezés szerint a ITSMC 24 óránként egyszer frissíti a kapcsolatok konfigurációs szolgáltatásait. Ha azonnal frissíteni szeretné a kapcsolatok adatait, hogy azok megfeleljenek a módosítások vagy a sablonok frissítéseinek, válassza a **szinkronizálás** gombot a kapcsolatok ablaktábláján:
    >
-   > Alapértelmezés szerint a ITSMC 24 óránként egyszer frissíti a kapcsolatok konfigurációs szolgáltatásait. Ha azonnal frissíteni szeretné a kapcsolatok adatait, hogy azok megfeleljenek a módosítások vagy a sablonok frissítéseinek, válassza a **szinkronizálás** gombot a kapcsolatok paneljén:
-   >
-   > ![Képernyőkép, amely megjeleníti a szinkronizálás gombot a kapcsolatok panelen.](media/itsmc-overview/itsmc-connections-refresh.png)
-
-## <a name="use-itsmc"></a>ITSMC használata
-
-   A ITSMC használatával riasztásokat hozhat létre Azure Monitor riasztásokból a ITSM eszközre.
+   > ![A szinkronizálás gombot a kapcsolatok ablaktábláján ábrázoló képernyőkép.](media/itsmc-overview/itsmc-connections-refresh.png)
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>ITSM-munkaelemek létrehozása az Azure-riasztásokból
 
-A ITSM-kapcsolatok létrehozása után létrehozhat munkaelemeket a ITSM-eszközön az Azure-riasztások alapján. A munkaelemek létrehozásához használja a ITSM műveletet a műveleti csoportokban.
+A ITSM-kapcsolatok létrehozása után a ITMC használatával létrehozhat munkaelemeket a ITSM eszközön az Azure-riasztások alapján. A munkaelemek létrehozásához használja a ITSM műveletet a műveleti csoportokban.
 
-A műveleti csoportok moduláris és újrafelhasználható módot biztosítanak az Azure-riasztások műveleteinek elindításához. A műveleti csoportokat metrikus riasztásokkal, műveletnapló riasztásokkal és Azure Log Analytics riasztásokkal is használhatja a Azure Portal.
+A műveleti csoportok moduláris és újrafelhasználható módot biztosítanak az Azure-riasztások műveleteinek elindításához. A műveleti csoportokat metrikus riasztásokkal, műveletnapló riasztásokkal és a Azure Portal Log Analytics riasztásokkal is használhatja.
 
 > [!NOTE]
-> A ITSM-kapcsolatok létrehozása után a szinkronizálási folyamat befejezéséhez 30 percet kell várnia.
+> A ITSM-kapcsolatok létrehozása után 30 percet kell várnia, amíg a szinkronizálási folyamat befejeződik.
 
-### <a name="template-definitions"></a>Sablon-definíciók
+## <a name="define-a-template"></a>Sablon definiálása
 
-   Vannak olyan munkaelem-típusok, amelyek használhatják a ITSM eszköz által definiált sablonokat.
-A sablonok használatával meghatározhatja azokat a mezőket, amelyeket a rendszer a műveleti csoport részeként definiált rögzített értékek alapján automatikusan kitölt. A sablonokat a ITSM eszközben definiálhatja.
-Megadhatja, hogy melyik sablont szeretné használni a műveleti csoport definíciójának részeként.
+Bizonyos munkaelem-típusok használhatják a ITSM eszközben definiált sablonokat. A sablonok segítségével megadhatja azokat a mezőket, amelyeket a rendszer automatikusan kitölt a műveleti csoport rögzített értékei szerint. Megadhatja, hogy melyik sablont szeretné használni a műveleti csoport definíciójának részeként.
 
-Műveleti csoportok létrehozásához kövesse az alábbi eljárást:
+Műveleti csoport létrehozása:
 
 1. A Azure Portal válassza a  **riasztások** elemet.
 2. A képernyő felső részén található menüben válassza a **kezelés műveletek** elemet:
@@ -112,61 +102,58 @@ Műveleti csoportok létrehozásához kövesse az alábbi eljárást:
 
    Megjelenik a **műveleti csoport létrehozása** ablak.
 
-3. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben létre szeretné hozni a műveleti csoportot. Adja meg a műveleti csoport **nevét** és **megjelenítendő nevét** . Válassza a Next (tovább) lehetőséget **: értesítések**.
+3. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyben létre szeretné hozni a műveleti csoportot. Adjon meg értékeket a műveleti **csoport nevében** és a **megjelenítendő névben** a műveleti csoport számára. Ezután válassza a **Tovább: értesítések** lehetőséget.
 
     ![A műveleti csoport létrehozása ablakot megjelenítő képernyőkép.](media/itsmc-overview/action-groups-details.png)
 
-4. Az értesítési listán válassza a **Tovább: műveletek** elemet.
-5. A műveletek listában válassza a **ITSM** elemet a **Művelettípus** listában. Adja meg a művelet **nevét** . Válassza a **Szerkesztés részleteit** jelölő toll gombot.
+4. Az **értesítések** lapon válassza a **Tovább: műveletek** elemet.
+5. A **műveletek** lapon válassza a **ITSM** elemet a **művelet típusa** listában. A **név mezőben** adja meg a művelet nevét. Ezután kattintson a **Szerkesztés részleteit** jelölő toll gombra.
 
-    ![A műveleti csoport definícióját bemutató képernyőkép.](media/itsmc-definition/action-group-pen.png)
+    ![Képernyőkép, amely a műveleti csoport létrehozásához szükséges beállításokat jeleníti meg.](media/itsmc-definition/action-group-pen.png)
 
-6. Az **előfizetés** listában válassza ki azt az előfizetést, amelyben a log Analytics munkaterület található. A **kapcsolatok** listájában válassza ki a ITSM-összekötő nevét. Ezt a munkaterület neve követi majd. Például: MyITSMConnector (Sajátmunkaterület).
+6. Az **előfizetés** listában válassza ki a log Analytics munkaterületet tartalmazó előfizetést. A **kapcsolatok** listájában válassza ki a ITSM-összekötő nevét. Ezt a munkaterület neve követi majd. Példa: *MyITSMConnector (sajátmunkaterület)*.
 
 7. Válasszon **munkaelem** -típust.
 
-8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](#template-definitions) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
+8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](#define-a-template) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
 
-9. A művelet ITSM-definíciójának utolsó szakaszában megadhatja, hogy hány munkaelem jön létre az egyes riasztásokhoz.
+9. Az ITSM műveleti csoport létrehozásához használt felület utolsó szakaszában megadhatja, hogy hány munkaelem jön létre az egyes riasztásokhoz.
 
-    >[!NOTE]
-    >
-    > * Ez a szakasz csak a naplók keresési értesítéseire vonatkozik.
-    > * Az összes többi riasztási típus esetén a rendszer riasztásként egy munkaelemet hoz létre.
+   > [!NOTE]
+   > Ez a szakasz csak a naplók keresési értesítéseire vonatkozik. Minden más riasztási típus esetében riasztásként egy munkaelemet fog létrehozni.
 
-    * Ha a "munkaelem" legördülő menüben a "incidens" vagy a "riasztás" lehetőséget választja, akkor a ![ ITSM incidens ablakát megjelenítő képernyőkép jelenik meg.](media/itsmc-overview/itsm-action-configuration.png)
-        * Ha bejelöli az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** jelölőnégyzetet, minden riasztásban minden konfigurációs elem új munkaelemet fog létrehozni. Az azonos konfigurációs elemekre vonatkozó több riasztás miatt a rendszer több munkaelemet is érint az egyes konfigurációs elemekhez.
+   * Ha az **incidens** vagy a **riasztás** lehetőséget választotta a **munkaelem** legördülő listában, lehetősége van egyéni munkaelemeket létrehozni az egyes konfigurációs elemekhez.
+    
+     ![Képernyőkép, amely az I T S M jegy területét mutatja munkaelemként kiválasztott incidenssel.](media/itsmc-overview/itsm-action-configuration.png)
+    
+     * Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden riasztásban minden konfigurációs elem új munkaelemet fog létrehozni. Mivel az érintett konfigurációs elemek esetében több riasztás is előfordul, az egyes konfigurációs elemekhez egynél több munkaelem fog vonatkozni.
 
-             Például:
-             1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 3 munkaelemet fog létrehozni.
-             2) 2. riasztás 1 konfigurációs elemmel: A-létrehoz 1 munkaelemet.
+       Egy három konfigurációs elemet tartalmazó riasztás például három munkaelemet fog létrehozni. Egy olyan riasztás, amely egyetlen konfigurációs elemmel fog létrehozni egy munkaelemet.
+        
+     * Ha törli az egyes **konfigurációs elemek egyéni munkaelemeinek létrehozása** jelölőnégyzet jelölését, akkor a ITSMC egyetlen munkaelemet hoz létre minden egyes riasztási szabályhoz, és hozzáfűzi az összes érintett konfigurációs elemet. Új munkaelem jön létre, ha az előző lezárult.
 
-        * Ha törli az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** jelölőnégyzetet, akkor az ITSM-összekötő egyetlen munkaelemet hoz létre minden egyes riasztási szabályhoz, és hozzáfűzi az összes érintett konfigurációs elemhez. Új munkaelem jön létre, ha az előző lezárult.
+       >[!NOTE]
+       > Ebben az esetben a kilőtt riasztások némelyike nem hoz majd új munkaelemeket a ITSM eszközben.
 
-        >[!NOTE]
-        > Ebben az esetben a kilőtt riasztások némelyike nem hoz majd új munkaelemeket a ITSM eszközben.
+       Egy három konfigurációs elemet tartalmazó riasztás például egy munkaelemet fog létrehozni. Ha az előző példához hasonló riasztási szabályhoz tartozik egy konfigurációs elem, a konfigurációs elem csatolva lesz a létrehozott munkaelemben érintett konfigurációs elemek listájához. Egy másik, egy konfigurációs elemmel rendelkező riasztási szabályhoz tartozó riasztás egy munkaelemet fog létrehozni.
 
-        Például:
-         1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 1 munkaelemet fog létrehozni.
-         2) 2. riasztás ugyanahhoz a riasztási szabályhoz, mint az a 1. lépés: a D-D az a lépésben létrehozott munkaelem érintett konfigurációs elemek listájához lesz csatolva.
-         3) 3. riasztás egy másik riasztási szabályhoz 1 konfigurációs elemmel: az E-1 munkaelemet hoz létre.
+   * Ha a **munkaelem** legördülő listában az **esemény** lehetőséget választotta, dönthet úgy, hogy egyéni munkaelemeket hoz létre minden naplóbejegyzés vagy mindegyik konfigurációs elem számára.
+    
+     ![Képernyőkép, amely az I T S M jegy területét mutatja munkaelemként kiválasztott eseménnyel.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-    * Abban az esetben, ha a "munkaelem" legördülő menüből kijelöli a "esemény": ![ képernyőképet, amely megjeleníti az ITSM eseményt.](media/itsmc-overview/itsm-action-configuration-event.png)
-
-        * Ha **a "különálló munkaelemek létrehozása az egyes naplókhoz" lehetőséget választja (a konfigurációs elem mezője nincs kitöltve. Nagy számú munkaelemet eredményezhet.) "** a választógombok kiválasztásakor a rendszer minden egyes sorban létrehoz egy munkaelemet a naplóbeli keresés riasztási lekérdezés keresési eredményei között. A munkaelem tartalmában található Description tulajdonság a keresési eredmények sorát fogja tartalmazni.
-        * Ha az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** lehetőséget választja, a választógombok kiválasztásakor minden egyes riasztás konfigurációs eleme új munkaelemet fog létrehozni. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél. Ez ugyanaz lesz, mint az incidens/riasztás szakaszban lévő jelölőnégyzet ellenőrzése.
+     * Ha **az egyéni munkaelemek létrehozása lehetőséget választja minden naplóbejegyzés esetében (a konfigurációs elem mezője nincs kitöltve. Nagy számú munkaelemet eredményezhet.)** a log Search riasztási lekérdezés keresési eredményei között minden sorhoz létrejön egy munkaelem. A munkaelem tartalmában található Description tulajdonság a keresési eredmények sorát fogja tartalmazni.
+      
+     * Ha **az egyes konfigurációs elemekhez az egyes** munkaelemek létrehozása lehetőséget választja, minden egyes riasztás konfigurációs eleme új munkaelemet fog létrehozni. Minden konfigurációs elemnek több munkaeleme is lehet a ITSM-rendszeren. Ez a beállítás megegyezik a jelölőnégyzet bejelölésével, amely akkor jelenik meg, ha a munkaelem típusaként kiválasztja az **incidens** elemet.
 
 10. Válassza az **OK** lehetőséget.
 
 Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza vagy frissíti a munkaelemet a ITSM eszközben.
 
 > [!NOTE]
+> A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg a műveleti csoportok [díjszabási lapját](https://azure.microsoft.com/pricing/details/monitor/) .
 >
->- A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg a műveleti csoportok [díjszabási lapját](https://azure.microsoft.com/pricing/details/monitor/) .
->
->
->- A riasztási szabály definíciójának rövid leírása mezője 40 karakterre van korlátozva, ha a ITSM művelettel küldi el.
+> A riasztási szabály definíciójának rövid leírása mezője 40 karakterre van korlátozva, ha a ITSM művelettel küldi el.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)
+* [ITSMC kapcsolatos problémák elhárítása](./itsmc-resync-servicenow.md)

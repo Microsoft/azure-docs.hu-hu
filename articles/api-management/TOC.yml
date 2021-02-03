@@ -68,6 +68,8 @@
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+    - name: Háttérrendszerek
+      href: backends.md
     - name: Előfizetések
       href: api-management-subscriptions.md
     - name: Verziók
@@ -104,10 +106,10 @@
           href: import-function-app-as-api.md
         - name: Logikai alkalmazás importálása
           href: import-logic-app-as-api.md
-        - name: Service Fabric-alkalmazás importálása
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: API szerkesztése
           href: edit-api.md
+        - name: Service Fabric háttérrendszer konfigurálása
+          href: how-to-configure-service-fabric-backend.md
     - name: Kiépítés és skálázás
       items:
         - name: Kapacitási mérőszám

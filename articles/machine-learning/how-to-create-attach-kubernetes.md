@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831924"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492755"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -69,6 +69,8 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 
     - [Csomópontok számának manuális skálázása egy AK-fürtben](../aks/scale-cluster.md)
     - [Fürt autoskálázásának beállítása az AK-ban](../aks/cluster-autoscaler.md)
+
+- Ne __frissítse közvetlenül a fürtöt YAML-konfiguráció használatával__. Míg az Azure Kubernetes Services a YAML-konfiguráción keresztül támogatja a frissítéseket, Azure Machine Learning központi telepítések felülbírálják a módosításokat. A csak két YAML mező, amely nem írható felül, a __kérelmek korlátai__ , valamint a __processzor és a memória__.
 
 ## <a name="azure-kubernetes-service-version"></a>Az Azure Kubernetes Service verziója
 
@@ -381,7 +383,6 @@ Azure Machine Learning Studióban válassza ki a __számítás__, a __következt
 ---
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-
 ### <a name="update-the-cluster"></a>A fürt frissítése
 
 Az Azure Kubernetes Service-fürtben telepített Azure Machine Learning-összetevők frissítéseit manuálisan kell alkalmazni. 
@@ -424,7 +425,7 @@ Az AK-ban számos webszolgáltatási hiba feloldható a fürthöz való csatlako
 az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure RBAC használata az Kubernetes-hitelesítéshez](../aks/manage-azure-rbac.md)
 * [Modell üzembe helyezésének módja és helye](how-to-deploy-and-where.md)

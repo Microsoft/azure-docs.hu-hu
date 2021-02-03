@@ -3,12 +3,12 @@ title: Hatókör a bővítmény erőforrástípusok esetében
 description: Ismerteti, hogyan használható a hatókör tulajdonság a bővítmény típusú erőforrástípusok telepítésekor.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179979"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492161"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Hatókör beállítása a bővítmény erőforrásaihoz az ARM-sablonokban
 
@@ -85,6 +85,6 @@ A következő példa létrehoz egy Storage-fiókot, és egy szerepkört alkalmaz
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](template-syntax.md)ismertető témakört.
+* Ha meg szeretné tudni, hogyan határozhat meg paramétereket a sablonban, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című részt.
 * A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).
-* A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon üzembe helyezése sas-tokenrel](secure-template-with-sas-token.md).
+* A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [Private ARM-sablon üzembe helyezése sas-tokenrel](secure-template-with-sas-token.md).

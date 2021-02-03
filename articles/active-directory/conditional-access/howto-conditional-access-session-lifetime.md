@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837464"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491940"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenetek kezelésének konfigurálása feltételes hozzáféréssel
+# <a name="configure-authentication-session-management-with-conditional-access"></a>A hitelesítési munkamenet felügyeletének konfigurálása feltételes hozzáféréssel
 
 Összetett központi telepítések esetén a szervezeteknek szükségük lehet a hitelesítési munkamenetek korlátozására. Egyes forgatókönyvek például a következők lehetnek:
 
@@ -88,7 +88,7 @@ Az Azure AD alapértelmezett böngésző-munkamenetének megőrzése lehetővé 
 A feltételes hozzáférés prémium szintű Azure AD képesség, és prémium szintű licencre van szükség. Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [Mi a feltételes hozzáférés Azure Active Directory?](overview.md#license-requirements) című témakört.
 
 > [!WARNING]
-> Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másik, konfigurálható jogkivonat-élettartam funkciót. A Microsoft azt tervezi, hogy a hitelesítő jogkivonat élettartama funkciót a frissítés és a munkamenet-jogkivonat élettartama tekintetében kivonja a 2021. január 30-án, majd lecseréli a feltételes hozzáférés hitelesítési munkamenet-kezelési funkciójával.  
+> Ha a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkciót jelenleg nyilvános előzetes verzióban használja, vegye figyelembe, hogy nem támogatott két különböző szabályzat létrehozása ugyanahhoz a felhasználóhoz vagy alkalmazás-kombinációhoz: egyet ezzel a szolgáltatással, és egy másik, konfigurálható jogkivonat-élettartam funkciót. A Microsoft visszavonta a hitelesítő jogkivonat élettartama funkciót a frissítéshez és a munkamenet-jogkivonat élettartamához a 2021. január 30-án, és lecserélte a feltételes hozzáférés hitelesítési munkamenet-kezelési funkciójával.  
 >
 > A bejelentkezési gyakoriság engedélyezése előtt győződjön meg arról, hogy az egyéb újrahitelesítési beállítások le vannak tiltva a bérlőben. Ha a "Remember MFA on Trusted Devices" beállítás engedélyezve van, a bejelentkezési gyakoriság használata előtt tiltsa le a szolgáltatást, mivel a két beállítás együttes használata váratlanul kéri a felhasználókat. Ha többet szeretne megtudni az újrahitelesítéssel kapcsolatos kérésekről és a munkamenetek élettartamáról, tekintse meg az [újrahitelesítéssel kapcsolatos tudnivalókat és az Azure AD multi-Factor Authentication munkamenet-élettartamának megismerését](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)ismertető cikket.
 

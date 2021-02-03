@@ -3,12 +3,12 @@ title: Sablon függvények a hatókörön belüli központi telepítésekben
 description: Ismerteti, Hogyan oldhatók fel a sablon függvények a hatókörön belüli központi telepítések során. A hatókör lehet bérlő, felügyeleti csoport, előfizetések és erőforráscsoportok.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: cb02a3dc808604a80fd9943138c1cd0d8648904e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681590"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492093"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>ARM-sablon függvények a telepítési hatókörökben
 
@@ -40,15 +40,15 @@ A különböző hatókörökre való telepítésekor néhány fontos szempontot 
 * Használja a [extensionResourceId ()](template-functions-resource.md#extensionresourceid) függvényt a felügyeleti csoport bővítményként megvalósított erőforrásaihoz. A felügyeleti csoportba központilag telepített egyéni házirend-definíciók a felügyeleti csoport bővítményei.
 
   Ha egy egyéni házirend-definíció erőforrás-AZONOSÍTÓját szeretné lekérni a felügyeleti csoport szintjén, használja a következőt:
-  
+
   ```json
   "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
-* Használja a [tenantResourceId](template-functions-resource.md#tenantresourceid) függvényt a bérlőn üzembe helyezett erőforrás azonosítójának lekéréséhez. A beépített szabályzat-definíciók a bérlői szintű erőforrások. Ha a felügyeleti csoport szintjén rendel hozzá egy beépített szabályzatot, használja a tenantResourceId függvényt.
+* Használja a [tenantResourceId ()](template-functions-resource.md#tenantresourceid) függvényt a bérlőn üzembe helyezett erőforrás azonosítójának lekéréséhez. A beépített szabályzat-definíciók a bérlői szintű erőforrások. Ha a felügyeleti csoport szintjén rendel hozzá egy beépített szabályzatot, használja a tenantResourceId függvényt.
 
   Egy beépített szabályzat-definíció erőforrás-AZONOSÍTÓjának lekéréséhez használja a következőt:
-  
+
   ```json
   "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
@@ -138,6 +138,6 @@ Az előző példa kimenete a következő:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](template-syntax.md)ismertető témakört.
+* Ha meg szeretné tudni, hogyan határozhat meg paramétereket a sablonban, tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerése](template-syntax.md)című részt.
 * A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).
-* A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon üzembe helyezése sas-tokenrel](secure-template-with-sas-token.md).
+* A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [Private ARM-sablon üzembe helyezése sas-tokenrel](secure-template-with-sas-token.md).

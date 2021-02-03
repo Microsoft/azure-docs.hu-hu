@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése erőforráscsoportok számára
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni egy Azure Resource Manager sablonban. Bemutatja, hogyan célozhat meg egynél több erőforráscsoportot.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186226"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491554"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Erőforráscsoportok üzembe helyezése ARM-sablonokkal
 
@@ -128,9 +128,9 @@ Példa sablonra: [erőforráscsoport létrehozása](#create-resource-group).
 
 ### <a name="scope-to-tenant"></a>Hatókör a bérlőre
 
-A bérlőhöz erőforrásokat is létrehozhat, ha a beállítást a értékre állítja `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
+Ahhoz, hogy erőforrásokat hozzon létre a bérlőn, állítsa be a következőt: `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
 
-A és a beállítással beágyazott központi telepítést is használhat `scope` `location` .
+Beágyazott központi telepítés használatához állítsa be a következőt: `scope` és `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -142,7 +142,7 @@ További információ: [felügyeleti csoport](deploy-to-management-group.md#mana
 
 ## <a name="deploy-to-target-resource-group"></a>Üzembe helyezés a cél erőforráscsoporthoz
 
-Ha erőforrásokat szeretne telepíteni a cél erőforráscsoporthoz, adja meg ezeket az erőforrásokat a sablon **erőforrások** szakaszában. A következő sablon létrehoz egy Storage-fiókot a telepítési műveletben megadott erőforráscsoporthoz.
+Ha erőforrásokat szeretne telepíteni a cél erőforráscsoporthoz, adja meg ezeket az erőforrásokat a `resources` sablon szakaszában. A következő sablon létrehoz egy Storage-fiókot a telepítési műveletben megadott erőforráscsoporthoz.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 

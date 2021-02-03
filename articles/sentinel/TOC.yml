@@ -2,6 +2,8 @@
   href: index.yml
 - name: Áttekintés
   href: overview.md
+- name: Az Azure Sentinel újdonságai
+  href: whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan tekintheti meg és kérdezheti le Azure Functio
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937297"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493770"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Azure Functions telemetria elemzése Application Insights 
 
@@ -77,18 +77,18 @@ Válassza a **naplók** lehetőséget a naplózott események felderítéséhez 
 
 Az alábbi példa egy lekérdezési példát mutat be, amely az elmúlt 30 percben megjeleníti az egyes feldolgozó kérelmek eloszlását.
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 A rendelkezésre álló táblák a bal oldali **séma** lapon jelennek meg. Az alábbi táblázatokban megtalálhatja a függvények által generált adathívásokat:
 
 | Táblázat | Leírás |
 | ----- | ----------- |
-| **nyomok** | A futtatókörnyezet által létrehozott naplók és a függvény kódjából származó Nyomkövetések. |
+| **nyomok** | A futásidejű, a skálázási vezérlő és a nyomkövetési napló által létrehozott naplók a függvény kódjából. |
 | **kérések** | Egy kérelem az egyes függvények meghívásához. |
 | **kivételek** | A futtatókörnyezet által kiváltott kivételek. |
 | **customMetrics** | A sikeres és sikertelen meghívások száma, a sikerességi arány és az időtartam. |
@@ -99,12 +99,38 @@ A többi tábla a rendelkezésre állási tesztekhez, valamint az ügyfél és a
 
 A függvények egyes adatai egy adott `customDimensions` mezőben találhatók.  A következő lekérdezés például lekéri az összes naplózási szintű nyomkövetést `Error` .
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 A futtatókörnyezet biztosítja a `customDimensions.LogLevel` és a `customDimensions.Category` mezőket. További mezőket is megadhat a függvény kódjába írt naplókban. A C# nyelvben például lásd: [strukturált naplózás](functions-dotnet-class-library.md#structured-logging) a .net-osztály könyvtárának fejlesztői útmutatójában.
+
+## <a name="query-scale-controller-logs"></a>A méretezési vezérlő naplófájljainak lekérdezése
+
+_Ez a funkció előzetes verzióban érhető el._
+
+A [méretezési vezérlő naplózásának](configure-monitoring.md#configure-scale-controller-logs) és a [Application Insights integrációjának](configure-monitoring.md#enable-application-insights-integration)engedélyezése után a Application Insights naplóbeli kereséssel kérdezheti le a kibocsátott skálázási vezérlő naplóit. A skálázási vezérlő naplóit a `traces` gyűjtemény a **ScaleControllerLogs** kategóriában tárolja.
+
+A következő lekérdezéssel megkeresheti az aktuális Function alkalmazáshoz tartozó összes méretezési vezérlő naplóját a megadott időtartamon belül:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+A következő lekérdezés kibontja az előző lekérdezést, hogy bemutassa, hogyan lehet csak a skála változását jelző naplókat beolvasni:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>Használati terv – specifikus mérőszámok
 
@@ -114,7 +140,7 @@ A következő telemetria-lekérdezések olyan mérőszámokra vonatkoznak, amely
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions figyeléséről:
 

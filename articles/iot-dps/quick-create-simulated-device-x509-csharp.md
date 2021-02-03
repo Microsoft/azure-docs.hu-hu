@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató – szimulált X. 509 eszköz kiépítése az Azure-IoT Hub C használatával #'
-description: Rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése az Azure-hoz készült C# eszközoldali SDK-IoT Hub Device Provisioning Service (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
+description: Rövid útmutató – X. 509 eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service C# eszközoldali SDK-val (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/01/2021
@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430585"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493854"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszközoldali SDK-val
+# <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszközoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Ezek a lépések bemutatják, hogyan használhatja a C#-hoz készült [Azure IoT-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp) egy X. 509 eszköz szimulálására egy Windows operációs rendszert futtató fejlesztői gépen. A minta a szimulált eszközt is összekapcsolja egy IoT Hub a Device kiépítési szolgáltatás használatával.
+Ezek a lépések bemutatják, hogyan használható az eszköz kódja a [C# Azure IoT-mintákkal](https://github.com/Azure-Samples/azure-iot-samples-csharp) egy X. 509 eszköz kiépítéséhez. Ebben a cikkben egy eszköz mintakód használatával fog futni a fejlesztői gépen, hogy az eszköz kiépítési szolgáltatásával kapcsolódjon IoT Hubhoz.
 
 Ha nem ismeri az kiépítés folyamatát, tekintse át a [kiépítés](about-iot-dps.md#provisioning-process) áttekintését. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit. 
 
@@ -53,13 +53,13 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Önaláírt X.509-eszköztanúsítvány létrehozása
 
-Ebben a szakaszban létrehoz egy önaláírt X. 509 teszt-tanúsítványt `iothubx509device1` a tulajdonos köznapi neve alapján. Fontos szem előtt tartani a következőket:
+Ebben a szakaszban létrehoz egy önaláírt X. 509 teszt-tanúsítványt `iothubx509device1` a tulajdonos köznapi neve alapján. Fontos szem előtt tartani az alábbi szempontokat:
 
 * Az önaláírt tanúsítványok csak tesztelési célokra alkalmasak, és nem javasolt őket éles környezetben alkalmazni.
 * Az önaláírt tanúsítványok alapértelmezett lejárati ideje 1 év.
 * A IoT eszköz azonosítója a tulajdonos köznapi neve lesz a tanúsítványon. Ügyeljen arra, hogy olyan tulajdonosi nevet használjon, amely megfelel az [eszköz azonosító sztring követelményeinek](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
 
-A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) mintakód használatával hozza létre a szimulált eszköz egyéni beléptetési bejegyzésével használandó tanúsítványt.
+A [X509Sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) mintakód használatával hozza létre az eszköz egyéni beléptetési bejegyzéséhez használni kívánt tanúsítványt.
 
 
 1. A PowerShell-parancssorban módosítsa a könyvtárakat az X. 509 eszköz kiépítési mintájának projekt könyvtárába.
@@ -106,7 +106,7 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
 3. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
    - Az *elsődleges tanúsítvány. PEM vagy. cer fájlban* válassza a *fájl kiválasztása* lehetőséget, majd válassza ki az előző lépésekben létrehozott tanúsítványfájl- **tanúsítványt. cer** fájlt.
-   - Az **Eszközazonosító** mezőt hagyja üresen. Az eszköz kiépítésekor a rendszer az eszközazonosítót az X.509-tanúsítványban lévő **iothubx509device1** köznapi névre állítja be. A rendszer ezt a nevet használja az egyéni regisztrációs bejegyzés regisztrációs azonosítójaként s. 
+   - Az **Eszközazonosító** mezőt hagyja üresen. Az eszköz kiépítésekor a rendszer az eszközazonosítót az X.509-tanúsítványban lévő **iothubx509device1** köznapi névre állítja be. Ez a köznapi név az egyéni beléptetési bejegyzés regisztrációs AZONOSÍTÓjának a neve is lesz. 
    - Ha kívánja, megadhatja az alábbi információkat is:
        - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
@@ -118,7 +118,7 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
 
 
 
-## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
+## <a name="provision-the-device"></a>Az eszköz kiépítése
 
 1. A kiépítési szolgáltatás **Áttekintés** paneljén jegyezze fel az **_azonosító hatókör_** értékét.
 
@@ -157,7 +157,7 @@ A [kiépítési eszköz Client Sample-X. 509 tanúsítványának](https://github
     Finished.
     ```
 
-4. Ellenőrizze, hogy a rendszer kiépítette-e az eszközt. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz kapcsolódó IoT hub-ra, az eszköz azonosítója megjelenik a hub **IoT-eszközök** paneljén. 
+4. Ellenőrizze, hogy a rendszer kiépítette-e az eszközt. Ha sikeresen kiépíti az eszközt a kiépítési szolgáltatáshoz társított IoT hubhoz, az eszköz azonosítója megjelenik a hub **IoT-eszközök** paneljén. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device-x509-csharp/registration.png) 
 
@@ -175,7 +175,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozta a szimulált X. 509 eszközt a Windows rendszerű gépen, és kiépíti azt az IoT hubhoz a portálon elérhető Azure IoT Hub Device Provisioning Service használatával. Az X. 509 eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
+Ebben a rövid útmutatóban egy X. 509 eszközt telepített az IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával. Az X. 509 eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
 
 > [!div class="nextstepaction"]
 > [Azure rövid útmutató – X. 509 eszközök regisztrálása az Azure-ba IoT Hub Device Provisioning Service](quick-enroll-device-x509-csharp.md)

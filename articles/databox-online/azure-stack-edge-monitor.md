@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 04/15/2019
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: cd75eb0f7de602979f2233a873c01ef742471e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 388be1b13f89a50bed003731c01c6ab6287faaf9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904396"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491064"
 ---
 # <a name="monitor-your-azure-stack-edge-pro"></a>A Azure Stack Edge Pro figyelése
 
@@ -26,7 +26,6 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Az eszközök eseményeinek és a kapcsolódó riasztások megtekintése
 > * Eszköz-összetevők hardveres állapotának megtekintése
 > * Az eszköz kapacitásának és tranzakciós metrikáinak megtekintése
-> * Riasztások konfigurálása és kezelése
 
 ## <a name="view-device-events"></a>Eszköz eseményeinek megtekintése
 
@@ -37,7 +36,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 Hajtsa végre a következő lépéseket a helyi webes felhasználói felületen az eszközösszetevők hardverállapotának megtekintéséhez.
 
 1. Csatlakozzon az eszköz helyi webes felhasználói felületéhez.
-2. Válassza a **karbantartás > hardver állapota**lehetőséget. Megtekintheti az egyes eszközösszetevők állapotát.
+2. Válassza a **karbantartás > hardver állapota** lehetőséget. Megtekintheti az egyes eszközösszetevők állapotát.
 
     ![Hardver állapotának megtekintése](media/azure-stack-edge-monitor/view-hardware-status.png)
 
@@ -59,29 +58,26 @@ A metrikák teljes listája a következő táblázatban látható:
 
 |Kapacitásmetrikák                     |Leírás  |
 |-------------------------------------|-------------|
-|**Rendelkezésre álló kapacitás**               | Az eszközre írható adatméretet jelöli. Ez azt jelenti, hogy ez az a kapacitás, amelyet elérhetővé tehet az eszközön. <br></br>Az eszköz kapacitását az eszközön és a felhőben található másolattal rendelkező fájlok helyi másolatának törlésével szabadíthatja fel.        |
-|**Teljes kapacitás**                   | Az eszközön az adat írására szolgáló összes bájtra hivatkozik. Ezt a helyi gyorsítótár teljes méretének is nevezzük. <br></br> Most már megnövelheti egy meglévő virtuális eszköz kapacitását egy adatlemez hozzáadásával. Adjon hozzá egy adatlemezt a virtuális gép hypervisor-felügyeletén keresztül, majd indítsa újra a virtuális gépet. Az átjáró eszköz helyi tárolóhelye ki lesz bővítve az újonnan hozzáadott adatlemezre. <br></br>További információkért keresse [fel a Hyper-V virtuális gép merevlemezének hozzáadása](https://www.youtube.com/watch?v=EWdqUw9tTe4)című témakört. |
+|**Rendelkezésre álló kapacitás**               | Az eszközre írható adatméretet jelöli. Más szóval ez a metrika az eszközön elérhető kapacitás. <br></br>Az eszköz kapacitása az eszközön és a felhőben található másolattal rendelkező fájlok helyi másolatának törlésével szabadítható fel.        |
+|**Teljes kapacitás**                   | Az eszközön lévő összes bájtra vonatkozik, amely a helyi gyorsítótár teljes méreteként is hivatkozik. <br></br> Most már megnövelheti egy meglévő virtuális eszköz kapacitását egy adatlemez hozzáadásával. Adjon hozzá egy adatlemezt a virtuális gép hypervisor-felügyeletén keresztül, majd indítsa újra a virtuális gépet. Az átjáró eszköz helyi tárolóhelye ki lesz bővítve az újonnan hozzáadott adatlemezre. <br></br>További információkért keresse [fel a Hyper-V virtuális gép merevlemezének hozzáadása](https://www.youtube.com/watch?v=EWdqUw9tTe4)című témakört. |
 
 |Tranzakciómetrikák              | Leírás         |
 |-------------------------------------|---------|
 |**Feltöltött Felhőbeli bájtok (eszköz)**    | Az eszközön található összes megosztáson feltöltött bájtok összege        |
-|**Felhőbeli feltöltött bájtok (megosztás)**     | Egy megosztáson feltöltött bájtok száma. Ez lehet: <br></br> AVG, amely (a megosztás/megosztások száma alapján feltöltött bájtok összege),  <br></br>Max, amely a megosztásból feltöltött bájtok maximális számát adja meg. <br></br>Minimum, amely a megosztásból feltöltött bájtok minimális száma      |
-|**Felhőbeli letöltési teljesítmény (megosztás)**| Egy megosztáson letöltött bájtok száma. Ez lehet: <br></br> Az AVG, amely (az összes olvasott vagy letöltött bájt összege egy megosztásba/megosztások száma) <br></br> Max, amely a megosztásból letöltött bájtok maximális számát adja meg.<br></br> és a min, amely a megosztásból letöltött bájtok minimális száma  |
+|**Felhőbeli feltöltött bájtok (megosztás)**     | Egy megosztáson feltöltött bájtok száma. Ez a metrika a következő lehet: <br></br> AVG, amely (a megosztás/megosztások száma alapján feltöltött bájtok összege),  <br></br>Max, amely a megosztásból feltöltött bájtok maximális számát adja meg. <br></br>Minimum, amely a megosztásból feltöltött bájtok minimális száma      |
+|**Felhőbeli letöltési teljesítmény (megosztás)**| Egy megosztáson letöltött bájtok száma. Ez a metrika a következő lehet: <br></br> Az AVG, amely (az összes olvasott vagy letöltött bájt összege egy megosztásba/megosztások száma) <br></br> Max, amely a megosztásból letöltött bájtok maximális számát adja meg.<br></br> és a min, amely a megosztásból letöltött bájtok minimális száma  |
 |**Felhőbeli olvasási sebesség**            | A felhőből beolvasott összes bájt összege az eszközön lévő összes megosztáson keresztül     |
 |**Felhőbeli feltöltési sebesség**          | A felhőbe írt összes bájt összege az eszközön található összes megosztáson keresztül     |
 |**Felhőbeli feltöltési sebesség (megosztás)**  | Egy megosztásból/megosztásból a felhőbe írt összes bájt összege átlagos, maximális és minimális      |
-|**Olvasási sebesség (hálózat)**           | Magában foglalja a felhőből beolvasott bájtok rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti a forgalmat az eszközön lévő összes hálózati adapteren. Ide tartoznak a nem csatlakoztatott vagy engedélyezett adapterek.      |
-|**Írási átviteli sebesség (hálózat)**       | Magában foglalja a felhőbe írt összes bájt rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti a forgalmat az eszközön lévő összes hálózati adapteren. Ide tartoznak a nem csatlakoztatott vagy engedélyezett adapterek.          |
+|**Olvasási sebesség (hálózat)**           | Magában foglalja a felhőből beolvasott bájtok rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti az eszközön lévő összes hálózati adapter forgalmát, beleértve a nem csatlakoztatott vagy engedélyezett adaptereket is.      |
+|**Írási átviteli sebesség (hálózat)**       | Magában foglalja a felhőbe írt összes bájt rendszerhálózati átviteli sebességét. Ez a nézet tartalmazhat olyan, a megosztásokra nem korlátozott adatforgalomat. <br></br>A felosztás megjeleníti az eszközön lévő összes hálózati adapter forgalmát, beleértve a nem csatlakoztatott vagy engedélyezett adaptereket is.          |
 
 | Edge számítási metrikák              | Leírás         |
 |-------------------------------------|---------|
 |**Edge-számítás – memóriahasználat**      |           |
 |**Edge-számítás – százalékos CPU**    |         |
 
-## <a name="manage-alerts"></a>Riasztások kezelése
-
-[!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
-
 ## <a name="next-steps"></a>Következő lépések
 
 További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-manage-bandwidth-schedules.md) talál.
+Ismerje meg, hogyan [kezelheti az eszköz-riasztási értesítéseket](azure-stack-edge-gpu-manage-device-event-alert-notifications.md).

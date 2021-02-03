@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 3485c6ca5c2672fa48b6118a78600b9745994ce1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466445"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493912"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Monitor engedélyezése a Azure Stack Edge Pro GPU-eszközön
 
@@ -30,7 +30,7 @@ A Kezdés előtt a következőkre lesz szüksége:
 - Elvégezte a **számítási lépés konfigurálását** az [oktatóanyagban: a számítás konfigurálása a Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md) az eszközön. Az eszköznek rendelkeznie kell egy társított IoT Hub erőforrással, egy IoT eszközzel és egy IoT Edge eszközzel.
 
 
-## <a name="create-log-analytics-workspace"></a>Log Analytics munkaterület létrehozása.
+## <a name="create-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
 A log Analytics-munkaterület létrehozásához hajtsa végre a következő lépéseket. A log Analytics-munkaterület egy logikai tárolási egység, amelyben a rendszer összegyűjti és tárolja a naplózási adatokat.
 
@@ -118,8 +118,8 @@ A következő lépésekkel engedélyezheti a tárolók bepillantást a munkater�
 
 1. Szerezze be az erőforrás-azonosítót és a helyet. Nyissa meg a következőt: `Your Log Analytics workspace > General > Properties`. Másolja a következő adatokat:
 
-    - az **erőforrás-azonosító** , amely az Azure log Analytics munkaterület teljesen minősített Azure-erőforrás-azonosítója. 
-    - a **hely** , amely az Azure-régió.
+    - **erőforrás-azonosító**, amely az Azure log Analytics munkaterület teljes mértékben minősített Azure-erőforrás-azonosítója. 
+    - a **hely**, amely az Azure-régió.
 
     ![Log Analytics munkaterület tulajdonságai](media/azure-stack-edge-gpu-enable-azure-monitor/log-analytics-workspace-properties-1.png) 
 
@@ -238,6 +238,7 @@ A következő lépésekkel engedélyezheti a tárolók bepillantást a munkater�
 
     ![Metrikák Log Analytics munkaterületen](media/azure-stack-edge-gpu-enable-azure-monitor/log-analytics-workspace-metrics-1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [figyelheti a Kubernetes számítási feladatokat a Kubernetes-irányítópulton keresztül](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
+- Ismerje meg, hogyan [kezelheti az eszköz-riasztási értesítéseket](azure-stack-edge-gpu-manage-device-event-alert-notifications.md). 

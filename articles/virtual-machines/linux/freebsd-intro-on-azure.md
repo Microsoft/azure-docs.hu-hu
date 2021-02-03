@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 23f14e14bea665f838919ae357d11db32bddfa7f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ced29c3222b7f4f5d7cf5f9e472c420c47341786
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579419"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493243"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Bevezetés a FreeBSD Azure-on való használatába
 Ez a cikk áttekintést nyújt a FreeBSD rendszerű virtuális gépek Azure-ban való futtatásáról.
@@ -119,4 +119,4 @@ Igény szerint megszerezheti a legfelső szintű rendszerhéjt is `sudo -s` .
 Az [Azure VM-vendég ügynökének](https://github.com/Azure/WALinuxAgent/) 2.2.2-es verziója [ismert hibát](https://github.com/Azure/WALinuxAgent/pull/517) tartalmaz, amely az Azure-beli FreeBSD rendszerű virtuális gépek üzembe helyezési hibáját okozza. A javítást az [Azure VM Guest Agent](https://github.com/Azure/WALinuxAgent/) 2.2.3-es és újabb kiadásaiban rögzítettük. 
 
 ## <a name="next-steps"></a>Következő lépések
-* Nyissa meg az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_1?tab=Overview) -t egy FreeBSD rendszerű virtuális gép létrehozásához.
+* Nyissa meg az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_2?tab=Overview) -t egy FreeBSD rendszerű virtuális gép létrehozásához.

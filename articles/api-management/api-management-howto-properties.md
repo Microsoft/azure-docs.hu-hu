@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504732"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491012"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
@@ -25,7 +25,7 @@ A *nevesített értékek* a név/érték párok globális gyűjteménye minden A
 
 ## <a name="value-types"></a>Értékek típusai
 
-|Típus  |Description  |
+|Típus  |Leírás  |
 |---------|---------|
 |Egyszerű     |  Literális karakterlánc vagy házirend kifejezése     |
 |Titkos     |   A API Management által titkosított literális karakterlánc vagy házirend-kifejezés      |
@@ -43,7 +43,7 @@ A Key Vault-titkok használata ajánlott, mert segít javítani a API Management
 
 * A Key vaultokban tárolt titkos kódok újra felhasználhatók a szolgáltatások között
 * A részletes [hozzáférési szabályzatok](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) a titkokra alkalmazhatók
-* A Key vaultban frissített titkokat API Management automatikusan elforgatja a rendszer. A Key vaultban történt frissítés után a rendszer 4 órán belül frissíti API Managementban megnevezett értéket. 
+* A Key vaultban frissített titkokat API Management automatikusan elforgatja a rendszer. A Key vaultban történt frissítés után a rendszer 4 órán belül frissíti API Managementban megnevezett értéket. Manuálisan is frissítheti a titkot a Azure Portal vagy a felügyeleti REST API használatával.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>A Key Vault-integráció előfeltételei
 
@@ -58,25 +58,16 @@ A Key Vault-titkok használata ajánlott, mert segít javítani a API Management
 
 A Key Vault-titok használatához [adjon hozzá vagy szerkesszen egy megnevezett értéket](#add-or-edit-a-named-value), és adja meg a **Key Vault** típusát. Válassza ki a titkos kulcsot a Key vaultból.
 
-> [!CAUTION]
-> Ha API Management Key Vault-titkot használ, ügyeljen arra, hogy ne törölje a Key Vault eléréséhez használt titkos kulcsot, kulcstartót vagy felügyelt identitást.
-
-Ha [Key Vault tűzfal](../key-vault/general/network-security.md) engedélyezve van a kulcstartón, a következő további követelmények vonatkoznak a Key Vault-titkok használatára:
-
-* A Key Vault eléréséhez a API Management példány **rendszer által hozzárendelt** felügyelt identitását kell használnia.
-* Key Vault tűzfalon engedélyezze a **megbízható Microsoft-szolgáltatások számára a tűzfal megkerülésének engedélyezése** beállítást.
-
-Ha a API Management példány egy virtuális hálózaton van telepítve, konfigurálja a következő hálózati beállításokat is:
-* A API Management alhálózaton Azure Key Vault engedélyezése a [szolgáltatási végpontoknak](../key-vault/general/overview-vnet-service-endpoints.md) .
-* Konfiguráljon egy hálózati biztonsági csoport (NSG) szabályt, hogy engedélyezze a kimenő forgalmat a AzureKeyVault és a AzureActiveDirectory [szolgáltatás címkéi](../virtual-network/service-tags-overview.md)számára. 
-
-Részletekért lásd: hálózati konfiguráció részletei a [Kapcsolódás virtuális hálózathoz](api-management-using-with-vnet.md#-common-network-configuration-issues).
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>Megnevezett érték hozzáadása vagy szerkesztése
 
 ### <a name="add-a-key-vault-secret"></a>Key Vault-titok hozzáadása
 
 Lásd: [a Key Vault-integráció előfeltételei](#prerequisites-for-key-vault-integration).
+
+> [!CAUTION]
+> Ha API Management Key Vault-titkot használ, ügyeljen arra, hogy ne törölje a Key Vault eléréséhez használt titkos kulcsot, kulcstartót vagy felügyelt identitást.
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
 1. Az **API**-k területen válassza a **nevesített értékek**  >  **+ Hozzáadás** lehetőséget.

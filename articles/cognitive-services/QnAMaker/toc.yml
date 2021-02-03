@@ -103,6 +103,8 @@
       href: How-To/change-default-answer.md
     - name: Szolgáltatáskonfiguráció
       href: reference-app-service.md
+    - name: Tartalomformátumra vonatkozó útmutatók
+      href: reference-document-format-guidelines.md
     - name: Tartalom és metaadatok
       items:
         - name: Tartalomformátumra vonatkozó útmutatók

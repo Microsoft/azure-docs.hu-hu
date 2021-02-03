@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 5b79a777ba8f7e615e4637f94311cba39e8a7f6c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ff768bceaba57c119aa88d5d4d99b11608917695
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223703"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492025"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Rövid útmutató: nyilvános IP-cím létrehozása Azure PowerShell használatával
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Szabványos SKU – zónák használatával**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
+>A következő parancs az az. Network modul 4.5.0 vagy újabb verziójára működik.  A jelenleg használt PowerShell-modulokkal kapcsolatos további információkért tekintse meg a [PowerShellGet dokumentációját](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1).
 
 A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával hozzon létre egy **myStandardZRPublicIP** nevű standard zóna-redundáns nyilvános IP-címet a **myResourceGroup**-ben.
 
@@ -67,7 +67,7 @@ $zone = 1,2,3
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 > [!IMPORTANT]
-> Az 2020-08-01-nál régebbi API-verziók esetében a fenti parancs futtatásához a zóna paraméter megadása nélkül hozzon létre egy zóna-redundáns IP-címet. 
+> Az az. Network moduloknál régebbi 4.5.0 esetében futtassa a fenti parancsot a zóna paraméter megadása nélkül, és hozzon létre egy zóna-redundáns IP-címet. 
 >
 
 Ahhoz, hogy a **myResourceGroup** nevű **myStandardZonalPublicIP** -ben hozzon létre egy 2. zóna szabványos, a (z) rendszerbeli, a következő parancsot:
@@ -89,7 +89,7 @@ Vegye figyelembe, hogy a zónák fenti beállításai csak a [Availability Zones
 # <a name="standard-sku---no-zones"></a>[**Szabványos SKU – nincsenek zónák**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->A következő parancs az API 2020-08-01-es vagy újabb verziójával működik.  Az aktuálisan használt API-verzióval kapcsolatos további információkért tekintse meg az [erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
+>A következő parancs az az. Network modul 4.5.0 vagy újabb verziójára működik.  A jelenleg használt PowerShell-modulokkal kapcsolatos további információkért tekintse meg a [PowerShellGet dokumentációját](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1).
 
 A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával hozzon létre egy szabványos nyilvános IP-címet egy **myStandardPublicIP** nevű, a **myResourceGroup**-ben található nem zónákból álló erőforrásként.
 

@@ -3,12 +3,12 @@ title: Felvételek lejátszása – Azure
 description: Élő videó-elemzést használhat IoT Edge a folyamatos videofelvételek rögzítéséhez, amelyekkel hetek vagy hónapok szerint rögzíthet videókat a felhőbe. A rögzítést a fontos klipekre is korlátozhatja, az Event-alapú rögzítéssel. Ez a cikk a felvételek lejátszását mutatja be.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84261078"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490895"
 ---
 # <a name="playback-of-recordings"></a>Felvételek lejátszása 
 
@@ -52,7 +52,7 @@ Ahol a pontosság értéke a következők egyike lehet: év, hónap, nap vagy te
 |---|---|---|---|---|
 |Lekérdezés|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
 |Reagálás|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Teljes hűséggel kapcsolatos válasz. Ha egyáltalán nem voltak hézagok, a kezdés kezdő időpont lesz, és a Befejezés a Befejezés lenne.|
-|Korlátozza|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé formátumúnak kell lennie, ellenkező esetben hiba történt.<br/>&#x2022;érték tetszőleges számú lehet.<br/>&#x2022;értékek a következők: inclusive.|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé-hh formátumúnak kell lennie, ellenkező esetben hibaüzenetet ad vissza.<br/>&#x2022;érték legfeljebb 12 hónap lehet egymástól.<br/>&#x2022;értékek a következők: inclusive.|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé-hh-nn formátumúnak kell lennie, ellenkező esetben hibaüzenetet kell visszaadnia.<br/>&#x2022;érték legfeljebb 31 napja lehet egymástól.<br/>Az értékek a következők: inclusive.|&#x2022;kezdő időpont < befejezési időközben<br/>&#x2022;érték legfeljebb 25 óra lehet.<br/>&#x2022;értékek a következők: inclusive.|
+|Korlátozások|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé formátumúnak kell lennie, ellenkező esetben hiba történt.<br/>&#x2022;érték tetszőleges számú lehet.<br/>&#x2022;értékek a következők: inclusive.|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé-hh formátumúnak kell lennie, ellenkező esetben hibaüzenetet ad vissza.<br/>&#x2022;érték legfeljebb 12 hónap lehet egymástól.<br/>&#x2022;értékek a következők: inclusive.|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé-hh-nn formátumúnak kell lennie, ellenkező esetben hibaüzenetet kell visszaadnia.<br/>&#x2022;érték legfeljebb 31 napja lehet egymástól.<br/>Az értékek a következők: inclusive.|&#x2022;kezdő időpont < befejezési időközben<br/>&#x2022;érték legfeljebb 25 óra lehet.<br/>&#x2022;értékek a következők: inclusive.|
 
 #### <a name="additional-request-format-considerations"></a>A kérelem formátumának további szempontjai
 
@@ -309,6 +309,6 @@ Ennek következtében a videó Media Servicesról való folyamatos átvitele leg
 
 Egy másik tényező, amely meghatározza a lejátszási késleltetést (a kamera előtti esemény időpontját, a lejátszási eszközön megtekinthető idő közötti késleltetést) a csoport-a-Pictures [GOP](https://en.wikipedia.org/wiki/Group_of_pictures) időtartama. Az [élő streamek 3 egyszerű technikával való késleltetésének csökkentése](https://medium.com/vrt-digital-studio/reducing-the-delay-of-live-streams-by-using-3-simple-techniques-e8e028b0a641) többek között azt mutatja be, hogy hosszabb a GOP időtartama, és hosszabb a késés. Gyakori, hogy az IP-kamerákat olyan megfigyelési és biztonsági forgatókönyvekben használják, amelyek 30 másodpercnél hosszabb Pallagi Péter használatára vannak konfigurálva. Ez nagy hatással van a teljes késésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Folyamatos videofelvételi oktatóanyag](continuous-video-recording-tutorial.md)

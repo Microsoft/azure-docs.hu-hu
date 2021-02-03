@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddd6a94015829a0b5dd4053f4d3a2fd6d2650d32
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830750"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492654"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>A Azure Portal használata közvetlen metódusok meghívásához
 
@@ -50,23 +50,23 @@ A `GraphTopologyList` metódus hívásával lekérheti az aktuálisan telepítet
     > [!NOTE]
     > Előfordulhat, hogy az aktuális oldalon látható módon hozzá kell adnia egy értéket a kapcsolódási karakterlánc szakaszban. A beállítás neve szakaszban nem kell elrejtenie vagy módosítania a semmit. Az OK, hogy nyilvánosak legyenek.
 
-1. Írja *GraphTopologyList* be a GraphTopologyList **nevet a metódus neve** mezőbe.
+1. Írja  be a GraphTopologyList **nevet a metódus neve** mezőbe.
 1. Másolja és illessze be az alábbi JSON-t a **hasznos** adatok mezőben.
     ```json
     {
-    "@apiVersion":
+    "@apiVersion": "2.0"
     }
     ```
 1. Kattintson a **metódus meghívása** gombra az oldal tetején.<br><br>
     ![metódus meghívása gomb](media/use-azure-portal-to-invoke-directs-methods/direct-method.png)
 1. Az **eredmény** területén az 200-es állapotú üzenetnek kell megjelennie.<br><br>
-    ![kapcsolat időkorlátja](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
+    ![kapcsolat időtúllépése](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
 
 ## <a name="responses"></a>Válaszok
 
-| Condition (Állapot)             | Állapotkód | Részletes hibakód |
+| Feltétel             | Állapotkód | Részletes hibakód |
 |-----------------------|-------------|---------------------|
-| Success               | 200         | N.A.                 |
+| Siker               | 200         | N/A                 |
 | Általános felhasználói hibák   | 400 tartomány   |                     |
 | Általános kiszolgálói hibák | 500 tartomány   |                     |
 

@@ -1,75 +1,89 @@
 ---
-title: Gyakori hibák
-description: Ez a dokumentum az irányítópulton található gyakori hibákról tartalmaz információkat.
+title: Az összekötő állapotával kapcsolatos hibák a ITSMC irányítópultján
+description: Ismerkedjen meg a IT-szolgáltatásmenedzsmenti csatoló-irányítópulton található gyakori hibákkal.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955683"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492518"
 ---
-# <a name="errors-in-the-connector-status-section"></a>Hibák az összekötő állapota szakaszban
+# <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Az összekötő állapotával kapcsolatos hibák a ITSMC irányítópultján
 
-Az irányítópult összekötő állapota lista szakaszában olyan hibákat talál, amelyek segíthetnek a ITSM-összekötő hibáinak kijavításában.
+A IT-szolgáltatásmenedzsmenti csatoló (ITSMC) irányítópulton olyan hibák jelennek meg, amelyek segíthetnek az összekötővel kapcsolatos problémák megoldásában.
 
-## <a name="status-common-errors"></a>Gyakori hibák állapota
+A következő szakaszok ismertetik az irányítópult összekötő állapota szakaszában megjelenő gyakori hibákat, valamint a megoldásuk módját.
 
-Ebben a szakaszban megtalálhatja az összekötő állapota szakaszban bemutatott gyakori hibákat, valamint azt, hogyan oldja fel őket:
+## <a name="unexpected-response"></a>Váratlan válasz
 
-* **Hiba**: "váratlan válasz érkezett a ServiceNow, valamint a sikeres állapotkód. Válasz: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "result": [{"transform_map": "OMS incidens", "Table": "incidens", "status": "hiba", "error_message": "{a cél rekord nem található | Érvénytelen tábla | Érvénytelen előkészítési tábla: "}"
+**Hiba**: "váratlan válasz érkezett a ServiceNow, valamint a sikeres állapotkód. Válasz: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "result": [{"transform_map": "OMS incidens", "Table": "incidens", "status": "hiba", "error_message": "{a cél rekord nem található | Érvénytelen tábla | Érvénytelen előkészítési tábla: "}"
 
-    **OK**: ezt a hibát a ServiceNow a következő esetekben adja vissza:
-  * A ServiceNow-példányban üzembe helyezett egyéni parancsfájlok figyelmen kívül hagyják az incidenseket.
-  * A "OMS integrátori alkalmazás" kódját maga a ServiceNow oldalon módosították, például a onBefore-szkriptet.
+**OK**: a ServiceNow ezt a hibát adja vissza a következő esetekben:
 
-  **Megoldás**: tiltsa le az összes egyéni parancsfájlt vagy programkód-módosítást.
+* A ServiceNow-példányokban üzembe helyezett egyéni parancsfájlok figyelmen kívül hagyják az incidenseket.
+* A "OMS integrátor alkalmazás" kódot módosították a ServiceNow oldalon (például a `onBefore` szkripten keresztül).
 
-* **Hiba**: a (z) "{" hiba ": {" üzenet ":" sikertelen művelet "," Részletek ":" ACL-kivétel frissítése sikertelen volt a biztonsági korlátozások miatt "}
+**Megoldás**: tiltsa le az összes egyéni parancsfájlt vagy programkód-módosítást.
 
-    **OK**: a ServiceNow engedélyeinek helytelen konfigurációja
+## <a name="exception-update-failure"></a>Kivétel-frissítési hiba
 
-    **Megoldás**: Győződjön meg arról, hogy az összes szerepkör megfelelően van-e rendelve a [megadott](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)módon.
+**Hiba**: a (z) "{" hiba ": {" üzenet ":" sikertelen művelet "," Részletek ":" ACL-kivétel frissítése sikertelen volt a biztonsági korlátozások miatt "}
 
-* **Hiba**: "hiba történt a kérelem küldése közben."
+**OK**: a ServiceNow engedélyei helytelenül vannak konfigurálva.
 
-    **OK**: "a ServiceNow példánya nem érhető el"
+**Megoldás**: Győződjön meg arról, hogy az összes szerepkör megfelelően van-e rendelve a [megadott](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)módon.
 
-    **Megoldás**: Győződjön meg róla, hogy a példánya a ServiceNow törölve lett, vagy nem érhető el.
+## <a name="problem-sending-a-request"></a>Hiba a kérés küldésekor
 
-* **Hiba**: "ServiceDeskHttpBadRequestException: statuscode = 429"
+**Hiba**: "hiba történt a kérelem küldése közben."
 
-    **OK**: a ServiceNow arányának korlátai túl magasak/alacsonyak.
+**OK**: a ServiceNow-példány nem érhető el.
 
-    **Megoldás**: növelje vagy szakítsa meg a ServiceNow-példányon a díjszabási korlátokat az [itt](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)leírtak szerint.
+**Megoldás**: vizsgálja meg a példányt a ServiceNow-ben. Lehet, hogy törölték, vagy nem érhető el.
 
-* **Hiba**: a AccessToken és a RefreshToken érvénytelen. A felhasználónak újra kell hitelesítenie magát. "
+## <a name="servicenow-rate-problem"></a>ServiceNow-díjszabási probléma
 
-    **OK**: a frissítési jogkivonat lejárt.
+**Hiba**: "ServiceDeskHttpBadRequestException: statuscode = 429"
 
-    **Megoldás**: az [itt](./itsmc-resync-servicenow.md)leírtak szerint szinkronizálja a ITSM-csatoló az új frissítési jogkivonat létrehozásához.
+**OK**: a ServiceNow arányának korlátai túl magasak vagy túl alacsonyak.
 
-* **Hiba**: "nem sikerült létrehozni/frissíteni a munkaelemet a (z) {alertName} riasztáshoz. A (z) {connectionIdentifier} ITSM-csatoló nem létezik vagy törölték. "
+**Megoldás**: a [ServiceNow dokumentációjában](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)ismertetett módon növelje vagy szakítsa meg a ServiceNow-példányra vonatkozó díjszabást.
 
-    **OK**: ITSM-csatoló törölve.
+## <a name="invalid-refresh-token"></a>Érvénytelen frissítési jogkivonat
 
-    **Megoldás**: a ITSM-csatoló törölve lett, de még ITSM-műveleti csoportok vannak társítva. A probléma megoldásához 2 lehetőség közül választhat:
-  * Ilyen műveleti csoportok keresése és letiltása vagy törlése
-  * [Konfigurálja újra a műveleti csoportot](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) meglévő ITSM-csatoló használatára.
-  * [Hozzon létre egy új ITSM-összekötőt](./itsmc-definition.md#create-an-itsm-connection) , és [konfigurálja újra a műveleti csoportot a használatára](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
+**Hiba**: a AccessToken és a RefreshToken érvénytelen. A felhasználónak újra kell hitelesítenie magát. "
 
-## <a name="ui-common-errors"></a>Gyakori felhasználói felületi hibák
+**OK**: a frissítési jogkivonat lejárt.
 
-* **Hiba**: "probléma történt. Nem lehetett lekérni a kapcsolat részleteit. " Ez a hiba akkor jelenik meg, amikor az ügyfél definiálja az ITSM műveleti csoportot.
+**Megoldás**: a Sync ITSMC új frissítési token létrehozásához a szinkronizálási [problémák manuális javítását](./itsmc-resync-servicenow.md)ismerteti.
 
-    **OK**: Ez a hiba akkor jelenik meg, ha:
-    * Az újonnan létrehozott ITSM-csatoló még befejezte a kezdeti szinkronizálást.
-    * Az összekötő nincs megfelelően definiálva.
+## <a name="missing-connector"></a>Hiányzó összekötő
 
-    **Megoldás**: 
-    * Új ITSM-összekötő létrehozásakor ITSM-csatoló elindítja az információk szinkronizálását a ITSM rendszerből, például a munkaelemek sablonjait és a munkaelemeket. Az [itt](./itsmc-resync-servicenow.md)leírtak szerint szinkronizálja a ITSM-csatoló egy új frissítési jogkivonat létrehozásához.
-    * Tekintse át a kapcsolat részleteit a ITSM-összekötőben az [itt](./itsmc-connections-servicenow.md#create-a-connection) leírtak szerint, és ellenőrizze, hogy a ITSM-összekötő sikeresen [szinkronizálható](./itsmc-resync-servicenow.md)-e.
+**Hiba**: "nem sikerült létrehozni/frissíteni a munkaelemet a (z) {alertName} riasztáshoz. A (z) {connectionIdentifier} ITSM-csatoló nem létezik vagy törölték. "
+
+**OK**: a ITSMC törölve lett.
+
+**Megoldás**: a ITSMC törölve lett, de a definiált IT Service Management (ITSM) műveleti csoportok továbbra is hozzá vannak rendelve. A probléma megoldásához három lehetőség közül választhat:
+
+* Megkeresheti és letilthatja vagy törölheti az ilyen műveleti csoportokat.
+* [Konfigurálja újra a műveleti csoportokat](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) egy meglévő ITSMC-példány használatára.
+* [Hozzon létre egy új ITSMC-példányt](./itsmc-definition.md#create-an-itsm-connection) , és [konfigurálja újra a műveleti csoportokat a használatára](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
+
+## <a name="lack-of-connection-details"></a>Kapcsolat részleteinek hiánya
+
+**Hiba**: "probléma történt. Nem lehetett lekérni a kapcsolat részleteit. " Ez a hiba akkor jelenik meg, ha ITSM-műveleti csoportot ad meg.
+
+**OK**: ilyen hiba a következő helyzetekben jelenik meg:
+
+* Az újonnan létrehozott ITSM-csatoló példánynak még be kell fejeznie a kezdeti szinkronizálást.
+* Az összekötő nem lett megfelelően definiálva.
+
+**Megoldás**: 
+
+* Új ITSMC-példány létrehozásakor elkezdi szinkronizálni az adatokat a ITSM rendszerből, például a munkaelemek sablonjait és a munkaelemeket. [ITSMC szinkronizálása új frissítési jogkivonat létrehozásához](./itsmc-resync-servicenow.md).
+* [Tekintse át a kapcsolat részleteit a ITSMC](./itsmc-connections-servicenow.md#create-a-connection) , és ellenőrizze, hogy a ITSMC sikeresen tud-e [szinkronizálni](./itsmc-resync-servicenow.md).

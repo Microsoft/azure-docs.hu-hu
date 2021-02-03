@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e0fff67d6998e55854d4dc3c8db261bc4499f0be
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936056"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492110"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -56,7 +56,7 @@ Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők a
 |                   | Csoportos hívás elhelyezése PSTN-résztvevőkkel                                                                           | ✔️   | ✔️            | ✔️
 |                   | Egy-az-egyhez hívás előléptetése PSTN-résztvevővel egy csoportos hívásban                                                 | ✔️   | ✔️            | ✔️
 |                   | Tárcsázás egy csoportos hívásból PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️   
-| Általános kérdések           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   |  ✔️  | ✔️            | ✔️   
+| Általános           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>A JavaScript az operációs rendszer és a böngésző ügyféloldali függvénytárának támogatását hívja meg
 
@@ -94,13 +94,13 @@ Ez az IFRAME például a kamera és a mikrofon elérését is lehetővé teszi:
 ## <a name="calling-client-library-streaming-support"></a>Az ügyféloldali kódtár streaming-támogatásának meghívása
 A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő folyamatos átviteli konfigurációkat támogatják:
 
-|           |Web | Android/iOS|
+|           |Webes | Android/iOS|
 |-----------|----|------------|
-|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó + 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
+|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó + 1 képernyő megosztása | 1 videó |
 |**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó + 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hívással](../../quickstarts/voice-video-calling/getting-started-with-calling.md)

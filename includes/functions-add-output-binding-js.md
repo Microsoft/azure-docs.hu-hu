@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: 098aaba0a357c13a059d3c4042a19715c6b5ad42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e99c6e795729426964ec1f89f5f8c904e330227
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78191041"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493383"
 ---
 `msg`Hozzon létre egy olyan kódot, amely a kimeneti kötési objektumot használja az üzenetsor `context.bindings` létrehozásához. Adja hozzá ezt a kódot az `context.res` utasítás előtt.
 
-:::code language="javascript" range="7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
+:::code language="javascript" range="5-7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
 
 Ezen a ponton a függvénynek a következőképpen kell kinéznie:
 

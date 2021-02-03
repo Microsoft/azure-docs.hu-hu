@@ -11,18 +11,21 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976503"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492246"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
 A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalmazzanak javításokat és javításokat a lapok elemeiben. A következő változási napló meghatározza az egyes verziókban bevezetett módosításokat.
 
 ## <a name="self-asserted-page-selfasserted"></a>Önérvényesített oldal (selfasserted)
+
+**2.1.2**
+- Kijavítottuk a honosított kódolási problémát olyan nyelveken, mint például a spanyol és a francia.
 
 **2.1.1**
 
@@ -70,6 +73,10 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 - Kezdeti kiadás
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Egyesített bejelentkezési regisztrációs oldal a jelszó-visszaállítási hivatkozással (unifiedssp)
+
+**2.1.2**
+- Kijavítottuk a honosított kódolási problémát olyan nyelveken, mint például a spanyol és a francia.
+- A "Elfelejtett jelszó" hivatkozás engedélyezése a jogcím-csereként, például a közösségi IDENTITÁSSZOLGÁLTATÓ való használathoz.
 
 **2.1.1**
 - Hozzáadott egy UXString az `heading` oldalon a `intro` címként való megjelenítéshez. Alapértelmezés szerint ez a beállítás rejtett.

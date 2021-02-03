@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 6117b1ac78faf84d73f5a78202709aec7a1f84d9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183115"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492586"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -37,7 +37,7 @@ Ha Ön Azure AD Identity Protection ügyfél, lépjen a [kockázatos felhasznál
 
 ### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Miért tiltották le a bejelentkezést, de az Identity Protection nem generált kockázati észlelést?
 A bejelentkezések több okból is letiltható. Fontos megjegyezni, hogy az Identity Protection csak akkor generál kockázati észleléseket, ha a hitelesítési kérelemben a megfelelő hitelesítő adatok vannak használatban. Ha a felhasználó helytelen hitelesítő adatokat használ, a rendszer nem jelöli meg az identitások védelme miatt, mert nem áll fenn a hitelesítő adatok sérülése, kivéve, ha egy hibás szereplő a megfelelő hitelesítő adatokat használja. Bizonyos okok miatt előfordulhat, hogy a felhasználók nem tudnak az Identity Protection-észlelést előidéző aláírásból a következőket:
-* Az **IP-cím letiltható** az IP-címről érkező kártékony tevékenységek miatt. Az IP-cím letiltott üzenete nem különbözteti meg a hitelesítő adatok helyességét. Ha az IP-cím le van tiltva, és a rendszer nem használja a helyes hitelesítő adatokat, akkor nem hoz létre Identity Protection-észlelést
+* Az **IP-cím blokkolható** az IP-címről érkező kártékony tevékenységek miatt. Az IP-cím letiltott üzenete nem különbözteti meg a hitelesítő adatok helyességét. Ha az IP-cím le van tiltva, és a rendszer nem használja a helyes hitelesítő adatokat, akkor nem hoz létre Identity Protection-észlelést
 * Az **[intelligens zárolás](../authentication/howto-password-smart-lockout.md)** blokkolhatja a fiókot több sikertelen kísérlet után.
 * A **feltételes hozzáférési szabályzat** kényszeríthető, amely a kockázati szinttől eltérő feltételeket használ a hitelesítési kérelem letiltásához.
 
