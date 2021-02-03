@@ -5,12 +5,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6b995e2ab5ba663f6e33b009062859eb32928cc1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945362"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508591"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight, magasan elérhető megoldás architektúra-esettanulmány
 
@@ -71,7 +71,7 @@ Az alábbi képen a contoso kiskereskedelmi magas rendelkezésre állású vész
 
 A **kaptár és a Spark** [aktív elsődleges – igény szerinti másodlagos](hdinsight-business-continuity-architecture.md#apache-spark) replikációs modelleket használ a normál időpontokban. A struktúra replikálási folyamata rendszeresen fut, és a kaptár Azure SQL-metaadattár és a kaptár Storage-fiókjának replikációját kíséri. A Spark Storage-fiókot az ADF DistCP használatával rendszeresen replikálja a rendszer. A fürtök átmeneti jellege segít optimalizálni a költségeket. A replikálások 4 óránként vannak ütemezve, hogy egy RPO, amely az öt órás követelményen belül jól látható.
 
-A **HBase** -replikáció a [Leader – követő](hdinsight-business-continuity-architecture.md#apache-hbase) modellt használja a normál időpontokban annak érdekében, hogy az adatkezelés mindig a régiótól függetlenül TÖRTÉNJEN, és a RPO nulla legyen.
+A **HBase** -replikáció a [vezető-követő](hdinsight-business-continuity-architecture.md#apache-hbase) modellt használja a normál időpontokban annak érdekében, hogy az adatkezelés mindig a régiótól függetlenül TÖRTÉNJEN, és a RPO nagyon alacsony legyen.
 
 Ha az elsődleges régióban regionális hiba fordul elő, a weboldalt és a háttér-tartalmat 5 órára kiszolgálják a másodlagos régióból, bizonyos fokú elavulás miatt. Ha az Azure szolgáltatás állapot-irányítópultja nem jelzi a helyreállítási ETA-t az ötnapos ablakban, a contoso kiskereskedelmi létrehozza a struktúrát és a Spark-transzformációs réteget a másodlagos régióban, majd az összes felsőbb rétegbeli adatforrást a másodlagos régióra irányítja. Ha a másodlagos régió írható, akkor a feladat-visszavételi folyamat az elsődlegesre való replikálást eredményez.
 

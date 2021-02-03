@@ -3,12 +3,12 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerkedjen meg az Azure VMware megoldás legfontosabb szempontjaival és hálózati és kapcsolódási eseteivel.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 49261f34f879c68f21b57f9256a58a9b0a44d637
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475420"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509282"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmak
 
@@ -59,10 +59,11 @@ A privát felhővel való teljes összekapcsoláshoz engedélyezze a ExpressRout
 
 ## <a name="next-steps"></a>Következő lépések 
 
-Most, hogy a hálózatra és az összekapcsolásra vonatkozó fogalmakat is érintette, érdemes megismernie az alábbiakat:
+Most, hogy az Azure VMware megoldás hálózati és összekapcsolási fogalmait is érintette, érdemes megismernie az alábbiakat:
 
 - [Azure VMware megoldás tárolási fogalmak](concepts-storage.md).
-- [Az Azure VMware megoldás identitásával kapcsolatos fogalmak](concepts-identity.md)
+- Az [Azure VMware megoldás identitásával kapcsolatos fogalmak](concepts-identity.md).
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/26/2020
+ms.date: 02/02/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498982"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509401"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a JavaScript SDK használatával
 > [!div class="op_single_selector"]
@@ -169,7 +169,7 @@ Ezzel a hellyel készen áll egy index létrehozására.
 
 ## <a name="1---create-index"></a>1 – index létrehozása 
 
-Hozzon létre egy fájlt **hotels_quickstart_index.jsa** következőn:.  Ez a fájl határozza meg, hogyan működik az Azure Cognitive Search a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott értékkel történik `type` . Az egyes mezőkben index attribútumok is megadhatók, amelyek meghatározzák, hogy az Azure Cognitive Search kereshet, szűrhető, rendezhető és kategorizálható a mező alapján. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott adattípusokról](/rest/api/searchservice/supported-data-types) és az [index attribútumairól](./search-what-is-an-index.md#index-attributes)itt olvashat. 
+Hozzon létre egy fájlt **hotels_quickstart_index.jsa** következőn:.  Ez a fájl határozza meg, hogyan működik az Azure Cognitive Search a következő lépésben betöltés alatt álló dokumentumokkal. Az egyes mezők azonosítása a `name` és a megadott értékkel történik `type` . Az egyes mezőkben index attribútumok is megadhatók, amelyek meghatározzák, hogy az Azure Cognitive Search kereshet, szűrhető, rendezhető és kategorizálható a mező alapján. A mezők többsége egyszerű adattípusú, néhány például `AddressType` olyan összetett típus, amely lehetővé teszi, hogy gazdag adatstruktúrákat hozzon létre az indexében.  További információt a [támogatott adattípusokról](/rest/api/searchservice/supported-data-types) és az index [létrehozása (REST)](/rest/api/searchservice/create-index)című témakörben talál. 
 
 Adja hozzá a következőt a **hotels_quickstart_index.jshoz** , vagy [töltse le a fájlt](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json). 
 
@@ -450,7 +450,7 @@ A dokumentumok bemenetei lehetnek egy adatbázisban lévő sorok, a blob Storage
 }
 ```
 
-Hasonlóan ahhoz, amit a indexDefinition tettünk, aindex.jstetején is importálni kell, `hotels.json` hogy az **index.js** adat a fő függvényben is elérhető legyen.
+Hasonlóan ahhoz, amit a indexDefinition tettünk, aindex.jstetején is importálni kell, `hotels.json` hogy az  adat a fő függvényben is elérhető legyen.
 
 ```javascript
 const hotelData = require('./hotels.json');
@@ -605,7 +605,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a JavaScript-útmutatóban számos feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. 
 

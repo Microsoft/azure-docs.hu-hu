@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56751adedfc01b3927acc65f47910c3b1281f09c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811676"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507570"
 ---
 # <a name="sensor-data-mining-queries"></a>Érzékelő adatbányászati lekérdezések
 
@@ -55,11 +55,11 @@ A létrehozott adatbányászati lekérdezéseket a rendszer minden alkalommal di
 
 A különböző biztonsági csapatokra vonatkozó biztonsági igények széles körének kezeléséhez a lekérdezéseket használhatja:
 
-- **SoC-incidens válasza**: valós időben készít jelentést, amely segít az incidensek azonnali megválaszolásában. Például létrehozhat egy jelentést azon eszközök listájához, amelyekhez javításra lehet szükség.
+- **SoC-incidens válasza**: valós időben készít jelentést, amely segít az incidensek azonnali megválaszolásában. Az adatbányászat például létrehozhat egy jelentést azon eszközök listájához, amelyekhez javításra lehet szükség.
 
 - **Kriminalisztika**: jelentés létrehozása a vizsgálati jelentések előzményei alapján.
 
-- **Informatikai hálózat integritása**: olyan jelentés létrehozása, amely segít a teljes hálózati biztonság javításában. Például egy olyan jelentés létrehozása, amely gyenge hitelesítési hitelesítő adatokkal rendelkező eszközöket listáz.
+- **Informatikai hálózat integritása**: olyan jelentés létrehozása, amely segít a teljes hálózati biztonság javításában. Létrehozható például egy jelentés generálása, amely gyenge hitelesítési hitelesítő adatokat tartalmazó eszközöket listáz.
 
 - **Láthatóság**: olyan jelentés létrehozása, amely az összes lekérdezési elemre kiterjed, és megtekinti a hálózat összes alapparaméterét.
 

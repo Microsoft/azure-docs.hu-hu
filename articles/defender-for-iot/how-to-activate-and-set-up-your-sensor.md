@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623589"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509519"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Az érzékelő aktiválása és beállítása
 
@@ -81,7 +81,7 @@ A bejelentkezéshez és az aktiváláshoz:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Azure Defender a IoT-érzékelőhöz.":::
 
-1. Adja meg az érzékelő telepítésekor megadott hitelesítő adatokat. Ha előre konfigurált érzékelőt vásárolt a nyílból, előbb létrehoz egy jelszót. A jelszó-helyreállítással kapcsolatos további információkért lásd: a [jelszó meghibásodásának vizsgálata a kezdeti bejelentkezéskor](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
+1. Adja meg az érzékelő telepítésekor megadott hitelesítő adatokat, vagy válassza a **jelszó-helyreállítás** lehetőséget. Ha előre konfigurált érzékelőt vásárolt a nyílból, előbb létrehoz egy jelszót. A jelszó-helyreállítással kapcsolatos további információkért lásd: a [jelszó meghibásodásának vizsgálata a kezdeti bejelentkezéskor](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
 
 1. A bejelentkezést követően megnyílik az **aktiválás** párbeszédpanel. Válassza a **feltöltés** lehetőséget, és lépjen az érzékelő bevezetése során letöltött aktiválási fájlhoz.
 
@@ -98,7 +98,7 @@ A bejelentkezéshez és az aktiváláshoz:
 1. Adja meg a hozzáférési kódot, és töltse fel a PEM-fájlt, ha szükséges.
 1. Kattintson a **Tovább** gombra. Megnyílik az érvényesítési képernyő. Alapértelmezés szerint a felügyeleti konzol és a csatlakoztatott érzékelők közötti ellenőrzés engedélyezve van.
 1. Az ellenőrzés letiltásához kapcsolja ki a **rendszerszintű ellenőrzés engedélyezése** kapcsolót. Javasoljuk, hogy engedélyezze az érvényesítést.
-1. Válassza a **Mentés** lehetőséget.  
+1. Kattintson a **Mentés** gombra.  
 
 Előfordulhat, hogy a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány feltöltése után frissítenie kell a képernyőt.
 
@@ -152,7 +152,7 @@ Adja meg az érzékelő rendszerbeállításait. Például:
 
 - Ha a DHCP használatban van, adja meg a legitim DHCP-tartományokat.
 
-- Active Directory-és levelezési kiszolgálókkal való integráció meghatározása.
+- Szükség szerint határozza meg a Active Directory és a levelezési kiszolgáló integrációját.
 
 ### <a name="disable-learning-mode"></a>Tanulási mód letiltása
 
@@ -181,7 +181,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 | -----------|--|--|
 | Irányítópult | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Megtekintheti a hálózat biztonsága állapotának intuitív pillanatképét. |
 | Eszköz térképe | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | A hálózati eszközök, az eszközök kapcsolatai és az eszköz tulajdonságainak megtekintése a térképen. A hálózat megjelenítéséhez különböző nagyítások, csúcsfények és szűrési lehetőségek érhetők el. |
-| Eszköz leltározása | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Az eszközök leltára az eszköz azon attribútumainak széles skáláját jeleníti meg, amelyeket ez az érzékelő észlel. A következő lehetőségek érhetők el: <br /> – A tábla mezőinek megfelelően szűrheti az adatokat, és megtekintheti a megjelenő szűrt adatokat. <br /> – Adatok exportálása CSV-fájlba. <br /> – Importálja a Windows beállításjegyzékének részleteit.|
+| Eszköz leltározása | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Az eszközök leltára az érzékelő által észlelt eszközbeállítások listáját jeleníti meg. A következő lehetőségek érhetők el: <br /> -Rendezheti vagy szűrheti az adatokat a tábla mezőinek megfelelően, és megtekintheti a megjelenő szűrt adatokat. <br /> – Adatok exportálása CSV-fájlba. <br /> – Importálja a Windows beállításjegyzékének részleteit.|
 | Riasztások | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Riasztások megjelenítése, ha a szabályzat megsértése bekövetkezik, az alapkonfigurációtól való eltérés, vagy a hálózatban bármilyen gyanús tevékenység észlelhető. |
 | Jelentések | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | Az adatbányászati lekérdezéseken alapuló jelentések megtekintése. |
 
@@ -196,7 +196,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 | Ablak | Ikon | Leírás |
 |---|---|---|
 | Adatbányászat | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Átfogó és részletes információkat hozhat a hálózat eszközeiről a különböző rétegeken. |
-| Trendek és statisztika | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | A trendeket és a statisztikát a widgetek széles skáláján tekintheti meg. |
+| Vizsgálat | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | A trendeket és a statisztikát a widgetek széles skáláján tekintheti meg. |
 | Kockázatértékelés | :::image type="icon" source="media/concept-sensor-console-overview/vulnerabilities-icon-azure.png" border="false"::: | A **biztonsági rések** ablak megjelenítése. |
 
 **Felügyelet**
@@ -204,7 +204,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 | Ablak | Ikon | Leírás |
 |---|---|---|
 | Felhasználók | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Felhasználók és szerepkörök definiálása különböző hozzáférési szintekkel. |
-| Továbbítás | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Továbbítsa a riasztási adatokat a Defender for IoT, az e-mail-címekhez, a webhook-kiszolgálókhoz és más szolgáltatásokhoz integráló partnereknek. <br /> További részletekért lásd: [riasztási információk továbbítása](how-to-forward-alert-information-to-partners.md) . |
+| Továbbítás | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Továbbítsa a riasztási információkat a partnereknek és a belső forrásoknak (például a Sentinelnek) a Defender for IoT, az e-mail-címek, a webhook-kiszolgálók és sok egyéb szolgáltatás integrálásával. <br /> További részletekért lásd: [riasztási információk továbbítása](how-to-forward-alert-information-to-partners.md) . |
 | Rendszerbeállítások | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Konfigurálja a rendszerbeállításokat. Például adja meg a DHCP-beállításokat, adja meg a levelezési kiszolgáló adatait, vagy hozzon létre port-aliasokat. |
 | Importálási beállítások | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Az **importálási beállítások** ablak megjelenítése. Az eszköz adataiban manuálisan is végezhet módosításokat.<br /> További részletekért lásd az [eszköz adatainak importálása](how-to-import-device-information.md) című témakört. |
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4803691a82a97cd2be5fa3beafd4419010e7a9c9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840681"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509069"
 ---
 # <a name="view-alerts"></a>Riasztások megtekintése
 
@@ -84,7 +84,7 @@ Ha egyik lehetőség sincs kiválasztva, az összes riasztás megjelenik.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-security.png" alt-text="Biztonság a riasztások képernyőjén.":::
 
-## <a name="alert-window-options"></a>Riasztási ablak beállításai
+## <a name="alert-page-options"></a>Riasztási oldal beállításai
 
 A riasztási üzenetek a következő műveleteket biztosítják:
 
@@ -102,6 +102,8 @@ A riasztási üzenetek a következő műveleteket biztosítják:
 
 - Válassza ki a :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: riasztási lista CSV-fájlba exportálását, és válassza az Exportálás lehetőséget. Válassza a **riasztás exportálás** lehetőséget a normál EXPORTÁLÁS – CSV beállításhoz. Vagy válassza a **kiterjesztett riasztások exportálás** lehetőséget, hogy a CSV-fájlban lévő riasztással kapcsolatos további információkhoz külön sorokat adjon hozzá.
 
+## <a name="alert-pop-up-window-options"></a>Riasztás előugró ablakának beállításai
+
 - Válassza a :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-pdf.png" border="false"::: ikont a riasztási jelentés PDF-fájlként való letöltéséhez.
 
 - Válassza ki az :::image type="icon" source="media/how-to-work-with-alerts-sensor/download-pcap.png" border="false"::: ikont a Pcap fájl letöltéséhez. A fájl megtekinthető a Wireshark, az ingyenes hálózati protokoll-elemzővel.
@@ -118,7 +120,7 @@ A riasztási üzenetek a következő műveleteket biztosítják:
 
 - Válasszon ki egy eszközt, hogy megjelenjen az eszköz térképén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A riasztási esemény kezelése](how-to-manage-the-alert-event.md)
 

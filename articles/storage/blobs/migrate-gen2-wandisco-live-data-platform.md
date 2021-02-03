@@ -5,16 +5,16 @@ author: normesta
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: b-pauls
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914439"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508929"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>A WANdisco LiveData platform for Azure (előzetes verzió) követelményeinek kielégítése igényes áttelepítési követelményekkel
 
@@ -34,7 +34,9 @@ Az adatok _Offline_ áttelepítésével ellentétben, ha [a statikus adatokat Az
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Az Azure-hoz készült WANdisco LiveData platform főbb jellemzői
 
-Az Azure-hoz készült [WANdisco LiveData-platform](https://docs.wandisco.com/live-data-platform/docs/landing/) egy egyedi, széles körben elérhető, nagy kiterjedésű hálózatot használó konszenzust biztosít az adatkonzisztencia eléréséhez, valamint az adatreplikáció méretezését, miközben az alkalmazások továbbra is módosíthatják az adatreplikációt.  
+Az Azure-hoz készült [WANdisco LiveData-platform](https://docs.wandisco.com/live-data-platform/docs/landing/) egy egyedi, széles körben elérhető, nagy kiterjedésű hálózatot használó konszenzust biztosít az adatkonzisztencia eléréséhez, valamint az adatreplikáció méretezését, miközben az alkalmazások továbbra is módosíthatják az adatreplikációt. <br><br>
+
+>[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
 
 A platform főbb funkciói közé tartoznak a következők:
 
@@ -86,12 +88,14 @@ A helyszíni adattavak nagy méretű migrálása az Azure-ba az alkalmazások te
 A kezdeti áttelepítés után az Azure-ba irányuló LiveData-síkon megtarthatja az adatait a helyszíni Hadoop-fürtök és az Azure Storage között:
 
 1. Kiépítheti a helyszíni és az Azure-beli LiveData-síkot a Azure Portaltől kezdve. Nincs szükség alkalmazás-módosításra.
+
 2. Konfigurálja azokat a replikációs szabályokat, amelyek kiterjednek a megőrizni kívánt adatterületekre, például: `/user/contoso/sales/region/WA` .
+
 3. Olyan alkalmazásokat futtathat, amelyek Hadoop-kompatibilis fájlrendszerként férnek hozzá és módosíthatnak.
 
 Az Azure-hoz készült LiveData-sík a fürt működésének vagy az alkalmazás teljesítményének jelentős terhelése nélkül tartja konzisztensen az adatokat. Módosíthatja vagy betöltheti az adatmennyiséget, miközben az összes módosítás konzisztens módon replikálódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure for Azure-hoz készült [LiveData platform](https://docs.wandisco.com/live-data-platform/docs/landing/) a többi Azure-erőforráshoz hasonlóan használatos, és jelenleg előzetes verzióban érhető el. 
 

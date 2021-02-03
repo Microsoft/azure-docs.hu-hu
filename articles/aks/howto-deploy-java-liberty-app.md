@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, AK, kubernetes
-ms.openlocfilehash: 93ffa3ded4d0771438c5d6a2dc23e6e184f04fe2
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227599"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508056"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty vagy WebSphere Liberty szolgáltatással Azure Kubernetes Service (ak) fürtön
 
@@ -213,7 +213,7 @@ Várjon, amíg a *külső IP-* cím változása *függőben* ÁLLAPOTRÓL tényl
 
 Nyisson meg egy webböngészőt a szolgáltatás külső IP-címéhez és portjához ( `52.152.189.57:9080` a fenti példában) az alkalmazás kezdőlapjának megtekintéséhez. A lap bal felső sarkában megjelenik az alkalmazás-replikák Pod neve. Várjon néhány percet, és frissítse az oldalt, valószínűleg egy másik Pod-nevet fog látni, amely az AK-fürt által biztosított terheléselosztás miatt jelenik meg.
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/java-liberty-app-aks-deployed-success.png" alt-text="Java Liberty-alkalmazás sikeresen telepítve az AK-on":::
+:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java Liberty-alkalmazás sikeresen telepítve az AK-on":::
 
 >[!NOTE]
 > - Jelenleg az alkalmazás nem használ HTTPS-t. Javasoljuk, hogy [a TLS-t a saját tanúsítványainak használatával engedélyezze](ingress-own-tls.md).

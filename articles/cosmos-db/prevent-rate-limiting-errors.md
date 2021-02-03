@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
-ms.openlocfilehash: e1ccf55d38a9a3a5a1d0a3622c90dd7b51e5e477
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1e9062b111c30efa90b98c4ebcee710b1d975a1d
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258490"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507930"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>A MongoDB-műveletekre vonatkozó Azure Cosmos DB API-k arányának korlátozására vonatkozó hibák megelőzése
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -45,9 +45,9 @@ az cosmosdb show --name accountname --resource-group resourcegroupname
 ```bash
 az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
 ```
-A következő parancs **letiltja** az adatbázis-fiókban lévő összes gyűjteményhez tartozó SSR-t. A módosítás érvénybe léptetése akár 15min is eltarthat.
+A következő parancs **letiltja** az adatbázis-fiókban lévő összes gyűjteményhez tartozó SSR-t, ha eltávolítja a "DisableRateLimitingResponses" elemet a képességek listából. A módosítás érvénybe léptetése akár 15min is eltarthat.
 ```bash
-az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
+az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
 ```
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

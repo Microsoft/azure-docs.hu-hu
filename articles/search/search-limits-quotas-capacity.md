@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493041"
+ms.locfileid: "99509367"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -124,14 +124,6 @@ A szinonimák leképezésének maximális száma a réteg szerint változhat. Mi
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Szinonimák maximális térképe |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Szabályok maximális száma leképezés szerint |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
-
-## <a name="queries-per-second-qps"></a>Lekérdezések másodpercenként (QPS)
-
-A QPS-becsléseket minden ügyféltől függetlenül kell kialakítani. Az index mérete és összetettsége, a lekérdezés mérete és összetettsége, valamint a forgalom mennyisége a QPS elsődleges tényezője. Az ilyen tényezők ismeretlenek lehetnek, így nem lehet értelmes becsléseket nyújtani.
-
-A becslések a dedikált erőforrásokon futó szolgáltatásokra (alapszintű és standard csomagokra) számítanak. Megbecsülheti a QPS, mert több paramétert is megadhat. A becslések megközelítésével kapcsolatos útmutatásért lásd: [Azure Cognitive Search teljesítmény és optimalizálás](search-performance-optimization.md).
-
-A Storage optimalizált szintjeihez (L1 és L2) a standard szintnél kisebb lekérdezési sebességet és nagyobb késést kell várni.
 
 ## <a name="data-limits-ai-enrichment"></a>Adatkorlátok (AI-dúsítás)
 

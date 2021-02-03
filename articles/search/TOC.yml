@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: Lekérdezések
       items:
-        - name: Lekérdezéstípusok és összeállítás
-          href: search-query-overview.md
         - name: Alapszintű lekérdezés létrehozása
           href: search-query-create.md
+        - name: Lekérdezéstípusok és összeállítás
+          href: search-query-overview.md
         - name: Egyszerű szintaxis használata (példák)
           href: search-query-simple-examples.md
         - name: Teljes Lucene használata (példák)

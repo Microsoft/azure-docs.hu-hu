@@ -1,55 +1,66 @@
 ---
-title: 'Oktatóanyag: hibakeresési munkamenetek használata a készségkészlet változásainak diagnosztizálására, javítására és elvégzésére'
+title: 'Oktatóanyag: hibakeresési munkamenetek használata a szakértelmével javításához'
 titleSuffix: Azure Cognitive Search
-description: A hibakeresési munkamenetek (előzetes verzió) egy portálon alapuló felületet biztosítanak a szakértelmével problémák/hibák kiértékeléséhez és javításához
+description: A hibakeresési munkamenetek (előzetes verzió) egy Azure Portal eszköz, amely a készségkészlet kapcsolatos problémák kereséséhez, diagnosztizálásához és javításához használatos.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 8ec39c4616f5a34f8326b56d4f0ba6e15cdad91c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/02/2021
+ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699117"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509150"
 ---
-# <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Oktatóanyag: a készségkészlet változásainak diagnosztizálása, javítása és elutasítása
+# <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Oktatóanyag: hibakeresési munkameneteket használó készségkészlet hibakeresése
 
-Ebben a cikkben a Azure Portal segítségével érheti el a hibakeresési munkameneteket a megadott készségkészlet kapcsolatos hibák kijavításához. A készségkészlet néhány hibát tartalmaz, amelyeket meg kell oldani. Ez az oktatóanyag végigvezeti egy hibakeresési munkameneten, amellyel azonosíthatja és megoldhatja a szaktudás bemeneteit és kimeneteit.
+A szakértelmével összehangolja azokat a műveleteket, amelyek a tartalom elemzését vagy átalakítását végzik, ahol egy adott képzettség kimenete lesz egy másik bemenet. Ha a bemenetek a kimenettől függenek, a készségkészlet-definíciókban és a mezők társításában szereplő hibák kimaradó műveleteket és adatokat eredményezhetnek.
+
+A Azure Portal **hibakeresési munkamenetei** átfogó vizualizációt biztosítanak a készségkészlet. Ezzel az eszközzel részletesen megtudhatja, hogy milyen lépésekkel lehet leesni egy adott művelet.
+
+Ebben a cikkben a **hibakeresési munkamenetek** segítségével megkeresheti és kijavíthatja a hiányzó adatokat, és 2) a kimeneti mezők leképezéseit. Az oktatóanyag teljes körű. Információkat biztosít az index (klinikai vizsgálatok adatai), a Poster-gyűjtemények számára, amely objektumokat hoz létre, valamint útmutatást nyújt a **hibakeresési munkamenetek** használatához a készségkészlet kapcsolatos problémák megkereséséhez és megoldásához.
 
 > [!Important]
 > A hibakeresési munkamenetek az előzetes verziójú szolgáltatások, amelyek szolgáltatói szerződés nélkül érhetők el, és nem ajánlottak éles számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-> [!div class="checklist"]
-> * Azure-előfizetés. Hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , vagy használja a jelenlegi előfizetését
-> * Egy Azure Cognitive Search Service-példány
-> * Azure Storage-fiók
-> * [Postman asztali alkalmazás](https://www.getpostman.com/)
+A Kezdés előtt a következő előfeltételek vonatkoznak:
 
-## <a name="create-services-and-load-data"></a>Szolgáltatások létrehozása és az adatterhelés
++ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/).
 
-Ez az oktatóanyag az Azure Cognitive Search és az Azure Storage Services szolgáltatást használja.
++ Egy Azure Cognitive Search szolgáltatás. [Hozzon létre egy szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
 
-* 19 fájlból álló [mintaadatok letöltése](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19) .
++ Egy Azure Storage-fiók [blob Storage](../storage/blobs/index.yml)szolgáltatással, amely a mintaadatok üzemeltetésére szolgál, valamint a hibakeresési munkamenet során létrehozott ideiglenes adatmennyiség megőrzése.
 
-* [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
++ A [Poster Desktop alkalmazás](https://www.getpostman.com/) és egy [Poster-gyűjtemény](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) , amely a REST API-k használatával hoz létre objektumokat.
 
-   Válassza ki ugyanazt a régiót, mint az Azure Cognitive Search a sávszélességgel kapcsolatos költségek elkerülése érdekében.
-   
-   Válassza ki a StorageV2 (általános célú v2) fiók típusát.
++ [Mintaadatok (klinikai vizsgálatok)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19).
 
-* Nyissa meg a tárolási szolgáltatások lapjait, és hozzon létre egy tárolót. Az ajánlott eljárás a "Private" hozzáférési szint megadására szolgál. Nevezze el a tárolót `clinicaltrialdataset` .
+> [!NOTE]
+> Ez a rövid útmutató az AI-hoz készült [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) is használja. Mivel a számítási feladatok olyan kicsik, Cognitive Services a jelenetek mögött, akár 20 tranzakcióra is felhasználható. Ez azt jelenti, hogy ezt a gyakorlatot anélkül végezheti el, hogy további Cognitive Services erőforrást kellene létrehoznia.
 
-* A tárolóban kattintson a **feltöltés** gombra, és töltse fel az első lépésben a letöltött és kibontott fájlokat.
+## <a name="set-up-your-data"></a>Az adatai beállítása
 
-* [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat.
+Ez a szakasz létrehozza a minta adatkészletet az Azure Blob Storage-ban, hogy az indexelő és a készségkészlet rendelkezzen a megfelelő tartalommal.
+
+1. Töltse le a 19 fájlból álló [mintaadatok (klinikai vizsgálatok – PDF-19)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19).
+
+1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal) , vagy [keressen egy meglévő fiókot](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
+
+   + Válassza ki ugyanazt a régiót, mint az Azure Cognitive Search a sávszélességgel kapcsolatos költségek elkerülése érdekében.
+
+   + Válassza ki a StorageV2 (általános célú v2) fiók típusát.
+
+1. Navigáljon az Azure Storage Services oldalaira a portálon, és hozzon létre egy BLOB-tárolót. Az ajánlott eljárás a "Private" hozzáférési szint megadására szolgál. Nevezze el a tárolót `clinicaltrialdataset` .
+
+1. A tárolóban kattintson a **feltöltés** gombra, és töltse fel az első lépésben a letöltött és kibontott fájlokat.
+
+1. A portálon lekérdezheti és mentheti az Azure Storage-hoz tartozó kapcsolódási karakterláncot. Szüksége lesz rá az adatindexelést REST API hívásokhoz. A kapcsolati karakterláncot a portál **Beállítások**  >  **hozzáférési kulcsaiból** kérheti le.
 
 ## <a name="get-a-key-and-url"></a>Kulcs és URL-cím lekérése
 
@@ -59,88 +70,111 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP-végpont és elérési kulcs beszerzése" border="false":::
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="create-data-source-skillset-index-and-indexer"></a>Adatforrás, készségkészlet, index és indexelő létrehozása
 
-Ebben a szakaszban a Poster és egy megadott gyűjtemény használatával hozható létre a keresési szolgáltatás adatforrása, a készségkészlet, az index és az indexelő.
+Ebben a szakaszban a Poster és egy megadott Gyűjtemény segítségével hozza létre a Cognitive Search adatforrást, a készségkészlet, az indexet és az indexelő. Ha még nem ismeri a Poster-t, tekintse meg [ezt a](search-get-started-rest.md)rövid útmutatót.
 
-1. Ha nem rendelkezik Poster-fiókkal, akkor [itt töltheti le a Poster Desktop alkalmazást](https://www.getpostman.com/).
-1. [A Debug Sessions Poster-gyűjtemény letöltése](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions)
-1. Poster elindítása
-1. A **fájlok**  >  **új** területen válassza ki az importálni kívánt gyűjteményt.
+A feladat elvégzéséhez szüksége lesz az oktatóanyaghoz létrehozott [Poster-gyűjteményre](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) . 
+
+1. Indítsa el a Poster-t, és importálja a gyűjteményt. A **fájlok**  >  **új** területen válassza ki az importálni kívánt gyűjteményt.
 1. A gyűjtemény importálása után bontsa ki a műveletek listáját (...).
 1. Kattintson a **Szerkesztés** gombra.
-1. Adja meg a searchService nevét (például ha a végpont `https://mydemo.search.windows.net` , a szolgáltatás neve: " `mydemo` ").
-1. Adja meg a keresési szolgáltatás elsődleges vagy másodlagos kulcsát tartalmazó apiKey.
-1. Adja meg a storageConnectionString az Azure Storage-fiók kulcsok oldaláról.
-1. Adja meg a Storage-fiókban létrehozott tároló containerName.
+1. Az aktuális érték mezőben adja meg a nevét `searchService` (például ha a végpont `https://mydemo.search.windows.net` , akkor a szolgáltatás neve: " `mydemo` ").
+1. Adja meg a `apiKey` keresési szolgáltatás elsődleges vagy másodlagos kulcsát.
+1. Adja meg az `storageConnectionString` Azure Storage-fiók kulcsok lapját.
+1. Adja meg a `containerName` Storage-fiókban létrehozott tárolót, majd kattintson a **frissítés** gombra.
 
-> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="a Poster változóinak szerkesztése":::
+   :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="a Poster változóinak szerkesztése":::
 
-A gyűjtemény négy különböző REST-hívást tartalmaz, amelyek a szakasz végrehajtásához használatosak.
+A gyűjtemény négy különböző REST-hívást tartalmaz, amelyek az oktatóanyagban használt objektumok létrehozásához használatosak.
 
-Az első hívás létrehozza az adatforrást. `clinical-trials-ds`. A második hívás létrehozza a készségkészlet `clinical-trials-ss` . A harmadik hívás létrehozza az indexet `clinical-trials` . A negyedik és a végső hívás létrehozza az indexelő `clinical-trials-idxr` . Miután a gyűjtemény összes hívása befejeződött, zárjuk be a postát, és térjen vissza a Azure Portal.
+Az első hívás létrehozza az adatforrást. `clinical-trials-ds`. A második hívás létrehozza a készségkészlet `clinical-trials-ss` . A harmadik hívás létrehozza az indexet `clinical-trials` . A negyedik és a végső hívás létrehozza az indexelő `clinical-trials-idxr` .
 
-> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="az adatforrások létrehozása a Poster használatával":::
++ Nyissa meg az egyes kéréseket, majd a **Küldés** gombra kattintva küldje el az egyes kérelmeket a keresési szolgáltatásnak. 
 
-## <a name="check-the-results"></a>Az eredmények ellenőrzése
+Miután a gyűjtemény összes hívása befejeződött, zárjuk be a postát, és térjen vissza a Azure Portal.
 
-A készségkészlet néhány gyakori hibát tartalmaz. Ebben a szakaszban az összes dokumentum visszaküldésére szolgáló üres lekérdezést futtatva több hiba jelenik meg. A következő lépésekben a problémák hibakeresési munkamenet használatával lesznek feloldva.
+## <a name="check-results-in-the-portal"></a>Eredmények keresése a portálon
 
-1. Keresse meg a keresési szolgáltatást a Azure Portal. 
-1. Válassza ki az **indexek** lapot. 
-1. Az `clinical-trials` index kiválasztása
-1. Ha üres lekérdezést szeretne futtatni, kattintson a **Keresés** gombra. 
+A mintakód szándékosan létrehoz egy hibás indexet a készségkészlet végrehajtása során felmerülő problémák következményeként. A probléma nem tartalmaz adatvesztést. 
 
-A keresés befejezése után két, a felsorolt adat nélküli mező az ablakban a "szervezetek" és a "helyszínek" szerepelnek. Kövesse a lépéseket a készségkészlet által létrehozott összes probléma felderítéséhez.
+1. Azure Portal a keresési szolgáltatás áttekintése lapon válassza az **indexek** lapot. 
+1. Válassza ki az `clinical-trials` indexet.
+1. Adja meg ezt a lekérdezési karakterláncot: `$select=metadata_storage_path, organizations, locations&$count=true` az adott dokumentumok mezőinek visszaadásához (az egyedi `metadata_storage_path` mezővel azonosítva).
+1. A lekérdezés futtatásához kattintson a **Keresés** gombra, és adja vissza az összes 19 dokumentumot, és jelenítse meg a "szervezetek" és a "Locations" üres értékeit.
 
-1. Térjen vissza a keresési szolgáltatás áttekintés lapjára.
-1. Válassza ki az **Indexelő** fület. 
-1. Kattintson `clinical-trials-idxr` és válassza ki a figyelmeztetések értesítését. 
+Ezeket a mezőket a készségkészlet [entitás-felismerési képességeivel](cognitive-search-skill-entity-recognition.md)kell feltölteni, amely a blob tartalmán belül bárhol megtalálja a szervezeteket és a helyszíneket. A következő gyakorlat során a hibakeresési munkamenettel határozza meg, hogy mi volt a hiba.
 
-Számos probléma van a kivetítési kimeneti mezők leképezésével és a harmadik oldalon, mert egy vagy több képzettségi bemenet érvénytelen.
+A hibák és figyelmeztetések vizsgálatának másik módja a Azure Portalon keresztül történik.
 
-Térjen vissza a keresési szolgáltatás áttekintő képernyőjére.
+1. Nyissa meg az **Indexelő** fület, és válassza a elemet `clinical-trials-idxr` .
+1. Figyelje meg, hogy az indexelő feladata összességében sikeres volt, 57 figyelmeztetés történt.
+1. Kattintson a **siker** gombra a figyelmeztetések megtekintéséhez (ha többnyire hibák léptek fel, a részletek hivatkozása **sikertelen** lesz). Az indexelő által kibocsátott összes figyelmeztetés hosszú listáját fogja látni.
+
+   :::image type="content" source="media/cognitive-search-debug/portal-indexer-errors-warnings.png" alt-text="figyelmeztetések megtekintése":::
 
 ## <a name="start-your-debug-session"></a>A hibakeresési munkamenet elindítása
 
-> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="új hibakeresési munkamenet elindítása":::
+:::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="új hibakeresési munkamenet elindítása":::
 
-1. Kattintson a hibakeresési munkamenetek (előzetes verzió) fülre.
-1. Válassza a + NewDebugSession
+1. A keresés áttekintése lapon kattintson a **hibakeresési munkamenetek** fülre.
+1. Válassza az **+ új hibakeresési munkamenet** lehetőséget.
 1. Adja meg a munkamenet nevét. 
 1. Kapcsolja össze a munkamenetet a Storage-fiókkal. 
-1. Adja meg az indexelő nevét. Az indexelő az adatforrásra, a készségkészlet és az indexre mutató hivatkozásokat tartalmaz.
+1. Az indexelő sablonban adja meg az indexelő nevét. Az indexelő az adatforrásra, a készségkészlet és az indexre mutató hivatkozásokat tartalmaz.
 1. Fogadja el a gyűjtemény első dokumentumának alapértelmezett választható dokumentumát. 
 1. **Mentse** a munkamenetet. A munkamenet mentése a készségkészlet által meghatározott mesterséges intelligencia-bővítési folyamat elindítását végzi.
 
 > [!Important]
-> Egy hibakeresési munkamenet csak egyetlen dokumentummal működik. Az adatkészletben található adott dokumentum > kiválasztható, vagy a munkamenet alapértelmezés szerint az első dokumentum lesz.
+> Egy hibakeresési munkamenet csak egyetlen dokumentummal működik. Kiválaszthatja, hogy melyik dokumentumot kell hibakeresésre használni, vagy csak az elsőt használja.
 
-> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="Az új hibakeresési munkamenet elindult":::
+<!-- > :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="New debug session started"::: -->
 
-Ha a hibakeresési munkamenet befejezte a végrehajtást, a munkamenet alapértelmezett értéke a mesterséges intelligenciák lap, amely kiemeli a skill Graphot.
+Ha a hibakeresési munkamenet befejezte az inicializálást, a munkamenet alapértelmezett értéke a **mesterséges intelligencia-dúsítások** lap, amely kiemeli a **skill Graphot**. A skill Graph a készségkészlet vizuális hierarchiáját, valamint a végrehajtás sorrendjét egymás után és párhuzamosan biztosítja.
 
-+ A skill Graph vizuális hierarchiát biztosít a készségkészlet és a végrehajtásuk sorrendjét felülről lefelé. A gráf egymás melletti képességeit párhuzamosan hajtják végre. A gráfban található készségek színkódolása a készségkészlet végrehajtott képességek típusait jelzi. A példában a zöld képességek szöveg, a vörös képesség pedig jövőkép. Ha a gráfban egy egyéni képességre kattint, a munkamenet ablakának jobb oldali ablaktábláján megjeleníti a szakértelem adott példányának részleteit. A szaktudás beállításai, a JSON-szerkesztő, a végrehajtás részletei és a hibák/figyelmeztetések mind elérhetők véleményezésre és szerkesztésre.
-+ A dúsított adatstruktúra részletesen részletezi a forrás dokumentum tartalmából származó készségek által generált dúsítási fa csomópontjait.
+## <a name="find-issues-with-the-skillset"></a>Problémák keresése a készségkészlet
 
-A hibák/figyelmeztetések lap sokkal kisebb listát ad meg, mint a korábban megjelenő lista, mivel ez a lista csak egyetlen dokumentum hibáit részletezi. Az indexelő által megjelenített listához hasonlóan a figyelmeztető üzenetre is kattinthat, és megtekintheti a figyelmeztetés részleteit.
+Az indexelő által jelentett problémák a szomszédos **hibák/figyelmeztetések** lapon találhatók. 
+
+Figyelje meg, hogy a **hibák/figyelmeztetések** lap sokkal kisebb listát ad meg, mint a korábban megjelenő lista, mert ez a lista csak egyetlen dokumentum hibáit részletezi. Az indexelő által megjelenített listához hasonlóan a figyelmeztető üzenetre is kattinthat, és megtekintheti a figyelmeztetés részleteit.
+
+Az értesítések áttekintéséhez válassza a **hibák/figyelmeztetések** lehetőséget. Háromat kell látnia:
+
+   + "Nem lehet leképezni a kimeneti mező helyét a keresési indexhez. Keresse meg az indexelő "outputFieldMappings" tulajdonságát.
+Hiányzó érték: "/Document/merged_content/Locations". "
+
+   + "A" szervezetek "kimeneti mező nem képezhető le a keresési indexre. Keresse meg az indexelő "outputFieldMappings" tulajdonságát.
+Hiányzó érték: "/Document/merged_content/Organizations". "
+
+   + "A szaktudás végrehajtása megtörtént, de nem várt eredménnyel járhat, mert egy vagy több képzettségi bemenet érvénytelen volt.
+Hiányzik a választható szakértelem-bevitel. Név: "languageCode", forrás: "/document/languageCode". Kifejezés nyelvi elemzési problémái: hiányzó "/document/languageCode" érték. "
+
+   Számos szaktudáshoz tartozik egy "languageCode" paraméter. A művelet vizsgálatával láthatja, hogy a nyelvi kód bemenete hiányzik a (z) rendszerből `Enrichment.NerSkillV2.#1` , amely ugyanaz az entitás-felismerési képesség, amely a "Locations" és a "Organizations" kimenettel kapcsolatos problémákkal is rendelkezik. 
+
+Mivel mindhárom értesítés erre a képességre vonatkozik, a következő lépés a szakértelem hibakeresése. Ha lehetséges, először a outputFieldMapping problémákra való áttérés előtt oldja meg a bemeneti problémákat.
+
+ :::image type="content" source="media/cognitive-search-debug/debug-session-errors-warnings.png" alt-text="Az új hibakeresési munkamenet elindult":::
+
+<!-- + The Skill Graph provides a visual hierarchy of the skillset and its order of execution from top to bottom. Skills that are side by side in the graph are executed in parallel. Color coding of skills in the graph indicate the types of skills that are being executed in the skillset. In the example, the green skills are text and the red skill is vision. Clicking on an individual skill in the graph will display the details of that instance of the skill in the right pane of the session window. The skill settings, a JSON editor, execution details, and errors/warnings are all available for review and editing.
+
++ The Enriched Data Structure details the nodes in the enrichment tree generated by the skills from the source document's contents. -->
 
 ## <a name="fix-missing-skill-input-value"></a>Hiányzó szaktudás bemeneti értékének javítása
 
-A hibák/figyelmeztetések lapon hiba található a címkével ellátott műveletnél `Enrichment.NerSkillV2.#1` . A hiba részletei azt ismertetik, hogy probléma merült fel a (z) "/document/languageCode" képzettségi értékkel. 
+A **hibák/figyelmeztetések** lapon hiba található a címkével ellátott műveletnél `Enrichment.NerSkillV2.#1` . A hiba részletei azt ismertetik, hogy probléma merült fel a (z) "/document/languageCode" képzettségi értékkel. 
 
-1. Térjen vissza az AI-Dúsítások lapra.
+1. Térjen vissza az **AI-dúsítások** lapra.
 1. Kattintson a **skill gráfra**.
-1. A jobb oldali ablaktáblán kattintson a #1ra jelölt képességre, hogy megjelenjen a részletei.
+1. A jobb oldali ablaktáblán kattintson a **#1ra** jelölt képességre, hogy megjelenjen a részletei.
 1. Keresse meg a "languageCode" bemenetét.
 1. Válassza ki a **</>** vonal elején található szimbólumot, és nyissa meg a kifejezés kiértékelését.
 1. A **kiértékelés** gombra kattintva erősítse meg, hogy a kifejezés hibát eredményez. A rendszer megerősíti, hogy a "languageCode" tulajdonság nem érvényes bemenet.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="Kifejezés kiértékelése":::
+   :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="Kifejezés kiértékelése":::
 
 Ezt a hibát kétféleképpen lehet megkeresni a munkamenetben. Az első az a hely, ahol a bemenet származik – milyen képességgel kellene előállítani ezt az eredményt? A szakértelem részleteit tartalmazó ablaktábla végrehajtások lapján meg kell jelennie a bemenet forrásának. Ha nincs forrás, ez egy mező-hozzárendelési hibát jelez.
 
@@ -148,9 +182,9 @@ Ezt a hibát kétféleképpen lehet megkeresni a munkamenetben. Az első az a he
 1. Tekintse meg a BEMENETeket, és keresse meg a "languageCode" kifejezést. A megadott bemenethez nem található forrás. 
 1. Váltson a bal oldali panelre a dúsított adatstruktúra megjelenítéséhez. Nincs a "languageCode" tulajdonságnak megfelelő leképezési útvonal.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Dúsított adatstruktúra":::
+   :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Dúsított adatstruktúra":::
 
-Van egy leképezett elérési út a "Language" kifejezéshez. Szóval, van egy elírás a képességek beállításaiban. A "/Document/Language" kifejezéssel rendelkező #1-szakértelemben lévő kifejezés kijavításához frissíteni kell a kifejezést.
+Van egy leképezett elérési út a "Language" kifejezéshez. Szóval, van egy elírás a képességek beállításaiban. A kifejezésnek a #1 "/Document/Language" kifejezéssel való kijavításához frissítenie kell a kifejezést.
 
 1. Nyissa meg a kifejezés kiértékelését **</>** a "Language" elérési útra.
 1. Másolja a kifejezést. Zárja be az ablakot.
@@ -164,11 +198,11 @@ A hibakeresési munkamenet végrehajtásának befejeződése után kattintson a 
 
 ## <a name="fix-missing-skill-output-values"></a>Hiányzó szaktudás-kimeneti értékek javítása
 
-> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hibák és figyelmeztetések":::
+:::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Hibák és figyelmeztetések":::
 
 A szakértelemből hiányzó kimeneti értékek találhatók. Ha azonosítani szeretné a hibát, ugorjon a dúsított adatstruktúrára, keresse meg az érték nevét, és tekintse meg az eredeti forrását. A hiányzó szervezetek és helyszínek értéke esetén a rendszer a skill #1ból származó kimeneteket jelenít meg. Az egyes elérési utakhoz tartozó Expression értékelő </> megnyitásakor a "/Document/Content/Organizations" és a "/Document/Content/Locations" kifejezés jelenik meg.
 
-> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="Expression értékelő szervezetek entitása":::
+:::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="Expression értékelő szervezetek entitása":::
 
 Az entitások kimenete üres, és nem lehet üres. Milyen bemenetek jönnek létre ez az eredmény?
 
@@ -176,14 +210,14 @@ Az entitások kimenete üres, és nem lehet üres. Milyen bemenetek jönnek lét
 1. Válassza a **végrehajtások** fület a jobb képességek részletei panelen.
 1. Nyissa meg a kifejezés kiértékelését **</>** a "text" szövegben.
 
-> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Szöveg-képzettség bevitele":::
+   :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Szöveg-képzettség bevitele":::
 
 A bemenet megjelenített eredménye nem hasonlít a szövegbeviteli adatokhoz. Úgy néz ki, mint egy új vonallal körülvett rendszerkép. A szöveg hiánya azt jelenti, hogy egyetlen entitás sem azonosítható. A készségkészlet hierarchiájának megtekintésekor a rendszer először a #6 (OCR) által dolgozza fel a tartalmat, majd átadja a #5 (Merge) szaktudásnak. 
 
 1. Válassza ki a #5 (egyesítés) képességet a **skill Graphban**.
 1. Válassza a **végrehajtás** fület a jobb képességek részletei panelen, és nyissa meg a kifejezés kiértékelését **</>** a "mergedText" kimenetekhez.
 
-> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Kimenet egyesítési képességhez":::
+   :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Kimenet egyesítési képességhez":::
 
 Itt a szöveg párosítva van a képpel. A "/Document/merged_content" kifejezésben a "szervezetek" és a "Locations" elérési utakon található hiba látható a #1 skill számára. A "/Document/Content" helyett "/Document/merged_content"-t kell használnia a "text" bemenetekhez.
 
@@ -203,7 +237,7 @@ Az indexelő futásának befejeződése után a hibák még mindig vannak. Lépj
 1. Keresse meg a **képességek beállításait** a "kimenetek" kereséséhez.
 1. Nyissa meg a **</>** "szervezetek" entitás kifejezés-értékelőjét.
 
-> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="A szervezetek entitásának kimenete":::
+   :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="A szervezetek entitásának kimenete":::
 
 A kifejezés eredményének kiértékelése a megfelelő eredményt adja. A szakértelem feladata az entitás, a "szervezetek" helyes értékének azonosítása. Az entitás elérési útjának kimeneti leképezése azonban továbbra is hibát jelez. A szakértelem kimeneti elérési útjának és a hiba kimeneti elérési útjának összevetésével a/Document/Content csomópontban lévő kimeneteket, szervezeteket és helyeket szülő képességgel. Míg a kimeneti mező leképezése az eredmények szülővé tételét várja a/Document/merged_content csomópont alatt. Az előző lépésben a bevitel "/Document/Content" értékről "/Document/merged_content" értékre változott. A szaktudás beállításainak környezetét módosítani kell annak érdekében, hogy a kimenet a megfelelő kontextussal legyen létrehozva.
 
@@ -214,13 +248,15 @@ A kifejezés eredményének kiértékelése a megfelelő eredményt adja. A szak
 1. Kattintson a **Save (Mentés** ) gombra a jobb oldalon, a szakértelem részletei panelen.
 1. A munkamenetek ablak menüjében kattintson a **Futtatás** elemre. Ez elindít egy másik végrehajtást a készségkészlet a dokumentum használatával.
 
-> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Környezeti javítás a szaktudás beállításakor":::
+   :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Környezeti javítás a szaktudás beállításakor":::
 
 Az összes hiba megoldódott.
 
 ## <a name="commit-changes-to-the-skillset"></a>Módosítások elvégzése a készségkészlet
 
-A hibakeresési munkamenet elindítását követően a keresési szolgáltatás létrehozta a készségkészlet egy példányát. Ez azért történt, mert az elvégzett módosítások nem érintik az éles rendszert. Most, hogy befejezte a készségkészlet hibakeresését, a javításokat véglegesítheti (felülírhatja az eredeti készségkészlet) az éles rendszerbe. Ha továbbra is módosítani kívánja a készségkészlet az éles rendszer hatása nélkül, akkor a hibakeresési munkamenet később menthető és újra megnyitható.
+A hibakeresési munkamenet elindítását követően a keresési szolgáltatás létrehozta a készségkészlet egy példányát. Ez azért történt, hogy megvédje a keresési szolgáltatás eredeti készségkészlet. Most, hogy befejezte a készségkészlet hibakeresését, a javításokat véglegesítheti (felülírhatja az eredeti készségkészlet). 
+
+Ha nem áll készen a módosítások elvégzésére, mentheti a hibakeresési munkamenetet, és később újra megnyithatja.
 
 1. Kattintson a **módosítások véglegesítve** gombra a fő hibakeresési munkamenetek menüben.
 1. Az **OK** gombra kattintva erősítse meg, hogy szeretné frissíteni a készségkészlet.
@@ -229,11 +265,13 @@ A hibakeresési munkamenet elindítását követően a keresési szolgáltatás 
 1. Kattintson az **Alaphelyzetbe állítás** gombra.
 1. Kattintson a **Futtatás** elemre. A megerősítéshez kattintson **az OK** gombra.
 
-Ha az indexelő befejezte a futást, akkor a futtatási Előzmények lapon a legutóbbi Futtatás időbélyegzője mellett egy zöld pipa és a szó sikeres lesz. A módosítások alkalmazása érdekében:
+Ha az indexelő befejezte a futást, akkor a futtatási **Előzmények** lapon a legutóbbi Futtatás időbélyegzője mellett egy zöld pipa és a szó sikeres lesz. A módosítások alkalmazása érdekében:
 
-1. Zárja be az **Indexelő** lapot, és válassza az **index** fület.
-1. Nyissa meg a "klinikai kísérletek" indexet, és a keresési Explorer lapon kattintson a **Keresés** gombra.
-1. Az eredmény ablaknak be kell mutatnia, hogy a szervezetek és a helyszínek entitások már a várt értékekkel lesznek feltöltve.
+1. A keresés áttekintése lapon válassza a **tárgymutató** lapot.
+1. Nyissa meg a "klinikai kísérletek" indexet, és a keresési Explorer lapon adja meg a következő lekérdezési karakterláncot: `$select=metadata_storage_path, organizations, locations&$count=true` adott dokumentumok mezőinek visszaadásához (az egyedi mező alapján azonosítva `metadata_storage_path` ).
+1. Kattintson a **Keresés** gombra.
+
+Az eredményeknek meg kell mutatniuk, hogy a szervezetek és a helyszínek már a várt értékekkel vannak feltöltve.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -245,6 +283,10 @@ Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három ind
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [További információ a szakértelmével](./cognitive-search-working-with-skillsets.md) 
->  [További információ a növekményes bővítésről és a gyorsítótárazásról](./cognitive-search-incremental-indexing-conceptual.md)
+Ez az oktatóanyag a készségkészlet-definíciók és-feldolgozás különböző szempontjait érinti. A fogalmakkal és munkafolyamatokkal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
++ [Készségkészlet kimeneti mezőinek leképezése a keresési index mezőire](cognitive-search-output-field-mapping.md)
+
++ [Szakértelmével az Azure Cognitive Search](cognitive-search-working-with-skillsets.md)
+
++ [A növekményes bővítés gyorsítótárazásának konfigurálása](cognitive-search-incremental-indexing-conceptual.md)

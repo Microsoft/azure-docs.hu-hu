@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881367"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508032"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -70,9 +70,8 @@ A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta az SQL-hez készült Azure Defendert.
+Ebben a cikkben megtanulta az SQL-hez készült Azure Defendert. A leírt szolgáltatások használata:
 
-> [!div class="nextstepaction"]
-> [Az Azure Defender szolgáltatással kapcsolatos biztonsági rések ellenőrzése az SQL-kiszolgálókon](defender-for-sql-usage.md)
+- Az SQL-kiszolgálók használata az Azure Defender használatával a gépeken a [biztonsági rések vizsgálatához](defender-for-sql-usage.md)

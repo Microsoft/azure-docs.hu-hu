@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5cf933a11956bb8459bf6f5cd1b2b366eb8419d8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021983"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508642"
 ---
 # <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
 Most, hogy&#39;ve meghatározta a szintetikus hangalapú felhasználói felület megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) , jó időt&#39;s a lehetséges tervezési minták megismerésére.
@@ -249,7 +249,6 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 
 * [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
-* [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Következő lépések

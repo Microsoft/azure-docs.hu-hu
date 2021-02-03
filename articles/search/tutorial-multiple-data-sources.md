@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b8711fa468cf361a42ed996c5b5dc50372d6cf90
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746153"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509503"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
@@ -387,7 +387,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a különböző forrásokból származó adatok betöltésének koncepcióját, ismerkedjen meg közelebbről az indexelő konfigurálásával, amely a Cosmos DBtól kezdődik.
 

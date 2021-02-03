@@ -231,3 +231,7 @@
       href: ../../vpn-gateway/security-baseline.md
     - name: Windows rendszerű virtuális asztali biztonsági alapterv
       href: ../../virtual-desktop/security-baseline.md
+- name: Források
+  items:
+    - name: Hozzárendelés a ASB és a CIS teljesítményteszt között
+      href: v2-cis-benchmark.md

@@ -10,24 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 371ad2220b2b2b1b73e5611c5abef74454a548ad
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428419"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508269"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez
 
-## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>Az AI-rendszerek megvalósításakor figyelembe veendő általános szempontok 
-
-Ez a cikk kifejezetten a szintetikus beszédekről és az egyéni neurális hanganyagokról beszél, valamint a technológia felelősségteljes felhasználásának legfontosabb szempontjairól. Általánosságban azonban több dolgot kell figyelembe vennie, hogy miként kell megfontolnia az AI-alapú termékek és szolgáltatások használatának és megvalósításának eldöntését: 
-
-* Jól teljesít a termék vagy a szolgáltatás a forgatókönyvben? Mielőtt üzembe helyezi a AI-t a forgatókönyvben, tesztelje, hogyan hajtja végre a valós idejű adatok használatát, és győződjön meg róla, hogy a szükséges pontosságot biztosítani tudja. 
-* Felkészültünk a hibák azonosítására és reagálására? A mesterséges intelligenciát használó termékek és funkciók nem lesznek mindig 100%-os pontossággal, ezért érdemes megfontolni, hogy miként azonosíthatja és reagálhat az esetlegesen előforduló hibákra. 
-
-## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Általános irányelvek a szintetikus hangtechnológia használatához 
-Íme a Microsoft általános tervezési irányelvei a szintetikus hangtechnológia használatához. Ezek olyan tanulmányokban lettek kifejlesztve, amelyeket a Microsoft hangtehetségekkel, fogyasztókkal, valamint a beszédfelismerési rendellenességekkel foglalkozó személyekkel folytatott a szintetikus hang felelősségteljes fejlesztése érdekében.
+Ebben a cikkben megismerheti a Microsoft általános tervezési irányelveit a szintetikus hangtechnológia használatához. Ezek az irányelvek olyan tanulmányokban lettek kifejlesztve, amelyeket a Microsoft hangtehetségekkel, fogyasztókkal és a beszédfelismerési rendellenességekkel foglalkozó személyekkel folytatott a szintetikus hangok felelősségteljes fejlesztése érdekében.
 
 A szintetikus beszédfelismerési technológiák üzembe helyezéséhez a következő irányelvek vonatkoznak a legtöbb forgatókönyvre.
 
@@ -39,10 +31,12 @@ A Microsoft megköveteli ügyfelei számára, hogy felfedik az egyéni neurális
 * Érdemes lehet a szülők vagy más feleknek megfelelő nyilvánosságra hozni a kiskorúak és gyermekek számára tervezett használati eseteket – ha a használati eset a kiskorúak vagy gyermekek számára készült, meg kell győződnie arról, hogy a szülők vagy a jogi őrök képesek megérteni a szintetikus média használatával kapcsolatos információkat, és a megfelelő döntést a kiskorúak vagy gyermekek számára a felhasználói élmény igénybe vehetik. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Válassza ki a megfelelő hangtípusokat a forgatókönyvhöz
-Körültekintően vegye figyelembe a használat kontextusát és a szintetikus hang használatával járó lehetséges károkat. Előfordulhat például, hogy a nagy megbízhatóságú szintetikus hangok nem megfelelőek a magas kockázatú helyzetekben, például a személyes üzenetkezelés, a pénzügyi tranzakciók vagy az emberi alkalmazkodást vagy az empátiát igénylő összetett helyzetekben. Előfordulhat, hogy a felhasználók a hangtípusokra vonatkozóan eltérő elvárásokat is tartalmazhatnak. Például, ha egy szintetikus hang alapján olvas be bizalmas híreket, néhány felhasználó inkább empatikus és emberi jellegűebb olvasást szeretne a hírekből, míg mások inkább monoton, elfogulatlan hangvételt igényelnek. Vegye fontolóra az alkalmazás tesztelését a felhasználói beállítások jobb megismerése érdekében.
+Körültekintően vegye figyelembe a használat kontextusát és a szintetikus hang használatával járó lehetséges károkat. Előfordulhat például, hogy a nagy megbízhatóságú szintetikus hangok nem megfelelőek a magas kockázatú helyzetekben, például a személyes üzenetkezelés, a pénzügyi tranzakciók vagy az emberi alkalmazkodást vagy az empátiát igénylő összetett helyzetekben. 
+
+Előfordulhat, hogy a felhasználók a hangtípusokra vonatkozóan eltérő elvárásokat is tartalmazhatnak. Ha például egy szintetikus hang alapján olvas bizalmas híreket, néhány felhasználó inkább empatikus és emberi hasonló tónust szeretne, míg mások inkább elfogulatlan hangvételt igényelnek. Vegye fontolóra az alkalmazás tesztelését a felhasználói beállítások jobb megismerése érdekében.
 
 ### <a name="be-transparent-about-capabilities-and-limitations"></a>Átlátható legyen a képességek és korlátozások
-A felhasználók nagyobb valószínűséggel nagyobb elvárásokkal járnak, amikor a nagy megbízhatóságú szintetikus hanganyagokkal kommunikálnak. Ennek következtében, ha a rendszerképességek nem felelnek meg az elvárásoknak, a bizalmi kapcsolat romolhat, és kellemetlen, vagy akár káros élményt is eredményezhet.
+A felhasználók nagyobb valószínűséggel nagyobb elvárásokkal járnak, amikor a nagy megbízhatóságú szintetikus hanganyagokkal kommunikálnak. Ha a rendszerképességek nem felelnek meg ezeknek az elvárásoknak, a megbízhatóság romolhat, és kellemetlen, vagy akár ártalmas élményt is eredményezhet.
 
 ### <a name="provide-optional-human-support"></a>Opcionális emberi támogatás biztosítása
 A nem egyértelmű, tranzakciós forgatókönyvek (például a Call Support Center) esetében a felhasználók nem mindig bíznak a számítógép-ügynökben, hogy megfelelően válaszoljanak a kéréseiket. Ezekben az esetekben szükség lehet az emberi támogatásra, függetlenül a rendszer hangjának vagy funkciójának reális minőségétől.
@@ -59,7 +53,7 @@ Bizonyos hangtehetségek nem ismerik a technológia lehetséges kártékony felh
 Ha beszédfelismerési rendellenességgel rendelkező személyekkel dolgozik, a szintetikus hangtechnológia létrehozásához vagy üzembe helyezéséhez a következő irányelvek érvényesek.
 
 ### <a name="provide-guidelines-to-establish-contracts"></a>A szerződések létrehozásához szükséges irányelvek megadása
-Útmutatást nyújt a szerződések létrehozásához a szintetikus hangvételt használó személyekkel való kommunikációhoz. A szerződésnek meg kell fontolnia azon felek megadását, akik a hangvételt, a használat időtartamát, a tulajdonjog-átadási feltételeket, a hangbetűkészlet törlésének eljárásait, valamint a jogosulatlan hozzáférés megelőzésének módját. Emellett engedélyezheti a hangbetűkészletek tulajdonjogának a családtagok halála utáni átruházását, ha az adott személy engedélyt kapott.
+Útmutatást nyújt a szerződések létrehozásához a szintetikus hangvételt használó személyekkel való kommunikációhoz. A szerződésnek meg kell fontolnia azon felek megadását, akik a hangvételt, a használat időtartamát, a tulajdonjog-átadási feltételeket, a hangbetűkészlet törlésének eljárásait, valamint a jogosulatlan hozzáférés megelőzésének módját. Emellett engedélyezheti a hangbetűkészletek tulajdonjogának átadását a családtagok halála után, ha az engedélyt megadták.
 
 ### <a name="account-for-inconsistencies-in-speech-patterns"></a>A beszéd mintázatok következetlenségének fiókja
 A saját hangbetűkészleteit rögzítő beszédes problémákkal rendelkező személyek esetében a beszédfelismerési minta (az adathígtrágya vagy bizonyos szavak kimondása) inkonzisztenciaa megnehezítheti a rögzítési folyamatot. Ezekben az esetekben a szintetikus hangtechnika és a rögzítési munkamenetek (azaz a szüneteket és a rögzítési munkamenetek további számát biztosítják).
@@ -71,7 +65,6 @@ Azok a személyek, akik beszédi rendellenességeket kívánnak készíteni a sz
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
 * [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 * [Közzétételi tervezési minták](concepts-disclosure-patterns.md)
 

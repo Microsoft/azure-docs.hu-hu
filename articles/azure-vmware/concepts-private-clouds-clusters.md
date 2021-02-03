@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6a2bb0f41bb1809d0f43b08c71766acc914c0689
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474913"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509265"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -66,10 +66,11 @@ A Private Cloud vCenter és a NSX-T konfigurációk óránkénti biztonsági men
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy lefedette ezeket az Azure VMware-megoldás saját Felhőbeli fogalmait, érdemes megismernie az alábbiakat: 
+Most, hogy az Azure VMware-megoldás saját Felhőbeli fogalmait is érintette, érdemes megismernie a következőket: 
 
 - [Az Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmai](concepts-networking.md).
 - [Azure VMware megoldás tárolási fogalmak](concepts-storage.md).
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
 
 <!-- LINKS - internal -->
 

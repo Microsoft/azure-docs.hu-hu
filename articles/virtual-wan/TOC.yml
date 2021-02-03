@@ -4,6 +4,15 @@
   items:
     - name: Mi az a Virtual WAN?
       href: virtual-wan-about.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: ARM-sablonok
+      expanded: true
+      items:
+        - name: Bármilyen útvonal
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
 - name: Oktatóanyagok
   expanded: true
   items:

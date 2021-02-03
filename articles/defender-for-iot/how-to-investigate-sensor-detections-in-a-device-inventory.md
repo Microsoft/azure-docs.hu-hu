@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625431"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508862"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Egy eszközkészlet érzékelői általi észlelések vizsgálata
 
@@ -32,18 +32,18 @@ A következő attribútumok jelennek meg az eszköz leltározási táblájában.
 
 | Paraméter | Leírás |
 |--|--|
-| Név | Annak az eszköznek a neve, amelyet az érzékelő észlelt. |
-| Típus | Az eszköz típusa. |
+| Név | Az eszköz neve, amelyet az érzékelő észlelt, vagy a felhasználó által megadott módon. |
+| Típus | Az eszköz típusa az érzékelő által meghatározott módon, vagy a felhasználó által megadott módon. |
 | Szállító | Az eszköz szállítójának neve a MAC-címben megadott módon. |
-| Operációs rendszer | Az eszköz operációs rendszere. |
-| Belső vezérlőprogram | Az eszköz belső vezérlőprogram. |
-| IP-cím | Az eszköz IP-címe. |
+| Operációs rendszer | Az eszköz operációs rendszere, ha észlelve van. |
+| Belső vezérlőprogram verziója | Az eszköz belső vezérlőprogramja, ha észlelt. |
+| IP-cím | Annak az eszköznek az IP-címe, ahol a definiálva van. |
 | VLAN | Az eszköz VLAN-a. A VLAN-ok felderítésével kapcsolatos utasításokért lásd: [VLAN-nevek meghatározása](how-to-manage-the-on-premises-management-console.md#define-vlan-names). (útmutató – define-Management-Console-Network-Settings. MD # define-VLAN-Names). |
 | MAC-cím | Az eszköz MAC-címe. |
 | Protokollok | Az eszköz által használt protokollok. |
 | Nem nyugtázott riasztások | Az eszközhöz társított nem visszaigazolt riasztások száma. |
 | Engedélyezve van | A felhasználó által meghatározott engedélyezési állapot:<br />- **True (igaz**): az eszköz engedélyezve van.<br />- **Hamis**: az eszköz nincs engedélyezve. |
-| Ismert képolvasó | A felhasználó által beolvasott eszközként van meghatározva. |
+| Ismert képolvasó | A felhasználó által hálózati ellenőrzési eszközként van meghatározva. |
 | Programozási eszköz | A felhasználó által jóváhagyott programozási eszközként van meghatározva. <br />- **True (igaz**): az eszköz programozási tevékenységeket végez a PLC, a RTUs és a vezérlőkön, amelyek a mérnöki állomásokra vonatkoznak. <br />- **Hamis**: az eszköz nem programozási eszköz. |
 | Csoportok | Azok a csoportok, amelyekben ez az eszköz részt vesz. |
 | Legutóbbi tevékenység | Az eszköz által végrehajtott utolsó tevékenység. |
@@ -65,7 +65,7 @@ Az oszlopok elrejtéséhez és megjelenítéséhez szabja testre az eszköz lelt
 
 3. Módosítsa a tábla oszlopainak helyét a nyilak használatával.
 
-4. Válassza a **Mentés** lehetőséget. Az **eszköz leltározási beállításai** ablak bezárul, és az új beállítások megjelennek a táblázatban.
+4. Kattintson a **Mentés** gombra. Az **eszköz leltározási beállításai** ablak bezárul, és az új beállítások megjelennek a táblázatban.
 
 ### <a name="create-temporary-device-inventory-filters"></a>Ideiglenes eszközök leltározási szűrőinek létrehozása
 
@@ -111,7 +111,7 @@ Amikor átvált a Térkép nézetre, a szűrt eszközök ki vannak emelve és sz
 
 ## <a name="learn-windows-registry-details"></a>A Windows beállításjegyzék részleteinek megismerése
 
-Az eszközök eszközön kívül az IT-eszközöket, például a Microsoft Windows-munkaállomásokat és-kiszolgálókat is felderítheti. Ezek az eszközök az eszközök leltárában is megjelennek. Az eszközök megismerése után a részletes Windows-információkkal bővítheti az eszközök leltárát, például:
+Az eszközök eszközön kívül a Microsoft Windows-munkaállomásokat és-kiszolgálókat is felderítheti. Ezek az eszközök az eszközök leltárában is megjelennek. Az eszközök megismerése után a részletes Windows-információkkal bővítheti az eszközök leltárát, például:
 
 - Windows-verzió telepítve
 
@@ -217,7 +217,7 @@ Importálás:
 
 ## <a name="export-device-inventory-information"></a>Eszköz leltározási adatainak exportálása
 
-Az eszköz leltározási adatait Excel-fájlba is exportálhatja. Az importált adatok felülírják a jelenlegi információkat.
+Az eszköz leltározási adatait Excel-fájlba is exportálhatja.
 
 CSV-fájl exportálása:
 

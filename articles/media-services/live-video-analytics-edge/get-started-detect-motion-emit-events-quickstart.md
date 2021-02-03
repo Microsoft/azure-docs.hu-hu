@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 93eb2ab4df77afd3c2a55a04db2d39591a46e726
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986547"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507784"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -48,6 +48,8 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
 1. Lépjen a [Azure Portalra](https://portal.azure.com) , és válassza a Cloud Shell ikont.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
@@ -76,10 +78,10 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
 A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát **`Microsoft.Devices/IotHubs`** , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia.  
 
 > [!NOTE]
-> A szkript a **_~/clouddrive/LVA-Sample/_* _ könyvtárban is létrehoz néhány konfigurációs fájlt. Ezekre a fájlokra később szükség lesz a rövid útmutatóban.
+> A szkript a ***~/clouddrive/LVA-Sample/*** könyvtárban is létrehoz néhány konfigurációs fájlt. Ezekre a fájlokra később szükség lesz a rövid útmutatóban.
 
 > [!TIP]
-> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg az _ *[hibaelhárítási útmutatót](troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
+> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg a **[hibaelhárítási útmutatót](troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Modulok üzembe helyezése a peremhálózati eszközön
 

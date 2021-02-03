@@ -1,5 +1,5 @@
 ---
-title: Eszköz értesítéseinek használata
+title: Az eszközértesítések kezelése
 description: Az értesítések olyan hálózati tevékenységekkel kapcsolatos információkat biztosítanak, amelyek a beavatkozáshoz szükségesek, valamint a tevékenység kezelésére vonatkozó ajánlásokat is tartalmaznak.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d113805322bd45584987460d57ad6bdba241ec10
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840556"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509031"
 ---
-# <a name="work-with-device-notifications"></a>Eszköz értesítéseinek használata
+# <a name="work-with-device-notifications"></a>Az eszközértesítések kezelése
 
 Az értesítések olyan hálózati tevékenységekkel kapcsolatos információkat biztosítanak, amelyek a beavatkozáshoz szükségesek, valamint a tevékenység kezelésére vonatkozó ajánlásokat is tartalmaznak. Előfordulhat például, hogy értesítést kap a következőről:
 
@@ -60,13 +60,13 @@ A következő táblázat ismerteti a megjelenő értesítési eseményeket, vala
 
 | Értesítési események típusai | Leírás | Válaszok |
 |--|--|--|
-| Új IP-címek | Új IP-cím van társítva az eszközhöz. Öt forgatókönyv észlelése lehetséges: <br /><br /> További IP-cím lett társítva egy eszközhöz. Ez az eszköz egy meglévő MAC-címnek is társítva van.<br /><br /> A rendszer új IP-címet észlelt egy meglévő MAC-címet használó eszközhöz. Az eszköz jelenleg nem kommunikál IP-cím használatával.<br /> <br /> A rendszer új IP-címet észlelt egy NetBIOS-nevet használó eszközhöz. <br /><br /> A rendszer IP-címet észlelt egy MAC-címhez társított eszköz felügyeleti felülete. <br /><br /> A rendszer új IP-címet észlelt egy virtuális IP-címet használó eszközhöz. | **További IP-cím beállítása eszközre** (eszközök egyesítése) <br /> <br />**Meglévő IP-cím cseréje** <br /> <br /> **Elvetés**<br /> Távolítsa el az értesítést. |
+| Új IP-cím észlelhető | Új IP-cím van társítva az eszközhöz. Öt forgatókönyv észlelése lehetséges: <br /><br /> További IP-cím lett társítva egy eszközhöz. Ez az eszköz egy meglévő MAC-címnek is társítva van.<br /><br /> A rendszer új IP-címet észlelt egy meglévő MAC-címet használó eszközhöz. Az eszköz jelenleg nem kommunikál IP-cím használatával.<br /> <br /> A rendszer új IP-címet észlelt egy NetBIOS-nevet használó eszközhöz. <br /><br /> A rendszer IP-címet észlelt egy MAC-címhez társított eszköz felügyeleti felülete. <br /><br /> A rendszer új IP-címet észlelt egy virtuális IP-címet használó eszközhöz. | **További IP-cím beállítása eszközre** (eszközök egyesítése) <br /> <br />**Meglévő IP-cím cseréje** <br /> <br /> **Elvetés**<br /> Távolítsa el az értesítést. |
 | Inaktív eszközök | Az eszközön a forgalom több mint 60 napig nem észlelhető. | **Törlés** <br /> Ha az eszköz nem része a hálózatnak, távolítsa el. <br /><br />**Elvetés** <br /> Ha az eszköz a hálózat része, távolítsa el az értesítést. Ha az eszköz inaktív (például azért, mert véletlenül le van választva a hálózatról), zárja be az értesítést, és csatlakoztassa újra az eszközt. |
-| Új OT-eszköz | Az alhálózat olyan OT-eszközt tartalmaz, amely nincs definiálva az ICS-alhálózatban. <br /><br /> Minden olyan alhálózat, amely legalább egy OT tartalmaz, ICS-alhálózatként is definiálható. Ez segít megkülönböztetni az OT és az IT-eszközöket a térképen. | **Beállítás ICS-alhálózatként** <br /> <br /> **Elvetés** <br />Távolítsa el az értesítést, ha az eszköz nem része az alhálózatnak. |
+| Új OT-eszközök | Az alhálózat olyan OT-eszközt tartalmaz, amely nincs definiálva az ICS-alhálózatban. <br /><br /> Minden olyan alhálózat, amely legalább egy OT tartalmaz, ICS-alhálózatként is definiálható. Ez segít megkülönböztetni az OT és az IT-eszközöket a térképen. | **Beállítás ICS-alhálózatként** <br /> <br /> **Elvetés** <br />Távolítsa el az értesítést, ha az eszköz nem része az alhálózatnak. |
 | Nincsenek konfigurált alhálózatok | Jelenleg nincsenek alhálózatok konfigurálva a hálózaton. <br /><br /> Konfigurálja az alhálózatokat a Térkép jobb megjelenítéséhez, valamint az OT és az IT-eszközök közötti különbségtétel lehetőségét. | **Nyissa meg az alhálózatok konfigurációját** , és konfigurálja az alhálózatokat. <br /><br />**Elvetés** <br /> Távolítsa el az értesítést. |
 | Operációs rendszer módosításai | Egy vagy több új operációs rendszer van társítva az eszközhöz. | Válassza ki az eszközhöz hozzárendelni kívánt új operációs rendszer nevét.<br /><br /> **Elvetés** <br /> Távolítsa el az értesítést. |
-| Alhálózatok észlelhetők | Új alhálózatok lettek felderítve. | **Learn**<br />Az alhálózat automatikus hozzáadása.<br />**Alhálózat konfigurációjának megnyitása**<br />Adja hozzá az összes hiányzó alhálózati információt.<br />**Elvetés**<br />Távolítsa el az értesítést. |
-| A rendszer az eszköz típusának változását észlelte | Az eszközhöz új típusú eszköz van társítva. | **Beállítás {...}**<br />Társítsa az új típust az eszközhöz.<br />**Elvetés**<br />Távolítsa el az értesítést. |
+| Új alhálózatok | Új alhálózatok lettek felderítve. | **Learn**<br />Az alhálózat automatikus hozzáadása.<br />**Alhálózat konfigurációjának megnyitása**<br />Adja hozzá az összes hiányzó alhálózati információt.<br />**Elvetés**<br />Távolítsa el az értesítést. |
+| Eszköz típusának módosítása | Az eszközhöz új típusú eszköz van társítva. | **Beállítás {...}**<br />Társítsa az új típust az eszközhöz.<br />**Elvetés**<br />Távolítsa el az értesítést. |
 
 ## <a name="respond-to-many-notifications-simultaneously"></a>Válaszoljon egyszerre sok értesítésre
 
@@ -98,6 +98,6 @@ Vizsgálja meg a javaslatokat az operációs rendszer besorolásának gazdagít�
 
 Ha elfogadja a javaslatot, az operációs rendszer típusának adatai frissülnek az érzékelőben.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Riasztások megtekintése](how-to-view-alerts.md)

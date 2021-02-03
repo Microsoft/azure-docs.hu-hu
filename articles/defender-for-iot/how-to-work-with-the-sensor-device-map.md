@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976758"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509048"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Az érzékelő észlelésének vizsgálata az eszköz térképén
 
@@ -63,7 +63,7 @@ Az alábbi ábra egy összecsukott IT-alhálózatot mutat be 27 informatikai há
 
 Az informatikai hálózatok összeomlási képességének engedélyezése:
 
-- A rendszerbeállítás ablakban győződjön meg arról, hogy az informatikai hálózatok funkció engedélyezve van.
+- A **Rendszerbeállítások** ablakban ellenőrizze, hogy engedélyezve van-e az informatikai hálózatok bekapcsolása csoportosítási funkció.
 
 :::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="Rendszerbeállítási ablak":::
 
@@ -76,7 +76,7 @@ Az IT-alhálózat kibontása:
 
    :::image type="content" source="media/how-to-work-with-maps/subnet-list.png" alt-text="Alhálózatok konfigurálása":::
 
-2. Az alhálózatok konfigurálása konfigurációs ablakban törölje az összes IT-alhálózatként definiálni kívánt alhálózat ICS-alhálózatát. Az IT-alhálózatok az eszközök térképén összecsukva jelennek meg az INTERNETKAPCSOLATtal rendelkező eszközök, például egy vezérlő vagy PLC az informatikai hálózatokban.
+2. Az **alhálózatok konfigurálása konfigurációs** ablakban törölje az összes olyan alhálózat **IC-alhálózata** jelölőnégyzetét, amelyet it-alhálózatként kíván megadni. Az IT-alhálózatok az eszközök térképén összecsukva jelennek meg az INTERNETKAPCSOLATtal rendelkező eszközök, például egy vezérlő vagy PLC az informatikai hálózatokban.
 
    :::image type="content" source="media/how-to-work-with-maps/edit-config.png" alt-text="Alhálózatok konfigurációjának szerkesztése":::
 
@@ -106,13 +106,13 @@ Az összecsukás ikon a bővített IT-alhálózatok frissített számával friss
 
 ## <a name="view-or-highlight-device-groups"></a>Erőforráscsoportok megtekintése vagy kiemelése
 
-A Térkép megjelenítését eszközcsoport alapján is testreszabhatja. Például egy adott VLAN-hoz vagy alhálózathoz társított eszközök csoportjai. Az előre definiált csoportok elérhetők és egyéni csoportok hozhatók létre.
+A Térkép megjelenítését eszközcsoport alapján is testreszabhatja. Például egy adott OT-protokollhoz, VLAN-hoz vagy alhálózathoz társított eszközök csoportjai. Az előre definiált csoportok elérhetők és egyéni csoportok hozhatók létre.
 
 Csoportok megtekintése:
 
   - **Kiemelés:** Jelölje ki a kék színnel megadott csoporthoz tartozó eszközöket.
 
-  - **Szűrés:** Csak a térképen csak az adott csoporthoz tartozó eszközöket jeleníti meg.
+  - **Szűrés:** Csak egy adott csoporthoz tartozó eszközök megjelenítése.
 
 :::image type="content" source="media/how-to-work-with-maps/port-standard.png" alt-text="A port szabványos nézete":::
 
@@ -120,17 +120,18 @@ A következő előre meghatározott csoportok érhetők el:
 
 | Csoport neve | Leírás |
 |--|--|
-| **Ismert alkalmazások vagy nem szabványos portok (alapértelmezett)** | Fenntartott portokat (például TCP) használó eszközök. Nem szabványos portokat vagy portokat használó eszközök, amelyek nem rendelkeznek aliassal. |
-| **OT protokollok (alapértelmezett)** | Az OT-forgalmat kezelő eszközök. |
-| **Engedélyezés (alapértelmezett)** | A hálózatban a tanulási folyamat során felderített és a hálózatra hivatalosan felvett eszközök |
+| **Ismert alkalmazások** | Fenntartott portokat (például TCP) használó eszközök.  |
+| **nem szabványos portok (alapértelmezett)** | Nem szabványos portokat vagy portokat használó eszközök, amelyek nem rendelkeznek aliassal. |
+| **OT protokollok (alapértelmezett)** | Az ismert OT-forgalmat kezelő eszközök. |
+| **Engedélyezés (alapértelmezett)** | Azok az eszközök, amelyeket a rendszer a tanulási folyamat során észlelt a hálózaton, vagy amelyek hivatalosan engedélyezve voltak a hálózaton. |
 | **Eszközök leltározási szűrői** | Az eszközök az eszköz leltározási táblázatában mentett szűrők szerint vannak csoportosítva. |
 | **Lekérdezési időközök** | Az eszközök lekérdezési időközök szerint csoportosítva. A lekérdezési időközök automatikusan jönnek létre ciklikus csatornák vagy időszakok alapján. Például 15,0 másodperc, 3,0 másodperc, 1,5 másodperc vagy bármilyen intervallum. Az információk áttekintésével megtudhatja, hogy a rendszerek túl gyorsan vagy lassan kérdeznek-e le. |
-| **Programozási** | Mérnöki állomások és programozott vezérlők |
+| **Programozási** | Mérnöki állomások és programozási gépek. |
 | **Alhálózatok** | Egy adott alhálózathoz tartozó eszközök. |
 | **VLAN** | Egy adott VLAN-AZONOSÍTÓhoz társított eszközök. |
-| **Alhálózatok közötti kapcsolat** | A több alhálózattal létesített kapcsolatok esetében társított eszközök. |
+| **Több alhálózati kapcsolat** | Az egyik alhálózatról egy másik alhálózatra kommunikáló eszközök. |
 | **Rögzített riasztások** | Azok az eszközök, amelyekhez a felhasználó riasztást rögzített. |
-| **Támadási vektor szimulálása** | Sebezhető eszközök észlelhetők a támadási vektor jelentéseiben. Ha szeretné megtekinteni ezeket az eszközöket a térképen, jelölje be az **eszköz megjelenítése** jelölőnégyzetet a támadási vektor létrehozásakor. :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Támadási vektor szimulációk hozzáadása"::: |
+| **Támadási vektor szimulálása** | Sebezhető eszközök észlelhetők a támadási vektor jelentéseiben. Ha szeretné megtekinteni ezeket az eszközöket a térképen, jelölje be az **eszköz megjelenítése** jelölőnégyzetet a támadási vektor létrehozásakor. :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Támadási vektor szimulációk hozzáadása":::. |
 | **Legutóbbi észlelés** | Az eszközök az utolsó látott időkeret szerint csoportosítva, például: egy óra, hat óra, egy nap, hét nap. |
 | **Nem Active Directory** | Minden olyan nem PLC-eszköz, amely nem kommunikál a Active Directory. |
 
@@ -142,7 +143,7 @@ Eszközök kiemelése vagy szűrése:
 
 3. A csoportok ablaktáblán válassza ki azt a csoportot, amelynek ki szeretné emelni vagy szűrni kívánja az eszközöket.
 
-4. Válassza ki a **kiemelés** vagy a **szűrés** elemet.
+4. Válassza ki a **kiemelés** vagy a **szűrés** elemet. A kiemelés vagy a szűrő eltávolításához kapcsolja ki ugyanazt a kijelölést.
 
 ## <a name="define-custom-groups"></a>Egyéni csoportok definiálása
 
@@ -155,20 +156,20 @@ Csoport létrehozása:
 
 1. Válassza az **eszközök** lehetőséget az oldalsó menüben. Megjelenik az eszköz térképe.
 
-2. A csoportok beállításainak megjelenítéséhez válassza a :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="csoport beállítása"::: lehetőséget.
+1. A csoportok beállításainak megjelenítéséhez válassza a :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="csoport beállítása"::: lehetőséget.
 
-3. Új egyéni csoport létrehozásához válassza a :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="csoportok"::: lehetőséget.
+1. Új egyéni csoport létrehozásához válassza a :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="csoportok"::: lehetőséget.
 
 :::image type="content" source="media/how-to-work-with-maps/custom-group-v2.png" alt-text="Egyéni csoport létrehozása képernyő":::
 
-4. Adja hozzá a csoport nevét, és használjon akár 30 karaktert.
+1. Adja hozzá a csoport nevét, és használjon akár 30 karaktert.
 
-5. Válassza ki a megfelelő eszközöket az alábbiak szerint:
+1. Válassza ki a megfelelő eszközöket az alábbiak szerint:
 
    - Adja hozzá az eszközöket ehhez a menühöz, ha kiválasztja őket a listából (válassza a nyíl gombot),<br /> Vagy <br /> 
    - Adja hozzá az eszközöket ebből a menüből egy kiválasztott csoportból történő másolással (válassza a nyíl gombra)
 
-6. Válassza a **Csoport hozzáadása** lehetőséget.
+1. Válassza a **Csoport hozzáadása** lehetőséget meglévő csoportok egyéni csoportokba való felvételéhez.
 
 ### <a name="add-devices-to-a-custom-group"></a>Eszközök hozzáadása egyéni csoporthoz
 
@@ -176,13 +177,13 @@ Hozzáadhat eszközöket egyéni csoporthoz, vagy létrehozhat egy új egyéni c
 
 1. Kattintson a jobb gombbal egy eszközre a térképen.
 
-2. Válassza **a Hozzáadás a csoporthoz** lehetőséget.
+1. Válassza **a Hozzáadás a csoporthoz** lehetőséget.
 
-3. Adja meg a csoport nevét a Group (csoport) mezőben, és válassza a + lehetőséget. Megjelenik az új csoport. Ha a csoport már létezik, a rendszer hozzáadja a meglévő egyéni csoporthoz.
+1. Adja meg a csoport nevét a Group (csoport) mezőben, és válassza a + lehetőséget. Megjelenik az új csoport. Ha a csoport már létezik, a rendszer hozzáadja a meglévő egyéni csoporthoz.
 
    :::image type="content" source="media/how-to-work-with-maps/groups-section-v2.png" alt-text="Csoport neve":::
 
-4. Adjon hozzá eszközöket egy csoporthoz az 1-3-es lépések megismétlésével.
+1. Adjon hozzá eszközöket egy csoporthoz az 1-3-es lépések megismétlésével.
 
 ## <a name="map-zoom-views"></a>Térkép nagyítási nézetei
 
@@ -317,14 +318,14 @@ A következő információk manuálisan is frissíthetők. A manuálisan megadot
 | Elem | Leírás |
 |--|--|
 | Alapvető adatok | Az alapvető információk szükségesek. |
-| Név | Az eszköz neve. <br /> Alapértelmezés szerint az érzékelő felfedi a hálózatban definiált eszköznév nevét. Például a DNS-kiszolgálón definiált név. <br /> Ha nincs ilyen név meghatározva, az eszköz IP-címe ebben a mezőben jelenik meg. <br /> Az eszköz nevét manuálisan is módosíthatja. Adja meg az eszközöknek a funkcionalitását tükröző, értelmezhető neveket. |
+| Name | Az eszköz neve. <br /> Alapértelmezés szerint az érzékelő felfedi a hálózatban definiált eszköznév nevét. Például a DNS-kiszolgálón definiált név. <br /> Ha nincs ilyen név meghatározva, az eszköz IP-címe ebben a mezőben jelenik meg. <br /> Az eszköz nevét manuálisan is módosíthatja. Adja meg az eszközöknek a funkcionalitását tükröző, értelmezhető neveket. |
 | Típus | Az érzékelő által észlelt eszköz típusa. <br /> További információ: [eszközök típusának megtekintése](#view-device-types). |
-| Szállító | Az eszköz gyártója. |
-| Operációs rendszer | Az eszköz operációs rendszere. |
+| Szállító | Az eszköz gyártója. Ezt az eszköz MAC-címe vezető karakterei határozzák meg. Ez a mező csak olvasható. |
+| Operációs rendszer | Az érzékelő által észlelt eszköz operációs rendszer. |
 | Purdue-réteg | Az eszköz szenzora által azonosított Purdue-réteg, beleértve a következőket: <br /> – Automatikus <br /> – Folyamat vezérlése <br /> – Felügyelet <br /> – Vállalati |
 | Leírás | Egy ingyenes szövegmező. <br /> További információk hozzáadása az eszközről. |
 | Attribútumok | Az eszközön a tanulási időszakban felderített további információk, amelyek nem tartoznak más kategóriákhoz, az attribútumok szakaszban jelennek meg. <br /> Az információ a RO. |
-| Beállítások | Az eszközbeállítások manuális módosításával megakadályozhatja a hamis pozitív értéket: <br /> - **Jogosult eszköz**: a tanulási időszak alatt a hálózatban felderített összes eszköz meghatalmazott eszközként van azonosítva. Ha az eszközt a tanulási időszak után észlelik, a rendszer alapértelmezés szerint jogosulatlan eszközként jelenik meg. Ezt a definíciót manuálisan is módosíthatja. <br /> - **Más néven képolvasó**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz képolvasóként ismert, és nincs szükség riasztásra. <br /> - **Programozási eszköz**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz programozási eszközként ismert, és nincs szükség riasztásra. |
+| Beállítások | Az eszközbeállítások manuális módosításával megakadályozhatja a hamis pozitív értéket: <br /> - **Jogosult eszköz**: a tanulási időszak alatt a hálózatban felderített összes eszköz meghatalmazott eszközként van azonosítva. Ha az eszközt a tanulási időszak után észlelik, a rendszer alapértelmezés szerint jogosulatlan eszközként jelenik meg. Ezt a definíciót manuálisan is módosíthatja. <br /> - **Más néven képolvasó**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz képolvasóként ismert, és nincs szükség riasztásra. <br /> - **Programozási eszköz**: engedélyezze ezt a beállítást, ha tudja, hogy ez az eszköz programozási eszközként ismert, és a programozási módosítások végrehajtásához használatos. A programozási eszközként való azonosítás megakadályozza az adategységből származó programozási változások riasztásait. |
 | Egyéni csoportok | Az eszköz azon egyéni csoportjai, amelyekben ez az eszköz részt vesz. |
 | Állam | Az eszköz biztonsága és engedélyezési állapota: <br /> – Az állapot akkor jelenik meg, `Secured` Ha nincsenek riasztások <br /> – Ha riasztás van az eszközről, a riasztások száma megjelenik. <br /> – Az állapot `Unauthorized` megjelenik azon eszközök esetében, amelyek a tanulási időszak után a hálózathoz lettek adva. Az eszközt manuálisan is megadhatja `Authorized Device` a beállításokban <br /> – Ha az eszköz címe dinamikus címként van definiálva, az `DHCP` állapothoz kerül. |
 
@@ -337,7 +338,7 @@ A következő információk manuálisan is frissíthetők. A manuálisan megadot
 | Cím | Az eszköz IP-címe. |
 | Sorozatszám | Az eszköz sorozatszáma. |
 | Modul címe | Az eszköz modellje és a tárolóhely száma vagy azonosítója. |
-| Modell | Az eszköz modelljének száma. |
+| Modellezés | Az eszköz modelljének száma. |
 | Belső vezérlőprogram verziója | A belső vezérlőprogram verziószáma. |
 
 Az eszköz adatainak megtekintése:
@@ -359,7 +360,7 @@ A következő táblázat a rendszeren található összes típust ismerteti:
 | Kategória | Eszköz típusa |
 |--|--|
 | ICS | Mérnöki állomás <br /> PLC <br />Történész <br />HMI <br />IED <br />DCS-vezérlő <br />RTU <br />Ipari csomagolási rendszerek <br />Ipari méret <br />Ipari robot <br />Üzembe helyezési pont <br />Mérő <br />Változó gyakoriságú meghajtó  <br />Robot vezérlő <br />Szervo-meghajtó <br />Pneumatikus eszköz <br />Marquee |
-| IT | Tartományvezérlő <br />ADATBÁZIS-kiszolgáló <br />Munkaállomás <br />Kiszolgáló <br />Terminál állomás <br />Storage <br />Intelligens telefon <br />Táblagép <br />Biztonsági mentési kiszolgáló |
+| IT | Tartományvezérlő <br />ADATBÁZIS-kiszolgáló <br />Munkaállomás <br />Kiszolgáló <br />Terminál állomás <br />Tárolás <br />Intelligens telefon <br />Táblagép <br />Biztonsági mentési kiszolgáló |
 | IoT | IP-kamera <br />Nyomtató  <br />Lyukasztó óra <br />ATM <br />Intelligens TV <br />Játékkonzol <br />DVR <br />Ajtó Vezérlőpultján <br />HVAC <br />Okostelefonok <br />Tűzjelző <br />Intelligens fény <br />Intelligens kapcsoló <br />Tűzvédelmi detektor <br />IP-telefon <br />Riasztórendszer <br />Riasztási sziréna <br />Mozgásérzékelő <br />Lift <br />Páratartalom-érzékelő <br />Vonalkódolvasó <br />Szünetmentes áramforrás <br />Személyek számláló rendszere <br />Intercom <br />Forgóajtón |
 | Network (Hálózat) | Vezeték nélküli hozzáférési pont <br />Útválasztó <br />Kapcsoló (switch) <br />Firewall <br />VPN Gateway <br />NTP-kiszolgáló <br />Wi-Fi ananász <br />Fizikai hely <br />I/O-adapter <br /> Protokoll-átalakító |
 
@@ -369,7 +370,7 @@ Az eszköz adatainak megtekintése:
 
 2. Kattintson a jobb gombbal egy eszközre, és válassza a **tulajdonságok megtekintése** lehetőséget. Megjelenik az eszköz Tulajdonságok ablak.
 
-3. Az ablak alján lévő szükséges riasztásra kattintva részletes információkat jeleníthet meg az eszközre vonatkozó riasztásokról.
+3. Válassza ki a kívánt riasztást az eszközre vonatkozó riasztások részletes adatainak megtekintéséhez.
 
 ### <a name="backplane-properties"></a>Hátlap tulajdonságai
 
@@ -429,7 +430,7 @@ A kriminalisztika fejlesztése a hálózati eszközökön végrehajtott programo
 
 Megjeleníthet egy programozott eszközt, és görgetheti a más eszközökön végrehajtott különböző programozási változtatásokat.
 
-Megtekintheti a programozási eszköz által hozzáadott, módosított, eltávolított vagy változatlan kódokat. Megkeresheti a programozási módosításokat a fájltípusok, dátumok vagy érdekes időpontok alapján.
+Megtekintheti a programozási eszköz által hozzáadott, módosított, eltávolított vagy újratöltve kódot. Megkeresheti a programozási módosításokat a fájltípusok, dátumok vagy érdekes időpontok alapján.
 
 ### <a name="when-to-review-programming-activity"></a>Mikor érdemes áttekinteni a programozási tevékenységet 
 
@@ -443,7 +444,7 @@ Előfordulhat, hogy át kell tekintenie a programozási tevékenységet:
 
 :::image type="content" source="media/how-to-work-with-maps/differences.png" alt-text="Programozási változási napló":::
 
-A további lehetőségek a következőket teszik lehetővé:
+A többi lehetőség a következőket teszi lehetővé:
 
   - Egy csillaggal kapcsolatos érdekes események megjelölése.
 
@@ -476,13 +477,13 @@ A riasztások akkor aktiválódnak, ha a jogosulatlan programozási eszközök v
 :::image type="content" source="media/how-to-work-with-maps/unauthorized.png" alt-text="Jogosulatlan programozási riasztások":::
 
 > [!NOTE]
-> Az alapszintű programozási információkat az eszköz Tulajdonságok ablak és az eszközök leltárában is megtekintheti. További részletekért tekintse meg az [eszköz programozási információit: további helyszínek](#device-programming-information-additional-locations) .
+> Az alapszintű programozási információkat az eszköz Tulajdonságok ablak és az eszközök leltárában is megtekintheti.
 
 ### <a name="working-in-the-programming-timeline-window"></a>Munka a programozási idővonal ablakban
 
 Ez a szakasz a programozási fájlok megtekintését és a verziók összehasonlítását ismerteti. Megkeresheti a programozott eszközre eljuttatott adott fájlokat. Fájlok keresése a következő alapján:
 
-  - Dátum
+  - Date
 
   - Fájl típusa
 
@@ -492,7 +493,7 @@ Ez a szakasz a programozási fájlok megtekintését és a verziók összehasonl
 |--|--|
 | Programozott eszköz | A programozott eszköz részletes adatait tartalmazza, beleértve az állomásnevet és a fájlt. |
 | Legutóbbi események | Az érzékelő által észlelt 50 legutóbbi eseményeket jeleníti meg. <br />Egy esemény kiemeléséhez vigye az egérmutatót a fölé, és kattintson a csillagra. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> Az utolsó 50 esemény megtekinthető. |
-| Files | Megjeleníti a kiválasztott dátumhoz és a programozott eszköz fájlméretéhez észlelt fájlokat. <br /> Alapértelmezés szerint az eszközönkénti megjelenítéshez elérhető fájlok maximális száma 300. <br /> Alapértelmezés szerint a fájlok maximális mérete 15 MB. |
+| Fájlok | Megjeleníti a kiválasztott dátumhoz és a programozott eszköz fájlméretéhez észlelt fájlokat. <br /> Alapértelmezés szerint az eszközönkénti megjelenítéshez elérhető fájlok maximális száma 300. <br /> Alapértelmezés szerint a fájlok maximális mérete 15 MB. |
 | Fájl állapota :::image type="icon" source="media/how-to-work-with-maps/status-v2.png" border="false"::: | A fájlok címkéi a fájl állapotát jelzik az eszközön, beleértve a következőket: <br /> **Hozzáadva**: a fájl hozzá lett adva a végponthoz a kiválasztott dátumon vagy időpontban. <br /> **Frissítve**: a fájl a kiválasztott dátumon vagy időpontban frissült. <br /> **Törölve**: a fájl el lett távolítva. <br /> **Nincs címke**: a fájl nem módosult.   |
 | Programozási eszköz | A programozási változást használó eszköz. Előfordulhat, hogy több eszköz programozási változtatásokat hajtott végre egy programozott eszközön. Megjelenik az állomásnév, a dátum vagy a módosítás időpontja és a bejelentkezett felhasználó. |
 | :::image type="icon" source="media/how-to-work-with-maps/current.png" border="false"::: | Megjeleníti a programozott eszközre telepített aktuális fájlt. |
@@ -539,7 +540,7 @@ Ez a szakasz a programozási fájlok összehasonlítását ismerteti.
 
 5. A legutóbbi események/fájlok ablaktáblán kiválasztott fájl mindig a jobb oldalon jelenik meg.
 
-### <a name="device-programming-information-additional-locations"></a>Az eszköz programozási adatai: további helyszínek
+### <a name="device-programming-information-other-locations"></a>Eszköz programozási adatai: egyéb helyszínek
 
 A programozási idővonalban a részletek áttekintése mellett a programozási információk is elérhetők az eszközön Tulajdonságok ablak és az eszközök leltárában.
 
@@ -556,7 +557,7 @@ Az érzékelő nem frissíti és nem befolyásolja az eszközöket közvetlenül
 
 Előfordulhat, hogy törölni szeretne egy eszközt, ha a megismert információk nem relevánsak. Példa:
 
-  - A mérnöki munkaállomáson a partneri kivitelező a konfigurációs frissítések elvégzéséhez csatlakozik. A feladat befejezése után az eszközt már nem kell figyelni.
+  - A mérnöki munkaállomáson lévő partneri kivitelező átmenetileg csatlakozik a konfigurációs frissítések végrehajtásához. A feladat befejezése után az eszköz el lesz távolítva.
 
   - A hálózat változásai miatt egyes eszközök már nem csatlakoznak.
 
@@ -566,7 +567,7 @@ Riasztás jelenhet meg, amely jelzi, hogy az eszköz nem válaszol, ha egy mási
 
 Az eszköz el lesz távolítva az eszköz térképéről, az eszközök Leltáráról és az adatbányászati jelentésekről. Egyéb információk, például: a widgetekben tárolt információk továbbra is érvényben maradnak.
 
-Az eszköznek legalább 10 percig aktívnak kell lennie a törléshez.
+Az eszköznek legalább 10 percig inaktívnak kell lennie a törléshez.
 
 Eszköz törlése az eszköz térképéről:
 
@@ -576,15 +577,17 @@ Eszköz törlése az eszköz térképéről:
 
 ### <a name="merge-devices"></a>Eszközök egyesítése
 
-Bizonyos esetekben előfordulhat, hogy egyesíteni kell az eszközöket. Erre akkor lehet szükség, ha az érzékelő különálló hálózati entitásokat észlelt, amelyek egy egyedi eszköz. Példa:
+Bizonyos esetekben előfordulhat, hogy egyesíteni kell az eszközöket. Erre akkor lehet szükség, ha az érzékelő külön hálózati entitásokat észlelt, amelyek egy egyedi eszközhöz vannak társítva. Példa:
 
-  - PLC négy hálózati kártyával
+  - Egy PLC négy hálózati kártyával.
 
-  - WIFI-vel és fizikai kártyával rendelkező laptop
+  - Egy laptop WIFI és fizikai kártyával.
+  
+  - Két vagy több hálózati kártyával rendelkező munkaállomás.
 
 Egyesítéskor arra utasítja az érzékelőt, hogy egyesítse két eszköz eszközének tulajdonságait. Ha ezt teszi, a rendszer az eszköz Tulajdonságok ablak és az érzékelő jelentéseit az új eszköz tulajdonság részleteivel frissíti.
 
-Ha például két eszközt egyesít egy IP-címmel, akkor mindkét IP-cím különálló illesztőfelületként fog megjelenni az eszköz Tulajdonságok ablak. Csak a jóváhagyott eszközöket lehet egyesíteni.
+Ha például két eszközt egyesít, amelyek mindegyike IP-címmel rendelkezik, akkor mindkét IP-cím külön illesztőfelületként jelenik meg az eszköz Tulajdonságok ablak. Csak a jóváhagyott eszközöket lehet egyesíteni.
 
 :::image type="content" source="media/how-to-work-with-maps/device-properties-v2.png" alt-text="Eszköz Tulajdonságok ablak":::
 
@@ -596,7 +599,7 @@ Az eszközök egyesítése nem vonható vissza. Ha véletlenül két eszközt eg
 
 Eszközök egyesítése:
 
-1. Válasszon ki két eszközt, és kattintson a jobb gombbal az egyikre.
+1. Válasszon ki két eszközt (Shift + kattintás), majd kattintson a jobb gombbal az egyikre.
 
 2. Válassza az **Egyesítés** lehetőséget az eszközök egyesítéséhez. Az egyesítés akár 2 percet is igénybe vehet.
 
@@ -604,7 +607,7 @@ Eszközök egyesítése:
 
    :::image type="content" source="media/how-to-work-with-maps/name-the-device-v2.png" alt-text="attribútumok párbeszédpanel":::
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="authorize-and-unauthorize-devices"></a>Eszközök engedélyezésének és engedélyezésének engedélyezése
 
@@ -622,7 +625,7 @@ Ha áthelyez egy eszközt a térképen, vagy manuálisan módosítja az eszköz 
 
 #### <a name="unauthorized-devices---attack-vectors-and-risk-assessment-reports"></a>Jogosulatlan eszközök – támadási vektorok és kockázatértékelési jelentések
 
-A nem engedélyezett eszközöket a kockázatértékelési jelentésekben és a támadási vektorok jelentéseiben számítjuk ki.
+A kockázatfelmérési jelentések és a támadási vektorok jelentéseiben nem engedélyezett eszközök szerepelnek.
 
 - **Támadási vektoros jelentések:** A jogosulatlanként megjelölt eszközöket a rendszer a támadási vektorban oldja fel, mivel ez fenyegetést jelenthet a hálózatra.
 

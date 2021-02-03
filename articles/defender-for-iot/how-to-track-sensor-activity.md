@@ -1,5 +1,5 @@
 ---
-title: Érzékelő tevékenység nyomon követése
+title: Érzékelőtevékenység nyomon követése
 description: Az esemény idővonala a hálózaton észlelt tevékenység ütemtervét jeleníti meg, beleértve a riasztásokat és a riasztások felügyeleti műveleteit, a hálózati eseményeket és a felhasználói műveleteket, például a felhasználói bejelentkezést és a felhasználó törlését.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3895e01b1fbfcde79ff91bd1eade8d902c33b852
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840721"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509099"
 ---
-# <a name="track-sensor-activity"></a>Érzékelő tevékenység nyomon követése
+# <a name="track-sensor-activity"></a>Érzékelőtevékenység nyomon követése
 
 ## <a name="event-timeline"></a>Esemény idővonala
 
@@ -59,15 +59,15 @@ Az idősor szűrése:
 
 2. Az események szűrőinek beállítása a következőképpen történik:
 
-   - **Adja** meg a címeket: adott esemény-eszközök megjelenítése.
+   - **Belefoglalási címek**: adott eszközök eseményeinek megjelenítése.
 
-   - **Kizárási címe**: adott esemény-eszközök elrejtése.
+   - **Kizárási címek**: adott eszközök eseményeinek elrejtése.
 
-   - **Eseménytípus belefoglalása**: adott eseménytípus megjelenítése.
+   - **Eseménytípus belefoglalása**: adott események típusának megjelenítése.
 
-   - **Eseménytípus kizárása**: adott eseménytípus elrejtése.
+   - **Eseménytípus kizárása**: adott események típusának elrejtése.
 
-   - **Eszközcsoport**: válasszon ki egy eszközt, ahogy az az eszköz térképen lett meghatározva. A rendszer csak a csoport eseményeit mutatja be.
+   - **Eszközcsoport**: válasszon ki egy eszközt, ahogy az az eszköz térképen lett meghatározva. Csak az ebből a csoportból származó események jelennek meg.
 
 3. Válassza az **összes törlése** lehetőséget az összes kijelölt szűrő törléséhez.
 
@@ -87,8 +87,8 @@ Az idősor szűrése:
 
     - Válassza ki a **Pcap fájlt** a Pcap-fájl (ha létezik) letöltéséhez, amely a teljes hálózat egy adott időpontban történő csomagjainak rögzítését tartalmazza. 
     
-      A PCAP-fájl olyan technikai információkat tartalmaz, amelyek segítségével a mérnökök pontosan meghatározhatják, hogy hol történt az esemény, és mi történik. A PCAP-fájlt egy olyan hálózati protokoll-elemzővel elemezheti, mint például a Wireshark, egy ingyenes alkalmazás.
+      A PCAP-fájl olyan technikai információkat tartalmaz, amelyek segítségével a hálózati mérnökök meghatározhatják az esemény pontos paramétereit. A PCAP-fájlt egy olyan hálózati protokoll-elemzővel elemezheti, mint például a Wireshark, egy nyílt forráskódú alkalmazás.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Riasztások megtekintése](how-to-view-alerts.md)

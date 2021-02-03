@@ -8,30 +8,30 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 422346430e32ccb8745d5a5d829c5d61089a99c6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b8881d3fa7ade08da103c5af4b828a12e74cc355
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430428"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509452"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Egyszerű szöveges Blobok indexelése az Azure-ban Cognitive Search
 
-Ha blob- [Indexelő](search-howto-indexing-azure-blob-storage.md) használatával Kinyeri a kereshető szöveget a teljes szöveges kereséshez, különböző elemzési módokat hívhat meg, hogy jobb indexelési eredményekhez lehessen jutni. Alapértelmezés szerint az indexelő a blob tartalmát egyetlen darab szövegként elemzi. Ha azonban az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akkor az elemzési mód használatával jelentősen javíthatja az indexelési teljesítményt `text` .
+Ha blob- [Indexelő](search-howto-indexing-azure-blob-storage.md) használatával Kinyeri a kereshető blob szövegét a teljes szöveges kereséshez, hozzárendelhet egy elemzési módot a jobb indexelési eredmények eléréséhez. Alapértelmezés szerint az indexelő a blob tartalmát egyetlen darab szövegként elemzi. Ha azonban az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akkor az elemzési mód használatával jelentősen javíthatja az indexelési teljesítményt `text` .
 
-Az elemzési módot kell használnia `text` :
+Az elemzés használatára vonatkozó javaslatok a `text` következők:
 
 + Fájl típusa. txt
 + A fájlok bármilyen típusúak, de maga a tartalom szöveg (például a program forráskódja, HTML, XML stb.). A megjelölés nyelvén található fájlok esetében minden szintaktikai karakter statikus szövegként jelenik meg.
 
-Emlékezzen rá, hogy az indexelő szerializálja a JSON-t. A teljes szövegfájl tartalma egy nagy mezőn belül lesz indexelve `"content": "<file-contents>"` . Az új sor-és visszatérési utasítások a következőképpen jelennek meg: `\r\n\` .
+Emlékezzen rá, hogy minden indexelő szerializál a JSON-ra. Alapértelmezés szerint a teljes szövegfájl tartalma egy nagy mezőn belül lesz indexelve `"content": "<file-contents>"` . Minden új sor és visszatérési utasítás be van ágyazva a Content (tartalom) mezőbe, és a következőképpen van megadva: `\r\n\` .
 
-Ha részletesebb eredményt szeretne, vegye figyelembe a következő megoldásokat:
+Ha részletesebb eredményt szeretne, és ha a fájl típusa kompatibilis, vegye figyelembe a következő megoldásokat:
 
 + [`delimitedText`](search-howto-index-csv-blobs.md) elemzési mód, ha a forrás CSV
 + [ `jsonArray` vagy `jsonLines` ](search-howto-index-json-blobs.md)ha a forrás JSON
 
-A tartalmak több részből való feltörésére szolgáló harmadik lehetőség az [AI](cognitive-search-concept-intro.md)-bővítés formájában speciális funkciókra van szükség. Olyan elemzést ad hozzá, amely azonosítja és hozzárendeli a fájl különböző keresési mezőkhöz tartozó részleteit. Teljes vagy részleges megoldást talál a [beépített szakismeretekkel](cognitive-search-predefined-skills.md), de a megoldás egy olyan tanulási modell lenne, amely az egyéni tanulási modellbe belefoglalja a tartalmat, és egy [Egyéni szakértelmet](cognitive-search-custom-skill-interface.md)tartalmaz.
+A tartalmak több részre való feltörésére szolgáló harmadik lehetőség az [AI](cognitive-search-concept-intro.md)-bővítés formájában speciális funkciókra van szükség. Olyan elemzést ad hozzá, amely azonosítja és hozzárendeli a fájl különböző keresési mezőkhöz tartozó részleteit. Teljes vagy részleges megoldást talál a [beépített szakismeretekkel](cognitive-search-predefined-skills.md), de a megoldás egy olyan tanulási modell lenne, amely az egyéni tanulási modellbe belefoglalja a tartalmat, és egy [Egyéni szakértelmet](cognitive-search-custom-skill-interface.md)tartalmaz.
 
 ## <a name="set-up-plain-text-indexing"></a>Egyszerű szöveges indexelés beállítása
 

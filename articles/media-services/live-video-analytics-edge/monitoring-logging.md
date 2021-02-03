@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt a IoT Edge élő videó-elemzések monitorozásáról és naplózásáról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878104"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507818"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -254,14 +254,14 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
       urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
 
     [[outputs.azure_monitor]]
-      namespace_prefix = ""
+      namespace_prefix = "lvaEdge"
       region = "westus"
       resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
     ```
     > [!IMPORTANT]
     > Ügyeljen arra, hogy a. toml fájlban lévő változókat cserélje le. A változókat kapcsos zárójelek () szerint jelöli `{}` .
 
-1. Ugyanebben a mappában hozzon létre egy, `.dockerfile` a következő parancsokat tartalmazó mappát:
+1. Ugyanebben a mappában hozzon létre egy Docker, amely a következő parancsokat tartalmazza:
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
@@ -305,12 +305,27 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
      `AZURE_CLIENT_SECRET`: A használni kívánt alkalmazás titkát adja meg.  
      
      >[!TIP]
-     > Az egyszerű szolgáltatás a **figyelési metrikák közzétevői** szerepkörének megadására szolgál.
+     > Az egyszerű szolgáltatás a **figyelési metrikák közzétevői** szerepkörének megadására szolgál. Az egyszerű szolgáltatásnév létrehozásához és a szerepkör hozzárendeléséhez kövesse az **[egyszerű szolgáltatásnév létrehozása](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** című témakör lépéseit.
 
 1. A modulok üzembe helyezése után a metrikák egyetlen névtér alatt jelennek meg Azure Monitorban. A metrikák nevei megegyeznek a Prometheus által kibocsátott jelekkel. 
 
    Ebben az esetben a Azure Portalban nyissa meg az IoT hubot, és válassza a **metrikák** lehetőséget a bal oldali ablaktáblán. Itt kell látnia a metrikákat.
 
+A Prometheus és a [log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial)használatával olyan metrikákat hozhatja ki és [figyelheti](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) , mint a használt CPUPercent, MemoryUsedPercent stb. A Kusto lekérdezési nyelv használatával az alábbi módon írhat lekérdezéseket, és beolvashatja a IoT Edge-modulok által használt CPU-százalékot.
+```kusto
+let cpu_metrics = promMetrics_CL
+| where Name_s == "edgeAgent_used_cpu_percent"
+| extend dimensions = parse_json(Tags_s)
+| extend module_name = tostring(dimensions.module_name)
+| where module_name in ("lvaEdge","yolov3","tinyyolov3")
+| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+cpu_metrics
+| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+| extend module_name = "Total"
+| union cpu_metrics
+```
+
+[![Diagram, amely a Kusto-lekérdezés használatával jeleníti meg a metrikákat.](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>Naplózás
 
 Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul két](module-twin-configuration-schema.md) tulajdonságának használatával konfigurálhatja:
@@ -359,6 +374,6 @@ A modul mostantól bináris formában fogja írni a hibakeresési naplókat az e
 
 Ha kérdése van, tekintse meg a [figyelés és mérőszámok – gyakori kérdések](faq.md#monitoring-and-metrics)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Folyamatos videófelvétel](continuous-video-recording-tutorial.md)

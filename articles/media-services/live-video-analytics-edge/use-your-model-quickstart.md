@@ -4,18 +4,16 @@ description: Ebben a rövid útmutatóban a számítógép jövőképét fogja a
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 8e3f0a5cb6a97ce55d848c2d3311ebab5151e186
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494987"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508511"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>Rövid útmutató: élő videó elemzése saját HTTP-modell használatával
 
 Ez a rövid útmutató bemutatja, hogyan használható a Live Video Analytics a IoT Edge egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez. Megtudhatja, hogyan alkalmazhatja a Computer látási modellt az objektumok észlelésére. Az élő video-hírcsatornában található keretek egy részhalmazát a rendszer egy következtetési szolgáltatásnak továbbítja. Az eredményeket a rendszer IoT Edge hubhoz továbbítja. 
-
-Ez a rövid útmutató egy Azure-beli virtuális gépet használ IoT Edge eszközként, és szimulált élő videó streamet használ. Ez a C# nyelven írt mintakód alapján készült, amely az [észlelési és a kibocsátási események](detect-motion-emit-events-quickstart.md) gyors üzembe helyezésére épül. 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [header](includes/analyze-live-video-your-http-model-quickstart/csharp/header.md)]
@@ -79,7 +77,7 @@ Ez a rövid útmutató egy Azure-beli virtuális gépet használ IoT Edge eszkö
 
 Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben ezt a rövid útmutatót futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki a [YoloV3 modell biztonságos verzióját](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) , és telepítse azt a IoT Edge eszközre. 
 

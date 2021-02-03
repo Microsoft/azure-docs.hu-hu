@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125206"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509553"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](./overview.md) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -27,7 +27,7 @@ A App Serviceban üzemeltetett alkalmazásokra bizonyos korlátozások vonatkozn
 
 Ha az alkalmazás *ingyenes* vagy *közös* csomagban található, az alkalmazás által használható erőforrások korlátai a kvóták alapján definiálhatók.
 
-Ha az alkalmazás *Alapszintű* , standard vagy *prémium* *szintű* csomagban található, akkor a felhasználható erőforrásokra vonatkozó korlátokat a app Service csomag *mérete* (kis, közepes, nagy) és a *Példányszám* (1, 2, 3 stb.) határozza meg.
+Ha az alkalmazás *Alapszintű*, standard vagy *prémium* *szintű* csomagban található, akkor a felhasználható erőforrásokra vonatkozó korlátokat a app Service csomag *mérete* (kis, közepes, nagy) és a *Példányszám* (1, 2, 3 stb.) határozza meg.
 
 Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 
@@ -39,13 +39,13 @@ Az ingyenes vagy a megosztott alkalmazások kvótái a következők:
 | **Sávszélesség** | Az alkalmazáshoz egy nap alatt engedélyezett kimenő sávszélesség teljes mennyisége. Ez a kvóta 24 óránként visszaállítja az UTC-t éjfélkor. |
 | **Fájlrendszer** | Az engedélyezett tárterület teljes mennyisége. |
 
-Az *Alapszintű* , standard és *prémium* *szintű* alkalmazások esetében az egyetlen kvóta a fájlrendszer.
+Az *Alapszintű*, standard és *prémium* *szintű* alkalmazások esetében az egyetlen kvóta a fájlrendszer.
 
 További információ a különböző App Service SKU-ban elérhető konkrét kvótákkal, korlátozásokkal és szolgáltatásokkal kapcsolatban: [Azure-előfizetési szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Kvóta kényszerítése
 
-Ha egy alkalmazás meghaladja a *CPU-t (röviden)* , a CPU-t *(nap)* vagy a *sávszélesség* -kvótát, az alkalmazás a kvóta alaphelyzetbe állítása után leáll. Ebben az időszakban az összes bejövő kérelem HTTP 403-es hibát eredményez.
+Ha egy alkalmazás meghaladja a *CPU-t (röviden)*, a CPU-t *(nap)* vagy a *sávszélesség* -kvótát, az alkalmazás a kvóta alaphelyzetbe állítása után leáll. Ebben az időszakban az összes bejövő kérelem HTTP 403-es hibát eredményez.
 
 ![403-hibaüzenet][http403]
 
@@ -72,7 +72,7 @@ A metrikák az alkalmazással vagy a App Service terv működésével kapcsolato
 
 Egy alkalmazás esetében az elérhető metrikák a következők:
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | --- | --- |
 | **Válaszidő** | Az alkalmazás által a kérelmek kiszolgálásához szükséges idő (másodpercben). |
 | **Átlagos válaszidő (elavult)** | Az alkalmazásnak a kérelmek kiszolgálásához szükséges átlagos ideje másodpercben. |
@@ -82,7 +82,7 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 | **Aktuális szerelvények** | Az alkalmazás összes alkalmazástartományok betöltött szerelvények aktuális száma. |
 | **A-ben tárolt adatértékek** | Az alkalmazás által felhasznált bejövő sávszélesség mennyisége a MiB-ben. |
 | **Kimenő adatvesztés** | Az alkalmazás által felhasznált kimenő sávszélesség mennyisége a MiB-ben. |
-| **Fájlrendszer használata** | Az alkalmazás által felhasznált fájlrendszerbeli kvóta százalékaránya. |
+| **Fájlrendszer használata** | A tárolási megosztás által felhasznált bájtok mennyisége. |
 | **0. generációs Garbage-gyűjtemények** | Az alkalmazási folyamat kezdete óta a 0. generációs objektumok számát gyűjti a rendszer. A magasabb generációs GCs közé tartozik az összes alacsonyabb generációs GCs.|
 | **1. generációs Garbage gyűjtemények** | Azon alkalmak száma, amikor az 1. generációs objektumok az alkalmazási folyamat kezdete óta beszedett szemetet gyűjtenek. A magasabb generációs GCs közé tartozik az összes alacsonyabb generációs GCs.|
 | **2. generációs Garbage gyűjtemények** | A 2. generációs objektumok száma az alkalmazási folyamat kezdete óta beszedett szemetet.|
@@ -114,10 +114,10 @@ Egy alkalmazás esetében az elérhető metrikák a következők:
 App Service csomag esetében az elérhető metrikák a következők:
 
 > [!NOTE]
-> A App Service terv metrikái csak *Alapszintű* , *standard* és *prémium* szintű csomagokban érhetők el.
+> A App Service terv metrikái csak *Alapszintű*, *standard* és *prémium* szintű csomagokban érhetők el.
 > 
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | --- | --- |
 | **CPU-százalék** | A csomag összes példányán használt átlagos CPU. |
 | **Memória százaléka** | A csomag összes példányán használt átlagos memória. |
@@ -131,9 +131,9 @@ App Service csomag esetében az elérhető metrikák a következők:
 
 A CPU-használatot két mérőszám mutatja:
 
-**CPU-idő** : az ingyenes vagy közös tervekben üzemeltetett alkalmazások esetében hasznos, mert az egyik kvóta az alkalmazás által használt CPU-percben van meghatározva.
+**CPU-idő**: az ingyenes vagy közös tervekben üzemeltetett alkalmazások esetében hasznos, mert az egyik kvóta az alkalmazás által használt CPU-percben van meghatározva.
 
-**CPU-százalék** : az alapszintű, a standard és a prémium csomagokban üzemeltetett alkalmazásokhoz hasznos, mivel azok felskálázásra képesek. A CPU-százalék jól jelzi az összes példány teljes használatát.
+**CPU-százalék**: az alapszintű, a standard és a prémium csomagokban üzemeltetett alkalmazásokhoz hasznos, mivel azok felskálázásra képesek. A CPU-százalék jól jelzi az összes példány teljes használatát.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mérőszámok részletességi és adatmegőrzési szabályzata
 Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti, és [ezeket a szabályoknak megfelelően megőrzi](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).

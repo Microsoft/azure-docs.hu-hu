@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220836"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509570"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Főverzió frissítése Azure Database for MySQL egyetlen kiszolgálón
 
@@ -121,15 +121,7 @@ A szolgáltatáshoz tartozó GA a MySQL v 5.6-os nyugdíjazás előtt lett terve
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>A kiszolgáló leállását okozhatja, és ha igen, mennyi ideig tart?
 
-Igen, a kiszolgáló a frissítési folyamat során nem lesz elérhető, ezért javasoljuk, hogy ezt a műveletet a tervezett karbantartási időszakban hajtsa végre. A becsült állásidő az adatbázis méretétől, a kiépített tárolási mérettől, valamint az adatbázis tábláinak számától függ. A frissítési idő közvetlenül arányos a kiszolgálón lévő táblák számával. Az alapszintű SKU-kiszolgálók frissítése várhatóan hosszabb időt vesz igénybe, mivel a standard szintű tárolási platformon van. A kiszolgáló-környezet leállásának becsléséhez azt javasoljuk, hogy először hajtsa végre a frissítést a kiszolgáló visszaállított példányán.  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>Meg kell jegyezni, hogy a replika-kiszolgálón még nem támogatott. Mit jelent a konkrét?
-
-A replika-kiszolgálók jelenleg nem támogatják a főverziók frissítését, ami azt jelenti, hogy a replikálásban részt vevő kiszolgálókhoz nem kell futtatnia (forrás-vagy replika-kiszolgáló). Ha tesztelni szeretné a replikálásban részt vevő kiszolgálók frissítését, mielőtt hozzáadja a replika támogatását a frissítési funkcióhoz, a következő lépéseket javasoljuk:
-
-1. A tervezett karbantartás során [állítsa le a replikálást, és törölje a replika kiszolgálót](howto-read-replicas-portal.md) a név és az összes konfigurációs információ (a tűzfalbeállítások, a kiszolgálói paraméterek konfigurálása, ha az eltér a forráskiszolgálón) rögzítése után.
-2. A forráskiszolgáló frissítésének elvégzése.
-3. Hozzon létre egy új olvasási replika-kiszolgálót az 1. lépésben rögzített névvel és konfigurációs beállításokkal. Az új replika-kiszolgáló automatikusan a v 5.7-es verzióra kerül, miután a forráskiszolgáló frissítve lett a v 5.7-es verziójára.
+Igen, a kiszolgáló a frissítési folyamat során nem lesz elérhető, ezért javasoljuk, hogy ezt a műveletet a tervezett karbantartási időszakban hajtsa végre. A becsült állásidő az adatbázis méretétől, a kiépített tárolási mérettől, valamint az adatbázis tábláinak számától függ. A frissítési idő közvetlenül arányos a kiszolgálón lévő táblák számával. Az alapszintű SKU-kiszolgálók frissítése várhatóan hosszabb időt vesz igénybe, mivel a standard szintű tárolási platformon van. A kiszolgáló-környezet leállásának becsléséhez azt javasoljuk, hogy először hajtsa végre a frissítést a kiszolgáló visszaállított példányán. Az [olvasási replika használatával érdemes lehet a mysql 5,6-ről a mysql 5,7-re való minimálisan szükségesnél nagyobb állásidőt frissíteni.](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>Mi történik, ha nem választjuk a MySQL v 5.6-kiszolgáló frissítését a 2021. február 5. előtt?
 

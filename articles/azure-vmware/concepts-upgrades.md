@@ -3,12 +3,12 @@ title: Fogalmak – a privát felhő frissítései és frissítései
 description: Ismerje meg az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit.
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 8338666d70bd0ca4ea3c6b32bd8f8d205feaf7c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809649"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509197"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware-megoldás saját Felhőbeli frissítései és frissítései
 
@@ -55,9 +55,12 @@ Meghibásodás esetén az Azure VMware-megoldás visszaállíthatja ezeket a kon
 
 A VMware-szoftverekkel kapcsolatos további információkért lásd a [privát felhők és fürtök fogalmát ismertető cikket](concepts-private-clouds-clusters.md) és a [gyakori kérdéseket](faq.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A következő lépés [egy privát felhő létrehozása](tutorial-create-private-cloud.md).
+Most, hogy lefedette az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit, érdemes megismernie az alábbiakat:
+
+- [Privát felhő létrehozása](tutorial-create-private-cloud.md)
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

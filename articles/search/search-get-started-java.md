@@ -1,29 +1,29 @@
 ---
-title: 'Gyors útmutató: keresési index létrehozása Java-ban REST API-k használatával'
+title: 'Gyors útmutató: keresési index létrehozása a javas szolgáltatásban'
 titleSuffix: Azure Cognitive Search
-description: Ebből a Java-útmutatóból megtudhatja, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket az Azure Cognitive Search REST API-k használatával.
+description: Ebből a Java-útmutatóból megtudhatja, hogyan hozhat létre indexet, tölthet be és futtathat lekérdezéseket a Javához készült Azure Cognitive Search ügyféloldali kódtár használatával.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 8c688b1ba80050c49b9e2a36696ed7a2fb863e3f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9e05e41ca0c293e31a29dc25a7b4ec7b87734246
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089393"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509418"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában a REST API-k használatával
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>Rövid útmutató: Azure Cognitive Search index létrehozása javában
 > [!div class="op_single_selector"]
+> * [Java](search-get-started-java.md)
 > * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
-> * [Java](search-get-started-java.md)
 > * [Portál](search-get-started-portal.md)
-> * [PowerShell](./search-get-started-powershell.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
@@ -49,11 +49,9 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-   Hozzon létre egy lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
-
-:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 A szolgáltatásnak eljuttatott minden kérelemhez API-kulcs szükséges. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -88,21 +86,72 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
-    
         <groupId>AzureSearchQuickstart</groupId>
         <artifactId>AzureSearchQuickstart</artifactId>
+        <packaging>jar</packaging>
         <version>1.0-SNAPSHOT</version>
+        <properties>
+            <jackson.version>2.12.1</jackson.version>
+            <auto-value.version>1.6.2</auto-value.version>
+            <junit.version>5.4.2</junit.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <name>azuresearch-console</name>
+        <url>http://maven.apache.org</url>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value-annotations</artifactId>
+                <version>${auto-value.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value</artifactId>
+                <version>${auto-value.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-search-documents</artifactId>
+                <version>11.1.3</version>
+            </dependency>
+        </dependencies>
+    
         <build>
-            <sourceDirectory>src</sourceDirectory>
             <plugins>
+                <!--put generated source files to generated-sources-->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.0</version>
                     <configuration>
                         <source>11</source>
                         <target>11</target>
                     </configuration>
                 </plugin>
+                <!-- For JUnit -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <!-- Add exec plugin to run demo program -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -115,27 +164,21 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>main.java.app.App</mainClass>
+                        <mainClass>com.microsoft.azure.search.samples.demo.App</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
             </plugins>
         </build>
-        <dependencies>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.json</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-        </dependencies>   
     </project>
     ```
 
+<!-- STOPPED HERE -- SENT EMAIL TO TONG XU ASKING FOR INFO -->
 ### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
 
 1. Válassza a **fájl**  >  **projekt szerkezete** lehetőséget.
 1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a mappa tartalmának eléréséhez `src`  >   `main` .
-1. A `src`  >   `main`  >  `java` mappában adja hozzá a `app` és a `service` mappákat. Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
+1. A `src`  >   `main`  >  `java` mappában adja hozzá a következő mappákat `com` : `microsoft` `azure` `search` `samples` ,,,,, `demo` . Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
 1. A `src`  >   `main`  > `resources` mappában adja hozzá a `app` és a `service` mappákat.
 
     Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
@@ -511,7 +554,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     }
     ```
 
-    Az index neve "Hotels-Gyorsindítás" lesz. Az index mezők attribútumai határozzák meg, hogy az indexelt adat hogyan kereshető meg egy alkalmazásban. Az `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. Az attribútumokkal kapcsolatos további tudnivalókért tekintse meg a [mezők gyűjteménye és a mező attribútumai](search-what-is-an-index.md#fields-collection)című témakört.
+    Az index neve "Hotels-Gyorsindítás" lesz. Az index mezők attribútumai határozzák meg, hogy az indexelt adat hogyan kereshető meg egy alkalmazásban. Az `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. Az attribútumokkal kapcsolatos további tudnivalókért tekintse meg az [index létrehozása (REST)](/rest/api/searchservice/create-index)című témakört.
     
     Az `Description` indexben lévő mező a választható `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzert használja, `fr.lucene` mert francia nyelvű szöveget tárol. A a `Description` választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: az [Azure Cognitive Searchban végzett szövegszerkesztés elemzői](search-analyzers.md).
 

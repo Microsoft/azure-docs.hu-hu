@@ -3,12 +3,12 @@ title: Fogalmak – vSphere szerepköralapú hozzáférés-vezérlés (vSphere R
 description: Ismerje meg az Azure VMware-megoldás vSphere szerepköralapú hozzáférés-vezérlésének főbb képességeit
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6f5c30b070b010f312d038d8286be994039c56f8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888402"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509248"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere szerepköralapú hozzáférés-vezérlés (vSphere RBAC) Azure-beli VMware-megoldáshoz
 
@@ -23,14 +23,11 @@ Egy Azure VMware-megoldás üzembe helyezése esetén a rendszergazdának nincs 
 
 A saját felhőalapú felhasználó nem férhet hozzá a Microsoft által támogatott és kezelt felügyeleti összetevőkhöz. Például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók.
 
-
-
-
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Azure VMware-megoldás CloudAdmin-szerepkör a vCenter
 
 Megtekintheti az Azure VMware-megoldás CloudAdmin szerepkörhöz biztosított jogosultságokat az Azure VMware-megoldás saját Felhőbeli vCenter.
 
-1. Jelentkezzen be a SDDC vSphere-ügyfelébe, és lépjen a **menü adminisztráció elemre**  >  **Administration**.
+1. Jelentkezzen be a SDDC vSphere-ügyfelébe, és lépjen a **menü adminisztráció elemre**  >  .
 1. A **Access Control** területen válassza a **szerepkörök** lehetőséget.
 1. A szerepkörök listájából válassza a **CloudAdmin** lehetőséget, majd válassza a **jogosultságok** lehetőséget. 
 
@@ -63,7 +60,11 @@ Az Azure VMware-megoldás CloudAdmin szerepköre a következő jogosultságokkal
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az egyes jogosultságok részletes ismertetését a [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) találja.
+Most, hogy már lefedette az Azure VMware-megoldás vSphere szerepköralapú hozzáférés-vezérlésének alapjait, érdemes megismernie az alábbiakat:
+
+- A [VMware termékdokumentációban](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)található egyes jogosultságok részletei.
+- [Hogyan figyeli és javítja az Azure VMware-megoldás a privát felhőket](concepts-monitor-repair-private-cloud.md).
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
 
 <!-- LINKS - internal -->
 

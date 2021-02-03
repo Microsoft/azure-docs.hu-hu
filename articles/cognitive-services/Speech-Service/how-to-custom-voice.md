@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 02/02/2021
 ms.author: trbye
-ms.openlocfilehash: e48dfd224a9656c7d8327dd77f1b55e9a744f3af
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 756c40be52f2739d3a7682752b038bfe3958d47d
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573088"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507710"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
@@ -39,10 +39,7 @@ Az alábbi ábra az egyéni hangmodellek [Egyéni hangportál](https://aka.ms/cu
 
 ## <a name="custom-neural-voices"></a>Egyéni neurális hangok
 
-Az egyéni hang jelenleg a standard és a neurális szintet is támogatja. Az egyéni neurális hang lehetővé teszi, hogy a felhasználók magasabb színvonalú hangmodelleket hozzanak létre, miközben kevesebb adatra van szükségük, és olyan mértékeket biztosít, amelyek segítséget nyújtanak az AI felelősségteljes Javasoljuk, hogy az egyéni neurális hang használatával reálisabb hangokat fejlesszen a természetesebb társalgási felületek számára, és lehetővé tegye, hogy az ügyfelek és a végfelhasználók a legújabb szöveg-beszéd technológia előnyeit a felelős módon használják. [További információ az egyéni neurális hangokról](https://aka.ms/CNV-Transparency-Note). 
-
-> [!NOTE]
-> A Microsoft elkötelezettsége a felelős AI megtervezésének részeként korlátozott az egyéni neurális hang használata. Csak az alkalmazások felülvizsgálatát követően férhet hozzá a technológiához, és Ön kötelezte magát arra, hogy a felelős AI-alapelvekkel való összhangban használja azt. Tekintse meg [a szabályzatot a hozzáférés korlátozása](https://aka.ms/gating-overview) és [itt érvényes](https://aka.ms/customneural). Az egyéni hang standard és neurális verziója által támogatott [nyelvek](language-support.md#customization) és [régiók](regions.md#custom-voices) eltérőek. A Kezdés előtt tekintse meg a részleteket.  
+A neurális hang testreszabási funkciója jelenleg nyilvános előzetes verzióban érhető el, és csak a kiválasztott ügyfelekre korlátozódik. Az első lépésekhez töltse ki az [alkalmazás űrlapját](https://go.microsoft.com/fwlink/?linkid=2108737) .
 
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
@@ -56,7 +53,7 @@ Miután létrehozott egy Azure-fiókot és egy Speech Service-előfizetést, be 
 4. Ha egy másik beszédfelismerési előfizetésre szeretne váltani, használja a felső navigációs ablakában található fogaskerék ikont.
 
 > [!NOTE]
-> A szolgáltatás használata előtt létre kell hoznia egy F0 vagy egy S0 Speech Service-kulcsot az Azure-ban. Az egyéni neurális hang csak a S0 szintet támogatja. 
+> A szolgáltatás használata előtt létre kell hoznia egy F0 vagy egy S0-kulcsot az Azure-ban.
 
 ## <a name="how-to-create-a-project"></a>Projekt létrehozása
 
@@ -67,7 +64,7 @@ Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni han
 > [!IMPORTANT]
 > Az [Egyéni hangportált](https://aka.ms/custom-voice) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni hangalapú adatfeldolgozás előkészítése](how-to-custom-voice-prepare-data.md)
 - [Egyéni hang létrehozása](how-to-custom-voice-create-voice.md)

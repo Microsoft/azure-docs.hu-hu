@@ -179,7 +179,7 @@
         - name: Az AKS üzembe helyezése Terraform használatával
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Kubernetes-erőforrás nézete az Azure Portalon
+        - name: Azure Portal Kubernetes erőforrás nézet
           href: kubernetes-portal.md
         - name: A Kubernetes-irányítópult használata
           href: kubernetes-dashboard.md

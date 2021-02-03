@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080832"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507418"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,7 +20,7 @@ A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat
 
 Egy tároló például elemeket tárol. Minden egyes tétel egyedi értékkel rendelkezik a `UserID` tulajdonsághoz. Ha a `UserID` tárolóban lévő elemek partíciós kulcsaként szolgál, és 1 000 egyedi érték van `UserID` , akkor a rendszer 1 000 logikai partíciókat hoz létre a tárolóhoz.
 
-Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az *elem azonosítójának* kombinálásával létrejön az elem *indexe* , amely egyedileg azonosítja az adott tételt. [A partíciós kulcs kiválasztása](#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
+Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az *elem azonosítójának* kombinálásával létrejön az elem *indexe*, amely egyedileg azonosítja az adott tételt. [A partíciós kulcs kiválasztása](#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
 
 Ez a cikk a logikai és fizikai partíciók közötti kapcsolatot ismerteti. Emellett a particionálással kapcsolatos ajánlott eljárásokat is ismerteti, és részletesen ismerteti, hogyan működik a horizontális skálázás a Azure Cosmos DBban. Ezen belső adatok megértéséhez nem szükséges, hogy kiválassza a partíciós kulcsot, de a kezeltük, hogy egyértelmű legyen a Azure Cosmos DB működése.
 
@@ -36,10 +36,13 @@ A tárolóban található logikai partíciók száma nincs korlátozva. Minden l
 
 A tárolók méretezése az adatok és az átviteli sebesség elosztásával történik a fizikai partíciók között. Belsőleg egy vagy több logikai partíció egyetlen fizikai partícióra van leképezve. Általában a kisebb tárolók számos logikai partícióval rendelkeznek, de csak egyetlen fizikai partíciót igényelnek. A logikai partíciókkal ellentétben a fizikai partíciók a rendszer belső implementációja, és teljes mértékben a Azure Cosmos DB kezeli őket.
 
-A tárolóban lévő fizikai partíciók száma a következő konfigurációtól függ:
+A tárolóban lévő fizikai partíciók száma a következőktől függ:
 
 * A kiépített átviteli sebesség száma (az egyes fizikai partíciók másodpercenként legfeljebb 10 000 adatátviteli sebességet biztosíthatnak).
 * A teljes adattárolás (minden egyes fizikai partíció akár 50 GB-adatmennyiséget is tárolhat).
+
+> [!NOTE]
+> A fizikai partíciók a rendszer belső megvalósítása, és teljes mértékben a Azure Cosmos DB felügyelik. A megoldások fejlesztésekor ne koncentráljon a fizikai partícióra, mert nem szabályozhatja őket ahelyett, hogy a partíciós kulcsokra összpontosítsanak. Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
 
 A tárolóban lévő fizikai partíciók teljes száma nincs korlátozva. A kiosztott átviteli sebesség vagy az adatméret növekedésével a Azure Cosmos DB automatikusan új fizikai partíciókat hoz létre a meglévők felosztásával. A fizikai partíciók osztása nem befolyásolja az alkalmazás rendelkezésre állását. A fizikai partíció felosztása után az egyetlen logikai partíción belüli összes adattal továbbra is ugyanazon a fizikai partíción lesz tárolva. A fizikai partíciók megosztása egyszerűen létrehozza a logikai partíciók új hozzárendelését a fizikai partíciókhoz.
 
@@ -49,12 +52,9 @@ A tároló fizikai partícióit a Azure Portal **metrika** panelének **Storage 
 
 :::image type="content" source="./media/partitioning-overview/view-partitions-zoomed-out.png" alt-text="Fizikai partíciók számának megtekintése" lightbox="./media/partitioning-overview/view-partitions-zoomed-in.png" ::: 
 
-A fenti képernyőképen egy tároló `/foodGroup` a partíciós kulcs. A gráf mindhárom bárja egy fizikai partíciót jelöl. A rendszerképben a **partíciós kulcs tartománya** ugyanaz, mint a fizikai partíció. A kiválasztott fizikai partíció három logikai partíciót tartalmaz: `Beef Products` , `Vegetable and Vegetable Products` és `Soups, Sauces, and Gravies` .
+A fenti képernyőképen egy tároló `/foodGroup` a partíciós kulcs. A gráf mindhárom bárja egy fizikai partíciót jelöl. A rendszerképben a **partíciós kulcs tartománya** ugyanaz, mint a fizikai partíció. A kiválasztott fizikai partíció a legfelső 3 legjelentősebb logikai partíciót tartalmazza: `Beef Products` , `Vegetable and Vegetable Products` és `Soups, Sauces, and Gravies` .
 
 Ha a másodpercenkénti 18 000-kérelmeket (RU/s) használja, akkor a három fizikai partíció esetében a teljes kiépített átviteli sebesség 1/3. A kiválasztott fizikai partíción belül a logikai partíció kulcsai `Beef Products` , `Vegetable and Vegetable Products` és `Soups, Sauces, and Gravies` együttesen a fizikai partíció 6 000 kiépített ru/s-t használhatják. Mivel a kiépített átviteli sebesség egyenletesen oszlik meg a tároló fizikai partíciói között, fontos, hogy olyan partíciós kulcsot válasszon, amely egyenletesen osztja el az átviteli sebességet [a megfelelő logikai partíciós kulcs kiválasztásával](#choose-partitionkey). 
-
-> [!NOTE]
-> Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
 
 ## <a name="managing-logical-partitions"></a>Logikai partíciók kezelése
 
@@ -74,11 +74,11 @@ Mindegyik fizikai partíció replikák halmazát, más néven [*replikakészlet*
 
 Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók a globálisan elosztott fizikai partíciókhoz:
 
-:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Fizikai partíciók számának megtekintése" border="false":::
+:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Azure Cosmos DB particionálást bemutató rendszerkép" border="false":::
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Partíciókulcs kiválasztása
 
-A partíciós kulcsnak két összetevője van: a **partíciós kulcs elérési útja** és a **partíciós kulcs értéke** . Vegyünk például egy {"userId": "Andrew", "worksFor": "Microsoft"} elemet, ha a "felhasználóazonosító" a partíciós kulcsként van kiválasztva, a következő két partíciós kulcs összetevő:
+A partíciós kulcsnak két összetevője van: a **partíciós kulcs elérési útja** és a **partíciós kulcs értéke**. Vegyünk például egy {"userId": "Andrew", "worksFor": "Microsoft"} elemet, ha a "felhasználóazonosító" a partíciós kulcsként van kiválasztva, a következő két partíciós kulcs összetevő:
 
 * A partíciós kulcs elérési útja (például: "/userId"). A partíciós kulcs elérési útja alfanumerikus és aláhúzás (_) karaktereket fogad el. A beágyazott objektumokat a szabványos elérési út (/) használatával is használhatja.
 
@@ -114,7 +114,7 @@ Ha a tároló több fizikai partícióra is nőhet, akkor győződjön meg arró
 
 ## <a name="using-item-id-as-the-partition-key"></a>Az Item ID használata partíciós kulcsként
 
-Ha a tároló olyan tulajdonsággal rendelkezik, amely a lehetséges értékek széles választékával rendelkezik, valószínűleg nagyszerű partíciós kulcsra van kiválasztva. Ilyen tulajdonság egy lehetséges példa az *Item azonosító* . A kis olvasási nehéz tárolók vagy a nagy méretű írható tárolók esetében az *elem azonosítója* természetesen remek választás a partíciós kulcshoz.
+Ha a tároló olyan tulajdonsággal rendelkezik, amely a lehetséges értékek széles választékával rendelkezik, valószínűleg nagyszerű partíciós kulcsra van kiválasztva. Ilyen tulajdonság egy lehetséges példa az *Item azonosító*. A kis olvasási nehéz tárolók vagy a nagy méretű írható tárolók esetében az *elem azonosítója* természetesen remek választás a partíciós kulcshoz.
 
 A rendszertulajdonság- *azonosító* a tároló minden eleme esetében létezik. Lehet, hogy más tulajdonságokkal rendelkezik, amelyek az adott eleme logikai AZONOSÍTÓját jelölik. Sok esetben a partíciós kulcsra vonatkozó döntések is megegyeznek az *elem azonosítójának* indokairól.
 
@@ -122,7 +122,7 @@ Az *azonosító* egy nagyszerű partíciós kulcs, amely a következő okok miat
 
 * A lehetséges értékek széles választéka (egy egyedi *azonosító* /tétel).
 * Mivel egy elemhez egyedi *elem-azonosító* van, az *elem azonosítója* nagyszerű feladatot jelent az ru-használat és az adattárolás egyenletes elosztásával.
-* Egyszerűen elvégezheti a hatékony pontok olvasását, mivel a rendszer mindig ismeri az elemek partíciós kulcsát, ha ismeri annak *azonosítóját* .
+* Egyszerűen elvégezheti a hatékony pontok olvasását, mivel a rendszer mindig ismeri az elemek partíciós kulcsát, ha ismeri annak *azonosítóját*.
 
 Az *elemek azonosítójának* kiválasztásakor figyelembe kell venni az alábbiakat:
 

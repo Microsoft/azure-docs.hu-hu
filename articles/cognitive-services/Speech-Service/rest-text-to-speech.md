@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 02/03/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 225fc83133aba0a7d669f36dc9c8e7cd20c8e42e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790477"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507519"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
@@ -45,7 +45,7 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-| Régió | Végpont |
+| Region | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -211,7 +211,8 @@ Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fe
 
 | Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
+| `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
 | `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml` . | Kötelező |
 | `X-Microsoft-OutputFormat` | Megadja az audió kimeneti formátumot. Az elfogadott értékek teljes listájáért lásd: [hang kimenetek](#audio-outputs). | Kötelező |
 | `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél rövidebbnek kell lennie. | Kötelező |
@@ -274,7 +275,7 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 Ha a HTTP-állapot értéke `200 OK` , a válasz törzse egy hangfájlt tartalmaz a kért formátumban. Ezt a fájlt áthelyezték, pufferbe mentve vagy fájlba mentve lehet lejátszani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Aszinkron szintézis a hosszú formátumú hangokhoz](./long-audio-api.md)

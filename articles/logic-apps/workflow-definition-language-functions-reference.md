@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
 ms.date: 01/13/2021
-ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4ed5a26e1f871f7ac5fd8f29f0a66bc39a8013a1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234222"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507248"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -166,7 +166,7 @@ Az érték típusának vagy formátumának módosításához használhatja ezeke
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Lebegőpontos szám visszaadása egy bemeneti értékhez. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Egy sztring egész változatának visszaadása. |
 | [JSON](../logic-apps/workflow-definition-language-functions-reference.md#json) | A JavaScript Object Notation (JSON) típusú értéket vagy objektumot adja vissza egy karakterlánc vagy XML számára. |
-| [karakterlánc](../logic-apps/workflow-definition-language-functions-reference.md#string) | Egy bemeneti érték karakterlánc-verziójának visszaadása. |
+| [sztring](../logic-apps/workflow-definition-language-functions-reference.md#string) | Egy bemeneti érték karakterlánc-verziójának visszaadása. |
 | [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Az URI-kódolású verziót adja vissza egy bemeneti értékhez az URL-nem biztonságos karakterek a Escape-karakterekkel való lecserélésével. |
 | [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Egy URI-kódolású karakterlánc bináris verziójának visszaadása. |
 | [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | URI-kódolású karakterlánc karakterlánc-verziójának visszaadása. |
@@ -569,10 +569,10 @@ addDays('<timestamp>', <days>, '<format>'?)
 Ez a példa 10 napot ad hozzá a megadott időbélyeghez:
 
 ```
-addDays('2018-03-15T13:00:00Z', 10)
+addDays('2018-03-15T00:00:00Z', 10)
 ```
 
-És visszaadja ezt az eredményt: `"2018-03-25T00:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-25T00:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -582,7 +582,7 @@ Ez a példa öt napot kivon a megadott időbélyegből:
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-És visszaadja ezt az eredményt: `"2018-03-10T00:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-10T00:00:00.0000000Z"`
 
 <a name="addHours"></a>
 
@@ -614,7 +614,7 @@ Ez a példa 10 órát ad hozzá a megadott időbélyeghez:
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-És visszaadja ezt az eredményt: `"2018-03-15T10:00:0000000Z"`
+És visszaadja ezt az eredményt: "2018-03-15T10:00:00.0000000 Z"
 
 *2\. példa*
 
@@ -624,7 +624,7 @@ Ez a példa öt órát kivon a megadott időbélyegből:
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-És visszaadja ezt az eredményt: `"2018-03-15T10:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-03-15T10:00:00.0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -2263,7 +2263,7 @@ guid('<format>')
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*formátumban*> | Nem | Sztring | Egyetlen [Formátum](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_) megadása a VISSZAADOTT GUID azonosítóhoz. Alapértelmezés szerint a formátum a "D", de az "N", "D", "B", "P" vagy "X" is használható. |
+| <*formátumban*> | Nem | Sztring | Egyetlen [Formátum](/dotnet/api/system.guid.tostring#system_guid_tostring_system_string_) megadása a VISSZAADOTT GUID azonosítóhoz. Alapértelmezés szerint a formátum a "D", de az "N", "D", "B", "P" vagy "X" is használható. |
 |||||
 
 | Visszatérési érték | Típus | Leírás |
@@ -4011,7 +4011,7 @@ Ez a példa egy napot kivonja ebből az időbélyegből:
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-És visszaadja ezt az eredményt: `"2018-01-01T00:00:00:0000000Z"`
+És visszaadja ezt az eredményt: `"2018-01-01T00:00:00.0000000Z"`
 
 *2\. példa*
 
@@ -4063,7 +4063,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 ### <a name="ticks"></a>ticks
 
-A 100 ns intervallumok számát adja vissza, a 0001 12:00:00 éjfélkor (vagy a C#-ban) a megadott időbélyegig. További információkért tekintse meg a következő témakört: [DateTime. Ticks tulajdonság (rendszer)](/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks).
+A 100 ns intervallumok számát adja vissza, a 0001 12:00:00 éjfélkor (vagy a C#-ban) a megadott időbélyegig. További információkért tekintse meg a következő témakört: [DateTime. Ticks tulajdonság (rendszer)](/dotnet/api/system.datetime.ticks).
 
 ```
 ticks('<timestamp>')
@@ -4298,7 +4298,7 @@ trim('<text>')
 
 *Példa*
 
-Ez a példa eltávolítja a kezdő és záró szóközt a (z) "„Helló világ!” alkalmazás" karakterláncból:
+Ez a példa eltávolítja a kezdő és záró szóközt a (z) "Hello World" karakterláncból:
 
 ```
 trim(' Hello World  ')
@@ -4983,6 +4983,6 @@ A példában szereplő 8. példában a példa az XPath kifejezést használja `'
 
 Az eredmény: `Paris`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

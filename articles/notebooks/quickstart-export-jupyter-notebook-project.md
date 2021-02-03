@@ -1,38 +1,22 @@
 ---
-title: Jupyter Notebook projekt exportálása a Azure Notebooks előzetes verziójából
-description: Jupyter Notebook projekt gyors exportálása.
+title: Jupyter Notebook használata Microsoft-ajánlatokkal
+description: Ismerje meg, hogyan használhatók a Jupyter-jegyzetfüzetek a Microsoft-ajánlatokkal.
 ms.topic: quickstart
-ms.date: 06/29/2020
-ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/01/2021
+ms.openlocfilehash: 5679c28d9cc8a4f1893ffad72002b66ad59861e6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606113"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507377"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Gyors útmutató: Jupyter Notebook projekt exportálása Azure Notebooks előzetes verzióban
+# <a name="use-a-jupyter-notebook-with-microsoft-offerings"></a>Jupyter Notebook használata Microsoft-ajánlatokkal
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Ebben a rövid útmutatóban egy Azure Notebooks projektet fog letölteni más Jupyter Notebook-megoldásokban való használatra. 
+Ebből a rövid útmutatóból megtudhatja, hogyan importálhat egy Jupyter Notebookt a válogatott Microsoft-ajánlatokban való használatra. 
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Egy meglévő Azure Notebooks-projekt.
-
-## <a name="export-an-azure-notebooks-project"></a>Azure Notebooks projekt exportálása
-
-1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. Részletekért lásd: rövid útmutató [– bejelentkezés Azure Notebooksra](quickstart-sign-in-azure-notebooks.md).
-
-1. A nyilvános profil oldalon válassza a **saját projektek** lehetőséget az oldal tetején:
-
-    ![Saját projektek hivatkozás a böngészőablak tetején](media/quickstarts/my-projects-link.png)
-
-1. Válasszon ki egy projektet.
-1. Kattintson a letöltés gombra az összes projektfájlt tartalmazó Zip-fájl letöltésének elindításához.
-1. Azt is megteheti, hogy egy adott projekt lapon a "projekt letöltése" gombra kattintva letölti az adott projekt összes fájlját.
-
-A projektfájlok letöltése után más Jupyter Notebook-megoldásokkal is használhatja azokat. Az alábbi szakaszokban ismertetett néhány lehetőség az alábbiakat tartalmazza: 
+Ha meglévő Jupyter-jegyzetfüzetekkel rendelkezik, vagy új projektet szeretne elindítani, számos Microsoft-ajánlattal is felhasználhatja őket. Az alábbi szakaszokban ismertetett néhány lehetőség az alábbiakat tartalmazza: 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
 - [GitHub-Codespaces](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
@@ -41,7 +25,7 @@ A projektfájlok letöltése után más Jupyter Notebook-megoldásokkal is haszn
 
 ## <a name="create-an-environment-for-notebooks"></a>Környezet létrehozása jegyzetfüzetekhez
 
-Ha olyan környezetet szeretne létrehozni, amely megfelel a Azure Notebooks előzetes verziójának, használhatja a GitHubban megadott parancsfájlt.
+Ha olyan környezetet szeretne létrehozni, amely megfelel a kivont Azure Notebooks előzetes verziójának, használhatja a GitHubban megadott parancsfájlt.
 
 1. Navigáljon a Azure Notebooks [GitHub-adattárhoz](https://github.com/microsoft/AzureNotebooks) , vagy [közvetlenül hozzáférhessen a környezeti mappához](https://aka.ms/aznbrequirementstxt).
 1. A parancssorban navigáljon a projektekhez használni kívánt címtárhoz.
@@ -54,14 +38,14 @@ A [vs Code](https://code.visualstudio.com/) egy ingyenes Kódszerkesztő, amelye
 
 ![VS Code Jupyter Notebook támogatás](media/vs-code-jupyter-notebook.png)
 
-A projektfájlok [letöltése](#export-an-azure-notebooks-project) után a vs Code használatával használhatja őket. A VS Code és a Jupyter notebookok használatával kapcsolatos útmutatásért lásd: [Jupyter notebookok használata a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/jupyter-support) és [adatelemzésben a Visual Studio Code-](https://code.visualstudio.com/docs/python/data-science-tutorial) oktatóanyagokban.
+Ha van meglévő projektfájl, vagy új jegyzetfüzetet szeretne létrehozni, használhatja a VS Code-ot! A VS Code Jupyter notebookokkal való használatáról a Visual Studio Code-ban a Visual Studio Code-ban és az [adatelemzésben](https://code.visualstudio.com/docs/python/data-science-tutorial) a [Jupyter notebookok](https://code.visualstudio.com/docs/python/jupyter-support) használata című témakörben talál útmutatást.
 
 A Visual Studio Code-ban a [Azure Notebooks környezeti parancsfájllal](#create-an-environment-for-notebooks) is létrehozható egy olyan környezet, amely megfelel a Azure Notebooks előzetes verziójának.
 
 ## <a name="use-notebooks-in-github-codespaces"></a>Jegyzetfüzetek használata a GitHub-Codespaces
 
 A GitHub Codespaces olyan felhőalapú környezeteket biztosít, ahol a jegyzetfüzeteket a Visual Studio Code vagy a webböngésző használatával szerkesztheti. Ugyanazzal a nagyszerű Jupyter-élménysel rendelkezik, mint a VS Code, de nem kell semmit telepítenie az eszközre. Ha nem szeretné beállítani a helyi környezetet, és inkább egy felhőalapú megoldást szeretne használni, akkor a codespace létrehozása nagyszerű lehetőség. Első lépések:
-1. [Töltse le](#export-an-azure-notebooks-project) a Project-fájlokat.
+1. Választható Gyűjtse össze a GitHub-Codespaces használni kívánt projektfájlok összes fájlját.
 1. [Hozzon létre egy GitHub-tárházat](https://help.github.com/github/getting-started-with-github/create-a-repo) a jegyzetfüzetek tárolásához.   
 1. [Adja hozzá a fájljait](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) a tárházhoz.
 1. [Hozzáférés kérése a GitHub Codespaces előzetes verziójához](https://github.com/features/codespaces)
@@ -70,14 +54,14 @@ A GitHub Codespaces olyan felhőalapú környezeteket biztosít, ahol a jegyzetf
 
 A Azure Machine Learning teljes gépi tanulási platformot biztosít, amely lehetővé teszi a felhasználók számára, hogy gyorsabban építsenek és helyezzen üzembe modelleket az Azure-ban. Az Azure ML lehetővé teszi, hogy Jupyter jegyzetfüzeteket futtasson egy virtuális gépen vagy egy megosztott fürtözött számítástechnikai környezetben. Ha felhőalapú megoldásra van szüksége az ML-munkaterheléshez a kísérlet követésével, az adatkészletek kezelésével és egyebekkel kapcsolatban, javasoljuk, hogy Azure Machine Learning. Ismerkedés az Azure ML-vel:
 
-1. [Töltse le](#export-an-azure-notebooks-project) a Project-fájlokat.
+1. Választható Gyűjtse össze az Azure ML-vel használni kívánt projektfájlok összes fájlját.
 1. [Hozzon létre egy munkaterületet](../machine-learning/how-to-manage-workspace.md) a Azure Portalban.
 
    ![Munkaterület létrehozása](../machine-learning/media/how-to-manage-workspace/create-workspace.gif)
  
 1. Nyissa meg az [Azure studiót (előzetes verzió)](https://ml.azure.com/).
 1. A bal oldali navigációs sáv használatával válassza a **jegyzetfüzetek** lehetőséget.
-1. Kattintson a **fájlok feltöltése** gombra, és töltse fel a Azure Notebooksból letöltött projektfájlok fájljait.
+1. Kattintson a **fájlok feltöltése** gombra, és töltse fel a projektfájlok fájljait.
 
 Az Azure ML-vel és a Jupyter-jegyzetfüzetek futtatásával kapcsolatos további információkért tekintse át a [dokumentációt](../machine-learning/how-to-run-jupyter-notebooks.md) , vagy próbálja ki [Machine Learning](/learn/modules/intro-to-azure-machine-learning-service/) modult Microsoft Learn.
 
@@ -88,17 +72,17 @@ Az Azure ML-vel és a Jupyter-jegyzetfüzetek futtatásával kapcsolatos tovább
 
 ![image](../lab-services/media/tutorial-setup-classroom-lab/new-lab-button.png)
 
- A projektfájlok [letöltése](#export-an-azure-notebooks-project) után Azure Lab Services használhatja őket. A laborok beállításával kapcsolatos útmutatásért lásd: [tesztkörnyezet beállítása az adatelemzés megtanításához a Python és a Jupyter notebook használatával](../lab-services/class-type-jupyter-notebook.md)
+Ha van meglévő projektfájl, vagy új jegyzetfüzetet szeretne létrehozni, használhatja a Azure Lab Services. A laborok beállításával kapcsolatos útmutatásért lásd: [tesztkörnyezet beállítása az adatelemzés megtanításához a Python és a Jupyter notebook használatával](../lab-services/class-type-jupyter-notebook.md)
 
 ## <a name="use-github"></a>A GitHub használata
 
 A GitHub lehetővé teszi a jegyzetfüzetek (és más fájlok) tárolását, a notebookok megosztását és másokkal való együttműködését. Ha a projektek megosztását és másokkal való együttműködését keresi, a GitHub nagyszerű megoldás, és a [GitHub-Codespaces](#use-notebooks-in-github-codespaces) kombinálható a nagyszerű fejlesztési élmény érdekében. Ismerkedés a GitHubtal
 
-1. [Töltse le](#export-an-azure-notebooks-project) a Project-fájlokat.
+1. Választható Gyűjtse össze a GitHubhoz használni kívánt projektfájlok összes fájlját.
 1. [Hozzon létre egy GitHub-tárházat](https://help.github.com/github/getting-started-with-github/create-a-repo) a jegyzetfüzetek tárolásához. 
 1. [Adja hozzá a fájljait](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) a tárházhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tudnivalók a Pythonról a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/python-tutorial)
 - [Tudnivalók a Azure Machine Learning-és Jupyter-jegyzetfüzetekről](../machine-learning/how-to-run-jupyter-notebooks.md)

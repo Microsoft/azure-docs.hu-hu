@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803503"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508743"
 ---
 # <a name="manage-alert-events"></a>Riasztási események kezelése
 
@@ -45,7 +45,7 @@ Bizonyos helyzetekben előfordulhat, hogy nem szeretné, hogy egy érzékelő é
 
 A mérséklés vagy a vizsgálat elvégzése után utasíthatja az érzékelőt a riasztás elrejtéséhez az **nyugtázás** lehetőség kiválasztásával. Ha a rendszer ismét észleli az eseményt, a rendszer újraaktiválja a riasztást.
 
-A riasztás elrejtése:
+A riasztás törlése:
 
   - Válassza a **nyugtázás** lehetőséget.
 
@@ -70,9 +70,9 @@ Ilyen helyzetekben a tanulás nem érhető el. Ha a tanulás nem hajtható végr
 
 ### <a name="what-traffic-is-muted"></a>Milyen forgalom van elnémítva?
 
-A tompított forgatókönyvek között szerepelnek az események által észlelt hálózati eszközök és forgalom. A riasztás címe az elnémítva forgalmat mutatja.
+A tompított forgatókönyvek közé tartozik a hálózati eszközök és az események által észlelt forgalom. A riasztás címe az elnémítva forgalmat mutatja.
 
-Az elnémítva kívánt eszköz vagy eszközök képként lesznek megjelenítve a riasztásban. Ha két eszköz jelenik meg, a közöttük lévő forgalom el lesz némítva.
+Az elnémítva kívánt eszköz vagy eszközök képként lesznek megjelenítve a riasztásban. Ha két eszköz jelenik meg, akkor a közöttük található adott riasztások közötti forgalom el lesz némítva.
 
 **1\. példa**
 

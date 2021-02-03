@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d544d884a82a7532bf343f38049102dfccae342f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491299"
+ms.locfileid: "99507273"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
@@ -173,7 +173,8 @@ Az alkalmazás által `groups` várt felhasználói vagy OAuth 2,0 hozzáférés
 - `"None"`
 - `"SecurityGroup"` (biztonsági csoportokhoz és Azure AD-szerepkörökhöz)
 - `"ApplicationGroup"` (ez a beállítás csak az alkalmazáshoz rendelt csoportokat tartalmazza)
-- `"All"` (ez az összes olyan biztonsági csoportot, terjesztési csoportot és Azure AD-címtárbeli szerepkört megkapja, amely tagja a bejelentkezett felhasználónak.
+- `"DirectoryRole"` (azon Azure AD-címtárbeli szerepkörök beolvasása, amelyeknek a felhasználó a tagja)
+- `"All"` (ez az összes olyan biztonsági csoportot, terjesztési csoportot és Azure AD-címtárbeli szerepkört megkapja, amely a bejelentkezett felhasználó tagja).
 
 Példa:
 

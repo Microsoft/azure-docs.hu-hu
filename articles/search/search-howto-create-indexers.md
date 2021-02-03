@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430045"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509384"
 ---
-# <a name="create-a-search-indexer"></a>Keresési indexelő létrehozása
+# <a name="creating-indexers-in-azure-cognitive-search"></a>Indexelő létrehozása az Azure Cognitive Searchban
 
 A keresési indexelő egy automatizált munkafolyamatot biztosít a dokumentumok és tartalmak külső adatforrásból történő átviteléhez a keresési szolgáltatás keresési indexéhez. Az eredetileg megtervezett módon Kinyeri a szöveget és a metaadatokat egy Azure-adatforrásból, szerializálja a dokumentumokat a JSON-be, és átadja az eredményül kapott dokumentumokat a keresőmotornak az indexeléshez. Azóta kiterjesztették a [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítés támogatására a tartalom feldolgozásához. 
 
@@ -99,7 +99,7 @@ A következő képernyőképen látható, hogy hol találhatók ezek a funkciók
 
 ### <a name="use-a-rest-client"></a>REST-ügyfél használata
 
-A Poster és a Visual Studio Code (az Azure Cognitive Search bővítménnyel együtt) indexelő ügyfélként is működhet. Bármelyik eszköz használatával kapcsolódhat a keresési szolgáltatáshoz, és elküldheti az indexelő és egyéb objektumokat létrehozó kérelmeket. Számos oktatóanyag és példa mutatja be a REST-ügyfeleket objektumok létrehozásához. 
+A Poster és a Visual Studio Code (az Azure Cognitive Search bővítménnyel együtt) indexelő ügyfélként is működhet. Bármelyik eszköz használatával kapcsolódhat a keresési szolgáltatáshoz, és elküldheti az [Indexelő (REST)](/rest/api/searchservice/create-indexer) kérelmeket. Számos oktatóanyag és példa mutatja be a REST-ügyfeleket objektumok létrehozásához. 
 
 Kezdje a következő cikkek bármelyikével, és ismerkedjen meg az egyes ügyfelekkel:
 
@@ -110,7 +110,7 @@ Az indexelő kérelmek megfogalmazásával kapcsolatos segítségért tekintse m
 
 ### <a name="use-an-sdk"></a>SDK használata
 
-Cognitive Search az Azure SDK-k általánosan elérhető funkciókat implementálnak. Ilyen esetben az SDK-k bármelyikét használhatja az indexelő szolgáltatással kapcsolatos objektumok létrehozásához. Mindegyik olyan **SearchIndexerClient** valósít meg, amely az indexelő és a kapcsolódó objektumok, például a szakértelmével létrehozására szolgáló metódusokat biztosít.
+Cognitive Search az Azure SDK-k általánosan elérhető funkciókat implementálnak. Ilyen esetben az SDK-k bármelyikét használhatja az indexelő szolgáltatással kapcsolatos objektumok létrehozásához. Mindegyik olyan **SearchIndexerClient** biztosít, amely az indexelő és a kapcsolódó objektumok, például a szakértelmével létrehozására szolgáló metódusokkal rendelkezik.
 
 | Azure SDK | Ügyfél | Példák |
 |-----------|--------|----------|

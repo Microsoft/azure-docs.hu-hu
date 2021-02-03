@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 53052b35a50899d6f9e761301f31b9ffd20a4b91
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 38012c5b4bb9338c1200d9583256193ee8402c98
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610012"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507879"
 ---
 # <a name="trusted-platform-module-tpm-and-virtualization-based-securityvbs-enclave-attestation-protocol"></a>Platformmegbízhatósági modul (TPM) és virtualizálás-alapú biztonság (VBS) enklávé igazolási protokoll 
 
@@ -55,7 +55,7 @@ Azure-igazolás – > ügyfél
 
 **Challenge** (BASE64URL (oktett)): a szolgáltatás által kiállított véletlenszerű érték.
 
-**service_context** (BASE64URL (oktettek)): a szolgáltatás által létrehozott átlátszatlan, titkosított környezet, amely többek között a kihívást, valamint az adott kihívás lejárati idejét is magában foglalja. 
+**service_context** (BASE64URL (oktettek)): a szolgáltatás által létrehozott átlátszatlan környezet.
 
 
 ### <a name="request-message"></a>Kérelem üzenete
@@ -236,7 +236,7 @@ TPM + VBS enklávé minta:
 
 - **value_type (karakterlánc)**: a jogcím értékének adattípusa
 
-**service_context** (BASE64URL (oktett)): a szolgáltatás által létrehozott átlátszatlan, titkosított környezet, amely többek között magában foglalja a kihívást és az adott kihívás lejárati idejét.
+**service_context** (BASE64URL (oktettek)): a szolgáltatás által létrehozott átlátszatlan környezet.
 
 ### <a name="report-message"></a>Jelentés üzenete
 

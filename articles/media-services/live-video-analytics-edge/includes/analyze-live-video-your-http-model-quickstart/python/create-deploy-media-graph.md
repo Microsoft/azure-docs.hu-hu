@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1b5dd2fb4ef8cb3f6fd169477d9ee82e912c146e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7cbb9a09a6f8eae6a9325f060664d50c5725e09f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956296"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508531"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
@@ -16,16 +16,13 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 
 1. Lépjen a *src/Cloud-to-Device-Console-app* mappába. Itt láthatja a *appsettings.js* fájlt, és néhány további fájlt:
 
-    * ***C2D-Console-app. csproj** _ – a Project fájl a Visual Studio Code-hoz.
-    _ ***operations.json** _ – azoknak a műveleteknek a listája, amelyeket futtatni kíván a program.
-    _ ***Program.cs** _ – a minta programkódja. Ez a kód:
+    * operations.json – a program futtatásához használni kívánt műveletek listája.
+    * main.py – a minta programkódja. Ez a kód:
 
-        _ Betölti az alkalmazás beállításait.
-        * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](../../../direct-methods.md)meghívásával.
+        * Betölti az alkalmazás beállításait.
+        * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a közvetlen metódusok meghívásával.
         * Szünetelteti, hogy megvizsgálhatja a program kimenetét a **terminál** ablakban, és megvizsgálhatja a modul által a **kimeneti** ablakban generált eseményeket.
-        * Közvetlen metódusokat hív meg az erőforrások törléséhez.
-
-
+        * Közvetlen metódusokat hív meg az erőforrások törléséhez.  
 1. Szerkessze a *operations.js* fájlt:
     * Módosítsa a Graph-topológiára mutató hivatkozást:
 

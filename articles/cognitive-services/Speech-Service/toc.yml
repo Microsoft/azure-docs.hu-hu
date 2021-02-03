@@ -14,8 +14,6 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Kvóták és korlátok
       href: speech-services-quotas-and-limits.md
-    - name: A docs újdonságai
-      href: whats-new.md
 - name: Diktálás
   items:
     - name: A Beszédfelismerés dokumentációja
@@ -113,22 +111,10 @@
           href: long-audio-api.md
     - name: Testreszabás
       items:
-        - name: Felelős üzembe helyezés
-          items:
-            - name: Custom Voice korlátozása
-              href: concepts-gating-overview.md
-            - name: Szintetikus technológia üzembe helyezése
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Hangszolgáltatókra vonatkozó nyilatkozat
-              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
-            - name: Közzététel-tervezési irányelvek
-              href: concepts-disclosure-guidelines.md
-            - name: Közzététel-tervezési minták
-              href: concepts-disclosure-patterns.md
-            - name: Etikai kódex
-              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: Custom Voice portál
           items:
+            - name: Mi az egyéni neurális hang?
+              href: custom-neural-voice.md
             - name: Bevezetés a Custom Voice szolgáltatásba
               displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
@@ -142,6 +128,32 @@
           items:
             - name: Hanganyag létrehozása
               href: how-to-audio-content-creation.md
+    - name: Az MI felelős használata
+      items:
+        - name: Egyéni neurális hang
+          items:
+            - name: Átláthatósági megjegyzés
+              items:
+                - name: Egyéni neurális hang használatának esetei
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Jellemzők és korlátozások
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+            - name: Integráció és felelős használat
+              items:
+                - name: Korlátozott hozzáférés
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: A szintetikus beszéd felelős üzembe helyezése
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: Hangszolgáltatókra vonatkozó nyilatkozat
+                  href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
+                - name: Közzététel-tervezési irányelvek
+                  href: concepts-disclosure-guidelines.md
+                - name: Közzététel-tervezési minták
+                  href: concepts-disclosure-patterns.md
+                - name: Etikai kódex
+                  href: /legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context
+            - name: 'Adatok, adatvédelem és biztonság'
+              href: /legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
     - name: Referencia
       items:
         - name: C++

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 735b1ce4391598d05a1bf0b4486503092f4de37d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840628"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509076"
 ---
 # <a name="the-dashboard"></a>Az irányítópult
 
@@ -28,7 +28,7 @@ Az irányítópult segítségével gyorsan megtekintheti a hálózat biztonsági
 
 - Figyelmeztetések
 
-- A lap közepén található két mérőműszer a másodpercenkénti (PPS) és a nem Visszaigazolatlan riasztásokat (UA) jelzi. A **PPS** a rendszer által másodpercenként visszaigazolt csomagok száma. Az **ua** a még nem elismert riasztások száma.
+- Az oldal közepén található két mutató a másodpercenkénti (PPS) és a nem Visszaigazolatlan riasztásokat (UA) jeleníti meg. A **PPS** a rendszer által másodpercenként visszaigazolt csomagok száma. Az **ua** a még nem elismert riasztások száma.
 
 - A nem visszaigazolt riasztások listája a leírással.
 
@@ -78,28 +78,28 @@ Kattintson a riasztási mező alján lévő **lefelé mutató** nyílra a riaszt
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/extended-alert-screen.png" alt-text="Riasztási bejegyzés és eszközök adatai":::
 
-- Válassza ki az eszközt, vagy jelenítse meg az **eszközöket** a fizikai mód térképének megjelenítéséhez. A tárgyú eszközök ki vannak emelve.
+- Válassza ki az eszközt a fizikai mód térképének megjelenítéséhez. A tárgyú eszközök ki vannak emelve.
+
+- A riasztással kapcsolatos további részletek megjelenítéséhez kattintson bárhová a riasztási mezőben. Az előugró ablak az alábbihoz hasonlóan jelenik meg
 
 - Válassza az :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/excel-icon.png" alt-text="Excel"::: elemet a riasztást tartalmazó CSV-fájl exportálásához.
 
 - Rendszergazdák és biztonsági elemzők – az összes kapcsolódó riasztás **visszaigazolásához** válassza :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/approve-all-icon.png" alt-text="az összes"::: elfogadása lehetőséget.
 
-- Válassza ki a riasztási bejegyzést a riasztás típusának és leírásának megtekintéséhez:
-
 - Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pdf-icon.png" alt-text="PDF":::lehetőséget a riasztási jelentés PDF-fájlként való letöltéséhez.
 
-- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="rögzítés":::lehetőséget a riasztás rögzítéséhez vagy feloldásához.
+- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="rögzítés":::lehetőséget a riasztás rögzítéséhez vagy feloldásához. A PIN-kód kiválasztásakor a rendszer hozzáadja a **riasztások** képernyőjén a **rögzített riasztások** ablakhoz.
 
-- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="Letöltés"::: lehetőséget a riasztás kivizsgálásához a hálózati protokollok elemzését tartalmazó Pcap fájl letöltésével.
+- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="Letöltés"::: lehetőséget a riasztás kivizsgálásához a hálózati protokollok elemzését tartalmazó kapcsolódó Pcap fájl letöltésével.
 
-- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="felhő"::: lehetőséget, ha le szeretne tölteni egy SZŰRt Pcap-fájlt, amely csak a riasztással kapcsolatos csomagokat tartalmazza, így csökkentve a kimeneti fájlok méretét, és lehetővé teszi a célzottabb elemzést. Megtekintheti a [Wireshark](https://www.wireshark.org/)használatával.
+- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="felhő"::: lehetőséget, ha egy kapcsolódó SZŰRt Pcap-fájlt szeretne letölteni, amely csak a riasztással kapcsolatos csomagokat tartalmazza, így csökkentve a kimeneti fájlok méretét, és lehetővé teszi a célzottabb elemzést. Megtekintheti a [Wireshark](https://www.wireshark.org/)használatával.
 
-- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="navigáció"::: lehetőséget, hogy a kért riasztás időpontjában navigáljon az esemény idővonalához.
+- Válassza a :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="navigáció"::: lehetőséget, hogy a kért riasztás időpontjában navigáljon az esemény idővonalához. Ez lehetővé teszi az adott riasztás körébe kerülő egyéb események értékelését.
 
 - Rendszergazdák és biztonsági elemzők – csak a riasztás állapotának módosítása a Visszaigazolatlan értékről a visszaigazolásra. Válassza a tanulás lehetőséget az észlelt tevékenység jóváhagyásához.
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/unauthorized-internet-connectivity-detection-v3.png" alt-text="Jogosulatlan internetkapcsolat észlelhető":::
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Riasztások használata az érzékelőn](how-to-work-with-alerts-on-your-sensor.md)

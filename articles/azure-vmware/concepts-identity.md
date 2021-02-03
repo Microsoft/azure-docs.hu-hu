@@ -3,12 +3,12 @@ title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: bd1b4cd918ce977cf57d641908b127f7a2d1b0cc
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536098"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509299"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
@@ -53,7 +53,11 @@ A "rendszergazda" fiók használatával férhet hozzá a NSX-T kezelőhöz. Telj
   
 ## <a name="next-steps"></a>Következő lépések
 
-A következő lépés a [saját Felhőbeli frissítési fogalmak][concepts-upgrades]megismerése.
+Most, hogy lefedette az Azure VMware-megoldás hozzáférési és identitási fogalmait, érdemes megismernie az alábbiakat:
+
+- [Saját Felhőbeli frissítési fogalmak](concepts-upgrades.md).
+- [vSphere szerepköralapú hozzáférés-vezérlés az Azure VMware-megoldáshoz](concepts-role-based-access-control.md).
+- [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

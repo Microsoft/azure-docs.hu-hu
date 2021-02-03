@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621214"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508760"
 ---
 # <a name="manage-individual-sensors"></a>Különálló érzékelők kezelése
 
@@ -147,7 +147,7 @@ Az érvényesítési beállítás módosítása:
 
 1. A **tanúsítvány-ellenőrzés engedélyezése** váltógomb engedélyezése vagy letiltása.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ha a beállítás engedélyezve van, és az érvényesítés sikertelen, a felügyeleti konzol és az érzékelő közötti kommunikáció leállt, és a konzolon egy érvényesítési hiba jelenik meg.
 
@@ -355,7 +355,7 @@ A név módosítása:
 
 1. Az **érzékelő nevének szerkesztése** párbeszédpanelen adjon meg egy nevet.
 
-1. Válassza a **Mentés** lehetőséget. Az új név lesz alkalmazva.
+1. Kattintson a **Mentés** gombra. Az új név lesz alkalmazva.
 
 ### <a name="change-the-name-of-a-cloud-connected-sensor"></a>Felhőhöz csatlakoztatott érzékelő nevének módosítása
 
@@ -367,9 +367,9 @@ A név módosítása:
 
 1. Törölje az érzékelőt az **érzékelő kezelése** ablakból.
 
-1. Regisztrálja az új nevet.
+1. Regisztrálja újra az új nevet.
 
-1. Töltse le és aktiválja az új aktiválási fájlt.
+1. Töltse le az új aktiválási fájlt.
 
 1. Jelentkezzen be az érzékelőbe, és töltse fel az új aktiválási fájlt.
 
@@ -398,7 +398,7 @@ A konfiguráció módosítása:
     | Hostname (Gazdanév) | Az érzékelő állomásneve |
     | Proxy | Proxy gazdagép és port neve |
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="synchronize-time-zones-on-the-sensor"></a>Időzónák szinkronizálása az érzékelőn
 
@@ -504,7 +504,7 @@ A konzolon megjelennek a visszaállítási hibák.
 
 Az alábbi eljárás azt ismerteti, hogyan frissíthető egy önálló érzékelő az érzékelő konzol használatával. A frissítési folyamat körülbelül 30 percet vesz igénybe.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/).
 
 2. Nyissa meg a Defender for IoT.
 
