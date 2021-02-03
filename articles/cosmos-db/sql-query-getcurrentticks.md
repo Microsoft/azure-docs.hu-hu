@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 610c545bf25822d27e0a641a1b2631f899502420
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 16004e6e471094c99229c32a63396ac3b0490905
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340158"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524280"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ Egy aláírt numerikus értéket ad vissza, amely a UNIX-kor óta eltelt 100 ns-
 
 A GetCurrentTicks () egy determinált-függvény. A visszaadott eredmény UTC (egyezményes világidő).
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+> [!NOTE]
+> Ez a rendszerfüggvény nem fogja használni az indexet. Ha az aktuális időponthoz össze kell hasonlítani az értékeket, a lekérdezés végrehajtása előtt szerezze be a jelenlegi időt, és használja ezt az állandó sztring értéket a `WHERE` záradékban.
 
 ## <a name="examples"></a>Példák
 
@@ -52,7 +53,7 @@ SELECT GetCurrentTicks() AS CurrentTimeInTicks
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

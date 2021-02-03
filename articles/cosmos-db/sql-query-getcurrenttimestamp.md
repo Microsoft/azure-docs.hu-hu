@@ -1,19 +1,19 @@
 ---
 title: GetCurrentTimestamp Azure Cosmos DB lekérdezési nyelven
 description: Ismerkedjen meg az SQL System Function GetCurrentTimestamp Azure Cosmos DB.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6720b0e5d13f2baaaf063fef2244b0c1f1863571
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341926"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524261"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ Egy aláírt numerikus értéket ad vissza, amely a UNIX-kor óta eltelt ezredm�
 
 A GetCurrentTimestamp () egy determinált-függvény. A visszaadott eredmény UTC (egyezményes világidő).
 
-Ez a rendszerfüggvény nem fogja használni az indexet.
+> [!NOTE]
+> Ez a rendszerfüggvény nem fogja használni az indexet. Ha az aktuális időponthoz össze kell hasonlítani az értékeket, a lekérdezés végrehajtása előtt szerezze be a jelenlegi időt, és használja ezt az állandó sztring értéket a `WHERE` záradékban.
 
 ## <a name="examples"></a>Példák
   
@@ -52,7 +53,7 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 }]  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

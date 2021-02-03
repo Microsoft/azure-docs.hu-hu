@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475726"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524306"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Az Azure Cosmos DB használatakor felmerülő lekérdezési hibák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ A legtöbb rendszerfüggvény indexeket használ. Az alábbi lista néhány olya
 - Bal
 - Alkarakterlánc – de csak akkor, ha az első num_expr 0
 
-Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely nem használja az indexet, és be kell töltenie az egyes dokumentumokat:
+Az alábbiakban néhány olyan gyakori rendszerfüggvényt ismertetünk, amely nem használja az indexet, és minden dokumentumot be kell töltenie egy záradékban való használatkor `WHERE` :
 
 | **System függvény**                     | **Optimalizálási ötletek**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| FELSŐ/ALSÓ                             | Ahelyett, hogy a rendszerfüggvényt használja az összehasonlításhoz, a beillesztéskor normalizálja a burkolatot. Egy lekérdezés, például A ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` válik ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| Felső/alsó                         | Ahelyett, hogy a rendszerfüggvényt használja az összehasonlításhoz, a beillesztéskor normalizálja a burkolatot. Egy lekérdezés, például A ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` válik ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Kiszámítja a lekérdezés végrehajtása előtti aktuális időt, és ezt a karakterláncot használja a `WHERE` záradékban. |
 | Matematikai függvények (nem összesítések) | Ha egy értéket gyakran kell kiszámítani a lekérdezésben, érdemes az értéket a JSON-dokumentum tulajdonságának megfelelően tárolni. |
+
+Ha a záradékban használatban van `SELECT` , a nem hatékony rendszerfunkciók nem befolyásolják, hogy a lekérdezések hogyan használhatják az indexeket.
 
 ### <a name="improve-string-system-function-execution"></a>A karakterláncrendszer-függvény végrehajtásának javítása
 
