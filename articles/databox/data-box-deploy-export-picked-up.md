@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 9ebf95f0a9c5cfc059f38a13ad99a545dd863d21
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680843"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525031"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Oktatóanyag: visszatérési Azure Data Box
 
@@ -43,7 +43,7 @@ A következő lépések attól függenek, hogy hol küldi vissza az eszközt.
 
 ## <a name="ship-data-box-back"></a>Data Box visszaküldése
 
-Győződjön meg arról, hogy az eszközről származó adatok másolása befejeződött, és a **szállításra való előkészítés** futtatása sikeres volt. Az eljárás különbözik attól függően, hogy az eszköz melyik régióban szállítja az eszközt.
+Győződjön meg arról, hogy az eszközről származó adatok másolása befejeződött, és a **szállításra való előkészítés** futtatása sikeres volt. Az eljárások attól függnek, hogy hol küldi vissza az eszközt.
 
 ## <a name="us-canada-europe"></a>[Egyesült Államok, Kanada és Európa](#tab/in-us-canada-europe)
 
@@ -55,8 +55,8 @@ Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokba
 4. Az eszköz visszaküldésekor egyeztessen egy csomagfelvételi időpontot a UPS-szel. Csomagfelvétel ütemezéséhez:
 
    - Hívja fel a helyi UPS-t (ország-/régióspecifikus ingyenes szám).
-   - A hívás során adja meg az E-ink kijelzőn vagy a nyomtatott címkén látható visszaszállítási fuvarlevélcímke nyomkövetési számát. Ha nem adja meg a követési számot, a UPS-nek a felvétel során további díjat kell fizetnie.
-   - Ha bármilyen probléma merül fel a pickup ütemezése közben, vagy ha a rendszer kéri, hogy fizessen további díjakat, forduljon Azure Data Box műveletekhez. Küldjön egy e-mailt a következő címre: [adbops@microsoft.com](mailto:adbops@microsoft.com).
+   - A hívás során adja meg az E-ink kijelzőn vagy a nyomtatott címkén látható visszaszállítási fuvarlevélcímke nyomkövetési számát. Ha nem adja meg a nyomkövetési számot, felárat kell fizetnie a UPS-nek a csomagfelvételkor.
+   - Ha bármilyen probléma merül fel a felvétel ütemezésekor, vagy ha a rendszer kéri, hogy fizessen további díjakat, forduljon az Azure Data Box üzemeltetési csapatához. Küldjön egy e-mailt a következő címre: [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     A csomagfelvétel ütemezése helyett a legközelebbi átadóhelyen is leadhatja a Data Box Disket.
 4. Miután a futár felvette és beolvasta a Data Boxot, a rendelés állapota a portálon **Szállítás alatt** állapotra módosul. A nyomkövetési azonosító is megjelenik.
@@ -65,7 +65,7 @@ Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokba
 
 Az Ausztráliában található Azure-adatközpontok egy további biztonsági értesítéssel rendelkeznek. Az összes bejövő csomagnak előzetes értesítéssel kell rendelkeznie. Az Ausztráliában történő szállításhoz az alábbi lépéseket végezze el.
 
-1. Tartsa meg az eszköz visszaszállításra való szállításához használt eredeti mezőt.
+1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
 2. Győződjön meg arról, hogy az adatok eszközre történő másolása befejeződött, és a **Szállításra való előkészítés** futtatása sikeres volt.
 3. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
 4. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
@@ -73,7 +73,7 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 
 ## <a name="japan"></a>[Japán](#tab/in-japan)
 
-1. Tartsa meg az eszköz visszaszállításra való szállításához használt eredeti mezőt.
+1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
 3. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
 4. A küldő információiként írja a vállalat nevét és címét a fuvarlevélre.
@@ -103,7 +103,7 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 
 ## <a name="singapore"></a>[Szingapúr](#tab/in-singapore)
 
-1. Tartsa meg az eszköz visszaszállításra való szállításához használt eredeti mezőt.
+1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
 2. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének „Prepare to Ship” (Szállítás előkészítése) lapján hivatkozási számként (reference number) jelenik meg). Ez akkor érhető el, amikor a szállítás-előkészítési lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra.
 3. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
 4. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában. 
@@ -174,7 +174,7 @@ Ha bármilyen probléma merül fel, az e-mail-Data Box Operations Asia [adbo@mic
 
 ## <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
-Ha a Data Boxot Japánban, Szingapúrban, Koreában, Indiában, a Dél-afrikai Köztársaságban vagy Nyugat-Európában használja, és a rendelés létrehozása során a Self-Managed (Önállóan felügyelt) szállítás lehetőséget választotta, kövesse az alábbi utasításokat.
+Ha Data Boxt használ Japánban, Szingapúrban, Koreában, Indiában, Dél-Afrikában, az Egyesült Királyságban, Nyugat-Európában vagy Ausztráliában, és a rendelés létrehozása során kiválasztotta az önfelügyelt szállítási lehetőséget, kövesse az alábbi utasításokat.
 
 1. Jegyezze fel a hitelesítési kódot (Authorization code), amely a Data Box helyi webes felhasználói felületének „Prepare to Ship” (Szállítás előkészítése) lapján jelenik meg a lépés sikeres befejeződése után.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljánál.

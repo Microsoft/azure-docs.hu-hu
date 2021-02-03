@@ -101,6 +101,8 @@
               href: container-registry-access-selected-networks.md
             - name: Hozzáférés korlátozása szolgáltatásvégpont használatával (előzetes verzió)
               href: container-registry-vnet.md
+            - name: Megbízható szolgáltatások általi hozzáférés engedélyezése
+              href: allow-access-trusted-services.md
             - name: Titkosítás felhasználó által felügyelt kulccsal
               href: container-registry-customer-managed-keys.md
             - name: Tűzfal mögötti hozzáférés

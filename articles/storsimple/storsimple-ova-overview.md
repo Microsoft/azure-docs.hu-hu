@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af48e1f415e0ca0b1027d277f70c3f0f1a11e687
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76273871"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526765"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb bemutatása
 
@@ -36,8 +36,8 @@ A következő táblázat összefoglalja a StorSimple virtuális tömb fontos fun
 | --- | --- |
 | Telepítési követelmények |Virtualizációs infrastruktúrát (Hyper-V vagy VMware) használ |
 | Rendelkezésre állás |Egyetlen csomópont |
-| Teljes kapacitás (beleértve a felhőt is) |Akár 64 TB-os felhasználható kapacitás virtuális tömbben |
-| Helyi kapacitás |390 GB és 6,4 TB felhasználható kapacitás virtuális tömbben (500 GB-ról 8 TB-ra kell kiépíteni a lemezterületet) |
+| Teljes kapacitás (beleértve a felhőt is) |Akár 64 TB felhasználható kapacitás virtuális tömbben |
+| Helyi kapacitás |390 GB és 6,4 TB felhasználható kapacitás virtuális tömbben (500 GB – 8 TB lemezterületet kell kiépíteni) |
 | Natív protokollok |iSCSI vagy SMB |
 | Helyreállítási időre vonatkozó célkitűzés (RTO) |iSCSI: kevesebb, mint 2 perc a mérettől függetlenül |
 | Helyreállítási időkorlát (RPO) |Napi biztonsági mentések és igény szerinti biztonsági mentések |
@@ -62,14 +62,16 @@ Az alábbi táblázat a StorSimple Virtual Array megoldás által biztosított f
 | Transzparens integráció |A virtuális tömb támogatja az iSCSI-t vagy az SMB protokollt. A helyi és a felhőalapú csomag közötti adatáthelyezés zökkenőmentes és átlátható a felhasználó számára. |
 | Csökkentett tárolási költségek |A StorSimple-mel elegendő helyi tárterületet kell kiépíteni, hogy megfeleljen a leggyakrabban használt meleg adatokra vonatkozó jelenlegi igényeknek. A tárolási igények növekedésével a StorSimple rétegekben a Felhőbeli tárolás költséghatékony. Az adatok deduplikálása és tömörítése a felhőbe való küldés előtt a tárolási követelmények és költségek további csökkentése érdekében. |
 | Egyszerűsített tárolók kezelése |A StorSimple központosított felügyeletet biztosít a felhőben a StorSimple Eszközkezelő használatával több eszköz kezeléséhez. |
-| A vész-helyreállítás és-megfelelőség javítása |A StorSimple megkönnyíti a vész-helyreállítást azáltal, hogy azonnal visszaállítja a metaadatokat, és szükség szerint helyreállítja az adatokat. Ez azt jelenti, hogy a normál műveletek továbbra is minimális fennakadást okozhatnak. |
-| Adatmobilitás |A felhőbe felhasználható adatok helyreállítási és áttelepítési célból más helyekről is elérhetők. Vegye figyelembe, hogy csak az eredeti virtuális tömbre állíthatja vissza az adathalmazt. A vész-helyreállítási funkciók használatával azonban a teljes virtuális tömböt egy másik virtuális tömbre állíthatja vissza. |
+| A vész-helyreállítás és-megfelelőség javítása |A StorSimple megkönnyíti a vész-helyreállítást azáltal, hogy azonnal visszaállítja a metaadatokat, és szükség szerint helyreállítja az adatokat. A normál műveletek a minimális megszakítással is folytatódnak. |
+| Adatmobilitás |A felhőbe felhasználható adatok helyreállítási és áttelepítési célból más helyekről is elérhetők. Csak az eredeti virtuális tömbre állíthatja vissza az adatkészletet. A vész-helyreállítási funkciók használatával azonban a teljes virtuális tömböt egy másik virtuális tömbre állíthatja vissza. |
+
+
 
 ## <a name="storsimple-workload-summary"></a>StorSimple munkaterhelés összegzése
 
 Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefoglalóját mutatja be.
 
-|Forgatókönyv     |Számítási feladat     |Támogatott      |Korlátozások               | Alkalmazható verziók|
+|Eset     |Számítási feladat     |Támogatott      |Korlátozások               | Alkalmazható verziók|
 |-------------|-------------|---------------|---------------------------|--------------------|
 |Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
 |Felhőbeli archiválás  |Archiválási fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
@@ -78,9 +80,9 @@ A StorSimple Virtual Array a ritkán használt adatokhoz ajánlott. Míg a virtu
 
 ![Felhőbeli archiválás](./media/storsimple-ova-overview/cloud-archiving.png)
 
-Ha több egyidejű felhasználó fér hozzá a virtuális tömbhöz, a kapcsolat megosztva az Azure-hoz, ami alacsonyabb teljesítményt eredményez. Felhasználónként nincs garantált teljesítmény, és az eszköz a megérkezéskor dolgozza fel az egyes kérelmeket.
+Ha több egyidejű felhasználó fér hozzá a virtuális tömbhöz, mind osztoznak a kapcsolaton az Azure-ban, ami alacsonyabb teljesítményt eredményez. Felhasználónként nincs garantált teljesítmény, és az eszköz a megérkezéskor dolgozza fel az egyes kérelmeket.
 
-A StorSimple virtuális tömb nem alkalmas magas rendelkezésre állást igénylő munkaterhelések esetén. A virtuális tömb egyetlen csomópontos eszköz, amely a szoftverfrissítések telepítésekor leállást tapasztal. A rendszergazdáknak évente legfeljebb 3-4 alkalommal kell megtervezniük a karbantartási időszakot.
+A StorSimple virtuális tömb nem alkalmas magas rendelkezésre állást igénylő munkaterhelések esetén. A virtuális tömb egy egycsomópontos eszköz, amely leállást tapasztal a szoftverfrissítések telepítésekor. A rendszergazdáknak évente legfeljebb 3-4 alkalommal kell megtervezniük a karbantartási időszakot.
 
 ## <a name="workflows"></a>Munkafolyamatok
 
@@ -91,12 +93,12 @@ A StorSimple virtuális tömb különösen a következő munkafolyamatokhoz alka
 * [Adatvédelem és vész-helyreállítás](#data-protection-and-disaster-recovery)
 
 ### <a name="cloud-based-storage-management"></a>Felhőalapú tárolók kezelése
-A Azure Portal futtatott StorSimple Eszközkezelő szolgáltatással kezelheti a több eszközön és több helyen tárolt adatkezelési szolgáltatásokat. Ez különösen az elosztott ág-forgatókönyvekben hasznos. Vegye figyelembe, hogy a StorSimple Eszközkezelő szolgáltatás különálló példányait kell létrehoznia a virtuális tömbök és a fizikai StorSimple-eszközök kezeléséhez. Azt is vegye figyelembe, hogy a virtuális tömb mostantól az új Azure Portal használja a klasszikus Azure portál helyett.
+A Azure Portal futtatott StorSimple Eszközkezelő szolgáltatással kezelheti a több eszközön és több helyen tárolt adatkezelési szolgáltatásokat. Ez különösen az elosztott ág-forgatókönyvekben hasznos. A virtuális tömbök és a fizikai StorSimple-eszközök kezeléséhez létre kell hoznia a StorSimple Eszközkezelő szolgáltatás különálló példányait. A virtuális tömb mostantól az új Azure Portal használja a klasszikus Azure portál helyett.<!--Is the "now" element still in date? Could it go at this point? Just checking.-->
 
 ![felhőalapú tárolók kezelése](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>Hely – független biztonsági mentés
-A virtuális tömbben a Felhőbeli Pillanatképek biztosítják a kötetek vagy megosztások helytől független, időponthoz való másolását. A Felhőbeli Pillanatképek alapértelmezés szerint engedélyezve vannak, és nem tilthatók le. Minden kötet és megosztás egyidejű biztonsági mentést készít egy napi biztonsági mentési szabályzattal, és szükség esetén további ad hoc biztonsági mentést is igénybe vehet.
+A virtuális tömbben a Felhőbeli Pillanatképek biztosítják a kötetek vagy megosztások helytől független, időponthoz való másolását. A Felhőbeli Pillanatképek alapértelmezés szerint engedélyezve vannak, és nem tilthatók le. Az összes kötetet és megosztást egy napi biztonsági mentési szabályzattal egy időben készíti el a rendszer, és szükség esetén további ad hoc biztonsági mentést is igénybe vehet.
 
 ### <a name="data-protection-and-disaster-recovery"></a>Adatvédelem és vész-helyreállítás
 A virtuális tömb a következő adatvédelmi és vész-helyreállítási forgatókönyveket támogatja:
@@ -111,9 +113,9 @@ A virtuális tömb a következő összetevőket tartalmazza:
 
 * [Virtual Array](#virtual-array) – egy hibrid felhőalapú tárolóeszköz, amely egy virtualizált környezetben vagy hypervisorban kiépített virtuális gépen alapul.
 * [StorSimple Eszközkezelő Service](#storsimple-device-manager-service) – a Azure Portal egy bővítménye, amely lehetővé teszi egy vagy több StorSimple-eszköz felügyeletét egyetlen webes felületről, amelyek különböző földrajzi helyekről érhetők el. A StorSimple Eszközkezelő szolgáltatással szolgáltatások hozhatók létre és kezelhetők, megtekinthetők és kezelhetők az eszközök és a riasztások, valamint kezelhetők a kötetek, a megosztások és a meglévő Pillanatképek.
-* [Helyi webes felhasználói felület](#local-web-user-interface) – webes kezelőfelület, amely az eszköz konfigurálására szolgál a helyi hálózathoz való kapcsolódáshoz, majd az eszköz regisztrálása a StorSimple Eszközkezelő szolgáltatással. 
+* [Helyi webes felhasználói felület](#local-web-user-interface) – egy WEBalapú felhasználói felület, amely úgy van konfigurálva, hogy az eszköz csatlakozhasson a helyi hálózathoz, majd regisztrálja az eszközt a StorSimple Eszközkezelő szolgáltatással. 
 * [Parancssori felület](#command-line-interface) – egy Windows PowerShell-felület, amellyel egy támogatási munkamenet indítható el a virtuális tömbben.
-  Az alábbi szakaszok részletesebben ismertetik ezeket az összetevőket, és elmagyarázzák, hogyan rendezi a megoldás az adatokat, lefoglalja a tárterületet, és megkönnyíti a tárolási felügyeletet és az adatvédelmet.
+  Az alábbi szakaszok részletesebben ismertetik az egyes összetevőket, és elmagyarázza, hogyan rendezi a megoldás az adatokat, lefoglalja a tárterületet, és megkönnyíti a tárterület-kezelést és az adatvédelmet.
 
 ### <a name="virtual-array"></a>Virtuális tömb
 
@@ -144,7 +146,7 @@ A Microsoft Azure StorSimple webalapú felhasználói felületet biztosít a Sto
 * A teljesítmény figyelése.
 * Tekintse át a rendszerbeállításokat, és azonosítsa a lehetséges problémákat.
 
-A virtuális tömb napi felügyeletének végrehajtásához használja a StorSimple Eszközkezelő szolgáltatást.
+A virtuális tömb napi felügyeletét a StorSimple Eszközkezelő szolgáltatással végezheti el.
 
 További információért látogasson el [a StorSimple Eszközkezelő szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](storsimple-virtual-array-manager-service-administration.md).
 
@@ -156,11 +158,11 @@ A webalapú felhasználói felület használatáról a [webes felhasználói fel
 
 ### <a name="command-line-interface"></a>Parancssori felület
 
-A mellékelt Windows PowerShell-felület lehetővé teszi, hogy támogatási munkamenetet kezdeményezzen Microsoft ügyfélszolgálata segítségével, hogy segítsen a virtuális tömbben esetlegesen felmerülő problémák megoldásában.
+A mellékelt Windows PowerShell-felület lehetővé teszi, hogy támogatási munkamenetet kezdeményezzen Microsoft ügyfélszolgálata segítségével, így a virtuális tömbben esetlegesen felmerülő problémák elhárításához és megoldásához segítséget nyújthat.
 
 ## <a name="storage-management-technologies"></a>Storage-felügyeleti technológiák
 
-A virtuális tömb és más összetevők mellett a StorSimple-megoldás a következő szoftver-technológiákat használja a fontos adatok gyors eléréséhez, a tárterület-felhasználás csökkentéséhez és a virtuális tömbben tárolt adatok védelme érdekében:
+A virtuális tömb és más összetevők mellett a StorSimple-megoldás a következő szoftver-technológiákat használja a fontos adatok gyors eléréséhez, a tárterület-felhasználás csökkentéséhez és a virtuális tömbben tárolt adatok védelme érdekében.
 
 * [Automatikus tárolási rétegek](#automatic-storage-tiering) 
 * [Helyileg rögzített megosztások és kötetek](#locally-pinned-shares-and-volumes)
@@ -170,7 +172,7 @@ A virtuális tömb és más összetevők mellett a StorSimple-megoldás a követ
 ### <a name="automatic-storage-tiering"></a>Automatikus tárolási rétegek
 A virtuális tömb egy új, a virtuális tömbben és a felhőben tárolt adatkezelési mechanizmust használ. Csak két szint létezik: a helyi virtuális tömb és az Azure Cloud Storage. A StorSimple Virtual Array automatikusan átrendezi az adatokat a rétegekre egy hő-Térkép alapján, amely nyomon követi az aktuális használatot, az életkort és a más adatokhoz való kapcsolatokat. A legtöbb aktív (legforróbb) adatmennyiség helyileg tárolódik, míg a rendszer a kevésbé aktív és inaktív adatmennyiségeket automatikusan áttelepíti a felhőbe. (Az összes biztonsági mentés a felhőben történik.) A StorSimple módosítja és átrendezi az adatokat és a tárolási hozzárendeléseket a használati minták változásakor. Előfordulhat például, hogy egyes információk kevésbé lesznek aktívak az idő múlásával. Mivel egyre kevésbé aktív, a felhőbe kerül. Ha ugyanezek az adatelemek ismét aktívvá válnak, a rendszer a Storage tömbbe van bontva.
 
-Egy adott rétegű megosztás vagy kötet adatai garantáltak a saját helyi rétegeinek (a megosztás vagy a kötet teljes kiépített területének körülbelül 10%-a). Habár ez csökkenti a rendelkezésre álló tárolót a virtuális tömbben az adott megosztás vagy kötet számára, biztosítja, hogy az egyik megosztásra vagy kötetre vonatkozó rétegek nem érintik más megosztások vagy kötetek rétegbeli igényeinek. Így az egyik megosztáson vagy köteten egy nagyon elfoglalt munkaterhelés nem kényszerítheti az összes többi számítási feladatot a felhőbe.
+Egy adott rétegű megosztás vagy kötet adatai garantáltak a saját helyi rétegeinek (a megosztás vagy a kötet teljes kiépített területének körülbelül 10 százaléka). Míg ez csökkenti a rendelkezésre álló tárhelyet a virtuális tömbben az adott megosztás vagy kötet számára, biztosítja, hogy az egyik megosztásra vagy kötetre vonatkozó rétegek nem lesznek hatással a más megosztások vagy kötetek rétegbeli igényeire. Így az egyik megosztáson vagy köteten egy nagyon elfoglalt munkaterhelés nem kényszerítheti az összes többi számítási feladatot a felhőbe.
 
 Az iSCSI számára létrehozott rétegű kötetek maximális helyi foglalása 200 GB, a kötet méretétől függetlenül.
 
@@ -178,6 +180,9 @@ Az iSCSI számára létrehozott rétegű kötetek maximális helyi foglalása 20
 
 > [!NOTE]
 > A kötetet helyileg rögzítettként is megadhatja, ebben az esetben az adatforgalom a virtuális tömbben marad, és a rendszer soha nem a felhőbe van bontva. További információért lépjen a [helyileg rögzített megosztások és kötetek](#locally-pinned-shares-and-volumes)elemre.
+
+> [!IMPORTANT]
+> A StorSimple használatakor ne konvertálja a blobokat archiválásra, még akkor is, ha az eszköz fázisa folyamatban van. Az adatok az eszközről való lekéréséhez a blobokat a gyakori vagy a ritka elérésű típusra kell kihasználnia, amely jelentős költségeket eredményez.
 
 
 ### <a name="locally-pinned-shares-and-volumes"></a>Helyileg rögzített megosztások és kötetek
@@ -198,6 +203,7 @@ A StorSimple a Felhőbeli tárolási követelmények további csökkentése érd
 > [!NOTE]
 > A virtuális tömbben tárolt adathalmazok nincsenek deduplikálva vagy tömörítve. Az összes ismétlődés és tömörítés közvetlenül az adatfelhőbe való továbbítás előtt történik.
 
+
 ### <a name="scheduled-and-on-demand-backups"></a>Ütemezett és igény szerinti biztonsági mentések
 
 A StorSimple adatvédelmi funkciói lehetővé teszik az igény szerinti biztonsági mentések létrehozását. Emellett az alapértelmezett biztonsági mentési ütemterv biztosítja, hogy naponta készítsen biztonsági másolatot az adatairól. A biztonsági mentések a felhőben tárolt növekményes Pillanatképek formájában készülnek. A pillanatképek, amelyek csak a legutóbbi biztonsági mentés óta végrehajtott módosításokat rögzítik, gyorsan létrehozhatók és visszaállíthatók. Ezek a pillanatképek kritikus fontosságúak lehetnek a vész-helyreállítási forgatókönyvekben, mert a másodlagos tárolási rendszereket (például szalagos biztonsági mentést) cserélik le, és szükség esetén lehetővé teszik az adatok adatközpontba vagy másodlagos helyre történő visszaállítását.
@@ -206,10 +212,10 @@ A StorSimple adatvédelmi funkciói lehetővé teszik az igény szerinti biztons
 
 A virtuális adatsorozatok StorSimple Eszközkezelő két fő példányban gyűjt személyes adatokat:
  - Riasztási felhasználói beállítások, ahol a felhasználók e-mail-címei konfigurálva vannak. Ezeket az információkat a rendszergazda törölheti. 
- - Azok a felhasználók, akik hozzáférhetnek a megosztásokon található adataihoz. Megjelenik a megosztási adatelérést elérő felhasználók listája, és exportálható. Ezt a listát a megosztások törlésekor is törli a rendszer.
+ - Azok a felhasználók, akik hozzáférhetnek a megosztáson lévő információhoz. Megjelenik a megosztási adatelérést elérő felhasználók listája, és exportálható. A rendszer törli a listát a megosztás törlésekor.
 
 További információkért tekintse meg a [Microsoft adatvédelmi szabályzatát a Trust Centerben](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [készítheti elő a virtuális tömb portált](storsimple-virtual-array-deploy1-portal-prep.md).

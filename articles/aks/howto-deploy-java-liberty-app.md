@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, AK, kubernetes
-ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508056"
+ms.locfileid: "99526890"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty vagy WebSphere Liberty szolgáltatással Azure Kubernetes Service (ak) fürtön
 
@@ -31,7 +31,7 @@ Ez az útmutató bemutatja, hogyan futtatható a Java, a Java EE, a [Jakarta EE]
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot a *Java-Liberty-Project* használatával az *eastus* helyen található az [Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create) paranccsal. A rendszer a Azure Container Registry (ACR) példány és az AK-fürt későbbi létrehozásához használja. 
+Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot a *Java-Liberty-Project* használatával az *eastus* helyen található az [Group Create](/cli/azure/group#az_group_create) paranccsal. A rendszer a Azure Container Registry (ACR) példány és az AK-fürt későbbi létrehozásához használja. 
 
 ```azurecli-interactive
 az group create --name java-liberty-project --location eastus
@@ -39,7 +39,7 @@ az group create --name java-liberty-project --location eastus
 
 ## <a name="create-an-acr-instance"></a>ACR-példány létrehozása
 
-Hozzon létre egy ACR-példányt az az [ACR Create](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az_acr_create) paranccsal. A következő példa egy *youruniqueacrname* nevű ACR-példányt hoz létre. Győződjön meg arról, hogy az *youruniqueacrname* egyedi az Azure-on belül.
+Hozzon létre egy ACR-példányt az az [ACR Create](/cli/azure/acr#az_acr_create) paranccsal. A következő példa egy *youruniqueacrname* nevű ACR-példányt hoz létre. Győződjön meg arról, hogy az *youruniqueacrname* egyedi az Azure-on belül.
 
 ```azurecli-interactive
 az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
@@ -70,7 +70,7 @@ docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
+Használja az [az aks create](/cli/azure/aks#az_aks_create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
 az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
@@ -87,13 +87,13 @@ Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-
 
 ### <a name="connect-to-the-aks-cluster"></a>Kapcsolódás az AK-fürthöz
 
-A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli) parancsot:
+A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks#az_aks_install_cli) parancsot:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
@@ -220,7 +220,7 @@ Nyisson meg egy webböngészőt a szolgáltatás külső IP-címéhez és portj�
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az az [Group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) paranccsal távolíthatja el az erőforráscsoportot, a Container Service-t, a tároló-beállításjegyzéket és az összes kapcsolódó erőforrást.
+Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az az [Group delete](/cli/azure/group#az_group_delete) paranccsal távolíthatja el az erőforráscsoportot, a Container Service-t, a tároló-beállításjegyzéket és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name java-liberty-project --yes --no-wait

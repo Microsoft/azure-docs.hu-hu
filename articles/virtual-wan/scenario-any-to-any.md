@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955275"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525788"
 ---
 # <a name="scenario-any-to-any"></a>Forgatókönyv: bármilyen
 
-A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Bármilyen szituációban bármely küllő elérheti egy másikat. Ha több központ létezik, a hub – hub útválasztás (más néven az Inter-hub) alapértelmezés szerint engedélyezve van a standard virtuális WAN-ban. Ezt a konfigurációt különböző módszerekkel hozhatja létre, például a Azure Portal vagy egy Azure rövid útmutató [sablon](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/)használatával. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md). 
+A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Bármilyen szituációban bármely küllő elérheti egy másikat. Ha több központ létezik, a hub – hub útválasztás (más néven az Inter-hub) alapértelmezés szerint engedélyezve van a standard virtuális WAN-ban. Ezt a konfigurációt különböző módszerekkel hozhatja létre, például a Azure Portal vagy egy Azure rövid útmutató [sablon](quickstart-any-to-any-template.md)használatával. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Tervezés
 

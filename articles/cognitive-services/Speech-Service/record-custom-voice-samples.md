@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 966b11e2c9a0f7ffc5e6ec9238080b9076d37af6
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572425"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526856"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
 
@@ -223,7 +223,7 @@ Végül hozza létre azt az *átiratot* , amely az egyes WAV-fájlokat a megfele
 
 Ha később szüksége van rájuk, archiválja az eredeti felvételeket biztonságos helyen. Őrizze meg a parancsfájlt és a jegyzeteket is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a felvételek feltöltésére és az egyéni hang létrehozására.
 

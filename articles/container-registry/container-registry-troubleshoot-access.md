@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052161"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525076"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -105,20 +105,20 @@ Kapcsolódó hivatkozások:
 
 ### <a name="configure-service-access"></a>Szolgáltatás-hozzáférés konfigurálása
 
-Jelenleg Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Emellett a következő szolgáltatások erőforrásai nem férnek hozzá a tároló-beállításjegyzékhez hálózati korlátozásokkal:
+Jelenleg egy hálózati korlátozásokkal rendelkező tároló-beállításjegyzékhez való hozzáférés nem engedélyezett több Azure-szolgáltatásból:
 
-* Azure DevOps Services 
-* Azure Container Instances
-* Azure Container Registry Tasks
+* Azure Security Center nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. 
+* Bizonyos Azure-szolgáltatások erőforrásai nem férnek hozzá hálózati korlátozásokkal rendelkező tároló-beállításjegyzékhez, beleértve a Azure App Service és a Azure Container Instances.
 
 Ha az Azure-szolgáltatások hozzáférése vagy integrálása szükséges a tároló beállításjegyzékével, távolítsa el a hálózati korlátozást. Távolítsa el például a beállításjegyzék saját végpontját, vagy távolítsa el vagy módosítsa a beállításjegyzék nyilvános hozzáférési szabályait.
+
+Január 2021-től kezdődően a hálózatra korlátozott beállításjegyzék konfigurálható úgy, hogy [engedélyezze a hozzáférést](allow-access-trusted-services.md) a megbízható szolgáltatások közül.
 
 Kapcsolódó hivatkozások:
 
 * [Security Center Azure Container Registry képvizsgálat](../security-center/defender-for-container-registries-introduction.md)
 * [Visszajelzés küldése](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
-* [Nyilvános IP-hálózati szabályok konfigurálása](container-registry-access-selected-networks.md)
-* [Privát csatlakozás Azure Container registryhez az Azure Private link használatával](container-registry-private-link.md)
+* [A megbízható szolgáltatások biztonságos elérésének engedélyezése a korlátozott hálózati tárolók beállításjegyzékében](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Speciális hibaelhárítás
@@ -140,5 +140,5 @@ Ha itt nem oldja meg a problémát, tekintse meg a következő beállításokat.
   * [Beállításjegyzékbeli bejelentkezés – problémamegoldás](container-registry-troubleshoot-login.md) 
   * [Beállításjegyzékbeli teljesítmény – problémamegoldás](container-registry-troubleshoot-performance.md)
 * [Közösségi támogatási](https://azure.microsoft.com/support/community/) lehetőségek
-* [Microsoft Q&A](/answers/products/)
+* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [Támogatási jegy megnyitása](https://azure.microsoft.com/support/create-ticket/)

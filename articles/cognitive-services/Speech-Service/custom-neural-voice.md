@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: 9e230ff4e84eba7b61846540fef2915765fa4f77
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509696"
+ms.locfileid: "99525262"
 ---
 # <a name="what-is-custom-neural-voice"></a>Mi az egyéni neurális hang?
 
@@ -51,7 +51,7 @@ Az egyéni neurális hang testreszabási képességeinek köszönhetően a neur�
 
 ## <a name="responsible-use-of-ai"></a>Az MI felelős használata
 
-Az egyéni neurális hang felelősségteljes használatának megismeréséhez tekintse meg az [átláthatóság megjegyzését](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice). A Microsoft átláthatósági megjegyzései segítenek megérteni, hogyan működik a mesterséges intelligencia technológiája, a választható rendszertulajdonosok pedig befolyásolhatják a rendszerteljesítményt és a működést, valamint a teljes rendszerre való gondolkodás fontosságát, beleértve a technológiát, a személyeket és a környezetet.
+Az egyéni neurális hang felelősségteljes használatának megismeréséhez tekintse meg az [átláthatóság megjegyzését](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context). A Microsoft átláthatósági megjegyzései segítenek megérteni, hogyan működik a mesterséges intelligencia technológiája, a választható rendszertulajdonosok pedig befolyásolhatják a rendszerteljesítményt és a működést, valamint a teljes rendszerre való gondolkodás fontosságát, beleértve a technológiát, a személyeket és a környezetet.
 
 ## <a name="next-steps"></a>Következő lépések
 

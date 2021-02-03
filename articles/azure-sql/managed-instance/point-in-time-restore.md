@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788349"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525381"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI használatával visszaállíthat 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. Nyissa meg az SQL felügyelt példányát, és válassza ki a visszaállítani kívánt adatbázist.
 3. Válassza a **visszaállítás** lehetőséget az adatbázis lapon:
 
@@ -162,7 +162,7 @@ $targetDatabaseName = "<target database name>"
 $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
 -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -176,7 +176,7 @@ Ha vissza szeretné állítani az adatbázist egy másik SQL-felügyelt példán
 $targetResourceGroupName = "<Resource group of target SQL Managed Instance>"
 $targetInstanceName = "<Target SQL Managed Instance name>"
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 56d3b36d17ee044ce7aba2337429c45123801ca5
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254512"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525568"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -126,7 +126,7 @@ A központilag [és küllős architektúrákat](/azure/architecture/reference-ar
 ## <a name="limitations"></a>Korlátozások 
 * A jogosult IP-címtartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre vonatkoznak.
-* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket](/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops)használni. 
+* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket](/azure/devops/pipelines/agents/agents?tabs=browser)használni. 
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
 * Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
 * Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 

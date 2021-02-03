@@ -4,17 +4,17 @@ description: A klasszikus riasztások elavultak. A riasztások lehetővé teszik
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 82923b461980fbc0740cad08a9e699765f17abc7
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015349"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525517"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik a Microsoft Azure klasszikus riasztásai?
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat.
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások [kimaradnak a nyilvános](./monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják.
 >
 
 A riasztások lehetővé teszik az adatfeltételek konfigurálását, és értesítést kapnak, ha a feltételek megfelelnek a legújabb figyelési adatnak.
@@ -82,7 +82,7 @@ A webhookok lehetővé teszik az automatizálást és a szervizelést, például
 - Azure logikai alkalmazás
 - harmadik féltől származó szolgáltatás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Információk kérése a riasztási szabályokról és a konfigurálásuk a használatával:
 
 * További információ a [metrikákkal](data-platform.md) kapcsolatban

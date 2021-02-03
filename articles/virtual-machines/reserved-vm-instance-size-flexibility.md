@@ -1,25 +1,25 @@
 ---
 title: Virtuális gépek méretének rugalmassága – Azure Reserved VM Instances
 description: A fenntartott VM-példányok esetében megtudhatja, hogy a foglalási kedvezmény mekkora adatsorozatot foglal magában.
-author: manish-shukla01
+author: yashesvi
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.author: yashesvi
+ms.openlocfilehash: e6e96ff41503751741c8afc2229d66fd596e0806
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855508"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525364"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>A Reserved VM Instances virtuális gépeinek méretrugalmassága
 
 A fenntartott VM-példányok vásárlásakor optimalizálhatja a példány méretének rugalmasságát vagy a kapacitás prioritását. A fenntartott VM-példányok optimalizálási beállításának beállításával és módosításával kapcsolatos további információkért lásd [a fenntartott VM-példányok optimalizálási beállításának módosítása](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)című témakört.
 
-Egy fenntartott virtuálisgép-példány, amely a példányok méretének rugalmasságára van optimalizálva, a megvásárolt foglalás a virtuális gépek (VM-EK) méretére is vonatkozhat ugyanabban a példány-méret rugalmassági csoportban. Ha például egy, a DSv2-sorozatban felsorolt virtuálisgép-mérethez (például Standard_DS5_v2) foglal le egy foglalást, akkor a foglalási kedvezmény a következő négy méretre is vonatkozhat, amely az adott példány méretének rugalmassági csoportjában szerepel:
+Egy fenntartott virtuálisgép-példány, amely a példányok méretének rugalmasságára van optimalizálva, a megvásárolt foglalás a virtuális gépek (VM-EK) méretére is vonatkozhat ugyanabban a példány-méret rugalmassági csoportban. Ha például a DSv2-sorozatban felsorolt virtuálisgép-mérethez (például Standard_DS3_v2) foglal le egy foglalást, akkor a foglalási kedvezmény vonatkozhat az adott példány méretének rugalmassági csoportjában felsorolt többi méretre:
 
 - Standard_DS1_v2
 - Standard_DS2_v2
@@ -50,6 +50,6 @@ Az alábbi CSV a példányok méretének rugalmassági csoportjai, a ArmSkuName 
 
 Megtartjuk a fájl URL-címét és a séma által rögzített sémát, hogy programozott módon használhassa ezt a fájlt. Az adatközpont hamarosan elérhető lesz az API-n keresztül is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Mi a Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md).

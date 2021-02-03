@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617374"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526415"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Ajánlott eljárások az Azure RBAC
 
@@ -42,6 +42,10 @@ A rendszerjogosultságú fiókok rosszindulatú cyber-támadások elleni védelm
 
 További információ: [Mi az Azure ad Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="assign-roles-to-groups-not-users"></a>Szerepkörök társítása csoportokhoz, felhasználók nélkül
+
+Ahhoz, hogy a szerepkör-hozzárendelések könnyebben felügyelhetők legyenek, ne rendeljen hozzá szerepköröket közvetlenül a felhasználókhoz. Ehelyett rendeljen hozzá szerepköröket a csoportokhoz. A szerepkörök a felhasználók helyett csoportokba való hozzárendelésével minimálisra csökkenthető a szerepkör-hozzárendelések száma, amely [előfizetések esetében legfeljebb 2 000 szerepkör-hozzárendelést](troubleshooting.md#azure-role-assignments-limit)tartalmaz. 
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure RBAC hibáinak megoldása](troubleshooting.md)

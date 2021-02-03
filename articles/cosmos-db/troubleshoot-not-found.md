@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b112cc80984a761e780f134731476f9dff4f687
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96017559"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525771"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB nem található kivételek diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -102,7 +102,7 @@ Várjon, amíg az indexelés felveszi vagy megváltoztatja az indexelési házir
 Az az adatbázis vagy tároló, amelyben az adott eleme található, törölve lett.
 
 #### <a name="solution"></a>Megoldás:
-1. [Állítsa vissza](./online-backup-and-restore.md#request-data-restore-from-a-backup) a szülő erőforrást, vagy hozza létre újra az erőforrásokat.
+1. [Állítsa vissza](./configure-periodic-backup-restore.md#request-restore) a szülő erőforrást, vagy hozza létre újra az erőforrásokat.
 1. Hozzon létre egy új erőforrást a törölt erőforrás cseréjéhez.
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. a tárolók/gyűjtemények nevei megkülönböztetik a kis-és nagybetűket
@@ -111,7 +111,7 @@ A tárolók/gyűjtemények nevei megkülönböztetik a kis-és nagybetűket a Co
 #### <a name="solution"></a>Megoldás:
 Ügyeljen arra, hogy a pontos nevet használja a Cosmos DBhoz való csatlakozáskor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.
 * A Azure Cosmos DB Java v4 SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-java-sdk-v4-sql.md) .

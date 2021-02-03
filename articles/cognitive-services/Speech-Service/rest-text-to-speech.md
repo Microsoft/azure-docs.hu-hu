@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 225fc83133aba0a7d669f36dc9c8e7cd20c8e42e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b4a4fa8a207320a5867b6cdf1dc347bbb2f453af
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507519"
+ms.locfileid: "99525738"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
@@ -60,9 +60,11 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 | Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Dél-Afrika északi régiója | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA nyugati középső régiója | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -211,8 +213,7 @@ Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fe
 
 | Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
-| `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
+| `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 | `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml` . | Kötelező |
 | `X-Microsoft-OutputFormat` | Megadja az audió kimeneti formátumot. Az elfogadott értékek teljes listájáért lásd: [hang kimenetek](#audio-outputs). | Kötelező |
 | `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél rövidebbnek kell lennie. | Kötelező |
@@ -278,5 +279,5 @@ Ha a HTTP-állapot értéke `200 OK` , a válasz törzse egy hangfájlt tartalma
 ## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
-- [Aszinkron szintézis a hosszú formátumú hangokhoz](./long-audio-api.md)
+- [Aszinkron szintézis a hosszú formátumú hangokhoz](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Bevezetés a Custom Voice szolgáltatásba](how-to-custom-voice.md)

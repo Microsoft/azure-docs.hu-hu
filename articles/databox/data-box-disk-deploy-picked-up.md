@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d529c5900d851368d60099091bb5745660036dea
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 542eed34f2be05cce3829baab2f07a5c58413ba0
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029889"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526296"
 ---
 ::: zone target="docs"
 
@@ -30,7 +30,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt hozzákezd, mindenképp végezze el az [ adatok Azure Data Box Diskre történő másolását és ellenőrzését](data-box-disk-deploy-copy-data.md) ismertető oktatóanyagot.
+Mielőtt elkezdené, győződjön meg arról, hogy végrehajtotta a következő [oktatóanyagot: az Adatmásolás Azure Data Box diskre és ellenőrzésre](data-box-disk-deploy-copy-data.md).
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk visszaküldése
 
@@ -63,7 +63,7 @@ Végezze el a következő lépéseket, ha az Egyesült Államokba vagy Kanadába
 
     - Hívja fel a helyi UPS-t (országtól/régiótól függően ingyenes szám).
     - A hívás során adja meg a visszaszállítás nyomtatott címkén látható nyomkövetési számát.
-    - Ha nem adja meg a nyomkövetési számot, felárat kell fizetnie a UPS-nek a csomagfelvételkor.
+    - Ha a nyomkövetési szám nincs feltüntetve, a UPS-nek további díjat kell fizetnie a felvétel során.
     - A csomagfelvétel ütemezése helyett a legközelebbi átadóhelyen is leadhatja a Data Box Disket.
 
 
@@ -83,7 +83,7 @@ Végezze el a következő lépéseket, ha Európába vagy az Egyesült Királys�
 
 Az Ausztráliában található Azure-adatközpontok egy további biztonsági értesítéssel rendelkeznek. Az összes bejövő csomagnak előzetes értesítéssel kell rendelkeznie. Az Ausztráliában való csomagfelvételhez tegye a következőket.
 
-1. Használja a kapott visszaküldési címkét, és győződjön meg arról, hogy a TAU-kód (hivatkozási szám) rá van írva. Ha a megadott szállítási címke hiányzik, vagy ha bármilyen más problémája van, küldjön e-mailt a [Data Box ázsiai részlegének](mailto:adbo@microsoft.com). Adja meg a rendelés nevét a tárgy fejlécében, valamint az észlelt probléma részleteit.
+1. Használja a kapott visszaküldési címkét, és győződjön meg arról, hogy a TAU-kód (hivatkozási szám) rá van írva. Ha a megadott szállítási címke hiányzik, vagy ha bármilyen más problémája van, küldjön e-mailt a [Data Box ázsiai részlegének](mailto:adbo@microsoft.com). Adja meg a megrendelés nevét a tulajdonos fejlécében, és a probléma részleteit.
 2. Ragassza a címkét a dobozra.
 3. A https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference hivatkozásra kattintva foglaljon egy csomagfelvételt az interneten.
 
@@ -119,13 +119,13 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 1. Mindenképpen adja meg a visszaküldési fuvarlevelet.
 2. Csomagfelvétel kérése, ha van fuvarlevél:
     1. Hívja a *Quantium Solutions Internationalt* a 070-8231-1418 telefonszámon munkaidőben (hétfőtől péntekig 10:00 és 17:00 között). Hivatkozzon a *Microsoft Azure-csomagfelvételre*, és adja meg a szolgáltatáskérelem számát az átvétel egyeztetéséhez.  
-    2. Ha a telefonvonal foglalt, küldjön e-mail a `microsoft@rocketparcel.com` címre a *Microsoft Azure-csomagfelvétel* tárggyal, és hivatkozásként használja a szolgáltatásra vonatkozó kérelem számát.
-    3. Ha a futár nem érkezik meg a csomagfelvételért, hívja a *Quantium Solutions International* telefonszámát alternatív megoldásokért.
+    2. Ha a forródrót foglalt, e-mail [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) -címet, az e-mail tárgyát *Microsoft Azure pickupot* és a szolgáltatási kérelmek számát.
+    3. Ha a futár nem érkezik a gyűjteményhez, a *Quantium Solutions nemzetközi* forródrótot hívja meg Alternatív megoldásként.
     4. Megerősítő e-mailt kap a csomagátvétel ütemezéséről.
-3. Csak akkor végezze el ezt a lépést, ha nincs meg a fuvarlevél. Csomagfelvétel kérése:
-    1. Hívja a *Quantium Solutions Internationalt* a 070-8231-1418 telefonszámon munkaidőben (hétfőtől péntekig 10:00 és 17:00 között). Hivatkozzon a *Microsoft Azure-csomagfelvételre*, és adja meg a szolgáltatáskérelem számát az átvétel egyeztetéséhez. Jelezze, hogy új fuvarlevélre van szüksége a csomagfelvétel megszervezéséhez. Adja meg a küldőt (ügyfél), a címzett adatait (Azure Datacenter) és a hivatkozási számot (szolgáltatási kérelem száma). 
-    2. Ha a telefonvonal foglalt, küldjön e-mail a `microsoft@rocketparcel.com` címre a *Microsoft Azure-csomagfelvétel* tárggyal, és hivatkozásként használja a szolgáltatásra vonatkozó kérelem számát.
-    3. Ha a futár nem érkezik meg a csomagfelvételért, hívja a *Quantium Solutions International* telefonszámát alternatív megoldásokért.
+3. Ezt a lépést csak akkor hajtsa végre, ha a fuvarlevél nem szerepel. Csomagfelvétel kérése:
+    1. Hívja a *Quantium Solutions Internationalt* a 070-8231-1418 telefonszámon munkaidőben (hétfőtől péntekig 10:00 és 17:00 között). Hivatkozzon a *Microsoft Azure-csomagfelvételre*, és adja meg a szolgáltatáskérelem számát az átvétel egyeztetéséhez. Jelezze, hogy új fuvarlevélre van szüksége a csomagfelvétel megszervezéséhez. Adja meg a küldőt (ügyfél), a címzett adatait (Azure Datacenter) és a hivatkozási számot (szolgáltatási kérelem száma).
+    2. Ha a forródrót foglalt, e-mail [microsoft@rocketparcel.com](mailto:microsoft@rocketparcel.com) -címet, az e-mail tárgyát *Microsoft Azure pickupot* és a szolgáltatási kérelem számát hivatkozásként.
+    3. Ha a futár nem érkezik a gyűjteményhez, a *Quantium Solutions nemzetközi* forródrótot hívja meg Alternatív megoldásként.
     4. Ha telefonon intézi a kérelmet, szóbeli megerősítést kap.
 
 ### <a name="singapore"></a>[Szingapúr](#tab/in-singapore)
@@ -152,7 +152,7 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
    > * 15 óra előtt a csomagfelvétel a következő munkanapon 9 és 13 óra között lesz.
    > * 15 óra előtt a csomagfelvétel a következő munkanapon 14 és 18 óra között lesz.
 
-   Ha bármilyen probléma merülne fel, forduljon a Data Box ázsiai részlegéhez a következő címen: adbo@microsoft.com. Adja meg a feladat nevét a tárgy fejlécében, valamint az észlelt problémát.
+   Ha bármilyen probléma merül fel, lépjen kapcsolatba a Data Box Operations Asia-vel a következő címen: [adbo@microsoft.com](mailto:adbo@microsoft.com) . Adja meg a feladat nevét a tárgy fejlécében, valamint az észlelt problémát.
 
 3. Adja át a csomagot a futárnak.
 
@@ -205,7 +205,7 @@ Végezze el a következő lépéseket, ha Kínába küldi vissza az eszközt.
 
 3. A csomagfelvétel megrendelése után megerősítő e-mailt kap a FedExtől.  
 
-4. Ha problémába ütközik, küldjön e-mailt a(z) [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) címre. Az e-mailben írja meg a tapasztalt probléma részleteit, tárgyként pedig adja meg a rendelés nevét.
+4. Ha bármilyen probléma merül fel, az e-mailben [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) adja meg a problémák részleteit, és a tulajdonos: sorban helyezze el a rendelés nevét.
 
 #### <a name="premier-customer-care-contact-information"></a>Premier Customer Care – kapcsolattartási adatok
 
@@ -229,20 +229,20 @@ Végezze el a következő lépéseket, ha Kínába küldi vissza az eszközt.
 
 ### <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
-Ha a Data Box Disket az Egyesült Államok államigazgatási szerveinél, Japánban, Szingapúrban, Koreában, Nyugat-Európában, a Dél-afrikai Köztársaságban vagy Indiában használja, és a rendelés létrehozása során kiválasztotta az önállóan felügyelt szállítás lehetőséget, kövesse az alábbi utasításokat.
+Ha Data Box Diskt használ az USA kormánya, Japán, Szingapúr, Korea, Egyesült Királyság, Nyugat-Európa, Ausztrália, Dél-Afrika vagy India területén, és a rendelés létrehozása során kiválasztotta az önfelügyelt szállítási lehetőséget, kövesse az alábbi utasításokat.
 
 1. Az Azure Portalon lépjen a rendeléséhez tartozó **Áttekintés** panelre. Az **Átvétel ütemezése** lehetőség kiválasztásakor tekintse át a megjelenő utasításokat. Egy hitelesítési kódot fog látni, amelyre a rendelés feladásakor lesz szüksége.
 
-2. Ha készen áll az eszköz visszaküldésére, az alábbi sablon használatával küldjön e-mailt az Azure Data Box üzemeltetési csapatának.
+2. Küldjön e-mailt az Azure Data Box operatív csapatnak a következő sablonnal, amikor készen áll az eszköz visszaküldésére.
 
     ```
     To: adbops@microsoft.com
     Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body:
      a. Order name
-     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop-off.
     ```
-3. Az Azure Data Box üzemeltetési csapata Önnel együttműködésben fogja előkészíteni az Azure-adatközpont számára történő feladást.
+3. A Azure Data Box Operations csapat Önnel együttműködve gondoskodik az Azure-adatközpont kivonásáról.
 
 ---
 
@@ -256,7 +256,7 @@ Ebben az oktatóanyagban az Azure Data Box Diskkel kapcsolatos alábbi témakör
 >
 > * A Data Box Disk elküldése a Microsoftnak
 
-A következő oktatóanyag a Data Box Diskről az Azure Storage-tárfiókra való adatfeltöltés ellenőrzését mutatja be.
+Folytassa a következő útmutatóval, amelyből megtudhatja, hogyan ellenőrizheti az adatok feltöltését Data Box Diskról az Azure Storage-fiókba.
 
 > [!div class="nextstepaction"]
 > [Az Azure Data Box Diskről végzett adatfeltöltés ellenőrzése](./data-box-disk-deploy-upload-verify.md)

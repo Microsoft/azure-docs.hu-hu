@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurál
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4022838575ca53608a802a6be95e150778db6ac7
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915726"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525974"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -71,6 +71,7 @@ Mivel ez a folyamat tárolási szinten van, [díjszabási vonzatok](https://azur
 >- A választás után akár 48 órát is igénybe vehet, hogy a biztonsági mentési elemek elérhetők legyenek a másodlagos régiókban.
 >- Az Azure-beli virtuális gépekhez jelenleg CRR csak az Azure Resource Manger Azure-beli virtuális gépek esetében támogatott. A klasszikus Azure-beli virtuális gépek nem támogatottak.  Ha a további felügyeleti típusok támogatják a CRR-t, akkor a **rendszer automatikusan** regisztrálja őket.
 >- A régiók közötti visszaállítás **jelenleg nem állítható vissza** GRS vagy LRS, ha az első alkalommal kezdeményezték a védelmet.
+>- Jelenleg a másodlagos régió [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) akár 12 órát is igénybe vehet az elsődleges régióból, bár az [olvasási hozzáférésű geo-REDUNDÁNS tárolás (ra-GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) replikációja 15 percet vesz igénybe.
 
 ### <a name="configure-cross-region-restore"></a>Régiók közötti visszaállítás konfigurálása
 

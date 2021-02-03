@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929735"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526687"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -21,7 +21,7 @@ Ez a dokumentum a következő forgatókönyvek támogatásához használható:
 * [Rendelkezésre állási készletek](../virtual-machines/windows/tutorial-availability-sets.md) által támogatott AK-fürt áttelepítése [Virtual Machine Scale sets](../virtual-machine-scale-sets/overview.md)
 * AK-fürt áttelepítése [szabványos SKU Load Balancer](./load-balancer-standard.md) használatára
 * Migrálás [Azure Container Serviceról (ACS) – 2020 és AK között, január 31-ig](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)
-* Migrálás az [AK-ból motorról](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) AK-ra
+* Migrálás az [AK-ból motorról](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) AK-ra
 * Áttelepítés nem Azure-alapú Kubernetes-fürtökről AK-ra
 * Meglévő erőforrások áthelyezése egy másik régióba
 

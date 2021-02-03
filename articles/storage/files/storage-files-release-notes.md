@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 4dd1941e6a749c2ccf7ca082ab89ef2a70baa0d6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 4f2bdf3d5c34ffb4f3ec95c27bbdaf312adb4204
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509536"
+ms.locfileid: "99526398"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,7 +25,7 @@ A következő Azure File Sync-ügynök verziói támogatottak:
 
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
-| V 11,2 kiadás – [KB4539952](https://support.microsoft.com/en-us/help/4539952)| 11.2.0.0 | 2021. február 2. | Támogatott – Berepülés |
+| V 11,2 kiadás – [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021. február 2. | Támogatott – Berepülés |
 | V 11.1 kiadás – [KB4539951](https://support.microsoft.com/en-us/help/4539951)| 11.1.0.0 | November 4., 2020 | Támogatott |
 | V 10.1 kiadás – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 2020. június 5. | Támogatott |
 | 2020. május kumulatív frissítés – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | Május 19., 2020 | Támogatott |

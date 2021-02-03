@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 8ef0fedcbf7ce06063db22fb345a0711acddcb4d
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475590"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526381"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -31,39 +31,8 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 ## <a name="planned-changes"></a>Tervezett változások
 
-- [A Kubernetes munkaterhelés-védelmi javaslatai hamarosan elérhetők lesznek általánosan elérhetővé (GA)](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)
-
-
-### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>A Kubernetes munkaterhelés-védelmi javaslatai hamarosan elérhetők lesznek általánosan elérhetővé (GA)
-
-**Változás becsült dátuma:** Február 2021
-
-A [Kubernetes-munkaterhelések védelme](kubernetes-workload-protections.md) című cikkben ismertetett Kubernetes munkaterhelés-védelmi javaslatok jelenleg előzetes verzióban érhetők el. Habár egy javaslat előzetes verzióban érhető el, nem jelenik meg az erőforrás állapota, és nem szerepel a biztonságos pontszám számításában.
-
-A javaslatok hamarosan elérhetők lesznek általánosan elérhetővé (GA), így a pontszám kiszámítása is *megtörténik.* Ha már nem szervizelte őket, ez a biztonsági pontszám enyhe kihatását okozhatja.
-
-Ha lehetséges, javítsa őket (ha szeretné megismerni, hogyan javíthatja az [ajánlásokat a Azure Security Center](security-center-remediate-recommendations.md)).
-
-A Kubernetes munkaterhelés-védelmi javaslatai a következők:
-
-- A Kubernetes Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön
-- A tároló CPU-és memória-korlátozásait kényszeríteni kell
-- Az emelt szintű tárolókat el kell kerülni
-- Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára
-- A jogosultság-eszkalációs tárolót el kell kerülni
-- A tárolók futtatását root felhasználóként el kell kerülni
-- A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni
-- A minimálisan privilegizált Linux-funkciókat kell kikényszeríteni a tárolók számára
-- A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni
-- A tárolóknak csak az engedélyezett portok figyelésére kell figyelniük
-- A szolgáltatásoknak csak a megengedett portok figyelésére kell figyelniük
-- A gazdagép hálózatkezelésének és portjainak használatát korlátozni kell
-- A tárolók AppArmor-profiljának felülbírálását vagy letiltását korlátozni kell
-- A tároló lemezképeit csak a megbízható kibocsátásiegység-forgalmi jegyzékből kell telepíteni             
-
-További információ ezekről a javaslatokról a [Kubernetes-munkaterhelések elleni védelemben](kubernetes-workload-protections.md).
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult 
 
@@ -83,11 +52,7 @@ További információ ezekről a javaslatokról a [biztonsági javaslatok hivatk
 
 **Változás becsült dátuma:** Q2 2021
 
-Az **SQL-adatbázisokban a bizalmas adatokra** vonatkozó ajánlás aktuális **verzióját a Microsoft adatbesorolási** stratégiájával jobban illeszkedő új verzióra cseréli a rendszer. Ennek eredményeképpen:
-
-- A javaslat a továbbiakban nem lesz hatással a biztonságos pontszámra
-- A biztonsági vezérlő ("adatbesorolás alkalmazása") már nem lesz hatással a biztonságos pontszámra
-- Az ajánlás azonosítója is módosul (jelenleg b0df6f56-862d-4730-8597-38c0fd4ebd59)
+Az **SQL-adatbázisokban található bizalmas adatokra** **vonatkozó ajánlást a Microsoft** adatbesorolási stratégiájával jobban illeszkedő új verzióra cseréli a rendszer. Ennek eredményeképpen a javaslat azonosítója is módosul (jelenleg b0df6f56-862d-4730-8597-38c0fd4ebd59).
 
 
 

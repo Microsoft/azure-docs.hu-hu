@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 02/01/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225158"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525144"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Többtényezős hitelesítés engedélyezése az Azure Active Directory B2C-ben
 
@@ -41,9 +41,12 @@ Ez a funkció megkönnyíti az alkalmazások számára a következő forgatókö
 1. Válassza ki azt a felhasználói folyamatot, amelynek engedélyezni szeretné az MFA-t. Például *B2C_1_signinsignup*.
 1. Válassza ki a **Tulajdonságok** elemet.
 1. A **többtényezős hitelesítés** szakaszban válassza ki a kívánt **MFA-módszert**, majd az **MFA-kényszerítés** területen válassza az **Always on vagy a** **feltételes (ajánlott)** lehetőséget.
-  > [!NOTE]
-  > Ha a **feltételes (ajánlott)** lehetőséget választja, hozzá kell adnia [egy feltételes hozzáférési szabályzatot](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) , és meg kell adnia azokat az alkalmazásokat, amelyekre alkalmazni szeretné a szabályzatot.
-1. Kattintson a Mentés gombra. Az MFA mostantól engedélyezve van ennél a felhasználói folyamatnál.
+   > [!NOTE]
+   >
+   > - Ha a **feltételes (ajánlott)** lehetőséget választja, hozzá kell adnia [egy feltételes hozzáférési szabályzatot](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) , és meg kell adnia azokat az alkalmazásokat, amelyekre alkalmazni szeretné a szabályzatot.
+   > - A többtényezős hitelesítés (MFA) alapértelmezés szerint le van tiltva a regisztrációs felhasználói folyamatok esetében. Engedélyezheti az MFA használatát a felhasználói folyamatokban a telefonos regisztrációval, de mivel a telefonszámot elsődleges azonosítóként használja, az egyszeri e-mail-jelszó az egyetlen lehetőség a második hitelesítési tényezőhöz.
+
+1. Kattintson a **Mentés** gombra. Az MFA mostantól engedélyezve van ennél a felhasználói folyamatnál.
 
 A **felhasználói folyamat futtatásával** ellenőrizheti a felhasználói élményt. Erősítse meg a következő helyzetet:
 

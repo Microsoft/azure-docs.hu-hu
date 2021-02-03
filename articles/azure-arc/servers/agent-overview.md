@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 01/08/2021
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5f12ea90a4398b63eaa19a1fc5a375c15bdfa8c5
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033965"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526364"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -116,9 +116,9 @@ Az előzetes verziójú ügynököknek (0,11-es és alacsonyabb verzió) a köve
 |`agentserviceapi.azure-automation.net`|Vendégkonfiguráció|
 |`*-agentservice-prod-1.azure-automation.net`|Vendégkonfiguráció|
 
-Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](../../virtual-network/network-security-groups-overview.md#service-tags).
+Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. A JSON-fájlban szereplő információk az egyes szolgáltatási címkéknek megfelelő IP-címtartományok aktuális időpontra vonatkozó listája. Az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
 
-Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-címtartomány információi mellett is meg kell adni, mivel a legtöbb szolgáltatás jelenleg nem rendelkezik szolgáltatás-címkézési regisztrációval. Ennek megfelelően az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
+További információkért tekintse át a [szolgáltatási címkék áttekintése](../../virtual-network/service-tags-overview.md)című témakört.
 
 ### <a name="register-azure-resource-providers"></a>Azure-erőforrás-szolgáltatók regisztrálása
 
@@ -195,7 +195,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
-    |Név |Alapértelmezett érték |Leírás |
+    |Name |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -258,7 +258,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre. Ezek a változók a ben vannak beállítva `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Név |Alapértelmezett érték |Leírás |
+    |Name |Alapértelmezett érték |Leírás |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -268,7 +268,7 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure arc-kompatibilis kiszolgálók kiértékelésének megkezdéséhez kövesse a [hibrid gépek az Azure-ba való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).
 

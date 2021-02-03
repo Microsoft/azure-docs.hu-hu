@@ -2,13 +2,13 @@
 title: Tárolórendszerképek importálása
 description: A tároló lemezképeit az Azure API-k használatával importálhatja egy Azure Container registrybe anélkül, hogy a Docker-parancsokat kellene futtatnia.
 ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/15/2021
+ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019973"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524498"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Tároló-lemezképek importálása egy tároló-beállításjegyzékbe
 
@@ -35,6 +35,11 @@ A tároló-lemezképek importálásához ehhez a cikkhez az Azure CLI-t Azure Cl
 > [!NOTE]
 > Ha azonos tároló-lemezképeket kell terjeszteni több Azure-régióban, Azure Container Registry a [geo-replikációt](container-registry-geo-replication.md)is támogatja. Ha földrajzilag replikál egy beállításjegyzéket (prémium szintű szolgáltatási szint szükséges), egyszerre több régiót is felhasználhat, amelyek azonos képpel és címkékkel rendelkeznek egyetlen beállításjegyzékből.
 >
+
+> [!IMPORTANT]
+> A két Azure Container-nyilvántartó közötti Képimportálási változás a 2021-as januári értékkel lett bevezetve:
+> * A hálózatra korlátozott Azure Container Registry-be vagy abból történő importáláshoz a korlátozott beállításjegyzéknek engedélyeznie kell a [**megbízható szolgáltatások hozzáférését**](allow-access-trusted-services.md) a hálózat megkerüléséhez. Alapértelmezés szerint a beállítás engedélyezve van, ami lehetővé teszi az importálást. Ha a beállítás nincs engedélyezve egy olyan újonnan létrehozott beállításjegyzékben, amely privát végponttal vagy a beállításjegyzék tűzfalszabályok szabályaival rendelkezik, az importálás sikertelen lesz. 
+> * Egy meglévő, az importálás forrásaként vagy célként használt, hálózatra korlátozott Azure Container registryben ez a hálózati biztonsági funkció nem kötelező, de ajánlott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -92,6 +97,8 @@ Az Azure Container registryből is importálhat rendszerképet ugyanabban az AD-
 * A beállításjegyzék lehet ugyanabban a Active Directory-bérlőben vagy egy másik Azure-előfizetésben.
 
 * Előfordulhat, hogy a forrás beállításjegyzékhez [való nyilvános hozzáférés](container-registry-access-selected-networks.md#disable-public-network-access) le van tiltva. Ha a nyilvános hozzáférés le van tiltva, adja meg a forrás beállításjegyzéket erőforrás-azonosító alapján a beállításjegyzék bejelentkezési kiszolgálójának neve helyett.
+
+* Ha a forrás-és/vagy a célként megadott beállításjegyzékben van egy magánhálózati vagy beállításjegyzékbeli tűzfalszabály, győződjön meg arról, hogy a korlátozott beállításjegyzék [lehetővé teszi a megbízható szolgáltatások](allow-access-trusted-services.md) számára a hálózat elérését.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Importálás ugyanabba az előfizetésbe tartozó beállításjegyzékből
 
@@ -173,7 +180,7 @@ az acr import \
   --password <password>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan importálhatja a tároló lemezképeit egy nyilvános beállításjegyzékből vagy egy másik privát beállításjegyzékből egy Azure Container registrybe. További Képimportálási lehetőségekért tekintse meg az az [ACR import][az-acr-import] parancs-referenciát. 
 

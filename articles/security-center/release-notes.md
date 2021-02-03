@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916463"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526619"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -29,6 +29,49 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 > [!TIP]
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
+
+
+## <a name="february-2021"></a>Február 2021
+
+A februári frissítések a következők:
+
+- [Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon](#direct-link-to-policy-from-recommendation-details-page)
+- [Az SQL-adatbesorolásra vonatkozó javaslat már nem befolyásolja a biztonságos pontszámot](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+
+### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)
+
+Örömmel jelentjük be, hogy a Kubernetes munkaterhelés-védelemre vonatkozó javaslatok általános elérhetősége (GA).
+
+Annak biztosítása érdekében, hogy a Kubernetes-munkaterhelések alapértelmezés szerint biztonságosak legyenek, Security Center Kubernetes-szinten megerősítő javaslatokat adott hozzá, beleértve a Kubernetes-belépésvezérlés használatával történő kényszerítési lehetőségeket.
+
+Ha a Kubernetes Azure Policy-bővítménye telepítve van az Azure Kubernetes Service-(ak-) fürtön, a Kubernetes API-kiszolgálónak küldött összes kérést az előre meghatározott ajánlott eljárások határozzák meg. Ezután konfigurálhatja az ajánlott eljárások betartatását és a jövőbeli munkaterhelések megadását.
+
+Megadhatja például, hogy az emelt szintű tárolók ne legyenek létrehozva, és minden jövőbeli kérelem le lesz tiltva.
+
+További információ a [munkaterhelések elleni védelemben – ajánlott eljárások a Kubernetes belépésvezérlés használatával](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
+
+> [!NOTE]
+> Habár a javaslatok előzetes verzióban voltak, nem tudták nem megfelelő állapotba helyezni az AK-beli fürterőforrás-erőforrásokat, és nem szerepeltek a biztonságos pontszám számításában. Ebben a GA-közleményben ezek a pontszám kiszámításakor szerepelnek. Ha már nem szervizelte őket, ez a biztonsági pontszám enyhe kihatását okozhatja. Ha lehetséges, javítsa azokat a [Azure Security Centerban található javaslatok szervizelése](security-center-remediate-recommendations.md)című témakörben leírtak szerint.
+
+
+### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon
+
+A javaslatok részleteinek áttekintéséhez gyakran hasznos, ha látni szeretné a mögöttes szabályzatot. A szabályzat által támogatott minden javaslathoz van egy új hivatkozás a javaslat részletei lapról:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Hivatkozás Azure Policy lapra a javaslatot támogató konkrét szabályzathoz":::
+
+Ezzel a hivatkozással megtekintheti a szabályzat definícióját, és áttekintheti az értékelési logikát. 
+
+Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási útmutatójában](recommendations-reference.md), akkor a szabályzat-definíciós lapokra mutató hivatkozásokat is láthatja:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok hivatkozási oldaláról":::
+
+
+### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>Az SQL-adatbesorolásra vonatkozó javaslat már nem befolyásolja a biztonságos pontszámot
+
+Az **SQL-adatbázisokban lévő bizalmas adatokra vonatkozó ajánlás besorolása** nem befolyásolja a biztonságos pontszámot. Ez az egyetlen javaslat az **adatbesorolás** biztonságának szabályozására, hogy a vezérlő most a 0 értékkel rendelkező biztonságos pontszám legyen.
+
 
 
 ## <a name="january-2021"></a>2021. január
@@ -102,9 +145,12 @@ További információ a [Azure Security Center biztonságos pontszámáról és 
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>A Secure score API általánosan elérhető (GA)
 
-Most már elérheti a pontszámát a [Secure score API](/rest/api/securitycenter/securescores/)-n keresztül. Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Használhatja például a **Secure scores** API-t egy adott előfizetés pontszámának lekéréséhez. Emellett a **Secure score Controls** API használatával is listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát.
+Most már elérheti a pontszámát a [Secure score API](/rest/api/securitycenter/securescores/)-n keresztül. Az API-módszerek lehetővé teszik az adatlekérdezés rugalmasságát és a biztonságos pontszámok saját jelentési mechanizmusának elkészítését az idő múlásával. Például:
 
-A biztonságos pontszám API-val lehetséges külső eszközökre vonatkozó példákat a [GitHub-Közösség biztonságos pontszám területén](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)tekintheti meg.
+- egy adott előfizetés pontszámának beszerzéséhez használja a **Secure scores** API-t
+- a **Secure score Controls** API használatával listázhatja az előfizetések biztonsági vezérlőit és aktuális pontszámát
+
+Ismerje meg a [GitHub-Közösség biztonságos pontszám területén](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)elérhető, a biztonságos pontszám API-val lehetséges külső eszközöket.
 
 További információ a [Azure Security Center biztonságos pontszámáról és biztonsági vezérlőinek](secure-score-security-controls.md).
 
@@ -156,7 +202,7 @@ További információ:
 
 Kiterjesztjük a mentesítési képességet a teljes javaslatok befoglalására. További lehetőségeket biztosít az előfizetések, a felügyeleti csoportok és az erőforrások Security Center által nyújtott biztonsági javaslatok finomhangolásához.
 
-Időnként előfordulhat, hogy az erőforrás nem kifogástalan állapotú, ha ismeri a problémát egy olyan külső eszköz, amelyet Security Center még nem észlelt. Vagy egy javaslat olyan hatókörben fog megjelenni, amelyben úgy érzi, hogy nem tartozik hozzá. Előfordulhat, hogy a javaslat nem megfelelő egy adott előfizetéshez. Vagy talán a szervezete egyszerűen úgy döntött, hogy elfogadja az adott erőforrással vagy javaslattal kapcsolatos kockázatokat.
+Időnként előfordulhat, hogy az erőforrás nem kifogástalan állapotú, ha ismeri a problémát egy olyan külső eszköz, amelyet Security Center még nem észlelt. Vagy egy javaslat olyan hatókörben fog megjelenni, amelyben úgy érzi, hogy nem tartozik hozzá. Előfordulhat, hogy a javaslat nem megfelelő egy adott előfizetéshez. Vagy lehet, hogy a szervezete úgy döntött, hogy elfogadja az adott erőforrással vagy javaslattal kapcsolatos kockázatokat.
 
 Ezzel az előzetes verziójú szolgáltatással mostantól kivételt hozhat létre a következőhöz:
 
@@ -233,7 +279,7 @@ Ha folyamatos exportálást határoz meg, állítsa be az Exportálás gyakoris�
 
 :::image type="content" source="media/release-notes/export-frequency.png" alt-text="A folyamatos exportálás gyakoriságának kiválasztása":::
 
-- **Streaming** – az értékelések valós időben lesznek elküldve, amikor egy erőforrás állapota frissül (ha nem történik frissítés, a rendszer nem küldi el az adatküldést).
+- **Folyamatos átvitel** – az értékelések valós időben lesznek elküldve, amikor egy erőforrás állapota frissül (ha nem történik frissítés, a rendszer nem küldi el az adatküldést).
 - **Pillanatképek** – az összes megfelelőségi értékelés aktuális állapotának pillanatképét hetente küldi el a rendszer (ez egy előzetes verziójú funkció a biztonságos pontszámok és a szabályozási megfelelőségi adatok heti pillanatképének elkészítéséhez).
 
 További információ a funkció teljes képességeiről a Security Center- [adat folyamatos exportálásával](continuous-export.md)
@@ -347,7 +393,7 @@ A Azure Security Center leltár lapja a következő változásokkal frissült:
 - Az eszköztárhoz hozzáadott **útmutatók és visszajelzések** . Ekkor megnyílik egy ablaktábla, amely a kapcsolódó információkra és eszközökre mutató hivatkozásokat tartalmaz. 
 - Az **előfizetések szűrő** az erőforrások számára elérhető alapértelmezett szűrőkhöz lett hozzáadva.
 - A **lekérdezési hivatkozás megnyitása** az aktuális szűrési beállítások Azure Resource Graph-lekérdezésként való megnyitásához (korábbi nevén "View in Resource Graph Explorer").
-- Az egyes szűrők **operátori beállításai** . Mostantól a "=" helyett további logikai operátorokat is választhat. Előfordulhat például, hogy az összes olyan erőforrást meg kívánja találni, amelynek a címei tartalmazzák a "titkosítás" karakterláncot. 
+- Az egyes szűrők **operátori beállításai** . Most több logikai operátor közül választhat, amelyek nem a "=". Előfordulhat például, hogy az összes olyan erőforrást meg kívánja találni, amelynek a címei tartalmazzák a "titkosítás" karakterláncot. 
 
     :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Az Asset Inventory szűrők operátori beállításának vezérlői":::
 
@@ -358,7 +404,7 @@ További információ a leltárban az [erőforrások az eszközök leltározás�
 
 A "Web Apps szolgáltatásnak az összes bejövő kérelemhez SSL-tanúsítványt kell igényelnie" a biztonsági vezérlő a **hozzáférés és az engedélyek kezelése** (maximum 4 pont) értékre való áthelyezése után a biztonsági **bevált eljárások megvalósítására** (ami nem áll fenn pontok). 
 
-Gondoskodhat arról, hogy a webalkalmazások a tanúsítványokat biztosan biztonságosabbá tegyék. A nyilvános webes alkalmazások esetében azonban lényegtelen. Ha HTTP-n keresztül fér hozzá a webhelyhez, és nem HTTPS-kapcsolaton keresztül, akkor nem fog ügyféltanúsítványt kapni. Tehát ha az alkalmazáshoz Ügyféltanúsítványok szükségesek, akkor a HTTP-n keresztül nem engedélyezheti a kérelmeket az alkalmazásnak. További információ: a [TLS kölcsönös hitelesítésének konfigurálása Azure app Servicehoz](../app-service/app-service-web-configure-tls-mutual-auth.md).
+Annak biztosítása, hogy egy webalkalmazás egy tanúsítványt kér, biztosan biztonságosabbá válik. A nyilvános webes alkalmazások esetében azonban lényegtelen. Ha HTTP-n keresztül fér hozzá a webhelyhez, és nem HTTPS-kapcsolaton keresztül, akkor nem fog ügyféltanúsítványt kapni. Tehát ha az alkalmazáshoz Ügyféltanúsítványok szükségesek, akkor a HTTP-n keresztül nem engedélyezheti a kérelmeket az alkalmazásnak. További információ: a [TLS kölcsönös hitelesítésének konfigurálása Azure app Servicehoz](../app-service/app-service-web-configure-tls-mutual-auth.md).
 
 Ezzel a módosítással a javaslat mostantól javasolt ajánlott eljárás, amely nem befolyásolja a pontszámát. 
 
@@ -371,7 +417,7 @@ Azure Security Center figyeli az összes kapcsolódó erőforrást, és biztons�
 
 Ahogy Security Center továbbra is bővíti a lefedettségét és funkcióit, a biztonsági javaslatok listája havonta növekszik. Az [Azure biztonsági teljesítményteszt lefedettségének növeléséhez](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)például tekintse meg az előzetes verzióhoz hozzáadott 29. javaslatokat.
 
-A növekvő listával a legnagyobb érdeklődésre számot tartó ajánlásokra képesnek kell lennie a szűrésre. Novemberben hozzáadunk szűrőket a javaslatok oldalhoz (lásd a [javaslatok listája mostantól tartalmazza a szűrőket](#recommendations-list-now-includes-filters)).
+A növekvő listával meg kell szűrnie az ajánlásokat, hogy megtalálják a legfontosabb érdekeket. Novemberben hozzáadunk szűrőket a javaslatok oldalhoz (lásd a [javaslatok listája mostantól tartalmazza a szűrőket](#recommendations-list-now-includes-filters)).
 
 Az ebben a hónapban hozzáadott szűrők lehetővé teszik a javaslatok listájának pontosítását az alábbiak szerint:
 
@@ -423,7 +469,7 @@ A novemberi frissítések a következők:
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez
 
-Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus, a biztonsági és megfelelőségi irányelvek a közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
 
 A jelen teljesítményteszt lefedettségének növeléséhez a következő 29 előzetes javaslat lett hozzáadva a Security Centerhoz.
 
@@ -475,7 +521,7 @@ Mostantól szűrheti a biztonsági javaslatok listáját a feltételek körének
 
 Az automatikus kiépítési funkció segít csökkenteni a felügyeleti terhelést azáltal, hogy telepíti a szükséges bővítményeket az új és a meglévő Azure-beli virtuális gépekre, így azok a Security Center védelmére is kihasználhatják őket. 
 
-Ahogy Azure Security Center nő, több bővítmény lett kifejlesztve, és Security Center képes figyelni az erőforrástípusok nagyobb listáját. Az automatikus kiépítési eszközök mostantól kibővültek a további kiterjesztések és erőforrástípusok támogatásához a Azure Policy képességeinek kihasználásával.
+Ahogy Azure Security Center nő, több bővítmény lett kifejlesztve, és Security Center képes figyelni az erőforrástípusok nagyobb listáját. Az automatikus kiépítési eszközök mostantól a Azure Policy képességeinek kihasználásával kibővültek más bővítmények és erőforrástípusok támogatásához.
 
 Mostantól konfigurálhatja az automatikus kiépítés lehetőségeit:
 
@@ -575,7 +621,7 @@ További információ erről a javaslatról és az összes többi Security Cente
 
 A Security Center szabályozási megfelelőségi irányítópultja betekintést nyújt a megfelelőségi állapotba, és megfelel a megfelelőségi ellenőrzéseknek és követelményeknek.
 
-Az irányítópult a szabályozási szabványok alapértelmezett készletét tartalmazza. Ha a megadott szabványok bármelyike nem felel meg a szervezete számára, most egy egyszerű folyamat, amellyel egyszerűen eltávolíthatja őket a felhasználói felületről egy előfizetéshez. A szabványokat csak az *előfizetés* szintjén lehet eltávolítani; a felügyeleti csoport hatóköre nem.
+Az irányítópult a szabályozási szabványok alapértelmezett készletét tartalmazza. Ha a megadott szabványok bármelyike nem felel meg a szervezete számára, mostantól egy egyszerű folyamat távolítja el őket a felhasználói felületről egy előfizetéshez. A szabványokat csak az *előfizetés* szintjén lehet eltávolítani; a felügyeleti csoport hatóköre nem.
 
 További információ: [standard eltávolítása az irányítópultról](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
 
@@ -699,7 +745,7 @@ A szeptemberben elérhető frissítések a következők:
 
 ### <a name="security-center-gets-a-new-look"></a>Security Center új arculatot kap!
 
-Megjelent egy frissített felhasználói felület a Security Center portál oldalain. Az új lapok közé tartozik egy új áttekintő oldal, valamint a biztonságos pontszámok, az eszközök leltározása és az Azure Defender irányítópultok.
+Megjelent egy frissített felhasználói felület a Security Center portál oldalain. Az új lapok közé tartozik egy új áttekintő oldal és irányítópult a biztonságos pontszám, az eszközök leltározása és az Azure Defender számára.
 
 Az átalakított áttekintő oldal mostantól tartalmaz egy csempét a biztonságos pontszám, a tárgyieszköz-leltár és az Azure Defender-irányítópultok eléréséhez. Emellett egy csempe is kapcsolódik a szabályozási megfelelőségi irányítópulthoz.
 
@@ -892,114 +938,3 @@ Példa az előzetes verziójú javaslatra:
 A javaslatok részleteit tartalmazó oldal mostantól tartalmazza a frissességi intervallum jelzőjét (ha van ilyen), valamint a javaslat súlyosságának egyértelmű megjelenítését.
 
 :::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="A frissességet és súlyosságot mutató javaslat oldal":::
-
-
-
-## <a name="august-2020"></a>2020. augusztus
-
-Az augusztusi frissítések a következők:
-
-- [Tárgyieszköz-leltár – az eszközök biztonsági helyzetének hatékony új nézete](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
-- [A Azure Active Directory biztonsági Alapértelmezések támogatása (a többtényezős hitelesítéshez)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
-- [Egyszerű szolgáltatásnév – javaslat hozzáadva](#service-principals-recommendation-added)
-- [Sebezhetőségi felmérés a virtuális gépeken – összevont javaslatok és szabályzatok](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
-- [A ASC_default kezdeményezéshez hozzáadott új AK biztonsági szabályzatok – csak privát előzetes verzióban elérhető ügyfelek általi használatra](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
-
-
-### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Tárgyieszköz-leltár – az eszközök biztonsági helyzetének hatékony új nézete
-
-Security Center adatkészlete (jelenleg előzetes verzióban érhető el) segítségével megtekintheti a Security Centerhoz csatlakoztatott erőforrások biztonsági állapotát.
-
-Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására. Ha bármilyen erőforráshoz függőben lévő javaslatok vannak, akkor azok megjelennek a leltárban.
-
-A nézet és a hozzá tartozó szűrők segítségével megvizsgálhatja a biztonsági helyzet adatait, és további műveleteket hajthat végre az eredmények alapján.
-
-További információ az [eszközök leltározásáról](asset-inventory.md).
-
-
-### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>A Azure Active Directory biztonsági Alapértelmezések támogatása (a többtényezős hitelesítéshez)
-
-Security Center teljes körű támogatást kapott a [biztonsági alapértékekhez](../active-directory/fundamentals/concept-fundamentals-security-defaults.md), a Microsoft ingyenes Identity Security-védelmi szolgáltatásait.
-
-A biztonsági alapértékek előre konfigurált identitás-biztonsági beállításokat biztosítanak a szervezet számára az identitással kapcsolatos közös támadások elleni védelemhez. A biztonsági alapértékek már a több mint 5 000 000 bérlőt védik; az 50 000-bérlőket Security Center is védi.
-
-Security Center mostantól biztonsági javaslatot nyújt, ha az Azure-előfizetést az alapértelmezett biztonsági beállítások nélkül azonosítja. Eddig Security Center javasolt a többtényezős hitelesítés engedélyezése a feltételes hozzáférés használatával, amely a Azure Active Directory (AD) prémium szintű licenc részét képezi. Az ingyenes Azure AD-t használó ügyfeleink számára a biztonsági alapértékek engedélyezését javasoljuk. 
-
-Célunk, hogy minél több ügyfelet ösztönözzön a Felhőbeli környezetek védelmére az MFA-val, és hogy enyhítse az egyik legnagyobb kockázatot is, amely a legjelentősebb a [biztonságos pontszám](secure-score-security-controls.md)szempontjából.
-
-További információ a [biztonsági alapbeállításokról](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
-
-
-### <a name="service-principals-recommendation-added"></a>Egyszerű szolgáltatásnév – javaslat hozzáadva
-
-Új javaslat lett hozzáadva, amely azt ajánlja, hogy Security Center a felügyeleti tanúsítványokat használó ügyfeleket az előfizetések kezeléséhez az egyszerű szolgáltatásokhoz.
-
-Az **előfizetések felügyeleti tanúsítványok helyett a szolgáltatással való ellátására szolgáló egyszerű szolgáltatásnév** használatával biztosíthatja, hogy az előfizetések biztonságos kezeléséhez használjon egyszerű szolgáltatásokat vagy Azure Resource Manager. 
-
-További információ az [alkalmazások és szolgáltatások egyszerű objektumairól Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object).
-
-
-### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Sebezhetőségi felmérés a virtuális gépeken – összevont javaslatok és szabályzatok
-
-Security Center megvizsgálja a virtuális gépeket annak észlelésére, hogy a biztonsági rések felmérésére szolgáló megoldás fut-e. Ha nem található sebezhetőségi felmérési megoldás, Security Center javaslatot tesz az üzembe helyezés egyszerűsítésére.
-
-A biztonsági rések megtalálása esetén a Security Center javaslatot tesz a vizsgálat eredményeinek összefoglalására, és szükség esetén orvosolja azokat.
-
-Ha az összes felhasználó számára egységes felhasználói élményt szeretne biztosítani, függetlenül attól, hogy milyen típusú lapolvasót használ, a következő két javaslatot egyesítettük:
-
-|Egyesített javaslat|Módosítások ismertetése|
-|----|:----|
-|**A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken**|A következő két javaslat helyébe lép:<br> **•** A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (a Qualys (mostantól elavult) a standard szintű csomag részeként)<br> **•** A sebezhetőség-felmérési megoldást telepíteni kell a virtuális gépekre (mostantól elavult) (standard és ingyenes szint)|
-|**A virtuális gépek biztonsági réseit szervizelni kell**|A következő két javaslat helyébe lép:<br>**•** A virtuális gépeken észlelt biztonsági rések szervizelése (Qualys-alapú) (már elavult)<br>**•** A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell kijavítania (mostantól elavult)|
-|||
-
-Most ugyanazt a javaslatot fogja használni Security Center sebezhetőségi felmérési bővítményének vagy egy magántulajdonban lévő licenccel rendelkező megoldásnak ("BYOL") a partnertől, például a Qualys vagy a Rapid7.
-
-Emellett a biztonsági rések észlelése és a Security Centerra való jelentése esetén egyetlen javaslat figyelmezteti Önt az eredményekre, függetlenül az azokat azonosító sebezhetőségi felmérési megoldástól.
-
-#### <a name="updating-dependencies"></a>Függőségek frissítése
-
-Ha olyan parancsfájlokkal, lekérdezésekkel vagy automatizálással rendelkezik, amelyek az előző javaslatokra vagy a szabályzat kulcsaira/nevére hivatkoznak, használja az alábbi táblázatokat a hivatkozások frissítéséhez:
-
-##### <a name="before-august-2020"></a>Augusztus 2020 előtt
-
-|Ajánlás|Hatókör|
-|----|:----|
-|**A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)**<br>Kulcs: 550e890b-e652-4d22-8274-60b3bdb24c63|Beépített|
-|**A virtuális gépeken található biztonsági rések szervizelése (Qualys-alapú)**<br>Kulcs: 1195afff-c881-495e-9bc5-1486211ae03f|Beépített|
-|**A sebezhetőség-felmérési megoldást telepíteni kell a virtuális gépekre**<br>Kulcs: 01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
-|**A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni**<br>Kulcs: 71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
-
-
-|Szabályzat|Hatókör|
-|----|:----|
-|**A biztonsági rések felmérését engedélyezni kell a virtuális gépeken**<br>Házirend-azonosító: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Beépített|
-|**A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni**<br>Házirend-azonosító: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
-
-
-##### <a name="from-august-2020"></a>Augusztus 1-től 2020
-
-|Ajánlás|Hatókör|
-|----|:----|
-|**A biztonsági rések felmérésére szolgáló megoldást engedélyezni kell a virtuális gépeken**<br>Kulcs: ffff0522-1e88-47fc-8382-2a80ba848f5d|Beépített + BYOL|
-|**A virtuális gépek biztonsági réseit szervizelni kell**<br>Kulcs: 1195afff-c881-495e-9bc5-1486211ae03f|Beépített + BYOL|
-||||
-
-|Szabályzat|Hatókör|
-|----|:----|
-|[**A biztonsági rések felmérését engedélyezni kell a virtuális gépeken**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Házirend-azonosító: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Beépített + BYOL|
-||||
-
-
-### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>A ASC_default kezdeményezéshez hozzáadott új AK biztonsági szabályzatok – csak privát előzetes verzióban elérhető ügyfelek általi használatra
-
-Annak biztosítása érdekében, hogy a Kubernetes-munkaterhelések alapértelmezés szerint biztonságosak legyenek, Security Center Kubernetes szintű szabályzatokat és megerősítő javaslatokat ad hozzá, beleértve a Kubernetes belépésvezérlés használatával történő kényszerítési lehetőségeket is.
-
-A projekt korai szakasza tartalmaz egy privát előzetes verziót, és az új (alapértelmezés szerint letiltott) szabályzatok hozzáadását a ASC_default kezdeményezéshez.
-
-Nyugodtan figyelmen kívül hagyhatja ezeket a szabályzatokat, és nem lesz hatással a környezetre. Ha engedélyezni szeretné őket, regisztráljon az előzetes verzióra, https://aka.ms/SecurityPrP és válasszon a következő lehetőségek közül:
-
-1. **Single Preview** – csak a privát előzetes verzióhoz csatlakozhat. Explicit módon megemlíti a "ASC folyamatos vizsgálat" lehetőséget, mint a csatlakozni kívánt előnézetet.
-1. **Folyamatban lévő program** – ehhez és a jövőbeli privát előzetesekhez való hozzáadáshoz. Be kell fejeznie egy profilt és egy adatvédelmi szerződést.

@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 989e50ec03dae5d00961d572b70d524a56b3d64c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 99e1e77a37afbdc1ed54767700574316ed03fae3
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062205"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525245"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -248,10 +248,8 @@ foreach ($deployment in $deployments){
 
 }
 ```
-
 ## <a name="report"></a>Jelentés
-
-A partner Center irányítópultján megtalálhatja az ügyfél-használati jóváírással kapcsolatos jelentést [https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview) . A jelentés megtekintéséhez a partner Center hitelesítő adatait kell használnia a bejelentkezéshez. Ha a jelentéssel vagy a bejelentkezéssel kapcsolatos problémák merülnek fel, hozzon létre egy [támogatási kérést](#get-support).
+Az Azure-használat nyomon követése az ügyfél-használati jóváíráson keresztül nem érhető el az ISV-partnerek számára. A jelentéskészítő a kereskedelmi piactér programhoz való hozzáadása a partner Centerben, amely az ügyfél-használati jóváírásra vonatkozik, a 2021-as második felet célozza meg.
 
 ## <a name="notify-your-customers"></a>Ügyfelek értesítése
 

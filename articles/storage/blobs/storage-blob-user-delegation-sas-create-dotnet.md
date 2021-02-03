@@ -1,27 +1,27 @@
 ---
-title: Felhasználói delegálási SAS létrehozása egy tárolóhoz vagy blobhoz a .NET használatával
+title: Felhasználói delegálási SAS létrehozása egy tárolóhoz, könyvtárhoz vagy blobhoz a .NET használatával
 titleSuffix: Azure Storage
 description: Megtudhatja, hogyan hozhat létre Azure Active Directory hitelesítő adatokkal rendelkező felhasználói delegálási SAS-t az Azure Storage-hoz készült .NET ügyféloldali kódtár használatával.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199257"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526805"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel
+# <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>Felhasználói delegálási SAS létrehozása tárolóhoz, címtárhoz vagy blobhoz .NET-tel
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory-(Azure AD-) hitelesítő adatok egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz a .NET-es verzióhoz készült Azure Storage ügyféloldali kódtár használatával.
+Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatok egy felhasználói delegálási SAS létrehozásához egy tárolóhoz, könyvtárhoz vagy blobhoz a .NET-es verzióhoz készült Azure Storage ügyféloldali kódtár használatával.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -99,7 +99,7 @@ A következő példa egy szimulált ügyfélalkalmazás által az előző péld�
 
 ## <a name="get-a-user-delegation-sas-for-a-directory"></a>Felhasználói delegálási SAS beszerzése egy címtárhoz
 
-A következő mintakód bemutatja, hogyan hozhatja ki a címtárhoz tartozó felhasználói delegálási SAS-t egy hierarchikus névtér engedélyezése esetén:
+A következő mintakód bemutatja, hogyan hozhatja ki a címtárhoz egy felhasználói delegálási SAS-t, ha a Storage-fiókhoz engedélyezve van egy hierarchikus névtér:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
 

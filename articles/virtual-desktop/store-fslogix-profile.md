@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 189ff3bbfdb3b8533defcedb77e15fef433598b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023088"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526602"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
@@ -23,20 +23,20 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 
 ## <a name="azure-platform-details"></a>Azure-platform – részletek
 
-|Funkciók|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
+|Szolgáltatások|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
 |--------|-----------|------------------|---------------------|
 |Használati eset|Általános célú|Ultra teljesítmény vagy Migrálás a helyszíni NetApp-ből|Platformfüggetlen|
 |Platform szolgáltatás|Igen, Azure-natív megoldás|Igen, Azure-natív megoldás|Nem, önállóan felügyelt|
 |Régiónkénti rendelkezésre állás|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
-|Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns|Helyileg redundáns|Helyileg redundáns/Zone-redundáns/geo-redundáns|
-|Rétegek és teljesítmény|Standard<br>Prémium<br>Akár 100 000 000 IOPS, 5 GB/s megosztással, körülbelül 3 MS késéssel|Standard<br>Prémium<br>Ultra<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát<br>A prémium szintű lemezeket ajánlott Közvetlen tárolóhelyek|
-|Kapacitás|100 TiB/megosztás|100 TiB/kötet, akár 12,5 PiB/előfizetés|Maximális 32 TiB/lemez|
+|Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns/geo-Zone-redundáns|Helyileg redundáns|Helyileg redundáns/Zone-redundáns/geo-redundáns|
+|Rétegek és teljesítmény| Standard (tranzakció optimalizált)<br>Prémium<br>Akár 100 000 000 IOPS 10 GB/s-onként, körülbelül 3 MS késéssel|Standard<br>Prémium<br>Ultra<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát<br>A prémium szintű lemezeket ajánlott Közvetlen tárolóhelyek|
+|Kapacitás|100 TiB/megosztás, legfeljebb 5 PiB általános célú fiókkal |100 TiB/kötet, akár 12,5 PiB/előfizetés|Maximális 32 TiB/lemez|
 |Szükséges infrastruktúra|Minimális megosztás mérete 1 GiB|Minimális kapacitási készlet 4 TiB, min. kötet mérete 100 GiB|Két virtuális gép az Azure IaaS (+ Felhőbeli tanúsító) vagy legalább három virtuális gép nélkül, valamint a lemezek költségei|
-|Protokollok|SMB 2.1/3. és REST|NFSv3, NFSv 4.1 (előzetes verzió), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
+|Protokollok|SMB 3.0/2.1, NFSv 4.1 (előzetes verzió), REST|NFSv3, NFSv 4.1 (előzetes verzió), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
 
 ## <a name="azure-management-details"></a>Azure-felügyelet részletei
 
-|Funkciók|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
+|Szolgáltatások|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
 |--------|-----------|------------------|---------------------|
 |Access|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
 |Backup|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|

@@ -3,12 +3,12 @@ title: Az erőforrás nem található hibák
 description: Ismerteti, Hogyan oldhatók meg a hibák, ha egy erőforrás nem található. A hiba akkor fordulhat elő, ha Azure Resource Manager sablont telepít, vagy a felügyeleti műveletek végrehajtásakor.
 ms.topic: troubleshooting
 ms.date: 06/10/2020
-ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84667947"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526246"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Nem található az erőforrás hibáinak elhárítása
 
@@ -70,7 +70,7 @@ Ha megtekinti a függőségi problémákat, meg kell ismernie az erőforrás-tel
 
    ![telepítési előzmények kiválasztása](./media/error-not-found/select-deployment.png)
 
-2. Válasszon ki egy központi telepítést az előzmények közül, és válassza az **események**lehetőséget.
+2. Válasszon ki egy központi telepítést az előzmények közül, és válassza az **események** lehetőséget.
 
    ![telepítési események kiválasztása](./media/error-not-found/select-deployment-events.png)
 
@@ -105,7 +105,7 @@ A Reference függvényben használja az `Full` parancsot az összes tulajdonság
 
 A minta a következő:
 
-`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>), <API-version>, 'Full').Identity.propertyName]"`
 
 > [!IMPORTANT]
 > Ne használja a mintát:

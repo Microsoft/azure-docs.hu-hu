@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368ab1bc6a1fc13c3001b437c3c2a8be2bbb9c04
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848125"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525991"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Az egyesített riasztási & figyelése Azure Monitor helyettesíti a klasszikus riasztási & figyelését
 
 Azure Monitor mostantól egy egységes, teljes verem-figyelési szolgáltatás lesz, amely mostantól támogatja az "egy metrika" és az "egy riasztások" használatát az erőforrások között. További információkért tekintse meg az [új Azure monitor blogbejegyzését](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Az új Azure monitoring-és riasztási platformok gyorsabb, intelligensebb és bővíthetők, így folyamatosan bővülnek a Felhőbeli számítástechnika és a Microsoft intelligens felhőalapú filozófiája.
 
-Az új Azure-figyelési és-riasztási platformmal a klasszikus riasztások Azure Monitor kimaradnak, de továbbra is korlátozott használatban vannak olyan erőforrások esetében, amelyek még nem támogatják az új riasztásokat. A riasztások kivonulási dátuma tovább bővült. A fennmaradó riasztások áttelepítése, [Azure Government a felhő](../../azure-government/documentation-government-welcome.md)és az [Azure China 21Vianet](https://docs.azure.cn/)hamarosan új dátummal fog bejelenteni.
+Az új Azure-figyelési és-riasztási platformmal a Azure Monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják. A riasztások kivonulási dátuma tovább bővült. A fennmaradó riasztások áttelepítése, [Azure Government a felhő](../../azure-government/documentation-government-welcome.md)és az [Azure China 21Vianet](https://docs.azure.cn/)hamarosan új dátummal fog bejelenteni.
 
- ![Klasszikus riasztás a Azure Portalban](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
+ ![Klasszikus riasztás a Azure Portalban](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 Javasoljuk, hogy kezdje el és hozza létre újra a riasztásokat az új platformon.
 
@@ -48,7 +48,7 @@ Az Azure-erőforrások újabb mérőszámai az alábbiak szerint érhetők el:
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>A klasszikus monitorozási és riasztási platform kivonulása
 
-A korábban leírtaknak megfelelően a régebbi klasszikus figyelési és riasztási funkciók megszűnnek; beleértve a kapcsolódó API-k, Azure Portal felület és szolgáltatások bezárását is, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott használatban van. Ezek a szolgáltatások elavultak lesznek:
+A korábban leírtaknak megfelelően a régebbi klasszikus monitorozási és riasztási funkciók kivonásra kerülnek a nyilvános Felhőbeli felhasználók számára; beleértve a kapcsolódó API-k, Azure Portal felület és szolgáltatások bezárását is, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott használatban van. Ezek a szolgáltatások elavultak lesznek:
 
 - Régebbi (klasszikus) mérőszámok és riasztások az Azure-erőforrásokról, amelyek jelenleg a Azure Portal [riasztások (klasszikus) szakaszán](./alerts-classic.overview.md) keresztül elérhetők. elérhető [Microsoft. ininsights/alertrules-](/rest/api/monitor/alertrules) erőforrásként
 - A régebbi (klasszikus) platform és a Application Insights egyéni metrikái, valamint a Azure Portal [riasztások (klasszikus) szakasza](./alerts-classic.overview.md) által jelenleg elérhetővé vált riasztások, valamint a [Microsoft. alertrules](/rest/api/monitor/alertrules) erőforrás

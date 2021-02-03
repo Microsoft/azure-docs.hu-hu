@@ -1,6 +1,6 @@
 ---
 title: Helyi mérőszámok és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz | Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az Azure API Management saját üzemeltetésű átjárójának helyi mérőszámait és naplóit
+description: Ismerje meg, hogyan konfigurálhatja az Azure API Management saját üzemeltetésű átjárójának helyi mérőszámait és naplóit egy Kubernetes-Custer
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254503"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526670"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Helyi mérőszámok és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
 
-Ez a cikk részletesen ismerteti a helyi metrikák és naplók konfigurálását a saját üzemeltetésű [átjáróhoz](./self-hosted-gateway-overview.md). A felhő metrikáinak és naplóinak konfigurálásához tekintse meg [ezt a cikket](how-to-configure-cloud-metrics-logs.md). 
+Ez a cikk részletesen ismerteti a helyi mérőszámok és naplók konfigurálását a Kubernetes-fürtön üzembe helyezett saját üzemeltetésű [átjáróhoz](./self-hosted-gateway-overview.md) . A felhő metrikáinak és naplóinak konfigurálásához tekintse meg [ezt a cikket](how-to-configure-cloud-metrics-logs.md). 
 
 ## <a name="metrics"></a>Mérőszámok
 A saját üzemeltetésű átjáró támogatja a [statisztikát](https://github.com/statsd/statsd), amely egységesítő protokollként szolgál a metrikák gyűjtéséhez és összesítéséhez. Ez a szakasz részletesen ismerteti a statisztikai adatok Kubernetes történő üzembe helyezésének lépéseit, az átjáró konfigurálását a mérőszámok statisztikán keresztüli kibocsátásához, valamint a [Prometheus](https://prometheus.io/) használatával a metrikák monitorozásához. 
@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: prom/statsd-exporter
+        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +80,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: prom/prometheus
+        image: mcr.microsoft.com/oss/prometheus/prometheus
         ports:
         - name: tcp
           containerPort: 9090
@@ -152,9 +152,9 @@ Most, hogy mind a statd, mind a Prometheus üzembe lett helyezve, frissítjük a
 | Mező  | Alapértelmezett | Leírás |
 | ------------- | ------------- | ------------- |
 | telemetria. Metrics. local  | `none` | Lehetővé teszi a naplózást a statisztikán keresztül. Az érték lehet `none` `statsd` . |
-| telemetria. mérőszámok. local. statd. Endpoint  | n/a | A statisztikai végpontot határozza meg. |
-| telemetria. mérőszámok. local. destatd. mintavételezés  | n/a | Meghatározza a metrikák mintavételezési sebességét. Az érték lehet 0 és 1. emelkedés pl `0.5`|
-| telemetria. mérőszámok. local. statd. tag – Format  | n/a | A statisztikailag kimutatott exportőr [címkézési formátuma](https://github.com/prometheus/statsd_exporter#tagging-extensions). Az érték lehet:,, `none` `librato` `dogStatsD` , `influxDB` . |
+| telemetria. mérőszámok. local. statd. Endpoint  | n.a. | A statisztikai végpontot határozza meg. |
+| telemetria. mérőszámok. local. destatd. mintavételezés  | n.a. | Meghatározza a metrikák mintavételezési sebességét. Az érték lehet 0 és 1. emelkedés pl `0.5`|
+| telemetria. mérőszámok. local. statd. tag – Format  | n.a. | A statisztikailag kimutatott exportőr [címkézési formátuma](https://github.com/prometheus/statsd_exporter#tagging-extensions). Az érték lehet:,, `none` `librato` `dogStatsD` , `influxDB` . |
 
 Íme egy példa konfiguráció:
 
@@ -189,7 +189,7 @@ Most már mindent üzembe helyezett és konfigurált, a saját üzemeltetésű �
 
 Hajtson végre néhány API-hívást a saját üzemeltetésű átjárón keresztül, ha minden megfelelően van konfigurálva, a következő metrikákat kell megtekinteni:
 
-| Metrika  | Leírás |
+| Metric  | Leírás |
 | ------------- | ------------- |
 | Kérelmek  | API-kérelmek száma az adott időszakban |
 | DurationInMS | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
@@ -212,11 +212,11 @@ A saját üzemeltetésű átjáró számos protokollt is támogat, például: `l
 | ------------- | ------------- | ------------- |
 | telemetria. logs. STD  | `text` | Engedélyezi a naplózást a standard streamek számára. Az érték lehet `none` , `text` , `json` |
 | telemetria. logs. local  | `none` | Engedélyezi a helyi naplózást. Az érték lehet `none` a,, `auto` `localsyslog` , `rfc5424` , `journal`  |
-| telemetria. logs. local. localsyslog. Endpoint  | n/a | Megadja a localsyslog-végpontot.  |
-| telemetria. logs. local. localsyslog. Facility  | n/a | Meghatározza a [localsyslog.](https://en.wikipedia.org/wiki/Syslog#Facility) emelkedés pl `7` 
-| telemetria. logs. local. rfc5424. Endpoint  | n/a | Megadja a rfc5424-végpontot.  |
-| telemetria. logs. local. rfc5424. Facility  | n/a | Meghatározza a létesítmény kódját [rfc5424](https://tools.ietf.org/html/rfc5424). emelkedés pl `7`  |
-| telemetria. logs. local. Journal. Endpoint  | n/a | Megadja a napló végpontját.  |
+| telemetria. logs. local. localsyslog. Endpoint  | n.a. | Megadja a localsyslog-végpontot.  |
+| telemetria. logs. local. localsyslog. Facility  | n.a. | Meghatározza a [localsyslog.](https://en.wikipedia.org/wiki/Syslog#Facility) emelkedés pl `7` 
+| telemetria. logs. local. rfc5424. Endpoint  | n.a. | Megadja a rfc5424-végpontot.  |
+| telemetria. logs. local. rfc5424. Facility  | n.a. | Meghatározza a létesítmény kódját [rfc5424](https://tools.ietf.org/html/rfc5424). emelkedés pl `7`  |
+| telemetria. logs. local. Journal. Endpoint  | n.a. | Megadja a napló végpontját.  |
 
 Példa a helyi naplózási konfigurációra:
 
@@ -232,7 +232,7 @@ Példa a helyi naplózási konfigurációra:
         telemetry.logs.local.localsyslog.facility: "7"
 ```
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
 * [A naplók Felhőbeli konfigurálásának és](how-to-configure-local-metrics-logs.md) megőrzésének megismerése

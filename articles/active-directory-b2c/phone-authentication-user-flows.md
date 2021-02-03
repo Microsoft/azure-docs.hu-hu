@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754618"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525195"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>Telefonos regisztráció és bejelentkezés beállítása felhasználói folyamatokhoz (előzetes verzió)
 
@@ -55,7 +55,7 @@ Az e-mail-regisztráció alapértelmezés szerint engedélyezve van a helyi fió
 
    ![Az engedélyezett identitások típusának kiválasztása](media/phone-authentication-user-flows/configure-local-idp.png)
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="add-phone-sign-up-to-a-user-flow"></a>Telefonos regisztráció hozzáadása felhasználói folyamathoz
 
@@ -89,9 +89,9 @@ Az alábbi példa bemutatja, hogyan adhat hozzá telefonos regisztrációt egy �
 9. A **közösségi identitás-szolgáltatók** területen válassza ki az összes olyan személyazonosság-szolgáltatót, amelyet engedélyezni szeretne ehhez a felhasználói folyamathoz.
 
    > [!NOTE]
-   > A többtényezős hitelesítés (MFA) alapértelmezés szerint le van tiltva. Engedélyezheti az MFA-t egy telefonos regisztrációs felhasználói folyamat számára, de mivel a telefonszámot elsődleges azonosítóként használja, a második hitelesítési tényező esetében az egyetlen lehetőség a levelezés egyszeri jelszava.
+   > A többtényezős hitelesítés (MFA) alapértelmezés szerint le van tiltva a regisztrációs felhasználói folyamatok esetében. Engedélyezheti az MFA-t egy telefonos regisztrációs felhasználói folyamat számára, de mivel a telefonszámot elsődleges azonosítóként használja, a második hitelesítési tényező esetében az egyetlen lehetőség a levelezés egyszeri jelszava.
 
-1. A **felhasználói attribútumok és jogkivonatok jogcímei** szakaszban válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, majd a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése** lehetőséget, majd az **ország/régió**, a **megjelenítendő név** és az **Irányítószám** elemnél válassza az attribútumok és jogcímek lehetőséget. Kattintson az **OK** gombra.
+1. A **felhasználói attribútumok és jogkivonatok jogcímei** szakaszban válassza ki azokat a jogcímeket és attribútumokat, amelyeket szeretne összegyűjteni, majd a felhasználótól a regisztráció során elküldeni. Válassza például a **továbbiak megjelenítése** lehetőséget, majd az **ország/régió**, a **megjelenítendő név** és az **Irányítószám** elemnél válassza az attribútumok és jogcímek lehetőséget. Válassza az **OK** lehetőséget.
 
 1. A felhasználói folyamat hozzáadásához válassza a **Létrehozás** lehetőséget. A *B2C_1* előtagja automatikusan előtagértéke a nevet.
 
@@ -123,7 +123,7 @@ A helyreállítási e-mail-kérést a felhasználói folyamat tulajdonságaiban 
 
     ![Felhasználói folyamatok tulajdonságai a helyreállítási e-mailek engedélyezésével](./media/phone-authentication-user-flows/recovery-email-settings.png)
 
-8. Válassza a **Save** (Mentés) lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 ### <a name="to-test-the-recovery-email-prompt"></a>A helyreállítási e-mail-üzenet tesztelése
 
@@ -140,7 +140,7 @@ Miután engedélyezte a telefonos regisztrációt és a bejelentkezést, valamin
 
 4. Adjon meg egy e-mail-címet, majd válassza az **ellenőrző kód küldése** lehetőséget. Ellenőrizze, hogy a rendszer elküldte-e a kódot a megadott e-mail-fiókba. Kérje le a kódot, és írja be az **ellenőrző kód** mezőbe. Ezután válassza a **kód ellenőrzése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Külső identitás-szolgáltatók hozzáadása](tutorial-add-identity-providers.md)
 - [Felhasználói folyamat létrehozása](tutorial-create-user-flows.md)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593994"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525721"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Az Azure SQL felügyelt példány felügyelt példányainak hozzáadása egy fel
   > [!NOTE]
   > - Ha ezt az oktatóanyagot hajtja végre, győződjön meg arról, hogy az erőforrásokat az [SQL felügyelt példányához tartozó feladatátvételi csoportok beállításának előfeltételei](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)szerint konfigurálja. 
   > - A felügyelt példányok létrehozása jelentős időt vehet igénybe. Ennek eredményeképpen ez az oktatóanyag több órát is igénybe vehet. További információ a kiépítési időszakokról: [SQL felügyelt példányok kezelési műveletei](sql-managed-instance-paas-overview.md#management-operations). 
-  > - A feladatátvételi csoportban részt vevő felügyelt példányokhoz [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) vagy két csatlakoztatott VPN-átjáró szükséges. A globális virtuális társhálózatok nem támogatottak. Ez az oktatóanyag a VPN-átjárók létrehozásának és csatlakoztatásának lépéseit ismerteti. Hagyja ki ezeket a lépéseket, ha már konfigurálta a ExpressRoute. 
+  > - A feladatátvételi csoportban részt vevő felügyelt példányokhoz [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md), globális VNet-társítás vagy két csatlakoztatott VPN-átjáró szükséges. Ez az oktatóanyag a VPN-átjárók létrehozásának és csatlakoztatásának lépéseit ismerteti. Hagyja ki ezeket a lépéseket, ha már konfigurálta a ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -70,7 +70,7 @@ Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt a 
     ![SQL felügyelt példány kiválasztása](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
 1. Az **Azure SQL felügyelt példány létrehozása** oldalon az **alapok** lapon:
-    1. A **Project Details (projekt részletei** ) területen válassza ki az **előfizetését** a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például: `myResourceGroup` . 
+    1. A **Project Details (projekt részletei**) területen válassza ki az **előfizetését** a legördülő menüből, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. Írja be az erőforráscsoport nevét, például: `myResourceGroup` . 
     1. Az **SQL felügyelt példányának adatai** alatt adja meg a felügyelt példány nevét, valamint azt a régiót, ahol a felügyelt példányt telepíteni szeretné. Az alapértelmezett értékekben hagyja a **számítás + tárolás** értéket. 
     1. A **rendszergazdai fiók** területen adjon meg egy rendszergazdai bejelentkezési azonosítót, például `azureuser` , és egy összetett rendszergazdai jelszót. 
 
@@ -930,7 +930,7 @@ Kapcsolja össze a két átjárót a Azure Portal használatával.
     1. Válassza ki előfizetését a legördülő listából. 
     1. Válassza ki az SQL felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből. 
     1. Válassza ki az elsődleges felügyelt példány helyét a legördülő menüből. 
-1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra** :
+1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra**:
     1. Válassza ki az **első virtuális hálózati átjáró** elsődleges hálózati átjáróját, például: `primaryGateway` .  
     1. Válassza ki a **második virtuális hálózati átjáró** másodlagos hálózati átjáróját, például: `secondaryGateway` . 
     1. Jelölje be a **kétirányú kapcsolat létesítése** melletti jelölőnégyzetet. 

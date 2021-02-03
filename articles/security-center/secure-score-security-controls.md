@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bd64ca877f0bfd81597e091ef8ef000ad1b76992
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752202"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526432"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Biztonsági pontszám az Azure Security Centerben
 
@@ -244,8 +244,8 @@ Bár az Security Center alapértelmezett biztonsági kezdeményezése az iparág
     <td class="tg-lboi"; width=55%>- Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken<br>- A figyelési ügynököt telepíteni kell a virtuális gépekre<br>- A figyelési ügynököt telepíteni kell a gépekre<br>- Log Analytics ügynöknek telepítve kell lennie a Windows-alapú Azure arc-gépeken (előzetes verzió)<br>- Log Analytics ügynöknek telepítve kell lennie a Linux-alapú Azure arc-gépeken (előzetes verzió)<br>- A figyelési ügynök állapotával kapcsolatos problémákat fel kell oldani a gépeken</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Az adatbesorolás alkalmazása (max. pontszám 2)</p></strong>A szervezet adatai érzékenység és üzleti hatás alapján történő besorolásával meghatározhatja és hozzárendelheti az adatértékeket, valamint megadhatja a stratégia és az irányítás alapját.<br>Az <a href="/azure/information-protection/what-is-information-protection">Azure Information Protection</a> segíthet az adatbesorolásban. Titkosítási, identitás-és engedélyezési házirendeket használ az adatok védelme és az adatokhoz való hozzáférés korlátozása érdekében. A Microsoft által használt egyes besorolások nem üzleti, nyilvános, általános, bizalmas és szigorúan bizalmas jellegűek.</td>
-    <td class="tg-lboi"; width=55%>- Az SQL-adatbázisokban lévő bizalmas adatokat osztályozni kell (előzetes verzió)</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Az adatbesorolás alkalmazása (max. pontszám 0)</p></strong>A szervezet adatai érzékenység és üzleti hatás alapján történő besorolásával meghatározhatja és hozzárendelheti az adatértékeket, valamint megadhatja a stratégia és az irányítás alapját.<br>Az <a href="/azure/information-protection/what-is-information-protection">Azure Information Protection</a> segíthet az adatbesorolásban. Titkosítási, identitás-és engedélyezési házirendeket használ az adatok védelme és az adatokhoz való hozzáférés korlátozása érdekében. A Microsoft által használt egyes besorolások nem üzleti, nyilvános, általános, bizalmas és szigorúan bizalmas jellegűek.</td>
+    <td class="tg-lboi"; width=55%>- Az SQL-adatbázisokban lévő bizalmas adatokat osztályozni kell</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Alkalmazások elleni védelem a DDoS-támadások ellen (max. pontszám 2)</p></strong>Az elosztott szolgáltatásmegtagadási (DDoS) támadások elárasztják az erőforrásokat és az alkalmazások használhatatlanná teszik a szolgáltatást. A <a href="/azure/virtual-network/ddos-protection-overview">Azure DDoS Protection standard</a> használatával védje szervezetét a DDOS-támadások három fő típusával:<br>A - <strong>térfogatmérő támadásokkal</strong> a hálózat legitim forgalommal elárasztható. DDoS Protection a standard csökkenti ezeket a támadásokat úgy, hogy automatikusan elnyeli vagy súrolja őket.<br>A - <strong>protokollok elleni támadások</strong> a 3. rétegbeli és a 4. rétegbeli protokollon alapuló gyengeségek kiaknázásával elérhetetlenné teszik a célt. DDoS Protection a standard csökkenti ezeket a támadásokat a kártékony forgalom blokkolásával.<br>Az - <strong>erőforrás (alkalmazás) réteg támadásokat</strong> céloz meg a webalkalmazások csomagjaiban. Védje ezt a típust egy webalkalmazási tűzfallal és DDoS Protection Szabványsal.</td>
@@ -287,7 +287,7 @@ Igen. Javasoljuk, hogy tiltsa le a javaslatokat, ha azok nem alkalmazhatók a k�
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>Ha egy biztonsági vezérlő nulla pontot biztosít a biztonságos pontszám felé, figyelmen kívül hagyhatom?
 Bizonyos esetekben a vezérlőelem maximális pontszáma nullánál nagyobb lesz, de a hatás nulla. Ha az erőforrások kijavításának növekményes pontszáma elhanyagolható, a rendszer nulla értékűre kerekíti. Ne hagyja figyelmen kívül ezeket az ajánlásokat, mivel azok továbbra is biztonsági javítást tesznek lehetővé. Az egyetlen kivétel a "további ajánlott eljárás" vezérlő. Szervizelését ezekkel az ajánlásokkal nem növeli a pontszámát, de a teljes biztonságot is növeli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a biztonságos pontszámot és az általa bevezetett biztonsági ellenőrzéseket ismerteti. A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket:
 

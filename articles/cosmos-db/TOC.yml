@@ -110,8 +110,38 @@
       href: cosmosdb-jupyter-notebooks.md
     - name: Szolgáltatáskvóták
       href: concepts-limits.md
-    - name: Alkalmasság vállalati használatra – Megfelelőség
-      href: compliance.md
+    - name: Alkalmasság vállalati használatra
+      items:
+        - name: A biztonsági mentés és a visszaállítás bemutatása
+          href: online-backup-and-restore.md
+        - name: Folyamatos biztonsági mentés
+          items:
+            - name: Folyamatos biztonsági mentés – bevezetés
+              href: continuous-backup-restore-introduction.md
+            - name: Folyamatos biztonsági mentés – gyakori kérdések
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: Folyamatos biztonsági mentés – erőforrás-modell
+              items:
+                - name: Az erőforrás-modell áttekintése
+                  href: continuous-backup-restore-resource-model.md
+                - name: Helyreállítható fiókok – lista
+                  href: restorable-database-accounts-list.md
+                - name: Visszaállítható fiókok – helyek listázása
+                  href: restorable-database-accounts-list-by-location.md
+                - name: Helyreállítható SQL-erőforrások – lista
+                  href: restorable-sql-resources-list.md
+                - name: Helyreállítható SQL-adatbázisok – lista
+                  href: restorable-sql-databases-list.md
+                - name: Helyreállítható SQL-tárolók – lista
+                  href: restorable-sql-containers-list.md
+                - name: Helyreállítható MongoDB-erőforrások – lista
+                  href: restorable-mongodb-resources-list.md
+                - name: Helyreállítható MongoDB-gyűjtemények – lista
+                  href: restorable-mongodb-collections-list.md
+                - name: Helyreállítható MongoDB-adatbázisok – lista
+                  href: restorable-mongodb-databases-list.md
+        - name: Megfelelőség
+          href: compliance.md
     - name: Automatikus javaslatok
       href: automated-recommendations.md
 - name: SQL/Core API
@@ -1365,8 +1395,20 @@
           href: how-to-setup-cmk.md
     - name: Alkalmasság vállalati használatra
       items:
-        - name: Online biztonsági mentés és igény szerinti helyreállítás
-          href: online-backup-and-restore.md
+        - name: Folyamatos biztonsági mentés kezelése
+          items:
+            - name: Folyamatos biztonsági mentés – engedélyek és szerepkörök
+              href: continuous-backup-restore-permissions.md
+            - name: Folyamatos biztonsági mentés – portál
+              href: continuous-backup-restore-portal.md
+            - name: Folyamatos biztonsági mentés – PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: Folyamatos biztonsági mentés – parancssori felület
+              href: continuous-backup-restore-command-line.md
+            - name: Folyamatos biztonsági mentés – ARM
+              href: continuous-backup-restore-template.md
+        - name: Rendszeres biztonsági mentés kezelése
+          href: configure-periodic-backup-restore.md
         - name: Kvótanövelés kérése
           href: create-support-request-quota-increase.md
     - name: Figyelés

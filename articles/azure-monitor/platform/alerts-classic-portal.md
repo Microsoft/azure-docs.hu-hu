@@ -5,17 +5,17 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 4b0d3acda56c3f45128d1cc7cefcc4eb938281a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8b4cdd834c0db6869fdf804b43914eaa74b14319
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943791"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525551"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
 > [!WARNING]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat.
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások [kimaradnak a nyilvános](./monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják.
 >
 
 A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesítést kapjon, ha az egyik mérőszám egy küszöbértéket túlnyúlik. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások terén. További információ az új metrikai riasztások funkcióról a [metrikus riasztások áttekintése című témakörben](./alerts-metric-overview.md)olvasható. Ebben a cikkben azt ismertetjük, hogyan hozhatók létre, tekinthetők meg és kezelhetők a klasszikus metrikus riasztási szabályok Azure Portal, az Azure CLI és a PowerShell használatával.

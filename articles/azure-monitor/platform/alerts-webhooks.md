@@ -6,17 +6,17 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1519dbe9439f1d56a558082f993b15b4a312ecfa
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852106"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526873"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
 
 > [!WARNING]
-> Ez a cikk a régebbi klasszikus metrikai riasztások használatát ismerteti. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat.
+> Ez a cikk a régebbi klasszikus metrikai riasztások használatát ismerteti. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](./alerts-overview.md). A klasszikus riasztások [kimaradnak a nyilvános](./monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják.
 >
 
 A webhookok használatával átirányíthat egy Azure-riasztási értesítést más rendszerekre a feldolgozás utáni vagy egyéni műveletekhez. A riasztások segítségével egy webhook használatával átirányíthatja azt a szolgáltatásba, amely SMS-üzeneteket küld, a hibák naplózása, a csapat csevegési vagy üzenetküldési szolgáltatásokon keresztüli értesítése, illetve egyéb műveletek esetén. 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan állítható be egy webhook egy Azure metrikai r
 Az Azure-riasztások a HTTP POST paranccsal küldik el a riasztás tartalmát JSON formátumban a riasztás létrehozásakor megadott webhook URI-hoz. A séma a cikk későbbi részében van meghatározva. Az URI azonosítónak érvényes HTTP-vagy HTTPS-végpontnak kell lennie. Az Azure a riasztások aktiválása után egy bejegyzést kér be.
 
 ## <a name="configure-webhooks-via-the-azure-portal"></a>Webhookok konfigurálása a Azure Portal használatával
-A webhook URI-azonosítójának hozzáadásához vagy frissítéséhez lépjen a [Azure Portal](https://portal.azure.com/)a **riasztások létrehozása/frissítése**elemre.
+A webhook URI-azonosítójának hozzáadásához vagy frissítéséhez lépjen a [Azure Portal](https://portal.azure.com/)a **riasztások létrehozása/frissítése** elemre.
 
 ![Riasztási szabály hozzáadása panel](./media/alerts-webhooks/Alertwebhook.png)
 

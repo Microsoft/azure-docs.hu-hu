@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756808"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526506"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
 
@@ -39,11 +39,19 @@ Az egyes javaslatok a következőket biztosítják:
 
 ## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Hogyan dönti el a Microsoft a biztonság és a megerősítés szükségletét?
 
-Security Center javaslatai az Azure biztonsági Teljesítményteszten alapulnak. 
+Security Center javaslatai az Azure biztonsági Teljesítményteszten alapulnak. Szinte minden javaslat rendelkezik egy alapul szolgáló házirenddel, amely a teljesítményteszt követelményének megfelelően van származtatva.
 
-Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
+Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít. További tudnivalók az [Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
 
-További tudnivalók az [Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
+A javaslatok részleteinek áttekintéséhez gyakran hasznos, ha látni szeretné a mögöttes szabályzatot. A szabályzat által támogatott minden javaslat esetében a javaslat részletei lapon található **házirend-definíció megtekintése** hivatkozásra kattintva lépjen közvetlenül a megfelelő szabályzat Azure Policy bejegyzésére:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Hivatkozás Azure Policy lapra a javaslatot támogató konkrét szabályzathoz":::
+
+Ezzel a hivatkozással megtekintheti a szabályzat definícióját, és áttekintheti az értékelési logikát. 
+
+Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási útmutatójában](recommendations-reference.md), akkor a szabályzat-definíciós lapokra mutató hivatkozásokat is láthatja:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok hivatkozási oldaláról":::
 
 ## <a name="monitor-recommendations"></a>Javaslatok figyelése <a name="monitor-recommendations"></a>
 
@@ -63,9 +71,12 @@ Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosíts
 
     Az oldal tartalma:
 
-    1. A támogatott javaslatok **érvényesítése** és **megtagadása** (lásd: [a helytelen konfiguráció tiltása a kényszerítő/megtagadási javaslatokkal](prevent-misconfigurations.md))
+    1. A támogatott javaslatok esetében a felső eszköztár a következő gombok bármelyikét vagy mindegyikét megjeleníti:
+        - **Kikényszerítés** és **Megtagadás** (lásd: [a hibás konfigurációk megelőzése a kényszerítő/megtagadási javaslatokkal](prevent-misconfigurations.md))
+        - **Megtekintheti a házirend-definíciót** , hogy közvetlenül az alapul szolgáló szabályzat Azure Policy bejegyzéséhez lépjen
     1. **Súlyossági mutató**
-    1. **Frissességi intervallum**  (ahol szükséges) 
+    1. **Frissességi intervallum** (ahol szükséges)
+    1. A **mentesített erőforrások** száma, ha kivételek vannak a javaslathoz, ez a kivételt képező erőforrások számát mutatja.
     1. **Leírás** – a probléma rövid leírása
     1. **Szervizelési lépések** – az érintett erőforrásokra vonatkozó biztonsági probléma megoldásához szükséges manuális lépések leírása. A "gyors javítással" kapcsolatos javaslatok esetében kiválaszthatja a **szervizelési logika megjelenítése** lehetőséget, mielőtt alkalmazza a javasolt javítást az erőforrásokra. 
     1. **Érintett erőforrások** – az erőforrások lapokra vannak csoportosítva:
@@ -86,7 +97,7 @@ Példa az előzetes verziójú javaslatra:
 
 :::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a dokumentumban a Security Center biztonsági javaslataira került sor. Kapcsolódó információk:
 

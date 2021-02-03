@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c85049d6c8921432a753bf08989cab473b7c734
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014023"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525127"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>DNS-névkeresési zónák üzemeltetése Azure DNS
 
@@ -44,7 +44,7 @@ Az IPv4 névkeresési zónák neve az általa reprezentált IP-tartományon alap
 >
 > Például a 192.0.2.128/26 IP-címtartomány esetében a `128-26.2.0.192.in-addr.arpa` helyett a zóna nevét kell használnia `128/26.2.0.192.in-addr.arpa` .
 >
-> Bár a DNS-szabványok mindkét módszert támogatják, a Azure DNS nem támogatja a továbbítási perjel () karaktert tartalmazó DNS-zónák nevét `/` .
+> Bár a DNS-szabványok mindkét módszert támogatják, Azure DNS nem támogatja a továbbítás perjel () karaktert tartalmazó DNS-zónák nevét `/` .
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy Azure DNS nevű C. osztályú fordított DNS-zónát `2.0.192.in-addr.arpa` a Azure Portal használatával:
 
@@ -262,7 +262,7 @@ Igen. Az Azure CLI-vel meglévő DNS-zónákat importálhat Azure DNSba. Ez a me
 
 További információ: [DNS-zónafájl importálása és exportálása az Azure CLI használatával](dns-import-export.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fordított DNS-sel kapcsolatos további információkért lásd: [fordított DNS-keresés a wikipedia-ben](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>

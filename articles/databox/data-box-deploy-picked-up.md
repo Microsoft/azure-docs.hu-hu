@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028376"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524992"
 ---
 ::: zone target="docs"
 
@@ -322,7 +322,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
-Ha a Data Boxot az Egyesült Államok államigazgatási szerveinél, Japánban, Szingapúrban, Koreában, Indiában, a Dél-afrikai Köztársaságban vagy Nyugat-Európában használja, és a rendelés létrehozása során az önállóan felügyelt szállítás lehetőséget választotta, kövesse az alábbi utasításokat.
+Ha Data Boxt használ az USA kormányában, Japánban, Szingapúrban, Koreában, Indiában, Dél-Afrikában, az Egyesült Királyságban, Nyugat-Európában vagy Ausztráliában, és a rendelés létrehozásakor kiválasztotta az önfelügyelt szállítást, kövesse az alábbi utasításokat.
 
 1. Jegyezze fel a hitelesítési kódot (Authorization code), amely a Data Box helyi webes felhasználói felületének **„Prepare to Ship” (A szállítás előkészítése)** lapján jelenik meg a lépés sikeres befejeződése után.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljánál.

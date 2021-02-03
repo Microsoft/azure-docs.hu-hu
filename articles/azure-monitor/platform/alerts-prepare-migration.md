@@ -6,17 +6,17 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc0be351253a15bf9039839c8cae2246681d41e2
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944481"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526653"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
 > [!NOTE]
-> Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak, de továbbra is korlátozott mértékben használják azokat az erőforrásokat, amelyek még nem támogatják az új riasztásokat. A riasztások kivonulási dátuma tovább bővült. Hamarosan új dátum jelenik meg.
+> Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár továbbra is korlátozott használatban vannak az új riasztásokat még nem támogató erőforrások esetében. A riasztások kivonulási dátuma tovább bővült. Hamarosan új dátum jelenik meg.
 >
 
 Ha úgy dönt, hogy önként áttelepíti a klasszikus riasztási szabályokat az új riasztási szabályokra, vegye figyelembe, hogy a két rendszer között van néhány különbség. Ez a cikk ismerteti ezeket a különbségeket, és azt, hogy miként lehet előkészíteni a változást.

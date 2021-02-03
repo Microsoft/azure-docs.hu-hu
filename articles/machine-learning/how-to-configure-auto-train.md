@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954715"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526466"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -257,7 +257,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok automatikusan m
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a [AutoMLConfig objektum](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization elfogadott beállításait tartalmazza. 
 
-|Featurization-konfiguráció | Description |
+|Featurization-konfiguráció | Leírás |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**.|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem kell automatikusan elvégezni.|
@@ -420,7 +420,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
   * Attribútum hibái: pl. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
   A probléma megkerüléséhez végezze el az alábbi két lépés valamelyikét az `AutoML` SDK-képzés verziójától függően:
-    * Ha az `AutoML` SDK-képzés verziója meghaladja a 1.13.0-t, akkor a és a is szükséges `pandas == 0.25.1` `sckit-learn==0.22.1` . Ha a verzió nem egyezik, frissítse a scikit-Learn és/vagy a pandák verziót a megfelelő verzióra az alább látható módon:
+    * Ha az `AutoML` SDK-képzés verziója meghaladja a 1.13.0-t, akkor a és a is szükséges `pandas == 0.25.1` `scikit-learn==0.22.1` . Ha a verzió nem egyezik, frissítse a scikit-Learn és/vagy a pandák verziót a megfelelő verzióra az alább látható módon:
       
       ```bash
          pip install --upgrade pandas==0.25.1

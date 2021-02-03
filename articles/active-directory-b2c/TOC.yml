@@ -432,6 +432,9 @@
     - name: Biztonságos API Management API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Biztonságos telefon alapú MFA
+      href: phone-based-mfa.md
+      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: Naplók és figyelés
       items:
         - name: Naplók

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 99e217c6d8065d19f7b03419306f4992735cb587
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222183"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526728"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -35,11 +35,11 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Egy hozzárendelés szerkesztéséhez a **tulajdonos** vagy a **biztonsági rendszergazda**<br>**Olvasó** a javaslatok megtekintéséhez|
-|Támogatott fürtök:|Kubernetes v 1.14 (vagy újabb) szükséges<br>Nincs PodSecurityPolicy-erőforrás (régi PSP-modell) a fürtökön<br>A Windows-csomópontok nem támogatottak|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Környezeti követelmények:|Kubernetes v 1.14 (vagy újabb) szükséges<br>Nincs PodSecurityPolicy-erőforrás (régi PSP-modell) a fürtökön<br>A Windows-csomópontok nem támogatottak|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -52,6 +52,8 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
 A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővítményét**. 
 
 - Ezt a bővítményt automatikusan telepítheti a [bővítmények automatikus kiépítése lehetővé tétele](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)című részben leírtak szerint. Ha a bővítmény automatikus kiépítés értéke "on", a bővítmény alapértelmezés szerint engedélyezve van az összes meglévő és jövőbeli fürtben (amelyek megfelelnek a bővítmény telepítési követelményeinek).
+
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Az Security Center automatikus kiépítési eszközének használata a Kubernetes házirend-bővítményének telepítéséhez":::
 
 - A bővítmény manuális telepítése:
 
@@ -78,12 +80,12 @@ A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővít
 
     | Javaslat neve                                                         | Biztonsági ellenőrzés                         | Konfiguráció szükséges |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | No                     |
-    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | No                     |
-    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | No                     |
-    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | No                     |
-    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | No                     |
-    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | No                     |
+    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | Nem                     |
+    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | Nem                     |
     | A minimálisan privilegizált Linux-funkciókat kell kikényszeríteni a tárolók számára       | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni    | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A tárolóknak csak az engedélyezett portok figyelésére kell figyelniük                              | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |

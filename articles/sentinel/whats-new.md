@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500720"
+ms.locfileid: "99526636"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -46,7 +46,7 @@ Az Azure Sentinel mostantól támogatja az új az [. SecurityInsights](https://w
 
 Az az **. SecurityInsights** modul támogatja a közös Azure Sentinel-használati eseteket, például az incidensekkel való interakciót a szobrok, a súlyosság, a tulajdonos és így tovább, a megjegyzések és címkék hozzáadásával és könyvjelzők létrehozásával.
 
-Habár javasoljuk, hogy a CI/CD-folyamathoz [Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) sablonokat használjon, az az **. SecurityInsights** modul az üzembe helyezés utáni feladatok esetében hasznos, és kifejezetten SoC-automatizálásra van kijelölve.  Például a SOC Automation tartalmazhatja az adatösszekötők konfigurálásának lépéseit, az elemzési szabályok létrehozását, illetve az Automation-műveletek az elemzési szabályokhoz való hozzáadását.
+Habár javasoljuk, hogy a CI/CD-folyamathoz [Azure Resource Manager-(ARM-)](/azure/azure-resource-manager/templates/) sablonokat használjon, az az **. SecurityInsights** modul az üzembe helyezés utáni feladatok esetében hasznos, és a SoC automationt célozza meg.  Például a SOC Automation tartalmazhatja az adatösszekötők konfigurálásának lépéseit, az elemzési szabályok létrehozását, illetve az Automation-műveletek az elemzési szabályokhoz való hozzáadását.
 
 További információkért, beleértve az elérhető parancsmagok teljes listáját és leírását, a paraméterek leírását és a példákat lásd az az [. SecurityInsights PowerShell-dokumentációban](/powershell/module/az.securityinsights/).
 
@@ -123,7 +123,7 @@ Ez az Azure Sentinel-frissítés olyan új vadászati lekérdezéseket tartalmaz
 
 A hozzáadott vadászati lekérdezések célja, hogy segítsen megtalálni a gyanús tevékenységeket a környezetben. Habár a jogszerű tevékenységet és a potenciálisan rosszindulatú tevékenységeket is visszaadhatják, hasznosak lehetnek a vadászatra. 
 
-Ha a lekérdezések futtatása után biztos abban, hogy az eredményekkel rendelkezik, érdemes lehet konvertálni az elemzési szabályokba, vagy a meglévő vagy új incidensekhez hozzá kell adnia a vadászati eredményeket.
+Ha a lekérdezések futtatása után biztos abban, hogy az eredményeket megbízik, érdemes lehet konvertálni az elemzési szabályokba, vagy a vadászat eredményeit meglévő vagy új incidensekhez hozzáadni.
 
 Az összes hozzáadott lekérdezés az Azure Sentinel Hunting oldalon érhető el. További információ: [a fenyegetések vadászata az Azure Sentinel](hunting.md)szolgáltatással.
 
