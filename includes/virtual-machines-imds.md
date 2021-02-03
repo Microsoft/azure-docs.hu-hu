@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: ceb560a3f0c56a13b9f8da6c867f513b2b08e59b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962236"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99499973"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -78,7 +78,7 @@ A szolgáltatás elutasítja minden olyan kérelmet, amely nem felel meg **mindk
 A IMDS **nem** használható proxy mögött, ezért nem támogatott. A legtöbb HTTP-ügyfél lehetőséget biztosít a proxyk letiltására a kérelmekben, és ezt a funkciót a IMDS-vel való kommunikáció során kell használni. A részletekért olvassa el az ügyfél dokumentációját.
 
 > [!IMPORTANT]
-> Még ha nem tudja, hogy a környezetben milyen proxybeállítások vannak, **akkor is felül kell bírálnia az alapértelmezett ügyfél-proxybeállításokat**. A proxy-konfigurációk automatikusan felderíthető, és az ilyen konfigurációk megkerülése sikertelen lesz, ha a jövőben a gép konfigurációját meg kell változtatni.
+> Még ha nem tudja, hogy a környezetben milyen proxybeállítások vannak, **akkor is felül kell bírálnia az alapértelmezett ügyfél-proxybeállításokat**. A rendszer automatikusan felderíti a proxy konfigurációját, és az ilyen konfigurációk megkerülésének sikertelensége után a gép konfigurációjának jövőbeli megváltozása miatt kikapcsolja a kockázatokat.
 
 ## <a name="rate-limiting"></a>Sebességkorlátozás
 
@@ -274,7 +274,7 @@ A IMDS API több végponti kategóriát is tartalmaz, amelyek különböző adat
 | `/metadata/identity` | [Felügyelt identitás megjelenítése a IMDS használatával](#managed-identity) | 2018-02-01
 | `/metadata/instance` | Lásd: [példány metaadatainak](#instance-metadata) | 2017-04-02
 | `/metadata/scheduledevents` | Lásd: [Scheduled Events a IMDS-on keresztül](#scheduled-events) | 2017-08-01
-| `/metadata/versions` | [Verziók](#versions) megjelenítése | N.A.
+| `/metadata/versions` | [Verziók](#versions) megjelenítése | N/A
 
 ## <a name="versions"></a>Verziók
 
@@ -1126,7 +1126,7 @@ Ha több kísérlet után nem tud metaadat-választ kapni, létrehozhat egy tám
 
 A felhasználói visszajelzési csatornára vonatkozó visszajelzéseket és ötleteket a Virtual Machines > Instance Metadata Service itt találja: https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzáférési jogkivonat beszerzése a virtuális géphez](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 

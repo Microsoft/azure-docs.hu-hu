@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7bff21a17af3c908caeed6a1e60de8e2fe4efc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d148509af45b93dce8dbd99b9afc674276b149b6
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287594"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493972"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Csatlakozási módok és követelmények
 
@@ -24,7 +24,7 @@ ms.locfileid: "93287594"
 
 Az Azure arc-kompatibilis adatszolgáltatási környezetből az Azure-ba való kapcsolódás foka több lehetőség is rendelkezésre áll. Mivel a követelmények az üzleti házirend, a kormányzati szabályozás vagy az Azure-hoz való hálózati kapcsolat elérhetősége alapján változnak, az alábbi csatlakozási módok közül választhat.
 
-Az Azure arc-kompatibilis adatszolgáltatások lehetőséget biztosít az Azure-hoz való csatlakozásra két különböző *csatlakozási módban* : 
+Az Azure arc-kompatibilis adatszolgáltatások lehetőséget biztosít az Azure-hoz való csatlakozásra két különböző *csatlakozási módban*: 
 
 - Közvetlenül csatlakoztatva 
 - Közvetve csatlakoztatva
@@ -37,18 +37,16 @@ Emellett a Azure Active Directory és az Azure Role-Based Access Control csak a 
 
 Néhány Azure-hoz kapcsolódó szolgáltatás csak akkor érhető el, ha közvetlenül elérhetők, például az Azure Defender biztonsági szolgáltatásai, a tároló-felismerések és a blob Storage-Azure Backup.
 
-Jelenleg az előzetes verzióban csak a közvetett módon csatlakoztatott mód támogatott. 
-
 ||**Közvetve csatlakoztatva**|**Közvetlenül csatlakoztatva**|**Soha nem kapcsolódott**|
 |---|---|---|---|
 |**Leírás**|A központilag csatlakoztatott mód a legtöbb felügyeleti szolgáltatást helyileg kínálja a környezetben, és nincs közvetlen kapcsolat az Azure-hoz.  Az Azure-ba _csak_ leltározási és számlázási célokat kell elküldeni. Egy fájlba exportálja, és havonta legalább egyszer feltölti az Azure-ba.  Nincs szükség közvetlen vagy folyamatos kapcsolódásra az Azure-hoz.  Az Azure-hoz való csatlakozást igénylő szolgáltatások és szolgáltatások nem lesznek elérhetők.|A közvetlenül csatlakoztatott mód biztosítja az összes elérhető szolgáltatást, ha közvetlen kapcsolat létesíthető az Azure-ban. A kapcsolatokat a rendszer mindig az Azure- _ba kezdeményezi_ , és szabványos portokat és protokollokat használ, mint például a https/443.|Semmilyen módon nem küldhetők adatok az Azure-ba vagy az Azure-ból.|
-|**Aktuális rendelkezésre állás**| Előzetes verzióban érhető el.|A jövőben előzetes verzióként tervezték meg.|Jelenleg nem támogatott.|
+|**Aktuális rendelkezésre állás**| Előzetes verzióban érhető el.|Előzetes verzióban érhető el.|Jelenleg nem támogatott.|
 |**Jellemző használati esetek**|Olyan helyszíni adatközpontok, amelyek nem engedélyezik az adatközpont adatterületének az üzleti vagy jogszabályi megfelelőségi szabályzatok, illetve a külső támadások vagy az adatkiszűrése miatti kapcsolódását.  Tipikus példák: pénzügyi intézmények, egészségügyi ellátás, kormányzat. <br/><br/>Az Edge-helyek olyan helyei, ahol az Edge-hely általában nem kapcsolódik az internethez.  Tipikus példák: olaj/gáz vagy katonai mezők alkalmazásai.  <br/><br/>Az Edge-helyek olyan helyei, amelyek hosszú leállású időszakos kapcsolattal rendelkeznek.  Tipikus példák: stadionok, tengerjáró hajók. | Nyilvános felhőket használó szervezetek.  Tipikus példák: Azure, AWS vagy Google Cloud.<br/><br/>Az oldal azon helyei, ahol az internetkapcsolat általában jelen van és engedélyezett.  Tipikus példák: kiskereskedelmi üzletek, gyártás.<br/><br/>A vállalati adatközpontok az adatközpont és az Internet közötti adatterületük közötti kapcsolathoz biztosítanak több engedékeny házirendet.  Tipikus példák: nem szabályozott vállalkozások, kis-és közepes méretű vállalkozások|Valóban "gapped" környezetekben, amelyekben semmilyen körülmények között semmilyen adat nem érhető el az adatkörnyezetből. Tipikus példák: a szigorúan titkos kormányzati létesítmények.|
 |**Az adatküldés az Azure-ba**|Három lehetőség áll rendelkezésre a számlázási és leltározási információk Azure-ba történő elküldésekor:<br><br> 1.) az adatterületről egy automatizált folyamat exportálja az adatterületet, amely kapcsolattal rendelkezik a biztonságos adatterülettel és az Azure-nal.<br><br>2) a rendszer az adatterületről exportálja az adatokból az adatterületet, automatikusan átmásolja egy kevésbé biztonságos régióba, és a kevésbé biztonságos régióba tartozó automatizált folyamat feltölti az Azure-ba.<br><br>3) a biztonságos régióban lévő felhasználó manuálisan exportálja az adatmennyiséget, manuálisan kihozza a biztonságos régiót, és manuálisan feltölti az Azure-ba. <br><br>Az első két lehetőség egy automatizált folyamatos folyamat, amely rendszeres futtatásra ütemezhető, így az adatoknak az Azure-ba való átvitelének minimális késleltetése csak az Azure-hoz elérhető kapcsolat.|Az adatküldés automatikusan és folyamatosan történik az Azure-ban.|Az Azure-ba soha nem kerül be az adatküldés.|
 
 ## <a name="feature-availability-by-connectivity-mode"></a>Szolgáltatás rendelkezésre állása csatlakozási mód alapján
 
-|**Funkció**|**Közvetve csatlakoztatva**|**Közvetlenül csatlakoztatva**|
+|**Szolgáltatás**|**Közvetve csatlakoztatva**|**Közvetlenül csatlakoztatva**|
 |---|---|---|
 |**Automatikus magas rendelkezésre állás**|Támogatott|Támogatott|
 |**Önkiszolgáló kiépítés**|Támogatott<br/>A létrehozás történhet Azure Data Studioon, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] vagy Kubernetes natív eszközökkel (Helm, kubectl, oC stb.), vagy az Azure arc engedélyezve Kubernetes GitOps kiépítés használatával.|Támogatott<br/>A közvetett módon csatlakoztatott mód létrehozásának lehetőségein kívül a Azure Portalon, Azure Resource Manager API-kon, az Azure CLI-n vagy az ARM-sablonokon is létrehozhat. **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**
@@ -120,7 +118,7 @@ Igen
 
 #### <a name="authentication"></a>Hitelesítés
 
-Nincsenek
+Nincs
 
 ### <a name="azure-resource-manager-apis"></a>Azure Resource Manager API-k
 A Azure Data Studio [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] és az Azure CLI a Azure Resource Manager API-khoz csatlakozik az Azure-ba irányuló és onnan érkező adatok bizonyos funkciókhoz való küldéséhez és lekéréséhez.

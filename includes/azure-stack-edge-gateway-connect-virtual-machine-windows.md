@@ -4,18 +4,18 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 8d6c3125d0109ae9005414add27f9aa08e932e49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e781e3c29a6a22648c6d0596f9fe0a3e425427d7
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89084261"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500095"
 ---
-Kapcsolódjon a Windows rendszerű virtuális géphez az RDP protokoll (RDP) használatával a virtuális gép létrehozása során átadott IP-címen keresztül.
+Kapcsolódjon a Windows rendszerű virtuális géphez a virtuális gép létrehozása során átadott IP-címen keresztül a RDP protokoll (RDP) használatával.
 
-1. Az ügyfélen indítsa el az RDP-t. Lépjen a **Start menüre** , és írja be az **mstsc**parancsot.
+1. Az ügyfélen indítsa el az RDP-t. Lépjen a **Start menüre** , és írja be az **mstsc** parancsot.
 1. Adja meg a virtuális gép IP-címét és a virtuálisgép-sablon paramétereinek fájljában használt hozzáférési hitelesítő adatokat.
 
-    ![Kapcsolódás RDP-kapcsolaton keresztül Windows rendszerű virtuális gépre](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
+    ![Képernyőkép, amely bemutatja, hogyan csatlakozhat RDP-n keresztül a Windows rendszerű virtuális géphez.](media/azure-stack-edge-gateway-connect-vm-windows/connect-vm-rdp-1.png)
 1. Előfordulhat, hogy jóvá kell hagynia a nem megbízható géphez való csatlakozást. 
 1. Most bejelentkezett a készüléken futó virtuális gépre. 

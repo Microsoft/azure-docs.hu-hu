@@ -278,6 +278,8 @@
           items:
             - name: Metrikadiagramok használata
               href: azure-stack-edge-monitor.md
+            - name: Eszköz-riasztások kezelése
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes-irányítópult használata
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Az Azure Monitor használata

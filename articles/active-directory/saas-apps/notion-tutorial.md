@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 512436c9d72e0318ec14bf7551a2fde76c6ef3d8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 520eb25bcb138c96b24166816d3374255fb7c3b2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735910"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493989"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-notion"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a fogalommal
 
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * Az elméleti **és identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés támogatása
 * A fogalom **csak időben támogatja a** felhasználók üzembe helyezését
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így az egyik fogalmi munkaterület konfigurálható egyetlen bérlőn.
 
 
 ## <a name="adding-notion-from-the-gallery"></a>Fogalmak hozzáadása a gyűjteményhez
@@ -80,14 +80,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő mintával, amelyet beszerezheti a fogalmi munkaterület **beállításai & tagok** > **biztonsági & identitás** > **egyszeri bejelentkezési URL-címe**:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://www.notion.so/login`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címével és Sign-On URL-címmel. Az értékek megszerzéséhez forduljon az [ügyfél-támogatási csoporthoz](mailto:team@makenotion.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címével és Sign-On URL-címmel. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az elméleti alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | lastName | felhasználó. vezetéknév |
 
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához. Lépjen a **fogalmi** munkaterület **beállításai & tagok**  >  **biztonsági & identitás** elemre, és illessze be a vágólapra másolt értéket a **identitásszolgáltató-metaadatok URL-címe** mezőbe.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
@@ -132,7 +132,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-notion-sso"></a>Fogalmi SSO konfigurálása
 
-Az egyszeri bejelentkezés az **elméleti** oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** az [elméleti támogatási csapatnak](mailto:team@makenotion.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Nyissa meg a **fogalmi** munkaterület **beállításait & tagok**  >  **biztonsági & identitását**, és illessze be az **alkalmazás-összevonási metaadatok** URL-címét, amelyet a **identitásszolgáltató-metaadatok URL-címe** mezőbe másolt.
+
+Ugyanazon beállítások lap **e-mail tartományok** területén kattintson a kapcsolatfelvétel az **ügyfélszolgálattal** lehetőségre a szervezeti e-mail tartomány (ok) hozzáadásához.
+
+Miután jóváhagyta és hozzáadta az e-mail-tartományokat, engedélyezze az SAML SSO-t az **SAML engedélyezése** váltógomb használatával.
+
+A sikeres tesztelés után az SAML egyszeri bejelentkezést az **SAML-beléptetési** kapcsoló használatával kényszerítheti ki. Vegye figyelembe, hogy a fogalmi munkaterület administrastrators megtarthatja az e-mailekkel való bejelentkezés lehetőségét, de minden más tagnak az SAML SSO-t kell használnia a fogalomba való bejelentkezéshez.
 
 ### <a name="create-notion-test-user"></a>Fogalmi teszt felhasználó létrehozása
 
@@ -155,6 +161,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások fogalmi csempére kattint, ha az SP módban van konfigurálva, akkor a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a fogalomba, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A koncepció konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

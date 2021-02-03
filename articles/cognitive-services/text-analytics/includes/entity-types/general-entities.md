@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097266"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500282"
 ---
 A Text Analytics a következő általános (nem azonosító) entitás-kategóriákat adja vissza. például a végpontra irányuló kérelmek küldésekor `/entities/recognition/general` .
 
@@ -34,6 +34,7 @@ A Text Analytics a következő általános (nem azonosító) entitás-kategóri�
 | [URL-cím](#category-url) | Webhelyek URL-címei. |
 | [IP](#category-ip) | Hálózati IP-címek. |
 | [Dátum/idő](#category-datetime) | Dátum és napszakok. |
+| [Mennyiség](#category-quantity) | Numerikus mérések és egységek. |
 
 
 ### <a name="category-person"></a>Kategória: személy

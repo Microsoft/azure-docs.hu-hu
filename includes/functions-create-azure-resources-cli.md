@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025484"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500062"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>A függvényhez kapcsolódó Azure-erőforrások létrehozása
 
 Mielőtt üzembe helyezi a függvény kódját az Azure-ban, három erőforrást kell létrehoznia:
 
-- Egy erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
-- Egy Storage-fiók, amely fenntartja az állapotot és a projektekkel kapcsolatos egyéb információkat.
+- Egy [erőforráscsoport](../articles/azure-resource-manager/management/overview.md), amely a kapcsolódó erőforrások logikai tárolója.
+- Egy [Storage-fiók](../articles/storage/common/storage-account-create.md), amely az állapot és a függvények egyéb adatainak fenntartására szolgál.
 - Egy Function alkalmazás, amely biztosítja a környezetet a függvény kódjának végrehajtásához. A Function alkalmazás a helyi function projekthez kapcsolódik, és lehetővé teszi, hogy logikai egységként csoportosítsa a függvényeket az erőforrások egyszerűbb felügyelete, üzembe helyezése és megosztása érdekében.
 
 Ezen elemek létrehozásához használja a következő parancsokat. Az Azure CLI és a PowerShell is támogatott.

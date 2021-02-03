@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798570"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500133"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -140,6 +140,10 @@ A virtuális központ legfeljebb 1 000 kapcsolatot támogat. Minden kapcsolat n�
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Mi az az Azure Virtual WAN-hoz kapcsolódó fiókiroda?
 
 Egy ág vagy VPN-eszköz kapcsolata az Azure Virtual WAN-ba nem más, mint egy VPN-kapcsolat, amely gyakorlatilag a VPN-helyet és az Azure-VPN Gateway csatlakoztatja egy virtuális hubhoz.
+
+### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>Mi történik, ha a helyszíni VPN-eszköznek csak 1 alagútja van egy Azure-beli virtuális WAN VPN-átjáróhoz?
+
+Az Azure-beli virtuális WAN-kapcsolat 2 alagútból áll. A virtuális WAN VPN-átjáró aktív-aktív módban van üzembe helyezve, ami azt jelenti, hogy külön alagutak vannak a helyi eszközöktől különálló isntances – ez az összes felhasználóra vonatkozó javaslat. Ha azonban a felhasználó úgy dönt, hogy csak 1 alagúttal rendelkezik az egyik virtuális WAN VPN Gateway-példányhoz, bármilyen okból (karbantartás, javítások stb.)  az átjáró példányát offline állapotba kell helyezni, az alagút át lesz helyezve a másodlagos aktív példányra, és a felhasználó újrakapcsolódást tapasztalhat. Azt is vegye figyelembe, hogy a BGP-munkamenet nem kerül át a példányok között.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>A helyszíni VPN-eszköz több központhoz is csatlakoztatható?
 

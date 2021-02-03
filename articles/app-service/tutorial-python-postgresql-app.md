@@ -3,7 +3,7 @@ title: 'Oktatóanyag: Python Django-alkalmazás üzembe helyezése a postgres-me
 description: Hozzon létre egy PostgreSQL-adatbázist tartalmazó Python-webalkalmazást, és telepítse azt az Azure-ba. Az oktatóanyag a Django keretrendszert használja, és az alkalmazás Azure App Service Linux rendszeren található.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898589"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494056"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -39,7 +39,7 @@ Használhatja az [oktatóanyag Azure Portal verzióját](/azure/developer/python
 
 1. Rendelkeznie kell aktív előfizetéssel rendelkező Azure-fiókkal. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. Telepítse a <a href="https://www.python.org/downloads/" target="_blank">Python 3,6-es vagy újabb</a>verzióját.
-1. Telepítse az <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> -2.0.80 vagy újabb verzióját, amellyel az Azure-erőforrások kiépítéséhez és konfigurálásához bármilyen rendszerhéjban parancsokat futtathat.
+1. Telepítse az <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> -2.18.0 vagy újabb verzióját, amellyel az Azure-erőforrások kiépítéséhez és konfigurálásához bármilyen rendszerhéjban parancsokat futtathat.
 
 Nyisson meg egy terminált, és győződjön meg arról, hogy a Python verziója 3,6 vagy újabb:
 
@@ -63,11 +63,13 @@ py -3 --version
 
 ---
 
-Győződjön meg arról, hogy az Azure CLI verziója 2.0.80 vagy magasabb:
+Győződjön meg arról, hogy az Azure CLI verziója 2.18.0 vagy magasabb:
 
 ```azurecli
 az --version
 ```
+
+Ha frissítenie kell, próbálja meg a `az upgrade` parancsot (a szükséges 2.11 + verziót igényel), vagy tekintse meg <a href="/cli/azure/install-azure-cli" target="_blank">Az Azure CLI telepítését</a>ismertető témakört.
 
 Ezután jelentkezzen be az Azure-ba a CLI használatával:
 
@@ -229,7 +231,7 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
     Cserélje le a `<app-name>` nevet a parancsban korábban használt névre `az webapp up` .
 
-    MacOS és Linux rendszeren egy SSH-munkamenethez is csatlakozhat a [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) paranccsal.
+    A paranccsal egy SSH-munkamenethez is csatlakozhat [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) . Windows rendszeren ehhez a parancshoz az Azure CLI-2.18.0 vagy újabb verzió szükséges.
 
     Ha nem tud csatlakozni az SSH-munkamenethez, akkor maga az alkalmazás nem indult el. [A részletekért olvassa el a diagnosztikai naplókat](#6-stream-diagnostic-logs) . Ha például még nem hozta létre az alkalmazáshoz szükséges beállításokat az előző szakaszban, a naplók jelzik majd `KeyError: 'DBNAME'` .
 
@@ -239,8 +241,11 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
     # Change to the app folder
     cd $APP_PATH
     
-    # Activate the venv (requirements.txt is installed automatically)
+    # Activate the venv
     source /antenv/bin/activate
+
+    # Install requirements
+    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -398,6 +403,7 @@ Nyisson meg egy SSH-munkamenetet a böngészőben, és navigáljon a következő
 ```
 cd $APP_PATH
 source /antenv/bin/activate
+pip instal -r requirements.txt
 python manage.py migrate
 ```
 

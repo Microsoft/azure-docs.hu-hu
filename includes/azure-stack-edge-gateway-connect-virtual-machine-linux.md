@@ -4,20 +4,20 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
-ms.openlocfilehash: caa17a02305c9e9fcba30cf8c39c4288d83d3da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92688051cf591470246094dd0d8ea1d436a8efb1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419398"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500406"
 ---
-Kapcsolódjon a virtuális géphez a virtuális gép létrehozása során átadott magánhálózati IP-címmel.
+Csatlakozzon a virtuális géphez azzal a magánhálózati IP-címmel, amelyet a virtuális gép létrehozása során megadott.
 
 Nyisson meg egy SSH-munkamenetet az IP-címhez való kapcsolódáshoz.
 
 `ssh -l <username> <ip address>`
 
-Ha a rendszer kéri, adja meg a virtuális gép létrehozásakor használt jelszót.
+Ha a rendszer erre kéri, adja meg a virtuális gép létrehozásakor használt jelszót.
 
 Ha meg kell adnia az SSH-kulcsot, használja ezt a parancsot.
 
