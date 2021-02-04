@@ -1,15 +1,15 @@
 ---
 title: Beépített szabályzat-definíciók listája
 description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 2c9d4432276abe5392a554e57087e38615aaf902
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7adce6f1dd75f7084b1beac37277c4abadfe904d
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220327"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99561716"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
 

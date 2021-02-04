@@ -1,15 +1,15 @@
 ---
 title: A Azure Resource Manager beépített szabályzat-definíciói
 description: A Azure Resource Manager Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 43080208a43ae1c517188b8b841e6e88480ee285
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 34eb9eaea50444e174ff14bb4f4681b979179f84
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220870"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99561854"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>A Azure Resource Manager beépített definíciói Azure Policy
 
