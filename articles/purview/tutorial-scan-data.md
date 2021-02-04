@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e373556d189e9fffc0626d19250e79c09962a004
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249602"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062104"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Oktatóanyag: az adatvizsgálat az Azure hatáskörébe (előzetes verzió)
 
@@ -32,7 +32,7 @@ Az oktatóanyag-sorozat 1. részében a következőket fogja elsajátítani:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a feladatok megkezdése előtt.
 * Egy [Azure-beli hatáskörébe tartozó fiók](create-catalog-portal.md).
-* Az adatközpont üzembe helyezésére szolgáló [alapszintű csomag](https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip) .
+* Az adatközpont üzembe helyezésére szolgáló [alapszintű csomag](https://github.com/Azure/Purview-Samples/blob/master/PurviewStarterKitV4.zip) .
 
 > [!NOTE]
 > Az alapszintű csomag csak Windows rendszeren érhető el.
@@ -115,7 +115,7 @@ Ha saját maga hozta létre az Azure-beli hatáskörébe tartozó fiókot, akkor
 
 1. Adja meg a parancsfájlt futtató felhasználó nevét a **Select (kiválasztás**) mezőben.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Ismételje meg az előző lépéseket a *szerepkör* a **hatáskörébe tartozó adatforrás-rendszergazdai szerepkör** beállításnál.
 
