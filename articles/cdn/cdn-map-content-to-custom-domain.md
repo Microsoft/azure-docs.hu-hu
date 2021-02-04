@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 03ed47ee97f52aca708118f202fad583753549bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331202"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537746"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Oktatóanyag: egyéni tartomány hozzáadása a végponthoz
 
@@ -163,6 +163,10 @@ CNAME rekord létrehozása az egyéni tartományhoz:
 
 Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpontjához. 
 
+
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal)
+
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és navigáljon arra a CDN-profilra, amely tartalmazza azt a végpontot, amelyet az egyéni tartományhoz kíván leképezni.
     
 2. A **CDN-profil** oldalon válassza ki a CDN-végpontot, amelyet társítani kíván az egyéni tartománnyal.
@@ -180,7 +184,7 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpont
 
     :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png" alt-text="Egyéni tartomány hozzáadása" border="true":::
 
-6. Válassza a **Hozzáadás** lehetőséget.
+6. Válassza a **Hozzáadás** elemet.
 
    Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz. 
 
@@ -189,7 +193,43 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpont
     - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
     - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 10 perc alatt fejeződik be.   
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
 
+1. Jelentkezzen be Azure PowerShellba:
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. A [New-AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) használatával rendelje hozzá az egyéni TARTOMÁNYT a CDN-végponthoz. 
+
+    * Cserélje le a **myendpoint8675.azureedge.net** -t a végpont URL-címére.
+    * Cserélje le a **myendpoint8675** -t a CDN-végpont nevére.
+    * Cserélje le az **www.contoso.com** -t az egyéni tartománynevére.
+    * Cserélje le a **myCDN** -t a CDN-profil nevére.
+    * Cserélje le a **myResourceGroupCDN** az erőforráscsoport nevére.
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz. 
+
+   Időbe telhet, amíg az új egyéni tartománybeállítások propagálása az összes CDN-határcsomópontra megtörténik: 
+
+- A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+- Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+- A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 10 perc alatt fejeződik be.   
+
+
+---
 ## <a name="verify-the-custom-domain"></a>Az egyéni tartomány ellenőrzése
 
 Az egyéni tartomány regisztrációjának befejezése után ellenőrizze, hogy az egyéni tartomány hivatkozik-e a CDN-végpontra.
@@ -200,6 +240,9 @@ Az egyéni tartomány regisztrációjának befejezése után ellenőrizze, hogy 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal-cleanup)
+
 Ha már nem szeretné egyéni tartományhoz rendelni a végpontot, távolítsa el az egyéni tartományt a következő lépések végrehajtásával:
  
 1. A CDN-profilban válassza ki azt a végpontot, amely tartalmazza az eltávolítani kívánt egyéni tartományt.
@@ -208,6 +251,29 @@ Ha már nem szeretné egyéni tartományhoz rendelni a végpontot, távolítsa e
 
    Az egyéni tartomány társítása a végponttal ekkor megszűnik.
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
+
+Ha már nem szeretné egyéni tartományhoz rendelni a végpontot, távolítsa el az egyéni tartományt a következő lépések végrehajtásával:
+
+1. A [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) használatával távolítsa el az egyéni tartományt a végpontból:
+
+    * Cserélje le a **myendpoint8675** -t a CDN-végpont nevére.
+    * Cserélje le az **www.contoso.com** -t az egyéni tartománynevére.
+    * Cserélje le a **myCDN** -t a CDN-profil nevére.
+    * Cserélje le a **myResourceGroupCDN** az erőforráscsoport nevére.
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

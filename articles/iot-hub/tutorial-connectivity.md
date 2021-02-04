@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070381"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538702"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -66,15 +66,15 @@ Az eszközök csak akkor végezhetnek adatcserét a hubbal, ha a hitelesítésü
 
 Jelentkezzen be a portálra, és keresse meg az IoT Hubot. Ezt követően nyissa meg az **IoT-eszközök** eszközt:
 
-![IoT-eszközök eszköz](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="IoT-eszközök eszköz":::
 
-Új eszköz regisztrálásához kattintson a **+ Hozzáadás** gombra, az **Eszközazonosítóként** adja meg a **MyTestDevice** nevet, majd kattintson a **Mentés** gombra:
+Új eszköz regisztrálásához kattintson az **+ új** elemre, **állítsa be** az **MyTestDevice**, majd kattintson a Save ( **Mentés**) gombra.
 
-![Új eszköz hozzáadása](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="Új eszköz hozzáadása":::
 
-A **MyTestDevice** kapcsolati sztringjének lekéréséhez kattintson rá az eszközlistán, majd másolja a **Kapcsolati sztring – elsődleges kulcs** értékét. A kapcsolati sztring tartalmazza az eszköz *megosztott hozzáférési kulcsát*.
+A **MyTestDevice** tartozó kapcsolódási karakterlánc lekéréséhez kattintson rá az eszközök listájában, majd másolja az **elsődleges kapcsolódási karakterlánc** értéket. A kapcsolati sztring tartalmazza az eszköz *megosztott hozzáférési kulcsát*.
 
-![Az eszköz kapcsolati sztringjének lekérése](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="Eszköz-kapcsolatok karakterláncának beolvasása}":::
 
 A **MyTestDevice** által az IoT hubnak küldött telemetria szimulálásához futtassa a Node.js szimulálteszköz-alkalmazást, amelyet korábban letöltött.
 
@@ -218,7 +218,7 @@ A szimulált eszköz a következő üzenetet jeleníti meg a konzolon, amikor eg
 
 ![A szimulált eszköz egy közvetlenmetódus-hívást fogad](media/tutorial-connectivity/receive-method-call.png)
 
-Ha a szimulált eszköz sikeresen fogadja a közvetlenmetódus-hívást, nyugtázást küld vissza a hubra:
+Ha a szimulált eszköz sikeresen megkapta a közvetlen metódus hívását, visszaigazolást küld vissza az hubhoz:
 
 ![Közvetlen metódus-visszaigazolás fogadása](media/tutorial-connectivity/method-acknowledgement.png)
 

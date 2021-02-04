@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 371ad2220b2b2b1b73e5611c5abef74454a548ad
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 9a7a8868497433ea0de8f2f8b32f8e8fbaa497eb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508269"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537184"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez
 
@@ -62,14 +62,8 @@ A saját hangbetűkészleteit rögzítő beszédes problémákkal rendelkező sz
 Azok a személyek, akik beszédi rendellenességeket kívánnak készíteni a szintetikus hangon, hogy tükrözzék az öregedést (például egy gyermek a pubertást érik el). A magánszemélyek is rendelkezhetnek olyan stilisztikai beállításokkal, amelyek idővel változnak, és előfordulhat, hogy módosítani szeretnék a szurok, a hangsúly vagy más hangjellemzőket.
 
 
-## <a name="reference-docs"></a>Dokumentációs dokumentumok
+## <a name="see-also"></a>Lásd még
 
-* [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [A közzététel módja](concepts-disclosure-guidelines.md)
-* [Közzétételi tervezési minták](concepts-disclosure-patterns.md)
-
-## <a name="next-steps"></a>Következő lépések
-
-* [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent)
+* [A hangalapú tehetségek közzététele](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 * [Közzétételi tervezési minták](concepts-disclosure-patterns.md)

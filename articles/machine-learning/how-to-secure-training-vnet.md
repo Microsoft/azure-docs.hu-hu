@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493837"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538000"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -163,15 +163,22 @@ Ez kétféleképpen valósítható meg:
 
 * [Virtual Network NAT](../virtual-network/nat-overview.md)használata. A NAT-átjáró kimenő internetkapcsolatot biztosít a virtuális hálózat egy vagy több alhálózatához. További információ: [virtuális hálózatok tervezése NAT Gateway-erőforrásokkal](../virtual-network/nat-gateway-resource.md).
 
-* Adja hozzá a [felhasználó által megadott útvonalakat (UDR)](../virtual-network/virtual-networks-udr-overview.md) a számítási erőforrást tartalmazó alhálózathoz. Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
+* Adja hozzá a [felhasználó által megadott útvonalakat (UDR)](../virtual-network/virtual-networks-udr-overview.md) a számítási erőforrást tartalmazó alhálózathoz. Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá a Azure Machine Learning szolgáltatáshoz tartozó IP-címet is, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Azure Machine Learning szolgáltatás IP-címének hozzáadásakor hozzá kell adnia az IP-címet mind az __elsődleges,__ mind a másodlagos Azure-régióhoz. Az elsődleges régió, ahol a munkaterület található.
+
+    A másodlagos régió megtalálásához tekintse meg az [üzletmenet folytonosságának biztosítása & a vész-helyreállítás az Azure párosított régiók használatával](../best-practices-availability-paired-regions.md#azure-regional-pairs)című témakört. Ha például az Azure Machine Learning-szolgáltatás az USA 2. keleti régiójában található, a másodlagos régió az USA középső régiója. 
+
+    A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
 
     * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
-    * Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójának információit:
+    * Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójában (elsődleges) és az USA középső régiójában (másodlagos) található adatokat:
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+        # Get primary region IPs
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+        # Get secondary region IPs
+        az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
         ```
 
         > [!TIP]
@@ -190,7 +197,6 @@ Ez kétféleképpen valósítható meg:
     Az Ön által meghatározott UDR kívül az Azure Storage-ba irányuló kimenő forgalmat a helyszíni hálózati berendezésen keresztül kell engedélyezni. A forgalom URL-címei a következő formákban találhatók: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` és `<account>.blob.core.windows.net` . 
 
     További információ: [Azure batch készlet létrehozása egy virtuális hálózaton](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
-
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Számítási fürt létrehozása egy virtuális hálózaton
 

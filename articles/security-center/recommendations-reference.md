@@ -4,15 +4,15 @@ description: Ez a cikk Azure Security Center biztonsági javaslatait sorolja fel
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/26/2021
+ms.date: 02/03/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: ce4b34a7f60ca8d9733b8a616671180a9ec7324c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797156"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539237"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – gyorsútmutató
 
@@ -53,7 +53,7 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |**A pod biztonsági házirendeket úgy kell meghatározni, hogy csökkentse a támadási vektort a szükségtelen alkalmazási jogosultságok eltávolításával (előzetes verzió)**|Határozza meg a pod biztonsági szabályzatokat a szükségtelen alkalmazás-jogosultságok eltávolításával a támadási vektor csökkentése érdekében. Ajánlott a pod biztonsági szabályzatok konfigurálása, hogy a hüvelyek csak azokhoz az erőforrásokhoz férhessenek hozzá, amelyekhez hozzáférésük engedélyezett.<br>(Kapcsolódó szabályzat: [előzetes verzió]: a pod biztonsági szabályzatokat meg kell határozni a Kubernetes-szolgáltatásokon)|Közepes|N|Számítási erőforrások (tárolók)|
 |**A IoT biztonsági modul Azure Security Center telepítése a IoT-eszközök láthatóságának megismeréséhez**|Telepítse Azure Security Center a IoT biztonsági modulhoz, és ismerkedjen meg a IoT-eszközökkel.|Alacsony|N|IoT-eszköz|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A javaslatokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088938"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537796"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -31,7 +31,7 @@ A Text Analytics for Health a Text Analytics API szolgáltatás egyik funkciója
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Az állapot Text Analytics az elnevezett entitások felismerése, a relációk kinyerése, az entitások kivonása és az angol nyelvű szöveggel összekapcsoló entitások a strukturálatlan klinikai és bioorvosi szövegek elemzését végzik.
 
@@ -113,6 +113,9 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>Az API-kérelem strukturálása az üzemeltetett aszinkron webes API-hoz
 
 A tároló és a tárolt webes API esetében is létre kell hoznia egy POST-kérelmet. A [Poster](text-analytics-how-to-call-api.md), a curl-parancs vagy az **API-tesztelési konzol** a [text Analytics a Health Hosted API-referenciájának](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) használatával gyorsan létrehozhatja és elküldheti a post-kérést a kívánt régióban található üzemeltetett webes API-hoz. 
+
+> [!NOTE]
+> Az aszinkron `/analyze` és a `/health` végpontok csak a következő régiókban érhetők el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.  Ha a végpontok számára sikeres kérelmeket szeretne tenni, győződjön meg arról, hogy az erőforrás a következő régiókban lett létrehozva.
 
 Alább látható egy példa arra, hogy milyen JSON-fájl van csatolva a Text Analytics for Health API-kérelem POST törzséhez:
 

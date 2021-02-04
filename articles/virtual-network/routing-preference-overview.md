@@ -8,17 +8,17 @@ manager: mtillman
 ms.service: virtual-network
 Customer intent: As an Azure customer, I want to learn more about routing choices for my internet egress traffic.
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 7fdd23aea5e435c94493a0cbe86b6ffcdb0d2e10
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186141"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539070"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
 
@@ -65,8 +65,8 @@ A "Microsoft Global Network" nevű útválasztási beállításokat tartalmazó 
 A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot** használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
 
 * Blobok
-* Files
-* Web
+* Fájlok
+* Webes
 * Azure DataLake
 
 ## <a name="pricing"></a>Díjszabás

@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849c159f31a14441ef9c6aa19b8704b286727bd7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 7c89bfab6c4914cee26726006e6928eeb14c0686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507181"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538187"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
@@ -1046,18 +1046,19 @@ Az Exchange termék összes aspektusát képes kezelni.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
-| Microsoft. Directory/csoportok/Unified/appRoleAssignments/Update | A groups. Unified tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése. |
-| Microsoft. Directory/csoportok/egységes/létrehozás | Hozzon létre Microsoft 365 csoportokat. |
-| Microsoft. Directory/csoportok/egyesített/delete | Microsoft 365 csoportok törlése. |
-| Microsoft. Directory/csoportok/egyesített/tagok/frissítés | Microsoft 365 csoportok tagságának frissítése. |
-| Microsoft. Directory/csoportok/Unified/owners/Update | Microsoft 365 csoportok tulajdonjogának frissítése. |
+| Microsoft. Directory/csoportok/hiddenMembers/olvasás | Csoport rejtett tagjainak olvasása |
+| Microsoft. Directory/csoportok. Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/csoportok. egyesített/létrehozás | Hozzon létre Microsoft 365 csoportokat. |
+| Microsoft. Directory/groups. Unified/delete | Microsoft 365 csoportok törlése. |
+| Microsoft. Directory/groups. Unified/Restore | Microsoft 365 csoportok visszaállítása |
+| Microsoft. Directory/csoportok. Unified/tagok/frissítés | Microsoft 365 csoportok tagságának frissítése. |
+| Microsoft. Directory/groups. Unified/owners/Update | Microsoft 365 csoportok tulajdonjogának frissítése. |
 | Microsoft. Office 365. Exchange/allEntities/allTasks | Az Exchange Online összes aspektusának kezelése. |
 | Microsoft. Office 365. Network/Performance/allProperties/READ | Hálózati teljesítménnyel kapcsolatos lapok olvasása Microsoft 365 felügyeleti központban. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| Microsoft. Office 365. usageReports/allEntities/READ | Olvassa el az Office 365 használati jelentéseit. |
-| Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+| Microsoft. Office 365. usageReports/allEntities/allProperties/READ | Olvassa el az Office 365 használati jelentéseit. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="external-id-user-flow-administrator-permissions"></a>Külső azonosító felhasználói folyamat rendszergazdai engedélyei
 
@@ -1295,23 +1296,24 @@ Az Intune-termék minden aspektusát képes kezelni.
 | Microsoft. Directory/eszközök/extensionAttributes/Update | A Devices. extensionAttributes tulajdonság összes értékének frissítése Azure Active Directory. |
 | Microsoft. Directory/eszközök/registeredOwners/Update | A Devices. registeredOwners tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/eszközök/registeredUsers/Update | A Devices. registeredUsers tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/appRoleAssignments/Update | A groups. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/alapszintű/frissítés | Azure Active Directoryban lévő csoportok alapszintű tulajdonságainak frissítése. |
-| Microsoft. Directory/csoportok/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/createAsOwner | Csoportok létrehozása a Azure Active Directoryban. A létrehozó hozzá lett adva az első tulajdonosként, és a létrehozott objektum a Creator 250 létrehozott objektum-kvótájának számít. |
-| Microsoft. Directory/csoportok/törlés | Csoportok törlése Azure Active Directory. |
+| Microsoft. Directory/deviceManagementPolicies/standard/olvasás | Általános tulajdonságok olvasása az Eszközkezelő alkalmazás házirendjein |
+| Microsoft. Directory/deviceRegistrationPolicy/standard/olvasás | Szabványos tulajdonságok olvasása az eszköz regisztrációs házirendjeiben |
 | Microsoft. Directory/csoportok/hiddenMembers/olvasás | A groups. hiddenMembers tulajdonság olvasása Azure Active Directory. |
-| Microsoft. Directory/csoportok/tagok/frissítés | A groups. Members tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/tulajdonosok/frissítés | A groups. owners tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/felhasználók/appRoleAssignments/Update | A users. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/groups. Security/Basic/Update | Azure Active Directoryban lévő csoportok alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/csoportok. biztonság/besorolás/frissítés | A biztonsági csoportok Update besorolási tulajdonsága a szerepkörhöz hozzárendelhető csoportok kizárásával |
+| Microsoft. Directory/csoportok. biztonság/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
+| Microsoft. Directory/csoportok. biztonság/törlés | Csoportok törlése Azure Active Directory. |
+| Microsoft. Directory/groups. Security/dynamicMembershipRule/Update | A biztonsági csoportok dynamicMembershipRule tulajdonságának frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
+| Microsoft. Directory/groups. Security/groupType/Update | A biztonsági csoportok csoport típusa tulajdonságának frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
+| Microsoft. Directory/csoportok. biztonság/tagok/frissítés | A groups. Members tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/csoportok. biztonság/tulajdonosok/frissítés | A groups. owners tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/csoportok. biztonság/láthatóság/frissítés | A biztonsági csoportok láthatósági tulajdonságának frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 | Microsoft. Directory/felhasználók/alapszintű/frissítés | A Azure Active Directoryban lévő felhasználók alapszintű tulajdonságainak frissítése. |
 | Microsoft. Directory/felhasználók/kezelő/frissítés | A users. Manager tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
 | Microsoft. Intune/allEntities/allTasks | Az Intune összes aspektusának kezelése. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="kaizala-administrator-permissions"></a>Kaizala-rendszergazdai engedélyek
 
@@ -1458,13 +1460,18 @@ Nem használható – általános használatra nem ajánlott.
 | Microsoft. Directory/névjegyek/létrehozás | Névjegyek létrehozása Azure Active Directoryban. |
 | Microsoft. Directory/Contacts/delete | Névjegyek törlése Azure Active Directory. |
 | Microsoft. Directory/csoportok/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/createAsOwner | Csoportok létrehozása a Azure Active Directoryban. A létrehozó hozzá lett adva az első tulajdonosként, és a létrehozott objektum a Creator 250 létrehozott objektum-kvótájának számít. |
+| Microsoft. Directory/csoportok/törlés | Csoportok törlése, a szerepkörhöz hozzárendelhető csoport kizárásával |
 | Microsoft. Directory/csoportok/tagok/frissítés | A groups. Members tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/tulajdonosok/frissítés | A groups. owners tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/felhasználók/appRoleAssignments/Update | A users. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/csoportok/visszaállítás | Törölt csoportok visszaállítása |
+| Microsoft. Directory/Oauth2permissiongrant objektumok/allProperties/allTasks | OAuth 2,0 engedélyek létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
+| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Egyszerű szolgáltatás szerepkör-hozzárendeléseinek frissítése |
 | Microsoft. Directory/felhasználók/assignLicense | Licencek kezelése Azure Active Directory felhasználóinak. |
 | Microsoft. Directory/felhasználók/alapszintű/frissítés | A Azure Active Directoryban lévő felhasználók alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/felhasználók/létrehozás | Felhasználók hozzáadása |
 | Microsoft. Directory/felhasználók/törlés | Azure Active Directory felhasználók törlése. |
+| Microsoft. Directory/felhasználók/letiltás | Felhasználók letiltása |
+| Microsoft. Directory/felhasználók/engedélyezés | Felhasználók engedélyezése |
 | Microsoft. Directory/felhasználók/invalidateAllRefreshTokens | Azure Active Directory összes felhasználói frissítési jogkivonatának érvénytelenítése. |
 | Microsoft. Directory/felhasználók/kezelő/frissítés | A users. Manager tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/felhasználók/jelszó/frissítés | Frissítse a Azure Active Directory összes felhasználójának jelszavát. További részletekért tekintse meg az online dokumentációt. |
@@ -1472,9 +1479,9 @@ Nem használható – általános használatra nem ajánlott.
 | Microsoft. Directory/felhasználók/userPrincipalName/Update | A users. userPrincipalName tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
-| Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="partner-tier2-support-permissions"></a>Partneri szint-támogatási engedélyek
 
@@ -1498,16 +1505,25 @@ Nem használható – általános használatra nem ajánlott.
 | Microsoft. Directory/Contacts/Basic/Update | A névjegyek alapszintű tulajdonságainak frissítése Azure Active Directoryban. |
 | Microsoft. Directory/névjegyek/létrehozás | Névjegyek létrehozása Azure Active Directoryban. |
 | Microsoft. Directory/Contacts/delete | Névjegyek törlése Azure Active Directory. |
-| Microsoft. Directory/tartományok/allTasks | Tartományok létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése Azure Active Directoryban. |
+| Microsoft. Directory/tartományok/alap/allTasks | Tartományok létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/törlés | Csoportok törlése Azure Active Directory. |
 | Microsoft. Directory/csoportok/tagok/frissítés | A groups. Members tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/csoportok/tulajdonosok/frissítés | Csoportok tulajdonosainak frissítése, a szerepkörhöz hozzárendelhető csoportok kizárása |
 | Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
+| Microsoft. Directory/Oauth2permissiongrant objektumok/allProperties/allTasks | OAuth 2,0 engedélyek létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 | Microsoft. Directory/szervezet/alapszintű/frissítés | A Azure Active Directory szervezet alapszintű tulajdonságainak frissítése. |
-| Microsoft. Directory/felhasználók/appRoleAssignments/Update | A users. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
+| Microsoft. Directory/roleAssignments/allProperties/allTasks | Szerepkör-hozzárendelések létrehozása és törlése, valamint az összes szerepkör-hozzárendelési tulajdonság olvasása és frissítése |
+| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Szerepkör-definíciók létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
+| Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | ScopedRoleMemberships létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
+| Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Egyszerű szolgáltatás szerepkör-hozzárendeléseinek frissítése |
+| Microsoft. Directory/subscribedSkus/standard/olvasás | Előfizetések alapszintű tulajdonságainak olvasása |
 | Microsoft. Directory/felhasználók/assignLicense | Licencek kezelése Azure Active Directory felhasználóinak. |
 | Microsoft. Directory/felhasználók/alapszintű/frissítés | A Azure Active Directoryban lévő felhasználók alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/felhasználók/létrehozás | Felhasználók hozzáadása |
 | Microsoft. Directory/felhasználók/törlés | Azure Active Directory felhasználók törlése. |
+| Microsoft. Directory/felhasználók/letiltás | Felhasználók letiltása |
+| Microsoft. Directory/felhasználók/engedélyezés | Felhasználók engedélyezése |
 | Microsoft. Directory/felhasználók/invalidateAllRefreshTokens | Azure Active Directory összes felhasználói frissítési jogkivonatának érvénytelenítése. |
 | Microsoft. Directory/felhasználók/kezelő/frissítés | A users. Manager tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/felhasználók/jelszó/frissítés | Frissítse a Azure Active Directory összes felhasználójának jelszavát. További részletekért tekintse meg az online dokumentációt. |
@@ -1515,9 +1531,9 @@ Nem használható – általános használatra nem ajánlott.
 | Microsoft. Directory/felhasználók/userPrincipalName/Update | A users. userPrincipalName tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
-| Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="password-administrator-permissions"></a>Jelszó-rendszergazdai engedélyek
 
@@ -1785,18 +1801,18 @@ A a SharePoint szolgáltatás összes aspektusát képes kezelni.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
-| Microsoft. Directory/csoportok/Unified/appRoleAssignments/Update | A groups. Unified tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése. |
-| Microsoft. Directory/csoportok/egységes/létrehozás | Hozzon létre Microsoft 365 csoportokat. |
-| Microsoft. Directory/csoportok/egyesített/delete | Microsoft 365 csoportok törlése. |
-| Microsoft. Directory/csoportok/egyesített/tagok/frissítés | Microsoft 365 csoportok tagságának frissítése. |
-| Microsoft. Directory/csoportok/Unified/owners/Update | Microsoft 365 csoportok tulajdonjogának frissítése. |
+| Microsoft. Directory/csoportok. Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/csoportok. egyesített/létrehozás | Hozzon létre Microsoft 365 csoportokat. |
+| Microsoft. Directory/groups. Unified/delete | Microsoft 365 csoportok törlése. |
+| Microsoft. Directory/csoportok. Unified/tagok/frissítés | Microsoft 365 csoportok tagságának frissítése. |
+| Microsoft. Directory/groups. Unified/owners/Update | Microsoft 365 csoportok tulajdonjogának frissítése. |
+| Microsoft. Directory/groups. Unified/Restore | Microsoft 365 csoportok visszaállítása |
 | Microsoft. Office 365. Network/Performance/allProperties/READ | Hálózati teljesítménnyel kapcsolatos lapok olvasása a M365 felügyeleti központban. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. SharePoint/allEntities/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése a Microsoft. Office 365. SharePointban. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| Microsoft. Office 365. usageReports/allEntities/READ    | Olvassa el az Office 365 használati jelentéseit. |
-| Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+| Microsoft. Office 365. usageReports/allEntities/allProperties/READ | Olvassa el az Office 365 használati jelentéseit. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="teams-communications-administrator-permissions"></a>A csapat kommunikációs rendszergazdai engedélyei
 
@@ -1880,16 +1896,19 @@ Felügyelheti a Microsoft Teams szolgáltatást.
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
 | Microsoft. Directory/csoportok/hiddenMembers/olvasás | A groups. hiddenMembers tulajdonság olvasása Azure Active Directory. |
 | Microsoft. Directory/csoportok/Unified/appRoleAssignments/Update | A groups. Unified tulajdonság frissítése Azure Active Directoryban. |
-| Microsoft. Directory/csoportok/Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése. |
-| Microsoft. Directory/csoportok/egységes/létrehozás | Hozzon létre Microsoft 365 csoportokat. |
-| Microsoft. Directory/csoportok/egyesített/delete | Microsoft 365 csoportok törlése. |
-| Microsoft. Directory/csoportok/egyesített/tagok/frissítés | Microsoft 365 csoportok tagságának frissítése. |
-| Microsoft. Directory/csoportok/Unified/owners/Update | Microsoft 365 csoportok tulajdonjogának frissítése. |
+| Microsoft. Directory/csoportok. Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése. |
+| Microsoft. Directory/csoportok. egyesített/létrehozás | Hozzon létre Microsoft 365 csoportokat. |
+| Microsoft. Directory/groups. Unified/delete | Microsoft 365 csoportok törlése. |
+| Microsoft. Directory/csoportok. Unified/tagok/frissítés | Microsoft 365 csoportok tagságának frissítése. |
+| Microsoft. Directory/groups. Unified/owners/Update | Microsoft 365 csoportok tulajdonjogának frissítése. |
+| Microsoft. Directory/groups. Unified/Restore | Microsoft 365 csoportok visszaállítása |
+| Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | Jóváhagyás engedélyezése egy csoport nevében delegált engedélyekhez |
 | Microsoft. Office 365. Network/Performance/allProperties/READ | Hálózati teljesítménnyel kapcsolatos lapok olvasása a M365 felügyeleti központban. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
+| Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | A Skype vállalati online verzió összes aspektusának kezelése |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-| Microsoft. Office 365. usageReports/allEntities/READ | Olvassa el az Office 365 használati jelentéseit. |
-| Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
+| Microsoft. Office 365. usageReports/allEntities/allProperties/READ | Olvassa el az Office 365 használati jelentéseit. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | Microsoft. Teams/allEntities/allProperties/allTasks | A csapatok összes erőforrásának kezelése. |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>Használati összesítő jelentések olvasójának engedélyei

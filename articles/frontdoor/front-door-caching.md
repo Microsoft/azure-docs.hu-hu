@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d001a7a24d44c46a19bde08051e21d3ae3c5acb8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535831"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538051"
 ---
 # <a name="caching-with-azure-front-door"></a>Gyorsítótárazás az Azure bejárati ajtaján
 Az alábbi dokumentum a bejárati ajtókkal kapcsolatos viselkedéseket határozza meg, amelyeken engedélyezve van az útválasztási szabályok gyorsítótárazása. A bejárati ajtó egy modern Content Delivery Network (CDN), amely a dinamikus hely gyorsításával és a terheléselosztással is támogatja a gyorsítótárazási viselkedést ugyanúgy, mint bármely más CDN.
@@ -24,13 +24,13 @@ Az alábbi dokumentum a bejárati ajtókkal kapcsolatos viselkedéseket határoz
 ## <a name="delivery-of-large-files"></a>Nagyméretű fájlok kézbesítése
 Az Azure bejárati ajtaja nagy méretű fájlokat biztosít a fájlméret nélküli korlát nélkül. A bejárati ajtó egy objektum-darabolás nevű technikát használ. Amikor nagyméretű fájlokat igényelnek, a Front Door lekéri a fájl kisebb darabjait a háttérrendszerről. A teljes vagy bájtos fájlra vonatkozó kérelem kézhezvétele után az előtérben lévő környezet 8 MB méretű adattömbökben kéri le a fájlt a háttérből.
 
-</br>Miután a rendszer beolvasta a tömböt a bejárati ajtón, a rendszer gyorsítótárazza és azonnal kiszolgálja a felhasználót. A bejárati ajtó ezután előre lekéri a következő adatrészletet párhuzamosan. Ez az előzetes beolvasás biztosítja, hogy a tartalom a felhasználó előtt egy darabban maradjon, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájl le nem töltődik (ha szükséges), vagy az ügyfél lezárja a kapcsolatokat.
+Miután a rendszer beolvasta a tömböt a bejárati ajtón, a rendszer gyorsítótárazza és azonnal kiszolgálja a felhasználót. A bejárati ajtó ezután előre lekéri a következő adatrészletet párhuzamosan. Ez az előzetes beolvasás biztosítja, hogy a tartalom a felhasználó előtt egy darabban maradjon, ami csökkenti a késést. Ez a folyamat addig folytatódik, amíg a teljes fájl le nem töltődik (ha szükséges), vagy az ügyfél lezárja a kapcsolatokat.
 
-</br>A byte-Range kérelemmel kapcsolatos további információkért olvassa el a következőt: [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
+A byte-Range kérelemmel kapcsolatos további információkért olvassa el a következőt: [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 A bejárati ajtó gyorsítótárba helyezi a kapott adattömböket, így a teljes fájlt nem kell gyorsítótárazni az előtérben lévő gyorsítótárban. A fájl-vagy byte-tartományokra vonatkozó kérelmeket a rendszer a gyorsítótárból kézbesíti. Ha a tömbök nem mindegyike gyorsítótárazva van, a rendszer a háttérbeli adattömböket kéri le. Ez az optimalizálás a háttérbeli kérelmek támogatásának képességére támaszkodik. Ha a háttérrendszer nem támogatja a bájtok közötti kérelmeket, ez az optimalizálás nem érvényes.
 
 ## <a name="file-compression"></a>Fájltömörítés
-A bejárati ajtó dinamikusan tömörítheti a tartalmakat az Edge-ben, így kisebb és gyorsabb válaszidő lehet az ügyfelek számára. Az összes fájl tömörítésre alkalmas. A fájlnak azonban MIME-típusúnak kell lennie, hogy a tömörítésre jogosult legyen. A bejárati ajtó jelenleg nem teszi lehetővé a lista módosítását. Az aktuális lista:</br>
+A bejárati ajtó dinamikusan tömörítheti a tartalmakat az Edge-ben, így kisebb és gyorsabb válaszidő lehet az ügyfelek számára. Ahhoz, hogy egy fájl tömörítésre jogosult legyen, engedélyezni kell a gyorsítótárazást, és a fájlnak MIME-típusúnak kell lennie, hogy a tömörítésre jogosult legyen. A bejárati ajtó jelenleg nem teszi lehetővé a lista módosítását. Az aktuális lista:
 - "alkalmazás/EOT"
 - "alkalmazás/betűkészlet"
 - "alkalmazás/betűkészlet – sfnt"
@@ -93,7 +93,7 @@ A bejárati ajtó gyorsítótárazza az eszközöket, amíg az eszköz élettart
 
 Az ajánlott eljárás annak biztosítására, hogy a felhasználók mindig megkapják az adategységek legújabb példányát, hogy minden egyes frissítéshez a saját eszközeiket, és azokat új URL-ként tegye közzé. A bejárati ajtó azonnal lekéri az új eszközöket a következő ügyfelek kéréseire. Előfordulhat, hogy a gyorsítótárazott tartalmat törölni kívánja az összes peremhálózati csomópontról, és az összeset kényszeríti az új eszközök beolvasására. Ennek oka lehet a webalkalmazás frissítései, vagy a helytelen adatokat tartalmazó eszközök gyors frissítése.
 
-Válassza ki azokat az eszközöket, amelyeket ki szeretne üríteni a peremhálózati csomópontokból. Az összes eszköz törléséhez válassza **az összes törlése**lehetőséget. Ellenkező esetben az **elérési út**mezőben adja meg a kiüríteni kívánt eszközök elérési útját.
+Válassza ki azokat az eszközöket, amelyeket ki szeretne üríteni a peremhálózati csomópontokból. Az összes eszköz törléséhez válassza **az összes törlése** lehetőséget. Ellenkező esetben az **elérési út** mezőben adja meg a kiüríteni kívánt eszközök elérési útját.
 
 Ezek a formátumok a kiüríteni kívánt elérési utak listája esetén támogatottak:
 

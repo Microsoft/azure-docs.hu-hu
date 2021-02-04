@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736412"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537830"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ További információért lásd: az Azure-beli [virtuális gépekkel](failover-c
 A cikkben szereplő utasítások elvégzése előtt a következőket kell tennie:
 
 - Azure-előfizetés. Az első lépések [ingyenesek](https://azure.microsoft.com/free/). 
-- [Két vagy több Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md). Az prémium SSD és a [rendelkezésre állási zónák](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) számára támogatott [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md) [csoportok és Proximity elhelyezési csoportok](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) az ultra lemezek esetében támogatottak. Ha a PPG-t használja, az összes csomópontnak ugyanabban a csoportban kell lennie.
+- [Két vagy több Windows Azure-beli virtuális gép](failover-cluster-instance-prepare-vm.md). Az prémium SSD és a [rendelkezésre állási zónák](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) számára támogatott [rendelkezésre állási](../../../virtual-machines/windows/tutorial-availability-sets.md) [csoportok és Proximity elhelyezési csoportok](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) az ultra lemezek esetében támogatottak. Az összes csomópontnak ugyanabban a [közelségi elhelyezési csoportban](../../../virtual-machines/co-location.md#proximity-placement-groups)kell lennie.
 - Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
 - A [PowerShell](/powershell/azure/install-az-ps)legújabb verziója. 
 
@@ -211,7 +211,7 @@ Ha a forgalmat az aktuális elsődleges csomópontnak megfelelően szeretné ir�
 
 - Csak az SQL IaaS-ügynök bővítménnyel való regisztráció [egyszerűsített felügyeleti módban](sql-server-iaas-agent-extension-automate-management.md#management-modes) támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, állítsa be a kapcsolatot a [virtuális hálózat nevével és az Azure Load balancerrel](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy az [elosztott hálózat nevével (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
 

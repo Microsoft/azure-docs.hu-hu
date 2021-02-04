@@ -63,6 +63,8 @@
       items:
         - name: Virtuálisgép-méretezési csoport létrehozása
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: Virtuálisgép-méretezési csoport létrehozása és kezelése
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: Méretezési csoport létrehozása egyéni virtuálisgép-rendszerképből
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: Alkalmazások telepítése méretezési csoportokban

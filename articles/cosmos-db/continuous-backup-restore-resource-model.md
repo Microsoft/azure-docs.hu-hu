@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 64033182356e66d6a69bd47c1780b7081416019e
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527558"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538502"
 ---
-# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature"></a>Az Azure Cosmos DB időponthoz tartozó visszaállítási funkció erőforrás-modellje
+# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Erőforrás-modell a Azure Cosmos DB időponthoz tartozó visszaállítási szolgáltatáshoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Ez a cikk az Azure Cosmos DB időponthoz való visszaállítási funkciójának erőforrás-modelljét ismerteti. Ismerteti azokat a paramétereket, amelyek támogatják az SQL-és MongoDB-fiókok Azure Cosmos DB API-ban visszaállítható folyamatos biztonsági mentését és erőforrásait.
+> [!IMPORTANT]
+> A Azure Cosmos DB időponthoz tartozó visszaállítási funkciója (folyamatos biztonsági mentési mód) jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ez a cikk az Azure Cosmos DB időponthoz tartozó visszaállítási funkció (előzetes verzió) erőforrás-modelljét ismerteti. Ismerteti azokat a paramétereket, amelyek támogatják az SQL-és MongoDB-fiókok Azure Cosmos DB API-ban visszaállítható folyamatos biztonsági mentését és erőforrásait.
 
 ## <a name="database-accounts-resource-model"></a>Adatbázis-fiók erőforrás-modellje
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555899"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539315"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Helyszíni SQL Server-kiszolgáló regisztrálása és vizsgálata
 
@@ -50,21 +50,17 @@ A helyszíni SQL Server hitelesítésének beállítása csak egyetlen módon t�
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
-Az SQL-identitásnak hozzáféréssel kell rendelkeznie az elsődleges adatbázishoz. Ez a hely tárolja a helyet `sys.databases` . A hatáskörébe tartozó képolvasónak enumerálnia kell, `sys.databases` hogy megtalálja a kiszolgáló összes SQL db-példányát.
+Az SQL-fióknak hozzáféréssel kell rendelkeznie a **Master** adatbázishoz. Ennek az az oka, hogy a a `sys.databases` Master adatbázisban található. A hatáskörébe tartozó képolvasónak enumerálnia kell, `sys.databases` hogy megtalálja az összes SQL-adatbázist a kiszolgálón.
 
 #### <a name="using-an-existing-server-administrator"></a>Meglévő kiszolgáló-rendszergazda használata
 
 Ha azt tervezi, hogy meglévő kiszolgáló-rendszergazdai (SA) felhasználót használ a helyszíni SQL Server vizsgálatára, ügyeljen a következőkre:
 
-1. `sa` nem Windows-hitelesítési típus.
+1. `sa` nem Windows-hitelesítési fiók.
 
-2. A használni kívánt kiszolgálói szintű felhasználónak a nyilvános és a sysadmin kiszolgálói szerepkörrel kell rendelkeznie. Ezt úgy ellenőrizheti, hogy megkeresi a SQL Server Management Studio (SSMS), csatlakozik a kiszolgálóhoz, megnyitva a biztonságot, kiválasztja a használni kívánt bejelentkezési azonosítót, kattintson a jobb gombbal a **Tulajdonságok** elemre, majd válassza a **kiszolgálói szerepkörök** lehetőséget.
+2. A használni kívánt kiszolgálói szintű bejelentkezésnek nyilvános és sysadmin kiszolgálói szerepkörrel kell rendelkeznie. Ezt úgy ellenőrizheti, ha csatlakozik a kiszolgálóhoz, navigáljon SQL Server Management Studio (SSMS), lépjen a Biztonság elemre, válassza ki a használni kívánt bejelentkezési azonosítót, kattintson a jobb gombbal a **Tulajdonságok** elemre, majd válassza a **kiszolgálói szerepkörök** lehetőséget.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="Kiszolgálói szintű bejelentkezés.":::
-
-3. Az adatbázisok egy olyan felhasználóhoz vannak leképezve, amely legalább db_datareader szintű hozzáféréssel rendelkezik az egyes adatbázisokhoz.
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping-sa.png" alt-text="a SA felhasználói leképezése.":::
 
 #### <a name="creating-a-new-login-and-user"></a>Új bejelentkezés és felhasználó létrehozása
 
@@ -74,9 +70,9 @@ Ha új bejelentkezési azonosítót szeretne létrehozni, és a felhasználót s
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="Hozzon létre új bejelentkezési azonosítót és felhasználót.":::
 
-2. Válassza ki a kiszolgálói szerepkörök elemet a bal oldali navigációs sávon, és válassza a nyilvános és a sysadmin lehetőséget is.
+2. Válassza ki a kiszolgálói szerepkörök elemet a bal oldali navigációs sávon, és győződjön meg arról, hogy a nyilvános szerepkör hozzá van rendelve.
 
-3. A bal oldali navigációs sávon válassza a felhasználó leképezése lehetőséget, és válassza ki a térképen az összes adatbázist.
+3. Válassza ki a felhasználó leképezése elemet a bal oldali navigációs sávon, válassza ki az összes adatbázist a térképen, és válassza ki az adatbázis-szerepkört: **db_datareader**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="felhasználó leképezése.":::
 
@@ -88,8 +84,7 @@ Ha új bejelentkezési azonosítót szeretne létrehozni, és a felhasználót s
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>Az SQL bejelentkezési jelszavának tárolása kulcstartóban és hitelesítő adat létrehozása a hatáskörébe
 
-1. Navigáljon a Key vaulthoz a Azure Portal
-1. **Beállítások kiválasztása > titkok**
+1. Navigáljon a Key vaulthoz az Azure portal1. **Beállítások kiválasztása > titkok**
 1. Válassza a **+ előállítás/importálás** lehetőséget, és adja meg a **nevet** és az **értéket** az SQL Server-bejelentkezéshez használt *jelszóként*
 1. A **Létrehozás** gombra kattintva fejezze be
 1. Ha a kulcstartó még nem csatlakozik a hatáskörébe, [létre kell hoznia egy új Key Vault-kapcsolatot](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)

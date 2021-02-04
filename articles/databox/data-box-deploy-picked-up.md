@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524992"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539111"
 ---
 ::: zone target="docs"
 
@@ -267,6 +267,35 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
     ```
 
 Ha problémába ütközik, küldjön e-mailt a Data Box Operations Asia számára a következő címre: [adbo@microsoft.com](mailto:adbo@microsoft.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a feladat nevét.
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Adatok törlése a Data Boxról
+ 
+
+::: zone-end
+
+## <a name="united-arab-emirates"></a>[Egyesült Arab Emírségek](#tab/in-uae)
+
+1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
+2. Győződjön meg arról, hogy az eszközön lévő Adatmásolás befejeződött, és a **szállításra való előkészítés** lépés sikeresen befejeződött.
+3. Jegyezze fel a hivatkozási számot az eszköz helyi webes felhasználói felületének **szállításra való előkészítés** oldalán.
+4. Kapcsolja ki az eszközt, és távolítsa el a kábeleket. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
+6. Az eszközt az eredeti dobozban küldje vissza.
+7. E-mail- [Azure Data Box művelet](mailto:adbops@microsoft.com) , amely a csomag azonosítására szolgál majd, amikor az adatközpontban érkezik vissza.
+8. Jegyezze fel ezt az azonosítót a nyomtatott szállítási címkén a visszatérési cím mellett, hogy az egyértelműen látható legyen.  
+9. Az online felvételt a [DHL Express EAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)-be való  >  **beosztással** is elfoglalhatja.
+   - Adja meg a hivatkozási számot az eszköz helyi webes FELÜLETének **szállításra való előkészítés** lapján a fuvarlevél száma mezőben.
+   - A foglalásokat hetente 6 nappal (kivéve a p és a nyilvános ünnepnapokat) fogadjuk el 9:00 – 2:00 órától.
+   - A felvételi kérelmeket legalább 90 percre kell helyezni az ügyfél bezárási ideje előtt.
+10. Ha bármilyen probléma merül fel a DHL foglalási eszközével kapcsolatban, a következő módszerek bármelyikével kapcsolatba léphet a DHL-szel:
+    - Call 04-2924545.
+    - A [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) probléma (ok) részleteit tartalmazó e-mailek, valamint a fuvarlevél számának elhelyezése a Tárgy: sorban.
+    - Hívja meg a DHL ügyfélszolgálatát a 600 567567 címen.
 
 ::: zone target="chromeless"
 

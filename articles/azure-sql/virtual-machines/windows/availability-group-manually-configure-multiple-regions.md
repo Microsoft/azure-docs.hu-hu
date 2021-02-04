@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359081"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537407"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>SQL Server always on rendelkezésre állási csoport konfigurálása különböző Azure-régiók között
 
@@ -86,6 +86,7 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
    - Használjon az IP-címhez tartozó, TCP-porthoz tartozó mintavételt.
    - Az azonos régióban lévő SQL Serverhoz tartozó terheléselosztási szabályt kell megegyeznie.  
    - Standard Load Balancer, ha a háttér-készletben lévő virtuális gépek nem részei egyetlen rendelkezésre állási csoportnak vagy virtuálisgép-méretezési csoportnak sem. További információkért tekintse át a [Azure Load Balancer standard áttekintést](../../../load-balancer/load-balancer-overview.md).
+   - Standard Load Balancer, ha a két különböző régióban található két virtuális hálózat a globális VNet-társítással van összefoglalva. További információ: [Azure Virtual Network gyakori kérdések (GYIK)](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 1. [Adja hozzá a feladatátvételi fürtszolgáltatást az új SQL Serverhoz](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 

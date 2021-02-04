@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d9f4ba48a7dc6cdcf6d60e4e9da5f68fcc6b1f28
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509333"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539094"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Keresési indexek létrehozása az Azure-ban Cognitive Search
 
-A keresési index a teljes szöveges és szűrt lekérdezésekhez használt kereshető tartalmat tárolja. Az indexet egy séma határozza meg, és a szolgáltatásba menti, és az adatimportálás második lépésként történik. 
+A Cognitive Search a *keresési indexben* lévő teljes szöveges és szűrt lekérdezésekhez használható kereshető tartalmat tárolja. Az indexet egy séma határozza meg, és a szolgáltatásba menti, és az adatimportálás második lépésként történik. 
 
-Az indexek *dokumentumokat* tartalmaznak. Elméletileg a dokumentumok az indexben kereshető adategységek. Előfordulhat, hogy egy kiskereskedő rendelkezik egy dokumentummal az egyes termékekhez, a hírekért felelős szervezet pedig minden cikkhez tartalmaz egy dokumentumot, és így tovább. Ezeket a fogalmakat több ismerős adatbázis-megfelelőnek is feltérképezheti: a *keresési index* egy *táblázatnak* felel meg, a *dokumentumok* pedig nagyjából egyenértékűek egy tábla *soraival* .
+Az indexek *keresési dokumentumokat* tartalmaznak. Elméletileg a dokumentumok az indexben kereshető adategységek. Előfordulhat, hogy egy kiskereskedő rendelkezik egy dokumentummal az egyes termékekhez, a hírekért felelős szervezet pedig minden cikkhez tartalmaz egy dokumentumot, és így tovább. Ezeket a fogalmakat több ismerős adatbázis-megfelelőnek is feltérképezheti: a *keresési index* egy *táblázatnak* felel meg, a *dokumentumok* pedig nagyjából egyenértékűek egy tábla *soraival* .
 
 ## <a name="whats-an-index-schema"></a>Mi az index sémája?
 
@@ -106,7 +106,9 @@ Cognitive Search az Azure SDK-k általánosan elérhető funkciókat implementá
 | JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Indexek](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
-## <a name="defining-fields"></a>Mezők definiálása
+## <a name="define-fields"></a>Mezők definiálása
+
+A keresési dokumentumot a gyűjtemény határozza meg `fields` . A lekérdezésekhez és a kulcsokhoz mezőkre lesz szüksége. A szűrők, a dimenziók és a rendezések támogatásához valószínűleg mezőkre is szüksége lesz. Előfordulhat, hogy a felhasználó által soha nem látható adathoz mezőket kell megadnia, például a haszonkulcsok vagy a marketing-előléptetések mezőit, amelyeket a keresés rangjának módosításához használhat.
 
 Egy EDM. String típusú mezőt kell kijelölni a dokumentum kulcsaként. Az egyes keresési dokumentumok egyedi azonosítására szolgál. Egy dokumentum a kulcsa alapján kérhető le a Részletek lap feltöltéséhez.  
 
@@ -146,9 +148,11 @@ Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak
 
 ![Index mérete az attribútumok kijelölése alapján](./media/search-what-is-an-index/realestate-index-size.png "Index mérete az attribútumok kijelölése alapján")
 
-Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. Megnövelhető az index mérete? Nem. Növeli a mezők hozzáadását egy **javaslathoz** az index méretének növelése érdekében? Igen.
+Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. Megnövelhető az index mérete? Nem. Növeli a mezők hozzáadását egy **javaslathoz** az index méretének növelése érdekében? Igen. 
 
-A szűrőket és a rendezést támogató indexek a csak teljes szöveges keresést támogató indexek arányosan nagyobbak. Ennek az az oka, hogy a szűrési és rendezési műveletek pontos egyezéseket keresnek, és a Verbatim szöveges karakterláncok jelenlétét igénylik. Ezzel szemben a teljes szöveges lekérdezéseket támogató kereshető mezők fordított indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok. 
+Ha egy mező szűrhető vagy rendezhető, akkor a rendszer a tárolási felhasználást is hozzáadja, mivel a szűrt és rendezett mezők nem rendelkeznek jogkivonat-azonosítóval, így a karakteres sorrendek szó szerint illeszkednek egymáshoz.
+
+A fenti táblázatban az [elemzők](search-analyzers.md)hatása is látható. Ha a edgeNgram-tokenizer használja a Verbatim (a, AB, ABC, ABCD) típusú karakterláncok tárolására, az index mérete nagyobb lesz, mint a standard Analyzer használata esetén.
 
 > [!Note]
 > A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
@@ -169,9 +173,9 @@ A következő beállítások állíthatók be a CORS:
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Cognitive Search szinte bármilyen minta vagy bemutató használatával tapasztalatokat szerezhet az indexek létrehozásáról. A tartalomjegyzékből bármelyik rövid útmutatót kiválaszthatja a kezdéshez.
+A Cognitive Search szinte bármilyen minta vagy bemutató használatával tapasztalatokat szerezhet az indexek létrehozásáról. A kezdők számára a tartalomjegyzékben bármelyik rövid útmutató közül választhat.
 
-Érdemes megismerni az indexek és az adathalmazok betöltésére szolgáló módszereket is. Az index definíciója és a populáció együtt történik. A következő cikkek további információkat tartalmaznak.
+Azonban érdemes megismernie az indexek és az adathalmazok betöltésére szolgáló módszereket is. Az index definíciója és az Adatimportálási stratégiák párhuzamosan vannak meghatározva. A következő cikkek további információkat nyújtanak az indexek betöltéséről.
 
 + [Adatimportálás áttekintése](search-what-is-data-import.md)
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045512"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538068"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -33,15 +33,22 @@ Azure Firewall használatakor a __cél hálózati címfordítás (DNAT)__ haszn�
 
 Ha Azure Machine Learning __számítási példányt__ vagy __számítási fürtöt__ használ, adjon hozzá egy [felhasználó által megadott útvonalakat (UDR)](../virtual-network/virtual-networks-udr-overview.md) a Azure Machine learning erőforrásokat tartalmazó alhálózathoz. Ez __az útvonal__ a és az erőforrások IP-címeiről továbbítja a forgalmat `BatchNodeManagement` `AzureMachineLearning` a számítási példány és a számítási fürt nyilvános IP-címére.
 
-Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
+Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá a Azure Machine Learning szolgáltatáshoz tartozó IP-címet is, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Azure Machine Learning szolgáltatás IP-címének hozzáadásakor hozzá kell adnia az IP-címet mind az __elsődleges,__ mind a másodlagos Azure-régióhoz. Az elsődleges régió, ahol a munkaterület található.
+
+A másodlagos régió megtalálásához tekintse meg az [üzletmenet folytonosságának biztosítása & a vész-helyreállítás az Azure párosított régiók használatával](../best-practices-availability-paired-regions.md#azure-regional-pairs)című témakört. Ha például az Azure Machine Learning-szolgáltatás az USA 2. keleti régiójában található, a másodlagos régió az USA középső régiója. 
+
+A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
 
 * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
-* Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójának információit:
+* Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójában (elsődleges) és az USA középső régiójában (másodlagos) található adatokat:
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+    # Get primary region IPs
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+    # Get secondary region IPs
+    az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
     ```
 
     > [!TIP]
@@ -186,7 +193,7 @@ A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez haszn�
 
 > [!IMPORTANT]
 > Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](../firewall/tutorial-firewall-deploy-portal.md)
 * [Biztonságos Azure ML-kísérletezés és következtetési feladatok egy Azure-beli virtuális hálózaton belül](how-to-network-security-overview.md)

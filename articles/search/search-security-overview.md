@@ -7,36 +7,130 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695780"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537306"
 ---
-# <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
+# <a name="security-overview-for-azure-cognitive-search"></a>Az Azure Cognitive Search biztonsági áttekintése
 
 Ez a cikk az Azure Cognitive Search biztonsági funkcióit ismerteti, amelyek védik a tartalmat és a műveleteket.
 
-+ A tárolási rétegben az adattitkosítás a lemezre mentett összes szolgáltatás által felügyelt tartalomra épül, beleértve az indexeket, a szinonimákat, valamint az indexelő, az adatforrások és a szakértelmével definícióit. Az indexelt tartalom kiegészítő titkosításához ügyfelek által felügyelt kulcsokat (CMK) is hozzáadhat. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes "kettős titkosítása" érdekében terjeszti ki.
+A keresési szolgáltatás felé irányuló bejövő kérelmek esetében a keresési szolgáltatás végpontját védő biztonsági intézkedések haladnak át: a kérelemben szereplő API-kulcsoktól a tűzfal bejövő szabályaiig a szolgáltatás teljes körű védelmét a nyilvános internetről.
 
-+ A bejövő biztonság a keresési szolgáltatás végpontjának védelmi szintjein a biztonsági szintek növelését jelenti: a kérés API-kulcsaitól, a tűzfal bejövő szabályaitól a szolgáltatás teljes körű védelmét biztosító privát végpontok számára a nyilvános internetről.
+A más szolgáltatásoknak küldött kimenő kérésekhez az indexelő kéri a külső forrásokból származó tartalom beolvasását. A hitelesítő adatokat megadhatja a kapcsolatok karakterláncán. A felügyelt identitást úgy is beállíthatja, hogy megbízható szolgáltatást keressen, amikor Azure Storage, Azure SQL, Cosmos DB vagy más Azure-adatforrásokból fér hozzá az adatokhoz. A felügyelt identitás a hitelesítő adatok vagy a hozzáférési kulcsok helyettesítése a kapcsolaton. További információ erről a képességről: [Csatlakozás adatforráshoz felügyelt identitás használatával](search-howto-managed-identities-data-sources.md).
 
-+ A kimenő biztonság a külső forrásokból származó tartalmat lekérő indexelő adatokra vonatkozik. A kimenő kérelmek esetében hozzon létre egy felügyelt identitást, hogy a megbízható szolgáltatásban keressen az Azure Storage, az Azure SQL, a Cosmos DB vagy más Azure-adatforrások adataihoz való hozzáférés során. A felügyelt identitás a hitelesítő adatok vagy a hozzáférési kulcsok helyettesítése a kapcsolaton. A kimenő biztonságot ebben a cikkben nem tárgyaljuk. További információ erről a képességről: [Csatlakozás adatforráshoz felügyelt identitás használatával](search-howto-managed-identities-data-sources.md).
+A külső szolgáltatásokhoz való írási műveletek kevések: a keresési szolgáltatás a naplófájlba írja a fájlokat, és az Azure Storage-ba fogja írni, amikor az adattárakat létrehozza, megőrzi a gyorsítótárazott bővítéseket, és megőrzi a hibakeresési munkameneteket. A szolgáltatások közötti egyéb hívások, például a Cognitive Services a belső hálózaton történnek.
 
 Tekintse meg ezt a gyors iramú videót a biztonsági architektúra és az egyes szolgáltatások kategóriáinak áttekintéséhez.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+## <a name="network-security"></a>Hálózati biztonság
+
+<a name="service-access-and-authentication"></a>
+
+A bejövő biztonsági funkciók a keresési szolgáltatás végpontját a biztonság és a bonyolultság szintjének növelésével védik. Először is minden kérelemhez API-kulcs szükséges a hitelesített hozzáféréshez. Másodszor beállíthatja a tűzfalszabályok számára, hogy meghatározott IP-címekre korlátozza a hozzáférést. A speciális védelem érdekében a harmadik lehetőség az, hogy engedélyezze az Azure privát hivatkozását, hogy a szolgáltatás végpontját minden internetes forgalomból megvédje.
+
+### <a name="public-access-using-api-keys"></a>Nyilvános hozzáférés API-kulcsok használatával
+
+Alapértelmezés szerint a keresési szolgáltatás a nyilvános felhőn keresztül érhető el, kulcs alapú hitelesítéssel, rendszergazdai vagy lekérdezési hozzáféréssel a keresési szolgáltatás végpontja számára. Az érvényes kulcs beküldése igazolja, hogy a kérelem megbízható entitásból származik. A következő szakaszban a kulcs alapú hitelesítés szerepel.
+
+### <a name="configure-ip-firewalls"></a>IP-tűzfalak konfigurálása
+
+A keresési szolgáltatáshoz való hozzáférés további szabályozásához olyan bejövő tűzfalszabályok hozhatók létre, amelyek lehetővé teszik az adott IP-cím vagy IP-címtartomány elérését. Az összes ügyfélkapcsolatot egy engedélyezett IP-címen keresztül kell elvégezni, vagy a kapcsolat megtagadva.
+
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="Példa architektúra-diagramra az IP korlátozott hozzáféréshez":::
+
+A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md).
+
+Másik lehetőségként használhatja a felügyeleti REST API-kat is. A 2020-03-13-es API-verziótól kezdődően a [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) paraméterrel a szolgáltatáshoz való hozzáférést úgy is korlátozhatja, ha az IP-címeket, egyenként vagy egy tartományban azonosítja, és amelyekhez hozzáférést szeretne biztosítani a keresési szolgáltatáshoz.
+
+### <a name="network-isolation-through-a-private-endpoint-no-internet-traffic"></a>Hálózati elkülönítés privát végponton keresztül (internetes forgalom nélkül)
+
+Létrehozhat egy [privát végpontot](../private-link/private-endpoint-overview.md) az Azure Cognitive Search számára, amely lehetővé teszi, hogy egy [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) lévő ügyfél biztonságosan hozzáférhessen egy keresési indexben lévő adathoz egy [privát hivatkozáson](../private-link/private-link-overview.md)keresztül.
+
+A magánhálózati végpont a virtuális hálózati címtartomány IP-címét használja a keresési szolgáltatáshoz való kapcsolódáshoz. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A VNET lehetővé teszi az erőforrások, a helyszíni hálózat és az Internet közötti biztonságos kommunikációt.
+
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="Példa architektúra-diagramra a privát végpontok eléréséhez":::
+
+Habár ez a megoldás a legbiztonságosabb, a további szolgáltatások használata további költségeket jelent, ezért ügyeljen arra, hogy egyértelművé váljon a kimerülés előtti előnyök. a költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/private-link/). Ha többet szeretne megtudni arról, hogy ezek az összetevők hogyan működnek együtt, tekintse meg a cikk tetején található videót. A privát végponti beállítás lefedettsége 5:48-kor kezdődik a videóban. A végpont beállításával kapcsolatos útmutatásért lásd: [privát végpont létrehozása az Azure Cognitive Searchhoz](service-create-private-endpoint.md).
+
+## <a name="authentication"></a>Hitelesítés
+
+A keresési szolgáltatás felé irányuló bejövő kérelmek esetében a hitelesítés egy [kötelező API-kulcson](search-security-api-keys.md) (véletlenszerűen generált számokból és betűkből álló karakterlánc) keresztül történik, amely igazolja, hogy a kérés megbízható forrásból származik. A Cognitive Search jelenleg nem támogatja a bejövő kérelmek Azure Active Directory hitelesítését.
+
+Az indexelő által kezdeményezett kimenő kérelmeket a külső szolgáltatás hitelesíti. Az Cognitive Search indexelő alszolgáltatása megbízható szolgáltatást tud készíteni az Azure-ban, és egy felügyelt identitás használatával csatlakozik más szolgáltatásokhoz. További információ: [Indexer-kapcsolatok beállítása egy adatforráshoz felügyelt identitás használatával](search-howto-managed-identities-data-sources.md).
+
+## <a name="authorization"></a>Engedélyezés
+
+A Cognitive Search különböző engedélyezési modelleket biztosít a tartalomkezeléshez és a szolgáltatások kezeléséhez. 
+
+### <a name="authorization-for-content-management"></a>Tartalomkezelés engedélyezése
+
+A tartalomhoz való engedélyezés és a tartalomhoz kapcsolódó műveletek írási hozzáféréssel rendelkeznek a kérelemben megadott [API-kulccsal](search-security-api-keys.md) . Az API-kulcs egy hitelesítési mechanizmus, de a hozzáférés az API-kulcs típusától függően is engedélyezett.
+
++ Rendszergazdai kulcs (olvasási és írási hozzáférés engedélyezése a keresési szolgáltatásban a Create-Read-Update-delete műveletekhez), amelyet a szolgáltatás kiépítés után hozott létre.
+
++ Lekérdezési kulcs (csak olvasási hozzáférést biztosít az indexek dokumentumainak gyűjteményéhez), igény szerint létrehozva, és olyan ügyfélalkalmazások számára lett tervezve, amelyek lekérdezések kibocsátását teszik lehetővé
+
+Az alkalmazás kódjában a végpontot és egy API-kulcsot kell megadnia a tartalomhoz és a beállításokhoz való hozzáférés engedélyezéséhez. A végpont lehet maga a szolgáltatás, az indexek gyűjteménye, egy adott index, egy dokumentum gyűjtemény vagy egy adott dokumentum. Ha összeláncolva, a végpont, a művelet (például egy létrehozási vagy frissítési kérelem) és a jogosultsági szint (a kulcs alapján teljes vagy csak olvasási jogosultság) képezi a tartalmat és a műveleteket védő biztonsági képletet.
+
+### <a name="controlling-access-to-indexes"></a>Az indexekhez való hozzáférés szabályozása
+
+Az Azure Cognitive Searchban az egyes indexek nem biztonságos objektumok. Ehelyett az indexhez való hozzáférést a szolgáltatási réteg határozza meg (olvasási vagy írási hozzáférés az Ön által megadott API-kulcs alapján), egy művelet kontextusával együtt.
+
+A csak olvasási hozzáféréshez a lekérdezési kérelmeket a [lekérdezési kulccsal](search-security-rbac.md)lehet összekötni, és az alkalmazás által használt adott indexet is felhasználhatja. Egy lekérdezési kérelemben nincs olyan fogalom, amely az indexek összekapcsolását vagy egyszerre több index elérését teszi elérhetővé, így az összes kérelem egyetlen indexet céloz meg definíció szerint. Ennek megfelelően a lekérdezési kérelem (egy kulcs plusz egy célként megadott index) kialakítása határozza meg a biztonsági határt.
+
+Az indexekhez való rendszergazdai és fejlesztői hozzáférés nem különbözik: a szolgáltatás által felügyelt objektumok létrehozásához, törléséhez és frissítéséhez egyaránt írási hozzáférésre van szükség. A szolgáltatáshoz tartozó [rendszergazdai kulccsal](search-security-rbac.md) bárki megtekintheti, módosíthatja vagy törölheti ugyanazon szolgáltatás bármelyik indexét. Az indexek véletlen vagy rosszindulatú törlésével szembeni védelem érdekében a belső verziókövetés a kód eszközeire a nemkívánatos indexek törlésének vagy módosításának megfordítására szolgáló megoldás. Az Azure Cognitive Search a rendelkezésre állás biztosítása érdekében feladatátvételt hajt végre a fürtön belül, de nem tárolja és nem hajtja végre az indexek létrehozásához vagy betöltéséhez használt tulajdonosi kódot.
+
+Az index szintjén biztonsági határokat igénylő bérlős megoldások esetében az ilyen megoldások jellemzően olyan középső szintet tartalmaznak, amelyet az ügyfelek az indexek elkülönítésének kezelésére használnak. További információ a több-bérlős használati esetről: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
+
+### <a name="controlling-access-to-documents"></a>Dokumentumokhoz való hozzáférés szabályozása
+
+Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények között, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. 
+
+A "sor szintű biztonság" fogalmával egyenértékű, az indexen belüli tartalomra való jogosultság nem támogatott natív módon olyan előre definiált szerepkörök vagy szerepkör-hozzárendelések használatával, amelyek a Azure Active Directory entitásokra vannak leképezve. A külső rendszerekben található adatokra vonatkozó felhasználói engedélyek, például a Cosmos DBek, nem továbbítják azokat az adatokkal, amelyek Cognitive Search szerint indexelve vannak.
+
+A "sor szintű biztonságot" igénylő megoldások megkerülő megoldásai közé tartozik egy olyan mező létrehozása az adatforrásban, amely egy biztonsági csoportot vagy felhasználói identitást jelöl, majd a Cognitive Search szűrők használatával szelektíven metszi a dokumentumok és tartalmak keresési eredményeit az identitások alapján. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
+
+| Módszer | Leírás |
+|----------|-------------|
+|[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
+|[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (Azure AD) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
+
+### <a name="authorization-for-service-management"></a>A szolgáltatás felügyeletének engedélyezése
+
+A szolgáltatás-kezelési műveleteket az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)engedélyezik. Az Azure RBAC egy engedélyezési rendszer, amely az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) . 
+
+Az Azure Cognitive Search a Resource Manager használatával létrehozhatja vagy törölheti a szolgáltatást, kezelheti az API-kulcsokat, és méretezheti a szolgáltatást. Az Azure-beli szerepkör-hozzárendelések határozzák meg, hogy kik tudják elvégezni ezeket a feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](/rest/api/searchmanagement/search-howto-management-rest-api)használják.
+
+A keresési szolgáltatás felügyeletéhez [három alapvető szerepkör](search-security-rbac.md#management-tasks-by-role) van definiálva. A szerepkör-hozzárendelések a támogatott módszerek (portál, PowerShell stb.) használatával tehetők elérhetővé, és a szolgáltatásra is érvényesek. A tulajdonos és a közreműködő szerepkör számos felügyeleti funkciót képes végrehajtani. Az olvasó szerepkört hozzárendelheti azokhoz a felhasználókhoz, akik csak az alapvető információkat tekintik meg.
+
+> [!Note]
+> Az Azure-ra kiterjedő mechanizmusok használatával zárolhatja az előfizetést vagy az erőforrást, így megakadályozhatja a keresési szolgáltatás véletlen vagy jogosulatlan törlését rendszergazdai jogosultságokkal rendelkező felhasználók számára. További információ: [erőforrások zárolása a váratlan törlés megakadályozása érdekében](../azure-resource-manager/management/lock-resources.md).
+
+## <a name="threat-protection"></a>Fenyegetések elleni védelem
+
+A keresési szolgáltatásokban lévő tartalmakhoz való hozzáférés kizárólag lekérdezéseken keresztül történik. Ha a keresési szolgáltatás a lekérdezési támadás célja, a rendszer levonja a lekérdezéseket, mivel a rendszer megközelíti a maximális kapacitást. 
+
+A szabályozás eltérően viselkedik a különböző API-kkal. A szolgáltatás terhelése alapján a lekérdezési API-k (keresés/javaslat/automatikus kiegészítés) és az indexelő API-k szabályozása dinamikusan történik. Az API-k és a Service Operations API indexe statikus kérelmekre vonatkozó korlátozásokat tartalmaz. A statikus díjszabásra vonatkozó kérelmek korlátozásait a [szabályozási korlátok](search-limits-quotas-capacity.md#throttling-limits)között tekintheti át. A szabályozás működésével kapcsolatos további információk: a [lekérdezési kérelmek figyelése](search-monitor-queries.md).
+
 <a name="encryption"></a>
 
-## <a name="encrypted-transmissions-and-storage"></a>Titkosított átvitelek és tárolók
+## <a name="data-protection"></a>Adatvédelem
+
+A tárolási rétegben az adattitkosítás a lemezre mentett összes szolgáltatás által felügyelt tartalomra épül, beleértve az indexeket, a szinonimákat tartalmazó térképeket, valamint az indexelő, az adatforrások és a szakértelmével definícióit. Az indexelt tartalom kiegészítő titkosításához ügyfelek által felügyelt kulcsokat (CMK) is hozzáadhat. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes "kettős titkosítása" érdekében terjeszti ki.
+
+### <a name="data-in-transit"></a>Átvitt adatok
 
 Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel kezdődik, és a lemezen tárolt tartalomra terjed ki. A nyilvános interneten található keresési szolgáltatások esetében az Azure Cognitive Search a 443-es HTTPS-portot figyeli. Az összes ügyfél és szolgáltatás közötti kapcsolat TLS 1,2 titkosítást használ. A korábbi verziók (1,0 vagy 1,1) nem támogatottak.
 
-:::image type="content" source="media/search-security-overview/encryption-at-rest-cmk.png" alt-text="különböző típusú biztonságot ábrázoló diagram a szolgáltatás minden egyes szintjén":::
+### <a name="encrypted-data-at-rest"></a>Titkosított adatok a nyugalmi állapotban
 
 A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-models.md)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
@@ -58,7 +152,7 @@ Az ügyfél által felügyelt kulcsokhoz további számlázható szolgáltatásr
 
 ### <a name="double-encryption"></a>Dupla titkosítás
 
-Az Azure Cognitive Search a kettős titkosítás a CMK kiterjesztése. A rendszer úgy értelmezi, hogy az adatlemezre írt, hosszú távú tárolást, valamint az ideiglenes lemezekre írt rövid távú tárolást (a CMK egyszer, egyszer a szolgáltatás által felügyelt kulcsok alapján), valamint átfogó hatókörrel rendelkezik. A CMK közötti különbség a 1 2020 augusztusa előtt, illetve azt követően, és mi teszi a CMK egy dupla titkosítási funkciót az Azure Cognitive Search-ban, az adatok további titkosítása az ideiglenes lemezeken.
+Az Azure Cognitive Search a kettős titkosítás a CMK kiterjesztése. A rendszer az adatlemezre írt hosszú távú tárolást, valamint az ideiglenes lemezekre írt rövid távú tárolást magában foglaló, a CMK és az azokban lévő teljes körű titkosítást is magába foglalja. A CMK közötti különbség a 1 2020 augusztusa előtt, illetve azt követően, és mi teszi a CMK egy dupla titkosítási funkciót az Azure Cognitive Search-ban, az adatok további titkosítása az ideiglenes lemezeken.
 
 A kettős titkosítás jelenleg az alábbi régiókban létrehozott új szolgáltatásokban érhető el augusztus 1-től:
 
@@ -68,81 +162,21 @@ A kettős titkosítás jelenleg az alábbi régiókban létrehozott új szolgál
 + USA-beli államigazgatás – Virginia
 + USA-beli államigazgatás – Arizona
 
-<a name="service-access-and-authentication"></a>
+## <a name="security-management"></a>Biztonsági felügyelet
 
-## <a name="inbound-security-and-endpoint-protection"></a>Bejövő biztonsági és Endpoint Protection
+### <a name="api-keys"></a>API-kulcsok
 
-A bejövő biztonsági funkciók a keresési szolgáltatás végpontját a biztonság és a bonyolultság szintjének növelésével védik. Először is minden kérelemhez API-kulcs szükséges a hitelesített hozzáféréshez. Másodszor beállíthatja a tűzfalszabályok számára, hogy meghatározott IP-címekre korlátozza a hozzáférést. A speciális védelem érdekében a harmadik lehetőség az, hogy engedélyezze az Azure privát hivatkozását, hogy a szolgáltatás végpontját minden internetes forgalomból megvédje.
+Az API-kulcson alapuló hitelesítésre való támaszkodás azt jelenti, hogy a felügyeleti kulcs rendszeres időközönként történő újragenerálásának tervét kell megtervezni az Azure-beli biztonsági ajánlott eljárások alapján. Keresési szolgáltatásokban legfeljebb két rendszergazdai kulcs lehet. Az API-kulcsok biztonságossá tételével és kezelésével kapcsolatos további információkért lásd: [API-kulcsok létrehozása és kezelése](search-security-api-keys.md).
 
-### <a name="public-access-using-api-keys"></a>Nyilvános hozzáférés API-kulcsok használatával
+#### <a name="activity-and-diagnostic-logs"></a>Tevékenység és diagnosztikai naplók
 
-Alapértelmezés szerint a keresési szolgáltatás a nyilvános felhőn keresztül érhető el, kulcs alapú hitelesítéssel, rendszergazdai vagy lekérdezési hozzáféréssel a keresési szolgáltatás végpontja számára. Az [API-kulcsok](search-security-rbac.md) véletlenszerűen generált számokból és betűkből álló karakterláncok. A kulcs típusa (rendszergazda vagy lekérdezés) határozza meg a hozzáférési szintet. Az érvényes kulcs beküldése igazolja, hogy a kérelem megbízható entitásból származik.
+A Cognitive Search nem naplózza a felhasználói identitásokat, ezért nem hivatkozhat a naplókra egy adott felhasználóval kapcsolatos információkért. A szolgáltatás azonban naplózza a Create-Read-Update-delete műveleteket, amelyekkel összekapcsolhatók más naplókkal, hogy megértsék az adott műveletek Ügynökségét.
 
-A keresési szolgáltatásnak két hozzáférési szintje van, amelyeket a következő API-kulcsok engedélyeznek:
+A riasztások és a naplózási infrastruktúra használata az Azure-ban a lekérdezési mennyiségi csúcsokon vagy más, a várt számítási feladatoktól eltérő műveleteken is felveheti a munkát. A naplók beállításával kapcsolatos további információkért lásd: a [naplófájlok adatainak összegyűjtése és elemzése](search-monitor-logs.md) és a [lekérdezési kérelmek figyelése](search-monitor-queries.md).
 
-+ Rendszergazdai kulcs (olvasási és írási hozzáférés engedélyezése a Search szolgáltatásban a [create-Read-Update-delete](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) műveletekhez)
+### <a name="certifications-and-compliance"></a>Minősítések és megfelelőség
 
-+ Lekérdezési kulcs (csak olvasási hozzáférést biztosít az index dokumentumainak gyűjteményéhez)
-
-Az *adminisztrátori kulcsok* a szolgáltatás kiépített állapotában jönnek létre. Két rendszergazdai kulcs van kijelölve *elsődlegesként* és *másodlagosként* , hogy azok egyenesek maradjanak, de valójában felcserélhetők. Minden szolgáltatásnak két rendszergazdai kulcsa van, így a szolgáltatáshoz való hozzáférés elvesztése nélkül végezheti el a bevezetést. Az Azure biztonsági eljárásainak rendszeres időközönként újra [létrehozhatja az adminisztrátori kulcsot](search-security-api-keys.md#regenerate-admin-keys) , de a felügyeleti kulcsok teljes számát nem lehet hozzáadni. Keresési szolgáltatásokban legfeljebb két rendszergazdai kulcs lehet.
-
-A *lekérdezési kulcsok* szükség szerint jönnek létre, és a lekérdezéseket kiállító ügyfélalkalmazások számára lettek kialakítva. Akár 50 lekérdezési kulcsot is létrehozhat. Az alkalmazás kódjában megadhatja a keresési URL-címet és egy lekérdezési API-kulcsot, amely lehetővé teszi a csak olvasási hozzáférést egy adott index dokumentum-gyűjteményéhez. Együtt, a végpont, a csak olvasási hozzáféréssel rendelkező API-kulcs és a célként megadott index határozza meg a kapcsolat hatókörét és hozzáférési szintjét az ügyfélalkalmazás alapján.
-
-Minden kérelem esetében hitelesítésre van szükség, amelyben minden kérelem egy kötelező kulcsból, egy műveletből és egy objektumból áll. Ha együtt van összekapcsolva, a két jogosultsági szint (teljes vagy csak olvasható) és a környezet (például egy index lekérdezési művelete) elegendő a szolgáltatási műveletek teljes spektrumú biztonságának biztosításához. A kulcsokkal kapcsolatos további információkért lásd: [API-kulcsok létrehozása és kezelése](search-security-api-keys.md).
-
-### <a name="ip-restricted-access"></a>IP-korlátozott hozzáférés
-
-A keresési szolgáltatáshoz való hozzáférés további szabályozásához olyan bejövő tűzfalszabályok hozhatók létre, amelyek lehetővé teszik az adott IP-cím vagy IP-címtartomány elérését. Az összes ügyfélkapcsolatot egy engedélyezett IP-címen keresztül kell elvégezni, vagy a kapcsolat megtagadva.
-
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="Példa architektúra-diagramra az IP korlátozott hozzáféréshez":::
-
-A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md).
-
-Másik lehetőségként használhatja a felügyeleti REST API-kat is. A 2020-03-13-es API-verziótól kezdődően a [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) paraméterrel a szolgáltatáshoz való hozzáférést úgy is korlátozhatja, ha az IP-címeket, egyenként vagy egy tartományban azonosítja, és amelyekhez hozzáférést szeretne biztosítani a keresési szolgáltatáshoz.
-
-### <a name="private-endpoint-no-internet-traffic"></a>Magánhálózati végpont (nincs internetes forgalom)
-
-Az Azure Cognitive Search [privát végpontja](../private-link/private-endpoint-overview.md) lehetővé teszi, hogy egy [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) lévő ügyfél biztonságosan hozzáférhessen egy keresési indexben lévő adathoz egy [privát hivatkozáson](../private-link/private-link-overview.md)keresztül.
-
-A magánhálózati végpont a virtuális hálózati címtartomány IP-címét használja a keresési szolgáltatáshoz való kapcsolódáshoz. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A VNET lehetővé teszi az erőforrások, a helyszíni hálózat és az Internet közötti biztonságos kommunikációt.
-
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="Példa architektúra-diagramra a privát végpontok eléréséhez":::
-
-Habár ez a megoldás a legbiztonságosabb, a további szolgáltatások használata további költségeket jelent, ezért ügyeljen arra, hogy egyértelművé váljon a kimerülés előtti előnyök. a költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/private-link/). Ha többet szeretne megtudni arról, hogy ezek az összetevők hogyan működnek együtt, tekintse meg a cikk tetején található videót. A privát végponti beállítás lefedettsége 5:48-kor kezdődik a videóban. A végpont beállításával kapcsolatos útmutatásért lásd: [privát végpont létrehozása az Azure Cognitive Searchhoz](service-create-private-endpoint.md).
-
-## <a name="index-access"></a>Indexelési hozzáférés
-
-Az Azure Cognitive Searchban az egyes indexek nem biztonságos objektumok. Ehelyett az indexhez való hozzáférést a szolgáltatási réteg határozza meg (olvasási vagy írási hozzáférés a szolgáltatáshoz), valamint egy művelet kontextusával.
-
-A végfelhasználói hozzáféréshez a lekérdezési kérelmeket a [lekérdezési kulcs](search-security-rbac.md)használatával lehet összeszervezni, amely minden kérés írásvédett, és tartalmazza az alkalmazás által használt adott indexet. Egy lekérdezési kérelemben nincs olyan fogalom, amely az indexek összekapcsolását vagy egyszerre több index elérését teszi elérhetővé, így az összes kérelem egyetlen indexet céloz meg definíció szerint. Ennek megfelelően a lekérdezési kérelem (egy kulcs plusz egy célként megadott index) kialakítása határozza meg a biztonsági határt.
-
-Az indexekhez való rendszergazdai és fejlesztői hozzáférés nem különbözik: a szolgáltatás által felügyelt objektumok létrehozásához, törléséhez és frissítéséhez egyaránt írási hozzáférésre van szükség. A szolgáltatáshoz tartozó [rendszergazdai kulccsal](search-security-rbac.md) bárki megtekintheti, módosíthatja vagy törölheti ugyanazon szolgáltatás bármelyik indexét. Az indexek véletlen vagy rosszindulatú törlésével szembeni védelem érdekében a belső verziókövetés a kód eszközeire a nemkívánatos indexek törlésének vagy módosításának megfordítására szolgáló megoldás. Az Azure Cognitive Search a rendelkezésre állás biztosítása érdekében feladatátvételt hajt végre a fürtön belül, de nem tárolja és nem hajtja végre az indexek létrehozásához vagy betöltéséhez használt tulajdonosi kódot.
-
-Az index szintjén biztonsági határokat igénylő bérlős megoldások esetében az ilyen megoldások jellemzően olyan középső szintet tartalmaznak, amelyet az ügyfelek az indexek elkülönítésének kezelésére használnak. További információ a több-bérlős használati esetről: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
-
-## <a name="user-access"></a>Felhasználói hozzáférés
-
-Az index és az egyéb objektumok elérésének módja a kérelemben szereplő API-kulcs típusa alapján történik. A legtöbb fejlesztő a [lekérdezési kulcsokat](search-security-api-keys.md) az ügyféloldali keresési kérelmekhez hozza létre és rendeli hozzá. A lekérdezési kulcs csak olvasási hozzáférést biztosít az indexen belüli kereshető tartalmakhoz.
-
-Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények között, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. Az előre definiált szerepkörök és szerepkör-hozzárendelések helyett az identitás-alapú hozzáférés-vezérlés olyan *szűrőként* van megvalósítva, amely identitások alapján metszi a dokumentumok és tartalmak keresési eredményeit. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
-
-| Módszer | Leírás |
-|----------|-------------|
-|[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
-|[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (Azure AD) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
-
-## <a name="administrative-rights"></a>Rendszergazdai jogosultságok
-
-Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrások kiépítésére [Azure Resource Manager](../azure-resource-manager/management/overview.md) épülő engedélyezési rendszer. Az Azure Cognitive Search a Resource Manager használatával létrehozhatja vagy törölheti a szolgáltatást, kezelheti az API-kulcsokat, és méretezheti a szolgáltatást. Az Azure-beli szerepkör-hozzárendelések határozzák meg, hogy kik tudják elvégezni ezeket a feladatokat, függetlenül attól, hogy a [portált](search-manage.md), a [PowerShellt](search-manage-powershell.md)vagy a [felügyeleti REST API-kat](/rest/api/searchmanagement/search-howto-management-rest-api)használják.
-
-Ezzel szemben a szolgáltatásban üzemeltetett tartalommal kapcsolatos rendszergazdai jogosultságokat, például az indexek létrehozását vagy törlését, az API-kulcsok az [előző szakaszban](#index-access)leírtak szerint.
-
-> [!TIP]
-> Az Azure-ra kiterjedő mechanizmusok használatával zárolhatja az előfizetést vagy az erőforrást, így megakadályozhatja a keresési szolgáltatás véletlen vagy jogosulatlan törlését rendszergazdai jogosultságokkal rendelkező felhasználók számára. További információ: [erőforrások zárolása a váratlan törlés megakadályozása érdekében](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="certifications-and-compliance"></a>Minősítések és megfelelőség
-
-Az Azure Cognitive Search a nyilvános felhő és a Azure Government esetében több globális, regionális és iparági szabványnak megfelelő előírásoknak is megfelelt. A teljes listához töltse le a [ **Microsoft Azure megfelelőségi ajánlatokat**](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) a hivatalos naplózási jelentések oldaláról.
+Az Azure Cognitive Search a rendszeres auditálásokban részt vesz, és számos globális, regionális és iparági szabványnak megfelelő, a nyilvános felhőre és a Azure Governmentra vonatkozó előírással igazolt. A teljes listához töltse le a [ **Microsoft Azure megfelelőségi ajánlatokat**](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) a hivatalos naplózási jelentések oldaláról.
 
 A megfelelőség érdekében a [Azure Policy](../governance/policy/overview.md) segítségével megvalósíthatja az [Azure biztonsági teljesítményteszt](../security/benchmarks/introduction.md)magas biztonsággal kapcsolatos ajánlott eljárásait. Az Azure Security benchmark olyan biztonsági javaslatok gyűjteménye, amelyek a szolgáltatásokra és az adatmennyiségre vonatkozó fenyegetések enyhítése érdekében a biztonsági ellenőrzésekben foglaltak szerint vannak leképezve. Jelenleg 11 biztonsági vezérlő van, beleértve a [hálózati biztonságot](../security/benchmarks/security-control-network-security.md), a [naplózást és a figyelést](../security/benchmarks/security-control-logging-monitoring.md), és az [Adatvédelem](../security/benchmarks/security-control-data-protection.md) csak néhányat említsünk.
 

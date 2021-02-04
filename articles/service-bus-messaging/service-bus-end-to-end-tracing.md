@@ -2,14 +2,14 @@
 title: Végpontok közötti nyomkövetés és diagnosztika Azure Service Bus | Microsoft Docs
 description: Az Service Bus-ügyfél diagnosztika és a végpontok közötti nyomkövetés áttekintése (ügyfél a feldolgozásban részt vevő összes szolgáltatáson keresztül)
 ms.topic: article
-ms.date: 01/17/2021
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: edfd789f8803acf9fc8d76202805dec0187d220e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601260"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539213"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetés és korreláció Service Bus üzenetkezelésen keresztül
 
@@ -135,12 +135,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 Ebben a példában a figyelő naplózza az időtartamot, az eredményt, az egyedi azonosítót és a kezdési időpontot az egyes Service Bus műveletekhez.
 
 ### <a name="events"></a>Események
-Minden művelethez két eseményt kell elküldeni: "Start" és "Leállítás". Legvalószínűbb, hogy csak a "stop" események érdeklik. A művelet eredményét, a kezdési időt és az időtartamot pedig tevékenység tulajdonságaiként adják meg.
-
-Az esemény-adattartalom egy figyelőt biztosít a művelet kontextusában, és replikálja az API bejövő paramétereit és a visszatérési értéket. A "stop" esemény adattartalma rendelkezik a "Start" esemény hasznos adataival, így teljesen figyelmen kívül hagyhatja a "Start" eseményt.
-
-Minden "Leállítás" eseménynek van olyan `Status` tulajdonsága, `TaskStatus` amely aszinkron művelettel fejeződött be, és az egyszerűség kedvéért a következő táblázatban is kimarad.
-
 Minden esemény a következő tulajdonságokkal fog rendelkezni, amelyek megfelelnek az Open telemetria specifikációjának: https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md .
 
 - `message_bus.destination` – üzenetsor/témakör/előfizetés elérési útja
@@ -404,7 +398,7 @@ Több figyelő jelenléte `DiagnosticSource` ugyanazon a forrásnál elég ahhoz
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Korreláció Application Insights](../azure-monitor/app/correlation.md)
 * [Application Insights a függőségek figyelésével](../azure-monitor/app/asp-net-dependencies.md) ellenőrizheti, hogy a REST, az SQL vagy más külső erőforrások lassulnak-e.

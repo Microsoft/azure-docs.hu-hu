@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: dbee87098dcc712669c332deac656cf5656ef4c4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e31423ae5afd4955ebe7acf1d456496f15f14a6b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527511"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537289"
 ---
 # <a name="list-restorable-sql-api-resources-in-azure-cosmos-db-using-rest-api"></a>Helyreállítható SQL API-erőforrások listázása Azure Cosmos DB a REST API használatával
+
+> [!IMPORTANT]
+> A Azure Cosmos DB időponthoz tartozó visszaállítási funkciója (folyamatos biztonsági mentési mód) jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az adatbázis és a tároló kombinált listájának visszaadása, amely a fiókban a megadott időbélyegen és helyen található. Ez segít a forgatókönyvekben, hogy a megadott időbélyegen és helyen ellenőrizze, milyen erőforrások léteznek. Ehhez az API-hoz `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` engedély szükséges.
 

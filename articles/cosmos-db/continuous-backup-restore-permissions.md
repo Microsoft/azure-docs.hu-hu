@@ -7,17 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 3614a85a6df2e793a73a2609d6f5762e4dc873fb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527619"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538693"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók visszaállítására vonatkozó engedélyek kezelése
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB lehetővé teszi a folyamatos biztonsági mentési fiókra vonatkozó visszaállítási engedélyek elkülönítését és korlátozását egy adott szerepkör vagy rendszerbiztonsági tag számára. A fiók tulajdonosa aktiválhatja a visszaállítást, és hozzárendelhet egy szerepkört a többi résztvevőhöz a visszaállítási művelet elvégzéséhez. Ezek az engedélyek az előfizetés hatókörén vagy részletesebben alkalmazhatók a forrásoldali fiók hatókörében, ahogy az alábbi képen is látható:
+> [!IMPORTANT]
+> A Azure Cosmos DB időponthoz tartozó visszaállítási funkciója (folyamatos biztonsági mentési mód) jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Cosmos DB lehetővé teszi a folyamatos biztonsági mentési (előzetes) fiókra vonatkozó visszaállítási engedélyek elkülönítését és korlátozását egy adott szerepkör vagy rendszerbiztonsági tag számára. A fiók tulajdonosa aktiválhatja a visszaállítást, és hozzárendelhet egy szerepkört a többi résztvevőhöz a visszaállítási művelet elvégzéséhez. Ezek az engedélyek az előfizetés hatókörén vagy részletesebben alkalmazhatók a forrásoldali fiók hatókörében, ahogy az alábbi képen is látható:
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="A visszaállítási művelet végrehajtásához szükséges szerepkörök listája." lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 

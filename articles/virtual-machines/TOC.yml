@@ -103,6 +103,8 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: FreeBSD csomagszűrő
       href: ./linux/freebsd-pf-nat.md
+    - name: Nagyszámítógépes áthelyezés
+      href: ./workloads/mainframe-rehosting/overview.md
     - name: Adatbázisok
       items:
         - name: MySQL a SUSE rendszeren
@@ -1448,6 +1450,8 @@
               href: ./linux/move-vm.md
             - name: PowerShell
               href: ./windows/move-vm.md
+            - name: Piactér-beli virtuális gépek előfizetésének módosítása
+              href: azure-cli-change-subscription-marketplace.md
         - name: Virtuális gépek áthelyezése egy másik régióba
           href: ../site-recovery/azure-to-azure-tutorial-migrate.md
         - name: Áthelyezés rendelkezésreállási zónába

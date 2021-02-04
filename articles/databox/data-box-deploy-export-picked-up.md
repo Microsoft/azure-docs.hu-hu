@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 9ebf95f0a9c5cfc059f38a13ad99a545dd863d21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6c2eed9aac614b0765582d5cf373caf50323ef7a
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525031"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537357"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Oktatóanyag: visszatérési Azure Data Box
 
@@ -172,6 +172,24 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 
 Ha bármilyen probléma merül fel, az e-mail-Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) a tulajdonos fejlécében adja meg a feladatot, és a probléma merült fel.
 
+## <a name="united-arab-emirates"></a>[Egyesült Arab Emírségek](#tab/in-uae)
+
+1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
+2. Győződjön meg arról, hogy az eszközön lévő Adatmásolás befejeződött, és a **szállításra való előkészítés** lépés sikeresen befejeződött.
+3. Jegyezze fel a hivatkozási számot az eszköz helyi webes felhasználói felületének **szállításra való előkészítés** oldalán.
+4. Kapcsolja ki az eszközt, és távolítsa el a kábeleket. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
+6. Az eszközt az eredeti dobozban küldje vissza.
+7. E-mail- [Azure Data Box művelet](mailto:adbops@microsoft.com) , amely a csomag azonosítására szolgál majd, amikor az adatközpontban érkezik vissza.
+8. Jegyezze fel ezt az azonosítót a nyomtatott szállítási címkén a visszatérési cím mellett, hogy az egyértelműen látható legyen.  
+9. Az online felvételt a [DHL Express EAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)-be való  >  **beosztással** is elfoglalhatja.
+   - Adja meg a hivatkozási számot az eszköz helyi webes FELÜLETének **szállításra való előkészítés** lapján a fuvarlevél száma mezőben.
+   - A foglalásokat hetente 6 nappal (kivéve a p és a nyilvános ünnepnapokat) fogadjuk el 9:00 – 2:00 órától.
+   - A felvételi kérelmeket legalább 90 percre kell helyezni az ügyfél bezárási ideje előtt.
+10. Ha bármilyen probléma merül fel a DHL foglalási eszközével kapcsolatban, a következő módszerek bármelyikével kapcsolatba léphet a DHL-szel:
+    - Call 04-2924545.
+    - A [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) probléma (ok) részleteit tartalmazó e-mailek, valamint a fuvarlevél számának elhelyezése a Tárgy: sorban.
+    - Hívja meg a DHL ügyfélszolgálatát a 600 567567 címen.
+
 ## <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
 Ha Data Boxt használ Japánban, Szingapúrban, Koreában, Indiában, Dél-Afrikában, az Egyesült Királyságban, Nyugat-Európában vagy Ausztráliában, és a rendelés létrehozása során kiválasztotta az önfelügyelt szállítási lehetőséget, kövesse az alábbi utasításokat.
@@ -209,5 +227,3 @@ A következő cikkből megtudhatja, hogyan kezelheti Data Boxeit.
 
 > [!div class="nextstepaction"]
 > [Data Box kezelése Azure Portal használatával](./data-box-portal-admin.md)
-
-

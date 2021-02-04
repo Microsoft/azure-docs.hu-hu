@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2018
+ms.date: 02/03/2020
 ms.author: barclayn
-ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: dca5f9ed2911ae3042fb9871f849212ec18b1b58
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969209"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539383"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>A virtuális gépi felügyelt identitások bővítmény használatának leállítása és az Azure-Instance Metadata Service használatának megkezdése
 
@@ -71,7 +72,7 @@ Ha virtuálisgép-méretezési csoportokkal dolgozik, az [Add-AzVmssExtension](/
    ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
+   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 A virtuálisgép-méretezési csoport kiterjesztésének Azure Resource Manager telepítési sablonnal való kiépítéséhez adja hozzá a következő JSON-t a `extensionpProfile` (z) szakaszhoz a sablonhoz (ez a `ManagedIdentityExtensionForLinux` név és a típus elemeit használja a Linux-verzióhoz).
 
@@ -166,7 +167,7 @@ Windows rendszeren és a Linux egyes verzióiban, ha a bővítmény leáll, a k�
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Ebben a példában: 
+Ahol: 
 - A Windows-bővítmény neve és típusa: `ManagedIdentityExtensionForWindows`
 - A Linux-bővítmény neve és típusa: `ManagedIdentityExtensionForLinux`
 

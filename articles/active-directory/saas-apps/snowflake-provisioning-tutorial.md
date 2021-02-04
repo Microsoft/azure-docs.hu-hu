@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: a hópehely konfigurálása automatikus felhasználó-kiépítés Azure Active Directorysal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a Hópelyhekbe.
+description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok a hópehely-hoz való automatikus kiépítéséhez és megszüntetéséhez.
 services: active-directory
 author: zchia
 writer: zchia
@@ -11,107 +11,110 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 9190585face277d92ef86c9bfa045d6d8c05b01c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 06f11763498e3e8393d688a71e1c37b466be3f6f
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734868"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539535"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Oktatóanyag: a hópehely konfigurálása a felhasználók automatikus kiépítési felállításához
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa a hópehely és Azure Active Directory (Azure AD) által végrehajtandó lépéseket az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a [hópehely](https://www.Snowflake.com/pricing/)-t. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
-
+Ez az oktatóanyag bemutatja a hópehely és Azure Active Directory (Azure AD) által végrehajtott lépéseket az Azure AD konfigurálásához, hogy a felhasználók és csoportok automatikusan kiépítsék és felépítsék a [hópelyheket](https://www.Snowflake.com/pricing/). A szolgáltatás működéséről, működéséről és gyakori kérdéseiről a [Mi az az Azure ad-beli automatizált SaaS-alkalmazás-kiépítés](../app-provisioning/user-provisioning.md)című cikk nyújt tájékoztatást. 
 
 > [!NOTE]
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. A használati feltételekkel kapcsolatos további információkért lásd: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 > [!div class="checklist"]
 > * Felhasználók létrehozása a hópehely-ban
-> * A hópehely felhasználók eltávolítása, ha már nincs szükség hozzáférésre
+> * A hópehely felhasználók eltávolítása, ha nem igényelnek hozzáférést többé
 > * Felhasználói attribútumok szinkronizálása az Azure AD és a hópehely között
 > * Csoportok és csoporttagságok kiépítése a hópehely-ban
-> * [Egyszeri bejelentkezés](./snowflake-tutorial.md) a hópehely-be (ajánlott)
+> * [Egyszeri bejelentkezés](./snowflake-tutorial.md) engedélyezése a hópehely-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Egy Azure AD-bérlő](../develop/quickstart-create-new-tenant.md).
-* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../roles/permissions-reference.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda).
-* [Egy hópehely bérlő](https://www.Snowflake.com/pricing/).
-* Egy felhasználói fiók a hópehely-ban rendszergazdai engedélyekkel.
+* [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md)
+* Felhasználói fiók az Azure AD-ben [a](../roles/permissions-reference.md) kiépítés konfigurálásához (alkalmazás-rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás tulajdonosa vagy globális rendszergazda)
+* [Egy hópehely-bérlő](https://www.Snowflake.com/pricing/)
+* Egy felhasználói fiók a hópehely-ban rendszergazdai engedélyekkel
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés: a kiépítési üzembe helyezés megtervezése
 1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
 2. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 3. Határozza meg, hogy az [Azure ad és a hópehely milyen adatleképezést szeretne leképezni](../app-provisioning/customize-application-attributes.md). 
 
-## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>2. lépés A hópehely konfigurálása az Azure AD-vel való kiépítés támogatásához
+## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>2. lépés: a hópehely konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-Mielőtt a hópehely-t konfigurálja az Azure AD-vel való automatikus felhasználói kiépítés során, engedélyeznie kell a SCIM-létesítést a hópehely-on.
+Mielőtt konfigurálja a hópehely-t az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, engedélyeznie kell a rendszer számára a tartományon belüli Identitáskezelés (SCIM) üzembe helyezését a hópehely-on.
 
-1. Jelentkezzen be a hópehely felügyeleti konzolra. Adja meg az alább látható lekérdezést a munkalapon, és kattintson a **Futtatás** gombra.
+1. Jelentkezzen be a hópehely felügyeleti konzolra. Adja meg a következő lekérdezést a Kiemelt munkalapon, majd válassza a **Futtatás** lehetőséget.
 
-    ![A hópehely felügyeleti konzol](media/Snowflake-provisioning-tutorial/image00.png)
+    ![Képernyőfelvétel a hópehely felügyeleti konzolról a lekérdezés és Futtatás gombbal.](media/Snowflake-provisioning-tutorial/image00.png)
 
-2.  A SCIM hozzáférési token jön létre a hópehely bérlőhöz. A lekéréséhez kattintson az alábbi hivatkozásra.
+2.  SCIM hozzáférési token jön létre a hópehely bérlőhöz. A lekéréséhez válassza ki az alábbi képernyőképen látható hivatkozást.
 
     ![Képernyőkép a hópehely U I-ben található, az S C I M hozzáférési jogkivonattal rendelkező munkalapról.](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. Másolja a generált jogkivonat értékét, és kattintson a **kész** gombra. Ez az érték a Azure Portalban lévő hópehely-alkalmazás létesítés lapjának **titkos jogkivonat** mezőjében lesz megadva.
+3. Másolja a generált jogkivonat értékét, és válassza a **kész** lehetőséget. Ez az érték szerepel a **titkos jogkivonat** mezőben a hópehely-alkalmazás **kiépítés** lapján a Azure Portalban.
 
-    ![Képernyőkép a részletekről szakasz, amely a szövegmezőbe másolt tokent mutatja, és a kész lehetőséget felhívta.](media/Snowflake-provisioning-tutorial/image02.png)
+    ![Képernyőkép a részletekről, amely megjeleníti a szövegmezőbe másolt tokent és a kész lehetőséget.](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>3. lépés A hópehely hozzáadása az Azure AD Application Galleryből
+## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>3. lépés: a hópehely hozzáadása az Azure AD Application Galleryből
 
-Adja hozzá a hópehely-t az Azure AD-alkalmazás-katalógusból a hópehely kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a hópehely-t az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
+Adja hozzá a hópehely-t az Azure AD-alkalmazás-katalógusból a hópehely kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a hópehely-t az egyszeri bejelentkezéshez (SSO), ugyanazt az alkalmazást használhatja. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. [További információ az alkalmazások gyűjteményből való hozzáadásáról](../manage-apps/add-application-portal.md). 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés vagy a felhasználó vagy csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a lépéseket követve [rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md). Ha olyan hatókört választ, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, [egy hatókör-szűrőt is használhat](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* Amikor felhasználókat és csoportokat rendel a hópehely-hoz, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+Tartsa szem előtt a következő tippeket:
 
-* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
+* Amikor felhasználókat és csoportokat rendel a hópehely-hoz, ki kell választania az alapértelmezett hozzáféréstől eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](../develop/howto-add-app-roles-in-azure-ad-apps.md) . 
+
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-snowflake"></a>5. lépés A felhasználók automatikus üzembe helyezésének beállítása a hópehely-ra 
+## <a name="step-5-configure-automatic-user-provisioning-to-snowflake"></a>5. lépés: az automatikus felhasználó-kiépítés beállítása a hópehely-ra 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy csoportos hozzárendeléseken alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le a hópehely-ban.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein a hópehely-felhasználók és-csoportok létrehozásához, frissítéséhez és letiltásához. Az Azure AD-ben beállíthatja a konfigurációt a felhasználók és a csoportok hozzárendelései alapján.
 
-### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>A hópehely automatikus felhasználó általi üzembe helyezésének beállítása az Azure AD-ben:
+A hópehely automatikus felhasználó általi üzembe helyezésének beállítása az Azure AD-ben:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelt bemutató képernyőkép.](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **hópehely** elemet.
+2. Az alkalmazások listájában válassza a **hópehely** elemet.
 
-    ![A hópehely hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Képernyőkép, amely az alkalmazások listáját jeleníti meg.](common/all-applications.png)
 
 3. Válassza a **Kiépítés** lapot.
 
     ![Képernyőkép a felügyeleti lehetőségek kezeléséről a kiépítési lehetőséggel.](common/provisioning.png)
 
-4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
+4. A **kiépítési mód** beállítása **automatikusra**.
 
-    ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
+    ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus beállítással.](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban adja meg a **SCIM 2,0 alap URL-címét és a hitelesítési jogkivonat** azon értékeit, amelyeket a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben korábban lekért. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a hópehely-hoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a hópehely-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg azt a scim 2,0 alap URL-címet és hitelesítési tokent, amelyet korábban a **bérlői URL** -cím és a **titkos jogkivonat** mezőiben lekért. 
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+   Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen a hópehely-kapcsolatra. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a hópehely-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-7. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
+    ![Képernyőkép, amely megjeleníti a bérlői U R L és a titkos jogkivonat mezőit, valamint a kapcsolat tesztelése gombot.](common/provisioning-testconnection-tenanturltoken.png)
 
-    ![Értesítés e-mailben](common/provisioning-notification-email.png)
+6. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibajelentési értesítéseket. Ezután jelölje be az **e-mailes értesítés küldése hiba** esetén jelölőnégyzetet.
 
-8. Kattintson a **Mentés** gombra.
+    ![Képernyőkép az értesítő e-mailek mezőiről.](common/provisioning-notification-email.png)
 
-9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a hópehely-hoz** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
-10. Tekintse át az Azure AD-ból a hópehely-ra szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a hópehely felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a hópehely**-ra lehetőséget.
+
+9. Tekintse át az Azure AD-ból a hópehely-ra szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a hópehely felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
    |Attribútum|Típus|
    |---|---|
@@ -124,56 +127,56 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: defaultRole|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: defaultWarehouse|Sztring|
 
-11. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a hópehely-hoz** lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a hópehely-hoz** lehetőséget.
 
-12. Tekintse át az Azure AD-ból a hópehely-ra szinkronizált csoportok attribútumait az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a hópehely-beli csoportoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Tekintse át az Azure AD-ból a hópehely-ra szinkronizált csoportok attribútumait az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a hópehely-beli csoportoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-      |Attribútum|Típus|
-      |---|---|
-      |displayName|Sztring|
-      |tagok|Referencia|
+    |Attribútum|Típus|
+    |---|---|
+    |displayName|Sztring|
+    |tagok|Referencia|
 
-13. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+12. A hatóköri szűrők konfigurálásához tekintse meg a [hatóköri szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
-14. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a hópehely-hez, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
+13. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a hópehely-hez, módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
+     ![A kiépítési állapotot bemutató képernyőkép a következőn:.](common/provisioning-toggle-on.png)
 
-15. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a hópehely-t szeretné kiépíteni, majd a **Beállítások** szakaszban válassza ki a kívánt értékeket a **hatókörben** . Ha ez a lehetőség nem érhető el, konfigurálja a szükséges mezőket a rendszergazdai hitelesítő adatok területen, majd kattintson a **Save (Mentés** ) gombra, és frissítse az oldalt. 
+14. Adja meg azokat a felhasználókat és csoportokat, amelyeket a hópehely számára szeretne kiépíteni, majd válassza ki a kívánt értékeket a **hatókör** területen a **Beállítások** szakaszban. 
 
-    ![Átadási hatókör](common/provisioning-scope.png)
+    Ha ez a beállítás nem érhető el, konfigurálja a szükséges mezőket a **rendszergazdai hitelesítő adatok** területen, válassza a **Mentés** lehetőséget, és frissítse a lapot. 
 
-16. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+     ![A kiépítési hatókörre vonatkozó választási lehetőségeket bemutató képernyőkép.](common/provisioning-scope.png)
 
-    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
+15. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
-    Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut.
+     ![A kiépítési konfiguráció mentéséhez használt gomb képernyőképe.](common/provisioning-configuration-save.png)
 
-## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
-Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások. A következő szinkronizálások 40 percenként történnek, feltéve, hogy az Azure AD kiépítési szolgáltatás fut.
 
-1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+## <a name="step-6-monitor-your-deployment"></a>6. lépés: az üzemelő példány figyelése
+A kiépítés beállítása után a következő erőforrásokkal figyelheti az üzemelő példányt:
+
+- A [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül.
+- Tekintse meg a [folyamatjelző sáv](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
+- Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. [További információ a karantén állapotáról](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
-* A hópehely által generált SCIM tokenek 6 hónapon belül lejárnak. Vegye figyelembe, hogy ezeket a lejáratuk előtt frissíteni kell, hogy a kiépítési szinkronizálások továbbra is működőképesek legyenek. 
+A hópehely által generált SCIM tokenek 6 hónapon belül lejárnak. Vegye figyelembe, hogy a lejárat előtt frissítenie kell ezeket a jogkivonatokat, hogy a kiépítési szinkronizálások továbbra is működőképesek legyenek. 
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
-* **IP-címtartományok** 
+Az Azure AD-kiépítési szolgáltatás jelenleg bizonyos [IP-címtartományok](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)alatt működik. Ha szükséges, korlátozhatja az egyéb IP-tartományokat, és hozzáadhatja ezeket az adott IP-tartományokat az alkalmazás engedélyezési listájához. Ez a módszer lehetővé teszi az Azure AD-kiépítési szolgáltatástól az alkalmazás felé irányuló forgalom áramlását.
 
-   Az Azure AD-kiépítési szolgáltatás jelenleg egy adott IP-tartományon belül működik. Ha szükséges, korlátozhatja az egyéb IP-tartományokat, és hozzáadhatja ezeket az IP-tartományokat az alkalmazás engedélyezési, hogy az Azure AD kiépítési szolgáltatásból érkező adatforgalom az alkalmazásba kerüljön. Tekintse át a dokumentációt az [IP-címtartományok](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)között.
+## <a name="change-log"></a>Változási napló
 
-## <a name="change-log"></a>Módosítási napló
-
-* 07/21/2020 – az összes felhasználó számára engedélyezett, helyreállítható törlés (az aktív attribútumon keresztül).
+* 07/21/2020: az összes felhasználó (az aktív attribútumon keresztül) esetében engedélyezve van a helyreállított törlés.
 
 ## <a name="additional-resources"></a>További források
 
-* [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md).
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

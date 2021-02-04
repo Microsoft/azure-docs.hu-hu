@@ -176,6 +176,8 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-modul a piactéren keresztül
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: FPGA-eszközök moduljai
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
             - name: Modul Azure Portal használatával
               href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: A Kubernetes számítási feladatainak üzembe helyezése

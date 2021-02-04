@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7a41eb8bdd573ac08b0c76eb9a6c2b0724637c39
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527719"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539181"
 ---
-# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature"></a>Gyakori kérdések a Azure Cosmos DB időponthoz tartozó visszaállítási funkcióról
+# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Gyakori kérdések a Azure Cosmos DB időponthoz tartozó visszaállítási funkcióról (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Ez a cikk a folyamatos biztonsági mentési mód használatával elérhető Azure Cosmos DB időpontra vonatkozó visszaállítási funkciókkal kapcsolatos gyakori kérdéseket sorolja fel.
+> [!IMPORTANT]
+> A Azure Cosmos DB időponthoz tartozó visszaállítási funkciója (folyamatos biztonsági mentési mód) jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Ez a cikk a folyamatos biztonsági mentési mód használatával elért Azure Cosmos DB időponthoz tartozó visszaállítási funkció (előzetes verzió) gyakori kérdéseit sorolja fel.
 
 ## <a name="how-much-time-does-it-takes-to-restore"></a>Mennyi időt vesz igénybe a visszaállítás?
 A visszaállítás időtartama az adatai méretétől függ.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/03/2021
 ms.author: b-juche
-ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 390b025ec039d5b04cead3f6bb22fedd0e987673
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881452"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537779"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -73,6 +73,7 @@ Ez a szakasz az SAP Azure-megoldásokra mutató hivatkozásokat tartalmaz.
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [SAP HANA Azure-beli virtuális gépek tárkonfigurációi](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
 * [A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SAP HANA az Azure-beli virtuális gépek készenléti csomópontjaival, a Azure NetApp Files a SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [SAP HANA az Azure-beli virtuális gépek készenléti csomópontjaival, a Azure NetApp Files a Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
@@ -102,7 +103,7 @@ Ez a szakasz az SAP Azure-megoldásokra mutató hivatkozásokat tartalmaz.
 
 Ez a szakasz a virtuális asztali infrastruktúra-megoldásokra mutató hivatkozásokat tartalmaz.
 
-### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
+### <a name="windows-virtual-desktop"></a>Windows virtuális asztal
 
 * [Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei](solutions-windows-virtual-desktop.md)
 * [Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)

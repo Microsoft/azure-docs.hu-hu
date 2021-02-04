@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/03/2021
 ms.author: ricmart
-ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 82161ac92566f6589ebfb64dddc221e296ec0992
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737744"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539128"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>VPN-kapcsolat létrehozása az Azure és az AWS között felügyelt megoldások használatával
 
@@ -217,6 +217,8 @@ Ebben a szakaszban egy második kapcsolódást hoz létre a magas rendelkezésre
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-ping.png" alt-text="Ping teszt az AWS-ből":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A IKEv2 AWS-támogatásáról az [AWS-cikkben](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)talál további információt.
+* A IKEv2 AWS-támogatásáról az [AWS-cikkben](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)talál további információt.
+
+* A többfelhős VPN nagy léptékű létrehozásával kapcsolatos további információkért tekintse meg a videó a [legjobb Többfelhős VPN kiépítését a skálán](https://www.youtube.com/watch?v=p7h-frLDFE0).

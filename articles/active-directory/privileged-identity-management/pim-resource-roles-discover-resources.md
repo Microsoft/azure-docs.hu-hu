@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42d38990289169412f06b0c7e4bcbdf67f688da7
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568080"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539009"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>A Privileged Identity Management felügyelni kívánt Azure-erőforrások felderítése
 
@@ -66,7 +66,7 @@ Amikor először állít be Privileged Identity Management az Azure-erőforráso
 
     ![Felderítés ablaktábla kiválasztott erőforrással és az erőforrás kezelése lehetőség kiemelve](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Ha megjelenik egy üzenet, amely megerősíti a kiválasztott erőforrás bevezetését a felügyelethez, válassza az **Igen**lehetőséget.
+1. Ha megjelenik egy üzenet, amely megerősíti a kiválasztott erőforrás bevezetését a felügyelethez, válassza az **Igen** lehetőséget. A PIM ezt követően úgy lesz konfigurálva, hogy az erőforrás (ok) alatt lévő összes új és meglévő gyermekobjektum kezelje.
 
     ![A kiválasztott erőforrások felügyeletre való bevezetését igazoló üzenet](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

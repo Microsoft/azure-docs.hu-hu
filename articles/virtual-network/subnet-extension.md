@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73587510"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539298"
 ---
 # <a name="subnet-extension"></a>Alhálózati bővítmény
 A munkaterhelések áttelepítése a nyilvános felhőbe gondos tervezést és koordinációt igényel. Az egyik kulcsfontosságú szempont az IP-címek megőrzése is. Ez különösen akkor fontos, ha az alkalmazások IP-címektől függenek, vagy ha megfelelőségi követelmények vonatkoznak a megadott IP-címek használatára. Az Azure Virtual Network megoldja ezt a problémát, mivel lehetővé teszi, hogy az Ön által választott IP-címtartomány használatával VNet és alhálózatokat hozzon létre.
@@ -52,5 +52,5 @@ A fenti példában az Azure NVA és a helyszíni NVA kommunikál, és megismerhe
 
 A következő szakaszban megtalálhatja az Azure-ban tesztelt alhálózati bővítményi megoldások részleteit.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 [Terjessze ki az alhálózatot az Azure-ba gyártói megoldások használatával.](https://github.com/microsoft/Azure-LISP)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951383"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538907"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Az Azure Cognitive Search funkciói
 
@@ -49,7 +49,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 
 | Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
 |-------------------|----------|
-| Adattitkosítás | A [**Microsoft által felügyelt titkosítás**](search-security-overview.md#encrypted-transmissions-and-storage) a belső tároló rétegbe van beépítve, és visszavonhatatlan. <br/><br/>Az [**ügyfél által felügyelt**](search-security-manage-encryption-keys.md) , Azure Key Vaultban létrehozott és kezelt titkosítási kulcsok az indexek és a szinonima térképek kiegészítő titkosításához használhatók. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.|
+| Adattitkosítás | A [**Microsoft által felügyelt titkosítás**](search-security-overview.md#encryption) a belső tároló rétegbe van beépítve, és visszavonhatatlan. <br/><br/>Az [**ügyfél által felügyelt**](search-security-manage-encryption-keys.md) , Azure Key Vaultban létrehozott és kezelt titkosítási kulcsok az indexek és a szinonima térképek kiegészítő titkosításához használhatók. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.|
 | Endpoint Protection | A [**bejövő tűzfal támogatásának IP-szabályai**](service-configure-firewall.md) lehetővé teszik olyan IP-tartományok beállítását, amelyeken keresztül a keresési szolgáltatás fogadja a kérelmeket.<br/><br/>[**Hozzon létre egy privát végpontot**](service-create-private-endpoint.md) az Azure Private link használatával, amellyel kényszerítheti az összes kérést egy virtuális hálózaton keresztül. |
 | Kimenő biztonság (indexelők) | Az [**adathozzáférés privát végpontokon keresztül**](search-indexer-howto-access-private.md) lehetővé teszi, hogy az indexelő az Azure privát kapcsolaton keresztül védett Azure-erőforrásokhoz kapcsolódjon.<br/><br/>[**A megbízható identitás használatával történő adathozzáférés**](search-howto-managed-identities-data-sources.md) azt jelenti, hogy a külső adatforrásokhoz való kapcsolódási karakterláncok kihagyhatják a felhasználóneveket és a jelszavakat. Amikor egy indexelő csatlakozik az adatforráshoz, az erőforrás engedélyezi a kapcsolatot, ha a keresési szolgáltatás korábban megbízható szolgáltatásként van regisztrálva. |
 
