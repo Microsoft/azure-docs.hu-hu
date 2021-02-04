@@ -1,5 +1,5 @@
 ---
-title: Az Azure Sentinel lists használata
+title: Az Azure Sentinel-figyelőlisták használata
 description: Ez a cikk azt ismerteti, hogyan használható az Azure Sentinel-listák a fenyegetések vizsgálatára, az üzleti adatimportálásra, az engedélyezési és az események bővítésére.
 services: sentinel
 author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 97509b878fb5e0cb28bddc5d1b58c21b32c34675
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797360"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555647"
 ---
-# <a name="use-azure-sentinel-watchlists"></a>Az Azure Sentinel lists használata
+# <a name="use-azure-sentinel-watchlists"></a>Az Azure Sentinel-figyelőlisták használata
 
 > [!IMPORTANT]
 > A lists szolgáltatás jelenleg **előzetes** verzióban érhető el. Tekintse meg a kiegészítő [használati feltételeket a Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) előzetes verziókra vonatkozó további jogi feltételekhez, amelyek olyan Azure-szolgáltatásokra vonatkoznak, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelent meg általánosan elérhetővé.
@@ -121,7 +121,7 @@ A listához tartozó-aliasok listájának lekéréséhez a Azure Portalból navi
 > [!div class="mx-imgBorder"]
 > ![listák listázása](./media/watchlists/sentinel-watchlist-alias.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan használhatja a listát az Azure Sentinelben az adatelemzéshez és a vizsgálatok fejlesztéséhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

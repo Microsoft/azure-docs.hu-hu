@@ -2,31 +2,21 @@
 title: Portál sablon konvertálása a sablonra spec
 description: Ismerteti, hogyan alakíthat át egy meglévő sablont a Azure Portal-katalógusban egy sablon specifikációba.
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 8fe02f55348f2cdcabb43e05bb547819d4b51228
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739107"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555948"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>A sablon katalógusának átalakítása a portálon a sablon specifikációinak megfelelően
 
-A Azure Portal a fiókjában Azure Resource Manager sablonok (ARM-sablonok) tárolására szolgál. **A szolgáltatás elavult.** Ha továbbra is szeretné használni a katalógusban található sablonokat, alakítsa át őket [sablon típusú specifikációba](template-specs.md).
+A Azure Portal a fiókjában Azure Resource Manager sablonok (ARM-sablonok) tárolására szolgál. A sablonok [specifikációi](template-specs.md) azonban könnyebben megoszthatják a sablonokat a szervezet felhasználóival, és más sablonokkal is összekapcsolhatók. Ez a cikk bemutatja, hogyan alakíthatja át a meglévő sablonokat a sablon-katalógusban a specifikációk alapján.
 
-Ez a cikk bemutatja, hogyan alakíthatja át a meglévő sablonokat a sablon-katalógusban a specifikációk alapján.
-
-A portálon az elavult szolgáltatás neve **sablonok (előzetes verzió)**. Ha szeretné megtekinteni, hogy rendelkezik-e konvertálásra alkalmas sablonokkal, tekintse meg a [portálon a sablon galériáját](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems). Ezek a sablonok rendelkeznek az erőforrás típusával `Microsoft.Gallery/myareas/galleryitems` .
-
-## <a name="deprecation-of-portal-feature"></a>A portál funkciójának elavulása
-
-A portálon található sablon-katalógus a 2021-es január 21-én elavult. Továbbra is használhatja azt február 21-én. Február 22-én nem hozhat létre új sablonokat a portálon, de továbbra is megtekintheti és telepítheti a meglévő sablonokat.
-
-Június 22-én a szolgáltatás el lesz távolítva a portálról, és minden API-művelet le lesz tiltva. A katalógusból nem tekintheti meg és nem helyezheti üzembe a sablonokat.
-
-Június 22. előtt minden olyan sablont át kell telepíteni, amelyet továbbra is használni kíván. A sablonok áttelepíthetők az ebben a cikkben látható módszerek egyikével is. A szolgáltatás eltávolítását követően meg kell nyitnia egy támogatási esetet az áttelepített sablonok beszerzéséhez.
+Ha szeretné megtekinteni, hogy rendelkezik-e konvertálásra alkalmas sablonokkal, tekintse meg a [portálon a sablon galériáját](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems). Ezek a sablonok rendelkeznek az erőforrás típusával `Microsoft.Gallery/myareas/galleryitems` .
 
 ## <a name="convert-with-powershell-script"></a>Konvertálás PowerShell-parancsfájllal
 
@@ -73,6 +63,6 @@ Manuálisan is másolhat sablonokat a katalógusból egy új sablonra vonatkozó
 
 Ha meg kell osztania a sablon specifikációját a szervezet más felhasználóival, [állítsa be a szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/tutorial-role-assignments-group-powershell.md) a csoport vagy a felhasználók számára, akiknek hozzáférésre van szükségük.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sablon specifikációinak megismeréséhez lásd: [sablon létrehozása és telepítése specifikációk](template-specs.md).

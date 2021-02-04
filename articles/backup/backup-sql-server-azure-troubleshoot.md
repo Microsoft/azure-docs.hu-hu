@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549898"
+ms.locfileid: "99557751"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -206,14 +206,14 @@ A művelet le van tiltva, mert a tároló elérte a maximális korlátot az ilye
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-A AzureBackup munkaterhelés-bővítmény művelete sikertelen volt. | A virtuális gép leáll (vagy) a virtuális gép internetkapcsolattal kapcsolatos problémák miatt nem tud kapcsolatba lépni Azure Backup szolgáltatással.| – Győződjön meg arról, hogy a virtuális gép működik, és hogy rendelkezik internetkapcsolattal.<br>- [A bővítmény újbóli regisztrálása a SQL Server VMon](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+A AzureBackup munkaterhelés-bővítmény művelete sikertelen volt. | A virtuális gép le van állítva, vagy a virtuális gép internetkapcsolati problémák miatt nem tud kapcsolatba lépni a Azure Backup szolgáltatással.| <li> Győződjön meg arról, hogy a virtuális gép működik, és rendelkezik internetkapcsolattal.<li> [A bővítmény újbóli regisztrálása a SQL Server VMon](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm).
 
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-Az internetkapcsolattal kapcsolatos problémák miatt a virtuális gép nem tud kapcsolatba lépni Azure Backup szolgáltatással. | A virtuális gépnek kimenő kapcsolatra van szüksége Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy Azure Active Directory-szolgáltatásokhoz.| – Ha a NSG-t használja a kapcsolat korlátozására, akkor a *AzureBackup* szolgáltatás címkét kell használnia, hogy lehetővé tegye a kimenő hozzáférést Azure Backup szolgáltatáshoz, és Hasonlóképpen az Azure ad (*AzureActiveDirectory*) és az Azure Storage (*Storage*) szolgáltatásokhoz. A hozzáférés engedélyezéséhez kövesse az alábbi [lépéseket](./backup-sql-server-database-azure-vms.md#nsg-tags) .<br>– Győződjön meg arról, hogy a DNS feloldja az Azure-végpontokat.<br>– Ellenőrizze, hogy a virtuális gép az internet-hozzáférést blokkoló terheléselosztó mögött van-e. Ha nyilvános IP-címet rendel a virtuális gépekhez, a felderítés működni fog.<br>– Győződjön meg arról, hogy nincs olyan tűzfal/víruskereső/proxy, amely blokkolja a fenti három cél szolgáltatás hívásait.
+Az internetkapcsolattal kapcsolatos problémák miatt a virtuális gép nem tud kapcsolatba lépni Azure Backup szolgáltatással. | A virtuális gépnek kimenő kapcsolatra van szüksége Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy Azure Active Directory-szolgáltatásokhoz.| <li> Ha a NSG-t használja a kapcsolat korlátozására, akkor a *AzureBackup* szolgáltatás címkével kell rendelkeznie, hogy lehetővé tegye a kimenő hozzáférést Azure Backup szolgáltatáshoz, és hasonlóan az Azure ad-hez (*AzureActiveDirectory*) és az Azure Storage-(*Storage*-) szolgáltatásokhoz. A hozzáférés engedélyezéséhez kövesse az alábbi [lépéseket](./backup-sql-server-database-azure-vms.md#nsg-tags) . <li> Győződjön meg arról, hogy a DNS feloldja az Azure-végpontokat. <li> Ellenőrizze, hogy a virtuális gép rendelkezik-e internet-hozzáférést blokkoló terheléselosztó mögött. Ha nyilvános IP-címet rendel a virtuális gépekhez, a felderítés működni fog. <li> Ellenőrizze, hogy nincs-e olyan tűzfal/víruskereső/proxy, amely blokkolja a fenti három cél szolgáltatás hívásait.
 
 ## <a name="re-registration-failures"></a>Ismételt regisztrálási hibák
 

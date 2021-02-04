@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8ef0fedcbf7ce06063db22fb345a0711acddcb4d
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526381"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555137"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -33,6 +33,7 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 - [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)
+- [11 Azure Defender-riasztás elavult](#deprecation-of-11-azure-defender-alerts)
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult 
 
@@ -53,6 +54,37 @@ További információ ezekről a javaslatokról a [biztonsági javaslatok hivatk
 **Változás becsült dátuma:** Q2 2021
 
 Az **SQL-adatbázisokban található bizalmas adatokra** **vonatkozó ajánlást a Microsoft** adatbesorolási stratégiájával jobban illeszkedő új verzióra cseréli a rendszer. Ennek eredményeképpen a javaslat azonosítója is módosul (jelenleg b0df6f56-862d-4730-8597-38c0fd4ebd59).
+
+
+### <a name="deprecation-of-11-azure-defender-alerts"></a>11 Azure Defender-riasztás elavult
+
+**Változás becsült dátuma:** Március 2021
+
+A következő hónapban az alább felsorolt tizenegy Azure Defender-riasztás elavulttá válik.
+
+- Az új riasztások felülírják ezt a két riasztást, és jobb lefedettséget biztosítanak:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | ELŐZETES verzió – a "Get-AzureDomainInfo" függvény futtatása |
+    | ARM_MicroBurstRunbook    | ELŐZETES verzió – a "Get-AzurePasswords" függvény futtatása  |
+    |                          |                                                                          |
+
+- Ez a kilenc riasztás olyan Azure Active Directory Identity Protection összekötőhöz kapcsolódik, amely már elavult:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Szokatlan bejelentkezési tulajdonságok |
+    | AnonymousLogin      | Névtelen IP-cím          |
+    | InfectedDeviceLogin | Kártevők társított IP-címe     |
+    | ImpossibleTravel    | Szokatlan utazás               |
+    | MaliciousIP         | Kártékony IP-cím          |
+    | LeakedCredentials   | Kiszivárgott hitelesítő adatok            |
+    | PasswordSpray       | Jelszó spray                |
+    | LeakedCredentials   | Azure AD-fenyegetések felderítése  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
 
 
 

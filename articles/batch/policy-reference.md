@@ -1,15 +1,15 @@
 ---
 title: A Azure Batch beépített szabályzat-definíciói
 description: A Azure Batch Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7135dd4aa8bd02ad952c45442fba3457dfc69c78
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 64b099a7c90f05dc0fa365ff113b65bdf4372181
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221261"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555845"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>A Azure Batch beépített definíciói Azure Policy
 

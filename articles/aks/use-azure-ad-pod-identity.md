@@ -4,16 +4,19 @@ description: Ismerje meg, hogyan használhatja a HRE Pod által felügyelt ident
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217872"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557363"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)
 
 Azure Active Directory Pod által felügyelt identitások a Kubernetes primitívek használatával társítják a [felügyelt identitásokat az Azure-erőforrásokhoz][az-managed-identities] és az identitásokhoz Azure Active Directory (HRE) és a hüvelyek esetében. A rendszergazdák identitásokat és kötéseket hoznak létre olyan Kubernetes, amelyek lehetővé teszik, hogy a hüvelyek hozzáférjenek az HRE használt Azure-erőforrásokhoz.
+
+> [!NOTE]
+> Ha már rendelkezik AADPODIDENTITY-telepítéssel, el kell távolítania a meglévő telepítést. A funkció engedélyezése azt jelenti, hogy nincs szükség a MIC-összetevőre.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

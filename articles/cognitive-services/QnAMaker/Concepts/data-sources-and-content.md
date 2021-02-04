@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: a6488d2c7611513528ff02d4e620124763912730
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0d4d32aba34a97c6a060c999694f66d79933d011
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353255"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556041"
 ---
 # <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
@@ -42,7 +42,7 @@ A többszörös kapcsolású beszélgetéseket fájlformátumban hozhatja létre
 > [!div class="mx-imgBorder"]
 > ![3 szintű többfunkciós kérdés fogalmi modellje](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-A többszörös bekapcsolás oszlopa a többszörös `.tsv` bekapcsolásra vonatkozik. **Prompts** Az `.tsv` Excelben látható példa a több bekapcsolású gyermekeket definiáló információk megjelenítéséhez:
+A többszörös bekapcsolás oszlopa a többszörös `.tsv` bekapcsolásra vonatkozik.  Az `.tsv` Excelben látható példa a több bekapcsolású gyermekeket definiáló információk megjelenítéséhez:
 
 ```JSON
 [
@@ -98,6 +98,6 @@ A [QnA Maker-portálon](https://www.qnamaker.ai)hozzáadhat fájlokat egy nyilv�
 
 További információ a különböző fájlokra vonatkozó [formátumokról](../reference-document-format-guidelines.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogy milyen információkat tárol a [kérdés-és válasz (QnA) pár](question-answer-set.md).
+Megtudhatja, hogyan [szerkesztheti a QnAs](../how-to/edit-knowledge-base.md).

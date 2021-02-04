@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 2dd60d1962734f7a4264587fd1b5b0d2a03c9ff0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359744"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556861"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -46,7 +46,7 @@ Gyorsan készíthet nyílt forráskódú API-kat, több SDK-t, séma nélküli �
 - A .NET, a Java, a Node.js és a Python SDK-k segítségével a Core (SQL) API-t használhatja az alkalmazások létrehozásához. Vagy az Ön által választott illesztőprogramokat bármelyik másik adatbázis API-hoz.
 - Az Azure szinapszis Analytics használatával a Azure Cosmos DBban tárolt üzemeltetési adathoz közel valós időben futtasson nem ETL-elemzést.
 - A módosítási hírcsatorna segítségével egyszerűen nyomon követheti és kezelheti az adatbázis-tárolók módosításait, és az aktivált eseményeket Azure Functions segítségével hozhatja létre.
-- Azure Cosmos DB séma nélküli szolgáltatása automatikusan indexeli az összes adatait, függetlenül az adatmodelltől, a gyors lekérdezések teljesítéséhez.
+- Azure Cosmos DB séma nélküli szolgáltatása automatikusan indexeli az összes adatait, függetlenül az adatmodelltől, a villámgyors lekérdezések biztosításához.
 
 ### <a name="mission-critical-ready"></a>Feladat – kritikusan kész
 

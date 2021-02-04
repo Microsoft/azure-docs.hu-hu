@@ -1,15 +1,15 @@
 ---
 title: A NIST SP 800-53 R4 szabályozási megfelelőségi részletei
 description: A NIST SP 800-53 R4 szabályozási megfelelőség beépített kezdeményezésének részletei. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 69c42aeda9d342839201914fde750b7f367ff541
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 558d4e45bb617a2d815b18de117e37e8616b93cc
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095708"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555784"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>A NIST SP 800-53 R4 szabályozási megfelelőség beépített kezdeményezésének részletei
 

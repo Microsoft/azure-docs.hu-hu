@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567478"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555925"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -66,11 +66,13 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
 - **Külső megoldások API-n keresztül**: egyes adatforrások a csatlakoztatott adatforrás által biztosított API-k használatával kapcsolódnak egymáshoz. A legtöbb biztonsági technológia jellemzően olyan API-kat biztosít, amelyeken keresztül az eseménynaplók kérhetők le. Az API-k az Azure Sentinelhez csatlakoznak, és konkrét adattípusokat gyűjtenek, és elküldhetik azokat az Azure Log Analyticsba. Az API-n keresztül csatlakoztatott berendezések a következők:
     
+    - [Agari adathalászat elleni védelem és márka védelme](connect-agari-phishing-defense.md)
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen tűzfal](connect-barracuda-cloudgen-firewall.md)
     - [BETTER Mobile Threat Defense](connect-better-mtd.md)
     - [Beyond Security beSECURE](connect-besecure.md)
+    - [Cisco Umbrella](connect-cisco-umbrella.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -95,6 +97,7 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 
     - **Tűzfalak, proxyk és végpontok – CEF:**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
+        - [Akamai biztonsági események](connect-akamai-security-events.md)
         - [Ellenőrzőpont](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Citrix WAF](connect-citrix-waf.md)
@@ -104,24 +107,27 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
         - [Forcepoint-termékek](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
+        - [Inperverz WAF-átjáró](connect-imperva-waf-gateway.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
-        - [Thycotic titkos kiszolgáló](connect-thycotic-secret-server.md)
+        - [Thycotic Secret Server](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
         - [WireX hálózati kriminalisztikai platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [Egyéb CEF-alapú készülékek](connect-common-event-format.md)
     - **Tűzfalak, proxyk és végpontok – syslog:**
+        - [Active Directory Alsid](connect-alsid-active-directory.md)
         - [Cisco Unified Computing System (FKR)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
         - [Sophos XG](connect-sophos-xg-firewall.md)
-        - [Squid proxy](connect-squid-proxy.md)
+        - [Squid Proxy](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [Egyéb syslog-alapú készülékek](connect-syslog.md)
+    - [Apache HTTP-kiszolgáló](connect-apache-http-server.md)
     - DLP-megoldások
     - [Intelligens veszélyforrás-felderítési szolgáltatók](connect-threat-intelligence.md)
     - [DNS-gépek](connect-dns.md) – közvetlenül a DNS-gépen telepített ügynök
@@ -132,7 +138,6 @@ Az Azure Sentinel a következő adatkapcsolási módszereket támogatja:
 ## <a name="agent-connection-options"></a>Ügynökkapcsolat-beállítások<a name="agent-options"></a>
 
 Ahhoz, hogy a külső berendezést az Azure Sentinelhez lehessen kapcsolni, az ügynököt egy dedikált gépen (virtuális gépen vagy helyszínen) kell telepíteni a készülék és az Azure Sentinel közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan is üzembe helyezhető. Az automatikus központi telepítés csak akkor érhető el, ha a dedikált számítógép egy új, az Azure-ban létrehozott virtuális gép. 
-
 
 ![CEF az Azure-ban](./media/connect-cef/cef-syslog-azure.png)
 
@@ -177,7 +182,7 @@ Azt is megteheti, hogy manuálisan telepítheti az ügynököt egy meglévő Azu
 | Barracuda_CL | [A Barracuda csatlakoztatása](connect-barracuda.md) | &#10003; | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Sentinel megkezdéséhez szüksége lesz egy előfizetésre Microsoft Azure. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 - Ismerje meg, hogyan hozhatja be [adatait az Azure sentinelbe](quickstart-onboard.md), és hogyan tekintheti [meg az adatait és a lehetséges fenyegetéseket](quickstart-get-visibility.md).
