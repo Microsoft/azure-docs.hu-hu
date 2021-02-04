@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: d3d72cff5fcfeed17d60e2f856be4adc1a983819
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 218a39a2bf8e9269e43c4876c1654d94be886997
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527518"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539501"
 ---
 # <a name="list-restorable-sql-api-databases-in-azure-cosmos-db-using-rest-api"></a>Helyreállítható SQL API-adatbázisok listázása Azure Cosmos DB a REST API használatával
+
+> [!IMPORTANT]
+> A Azure Cosmos DB időponthoz tartozó visszaállítási funkciója (folyamatos biztonsági mentési mód) jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Megjeleníti a visszaállítható fiókban található összes Azure Cosmos DB SQL-adatbázis összes mutációjának esemény-hírcsatornáját. Ez segítséget nyújt abban az esetben, ha az adatbázist véletlenül törölték, hogy lekérje a törlési időt. Ehhez az API-hoz `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` engedély szükséges
 

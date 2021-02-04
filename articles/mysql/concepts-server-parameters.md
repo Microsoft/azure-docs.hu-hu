@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951310"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539484"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Kiszolgálói paraméterek a Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgáló
 
 ### <a name="thread-pools"></a>Szálak készletei
 
-A MySQL hagyományosan egy szálat rendel minden ügyfélkapcsolathoz. Mivel az egyidejű felhasználók száma növekszik, a rendszer a megfelelő mennyiségű csökkenést eredményezi. Számos aktív szál jelentős hatással lehet a teljesítményre, mert a környezet nagyobb mértékű váltással, a szálak tartalmával és a CPU-gyorsítótárak helytelen területi beállításával jár.
+A MySQL hagyományosan egy szálat rendel minden ügyfélkapcsolathoz. Mivel az egyidejű felhasználók száma növekszik, a teljesítmény megfelelő csökkenést eredményez. Számos aktív szál jelentős hatással lehet a teljesítményre, mert a környezet nagyobb mértékű váltással, a szálak tartalmával és a CPU-gyorsítótárak helytelen területi beállításával jár.
 
 A kiszolgálóoldali szolgáltatást és a kapcsolatok készletezését elkülönítő szál-készletek, a teljesítmény maximalizálása a munkaszál dinamikus készletének bevezetésével, amely a kiszolgálón futó aktív szálak számának korlátozására és a szálak forgalmának minimalizálására használható. Ezzel biztosítható, hogy a kapcsolatok kitörése ne okozza a kiszolgáló számára az erőforrások kifogyása vagy a memória-meghibásodás miatti összeomlás. A szál-készletek a rövid lekérdezésekhez és a nagy CPU-igényű számítási feladatokhoz, például OLTP számítási feladatokhoz használhatók.
 

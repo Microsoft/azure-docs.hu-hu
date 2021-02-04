@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108670"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539433"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Adatok tárolása a peremhálózaton az Azure Blob Storage az IoT Edge-ben segítségével
 
@@ -184,6 +184,7 @@ Az Azure Blob Storage dokumentációja több nyelven is tartalmaz gyors üzembe 
 A következő rövid útmutatók a IoT Edge által is támogatott nyelveket használják, így a blob Storage modul mellett IoT Edge modulként is üzembe helyezhetők:
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * Az Azure Blob Storage on IOT Edge-modul v 1.4.0 és korábbi verziói kompatibilisek a WindowsAzure. a Storage 9.3.3 SDK és a v 1.4.1 is támogatja az Azure. Storage. Blobs 12.8.0 SDK-t.
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * A Python SDK V 2.1-es verziójának korábbi verzióiban ismert probléma van, ha a modul nem ad vissza BLOB létrehozási időt. Ennek a problémának a következtében egyes metódusok, például a List Blobok nem működnek. Megkerülő megoldásként explicit módon állítsa be az API-verziót a blob-ügyfélen "2017-04-17" értékre. Például  `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [BLOB-minta hozzáfűzése](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -292,7 +293,7 @@ Ez az Azure-Blob Storage IoT Edge modulban mostantól a IoT Edge Event Grid-inte
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-A jelen modulhoz tartozó [Docker hub kibocsátási megjegyzései](https://hub.docker.com/_/microsoft-azure-blob-storage)
+Ebben a modulban a [Docker hub kibocsátási megjegyzései](https://hub.docker.com/_/microsoft-azure-blob-storage) találhatók. Előfordulhat, hogy további információkat talál a hibajavításokkal és szervizeléssel kapcsolatban egy adott verzió kibocsátási megjegyzései között.
 
 ## <a name="suggestions"></a>Javaslatok
 

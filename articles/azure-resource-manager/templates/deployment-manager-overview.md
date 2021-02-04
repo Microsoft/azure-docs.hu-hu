@@ -1,25 +1,25 @@
 ---
-title: Biztonságos üzembe helyezés régiók között – Azure telepítéskezelő
-description: Megtudhatja, hogyan helyezhet üzembe egy szolgáltatást számos régióban az Azure telepítéskezelő és a biztonságos üzembe helyezési gyakorlatokkal kapcsolatban.
+title: Biztonságos üzembe helyezés régiók között – Azure Deployment Manager
+description: Megtudhatja, hogyan helyezhet üzembe egy szolgáltatást számos régióban az Azure Deployment Manager és a biztonságos üzembe helyezési gyakorlatokkal kapcsolatban.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b950fdc36fe3fbea1ce9436bdd7f7372c64c055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baed44e04a0beca02cc959d302a4a29906b4a78e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333205"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539518"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure telepítéskezelő (nyilvános előzetes verzió)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások engedélyezése az Azure Deployment Manager (nyilvános előzetes verzió)
 
-Ha a szolgáltatást több régióban szeretné üzembe helyezni, és győződjön meg arról, hogy az a vártnak megfelelően fut az egyes régiókban, az Azure telepítéskezelő használatával koordinálhatja a szolgáltatás fokozatos bevezetését. Ugyanúgy, ahogy bármely Azure-telepítés esetében, a [Resource Manager-sablonokban](template-syntax.md)definiálhatja a szolgáltatás erőforrásait. A sablonok létrehozása után a telepítéskezelő segítségével leírja a szolgáltatás topológiáját, és azt, hogy a rendszer hogyan legyen kivezetve.
+Ha a szolgáltatást több régióban szeretné üzembe helyezni, és győződjön meg arról, hogy az a vártnak megfelelően fut az egyes régiókban, az Azure Deployment Manager használatával koordinálhatja a szolgáltatás fokozatos bevezetését. Ugyanúgy, ahogy bármely Azure-telepítés esetében, a [Resource Manager-sablonokban](template-syntax.md)definiálhatja a szolgáltatás erőforrásait. A sablonok létrehozása után a Deployment Manager segítségével leírja a szolgáltatás topológiáját, és azt, hogy a rendszer hogyan legyen kivezetve.
 
-Telepítéskezelő a Resource Manager egyik funkciója. Az üzembe helyezés során kibővíti a képességeit. Ha olyan összetett szolgáltatást használ, amelyet több régióban kell üzembe helyezni, használja telepítéskezelő. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha nincs szüksége a szakaszos bevezetéshez szükséges további óvintézkedésekre, használja a Resource Manager szabványos [központi telepítési lehetőségeit](deploy-portal.md) . A telepítéskezelő zökkenőmentesen integrálható minden olyan, a Resource Manager-alapú üzemelő példányokat támogató, harmadik féltől származó eszközzel, mint a folyamatos integráció és a folyamatos teljesítés (CI/CD) ajánlatok.
+Deployment Manager a Resource Manager egyik funkciója. Az üzembe helyezés során kibővíti a képességeit. Ha olyan összetett szolgáltatást használ, amelyet több régióban kell üzembe helyezni, használja Deployment Manager. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha nincs szüksége a szakaszos bevezetéshez szükséges további óvintézkedésekre, használja a Resource Manager szabványos [központi telepítési lehetőségeit](deploy-portal.md) . A Deployment Manager zökkenőmentesen integrálható minden olyan, a Resource Manager-alapú üzemelő példányokat támogató, harmadik féltől származó eszközzel, mint a folyamatos integráció és a folyamatos teljesítés (CI/CD) ajánlatok.
 
-Az Azure telepítéskezelő előzetes verzióban érhető el. [Visszajelzések](https://aka.ms/admfeedback)megadásával segíthet a szolgáltatás tökéletesítésében.
+Az Azure Deployment Manager előzetes verzióban érhető el. [Visszajelzések](https://aka.ms/admfeedback)megadásával segíthet a szolgáltatás tökéletesítésében.
 
-A telepítéskezelő használatához négy fájlt kell létrehoznia:
+A Deployment Manager használatához négy fájlt kell létrehoznia:
 
 * Topológiai sablon
 * Bevezetési sablon
@@ -30,14 +30,14 @@ A topológia sablonját a bevezetési sablon telepítése előtt kell telepíten
 
 További források:
 
-- Az [Azure telepítéskezelő REST API referenciája](/rest/api/deploymentmanager/).
-- [Oktatóanyag: az Azure Telepítéskezelő használata Resource Manager-sablonokkal](./deployment-manager-tutorial.md).
-- [Oktatóanyag: az állapot-ellenőrzési szolgáltatás használata az Azure telepítéskezelőban](./deployment-manager-tutorial-health-check.md).
-- [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
+* Az [Azure Deployment Manager REST API referenciája](/rest/api/deploymentmanager/).
+* [Oktatóanyag: az Azure Deployment Manager használata Resource Manager-sablonokkal](./deployment-manager-tutorial.md).
+* [Oktatóanyag: az állapot-ellenőrzési szolgáltatás használata az Azure Deployment Managerban](./deployment-manager-tutorial-health-check.md).
+* [Azure Deployment Manager minta](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identitás és hozzáférés
 
-A telepítéskezelő a [felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) hajtja végre a telepítési műveleteket. Ezt az identitást a telepítés megkezdése előtt hozza létre. Hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyen a szolgáltatást üzembe helyezi, és amely megfelelő jogosultsággal rendelkezik az üzembe helyezés befejezéséhez. A szerepkörökön keresztül kapott műveletekkel kapcsolatos információkért lásd: az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
+A Deployment Manager a [felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md) hajtja végre a telepítési műveleteket. Ezt az identitást a telepítés megkezdése előtt hozza létre. Hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyen a szolgáltatást üzembe helyezi, és amely megfelelő jogosultsággal rendelkezik az üzembe helyezés befejezéséhez. A szerepkörökön keresztül kapott műveletekkel kapcsolatos információkért lásd: az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
 
 Az identitásnak ugyanabban a helyen kell lennie, mint a bevezetés.
 
@@ -49,10 +49,10 @@ A topológiai sablon leírja a szolgáltatást alkotó Azure-erőforrásokat és
 
 A topológia sablonja a következő erőforrásokat tartalmazza:
 
-* Összetevő forrása – a Resource Manager-sablonok és-paraméterek tárolása
-* Szolgáltatási topológia – az összetevő forrására mutat
-  * Szolgáltatások – a hely és az Azure-előfizetés AZONOSÍTÓjának megadása
-    * Szolgáltatási egységek – az erőforráscsoport, a telepítési mód és a sablon és a paraméter fájljának elérési útjának megadása
+* Összetevő forrása – a Resource Manager-sablonok és-paraméterek tárolása.
+* Szolgáltatási topológia – az összetevő forrására mutat.
+  * Szolgáltatások – a hely és az Azure-előfizetés AZONOSÍTÓját adja meg.
+    * Szolgáltatási egységek – az erőforráscsoport, a telepítési mód, valamint a sablon és a paraméter fájljainak elérési útjának megadása.
 
 Ha szeretné megtudni, hogy mi történik minden szinten, hasznos lehet megtekinteni, hogy mely értékeket kell megadnia.
 
@@ -87,7 +87,7 @@ További információ: ArtifactSources- [sablon referenciája](/azure/templates/
 
 ### <a name="service-topology"></a>Szolgáltatástopológia
 
-Az alábbi példa a szolgáltatás-topológiai erőforrás általános formátumát mutatja be. Adja meg annak az összetevő-forrásnak az erőforrás-AZONOSÍTÓját, amely tartalmazza a sablonokat és a paramétereket tartalmazó fájlokat. A szolgáltatás topológiája tartalmazza az összes szolgáltatás-erőforrást. Annak érdekében, hogy elérhető legyen az összetevő forrása, a szolgáltatás topológiája függ tőle.
+Az alábbi példa a szolgáltatás-topológiai erőforrás általános formátumát mutatja be. Adja meg annak az összetevő-forrásnak az erőforrás-AZONOSÍTÓját, amely tartalmazza a sablonokat és a paramétereket tartalmazó fájlokat. A szolgáltatás topológiája tartalmazza az összes szolgáltatás-erőforrást. Győződjön meg arról, hogy az összetevő forrása elérhető, mert a szolgáltatás topológiája függ tőle.
 
 ```json
 {
@@ -175,11 +175,11 @@ További információ: ServiceUnits- [sablon referenciája](/azure/templates/Mic
 
 A bevezetési sablon ismerteti a szolgáltatás üzembe helyezéséhez szükséges lépéseket. Megadhatja a használni kívánt szolgáltatási topológiát, és megadhatja a szolgáltatási egységek központi telepítésének sorrendjét. Tartalmaz egy összetevő-forrást bináris fájlok tárolására a központi telepítéshez. A bevezetési sablonban a következő hierarchiát kell megadnia:
 
-* Összetevő forrása
-* Lépés
-* Bevezetés
-  * Step-csoportok
-    * Üzembe helyezési műveletek
+* Összetevő forrása.
+* . Lépés.
+* Bevezetés.
+  * Step-csoportok.
+    * Üzembe helyezési műveletek.
 
 Az alábbi képen a bevezetési sablon hierarchiája látható:
 
@@ -193,9 +193,9 @@ A bevezetési sablonban létre kell hoznia egy összetevő-forrást a szolgálta
 
 ### <a name="steps"></a>Lépések
 
-Megadhat egy lépést, amely a telepítési művelet előtt vagy után hajtható végre. Jelenleg csak a `wait` lépés és a "healthCheck" lépés érhető el.
+Megadhat egy lépést, amely a telepítési művelet előtt vagy után hajtható végre. Jelenleg csak a `wait` lépés és a `healthCheck` lépés érhető el.
 
-A várakozási lépés a folytatás előtt szünetelteti a telepítést. Lehetővé teszi, hogy a következő szolgáltatási egység telepítése előtt ellenőrizze, hogy a szolgáltatás a várt módon fut-e. Az alábbi példa egy várakozási lépés általános formátumát mutatja be.
+A `wait` Folytatás előtt a lépés szünetelteti a telepítést. Lehetővé teszi, hogy a következő szolgáltatási egység telepítése előtt ellenőrizze, hogy a szolgáltatás a várt módon fut-e. Az alábbi példa egy lépés általános formátumát mutatja be `wait` .
 
 ```json
 {
@@ -214,13 +214,13 @@ A várakozási lépés a folytatás előtt szünetelteti a telepítést. Lehető
 
 Az időtartam tulajdonság [ISO 8601 szabványt](https://en.wikipedia.org/wiki/ISO_8601#Durations)használ. Az előző példa egy egyperces várakozást határoz meg.
 
-Az állapot-ellenőrzési lépésekről további információt a [Health Integration bevezetésének bemutatása az azure Telepítéskezelő](./deployment-manager-health-check.md) és [oktatóanyagban: az azure-beli Telepítéskezelő használata](./deployment-manager-tutorial-health-check.md)című témakörben talál.
+Az állapot-ellenőrzésekkel kapcsolatos további információkért lásd: az [állapot integrációjának bevezetése az azure Deployment Manager](./deployment-manager-health-check.md) és [oktatóanyag: az Azure Deployment Manager állapot-ellenőrzésének használata](./deployment-manager-tutorial-health-check.md).
 
 További információkért lásd: a [Steps template referenciája](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Kibocsátások
 
-Annak érdekében, hogy elérhető legyen az összetevő forrása, a bevezetéstől függ. A bevezetési szakasz az egyes központilag telepített szolgáltatási egységek esetében határozza meg a lépéseket. Megadhatja az üzembe helyezés előtt vagy után elvégzendő műveleteket. Megadhatja például, hogy a központi telepítés várjon a szolgáltatási egység telepítése után. Megadhatja a lépés csoportok sorrendjét.
+Győződjön meg arról, hogy az összetevő forrása elérhető, mert a bevezetés ettől függ. A bevezetési szakasz az egyes központilag telepített szolgáltatási egységek esetében határozza meg a lépéseket. Megadhatja az üzembe helyezés előtt vagy után elvégzendő műveleteket. Megadhatja például a központi telepítést, amely a szolgáltatási egység üzembe helyezése után várakozik. Megadhatja a lépés csoportok sorrendjét.
 
 Az Identity objektum meghatározza a [felhasználó által hozzárendelt felügyelt identitást](#identity-and-access) , amely végrehajtja a telepítési műveleteket.
 
@@ -268,9 +268,9 @@ Két paraméter fájlját hozza létre. A szolgáltatás topológiájának telep
 
 ## <a name="containerroot-variable"></a>containerRoot változó
 
-A verzióval ellátott központi telepítések esetén az összetevők elérési útja minden új verziónál megváltozik. A központi telepítés első indításakor az elérési út lehet `https://<base-uri-blob-container>/binaries/1.0.0.0` . A második alkalommal, amikor lehetséges `https://<base-uri-blob-container>/binaries/1.0.0.1` . A telepítéskezelő leegyszerűsíti az aktuális üzemelő példány helyes elérési útjának beolvasását a `$containerRoot` változó használatával. Ez az érték minden verzióra módosul, és nem ismert az üzembe helyezés előtt.
+A verzióval ellátott központi telepítések esetén az összetevők elérési útja minden új verziónál megváltozik. A központi telepítés első indításakor az elérési út lehet `https://<base-uri-blob-container>/binaries/1.0.0.0` . A második alkalommal, amikor lehetséges `https://<base-uri-blob-container>/binaries/1.0.0.1` . A Deployment Manager leegyszerűsíti az aktuális üzemelő példány helyes elérési útjának beolvasását a `$containerRoot` változó használatával. Ez az érték minden verzióra módosul, és nem ismert az üzembe helyezés előtt.
 
-Az `$containerRoot` Azure-erőforrások üzembe helyezéséhez használja a (z) paraméter fájljában található változót a sablonhoz. A központi telepítés időpontjában ez a változó a bevezetésből származó tényleges értékekkel lesz lecserélve.
+Használja az `$containerRoot` Azure-erőforrásokat üzembe helyező sablonhoz tartozó paraméterben található változót. A központi telepítés időpontjában ez a változó a bevezetésből származó tényleges értékekkel lesz lecserélve.
 
 A bevezetés során például létre kell hoznia egy összetevő-forrást a bináris összetevőkhöz.
 
@@ -294,9 +294,9 @@ A bevezetés során például létre kell hoznia egy összetevő-forrást a bin�
 },
 ```
 
-Figyelje meg a `artifactRoot` és a `sasUri` tulajdonságokat. Lehetséges, hogy az összetevő gyökeréhez hasonló érték van beállítva `binaries/1.0.0.0` . A SAS URI a Storage-tároló URI-ja, amely a hozzáféréshez SAS-tokent biztosít. Telepítéskezelő automatikusan létrehozza a `$containerRoot` változó értékét. Ezeket az értékeket a formátumban kombinálja `<container>/<artifactRoot>` .
+Figyelje meg a `artifactRoot` és a `sasUri` tulajdonságokat. Lehetséges, hogy az összetevő gyökeréhez hasonló érték van beállítva `binaries/1.0.0.0` . A SAS URI a Storage-tároló URI-ja, amely a hozzáféréshez SAS-tokent biztosít. Deployment Manager automatikusan létrehozza a `$containerRoot` változó értékét. Ezeket az értékeket a formátumban kombinálja `<container>/<artifactRoot>` .
 
-A sablon és a paraméter fájljának ismernie kell a verziószámú bináris fájlok beolvasásának helyes elérési útját. Ha például egy webalkalmazás fájljait szeretné központilag telepíteni, hozza létre a következő paramétert a $containerRoot változóval. Az elérési úthoz két fordított perjelet () kell használnia, `\\` mert az első egy escape-karakter.
+A sablon és a paraméter fájljának ismernie kell a verziószámú bináris fájlok beolvasásának helyes elérési útját. Ha például egy webalkalmazás fájljait szeretné központilag telepíteni, hozza létre a következő paraméter-fájlt a `$containerRoot` változóval. Az elérési úthoz két fordított perjelet () kell használnia, `\\` mert az első egy escape-karakter.
 
 ```json
 {
@@ -330,13 +330,13 @@ Ezután használja a (z) paramétert a sablonban:
 }
 ```
 
-A verzióval ellátott központi telepítéseket új mappák létrehozásával és a gyökérbe való átadással kezelheti a bevezetés során. Az elérési út az erőforrásokat központilag telepítő sablonra áramlik.
+A verzióval ellátott központi telepítéseket új mappák létrehozásával és a gyökér elérési útjának átadásával kezelheti a bevezetés során. Az elérési út az erőforrásokat központilag telepítő sablonra áramlik.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta a telepítéskezelő. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
+Ebben a cikkben megtanulta a Deployment Manager. A következő cikkből megtudhatja, hogyan helyezheti üzembe a Deployment Manager használatával.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az Azure telepítéskezelő használata Resource Manager-sablonokkal](./deployment-manager-tutorial.md)
+> [Oktatóanyag: az Azure Deployment Manager használata Resource Manager-sablonokkal](./deployment-manager-tutorial.md)
 >
-> [Rövid útmutató: az Azure telepítéskezelő kipróbálása néhány perc alatt](https://github.com/Azure-Samples/adm-quickstart)
+> [Rövid útmutató: az Azure Deployment Manager kipróbálása néhány perc alatt](https://github.com/Azure-Samples/adm-quickstart)

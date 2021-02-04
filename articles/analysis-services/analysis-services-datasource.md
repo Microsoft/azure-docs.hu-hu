@@ -4,15 +4,15 @@ description: A táblázatos 1200-es és újabb adatmodellek által támogatott a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2b4ae4aa8f6b08b273088c98d120d339db7deadb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493820"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539450"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
 
@@ -36,7 +36,7 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 **Megjegyzések**:
 
 <a name="tab1400a">1</a> – táblázatos 1400 és újabb modellek.  
-<a name="azprovider">2</a> – ha *szolgáltatói* adatforrásként van megadva a táblázatos 1200-es és a magasabb modellekben, a memóriában és a DirectQuery-modellekben a Microsoft OLE DB illesztőprogram szükséges a SQL Server MSOLEDBSQL (ajánlott), a SQL Server Native Client 11,0 vagy a .NET-keretrendszer adatszolgáltatójának SQL Server.  
+<a name="azprovider">2</a> – ha *szolgáltatói* adatforrásként van megadva táblázatos 1200-és magasabb modellekben, a memóriában és a DirectQuery-modellekben a Microsoft OLE DB illesztőprogramra van szükség a SQL Server MSOLEDBSQL (ajánlott) vagy a .NET-keretrendszer adatszolgáltatója számára a SQL Server.  
 <a name="azsqlmanaged">3</a> – az Azure SQL felügyelt példánya támogatott. Mivel az SQL felügyelt példánya egy magánhálózati IP-címmel rendelkező Azure VNet fut, a példányon engedélyezni kell a nyilvános végpontot. Ha nincs engedélyezve, helyszíni [adatátjáró](analysis-services-gateway.md) szükséges.  
 <a name="databricks">4</a> – Azure Databricks a Spark-összekötő használata jelenleg nem támogatott.  
 <a name="gen2">5</a> – ADLS Gen2 összekötő jelenleg nem támogatott, de az Azure Blob Storage Connector ADLS Gen2 adatforrással is használható.

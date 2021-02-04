@@ -1,36 +1,35 @@
 ---
-title: Az erőforrás-készletek ismertetése
+title: Erőforráskészletek megismerése
 description: Ez a cikk ismerteti, hogy milyen erőforrás-készleteket és hogyan hozza létre az Azure hatáskörébe.
-author: yaronyg
-ms.author: yarong
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 55efa9443fd59b66a7677c9c460e473715f201df
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 02/03/2021
+ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552710"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539467"
 ---
-# <a name="understanding-resource-sets"></a>Az erőforrás-készletek ismertetése
+# <a name="understanding-resource-sets"></a>Erőforráskészletek megismerése
 
 Ebből a cikkből megtudhatja, hogyan használja az Azure hatáskörébe az adategységek logikai erőforrásokhoz való leképezését az erőforrás-készletek használatával.
-
 ## <a name="background-info"></a>Háttér-információk
 
 A méretezés alatt álló adatfeldolgozási rendszerek általában egyetlen táblát tárolnak egy lemezen több fájlként. Ez a koncepció az Azure hatáskörébe tartozik az erőforrás-készletek használatával. Az erőforrás-készlet a katalógus egyetlen objektuma, amely nagy mennyiségű eszközt képvisel a tárolóban.
 
-Tegyük fel például, hogy a Spark-fürt megőrzött egy DataFrame egy ADLS Gen2 adatforrásban. Bár a Sparkban a tábla egyetlen logikai erőforráshoz hasonlít, a lemezen valószínűleg több ezer parketta-fájl található, amelyek mindegyike a teljes DataFrame-tartalom partícióját jelöli. A IoT és a webnaplók adatkezelési feladatának ugyanaz a kihívása. Képzelje el, hogy van egy érzékelője, amely másodpercenként többször is kiírja a naplófájlokat. Addig nem fog sokáig tartani, amíg az adott érzékelőből több százezer naplófájl van.
+Tegyük fel például, hogy a Spark-fürt megőrzött egy DataFrame egy Azure adatkezelési (ADLS) Gen2-adatforrásban. Bár a Sparkban a tábla egyetlen logikai erőforráshoz hasonlít, a lemezen valószínűleg több ezer parketta-fájl található, amelyek mindegyike a teljes DataFrame-tartalom partícióját jelöli. A IoT és a webnaplók adatkezelési feladatának ugyanaz a kihívása. Képzelje el, hogy van egy érzékelője, amely másodpercenként többször is kiírja a naplófájlokat. Addig nem fog sokáig tartani, amíg az adott érzékelőből több százezer naplófájl van.
 
 Ahhoz, hogy a nagy számú adategység egyetlen logikai erőforráshoz való leképezésének kihívásával foglalkozzon, az Azure hatáskörébe erőforrás-készleteket használ.
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>Hogyan észleli az Azure hatáskörébe az erőforrás-készleteket?
 
-Az Azure hatáskörébe csak az Azure-Blobok, a ADLS Gen1 és a ADLS Gen2 erőforrásainak észlelése támogatott.
+Az Azure-beli hatáskörébe az Azure-Blob Storage, a ADLS Gen1 és a ADLS Gen2ben lévő erőforrás-készletek észlelése támogatott.
 
-Az Azure-beli hatáskörébe automatikusan az erőforrás-készlet felderítése nevű funkció használatával észleli az erőforrás-készleteket. Ez a funkció a vizsgálat során betöltött összes adatot megvizsgálja, és összehasonlítja a meghatározott minták egy halmazával.
+Az Azure-beli hatáskörébe a vizsgálat során automatikusan észleli az erőforrás-készleteket. Ez a funkció a vizsgálat során betöltött összes adatot megvizsgálja, és összehasonlítja a meghatározott minták egy halmazával.
 
 Tegyük fel például, hogy egy olyan adatforrást keres, amelynek URL-címe `https://myaccount.blob.core.windows.net/mycontainer/machinesets/23/foo.parquet` . Az Azure-beli hatáskörébe az elérésiút-szegmensek láthatók, és meghatározza, hogy a beépített mintázatoknak megfelelőek-e. Beépített mintákat tartalmaz a GUID-azonosítók, számok, dátumformátum, honosítási kódok (például en-US) stb. Ebben az esetben a szám minta *23*-ra illeszkedik. Az Azure-beli hatáskörébe feltételezi, hogy ez a fájl egy nevű erőforrás-készlet részét képezi `https://myaccount.blob.core.windows.net/mycontainer/machinesets/{N}/foo.parquet` .
 
@@ -42,12 +41,9 @@ Ennek a stratégiának a használatával az Azure hatáskörébe a következő e
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/234.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/de_Ch/23434.json`
 
-> [!Note]
-> Az Azure Data Lake Storage Gen2 mostantól általánosan elérhető. Javasoljuk, hogy már ma kezdje el használni. További információkért tekintse meg a [termék oldalát](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
-
 ## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Az Azure hatáskörébe tartozó fájltípusok nem észlelhetők erőforrás-készletként
 
-A hatáskörébe szándékosan nem kerül be a legtöbb dokumentum fájltípusa (például Word, Excel vagy PDF) erőforrás-készletként. A kivétel CSV, mivel ez egy közös particionált fájlformátum.
+A hatáskörébe szándékosan nincs lehetőség a legtöbb dokumentum-fájltípus (például Word, Excel vagy PDF) erőforrás-készletként való besorolására. A kivétel CSV-formátum, mivel ez egy közös particionált fájlformátum.
 
 ## <a name="how-azure-purview-scans-resource-sets"></a>Hogyan vizsgálja az Azure-beli hatáskörébe az erőforrás-készleteket?
 
@@ -66,16 +62,47 @@ Az egyes sémák és besorolások mellett az Azure hatáskörébe a következő 
 ## <a name="built-in-resource-set-patterns"></a>Beépített erőforrás-készlet mintázatai
 
 Az Azure-beli hatáskörébe a következő erőforrás-set mintázatok támogatottak. Ezek a minták egy könyvtárban vagy egy fájlnév részeként is megjelenhetnek.
+### <a name="regex-based-patterns"></a>Regex-alapú minták
 
-| Minta neve | Megjelenített név | Leírás |
+| Minta neve | Megjelenítendő név | Leírás |
 |--------------|--------------|-------------|
-| GUID         | GUID       | Globálisan egyedi azonosító, az [RFC 4122](https://tools.ietf.org/html/rfc4122)-ben meghatározottak szerint. |
-| Szám       | N          | Egy vagy több számjegy. |
-| Dátum-és időformátumok | N     | Az Azure-beli hatáskörébe különböző típusú dátum-és időformátumok használhatók, de az összes érték {N} s-sorozatra csökken. |
-| 4ByteHex     | Hex        | Egy négyjegyű hexadecimális szám. |
-| Honosítás | Loc        | A [BCP 47](https://tools.ietf.org/html/bcp47)-ben meghatározott nyelvi címke. Az Azure-beli hatáskörébe a kötőjelet (-) vagy aláhúzást (_) tartalmazó címkéket is támogat. Például en_ca és en-CA. |
+| Guid         | GUID       | Az [RFC 4122](https://tools.ietf.org/html/rfc4122) -ben meghatározott globálisan egyedi azonosító |
+| Szám       | N          | Egy vagy több számjegy |
+| Dátum-és időformátumok | Év Hónap Nap N     | Különböző dátum-/időformátumokat támogatunk, de mindegyiket {Year} [elválasztó] {month} [elválasztó] {Day} vagy {N} s sorozat jelöli. |
+| 4ByteHex     | Hex        | Egy 4 számjegyű HEXADECIMÁLIS szám. |
+| Honosítás | Loc        | A [BCP 47](https://tools.ietf.org/html/bcp47)-ben definiált nyelvi címke (például: en_CA és en-CA) támogatott. |
 
-## <a name="issues-with-resource-sets"></a>Erőforrás-készletekkel kapcsolatos problémák
+### <a name="complex-patterns"></a>Összetett minták
+
+| Minta neve | Megjelenítendő név | Leírás |
+|--------------|--------------|-------------|
+| SparkPath    | {SparkPartitions} | Spark partíciós fájl azonosítója |
+| Dátum (éééé/hh/nn) – elérési út  | {Year}/{Month}/{Day} | Több mappára kiterjedő év/hónap/nap minta |
+
+
+## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>Az erőforrás-készletek megjelenítése az Azure hatáskörébe katalógusában
+
+Ha az Azure-beli hatáskörébe illeszkedik egy erőforrás-csoportba, az megpróbálja kinyerni a leghasznosabb információkat, amelyeket a rendszer a katalógusban megjelenítendő névként használ. Néhány példa az alapértelmezett elnevezési konvencióra: 
+
+### <a name="example-1"></a>1\. példa
+
+Minősített név: https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+
+Megjelenítendő név: "Spark-kimenet neve"
+
+### <a name="example-2"></a>2\. példa
+
+Minősített név: https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+
+Megjelenítendő név: "saját particionált adatai"
+
+### <a name="example-3"></a>3\. példa
+
+Minősített név: https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+
+Megjelenítendő név: "érték"
+
+## <a name="known-issues-with-resource-sets"></a>Erőforrás-készletekkel kapcsolatos ismert problémák
 
 Bár az erőforrás-készletek a legtöbb esetben jól működnek, a következő problémák merülhetnek fel, amelyekben az Azure hatáskörébe tartoznak:
 
@@ -85,4 +112,4 @@ Bár az erőforrás-készletek a legtöbb esetben jól működnek, a következő
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Data Catalog használatának megkezdéséhez tekintse meg a rövid útmutató [: Azure hatáskörébe tartozó fiók létrehozása](create-catalog-portal.md)című témakört.
+Az Azure-beli hatáskörébe való ismerkedéshez tekintse meg a rövid útmutató [: Azure hatáskörébe tartozó fiók létrehozása](create-catalog-portal.md)című témakört.
