@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55894f1b4730ab9af55411d61e4d3dbe3b68224f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: b4d7861c7b4042f9143c7497ee62ded6963b42e6
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539030"
+ms.locfileid: "99550776"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>IPv6-végpontok konfigurálása virtuális hálózatban Azure PowerShell parancsfájl-mintával (előzetes verzió)
+# <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample"></a>IPv6-végpontok konfigurálása virtuális hálózatban Azure PowerShell parancsfájl-mintával
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy Dual stack-alhálózattal rendelkező kettős veremű virtuális hálózatot, egy kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, a kettős IP-konfigurációval rendelkező virtuális gépeket, a kettős hálózati biztonsági csoport szabályait és a kettős nyilvános IP-címeket tartalmazza.
 

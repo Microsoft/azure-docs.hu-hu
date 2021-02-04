@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan tekintheti meg és kérdezheti le Azure Functio
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493770"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549558"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Azure Functions telemetria elemzése Application Insights 
 
@@ -60,7 +60,7 @@ A Application Insights használatáról az [Application Insights dokumentációj
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Vizsgálat | Leírás |
+| Vizsgálat | Description |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez a teljesítményadatok hasznosak lehetnek olyan forgatókönyvek hibakereséséhez, amelyekben a függvények lekérik az alapul szolgáló erőforrásokat. |
@@ -139,6 +139,18 @@ Ha egy használati [tervben](consumption-plan.md)fut, az egyfunkciós végrehajt
 A következő telemetria-lekérdezések olyan mérőszámokra vonatkoznak, amelyek befolyásolják a használati tervben szereplő függvények futtatásának költségeit.
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor metrikák
+
+A Application Insights által gyűjtött adatok telemetria kívül adatokat is kaphat arról, hogy a Function alkalmazás hogyan fut [Azure monitor metrikák](../azure-monitor/platform/data-platform-metrics.md)használatával. A [app Service alkalmazások számára elérhető szokásos metrikákkal](../app-service/web-sites-monitor.md#understand-metrics)együtt két, a következő funkciókra vonatkozó mérőszám van:
+
+| Metric | Leírás |
+| ---- | ---- |
+| **FunctionExecutionCount** | A függvények végrehajtásának száma azt jelzi, hogy hányszor hajtotta végre a Function alkalmazás. Ez összefügg azzal, hogy hány alkalommal fut egy függvény az alkalmazásban. Ez a metrika jelenleg nem támogatott a Linux rendszeren futó prémium és dedikált (App Service) csomagok esetében. |
+| **FunctionExecutionUnits** | A függvények végrehajtási egységei a végrehajtási idő és a memóriahasználat kombinációi.  A memória adatai nem a Azure Monitoron keresztül jelenleg elérhető metrikák. Ha azonban optimalizálni szeretné az alkalmazás memóriahasználat használatát, használhatja a Application Insights által összegyűjtött teljesítményszámláló-adatokat. Ez a metrika jelenleg nem támogatott a Linux rendszeren futó prémium és dedikált (App Service) csomagok esetében.|
+
+Ha többet szeretne megtudni arról, hogyan számítja ki a Application Insightsi adatait használó használati terv költségeit, tekintse meg a [felhasználási terv költségeinek becslését](functions-consumption-costs.md). Ha többet szeretne megtudni arról, hogyan használhatja a monitorozást a metrikák megtekintéséhez, tekintse meg [Az Azure Metrikaböngésző használatának első lépéseit](../azure-monitor/platform/metrics-getting-started.md)ismertető témakört.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

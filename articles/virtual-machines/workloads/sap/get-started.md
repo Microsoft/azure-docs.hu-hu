@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258919"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549388"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -84,6 +84,9 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 02/03/2021: változás a [pacemaker beállítása a RHEL az Azure](./high-availability-guide-rhel-pacemaker.md) -ban a stonith-létrehozási parancsban található pcmk_host_map frissítéséhez
+- 02/03/2021: változás a [pacemaker beállítása a SLES az Azure](./high-availability-guide-suse-pacemaker.md) -ban a stonith Create parancsban pcmk_host_map hozzáadásához 
+- 02/03/2021: további részletek az Azure-beli [virtuális gépek tárolási konfigurációinak SAP HANA](./hana-vm-operations-storage.md) cikkében a SUSE I/O-beállításairól
 - 02/01/2021: a [(z) SAP HANA ANF-on keresztüli méretezése a RHEL-](./sap-hana-high-availability-netapp-files-red-hat.md)on SAP HANA, az Azure-beli [virtuális gépeken futó HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) [SAP HANA](./sap-hana-scale-out-standby-netapp-files-rhel.md) és a RHEL [SAP HANA](./sap-hana-scale-out-standby-netapp-files-suse.md) -t tartalmazó Azure-beli virtuális gépeken az Azure-alapú virtuális gépek készenléti csomópontjának [kiAzure NetApp Files](./hana-vm-operations-netapp.md) bővítése
 - 01/23/2021: a HANA adatmennyiség-particionálás funkciójának bevezetésével a HANA-adatfájlok különböző Azure-lemezeken vagy NFS-megosztásokon keresztüli, az Azure-beli [virtuális gépek tárolási konfigurációi](./hana-vm-operations-storage.md) és az [NFS-v 4.1-es Azure NetApp Files köteteken](./hana-vm-operations-netapp.md) található cikkek SAP HANAához SAP HANA tartozó I/O-műveletekhez használhatók.
 - 01/18/2021: az Azure net apps Files-alapú NFS az Azure-ban való támogatása az Oracle-ben [Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP](./dbms_guide_oracle.md) - [munkaSAP HANA Azure NetApp Files](./hana-vm-operations-netapp.md) terheléshez

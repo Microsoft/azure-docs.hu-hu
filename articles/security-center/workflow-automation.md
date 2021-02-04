@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919527"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550319"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center eseményindítóra adott válaszok automatizálása
 
 Minden biztonsági program több munkafolyamatot tartalmaz az incidensek megválaszolásához. Ezek a folyamatok magukban foglalhatják az érintett érintett felek értesítését, a módosítási felügyeleti folyamat indítását és az adott szervizelési lépések alkalmazását. A biztonsági szakértők azt ajánlják, hogy az eljárások több lépésének automatizálására legyen lehetőség. Az Automation csökkenti a terhelést. Emellett javíthatja a biztonságot, mivel biztosítja, hogy a folyamat lépései gyorsan, következetesen és az előre meghatározott követelményeknek megfelelően történjenek.
 
-Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatását ismerteti. Ez a funkció a biztonsági riasztások és javaslatok Logic Apps indítását is elvégezheti. Előfordulhat például, hogy egy adott felhasználót szeretne e-mailben elküldeni a Security Center riasztás esetén. Azt is megtudhatja, hogyan hozhat létre Logic Apps a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával.
+Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatását ismerteti. Ez a funkció a biztonsági riasztások, a javaslatok és a jogszabályi megfelelőség változásainak Logic Appsét indítja el. Előfordulhat például, hogy egy adott felhasználót szeretne e-mailben elküldeni a Security Center riasztás esetén. Azt is megtudhatja, hogyan hozhat létre Logic Apps a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával.
 
 
 ## <a name="availability"></a>Rendelkezésre állás
@@ -70,10 +70,12 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 
     A Logic app Designer a következő Security Center eseményindítókat támogatja:
 
-    * **Azure Security Center javaslat létrehozásakor vagy elindításakor** – ha a logikai alkalmazás egy elavult vagy lecserélt javaslatra támaszkodik, az automatizálás leáll, és frissítenie kell az aktiválást. A javaslatok változásainak nyomon követéséhez lásd: [Azure Security Center kibocsátási megjegyzések](release-notes.md).
+    - **Azure Security Center javaslat létrehozásakor vagy elindításakor** – ha a logikai alkalmazás egy elavult vagy lecserélt javaslatra támaszkodik, az automatizálás leáll, és frissítenie kell az aktiválást. A javaslatok változásainak nyomon követéséhez lásd: [Azure Security Center kibocsátási megjegyzések](release-notes.md).
 
-    * **Azure Security Center riasztás létrehozásakor vagy indításakor** – testreszabhatja az indítást úgy, hogy az csak az Önt érdeklő súlyossági szinttel rendelkező riasztásokhoz kapcsolódik.
+    - **Azure Security Center riasztás létrehozásakor vagy indításakor** – testreszabhatja az indítást úgy, hogy az csak az Önt érdeklő súlyossági szinttel rendelkező riasztásokhoz kapcsolódik.
     
+    - **Ha egy Security Center szabályozási megfelelőségi felmérést hoznak létre vagy indítanak** el, a megfelelőségi felmérések frissítései alapján automatizálják az automatizálást.
+
     > [!NOTE]
     > Ha az örökölt triggert használja a Azure Security Center riasztásra adott válasz indításakor, a rendszer nem indítja el a logikai alkalmazásokat a munkafolyamat-automatizálási szolgáltatással. Ehelyett használja a fent említett eseményindítók egyikét. 
 

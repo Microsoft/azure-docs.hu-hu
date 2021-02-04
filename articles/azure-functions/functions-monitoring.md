@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936838"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550759"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -89,6 +89,10 @@ A függvényekből származó naplók írásához tekintse meg a fejlesztői út
 + [PowerShell](functions-reference-powershell.md#logging)
 + [Python](functions-reference-python.md#logging)
 
+## <a name="analyze-data"></a>Adatok elemzése
+
+Alapértelmezés szerint a függvény alkalmazásból gyűjtött adatokat Application Insights tárolja a rendszer. A [Azure Portal](https://portal.azure.com)Application Insights a telemetria-adatvizualizációk széles körét biztosítja. A hibák naplózása és a lekérdezési események és mérőszámok részletezése is megtehető. További információ: az összegyűjtött adatok megtekintésének és lekérdezésének alapvető példái az [Azure functions telemetria elemzése](analyze-telemetry-data.md)című témakörben Application Insights. 
+
 ## <a name="streaming-logs"></a>Folyamatos átviteli naplók
 
 Egy alkalmazás fejlesztése során gyakran érdemes megtekinteni, hogy mi történik a naplókba közel valós időben, amikor az Azure-ban fut.
@@ -121,7 +125,7 @@ A szolgáltatás engedélyezéséhez vegyen fel egy nevű Alkalmazásbeállítá
 
 Ha Application Insights-integrációval kapcsolatos problémát szeretne jelenteni a functions szolgáltatásban, vagy javaslatot vagy kérést szeretne készíteni, [hozzon létre egy problémát a githubban](https://github.com/Azure/Azure-Functions/issues/new).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

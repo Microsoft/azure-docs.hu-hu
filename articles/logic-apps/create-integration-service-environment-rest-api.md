@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/30/2020
-ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.date: 02/03/2021
+ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967038"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550657"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API-val
 
@@ -188,17 +188,28 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
 
 ## <a name="add-custom-root-certificates"></a>Egyéni főtanúsítványok hozzáadása
 
-Gyakran egy ISE használatával kapcsolódhat az egyéni szolgáltatásokhoz a virtuális hálózaton vagy a helyszínen. Ezeket az egyéni szolgáltatásokat gyakran egy egyéni legfelső szintű hitelesítésszolgáltató által kiadott tanúsítvány védi, például egy vállalati hitelesítésszolgáltató vagy egy önaláírt tanúsítvány. További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Ahhoz, hogy az ISE sikeresen csatlakozhasson ezekhez a szolgáltatásokhoz Transport Layer Security (TLS) protokollon keresztül, az ISE-nek hozzá kell férnie ezekhez a főtanúsítványokhoz. Az ISE egyéni megbízható főtanúsítvánnyal való frissítéséhez tegye a következő HTTPS- `PATCH` kérést:
+Gyakran egy ISE használatával kapcsolódhat az egyéni szolgáltatásokhoz a virtuális hálózaton vagy a helyszínen. Ezeket az egyéni szolgáltatásokat gyakran egy egyéni legfelső szintű hitelesítésszolgáltató által kiadott tanúsítvány védi, például egy vállalati hitelesítésszolgáltató vagy egy önaláírt tanúsítvány. További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Ahhoz, hogy az ISE sikeresen csatlakozhasson ezekhez a szolgáltatásokhoz Transport Layer Security (TLS) protokollon keresztül, az ISE-nek hozzá kell férnie ezekhez a főtanúsítványokhoz.
 
-`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+#### <a name="considerations-for-adding-custom-root-certificates"></a>Egyéni főtanúsítványok hozzáadásával kapcsolatos megfontolások
 
-A művelet elvégzése előtt tekintse át a következő szempontokat:
+Mielőtt frissíti az ISE-t egy egyéni megbízható főtanúsítvánnyal, tekintse át a következő szempontokat:
 
 * Ügyeljen arra, hogy feltöltse a főtanúsítványt *és* az összes köztes tanúsítványt. A tanúsítványok maximális száma 20.
 
 * A főtanúsítványok feltöltése olyan helyettesítő művelet, amelyben a legújabb feltöltés felülírja a korábbi feltöltéseket. Ha például olyan kérelmet küld, amely feltölt egy tanúsítványt, majd egy másik kérést küld egy másik tanúsítvány feltöltésére, az ISE csak a második tanúsítványt használja. Ha mindkét tanúsítványt használni szeretné, vegye fel őket együtt ugyanabban a kérelemben.  
 
 * A főtanúsítványok feltöltése egy aszinkron művelet, amely hosszabb időt is igénybe vehet. Az állapot vagy az eredmény ellenőrzéséhez ugyanazzal az URI-val küldheti el a `GET` kérelmet. A válaszüzenet olyan `provisioningState` mezővel rendelkezik, amely visszaadja az `InProgress` értéket, ha a feltöltési művelet továbbra is működik. Ha `provisioningState` értéke `Succeeded` , a feltöltési művelet befejeződött.
+
+#### <a name="request-syntax"></a>Kérelem szintaxisa
+
+Ha egy egyéni megbízható főtanúsítvánnyal szeretné frissíteni az ISE-t, küldje el a következő HTTPS-javítási kérelmet a [Azure Resource Manager URL-címre, amely az Azure-környezettől](../azure-resource-manager/management/control-plane-and-data-plane.md#control-plane)függ, például:
+
+| Környezet | Azure Resource Manager URL-cím |
+|-------------|----------------------------|
+| Azure Global (több-bérlős) | `PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Azure Government | `PATCH https://management.usgovcloudapi.net/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Microsoft Azure China 21Vianet | `PATCH https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+|||
 
 #### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Kérelem törzsének szintaxisa egyéni főtanúsítványok hozzáadásához
 

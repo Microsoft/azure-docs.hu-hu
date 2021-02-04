@@ -3,12 +3,12 @@ title: Folyamatos videofelvétel a felhőbe és a lejátszás a Felhőbeli oktat
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást Azure IoT Edgeon, hogy folyamatosan rögzítsen videókat a felhőbe, és a videó bármely részét továbbítsa a Azure Media Services használatával.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 6956539595c5997569dc92b5c62e2396cb5fdd9c
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 8659bd2e029da13870b50dd6535e959bc90c81a7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524397"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551060"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -140,6 +140,12 @@ Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe
 1. Állítsa be a IoT Hub a kapcsolódási karakterláncot a bal alsó sarokban található **Azure IOT hub** panel melletti **További műveletek** ikonra kattintva. Másolja a karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból. 
 
     ![IoT Hub-kapcsolatok karakterláncának beállítása](./media/quickstarts/set-iotconnection-string.png)
+    > [!NOTE]
+    > Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
+
 1. Kattintson a jobb gombbal a fájlhoz tartozó src/Edge/deployment.template.jselemre, és válassza a **IoT Edge üzembe helyezési jegyzék előállítása** lehetőséget. A Visual Studio Code a. env fájl értékeit használja a központi telepítési sablonban található változók cseréjéhez. Ez a művelet egy jegyzékfájlt hoz létre az **deployment.amd64.js** nevű src/Edge/config mappában.
 
    ![IoT Edge üzembe helyezési jegyzék előállítása](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
@@ -163,11 +169,11 @@ Ha a Live Video Analytics szolgáltatást használja IoT Edge modulban az élő 
 
     ![A beépített esemény-végpont figyelésének megkezdése](./media/quickstarts/start-monitoring-iothub-events.png)
 
-> [!NOTE]
-> Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+    > [!NOTE]
+    > Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 
 ## <a name="run-the-program"></a>A program futtatása 
 

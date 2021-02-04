@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526619"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551025"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -37,7 +37,8 @@ A februári frissítések a következők:
 
 - [Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon](#direct-link-to-policy-from-recommendation-details-page)
-- [Az SQL-adatbesorolásra vonatkozó javaslat már nem befolyásolja a biztonságos pontszámot](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+- [Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)
 
@@ -65,13 +66,19 @@ Ezzel a hivatkozással megtekintheti a szabályzat definícióját, és áttekin
 
 Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási útmutatójában](recommendations-reference.md), akkor a szabályzat-definíciós lapokra mutató hivatkozásokat is láthatja:
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok hivatkozási oldaláról":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Egy adott szabályzat Azure Policy oldalának elérése közvetlenül a Azure Security Center javaslatok hivatkozási oldaláról" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
-### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>Az SQL-adatbesorolásra vonatkozó javaslat már nem befolyásolja a biztonságos pontszámot
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot
 
 Az **SQL-adatbázisokban lévő bizalmas adatokra vonatkozó ajánlás besorolása** nem befolyásolja a biztonságos pontszámot. Ez az egyetlen javaslat az **adatbesorolás** biztonságának szabályozására, hogy a vezérlő most a 0 értékkel rendelkező biztonságos pontszám legyen.
 
+
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el
+
+Egy harmadik adattípust adtunk hozzá a munkafolyamat-automatizálások trigger-beállításaihoz: a szabályozási megfelelőségi felmérések módosításai.
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="A szabályozások megfelelőségi vizsgálatának módosításai a Munkafolyamat-automatizálás elindításához" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ## <a name="january-2021"></a>2021. január
@@ -161,7 +168,7 @@ Az altartományok beszerzése gyakori, nagy súlyosságú fenyegetést jelent a 
 
 Az altartományok átvétele lehetővé teszi a veszélyforrások számára, hogy átirányítsák a szervezet tartománya számára a kártékony tevékenységeket végző helyekre irányuló forgalmat.
 
-Az Azure Defender for App Service mostantól észleli a DNS-bejegyzéseket a App Service webhely leszerelése után. Ez az a pillanat, amikor a DNS-bejegyzés egy nem létező erőforrásra mutat, és a webhelye ki van téve egy altartomány átvételének. Ezek a védelem elérhetőek, függetlenül attól, hogy a tartományokat Azure DNS vagy külső tartományregisztráló felügyeli-e, és hogy a Windows App Service és a Linux rendszeren is App Service-e.
+Az Azure Defender for App Service mostantól észleli a DNS-bejegyzéseket a App Service webhely leszerelése után. Ez az a pillanat, amikor a DNS-bejegyzés egy nem létező erőforrásra mutat, és a webhely ki van téve egy altartomány átvételének. Ezek a védelem elérhetőek, függetlenül attól, hogy a tartományokat Azure DNS vagy külső tartományregisztráló felügyeli-e, és hogy a Windows App Service és a Linux rendszeren is App Service-e.
 
 További információ:
 
@@ -499,7 +506,7 @@ Kapcsolódó hivatkozások:
 
 A NIST SP 800-171 R2 standard mostantól beépített kezdeményezésként használható Azure Security Center szabályozási megfelelőségi irányítópultján való használatra. A vezérlők leképezéseit a [NIST SP 800-171 R2 szabályozási megfelelőség beépített kezdeményezésének részletes ismertetése](../governance/policy/samples/nist-sp-800-171-r2.md)ismerteti. 
 
-A standard előfizetésekre való alkalmazásához és a megfelelőségi állapot folyamatos figyeléséhez használja a [szabványoknak a szabályozási megfelelőségi irányítópulton való testreszabásával](update-regulatory-compliance-packages.md)kapcsolatos utasításokat.
+A standard előfizetésekre való alkalmazásához és a megfelelőségi állapot folyamatos figyeléséhez használja a [szabványoknak a szabályozási megfelelőségi irányítópulton való testreszabására](update-regulatory-compliance-packages.md)vonatkozó utasításokat.
 
 :::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="A NIST SP 800 171 R2 Standard Security Center szabályozási megfelelőségi irányítópultján":::
 

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/23/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 48d1c04e59d316ac19000f5b890c0cb1c96fb213
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746747"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549439"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -81,7 +81,13 @@ A részletek beolvasása nyilvánvalóvá válik, hogy a funkció kihasználása
 
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O-ütemező mód
-A Linux számos különböző I/O-ütemezési módot tartalmaz. A Linux-szállítók és az SAP gyakori javaslata, hogy újrakonfigurálja az I/O-ütemező módot a lemezes kötetekhez az **MQ-alapú** vagy a **Kyber** módból a **NOOP** (nem többhelyes) vagy a **none** (többsoros) módra. A részletekre az [SAP-megjegyzés #1984787](https://launchpad.support.sap.com/#/notes/1984787)hivatkozik. 
+A Linux számos különböző I/O-ütemezési módot tartalmaz. A Linux-szállítók és az SAP gyakori javaslata, hogy újrakonfigurálja az I/O-ütemező módot a lemezes kötetekhez az **MQ-alapú** vagy a **Kyber** módból a **NOOP** (nem többhelyes) vagy a **none** (többsoros) MÓDRA, ha még nem tette meg a SLES saptune-profilok. A részletekre a következők hivatkoznak: 
+
+- [SAP-Megjegyzés #1984787](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP-Megjegyzés #2578899](https://launchpad.support.sap.com/#/notes/2578899) 
+- [Probléma a NOOP beállítással a SLES 12 SP4-ben](https://www.suse.com/support/kb/doc/?id=000019547)
+
+A Red Hat-on hagyja meg a beállításokat a különböző SAP-alkalmazásokhoz tartozó hangolási profilok által meghatározott beállítások alapján.
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Prémium szintű Storage-és Azure-írásgyorsító megoldások az Azure M sorozatú virtuális gépekhez
@@ -322,7 +328,7 @@ Ha a SAP HANA adatmennyiségét és a naplózási kötetet egyesíti, a csíkozo
 Vannak felsorolva olyan virtuálisgép-típusok, amelyek nem rendelkeznek SAP-tanúsítvánnyal, és amelyek nem szerepelnek az ún. [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Az ügyfelek visszajelzései voltak, hogy ezek a nem felsorolt virtuálisgép-típusok sikeresen használatba kerültek néhány nem üzemi feladathoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért lásd:
 
 - [SAP HANA magas rendelkezésre állású útmutató Azure-beli virtuális gépekhez](./sap-hana-availability-overview.md).

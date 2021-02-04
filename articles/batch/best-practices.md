@@ -1,14 +1,14 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
-ms.date: 12/18/2020
+ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732411"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550861"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -169,6 +169,8 @@ Ha egy csomóponton futó csomópont vagy feladatok viselkedésével kapcsolatos
 
 A felhasználói előfizetés módú batch-fiókok esetében az automatikus operációsrendszer-frissítések megszakítják a feladat előrehaladását, különösen akkor, ha a feladatok hosszú ideig futnak. A [idempotens feladatok kiépítése](#build-durable-tasks) segíthet a megszakítások által okozott hibák csökkentésében. Javasoljuk továbbá [, hogy az operációs rendszer rendszerképének frissítéseit olyan időpontokra ütemezze, amikor a feladatok nem várhatóan futnak](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
+A Windows-készletek esetében alapértelmezés szerint a érték `enableAutomaticUpdates` van beállítva `true` . Az automatikus frissítések engedélyezése ajánlott, de ezt az értéket megadhatja, `false` Ha biztosítania kell, hogy az operációs rendszer frissítése váratlanul megtörténjen.
+
 ## <a name="isolation-security"></a>Elkülönítés biztonsága
 
 Az elkülönítés érdekében, ha a forgatókönyv megköveteli a feladatok egymástól való elkülönítését, tegye azokat külön készletekben. A készlet a Batch biztonsági elkülönítési határa, és alapértelmezés szerint a két készlet nem látható, vagy nem tud kommunikálni egymással. Kerülje a különálló batch-fiókok elkülönítésének módját.
@@ -189,8 +191,7 @@ Tekintse át a Batch-megoldások kapcsolódásával kapcsolatos alábbi útmutat
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Hálózati biztonsági csoportok (NSG) és felhasználó által megadott útvonalak (UDR)
 
-A [Batch-készletek virtuális hálózatban való](batch-virtual-network.md)kiépítés során ügyeljen arra, hogy a `BatchNodeManagement` szolgáltatási címke, a portok, a protokollok és a szabály irányának használatára vonatkozó irányelveket szorosan kövesse.
-A szolgáltatás címkéjének használata kifejezetten ajánlott, nem az alapul szolgáló batch szolgáltatás IP-címeinek használata. Ennek az az oka, hogy az IP-címek idővel változhatnak. A Batch szolgáltatás IP-címeinek közvetlen használata instabilitást, megszakítást vagy kimaradást okozhat a Batch-készletekben.
+A [Batch-készletek virtuális hálózatban való](batch-virtual-network.md)kiépítés során ügyeljen arra, hogy a `BatchNodeManagement` szolgáltatási címke, a portok, a protokollok és a szabály irányának használatára vonatkozó irányelveket szorosan kövesse. A szolgáltatás címkéjének használata kifejezetten ajánlott, nem az alapul szolgáló batch szolgáltatás IP-címeinek használata. Ennek az az oka, hogy az IP-címek idővel változhatnak. A Batch szolgáltatás IP-címeinek közvetlen használata instabilitást, megszakítást vagy kimaradást okozhat a Batch-készletekben.
 
 A felhasználó által megadott útvonalak (UDR-EK) esetében ellenőrizze, hogy van-e olyan folyamat, amely rendszeresen frissíti a Batch szolgáltatás IP-címeit az útválasztási táblázatban, mivel ezek a címek idővel változnak. A Batch szolgáltatás IP-címei listájának beszerzésével kapcsolatos további információkért lásd: [szolgáltatási címkék a helyszínen](../virtual-network/service-tags-overview.md). A Batch szolgáltatás IP-címei társítva lesznek a `BatchNodeManagement` szolgáltatás címkéjével (vagy a Batch-fiók régiójának megfelelő regionális változattal).
 
@@ -235,7 +236,7 @@ A Batch aktívan megpróbálja törölni azt a munkakönyvtárat, amelyen a fela
 
 A munkakönyvtár automatikus tisztítása le lesz tiltva, ha a Windows rendszerű szolgáltatást futtat a startTask Working Directory szolgáltatásból, mert a mappa még használatban van. Ennek hatására csökken a teljesítmény. Ennek a megoldásnak a kijavításához módosítsa a szolgáltatás könyvtárát egy különálló, a Batch által nem kezelt könyvtárba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.

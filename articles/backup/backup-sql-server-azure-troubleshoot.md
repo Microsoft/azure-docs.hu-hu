@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429466"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549898"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -202,6 +202,13 @@ A művelet le van tiltva, mert elérte a 24 órán belül engedélyezett művele
 |---|---|---|
 A művelet le van tiltva, mert a tároló elérte a maximális korlátot az ilyen műveletekhez, amely 24 órás időtartam alatt engedélyezett. | Ha elérte a maximális megengedett korlátot egy 24 órás span művelethez, ez a hiba jelenik meg. Ez a hiba általában akkor jelenik meg, ha olyan méretezési műveleteket végeznek, mint például a házirend módosítása vagy az automatikus védelem. A CloudDosAbsoluteLimitReached eltérően nem sokat tehet az állapot megoldásához. Valójában Azure Backup szolgáltatás a szóban forgó összes elemre vonatkozóan belső műveletet hajt végre.<br> Például: Ha nagy számú adatforrással védett egy szabályzat, és megpróbálja módosítani ezt a házirendet, a rendszer elindítja a védelmi feladatok konfigurálását az egyes védett elemekhez, és esetenként az ilyen műveletek esetében a maximálisan megengedett határértéket is elérheti naponta.| A Azure Backup szolgáltatás 24 óra elteltével automatikusan újrapróbálkozik a művelettel.
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| Hibaüzenet | Lehetséges okok | Javasolt művelet |
+|---|---|---|
+A AzureBackup munkaterhelés-bővítmény művelete sikertelen volt. | A virtuális gép leáll (vagy) a virtuális gép internetkapcsolattal kapcsolatos problémák miatt nem tud kapcsolatba lépni Azure Backup szolgáltatással.| – Győződjön meg arról, hogy a virtuális gép működik, és hogy rendelkezik internetkapcsolattal.<br>- [A bővítmény újbóli regisztrálása a SQL Server VMon](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
@@ -212,7 +219,7 @@ Az internetkapcsolattal kapcsolatos problémák miatt a virtuális gép nem tud 
 
 A következő tünetek közül egyet vagy többet kell megvizsgálnia az ismételt regisztrálási művelet elindítása előtt:
 
-- Az összes művelet (például a biztonsági mentés, a visszaállítás és a biztonsági mentés konfigurálása) a virtuális gépen meghiúsul a következő hibakódok egyikével: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+- Az összes művelet (például a biztonsági mentés, a visszaállítás és a biztonsági mentés konfigurálása) a virtuális gépen meghiúsul a következő hibakódok egyikével: **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
 - Ha a biztonsági mentési elem **biztonsági mentési állapota** területen **nem érhető el**, akkor zárja ki az összes többi olyan okot, amely ugyanazokat az állapotot eredményezheti:
 
   - Nincs engedélye a biztonsági mentéssel kapcsolatos műveletek elvégzésére a virtuális gépen.

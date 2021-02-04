@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 1f32e9788b2255be373a4db8c159ef2a6b6ccf04
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 63c7f226dcd99ec8040f2078ce12be0fe3c594df
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753841"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548813"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -32,13 +32,13 @@ Azure Migrate: a kiszolgáló áttelepítési eszköze UEFI-alapú gépeket tele
 
 | **UEFI-alapú gépekhez támogatott operációs rendszerek** | **Ügynök nélkül VMware – Azure**                                                                                                             | **Ügynök nélküli Hyper-V-ről Azure-ra** | **Ügynök-alapú VMware, fizikai és egyéb felhők az Azure-ba** |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
-| Windows Server 2019, 2016, 2012 R2, 201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows Server 2019, 2016, 2012 R2, 2012                | Y                                                                                                                                         | Y                              | Y                                                          |
 | Windows 10 Pro, Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | I<br>                 _A RHEL 8. x [manuális előkészítést](./prepare-for-migration.md#linux-machines) igényel_   | Y                              | Y                                                          |
-| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | I<br>_A cent OS 8. x [manuális előkészítést](./prepare-for-migration.md#linux-machines) igényel_ | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _A RHEL 8. x [manuális előkészítést](./prepare-for-migration.md#linux-machines) igényel_   | Y                              | Y                                                          |
+| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_A cent OS 8. x [manuális előkészítést](./prepare-for-migration.md#linux-machines) igényel_ | Y                              | Y                                                          |
 | Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Használhatom a Azure Migrate által létrehozott Recovery Services-tárolót a vész-helyreállítási forgatókönyvekhez?
@@ -202,7 +202,7 @@ Ha leállítja a replikálást, a Azure Migrate: a kiszolgáló áttelepítési 
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>A VMWare virtuális gépek áttelepítéséhez VMware vCenter szükséges?
 
-[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információ](migrate-support-matrix-physical-migration.md).
+[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információk](migrate-support-matrix-physical-migration.md).
 
 ## <a name="can-i-upgrade-my-os-while-migrating"></a>Frissíthetem az operációs rendszert az áttelepítés során?
 
@@ -226,6 +226,6 @@ Azure Migrate-kiszolgáló áttelepítési képességeinek támogatása, példá
 Az ügynök nélküli replikáció a VMware vCenter Server és VMware ESXi gazdagépek teljesítményére gyakorolt hatásukat eredményez. Mivel az ügynök nélküli replikáció pillanatképeket használ, a IOPS-t használja a tárterületen, ezért bizonyos IOPS-sávszélességre van szükség. Nem ajánlott ügynök nélküli replikálást használni, ha a környezetében korlátozásokkal rendelkezik a tároló-vagy IOPs.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a [Azure Migrate áttekintést](migrate-services-overview.md).

@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 99703acc4965a38337a39fe23cc19cafddd1531d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791120"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550878"
 ---
 # <a name="what-is-azure-sql"></a>Mi az az Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
 Az Azure SQL olyan felügyelt, biztonságos és intelligens termékekből álló család, amelyek az Azure-felhőben a SQL Server adatbázismotor használatát használják.
 
-- **Azure SQL Database** : támogatja a modern felhőalapú alkalmazásokat egy intelligens, felügyelt adatbázis-szolgáltatásban, amely kiszolgáló nélküli számítást is tartalmaz. 
-- **Felügyelt Azure SQL-példány** : a meglévő SQL Server-alkalmazások nagy mértékben modernizálása egy intelligens, teljes körűen felügyelt példányként, a SQL Server adatbázismotor csaknem 100%-os szolgáltatási paritásával. A legalkalmasabb a felhőbe való Migrálás során.
-- **SQL Server Azure-beli virtuális gépeken** : a SQL Server számítási feladatokat könnyedén, a 100%-os SQL Server kompatibilitás és az operációs rendszer szintű hozzáférés fenntartásával. 
+- **Azure SQL Database**: támogatja a modern felhőalapú alkalmazásokat egy intelligens, felügyelt adatbázis-szolgáltatásban, amely kiszolgáló nélküli számítást is tartalmaz. 
+- **Felügyelt Azure SQL-példány**: a meglévő SQL Server-alkalmazások nagy mértékben modernizálása egy intelligens, teljes körűen felügyelt példányként, a SQL Server adatbázismotor csaknem 100%-os szolgáltatási paritásával. A legalkalmasabb a felhőbe való Migrálás során.
+- **SQL Server Azure-beli virtuális gépeken**: a SQL Server számítási feladatokat könnyedén, a 100%-os SQL Server kompatibilitás és az operációs rendszer szintű hozzáférés fenntartásával. 
  
 Az Azure SQL a jól ismert SQL Server motorra épül, így könnyedén áttelepítheti az alkalmazásokat, és tovább használhatja azokat az eszközöket, nyelveket és erőforrásokat, amelyeket már ismer. Tudását és tapasztalatait a felhőbe helyezheti át, így még többet is megtudhat a már meglévő képességeiről. 
 
@@ -53,7 +53,7 @@ Több időt kell fordítania az innovációra, és kevesebb időt kell kijavíta
 
 Az Azure folyamatosan figyeli az adatait a fenyegetések ellen. Az Azure SQL-szel a következőket teheti:
 
-- A potenciális fenyegetések valós idejű szervizelése az intelligens komplex [veszélyforrások észlelésével](../security/fundamentals/threat-detection.md#advanced-threat-detection-features-other-azure-services) és a biztonsági rések felmérésével kapcsolatos riasztásokkal. 
+- A potenciális fenyegetések valós idejű szervizelése az intelligens komplex [veszélyforrások észlelésével](../security/fundamentals/threat-detection.md#threat-protection-features-other-azure-services) és a biztonsági rések felmérésével kapcsolatos riasztásokkal. 
 - A [beépített biztonsági vezérlőkkel](https://azure.microsoft.com/overview/security/) , többek között a T-SQL, a hitelesítés, a Hálózatkezelés és a kulcskezelő szolgáltatással piacvezető, többrétegű védelmet szerezhet. 
 - Használja ki a felhőalapú adatbázis-szolgáltatás legátfogóbb [megfelelőségi](https://azure.microsoft.com/overview/trusted-cloud/compliance/) lefedettségét. 
 
@@ -91,7 +91,7 @@ Azure SQL Database a következő üzembe helyezési lehetőségeket kínálja:
 
 ### <a name="azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány
 
-Az [Azure SQL felügyelt példánya](managed-instance/sql-managed-instance-paas-overview.md) a platform- *szolgáltatás (* "a") iparági kategóriába tartozik, és a leginkább a felhőbe való Migrálás terén ajánlott. A felügyelt SQL-példányok olyan rendszer-és felhasználói adatbázisok gyűjteményei, amelyek egy közös erőforrás-készlettel rendelkeznek.  
+Az [Azure SQL felügyelt példánya](managed-instance/sql-managed-instance-paas-overview.md) a platform- *szolgáltatás (*"a") iparági kategóriába tartozik, és a leginkább a felhőbe való Migrálás terén ajánlott. A felügyelt SQL-példányok olyan rendszer-és felhasználói adatbázisok gyűjteményei, amelyek egy közös erőforrás-készlettel rendelkeznek.  
 - A legjobb új alkalmazásokhoz vagy meglévő helyszíni alkalmazásokhoz, amelyek a legújabb stabil SQL Server szolgáltatásokat szeretnék használni, és amelyeket a felhőbe migrálnak, minimális változtatásokkal. A felügyelt SQL-példányok egy példánya hasonló a [Microsoft SQL Server adatbázismotor](/sql/database-engine/sql-server-database-engine-overview) egy példányához, amely megosztott erőforrásokat kínál az adatbázisokhoz és a további példányokra vonatkozó hatókörű funkciókhoz. 
 - Az SQL felügyelt példánya a helyszíni adatbázis-Migrálás minimális és adatbázis-változás nélküli áttelepítését is támogatja. Ez a beállítás biztosítja az összes, a Azure SQL Database által kiváltott összes előnyét, de olyan képességeket ad, amelyek korábban csak SQL Server virtuális gépeken érhetők el. Ez magában foglalja a natív virtuális hálózatot, és közel 100%-os kompatibilitást biztosít a helyszíni SQL Serverokkal. Az SQL felügyelt példány példányai teljes körű SQL Server hozzáférést biztosítanak az SQL-kiszolgálók Azure-ba való áttelepítéséhez.
 
@@ -128,7 +128,7 @@ Legyen szó akár egy olyan indításról, amely készpénzre van kialakítva, v
 Jelenleg a **SQL Database** és az **SQL felügyelt példány** is szolgáltatásként van értékesítve, és számos különböző lehetőséggel, valamint számos szolgáltatási szinten érhető el, az erőforrások eltérő áraival, amelyek mindegyikét óránként, a szolgáltatási szinten és a kiválasztott számítási méret alapján számoljuk el. A jelenleg támogatott szolgáltatási rétegekkel, számítási méretekkel és tárolási mennyiségekkel kapcsolatos legfrissebb információkért tekintse meg a [SQL Database és az SQL felügyelt példányának SQL Database és virtuális mag-alapú vásárlási modell](database/service-tiers-vcore.md) [DTU-alapú vásárlási modelljét](database/service-tiers-dtu.md) .
 
 - A SQL Database segítségével kiválaszthatja az igényeinek megfelelő szolgáltatási szintet, amely az alapszintű csomag 5 $/hó kezdődően számos díjszabással rendelkezik, és [rugalmas készleteket](database/elastic-pool-overview.md) hozhat létre, amelyekkel az erőforrások között megoszthatja az erőforrásokat a költségek csökkentése és a használati tüskék kielégítése érdekében.
-- Az SQL felügyelt példányával saját licenc is létrehozható. A saját licenceléssel kapcsolatos további információkért lásd: [licenchordozhatóság frissítési garancia keretében az Azure](https://azure.microsoft.com/pricing/license-mobility/) -ban, vagy a [Azure Hybrid Benefit Calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) használatával megtudhatja, hogyan **takaríthat meg akár 40%-ot** .
+- Az SQL felügyelt példányával saját licenc is létrehozható. A saját licenceléssel kapcsolatos további információkért lásd: [licenchordozhatóság frissítési garancia keretében az Azure](https://azure.microsoft.com/pricing/license-mobility/) -ban, vagy a [Azure Hybrid Benefit Calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) használatával megtudhatja, hogyan **takaríthat meg akár 40%-ot**.
 
 Emellett a kimenő internetes forgalom számlázása a normál [adatátviteli díjszabások](https://azure.microsoft.com/pricing/details/data-transfers/) szerint történik. A szolgáltatási szintek és a számítási méretek dinamikusan állíthatók be úgy, hogy megfeleljenek az alkalmazás eltérő átviteli igényeinek.
 
@@ -159,7 +159,7 @@ Számos informatikai részleg esetében a szolgáltatói szerződéssel (SLA) ka
 
 Mind a **Azure SQL Database** , mind az **Azure SQL felügyelt példánya** esetében a Microsoft 99,99%-os rendelkezésre állási SLA-t biztosít. A legfrissebb információkért lásd: [szolgáltatási szintű szerződés](https://azure.microsoft.com/support/legal/sla/sql-database/).
 
-Az **SQL Azure** -beli virtuális gépen a Microsoft 99,95%-os rendelkezésre állási SLA-t biztosít, amely csak a virtuális gépet fedi le. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Az adatbázisok magas rendelkezésre állása (HA) a virtuális gépeken belül a támogatott magas rendelkezésre állási lehetőségek egyikét kell konfigurálnia SQL Serverban, például [Always On rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis 99,99% fölötti rendelkezésre állásának elérését.
+Az **SQL Azure**-beli virtuális gépen a Microsoft 99,95%-os rendelkezésre állási SLA-t biztosít, amely csak a virtuális gépet fedi le. Ez az SLA nem érvényes a virtuális gépen futó folyamatokra (például az SQL Serverre), ezenfelül legalább két, rendelkezésre állási csoportba rendezett virtuálisgép-példány futtatása is szükséges hozzá. A legfrissebb információkért lásd: [SLA a következőhöz: Virtuális gépek](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Az adatbázisok magas rendelkezésre állása (HA) a virtuális gépeken belül a támogatott magas rendelkezésre állási lehetőségek egyikét kell konfigurálnia SQL Serverban, például [Always On rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). A támogatott magas rendelkezésre állási lehetőségek valamelyikének használata nem biztosít további SLA-t, de lehetővé teszi az adatbázis 99,99% fölötti rendelkezésre állásának elérését.
 
 ## <a name="time-to-move-to-azure"></a><a name="market"></a>Az Azure-ba való áttérés ideje
 

@@ -3,12 +3,12 @@ title: Azure-alkalmazás konfigurálása Event Grid forrásként
 description: Ez a cikk azt ismerteti, hogyan használható az Azure app Configuration Event Grid-eseményforrásként. Ez biztosítja a sémát és az oktatóanyagra és útmutatókra mutató hivatkozásokat.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bdd077c291bd1e1c441217740daf39c8bcaad732
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d305236e8408052be4be28ec003f4e545119fc59
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116998"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550674"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure-alkalmazás konfigurálása Event Grid forrásként
 Ez a cikk az Azure-alkalmazások konfigurációs eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). Emellett a gyors indulások és oktatóanyagok listáját is tartalmazza, amelyekkel az Azure-alkalmazások konfigurációját használhatja az esemény forrásaként.
@@ -68,7 +68,7 @@ A kulcs-érték törölt esemény sémája hasonló:
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
@@ -81,7 +81,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | kulcs | sztring | A módosított vagy törölt kulcs-érték kulcsa. |
 | címke | sztring | A módosított vagy törölt kulcs-érték címkéje (ha van). |
@@ -92,10 +92,10 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 |Cím | Leírás |
 |---------|---------|
 | [Az Azure-alkalmazás konfigurációs eseményeire való reagálás Event Grid használatával](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Az Azure-alkalmazások konfigurációjának Event Gridsal való integrálásának áttekintése. |
-| [Gyors útmutató: Azure-alkalmazás konfigurációs eseményeinek átirányítása egyéni webes végpontra az Azure CLI-vel](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet Azure-alkalmazások konfigurációs eseményeit webhookba az Azure CLI használatával. |
+| [Adatmódosítási értesítések Event Grid használata](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ismerje meg, hogy az Azure-alkalmazás konfigurációs esemény-előfizetéseit használva hogyan küldhet kulcs-érték módosítási eseményeket egy webes végpontra. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
-* Az Azure-alkalmazások konfigurációs eseményeinek használatának bemutatása: az [Azure-alkalmazás konfigurációs eseményeinek irányítása – Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Az Azure-alkalmazás konfigurációs eseményeivel kapcsolatos tudnivalókat lásd: [Event Grid használata adatváltozási értesítésekhez](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

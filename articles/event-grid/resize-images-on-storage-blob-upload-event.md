@@ -3,12 +3,12 @@ title: 'Oktatóanyag: Azure Event Grid használata a feltöltött képek átmér
 description: 'Oktatóanyag: a Azure Event Grid az Azure Storage-ban blob-feltöltéseket indíthat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326558"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550514"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez:
 
 El kell végeznie az előző Blob Storage oktatóanyagot: [Képadatok feltöltése a felhőbe az Azure Storage segítségével][previous-tutorial].
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Szüksége van egy [Azure-előfizetésre](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing). Ez az oktatóanyag nem működik az **ingyenes** előfizetéssel. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -261,9 +261,9 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
     :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="A miniatűr függvény kiválasztása a portálon":::
 
-1.  Válassza az **integráció** kiválasztása lehetőséget, majd válassza ki a **Event Grid triggert** , és válassza a **Event Grid előfizetés létrehozása**lehetőséget.
+1.  Válassza az **integráció** kiválasztása lehetőséget, majd válassza ki a **Event Grid triggert** , és válassza a **Event Grid előfizetés létrehozása** lehetőséget.
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="A miniatűr függvény kiválasztása a portálon" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Navigáljon Event Grid előfizetés hozzáadása a Azure Portal" :::
 
 1. Használja a táblázatban megadott esemény-előfizetési beállításokat.
     
@@ -283,7 +283,7 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
 1. Váltson a **szűrők** lapra, és végezze el a következő műveleteket:
     1. Válassza a **tulajdonosi szűrés engedélyezése** lehetőséget.
-    1. A **Tárgy megkezdéséhez**adja meg a következő értéket: **/blobServices/default/containers/images/Blobs/**.
+    1. A **Tárgy megkezdéséhez** adja meg a következő értéket: **/blobServices/default/containers/images/**.
 
         ![Az esemény-előfizetés szűrőjének megadása](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
@@ -305,7 +305,7 @@ Figyelje meg, hogy miután a feltöltött rendszerkép eltűnik, a feltöltött 
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezi ezt a képet a *miniatűrök* tárolóba, és a webes ügyfél tölti le.
+Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése** elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezi ezt a képet a *miniatűrök* tárolóba, és a webes ügyfél tölti le.
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

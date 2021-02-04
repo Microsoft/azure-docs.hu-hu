@@ -478,6 +478,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Automation-runbookok hozzáadása helyreállítási tervekhez
       href: site-recovery-runbook-automation.md
+    - name: ARM-sablonok
+      href: asr-arm-templates.md
 - name: Figyelés
   items:
     - name: Gyakori kérdések a monitorozással kapcsolatban

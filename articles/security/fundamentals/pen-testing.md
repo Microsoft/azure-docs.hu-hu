@@ -4,8 +4,7 @@ description: A cikk áttekintést nyújt a penetráció tesztelési folyamatár�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,22 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2020
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 84229ce3562f9cdcc4b55704eaa4f3b891a43d75
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 9f65133f622c71189f35a1533e278ca09ab02085
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968942"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550201"
 ---
 # <a name="penetration-testing"></a>Behatolás tesztelése
 
 Az Azure az alkalmazások teszteléséhez és üzembe helyezéséhez való használatának egyik előnye, hogy gyorsan lekérheti a környezetek létrehozását. Nem kell aggódnia az igényléssel, a beszerzéssel és a saját helyszíni hardverek üzemeltetésével és halmozásával kapcsolatban.
 
 A környezetek gyors létrehozása nagyszerű – de még mindig meg kell győződnie arról, hogy a szokásos biztonsági átvilágítás szükséges. Az egyik legvalószínűbb, hogy a penetráció teszteli az Azure-ban üzembe helyezett alkalmazásokat.
-
-Lehet, hogy már tudja, hogy a Microsoft [Az Azure-környezetének penetrációs tesztelését](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)végzi. A tesztelés hozzájárul az Azure továbbfejlesztéséhez.
 
 Nem végzünk bevezetési tesztelést az alkalmazásában, de tisztában vagyunk vele, hogy a saját alkalmazásaiban szeretné elvégezni a tesztelést. Ez jó dolog, mert az alkalmazások biztonságának növelése révén biztonságosabbá teheti a teljes Azure-ökoszisztémát.
 

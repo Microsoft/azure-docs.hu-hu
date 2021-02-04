@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/01/2020
+ms.date: 02/03/2021
 ms.author: radeltch
-ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 631ebcd41e50a6b8f9e049a646394e572c0b15f7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486342"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549320"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -294,16 +294,17 @@ sudo pcs property set stonith-timeout=900
 </code></pre>
 
 > [!NOTE]
-> A (z) "pcmk_host_map" kapcsoló csak akkor szükséges a parancsban, ha a RHEL és az Azure-csomópontok nevei nem egyeznek. Tekintse meg az parancs félkövér szakaszát.
+> A (z) "pcmk_host_map" kapcsoló csak akkor szükséges a parancsban, ha a RHEL és az Azure-beli virtuális gépek nevei nem egyeznek. Adja meg a leképezést a **hostname: VM-Name** formátumban.
+> Tekintse meg az parancs félkövér szakaszát. További információ: [milyen formátumot érdemes használni a csomópont-hozzárendelések megadásához az eszközök stonith pcmk_host_map](https://access.redhat.com/solutions/2619961)
 
 A **7. X** RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:    
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
 A **8. X** RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:  
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
@@ -319,7 +320,7 @@ op monitor interval=3600
 > [!TIP]
 >Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

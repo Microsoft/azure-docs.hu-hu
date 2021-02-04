@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt verziójának frissítése
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918109"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549068"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Az Azure Service Fabric-fürt verziójának frissítése
 
@@ -40,7 +40,7 @@ Az 5,7-es verzióról a 6.3.63-re futó Azure Service Fabric-fürtök nem leszne
 Frissítsen egy támogatott Service Fabric verzióra, hogy megakadályozza az állásidőt vagy a változáshoz kapcsolódó funkciók elvesztését. Győződjön meg arról, hogy a fürtök legalább a következő verziókon futnak a környezettel kapcsolatos problémák megelőzése érdekében.
 
 > [!Note]
-> A 7,2 összes kiadott verziója tartalmazza a szükséges módosításokat.
+> **A 7,2 összes kiadott verziója tartalmazza a szükséges módosításokat**.
   
   | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás |
   | --- | --- |--- |
@@ -75,9 +75,15 @@ A leállás vagy a funkciók elvesztésének elkerülése érdekében győződj�
 A táblázatban lévő Service Fabric verziói tartalmazzák a szükséges módosításokat a funkció elvesztése érdekében. Győződjön meg arról, hogy a következő verziók egyikét használja.  
 
 > [!Note]
-> A 7,2 összes kiadási verziója tartalmazza a szükséges módosításokat.
+> **Az 6,5-es verzión futó Azure Service Fabric-fürtökön több frissítést kell végrehajtania, mielőtt infrastucuture a változást a fürt működésének elvesztése** érdekében. 
+>   -   1. Frissítsen a 7.0.466. **Azok a Windows operációs rendszert futtató fürtök, amelyeken engedélyezve van a Windows-tárolók funkciója, nem lehetnek ezen a közbenső verzión. Az alábbi következő lépést (II) kell végrehajtania. azaz  A szolgáltatás megszakadásának elkerülése érdekében frissítsen biztonságosabb és megfelelő verzióra**
+>   -   2. Frissítsen a 7,0 * Release (7.0.478) vagy az alább felsorolt újabb verziókra.
 
-  | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás |
+
+> [!Note]
+> **A 7,2 összes kiadási verziója tartalmazza a szükséges módosításokat**.
+
+ | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás |
   | --- | --- |--- |
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |

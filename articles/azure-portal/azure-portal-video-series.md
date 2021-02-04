@@ -4,12 +4,12 @@ description: Az Azure-szolgáltatások a portálon való használatáról szól�
 keywords: ''
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: d0b356729f2fab418b2322aeb20a44fc74cb199c
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852608"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550441"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Az Azure Portal útmutató videósorozata
 
@@ -17,17 +17,17 @@ A Azure Portal útmutató videó sorozat bemutatja, hogyan használható az Azur
 
 ## <a name="featured-video"></a>Kiemelt videó
 
-Ebben a Kiemelt videóban bemutatjuk, hogyan kezdheti el az Azure-t az Azure Gyorsindítás központjának használatával.
+Ebben a Kiemelt videóban bemutatjuk, hogyan használhatja Azure Cost Management nézeteket.
 
-> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
+> [!VIDEO https://www.youtube.com/embed/VRJA5bn2VH0]
 
-[Ismerkedés az Azure-ban az Azure Gyorsindítás központjának használatával](https://www.youtube.com/watch?v=mb5k9nXMtBM)
+[Azure Cost Management nézetek használata](https://www.youtube.com/watch?v=VRJA5bn2VH0)
 
 A legutóbbi videók felzárkóznak:
 
-| [Alkalmazások kezelése az Azure Kubernetes Service-ben](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [Azure-munkafüzetek létrehozása naplók és paraméterek használatával](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [Egyéni tartomány hozzáadása és biztonságossá tétele a App Service webalkalmazásban](https://www.youtube.com/watch?v=bXP6IvNYISw) |
+| [A tabletták használata a Azure Portal szűréséhez](https://www.youtube.com/watch?v=XyKh_3NxUlM)  | [Az erőforrások vizualizációs nézetének beszerzése](https://www.youtube.com/watch?v=wudqkkJd5E4)  | [Tartalom rögzítése a Azure Portal irányítópultján](https://www.youtube.com/watch?v=eyOJkhYItSg) |
 | ------| ------ | ------ |
-| [![YouTube-videó képe az alkalmazások kezeléséről az Azure Kubernetes Service-ben](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![YouTube-videó képe az Azure-munkafüzetek naplók és paraméterek használatával történő létrehozásáról](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![YouTube-videó képe arról, hogyan lehet egyéni tartományt felvenni és biztonságossá tenni a App Service webalkalmazásban](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
+| [![YouTube-videó képe arról, hogyan használhat tablettákat a Azure Portal való szűréshez](https://i.ytimg.com/vi/XyKh_3NxUlM/hqdefault.jpg)](https://www.youtube.com/watch?XyKh_3NxUlM) | [![YouTube-videó képe az erőforrások vizualizációs nézetének beszerzéséről](https://i.ytimg.com/vi/wudqkkJd5E4/hqdefault.jpg)](http://www.youtube.com/watch?v=wudqkkJd5E4) | [![YouTube-videó képe arról, hogyan rögzíthet tartalmat a Azure Portal irányítópultján](https://i.ytimg.com/vi/eyOJkhYItSg/hqdefault.jpg)](http://www.youtube.com/watch?v=eyOJkhYItSg) |
 
 ## <a name="video-playlist"></a>Videó lejátszási lista
 

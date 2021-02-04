@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 702ca4f4c3fc92eca70479ba02b1ddc8f6858857
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223227"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549660"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
@@ -54,7 +54,7 @@ Standard SKU nyilvános IP-címei:
 - Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
 - Alapértelmezés szerint biztonságos és a bejövő forgalomhoz zárva van. Engedélyezi a bejövő forgalom listázását egy [hálózati biztonsági csoporttal](./network-security-groups-overview.md#network-security-groups).
 - A hálózati adapterekhez, a standard nyilvános terheléselosztóhoz vagy az Application Gatewayhez van rendelve. További információ a standard Load balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Lehet zóna-redundáns (az összes 3 zónából való hirdetés) vagy a zonay (egy adott rendelkezésre állási zónában létrehozható, és egy adott rendelkezésre állási zónában is biztosítható). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **A zóna redundáns IP-címei csak olyan régiókban hozhatók létre, [amelyekben 3 rendelkezésre állási zóna](../availability-zones/az-region.md) él.** A zónák élő létrehozása előtt létrehozott IP-címek nem lesznek redundáns zónában.
+- A zóna redundáns lehet (amely az összes 3 zónából elérhető), a (az adott előre kiválasztott rendelkezésre állási zónában garantált), vagy a nem zónában (a megadott előre kiválasztott rendelkezésre állási zónához nincs társítva). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **A zóna redundáns IP-címei csak olyan régiókban hozhatók létre, [amelyekben 3 rendelkezésre állási zóna](../availability-zones/az-region.md) él.** A zónák élő létrehozása előtt létrehozott IP-címek nem lesznek redundáns zónában.
 - A többrégiós terheléselosztó (előzetes verzió) számára is használható a [többhelyes terheléselosztási](../load-balancer/cross-region-overview.md) IP-címekhez.
  
 > [!NOTE]
@@ -181,8 +181,8 @@ A következő táblázat azt a tulajdonságot mutatja be, amelyen keresztül a n
 
 | Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
-| Virtuális gép |Hálózati adapter |Igen |Igen |
-| Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
+| Virtuális gép |Hálózati adapter |Igen |Yes |
+| Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Yes |
 | VPN-átjáró |Átjáró IP-konfigurációja |Igen |Nem |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak v1) |Igen (csak v2) |
 | Azure Firewall | Előtér-konfiguráció | Nem | Igen|

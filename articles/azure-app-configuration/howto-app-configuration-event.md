@@ -1,6 +1,6 @@
 ---
-title: Események küldése webes végpontnak az Azure app Configuration használatával
-description: Ismerje meg, hogy az Azure-alkalmazás konfigurációs esemény-előfizetéseit használva küldje el a kulcs-érték módosítási eseményeket egy webes végpontra
+title: Event Grid használata az alkalmazás konfigurációs adatmódosítási értesítéseihez
+description: Ismerje meg, hogyan küldhet kulcs-érték módosítási eseményeket webes végpontra az Azure-alkalmazás konfigurációs esemény-előfizetései használatával
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.assetid: ''
@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e005d2f929fd615080d22e93a102a7cc5c1174a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696118"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549779"
 ---
-# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
+# <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>Event Grid használata az alkalmazás konfigurációs adatmódosítási értesítéseihez
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure-alkalmazás konfigurációs esemény-előfizetéseit a kulcs-érték módosítási események webes végpontra való küldéséhez. Az Azure-alkalmazások konfigurációjának felhasználói előfizethetnek a kulcs-érték módosításakor kibocsátott eseményekre. Ezek az események indíthatnak webhookokat, Azure Functionseket, Azure Storage-várólistákat vagy bármely más, a Azure Event Grid által támogatott eseménykezelőt. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -31,7 +31,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -131,7 +131,7 @@ A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscso
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan hozhat létre témaköröket és esemény-előfizetéseket, többet tudhat meg a kulcs-érték eseményekről, és arról, hogy milyen Event Grid segíthet:
 

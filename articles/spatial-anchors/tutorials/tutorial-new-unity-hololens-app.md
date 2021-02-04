@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0233e58a404721586af0ae2fbdf78dbab6d424ed
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95996260"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550384"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -43,11 +43,11 @@ Először be kell állítania a projekt és az egység jelenetét:
 Most olyan Unity Project-beállításokat fogunk beállítani, amelyek segítenek a Windows holografikus SDK fejlesztésében.
 
 Először állítsa be az alkalmazás minőségi beállításait.
-1. Válassza **Edit** a  >  **projekt beállításainak**  >  **Quality** szerkesztése lehetőséget
+1. Válassza a  >  **projekt beállításainak**  >   szerkesztése lehetőséget
 2. A **Windows áruház** emblémájának oszlopában kattintson a nyílra az alapértelmezett sorban, és válassza a **nagyon alacsony** **értéket** . A beállítás helyesen lesz alkalmazva, ha a **Windows áruház** oszlopában található mező és a **nagyon alacsony** sor zöld.
 
 Az Unity-alkalmazást a 2D-nézet helyett magával a nézettel kell konfigurálni. Hozzon létre egy részletes nézetet a virtuális valóság támogatásának engedélyezésével a Windows 10-es SDK-t célzó Unity-on.
-1. Lépjen a **Edit**  >  **Project Settings**  >  **Player** szerkesztése menüpontra.
+1. Lépjen a   >  **Project Settings**  >  **Player** szerkesztése menüpontra.
 2. A **Player-beállítások** **ellenőr paneljén** válassza a **Windows** ikont.
 3. Bontsa ki az **XR-beállítások** csoportot.
 4. A **renderelés** szakaszban jelölje be a **virtuális valóság támogatott** jelölőnégyzetet új **virtuális valóság SDK** -k listájának hozzáadásához.
@@ -140,36 +140,13 @@ Az Update () ciklus segítségével ellenőrizze, hogy van-e várólistán lév�
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure térbeli horgonyok SDK beszerzése
 
-## <a name="via-unity-package-manager-upm-package"></a>[Unity Package Manager-(UPM-) csomagon keresztül](#tab/UPMPackage)
+### <a name="download-packages"></a>Csomagok letöltése
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-Ez a módszer kompatibilis az Unity 2019.1 + verziójával.
+### <a name="import-packages"></a>Csomagok importálása
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="add-the-registry-to-your-unity-project"></a>Adja hozzá a beállításjegyzéket az Unity-projekthez
-
-1. A Fájlkezelőben navigáljon a Unity Project `Packages` mappájához. Nyissa meg a Project manifest-fájlt `manifest.json` egy szövegszerkesztőben.
-2. A fájl tetején, a szakasztal megegyező szinten `dependencies` adja hozzá a következő bejegyzést, hogy tartalmazza az Azure térbeli horgonyok beállításjegyzékét a projekthez. A `scopedRegistries` bejegyzés közli az egységgel, hogy hol keresi az Azure térbeli horgonyok SDK-csomagjait.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-### <a name="add-the-sdk-package-to-your-unity-project"></a>Az SDK-csomag hozzáadása az Unity projekthez
-
-1. Vegyen fel egy bejegyzést az Azure térbeli Horgonyokkal Windows SDK a csomag nevét ( `com.microsoft.azure.spatial-anchors-sdk.windows` ) és a csomag verzióját a `dependencies` projekt jegyzékfájljának szakaszára. Erre alább látható példa.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
-
-2. Mentse és zárjuk be a `manifest.json` fájlt. Ha az egységbe tér vissza, az egység automatikusan felismeri a projekt jegyzékfájljának változását, és beolvassa a megadott csomagokat. A Project nézetben kibonthatja a `Packages` mappát, hogy ellenőrizze, hogy a megfelelő csomagok importálása megtörtént-e.
-
-## <a name="via-unity-asset-package"></a>[Unity Asset-csomagon keresztül](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Az Azure térbeli horgonyok SDK Unity Asset csomagjának eloszlása elavulttá válik az SDK 2.5.0-es verziójának használata után.
-
-Töltse le az Azure térbeli horgonyok SDK-t. Lépjen az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az **eszközök** alatt töltse le a **AzureSpatialAnchors. unitypackage**. Az egységben válassza az **eszközök**, majd az egyéni csomag **importálása**  >  **...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás** lehetőséget.
-
-Az új **importálási egység csomag** ablakban válassza ki a **plugins** elemet, majd válassza az **Importálás** lehetőséget a jobb alsó sarokban.
-
----
-
+### <a name="prepare-code"></a>Kód előkészítése
 A **Visual Studio** -megoldásban adja hozzá a következő importálást a alkalmazásba `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` :
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]

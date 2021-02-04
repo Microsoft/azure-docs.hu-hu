@@ -3,14 +3,14 @@ title: Modulok kezelése az Azure Automationben
 description: Ez a cikk azt ismerteti, hogyan használhatók a PowerShell-modulok a runbookok és a DSC-erőforrásokban lévő parancsmagok engedélyezéséhez a DSC-konfigurációkban.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936639"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548771"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
 
@@ -40,7 +40,11 @@ Ezek az ismert korlátozások a homokozóban. Az ajánlott Áthidaló megoldás 
 
 ## <a name="default-modules"></a>Alapértelmezett modulok
 
-A következő táblázat felsorolja az Automation-fiók létrehozásakor alapértelmezés szerint Azure Automation importálási modulokat. Az Automation képes a modulok újabb verzióinak importálására. Az eredeti verziót azonban nem távolíthatja el Automation-fiókjából, még akkor is, ha újabb verziót töröl. Vegye figyelembe, hogy ezek az alapértelmezett modulok több AzureRM-modult is tartalmaznak. 
+A következő táblázat felsorolja az Automation-fiók létrehozásakor alapértelmezés szerint Azure Automation importálási modulokat. Az Automation képes a modulok újabb verzióinak importálására. Az eredeti verziót azonban nem távolíthatja el Automation-fiókjából, még akkor is, ha újabb verziót töröl. Vegye figyelembe, hogy ezek az alapértelmezett modulok több AzureRM-modult is tartalmaznak.
+
+Az alapértelmezett modulokat globális moduloknak is nevezik. A Azure Portal a **globális modul** tulajdonság a fiók létrehozásakor importált modul megtekintésekor **igaz** lesz.
+
+![Képernyőfelvétel az Azure Portal globális modul tulajdonságáról](../media/modules/automation-global-modules.png)
 
 Az Automation nem importálja automatikusan az új vagy meglévő Automation-fiókba a gyökeret az modult. A modulok használatával kapcsolatos további információkért lásd: [áttelepítés az modulokra](#migrate-to-az-modules).
 

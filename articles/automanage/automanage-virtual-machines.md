@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 7772d57937393da1c48fa2658818d8a1a2b28a1f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695670"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550784"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -42,7 +42,6 @@ Végül az élmény hihetetlenül egyszerű.
 Több előfeltételt kell figyelembe vennie, mielőtt az Azure-beli automanage-t megpróbálja engedélyezni a virtuális gépeken.
 
 - Csak Windows Server-alapú virtuális gépek
-- A virtuális gépeknek futniuk kell
 - A virtuális gépeknek támogatott régión belül kell lenniük (lásd az alábbi bekezdést)
 - A felhasználónak megfelelő engedélyekkel kell rendelkeznie (lásd az alábbi bekezdést)
 - Az automanage nem támogatja a homokozó-előfizetéseket.
@@ -155,7 +154,7 @@ A **Letiltás** előtt olvassa el figyelmesen az üzenetküldést az eredményü
 
 Az első és legfontosabb, hogy a virtuális gépet minden olyan szolgáltatásból kiállítjuk, amelyet a be-és kiállítottunk. Így a szolgáltatásokban felmerülő költségek továbbra is számlázva maradnak. Szükség esetén ki kell jelentkeznie a táblából. Az automanage viselkedés azonnal leáll. Például a rendszer nem figyeli a virtuális gépet a drifthez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogy a Virtual Machines szolgáltatás automatikusan felügyeli az Azure-szolgáltatások ajánlott eljárásainak ismeretét, bevezetését és konfigurálásának szükségességét. Továbbá, ha a virtuális gépek automatikus felügyeletére szolgáló gép a beállított konfigurációs profilokkal sodródik, a rendszer automatikusan visszaállítja a megfelelőséget.
 

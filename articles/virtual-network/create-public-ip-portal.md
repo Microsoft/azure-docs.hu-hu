@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7d0c83f1ae18d36557a7a5b0222aee2905e05cb7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223006"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550235"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Gyors útmutató: nyilvános IP-cím létrehozása a Azure Portal használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre egy nyilvános IP-cím-erőforrást a Azure Portal használatával. További információ arról, hogy mely erőforrásokhoz lehet társítva, az alapszintű és a standard SKU és az egyéb kapcsolódó információk között a [nyilvános IP-címek](./public-ip-addresses.md)című részben talál.  Ebben a példában csak IPv4-címekre fogunk összpontosítani; További információ az IPv6-címekről: [IPv6 for Azure VNet](./ipv6-overview.md).
 
-# <a name="standard-sku---using-zones"></a>[**Szabványos SKU – zónák használatával**](#tab/option-create-public-ip-standard-zones)
+# <a name="standard-sku"></a>[**Standard termékváltozat**](#tab/option-create-public-ip-standard-zones)
 
 A következő lépések végrehajtásával hozzon létre egy **myStandardZRPublicIP** nevű szabványos, redundáns nyilvános IP-címet.
 
@@ -44,9 +44,9 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
     | Előfizetés            | Válassza ki előfizetését.   |
     | Erőforráscsoport          | Válassza az **új létrehozása** elemet, írja be a myResourceGroup, majd kattintson **az OK gombra** . |
     | Hely                | Válassza az **USA 2. keleti** régióját      |
-    | Rendelkezésre állási zóna       | Válasszon **zónát – redundáns** vagy válasszon ki egy adott zónát (lásd az alábbi megjegyzést) |
+    | Rendelkezésre állási zóna       | Válassza a **zóna – redundáns**, nincs zóna vagy az adott zóna kiválasztása lehetőséget (lásd az alábbi megjegyzést) |
 
-Vegye figyelembe, hogy ezek csak a [Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)-val rendelkező régiókban érvényesek.  (Kiválaszthat egy adott zónát ezekben a régiókban, bár nem lesz rugalmas a zónabeli meghibásodás miatt.)
+Vegye figyelembe, hogy ezek csak a [Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)-val rendelkező régiókban érvényesek.  (Kiválaszthat egy adott zónát ezekben a régiókban, bár nem lesz rugalmas a zónabeli meghibásodás miatt.)  További információ a rendelkezésre állási zónákról: a [rendelkezésre állási zónák áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 \* = A réteg a [régiók közötti Load Balancer](../load-balancer/cross-region-overview.md) funkcióra vonatkozik, amely jelenleg előzetes verzióban érhető el.
 

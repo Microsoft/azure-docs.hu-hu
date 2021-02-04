@@ -3,12 +3,12 @@ title: Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videók elemzésének üzembe helyezéséhez az Azure Stack Edge-ben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019596"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551008"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Élő video Analytics üzembe helyezése Azure Stack Edge-ben
 
@@ -28,7 +28,7 @@ Az élő videós elemzések esetében IoT Hubon keresztül fogjuk telepíteni, d
 * Az élő videó elemzési moduljának [egyszerű szolgáltatása](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal) .
 
    Használja az alábbi régiók egyikét, ahol elérhető IoT Hub: USA 2. keleti régiója, az USA középső régiója, az USA északi középső régiója, az USA 2. nyugati régiója, az USA nyugati középső régiója, Kelet-Kanada, Egyesült Királyság déli régiója, Közép-Franciaország, Dél-Németország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
-* Tárfiók
+* A(z)
 
     Javasoljuk, hogy az általános célú v2-(GPv2-) tárolási fiókokat használja.  
     További információ az [általános célú v2-alapú Storage-fiókról](../../storage/common/storage-account-upgrade.md?tabs=azure-portal).
@@ -42,38 +42,7 @@ Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és e
 * [Azure Stack Edge/Data Box Gateway erőforrás létrehozása](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Telepítés és beállítás](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Kapcsolatok és aktiválás](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-
-### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>IoT Hub csatlakoztatása Azure Stack Edge-hez
-
-1. A [Azure Portal](https://ms.portal.azure.com)nyissa meg a Azure stack Edge-erőforrást, és kattintson az Áttekintés elemre. A jobb oldali ablaktáblán, a számítási csempén válassza az első lépések lehetőséget.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge.png" alt-text="Azure Stack Edge":::
-1. Az Edge-számítás konfigurálása csempén válassza a számítás konfigurálása lehetőséget.
-1. Az Edge-számítás konfigurálása panelen adja meg a következőket:
-    
-    | Mező|Érték|
-    |---|---|
-    |IoT Hub|Válasszon az új vagy a meglévő listából.<br/>Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást.<br/>A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, mint az Azure Stack Edge-erőforrás.|
-    |Név|Adja meg a IoT Hub erőforrás nevét.|
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrehozása után a számítási csempék **konfigurálása** a számítási konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a számítás **megjelenítése** lehetőséget a **számítás konfigurálása** csempén.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
-
-    > [!NOTE]
-    > Ha a számítási párbeszédpanel a IoT Hub az Azure Stack Edge-erőforráshoz való társítása előtt be van zárva, a IoT Hub jön létre, de nem jelenik meg a számítási konfigurációban. A lapot néhány perc múlva újra be kell tölteni, és megjelenik.
-    
-    Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. IoT Edge futtatókörnyezet is fut a IoT Edge eszközön. Ezen a ponton csak a Linux platform érhető el a IoT Edge eszközhöz.
-    
-    Az összes információ kitöltése után a következőhöz hasonló módon jelenik meg az Edge számítási kártya beállítása:
-    
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
- 
+* [IoT Hub csatlakoztatása Azure Stack Edge-hez](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>A számítási előfeltételek engedélyezése az Azure Stack Edge helyi felhasználói felületén
 
 A folytatás előtt győződjön meg az alábbiakról:
@@ -89,7 +58,12 @@ A folytatás előtt győződjön meg az alábbiakról:
         * Alkalmazás kiválasztása – a művelet körülbelül 2 percet vesz igénybe.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge" fájl megnyitása
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Az Azure Stack Edge helyi felhasználói felületének számítási előfeltételei":::
+
+        * Ha a DNS nincs konfigurálva a Kubernetes API-hoz és Azure Stack Edge-erőforráshoz, akkor frissítheti az ablak gazdagépének fájlját.
+        
+            * Szövegszerkesztő megnyitása rendszergazdaként
+            * A "C:\Windows\System32\drivers\etc\hosts" fájl megnyitása
             * Adja hozzá a Kubernetes API-eszköznév IPv4-nevét és állomásnevét a fájlhoz. (Ez az információ a Azure Stack Edge portál eszközök szakaszában található.)
             * Mentés és bezárás
 
@@ -141,7 +115,8 @@ Ebben az esetben csak az [élő videók elemzésének a IoT hub használatával 
       ```
 
       > [!NOTE]
-      > A JSON "kötések" szakasza 2 bejegyzést tartalmaz. Nyugodtan frissítheti a peremhálózati eszköz kötéseit, de győződjön meg arról, hogy ezek a címtárak léteznek.
+      > A JSON "kötések" szakasza 2 bejegyzést tartalmaz. A fenti kötési szakaszban említett könyvtárakat a rendszer automatikusan létrehozza a LVA.  
+        Nyugodtan frissítheti a peremhálózati eszköz kötéseit, de ha igen, akkor győződjön meg arról, hogy ezek a címtárak léteznek az eszközön.
     
     * "/var/lib/azuremediaservices:/var/lib/azuremediaservices": ezzel a beállítással lehet az állandó alkalmazás-konfigurációs adatait a tárolóból kötni, és a peremhálózati eszközön tárolni.
     * "/var/Media:/var/media": ez köti össze az adathordozó-mappákat a peremhálózati eszköz és a tároló között. Ez a videó felvételek tárolására szolgál, ha olyan Media Graph-topológiát futtat, amely támogatja a videoklipek peremhálózati eszközön való tárolását.
@@ -164,29 +139,33 @@ Ezek a lépések egy átjáró felhasználójának létrehozását és a fájlme
 1. Nyissa meg Azure Portal, és lépjen az Azure Stack Edge-erőforráshoz.
 1. Hozzon létre egy **átjáró-felhasználót** , amely hozzáférhet a megosztásokhoz.
     
-    1. A bal oldali navigációs panelen kattintson az **átjáró – >felhasználók**elemre.
-    1. Kattintson a **felhasználó hozzáadása** elemre a Felhasználónév és a jelszó beállításához. (Ajánlott: `lvauser` ).
-    1. Kattintson a **Hozzáadás**gombra.
+    1. A bal oldali navigációs ablaktáblán kattintson a **Cloud Storage Gateway** elemre.
+    1. A bal oldali navigációs ablaktáblán kattintson a **felhasználók** elemre.
+    1. Kattintson az ion **+ felhasználó hozzáadása** lehetőségre a Felhasználónév és a jelszó beállításához. (Ajánlott: `lvauser` ).
+    1. Kattintson a **Hozzáadás** gombra.
     
 1. **Helyi megosztás** létrehozása az élő videók elemzésének megőrzéséhez.
 
-    1. Kattintson az **átjáró->megosztások**elemre.
-    1. Kattintson a **+ megosztások hozzáadása**elemre.
+    1. Kattintson a **Cloud Storage Gateway – >megosztások** lehetőségre.
+    1. Kattintson a **+ megosztások hozzáadása** elemre.
     1. Adja meg a megosztás nevét. (Ajánlott: `lva` ).
     1. Tartsa meg a megosztás típusát SMB-ként.
     1. Győződjön **meg arról, hogy a megosztás használata Edge-számítással** jelölőnégyzet be van jelölve.
     1. Győződjön meg arról **, hogy az Edge helyi megosztás jelölőnégyzet be** van jelölve.
     1. A felhasználó adatai területen adjon hozzáférést a megosztáshoz a legutóbb létrehozott felhasználó számára.
-    1. Kattintson a **Létrehozás**gombra.
+    1. Kattintson a **Létrehozás** gombra.
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
-    
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Helyi megosztás":::  
+
+    > [!TIP]
+    > Ha a Windows-ügyfelet csatlakoztatja a Azure Stack Edge-hez, a [jelen dokumentumban](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)ismertetett lépéseket követve CSATLAKOZHAT az SMB-megosztásokhoz.    
+
 1. Hozzon létre egy távoli megosztást a fájl-szinkronizálási tárolóhoz.
 
-    1. Először hozzon létre egy blob Storage-fiókot ugyanabban a régióban.
-    1. Kattintson az **átjáró->megosztások**elemre.
-    1. Kattintson a **+ megosztások hozzáadása**elemre.
+    1. Először hozzon létre egy blob Storage-fiókot ugyanabban a régióban a **Cloud Storage Gateway – >Storage-fiókok** elemre kattintva.
+    1. Kattintson a **Cloud Storage Gateway – >megosztások** lehetőségre.
+    1. Kattintson a **+ megosztások hozzáadása** elemre.
     1. Adja meg a megosztás nevét. (Ajánlott: adathordozó).
     1. Tartsa meg a megosztás típusát SMB-ként.
     1. Győződjön **meg arról, hogy a megosztás használata Edge-számítással** jelölőnégyzet be van jelölve.
@@ -195,13 +174,33 @@ Ezek a lépések egy átjáró felhasználójának létrehozását és a fájlme
     1. Adja meg a tároló nevét.
     1. Állítsa be a tároló típusát a blob blokkolására.
     1. A felhasználó adatai területen adjon hozzáférést a megosztáshoz a legutóbb létrehozott felhasználó számára.
-    1. Kattintson a **Létrehozás**gombra.    
+    1. Kattintson a **Létrehozás** gombra.    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
-            }]
-        }
-    }
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Távoli megosztás":::
+    
+    
+1. Frissítse az élő videó Analytics Edge-modul tároló-létrehozási beállításait (lásd a [modulok hozzáadása című dokumentum](deploy-iot-edge-device.md#add-modules)4. pontját) a mennyiségi csatlakoztatások használatához.
+
+   ```json
+      "createOptions": 
+         {
+             "HostConfig": 
+             {
+                 "Binds": 
+                 [
+                     "/var/lib/azuremediaservices:/var/lib/azuremediaservices"
+                 ],
+                 "Mounts": 
+                 [
+                     {
+                         "Target": "/var/media",
+                         "Source": "media",
+                         "Type": "volume"
+                     }
+                 ]
+             }
+         }
     ```
 
 ### <a name="verify-that-the-module-is-running"></a>Annak ellenőrzése, hogy a modul fut-e
@@ -214,7 +213,7 @@ Annak ellenőrzéséhez, hogy a modul fut-e, tegye a következőket:
 1. Válassza ki a modulok csempét. Ekkor a modulok panelre kerül. A modulok listájában azonosítsa a telepített modult. A hozzáadott modul futásidejű állapotának futnia kell.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Egyéni modul":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Az Azure IoT-eszközök bővítményének konfigurálása
 

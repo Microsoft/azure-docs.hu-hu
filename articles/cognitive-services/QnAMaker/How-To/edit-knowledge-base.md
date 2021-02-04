@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f5d7094920a21af630e10aec2aa759ce9c505050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351707"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550584"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -19,6 +19,23 @@ A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élm
 A QnA párokat egy adatforrásból, például egy fájlból vagy URL-címről, vagy szerkesztői forrásként kell hozzáadni. A szerkesztői forrás azt jelzi, hogy a QnA pár kézzel lett hozzáadva a QnA-portálhoz. Az összes QnA-pár szerkesztésre elérhető.
 
 <a name="add-an-editorial-qna-set"></a>
+
+## <a name="question-and-answer-pairs"></a>Kérdés-válasz párok
+
+A Tudásbázis kérdések és válaszok (QnA) párokból áll.  Minden pár egyetlen választ tartalmaz, és egy pár tartalmazza az adott _válaszhoz_ tartozó összes információt. A válasz egy adatbázis-sorra vagy egy adatstruktúra-példányra is lazán hasonlíthat. A kérdés-válasz (QnA) pár **kötelező** beállításai a következők:
+
+* a **felhasználói lekérdezésnek a QnA Maker** gépi tanuláshoz használt szövege, amely a felhasználó kérdéséhez igazodik a különböző szóhasználattal, de ugyanaz a válasz
+* a **Válasz** – a pár válasza az a válasz, amelyet a rendszer akkor ad vissza, amikor egy felhasználói lekérdezés megfelel a kapcsolódó kérdésnek
+
+Az egyes párokat **azonosítók** jelölik.
+
+A párok **opcionális** beállításai a következők:
+
+* **A kérdés alternatív formái** – ez segít QnA Maker a megfelelő választ visszaadni a kérdéses szövegezések széles körére
+* **Metaadatok**: a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
+* Többfordulatú **kérések**, amelyek a több fordulatos beszélgetés folytatására szolgálnak
+
+![QnA Maker tudásbázisok](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
 ## <a name="add-an-editorial-qna-pair"></a>Szerkesztői QnA pár hozzáadása
 
@@ -60,7 +77,7 @@ A válasz szövegének gazdag szöveges szerkesztése lehetővé teszi, hogy egy
     |--|--|
     |Váltás a Rich Text szerkesztő és a Markdown között. `</>`|CTRL+M|
     |Félkövér. **B**|CTR és LB|
-    |Dőlt, dőlt betűvel jelezve **_I_**|CTRL+I|
+    |Dőlt, dőlt betűvel jelezve ****|CTRL+I|
     |Rendezetlen listák||
     |Rendezett lista||
     |Bekezdés stílusa||
@@ -130,7 +147,15 @@ A válaszok [gazdag szövegű szerkesztése](#add-an-editorial-qna-set) lehetőv
 
 A [Markdown](../reference-markdown-format.md) jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](../index.yml)részeként importálandó tudásbázisok létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="editing-your-knowledge-base-locally"></a>A Tudásbázis helyi szerkesztése
+
+A Tudásbázis létrehozása után javasolt a [QnA Maker-portálon](https://qnamaker.ai)lévő Tudásbázis szövegének szerkesztése a helyi fájlok exportálása és újraimportálása helyett. Előfordulhat azonban, hogy a tudásbázist helyileg kell szerkesztenie.
+
+Exportálja a tudásbázist a **Beállítások** lapról, majd szerkessze a tudásbázist a Microsoft Excelben. Ha egy másik alkalmazás használatával szerkeszti az exportált fájlt, előfordulhat, hogy az alkalmazás szintaktikai hibákat tartalmaz, mert az nem teljes TSV-kompatibilis. A Microsoft Excel TSV-fájljai általában nem vezetnek be formázási hibákat.
+
+Miután végzett a szerkesztéssel, importálja újra a TSV-fájlt a **Beállítások** lapról. Ez teljes mértékben lecseréli az aktuális tudásbázist az importált tudásbázisba.
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Együttműködés a tudásbázison](../index.yml)

@@ -2,13 +2,13 @@
 title: Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezéséhez az Azure VMware-megoldásban
 description: Hozzon létre egy kódtárat egy virtuális gép üzembe helyezéséhez egy Azure VMware-megoldás saját felhőben.
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 02/03/2021
+ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461685"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550538"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezéséhez az Azure VMware-megoldásban
 
@@ -22,7 +22,7 @@ Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy fel
 
 ## <a name="create-a-content-library"></a>Tartalom könyvtárának létrehozása
 
-1. A helyszíni vSphere-ügyfélen válassza a **menü > tartalomkezelők**lehetőséget.
+1. A helyszíni vSphere-ügyfélen válassza a **menü > tartalomkezelők** lehetőséget.
 
    ![Válassza a menü – > a kódtárak lehetőséget.](./media/content-library/vsphere-menu-content-libraries.png)
 
@@ -30,7 +30,7 @@ Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy fel
 
    ![Kattintson a Hozzáadás gombra egy új tartalomforrás létrehozásához.](./media/content-library/create-new-content-library.png)
 
-1. Adjon meg egy nevet, és erősítse meg a vCenter-kiszolgáló IP-címét, majd kattintson a **tovább**gombra.
+1. Adjon meg egy nevet, és erősítse meg a vCenter-kiszolgáló IP-címét, majd kattintson a **tovább** gombra.
 
    ![Adja meg a választott nevet és megjegyzéseket, majd válassza a tovább lehetőséget.](./media/content-library/new-content-library-step1.png)
 
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy fel
 
    ![Ebben a példában egy helyi tartalom-függvénytárat fogunk létrehozni, válassza a tovább lehetőséget.](./media/content-library/new-content-library-step2.png)
 
-1. Válassza ki a tartalmi könyvtárat tároló adattárt, majd kattintson a **tovább**gombra.
+1. Válassza ki a tartalmi könyvtárat tároló adattárt, majd kattintson a **tovább** gombra.
 
    ![Válassza ki a tartalom-függvénytárat tároló adattárt, majd kattintson a Next (tovább) gombra.](./media/content-library/new-content-library-step3.png)
 
@@ -50,11 +50,11 @@ Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy fel
 
 Most, hogy létrehozta a kódtárat, hozzáadhat egy ISO-rendszerképet, amellyel üzembe helyezheti a virtuális gépet egy privát felhőalapú fürtön. 
 
-1. A vSphere-ügyfélen válassza a **menü > tartalomkezelők**lehetőséget.
+1. A vSphere-ügyfélen válassza a **menü > tartalomkezelők** lehetőséget.
 
 1. Kattintson a jobb gombbal az új ISO-hez használni kívánt könyvtárra, és válassza az **Importálás elemet**.
 
-1. Importáljon egy függvénytár-elemet a forráshoz az alábbi módszerek egyikével, majd válassza az **Importálás**lehetőséget:
+1. Importáljon egy függvénytár-elemet a forráshoz az alábbi módszerek egyikével, majd válassza az **Importálás** lehetőséget:
    1. Válassza ki az URL-címet, és adjon meg egy URL-címet az ISO letöltéséhez.
 
    1. Válassza ki a helyi rendszerből feltölteni kívánt **helyi fájlt** .
@@ -67,15 +67,15 @@ Most, hogy létrehozta a kódtárat, hozzáadhat egy ISO-rendszerképet, amellye
 
 ## <a name="deploy-a-vm-to-a-private-cloud-cluster"></a>Virtuális gép üzembe helyezése privát felhőalapú fürtön
 
-1. A vSphere-ügyfélben válassza a **menü > gazdagépek és fürtök**lehetőséget.
+1. A vSphere-ügyfélben válassza a **menü > gazdagépek és fürtök** lehetőséget.
 
 1. A bal oldali panelen bontsa ki a fát, és válasszon ki egy fürtöt.
 
-1. Válassza a **műveletek > új virtuális gép**lehetőséget.
+1. Válassza a **műveletek > új virtuális gép** lehetőséget.
 
 1. Lépjen a varázslóba, és módosítsa a kívánt beállításokat.
 
-1. Válassza az **új CD/DVD-meghajtó > ügyféleszközök > a Content Library ISO-fájl**lehetőséget.
+1. Válassza az **új CD/DVD-meghajtó > ügyféleszközök > a Content Library ISO-fájl** lehetőséget.
 
 1. Válassza ki az előző szakaszban feltöltött ISO-t, majd kattintson az **OK gombra**.
 
@@ -90,9 +90,12 @@ Most, hogy létrehozta a kódtárat, hozzáadhat egy ISO-rendszerképet, amellye
 1. Ellenőrizze a beállításokat, majd kattintson a **Befejezés gombra**.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha a VMware HCX használatával szeretné áttelepíteni a virtuális gépek számítási feladatait a saját felhőbe, használja a [VMware HCX üzembe helyezési és konfigurálási](tutorial-deploy-vmware-hcx.md) eljárását.
+Most, hogy elvégezte a virtuális gépek Azure VMware-megoldásban való üzembe helyezéséhez szükséges tartalom-függvénytár létrehozását, érdemes megismernie az alábbiakat:
+
+- A [VMware HCX üzembe helyezése és konfigurálása](tutorial-deploy-vmware-hcx.md) a virtuális gépek számítási feladatainak saját felhőbe való áttelepítéséhez.
+- [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md).
 
 <!-- LINKS - external-->
 

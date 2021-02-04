@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879781"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549186"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 
@@ -102,8 +102,8 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
         Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
 
-    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában nem teszünk meg beállításokat. Kattintson a **Tovább** gombra.
-
+    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában válassza ki a **day_of_week** váltási kapcsolóját, hogy ne szerepeljen. Kattintson a **Tovább** gombra.
+         ![Séma űrlap](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
     1. A **részletek megerősítése** űrlapon ellenőrizze, hogy az információ megegyezik-e a korábban az **alapinformációk, az adattár és a fájl kiválasztása,** valamint a **beállítások és az előnézeti** űrlapok alapján.
     
     1. Válassza a **Létrehozás** lehetőséget az adatkészlet létrehozásának befejezéséhez.
@@ -159,7 +159,7 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
 
     1. Válassza a **további konfigurációs beállítások megtekintése** lehetőséget, és töltse fel a mezőket az alábbiak szerint. Ezek a beállítások hatékonyabban szabályozzák a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza.
 
-        További &nbsp; konfigurációk|Leírás|&nbsp;Az &nbsp; oktatóanyag értéke
+        További &nbsp; konfigurációk|Description|&nbsp;Az &nbsp; oktatóanyag értéke
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
         A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
@@ -170,12 +170,6 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
         
         Kattintson a **Mentés** gombra.
     
-    1. Válassza a **featurization-beállítások megtekintése** lehetőséget. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlet featurization.
-
-        ![Featurization kiválasztása](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
- 
-        Kattintson a **Mentés** gombra.
-
 1. A kísérlet futtatásához kattintson a **Befejezés** gombra. Megnyílik a **futtatási részletek**  képernyő, amelyen a kísérlet előkészítésének megkezdése után a **Futtatás állapota** látható. Ez az állapot frissíti a kísérlet előrehaladását. Az értesítések a Studio jobb felső sarkában is megjelennek, hogy tájékoztassák a kísérlet állapotáról.
 
 >[!IMPORTANT]
@@ -247,7 +241,7 @@ Csak a központi telepítési példányt törölje a Azure Machine Learning a ht
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell létrehozásához és üzembe helyezéséhez Azure Machine Learning automatikus ML-interfészét használta. További információkat és további lépéseket a következő cikkekben talál:
 

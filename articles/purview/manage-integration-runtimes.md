@@ -6,17 +6,20 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d365787ea3603ef0adb8ad0b48bef9792ffb003
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 02/03/2021
+ms.openlocfilehash: 72efcacf20b0d67c9d6a8255426a09f9813f17b4
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552504"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550498"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul létrehozása és kezelése
 
-Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet egy saját üzemeltetésű integrációs modult (a-t) az adatforrások vizsgálatának elősegítése érdekében.
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet egy saját üzemeltetésű integrációs modult (az adatforrásokat az Azure hatáskörébe).
+
+> [!NOTE]
+> A hatáskörébe Integration Runtime nem osztható meg egy Azure szinapszis Analytics-vagy Azure Data Factory-Integration Runtime ugyanazon a gépen. Külön gépre kell telepíteni.
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
@@ -24,31 +27,31 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet egy saját üzemeltet
 
 2. A bal oldali ablaktábla **források és vizsgálat** területén válassza az **integrációs** modulok lehetőséget, majd válassza az **+ új** lehetőséget.
 
-    :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="kattintson az IR elemre.":::
+   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="Kattintson az IR elemre.":::
 
 3. Az **Integration Runtime telepítése** lapon válassza a **saját** üzemeltetésű Self-Hosted IR létrehozása lehetőséget, majd kattintson a **Folytatás** gombra.
 
-    :::image type="content" source="media/manage-integration-runtimes/select-self-hosted-ir.png" alt-text="hozzon létre egy új.":::
+   :::image type="content" source="media/manage-integration-runtimes/select-self-hosted-ir.png" alt-text="Hozzon létre egy új.":::
 
 4. Adja meg az IR nevét, majd válassza a létrehozás lehetőséget.
 
 5. A **Integration Runtime beállítások** lapon kövesse a **manuális telepítés** szakaszban található lépéseket. Le kell töltenie az integrációs modult a letöltési helyről egy olyan virtuális gépre vagy gépre, amelyen futtatni szeretné.
 
-    :::image type="content" source="media/manage-integration-runtimes/integration-runtime-settings.png" alt-text="kulcs lekérése":::
+   :::image type="content" source="media/manage-integration-runtimes/integration-runtime-settings.png" alt-text="kulcs lekérése":::
 
-    a. Másolja és illessze be a hitelesítési kulcsot.
-        
-    b. Töltse le a saját üzemeltetésű integrációs modult [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) egy helyi Windows-gépen. Indítsa el a telepítőt.
-        
-    c. A **Integration Runtime (helyi) regisztrálása** lapon illessze be a korábban mentett 2 kulcs egyikét, és válassza a **regisztráció** lehetőséget.
+   - Másolja és illessze be a hitelesítési kulcsot.
 
-    :::image type="content" source="media/manage-integration-runtimes/register-integration-runtime.png" alt-text="bemeneti kulcs.":::
+   - Töltse le a saját üzemeltetésű integrációs modult [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) egy helyi Windows-gépen. Indítsa el a telepítőt.
 
-    d. Az **új Integration Runtime (helyi) csomópont** lapon válassza a **Befejezés** lehetőséget.
+   - A **Integration Runtime (helyi) regisztrálása** lapon illessze be a korábban mentett két kulcs egyikét, és válassza a **regisztráció** lehetőséget.
+
+     :::image type="content" source="media/manage-integration-runtimes/register-integration-runtime.png" alt-text="bemeneti kulcs.":::
+
+   - Az **új Integration Runtime (helyi) csomópont** lapon válassza a **Befejezés** lehetőséget.
 
 6. A saját üzemeltetésű integrációs modul sikeres regisztrálását követően a következő ablak jelenik meg:
 
-    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="sikeresen regisztrálva.":::
+   :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="sikeresen regisztrálva.":::
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul kezelése
 
@@ -62,4 +65,4 @@ A saját üzemeltetésű integrációs modult úgy törölheti, ha a felügyelet
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A törölt eszközök észlelése a vizsgálatok során](concept-detect-deleted-assets.md)
+[Hogyan észlelhetők a vizsgálatok során az eltávolított eszközök?](concept-detect-deleted-assets.md)

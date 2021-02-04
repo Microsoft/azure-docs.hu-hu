@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
-ms.openlocfilehash: 89e64b6e8018fafb22820e8594bc2b3c888bb04a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732154"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550452"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Forts Change Cloud beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -50,11 +50,11 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>2. lépés Az Azure AD-vel való kiépítés támogatásához konfigurálja a Forts Change Cloud változót
 
-1. Jelentkezzen be a rendszergazdai fiókjával a Forts Change felhőben. Kattintson a **Beállítások ikonra** , majd navigáljon a **scim beállításaihoz**.
+1. Jelentkezzen be a rendszergazdai fiókjával a Forts Change felhőben. Kattintson a **Beállítások ikonra** , majd navigáljon a **felhasználó üzembe helyezése (scim)** elemre.
 
     [![A Forts Change Cloud scim-beállítás ](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png)](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png#lightbox)
 
-2. Az új ablakban másolja és mentse az **elsődleges tokent**. Ez az érték jelenik meg a Secret token (titkos jogkivonat) mezőben a Forts-beli Felhőbeli alkalmazás kiépítési lapján a Azure Portal.
+2. Az új ablakban másolja és mentse a **bérlői URL-címet** és az **elsődleges jogkivonatot**. A bérlői URL-címet a **bérlői URL** -cím * mezőben adja meg, az elsődleges token pedig a Forts Cloud alkalmazás üzembe helyezés lapjának **Secret** * token mezőjébe kerül, a Azure Portal.
      
       [![A fortes megváltoztatja a felhő elsődleges tokenjét](media/fortes-change-cloud-provisioning-tutorial/primary-token.png)](media/fortes-change-cloud-provisioning-tutorial/primary-token.png#lightbox)
 

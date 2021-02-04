@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442048"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548661"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B együttműködési API és testreszabás
 
@@ -67,6 +66,16 @@ Az API a következő képességeket kínálja:
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>Annak megállapítása, hogy a felhasználó már megkapta-e a címtárat
+
+A meghívó API-val meghatározhatja, hogy egy felhasználó már létezik-e az erőforrás-bérlőben. Ez akkor lehet hasznos, ha olyan alkalmazást fejleszt, amely a meghívó API-t használja egy felhasználó meghívásához. Ha a felhasználó már létezik az erőforrás-címtárban, akkor nem kap meghívót, így a lekérdezés futtatásával megállapíthatja, hogy a már e-mail-cím UPN-ként vagy más bejelentkezési tulajdonságként van-e megnyitva.
+
+1. Győződjön meg arról, hogy a felhasználó e-mail-tartománya nem része az erőforrás-bérlő ellenőrzött tartományának.
+2. Az erőforrás-bérlőben használja a következő felhasználói lekérdezés beolvasása, ahol {0} a a meghívó e-mail cím:
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>Engedélyezési modell
 
@@ -102,10 +111,10 @@ A következő lehetőségek közül választhat:
 
 Miután meghívót küldött egy külső felhasználótól, a **Get-AzureADUser** parancsmag segítségével megtekintheti, hogy elfogadták-e. A rendszer a következő tulajdonságokat tölti fel Get-AzureADUser, ha egy külső felhasználó meghívót küld:
 
-* A **UserState** jelzi, hogy a meghívás **PendingAcceptance** vagy **elfogadva**van-e.
+* A **UserState** jelzi, hogy a meghívás **PendingAcceptance** vagy **elfogadva** van-e.
 * A **UserStateChangedOn** a **UserState** tulajdonság legutóbbi módosításának időbélyegét jeleníti meg.
 
-A **Filter (szűrés** ) lehetőséggel **UserState**alapján szűrheti az eredményeket. Az alábbi példa azt mutatja be, hogyan szűrheti az eredményeket, hogy csak a függőben lévő meghívóval rendelkező felhasználók jelenjenek meg. A példa a **Format-List** kapcsolót is megjeleníti, amely lehetővé teszi a megjelenítendő tulajdonságok megadását. 
+A **Filter (szűrés** ) lehetőséggel **UserState** alapján szűrheti az eredményeket. Az alábbi példa azt mutatja be, hogyan szűrheti az eredményeket, hogy csak a függőben lévő meghívóval rendelkező felhasználók jelenjenek meg. A példa a **Format-List** kapcsolót is megjeleníti, amely lehetővé teszi a megjelenítendő tulajdonságok megadását. 
  
 
 ```powershell
@@ -119,7 +128,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 
 Tekintse meg a Meghívási API-referenciát a alkalmazásban [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [A B2B együttműködés Meghívási e-mail elemei](invitation-email-elements.md)

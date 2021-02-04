@@ -7,20 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1062f126da8be6b37f6b52eee520425b3edcde16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7528d12dcbfba09b4dae4ac07a5c683a7c11bd88
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744340"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548799"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Hálózati házirendek letiltása a Private link Service forrás IP-címéhez
 
 A privát kapcsolati szolgáltatás forrás IP-címének kiválasztásához explicit letiltási beállítást kell `privateLinkServiceNetworkPolicies` megadni az alhálózaton. Ez a beállítás csak arra a privát IP-címére érvényes, amelyet a privát kapcsolati szolgáltatás forrás IP-címeként választott. Az alhálózatban található egyéb erőforrásokhoz a hozzáférés a hálózati biztonsági csoportok (NSG) biztonsági szabályok definíciója alapján van szabályozva. 
  
-Ha bármely Azure-ügyfelet (PowerShell, CLI vagy sablonok) használ, további lépésekre van szükség a tulajdonság módosításához. A szabályzatot letilthatja a Cloud shellrel Azure Portal vagy Azure PowerShell helyi telepítése, az Azure CLI vagy a Azure Resource Manager sablonok használatával.  
+Ha a portált privát kapcsolati szolgáltatás létrehozására használja, a rendszer automatikusan letiltja ezt a beállítást a létrehozási folyamat részeként. Az Azure-ügyfeleket (PowerShell, parancssori felület vagy sablonok) használó üzemelő példányok esetében további lépésre van szükség a tulajdonság módosításához. A szabályzatot letilthatja a Cloud shellrel Azure Portal vagy Azure PowerShell helyi telepítése, az Azure CLI vagy a Azure Resource Manager sablonok használatával.  
  
-Az alábbi lépések végrehajtásával tiltsa le a *myVirtualNetwork* nevű virtuális hálózat magánhálózati kapcsolati szolgáltatásának hálózati házirendjeit egy *myResourceGroup*nevű erőforráscsoport *alapértelmezett* alhálózatával. 
+Az alábbi lépések végrehajtásával tiltsa le a *myVirtualNetwork* nevű virtuális hálózat magánhálózati kapcsolati szolgáltatásának hálózati házirendjeit egy *myResourceGroup* nevű erőforráscsoport *alapértelmezett* alhálózatával. 
 
 ## <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózat magánhálózati végpont-házirendjeit a Azure PowerShell használatával.
@@ -72,6 +72,6 @@ Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózati végpont-ház
 } 
  
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private-végpontról](private-endpoint-overview.md)
  

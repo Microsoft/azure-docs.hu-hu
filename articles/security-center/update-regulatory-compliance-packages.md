@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986683"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548864"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>A szabályzatok megfelelőségi irányítópultján lévő szabványok testreszabása
 
 Azure Security Center folyamatosan összehasonlítja az erőforrások konfigurációját az iparági szabványok, rendeletek és referenciaértékek követelményeivel. A megfelelőségi **irányítópult** az adott megfelelőségi követelmények teljesítése alapján nyújt betekintést a megfelelőségi helyzetbe.
 
@@ -123,5 +123,5 @@ Ebből a cikkből megtudhatta, hogyan **adhat hozzá megfelelőségi szabványok
 Kapcsolódó anyagok esetében tekintse meg a következő lapokat:
 
 - [Azure-biztonsági teljesítményteszt](../security/benchmarks/introduction.md)
-- [A Security Center szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md)
+- A [Security Center szabályozási megfelelőségi irányítópultja](security-center-compliance-dashboard.md) – megtudhatja, hogyan követheti nyomon és exportálhatja a szabályozási megfelelőségi adatait Security Center és külső eszközökkel
 - [Biztonsági szabályzatok használata](tutorial-security-policy.md)

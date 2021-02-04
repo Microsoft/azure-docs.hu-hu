@@ -79,6 +79,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Nem fix IP-cím konfigurációja
       href: load-balancer-floating-ip.md
+    - name: Eloszlási módok
+      href: distribution-mode-concepts.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció

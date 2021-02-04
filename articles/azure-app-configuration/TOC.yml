@@ -122,7 +122,7 @@
       href: howto-import-export-data.md
     - name: JSON tartalomtípus használata kulcsértékekhez
       href: howto-leverage-json-content-type.md
-    - name: Események átirányítása egyéni végponthoz
+    - name: Adatmódosítási értesítések Event Grid használata
       href: howto-app-configuration-event.md
     - name: A konfigurációs tár automatikus biztonsági mentése
       href: howto-backup-config-store.md

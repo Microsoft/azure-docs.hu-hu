@@ -3,15 +3,15 @@ title: SSL/TLS-kapcsolat – Azure Database for MariaDB
 description: Információk a Azure Database for MariaDB és a társított alkalmazások az SSL-kapcsolatok megfelelő használatához való konfigurálásához
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 7ada6f5a7b7ece9b8b36ea1bd2e52b5ad7efd12d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6c4ee8c6d12a6350c319e40bbe30046af4932311
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662491"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550640"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>SSL/TLS-kapcsolat a Azure Database for MariaDB
 A Azure Database for MariaDB a SSL (SSL) használatával támogatja az adatbázis-kiszolgáló és az ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -62,7 +62,7 @@ Ha meg szeretné tudni, hogyan állíthatja be a TLS-beállítást a Azure Datab
 
 ## <a name="cipher-support-by-azure-database-for-mariadb"></a>Titkosítási támogatás a Azure Database for MariaDB
 
-Az SSL/TLS-kommunikáció részeként a titkosítási csomagok ellenőrzése megtörténik, és csak a titkosító öltönyök támogatása engedélyezett a serer adatbázissal való kommunikációhoz. A titkosító csomag érvényesítése az [átjáró rétegében](concepts-connectivity-architecture.md#connectivity-architecture) van szabályozva, és nem explicit módon a csomóponton. Ha a titkosítási csomagok nem felelnek meg az alább felsorolt lakosztályok egyikének, a rendszer elutasítja a bejövő ügyfélkapcsolatokat.
+Az SSL/TLS-kommunikáció részeként a titkosítási csomagok ellenőrzése megtörténik, és csak a titkosító öltönyök támogatása engedélyezett az adatbázis-kiszolgálóval való kommunikációhoz. A titkosító csomag érvényesítése az [átjáró rétegében](concepts-connectivity-architecture.md#connectivity-architecture) van szabályozva, és nem explicit módon a csomóponton. Ha a titkosítási csomagok nem felelnek meg az alább felsorolt lakosztályok egyikének, a rendszer elutasítja a bejövő ügyfélkapcsolatokat.
 
 ### <a name="cipher-suite-supported"></a>Titkosítási csomag támogatott
 

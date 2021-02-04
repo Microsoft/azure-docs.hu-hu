@@ -11,30 +11,32 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/28/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 523b081b59bd2f4c45c1ceeb9f39c58f4e3b02b1
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 20a464011e5a8d37a6215b222323ca989e02ac04
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986904"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550936"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: Jogszabályi megfelelés javítása
 
 Azure Security Center megkönnyíti a szabályozási megfelelőségi követelmények teljesítésének folyamatát a **szabályozási megfelelőségi irányítópult** használatával. 
 
-Security Center a hibrid felhőalapú környezet folyamatos értékelését hajtja végre, hogy elemezze a kockázati tényezőket az előfizetésekre vonatkozó szabványok és ajánlott eljárások alapján. Az irányítópult megfelel ezeknek a szabványoknak való megfelelőségi állapotának. 
+Security Center folyamatosan vizsgálja a hibrid felhőalapú környezetet, hogy elemezze a kockázati tényezőket az előfizetésekre vonatkozó szabványok és ajánlott eljárások alapján. Az irányítópult megfelel ezeknek a szabványoknak való megfelelőségi állapotának. 
 
-Ha engedélyezi Security Center Azure-előfizetéshez, a rendszer automatikusan hozzárendeli az [Azure biztonsági teljesítménytesztet](../security/benchmarks/introduction.md). Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
+Ha engedélyezi Security Center Azure-előfizetésben, a rendszer automatikusan hozzárendeli az [Azure biztonsági teljesítménytesztet](../security/benchmarks/introduction.md). Ez a széles körben tiszteletben lévő teljesítményteszt a [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) és a [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) által vezérelt vezérlőkre épül, és a felhő-központú biztonságra összpontosít.
 
-A szabályozási megfelelőségi irányítópulton egy adott szabvány vagy szabályozás kontextusában tekintheti meg az összes értékelés állapotát a környezetében. A javaslatok és a környezet kockázati tényezőinek csökkentése érdekében a megfelelőségi testhelyzet javul.
+A szabályzatok megfelelőségi irányítópultja a választott szabványok és rendeletek alapján mutatja be a környezetében lévő összes értékelés állapotát. A javaslatok és a környezet kockázati tényezőinek csökkentése érdekében a megfelelőségi testhelyzet javul.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * A szabályozás megfelelőségének kiértékelése a szabályzatoknak való megfelelőségi irányítópult használatával
 > * A megfelelőségi helyzet javítása a javaslatok alapján
+> * Riasztások beállítása a megfelelőségi testtartás változásaira
+> * Megfelelőségi adatai folyamatos adatfolyamként és heti pillanatképként exportálhatók
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -49,11 +51,11 @@ Az oktatóanyagban tárgyalt funkciók átlépéséhez:
 
 A szabályozási megfelelőségi irányítópult a kiválasztott megfelelőségi szabványokat az összes követelménynek megfelelően mutatja, ahol a támogatott követelmények a megfelelő biztonsági értékelésekre vannak leképezve. Ezen értékelések állapota tükrözi a szabványnak való megfelelést.
 
-A jogszabályi megfelelőségi irányítópult segítségével a követelményekkel és az Önt megillető előírásokkal összhangba helyezheti a hiányosságokat. Ez a célzott nézet azt is lehetővé teszi, hogy folyamatosan figyelje a megfelelőséget a dinamikus Felhőbeli és a hibrid környezeteken belül.
+A szabályzatok megfelelőségi irányítópultjának használatával a kiválasztott szabványoknak és előírásoknak való megfeleléssel kapcsolatos figyelmet kaphat. Ez a célzott nézet azt is lehetővé teszi, hogy folyamatosan figyelje a megfelelőséget a dinamikus Felhőbeli és a hibrid környezeteken belül.
 
 1. A Security Center menüjében válassza a **jogszabályi megfelelőség** lehetőséget.
 
-    A képernyő tetején található egy irányítópult, amely áttekintést nyújt a megfelelőségi állapotáról a támogatott megfelelőségi szabályozások készletével együtt. Megtekintheti a teljes megfelelőségi pontszámot, valamint az egyes standardokhoz kapcsolódó elvégzési és sikertelen értékelések számát.
+    A képernyő tetején található egy irányítópult, amely áttekintést nyújt a megfelelőségi állapotáról a támogatott megfelelőségi szabályozások készletével együtt. Ekkor megjelenik a teljes megfelelőségi pontszám, valamint az egyes standardokhoz tartozó elküldés és a sikertelen értékelések száma.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Szabályozási megfelelőségi irányítópult" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
@@ -69,15 +71,15 @@ A jogszabályi megfelelőségi irányítópult segítségével a követelmények
 
 ## <a name="improve-your-compliance-posture"></a>A megfelelőségi testhelyzet javítása
 
-A szabályozás megfelelőségi irányítópultján található információk alapján a megfelelőségi állapotot a közvetlenül az irányítópulton belüli javaslatok megoldásával javíthatja.
+A szabályozás megfelelőségi irányítópultján található információk használatával a javaslatok közvetlenül az irányítópulton való feloldásával javíthatja a megfelelőségi testtartást.
 
 1.  Az adott javaslat részleteinek megtekintéséhez kattintson az irányítópulton megjelenő sikertelen értékelések bármelyikére. Mindegyik javaslat olyan szervizelési lépéseket tartalmaz, amelyeket követni kell a probléma megoldásához.
 
-1.  Kiválaszthat egy adott erőforrást a további részletek megtekintéséhez és az adott erőforráshoz tartozó javaslat megoldásához. <br>Az **Azure CIS 1.1.0** standard verziójában például kiválaszthatja, hogy a rendszer hogyan **alkalmazza a lemez titkosítását a virtuális gépekre**.
+1.  Válasszon ki egy adott erőforrást a további részletek megtekintéséhez és az adott erőforráshoz tartozó javaslat megoldásához. <br>Az **Azure CIS 1.1.0** standard esetében például válassza a **lemezes titkosítást a virtuális gépeken**.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="A standard érdeklődők javaslatának kiválasztása közvetlenül a javaslat részleteit tartalmazó oldalra":::
 
-1. Ebben a példában, ha a javaslat részletei lapon a **művelet elvégzése** lehetőséget választja, akkor a Azure Portal Azure-beli virtuális gépek oldalain érkeznek, ahol megnyithatja a **Biztonság** lapot, és engedélyezheti a titkosítást:
+1. Ebben a példában, ha a javaslat részletei lapon a **művelet elvégzése** lehetőséget választja, akkor a Azure Portal Azure-beli virtuálisgép-oldalain érkezik, ahol engedélyezheti a titkosítást a **Biztonság** lapon:
 
     :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="A javaslat részletei lapon található művelet gomb a Szervizelési beállításokhoz vezet":::
 
@@ -88,18 +90,47 @@ A szabályozás megfelelőségi irányítópultján található információk al
     > [!NOTE]
     > Az értékelések körülbelül 12 óránként futnak, így a megfelelőségi adatokat csak a megfelelő értékelés következő futtatása után fogja látni.
 
+
+## <a name="export-your-compliance-status-data"></a>A megfelelőségi állapot adatainak exportálása
+
+Ha nyomon szeretné követni a megfelelőségi állapotát a környezetében lévő többi figyelési eszközzel, Security Center tartalmaz egy exportálási mechanizmust, amely megkönnyíti ezt a megoldást. A **folyamatos exportálás** konfigurálásával kiválaszthatja az Azure Event hub vagy egy log Analytics munkaterület kijelölését.
+
+Folyamatos exportálással az Azure Event hub vagy egy Log Analytics munkaterület használatával:
+
+- Az összes szabályozási megfelelőségi érték exportálása **folyamatos adatfolyamban**:
+
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="A szabályozási megfelelőségi adatstreamek folyamatos exportálása" lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
+
+- A szabályozási megfelelőségi adatairól szóló **heti Pillanatképek** exportálása:
+
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="A szabályozási megfelelőségi adatok heti pillanatképének folyamatos exportálása" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
+
+A megfelelőségi adatok **PDF/CSV-jelentését** közvetlenül a szabályozási megfelelőségi irányítópultról is exportálhatja:
+
+:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="A szabályozási megfelelőségi adatai PDF-vagy CSV-jelentésként exportálhatók" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
+
+További információ a [Security Center-adatfeldolgozás folyamatos exportálásáról](continuous-export.md).
+
+
+## <a name="run-workflow-automations-when-there-are-changes-to-your-compliance"></a>Munkafolyamat-automatizálás futtatása a megfelelőség módosításakor
+
+A Security Center munkafolyamat-automatizálási funkciója kiválthatja Logic Apps, ha az egyik szabályozási megfelelőségi felmérés állapota megváltozik.
+
+Előfordulhat például, hogy egy adott felhasználót szeretne e-mailben elSecurity Center, ha a megfelelőségi értékelés sikertelen. Először létre kell hoznia a logikai alkalmazást (a [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával), majd az eseményindítót egy új munkafolyamat-automatizálásban kell beállítania, ahogyan az a [Security Center triggerekre adott válaszok automatizálása](workflow-automation.md)című részben is szerepel.
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="A szabályozások megfelelőségi vizsgálatának módosításai a Munkafolyamat-automatizálás elindításához" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a Security Center szabályozási megfelelőségi irányítópultját a következőre:
 
--   Megtekintheti és figyelheti a megfelelőségi testtartást az Ön számára fontos szabványokhoz és előírásokhoz képest.
--   Javítsa a megfelelőségi állapotot a kapcsolódó javaslatok feloldásával és a megfelelőségi pontszám javításával.
+- Megtekintheti és figyelheti a megfelelőségi testtartást az Ön számára fontos szabványokkal és előírásokkal kapcsolatban.
+- Javítsa a megfelelőségi állapotot a kapcsolódó javaslatok feloldásával és a megfelelőségi pontszám javításával.
 
-A szabályozási megfelelőségi irányítópult nagy mértékben leegyszerűsítheti a megfelelőségi folyamatot, és jelentős mértékben csökkentheti az Azure-és hibrid környezetek megfelelőségi igazolásának begyűjtéséhez szükséges időt.
+A szabályozási megfelelőségi irányítópult nagy mértékben leegyszerűsítheti a megfelelőségi folyamatot, és jelentős mértékben csökkentheti az Azure-, hibrid és többfelhős környezet megfelelőségi igazolásának begyűjtéséhez szükséges időt.
 
-További információt a következő kapcsolódó cikkekben talál:
+További információkért tekintse meg a következő kapcsolódó lapokat:
 
--   [Frissítés dinamikus megfelelőségi csomagokra a szabályozási megfelelőségi irányítópulton (előzetes verzió)](update-regulatory-compliance-packages.md) – Ismerje meg ezt az előzetes funkciót, amely lehetővé teszi, hogy frissítse a szabályozási megfelelőségi irányítópulton látható szabványokat az új *dinamikus* csomagokra. Ugyanezt az előzetes verziójú szolgáltatást is használhatja új megfelelőségi csomagok hozzáadásához és a megfelelőség további szabványokkal való monitorozásához. 
--   A [Azure Security Center biztonsági állapotának monitorozása](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának figyelését.
--   [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.
--   [Javítsa a Azure Security Center biztonságos pontszámát](secure-score-security-controls.md) – Ismerje meg, hogyan rangsorolhatja a biztonsági réseket és a biztonsági javaslatokat, hogy a leghatékonyabban javítsa a biztonságot.
+- [Szabja testre a szabványok készletét a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md) – Ismerje meg, hogy milyen szabványok jelenjenek meg a szabályozási megfelelőségi irányítópulton. 
+- A [Azure Security Center biztonsági állapotának monitorozása](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának figyelését.
+- [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan használhatók a javaslatok a Azure Security Centerban az Azure-erőforrások védelme érdekében.

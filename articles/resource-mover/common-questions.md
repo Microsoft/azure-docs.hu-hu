@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222815"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550708"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
@@ -49,6 +49,10 @@ Az erőforrás-mozgató használatával jelenleg a következő erőforrásokat h
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Át lehet helyezni az erőforrásokat az előfizetések között, amikor áthelyezem őket a régiók között?
 
 Az erőforrásoknak a célhelyre való áthelyezése után módosíthatja az előfizetést. [További](../azure-resource-manager/management/move-resource-group-and-subscription.md) információ az erőforrások másik előfizetésre való áthelyezéséről. 
+
+### <a name="does-azure-resource-move-service-store-customer-data"></a>Az Azure erőforrás-áthelyezési szolgáltatás tárolja az ügyféladatokat? 
+Nem. Az erőforrás-áthelyezési szolgáltatás nem tárolja az ügyféladatokat, csak azokat a metaadatokat tárolja, amelyek megkönnyítik az ügyfél általi áthelyezésre kiválasztott erőforrások nyomon követését és előrehaladását.
+
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Hol találhatók a metaadatok a tárolt régiók között?
 

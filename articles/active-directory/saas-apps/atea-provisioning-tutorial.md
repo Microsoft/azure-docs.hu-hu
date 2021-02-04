@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 67b114ac355b293db61d00b89816ab73aaa2e5b2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430696"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550268"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Atea konfigurálása
 
@@ -48,7 +48,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>2. lépés Atea konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-Az Iris intranet konfigurálásához az Azure AD-vel való kiépítés támogatásához le kell kérnie a **bérlői URL-címet** és a **titkos jogkivonatot** , ha egy e-mailt küld a [Atea támogatási csapatának](mailto:servicedesk@atea.dk) Ezek az értékek a **titkos jogkivonat** és a **bérlői URL-cím** mezőben jelennek meg a Atea alkalmazásának Azure Portalban való kiépítés lapján.
+A Atea konfigurálása az Azure AD-vel való kiépítés támogatásához – írjon egy e-mailt a Atea támogatási csapatának <SSO.Support@atea.com>
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>3. lépés Atea hozzáadása az Azure AD Application Galleryből
 

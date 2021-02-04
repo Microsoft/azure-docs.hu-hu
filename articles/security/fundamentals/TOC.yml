@@ -138,7 +138,7 @@
       href: service-fabric-best-practices.md
 - name: 'Monitorozás, naplózás és műveletek'
   items:
-    - name: Speciális fenyegetésvédelem
+    - name: Fenyegetések elleni védelem
       href: threat-detection.md
     - name: Azure-naplózás
       href: log-audit.md

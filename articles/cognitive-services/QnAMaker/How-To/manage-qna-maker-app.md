@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 9c042d044f5ceba5a64d6bd7dfefa34bbc69b107
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e4f0e229488093067b231a5c92334238ca216234
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353204"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550555"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker alkalmazás kezelése
 
@@ -49,7 +49,7 @@ A következő lépések a közreműködő szerepkört használják, de a [szerep
 
 1. Válasszon ki egy szerepkört a következő listából:
 
-    |Role|
+    |Szerepkör|
     |--|
     |Tulajdonos|
     |Közreműködő|
@@ -71,50 +71,7 @@ Ha kijelölnek egy tudásbázist, az adott QnA Maker erőforráson aktuális sze
 
 :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Képernyőkép a Tudásbázisban a weblap bal felső sarkában, a Tudásbázis neve mellett zárójelben lévő, szerkesztési módban található Tudásbázisban.":::
 
-## <a name="upgrade-runtime-version-to-use-active-learning"></a>Futtatókörnyezet verziójának frissítése az aktív tanulás használatához
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
-
-Az aktív tanulást a futtatókörnyezet 4.4.0 és újabb verziói támogatják. Ha a Tudásbázis egy korábbi verzión lett létrehozva, [frissítse a futtatókörnyezetet](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) a szolgáltatás használatára.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
-
-QnA Maker felügyelt (előzetes verzió), mivel a futtatókörnyezetet maga a QnA Maker szolgáltatás üzemelteti, nem kell manuálisan frissíteni a futtatókörnyezetet.
-
----
-
-## <a name="turn-on-active-learning-for-alternate-questions"></a>Alternatív kérdések aktív tanulásának bekapcsolása
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
-
-Az aktív tanulás alapértelmezés szerint ki van kapcsolva. A javasolt kérdések megtekintéséhez kapcsolja be a következőt:. Az aktív tanulás bekapcsolását követően el kell küldenie az adatokat az ügyfélalkalmazástól a QnA Maker. További információ: [építészeti folyamat a GenerateAnswer és a Train API-k egy robotból való használatához](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
-
-1. A Tudásbázis közzétételéhez válassza a **Közzététel** lehetőséget. Az aktív tanulási lekérdezések csak a GenerateAnswer API-előrejelzési végpontról lesznek összegyűjtve. A QnA Maker portál teszt ablaktáblájára irányuló lekérdezések nem érintik az aktív tanulást.
-
-1. Az aktív tanulás bekapcsolásához a QnA Maker-portálon nyissa meg a jobb felső sarokban, válassza ki a **nevét**, és lépjen a [**Szolgáltatásbeállítások**](https://www.qnamaker.ai/UserSettings)menüpontra.
-
-    ![Kapcsolja be az aktív tanulás javasolt kérdéseit a szolgáltatás beállításai lapról. Válassza ki a felhasználónevét a jobb felső menüben, majd válassza a Szolgáltatásbeállítások elemet.](../media/improve-knowledge-base/Endpoint-Keys.png)
-
-
-1. Keresse meg a QnA Maker szolgáltatást, majd állítsa be az **aktív tanulást**.
-
-    > [!div class="mx-imgBorder"]
-    > [![A szolgáltatás beállításai lapon kapcsolja be az aktív tanulási funkciót. Ha nem tudja váltani a szolgáltatást, előfordulhat, hogy frissítenie kell a szolgáltatást.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
-    > [!Note]
-    > Az előző képen megadott pontos verzió csak példaként jelenik meg. A verzió eltérő lehet.
-    Az **aktív tanulás** engedélyezése után a Tudásbázis rendszeres időközönként új kérdéseket javasol a felhasználó által benyújtott kérdések alapján. Az **aktív tanulást** letilthatja a beállítás újbóli bekapcsolásával.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
-
-Alapértelmezés **szerint az Active** learning QnA Maker felügyelt (előzetes verzió). A javasolt alternatív kérdések megtekintéséhez a szerkesztési lapon [használja a megtekintési beállításokat](../How-To/improve-knowledge-base.md#view-suggested-questions) .
-
----
-
-## <a name="review-suggested-alternate-questions"></a>Javasolt alternatív kérdések áttekintése
-
-[Tekintse át a további javasolt kérdéseket](improve-knowledge-base.md) az egyes tudásbázisok **szerkesztési** lapján.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis létrehozása](./manage-knowledge-bases.md)

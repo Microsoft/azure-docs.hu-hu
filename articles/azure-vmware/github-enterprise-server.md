@@ -2,17 +2,17 @@
 title: A GitHub Enterprise Server beállítása az Azure VMware-megoldás privát felhőben
 description: Ismerje meg, hogyan állíthatja be a GitHub Enterprise Servert az Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/03/2021
+ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326913"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549102"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>A GitHub Enterprise Server beállítása az Azure VMware-megoldás privát felhőben
 
-Ebből a cikkből megtudhatja, hogyan telepítheti a GitHub Enterprise Servert, a [GitHub.com](https://github.com/)"helyszíni" verzióját az Azure VMware-megoldás privát felhőben. Az ebben az útmutatóban ismertetett forgatókönyv egy GitHub Enterprise Server-példány, amely akár 3 000 fejlesztő kiszolgálására képes, percenként 25 feladatot futtatva a GitHub-műveleteken. Ez magában foglalja az *előzetes* verziójú szolgáltatások (például a GitHub-műveletek) telepítését. Ha testre szeretné szabni az adott igényeknek megfelelő beállítást, tekintse át a következő cikkben felsorolt követelményeket: a [GitHub Enterprise Server telepítése VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)-en.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a GitHub Enterprise Servert, a [GitHub.com](https://github.com/)helyszíni verzióját az Azure VMware-megoldás privát felhőben. Az ebben az útmutatóban ismertetett forgatókönyv egy GitHub Enterprise Server-példány, amely akár 3 000 fejlesztő kiszolgálására képes, percenként 25 feladatot futtatva a GitHub-műveleteken. Ez magában foglalja az *előzetes* verziójú szolgáltatások (például a GitHub-műveletek) telepítését. Ha testre szeretné szabni az adott igényeknek megfelelő beállítást, tekintse át a következő cikkben felsorolt követelményeket: a [GitHub Enterprise Server telepítése VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)-en.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -61,7 +61,7 @@ Alkalmazza a beállításokat.  A példány újraindítása közben folytathatja
 
 A példány újraindítása után hozzon létre egy új rendszergazdai fiókot a példányon. Ügyeljen arra, hogy jegyezze fel a felhasználó jelszavát is.
 
-### <a name="additional-configuration-steps"></a>További konfigurációs lépések
+### <a name="other-configuration-steps"></a>Egyéb konfigurációs lépések
 
 Ha a példányát éles használatra szeretné megerősíteni, a következő opcionális telepítési lépések ajánlottak:
 
@@ -182,7 +182,7 @@ Itt minden szervezet számára elérhetővé tesszük, de a hozzáférést a sze
 
 ## <a name="optional-configuring-github-connect"></a>Választható A GitHub-kapcsolat konfigurálása
 
-Bár ez a lépés nem kötelező, javasoljuk, hogy ha a GitHub.com-on elérhető nyílt forráskódú műveleteket tervezi használni. Ez lehetővé teszi, hogy mások munkájára támaszkodva a munkafolyamatokban lévő újrafelhasználható műveletekre hivatkozzon.
+Bár ez a lépés nem kötelező, javasoljuk, hogy ha a GitHub.com-on elérhető nyílt forráskódú műveleteket kíván használni. Lehetővé teszi, hogy a munkafolyamatokban lévő újrafelhasználható műveletekre hivatkozva mások munkájára támaszkodjon.
 
 A GitHub-kapcsolódás engedélyezéséhez kövesse az [automatikus hozzáférés engedélyezése GitHub.com műveletekhez a GitHub-kapcsolat használatával](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect)című témakör lépéseit.
 
@@ -223,14 +223,12 @@ Ha minden sikeresen lefutott, megjelenik egy új probléma a tárházban, amely 
 
 Gratulálunk! Most fejezte be az első műveletek munkafolyamatát a GitHub Enterprise Serveren, amely az Azure VMware-megoldás privát felhőben fut.
 
-Csak a GitHub-műveletekkel foglalkozó felületét használjuk fel. További inspirációért vegye fel a [GitHub piactéren](https://github.com/marketplace)végrehajtott műveletek listáját, vagy [hozza létre a sajátját](https://docs.github.com/en/actions/creating-actions).
+Ebben a cikkben a GitHub Enterprise Server új példányát hoztunk létre, amely a GitHub.com saját üzemeltetésű, az Azure VMware-megoldás privát felhője felett található. Ez a példány a GitHub-műveletek támogatását tartalmazza, és az Azure Blob Storage használja a naplók és összetevők megőrzéséhez. Azonban csak a GitHub-műveletekkel foglalkozó felületét kell megkarcolni. Tekintse meg a [GitHub piactéren](https://github.com/marketplace)végrehajtott műveletek listáját, vagy [hozza létre a sajátját](https://docs.github.com/en/actions/creating-actions).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben a GitHub Enterprise Server új példányát hoztunk létre, amely a GitHub.com saját üzemeltetésű, az Azure VMware-megoldás privát felhője felett található. Ez a példány a GitHub-műveletek támogatását tartalmazza, és az Azure Blob Storage használja a naplók és összetevők megőrzéséhez. Ez nagyszerű kombináció egy modern, együttműködésen alapuló és biztonságos szoftverfejlesztési élményhez. Az Azure VMware megoldás szilárd alapjaira épül, amely lehetővé teszi a Felhőbeli erőforrások kihasználása ismerős környezetben.
+Most, hogy megismerte, hogyan állíthatja be a GitHub Enterprise Servert az Azure VMware-megoldás privát felhőben, érdemes megismernie az alábbiakat: 
 
-További információkért tekintse meg a következő forrásokat:
-
-- [A GitHub-műveletek első lépései](https://docs.github.com/en/actions)
-- [Csatlakozás a bétaverziós programhoz](https://resources.github.com/beta-signup/)
-- [További információ a GitHub Enterprise Server felügyeletéről](https://githubtraining.github.io/admin-training/#/00_getting_started)
+- [A GitHub-műveletek első lépései](https://docs.github.com/en/actions).
+- [A Beta programhoz való csatlakozás](https://resources.github.com/beta-signup/).
+- [A GitHub Enterprise Server felügyelete](https://githubtraining.github.io/admin-training/#/00_getting_started).

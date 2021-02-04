@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942043"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551076"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>Helyi integrációs modul hibaelhárítása
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -244,7 +244,7 @@ Telepítse az illesztőprogramokat mind a forrás-, mind a cél adattárolóhoz 
  
 Ha a forgalom nem haladhat át a hálózaton két adattár között (például két virtuális hálózatban van konfigurálva), akkor előfordulhat, hogy nem végezheti el a másolást egy tevékenységben még a telepített IR-vel sem. Ha nem tudja befejezni a másolást egyetlen tevékenységben, két másolási tevékenységet hozhat létre két IRs-vel, mindegyiket egy SZELLŐZŐben: 
 * Egy IR másolása az adattárból az Azure-ba Blob Storage
-* Másoljon egy másik IR-t az Azure Blob Storageból a 2. ddatastore. 
+* Másoljon egy másik IR-t az Azure Blob Storageból a 2. adattárba. 
 
 Ez a megoldás szimulálhatja azt a követelményt, hogy az IR használatával olyan hidat hozzon létre, amely összekapcsolja a két leválasztott adattárolót.
 
@@ -710,7 +710,7 @@ Ez az értesítés a következő forgatókönyvekre vonatkozik:
 
 Az érintettek meghatározása:
 
-- *Nem* érinti a tűzfalszabályok olyan teljes tartománynevek (FQDN-EK) alapján történő definiálását, amelyek a [tűzfalbeállítások beállítása és az IP-címek engedélyezési listája](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)című részben leírt módszert használják.
+- *Nem* érinti a tűzfalszabályok olyan teljes tartománynevek (FQDN-EK) alapján történő definiálását, amelyek a [tűzfalbeállítások beállítása és az IP-címek engedélyezési listája](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)című részben leírt módszert használják.
 
 - Az *érintett,* ha explicit módon engedélyezi a kimenő IP-címek engedélyezési listáját a vállalati tűzfalon.
 

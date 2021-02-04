@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: c23022a1a1ee7796ada32d9111855b9e3bfb7d46
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539619"
+ms.locfileid: "99550218"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Meglévő IoT Edge modulok futtatása Azure Stack Edge Pro FPGA-eszközökről Azure Stack Edge Pro GPU-eszközön
 
@@ -205,8 +205,7 @@ A memória-és CPU-használat beállításához használja a szakaszban találha
 ```
 A memória-és a CPU-specifikáció nem szükséges, de általában helyes gyakorlat. Ha `requests` nincs megadva, a rendszer a határértékekben beállított értékeket használja a minimálisan szükséges értékként. 
 
-A modulok megosztott memóriájának használata más módszert is igényel. <!-- should we give an example-->
-
+A modulok megosztott memóriájának használata más módszert is igényel. Használhatja például a gazdagép IPC üzemmódját a megosztott memória eléréséhez a Live Video Analytics és a következtetési megoldások között az [élő videó elemzése Azure stack Edge](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal)-ben című témakörben leírtak szerint.
 
 
 ## <a name="web-proxy"></a>Webproxy 

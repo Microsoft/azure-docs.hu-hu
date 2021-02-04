@@ -1,10 +1,10 @@
 ---
-title: Azure komplex veszélyforrások észlelése | Microsoft Docs
-description: Ismerje meg az Azure beépített komplex veszélyforrás-észlelési funkcióit, például a Azure AD Identity Protection szolgáltatást.
+title: Azure Threat Protection | Microsoft Docs
+description: Ismerje meg az Azure beépített veszélyforrások elleni védelmi funkcióit, például a Azure AD Identity Protection szolgáltatást.
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
-ms.author: TomSh
-ms.openlocfilehash: c8fbb2f6d858b2f654ff404bef3b415bf170ab37
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747273"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549931"
 ---
-# <a name="azure-advanced-threat-detection"></a>Azure fejlett fenyegetésészlelés
+# <a name="azure-threat-protection"></a>Azure Threat Protection
 
-Az Azure komplex veszélyforrások észlelésére szolgáló funkciókat kínál olyan szolgáltatásokon keresztül, mint az Azure Active Directory (Azure AD), a Azure Monitor a naplók és a Azure Security Center. A biztonsági szolgáltatások és képességek ezen gyűjteménye egyszerű és gyors megoldást kínál arra, hogy megértse, mi történik az Azure-beli üzembe helyezéseken belül.
+Az Azure olyan szolgáltatásokkal, mint például a Azure Active Directory (Azure AD), a Azure Monitor a naplók és a Azure Security Center használatával beépített veszélyforrások elleni védelmi funkciókat kínál. A biztonsági szolgáltatások és képességek ezen gyűjteménye egyszerű és gyors megoldást kínál arra, hogy megértse, mi történik az Azure-beli üzembe helyezéseken belül.
 
 Az Azure számos lehetőséget kínál a biztonsági beállítások konfigurálására és testreszabására az alkalmazások központi telepítésének követelményeinek kielégítése érdekében. Ebből a cikkből megtudhatja, hogyan teljesítheti ezeket a követelményeket.
 
@@ -84,23 +84,9 @@ Amellett, hogy az értékes szolgáltatásokat saját maga is biztosítja, Azure
 
 ### <a name="holistic-security-and-compliance-posture"></a>Holisztikus biztonsági és megfelelőségi testhelyzet
 
-A [Log Analytics Security and Audit irányítópult](../../security-center/security-center-introduction.md) átfogó áttekintést nyújt a szervezet informatikai biztonsági állapotáról, és beépített keresési lekérdezéseket tartalmaz a jelentős problémákra, amelyek szükségesek a beavatkozáshoz. A Security and Audit irányítópult a Azure Monitor naplókban a biztonsággal kapcsolatos összes adathoz tartozó kezdőképernyő. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret alapján is megtekintheti az összes eseményt.
+A [Azure Security Center](../../security-center/security-center-introduction.md) átfogó áttekintést nyújt a szervezet informatikai biztonsági állapotáról, és beépített keresési lekérdezésekkel segíti a jelentős problémák megoldását. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret alapján is megtekintheti az összes eseményt.
 
 Azure Monitor naplók segítségével gyorsan és könnyen megismerheti bármely környezet általános biztonsági állapotát, mindezt az IT-műveletek kontextusában, beleértve a szoftverfrissítés értékelését, a kártevők értékelését és az alapkonfigurációkat. A biztonsági naplókra vonatkozó adatszolgáltatások könnyen elérhetők a biztonsági és megfelelőségi naplózási folyamatok egyszerűsítése érdekében.
-
-![A Log Analytics Security and Audit irányítópult](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-A Log Analytics Security and Audit irányítópult négy fő kategóriába van rendezve:
-
--   **Biztonsági tartományok**: lehetővé teszi a biztonsági rekordok további megismerését az idő múlásával; hozzáférés a kártevők értékeléséhez; frissítési felmérések; hálózati biztonsági, identitási és hozzáférési információk megtekintése; biztonsági eseményekkel rendelkező számítógépek megtekintése; és gyorsan hozzáférhet a Azure Security Center irányítópulthoz.
-
--   **Jelentős problémák**: lehetővé teszi az aktív problémák számának és a problémák súlyosságának gyors azonosítását.
-
--   **Észlelések (előzetes verzió)**: lehetővé teszi a támadási minták azonosítását azáltal, hogy biztonsági riasztásokat jelenít meg az erőforrásokon.
-
--   **Fenyegetések felderítése**: lehetővé teszi a támadási minták azonosítását úgy, hogy megjeleníti a kimenő kártékony IP-forgalmat, a kártékony veszélyforrás típusát és az IP-címek helyeinek térképét.
-
--   **Gyakori biztonsági lekérdezések**: felsorolja a környezet figyeléséhez használható leggyakoribb biztonsági lekérdezéseket. Ha bármelyik lekérdezést kiválasztja, megnyílik a keresés ablaktábla, és megjeleníti a lekérdezés eredményét.
 
 ### <a name="insight-and-analytics"></a>Betekintés és elemzés
 [Azure monitor naplók](../../azure-monitor/log-query/log-query-overview.md) középpontjában az Azure által üzemeltetett adattár található.
@@ -109,21 +95,16 @@ A Log Analytics Security and Audit irányítópult négy fő kategóriába van r
 
 Adatokat gyűjt a tárházhoz a csatlakoztatott forrásokból az adatforrások konfigurálásával és a megoldások az előfizetéshez való hozzáadásával.
 
-![A Azure Monitor naplók irányítópultja](./media/threat-detection/azure-threat-detection-fig5.png)
-
 Az egyes adatforrások és megoldások külön bejegyzéstípusokat hoznak létre a saját tulajdonságokkal, de továbbra is elemezheti őket a tárházban lévő lekérdezésekben. Ugyanazokat az eszközöket és metódusokat használhatja a különböző forrásokból összegyűjtött különféle adatokkal való munkához.
-
 
 A Azure Monitor naplókkal való interakciójának nagy része az a Azure Portal, amely bármely böngészőben fut, és hozzáférést biztosít a konfigurációs beállításokhoz és több eszközhöz, amelyekkel elemezheti és kezelheti az összegyűjtött adatokat. A portálról a következőket használhatja:
 * A [naplóban megkeresi](../../azure-monitor/log-query/log-query-overview.md) a gyűjtött adatok elemzéséhez szükséges lekérdezéseket.
 * [Irányítópultok](../../azure-monitor/learn/tutorial-logs-dashboards.md), amelyek a legértékesebb keresések grafikus nézeteivel testreszabhatók.
 * [Megoldások](../../azure-monitor/insights/solutions.md), amelyek további funkciókat és elemzési eszközöket biztosítanak.
 
-![Elemzési eszközök](./media/threat-detection/azure-threat-detection-fig6.png)
-
 A megoldások funkciókkal bővítik Azure Monitor naplókat. Elsősorban a felhőben futnak, és a log Analytics-tárházban összegyűjtött adatok elemzését teszik lehetővé. A megoldások olyan új bejegyzéstípusokat is meghatározhatnak, amelyeket a rendszer a naplók keresésével vagy egy, a log Analytics-irányítópulton a megoldás által biztosított további felhasználói felület használatával elemezni lehet.
 
-Az Security and Audit irányítópult az ilyen típusú megoldások egyik példája.
+Security Center az ilyen típusú megoldások példái.
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatizálás és vezérlés: riasztás a biztonsági beállításokról
 
@@ -216,7 +197,7 @@ A Azure Security Center az egész világon a biztonsági kutatási és adatelemz
 
 Ezek az összetett erőfeszítések új és továbbfejlesztett észlelésekkel zárulnak, amelyeket azonnal kihasználhat. Nem kell végrehajtania a műveletet.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Összetett veszélyforrások észlelési funkciói: egyéb Azure-szolgáltatások
+## <a name="threat-protection-features-other-azure-services"></a>Veszélyforrások elleni védelem funkciói: egyéb Azure-szolgáltatások
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtual Machines: Microsoft antimalware
 
@@ -348,9 +329,9 @@ A Cloud App Security eszközeivel könnyebb az informatikai árnyék-infrastrukt
 | -------- | ----------- |
 | Felderítés | Felfedheti az informatikai árnyék-infrastruktúrát a Cloud App Security használatával. A felhőalapú környezet alkalmazásainak, tevékenységeinek, felhasználóinak, adatainak és fájljainak felderítésével nagyobb láthatóságot érhet el. Felderítheti a felhőhöz csatlakoztatott harmadik féltől származó alkalmazásokat.|
 |Vizsgálat | Megvizsgálhatja a felhőalkalmazásait felhőalapú nyomkereső eszközökkel, és részletesen megismerheti a hálózatban lévő kockázatos alkalmazásokat, meghatározott felhasználókat és fájlokat. Mintákat kereshet a felhőből gyűjtött adatokban. Jelentéseket hozhat létre a felhő figyelésére. |
-| Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Szabályozás | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 | Védelem | A Cloud App Security használatával szankcionálhatja vagy tilthatja le az alkalmazásokat, kényszerítheti az adatvesztés megelőzését, szabályozhatja az engedélyeket és a megosztást, valamint egyéni jelentéseket és riasztásokat hozhat elő. |
-| Vezérlés | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Szabályozás | Szabályzatokkal és riasztásokkal teljes mértékben átveheti az irányítást a hálózati felhőforgalom felett, és mérsékelheti a kockázatokat. A Cloud App Securityvel biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 
 
 ![Cloud App Security diagram](./media/threat-detection/azure-threat-detection-fig14.png)
@@ -367,7 +348,7 @@ A Cloud App Security a következőket biztosítja a felhővel való láthatósá
 
 Az ezekből a forrásokból származó adatok összegyűjtésekor Cloud App Security kifinomult elemzést futtat rajta. Azonnal értesíti Önt a rendellenes tevékenységekről, valamint részletes információkat biztosít a felhőalapú környezetről. A Cloud App Security szolgáltatásban konfigurálhat egy szabályzatot, amellyel megvédheti a teljes felhőalapú környezetet.
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Harmadik féltől származó komplex veszélyforrások észlelési képességei az Azure Marketplace-en keresztül
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Harmadik féltől származó veszélyforrások elleni védelmi képességek az Azure Marketplace-en keresztül
 
 ### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 
@@ -385,7 +366,7 @@ A webalkalmazási tűzfal a következő előnyöket biztosítja:
 
 Példa az Azure Marketplace-en elérhető webalkalmazási tűzfalakra: [BARRACUDA WAF, brokát Virtual Web Application Firewall (vWAF), inperverz SecureSphere és a ThreatSTOP IP-tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Válaszadás a mai fenyegetésekre](../../security-center/security-center-alerts-overview.md#respond-threats): segít azonosítani az Azure-erőforrásokat megcélzó aktív fenyegetéseket, és biztosítja a gyors reagáláshoz szükséges megállapításokat.
 

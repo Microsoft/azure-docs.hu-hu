@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/15/2018
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: bb5a785cba4a560fc15963363d4e5f6b811af97a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071900"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548831"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása
 
@@ -27,7 +27,7 @@ Az engedélyezési és a megtagadási lista használatával engedélyezheti vagy
 
 - Létrehozhat egy engedélyezési listát vagy egy megtagadási listát is. Mindkét típusú listát nem lehet beállítani. Alapértelmezés szerint az engedélyezési listán nem szereplő tartományok találhatók a megtagadási listán, és fordítva. 
 - Szervezeten belül csak egy házirendet hozhat létre. A házirendet frissítheti, hogy több tartományt is tartalmazzon, vagy törölheti is a szabályzatot egy új létrehozásához. 
-- Az engedélyezési vagy megtagadási listához felvehető tartományok számát csak a házirend mérete korlátozza. A teljes szabályzat maximális mérete 25 KB (25 000 karakter), amely tartalmazza az engedélyezési lista vagy a Megtagadás listát, valamint az egyéb funkciókhoz konfigurált egyéb paramétereket.
+- Az engedélyezési vagy megtagadási listához felvehető tartományok számát csak a házirend mérete korlátozza. Ez a korlát a karakterek számára vonatkozik, így rövidebb tartományokhoz vagy kevesebb tartományhoz is tartozhat. A teljes szabályzat maximális mérete 25 KB (25 000 karakter), amely tartalmazza az engedélyezési lista vagy a Megtagadás listát, valamint az egyéb funkciókhoz konfigurált egyéb paramétereket.
 - Ez a lista a OneDrive for Business és a SharePoint Online engedélyezési/letiltási listáktól függetlenül működik. Ha korlátozni szeretné az egyes fájlmegosztást a SharePoint Online-ban, be kell állítania egy engedélyezési vagy letiltási listát a OneDrive for Business és a SharePoint Online szolgáltatáshoz. További információ: [korlátozott tartományok megosztása a SharePoint Online-ban és a OneDrive for Business](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
 - A lista nem vonatkozik azokra a külső felhasználókra, akik már beváltották a meghívót. A lista a lista beállítása után lesz érvényesítve. Ha egy felhasználói meghívás függő állapotban van, és olyan házirendet állít be, amely blokkolja a tartományt, a felhasználó a meghívót beváltó kísérlet sikertelen lesz.
 

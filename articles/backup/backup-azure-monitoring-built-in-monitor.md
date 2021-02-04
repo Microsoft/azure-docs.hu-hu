@@ -4,18 +4,29 @@ description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174002"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550343"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
 Azure Backup több biztonsági mentési megoldást biztosít a biztonsági mentési követelmények és az infrastruktúra-topológia (helyszíni vagy Azure) alapján. Minden biztonsági mentési felhasználónak vagy rendszergazdának látnia kell, hogy mi történik az összes megoldásban, és fontos forgatókönyvekben várhatóan értesítést kapjon. Ez a cikk a Azure Backup szolgáltatás által biztosított figyelési és értesítési képességeket részletezi.
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
+## <a name="backup-items-in-recovery-services-vault"></a>Recovery Services-tárolóban található biztonsági másolati elemek
+
+Az összes biztonsági mentési elemet megfigyelheti egy Recovery Services-tárolón keresztül. A tár **biztonsági mentési elemek** szakaszának megnyitásakor megnyílik egy nézet, amely megadja a tárolóhoz társított egyes munkaterhelés-típusok biztonsági mentési elemeinek számát. Bármelyik sorra kattintva megnyílik egy részletes nézet, amely felsorolja a megadott munkaterhelés-típus összes biztonsági mentési elemét, az egyes elemek utolsó biztonsági mentési állapotával, a legutóbbi visszaállítási ponttal és így tovább.
+
+![RS-tároló biztonsági másolati elemei](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+
+> [!NOTE]
+> Az Azure-ban a DPM használatával készített elemek esetében a lista az összes védett adatforrást (a lemez és az online is) megjeleníti a DPM-kiszolgáló használatával. Ha a védelem le van állítva az adatforráshoz a biztonsági mentési adat megtartásával, az adatforrás továbbra is szerepelni fog a portálon. Megtekintheti az adatforrás részleteit, és megtudhatja, hogy a helyreállítási pontok a lemezen, online vagy mindkettőben találhatók-e. Azokat az adatforrásokat is, amelyekhez az online védelem le van állítva, de az adat megmarad, az online helyreállítási pontok számlázása addig folytatódik, amíg az adat teljesen nem törlődik.
+>
+> A DPM verziójának DPM 1807 (5.1.378.0) vagy DPM 2019 (10.19.58.0 vagy újabb verziónak kell lennie) kell lennie ahhoz, hogy a biztonsági mentési elemek megjelenjenek az Recovery Services-tároló portálon.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Biztonsági mentési feladatok a Recovery Services-tárolóban
 
@@ -105,7 +116,7 @@ Ha a gyakoriságot egy óránkénti kivonatoló értékre állították be, és 
 
 ## <a name="inactivating-alerts"></a>Riasztások inaktiválása
 
-Az aktív riasztások inaktiválása/feloldása érdekében kiválaszthatja az inaktiválni kívánt riasztáshoz tartozó listaelemet. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül **inaktiválás** gomb jelenik meg. Ha ezt a gombot választja, a riasztás állapota **inaktívra**változik. Inaktiválhat egy riasztást úgy is, hogy a jobb gombbal rákattint a riasztáshoz tartozó listaelemre, és kiválasztja az **inaktiválás**lehetőséget.
+Az aktív riasztások inaktiválása/feloldása érdekében kiválaszthatja az inaktiválni kívánt riasztáshoz tartozó listaelemet. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül **inaktiválás** gomb jelenik meg. Ha ezt a gombot választja, a riasztás állapota **inaktívra** változik. Inaktiválhat egy riasztást úgy is, hogy a jobb gombbal rákattint a riasztáshoz tartozó listaelemre, és kiválasztja az **inaktiválás** lehetőséget.
 
 ![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

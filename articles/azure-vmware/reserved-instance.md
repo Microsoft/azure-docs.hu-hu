@@ -2,13 +2,13 @@
 title: Költségek megtakarítása az Azure VMware-megoldás fenntartott példányával
 description: Megtudhatja, hogyan vásárolhat fenntartott példányt az Azure VMware-megoldáshoz.
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/03/2021
+ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600862"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550975"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Költségek megtakarítása Azure VMware-megoldással
 
@@ -54,11 +54,11 @@ Ezek a követelmények a fenntartott dedikált gazdagép-példány megvásárlá
 
    | Mező        |  Leírás |
    | ------------ | ------------ |
-   | Előfizetés | A foglalás kifizetéséhez használt előfizetés. Az előfizetésnél rögzített fizetési mód szerint lesznek számlázva a foglalás költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), Microsoft Customer Agreement vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak levonhatók az Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegre, ha van ilyen, vagy felszámított díj. Az utólagos elszámolású előfizetések díjait az előfizetés bankkártyája vagy számlás fizetési mód alapján számítjuk fel. |
+   | Előfizetés | A foglalás kifizetéséhez használt előfizetés. Az előfizetésnél rögzített fizetési mód szerint lesznek számlázva a foglalás költségei. Az előfizetés típusának nagyvállalati szerződésnek kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P), Microsoft Customer Agreement vagy egyéni előfizetés utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P). A díjak az Azure-előrefizetés (korábbi nevén pénzügyi keret) egyenlegéből lesznek levonva (ha van ilyen), vagy kerettúllépésként lesznek számlázva. Az utólagos elszámolású előfizetések díjait az előfizetés bankkártyája vagy számlás fizetési mód alapján számítjuk fel. |
    | Hatókör        | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:<br><ul><li><b>Egy erőforráscsoport hatóköre</b> – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li><b>Egyszeri előfizetés hatóköre</b> – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li><b>Megosztott hatókör</b> – a foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekben lévő erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>       |
    | Region       | A foglalás által érintett Azure-régió.   |
    | Gazdagép mérete    | AV36    |
-   | Kifejezés         | Egy vagy három év.  |
+   | Időszak         | Egy vagy három év.  |
    | Mennyiség     | A foglaláson belül megvásárolni kívánt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Fenntartott példányok vásárlása CSP-előfizetéshez
@@ -87,7 +87,7 @@ Azokat a CSP-ket, amelyeknek fenntartott példányokat kívánnak vásárolni ü
    | Hatókör        | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:<br><ul><li><b>Egy erőforráscsoport hatóköre</b> – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li><b>Egyszeri előfizetés hatóköre</b> – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li><b>Megosztott hatókör</b> – a foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekben lévő erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>       |
    | Region       | A foglalás által érintett Azure-régió.   |
    | Gazdagép mérete    | AV36    |
-   | Kifejezés         | Egy vagy három év.  |
+   | Időszak         | Egy vagy három év.  |
    | Mennyiség     | A foglaláson belül megvásárolni kívánt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.     |
 
 Ha többet szeretne megtudni arról, hogyan tekintheti meg az ügyfél megvásárolt foglalásait, tekintse meg az [Azure-foglalások felhőalapú megoldás-szolgáltatóként (CSP) történő megtekintését](../cost-management-billing/reservations/how-to-view-csp-reservations.md) ismertető cikket.
@@ -132,3 +132,12 @@ A CSP által felügyelt foglalásokkal kapcsolatos részletekért lásd: [Micros
 Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 A kriptográfiai szolgáltatók lemondják, cserélik vagy visszafizetik a foglalásokat, és bizonyos korlátozásokkal megvásárolhatják az ügyfelet. További információ: [Microsoft Azure foglalások kezelése, megszakítása, cseréje vagy visszatérítése az ügyfelek](/partner-center/azure-reservations-manage)számára.
+
+## <a name="next-steps"></a>Következő lépések
+
+Most, hogy már megvásárolta az Azure VMware-megoldás fenntartott példányának megvásárlását, érdemes megismernie az alábbiakat:
+
+- [Azure-beli VMware-megoldás értékelésének létrehozása](../migrate/how-to-create-azure-vmware-solution-assessment.md).
+- [DHCP kezelése Azure VMware-megoldáshoz](manage-dhcp.md).
+- [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md).
+ 

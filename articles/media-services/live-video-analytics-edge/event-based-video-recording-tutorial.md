@@ -3,12 +3,12 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: f54659cc279b68113150f2f49d18e938f2500030
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fda727a1abb488910d52b756455d2b6843e0e8b1
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526263"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550252"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -195,6 +195,12 @@ A objectCounter modul eseményeinek és az élő videó Analytics IoT Edge modul
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="A beépített esemény-végpont figyelésének megkezdése":::
+
+    > [!NOTE]
+    > Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     
 ## <a name="run-the-program"></a>A program futtatása
 
@@ -210,7 +216,7 @@ A objectCounter modul eseményeinek és az élő videó Analytics IoT Edge modul
 1. <!--In Visual Studio Code, go-->Lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
 1. A **GraphTopologySet** csomópont alatt szerkessze a következőket:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/2.0/topology.json"`
     
 1. Ezután a **GraphInstanceSet** és az **GraphTopologyDelete** csomópont alatt szerkessze a következőt:
 
