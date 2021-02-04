@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 67d6155d35f366429bf0210f18f052d9b6187820
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 9503d93afbf14be159e6b982d9be5977717349ac
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "99214320"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99531283"
 ---
 Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
@@ -16,6 +16,8 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg az [Azure Cloud Shellt](https://ms.portal.azure.com/#cloudshell/).
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
@@ -42,12 +44,12 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
 
 1. A szkript befejeződése után válassza ki a kapcsos zárójeleket, hogy elérhetővé tegye a mappastruktúrát. A *~/clouddrive/LVA-Sample* könyvtárban néhány fájl jelenik meg. Ebben a rövid útmutatóban a következők szerepelnek:
 
-     * ***~/clouddrive/LVA-Sample/Edge-Deployment/.env** _ – ez a fájl olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
-     _ ***~/clouddrive/lva-sample/appsetting.json** _ – a Visual Studio Code ezt a fájlt használja a mintakód futtatásához.
+     * ***~/clouddrive/LVA-Sample/Edge-Deployment/.env*** – ez a fájl olyan tulajdonságokat tartalmaz, amelyeket a Visual Studio Code használ a modulok peremhálózati eszközre való telepítéséhez.
+     * ***~/clouddrive/lva-sample/appsetting.json*** -Visual Studio Code ezt a fájlt használja a mintakód futtatásához.
      
     Ezekre a fájlokra szüksége lesz, amikor a következő szakaszban a Visual Studio Code-ban beállítja a fejlesztési környezetet. Előfordulhat, hogy most egy helyi fájlba szeretné másolni őket.
     
     ![Alkalmazásbeállítások](../../../media/quickstarts/clouddrive.png)
 
 > [!TIP]
-> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg az _ *[hibaelhárítási útmutatót](../../../troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
+> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg a **[hibaelhárítási útmutatót](../../../troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.

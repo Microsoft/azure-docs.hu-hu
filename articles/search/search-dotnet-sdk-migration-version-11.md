@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043744"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536815"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -168,8 +168,8 @@ Az 11,1-es verzió a következőt adja meg:
 
 A következő 10-es verziójú funkciók még nem érhetők el a 11. verzióban. Ha szüksége van ezekre a funkciókra, tartsa lenyomva az áttelepítést, amíg azok nem támogatottak.
 
-+ térinformatikai típusok
 + [Tudástár](knowledge-store-concept-intro.md)
++ Térinformatikai típusok – a térinformatikai típusok első osztályú támogatása még folyamatban van. Egyelőre a [Microsoft. térbeli](https://www.nuget.org/packages/Microsoft.Spatial/) csomag használatával lehet támogatni a földrajzi műveleteket. Ilyenek például a [System.Text.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) és a [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md).
 
 <a name="UpgradeSteps"></a>
 
@@ -246,8 +246,8 @@ A szolgáltatási verziók frissítései esetében, ahol a Code Changes in 11-es
 
 + A null értékek [rendezett eredményei](search-query-odata-orderby.md) módosultak ebben a verzióban, és először Null érték jelenik meg, ha a rendezés `asc` és az utolsó, ha a rendezés `desc` . Ha kódot írt a null értékek rendezésének kezeléséhez, tekintse át és távolítsa el ezt a kódot, ha már nincs rá szükség.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Azure.Search.Documents-csomag](https://www.nuget.org/packages/Azure.Search.Documents/)
-+ [Példák a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
++ [Minták a GitHubon](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
 + [Azure.Search.Document API-referenciája](/dotnet/api/overview/azure/search.documents-readme)

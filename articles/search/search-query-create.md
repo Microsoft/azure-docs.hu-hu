@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509350"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536832"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Lekérdezések létrehozása az Azure-ban Cognitive Search
 
@@ -23,7 +23,7 @@ Ha első alkalommal hoz létre lekérdezést, ez a cikk a lekérdezések beáll�
 
 A lekérdezés csak olvasható kérelem egyetlen keresési index docs-gyűjteményéből. Meghatározza a "queryType" és a lekérdezési kifejezést, azonban a "Search" paramétert. A lekérdezés kifejezés tartalmazhat keresési kifejezéseket, idézőjeleket tartalmazó kifejezést és operátorokat.
 
-A lekérdezésben a "Count" érték is megadható az indexben található egyezések számának visszaadásához, a "kiválasztás" lehetőséggel pedig kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között, és a "OrderBy" kifejezéssel Az alábbi példák egy lekérdezési kérést mutatnak az elérhető paraméterek egy részhalmazával. A lekérdezések összeállításával kapcsolatos további információkért lásd: [lekérdezési típusok és összeállítások](search-query-overview.md) és [keresési dokumentumok (REST)](/rest/api/searchservice/search-documents).
+A lekérdezésben a "Count" érték is megadható az indexben található egyezések számának visszaadásához, a "kiválasztás" lehetőséggel pedig kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között, és a "OrderBy" kifejezéssel A következő példa egy lekérdezési kérelem általános gondolatát mutatja be az elérhető paraméterek egy részhalmazának bemutatásával. A lekérdezések összeállításával kapcsolatos további információkért lásd: [lekérdezési típusok és összeállítások](search-query-overview.md) és [keresési dokumentumok (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="choose-a-client"></a>Válasszon ügyfelet
 
-A lekérdezés létrehozásához egy eszközre vagy API-ra van szükség, például Azure Portal vagy postás vagy egy lekérdezési ügyfelet létrehozó kód. Javasoljuk, hogy az Azure Portal vagy REST API-kat a korai fejlesztéshez és a megvalósíthatósági teszteléshez.
+Szüksége lesz egy olyan eszközre, mint a Azure Portal vagy a Poster, vagy olyan kód, amely API-kat használó lekérdezési ügyfelet hoz létre. Javasoljuk, hogy az Azure Portal vagy REST API-kat a korai fejlesztéshez és a megvalósíthatósági teszteléshez.
 
 ### <a name="permissions"></a>Engedélyek
 
@@ -111,14 +111,6 @@ A Mezőtulajdonságok leírását lásd: [create index (REST API)](/rest/api/sea
 Az indexelés során a keresőmotor egy elemzőt használ a karakterláncok szöveges elemzéséhez, és maximalizálja a lekérdezési időponthoz való megfelelés lehetőségét. A karakterláncok minimálisan kisebbek, de morfológiai elemzéshez is lehetnek, és leállíthatók a Word eltávolítása. A nagyobb sztringeket vagy összetett szavakat általában szóközzel, kötőjelekkel vagy kötőjelekkel, valamint különálló tokenként indexelve kell elosztani. 
 
 Az a pont, amellyel elkerülheti, hogy mit gondol az index, és hogy mi valójában, eltérő lehet. Ha a lekérdezések nem adják vissza a várt eredményeket, megvizsgálhatja az analizátor által létrehozott jogkivonatokat az [elemzés szövege alapján (REST API)](/rest/api/searchservice/test-analyzer). További információ a jogkivonatok létrehozása és a lekérdezések hatásáról: [részleges kifejezéses keresés és minták speciális karakterekkel](search-query-partial-matching.md).
-
-## <a name="about-queries-per-second-qps"></a>Lekérdezések másodpercenkénti száma (QPS)
-
-A lekérdezési teljesítménnyel kapcsolatos tényezők nagy száma miatt a Microsoft nem teszi közzé a várt QPS-számokat. A QPS-becsléseket minden ügyféltől függetlenül kell kialakítani, amely az alkalmazás számára érvényes szolgáltatási szintet, konfigurációt, indexelést és lekérdezési szerkezeteket használja. Az index mérete és összetettsége, a lekérdezés mérete és összetettsége, valamint a forgalom mennyisége a QPS elsődleges tényezője. Az ilyen tényezők ismeretlenek lehetnek, így nem lehet értelmes becsléseket nyújtani.
-
-A becslések a dedikált erőforrásokon futó szolgáltatásokra (alapszintű és standard csomagokra) számítanak. Megbecsülheti a QPS, mert több paramétert is megadhat. A becslések megközelítésével kapcsolatos útmutatásért lásd: [Azure Cognitive Search teljesítmény és optimalizálás](search-performance-optimization.md).
-
-A Storage optimalizált szintjeihez (L1 és L2) a standard szintnél kisebb lekérdezési sebességet és nagyobb késést kell várni.
 
 ## <a name="next-steps"></a>Következő lépések
 
