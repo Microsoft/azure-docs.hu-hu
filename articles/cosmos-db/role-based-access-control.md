@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943755"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526941"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Azure szerepköralapú hozzáférés-vezérlés Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,8 @@ A Azure Cosmos DB által támogatott beépített szerepkörök a következők:
 |---------|---------|
 |[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat.|
 |[Cosmos DB-fiók olvasója](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása.|
-|[Cosmos Backup operátor](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Visszaállíthatja az Azure Cosmos-adatbázis vagy-tároló visszaállítási kérelmét. Nem lehet hozzáférni semmilyen adattal, vagy nem használhatja a Adatkezelő.|
+|[Cosmos Backup operátor](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Visszaállíthat egy visszaállítási kérést az Azure Portal számára egy rendszeres biztonsági mentési engedélyezett adatbázis vagy tároló számára. Módosíthatja a biztonsági mentés intervallumát és a Azure Portal megőrzését. Nem lehet hozzáférni semmilyen adattal, vagy nem használhatja a Adatkezelő.  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | A képes a folyamatos biztonsági mentési móddal Azure Cosmos DB fiókra vonatkozó visszaállítási művelet végrehajtására.|
 |[Cosmos DB operátor](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Az Azure Cosmos-fiókokat,-adatbázisokat és-tárolókat is kiépítheti. Nem lehet hozzáférni semmilyen adattal, vagy nem használhatja a Adatkezelő.|
 
 > [!IMPORTANT]
@@ -36,7 +37,7 @@ A Azure Cosmos DB által támogatott beépített szerepkörök a következők:
 
 A Azure Portal **hozzáférés-vezérlés (iam)** ablaktáblája az Azure-beli szerepköralapú hozzáférés-vezérlés konfigurálására szolgál az Azure Cosmos-erőforrásokon. A szerepköröket a rendszer a felhasználókra, csoportokra, egyszerű szolgáltatásokra és felügyelt identitásokra alkalmazza Active Directoryban. A felhasználók és csoportok számára beépített szerepköröket vagy egyéni szerepköröket is használhat. Az alábbi képernyőfelvételen a Azure Portal hozzáférés-vezérlés (IAM) használatával Active Directory integráció (Azure RBAC) látható:
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – az adatbázis biztonságának bemutatása":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Hozzáférés-vezérlés (IAM) a Azure Portal – az adatbázis biztonságának bemutatása.":::
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
 

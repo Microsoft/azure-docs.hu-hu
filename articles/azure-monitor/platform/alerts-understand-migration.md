@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e57b3dd31455db245103469874c517fe54479110
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875920"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526907"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Az új riasztások áttelepítési lehetőségeinek megismerése
 
-A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat. A fennmaradó riasztások áttelepítése, [Azure Government a felhő](../../azure-government/documentation-government-welcome.md)és az [Azure China 21Vianet](https://docs.azure.cn/)hamarosan új dátummal fog bejelenteni.
+A klasszikus riasztások [kimaradnak a nyilvános](./monitoring-classic-retirement.md) Felhőbeli felhasználók számára, bár az új riasztásokat még nem támogató erőforrások esetében is korlátozott mértékben használják. A fennmaradó riasztások áttelepítése, [Azure Government a felhő](../../azure-government/documentation-government-welcome.md)és az [Azure China 21Vianet](https://docs.azure.cn/)hamarosan új dátummal fog bejelenteni.
 
 Ez a cikk azt ismerteti, hogyan működik a manuális áttelepítési és az önkéntes áttelepítési eszköz, amelyet a rendszer a fennmaradó riasztási szabályok áttelepítésére használ. Emellett ismerteti a gyakori problémákra vonatkozó jogorvoslatokat is.
 
@@ -150,7 +150,7 @@ A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a vár
 | SASSuccess | Tranzakciós metrika dimenziókkal "ResponseType" = "sikeres" és "hitelesítés" = "SAS" | |
 | ServerOtherError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ServerOtherError" | |
 | ServerTimeOutError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ServerTimeOutError"  | |
-| Success | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "sikeres" | |
+| Siker | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "sikeres" | |
 | TotalBillableRequests| Tranzakciók | |
 | TotalEgress | Kimenő forgalom | |
 | TotalIngress | Bejövő forgalom | |
@@ -193,7 +193,7 @@ Cosmos DB esetén az egyenértékű mérőszámok az alábbiak szerint jelennek 
 | Metrika klasszikus riasztásokban | Egyenértékű metrika az új riasztásokban | Megjegyzések|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
-| Adatméret | DataUsage| |
+| Adatok mérete | DataUsage| |
 | Dokumentumok száma | DocumentCount||
 | Index mérete | IndexUsage||
 | Mongo száma – kérelem díja| MongoRequestCharge a "CommandName" = "Count" dimenzióval||

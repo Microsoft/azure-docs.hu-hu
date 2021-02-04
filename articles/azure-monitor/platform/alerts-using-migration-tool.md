@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4f17afc6fb5001b4bbee16fe84697b58d062b292
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536030"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526924"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>A klasszikus riasztási szabályok áttelepítéséhez használja az önkéntes áttelepítési eszközt
 
-Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak, de továbbra is korlátozott mértékben használják azokat az erőforrásokat, amelyek még nem támogatják az új riasztásokat. Áttelepítési eszköz volt elérhető a Azure Portalban a klasszikus riasztási szabályokat használó ügyfelek számára, akik maguknak szeretnék elindítani az áttelepítést. Ez a cikk azt ismerteti, hogyan használható az áttelepítési eszköz, amely a további bejelentéseken függőben lévő riasztások esetében is használatos.
+Amint azt [korábban bejelentettük](monitoring-classic-retirement.md), a Azure monitor klasszikus riasztásai kimaradnak a nyilvános Felhőbeli felhasználók számára, bár továbbra is korlátozott használatban vannak az új riasztásokat még nem támogató erőforrások esetében. Áttelepítési eszköz volt elérhető a Azure Portalban a klasszikus riasztási szabályokat használó ügyfelek számára, akik maguknak szeretnék elindítani az áttelepítést. Ez a cikk azt ismerteti, hogyan használható az áttelepítési eszköz, amely a további bejelentéseken függőben lévő riasztások esetében is használatos.
 
 ## <a name="benefits-of-new-alerts"></a>Az új riasztások előnyei
 

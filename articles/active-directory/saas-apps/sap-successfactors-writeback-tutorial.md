@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006438"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526975"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -282,7 +282,7 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
    | 3 | 8448 | emailType | Ez az állandó érték az üzleti levelezéshez társított SuccessFactors-azonosító érték. Frissítse ezt az értéket a SuccessFactors-környezetnek megfelelően. Az érték megadásának lépéseiért tekintse meg az [állandó érték beolvasása a emailType](#retrieve-constant-value-for-emailtype) című szakaszt. |
    | 4 | true | emailIsPrimary | Ezzel az attribútummal állíthatja be az üzleti e-maileket elsődlegesként a SuccessFactors-ben. Ha az üzleti e-mailek nem elsődlegesek, állítsa hamis értékre ezt a jelzőt. |
    | 5 | userPrincipalName | [custom01 – custom15] | Az **Új leképezés hozzáadása** lehetőséggel írhat userPrincipalName vagy bármely Azure ad-attribútumot a SuccessFactors felhasználói objektumában elérhető egyéni attribútumra.  |
-   | 6 | helyszíni samAccountName | username | Az **Új leképezés hozzáadása** lehetőséggel megadhatja a helyszíni sAMAccountName a SuccessFactors username attribútumhoz. |
+   | 6 | Helyszíni SamAccountName | username | Az **Új leképezés hozzáadása** lehetőséggel megadhatja a helyszíni sAMAccountName a SuccessFactors username attribútumhoz. [Azure ad Connect Sync: Directory-bővítmények](../hybrid/how-to-connect-sync-feature-directory-extensions.md) használatával szinkronizálhatja a sAMAccountName az Azure ad-be. Ekkor megjelenik a forrás legördülő lista *extension_yourTenantGUID_samAccountName* |
    | 7 | SSO | loginMethod | Ha a SuccessFactors-bérlő [részleges egyszeri bejelentkezésre](https://apps.support.sap.com/sap/support/knowledge/en/2320766)van beállítva, akkor az új leképezés hozzáadása lehetőséggel megadhatja, hogy a LOGINMETHOD "SSO" vagy "pwd" konstans értékre legyen állítva. |
    | 8 | telephoneNumber | businessPhoneNumber | Ezt a leképezést használhatja a *telephoneNumber* az Azure ad-ből a SuccessFactors Business/Work telefonszámra. |
    | 9 | 10605 | businessPhoneType | Ez az állandó érték a vállalati telefonhoz társított SuccessFactors-azonosító érték. Frissítse ezt az értéket a SuccessFactors-környezetnek megfelelően. Az érték megadásának lépéseiért tekintse meg az [állandó érték beolvasása a phoneType](#retrieve-constant-value-for-phonetype) című szakaszt. |
@@ -325,8 +325,8 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
 1. Válassza a **hatókör** elemet. Az alábbi lehetőségek közül választhat: 
-   * **Minden felhasználó és csoport szinkronizálása**: akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings** re írni  ->  **Source Object Scope**. 
-   * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása**: akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->  **Manage**  ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében** meghatározott hatóköri szabályok is vonatkoznak.
+   * **Minden felhasználó és csoport szinkronizálása**: akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- re írni  ->  . 
+   * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása**: akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->    ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében** meghatározott hatóköri szabályok is vonatkoznak.
 
    > [!div class="mx-imgBorder"]
    > ![Visszaírási hatókörének kiválasztása](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
@@ -349,7 +349,7 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 
 Tekintse meg az SAP SuccessFactors integrációs útmutatójának [visszaírási-forgatókönyvek című szakaszát](../app-provisioning/sap-successfactors-integration-reference.md#writeback-scenarios) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD és az SAP SuccessFactors integrációs dokumentációjának részletes bemutatása](../app-provisioning/sap-successfactors-integration-reference.md)
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
