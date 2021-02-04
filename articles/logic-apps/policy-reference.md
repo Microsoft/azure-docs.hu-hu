@@ -1,16 +1,16 @@
 ---
 title: A Azure Logic Apps beépített szabályzat-definíciói
 description: A Azure Logic Apps Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 66b734e48f69c3caf3abe88f1cacbe4dad7eadca
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: fe343dff39929aaa616c62d0b2b6d0f331e9ffe2
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093169"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560329"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>A Azure Logic Apps beépített definíciói Azure Policy
 

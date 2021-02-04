@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492755"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560469"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -210,7 +210,7 @@ Az AK-fürtök portálon való létrehozásával kapcsolatos információkért l
 
 **Becsült idő:** Körülbelül 5 percet vesz igénybe.
 
-Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és 1,17-es vagy alacsonyabb verziójú, akkor a lemezkép üzembe helyezéséhez használhatja azt.
+Ha már rendelkezik AK-fürttel az Azure-előfizetésében, használhatja azt a munkaterülethez.
 
 > [!TIP]
 > A meglévő AK-fürt a Azure Machine Learning munkaterülettől eltérő Azure-régióban is lehet.

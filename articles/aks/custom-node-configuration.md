@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 589081149d08983d3cd5a4a8822873f5a6cfca0e
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735264"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559431"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Az Azure Kubernetes Service (ak) Node-készletek csomópont-konfigurációjának testreszabása (előzetes verzió)
 
@@ -59,7 +59,7 @@ az extension update --name aks-preview
 
 Az alábbi listában a támogatott Kubelet paraméterek és elfogadott értékek szerepelnek.
 
-| Paraméter | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Paraméter | Megengedett értékek/időköz | Alapértelmezett | Description |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | nincs, statikus | Nincs | A statikus házirend lehetővé teszi, hogy a tárolók az egész PROCESSZORral rendelkező [garantált hüvelyekben](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) a csomóponton lévő kizárólagos CPU-kérelmekhez hozzáférjenek. |
 | `cpuCfsQuota` | igaz, hamis | true |  Engedélyezi/letiltja a CPU CFS-kvóta kikényszerítését a CPU-korlátokat megadó tárolók esetében. | 
@@ -77,7 +77,7 @@ A támogatott operációsrendszer-beállítások és elfogadott értékek az al�
 
 Nagy mennyiségű forgalom kiszolgálásakor gyakori, hogy a kiszolgált forgalom nagyszámú helyi fájlból származik. Az alábbi kernel-beállításokat és a beépített korlátokat úgy is megszabhatja, hogy több, a rendszermemória költségeit is kezelni tudja.
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192 – 12000500 | 709620 | A Linux-kernel által lefoglalható fájlok maximális száma – ennek az értéknek a növelésével növelhető az engedélyezett nyitott fájlok maximális száma. |
 | `fs.inotify.max_user_watches` | 781250 – 2097152 | 1048576 | A rendszeren engedélyezett fájlok maximális száma. Mindegyik *óra* körülbelül 90 bájt egy 32 bites kernelen, és nagyjából 160 bájt egy 64 bites kernelen. | 
@@ -89,7 +89,7 @@ Nagy mennyiségű forgalom kiszolgálásakor gyakori, hogy a kiszolgált forgalo
 
 Az olyan ügynök-csomópontok esetében, amelyek nagy számú egyidejű munkamenet kezelésére várnak, használhatja az alábbi TCP-és hálózati beállítások részhalmazát, hogy a rendszer beállíthatja a csomópontok készletét. 
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096 – 3240000 | 16384 | Az adott figyelő szoftvercsatornához várólistára helyezhető kapcsolatkérelmek maximális száma. A [Listen (2)](http://man7.org/linux/man-pages/man2/listen.2.html) függvénynek átadott várakozó paraméter értékének felső korlátja. Ha a várakozó fájlok argumentuma nagyobb, mint a, a rendszer `somaxconn` ezt a korlátot csendesen csonkolja.
 | `net.core.netdev_max_backlog` | 1000 – 3240000 | 1000 | A bemeneti oldalon várólistára helyezett csomagok maximális száma, amikor a csatoló gyorsabban fogad csomagokat, mint a kernel képes feldolgozni. |
@@ -114,7 +114,7 @@ Az olyan ügynök-csomópontok esetében, amelyek nagy számú egyidejű munkame
 
 A fájlok leíró korlátaihoz hasonlóan a folyamat által létrehozható munkavégzők vagy szálak száma is korlátozott a kernel-beállítás és a felhasználói korlátok esetében. Az AK-ra vonatkozó felhasználói korlát korlátlan. 
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | A folyamatok felhasználhatják a munkavégző szálakat. Az összes létrehozható szál maximális száma a rendszermag beállításával állítható be `kernel.threads-max` . | 
 
@@ -122,7 +122,7 @@ A fájlok leíró korlátaihoz hasonlóan a folyamat által létrehozható munka
 
 Az alábbi beállításokkal beállíthatja a Linux-kernel virtuális memória (VM) alrendszerének működését, valamint az `writeout` inkonzisztens adatlemezeket.
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530 – 262144 | 65530 | Ez a fájl tartalmazza a folyamat által esetlegesen feldolgozható memória-leképező területek maximális számát. A memória-hozzárendelési területek a hívás, a, a, a, a és a, valamint a `malloc` `mmap` `mprotect` `madvise` megosztott könyvtárak betöltésének mellékhatásai. | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | Ez a százalékérték azt szabályozza, hogy a rendszermag milyen tendenciát követel meg a memória visszaigényléséhez, amely a címtár-és inode objektumok gyorsítótárazására szolgál. |
@@ -166,7 +166,7 @@ Hozzon létre egy `linuxosconfig.json` fájlt a következő tartalommal:
 }
 ```
 
-Hozzon létre egy új fürtöt, amely a kublet és az operációs rendszer konfigurációit az előző lépésben létrehozott JSON-fájlokkal határozza meg. 
+Hozzon létre egy új fürtöt, amely a kubelet és az operációs rendszer konfigurációit az előző lépésben létrehozott JSON-fájlokkal határozza meg. 
 
 > [!NOTE]
 > Fürt létrehozásakor megadhatja a kubelet konfigurációját, az operációs rendszer konfigurációját vagy mindkettőt. Ha a fürt létrehozásakor megad egy konfigurációt, akkor a rendszer csak a kezdeti csomópont-készlet csomópontjain alkalmazza ezt a konfigurációt. A JSON-fájlban nem konfigurált beállítások megőrzik az alapértelmezett értéket.
@@ -184,7 +184,7 @@ Adjon hozzá egy új Node-készletet, amely megadja a Kubelet paramétereket a l
 az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-group myResourceGroup --kubelet-config ./kubeletconfig.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja [, hogyan konfigurálhatja az AK-fürtöt](cluster-configuration.md).
 - Megtudhatja, hogyan frissítheti a fürtben található [csomópont-lemezképeket](node-image-upgrade.md) .

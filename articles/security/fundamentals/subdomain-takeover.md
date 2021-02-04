@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409892"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559230"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
 Ez a cikk ismerteti az altartományok átvételének gyakori biztonsági kockázatát, valamint azokat a lépéseket, amelyekkel elháríthatja a megoldást.
 
 
-## <a name="what-is-subdomain-takeover"></a>Mi az altartomány átvétele?
+## <a name="what-is-a-subdomain-takeover"></a>Mi az altartományok átvétele?
 
 Az altartományok közötti átvételek gyakori, nagy súlyosságú fenyegetést jelentenek az olyan szervezetek számára, amelyek rendszeresen hoznak létre és törölnek sok erőforrást. Az altartományok átvétele akkor fordulhat elő, ha olyan [DNS-rekorddal](../../dns/dns-zones-records.md#dns-records) rendelkezik, amely egy kiépített Azure-erőforrásra mutat. Az ilyen DNS-rekordokat "lelógó DNS"-bejegyzéseknek is nevezzük. A CNAME rekordok különösen sebezhetők a fenyegetéssel szemben. Az altartományok átvétele lehetővé teszi, hogy a rosszindulatú szereplők átirányítsák a szervezet tartománya számára a kártékony tevékenységeket végző helyekre irányuló forgalmat.
 
@@ -41,7 +41,7 @@ Egy altartomány átvételének gyakori forgatókönyve:
 
     1. Az Azure-erőforrás megszűnik vagy törlődik, miután már nincs rá szükség. 
     
-        Ezen a ponton a CNAME rekordot `greatapp.contoso.com` *should* el kell távolítani a DNS-zónából. Ha a CNAME rekord nem lett eltávolítva, akkor aktív tartományként van meghirdetve, de nem irányítja át a forgalmat egy aktív Azure-erőforráshoz. Ez a "lelógó" DNS-rekord definíciója.
+        Ezen a ponton a CNAME rekordot `greatapp.contoso.com`  el kell távolítani a DNS-zónából. Ha a CNAME rekord nem lett eltávolítva, akkor aktív tartományként van meghirdetve, de nem irányítja át a forgalmat egy aktív Azure-erőforráshoz. Ez a "lelógó" DNS-rekord definíciója.
 
     1. A lógó altartomány `greatapp.contoso.com` már sebezhető, és egy másik Azure-előfizetéshez rendelt erőforráshoz rendelhető hozzá.
 
@@ -144,6 +144,15 @@ Győződjön meg arról, hogy a szervezete olyan folyamatokat hozott létre, ame
 
 Néhány Azure-szolgáltatás olyan funkciókat kínál, amelyek a megelőző intézkedések létrehozásában nyújtanak segítséget. A probléma megelőzésének egyéb módszereit a szervezete ajánlott eljárásain vagy szabványos működési eljárásain keresztül kell létrehozni.
 
+### <a name="enable-azure-defender-for-app-service"></a>Azure Defender engedélyezése App Service számára
+
+A Azure Security Center integrált felhőalapú munkaterhelés-védelmi platformja (CWPP), az Azure Defender számos csomagot kínál az Azure-, hibrid és többfelhős erőforrások és számítási feladatok védelmére.
+
+Az **Azure Defender for app Service** csomag a DNS-észlelést is magában foglalja. Ha ezt a csomagot engedélyezi, biztonsági riasztásokat kap, ha leszerel egy App Service webhelyet, de nem távolítja el az egyéni tartományt a DNS-regisztrálótól.
+
+Az Azure Defender lelógó DNS-védelme elérhető, függetlenül attól, hogy a tartományokat Azure DNS vagy külső tartományregisztráló felügyeli-e, és a Windows és a Linux rendszeren egyaránt App Servicere vonatkozik-e.
+
+További információ erről és az Azure Defender-terv egyéb előnyeiről az [Azure defender app Service való bevezetésében](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias-rekordok használata
 
@@ -198,9 +207,11 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
     - Törölje a DNS-rekordot, ha már nincs használatban, vagy mutasson a szervezete tulajdonában lévő megfelelő Azure-erőforrásra (FQDN).
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a kapcsolódó szolgáltatásokról és az Azure-beli szolgáltatásokkal szembeni védelemről, tekintse meg a következő lapokat.
+
+- [Az Azure Defender for app Service engedélyezése](../../security-center/defender-for-app-service-introduction.md) – riasztások fogadása a DNS-bejegyzések észlelése során
 
 - [DNS-rekordok lelógó Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 

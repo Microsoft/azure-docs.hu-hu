@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015903"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560217"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -32,7 +32,7 @@ Stream Analytics támogatja az Azure Blob Storage-t, és Azure SQL Database a hi
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-A hivatkozási adatok a Blobok nevében megadott dátum/idő növekvő sorrendjében (a bemeneti konfigurációban definiált) Blobok sorozatából vannak modellezve. A művelet **csak** az utolsó blob által a sorozatban megadott értéknél **nagyobb** dátum/idő használatával támogatja a folyamat végének hozzáadását.
+A hivatkozási adatok a Blobok nevében megadott dátum/idő növekvő sorrendjében (a bemeneti konfigurációban definiált) Blobok sorozatából vannak modellezve. A művelet **csak** az utolsó blob által a sorozatban megadott értéknél **nagyobb** dátum/idő használatával támogatja a folyamat végének hozzáadását. További információ: [Azure stream Analytics feladathoz tartozó blob Storage hivatkozási adatainak használata](data-protection.md).
 
 ### <a name="configure-blob-reference-data"></a>BLOB-hivatkozási adatértékek konfigurálása
 
@@ -149,7 +149,7 @@ A referenciák frissítése kétféleképpen lehetséges:
 
 * Frissítse a IoT Edge üzemelő példányt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 

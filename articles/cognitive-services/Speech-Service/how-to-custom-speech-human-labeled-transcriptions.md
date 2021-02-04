@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704431"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560288"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
@@ -166,6 +166,10 @@ A következő normalizálás szabályok automatikusan érvényesek az átíráso
 | Frankfurter Ring | Frankfurter Ring         |
 | ¡ Eine Frag!     | Eine-Frag               |
 | Wir, a Hegedűs       | Wir-Hegedűs                |
+
+### <a name="text-normalization-for-japanese"></a>Szöveg normalizálása japán nyelven
+
+Japán (ja-JP) esetében az egyes mondatok maximális hossza 90 karakter. A hosszú mondatokkal rendelkező vonalakat a rendszer elveti. Hosszabb szöveg hozzáadásához szúrjon be egy pontot a között.
 
 ## <a name="next-steps"></a>Következő lépések
 

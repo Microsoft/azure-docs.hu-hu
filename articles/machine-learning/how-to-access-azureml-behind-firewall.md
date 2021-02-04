@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538068"
+ms.locfileid: "99560308"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -93,6 +93,7 @@ További információ: [Azure batch készlet létrehozása egy virtuális háló
 
     | **Állomásnév** | **Cél** |
     | ---- | ---- |
+    | **graph.windows.net** | Azure Machine Learning számítási példány/fürt használja. |
     | **anaconda.com**</br>**\*. anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
     | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
     | **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a **\* . pythonhosted.org** is engedélyeznie kell. |
@@ -145,6 +146,7 @@ Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, 
 | **Kötelező ehhez:** | **Azure – nyilvános** | **Azure Government** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Számítási fürt/példány | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
+| Számítási fürt/példány | graph.windows.net |  |  |
 | Számítási példány | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
 | Számítási példány | \*. instances.azureml.ms |  |  |
 

@@ -1,19 +1,19 @@
 ---
 title: Az Azure Virtual Machines beépített szabályzat-definíciói
 description: Az Azure Virtual Machines beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 89c81db16a2e863fe295691f662f99662ecba9d9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b29810f830c01fe459ded2563a9c4ddf1dea4b8b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090915"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559592"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Az Azure Virtual Machines beépített definíciói Azure Policy
 
