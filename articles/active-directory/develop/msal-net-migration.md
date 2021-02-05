@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754811"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583925"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
@@ -145,7 +145,7 @@ A MSAL.NET lezárt osztályba helyezi a tokent, és megszünteti a kibővítés�
 
 A 1.0-s verzióban, ha a szolgáltatót használja `https://login.microsoftonline.com/common` , lehetővé teszi a felhasználók számára, hogy bármilyen HRE-fiókkal jelentkezzenek be (bármely szervezet esetében). Lásd: [ADAL.net](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-Ha a szolgáltatót a 2.0-s `https://login.microsoftonline.com/common` verzióban használja, lehetővé teszi a felhasználók számára, hogy bármely HRE-szervezettel vagy egy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. A MSAL.NET-ben, ha korlátozni szeretné a bejelentkezést bármely HRE-fiókra (ugyanúgy, mint a ADAL.NET), akkor a-t kell használnia `https://login.microsoftonline.com/organizations` . Részletekért tekintse `authority` meg a paramétert a [nyilvános ügyfélprogramban](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
+Ha a szolgáltatót a 2.0-s `https://login.microsoftonline.com/common` verzióban használja, lehetővé teszi a felhasználók számára, hogy bármely HRE-szervezettel vagy egy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. Ha a MSAL.NET-ben korlátozni szeretné a bejelentkezést bármely HRE-fiókra (ugyanúgy, mint a ADAL.NET), használja a következőt: `https://login.microsoftonline.com/organizations` . Részletekért tekintse `authority` meg a paramétert a [nyilvános ügyfélprogramban](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
 ## <a name="v10-and-v20-tokens"></a>1.0-s és v 2.0-tokenek
 
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Figyelmeztetés: Ha egy v 1.0 webes API-nak megfelelő hatókörben egy vagy két perjel van
 
-Ha a Azure Resource Manager API-nak megfelelő hatókört szeretné írni (a https://management.core.windows.net/) következő hatókört kell megadnia (jegyezze fel a két perjelet)
+Ha a Azure Resource Manager API-nak megfelelő hatókört szeretné írni (a https://management.core.windows.net/) következő hatókört kéri le (jegyezze fel a két perjelet).
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -264,6 +264,6 @@ Ekkor megjelenik egy hozzáférési jogkivonat és egy azonosító jogkivonat, a
 
 Ezt a módszert olyan különböző integrációs forgatókönyvek esetében is használhatja, amelyeken elérhető frissítési jogkivonat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hatókörökkel [, engedélyekkel és a Microsoft Identity platformban](v2-permissions-and-consent.md) található hatókörökkel kapcsolatos további információk

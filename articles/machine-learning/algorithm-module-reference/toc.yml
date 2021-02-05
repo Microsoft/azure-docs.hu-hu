@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: Átalakítás mutatóértékekké
       href: convert-to-indicator-values.md
-    - name: Hiányzó adatok törlése
-      href: clean-missing-data.md
     - name: Metaadatok szerkesztése
       href: edit-metadata.md
     - name: Adatok csoportosítása intervallumokba

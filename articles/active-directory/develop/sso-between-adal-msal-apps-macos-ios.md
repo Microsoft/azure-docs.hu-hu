@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 396e9cfeace8791a59dec4a9c9c7203212f57304
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756205"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584247"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Útmutató: ADAL és MSAL alkalmazások közötti egyszeri bejelentkezés macOS és iOS rendszeren
 
@@ -34,7 +34,7 @@ Ez a szakasz a MSAL és a ADAL 2.7. x közötti SSO-különbségeket ismerteti
 
 ### <a name="cache-format"></a>Gyorsítótár formátuma
 
-A ADAL 2.7. x megtekintheti a MSAL cache formátumát. A ADAL 2.7. x verziójával nem kell külön foglalkoznia a többalkalmazásos egyszeri bejelentkezéshez. Azonban tisztában kell lennie a két függvénytár által támogatott fiókazonosító-különbségekkel.
+A ADAL 2.7. x megtekintheti a MSAL cache formátumát. A ADAL 2.7. x verziójával nem kell külön foglalkoznia a többalkalmazásos egyszeri bejelentkezéshez. Azonban vegye figyelembe a két függvénytár által támogatott fiókazonosító-különbségeket.
 
 ### <a name="account-identifier-differences"></a>Fiókazonosító-különbségek
 
@@ -283,6 +283,6 @@ do {
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754986"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583993"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL a MSAL áttelepítési útmutató Javához
 
@@ -80,7 +80,7 @@ A MSAL for Java egy [jogkivonat-gyorsítótárat](msal-acquire-cache-tokens.md) 
 
 A v 1.0-s verzióban, ha a `https://login.microsoftonline.com/common` hatóságot használja, a felhasználók bármilyen Azure Active Directory-(HRE-) fiókkal bejelentkezhetnek (bármely szervezet esetében).
 
-Ha a szolgáltatót a 2.0-s `https://login.microsoftonline.com/common` verzióban használja, a felhasználók bármely HRE-szervezettel, vagy akár egy személyes Microsoft-fiókkal (MSA) is bejelentkezhetnek. A MSAL for Java esetében, ha korlátozni szeretné a bejelentkezést bármely HRE-fiókra, akkor a szolgáltatót kell használnia `https://login.microsoftonline.com/organizations` (ez ugyanaz, mint a ADAL4J esetében). A szolgáltató megadásához állítsa a `authority` paramétert a [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) metódusban az osztály létrehozásakor `PublicClientApplication` .
+Ha a szolgáltatót a 2.0-s `https://login.microsoftonline.com/common` verzióban használja, a felhasználók bármely HRE-szervezettel, vagy akár egy személyes Microsoft-fiókkal (MSA) is bejelentkezhetnek. Ha a MSAL for Java esetében szeretné korlátozni a bejelentkezést bármely HRE-fiókra, használja a szolgáltatót `https://login.microsoftonline.com/organizations` (ez ugyanaz, mint a ADAL4J esetében). A szolgáltató megadásához állítsa a `authority` paramétert a [PublicClientApplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) metódusban az osztály létrehozásakor `PublicClientApplication` .
 
 ## <a name="v10-and-v20-tokens"></a>1.0-s és v 2.0-tokenek
 

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/04/2021
+ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145708"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584923"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Kifejezések létrehozása a leképezési adatfolyamban
 
@@ -46,7 +46,7 @@ Az adatfolyamatok leképezése során a kifejezések oszlop-, paraméterek, füg
 
 ![Kifejezés elemei](media/data-flow/expression-elements.png "Kifejezés elemei")
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 Az adatfolyamatok leképezése beépített függvényekkel és operátorokkal rendelkezik, amelyek kifejezésekben használhatók. Az elérhető függvények listáját a [leképezési adatfolyam nyelvi referenciája](data-flow-expression-functions.md)című témakörben tekintheti meg.
 
@@ -106,6 +106,9 @@ Néhány példa a karakterlánc-interpolációra:
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 * ```"{:playerName} is a {:playerRating} player"```
+
+> [!NOTE]
+> Ha karakterlánc-interpolációs szintaxist használ az SQL-forrás lekérdezésekben, a lekérdezési karakterláncnak egyetlen sorban kell lennie, "/n" nélkül.
 
 ## <a name="commenting-expressions"></a>Megjegyzések kifejezései
 

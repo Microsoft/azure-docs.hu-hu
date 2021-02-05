@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323787"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584940"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -94,7 +94,7 @@ A következő metrikákat kell jelenteni a bináris besorolási modellek kiért�
   
 -   Az F1-es **pontszám** kiszámítása a pontosság súlyozott átlaga, a 0 és az 1 közötti visszahívás pedig az ideális F1-es pontszám értéke 1.  
   
--   A **AUC** méri a görbe alatti terület kirajzolását az y tengelyen található igaz pozitív értékkel, az x tengelyen pedig téves pozitív értéket. Ez a metrika azért hasznos, mert egyetlen számot biztosít, amely lehetővé teszi különböző típusú modellek összehasonlítását.  
+-   A **AUC** méri a görbe alatti terület kirajzolását az y tengelyen található igaz pozitív értékkel, az x tengelyen pedig téves pozitív értéket. Ez a metrika azért hasznos, mert egyetlen számot biztosít, amely lehetővé teszi különböző típusú modellek összehasonlítását. A AUC besorolás-küszöbérték – Invariant. A modell előrejelzésének minőségét méri, függetlenül attól, hogy milyen besorolási küszöbérték van kiválasztva.
 
 
 ### <a name="metrics-for-regression-models"></a>Regressziós modellek metrikái
@@ -113,7 +113,7 @@ A regressziós modellekhez visszaadott metrikák a hibák mennyiségének becsl�
   
 
   
-- A **meghatározási együttható** (más néven R <sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
+- A **meghatározási együttható**(más néven R <sup>2</sup>) a modell prediktív erejét mutatja 0 és 1 közötti értékként. Nulla érték azt jelenti, hogy a modell véletlenszerű (semmit sem jelent); 1 a tökéletes illeszkedést jelenti. Azonban körültekintően kell használni az R<sup>2</sup> értékek értelmezését, mivel az alacsony értékek teljesen normálisak lehetnek, és a magas értékek gyanúja is lehet.
 
 ###  <a name="metrics-for-clustering-models"></a>A fürtözési modellek metrikái
 
@@ -125,15 +125,15 @@ Mivel a fürtözési modellek nagy mértékben különböznek a besorolási és 
   
 A következő metrikákat kell jelenteni a fürtszolgáltatási modellek kiértékeléséhez.
     
--   Az oszlopban lévő pontszámok, az **átlagos távolság a másik központtól** , a fürt minden egyes pontja esetében az összes többi fürt centroids.   
+-   Az oszlopban lévő pontszámok, az **átlagos távolság a másik központtól**, a fürt minden egyes pontja esetében az összes többi fürt centroids.   
 
--   Az oszlopban lévő pontszámok, amelyek a **fürt középpontjának átlagos távolsága** , a fürt összes pontjának a fürt középpontját való közelségét jelölik.  
+-   Az oszlopban lévő pontszámok, amelyek a **fürt középpontjának átlagos távolsága**, a fürt összes pontjának a fürt középpontját való közelségét jelölik.  
   
 -   A **pontok száma** oszlopban látható, hogy hány adatpontot rendeltek hozzá az egyes fürtökhöz, valamint a fürtben lévő adatpontok összesített számát.  
   
      Ha a fürtökhöz rendelt adatpontok száma kevesebb, mint az elérhető adatpontok teljes száma, az azt jelenti, hogy az adatpontokat nem lehet fürthöz rendelni.  
   
--   Az oszlopban lévő pontszámok, a **cluster Center értékének maximális távolsága** , az egyes pontok közötti távolságok maximális száma, valamint az adott pont fürt középpontját.  
+-   Az oszlopban lévő pontszámok, a **cluster Center értékének maximális távolsága**, az egyes pontok közötti távolságok maximális száma, valamint az adott pont fürt középpontját.  
   
      Ha ez a szám magas, akkor azt jelentheti, hogy a fürt széles körben elszórtan van. Tekintse át ezt a statisztikát, valamint az **átlagos távolságot a fürt közepétől** a fürt eloszlásának meghatározásához.   
 

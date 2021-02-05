@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 656cb167fb47e44c28922afed75d8c46a460aaf1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756480"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584397"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Webes API meghívása Mobile-alkalmazásból
 
@@ -117,7 +117,7 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>Több API-kérés készítése
 
-Ha többször is meg kell hívnia ugyanazt az API-t, vagy ha több API-t kell meghívnia, akkor az alkalmazás létrehozásakor vegye figyelembe a következő témákat:
+Ha többször is meg szeretné hívni ugyanazt az API-t, vagy több API-t hív meg, akkor az alkalmazás létrehozásakor vegye figyelembe a következő témákat:
 
 - **Növekményes beleegyezett**: a Microsoft Identity platform lehetővé teszi az alkalmazások számára, hogy felhasználói hozzájárulásukat kapjanak, ha nem az összes indításkor szükséges engedélyekkel rendelkeznek. Minden alkalommal, amikor az alkalmazás készen áll egy API meghívására, csak a szükséges hatóköröket kell kérnie.
 
@@ -125,7 +125,7 @@ Ha többször is meg kell hívnia ugyanazt az API-t, vagy ha több API-t kell me
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Több API meghívása növekményes beleegyezettés és feltételes hozzáférés használatával
 
-Ha ugyanahhoz a felhasználóhoz több API-t kell meghívnia, akkor a felhasználóhoz tartozó jogkivonat beszerzése után a felhasználó hitelesítő adatainak ismételt megadásával megkeresheti a felhasználót a `AcquireTokenSilent` jogkivonat lekéréséhez:
+Ha több API-t szeretne meghívni ugyanahhoz a felhasználóhoz, a jogkivonat beszerzése után a felhasználó számára többször is megkérdezheti a hitelesítő adatokat, ha később a jogkivonat beszerzését kéri `AcquireTokenSilent` :
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -157,6 +157,6 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a forgatókönyvben lévő következő cikkre való áttéréssel váltson [éles környezetbe](scenario-mobile-production.md).

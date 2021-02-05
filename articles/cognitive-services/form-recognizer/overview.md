@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044764"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584566"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -35,7 +35,7 @@ Az űrlap-felismerő a következő szolgáltatásokból áll:
     * [Névjegykártyák](./concept-business-cards.md)
 
 
-## <a name="try-it-out"></a>Próba
+## <a name="try-it-out"></a>Próbálja ki
 
 Az űrlap-felismerő szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
 
@@ -87,13 +87,13 @@ Az űrlap-felismerő az [elrendezési API](#layout-api) segítségével tanulja 
 Az űrlap-felismerő olyan előre elkészített modelleket is tartalmaz, amelyek egyedi típusú adatfeldolgozást tartalmaznak.
 
 ### <a name="prebuilt-invoice-model"></a>Előre elkészített számla modellje
-Az előre elkészített számla modell számos formátumban kinyeri az adatait a számlákból, és visszaadja a strukturált adatok mennyiségét. Ez a modell Kinyeri a legfontosabb adatokat, például a számla AZONOSÍTÓját, az ügyfél adatait, a szállító adatait, a szállítás, a számla, a teljes, az adó, a részösszeg és egyebek számát. Emellett az előre elkészített számla modell a számla összes szövegének és táblájának felismerésére és visszaadására van betanítva. További információért tekintse meg a [számlák](./concept-invoices.md) fogalmi útmutatóját.
+Az előre elkészített számla modell számos formátumban kinyeri az adatait a számlákból, és visszaadja a strukturált adatok mennyiségét. Ez a modell Kinyeri a legfontosabb adatokat, például a számla AZONOSÍTÓját, az ügyfél adatait, a szállító adatait, a szállítás, a számla, a teljes, az adó, a részösszeg és egyebek számát. Emellett az előre elkészített számlázási modell úgy van betanítva, hogy elemezze és visszaállítsa a számla összes szövegét és tábláját. További információért tekintse meg a [számlák](./concept-invoices.md) fogalmi útmutatóját.
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="minta számla" lightbox="./media/overview-invoices.jpg":::
 
 ### <a name="prebuilt-receipt-model"></a>Előre elkészített bevételezési modell
 
-Az előkészített beérkezési modell az ausztrál, Kanada, Nagy-Britannia, India, valamint Egyesült Államok az &mdash; éttermek, a benzinkutak, a kereskedelmi és egyéb szolgáltatások által használt típus angol értékesítési nyugtáinak olvasására használatos. Ez a modell Kinyeri a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adók mennyiségét, a sorok számát, az összesítéseket és egyebeket. Emellett az előre elkészített beérkezési modell a nyugtán lévő összes szöveg felismerésére és visszaadására van betanítva. További információért tekintse meg a [nyugták](./concept-receipts.md) fogalmi útmutatóját.
+Az előkészített beérkezési modell az ausztrál, Kanada, Nagy-Britannia, India, valamint Egyesült Államok az &mdash; éttermek, a benzinkutak, a kereskedelmi és egyéb szolgáltatások által használt típus angol értékesítési nyugtáinak olvasására használatos. Ez a modell Kinyeri a legfontosabb adatokat, például a tranzakció dátumát és időpontját, a kereskedelmi adatokat, az adók mennyiségét, a sorok számát, az összesítéseket és egyebeket. Emellett az előre elkészített beérkezési modell úgy van betanítva, hogy elemezze és visszaállítsa az összes szöveget a nyugtán. További információért tekintse meg a [nyugták](./concept-receipts.md) fogalmi útmutatóját.
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="minta nyugtája" lightbox="./media/overview-receipt.jpg":::
 
@@ -104,7 +104,7 @@ A Business Cards modell lehetővé teszi olyan információk kinyerését, mint 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="névjegykártya minta" lightbox="./media/overview-business-card.jpg":::
 
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Használja a [minta űrlap-felismerő eszközt](https://fott.azurewebsites.net/) , vagy kövessen egy rövid útmutatót az adatok űrlapokból való kinyerésének megkezdéséhez. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
@@ -169,6 +169,6 @@ A zóna rugalmasságának engedélyezéséhez nincs szükség ügyfél-konfigur�
 
 Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Fejezze be [a](quickstarts/client-library.md) gyors üzembe helyezési útmutatót, amellyel megkezdheti az űrlapok feldolgozását az űrlap-felismerővel az Ön által választott nyelven.
+Fejezze be [a](quickstarts/client-library.md) gyors üzembe helyezési útmutatót, amellyel megkezdheti az űrlapok feldolgozását az űrlap-felismerővel az Ön által választott fejlesztési nyelven.

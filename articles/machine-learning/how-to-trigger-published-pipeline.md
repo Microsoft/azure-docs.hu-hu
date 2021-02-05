@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 12/16/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56a3183e259a0b1c661dfe84d5e47c4c221e5d48
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881737"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584862"
 ---
-# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok indítása a Pythonhoz készült Azure Machine Learning SDK-val
+# <a name="trigger-machine-learning-pipelines"></a>Gépi tanulási folyamatok indítása
 
-Ebből a cikkből megtudhatja, hogyan ütemezhet programozott módon egy folyamat futtatását az Azure-ban. Dönthet úgy, hogy az eltelt idő alapján vagy a fájl-rendszer módosításain alapuló ütemtervet hoz létre. Az időalapú ütemtervek segítségével gondoskodhat a rutin feladatokról, például az adateltolódás figyeléséről. A változáson alapuló ütemtervek felhasználhatók a szabálytalan vagy kiszámíthatatlan változásokra való reagálásra, például a feltöltött új vagy régi adatfeldolgozásra. Az ütemtervek létrehozásának megismerése után megismerheti, hogyan kérheti le és inaktiválja azokat. Végezetül megtudhatja, hogyan használhatja az Azure Logic app-t összetettebb kiváltó logika vagy viselkedés lehetővé tételéhez.
+Ebből a cikkből megtudhatja, hogyan ütemezhet programozott módon egy folyamat futtatását az Azure-ban. Az eltelt idő alapján vagy a fájl-rendszer változásain alapuló ütemtervet is létrehozhat. Az időalapú ütemtervek segítségével gondoskodhat a rutin feladatokról, például az adateltolódás figyeléséről. A változáson alapuló ütemtervek felhasználhatók a szabálytalan vagy kiszámíthatatlan változásokra való reagálásra, például a feltöltött új vagy régi adatfeldolgozásra. Az ütemtervek létrehozásának megismerése után megismerheti, hogyan kérheti le és inaktiválja azokat. Végezetül megtudhatja, hogyan használhatja a többi Azure-szolgáltatást, az Azure Logic app-t és a Azure Data Factory-t a folyamatok futtatásához. Az Azure logikai alkalmazások összetettebb kiváltó logikát vagy viselkedést tesznek lehetővé. Azure Data Factory folyamatok lehetővé teszik egy gépi tanulási folyamat meghívását egy nagyobb adatfeldolgozási folyamat részeként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan ütemezhet programozott módon egy folyama
 
 * Egy Machine Learning munkaterület közzétett folyamattal. A [Machine learning-folyamatokat a Azure Machine learning SDK-val létrehozhatja és futtathatja](./how-to-create-machine-learning-pipelines.md).
 
-## <a name="initialize-the-workspace--get-data"></a>A munkaterület inicializálása & az adatlekérdezés
+## <a name="trigger-pipelines-with-azure-machine-learning-sdk-for-python"></a>Folyamatok indítása a Pythonhoz készült Azure Machine Learning SDK-val
 
 Egy folyamat beütemezhet egy hivatkozást a munkaterületre, a közzétett folyamat azonosítóját, valamint annak a kísérletnek a nevére, amelyben létre kívánja hozni az ütemtervet. Ezeket az értékeket a következő kóddal érheti el:
 
@@ -81,7 +81,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>Változáson alapuló ütemterv létrehozása
 
-A fájlok változásai által aktivált folyamatok hatékonyabbak lehetnek, mint az időalapú ütemtervek. Előfordulhat például, hogy egy fájl módosításakor vagy egy új fájl egy adatkönyvtárhoz való hozzáadásakor szeretne elvégezni egy előfeldolgozási lépést. Az adattáron belüli adattárolók és az adattárban lévő módosítások változásai figyelhetők. Ha egy adott könyvtárat figyel, akkor a könyvtár alkönyvtárain belüli módosítások _nem_ indítják el a futtatást.
+A fájlok változásai által aktivált folyamatok hatékonyabbak lehetnek, mint az időalapú ütemtervek. Ha meg szeretne tenni valamit a fájl módosítása előtt, vagy ha új fájlt adnak hozzá egy adatkönyvtárhoz, a fájl előfeldolgozására van lehetőség. Az adattáron belüli adattárolók és az adattárban lévő módosítások változásai figyelhetők. Ha egy adott könyvtárat figyel, akkor a könyvtár alkönyvtárain belüli módosítások _nem_ indítják el a futtatást.
 
 Fájl – reaktív létrehozásához a (z) `Schedule` paramétert be kell állítania `datastore` a [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)értékre. Egy mappa figyeléséhez állítsa be az `path_on_datastore` argumentumot.
 
@@ -104,7 +104,7 @@ A korábban tárgyalt argumentumokon kívül az argumentumot úgy is beállítha
 
 A böngészőben nyissa meg a Azure Machine Learning. A navigációs panel **végpontok** szakaszában válassza a **folyamat végpontjai** lehetőséget. Ekkor megjelenik a munkaterületen közzétett folyamatok listája.
 
-![PÉNZMOSÁS-folyamatok lapja](./media/how-to-trigger-published-pipeline/scheduled-pipelines.png)
+:::image type="content" source="./media/how-to-trigger-published-pipeline/scheduled-pipelines.png" alt-text="PÉNZMOSÁS-folyamatok lapja":::
 
 Ezen a lapon megtekintheti a munkaterület összes folyamatával kapcsolatos összegző információkat: nevek, leírások, állapot stb. Részletezés a folyamatra kattintva. Az eredményül kapott oldalon további részleteket talál a folyamatról, és az egyes futtatásokat is lerészletezheti.
 
@@ -161,23 +161,23 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
 
 1. Navigáljon a Logic app Designer nézethez, és válassza ki az üres logikai alkalmazás sablonját. 
     > [!div class="mx-imgBorder"]
-    > ![Üres sablon](media/how-to-trigger-published-pipeline/blank-template.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/blank-template.png" alt-text="Üres sablon":::
 
 1. A tervezőben keresse meg a **blob** kifejezést. Válassza ki a **blob hozzáadása vagy módosítása (csak tulajdonságok)** triggert, és adja hozzá ezt az triggert a logikai alkalmazáshoz.
     > [!div class="mx-imgBorder"]
-    > ![Trigger hozzáadása](media/how-to-trigger-published-pipeline/add-trigger.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/add-trigger.png" alt-text="Trigger hozzáadása":::
 
 1. Adja meg a blob-hozzáadások vagy-módosítások figyeléséhez használni kívánt blob Storage-fiók kapcsolódási adatait. Válassza ki a figyelni kívánt tárolót. 
  
     Válassza ki az **időintervallumot** és a **gyakoriságot** az Önnek munkát igénylő frissítések lekérdezéséhez.  
 
     > [!NOTE]
-    > Ez az trigger figyeli a kiválasztott tárolót, de nem figyeli az almappákat.
+    > Ez az trigger figyeli a kijelölt tárolót, de nem figyeli az almappákat.
 
 1. Olyan HTTP-művelet hozzáadása, amely akkor fut le, amikor új vagy módosított blobot észlel. Válassza az **+ új lépés** elemet, majd keresse meg és válassza ki a http-műveletet.
 
   > [!div class="mx-imgBorder"]
-  > ![HTTP-művelet keresése](media/how-to-trigger-published-pipeline/search-http.png)
+  > :::image type="content" source="media/how-to-trigger-published-pipeline/search-http.png" alt-text="HTTP-művelet keresése":::
 
   A művelet konfigurálásához használja a következő beállításokat:
 
@@ -208,14 +208,20 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
     `DataStoreName` [Előfeltételként](#prerequisites)adja hozzá a munkaterülethez hozzáadott feltételt.
      
     > [!div class="mx-imgBorder"]
-    > ![HTTP-beállítások](media/how-to-trigger-published-pipeline/http-settings.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/http-settings.png" alt-text="HTTP-beállítások":::
 
 1. Válassza a **Mentés** lehetőséget, és most már készen áll az ütemtervre.
 
 > [!IMPORTANT]
 > Ha Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ a folyamathoz való hozzáférés kezelésére, [állítsa be a folyamathoz tartozó forgatókönyv (képzés vagy pontozás) engedélyeit](how-to-assign-roles.md#common-scenarios).
 
-## <a name="next-steps"></a>További lépések
+## <a name="call-machine-learning-pipelines-from-azure-data-factory-pipelines"></a>Gépi tanulási folyamatok meghívása Azure Data Factory folyamatokból
+
+Egy Azure Data Factory folyamat során a *Machine learning folyamat végrehajtása* tevékenység egy Azure Machine learning folyamatot futtat. Ez a tevékenység a Data Factory szerzői lapján található *Machine learning* kategóriában:
+
+:::image type="content" source="media/how-to-trigger-published-pipeline/azure-data-factory-pipeline-activity.png" alt-text="A Azure Data Factory authoring Environment ML-feldolgozási tevékenységét bemutató képernyőkép":::
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson. Végül létrehozott egy Azure Logic app-alkalmazást egy folyamat elindításához. 
 

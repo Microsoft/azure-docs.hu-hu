@@ -8,13 +8,13 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 16ae2f9e74202aff47e58a22dbe21a28d8280a7e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: subject-monitoring
+ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780722"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584906"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Az Azure Blob Storage figyelési adatreferenciája
 
@@ -38,7 +38,7 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 Ez a táblázat a [blob Storage metrikáit](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)mutatja be.
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | BlobCapacity | A Storage-fiókban használt BLOB Storage teljes száma. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 <br/> Méretek: **BlobType** és **BlobTier** ([definíció](#metrics-dimensions)) |
 | BlobCount    | A Storage-fiókban tárolt blob-objektumok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 <br/> Méretek: **BlobType** és **BlobTier** ([definíció](#metrics-dimensions)) |
@@ -64,7 +64,7 @@ Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja
 
 ### <a name="dimensions-specific-to-blob-storage"></a>BLOB Storage-tárolóra jellemző méretek
 
-| Dimenzió neve | Leírás |
+| Dimenzió neve | Description |
 | ------------------- | ----------------- |
 | **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob** és **Azure Data Lake Storage**. A hozzáfűző blobokat a **BlockBlob** tartalmazza. |
 | **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: gyors elérésű szint</li> <li>**Cool**: lassú szint</li> <li>**Archive**: archiválási szint</li> <li>**Premium**: prémium szint a blob blokkhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: szintű prémium oldal blob</li> <li>**Standard**: a standard oldal blobjának típusa</li> <li>Nem **rétegű**: az általános célú v1-es Storage-fiók típusa</li> |
@@ -173,7 +173,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - Az Azure Storage figyelésének leírását lásd: az [Azure Storage figyelése](monitor-blob-storage.md) .
 - Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .

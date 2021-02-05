@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221091"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584719"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -176,7 +176,7 @@ Azt is megmutatja, hogy mely táblákat kell automatikusan kibontani. A kibontot
 
 ### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
 
-Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket fel szeretne ismerni a modellből.
+Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket elemezni kíván a modellben.
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
 1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.

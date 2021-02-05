@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756451"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584380"
 ---
 # <a name="protected-web-api-app-registration"></a>Védett webes API: alkalmazás regisztrálása
 
@@ -58,7 +58,7 @@ A webes API-kra vonatkozó egyéb beállítások a kitett API-k, illetve a közz
 
 A hatókörök általában az űrlappal rendelkeznek `resourceURI/scopeName` . Microsoft Graph esetén a hatókörökhöz parancsikonok tartoznak. Például `User.Read` egy parancsikon a következőhöz: `https://graph.microsoft.com/user.read` .
 
-Az alkalmazás regisztrálása során meg kell határoznia ezeket a paramétereket:
+Az alkalmazás regisztrálása során adja meg a következő paramétereket:
 
 - Az erőforrás URI-ja
 - Egy vagy több hatókör
@@ -68,7 +68,7 @@ Alapértelmezés szerint az alkalmazás regisztrációs portálja azt javasolja,
 
 Az *ügyfélalkalmazások számára a* hatókörök *meghatalmazott engedélyekként* és az alkalmazás szerepköreiként jelennek meg a webes API-hoz.
 
-A hatókörök az alkalmazás felhasználói számára megjelenített engedélyezési ablakban is megjelennek. Ezért meg kell adnia a megfelelő sztringeket, amelyek leírják a hatókört:
+A hatókörök az alkalmazás felhasználói számára megjelenített engedélyezési ablakban is megjelennek. Ezért adja meg a megfelelő karakterláncokat, amelyek a hatókört írják le:
 
 - A felhasználó által látottak szerint.
 - A bérlői rendszergazda látja, hogy ki adhat rendszergazdai jóváhagyást.
@@ -99,7 +99,7 @@ Ebből a szakaszból megtudhatja, hogyan regisztrálhatja a védett webes API-t,
 
 #### <a name="exposing-application-permissions-app-roles"></a>Alkalmazás engedélyeinek kitöltése (alkalmazás-szerepkörök)
 
-Az alkalmazás engedélyeinek közzététele érdekében szerkesztenie kell a jegyzékfájlt.
+Az alkalmazás engedélyeinek közzététele érdekében szerkessze a jegyzékfájlt.
 
 1. Az alkalmazás regisztrációjában válassza a **jegyzékfájl** lehetőséget.
 1. A jegyzékfájl szerkesztéséhez keresse meg a `appRoles` beállítást, és adja hozzá az alkalmazás-szerepköröket. A szerepkör-definíciókat a következő JSON-blokkban kell megadnia.
@@ -151,6 +151,6 @@ A fokozott biztonság hozzáadása:
 
 1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](scenario-protected-web-api-app-configuration.md).

@@ -2,20 +2,21 @@
 title: Biztonsági technikai képességek az Azure-ban – Microsoft Azure
 description: Az Azure-beli Security Services bemutatása, amely segít a felhőben tárolt adatvédelemben, erőforrásokban és alkalmazásokban.
 services: security
-author: terrylanfear
+author: TerryLanfear
+manager: rkarlin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092768"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585143"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -431,20 +432,6 @@ A Resource Manager számos előnyt kínál:
 > [!Note]
 > A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi üzemi modellt használta, és szeretne többet megtudni a változásokról, tekintse meg a [Resource Manager-telepítés és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/management/deployment-models.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-step"></a>Következő lépés
 
-A biztonságról további információt a részletes biztonsági témakörökben talál:
-
-- [Naplózás](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [Kiberbűnözés elleni](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [Tervezési és működési biztonság](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [Titkosítás](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [Identitás- és hozzáférés-kezelés](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [Hálózati biztonság](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [Fenyegetések kezelése](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+Az [Azure Security benchmark](../benchmarks/introduction.md) program olyan biztonsági javaslatokat tartalmaz, amelyek segítségével biztonságossá teheti az Azure-ban használt szolgáltatásokat.

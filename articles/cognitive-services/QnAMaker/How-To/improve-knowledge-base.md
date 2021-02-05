@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 3f2e8fef35095a007051999d806f2942089ae19a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164940"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584752"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -49,18 +49,39 @@ A javasolt kérdések megjelenítéséhez [be kell kapcsolni a QnA Maker erőfor
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
+## <a name="active-learning-suggestions-are-saved-in-the-exported-knowledge-base"></a>Az aktív tanulási javaslatok az exportált Tudásbázisban lesznek mentve
+
+Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, a `SuggestedQuestions` TSV-fájlban lévő oszlop megőrzi az aktív tanulási adatait.
+
+Az `SuggestedQuestions` oszlop az implicit, a `autosuggested` és a kifejezett VISSZAJELZÉSek JSON-objektuma `usersuggested` . Példa erre a JSON-objektumra egyetlen felhasználó által beküldött kérdés esetén `help` :
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az adatokat, és javaslatokat javasol a tudásbázishoz.
+
+
 ### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Építészeti folyamat a GenerateAnswer és a Train API-k egy robotból való használatához
 
 A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot használja az aktív tanulás használatához:
 
 * A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból a választ](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) , és a `top` tulajdonság használatával számos választ kaphat.
-* A bot explicit visszajelzést határoz meg:
-    * A saját [egyéni üzleti logikájának](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)használatával kiszűrheti az alacsony pontszámot.
-    * A bot vagy az ügyfél alkalmazásban a lehetséges válaszok megjelenítése a felhasználó számára, és a felhasználó kiválasztott válaszának beolvasása.
-* A robot a [betanítási API](#train-api) [használatával visszaküldi a kiválasztott választ a QnA Makerra](#bot-framework-sample-code) .
 
-
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
+#### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
 
 Ha egy kérdés beküldésekor QnA Maker választ, a JSON- `top` törzs tulajdonsága beállítja a visszaadott válaszok számát.
 
@@ -71,6 +92,12 @@ Ha egy kérdés beküldésekor QnA Maker választ, a JSON- `top` törzs tulajdon
     "top": 3
 }
 ```
+
+* A bot explicit visszajelzést határoz meg:
+    * A saját [egyéni üzleti logikájának](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)használatával kiszűrheti az alacsony pontszámot.
+    * A bot vagy az ügyfél alkalmazásban a lehetséges válaszok megjelenítése a felhasználó számára, és a felhasználó kiválasztott válaszának beolvasása.
+* A robot a [betanítási API](#train-api) [használatával visszaküldi a kiválasztott választ a QnA Makerra](#bot-framework-sample-code) .
+
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>A score (pontszám) tulajdonság és az üzleti logika használata a felhasználók számára megjelenített válaszok listájának lekéréséhez
 
@@ -309,33 +336,6 @@ async callTrain(stepContext){
     return await stepContext.next(stepContext.result);
 }
 ```
-
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Az aktív tanulás az exportált Tudásbázisban lett mentve
-
-Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, a `SuggestedQuestions` TSV-fájlban lévő oszlop megőrzi az aktív tanulási adatait.
-
-Az `SuggestedQuestions` oszlop az implicit, a `autosuggested` és a kifejezett VISSZAJELZÉSek JSON-objektuma `usersuggested` . Példa erre a JSON-objektumra egyetlen felhasználó által beküldött kérdés esetén `help` :
-
-```JSON
-[
-    {
-        "clusterHead": "help",
-        "totalAutoSuggestedCount": 1,
-        "totalUserSuggestedCount": 0,
-        "alternateQuestionList": [
-            {
-                "question": "help",
-                "autoSuggestedCount": 1,
-                "userSuggestedCount": 0
-            }
-        ]
-    }
-]
-```
-
-Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az adatokat, és javaslatokat javasol a tudásbázishoz.
-
-
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

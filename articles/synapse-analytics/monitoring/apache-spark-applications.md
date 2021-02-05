@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223125"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584520"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>A szinapszis Studio használata a Apache Spark-alkalmazások figyelésére
 
@@ -155,6 +155,26 @@ Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások** elemet.
 6. Keresse meg a hiba adatait.
 
    ![Sikertelen feladatok adatai](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="compare-apache-spark-applications"></a>Apache Spark alkalmazások összehasonlítása
+Kattintson az **alkalmazások összehasonlítása** gombra, és válasszon egy alkalmazást a teljesítmény összehasonlításához, a felhasználók intuitív módon láthatják a két alkalmazás közötti különbséget.
+
+![alkalmazások összehasonlítása](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+1. Az egér használatával vigye az egérmutatót egy alkalmazásra, majd jelenítse meg az **alkalmazások összehasonlítása** ikont.
+
+2. Kattintson az **alkalmazások összehasonlítása** ikonra, és megjelenik az alkalmazások összehasonlítása oldal.
+
+3. Kattintson az **alkalmazás kiválasztása** gombra az **összehasonlító alkalmazás kiválasztása** lap megnyitásához.
+
+4. Az összehasonlító alkalmazás kiválasztásakor a felhasználóknak vagy az alkalmazás URL-címét kell megadniuk, vagy az ismétlődő listából kell választaniuk. Ezután kattintson **az OK** gombra. 
+
+   ![összehasonlító alkalmazás kiválasztása](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
+
+5. Az összehasonlítási eredmény az alkalmazások összehasonlítása oldalon jelenik meg.
+
+   ![összehasonlítás eredménye](./media/how-to-monitor-spark-applications/comparison-result.png)
+
 
 ## <a name="next-steps"></a>Következő lépések
 

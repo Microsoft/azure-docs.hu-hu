@@ -2,13 +2,13 @@
 title: Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
 description: Ismerje meg, hogyan védhető az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel egyetlen irányítópultról Azure Security Center.
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061464"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584957"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
 
@@ -36,7 +36,12 @@ A Log Analytics munkaterület az Azure Sentinel szolgáltatással konfigurálhat
 
 - Az Azure natív szolgáltatásai az Azure-ban, az Azure VMware megoldásban és a helyszíni szolgáltatásokban is használhatók a hibrid környezetek biztonsága érdekében.
 - Log Analytics munkaterület használatával egyetlen pontba gyűjtheti az adatokat vagy a naplókat, és ugyanazokat az adatokat különböző Azure-beli natív szolgáltatásokhoz is bemutathatja.
-- Azure Security Center olyan biztonsági funkciókat biztosít, mint például a fájlok integritásának figyelése, a fájlok közötti támadás észlelése, az operációs rendszer javításának felmérése, a biztonsági konfigurációs hibák felmérése és az Endpoint Protection értékelése.
+- Azure Security Center számos funkciót kínál, többek között:
+    - Fájlintegritás monitorozása
+    - Fájlok közötti támadás észlelése
+    - Operációs rendszer javításának felmérése 
+    - Biztonsági konfigurációs beállítások értékelése
+    - Endpoint Protection-Értékelés
 - Az Azure Sentinel a következőket teszi lehetővé:
     - Minden felhasználó, eszköz, alkalmazás és infrastruktúra esetében, a helyszínen és több felhőben is gyűjthet adatokat a felhőben.
     - A korábban nem észlelt fenyegetések észlelése.
@@ -78,7 +83,7 @@ Az Azure Defender a helyszíni és a felhőben egyaránt kiterjeszti Azure Secur
 5. Az **erőforrás részletei** lapon adja meg a következő adatokat: 
     - Előfizetés
     - Erőforráscsoport
-    - Régió 
+    - Region 
     - Operációs rendszer
     - Proxykiszolgáló részletei
     
@@ -183,7 +188,7 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat sza
 
 6. Az **incidens beállításai** lapon engedélyezze a **létrehozási incidensek létrehozását az elemzési szabály által aktivált riasztások közül** , és válassza a **Tovább: automatikus válasz >** lehetőséget.
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Képernyőkép az analitikai szabály varázslóról az új szabály létrehozásához az Azure Sentinelben, amely az adott elemzési szabály által aktivált riasztások alapján hozza létre az incidenseket.":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Az elemzési szabály varázsló képernyőképe új szabály létrehozásához az Azure Sentinelben. Azt mutatja, hogy a szabály által aktivált riasztások létrehozási incidensei engedélyezve vannak.":::
 
 7. Válassza a Next (tovább) lehetőséget **: >áttekintése**.
 
@@ -235,6 +240,8 @@ Létrehozhat lekérdezéseket, vagy használhatja a rendelkezésre álló előre
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg, hogyan használhatja az [Azure Defender irányítópultot](../security-center/azure-defender-dashboard.md).
-- Fedezze fel az [Azure Defender](../security-center/azure-defender.md)által kínált teljes körű védelmet.
-- Ismerje meg [Az Azure Sentinel fejlett többlépcsős támadások észlelését](../azure-monitor/learn/quick-create-workspace.md).
+Most, hogy elvégezte az Azure VMware-megoldás virtuális gépei elleni védelem biztosítását, érdemes megismernie az alábbiakat:
+
+- Az [Azure Defender irányítópultjának](../security-center/azure-defender-dashboard.md)használata.
+- [Fejlett többlépcsős támadások észlelése az Azure sentinelben](../azure-monitor/learn/quick-create-workspace.md).
+- [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md).

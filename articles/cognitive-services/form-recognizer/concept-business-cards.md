@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131125"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585092"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Űrlap-felismerő előre elkészített névjegykártya-modellje 
 
@@ -31,11 +31,11 @@ Az előre elkészített Business Card API Kinyeri a legfontosabb mezőket az üz
 
 ### <a name="fields-extracted"></a>Kinyert mezők:
 
-|Név| Típus | Leírás | Szöveg | 
+|Név| Típus | Description | Szöveg | 
 |:-----|:----|:----|:----|
 | ContactNames | objektumok tömbje | A névjegykártyából kinyert kapcsolattartó neve | [{"FirstName": "John", "LastName": "DOE"}] |
 | FirstName | sztring | A partner első (megadott) neve | John | 
-| LastName | sztring | A partner utolsó (családi) neve |   DOE | 
+| LastName | sztring | A partner utolsó (családi) neve |     DOE | 
 | CompanyNames | sztringek tömbje | Vállalati név kinyerve a vállalati kártyáról | ["Contoso"] | 
 | Részlegek | sztringek tömbje | Kapcsolattartó részleg vagy szervezet | ["R&D"] | 
 | JobTitles | sztringek tömbje | Kapcsolattartó neve | ["Informatikus mérnök"] | 
@@ -45,7 +45,7 @@ Az előre elkészített Business Card API Kinyeri a legfontosabb mezőket az üz
 | MobilePhones | telefonszámok tömbje | A névjegykártyából kinyert mobil telefonszám | ["+ 19876543210"] |
 | Faxok | telefonszámok tömbje | A névjegykártyából kinyert fax telefonszáma | ["+ 19876543211"] |
 | WorkPhones | telefonszámok tömbje | A névjegykártyából kinyert munkahelyi telefonszám | ["+ 19876543231"] |
-| OtherPhones    | telefonszámok tömbje | A névjegykártyából kinyert egyéb telefonszám | ["+ 19876543233"] |
+| OtherPhones     | telefonszámok tömbje | A névjegykártyából kinyert egyéb telefonszám | ["+ 19876543233"] |
 
 
 A Business Card API az összes felismert szöveget visszaküldheti a névjegykártyából. Ez az OCR-kimenet szerepel a JSON-válaszban.  
@@ -395,7 +395,7 @@ A Business Card API a [mesterséges intelligencia-készítő névjegykártya-fel
 
 - A gyors üzembe helyezéshez [kövesse az üzleti](./quickstarts/client-library.md) kártyák felismerésének első lépéseit.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

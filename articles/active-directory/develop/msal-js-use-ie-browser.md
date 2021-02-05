@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064844"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583976"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Az Internet Explorer böngészőkkel kapcsolatos ismert problémák (MSAL.js)
 
@@ -39,7 +39,7 @@ Ennek az az oka, hogy az Internet Explorer nem támogatja natív módon a JavaSc
 Az alkalmazás éles környezetben történő üzembe helyezése (például az Azure web Appsben) általában jól működik, ha a végfelhasználó elfogadta a felugró ablakokat. Az Internet Explorer 11 böngészőben teszteltük.
 
 ### <a name="running-locally"></a>Helyileg futtatva
-Ha az Internet Explorerben futtató alkalmazást helyileg szeretné futtatni és hibakeresést végezni, a következő szempontokat kell figyelembe vennie (tegyük fel, hogy az alkalmazást a következőképpen szeretné futtatni *http://localhost:1234* ):
+Ha az Internet Explorerben futtató alkalmazást helyileg szeretné futtatni és hibakeresést végezni, vegye figyelembe az alábbi szempontokat (tegyük fel, hogy az alkalmazást a következőképpen szeretné futtatni *http://localhost:1234* ):
 
 - Az Internet Explorer "védett mód" nevű biztonsági mechanizmussal rendelkezik, amely megakadályozza, hogy a MSAL.js megfelelően működjön. A jelenségek között a bejelentkezés után a rendszer átirányítja a lapot http://localhost:1234/null .
 

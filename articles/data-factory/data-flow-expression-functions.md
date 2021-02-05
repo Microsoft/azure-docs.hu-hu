@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/06/2021
-ms.openlocfilehash: d0bebf030a35d5e0cec7e5f9364fddbf090ee1c7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 02/04/2021
+ms.openlocfilehash: 8b63565457498663250eb6ab5dc1361e43bbffaf
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072258"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585007"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -76,6 +76,48 @@ ___
 <code><b>atan2(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 A sík pozitív x tengelye és a koordináták által megadott pont közötti szöget adja vissza radiánban.  
 * ``atan2(0, 0) -> 0.0``  
+___
+### <code>between</code>
+<code><b>between(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : any) => boolean</b></code><br/><br/>
+Ellenőrzi, hogy az első érték két másik érték között van-e egymás mellett. A numerikus, a sztring és a DateTime értékeket össze lehet hasonlítani * ``between(10, 5, 24)``
+* ``true``
+* ``between(currentDate(), currentDate() + 10, currentDate() + 20)``
+* ``false``
+___
+### <code>bitwiseAnd</code>
+<code><b>bitwiseAnd(<i>&lt;value1&gt;</i> : integral, <i>&lt;value2&gt;</i> : integral) => integral</b></code><br/><br/>
+A bitenkénti és az operátor az egész adattípusok között. Ugyanaz, mint & operátor * ``bitwiseAnd(0xf4, 0xef)``
+* ``0xe4``
+* ``(0xf4 & 0xef)``
+* ``0xe4``
+___
+### <code>bitwiseOr</code>
+<code><b>bitwiseOr(<i>&lt;value1&gt;</i> : integral, <i>&lt;value2&gt;</i> : integral) => integral</b></code><br/><br/>
+Bitenkénti vagy operátor az egész adattípusok között. Ugyanaz, mint | üzemeltető * ``bitwiseOr(0xf4, 0xef)``
+* ``0xff``
+* ``(0xf4 | 0xef)``
+* ``0xff``
+___
+### <code>bitwiseXor</code>
+<code><b>bitwiseXor(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+Bitenkénti vagy operátor az egész adattípusok között. Ugyanaz, mint | üzemeltető * ``bitwiseXor(0xf4, 0xef)``
+* ``0x1b``
+* ``(0xf4 ^ 0xef)``
+* ``0x1b``
+* ``(true ^ false)``
+* ``true``
+* ``(true ^ true)``
+* ``false``
+___
+### <code>blake2b</code>
+<code><b>blake2b(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
+Kiszámítja a különböző primitív adattípusok oszlopának Blake2-kivonatát, amely egy kis hosszúságú, ami csak 8 & 512 közötti szám lehet. Egy sor ujjlenyomatának kiszámításához használható. * ``blake2b(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))``
+* ``'c9521a5080d8da30dffb430c50ce253c345cc4c4effc315dab2162dac974711d'``
+___
+### <code>blake2bBinary</code>
+<code><b>blake2bBinary(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => binary</b></code><br/><br/>
+Kiszámítja a különböző primitív adattípusok oszlopának Blake2-kivonatát, amely egy kis hosszúságú, ami csak 8 & 512 közötti szám lehet. Egy sor ujjlenyomatának kiszámításához használható. * ``blake2bBinary(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))``
+* ``unHex('c9521a5080d8da30dffb430c50ce253c345cc4c4effc315dab2162dac974711d')``
 ___
 ### <code>case</code>
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
@@ -231,6 +273,10 @@ ___
 Az összehasonlítási művelet figyelmen kívül hagyja a kis-és nagybetűket. Ugyanaz, mint a <=> operátor.  
 * ``'abc'<=>'Abc' -> true``  
 * ``equalsIgnoreCase('abc', 'Abc') -> true``  
+___
+### <code>escape</code>
+<code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
+Egy karakterláncot egy formátum alapján elmenekül. Az elfogadható formátum literál értékei a következők: "JSON", "XML", "ECMAScript", "HTML", "Java".
 ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
@@ -760,6 +806,12 @@ Az oszlop típusának felel meg. Csak minta kifejezésekben használható. a sz�
 * ``typeMatch(type, 'number')``  
 * ``typeMatch('date', 'datetime')``  
 ___
+### <code>unescape</code>
+<code><b>unescape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
+Egy karakterláncot formáz a formátum alapján. Az elfogadható formátum literál értékei a következők: "JSON", "XML", "ECMAScript", "HTML", "Java".
+* ```unescape('{\\\\\"value\\\\\": 10}', 'json')```
+* ```'{\\\"value\\\": 10}'```
+___
 ### <code>upper</code>
 <code><b>upper(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
 Nagybetűs karakterlánc.  
@@ -1119,6 +1171,28 @@ Sorts the array using the provided predicate function. Sort expects a reference 
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
 
+## <a name="cached-lookup-functions"></a>Gyorsítótárazott keresési függvények
+A következő függvények csak akkor érhetők el, ha gyorsítótárazott keresést használ a gyorsítótáras fogadó betöltéséhez.
+___
+### <code>lookup</code>
+<code><b>lookup(key, key2, ...) => complex[]</b></code><br/><br/>
+Megkeresi az első sort a gyorsítótárazott fogadóból a megadott kulcsokkal, amelyek megfelelnek a gyorsítótárazott fogadó kulcsainak.
+* ``cacheSink#lookup(movieId)``  
+___
+### <code>mlookup</code>
+<code><b>mlookup(key, key2, ...) => complex[]</b></code><br/><br/>
+A gyorsítótárazott fogadó összes egyező sorát megkeresi a megadott kulcsokkal, amelyek megfelelnek a gyorsítótárazott fogadó kulcsainak.
+* ``cacheSink#mlookup(movieId)``  
+___
+### <code>output</code>
+<code><b>output() => any</b></code><br/><br/>
+A gyorsítótár-fogadó eredményének első sorát adja vissza. * ``cacheSink#output()``  
+___
+### <code>outputs</code>
+<code><b>output() => any</b></code><br/><br/>
+A gyorsítótár-fogadó eredményének teljes kimeneti sorát adja vissza. * ``cacheSink#outputs()``
+___
+
 
 ## <a name="conversion-functions"></a>Konverziós függvények
 
@@ -1279,28 +1353,6 @@ Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
-
-## <a name="cached-lookup-functions"></a>Gyorsítótárazott keresési függvények
-A következő függvények csak akkor érhetők el, ha gyorsítótárazott keresést használ a gyorsítótáras fogadó betöltéséhez.
-___
-### <code>lookup</code>
-<code><b>lookup(key, key2, ...) => complex[]</b></code><br/><br/>
-Megkeresi az első sort a gyorsítótárazott fogadóból a megadott kulcsokkal, amelyek megfelelnek a gyorsítótárazott fogadó kulcsainak.
-* ``cacheSink#lookup(movieId)``  
-___
-### <code>mlookup</code>
-<code><b>mlookup(key, key2, ...) => complex[]</b></code><br/><br/>
-A gyorsítótárazott fogadó összes egyező sorát megkeresi a megadott kulcsokkal, amelyek megfelelnek a gyorsítótárazott fogadó kulcsainak.
-* ``cacheSink#mlookup(movieId)``  
-___
-### <code>output</code>
-<code><b>output() => any</b></code><br/><br/>
-A gyorsítótár-fogadó eredményének első sorát adja vissza. * ``cacheSink#output()``  
-___
-### <code>outputs</code>
-<code><b>output() => any</b></code><br/><br/>
-A gyorsítótár-fogadó eredményének teljes kimeneti sorát adja vissza. * ``cacheSink#outputs()``
-___
 
 ## <a name="window-functions"></a>Ablakfunkciók
 A következő függvények csak az ablakos átalakításokban érhetők el.

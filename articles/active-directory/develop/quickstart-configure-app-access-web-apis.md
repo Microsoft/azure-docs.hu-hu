@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460c96ddb06318cacd4e436190f459e4c060536e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012121"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583688"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
@@ -78,7 +78,7 @@ Delegált engedély konfigurálása a Microsoft Graphhoz, hogy az ügyfélalkalm
 1. Válassza a **delegált engedélyek** lehetőséget. Microsoft Graph számos engedélyt tesz elérhetővé a lista tetején leggyakrabban használt módon.
 1. Az **engedélyek kiválasztása** területen válassza ki a következő engedélyeket:
 
-    | Engedély       | Leírás                                         |
+    | Engedély       | Description                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Felhasználók e-mail-címének megtekintése                           |
     | `offline_access` | Az Ön számára biztosított adathozzáférés fenntartása |
@@ -144,7 +144,7 @@ A jóváhagyás megadása után a rendszergazdai jóváhagyást igénylő enged�
 
 A **rendszergazdai jóváhagyás megadása** gomb *le van tiltva* , ha Ön nem rendszergazda, vagy ha nincs beállítva az alkalmazáshoz tartozó engedély. Ha rendelkezik a megadott, de még nem konfigurált engedélyekkel, a rendszergazdai jóváhagyás gomb megkéri, hogy kezelje ezeket az engedélyeket. Hozzáadhatók a konfigurált engedélyekhez, vagy eltávolíthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő rövid útmutatóval, amelyből megtudhatja, hogyan konfigurálhatja, hogy mely fióktípus férhet hozzá az alkalmazáshoz. Előfordulhat például, hogy korlátozni szeretné a hozzáférést csak a szervezetben lévő felhasználókra (egybérlős), vagy más Azure AD-bérlők (több-bérlős) és személyes Microsoft-fiókkal (MSA) rendelkező felhasználók számára.
 

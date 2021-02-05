@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: d529e74614a4fd5ee49d7e6161c65f68e8e76fce
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845555"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585058"
 ---
 # <a name="form-recognizer-layout-service"></a>Űrlap-felismerő elrendezési szolgáltatás
 
@@ -86,12 +86,12 @@ Az elrendezés kibontja a táblákat a dokumentumokból (PDF, TIFF) és képekb�
 
 Az elrendezés kibontja a dokumentumok kiválasztási jeleit is. Kinyert kijelölési jelek közé tartozik a határolókeret, a megbízhatóság és az állapot (kiválasztott/nem kijelölt). A kijelölési megjelölés adatai a JSON-kimenet szakaszában vannak kibontva `"readResults"` . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Saját elrendezés kinyerésének kipróbálása az [űrlap-felismerő minta felhasználói felületének](https://fott-preview.azurewebsites.net/) használatával
-- Az [űrlap-felismerő](quickstarts/client-library.md) gyors üzembe helyezésével megkezdheti az elrendezések kinyerését az Ön által választott nyelven.
+- Az [űrlap-felismerő](quickstarts/client-library.md) gyors üzembe helyezésével megkezdheti az elrendezés kinyerését az Ön által választott fejlesztői nyelven.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)

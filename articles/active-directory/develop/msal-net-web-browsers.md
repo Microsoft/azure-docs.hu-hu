@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165821"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583739"
 ---
 # <a name="using-web-browsers-msalnet"></a>Böngészők használata (MSAL.NET)
 
@@ -41,18 +41,18 @@ Fontos tisztában lenni azzal, hogy a jogkivonat interaktív beszerzése során 
 
 A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kóddal rendelkezik, amely egy felhasználói felületi vezérlőben futtatja a böngészőt (például a klasszikus .NET-es verzióban a WinForms-t használja, a Xamarin pedig natív mobil vezérlőket használ, stb.). Ezt a vezérlőt `embedded` webes felhasználói felületnek nevezzük. Azt is megteheti, hogy a MSAL.NET képes a rendszerindító böngésző kiindítására is.
 
-Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. Ha módosítania kell ezt a viselkedést, használja a következőt `WithUseEmbeddedWebView(bool)`
+Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. A viselkedés módosításához használja a következőt `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Dióhéjban
+### <a name="at-a-glance"></a>Gyors áttekintés
 
 | Keretrendszer        | Beágyazott | Rendszer | Alapértelmezett |
 | ------------- |-------------| -----| ----- |
-| Klasszikus .NET     | Igen | Igen ^ | Beágyazott |
-| .NET Core     | Nem | Igen ^ | Rendszer |
-| .NET Standard | Nem | Igen ^ | Rendszer |
+| Klasszikus .NET     | Yes | Igen ^ | Beágyazott |
+| .NET Core     | No | Igen ^ | Rendszer |
+| .NET Standard | No | Igen ^ | Rendszer |
 | UWP | Igen | Nem | Beágyazott |
-| Xamarin.Android | Igen | Igen  | Rendszer |
-| Xamarin.iOS | Igen | Igen  | Rendszer |
+| Xamarin.Android | Igen | Yes  | Rendszer |
+| Xamarin.iOS | Igen | Yes  | Rendszer |
 | Xamarin. Mac| Igen | Nem | Beágyazott |
 
 ^ A következőt igényli: " http://localhost " átirányítási URI
@@ -141,7 +141,7 @@ A Xamarin. iOS és a Xamarin. Android alkalmazásokban is engedélyezheti a beá
 
 MSAL.NET-célzási Xamarin használó fejlesztőként dönthet úgy, hogy a beágyazott webnézeteket vagy a rendszerböngészőket is használja. Ez a felhasználói élménytől és a célként használni kívánt biztonsági szempontoktól függően választható.
 
-Jelenleg a MSAL.NET még nem támogatja az Android és az iOS rendszerű közvetítőket. Ezért ha egyszeri bejelentkezést (SSO) kell megadnia, a rendszerböngésző továbbra is jobb megoldás lehet. A beágyazott webböngészővel rendelkező közvetítők támogatják a MSAL.NET várakozó fájlok számát.
+Jelenleg a MSAL.NET még nem támogatja az Android és az iOS rendszerű közvetítőket. Ezért az egyszeri bejelentkezés (SSO) biztosításához a rendszerböngészőnek továbbra is jobb lehetőség lehet. A beágyazott webböngészővel rendelkező közvetítők támogatják a MSAL.NET várakozó fájlok számát.
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>A beágyazott webnézet és a rendszerböngésző közötti különbségek
 A MSAL.NET beágyazott webnézete és rendszerböngészője között néhány vizualizációs különbség van.

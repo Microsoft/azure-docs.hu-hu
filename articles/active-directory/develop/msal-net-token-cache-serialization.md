@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7e80123f21efded92ab6d59d550965ca72427b1c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 60ce3d32ffa20fc9117890528eac053d1af9fdf2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064657"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583908"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
 A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a rendszer a Microsoft Authentication Library (MSAL) gyorsítótárba helyezi.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
@@ -34,7 +34,7 @@ A MSAL.NET-ben alapértelmezés szerint a memóriában tárolt jogkivonat-gyors�
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Egyéni szerializálás Windowsos asztali alkalmazásokhoz és webalkalmazásokhoz/webes API-khoz
 
-Ne feledje, hogy az egyéni szerializálás nem érhető el a mobil platformokon (UWP, Xamarin. iOS és Xamarin. Android). A MSAL már definiál egy biztonságos és teljesítménybeli szerializálási mechanizmust ezekhez a platformokhoz. A .NET Desktop és a .NET Core alkalmazások azonban eltérő architektúrákkal rendelkeznek, és a MSAL nem tudnak általános célú szerializálási mechanizmust megvalósítani. A webhelyek például dönthetnek úgy, hogy Redis-gyorsítótárban tárolják a jogkivonatokat, vagy az asztali alkalmazások egy titkosított fájlban tárolják a jogkivonatokat. Így a szerializálás nem áll rendelkezésére. Ha állandó jogkivonat-gyorsítótárazási alkalmazást szeretne telepíteni a .NET Desktopban vagy a .NET Core-ban, testre kell szabnia a szerializálást.
+Ne feledje, hogy az egyéni szerializálás nem érhető el a mobil platformokon (UWP, Xamarin. iOS és Xamarin. Android). A MSAL már definiál egy biztonságos és teljesítménybeli szerializálási mechanizmust ezekhez a platformokhoz. A .NET Desktop és a .NET Core alkalmazások azonban eltérő architektúrákkal rendelkeznek, és a MSAL nem tudnak általános célú szerializálási mechanizmust megvalósítani. A webhelyek például dönthetnek úgy, hogy Redis-gyorsítótárban tárolják a jogkivonatokat, vagy az asztali alkalmazások egy titkosított fájlban tárolják a jogkivonatokat. Így a szerializálás nem áll rendelkezésére. Ha állandó jogkivonat-gyorsítótárazási alkalmazást szeretne a .NET Desktopban vagy a .NET Core-ban, szabja testre a szerializálást.
 
 A következő osztályok és felületek használatosak a jogkivonat-gyorsítótár szerializálásakor:
 

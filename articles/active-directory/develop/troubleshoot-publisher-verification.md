@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 080d7c29a9e6950117fe475445458a84fb092e94
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090204"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584213"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Közzétevő ellenőrzésének hibaelhárítása
 Ha nem tudja befejezni a folyamatot, vagy nem várt viselkedést tapasztal a [közzétevő ellenőrzésekor](publisher-verification-overview.md), akkor a következő lépésekkel kell kezdenie, ha hibákat kap, vagy nem várt viselkedés jelenik meg: 
@@ -52,8 +52,8 @@ Az alábbiakban néhány gyakori probléma merülhet fel, amelyek a folyamat sor
     1. Lépjen a [partner profiljához](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , és ellenőrizze, hogy: 
         - Az MPN-azonosító helyes. 
         - Nincsenek hibák vagy "függőben lévő műveletek", valamint a jogi üzleti profilban és a partneri adatokban található ellenőrzési állapot "engedélyezett" vagy "sikeres".
-    1. Nyissa meg az [MPN bérlői felügyelet oldalt](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) , és ellenőrizze, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy felhasználói fiókkal van-e aláírva a társított bérlők listáján. Ha további bérlőt kell felvennie, kövesse az [itt](/partner-center/multi-tenant-account)található utasításokat. Vegye figyelembe, hogy minden Ön által hozzáadott bérlő globális rendszergazdája globális rendszergazdai jogosultságokat kap a partner Center-fiókjában.
-    1. Nyissa meg az [MPN-felhasználó felügyelete lapot](https://partner.microsoft.com/pcv/users) , és erősítse meg, hogy a bejelentkezéshez használt felhasználó globális rendszergazda, MPN-rendszergazda vagy rendszergazdai fiók. Ha felhasználót kell hozzáadnia egy szerepkörhöz a partner Centerben, kövesse az [alábbi](/partner-center/create-user-accounts-and-set-permissions)utasításokat.
+    1. Nyissa meg az [MPN bérlői felügyelet oldalt](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) , és ellenőrizze, hogy az alkalmazás regisztrálva van-e a bérlőben, és hogy felhasználói fiókkal van-e aláírva a társított bérlők listáján. További bérlő hozzáadásához kövesse az [itt](/partner-center/multi-tenant-account)található utasításokat. Vegye figyelembe, hogy minden Ön által hozzáadott bérlő globális rendszergazdája globális rendszergazdai jogosultságokat kap a partner Center-fiókjában.
+    1. Nyissa meg az [MPN-felhasználó felügyelete lapot](https://partner.microsoft.com/pcv/users) , és erősítse meg, hogy a bejelentkezéshez használt felhasználó globális rendszergazda, MPN-rendszergazda vagy rendszergazdai fiók. Ha felhasználót szeretne hozzáadni egy szerepkörhöz a partner Centerben, kövesse az [alábbi](/partner-center/create-user-accounts-and-set-permissions)utasításokat.
 
 - **Az Azure AD-portálra való bejelentkezéskor nem jelenik meg a regisztrált alkalmazások egyike sem. miért?** 
     Előfordulhat, hogy az alkalmazás regisztrációja egy másik felhasználói fiókkal lett létrehozva ebben a bérlőben, egy személyes/fogyasztói fiókban vagy egy másik bérlőben. Győződjön meg arról, hogy a megfelelő fiókkal van bejelentkezve abban a bérlőben, amelyben az alkalmazás regisztrációja létrejött.

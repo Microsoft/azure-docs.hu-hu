@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536766"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584990"
 ---
 # <a name="apply-math-operation"></a>Matematikai művelet alkalmazása
 
@@ -95,7 +95,7 @@ Ha a **Hozzáfűzés** vagy a **ResultOnly** lehetőség használatával hoz ere
 -   **Egyenlő (Col2_Col1)**, amely azt jelzi, hogy tesztelte a Col2 a Col1.  
 -   **Egyenlő (Col2_ $10)**, amely azt jelzi, hogy a 2. oszlopot összehasonlítja a konstans 10 értékkel.  
 
-Még ha a **helyben** lehetőséget is használja, a forrásadatok nem törlődnek vagy módosulnak; az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása**kimenetével.  
+Még ha a **helyben** lehetőséget is használja, a forrásadatok nem törlődnek vagy módosulnak; az eredeti adatkészlet oszlopa továbbra is elérhető a tervezőben. Az eredeti adatokat úgy tekintheti meg, ha csatlakoztatja az [Oszlopok hozzáadása](add-columns.md) modult, és összekapcsolja a **matematikai művelet alkalmazása** kimenetével.  
     
 ## <a name="basic-math-operations"></a>Alapszintű Matematikai műveletek 
 
@@ -138,9 +138,9 @@ Az e értéket adja vissza a kijelölt oszlopban lévő érték hatványára. Ez
 
 Az argumentumok alap-2 exponenciális értékét adja vissza, amely az y = x * 2<sup>t</sup> , ahol a t a kitevőket tartalmazó értékek oszlopa.  
 
-Az  **oszlop beállítása**területen válassza ki azt az oszlopot, amely a kitevő értékeit tartalmazza (t).
+Az  **oszlop beállítása** területen válassza ki azt az oszlopot, amely a kitevő értékeit tartalmazza (t).
 
-A **Exp2** esetében megadhat egy második argumentum x értéket, amely lehet konstans vagy más oszlop is. A **második argumentum típusa mezőben**adja meg, hogy az x szorzót állandóként vagy egy oszlopban lévő értékként adja meg.  
+A **Exp2** esetében megadhat egy második argumentum x értéket, amely lehet konstans vagy más oszlop is. A **második argumentum típusa mezőben** adja meg, hogy az x szorzót állandóként vagy egy oszlopban lévő értékként adja meg.  
 
 Ha például kijelöl egy oszlopot a {0,1,2,3,4,5} szorzó és a kitevő értékével együtt, a függvény {0, 2, 8, 24, 64 160) értéket ad vissza.  
 
@@ -181,16 +181,16 @@ Az érték n/s gyökerét adja vissza, amely a megadott n értéket használja.
 
 Válassza ki azokat az oszlopokat, amelyekhez a gyökeret szeretné kiszámítani a **ColumnSet** beállítás használatával.  
 
-A **második argumentum típusa**mezőben válasszon egy másik oszlopot, amely tartalmazza a gyökeret, vagy adjon meg egy állandót, amelyet gyökérként kíván használni.  
+A **második argumentum típusa** mezőben válasszon egy másik oszlopot, amely tartalmazza a gyökeret, vagy adjon meg egy állandót, amelyet gyökérként kíván használni.  
 
 Ha a második argumentum egy oszlop, a rendszer az oszlopban szereplő összes értéket használja az n értékként a megfelelő sorhoz. Ha a második argumentum állandó, írja be az n értéket a **második argumentum** szövegmezőbe.
 ### <a name="pow"></a>Pow
 
 Kiszámítja az X értékét a kijelölt oszlop egyes értékeinek Y teljesítményére.  
 
-Először válassza ki azokat az oszlopokat, amelyek a **ColumnSet** beállítás használatával lebegőpontos **alapot**tartalmaznak.  
+Először válassza ki azokat az oszlopokat, amelyek a **ColumnSet** beállítás használatával lebegőpontos **alapot** tartalmaznak.  
 
-A **második argumentum típusa**mezőben válassza ki a kitevőt tartalmazó oszlopot, vagy adjon meg egy konstanst, amelyet kitevőként kíván használni.  
+A **második argumentum típusa** mezőben válassza ki a kitevőt tartalmazó oszlopot, vagy adjon meg egy konstanst, amelyet kitevőként kíván használni.  
 
 Ha a második argumentum egy oszlop, a rendszer az oszlopban szereplő összes értéket használja a megfelelő sor kitevője. Ha a második argumentum állandó, írja be a kitevő értékét a **második argumentum** szövegmezőbe.  
 
@@ -249,26 +249,29 @@ A kisebb értéket adja vissza – a **készletben** lévő értéket vagy az á
 
 Az alapszintű aritmetikai műveleteket tartalmazza: összeadás és kivonás, osztás és szorzás.  Mivel a legtöbb művelet bináris, két számot igényel, először válassza ki a műveletet, majd válassza ki az első és második argumentumban használni kívánt oszlopot vagy számokat.
 
-A felosztás és a kivonás oszlopainak kiválasztásának sorrendje a következő lehet: megszokás; Ahhoz azonban, hogy könnyebb legyen megérteni az eredményeket, az oszlop fejléce megadja a művelet nevét, valamint azt a sorrendet, amelyben az oszlopok használták.
+A divízió és a kivonás sorrendje a következő: 
+- Kivonás (Arg1_Arg2) = Arg1-ARG 2
+- Osztás (Arg1_Arg2) = Arg1/ARG 2
 
+Az alábbi táblázat néhány példát mutat be
 Művelet|Num1|Num2|Eredmény oszlop|Eredmény értéke|
 ----|----|----|----|----
-|Összeadás|1|5|Hozzáadás (Num2_Num1)| 4|
+|Összeadás|1|5|Hozzáadás (Num2_Num1)| 6|
 |Szorzás|1|5|Több (Num2_Num1)|5|
-|Kivonás|1|5|Kivonás (Num2_Num1)|4|
-|Kivonás|0|1|Kivonás (Num2_Num1)|0|
-|Részleg|1|5|Osztás (Num2_Num1)|5|
-|Részleg|0|1|Osztás (Num2_Num1)|Végtelen|
+|Kivonás|5|1|Kivonás (Num2_Num1)|4|
+|Kivonás|0|1|Kivonás (Num2_Num1)|-1|
+|Részleg|5|1|Osztás (Num2_Num1)|5|
+|Részleg|1|0|Osztás (Num2_Num1)|Végtelen|
 
 ### <a name="add"></a>Hozzáadás
 
-Adja meg a forrás oszlopokat a **set oszlop**használatával, majd adja hozzá azokat az értékeket a **második argumentumban**megadott számú értékhez.  
+Adja meg a forrás oszlopokat a **set oszlop** használatával, majd adja hozzá azokat az értékeket a **második argumentumban** megadott számú értékhez.  
 
-Ha két oszlopban szeretné felvenni az értékeket, válasszon ki egy oszlopot vagy oszlopot az **oszlop készlet**használatával, majd válasszon egy második oszlopot a **második argumentum**használatával.  
+Ha két oszlopban szeretné felvenni az értékeket, válasszon ki egy oszlopot vagy oszlopot az **oszlop készlet** használatával, majd válasszon egy második oszlopot a **második argumentum** használatával.  
 
 ### <a name="divide"></a>Osztás
 
-Az **oszlop** értékeit állandó vagy a **második argumentumban**definiált oszlopok értékei alapján osztja el.  Más szóval először az osztót kell kiválasztani, majd az osztalékot. A kimeneti érték a hányados.
+Az **oszlop** értékeit állandó vagy a **második argumentumban** definiált oszlopok értékei alapján osztja el.  Más szóval először az osztót kell kiválasztani, majd az osztalékot. A kimeneti érték a hányados.
 
 ### <a name="multiply"></a>Szorzás
 
@@ -284,51 +287,51 @@ A Azure Machine Learning Designer számos kerekítési műveletet támogat. Szá
 
 - Ha állandót használ, állítsa a **pontosság típusát** **állandó** értékre, majd írja be a számjegyek számát egész számként az **állandó pontosság** szövegmezőbe. Ha nem egész számot állít be, a modul nem eredményez hibát, de az eredmények váratlanok lehetnek.  
 
-- Ha más pontossági értéket szeretne használni az adatkészlet minden sorához, állítsa a **pontosság típusát** **ColumnSet**értékre, majd válassza ki a megfelelő pontossági értékeket tartalmazó oszlopot.  
+- Ha más pontossági értéket szeretne használni az adatkészlet minden sorához, állítsa a **pontosság típusát** **ColumnSet** értékre, majd válassza ki a megfelelő pontossági értékeket tartalmazó oszlopot.  
 
 ### <a name="ceiling"></a>Ceiling
 
-Az **oszlop**értékeinek felső határát adja vissza.  
+Az **oszlop** értékeinek felső határát adja vissza.  
 
 ### <a name="ceilingpower2"></a>CeilingPower2
 
-Az **oszlop**értékeinek négyzetes felső határát adja vissza.  
+Az **oszlop** értékeinek négyzetes felső határát adja vissza.  
 
 ### <a name="floor"></a>Floor
 
-A megadott pontosságú **oszlop**értékeinek a padlóját adja vissza.  
+A megadott pontosságú **oszlop** értékeinek a padlóját adja vissza.  
 
 ### <a name="mod"></a>Mod
 
-A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
+A megadott pontosságú **oszlop** értékeinek tört részét adja vissza.  
 
 ### <a name="quotient"></a>Hányados
 
-A megadott pontosságú **oszlop**értékeinek tört részét adja vissza.  
+A megadott pontosságú **oszlop** értékeinek tört részét adja vissza.  
 
 ### <a name="remainder"></a>Maradék
 
-Az **oszlop**értékeinek maradékát adja vissza.  
+Az **oszlop** értékeinek maradékát adja vissza.  
 
 ### <a name="rounddigits"></a>RoundDigits
 
-A megadott számú számjegyre kerekítve adja vissza az **oszlop**értékeit az 4/5-szabály alapján.  
+A megadott számú számjegyre kerekítve adja vissza az **oszlop** értékeit az 4/5-szabály alapján.  
 
 ### <a name="rounddown"></a>RoundDown
 
-A **beállított oszlopban**szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
+A **beállított oszlopban** szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
 
 ### <a name="roundup"></a>RoundUp
 
-A **beállított oszlopban**szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
+A **beállított oszlopban** szereplő értékeket adja vissza, a megadott számú számjegyre kerekítve.  
 
 ### <a name="toeven"></a>ToEven
 
-A **beállított oszlopban**szereplő értékeket adja vissza, a legközelebbi egész számra kerekítve.  
+A **beállított oszlopban** szereplő értékeket adja vissza, a legközelebbi egész számra kerekítve.  
 
 ### <a name="toodd"></a>ToOdd
 
-A **beállított oszlopban**szereplő értékeket adja vissza, a legközelebbi egész számra kerekítve.  
+A **beállított oszlopban** szereplő értékeket adja vissza, a legközelebbi egész számra kerekítve.  
 
 ### <a name="truncate"></a>Truncate
 
@@ -580,7 +583,7 @@ Tegyük fel, hogy az adatkészlet több oszloppal rendelkezik, és saját maga a
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Ha összetettebb számításokra van szüksége, több, a **matematikai műveletek alkalmazására**szolgáló példányt is láncba foglalhat. Felvehet például két oszlopot a **matematikai művelet alkalmazása**egyik példányának használatával, majd a **matematikai művelet** egy másik példányával oszthatja meg az összeget állandó értékkel a középérték beszerzéséhez.  
+Ha összetettebb számításokra van szüksége, több, a **matematikai műveletek alkalmazására** szolgáló példányt is láncba foglalhat. Felvehet például két oszlopot a **matematikai művelet alkalmazása** egyik példányának használatával, majd a **matematikai művelet** egy másik példányával oszthatja meg az összeget állandó értékkel a középérték beszerzéséhez.  
   
 Azt is megteheti, hogy az alábbi modulok egyikével végrehajtja az összes számítást az SQL, az R vagy a Python parancsfájl használatával:
  

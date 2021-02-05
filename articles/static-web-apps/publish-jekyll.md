@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8c6764ad5b63aa2fde07326ab986404ea4312316
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862012"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585177"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Jekyll-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy [Jekyll](https://jekyllrb.com/) -webalkalmazást az [azure Azure statikus Web Apps](overview.md).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -79,8 +79,11 @@ Az Azure statikus Web Apps a GitHub használatával teszi közzé webhelyét. A 
 1. Küldje le a helyi tárházat a GitHubra.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
+
+   > [!NOTE]
+   > A git-ág neve nem lehet más, mint `main` . Cserélje le `main` ezt a parancsot a megfelelő értékre.
 
 ## <a name="deploy-your-web-app"></a>A webalkalmazás üzembe helyezése
 
@@ -116,7 +119,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Válassza ki a **Jekyll-static-app** _adattárat_.
 
-1. A _ág_ válassza a **Master** elemet.
+1. A _ág_ válassza a **Main (fő**) lehetőséget.
 
     :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
@@ -146,7 +149,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Nyissa meg a Jekyll alkalmazást egy szövegszerkesztőben, és nyissa meg a _. GitHub/munkafolyamatok/Azure-Pages-<WORKFLOW_NAME>. YML_ fájlt.
 
-1. A sor után `- uses: actions/checkout@v2` adja hozzá a következő konfigurációs blokkot.
+1. A sor előtt `- name: Build And Deploy` adja hozzá a következő konfigurációs blokkot.
 
     ```yml
     - name: Set up Ruby
@@ -177,7 +180,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

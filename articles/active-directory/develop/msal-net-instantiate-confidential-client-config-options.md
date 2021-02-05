@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5bccc39144186b23cc7f9fedf02e5b9d84ea2ee4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d477c419bb677a6b8f24a3aae26c403e47cc96cb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063552"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583942"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Bizalmas ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
@@ -28,7 +28,7 @@ Az alkalmazás inicializálásához először [regisztrálnia](quickstart-regist
 
 - Az ügyfél-azonosító (GUID jelölő sztring)
 - Az identitás-szolgáltató URL-címe (a példány neve) és az alkalmazás bejelentkezési célközönsége. Ez a két paraméter együttesen a hatóság néven ismert.
-- A bérlő azonosítója, ha csak az Ön szervezete számára ír üzletági alkalmazást (más néven egybérlős alkalmazás).
+- A bérlő azonosítója, ha csak az Ön szervezete számára (egy egybérlős alkalmazás is megnevezett) üzletági alkalmazást ír.
 - Az alkalmazás titkos kulcsa (az ügyfél titkos karakterlánca) vagy a tanúsítvány (X509certificate2) típusú), ha bizalmas ügyfélalkalmazás.
 - Webalkalmazások esetében, és esetenként a nyilvános ügyfélalkalmazások számára (különösen, ha az alkalmazásnak közvetítőt kell használnia), azt a redirectUri is be kell állítania, amelyben az identitás-szolgáltató felveszi a kapcsolatot az alkalmazással a biztonsági jogkivonatokkal.
 
@@ -60,7 +60,7 @@ ASP.NET Core alkalmazás konfigurációját a fájl egy *appsettings.js* írja l
 
 A MSAL.NET v3. x verziótól kezdődően beállíthatja a bizalmas ügyfélalkalmazás konfigurációját a konfigurációs fájlból.
 
-Abban az osztályban, amelyben konfigurálni és létrehozni szeretné az alkalmazást, deklarálnia kell egy `ConfidentialClientApplicationOptions` objektumot.  Kösse a forrásból beolvasott konfigurációt (beleértve a fájl appconfig.jsis) az alkalmazás beállításainak egy példányához, az `IConfigurationRoot.Bind()`Microsoft.Extensions.Configszülő metódusának használatával [ . Kötés nuget csomagja](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+Deklaráljon egy objektumot abban az osztályban, amelyben az alkalmazást konfigurálni és létrehozni szeretné `ConfidentialClientApplicationOptions` .  Kösse a forrásból beolvasott konfigurációt (beleértve a fájl appconfig.jsis) az alkalmazás beállításainak egy példányához, az `IConfigurationRoot.Bind()`Microsoft.Extensions.Configszülő metódusának használatával [ . Kötés NuGet csomagja](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;

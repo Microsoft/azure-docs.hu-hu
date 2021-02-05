@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8c740e2868d2cd2033bc896f9b6ca897b38e922f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559981"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584821"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -134,6 +134,94 @@ Szerezze be a legújabb futtatókörnyezeti frissítéseket a [app Service friss
 
 ---
 
+## <a name="keys-in-qna-maker"></a>Kulcsok a QnA Makerban
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
+A QnA Maker szolgáltatás két típusú kulccsal foglalkozik: az App Service-ben üzemeltetett futtatókörnyezettel használt kulcsok és **lekérdezési végponti kulcsok** **létrehozásával** .
+
+Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgáltatást a szolgáltatásnak.
+
+![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
+
+|Név|Hely|Cél|
+|--|--|--|
+|Szerzői műveletek/előfizetési kulcs|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
+|Lekérdezési végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezekkel a kulcsokkal lekérdezheti a közzétett Tudásbázis-végpontot, hogy választ kapjon a felhasználó kérdéseire. Ezt a lekérdezési végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Szerzői kulcsok keresése a Azure Portal
+
+A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Portal, ahol létrehozta a QnA Maker erőforrást. Ezeket a kulcsokat előfizetési kulcsoknak is nevezzük.
+
+1. Nyissa meg a Azure Portal QnA Maker erőforrását, és válassza ki a _Cognitive Services_ típust tartalmazó erőforrást:
+
+    ![QnA Maker erőforráslista](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+
+2. Ugrás a **kulcsok**:
+
+    ![Előfizetői azonosító](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+
+### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Lekérdezési végpont kulcsainak keresése a QnA Maker portálon
+
+A végpont ugyanabban a régióban található, mint az erőforrás, mert a végponti kulcsok használatával hívható meg a Tudásbázis.
+
+A végponti kulcsok kezelhetők a [QnA Maker portálról](https://qnamaker.ai).
+
+1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd válassza a **szolgáltatás beállításai**:
+
+    ![Végpont kulcsa](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+
+2. A kulcsok megtekintése és alaphelyzetbe állítása:
+
+    > [!div class="mx-imgBorder"]
+    > ![Endpoint Key Manager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+
+    >[!NOTE]
+    >Frissítse a kulcsokat, ha úgy gondolja, hogy sérült a biztonsága. Ehhez szükség lehet az ügyfélalkalmazás vagy a robot kódjának megfelelő módosítására.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+A QnA Maker felügyelt (előzetes verzió) szolgáltatás két típusú kulccsal foglalkozik: a **szerzői kulcsok** és az **Azure Cognitive Search kulcsaival** , amelyek az ügyfél előfizetésében a szolgáltatás eléréséhez használatosak.
+
+Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgáltatást a szolgáltatásnak.
+
+![Kulcskezelő által felügyelt előzetes verzió](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
+
+|Név|Hely|Cél|
+|--|--|--|
+|Szerzői műveletek/előfizetési kulcs|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
+|Azure Cognitive Search rendszergazdai kulcs|[Azure Portal](../../../search/search-security-api-keys.md)|Ezek a kulcsok a felhasználó Azure-előfizetésében telepített Azure kognitív keresési szolgáltatással való kommunikációra szolgálnak. Ha egy Azure-beli kognitív keresést társít a QnA Maker felügyelt (előzetes verzió) szolgáltatáshoz, a rendszer automatikusan továbbítja a rendszergazdai kulcsot a QnA Maker szolgáltatásnak. <br><br>Ezeket a kulcsokat a **kulcsok** oldalon található **Azure Cognitive Search** erőforrásban találja.|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Szerzői kulcsok keresése a Azure Portal
+
+A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Portal, ahol létrehozta a QnA Maker felügyelt (előzetes verzió) erőforrást. Ezeket a kulcsokat előfizetési kulcsoknak is nevezzük.
+
+1. Nyissa meg a QnA Maker felügyelt (előzetes verzió) erőforrást a Azure Portalban, és válassza ki a *Cognitive Services* típusú erőforrást:
+
+    ![QnA Maker felügyelt (előzetes verzió) erőforrás-lista](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+
+2. Ugrás a **kulcsok és a végpontra**:
+
+    ![QnA Maker felügyelt (előzetes verzió) előfizetési kulcs](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="update-the-resources"></a>Az erőforrások frissítése
+
+Ismerje meg, hogyan frissítheti a Tudásbázis által használt erőforrásokat. A QnA Maker felügyelt (előzetes verzió) előzetes verzióban **ingyenes** . 
+
+---
+
+## <a name="management-service-region"></a>Felügyeleti szolgáltatási régió
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
+QnA Maker felügyeleti szolgáltatása csak a QnA Maker portál és a kezdeti adatfeldolgozás esetében használatos. Ez a szolgáltatás csak az **USA nyugati** régiójában érhető el. Ebben a Nyugat-amerikai szolgáltatásban nem tárolunk ügyféladatokat.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+QnA Maker felügyelt (előzetes verzió) a felügyelet és az előrejelzési szolgáltatások is ugyanabban a régióban találhatók. Jelenleg QnA Maker felügyelt (előzetes verzió) az **USA déli középső régiójában, Észak-Európában és Kelet-Ausztrália** érhető el.
+
+---
+
 ## <a name="resource-naming-considerations"></a>Erőforrás-elnevezési megfontolások
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
@@ -224,31 +312,6 @@ Ha létrehoz egy QnA szolgáltatást és annak függőségeit (például a keres
 
 Megtudhatja, [hogyan konfigurálhatja](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) a QnA Makert úgy, hogy az QnA Maker erőforrás-létrehozási folyamat részeként létrehozott egy másik kognitív szolgáltatási erőforrást használjon.
 
-## <a name="management-service-region"></a>Felügyeleti szolgáltatási régió
-
-QnA Maker felügyeleti szolgáltatása csak a QnA Maker portál és a kezdeti adatfeldolgozás esetében használatos. Ez a szolgáltatás csak az **USA nyugati** régiójában érhető el. Ebben a Nyugat-amerikai szolgáltatásban nem tárolunk ügyféladatokat.
-
-## <a name="keys-in-qna-maker"></a>Kulcsok a QnA Makerban
-
-A QnA Maker szolgáltatás két típusú kulccsal foglalkozik: az App Service-ben üzemeltetett futtatókörnyezettel használt kulcsok és **lekérdezési végponti kulcsok** **létrehozásával** .
-
-Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgáltatást a szolgáltatásnak.
-
-![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
-
-|Név|Hely|Cél|
-|--|--|--|
-|Szerzői műveletek/előfizetési kulcs|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
-|Lekérdezési végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezekkel a kulcsokkal lekérdezheti a közzétett Tudásbázis-végpontot, hogy választ kapjon a felhasználó kérdéseire. Ezt a lekérdezési végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
-
-### <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
-
-* [A virtuális hálózat konfigurálásával](../../cognitive-services-virtual-networks.md?tabs=portal)biztosíthatja a kognitív szolgáltatásokhoz tartozó erőforrásoknak a nyilvános hozzáférés elleni védettségét.
-* App Service (QnA Runtime) védetté tételének biztosítása a nyilvános hozzáférésből:
-    * Csak a kognitív szolgáltatás IP-címeiről érkező forgalom engedélyezése. Ezek már szerepelnek a (z) "CognitiveServicesManagement" szolgáltatási címkében. Ez szükséges az API-k létrehozásához (létrehozás/frissítés KB) az App Service meghívásához és ennek megfelelően a Azure Search szolgáltatás frissítéséhez.
-    * Győződjön meg arról, hogy más belépési pontokat is engedélyez, például a bot Service-t, QnA Maker portált (lehet a Corpnet), stb. a "GenerateAnswer" API-hozzáférés előrejelzéséhez.
-    * [További információ a szolgáltatási címkékről.](../../../virtual-network/service-tags-overview.md)
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
 A QnA Maker felügyelt (előzetes verzió) erőforrás neve (például) a `qna-westus-f0-b` többi erőforrás neveként is használatos.
@@ -294,27 +357,6 @@ A QnA Maker felügyelt (előzetes verzió) lehetőséggel megadhatja, hogy a QnA
 ### <a name="qna-maker-resource"></a>Erőforrás QnA Maker
 
 A QnA Maker felügyelt (előzetes verzió) erőforrás hozzáférést biztosít a szerzői és közzétételi API-khoz, üzemelteti a rangsorolási futtatókörnyezetet, valamint biztosítja a telemetria.
-
-## <a name="region-support"></a>Régiós támogatás
-
-QnA Maker felügyelt (előzetes verzió) a felügyelet és az előrejelzési szolgáltatások is ugyanabban a régióban találhatók. Jelenleg QnA Maker felügyelt (előzetes verzió) az **USA déli középső régiójában, Észak-Európában és Kelet-Ausztrália** érhető el.
-
-### <a name="keys-in-qna-maker-managed-preview"></a>QnA Maker felügyelt kulcsok (előzetes verzió)
-
-A QnA Maker felügyelt (előzetes verzió) szolgáltatás két típusú kulccsal foglalkozik: a **szerzői kulcsok** és az **Azure Cognitive Search kulcsaival** , amelyek az ügyfél előfizetésében a szolgáltatás eléréséhez használatosak.
-
-Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgáltatást a szolgáltatásnak.
-
-![Kulcskezelő által felügyelt előzetes verzió](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
-
-|Név|Hely|Cél|
-|--|--|--|
-|Szerzői műveletek/előfizetési kulcs|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
-|Azure Cognitive Search rendszergazdai kulcs|[Azure Portal](../../../search/search-security-api-keys.md)|Ezek a kulcsok a felhasználó Azure-előfizetésében telepített Azure kognitív keresési szolgáltatással való kommunikációra szolgálnak. Ha egy Azure-beli kognitív keresést társít a QnA Maker felügyelt (előzetes verzió) szolgáltatáshoz, a rendszer automatikusan továbbítja a rendszergazdai kulcsot a QnA Maker szolgáltatásnak. <br><br>Ezeket a kulcsokat a **kulcsok** oldalon található **Azure Cognitive Search** erőforrásban találja.|
-
-### <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai 
-
-[A virtuális hálózat konfigurálásával](../../cognitive-services-virtual-networks.md?tabs=portal)biztosíthatja a kognitív szolgáltatásokhoz tartozó erőforrásoknak a nyilvános hozzáférés elleni védettségét.
 
 ---
 

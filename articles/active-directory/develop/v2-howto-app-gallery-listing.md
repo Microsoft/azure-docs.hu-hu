@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3ce00c5182246513aaf3178118058826528619d2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752872"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584264"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -85,7 +85,7 @@ A prémium szintű Azure AD-funkciókkal ingyenes tesztelési fiókot vehet igé
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>1. lépés – az alkalmazás megfelelő egyszeri bejelentkezéses szabványának kiválasztása
 
-Egy alkalmazás az Azure AD-katalógusban való listázásához végre kell hajtania a támogatott egyszeri bejelentkezések közül legalább az egyiket. Az egyszeri bejelentkezés lehetőségeinek megismeréséhez, valamint arról, hogy az ügyfelek hogyan fogják konfigurálni őket az Azure AD-ben, lásd: [SSO-beállítások](../manage-apps/sso-options.md).
+Egy alkalmazás az Azure AD-katalógusban való listázásához hajtsa végre a támogatott egyszeri bejelentkezések közül legalább az egyiket. Az egyszeri bejelentkezés lehetőségeinek megismeréséhez, valamint arról, hogy az ügyfelek hogyan fogják konfigurálni őket az Azure AD-ben, lásd: [SSO-beállítások](../manage-apps/sso-options.md).
 
 A következő táblázat összehasonlítja a fő szabványokat: nyílt hitelesítés 2,0 (OAuth 2,0) az OpenID Connect (OIDC), a Security Assertion Markup Language (SAML) és a Web Services Federation (WS-Fed) használatával.
 
@@ -186,7 +186,7 @@ Az alkalmazás teszteléséhez szüksége lesz egy Azure AD-bérlőre. A fejlesz
 
 Alternatív megoldásként az Azure AD-bérlő minden Microsoft 365-előfizetéssel rendelkezik. Az ingyenes Microsoft 365 fejlesztési környezet létrehozásához tekintse meg [a Microsoft 365 fejlesztői program csatlakoztatása](/office/developer-program/microsoft-365-developer-program)című témakört.
 
-Ha bérlője van, tesztelni kell az egyszeri bejelentkezést és a [kiépítés](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)folyamatát. 
+Ha van bérlője, tesztelje az egyszeri bejelentkezést és a [kiépítés](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)folyamatát. 
 
 **OIDC vagy esküt használó alkalmazások** esetén [regisztrálja alkalmazását](quickstart-register-app.md) több-bérlős alkalmazásként. A támogatott fióktípus területen válassza ki a szervezeti címtár és a személyes Microsoft-fiókok lehetőséget.
 
@@ -317,6 +317,6 @@ Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs
 A Microsoft Partner Network azonnali hozzáférést biztosít az exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz. A hálózathoz való csatlakozáshoz és a piacra jutási terv létrehozásához tekintse meg a [kereskedelmi ügyfelek elérhetőségét](https://partner.microsoft.com/explore/commercial#gtm)ismertető témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Hitelesítési forgatókönyvek az Azure AD-hez](authentication-flows-app-scenarios.md)

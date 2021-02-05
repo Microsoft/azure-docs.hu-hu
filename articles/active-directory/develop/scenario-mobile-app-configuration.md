@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756496"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584431"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Webes API-kat meghívó mobil alkalmazás konfigurálása
 
@@ -27,7 +27,7 @@ Az alkalmazás létrehozása után megtudhatja, hogyan konfigurálhatja a kódot
 
 A következő Microsoft Authentication Library-(MSAL-) típusok támogatják a Mobile Apps szolgáltatást.
 
-MSAL | Leírás
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Hordozható alkalmazások fejlesztéséhez használatos. A MSAL.NET a következő platformokat támogatja a Mobile-alkalmazások létrehozásához: Univerzális Windows-platform (UWP), Xamarin. iOS és Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Natív iOS-alkalmazások fejlesztésére szolgál Objective-C vagy SWIFT használatával.
@@ -82,7 +82,7 @@ A következő szakaszokban további információkat talál az alkalmazás létre
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>Szülő felhasználói felület, ablak vagy tevékenység meghatározása
 
-Androidon át kell adni a fölérendelt tevékenységet az interaktív hitelesítés előtt. IOS rendszeren a közvetítő használata esetén be kell jelentkeznie `ViewController` . A UWP megegyező módon érdemes átadni a fölérendelt ablakot. Ezt a token beszerzése után adja át. Az alkalmazás létrehozásakor azonban visszahívást is megadhat a visszaadott meghatalmazottként `UIParent` .
+Az Androidon adja át a fölérendelt tevékenységet az interaktív hitelesítés előtt. Ha az iOS-ben közvetítőt használ, a rendszer a következőt adja meg: `ViewController` . A UWP megegyező módon érdemes átadni a fölérendelt ablakot. Ezt a token beszerzése után adja át. Az alkalmazás létrehozásakor azonban visszahívást is megadhat a visszaadott meghatalmazottként `UIParent` .
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -363,6 +363,6 @@ A Hozzáadás `LSApplicationQueriesSchemes` gombra kattintva engedélyezheti a M
 
 A Broker Android rendszeren való engedélyezésével kapcsolatos információkért lásd: [Xamarin. Android](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android), felügyelt hitelesítés.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a forgatókönyvben a [token beszerzésével](scenario-mobile-acquire-token.md)léphet be a következő cikkbe.

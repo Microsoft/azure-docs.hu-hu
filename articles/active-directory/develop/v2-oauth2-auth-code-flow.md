@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2687141ea870b0af0a4405ebef2261c5a303c767
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090221"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584112"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
 
@@ -44,7 +44,7 @@ Ha megpróbálja használni az engedélyezési kód folyamatát, és ezt a hiba�
 
 `access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
 
-Ezután meg kell keresnie az alkalmazás regisztrációját, és frissítenie kell az alkalmazás átirányítási URI-JÁT a típus értékre `spa` .
+Ezután keresse fel az alkalmazás regisztrációját, és frissítse az alkalmazás átirányítási URI-JÁT a Type (típus) értékre `spa` .
 
 ## <a name="request-an-authorization-code"></a>Engedélyezési kód kérése
 

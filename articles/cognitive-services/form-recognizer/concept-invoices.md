@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845578"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585075"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
@@ -74,7 +74,7 @@ A JSON-kimenet 3 részből áll:
 
 A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 számla mezőt. Az alábbiakban láthatók a JSON-kimenetre adott számlán kinyert mezők (az alábbi kimenet ezt a [mintát](./media/sample-invoice.jpg)használja)  
 
-|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
+|Név| Típus | Description | Szöveg | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sztring | Az ügyfél számlázása folyamatban van | Microsoft Corp |  |
 | CustomerId | sztring | Az ügyfél hivatkozási azonosítója | CID-12345 |  |
@@ -104,12 +104,12 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 | PreviousUnpaidBalance | szám | Explicit, korábban nem fizetett egyenleg | $500,00 | 500 |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Próbálja ki saját számláit és mintáit az [űrlap-felismerő minta felhasználói felületén](https://fott-preview.azurewebsites.net/).
-- Az [űrlap](quickstarts/client-library.md) -felismerő gyors üzembe helyezésével megkezdheti a számla-feldolgozó alkalmazás írását a választott nyelven.
+- Az [űrlap](quickstarts/client-library.md) -felismerő gyors üzembe helyezésével megkezdheti a számla-feldolgozó alkalmazás írását a választott fejlesztői nyelven.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)

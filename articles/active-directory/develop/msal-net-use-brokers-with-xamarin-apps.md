@@ -12,16 +12,16 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063484"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583841"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
-Android és iOS rendszeren a közvetítők, például a Microsoft Authenticator és az Android-specifikus Microsoft Intune Céges portál lehetővé teszik a következőket:
+Android és iOS rendszeren a közvetítők, például a Microsoft Authenticator és az Android-specifikus Microsoft Intune céges portál lehetővé teszik a következőket:
 
 - **Egyszeri bejelentkezés (SSO)**: a felhasználóknak nem kell bejelentkezniük minden alkalmazásba.
 - **Eszköz azonosítása**: a közvetítő hozzáfér az eszköz tanúsítványához. Ez a tanúsítvány a munkahelyhez való csatlakozáskor jön létre az eszközön.
@@ -91,7 +91,7 @@ Ezt a metódust az alkalmazás minden indításakor meghívja a rendszer. Lehet�
 
 ### <a name="step-4-set-uiviewcontroller"></a>4. lépés: a UIViewController beállítása ()
 
-Továbbra is a *AppDelegate.cs* -fájlban kell beállítania egy objektum ablakát. Általában nem kell beállítania az Xamarin iOS-hez készült Object (objektum) ablakot, de szüksége van egy objektumra a brókertől érkező válaszok küldéséhez és fogadásához.
+Továbbra is a *AppDelegate.cs* fájlban adja meg az objektum ablakát. Általában nem kell beállítania az Xamarin iOS-hez készült Object (objektum) ablakot, de szüksége van egy objektumra a brókertől érkező válaszok küldéséhez és fogadásához.
 
 Az objektum ablakának beállítása:
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>4. lépés: átirányítási URI hozzáadása az alkalmazás regisztrálásához
 
-A MSAL URL-címeket használ a közvetítő meghívásához, majd visszatér az alkalmazáshoz. Ennek a menetnek a befejezéséhez regisztrálnia kell egy **átirányítási URI** -t az alkalmazáshoz a [Azure Portal](https://portal.azure.com)használatával.
+A MSAL URL-címeket használ a közvetítő meghívásához, majd visszatér az alkalmazáshoz. Az adott kör átirányításának befejezéséhez regisztráljon egy **átirányítási URI** -t az alkalmazáshoz a [Azure Portal](https://portal.azure.com)használatával.
 
 Az alkalmazás átirányítási URI formátuma az APK aláírásához használt tanúsítványtól függ. Például:
 

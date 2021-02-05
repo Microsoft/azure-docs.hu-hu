@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845588"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585109"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Betanítási adatkészlet létrehozása egyéni modellhez
 
 Az űrlap-felismerő egyéni modelljének használatakor saját betanítási adatait adhatja meg a [vonat egyéni modellje](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) műveletnek, így a modell elvégezhető az iparág-specifikus űrlapok számára. Ebből az útmutatóból megtudhatja, hogyan gyűjthet és készíthet elő adatokat a modell hatékony betanításához.
 
-Ha manuális címkék nélkül végez betanítást, öt kitöltött űrlapot vagy egy üres űrlapot is használhat (a fájlnévben a "Empty" szót kell megadnia), valamint két kitöltött űrlapot is. Még ha elegendő kitöltött űrlap is van, a betanítási adatkészletbe üres űrlap hozzáadásával növelheti a modell pontosságát.
+Legalább öt kitöltött azonos típusú űrlapra van szüksége.
 
-Ha manuálisan címkézett betanítási adatmennyiséget szeretne használni, legalább öt kitöltött, azonos típusú kitöltésű űrlapon kell kezdődnie. Továbbra is használhat címkézetlen űrlapokat és egy üres űrlapot a szükséges adatkészleten kívül.
+Ha manuálisan címkézett betanítási adatmennyiséget szeretne használni, legalább öt kitöltött, azonos típusú kitöltésű űrlapon kell kezdődnie. Továbbra is használhatja a nem címkézett űrlapokat a szükséges adatkészleten kívül.
 
 ## <a name="custom-model-input-requirements"></a>Egyéni modell bemeneti követelményei
 
@@ -68,13 +68,13 @@ Ha az alábbi tartalmat adja hozzá a kérelem törzséhez, az API az almappákb
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egy betanítási adatkészletet, egy rövid útmutató segítségével betaníthat egy egyéni űrlap-felismerő modellt, és megkezdheti az űrlapokon való használatát.
 
 * [Modellek betanítása és űrlapadatok kinyerése az ügyféloldali kódtár vagy REST API használatával](./quickstarts/client-library.md)
 * [Betanítás címkék használatával a minta feliratozási eszközzel](./quickstarts/label-tool.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
