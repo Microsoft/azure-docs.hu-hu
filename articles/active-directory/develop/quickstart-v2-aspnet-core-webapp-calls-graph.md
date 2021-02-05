@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bbd7ca198d04769f7e08a9407a0f73744c7cae01
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938238"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583637"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Gyors útmutató: ASP.NET Core webalkalmazás, amely a felhasználók nevében jelentkezik be, és Microsoft Graph
 
@@ -64,7 +64,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ennek a rövid útmutatónak a mintája az alkalmazás regisztrálásához szükséges **átirányítási URI** `https://localhost:44321/signin-oidc` **-t és előcsatornán belüli kijelentkezési URL-címet** igényli `https://localhost:44321/signout-oidc` .
+> Ahhoz, hogy az ebben a rövid útmutatóban szereplő kód minta működjön, adjon hozzá egy **átirányítási URI** - `https://localhost:44321/signin-oidc` t és egy **előcsatornán belüli kijelentkezési URL-címet** az `https://localhost:44321/signout-oidc` alkalmazás regisztrálásához.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >

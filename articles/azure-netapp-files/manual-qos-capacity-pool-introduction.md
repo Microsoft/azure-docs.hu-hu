@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993978"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581125"
 ---
 # <a name="manual-qos-capacity-pool"></a>Manuális QoS-kapacitáskészlet
 
@@ -29,7 +29,7 @@ Ez a cikk bevezetést nyújt a kézi szolgáltatásminőség (QoS) kapacitás-k�
 
 A [QoS-típus](azure-netapp-files-understand-storage-hierarchy.md#qos_types) a kapacitási készlet egyik attribútuma. Azure NetApp Files két QoS-típust biztosít a kapacitás-készletek számára – automatikus (alapértelmezett) és manuális.  
 
-A *manuális* QoS-kapacitás készletében a kötetek kapacitását és átviteli sebességét egymástól függetlenül lehet hozzárendelni. A manuális QoS-kapacitási készlettel létrehozott kötetek teljes átviteli sebességét a készlet teljes átviteli sebessége korlátozza. Ezt a készlet méretének és a szolgáltatási szintű átviteli sebességnek a kombinációja határozza meg. 
+A *manuális* QoS-kapacitás készletében a kötetek kapacitását és átviteli sebességét egymástól függetlenül lehet hozzárendelni. A minimális és maximális átviteli sebesség tekintetében lásd: [Azure NetApp Files erőforrás-korlátai](azure-netapp-files-resource-limits.md#resource-limits). A manuális QoS-kapacitási készlettel létrehozott kötetek teljes átviteli sebességét a készlet teljes átviteli sebessége korlátozza. Ezt a készlet méretének és a szolgáltatási szintű átviteli sebességnek a kombinációja határozza meg. 
 
 Egy *automatikus* QoS-kapacitási készletben a rendszer automatikusan hozzárendeli az átviteli sebességet a készletben lévő kötetekhez, a kötetekhez rendelt mérethez viszonyítva.  
 
@@ -60,4 +60,4 @@ A manuális QoS-típus használatához [regisztrálnia kell a szolgáltatást](m
 * [SMB-kötet létrehozása](azure-netapp-files-create-volumes-smb.md)
 * [Kettős protokollú kötet létrehozása](create-volumes-dual-protocol.md)
 * [Az Azure NetApp Files metrikái](azure-netapp-files-metrics.md)
-* [A kapacitási készlettel kapcsolatos problémák elhárítása](troubleshoot-capacity-pools.md)
+* [Kapacitáskészletekkel kapcsolatos hibák elhárítása](troubleshoot-capacity-pools.md)

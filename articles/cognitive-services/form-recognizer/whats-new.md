@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: f6d610db01b465306cdaaafa9b1308dba63ff9ca
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936147"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581261"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -209,7 +209,7 @@ A JSON-válaszok minden API-híváshoz új formátumok tartoznak. Egyes kulcsok 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Fejezze be [a](quickstarts/client-library.md) gyors üzembe helyezési útmutatót, amellyel megkezdheti az űrlapok feldolgozását az űrlap-felismerővel az Ön által választott nyelven.
+Fejezze be [a](quickstarts/client-library.md) gyors üzembe helyezési útmutatót, amellyel megkezdheti az űrlapok feldolgozását az űrlap-felismerővel az Ön által választott fejlesztési nyelven.
 
 ## <a name="see-also"></a>Lásd még
 

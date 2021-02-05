@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052346"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581448"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Számítási és tárolási lehetőségek Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -102,15 +102,14 @@ Javasoljuk, hogy <!--turn on storage auto-grow or to--> riasztást állíthat be
 A Storage automatikus növekedése még nem érhető el Azure Database for MySQL rugalmas kiszolgáló számára.
 
 ## <a name="iops"></a>IOPS
-A minimális tényleges IOPS az összes számítási méret 100, a maximális tényleges IOPS pedig a következő attribútumok mindegyike határozza meg: 
-- Számítás: a maximális érvényes IOPS a kiválasztott számítási méret maximális rendelkezésre álló IOPS lehet korlátozni.
-- Tárolás: az összes számítási szinten a IOPS a kiépített tároló méretével, 3:1 arányban méretezhető.
 
-Az elérhető hatékony IOPS a kiépített tároló növelésével vagy nagyobb számítási méretre való áttéréssel méretezheti (ha a IOPS a számítási kapacitás korlátozza). Az előzetes verzióban a maximálisan támogatott IOPS 20 000 IOPS.
+Azure Database for MySQL – a rugalmas kiszolgáló támogatja a további IOPS üzembe helyezését. Ez a funkció lehetővé teszi, hogy további IOPS hozzon létre az ingyenes IOPS-korlát felett. Ezzel a szolgáltatással bármikor növelheti vagy csökkentheti a számítási feladatok követelményei alapján kiépített IOPS számát. 
 
-Ha többet szeretne megtudni a maximálisan érvényes IOPS, a számítási és a tárolási kapacitás együttes használatával, az alábbi ábrán látható: 
+A minimális IOPS az összes számítási méret 100, a maximális IOPS pedig a kiválasztott számítási méret határozza meg. Az előzetes verzióban a maximális támogatott IOPS 20 000 IOPS.
 
-| Számítási méret         | Maximális effektív IOPS  | 
+Ha többet szeretne megtudni a számítási mérettel kapcsolatos maximális IOPS, tekintse meg az alábbi ábrát: 
+
+| Számítási méret         | Maximális IOPS        | 
 |----------------------|---------------------|
 | **Burstable**        |                     |
 | Standard_B1s         | 320                 |
@@ -133,11 +132,14 @@ Ha többet szeretne megtudni a maximálisan érvényes IOPS, a számítási és 
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-A maximális tényleges IOPS függ a maximális rendelkezésre álló IOPS, a számítási mérettől számítva. Tekintse meg az alábbi képletet, és tekintse meg a nem *gyorsítótárazott lemez maximális átviteli sebességét: IOPS/Mbps* a [B sorozat](../../virtual-machines/sizes-b-series-burstable.md), a [Ddsv4 sorozat](../../virtual-machines/ddv4-ddsv4-series.md)és a [Edsv4 sorozat](../../virtual-machines/edv4-edsv4-series.md) dokumentációjában.
+A maximális IOPS függ a maximális rendelkezésre álló IOPS, a számítási mérettől számítva. A nem *gyorsítótárazott lemez maximális átviteli sebességét* a következő oszlopban tekintheti meg: IOPS/Mbps a [B sorozat](../../virtual-machines/sizes-b-series-burstable.md), a [Ddsv4 sorozat](../../virtual-machines/ddv4-ddsv4-series.md)és a [Edsv4 sorozat](../../virtual-machines/edv4-edsv4-series.md) dokumentációjában.
 
-**Max. effektív IOPS** = minimális (*"a gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/Mbps"* , a számítási méret, a kiépített, GIB * 3)
+> [!Important]
+> Az **ingyenes IOPS** megegyeznek a minimális értékkel ("a gyorsítótár nélküli lemezek maximális átviteli sebessége: IOPS/Mbps" a számítási mérettől, a kiépített, GIB * 3-ban kiosztott tárterülettől)<br>
+> A **minimális IOPS** az összes számítási méret 100.<br>
+> A **maximális IOPS** a kiválasztott számítási méret határozza meg. Az előzetes verzióban a maximális támogatott IOPS 20 000 IOPS.
 
-Az I/O-használatot a Azure Portalban (Azure Monitor) figyelheti az [IO százalék](./concepts-monitoring.md) metrika használatával. Ha több IOPS van szüksége, meg kell ismernie, hogy korlátozva van-e a számítási méret vagy a kiépített tárterület. A kiszolgáló kiépített számítási vagy tárolási méretének skálázása.
+Az I/O-használatot a Azure Portalban (Azure Monitor) figyelheti az [IO százalék](./concepts-monitoring.md) metrika használatával. Ha további IOPS van szüksége, akkor a maximális IOPS a számítások alapján kell méreteznie a kiszolgáló számítási felskálázását.
 
 ## <a name="backup"></a>Backup
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929217"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581149"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Manuális QoS-kapacitáskészlet kezelése
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan lehet felügyelni a kézi QoS-típust használó
 A QoS-típusokkal kapcsolatos megfontolások megismeréséhez tekintse meg a [Azure NetApp Files tárolási hierarchiáját](azure-netapp-files-understand-storage-hierarchy.md) , valamint a [Azure NetApp Files teljesítményével kapcsolatos szempontokat](azure-netapp-files-performance-considerations.md) .  
 
 ## <a name="register-the-feature"></a>A szolgáltatás regisztrálása
-A manuális QoS-típus funkció jelenleg előzetes verzióban érhető el. Ha első alkalommal használja ezt a szolgáltatást, először regisztrálnia kell a szolgáltatást.
+A manuális QoS-típus funkció jelenleg előzetes verzióban érhető el. Ha először használja ezt a funkciót, első lépésként regisztrálnia kell a funkciót.
   
 1.  Regisztrálja a szolgáltatást:
 
@@ -59,13 +59,14 @@ Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&v
 Módosíthatja az automatikus QoS-típust jelenleg használó kapacitás-készletet a kézi QoS-típus használatához.  
 
 > [!IMPORTANT]
-> A kapacitás típusának manuális QoS-re való beállítása állandó változás. A manuális QoS-típus kapacitása eszköz nem alakítható át automatikus QoS-kapacitási készletre. 
+> A kapacitás típusának manuális QoS-re való beállítása állandó változás. A manuális QoS-típus kapacitása eszköz nem alakítható át automatikus QoS-kapacitási készletre.  
+> Az átváltási idő alatt az átviteli szintek a kézi QoS-típushoz tartozó kötetek átviteli sebességének korlátozásával is megegyeznek. Lásd: [Azure NetApp Files erőforrás-korlátai](azure-netapp-files-resource-limits.md#resource-limits).
 
 1. A NetApp-fiók kezelés paneljén kattintson a **Kapacitási készletek** elemre a meglévő kapacitási készletek megjelenítéséhez.   
  
 2.  Kattintson arra a kapacitás-készletre, amelyet kézi QoS használatával szeretne módosítani.
 
-3.  Kattintson a **QoS-típus módosítása**elemre. Ezután állítsa **kézire**az **Új QoS-típust** . Kattintson az **OK** gombra. 
+3.  Kattintson a **QoS-típus módosítása** elemre. Ezután állítsa **kézire** az **Új QoS-típust** . Kattintson az **OK** gombra. 
 
 ![QoS-típus módosítása](../media/azure-netapp-files/change-qos-type.png)
 
@@ -80,7 +81,7 @@ Ha egy kötetet kézi QoS-kapacitású készletben tárol, igény szerint módos
 
 1. A **kötetek** lapon válassza ki azt a kötetet, amelynek az átviteli sebességét módosítani szeretné.   
 
-2. Kattintson az **átviteli sebesség módosítása**elemre. Itt adhatja meg a kívánt **átviteli sebességet (MIB/S)** . Kattintson az **OK** gombra. 
+2. Kattintson az **átviteli sebesség módosítása** elemre. Itt adhatja meg a kívánt **átviteli sebességet (MIB/S)** . Kattintson az **OK** gombra. 
 
     ![QoS átviteli sebességének módosítása](../media/azure-netapp-files/change-qos-throughput.png)
 
@@ -89,7 +90,7 @@ Ha egy kötetet kézi QoS-kapacitású készletben tárol, igény szerint módos
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Az Azure NetApp Files metrikái](azure-netapp-files-metrics.md)
 * [Az Azure NetApp Files teljesítményével kapcsolatos szempontok](azure-netapp-files-performance-considerations.md)
-* [A kapacitási készlettel kapcsolatos problémák elhárítása](troubleshoot-capacity-pools.md)
+* [Kapacitáskészletekkel kapcsolatos hibák elhárítása](troubleshoot-capacity-pools.md)
 * [Az Azure NetApp Files tárhely-hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
 * [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 * [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md)

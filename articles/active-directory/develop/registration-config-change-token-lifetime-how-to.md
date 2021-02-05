@@ -12,12 +12,12 @@ ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5dec4958c3a1d955d8f8c1dce90e27696fbebfe5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d39f378171443f028ef6b549b120b22f2a3405c4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063348"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582941"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>A jogkivonat élettartamának alapértelmezett értékeinek módosítása egyéni fejlesztésű alkalmazásokhoz
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használható az Azure AD PowerShell a hozzáférés
 > Május 2020. után a bérlők többé nem tudják konfigurálni a frissítési és a munkamenet-jogkivonat élettartamát.  A Azure Active Directory a házirendekben a meglévő frissítési és munkamenet-jogkivonat konfigurációját a 2021. január 30. után nem fogja megbecsülni. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után. További információért olvassa el [a konfigurálható jogkivonat élettartamait az Azure ad-ben](./active-directory-configurable-token-lifetimes.md).
 > Végrehajtotta [](../conditional-access/howto-conditional-access-session-lifetime.md)   Az Azure ad feltételes hozzáférésének hitelesítési munkamenet-kezelési képességeit. Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával.  
 
-A hozzáférési jogkivonat élettartamára vonatkozó szabályzat beállításához le kell töltenie az [Azure ad PowerShell-modult](https://www.powershellgallery.com/packages/AzureADPreview).
+A hozzáférési jogkivonat élettartamára vonatkozó szabályzat beállításához töltse le az [Azure ad PowerShell-modult](https://www.powershellgallery.com/packages/AzureADPreview).
 Futtassa a **kapcsolat-AzureAD-Confirm** parancsot.
 
 Az alábbi példa olyan házirendet igényel, amely megköveteli, hogy a felhasználók gyakrabban hitelesítsék magukat a webalkalmazásban. Ezzel a szabályzattal állítható be a webalkalmazás egyszerű szolgáltatásnév elérésének élettartama. Hozza létre a szabályzatot, és rendelje hozzá az egyszerű szolgáltatáshoz. Az egyszerű szolgáltatásnév ObjectId is le kell kérnie.

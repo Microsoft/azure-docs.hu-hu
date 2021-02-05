@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614914"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580827"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
 A MSAL.NET használatával közösségi identitásokkal jelentkezhet be a felhasználókba [Azure Active Directory B2C (Azure ad B2C)](../../active-directory-b2c/overview.md)használatával. Azure AD B2C a szabályzatok fogalma köré épül fel. A MSAL.NET-ben egy szabályzatot kell megadnia, amely egy szolgáltatót biztosít.
 
-- A nyilvános ügyfélalkalmazás létrehozásakor meg kell adnia a szabályzatot a szolgáltató részeként.
+- A nyilvános ügyfélalkalmazás létrehozásakor a házirend részeként határozza meg a szabályzatot.
 - Ha szabályzatot szeretne alkalmazni, hívja meg `AcquireTokenInteractive` a paramétert tartalmazó felülbírálást `authority` .
 
 Ez a cikk a 3. x MSAL.NET vonatkozik. A 2. x MSAL.NET Azure AD B2C tekintse meg a [MSAL 2. x verziójában](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) a MSAL.net wikiben a githubon.
@@ -190,10 +190,10 @@ Az egyik lehetőség a jogcím használata a `name` helyett `preferred_username`
 
 A felhasználói folyamatok által visszaadott jogcímek meghatározásával kapcsolatos további információkért lásd [: oktatóanyag: felhasználói folyamatok létrehozása Azure ad B2Cban](../../active-directory-b2c/tutorial-create-user-flows.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 
-| Sample | Platform | Leírás|
+| Sample | Platform | Description|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | A MSAL.NET-t használó Xamarin-alkalmazások a felhasználókat a Azure AD B2C használatával hitelesítik, majd a visszaadott tokenekkel rendelkező webes API-kat férnek hozzá.|

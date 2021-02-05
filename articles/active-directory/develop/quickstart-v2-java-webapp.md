@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 601b725e5f1fe06c12416ad8ab36ac657f0412f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178568"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583416"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -68,7 +68,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
 >
-> Ha a jelen rövid útmutatóban szeretné használni a kód mintát, a következőket kell tennie:
+> A kód minta használata ebben a rövid útmutatóban:
 >
 > 1. Adja hozzá a válasz URL-címeit `https://localhost:8443/msal4jsample/secure/aad` és `https://localhost:8443/msal4jsample/graph/me` .
 > 1. Hozzon létre egy ügyfél titkot.
@@ -161,7 +161,7 @@ Ha a webalkalmazást IDE szeretné futtatni, válassza a Futtatás lehetőséget
 
 ##### <a name="running-the-project-from-tomcat"></a>A projekt futtatása a Tomcatből
 
-Ha a webes mintát a Tomcat szolgáltatásban szeretné üzembe helyezni, akkor néhány módosítást kell végeznie a forráskódban.
+Ha a webes mintát a Tomcat szolgáltatásban szeretné üzembe helyezni, hajtson végre néhány módosítást a forráskódon.
 
 1. Nyissa meg az *MS-Identity-Java-WebApp/pom.xml*.
     - A területen `<name>msal-web-sample</name>` adja hozzá a t `<packaging>war</packaging>` .

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: db55a29e53c53e26fbb04d96ddf1864946bafbfd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913062"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581278"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -54,9 +54,6 @@ Ezek a blob REST API-k nem támogatottak:
 * [Oldalak tartományának beolvasása](/rest/api/storageservices/get-page-ranges)
 * [Növekményes másolási blob](/rest/api/storageservices/incremental-copy-blob)
 * [Oldal elhelyezése az URL-címről](/rest/api/storageservices/put-page-from-url)
-* [Blokk hozzáfűzése](/rest/api/storageservices/append-block)
-* [Blokk hozzáfűzése URL-címről](/rest/api/storageservices/append-block-from-url)
-
 
 A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, amelyek hierarchikus névtérrel rendelkeznek. Ha egy hierarchikus névteret szeretne engedélyezni egy Storage-fiókban, helyezze a nem felügyelt virtuális gépek lemezeit olyan Storage-fiókba, amelyben nincs engedélyezve a hierarchikus névtér funkció.
 

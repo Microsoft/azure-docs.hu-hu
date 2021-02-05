@@ -3,15 +3,15 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 02/04/2021
 ms.author: aahi
-ms.openlocfilehash: f8918766174d77ea2a9c50d9c97d9feae2d9f64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f620789e4224f5c278187ea3359752a6f7705be
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512782"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580271"
 ---
-> [!IMPORTANT]
-> * Elérte az űrlap-felismerő tároló felhasználóinak korlátját. Jelenleg nem fogadunk el új alkalmazásokat a Form Recognizer-tárolóhoz. 
-> * Az űrlap-felismerő tárolók jelenleg az űrlap-felismerő API 1,0-es verzióját használják. Ehelyett a felügyelt szolgáltatással érheti el az API legújabb verzióját.
+> [!CAUTION]
+> * Az űrlap-felismerő v 1.0 tárolója megszűnik. Ez a cikk csak referenciául szolgál. 
+> * Az API legújabb verziója a REST API és az SDK-val érhető el.

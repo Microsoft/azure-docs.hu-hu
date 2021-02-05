@@ -13,12 +13,12 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795631"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582026"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity platform-alkalmazás hitelesítési tanúsítványának hitelesítő adatai
 
@@ -101,12 +101,12 @@ Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 
 ### <a name="updating-the-application-manifest"></a>Az alkalmazás jegyzékfájljának frissítése
 
-A tanúsítvány birtokában a következőket kell kiszámítani:
+A tanúsítvány beszerzése után a következő értékeket kell kiszámítani:
 
 - `$base64Thumbprint` -A tanúsítvány kivonatának Base64 kódolású értéke
 - `$base64Value` -A tanúsítvány nyers adatmennyiségének Base64 kódolású értéke
 
-Meg kell adnia egy GUID azonosítót is a kulcs azonosításához az alkalmazás jegyzékfájljában ( `$keyId` ).
+Adjon meg egy GUID azonosítót a kulcs azonosításához az Application manifest () alkalmazásban `$keyId` .
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 1. Válassza ki a **jegyzékfájlt** az alkalmazás jegyzékfájljának megnyitásához.
@@ -136,7 +136,7 @@ Az ügyfél-kijelentések bárhol használhatók, ha az ügyfél titkos kulcsát
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Ez egy rögzített érték, amely azt jelzi, hogy a tanúsítvány hitelesítő adatait használja. |
 |`client_assertion`| JWT |Ez a fent létrehozott JWT. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [MSAL.net-függvénytár ezt a forgatókönyvet](msal-net-client-assertions.md) egyetlen sorban kezeli.
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225799"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583569"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
@@ -53,7 +53,7 @@ Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely be
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI **http://localhost:4200/** -t, és engedélyeznie kell a * * * * implicit Grant * * értéket.
+> Ahhoz, hogy az ebben a rövid útmutatóban szereplő kód minta működjön, hozzá kell adnia egy átirányítási URI-t, **http://localhost:4200/** és engedélyeznie kell az **implicit engedélyezést**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
 >
@@ -96,7 +96,7 @@ Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely be
 >
 > Cserélje le ezeket az értékeket:
 >
->|Érték neve|Leírás|
+>|Érték neve|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
 >|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).|

@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 4f64bab698cb87e26fa4fd1587c4269acf99fa59
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384105"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582196"
 ---
-# <a name="precise-answering"></a>Pontos hívásfogadás
+# <a name="precise-answering"></a>Pontos válaszadás
 
-A pontos hívásfogadás funkció lehetővé teszi, hogy pontos rövid választ kapjon a Tudásbázisban jelen lévő, a felhasználói lekérdezésekhez elérhető legjobb válasz-áthaladásból. Ez a funkció egy olyan mély tanulási modellt használ, amely a Futtatás során megérti a felhasználói lekérdezés célját, és a válasz áthaladásának pontos rövid válaszát észleli, ha egy rövid válasz van jelen a válasz-átjáróban. 
+A QnA Maker felügyelt (előzetes verzió) szolgáltatásban bevezetett pontos hívásfogadás funkció lehetővé teszi, hogy pontosan rövid választ kapjon a Tudásbázisban a felhasználói lekérdezésekhez elérhető legjobb válasz-átlépésből. Ez a funkció egy olyan mély tanulási modellt használ, amely a Futtatás során megérti a felhasználói lekérdezés célját, és a válasz áthaladásának pontos rövid válaszát észleli, ha egy rövid válasz van jelen a válasz-átjáróban. 
 
 Ez a szolgáltatás alapértelmezés szerint be van kapcsolva a teszt ablaktáblán, így tesztelheti a forgatókönyvhöz kapcsolódó funkciókat. Ez a funkció rendkívül hasznos a fejlesztők és a végfelhasználók számára egyaránt. Mostantól a tartalmi fejlesztőknek nem kell manuálisan megadniuk a konkrét QnA párokat a tudásbázisban található minden egyes tényhez, és a végfelhasználónak nem kell megvizsgálnia a szolgáltatás által visszaadott teljes válasz-áthaladást, hogy megkeresse a felhasználó lekérdezésére adott tényleges tényt. 
 
@@ -32,7 +32,7 @@ A szolgáltatás a pontos válasz megbízhatósági pontszámát is visszaadja e
 
 ## <a name="publishing-a-qna-maker-bot"></a>QnA Maker robot közzététele
 
-Amikor közzétesz egy robotot, az alkalmazásban alapértelmezés szerint a pontos válasz engedélyezett élmény jelenik meg, ahol rövid választ fog látni a válasz áthaladásával együtt. A felhasználónak rugalmasan kell kiválasztania más élményeket a sablonnak a th eBot app Service használatával történő frissítésével. 
+Amikor közzétesz egy robotot, az alkalmazásban alapértelmezés szerint a pontos válasz engedélyezett élmény jelenik meg, ahol rövid választ fog látni a válasz áthaladásával együtt. A válasz létrehozásához tekintse meg az API-referenciát [, amelyből](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) megtudhatja, hogyan használhatja a pontos választ (a AnswerSpan néven) a válaszban. A felhasználónak rugalmasan kell kiválasztania más élményeket a sablonnak a bot app Service-ben való frissítésével. 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

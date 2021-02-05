@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753838"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582774"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Forgatókönyv: a webes API-kat meghívó alkalmazás
 
@@ -52,7 +52,7 @@ Olyan alkalmazások, amelyek jogkivonatot szerzik be a saját identitásuk szám
 A fejlesztők számára a forgatókönyv teljes körű tapasztalata a következő szempontokat öleli fel:
 
 - A Daemon-alkalmazások csak az Azure AD-bérlők számára működhetnek. Nem érdemes olyan Daemon-alkalmazást létrehozni, amely megkísérli a személyes Microsoft-fiókok kezelését. Ha Ön üzletági (LOB) alkalmazás fejlesztője, a démoni alkalmazást a bérlőben hozza létre. Ha Ön ISV-t használ, érdemes lehet több-bérlős démon alkalmazást létrehoznia. Minden bérlői rendszergazdának meg kell adnia a beleegyező jogosultságokat.
-- Az [alkalmazás regisztrálása](./scenario-daemon-app-registration.md)során a válasz URI-ja nem szükséges. Meg kell osztania a titkokat, a tanúsítványokat vagy az aláírt állításokat az Azure AD-vel. Emellett meg kell adnia az alkalmazás engedélyeit, és rendszergazdai jóváhagyást kell adnia az alkalmazások használatához.
+- Az [alkalmazás regisztrálása](./scenario-daemon-app-registration.md)során a válasz URI-ja nem szükséges. Megoszthatja a titkos kulcsokat vagy tanúsítványokat vagy aláírt állításokat az Azure AD-vel. Emellett meg kell adnia az alkalmazás engedélyeit, és rendszergazdai jóváhagyást kell adnia az alkalmazások használatához.
 - Az [alkalmazás konfigurációjának](./scenario-daemon-app-configuration.md) az Azure ad-ben megosztott ügyfél-hitelesítő adatokat kell megadnia az alkalmazás regisztrációja során.
 - Az ügyfél hitelesítő adataival rendelkező token beszerzéséhez használt [hatókörnek](scenario-daemon-acquire-token.md#scopes-to-request) statikus hatókörre van szüksége.
 
@@ -60,6 +60,6 @@ A fejlesztők számára a forgatókönyv teljes körű tapasztalata a következ�
 
 [!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen tovább a forgatókönyv következő cikkére, amely az [alkalmazás regisztrálását](./scenario-daemon-app-registration.md)ismerteti.

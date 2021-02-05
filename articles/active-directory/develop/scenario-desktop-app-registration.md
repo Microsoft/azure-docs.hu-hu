@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 46c8127a93cef8f662930fffd07a2fa3d22b8871
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 4031e43b3ec6f6f451fbc4888cc482249042690b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753715"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582723"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -47,7 +47,7 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 
 - Ha macOS-hez készült natív Objective-C vagy SWIFT alkalmazást hoz létre, regisztrálja az átirányítási URI-t az alkalmazás köteg-azonosítója alapján a következő formátumban: `msauth.<your.app.bundle.id>://auth` . Cserélje le `<your.app.bundle.id>` az alkalmazást az alkalmazás Bundle-azonosítójával.
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
-- Ha meg szeretné különböztetni az [eszköz kódját](scenario-desktop-acquire-token.md#device-code-flow), az [integrált Windows-hitelesítést](scenario-desktop-acquire-token.md#integrated-windows-authentication), valamint a bizalmas ügyfélalkalmazás által használt [felhasználónevet és jelszót](scenario-desktop-acquire-token.md#username-and-password) egy olyan ügyfél-hitelesítő adat használatával, amely a [Daemon-alkalmazásokban](scenario-daemon-overview.md)használatos, és amelyekhez nincs szükség átirányítási URI-ra, akkor azt nyilvános ügyfélalkalmazásként kell konfigurálnia. A konfiguráció elérése:
+- Ha meg szeretné különböztetni az [eszköz kódjának áramlását](scenario-desktop-acquire-token.md#device-code-flow), az [integrált Windows-hitelesítést](scenario-desktop-acquire-token.md#integrated-windows-authentication), valamint egy olyan bizalmas ügyfélalkalmazás [felhasználónevét és jelszavát](scenario-desktop-acquire-token.md#username-and-password) , amely a [démon-alkalmazásokban](scenario-daemon-overview.md)használt ügyfél-hitelesítő adatokat használja, egyikhez sem kell átirányítási URI-t konfigurálnia, hanem nyilvános ügyfélalkalmazásként kell beállítania. A konfiguráció elérése:
 
     1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>válassza ki az alkalmazást **Alkalmazásregisztrációkban**, majd válassza a **hitelesítés** lehetőséget.
     1. A **Speciális beállítások**  >  **lehetővé teszik a nyilvános ügyfél-folyamatok** számára  >  **a következő mobil-és asztali folyamatok használatát: válassza az** **Igen** lehetőséget.
@@ -58,6 +58,6 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 
 Asztali alkalmazások hívás API-kat a bejelentkezett felhasználó számára. Delegált engedélyeket kell kérniük. Nem igényelhetnek alkalmazás-engedélyeket, amelyek csak Daemon- [alkalmazásokban](scenario-daemon-overview.md)vannak kezelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](scenario-desktop-app-configuration.md).

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753514"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582366"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webes API: kód konfigurálása
 
@@ -33,7 +33,7 @@ A Microsoft azt javasolja, hogy a [Microsoft. Identity. Web](https://www.nuget.o
 
 ## <a name="client-secrets-or-client-certificates"></a>Ügyfél-titkok vagy Ügyféltanúsítványok
 
-Mivel a webes API most egy alárendelt webes API-t hív meg, meg kell adnia egy ügyfél-titkos vagy ügyféltanúsítványt a fájl *appsettings.js* . Hozzáadhat egy szakaszt is, amely meghatározza a következőket:
+Mivel a webes API most egy alsóbb rétegbeli webes API-t hív meg, adjon meg egy ügyfél titkot vagy ügyféltanúsítványt a fájl *appsettings.js* . Hozzáadhat egy szakaszt is, amely meghatározza a következőket:
 
 - Az alárendelt webes API URL-címe
 - Az API meghívásához szükséges hatókörök
@@ -169,7 +169,7 @@ Az alábbi képen a *Microsoft. Identity. Web* különböző lehetőségei láth
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="A webes API-k meghívásához és a jogkivonat-gyorsítótár implementációjának megadásához szükséges, a szolgáltatás konfigurációs beállításait bemutató diagram letiltása":::
 
 > [!NOTE]
-> Az itt található programkódok teljes megértéséhez ismernie kell [ASP.net Core alapjait](/aspnet/core/fundamentals), és különösen a [függőségi befecskendezést](/aspnet/core/fundamentals/dependency-injection) és a [beállításokat](/aspnet/core/fundamentals/configuration/options).
+> A példákban szereplő kódrészletek teljes megértéséhez Ismerkedjen meg [ASP.net Core alapjaival](/aspnet/core/fundamentals), és különösen a [függőségek befecskendezésével](/aspnet/core/fundamentals/dependency-injection) és [lehetőségeivel](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -254,6 +254,6 @@ Megtekintheti az OBO flow megvalósításának példáját is [Node.js és Azure
 
 További információ az OBO protokollról: [Microsoft Identity platform és OAuth 2,0 on-Half-of flow](./v2-oauth2-on-behalf-of-flow.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a forgatókönyvben a következő cikkre léphet, amely [az alkalmazáshoz tartozó jogkivonatot szerzi](scenario-web-api-call-api-acquire-token.md)be.

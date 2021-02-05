@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 825a7d8c53552120a861657c7f3df7ae8f488c18
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755343"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581720"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -186,7 +186,7 @@ A több-bérlős alkalmazások hozzáférési tokeneket is kérhetnek az Azure A
 * [Az engedélyezési keretrendszer áttekintése][AAD-Consent-Overview]
 * [Az API-engedélyek hatókörének Microsoft Graph][MSFT-Graph-permission-scopes]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri Sign-On (SSO) használatát az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások, például a Microsoft 365 számára elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot.
 

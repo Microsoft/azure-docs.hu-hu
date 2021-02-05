@@ -2,13 +2,13 @@
 title: Azure Backup Server beállítása Azure VMware-megoldáshoz
 description: Állítsa be az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
-ms.date: 10/23/2020
-ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.date: 02/04/2021
+ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703402"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581482"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server beállítása Azure VMware-megoldáshoz
 
@@ -387,9 +387,9 @@ A Azure Backup Server v3 csak a tárolási köteteket fogadja el. Kötet hozzáa
 1. Kattintson **az OK gombra** a kötetek ReFS való formázásához, hogy a Azure Backup Server használhassa modern biztonsági másolati tárhely előnyeit.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan konfigurálhatja az Azure VMware-megoldáson futó VMware virtuális gépek biztonsági mentését Azure Backup Server használatával.
+Most, hogy elvégezte az Azure VMware-megoldás Azure Backup Serverának beállítását, érdemes megismernie az alábbiakat:
 
-> [!div class="nextstepaction"]
-> [Azure VMware-megoldás virtuális gépek biztonsági mentésének konfigurálása](backup-azure-vmware-solution-virtual-machines.md)
+- [Biztonsági másolatok konfigurálása az Azure VMware-megoldás virtuális gépei számára](backup-azure-vmware-solution-virtual-machines.md).
+- [Az Azure VMware-megoldás virtuális gépei védelme Azure Security Center integrációval](azure-security-integration.md).

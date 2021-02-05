@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 98da8057fb09cf43a59b921694386cbf3fa8ca21
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 51ba981dcc6f36df3bfaacebb503782faed5c91f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222217"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581006"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (BYOK)
 
@@ -71,10 +71,13 @@ A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azu
 
 ## <a name="supported-key-types"></a>Támogatott kulcstípusok
 
-|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Description|
+|Kulcs neve|Kulcs típusa|Kulcs mérete/görbe|Forrás|Description|
 |---|---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Azure Key Vault HSM|HSM-alapú RSA-kulcspár generálása Azure Key Vault|
-|Célként megadott kulcs|RSA|2 048 bites<br />3 072 bites<br />4 096 bites|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs|
+|Célként megadott kulcs|
+||RSA|2 048 bites<br />3 072 bites<br />4 096 bites|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs|
+||EC|P-256<br />P-384<br />P-521|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs|
+||||
 
 ## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>A kulcs előállítása és átvitele a Key Vault HSM-be
 
@@ -120,7 +123,7 @@ A BYOK eszköz letöltéséhez és telepítéséhez tekintse meg a HSM gyártój
 Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 
 > [!NOTE] 
-> Az RSA 1 024 bites kulcsok importálása nem támogatott. Jelenleg egy elliptikus görbe (EC) kulcs importálása nem támogatott.
+> Az RSA 1 024 bites kulcsok importálása nem támogatott. Az elliptikus görbe kulcsának a P-256K való importálása nem támogatott.
 > 
 > **Ismert probléma**: a Luna HSM-ből származó RSA 4k-cél kulcsának importálása csak a belső vezérlőprogram 7.4.0 vagy újabb verziója esetén támogatott.
 
@@ -128,8 +131,15 @@ Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 
 A kulcs importálásának befejezéséhez vigye át a kulcs-átviteli csomagot (egy BYOK-fájlt) a leválasztott számítógépről az internethez csatlakozó számítógépre. Az az [kulcstartó kulcs importálása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) paranccsal töltse fel a BYOK-fájlt a Key Vault HSM-be.
 
+RSA-kulcs importálásához használja az alábbi parancsot. A--KTY paraméter nem kötelező, és az alapértelmezett érték az "RSA-HSM".
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
+```
+
+Egy EK-kulcs importálásához meg kell adnia a kulcs típusát és a görbe nevét.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
 Ha a feltöltés sikeres, az Azure CLI megjeleníti az importált kulcs tulajdonságait.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 096b8ed60bf9880b6904ab952d4558939ca13574
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652075"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581822"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
@@ -72,7 +72,7 @@ A példa 20 másodpercig alvó állapotba lép, hogy az új szolgáltatásnév a
 
 A szerepkör-hozzárendelés hatókörét beállíthatja egy adott erőforráscsoportra a **ResourceGroupName** paraméter használatával. Egy adott erőforrásra is beállíthatja a hatókört a **ResourceType** és a **ResourceName** paraméter együttes használatával. 
 
-Ha **nem rendelkezik Windows 10 vagy Windows Server 2016 rendszerrel**, le kell töltenie az [önaláírt tanúsítványok generátorát](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) a Microsoft Script Center webhelyről. Bontsa ki a fájl tartalmát, és importálja a szükséges parancsmagot.
+Ha **nem rendelkezik Windows 10 vagy Windows Server 2016 operációs** rendszerrel, töltse le az [önaláírt tanúsítvány-generátort](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) a Microsoft Script Center webhelyről. Bontsa ki a fájl tartalmát, és importálja a szükséges parancsmagot.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,7 +91,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Tanúsítvány biztosítása automatizált PowerShell-szkripttel
 
-A szolgáltatásnévvel való bejelentkezéskor mindig meg kell adnia az AD-alkalmazás címtárának bérlőazonosítóját. A bérlő az Azure AD egy példánya.
+Ha egyszerű szolgáltatásként jelentkezik be, adja meg az AD-alkalmazás címtárának bérlői AZONOSÍTÓját. A bérlő az Azure AD egy példánya.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -151,7 +151,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Tanúsítvány biztosítása automatizált PowerShell-szkripttel
-A szolgáltatásnévvel való bejelentkezéskor mindig meg kell adnia az AD-alkalmazás címtárának bérlőazonosítóját. A bérlő az Azure AD egy példánya.
+Ha egyszerű szolgáltatásként jelentkezik be, adja meg az AD-alkalmazás címtárának bérlői AZONOSÍTÓját. A bérlő az Azure AD egy példánya.
 
 ```powershell
 Param (

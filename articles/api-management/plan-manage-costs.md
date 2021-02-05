@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725937"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581329"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>A API Management költségeinek megtervezése és kezelése
 
@@ -89,10 +89,10 @@ A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-bill
 
 ### <a name="choose-tier"></a>Válasszon szintet
 
-Tekintse át az [Azure API Management-rétegek szolgáltatás-alapú összehasonlítását](api-management-features.md) , hogy eldöntse, melyik szolgáltatási réteg lehet megfelelő a forgatókönyvekhez. A különböző szolgáltatási rétegek különböző használati esetekhez, különböző költségekkel kialakított funkciók és képességek kombinációit támogatják. Bármikor [frissíthet](upgrade-and-scale.md) egy másik szolgáltatási szintre.
+Tekintse át az [Azure API Management-rétegek szolgáltatás-alapú összehasonlítását](api-management-features.md) , hogy eldöntse, melyik szolgáltatási réteg lehet megfelelő a forgatókönyvekhez. A különböző szolgáltatási rétegek különböző használati esetekhez, különböző költségekkel kialakított funkciók és képességek kombinációit támogatják. 
 
 * A **fogyasztási** szolgáltatási csomag egy egyszerű, kiszolgáló nélküli lehetőséget biztosít, amely nem tartalmaz rögzített költséget. A számlázás az adott küszöbérték feletti szolgáltatáshoz tartozó API-hívások száma alapján történik. A kapacitás a szolgáltatás terhelése alapján automatikusan is méretezhető.
-* Más API Managementi szintek havi költségekkel járnak, és nagyobb teljesítményű és gazdagabb szolgáltatáskészlet-készleteket biztosítanak az értékeléshez és a termelési feladatokhoz.
+* A **fejlesztői**, **alapszintű**, **standard** és **prémium** szintű API Management csomagok havi költségekkel járnak, és nagyobb átviteli sebességet és gazdagabb szolgáltatásokat biztosítanak a kiértékeléshez és a termelési feladatokhoz. Bármikor [frissíthet](upgrade-and-scale.md) egy másik szolgáltatási szintre.
 
 ### <a name="scale-using-capacity-units"></a>Méretezés a kapacitási egységek használatával
 
@@ -104,7 +104,7 @@ Az egységek hozzáadásakor vagy eltávolításakor a kapacitás és a költsé
 
 A API Management-példány kapacitási metrikájának [figyelésével](api-management-howto-use-azure-monitor.md) megadhatja, hogy egy API Management példány méretezése vagy frissítése nagyobb terhelést biztosítson.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.

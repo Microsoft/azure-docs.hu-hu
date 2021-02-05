@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785125"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582655"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -445,7 +445,7 @@ További információ a beleegyező adatokról: a [Microsoft Identity platform e
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-A MSAL.NET-ben a következőket kell használnia:
+A MSAL.NET-ben használja a következőket:
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -922,7 +922,7 @@ Ez a folyamat nem támogatott a macOS-MSAL.
 
 ### <a name="device-code-flow"></a>Eszköz kódjának folyamata
 
-Ha olyan parancssori eszközt ír, amely nem rendelkezik webvezérlőkkel, és nem kívánja használni az előző folyamatokat, akkor az eszköz kódját kell használnia.
+Ha olyan parancssori eszközt ír, amely nem rendelkezik webes vezérlőkkel, és nem szeretné használni az előző folyamatokat, használja az eszköz kódját.
 
 Az Azure AD-vel való interaktív hitelesítéshez webböngésző szükséges. További információ: [böngészők használata](https://aka.ms/msal-net-uses-web-browser). Ha olyan eszközökön vagy operációs rendszereken szeretné hitelesíteni a felhasználókat, amelyek nem biztosítanak webböngészőt, az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt, például egy számítógépet vagy egy mobiltelefont használjon interaktív bejelentkezéshez. Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, amelyeket ezekhez az eszközökhöz vagy operációs rendszerekhez terveztek. Ilyen alkalmazások például a iOT vagy parancssori eszközökön (CLI) futó alkalmazások. Az a gondolat, hogy:
 
@@ -1405,6 +1405,6 @@ namespace CommonCacheMsalV3
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a forgatókönyvben a következő cikkre léphet, és [meghívja a webes API-t az asztali alkalmazásból](scenario-desktop-call-api.md).

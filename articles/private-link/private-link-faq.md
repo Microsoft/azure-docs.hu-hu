@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901538"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582009"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
 
-## <a name="private-link"></a>Privát kapcsolat
+## <a name="private-link"></a>Private Link
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Mi az Azure Private Endpoint és az Azure Private link Service?
 
@@ -26,7 +26,7 @@ ms.locfileid: "97901538"
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hogyan történik a forgalom küldése a privát hivatkozás használatakor?
 A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az interneten. Az Azure Private link nem tárolja az ügyféladatokat.
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Mi a különbség a szolgáltatási végpontok és a privát végpontok között?
+### <a name="what-is-the-difference-between-service-endpoints-and-private-endpoints"></a>Mi a különbség a szolgáltatási végpontok és a privát végpontok között?
 - A privát végpontok egy adott szolgáltatás mögötti, részletes szegmentálást biztosító erőforrásokhoz biztosítanak hálózati hozzáférést. A forgalom nyilvános végpontok használata nélkül érheti el a szolgáltatási erőforrást a helyszínen.
 - A szolgáltatási végpontok egy nyilvánosan irányítható IP-címen maradnak.  A privát végpont a magánhálózati IP-cím azon virtuális hálózat címterület területén, ahol a magánhálózati végpont konfigurálva van.
 
@@ -34,6 +34,9 @@ A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az inter
 Több magánhálózati kapcsolati erőforrástípus támogatja a hozzáférést a privát végponton keresztül. Az erőforrások közé tartozik az Azure Pásti-szolgáltatások és a saját privát kapcsolati szolgáltatás. Ez egy-a-többhöz kapcsolat. 
 
 A privát kapcsolati szolgáltatás több privát végponttól érkező kapcsolatokat fogad. Egy privát végpont egy privát kapcsolati szolgáltatáshoz csatlakozik.    
+
+### <a name="do-i-need-to-disable-network-policies-for-private-link"></a>Le kell tiltani a privát kapcsolathoz tartozó hálózati házirendeket
+Igen. A privát végpont és a magánhálózati kapcsolat szolgáltatásnak is le kell tiltania a hálózati házirendeket a megfelelő működéshez. Mindkettő tulajdonságai egymástól függetlenek.
 
 ## <a name="private-endpoint"></a>Privát végpont 
  

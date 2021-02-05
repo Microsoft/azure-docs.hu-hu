@@ -2,13 +2,13 @@
 title: A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 description: Ez a cikk azt ismerteti, hogyan használható a nyilvános IP-funkció az Azure Virtual WAN-ban.
 ms.topic: how-to
-ms.date: 10/28/2020
-ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.date: 02/04/2021
+ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517903"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581380"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>A nyilvános IP-funkciók használata az Azure VMware-megoldásban
 
@@ -21,7 +21,7 @@ A nyilvános internet-hozzáférés kétféleképpen engedélyezhető.
 
 Az Azure VMware-megoldás saját Felhőbeli üzembe helyezésének részeként a nyilvános IP-funkciók engedélyezése után a szükséges összetevőket az Automation Get hozza létre és engedélyezte:
 
--  Virtual WAN
+-  Virtuális WAN
 
 -  Virtuális WAN hub ExpressRoute-kapcsolattal
 
@@ -122,14 +122,14 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
 1. Válassza a **szabálygyűjtemény hozzáadása** lehetőséget, adja meg az alábbi adatokat, majd kattintson a **Hozzáadás** , majd a **Tovább gombra: fenyegetés intelligencia** elemre.
 
-   -  Név
+   -  Name
    -  Szabályok gyűjteményének típusa – DNAT
    -  Prioritás
    -  Szabály-gyűjtési művelet – engedélyezés
    -  Szabály neve
    -  Forrás típusa – **IP** -cím
-   -  Forrás-* *\** _
-   -  Protokoll – _ *TCP**
+   -  Forrás **\***
+   -  Protokoll – **TCP**
    -  Célport – **80**
    -  Cél típusa – **IP-cím**
    -  Cél – **nyilvános IP-cím**
@@ -144,7 +144,7 @@ Az összes összetevő üzembe helyezése után megtekintheti őket a hozzáadot
 
    :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Képernyőkép, amely a védett virtuális hubokba konvertált kiválasztott hubokat jeleníti meg." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. Válassza a **Tovább: Címkék** lehetőséget. 
+1. Kattintson a **Tovább gombra: címkék**. 
 
 1. Választható Hozza létre a név és érték párokat az erőforrások kategorizálásához. 
 
@@ -156,5 +156,7 @@ SDDCs legfeljebb 100 nyilvános IP-cím adható meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a nyilvános IP-címek [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md)használatával történő használatáról.
+Most, hogy elvégezte a nyilvános IP-funkciók használatát az Azure VMware megoldásban, érdemes megismernie az alábbiakat:
 
+- Nyilvános IP-címek használata az [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md)használatával.
+- [IPSec-alagút létrehozása az Azure VMware megoldásba](create-ipsec-tunnel.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996005"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582907"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Webes API-kat meghívó Daemon-alkalmazás – alkalmazás regisztrálása
 
@@ -24,7 +24,7 @@ Egy Daemon-alkalmazáshoz az alábbi tudnivalókat kell tudnia az alkalmazás re
 
 ## <a name="supported-account-types"></a>Támogatott fióktípusok
 
-A Daemon-alkalmazások csak az Azure AD-bérlők számára érthetők. Tehát az alkalmazás létrehozásakor az alábbi lehetőségek közül kell választania:
+A Daemon-alkalmazások csak az Azure AD-bérlők számára érthetők. Tehát az alkalmazás létrehozásakor válasszon a következő lehetőségek közül:
 
 - **Csak a szervezeti könyvtárban lévő fiókok**. Ez a leggyakoribb megoldás, mert a Daemon-alkalmazásokat általában üzletági (LOB) fejlesztők írták.
 - **Fiókok bármely szervezeti címtárban**. Ezt a lehetőséget akkor kell megtennie, ha Ön az ISV-t biztosító segédprogramot biztosít ügyfelei számára. A jóváhagyáshoz szüksége lesz az ügyfelek bérlői rendszergazdái számára.
@@ -48,6 +48,6 @@ Ha egy több-bérlős alkalmazást fejlesztő ISV-t használ, olvassa el a több
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](./scenario-daemon-app-configuration.md).

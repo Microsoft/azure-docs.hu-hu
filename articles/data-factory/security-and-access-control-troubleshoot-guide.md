@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944521"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581686"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Biztonsági és hozzáférés-vezérlési problémák elhárítása Azure Data Factory
 
@@ -88,9 +88,10 @@ Annak ellenőrzéséhez, hogy a Data Factory teljes tartományneve (FQDN) fel va
 #### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához tegye a következőket:
-- Tekintse meg [Azure Data Factory cikkhez tartozó Azure Private-hivatkozást](./data-factory-private-link.md#dns-changes-for-private-endpoints) . Az utasítás a magánhálózati DNS-zóna vagy-kiszolgáló konfigurálására szolgál az Data Factory FQDN magánhálózati IP-címhez való feloldásához.
 
-- Javasoljuk, hogy használjon egy egyéni DNS-t hosszú távú megoldásként. Ha azonban nem szeretné konfigurálni a magánhálózati DNS-zónát vagy-kiszolgálót, próbálja meg a következő ideiglenes megoldást:
+- A lehetőségként azt javasoljuk, hogy manuálisan vegyen fel egy "Virtual Network hivatkozást" a "Private Link DNS Zone" Data Factory alatt. További részletekért tekintse meg az [Azure Private-hivatkozást Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) cikkhez. Az utasítás a magánhálózati DNS-zóna vagy az egyéni DNS-kiszolgáló konfigurálására szolgál a Data Factory FQDN privát IP-címhez való feloldásához. 
+
+- Ha azonban nem szeretné konfigurálni a magánhálózati DNS-zónát vagy az egyéni DNS-kiszolgálót, próbálja meg a következő ideiglenes megoldást:
 
   1. Módosítsa a Windows rendszerű gazdagépet, és rendelje hozzá a magánhálózati IP-címet (a Azure Data Factory magánhálózati végpontot) a Azure Data Factory FQDN-hez.
   

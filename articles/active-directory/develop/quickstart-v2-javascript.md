@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9a58e4087745ba0c09b85c2740781c493090a370
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225714"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583230"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -62,7 +62,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
-> Ennek a rövid útmutatónak a mintakód egy **átirányítási URI** -t igényel `http://localhost:3000/` , és lehetővé teszi az **implicit engedélyezést**.
+> Ahhoz, hogy az ebben a rövid útmutatóban szereplő kód minta működjön, adjon hozzá egy **átirányítási URI** -t, `http://localhost:3000/` és engedélyezze az **implicit engedélyezést**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
 >
@@ -203,7 +203,7 @@ A gyors üzembe helyezési kód azt is bemutatja, hogyan inicializálható a MSA
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > |`clientId`     | A Azure Portalban regisztrált alkalmazás alkalmazás-azonosítója.|
 > |`authority`    | Választható A fiók típusát támogató szolgáltatói URL-cím, a konfiguráció szakaszban korábban leírtak szerint. Az alapértelmezett szolgáltató: `https://login.microsoftonline.com/common` . |
@@ -231,7 +231,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `scopes`   | Választható Olyan hatóköröket tartalmaz, amelyeket a rendszer a bejelentkezési időben a felhasználói beleküldéshez kér. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ). |
 
@@ -261,13 +261,13 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `scopes`   | Az API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz. Például `[ "mail.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Vannak olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platformmal. Például:
+Vannak olyan helyzetek, amikor a felhasználókat a Microsoft Identity platformmal való interakcióra kényszeríti. Például:
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
 * Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.
 * Kétfaktoros hitelesítés szükséges.

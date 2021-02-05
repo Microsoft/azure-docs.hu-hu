@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014943"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581754"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -115,7 +115,7 @@ A következő szakasz bemutatja, hogyan kérheti le a programozott módon tört�
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>Bérlői és alkalmazás-azonosító értékek beolvasása a bejelentkezéshez
 
-Ha programozott módon jelentkezik be, át kell adnia a bérlő AZONOSÍTÓját a hitelesítési kérelemmel és az alkalmazás-AZONOSÍTÓval.  Szüksége lesz egy tanúsítványra vagy egy hitelesítési kulcsra is (a következő szakaszban leírtak szerint). Az értékek beszerzéséhez kövesse az alábbi lépéseket:
+Ha programozott módon jelentkezik be, adja át a bérlő AZONOSÍTÓját a hitelesítési kérelemmel és az alkalmazás-AZONOSÍTÓval.  Szüksége lesz egy tanúsítványra vagy egy hitelesítési kulcsra is (a következő szakaszban leírtak szerint). Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Válassza a **Azure Active Directory** lehetőséget.
 1. Az Azure AD-ban **Alkalmazásregisztrációk** válassza ki az alkalmazást.
@@ -162,7 +162,7 @@ A tanúsítvány feltöltése:
 
 1. Válassza a **Hozzáadás** elemet.
 
-Miután regisztrálta a tanúsítványt az alkalmazással az alkalmazás regisztrációs portálján, engedélyeznie kell az ügyfélalkalmazás kódját a tanúsítvány használatához.
+Miután regisztrálta a tanúsítványt az alkalmazással az alkalmazás regisztrációs portálján, engedélyezze az ügyfélalkalmazás kódját a tanúsítvány használatához.
 
 ### <a name="option-2-create-a-new-application-secret"></a>2. lehetőség: új alkalmazás titkos kódjának létrehozása
 
@@ -186,7 +186,7 @@ Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás szám
 1. A hozzáférési szabályzat hozzáadásához válassza a **Hozzáadás** lehetőséget, majd a **Mentés** gombra kattintva véglegesítse a módosításokat.
     ![Hozzáférési szabályzat hozzáadása](./media/howto-create-service-principal-portal/add-access-policy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [hozhat létre egyszerű szolgáltatásnevet a Azure PowerShell használatával](howto-authenticate-service-principal-powershell.md).
 * A biztonsági szabályzatok megadásával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * A felhasználók számára megadható vagy megtagadható elérhető műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md).

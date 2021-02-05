@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 812bf7bd68362667fcd1b636d0d28fdbb21c1409
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063297"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582349"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>Microsoft Identity platform token Exchange-forgatókönyvek SAML-vel és OIDC/OAuth
 
 Az SAML és az OpenID Connect (OIDC)/OAuth az egyetlen Sign-On (SSO) megvalósításához használt népszerű protokollok. Egyes alkalmazások csak az SAML megvalósítását tehetik meg, mások pedig csak a OIDC/OAuth implementálják. Mindkét protokoll jogkivonatokat használ a titkok közlésére. További információ az SAML-ról: [Single Sign-On SAML protokoll](single-sign-on-saml-protocol.md). További információ a OIDC/OAuth: [OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon](active-directory-v2-protocols.md).
 
-Ez a cikk olyan általános helyzetet vázol fel, amelyben az alkalmazás SAML-t valósít meg, de meg kell hívnia a Graph API, amely a OIDC/OAuth-t használja. Az ebben a forgatókönyvben dolgozó személyek számára alapvető útmutatást biztosítunk.
+Ez a cikk egy olyan gyakori forgatókönyvet vázol fel, amelyben az alkalmazás SAML-t valósít meg, de meghívja a Graph API, amely a OIDC/OAuth-t használja. Az ebben a forgatókönyvben dolgozó személyek számára alapvető útmutatást biztosítunk.
 
 ## <a name="scenario-you-have-a-saml-token-and-want-to-call-the-graph-api"></a>Forgatókönyv: SAML-jogkivonattal rendelkezik, és meg szeretné hívni a Graph API
 Számos alkalmazás az SAML-vel lett implementálva. A Graph API azonban a OIDC/OAuth protokollt használja. A OIDC/OAuth funkciók egy SAML-alkalmazásba való felvételének lehetséges, bár nem triviális. Ha a OAuth funkció elérhető egy alkalmazásban, a Graph API használható.

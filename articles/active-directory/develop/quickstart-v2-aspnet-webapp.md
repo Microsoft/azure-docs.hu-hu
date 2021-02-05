@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 6e8aad3e9dc91b2d9b014c0e3c8602bd0576e82e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225765"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583603"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
@@ -59,7 +59,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
-> Ennek a rövid útmutatónak a mintakód egy **átirányítási URI** -t igényel `https://localhost:44368/` .
+> Ahhoz, hogy az ebben a rövid útmutatóban szereplő kód minta működjön, adjon hozzá egy **átirányítási URI** -t `https://localhost:44368/` .
 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
@@ -166,7 +166,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Ahol  | Leírás |
+> |Ahol  | Description |
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában `https://login.microsoftonline.com/{tenant}/v2.0` a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
@@ -179,7 +179,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> A beállítás a rövid útmutató `ValidateIssuer = false` egyszerűsítése. A valós alkalmazásokban ellenőriznie kell a kiállítót.
+> A beállítás a rövid útmutató `ValidateIssuer = false` egyszerűsítése. A valós alkalmazásokban ellenőrizze a kiállítót.
 > Ennek megértéséhez tekintse meg a mintákat.
 
 ### <a name="initiate-an-authentication-challenge"></a>Hitelesítő kérdés kezdeményezése

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427173"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580331"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -19,7 +19,7 @@ ms.locfileid: "99427173"
 Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telepítéséhez:
 
 1. Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Ha először telepíti az elsőt, újraindításra lehet szükség.
-1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux.md)-ot.
+1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux)-ot.
 2. Telepítse a Speech CLI-t a NuGet használatával a következő parancs megadásával:
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
@@ -41,7 +41,7 @@ Ha fájlba, például egy Jegyzettömbbe vagy egy webböngészőbe (például a 
 
 A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-es PROCESSZORon:
 
-1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux.md)-ot.
+1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux)-ot.
 2. Telepítse a Speech CLI-t a NuGet használatával a következő parancs megadásával:
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`

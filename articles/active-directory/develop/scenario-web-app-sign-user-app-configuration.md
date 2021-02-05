@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753266"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582247"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -28,7 +28,7 @@ Megtudhatja, hogyan konfigurálhatja a webalkalmazáshoz tartozó kódot, amely 
 <!-- This section can be in an include for web app and web APIs -->
 A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a következők:
 
-| Platform | Kódtár | Leírás |
+| Platform | Kódtár | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. A gyakorlatban a bonyolultság a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) könyvtárban van beágyazva. |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
@@ -64,13 +64,13 @@ A cikkben szereplő kódrészletek és a következők a Python [webalkalmazásb�
 
 ## <a name="configuration-files"></a>Konfigurációs fájlok
 
-A felhasználókat a Microsoft Identity platform használatával bejelentkező webalkalmazások konfigurációs fájlokon keresztül konfigurálhatók. A kitöltendő beállítások a következők:
+A felhasználókat a Microsoft Identity platform használatával bejelentkező webalkalmazások konfigurációs fájlokon keresztül konfigurálhatók. Az alábbi értékeket kell megadni a konfigurációban:
 
 - A Cloud instance ( `Instance` ), ha azt szeretné, hogy az alkalmazás az országos felhőkben fusson, például:
 - A bérlő AZONOSÍTÓjának () célközönsége `TenantId`
 - Az alkalmazáshoz tartozó ügyfél-azonosító ( `ClientId` ), amelyet a Azure Portal másolt
 
-Előfordulhat, hogy az alkalmazások a parametrized `Authority` , amely a és a összefűzése `Instance` `TenantId` .
+Előfordulhat, hogy a ra mutató hivatkozásokat is láthat `Authority` . Az `Authority` érték a és az értékek összefűzése `Instance` `TenantId` .
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -133,7 +133,7 @@ ASP.NET Core egy másik fájl ([properties\launchSettings.json](https://github.c
 }
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. A két előző konfigurációs fájl esetében a következő lesz: `https://localhost:44321/signin-oidc` . Ennek az az oka `applicationUrl` , hogy az `http://localhost:3110` , de meg `sslPort` van adva (44321). `CallbackPath` a ( `/signin-oidc` ) a ben definiált `appsettings.json` .
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt átirányítási URI azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. A két előző konfigurációs fájl esetében a következő lesz: `https://localhost:44321/signin-oidc` . Ennek az az oka `applicationUrl` , hogy az `http://localhost:3110` , de meg `sslPort` van adva (44321). `CallbackPath` a ( `/signin-oidc` ) a ben definiált `appsettings.json` .
 
 Ugyanígy a kijelentkezési URI is a következőre lesz beállítva: `https://localhost:44321/signout-oidc` .
 
@@ -161,7 +161,7 @@ A ASP.NET-ben az alkalmazás a [Web.config](https://github.com/Azure-Samples/ms-
   </appSettings>
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. Tehát a szükséges `https://localhost:44326/` .
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrált válasz URI-azonosítóknak meg kell egyezniük ezekkel az URL-címekkel. Tehát a szükséges `https://localhost:44326/` .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -175,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az `redirectUri` alkalmazás által definiált példányokkal. Tehát a `http://localhost:8080/msal4jsample/secure/aad` és a `http://localhost:8080/msal4jsample/graph/me` .
+A Azure Portalban az alkalmazás **hitelesítési** lapján regisztrált válasz URI-azonosítóknak meg kell egyezniük az `redirectUri` alkalmazás által definiált példányokkal. Tehát a `http://localhost:8080/msal4jsample/secure/aad` és a `http://localhost:8080/msal4jsample/graph/me` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -339,7 +339,7 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkben megtudhatja, hogyan aktiválhatja a bejelentkezést és a kijelentkezést.
 

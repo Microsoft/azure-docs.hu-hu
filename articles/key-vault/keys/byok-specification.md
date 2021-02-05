@@ -8,20 +8,20 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315779"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581023"
 ---
 # <a name="bring-your-own-key-specification"></a>Saját kulcs használatának specifikációja
 
 Ez a dokumentum ismerteti a HSM-védelemmel ellátott kulcsok az ügyfelek helyszíni HSM a Key Vaultba való importálásának specifikációit.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 A Key Vault ügyfél biztonságosan átviheti a kulcsot az Azure-on kívüli helyszíni HSM-ből a HSM-alapú biztonsági Azure Key Vaultba. Key Vaulton kívül generált kulcs importálásának folyamata általában Bring Your Own Key (BYOK) néven ismert.
 
@@ -31,11 +31,11 @@ A követelmények a következők:
 
 ## <a name="terminology"></a>Terminológia
 
-|Kulcs neve|Kulcs típusa|Forrás|Leírás|
+|Kulcs neve|Kulcs típusa|Forrás|Description|
 |---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA|Azure Key Vault HSM|HSM-es biztonsági másolattal rendelkező RSA-kulcspár, amely Azure Key Vaultban lett létrehozva
 Becsomagolási kulcs|AES|Szállítói HSM|Egy [ideiglenes] AES-kulcs, amely a HSM-on keresztül lett létrehozva
-Célként megadott kulcs|RSA, EC, AES|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs
+Célként megadott kulcs|RSA, EC, AES (csak felügyelt HSM)|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs
 
 **Kulcscsere kulcsa**: az ügyfél által a Key vaultban előállított HSM-alapú kulcs, amelyben a BYOK kulcs importálva lesz. Ennek a KEK-nek a következő tulajdonságokkal kell rendelkeznie:
 
@@ -130,9 +130,16 @@ A JSON-blobot egy ". byok" kiterjesztésű fájlban tárolja a rendszer, így a 
 
 Az ügyfél átviszi a kulcs átvitelének Blobját (". byok") egy online munkaállomásra, majd futtatja az **az kulcstartó kulcs importálása** parancsot, hogy a blobot új HSM-alapú kulcsként importálja Key Vaultba. 
 
+RSA-kulcs importálásához használja ezt a parancsot:
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok --ops encrypt decrypt
 ```
+Egy EK-kulcs importálásához meg kell adnia a kulcs típusát és a görbe nevét.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok --ops sign verify
+```
+
 
 A fenti parancs végrehajtásakor egy REST API kérés küldését eredményezi a következő módon:
 
@@ -140,7 +147,7 @@ A fenti parancs végrehajtásakor egy REST API kérés küldését eredményezi 
 PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-version=7.0
 ```
 
-Kérés törzse:
+Kérelem törzse RSA-kulcs importálásakor:
 ```json
 {
   "key": {
@@ -156,6 +163,25 @@ Kérés törzse:
   }
 }
 ```
+
+Kérelem törzse egy EK-kulcs importálásakor:
+```json
+{
+  "key": {
+    "kty": "EC-HSM",
+    "crv": "P-256",
+    "key_ops": [
+      "sign",
+      "verify"
+    ],
+    "key_hsm": "<Base64 encoded BYOK_BLOB>"
+  },
+  "attributes": {
+    "enabled": true
+  }
+}
+```
+
 a "key_hsm" érték a KeyTransferPackage-ContosoFirstHSMkey. byok teljes tartalma Base64 formátumban kódolva.
 
 ## <a name="references"></a>Hivatkozások

@@ -8,6 +8,8 @@
   href: network-requirements.md
 - name: Korlátozások
   href: limits.md
+- name: Adattárolás
+  href: data-residency.md
 - name: Remote Rendering-minták adattára (GitHub)
   href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Mixed Reality Resource Management REST API

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015113"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582230"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) használatával testreszabhatja a szerepkör
 
 ## <a name="when-to-use-this-feature"></a>Mikor kell használni ezt a funkciót?
 
-Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkciót kell használnia. Annyi szerepkört hozhat létre, amennyit az Azure AD-ből az alkalmazásba kell visszaadnia.
+Akkor használja ezt a szolgáltatást, ha az alkalmazás az Azure AD által visszaadott SAML-válaszban egyéni szerepköröket vár. Annyi szerepkört hozhat létre, amennyire csak szüksége van.
 
 ## <a name="create-roles-for-an-application"></a>Szerepkörök létrehozása egy alkalmazáshoz
 
@@ -139,7 +139,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
     !["Hozzárendelés szerkesztése" ablaktábla és "szerepkör kiválasztása" panel](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     
-    Új szerepkörök megjelenítéséhez frissítenie kell a munkamenetet a Azure Portalban.
+    Frissítse a munkamenetet a Azure Portalban az új szerepkörök megtekintéséhez.
 
 1. Frissítse az **attribútumok** táblát a szerepkör-jogcím testreszabott leképezésének megadásához.
 
@@ -167,7 +167,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
     1. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 10. Ha az alkalmazást egy identitás-szolgáltató által kezdeményezett egyszeri bejelentkezéssel szeretné tesztelni, jelentkezzen be a [hozzáférési panelre](https://myapps.microsoft.com) , és válassza ki az alkalmazás csempéjét. Az SAML-jogkivonatban a felhasználóhoz tartozó összes hozzárendelt szerepkört látnia kell a megadott jogcím nevével.
 
@@ -255,7 +255,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
 
     A szerepkört le kell tiltani ahhoz, hogy el lehessen távolítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További lépésekért tekintse meg az [alkalmazás dokumentációját](../saas-apps/tutorial-list.md).
 

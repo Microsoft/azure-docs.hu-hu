@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706200"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581992"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -27,7 +27,7 @@ Ha az alkalmazásokat a Microsoft Identity platformmal fejleszti, akkor az ügyf
 Ebben a cikkben:
 
 - Megismerheti a Microsoft által felügyelt felhasználói fiók két fajtáját, illetve hogy miként hivatkozhat az Azure AD-fiókokra az alkalmazásában.
-- Megtudhatja, mit kell tennie, hogy hozzáadja a Microsoft logóját az alkalmazásban való használathoz
+- Ismerje meg a Microsoft embléma használatának követelményeit az alkalmazásban
 - Letölti a hivatalos **Bejelentkezés** és **Bejelentkezés Microsoft-fiókkal** képet az alkalmazásban való használathoz.
 - Megismerheti a védjegyzéssel és navigálással kapcsolatban ajánlott és kerülendő műveleteket.
 
@@ -67,7 +67,7 @@ Miután a rendszergazdák beleegyeznek az alkalmazásba, dönthetnek úgy, hogy 
 
 ![A Microsoft emblémát és a "Hozzáadás a saját szervezethez" szöveget megjelenítő gomb](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
+Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
 
 > *Ha már használja Microsoft 365 vagy más üzleti szolgáltatást a Microsofttól, <your_app_name> hozzáférést biztosíthat a szervezet adataihoz. Ez lehetővé teszi, hogy a felhasználók hozzáférhessenek <your_app_name> a meglévő munkahelyi fiókjaikkal.*
 

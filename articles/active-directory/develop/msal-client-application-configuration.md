@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761372"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580938"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
 
@@ -73,7 +73,7 @@ Ha nem ad meg egy példányt, az alkalmazás az Azure nyilvános Felhőbeli pél
 
 A bejelentkezési célközönség az alkalmazás üzleti igényeitől függ:
 
-- Ha Ön üzletági (LOB) fejlesztő, akkor valószínűleg létrehoz egy egybérlős alkalmazást, amelyet csak a szervezete fog használni. Ebben az esetben meg kell adnia a szervezetet, vagy a bérlői AZONOSÍTÓját (az Azure AD-példány AZONOSÍTÓját) vagy az Azure AD-példányhoz társított tartománynevet.
+- Ha Ön üzletági (LOB) fejlesztő, akkor valószínűleg létrehoz egy egybérlős alkalmazást, amelyet csak a szervezete fog használni. Ebben az esetben adja meg a szervezetet bérlői azonosítója (az Azure AD-példány azonosítója) vagy az Azure AD-példányhoz társított tartománynév alapján.
 - Ha Ön ISV-t használ, előfordulhat, hogy a felhasználók munkahelyi és iskolai fiókjaikat bármilyen szervezetben vagy szervezeten (több-bérlős alkalmazásban) szeretné bejelentkezni. Előfordulhat azonban, hogy a felhasználók személyes Microsoft-fiókjaikat is be szeretnék jelentkezni.
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>A célközönség beállítása a kódban/konfigurációban
@@ -122,9 +122,9 @@ Ha Ön a MSAL-t használó nyilvános ügyfélalkalmazás-fejlesztő:
   | UWP | a értéke `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . Ez lehetővé teszi az egyszeri bejelentkezést a böngészőben úgy, hogy az értéket a WebAuthenticationBroker. GetCurrentApplicationCallbackUri () értékre állítja be, amelyet regisztrálnia kell |
   | .NET Core | `https://localhost`. Ez lehetővé teszi, hogy a felhasználó a rendszerböngészőt interaktív hitelesítésre használja, mivel a .NET Core jelenleg nem rendelkezik felhasználói felülettel a beágyazott webes nézethez. |
 
-- Nem szükséges átirányítási URI-t felvennie, ha olyan Xamarin Android-és iOS-alkalmazást készít, amely nem támogatja a közvetítőt (az átirányítási URI automatikusan a `msal{ClientId}://auth` Xamarin Android és iOS rendszerre van beállítva)
+- Nem kell hozzáadnia átirányítási URI-t, ha olyan Xamarin Android-és iOS-alkalmazást épít, amely nem támogatja a közvetítő átirányítási URI-JÁT. Automatikusan `msal{ClientId}://auth` az Android és az iOS Xamarin van beállítva.
 
-- Konfigurálnia kell az átirányítási URI-t a [Alkalmazásregisztrációkban](https://aka.ms/appregistrations):
+- Az átirányítási URI konfigurálása [Alkalmazásregisztrációkban](https://aka.ms/appregistrations):
 
    ![Átirányítási URI a Alkalmazásregisztrációkban](media/msal-client-application-configuration/redirect-uri.png)
 
@@ -162,6 +162,6 @@ A hibakeresési és hitelesítési hibák elhárítása érdekében a Microsoft 
     :::column-end:::
 :::row-end:::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [hozhatók létre ügyfélalkalmazások az MSAL.NET használatával](msal-net-initializing-client-applications.md) , és hogyan [hozhatók létre ügyfélalkalmazások a MSAL.jshasználatával ](msal-js-initializing-client-applications.md).

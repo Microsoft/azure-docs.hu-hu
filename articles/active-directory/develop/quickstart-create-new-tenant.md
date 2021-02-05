@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 41d70b20708f0f355fab5b5a06790c1c0c6530c6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012019"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583552"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Gyorsútmutató: Bérlő beállítása
 
@@ -53,7 +53,7 @@ Sok fejlesztő az Azure AD-bérlőkhöz kapcsolódó szolgáltatások vagy előf
    * Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik.
 
 > [!TIP]
-> Ha meg kell keresnie a bérlőazonosítót, az alábbiakat teheti:
+> A bérlő AZONOSÍTÓjának megkereséséhez a következőket teheti:
 > * Helyezze a kurzort a fiók neve fölé a címtár-/bérlőazonosító lekéréséhez, vagy
 > * Keresse meg és válassza ki **Azure Active Directory > tulajdonságok > a bérlő azonosítója** elemet a Azure Portal
 
@@ -74,7 +74,7 @@ Ha még nem rendelkezik Azure AD-Bérlővel, vagy létre szeretne hozni egy úja
 
 A közösségi és helyi fiók bejelentkeztetésére szolgáló alkalmazások létrehozásának megkezdéséhez egy Azure AD B2C-bérlőt kell létrehoznia. A létrehozást az [Azure AD B2C-bérlők létrehozását ismertető](../../active-directory-b2c/tutorial-create-tenant.md) témakör utasításait követve kezdheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egy alkalmazás regisztrálása](quickstart-register-app.md) a Microsoft Identity platformmal való integrációhoz.

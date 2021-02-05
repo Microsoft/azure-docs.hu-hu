@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7e2fcf2dc0dc53038b82bbf182cb12f580d88357
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754657"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583586"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>A webes API-k 1.0-s verziójának elfogadására szolgáló hatókörök
 
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Ha a MSAL.NET Azure AD-t a Microsoft Graph API-val (https: \/ /Graph.microsoft.com/) szeretné olvasni és írni, létre kell hoznia a hatókörök listáját az alábbi példákban látható módon:
+Ha a MSAL.NET Azure AD-t a Microsoft Graph API-val (https: \/ /Graph.microsoft.com/) szeretné olvasni és írni, hozzon létre egy listát a hatókörökről az alábbi példákban látható módon:
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-A Azure Resource Manager API-nak (https: \/ /Management.Core.Windows.net/) megfelelő hatókör írásához a következő hatókört kell kérnie (jegyezze fel a két perjelet):
+A Azure Resource Manager API-nak (https: \/ /Management.Core.Windows.net/) megfelelő hatókör írásához a következő hatókört kell kérni (jegyezze fel a két perjelet):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -59,7 +59,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Két perjelet kell használnia, mivel a Azure Resource Manager API egy perjelet vár a célközönségi jogcímben (AUD), majd egy perjelet választ az API nevének a hatókörből való elkülönítésére.
+> Használjon két perjelet, mert a Azure Resource Manager API egy perjelet vár a célközönségi jogcímben (AUD), majd egy perjelet választ az API nevének a hatókörből való elkülönítésére.
 
 Az Azure AD által használt logika a következő:
 

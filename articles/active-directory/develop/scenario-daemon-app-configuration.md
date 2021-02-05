@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c858f48a67cd434a620fb610046833d29b7475f7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756599"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582890"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -26,7 +26,7 @@ Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazá
 
 Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
-  MSAL-könyvtár | Leírás
+  MSAL-könyvtár | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatott a Daemon-alkalmazások létrehozásához. (A UWP, a Xamarin. iOS és az Xamarin. Android nem támogatott, mert ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használatosak.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban.
@@ -111,7 +111,7 @@ Ha tanúsítványokkal rendelkező bizalmas ügyfelet hoz létre, a [Python Daem
 
 ### <a name="instantiate-the-msal-application"></a>A MSAL alkalmazás példányának példánya
 
-A MSAL alkalmazás létrehozásához hozzá kell adnia, hivatkoznia vagy importálnia kell a MSAL-csomagot (a nyelvtől függően).
+A MSAL alkalmazás létrehozásához adja hozzá, hivatkozzon vagy importálja a MSAL-csomagot (a nyelvtől függően).
 
 Az építkezés eltérő, attól függően, hogy az ügyfél titkos kulcsait vagy tanúsítványait használja (vagy speciális forgatókönyvként, aláírt kijelentésként).
 
@@ -289,7 +289,7 @@ A MSAL.NET kétféle módszerrel biztosítanak aláírt állításokat a bizalma
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-A használatakor `WithClientAssertion` meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md).
+A használatakor `WithClientAssertion` adjon meg egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -348,7 +348,7 @@ ConfidentialClientApplication cca =
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

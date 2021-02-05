@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753629"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582553"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>A webes API-kat meghívó mobil alkalmazások jogkivonatának beolvasása
 
@@ -26,7 +26,7 @@ Ahhoz, hogy az alkalmazás meghívja a védett webes API-kat, hozzáférési jog
 
 ## <a name="define-a-scope"></a>Hatókör definiálása
 
-Ha jogkivonatot kér, meg kell határoznia egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adataihoz férhet hozzá.
+Ha jogkivonatot kér, Definiáljon egy hatókört. A hatókör határozza meg, hogy az alkalmazás milyen adataihoz férhet hozzá.
 
 A hatókör definiálásának legegyszerűbb módja a kívánt webes API `App ID URI` és a hatókör összevonása `.default` . Ez a definíció közli a Microsoft Identity platformmal, hogy az alkalmazás a portálon beállított összes hatókört megköveteli.
 
@@ -236,7 +236,7 @@ Az osztály a következő konstansokat határozza meg:
     Ez a beállítás akkor lehet hasznos, ha a jogkivonat-beszerzés sikertelen, és engedélyezni szeretné a felhasználó számára a bejelentkezést. Ebben az esetben a MSAL elküldi `prompt=login` az identitás-szolgáltatónak. Érdemes lehet ezt a lehetőséget használni a biztonsággal irányított alkalmazásokban, ahol a szervezet irányításához a felhasználónak minden alkalommal be kell jelentkeznie, amikor az alkalmazás egyes részeihez hozzáférnek.
 - `Never` csak a .NET 4,5 és a Windows-futtatókörnyezet (WinRT) esetében érhető el. Ez a konstans nem kéri a felhasználót, de megpróbálja használni a rejtett beágyazott webes nézetben tárolt cookie-t. További információ: [webböngészők használata a MSAL.net](./msal-net-web-browsers.md).
 
-    Ha ez a beállítás sikertelen, akkor `AcquireTokenInteractive` kivételt jelez, hogy a felhasználói felületi interakcióra van szükség. Ezután egy másik paramétert kell használnia `Prompt` .
+    Ha ez a beállítás sikertelen, akkor `AcquireTokenInteractive` kivételt jelez, hogy a felhasználói felületi interakcióra van szükség. Ezután használjon másik `Prompt` paramétert.
 - `NoPrompt` nem küld üzenetet az identitás-szolgáltatónak.
 
     Ez a beállítás csak a Azure Active Directory B2C szerkesztési profiljaihoz használható. További információ: B2C- [specifikusak](https://aka.ms/msal-net-b2c-specificities).
@@ -292,6 +292,6 @@ client_id=<CLIENT_ID>
 &grant_type=authorization_code
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A forgatókönyvben a következő cikkre léphet, amely [egy webes API](scenario-mobile-call-api.md)-t hív meg.

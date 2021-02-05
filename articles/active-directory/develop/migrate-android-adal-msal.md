@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672287"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581040"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
@@ -71,7 +71,7 @@ Ha az alkalmazás regisztrálva van a portálon, megjelenik az **API-engedélyek
 A ADAL és az Azure AD v1 végpontjának használatával a felhasználók az első használat során megadták a saját erőforrásaikat. A MSAL és a Microsoft Identity platformmal Növekményesen is kérhető. A növekményes hozzájárulás olyan engedélyek esetében hasznos, amelyeket a felhasználó a magas jogosultsággal rendelkezők számára is megvizsgálhat, vagy ha nem, akkor az engedély szükségességének egyértelmű magyarázata nélkül is megkérdőjelezheti azt. Előfordulhat, hogy ezek az engedélyek ADAL a felhasználótól az alkalmazásba való bejelentkezést.
 
 > [!TIP]
-> Javasoljuk, hogy növekményes beleegyezést alkalmazzon olyan helyzetekben, ahol további kontextust kell megadnia a felhasználónak arról, hogy miért van szüksége az alkalmazásnak egy engedélyre.
+> Növekményes hozzájárulással további kontextust biztosíthat a felhasználóknak arról, hogy miért van szüksége az alkalmazásnak egy engedélyre.
 
 ### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 

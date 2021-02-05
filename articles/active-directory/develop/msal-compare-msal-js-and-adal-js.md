@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754799"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580846"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js és ADAL.js közötti különbségek
 
@@ -48,7 +48,7 @@ Azonban továbbra is ADAL.js kell használnia, ha az alkalmazásnak a [Active Di
 
 A 2.0-s verzióban a szolgáltató használatával a `https://login.microsoftonline.com/common` felhasználók bármely Azure ad-fiókkal bejelentkezhetnek (bármely szervezet esetében).
 
-A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató lehetővé teszi, hogy a felhasználók bármely Azure ad-szervezeti fiókkal vagy egy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. Ha a bejelentkezést csak az Azure AD-fiókokra kívánja korlátozni (ugyanaz a viselkedés, mint a ADAL.js), akkor a-t kell használnia `https://login.microsoftonline.com/organizations` . Részletekért tekintse `authority` meg az inicializálás konfigurációs beállítását a [MSAL.jshasználatával ](msal-js-initializing-client-applications.md).
+A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató lehetővé teszi, hogy a felhasználók bármely Azure ad-szervezeti fiókkal vagy egy személyes Microsoft-fiókkal (MSA) jelentkezzenek be. Ha a bejelentkezést csak az Azure AD-fiókokra kívánja korlátozni (ugyanaz a viselkedés, mint a ADAL.js), használja a következőt: `https://login.microsoftonline.com/organizations` . Részletekért tekintse `authority` meg az inicializálás konfigurációs beállítását a [MSAL.jshasználatával ](msal-js-initializing-client-applications.md).
 
 ### <a name="scopes-for-acquiring-tokens"></a>Jogkivonatok beszerzésének hatókörei
 * A tokenek beszerzésére irányuló hitelesítési kérelmekben szereplő erőforrás-paraméter helyett a hatókör
@@ -95,5 +95,5 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
     acquireTokenPopup(request);
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakört.

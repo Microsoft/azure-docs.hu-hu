@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95752786"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582808"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
 
@@ -32,7 +32,7 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, ahol az engedélyezési
 
 Ez a táblázat a Microsoft Identity platformon az alkalmazások regisztrálásához felvehető átirányítási URI-k maximális számát jeleníti meg.
 
-| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
+| Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Description |
 |--------------------------|---------------------------------|-------------|
 | Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience` az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
 | Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |
@@ -45,7 +45,7 @@ Az alkalmazások regisztrálásához hozzáadott átirányítási URI-azonosít�
 
 A Azure Active Directory (Azure AD) alkalmazás-modell jelenleg a HTTP-és HTTPS-sémákat is támogatja olyan alkalmazásokhoz, amelyek bármely szervezet Azure AD-bérlője munkahelyi vagy iskolai fiókjait bejelentkeznek. Ezeket a fiókokat az `AzureADMyOrg` `AzureADMultipleOrgs` `signInAudience` alkalmazás jegyzékfájl mezőjében szereplő és értékek határozzák meg. A személyes Microsoft-fiókokat (MSA) *és* munkahelyi és iskolai fiókokat (azaz a értéket) használó alkalmazások esetében `signInAudience` `AzureADandPersonalMicrosoftAccount` csak a https-séma engedélyezett.
 
-Ha olyan HTTP-sémával rendelkező átirányítási URI-t szeretne hozzáadni, amely munkahelyi vagy iskolai fiókkal jelentkezik be, akkor a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazás jegyzékfájl-szerkesztőjét kell használnia. Azonban előfordulhat, hogy a manifest Editor használatával beállítható a HTTP-alapú átirányítási URI *, ezért javasoljuk* , hogy használja a https-sémát az átirányítási URI-k számára.
+Ha olyan HTTP-sémával rendelkező átirányítási URI-t szeretne hozzáadni, amely munkahelyi vagy iskolai fiókkal jelentkezik be, használja a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazás jegyzékfájl-szerkesztőjét. Azonban előfordulhat, hogy a manifest Editor használatával beállítható a HTTP-alapú átirányítási URI *, ezért javasoljuk* , hogy használja a https-sémát az átirányítási URI-k számára.
 
 ## <a name="localhost-exceptions"></a>Localhost kivételek
 
@@ -65,7 +65,7 @@ Fejlesztési szempontból ez néhány dolgot jelent:
 * Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például az a `web` -, `native` -vagy a `spa` -Type átirányítás) használja.
 
     Ez különösen akkor fontos, ha ugyanazt az alkalmazás-regisztrációban eltérő hitelesítési folyamatokat kíván használni, például az engedélyezési kód engedélyezését és az implicit folyamatot. Ahhoz, hogy az egyes átirányítási URI-k megfelelő válaszait társítsa, a bejelentkezési kiszolgálónak képesnek kell lennie az átirányítási URI-k megkülönböztetésére, és nem teheti meg, ha csak a port különbözik.
-* Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://localhost/MyWebApp` `http://localhost/MyNativeApp` .
+* Ha több átirányítási URI-t szeretne regisztrálni a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevő használatával tegye különbséget azokat. A nem egyezik például a következővel: `http://localhost/MyWebApp` `http://localhost/MyNativeApp` .
 * Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
 
 #### <a name="prefer-127001-over-localhost"></a>A 127.0.0.1 előnyben részesítette a localhost felett
@@ -84,7 +84,7 @@ Az olyan helyettesítő URI-k, mint például `https://*.contoso.com` kényelmes
 
 A helyettesítő URI-k jelenleg nem támogatottak a személyes Microsoft-fiókokhoz és munkahelyi vagy iskolai fiókokhoz való bejelentkezésre konfigurált alkalmazás-regisztrációkban. A helyettesítő URI-k használata engedélyezett, azonban olyan alkalmazások esetében, amelyek csak munkahelyi vagy iskolai fiókba való bejelentkezésre vannak konfigurálva a szervezet Azure AD-bérlője számára.
 
-A munkahelyi vagy iskolai fiókba bejelentkező alkalmazás-regisztrációhoz helyettesítő URI-azonosítókkal ellátott átirányítási URI-k hozzáadásához a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazás jegyzékfájl-szerkesztőjét kell használnia. Bár lehetséges, hogy egy helyettesítő URI-t a manifest Editor használatával is be kell állítani egy helyettesítő karakterrel *, javasoljuk,* hogy tartsa be az [RFC 6749 3.1.2. szakaszát](https://tools.ietf.org/html/rfc6749#section-3.1.2) , és csak abszolút URI-kat használjon.
+A munkahelyi vagy iskolai fiókba bejelentkező alkalmazás-regisztrációhoz helyettesítő URI-azonosítókkal ellátott átirányítási URI-k hozzáadásához használja a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazás jegyzékfájl-szerkesztőjét. Bár lehetséges, hogy egy helyettesítő URI-t a manifest Editor használatával is be kell állítani egy helyettesítő karakterrel *, javasoljuk,* hogy tartsa be az [RFC 6749 3.1.2. szakaszát](https://tools.ietf.org/html/rfc6749#section-3.1.2) , és csak abszolút URI-kat használjon.
 
 Ha a forgatókönyvben a maximálisan megengedettnél több átirányítási URI-t igényel, akkor a helyettesítő karakteres átirányítási URI-k hozzáadása helyett vegye figyelembe a következő [State paramétert](#use-a-state-parameter) .
 

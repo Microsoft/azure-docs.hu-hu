@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 1/29/2021
-ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 2/05/2021
+ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063079"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581567"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -79,6 +79,9 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
 
 1. A folytatás előtt mentse a piszkozatot.
 1. Miután elvégezte az ajánlat összes szükséges részét, elküldheti azt véleményezésre és közzétételre. A jobb felső sarokban válassza a **felülvizsgálat és közzététel** lehetőséget. Tekintse át az ajánlat részleteit, majd válassza a **Közzététel** lehetőséget.
+
+> [!NOTE]
+> Már nem kell felvennie a kapcsolatot az ajánlat közös értékesítésre való kinevezésével. Miután elvégezte az összes kötelező mezőt a közös értékesítés a Microsoft oldalon, és újból közzéteszi az ajánlatot, áttekintjük az ajánlatot annak megállapításához, hogy az megfelel-e a közös értékesítési állapotra vonatkozó követelményeknek.
 
 ## <a name="see-your-offers-co-sell-status"></a>Az ajánlat közös értékesítéssel kapcsolatos állapotának megtekintése
 

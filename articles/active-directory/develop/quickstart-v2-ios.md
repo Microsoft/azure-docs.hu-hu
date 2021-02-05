@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b43141a3700b9594e2d5fbb875774b7b90e62a0b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754302"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583450"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Gyors útmutató: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása iOS-vagy macOS-alkalmazásból
 
@@ -69,7 +69,7 @@ A rövid útmutató az iOS-és macOS-alkalmazásokra is vonatkozik. Néhány lé
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy átirányítási URI-t, amely kompatibilis a hitelesítési közvetítővel.
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, adjon hozzá egy **átirányítási URI** -t, amely kompatibilis a hitelesítési közvetítővel.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -118,7 +118,7 @@ A terminál ablakban navigáljon a letöltött kód minta nevű mappához, és f
 >     ```
 > 1. Nyissa meg a projekt beállításait. Az **identitás** szakaszban adja meg a portálon megadott **köteg-azonosítót** .
 > 1. Kattintson a jobb gombbal az **info. plist** elemre, és válassza **a Megnyitás**  >  **forrásként kód** lehetőséget.
-> 1. A dict csomópont alatt cserélje le a `Enter_the_bundle_Id_Here` t a portálon használt **_Bundle ID_*-re.
+> 1. A dict gyökérszintű csomópont alatt cserélje le a `Enter_the_bundle_Id_Here` -t a portálon használt ***csomag-azonosítóra*** .
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -178,9 +178,9 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Ahol: | Leírás |
+> |Ahol: | Description |
 > |---------|---------|
-> | `clientId` | A _portal. Azure. com *-ban regisztrált alkalmazás alkalmazás-azonosítója |
+> | `clientId` | A *portal.azure.com* webhelyen regisztrált alkalmazásból származó alkalmazásazonosító |
 > | `authority` | A Microsoft Identity platform. A legtöbb esetben ez a következő lesz: `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Az alkalmazás átirányítási URI-ja. Az alapértelmezett értéket vagy az egyéni átirányítási URI-t a "Nil" értékre lehet átadni. |
 
@@ -214,7 +214,7 @@ Az alkalmazásnak a következőkkel is rendelkeznie kell a következővel: `AppD
     }
  ```
 
-Végezetül az alkalmazásnak tartalmaznia kell egy `LSApplicationQueriesSchemes` bejegyzést a ***info. plist** _-ben a mellett `CFBundleURLTypes` . Ehhez a mintához tartozik.
+Végezetül az alkalmazásnak tartalmaznia kell egy `LSApplicationQueriesSchemes` bejegyzést az ***info. plist*** fájl mellett `CFBundleURLTypes` . Ehhez a mintához tartozik.
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -232,7 +232,7 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 Bizonyos helyzetekben a felhasználóknak a Microsoft Identity platformmal való interakcióra van szükségük. Ezekben az esetekben előfordulhat, hogy a végfelhasználónak ki kell választania a fiókját, meg kell adnia a hitelesítő adatait, vagy jóvá kell hagynia az alkalmazás engedélyeit. Példa:
 
-_ A felhasználók első alkalommal jelentkeznek be az alkalmazásba
+* Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
 * Ha a felhasználó alaphelyzetbe állítja a jelszavát, meg kell adnia a hitelesítő adataikat
 * Ha az alkalmazás első alkalommal kér hozzáférést egy erőforráshoz
 * Ha MFA-vagy más feltételes hozzáférési szabályzatokra van szükség
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Ahol:| Leírás |
+> |Ahol:| Description |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,14 +262,14 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Ahol: | Leírás |
+> |Ahol: | Description |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza (azaz `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Az a fiók, amelynek a tokenjét kérik. Ez a rövid útmutató egyetlen Account-alkalmazásról szól. Ha többfiókos alkalmazást szeretne létrehozni, meg kell határoznia a logikai azonosítót, amely meghatározza, hogy melyik fiókot használja a rendszer a jogkivonat-kérelmekhez a `accountsFromDeviceForParameters:completionBlock:` és a megfelelő érték beadásával. `accountIdentifier` |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be a lépésenkénti oktatóanyagba, amelyben létrehoz egy iOS-vagy macOS-alkalmazást, amely a Microsoft Identity platform hozzáférési jogkivonatát kéri le, és a Microsoft Graph API meghívására használja.
 

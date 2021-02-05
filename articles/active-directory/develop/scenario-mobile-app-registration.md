@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 902348063a24b50d1de0a821d9d6e67931cc53cd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014722"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582536"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Webes API-kat meghívó mobileszközök regisztrálása
 
@@ -79,9 +79,9 @@ Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalma
 
 ### <a name="username-password-authentication"></a>Felhasználónév – jelszó-hitelesítés
 
-Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy, a Microsoft Identity platform 2,0-es végpontján elvégezhető oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
+Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy oda-és beutazást tesz a Microsoft Identity platformra. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 
-Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez tegye a következőket:
+Azonban azonosítsa az alkalmazást nyilvános ügyfélalkalmazásként. Ehhez tegye a következőket:
 
 1. Még mindig a <a href="https://portal.azure.com/" target="_blank">Azure Portalban <span class="docon docon-navigate-external x-hidden-focus"></span></a>válassza ki az alkalmazást **Alkalmazásregisztrációk**, majd válassza a **hitelesítés** lehetőséget.
 1. A **Speciális beállítások**  >  **lehetővé teszik a nyilvános ügyfél-folyamatok** számára  >  **a következő mobil-és asztali folyamatok használatát: válassza az** **Igen** lehetőséget.
@@ -94,6 +94,6 @@ A Mobile Applications a bejelentkezett felhasználó nevében hívja meg az API-
 
 Az engedélyek statikus regisztrálásával lehetővé teszi, hogy a rendszergazdák egyszerűen jóváhagyják az alkalmazást. A statikus regisztráció ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be a következő cikkbe ebben a forgatókönyvben, az [alkalmazás kódjának konfigurációjában](scenario-mobile-app-configuration.md).

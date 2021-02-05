@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0a99ff32f3f1fbcf4af64188640d2edd7f3f5470
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178202"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583128"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -65,7 +65,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Írja be a kulcs leírását (például az alkalmazás titkos kódjához), hagyja meg az alapértelmezett lejáratot, és válassza a **Hozzáadás** lehetőséget.
 > 1. Jegyezze fel az **ügyfél titkos kulcsának** **értékét** későbbi használatra.
 > 1. A **kezelés** területen válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**.
->1.  Győződjön meg arról, hogy a **Microsoft API** -k lap van kiválasztva.
+> 1. Győződjön meg arról, hogy a **Microsoft API** -k lap van kiválasztva.
 > 1. A *gyakran használt Microsoft API* -k szakaszban válassza a **Microsoft Graph** lehetőséget.
 > 1. A **delegált engedélyek** szakaszban győződjön meg arról, hogy a megfelelő engedélyek be vannak jelölve: **User. ReadBasic. All**. Ha szükséges, használja a keresőmezőt.
 > 1. Kattintson az **engedélyek hozzáadása** gombra.
@@ -74,7 +74,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 >
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
+> A jelen rövid útmutatóban a következő működéshez:
 >
 > 1. Adja meg a válasz URL-címét `http://localhost:5000/getAToken` .
 > 1. Hozzon létre egy ügyfél titkot.

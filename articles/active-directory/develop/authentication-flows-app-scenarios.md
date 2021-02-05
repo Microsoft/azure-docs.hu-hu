@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 4147adb004947c22ec39349f408d794bca160ef5
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220164"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582179"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Hitelesítési folyamatok és alkalmazási helyzetek
 
@@ -162,7 +162,7 @@ További információt a [webes API-kat meghívó Mobile App](scenario-mobile-ov
 
 A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. A védett webes API-t egy hozzáférési jogkivonat hívja meg. A jogkivonat segíti az API-k adatvédelmét és a bejövő kérések hitelesítését. Egy webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében.
 
-Ha szeretné megóvni a ASP.NET vagy a ASP.NET Core webes API-t, érvényesíteni kell a hozzáférési jogkivonatot. Ehhez az ellenőrzéshez a ASP.NET JWT middleware-t használja. Az érvényesítést a .NET Library [IdentityModel bővítményei](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , és nem a MSAL.net végzi el.
+Ha szeretné megóvni a ASP.NET vagy a ASP.NET Core webes API-t, ellenőrizze a hozzáférési jogkivonatot. Ehhez az ellenőrzéshez a ASP.NET JWT middleware-t használja. Az érvényesítést a .NET Library [IdentityModel bővítményei](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) , és nem a MSAL.net végzi el.
 
 További információ: [Protected web API](scenario-protected-web-api-overview.md).
 
