@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051872"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576041"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer gyakori kérdések
 
@@ -52,9 +52,11 @@ Nem, ez nem lehetséges.
 ## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Mi a maximális adatátviteli sebesség, amelyet egy Azure Load Balancer érhet el?
 Mivel az Azure LB egy csatlakoztatott hálózati terheléselosztó, a teljesítményre vonatkozó korlátozásokat a háttér-készletben használt virtuális gép típusa határozza meg. Ha többet szeretne megtudni a hálózattal kapcsolatos egyéb információkról, tekintse meg a [virtuális gép hálózati átviteli sebességét](../virtual-network/virtual-machine-network-throughput.md).
 
-
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Hogyan működnek a kapcsolatok az Azure Storage-ban ugyanabban a régióban?
 A fenti forgatókönyvekben a kimenő kapcsolat nem szükséges a virtuális géppel azonos régióban lévő tárolóhoz való csatlakozáshoz. Ha ezt nem szeretné, a fentiekben leírtak szerint használjon hálózati biztonsági csoportokat (NSG). A más régiókban található tároláshoz való kapcsolódáshoz kimenő kapcsolat szükséges. Vegye figyelembe, hogy amikor egy adott régióban található virtuális gépről csatlakozik a tárolóhoz, a tároló diagnosztikai naplóiban található forrás IP-cím egy belső szolgáltatói cím lesz, nem pedig a virtuális gép nyilvános IP-címe. Ha szeretné korlátozni a Storage-fiókhoz való hozzáférést egy vagy több Virtual Network alhálózatban ugyanabban a régióban, akkor a Storage-fiók tűzfalának konfigurálásakor használja [Virtual Network szolgáltatási végpontokat](../virtual-network/virtual-network-service-endpoints-overview.md) , és ne a nyilvános IP-címét. A szolgáltatási végpontok konfigurálása után a rendszer a tároló diagnosztikai naplóiban fogja látni a Virtual Network magánhálózati IP-címét, nem pedig a belső szolgáltató címét.
+
+## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>Támogatja a Azure Load Balancer a TLS/SSL-lezárást?
+Nem, Azure Load Balancer jelenleg nem támogatja a leállítást, mert az a hálózati terheléselosztó továbbítása. Application Gateway lehetséges megoldás lehet, ha az alkalmazás ehhez szükséges.
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Mik a legjobb gyakorlatok a kimenő kapcsolatok tekintetében?
 A standard Load Balancer és a standard nyilvános IP-cím a kimenő kapcsolatok képességeinek és különböző viselkedésének bevezetését mutatja be. Ezek nem azonosak az alapszintű SKU-kal. Ha standard SKU-kal dolgozik a kimenő kapcsolaton, explicit módon meg kell határoznia a standard nyilvános IP-címeket vagy a standard nyilvános Load Balancer. Ez magában foglalja a kimenő kapcsolatok létrehozását belső standard Load Balancer használata esetén. Javasoljuk, hogy mindig használjon kimenő szabályokat egy standard nyilvános Load Balanceron. Ez azt jelenti, hogy ha belső standard Load Balancer használ, meg kell tennie a kimenő kapcsolatok létrehozásához szükséges lépéseket a háttér-készletben lévő virtuális gépekhez, ha kimenő kapcsolatra van szükség. A kimenő kapcsolat kontextusában egyetlen önálló virtuális gép, a rendelkezésre állási csoportban lévő összes virtuális gép a VMSS összes példánya csoportként viselkedik. Ez azt jelenti, hogy ha egy rendelkezésre állási csoport egyetlen virtuális gépe egy szabványos SKU-hoz van társítva, akkor a rendelkezésre állási csoportba tartozó összes virtuálisgép-példány ugyanúgy viselkedik, mintha a standard SKU-hoz társítva van, még akkor is, ha egy adott példány nincs közvetlenül társítva. Ez a viselkedés abban az esetben is megfigyelhető, ha egy önálló virtuális gép több hálózati adapterrel rendelkezik, amelyek egy terheléselosztó számára vannak csatlakoztatva. Ha egy hálózati adaptert önállóként adnak hozzá, akkor ugyanaz lesz a viselkedése. Körültekintően tekintse át a teljes dokumentumot, hogy megismerje az általános fogalmakat, tekintse át [standard Load Balancer](./load-balancer-overview.md) az SKU-ket és a [kimenő szabályokat](load-balancer-outbound-connections.md#outboundrules).

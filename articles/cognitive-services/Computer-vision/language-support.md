@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1abb857c9f03be502db02099383c6fe0b5110461
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2e0cd424b71ff828ed0d8ad4c16d3333cf8a1c45
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736818"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575872"
 ---
 # <a name="language-support-for-computer-vision"></a>A Computer Vision nyelvi támogatása
 
@@ -25,50 +25,98 @@ A Computer Vision egyes funkciói több nyelvet támogatnak; az itt nem említet
 
 Computer Vision OCR API-jai több nyelvet támogatnak. Nem igénylik a nyelvi kód megadását. További információ: [optikai karakterfelismerés (OCR)](concept-recognizing-text.md) .
 
-|Nyelv| Nyelvkód | OCR API | Olvasási 3,0 és 3,1 | Olvasás: v 3.2 – előzetes verzió. 1 |
+|Nyelv| Nyelvkód | OCR API | Olvasási 3.0/3.1 | A v 3.2 előzetes verziójának olvasása |
 |:-----|:----:|:-----:|:---:|:---:|
+|búr|`af`| | |✔ |
+|albán |`sq`| | |✔ |
 |Arab | `ar`|✔ | | |
+|Asztúriai |`ast`| | |✔ |
+|Baszk  |`eu`| | |✔ |
+|Bislama   |`bi`| | |✔ |
+|Breton    |`br`| | |✔ |
+|Katalán    |`ca`| | |✔ |
+|Cebui    |`ceb`| | |✔ |
+|Chamoru  |`ch`| | |✔ |
 |Kínai (egyszerűsített) | `zh-Hans`|✔ | |✔ |
-|Kínai (hagyományos) | `zh-Hant`|✔ | | |
-|cseh | `cs` |✔ | | |
-|dán | `da` |✔ | | |
+|Kínai (hagyományos) | `zh-Hant`|✔ | |✔ |
+|Korni     |`kw`| | |✔ |
+|Korzikai      |`co`| | |✔ |
+|Krími tatár (latin betűs)  |`crh`| | |✔ |
+|cseh | `cs` |✔ | |✔ |
+|dán | `da` |✔ | |✔ |
 |Holland | `nl` |✔ |✔ |✔ |
 |Angol | `en` |✔ |✔ |✔ |
-|finn | `fi` |✔ | | |
+|Észt  |`crh`| | |✔ |
+|Fidzsi |`fj`| | |✔ |
+|Filipino  |`fil`| | |✔ |
+|finn | `fi` |✔ | |✔ |
 |Francia | `fr` |✔ |✔ |✔ |
+|Friuli  | `fur` | | |✔ |
+|Gallego   | `gl` | | |✔ |
 |Német | `de` |✔ |✔ |✔ |
+|Gilbertese    | `gil` | | |✔ |
 |Görög | `el` |✔ | | |
-|Magyar | `hu` |✔ | | |
+|Grönlandi   | `kl` | | |✔ |
+|Haiti kreol  | `ht` | | |✔ |
+|Hani  | `hni` | | |✔ |
+|Hmong DAW (latin betűs) | `mww` | | |✔ |
+|Magyar | `hu` |✔ | | ✔ |
+|Indonéz   | `id` | | |✔ |
+|Interlingva  | `ia` | | |✔ |
+|Inuktitut (latin betűs)  | `iu` | | |✔ |
+|Ír    | `ga` | | |✔ |
 |Olasz | `it` |✔ |✔ |✔ |
 |Japán | `ja` |✔ | |✔ |
-|Koreai | `ko` |✔ | | |
+|Jávai | `jv` | | |✔ |
+|I kreol | `kea` | | |✔ |
+|Kachin (latin betűs) | `kac` | | |✔ |
+|Kara-Kalpak | `kaa` | | |✔ |
+|Kasub | `csb` | | |✔ |
+|Khasi  | `kha` | | |✔ |
+|Koreai | `ko` |✔ | |✔ |
+|Quiché  | `quc` | | |✔ |
+|Kurd (latin betűs) | `kur` | | |✔ |
+|Luxemburgi  | `lb` | | |✔ |
+|Maláj (latin betűs)  | `ms` | | |✔ |
+|Manx  | `gv` | | |✔ |
+|Nápolyi   | `nap` | | |✔ |
 |Norvég | `nb` |✔ | | |
-|Lengyel | `pl` |✔ | | |
+|Norvég | `no` | | |✔ |
+|Okszitán | `oc` | | |✔ |
+|Lengyel | `pl` |✔ | |✔ |
 |Portugál | `pt` |✔ |✔ |✔ |
 |Román | `ro` |✔ | | |
+|Réto  | `rm` | | |✔ |
 |Orosz | `ru` |✔ | | |
+|Skót  | `sco` | | |✔ |
+|Skót gael  | `gd` | | |✔ |
 |Szerb (cirill betűs) | `sr-Cyrl` |✔ | | |
 |Szerb (latin betűs) | `sr-Latn` |✔ | | |
 |Szlovák | `sk` |✔ | | |
+|Szlovén  | `slv` | | |✔ |
 |Spanyol | `es` |✔ |✔ |✔ |
-|svéd | `sw` |✔ | | |
-|Török | `tr` |✔ | | |
+|Szuahéli (latin betűs)  | `sw` | | |✔ |
+|svéd | `sv` |✔ | |✔ |
+|Tatár (latin betűs)  | `tat` | | |✔ |
+|Tetum    | `tet` | | |✔ |
+|Török | `tr` |✔ | |✔ |
+|Felső szorb  | `hsb` | | |✔ |
+|Üzbég (latin betűs)     | `uz` | | |✔ |
+|Volapük   | `vo` | | |✔ |
+|Wallisi    | `wae` | | |✔ |
+|Nyugati fríz | `fy` | | |✔ |
+|Yucatec Maya | `yua` | | |✔ |
+|Zhuang | `za` | | |✔ |
+|zulu  | `zu` | | |✔ |
 
 ## <a name="image-analysis"></a>Képelemzés
 
 Az [elemzés-rendszerkép](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API egyes műveletei más nyelveket is visszaadhatnak a `language` lekérdezési paraméterrel megadottak szerint. A többi művelet angol nyelven adja vissza az eredményeket, függetlenül attól, hogy milyen nyelven van megadva, mások pedig kivételt képeznek a nem támogatott nyelvek esetében. A műveletek a és a `visualFeatures` `details` lekérdezési paraméterekkel vannak megadva. az [áttekintést](overview.md) a képelemzéssel elvégezhető műveletek listájáról tekintheti meg.
 
-|Nyelv | Nyelvkód | Kategóriák | Címkék | Leírás | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
+|Nyelv | Nyelvkód | Kategóriák | Címkék | Description | Felnőtt | Márkák | Szín | Arcok | ImageType | Objektumokat | Hírességek | Arcrészek |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kínai | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angol | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
 |Japán | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portugál | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Spanyol | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-
-## <a name="next-steps"></a>További lépések
-
-Ismerkedjen meg az útmutatóban említett Computer Vision-funkciókkal.
-
-* [Helyi rendszerkép (REST) elemzése](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-analyze.md)
-* [Nyomtatott szöveg kinyerése (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-print-text.md)

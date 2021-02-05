@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 01/08/2020
-ms.openlocfilehash: 4f3b201d35781d6d33eead0b0a21d38fbb897097
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 02/03/2021
+ms.openlocfilehash: 1ba6a45062f4018c59f5b41ab616f7a04f87140a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966819"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575565"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB migrálása Azure Cosmos DB API-MongoDB offline állapotba a DMS használatával
 
@@ -53,6 +53,18 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő kommunikációs portokat: 53, 443, 445, 9354 és 10000-20000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
 * Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás MongoDB-kiszolgálóhoz, amely alapértelmezés szerint a 27017-es TCP-port.
 * Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Azure Cosmos DB kiszolgáló oldali újrapróbálkozások konfigurálása a hatékony áttelepítéshez
+
+A MongoDB-ből áttelepített ügyfelek az erőforrás-irányítási képességektől Azure Cosmos DB előnyt élveznek, ami garantálja a kiépített RU/s teljesítmény teljes kihasználását. Azure Cosmos DB a Migrálás során egy adott adatáttelepítési szolgáltatási kérelmet, ha a kérelem túllépi a kiépített RU/s-t; ezt követően a kérést újra kell próbálkozni. Az adatáttelepítési szolgáltatás képes az újrapróbálkozásokra, azonban a hálózati ugrásban részt vevő adatáttelepítési szolgáltatás és a Azure Cosmos DB közötti oda-és visszautazási idő a kérés teljes válaszideje befolyásolja. A megnövelt kérelmek válaszideje lerövidítheti az áttelepítéshez szükséges teljes időt. A Azure Cosmos DB *kiszolgálóoldali újrapróbálkozási* funkciója lehetővé teszi, hogy a szolgáltatás lehallgassa a sávszélesség-szabályozási kódokat, és sokkal alacsonyabb időpontra próbálkozzon újra, ami jelentősen javítja a kérelmek válaszideje.
+
+A kiszolgálóoldali újrapróbálkozás funkció a Azure Cosmos DB portál *szolgáltatások* paneljén található.
+
+![MongoDB SSR szolgáltatás](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-feature.png)
+
+Ha pedig le van *tiltva*, akkor azt javasoljuk, hogy az alább látható módon engedélyezze azt.
+
+![MongoDB SSR engedélyezése](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 

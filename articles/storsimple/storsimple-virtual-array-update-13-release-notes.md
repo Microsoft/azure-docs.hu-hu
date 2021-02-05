@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 02611bdf9689d2f62f661f558fd547ea46bd4d36
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744629"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576008"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1,3 kibocsátási megjegyzések
 
@@ -28,15 +28,15 @@ Az 1,3-es frissítés megfelel a szoftververzió 10.0.10319.0.
 
 ## <a name="whats-new-in-update-13"></a>Az 1,3-es frissítés újdonságai
 
-Ez a frissítés a következő újításokat tartalmazza:
+Ez a frissítés a következő fejlesztési funkciókat tartalmazza: KB4540725
 
 - A Transport Layer Security (TLS) 1,2 egy kötelező frissítés, és telepíteni kell. Ettől a kiadástól kezdve a TLS 1,2 a szabványos protokoll lesz az összes Azure Portal kommunikációhoz.
 - A szemetet gyűjtő hibajavítások javítják a begyűjtési ciklus teljesítményét, ha az eszköz-és a Storage-fiók két távoli régióban található.
 - A blob időtúllépései miatti biztonsági mentési hibák elhárítása.
 - Frissített operációs rendszer/. NET-keretrendszer biztonsági javítások:
-  - [KB4540725](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4540725\V1.001\free\NEU\X64): március 2020 SSU (karbantartási verem frissítése)
-  - [KB4565541](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4565541\V1.014\free\NEU\X64): 2020. júliusi összesítés
-  - [KB4565622](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Partner\DOTNET47x\KB4565622\V1.000\free\NEU\x64): július 2020 .NET-keretrendszer frissítése
+  - [KB4540725](https://support.microsoft.com/topic/servicing-stack-update-for-windows-8-1-rt-8-1-and-server-2012-r2-march-10-2020-cfa082a3-0b58-a8a3-7dc7-ab424de91b86): március 2020 SSU (karbantartási verem frissítése)
+  - [KB4565541](https://support.microsoft.com/topic/july-14-2020-kb4565541-monthly-rollup-fed6b2b1-3d23-5981-34df-9215a8d8ce01): 2020. júliusi összesítés
+  - [KB4565622](https://support.microsoft.com/topic/security-and-quality-rollup-for-net-framework-4-6-4-6-1-4-6-2-4-7-4-7-1-4-7-2-for-windows-8-1-rt-8-1-and-windows-server-2012-r2-kb4565622-b7320848-1889-a624-da01-719f55ee8a00): július 2020 .NET-keretrendszer frissítése
 
 ## <a name="download-update-13"></a>Az 1,3-es frissítés letöltése
 
@@ -52,7 +52,7 @@ Töltse le a KB4575898, és kövesse az alábbi utasításokat a [frissítés he
 ## <a name="known-issues-in-update-13"></a>Az 1,3-es frissítés ismert problémái
 Az 1,3-es frissítésben nincsenek megjelent új problémák. Az összes kiadási feljegyzett probléma a korábbi kiadásokból történik. Az előző kiadásokban található ismert problémák összegzésének megtekintéséhez lépjen az [1,2-es frissítés ismert problémáira](./storsimple-virtual-array-update-12-release-notes.md#known-issues-in-update-12).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Töltse le a KB4575898, és [alkalmazza a frissítést helyi webes felületen keresztül](./storsimple-virtual-array-install-update-1.md#use-the-local-web-ui).
 
 ## <a name="references"></a>Hivatkozások

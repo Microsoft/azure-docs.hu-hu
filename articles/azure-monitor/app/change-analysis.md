@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195874"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576395"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -28,6 +28,17 @@ A Change Analysis különböző típusú módosításokat észlel, az infrastruk
 A következő ábra a változások elemzésének architektúráját szemlélteti:
 
 ![Architektúra-diagram, amely bemutatja, hogyan módosulnak az elemzések, és hogyan biztosítható az ügyféleszközök számára](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>Támogatott erőforrástípusok
+
+Az Application Change Analysis Service támogatja az erőforrás-tulajdonságok szintjének változásait az összes Azure-erőforrástípus esetében, beleértve a gyakori erőforrásokat, például a következőket:
+- Virtuális gép
+- Virtuálisgép-méretezési csoport
+- App Service
+- Azure Kubernetes szolgáltatás
+- Azure-függvény
+- Hálózati erőforrások: például hálózati biztonsági csoport, Virtual Network, Application Gateway stb.
+- Adatszolgáltatások: például tárolás, SQL, Redis Cache, Cosmos DB stb.
 
 ## <a name="data-sources"></a>Adatforrások
 
@@ -49,17 +60,27 @@ A Change Analysis egy alkalmazás központi telepítési és konfigurációs ál
 
 ### <a name="dependency-changes"></a>Függőségi változások
 
-Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
-Jelenleg a következő függőségek támogatottak:
+Az erőforrás-függőségek változásai az erőforrásokkal kapcsolatos problémákat is okozhatnak. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. Egy másik példa, ha a 22-es port bezárult egy virtuális gép hálózati biztonsági csoportjában, a csatlakozási hibákat okoz. 
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Webalkalmazás diagnosztizálása és megoldása – navigátor (előzetes verzió)
+A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
+Jelenleg a következő függőségek támogatottak a **webalkalmazások diagnosztizálásában és a problémák megoldásában | Navigátor (előzetes verzió)**:
 - Web Apps
 - Azure Storage
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>Application Change Analysis Service
+#### <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
+Az alkalmazás módosításainak elemzése észleli a kapcsolódó erőforrásokat. Gyakori példák a virtuális gépekhez kapcsolódó hálózati biztonsági csoport, Virtual Network, Application Gateway és Load Balancer. A hálózati erőforrásokat általában ugyanabban az erőforráscsoportban kell kiépíteni, mint az erőforrásokat használó erőforrásokat, így az erőforráscsoport-módosítások szűrésével a virtuális gép és a kapcsolódó hálózati erőforrások összes változása megjelenik.
+
+![A hálózati változások képernyőképe](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>Application Change Analysis Service-engedélyezés
 
 Az alkalmazás megváltoztatja az Analysis Service-t, és összesíti az adatokat a fent említett adatforrásokból. Elemzési lehetőségeket biztosít a felhasználók számára, hogy könnyen navigáljon az összes erőforrás-változáson, és azonosítsa, hogy melyik módosítás vonatkozik a hibaelhárítási vagy figyelési kontextusban.
-A (z) "Microsoft. ChangeAnalysis" erőforrás-szolgáltatót regisztrálni kell egy előfizetésben a Azure Resource Manager követett tulajdonságok és a proxyn lévő beállítások módosítására vonatkozó adatváltozások számára. A webalkalmazás diagnosztizálása és megoldása eszköz beírásakor vagy a Change Analysis standalone (önálló módosítás) lapon az erőforrás-szolgáltató automatikusan regisztrálva lesz. Az előfizetéshez nem tartozik teljesítmény vagy Cost implementáció. Ha engedélyezi a webes alkalmazások módosítási elemzését (vagy lehetővé teszi a problémák diagnosztizálását és megoldását), akkor az elhanyagolható teljesítménnyel kapcsolatos hatással lesz a webalkalmazásra, és nincs számlázási díj.
-A webalkalmazások vendégen belüli változásaihoz külön engedélyezés szükséges a programkódok webalkalmazásban való vizsgálatához. További részletekért lásd a cikk későbbi, [a problémák diagnosztizálása és megoldása eszközének módosítása](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) című szakaszát.
+A (z) "Microsoft. ChangeAnalysis" erőforrás-szolgáltatót regisztrálni kell egy előfizetésben a Azure Resource Manager követett tulajdonságok és a proxyn lévő beállítások módosítására vonatkozó adatváltozások számára. A webalkalmazás diagnosztizálása és megoldása eszköz beírásakor vagy a Change Analysis standalone (önálló módosítás) lapon az erőforrás-szolgáltató automatikusan regisztrálva lesz. A webalkalmazások vendégen belüli változásaihoz külön engedélyezés szükséges a programkódok webalkalmazásban való vizsgálatához. További részletekért lásd a cikk későbbi, [a problémák diagnosztizálása és megoldása eszközének módosítása](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) című szakaszát.
+
+## <a name="cost"></a>Költségek
+Az Application Change Analysis egy ingyenes szolgáltatás, amely nem terheli az általa engedélyezett előfizetések számlázási költségeit. A szolgáltatás emellett nem befolyásolja az Azure-erőforrás tulajdonságainak megváltozásának ellenőrzését. Ha engedélyezi a Web Apps-ban található webalkalmazások módosítási elemzését (vagy lehetővé teszi a problémák diagnosztizálását és megoldását), akkor az a webalkalmazásra és a számlázási díjakra nézve elhanyagolható teljesítménnyel járhat.
 
 ## <a name="visualizations-for-application-change-analysis"></a>Az alkalmazás változási elemzésének vizualizációi
 
@@ -82,6 +103,11 @@ Egy erőforrásra kattintva megtekintheti az összes módosítást. Ha szükség
 Bármilyen visszajelzést a panelen vagy e-mailben a visszajelzés küldése gombra kattintva használhat changeanalysisteam@microsoft.com .
 
 ![Képernyőkép – visszajelzés gomb a Change Analysis panelen](./media/change-analysis/change-analysis-feedback.png)
+
+#### <a name="multiple-subscription-support"></a>Több előfizetés támogatása
+A felhasználói felület támogatja több előfizetés kiválasztását az erőforrások változásainak megtekintéséhez. Használja az előfizetés szűrőt:
+
+![A több előfizetés kijelölését támogató előfizetés-szűrő képernyőképe](./media/change-analysis/multiple-subscriptions-support.png)
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Webalkalmazás diagnosztizálása és megoldása
 

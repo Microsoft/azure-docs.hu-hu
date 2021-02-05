@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246468"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576058"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
 
-Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az első részben betanított egy modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
+Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az első részben betanított egy modellt. Most itt az ideje, hogy felhasználói bevitel alapján készítsen előrejelzéseket. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
 > * Valós idejű következtetési folyamat létrehozása.
@@ -101,7 +101,7 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
     A valós idejű végpont **speciális** beállítása is megváltoztatható.
     
-    |Speciális beállítás|Leírás|
+    |Speciális beállítás|Description|
     |---|---|
     |Application Insights diagnosztika és adatgyűjtés engedélyezése| Azt határozza meg, hogy az Azure Application Ingishts lehetővé teszi-e az adatok gyűjtését az üzembe helyezett végpontokról. </br> Alapértelmezés szerint: false |
     |Pontozási időkorlát| A webszolgáltatásra irányuló pontozási hívások kényszerített időkorlátja ezredmásodpercben.</br>Alapértelmezés szerint: 60000|
@@ -122,17 +122,19 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 > Az Azure Container **instance** (ACI) szolgáltatásban is üzembe helyezhető, ha a valós idejű végpont-beállítás mezőben a **számítási típushoz** az **Azure Container instance** elemet választja.
 > Az Azure Container instance tesztelésre vagy fejlesztésre szolgál. Az ACI-t alacsony léptékű CPU-alapú számítási feladatokhoz használhatja, amelyek kevesebb mint 48 GB RAM memóriát igényelnek.
 
-## <a name="view-the-real-time-endpoint"></a>Valós idejű végpont megtekintése
+## <a name="test-the-real-time-endpoint"></a>A valós idejű végpont tesztelése
 
 Az üzembe helyezés befejeződése után megtekintheti a valós idejű végpontot a **végpontok** lapon.
 
 1. A **végpontok** lapon válassza ki a telepített végpontot.
 
-1. A **részletek** lapon további információkat tekinthet meg, például a REST URI-t, az állapotot és a címkéket.
+    A **részletek** lapon további információkat tekinthet meg, például a REST URI-t, a hencegés definícióját, az állapotot és a címkéket.
 
-1. A felhasználás **lapon** megtalálhatja a biztonsági kulcsokat, és megadhatja a hitelesítési módszereket.
+    A felhasználás **lapon** megtalálhatja a minta felhasználási kódját, a biztonsági kulcsokat, és beállíthatja a hitelesítési módszereket.
 
-1. A **központi telepítési naplók** lapon megtekintheti a valós idejű végpont részletes üzembe helyezési naplóit. 
+    A **központi telepítési naplók** lapon megtekintheti a valós idejű végpont részletes üzembe helyezési naplóit.
+
+1. A végpont teszteléséhez lépjen a test ( **teszt** ) lapra. Itt megadhatja a tesztelési adatokat, és kiválaszthatja a végpont kimenetének ellenőrzése **tesztet** .
 
 További információ a webszolgáltatás használatáról: a [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md)
 
@@ -140,7 +142,7 @@ További információ a webszolgáltatás használatáról: a [webszolgáltatás
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni a tervező használatáról, tekintse meg az alábbi hivatkozásokat:
 

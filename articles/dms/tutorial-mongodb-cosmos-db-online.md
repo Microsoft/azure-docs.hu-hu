@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 09/25/2019
-ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 02/03/2021
+ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539288"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575616"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: a MongoDB migrálása Azure Cosmos DB API-ra a MongoDB online-hoz a DMS használatával
 
@@ -68,6 +68,18 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő kommunikációs portokat: 53, 443, 445, 9354 és 10000-20000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
 * Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás MongoDB-kiszolgálóhoz, amely alapértelmezés szerint a 27017-es TCP-port.
 * Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Azure Cosmos DB kiszolgáló oldali újrapróbálkozások konfigurálása a hatékony áttelepítéshez
+
+A MongoDB-ből áttelepített ügyfelek az erőforrás-irányítási képességektől Azure Cosmos DB előnyt élveznek, ami garantálja a kiépített RU/s teljesítmény teljes kihasználását. Azure Cosmos DB a Migrálás során egy adott adatáttelepítési szolgáltatási kérelmet, ha a kérelem túllépi a kiépített RU/s-t; ezt követően a kérést újra kell próbálkozni. Az adatáttelepítési szolgáltatás képes az újrapróbálkozásokra, azonban a hálózati ugrásban részt vevő adatáttelepítési szolgáltatás és a Azure Cosmos DB közötti oda-és visszautazási idő a kérés teljes válaszideje befolyásolja. A megnövelt kérelmek válaszideje lerövidítheti az áttelepítéshez szükséges teljes időt. A Azure Cosmos DB *kiszolgálóoldali újrapróbálkozási* funkciója lehetővé teszi, hogy a szolgáltatás lehallgassa a sávszélesség-szabályozási kódokat, és sokkal alacsonyabb időpontra próbálkozzon újra, ami jelentősen javítja a kérelmek válaszideje.
+
+A kiszolgálóoldali újrapróbálkozás funkció a Azure Cosmos DB portál *szolgáltatások* paneljén található.
+
+![Képernyőkép a MongoDB Server-Side újrapróbálkozás funkcióról.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-feature.png)
+
+Ha pedig le van *tiltva*, akkor azt javasoljuk, hogy az alább látható módon engedélyezze azt.
+
+![Képernyőkép a MongoDB Server-Side az Engedélyezés gombra.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
@@ -169,7 +181,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Forrás adatainak megadása](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 
-2. Válassza a **Mentés** lehetőséget.
+2. Kattintson a **Mentés** gombra.
 
    > [!NOTE]
    > A forráskiszolgáló címe legyen az elsődleges, ha a forrás egy replikakészlet, és az útválasztó, ha a forrás egy szilánkos MongoDB-fürt. A többplatformos MongoDB-fürtök esetében a Azure Database Migration Servicenak képesnek kell lennie csatlakozni a fürtben lévő egyes szegmensekhez, ami szükségessé teheti a tűzfal megnyitását több gépen.
@@ -180,7 +192,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Cél adatainak megadása](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-target1.png)
 
-2. Válassza a **Mentés** lehetőséget.
+2. Kattintson a **Mentés** gombra.
 
 ## <a name="map-to-target-databases"></a>Leképezés céladatbázisokra
 
@@ -194,7 +206,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Leképezés céladatbázisokra](media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png)
 
-2. Válassza a **Mentés** lehetőséget.
+2. Kattintson a **Mentés** gombra.
 
 3. A **gyűjtemény beállítása** képernyőn bontsa ki a gyűjtemények listáját, majd tekintse át az áttelepíteni kívánt gyűjtemények listáját.
 
@@ -209,7 +221,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    ![Gyűjtemények táblázatának kiválasztása](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 5. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
@@ -255,6 +267,6 @@ Miután áttelepítette a MongoDB-adatbázisban tárolt adatAzure Cosmos DB API-
 
 * [Cosmos DB szolgáltatás adatai](https://azure.microsoft.com/services/cosmos-db/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az áttelepítési útmutatót a Microsoft [Database áttelepítési útmutatóban](https://datamigration.microsoft.com/)található további forgatókönyvekhez.

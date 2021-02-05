@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905174"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575439"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Diagnosztikai naplózás engedélyezése a FHIR készült Azure API-ban
 
@@ -35,9 +35,9 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplózás
     2. **Adatfolyam küldése az Event hub** -nak egy harmadik féltől származó szolgáltatás vagy egyéni analitikai megoldás betöltéséhez. Ennek a lépésnek a konfigurálásához létre kell hoznia egy Event hub-névteret és egy Event hub-házirendet.
     3. **Stream a Azure Monitor log Analytics** munkaterületére. Ennek a lehetőségnek a kiválasztásához létre kell hoznia a naplók Analytics-munkaterületet.
 
-6. Válassza ki a **AuditLogs** és a rögzíteni kívánt metrikákat. Ha a FHIR készült Azure IoT-összekötőt használja, ügyeljen arra, hogy a mérőszámok esetében a **hibák, a forgalom és a késés** legyen kiválasztva. 
+6. Válassza a **AuditLogs** és/vagy a **AllMetrics** lehetőséget. A metrikák közé tartozik a szolgáltatás neve, a rendelkezésre állás, az adatok mérete, a teljes késés, a kérelmek teljes száma, az összes hiba és az időbélyeg.
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Az Azure FHIR diagnosztikai beállításai. Válassza a AuditLogs és/vagy a AllMetrics lehetőséget." lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. Válassza a **Mentés** lehetőséget
 
@@ -102,7 +102,7 @@ A diagnosztikai naplókhoz való hozzáférés elengedhetetlen a szolgáltatás 
  
 Az FHIR a HL7 bejegyzett védjegye, amelynek felhasználását a HL7 engedélyezte.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan engedélyezheti a FHIR készült Azure API-naplókat. A következő lépés a FHIR készült Azure API-ban konfigurálható további beállítások megismerése
  
 >[!div class="nextstepaction"]

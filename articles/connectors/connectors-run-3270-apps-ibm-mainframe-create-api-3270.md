@@ -7,19 +7,16 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: estfan, valthom
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 02/03/2021
 tags: connectors
-ms.openlocfilehash: ae99e3fa287cc9012e317142cc1e6aef36ce90d6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7873076618125241d9bdf4f225c194572553d060
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094999"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573432"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt, IBM-nagyszámítógépeken elérhető alkalmazások integrálása az Azure-ral az Azure Logic Apps és az IBM 3270-összekötő használatával
-
-> [!NOTE]
-> Ez az összekötő [*nyilvános előzetes*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el. 
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>A 3270-es képernyő-vezérelt alkalmazások integrálása az Azure-ba a Azure Logic Apps és az IBM 3270 Connector használatával
 
 Az Azure Logic Appsszel és az IBM 3270-összekötővel elérheti és futtathatja azokat az IBM-nagyszámítógépeken elérhető alkalmazásokat, amelyeket általában a 3270-emulátor képernyőin keresztül vezérelhet. Így az IBM-nagyszámítógépeken elérhető alkalmazásokat az Azure-, Microsoft- és egyéb alkalmazásokba, szolgáltatásokba és rendszerekbe integrálhatja, ha automatizált munkafolyamatokat hoz létre az Azure Logic Apps segítségével. Az összekötő TN3270 típusú protokoll használatával kommunikál az IBM-nagyszámítógépekkel, és minden Azure Logic Apps-régióban elérhető, az Azure Government és az Azure China 21Vianet kivételével. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
@@ -55,7 +52,7 @@ Miután létrehozta a metaadat-fájlt a tervezési eszközből, ezt a fájlt hoz
   Ha ISE-t használ, válassza ki azt az ISE-t a logikai alkalmazás helyeként.
 
 * [Töltse le és telepítse a 3270 kialakítási eszközt](https://aka.ms/3270-design-tool-download).
-Az egyetlen előfeltétel a [Microsoft .NET Framework 4.6.1](https://aka.ms/net-framework-download).
+Az egyetlen előfeltétele [Microsoft .NET Framework 4,8](https://aka.ms/net-framework-download).
 
   Ez az eszköz segítséget nyújt a képernyők, navigációs útvonalak, metódusok és paraméterek rögzítéséhez az alkalmazásban, amelyet az 3270-es összekötő műveletként hozzáad és futtat. Az eszköz létrehoz egy Host Integration Designer XML-fájlt (HIDX), amely biztosítja a szükséges metaadatokat ahhoz, hogy az összekötő használni lehessen a mainframe-alkalmazás vezetéséhez.
   
@@ -77,20 +74,19 @@ Az egyetlen előfeltétel a [Microsoft .NET Framework 4.6.1](https://aka.ms/net-
 
 A 3270 képernyő-vezérelt alkalmazásokban a képernyők és az adatok mezői egyediek a forgatókönyvek számára, így a 3270-összekötőnek szüksége van az alkalmazással kapcsolatos adatokra, amelyeket metaadatokként adhat meg. Ez a metaadatok azokat a információkat ismerteti, amelyek segítségével a logikai alkalmazás azonosíthatja és felismeri a képernyőket, leírja, hogyan lehet navigálni a képernyők, a bemeneti adatok és a várt eredmények között. A metaadatok megadásához és létrehozásához használja a 3270 kialakítási eszközt, amely végigvezeti az adott *módokon* vagy fázisokon a további részletekben leírtak szerint:
 
-* **Rögzítés** : ebben a módban rögzíti azokat a képernyőket, amelyek szükségesek egy adott feladat végrehajtásához a nagyvállalati alkalmazásban, például banki egyenleg beszerzése.
+* **Rögzítés**: ebben a módban rögzíti azokat a képernyőket, amelyek szükségesek egy adott feladat végrehajtásához a nagyvállalati alkalmazásban, például banki egyenleg beszerzése.
 
-* **Navigáció** : ebben a módban megadhatja azt a tervet vagy elérési utat, amely segítségével navigálhat a mainframe-alkalmazás képernyőjén az adott feladathoz.
+* **Navigáció**: ebben a módban megadhatja azt a tervet vagy elérési utat, amely segítségével navigálhat a mainframe-alkalmazás képernyőjén az adott feladathoz.
 
-* **Metódusok** : ebben a módban megadhatja a metódust (például `GetBalance` ), amely a képernyő navigációs útvonalát írja le. Az egyes képernyőkön lévő mezőket is kiválaszthatja, amelyek a metódus Bemeneti és kimeneti paraméterei lesznek.
+* **Metódusok**: ebben a módban megadhatja a metódust (például `GetBalance` ), amely a képernyő navigációs útvonalát írja le. Az egyes képernyőkön található mezőket is kiválaszthatja, amelyek a metódus Bemeneti és kimeneti paraméterei lesznek.
 
 ### <a name="unsupported-elements"></a>Nem támogatott elemek
 
 A kialakítási eszköz nem támogatja ezeket az elemeket:
 
 * Részleges IBM alapszintű leképezés-támogatási (BMS) térképek: Ha BMS-leképezést importál, a tervezési eszköz figyelmen kívül hagyja a részleges képernyő-definíciókat.
-* Be-/kijelentkezési paraméterek: nem lehet megadni a (z)/kimenő paramétereket.
-* Menü-feldolgozás: az előzetes verzióban nem támogatott
-* Tömb feldolgozása: előzetes verzióban nem támogatott
+
+* Menü feldolgozása
 
 <a name="capture-screens"></a>
 
@@ -100,9 +96,9 @@ Ebben a módban minden 3270 képernyőn megjelöl egy olyan tételt, amely egyed
 
 1. Ha még nem tette meg, nyissa meg a 3270 kialakítás eszközt. Az eszköztáron válassza a **rögzítés** lehetőséget, hogy beírja a rögzítési módot.
 
-1. A rögzítés elindításához nyomja le az F5 billentyűt, vagy a **rögzítés** menüben válassza a **rögzítés indítása** lehetőséget. 
-
 1. A **munkamenet** menüben válassza a **kapcsolat** lehetőséget.
+
+1. A rögzítés elindításához a **rögzítés** menüben válassza a **rögzítés indítása** lehetőséget. (Billentyűzet: CTRL + E)
 
 1. A **rögzítés** ablaktáblán az alkalmazás első képernyőjétől kezdve lépjen be az alkalmazásba az adott feladathoz.
 
@@ -110,13 +106,13 @@ Ebben a módban minden 3270 képernyőn megjelöl egy olyan tételt, amely egyed
 
 1. A **munkamenet** menüben válassza a **Leválasztás** lehetőséget.
 
-1. A rögzítés leállításához nyomja le a SHIFT + F5 billentyűket, vagy a **rögzítési** menüben válassza a **rögzítés leállítása** lehetőséget.
+1. A rögzítés leállításához a **rögzítési** menüben válassza a **rögzítés leállítása** lehetőséget. (Billentyűzet: CTRL + SHIFT + E)
 
    A feladatok képernyőjének rögzítése után a Designer eszköz megjeleníti a képernyőket jelképező miniatűrket. Néhány megjegyzés ezekről a bélyegképekről:
 
    * A rögzített képernyők esetében egy "Empty" nevű képernyő jelenik meg.
 
-     Amikor először csatlakozik a [CICS](https://www.ibm.com/it-infrastructure/z/cics)-hoz, el kell küldenie a "Clear" kulcsot, mielőtt megadhatja a futtatni kívánt tranzakció nevét. A "Clear" kulcsot elküldő képernyő nem rendelkezik olyan *felismerési attribútumokkal* , mint például a képernyő címe, amelyet a Screen Recognition Editor használatával adhat hozzá. A képernyő megjelenítéséhez a miniatűrök tartalmaz egy "Empty" nevű képernyőt. Később ezt a képernyőt használhatja azon képernyő megjelenítéséhez, ahol a tranzakció nevét adja meg.
+     Amikor először csatlakozik a [CICS](https://www.ibm.com/it-infrastructure/z/cics)-hoz, el kell küldenie a "Clear" kulcsot, mielőtt megadhatja a futtatni kívánt tranzakció nevét. A "Clear" kulcsot elküldő képernyő nem rendelkezik olyan *felismerési attribútumokkal*, mint például a képernyő címe, amelyet a Screen Recognition Editor használatával adhat hozzá. A képernyő megjelenítéséhez a miniatűrök tartalmaz egy "Empty" nevű képernyőt. Később ezt a képernyőt használhatja azon képernyő megjelenítéséhez, ahol a tranzakció nevét adja meg.
 
    * Alapértelmezés szerint a rögzített képernyő neve a képernyő első szavát használja. Ha a név már létezik, a kialakítási eszköz egy aláhúzással és egy számmal fűzi hozzá a nevet, például: "WBGB" és "WBGB_1".
 
@@ -138,7 +134,7 @@ Miután befejezte a felismerési mezők kijelölését, váltson a következő m
 
 Ahhoz, hogy az összekötő navigáljon és megkülönböztetse a képernyőket, általában egy olyan egyedi szöveget talál a képernyőn, amelyet azonosítóként használhat a rögzített képernyők között. Ismétlődő képernyők esetén további azonosítási módszerekre lehet szükség. Tegyük fel például, hogy két olyan képernyője van, amelyek ugyanúgy néznek ki, mint az egyik képernyő érvényes értéket ad vissza, míg a másik képernyő hibaüzenetet ad vissza.
 
-A kialakítási eszközben hozzáadhat *felismerési attribútumokat* , például a "fiók egyenlegének lekérése" címet a képernyő-felismerési szerkesztő használatával. Ha elágazó elérési úttal rendelkezik, és mindkét ág ugyanazt a képernyőt adta vissza, de különböző eredményekkel rendelkezik, akkor más felismerési attribútumokra van szüksége. Futási időben az összekötő ezeket az attribútumokat használja az aktuális ág és elágazás meghatározásához. A következő feltételek használhatók:
+A kialakítási eszközben hozzáadhat *felismerési attribútumokat*, például a "fiók egyenlegének lekérése" címet a képernyő-felismerési szerkesztő használatával. Ha elágazó elérési úttal rendelkezik, és mindkét ág ugyanazt a képernyőt adta vissza, de különböző eredményekkel rendelkezik, akkor más felismerési attribútumokra van szüksége. Futási időben az összekötő ezeket az attribútumokat használja az aktuális ág és elágazás meghatározásához. A következő feltételek használhatók:
 
 * Megadott érték: ez az érték a megadott karakterlánccal egyezik meg a megadott helyen.
 * NEM adott érték: ez az érték nem felel meg a megadott karakterláncnak a megadott helyen.
@@ -176,13 +172,13 @@ Ebben a módban megadhatja a folyamatot vagy a lépéseket a mainframe-alkalmaz�
 
 ### <a name="create-plans"></a>Csomagok létrehozása
 
-1. A 3270 kialakítási eszköz eszköztárán válassza a **navigáció** lehetőséget a navigációs mód megadásához.
+1. Az 3270-es kialakítási eszköz eszköztárán válassza a **navigáció** lehetőséget a navigációs mód megadásához.
 
 1. A terv elindításához a **navigációs** ablaktáblán válassza az **új terv** lehetőséget.
 
 1. Az **új csomag nevének kiválasztása** területen adja meg a csomag nevét. A **típus** listából válassza ki a csomag típusát:
 
-   | Csomag típusa | Leírás |
+   | Csomag típusa | Description |
    |-----------|-------------|
    | **Folyamat** | Önálló vagy kombinált csomagok esetén |
    | **Kapcsolódás** | Csatlakozási csomagok esetén |
@@ -195,7 +191,7 @@ Ebben a módban megadhatja a folyamatot vagy a lépéseket a mainframe-alkalmaz�
 
 1. Rendezze a képernyőket abban a sorrendben, amely leírja a definiált feladatot.
 
-1. A képernyők, például az elágazások és az illesztések közötti folyamat elérési útjának megadásához a tervezési eszköz eszköztárán válassza a **folyamat** lehetőséget.
+1. A képernyők, például az elágazások és az illesztések közötti folyamat elérési útjának megadásához a tervezési eszköz eszköztárán válassza a **flow** lehetőséget.
 
 1. Válassza ki a folyamat első képernyőjét. Húzzon egy kapcsolódást a folyamat következő képernyőjére.
 
@@ -291,8 +287,8 @@ Ebben a módban a navigációs tervhez társított metódust kell megadnia. Mind
    | Tulajdonság neve | Lehetséges értékek | 
    |---------------|-----------------|
    | **Adattípus** | Bájt, dátum és idő, decimális, int, Long, Short, string |
-   | **Mező kitöltésének technikája** | A paraméterek ezeket a kitöltési típusokat támogatják, ha szükséges, üres értékekkel töltik fel őket: <p><p>- **Típus** : írja be a karaktereket egymás után a mezőbe. <p>- **Fill (kitöltés** ): cserélje le a mező tartalmát a karakterekre, és ha szükséges, üres értékeket kell kitöltenie. <p>- **EraseEofType** : törölje a mezőt, majd írja be egymás után a karaktereket a mezőbe. |
-   | **Formázó sztring** | Egyes paraméterek adattípusai formázó karakterláncot használnak, amely tájékoztatja az 3270-összekötőt, és a képernyőn lévő szöveg konvertálása .NET-adattípusba: <p><p>- **Dátum** és idő: a DateTime Format sztring a [.net egyéni dátum-és időformátum-karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings)követi. A dátum például a `06/30/2019` Format karakterláncot használja `MM/dd/yyyy` . <p>- **Decimális** : a decimális formátum karakterlánca a [Cobol Picture záradékot](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm)használja. A szám például `100.35` a Format karakterláncot használja `999V99` . |
+   | **Mező kitöltésének technikája** | A paraméterek ezeket a kitöltési típusokat támogatják, ha szükséges, üres értékekkel töltik fel őket: <p><p>- **Típus**: írja be a karaktereket egymás után a mezőbe. <p>- **Fill (kitöltés**): cserélje le a mező tartalmát a karakterekre, és ha szükséges, üres értékeket kell kitöltenie. <p>- **EraseEofType**: törölje a mezőt, majd írja be egymás után a karaktereket a mezőbe. |
+   | **Formázó sztring** | Egyes paraméterek adattípusai formázó karakterláncot használnak, amely tájékoztatja az 3270-összekötőt, és a képernyőn lévő szöveg konvertálása .NET-adattípusba: <p><p>- **Dátum** és idő: a DateTime Format sztring a [.net egyéni dátum-és időformátum-karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings)követi. A dátum például a `06/30/2019` Format karakterláncot használja `MM/dd/yyyy` . <p>- **Decimális**: a decimális formátum karakterlánca a [Cobol Picture záradékot](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm)használja. A szám például `100.35` a Format karakterláncot használja `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Metaadatok mentése és megtekintése
@@ -310,16 +306,16 @@ Ha azonban megpróbálja menteni a minta RAP-fájl módosításait, vagy egy HID
 
 ## <a name="test-your-method"></a>A metódus tesztelése
 
-1. Ha a metódust az élő gazdagépen szeretné futtatni, miközben a metódusok mód üzemmódban van, nyomja le az F5 billentyűt, vagy a tervezési eszköz eszköztárán válassza a **Futtatás** lehetőséget.
+1. Ha a metódust az élő gazdagépen szeretné futtatni, miközben a metódusok mód üzemmódban van, nyomja le az F5 billentyűt, vagy a tervezési eszköz eszköztárán válassza a **teszt** elemet.
 
    > [!TIP]
    > Bármikor megváltoztathatja a módokat. A **fájl** menüben válassza a **mód** lehetőséget, majd válassza ki a kívánt módot.
 
-1. Adja meg a paraméterek értékeit, majd kattintson **az OK gombra** .
+1. Adja meg a paraméterek értékeit, majd kattintson **az OK gombra**.
 
-1. A következő képernyőre való továbblépéshez válassza a **tovább** lehetőséget.
+1. A következő képernyőre való továbblépéshez kattintson a **tovább** gombra.
 
-1. Ha elkészült, válassza a **kész** lehetőséget, amely megjeleníti a kimeneti paraméterek értékeit.
+1. Ha elkészült, válassza a **kész** gombot, amely megjeleníti a kimeneti paraméterek értékeit.
 
 <a name="add-metadata-integration-account"></a>
 
@@ -327,7 +323,7 @@ Ha azonban megpróbálja menteni a minta RAP-fájl módosításait, vagy egy HID
 
 Ha elkészült, a HIDX-fájl létrehozásával feltöltheti az integrációs fiókjába. Az 3270 kialakítási eszköze létrehozza a HIDX-fájlt egy új almappában, ahol mentette a RAP-fájlt.
 
-1. Az 3270 kialakítási eszköz eszköztárán válassza a **kód előállítása** lehetőséget.
+1. Az 3270 kialakítási eszköz **eszközök** menüjében válassza a **definíciók előállítása** lehetőséget. (Billentyűzet: F6)
 
 1. Keresse meg a RAP-fájlt tartalmazó mappát, és nyissa meg azt az almappát, amelyet az eszköz a HIDX-fájl létrehozása után hozott létre. Győződjön meg arról, hogy az eszköz létrehozta a HIDX fájlt.
 
@@ -347,29 +343,28 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés** , majd a **művelet hozzáadása** lehetőséget. 
+1. Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés** **>** **művelet hozzáadása** lehetőséget. 
 
-1. A keresőmezőbe válassza a **vállalat** elemet. A keresőmezőbe írja be szűrőként az "3270" kifejezést. A műveletek listából válassza a következő műveletet: **mainframe-program futtatása TN3270-kapcsolaton keresztül**
+1. A keresőmezőbe válassza a **vállalat** elemet. A keresőmezőbe írja be `3270` szűrőként a kifejezést. A műveletek listából válassza ki a **TN3270-kapcsolaton keresztül egy mainframe-program futtatása** nevű műveletet.
 
    ![3270 művelet kiválasztása](./media/connectors-create-api-3270/select-3270-action.png)
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
-1. Ha még nem létezik kapcsolatok, adja meg a szükséges adatokat a kapcsolatban, és válassza a **Létrehozás** lehetőséget.
+1. Ha még nem létezik kapcsolatok, adja meg a szükséges adatokat a kapcsolatban, majd válassza a **Létrehozás** lehetőséget.
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolatok neve |
-   | **Integrációs fiók azonosítója** | Igen | <*integráció – fióknév*> | Az integrációs fiók neve |
-   | **Integrációs fiók SAS URL-címe** | Igen | <*integráció-fiók-SAS-URL*> | Az integrációs fiók közös hozzáférés-aláírási (SAS) URL-címe, amelyet a Azure Portal az integrációs fiók beállításai alapján hozhatja meg. <p>1. az integrációs fiók menüjének **Beállítások** területén válassza a **visszahívási URL-cím** elemet. <br>2. a jobb oldali ablaktáblában másolja a **generált visszahívási URL** értékét. |
-   | **Kiszolgáló** | Igen | <*TN3270 – kiszolgáló neve*> | A TN3270 szolgáltatás kiszolgálójának neve |
-   | **Port** | Nem | <*TN3270 – kiszolgáló – port*> | A TN3270-kiszolgáló által használt port. Ha üresen hagyja, az összekötő `23` az alapértelmezett értéket használja. |
-   | **Eszköz típusa** | Nem | <*IBM-terminál-Model*> | Az IBM-terminál által emulált modell neve vagy száma. Ha üresen hagyja, az összekötő az alapértelmezett értékeket használja. |
-   | **Kódlap** | Nem | <*kód – oldal – szám*> | A gazdagéphez tartozó kódlap száma. Ha üresen hagyja, az összekötő `37` az alapértelmezett értéket használja. |
-   | **Logikai egység neve** | Nem | <*logikai egység neve*> | A gazdagéptől kérésre megadott logikai egység neve |
-   | **Engedélyezi az SSL használatát?** | Nem | Be vagy ki | A TLS titkosítás bekapcsolása vagy kikapcsolása. |
-   | **Ellenőrzi a gazdagép SSL-tanúsítványát?** | Nem | Be vagy ki | Kapcsolja be vagy kapcsolja ki a kiszolgáló tanúsítványának érvényesítését. |
+   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolatok neve |
+   | **Integrációs fiók azonosítója** | Yes | <*integráció – fióknév*> | Az integrációs fiók neve |
+   | **Integrációs fiók SAS URL-címe** | Yes | <*integráció-fiók-SAS-URL*> | Az integrációs fiók közös hozzáférés-aláírási (SAS) URL-címe, amelyet a Azure Portal az integrációs fiók beállításai alapján hozhatja meg. <p>1. az integrációs fiók menüjének **Beállítások** területén válassza a **visszahívási URL-cím** elemet. <br>2. a jobb oldali ablaktáblában másolja a **generált visszahívási URL** értékét. |
+   | **Kiszolgáló** | Yes | <*TN3270 – kiszolgáló neve*> | A TN3270 szolgáltatás kiszolgálójának neve |
+   | **Port** | No | <*TN3270 – kiszolgáló – port*> | A TN3270-kiszolgáló által használt port. Ha üresen hagyja, az összekötő `23` az alapértelmezett értéket használja. |
+   | **Eszköz típusa** | No | <*IBM-terminál-Model*> | Az IBM-terminál által emulált modell neve vagy száma. Ha üresen hagyja, az összekötő az alapértelmezett értékeket használja. |
+   | **Kódlap** | No | <*kód – oldal – szám*> | A gazdagéphez tartozó kódlap száma. Ha üresen hagyja, az összekötő `37` az alapértelmezett értéket használja. |
+   | **Logikai egység neve** | No | <*logikai egység neve*> | A gazdagéptől kérésre megadott logikai egység neve |
+   | **Engedélyezi az SSL használatát?** | No | Be vagy ki | A TLS titkosítás bekapcsolása vagy kikapcsolása. |
+   | **Ellenőrzi a gazdagép SSL-tanúsítványát?** | No | Be vagy ki | Kapcsolja be vagy kapcsolja ki a kiszolgáló tanúsítványának érvényesítését. |
    ||||
 
    Például:
@@ -380,8 +375,8 @@ Ha befejezi ezeket a lépéseket, használhatja a logikai alkalmazásban létreh
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Hidx neve** | Igen | <*HIDX-fájlnév*> | Válassza ki a használni kívánt 3270 HIDX-fájlt. |
-   | **Metódus neve** | Igen | <*metódus – név*> | Válassza ki a használni kívánt HIDX-fájl metódusát. Miután kiválasztott egy metódust, megjelenik az **új paraméterek hozzáadása** lista, ahol kiválaszthatja a metódussal használandó paramétereket. |
+   | **Hidx neve** | Yes | <*HIDX-fájlnév*> | Válassza ki a használni kívánt 3270 HIDX-fájlt. |
+   | **Metódus neve** | Yes | <*metódus – név*> | Válassza ki a használni kívánt HIDX-fájl metódusát. Miután kiválasztott egy metódust, megjelenik az **új paraméterek hozzáadása** lista, ahol kiválaszthatja a metódussal használandó paramétereket. |
    ||||
 
    Például:

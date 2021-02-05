@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b03db9632f5f47a7600c5b9037d16b1cff6ccf69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344249"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574974"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -67,7 +67,7 @@ A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra n
 
 Foglalásokat az Azure Portalon, API-kkal, a PowerShellben és a parancssori felületen vásárolhat. Ha készen áll a foglalás vásárlására, olvassa el az alábbi, az Ön által használt szolgáltatásokra vonatkozó cikkeket:
 
-- [APP SERVICE](prepay-app-service-isolated-stamp.md)
+- [APP SERVICE](prepay-app-service.md)
 - [Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md)
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)

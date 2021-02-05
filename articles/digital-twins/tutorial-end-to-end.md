@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684005"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575805"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -401,18 +401,15 @@ Itt látható az oktatóanyagban kiépített forgatókönyv áttekintése.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
+Az oktatóanyag elvégzése után kiválaszthatja, hogy mely erőforrásokat szeretné eltávolítani, attól függően, hogy mit szeretne tenni.
 
-A [Azure Cloud Shell](https://shell.azure.com)használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot; Az Azure Digital Twins-példány; az IoT hub és a hub-eszköz regisztrációja; az Event Grid-témakör és a hozzá tartozó előfizetések; és a Azure Functions alkalmazást, beleértve a függvényeket és a hozzájuk kapcsolódó erőforrásokat, például a tárolót.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
+* **Ha továbbra is az ebben a cikkben beállított Azure Digital Twins-példányt szeretné használni, de a modell, az ikrek és a kapcsolatok némelyikének vagy mindegyikének törlésével** törölheti az eltávolítani kívánt elemeket az [Azure Cloud Shell](https://shell.azure.com) ablakban található az [DT](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI-parancsokkal.
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    Ez a beállítás nem távolítja el az oktatóanyagban létrehozott többi Azure-erőforrást (IoT Hub, Azure Functions alkalmazást stb.). Ezeket egyenként törölheti az egyes erőforrástípusok számára megfelelő [DT-parancsok](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) használatával.
 
-Végezetül törölje a helyi gépre letöltött Project Sample mappát.
+Érdemes törölni a Project mappát is a helyi gépről.
 
 ## <a name="next-steps"></a>Következő lépések
 

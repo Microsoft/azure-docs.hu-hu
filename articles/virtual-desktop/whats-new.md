@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258795"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575313"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -56,7 +56,7 @@ A Azure Resource Manager beágyazott sablonban a networkSecurityGroupRules alap�
 
 Megjelent a FSLogix, a 2009-es verzió HF_01 (2.9.7654.46150) az előző kiadásban felmerülő problémák megoldásához (2.9.7621.30127). Javasoljuk, hogy a lehető leghamarabb állítsa le az előző verziót, és frissítse a FSLogix.
 
-További információkért tekintse [meg a FSLogix újdonságai](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)című cikk kibocsátási megjegyzéseit.
+További információkért tekintse [meg a FSLogix újdonságai](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150)című cikk kibocsátási megjegyzéseit.
 
 ### <a name="azure-portal-experience-improvements"></a>Azure Portal a tapasztalatok fejlesztése
 

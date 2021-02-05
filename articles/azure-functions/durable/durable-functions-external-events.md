@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti a külső eseményeket a Azure Functi
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87014939"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576329"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Külső események Durable Functionsban való feldolgozása (Azure Functions)
 
@@ -20,7 +20,7 @@ A Orchestrator függvények megvárhatják és megfigyelheti a külső eseménye
 
 ## <a name="wait-for-events"></a>Várakozás az eseményekre
 
-A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net), `waitForExternalEvent` (JavaScript) és `wait_for_external_event` (Python) metódusok a [hangvezérelt eseményindítóhoz kötés](durable-functions-bindings.md#orchestration-trigger) lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
+A [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.net), `waitForExternalEvent` (JavaScript) és `wait_for_external_event` (Python) metódusok a [hangvezérelt eseményindítóhoz kötés](durable-functions-bindings.md#orchestration-trigger) lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,14 +230,14 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>Események küldése
 
-A [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.net) vagy a `raiseEventAsync` (JavaScript) metódus használatával külső eseményt küldhet egy előkészítési folyamatba. Ezeket a metódusokat a koordináló [ügyfél](durable-functions-bindings.md#orchestration-client) kötése teszi elérhetővé. A beépített [Event http API](durable-functions-http-api.md#raise-event) -t is használhatja, hogy külső eseményt küldjön egy előkészítési folyamatnak.
+A [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.net) vagy a `raiseEventAsync` (JavaScript) metódus használatával külső eseményt küldhet egy előkészítési folyamatba. Ezeket a metódusokat a koordináló [ügyfél](durable-functions-bindings.md#orchestration-client) kötése teszi elérhetővé. A beépített [Event http API](durable-functions-http-api.md#raise-event) -t is használhatja, hogy külső eseményt küldjön egy előkészítési folyamatnak.
 
-A kiváltott események közé tartozik egy *példány-azonosító*, egy *EventName*és egy *eventData* paraméterként. A Orchestrator függvények ezeket az eseményeket a `WaitForExternalEvent` (.net) vagy `waitForExternalEvent` (JavaScript) API-k használatával kezelik. A *eventName* meg kell egyeznie a küldő és a fogadó végponttal, hogy az esemény feldolgozható legyen. Az eseménynek is JSON-szerializálható kell lennie.
+A kiváltott események közé tartozik egy *példány-azonosító*, egy *EventName* és egy *eventData* paraméterként. A Orchestrator függvények ezeket az eseményeket a `WaitForExternalEvent` (.net) vagy `waitForExternalEvent` (JavaScript) API-k használatával kezelik. A *eventName* meg kell egyeznie a küldő és a fogadó végponttal, hogy az esemény feldolgozható legyen. Az eseménynek is JSON-szerializálható kell lennie.
 
 Belsőleg az "esemény emelése" mechanizmusok sorba helyezni egy üzenetet, amely a Waiting Orchestrator függvény által beolvasott üzenetbe kerül. Ha a példány nem várakozik a megadott *esemény nevére,* a rendszer hozzáadja az eseményt a memóriában tárolt várólistához. Ha az *esemény neve* később megkezdi a figyelést, akkor az esemény üzeneteinek várólistáját fogja ellenőriznie.
 
 > [!NOTE]
-> Ha nincs a megadott *példány-azonosítóval*rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.
+> Ha nincs a megadott *példány-azonosítóval* rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.
 
 Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a "jóváhagyás" eseményt küld egy Orchestrator függvény példányára. Az előkészítési példány azonosítója az üzenetsor-üzenet törzsében található.
 
@@ -283,7 +283,7 @@ async def main(instance_id:str, starter: str) -> func.HttpResponse:
 Belsőleg, `RaiseEventAsync` (.net), `raiseEvent` (JavaScript) vagy `raise_event` (Python) enqueues egy üzenetet, amely a Waiting Orchestrator függvény által beolvasott üzenetbe kerül. Ha a példány nem várakozik a megadott *esemény nevére,* a rendszer hozzáadja az eseményt a memóriában tárolt várólistához. Ha az *esemény neve* később megkezdi a figyelést, akkor az esemény üzeneteinek várólistáját fogja ellenőriznie.
 
 > [!NOTE]
-> Ha nincs a megadott *példány-azonosítóval*rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.
+> Ha nincs a megadott *példány-azonosítóval* rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.
 
 ### <a name="http"></a>HTTP
 
@@ -296,9 +296,9 @@ Content-Type: application/json
 "true"
 ```
 
-Ebben az esetben a példány azonosítója a *MyInstanceId*hardcoded.
+Ebben az esetben a példány azonosítója a *MyInstanceId* hardcoded.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudnivalók a hibakezelés megvalósításáról](durable-functions-error-handling.md)

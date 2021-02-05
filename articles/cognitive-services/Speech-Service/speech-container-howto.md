@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703326"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575788"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-tárolók telepítése és futtatása a Speech Service API-khoz 
 
@@ -41,10 +41,10 @@ A Speech-tárolókkal az ügyfelek beszédalapú alkalmazások architektúrájá
 
 | Tároló | Funkciók | Legutóbbi |
 |--|--|--|
-| Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.7.0 |
-| Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.7.0 |
-| Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.9.0 |
-| Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.9.0 |
+| Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.9.0 |
+| Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.9.0 |
+| Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.11.0 |
+| Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.11.0 |
 | Beszédfelismerési Nyelvfelismerés | A hangfájlokban elhangzott nyelv észlelése. | 1.0 |
 | Neurális szöveg – beszéd | A mély neurális hálózati technológiával természetes hangú beszédre alakítja át a szöveget, ami lehetővé teszi a természetes szintetizált beszédek használatát. | 1.3.0 |
 
@@ -316,6 +316,28 @@ A parancs a következőket hajtja végre:
 > [!NOTE]
 > A tárolók támogatják a tömörített hangbevitelt a Speech SDK-hoz a GStreamer használatával.
 > A GStreamer tárolóban történő telepítéséhez kövesse a Linux-utasítások a GStreamer-ben című témakörben található, [a SPEECH SDK-val való tömörítéshez használt kodeket](how-to-use-codec-compressed-audio-input-streams.md).
+
+#### <a name="diarization-on-the-speech-to-text-output"></a>Diarization a beszéd-szöveg kimenetre
+A Diarization alapértelmezés szerint engedélyezve van. Ha diarization szeretne kapni a válaszban, használja a következőt: `diarize_speech_config.set_service_property` .
+
+1. Adja meg a kimeneti formátum kifejezést a következőre: `Detailed` .
+2. Állítsa be a diarization módját. A támogatott módok a `Identity` és a `Anonymous` .
+```python
+diarize_speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Format',
+    value='Detailed',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+
+diarize_speech_config.set_service_property(
+    name='speechcontext-phraseDetection.speakerDiarization.mode',
+    value='Identity',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+> [!NOTE]
+> Az "Identity" mód a következőt adja vissza: `"SpeakerId": "Customer"` vagy `"SpeakerId": "Agent"` .
+> A "névtelen" mód a következőt adja vissza: `"SpeakerId": "Speaker 1"` vagy `"SpeakerId": "Speaker 2"`
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Az érzelmek elemzése a beszédfelismerési kimenetre 
@@ -761,7 +783,7 @@ Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telep
 > [!IMPORTANT]
 >  Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [tárolók konfigurálásának](speech-container-configuration.md) áttekintése konfigurációs beállításokhoz
 * Ismerje meg, hogyan [használhatja a Speech Service-tárolókat a Kubernetes és a Helm használatával](speech-container-howto-on-premises.md)

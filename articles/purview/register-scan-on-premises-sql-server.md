@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 86942f509ab067a53c47b5132c451f0585760050
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: b5f4218cfcd5f9ccfbe43efac46e2f70fdc30905
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549643"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574957"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Helyszíni SQL Server-kiszolgáló regisztrálása és vizsgálata
 
@@ -67,7 +67,7 @@ Ha azt tervezi, hogy meglévő kiszolgáló-rendszergazdai (SA) felhasználót h
 Ha új bejelentkezési azonosítót szeretne létrehozni, és a felhasználót szeretné ellenőrizni az SQL Servert, kövesse az alábbi lépéseket:
 
 > [!Note]
-    > Az alábbi lépéseket az [itt](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)megadott kóddal végezheti el.
+   > Az alábbi lépéseket az [itt](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql) megadott kóddal hajthatja végre.
 
 1. Navigáljon SQL Server Management Studio (SSMS), kapcsolódjon a kiszolgálóhoz, lépjen a Biztonság elemre, kattintson a jobb gombbal a bejelentkezés elemre, és hozzon létre új bejelentkezést. Győződjön meg arról, hogy az SQL-hitelesítés lehetőséget választotta.
 

@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736221"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573364"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>A Azure App Service költségeinek megtervezése és kezelése
 
@@ -125,7 +125,7 @@ Ha azt tervezi, hogy egy vagy több évre vonatkozóan ismert minimális számú
 
 A fenntartott példány díjszabása az előfizetés megfelelő példányaira vonatkozik, a fenntartott példányok számáig. A fenntartott példányok számlázási anyagok, és nem meghatározott számítási példányokhoz vannak kötve. Ha kevesebb példányt futtat, mint amennyit a foglalási időszakban bármikor lefoglal, a fenntartott példányok továbbra is fizetnie kell. Ha a foglalási időszak során bármely időpontban fenntartott több példányt futtat, akkor a további példányok esetében a szokásosan esedékes költségeket kell megfizetnie.
 
-Az **elkülönített** csomag (App Service környezet) a kedvezményes díjszabás szerint 1 és 3 éves foglalást is támogat. További információ: [a foglalási kedvezmények Azure app Service izolált bélyegzők](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md)esetében.
+Az **elkülönített** csomag (App Service környezet) a kedvezményes díjszabás szerint 1 és 3 éves foglalást is támogat. További információ: [a foglalási kedvezmények a Azure app Servicera vonatkoznak](../cost-management-billing/reservations/reservation-discount-app-service.md).
 
 ## <a name="monitor-costs"></a>Költségek figyelése
 
@@ -163,7 +163,7 @@ A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgálta
 
 A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ arról, hogyan működik az árképzés az Azure Storage-ban. Lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

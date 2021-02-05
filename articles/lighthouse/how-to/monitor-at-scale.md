@@ -1,14 +1,14 @@
 ---
 title: A delegált erőforrások nagy léptékű figyelése
 description: Megtudhatja, hogyan használhatja hatékonyan a Azure Monitor-naplókat a felügyelt ügyfél-bérlők méretezhető módjában.
-ms.date: 02/01/2021
+ms.date: 02/02/2021
 ms.topic: how-to
-ms.openlocfilehash: b214f63fba9a5d13aac0f4bf86ce0810f16f0c9c
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509469"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575906"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>A delegált erőforrások nagy léptékű figyelése
 
@@ -49,9 +49,9 @@ A szabályzatok üzembe helyezése után a rendszer az egyes ügyfelek bérlői 
 
 A delegált előfizetések [riasztásait](../../azure-monitor/platform/alerts-overview.md) megtekintheti a kezelt ügyfelek bérlői számára.
 
-Ha több ügyfélnél automatikusan szeretné frissíteni a riasztásokat, használjon [Azure Resource Graph](../../governance/resource-graph/overview.md) -lekérdezést a riasztások szűréséhez. A lekérdezést rögzítheti az irányítópulton, és kiválaszthatja az összes megfelelő ügyfelet és előfizetést.
+A kezelő Bérlővel a Azure Portal vagy API-k és felügyeleti eszközök segítségével [hozhatja létre, tekintheti meg és kezelheti a tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-activity-log.md) .
 
-A következő példában a lekérdezés a 0. és 1. súlyossági szintű riasztást jeleníti meg, 60 percenként frissül.
+Ha több ügyfélnél automatikusan szeretné frissíteni a riasztásokat, használjon [Azure Resource Graph](../../governance/resource-graph/overview.md) -lekérdezést a riasztások szűréséhez. A lekérdezést rögzítheti az irányítópulton, és kiválaszthatja az összes megfelelő ügyfelet és előfizetést. Az alábbi lekérdezés például a 0 és 1 súlyossági szintű riasztást jeleníti meg, 60 percenként frissül.
 
 ```kusto
 alertsmanagementresources

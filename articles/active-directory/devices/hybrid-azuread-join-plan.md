@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435757"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573330"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -81,6 +81,8 @@ Első tervezési lépésként tekintse át a környezetet, és állapítsa meg, 
 - A hibrid Azure AD JOIN nem támogatott a Windows rendszerű, a hitelesítő adatok központi vagy felhasználói profiljának központi vagy kötelező profil használata esetén.
 
 - A Server Core operációs rendszer nem támogatja semmilyen típusú eszköz regisztrációját.
+
+- A Felhasználóáttelepítő (USMT) nem működik az eszköz regisztrálásával.  
 
 ### <a name="os-imaging-considerations"></a>OPERÁCIÓSRENDSZER-lemezképek szempontjai
 - Ha a rendszer-előkészítő eszköz (Sysprep) szolgáltatásra támaszkodik, és ha a telepítés **előtt Windows 10 1809** rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem olyan eszközről származik, amely már regisztrálva van az Azure ad-ben hibrid Azure ad-csatlakozásként.
@@ -164,7 +166,7 @@ Előfordulhat, hogy a helyszíni AD-felhasználók UPN-felhasználónevei eltér
 
 Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Windows 10 hibrid Azure AD JOIN szolgáltatásban
 
-| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Leírás |
+| A helyszíni AD UPN típusa | Alkalmazási tartomány típusa | Windows 10 verzió | Description |
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |

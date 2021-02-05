@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 222257f5045984a71c2aee9de83b5fa420306728
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223389"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573415"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow összekötése IT-szolgáltatásmenedzsmenti csatoló
 
@@ -123,7 +123,7 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást.
    | --- | --- |
    | **Kapcsolat neve**   | Adja meg annak a ServiceNow-példánynak a nevét, amelyhez csatlakozni kíván a ITSMC. Ezt a nevet később Log Analytics a ITSM-munkaelemek konfigurálásakor és részletes elemzések megtekintésekor is használhatja. |
    | **Partner típusa**   | Válassza a **ServiceNow** lehetőséget. |
-   | **Kiszolgáló URL-címe**   | Adja meg annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek egy támogatott SaaS-verzióra kell mutatnia, az utótag *. servicenow.com* (például: https://XXXXX.service-now.com/) .|
+   | **Kiszolgáló URL-címe**   | Adja meg annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek egy támogatott SaaS-verzióra kell mutatnia, az utótag *. servicenow.com* (például `https://XXXXX.service-now.com/` ).|
    | **Felhasználónév**   | Adja meg a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást.|
    | **Jelszó**   | Adja meg a felhasználónévhez tartozó jelszót. **Megjegyzés**: a Felhasználónév és a jelszó csak hitelesítési tokenek létrehozásához használatos. Ezeket a rendszer nem tárolja bárhol a ITSMC szolgáltatáson belül.  |
    | **Ügyfél-azonosító**   | Adja meg a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót. Az ügyfél-azonosító és a titkos kód létrehozásával kapcsolatos további információkért tekintse meg a [OAuth beállítása](https://old.wiki/index.php/OAuth_Setup)című témakört. |

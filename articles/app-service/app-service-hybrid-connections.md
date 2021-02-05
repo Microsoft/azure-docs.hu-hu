@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre és használhat hibrid kapcsolato
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 06/08/2020
+ms.date: 02/04/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 16f6a0660fa9aa20f636ee412f3f337bd5dea9b5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825973"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575991"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai
 
@@ -42,7 +42,7 @@ A Hibrid kapcsolatok képesség számos előnnyel jár, többek között:
 - Általában nincs szükség tűzfal-lyukakra. A kapcsolatok mindegyike kimenő a szabványos webes portoknál.
 - Mivel a szolgáltatás hálózati szintű, az alkalmazás által használt nyelv és a végpont által használt technológia egyaránt független.
 - A szolgáltatás használatával több hálózatban is biztosítható a hozzáférés egyetlen alkalmazásból. 
-- A Windows natív alkalmazásaiban a GA támogatja, és a Linux-alkalmazások esetében előzetes verzióban érhető el. A Windows Container apps esetében nem támogatott.
+- Ez a Windows-alkalmazások és a Linux-alkalmazások esetében is támogatott. A Windows Container apps esetében nem támogatott.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>A Hibrid kapcsolatokkal nem rendelkező dolgok ###
 
@@ -134,7 +134,7 @@ Egy vagy több Hibrid kapcsolatok hozzáadása a HCM-hez:
 1. Válassza ki azt a Hibrid kapcsolatok, amelyre a HCM-t továbbítani kívánja.
 ![Képernyőkép a Hibrid kapcsolatokról][9]
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ekkor megjelenik a hozzáadott Hibrid kapcsolatok. A részletek megtekintéséhez a konfigurált hibrid kapcsolat lehetőséget is választhatja.
 

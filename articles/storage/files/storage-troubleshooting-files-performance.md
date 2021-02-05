@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 729c3e46cf329c525ce9204b26d4c6aefa04c89d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632495"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574431"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -34,14 +34,28 @@ Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és hasz
 
 1. Metrikaként válassza a **tranzakciók** lehetőséget.
 
-1. Adjon hozzá egy szűrőt a **Válasz típusához**, és ellenőrizze, hogy a kérelmek rendelkeznek-e a következő válasz kódok valamelyikével:
-   * **SuccessWithThrottling**: kiszolgálói üzenetblokk (SMB) esetén
-   * **ClientThrottlingError**: Rest esetén
+1. Adjon hozzá egy szűrőt a **Válasz típusához**, és ellenőrizze, hogy van-e a kérelmek szabályozása. 
 
-   ![Képernyőkép a prémium szintű fájlmegosztás mérőszámok lehetőségeiről, amely a "Response type" tulajdonság szűrőjét jeleníti meg.](media/storage-troubleshooting-premium-fileshares/metrics.png)
+    Szabványos fájlmegosztás esetén a rendszer a következő típusú válaszokat naplózza, ha a rendszer leszabályozza a kérelmet:
 
-   > [!NOTE]
-   > A riasztások fogadásához tekintse meg a cikk későbbi, ["a riasztások létrehozása, ha a fájlmegosztás szabályozása"](#how-to-create-an-alert-if-a-file-share-is-throttled) című szakaszát.
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    A prémium szintű fájlmegosztás esetén a rendszer a következő típusú válaszokat naplózza, ha a kérelem szabályozása megtörténik:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
+
+    Ha többet szeretne megtudni az egyes válaszok típusairól, tekintse meg a [metrikus dimenziókat](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+
+    ![Képernyőkép a prémium szintű fájlmegosztás mérőszámok lehetőségeiről, amely a "Response type" tulajdonság szűrőjét jeleníti meg.](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+    > [!NOTE]
+    > A riasztások fogadásához tekintse meg a cikk későbbi, ["a riasztások létrehozása, ha a fájlmegosztás szabályozása"](#how-to-create-an-alert-if-a-file-share-is-throttled) című szakaszát.
 
 ### <a name="solution"></a>Megoldás
 
@@ -219,48 +233,63 @@ A megerősítéshez használhatja az Azure-mérőszámokat a portálon –
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Riasztás létrehozása a fájlmegosztás szabályozása esetén
 
-1. A Azure Portal nyissa meg a Storage-fiókját.
-1. A **figyelés** szakaszban válassza a **riasztások** lehetőséget, majd válassza az **új riasztási szabály** lehetőséget.
-1. Válassza az **erőforrás szerkesztése** lehetőséget, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve *contoso*, válassza ki a contoso/fájl erőforrást.
-1. Feltétel hozzáadásához válassza a **feltétel kiválasztása** lehetőséget.
-1. A Storage-fiók által támogatott jelek listájában válassza ki a **tranzakciók** metrikáját.
-1. A **jel logikai beállítása** ablaktábla **dimenzió neve** legördülő listájában válassza a **Válasz típusa** lehetőséget.
-1. A **dimenzió értékei** legördülő listában válassza a **SuccessWithThrottling** (SMB esetében) vagy a **ClientThrottlingError** (REST) lehetőséget.
+1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
+2. A **figyelés** szakaszban kattintson a **riasztások** elemre, majd kattintson az **+ új riasztási szabály** elemre.
+3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve `contoso` , válassza ki az `contoso/file` erőforrást.
+4. Feltétel hozzáadásához kattintson a **feltétel hozzáadása** elemre.
+5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **tranzakciók** metrikáját.
+6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő listára, és válassza a **Válasz típusa** lehetőséget.
+7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki a megfelelő választ a fájlmegosztás számára.
+
+    A standard fájlmegosztás esetében válassza ki a következő válaszokat:
+
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    A prémium fájlmegosztás esetében válassza ki a következő válaszokat:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > Ha sem a **SuccessWithThrottling** , sem a **ClientThrottlingError** dimenzió értéke nem szerepel a felsorolásban, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzió értékének hozzáadásához a **dimenzióértékek** legördülő lista mellett válassza az **Egyéni érték hozzáadása** lehetőséget, adja meg a **SuccessWithThrottling** vagy a **ClientThrottlingError** értéket, majd kattintson **az OK gombra**, majd ismételje meg a 7. lépést.
+   > Ha a válaszok típusai nem szerepelnek a **dimenzió értékek** legördülő menüben, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzió értékeinek hozzáadásához a **dimenzióértékek** legördülő lista mellett válassza az **Egyéni érték hozzáadása** lehetőséget, adja meg a respone típusát (például **SuccessWithThrottling**), kattintson az **OK gombra**, majd ismételje meg ezeket a lépéseket a fájlmegosztás összes vonatkozó válaszának hozzáadásához.
 
-1. A **dimenzió neve** legördülő listában válassza a **fájlmegosztás** lehetőséget.
-1. A **dimenzió értékei** legördülő listában válassza ki azt a fájlmegosztást vagy megosztásokat, amelyekről riasztást szeretne kapni.
+8. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás** lehetőséget.
+9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
+
 
    > [!NOTE]
-   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetén. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, azt javasoljuk, hogy használjon egy fájlmegosztást a Storage-fiókon.
+   > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
 
-1. Adja meg a riasztási paramétereket a **küszöbérték**, az **operátor**, az **Összesítés részletessége** és **a kiértékelés gyakoriságának** megadásával, majd válassza a **kész** lehetőséget.
+10. Adja meg a **riasztási paramétereket** (a küszöbértéket, az operátort, az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
 
     > [!TIP]
-    > Ha statikus küszöbértéket használ, a metrikai diagram segítségével meghatározhatja az ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Ha dinamikus küszöbértéket használ, a metrika diagram a legutóbbi adatok alapján megjeleníti a számított küszöbértékeket.
+    > Ha statikus küszöbértéket használ, a metrikai diagram segíthet meghatározni egy ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Dinamikus küszöbérték használata esetén a metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
-1. Válassza a **műveleti csoport kiválasztása** lehetőséget, majd adjon hozzá egy műveleti csoportot (például e-mailt vagy SMS-t) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-1. Adja meg a riasztás részleteit, például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
-1. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
+11. Kattintson a **műveleti csoportok hozzáadása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Riasztások létrehozása, ha a prémium fájlmegosztás a szabályozás irányába közeledik
 
 1. A Azure Portal nyissa meg a Storage-fiókját.
-1. A **figyelés** szakaszban válassza a **riasztások** lehetőséget, majd válassza az **új riasztási szabály** lehetőséget.
-1. Válassza az **erőforrás szerkesztése** lehetőséget, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve *contoso*, válassza ki a contoso/fájl erőforrást.
-1. Feltétel hozzáadásához válassza a **feltétel kiválasztása** lehetőséget.
-1. A Storage-fiók által támogatott jelek listájában válassza ki a **kimenő** forgalom metrikáját.
+2. A **figyelés** szakaszban válassza a **riasztások** lehetőséget, majd válassza az **új riasztási szabály** lehetőséget.
+3. Válassza az **erőforrás szerkesztése** lehetőséget, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve *contoso*, válassza ki a contoso/fájl erőforrást.
+4. Feltétel hozzáadásához válassza a **feltétel kiválasztása** lehetőséget.
+5. A Storage-fiók által támogatott jelek listájában válassza ki a **kimenő** forgalom metrikáját.
 
    > [!NOTE]
    > Három külön riasztást kell létrehoznia, ha a bejövő, kimenő vagy tranzakciós értékek meghaladják a beállított küszöbértékeket. Ennek az az oka, hogy a riasztás csak akkor aktiválódik, ha az összes feltétel teljesül. Ha például az összes feltételt egy riasztásban helyezi el, akkor a rendszer csak akkor küld riasztást, ha a bejövő, a kimenő forgalom és a tranzakciók túllépik a küszöbértéket.
 
-1. Görgessen le. A **dimenzió neve** legördülő listában válassza a **fájlmegosztás** lehetőséget.
-1. A **dimenzió értékei** legördülő listában válassza ki azt a fájlmegosztást vagy megosztásokat, amelyekről riasztást szeretne kapni.
-1. Adja meg a riasztási paramétereket az **operátor**, a **küszöbérték**, az **Összesítés részletessége** és **a kiértékelési** legördülő lista értékeinek kiválasztásával, majd válassza a **kész** lehetőséget.
+6. Görgessen le. A **dimenzió neve** legördülő listában válassza a **fájlmegosztás** lehetőséget.
+7. A **dimenzió értékei** legördülő listában válassza ki azt a fájlmegosztást vagy megosztásokat, amelyekről riasztást szeretne kapni.
+8. Adja meg a riasztási paramétereket az **operátor**, a **küszöbérték**, az **Összesítés részletessége** és **a kiértékelési** legördülő lista értékeinek kiválasztásával, majd válassza a **kész** lehetőséget.
 
    A kimenő forgalom, a bejövő forgalom és a tranzakciók mérőszáma percenként van kifejezve, de a kimenő forgalom, a bejövő forgalom és az I/O másodpercenkénti száma kiépítve. Ezért ha például a kiépített kimenő forgalom 90 &nbsp; mebibytes másodpercenként (MIB/s), és azt szeretné, hogy a küszöbérték a &nbsp; kiépített kimenő forgalom 80 százalékát adja meg, válassza a következő riasztási paramétereket: 
    - **Küszöbérték**: *75497472* 
@@ -271,9 +300,9 @@ Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, t
    - **Összesítési részletesség**: *1 óra*
    - **Értékelés gyakorisága**: *1 óra*
 
-1. Válassza a **műveleti csoport kiválasztása** lehetőséget, majd adjon hozzá egy műveleti csoportot (például e-mailt vagy SMS-t) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új létrehozásával.
-1. Adja meg a riasztás részleteit, például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
-1. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
+9. Válassza a **műveleti csoportok hozzáadása** lehetőséget, majd adjon hozzá egy műveleti csoportot (például e-mailt vagy SMS-t) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új létrehozásával.
+10. Adja meg a riasztás részleteit, például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
+11. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
     > [!NOTE]
     > - Ha értesítést szeretne kapni arról, hogy a prémium szintű fájlmegosztás a *kiépített bejövő forgalom miatt* már a szabályozáshoz közeledik, kövesse az előző utasításokat, de a következő módosítással:
@@ -285,7 +314,7 @@ Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, t
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)  
 - [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Gyakori kérdések az Azure Files-szal kapcsolatban](storage-files-faq.md)

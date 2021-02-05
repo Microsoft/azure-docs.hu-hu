@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133562"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575466"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>A frissített Azure-beli számlázási fiók használatának első lépései
 
@@ -42,7 +42,7 @@ A fiók frissítésekor mindegyik előfizetéshez automatikusan létrejön egy s
 
 A számlázási profilok szerepkörei rendelkeznek a számlák és a fizetési módok megtekintéséhez és kezeléséhez szükséges engedéllyel. Ezeket a szerepköröket a számlák kifizetéséért felelős felhasználókhoz kell hozzárendelni, például a cég könyvelői csapatának tagjaihoz. További információkért lásd [a számlázási profil szerepköreit és azok feladatait](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks) ismertető cikket.
 
-A fiók frissítésekor minden olyan előfizetésben, amelyben engedélyt adott mások számára a [számlák megtekintésére](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice), a tulajdonosi, közreműködői, olvasói vagy számlázási olvasói Azure-szerepkörrel rendelkező felhasználók olvasói szerepkört kapnak a megfelelő számlázási profilhoz.
+A fiók frissítésekor minden olyan előfizetésben, amelyben engedélyt adott mások számára a [számlák megtekintésére](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice), a tulajdonosi, közreműködői, olvasói vagy számlázási olvasói Azure-szerepkörrel rendelkező felhasználók olvasói szerepkört kapnak a megfelelő számlázási profilhoz.
 
 ## <a name="invoice-sections"></a>Számlaszakaszok
 

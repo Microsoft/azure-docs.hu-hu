@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 48c6e1141a00635dd1fd82ef9053b2e77168e5e8
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 374a7dd37c23cdc8391485ec8f87f3427fc61ef1
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956297"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569651"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
@@ -15,11 +15,11 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     A központi telepítési sablon a peremhálózati eszköz üzembe helyezési jegyzékére hivatkozik. Tartalmaz néhány helyőrző értéket. A *. env* fájl tartalmazza a változók értékeit.
 1. Lépjen a *src/Cloud-to-Device-Console-app* mappába. Itt láthatja a *appsettings.js* fájlt, és néhány további fájlt:
 
-    * ***C2D-Console-app. csproj** _ – a Project fájl a Visual Studio Code-hoz.
-    _ ***operations.json** _ – azoknak a műveleteknek a listája, amelyeket futtatni kíván a program.
-    _ ***Program.cs** _ – a minta programkódja. Ez a kód:
+    * ***C2D-Console-app. csproj*** – a Project fájl a Visual Studio Code-hoz.
+    * ***operations.json*** – a program futtatásához használni kívánt műveletek listája.
+    * ***Program.cs*** – a minta programkódja. Ez a kód:
 
-        _ Betölti az alkalmazás beállításait.
+        * Betölti az alkalmazás beállításait.
         * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](../../../direct-methods.md)meghívásával.
         * Szünetelteti, hogy megvizsgálhatja a program kimenetét a **terminál** ablakban, és megvizsgálhatja a modul által a **kimeneti** ablakban generált eseményeket.
         * Közvetlen metódusokat hív meg az erőforrások törléséhez.
@@ -49,11 +49,11 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     
     ![IoT Hub-kapcsolatok karakterláncának beállítása](../../../media/quickstarts/set-iotconnection-string.png)
 
-> [!NOTE]
-> Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+    > [!NOTE]
+    > Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 
 1. Kattintson a jobb gombbal *az src/Edge/config/deployment.yolov3.amd64.js* elemre, és válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget. 
 
@@ -92,6 +92,11 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 
    ![Figyelés indítása](../../../media/quickstarts/start-monitoring-iothub-events.png) 
 
+> [!NOTE]
+> Előfordulhat, hogy a rendszer megkéri, hogy adjon meg egy beépített végponti információt a IoT Hub számára. Az információk lekéréséhez Azure Portalban navigáljon a IoT Hub, és keresse meg a **beépített végpontok** lehetőséget a bal oldali navigációs panelen. Kattintson ide, és az Event hub-kompatibilis **végpont** szakaszban keresse meg az **Event hub-kompatibilis végpontot** . Másolja ki és használja a szövegmezőben található szöveget. A végpont így fog kinézni:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 ### <a name="run-the-sample-program"></a>A minta program futtatása
 
 1. A hibakeresési munkamenet indításához válassza az F5 billentyűt. A **terminál** ablakban láthatók a kinyomtatott üzenetek.

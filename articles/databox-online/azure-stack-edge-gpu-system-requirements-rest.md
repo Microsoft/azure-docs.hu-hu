@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426224"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575855"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge blob Storage-követelmények
 
@@ -148,6 +148,6 @@ AccountKey=mykey;
 EndpointSuffix=<serial no. of the device>.microsoftdatabox.com
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felkészülés a Azure Stack Edge Pro GPU-val való üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md)

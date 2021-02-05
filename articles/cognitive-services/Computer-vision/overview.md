@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033289"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575940"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -32,7 +32,7 @@ Létrehozhat Computer Vision-alkalmazásokat egy [ügyféloldali KÓDTÁR SDK](.
 
 ## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
-A Computer Vision az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) képességeket is tartalmazza. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből és a dokumentumokból. A legújabb modelleket használja, és számos felületen és háttérbeli szöveggel működik együtt. Ilyenek például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. A két OCR API támogatja a nyomtatott szövegek [több nyelven](./language-support.md)való kinyerését. [A kezdéshez kövesse az első](./quickstarts-sdk/client-library.md) lépéseket.
+A Computer Vision az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md) képességeket is tartalmazza. Az új olvasási API használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből és a dokumentumokból. Mély tanuláson alapuló modelleket használ, és számos felületen és háttérbeli szöveggel működik együtt. Ilyenek például az üzleti dokumentumok, a számlák, a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Az OCR API-k [több nyelven](./language-support.md)is támogatják a nyomtatott szöveg kinyerését. [A kezdéshez kövesse az első](./quickstarts-sdk/client-library.md) lépéseket.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision a digitális eszközök kezeléséhez
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 650ce0cc9586118b30593767c6a3ddb92f494ac3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972648"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569601"
 ---
 ### <a name="standard-and-neural-voices"></a>Standard és neurális hangok
 
@@ -67,3 +67,14 @@ Ha egyéni hangbetűkészletet hozott létre, használja a létrehozott végpont
 | Nyugat-Európa | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | USA nyugati régiója | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
 | USA 2. nyugati régiója | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+
+### <a name="custom-neural-voice"></a>Egyéni neurális hang
+
+Az alábbi táblázat az egyéni neurális hangfunkciók regionális támogatását ismerteti.
+
+| Szolgáltatás | Támogatott régiók |
+|---|---|
+| Hangmodell-üzemeltetés | USA keleti régiója, USA 2. nyugati régiója, USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, Kelet-Ausztrália |
+| Valós idejű karakterek | USA keleti régiója, USA 2. nyugati régiója, USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, Kelet-Ausztrália |
+| Hosszú hangjelek | USA keleti régiója, Nyugat-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia, Közép-India |
+| Egyéni neurális képzés | USA keleti régiója, Egyesült Királyság déli régiója |

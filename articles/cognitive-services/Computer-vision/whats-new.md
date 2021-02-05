@@ -10,16 +10,31 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: ec340e3371b0fe337354006b1284a21420a11f3a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99490877"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573636"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
+
+## <a name="february-2021"></a>Február 2021
+
+### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Az API v 3.2 nyilvános előzetes verziója az OCR-támogatással 73 nyelven
+A Computer Vision Read API v 3.2 nyilvános előzetes verziója a következő funkciókat tartalmazza:
+* OCR összesen [73 nyelven](./language-support.md#optical-character-recognition-ocr) , beleértve az egyszerűsített és a hagyományos kínai, Japán, Koreai és jelentős latin nyelveket.
+* Adja meg, hogy a szöveges vonalakat a jobb oldali és legfelső (alapértelmezett) sorrendben, vagy egy természetes olvasási sorrendben kívánja-e kijelölni.
+* Az egyes szöveges sorok kimenete esetén jelezze, hogy a kézírás stílusa vagy nem a megbízhatósági pontszáma (csak latin nyelvek esetén).
+* Többoldalas dokumentumok esetén csak a kijelölt lapok vagy az oldal tartománya számára kell szöveget kinyerni.
+
+További információért tekintse meg az [OLVASÁSI API áttekintése](concept-recognizing-text.md) című témakört.
+
+> [!div class="nextstepaction"]
+> [A Read API v 3.2 nyilvános előzetes verziójának használata](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+
 
 ## <a name="january-2021"></a>2021. január
 

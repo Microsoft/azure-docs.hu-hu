@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 552e5c2411889ee7f07265eb1cc35d98aed4d7c1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997222"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Oktatóanyag: az M-Files integráció Azure Active Directory
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
     >[!NOTE]
     >Kövesse a következő lépéseket, ha az SSO-t szeretné konfigurálni az M-file Desktop-alkalmazáshoz. További lépések nem szükségesek, ha csak SSO-t szeretne konfigurálni az M-Files webes verzióhoz.  
 
-1. A következő lépésekkel konfigurálhatja az M-file Desktop alkalmazást az egyszeri bejelentkezés az Azure AD-vel való engedélyezéséhez. Az M-Files letöltéséhez nyissa meg az [m-files letöltési](https://www.m-files.com/en/download-latest-version) oldalát.
+1. A következő lépésekkel konfigurálhatja az M-file Desktop alkalmazást az egyszeri bejelentkezés az Azure AD-vel való engedélyezéséhez. Az M-Files letöltéséhez nyissa meg az [m-files letöltési](https://www.m-files.com/customers/product-downloads/download-update-links/) oldalát.
 
 1. Nyissa meg az **M-Files asztal beállítások** ablakát. Ezután kattintson a **Hozzáadás** gombra.
    
@@ -176,7 +176,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

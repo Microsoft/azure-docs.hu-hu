@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 60a210c6c336c1b820015304e8ab53bc894c17bf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792491"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575228"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>App Service példányok figyelése állapot-ellenőrzés használatával
 
 ![Állapot-ellenőrzési hiba][2]
 
-Ez a cikk az App Service példányok figyelésére használja a Azure Portal állapot-ellenőrzését. Az állapot-ellenőrzés a nem kifogástalan állapotú példányok eltávolításával növeli az alkalmazás rendelkezésre állását. Az [app Service-tervet](/overview-hosting-plans) két vagy több példányra kell méretezni az állapot-ellenőrzési szolgáltatás használatához. Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
+Ez a cikk az App Service példányok figyelésére használja a Azure Portal állapot-ellenőrzését. Az állapot-ellenőrzés a nem kifogástalan állapotú példányok eltávolításával növeli az alkalmazás rendelkezésre állását. Az [app Service-tervet](/azure/app-service/overview-hosting-plans) két vagy több példányra kell méretezni az állapot-ellenőrzési szolgáltatás használatához. Az állapot-ellenőrzési útvonalnak ellenőriznie kell az alkalmazás kritikus összetevőit. Ha például az alkalmazás egy adatbázistól és egy üzenetkezelő rendszertől függ, az állapot-ellenőrzési végpontnak csatlakoznia kell ezekhez az összetevőkhöz. Ha az alkalmazás nem tud csatlakozni egy kritikus összetevőhöz, az elérési útnak egy 500 szintű választ kell visszaadnia, amely azt jelzi, hogy az alkalmazás nem kifogástalan állapotú.
 
 ## <a name="what-app-service-does-with-health-checks"></a>App Service az állapot-ellenőrzésekkel
 
@@ -48,7 +48,7 @@ Ez a cikk az App Service példányok figyelésére használja a Azure Portal ál
 
 Az állapot-ellenőrzési beállítások konfigurálása mellett a következő [Alkalmazásbeállítások](configure-common.md)is megadhatók:
 
-| Alkalmazás-beállítás neve | Megengedett értékek | Leírás |
+| Alkalmazás-beállítás neve | Megengedett értékek | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | A pingelési hibák maximális száma. Ha például a értékre van állítva `2` , a rendszer eltávolítja a példányokat a `2` sikertelen pingelések után. Emellett, ha a vertikális felskálázást végzi, App Service Pingeli az állapot-ellenőrzési útvonalat, hogy az új példányok készen álljanak. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Ha el szeretné kerülni, hogy az egészséges példányok ne legyenek túlterhelve, a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag négy példányra van méretezve, és a három nem kifogástalan állapotú, akkor a legtöbb kettő kizárja. A másik két példány (egy kifogástalan és egy sérült) továbbra is fogadja a kérelmeket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. A viselkedés felülbírálásához állítsa a és a közötti értéket `0` `100` . A magasabb érték azt jelenti, hogy A rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50). |
@@ -63,7 +63,7 @@ A nagyméretű nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniü
 
 Az alkalmazás állapot-ellenőrzési útvonalának megadása után Azure Monitor használatával figyelheti a webhely állapotát. A portál **állapot-ellenőrzési** paneljén kattintson a felső eszköztár **metrikái** elemére. Ekkor megnyílik egy új panel, amelyen megtekintheti a hely korábbi állapotának állapotát, és létrehozhat egy új riasztási szabályt. A helyek figyelésével kapcsolatos további információkért [tekintse meg a következő útmutatót: Azure monitor](web-sites-monitor.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

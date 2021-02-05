@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232386"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575754"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -241,7 +241,7 @@ Az alkalmazás üzleti logikája ezt a lépést fogja megállapítani, néhány 
 * A hívó ügyfél hitelesítési állapotának ellenőrzése a használatával `appidacr` – nem lehet 0, ha a nyilvános ügyfelek nem hívhatják meg az API-t.
 * Tekintse át a korábbi `nonce` jogcímek listáját, és ellenőrizze, hogy a jogkivonat nem lett-e újrajátszva.
 * Győződjön meg arról, hogy az `tid` megegyezik egy olyan Bérlővel, amely számára engedélyezett az API meghívása.
-* A `acr` jogcím használatával ellenőrizze, hogy a felhasználó végezte-e az MFA-t. Ezt a [feltételes hozzáférés](../conditional-access/overview.md)használatával kell kikényszeríteni.
+* A `amr` jogcím használatával ellenőrizze, hogy a felhasználó végezte-e az MFA-t. Ezt a [feltételes hozzáférés](../conditional-access/overview.md)használatával kell kikényszeríteni.
 * Ha a `roles` `groups` hozzáférési jogkivonatban kérte a vagy jogcímeket, ellenőrizze, hogy a felhasználó jogosult-e a művelet végrehajtására.
   * Az implicit folyamattal lekért tokenek esetében valószínűleg le kell kérdezni az ilyen [adatMicrosoft Grapht](https://developer.microsoft.com/graph/) , mivel gyakran túl nagy ahhoz, hogy illeszkedjen a tokenhez.
 
@@ -294,7 +294,7 @@ A *nem jelszó alapú* bejelentkezés olyan esetben, amikor a felhasználó nem 
 
 Az elsődleges frissítési tokenekkel kapcsolatos további részletekért tekintse meg az [elsődleges frissítési jogkivonatokat](../devices/concept-primary-refresh-token.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [ `id_tokens` Az Azure ad-](id-tokens.md)t.
 * További információ az engedélyekről és a hozzájárulásról ( [1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).

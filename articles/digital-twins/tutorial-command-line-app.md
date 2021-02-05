@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050238"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576244"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -133,7 +133,7 @@ Content-Length: 223
 Content-Type: application/json; charset=utf-8
 ```
 
-### <a name="create-digital-twins"></a>Digitális ikrek létrehozása
+### <a name="create-digital-twins"></a>Digitális ikerpéldányok létrehozása
 
 Most, hogy egyes modellek fel lettek töltve az Azure Digital Twins-példányba, létrehozhat [**digitális ikreket**](concepts-twins-graph.md) a modell definíciói alapján. A digitális ikrek az Ön üzleti környezetében lévő entitásokat képviselik – például az érzékelők egy farmon, egy épületben lévő helyiségek vagy egy autóban található fények. 
 
@@ -274,14 +274,17 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
-* Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.
+Az oktatóanyag elvégzése után kiválaszthatja, hogy mely erőforrásokat szeretné eltávolítani, attól függően, hogy mit szeretne tenni.
+
+* **Ha azt tervezi, hogy továbbra is a következő oktatóanyagot** használja, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást a következő oktatóanyaghoz
+
+* **Ha továbbra is az Azure Digital Twins-példányt szeretné használni, de törli az összes modelljét, ikreket és kapcsolatát**, a minta alkalmazás és a parancsok segítségével `DeleteAllTwins` `DeleteAllModels` törölheti a példányban található ikreket és modelleket. Ez a következő oktatóanyaghoz biztosít tiszta lappal.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Végezetül törölje a helyi gépre letöltött Project Sample mappát.
+Érdemes törölni a Project mappát is a helyi gépről.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549135"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576312"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -24,7 +24,7 @@ Ez a cikk a készletek és a készlet csomópontjain előforduló háttérben v�
 
 ### <a name="resize-timeout-or-failure"></a>Időtúllépés vagy hiba átméretezése
 
-Új készlet létrehozásakor vagy egy meglévő készlet átméretezése esetén meg kell adnia a csomópontok célként megadott számát. A létrehozási vagy átméretezési művelet azonnal befejeződik, de az új csomópontok tényleges kiosztása vagy a meglévő csomópontok eltávolítása több percet is igénybe vehet. A [Létrehozás](/rest/api/batchservice/pool/add) vagy az [átméretezés](/rest/api/batchservice/pool/resize) API-ban az átméretezési időtúllépést kell megadnia. Ha a Batch nem tudja megszerezni a csomópontok megcélzott számát az átméretezési időkorlát időtartama alatt, a készlet stabil állapotba kerül, és átméretezési hibákat jelez.
+Új készlet létrehozásakor vagy egy meglévő készlet átméretezése esetén meg kell adnia a csomópontok célként megadott számát. A létrehozási vagy átméretezési művelet azonnal befejeződik, de az új csomópontok tényleges kiosztása vagy a meglévő csomópontok eltávolítása több percet is igénybe vehet. Megadhatja az átméretezési időtúllépést a [create](/rest/api/batchservice/pool/add) vagy az [lakik](/rest/api/batchservice/pool/resize) API-ban. Ha a Batch nem tudja megszerezni a csomópontok megcélzott számát az átméretezési időkorlát időtartama alatt, a készlet stabil állapotba kerül, és átméretezési hibákat jelez.
 
 A legutóbbi értékelés [ResizeError](/rest/api/batchservice/pool/get#resizeerror) tulajdonsága felsorolja az észlelt hibákat.
 

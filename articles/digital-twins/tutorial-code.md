@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4851d06ffedaacb441d28cae24d7d32bfe1c611c
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602116"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576261"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * További lépések
+> * Következő lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,7 +80,7 @@ A kezdéshez nyissa meg a *program.cs* fájlt bármilyen szerkesztőprogramban. 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="A mintakód egy kódrészlete. Létezik egy &quot;System;&quot; utasítás, egy DigitalTwinsCodeTutorial nevű névtér. a program nevű névtér egyik osztálya; a osztály egyik fő metódusa a &quot;statikus Void Main (string [] ARG)&quot; szabványos aláírása. A Main metódus egy „Helló világ!” alkalmazás Print utasítást tartalmaz." lightbox="media/tutorial-code/starter-template.png":::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="A mintakód egy kódrészlete. Létezik egy &quot;System;&quot; utasítás, egy DigitalTwinsCodeTutorial nevű névtér. a program nevű névtér egyik osztálya; a osztály egyik fő metódusa a &quot;statikus Void Main (string [] ARG)&quot; szabványos aláírása. A Main metódus egy Hello World Print utasítást tartalmaz." lightbox="media/tutorial-code/starter-template.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -253,14 +253,18 @@ Az oktatóanyag ezen pontján egy teljes ügyfélalkalmazás van, amely képes a
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
- 
-Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [*oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel*](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
+
+Az oktatóanyag elvégzése után kiválaszthatja, hogy mely erőforrásokat szeretné eltávolítani, attól függően, hogy mit szeretne tenni.
+
+* **Ha azt tervezi, hogy folytatja a következő oktatóanyagot**, az oktatóanyagban használt példány újra felhasználható a következőben. Megtarthatja az itt beállított Azure digitális Twins-erőforrásokat, és kihagyhatja a szakasz további részeit.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Végül törölje a helyi gépen létrehozott Project mappát.
+Érdemes törölni a Project mappát is a helyi gépről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

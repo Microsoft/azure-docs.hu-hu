@@ -4,13 +4,15 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 2/3/21
 ms.author: parkerra
-ms.openlocfilehash: c97067c66296e8980a36b21298a7b2061e0f9b4c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: f6c2780ccbb914228a9870cb3b5fe4b0e3d0b214
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550386"
+ms.locfileid: "99569647"
 ---
+A szükséges csomagok letöltéséhez telepítenie kell a <a href="https://www.npmjs.com/get-npm" target="_blank">NPM</a> .
+
 Futtassa az alábbi parancsot az `<version_number>` aktuális mappába letölteni kívánt Azure térbeli horgonyok verziójának lecserélése után:
 
 ```bash

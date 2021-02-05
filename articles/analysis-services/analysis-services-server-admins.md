@@ -4,21 +4,23 @@ description: Ez a cikk azt ismerteti, hogyan kezelhetők a kiszolgálók rendsze
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351724"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573500"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
 A kiszolgálói rendszergazdáknak érvényes felhasználó, szolgáltatásnév vagy biztonsági csoportnak kell lenniük a Azure Active Directoryban (Azure AD) azon bérlő számára, amelyben a kiszolgáló található. A kiszolgálói rendszergazdák kezeléséhez **Analysis Services rendszergazdákat** használhat a Azure Portal, a SSMS, a PowerShellben vagy a REST API kiszolgálói tulajdonságaiban. 
 
 **Biztonsági csoport** hozzáadásakor használja a t `obj:groupid@tenantid` . Az egyszerű szolgáltatások nem támogatottak a kiszolgálói rendszergazdai szerepkörhöz hozzáadott biztonsági csoportokban.
+
+Ha szeretne többet megtudni arról, hogyan adhat hozzá egy egyszerű szolgáltatást a kiszolgálói rendszergazdai szerepkörhöz, tekintse meg [az egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazda szerepkörhöz](analysis-services-addservprinc-admins.md)című témakört.
 
 Ha a kiszolgáló tűzfala engedélyezve van, a kiszolgáló-rendszergazda ügyfélszámítógépek IP-címeinek szerepelniük kell egy tűzfalszabály számára. További információ: a [kiszolgáló tűzfalának konfigurálása](analysis-services-qs-firewall.md).
 
@@ -52,7 +54,7 @@ Egy meglévő kiszolgáló módosításakor a [frissítés](/rest/api/analysisse
 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  

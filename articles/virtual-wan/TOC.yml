@@ -116,24 +116,34 @@
           href: certificates-point-to-site.md
         - name: Azure AD-bérlő konfigurálása
           href: openvpn-azure-ad-tenant.md
-        - name: Ügyfélprofil
-          href: about-vpn-profile-download.md
-        - name: Globális és hubalapú profil
-          href: global-hub-profile.md
-        - name: "Az Azure VPN-ügyfél konfigurálása Windows\_10-hez"
-          href: openvpn-azure-ad-client.md
-        - name: Az OpenVPN-ügyfelek konfigurálása
-          href: howto-openvpn-clients.md?
-        - name: AlwaysOn VPN felhasználói alagút konfigurálása
-          href: howto-always-on-user-tunnel.md
-        - name: AlwaysOn VPN-eszközalagút konfigurálása
-          href: howto-always-on-device-tunnel.md
-        - name: Többtényezős hitelesítés (MFA) engedélyezése
-          href: openvpn-azure-ad-mfa.md
-        - name: Azure AD-hitelesítés konfigurálása
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása
-          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Ügyféloldali profilok
+          items:
+            - name: Globális és hub-alapú profilok letöltése
+              href: global-hub-profile.md
+            - name: Profil adatainak kinyerése és megtekintése
+              href: about-vpn-profile-download.md
+            - name: Profilok üzembe helyezése az Intune-nal
+              href: vpn-profile-intune.md
+        - name: VPN-ügyfelek
+          items:
+            - name: Windows 10
+              href: openvpn-azure-ad-client.md
+            - name: OpenVPN
+              href: howto-openvpn-clients.md?
+        - name: Always-On alagutak konfigurálása
+          items:
+            - name: Felhasználói alagút
+              href: howto-always-on-user-tunnel.md
+            - name: Eszköz bújtatása
+              href: howto-always-on-device-tunnel.md
+        - name: Hitelesítés
+          items:
+            - name: Multi-Factor Authentication (MFA)
+              href: openvpn-azure-ad-mfa.md
+            - name: Azure AD-hitelesítés
+              href: virtual-wan-point-to-site-azure-ad.md
+            - name: Több alkalmazásból álló Azure AD-hitelesítés
+              href: openvpn-azure-ad-tenant-multi-app.md
     - name: Útválasztás
       items:
         - name: Virtuális központ útválasztásának konfigurálása

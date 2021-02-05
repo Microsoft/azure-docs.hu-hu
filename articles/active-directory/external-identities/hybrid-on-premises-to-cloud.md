@@ -12,21 +12,21 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06a6a42724eb172a77079b94f2cf50afb8e9cdf1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 29aeca30e1fbdd28d3f69597d902a9b714056cd5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357317"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575923"
 ---
-# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure AD B2B Collaboration használatával
+# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Hozzáférés biztosítása helyben kezelt partnerfiókoknak felhőbeli erőforrásokhoz az Azure AD vállalatközi együttműködéssel
 
 Az Azure Active Directory (Azure AD) előtt a helyszíni identitási rendszerekkel rendelkező szervezeteknek hagyományosan kezelt partneri fiókjai vannak a helyszíni címtárban. Ilyen szervezet esetén, amikor elkezdi áthelyezni az alkalmazásokat az Azure AD-ba, meg kell győződnie arról, hogy partnerei hozzáférhetnek a számukra szükséges erőforrásokhoz. Nem számít, hogy az erőforrások a helyszínen vagy a felhőben vannak-e. Azt is szeretné, hogy a partner felhasználóinak ugyanazokat a bejelentkezési hitelesítő adatokat tudják használni mind a helyszíni, mind az Azure AD-erőforrásokhoz. 
 
 Ha a helyszíni címtárban hoz létre fiókokat a külső partnerekhez (például létrehoz egy "wmoran" bejelentkezési névvel rendelkező fiókot egy, a partners.contoso.com-tartományban található Wendy Moran nevű külső felhasználóhoz), most már szinkronizálhatja ezeket a fiókokat a felhővel. A Azure AD Connect segítségével szinkronizálhatja a partneri fiókokat a felhőbe, amely létrehoz egy felhasználói fiókot a UserType = Guest használatával. Ez lehetővé teszi a partner felhasználók számára, hogy a helyi fiókjaikkal megegyező hitelesítő adatokkal férjenek hozzá a felhőalapú erőforrásokhoz anélkül, hogy a számukra nagyobb hozzáférésre lenne szükségük.
 
 > [!NOTE]
-> Lásd még: a [belső felhasználók meghívása a B2B-együttműködésbe](invite-internal-users.md) (nyilvános előzetes verzió). Ezzel a szolgáltatással meghívja a belső vendég felhasználókat a B2B együttműködés használatára, függetlenül attól, hogy szinkronizálta-e a helyszíni címtárból a felhőbe érkező fiókjaikat. Miután a felhasználó elfogadja a B2B együttműködés használatára vonatkozó meghívót, a saját identitásuk és hitelesítő adataik használatával bejelentkezhetnek az elérni kívánt erőforrásokhoz. Nem kell megtartania a jelszavakat, és nem kell kezelnie a fiókok életciklusát.
+> Lásd még: Hogyan [hívhat meg a belső felhasználókat a B2B együttműködésre](invite-internal-users.md). Ezzel a szolgáltatással meghívja a belső vendég felhasználókat a B2B együttműködés használatára, függetlenül attól, hogy szinkronizálta-e a helyszíni címtárból a felhőbe érkező fiókjaikat. Miután a felhasználó elfogadja a B2B együttműködés használatára vonatkozó meghívót, a saját identitásuk és hitelesítő adataik használatával bejelentkezhetnek az elérni kívánt erőforrásokhoz. Nem kell megtartania a jelszavakat, és nem kell kezelnie a fiókok életciklusát.
 
 ## <a name="identify-unique-attributes-for-usertype"></a>A UserType egyedi attribútumainak azonosítása
 
@@ -48,6 +48,6 @@ A megvalósítási utasításokért lásd: [a UserType szinkronizálásának eng
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure Active Directory B2B-együttműködés hibrid szervezeteknél](hybrid-organizations.md)
-- [B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez](hybrid-cloud-to-on-premises.md)
+- [Hozzáférés biztosítása az Azure AD-beli B2B-felhasználóknak a helyszíni alkalmazásokhoz](hybrid-cloud-to-on-premises.md)
 - A Azure AD Connect áttekintését lásd: a [helyszíni címtárak integrálása Azure Active Directoryokkal](../hybrid/whatis-hybrid-identity.md).
 

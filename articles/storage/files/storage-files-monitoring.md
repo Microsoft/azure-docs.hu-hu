@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d71f3fa27dda9edc4c88ad9ed563e5c3a95ffa4b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875144"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574533"
 ---
 # <a name="monitoring-azure-files"></a>Figyelés Azure Files
 
@@ -589,13 +589,13 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 
 3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a **fájl erőforrás típusát** , majd kattintson a **kész** gombra. 
 
-4. Kattintson a **feltétel kiválasztása** lehetőségre, és adja meg a következő információkat a riasztáshoz: 
+4. Kattintson a **feltétel hozzáadása** elemre, és adja meg a következő információkat a riasztáshoz: 
 
     - **Metrika**
     - **Dimenzió neve**
     - **Riasztási logika**
 
-5. Kattintson a **műveleti csoport kijelölése** elemre, és adjon hozzá egy műveleti csoportot (E-mail, SMS stb.) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+5. Kattintson a **műveleti csoportok hozzáadása** elemre, és adjon hozzá egy műveleti csoportot (E-mail, SMS stb.) a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 
 6. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 
@@ -609,16 +609,31 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
 2. A **figyelés** szakaszban kattintson a **riasztások** elemre, majd kattintson az **+ új riasztási szabály** elemre.
 3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve `contoso` , válassza ki az `contoso/file` erőforrást.
-4. Feltétel hozzáadásához kattintson a **feltétel kiválasztása** elemre.
+4. Feltétel hozzáadásához kattintson a **feltétel hozzáadása** elemre.
 5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **tranzakciók** metrikáját.
 6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő listára, és válassza a **Válasz típusa** lehetőséget.
-7. Kattintson a **dimenzió értékek** legördülő listára, és válassza a **SuccessWithThrottling** (SMB) vagy a **ClientThrottlingError** (REST) lehetőséget.
+7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki a megfelelő választ a fájlmegosztás számára.
+
+    A standard fájlmegosztás esetében válassza ki a következő válaszokat:
+
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    A prémium fájlmegosztás esetében válassza ki a következő válaszokat:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > Ha a SuccessWithThrottling vagy a ClientThrottlingError dimenzió értéke nem szerepel a listáján, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzióérték hozzáadásához kattintson az **Egyéni érték hozzáadása** lehetőségre a **dimenzió értékei** legördülő menüben, írja be a **SuccessWithThrottling** vagy a **ClientThrottlingError** értéket, kattintson **az OK** gombra, majd ismételje meg a #7 lépést.
+   > Ha a válaszok típusai nem szerepelnek a **dimenzió értékek** legördülő menüben, ez azt jelenti, hogy az erőforrás nincs szabályozva. A dimenzió értékeinek hozzáadásához a **dimenzióértékek** legördülő lista mellett válassza az **Egyéni érték hozzáadása** lehetőséget, adja meg a respone típusát (például **SuccessWithThrottling**), kattintson az **OK gombra**, majd ismételje meg ezeket a lépéseket a fájlmegosztás összes vonatkozó válaszának hozzáadásához.
 
 8. Kattintson a **dimenzió neve** legördülő listára, és válassza a **fájlmegosztás** lehetőséget.
 9. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
+
 
    > [!NOTE]
    > Ha a fájlmegosztás szabványos fájlmegosztás, válassza a **minden aktuális és jövőbeli értéket**. A dimenzióértékek legördülő lista nem sorolja fel a fájlmegosztást (ka) t, mert a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében. A normál fájlmegosztás esetén a rendszer elindítja a riasztásokat, ha a Storage-fiókon belül bármilyen fájlmegosztás szabályozva van, és a riasztás nem azonosítja, hogy mely fájlmegosztás lett szabályozva. Mivel a megosztási mérőszámok nem érhetők el a normál fájlmegosztás esetében, a javaslat egy fájlmegosztási fiókkal rendelkezik.
@@ -628,8 +643,8 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
     > [!TIP]
     > Ha statikus küszöbértéket használ, a metrikai diagram segíthet meghatározni egy ésszerű küszöbértéket, ha a fájlmegosztást jelenleg szabályozzák. Dinamikus küszöbérték használata esetén a metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
-11. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
+11. Kattintson a **műveleti csoportok hozzáadása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Riasztás létrehozása, ha az Azure-fájlmegosztás mérete a kapacitás 80%-a
@@ -637,7 +652,7 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
 2. A **figyelés** szakaszban kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
 3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve `contoso` , válassza ki az `contoso/file` erőforrást.
-4. Feltétel hozzáadásához kattintson a **feltétel kiválasztása** elemre.
+4. Feltétel hozzáadásához kattintson a **feltétel hozzáadása** elemre.
 5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **fájl kapacitása** mérőszámot.
 6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget.
 7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
@@ -647,8 +662,8 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 
 8. Adja meg a **küszöbértéket** bájtban megadva. Ha például a fájlmegosztás mérete 100 TiB, és riasztást szeretne kapni, ha a fájlmegosztás mérete a kapacitás 80%-ában van megadva, akkor a küszöbérték értéke 87960930222080.
 9. Adja meg a **riasztási paraméterek** hátralévő részét (az Összesítés részletességét és a kiértékelés gyakoriságát), majd kattintson a **kész** gombra.
-10. Kattintson a műveleti csoport kiválasztása lehetőségre egy műveleti csoport (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-11. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
+10. Kattintson a **műveleti csoportok hozzáadása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+11. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 12. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Riasztás létrehozása, ha az Azure-fájlmegosztás kimenő adatforgalmának napja túllépte a 500 GiB-t
@@ -656,7 +671,7 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 1. Nyissa meg a **Storage-fiókját** a **Azure Portal**.
 2. A figyelés szakaszban kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
 3. Kattintson az **erőforrás szerkesztése** lehetőségre, válassza ki a Storage-fiók **fájljának erőforrás-típusát** , majd kattintson a **kész** gombra. Ha például a Storage-fiók neve contoso, válassza ki a contoso/fájl erőforrást.
-4. Feltétel hozzáadásához kattintson a **feltétel kiválasztása** elemre.
+4. Feltétel hozzáadásához kattintson a **feltétel hozzáadása** elemre.
 5. Ekkor megjelenik a Storage-fiók által támogatott jelek listája, és válassza ki a **kimenő** forgalom metrikáját.
 6. A **jel logikai beállítása** panelen kattintson a **dimenzió neve** legördülő menüre, majd válassza a **fájlmegosztás** lehetőséget.
 7. Kattintson a **dimenzió értékek** legördülő listára, és válassza ki azokat a fájlmegosztás (oka) t, amelyekről riasztást szeretne kapni.
@@ -667,11 +682,11 @@ A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz 
 8. Adja meg a **536870912000** bájtos értéket a küszöbértékhez. 
 9. Kattintson az **összesítési részletesség** legördülő listára, és válassza a **24 óra** lehetőséget.
 10. Válassza ki az **értékelés gyakoriságát** , és **kattintson a kész gombra**.
-11. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
-12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, * * leírását és **súlyosságát**.
+11. Kattintson a **műveleti csoportok hozzáadása** lehetőségre egy **műveleti csoport** (e-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
+12. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 13. A riasztás létrehozásához kattintson a **riasztási szabály létrehozása** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Files monitorozási adathivatkozás](storage-files-monitoring-reference.md)
 - [Azure-erőforrások figyelése Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)

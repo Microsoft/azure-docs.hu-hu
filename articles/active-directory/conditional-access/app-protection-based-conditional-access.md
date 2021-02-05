@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881161"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575771"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Útmutató: az alkalmazás védelmi szabályzatának és a felhőalapú alkalmazások hozzáférésének megkövetelése feltételes hozzáféréssel
 
@@ -34,7 +34,7 @@ A feltételes hozzáférésben ezek az ügyfélalkalmazások ismertek, hogy véd
 > Nem minden alkalmazás támogatott, és nem támogatja az alkalmazás-védelmi szabályzatokat. A jogosult ügyfélalkalmazások listáját a következő témakörben tekintheti meg: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
-> "A kijelölt vezérlők egyikének megkövetelése" az engedélyezési vezérlők területen, például egy vagy záradék. Ez a házirend lehetővé teszi a felhasználók számára, hogy olyan alkalmazásokat használjanak, amelyek támogatják az **alkalmazás-védelmi házirend megkövetelését** vagy a **jóváhagyott ügyfélalkalmazás** -engedélyezési vezérlőket. Az **alkalmazás védelmi szabályzatának megkövetelése** akkor lép érvénybe, ha az alkalmazást mindkét házirend támogatja. További információ arról, hogy mely alkalmazások támogatják az **alkalmazás-védelmi házirend megkövetelése** vezérlő használatát: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md#require-app-protection-policy).
+> "A kijelölt vezérlők egyikének megkövetelése" az engedélyezési vezérlők területen, például egy vagy záradék. Ez a házirend lehetővé teszi a felhasználók számára, hogy olyan alkalmazásokat használjanak, amelyek támogatják az **alkalmazás-védelmi házirend megkövetelését** vagy a **jóváhagyott ügyfélalkalmazás** -engedélyezési vezérlőket. Az **alkalmazás védelmi szabályzatának megkövetelése** akkor lép érvénybe, ha az alkalmazás támogatja az adott vezérlőt. További információ arról, hogy mely alkalmazások támogatják az **alkalmazás-védelmi házirend megkövetelése** vezérlő használatát: az [alkalmazás védelmére vonatkozó követelmény](concept-conditional-access-grant.md#require-app-protection-policy).
 
 ## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>1. forgatókönyv: Microsoft 365 alkalmazásokban jóváhagyott alkalmazások szükségesek az alkalmazás-védelmi házirendekkel
 
@@ -169,7 +169,7 @@ A szervezeteknek a következő három lépést kell végrehajtaniuk ahhoz, hogy 
 
 Tekintse át az alkalmazás-védelmi szabályzatok létrehozását [és hozzárendelését](/intune/apps/app-protection-policies)ismertető cikket, amely az Android és az iOS rendszerhez készült alkalmazás-védelmi szabályzatok létrehozásának lépéseit ismerteti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Mit jelent a feltételes hozzáférés?](overview.md)
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901198"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574516"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_job:
@@ -87,16 +87,16 @@ Egy GitHub-művelet [elindítja](https://help.github.com/actions/reference/event
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 ```
 
 A tulajdonsághoz társított beállításokon keresztül `on` meghatározhatja, hogy mely ágak indítanak el egy feladatot, és hogyan állíthatók be eseményindítók a különböző lekéréses kérelmek állapotára.
 
-Ebben a példában egy munkafolyamatot indít el a _főág_ módosításaival. A munkafolyamatot elindító módosítások közé tartozik a véglegesítések továbbítása és a lekéréses kérelmek megnyitása a kiválasztott ág esetében.
+Ebben a példában egy munkafolyamatot indít el a _fő_ ág módosításaival. A munkafolyamatot elindító módosítások közé tartozik a véglegesítések továbbítása és a lekéréses kérelmek megnyitása a kiválasztott ág esetében.
 
 ## <a name="jobs"></a>Feladatok
 
@@ -107,7 +107,7 @@ A statikus Web Apps munkafolyamat-fájlban két elérhető feladat van.
 | Név  | Leírás |
 |---------|---------|
 |`build_and_deploy_job` | Végrehajtja a leküldéses végrehajtást, vagy egy lekéréses kérelmet nyit meg a `on` tulajdonságban felsorolt ág alapján. |
-|`close_pull_request_job` | CSAK akkor hajt végre végrehajtást, ha lezárta egy lekéréses kérelmet, amely eltávolítja a lekéréses kérelmekből létrehozott átmeneti környezetet. |
+|`close_pull_request_job` | CSAK egy lekéréses kérelem lezárásakor hajtható végre, amely eltávolítja a lekéréses kérelmekből létrehozott átmeneti környezetet. |
 
 ## <a name="steps"></a>Lépések
 
@@ -194,6 +194,53 @@ jobs:
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
 ```
+
+## <a name="monorepo-support"></a>Monorepo-támogatás
+
+A monorepo olyan tárház, amely egynél több alkalmazáshoz tartalmaz kódot. Alapértelmezés szerint a statikus Web Apps munkafolyamat-fájl egy adattár összes fájlját nyomon követi, de úgy is beállíthatja, hogy egyetlen alkalmazást is megcélozjon. Ezért a monorepos esetében minden statikus hely saját konfigurációs fájllal rendelkezik, amely az adattár *. git* mappájában egymás mellett él.
+
+```files
+├── .git
+│   ├── azure-static-web-apps-purple-pond.yml
+│   └── azure-static-web-apps-yellow-shoe.yml
+│
+├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+└── readme.md
+```
+
+Ha egy munkafolyamat-fájlt egyetlen alkalmazásra kíván célozni, a és a szakaszok elérési útját kell megadnia `push` `pull_request` .
+
+Az alábbi példa bemutatja, hogyan adhat hozzá egy `paths` csomópontot `push` `pull_request` egy _Azure-static-Web-Apps-Purple-Pond. YML_ nevű fájlhoz és részeihez.
+
+```yml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+```
+
+Ebben az esetben csak a fájlok következő fájljain végrehajtott módosítások indítanak új buildet:
+
+- A *App1* mappában található összes fájl
+- A *api1* mappában található összes fájl
+- Az alkalmazás *Azure-static-Web-Apps-Purple-Pond. YML* munkafolyamat-fájljának módosításai
 
 ## <a name="next-steps"></a>Következő lépések
 

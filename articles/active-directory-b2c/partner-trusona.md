@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489469"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573687"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>A Trusona integrálása Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * [Egy Azure ad B2C bérlő](tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
-* [Próbaverziós fiók](https://www.trusona.com/aadb2c) a Trusona-on
+* [Próbaverziós fiók](https://www.trusona.com/) a Trusona-on
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -53,7 +53,7 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 ## <a name="onboard-with-trusona"></a>Trusona
 
-1. Töltse ki az [űrlapot](https://www.trusona.com/aadb2c) egy Trusona-fiók létrehozásához és az első lépésekhez.
+1. Töltse ki az [űrlapot](https://www.trusona.com/) egy Trusona-fiók létrehozásához és az első lépésekhez.
 
 2. Töltse le a Trusona Mobile alkalmazást az App Store áruházból. Telepítse az alkalmazást, és regisztrálja az e-mail-címét.
 
@@ -63,9 +63,9 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 5. Válassza a **kész** lehetőséget, és végezze el a hitelesítést a Trusona alkalmazással.
 
-6. A bal oldali navigációs panelen válassza a **OIDC-integrációk**lehetőséget.
+6. A bal oldali navigációs panelen válassza a **OIDC-integrációk** lehetőséget.
 
-7. Válassza az **OpenID Connect-integráció létrehozása**lehetőséget.
+7. Válassza az **OpenID Connect-integráció létrehozása** lehetőséget.
 
 8. Adja meg a kívánt **nevet** , és használja a korábban megadott tartományi információkat (például contoso) az **Ügyfél-átirányítási gazdagép mezőben**.  
 
@@ -87,11 +87,11 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
 
-4. Navigáljon az **irányítópult**  >  **Azure Active Directory B2C**  >  **identitás-szolgáltatók**elemre.
+4. Navigáljon az **irányítópult**  >  **Azure Active Directory B2C**  >  **identitás-szolgáltatók** elemre.
 
-3. Válassza az **identitás-szolgáltatók**elemet.
+3. Válassza az **identitás-szolgáltatók** elemet.
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
 ### <a name="configure-an-identity-provider"></a>Identitás-szolgáltató konfigurálása  
 
@@ -107,9 +107,9 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
    | Válasz típusa | Id_token |
    | Válasz mód  | Form_post |
 
-3. Kattintson az **OK** gombra.  
+3. Válassza az **OK** lehetőséget.  
 
-4. Válassza ki **az identitás-szolgáltató jogcímeinek leképezése**elemet.  
+4. Válassza ki **az identitás-szolgáltató jogcímeinek leképezése** elemet.  
 
 5. Töltse ki az űrlapot az identitás-szolgáltató leképezéséhez:
 
@@ -127,11 +127,11 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 A Trusona-t most már a B2C-szolgáltatók listáján szereplő **új OpenID Connect-identitás-szolgáltatóként** kell látni.
 
-1. A Azure AD B2C-bérlő **házirend**területén válassza a **felhasználói folyamatok**elemet.
+1. A Azure AD B2C-bérlő **házirend** területén válassza a **felhasználói folyamatok** elemet.
 
-1. Válassza az **új felhasználói folyamat**elemet.
+1. Válassza az **új felhasználói folyamat** elemet.
 
-1. Válassza a **regisztráció és bejelentkezés**lehetőséget, válassza ki a kívánt verziót, majd kattintson a **Létrehozás**gombra.
+1. Válassza a **regisztráció és bejelentkezés** lehetőséget, válassza ki a kívánt verziót, majd kattintson a **Létrehozás** gombra.
 
 1. Adja meg a szabályzat **nevét** .
 
@@ -140,25 +140,25 @@ A Trusona-t most már a B2C-szolgáltatók listáján szereplő **új OpenID Con
    > [!NOTE]
    > Mivel a Trusona természeténél fogva többtényezős, érdemes letiltani a többtényezős hitelesítést.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-1. A **felhasználói attribútumok és jogcímek**területen válassza a **továbbiak megjelenítése**lehetőséget. Az űrlapon válasszon ki legalább egy olyan attribútumot, amelyet a korábbi szakaszban a személyazonosság-szolgáltató beállítása során adott meg.
+1. A **felhasználói attribútumok és jogcímek** területen válassza a **továbbiak megjelenítése** lehetőséget. Az űrlapon válasszon ki legalább egy olyan attribútumot, amelyet a korábbi szakaszban a személyazonosság-szolgáltató beállítása során adott meg.
 
-1. Kattintson az **OK** gombra.  
+1. Válassza az **OK** lehetőséget.  
 
 ### <a name="test-the-policy"></a>A szabályzat tesztelése
 
 1. Válassza ki az újonnan létrehozott házirendet.
 
-2. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+2. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 3. Az űrlapon adja meg a válasz URL-címét.
 
-4. Válassza a **felhasználói folyamat futtatása**lehetőséget. A rendszer átirányítja a Trusona OIDC-átjáróra. A Trusona-átjárón ellenőrizze a biztonságos QR-kódot a Trusona alkalmazással, vagy egy egyéni alkalmazással a Trusona Mobile SDK használatával.
+4. Válassza a **felhasználói folyamat futtatása** lehetőséget. A rendszer átirányítja a Trusona OIDC-átjáróra. A Trusona-átjárón ellenőrizze a biztonságos QR-kódot a Trusona alkalmazással, vagy egy egyéni alkalmazással a Trusona Mobile SDK használatával.
 
 5. A biztonságos QR-kód vizsgálatát követően a 3. lépésben megadott válasz URL-címre kell átirányítani.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 További információkért tekintse át a következő cikkeket:
 

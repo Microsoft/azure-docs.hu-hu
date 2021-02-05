@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252610"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575483"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -504,7 +504,7 @@ Ha nem tud IDoc-csomagokat küldeni az SAP-ból a logikai alkalmazás triggerér
   * Ahhoz, hogy ezeket a szegmenseket az SAP felszabadítsa, forduljon az SAP-rendszerhez készült ABAP mérnökhez.
 ### <a name="asynchronous-request-reply-for-triggers"></a>Aszinkron kérelem – válasz az eseményindítók számára
 
-Az SAP-összekötő támogatja az Azure [aszinkron kérelem-válasz mintát](/azure/architecture/patterns/async-request-reply.md) Logic apps eseményindítók esetében. Ezzel a mintával olyan sikeres kérelmek hozhatók létre, amelyek az alapértelmezett szinkron kérés-válasz mintával eltérően lettek volna. 
+Az SAP-összekötő támogatja az Azure [aszinkron kérelem-válasz mintát](/azure/architecture/patterns/async-request-reply) Logic apps eseményindítók esetében. Ezzel a mintával olyan sikeres kérelmek hozhatók létre, amelyek az alapértelmezett szinkron kérés-válasz mintával eltérően lettek volna. 
 
 > [!TIP]
 > A több Response művelettel rendelkező Logic apps esetében az összes válasz műveletnek ugyanazt a kérés-válasz mintát kell használnia. Ha például a logikai alkalmazás több lehetséges választ tartalmazó kapcsoló vezérlőt használ, akkor az összes válasz műveletet úgy kell konfigurálnia, hogy ugyanazt a kérés-válasz mintát használja, szinkron vagy aszinkron módon. 

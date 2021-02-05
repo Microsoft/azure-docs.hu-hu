@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050527"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575684"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -306,13 +306,17 @@ Ebben a rövid útmutatóban manuálisan hajtotta végre a hőmérséklet-friss�
 
 A rövid útmutatóhoz tartozó munka becsomagolásához először fejezze be a futó konzol alkalmazást. Ez a művelet leállítja a ADT Explorer alkalmazáshoz való kapcsolódást a böngészőben. Többé nem fogja tudni megtekinteni az élő adatmegjelenítést a böngészőben. A böngésző fület lezárhatja.
 
-Ha azt tervezi, hogy továbbra is az Azure digitális Twins-oktatóanyagokat használja, a rövid útmutatóban szereplő példányt újra felhasználhatja a cikkekhez, és nem kell eltávolítania.
+Ezután kiválaszthatja, hogy mely erőforrásokat szeretné eltávolítani, attól függően, hogy mit szeretne tenni.
+
+* **Ha azt tervezi, hogy továbbra is az Azure digitális Twins-oktatóanyagokat** használja, a rövid útmutatóban szereplő példányt újra felhasználhatja a cikkekhez, és nem kell eltávolítania.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Végezetül törölje a Project Sample mappát, **Azure_Digital_Twins__ADT__explorer**, amelyet a helyi gépre töltött le. Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziót is.
+Érdemes törölni a Project mappát is a helyi gépről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

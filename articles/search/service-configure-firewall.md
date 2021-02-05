@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932797"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573245"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Az Azure Cognitive Search IP-tűzfalának konfigurálása
 
@@ -24,14 +24,14 @@ Az Azure Cognitive Search támogatja az IP-szabályokat a bejövő tűzfalak tá
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> IP-tűzfal konfigurálása a Azure Portal használatával
 
-A Azure Portal IP-hozzáférés-vezérlési szabályzatának beállításához nyissa meg az Azure Cognitive Search szolgáltatás lapját, és válassza a **hálózatkezelés** lehetőséget a navigációs menüben. A végponti hálózati kapcsolatnak **nyilvánosnak**kell lennie. Ha a kapcsolat **privát**értékre van állítva, akkor csak privát végponton keresztül érheti el a keresési szolgáltatást.
+A Azure Portal IP-hozzáférés-vezérlési szabályzatának beállításához nyissa meg az Azure Cognitive Search szolgáltatás lapját, és válassza a **hálózatkezelés** lehetőséget a navigációs menüben. A végponti hálózati kapcsolatnak **nyilvánosnak** kell lennie. Ha a kapcsolat **privát** értékre van állítva, akkor csak privát végponton keresztül érheti el a keresési szolgáltatást.
 
 ![A Azure Portal IP-tűzfalának konfigurálását bemutató képernyőkép](./media/service-configure-firewall/azure-portal-firewall.png)
 
 Az Azure Portal lehetővé teszi az IP-címek és IP-címtartományok megadását a CIDR formátumban. A CIDR-jelölés például a 8.8.8.0/24, amely a 8.8.8.0 és a 8.8.8.255 közötti IP-címeket jelöli.
 
 > [!NOTE]
-> Miután engedélyezte az Azure Cognitive Search szolgáltatáshoz tartozó IP-hozzáférés-vezérlési házirendet, a rendszer elutasítja az adatsíkon lévő összes, az IP-címtartományok engedélyezési listáján kívüli kérést. Az IP-szabályok konfigurálásakor a Azure Portal egyes funkciói le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint adatait, de a portál hozzáférése az adatok indexeléséhez és a szolgáltatás különböző összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak.
+> Miután engedélyezte az Azure Cognitive Search szolgáltatáshoz tartozó IP-hozzáférés-vezérlési házirendet, a rendszer elutasítja az adatsíkon lévő összes, az IP-címtartományok engedélyezési listáján kívüli kérést. Az IP-szabályok konfigurálásakor a Azure Portal egyes funkciói le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint adatait, de a portál hozzáférése az adatok indexeléséhez és a szolgáltatás különböző összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak. A portál alternatívájaként a [vs Code bővítménnyel](https://aka.ms/vscode-search) is használhatja a szolgáltatás különböző összetevőit.
 
 ### <a name="requests-from-your-current-ip"></a>Az aktuális IP-címről érkező kérések
 
@@ -39,7 +39,7 @@ A fejlesztés egyszerűsítése érdekében a Azure Portal segíti az ügyfélsz
 
 A portál automatikusan észleli az ügyfél IP-címét. Ez lehet a számítógép vagy a hálózati átjáró ügyfél IP-címe. Mielőtt éles környezetben üzembe helyezi a munkaterhelést, mindenképp távolítsa el ezt az IP-címet.
 
-Ha a jelenlegi IP-címet az IP-címek listájához szeretné felvenni, **akkor az ügyfél IP-címét adja meg**. Ez után válassza a **Mentés** lehetőséget.
+Ha a jelenlegi IP-címet az IP-címek listájához szeretné felvenni, **akkor az ügyfél IP-címét adja meg**. Kattintson a **Mentés** gombra.
 
 ![Képernyőfelvétel az IP-tűzfalbeállítások konfigurálásáról az aktuális IP-cím engedélyezéséhez](./media/service-configure-firewall/enable-current-ip.png)
 
