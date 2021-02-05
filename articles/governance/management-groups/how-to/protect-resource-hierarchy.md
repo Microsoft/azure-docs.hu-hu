@@ -1,14 +1,14 @@
 ---
 title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951893"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594586"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
@@ -23,7 +23,7 @@ A hierarchia beállításainak konfigurálásához a következő két erőforrá
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-Ezek a műveletek csak a hierarchia beállításainak olvasását és frissítését teszik lehetővé a felhasználóknak. A műveletek nem biztosítanak semmilyen más hozzáférést a felügyeleti csoport hierarchiájának vagy erőforrásainak a hierarchiában. Mindkét művelet az Azure beépített szerepkör- **hierarchiájának beállítások rendszergazdájánál**érhető el.
+Ezek a műveletek csak a hierarchia beállításainak olvasását és frissítését teszik lehetővé a felhasználóknak. A műveletek nem biztosítanak semmilyen más hozzáférést a felügyeleti csoport hierarchiájának vagy erőforrásainak a hierarchiában. Mindkét művelet az Azure beépített szerepkör- **hierarchiájának beállítások rendszergazdájánál** érhető el.
 
 ## <a name="setting---default-management-group"></a>Alapértelmezett felügyeleti csoport beállítása
 
@@ -39,7 +39,7 @@ A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lé
 
 1. A gyökérszintű felügyeleti csoportban válassza a **részletek** elemet a felügyeleti csoport neve mellett.
 
-1. A **Beállítások**területen válassza a **hierarchia beállításai**lehetőséget.
+1. A **Beállítások** területen válassza a **hierarchia beállításai** lehetőséget.
 
 1. Válassza az **alapértelmezett felügyeleti csoport módosítása** gombot.
 
@@ -82,7 +82,7 @@ A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lé
 
 1. A gyökérszintű felügyeleti csoportban válassza a **részletek** elemet a felügyeleti csoport neve mellett.
 
-1. A **Beállítások**területen válassza a **hierarchia beállításai**lehetőséget.
+1. A **Beállítások** területen válassza a **hierarchia beállításai** lehetőséget.
 
 1. Az **új felügyeleti csoportok létrehozásához szükséges engedélyek** bekapcsolása. lehetőség bekapcsolva.
 
@@ -91,7 +91,7 @@ A beállítás Azure Portalban való konfigurálásához kövesse az alábbi lé
 
 ### <a name="set-require-authorization-with-rest-api"></a>Engedélyezés megkövetelése REST API
 
-A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/resources/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Ez az érték egy _logikai_érték, ezért **igaz** vagy **hamis** értéket adjon meg az értékhez. A **true** értékkel engedélyezheti a felügyeleti csoport hierarchiájának védelmét:
+A beállítás REST APIsal való konfigurálásához a [hierarchia-beállítások](/rest/api/resources/hierarchysettings) végpontot nevezzük. Ehhez használja a következő REST API URI és szövegtörzs formátumot. Ez az érték egy _logikai_ érték, ezért **igaz** vagy **hamis** értéket adjon meg az értékhez. A **true** értékkel engedélyezheti a felügyeleti csoport hierarchiájának védelmét:
 
 - REST API URI
 
@@ -109,9 +109,9 @@ A beállítás REST APIsal való konfigurálásához a [hierarchia-beállításo
   }
   ```
 
-Ha vissza szeretné kapcsolni a beállítást, használja ugyanazt a végpontot, és állítsa a **requireAuthorizationForGroupCreation** értéket **hamis**értékre.
+Ha vissza szeretné kapcsolni a beállítást, használja ugyanazt a végpontot, és állítsa a **requireAuthorizationForGroupCreation** értéket **hamis** értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

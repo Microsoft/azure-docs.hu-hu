@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954648"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594603"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: a Network for Azure Stack Edge Pro konfigurálása GPU-val
 
@@ -56,15 +56,13 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
     
     ![Helyi webes felhasználói felület "hálózati beállítások" lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. A hálózati beállítások módosításához válasszon ki egy portot, és a megjelenő jobb oldali panelen módosítsa az IP-címet, az alhálózatot, az átjárót, az elsődleges DNS-t és a másodlagos DNS-t. 
 
     - Ha az 1. portot választja, láthatja, hogy az előre be van konfigurálva statikusként. 
 
         ![Helyi webes felhasználói felület – 1. port – hálózati beállítások](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-3.png)
 
-    - Ha a 2. port, a 3. port vagy az 5. port lehetőséget választja, a rendszer alapértelmezés szerint az összes portot DHCP-ként konfigurálja.
+    - Ha a 2. port, a 3. port, a 4. és az 5. port lehetőséget választja, a rendszer alapértelmezés szerint az összes portot DHCP-ként konfigurálja.
 
         ![Helyi webes felhasználói felület – 3. port – hálózati beállítások](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-4.png)
 
@@ -73,7 +71,8 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
    * Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot, egy átjárót és egy DNS-t.
    * Ha a DHCP nincs engedélyezve, szükség esetén statikus IP-címeket is hozzárendelhet.
    * A hálózati adaptert IPv4-ként is konfigurálhatja.
-   * A 25 GB-os felületeknél beállíthatja a RDMA (távoli közvetlen elérésű memória) módot iWarp vagy RoCE (RDMA konvergált Ethernet-kapcsolaton keresztül). Ha az alacsony késés az elsődleges követelmény, és a méretezhetőség nem jelent problémát, használja a RoCE. Ha a késés kulcsfontosságú követelmény, de a könnyű használat és a méretezhetőség is magas prioritású, a iWARP a legjobb választás.
+   * 25 GB/s felületek esetén a RDMA (távoli közvetlen elérésű memória) módot beállíthatja iWarp vagy RoCE (RDMA konvergált Ethernet-kapcsolaton keresztül). Ha az alacsony késés az elsődleges követelmény, és a méretezhetőség nem jelent problémát, használja a RoCE. Ha a késés kulcsfontosságú követelmény, de a könnyű használat és a méretezhetőség is magas prioritású, a iWARP a legjobb választás.
+   * A hálózati kártya (NIC) összevonása vagy a hivatkozás összesítése nem támogatott Azure Stack Edge esetén. 
    * Bármely port sorozatszáma a csomópont sorozatszámának felel meg.
 
     Az eszköz hálózatának konfigurálása után az oldal frissítései az alább látható módon frissülnek.
@@ -81,12 +80,11 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
     ![Helyi webes felhasználói felület "hálózati beállítások" 2. lapja](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * Azt javasoljuk, hogy a hálózati adapter helyi IP-címét ne módosítsa statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ és DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz aktiválta a szolgáltatást, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
+     > [!NOTE]
+     > Azt javasoljuk, hogy a hálózati adapter helyi IP-címét ne módosítsa statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ és DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz aktiválta a szolgáltatást, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
 
 
-    A hálózati beállítások konfigurálása és alkalmazása után válassza a Tovább: számítás lehetőséget a számítási hálózat konfigurálásához.
+    A hálózati beállítások konfigurálása és alkalmazása után válassza a **Tovább: számítás** lehetőséget a számítási hálózat konfigurálásához.
 
 ## <a name="enable-compute-network"></a>Számítási hálózat engedélyezése
 

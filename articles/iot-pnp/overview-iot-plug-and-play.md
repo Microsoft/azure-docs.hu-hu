@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486296"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594569"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
 
-A IoT Plug and Play lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT-Plug and Play középpontjában a egy eszköz _modellje_ , amelyet az eszköz használ a képességeinek egy IoT Plug and Play-kompatibilis alkalmazásba való reklámozásához. Ez a modell olyan elemek halmaza, amelyek a következőket határozzák meg:
+Az IoT Plug and Play használatával a megoldáskészítők manuális konfigurálás nélkül integrálhatnak intelligens eszközöket a megoldásaikba. A IoT-Plug and Play középpontjában a egy eszköz _modellje_ , amelyet az eszköz használ a képességeinek egy IoT Plug and Play-kompatibilis alkalmazásba való reklámozásához. Ez a modell olyan elemek halmaza, amelyek a következőket határozzák meg:
 
 - Egy eszköz vagy más entitás írásvédett vagy írható állapotát jelképező _Tulajdonságok_ . Előfordulhat például, hogy egy eszköz sorozatszáma csak olvasható tulajdonság, és a termosztát hőmérséklete írható tulajdonság lehet.
 - _Telemetria_ az eszköz által kibocsátott adatok, függetlenül attól, hogy az adatok az érzékelők normál streamje, egy alkalmi hiba vagy egy tájékoztató üzenet.
@@ -45,11 +45,13 @@ A IoT Plug and Play két típusú fejlesztő számára hasznos:
 
 ## <a name="use-iot-plug-and-play-devices"></a>IoT Plug and Play-eszközök használata
 
-Megoldás-szerkesztőként olyan felhőalapú IoT-megoldást fejleszthet, amely IoT Plug and Play eszközöket használ. A IoT-alkalmazás és az eszközök közötti biztonságos, kétirányú kommunikációhoz a [IoT hub](../iot-hub/about-iot-hub.md) által felügyelt felhőalapú szolgáltatást használhatja.
+Megoldás-szerkesztőként [IoT Central](../iot-central/core/overview-iot-central.md) vagy [IoT hub](../iot-hub/about-iot-hub.md) használatával fejleszthet olyan felhőalapú IoT-megoldást, amely IoT Plug and Play eszközöket használ.
 
-Amikor egy IoT Plug and Play eszközt csatlakoztat egy IoT hubhoz, az [Azure IoT Explorer](./howto-use-iot-explorer.md) eszköz használatával megtekintheti a modellt alkotó felületeken definiált telemetria, tulajdonságokat és parancsokat.
+A IoT Central webes felhasználói felülete lehetővé teszi az eszközök állapotának figyelését, a szabályok létrehozását, valamint több millió eszköz és az adatmennyiség kezelését a teljes életciklusuk során. A IoT Plug and Play-eszközök közvetlenül csatlakoznak egy IoT Central alkalmazáshoz, ahol testreszabható irányítópultok segítségével figyelheti és vezérelheti az eszközöket. DTDL-modellek létrehozásához és szerkesztéséhez használhatja a IoT Central webes KEZELŐFELÜLETén található eszközök sablonjait is.
 
-Ha rendelkezik egy Windows-vagy Linux-átjáróhoz csatlakoztatott érzékelőkkel, akkor a [IoT Plug and Play Bridge](./concepts-iot-pnp-bridge.md)használatával csatlakoztathatja ezeket az érzékelőket, és létrehozhat IoT Plug and Play eszközöket anélkül, hogy az eszköz szoftverét vagy belső vezérlőprogramot kellene írnia ( [támogatott protokollok](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) esetén).
+IoT Hub – a felügyelt felhőalapú szolgáltatás a IoT-alkalmazás és az eszközök közötti biztonságos, kétirányú kommunikációra szolgál. Amikor egy IoT Plug and Play eszközt csatlakoztat egy IoT hubhoz, az [Azure IoT Explorer](./howto-use-iot-explorer.md) eszköz használatával megtekintheti a DTDL-modellben definiált telemetria, tulajdonságokat és parancsokat.
+
+Ha rendelkezik egy Windows-vagy Linux-átjáróhoz csatlakoztatott érzékelőkkel, akkor a [IoT Plug and Play Bridge](./concepts-iot-pnp-bridge.md)használatával csatlakoztathatja ezeket az érzékelőket, és létrehozhat IoT Plug and Play eszközöket anélkül, hogy az eszköz szoftverét vagy belső vezérlőprogramot kellene írnia ( [támogatott protokollok](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)esetén).
 
 ## <a name="develop-an-iot-device-application"></a>IoT-eszköz alkalmazásának fejlesztése
 
