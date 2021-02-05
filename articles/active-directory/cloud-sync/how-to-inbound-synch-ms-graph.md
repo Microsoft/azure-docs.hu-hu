@@ -1,5 +1,5 @@
 ---
-title: A Felhőbeli szinkronizálás bejövő szinkronizálása MS Graph API használatával
+title: A Cloud Sync programozott konfigurálása MS Graph API használatával
 description: Ez a témakör azt ismerteti, hogyan engedélyezheti a bejövő szinkronizálást csak a Graph API használatával
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682038"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593160"
 ---
-# <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>A Felhőbeli szinkronizálás bejövő szinkronizálása MS Graph API használatával
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>A Cloud Sync programozott konfigurálása MS Graph API használatával
 
 Az alábbi dokumentum azt ismerteti, hogyan replikálhat egy szinkronizációs profilt a semmiből kizárólag MSGraph API-k használatával.  
 Ennek a folyamatnak a szerkezete a következő lépésekből áll.  Ezek a következők:
@@ -28,6 +28,7 @@ Ennek a folyamatnak a szerkezete a következő lépésekből áll.  Ezek a köve
 - [Szinkronizálási feladatok létrehozása](#create-sync-job)
 - [Célként megadott tartomány frissítése](#update-targeted-domain)
 - [Szinkronizálási jelszó kivonatának engedélyezése](#enable-sync-password-hashes-on-configuration-blade)
+- [Véletlen törlések](#accidental-deletes)
 - [Szinkronizálási feladatok indítása](#start-sync-job)
 - [Felülvizsgálat állapota](#review-status)
 
@@ -210,6 +211,71 @@ Itt a Kiemelt "tartomány" érték annak a helyszíni Active Directory tartomán
 ```
 
  Adja hozzá a sémát a kérelem törzsében. 
+
+## <a name="accidental-deletes"></a>Véletlen törlések
+Ez a szakasz bemutatja, hogyan lehet programozott módon engedélyezni vagy letiltani a [véletlen törléseket](how-to-accidental-deletes.md) .
+
+
+### <a name="enabling-and-setting-the-threshold"></a>A küszöbérték engedélyezése és beállítása
+Kétféle feladatot használhat, ezek a következők:
+
+ - DeleteThresholdEnabled – lehetővé teszi a művelet véletlen törlésének megelőzését, ha az értéke "true" (igaz). Alapértelmezés szerint a "true" értékre van állítva.
+ - DeleteThresholdValue – meghatározza, hogy a rendszer milyen számú törlést engedélyezzen a feladatok egyes végrehajtásakor, ha a véletlen törlések megakadályozása engedélyezve van. Alapértelmezés szerint a 500 érték van beállítva.  Tehát ha az érték 500, akkor a törlés engedélyezett maximális száma az egyes végrehajtásokban 499 lesz.
+
+A küszöbértékek törlési beállításai a és a `SyncNotificationSettings` Graph használatával módosíthatók. 
+
+Frissíteni kell a konfiguráció SyncNotificationSettings, ezért frissítse a titkokat.
+
+ ```
+ PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
+ ```
+
+ Adja hozzá a következő kulcs/érték párokat az alábbi érték tömbben a végrehajtani kívánt művelet alapján:
+
+```
+ Request body -
+ {
+   "value":[
+             {
+               "key":"SyncNotificationSettings",
+               "value": "{\"Enabled\":true,\"Recipients\":\"foobar@xyz.com\",\"DeleteThresholdEnabled\":true,\"DeleteThresholdValue\":50}"
+              }
+            ]
+  }
+
+
+```
+
+A fenti példában szereplő "enabled" beállítás az értesítő e-mailek engedélyezésére/letiltására szolgál a feladatoknak a karanténba helyezésekor.
+
+
+Jelenleg nem támogatottak a titkokra vonatkozó javítási kérések, így a többi érték megőrzése érdekében hozzá kell adnia a PUT kérelem törzsében szereplő összes értéket (például a fenti példában).
+
+Az összes titok meglévő értékeit a következő paranccsal kérheti le: 
+
+```
+GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
+```
+
+### <a name="allowing-deletes"></a>Törlés engedélyezése
+Annak engedélyezéséhez, hogy a törlés a feladatoknak a karanténba helyezése után is folytatódjon, ki kell állítania a hatókörnek megfelelő "ForceDeletes" nevű újraindítást. 
+
+```
+Request:
+POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
+```
+Request Body:
+{
+  "criteria": {"resetScope": "ForceDeletes"}
+}
+```
+
+
+
+
+
 
 ## <a name="start-sync-job"></a>Szinkronizálási feladatok indítása
 A feladatot újra lekérheti a következő parancs használatával:

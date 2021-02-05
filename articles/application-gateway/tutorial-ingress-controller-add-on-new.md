@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 775dc2133473354a1e534275fb0d813f299217d1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296250"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593817"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -22,7 +22,7 @@ Ebben az oktatóanyagban létre fog hozni egy AK-fürtöt, amelyen engedélyezve
 
 A bővítmény sokkal gyorsabban üzembe helyezi a AGIC-t az AK-fürthöz, mint [korábban a helmon keresztül](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). Emellett teljes körűen felügyelt élményt nyújt.    
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot. 
@@ -54,7 +54,7 @@ Az oktatóanyag a következőket ismerteti:
     az provider register --namespace Microsoft.ContainerService
     ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *canadacentral* helyen (régió): 
 
@@ -80,7 +80,7 @@ Ha egy meglévő Application Gateway-példány megadása nélkül telepít egy �
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-A parancs további paramétereinek konfigurálásához `az aks create` tekintse meg [ezeket a hivatkozásokat](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+A parancs további paramétereinek konfigurálásához `az aks create` tekintse meg [ezeket a hivatkozásokat](/cli/azure/aks#az-aks-create). 
 
 > [!NOTE]
 > A létrehozott AK-fürt megjelenik a létrehozott erőforráscsoport *myResourceGroup*. Az automatikusan létrehozott Application Gateway példány azonban a csomópont-erőforráscsoporthoz kerül, ahol az ügynök-készletek vannak. Alapértelmezés szerint a csomópont-erőforráscsoport neve *MC_resource-Group-name_cluster-name_location* , de módosítható. 
@@ -116,7 +116,7 @@ Győződjön meg arról, hogy a létrehozott minta alkalmazás a következők va
 
 A frissítés beszerzéséhez Application Gateway egy percet is igénybe vehet. Ha a Application Gateway még mindig **frissítési** állapotban van a portálon, hagyja befejezni az IP-cím elérését. 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége rájuk, távolítsa el az erőforráscsoportot, a Application Gateway példányt és az összes kapcsolódó erőforrást:
 

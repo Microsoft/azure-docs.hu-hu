@@ -7,21 +7,21 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183685"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593813"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Oktatóanyag: az Azure CLI (előzetes verzió) szolgáltatással meglévő Application Gatewayokkal rendelkező meglévő AK-fürthöz való belépés Application Gateway bejövő vezérlő bővítményének engedélyezése
 
 Application Gateway az Azure CLI-vel engedélyezheti az [Azure Kubernetes Services-(ak-)](https://azure.microsoft.com/services/kubernetes-service/) fürthöz jelenleg előzetes verzióban elérhető [AGIC](ingress-controller-overview.md) -bővítményt. Ebből az oktatóanyagból megtudhatja, hogyan használhatja a AGIC bővítményt a Kubernetes-alkalmazás elérhetővé tétele egy meglévő AK-fürtön egy meglévő, különálló virtuális hálózatokban telepített Application Gateway használatával. Először hozzon létre egy AK-fürtöt egy virtuális hálózatban, és egy különálló virtuális hálózat Application Gateway a meglévő erőforrások szimulálása érdekében. Ezután engedélyezheti a AGIC-bővítményt, a két virtuális hálózat együttes használatát, és üzembe helyezheti a Application Gateway a AGIC bővítmény használatával. Ha a AGIC-bővítményt egy meglévő Application Gateway és egy meglévő AK-fürthöz engedélyezi egy virtuális hálózatban, akkor kihagyhatja az alábbi társítási lépést. A bővítmény sokkal gyorsabban üzembe helyezi a AGIC-t az AK-fürthöz, mint a [korábban a helmon keresztül](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) , és teljes körűen felügyelt élményt is biztosít.  
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy erőforráscsoportot 
+> * Erőforráscsoport létrehozása 
 > * Új AK-fürt létrehozása 
 > * Új Application Gateway létrehozása 
 > * Engedélyezze a AGIC bővítményt a meglévő AK-fürtön a meglévő Application Gateway használatával 
@@ -49,7 +49,7 @@ Az oktatóanyag a következőket ismerteti:
     az provider register --namespace Microsoft.ContainerService
     ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *canadacentral* helyen (régió). 
 
@@ -67,11 +67,11 @@ Az alábbi példában egy *myCluster* nevű új AK-fürtöt telepítünk az [Azu
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Ha további paramétereket szeretne megadni a `az aks create` parancshoz, keresse fel a hivatkozásokat [itt](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+Ha további paramétereket szeretne megadni a `az aks create` parancshoz, keresse fel a hivatkozásokat [itt](/cli/azure/aks#az-aks-create). 
 
 ## <a name="deploy-a-new-application-gateway"></a>Új Application Gateway üzembe helyezése 
 
-Most egy új Application Gateway üzembe helyezésével szimulálhatja azt a meglévő Application Gateway, amelyet a forgalom terheléselosztásához kíván használni az AK-fürtre ( *myCluster*). A Application Gateway neve *myApplicationGateway* lesz, de először létre kell hoznia egy *myPublicIp* nevű nyilvános IP-erőforrást, és egy *myVnet* nevű új virtuális hálózatot, amelynek a címe 11.0.0.0/8, valamint egy olyan alhálózat, amelynek 11.1.0.0/16 nevű alhálózata *mySubnet, és* a mySubnet használatával helyezi *myPublicIp* üzembe *Application Gateway a myPublicIp* . 
+Most egy új Application Gateway üzembe helyezésével szimulálhatja azt a meglévő Application Gateway, amelyet a forgalom terheléselosztásához kíván használni az AK-fürtre ( *myCluster*). A Application Gateway neve *myApplicationGateway* lesz, de először létre kell hoznia egy *myPublicIp* nevű nyilvános IP-erőforrást, és egy *myVnet* nevű új virtuális hálózatot, amelynek a címe 11.0.0.0/8, valamint egy olyan alhálózat, amelynek 11.1.0.0/16 nevű alhálózata *mySubnet, és* a mySubnet használatával helyezi üzembe *Application Gateway a myPublicIp* . 
 
 Ha AK-alapú fürtöt használ, és Application Gateway külön virtuális hálózatban, akkor a két virtuális hálózat címterület nem fedik át egymást. Az AK-fürtök alapértelmezett 10.0.0.0/8, ezért a Application Gateway virtuális hálózati címek előtagját a 11.0.0.0/8 értékre állítja be. 
 

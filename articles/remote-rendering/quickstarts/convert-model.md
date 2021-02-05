@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c9b5d525954e7f0742cd13fe4d64a73df64ea854
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281353"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594467"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Gyorsútmutató: Modell konvertálása a renderelés előtt
 
@@ -70,7 +70,7 @@ Ha erre a gombra kattint, a következő képernyő jelenik meg a tárolási tula
 Töltse ki az űrlapot a következő módon:
 
 * Hozzon létre egy új erőforráscsoportot a lenti hivatkozás alatt a legördülő listából, és nevezze el ezt a **ARR_Tutorial**
-* A **Storage-fiók neve**mezőben adjon meg egy egyedi nevet. **Ennek a névnek globálisan egyedinek kell lennie**, ellenkező esetben egy üzenet jelenik meg, amely tájékoztatja arról, hogy a név már használatban van. Ennek a rövid útmutatónak a hatókörében a **arrtutorialstorage**nevet adja. Ennek megfelelően le kell cserélnie a nevét a rövid útmutató bármely előfordulása esetén.
+* A **Storage-fiók neve** mezőben adjon meg egy egyedi nevet. **Ennek a névnek globálisan egyedinek kell lennie**, ellenkező esetben egy üzenet jelenik meg, amely tájékoztatja arról, hogy a név már használatban van. Ennek a rövid útmutatónak a hatókörében a **arrtutorialstorage** nevet adja. Ennek megfelelően le kell cserélnie a nevét a rövid útmutató bármely előfordulása esetén.
 * Válasszon ki egy **helyet** a közelben. Ideális esetben ugyanazt a helyet használja, mint a renderelés beállításához a másik rövid útmutatóban.
 * A **teljesítmény** a "standard" értékre van beállítva
 * A **Fiók típusa** a következőre van beállítva: "StorageV2 (általános célú v2)"
@@ -126,7 +126,7 @@ Ez a szkript különösen a következő:
 1. a konverziós állapot API lekérdezése a beolvasott konverziós AZONOSÍTÓval, amíg az átalakítási folyamat nem fejeződik be sikeres vagy sikertelen
 1. a kimeneti tárolóban található átalakított eszközre mutató hivatkozást kérdez le.
 
-A parancsfájl beolvassa a konfigurációját a (z) *Scripts\arrconfig.js*fájlból. Nyissa meg a JSON-fájlt egy szövegszerkesztőben.
+A parancsfájl beolvassa a konfigurációját a (z) *Scripts\arrconfig.js* fájlból. Nyissa meg a JSON-fájlt egy szövegszerkesztőben.
 
 ```json
 {
@@ -155,16 +155,16 @@ A parancsfájl beolvassa a konfigurációját a (z) *Scripts\arrconfig.js*fájlb
 
 A **accountSettings** csoporton belüli konfigurációt (fiókazonosító és kulcs) a modell kimutatása az [Unity](render-model.md)rövid útmutatóval, a hitelesítő adatokhoz hasonlóan kell kitölteni.
 
-A **assetConversionSettings** csoportban ügyeljen arra, hogy a fent látható módon módosítsa a **resourceGroup**, a **blobInputContainerName**és a **blobOutputContainerName** .
+A **assetConversionSettings** csoportban ügyeljen arra, hogy a fent látható módon módosítsa a **resourceGroup**, a **blobInputContainerName** és a **blobOutputContainerName** .
 Vegye figyelembe, hogy a **arrtutorialstorage** értékét a Storage-fiók létrehozása során kiválasztott egyedi névvel kell helyettesíteni.
 
 Módosítsa a **localAssetDirectoryPath** úgy, hogy a lemezen lévő könyvtárba mutasson, amely tartalmazza az átalakítani kívánt modellt. Ügyeljen arra, hogy az elérési úton lévő fordított perjeleket ("" \\ ) a dupla fordított perjel (" \\ \\ ") használatával megfelelően elkerülje.
 
-A **localAssetDirectoryPath** -ben megadott elérési útról származó összes adat fel lesz töltve a **blobInputContainerName** blob-tárolóba a **inputFolderPath**által megadott alútvonalon. Így a "D: tmp robot" könyvtár tartalmához tartozó példa konfigurációban a " \\ \\ arrtutorialstorage" Storage-fiók "arrinput" nevű blob-tárolójában lesz feltöltve a "robotConversion" elérési úton. A már meglévő fájlok felülírva lesznek.
+A **localAssetDirectoryPath** -ben megadott elérési útról származó összes adat fel lesz töltve a **blobInputContainerName** blob-tárolóba a **inputFolderPath** által megadott alútvonalon. Így a "D: tmp robot" könyvtár tartalmához tartozó példa konfigurációban a " \\ \\ arrtutorialstorage" Storage-fiók "arrinput" nevű blob-tárolójában lesz feltöltve a "robotConversion" elérési úton. A már meglévő fájlok felülírva lesznek.
 
 Módosítsa a **inputAssetPath** a konvertálandó modell elérési útjára – az elérési út a localAssetDirectoryPath viszonyítva van. \\Az elérési út elválasztója helyett használja a "/" karaktert. Tehát a "D: tmp robot" mappában található "robot. FBX" fájlhoz \\ használja a \\ "robot. FBX" fájlt.
 
-A modell átalakítása után a rendszer visszaírja a **blobOutputContainerName**által megadott tárolóba. A választható **outputFolderPath**megadásával egy alelérési út is megadható. A fenti példában az eredményül kapott "robot. arrAsset" a "konvertált/robot" alatt található kimeneti blob-tárolóba lesz másolva.
+A modell átalakítása után a rendszer visszaírja a **blobOutputContainerName** által megadott tárolóba. A választható **outputFolderPath** megadásával egy alelérési út is megadható. A fenti példában az eredményül kapott "robot. arrAsset" a "konvertált/robot" alatt található kimeneti blob-tárolóba lesz másolva.
 
 A **outputAssetFileName** konfigurációs beállítás határozza meg a konvertált eszköz nevét – a paraméter nem kötelező, és a kimeneti fájlnév a bemeneti fájlnévtől eltérő lesz.
 
@@ -188,8 +188,8 @@ A következőhöz hasonlónak kell lennie: ![Conversion.ps1](./media/successful-
 ### <a name="3-conversion-via-api-calls"></a>3. átalakítás API-hívások használatával
 
 A C# és a C++ API is biztosít egy belépési pontot a szolgáltatással való kommunikációhoz:
-* [C# AzureFrontend. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
-* [C++ AzureFrontend:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+* [C# RemoteRenderingClient. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.startassetconversionasync)
+* [C++ RemoteRenderingClient:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/remoterenderingclient#startassetconversionasync)
 
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>Új modell beszúrása a Gyorsindítás minta alkalmazásba
@@ -207,7 +207,7 @@ Az átalakítási parancsfájl által létrehozott SAS URI-azonosító csak 24 �
 1. Nyissa meg az [Azure Portalt](https://www.portal.azure.com)
 1. Kattintson a **Storage-fiók** erőforrás: ![ képernyőkép, amely kiemeli a kiválasztott Storage-fiók erőforrását.](./media/portal-storage-accounts.png)
 1. A következő képernyőn kattintson a bal oldali panel **Storage Explorer** elemére, és keresse meg a kimeneti modellt (*. arrAsset* fájlt) a *arroutput* blob Storage-tárolóban. Kattintson a jobb gombbal a fájlra, majd válassza a **közös hozzáférésű aláírás beolvasása** lehetőséget a helyi menüben: ![ aláírás-hozzáférés](./media/portal-storage-explorer.png)
-1. Megnyílik egy új képernyő, ahol kiválaszthatja a lejárati dátumot. Kattintson a **Létrehozás**gombra, és másolja ki a következő párbeszédpanelen megjelenő URI-t. Ez az új URI a parancsfájl által létrehozott ideiglenes URI-t váltja fel.
+1. Megnyílik egy új képernyő, ahol kiválaszthatja a lejárati dátumot. Kattintson a **Létrehozás** gombra, és másolja ki a következő párbeszédpanelen megjelenő URI-t. Ez az új URI a parancsfájl által létrehozott ideiglenes URI-t váltja fel.
 
 ## <a name="next-steps"></a>Következő lépések
 

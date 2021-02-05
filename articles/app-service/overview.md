@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936209"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592330"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
@@ -50,17 +50,17 @@ Az elavult futtatókörnyezeteket a rendszer rendszeres időközönként eltávo
 
 Ha egy elavult futtatókörnyezet el van rejtve a portálról, akkor az adott verziót használó meglévő helyek továbbra is futnak. Ha egy futtatókörnyezet teljesen el lett távolítva a App Service platformról, az Azure-előfizetéshez tartozó tulajdonos (ok) e-mailben értesítést fog kapni az Eltávolítás előtt.
 
-Ha egy olyan elavult futtatókörnyezet-verzióval rendelkező webalkalmazást kell létrehoznia, amely már nem jelenik meg a portálon, tekintse meg a nyelvi konfigurációs útmutatókat, amelyekkel megtudhatja, hogyan kérheti le a hely futtatókörnyezetének verzióját. Az Azure CLI használatával egy másik helyet is létrehozhat ugyanazzal a futtatókörnyezettel. Azt is megteheti, hogy a portál webalkalmazás paneljének **Exportálás sablonja** gombjára kattintva exportálja a hely ARM-sablonját. A sablon újbóli használatával telepítheti az új helyet ugyanazzal a futtatókörnyezettel és konfigurációval.
+Ha egy olyan elavult futtatókörnyezet-verzióval rendelkező webalkalmazást kell létrehoznia, amely már nem jelenik meg a portálon, tekintse meg a nyelvi konfigurációs útmutatókat, amelyekkel megtudhatja, hogyan kérheti le a hely futtatókörnyezetének verzióját. Az Azure CLI használatával egy másik helyet is létrehozhat ugyanazzal a futtatókörnyezettel. Azt is megteheti, hogy a portál webalkalmazás paneljének **Exportálás sablonja** gombjára kattintva exportálja a hely ARM-sablonját. Újból felhasználhatja ezt a sablont egy olyan új hely üzembe helyezéséhez, amely azonos futtatókörnyezettel és konfigurációval rendelkezik.
 
 ### <a name="limitations"></a>Korlátozások
 
 - A Linuxon App Service nem támogatott a [megosztott](https://azure.microsoft.com/pricing/details/app-service/plans/) díjszabási szinten. 
 - A Windows-és Linux-alkalmazások nem kombinálhatók ugyanabban a App Service tervben.  
-- Ugyanazon az erőforráscsoporton belül nem keverheti össze a Windows és Linux rendszerű alkalmazásokat ugyanabban a régióban.
+- A Windows-és Linux-alkalmazások nem kombinálhatók ugyanabban az erőforráscsoporthoz. Azonban a 2021. január 21. után létrehozott összes erőforráscsoport támogatja ezt a forgatókönyvet. A 2021. január 21. előtt létrehozott erőforráscsoportok esetén a vegyes platformon üzemelő példányok hozzáadásának lehetősége hamarosan elérhető lesz az Azure-régiókban (beleértve a nemzeti Felhőbeli régiókat is).
 - A Azure Portal csak a Linux-alkalmazásokhoz jelenleg használható funkciókat jeleníti meg. Ha a funkciók engedélyezve vannak, azok aktiválva lesznek a portálon.
 - Beépített rendszerképekre való üzembe helyezéskor a kód és a tartalom a webes tartalomhoz tartozó tárolási kötetet foglal le, amelyet az Azure Storage támogat. A kötet lemezének késése nagyobb és változó, mint a tároló fájlrendszerének késése. Azok az alkalmazások, amelyeknek a tartalomhoz való nagy olvasási hozzáférésre van szükségük, az egyéni tároló lehetőséggel is rendelkezhetnek, amely a tartalom kötetén található fájlokat a tároló fájlrendszerében helyezi el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első webalkalmazását.
 

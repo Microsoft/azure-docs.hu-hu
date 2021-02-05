@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0945b35f7aff8e93a1a3ba23b89db288db3d8efa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681869"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593891"
 ---
 # <a name="object-and-resource-lifetime"></a>Objektumok és erőforrások élettartama
 
@@ -32,7 +32,7 @@ Számos erőforrás nem változtatható, például a [Rácsvonalak](meshes.md) �
 
 ### <a name="built-in-resources"></a>Beépített erőforrások
 
-Az Azure Remote rendering tartalmaz néhány beépített erőforrást, amelyek a megfelelő azonosítójuk alapján tölthetők be `builtin://` a hívása során `AzureSession.Actions.LoadXYZAsync()` . Az elérhető beépített erőforrások az egyes szolgáltatások dokumentációjában szerepelnek. Az [égbolt szakasz](../overview/features/sky.md) például felsorolja a beépített Sky-textúrákat.
+Az Azure Remote rendering tartalmaz néhány beépített erőforrást, amelyek a megfelelő azonosítójuk alapján tölthetők be `builtin://` a hívása során `RenderingSession.Connection.LoadXYZAsync()` . Az elérhető beépített erőforrások az egyes szolgáltatások dokumentációjában szerepelnek. Az [égbolt szakasz](../overview/features/sky.md) például felsorolja a beépített Sky-textúrákat.
 
 ## <a name="general-lifetime"></a>Általános élettartam
 
@@ -40,7 +40,7 @@ Az összes objektum és erőforrás élettartama a kapcsolódáshoz van kötve. 
 
 A gyakorlatban a leválasztást követően ugyanazt az erőforrást egy munkamenetbe tölti be, ami általában gyorsabb, mint az első alkalommal. Ez azért van így, mert a legtöbb erőforrást először le kell tölteni az Azure Storage-ból, ami nem szükséges a második alkalommal, így jelentős mennyiségű időt takaríthat meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Entitások](entities.md)
 * [Összetevők](components.md)

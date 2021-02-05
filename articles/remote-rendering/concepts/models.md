@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff69486ab24c999e40b0afc13c91d6f729c352a0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0d1e66d09db3e3934871ed15493feb685d1cbe6a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206560"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593874"
 ---
 # <a name="models"></a>Modellek
 
@@ -36,94 +36,105 @@ A modell konvertálása után az Azure Blob Storage-ból tölthető be a futtat�
 
 Két különböző betöltési függvény van, amelyek eltérnek az eszköz blob Storage-ban való címzésének módjától:
 
-* A modellt a SAS URI-ja tudja kezelni. A megfelelő betöltési függvény `LoadModelFromSASAsync` paraméterrel van ellátva `LoadModelFromSASParams` . A [beépített modellek](../samples/sample-model.md)betöltésekor ezt a változatot is használhatja.
-* A modellt közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben a megfelelő betöltési függvény a `LoadModelAsync` paraméter `LoadModelParams` .
+* A modellt közvetlenül a blob Storage-paraméterekkel lehet megoldani, abban az esetben, ha a [blob Storage a fiókhoz van társítva](../how-tos/create-an-account.md#link-storage-accounts). Ebben az esetben a megfelelő betöltési függvény a `LoadModelAsync` paraméter `LoadModelOptions` .
+* A modellt a SAS URI-ja tudja kezelni. A megfelelő betöltési függvény `LoadModelFromSasAsync` paraméterrel van ellátva `LoadModelFromSasOptions` . A [beépített modellek](../samples/sample-model.md)betöltésekor ezt a változatot is használhatja.
 
-A következő kódrészletek bemutatják, hogyan tölthetők be modellek bármelyik függvénnyel. Egy modell SAS URI-val való betöltéséhez használja az alábbihoz hasonló kódot:
+A következő kódrészletek bemutatják, hogyan tölthetők be modellek bármelyik függvénnyel. A modellek blob Storage-paraméterekkel való betöltéséhez használja az alábbihoz hasonló kódot:
 
-```csharp
-async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
+
+```cs
+async void LoadModel(RenderingSession session, Entity modelParent, string storageAccount, string containerName, string assetFilePath)
 {
     // load a model that will be parented to modelParent
-    var modelParams = new LoadModelFromSASParams(modelUri, modelParent);
-
-    var loadOp = session.Actions.LoadModelFromSASAsync(modelParams);
-
-    loadOp.ProgressUpdated += (float progress) =>
-    {
-        Debug.Log($"Loading: {progress * 100.0f}%");
-    };
-
-    await loadOp.AsTask();
-}
-```
-
-```cpp
-ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
-{
-    LoadModelFromSASParams modelParams;
-    modelParams.ModelUrl = modelUri;
-    modelParams.Parent = modelParent;
-
-    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelFromSASAsync(modelParams);
-
-    loadOp->Completed([](const ApiHandle<LoadModelAsync>& async)
-    {
-        printf("Loading: finished.");
-    });
-    loadOp->ProgressUpdated([](float progress)
-    {
-        printf("Loading: %.1f%%", progress*100.f);
-    });
-
-    return loadOp;
-}
-```
-
-Ha közvetlenül a blob Storage-paraméterek használatával szeretne betölteni egy modellt, az alábbi kódrészlethez hasonló kódot használjon:
-
-```csharp
-async void LoadModel(AzureSession session, Entity modelParent, string storageAccount, string containerName, string assetFilePath)
-{
-    // load a model that will be parented to modelParent
-    var modelParams = new LoadModelParams(
+    var modelOptions = new LoadModelOptions(
         storageAccount, // storage account name + '.blob.core.windows.net', e.g., 'mystorageaccount.blob.core.windows.net'
         containerName,  // name of the container in your storage account, e.g., 'mytestcontainer'
         assetFilePath,  // the file path to the asset within the container, e.g., 'path/to/file/myAsset.arrAsset'
         modelParent
     );
 
-    var loadOp = session.Actions.LoadModelAsync(modelParams);
+    var loadOp = session.Connection.LoadModelAsync(modelOptions, (float progress) =>
+    {
+        Debug.WriteLine($"Loading: {progress * 100.0f}%");
+    });
 
-    // ... (identical to the SAS URI snippet above)
+    await loadOp;
 }
 ```
 
 ```cpp
-ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
+void LoadModel(ApiHandle<RenderingSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
 {
-    LoadModelParams modelParams;
-    modelParams.Parent = modelParent;
-    modelParams.Blob.StorageAccountName = std::move(storageAccount);
-    modelParams.Blob.BlobContainerName = std::move(containerName);
-    modelParams.Blob.AssetPath = std::move(assetFilePath);
+    LoadModelOptions modelOptions;
+    modelOptions.Parent = modelParent;
+    modelOptions.Blob.StorageAccountName = std::move(storageAccount);
+    modelOptions.Blob.BlobContainerName = std::move(containerName);
+    modelOptions.Blob.AssetPath = std::move(assetFilePath);
 
-    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelAsync(modelParams);
-    // ... (identical to the SAS URI snippet above)
+    ApiHandle<LoadModelResult> result;
+    session->Connection()->LoadModelAsync(modelOptions,
+        // completion callback
+        [](Status status, ApiHandle<LoadModelResult> result)
+        {
+            printf("Loading: finished.");
+        },
+        // progress callback
+        [](float progress)
+        {
+            printf("Loading: %.1f%%", progress * 100.f);
+        }
+    );
+}
+```
+
+Ha SAS-token használatával szeretne betölteni egy modellt, használja az alábbi kódrészlethez hasonló kódot:
+
+```cs
+async void LoadModel(RenderingSession session, Entity modelParent, string modelUri)
+{
+    // load a model that will be parented to modelParent
+    var modelOptions = new LoadModelFromSasOptions(modelUri, modelParent);
+
+    var loadOp = session.Connection.LoadModelFromSasAsync(modelOptions, (float progress) =>
+    {
+        Debug.WriteLine($"Loading: {progress * 100.0f}%");
+    });
+
+    await loadOp;
+}
+```
+
+```cpp
+void LoadModel(ApiHandle<RenderingSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
+{
+    LoadModelFromSasOptions modelOptions;
+    modelOptions.ModelUri = modelUri;
+    modelOptions.Parent = modelParent;
+
+    ApiHandle<LoadModelResult> result;
+    session->Connection()->LoadModelFromSasAsync(modelOptions,
+        // completion callback
+        [](Status status, ApiHandle<LoadModelResult> result)
+        {
+            printf("Loading: finished.");
+        },
+        // progress callback
+        [](float progress)
+        {
+            printf("Loading: %.1f%%", progress * 100.f);
+        }
+    );
 }
 ```
 
 Ezután áthaladhat az entitás-hierarchián, és módosíthatja az entitásokat és összetevőket. Ha ugyanaz a modell többször is be van töltve, több példányt hoz létre, amelyek mindegyike az entitás/összetevő struktúrájának saját példányával rendelkezik. Mivel a rácsvonalak, az anyagok és a textúrák [közös erőforrások](../concepts/lifetime.md), az adataik azonban nem lesznek újra betöltve. Ezért a modell többszöri létrehozása nem éri el a viszonylag kevés memória terhelését.
 
-> [!CAUTION]
-> Az *ARR összes aszinkron függvénye aszinkron műveleti* objektumokat ad vissza. A művelet befejezését követően az objektumokra mutató hivatkozást kell tárolnia. Ellenkező esetben előfordulhat, hogy a C# Garbage Collector már korán törli a műveletet, és soha nem tud befejezni. A *várakozási* feltétele alatt a mintakód garantálja, hogy a (z) "loadOp" helyi változó hivatkozást tartalmaz, amíg a modell betöltése be nem fejeződik. Ha azonban a *befejezett* eseményt szeretné használni, az aszinkron műveletet egy tag változóban kell tárolnia.
-
 ## <a name="api-documentation"></a>API-dokumentáció
 
-* [C# RemoteManager. LoadModelAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelasync)
-* [C# RemoteManager. LoadModelFromSASAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadmodelfromsasasync)
-* [C++ RemoteManager:: LoadModelAsync ()](/cpp/api/remote-rendering/remotemanager#loadmodelasync)
-* [C++ RemoteManager:: LoadModelFromSASAsync ()](/cpp/api/remote-rendering/remotemanager#loadmodelfromsasasync)
+* [C# RenderingConnection. LoadModelAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadmodelasync)
+* [C# RenderingConnection. LoadModelFromSasAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadmodelfromsasasync)
+* [C++ RenderingConnection:: LoadModelAsync ()](/cpp/api/remote-rendering/renderingconnection#loadmodelasync)
+* [C++ RenderingConnection:: LoadModelFromSasAsync ()](/cpp/api/remote-rendering/renderingconnection#loadmodelfromsasasync)
 
 ## <a name="next-steps"></a>Következő lépések
 

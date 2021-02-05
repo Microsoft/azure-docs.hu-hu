@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 662c28196b06f5fbe49f69cb7145fdd33805e000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15822c357db63db81e6c1efda2467279a98d7c34
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019045"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594146"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>A Unity játékobjektumainak és összetevőinek használata
 
@@ -25,42 +25,21 @@ Ennek következtében az Azure-alapú távoli renderelés Unity-integrációja t
 
 Modell betöltésekor a betöltött modell gyökerére mutató hivatkozás fog megjelenni. Ez a hivatkozás nem Unity game-objektum, de a bővítmény metódussal is kikapcsolható `Entity.GetOrCreateGameObject()` . Ez a függvény egy típusú argumentumot vár `UnityCreationMode` . Ha átadja `CreateUnityComponents` , az újonnan létrehozott Unity game objektum emellett a gazdagépen található összes távoli renderelési összetevőhöz tartozó proxy-összetevőkkel is feltöltve lesz. Ajánlott azonban `DoNotCreateUnityComponents` a minimális terhelés megtartása érdekében.
 
-### <a name="load-model-with-task"></a>Modell betöltése a feladattal
-
-```cs
-LoadModelAsync _pendingLoadTask = null;
-void LoadModelWithTask()
-{
-    _pendingLoadTask = RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine"));
-
-    _pendingLoadTask.Completed += (LoadModelAsync res) =>
-    {
-        // turn the root object into a Unity game object
-        var gameObject = res.Result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
-        _pendingLoadTask = null;
-    };
-
-    // also listen to progress updates:
-    _pendingLoadTask.ProgressUpdated += (float progress) =>
-    {
-        // progress is a fraction in [0..1] range
-        int percentage = (int)(progress * 100.0f);
-        // do something...
-        // Since the updates are triggered by the main thread, we may access unity objects here.
-    };
-}
-```
-
 ### <a name="load-model-with-unity-coroutines"></a>Modell betöltése Unity-munkarutinokkal
 
 ```cs
-IEnumerator LoadModelWithCoroutine()
+IEnumerator LoadModelWithCoroutine(RenderingSession session)
 {
-    LoadModelAsync task = RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine"));
+    float currentProgress = 0.0f;
+    var task = session.Connection.LoadModelFromSasAsync(new LoadModelFromSasOptions("builtin://Engine"),
+        (float progress) =>
+        {
+            currentProgress = progress;
+        });
 
-    while (!task.IsCompleted)
+    while (!task.IsCompleted && !task.IsFaulted)
     {
-        int percentage = (int)(task.Progress * 100.0f);
+        int percentage = (int)(currentProgress * 100.0f);
         yield return null;
     }
 
@@ -68,22 +47,20 @@ IEnumerator LoadModelWithCoroutine()
     {
         var gameObject = task.Result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
     }
-
-    task = null;
 }
 ```
 
 ### <a name="load-model-with-await-pattern"></a>Modell betöltése várakozási mintával
 
 ```cs
-async void LoadModelWithAwait()
+async void LoadModelWithAwait(RenderingSession session)
 {
-    var result = await RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine")).AsTask();
+    var result = await session.Connection.LoadModelFromSasAsync(new LoadModelFromSasOptions("builtin://Engine"), null);
     var gameObject = result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
 }
 ```
 
-A fenti kód a modellnek az SAS-n keresztüli elérési útját használta, mert a beépített modell be van töltve. A modell kezelése blob-tárolókkal (a és a használatával `LoadModelAsync` `LoadModelParams` ) teljesen analogously működik.
+A fenti kód a modellnek az SAS-n keresztüli elérési útját használta, mert a beépített modell be van töltve. A modell kezelése blob-tárolókkal (a és a használatával `LoadModelAsync` `LoadModelOptions` ) teljesen analogously működik.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 

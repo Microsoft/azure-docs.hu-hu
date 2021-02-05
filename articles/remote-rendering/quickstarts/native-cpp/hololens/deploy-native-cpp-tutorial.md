@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: b469f0cae1e356c47bfe60af99c4fa2e73eab78d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724969"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594027"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Gyors útmutató: natív C++ minta üzembe helyezése a HoloLens-ben
 
@@ -61,26 +61,26 @@ Váltson a Build konfigurációra a *hibakereséshez* (vagy *kiadáshoz*) és a 
 
 ![Visual Studio-konfiguráció](media/vs-config-native-cpp-tutorial.png)
 
-Mivel a fiók hitelesítő adatai az oktatóanyag hardcoded találhatók, módosítsa azokat érvényes hitelesítő adatokra. Ehhez nyissa meg a fájlt a `HolographicAppMain.cpp` Visual Studióban, és változtassa meg a felületet a következő osztály konstruktorán belül `HolographicAppMain` :
+Mivel a fiók hitelesítő adatai az oktatóanyag hardcoded találhatók, módosítsa azokat érvényes hitelesítő adatokra. Ehhez nyissa meg a fájlt a `HolographicAppMain.cpp` Visual Studióban, és módosítsa azt a részt, ahol az ügyfél a következő osztály konstruktorán belül jön létre `HolographicAppMain` :
 
 ```cpp
-// 2. Create front end
+// 2. Create Client
 {
     // Users need to fill out the following with their account data and model
-    RR::AzureFrontendAccountInfo init;
+    RR::SessionConfiguration init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
-    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
+    init.RemoteRenderingDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
-    m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
+    m_client = RR::ApiHandle(RR::RemoteRenderingClient(init));
 }
 ```
 
 Pontosabban módosítsa a következő értékeket:
-* `init.AccountId`, `init.AccountKey` és `init.AccountAuthenticationDomain` a fiókja adatait is használhatja. Lásd: a [fiókadatok beolvasása](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* Itt adhatja meg, hogy hol szeretné létrehozni a távoli renderelési munkamenetet a karakterlánc régió részének más régiókban való módosításával, például: `init.AccountDomain` `westus2` `"westeurope.mixedreality.azure.com"` .
+* `init.AccountId`, `init.AccountKey` és `init.AccountDomain` a fiókja adatait is használhatja. Lásd: a [fiókadatok beolvasása](../../../how-tos/create-an-account.md#retrieve-the-account-information).
+* Itt adhatja meg, hogy hol szeretné létrehozni a távoli renderelési munkamenetet a karakterlánc régió részének más régiókban való módosításával, például: `init.RemoteRenderingDomain` `westus2` `"westeurope.mixedreality.azure.com"` .
 * Emellett a `m_sessionOverride` meglévő munkamenet-azonosítóra is módosítható. A munkamenetek ezen a mintán kívül is létrehozhatók, például [a PowerShell-parancsfájl](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) használatával vagy a [munkamenet-REST API](../../../how-tos/session-rest-api.md#create-a-session) közvetlen használatával.
 Ha a mintát többször kell futtatni, akkor a mintán kívüli munkamenet létrehozása ajánlott. Ha a rendszer nem ad át munkamenetet, a minta minden indításkor létrehoz egy új munkamenetet, amely több percet is igénybe vehet.
 
@@ -96,7 +96,7 @@ A minta alkalmazásnak el kell indulnia, és egy szöveges panelnek kell megjele
 
  Ha később el szeretné indítani a mintát, azt a HoloLens Start menüjéből is megtalálhatja, de előfordulhat, hogy egy lejárt munkamenet-AZONOSÍTÓval van lefordítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a rövid útmutató egy olyan oktatóanyag eredményein alapul, amely elmagyarázza, hogyan integrálható a távoli rendereléssel kapcsolatos összes darab egy készlet *holografikus alkalmazásba*. A szükséges lépések elsajátításához kövesse az alábbi oktatóanyagot:
 

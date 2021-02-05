@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 3dd46f4033a568a278d7006c0d5aab451496ff47
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397223"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594265"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazási tűzfal migrálása v1-ről v2-re
 
@@ -125,7 +125,7 @@ A szkript futtatása:
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      PSApplicationGatewayTrustedRootCertificate-objektumok listájának létrehozásához lásd: [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+      PSApplicationGatewayTrustedRootCertificate-objektumok listájának létrehozásához lásd: [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate).
    * **privateipaddress tulajdonságot: [string]: nem kötelező**. Egy adott magánhálózati IP-címet, amelyet hozzá szeretne rendelni az új v2-átjáróhoz.  Ennek az új v2-átjáróhoz hozzárendelt VNet kell származnia. Ha ez nincs megadva, a parancsfájl egy magánhálózati IP-címet foglal le a v2-átjáróhoz.
    * **publicIpResourceId: [string]: nem kötelező**. A meglévő nyilvános IP-cím (standard SKU) erőforrás resourceId az előfizetésben, amelyet le szeretne foglalni az új v2-átjáróra. Ha ez nincs megadva, a parancsfájl egy új nyilvános IP-címet foglal le ugyanabban az erőforráscsoporthoz. A név a v2-átjáró neve, amely *-IP-* címmel van hozzáfűzve.
    * **validateMigration: [kapcsoló]: nem kötelező**. Akkor használja ezt a paramétert, ha azt szeretné, hogy a parancsfájl a v2-átjáró létrehozása és a konfigurációs másolat után elvégezze az alapszintű konfigurációs összehasonlítások érvényességét. Alapértelmezés szerint a rendszer nem végez érvényesítést.
@@ -200,6 +200,6 @@ Nem. Jelenleg a parancsfájl nem támogatja a kulcstartóban lévő tanúsítvá
   
 Az Azure-támogatással kapcsolatban a "konfiguráció és beállítás/Migrálás v2 SKU-ra" című témakörben olvashat. További információ az [Azure-támogatásról](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a Application Gateway v2-ről](application-gateway-autoscaling-zone-redundant.md)

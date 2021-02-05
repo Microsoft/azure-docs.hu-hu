@@ -3,14 +3,14 @@ title: Template deployment mi a teendő
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/05/2021
 ms.author: tomfitz
-ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673970"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591624"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-sablon üzembe helyezése what-if művelettel
 
@@ -18,13 +18,9 @@ Azure Resource Manager sablon (ARM-sablon) üzembe helyezése előtt megtekinthe
 
 Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet. Mi a teendő, ha az erőforráscsoport, az előfizetés, a felügyeleti csoport és a bérlői szintű üzemelő példányok esetében támogatott.
 
-## <a name="install-azure-powershell-module"></a>Azure PowerShell-modul telepítése
+## <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
 
 A mi-ha a PowerShellben való használatához **az az modul 4,2-es vagy újabb** verziójával kell rendelkeznie.
-
-A szükséges modul telepítése előtt azonban győződjön meg róla, hogy a PowerShell Core (6. x vagy 7. x). Ha a PowerShell 5. x vagy korábbi verziója van telepítve, [frissítse a PowerShell-verzióját](/powershell/scripting/install/installing-powershell). A szükséges modult nem telepítheti a PowerShell 5. x vagy régebbi verzióján.
-
-### <a name="install-latest-version"></a>A legújabb verzió telepítése
 
 A modul telepítéséhez használja a következőt:
 
@@ -326,7 +322,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 A mi-if művelet támogatja a [telepítési mód](deployment-modes.md)használatát. Ha a befejezési módra van állítva, a sablonban nem szereplő erőforrások törlődnek. A következő példa olyan sablont telepít [, amely nem rendelkezik teljes módban definiált erőforrásokkal](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
-A változásoknak a sablon üzembe helyezése előtti áttekintéséhez használja a jóváhagyást kérő confirm kapcsolót az üzembe helyezési parancsban. Ha a változások azok, amelyekre számított, jóváhagyhatja az üzembe helyezés befejezését.
+A változásoknak a sablon üzembe helyezése előtti áttekintéséhez használja a jóváhagyást kérő confirm kapcsolót az üzembe helyezési parancsban. Ha a módosítások a várt módon változnak, válaszoljon arra, hogy a központi telepítés befejeződjön.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

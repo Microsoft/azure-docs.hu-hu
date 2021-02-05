@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 9c5ad4b21b428f38bbd4d9f7d19fa633c5161b5c
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701942"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594180"
 ---
 # <a name="sky-reflections"></a>Égbolt tükröződése
 
@@ -41,57 +41,41 @@ A világítástechnikai modellel kapcsolatos további információkért tekintse
 A környezeti Térkép módosításához mindössze annyit kell tennie, hogy [betölti a textúrát](../../concepts/textures.md) , és megváltoztatja a munkamenetet `SkyReflectionSettings` :
 
 ```cs
-LoadTextureAsync _skyTextureLoad = null;
-void ChangeEnvironmentMap(AzureSession session)
+async void ChangeEnvironmentMap(RenderingSession session)
 {
-    _skyTextureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap));
-
-    _skyTextureLoad.Completed += (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                try
-                {
-                    session.Actions.SkyReflectionSettings.SkyReflectionTexture = res.Result;
-                }
-                catch (RRException exception)
-                {
-                    System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
-                }
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-        };
+    try
+    {
+        Texture skyTex = await session.Connection.LoadTextureFromSasAsync(new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap));
+        session.Connection.SkyReflectionSettings.SkyReflectionTexture = skyTex;
+    }
+    catch (RRException exception)
+    {
+        System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
+    }
 }
 ```
 
 ```cpp
-void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+void ChangeEnvironmentMap(ApiHandle<RenderingSession> session)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureFromSasOptions params;
     params.TextureType = TextureType::CubeMap;
-    params.TextureUrl = "builtin://VeniceSunset";
-    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-
-    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
+    params.TextureUri = "builtin://VeniceSunset";
+    session->Connection()->LoadTextureFromSasAsync(params, [&](Status status, ApiHandle<Texture> res) {
+        if (status == Status::OK)
         {
-            if (res->GetIsRanToCompletion())
-            {
-                ApiHandle<SkyReflectionSettings> settings = session->Actions()->GetSkyReflectionSettings();
-                settings->SetSkyReflectionTexture(res->GetResult());
-            }
-            else
-            {
-                printf("Texture loading failed!\n");
-            }
-        });
+            ApiHandle<SkyReflectionSettings> settings = session->Connection()->GetSkyReflectionSettings();
+            settings->SetSkyReflectionTexture(res);
+        }
+        else
+        {
+            printf("Texture loading failed!\n");
+        }
+    });
 }
-
 ```
 
-Vegye figyelembe, hogy a `LoadTextureFromSASAsync` rendszer a fenti változatot használja, mert a beépített textúra be van töltve. Ha [csatolt blob-tárolóból](../../how-tos/create-an-account.md#link-storage-accounts)tölt be betöltést, használja a `LoadTextureAsync` Variant elemet.
+Vegye figyelembe, hogy a `LoadTextureFromSasAsync` rendszer a fenti változatot használja, mert a beépített textúra be van töltve. Ha [csatolt blob-tárolóból](../../how-tos/create-an-account.md#link-storage-accounts)tölt be betöltést, használja a `LoadTextureAsync` Variant elemet.
 
 ## <a name="sky-texture-types"></a>Égbolt típusú textúrák
 
@@ -105,7 +89,7 @@ Hivatkozásként itt látható egy csomagolatlan cubemap:
 
 ![Csomagolatlan cubemap](media/Cubemap-example.png)
 
-`AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` A with paranccsal `TextureType.CubeMap` betöltheti a cubemap-textúrákat.
+`RenderingSession.Connection.LoadTextureAsync` /  `LoadTextureFromSasAsync` A with paranccsal `TextureType.CubeMap` betöltheti a cubemap-textúrákat.
 
 ### <a name="sphere-environment-maps"></a>Gömb-környezeti térképek
 
@@ -113,13 +97,13 @@ A 2D-mintázatok környezeti térképként való használatakor a képnek [gömb
 
 ![Egy Sky-rendszerkép a gömb koordinátáiban](media/spheremap-example.png)
 
-`AzureSession.Actions.LoadTextureAsync`A with paranccsal `TextureType.Texture2D` betöltheti a gömb-környezeti térképeket.
+`RenderingSession.Connection.LoadTextureAsync`A with paranccsal `TextureType.Texture2D` betöltheti a gömb-környezeti térképeket.
 
 ## <a name="built-in-environment-maps"></a>Beépített környezeti térképek
 
 Az Azure Remote rendering számos beépített környezeti leképezést biztosít, amelyek mindig elérhetők. Az összes beépített környezeti Térkép a cubemaps.
 
-|Azonosító                         | Leírás                                              | Ábrán                                                      |
+|Azonosító                         | Description                                              | Ábrán                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Különféle szalagos fények, világos beltéri alapszintű megvilágítás    | ![Egy objektum megvilágításához használt SkyBox](media/autoshop.png)
 |builtin://BoilerRoom               | Világos beltéri fény beállítása, több ablakos fények      | ![Objektum BoilerRoom SkyBox](media/boiler-room.png)
@@ -138,8 +122,8 @@ Az Azure Remote rendering számos beépített környezeti leképezést biztosít
 
 ## <a name="api-documentation"></a>API-dokumentáció
 
-* [C# RemoteManager. SkyReflectionSettings tulajdonság](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
-* [C++ RemoteManager:: SkyReflectionSettings ()](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
+* [C# RenderingConnection. SkyReflectionSettings tulajdonság](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.skyreflectionsettings)
+* [C++ RenderingConnection:: SkyReflectionSettings ()](/cpp/api/remote-rendering/renderingconnection#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Következő lépések
 

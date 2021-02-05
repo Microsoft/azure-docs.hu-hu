@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 915aca5f7400496aacb3c3cf248120dff39d747c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468543"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594451"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Oktatóanyag: a hálózat konfigurálása Azure Stack Edge mini R-hez
 
@@ -126,6 +126,7 @@ Az eszközhöz tartozó hálózat konfigurálásához kövesse az alábbi lépé
    - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot, egy átjárót és egy DNS-t.
    - Ha a DHCP nincs engedélyezve, szükség esetén statikus IP-címeket is hozzárendelhet.
    - A hálózati adaptert IPv4-ként is konfigurálhatja.
+   - A hálózati kártya (NIC) összevonása vagy a hivatkozás összesítése nem támogatott Azure Stack Edge esetén.
    - Bármely port sorozatszáma a csomópont sorozatszámának felel meg. A K sorozatú eszközök esetében csak egy sorozatszám jelenik meg.
 
      >[!NOTE] 
@@ -152,7 +153,7 @@ Az alábbi lépéseket követve engedélyezheti a számítást és konfigurálha
     > A Kubernetes on Azure Stack Edge a 172.27.0.0/16 alhálózatot használja a pod és a 172.28.0.0/16 alhálózat számára a szolgáltatáshoz. Győződjön meg arról, hogy ezek nincsenek használatban a hálózaton. Ha ezek az alhálózatok már használatban vannak a hálózaton, ezeket az alhálózatokat a `Set-HcsKubeClusterNetworkInfo` parancsmagnak az eszköz PowerShell-felületéről való futtatásával módosíthatja. További információkért lásd: a [Kubernetes Pod és a Service alhálózatok módosítása](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-1. **Kubernetes külső szolgáltatás IP**-címeinek kiosztása. Ezek a terheléselosztási IP-címek is. Ezek a folytonos IP-címek olyan szolgáltatások, amelyeket a Kubernetes-fürtön kívül szeretne közzétenni, és a statikus IP-címtartományt az elérhető szolgáltatások számától függően kell megadnia. 
+1. **Kubernetes külső szolgáltatás IP**-címeinek kiosztása. Ezek a terheléselosztási IP-címek is. Ezek a folytonos IP-címek olyan szolgáltatásokhoz tartoznak, amelyeket a Kubernetes-fürtön kívül kíván tenni, és a statikus IP-címtartományt az elérhető szolgáltatások számától függően kell megadnia. 
     
     > [!IMPORTANT]
     > Javasoljuk, hogy legalább 1 IP-címet határozzon meg a Azure Stack Edge mini R hub szolgáltatáshoz a számítási modulok eléréséhez. Ezután további IP-címeket is megadhat más szolgáltatások/IoT Edge modulok számára (1/szolgáltatás/modul), amelyeket a fürtön kívülről kell elérni. A szolgáltatás IP-címei később is frissíthetők. 
@@ -192,7 +193,7 @@ Ez egy opcionális konfiguráció.
 2. A beállítások alkalmazása után kattintson a **Tovább gombra: eszköz**.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746104"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592755"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -24,7 +24,7 @@ Alapértelmezés szerint az Azure Application Gateway mintavételek háttér-kis
 
 ### <a name="how-to-check-backend-health"></a>A háttér állapotának ellenõrzése
 
-A háttérbeli készlet állapotának ellenőrzését a Azure Portal **háttér állapota** lapján végezheti el. A [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), a [CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)vagy a [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)is használható.
+A háttérbeli készlet állapotának ellenőrzését a Azure Portal **háttér állapota** lapján végezheti el. A [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), a [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)vagy a [REST API](/rest/api/application-gateway/applicationgateways/backendhealth)is használható.
 
 Az alábbi módszerek bármelyikével lekért állapot a következők egyike lehet:
 
@@ -119,7 +119,7 @@ Az időtúllépési érték növeléséhez kövesse az alábbi lépéseket:
 
 1.  Ha az Azure alapértelmezett DNS-t használja, egyeztessen a tartománynév-regisztrálóval arról, hogy megfelelő-e A rekord vagy CNAME rekord leképezése.
 
-1.  Ha a tartomány magán-vagy belső, próbálja meg feloldani az azonos virtuális hálózatban lévő virtuális gépről. Ha meg tudja oldani, indítsa újra Application Gateway és ellenőrizze újra. Application Gateway újraindításához [le kell állítania](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) és [el kell indítania](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) a kapcsolódó erőforrásokban leírt PowerShell-parancsokat.
+1.  Ha a tartomány magán-vagy belső, próbálja meg feloldani az azonos virtuális hálózatban lévő virtuális gépről. Ha meg tudja oldani, indítsa újra Application Gateway és ellenőrizze újra. Application Gateway újraindításához [le kell állítania](/powershell/module/azurerm.network/stop-azurermapplicationgateway) és [el kell indítania](/powershell/module/azurerm.network/start-azurermapplicationgateway) a kapcsolódó erőforrásokban leírt PowerShell-parancsokat.
 
 #### <a name="tcp-connect-error"></a>TCP-csatlakozási hiba
 
@@ -395,7 +395,7 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
 1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan**-e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
 
-<a name="next-steps"></a>További lépések
+<a name="next-steps"></a>Következő lépések
 ----------
 
 További információ a [Application Gateway diagnosztika és naplózás](./application-gateway-diagnostics.md).

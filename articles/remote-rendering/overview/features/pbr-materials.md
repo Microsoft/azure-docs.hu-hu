@@ -5,18 +5,18 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555566"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591939"
 ---
 # <a name="pbr-materials"></a>PBR-anyagok
 
 A *pbr-anyagok* az Azure távoli renderelés egyik támogatott anyag- [típusa](../../concepts/materials.md) . Ezeket olyan [Rácsvonalak](../../concepts/meshes.md) használják, amelyeknek reális világítást kell kapniuk.
 
-A PBR a **P** hysically **B** ased **R** -megsértését jelöli, és azt jelenti, hogy az anyag fizikailag kézenfekvő módon mutatja be egy felület vizuális tulajdonságait, így a reális eredmények az összes megvilágítás esetén lehetségesek. A legtöbb modern játék-végrehajtó eszköz támogatja a PBR-anyagokat, mivel ezek a valós idejű rendereléshez szükséges valós forgatókönyvek legjobb közelítését jelentik.
+A PBR a **P** hysically **B** ased **R**-megsértését jelöli, és azt jelenti, hogy az anyag fizikailag kézenfekvő módon mutatja be egy felület vizuális tulajdonságait, így a reális eredmények az összes megvilágítás esetén lehetségesek. A legtöbb modern játék-végrehajtó eszköz támogatja a PBR-anyagokat, mivel ezek a valós idejű rendereléshez szükséges valós forgatókönyvek legjobb közelítését jelentik.
 
 ![Az ARR által megjelenített Helmet glTF-minta modell](media/helmet.png)
 
@@ -51,7 +51,7 @@ Ezek a tulajdonságok az összes anyagnál közösek:
 
 ## <a name="pbr-material-properties"></a>PBR-anyagok tulajdonságai
 
-A fizikailag vezérelt renderelés lényege, hogy a *BaseColor* , a *fémesség* és a *érdesség* tulajdonságait használja a valós anyagok széles skálájának emulálása érdekében. A PBR részletes leírása meghaladja a jelen cikk hatókörét. További információ a PBR-ról: [egyéb források](http://www.pbr-book.org). A következő tulajdonságok a PBR-anyagokra vonatkoznak:
+A fizikailag vezérelt renderelés lényege, hogy a *BaseColor*, a *fémesség* és a *érdesség* tulajdonságait használja a valós anyagok széles skálájának emulálása érdekében. A PBR részletes leírása meghaladja a jelen cikk hatókörét. További információ a PBR-ról: [egyéb források](http://www.pbr-book.org). A következő tulajdonságok a PBR-anyagokra vonatkoznak:
 
 * **baseColor:** A PBR-anyagokban a *albedó színét* az *alapszínnek* nevezzük. Az Azure távoli renderelés során a *albedó Color* tulajdonság már szerepel a közös anyag tulajdonságai között, így nincs további alapszín tulajdonság.
 
@@ -92,9 +92,9 @@ Nem mindig lehetséges a *ragyogás* -ről a *fémekre* váltani, mivel olyan *(
 ## <a name="api-documentation"></a>API-dokumentáció
 
 * [C# PbrMaterial osztály](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C# RenderingConnection. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
 * [C++ PbrMaterial osztály](/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager:: CreateMaterial ()](/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C++ RenderingConnection:: CreateMaterial ()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>Következő lépések
 

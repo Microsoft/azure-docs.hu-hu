@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: sashan
-ms.author: sashan
-ms.reviewer: sstein, sashan
+author: emlisa
+ms.author: emlisa
+ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095440"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593418"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Az általános célú szolgáltatási rétegek magas rendelkezésre állású ar
 ![Zóna redundáns konfigurációja általános célú](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> A zóna redundáns adatbázisokat támogató régiókkal kapcsolatos naprakész információ: [szolgáltatások támogatása régiónként](../../availability-zones/az-region.md). A zóna redundáns konfigurációja csak akkor érhető el, ha a Gen5 számítási hardver van kiválasztva. Ez a funkció nem érhető el az SQL felügyelt példányában.
+> A zóna redundáns konfigurációja csak akkor érhető el, ha a Gen5 számítási hardver van kiválasztva. Ez a funkció nem érhető el az SQL felügyelt példányában. Az általános célú zóna redundáns konfigurációja csak a következő régiókban érhető el: USA keleti régiója, USA 2. keleti régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Japán, Egyesült Királyság déli régiója és Közép-Németország.
 
 > [!NOTE]
 > A 80 virtuális mag méretű adatbázisok általános célú a zóna redundáns konfigurációjával a teljesítmény romlását tapasztalhatja. Emellett az olyan műveletek, mint például a biztonsági mentés, a visszaállítás, az adatbázis-másolás és a Geo-DR kapcsolatok beállítása, az 1 TB-nál nagyobb méretű önálló adatbázisok esetében lassabb teljesítményt tapasztalhatnak. 

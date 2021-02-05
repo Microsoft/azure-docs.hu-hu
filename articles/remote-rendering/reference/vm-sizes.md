@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e2687954fb05ce826e780ae0dbd3931d899885f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988044"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594400"
 ---
 # <a name="server-sizes"></a>Kiszolgálóméretek
 
@@ -30,26 +30,35 @@ Ha a rendering on on a "standard" kiszolgáló mérete eléri ezt a korlátozás
 A kívánt kiszolgáló-konfigurációt meg kell adni a renderelési munkamenet inicializálási idején. Futó munkameneten belül nem módosítható. A következő kódrészletek azt mutatják be, hogy hol kell megadni a kiszolgáló méretét:
 
 ```cs
-async void CreateRenderingSession(AzureFrontend frontend)
+async void CreateRenderingSession(RemoteRenderingClient client)
 {
-    RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-    sessionCreationParams.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
+    RenderingSessionCreationOptions sessionCreationOptions = default;
+    sessionCreationOptions.Size = RenderingSessionVmSize.Standard; // or  RenderingSessionVmSize.Premium
 
-    AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+    CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(sessionCreationOptions);
+    if (result.ErrorCode == Result.Success)
+    {
+        RenderingSession session = result.Session;
+        // do something with the session
+    }
 }
 ```
 
 ```cpp
-void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
+void CreateRenderingSession(ApiHandle<RemoteRenderingClient> client)
 {
-    RenderingSessionCreationParams sessionCreationParams;
-    sessionCreationParams.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
+    RenderingSessionCreationOptions sessionCreationOptions;
+    sessionCreationOptions.Size = RenderingSessionVmSize::Standard; // or  RenderingSessionVmSize::Premium
 
-    if (auto createSessionAsync = frontend->CreateNewRenderingSessionAsync(sessionCreationParams))
-    {
-        // ...
-    }
+    client->CreateNewRenderingSessionAsync(sessionCreationOptions, [](Status status, ApiHandle<CreateRenderingSessionResult> result) {
+        if (status == Status::OK && result->GetErrorCode() == Result::Success)
+        {
+            ApiHandle<RenderingSession> session = result->GetSession();
+            // do something with the session
+        }
+    });
 }
+
 ```
 
 A [PowerShell-parancsfájlok például](../samples/powershell-example-scripts.md)a kívánt kiszolgáló méretét kell megadni a `arrconfig.json` fájlban:
@@ -77,7 +86,7 @@ Ennek megfelelően olyan alkalmazást is megírhat, amely a több modellt tartal
 
 Két módon határozható meg a modell vagy jelenet sokszögének száma, amelyek hozzájárulnak a konfigurációs méret költségvetési korlátához `standard` :
 * A modell átalakítása oldalon olvassa be a [konverziós kimenet JSON-fájlját](../how-tos/conversion/get-information.md), és a `numFaces` [ *inputStatistics* szakaszban](../how-tos/conversion/get-information.md#the-inputstatistics-section) található bejegyzést.
-* Ha az alkalmazás dinamikus tartalommal foglalkozik, a megjelenített sokszögek száma a Futtatás közben dinamikusan lekérdezhető. Használjon [teljesítményteszt-lekérdezést](../overview/features/performance-queries.md#performance-assessment-queries) , és keresse meg a `polygonsRendered` tagot a struct-ban `FrameStatistics` . A `polygonsRendered` mező akkor lesz beállítva, `bad` Ha a megjelenítő eléri a sokszög korlátozását. A Pepita háttér mindig elhalványul, és némi késéssel biztosítható, hogy a felhasználói beavatkozás az aszinkron lekérdezés után is elvégezhető legyen. A felhasználói művelet lehet például a modell példányainak elrejtése vagy törlése.
+* Ha az alkalmazás dinamikus tartalommal foglalkozik, a megjelenített sokszögek száma a Futtatás közben dinamikusan lekérdezhető. Használjon [teljesítményteszt-lekérdezést](../overview/features/performance-queries.md#performance-assessment-queries) , és keresse meg a `polygonsRendered` tagot a struct-ban `FrameStatistics` . A `PolygonsRendered` mező akkor lesz beállítva, `bad` Ha a megjelenítő eléri a sokszög korlátozását. A Pepita háttér mindig elhalványul, és némi késéssel biztosítható, hogy a felhasználói beavatkozás az aszinkron lekérdezés után is elvégezhető legyen. A felhasználói művelet lehet például a modell példányainak elrejtése vagy törlése.
 
 ## <a name="pricing"></a>Díjszabás
 

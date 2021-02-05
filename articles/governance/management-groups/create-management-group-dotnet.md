@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: felügyeleti csoport létrehozása a .NET Core használatával'
 description: Ebben a rövid útmutatóban a .NET Core használatával hozzon létre egy felügyeleti csoportot az erőforrások erőforrás-hierarchiába rendezéséhez.
-ms.date: 09/30/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 138998fdc23fd8a296ca50093e2952017888041f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604676"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592551"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>Gyors útmutató: felügyeleti csoport létrehozása a .NET Core használatával
 
@@ -131,7 +131,7 @@ Az eredmény egy új felügyeleti csoport a gyökérszintű felügyeleti csoport
 
 - Ha el szeretné távolítani a .NET Core Console alkalmazást és a telepített csomagokat, törölje a `mgCreate` Project mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy felügyeleti csoportot az erőforrás-hierarchia rendszerezéséhez. A felügyeleti csoport rendelkezhet előfizetésekkel vagy más felügyeleti csoportokkal.
 

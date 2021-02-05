@@ -13,12 +13,12 @@ ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1a1fa09c7c9b8baeeb8f3c2c9b2cf8271e513be1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963536"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592806"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript-és lapelrendezés-verziók a Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ A felhasználói folyamat lapjaihoz tartozó lapelrendezés verziójának megad�
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Válassza ki a szabályzatot (például "B2C_1_SignupSignin") a megnyitásához.
-1. Válassza **ki a lapelrendezések elemet**. Az **elrendezés neve** területen válassza ki a felhasználói folyamat lapot, és válassza ki a lapelrendezés **verzióját (előzetes verzió)**.
+1. Válassza **ki a lapelrendezések elemet**. Válassza ki az **elrendezés nevét**, majd válassza ki a lapelrendezés **verzióját (előzetes verzió)**.
 
 További információ a különböző lapelrendezés-verziókról: az [oldalelrendezés verziójának változási naplója](page-layout.md).
 
@@ -239,6 +239,6 @@ function addTermsOfUseLink() {
 
 A kódban cserélje le a `termsOfUseUrl` kifejezést a használati feltételekre vonatkozó szerződésre mutató hivatkozásra. A címtárhoz hozzon létre egy **termsOfUse** nevű új felhasználói attribútumot, majd adja hozzá a **termsOfUse** felhasználói attribútumként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával Azure Active Directory B2Cban](customize-ui-with-html.md).

@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f01058d8e879a9610e76638215214c059982fa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018977"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594214"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>A Remote Rendering beállítása a Unityben
 
@@ -19,7 +19,7 @@ Az Azure Remote rendering (ARR) egységben való engedélyezéséhez olyan dedik
 
 ## <a name="startup-and-shutdown"></a>Indítás és leállítás
 
-A távoli renderelés inicializálásához használja a következőt: `RemoteManagerUnity` . Ez az osztály az általános `RemoteManager` , de már megvalósítja az egység-specifikus adatokat. Az Unity például egy adott koordináta-rendszer használatával működik. A hívásakor `RemoteManagerUnity.Initialize` a rendszer a megfelelő konvenciót fogja beállítani. A híváshoz azt is meg kell adnia, hogy milyen Unity kamerát kell használni a távolról renderelt tartalom megjelenítéséhez.
+A távoli renderelés inicializálásához használja a következőt: `RemoteManagerUnity` . Ez az osztály az általános `RenderingConnection` , de már megvalósítja az egység-specifikus adatokat. Az Unity például egy adott koordináta-rendszer használatával működik. A hívásakor `RemoteManagerUnity.Initialize` a rendszer a megfelelő konvenciót fogja beállítani. A híváshoz azt is meg kell adnia, hogy milyen Unity kamerát kell használni a távolról renderelt tartalom megjelenítéséhez.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -30,7 +30,7 @@ RemoteManagerUnity.InitializeManager(clientInit);
 
 A távoli renderelés leállítása érdekében hívja meg a következőt: `RemoteManagerStatic.ShutdownRemoteRendering()` .
 
-Miután `AzureSession` létrehozta és kiválasztotta az elsődleges renderelési munkamenetet, regisztrálnia kell a következővel `RemoteManagerUnity` :
+Miután `RenderingSession` létrehozta és kiválasztotta az elsődleges renderelési munkamenetet, regisztrálnia kell a következővel `RemoteManagerUnity` :
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -46,17 +46,18 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 
 // create a frontend
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// ... fill out accountInfo ...
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// ... fill out sessionConfig ...
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
 // start a session
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(new RenderingSessionCreationParams(RenderingSessionVmSize.Standard, 0, 30)).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(new RenderingSessionCreationOptions(RenderingSessionVmSize.Standard, 0, 30));
+RenderingSession session = result.Session;
 
 // let RemoteManagerUnity know about the session we want to use
 RemoteManagerUnity.CurrentSession = session;
 
-session.ConnectToRuntime(new ConnectToRuntimeParams());
+await session.ConnectAsync(new RendererInitOptions());
 
 /// When connected, load and modify content
 

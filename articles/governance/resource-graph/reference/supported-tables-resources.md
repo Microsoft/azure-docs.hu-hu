@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 01/06/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251777"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594333"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -130,6 +130,9 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. azurestack/linkedsubscriptions
 - Microsoft. Azurestack/regisztrációk (Azure Stack hubok)
 - Microsoft. AzureStackHCI/fürtök (Azure Stack HCI)
+- Microsoft. azurestackhci/galleryimages
+- Microsoft. azurestackhci/networkinterfaces
+- Microsoft. azurestackhci/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (Cray-kiszolgálók)
 - Microsoft. BareMetal/monitoringServers (figyelési kiszolgálók)
@@ -331,6 +334,9 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. ininsights/workbooktemplates (Azure munkafüzet-sablonok)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minerva)
 - Microsoft. intelligentitdigitaltwin/digitaltwins/eszközök
+- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplans
+- Microsoft. intelligentitdigitaltwin/digitaltwins/testplans
+- Microsoft. intelligentitdigitaltwin/digitaltwins/tesztek
 - Microsoft. IoTCentral/IoTApps (IoT Central alkalmazások)
 - Microsoft. IoTSpaces/Graph (digitális ikrek (elavult))
 - Microsoft. kulcstartó/hsmpools
@@ -494,6 +500,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Resources/templateSpecs (sablon specifikációi)
 - Microsoft. Resources/templatespecs/Versions
 - Microsoft. SaaS/alkalmazások (szoftveres szolgáltatás (klasszikus))
+- Microsoft. SaaS/erőforrások (CPX-helyőrző)
 - Microsoft. Scheduler/Feladatgyűjtemények (ütemező feladatok gyűjteményei)
 - Microsoft. SCVMM/felhők
 - Microsoft. SCVMM/virtualMachines (SCVMM virtuális gép – Azure arc)
@@ -588,6 +595,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Web/StaticSites (statikus Web Apps (előzetes verzió))
 - Microsoft. WindowsESU/multipleActivationKeys (Windows több aktiválási kulcs)
 - Microsoft. WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
+- Microsoft. workloadbuilder/migrationagents
 - Microsoft. workloadbuilder/munkaterhelések
 - MyGet. PackageManagement/Services (MyGet-üzemeltetett NuGet, NPM, Bower és Vsix)
 - Paraleap. CloudMonix/Services (CloudMonix)
@@ -632,7 +640,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 
 - Microsoft. resourcehealth/események
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

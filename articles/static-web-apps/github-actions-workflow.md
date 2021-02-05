@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574516"
+ms.locfileid: "99593951"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -197,12 +197,13 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo-támogatás
 
-A monorepo olyan tárház, amely egynél több alkalmazáshoz tartalmaz kódot. Alapértelmezés szerint a statikus Web Apps munkafolyamat-fájl egy adattár összes fájlját nyomon követi, de úgy is beállíthatja, hogy egyetlen alkalmazást is megcélozjon. Ezért a monorepos esetében minden statikus hely saját konfigurációs fájllal rendelkezik, amely az adattár *. git* mappájában egymás mellett él.
+A monorepo olyan tárház, amely egynél több alkalmazáshoz tartalmaz kódot. Alapértelmezés szerint a statikus Web Apps munkafolyamat-fájl egy adattár összes fájlját nyomon követi, de úgy is beállíthatja, hogy egyetlen alkalmazást is megcélozjon. Ezért a monorepos esetében minden statikus alkalmazásnak saját konfigurációs fájlja van, amely az adattár *. GitHub/munkafolyamatok* mappájában párhuzamosan él.
 
 ```files
-├── .git
-│   ├── azure-static-web-apps-purple-pond.yml
-│   └── azure-static-web-apps-yellow-shoe.yml
+├── .github
+│   └── workflows
+│       ├── azure-static-web-apps-purple-pond.yml
+│       └── azure-static-web-apps-yellow-shoe.yml
 │
 ├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
@@ -210,7 +211,7 @@ A monorepo olyan tárház, amely egynél több alkalmazáshoz tartalmaz kódot. 
 ├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
 ├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
 │
-└── readme.md
+└── README.md
 ```
 
 Ha egy munkafolyamat-fájlt egyetlen alkalmazásra kíván célozni, a és a szakaszok elérési útját kell megadnia `push` `pull_request` .
@@ -236,7 +237,7 @@ on:
       - .github/workflows/azure-static-web-apps-purple-pond.yml
 ```
 
-Ebben az esetben csak a fájlok következő fájljain végrehajtott módosítások indítanak új buildet:
+Ebben az esetben csak a következő fájlokban végrehajtott módosítások indítanak új buildet:
 
 - A *App1* mappában található összes fájl
 - A *api1* mappában található összes fájl

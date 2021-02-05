@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724140"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594248"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: az Azure távoli renderelés és a modell tárterületének védelme
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -41,16 +41,16 @@ Az Azure-alapú távoli renderelés a megfelelő konfigurációval biztonságosa
 
 Ha csatolt blob Storage-t használ, a modellek betöltéséhez némileg eltérő módszereket fog használni:
 
-```csharp
-var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams);
 ```
 
-A fenti sorok a `FromSAS` params és a munkamenet művelet verzióját használják. Ezeket át kell alakítani a nem SAS-verzióra:
+A fenti sorok a `FromSas` params és a munkamenet művelet verzióját használják. Ezeket át kell alakítani a nem SAS-verzióra:
 
-```csharp
-var loadModelParams = new LoadModelParams(storageAccountPath, blobContainerName, modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelOptions(storageAccountPath, blobContainerName, modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams);
 ```
 
 Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez egy csatolt blob Storage-fiókból.
@@ -58,7 +58,7 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
 1. Ha még nem tette meg, hajtsa végre a következő [témakört: csatolja a Storage-fiókokat](../../../how-tos/create-an-account.md#link-storage-accounts) az ARR-példány engedélyének megadásához az blob Storage-példány eléréséhez.
 1. Adja hozzá a következő módosított **LoadModel** metódust, hogy a **RemoteRenderingCoordinator** közvetlenül az aktuális **LoadModel** metódus alá kerüljön:
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model from blob storage that has been linked to the ARR instance
     /// </summary>
@@ -68,10 +68,10 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns></returns>
-    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -100,11 +100,9 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelParams($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
-        if (progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelOptions($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -115,7 +113,7 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
 
 1. Adja hozzá a következő metódust a **RemoteRenderingCoordinator** közvetlenül a **LoadTestModel** után
 
-    ```csharp
+    ```cs
     private bool loadingLinkedCustomModel = false;
 
     [SerializeField]
@@ -190,7 +188,7 @@ Még egy "jelszó", a AccountKey a helyi alkalmazásból való eltávolításáh
 
 A HRE-hitelesítés lehetővé teszi annak meghatározását, hogy mely személyek vagy csoportok használják az ARR-t egy ellenőrzött módon. Az ARR beépített támogatást nyújt a [hozzáférési jogkivonatok](../../../../active-directory/develop/access-tokens.md) elfogadásához a fiók kulcsának használata helyett. Azt is megteheti, hogy a hozzáférési tokeneket időkorlátos, felhasználó-specifikus kulcsként tekinti át, amely csak a kért erőforrás bizonyos részeit oldja fel.
 
-A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGetter** nevű delegált, amely egy olyan metódust tartalmaz, amely egy **AzureFrontendAccountInfo** objektumot ad vissza, amely a távoli munkamenetek felügyeletének konfigurálására szolgál. Hozzárendelhet egy másik módszert a **ARRCredentialGetter**, amely lehetővé teszi, hogy Azure bejelentkezési folyamatot használjon, amely egy Azure hozzáférési tokent tartalmazó **AzureFrontendAccountInfo** objektumot hoz létre. Ez a hozzáférési jogkivonat a bejelentkezett felhasználóra jellemző lesz.
+A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGetter** nevű delegált, amely egy olyan metódust tartalmaz, amely egy **SessionConfiguration** objektumot ad vissza, amely a távoli munkamenetek felügyeletének konfigurálására szolgál. Hozzárendelhet egy másik módszert a **ARRCredentialGetter**, amely lehetővé teszi, hogy Azure bejelentkezési folyamatot használjon, amely egy Azure hozzáférési tokent tartalmazó **SessionConfiguration** objektumot hoz létre. Ez a hozzáférési jogkivonat a bejelentkezett felhasználóra jellemző lesz.
 
 1. Kövesse a következő [témakört: az üzembe helyezett alkalmazások hitelesítési](../../../how-tos/authentication.md#authentication-for-deployed-applications)hitelesítésének konfigurálása, pontosabban követheti az Azure térbeli horgonyok dokumentációjában az [Azure ad felhasználói hitelesítésben](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)felsorolt utasításokat. Ebbe beletartozik egy új Azure Active Directory alkalmazás regisztrálása és az ARR-példányhoz való hozzáférés konfigurálása.
 1. Miután konfigurálta az új HRE alkalmazást, tekintse meg a HRE-alkalmazást az alábbi képekkel:
@@ -206,11 +204,11 @@ A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGet
     >[!NOTE]
     > A *tulajdonosi* szerepkör nem elegendő a munkamenetek kezeléséhez az ügyfélalkalmazás használatával. Minden olyan felhasználó számára, aki számára engedélyezni szeretné a munkamenetek kezelését, meg kell adnia a szerepkör **távoli renderelési ügyfelét**. Minden, a munkameneteket kezelő és a modellek átalakítására szolgáló felhasználó számára meg kell adnia a szerepkör **távoli renderelési rendszergazdáját**.
 
-A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon az éves tevékenységi szolgáltatáshoz. Ezt a **BaseARRAuthentication** egy példányának megvalósításával tesszük, amely egy új **AzureFrontendAccountInfo** objektumot ad vissza. Ebben az esetben a fiók adatai az Azure hozzáférési jogkivonattal lesznek konfigurálva.
+A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon az éves tevékenységi szolgáltatáshoz. Ezt a **BaseARRAuthentication** egy példányának megvalósításával tesszük, amely egy új **SessionConfiguration** objektumot ad vissza. Ebben az esetben a fiók adatai az Azure hozzáférési jogkivonattal lesznek konfigurálva.
 
 1. Hozzon létre egy **AADAuthentication** nevű új parancsfájlt, és cserélje le a kódját a következőre:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -278,7 +276,7 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
 
-        public async override Task<AzureFrontendAccountInfo> GetAARCredentials()
+        public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
@@ -287,7 +285,7 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -373,11 +371,11 @@ Ebben a kódban az [eszköz kódját](../../../../active-directory/develop/v2-oa
 
 Ennek az osztálynak a legfontosabb része az ARR perspektívából ez a sor:
 
-```csharp
-return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+```cs
+return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Itt hozzunk létre egy új **AzureFrontendAccountInfo** -objektumot a fiók tartománya, a fiókazonosító, a fiók hitelesítési tartománya és a hozzáférési jogkivonat használatával. Ezt a tokent az ARR szolgáltatás a távoli renderelési munkamenetek lekérdezéséhez, létrehozásához és csatlakoztatásához használja, feltéve, hogy a felhasználó a korábban konfigurált szerepköralapú engedélyek alapján van engedélyezve.
+Itt hozzunk létre egy új **SessionConfiguration** -objektumot a fiók tartománya, a fiókazonosító, a fiók hitelesítési tartománya és a hozzáférési jogkivonat használatával. Ezt a tokent az ARR szolgáltatás a távoli renderelési munkamenetek lekérdezéséhez, létrehozásához és csatlakoztatásához használja, feltéve, hogy a felhasználó a korábban konfigurált szerepköralapú engedélyek alapján van engedélyezve.
 
 Ezzel a változással az alkalmazás jelenlegi állapota és az Azure-erőforrásokhoz való hozzáférése a következőképpen néz ki:
 
@@ -431,7 +429,7 @@ Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappá
 
 Kövesse a rövid [útmutatóban található lépéseket: Unity minta üzembe helyezése HoloLens – a HoloLens való kiépítéshez](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag hátralévő része elméleti témákat tartalmaz az Azure távoli renderelést használó, éles használatra kész alkalmazások létrehozásához.
 

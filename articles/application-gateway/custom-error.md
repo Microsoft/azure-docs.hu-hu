@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 5b34c559c8320961a2e96a663d88001400c572d3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 355caeb54f09797ae719f21401ceebb7d53d745a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397518"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592720"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Egyéni hibaüzenetek Application Gateway létrehozása
 
@@ -81,8 +81,8 @@ $listener01 = Get-AzApplicationGatewayHttpListener -Name <listener-name> -Applic
 $updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
 ```
 
-További információ: [Add-AzApplicationGatewayCustomError](/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) és [Add-AzApplicationGatewayHttpListenerCustomError](/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+További információ: [Add-AzApplicationGatewayCustomError](/powershell/module/az.network/add-azapplicationgatewaycustomerror) és [Add-AzApplicationGatewayHttpListenerCustomError](/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gateway diagnosztika használatáról: [a háttér állapota, a diagnosztikai naplók és a Application Gateway metrikái](application-gateway-diagnostics.md).

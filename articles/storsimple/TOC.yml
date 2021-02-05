@@ -263,6 +263,10 @@
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: StorSimple Express Route-tal
               href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
+            - name: StoSimple Hyper-V-vel
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_HyperVDeployment_v1.0.pdf'
+            - name: StorSimple VMware-rel
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_VMware_v10.pdf'
             - name: Elosztott globális névtér
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: Figyelés

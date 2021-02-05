@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 02/05/2021
 ms.author: banders
-ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: HT
+ms.openlocfilehash: 00ac61567502984759c5db9837060c86aaee378d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673831"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593586"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban
 
@@ -100,6 +100,8 @@ Az alábbi táblázat azt mutatja, hogy melyik szerepkörre van szüksége bizon
 |A számlázási profil tulajdonságainak frissítése |✔|✔|✘|✘|✘|✘|✘|
 |A számlázási profilra alkalmazott szabályzatok, például az Azure-foglalások vásárlásának engedélyezése, az Azure Marketplace-en történő vásárlások engedélyezése és egyebek megtekintése|✔|✔|✔|✔|✔|✔|✔|
 |Szabályzatok alkalmazása a számlázási profilban |✔|✔|✘|✘|✘|✘|✘|
+|Foglalási megrendelések kezelése |✔|✔|✘|✘|✘|✘|✘|
+|Foglalási megrendelések megtekintése |✔|✔|✔|✘|✘|✘|✘|
 
 ### <a name="manage-invoices-for-billing-profile"></a>A számlázási profilhoz tartozó számlák kezelése
 
@@ -203,7 +205,7 @@ Az alábbi táblázat azt mutatja be, hogy melyik szerepkörre van szüksége bi
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 

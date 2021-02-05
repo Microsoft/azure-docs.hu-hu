@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 525872ca3ad2558c327b7b856254319d3db2dc7f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724932"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593993"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
@@ -74,8 +74,8 @@ A megjelenített alapértelmezett modell egy [beépített minta modell](../sampl
 ![ARR-fiók adatai](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Állítsa be a **AccountDomain** a értékre `<region>.mixedreality.azure.com` , ahol az `<region>` az [egyik elérhető régió a közelben](../reference/regions.md). \
-> Az Azure Portalon megjelenő **AccountAuthenticationDomain** beállítása a [fiók tartományához](../how-tos/create-an-account.md#retrieve-the-account-information) .
+> Állítsa be a **RemoteRenderingDomain** a értékre `<region>.mixedreality.azure.com` , ahol az `<region>` az [egyik elérhető régió a közelben](../reference/regions.md). \
+> Az Azure Portalon megjelenő **AccountDomain** beállítása a [fiók tartományához](../how-tos/create-an-account.md#retrieve-the-account-information) .
 
 Később telepíteni szeretnénk ezt a projektet egy HoloLens, és az adott eszközről csatlakozunk a távoli renderelési szolgáltatáshoz. Mivel a hitelesítő adatok nem írhatók be az eszközön, a gyors üzembe helyezési minta a **hitelesítő adatokat az egység jelenetében fogja menteni**.
 
@@ -104,7 +104,7 @@ A jelenetben van egy [kivágott sík](../overview/features/cut-planes.md) objekt
 
 Az átalakítások szinkronizálásához kattintson a **szinkronizálás most** lehetőségre, vagy jelölje be a **minden keret szinkronizálása** beállítást. Összetevő-tulajdonságok esetében csak a módosítása elég.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő rövid útmutatóban a mintát egy HoloLens fogjuk üzembe helyezni, hogy az eredeti méretben megtekintse a távolról renderelt modellt.
 

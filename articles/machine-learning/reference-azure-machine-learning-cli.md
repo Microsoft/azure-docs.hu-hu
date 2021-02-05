@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e88fbaed77113896f818710497a544fbab486246
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ee10866791d1e5015ef5c91d98bff286ed6ce67a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072275"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591905"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & a CLI-bővítményt használja Azure Machine Learning
 
@@ -31,7 +31,7 @@ A CLI nem helyettesíti a Azure Machine Learning SDK-t. Ez egy kiegészítő esz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-re.
 
@@ -193,7 +193,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
 + Hozzon létre egy új computeinstance.
 
     ```azurecli-interactive
-    az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
+    az ml computetarget create computeinstance -n cpu -s "STANDARD_D3_V2" -v
     ```
 
     További információ: [az ml computetarget Create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance).
@@ -201,26 +201,26 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
 + Computeinstance leállítása.
 
     ```azurecli-interactive
-    az ml computetarget stop computeinstance -n cpu -v
+    az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    További információ: [az ml computetarget stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    További információ: [az ml computetarget computeinstance stop](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
 
 + Computeinstance elindítása.
 
     ```azurecli-interactive
-    az ml computetarget start computeinstance -n cpu -v
+    az ml computetarget computeinstance start -n cpu -v
     ```
 
-    További információ: [az ml computetarget Start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    További információ: [az ml computetarget computeinstance Start](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
 
 + Indítsa újra a computeinstance.
 
     ```azurecli-interactive
-    az ml computetarget restart computeinstance -n cpu -v
+    az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    További információ: [az ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    További információ: [az ml computetarget computeinstance restart](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
 
 + Computeinstance törlése.
 

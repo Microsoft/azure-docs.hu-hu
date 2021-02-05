@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210018"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593129"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -43,7 +43,7 @@ A kivételek kivételével az összes funkciót együtt használhatja. A funkci�
 
 Előfordulhat, hogy a probléma megoldásához bizonyos használati esetekre van szükség. A legjobb funkció kiválasztása időnként maga a használati eseten kívül esik. A következő bejövő használati esetek arra utalnak, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazásra irányuló forgalom szabályozásával kapcsolatos problémák megoldásához:
  
-| Bejövő használati eset | Funkció |
+| Bejövő használati eset | Szolgáltatás |
 |---------------------|-------------------|
 | Az alkalmazás IP-alapú SSL-igényeinek támogatása | Alkalmazáshoz rendelt címe |
 | Az alkalmazás nem megosztott dedikált bejövő címeinek támogatása | Alkalmazáshoz rendelt címe |
@@ -56,7 +56,7 @@ Előfordulhat, hogy a probléma megoldásához bizonyos használati esetekre van
 
 A következő kimenő használati esetek azt mutatják be, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazás kimenő hozzáférési igényeinek megoldásához:
 
-| Kimenő használati eset | Funkció |
+| Kimenő használati eset | Szolgáltatás |
 |---------------------|-------------------|
 | Egy adott régióban található Azure-beli virtuális hálózat erőforrásainak elérése | VNet-integráció </br> ASE |
 | Erőforrásokhoz való hozzáférés egy másik régióban található Azure-beli virtuális hálózaton | Átjáró – szükséges VNet-integráció </br> Bemutató és virtuális hálózati társítás |
@@ -113,6 +113,9 @@ Az IP-alapú hozzáférés korlátozásai szolgáltatás segít, ha korlátozni 
 * A külső terheléselosztási szolgáltatáson vagy más, ismert kimenő IP-címekkel rendelkező hálózati eszközökön érkező forgalomhoz való hozzáférés korlátozása. 
 
 A szolgáltatás engedélyezésével kapcsolatos további információkért lásd: [hozzáférési korlátozások konfigurálása][iprestrictions].
+
+> [!NOTE]
+> Az IP-alapú hozzáférés korlátozási szabályai csak akkor kezelik a virtuális hálózati címtartományt, ha az alkalmazás egy App Service Environment. Ha az alkalmazás a több-bérlős szolgáltatásban található, akkor a [szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) használatával korlátozza a forgalmat a virtuális hálózatban lévő alhálózatok kiválasztására.
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>Hozzáférési korlátozási szabályok szolgáltatási végpontok alapján 
 

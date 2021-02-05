@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e09f9b8564c9319e68984df1c0f8db7a496a6d0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584804"
+ms.locfileid: "99592262"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -92,60 +92,10 @@ Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szüksége
     ![Az erőforrás új QnA Maker felügyelt (előzetes verzió) szolgáltatást hozott létre](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
     Az _Cognitive Services_ típusú erőforrás rendelkezik az _előfizetési_ kulcsokkal.
-
+    
 ---
 
-## <a name="find-authoring-keys-in-the-azure-portal"></a>Szerzői kulcsok keresése a Azure Portal
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
-
-A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Portal, ahol létrehozta a QnA Maker erőforrást. Ezeket a kulcsokat előfizetési kulcsoknak is nevezzük.
-
-1. Nyissa meg a Azure Portal QnA Maker erőforrását, és válassza ki a _Cognitive Services_ típust tartalmazó erőforrást:
-
-    ![QnA Maker erőforráslista](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
-
-2. Ugrás a **kulcsok és a végpontra**:
-
-    ![QnA Maker felügyelt (előzetes verzió) előfizetési kulcs](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Lekérdezési végpont kulcsainak keresése a QnA Maker portálon
-
-A végpont ugyanabban a régióban található, mint az erőforrás, mert a végponti kulcsok használatával hívható meg a Tudásbázis.
-
-A végponti kulcsok kezelhetők a [QnA Maker portálról](https://qnamaker.ai).
-
-1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd válassza a **szolgáltatás beállításai**:
-
-    ![Végpont kulcsa](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
-
-2. A kulcsok megtekintése és alaphelyzetbe állítása:
-
-    > [!div class="mx-imgBorder"]
-    > ![Endpoint Key Manager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
-
-    >[!NOTE]
-    >Frissítse a kulcsokat, ha úgy gondolja, hogy sérült a biztonsága. Ehhez szükség lehet az ügyfélalkalmazás vagy a robot kódjának megfelelő módosítására.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
-
-A szerzői kulcsok megtekinthetők és alaphelyzetbe állíthatók a Azure Portal, ahol létrehozta a QnA Maker felügyelt (előzetes verzió) erőforrást. Ezeket a kulcsokat előfizetési kulcsoknak is nevezzük.
-
-1. Nyissa meg a QnA Maker felügyelt (előzetes verzió) erőforrást a Azure Portalban, és válassza ki a *Cognitive Services* típusú erőforrást:
-
-    ![QnA Maker felügyelt (előzetes verzió) erőforrás-lista](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
-
-2. Ugrás a **kulcsok és a végpontra**:
-
-    ![QnA Maker felügyelt (előzetes verzió) előfizetési kulcs](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="update-the-resources"></a>Az erőforrások frissítése
-
-Ismerje meg, hogyan frissítheti a Tudásbázis által használt erőforrásokat. A QnA Maker felügyelt (előzetes verzió) előzetes verzióban **ingyenes** . 
-
----
-
-### <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
+## <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 

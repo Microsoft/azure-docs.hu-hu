@@ -1,17 +1,17 @@
 ---
 title: Távolról renderelt modell megtekintése
-description: Az Azure távoli renderelés "„Helló világ!” alkalmazás" oktatóanyaga bemutatja, hogyan tekinthetők meg az Azure által távolról megjelenített modellek
+description: Az Azure távoli renderelés "Hello World" oktatóanyaga bemutatja, hogyan tekinthetők meg az Azure által távolról megjelenített modellek
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574734"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592041"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -180,7 +180,7 @@ A projektnek így kell kinéznie:
 
 1. Nyissa meg a **RemoteRenderingCoordinator** a Kódszerkesztőben, és cserélje le a teljes tartalmat az alábbi kódra:
 
-```csharp
+```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -238,6 +238,14 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     }
 
     [SerializeField]
+    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
+    public string AccountAuthenticationDomain
+    {
+        get => accountAuthenticationDomain.Trim();
+        set => accountAuthenticationDomain = value;
+    }   
+
+    [SerializeField]
     private string accountKey = "<enter your account key here>";
     public string AccountKey {
         get => accountKey.Trim();
@@ -284,7 +292,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    public delegate Task<AzureFrontendAccountInfo> AccountInfoGetter();
+    public delegate Task<SessionConfiguration> AccountInfoGetter();
 
     public static AccountInfoGetter ARRCredentialGetter
     {
@@ -309,7 +317,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static event Action<RemoteRenderingState> CoordinatorStateChange;
 
-    public static AzureSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
+    public static RenderingSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
 
     private ARRServiceUnity arrSessionService;
 
@@ -323,10 +331,10 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    private async Task<AzureFrontendAccountInfo> GetDevelopmentCredentials()
+    private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -454,8 +462,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     private async Task<bool> IsSessionAvailable(string sessionID)
     {
-        var allSessions = await ARRSessionService.Frontend.GetCurrentRenderingSessionsAsync().AsTask();
-        return allSessions.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+        var allSessions = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
+        return allSessions.SessionProperties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
     }
 
     /// <summary>
@@ -473,11 +481,11 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     /// <summary>
     /// The session must have its runtime pump updated.
-    /// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+    /// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
     /// </summary>
     private void LateUpdate()
     {
-        ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+        ARRSessionService?.CurrentActiveSession?.Connection?.Update();
     }
 
     /// <summary>
@@ -487,17 +495,17 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Implement me
         return null;
     }
 
-    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, AzureSession session)
+    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, RenderingSession session)
     {
-        var properties = await session.GetPropertiesAsync().AsTask();
+        var properties = await session.GetPropertiesAsync();
 
-        switch (properties.Status)
+        switch (properties.SessionProperties.Status)
         {
             case RenderingSessionStatus.Error:
             case RenderingSessionStatus.Expired:
@@ -540,7 +548,7 @@ A távoli renderelési koordinátor és a szükséges parancsfájl (*ARRServiceU
 1. Adja hozzá a *RemoteRenderingCoordinator* parancsfájlt a **RemoteRenderingCoordinator** GameObject. \
 ![RemoteRenderingCoordinator-összetevő hozzáadása](./media/add-coordinator-script.png)
 1. Erősítse meg, hogy a *ARRServiceUnity* parancsfájl, amely a Inspector *szolgáltatásként* jelenik meg, automatikusan hozzáadódik a GameObject. Ha kíváncsi, ez az eredmény a `[RequireComponent(typeof(ARRServiceUnity))]` **RemoteRenderingCoordinator** szkript elejétől.
-1. Adja hozzá az Azure távoli megjelenítési hitelesítő adatait és a fiók tartományát a koordinátori parancsfájlhoz: \
+1. Adja hozzá az Azure távoli renderelési hitelesítő adatait, a fiók hitelesítési tartományát és a fiók tartományát a koordinátori parancsfájlhoz: \
 ![Hitelesítő adatok hozzáadása](./media/configure-coordinator-script.png)
 
 ## <a name="initialize-azure-remote-rendering"></a>Az Azure távoli renderelésének inicializálása
@@ -558,7 +566,7 @@ A **NotAuthorized** állapotának megadásakor a rendszer meghívja a **CheckAut
 
 1. Cserélje le a **InitializeARR** és a **InitializeSessionService** tartalmát az alábbi befejezett kóddal:
 
- ```csharp
+ ```cs
 /// <summary>
 /// Initializes ARR, associating the main camera
 /// Note: This must be called on the main Unity thread
@@ -616,7 +624,7 @@ Az állapotú gép mostantól a rendelkezésre álló munkamenetek függvényéb
 
 1. Új munkamenethez való csatlakozáshoz módosítsa a kódot a **JoinRemoteSession ()** és a **StopRemoteSession ()** metódus cseréjére az alábbi befejezett példákkal:
 
-```csharp
+```cs
 /// <summary>
 /// Attempts to join an existing session or start a new session
 /// </summary>
@@ -632,7 +640,7 @@ public async void JoinRemoteSession()
     else
     {
         CurrentCoordinatorState = RemoteRenderingState.ConnectingToNewRemoteSession;
-        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationParams(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
+        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
     }
 
     if (joinResult.Status == RenderingSessionStatus.Ready || joinResult.Status == RenderingSessionStatus.Starting)
@@ -674,7 +682,7 @@ Az alkalmazásnak a futtatókörnyezet és az aktuális munkamenet közötti kap
  1. Cserélje le a **ConnectRuntimeToRemoteSession ()** és a **DisconnectRuntimeFromRemoteSession ()** metódust az alábbi befejezett verzióra.
  1. Fontos megjegyezni az **LateUpdate** Unity metódust, valamint azt, hogy az aktuális aktív munkamenetet frissíti. Ez lehetővé teszi az aktuális munkamenet számára üzenetek küldését/fogadását és a keret pufferének frissítését a távoli munkamenetből fogadott keretekkel. Fontos, hogy az ARR megfelelően működjön.
 
-```csharp
+```cs
 /// <summary>
 /// Connects the local runtime to the current active session, if there's a session available
 /// </summary>
@@ -690,7 +698,7 @@ public void ConnectRuntimeToRemoteSession()
     //This session is set when connecting to a new or existing session
 
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged += OnLocalRuntimeStatusChanged;
-    ARRSessionService.CurrentActiveSession.ConnectToRuntime(new ConnectToRuntimeParams());
+    ARRSessionService.CurrentActiveSession.ConnectAsync(new RendererInitOptions());
     CurrentCoordinatorState = RemoteRenderingState.ConnectingToRuntime;
 }
 
@@ -702,18 +710,18 @@ public void DisconnectRuntimeFromRemoteSession()
         return;
     }
 
-    ARRSessionService.CurrentActiveSession.DisconnectFromRuntime();
+    ARRSessionService.CurrentActiveSession.Disconnect();
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged -= OnLocalRuntimeStatusChanged;
     CurrentCoordinatorState = RemoteRenderingState.RemoteSessionReady;
 }
 
 /// <summary>
 /// The session must have its runtime pump updated.
-/// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+/// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
 /// </summary>
 private void LateUpdate()
 {
-    ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+    ARRSessionService?.CurrentActiveSession?.Connection?.Update();
 }
 ```
 
@@ -730,7 +738,7 @@ A **LoadModel** metódus úgy van kialakítva, hogy elfogadja a modell elérési
 
 1. Cserélje le a **LoadModel** metódust teljes egészében az alábbi kódra:
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model into the remote session for rendering
     /// </summary>
@@ -738,10 +746,10 @@ A **LoadModel** metódus úgy van kialakítva, hogy elfogadja a modell elérési
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -770,11 +778,9 @@ A **LoadModel** metódus úgy van kialakítva, hogy elfogadja a modell elérési
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
-        if(progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelFromSasParams(modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -796,7 +802,7 @@ Most már minden kód szükséges a távolról renderelt modell megtekintéséhe
 
 1. Adja hozzá a következő kódot a **RemoteRenderingCoordinator** osztályhoz, amely közvetlenül a **LoadModel** metódus alá esik:
 
-    ```csharp
+    ```cs
     private bool loadingTestModel = false;
     [ContextMenu("Load Test Model")]
     public async void LoadTestModel()
@@ -839,7 +845,7 @@ Most már minden kód szükséges a távolról renderelt modell megtekintéséhe
 > [!NOTE]
 > A távoli modell soha nem jelenik meg a jelenet nézetben, csak a játék nézetben. Ennek az az oka, hogy az ARR a képkockákat távolról teszi elérhetővé a game View kamera szempontjából, és nem ismeri a szerkesztői kamerát (a jelenet nézet megjelenítéséhez használatos).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ![Modell betöltve](./media/test-model-rendered.png)
 

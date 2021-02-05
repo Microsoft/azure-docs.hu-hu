@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936671"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592840"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Egyéni szabályzatok Azure AD B2C áttekintése
 
@@ -115,7 +115,7 @@ Minden kezdő csomag a következő fájlokat tartalmazza:
 Az öröklési modell a következő:
 
 - A gyermek házirend bármilyen szinten örökölhető a szülő házirendtől, és új elemek hozzáadásával bővíthető.
-- Összetettebb forgatókönyvek esetén több öröklési szintet is hozzáadhat (összesen 5).
+- Összetettebb forgatókönyvek esetén több öröklési szintet is hozzáadhat (összesen legfeljebb 10).
 - További függő entitásokra vonatkozó szabályzatokat adhat hozzá. Például törölje a saját fiókját, változtassa meg a telefonszámot, az SAML-függő entitások házirendjét és egyebeket.
 
 Az alábbi ábrán a házirend-fájlok és a függő entitások alkalmazásai közötti kapcsolat látható.

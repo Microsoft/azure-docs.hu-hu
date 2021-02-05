@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: megosztott lekérdezés létrehozása sablonokkal'
 description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy olyan erőforrás-gráf megosztott lekérdezést, amely az operációs rendszer által használt virtuális gépeket számolja.
-ms.date: 10/14/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8d631ffcb14af93f10e578097470efc6156287d5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057008"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594316"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Gyors útmutató: megosztott lekérdezés létrehozása ARM-sablon használatával
 
-Az erőforrás-gráf lekérdezéseit _privát lekérdezésként_ vagy _megosztott lekérdezésként_lehet menteni. A privát lekérdezéseket a rendszer az egyéni portál profiljába menti, és mások számára nem látható. A megosztott lekérdezés egy olyan Resource Manager-objektum, amely engedélyek és szerepköralapú hozzáférés használatával megosztható másokkal. A megosztott lekérdezés az erőforrás-felderítés általános és konzisztens végrehajtását teszi lehetővé. Ez a rövid útmutató egy Azure Resource Manager sablont (ARM-sablont) használ egy megosztott lekérdezés létrehozásához.
+Az erőforrás-gráf lekérdezéseit _privát lekérdezésként_ vagy _megosztott lekérdezésként_ lehet menteni. A privát lekérdezéseket a rendszer az egyéni portál profiljába menti, és mások számára nem látható. A megosztott lekérdezés egy olyan Resource Manager-objektum, amely engedélyek és szerepköralapú hozzáférés használatával megosztható másokkal. A megosztott lekérdezés az erőforrás-felderítés általános és konzisztens végrehajtását teszi lehetővé. Ez a rövid útmutató egy Azure Resource Manager sablont (ARM-sablont) használ egy megosztott lekérdezés létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -48,17 +48,17 @@ A sablonban definiált erőforrás:
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Név | Érték |
+   | Name | Érték |
    |------|-------|
-   | Előfizetés | Válassza ki az Azure-előfizetését. |
-   | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. |
+   | Előfizetés | Válassza ki Azure-előfizetését. |
+   | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. |
    | Hely | Válasszon régiót. Például: **USA középső régiója**. |
    | Lekérdezés neve | Hagyja meg az alapértelmezett értéket: a **virtuális gépek száma operációs rendszer szerint**. |
    | Lekérdezési kód | Hagyja meg az alapértelmezett értéket: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
    | Lekérdezés leírása | Hagyja meg az alapértelmezett értéket: **Ez a megosztott lekérdezés a virtuális gép összes erőforrását megszámolja, és az operációs rendszer típusa szerint összegzi.** |
    | Elfogadom a fenti feltételeket és kikötéseket | Válassza |
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 Néhány további erőforrás:
 
@@ -73,7 +73,7 @@ Az új megosztott lekérdezés futtatásához kövesse az alábbi lépéseket:
 
 1. A portálon keresse meg az **Erőforrásgrafikon lekérdezéseket** , és jelölje ki.
 
-1. Válassza ki a **Count virtuális gépek**nevű megosztott lekérdezést operációs rendszer szerint, majd válassza ki az **eredmények** lapot az **Áttekintés** oldalon.
+1. Válassza ki a **Count virtuális gépek** nevű megosztott lekérdezést operációs rendszer szerint, majd válassza ki az **eredmények** lapot az **Áttekintés** oldalon.
 
 A megosztott lekérdezés a Resource Graph Explorerben is megnyitható:
 

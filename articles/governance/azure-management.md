@@ -1,14 +1,14 @@
 ---
 title: Az Azure Management áttekintése – Azure-irányítás
 description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
-ms.date: 09/09/2020
+ms.date: 02/05/2021
 ms.topic: overview
-ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949496"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593925"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
 
@@ -26,14 +26,14 @@ Egyetlen Azure-szolgáltatás sem tölti ki teljesen az adott felügyeleti terü
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 A monitorozás az adatok összegyűjtésére és elemzésére szolgál az erőforrások teljesítményének, állapotának és rendelkezésre állásának naplózása érdekében. Egy hatékony figyelési stratégia segíti az összetevők működésének megértését és az értesítésekkel való üzemidő növelését. A monitoring áttekintése, amely az [Azure-alkalmazások és-erőforrások figyeléséhez](../azure-monitor/overview.md)használt különböző szolgáltatásokat fedi le.
 
 ## <a name="configure"></a>Konfigurálás
 
 A configure az erőforrások kezdeti üzembe helyezésére és konfigurálására, valamint a folyamatos karbantartásra utal.
-Ezeknek a feladatoknak az automatizálásával elkerülhető a redundancia, ami minimalizálja az időt és a fáradságot, és növeli a pontosságot és a hatékonyságot. Az [Azure Automation](../automation/automation-intro.md) tartalmazza azon szolgáltatások nagy részét, amelyek a konfigurációs feladatok automatizálásához szükségesek. Míg a runbookok kezeli a folyamatok automatizálását, a konfigurációt és az Update Management segítséget a konfiguráció kezelésében.
+Ezeknek a feladatoknak az automatizálásával elkerülhető a redundancia, ami minimalizálja az időt és a fáradságot, és növeli a pontosságot és a hatékonyságot. Az [Azure Automation](../automation/automation-intro.md) tartalmazza azon szolgáltatások nagy részét, amelyek a konfigurációs feladatok automatizálásához szükségesek. Míg a runbookok kezeli a folyamatok automatizálását, a konfiguráció és az Update Management segítségével kezelheti a konfigurációt.
 
 ## <a name="govern"></a>Irányítás
 
@@ -50,7 +50,7 @@ Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában
 
 A védelem arra utal, hogy az alkalmazások és az adatszolgáltatások elérhetők maradnak, még a szabályozáson kívüli kimaradások esetén is. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-overview.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. A [Azure site Recovery](../site-recovery/site-recovery-overview.md) az üzletmenet folytonosságát és az azonnali helyreállítást biztosítja a katasztrófák során.
 
-## <a name="migrate"></a>Migrate (Áttelepítés)
+## <a name="migrate"></a>Migrate
 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.
 A [Azure Migrate](../migrate/migrate-services-overview.md) egy olyan szolgáltatás, amely segít a helyszíni virtuális gépek Azure-ba való áttelepítésének értékelésében. [A Azure site Recovery a](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépeket a helyszíni rendszerből vagy [Amazon Web Servicesból](../site-recovery/migrate-tutorial-aws-azure.md)telepíti át. Az [Azure Database Migration](../dms/dms-overview.md) segítséget nyújt az adatbázis-források Azure-beli adatplatformokra való áttelepítésében.

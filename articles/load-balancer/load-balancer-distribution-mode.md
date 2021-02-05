@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 7f2525b89f03e8bc1a2c3166b46c40b4dbb6ff17
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22d7af4f307a99d2d2e29bc1f494d327394e4f10
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99562019"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594282"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer elosztási módjának konfigurálása
 
@@ -46,8 +46,8 @@ A terjesztési mód konfigurációját módosíthatja a portál terheléseloszt�
 A következő lehetőségek érhetők el: 
 
 * **Nincs (kivonat-alapú)** – azt határozza meg, hogy egy adott ügyfél egymást követő kérelmeit bármely virtuális gép kezelheti.
-* **Ügyfél IP-címe (forrás IP-affinitás 2-rekord)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
-* **Ügyfél IP-címe és protokollja (forrás IP-affinitás 3 – rekord)** – azt határozza meg, hogy az azonos ügyfél IP-címe és a protokoll kombinációja egymást követő kérelmeket ugyanazzal a virtuális géppel fogja kezelni.
+* **Ügyfél IP-címe (forrás IP-affinitása kétrekordos)** – azt határozza meg, hogy ugyanazon ügyfél IP-címéről érkező egymást követő kérelmeket ugyanaz a virtuális gép fogja kezelni.
+* **Ügyfél IP-címe és protokollja (forrás IP-kapcsolat három rekordos)** – azt határozza meg, hogy az azonos ügyfél IP-címe és a protokoll kombinációja egymást követő kérelmeket ugyanazzal a virtuális géppel fogja kezelni.
 
 5. Válassza ki a terjesztési módot, majd kattintson a **Mentés** gombra.
 
@@ -66,13 +66,36 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-Állítsa be az elem értékét `LoadDistribution` a terheléselosztáshoz szükséges mennyiségre. 
+Adja meg az elem értékét `LoadDistribution` a szükséges terheléselosztási típushoz. 
 
-**SourceIP** megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
+* **SourceIP** megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
 
-Adja meg a **sourceIPProtocol** a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. 
+* Adja meg a **SourceIPProtocol** a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. 
 
-Az öt rekordos terheléselosztás alapértelmezett működésének **alapértelmezett értékének megadása.**
+* Az öt rekordos terheléselosztás alapértelmezett működésének **alapértelmezett értékének megadása.**
+
+# <a name="cli"></a>[**CLI**](#tab/azure-cli)
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+Az Azure CLI használatával módosíthatja a terheléselosztási terjesztési beállításokat egy meglévő terheléselosztási szabályon.  A következő parancs frissíti a terjesztési módot:
+
+```azurecli-interactive
+az network lb rule update \
+    --lb-name myLoadBalancer \
+    --load-distribution SourceIP \
+    --name myHTTPRule \
+    --resource-group myResourceGroupLB 
+```
+Állítsa be a értéket `--load-distribution` a szükséges terheléselosztási típushoz.
+
+* **SourceIP** megadása két rekordos (forrás IP-cím és cél IP-cím) terheléselosztáshoz. 
+
+* Adja meg a **SourceIPProtocol** a három rekordos (forrás IP-cím, cél IP-cím és protokoll típusa) terheléselosztáshoz. 
+
+* Az öt rekordos terheléselosztás alapértelmezett működésének **alapértelmezett értékének megadása.**
+
+További információ a cikkben használt parancsról: az [Network LB Rule Update](/cli/azure/network/lb/rule#az_network_lb_rule_update)
 
 ---
 

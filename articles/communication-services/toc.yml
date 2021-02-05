@@ -88,6 +88,8 @@
       href: concepts/client-and-server-architecture.md
     - name: Hívási folyamatok
       href: concepts/call-flows.md
+    - name: Folyamat-topológiák hívása
+      href: concepts/detailed-call-flows.md
     - name: Ügyfélkódtárak és REST API-k
       href: concepts/sdk-options.md
     - name: Díjszabási modell

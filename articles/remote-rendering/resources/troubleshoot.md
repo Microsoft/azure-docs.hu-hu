@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722232"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593333"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -191,9 +191,9 @@ A C++ NuGet csomagon belül van egy fájl, amely `microsoft.azure.remoterenderin
 
 Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozognak, előfordulhat, hogy a *késői fázis-újravetítéssel* (LSR) kapcsolatos problémák merülhetnek fel. Az ilyen helyzetek megközelítésével kapcsolatos útmutatásért tekintse meg a [késői fázisok újravetítésének](../overview/features/late-stage-reprojection.md) szakaszát.
 
-Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ARRServiceStats.VideoFramesReused` . Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha a `ARRServiceStats.VideoFramesReused` értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
+Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ServiceStatistics.VideoFramesReused` . Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha a `ServiceStatistics.VideoFramesReused` értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
 
-Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg` . Következetesen 100 MS alá kell esnie. A nagyobb értékek megjelenítésével jelezheti, hogy egy túl távol lévő adatközponthoz csatlakozik.
+Egy másik érték a következő: `ServiceStatistics.LatencyPoseToReceiveAvg` . Következetesen 100 MS alá kell esnie. A nagyobb értékek megjelenítésével jelezheti, hogy egy túl távol lévő adatközponthoz csatlakozik.
 
 A lehetséges enyhítések listáját a [hálózati kapcsolatra vonatkozó irányelvek](../reference/network-requirements.md#guidelines-for-network-connectivity)című részben tekintheti meg.
 
@@ -249,7 +249,7 @@ Az egymáshoz tartozó felületek számos különböző oka lehet:
 
 Bizonyos esetekben a [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) meghívása után olyan egyéni natív C++-alkalmazások, amelyek többcsatornás sztereó renderelési módot használnak a helyi tartalomhoz (a bal és a jobb oldali megjelenítésre külön-külön haladnak), az illesztőprogram hibájának meghívása után. A hiba a nem determinisztikus raszterizálási-hibákat eredményezi, ami a helyi tartalom egyes háromszögeit vagy háromszögeit véletlenszerűen eltűnnek. A teljesítménnyel kapcsolatos okokból ajánlott a helyi tartalom megjelenítése egy modern, Egylépéses sztereó renderelési technikával, például **SV_RenderTargetArrayIndex** használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)
 * [A hálózatra vonatkozó követelmények](../reference/network-requirements.md)

@@ -6,16 +6,16 @@ ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5809494fb8b619569316a24816a2e5d943dee6b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a739907ce0a3b0b6dfcb8791b51d0ea5e7e76e7
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013129"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594010"
 ---
 # <a name="stage-space"></a>Előkészítési terület
 
-Ha az ARR-t olyan eszközön futtatja, amely Head-Tracking típusú, például a 2. HoloLens, a rendszer a fő problémát a felhasználói alkalmazásnak és a kiszolgálónak küldi el. Az a terület, amelyben a fő átalakító definiálva van, a *szakasz a fázis területének*nevezzük.
+Ha az ARR-t olyan eszközön futtatja, amely Head-Tracking típusú, például a 2. HoloLens, a rendszer a fő problémát a felhasználói alkalmazásnak és a kiszolgálónak küldi el. Az a terület, amelyben a fő átalakító definiálva van, a *szakasz a fázis területének* nevezzük.
 
 A helyi és a távoli tartalom igazítása azt feltételezi, hogy a szakasz és a globális terület azonos az ügyfél és a kiszolgáló között. Ha a felhasználó úgy dönt, hogy hozzáad egy további átalakítót a kamerához, azt is el kell juttatnia a kiszolgálónak, hogy megfelelően illeszkedjen a helyi és a távoli tartalomhoz.
 
@@ -27,15 +27,15 @@ A szakaszos terület áthelyezésének tipikus okai a [globális zárolási eszk
 > KÍSÉRLETI: Ez a funkció kísérleti jellegű, és idővel változhat. Így az újabb ügyféloldali SDK-verziók frissítése további munkát igényelhet a kód frissítéséhez. A jelenlegi implementáció egy rövid pillanatra megszakítja a helyi és a távoli tartalom igazítását, amikor megváltoztatja a szakasz helyét.
 Ennek megfelelően jelenleg kizárólag olyan globális zárolási célokra kell használni, mint az olyan horgonyok, amelyek az idő múlásával csak nagyon kis változásokat mutatnak.
 
-Ahhoz, hogy tájékoztassa a kiszolgálót arról, hogy egy további átalakítót alkalmaznak a szakasz területére, a pozícióját a hely határozza meg, és el kell végezni a lemezterület rotációját. Ez a beállítás a *szakasz területének beállításán*keresztül érhető el.
+Ahhoz, hogy tájékoztassa a kiszolgálót arról, hogy egy további átalakítót alkalmaznak a szakasz területére, a pozícióját a hely határozza meg, és el kell végezni a lemezterület rotációját. Ez a beállítás a *szakasz területének beállításán* keresztül érhető el.
 
 > [!IMPORTANT]
 > Az [asztali szimulációban](../../concepts/graphics-bindings.md) a felhasználói alkalmazás a kamera globális helyét is megadja. Ebben az esetben úgy kell kihagyni a szakaszhoz tartozó terület forrását, mert már meg van szorozva a kamera átalakításával.
 
 ```cs
-void ChangeStageSpace(AzureSession session)
+void ChangeStageSpace(RenderingSession session)
 {
-    StageSpaceSettings settings = session.Actions.StageSpaceSettings;
+    StageSpaceSettings settings = session.Connection.StageSpaceSettings;
 
     // Set position and rotation to the world-space transform of the stage space.
     settings.Position = new Double3(0, 0, 0);
@@ -44,9 +44,9 @@ void ChangeStageSpace(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeStageSpace(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<StageSpaceSettings> settings = session->Actions()->GetStageSpaceSettings();
+    ApiHandle<StageSpaceSettings> settings = session->Connection()->GetStageSpaceSettings();
 
     // Set position and rotation to the world-space transform of the stage space.
     settings->SetPosition({0, 0, 0});

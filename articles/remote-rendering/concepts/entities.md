@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcfa4c5ed57489c56ebf845d238198944150a96
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29952353b8c3452d95bcced163fafa81fe158f64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202888"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593401"
 ---
 # <a name="entities"></a>Entitások
 
@@ -23,7 +23,7 @@ Az entitások a pozíció, a rotáció és a skála alapján definiált átalak�
 
 Maga az entitás legfontosabb aspektusa a hierarchia és a létrejövő hierarchikus transzformáció. Ha például több entitás gyermekként van csatolva egy megosztott szülő entitáshoz, akkor az összes ilyen entitás áthelyezhető, elforgatható, és méretezhető úgy, hogy megváltoztatja a szülő entitás átalakítását. Emellett az entitás `enabled` állapotával kikapcsolhatja a megtekinthető és a kikapcsolási válaszokat a-hierarchiában lévő teljes algráfra.
 
-Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a `Entity.Destroy()` -t, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja a `Destroy` modellt, amelyet a vagy az SAS- `AzureSession.Actions.LoadModelAsync()` variánsa ad vissza `AzureSession.Actions.LoadModelFromSASAsync()` .
+Az entitások egyedi tulajdonosa a szülője, ami azt jelenti, hogy amikor a szülő megsemmisíti a `Entity.Destroy()` -t, a gyermekei és az összes csatlakoztatott [összetevő](components.md). Így a modell eltávolításával a rendszer meghívja a `Destroy` modellt, amelyet a vagy az SAS- `RenderingSession.Connection.LoadModelAsync()` variánsa ad vissza `RenderingSession.Connection.LoadModelFromSasAsync()` .
 
 Az entitások akkor jönnek létre, amikor a kiszolgáló tartalmat tölt be, vagy amikor a felhasználó hozzá szeretne adni egy objektumot a jelenethez. Ha például egy felhasználó egy kivágási síkot szeretne felvenni egy rácsvonal belsejének megjelenítéséhez, akkor a felhasználó létrehozhat egy entitást, ahol a sík léteznie kell, majd hozzá kell adnia a kivágási sík összetevőt.
 
@@ -32,19 +32,19 @@ Az entitások akkor jönnek létre, amikor a kiszolgáló tartalmat tölt be, va
 Ha új entitást szeretne felvenni a színtérbe, például a modellek betöltéséhez, illetve összetevők csatolásához, használja a következő kódot:
 
 ```cs
-Entity CreateNewEntity(AzureSession session)
+Entity CreateNewEntity(RenderingSession session)
 {
-    Entity entity = session.Actions.CreateEntity();
+    Entity entity = session.Connection.CreateEntity();
     entity.Position = new LocalPosition(1, 2, 3);
     return entity;
 }
 ```
 
 ```cpp
-ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+ApiHandle<Entity> CreateNewEntity(ApiHandle<RenderingSession> session)
 {
     ApiHandle<Entity> entity(nullptr);
-    if (auto entityRes = session->Actions()->CreateEntity())
+    if (auto entityRes = session->Connection()->CreateEntity())
     {
         entity = entityRes.value();
         entity->SetPosition(Double3{ 1, 2, 3 });
@@ -106,33 +106,24 @@ A metaadatok az objektumokon tárolt további adatok, amelyeket a kiszolgáló f
 A metaadat-lekérdezések aszinkron hívások egy adott entitáson. A lekérdezés csak egyetlen entitás metaadatait adja vissza, nem az algráf egyesített információit.
 
 ```cs
-MetadataQueryAsync metaDataQuery = entity.QueryMetaDataAsync();
-metaDataQuery.Completed += (MetadataQueryAsync query) =>
-{
-    if (query.IsRanToCompletion)
-    {
-        ObjectMetaData metaData = query.Result;
-        ObjectMetaDataEntry entry = metaData.GetMetadataByName("MyInt64Value");
-        System.Int64 intValue = entry.AsInt64;
-
-        // ...
-    }
-};
+Task<ObjectMetadata> metaDataQuery = entity.QueryMetadataAsync();
+ObjectMetadata metaData = await metaDataQuery;
+ObjectMetadataEntry entry = metaData.GetMetadataByName("MyInt64Value");
+System.Int64 intValue = entry.AsInt64;
+// ...
 ```
 
 ```cpp
-ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
-metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
+entity->QueryMetadataAsync([](Status status, ApiHandle<ObjectMetadata> metaData) 
+{
+    if (status == Status::OK)
     {
-        if (query->GetIsRanToCompletion())
-        {
-            ApiHandle<ObjectMetaData> metaData = query->GetResult();
-            ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
-            int64_t intValue = *entry->GetAsInt64();
+        ApiHandle<ObjectMetadataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
+        int64_t intValue = *entry->GetAsInt64();
 
-            // ...
-        }
-    });
+        // ...
+    }
+});
 ```
 
 A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokkal.
@@ -140,9 +131,9 @@ A lekérdezés akkor is sikeres lesz, ha az objektum nem rendelkezik metaadatokk
 ## <a name="api-documentation"></a>API-dokumentáció
 
 * [C# entitás osztálya](/dotnet/api/microsoft.azure.remoterendering.entity)
-* [C# RemoteManager. CreateEntity ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [C# RenderingConnection. CreateEntity ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createentity)
 * [C++ entitás osztálya](/cpp/api/remote-rendering/entity)
-* [C++ RemoteManager:: CreateEntity ()](/cpp/api/remote-rendering/remotemanager#createentity)
+* [C++ RenderingConnection:: CreateEntity ()](/cpp/api/remote-rendering/renderingconnection#createentity)
 
 ## <a name="next-steps"></a>Következő lépések
 

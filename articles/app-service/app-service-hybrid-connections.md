@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre és használhat hibrid kapcsolato
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575991"
+ms.locfileid: "99594231"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai
 
@@ -201,11 +201,18 @@ Bárki, aki `Reader` hozzáféréssel rendelkezik a továbbítóhoz, _megtekinth
 
 ## <a name="troubleshooting"></a>Hibaelhárítás ##
 
-A "Connected" állapot azt jelenti, hogy legalább egy HCM a hibrid kapcsolattal van konfigurálva, és képes elérni az Azure-t. Ha a hibrid kapcsolat állapota nem **kapcsolódik a hálózathoz**, a hibrid kapcsolat nincs KONFIGURÁLVA olyan HCM-re, amely hozzáfér az Azure-hoz.
+A "Connected" állapot azt jelenti, hogy legalább egy HCM a hibrid kapcsolattal van konfigurálva, és képes elérni az Azure-t. Ha a hibrid kapcsolat állapota nem **kapcsolódik a hálózathoz**, a hibrid kapcsolat nincs KONFIGURÁLVA olyan HCM-re, amely hozzáfér az Azure-hoz. Ha a HCM **nem csatlakozik** , néhány dolgot ellenőriznie kell:
 
-Annak az elsődleges oka, hogy az ügyfelek nem tudnak csatlakozni a végponthoz, mert a végpontot IP-cím használatával adták meg a DNS-név helyett. Ha az alkalmazás nem tudja elérni a kívánt végpontot, és IP-címet használt, váltson olyan DNS-névre, amely érvényes azon a gazdagépen, amelyen a HCM fut. Győződjön meg arról is, hogy a DNS-név megfelelően van feloldva azon a gazdagépen, amelyen a HCM fut. Ellenőrizze, hogy van-e kapcsolat azon a gazdagépen, amelyen az HCM fut a hibrid kapcsolat végpontján.  
+* Rendelkezik a gazdagép kimenő hozzáféréssel az Azure-hoz az 443-as porton? Tesztelheti a HCM-gazdagépről a PowerShell-parancs *tesztelése – NetConnection cél – P port* használatával 
+* A HCM valószínűleg rossz állapotban van? Próbálja meg újraindítani az "Azure hibridkapcsolat-kezelő szolgáltatás" helyi szolgáltatást.
 
-App Service a **tcpping** parancssori eszközt a speciális eszközök (kudu) konzolról lehet meghívni. Ez az eszköz tudja megállapítani, hogy van-e hozzáférése egy TCP-végponthoz, de nem mondja el, hogy van-e hozzáférése hibrid kapcsolati végponthoz. Ha az eszközt a-konzolon egy hibrid kapcsolódási végponton használja, csak egy gazdagép: Port kombinációt használ.  
+Ha az állapota **kapcsolódik** , de az alkalmazás nem tudja elérni a végpontot, akkor:
+
+* Győződjön meg arról, hogy DNS-nevet használ a hibrid kapcsolatban. Ha IP-címet használ, akkor előfordulhat, hogy a szükséges ügyfél DNS-keresése nem fog történni. Ha a webalkalmazásban futó ügyfél nem végez DNS-keresést, akkor a hibrid kapcsolat nem fog működni.
+* Győződjön meg arról, hogy a hibrid kapcsolatban használt DNS-név fel tud oldani a HCM-gazdagépről. A felbontást az *nslookup EndpointDNSname* használatával tekintheti meg, ahol a EndpointDNSname pontosan egyeznek a hibrid kapcsolat definíciójában használtkkal.
+* tesztelje a hozzáférést a HCM-gazdagépről a végpontra a PowerShell-parancs *test-NetConnection EndpointDNSname-P portjának*  használatával, ha nem tudja elérni a végpontot a HCM-gazdagépről, majd ellenőrizze a két gazdagép közötti tűzfalat, beleértve a gazdagépen alapuló tűzfalakat is a cél gazdagépen.
+
+App Service a **tcpping** parancssori eszköz a speciális eszközök (kudu) konzolról hívható meg. Ez az eszköz tudja megállapítani, hogy van-e hozzáférése egy TCP-végponthoz, de nem mondja el, hogy van-e hozzáférése hibrid kapcsolati végponthoz. Ha az eszközt a-konzolon egy hibrid kapcsolódási végponton használja, csak egy gazdagép: Port kombinációt használ.  
 
 Ha rendelkezik parancssori ügyféllel a végponthoz, tesztelheti a kapcsolatot az App Console használatával. A webkiszolgáló-végpontokhoz való hozzáférést például a curl használatával ellenőrizheti.
 

@@ -13,66 +13,71 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 41d70b20708f0f355fab5b5a06790c1c0c6530c6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583552"
+ms.locfileid: "99593078"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Gyorsútmutató: Bérlő beállítása
 
-A Microsoft identitásplatformja lehetővé teszi a fejlesztők számára az egyéni Microsoft 365-környezetek és -identitások széles választékát célzó alkalmazások létrehozását. A Microsoft Identity platform használatának megkezdéséhez hozzá kell férnie egy olyan környezethez (más néven Azure AD-bérlőhöz), amely képes regisztrálni és kezelni az alkalmazásokat, hozzáférni Microsoft 365 adatokhoz, és üzembe helyezi az egyéni feltételes hozzáférési és bérlői korlátozásokat.
+Ha a Microsoft Identity platformot használó alkalmazásokat szeretné létrehozni az identitás-és hozzáférés-kezeléshez, hozzá kell férnie egy Azure Active Directory (Azure AD) *bérlőhöz*. Ez az Azure AD-bérlőben regisztrálhatja és kezelheti az alkalmazásait, konfigurálhatja Microsoft 365 és más webes API-khoz tartozó adataihoz való hozzáférést, és engedélyezheti a feltételes hozzáféréshez hasonló szolgáltatásokat.
 
-A bérlő egy szervezetet képvisel. Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra.
+A bérlő egy szervezetet jelöl. Ez az Azure AD dedikált példánya, amelyet a szervezet vagy az alkalmazás fejlesztője a Microsofttal való kapcsolat elején kap. Ez a kapcsolat az Azure-ra, Microsoft Intunera vagy Microsoft 365re való feliratkozással kezdődhet, például:.
 
-Mindegyik Azure AD-bérlő önálló, elkülönül a többi Azure AD-bérlőtől, és a munkahelyi, iskolai és ügyfélidentitások (ha Azure AD B2C-bérlőről van szó) saját leképezésével, valamint saját alkalmazásregisztrációkkal rendelkeznek. A bérlőn belül található alkalmazásregisztrációkkal megadható, hogy a hitelesítés csak a saját bérlőben vagy az összes bérlőben található fiókokból legyen-e lehetséges.
+Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. Saját képviselettel rendelkezik a munkahelyi és iskolai identitások, fogyasztói identitások (ha Azure AD B2C bérlő) és az alkalmazások regisztrációja. A bérlőn belüli alkalmazás-regisztráció lehetővé teszi, hogy csak a bérlőn vagy az összes bérlőn belüli fiókok hitelesítő adatai legyenek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="determining-environment-type"></a>A környezet típusának meghatározása
+## <a name="determining-the-environment-type"></a>A környezet típusának meghatározása
 
-Kétféle környezetet hozhat létre. Annak eldöntése, hogy melyikre van szükség, kizárólag az alkalmazás által hitelesített felhasználók típusán alapul.
+Kétféle környezetet hozhat létre. A környezet kizárólag azon felhasználók típusaitól függ, amelyeket az alkalmazás hitelesíteni fog. 
 
-* Munkahelyi és iskolai (Azure AD-fiókok) vagy Microsoft-fiókok (például outlook.com és live.com)
-* Közösségi és helyi fiókok (Azure AD B2C)
+Ez a rövid útmutató a felépíteni kívánt alkalmazás típusának két forgatókönyvét tárgyalja:
 
-A rövid útmutató két forgatókönyvre oszlik a létrehozni kívánt alkalmazás típusától függően.
+* Munkahelyi és iskolai (Azure AD-) fiókok vagy Microsoft-fiókok (például Outlook.com és Live.com)
+* Közösségi és helyi (Azure AD B2C) fiókok
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>Munkahelyi és iskolai fiókok, vagy személyes Microsoft-fiókok
 
-### <a name="use-an-existing-tenant"></a>Meglévő bérlő használata
+A munkahelyi és iskolai fiókok, illetve a személyes Microsoft-fiókok környezetének létrehozásához használhat meglévő Azure AD-bérlőt, vagy létrehozhat egy újat.
+### <a name="use-an-existing-azure-ad-tenant"></a>Meglévő Azure AD-bérlő használata
 
-Sok fejlesztő az Azure AD-bérlőkhöz kapcsolódó szolgáltatások vagy előfizetések (például Microsoft 365- vagy Azure-előfizetések) révén már rendelkezik bérlőkkel.
+Számos fejlesztő rendelkezik olyan szolgáltatásokkal vagy előfizetésekkel, amelyek az Azure AD-bérlőhöz vannak kötve, például Microsoft 365 vagy Azure-előfizetésekhez.
 
-1. A bérlő vizsgálatához jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a> az alkalmazás kezeléséhez használni kívánt fiókkal.
-1. Tekintse meg a jobb felső sarokban látható információkat. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét.
-   * Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya.
+A bérlő ellenõrzése:
+
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Használja az alkalmazás felügyeletéhez használni kívánt fiókot.
+1. Győződjön meg a jobb felső sarokban. Ha Bérlővel rendelkezik, automatikusan bejelentkezik. A bérlő neve közvetlenül a fiók neve alatt jelenik meg.
+   * Vigye a kurzort a fiókja nevére, hogy megtekintse a nevét, e-mail-címét, könyvtárát vagy bérlői AZONOSÍTÓját (GUID) és tartományát.
    * Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik.
 
 > [!TIP]
 > A bérlő AZONOSÍTÓjának megkereséséhez a következőket teheti:
-> * Helyezze a kurzort a fiók neve fölé a címtár-/bérlőazonosító lekéréséhez, vagy
-> * Keresse meg és válassza ki **Azure Active Directory > tulajdonságok > a bérlő azonosítója** elemet a Azure Portal
+> * A címtár vagy a bérlő AZONOSÍTÓjának lekéréséhez vigye a kurzort a fiók nevére.
+> * Keresse meg és válassza ki **Azure Active Directory**  >  **Tulajdonságok**  >  **bérlői azonosítóját** a Azure Portalban.
 
-Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve alatt, és nem hajthat végre műveleteket, például nem regisztrálhat alkalmazásokat, amíg végre nem hajtja a következő részben található lépéseket.
+Ha nem rendelkezik a fiókjához társított Bérlővel, akkor a fiók neve alatt egy GUID-t fog látni. Nem fog tudni műveleteket végezni, például az alkalmazások regisztrálását, amíg nem hoz létre Azure AD-bérlőt.
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Új Azure AD-bérlő létrehozása
 
-Ha még nem rendelkezik Azure AD-Bérlővel, vagy létre szeretne hozni egy újat a fejlesztéshez, tekintse meg a rövid útmutatót [, vagy egyszerűen](../fundamentals/active-directory-access-create-new-tenant.md) kövesse a [címtár-létrehozási élményt](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Az új bérlő létrehozásához az alábbi adatokat kell megadnia:
+Ha még nem rendelkezik Azure AD-Bérlővel, vagy ha új fejlesztést szeretne létrehozni, tekintse meg az [új bérlő létrehozása az Azure ad-ben](../fundamentals/active-directory-access-create-new-tenant.md)című témakört. Vagy használja a Azure Portal [könyvtár létrehozási élményét](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) . 
+
+Az új bérlő létrehozásához a következő információkat kell megadnia:
 
 - **Szervezet neve**
-- **Kezdeti tartomány** – a *.onmicrosoft.com része lesz. A tartományt később testreszabhatja.
+- **Kezdeti tartomány** – ez a tartomány a *. onmicrosoft.com része. A tartományt később is testreszabhatja.
 - **Ország vagy régió**
 
 > [!NOTE]
-> A bérlő elnevezése esetén alfanumerikus karaktereket használjon. A speciális karakterek használata nem engedélyezett. A név nem lehet hosszabb 256 karakternél.
+> A bérlő elnevezése esetén alfanumerikus karaktereket használjon. A speciális karakterek nem engedélyezettek. A név nem lehet hosszabb 256 karakternél.
 
 ## <a name="social-and-local-accounts"></a>Közösségi és helyi fiókok
 
-A közösségi és helyi fiók bejelentkeztetésére szolgáló alkalmazások létrehozásának megkezdéséhez egy Azure AD B2C-bérlőt kell létrehoznia. A létrehozást az [Azure AD B2C-bérlők létrehozását ismertető](../../active-directory-b2c/tutorial-create-tenant.md) témakör utasításait követve kezdheti meg.
+A közösségi és helyi fiókokat bejelentkező alkalmazások létrehozásának megkezdéséhez hozzon létre egy Azure AD B2C bérlőt. Első lépésként tekintse meg [Azure ad B2C bérlő létrehozása](../../active-directory-b2c/tutorial-create-tenant.md)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

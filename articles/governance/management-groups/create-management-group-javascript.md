@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel'
 description: Ebben a rövid útmutatóban a JavaScript használatával hozzon létre egy felügyeleti csoportot, amely erőforrás-hierarchiába rendezi az erőforrásokat.
-ms.date: 11/18/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c1b800f150cebacf8d17785feb1bded5189f1574
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 25fd93e51c1b49519bb315aab28cdfc44a2a0c58
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886600"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593976"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel
 
@@ -21,7 +21,7 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 
 - Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-- Mielőtt elkezdené, győződjön meg arról, hogy legalább a [Node.js](https://nodejs.org/) 12-ös verziója telepítve van.
+- Mielőtt elkezdené, győződjön meg arról, hogy a [Node.js](https://nodejs.org/) legalább 12-ös verziója telepítve van.
 
 - A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot anélkül, hogy a felügyeleti csoport írási engedélye nincs hozzárendelve ehhez a felhasználóhoz, ha nincs engedélyezve a [hierarchia védelme](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Ez az új felügyeleti csoport a gyökérszintű felügyeleti csoport vagy az [alapértelmezett felügyeleti](./how-to/protect-resource-hierarchy.md#setting---default-management-group) csoport gyermeke lesz, a létrehozó pedig "tulajdonos" szerepkör-hozzárendelést kap. A felügyeleti csoport szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések nem szükségesek a gyökérszintű szinten. A létrehozáskor egyetlen felhasználó sem férhet hozzá a gyökérszintű felügyeleti csoporthoz. Ha el szeretné kerülni, hogy az Azure AD globális rendszergazdái megkeressék a felügyeleti csoportokat, lehetővé tesszük a kezdeti felügyeleti csoportok legfelső szintű létrehozását.
 

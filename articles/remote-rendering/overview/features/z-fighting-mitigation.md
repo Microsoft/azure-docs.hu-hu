@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7550d0f997182b3938285f1d0a360a31bf05177
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a399565d62b20f62b72257bcb9f3beb2c910ac98
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207461"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594061"
 ---
 # <a name="z-fighting-mitigation"></a>Z-pufferelési hibák csökkentése
 
-Ha két felület átfedésben van, nem egyértelmű, hogy az egyiket a másikon kell megjeleníteni. Az eredmény akár képpont is változhat, ami a kamera nézettől függő összetevőkből ered. Ennek következtében a kamera vagy a háló mozgatásakor ezek a minták vibrálnak. Ezt az összetevőt *z-harcok*nevezik. Az AR-és a VR-alkalmazások esetében a probléma intenzívebbé válik, mert a fej által csatlakoztatott eszközök természetesen mindig áthelyezhetők. Ha meg szeretné akadályozni, hogy a megjelenítők ne tudják elhárítani a megoldást, az Azure Remote rendering szolgáltatásban is elérhető.
+Ha két felület átfedésben van, nem egyértelmű, hogy az egyiket a másikon kell megjeleníteni. Az eredmény akár képpont is változhat, ami a kamera nézettől függő összetevőkből ered. Ennek következtében a kamera vagy a háló mozgatásakor ezek a minták vibrálnak. Ezt az összetevőt *z-harcok* nevezik. Az AR-és a VR-alkalmazások esetében a probléma intenzívebbé válik, mert a fej által csatlakoztatott eszközök természetesen mindig áthelyezhetők. Ha meg szeretné akadályozni, hogy a megjelenítők ne tudják elhárítani a megoldást, az Azure Remote rendering szolgáltatásban is elérhető.
 
 ## <a name="z-fighting-mitigation-modes"></a>Z – a megelőzési módok elleni küzdelem
 
@@ -28,9 +28,9 @@ Ha két felület átfedésben van, nem egyértelmű, hogy az egyiket a másikon 
 A következő kód lehetővé teszi a z-harcok enyhítését:
 
 ```cs
-void EnableZFightingMitigation(AzureSession session, bool highlight)
+void EnableZFightingMitigation(RenderingSession session, bool highlight)
 {
-    ZFightingMitigationSettings settings = session.Actions.ZFightingMitigationSettings;
+    ZFightingMitigationSettings settings = session.Connection.ZFightingMitigationSettings;
 
     // enabling z-fighting mitigation
     settings.Enabled = true;
@@ -41,9 +41,9 @@ void EnableZFightingMitigation(AzureSession session, bool highlight)
 ```
 
 ```cpp
-void EnableZFightingMitigation(ApiHandle<AzureSession> session, bool highlight)
+void EnableZFightingMitigation(ApiHandle<RenderingSession> session, bool highlight)
 {
-    ApiHandle<ZFightingMitigationSettings> settings = session->Actions()->GetZFightingMitigationSettings();
+    ApiHandle<ZFightingMitigationSettings> settings = session->Connection()->GetZFightingMitigationSettings();
 
     // enabling z-fighting mitigation
     settings->SetEnabled(true);
@@ -78,8 +78,8 @@ Az ajánlott z – küzdelem a legjobb megoldás. Nincs garancia arra, hogy az �
 
 ## <a name="api-documentation"></a>API-dokumentáció
 
-* [C# RemoteManager. ZFightingMitigationSettings tulajdonság](/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
-* [C++ RemoteManager:: ZFightingMitigationSettings ()](/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
+* [C# RenderingConnection. ZFightingMitigationSettings tulajdonság](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.zfightingmitigationsettings)
+* [C++ RenderingConnection:: ZFightingMitigationSettings ()](/cpp/api/remote-rendering/renderingconnection#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Következő lépések
 

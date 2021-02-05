@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b3348e5a999b507aa0d286528970beb0e03f26cd
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205931"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594372"
 ---
 # <a name="cut-planes"></a>Síkok kivágása
 
@@ -22,12 +22,12 @@ Az alábbi képen a hatás látható. A bal oldalon az eredeti rácsvonal látha
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
-Egy *CutPlaneComponent*létrehozásával hozzáadhat egy kivágási síkot a jelenethez. A sík helyét és tájolását az összetevő tulajdonosi [entitása](../../concepts/entities.md)határozza meg.
+Egy *CutPlaneComponent* létrehozásával hozzáadhat egy kivágási síkot a jelenethez. A sík helyét és tájolását az összetevő tulajdonosi [entitása](../../concepts/entities.md)határozza meg.
 
 ```cs
-void CreateCutPlane(AzureSession session, Entity ownerEntity)
+void CreateCutPlane(RenderingSession session, Entity ownerEntity)
 {
-    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Actions.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
+    CutPlaneComponent cutPlane = (CutPlaneComponent)session.Connection.CreateComponent(ObjectType.CutPlaneComponent, ownerEntity);
     cutPlane.Normal = Axis.X; // normal points along the positive x-axis of the owner object's orientation
     cutPlane.FadeColor = new Color4Ub(255, 0, 0, 128); // fade to 50% red
     cutPlane.FadeLength = 0.05f; // gradient width: 5cm
@@ -35,9 +35,9 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 ```
 
 ```cpp
-void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEntity)
+void CreateCutPlane(ApiHandle<RenderingSession> session, ApiHandle<Entity> ownerEntity)
 {
-    ApiHandle<CutPlaneComponent> cutPlane = session->Actions()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
+    ApiHandle<CutPlaneComponent> cutPlane = session->Connection()->CreateComponent(ObjectType::CutPlaneComponent, ownerEntity)->as<CutPlaneComponent>();;
     cutPlane->SetNormal(Axis::X); // normal points along the positive x-axis of the owner object's orientation
     Color4Ub fadeColor;
     fadeColor.channels = { 255, 0, 0, 128 }; // fade to 50% red
@@ -71,21 +71,21 @@ A szűrés a **logikai bitek összevetését** , a kivágási sík oldalán lév
 * A kivágási sík összetevőn lévő bit mask a tulajdonságán keresztül van beállítva `ObjectFilterMask`
 * A geometriai alhierarchián a [HierarchicalStateOverrideComponent](override-hierarchical-state.md#features) a
 
-Példák:
+Angol nyelvű Példák:
 
 | Sík szűrő maszkjának kivágása | Geometriai szűrő maszkja  | Logikai eredmény `AND` | A kivágott sík befolyásolja a geometriát?  |
 |--------------------|-------------------|-------------------|:----------------------------:|
-| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Igen |
-| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Igen |
-| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | Nem |
-| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | Nem |
+| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
+| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
+| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | No |
+| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | No |
 
 >[!TIP]
 > A kivágott sík 0 értékre állítása azt `ObjectFilterMask` jelenti, hogy nem befolyásolja a geometriát, mert a logikai eredmény nem `AND` lehet null. A renderelési rendszer nem veszi figyelembe ezeket a gépeket az első helyen, ezért ez egy egyszerű módszer az egyes kivágott síkok letiltására. Ezek a kivágott síkok szintén nem számítanak bele a 8 aktív síkon.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az Azure Remote rendering **legfeljebb nyolc aktív kivágott gépet**támogat. Több kivágási sík-összetevőt is létrehozhat, de ha több párhuzamosan próbálkozik, a rendszer figyelmen kívül hagyja az aktiválást. Ha azt szeretné, hogy az egyes összetevők milyen hatással legyenek a színtérre, tiltsa le a többi gépet.
+* Az Azure Remote rendering **legfeljebb nyolc aktív kivágott gépet** támogat. Több kivágási sík-összetevőt is létrehozhat, de ha több párhuzamosan próbálkozik, a rendszer figyelmen kívül hagyja az aktiválást. Ha azt szeretné, hogy az egyes összetevők milyen hatással legyenek a színtérre, tiltsa le a többi gépet.
 * A kivágott síkok tisztán vizualizációs funkciók, nem befolyásolják a [térbeli lekérdezések](spatial-queries.md)eredményét. Ha azt szeretné, hogy a Ray kivágású nyitott rácsvonalba kerüljön, beállíthatja, hogy a Ray kiindulási pontja a kivágási síkon legyen. Így a fénysugár csak a látható részeket tudja megütni.
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások

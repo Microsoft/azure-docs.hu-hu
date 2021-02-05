@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f2adc846247c4f06c9356f482501fd01c5463bf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202684"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593705"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-munkamenetek
 
@@ -25,9 +25,9 @@ Ez azt jelenti, hogy az Azure Remote rendering használatakor a szükséges hard
 
 ## <a name="managing-sessions"></a>Munkamenetek kezelése
 
-A munkamenetek kezelésének és kezelésének több módja is van. A munkamenetek [felügyeleti Rest APIon](../how-tos/session-rest-api.md)keresztüli létrehozása, frissítése és leállítása egymástól független módon történik. A C# és a C++ nyelvben ezek a műveletek az osztályok és a használatával érhetők el `AzureFrontend` `AzureSession` . Az Unity-alkalmazások esetében az összetevő további segédprogram-funkciókat is biztosít `ARRServiceUnity` .
+A munkamenetek kezelésének és kezelésének több módja is van. A munkamenetek [felügyeleti Rest APIon](../how-tos/session-rest-api.md)keresztüli létrehozása, frissítése és leállítása egymástól független módon történik. A C# és a C++ nyelvben ezek a műveletek az osztályok és a használatával érhetők el `RemoteRenderingClient` `RenderingSession` . Az Unity-alkalmazások esetében az összetevő további segédprogram-funkciókat is biztosít `ARRServiceUnity` .
 
-Ha aktív munkamenethez *kapcsolódott* , akkor a rendszer az osztályon keresztül teszi elérhetővé a műveleteket, például a [modellek betöltését](models.md) és a jelenettel való interakciót `AzureSession` .
+Ha aktív munkamenethez *kapcsolódott* , akkor a rendszer az osztályon keresztül teszi elérhetővé a műveleteket, például a [modellek betöltését](models.md) és a jelenettel való interakciót `RenderingSession` .
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Egyszerre több munkamenet kezelése
 
@@ -39,14 +39,14 @@ Minden munkamenet több fázison megy keresztül.
 
 ### <a name="session-startup"></a>Munkamenet indítása
 
-Ha az ARR-t arra kéri, hogy [hozzon létre egy új munkamenetet](../how-tos/session-rest-api.md#create-a-session), akkor az első dolog, ha egy munkamenet [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-t ad vissza. Ez az UUID lehetővé teszi a munkamenet adatainak lekérdezését. Az UUID-t és a munkamenet alapszintű információit 30 napig őrzi meg a rendszer, így a munkamenet leállítása után is lekérdezheti az adatokat. Ezen a ponton a **munkamenet-állapotot** a rendszer az **induláskor**fogja jelenteni.
+Ha az ARR-t arra kéri, hogy [hozzon létre egy új munkamenetet](../how-tos/session-rest-api.md#create-a-session), akkor az első dolog, ha egy munkamenet [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-t ad vissza. Ez az UUID lehetővé teszi a munkamenet adatainak lekérdezését. Az UUID-t és a munkamenet alapszintű információit 30 napig őrzi meg a rendszer, így a munkamenet leállítása után is lekérdezheti az adatokat. Ezen a ponton a **munkamenet-állapotot** a rendszer az **induláskor** fogja jelenteni.
 
 Ezt követően az Azure Remote rendering megpróbál olyan kiszolgálót találni, amely képes a munkamenet üzemeltetésére. A keresésnek két paramétere van. Először csak a [régiójában](../reference/regions.md)lévő kiszolgálókat fogja fenntartani. Ennek oka, hogy a régiók közötti hálózati késés túl magas lehet a tisztességes felhasználói élmény garantálása érdekében. A második tényező a megadott kívánt *méret* . Az egyes régiókban korlátozott számú kiszolgáló érhető el, amelyek megfelelnek a standard vagy a [*prémium*](../reference/vm-sizes.md) [*szintű*](../reference/vm-sizes.md) kérésnek. Ennek következtében, ha a kért méret összes kiszolgálója jelenleg használatban van a régiójában, a munkamenet létrehozása sikertelen lesz. A hiba oka lehet a [lekérdezés](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
 > Ha *standard szintű* kiszolgáló-méretet kér, és a kérés magas kereslet miatt meghiúsul, a nem jelenti azt, hogy a *prémium* szintű kiszolgáló igénylése is sikertelen lesz. Ha így van, akkor kipróbálhatja a *prémium* szintű kiszolgáló méretének visszaesését.
 
-Ha a szolgáltatás megfelelő kiszolgálót talál, a megfelelő virtuális gépet (VM) át kell másolnia egy Azure távoli renderelési gazdagépre való bekapcsolásához. Ez a folyamat több percig is eltarthat. Ezt követően a virtuális gép elindult, és a **munkamenet állapota** **készre**vált.
+Ha a szolgáltatás megfelelő kiszolgálót talál, a megfelelő virtuális gépet (VM) át kell másolnia egy Azure távoli renderelési gazdagépre való bekapcsolásához. Ez a folyamat több percig is eltarthat. Ezt követően a virtuális gép elindult, és a **munkamenet állapota** **készre** vált.
 
 Ezen a ponton a kiszolgáló kizárólag a bemenetre vár. Ez azt is megteheti, hogy a szolgáltatásért díjat számítunk fel.
 
@@ -64,7 +64,7 @@ Amíg az eszköz egy munkamenethez csatlakozik, a más eszközök csatlakozási 
 
 ### <a name="session-end"></a>Munkamenet vége
 
-Új munkamenet igénylése esetén a *címbérlet maximális idejét*kell megadnia, jellemzően az egy és nyolc óra közötti tartományban. Ez az az időtartam, ameddig a gazdagép el fogja fogadni a bemenetet.
+Új munkamenet igénylése esetén a *címbérlet maximális idejét* kell megadnia, jellemzően az egy és nyolc óra közötti tartományban. Ez az az időtartam, ameddig a gazdagép el fogja fogadni a bemenetet.
 
 A munkamenet befejezésének két rendszeres oka van. Manuálisan kérheti le a munkamenet leállítását vagy a címbérlet maximális idejét. A gazdagépre irányuló aktív kapcsolatok mindkét esetben azonnal le vannak zárva, és a szolgáltatás le van állítva a kiszolgálón. A kiszolgálót ezután visszaadja az Azure-készletnek, és más célra is visszaigénylést kaphat. A munkamenet leállítása nem vonható vissza vagy szakítható meg. A munkamenet- **állapot** leállítási munkameneten való lekérdezése vagy **leállt** vagy **lejárt**, attól függően, hogy manuálisan leállították-e, vagy elérte a címbérlet maximális idejét.
 
@@ -73,7 +73,7 @@ Néhány hiba miatt előfordulhat, hogy egy munkamenet le is állítható.
 A munkamenet leállítása után minden esetben nem számítunk fel díjat.
 
 > [!WARNING]
-> Azt jelzi, hogy egy munkamenethez kapcsolódik-e, és hogy mennyi ideig, nem befolyásolja a számlázást. A szolgáltatásért fizetendő díj a *munkamenet időtartamától*függ, ami azt jelenti, hogy a kiszolgáló csak Ön számára van fenntartva, és a kért hardver-képességek (a [lefoglalt méret](../reference/vm-sizes.md)). Ha elindít egy munkamenetet, öt percig kapcsolódjon, majd ne állítsa le a munkamenetet, hogy az a bérlet lejárta előtt is fusson, a teljes munkamenet címbérletének idejére. Ezzel szemben a *címbérlet maximális időtartama* többnyire biztonsági háló. Nem számít, hogy a munkamenetet nyolc órás bérlettel kéri-e, majd csak öt percig használja, ha ezt követően manuálisan leállítja a munkamenetet.
+> Azt jelzi, hogy egy munkamenethez kapcsolódik-e, és hogy mennyi ideig, nem befolyásolja a számlázást. A szolgáltatásért fizetendő díj a *munkamenet időtartamától* függ, ami azt jelenti, hogy a kiszolgáló csak Ön számára van fenntartva, és a kért hardver-képességek (a [lefoglalt méret](../reference/vm-sizes.md)). Ha elindít egy munkamenetet, öt percig kapcsolódjon, majd ne állítsa le a munkamenetet, hogy az a bérlet lejárta előtt is fusson, a teljes munkamenet címbérletének idejére. Ezzel szemben a *címbérlet maximális időtartama* többnyire biztonsági háló. Nem számít, hogy a munkamenetet nyolc órás bérlettel kéri-e, majd csak öt percig használja, ha ezt követően manuálisan leállítja a munkamenetet.
 
 #### <a name="extend-a-sessions-lease-time"></a>Munkamenet címbérleti idejének meghosszabbítása
 
@@ -89,20 +89,22 @@ RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 
 RemoteManagerStatic.StartupRemoteRendering(init);
 
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// fill out accountInfo details...
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// fill out sessionConfig details...
 
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
-RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-// fill out sessionCreationParams...
+RenderingSessionCreationOptions rendererOptions = new RenderingSessionCreationOptions();
+// fill out rendererOptions...
 
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(rendererOptions);
 
+RenderingSession session = result.Session;
 RenderingSessionProperties sessionProperties;
 while (true)
 {
-    sessionProperties = await session.GetPropertiesAsync().AsTask();
+    var propertiesResult = await session.GetPropertiesAsync();
+    sessionProperties = propertiesResult.SessionProperties;
     if (sessionProperties.Status != RenderingSessionStatus.Starting &&
         sessionProperties.Status != RenderingSessionStatus.Unknown)
     {
@@ -118,43 +120,43 @@ if (sessionProperties.Status != RenderingSessionStatus.Ready)
 }
 
 // Connect to server
-Result connectResult = await session.ConnectToRuntime(new ConnectToRuntimeParams()).AsTask();
+ConnectionStatus connectStatus = await session.ConnectAsync(new RendererInitOptions());
 
 // Connected!
 
-while(...)
+while (...)
 {
     // per frame update
 
-    session.Actions.Update();
+    session.Connection.Update();
 }
 
 // Disconnect
-session.DisconnectFromRuntime();
+session.Disconnect();
 
 // stop the session
-await session.StopAsync().AsTask();
+await session.StopAsync();
 
 // shut down the remote rendering SDK
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Több `AzureFrontend` és `AzureSession` példány is kezelhető, módosítható és lekérdezhető a kódból. Egyszerre azonban csak egyetlen eszköz csatlakozhat egyszerre `AzureSession` .
+Több `RemoteRenderingClient` és `RenderingSession` példány is kezelhető, módosítható és lekérdezhető a kódból. Egyszerre azonban csak egyetlen eszköz csatlakozhat egyszerre `RenderingSession` .
 
-A virtuális gép élettartama nincs a `AzureFrontend` példányhoz vagy a `AzureSession` példányhoz kötve. `AzureSession.StopAsync` a munkamenet leállítására kell hívni.
+A virtuális gép élettartama nincs a `RemoteRenderingClient` példányhoz vagy a `RenderingSession` példányhoz kötve. `RenderingSession.StopAsync` a munkamenet leállítására kell hívni.
 
-Az állandó munkamenet-azonosító lekérdezhető helyileg a-n keresztül `AzureSession.SessionUUID()` és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `AzureFrontend.OpenSession` a kötést az adott munkamenethez.
+Az állandó munkamenet-azonosító lekérdezhető helyileg a-n keresztül `RenderingSession.SessionUuid()` és gyorsítótárazva. Ezzel az AZONOSÍTÓval az alkalmazás meghívja `RemoteRenderingClient.OpenRenderingSessionAsync` a kötést az adott munkamenethez.
 
-Ha a `AzureSession.IsConnected` értéke TRUE (igaz), a `AzureSession.Actions` egy példányát adja vissza `RemoteManager` , amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
+Ha a `RenderingSession.IsConnected` értéke TRUE (igaz), a `RenderingSession.Connection` egy példányát adja vissza `RenderingConnection` , amely a [modellek betöltésére](models.md), az [entitások](entities.md)manipulálására és a megjelenített jelenet [adatainak lekérdezésére](../overview/features/spatial-queries.md) szolgáló függvényeket tartalmazza.
 
 ## <a name="api-documentation"></a>API-dokumentáció
 
-* [C# AzureSession osztály](/dotnet/api/microsoft.azure.remoterendering.azuresession)
-* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
-* [C# AzureFrontend. OpenRenderingSession ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
-* [C++ AzureSession osztály](/cpp/api/remote-rendering/azuresession)
-* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
-* [C++ AzureFrontend:: OpenRenderingSession](/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
+* [C# RenderingSession osztály](/dotnet/api/microsoft.azure.remoterendering.renderingsession)
+* [C# RemoteRenderingClient. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
+* [C# RemoteRenderingClient. OpenRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
+* [C++ RenderingSession osztály](/cpp/api/remote-rendering/renderingsession)
+* [C++ RemoteRenderingClient:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/remoterenderingclient#createnewrenderingsessionasync)
+* [C++ RemoteRenderingClient:: OpenRenderingSession](/cpp/api/remote-rendering/remoterenderingclient#openrenderingsession)
 
 ## <a name="next-steps"></a>Következő lépések
 

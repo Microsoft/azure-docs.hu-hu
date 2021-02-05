@@ -62,7 +62,7 @@
       items:
         - name: Átalakítások
           href: how-to-transformation.md
-        - name: Bejövő szinkronizálás az MS Graph API-val
+        - name: A Cloud Sync programozott konfigurálása MS Graph API használatával
           href: how-to-inbound-synch-ms-graph.md
         - name: Azure AD szinkronizálási API
           href: /graph/api/resources/synchronization-overview

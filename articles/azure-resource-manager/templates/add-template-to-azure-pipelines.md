@@ -2,25 +2,29 @@
 title: CI/CD Azure-folyamatokkal és-sablonokkal
 description: Ismerteti, hogyan konfigurálhatja a folyamatos integrációt az Azure-folyamatokban Azure Resource Manager sablonok használatával. Bemutatja, hogyan használhat PowerShell-parancsfájlokat, illetve hogyan másolhat fájlokat egy átmeneti helyre, és onnan telepítheti azokat.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.date: 02/05/2021
+ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233814"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594197"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure Pipelines használatával
 
-A folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) érdekében integrálhatja Azure Resource Manager sablonokat (ARM-sablonokat) az Azure-folyamatokkal. Az [ARM-sablonok Azure-folyamatokkal való folyamatos integrációjának](deployment-tutorial-pipeline.md) oktatóanyaga azt mutatja be, hogyan használható az [ARM-sablon telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) a sablonnak a GitHub-tárházból való üzembe helyezéséhez. Ez a módszer akkor működik, ha közvetlenül egy adattárból kíván üzembe helyezni egy sablont.
+A folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) érdekében integrálhatja Azure Resource Manager sablonokat (ARM-sablonokat) az Azure-folyamatokkal. Ebből a cikkből megtudhatja, hogyan helyezhet üzembe a sablonok Azure-folyamatokkal való üzembe helyezésének két fejlettebb módját.
 
-Ebből a cikkből megtudhatja, hogyan telepíthet üzembe sablonokat Azure-folyamatokkal. Ez a cikk a következőket mutatja be:
+## <a name="select-your-option"></a>Válassza ki a lehetőséget
 
-* **Azure PowerShell parancsfájlt futtató feladat hozzáadása** . Ennek a beállításnak az az előnye, hogy a fejlesztési életciklus teljes életciklusa alatt biztosítja a konzisztenciát, mivel a helyi tesztek futtatásakor használt parancsfájlt használhatja. A szkript telepíti a sablont, de más műveleteket is végrehajthat, például paramétereket lehet használni.
+A cikk folytatása előtt tekintsük át az ARM-sablonok folyamatokból való üzembe helyezésének különböző lehetőségeit.
+
+* **Az ARM-sablon üzembe helyezési feladata**. Ez a legegyszerűbb lehetőség. Ez a módszer akkor működik, ha közvetlenül egy adattárból kíván üzembe helyezni egy sablont. Ez a beállítás nem szerepel ebben a cikkben, hanem az [ARM-sablonok Azure-folyamatokkal való folyamatos integrációjának](deployment-tutorial-pipeline.md)oktatóanyaga tárgyalja. Bemutatja, hogyan helyezhet üzembe egy sablont a GitHub-tárházból a [ARM-sablon üzembe helyezési feladatának](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) használatával.
+
+* **Azure PowerShell parancsfájlt futtató feladat hozzáadása**. Ennek a beállításnak az az előnye, hogy a fejlesztési életciklus teljes életciklusa alatt biztosítja a konzisztenciát, mivel a helyi tesztek futtatásakor használt parancsfájlt használhatja. A szkript telepíti a sablont, de más műveleteket is végrehajthat, például paramétereket lehet használni. Ez a beállítás ebben a cikkben látható. Lásd: [Azure PowerShell feladat](#azure-powershell-task).
 
    A Visual Studio egy PowerShell-parancsfájlt tartalmazó [Azure erőforráscsoport-projektet](create-visual-studio-deployment-project.md) biztosít. A parancsfájl a projektből egy olyan Storage-fiókra mutat, amelyet a Resource Manager elérhet. Az összetevők olyan elemek a projektben, mint például a csatolt sablonok, a parancsfájlok és az alkalmazás bináris fájljai. Ha továbbra is szeretné használni a szkriptet a projektből, használja a cikkben látható PowerShell-parancsfájlt.
 
-* Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez** . Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladattal az összetevők egy elérhető helyre kerülnek. A másik feladat az adott helyről telepíti a sablont.
+* Feladatok **hozzáadása a feladatok másolásához és üzembe helyezéséhez**. Ez a beállítás kényelmes alternatívát kínál a projekt parancsfájlhoz. A folyamat két feladatot konfigurál. Egy feladattal az összetevők egy elérhető helyre kerülnek. A másik feladat az adott helyről telepíti a sablont. Ez a beállítás ebben a cikkben látható. Lásd: [feladatok másolása és telepítése](#copy-and-deploy-tasks).
 
 ## <a name="prepare-your-project"></a>A projekt előkészítése
 

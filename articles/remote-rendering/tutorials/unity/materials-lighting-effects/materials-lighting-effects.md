@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8eb73fcfde7e294896a12289486ff71794a00ae6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203245"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591718"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Oktatóanyag: az anyagok, a világítás és a hatások finomítása
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -32,11 +32,11 @@ Az oktatóanyag a következőket ismerteti:
 
 A felhasználók számára a vizuális visszajelzések fontos részét képezik a felhasználói élménynek bármely alkalmazásban. Az Azure Remote rendering a [hierarchikus állapotú felülbírálások](../../../overview/features/override-hierarchical-state.md)révén vizuális visszajelzési mechanizmusokat biztosít. A hierarchikus állapot felülbírálásai a modellek helyi példányaihoz csatolt összetevőkkel vannak implementálva. Megtanultuk, hogyan hozhatja létre ezeket a helyi példányokat a [távoli objektum gráfjának az Unity-hierarchiába való szinkronizálásához](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy).
 
-Először hozzunk létre egy burkolót a [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) összetevő köré. A **HierarchicalStateOverrideComponent** a helyi parancsfájl, amely a távoli entitás felülbírálásait vezérli. Az [**oktatóanyag eszközei**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) közé tartozik egy **BaseEntityOverrideController**nevű absztrakt alaposztály, amelyet a burkoló létrehozásához fogunk kiterjeszteni.
+Először hozzunk létre egy burkolót a [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) összetevő köré. A **HierarchicalStateOverrideComponent** a helyi parancsfájl, amely a távoli entitás felülbírálásait vezérli. Az [**oktatóanyag eszközei**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) közé tartozik egy **BaseEntityOverrideController** nevű absztrakt alaposztály, amelyet a burkoló létrehozásához fogunk kiterjeszteni.
 
 1. Hozzon létre egy **EntityOverrideController** nevű új parancsfájlt, és cserélje le a tartalmát a következő kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -154,21 +154,21 @@ Először hozzunk létre egy burkolót a [**HierarchicalStateOverrideComponent**
     }
     ```
 
-A **LocalOverride**fő feladata, hogy kapcsolatot hozzon létre a saját maga és a között `RemoteComponent` . A **LocalOverride** ezután lehetővé teszi, hogy a helyi összetevőn állítson be állapotjelzőket, amelyek a távoli entitáshoz vannak kötve. A felülbírálásokat és azok [állapotát a hierarchikus állapot felülbírálásai](../../../overview/features/override-hierarchical-state.md) lapon találja. 
+A **LocalOverride** fő feladata, hogy kapcsolatot hozzon létre a saját maga és a között `RemoteComponent` . A **LocalOverride** ezután lehetővé teszi, hogy a helyi összetevőn állítson be állapotjelzőket, amelyek a távoli entitáshoz vannak kötve. A felülbírálásokat és azok [állapotát a hierarchikus állapot felülbírálásai](../../../overview/features/override-hierarchical-state.md) lapon találja. 
 
 Ez a megvalósítás csak egy állapotot vált ki egyszerre. Azonban teljesen lehetséges több felülbírálást egyesíteni egyetlen entitáson, és a hierarchiában különböző szinteken hozhat létre kombinációkat. Például a `Selected` és `SeeThrough` az egyetlen összetevővel való egyesítése egy vázlatot is biztosít, miközben az áttetszővé válik. Vagy ha a gyökérszintű entitás `Hidden` felülbírálását úgy állítja be, hogy a `ForceOn` gyermek entitás `Hidden` felülbírálását úgy állítsa be, hogy a `ForceOff` felülbírált gyermek kivételével mindent elrejtse.
 
 Az állapotok entitásokra való alkalmazásához a korábban létrehozott **RemoteEntityHelper** is módosíthatjuk.
 
-1. Módosítsa a **RemoteEntityHelper** osztályt a **BaseRemoteEntityHelper** absztrakt osztályának megvalósításához. Ez a módosítás lehetővé teszi az **oktatóanyag eszközeiben**megadott View vezérlő használatát. A módosításkor a következőhöz hasonlóan kell kinéznie:
+1. Módosítsa a **RemoteEntityHelper** osztályt a **BaseRemoteEntityHelper** absztrakt osztályának megvalósításához. Ez a módosítás lehetővé teszi az **oktatóanyag eszközeiben** megadott View vezérlő használatát. A módosításkor a következőhöz hasonlóan kell kinéznie:
 
-    ```csharp
+    ```cs
     public class RemoteEntityHelper : BaseRemoteEntityHelper
     ```
 
 2. Bírálja felül az absztrakt metódusokat a következő kód használatával:
 
-    ```csharp
+    ```cs
     public override BaseEntityOverrideController EnsureOverrideComponent(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -249,7 +249,7 @@ Létrehozunk egy parancsfájlt, amely automatikusan létrehoz egy távoli entit�
 
 1. Hozzon létre egy **RemoteCutPlane** nevű új parancsfájlt, és cserélje le a kódját az alábbi kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -318,18 +318,18 @@ Létrehozunk egy parancsfájlt, amely automatikusan létrehoz egy távoli entit�
     }
     ```
 
-    Ez a kód kiterjeszti a **BaseRemoteCutPlane** osztályt az **oktatóanyag eszközei**között. A távolról renderelt modellhez hasonlóan ez a szkript csatolja és figyeli a `RemoteRenderingState` távoli koordinátor változásait. Ha a koordinátor eléri az `RuntimeConnected` állapotot, a rendszer megpróbál automatikusan csatlakozni, ha az a feltételezett. Van egy változó is, `CutPlaneComponent` amelyet nyomon követünk. Ez az Azure távoli renderelési összetevő, amely a távoli munkamenetben lévő kivágási síkon szinkronizál. Vessünk egy pillantást a kivágott sík létrehozásához szükséges műveletekre.
+    Ez a kód kiterjeszti a **BaseRemoteCutPlane** osztályt az **oktatóanyag eszközei** között. A távolról renderelt modellhez hasonlóan ez a szkript csatolja és figyeli a `RemoteRenderingState` távoli koordinátor változásait. Ha a koordinátor eléri az `RuntimeConnected` állapotot, a rendszer megpróbál automatikusan csatlakozni, ha az a feltételezett. Van egy változó is, `CutPlaneComponent` amelyet nyomon követünk. Ez az Azure távoli renderelési összetevő, amely a távoli munkamenetben lévő kivágási síkon szinkronizál. Vessünk egy pillantást a kivágott sík létrehozásához szükséges műveletekre.
 
 2. Cserélje le a `CreateCutPlane()` metódust az alábbi befejezett verzióra:
 
-    ```csharp
+    ```cs
     public override void CreateCutPlane()
     {
         if (remoteCutPlaneComponent != null)
             return; //Nothing to do!
 
         //Create a root object for the cut plane
-        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+        var cutEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
         //Bind the remote entity to this game object
         cutEntity.BindToUnityGameObject(this.gameObject);
@@ -339,7 +339,7 @@ Létrehozunk egy parancsfájlt, amely automatikusan létrehoz egy távoli entit�
         syncComponent.SyncEveryFrame = true;
 
         //Add a cut plane to the entity
-        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
+        remoteCutPlaneComponent = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.CutPlaneComponent, cutEntity) as CutPlaneComponent;
 
         //Configure the cut plane
         remoteCutPlaneComponent.Normal = SliceNormal;
@@ -353,7 +353,7 @@ Létrehozunk egy parancsfájlt, amely automatikusan létrehoz egy távoli entit�
 
 3. Cserélje le a `DestroyCutPlane()` metódust az alábbi befejezett verzióra:
 
-    ```csharp
+    ```cs
     public override void DestroyCutPlane()
     {
         if (remoteCutPlaneComponent == null)
@@ -391,7 +391,7 @@ Létrehozunk egy **RemoteSky** -szkriptet, amely tartalmazza a betöltési param
 
 1. Hozzon létre egy **RemoteSky** nevű új parancsfájlt, és cserélje le a teljes tartalmát az alábbi kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -402,7 +402,7 @@ Létrehozunk egy **RemoteSky** -szkriptet, amely tartalmazza a betöltési param
 
     public class RemoteSky : BaseRemoteSky
     {
-        public override Dictionary<string, LoadTextureFromSASParams> AvailableCubemaps => builtInTextures;
+        public override Dictionary<string, LoadTextureFromSasOptions> AvailableCubemaps => builtInTextures;
 
         private bool canSetSky;
         public override bool CanSetSky
@@ -426,22 +426,22 @@ Létrehozunk egy **RemoteSky** -szkriptet, amely tartalmazza a betöltési param
             }
         }
 
-        private Dictionary<string, LoadTextureFromSASParams> builtInTextures = new Dictionary<string, LoadTextureFromSASParams>()
+        private Dictionary<string, LoadTextureFromSasOptions> builtInTextures = new Dictionary<string, LoadTextureFromSasOptions>()
         {
-            {"Autoshop",new LoadTextureFromSASParams("builtin://Autoshop", TextureType.CubeMap)},
-            {"BoilerRoom",new LoadTextureFromSASParams("builtin://BoilerRoom", TextureType.CubeMap)},
-            {"ColorfulStudio",new LoadTextureFromSASParams("builtin://ColorfulStudio", TextureType.CubeMap)},
-            {"Hangar",new LoadTextureFromSASParams("builtin://Hangar", TextureType.CubeMap)},
-            {"IndustrialPipeAndValve",new LoadTextureFromSASParams("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
-            {"Lebombo",new LoadTextureFromSASParams("builtin://Lebombo", TextureType.CubeMap)},
-            {"SataraNight",new LoadTextureFromSASParams("builtin://SataraNight", TextureType.CubeMap)},
-            {"SunnyVondelpark",new LoadTextureFromSASParams("builtin://SunnyVondelpark", TextureType.CubeMap)},
-            {"Syferfontein",new LoadTextureFromSASParams("builtin://Syferfontein", TextureType.CubeMap)},
-            {"TearsOfSteelBridge",new LoadTextureFromSASParams("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
-            {"VeniceSunset",new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap)},
-            {"WhippleCreekRegionalPark",new LoadTextureFromSASParams("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
-            {"WinterRiver",new LoadTextureFromSASParams("builtin://WinterRiver", TextureType.CubeMap)},
-            {"DefaultSky",new LoadTextureFromSASParams("builtin://DefaultSky", TextureType.CubeMap)}
+            {"Autoshop",new LoadTextureFromSasOptions("builtin://Autoshop", TextureType.CubeMap)},
+            {"BoilerRoom",new LoadTextureFromSasOptions("builtin://BoilerRoom", TextureType.CubeMap)},
+            {"ColorfulStudio",new LoadTextureFromSasOptions("builtin://ColorfulStudio", TextureType.CubeMap)},
+            {"Hangar",new LoadTextureFromSasOptions("builtin://Hangar", TextureType.CubeMap)},
+            {"IndustrialPipeAndValve",new LoadTextureFromSasOptions("builtin://IndustrialPipeAndValve", TextureType.CubeMap)},
+            {"Lebombo",new LoadTextureFromSasOptions("builtin://Lebombo", TextureType.CubeMap)},
+            {"SataraNight",new LoadTextureFromSasOptions("builtin://SataraNight", TextureType.CubeMap)},
+            {"SunnyVondelpark",new LoadTextureFromSasOptions("builtin://SunnyVondelpark", TextureType.CubeMap)},
+            {"Syferfontein",new LoadTextureFromSasOptions("builtin://Syferfontein", TextureType.CubeMap)},
+            {"TearsOfSteelBridge",new LoadTextureFromSasOptions("builtin://TearsOfSteelBridge", TextureType.CubeMap)},
+            {"VeniceSunset",new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap)},
+            {"WhippleCreekRegionalPark",new LoadTextureFromSasOptions("builtin://WhippleCreekRegionalPark", TextureType.CubeMap)},
+            {"WinterRiver",new LoadTextureFromSasOptions("builtin://WinterRiver", TextureType.CubeMap)},
+            {"DefaultSky",new LoadTextureFromSasOptions("builtin://DefaultSky", TextureType.CubeMap)}
         };
 
         public UnityBoolEvent OnCanSetSkyChanged;
@@ -485,10 +485,10 @@ Létrehozunk egy **RemoteSky** -szkriptet, amely tartalmazza a betöltési param
             {
                 Debug.Log("Setting sky to " + skyKey);
                 //Load the texture into the session
-                var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+                var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
                 //Apply the texture to the SkyReflectionSettings
-                RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+                RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
                 SkyChanged?.Invoke(skyKey);
             }
             else
@@ -501,12 +501,12 @@ Létrehozunk egy **RemoteSky** -szkriptet, amely tartalmazza a betöltési param
 
     A kód legfontosabb része csupán néhány sor:
 
-    ```csharp
+    ```cs
     //Load the texture into the session
-    var texture = await RemoteRenderingCoordinator.CurrentSession.Actions.LoadTextureFromSASAsync(AvailableCubemaps[skyKey]).AsTask();
+    var texture = await RemoteRenderingCoordinator.CurrentSession.Connection.LoadTextureFromSasAsync(AvailableCubemaps[skyKey]);
 
     //Apply the texture to the SkyReflectionSettings
-    RemoteRenderingCoordinator.CurrentSession.Actions.SkyReflectionSettings.SkyReflectionTexture = texture;
+    RemoteRenderingCoordinator.CurrentSession.Connection.SkyReflectionSettings.SkyReflectionTexture = texture;
     ```
 
     Itt egy hivatkozással láthatjuk el a textúrát, amelyet a beépített blob-tárolóból a munkamenetbe való betöltéssel lehet használni. Ezt követően csak ezt a textúrát kell hozzárendelni a munkamenethez, `SkyReflectionTexture` hogy alkalmazza azt.
@@ -525,7 +525,7 @@ A távoli jelenetekhez tartozó fények a következők: pont, hely és irány. A
 
 1. Hozzon létre egy **RemoteLight** nevű új parancsfájlt, és cserélje le a kódját az alábbi kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -618,7 +618,7 @@ A távoli jelenetekhez tartozó fények a következők: pont, hely és irány. A
 
             //Create a root object for the light
             if(lightEntity == null)
-                lightEntity = RemoteRenderingCoordinator.CurrentSession.Actions.CreateEntity();
+                lightEntity = RemoteRenderingCoordinator.CurrentSession.Connection.CreateEntity();
 
             //Bind the remote entity to this game object
             lightEntity.BindToUnityGameObject(this.gameObject);
@@ -631,13 +631,13 @@ A távoli jelenetekhez tartozó fények a következők: pont, hely és irány. A
             switch (RemoteLightType)
             {
                 case ObjectType.DirectionalLightComponent:
-                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
+                    var remoteDirectional = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.DirectionalLightComponent, lightEntity) as DirectionalLightComponent;
                     //No additional properties
                     remoteLightComponent = remoteDirectional;
                     break;
 
                 case ObjectType.PointLightComponent:
-                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Actions.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
+                    var remotePoint = RemoteRenderingCoordinator.CurrentSession.Connection.CreateComponent(ObjectType.PointLightComponent, lightEntity) as PointLightComponent;
                     remotePoint.Radius = 0;
                     remotePoint.Length = localLight.range;
                     //remotePoint.AttenuationCutoff = //No direct analog in Unity legacy lights
@@ -718,7 +718,7 @@ A távoli jelenetekhez tartozó fények a következők: pont, hely és irány. A
 A távolról renderelt [anyagok](../../../concepts/materials.md) módosíthatók további vizuális hatások biztosításához, a renderelt modellek vizualizációinak finomhangolásához, illetve a felhasználókra vonatkozó további visszajelzések megadásához. Számos módszer és számos ok van az anyagok módosítására. Itt megtudhatja, hogyan módosíthatja az anyagok albedó színét, és módosíthatja a PBR-anyagok durvaságát és fémeket.
 
 > [!NOTE]
-> Sok esetben, ha egy funkció vagy hatás egy **HierarchicalStateOverrideComponent**használatával valósítható meg, ideális megoldás az anyag módosítása helyett.
+> Sok esetben, ha egy funkció vagy hatás egy **HierarchicalStateOverrideComponent** használatával valósítható meg, ideális megoldás az anyag módosítása helyett.
 
 Létrehozunk egy olyan parancsfájlt, amely elfogadja a célként megadott entitást, és néhány `OverrideMaterialProperty` objektumot konfigurál, hogy megváltoztassa a célként megadott entitás anyagának tulajdonságait. Kezdjük a cél entitás [**MeshComponent**](../../../concepts/meshes.md#meshcomponent)beszerzésével, amely a Hálón használt anyagok listáját tartalmazza. Az egyszerűség kedvéért csak az első anyagot fogjuk használni. Ez a naiv stratégia nagyon egyszerűen meghiúsulhat attól függően, hogy a tartalom hogyan lett létrehozva, ezért érdemes lehet összetettebb megközelítést választani a megfelelő anyagok kiválasztásához.
 
@@ -726,7 +726,7 @@ Az anyagból elérheti a közös értékeket, például a albedó. Először az 
 
 1. Hozzon létre egy **EntityMaterialController** nevű szkriptet, és cserélje le a tartalmát a következő kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -890,7 +890,7 @@ Az anyagból elérheti a közös értékeket, például a albedó. Először az 
 
 A `OverrideMaterialProperty` típusnak elég rugalmasnak kell lennie ahhoz, hogy a további lényeges értékeket meg lehessen változtatni, ha szükséges. A `OverrideMaterialProperty` típus nyomon követi egy felülbírálás állapotát, megtartja a régi és az új értéket, és egy delegált használatával állítja be a felülbírálást. Példaként tekintse meg a következőt `ColorOverride` :
 
-```csharp
+```cs
 ColorOverride = new OverrideMaterialProperty<Color>(
     GetMaterialColor(targetMaterial), //The original value
     targetMaterial, //The target material
@@ -901,7 +901,7 @@ Ez létrehoz egy új `OverrideMaterialProperty` értéket, amelyben a felülbír
 
 A a módszert használja a munka elvégzésére `ColorOverride` `ApplyMaterialColor` :
 
-```csharp
+```cs
 private void ApplyMaterialColor(ARRMaterial material, Color color)
 {
     if (material.MaterialSubType == MaterialType.Color)

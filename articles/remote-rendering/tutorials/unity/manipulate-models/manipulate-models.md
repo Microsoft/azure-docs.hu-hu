@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: cec97134173cfc7879baf1d914d8f224a0736430
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559133"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593044"
 ---
 # <a name="tutorial-manipulating-models"></a>Oktatóanyag: modellek módosítása
 
@@ -37,7 +37,7 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
 1. Hozzon létre egy új parancsfájlt ugyanabban a könyvtárban, mint a **RemoteRenderedModel** , és nevezze el **RemoteBounds**.
 1. Cserélje le a parancsfájl tartalmát a következő kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -51,8 +51,6 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
     {
         //Remote bounds works with a specific remotely rendered model
         private BaseRemoteRenderedModel targetModel = null;
-
-        private BoundsQueryAsync remoteBoundsQuery = null;
 
         private RemoteBoundsState currentBoundsState = RemoteBoundsState.NotReady;
 
@@ -94,14 +92,8 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
             }
         }
 
-        // Create a query using the model entity
-        private void QueryBounds()
-        {
-            //Implement me
-        }
-
-        // Check the result and apply it to the local Unity bounding box if it was successful
-        private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
+        // Create an async query using the model entity
+        async private void QueryBounds()
         {
             //Implement me
         }
@@ -113,31 +105,21 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
 
     Ezt a szkriptet hozzá kell adni ugyanahhoz a GameObject, mint a  **BaseRemoteRenderedModel**-t megvalósító szkriptet. Ebben az esetben ez azt jelenti, hogy a **RemoteRenderedModel**. Az előző szkriptekhez hasonlóan ez a kezdeti kód fogja kezelni a távoli korlátokkal kapcsolatos összes állapotot, eseményt és adatmennyiséget.
 
-    Két módszer van hátra a megvalósításhoz: **QueryBounds** és **ProcessQueryResult**. A **QueryBounds** beolvassa a határokat, és **ProcessQueryResult** a lekérdezés eredményét, és alkalmazza azt a helyi **BoxCollider**.
+    Csak egyetlen metódus van hátra a megvalósításhoz: **QueryBounds**. A **QueryBounds** aszinkron módon kéri le a határokat, végrehajtja a lekérdezés eredményét, és alkalmazza azt a helyi **BoxCollider**.
 
-    A **QueryBounds** metódus egyszerű: lekérdezés küldése a távoli renderelési munkamenetnek, és az esemény figyelése `Completed` .
+    A **QueryBounds** metódus egyszerű: lekérdezés küldése a távoli renderelési munkamenetnek, és várakozás az eredményre.
 
 1. Cserélje le a **QueryBounds** metódust a következő befejezett metódusra:
 
-    ```csharp
+    ```cs
     // Create a query using the model entity
-    private void QueryBounds()
+    async private void QueryBounds()
     {
         remoteBoundsQuery = targetModel.ModelEntity.QueryLocalBoundsAsync();
         CurrentBoundsState = RemoteBoundsState.Updating;
-        remoteBoundsQuery.Completed += ProcessQueryResult;
-    }
-    ```
+        await remoteBounds;
 
-    A **ProcessQueryResult** is egyszerű. Ellenőrizze, hogy sikeres volt-e az eredmény. Ha igen, alakítsa át és alkalmazza a visszaadott határokat olyan formátumban, amelyet a **BoxCollider** el tud fogadni.    
-
-1. Cserélje le a **ProcessQueryResult** metódust a következő befejezett metódusra:
-
-    ```csharp
-    // Check the result and apply it to the local Unity bounding box if it was successful
-    private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
-    {
-        if (remoteBounds.IsRanToCompletion)
+        if (remoteBounds.IsCompleted)
         {
             var newBounds = remoteBounds.Result.toUnity();
             BoundsBoxCollider.center = newBounds.center;
@@ -151,6 +133,8 @@ A modell határait a teljes modellt tartalmazó mező határozza meg – akárcs
         }
     }
     ```
+
+    A lekérdezés eredményét fogjuk megtekinteni, hogy sikeres volt-e. Ha igen, alakítsa át és alkalmazza a visszaadott határokat olyan formátumban, amelyet a **BoxCollider** el tud fogadni.
 
 Ha a **RemoteBounds** parancsfájlt a **RemoteRenderedModel** azonos game objektumhoz adja hozzá, akkor szükség esetén egy **BoxCollider** lesz hozzáadva, és amikor a modell eléri az `Loaded` állapotát, a rendszer automatikusan lekérdezi és alkalmazza a határokat a **BoxCollider**.
 
@@ -198,7 +182,7 @@ Először hozzon létre egy statikus burkolót a távoli Ray Cast-lekérdezések
 
 1. Hozzon létre egy új, **RemoteRayCaster** nevű szkriptet, és cserélje le a tartalmát a következő kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -220,7 +204,8 @@ Először hozzon létre egy statikus burkolót a távoli Ray Cast-lekérdezések
             if(RemoteRenderingCoordinator.instance.CurrentCoordinatorState == RemoteRenderingCoordinator.RemoteRenderingState.RuntimeConnected)
             {
                 var rayCast = new RayCast(origin.toRemotePos(), dir.toRemoteDir(), maxDistance, hitPolicy);
-                return await RemoteRenderingCoordinator.CurrentSession.Actions.RayCastQueryAsync(rayCast).AsTask();
+                var result = await RemoteRenderingCoordinator.CurrentSession.Connection.RayCastQueryAsync(rayCast);
+                return result.Hits;
             }
             else
             {
@@ -243,7 +228,7 @@ Először hozzon létre egy statikus burkolót a távoli Ray Cast-lekérdezések
 
 1. Hozzon létre egy új, **RemoteRayCastPointerHandler** nevű szkriptet, és cserélje le a kódot a következő kódra:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -302,7 +287,7 @@ Először hozzon létre egy statikus burkolót a távoli Ray Cast-lekérdezések
     }
     ```
 
-**RemoteRayCastPointerHandler** A RemoteRayCastPointerHandler `OnPointerClicked` metódusát a MRTK hívja meg, ha egy ütközőn, például a Box-összeütközik. Ezt követően a `PointerDataToRemoteRayCast` rendszer meghívja a mutató eredményét egy pontra és irányra. A rendszer ezt a pontot és irányt használja egy távoli fénysugár elküldéséhez a távoli munkamenetben.
+A RemoteRayCastPointerHandler `OnPointerClicked` metódusát a MRTK hívja meg, ha egy ütközőn, például a Box-összeütközik. Ezt követően a `PointerDataToRemoteRayCast` rendszer meghívja a mutató eredményét egy pontra és irányra. A rendszer ezt a pontot és irányt használja egy távoli fénysugár elküldéséhez a távoli munkamenetben.
 
 ![Frissített korlátok](./media/raycast-local-remote.png)
 
@@ -314,7 +299,7 @@ Ha a **RemoteRayCastPointerHandler** sikeresen elvégezte a Ray-castot, a rendsz
 
 1. Hozzon létre egy **RemoteEntityHelper** nevű új parancsfájlt, és cserélje le a tartalmát az alábbira:
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
     
@@ -359,7 +344,7 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
 
 1. Módosítsa a **RemoteEntityHelper** parancsfájlt úgy, hogy az a következő metódust is tartalmazza:
 
-    ```csharp
+    ```cs
     public void MakeSyncedGameObject(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -382,7 +367,7 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
 
 Egy helyi példány létrehozása és az automatikus szinkronizálás beállítása az alentitások manipulálása első lépése. Ugyanazokat a technikákat használjuk, amelyekkel a modell teljes egészében kezelhető az alentitásokon is. Például egy entitás szinkronizált helyi példányának létrehozása után lekérdezheti a határait, és felveheti a manipulációs kezelőket, hogy az a felhasználó által áthelyezhető legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már kezelhet és kezelhet távolról renderelt modelleket! A következő oktatóanyagban az anyagok módosítására, a világítás módosítására és a hatások a távolról renderelt modellekre való alkalmazására fogunk vonatkozni.
 

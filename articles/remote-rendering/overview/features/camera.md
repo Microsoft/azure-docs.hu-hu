@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: dbe86313054706af974ccb324a39e942e9b5ca44
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246281"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594129"
 ---
 # <a name="camera"></a>Kamera
 
@@ -57,14 +57,14 @@ A mélységi pufferek általában a (z) [0; 1] lebegőpontos tartományba rögz�
 Az Azure Remote rendering API-nak tudnia kell a helyi megjelenítő mélységi puffer-konvencióját, hogy helyesen lehessen a helyi mélységi pufferbe állítani a távoli mélységet. Ha a mélységi puffer tartománya [0; 1], akkor hagyja ezt a jelzőt `false` . Ha fordított mélységi puffert használ [1; 0] tartománnyal, állítsa a jelölőt a következőre: `InverseDepth` `true` .
 
 > [!NOTE]
-> Az Unity esetében a megfelelő beállítást már alkalmazza a rendszer, `RemoteManager` így nincs szükség manuális beavatkozásra.
+> Az Unity esetében a megfelelő beállítást már alkalmazza a rendszer, `RenderingConnection` így nincs szükség manuális beavatkozásra.
 
 A kamera beállításainak módosítása a következőképpen végezhető el:
 
 ```cs
-void ChangeCameraSetting(AzureSession session)
+void ChangeCameraSetting(RenderingSession session)
 {
-    CameraSettings settings = session.Actions.CameraSettings;
+    CameraSettings settings = session.Connection.CameraSettings;
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
@@ -73,9 +73,9 @@ void ChangeCameraSetting(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeCameraSetting(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<CameraSettings> settings = session->Actions()->GetCameraSettings();
+    ApiHandle<CameraSettings> settings = session->Connection()->GetCameraSettings();
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
@@ -90,7 +90,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 * [C# GraphicsBindingSimD3d11. Update függvény](/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11.update)
 * [C++ GraphicsBindingSimD3d11:: Update függvény](/cpp/api/remote-rendering/graphicsbindingsimd3d11#update)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Grafikus kötés](../../concepts/graphics-bindings.md)
 * [Újravetítés késői fázisban](late-stage-reprojection.md)

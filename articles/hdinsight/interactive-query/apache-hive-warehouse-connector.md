@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 39eb007c85d9f0623b4a5611e36d4ed7a75423e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941176"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594434"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark és Apache Hive integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
@@ -38,7 +38,11 @@ A kaptár-tárház összekötője által támogatott néhány művelet:
 ## <a name="hive-warehouse-connector-setup"></a>A méhkas Warehouse-összekötő beállítása
 
 > [!IMPORTANT]
-> A Spark 2,4 Enterprise Security Package rendszerű fürtökre telepített HiveServer2 Interactive-példány nem támogatott a méhkas Warehouse-összekötővel való használathoz. Ehelyett külön HiveServer2 interaktív fürtöt kell konfigurálnia a HiveServer2 interaktív számítási feladatainak üzemeltetéséhez. Egyetlen Spark 2,4-fürtöt használó struktúra-tárház összekötő konfigurációja nem támogatott.
+> - A Spark 2,4 Enterprise Security Package rendszerű fürtökre telepített HiveServer2 Interactive-példány nem támogatott a méhkas Warehouse-összekötővel való használathoz. Ehelyett külön HiveServer2 interaktív fürtöt kell konfigurálnia a HiveServer2 interaktív számítási feladatainak üzemeltetéséhez. Egyetlen Spark 2,4-fürtöt használó struktúra-tárház összekötő konfigurációja nem támogatott.
+> - A méhkas Warehouse-összekötő (ÜZEMELTETHETŐ WEBMAG) könyvtára nem támogatott olyan interaktív lekérdezési fürtökkel való használatra, ahol engedélyezve van a számítási feladatok kezelése (WLM) szolgáltatás. <br>
+Olyan helyzetekben, ahol csak Spark-munkaterhelések és a ÜZEMELTETHETŐ WEBMAG-függvénytár használatára van szükség, győződjön meg arról, hogy az interaktív lekérdezési fürtön nincs engedélyezve a munkaterhelés-kezelési szolgáltatás ( `hive.server2.tez.interactive.queue` a konfiguráció nincs beállítva a kaptár konfigurációjában). <br>
+Olyan forgatókönyv esetén, ahol a Spark számítási feladatok (ÜZEMELTETHETŐ WEBMAG) és a LLAP natív számítási feladatok is léteznek, két különálló interaktív lekérdezési fürtöt kell létrehoznia megosztott metaadattár-adatbázissal. Egy fürt a natív LLAP számítási feladatokhoz, ahol a WLM funkció igény szerint engedélyezhető a szükséges alapon és más fürtön a ÜZEMELTETHETŐ WEBMAG esetében, ha a WLM funkciót nem lehet konfigurálni.
+Fontos megjegyezni, hogy a WLM-erőforrások csomagjait is megtekintheti a fürtökről, még akkor is, ha az csak egy fürtön van engedélyezve. Ne módosítsa az erőforrás-csomagokat abban a fürtben, ahol a WLM funkció le van tiltva, mert ez hatással lehet a WLM funkcióra más fürtben.
 
 A méhkas Warehouse-összekötőnek külön fürtökre van szüksége a Spark és az interaktív lekérdezési munkaterhelések számára. Ezeket a lépéseket követve állíthatja be ezeket a fürtöket az Azure HDInsight.
 

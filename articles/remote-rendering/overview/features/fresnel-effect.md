@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f63cd3b50642c3cf531387b4446992b6f15116f2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498234"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594112"
 ---
 # <a name="fresnel-effect"></a>Fresnel-effektus
 
@@ -49,7 +49,7 @@ Ahogy az látható, az átlón lévő objektumok teljes mértékben transzparens
 A következő mintakód a [pbr-anyagok](../../overview/features/pbr-materials.md) és a [színes anyagok](../../overview/features/color-materials.md)Fresnel-effektusának engedélyezését és testreszabását mutatja be:
 
 ```cs
-    void SetFresnelEffect(AzureSession session, Material material)
+    void SetFresnelEffect(RenderingSession session, Material material)
     {
         if (material.MaterialSubType == MaterialType.Pbr)
         {
@@ -69,7 +69,7 @@ A következő mintakód a [pbr-anyagok](../../overview/features/pbr-materials.md
 ```
 
 ```cpp
-void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> material)
+void SetFresnelEffect(ApiHandle<RenderingSession> session, ApiHandle<Material> material)
 {
     if (material->GetMaterialSubType() == MaterialType::Pbr)
     {
@@ -98,7 +98,7 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 * [C# ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
 * [C++ ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Anyagok](../../concepts/materials.md)
 * [PBR-anyagok](../../overview/features/pbr-materials.md)
