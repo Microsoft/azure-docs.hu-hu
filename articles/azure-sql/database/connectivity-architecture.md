@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 01/25/2021
-ms.openlocfilehash: da21fd2b6f8d427369cee89e0ad93d63e8608784
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 07303e3eea7e63f7c153db771168b8a741183362
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808267"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576498"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Az Azure SQL Database és az Azure Synapse Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -92,7 +92,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | USA keleti régiója              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
 | Közép-Franciaország       | 40.79.137.0, 40.79.129.1, 40.79.137.8, 40.79.145.12 |
-| Dél-Franciaország         | 40.79.177.10 ,40.79.177.12 |
+| Dél-Franciaország         | 40.79.177.0, 40.79.177.10 ,40.79.177.12 |
 | Közép-Németország      | 51.4.144.100       |
 | Kelet-Észak-Németország   | 51.5.144.179       |
 | Középnyugat-Németország | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
@@ -123,7 +123,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | USA 2. nyugati régiója            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
 |                      |                    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálók Azure SQL Database-kapcsolódási házirendjének módosításáról további információt a [Conn-Policy](/cli/azure/sql/server/conn-policy)című témakörben talál.
 - A ADO.NET 4,5-as vagy újabb verziót használó ügyfelek Azure SQL Database-kapcsolatainak működéséről további információért lásd: [a 1433-nál nagyobb portok a ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md)-ban.

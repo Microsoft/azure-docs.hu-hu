@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511280"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576616"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -140,7 +140,7 @@ A [biztonsági kockázatok észlelése](https://www.microsoft.com/en-us/security
 
 A támadási felületet a kód befejezése után felülvizsgálva segít meggyőződni arról, hogy az alkalmazás vagy a rendszer bármilyen tervezési vagy megvalósítási változását mérlegelték. Ezzel biztosítható, hogy a módosítások eredményeképpen létrehozott új támadási vektorok, beleértve a veszélyforrásokat, felülvizsgálva és enyhítve legyenek.
 
-A támadási felületről az alkalmazás vizsgálatával készíthet képet. A Microsoft [a támadási](https://www.microsoft.com/download/details.aspx?id=24487)felület elemző eszközét is felhasználja. Számos kereskedelmi dinamikus tesztelési és sebezhetőségi vizsgálati eszköz vagy szolgáltatás közül választhat, például a [OWASP Zed Attack proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), a [Arachni](http://arachni-scanner.com/), a [Skipfish](https://code.google.com/p/skipfish/)és a [w3af](http://w3af.sourceforge.net/). Ezek a vizsgálati eszközök bemutatják az alkalmazást, és leképezik az alkalmazás azon részeit, amelyek elérhetők a weben keresztül. Az Azure Marketplace-en is kereshet hasonló [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+A támadási felületről az alkalmazás vizsgálatával készíthet képet. A Microsoft [a támadási](https://www.microsoft.com/download/details.aspx?id=58105)felület elemző eszközét is felhasználja. Számos kereskedelmi dinamikus tesztelési és sebezhetőségi vizsgálati eszköz vagy szolgáltatás közül választhat, például a [OWASP Zed Attack proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), a [Arachni](http://arachni-scanner.com/), a [Skipfish](https://code.google.com/p/skipfish/)és a [w3af](http://w3af.sourceforge.net/). Ezek a vizsgálati eszközök bemutatják az alkalmazást, és leképezik az alkalmazás azon részeit, amelyek elérhetők a weben keresztül. Az Azure Marketplace-en is kereshet hasonló [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Biztonsági behatolási teszt végrehajtása
 
@@ -150,7 +150,7 @@ Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden má
 
 Az Azure-hoz készült [Secure DevOps Kit](https://azsk.azurewebsites.net/index.html) (AzSK) az Azure platform több szolgáltatásának SVTs tartalmazza. Ezeket a SVTs rendszeresen futtatva biztosíthatja, hogy az Azure-előfizetése és az alkalmazást alkotó különböző erőforrások biztonságos állapotúak legyenek. Ezeket a teszteket a AzSK folyamatos integráció/folyamatos üzembe helyezés (CI/CD) bővítmények szolgáltatásával is automatizálhatja, amely a Visual Studio-bővítményként elérhetővé teszi a SVTs.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e0088fb129e9c6558de7539ba754a45e067dc3d8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051464"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576837"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -105,4 +105,4 @@ A klasszikus futtató fiókokat a rendszer alapértelmezés szerint nem hozza l�
 * A PowerShell-runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)című témakört.
 * A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg az [oktatóanyag: PowerShell munkafolyamat-Runbook létrehozása](learn/automation-tutorial-runbook-textual.md)című témakört.
 * A Python 3 runbookok megismeréséhez tekintse meg az [oktatóanyag: Python 3 Runbook létrehozása](learn/automation-tutorial-runbook-textual-python-3.md)című témakört.
-* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation&preserve-view=true#automation).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation).

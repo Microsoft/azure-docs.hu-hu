@@ -8,29 +8,29 @@ ms.author: parkerra
 ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550623"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576565"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Azure térbeli horgonyok konfigurálása Unity-projektben
 
 Ez az útmutató bemutatja, hogyan kezdheti meg az Azure térbeli horgonyok SDK-t az Unity-projektben.
 
-## <a name="requirements"></a>Követelmények
+## <a name="project-requirements"></a>A projektre vonatkozó követelmények
 
-Az Azure térbeli horgonyok jelenleg a 2019,4 (LTS) Unity-t támogatják a következő konfigurációkkal.
-
-* Az 2019,4-os egység az AR Foundation 3,1-mel támogatott az Azure térbeli 2.4.0 +-ben.
+[!INCLUDE [Unity Project Requirements](../../../includes/spatial-anchors-unity-project-requirements.md)]
 
 ## <a name="configuring-a-project"></a>Projekt konfigurálása
 
-### <a name="download-packages"></a>Csomagok letöltése
+Mielőtt belefoglalja az Azure térbeli horgonyok SDK-t az Unity-projektbe, ügyeljen arra, hogy a [szükséges](#project-requirements) csomagokat a Unity Package Manageren keresztül telepítse.
+
+### <a name="download-asa-packages"></a>ASA-csomagok letöltése
 [!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-### <a name="import-packages"></a>Csomagok importálása
+### <a name="import-asa-packages"></a>ASA-csomagok importálása
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Csak Android esetén: a mainTemplate. gradle fájl konfigurálása

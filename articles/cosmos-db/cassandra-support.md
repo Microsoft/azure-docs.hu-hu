@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134228"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576481"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,7 +43,7 @@ Az Azure Cosmos DB Cassandra API a következő Cassandra-illesztőprogramverzió
 
 Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 
-|Parancs  |Támogatott |
+|Típus  |Támogatott |
 |---------|---------|
 | ascii  | Yes |
 | bigint  | Yes |
@@ -82,13 +82,14 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 |Parancs  |Támogatott |
 |---------|---------|
 | Jogkivonat | Yes |
-| ttl | Yes |
-| writetime | Yes |
+| TTL * * * | Yes |
+| writetime *** | Yes |
 | Cast * * | Yes |
 
 > [!NOTE] 
 > \* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` **nem** támogatott.  
-> \*\* A `cast()` függvény nem ágyazható be Cassandra APIba. Például `SELECT cast(count as double) FROM myTable` támogatott, de `SELECT avg(cast(count as double)) FROM myTable` **nem** támogatott.
+> \*\* A `cast()` függvény nem ágyazható be Cassandra APIba. Például `SELECT cast(count as double) FROM myTable` támogatott, de `SELECT avg(cast(count as double)) FROM myTable` **nem** támogatott.    
+> \*\*\* A beállítással megadott egyéni időbélyegek és TTL-érték `USING` egy sorban (és nem cella) van alkalmazva.
 
 
 
@@ -159,7 +160,6 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 | SZEREPKÖR LÉTREHOZÁSA | No |
 | FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | No |
 | DELETE | Yes |
-| Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Yes |
 | DISTINCT | No |
 | ÖSSZESÍTÉS ELDOBÁSA | No |
 | DROP FUNCTION | No |
@@ -173,17 +173,25 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 | FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | No |
 | GRANT | No |
 | INSERT | Yes |
-| INSERT (könnyű tranzakciók IF feltétellel)| Yes |
 | ENGEDÉLYEK LISTÁZÁSA | No |
 | SZEREPKÖRÖK LISTÁZÁSA | No |
 | FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | No |
 | REVOKE | No |
 | SELECT | Yes |
-| SELECT (könnyűsúlyú tranzakciók IF feltétellel)| No |
 | UPDATE | Yes |
-| FRISSÍTÉS (kis-és nagyméretű tranzakciók, ha feltétellel)| No |
 | TRUNCATE | No |
 | USE | Yes |
+
+## <a name="lightweight-transactions-lwt"></a>Könnyűsúlyú tranzakciók (VVAST)
+
+| Összetevő  |Támogatott |
+|---------|---------|
+| TÖRLÉS, HA LÉTEZIK | Yes |
+| TÖRLÉSi feltételek | No |
+| HA NEM LÉTEZIK A BESZÚRÁS | Yes |
+| FRISSÍTÉS, HA LÉTEZIK | Yes |
+| A FRISSÍTÉS NEM LÉTEZIK | Yes |
+| FRISSÍTÉSI feltételek | No |
 
 ## <a name="cql-shell-commands"></a>CQL-rendszerhéj parancsai
 
@@ -193,14 +201,14 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 |---------|---------|
 | RÖGZÍTÉSE | Yes |
 | EGYÉRTELMŰ | Yes |
-| KONZISZTENCIA | N.A. |
+| KONZISZTENCIA | N/A |
 | MÁSOLJA | No |
 | ISMERTETIK | Yes |
 | cqlshExpand | No |
 | KILÉPÉSI | Yes |
 | BEJELENTKEZÉSI | N/A (a CQL függvény `USER` nem támogatott, ezért `LOGIN` redundáns) |
 | LAPOZÓFÁJL | Yes |
-| SOROS KONZISZTENCIA * | N.A. |
+| SOROS KONZISZTENCIA * | N/A |
 | MEGJELENÍTÉSE | Yes |
 | FORRÁS | Yes |
 | NYOMKÖVETÉS | N/A (Cassandra API Azure Cosmos DB biztonsági mentést végez – [diagnosztikai naplózás](cosmosdb-monitor-resource-logs.md) használata a hibaelhárításhoz) |

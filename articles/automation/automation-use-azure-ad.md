@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használhatja az Azure AD-t az Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41eaab7be66d446109e1052948a29ad4723b191c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894660"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576803"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Az Azure AD használata az Azure-beli hitelesítéshez
 
@@ -50,7 +50,7 @@ Mielőtt telepítené az Azure AD-modulokat a számítógépre:
 
 1. Győződjön meg arról, hogy a Microsoft .NET Framework 3.5. x funkciója engedélyezve van a számítógépen. Valószínűleg a számítógép újabb verziója van telepítve, de a .NET-keretrendszer régebbi verzióival való visszamenőleges kompatibilitás engedélyezhető vagy letiltható. 
 
-2. Telepítse a [Microsoft Online Services Bejelentkezési segéd](https://www.microsoft.com/download/details.aspx?id=41950)64 bites verzióját.
+2. Telepítse a [Microsoft Online Services Bejelentkezési segéd](https://www.microsoft.com/Download/details.aspx?id=28177)64 bites verzióját.
 
 3. Futtassa a Windows PowerShellt rendszergazdaként egy emelt szintű Windows PowerShell-parancssor létrehozásához.
 

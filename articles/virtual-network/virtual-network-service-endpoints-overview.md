@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097422"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576667"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -126,7 +126,7 @@ A szolgáltatási végpontok a virtuális hálózatokon egy írási hozzáféré
 
 További információ a beépített szerepkörökről: [Azure beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A konkrét engedélyek egyéni szerepkörökhöz való hozzárendelésével kapcsolatos további információkért lásd: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak ugyanahhoz az előfizetéshez, de különböző előfizetésekhez is. Ha a virtuális hálózat és az Azure-szolgáltatási erőforrások különböző előfizetésekhez tartoznak, akkor az erőforrásoknak ugyanahhoz az Active Directory- (AD-) bérlőhöz kell tartozniuk. 
+A virtuális hálózatok és az Azure-szolgáltatási erőforrások tartozhatnak ugyanahhoz az előfizetéshez, de különböző előfizetésekhez is. Bizonyos Azure-szolgáltatások (nem az összes), például az Azure Storage és a Azure Key Vault is támogatják a különböző Active Directory (AD) bérlők szolgáltatási végpontait, azaz a virtuális hálózatot és az Azure-szolgáltatási erőforrást különböző Active Directory (AD) bérlők között. További részletekért tekintse meg az egyes szolgáltatások dokumentációját.  
 
 ## <a name="pricing-and-limits"></a>Díjszabás és korlátok
 

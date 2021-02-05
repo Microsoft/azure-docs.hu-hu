@@ -4,12 +4,12 @@ description: Az elérhető virtuálisgép-méretek és operációsrendszer-verzi
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897493"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576701"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének és rendszerképének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -29,7 +29,7 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | Virtuálisgép-sorozatok  | Támogatott méretek |
 |------------|---------|
 | Alapszintű A | Minden méret, *kivéve* a Basic_A0 (a0) |
-| A | Minden méret, *kivéve* Standard_A0 |
+| A | Minden méret Standard_A0, Standard_A8, Standard_A9, Standard_A10, *kivéve* Standard_A11 |
 | Av2 | Minden méret |
 | B | Nem támogatott |
 | DC | Nem támogatott |
