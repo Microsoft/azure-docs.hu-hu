@@ -107,26 +107,15 @@
       href: ./workloads/mainframe-rehosting/overview.md
     - name: Adatbázisok
       items:
-        - name: MySQL a SUSE rendszeren
-          href: ./linux/mysql-on-opensuse.md
         - name: MongoDB
           items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
             - name: Windows
               href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
         - name: MS SQL Linux rendszeren
           href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Nagy teljesítményű számítástechnika (HPC)
       href: /azure/architecture/topics/high-performance-computing/
     - name: Tárolók
-      items:
-        - name: A Docker Machine használata
-          href: ./linux/docker-machine.md
-        - name: A Docker Compose használata
-          href: ./linux/docker-compose-quickstart.md
     - name: Visual Studio
       href: ./windows/using-visual-studio-vm.md
 - name: példányszám
@@ -979,10 +968,18 @@
       href: disks-scalability-targets.md
     - name: Biztonsági mentés és adatvédelem
       items:
-        - name: Lemezek biztonsági mentése és vészhelyreállítása
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Növekményes Pillanatképek engedélyezése
           href: disks-incremental-snapshots.md
+        - name: Azure Disk Backup
+          items:
+            - name: Áttekintés
+              href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
+            - name: Az Azure Disk Backup konfigurálása
+              href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
+            - name: Lemezek visszaállítása az Azure Disk Backup szolgáltatással
+              href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
+        - name: Lemezek biztonsági mentése és vészhelyreállítása
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Lemez pillanatképe – parancssori felület
           href: ./linux/snapshot-copy-managed-disk.md
         - name: Lemez pillanatképe – PowerShell
@@ -1281,8 +1278,6 @@
       href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
     - name: Virtuális gépek figyelése
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: Ügynökök

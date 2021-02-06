@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202708"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627815"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
 
@@ -44,6 +44,10 @@ A Managed Disks támogatja a [Availability Zonest](../availability-zones/az-over
 ### <a name="azure-backup-support"></a>Azure Backup támogatás
 
 A regionális katasztrófák elleni védelem érdekében [Azure Backup](../backup/backup-overview.md) használható biztonsági mentési feladatok létrehozására időalapú biztonsági mentéssel és adatmegőrzési szabályzatokkal. Ez lehetővé teszi a virtuális gépek vagy a felügyelt lemezek helyreállításának elvégzését a következő időpontban:. Jelenleg Azure Backup támogatja a lemezes méreteket akár 32 tebibyte (TiB) lemezre. [További](../backup/backup-support-matrix-iaas.md) információ az Azure virtuális gépek biztonsági mentésének támogatásáról.
+
+#### <a name="azure-disk-backup"></a>Azure Disk Backup
+
+Azure Backup az Azure Disk Backup (előzetes verzió) szolgáltatást natív, felhőalapú biztonsági mentési megoldásként kínálja, amely megvédi az adatait a felügyelt lemezeken. Ez egy egyszerű, biztonságos és költséghatékony megoldás, amely néhány lépésben lehetővé teszi a felügyelt lemezek védelmének konfigurálását. Az Azure Disk Backup kulcsrakész megoldást kínál, amely pillanatfelvétel-életciklus-kezelést biztosít a felügyelt lemezekhez a pillanatképek rendszeres létrehozásának automatizálásával és a beállított időtartamra vonatkozó biztonsági mentési házirend használatával. Az Azure Disk Backup szolgáltatással kapcsolatos részletekért lásd: [Az Azure Disk Backup áttekintése (előzetes verzió)](../backup/disk-backup-overview.md).
 
 ### <a name="granular-access-control"></a>Részletes hozzáférés-vezérlés
 

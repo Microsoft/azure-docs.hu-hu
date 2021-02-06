@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f3458c3b12b3151fd20531282f56ed2f1fd29b6b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359527"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627708"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -55,7 +55,7 @@ A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek köz�
 
 ## <a name="create-a-site"></a><a name="site"></a>Hely létrehozása
 
-Most már készen áll a fizikai helyeknek megfelelő helyek létrehozására. Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfelelően. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. Virtuális WAN-ban akár 1000-es helyet hozhat létre virtuális hubhoz. Ha több hubhoz is rendelkezett, minden egyes hubhoz létrehozhat 1000-et. Ha van virtuális WAN-partner (hivatkozás beszúrása) CPE-eszköz, egyeztessen velük az Azure-ra való automatizálásáról. Az automatizálás általában egyszerű kattintásos élményt nyújt a nagyméretű fiókirodai információk Azure-ba való exportálásához, valamint a CPE és az Azure virtuális WAN VPN-átjáró közötti kapcsolat beállításához. További információ: Automation- [útmutató az Azure-ról a CPE-partnerekre](virtual-wan-configure-automation-providers.md).
+Ebben a szakaszban a helyet hozza létre. A helyek megfelelnek a fizikai helyeknek. Tetszőleges számú helyet hozhat létre. Például ha New Yorkban, Londonban és Los Angelesben van egy-egy helyi irodája, három külön helyet hozzon létre. Ezek a helyek tartalmazzák a helyszíni VPN-eszközök végpontjait. Virtuális WAN-ban akár 1000-es helyet hozhat létre virtuális hubhoz. Ha több hubhoz is rendelkezett, minden egyes hubhoz létrehozhat 1000-et. Ha virtuális WAN-partner CPE-eszközzel rendelkezik, egyeztessen velük az Azure-ral való automatizálásáról. Az Automation általában egyszerű kattintásos élményt nyújt a nagyméretű fiókirodai információk Azure-ba való exportálásához, valamint a CPE és az Azure virtuális WAN VPN Gateway közötti kapcsolat beállításához. További információ: Automation- [útmutató az Azure-ról a CPE-partnerekre](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
@@ -78,19 +78,19 @@ A VPN-eszköz konfigurációjának használatával konfigurálhatja a helyszíni
 3. Miután befejeződött a fájl létrehozása, a hivatkozásra kattintva letöltheti.
 4. Alkalmazza a konfigurációt a helyszíni VPN-eszközre.
 
-### <a name="understanding-the-vpn-device-configuration-file"></a>VPN-eszköz konfigurációs fájljának ismertetése
+### <a name="about-the-vpn-device-configuration-file"></a>Tudnivalók a VPN-eszköz konfigurációs fájljáról
 
 Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során használandó beállításokat tartalmazza. A fájl áttekintésekor a következő információkat láthatja:
 
 * **vpnSiteConfiguration** – Ez a szakasz az eszköz a virtuális WAN-ra csatlakozó helyként való telepítésére vonatkozó adatait tartalmazza. Az ágeszköz nevét és nyilvános IP-címét tartalmazza.
 * **vpnSiteConnections –** Ez a szakasz a következő beállításokkal kapcsolatos információkat tartalmazza:
 
-    * A virtuális elosztó(k) virtuális hálózatának **címtere**<br>Példa:
+    * A virtuális központ (ok) VNet **címe** .<br>Példa:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * Az elosztóra csatlakozó virtuális hálózatok **címtere**<br>Példa:
+    * **A hubhoz** csatlakozó virtuális hálózatok.<br>Példa:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
@@ -244,7 +244,7 @@ Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGrou
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális WAN-ról további információt a következő témakörben talál:
 

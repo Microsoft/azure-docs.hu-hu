@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507418"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627770"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -42,7 +42,7 @@ A tárolóban lévő fizikai partíciók száma a következőktől függ:
 * A teljes adattárolás (minden egyes fizikai partíció akár 50 GB-adatmennyiséget is tárolhat).
 
 > [!NOTE]
-> A fizikai partíciók a rendszer belső megvalósítása, és teljes mértékben a Azure Cosmos DB felügyelik. A megoldások fejlesztésekor ne koncentráljon a fizikai partícióra, mert nem szabályozhatja őket ahelyett, hogy a partíciós kulcsokra összpontosítsanak. Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
+> A fizikai partíciók a rendszer belső megvalósítása, és teljes mértékben a Azure Cosmos DB felügyelik. A megoldások fejlesztésekor ne koncentráljon a fizikai partícióra, mert nem tudja szabályozni őket. Ehelyett a partíciós kulcsokra kell összpontosítania. Ha olyan partíciós kulcsot választ, amely egyenletesen osztja el az átviteli sebességet a logikai partíciók között, akkor gondoskodni fog arról, hogy a fizikai partíciók átviteli sebessége egyensúlyban legyen.
 
 A tárolóban lévő fizikai partíciók teljes száma nincs korlátozva. A kiosztott átviteli sebesség vagy az adatméret növekedésével a Azure Cosmos DB automatikusan új fizikai partíciókat hoz létre a meglévők felosztásával. A fizikai partíciók osztása nem befolyásolja az alkalmazás rendelkezésre állását. A fizikai partíció felosztása után az egyetlen logikai partíción belüli összes adattal továbbra is ugyanazon a fizikai partíción lesz tárolva. A fizikai partíciók megosztása egyszerűen létrehozza a logikai partíciók új hozzárendelését a fizikai partíciókhoz.
 
@@ -70,7 +70,7 @@ További tudnivalókat a [Azure Cosmos db a partíciók kezelése](partitioning-
 
 Mindegyik fizikai partíció replikák halmazát, más néven [*replikakészlet*](global-dist-under-the-hood.md)-készletet tartalmaz. Mindegyik replikakészlet az adatbázismotor egy példányát tárolja. A replikakészlet a fizikai partícióban tárolt, tartós, magasan elérhető és konzisztens módon tárolja az adattárolási készletet. A fizikai partíciót alkotó replikák öröklik a partíció tárolási kvótáját. A fizikai partíció összes replikája együttesen támogatja a fizikai partícióhoz lefoglalt átviteli sebességet. A Azure Cosmos DB automatikusan kezeli a replikákat.
 
-Általában a kisebb tárolók csak egyetlen fizikai partíciót igényelnek, de továbbra is legalább 4 replikával rendelkeznek.
+A kisebb tárolók jellemzően csak egyetlen fizikai partíciót igényelnek, de továbbra is legalább 4 replikával rendelkeznek.
 
 Az alábbi képen látható, hogyan vannak leképezve a logikai partíciók a globálisan elosztott fizikai partíciókhoz:
 

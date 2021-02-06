@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cef5f178ea879ba98df90da36ec9c4b639dd100a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488714"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627775"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -109,9 +109,9 @@ A Terraform jelenleg nem támogatja az elemzési tár tárolóit. További infor
 
 ## <a name="analytical-time-to-live-ttl"></a>Analitikai élettartam (TTL)
 
-### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>A a tárolók és az elemek szintjén támogatott analitikai adatértékek élettartama?
+### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>A a tárolók és az elemek szintjén támogatott analitikai adatértékek ÉLETTARTAMa?
 
-Jelenleg az analitikai adatértékek élettartama csak a tároló szintjén konfigurálható, és nem támogatott az analitikai élettartam beállítása az elem szintjén.
+Az elemzési adatok élettartama jelenleg csak a tároló szintjén konfigurálható, az elemek szintjén nem támogatott az elemzési élettartam beállítása.
 
 ### <a name="after-setting-the-container-level--analytical-ttl-on-an-azure-cosmos-db-container-can-i-change-to-a-different-value-later"></a>Miután beállította a tároló szintjének analitikai ÉLETTARTAMát egy Azure Cosmos DB tárolón, másik értékre válthatok később?
 
@@ -156,7 +156,7 @@ Ez a funkció jelenleg nem érhető el.
 
 Az Azure Cosmos DB jelenleg Spark strukturált adatfolyam-támogatást nyújt a tranzakciós tároló változási funkciójának módosításával, és ez a módszer még nem támogatott az analitikai tárolóban.
 
-## <a name="azure-synapse-studio"></a>Azure szinapszis Studio
+## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 
 ### <a name="in-the-azure-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Az Azure szinapszis Studióban hogyan ismerhető fel, hogy van-e csatlakoztatva egy Azure Cosmos DB-tárolóhoz az Analytics-tárolóval?
 
@@ -172,7 +172,7 @@ A rendszer a következő ikonnal fogja megjeleníteni a tranzakciós tároló t�
 
 Jelenleg Azure Cosmos DB hitelesítő adatokat a rendszer a társított szolgáltatásnak a Azure Cosmos DB adatbázisokhoz hozzáféréssel rendelkező felhasználó általi létrehozásakor adja át. A tárolóhoz való hozzáférés a munkaterülethez hozzáférő más felhasználók számára is elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [Azure szinapszis-hivatkozás előnyeit](synapse-link.md#synapse-link-benefits)
 
