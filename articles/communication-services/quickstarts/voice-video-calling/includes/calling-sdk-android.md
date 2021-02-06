@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5d81e37ab547d12e33cfacb9725d9bdb22666142
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26e39b8f0429995bfa336c4971c76f90d903ff55
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628696"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628954"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,7 +111,9 @@ call oneToOneCall = callAgent.call(appContext, participants, startCallOptions);
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>1: n hívás elhelyezése a felhasználók és a PSTN között
 > [!WARNING]
-> Jelenleg a PSTN-hívás nem áll rendelkezésre az 1: n hívás egy felhasználónak és egy PSTN-számnak a megadásához.
+> Jelenleg a PSTN-hívás nem érhető el
+
+Egy 1: n hívás egy felhasználónak és egy PSTN-számnak a megadásához meg kell adnia a hívott telefonszámát.
 A kommunikációs szolgáltatások erőforrását úgy kell konfigurálni, hogy engedélyezze a PSTN-hívást:
 ```java
 CommunicationUser acsUser1 = new CommunicationUser(<USER_ID>);
