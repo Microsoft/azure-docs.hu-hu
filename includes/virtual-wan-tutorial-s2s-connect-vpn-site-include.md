@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2f5f653fdaf9df5d1bb2cf87d06047510ad46d7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 614a13a140453e3c7ed55a7fc0f9173626ad2f2f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856719"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627705"
 ---
 1. Válassza a **VPN-helyek összekapcsolása** lehetőséget a **helyek összekapcsolását** ismertető lap megnyitásához.
 
@@ -25,10 +25,10 @@ ms.locfileid: "91856719"
    * Válassza ki a protokollt és az IPsec-beállításokat. További információ: [alapértelmezett/egyéni IPSec](../articles/virtual-wan/virtual-wan-ipsec.md).
    * Válassza ki a megfelelő beállítást az **alapértelmezett útvonal propagálásához**. Az **Engedélyezés** beállítás lehetővé teszi, hogy a virtuális központ a megtanult alapértelmezett útvonalat propagálja ehhez a kapcsolódáshoz. Ez a jelző az alapértelmezett útvonal-propagálást csak akkor engedélyezi egy kapcsolathoz, ha az alapértelmezett útvonalat már megismerte a virtuális WAN-központ a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely kényszerített bújtatást engedélyez. Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik.
 
-2. Kattintson a **Csatlakozás** gombra.
-3. Néhány percen belül a hely megjeleníti a kapcsolat és a kapcsolat állapotát.
+2. Válassza a **Kapcsolódás** lehetőséget.
+3. Néhány perc elteltével a hely megjeleníti a kapcsolat és a kapcsolat állapotát.
 
-   ![A képernyőképen a V P N helyek közötti kapcsolat és a kapcsolat állapota látható.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![A képernyőfelvételen a helyek közötti kapcsolat és a kapcsolat állapota látható.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    A **kapcsolatok állapota:** Ez a kapcsolat Azure-erőforrásának állapota, amely összekapcsolja a VPN-helyet az Azure hub VPN-átjáróján. Ha a vezérlési sík működése sikeres, az Azure VPN Gateway és a helyszíni VPN-eszköz továbbra is kapcsolatot létesít.
 

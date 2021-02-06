@@ -148,8 +148,6 @@
       items:
         - name: Web- és mobilalkalmazások
           href: ../../app-service/troubleshoot-diagnostic-logs.md
-        - name: Linux rendszerű virtuális gép
-          href: ../../virtual-machines/linux/tutorial-monitor.md
         - name: Windows rendszerű virtuális gép
           href: ../../virtual-machines/windows/tutorial-monitor.md
         - name: Mikroszolgáltatások

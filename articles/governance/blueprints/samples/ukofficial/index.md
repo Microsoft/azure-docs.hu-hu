@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL- és UK NHS-tervminták – Áttekintés
 description: A UK OFFICIAL- és az UK NHS-tervminták áttekintése és architektúrája. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 8f68af5f61c0ae89e7ad55abec1fe235fa807d56
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: HT
+ms.openlocfilehash: fa628aa1d78909e33e196e025bd483ce21c03835
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420296"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627533"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>A UK OFFICIAL- és az UK NHS-tervminták áttekintése
 

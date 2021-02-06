@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223346"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626206"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -51,6 +51,10 @@ A DDoS Protection-csomagok havi $2 944-os fix havi díja, amely akár 100 nyilv�
 A bérlők egy DDoS Protection-tervet is használhatnak több előfizetésben, így nincs szükség több DDoS Protection-csomag létrehozására.
 
 A standard díjszabással kapcsolatos további információkért tekintse meg a [Azure DDoS Protection standard díjszabást](https://azure.microsoft.com/pricing/details/ddos-protection/)Azure DDoS Protection.
+
+## <a name="reference-architectures"></a>Referenciaarchitektúrák
+
+DDoS Protection standard a [virtuális hálózatban üzembe helyezett szolgáltatásokhoz](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)lett tervezve. Más szolgáltatások esetében az alapértelmezett DDoS Protection alapszintű szolgáltatás érvényes. A támogatott architektúrákkal kapcsolatos további tudnivalókért tekintse meg a [DDoS Protection hivatkozási architektúrák](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures)című témakört. 
 
 ## <a name="next-steps"></a>Következő lépések
 

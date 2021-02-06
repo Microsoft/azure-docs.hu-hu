@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 526ef0af08833954aef4136716930cec0df40eea
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133514"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625247"
 ---
-# <a name="how-azure-netapp-files-snapshots-work"></a>A Azure NetApp Files-Pillanatképek működése
+# <a name="how-azure-netapp-files-snapshots-work"></a>Az Azure NetApp Files pillanatképeinek működése
 
 Ez a cikk ismerteti, hogyan működnek a Azure NetApp Files-Pillanatképek. Azure NetApp Files a pillanatkép-technológia stabilitást, méretezhetőséget és gyorsabb helyreállítást biztosít, és nem befolyásolja a teljesítményt. Azure NetApp Files Snapshot Technology biztosítja az adatvédelmi megoldások alapját, beleértve az Egyfájlos visszaállításokat, a kötetek visszatárolását és a klónozást, valamint a régiók közötti replikálást. 
 
@@ -49,26 +49,26 @@ Eközben a pillanatképből kimutatott adatblokkok stabilak és nem változtatha
 
 Mivel a kötet-pillanatkép csak a legutóbbi pillanatkép óta megjelenő blokk-változásokat rögzíti, a következő alapvető előnyöket biztosítja:
 
-* A pillanatképek ***tárolási hatékonysága** _.   
-    A pillanatképek minimális tárterületet használnak, mert nem másolja a teljes kötet adatblokkait. Két, egymás után készített pillanatkép eltér a kettő közötti időintervallumban hozzáadott vagy módosított blokkokkal. Ez a blokk növekményes viselkedése korlátozza a tárterülethez kapcsolódó kapacitás-felhasználást. Számos alternatív pillanatkép-implementáció az aktív fájlrendszerrel megegyező tárolási köteteket használja fel, és növeli a tárolási kapacitásra vonatkozó követelményeket. A napi _block szintű * változási aránytól függően Azure NetApp Files a pillanatképek több vagy kevesebb kapacitást fognak használni, de csak a módosított adatmennyiséget. Az átlagos napi pillanatkép-felhasználás a felhasznált kötetek kapacitása legfeljebb 1-5%-a, a kötetek esetében pedig akár 20-30%-kal, például SAP HANA adatbázis-köteteknél. Ügyeljen arra, hogy a [kötet-és a pillanatkép-használatot](azure-netapp-files-metrics.md#volumes) a pillanatképek kapacitásának felhasználására figyelje a létrehozott és karbantartott Pillanatképek számával.   
+* A pillanatképek ***tárolási hatékonyságot*** mutatnak.   
+    A pillanatképek minimális tárterületet használnak, mert nem másolja a teljes kötet adatblokkait. Két, egymás után készített pillanatkép eltér a kettő közötti időintervallumban hozzáadott vagy módosított blokkokkal. Ez a blokk növekményes viselkedése korlátozza a tárterülethez kapcsolódó kapacitás-felhasználást. Számos alternatív pillanatkép-implementáció az aktív fájlrendszerrel megegyező tárolási köteteket használja fel, és növeli a tárolási kapacitásra vonatkozó követelményeket. Az alkalmazások napi *letiltási szintjétől* függően Azure NetApp Files a pillanatképek több vagy kevesebb kapacitást fognak használni, de csak a módosított adatmennyiséget. Az átlagos napi pillanatkép-felhasználás a felhasznált kötetek kapacitása legfeljebb 1-5%-a, a kötetek esetében pedig akár 20-30%-kal, például SAP HANA adatbázis-köteteknél. Ügyeljen arra, hogy a [kötet-és a pillanatkép-használatot](azure-netapp-files-metrics.md#volumes) a pillanatképek kapacitásának felhasználására figyelje a létrehozott és karbantartott Pillanatképek számával.   
 
-* A pillanatképek ***gyors létrehozás, replikálás, visszaállítás vagy klónozás**.   
+* A pillanatképek ***gyorsak a létrehozásához, replikálásához, visszaállításához vagy klónozásához***.   
     Csak néhány másodpercet vesz igénybe a pillanatképek létrehozása, replikálása, visszaállítása vagy klónozása, a kötet méretétől és a tevékenységek szintjétől függetlenül. [Igény szerint](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)mennyiségi pillanatképet is létrehozhat. A [Pillanatkép-szabályzatok](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) segítségével megadhatja, mikor Azure NetApp Files automatikusan hozzon létre egy pillanatképet, és hány pillanatképet kell megőrizni egy köteten.  Az alkalmazás konzisztenciája úgy érhető el, ha a pillanatképeket az alkalmazás réteggel összehangolja, például a SAP HANA [AzAcSnap eszközének](azacsnap-introduction.md) használatával.
 
-_ A pillanatképek nincsenek hatással a Volume ***Performance** _-re.   
+* A pillanatképek nem befolyásolják a kötet ***teljesítményét***.   
     A kiállított technológia "írásra való átirányításának" jellegéből adódóan az Azure NetApp Files Pillanatképek tárolása vagy megőrzése nem befolyásolja a teljesítményt, még a nagy adattevékenységek esetében is. A pillanatképek törlése a legtöbb esetben nem befolyásolja a teljesítményt. 
 
-A pillanatképek a ***skálázhatóságot** is lehetővé teszik, mivel ezek gyakran hozhatók létre, és számos megtartható.   
+* A pillanatképek ***skálázhatóságot*** biztosítanak, mert gyakran hozhatók létre, és számos megtartható.   
     Azure NetApp Files kötetek akár 255 pillanatképet is támogatnak. Az alacsony hatású, gyakran létrehozott Pillanatképek nagy mennyiségű tárolásának lehetősége növeli annak valószínűségét, hogy a kívánt verzió sikeresen helyreállítható.
 
-A pillanatképek a ***felhasználó láthatóságát** és a _*_fájlok helyreállítását_*_ biztosítják.   
+* A pillanatképek a ***felhasználói láthatóságot** _ és _ *_fájl-helyreállító_* * fájlokat biztosítják.   
 Azure NetApp Files Snapshot Technology nagy teljesítményének, méretezhetőségének és stabilitásának köszönhetően ideális online biztonsági mentést biztosít a felhasználó által vezérelt helyreállításhoz. A pillanatképek a fájl-, könyvtár-vagy kötet-visszaállítási célokra elérhetővé tehetők a felhasználók számára. A további megoldások lehetővé teszik a biztonsági másolatok másolását a kapcsolat nélküli tárolóba, vagy a [régiók közötti replikálást](cross-region-replication-introduction.md) a megőrzési vagy vész-helyreállítási célokra.
 
 ## <a name="ways-to-create-snapshots"></a>Pillanatképek létrehozásának módjai   
 
 A pillanatképek létrehozásához és karbantartásához több módszert is használhat:
 
-_ Manuálisan (igény szerint), a következő használatával:   
+* Manuálisan (igény szerint), a következő használatával:   
     * A [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), a [REST API](/rest/api/netapp/snapshots), az [Azure CLI](/cli/azure/netappfiles/snapshot)vagy a [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot) -eszközök
     * Parancsfájlok (lásd a [példákat](azure-netapp-files-solution-architectures.md#sap-tech-community-and-blog-posts))
 
@@ -161,7 +161,7 @@ A pillanatképek törlésével kapcsolatos tudnivalókat lásd: [Pillanatképek 
 * [Pillanatkép-szabályzatokkal kapcsolatos problémák elhárítása](troubleshoot-snapshot-policies.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Pillanatképek 101 videó](https://www.youtube.com/watch?v=uxbTXhtXCkw)
-* [NetApp-pillanatkép – NetApp video Library](https://tv.netapp.com/detail/video/2579133646001/snapshot)
+* [Azure NetApp Files pillanatkép áttekintése](https://anfcommunity.com/2021/01/31/azure-netapp-files-snapshot-overview/)
 
 
 

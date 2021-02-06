@@ -1,30 +1,48 @@
 ---
 title: Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal
 description: Ismerje meg, hogyan maximalizálhatja a Windows-frissítési garanciát, hogy a helyszíni licenceket az Azure-ba több-bérlős üzemeltetési jogosultságokkal lehessen elérni.
-author: xujing
+author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/24/2018
+ms.date: 2/2/2021
 ms.author: mimckitt
-ms.openlocfilehash: 8268e305946a19f4f74ff790e680d6bd3faa2b29
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.custom: rybaker, chmimckitt
+ms.openlocfilehash: 744f265251e9f58ce91085f0e5dd5d1ad13eec69
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881435"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625111"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
-A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. További információ: több- [bérlős üzemeltetés a Windows 10 rendszerhez](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+A Windows 10 Enterprise E3/E5 felhasználónkénti vagy a Windows virtuális asztali hozzáférés felhasználónként (felhasználói előfizetési licencek vagy kiegészítő felhasználói előfizetési licencek) rendelkező ügyfelei számára a Windows 10 rendszerhez készült több-bérlős üzemeltetési jogosultság lehetővé teszi a Windows 10-es licencek felhőbe való bevezetését, valamint a Windows 10 Virtual Machines Azure-beli futtatását anélkül, hogy más licenccel kellene fizetnie. A több-bérlős üzemeltetési jogosultságok csak a Windows 10 rendszerhez (1703-es vagy újabb verzió) érhetők el.
+
+További információ: több- [bérlős üzemeltetés a Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)rendszerhez.
 
 > [!NOTE]
-> Ebből a cikkből megtudhatja, hogyan valósítja meg a Windows 10 Pro asztali rendszerképek licencelési előnyeit az Azure Marketplace-en.
-> - Windows 7, 8,1, 10 Enterprise (x64) rendszerképek az Azure Marketplace-en MSDN-előfizetések esetén: [fejlesztői és tesztelési forgatókönyvek az Azure-beli Windows-ügyfélen](client-images.md)
+> - Windows 7, 8,1 és 10 rendszerkép használata fejlesztéshez vagy teszteléshez lásd: [Windows-ügyfél az Azure-ban fejlesztési és tesztelési forgatókönyvekhez](client-images.md)
 > - A Windows Server licencelési előnyeinek kihasználásához tekintse meg a [Windows Server rendszerképekhez készült Azure Hybrid use Benefits](hybrid-use-benefit-licensing.md)című témakört.
->
+
+## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>A több-bérlős üzemeltetési jogosultságokra jogosult előfizetési licencek
+
+A [Microsoft felügyeleti központjának](https://docs.microsoft.com/microsoft-365/admin/admin-overview/about-the-admin-center?view=o365-worldwide&preserve-view=true)használatával ellenőrizheti, hogy egy felhasználóhoz van-e hozzárendelve Windows 10 támogatott licenc.
+
+> [!IMPORTANT]
+> A felhasználóknak az alábbi előfizetési licencek egyikével kell rendelkezniük ahhoz, hogy Windows 10 rendszerképeket használjanak az Azure-ban. Ha nem rendelkezik ezekkel az előfizetési licencekkel, akkor a [Cloud Service-partneren](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) keresztül vagy közvetlenül a [Microsofton](https://www.microsoft.com/microsoft-365?rtc=1)keresztül vásárolhatók meg.
+
+**Jogosult előfizetési licencek:**
+
+-   E3/E5 Microsoft 365 
+-   Microsoft 365 F3 
+-   Microsoft 365 a3/a5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 Education a3/a5 
+-   Windows VDA E3/E5
+
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Windows 10 rendszerkép üzembe helyezése az Azure Marketplace-en 
-A PowerShell, a parancssori felület és a Azure Resource Manager sablon központi telepítése esetén a Windows 10-es rendszerképeket a és a használatával lehet megtalálni `PublisherName: MicrosoftWindowsDesktop` `Offer: Windows-10` .
+A PowerShell, a parancssori felület és a Azure Resource Manager sablon központi telepítése esetén a Windows 10-es rendszerképeket a és a használatával lehet megtalálni `PublisherName: MicrosoftWindowsDesktop` `Offer: Windows-10` . A Windows 10-es verzió-létrehozói frissítés (1809) vagy újabb verziója támogatott a több-bérlős üzemeltetési jogosultságok esetén. 
 
 ```powershell
 Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
@@ -40,17 +58,6 @@ rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus
 ```
 
 További információ az elérhető lemezképekről: [Azure Marketplace virtuálisgép-rendszerképek keresése és használata Azure PowerShell](./cli-ps-findimage.md)
-
-## <a name="qualify-for-multi-tenant-hosting-rights"></a>A több-bérlős üzemeltetési jogosultságok beszerzése 
-A több-bérlős üzemeltetési jogosultságok beszerzéséhez és a Windows 10 rendszerképeinek Azure-felhasználókon való futtatásához a következő előfizetések egyike szükséges: 
-
--   E3/E5 Microsoft 365 
--   Microsoft 365 F3 
--   Microsoft 365 a3/a5 
--   Windows 10 Enterprise E3/E5
--   Windows 10 Education a3/a5 
--   Windows VDA E3/E5
-
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 virtuális merevlemez feltöltése az Azure-ba
 Ha általánosított Windows 10 virtuális merevlemezt tölt fel, vegye figyelembe, hogy a Windows 10 alapértelmezés szerint nincs engedélyezve a beépített rendszergazdai fiókkal. A beépített rendszergazdai fiók engedélyezéséhez a következő parancsot adja meg az egyéni szkriptek bővítményének részeként.
@@ -119,10 +126,7 @@ LicenseType              :
 ```
 
 ## <a name="additional-information-about-joining-azure-ad"></a>További információ az Azure AD-hez való csatlakozásról
->[!NOTE]
->Az Azure minden olyan Windowsos virtuális gépet kiépít, amely beépített rendszergazdai fiókkal rendelkezik, ezért nem használható a HRE való csatlakozáshoz. Például a *beállítások > a fiók > hozzáférés munkahelyi vagy iskolai > + kapcsolódás* nem fog működni. Az Azure AD-hez való csatlakozáshoz második rendszergazdai fiókot kell létrehoznia és bejelentkeznie. Az Azure AD-t egy kiépítési csomaggal is konfigurálhatja, ha további információkat szeretne megtudni, használja a *következő lépések* szakaszban található hivatkozást.
->
->
+Az Azure minden olyan Windowsos virtuális gépet kiépít, amely beépített rendszergazdai fiókkal rendelkezik, ezért nem használható a HRE való csatlakozáshoz. Például a *beállítások > a fiók > hozzáférés munkahelyi vagy iskolai > + kapcsolódás* nem fog működni. Az Azure AD-hez való csatlakozáshoz második rendszergazdai fiókot kell létrehoznia és bejelentkeznie. Az Azure AD-t egy kiépítési csomaggal is konfigurálhatja, ha további információkat szeretne megtudni, használja a *következő lépések* szakaszban található hivatkozást.
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a [Windows 10 rendszerhez készült VDA konfigurálásáról](/windows/deployment/vda-subscription-activation)

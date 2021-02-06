@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 3437c8bcf8ff508149abae2549d7c34521700840
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920257"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627263"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -30,12 +30,15 @@ A FHIR készült Azure API a következő szinteken támogatja a $export:
 * [Beteg](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
 * [Betegek csoportja *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) – az Azure API for FHIR exportálja az összes kapcsolódó erőforrást, de nem exportálja a csoport jellemzőit: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
+Az adatexportálás során minden erőforrástípus külön fájlt hoz létre. Annak biztosítása érdekében, hogy az exportált fájlok ne legyenek túl nagyok, egy új fájlt hozunk létre, miután egy exportált fájl mérete nagyobb lesz, mint 64 MB. Ennek eredményeképpen több fájl is megjelenhet minden egyes erőforrástípus számára, amely enumerálásra kerül (például: beteg-1. ndjson, beteg-2. ndjson). 
 
 
 > [!Note] 
 > `Patient/$export` és `Group/[ID]/$export` Előfordulhat, hogy duplikált erőforrásokat exportál, ha az erőforrás több erőforráshoz tartozó rekeszben található, vagy több csoportban van.
 
 Emellett az exportálási állapot ellenőrzése a hely fejléce által visszaadott URL-címen, a tényleges exportálási feladat megszakítása mellett.
+
+
 
 ## <a name="settings-and-parameters"></a>Beállítások és paraméterek
 

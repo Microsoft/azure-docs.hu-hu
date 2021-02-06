@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 57bc53c28866b3f16e742c27b6a1600bfe6f44ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e2f7f754ae9a1547d6543dba65c69511ab7ceb1
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89418823"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624912"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Az OpenVPN konfigurálása az Azure pont – hely kapcsolathoz VPN Gateway
 
@@ -29,7 +29,7 @@ Ha még nem rendelkezik működő pont – hely környezettel, kövesse az utas�
 
 ## <a name="2-enable-openvpn-on-the-gateway"></a><a name="enable"></a>2. az OpenVPN engedélyezése az átjárón
 
-Az OpenVPN engedélyezése az átjárón. Az alábbi parancsok futtatása előtt győződjön meg arról, hogy az átjáró már konfigurálva van a pont – hely (IKEv2 vagy SSTP) számára:
+Az OpenVPN engedélyezése az átjárón.
 
 ```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98a16e0a60ddf149e8f0e1a092051f3e98ea8225
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002560"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627062"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
 
@@ -104,7 +104,7 @@ A rendelkezésre álló termékek elérhetőségét a [régiók táblázata alap
 
 Az Azure-ban a Windows 7, a Windows 8 vagy a Windows 10 operációs rendszert használhatja fejlesztési és tesztelési forgatókönyvekhez, ha rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. 
 
-- A Windows 10-es lemezképek az Azure Galleryben érhetők el a [jogosult fejlesztési és tesztelési ajánlatokon](../windows/client-images.md#eligible-offers)belül. 
+- A Windows 10-es lemezképek az Azure Galleryben érhetők el a [jogosult fejlesztési és tesztelési ajánlatokon](../windows/client-images.md)belül. 
 - A Visual Studio-előfizetők bármilyen típusú ajánlaton belül a 64 bites Windows 7, Windows 8 vagy Windows 10 rendszerű rendszerképek [megfelelő előkészítését és létrehozását](../windows/prepare-for-upload-vhd-image.md) is lehetővé teszi, majd [feltöltheti őket az Azure](../windows/upload-generalized-managed.md)-ba. A használat az aktív Visual Studio-előfizetők által a fejlesztéshez és teszteléshez is korlátozott.
 
 Ez a [cikk](../windows/client-images.md) a Windows-ügyfél Azure-ban való futtatásának és az Azure Gallery-lemezképek használatának támogathatósági követelményeit ismerteti.
@@ -128,7 +128,7 @@ Válassza ki a rendelkezésre állási csoport fürtjét támogató méretet. Az
 Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő rendelkezésre állási csoporthoz. További információ: [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
 Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

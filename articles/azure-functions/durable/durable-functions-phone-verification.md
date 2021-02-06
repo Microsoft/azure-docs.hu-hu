@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti az emberi interakciókat és időtúl
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: dd7f8416b2f4520ec8e94c8608f753f7412afc4d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028303"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627372"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi interakció Durable Functions – telefonos ellenőrzési minta
 
@@ -37,6 +37,9 @@ Ez a cikk végigvezeti a minta alkalmazás következő funkcióiról:
 
 * `E4_SmsPhoneVerification`: Egy [Orchestrator-függvény](durable-functions-bindings.md#orchestration-trigger) , amely elvégzi a telefonos ellenőrzési folyamatot, beleértve az időtúllépések és az újrapróbálkozások kezelését.
 * `E4_SendSmsChallenge`: Olyan [tevékenységi függvény](durable-functions-bindings.md#activity-trigger) , amely szöveges üzenetben küld egy kódot.
+
+> [!NOTE]
+> A `HttpStart` [minta alkalmazásban és a](#prerequisites) rövid útmutatóban szereplő függvény a Orchestrator függvényt kiváltó előkészítési [ügyfélként](durable-functions-bindings.md#orchestration-client) működik.
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification Orchestrator függvény
 
@@ -177,7 +180,7 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa a Durable Functions, különösen és API-k fejlett képességeit mutatja `WaitForExternalEvent` be `CreateTimer` . Megismerte, hogy ezek hogyan kombinálhatók a szolgáltatással `Task.WaitAny` egy megbízható időtúllépési rendszer megvalósításához, ami gyakran hasznos a valós emberekkel való interakcióhoz. Ha többet szeretne megtudni a Durable Functions használatáról, tekintse meg az egyes témakörök részletes lefedettségét biztosító cikkek sorozatát.
 

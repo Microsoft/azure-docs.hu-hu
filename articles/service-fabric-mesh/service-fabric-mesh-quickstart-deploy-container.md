@@ -1,18 +1,23 @@
 ---
-title: Gyors útmutató – „Helló világ!” alkalmazás üzembe helyezése az Azure Service Fabric Meshban
+title: Gyors útmutató – Hello World üzembe helyezése az Azure Service Fabric Meshban
 description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Service Fabric Mesh-alkalmazást az Azure Service Fabric Meshben.
 author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f34034394d2492dba64214c612a239b92f4b9c46
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499883"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625718"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 A [Service Fabric Mesh](service-fabric-mesh-overview.md) segítségével egyszerűen hozhat létre és felügyelhet mikroszolgáltatás-alkalmazásokat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie. Ebben a rövid útmutatóban létrehozhat egy Hello World-alkalmazást az Azure-ban, és közzéteheti azt az interneten. Ez a művelet egyetlen paranccsal hajtható végre. Néhány perc elteltével a következő nézetet láthatja a böngészőben:
 
@@ -105,7 +110,7 @@ Amikor készen áll az alkalmazás törlésére, futtassa az [az group delete][a
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]

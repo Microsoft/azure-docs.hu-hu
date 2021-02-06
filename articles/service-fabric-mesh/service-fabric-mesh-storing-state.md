@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b8440a168d6d268cd27e1208ff54616a3b1e193a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 651329b1b061f2cf5a06dbdc9d60f73cec64e7d3
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843209"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625549"
 ---
 # <a name="state-management-with-service-fabric"></a>Állapot-kezelés Service Fabric
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Service Fabric számos különböző lehetőséget támogat az állapot-tároláshoz. Az állapot-felügyeleti minták és Service Fabric fogalmi áttekintését lásd [: Service Fabric fogalmak: State](../service-fabric/service-fabric-concepts-state.md). Mindezen fogalmak érvényesek, függetlenül attól, hogy a szolgáltatásai Service Fabric hálón belül vagy kívül futnak-e. 
 

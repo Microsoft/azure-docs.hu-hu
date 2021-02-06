@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500133"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624869"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -21,19 +21,25 @@ Igen, az Azure Virtual WAN általánosan elérhető (GA). A virtuális WAN azonb
 
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
-A Virtual WAN számos funkciót kínál az olyan üvegek számára, mint például a hely/helyek közötti VPN-kapcsolat, a felhasználó/P2S kapcsolat, a ExpressRoute-kapcsolat, a Virtual Network kapcsolat, a VPN-ExpressRoute összekapcsolása, a VNet-VNet tranzitív kapcsolat, a központosított útválasztás, a Azure Firewall és a tűzfal-kezelő biztonság, a monitorozás, a ExpressRoute-titkosítás és sok más képesség. A virtuális WAN használatának megkezdéséhez nem szükséges az összes ilyen használati eset. Első lépésként csak egy használati esetet érhet el. A virtuális WAN-architektúra egy olyan sugaras és küllős architektúra, amely az ágak (VPN/SD-WAN-eszközök), a felhasználók (Azure VPN-ügyfelek, openVPN vagy IKEv2-ügyfelek), a ExpressRoute-áramkörök, a virtuális hálózatok pedig küllőként szolgálnak a virtuális központ (ok) hoz. Az összes hub egy szabványos virtuális WAN-kapcsolaton keresztül csatlakozik a teljes hálóhoz, így a felhasználó könnyedén használhatja a Microsoft-gerincet bármilyen (küllős) kapcsolathoz. A hub és az SD-WAN/VPN-eszközök használata esetén a felhasználók manuálisan is beállíthatják az Azure-beli virtuális WAN-portálon, vagy a virtuális WAN-partner CPE (SD-WAN/VPN) használatával állíthatnak be kapcsolatot az Azure-ral. A virtuális WAN-partnerek automatizálást biztosítanak a kapcsolódáshoz, amely lehetővé teszi az eszköz adatainak az Azure-ba való exportálását, az Azure-konfiguráció letöltését és az Azure Virtual WAN hub-kapcsolat létesítését. Pont – hely/felhasználó VPN-kapcsolat esetén az [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554), az OpenVPN vagy a IKEv2-ügyfél támogatott. 
+A Virtual WAN számos funkciót kínál az olyan üvegek számára, mint például a hely/helyek közötti VPN-kapcsolat, a felhasználó/P2S kapcsolat, a ExpressRoute-kapcsolat, a Virtual Network kapcsolat, a VPN-ExpressRoute összekapcsolása, a VNet-VNet tranzitív kapcsolat, a központosított útválasztás, a Azure Firewall és a tűzfal-kezelő biztonság, a monitorozás, a ExpressRoute-titkosítás és sok más képesség. A virtuális WAN használatának megkezdéséhez nem szükséges az összes ilyen használati eset. Első lépésként csak egy használati esetet érhet el.
+
+A virtuális WAN-architektúra egy olyan sugaras és küllős architektúra, amely az ágak (VPN/SD-WAN-eszközök), a felhasználók (Azure VPN-ügyfelek, openVPN vagy IKEv2-ügyfelek), a ExpressRoute-áramkörök, a virtuális hálózatok pedig küllőként szolgálnak a virtuális központ (ok) hoz. Az összes hub egy szabványos virtuális WAN-kapcsolaton keresztül csatlakozik a teljes hálóhoz, így a felhasználó könnyedén használhatja a Microsoft-gerincet bármilyen (küllős) kapcsolathoz. A hub és az SD-WAN/VPN-eszközök használata esetén a felhasználók manuálisan is beállíthatják az Azure-beli virtuális WAN-portálon, vagy a virtuális WAN-partner CPE (SD-WAN/VPN) használatával állíthatnak be kapcsolatot az Azure-ral.
+
+A virtuális WAN-partnerek automatizálást biztosítanak a kapcsolódáshoz, amely lehetővé teszi az eszköz adatainak az Azure-ba való exportálását, az Azure-konfiguráció letöltését és az Azure Virtual WAN hub-kapcsolat létesítését. Pont – hely/felhasználó VPN-kapcsolat esetén az [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554), az OpenVPN vagy a IKEv2-ügyfél támogatott.
 
 ### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>Le tudja tiltani a teljes mértékben Rácsvonalas hubokat egy virtuális WAN-ban?
 
-A Virtual WAN két változatban érhető el: alapszintű és standard. Alapszintű virtuális WAN esetén a hubok nincsenek rácsvonalak. A standard szintű virtuális WAN-ban a hubok a virtuális WAN első beállításakor vannak elfoglalva és automatikusan csatlakoztatva. A felhasználónak semmit nem kell tennie. A felhasználónak emellett nem kell letiltania vagy engedélyeznie a hálós hubok beszerzéséhez szükséges funkciót. A Virtual WAN számos útválasztási lehetőséget biztosít a bármilyen küllős (VNet, VPN vagy ExpressRoute) közötti forgalom irányítására. A szolgáltatás egyszerűvé teszi a teljes szembőségű hubokat, valamint az igényeinek megfelelő útválasztási forgalom rugalmasságát is. 
+A Virtual WAN két változatban érhető el: alapszintű és standard. Alapszintű virtuális WAN esetén a hubok nincsenek rácsvonalak. A standard szintű virtuális WAN-ban a hubok a virtuális WAN első beállításakor vannak elfoglalva és automatikusan csatlakoztatva. A felhasználónak semmit nem kell tennie. A felhasználónak emellett nem kell letiltania vagy engedélyeznie a hálós hubok beszerzéséhez szükséges funkciót. A Virtual WAN számos útválasztási lehetőséget biztosít a bármilyen küllős (VNet, VPN vagy ExpressRoute) közötti forgalom irányítására. A szolgáltatás egyszerűvé teszi a teljes szembőségű hubokat, valamint az igényeinek megfelelő útválasztási forgalom rugalmasságát is.
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Hogyan kezelik a Availability Zones és a rugalmasságot a virtuális WAN-ban?
 
-A virtuális WAN az elosztón belül elérhetővé tett hubok és szolgáltatások gyűjteménye. A felhasználónak tetszőleges számú virtuális WAN-ra van szüksége. Egy virtuális WAN-központban több szolgáltatás, például VPN, ExpressRoute stb. Az egyes szolgáltatások (kivéve a Azure Firewall) egy Availability Zones régióban vannak telepítve, vagyis ha a régió támogatja a Availability Zones. Ha egy régió elérhetővé válik egy rendelkezésre állási zónában a központi telepítés után, akkor a felhasználó újra létrehozhatja az átjárókat, amelyek kiváltják a rendelkezésre állási zónák központi telepítését. Az összes átjáró aktív-aktívként van kiépítve egy hubhoz, ami azt jelenti, hogy a csomóponton belül van egy rugalmasság. A felhasználók több hubhoz is csatlakozhatnak, ha rugalmasságot szeretnének a régiók között. Habár a virtuális WAN koncepciója globális, a tényleges virtuális WAN-erőforrás Resource Manager-alapú, és regionálisan van üzembe helyezve. Ha maga a virtuális WAN-régióval kapcsolatos probléma merült fel, a virtuális WAN összes központja továbbra is működni fog, de a felhasználó nem fog tudni új hubokat létrehozni, amíg a virtuális WAN-régió elérhetővé nem válik.
+A virtuális WAN az elosztón belül elérhetővé tett hubok és szolgáltatások gyűjteménye. A felhasználónak tetszőleges számú virtuális WAN-ra van szüksége. Egy virtuális WAN-központban több szolgáltatás, például VPN, ExpressRoute stb. Az egyes szolgáltatások (kivéve a Azure Firewall) egy Availability Zones régióban vannak telepítve, vagyis ha a régió támogatja a Availability Zones. Ha egy régió elérhetővé válik egy rendelkezésre állási zónában a központi telepítés után, akkor a felhasználó újra létrehozhatja az átjárókat, amelyek kiváltják a rendelkezésre állási zónák központi telepítését. Az összes átjáró aktív-aktívként van kiépítve egy hubhoz, ami azt jelenti, hogy a csomóponton belül van egy rugalmasság. A felhasználók több hubhoz is csatlakozhatnak, ha rugalmasságot szeretnének a régiók között.
+
+Habár a virtuális WAN koncepciója globális, a tényleges virtuális WAN-erőforrás Resource Manager-alapú, és regionálisan van üzembe helyezve. Ha maga a virtuális WAN-régióval kapcsolatos probléma merült fel, a virtuális WAN összes központja továbbra is működni fog, de a felhasználó nem fog tudni új hubokat létrehozni, amíg a virtuális WAN-régió elérhetővé nem válik.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Milyen ügyfelet támogat az Azure Virtual WAN felhasználói VPN (pont – hely)?
 
-A Virtual WAN támogatja az [Azure VPN-ügyfelet](https://go.microsoft.com/fwlink/?linkid=2117554), az OpenVPN-ügyfelet vagy bármely IKEv2-ügyfelet. Az Azure AD-hitelesítés támogatott az Azure VPN-ügyfélen. legalább a Windows 10 ügyfél operációs rendszer 17763,0-es vagy újabb verziójára van szükség.  Az OpenVPN-ügyfél képes támogatni a tanúsítványalapú hitelesítést. Miután kiválasztotta a tanúsítvány alapú hitelesítést az átjárón, a *. ovpn* fájlt fogja látni az eszközre való letöltéshez. A IKEv2 mind a tanúsítvány-, mind a RADIUS-hitelesítést támogatja. 
+A Virtual WAN támogatja az [Azure VPN-ügyfelet](https://go.microsoft.com/fwlink/?linkid=2117554), az OpenVPN-ügyfelet vagy bármely IKEv2-ügyfelet. Az Azure AD-hitelesítés támogatott az Azure VPN-ügyfélen. legalább a Windows 10 ügyfél operációs rendszer 17763,0-es vagy újabb verziójára van szükség.  Az OpenVPN-ügyfél képes támogatni a tanúsítványalapú hitelesítést. Miután kiválasztotta a tanúsítvány alapú hitelesítést az átjárón, megjelenik az eszközre letölteni kívánt. ovpn * fájl. A IKEv2 mind a tanúsítvány-, mind a RADIUS-hitelesítést támogatja. 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>Felhasználói VPN (pont – hely) esetén – miért oszlik két útvonalra a P2S-ügyfél készlete?
 
@@ -87,7 +93,7 @@ A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására. Az 
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Felhasználói VPN (pont – hely) esetén – hány ügyfél támogatott?
 
-Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat és a Scale Unit 13-18 támogatja a legfeljebb 10 000 kapcsolatot 
+Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat és a Scale Unit 13-18 támogatja a legfeljebb 10 000 kapcsolatot
 
 Tegyük fel például, hogy a felhasználó 1 méretezési egységet választ. Mindegyik skálázási egység egy aktív-aktív átjáró üzembe helyezését jelentené, és a példányok mindegyike (ebben az esetben 2) legfeljebb 500 kapcsolatot támogat. Mivel az 500-os kapcsolatok * 2 átjárón keresztül, nem jelenti azt, hogy az 500 helyett 1000-et tervez ehhez a skálázási egységhez. Előfordulhat, hogy olyan példányokat kell kiszolgálni, amelyekben az extra 500-kapcsolat megszakad, ha túllépi az ajánlott kapcsolatok számát. Ügyeljen arra is, hogy az állásidőt úgy tervezze meg, hogy a méretezési egység vertikális fel-vagy leskálázását választja, vagy ha módosítani szeretné a pont – hely konfigurációt a VPN-átjárón.
 
@@ -101,7 +107,7 @@ A virtuális WAN a VPN-és a ExpressRoute esetében akár 20 GB/s összesített 
 
 A virtuális hálózati átjáró VPN-je legfeljebb 30 alagútra van korlátozva. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. Régiónként (Virtual hub) akár 1 000 ág-kapcsolatot is csatlakoztathat, és a központ 20 GB/s-os összesítéssel rendelkezik. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Régiónként egy hubhoz is rendelkezhet, ami azt jelenti, hogy több mint 1 000 ágat tud csatlakoztatni a hubok között.
 
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>A virtuális WAN Gateway méretezési egysége
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Mi az a virtuális WAN Gateway skálázási egység?
 
 A méretezési egység egy olyan egység, amely egy átjáró összesített átviteli sebességének kiválasztására van beállítva a virtuális központban. 1 a VPN = 500 Mbps méretezési egysége. 1 skálázási egység, ExpressRoute = 2 GB/s. Például: a VPN 10 skálázási egysége 500 Mbps * 10 = 5 GB/s értéket jelentene.
 
@@ -139,13 +145,13 @@ A virtuális központ legfeljebb 1 000 kapcsolatot támogat. Minden kapcsolat n�
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Mi az az Azure Virtual WAN-hoz kapcsolódó fiókiroda?
 
-Egy ág vagy VPN-eszköz kapcsolata az Azure Virtual WAN-ba nem más, mint egy VPN-kapcsolat, amely gyakorlatilag a VPN-helyet és az Azure-VPN Gateway csatlakoztatja egy virtuális hubhoz.
+Egy fiókirodából vagy VPN-eszközről az Azure Virtual WAN-ba létesített kapcsolat egy VPN-kapcsolat, amely gyakorlatilag a VPN-helyet és az Azure-VPN Gateway csatlakoztatja egy virtuális hubhoz.
 
-### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>Mi történik, ha a helyszíni VPN-eszköznek csak 1 alagútja van egy Azure-beli virtuális WAN VPN-átjáróhoz?
+### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>Mi történik, ha a helyszíni VPN-eszköznek csak 1 alagútja van egy Azure-beli virtuális WAN VPN-átjáróhoz?
 
-Az Azure-beli virtuális WAN-kapcsolat 2 alagútból áll. A virtuális WAN VPN-átjáró aktív-aktív módban van üzembe helyezve, ami azt jelenti, hogy külön alagutak vannak a helyi eszközöktől különálló isntances – ez az összes felhasználóra vonatkozó javaslat. Ha azonban a felhasználó úgy dönt, hogy csak 1 alagúttal rendelkezik az egyik virtuális WAN VPN Gateway-példányhoz, bármilyen okból (karbantartás, javítások stb.)  az átjáró példányát offline állapotba kell helyezni, az alagút át lesz helyezve a másodlagos aktív példányra, és a felhasználó újrakapcsolódást tapasztalhat. Azt is vegye figyelembe, hogy a BGP-munkamenet nem kerül át a példányok között.
+Az Azure-beli virtuális WAN-kapcsolat 2 alagútból áll. Egy virtuális WAN VPN-átjáró üzembe helyezése aktív-aktív módban lévő virtuális központban történik, ami azt jelenti, hogy külön alagutak találhatók a helyszíni eszközöktől a különálló példányokon. Ez az összes felhasználóra vonatkozó javaslat. Ha azonban a felhasználó úgy dönt, hogy csak 1 alagúttal rendelkezik a virtuális WAN VPN Gateway példányai közül, ha valamilyen okból (karbantartás, javítás stb.) az átjáró példányát offline állapotba helyezi, az alagút átkerül a másodlagos aktív példányra, és a felhasználó újracsatlakozást fog tapasztalni. A BGP-munkamenetek nem kerülnek át a példányokra.
 
-### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>A helyszíni VPN-eszköz több központhoz is csatlakoztatható?
+### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Csatlakozhat a helyszíni VPN-eszköz több hubhoz is?
 
 Igen. A forgalom a megkezdése után a helyszíni eszközről a legközelebbi Microsoft hálózati szélre, majd a virtuális hubhoz kerül.
 
@@ -179,19 +185,21 @@ Egy virtuális WAN egyszerű konfigurációja egy hubhoz, egy vpnsite pedig egy 
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Megbeszélheti a virtuális hálózatok csatlakoztatott virtuális hubhoz való kommunikációt (V2V-átvitel)?
 
-Igen. A standard szintű virtuális WAN támogatja a VNet-VNet tranzitív kapcsolatot a virtuális WAN-hubhoz, amelyhez a virtuális hálózatok csatlakozik. A virtuális WAN-terminológiában ezeket az útvonalakat "helyi virtuális WAN VNet Transit"-ként tekintjük át egyetlen régióban lévő virtuális WAN-központhoz csatlakoztatott virtuális hálózatok, és a "globális virtuális WAN VNet Transit" a több virtuális WAN-hubhoz csatlakoztatott virtuális hálózatok több, mint két régióban. Bizonyos forgatókönyvek esetében a küllős virtuális hálózatok a helyi vagy globális virtuális WAN VNet-átvitelen kívül közvetlenül [Virtual Network](../articles/virtual-network/virtual-network-peering-overview.md) egymással is összekapcsolódhat. Ebben az esetben a VNet-társítás a virtuális WAN-központon keresztül elsőbbséget élvez a tranzitív kapcsolattal szemben.
+Igen. A standard szintű virtuális WAN támogatja a VNet-VNet tranzitív kapcsolatot a virtuális WAN-hubhoz, amelyhez a virtuális hálózatok csatlakozik. A virtuális WAN-terminológiában ezeket az útvonalakat "helyi virtuális WAN VNet Transit"-ként tekintjük át egyetlen régióban lévő virtuális WAN-központhoz csatlakoztatott virtuális hálózatok, és a "globális virtuális WAN VNet Transit" a több virtuális WAN-hubhoz csatlakoztatott virtuális hálózatok több, mint két régióban.
+
+Bizonyos helyzetekben a küllős virtuális hálózatok a helyi vagy globális virtuális WAN VNet-átvitelen kívül a [virtuális hálózatok](../articles/virtual-network/virtual-network-peering-overview.md) közötti kapcsolattal is elvégezhető. Ebben az esetben a VNet-társítás a virtuális WAN-központon keresztül elsőbbséget élvez a tranzitív kapcsolattal szemben.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>A Virtual WAN-ban engedélyezett az ágak közötti kapcsolat?
 
-Igen, az ágak közötti kapcsolat elérhető a Virtual WAN-ban. Az ág fogalmilag alkalmazható a VPN-webhelyekre, a ExpressRoute áramkörökre, illetve a pont – hely/felhasználó VPN-felhasználókra. Az ág a fiókirodába való engedélyezése alapértelmezés szerint engedélyezve van, és a WAN-konfigurációs beállításokban is elhelyezhető. Ez lehetővé teszi, hogy a VPN-ágak/felhasználók csatlakozni tudjanak más VPN-ágakhoz, valamint a VPN-és a ExpressRoute-felhasználók közötti átviteli kapcsolat engedélyezve legyen.
+Igen, az ágak közötti kapcsolat elérhető a Virtual WAN-ban. Az ág fogalmilag alkalmazható a VPN-webhelyekre, a ExpressRoute áramkörökre, illetve a pont – hely/felhasználó VPN-felhasználókra. A ág – ág engedélyezése alapértelmezés szerint engedélyezve van, és a WAN- **konfigurációs** beállításokban található. Ez lehetővé teszi, hogy a VPN-ágak/felhasználók csatlakozzanak más VPN-ágakhoz, és az átviteli kapcsolat is engedélyezve legyen a VPN-és ExpressRoute-felhasználók között.
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Az ág-ág forgalom áthalad az Azure Virtual WAN-on keresztül?
 
-Igen.
+Igen. A fiókirodai forgalom az Azure Virtual WAN használatával halad át.
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Szükséges a virtuális WAN ExpressRoute az egyes helyekről?
 
-Nem. A virtuális WAN nem igényel ExpressRoute az egyes helyekről. Előfordulhat, hogy a helyek ExpressRoute-kapcsolatcsoporttal csatlakoznak a szolgáltatói hálózathoz. Ahhoz, hogy a virtuális központ, illetve az IPsec VPN a ExpressRoute használatával összekapcsolt helyeket ugyanahhoz a központhoz kapcsolódjon, a Virtual hub átviteli kapcsolatot biztosít a VPN-és a ExpressRoute-felhasználó között.
+Nem. A virtuális WAN nem igényel ExpressRoute az egyes helyekről. Előfordulhat, hogy a helyek ExpressRoute-kapcsolatcsoporttal csatlakoznak a szolgáltatói hálózathoz. Azon helyek esetében, amelyek a ExpressRoute használatával csatlakoznak egy virtuális hubhoz és az IPsec VPN-hez ugyanahhoz a központhoz, a virtuális központ átviteli kapcsolatot biztosít a VPN és a ExpressRoute felhasználó között.
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Van hálózati átviteli sebesség vagy kapcsolati korlát az Azure Virtual WAN használata esetén?
 
@@ -204,11 +212,12 @@ Amikor a VPN-helyek egy központhoz csatlakoznak, a kapcsolatokkal. A Virtual WA
 A hub teljes VPN-átviteli sebessége a VPN-átjáró kiválasztott méretezési egysége alapján akár 20 GB-ig is elsajátítható. Az átviteli sebességet az összes meglévő kapcsolat megosztja. A kapcsolatok mindegyik alagútja akár 1 GB/s-t is képes támogatni.
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Használhatom a NAT-T-T a VPN-kapcsolatokon?
-Igen, a NAT-bejárás (NAT-T) támogatott. A virtuális WAN-VPN Gateway a belső csomagokon nem hajtanak végre NAT-szerű funkciókat az IPsec-alagutak között. Ebben a konfigurációban ellenőrizze, hogy a helyszíni eszköz kezdeményezi-e az IPSec-alagutat.
+
+Igen, a NAT-bejárás (NAT-T) támogatott. A virtuális WAN VPN Gateway nem hajtja végre a NAT-hoz hasonló funkciókat a belső csomagokon az IPsec-alagutak között. Ebben a konfigurációban ellenőrizze, hogy a helyszíni eszköz kezdeményezi-e az IPSec-alagutat.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Nem látom a 20 GB/s beállítást a virtuális hubhoz a portálon. Hogyan konfigurálja?
 
-Navigáljon a VPN-átjáróhoz a portálon belül, és kattintson a skálázási egységre a megfelelő beállításra való váltáshoz.
+Navigáljon a VPN-átjáróhoz a portálon belül, majd a méretezési egységre kattintva módosítsa a megfelelő beállítást.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>A virtuális WAN lehetővé teszi, hogy a helyszíni eszköz párhuzamosan több internetszolgáltatót is használjon, vagy mindig egyetlen VPN-alagút?
 
@@ -226,21 +235,23 @@ A forgalom a következő mintát követi: ág Device->ISP->Microsoft Network Edg
 
 Igen. Internetkapcsolat és fizikai eszköz, amely támogatja az IPsec használatát, lehetőleg az integrált [virtuális WAN-partnereinktől](../articles/virtual-wan/virtual-wan-locations-partners.md). Szükség esetén manuálisan is kezelheti a konfigurációt és a kapcsolatot az Azure-hoz a kívánt eszközről.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hogyan engedélyezi az alapértelmezett útvonalat (0.0.0.0/0) egy kapcsolatban (VPN, ExpressRoute vagy Virtual Network)?
+### <a name="how-do-i-enable-default-route-00000-for-a-connection-vpn-expressroute-or-virtual-network"></a>Hogyan az alapértelmezett útvonal (0.0.0.0/0) engedélyezése egy kapcsolathoz (VPN, ExpressRoute vagy Virtual Network)?
 
-Egy virtuális központ propagálhatja a megtanult alapértelmezett útvonalat egy virtuális hálózat/helyek közötti VPN/ExpressRoute kapcsolatra, ha a jelző "enabled" (engedélyezve) van a kapcsolaton. Ez a jelző akkor látható, ha a felhasználó szerkeszt egy virtuális hálózati kapcsolat, egy VPN-kapcsolat vagy egy ExpressRoute-kapcsolat. Alapértelmezés szerint ez a jelző le van tiltva, ha egy hely vagy egy ExpressRoute áramkör egy hubhoz van csatlakoztatva. Alapértelmezés szerint engedélyezve van, ha egy virtuális hálózati kapcsolat hozzáadásával csatlakozik egy VNet egy virtuális hubhoz. Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik; a rendszer az alapértelmezett útvonalat propagálja, ha a virtuális WAN-központ már megtanulta a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely kényszerített bújtatást engedélyez. Az alapértelmezett útvonal nem terjed ki A hubok (Inter-hub) között.
+Egy virtuális központ propagálhatja a megtanult alapértelmezett útvonalat egy virtuális hálózat/helyek közötti VPN/ExpressRoute kapcsolatra, ha a jelző "enabled" (engedélyezve) van a kapcsolaton. Ez a jelző akkor látható, ha a felhasználó szerkeszt egy virtuális hálózati kapcsolat, egy VPN-kapcsolat vagy egy ExpressRoute-kapcsolat. Alapértelmezés szerint ez a jelző le van tiltva, ha egy hely vagy egy ExpressRoute áramkör egy hubhoz van csatlakoztatva. Alapértelmezés szerint engedélyezve van, ha egy virtuális hálózati kapcsolat hozzáadásával csatlakozik egy VNet egy virtuális hubhoz.
 
-### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hogyan jelöli ki a virtuális hálózat virtuális központja a különböző hubok útvonalának legjobb elérési útját.
+Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik; a rendszer az alapértelmezett útvonalat propagálja, ha a virtuális WAN-központ már megtanulta a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely kényszerített bújtatást engedélyez. Az alapértelmezett útvonal nem terjed ki A hubok (Inter-hub) között.
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hogyan jelöli ki a virtuális hálózat virtuális központja a különböző hubok útvonalának legjobb elérési útját?
 
 Ha egy virtuális központ ugyanazokat az útvonalakat tanulja meg több távoli hubokból, a következőképpen határozhatja meg a sorrendet:
 
 1. A leghosszabb előtag egyezése.
-2. Helyi útvonalak a interhub-en keresztül (a virtuális központ 65520-65520-et rendel hozzá a interhub-hez)
-3. Statikus útvonalak BGP-kapcsolaton keresztül: Ez a Virtual hub-útválasztó által hozott döntés kontextusában van. Ha azonban a döntéshozó a VPN-átjáró, ahol egy hely a BGP-n keresztül hirdeti az útvonalakat, vagy statikus címek előtagjait ad meg, a statikus útvonalak előnyben részesítettek a BGP-útvonalakon.
-4. ExpressRoute (ER) VPN-en keresztül: az ABB előnyben részesített VPN-en, ha a környezet helyi központ. A ExpressRoute-áramkörök közötti átviteli kapcsolat csak Global Reachon keresztül érhető el. Ezért olyan helyzetekben, amikor a ExpressRoute áramkör egy hubhoz csatlakozik, és egy másik, VPN-kapcsolattal rendelkező központhoz csatlakoztatott ExpressRoute-áramkör, a VPN-t előnyben részesítettük a csomópontok közötti forgatókönyvek esetében.
-5. Elérési út hossza
+1. Helyi útvonalak a interhub-en keresztül (a virtuális központ 65520-65520-et rendel hozzá a interhub-hoz).
+1. Statikus útvonalak BGP-kapcsolaton keresztül: Ez a Virtual hub-útválasztó által hozott döntés kontextusában van. Ha azonban a döntéshozó az a VPN-átjáró, ahol a hely a BGP-n keresztül hirdeti az útvonalakat, vagy statikus címek előtagjait biztosít, a statikus útvonalak előnyben részesítettek a BGP-útvonalakon.
+1. ExpressRoute (ER) VPN-en keresztül: az ABB előnyben részesített VPN-en, ha a környezet helyi központ. A ExpressRoute-áramkörök közötti átviteli kapcsolat csak Global Reachon keresztül érhető el. Ezért olyan helyzetekben, amikor a ExpressRoute áramkör egy hubhoz csatlakozik, és egy másik, VPN-kapcsolattal rendelkező központhoz csatlakoztatott ExpressRoute áramkör van, akkor a VPN-t előnyben részesítettük a csomópontok közötti forgatókönyvek esetében.
+1. Elérési út hossza
 
-### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Engedélyezi a virtuális WAN hub a ExpressRoute-áramkörök közötti kapcsolatot.
+### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Engedélyezi a virtuális WAN hub a ExpressRoute-áramkörök közötti kapcsolatot?
 
 Az ER-to-ER továbbítása mindig globális elérhetőséggel történik. A Virtual hub-átjárók tartományvezérlő-vagy Azure-régiókban vannak telepítve. Ha két ExpressRoute-áramkör a globális elérhetőségen keresztül csatlakozik, nincs szükség arra, hogy a forgalom egészen a peremhálózati útválasztók és a virtuális központ TARTOMÁNYVEZÉRLŐje között ne legyenek elérhetők.
 
@@ -250,28 +261,31 @@ Ha több ExpressRoute-áramkör csatlakozik egy virtuális központhoz, a kapcso
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>A Virtual WAN előnyben részesített VPN-en keresztüli ExpressRoute az Azure-beli forgalom egressing
 
-Igen.
+Igen. A Virtual WAN inkább a VPN-en keresztül ExpressRoute az Azure-egressing.
 
 ### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Ha egy virtuális WAN-hubhoz ExpressRoute-áramkör és VPN-hely van csatlakoztatva, mi okozhatja a VPN-kapcsolat útvonalát a ExpressRoute-en keresztül?
 
-Ha egy ExpressRoute áramkör csatlakozik a virtuális központhoz, a Microsoft Edge útválasztók jelentik az első csomópontot a helyszíni és az Azure közötti kommunikációhoz. Ezek a peremhálózati útválasztók a virtuális WAN ExpressRoute-átjárókkal kommunikálnak, amelyek a virtuális HÁLÓZATban található átjárók közötti összes útvonalat vezérlik. A Microsoft Edge útválasztók feldolgozzák a virtuális központ ExpressRoute útvonalait magasabb prioritással a helyszínen megszerzett útvonalaknál. Bármilyen okból kifolyólag, ha a VPN-kapcsolat a virtuális Központ elsődleges adathordozója lesz, hogy megismerje az útvonalakat (például a ExpressRoute és a VPN közötti feladatátvételi forgatókönyvek között), kivéve, ha a VPN-hely hosszabb, mint az elérési út hossza, a virtuális központ továbbra is megosztja a VPN-útvonalakat a ExpressRoute-átjáróval, így a Microsoft Edge-útválasztó
+Ha egy ExpressRoute áramkör csatlakozik a virtuális központhoz, a Microsoft Edge útválasztók jelentik az első csomópontot a helyszíni és az Azure közötti kommunikációhoz. Ezek a peremhálózati útválasztók a virtuális WAN ExpressRoute-átjárókkal kommunikálnak, amelyek a virtuális HÁLÓZATban található átjárók közötti összes útvonalat vezérlik. A Microsoft Edge útválasztók feldolgozzák a virtuális központ ExpressRoute útvonalait magasabb prioritással a helyszínen megszerzett útvonalaknál.
+
+Bármilyen okból, ha a VPN-kapcsolat a virtuális Központ elsődleges médiuma lesz, hogy megismerje az útvonalakat (például a ExpressRoute és a VPN közötti feladatátvételi forgatókönyvek között), kivéve, ha a VPN-hely hosszabb, mint az elérési út hossza, a virtuális központ továbbra is megoszthatja a VPN által megismert útvonalakat a ExpressRoute Ez azt eredményezi, hogy a Microsoft Edge-útválasztók inkább a VPN-útvonalakat részesítik előnyben a helyszíni útvonalakon.
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Ha két hub (1. és 2. hub) csatlakoztatva van, és egy ExpressRoute áramkör van csatlakoztatva mindkét hubhoz, mi az az elérési út az 1. hubhoz csatlakozó VNet, hogy elérjen egy, a 2. hubhoz csatlakozó VNet?
 
 A jelenlegi viselkedés az, hogy a ExpressRoute áramköri útvonalat a VNet és a VNet közötti kapcsolathoz részesíti előnyben. Ez azonban nem javasolt a virtuális WAN-telepítésben. A virtuális WAN-csapat olyan javításon dolgozik, amely lehetővé teszi a hub – hub elérését a ExpressRoute útvonalon. A javaslat több ExpressRoute-áramkörre (különböző szolgáltatóra) vonatkozik az egyik hubhoz való csatlakozáshoz, és a virtuális WAN által a régiók közötti adatforgalomhoz biztosított, a központ és a központ közötti kapcsolat használatát.
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Létrehozhatók-e a virtuális WAN különböző erőforráscsoporthoz tartozó hubok?
-Igen. Ez a beállítás jelenleg csak a PowerShellen keresztül érhető el. A virtuális WAN-portál a virtuális WAN-erőforrással azonos erőforráscsoporthoz tartozó hubokat bízza meg.
+
+Igen. Ez a beállítás jelenleg csak a PowerShellen keresztül érhető el. A virtuális WAN-portál megköveteli, hogy a hubok ugyanabban az erőforráscsoporthoz legyenek, mint a virtuális WAN-erőforrás.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
 
-A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNet rendelkezik, amely IPv4-és IPv6-támogatással rendelkezik, és szeretné, hogy a VNet a virtuális WAN-hoz kapcsolódjon, ez a forgatókönyv jelenleg nem támogatott. 
+A virtuális WAN-központ és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNet rendelkezik, amely IPv4-és IPv6-támogatással rendelkezik, és szeretné, hogy a VNet a virtuális WAN-hoz kapcsolódjon, ez a forgatókönyv jelenleg nem támogatott.
 
-Ha a pont – hely (felhasználó) VPN-forgatókönyv az Internet breakout használatával Azure Firewall, valószínűleg ki kell kapcsolni az IPv6-kapcsolatot az ügyfélszámítógépen, hogy az a virtuális WAN-hubhoz érkező forgalmat kényszerítse. Ennek az az oka, hogy a modern eszközök alapértelmezés szerint az IPv6-címeket használják.
+Ha a pont – hely felhasználói VPN-forgatókönyvet az Internet breakout használatával Azure Firewall, valószínűleg ki kell kapcsolni az IPv6-kapcsolatot az ügyfélszámítógépen, hogy a forgalmat a virtuális WAN-hubhoz irányítsa. Ennek az az oka, hogy a modern eszközök alapértelmezés szerint IPv6-címeket használnak.
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Mi a javasolt API-verzió, amelyet a parancsfájlok a különböző virtuális WAN-funkciók automatizálására használnak?
 
-A 05-01-2020 (május 1 2020) minimális verzióját kötelező megadni. 
+A 05-01-2020 (május 1 2020) minimális verzióját kötelező megadni.
 
 ### <a name="are-there-any-virtual-wan-limits"></a>Vannak virtuális WAN-korlátok?
 
@@ -281,10 +295,10 @@ Tekintse meg a [virtuális WAN-korlátok](../articles/azure-resource-manager/man
 
 Lásd: [alapszintű és standard szintű virtuális WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard). A díjszabással kapcsolatban tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/virtual-wan/) oldalt.
 
-### <a name="does-virtual-wan-store-customer-data"></a>A virtuális WAN tárolja az ügyféladatokat? 
+### <a name="does-virtual-wan-store-customer-data"></a>A virtuális WAN tárolja az ügyféladatokat?
 
 Nem. A virtuális WAN nem tárolja az ügyféladatokat.
 
-### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Vannak olyan felügyelt szolgáltatók, amelyek felügyelik a virtuális WAN szolgáltatást a felhasználók számára szolgáltatásként? 
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Vannak olyan felügyelt szolgáltatók, amelyek felügyelik a virtuális WAN szolgáltatást a felhasználók számára szolgáltatásként?
 
 Igen. Az Azure Marketplace-en keresztül engedélyezett felügyelt szolgáltatói (MSP) megoldások listáját az Azure [Marketplace-ajánlatok az Azure hálózati MSP-partnerek](../articles/networking/networking-partners-msp.md#msp)számára című témakörben találja.

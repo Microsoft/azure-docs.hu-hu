@@ -5,26 +5,27 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5ccef241a37e63467b681d5fd12c65072cb92e58
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624775"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626463"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a> kezelése az Azure Storage Explorerrel az Azure Data Lake Storage Gen2-ben
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet könyvtárakat, fájlokat és engedélyeket a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus NÉVTÉR (HNS).
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fájlokat és hozzáférés-vezérlési listákat (ACL-eket) a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával, amelyeken engedélyezve van a hierarchikus NÉVTÉR (HNS).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-> [!div class="checklist"]
-> * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-> * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](../common/storage-account-create.md) útmutatást követve hozzon létre egyet.
-> * Azure Storage Explorer telepítve a helyi számítógépen. Az Azure Storage Explorer Windows, Macintosh vagy Linux rendszerre való letöltése: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+- Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+
+- Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](../common/storage-account-create.md) útmutatást követve hozzon létre egyet.
+
+- Azure Storage Explorer telepítve a helyi számítógépen. Az Azure Storage Explorer Windows, Macintosh vagy Linux rendszerre való letöltése: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 ## <a name="sign-in-to-storage-explorer"></a>Bejelentkezés Storage Explorer
 
@@ -46,7 +47,7 @@ A csatlakozás befejeztével az Azure Storage Explorer betöltést követően me
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-A tárolók könyvtárakat és fájlokat tárolnak. Ha létre szeretne hozni egyet, bontsa ki a folytatás lépésben létrehozott Storage-fiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a tároló nevét. A tárolók elnevezésére vonatkozó szabályok és korlátozások listáját lásd: [Container létrehozása](storage-quickstart-blobs-dotnet.md#create-a-container) szakasz. Ha elkészült, nyomja le az **ENTER** billentyűt a tároló létrehozásához. Miután a tároló sikeresen létrejött, a kiválasztott Storage-fiók **blob containers** mappájában jelenik meg.
+A tárolók könyvtárakat és fájlokat tárolnak. Ha létre szeretne hozni egyet, bontsa ki a folytatás lépésben létrehozott Storage-fiókot. Válassza a **blob-tárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **blob-tároló létrehozása** lehetőséget. Adja meg a tároló nevét. A tárolók elnevezésére vonatkozó szabályok és korlátozások listáját lásd: [Container létrehozása](storage-quickstart-blobs-dotnet.md#create-a-container) szakasz. Ha elkészült, nyomja le az **ENTER** billentyűt a tároló létrehozásához. Miután a tároló sikeresen létrejött, a kiválasztott Storage-fiók **blob containers** mappájában jelenik meg.
 
 ![Microsoft Azure Storage Explorer-tároló létrehozása](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
@@ -58,7 +59,7 @@ Könyvtár létrehozásához válassza ki a folytatás lépésben létrehozott t
 
 ## <a name="upload-blobs-to-the-directory"></a>Blobok feltöltése a könyvtárba
 
-A címtár menüszalagján válassza a **feltöltés** gombot. Ez a művelet lehetővé teszi egy mappa vagy fájl feltöltését.
+A címtár menüszalagján kattintson a **feltöltés** gombra. Ez a művelet lehetővé teszi egy mappa vagy fájl feltöltését.
 
 Válassza ki a feltölteni kívánt fájlokat vagy mappát.
 
@@ -76,39 +77,37 @@ A **Azure Storage Explorer** alkalmazásban válasszon ki egy könyvtárat egy S
 
 A fájlok **Azure Storage Explorer** használatával történő letöltéséhez jelölje ki a fájlt, és válassza a **Letöltés** lehetőséget a menüszalagon. Megnyílik egy fájl párbeszédpanel, amelyen megadhat egy fájlnevet. A **Mentés** gombra kattintva elindíthatja a fájl letöltését a helyi helyre.
 
-## <a name="managing-access"></a>Hozzáférés-kezelés
+<a id="managing-access"></a>
 
-A tároló gyökerén is beállíthat engedélyeket. Ehhez be kell jelentkeznie Azure Storage Explorerba az egyéni fiókjával (a kapcsolódási karakterlánccal ellentétben). Kattintson a jobb gombbal a tárolóra, és válassza az **engedélyek kezelése** lehetőséget, és hozza létre az **engedély kezelése** párbeszédpanelt.
+## <a name="manage-acls"></a>ACL-ek kezelése
 
-![Microsoft Azure Storage Explorer – címtár-hozzáférés kezelése](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
+Kattintson a jobb gombbal a tárolóra, egy könyvtárra vagy egy fájlra, majd kattintson a **Access Control-lista kezelése** lehetőségre.  A következő képernyőképen a menü látható, amikor a jobb gombbal egy könyvtárra kattint.
 
-Az **engedély kezelése** párbeszédpanel lehetővé teszi a tulajdonos és a tulajdonosok csoport engedélyeinek kezelését. Azt is lehetővé teszi, hogy új felhasználókat és csoportokat vegyen fel a hozzáférés-vezérlési listára, ahol az engedélyeket kezelheti.
+> [!div class="mx-imgBorder"]
+> ![Kattintson a jobb gombbal egy könyvtárra Azure Storage Explorer](./media/data-lake-storage-explorer/manage-access-control-list-option.png)
 
-Ha új felhasználót vagy csoportot szeretne hozzáadni a hozzáférés-vezérlési listához, válassza a **felhasználó vagy csoport hozzáadása** mezőt.
+A **hozzáférés kezelése** párbeszédpanel lehetővé teszi a tulajdonosi és a tulajdonosi csoport engedélyeinek kezelését. Azt is lehetővé teszi, hogy új felhasználókat és csoportokat vegyen fel a hozzáférés-vezérlési listára, ahol az engedélyeket kezelheti.
 
-Adja meg a listához hozzáadni kívánt Azure Active Directory-(HRE-) bejegyzést, majd válassza a **Hozzáadás** lehetőséget.
+> [!div class="mx-imgBorder"]
+> ![Hozzáférés kezelése párbeszédpanel](./media/data-lake-storage-explorer/manage-access-dialog-box.png)
 
-A felhasználó vagy csoport ekkor megjelenik a **felhasználók és csoportok:** mezőben, így megkezdheti az engedélyeik kezelését.
+Ha új felhasználót vagy csoportot szeretne hozzáadni a hozzáférés-vezérlési listához, kattintson a **Hozzáadás** gombra. Ezután adja meg a listához hozzáadni kívánt Azure Active Directory-(HRE-) bejegyzést, majd válassza a **Hozzáadás** lehetőséget.  A felhasználó vagy csoport ekkor megjelenik a **felhasználók és csoportok:** mezőben, így megkezdheti az engedélyeik kezelését.
 
 > [!NOTE]
-> Ajánlott eljárás, és javasoljuk, hogy hozzon létre egy biztonsági csoportot a HRE-ben, és tartsa meg az engedélyeket a csoporton az egyes felhasználók helyett. A javaslat részletes ismertetését, valamint az egyéb ajánlott eljárásokat lásd: [ajánlott eljárások Data Lake Storage Gen2hoz](data-lake-storage-best-practices.md).
+> Ajánlott eljárás, és javasoljuk, hogy hozzon létre egy biztonsági csoportot a HRE-ben, és tartsa meg az engedélyeket a csoporton az egyes felhasználók helyett. A javaslat részletes ismertetését, valamint az egyéb ajánlott eljárásokat lásd: [hozzáférés-vezérlési modell Azure Data Lake Storage Gen2ban](data-lake-storage-access-control-model.md).
 
-Az engedélyek két kategóriája adható meg: hozzáférés-vezérlési listák és alapértelmezett ACL-ek.
+A jelölőnégyzet vezérlőelemekkel megadhatja a hozzáférést és az alapértelmezett ACL-eket. További információ az ilyen típusú ACL-ek közötti különbségről: [ACL-típusok](data-lake-storage-access-control.md#types-of-acls).
 
-* **Hozzáférés**: hozzáférés-vezérlési listák vezérlik az objektumokhoz való hozzáférést. A fájlok és könyvtárak egyaránt rendelkeznek hozzáférési ACL-ekkel.
+<a id="apply-acls-recursively"></a>
 
-* **Alapértelmezett**: a címtárhoz társított ACL-ek sablonja, amely meghatározza az adott címtárban létrehozott alárendelt elemek hozzáférési ACL-jeit. A fájlok nem rendelkeznek alapértelmezett ACL-ekkel.
+## <a name="apply-acls-recursively"></a>ACL-ek rekurzív alkalmazása
 
-Mindkét kategórián belül három engedély van a fájlok vagy könyvtárak hozzárendeléséhez: **olvasás**, **írás** és **végrehajtás**.
+Az ACL-bejegyzéseket rekurzív módon alkalmazhatja a szülő könyvtár meglévő alárendelt elemeire anélkül, hogy ezeket a módosításokat külön kell elvégeznie az egyes alárendelt elemek esetében.
 
->[!NOTE]
-> Az itt megadott beállítások megadásakor a rendszer nem állítja be az engedélyeket a címtárban lévő aktuális elemekhez. Ha a fájl már létezik, minden egyes elemhez meg kell adnia az engedélyeket manuálisan.
+Az ACL-bejegyzések rekurzív alkalmazásához kattintson a jobb gombbal a tárolóra vagy a könyvtárra, majd kattintson a **terjesztési Access Control listák** elemre.  A következő képernyőképen a menü látható, amikor a jobb gombbal egy könyvtárra kattint.
 
-Az egyes címtárakra, valamint az egyes fájlokra vonatkozó engedélyeket is kezelheti, ami lehetővé teszi a részletes hozzáférés-vezérlést. A könyvtárak és fájlok engedélyeinek kezelésére szolgáló folyamat ugyanaz, mint a fentiekben leírtak szerint. Kattintson a jobb gombbal arra a fájlra vagy könyvtárra, amelyre az engedélyeket szeretné kezelni, és kövesse ugyanezt a folyamatot.
-
-## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Privát végpontok a Azure Data Lake Storage Gen2
-
-A Storage Explorer a blob (blob) & Data Lake Storage Gen2 (DFS) [végpontok](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) használatát is lehetővé teszi a Azure Data Lake Storage Gen2 használatakor. Ha a Azure Data Lake Storage Gen2hoz való hozzáférés privát végpontok használatával van konfigurálva, győződjön meg arról, hogy a Storage-fiókhoz két privát végpont jön létre: egyet a cél alerőforrással, `blob` a másikat pedig a cél alerőforrással `dfs` .
+> [!div class="mx-imgBorder"]
+> ![Kattintson a jobb gombbal egy könyvtárra, és válassza a hozzáférés-vezérlés propagálása beállítást.](./media/data-lake-storage-explorer/propagate-access-control-list-option.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

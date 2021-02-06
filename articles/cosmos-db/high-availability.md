@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogy a Azure Cosmos DB hogyan biztosít ma
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d827011c4f831433a7446c90eed0c30c7b1e94d7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600554"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627382"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hogyan biztosítja a Azure Cosmos DB magas rendelkezésre állást
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ A regionális leállás ritka eseteiben Azure Cosmos DB biztosítja, hogy az ada
 
 * Az olvasási régió meghibásodása esetén az Azure Cosmos-fiókok bármely konzisztencia-szintet, vagy a három vagy több olvasási régióval való erős konzisztencia esetén is magas rendelkezésre állást biztosítanak az olvasáshoz és íráshoz.
 
-* Az Azure Cosmos-fiókok erős konzisztencia használatával két vagy kevesebb olvasási régióval rendelkeznek (amely magában foglalja az olvasási & írási régiót is), az olvasási régió meghibásodása során elveszítik az írási írási rendelkezésre állást.
+* A három vagy kevesebb teljes régióval erős konzisztenciaet használó Azure Cosmos-fiókok (egy írás, két olvasás) az írási régió meghibásodása során elveszítik az írási rendelkezésre állást. Egy támogatási jegy elküldésével azonban a négy vagy több teljes régióval rendelkező ügyfelek is bejelentkezhetnek a dinamikus olvasási kvórumok használatára. Azok a fiókok, amelyek legalább két olvasási régiót tartanak fenn ebben a konfigurációban, az írási rendelkezésre állást fogják fenntartani.
 
 * Az érintett régiót a rendszer automatikusan leválasztja, és offline állapotba állítja. A [Azure Cosmos db SDK](sql-api-sdk-dotnet.md) -k átirányítják az olvasási hívásokat a következő elérhető régióba az előnyben részesített régiók listájában.
 
@@ -112,15 +112,15 @@ A következő táblázat összefoglalja a különböző fiókok konfigurációin
 |Zónák hibái – rendelkezésre állás | Rendelkezésre állás elvesztése | Nincs rendelkezésre állási veszteség | Nincs rendelkezésre állási veszteség | Nincs rendelkezésre állási veszteség |
 |Regionális leállás – adatvesztés | Adatvesztés |  Adatvesztés | A konzisztencia szintjétől függ. További információt a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](consistency-levels-tradeoffs.md) című témakörben talál. | A konzisztencia szintjétől függ. További információt a [konzisztencia, a rendelkezésre állás és a teljesítménybeli kompromisszumok](consistency-levels-tradeoffs.md) című témakörben talál.
 |Regionális leállás – rendelkezésre állás | Rendelkezésre állás elvesztése | Rendelkezésre állás elvesztése | Nem áll rendelkezésre az olvasási régió meghibásodása miatti adatvesztés, mert az ideiglenes írási régió meghibásodása esetén | Nincs rendelkezésre állási veszteség |
-|Ár (**_1_* _) | N/A | Kiépített RU/s x 1,25 arány | Kiépített RU/s x 1,25 arány (_*_2_*_) | Többrégiós írási arány |
+|Ár (***1** _) | N/A | Kiépített RU/s x 1,25 arány | Kiépített RU/s x 1,25 arány (_ *_2_* *) | Többrégiós írási arány |
 
-_*_1_*_ a kiszolgáló nélküli fiókok kérelmezési egységeinek (ru) szorzata 1,25.
+***1*** a kiszolgáló nélküli fiókok kérelmezési egységeinek (ru) szorzata 1,25.
 
-_*_2_*_ a 1,25-es arány csak azokra a régiókra vonatkozik, amelyekben az az engedélyezve van.
+***2*** a 1,25-es arány csak azokra a régiókra vonatkozik, amelyekben az az engedélyezve van.
 
 Availability Zones a használatával engedélyezhető:
 
-_ [Azure Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Azure Portalra](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 
@@ -140,7 +140,7 @@ _ [Azure Portal](how-to-manage-database-account.md#addremove-regions-from-your-d
 
 * Egy globálisan elosztott adatbázis-környezeten belül közvetlen kapcsolat áll fenn a konzisztencia szintje és az adattartósság között egy adott régióra kiterjedő leállás esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreállít egy zavaró esemény után. Az alkalmazás teljes helyreállításához szükséges idő a helyreállítási időre vonatkozó célkitűzés (RTO). Azt is meg kell ismernie, hogy a legutóbbi adatfrissítések maximális időtartama alatt az alkalmazás elveszítheti a zavaró események utáni helyreállítást. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). A Azure Cosmos DB RPO és RTO lásd: a [konzisztencia szintjei és az adattartósság](./consistency-levels.md#rto)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután olvassa el a következő cikkeket:
 

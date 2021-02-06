@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682071"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626994"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh figyelése és diagnosztikája a diagnosztikai adattípusok három fő típusa szerint vannak kategorizálva:
 
 - Alkalmazás-naplók – ezek a tároló alkalmazások naplóiként vannak meghatározva, attól függően, hogy az alkalmazás hogyan lett kialakítva (például Docker-naplók).
@@ -58,7 +64,7 @@ A rácsvonal-környezet a tárolók működésének módját jelző néhány mé
 | RestartCount | Tároló-újraindítások száma | N/A |
 
 > [!NOTE]
-> A ServiceStatus és a ServiceReplicaStatus értékek megegyeznek a Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) . 
+> A ServiceStatus és a ServiceReplicaStatus értékek megegyeznek a Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate) .
 
 Minden metrika különböző dimenziókban érhető el, így különböző szinteken láthatja az összesítéseket. A méretek aktuális listája a következő:
 

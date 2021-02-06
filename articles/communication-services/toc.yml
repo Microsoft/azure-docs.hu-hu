@@ -51,6 +51,8 @@
   items:
     - name: Megbízható hitelesítési szolgáltatás létrehozása az Azure Functions használatával
       href: tutorials/trusted-service-tutorial.md
+    - name: 'HTTP-kérelem aláírása HMAC-aláírással C használatával #'
+      href: tutorials/hmac-header-tutorial.md
     - name: Webes alkalmazás előkészítése kommunikációs szolgáltatásokhoz (Node.js)
       href: tutorials/building-app-start.md
 - name: Fogalmak
@@ -110,6 +112,8 @@
       href: concepts/metrics.md
     - name: Hibaelhárítás
       href: concepts/troubleshooting-info.md
+    - name: Ismert problémák
+      href: concepts/known-issues.md
 - name: Példák
   items:
     - name: Csoportos hívás kiemelt mintája

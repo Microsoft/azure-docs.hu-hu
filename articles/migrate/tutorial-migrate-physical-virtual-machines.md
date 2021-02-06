@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881095"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626325"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet fe
 > [!div class="checklist"]
 > * Felkészülés az Azure használatára a Azure Migrate használatával: kiszolgáló áttelepítése.
 > * Tekintse át az áttelepíteni kívánt gépekre vonatkozó követelményeket, és készítsen elő egy gépet az Azure Migrate replikációs berendezéshez, amely a gépek Azure-ba való felderítésére és átállítására szolgál.
-> * Adja hozzá a Azure Migrate Server áttelepítési eszközt a Azure Migrate központban.
+> * Adja hozzá a Azure Migrate: Server áttelepítési eszközt a Azure Migrate központban.
 > * Állítsa be a replikációs készüléket.
 > * Telepítse a mobilitási szolgáltatást az áttelepíteni kívánt gépekre.
 > * Engedélyezze a replikációt.
@@ -51,7 +51,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="prepare-azure"></a>Az Azure előkészítése
 
-Készítse elő az Azure-t a Migrálás kiszolgáló áttelepítésével.
+Készítse elő az Azure-t az áttelepítéshez Azure Migrate: Server Migration.
 
 **Feladat** | **Részletek**
 --- | ---
@@ -116,7 +116,7 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 
 ## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
 
-Az áttelepítés első lépése a replikációs berendezés beállítása. A fizikai kiszolgáló áttelepítésére szolgáló berendezés beállításához töltse le a készülék telepítőjének fájlját, majd futtassa az [előkészített gépen](#prepare-a-machine-for-the-replication-appliance). A készülék telepítése után regisztrálja Azure Migrate-kiszolgáló áttelepítésével.
+Az áttelepítés első lépése a replikációs berendezés beállítása. A fizikai kiszolgáló áttelepítésére szolgáló berendezés beállításához töltse le a készülék telepítőjének fájlját, majd futtassa az [előkészített gépen](#prepare-a-machine-for-the-replication-appliance). A készülék telepítése után regisztrálja a Azure Migrate: Server Migration.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>A replikációs berendezés telepítőjének letöltése
@@ -129,7 +129,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. A fi
 4. A **cél régióban** válassza ki azt az Azure-régiót, amelyre át szeretné telepíteni a gépeket.
 5. Válassza **a megerősítés lehetőséget, hogy az áttelepítéshez a régió neve legyen**.
 6. Kattintson az **erőforrások létrehozása** gombra. Ezzel létrehoz egy Azure Site Recovery tárolót a háttérben.
-    - Ha már beállította az áttelepítést Azure Migrate kiszolgáló áttelepítésével, a célként megadott beállítás nem konfigurálható, mert az erőforrások korábban lettek beállítva.    
+    - Ha már beállította a (z) Azure Migrate: kiszolgáló áttelepítését, a cél beállítás nem konfigurálható, mert az erőforrások korábban lettek beállítva.    
     - Erre a gombra kattintva nem módosítható a projekthez tartozó cél régió.
     - Az összes további áttelepítés erre a régióra vonatkozik.
 
@@ -145,7 +145,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. A fi
 
     ![Regisztráció véglegesítése](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-A regisztráció véglegesítése után is eltarthat egy ideig, amíg a felderített gépek megjelennek Azure Migrate kiszolgáló áttelepítésében. Ahogy a virtuális gépek felderítése megtörtént, a **felderített kiszolgálók** száma emelkedik.
+A regisztráció véglegesítése után is eltarthat egy ideig, amíg a felderített gépek megjelennek Azure Migrate: a kiszolgáló áttelepítése. Ahogy a virtuális gépek felderítése megtörtént, a **felderített kiszolgálók** száma emelkedik.
 
 ![Felderített kiszolgálók](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 
@@ -342,8 +342,8 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md) használatával.
@@ -353,6 +353,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
     - Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

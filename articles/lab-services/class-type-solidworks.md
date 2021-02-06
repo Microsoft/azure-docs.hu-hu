@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999263"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626104"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Tesztkörnyezet beállítása mérnöki osztályokhoz a SOLIDWORKS használatával
 
@@ -57,7 +57,7 @@ A tantermi labor beállításakor használja az alábbi táblázatban szereplő 
 > A kisméretű **GPU (vizualizáció)** virtuális gép mérete úgy van konfigurálva, hogy magas teljesítményű grafikus élményt engedélyezzen.  További információ erről a virtuálisgép-méretről: [tesztkörnyezet beállítása GPU-val](./how-to-setup-lab-gpu.md).
 
 > [!WARNING]
-> Ne felejtse el [, hogy a](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) tesztkörnyezet létrehozása **előtt** a tesztkörnyezet virtuális hálózatát a virtuális hálózatra kell felvennie.
+> Ne felejtse el [, hogy a](./how-to-connect-peer-virtual-network.md) tesztkörnyezet létrehozása **előtt** a tesztkörnyezet virtuális hálózatát a virtuális hálózatra kell felvennie.
 
 ## <a name="template-virtual-machine-configuration"></a>Sablon virtuális gép konfigurációja
 
@@ -76,7 +76,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan állíthatja be a s
     > [!NOTE]
     > A **kiszolgáló hozzáadása** párbeszédpanelen a rendszer kérni fogja a licenckiszolgáló által használt **portszámot** , valamint a licenckiszolgáló nevét vagy IP-címét.
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 
 Az osztályra vonatkozó lehetséges költségbecslés. Ez a becslés nem tartalmazza a licenckiszolgáló futtatásának költségeit. 25 tanulós osztályt fogunk használni. 20 órányi ütemezett idő van. Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára. A kiválasztott virtuálisgép-méret kisméretű **GPU (vizualizáció)** volt, amely 160 Lab egység.
 
@@ -85,7 +85,7 @@ Az osztályra vonatkozó lehetséges költségbecslés. Ez a becslés nem tartal
 >[!IMPORTANT]
 > A költségbecslés csak példaként szolgál.  A díjszabással kapcsolatos aktuális információk: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

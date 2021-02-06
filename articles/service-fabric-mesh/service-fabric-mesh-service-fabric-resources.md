@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354870"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626909"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>A Service Fabric Resource Model bemutatása
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 A Service Fabric erőforrás-modell egy egyszerű módszert ismertet a Service Fabric Mesh-alkalmazást alkotó erőforrások definiálásához. Az egyes erőforrások bármilyen Service Fabric környezetbe üzembe helyezhetők.  A Service Fabric erőforrás-modell a Azure Resource Manager modellel is kompatibilis. Ebben a modellben jelenleg a következő típusú erőforrások támogatottak:
 

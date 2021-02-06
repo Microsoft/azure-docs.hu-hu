@@ -3,16 +3,21 @@ title: Példák a Azure Lab Services-osztályokra | Microsoft Docs
 description: Bizonyos típusú osztályokat biztosít, amelyekhez a Azure Lab Services használatával állíthatja be a laborokat.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436402"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627433"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Osztályok típusai – áttekintés – Azure Lab Services
 
 Azure Lab Services lehetővé teszi, hogy gyorsan be lehessen állítani a Felhőbeli tantermi tesztkörnyezet környezeteit. Az ebben a szakaszban található cikkek segítséget nyújtanak a különböző típusú laborok beállításához Azure Lab Services használatával.
+
+## <a name="arcgis"></a>ArcGIS
+A [ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) egy földrajzi információs rendszer (GIS) típusa.  Beállíthat egy olyan labort, amely a ArcGIS asztal különböző alkalmazásait használja, például a [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm) a 2D-térképek létrehozásához, szerkesztéséhez és elemzéséhez.
+
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [labor beállítása a ArcMap\ArcGIS Desktophoz](class-type-arcgis.md).
 
 ## <a name="big-data-analytics"></a>Big data elemzése
 Beállíthat egy GPU-labort big data elemzési osztály tanításához. Ilyen típusú osztályok esetén a tanulók megismerhetik a nagy adatmennyiségek kezelését, valamint gépi és statisztikai tanulási algoritmusokat alkalmazhatnak az adatelemzések kinyeréséhez. A tanulók számára a fő cél az, hogy megtanulja az adatelemzési eszközök használatát, mint például a Apache Hadoop nyílt forráskódú szoftvercsomag, amely eszközöket biztosít a big data tárolásához, kezeléséhez és feldolgozásához. 
@@ -41,6 +46,11 @@ A mátrix-laboratóriumok számára készült [MATLAB](https://www.mathworks.com
 
 Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a MATLAB tanításához](class-type-matlab.md).
 
+## <a name="networking-with-gns3"></a>Hálózatkezelés a GNS3
+Beállíthat egy labort egy olyan osztályhoz, amely arra összpontosít, hogy a tanulók a virtuális és a valós hálózatok emulálása, konfigurálása, tesztelése és hibakeresése [GNS3](https://www.gns3.com/) szoftverrel. 
+
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkat a [tesztkörnyezet beállítása hálózati osztály megtanításához](class-type-networking-gns3.md)című témakörben talál.
+
 ## <a name="project-lead-the-way-pltw"></a>A projekt vezető módon (PLTW)
 A [Project Lead the way (PLTW)](https://www.pltw.org/) egy nonprofit szervezet, amely PreK-12 tananyagot biztosít a számítógépes tudományok, a mérnöki tudományok és Egyesült Államok a biogyógyászat terén.  Minden PLTW osztályban a tanulók számos különböző alkalmazást használnak a gyakorlati tanulási élmény részeként.
 
@@ -61,9 +71,14 @@ Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes infor
 ## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks – számítógéppel segített tervezés (CAD)
 Beállíthat egy GPU-labort, amely mérnöki tanulók számára biztosít hozzáférést a [solidworkshez](https://www.solidworks.com/).  A SolidWorks 3D CAD-környezetet biztosít a Solid Objects modellezéséhez.  A SolidWorks segítségével a mérnökök könnyedén létrehozhatják, megjeleníthetik, szimulálják és dokumentálják a terveiket.
 
-Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása mérnöki osztályokhoz a SolidWorks használatával](class-type-solidworks.md)
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása mérnöki osztályokhoz a SolidWorks használatával](class-type-solidworks.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="sql-database-and-management"></a>SQL-adatbázis és-kezelés
+A Structured Query Language (SQL) az adatbázis-kezelés szabványos nyelve, beleértve az adatbázisok tartalmának hozzáadását, elérését és kezelését.  Beállíthat egy labort, amely az adatbázis-fogalmakat a [MySQL](https://www.mysql.com/) adatbázis-kiszolgálóval és a [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) -kiszolgálóval is tanítja.
+
+Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a kapcsolódó adatbázisok adatbázis-kezelésének tanításához](class-type-database-management.md).
+
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services](class-type-deep-learning-natural-language-processing.md)

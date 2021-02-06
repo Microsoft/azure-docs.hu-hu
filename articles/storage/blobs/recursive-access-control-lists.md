@@ -5,22 +5,25 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741043"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627340"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
 Az ACL öröklése már elérhető az új alárendelt elemekhez, amelyeket a rendszer a szülő címtárban hozott létre. Mostantól hozzáadhatja, frissítheti és eltávolíthatja a hozzáférés-vezérlési listákat a szülő könyvtár meglévő alárendelt elemeihez anélkül, hogy ezeket a módosításokat egyenként el kellene végeznie az egyes alárendelt elemek esetében.
 
 [Könyvtárak](#libraries)  |  [Példák](#code-samples)  |  [Ajánlott eljárások](#best-practice-guidelines)
+
+> [!NOTE]
+> A Azure Storage Explorer mostantól támogatja az ACL-ek rekurzív alkalmazásának lehetőségét. További információért lásd: [ACL-ek rekurzív alkalmazása Azure Storage Explorerban](data-lake-storage-explorer.md#apply-acls-recursively). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -672,7 +675,7 @@ Ha egy köteg méretének megadásával szeretné megtekinteni, hogy a rendszer 
 
 ---
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 Ez a szakasz a kódtárak és a kód mintáinak hivatkozásait tartalmazza.
 
@@ -717,7 +720,7 @@ A késés csökkentése érdekében javasoljuk, hogy futtassa a rekurzív ACL-fo
 
 #### <a name="acl-limits"></a>ACL-korlátok
 
-A címtárra vagy fájlra érvényes ACL-ek maximális száma 32 hozzáférési ACL-ek és 32 alapértelmezett ACL-ek. További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](./data-lake-storage-access-control.md).
+A címtárra vagy fájlra érvényes ACL-ek maximális száma 32 hozzáférési ACL-ek és 32 alapértelmezett ACL-ek. További információért lásd: [Hozzáférés-vezérlés az Azure Data Lake Storage Gen2-ben](./data-lake-storage-access-control.md).
 
 ## <a name="see-also"></a>Lásd még
 

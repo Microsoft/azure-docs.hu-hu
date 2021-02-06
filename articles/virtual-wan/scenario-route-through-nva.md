@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424754"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626660"
 ---
-# <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
+# <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: Forgalom irányítása NVA-n keresztül
 
 A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Ebben a NVA-forgatókönyvben a cél az, hogy átirányítsa a forgalmat egy NVA (hálózati virtuális készüléken) a VNet és a VNet ágat. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
 
@@ -69,14 +69,14 @@ Ebben a forgatókönyvben azonban meg kell gondolni, hogy mely statikus útvonal
 
 Ezzel az alapértelmezett táblában a NVA a NVA VNet mögötti forgalom küldéséhez szükséges statikus útvonalak a következők:
 
-| Leírás | Útválasztási táblázat | Statikus útvonal              |
+| Description | Útválasztási táblázat | Statikus útvonal              |
 | ----------- | ----------- | ------------------------- |
 | 2. VNet       | Alapértelmezett     | 10.2.0.0/16 – > eastusconn |
 | 4. VNet       | Alapértelmezett     | 10.4.0.0/16 – > weconn     |
 
 A Virtual WAN már tudja, hogy melyik kapcsolattal küldi el a csomagokat, de a kapcsolatnak tudnia kell, mi a teendő a csomagok fogadásakor: ez az a hely, ahol a kapcsolati útválasztási táblák vannak használatban. Itt fogjuk használni a rövidebb előtagokat (/24 a hosszabb/16 helyett), hogy meggyőződjünk arról, hogy ezek az útvonalak előnyben részesítettek a NVA virtuális hálózatok importált útvonalakon (VNet 2 és VNet 4):
 
-| Leírás | Kapcsolat | Statikus útvonal            |
+| Description | Kapcsolat | Statikus útvonal            |
 | ----------- | ---------- | ----------------------- |
 | 5. VNet       | eastusconn | 10.2.1.0/24 – > 10.2.0.5 |
 | 6. VNet       | eastusconn | 10.2.2.0/24 – > 10.2.0.5 |
@@ -87,9 +87,9 @@ Most NVA virtuális hálózatok, nem NVA virtuális hálózatok, és az ágak tu
 
 ## <a name="architecture"></a><a name="architecture"></a>Architektúra
 
-A **2. ábrán**két hub van; **Hub1** és **Hub2**.
+A **2. ábrán** két hub van; **Hub1** és **Hub2**.
 
-* A **Hub1** és a **Hub2** közvetlenül csatlakozik a NVA virtuális hálózatok **VNet 2** és a **VNet 4**rendszerhez.
+* A **Hub1** és a **Hub2** közvetlenül csatlakozik a NVA virtuális hálózatok **VNet 2** és a **VNet 4** rendszerhez.
 
 * A **VNet 5** és a **VNet 6** a **VNet 2**.
 
@@ -99,25 +99,25 @@ A **2. ábrán**két hub van; **Hub1** és **Hub2**.
 
 **2. ábra**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="2. ábra" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Forgatókönyv-munkafolyamat
 
 Az Útválasztás NVA-n keresztüli beállításához a következő lépéseket kell figyelembe venni:
 
-1. Azonosítsa a NVA küllős VNet-kapcsolatokat. A **2. ábrán**a **VNet 2 (eastusconn)** és a **VNet 4 (weconn) kapcsolatok**szerepelnek.
+1. Azonosítsa a NVA küllős VNet-kapcsolatokat. A **2. ábrán** a **VNet 2 (eastusconn)** és a **VNet 4 (weconn) kapcsolatok** szerepelnek.
 
    Győződjön meg arról, hogy a UDR beállítása megtörtént:
    * VNet 5 és VNet 6 – VNet 2 NVA IP
    * VNet 7 és VNet 8 és VNet 4 NVA IP között 
    
-   Az 5, 6, 7, 8 virtuális hálózatok nem kell közvetlenül a virtuális hubhoz csatlakoznia. Győződjön meg arról, hogy a virtuális hálózatok 5, 6, 7, 8 NSG engedélyezi a forgalmat az ág (VPN/ER/P2S) vagy a távoli virtuális hálózatok csatlakoztatott virtuális hálózatok számára. Például az virtuális hálózatok 5, 6 esetében biztosítania kell, hogy a NSG engedélyezze a helyszíni címek előtagjainak és a 2., 8. virtuális hálózatok, amelyek a távoli hubhoz csatlakoznak.
+   Az 5, 6, 7, 8 virtuális hálózatok nem kell közvetlenül a virtuális hubhoz csatlakoznia. Győződjön meg arról, hogy a virtuális hálózatok 5, 6, 7, 8 NSG engedélyezi a forgalmat az ág (VPN/ER/P2S) vagy a távoli virtuális hálózatok csatlakoztatott virtuális hálózatok számára. Például az virtuális hálózatok 5, 6 esetében biztosítania kell, hogy a NSG engedélyezze a forgalmat a helyszíni címek előtagjai számára, és a virtuális hálózatok 7, 8, amely a távoli hubhoz csatlakozik.
 
 A virtuális WAN nem támogatja azt a forgatókönyvet, amelyben a virtuális hálózatok 5, 6 csatlakozik a virtuális hubhoz, és a VNet 2 NVA IP-címen keresztül kommunikál. Ezért a virtuális hálózatok 5, 6 és VNet2 közötti kapcsolatra van szükség, és hasonlóképpen VNet 7, 8 és VNet 4 között kell lennie.
 
 2. Adjon hozzá egy összesített statikus útvonal-bejegyzést az virtuális hálózatok 2, 5, 6 és az 1. hub alapértelmezett útválasztási táblázatához.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="1. ábra":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Példa":::
 
 3. Konfiguráljon egy statikus útvonalat a virtuális hálózatok 5, 6 a VNet 2 virtuális hálózati kapcsolatban. A virtuális hálózati kapcsolatok útválasztási konfigurációjának beállításához lásd: [virtuális központ útválasztása](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -125,13 +125,13 @@ A virtuális WAN nem támogatja azt a forgatókönyvet, amelyben a virtuális h�
 
 5. Ismételje meg a 2., 3. és 4. lépést a hub alapértelmezett útválasztási táblázatához.
 
-Ez az útválasztási konfiguráció változását eredményezi, ahogy az a **3. ábrán**is látható.
+Ez az útválasztási konfiguráció változását eredményezi, ahogy az a **3. ábrán** is látható.
 
 **3. ábra**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="1. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="3. ábra" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

@@ -6,14 +6,19 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260150"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626087"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh-alkalmazás áthelyezése egy másik Azure-régióba
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Ez a cikk azt ismerteti, hogyan helyezheti át a Service Fabric Mesh-alkalmazást és annak erőforrásait egy másik Azure-régióba. Az erőforrásokat több okból is áthelyezheti egy másik régióba. Például az kimaradásokra adott válaszként az egyes régiókban elérhető funkciók vagy szolgáltatások megszerzéséhez, a belső házirend-és irányítási követelmények teljesítéséhez, vagy a kapacitás megtervezésének követelményeire adott válaszként.
 
@@ -44,7 +49,7 @@ Ez a cikk azt ismerteti, hogyan helyezheti át a Service Fabric Mesh-alkalmazás
 
 1. Ha a telepítés befejeződött, tesztelje az alkalmazás-végpont (oka) t az alkalmazás működésének ellenőrzéséhez.
 
-2. Az alkalmazás állapotát az [Azure Service Fabric Mesh](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)parancssori felület használatával ellenőrizheti az alkalmazás állapotának ([az Mesh app show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) ellenőrzésével és az alkalmazás naplófájljainak és ([az Mesh Code-Package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) parancsainak a megtekintésével is.
+2. Az alkalmazás állapotát az [Azure Service Fabric Mesh](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli)parancssori felület használatával ellenőrizheti az alkalmazás állapotának ([az Mesh app show](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) ellenőrzésével és az alkalmazás naplófájljainak és ([az Mesh Code-Package-log](/cli/azure/ext/mesh/mesh/code-package-log)) parancsainak a megtekintésével is.
 
 ## <a name="commit"></a>Véglegesítés
 
@@ -54,7 +59,7 @@ Miután megerősítette a Service Fabric Mesh alkalmazás egyenértékű funkci�
 
 A Service Fabric Mesh alkalmazás áthelyezésének befejezéséhez [törölje a forrásoldali alkalmazást és/vagy a szülő erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-erőforrások áthelyezése másik régióba](../azure-resource-manager/management/move-region.md)
 * [Azure-erőforrások régiók közötti áthelyezésének támogatása](../azure-resource-manager/management/region-move-support.md)

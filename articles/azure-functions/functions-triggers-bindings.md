@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353544"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627599"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-eseményindítók és -kötések – fogalmak
 
@@ -39,16 +39,19 @@ Ezek a példák nem teljes körűek, de az eseményindítók és kötések együ
 
 ###  <a name="trigger-and-binding-definitions"></a>Trigger-és kötési definíciók
 
-Az eseményindítók és kötések a fejlesztési módszertől függően eltérő módon vannak meghatározva.
+Az eseményindítók és kötések a fejlesztési nyelvtől függően eltérő módon vannak definiálva.
 
-| Platform | Az eseményindítók és kötések konfigurálása... |
+| Nyelv | Az eseményindítók és kötések konfigurálása... |
 |-------------|--------------------------------------------|
 | C# osztály könyvtára | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;díszítő módszerek és paraméterek C#-attribútumokkal |
-| Minden más (beleértve a Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.js](./functions-reference.md) frissítése ([séma](http://json.schemastore.org/function)) |
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;díszítő módszerek és paraméterek Java-megjegyzésekkel  | 
+| JavaScript/PowerShell/Python/írógéppel | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.js](./functions-reference.md) frissítése ([séma](http://json.schemastore.org/function)) |
 
-A portál egy felhasználói felületet biztosít ehhez a konfigurációhoz, de a fájl szerkesztéséhez közvetlenül is megnyithatja a függvény **integrálás** lapján elérhető **speciális szerkesztőt** .
+Az function.js-on alapuló nyelveken a portál a kötések hozzáadására szolgáló felhasználói felületet biztosít az **integráció** lapon. A fájlt közvetlenül a portálon is szerkesztheti a függvény **kód + teszt** lapján. A Visual Studio Code segítségével egyszerűen [adhat hozzá egy kötést egy function.jsfájlhoz](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project) , ha a promptok kényelmes készletét követi. 
 
-A .NET-ben a paraméter típusa határozza meg a bemeneti adatok adattípusát. Például a paranccsal `string` kötést hozhat létre egy üzenetsor-trigger szövegéhez, egy byte-tömböt, amely binárisként és egyéni típusként egy objektumra deszerializálható.
+A .NET-ben és a Java-ban a paraméter típusa határozza meg a bemeneti adatok adattípusát. Például a paranccsal `string` kötést lehet létrehozni egy üzenetsor-trigger, egy bájtos tömb, amely bináris fájlként olvasható, valamint egy objektumra deszerializálható egyéni típus. Mivel a .NET-osztály függvénytár-függvények és a Java-függvények nem a kötési definíciók *function.jsra* támaszkodnak, nem hozhatók létre és nem szerkeszthetők a portálon. A c#-portál szerkesztése C#-parancsfájlon alapul, amely az attribútumok helyett *function.jst* használ.
+
+A kötések meglévő függvényekbe való hozzáadásával kapcsolatos további információkért lásd: [függvények összekapcsolását az Azure-szolgáltatásokhoz kötések használatával](add-bindings-existing-function.md).
 
 A dinamikusan beírt nyelvek (például JavaScript) esetében használja a `dataType` *function.js* fájljában található tulajdonságot. Ha például bináris formátumban szeretné beolvasni egy HTTP-kérelem tartalmát, állítsa a következőre `dataType` `binary` :
 
@@ -93,7 +96,7 @@ A következő táblázat példákat mutat be bizonyos kötési típusokra, amely
 
 Létrehozhat egyéni bemeneti és kimeneti kötéseket is. A kötéseket a .NET-ben kell létrehozni, de bármilyen támogatott nyelvről felhasználhatók. Az egyéni kötések létrehozásával kapcsolatos további információkért lásd: [Egyéni bemeneti és kimeneti kötések létrehozása](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
 - [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
 - [Kötési kifejezés regisztrálása](./functions-bindings-register.md)
@@ -102,6 +105,6 @@ Létrehozhat egyéni bemeneti és kimeneti kötéseket is. A kötéseket a .NET-
   - [Nem HTTP által aktivált függvény manuális futtatása](functions-manually-run-non-http.md)
 - [Kötési hibák feldolgozása](./functions-bindings-errors.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Azure Functions kötési bővítmények regisztrálása](./functions-bindings-register.md)

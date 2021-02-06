@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 479e975abd40be80e17fc187f1d13500d11cb983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc234f6954cf263423cc517bb3dda2ba2efa3358
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842750"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625735"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Az Azure Service Fabric Mesh-alkalmazások Windows-fejlesztői gépen való létrehozásához és futtatásához a következőkre lesz szüksége:
 
@@ -103,7 +108,7 @@ Miután telepítette a futtatókörnyezetet, az SDK-kat, a Visual Studio-eszköz
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
-5. Miután a Service cluster Manager eszköz fut (megjelenik a rendszertálcán), kattintson rá a jobb gombbal, majd kattintson a **helyi fürt indítása**lehetőségre.
+5. Miután a Service cluster Manager eszköz fut (megjelenik a rendszertálcán), kattintson rá a jobb gombbal, majd kattintson a **helyi fürt indítása** lehetőségre.
 
 ![1. ábra – a helyi fürt elindítása](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 

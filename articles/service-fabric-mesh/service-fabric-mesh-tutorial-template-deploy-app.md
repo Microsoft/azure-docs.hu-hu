@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499832"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625416"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan helyezhet üzembe egy alkalmazást a Service Fabric Meshben egy sablonnal.  Az alkalmazás egy ASP.NET webes kezelőfelületi szolgáltatásból és egy ASP.NET Core Web API háttérszolgáltatásból áll, amelyek a Docker Hubban találhatók.  A két tárolólemezképet a Docker Hubból való lekérés után a saját privát regisztrációs adatbázisába küldheti. Ezután létrehoz egy Azure RM-sablont az alkalmazáshoz, majd üzembe helyezi az alkalmazást a tárolóregisztrációs adatbázisból a Service Fabric Meshben. Amikor elkészült, egy egyszerű teendőlistás alkalmazása lesz a Service Fabric Meshben.
 
@@ -59,7 +64,7 @@ az login
 az account set --subscription "<subscriptionName>"
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő paranccsal hozzon létre egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -401,7 +406,7 @@ Vizsgálja meg az üzembe helyezett alkalmazás naplóit az `az mesh code-packag
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

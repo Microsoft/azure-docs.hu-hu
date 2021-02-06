@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 2d74841e1873e5bd84d839122e0e662ef65ccd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1020613eb43177ba159601f253848f8d03f385a8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842002"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625432"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Service Fabric alkalmazások frissítése a Visual Studióval
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Ez az oktatóanyag egy sorozat negyedik része, amely bemutatja, hogyan frissíthet egy Azure Service Fabric Mesh-alkalmazást közvetlenül a Visual studióból. A frissítés tartalmazza a kód frissítését és a konfiguráció frissítését is. Láthatja, hogy a Visual studión belüli verziófrissítés és közzététel lépései megegyeznek.
 
@@ -47,13 +52,13 @@ Service Fabric Mesh-alkalmazás létrehozásakor a Visual Studio minden központ
 
 Frissítjük a `WebFrontEnd_cpu` paramétert a CPU-erőforrások frissítéséhez, hogy a `1.5` rendszer a **webfrontend** szolgáltatást nagyobb mértékben fogja használni.
 
-1. A **todolistapp** projektben a **környezetek**  >  **felhő**alatt nyissa meg a **Parameters. YAML** fájlt. Módosítsa a `WebFrontEnd_cpu` értéket a értékre `1.5` . A paraméter neve a szolgáltatás nevével van ellátva `WebFrontEnd_` ajánlott eljárásként, hogy megkülönböztesse azt a különböző szolgáltatásokra érvényes azonos nevű paraméterektől.
+1. A **todolistapp** projektben a **környezetek**  >  **felhő** alatt nyissa meg a **Parameters. YAML** fájlt. Módosítsa a `WebFrontEnd_cpu` értéket a értékre `1.5` . A paraméter neve a szolgáltatás nevével van ellátva `WebFrontEnd_` ajánlott eljárásként, hogy megkülönböztesse azt a különböző szolgáltatásokra érvényes azonos nevű paraméterektől.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Nyissa **meg a webfrontend-** projekt **Service. YAML** fájlját a **webfrontend**  >  **szolgáltatás-erőforrások**területen.
+2. Nyissa **meg a webfrontend-** projekt **Service. YAML** fájlját a **webfrontend**  >  **szolgáltatás-erőforrások** területen.
 
     Vegye figyelembe, hogy a szakasz a következőre `resources:` `cpu:` van beállítva: `"[parameters('WebFrontEnd_cpu')]"` . Ha a projekt a felhőhöz készült, a rendszer a `'WebFrontEnd_cpu` **környezetek**  >  **felhő**  >  **Parameters. YAML** -fájlból veszi át a értéket, és a következő lesz: `1.5` . Ha a projekt helyben történő futtatásra készült, az érték a **környezetek**  >  **helyi**  >  **Parameters. YAML** -fájlból fog származni, és a következő lesz: "0,5".
 
@@ -131,7 +136,7 @@ Válassza ki a telepítéshez használni kívánt profil. YAML fájlt a **cél p
 
 ![Service Fabric Mesh párbeszédpanel a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Válassza ki az Azure-fiókját és -előfizetését. Állítsa be azt a **helyet, amelyet** az Azure-ban eredetileg közzétett a tennivaló alkalmazáshoz. Ez a cikk az **USA keleti**régiójában használatos.
+Válassza ki az Azure-fiókját és -előfizetését. Állítsa be azt a **helyet, amelyet** az Azure-ban eredetileg közzétett a tennivaló alkalmazáshoz. Ez a cikk az **USA keleti** régiójában használatos.
 
 Állítsa be az **erőforráscsoportot** arra az erőforráscsoporthoz, amelyet a tennivalók Azure-ba történő eredeti közzétételekor használt.
 

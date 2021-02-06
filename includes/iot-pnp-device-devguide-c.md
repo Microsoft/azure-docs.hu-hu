@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: 1485adc1407720343c27e07c2d2f4a13ba037a90
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ad83ef0f3f4c0717a3cb669c34145572d44be09a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511470"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616496"
 ---
 ## <a name="model-id-announcement"></a>Modell AZONOSÍTÓjának bejelentése
 
@@ -25,6 +25,9 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 
 > [!TIP]
 > Modulok és IoT Edge esetén használja a következőt `IoTHubModuleClient_LL` : `IoTHubDeviceClient_LL` .
+
+> [!TIP]
+> Ez az egyetlen, amikor az eszköz beállíthatja a modell AZONOSÍTÓját, az eszköz csatlakoztatása után nem frissíthető.
 
 ## <a name="dps-payload"></a>DPS-adattartalom
 

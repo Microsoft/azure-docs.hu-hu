@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797295"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624759"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -101,7 +101,7 @@ A [szinapszis munkaterület üzembe](https://marketplace.visualstudio.com/items?
 
      ![A bővítmény telepítése](media/install-extension.png)
 
-1. Győződjön meg arról, hogy az Azure DevOps-folyamat szolgáltatási elve megkapta az előfizetés engedélyét, és a cél munkaterület munkaterület-rendszergazdája is hozzá van rendelve. 
+1. Győződjön meg arról, hogy az Azure DevOps-folyamat egyszerű szolgáltatása az előfizetés engedéllyel rendelkezik, és a cél munkaterület munkaterület-rendszergazdája is hozzá van rendelve. 
 
 1. Hozzon létre egy új feladatot. Keressen rá a **szinapszis munkaterület üzembe helyezésére**, majd válassza a **Hozzáadás** lehetőséget.
 
@@ -139,8 +139,8 @@ Ha git-integrációt használ a szinapszis-munkaterülettel, és rendelkezik egy
 
 ### <a name="use-the-synapse-workspace-deployment-task"></a>A szinapszis munkaterület telepítési feladatának használata
 
-A Szinapszisban az összes fajta összetevő nem rendelkezik ARM-erőforrásokkal, amelyek különböznek az ADF-től. Az ARM-sablon központi telepítési feladata nem használható a szinapszis-összetevők üzembe helyezésére
+A Szinapszisban számos olyan összetevő van, amely nem ARM-erőforrás. Ez eltér a Azure Data Factorytól. Az ARM-sablon telepítési feladata nem fog megfelelően működni a szinapszis-összetevők üzembe helyezéséhez
  
 ### <a name="unexpected-token-error-in-release"></a>Váratlan jogkivonat-hiba történt a kiadásban
 
-Ha a paraméter értéke nem kerül megmenekülésre, a kiadási folyamat nem tudja elemezni a fájlt a váratlan token hibája miatt. Javasoljuk, hogy a paraméterek beolvasásához felülbírálja a paramétereket vagy a kulcstartót. Megkerülő megoldásként is megkerülheti a kettős Escape-megoldást.
+Ha a paraméter értéke nem kerül megmenekülésre, a kiadási folyamat nem fogja elemezni a fájlt, és a "váratlan token" hibaüzenetet eredményezi. Javasoljuk, hogy felülbírálja a paramétereket, vagy használja az Azure kulcstartót a paraméterek értékeinek lekéréséhez. A kettős Escape-karakterek is megkerülő megoldásként is használhatók.

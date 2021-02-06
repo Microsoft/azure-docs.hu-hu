@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 8ace1c6bb530fcc93d06f48bcef0d1ccfdf82306
-  ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-  ms.translationtype: HT
+  ms.openlocfilehash: 2344c7a1507feb6ca3938fe0c53cf618b015f0f4
+  ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/22/2020
-  ms.locfileid: "97724425"
+  ms.lasthandoff: 02/06/2021
+  ms.locfileid: "99627317"
 landingContent:
 - title: Az App Service ismertetése
   linkLists:
@@ -60,46 +60,10 @@ landingContent:
       url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Diagnosztikai naplók engedélyezése
-      url: troubleshoot-diagnostic-logs.md
     - text: Kapcsolódás Linux-tárolóhoz SSH-n keresztül
       url: configure-linux-open-ssh-session.md
     - text: Aktív tartomány migrálása az App Service-be
       url: manage-custom-dns-migrate-domain.md
-- title: CRUD-alkalmazás adatbázissal
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET-alkalmazás és SQL Database
-      url: app-service-web-tutorial-dotnet-sqldatabase.md
-    - text: ASP.NET Core-alkalmazás SQL Database-zel
-      url: tutorial-dotnetcore-sqldb-app.md
-    - text: PHP- (Laravel-) alkalmazás Azure MySQL-lel
-      url: tutorial-php-mysql-app.md
-    - text: Node.js- (MEAN.js-) alkalmazás MongoDB-vel
-      url: tutorial-nodejs-mongodb-app.md
-    - text: Java- (Spring Boot-) alkalmazás Cosmos DB-vel
-      url: tutorial-java-spring-cosmosdb.md
-    - text: Python- (Django-) alkalmazás PostgreSQL-lel
-      url: tutorial-python-postgresql-app.md
-    - text: Ruby- (Rails-) alkalmazás PostgreSQL-lel
-      url: tutorial-ruby-postgres-app.md
-- title: Kód vagy tartalom feltöltése
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: Tartalom feltöltése FTP-vel
-      url: deploy-ftp.md
-    - text: Tartalom és zip-fájlok feltöltése
-      url: deploy-zip.md
-    - text: Git push parancs helyi gépről
-      url: deploy-local-git.md
-    - text: Tartalom szinkronizálása a OneDrive vagy a Dropbox szolgáltatással
-      url: deploy-content-sync.md
-    - text: CI/CD GitHub, BitBucket stb. használatával
-      url: deploy-continuous-deployment.md
-    - text: Futtatás csomagból
-      url: deploy-run-package.md
 - title: Egyéni tárolók futtatása
   linkLists:
   - linkListType: quickstart
@@ -120,6 +84,24 @@ landingContent:
       url: configure-connect-to-azure-storage.md
     - text: Üzembe helyezés GitHub-műveletekkel
       url: deploy-container-github-action.md
+- title: CRUD-alkalmazás adatbázissal
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET-alkalmazás és SQL Database
+      url: app-service-web-tutorial-dotnet-sqldatabase.md
+    - text: ASP.NET Core-alkalmazás SQL Database-zel
+      url: tutorial-dotnetcore-sqldb-app.md
+    - text: PHP- (Laravel-) alkalmazás Azure MySQL-lel
+      url: tutorial-php-mysql-app.md
+    - text: Node.js- (MEAN.js-) alkalmazás MongoDB-vel
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Java- (Spring Boot-) alkalmazás Cosmos DB-vel
+      url: tutorial-java-spring-cosmosdb.md
+    - text: Python- (Django-) alkalmazás PostgreSQL-lel
+      url: tutorial-python-postgresql-app.md
+    - text: Ruby- (Rails-) alkalmazás PostgreSQL-lel
+      url: tutorial-ruby-postgres-app.md
 - title: Felügyelet és integráció
   linkLists:
   - linkListType: concept
@@ -146,6 +128,46 @@ landingContent:
       url: configure-domain-traffic-manager.md
     - text: Az alkalmazás biztonsági mentése Storage-blobokba
       url: manage-backup.md
+- title: Kód vagy tartalom feltöltése
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Tartalom feltöltése FTP-vel
+      url: deploy-ftp.md
+    - text: Tartalom és zip-fájlok feltöltése
+      url: deploy-zip.md
+    - text: Git push parancs helyi gépről
+      url: deploy-local-git.md
+    - text: Tartalom szinkronizálása a OneDrive vagy a Dropbox szolgáltatással
+      url: deploy-content-sync.md
+    - text: CI/CD GitHub, BitBucket stb. használatával
+      url: deploy-continuous-deployment.md
+    - text: Futtatás csomagból
+      url: deploy-run-package.md
+- title: Az alkalmazás figyelése
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: App Service integráció a Azure Monitor (előzetes verzió)
+      url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
+    - text: Azure Monitor integrációs naplózási típusai (előzetes verzió)
+      url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
+  - linkListType: tutorial
+    links:
+    - text: Azure Monitorekkel kapcsolatos hibák elhárítása (előzetes verzió)
+      url: tutorial-troubleshoot-monitor.md
+  - linkListType: how-to-guide
+    links:
+    - text: Diagnosztikai naplók engedélyezése
+      url: troubleshoot-diagnostic-logs.md
+    - text: Erőforrás-események lekérése
+      url: get-resource-events.md
+    - text: Állapot-ellenőrzés
+      url: monitor-instances-health-check.md
+  - linkListType: reference
+    links:
+    - text: Kvóták és riasztások
+      url: web-sites-monitor.md
 - title: További erőforrások
   linkLists:
   - linkListType: video

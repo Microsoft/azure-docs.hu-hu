@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: df28083a0522178b7327d9f6d24029d303e417a1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 02dc5d43a23c572d441da2bbb7386885bf66ece7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747863"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625383"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Oktatóanyag: Az Azure Service Fabric Meshben futó alkalmazások méretezése
+
+> [!IMPORTANT]
+> Az Azure Service Fabric Mesh előzetes verziója ki lett vonva. Az új központi telepítések többé nem lesznek engedélyezve a Service Fabric Mesh API-n keresztül. A meglévő központi telepítések támogatása a 2021. április 28. után folytatódik.
+> 
+> Részletekért lásd: az [Azure Service Fabric Mesh előzetes verziójának nyugdíjazása](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Ez az oktatóanyag egy sorozat második része. Elsajátíthatja, hogyan méretezheti manuálisan egy alkalmazás több szolgáltatáspéldányát, amelyeket [előzőleg helyezett üzembe a Service Fabric Meshben](service-fabric-mesh-tutorial-template-deploy-app.md). Ha elkészült, rendelkezni fog egy kezelőfelületi szolgáltatással, amely három példányt futtat, és egy adatszolgáltatással, amely két példányt futtat.
 

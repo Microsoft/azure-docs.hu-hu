@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743598"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626155"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)
 
@@ -57,10 +57,13 @@ Az Azure AD segítségével kiválaszthatja, hogy mely hitelesítési módszerek
 A jelszó nélküli telefonos bejelentkezés hitelesítési módszerének engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* fiókkal.
-1. Keresse meg és válassza ki a *Azure Active Directory*, majd keresse meg a **biztonsági**  >  **hitelesítési módszerek**  >  **hitelesítési módszer házirend (előzetes verzió) lehetőséget.**
-1. A **jelszó nélküli telefonos bejelentkezés** területen válassza a következő lehetőségeket:
+1. Keresse meg és válassza ki *Azure Active Directory*, majd keresse meg a **biztonsági**  >  **hitelesítési módszerek**  >  **házirendjeit**.
+1. A **Microsoft Authenticator (előzetes verzió)** alatt válassza a következő beállításokat:
    1. **Engedélyezés** – igen vagy nem
    1. **Cél** – az összes felhasználó vagy a felhasználók kiválasztása
+1. Alapértelmezés szerint minden hozzáadott csoport vagy felhasználó számára engedélyezve van a Microsoft Authenticator használata a jelszó nélküli és a leküldéses értesítési módokban ("minden" mód). Ennek módosításához minden sorra:
+   1. Tallózással keresse meg a következőt: **..**  >  . **Konfigurálás**.
+   1. **Hitelesítési mód** esetén – bármilyen, jelszó nélküli vagy leküldéses
 1. Az új szabályzat alkalmazásához válassza a **Mentés** lehetőséget.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>A Microsoft Authenticator felhasználói regisztrációja és kezelése
@@ -135,7 +138,7 @@ Az eszközök jelenleg csak egyetlen bérlőben regisztrálhatók. Ez a korlát 
 > [!NOTE]
 > Az eszköz regisztrálása nem ugyanaz, mint az eszközkezelés vagy a mobileszköz-kezelés (MDM). Az eszközök regisztrálása csak az eszköz AZONOSÍTÓját és a felhasználói azonosítót társítja az Azure AD-címtárban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD-hitelesítéssel és a jelszóval nem rendelkező módszerekkel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

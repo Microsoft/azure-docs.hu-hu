@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: bdbab0e032764d07119402686051d391376cb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843868"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627163"
 ---
 # <a name="exporting-de-identified-data-preview"></a>De azonosított adatexportálás (előzetes verzió)
 
@@ -23,7 +23,10 @@ A $export parancs a FHIR-kiszolgálóról származó, de azonosított adatok exp
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|Lekérdezési paraméter            | Példa |Nem kötelező| Leírás|
+> [!Note] 
+> A FHIR készült Azure API mostantól csak a rendszerszintű ($export) rendszerű, de azonosított exportálást támogatja.
+
+|Lekérdezési paraméter            | Példa |Nem kötelező| Description|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.jsbekapcsolva|A deazonosított exportáláshoz szükséges |A konfigurációs fájl neve. Tekintse meg a konfigurációs fájlformátumot [itt](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format). Ezt a fájlt egy **névtelenítésével** nevű tárolóban kell tárolni, amely az exportálási helyként konfigurált Azure Storage-fiókban található. |
 | _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Nem kötelező a azonosított exportáláshoz|Ez a konfigurációs fájl ETAG. A ETAG az Azure Storage Explorer használatával kérheti le a blob tulajdonságból.|

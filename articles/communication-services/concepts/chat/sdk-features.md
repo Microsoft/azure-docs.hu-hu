@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885988"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625264"
 ---
 # <a name="chat-client-library-overview"></a>A csevegési ügyfélkódtár áttekintése
 
@@ -53,6 +53,17 @@ A következő lista a kommunikációs szolgáltatások csevegési ügyféloldali
 | Figyelés        | Használat figyelése az elküldött üzenetek tekintetében                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Az alkalmazás által végzett API-kérelmek minőségének és állapotának, valamint a riasztások a portálon keresztüli konfigurálásának monitorozása                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |További funkciók | A [Cognitive Services API-k](../../../cognitive-services/index.yml) és a csevegő ügyféloldali kódtár használatával is lehetővé teszi az intelligens funkciók – *nyelvi fordítás & a beérkező üzenet hangulati elemzését egy ügyfélen, a szöveg átalakítását egy üzenet összeállításához, miközben a tag beszél stb.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript csevegő ügyféloldali függvénytár-támogatás az operációs rendszer és a böngésző számára
+
+A következő táblázat a jelenleg elérhető támogatott böngészők és verziók készletét tartalmazza.
+
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad operációs rendszer|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Csevegési ügyféloldali kódtár** | Firefox *, Chrome*, új Edge | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
+
+
+* Vegye figyelembe, hogy az előző két kiadáson felül a legújabb verzió is támogatott.<br/>
 
 ## <a name="next-steps"></a>Következő lépések
 
