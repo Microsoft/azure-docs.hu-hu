@@ -1,6 +1,6 @@
 ---
 title: Syslog-adatbázis összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Csatlakoztasson minden olyan gépet vagy készüléket, amely támogatja a syslog-t az Azure Sentinelhez a készülék és a Sentinel közötti linuxos gépen lévő ügynök használatával.
+description: Csatlakoztasson minden olyan gépet vagy készüléket, amely támogatja a syslog-t az Azure Sentinelhez a készülék és az Azure Sentinel közötti linuxos gépen lévő ügynök használatával.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747190"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807903"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Adatok gyűjtése Linux-alapú forrásokból a syslog használatával
 
@@ -134,7 +134,7 @@ Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges:
     
     Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics**-  >   **szabály sablonjai**  >  **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével** engedélyezheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a syslog helyszíni készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995862"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807750"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -95,8 +95,8 @@ ms.locfileid: "95995862"
 > - [Fenyegetések észlelése](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Egyéni elemzési szabályok létrehozása gyanús fenyegetések észleléséhez](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Adatok monitorozása](../../sentinel/tutorial-monitor-your-data.md)
-> - [Incidensek vizsgálata az Azure Sentineltel](../../sentinel/tutorial-investigate-cases.md)
-> - [Automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure Sentinelben](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Incidensek vizsgálata az Azure Sentinellel](../../sentinel/tutorial-investigate-cases.md)
+> - [Fenyegetésre adott automatikus válaszok beállítása az Azure Sentinelben](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Azure Sentinel GitHub-Közösség](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>K: az Azure Sentinel további összekötőket biztosít a megoldás részeként?
@@ -109,7 +109,7 @@ ms.locfileid: "95995862"
 > - Ha október 31-ig nem regisztrációjának megszüntetésére szolgáló a megoldást, az adatai automatikusan le lesznek választva, és a **OfficeActivity** tábla törlődik. Még így is visszaállíthatja a táblázatot, ha engedélyezi az Office 365-összekötőt az Azure Sentinelben, az alábbiakban leírtak szerint.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>K: az adatok átkerülnek az új megoldásba?
-> Igen. Ha eltávolítja az **Office 365** -megoldást a munkaterületről, az adatai átmenetileg elérhetetlenné válnak, mert a séma el lesz távolítva. Ha engedélyezi az új **Office 365** -összekötőt a sentinelben, a séma vissza lesz állítva a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 
+> Igen. Ha eltávolítja az **Office 365** -megoldást a munkaterületről, az adatai átmenetileg elérhetetlenné válnak, mert a séma el lesz távolítva. Ha engedélyezi az új **Office 365** -összekötőt az Azure sentinelben, a séma vissza lesz állítva a munkaterületre, és a már összegyűjtött adatok elérhetővé válnak. 
  
 
 Az Office 365 felügyeleti megoldás lehetővé teszi az Office 365-környezet figyelését Azure Monitorban.
@@ -381,7 +381,7 @@ Ezek a rekordok a postaláda-naplózási bejegyzések létrehozásakor jönnek l
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType (Rekordtípus)     | ExchangeItem |
-| Item | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
+| Elem | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
 | SendAsUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer az e-mailek küldésére használt. |
 | SendAsUserSmtp | A megszemélyesíteni kívánt felhasználó SMTP-címe. |
 | SendonBehalfOfUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer a levél nevében küldött e-mailek küldéséhez. |
@@ -462,7 +462,7 @@ Ezek a rekordok a SharePoint-fájl műveleteire adott válaszként jönnek létr
 
 A következő táblázat példákat tartalmaz a megoldás által gyűjtött frissítési rekordok lekérdezésére.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 | --- | --- |
 |Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összegzések száma () művelet szerint |
 |SharePoint-webhelyek használata|OfficeActivity &#124;, ahol a OfficeWorkload = ~ "SharePoint" &#124; összesítések száma () SiteUrl szerint \| rendezve|
@@ -471,7 +471,7 @@ A következő táblázat példákat tartalmaz a megoldás által gyűjtött fris
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Saját irányítópultok létrehozásával](../learn/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.

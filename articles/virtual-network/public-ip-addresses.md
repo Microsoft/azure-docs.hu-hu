@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9a80242422631995f6d5c24ba2118ee98a9b8d32
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576176"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806960"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
@@ -64,7 +64,7 @@ Standard SKU nyilvános IP-címei:
 > A [példány metaadatainak szolgáltatás IMDS](../virtual-machines/windows/instance-metadata-service.md)használata esetén csak az alapszintű SKU-val rendelkező nyilvános IP-címek érhetők el. A standard SKU nem támogatott.
 
 > [!NOTE]
-> Szabványos SKU nyilvános IP-cím használata esetén a diagnosztikai beállítások nem jelennek meg a erőforrás panelen. A stanrd nyilvános IP-cím erőforrás naplózásának engedélyezéséhez navigáljon a Azure Monitor panelen található diagnosztikai beállítások elemre, és válassza ki az IP-cím erőforrását.
+> Szabványos SKU nyilvános IP-cím használata esetén a diagnosztikai beállítások nem jelennek meg a erőforrás panelen. Ha engedélyezni szeretné a naplózást a standard nyilvános IP-cím erőforráson, navigáljon a Azure Monitor panelen található diagnosztikai beállításokhoz, és válassza ki az IP-cím erőforrását.
 
 ### <a name="basic"></a>Alapszintű
 

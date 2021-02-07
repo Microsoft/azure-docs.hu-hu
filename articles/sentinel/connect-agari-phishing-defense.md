@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: ba37b2280ba4d7138f4ed652b7b330bcaf7b9935
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566774"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806986"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>A Agari phishing Defense-és Brand Protection-megoldások összekapcsolása az Azure Sentinel szolgáltatással
 
@@ -58,7 +58,7 @@ A Agari-megoldások Azure-függvényalkalmazás használatával integrálhatók 
 
 1. **Választható A biztonsági Graph API engedélyezése:** 
 
-    A Agari függvényalkalmazás lehetővé teszi a fenyegetések intelligenciának megosztását a Sentinel segítségével a biztonsági Graph API használatával. A funkció használatához engedélyeznie kell a [Sentinel Threat Intelligence Platforms Connectort](connect-threat-intelligence.md) , és [regisztrálnia kell egy alkalmazást](/graph/auth-register-app-v2) Azure Active Directoryban.
+    A Agari függvényalkalmazás lehetővé teszi, hogy a biztonsági Graph API használatával megossza a fenyegetésekkel kapcsolatos intelligenciát az Azure Sentinel szolgáltatással. A funkció használatához engedélyeznie kell a [Sentinel Threat Intelligence Platforms Connectort](connect-threat-intelligence.md) , és [regisztrálnia kell egy alkalmazást](/graph/auth-register-app-v2) Azure Active Directoryban.
 
     Ez a folyamat három információt nyújt az alábbi függvényalkalmazás telepítésekor: a **Graph bérlő azonosítója**, a **gráf ügyfél-azonosítója** és a **Graph ügyfél titka**.
 

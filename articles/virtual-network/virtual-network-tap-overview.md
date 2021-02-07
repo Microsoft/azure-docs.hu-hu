@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: c468f289c9dbfe949890c5462dd7c9be3e548d5a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938760"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804870"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ A virtuális hálózati KOPPINTÁS létrehozása előtt meg kell kapnia egy mege
 
 A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához használt fiókokat hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely a következő táblázat szükséges műveleteihez van rendelve:
 
-| Művelet | Name (Név) |
+| Művelet | Name |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Virtuális hálózati KOPPINTó erőforrás létrehozásához, frissítéséhez, olvasásához és törléséhez szükséges. |
 | Microsoft. Network/networkInterfaces/READ | A hálózati adapter azon erőforrásának olvasásához szükséges, amelyen a KOPPINTÁS konfigurálva lesz |
@@ -49,7 +49,7 @@ A hálózati adapterekre vonatkozó KOPPINTó beállítások alkalmazásához ha
 
 ### <a name="network-packet-brokers"></a>Hálózati csomagok közvetítői
 
-- [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
+- [GigaVUE Cloud Suite az Azure-hoz](https://www.gigamon.com/solutions/cloud/public-cloud/gigavue-cloud-suite-azure.html)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 - [Nubeva Prizmák](https://www.nubeva.com/azurevtap)
 - [Big Switch – Big monitoring-háló](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)

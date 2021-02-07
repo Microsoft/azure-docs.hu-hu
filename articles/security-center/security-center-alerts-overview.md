@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433019"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807224"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
@@ -23,7 +23,7 @@ A Security Center számos különböző típusú erőforráshoz biztosít riaszt
 
 A biztonsági riasztásokat a speciális észlelések váltották ki, és csak az Azure Defender esetében érhetők el. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítés a **díjszabás & beállítások** lapról végezhető el. További információ a [Security Center díjszabásáról](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="respond-to-todays-threats"></a>Válasz a mai fenyegetésekre <a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>Válasz a mai fenyegetésekre <a name="respond-threats"></a>
 
 Az elmúlt 20 évben jelentős változásokat figyelhettünk meg a fenyegetések területén. A múltban a vállalatoknak általában csak azért kellett aggódniuk az egyes támadók számára, akik leginkább érdeklik a "mit tehetnek". A mai támadók sokkal kifinomultabbak és megrendezettek. Gyakran konkrét pénzügyi és stratégiai célokat követnek. Emellett több erőforrás is elérhető számukra, mivel ezek a Nemzetek vagy a szervezett bűnözés által finanszírozva lehetnek.
 
@@ -91,11 +91,11 @@ Számos lehetősége van a riasztások Security Centeron kívüli megtekintésé
 
 - **CSV-jelentés letöltése** a riasztások irányítópultján egy egyszeri exportálás CSV-be.
 - A díjszabási & beállítások **folyamatos exportálásával** konfigurálhatja a biztonsági riasztások és javaslatok adatfolyamait log Analytics munkaterületekre és Event Hubsokra. [További információ a folyamatos exportálásról](continuous-export.md)
-- Az **Azure Sentinel connector** Azure Security Center az Azure sentinelbe továbbítja a biztonsági riasztásokat. [További információ a Azure Security Center és a Sentinel összekapcsolásáról](../sentinel/connect-azure-security-center.md)
+- Az **Azure Sentinel connector** Azure Security Center az Azure sentinelbe továbbítja a biztonsági riasztásokat. [További információ a Azure Security Center és az Azure Sentinel összekapcsolásáról](../sentinel/connect-azure-security-center.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információ:
+Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információkért lásd:
 
 - **Biztonsági riasztások az Azure-tevékenység naplójában** – amellett, hogy elérhetővé válnak a Azure Portal vagy programozott módon, a biztonsági riasztások és incidensek naplózása eseményként történik az Azure-beli [tevékenység naplójában](../azure-monitor/platform/activity-log.md#view-the-activity-log). További információ az esemény-sémáról: [biztonsági riasztások az Azure-beli tevékenység naplójában](https://go.microsoft.com/fwlink/?linkid=2114113)

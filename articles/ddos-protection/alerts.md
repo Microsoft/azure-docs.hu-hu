@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915147"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806290"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS Protection-riasztások megtekintése és konfigurálása
 
@@ -41,13 +41,13 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 Ezekkel a sablonokkal olyan nyilvános IP-címekre vonatkozó riasztásokat konfigurálhat, amelyeken engedélyezve van a diagnosztikai bejelentkezés. Ezért ahhoz, hogy használni lehessen ezeket a riasztási sablonokat, először egy Log Analytics munkaterületre lesz szüksége, amelyen engedélyezve van a diagnosztikai beállítások. Lásd: [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor riasztási szabály
-Ez a [Azure Monitor riasztási szabály](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started) egy egyszerű lekérdezést futtat, amely azt vizsgálja, hogy mikor történt aktív DDoS-csökkentés. Ez potenciális támadást jelez. A műveleti csoportok használatával a riasztás eredményeként műveleteket lehet meghívni.
+Ez a [Azure Monitor riasztási szabály](https://aka.ms/ddosmitigationstatus) egy egyszerű lekérdezést futtat, amely azt vizsgálja, hogy mikor történt aktív DDoS-csökkentés. Ez potenciális támadást jelez. A műveleti csoportok használatával a riasztás eredményeként műveleteket lehet meghívni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
 ### <a name="azure-monitor-alert-rule-with-logic-app"></a>Riasztási szabály Azure Monitor logikai alkalmazással
 
-Ez a [sablon](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/DDoS%20Mitigation%20Alert%20Enrichment) egy dúsított DDoS-elhárítási riasztás szükséges összetevőit telepíti: Azure Monitor riasztási szabályt, műveleti csoportot és logikai alkalmazást. A folyamat eredménye egy e-mail-riasztás, amely a támadás alatt álló IP-címekkel kapcsolatos adatokat tartalmazza, beleértve az IP-címhez kapcsolódó erőforrást is. Az erőforrás tulajdonosa az e-mail címzettje lesz, a biztonsági csapattal együtt. A rendszer az alkalmazás alapszintű rendelkezésre állási tesztjét is elvégzi, és az eredményeket belefoglalja az e-mail riasztásba.
+Ez a [sablon](https://aka.ms/ddosalert) egy dúsított DDoS-elhárítási riasztás szükséges összetevőit telepíti: Azure Monitor riasztási szabályt, műveleti csoportot és logikai alkalmazást. A folyamat eredménye egy e-mail-riasztás, amely a támadás alatt álló IP-címekkel kapcsolatos adatokat tartalmazza, beleértve az IP-címhez kapcsolódó erőforrást is. Az erőforrás tulajdonosa az e-mail címzettje lesz, a biztonsági csapattal együtt. A rendszer az alkalmazás alapszintű rendelkezésre állási tesztjét is elvégzi, és az eredményeket belefoglalja az e-mail riasztásba.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
@@ -64,7 +64,7 @@ A rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét kiválaszthatj
     |---------                |---------                                                                                           |
     | Hatókör                   | Válassza az **Erőforrás kiválasztása** elemet. </br> Válassza ki azt az **előfizetést** , amely a naplózni kívánt nyilvános IP-címet tartalmazza, válassza ki a **nyilvános IP-címet** az **erőforrástípus** mezőben, majd válassza ki azt a nyilvános IP-címet, amelyre a metrikákat naplózni kívánja. </br> Válassza a **Kész** lehetőséget. | 
     | Feltétel | Válassza a **feltétel kiválasztása** lehetőséget. </br> A jel neve alatt válassza **a DDoS Attack vagy a not (nem**) lehetőséget. </br> Az **operátor** területen válassza **a nagyobb vagy egyenlő** lehetőséget. </br> Az **összesítés típusa** területen válassza a **maximális** lehetőséget. </br> A **küszöbérték** mezőben adja meg az *1* értéket. A **DDoS-támadás vagy a nem** metrikus érték esetén a **0** azt jelenti, hogy nem támadás alatt áll, míg **1** azt jelenti, hogy támadás alatt áll. </br> Válassza a **Kész** lehetőséget. | 
-    | Actions | Válassza a **műveleti csoportok hozzáadása** lehetőséget. </br> Válassza a **Műveletcsoport létrehozása** lehetőséget. </br> Az **értesítések** területen az **értesítés típusa** területen válassza az **e-mail/SMS-üzenet/leküldése/hang** lehetőséget. </br> A **név** mezőben adja meg a _MyUnderAttackEmailAlert_. </br> Kattintson a Szerkesztés gombra, majd válassza az **e-mail** lehetőséget, és adja meg az alábbi lehetőségek közül a kívántat, majd kattintson az **OK gombra**. </br> Válassza a **Felülvizsgálat + létrehozás** lehetőséget. | 
+    | Műveletek | Válassza a **műveleti csoportok hozzáadása** lehetőséget. </br> Válassza a **Műveletcsoport létrehozása** lehetőséget. </br> Az **értesítések** területen az **értesítés típusa** területen válassza az **e-mail/SMS-üzenet/leküldése/hang** lehetőséget. </br> A **név** mezőben adja meg a _MyUnderAttackEmailAlert_. </br> Kattintson a Szerkesztés gombra, majd válassza az **e-mail** lehetőséget, és adja meg az alábbi lehetőségek közül a kívántat, majd kattintson az **OK gombra**. </br> Válassza az **Áttekintés + létrehozás** lehetőséget. | 
     | Riasztási szabály részletei | A **riasztási szabály neve** alatt adja meg a _MyDdosAlert_. |
 
 A támadások észlelése néhány percen belül egy e-mailt kap Azure Monitor metrikától, amely az alábbi képhez hasonlóan néz ki:

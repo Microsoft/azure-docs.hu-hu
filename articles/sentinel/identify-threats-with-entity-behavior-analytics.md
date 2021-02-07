@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784795"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807563"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
 > [!IMPORTANT]
 >
-> - A UEBA és az Entity Pages funkciói már **általánosan elérhetők** a **_minden_* _ Azure Sentinel földrajzi és régiójában.
+> - A UEBA és az Entity Pages szolgáltatás mostantól **általánosan elérhető** **_Az Azure Sentinel_** földrajzi és régióiban.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Mi a felhasználói és az entitások viselkedésének elemzése (UEBA)?
 
@@ -35,7 +35,7 @@ Azonosíthatja a szervezeten belüli fenyegetéseket és azok lehetséges hatás
 
 Az Azure Sentinel UEBA funkciója kiküszöböli az elemzők számítási feladatainak rabszolgamunka, és a beavatkozások bizonytalanságát, és magas megbízhatóságú, gyakorlati intelligenciát biztosít, így a vizsgálatra és a szervizelésre koncentrálhat.
 
-Mivel az Azure Sentinel az összes csatlakoztatott adatforrásból gyűjt naplókat és riasztásokat, elemzi őket, és a szervezeti entitások (felhasználók, gazdagépek, IP-címek, alkalmazások stb.) alapszintű viselkedési profilját építi fel az idő és a társ-csoport horizonton. A Sentinel számos különböző technikát és gépi tanulási képességet használ, és segít a rendellenes tevékenységek azonosításában, és annak meghatározásában, hogy az eszköz biztonsága sérült-e. Nem csak ez, de képes az egyes eszközök relatív érzékenységére, az eszközök társ csoportjai azonosítására és az adott sérült eszköz (a "Blast RADIUS") lehetséges hatásának kiértékelésére is. Ezeket az információkat felhasználva hatékonyan rangsorolhatja a nyomozást és az incidensek kezelését. 
+Mivel az Azure Sentinel az összes csatlakoztatott adatforrásból gyűjt naplókat és riasztásokat, elemzi őket, és létrehozza a szervezet entitásai (például felhasználók, gazdagépek, IP-címek és alkalmazások) alapszintű viselkedési profilját az idő és a társ-csoport horizonton. Az Azure Sentinel számos különböző technikát és gépi tanulási funkciót használ, így azonosíthatja a rendellenes tevékenységeket, és meghatározhatja, hogy az eszköz biztonsága sérült-e. Nem csak ez, de képes az egyes eszközök relatív érzékenységére, az eszközök társ csoportjai azonosítására és az adott sérült eszköz (a "Blast RADIUS") lehetséges hatásának kiértékelésére is. Ezeket az információkat felhasználva hatékonyan rangsorolhatja a nyomozást és az incidensek kezelését. 
 
 ### <a name="architecture-overview"></a>Az architektúra áttekintése
 
@@ -45,7 +45,7 @@ Mivel az Azure Sentinel az összes csatlakoztatott adatforrásból gyűjt napló
 
 A Gartner UEBA-megoldásokhoz készült paradigma ihlette az Azure Sentinel "külső" megközelítést biztosít a következő három képkocka alapján:
 
-- –*Használati esetek:** a releváns támadási vektorok és forgatókönyvek prioritási sorrendbe állítása a biztonsági kutatások alapján, összhangban&a (z) és a (z) által a megölt láncba tartozó, a különböző entitásokat áldozatok, elkövetők vagy kimutatási pontok formájában ellátott, a megfelelő támadási pontokkal és eljárásokkal összhangban. Az Azure Sentinel kifejezetten az egyes adatforrások által biztosított legértékesebb naplókra koncentrál.
+- **Használati esetek:** A megfelelő támadási vektorok és forgatókönyvek rangsorolása a biztonsági kutatások alapján, összhangban a (z)&CK-keretrendszerével, technikákkal és altechnikákkal, amelyek különböző entitásokat tesznek elérhetővé az áldozatok, az elkövetők vagy a kimutatási pontok számára a kill láncban; Az Azure Sentinel kifejezetten az egyes adatforrások által biztosított legértékesebb naplókra koncentrál.
 
 - **Adatforrások:** Az Azure Sentinel mindenekelőtt az Azure-adatforrások támogatásával, a fenyegetési forgatókönyveknek megfelelő adatok biztosításához pedig a harmadik féltől származó adatforrásokat is kijelöli.
 
@@ -214,7 +214,7 @@ Az Azure Sentinel a BehaviorAnalytics tábla alapján a vadászati lekérdezése
 
 További információ [a vadászatról és a vizsgálati gráfról](./hunting.md) az Azure sentinelben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan működik az Azure Sentinel az entitások viselkedésének analitikai képességei. A megvalósítással kapcsolatos gyakorlati útmutatásért és a szerzett információk felhasználásához tekintse meg a következő cikkeket:
 
 - Az [entitás viselkedés-elemzésének engedélyezése](./enable-entity-behavior-analytics.md) az Azure sentinelben.

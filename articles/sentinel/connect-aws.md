@@ -1,6 +1,6 @@
 ---
 title: AWS-CloudTrail összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Használja az AWS-összekötőt az AWS-erőforrásokhoz tartozó Azure Sentinel-hozzáférés delegálásához, az AWS CloudTrail és a Sentinel közötti megbízhatósági kapcsolat létrehozásához.
+description: Használja az AWS-összekötőt az AWS-erőforrásokhoz tartozó Azure Sentinel-hozzáférés delegálásához, az AWS CloudTrail és az Azure Sentinel közötti megbízhatósági kapcsolat létrehozásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436606"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807597"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 
 Használja az AWS-összekötőt az AWS CloudTrail-kezelési események Azure Sentinelbe való továbbításához. Ez a kapcsolati folyamat delegálja az Azure Sentinel hozzáférését az AWS-erőforrás naplóihoz, és megbízhatósági kapcsolatot létesít az AWS CloudTrail és az Azure Sentinel között. Ez az AWS-ben valósítható meg egy olyan szerepkör létrehozásával, amely engedélyt ad az Azure Sentinelnek az AWS-naplók elérésére.
 
 > [!NOTE]
-> Az AWS CloudTrail [beépített korlátozásokkal](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) rendelkezik a LookupEvents API-ban. A szolgáltatás legfeljebb két tranzakció/másodperc (TPS) használatát teszi lehetővé, és mindegyik lekérdezés legfeljebb 50 rekordot tud visszaadni. Ennek következtében, ha egyetlen bérlő egy régióban másodpercenként több mint 100 rekordot generál, az adatfeldolgozás során várakozó fájlok és késések is megmaradnak.
+> Az AWS CloudTrail [beépített korlátozásokkal](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) rendelkezik a LookupEvents API-ban. A szolgáltatás legfeljebb két tranzakció/másodperc (TPS) használatát teszi lehetővé, és mindegyik lekérdezés legfeljebb 50 rekordot tud visszaadni. Ezért ha egyetlen bérlő egy régióban másodpercenként több mint 100 rekordot hoz létre, adatbetöltési hátralékok és késések alakulnak ki.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -83,7 +83,7 @@ Használja az AWS-összekötőt az AWS CloudTrail-kezelési események Azure Sen
     > [!IMPORTANT]
     > 2020. december 1-től a **AwsRequestId** mezőt a **AwsRequestId_** mező váltotta fel (jegyezze fel a hozzáadott aláhúzást). A régi **AwsRequestId** mezőben lévő adatok az ügyfél megadott adatmegőrzési időszakának végére kerülnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az AWS CloudTrail az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

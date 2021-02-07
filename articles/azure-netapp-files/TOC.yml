@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: Mi az az Azure-beli alkalmazáskonzisztens pillanatkép-készítési eszköz?
       href: azacsnap-introduction.md
+    - name: A kötethez tartozó rögzített kvóták módosítása
+      href: volume-hard-quota-guidelines.md
 - name: Útmutatók
   items:
     - name: Regisztrálás az Azure NetApp Filesra

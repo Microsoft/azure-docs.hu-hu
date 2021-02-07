@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878121"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807869"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-alapú biztonsági alapkonfiguráció Azure webalkalmazási tűzfalhoz
 
@@ -135,7 +135,7 @@ Válassza az Azure PowerShell vagy az Azure CLI lehetőséget a címkéken alapu
 
 **Útmutató**: konfigurálja az Azure webalkalmazási TŰZFAL (WAF) naplóit, amelyeket egy központi biztonsági naplózási megoldásként, például az Azure Sentinel vagy egy harmadik féltől származó Siem-nek kell elküldeni. Ezek a naplók az Azure-tevékenységeket, a diagnosztikai és a valós idejű WAF-naplókat tartalmazzák, ezeket a naplókat különböző eszközök, például az Azure Monitor, az Excel és a Power BI is megtekintheti. Az Azure webalkalmazási tűzfal naplófájljai betekintést nyújtanak az Azure-WAF értékelésére, egyeztetésére és blokkolására szolgáló adatra.
 
-Az Azure Sentinel egy beépített Azure WAF-munkafüzettel rendelkezik, amely áttekintést nyújt az Azure-WAF található biztonsági eseményekről. Ez a munkafüzet az eseményeket, a megfeleltetett és a blokkolt szabályokat tartalmazza, és minden más, ami naplózva lesz a tűzfal naplófájljaiban. Ezzel a telemetria kiindulhat a forgatókönyvek automatizálása, amely a Sentinel által gyűjtött WAF események alapján értesíti vagy felhasználja a Szervizelési műveleteket.
+Az Azure Sentinel egy beépített Azure WAF-munkafüzettel rendelkezik, amely áttekintést nyújt az Azure-WAF található biztonsági eseményekről. Ez a munkafüzet az eseményeket, a megfeleltetett és a blokkolt szabályokat tartalmazza, és minden más, ami naplózva lesz a tűzfal naplófájljaiban. Ez a telemetria a forgatókönyvek automatizálásának elindítására szolgál az Azure Sentinel által gyűjtött WAF események alapján történő értesítéshez vagy szervizelési műveletek elvégzéséhez.
 
 - [Tevékenységek naplóinak megtekintése](../azure-resource-manager/management/view-activity-logs.md)
 
@@ -721,7 +721,7 @@ Egyértelműen megjelölheti az előfizetéseket (például éles környezetben,
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

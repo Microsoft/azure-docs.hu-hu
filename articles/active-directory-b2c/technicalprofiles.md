@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219672"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805394"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -448,14 +448,14 @@ A **IncludeTechnicalProfile** elem a következő attribútumot tartalmazza:
 Az alábbi példa a felvétel használatát szemlélteti:
 
 - *REST-API – Common* – közös műszaki profil alapszintű konfigurációval.
-- *Rest-ValidateProfile* – a *REST-API-commom* technikai profilt tartalmazza, és megadja a bemeneti és a kimeneti jogcímeket.
-- *Rest-UpdateProfile* – a *REST-API-commom* technikai profilt tartalmazza, megadja a bemeneti jogcímeket, és felülírja a `ServiceUrl` metaadatokat.
+- *Rest-ValidateProfile* – tartalmazza a *REST-API-Common* műszaki profilt, és megadja a bemeneti és a kimeneti jogcímeket.
+- *Rest-UpdateProfile* – tartalmazza a *REST-API-Common* műszaki profilt, megadja a bemeneti jogcímeket, és felülírja a `ServiceUrl` metaadatokat.
 
 ```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="REST-API-Commom">
+    <TechnicalProfile Id="REST-API-Common">
       <DisplayName>Base REST API configuration</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
@@ -480,7 +480,7 @@ Az alábbi példa a felvétel használatát szemlélteti:
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="promoCode" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
@@ -492,7 +492,7 @@ Az alábbi példa a felvétel használatát szemlélteti:
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />
       </InputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>

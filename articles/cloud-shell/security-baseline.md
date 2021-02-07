@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24856e458858ad86d953b50709669823b35794fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fde7c7fa619c6d0a36ef0890f31375ac3933e6ee
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348262"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807665"
 ---
 # <a name="azure-security-baseline-for-cloud-shell"></a>Cloud Shell Azure biztonsági alapterve
 
@@ -275,7 +275,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: biztonsági riasztások beépítése az incidensek gyorsreagáló rendszerébe
 
-**Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Használhatja a Azure Security Center adatösszekötőt a riasztások Sentinel továbbításához.
+**Útmutató**: az Azure Security Center-riasztások és-javaslatok exportálása a folyamatos exportálás funkció használatával. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 - [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md) 
 - [Riasztások streamelése az Azure Sentinelbe](../sentinel/connect-azure-security-center.md) 
 
@@ -306,7 +306,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

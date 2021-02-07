@@ -1,6 +1,6 @@
 ---
 title: Az Azure Stack hub-beli virtuális gépek beléptetése az Azure Sentinelbe | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan építheti ki a Azure Monitor, a frissítés és a konfiguráció kezelése virtuálisgép-bővítményt Azure Stack hub virtuális gépeken, és megkezdheti a figyelést a Sentinel használatával.
+description: Ez a cikk bemutatja, hogyan építheti ki a Azure Monitor, a frissítés és a konfiguráció kezelése virtuálisgép-bővítményt Azure Stack hub virtuális gépeken, és megkezdheti a figyelést az Azure Sentinel használatával.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 068296a02af0abd2fb18d284fdaf01b7c1b198fa
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 120f160e3c7bc7a9a0e81586ea4b97ee827dd33e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631142"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807428"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Azure Stack hub-beli virtuális gépek összekötése az Azure Sentinel szolgáltatással
 

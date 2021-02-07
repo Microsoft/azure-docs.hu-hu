@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954182"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807648"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>A Azure Data Factory és az Azure hatáskörébe való kapcsolódás
 
@@ -107,29 +107,29 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 
 ### <a name="data-factory-copy-data-support"></a>Data Factory Adatok másolása-támogatás
 
-| Adattárolási rendszerek | Forrásként támogatott | Fogadóként támogatott |
-| ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Yes | Igen (csak nem bináris másolat) |
-| ADLS Gen2 | Igen | Yes |
-| Azure-blob | Igen | Yes |
-| Azure Cosmos DB (SQL API) | Igen | Yes |
-| Azure Cosmos DB (Mongo API) | Igen | Yes |
-| Azure Cognitive Search | Igen | Yes |
-| Azure Data Explorer | Igen | Yes |
-| Azure Database for Maria DB \* | Igen | Yes |
-| MYSQL-hez készült Azure-adatbázis \* | Igen | Yes |
-| Azure Database for PostgreSQL \* | Igen | Yes |
-| Azure File Storage | Igen | Igen |
-| Azure Table Storage | Igen | Yes |
-| Azure SQL Database \* | Igen | Yes |
-| Azure SQL MI \* | Igen | Yes |
-| Azure szinapszis Analytics (korábban SQL DW) \* | Igen | Yes |
-| SQL Server helyszíni (szükséges) \* | Igen | Yes |
-| Amazon S3 | Igen | Igen |
-| Teradata | Igen | Yes |
-| SAP S4 Hana | Igen | Yes |
-| SAP ECC | Igen | Yes |
-| Hive | Igen | Yes |
+| Adattárolási rendszerek | Forrásként támogatott | 
+| ------------------- | ------------------- | 
+| ADLS Gen1 | Yes | 
+| ADLS Gen2 | Yes | 
+| Azure-blob | Yes |
+| Azure Cosmos DB (SQL API) | Yes | 
+| Azure Cosmos DB (Mongo API) | Yes |
+| Azure Cognitive Search | Yes | 
+| Azure Data Explorer | Yes | 
+| Azure Database for Maria DB \* | Yes | 
+| MYSQL-hez készült Azure-adatbázis \* | Yes | 
+| Azure Database for PostgreSQL \* | Yes |
+| Azure File Storage | Igen | 
+| Azure Table Storage | Igen |
+| Azure SQL Database \* | Yes | 
+| Azure SQL MI \* | Yes | 
+| Azure szinapszis Analytics (korábban SQL DW) \* | Yes | 
+| SQL Server helyszíni  \* | Yes | 
+| Amazon S3 | Igen | 
+| Teradata | Igen | 
+| SAP Table Connector | Yes |
+| SAP ECC | Yes | 
+| Hive | Yes | 
 
 > [!Note]
 > A Lineage funkció Data Factory másolási tevékenységben bizonyos teljesítménybeli terheléssel rendelkezik. Azok számára, akik az adat-előállítói kapcsolatokat a hatáskörébe tartoznak, előfordulhat, hogy bizonyos másolási feladatok végrehajtása tovább tart. A hatás többnyire nem elhanyagolható. Ha a másolási feladatok a szokásosnál hosszabb ideig tartanak, lépjen kapcsolatba az ügyfélszolgálattal.
@@ -137,7 +137,7 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 ### <a name="data-factory-data-flow-support"></a>Adatfolyam-támogatás Data Factory
 
 | Adattárolási rendszerek | Támogatott |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- | 
 | ADLS Gen1 | Yes |
 | ADLS Gen2 | Yes |
 | Azure-blob | Yes |
@@ -147,7 +147,7 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory SSIS-csomag támogatásának végrehajtása
 
 | Adattárolási rendszerek | Támogatott |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- |
 | Azure-blob | Yes |
 | ADLS Gen1 | Yes |
 | ADLS Gen2 | Yes |

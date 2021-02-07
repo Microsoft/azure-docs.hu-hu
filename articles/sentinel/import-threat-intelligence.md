@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660780"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807139"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
 
@@ -36,7 +36,7 @@ A fenyegetések intelligencia (TI) integrálása az Azure Sentinelbe a következ
 - A beépített **elemzési** szabálygyűjtemény használatával biztonsági riasztásokat és incidenseket hozhatja ki az importált fenyegetési intelligenciával.
 - Jelenítse meg a fenyegetési intelligenciával kapcsolatos legfontosabb információkat az Azure Sentinelben a **fenyegetést ismertető munkafüzettel**.
 
-A veszélyforrások felderítése más Azure Sentinel-élményekben, például a **vadászatban** és a **jegyzetfüzetekben** is hasznos környezetet biztosít, és a jelen cikkben nem tárgyalja ezeket a tapasztalatokat [Ian Helló, a Sentinel-ben található Jupyter notebookokon](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), amely a CTI jegyzetfüzeteken belüli használatát fedi le.
+A fenyegetések felderítése más Azure Sentinel-élményekben, például a **vadászatban** és a **jegyzetfüzetekben** is hasznos környezetet biztosít, és a jelen cikkben nem tárgyalja ezeket a tapasztalatokat [Ian Helló, az Azure Sentinel Jupyter Notebooks](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239)szolgáltatásában, amely a CTI a notebookokon belüli használatát fedi le.
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>Az Azure Sentinel adatösszekötői a fenyegetések felderítéséhez
 
@@ -326,7 +326,7 @@ Nézzük meg a leggyakoribb feladatok közül kettőt, és hozzon létre új ves
 
 1. Válassza ki a kijelző típusát, majd töltse ki a piros csillaggal (*) jelölt kötelező mezőket az **új kijelző** panelen.
 
-1. Kattintson az **Alkalmaz** elemre. A rendszer hozzáadja a kijelzőt a mutatók rácshoz, és a **naplókban** is elküldi a ThreatIntelligenceIndicator táblának.
+1. Kattintson az **Alkalmaz** gombra. A rendszer hozzáadja a kijelzőt a mutatók rácshoz, és a **naplókban** is elküldi a ThreatIntelligenceIndicator táblának.
 
 A veszélyforrások címkézésével egyszerűen csoportosíthatja őket, így könnyebben megtalálhatja őket. A címkét jellemzően egy adott incidenshez kapcsolódó mutatókra, illetve egy adott ismert szereplő vagy egy jól ismert támadási kampány fenyegetéseit képviselő mutatókra alkalmazhatja. Megcímkézheti a veszélyforrások kijelzőit egyenként, vagy egyszerre több kiválaszthatja a jelölőket, és megcímkézheti őket. Az alábbiakban látható egy példa arra, hogy több mutatót is megcímkéz egy incidens-AZONOSÍTÓval. Mivel a címkézés ingyenes, a javasolt eljárás a fenyegetést jelző címkék szabványos elnevezési konvencióinak létrehozása. Az egyes mutatókhoz több címkét is alkalmazhat.
 

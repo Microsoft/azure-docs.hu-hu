@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874906"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807546"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -84,7 +84,7 @@ Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatásköré
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="A választható adatforrások listáját bemutató kép":::
 
-1. Adjon egy rövid nevet a Power BI-példánynak.
+3. Adjon egy rövid nevet a Power BI-példánynak.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Kép: Power BI adatforrás-felhasználóbarát név":::
 
@@ -94,21 +94,25 @@ Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatásköré
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="Power BI adatforrás regisztrálva":::
 
-1. Adja meg a vizsgálat nevét. Figyelje meg, hogy az egyetlen támogatott hitelesítési módszer a **felügyelt identitás**.
+    > [!Note]
+    > Power BI esetében az adatforrás regisztrálása és vizsgálata csak egy példány esetében engedélyezett.
+
+
+4. Adja meg a vizsgálat nevét. Figyelje meg, hogy az egyetlen támogatott hitelesítési módszer a **felügyelt identitás**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="A Power BI Scan telepítőjét ábrázoló kép":::
 
     A vizsgálat nevének 3-63 karakter hosszúnak kell lennie, és csak betűket, számokat, aláhúzásokat és kötőjeleket tartalmazhat.  A szóközök nem engedélyezettek.
 
-1. Egy vizsgálati trigger beállítása. A lehetőségek **egyszer**, **7 naponta** és **30 naponként**.
+5. Egy vizsgálati trigger beállítása. A lehetőségek **egyszer**, **7 naponta** és **30 naponként**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="Trigger rendszerképének vizsgálata":::
 
-1. Az **új vizsgálat áttekintése** lapon válassza a **Mentés és Futtatás** lehetőséget a vizsgálat elindításához.
+6. Az **új vizsgálat áttekintése** lapon válassza a **Mentés és Futtatás** lehetőséget a vizsgálat elindításához.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Power BI képernyő rendszerképének mentése és futtatása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

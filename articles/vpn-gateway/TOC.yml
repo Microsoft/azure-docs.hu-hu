@@ -167,7 +167,7 @@
               href: vpn-profile-intune.md
         - name: OpenVPN
           items:
-            - name: Az OpenVPN konfigurálása pont–hely kapcsolatokhoz
+            - name: Az OpenVPN-alagút típusának konfigurálása
               href: vpn-gateway-howto-openvpn.md
             - name: Az OpenVPN-ügyfelek konfigurálása
               href: vpn-gateway-howto-openvpn-clients.md

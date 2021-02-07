@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2020
-ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.date: 02/07/2021
+ms.openlocfilehash: 03061f71ee0cceaa39c7ab9b258f9d3a0a84f1be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895968"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807886"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -28,8 +28,7 @@ A befoglalt táblákból származó összes adatok szűrő nélkül exportálhat
 ## <a name="other-export-options"></a>Egyéb exportálási lehetőségek
 Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja az adatok Log Analytics munkaterületről. Az egyes forgatókönyvekben az adatok exportálásának egyéb lehetőségei a következők:
 
-- Ütemezett exportálás egy logikai alkalmazás használatával a log lekérdezésből. Ez hasonló az adatexportálási szolgáltatáshoz, de lehetővé teszi, hogy szűrt vagy összesített adatokat küldjön az Azure Storage-ba. Ez a metódus azonban a [naplózási lekérdezési korlátokra](../service-limits.md#log-analytics-workspaces)  vonatkozik, lásd: [log Analytics munkaterületről származó adatok archiválása az Azure Storage-ba a Logic App használatával](logs-export-logic-app.md).
-- Egyszeri exportálás logikai alkalmazás használatával. [A Logic apps és a Power automatizálás Azure monitor naplók összekötője](logicapp-flow-connector.md)című témakörben talál.
+- Ütemezett exportálás egy logikai alkalmazás használatával a log lekérdezésből. Ez hasonló az adatexportálási szolgáltatáshoz, de lehetővé teszi, hogy szűrt vagy összesített adatokat küldjön az Azure Storage-ba. Ez a metódus azonban a [naplózási lekérdezési korlátokra](../service-limits.md#log-analytics-workspaces)is vonatkozik, lásd: [adatok archiválása log Analytics munkaterületről az Azure Storage-ba a Logic App használatával](logs-export-logic-app.md).
 - Egyszeri exportálás a helyi gépre PowerShell-parancsfájl használatával. Lásd: [meghívás-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
@@ -47,16 +46,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 - Létrehozhat két exportálási szabályt egy munkaterületen – a-ben egy szabály lehet az Event hub és egy szabály a Storage-fiókhoz.
 - A célként megadott Storage-fióknak vagy az Event hub-nek ugyanabban a régióban kell lennie, mint a Log Analytics munkaterületnek.
 - Az exportálandó táblázatok neve nem lehet hosszabb 60 karakternél egy Storage-fióknál, és legfeljebb 47 karakterből állhat az Event hub-ban. A hosszú névvel rendelkező táblákat a rendszer nem exportálja.
-
-> [!NOTE]
-> Log Analytics az adatexportálás olyan hozzáfűzési blobként írja az adatot, amely jelenleg előzetes verzióban érhető el a Azure Data Lake Storage Gen2. A tárolóba való exportálás konfigurálása előtt meg kell nyitnia egy támogatási kérést. A kérelemhez használja a következő adatokat.
-> - Problématípus: Technikai
-> - Előfizetés: Az Ön előfizetése
-> - Szolgáltatás: Data Lake Storage Gen2
-> - Erőforrás: az erőforrás neve
-> - Összefoglalás: előfizetés-regisztráció kérése Log Analytics adatexportálásból származó adatok fogadásához.
-> - Probléma típusa: kapcsolat
-> - Probléma altípusa: kapcsolódási probléma
+- A Azure Data Lake Storage blob-támogatásának hozzáfűzése mostantól [korlátozott nyilvános előzetes](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/) verzióban érhető el
 
 ## <a name="data-completeness"></a>Az adatteljesség
 Az adatexportálás továbbra is újra próbálkozik az adatok küldésével akár 30 percig, ha a cél nem érhető el. Ha a 30 perc elteltével sem érhető el, akkor a rendszer elveti az adatvesztést, amíg a célhely elérhetővé nem válik.
@@ -76,6 +66,9 @@ A Storage-fiók adatformátuma [JSON-vonal](./resource-logs-blob-format.md). Ez 
 [![Tárolási mintaadatok](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
 Log Analytics adatexportálás írási blobokat írhat a nem módosítható tárolási fiókokba, ha az időalapú adatmegőrzési házirendek engedélyezve vannak a *allowProtectedAppendWrites* beállításnál. Így új blokkokat írhat egy hozzáfűzési blobba, miközben megőrizheti a módosíthatatlansági védelmét és megfelelőségét. Lásd: a [védett hozzáfűzési Blobok írásának engedélyezése](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+> [!NOTE]
+> A Azure Data Lake Storage blob-támogatásának hozzáfűzése az összes Azure-régióban már előzetes verzióban érhető el. [A korlátozott nyilvános előzetes](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u) verzióra való regisztrálás előtt hozzon létre egy exportálási szabályt Azure Data Lake tárterületre. Az Exportálás ezen regisztráció nélkül nem fog működni.
 
 ### <a name="event-hub"></a>Eseményközpont
 A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent* nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja a megadott táblák összes adatait.

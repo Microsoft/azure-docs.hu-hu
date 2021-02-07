@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption – mintaszkriptek
+title: Azure Disk Encryption a Windows rendszerű virtuális gépekhez készült minta-parancsfájlok
 description: Ez a cikk a Windows rendszerű virtuális gépek Microsoft Azure lemezes titkosításának függeléke.
 author: msmbaldwin
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f113a1e559798328a2ef81336e8afff02732bb90
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912038"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804954"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
@@ -81,7 +81,7 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 Az alábbi szakaszoknak az Azure IaaS-ben titkosított virtuális merevlemezként való üzembe helyezéséhez egy előre titkosított Windows virtuális merevlemez előkészítéséhez van szükségük. Az információk segítségével új Windowsos virtuális gépet (VHD-t) készíthet a Azure Site Recovery vagy az Azure-ban. A virtuális merevlemezek előkészítésével és feltöltésével kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gépek létrehozásához az Azure-ban](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Csoportházirend frissítése, hogy az operációs rendszer védelmét nem TPM-t engedélyezze
-Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás** , amelyet a **helyi számítógép-házirend**  >  **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők** szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit**  >  , **további hitelesítésre van szükség az indításkor**  >  , **kompatibilis TPM nélkül** , az alábbi ábrán látható módon:
+Konfigurálja a BitLocker csoportházirend beállítást **BitLocker meghajtótitkosítás**, amelyet a **helyi számítógép-házirend**  >  **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők** szakaszban talál. Ha módosítani szeretné az **operációs rendszer meghajtóit**  >  ,**további hitelesítésre van szükség az indításkor**  >  ,**kompatibilis TPM nélkül**, az alábbi ábrán látható módon:
 
 ![Microsoft Antimalware szolgáltatás az Azure-ban](../media/disk-encryption/disk-encryption-fig8.png)
 

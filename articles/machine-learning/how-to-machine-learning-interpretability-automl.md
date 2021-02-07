@@ -10,12 +10,12 @@ ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 19cebefd64f5b6dce9c265a591c8d5072fcd83db
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: fe0b2abb7fa2ca986a896a75e5f6d4c238d70109
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222734"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807258"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Értelmezhetőség: modellmagyarázatok az automatizált gépi tanulásban (előzetes verzió)
 
@@ -40,7 +40,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Kérje le a magyarázatot a alkalmazásból `best_run` , amely a nyers és a megtervezett funkciók magyarázatait is tartalmazza.
 
-> [!Warning]
+> [!NOTE]
 > A tolmácsolás, a legjobb modell magyarázata nem érhető el az automatikus ML-előrejelzési kísérletekhez, amelyek a következő algoritmusokat ajánlják a legjobb modellként: 
 > * TCNForecaster
 > * AutoArima

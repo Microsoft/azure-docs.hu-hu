@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660576"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807003"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Saját Machine Learning (ML) bekapcsolása az Azure Sentinelbe
 
@@ -79,10 +79,10 @@ Ha már rendelkezik Databricks vagy bármely más Spark-környezettel, és inká
 
 A BYO ML-csomag tartalmazza a Microsoft ajánlott eljárásait és kutatását az ML-ben a biztonság érdekében. Ebben a csomagban a biztonsági problémákkal kapcsolatos segédprogramok, jegyzetfüzetek és algoritmus-sablonok következő listáját biztosítjuk.
 
-| Fájlnév | Leírás |
+| Fájlnév | Description |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | A Blobok Azure-ból való olvasására és Log Analyticsba írására szolgáló segédprogramokat tartalmaz. |
-| AnomalousRASampleData | A notebook bemutatja a rendellenes erőforrás-hozzáférési modell használatát a Sentinelben a generált képzési és tesztelési mintaadatok használatával. |
+| AnomalousRASampleData | A notebook a rendellenes erőforrás-hozzáférési modell használatát mutatja be az Azure Sentinel-ben az előállított képzési és tesztelési mintaadatok használatával. |
 | AnomalousRATraining. ipynb | Jegyzetfüzet az algoritmus betanításához, a modellek létrehozásához és mentéséhez. |
 | AnomalousRAScoring. ipynb | Jegyzetfüzet a modell futtatásához, az eredmény megjelenítéséhez és a pontszám visszaírásához vissza az Azure Sentinelbe. |
 |
@@ -99,7 +99,7 @@ Ha még nem rendelkezik ilyennel, a saját Databricks-környezetét kell beáll�
 
 ### <a name="auto-export-instruction"></a>Automatikus exportálási utasítás
 
-Ha saját adatai alapján szeretne egyéni ML-modelleket létrehozni, exportálnia kell az adatait Log Analytics egy blob Storage vagy Event hub-erőforrásba, hogy a ML-modell hozzáférhessen a Databricks. Ismerje meg, hogyan lehet az [Azure sentinelbe bevenni az adatmennyiséget](connect-data-sources.md).
+Ha saját adatai alapján szeretne egyéni ML-modelleket létrehozni az Azure Sentinelben, exportálnia kell az adatait Log Analytics egy blob Storage vagy Event hub-erőforrásba, hogy a ML-modell hozzáférhessen a Databricks. Ismerje meg, hogyan lehet az [Azure sentinelbe bevenni az adatmennyiséget](connect-data-sources.md).
 
 Ebben a példában az Azure Blob Storage-ban be kell állítania a fájlmegosztás hozzáférési naplójának betanítási adatait. Az adat formátuma a jegyzetfüzetben és a tárakban van dokumentálva.
 
@@ -141,7 +141,7 @@ Az automatikus exportálás Log Analytics által nem támogatott egyéni adatér
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Az Azure Sentinelen kívüli adatkezelés
 
-Az Azure Sentinelen kívülről is átviheti az adatait a blob Storage-ba vagy az Event hub-ba, és összekapcsolhatja őket a Sentinel-adatokkal, hogy felkészítse az ML-modell 
+Az Azure Sentinelen kívülről is átviheti az adatait a blob Storage-ba vagy az Event hub-ra, és összekapcsolhatja őket az Azure Sentinel-adatokkal, hogy felkészítse az ML-modell 
  
 ### <a name="copy-and-install-the-related-packages"></a>A kapcsolódó csomagok másolása és telepítése
 

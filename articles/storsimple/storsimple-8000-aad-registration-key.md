@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631324"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805040"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>Ből Active Directory (AD) hitelesítés használata a StorSimple
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>Azure Active Directory (AD) hitelesítés használata a StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -75,9 +75,9 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>A HRE szolgáltatás regisztrációs kulcsának előállítása
 
-1. A **StorSimple Eszközkezelő**lépjen a **felügyeleti &gt; ** **kulcsok**elemre. A keresési sáv használatával is megkeresheti a _kulcsokat_.
+1. A **StorSimple Eszközkezelő** lépjen a **felügyeleti &gt;** **kulcsok** elemre. A keresési sáv használatával is megkeresheti a _kulcsokat_.
     
-2. Kattintson a **kulcs előállítása**elemre.
+2. Kattintson a **kulcs előállítása** elemre.
 
     ![Kattintson az újragenerált elemre.](./media/storsimple-8000-aad-registration-key/aad-click-generate-registration-key.png)
 

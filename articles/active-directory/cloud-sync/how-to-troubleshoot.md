@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 33af92c1987d9cd0c88e689dd7bafccadd60cb06
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613570"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805529"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Felhőalapú szinkronizálás – hibaelhárítás
 
@@ -164,7 +164,7 @@ A Felhőbeli szinkronizálás figyeli a konfiguráció állapotát, és nem kifo
 
 Az állapot kiválasztásával további információkat tekinthet meg a karanténba. Megszerezheti a hibakódot és az üzenetet is.
 
-![Karantén állapotával kapcsolatos információk](media/how-to-troubleshoot/quarantine-2.png)
+![Képernyőkép, amely további információkat jelenít meg a karanténba helyezésről.](media/how-to-troubleshoot/quarantine-2.png)
 
 A jobb gombbal kattintva további beállítások jelennek meg:
     
@@ -172,7 +172,7 @@ A jobb gombbal kattintva további beállítások jelennek meg:
    - ügynök megtekintése
    - karantén törlése
 
-![Karantén állapotával kapcsolatos információk](media/how-to-troubleshoot/quarantine-4.png)
+![Képernyőkép, amely a helyi menü beállításait jeleníti meg.](media/how-to-troubleshoot/quarantine-4.png)
 
 
 ### <a name="resolve-a-quarantine"></a>Karantén feloldása
@@ -186,7 +186,7 @@ A vízjel törléséhez és a kiépítési feladatokhoz tartozó különbözeti 
 
 Meg kell jelennie a karantén törlésének.
 
-![Karantén állapotával kapcsolatos információk](media/how-to-troubleshoot/quarantine-5.png)
+![Képernyőfelvétel: a karantén törlését bemutató értesítés.](media/how-to-troubleshoot/quarantine-5.png)
 
 Ezután az ügynök állapotaként kifogástalan állapotot kell látnia.
 

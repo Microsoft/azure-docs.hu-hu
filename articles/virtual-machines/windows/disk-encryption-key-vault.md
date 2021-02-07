@@ -1,5 +1,5 @@
 ---
-title: Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz
+title: Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz Windows rendszerű virtuális gépen
 description: Ez a cikk a kulcstartó létrehozásának és konfigurálásának lépéseit ismerteti a Windows rendszerű virtuális gépek Azure Disk Encryption való használatához.
 ms.service: virtual-machines
 ms.subservice: security
@@ -8,14 +8,14 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41d1161c7fc6fc76c4b7a5cf0af10c42576b99da
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c1fcd639eb55f61c215742d0eec7821e282010a2
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736701"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807514"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz
 
 A Azure Disk Encryption a Azure Key Vault használatával vezérli és kezeli a lemezes titkosítási kulcsokat és titkokat.  További információ a kulcstartókkal kapcsolatban: [Bevezetés a Azure Key Vault használatába](../../key-vault/general/overview.md) és [a kulcstartó biztonságossá tétele](../../key-vault/general/secure-your-key-vault.md). 
 
@@ -61,7 +61,7 @@ Connect-AzAccount
 
 [!INCLUDE [disk-encryption-key-vault](../../../includes/disk-encryption-key-vault.md)]
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Előfeltételként Azure Disk Encryption parancssori felület parancsfájlja](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption előfeltételek PowerShell-parancsfájl](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

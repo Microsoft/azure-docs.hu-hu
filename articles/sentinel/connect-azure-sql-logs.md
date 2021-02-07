@@ -8,20 +8,20 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: yelevin
-ms.openlocfilehash: df132c35ebb04596d91720431f5b08cb88e2abd9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98104189"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807733"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Azure SQL Database-diagnosztika és-naplózási naplók összekötése
 
 Az Azure SQL egy teljes körűen felügyelt, szolgáltatásként szolgáló platform, amely az adatbázis-kezelési funkciókat, például a verziófrissítést, a javítást, a biztonsági mentést és a figyelést kezeli, felhasználói beavatkozás nélkül. 
 
-Az Azure SQL Database-összekötő lehetővé teszi az adatbázisok naplózási és diagnosztikai naplóinak a Sentinelbe való továbbítását, így folyamatosan figyelheti a tevékenységeket az összes példányban.
+Az Azure SQL Database-összekötő lehetővé teszi az adatbázisok naplózási és diagnosztikai naplóinak az Azure Sentinelbe való továbbítását, így folyamatosan figyelheti a tevékenységeket az összes példányban.
 
-- A diagnosztikai naplók összekapcsolása lehetővé teszi, hogy különböző adattípusú adatbázis-diagnosztikai naplókat küldjön a Sentinel-munkaterületre.
+- A diagnosztikai naplók összekapcsolása lehetővé teszi, hogy különböző adattípusú adatbázis-diagnosztikai naplókat küldjön az Azure Sentinel-munkaterületre.
 
 - A naplózási naplók összekapcsolása lehetővé teszi, hogy kiszolgáló szintjén továbbítsa a biztonsági naplózási naplókat az összes Azure SQL-adatbázisból.
 

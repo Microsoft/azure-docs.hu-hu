@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 68a4703cc2dc1b2898057e138fda7de9eff146e7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368661"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807462"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rövid útmutató: privát végpont létrehozása Azure PowerShell használatával
+# <a name="use-powershell-to-create-a-private-endpoint"></a>Privát végpont létrehozása a PowerShell használatával
 
 Ismerkedjen meg az Azure Private-hivatkozással egy privát végpont használatával, amellyel biztonságosan csatlakozhat egy Azure-webalkalmazáshoz.
 
@@ -31,7 +31,7 @@ A magánhálózati végpontok különböző típusú Azure-szolgáltatásokhoz, 
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -262,9 +262,9 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
     A rendszer a webalkalmazás neveként a **10.0.0.5** magánhálózati IP-címét adja vissza.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
-10. Nyissa meg az Internet Explorert a **myVM** -ben lévő megerősített kapcsolódásban.
+10. Nyissa meg az Internet Explorert a **myVM**-ben lévő megerősített kapcsolódásban.
 
-11. Adja meg a webalkalmazás ( **https:// \<your-webapp-name> . azurewebsites.net** ) URL-címét.
+11. Adja meg a webalkalmazás ( **https:// \<your-webapp-name> . azurewebsites.net**) URL-címét.
 
 12. Ha még nem telepítette az alkalmazást, az alapértelmezett webalkalmazás-oldal jelenik meg:
 
@@ -279,7 +279,7 @@ Ha végzett a privát végpont és a virtuális gép használatával, a [Remove-
 Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 

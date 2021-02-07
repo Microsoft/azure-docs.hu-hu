@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd97aef5d8c959aeb2e0314e051790fd0421585
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935209"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806935"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Az Azure Sentinel-adatnormalizálás sémájának referenciája
 
 ## <a name="terminology"></a>Terminológia
 
-A Sentinel sémái a következő terminológiát használják:
+Az Azure Sentinel-sémák a következő terminológiát használják:
 
 | Időszak | Definíció |
 | ---- | ---------- |
@@ -45,7 +45,7 @@ Az értékeket az alábbi irányelvek alapján kell normalizálni. Ez a normaliz
 | **IP-cím** | IP-cím | A sémának nincs külön IPv4-és IPv6-címe. Bármely IP-cím mező tartalmazhat IPv4-címet vagy IPv6-címet:<ul><li>IPv4 pont-decimális jelöléssel</li><li>Az IPv6 8 hextets jelöléssel rendelkezik, amely lehetővé teszi az itt ismertetett rövid formák használatát.</li></ul> |
 | **Felhasználó** | Sztring | A következő 3 felhasználói mező érhető el:<ul><li>Felhasználónév</li><li>Felhasználói UPN</li><li>Felhasználói tartomány</li></ul> |
 | **Felhasználói azonosító** | Sztring | A következő két felhasználói azonosító jelenleg támogatott:<ul><li>Felhasználói SID</li><li>Azure Active Directory-azonosító</li></ul> |
-| **Eszköz** | Sztring | A következő 3 eszköz/állomás oszlop támogatott:<ul><li>ID (Azonosító)</li><li>Name (Név)</li><li>Teljes tartománynév (FQDN)</li></ul> |
+| **Eszköz** | Sztring | A következő 3 eszköz/állomás oszlop támogatott:<ul><li>ID (Azonosító)</li><li>Name</li><li>Teljes tartománynév (FQDN)</li></ul> |
 | **Ország** | Sztring | ISO 3166-1-et használó karakterlánc a következő prioritás szerint:<ul><li>Alpha-2 kódok (például a Egyesült Államok)</li><li>Alpha-3 kódok (azaz az Egyesült Államok a Egyesült Államok)</li><li>Rövid név</li></ul> |
 | **Régió** | Sztring | Az ország alosztásának neve az ISO 3166-2 használatával |
 | **City** | Sztring | |
@@ -74,15 +74,15 @@ Alább látható a hálózati munkamenetek táblázatának sémája, a verzióva
 | EventResourceId | Eszköz azonosítója (karakterlánc) | /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /syslogserver1 | Az üzenetet létrehozó eszköz erőforrás-azonosítója. | Esemény |
 | EventReportUrl | Sztring | https://192.168.1.1/repoerts/ae3-56.htm | A jelentéskészítő eszköz által létrehozott teljes jelentésre mutató hivatkozás | Esemény |
 | EventVendor | Sztring | Microsoft | Az eseményt előállító termék gyártója. | Esemény |
-| EventResult | Többértékű: sikeres, részleges, sikertelen, [üres] (karakterlánc) | Success | A tevékenységhez jelentett eredmény. Üres érték, ha nem alkalmazható. | Esemény |
+| EventResult | Többértékű: sikeres, részleges, sikertelen, [üres] (karakterlánc) | Siker | A tevékenységhez jelentett eredmény. Üres érték, ha nem alkalmazható. | Esemény |
 | EventResultDetails | Sztring | Helytelen jelszó | A EventResult által jelentett eredmény oka vagy részletei | Esemény |
-| EventSchemaVersion | Valós | 0,1 | Azure Sentinel-séma verziója. Jelenleg 0,1. | Esemény |
+| EventSchemaVersion | Valós | 0.1 | Azure Sentinel-séma verziója. Jelenleg 0,1. | Esemény |
 | EventSeverity | Sztring | Alacsony | Ha a jelentett tevékenység biztonsági hatással van, a hatás súlyosságát jelzi. | Esemény |
 | EventOriginalUid | Sztring | af6ae8fe-ff43-4a4c-b537-8635976a2b51 | A jelentési eszköz rekordjának azonosítója. | Esemény |
 | EventStartTime | Dátum/idő | Lásd az "adattípusok" kifejezést. | A megadott esemény időpontja | Esemény |
 | TimeGenerated | Dátum/idő | Lásd az "adattípusok" kifejezést. | Az esemény időpontja, a jelentéskészítési forrás jelentése szerint. | Egyéni mező |
 | EventTimeIngested | Dátum/idő | Lásd az "adattípusok" kifejezést. | Az esemény az Azure Sentinelbe való betöltésének időpontja. Hozzá lesz adva az Azure Sentinel. | Esemény |
-| EventUid | GUID (karakterlánc) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | A Sentinel által a sorok megjelölésére használt egyedi azonosító. | Esemény |
+| EventUid | GUID (karakterlánc) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Az Azure Sentinel által egy sor megjelölésére használt egyedi azonosító. | Esemény |
 | NetworkApplicationProtocol | Sztring | HTTPS | A kapcsolat vagy a munkamenet által használt Application Layer protokoll. | Network (Hálózat) |
 | DstBytes | int | 32455 | A célhelyről a kapcsolat vagy a munkamenet forrására eljuttatott bájtok száma. | Cél |
 | SrcBytes | int | 46536 | A forrásról a kapcsolat vagy a munkamenet céljára eljuttatott bájtok száma. | Forrás |
@@ -106,11 +106,11 @@ Alább látható a hálózati munkamenetek táblázatának sémája, a verzióva
 | DstResourceId | Eszköz azonosítója (karakterlánc) |  /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /victim | A célként megadott eszköz erőforrás-azonosítója. | Cél |
 | DstNatIpAddr | IP-cím | 2::1 | Ha egy közvetítő NAT-eszköz, például egy tűzfal, a NAT-eszköz által a forrással való kommunikációhoz használt IP-cím. | Cél NAT,<br>IP |
 | DstNatPortNumber | int | 443 | Ha egy közvetítő NAT-eszköz, például egy tűzfal a jelentést, a NAT-eszköz által a forrással való kommunikációhoz használt port. | Cél NAT,<br>Port |
-| DstUserSid | Felhasználói SID |  S-12-1445 | A munkamenet céljához társított identitás felhasználói azonosítója. Általában a kiszolgálók hitelesítéséhez használt identitás. Részletekért lásd az "adattípusok" című témakört. | Cél<br>Felhasználó |
-| DstUserAadId | Karakterlánc (GUID) | ae92b0b4-cfba-4b42-85a0-fbd862f4df54 | A felhasználó Azure AD-fiók objektumának azonosítója a munkamenet céljának végén | Cél<br>Felhasználó |
-| DstUserName | Username (karakterlánc) | johnd | A munkamenet céljához társított identitás felhasználóneve.  | Cél<br>Felhasználó |
-| DstUserUpn | sztring | johnd@anon.com | A munkamenet céljához hozzárendelt identitás UPN-azonosítója. | Cél<br>Felhasználó |
-| DstUserDomain | sztring | MUNKACSOPORT | A fiók tartomány-vagy számítógépnév a munkamenet célhelyén | Cél<br>Felhasználó |
+| DstUserSid | Felhasználói SID |  S-12-1445 | A munkamenet céljához társított identitás felhasználói azonosítója. Általában a kiszolgálók hitelesítéséhez használt identitás. Részletekért lásd az "adattípusok" című témakört. | Cél<br>User |
+| DstUserAadId | Karakterlánc (GUID) | ae92b0b4-cfba-4b42-85a0-fbd862f4df54 | A felhasználó Azure AD-fiók objektumának azonosítója a munkamenet céljának végén | Cél<br>User |
+| DstUserName | Username (karakterlánc) | johnd | A munkamenet céljához társított identitás felhasználóneve.  | Cél<br>User |
+| DstUserUpn | sztring | johnd@anon.com | A munkamenet céljához hozzárendelt identitás UPN-azonosítója. | Cél<br>User |
+| DstUserDomain | sztring | MUNKACSOPORT | A fiók tartomány-vagy számítógépnév a munkamenet célhelyén | Cél<br>User |
 | DstZone | Sztring | DMZ | A cél hálózati zónája, a jelentéskészítő eszköz által definiált módon. | Cél |
 | DstGeoLongitude | Hosszúság (Double) | – 73,211944 | A cél IP-címhez társított földrajzi koordináta hosszúsága | Cél<br>Térség |
 | DvcAction | Többszörös érték: Engedélyezés, megtagadás, drop (karakterlánc) | Engedélyezés | Ha egy közvetítő eszköz, például egy tűzfal a jelentést, az eszköz által végrehajtott művelet. | Eszköz |
@@ -149,11 +149,11 @@ Alább látható a hálózati munkamenetek táblázatának sémája, a verzióva
 | SrcResourceId | Sztring | /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /syslogserver1 | Az üzenetet létrehozó eszköz erőforrás-azonosítója. | Forrás |
 | SrcNatIpAddr | IP-cím | 4.3.2.1 | Ha egy közvetítő NAT-eszköz, például egy tűzfal a jelentést, a NAT-eszköz által a célhoz való kommunikációhoz használt IP-cím. | Forrás NAT,<br>IP |
 | SrcNatPortNumber | Egész szám | 345 | Ha egy közvetítő NAT-eszköz, például egy tűzfal a jelentést, a NAT-eszköz által a célhoz való kommunikációhoz használt port. | Forrás NAT,<br>Port |
-| SrcUserSid | Felhasználói azonosító (karakterlánc) | S-15-1445 | A munkamenetek forrásához társított identitás felhasználói azonosítója. Általában az ügyfélen műveletet végző felhasználó. Részletekért lásd az "adattípusok" című témakört. | Forrás<br>Felhasználó |
-| SrcUserAadId | Karakterlánc (GUID) | 16c8752c-7dd2-4cad-9e03-fb5d1cee5477 | A felhasználó Azure AD-fiók objektumának azonosítója a munkamenet forrásának végén | Forrás<br>Felhasználó |
-| SrcUserName | Username (karakterlánc) | Bob | A munkamenetek forrásához társított identitás felhasználóneve. Általában az ügyfélen műveletet végző felhasználó. Részletekért lásd az "adattípusok" című témakört. | Forrás<br>Felhasználó |
-| SrcUserUpn | sztring | bob@alice.com | A munkamenetet kezdeményező fiók UPN-címe | Forrás<br>Felhasználó |
-| SrcUserDomain | sztring | ASZTALI | A munkamenetet kezdeményező fiók tartománya | Forrás<br>Felhasználó |
+| SrcUserSid | Felhasználói azonosító (karakterlánc) | S-15-1445 | A munkamenetek forrásához társított identitás felhasználói azonosítója. Általában az ügyfélen műveletet végző felhasználó. Részletekért lásd az "adattípusok" című témakört. | Forrás<br>User |
+| SrcUserAadId | Karakterlánc (GUID) | 16c8752c-7dd2-4cad-9e03-fb5d1cee5477 | A felhasználó Azure AD-fiók objektumának azonosítója a munkamenet forrásának végén | Forrás<br>User |
+| SrcUserName | Username (karakterlánc) | Bob | A munkamenetek forrásához társított identitás felhasználóneve. Általában az ügyfélen műveletet végző felhasználó. Részletekért lásd az "adattípusok" című témakört. | Forrás<br>User |
+| SrcUserUpn | sztring | bob@alice.com | A munkamenetet kezdeményező fiók UPN-címe | Forrás<br>User |
+| SrcUserDomain | sztring | ASZTALI | A munkamenetet kezdeményező fiók tartománya | Forrás<br>User |
 | SrcZone | Sztring | Koppintson a  | A forrás hálózati zónája a jelentéskészítő eszköz által definiált módon. | Forrás |
 | NetworkProtocol | Sztring | TCP | A kapcsolat vagy a munkamenet által használt IP-protokoll. Jellemzően TCP, UDP vagy ICMP | Network (Hálózat) |
 | CloudAppName | Sztring | Facebook | Egy proxy által azonosított HTTP-alkalmazáshoz tartozó célalkalmazás neve. | Felhőbeli |
@@ -169,7 +169,7 @@ Alább látható a hálózati munkamenetek táblázatának sémája, a verzióva
 | FileExtension |  Sztring | exe | A protokoll hálózati kapcsolatokon keresztül továbbított fájl típusa, például FTP és HTTP. | Fájl
 | FileMimeType | Sztring | alkalmazás/msword | A hálózati kapcsolatokon keresztül továbbított fájl MIME-típusa (például FTP és HTTP) | Fájl |
 | FileSize | Egész szám | 23500 | A protokollok hálózati kapcsolatokon keresztül továbbított fájljának mérete bájtban megadva. | Fájl |
-| HttpVersion | Sztring | 2,0 | HTTP/HTTPS hálózati kapcsolatok HTTP-kérelmének verziója. | Http |
+| HttpVersion | Sztring | 2.0 | HTTP/HTTPS hálózati kapcsolatok HTTP-kérelmének verziója. | Http |
 | HttpRequestMethod | Sztring | GET | HTTP/HTTPS hálózati munkamenetek HTTP-metódusa. | Http |
 | HttpStatusCode | Sztring | 404 | HTTP/HTTPS hálózati munkamenetek HTTP-állapotkód. | Http |
 | HttpContentType | Sztring | multipart/űrlap – adatértékek; határ = valami | A http-válasz tartalomtípusának fejléce HTTP/HTTPS hálózati munkamenetekhez. | Http |

@@ -4,12 +4,12 @@ description: Összefoglalja a támogatási beállításokat és az Azure Disk Ba
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: d6a8276de9674266415604e8654034f129da8f50
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 7d6de863a45bcadd73e847cbf407c13363952151
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430947"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806104"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Az Azure Disk Backup támogatási mátrixa (előzetes verzió)
 
@@ -22,7 +22,7 @@ Az Azure-lemezek védelme [Azure Backup](./backup-overview.md) használatával b
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az Azure Disk Backup előzetes verzióban érhető el a következő régiókban: USA nyugati régiója, USA nyugati középső régiója, Kelet-RÉGIÓJA, Közép-Kanada, Egyesült Királyság nyugati régiója, Közép-Ausztrália, Korea középső régiója, Dél-Japán, Nyugat-Japán, Kelet-Ázsia, Egyesült Arab Emírségek, Dél-Brazília, Közép-India. 
+Az Azure Disk Backup előzetes verzióban érhető el a következő régiókban: USA nyugati régiója, USA nyugati középső régiója, Kelet-RÉGIÓJA, Közép-Kanada, Egyesült Királyság nyugati régiója, Észak-Svájc, Nyugat-Svájc, Ausztrália középső régiója, Ausztrália középső régiója, Korea középső régiója, Dél-Korea, Japán Kelet-Ázsia nyugati régiója, Egyesült Arab Emírségek, Dél-Brazília, Közép-India 
 
 További régiók lesznek bejelentve, amikor elérhetővé válnak.
 
