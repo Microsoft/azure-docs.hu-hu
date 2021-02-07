@@ -1,17 +1,17 @@
 ---
 title: 'Gyors útmutató: az Azure cache átirányítása a Redis eseményeihez a webes végponthoz az Azure CLI-vel'
-description: A Azure Event Grid használatával előfizethet az Azure cache-re az Redis-események esetében, elküldheti az eseményeket egy webhookba, és kezelheti az eseményeket egy webalkalmazásban.
+description: A Azure Event Grid segítségével előfizethet az Azure cache-re az Redis eseményekhez, aktiválhat egy eseményt, és megtekintheti az eredményeket.
 author: curib
 ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 55c4c6bb5352d70c9bc688b28c3e0ab6eccd34fd
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 7f33ca0043400962054fabb1aadb1da612fe5426
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055535"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806426"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-azure-cli"></a>Gyors útmutató: az Azure cache átirányítása a Redis eseményeihez a webes végponthoz az Azure CLI-vel
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072404"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806409"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Oracle Database 19c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépeken Azure Backup használatával
 
@@ -697,7 +697,7 @@ A teljes virtuális gép visszaállításához hajtsa végre a következő lép�
 
    1. A Azure Portal válassza az **+ erőforrás létrehozása** elemet, és keresse meg és válassza ki a **Storage-fiók** elemet.
     
-      ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/storage-1.png)
+      ![Az erőforrás létrehozásának helyét bemutató képernyőkép.](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. A Storage-fiók létrehozása lapon válassza ki a meglévő erőforráscsoport **RG-Oracle** nevet, nevezze el a Storage-fiók **oracrestore** , és válassza a **Storage v2 (GeneralPurpose v2)** fiókot a fiók típusa beállításnál. Módosítsa a replikációt **helyileg redundáns tárolóra (LRS)** , és állítsa be a teljesítményt a **standard** értékre. Győződjön meg arról, hogy a hely ugyanahhoz a régióhoz van beállítva, mint az erőforráscsoport összes többi erőforrása. 
@@ -877,7 +877,7 @@ A virtuális gép visszaállítása után újra hozzá kell rendelnie az eredeti
 
 5.  Most le kell választania a virtuális gép visszaállítása művelettel létrehozott hálózati adaptert, mivel az elsődleges illesztőfelületként van konfigurálva. Kattintson a **hálózati adapter leválasztása** lehetőségre, és válassza az **vmoracle19c-NIC-XXXXXXXXXXXX** hasonló új hálózati adaptert, majd kattintson az **OK** gombra.
 
-    ![IP-cím értéke](./media/oracle-backup-recovery/create-ip-05.png)
+    ![A hálózati adapter leválasztásának helyét bemutató képernyőkép.](./media/oracle-backup-recovery/create-ip-05.png)
     
     Az újból létrehozott virtuális gép most már az eredeti IP-címhez és a hálózati biztonsági csoport szabályaihoz társított eredeti hálózati adapterrel rendelkezik.
     

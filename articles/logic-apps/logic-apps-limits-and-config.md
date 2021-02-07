@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054754"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805934"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -427,6 +427,12 @@ Ez a szakasz csak a Azure Logic Apps szolgáltatás bejövő IP-címeit sorolja 
 
 > [!TIP]
 > A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében igény szerint [használhatja a](../virtual-network/service-tags-overview.md) **LogicAppsManagement**, és nem kell megadnia a bejövő Logic apps IP-címek előtagjait az egyes régiókban. Igény szerint a **AzureConnectors** szolgáltatás címkéjét is használhatja a felügyelt összekötők számára, amelyek beérkező webhook-visszahívásokat végeznek a Logic Apps szolgáltatásba ahelyett, hogy a bejövő felügyelt összekötő IP-címeinek megadásával megadják az egyes régiókat. Ezek a címkék azokon a régiókban működnek, ahol a Logic Apps szolgáltatás elérhető.
+>
+> Az alábbi összekötők a Logic Apps szolgáltatásba beérkező webhookok visszahívásait teszik elérhetővé:
+>
+> Adobe Creative Cloud, az Adobe Sign, az Adobe Sign bemutató, az Adobe Sign Preview, az Adobe Sign Stage, az Azure Sentinel, a Business Central, a Calendly, a Common Data Service, a DocuSign, a DocuSign demo, a Dynamics 365 for fin & Ops, a LiveChat, az Office 365 Outlook, a Outlook.com, a Parserr, az SAP *, a Microsoft Teams és a Typeform
+>
+> \***SAP**: a visszatérési hívó attól függ, hogy a telepítési környezet vagy több-bérlős Azure vagy ISE. A több-bérlős környezetben a helyszíni adatátjáró kezdeményezi a hívást a Logic Apps szolgáltatásnak. Az ISE-ben az SAP-összekötő visszahívja a Logic Apps szolgáltatást.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -543,7 +549,7 @@ Ez a szakasz a Azure Logic Apps szolgáltatás és a felügyelt összekötők ki
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Government – kimenő IP-címek
 
-| Régió | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
+| Region | Logic Apps IP-cím | Felügyelt összekötők IP-címe |
 |--------|---------------|-----------------------|
 | US DoD – Középső régió | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | USA-beli államigazgatás – Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

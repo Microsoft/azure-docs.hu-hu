@@ -3,12 +3,12 @@ title: Azure Monitor engedélyezése a tárolók számára | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a tárolók Azure Monitorét, hogy megtudja, hogyan hajtja végre a tárolót, és hogy milyen teljesítménnyel kapcsolatos problémákat észlelt a rendszer.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943825"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806009"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Tárolók Azure Monitor engedélyezése
 
@@ -35,6 +35,12 @@ A következő támogatott módszerek bármelyikével engedélyezheti a tárolók
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, győződjön meg arról, hogy teljesítette a következő követelményeket:
+
+> [!IMPORTANT]
+> Log Analytics a tárolók Linux-ügynöke (REPLICASET Pod) API-hívásokat tesz lehetővé a fürtön belüli összes Windows-csomópont számára a Kubelet biztonságos portján (10250) a csomópontok és a tárolók teljesítményével kapcsolatos metrikák összegyűjtéséhez. A Kubelet biztonságos portot (: 10250) a fürt virtuális hálózatán kell megnyitni a Windows-csomópont bejövő és kimenő verziójában, valamint a tárolók teljesítményével kapcsolatos metrikák gyűjteményének működéséhez.
+>
+> Ha Windows-csomópontokkal rendelkező Kubernetes-fürttel rendelkezik, tekintse át és konfigurálja a hálózati biztonsági csoportot és a hálózati házirendeket, és győződjön meg arról, hogy a fürt virtuális hálózatában a Kubelet Secure port (: 10250) meg van nyitva mind a bejövő, mind a kimenő forgalomhoz.
+
 
 - Log Analytics munkaterülettel rendelkezik.
 

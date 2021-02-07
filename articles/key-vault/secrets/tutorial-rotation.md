@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539400"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805230"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
 
@@ -213,7 +213,7 @@ Egy rövid lejárati dátummal rendelkező titkos kulcs létrehozásához `Secre
 
 A titkos kód elforgatásának ellenőrzéséhez nyissa meg a **Key Vault**  >  **Secrets**:
 
-:::image type="content" source="../media/rotate-8.png" alt-text="Ugrás a titkokra":::
+:::image type="content" source="../media/rotate-8.png" alt-text="A Key Vault > titkok elérését bemutató képernyőkép.":::
 
 Nyissa meg a titkos **sqlPassword** , és tekintse meg az eredeti és az elforgatott verziót:
 

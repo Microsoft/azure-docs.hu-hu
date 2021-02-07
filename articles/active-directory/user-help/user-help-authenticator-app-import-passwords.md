@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056028"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806155"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>Jelszavak importálása a Microsoft Authenticator alkalmazásba
 
@@ -39,21 +39,21 @@ A Google Chrome-felhasználók Android-és Apple-telefonokon közvetlenül a tel
 
 1. Koppintson az ![ androidos telefonok vagy a jobb felső sarokban található Google Chrome három pontra ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) , majd a beállítások elemre **.**
 
-   &nbsp; | &nbsp;
+   Platform | Hivatkozás
    ---------- | --------
    Android | ![Google Chrome-beállítások menü helye](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Google Chrome-beállítások menü ikon](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. A **Beállítások** területen nyissa meg a **jelszavakat**.
 
-   &nbsp; | &nbsp;
+   Platform | Hivatkozás
    ---------- | --------
    Android | ![Andoid Chrome passwords parancs helye](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Apple Chrome-jelszavak parancs helye](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. Az androidos eszközökön koppintson az ![ androidos telefonok jobb felső sarkában található Google Chrome három pontra, majd a ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) jobb oldalon az iOS-eszközök elemre, és koppintson a **jelszavak exportálása** lehetőségre.
 
-   &nbsp; | &nbsp;
+   Platform | Hivatkozás
    ---------- | --------
    Android | ![Android Chrome-beli jelszavak exportálásának helye](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Apple Chrome-beli jelszavak exportálásának helye](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ A Google Chrome-felhasználók Android-és Apple-telefonokon közvetlenül a tel
 
 1. A jelszavak exportálása után a Chrome arra kéri, hogy válassza ki, hogy melyik alkalmazást importálja. Válassza a **hitelesítő** lehetőséget a jelszavak importálásának megkezdéséhez. Ha elkészült az importálás állapotával, a rendszer értesítést kap.
 
-   &nbsp; | &nbsp;
+   Platform | Hivatkozás
    ---------- | --------
    Android | ![Android Chrome-beli importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Apple Chrome-beli importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ A Firefox csak az asztali böngészőből engedélyezi a jelszavak exportálás�
 
       1. Vigye át az exportált CSV-fájlt az Android vagy iOS rendszerű telefonjára az előnyben részesített és biztonságos módszer használatával, majd töltse le. Ezután ossza meg a CSV-fájlt a hitelesítő alkalmazással az importálás elindításához.
 
-         &nbsp; | &nbsp;
+         Platform | Hivatkozás
          ---------- | --------
          Android | ![Android Chrome-beli importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Chrome-beli importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ A LastPass csak asztali böngészőből támogatja a jelszavak exportálását, 
 
       1. Vigye át az exportált CSV-fájlt az okostelefonra előnyben részesített és biztonságos módon, majd töltse le. Ezután ossza meg a CSV-fájlt a hitelesítő alkalmazással az importálás elindításához.
 
-         &nbsp; | &nbsp;
+         Platform | Hivatkozás
          ---------- | --------
          Android | ![Android LastPass-importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple LastPass-importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ A Bitwarden csak asztali böngészőből támogatja a jelszavak exportálását,
 
       1. Vigye át az exportált CSV-fájlt az okostelefonra előnyben részesített és biztonságos módon, majd töltse le. Ezután ossza meg a CSV-fájlt a hitelesítő alkalmazással az importálás elindításához.
 
-         &nbsp; | &nbsp;
+         Platform | Hivatkozás
          ---------- | --------
          Android | ![Android Bitwarden-importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Bitwarden-importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ A RoboForm csak az asztali alkalmazásból engedélyezi a jelszavak exportálás
 
       1. Vigye át az exportált CSV-fájlt az okostelefonra előnyben részesített és biztonságos módon, majd töltse le. Ezután ossza meg a CSV-fájlt a hitelesítő alkalmazással az importálás elindításához.
 
-         &nbsp; | &nbsp;
+         Platform | Hivatkozás
          ---------- | --------
          Android | ![Android RoboForm-beli importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Az Apple RoboForm importálási jelszavainak helye](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Ha a Password managerből származó jelszavak importálásának lépései nem s
 
       1. Vigye át az exportált CSV-fájlt az okostelefonra előnyben részesített és biztonságos módon, majd töltse le. Ezután ossza meg a CSV-fájlt a hitelesítő alkalmazással az importálás elindításához.
 
-         &nbsp; | &nbsp;
+         Platform | Hivatkozás
          ---------- | --------
          Android | ![Androidos CSV-importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple CSV importálási jelszavak helye](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)

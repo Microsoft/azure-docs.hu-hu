@@ -1,5 +1,5 @@
 ---
-title: Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)
+title: Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz az Azure AD-vel (előző kiadás)
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Key vaultot az Azure AD-vel való Azure Disk Encryptionhoz.
 author: msmbaldwin
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d275a7ca97ac26257a83ad696df780669a00646e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fd239b52e647d7a0dfa3b60ee1dc31ea7005311b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737724"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805955"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)
 
@@ -61,7 +61,7 @@ A [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) parancsmag has
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. Jegyezze fel a tár **nevét** , az **erőforráscsoport nevét** , az **erőforrás-azonosítót** , a tároló **URI-ját** és a későbbi használatra visszaadott **objektumazonosító-azonosítót** a lemezek titkosításakor. 
+4. Jegyezze fel a tár **nevét**, az **erőforráscsoport nevét**, az **erőforrás-azonosítót**, a tároló **URI-ját** és a későbbi használatra visszaadott **objektumazonosító-azonosítót** a lemezek titkosításakor. 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a>Kulcstartó létrehozása az Azure CLI-vel
@@ -80,13 +80,13 @@ A Key vaultot [az az kulcstartó parancsaival](/cli/azure/keyvault#commands) kez
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. Jegyezze fel a tároló **nevét** (név), az **erőforráscsoport nevét** , az **erőforrás-azonosítót** (ID), a tároló **URI azonosítóját** , valamint a később a használatra visszaadott **objektumazonosítót** . 
+4. Jegyezze fel a tároló **nevét** (név), az **erőforráscsoport nevét**, az **erőforrás-azonosítót** (ID), a tároló **URI azonosítóját**, valamint a később a használatra visszaadott **objektumazonosítót** . 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a>Key Vault létrehozása Resource Manager-sablonnal
 
 A Key vaultot a [Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)használatával lehet létrehozni.
 
-1. Az Azure Gyorsindítás sablonon kattintson az **üzembe helyezés az Azure** -ban lehetőségre.
+1. Az Azure Gyorsindítás sablonon kattintson az **üzembe helyezés az Azure**-ban lehetőségre.
 2. Válassza ki az előfizetést, az erőforráscsoportot, az erőforráscsoport helyét, Key Vault nevét, az objektumazonosító, a jogi feltételek és a szerződés elemet, majd kattintson a **vásárlás** elemre. 
 
 
@@ -217,7 +217,7 @@ A Key Vault lemezes titkosításának engedélyezéséhez használja az [az kulc
 
 ### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a>A Key Vault speciális hozzáférési házirendjeinek beállítása a Azure Portal
 
-1. Válassza ki a kulcstartót, nyissa meg a **hozzáférési szabályzatokat** , és **kattintson ide a speciális hozzáférési szabályzatok megjelenítéséhez** .
+1. Válassza ki a kulcstartót, nyissa meg a **hozzáférési szabályzatokat**, és **kattintson ide a speciális hozzáférési szabályzatok megjelenítéséhez**.
 2. Jelölje be a **Azure Disk Encryptionhoz való hozzáférés engedélyezése a kötetek titkosításához** jelölőnégyzetet.
 3. Ha szükséges, jelölje be az **Azure Virtual Machines való hozzáférés engedélyezése az üzembe helyezéshez** és/vagy az **Azure Resource Manager hozzáférésének engedélyezése a sablonok telepítéséhez** lehetőséget. 
 4. Kattintson a **Mentés** gombra.

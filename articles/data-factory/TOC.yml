@@ -760,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: A díjszabás ismertetése
       items:
+        - name: Adatfolyamok számára fenntartott kapacitás áttekintése
+          href: data-flow-reserved-capacity-overview.md
+        - name: Az adatforgalom ismertetése a foglalási díjakról
+          href: data-flow-understand-reservation-charges.md
         - name: Költségtervezés és a költségek kezelése
           href: plan-manage-costs.md
         - name: Díjszabási példák

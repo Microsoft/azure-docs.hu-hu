@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: bff13c24e0b5818b352e76df1d8ecd8251a5f12c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: f8664886203e32baadda5cdf993fbaf7b2a62ed7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430226"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805918"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Resource Manager-sablonok minták a Azure Monitor adatgyűjtési szabályaihoz
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](../platform/log-analytics-agent.md) és a [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -82,7 +82,7 @@ Az alábbi minta egy Azure-beli virtuális gép és egy adatgyűjtési szabály 
 
 ## <a name="create-association-with-azure-arc"></a>Társítás létrehozása az Azure Arcmal
 
-A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure-beli virtuális gépre. A társítás egy Azure arc-kompatibilis kiszolgáló-számítógép és egy adatgyűjtési szabály között jön létre.
+Az alábbi minta egy Azure arc-kompatibilis kiszolgáló és egy adatgyűjtési szabály közötti társítást hoz létre.
 
 ### <a name="template-file"></a>Sablonfájl
 

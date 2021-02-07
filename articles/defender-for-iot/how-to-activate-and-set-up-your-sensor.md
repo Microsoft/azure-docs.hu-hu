@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509519"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805665"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Az érzékelő aktiválása és beállítása
 
@@ -44,7 +44,7 @@ Az érzékelő konzolba való bejelentkezés előtt a rendszergazda felhasznál�
 
 Az érzékelőt egy adott felügyeleti módban IoT az Azure Defender számára:
 
-| Mód típusa | Leírás |
+| Mód típusa | Description |
 |--|--|
 | **Felhőhöz csatlakoztatott mód** | Az érzékelő által észlelt információk az érzékelő konzolján jelennek meg. A riasztási adatokat az IoT hub is továbbítja, és más Azure-szolgáltatásokkal, például az Azure Sentinelrel is megosztható. |
 | **Helyileg csatlakoztatott mód** | Az érzékelő által észlelt információk az érzékelő konzolján jelennek meg. Az észlelési információk a helyszíni felügyeleti konzollal is megoszthatók, ha az érzékelő csatlakoztatva van hozzá. |
@@ -177,7 +177,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Navigáció** 
 
-| Ablak | Ikon | Leírás |
+| Ablak | Ikon | Description |
 | -----------|--|--|
 | Irányítópult | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Megtekintheti a hálózat biztonsága állapotának intuitív pillanatképét. |
 | Eszköz térképe | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | A hálózati eszközök, az eszközök kapcsolatai és az eszköz tulajdonságainak megtekintése a térképen. A hálózat megjelenítéséhez különböző nagyítások, csúcsfények és szűrési lehetőségek érhetők el. |
@@ -187,13 +187,13 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Elemzés**
 
-| Ablak| Ikon | Leírás |
+| Ablak| Ikon | Description |
 |---|---|---|
 | Esemény idővonala | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Megtekintheti a riasztásokkal, a hálózati eseményekkel (tájékoztatással) és a felhasználói műveletekkel kapcsolatos információkat, például a felhasználói bejelentkezéseket és a felhasználók törlését.|
 
 **Navigáció**
 
-| Ablak | Ikon | Leírás |
+| Ablak | Ikon | Description |
 |---|---|---|
 | Adatbányászat | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Átfogó és részletes információkat hozhat a hálózat eszközeiről a különböző rétegeken. |
 | Vizsgálat | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | A trendeket és a statisztikát a widgetek széles skáláján tekintheti meg. |
@@ -201,16 +201,16 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Felügyelet**
 
-| Ablak | Ikon | Leírás |
+| Ablak | Ikon | Description |
 |---|---|---|
 | Felhasználók | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Felhasználók és szerepkörök definiálása különböző hozzáférési szintekkel. |
-| Továbbítás | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Továbbítsa a riasztási információkat a partnereknek és a belső forrásoknak (például a Sentinelnek) a Defender for IoT, az e-mail-címek, a webhook-kiszolgálók és sok egyéb szolgáltatás integrálásával. <br /> További részletekért lásd: [riasztási információk továbbítása](how-to-forward-alert-information-to-partners.md) . |
+| Továbbítás | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Továbbíthatja a riasztási információkat a partnereknek és a belső forrásoknak (például az Azure Sentinelnek) a Defender for IoT, az e-mail-címek, a webhook-kiszolgálók és sok egyéb szolgáltatás integrálásával. <br /> További részletekért lásd: [riasztási információk továbbítása](how-to-forward-alert-information-to-partners.md) . |
 | Rendszerbeállítások | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Konfigurálja a rendszerbeállításokat. Például adja meg a DHCP-beállításokat, adja meg a levelezési kiszolgáló adatait, vagy hozzon létre port-aliasokat. |
 | Importálási beállítások | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Az **importálási beállítások** ablak megjelenítése. Az eszköz adataiban manuálisan is végezhet módosításokat.<br /> További részletekért lásd az [eszköz adatainak importálása](how-to-import-device-information.md) című témakört. |
 
 **Támogatás**
 
-| Ablak| Ikon | Leírás |
+| Ablak| Ikon | Description |
 |----|---|---|
 | Támogatás | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Segítségért forduljon [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . |
 

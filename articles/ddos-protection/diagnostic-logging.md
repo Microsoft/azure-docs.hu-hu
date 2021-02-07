@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915164"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806307"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS-diagnosztikai naplózás megtekintése és konfigurálása
 
@@ -67,7 +67,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **TimeGenerated** | Az értesítés létrehozásának dátuma és időpontja (UTC). |
 | **ResourceId** | A nyilvános IP-cím erőforrás-azonosítója. |
@@ -77,13 +77,13 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **Erőforrás** | A nyilvános IP-cím neve. |
 | **ResourceType** | Ez mindig a következő lesz: `PUBLICIPADDRESS` . |
 | **OperationName** | Az értesítések esetében ez a következő lesz: `DDoSProtectionNotifications` .  |
-| **Üzenetet** | A támadás részletei. |
+| **Üzenet** | A támadás részletei. |
 | **Típus** | Az értesítés típusa. A lehetséges értékek a következők: `MitigationStarted` . `MitigationStopped`. |
 | **PublicIpAddress** | A nyilvános IP-címe. |
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **TimeGenerated** | A folyamat naplójának létrehozásakor megadott dátum és idő (UTC). |
 | **ResourceId** | A nyilvános IP-cím erőforrás-azonosítója. |
@@ -93,7 +93,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **Erőforrás** | A nyilvános IP-cím neve. |
 | **ResourceType** | Ez mindig a következő lesz: `PUBLICIPADDRESS` . |
 | **OperationName** | A flow-naplók esetében ez a következő lesz: `DDoSMitigationFlowLogs` . |
-| **Üzenetet** | A támadás részletei. |
+| **Üzenet** | A támadás részletei. |
 | **SourcePublicIpAddress** | Az ügyfél nyilvános IP-címe, amely a nyilvános IP-címére irányuló forgalmat generál. |
 | **SourcePort** | A portszám 0-tól 65535-ig terjed. |
 | **DestPublicIpAddress** | A nyilvános IP-címe. |
@@ -102,7 +102,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **TimeGenerated** | A jelentés létrehozásának dátuma és időpontja (UTC). |
 | **ResourceId** | A nyilvános IP-cím erőforrás-azonosítója. |
@@ -128,7 +128,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>Diagnosztikai naplózás engedélyezése az összes nyilvános IP-címen
 
-Ez a [sablon](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) egy Azure Policy definíciót hoz létre, amellyel automatikusan engedélyezheti a diagnosztikai naplózást az összes nyilvános IP-naplóban egy meghatározott hatókörben.
+Ez a [sablon](https://aka.ms/ddosdiaglogs) egy Azure Policy definíciót hoz létre, amellyel automatikusan engedélyezheti a diagnosztikai naplózást az összes nyilvános IP-naplóban egy meghatározott hatókörben.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
@@ -142,7 +142,7 @@ A naplókat összekapcsolhatja az Azure Sentinel szolgáltatással, megtekinthet
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection munkafüzet
 
-Ez a Azure Resource Manager (ARM) sablon használatával helyezhet üzembe egy támadási elemzési munkafüzetet. Ez a munkafüzet lehetővé teszi a támadási adatgyűjtés több szűrhető panelen történő megjelenítését, így könnyen megismerheti, hogy mi a tét. 
+[Ez a Azure Resource Manager (ARM) sablon](https://aka.ms/ddosworkbook) használatával helyezhet üzembe egy támadási elemzési munkafüzetet. Ez a munkafüzet lehetővé teszi a támadási adatgyűjtés több szűrhető panelen történő megjelenítését, így könnyen megismerheti, hogy mi a tét. 
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 

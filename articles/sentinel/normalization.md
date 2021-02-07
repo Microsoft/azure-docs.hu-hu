@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a9d2cd48e3b686614f7361d2007f6f8183c2361e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657023"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805090"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizálás az Azure Sentinelben
 
@@ -105,11 +105,11 @@ A lekérdezési függvények mentésekor szükség lehet a lekérdezési tallóz
 
 #### <a name="using-the-parsers"></a>Az elemzők használata
 
-Ha engedélyezve van, a meta-elemző segítségével lekérdezheti az összes jelenleg engedélyezett elemző egyesített nézetét. Ehhez nyissa meg a Sentinel-naplók lapot, és kérdezze le a meta-elemzőt:
+Ha engedélyezve van, a meta-elemző segítségével lekérdezheti az összes jelenleg engedélyezett elemző egyesített nézetét. Ehhez nyissa meg az Azure Sentinel-naplók lapot, és kérdezze le a meta-elemzőt:
 
 :::image type="content" source="./media/normalization/query-parser.png" alt-text="Az elemző lekérdezése":::
  
-A "Query Explorer" gombra kattintva a meta-elemzőt vagy az egyes elemzőket is elérheti a Query Explorer használatával a Sentinel naplók oldalon:
+A "Query Explorer" gombra kattintva a metaadatokat vagy az egyes elemzőket a lekérdezés-kezelővel is elérheti a naplók lapon:
 
 :::image type="content" source="./media/normalization/query-explorer.png" alt-text="Lekérdezési tallózó":::
 

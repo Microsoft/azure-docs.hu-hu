@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063881"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806273"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Oracle Database 19c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépen Azure Storage használatával
 
@@ -31,19 +31,19 @@ Ez a cikk bemutatja, hogyan használhatja az Azure Storage-t adathordozóként e
    ssh azureuser@<publicIpAddress>
    ```
    
-2. Váltson a **_root_* _ felhasználóra:
+2. Váltson a ***root*** felhasználóra:
  
    ```bash
    sudo su -
    ```
     
-3. Adja hozzá az Oracle-felhasználót a _*_ /etc/sudoers_ * _ fájlhoz:
+3. Adja hozzá az Oracle-felhasználót a ***/etc/sudoers*** fájlhoz:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. Ez a lépés feltételezi, hogy rendelkezik egy _vmoracle19c * nevű virtuális gépen futó Oracle-példánnyal (teszttel).
+4. Ez a lépés azt feltételezi, hogy rendelkezik egy *vmoracle19c* nevű virtuális gépen futó Oracle-példánnyal (teszttel).
 
    Felhasználó váltása az *Oracle* -felhasználóra:
 
@@ -182,31 +182,31 @@ Először állítsa be a Storage-fiókját.
 
 1. File Storage konfigurálása a Azure Portal
 
-    A Azure Portal válassza a ***+ erőforrás létrehozása** _ lehetőséget, és keresse meg és válassza ki a _*_Storage-fiók_*_ elemet.
+    A Azure Portal válassza a ***+ erőforrás létrehozása** _ lehetőséget, és keresse meg és válassza ki az _ *_Storage-fiókot_**
     
-    ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/storage-1.png)
+    ![Képernyőkép, amely bemutatja, hol kell létrehozni egy erőforrást, és ki kell választania a Storage-fiókot.](./media/oracle-backup-recovery/storage-1.png)
     
-2. A Storage-fiók létrehozása lapon válassza ki a meglévő erőforráscsoport _*_RG-Oracle_*_ nevet, nevezze el a Storage-fiók _*_oracbkup1_*_ , és válassza a _*_Storage v2 (GeneralPurpose v2)_*_ fiókot a fiók típusa beállításnál. Módosítsa a replikációt _*_helyileg redundáns tárolóra (LRS)_*_ , és állítsa be a teljesítményt a _*_standard_*_ értékre. Győződjön meg arról, hogy a hely ugyanahhoz a régióhoz van beállítva, mint az erőforráscsoport összes többi erőforrása. 
+2. A Storage-fiók létrehozása lapon válassza ki a meglévő erőforráscsoportot ***RG-Oracle** _, nevezze el a Storage-fiók _*_oracbkup1_*_ , és válassza a _*_Storage v2 (GeneralPurpose v2)_*_ fiókot a fiók típusa beállításnál. Módosítsa a replikációt _*_helyileg redundáns tárolóra (LRS)_*_ , és állítsa be a teljesítményt _ *_standard_* * értékre. Győződjön meg arról, hogy a hely ugyanahhoz a régióhoz van beállítva, mint az erőforráscsoport összes többi erőforrása. 
     
-    ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/file-storage-1.png)
+    ![Képernyőkép, amely bemutatja, hol válassza ki a meglévő erőforráscsoportot.](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. Kattintson a _*_speciális_*_ fülre, és a Azure Files _*_nagyméretű fájlmegosztás_*_ _*_engedélyezése engedélyezve_*_ értékre. Kattintson a felülvizsgálat + Létrehozás elemre, majd a Létrehozás gombra.
+3. Kattintson a ***speciális** _ fülre, és a Azure Files a _*_nagyméretű fájlmegosztás_*_ beállítása _ *_engedélyezve_* * értékre. Kattintson a felülvizsgálat + Létrehozás elemre, majd a Létrehozás gombra.
     
-    ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. A Storage-fiók létrehozása után nyissa meg az erőforrást, és válassza a _*_fájlmegosztás_ lehetőséget.*_
-    
-    ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. Kattintson a _*_ + fájl share_ *_ elemre, és az _*_új fájlmegosztás_ _ panelén a *fájlmegosztás _*_orabkup1_ _ nevet adja meg *. Állítsa be* a következőt: _ _kvóta_*: _*_10240_*_ GIB, és a-**t a szintnek megfelelően a tranzakció optimalizált _. A kvóta azt a felső határt tükrözi, amelyet a fájlmegosztás képes növelni. Mivel a standard szintű tárolást használjuk, az erőforrások TB, és nincs kiépítve, így a 10 TiB-ra való beállítás nem terheli a ténylegesen felhasznált költségeket. Ha a biztonsági mentési stratégiának több tárterületre van szüksége, a kvótát megfelelő szintre kell állítania az összes biztonsági mentés tárolásához.   Ha elvégezte az új fájlmegosztás panelt, kattintson az _*_create_* _ elemre.
-    
-    ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/file-storage-4.png)
+    ![Képernyőfelvétel: a nagyméretű fájlmegosztás engedélyezésének helyét mutatja be.](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. A létrehozáskor kattintson a _*_orabkup1_*_ elemre a fájlmegosztás beállításai lapon. 
-    Kattintson a _*_Kapcsolódás_*_ lapra a kapcsolódás panel megnyitásához, majd kattintson a _*_Linux_*_ fülre. Másolja a megadott parancsokat a fájlmegosztás SMB protokollal történő csatlakoztatásához. 
+4. A Storage-fiók létrehozása után nyissa meg az erőforrást, és válassza a ***fájlmegosztás*** lehetőséget.
+    
+    ![Képernyőkép a fájlmegosztás kiválasztásának helyéről.](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. Kattintson a ***+ fájlmegosztás** _ elemre, majd az _*_új fájlmegosztás_*_ panelen nevezze el a fájlmegosztás _*_orabkup1_*_. Állítsa be a _*_kvótát_*_ _*_10240_*_ GIB értékre, és tekintse meg a szintként _*_optimalizált tranzakciót_*_ . A kvóta azt a felső határt tükrözi, amelyet a fájlmegosztás képes növelni. Mivel a standard szintű tárolást használjuk, az erőforrások TB, és nincs kiépítve, így a 10 TiB-ra való beállítás nem terheli a ténylegesen felhasznált költségeket. Ha a biztonsági mentési stratégiának több tárterületre van szüksége, a kvótát megfelelő szintre kell állítania az összes biztonsági mentés tárolásához.   Ha elvégezte az új fájlmegosztás panelt, kattintson az _ * Create * * (_Létrehozás_* *) elemre.
+    
+    ![Képernyőfelvétel: új fájlmegosztás hozzáadásának helye.](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. A létrehozáskor kattintson a ***orabkup1*** elemre a fájlmegosztás beállításai lapon. 
+    Kattintson a ***Kapcsolódás** _ lapra a kapcsolódás panel megnyitásához, majd kattintson a _ *_Linux_** fülre. Másolja a megadott parancsokat a fájlmegosztás SMB protokollal történő csatlakoztatásához. 
     
     ![Storage-fiók hozzáadása lap](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ A Oláh Anna és az Azure file Storage használata az adatbázis biztonsági men
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. A következő parancsok a Oláh Anna használatával állítják vissza a hiányzó adatfájlokat, és helyreállítják az adatbázist:

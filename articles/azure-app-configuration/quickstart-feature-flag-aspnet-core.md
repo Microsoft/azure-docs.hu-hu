@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663046"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806070"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
 
@@ -207,7 +207,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. Nyissa meg a *_Layout. cshtml* mappát a *nézetek* \\ *megosztott* könyvtárában. Keresse meg a `<nav>` vonalkódot a alatt `<body>`  >  `<header>` . Szúrjon be egy új `<feature>` címkét a *Kezdőlap* és az *Adatvédelem* navigációs elemei közé, ahogyan az az alábbi kiemelt sorokban látható.
 
-    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="14-18":::
 
 1. Hozzon létre egy *views/Beta* könyvtárat és egy *index. cshtml* fájlt, amely a következő korrektúrát tartalmazza:
 
