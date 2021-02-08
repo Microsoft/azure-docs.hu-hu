@@ -1,26 +1,26 @@
 ---
-title: 'Gyors útmutató: biztonsági modul létrehozása – Twin'
+title: Biztonsági modul létrehozása – Twin
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre a Defender for IoT modul Twin-et az Azure Defender for IoT használatával.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
-ms.author: mlottner
-ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/21/2021
+ms.author: shhazam
+ms.openlocfilehash: 35195ea5d66bcf27764fa889e5f2e8ebb6a2bae1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835006"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809099"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
+# <a name="create-an-azureiotsecurity-module-twin"></a>Twin azureiotsecurity-modul létrehozása
 
 Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egyedi _azureiotsecurity_ -modult az új eszközökhöz, vagy létrehozhat egy batch-modult az összes eszközhöz egy IoT hub.
 
@@ -28,7 +28,7 @@ Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egyedi _azureiotsecur
 
 Az Azure-ban beépített IoT-megoldások esetében az eszközök az ikrek kulcsszerepet játszanak az eszközkezelés és a folyamatok automatizálása terén is.
 
-A IoT Defender teljes körű integrációt biztosít a meglévő IoT-eszközkezelés platformmal, lehetővé téve az eszköz biztonsági állapotának kezelését, valamint a meglévő eszközök vezérlési képességeinek kihasználását.
+A IoT Defender teljes körű integrációt biztosít a meglévő IoT-eszközkezelés platformmal, így kezelheti az eszköz biztonsági állapotát, és használhatja a meglévő eszköz-vezérlési képességeket.
 A IoT-integrációs Defender a IoT Hub Twin mechanizmus használatával érhető el.
 
 További információ az IoT Hub Azure-beli modulbeli ikrek általános fogalmáról: [IoT hub modul ikrek](../iot-hub/iot-hub-devguide-module-twins.md) .
@@ -37,7 +37,7 @@ A IoT Defender a modul Twin mechanizmusát használja, és minden eszközhöz fe
 
 A biztonsági modul Twin az eszközök biztonságára vonatkozó összes információt tartalmazza.
 
-Ahhoz, hogy a Defender teljes mértékben használhassa a IoT-funkciókat, létre kell hoznia, konfigurálnia és használnia kell ezeket a biztonsági modulokat a szolgáltatás minden eszközéhez.
+Ahhoz, hogy teljes mértékben használhassa a Defendert a IoT-funkciókhoz, létre kell hoznia, konfigurálnia és használnia kell ezt a biztonsági modult a szolgáltatás minden eszközéhez.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Twin azureiotsecurity-modul létrehozása
 
@@ -51,10 +51,12 @@ a _azureiotsecurity_ modul ikrek két módon hozhatók létre:
 
 Tekintse meg az [ügynök konfigurációja](how-to-agent-configuration.md) című témakört, amelyből megtudhatja, hogyan módosíthatja vagy módosíthatja a meglévő modulok konfigurációját.
 
-Ha manuálisan szeretne létrehozni egy új _azureiotsecurity_ -modult egy eszközhöz, kövesse az alábbi utasításokat:
+Új _azureiotsecurity_ -modul manuális létrehozása egy eszközhöz:
 
 1. A IoT Hubban keresse meg és válassza ki azt az eszközt, amelyhez külön biztonsági modult szeretne létrehozni.
-1. Kattintson az eszközre, majd a **modul identitásának hozzáadása** elemre.
+
+1. Válassza ki az eszközt, majd **adja hozzá a modul identitását**.
+
 1. A **modul identitásának neve** mezőbe írja be a **azureiotsecurity** nevet.
 
 1. Kattintson a **Mentés** gombra.
@@ -64,15 +66,20 @@ Ha manuálisan szeretne létrehozni egy új _azureiotsecurity_ -modult egy eszk�
 Annak ellenőrzése, hogy van-e különálló biztonsági modul egy adott eszközhöz:
 
 1. Az Azure-IoT Hub válassza a **IoT eszközök** lehetőséget a **felfedezők** menüből.
-1. Adja meg az eszköz AZONOSÍTÓját, vagy válasszon ki egy beállítást a **lekérdezési eszköz mezőben** , majd kattintson az **eszközök lekérdezése** elemre.
+
+1. Adja meg az eszköz AZONOSÍTÓját, vagy válasszon ki egy beállítást a **lekérdezési eszköz mezőben** , majd válassza az **eszközök lekérdezése** lehetőséget.
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="Eszközök lekérdezése":::
-1. Válassza ki az eszközt, vagy kattintson rá duplán az eszköz részletei lap megnyitásához.
+
+1. Jelölje ki az eszközt, vagy kattintson duplán az eszköz részletei lap megnyitásához.
+
 1. Válassza a **modul identitások** menüt, és erősítse meg a **azureiotsecurity** modul létezését az eszközhöz társított modul-identitások listájában.
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="Eszközhöz társított modulok":::
 
 Ha többet szeretne megtudni az IoT-modulhoz készült Defender tulajdonságainak testreszabásáról, tekintse meg az [ügynök konfigurálása](how-to-agent-configuration.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan vizsgálhatja meg a biztonsági javaslatokat...
 

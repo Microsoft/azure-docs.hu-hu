@@ -4,30 +4,30 @@ description: További információ az Azure RTOS-támogatással és-megvalósít
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
-ms.author: mlottner
-ms.openlocfilehash: 9950f3727aac365205e979d9590edacebd32f1fc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 01/14/2021
+ms.author: shhazam
+ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832743"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809082"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Áttekintés: Defender az Azure RTOS készült IoT biztonsági modulhoz (előzetes verzió)
 
-Az Azure Defender for IoT biztonsági modul átfogó biztonsági megoldást nyújt az Azure RTOS-t használó eszközökhöz. A valós idejű operációs rendszer (RTOS) eszközein a gyakori fenyegetések és a lehetséges kártékony tevékenységek lefedettségét biztosítja. Az Azure RTOS mostantól a beépített Azure IoT biztonsági modullal rendelkezik.
+Az Azure Defender for IoT Micro modul átfogó biztonsági megoldást nyújt az Azure RTOS-t használó eszközökhöz. A valós idejű operációs rendszer (RTOS) eszközein a gyakori fenyegetések és a lehetséges kártékony tevékenységek lefedettségét biztosítja. Az Azure RTOS mostantól a beépített Azure IoT biztonsági modullal rendelkezik.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="A Defender vizualizációja az Azure RTOS IoT.":::
 
 
-Az Azure RTOS biztonsági modulja a következő funkciókat kínálja:
+Az Azure RTOS Micro-modulja a következő funkciókat kínálja:
 
 - Kártevő hálózati tevékenységek észlelése
 - Egyéni riasztáson alapuló eszköz viselkedésének viszonyítási
@@ -49,7 +49,7 @@ A IoT által biztosított ajánlott infrastruktúra-Defender segítségével ism
 
 Az Azure RTOS biztonsági modulja ingyenes letöltést biztosít az eszközei számára. A IoT Cloud Service Defender egy 30 napos próbaidőszakot biztosít az Azure-előfizetések esetében. Első lépésként töltse le az [Azure RTOS biztonsági modulját](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta az Azure RTOS biztonsági modulját. Ha többet szeretne megtudni a biztonsági modulról és az első lépésekről, tekintse meg a következő cikkeket:
 

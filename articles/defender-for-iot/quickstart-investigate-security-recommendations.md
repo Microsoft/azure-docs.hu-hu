@@ -1,10 +1,10 @@
 ---
-title: 'Gyors útmutató: biztonsági javaslatok vizsgálata'
+title: Biztonsági javaslatok vizsgálata
 description: Tekintse meg a biztonsági javaslatokat a Defender for IoT Security szolgáltatással.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 66b5694823096f0747ea099b631a53198a819816
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.author: shhazam
+ms.openlocfilehash: 0e902db38e4145bf94ab6a235bc1210b520327a1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835040"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809184"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>Gyors útmutató: biztonsági javaslatok vizsgálata
 
@@ -46,24 +46,21 @@ A IoT Hub javaslatok listája megjeleníti a IoT Hub összesített biztonsági j
 
 Nyissa meg az egyes összesített javaslatokat, hogy megjelenjenek a részletes ajánlások leírása, szervizelési lépések, eszköz azonosítója minden olyan eszközhöz, amely egy javaslatot váltott ki. Emellett az ajánlás súlyosságát és a közvetlen vizsgálathoz való hozzáférést is megjeleníti Log Analytics használatával.
 
-1.  Válasszon ki és nyisson meg egy biztonsági javaslatot a **IoT hub** \> **biztonsági** \> **javaslatok** listából.
+1.  Válasszon ki és nyisson meg egy biztonsági javaslatot a **IoT hub**  >  **biztonsági**  >  **javaslatok** listából.
 
 1.  Tekintse át az ajánlás **leírását**, **súlyosságát**, az **eszköz részletes adatait** az összesítési időszakban. 
 
 1.  Az ajánlási javaslatok áttekintése után a **manuális szervizelési lépés** utasításait követve javítsa ki az ajánlást okozó problémát. 
 
-    [ :::image type="content" source="media/quickstart/remediate-security-recommendations-expanded.png#lightbox" alt-text="Biztonsági javaslatok szervizelése az ASC-mel a IoT-hez] (média/rövid útmutató/remediate-security-recommendations-inline.png)":::
-
+    :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="Biztonsági javaslatok szervizelése az ASC-mel a IoT-hez" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
 
 1.  Az adott eszközre vonatkozó javaslat részleteinek megismeréséhez válassza ki a kívánt eszközt a részletezés oldalon.
 
-    [Az :::image type="content" source="media/quickstart/explore-security-recommendation-detail-expanded.png#lightbox" alt-text="eszközre vonatkozó konkrét biztonsági javaslatok vizsgálata a IoT-sel] (média/rövid útmutató/explore-security-recommendation-detail-inline.png)":::
-
+    :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="Az eszközökre vonatkozó konkrét biztonsági javaslatok kivizsgálása a IoT" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
 
 1.  Ha további vizsgálatra van szükség, a hivatkozás használatával **vizsgálja meg log Analytics ajánlását** . 
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan hozhat létre egyéni riasztásokat...
 

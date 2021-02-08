@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 768a327421a941a39b6f66be411712a565097f66
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 72a8f2eb93a9c12510b093e29c7b8fc6867cb2eb
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557321"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809382"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -160,7 +160,9 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft.Intune](#microsoftintune) |
 | **Egyéb** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
+| [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization) |
 | [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
+| [Microsoft. ServicesHub](#microsoftserviceshub) |
 
 
 ## <a name="general"></a>Általános
@@ -10268,6 +10270,51 @@ Azure-szolgáltatás: [Bing Maps](/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/művelet | A Microsoft. BingMaps/mapApis metrikáinak listázása |
 > | Microsoft. BingMaps/Operations/READ | A Microsoft. BingMaps műveleteinek listázása |
 
+### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
+
+Azure-szolgáltatás: [Windowsos virtuális asztal](../virtual-desktop/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Művelet | Leírás |
+> | --- | --- |
+> | Microsoft. DesktopVirtualization/regisztráció/művelet | Előfizetés regisztrálása |
+> | Microsoft. DesktopVirtualization/applicationgroups/READ | Applicationgroups olvasása |
+> | Microsoft. DesktopVirtualization/applicationgroups/Write | Applicationgroups írása |
+> | Microsoft. DesktopVirtualization/applicationgroups/delete | Applicationgroups törlése |
+> | Microsoft. DesktopVirtualization/applicationgroups/alkalmazások/olvasás | Applicationgroups/alkalmazások olvasása |
+> | Microsoft. DesktopVirtualization/applicationgroups/alkalmazások/írás | Applicationgroups/alkalmazások írása |
+> | Microsoft. DesktopVirtualization/applicationgroups/Applications/delete | Applicationgroups/alkalmazások törlése |
+> | Microsoft. DesktopVirtualization/applicationgroups/asztali számítógépek/olvasás | Applicationgroups/asztali számítógépek olvasása |
+> | Microsoft. DesktopVirtualization/applicationgroups/asztali/írási | Applicationgroups/asztali számítógépek írása |
+> | Microsoft. DesktopVirtualization/applicationgroups/asztali számítógépek/törlés | Applicationgroups/asztali számítógépek törlése |
+> | Microsoft. DesktopVirtualization/applicationgroups/externaluserassignments/READ |  |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A diagnosztikai beállítás beolvasása |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A diagnosztikai beállítás létrehozása vagy frissítése |
+> | Microsoft. DesktopVirtualization/applicationgroups/Providers/Microsoft. bepillantást/logDefinitions/READ | Az elérhető naplók beolvasása |
+> | Microsoft. DesktopVirtualization/applicationgroups/startmenuitems/READ | Start menü elemeinek olvasása |
+> | Microsoft. DesktopVirtualization/hostpools/READ | Hostpools olvasása |
+> | Microsoft. DesktopVirtualization/hostpools/Write | Hostpools írása |
+> | Microsoft. DesktopVirtualization/hostpools/delete | Hostpools törlése |
+> | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A diagnosztikai beállítás beolvasása |
+> | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A diagnosztikai beállítás létrehozása vagy frissítése |
+> | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. bepillantást/logDefinitions/READ | Az elérhető naplók beolvasása |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/READ | Hostpools/sessionhosts olvasása |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/Write | Írás hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/delete | Hostpools/sessionhosts törlése |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/READ | Hostpools/sessionhosts/usersessions olvasása |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Write | Írás hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/delete | Hostpools/sessionhosts/usersessions törlése |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/leválasztás/művelet | Leválasztja a felhasználói munkamenet űrlapjának munkamenet-gazdagépét |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/üzenetküldés/művelet | Üzenet küldése a felhasználói munkamenetnek |
+> | Microsoft. DesktopVirtualization/munkaterületek/olvasás | Munkaterületek olvasása |
+> | Microsoft. DesktopVirtualization/munkaterületek/írás | Munkaterületek írása |
+> | Microsoft. DesktopVirtualization/munkaterületek/törlés | Munkaterületek törlése |
+> | Microsoft. DesktopVirtualization/munkaterületek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | A diagnosztikai beállítás beolvasása |
+> | Microsoft. DesktopVirtualization/munkaterületek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | A diagnosztikai beállítás létrehozása vagy frissítése |
+> | Microsoft. DesktopVirtualization/munkaterületek/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | Az elérhető naplók beolvasása |
+> | **DataAction** | **Leírás** |
+> | Microsoft. DesktopVirtualization/applicationgroups/useapplications/művelet | Alkalmazáscsoport használata |
+
 ### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
@@ -10316,6 +10363,20 @@ Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modellek/olvasás | Bármely modell olvasása |
 > | Microsoft. DigitalTwins/modellek/írás | Bármely modell létrehozása vagy frissítése |
 > | Microsoft. DigitalTwins/models/delete | Bármely modell törlése |
+
+### <a name="microsoftserviceshub"></a>Microsoft. ServicesHub
+
+Azure-szolgáltatás: [szolgáltatások központja](/services-hub/)
+
+> [!div class="mx-tableFixed"]
+> | Művelet | Leírás |
+> | --- | --- |
+> | Microsoft. ServicesHub/összekötők/írás | Szolgáltatások központi összekötő létrehozása vagy frissítése |
+> | Microsoft. ServicesHub/összekötők/olvasás | A Services hub-összekötők megtekintése vagy listázása |
+> | Microsoft. ServicesHub/összekötők/törlés | Szolgáltatások központi összekötők törlése |
+> | Microsoft. ServicesHub/Connectors/checkAssessmentEntitlement/művelet | Egy adott szolgáltatási központ munkaterület értékelési jogosultságait sorolja fel |
+> | Microsoft. ServicesHub/supportOfferingEntitlement/READ | Egy adott szolgáltatási központ munkaterülethez tartozó támogatási ajánlati jogosultságok megtekintése |
+> | Microsoft. ServicesHub/munkaterületek/olvasás | Egy adott felhasználóhoz tartozó Services hub-munkaterületek listázása |
 
 ## <a name="next-steps"></a>Következő lépések
 

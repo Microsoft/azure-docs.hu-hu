@@ -1,30 +1,30 @@
 ---
-title: Eseményösszesítés
+title: A biztonsági modul klasszikus eseményének összesítése
 description: Ismerje meg a Defender for IoT esemény összesítését.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
-ms.author: mlottner
-ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832369"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809218"
 ---
-# <a name="defender-for-iot-event-aggregation"></a>Defender a IoT esemény összesítéséhez
+# <a name="security-module-classic-event-aggregation"></a>A biztonsági modul klasszikus eseményének összesítése
 
 A Defender for IoT biztonsági ügynökök adatokat és rendszereseményeket gyűjtenek a helyi eszközről, és ezeket az adatokat az Azure-felhőbe küldik feldolgozásra és elemzésre. A biztonsági ügynök számos típusú eseményt gyűjt, beleértve az új folyamatot és az új kapcsolatok eseményeit. Az új folyamat és az új kapcsolódási események is jogszerűen előfordulhatnak egy adott eszközön egy másodpercen belül, és noha fontos a robusztus és teljes biztonság szempontjából, az üzenetek biztonsági ügynökei számára a küldésre kényszerített mennyiség gyorsan elérheti vagy meghaladhatja a IoT Hub kvótát és a költségeket. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek elengedhetetlenek az eszköz védelméhez.
 
-Ha csökkenteni szeretné a további kvótát és költségeket az eszközök védelmének fenntartása mellett, a Defender for IoT-ügynökök összesítik az ilyen típusú eseményeket.
+A további kvóta csökkentése és a költségek az eszközök védelmének megőrzése mellett a Defender for IoT-ügynökök összesítik az ilyen típusú eseményeket.
 
 Az esemény összesítése alapértelmezés szerint **be** van kapcsolva, és bár nem ajánlott, a manuálisan **kikapcsolható** .
 
@@ -45,7 +45,7 @@ Az ügynök memória-lábnyomának csökkentése érdekében, ha az ügynök egy
 Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő feltételek:
 
 * ProcessCreate-események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév** és a **userid** megegyezik
-* ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a * * protokollt és a **célport** azonos
+* ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a **protokollt** és a **célport** azonos.
 * ProcessTerminate események – ha a **végrehajtható fájl** és a **kilépési állapot** megegyezik
 
 ### <a name="working-with-aggregated-events"></a>Összesített események használata
@@ -70,11 +70,11 @@ Módosítsa a Defender konfigurációját a IoT esemény összesítéséhez az *
 | Konfiguráció neve | Lehetséges értékek | Részletek | Megjegyzések |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | Események összesítésének engedélyezése/letiltása folyamat-létrehozási eseményekhez |
-| aggregationIntervalProcessCreate | ISO8601 TimeSpan karakterlánca | A folyamat-létrehozási események összesítési időköze |
+| aggregationIntervalProcessCreate | ISO8601 TimeSpan karakterlánca | A folyamat összesítési időköze eseményeket hoz létre |
 | aggregationEnabledConnectionCreate | boolean| Esemény-összesítés engedélyezése/letiltása a kapcsolat létrehozási eseményeihez |
-| aggregationIntervalConnectionCreate | ISO8601 TimeSpan karakterlánca | Kapcsolódási időköz a kapcsolatok létrehozási eseményeihez |
+| aggregationIntervalConnectionCreate | ISO8601 TimeSpan karakterlánca | A kapcsolatok összesítési időköze eseményeket hoz létre |
 | aggregationEnabledProcessTerminate | boolean | Események összesítésének engedélyezése/letiltása a folyamatok megszakításához | Csak Windowson|
-| aggregationIntervalProcessTerminate | ISO8601 TimeSpan karakterlánca | Az összesítési időköz a folyamat megszakításához | Csak Windowson|
+| aggregationIntervalProcessTerminate | ISO8601 TimeSpan karakterlánca | A folyamat összesítési időköze leállítja az eseményeket | Csak Windowson|
 |
 
 ## <a name="default-configurations-settings"></a>Alapértelmezett konfigurációk beállításai
@@ -89,7 +89,7 @@ Módosítsa a Defender konfigurációját a IoT esemény összesítéséhez az *
 | aggregationIntervalProcessTerminate | PT1H|
 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan IoT a Defender a biztonsági ügynök összesítését, és az elérhető esemény-konfigurációs beállításokat.
 

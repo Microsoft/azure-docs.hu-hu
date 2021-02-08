@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: egyéni riasztások létrehozása'
-description: Ismerje meg, hozza létre és rendelje hozzá az egyéni eszközökhöz tartozó riasztásokat az Azure Defender for IoT biztonsági szolgáltatáshoz.
+title: Egyéni riasztások létrehozása
+description: Egyéni eszközök értesítéseinek megismerése, létrehozása és kiosztása az Azure Defender for IoT biztonsági szolgáltatáshoz.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 48682e465374c1a0e1fb74fc6627016696ff6d2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947800"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809044"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Gyors útmutató: egyéni riasztások létrehozása
+# <a name="create-custom-alerts"></a>Egyéni riasztások létrehozása
 
 Az egyéni biztonsági csoportok és riasztások használata révén teljes mértékben kihasználhatja a teljes körű biztonsági információkat és a kategorikus eszköz ismereteit, így biztosítva a jobb biztonságot a IoT-megoldáson belül.
 
@@ -36,7 +36,7 @@ A biztonsági csoportok lehetővé teszik, hogy az eszközök logikai csoportjai
 
 Ezek a csoportok az adott hardverrel rendelkező eszközöket, az adott helyen üzembe helyezett eszközöket, vagy bármely más, az adott igényeknek megfelelő csoportot jelenthetnek.
 
-A biztonsági csoportokat a **SecurityGroup**nevű Device Twin tag tulajdonság határozza meg. Alapértelmezés szerint a IoT Hub minden IoT-megoldása egy **alapértelmezett**nevű biztonsági csoporttal rendelkezik. Módosítsa a **SecurityGroup** tulajdonság értékét egy eszköz biztonsági csoportjának megváltoztatásához.
+A biztonsági csoportokat a **SecurityGroup** nevű Device Twin tag tulajdonság határozza meg. Alapértelmezés szerint a IoT Hub minden IoT-megoldása egy **alapértelmezett** nevű biztonsági csoporttal rendelkezik. Módosítsa a **SecurityGroup** tulajdonság értékét egy eszköz biztonsági csoportjának megváltoztatásához.
 
 Például:
 
@@ -65,19 +65,25 @@ Biztonsági csoportok használatával csoportosíthatja az eszközöket logikai 
 
 ## <a name="customize-an-alert"></a>Riasztás testreszabása
 
-1. Nyissa meg a IoT Hub, és válassza a **Beállítások** lehetőséget a **Biztonság** menüben. 
-1. Kattintson az **egyéni riasztások**elemre.
+1. Nyissa meg a IoT Hub, és válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
+
+1. Válassza az **egyéni riasztások** lehetőséget.
+
 1. Válassza ki azt a biztonsági csoportot, amelyre alkalmazni kívánja a testreszabást.
-1. Kattintson **az egyéni riasztás hozzáadása**lehetőségre.
+
+1. Válassza **az egyéni riasztás hozzáadása** lehetőséget.
+
 1. Válasszon ki egy egyéni riasztást a legördülő listából.
-1. Szerkessze a szükséges tulajdonságokat, majd kattintson **az OK**gombra.
-1. Győződjön meg arról, hogy a **Mentés**gombra kattint. Az új riasztás mentése nélkül a rendszer törli a riasztást, amikor legközelebb IoT Hub.
+
+1. Szerkessze a szükséges tulajdonságokat, majd kattintson **az OK gombra**.
+
+1. Ügyeljen arra, hogy válassza a **Mentés** lehetőséget. Az új riasztás mentése nélkül a rendszer törli a riasztást, amikor legközelebb IoT Hub.
 
 ## <a name="alerts-available-for-customization"></a>Testreszabáshoz elérhető riasztások
 
-A IoT Defender nagy számú riasztást kínál, amelyek az adott igényeknek megfelelően testreszabhatók. Tekintse át a riasztás súlyosságát, az adatforrást, a leírást és a javasolt szervizelési lépéseket, ha az egyes riasztások fogadásakor és időpontjában a [testre szabható riasztási táblázat](concept-customizable-security-alerts.md)
+A IoT Defender nagy számú riasztást kínál, amelyek az adott igényeknek megfelelően testreszabhatók. Tekintse át a riasztás súlyosságára, az adatforrásra, a leírásra és a javasolt szervizelési lépésekre vonatkozó [testreszabható riasztási táblázatot](concept-customizable-security-alerts.md) , ha és amikor az egyes riasztások fogadása történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan telepíthet biztonsági ügynököt...
 

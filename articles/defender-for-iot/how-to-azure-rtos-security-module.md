@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9106e00fe2146978f97b480e3afd3b7ed58c9130
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2b7810c0829859f4a104c62b6df2ca0495bac7
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935296"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809201"
 ---
 # <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>Az Azure RTOS biztonsági moduljának konfigurálása és testreszabása (előzetes verzió)
 
@@ -28,7 +28,7 @@ A következő fájl segítségével konfigurálhatja az eszköz viselkedését.
 
  Az egyes konfigurációk alapértelmezett viselkedését az alábbi táblázatokban ismertetjük: 
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 | Név | Típus | Alapértelmezett | Részletek |
 | - | - | - | - |
@@ -73,7 +73,7 @@ Az Azure RTOS biztonsági modulja támogatja a konkrét biztonsági riasztásoka
 
 ## <a name="log-analytics-optional"></a>Log Analytics (nem kötelező)
 
-Ha nem kötelező és nem szükséges, a Log Analytics engedélyezése és konfigurálása hasznos lehet, ha további vizsgálatot szeretne végezni az eszközök eseményeiről és tevékenységeiről. További információ a Log Analytics beállításáról és használatáról [a Defender for IoT szolgáltatással](how-to-security-data-access.md#log-analytics) című témakörben olvasható. 
+Ha nem kötelező és nem szükséges, a Log Analytics engedélyezése és konfigurálása hasznos lehet, ha további vizsgálatot szeretne végezni az eszközök eseményeiről és tevékenységeiről. További információért olvassa el, hogyan kell beállítani és használni [log Analyticst a Defender for IoT szolgáltatással](how-to-security-data-access.md#log-analytics) . 
 
 ## <a name="next-steps"></a>Következő lépések
 

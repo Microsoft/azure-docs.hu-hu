@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 086ebf71e2da19a96433f32cfb1bae133e875400
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518064"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808482"
 ---
 ![A D s v 3 specifikációit bemutató diagram.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -33,7 +33,7 @@ A gazdagép gyorsítótárazását beállíthatja úgy, hogy az megfeleljen az e
 
 Ha a munkaterhelés nem követi ezeket a mintákat, nem javasoljuk, hogy az állomás-gyorsítótárazást használja.
 
-Futtassunk néhány példát a gazdagép-gyorsítótár különböző beállításaira, hogy meglássuk, hogyan befolyásolja az adatfolyamot és a teljesítményt. Ebben az első példában megvizsgáljuk, hogy mi történik az IO-kérelmekkel, ha a gazdagép gyorsítótárazási beállítása **csak olvasható**értékre van beállítva.
+Futtassunk néhány példát a gazdagép-gyorsítótár különböző beállításaira, hogy meglássuk, hogyan befolyásolja az adatfolyamot és a teljesítményt. Ebben az első példában megvizsgáljuk, hogy mi történik az IO-kérelmekkel, ha a gazdagép gyorsítótárazási beállítása **csak olvasható** értékre van beállítva.
 
 **Telepítő**
 
@@ -56,7 +56,7 @@ Ha egy olvasás történik, és a kívánt információk *nem* érhetők el a gy
 
 ![Az olvasási gazdagép gyorsítótárazását ábrázoló diagram.](media/vm-disk-performance/host-caching-write.jpg)
 
-Ezután nézzük meg, mi történik az IO-kérelmekkel, ha a gazdagép-gyorsítótár beállítása **írási/olvasási**értékre van állítva.
+Ezután nézzük meg, mi történik az IO-kérelmekkel, ha a gazdagép-gyorsítótár beállítása **írási/olvasási** értékre van állítva.
 
 **Telepítő**
 
@@ -67,7 +67,7 @@ Ezután nézzük meg, mi történik az IO-kérelmekkel, ha a gazdagép-gyorsít�
   - IOPS: 5 000
   - Gazdagép gyorsítótárazása: **olvasás/írás**
 
-Az olvasás ugyanúgy történik, mint a csak olvasható. Az írás az egyetlen dolog, ami eltér az olvasási/írási gyorsítótárazástól. Ha a gazdagép-gyorsítótárazással való írást írási **/olvasási**értékre állítja, akkor a rendszer csak az írást írja be a gazdagép-gyorsítótárba, hogy az megfelelően legyen végrehajtva. Az írás ezután a háttérben a lemezre kerül. Ez azt jelenti, hogy a gyorsítótárba való íráskor a rendszer az írást a gyorsítótárazott IO irányába veszi számításba. Amikor a rendszer lustul írt a lemezre, a nem gyorsítótárazott IO irányába számít.
+Az olvasás ugyanúgy történik, mint a csak olvasható. Az írás az egyetlen dolog, ami eltér az olvasási/írási gyorsítótárazástól. Ha a gazdagép-gyorsítótárazással való írást írási **/olvasási** értékre állítja, akkor a rendszer csak az írást írja be a gazdagép-gyorsítótárba, hogy az megfelelően legyen végrehajtva. Az írás ezután a háttérben a lemezre kerül. Ez azt jelenti, hogy a gyorsítótárba való íráskor a rendszer az írást a gyorsítótárazott IO irányába veszi számításba. Amikor a rendszer lustul írt a lemezre, a nem gyorsítótárazott IO irányába számít.
 
 ![Az írási/olvasási gazdagépek gyorsítótárazását ábrázoló diagram.](media/vm-disk-performance/host-caching-read-write.jpg)
 
@@ -137,20 +137,21 @@ Az Azure-ban olyan mérőszámok találhatók, amelyek betekintést nyújtanak a
 - **Lemez írási műveletei/mp**: a virtuális géphez csatolt összes lemezről másodpercek alatt írt kimeneti műveletek száma.
 
 ## <a name="storage-io-utilization-metrics"></a>Storage IO kihasználtsági metrikái
+A következő metrikák segítenek diagnosztizálni a szűk keresztmetszetet a virtuális gépen és a lemez kombinációjában. Ezek a metrikák csak Premium-kompatibilis virtuális gépek használata esetén érhetők el. Ezek a metrikák az ultra kivételével minden lemez típushoz elérhetők. 
 
 A lemez i/o-korlátjának diagnosztizálását segítő mérőszámok:
 
-- **Adatlemez IOPS**kihasználtsága (%): az ADATlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátjának i/o-értéke.
-- **Adatlemez sávszélességének**kihasználtsága (%): az adatlemez átviteli sebessége által kiszámított százalékos arány a kiépített adatlemez átviteli sebessége alapján. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez sávszélesség-korlátján belül az i/o-érték.
+- **Adatlemez IOPS** kihasználtsága (%): az ADATlemez IOPS kiszámított százalékos arány a kiépített adatlemez IOPS. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez IOPS-korlátjának i/o-értéke.
+- **Adatlemez sávszélességének** kihasználtsága (%): az adatlemez átviteli sebessége által kiszámított százalékos arány a kiépített adatlemez átviteli sebessége alapján. Ha ez az érték 100%-os, az alkalmazás futása az adatlemez sávszélesség-korlátján belül az i/o-érték.
 - **Operációsrendszer-lemez IOPS felhasznált százaléka**: az operációsrendszer-lemez IOPS kiszámított százalék a kiépített operációsrendszer-lemez IOPS befejeződött. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez IOPS korlátján belül az IO-ra van korlátozva.
-- **Operációsrendszer-lemez sávszélességének**kihasználtsága (%): az operációsrendszer-lemez átviteli sebessége által kiszámított százalékos érték a kiépített operációsrendszer-lemez átviteli sebességén. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátján kívül esik.
+- **Operációsrendszer-lemez sávszélességének** kihasználtsága (%): az operációsrendszer-lemez átviteli sebessége által kiszámított százalékos érték a kiépített operációsrendszer-lemez átviteli sebességén. Ha ez az érték 100%-os, az alkalmazás futása az operációsrendszer-lemez sávszélesség-korlátján kívül esik.
 
 A virtuális gépek IO-korlátjának diagnosztizálását segítő mérőszámok:
 
-- A virtuális **gép gyorsítótárazott IOPS**kihasználtsága (%): az összes IOPS által kiszámított százalék, amely a maximálisan gyorsítótárazott virtuális gép IOPS korlátján fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPS-korlátjának i/o-értéke.
-- A virtuális **gép gyorsítótárazott sávszélességének**kihasználtsága (%): a teljes lemez átviteli sebessége alapján kiszámított százalékos érték a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátjának i/o-határértéke.
-- A virtuális gép nem **gyorsítótárazott IOPS**kihasználtsága (%): a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS korlátjának i/o-értéke.
-- A virtuális gép nem **gyorsítótárazott sávszélességének**kihasználtsága (%): a virtuális gépen lévő teljes lemez átviteli sebessége által kiszámított százalék a virtuális gép maximálisan kiépített átviteli sebességével fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátjának i/o-korlátja.
+- A virtuális **gép gyorsítótárazott IOPS** kihasználtsága (%): az összes IOPS által kiszámított százalék, amely a maximálisan gyorsítótárazott virtuális gép IOPS korlátján fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott IOPS-korlátjának i/o-értéke.
+- A virtuális **gép gyorsítótárazott sávszélességének** kihasználtsága (%): a teljes lemez átviteli sebessége alapján kiszámított százalékos érték a maximálisan gyorsítótárazott virtuálisgép-átviteli sebességnél. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép gyorsítótárazott sávszélesség-korlátjának i/o-határértéke.
+- A virtuális gép nem **gyorsítótárazott IOPS** kihasználtsága (%): a virtuális gépen lévő összes IOPS által kiszámított százalék a nem gyorsítótárazott virtuális gép maximális IOPS-korlátja alapján lett végrehajtva. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott IOPS korlátjának i/o-értéke.
+- A virtuális gép nem **gyorsítótárazott sávszélességének** kihasználtsága (%): a virtuális gépen lévő teljes lemez átviteli sebessége által kiszámított százalék a virtuális gép maximálisan kiépített átviteli sebességével fejeződött be. Ha ez az érték 100%-os, az alkalmazás futása a virtuális gép nem gyorsítótárazott sávszélesség-korlátjának i/o-korlátja.
 
 ## <a name="storage-io-utilization-metrics-example"></a>Storage IO kihasználtsági mérőszámok – példa
 

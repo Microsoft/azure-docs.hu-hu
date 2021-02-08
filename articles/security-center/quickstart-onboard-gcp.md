@@ -3,16 +3,16 @@ title: A GCP-fiók összekötése Azure Security Center
 description: A GCP-erőforrások figyelése Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 02/07/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757610"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809405"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>A GCP-fiókok összekapcsolásának Azure Security Center
 
@@ -20,7 +20,7 @@ A Felhőbeli számítási feladatok gyakran több felhőalapú platformra is kit
 
 Azure Security Center védi a munkaterheléseket az Azure-ban, a Amazon Web Services (AWS) és a Google Cloud Platformban (GCP).
 
-A GCP-fiók Security Centerba való bevezetésével integrálható a GCP biztonsági parancs és a Azure Security Center. Security Center így biztosítja a következő felhőalapú környezetek láthatóságát és védelmét:
+A GCP-fiókok Security Centerba való bevezetésével integrálható a GCP biztonsági parancs és a Azure Security Center. Security Center így biztosítja a következő felhőalapú környezetek láthatóságát és védelmét:
 
 - Biztonsági konfigurációs beállítások észlelése
 - Egyetlen nézet, amely Security Center ajánlásokat és a GCP Security Command Center eredményeit mutatja
@@ -39,12 +39,15 @@ Az alábbi képernyőképen megtekintheti az Security Center áttekintési irán
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Szükséges szerepkörök és engedélyek:|A kapcsolódó Azure-előfizetéshez tartozó **tulajdonos** vagy **közreműködő**|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>A GCP-fiók csatlakoztatása
 
-A GCP Cloud Connector létrehozásához kövesse az alábbi lépéseket. 
+Kövesse az alábbi lépéseket a GCP Cloud Connector létrehozásához a Google Cloud-erőforrások a szervezet vagy a projekt szintjén való összekapcsolásához. 
+
+> [!TIP]
+> Ismerkedjen meg a Google Cloud Resource-hierarchiával az online docs [itt](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>1. lépés A GCP Security Command Center beállítása a biztonsági állapot elemzésével
 
@@ -121,7 +124,16 @@ Ha az erőforrás típusa szerint szeretné megtekinteni az összes aktív javas
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="A tárgyieszköz-leltár oldal erőforrástípus-szűrője, amely a GCP beállításokat jeleníti meg"::: 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>A GCP-fiókok Azure Security Centerhoz való csatlakoztatásával kapcsolatos gyakori kérdések
+
+### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Csatlakozhatok több GCP-fiókhoz is Security Center?
+Igen. A fent említettek szerint a Google Cloud-erőforrásokat a szervezet vagy a projekt szintjén is összekapcsolhatjuk. Ismerkedjen meg a Google Cloud Resource-hierarchiával az online docs [itt](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
+
+
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>Van egy API a GCP-erőforrások Security Centerhez való csatlakoztatásához?
+Igen. Security Center felhőalapú összekötők létrehozásához, szerkesztéséhez vagy törléséhez REST API használatával tekintse meg az [Összekötők API](/rest/api/securitycenter/connectors)részleteit.
+
+## <a name="next-steps"></a>Következő lépések
 
 A GCP-fiók csatlakoztatása a Azure Security Centerben elérhető többfelhős felület része. A kapcsolódó információk a következő oldalon találhatók:
 

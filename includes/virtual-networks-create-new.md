@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-network
 author: asudbring
 ms.service: virtual-network
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e1d4d29f8edca87ec1cca0ffced7b3e1bca90717
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012074"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808469"
 ---
-## <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
+## <a name="create-the-virtual-network-and-subnet"></a>A virtuális hálózat és az alhálózat létrehozása
 
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot.
 
@@ -53,4 +53,4 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.

@@ -11,24 +11,58 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 02/07/2021
 ms.author: shhazam
-ms.openlocfilehash: 72a6e50134647194679055a886b50b01f42e212d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629979"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809507"
 ---
-# <a name="whats-new"></a>Újdonságok
+# <a name="whats-new-in-azure-defender-for-iot"></a>Az Azure Defender IoT újdonságai
 
-A IoT 10,0 Defender a biztonságot, a felügyeletet és a használhatóságot javító funkciókat biztosít.
+Ez a cikk felsorolja a Defender új szolgáltatásait és funkcióinak fejlesztéseit a IoT.
 
-## <a name="security"></a>Biztonság
+A feljegyzett funkciók előzetes verzióban érhetők el. Az [Azure előzetes verziójának kiegészítő feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak az olyan Azure-funkciókra vonatkozó további jogi feltételek, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelennek meg az általánosan elérhetővé tételben.
+## <a name="february-2021"></a>Február 2021
+
+### <a name="enhanced-custom-alert-rules"></a>Bővített egyéni riasztási szabályok
+
+Mostantól létrehozhat egyéni riasztási szabályokat a nap alapján, a napok csoportját és az időpontot hálózati tevékenységet észlelve.  A nap-és időszabályi feltételek használata hasznos lehet, például azokban az esetekben, amikor a riasztás súlyossága a riasztási esemény időpontjában van származtatva. Létrehozhat például egy olyan egyéni szabályt, amely magas súlyosságú riasztást indít el, ha egy hétvégén vagy esténként a hálózati tevékenységet észlel.
+
+Ez a funkció az érzékelőn érhető el az 10,1-es verzió kiadásával.
+
+### <a name="export-alerts-from-on-premises-management-console"></a>Riasztások exportálása a helyszíni felügyeleti konzolról
+
+A riasztási adatok mostantól egy. csv-fájlba exportálhatók a helyszíni felügyeleti konzolról. Exportálhatja az összes észlelt riasztás adatait, vagy exportálhatja az adatokat a szűrt nézet alapján.
+
+Ez a szolgáltatás a helyszíni felügyeleti konzolon érhető el, az 10,1-es verzió kiadásával.
+### <a name="device-builder---new-micro-agent-public-preview"></a>Device Builder – új Micro Agent (nyilvános előzetes verzió)
+
+Új Eszközkezelő modul érhető el. A modul, amelyet a Micro-Agent is nevez, lehetővé teszi a következőket:
+
+- **Integráció az azure IoT hub és az Azure Defender for IoT** használatával – az Azure IoT hub és az Azure Defender for IoT által biztosított figyelési lehetőséggel integrálva közvetlenül a IoT-eszközökön is erősebb végponti biztonságot hozhat létre.
+- A **standard szintű IoT operációs rendszerek támogatásával rugalmas üzembe helyezési lehetőségek** használhatók bináris csomagként vagy módosítható forráskódként, a szabványos IoT operációs rendszerek, például a Linux és az Azure RTOS támogatásával.
+- **Minimális erőforrás-követelmények az operációsrendszer-kernel függőségei nélkül** – kis helyigény, alacsony CPU-fogyasztás, és nincs operációsrendszer-kernel függőségei.
+- **Biztonsági állapot kezelése** – proaktív módon figyeli a IoT-eszközök biztonsági állapotát.
+- **Folyamatos, valós idejű IoT/s veszélyforrások észlelése** – olyan fenyegetések észlelése, mint például a botnetek, a találgatásos támadások, a kriptográfiai bányászok és a gyanús hálózati tevékenységek
+
+Az elavult biztonsági modul dokumentációját a rendszer a klasszikus mappába helyezi át.
+
+Ez a szolgáltatáskészlet a jelenleg elérhető nyilvános előzetes verziójú felhőben érhető el.
+
+## <a name="january-2021"></a>2021. január
+
+- [Biztonság](#security)
+- [Előkészítés](#onboarding)
+- [Használhatóság](#usability)
+- [Egyéb frissítések](#other-updates)
+### <a name="security"></a>Biztonság
 
 Ehhez a kiadáshoz a tanúsítvány-és jelszó-helyreállítási fejlesztések történtek.
 
-### <a name="certificates"></a>Tanúsítványok
+#### <a name="certificates"></a>Tanúsítványok
   
 Ez a verzió a következőket teszi lehetővé:
 
@@ -45,48 +79,48 @@ Frissítések esetén:
 - Az első bejelentkezés során a felhasználóknak SSL-tanúsítványt (ajánlott) vagy helyileg generált önaláírt tanúsítványt kell használniuk (nem ajánlott)
 - A tanúsítvány érvényesítése alapértelmezés szerint be van kapcsolva a friss telepítések esetében.
 
-### <a name="password-recovery"></a>Jelszó-helyreállítás
+#### <a name="password-recovery"></a>Jelszó-helyreállítás
   
 Az érzékelő és a helyszíni felügyeleti konzol a rendszergazda felhasználók mostantól helyreállíthatók az Azure Defender for IoT portálon elérhető jelszavak. Korábban a jelszó-helyreállításhoz a támogatási csapat beavatkozás szükséges.
 
-## <a name="onboarding"></a>Előkészítés
+### <a name="onboarding"></a>Előkészítés
 
-### <a name="on-premises-management-console---committed-devices"></a>Helyszíni felügyeleti konzol – véglegesített eszközök
+#### <a name="on-premises-management-console---committed-devices"></a>Helyszíni felügyeleti konzol – véglegesített eszközök
 
 A helyszíni felügyeleti konzolra való első bejelentkezés után a felhasználóknak most már szükségük van egy aktiválási fájl feltöltésére. A fájl tartalmazza a szervezeti hálózaton figyelni kívánt eszközök összesített számát. Ezt a számot a véglegesített eszközök számának nevezzük.
 A véglegesített eszközök a bevezetési folyamat során vannak meghatározva az Azure Defender for IoT portálon, ahol létrejön az aktiválási fájl.
 Az aktiválási fájl feltöltéséhez először a felhasználók és a felhasználók frissítésére van szükség.
 A kezdeti aktiválás után a hálózaton észlelt eszközök száma túllépheti a véglegesített eszközök számát. Ez az esemény például akkor fordulhat elő, ha több érzékelőt csatlakozik a felügyeleti konzolhoz. Ha az észlelt eszközök száma és a véglegesített eszközök száma között eltérés tapasztalható, a felügyeleti konzolon megjelenik egy figyelmeztetés. Ha ez az esemény történik, fel kell töltenie egy új aktiválási fájlt.
 
-### <a name="pricing-page-options"></a>Díjszabási oldal beállításai
+#### <a name="pricing-page-options"></a>Díjszabási oldal beállításai
 
 A díjszabási oldalon új előfizetéseket hozhat létre az Azure Defender IoT, és meghatározhatja a hálózatban lévő véglegesített eszközöket.  
 Emellett a díjszabási oldal segítségével kezelheti az érzékelőhöz társított meglévő előfizetéseket, és frissítheti az eszközre vonatkozó kötelezettségvállalást.
 
-### <a name="view-and-manage-onboarded-sensors"></a>Beépített érzékelők megtekintése és kezelése
+#### <a name="view-and-manage-onboarded-sensors"></a>Beépített érzékelők megtekintése és kezelése
 
 Az új hely és érzékelők portál oldalon A következőket teheti:
 
 - Leíró információk hozzáadása az érzékelőhöz. Például az érzékelőhöz társított zóna, vagy a szabad szöveges címkék.
 - Az érzékelő adatainak megtekintése és szűrése. Például megtekintheti a felhőhöz csatlakoztatott vagy helyileg felügyelt érzékelők adatait, vagy megtekintheti az érzékelőkre vonatkozó információkat egy adott zónában.  
 
-## <a name="usability"></a>Használhatóság
+### <a name="usability"></a>Használhatóság
 
-### <a name="azure-sentinel-new-connector-page"></a>Az Azure Sentinel új összekötő lapja
+#### <a name="azure-sentinel-new-connector-page"></a>Az Azure Sentinel új összekötő lapja
 
 Az Azure Defender for IoT adatösszekötő lapja az Azure Sentinelben újratervezve. Az adatösszekötő mostantól a IoT hubok helyett előfizetéseken alapul. lehetővé teszi, hogy az ügyfelek jobban kezeljék az Azure Sentinelhez való konfigurációs kapcsolataikat.
 
-### <a name="azure-portal-permission-updates"></a>Azure Portal engedélyek frissítései  
+#### <a name="azure-portal-permission-updates"></a>Azure Portal engedélyek frissítései  
 
 A biztonsági olvasó és a biztonsági rendszergazdai támogatás hozzá lett adva.
 
-## <a name="other-updates"></a>Egyéb frissítések
+### <a name="other-updates"></a>Egyéb frissítések
 
-### <a name="access-group---zone-permissions"></a>Hozzáférési csoport – zóna engedélyei
+#### <a name="access-group---zone-permissions"></a>Hozzáférési csoport – zóna engedélyei
   
 A helyszíni felügyeleti konzol hozzáférési csoportjának szabályai nem tartalmazzák az adott zónához való hozzáférés engedélyezésének lehetőségét. Nem változik a helyek, régiók és üzleti egységek használatát használó szabályok meghatározása.   A frissítés után a megadott zónákhoz hozzáférést biztosító szabályokat tartalmazó hozzáférési csoportok módosulnak, hogy engedélyezze a hozzáférést a fölérendelt helyéhez, beleértve az összes zónáját.
 
-### <a name="terminology-changes"></a>Terminológiai változások
+#### <a name="terminology-changes"></a>Terminológiai változások
 
 Az eszköz kifejezése átnevezve lett az eszközre az érzékelő és a helyszíni felügyeleti konzolon, a jelentésekben és az egyéb megoldási felületeken.
 Az érzékelő és a helyszíni felügyeleti konzol riasztásai esetében az eseményt kezelő kifejezés szervizelési lépések elnevezésű.

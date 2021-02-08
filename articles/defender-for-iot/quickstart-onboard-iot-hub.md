@@ -1,79 +1,72 @@
 ---
-title: 'Gyors útmutató: a szolgáltatás engedélyezése'
+title: A Defender IoT-ügynökön alapuló megoldás beléptetése
 description: Ismerje meg, hogyan hozhatja be és engedélyezheti a Defender for IoT biztonsági szolgáltatást az Azure IoT Hubban.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/20/2021
+ms.author: shhazam
+ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835159"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809133"
 ---
-# <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Gyors útmutató: az Azure Defender beléptetése a IoT szolgáltatásba IoT Hub
+# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>A Defender IoT-ügynökön alapuló megoldás beléptetése
 
 Ez a cikk azt ismerteti, hogyan engedélyezheti a Defender for IoT szolgáltatást a meglévő IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md) című témakört.
+
+A IoT biztonságát IoT Hub a Defender IoT szolgáltatásán keresztül kezelheti. A IoT Hub található felügyeleti portál lehetővé teszi a következőket: 
+
+- IoT Hub biztonság kezelése.
+
+- Egy IoT-eszköz biztonságának alapszintű felügyelete az ügynök telepítése nélkül a IoT Hub telemetria alapján. 
+
+- Speciális felügyelet a Micro-ügynökön alapuló IoT-eszközök biztonsága szempontjából.
 
 > [!NOTE]
 > A IoT Defender jelenleg csak a standard szintű IoT hubokat támogatja.
 
-## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezésének előfeltételei
+## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>IoT Hub-beli IoT beléptetése a Defenderbe
 
-- Log Analytics-munkaterület
-  - Alapértelmezés szerint két típusú információt tárol a Log Analytics munkaterületen, a Defender for IoT; **biztonsági riasztások** és **javaslatok**.
-  - Dönthet úgy is, hogy hozzáad egy további adattípust, **nyers eseményeket**. Vegye figyelembe, hogy a Log Analytics **nyers események** tárolása további tárolási költségekkel jár.
-- IoT Hub (standard szint)
-- Teljesítse a [előfeltételeket](quickstart-system-prerequisites.md).
+Az új IoT-hubok esetében a Defender for IoT alapértelmezés szerint be van **kapcsolva** . A IoT Hub-létrehozási folyamat során ellenőrizheti, hogy az IoT Defender be van-e **kapcsolva** .
 
-## <a name="enable-defender-for-iot-on-your-iot-hub"></a>A Defender engedélyezése a IoT a IoT Hub
+Annak ellenőrzése, hogy a váltógomb be van **-e állítva:**
 
-A IoT Hub biztonságának engedélyezése:
+1. Lépjen az Azure Portalra.
 
-1. Nyissa meg a **IoT Hubt** Azure Portal.
-1. A **Biztonság** menüben kattintson a **IoT-megoldás biztonságossá tétele** lehetőségre.
+1. Válassza ki **IoT hub** az Azure-szolgáltatások listájából.
 
-Gratulálunk! Végrehajtotta a Defender IoT való engedélyezését a IoT Hub.
+1. Válassza a **Létrehozás** lehetőséget.
 
-### <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
+    :::image type="content" source="media/quickstart-onboard-iot-hub/create-iot-hub.png" alt-text="Válassza a létrehozás gombot a felső eszköztáron." lightbox="media/quickstart-onboard-iot-hub/create-iot-hub-expanded.png":::
 
-A IoT-megoldás biztonságossá tételéhez a IoT-eszközökről, IoT Edge és IoT Hub a bejövő és kimenő kapcsolatainak IP-címeit a rendszer alapértelmezés szerint összegyűjti és tárolja. Ez az információ elengedhetetlen a gyanús IP-forrásokkal való rendellenes kapcsolódás észleléséhez. Ha például kísérlet történik a kapcsolat létrehozására egy ismert botnet IP-forrásával vagy egy, a földrajzi helyen kívüli IP-forrással. A Defender for IoT szolgáltatás lehetővé teszi, hogy bármikor engedélyezze és tiltsa le az IP-címekre vonatkozó adatgyűjtést.
+1. Válassza a **felügyelet** fület, és ellenőrizze, hogy a **Defender for IoT** váltógomb be értékre van-e **állítva.**
 
-Az IP-címek adatgyűjtésének engedélyezése vagy letiltása:
+    :::image type="content" source="media/quickstart-onboard-iot-hub/management-tab.png" alt-text="Győződjön meg arról, hogy a Defender for IoT váltógomb be értékre van állítva.":::
 
-1. Nyissa meg a IoT Hub, majd válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
-1. Válassza ki az **adatgyűjtési** képernyőt, és módosítsa a térinformatikai és/vagy IP-kezelési beállításokat, ahogy szeretné.
+## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>A Defender IoT meglévő IoT Hub
 
-### <a name="log-analytics-creation"></a>Log Analytics létrehozása
+A szolgáltatás elindításához a következő lépéseket követve figyelheti az eszköz Identitáskezelés-felügyeletét, az eszközt a felhőbe és a felhőben az eszköz kommunikációs mintáit: 
 
-Ha a IoT Defender be van kapcsolva, a rendszer létrehoz egy alapértelmezett Azure Log Analytics-munkaterületet a nyers biztonsági események, riasztások és javaslatok tárolására a IoT-eszközökre, a IoT Edgera és a IoT Hub. Minden hónapban az Azure Log Analytics-szolgáltatásba betöltött első öt (5) GB adat ingyenes. Az Azure Log Analytics-munkaterületre betöltött minden GB-nyi adat díjmentesen megmarad az első 31 napban. További információ a [log Analytics](https://azure.microsoft.com/pricing/details/monitor/) díjszabásáról.
+1. Navigáljon IoT Hub. 
 
-Log Analytics munkaterület-konfigurációjának módosítása:
+1. Válassza a **Biztonság áttekintése**   menüt. 
 
-1. Nyissa meg a IoT Hub, majd válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
-1. Válassza ki az **adatgyűjtés** képernyőt, és módosítsa a log Analytics beállítások munkaterület-konfigurációját igény szerint.
+1. Kattintson a IoT-megoldás biztonságossá tétele lehetőségre, és fejezze be a bevezetési űrlapot. 
 
-### <a name="customize-your-iot-security-solution"></a>A IoT biztonsági megoldás testreszabása
 
-Alapértelmezés szerint a Defender for IoT megoldás bekapcsolása automatikusan biztonságossá teszi az Azure-előfizetéshez tartozó összes IoT-elosztót.
-
-A Defender bekapcsolása a IoT szolgáltatáshoz egy adott IoT Hub be-vagy kikapcsolva:
-
-1. Nyissa meg a IoT Hub, majd válassza a **Beállítások** lehetőséget a **Biztonság** menüben.
-1. Válassza ki az **adatgyűjtés** képernyőt, és módosítsa az Azure-előfizetésében lévő bármelyik IoT hub biztonsági beállításait.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásához...
 
 > [!div class="nextstepaction"]
-> [A megoldás konfigurálása](quickstart-configure-your-solution.md)
+> [Defender IOT Micro Agent-modul létrehozása twin (előzetes verzió)](quickstart-create-micro-agent-module-twin.md)

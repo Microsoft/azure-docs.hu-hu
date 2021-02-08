@@ -1,6 +1,6 @@
 ---
-title: Azure Defender a IoT architektúrához
-description: Ismerje meg az Azure Defender IoT architektúra-és információáramlási folyamatát.
+title: Ügynök nélküli megoldás architektúrája
+description: Ismerje meg az Azure Defender IoT ügynök nélküli architektúráját és az információáramlást.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/13/2021
+ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1eb939a63edc4abc638dc128af0d9ebbd7241bef
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621097"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809303"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
-Ez a cikk a Defender IoT-megoldás működési rendszerarchitektúráját ismerteti. A IoT készült Azure Defender két lehetőséget kínál a környezet igényeinek, az ügynök nélküli megoldásnak a szervezeteknek és az eszközök építői számára.
+Ez a cikk a Defender funkcionális rendszerarchitektúráját ismerteti a IoT ügynök nélküli megoldáshoz. A IoT készült Azure Defender két lehetőséget kínál a környezet igényeinek, az ügynök nélküli megoldásnak a szervezeteknek és az eszközök építői számára.
 
 ## <a name="agentless-solution-for-organizations"></a>Ügynök nélküli megoldás szervezeteknek
 ### <a name="defender-for-iot-components"></a>Defender IoT-összetevőkhöz
@@ -47,15 +47,15 @@ A IoT készült Azure Defender a következő összetevőket tartalmazza:
 
 ### <a name="azure-defender-for-iot-sensors"></a>Azure Defender IoT-érzékelőkhöz
 
-A Defender for IoT érzékelők felfedik és folyamatosan figyelik a hálózati eszközöket. Az érzékelők összegyűjtik az INTERNETKAPCSOLATtal rendelkező hálózati forgalmat passzív (ügynök nélküli) figyeléssel a IoT és az OT-eszközökön. 
+A Defender for IoT sensors felderíti és folyamatosan figyeli a hálózati eszközöket. Az érzékelők összegyűjtik az INTERNETKAPCSOLATtal rendelkező hálózati forgalmat passzív (ügynök nélküli) figyeléssel a IoT és az OT-eszközökön. 
  
 A IoT és az OT-hálózatok számára készült, az ügynök nélküli technológia részletesen betekintést nyújt a IoT és az OT-ra, hogy percek alatt a hálózathoz kapcsolódjon. A hálózatra és a hálózati eszközökre a nem invazív, a Network Traffic Analysis (NTA) megközelítés miatt nulla teljesítménnyel kapcsolatos hatással van. 
  
-A szabadalmaztatott, a IoT és az OT-Aware viselkedés-elemzés és a 7. rétegbeli mély csomag vizsgálata (DPI) lehetővé teszi a hagyományos aláírás-alapú megoldások elemzését, hogy a rendellenes vagy jogosulatlan tevékenységek alapján azonnal észlelje a speciális IoT és a fenyegetéseket (például a fájl nélküli kártevőket). 
+A szabadalmaztatott, a IoT és az OT-Aware viselkedés-elemzés és a 7. rétegbeli Deep Packet-ellenőrzés (DPI) alkalmazása lehetővé teszi a hagyományos aláírás-alapú megoldások elemzését, hogy a rendellenes vagy jogosulatlan tevékenységek alapján azonnal észlelje a speciális IoT és a fenyegetéseket (például a fájl nélküli kártevőket). 
   
 A IoT érzékelőkhöz tartozó Defender egy SPAN porthoz vagy egy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi a DPI-t a IoT és az OT hálózati forgalomban. 
  
-Az adatgyűjtés,-feldolgozás,-elemzés és-riasztás közvetlenül az érzékelőn történik. Ez ideális megoldás az alacsony sávszélességű vagy nagy késésű kapcsolattal rendelkező helyekhez, mivel csak a metaadatok a felügyeleti konzolra kerülnek át.
+Az adatgyűjtés,-feldolgozás,-elemzés és-riasztás közvetlenül az érzékelőn történik. Ez a folyamat ideális megoldást kínál az alacsony sávszélességű vagy nagy késésű kapcsolattal rendelkező helyekhez, mert csak metaadatok kerülnek át a felügyeleti konzolra.
 
 Az érzékelő öt analitikai felismerő motort tartalmaz. A motorok a valós idejű és előre rögzített forgalom elemzése alapján indítják el a riasztásokat. A következő motorok érhetők el: 
 
@@ -90,13 +90,13 @@ A helyszíni felügyeleti konzol lehetővé teszi, hogy a Security Operations Ce
 
 Ez az architektúra átfogó, egységes nézetet biztosít a hálózatról a SOC szinten, az optimalizált riasztások kezelését, valamint az operatív hálózatok biztonságának szabályozását, így biztosítva, hogy a döntéshozatal és a kockázatkezelés hibátlan maradjon.
 
-A több-bérlős, a monitorozási, az adatelemzési és a központosított érzékelő-távvezérlés mellett a felügyeleti konzol további rendszerkarbantartási eszközöket (például riasztások kizárása) és a távoli berendezések teljes körű testreszabott jelentéskészítési funkcióit biztosítja. Ez a skálázható architektúra a helyi felügyeletet is támogatja a helyek szintjén, a zóna szintjén, valamint a globális felügyeletet a SOC-n belül.
+A több-bérlős, a monitorozási, az adatelemzési és a központosított érzékelő-távvezérlés mellett a felügyeleti konzol további rendszerkarbantartási eszközöket (például a riasztás kizárását) és a távoli berendezések teljes körű testreszabott jelentéskészítési funkcióit biztosítja. Ez az architektúra támogatja a helyi felügyeletet a hely szintjén, a zóna szintjén és a globális felügyeletet a SOC-n belül.
 
 A felügyeleti konzol a magas rendelkezésre állású konfigurációhoz helyezhető üzembe, amely egy biztonsági mentési konzolt biztosít, amely rendszeresen fogadja a helyreállításhoz szükséges összes konfigurációs fájl biztonsági másolatait. Ha az elsődleges konzol meghibásodik, a helyi hely felügyeleti berendezései automatikusan átveszik a feladatokat a biztonsági mentési konzollal a rendelkezésre állás megszakítás nélkül történő fenntartása érdekében.
 
 A SOC-munkafolyamatokkal szorosan integrálva és a könyvek futtatásával egyszerűen rangsorolhatja a kockázatcsökkentő tevékenységeket és a fenyegetések közötti összefüggéseket.
 
-- Holisztikus – a bonyolultság csökkentése egyetlen, egységes platformmal az eszközkezelés, a kockázatkezelés és a sebezhetőségek kezelése terén, valamint az incidensek figyelése az incidensek megválaszolásával.
+- Holisztikus – a bonyolultság csökkentése egyetlen egységes platformmal az eszközkezelés, a kockázatkezelés és a sebezhetőségek kezelése terén, valamint a fenyegetések figyelése az incidensek megválaszolásával.
 
 - Összesítés és korreláció – az összes helyről összegyűjtött adatok és riasztások megjelenítése, összesítése és elemzése.
 
@@ -111,30 +111,10 @@ Az Azure-beli IoT-portál Defender az alábbiakkal segíti Önt:
 - Megoldási berendezések vásárlása
 
 - Szoftver telepítése és frissítése
+
 - Érzékelők bevezetése az Azure-ba
+
 - Veszélyforrások elleni intelligencia-csomagok frissítése
-
-## <a name="agent-based-solution-for-device-builders"></a>Ügynökalapú megoldás eszközkészítők számára
-
-### <a name="embedded-security-agent-built-in-mode"></a>Beágyazott biztonsági ügynök: beépített üzemmód
-
-A **beépített** módban a Defender for IoT engedélyezve van, ha úgy dönt, hogy bekapcsolja az IoT hub **biztonsági** beállítását. A valós idejű monitorozást, ajánlásokat és riasztásokat kínáló beépített üzemmód egylépéses eszköz-láthatóságot és páratlan biztonságot nyújt. A beépített módban nem szükséges az ügynök telepítése semmilyen eszközön, és a naplózott tevékenységekben a speciális elemzések segítségével elemezheti és védetté teheti a terepi eszközt és az IoT hubot.
-
-### <a name="embedded-security-agent-enhanced-mode"></a>Beágyazott biztonsági ügynök: bővített mód
-
-**Bővített** módban, miután bekapcsolta az IoT hub **biztonsági** beállítását, és telepíti a Defendert a IoT-eszközökön az eszközökön, az ügynökök összegyűjtik, összesítik és elemzik a nyers biztonsági eseményeket az eszközökről. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök védelmezője az események összesítését is kezeli, így elkerülhető a hálózati átviteli sebesség. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
-
-Az eszközök ügynökei és más alkalmazásai az **Azure Send Security Message SDK** használatával biztonsági adatokat küldhetnek az Azure IoT hub-ba. Az IoT hub beolvassa ezeket az információkat, és továbbítja a Defender for IoT szolgáltatásnak.
-
-Ha a Defender for IoT szolgáltatás engedélyezve van, a továbbított adatokon felül a IoT hub az összes belső adatmennyiségét is elküldi a IoT Defender által végzett elemzéshez. Ezek az adategységek a Felhőbeli műveleti naplókat, az eszköz identitásait és a hub konfigurációját tartalmazzák. Mindezen információk segítenek létrehozni a Defendert a IoT Analytics-folyamathoz.
-
-A IoT Analytics-folyamat Defender a Microsoft és a Microsoft partnerei által használt különböző forrásokból származó további veszélyforrások elleni intelligenciát is megkapja. A IoT teljes elemzési folyamatának védelmezője a szolgáltatásban végzett összes ügyfél-konfigurációval működik (például az egyéni riasztások és a biztonsági üzenet küldése SDK használata).
-
-Az elemzési folyamat használatával a Defender for IoT az összes adatfolyamot ötvözi a gyakorlatban használható javaslatok és riasztások létrehozásához. A folyamat a biztonsági kutatók és szakértők által létrehozott egyéni szabályokat, valamint a szabványos eszköz viselkedésével és a kockázatelemzéstől való eltérést kereső gépi tanulási modelleket is tartalmaz.
-
-A IoT ajánlásai és értesítései (analitikai folyamat kimenete) az egyes ügyfelek Log Analytics munkaterületére íródnak. A munkaterületen található nyers események, valamint a riasztások és javaslatok segítségével a gyanús tevékenységek pontos részleteivel részletesen elmerülhetnek a felderítéssel kapcsolatos vizsgálatok és lekérdezések.
-
-:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="A Micro Agent architektúrája.":::
 
 ## <a name="see-also"></a>Lásd még
 
