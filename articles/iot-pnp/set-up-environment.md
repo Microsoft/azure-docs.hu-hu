@@ -7,18 +7,20 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820030"
+ms.locfileid: "99831909"
 ---
 # <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Rövid útmutató – a környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok
 
 Mielőtt IoT Plug and Play a gyors útmutatókat és oktatóanyagokat, konfigurálnia kell egy IoT hubot és a Device kiépítési szolgáltatást (DPS) az Azure-előfizetésében. Szüksége lesz a minta-alkalmazások és az Azure IoT Explorer eszköz helyi példányaira is.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Ha el szeretné kerülni az Azure CLI helyi telepítésének követelményét, használhatja a Azure Cloud Shell a Cloud Services beállításához.
 
@@ -130,7 +132,7 @@ Konfigurálja az eszközt a korábban letöltött modell-fájlok használatára.
 
 További információt az [Azure IoT Explorer telepítése és használata](howto-use-iot-explorer.md)című témakörben talál.
 
-## <a name="remove-the-resources"></a>Erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az IoT hub és a DPS-példány az összes IoT Plug and Play gyors és oktatóanyagokat is használhatja, így csak egyszer kell elvégeznie a jelen cikkben szereplő lépéseket. Ha elkészült, eltávolíthatja őket az előfizetésből a következő paranccsal:
 

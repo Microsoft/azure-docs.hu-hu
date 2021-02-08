@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124894"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832045"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Oktatóanyag: az élő videó elemzési átjáró moduljainak módosítása és összeállítása
 
@@ -73,6 +73,13 @@ Nyissa meg a local *Live-Video-Analytics* adattár MAPPÁT a vs Code használat�
 1. A VS Code Terminal használatával futtassa a **NPM Version patch** parancsot. Ez a Build szkript telepíti a lemezképeket a tároló-beállításjegyzékbe. A VS Code Terminal ablak kimenete azt mutatja, hogy a Build sikeres-e.
 
 1. A **LvaEdgeGatewayModule** -rendszerkép verziója a Build befejeződése után minden alkalommal növekszik. Ezt a verziót kell használnia a telepítési jegyzékfájlban.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha végzett az alkalmazással, a következőképpen távolíthatja el az összes létrehozott erőforrást:
+
+1. A IoT Central alkalmazásban navigáljon az **alkalmazás** lapjára az **Adminisztráció** szakaszban. Ezután válassza a **Törlés** elemet.
+1. A Azure Portal törölje a **LVA-RG** erőforráscsoportot.
 
 ## <a name="next-steps"></a>Következő lépések
 

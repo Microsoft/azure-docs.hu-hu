@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: victorh
-ms.openlocfilehash: dabe154535d2bd3ae5550d4bbbafa75adc5ae2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344560"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831841"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Naplók figyelése Azure Firewall munkafüzet használatával
 
@@ -26,9 +26,9 @@ A Kezdés előtt engedélyeznie kell a [diagnosztikai naplózást](firewall-diag
 
 ## <a name="get-started"></a>Bevezetés
 
-A munkafüzet üzembe helyezéséhez nyissa meg a [Azure monitor munkafüzetet Azure Firewall](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Azure%20Monitor%20Workbook) és kövesse az oldalon megjelenő utasításokat. Azure Firewall a munkafüzet több-bérlős, többszörös előfizetések közötti együttműködésre lett tervezve, és több tűzfalon szűrhető.
+A munkafüzet üzembe helyezéséhez nyissa meg a [Azure monitor munkafüzetet Azure Firewall](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Workbook%20-%20Azure%20Firewall%20Monitor%20Workbook) és kövesse az oldalon megjelenő utasításokat. Azure Firewall a munkafüzet több-bérlős, többszörös előfizetések közötti együttműködésre lett tervezve, és több tűzfalon szűrhető.
 
-## <a name="overview-page"></a>Áttekintő lap
+## <a name="overview-page"></a>Áttekintő oldal
 
 Az Áttekintés oldalon a munkaterületek, az idő és a tűzfalak közötti szűrésre van lehetőség. Események időpontját jeleníti meg a tűzfalak és a naplózási típusok (alkalmazás, hálózatok, fenyegetés Intel, DNS-proxy) között.
 
@@ -38,23 +38,23 @@ Az Áttekintés oldalon a munkaterületek, az idő és a tűzfalak közötti sz�
 
 Ez az oldal az IP-címek egyedi forrásait jeleníti meg az idő múlásával, az alkalmazási szabály a használatot, a megtagadott/engedélyezett teljes tartománynevet és a szűrt Az Adatszűrés az IP-cím alapján végezhető el.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Azure Firewall munkafüzet áttekintése":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Azure Firewall munkafüzet-alkalmazási szabály naplója":::
 
 ## <a name="network-rule-log-statistics"></a>Hálózati szabály naplójának statisztikája
 
 Ezen az oldalon megtekinthető a szabály szerinti művelet – engedélyezés/megtagadás, a célként megadott port IP-címe és a DNAT idő szerint. Szűrés a művelet, a port és a cél típusa szerint is végezhető.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Azure Firewall munkafüzet áttekintése":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Azure Firewall munkafüzet hálózati szabályának naplója":::
 
 A naplókat a Time-ablak alapján is szűrheti:
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Azure Firewall munkafüzet áttekintése":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Azure Firewall munkafüzet hálózati szabályának naplózási ideje ablak":::
 
 ## <a name="investigations"></a>Vizsgálatokhoz
 
 Megtekintheti a naplókat, és megismerheti az erőforrást a forrás IP-címe alapján. Olyan információkat kaphat, mint például a virtuális gép neve és a hálózati adapter neve. A naplókból egyszerűen szűrheti az erőforrást.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Azure Firewall munkafüzet áttekintése":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Azure Firewall munkafüzet vizsgálata":::
 
 ## <a name="next-steps"></a>Következő lépések
 

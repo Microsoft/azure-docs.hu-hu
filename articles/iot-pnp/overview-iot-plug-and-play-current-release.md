@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5e9d9e762568c01d31f0c3a29be809a5f90b6b44
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7b6669ca55dc9b94dc5d702e54b42011120b8812
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421651"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831875"
 ---
 # <a name="what-is-in-the-current-iot-plug-and-play-release"></a>Mi a jelenlegi IoT Plug and Play kiadás?
 
@@ -77,3 +77,7 @@ Az aktuális és az előző IoT Plug and Play hirdetményekben tekintse meg a k�
 - [Készítse elő és tanúsítsa az eszközeit a IoT Plug and Play (közzétették: augusztus 26., 2020)](https://azure.microsoft.com/blog/prepare-and-certify-your-devices-for-iot-plug-and-play/)
 - [A IoT Plug and Play már előzetes verzióban érhető el (közzétették: augusztus 22., 2019)](https://azure.microsoft.com/blog/iot-plug-and-play-is-now-available-in-preview/)
 - [Build az Azure IoT Central és a IoT Plug and Play (2019. május 7.)](https://azure.microsoft.com/blog/build-with-azure-iot-central-and-iot-plug-and-play/)
+
+## <a name="next-steps"></a>Következő lépések
+
+A javasolt következő lépés a [IoT Plug and Playének áttekintése?](overview-iot-plug-and-play.md).

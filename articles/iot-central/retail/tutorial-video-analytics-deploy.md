@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820364"
+ms.locfileid: "99831943"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Oktatóanyag: IoT Central-alkalmazás üzembe helyezése a video Analytics – Object és Motion Detection alkalmazás sablon használatával
 
@@ -22,6 +22,10 @@ A Key *video Analytics – Object és Motion Detection alkalmazás-* összetevő
 A következő videó bemutatja, hogyan használható a _video Analytics-Object és a Motion Detection alkalmazás sablonja_ egy IoT Central-megoldás üzembe helyezéséhez:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az Azure-előfizetés használata ajánlott. Alternatív megoldásként ingyenes, 7 napos próbaverziót is használhat. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription).
 
 ## <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 
@@ -42,6 +46,14 @@ Az alábbi lépések végrehajtásával telepítsen egy IoT Central alkalmazást
     - A rögzített videók AMS-ben való megtekintéséhez telepítsen egy helyi médialejátszó alkalmazást.
     - Az észlelt objektumokat megjelenítő rögzített videó megtekintése.
     - Rendben.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha végzett az alkalmazással, a következőképpen távolíthatja el az összes létrehozott erőforrást:
+
+1. A IoT Central alkalmazásban navigáljon az **alkalmazás** lapjára az **Adminisztráció** szakaszban. Ezután válassza a **Törlés** elemet.
+1. A Azure Portal törölje a **LVA-RG** erőforráscsoportot.
+1. A helyi gépen állítsa le az **amp-Viewer** Docker-tárolót.
 
 ## <a name="next-steps"></a>Következő lépések
 

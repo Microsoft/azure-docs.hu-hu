@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a201a0300cb4ae0fba1a41b5f64838c17904fa83
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763611"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832096"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Oktatóanyag: video Analytics-objektumok és mozgásészlelési alkalmazások létrehozása az Azure IoT Centralban (OpenVINO &trade; )
 
@@ -125,3 +125,25 @@ Az **LVA Edge Gateway v2** lapon válassza a **+ jegyzékfájl cseréje** lehet�
 Navigáljon a *LVA* mappára, és válassza ki a korábban szerkesztett *deployment.openvino.amd64.jsa* jegyzékfájlban. Válassza a **Feltöltés** lehetőséget. Az ellenőrzés befejezésekor válassza a **replace (csere**) lehetőséget.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha végzett az alkalmazással, a következőképpen távolíthatja el az összes létrehozott erőforrást:
+
+1. A IoT Central alkalmazásban navigáljon az **alkalmazás** lapjára az **Adminisztráció** szakaszban. Ezután válassza a **Törlés** elemet.
+1. A Azure Portal törölje a **LVA-RG** erőforráscsoportot.
+1. A helyi gépen állítsa le az **amp-Viewer** Docker-tárolót.
+
+## <a name="next-steps"></a>Következő lépések
+
+Ezzel létrehozott egy IoT Central alkalmazást a **video Analytics-Object és a mozgásérzékelő** alkalmazás sablonnal, létrehozott egy eszköz sablont az átjáró eszközhöz, és hozzáadta az átjáró-eszközt az alkalmazáshoz.
+
+Ha olyan IoT Edge-modulokkal szeretné kipróbálni a video Analytics – Object és Motion Detection alkalmazást, amelyeken szimulált videó streamekkel rendelkező felhőalapú virtuális gépek futnak:
+
+> [!div class="nextstepaction"]
+> [IoT Edge-példány létrehozása a video analyticshez (Linux rendszerű virtuális gép)](tutorial-video-analytics-iot-edge-vm.md)
+
+Ha olyan IoT Edge-modulokkal szeretné kipróbálni a video Analytics – Object és Motion Detection alkalmazást, amelyek valódi **ONVIF** kamera használatával futtatnak valós eszközt:
+
+> [!div class="nextstepaction"]
+> [IoT Edge-példány létrehozása a video analyticshez (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)
