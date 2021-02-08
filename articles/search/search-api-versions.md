@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422722"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820517"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -87,7 +87,7 @@ Az alábbi táblázat a újabb SDK-verziókra mutató hivatkozásokat tartalmaz.
 
 | SDK verziója | Állapot | Leírás |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2020-06-30 REST API célozza meg, de még nem támogatja a Geo-szűrőket. |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2020-06-30 REST API célozza meg, de még nem biztosít natív támogatást a földrajzi szűrőkhöz. A földrajzi műveletekhez a [Microsoft. térbeli](https://www.nuget.org/packages/Microsoft.Spatial/) csomag használatát javasoljuk. Ilyenek például a [System.Text.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) és a [Newtonsoft.Js](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md). |
 | [Microsoft. Azure. Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Kiadás dátuma: 2019. A keresési REST API-Version = 2019-05-06 célokat célozza meg.|
 | [Microsoft. Azure. Management. Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Célozza meg a felügyeleti REST API-verziót = 2020-08-01.  |
 | Microsoft. Azure. Management. Search 3.0.0 | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg.  |

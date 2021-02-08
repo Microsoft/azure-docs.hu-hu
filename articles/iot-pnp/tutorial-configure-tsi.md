@@ -1,20 +1,20 @@
 ---
-title: Azure Time Series Insights használata az Azure-IoT Plug and Play eszköz telemetria tárolásához és elemzéséhez
-description: Time Series Insights környezet beállítása és az IoT hub csatlakoztatása a IoT Plug and Play eszközök telemetria megtekintéséhez és elemzéséhez.
+title: Oktatóanyag – a Azure Time Series Insights használatával tárolhatja és elemezheti az Azure-IoT Plug and Play eszköz telemetria
+description: Oktatóanyag – Time Series Insights környezet beállítása és az IoT hub csatlakoztatása a IoT Plug and Play eszközök telemetria megtekintéséhez és elemzéséhez.
 author: lyrana
 ms.author: lyhughes
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905085"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820180"
 ---
-# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Előzetes oktatóanyag: Time Series Insights Gen2-környezet létrehozása és konfigurálása
+# <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Oktatóanyag: Time Series Insights Gen2-környezet létrehozása és konfigurálása
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) -környezetet a IoT Plug and Play megoldással való integrációhoz. A Time Series Insights az idősoros adatok gyűjtésére, feldolgozására, tárolására, lekérdezésére és megjelenítésére használható eszközök internetes hálózata (IoT) skálán.
 

@@ -4,12 +4,12 @@ description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű által�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746475"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820196"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések az Azure Site Recovery szolgáltatásról
 
@@ -23,7 +23,7 @@ Ez a cikk a Azure Site Recoveryokkal kapcsolatos gyakori kérdéseket foglalja �
 
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?
 
-Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információ](site-recovery-overview.md).
+Site Recovery az üzletmenet-folytonossági és a vész-helyreállítási (BCDR-) stratégiához járul hozzá azáltal, hogy az Azure-beli virtuális gépeket a régiók, a helyszíni virtuális gépek és a fizikai kiszolgálók között az Azure-ba, a helyszíni gépeket pedig másodlagos adatközpontba irányítja és automatizálja. [További információk](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Biztosítható a Docker-lemezzel rendelkező virtuális gépek elleni védelem?
 
@@ -188,7 +188,7 @@ Igen, a [ExpressRoute](concepts-expressroute-with-site-recovery.md) használatá
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Ha az Azure-ba replikálok, milyen típusú Storage-fiókra vagy felügyelt lemezre van szükségem?
 
-Szüksége van egy LRS vagy egy GRS-tárolóra. Mi a GRS használatát javasoljuk, mivel ez akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében gondoskodik az adatok hibatűréséről. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. A Premium Storage szolgáltatás a VMware virtuális gépek, a Hyper-V virtuális gépek és a fizikai kiszolgálók replikálásához használható, ha a Site Recoveryt a Azure Portal telepíti. A felügyelt lemezek csak a LRS támogatják.
+Azure Site Recovery nem támogatja a Storage-fiókok használatát célként tárolóként. Azt javasoljuk, hogy inkább a felügyelt lemezeket használja célként tárolóként a gépekhez. A felügyelt lemezek csak az adatrugalmasság LRS-típusát támogatják.
 
 ### <a name="how-often-can-i-replicate-data"></a>Milyen gyakran replikálhatom az adatokat?
 * **Hyper-V:** A Hyper-V virtuális gépek 30 másodpercenként replikálhatók (kivéve a Premium Storage esetében), öt perc vagy 15 perc.
@@ -321,7 +321,7 @@ Igen, ha 24 óra és 72 óra között növeli a megőrzési időtartamot, Site R
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Ha az Azure-ban nem végeztem el az Azure-t, hogyan férhetnek hozzá az Azure-beli virtuális gépekhez a feladatátvétel után?
 
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. A csatlakozáshoz több dolgot is elő kell készíteni. [További információk](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Ha az Azure-t átadja az Azure-nak, hogyan gondoskodik róla, hogy az adataim rugalmasak legyenek?
@@ -368,5 +368,5 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 
 [Ismerje meg](site-recovery-whats-new.md) az új frissítéseket, és szerezze be a [kumulatív információkat](service-updates-how-to.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Olvassa el a [Site Recovery áttekintését](site-recovery-overview.md)

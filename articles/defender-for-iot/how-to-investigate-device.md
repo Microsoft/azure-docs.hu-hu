@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: cd7802fa4a88c3b05140d30ab4d8b2bbd4adc8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7b51138abe6d8e97f55ceae11d4cf13b9ebc136
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940029"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820602"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Gyanús IoT-eszköz vizsgálata
 
@@ -37,14 +37,14 @@ Alapértelmezés szerint a IoT Defender a Log Analytics munkaterületen tárolja
 Az adattároláshoz Log Analytics munkaterület megkeresése:
 
 1. Nyissa meg az IoT hubot,
-1. A **Biztonság**területen válassza a **Beállítások**, majd **az adatgyűjtés**elemet.
+1. A **Biztonság** területen válassza a **Beállítások**, majd **az adatgyűjtés** elemet.
 1. Módosítsa Log Analytics munkaterület konfigurációjának részleteit.
 1. Kattintson a **Mentés** gombra.
 
 A következő beállításokkal érheti el a Log Analytics munkaterületen tárolt adatait:
 
 1. Válassza ki, majd kattintson a Defender IoT-riasztásra a IoT Hub.
-1. Kattintson a **további vizsgálat**gombra.
+1. Kattintson a **további vizsgálat** gombra.
 1. Jelölje be **, ha szeretné látni, hogy mely eszközöknél van ilyen riasztás, kattintson ide, és tekintse meg a DeviceID oszlopot**.
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>A gyanús IoT-eszközök vizsgálatának lépései

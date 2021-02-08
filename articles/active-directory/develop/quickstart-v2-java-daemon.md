@@ -12,26 +12,26 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: nacanuma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 9c6571793d2317097574d0afdc7137b3a3d5ad6d
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064526"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820320"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása egy Java-konzol alkalmazásból az alkalmazás identitásával
 
 Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan szerezhet be egy Java-alkalmazás hozzáférési tokent az alkalmazás identitásával a Microsoft Graph API meghívásához és a címtárban lévő [felhasználók listájának](/graph/api/user-list) megjelenítéséhez. A kód minta azt mutatja be, hogy a felügyelet nélküli feladatok vagy a Windows-szolgáltatások alkalmazás-identitással futtathatók a felhasználó identitása helyett. 
 
 > [!div renderon="docs"]
-> ![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-java-daemon/java-console-daemon.svg)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A minta futtatásához a következőkre lesz szüksége:
 
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 vagy újabb
-- [Maven](https://maven.apache.org/).
+- [Maven](https://maven.apache.org/)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -42,7 +42,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
-> 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs) ablaktáblát.
+> 1. Lépjen a <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaDaemonQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk</a> gyors üzembe helyezési élményhez.
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
@@ -52,22 +52,22 @@ A minta futtatásához a következőkre lesz szüksége:
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-> 1. Válassza az **új regisztráció** lehetőséget.
-> 1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait.
-> 1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például a `Daemon-console` **regisztrálás** elemre kattintva hozza létre az alkalmazást.
-> 1. A regisztrálás után válassza a **tanúsítványok & titkok** menüt.
-> 1. Az **ügyfél** titkos kulcsa területen válassza az **+ új ügyfél titka** lehetőséget. Adja meg a nevet, és válassza a **Hozzáadás** lehetőséget. Másolja a titkos kulcsot egy biztonságos helyre. Szüksége lesz rá a kódban való használatra.
-> 1. Most válassza ki az **API-engedélyek** menüt, válassza az **+ engedély hozzáadása** gombot, és válassza a **Microsoft Graph** lehetőséget.
+> 1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
+> 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+> 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+> 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+> 1. Adja meg az alkalmazás **nevét** , például: `Daemon-console` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+> 1. Válassza a **Regisztráció** lehetőséget.
+> 1. A **kezelés** területen válassza a  **tanúsítványok & Secrets** elemet.
+> 1. Az **ügyfél** titkos kulcsa területen válassza az **új ügyfél titka** elemet, adjon meg egy nevet, majd válassza a **Hozzáadás** lehetőséget. A titkos értéket egy biztonságos helyen rögzítheti egy későbbi lépésben való használatra.
+> 1. A **kezelés** területen válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**. Válassza a **Microsoft Graph** lehetőséget.
 > 1. Válassza ki az **alkalmazás engedélyeit**.
-> 1. A **felhasználó** csomópont alatt válassza a **felhasználó. olvasás. mind**, majd az **engedélyek hozzáadása** elemet.
+> 1. A **felhasználó** csomópont alatt válassza a **felhasználó. olvasás. mind** lehetőséget, majd kattintson az **engedélyek hozzáadása** lehetőségre.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>A Gyorsindítás alkalmazás letöltése és konfigurálása
+> ### <a name="download-and-configure-the-quickstart-app"></a>A Gyorsindítás alkalmazás letöltése és konfigurálása
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>1. lépés: az alkalmazás konfigurálása Azure Portalban
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, létre kell hoznia egy ügyfél-titkos kulcsot, és hozzá kell adnia Graph API **felhasználóját. Read. All** Application engedély.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
@@ -75,7 +75,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-netcore-daemon/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-java-project"></a>2. lépés: a Java-projekt letöltése
+#### <a name="step-2-download-the-java-project"></a>2. lépés: a Java-projekt letöltése
 
 > [!div renderon="docs"]
 > [A Java Daemon-projekt letöltése](https://github.com/Azure-Samples/ms-identity-java-daemon/archive/master.zip)
@@ -89,11 +89,11 @@ A minta futtatásához a következőkre lesz szüksége:
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-java-project"></a>3. lépés: a Java-projekt konfigurálása
+> #### <a name="step-3-configure-the-java-project"></a>3. lépés: a Java-projekt konfigurálása
 >
-> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: *C:\Azure-Samples*).
 > 1. Navigáljon az almappában **msal-Client-hitelesítőadat-Secret**.
-> 1. Szerkessze a **src\main\resources\application.properties** , és cserélje le a mezők értékeit, `AUTHORITY` `CLIENT_ID` és `SECRET` a következő kódrészletet:
+> 1. Szerkessze a *src\main\resources\application.properties* , és cserélje le a mezők értékeit, `AUTHORITY` `CLIENT_ID` és `SECRET` a következő kódrészletet:
 >
 >    ```
 >    AUTHORITY=https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/
@@ -119,10 +119,10 @@ Ha ezen a ponton próbálja meg futtatni az alkalmazást, *HTTP 403-Tiltott* hib
 ##### <a name="global-tenant-administrator"></a>Globális bérlői rendszergazda
 
 > [!div renderon="docs"]
-> Ha Ön globális bérlői rendszergazda, nyissa meg az **API-engedélyek** lapot az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), és válassza a **rendszergazdai jóváhagyás megadása a következőhöz: {bérlő neve}** (a (z) {bérlő neve} a címtár neve).
+> Ha Ön globális bérlői rendszergazda, nyissa meg a Azure Portal **Alkalmazásregisztrációk** **API-engedélyek** lapját, és válassza a rendszergazdai jóváhagyás megadása a (z) **{bérlő neve} számára** lehetőséget (ahol a (z) {bérlő neve} a címtár neve).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Ha Ön globális rendszergazda, lépjen az API- **engedélyek** oldalra, és válassza **a rendszergazdai jóváhagyás megadása Enter_the_Tenant_Name_Here**
+> Ha Ön globális rendszergazda, az **API-engedélyek** lapon válassza **a rendszergazdai jóváhagyás megadása Enter_the_Tenant_Name_Herehoz** lehetőséget.
 > > [!div id="apipermissionspage"]
 > > [Ugrás az API-engedélyek oldalra]()
 
@@ -163,7 +163,7 @@ A futtatást követően az alkalmazásnak meg kell jelennie a konfigurált bérl
 
 
 > [!IMPORTANT]
-> Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a Project-fájlokhoz, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatával kapcsolatos további információkért tekintse meg ezeket az [utasításokat](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate) a minta ugyanazon GitHub-tárházában, de a második mappában **msal – ügyfél-hitelesítő tanúsítvány**
+> Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a Project-fájlokhoz, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatával kapcsolatos további információkért tekintse meg ezeket az [utasításokat](https://github.com/Azure-Samples/ms-identity-java-daemon/tree/master/msal-client-credential-certificate) a minta ugyanazon GitHub-tárházában, de a második mappában **msal-Client-hitelesítőadat-Certificate**.
 
 ## <a name="more-information"></a>További információ
 
@@ -251,7 +251,7 @@ IAuthenticationResult result;
 
 > |Ahol:| Description |
 > |---------|---------|
-> | `SCOPE` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében a hasonló formátumot kell használnia, hogy `{Application ID URI}/.default` jelezze, hogy a kért hatókörök az Azure Portalon beállított app Object (Microsoft Graph, `{Application ID URI}` pont –) számára statikusan meghatározottak `https://graph.microsoft.com` . Az egyéni webes API- `{Application ID URI}` k esetében az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
+> | `SCOPE` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében ennek a hasonló formátumot kell használnia, ha `{Application ID URI}/.default` azt jelzi, hogy a kért hatókörök a Azure Portalban beállított alkalmazás-objektumban statikusan vannak meghatározva (Microsoft Graph, `{Application ID URI}` pont – `https://graph.microsoft.com` ). Az egyéni webes API-k esetében az `{Application ID URI}` Azure portalon **ALKALMAZÁSREGISZTRÁCIÓK** az **API közzététele** című részében van definiálva.|
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813938"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819843"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása
 
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban létrehoz egy DDoS Protection-tervet, és összekap
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában.
 2. Keressen rá a *DDoS* kifejezésre. Ha a **DDoS Protection-csomag** megjelenik a keresési eredmények között, válassza ki.
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. Adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás** lehetőséget:
 
     |Beállítás        |Érték                                              |
@@ -77,7 +77,7 @@ A virtuális hálózat nem helyezhető át másik erőforráscsoporthoz vagy el�
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>DDoS-védelem engedélyezése minden virtuális hálózat esetében
 
-Ez a [házirend](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) egy meghatározott hatókörben lévő olyan virtuális hálózatokat észlel, amelyeken nincs DDoS Protection standard szintű beállítás, majd opcionálisan létrehozhat egy szervizelési feladatot, amely létrehozza a VNet elleni társítást. A szabályzat központi telepítésének részletes ismertetését lásd: https://aka.ms/ddosvnetpolicy-techcommunity .
+Ez a [házirend](https://aka.ms/ddosvnetpolicy) egy meghatározott hatókörben lévő olyan virtuális hálózatokat észlel, amelyeken nincs DDoS Protection standard szintű beállítás, majd opcionálisan létrehozhat egy szervizelési feladatot, amely létrehozza a VNet elleni társítást. A szabályzat központi telepítésének részletes ismertetését lásd: https://aka.ms/ddosvnetpolicy-techcommunity .
 
 ## <a name="validate-and-test"></a>Ellenőrzés és tesztelés
 
@@ -111,7 +111,7 @@ A DDoS-védelem letiltása virtuális hálózat esetén:
 
 Ha törölni szeretné a DDoS Protection-csomagot, először el kell távolítania az összes virtuális hálózatot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
 

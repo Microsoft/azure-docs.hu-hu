@@ -1,21 +1,21 @@
 ---
-title: A video Analytics – Object és Motion Detection Azure IoT Central alkalmazás sablonjának üzembe helyezése
-description: Ez az útmutató összefoglalja, hogyan helyezhet üzembe egy Azure IoT Central-alkalmazást a video Analytics-Object és a Motion Detection alkalmazás sablonjának használatával.
+title: 'Oktatóanyag: a video Analytics üzembe helyezése – objektumok és mozgásészlelési észlelések Azure IoT Central alkalmazás sablonja'
+description: Oktatóanyag – ez az útmutató összefoglalja az Azure IoT Central-alkalmazások a video Analytics-Object és a Motion Detection alkalmazás sablon használatával történő üzembe helyezésének lépéseit.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: how-to
+ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873336"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820364"
 ---
-# <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>IoT Central alkalmazás üzembe helyezése a video Analytics-Object és a Motion Detection alkalmazás sablonjának használatával
+# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Oktatóanyag: IoT Central-alkalmazás üzembe helyezése a video Analytics – Object és Motion Detection alkalmazás sablon használatával
 
 A Key *video Analytics – Object és Motion Detection alkalmazás-* összetevők áttekintését lásd: [Object and Motion Detection video Analytics Application Architecture](architecture-video-analytics.md).
 
@@ -45,4 +45,10 @@ Az alábbi lépések végrehajtásával telepítsen egy IoT Central alkalmazást
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most áttekintheti a video Analytics alkalmazás-sablon üzembe helyezésének és használatának lépéseit. lásd: [video Analytics-alkalmazás létrehozása az azure IoT Centralban (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) , vagy [hozzon létre egy videó-elemzést az Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) a kezdéshez.
+Most áttekintheti a video Analytics alkalmazás-sablon üzembe helyezésének és használatának lépéseit:
+
+> [!div class="nextstepaction"]
+> [Video Analytics-alkalmazás létrehozása az Azure IoT Central (YOLO v3)](tutorial-video-analytics-create-app-yolo-v3.md) vagy
+
+> [!div class="nextstepaction"]
+> [Hozzon létre egy videó-elemzést az Azure IoT Centralban (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) a kezdéshez.

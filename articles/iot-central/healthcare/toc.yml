@@ -5,6 +5,7 @@
     - name: Egészségügyi megoldások létrehozása az Azure IoT Centrallal
       href: overview-iot-central-healthcare.md
 - name: Oktatóanyagok
+  expanded: true
   items:
     - name: Folyamatos betegfigyelési alkalmazás létrehozása
       href: tutorial-continuous-patient-monitoring.md

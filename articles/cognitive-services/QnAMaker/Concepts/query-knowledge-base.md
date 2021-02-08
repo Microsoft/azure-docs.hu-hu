@@ -3,12 +3,12 @@ title: A Tudásbázis lekérdezése – QnA Maker
 description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton.
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346205"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820381"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>A válaszok tudásbázisának lekérdezése
 
@@ -31,7 +31,7 @@ A folyamatot az alábbi táblázat ismerteti.
 |1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)-nak.|
 |2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
 |3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
-|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik.|
+|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik. Az Azure Search-szűrők [leállítják a szavakat](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) ebben a lépésben.|
 |5|A QnA Maker szintaktikai és szemantikai alapú featurization használatával határozza meg a felhasználói lekérdezés és a beolvasott QnA eredményei közötti hasonlóságot.|
 |6|A géppel megtanult Ranger-modell az 5. lépés különböző funkcióit használja a megbízhatósági pontszámok és az új rangsorolási sorrend meghatározásához.|
 |7|Az új eredményeket rangsorolt sorrendben adja vissza az ügyfélalkalmazás.|
@@ -54,7 +54,7 @@ A folyamatot az alábbi táblázat ismerteti.
 |1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md)-nak.|
 |2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
 |3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
-|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik.|
+|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik. Az Azure Search-szűrők [leállítják a szavakat](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) ebben a lépésben.|
 |5|A QnA Maker a legkorszerűbb transzformátor-alapú modellt használja a felhasználói lekérdezés és az Azure Cognitive Searchból beolvasott QnA eredmények közötti hasonlóság meghatározásához. A transzformátor-alapú modell egy mély tanulási többnyelvű modell, amely horizontálisan működik az összes nyelven a megbízhatósági pontszámok és az új rangsorolási sorrend meghatározásához.|
 |6|Az új eredményeket rangsorolt sorrendben adja vissza az ügyfélalkalmazás.|
 |||
@@ -122,7 +122,7 @@ A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhaszná
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megbízhatósági pontszám](./confidence-score.md)

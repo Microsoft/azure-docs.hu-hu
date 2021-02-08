@@ -10,15 +10,15 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: a93ac3b5d988be33c0f27726a75b1006f990d1da
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886107"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820004"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
-
+ 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a Azure Portalon vagy a .NET Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár segítségével létrehozhatja, konfigurálhatja, frissítheti és törölheti az erőforrásait és felületeit [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és felügyeleti szolgáltatásával. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal. 
@@ -28,6 +28,10 @@ Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommuniká
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
+::: zone-end
+
+::: zone pivot="platform-azcli"
+[!INCLUDE [Azure CLI](./includes/create-resource-azcli.md)]
 ::: zone-end
 
 ::: zone pivot="platform-net"
@@ -41,6 +45,14 @@ A kapcsolati karakterláncok lehetővé teszik a kommunikációs szolgáltatáso
 A kommunikációs szolgáltatások erőforráshoz való navigálás után válassza a navigációs menü **kulcsok** elemét, és másolja a **kapcsolati karakterláncot** vagy a **végponti** értékeket a kommunikációs szolgáltatások ügyféloldali kódtárai általi használathoz. Vegye figyelembe, hogy van hozzáférése az elsődleges és a másodlagos kulcsokhoz. Ez olyan esetekben lehet hasznos, amikor ideiglenes hozzáférést szeretne biztosítani a kommunikációs szolgáltatások erőforrásaihoz egy harmadik fél vagy átmeneti környezet számára.
 
 :::image type="content" source="./media/key.png" alt-text="A kommunikációs szolgáltatások kulcs oldalának képernyőképe.":::
+
+A legfontosabb információkat az Azure CLI használatával is elérheti:
+
+```azurecli
+az communication list --resource-group "<resourceGroup>"    
+
+az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
+```
 
 ## <a name="store-your-connection-string"></a>A kapcsolatok karakterláncának tárolása
 

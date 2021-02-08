@@ -5,25 +5,18 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550708"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820874"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
 Ez a cikk az Azure- [erőforrás-mozgatóval](overview.md)kapcsolatos gyakori kérdésekre ad választ.
-
-## <a name="general"></a>Általános
-
-### <a name="is-resource-mover-generally-available"></a>Általánosan elérhető az erőforrás-mozgató?
-
-Az erőforrás-mozgató szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. A termelési munkaterhelések támogatottak.
-
 
 
 ## <a name="moving-across-regions"></a>Áthelyezés régiók között
@@ -45,6 +38,9 @@ Az erőforrás-mozgató használatával jelenleg a következő erőforrásokat h
 - Belső és nyilvános terheléselosztó 
 - Azure SQL Database-adatbázisok és rugalmas készletek
 
+### <a name="can-i-move-disks-across-regions"></a>Áthelyezhetek lemezeket a régiók között?
+
+A lemezek nem választhatók ki erőforrásként az áthelyezett régiók között. A lemezeket azonban a virtuális gépek áthelyezésének részeként helyezi át a rendszer.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Át lehet helyezni az erőforrásokat az előfizetések között, amikor áthelyezem őket a régiók között?
 
@@ -97,6 +93,12 @@ Az előfizetés átkerült egy másik bérlőre. | Tiltsa le, majd engedélyezze
 ### <a name="how-can-i-do-multiple-moves-together"></a>Hogyan végezhetek együtt több lépést?
 
 Szükség szerint módosítsa a forrás-és a cél kombinációt a portálon a módosítás lehetőség használatával.
+
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Mi történik, ha eltávolítok egy erőforrást az áthelyezési erőforrások listájából?
+
+Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. Ha az erőforrást a listából távolítja el, az erőforrás állapotától függ. [További információk](remove-move-resources.md#vm-resource-state-after-removing).
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

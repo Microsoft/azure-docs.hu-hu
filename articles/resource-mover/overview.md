@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 621c5e7b0061ccd76fd0109552107915b943511f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06d6352f018238318c3bb4625ae86a2974f14569
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653595"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820163"
 ---
 # <a name="what-is-azure-resource-mover"></a>Mi az Azure-erőforrás-mozgató?
 
@@ -29,8 +29,6 @@ Az erőforrásokat különböző Azure-régiókba helyezheti át:
 - **Válaszadás a központi telepítési követelményekre**: a hiba miatt üzembe helyezett erőforrások áthelyezése vagy a kapacitási igényekre való áttérés.
 - **Válasz a leszerelésre**: erőforrások áthelyezése, mert egy régiót leszereltek.
 
-> [!IMPORTANT]
-> Az Azure-beli erőforrás-mozgató szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 
 ## <a name="why-use-resource-mover"></a>Miért érdemes az erőforrás-Mozgatót használni?
 
@@ -62,6 +60,7 @@ Az erőforrásokat áthelyezheti az erőforrás-mozgató központ régiói köz�
 Az erőforrás-mozgató használatával jelenleg a következő erőforrásokat helyezheti át a régiók között:
 
 - Azure-beli virtuális gépek és kapcsolódó lemezek
+- Titkosított Azure-beli virtuális gépek és kapcsolódó lemezek. Ilyenek például az Azure Disk Encryption szolgáltatást használó virtuális gépek és az alapértelmezett kiszolgálóoldali titkosítást használó Azure-beli virtuális gépek (a platform által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal együtt)
 - Hálózati adapterek (NIC-k)
 - Rendelkezésre állási csoportok 
 - Azure-beli virtuális hálózatok 
@@ -71,6 +70,6 @@ Az erőforrás-mozgató használatával jelenleg a következő erőforrásokat h
 - Azure SQL Database-adatbázisok és rugalmas készletek
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](about-move-process.md) információ az erőforrás-mozgató összetevőkről és az áthelyezési folyamatról.

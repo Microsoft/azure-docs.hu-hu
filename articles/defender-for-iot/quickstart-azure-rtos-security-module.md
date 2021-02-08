@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: d7e901e440a6df5ae1d11a150e09a36b565904d9
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3054981bbbff45666297399033663d1830ad9e4e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809065"
+ms.locfileid: "99820432"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Gyors útmutató: biztonsági modul az Azure RTOS (előzetes verzió)
 
@@ -43,8 +43,11 @@ Az első lépések előkészítésének következő lépése az Azure-erőforrá
 A kezdéshez IoT Hub-kapcsolatok szükségesek. 
 
 1. Nyissa meg a **IoT Hubt** Azure Portal.
+
 1. Navigáljon a **IoT-eszközökhöz**.
+
 1. Válassza a **Létrehozás** lehetőséget.
+
 1. Másolja a IoT-kapcsolódási karakterláncot a [konfigurációs fájlba](how-to-azure-rtos-security-module.md).
 
 A kapcsolatok hitelesítő adatai a felhasználói alkalmazás konfigurációjának **HOST_NAME**, **DEVICE_ID** és **DEVICE_SYMMETRIC_KEY**.

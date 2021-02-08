@@ -5,6 +5,7 @@
     - name: Kormányzati megoldások létrehozása az Azure IoT Centrallal
       href: overview-iot-central-government.md
 - name: Oktatóanyagok
+  expanded: true
   items:
     - name: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
       href: tutorial-connected-waste-management.md

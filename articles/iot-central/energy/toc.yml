@@ -5,6 +5,7 @@
     - name: Energiaipari megoldások létrehozása az Azure IoT Centrallal
       href: overview-iot-central-energy.md
 - name: Oktatóanyagok
+  expanded: true
   items:
     - name: Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása
       href: tutorial-smart-meter-app.md

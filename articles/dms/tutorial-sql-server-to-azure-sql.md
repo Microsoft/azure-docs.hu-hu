@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 23bc476c0d4fd90e19428d52b1468d090ffe2a1b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785363"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820789"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
 
@@ -237,6 +237,9 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 1. A **cél kiválasztása** képernyőn adja meg a cél Azure SQL Database kapcsolati adatait, amely a Data Migration Assistant használatával a **Adventureworks2016** -sémához üzembe helyezett előre kiépített Azure SQL Database.
 
     ![Cél kiválasztása](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
+    
+    > [!NOTE]
+    > A Azure Database Migration Service csak egyéni DNS-név használata esetén támogatja a cél Azure SQL Databasehoz tartozó magánhálózati végponti kapcsolatokat. 
 
 2. Válassza a Next (tovább) gombra **: leképezés a cél adatbázisok** képernyőre, a forrás és a céladatbázis áttelepítésre való leképezése.
 

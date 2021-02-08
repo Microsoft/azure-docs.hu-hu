@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 04b33c7e63efbd6ffabf978708e1b8ed81f1fc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c441c9f81477a586c3e153e23b1fc63f2f76344
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940032"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819927"
 ---
-# <a name="deploy-an-defender-for-iot-c-based-security-agent-for-windows"></a>Defender telepítése a Windows rendszerhez készült IoT C#-alapú biztonsági ügynökhöz
+# <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Defender telepítése a Windows rendszerhez készült IoT C#-alapú biztonsági ügynökhöz
 
 Ez az útmutató ismerteti, hogyan telepítheti a Defender for IoT C#-alapú biztonsági ügynökét Windows rendszeren.
 
@@ -62,7 +62,7 @@ A biztonsági ügynök telepítéséhez használja a következő munkafolyamatot
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
     ```
 
-    Példa:
+    Például:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
@@ -91,7 +91,7 @@ Az ügynök központi telepítési állapotának ellenőrzéséhez futtassa a k�
 
 Az ügynök eltávolítása:
 
-1. Futtassa a következő PowerShell-parancsfájlt a **-Mode** paraméterrel az **Eltávolítás**értékre.
+1. Futtassa a következő PowerShell-parancsfájlt a **-Mode** paraméterrel az **Eltávolítás** értékre.
 
     ```
     .\InstallSecurityAgent.ps1 -Uninstall

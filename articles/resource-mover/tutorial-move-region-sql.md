@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542813"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820229"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Oktatóanyag: Azure SQL Database-erőforrások áthelyezése egy másik régióba
 
@@ -22,7 +22,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan helyezhet át Azure SQL-adatbázi
 > [!NOTE]
 > Az Azure-beli erőforrás-mozgató szolgáltatás jelenleg előzetes verzióban érhető el.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az előfeltételek és a követelmények ellenőrzése.
@@ -272,8 +272,11 @@ A mozgó adatbázisok és rugalmas készletek befejezése a következőképpen t
 
 Az áthelyezést követően lehetőség van a forrás régió erőforrásainak törlésére is. 
 
-1. A **régiók között** kattintson a törölni kívánt forrás-erőforrások nevére.
-2. Az egyes erőforrások Tulajdonságok lapján válassza a **Törlés** lehetőséget.
+> [!NOTE]
+> SQL Server kiszolgálókat nem lehet törölni a portálról, és az erőforrás-tulajdonságok lapról kell törölni.
+
+1. A **különböző régiókban** kattintson a törölni kívánt forrás-erőforrás nevére.
+2. Válassza a **forrás törlése** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

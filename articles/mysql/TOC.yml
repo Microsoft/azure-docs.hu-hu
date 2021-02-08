@@ -1,6 +1,7 @@
 - name: A MySQL-hez készült Azure Database dokumentációja
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Mi az az Azure DB for MySQL?
       href: overview.md
@@ -12,7 +13,6 @@
       href: concepts-version-policy.md
       displayName: version policy
 - name: Önálló kiszolgáló
-  expanded: true
   items:
     - name: Önálló kiszolgáló dokumentációja
       href: single-server/index.yml

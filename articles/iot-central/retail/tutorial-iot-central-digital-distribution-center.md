@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2b8ed417de966f8731542e8f5ca12a6a05e2dc8a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346197"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820279"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
-
-
 
 Ez az oktatóanyag bemutatja, hogyan kezdheti el egy IoT Central **Digital Distribution Center** -alkalmazás sablonjának üzembe helyezését. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz a mező, és hogy mit szeretne tenni a következő lépésekkel.
 
 Ebből az oktatóanyagból megtudhatja, hogyan, 
-* Digital Distribution Center-alkalmazás létrehozása 
-* Az alkalmazás végigvezeti 
+
+> [!div class="checklist"]
+> Digital Distribution Center-alkalmazás létrehozása az alkalmazáson keresztül 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Az alkalmazás üzembe helyezéséhez nem szükségesek konkrét előfeltételek

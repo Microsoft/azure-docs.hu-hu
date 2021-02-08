@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127634"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820262"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -132,7 +132,9 @@ A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozás
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Biztosít-e az AK szolgáltatás szintű szerződést?
 
-Az AK SLA-garanciákat biztosít opcionális kiegészítő szolgáltatásként, amely a [rendelkezésre állási SLA][uptime-sla]-t tartalmazza.
+Az AK SLA-garanciákat biztosít opcionális kiegészítő szolgáltatásként, amely a [rendelkezésre állási SLA][uptime-sla]-t tartalmazza. 
+
+Az alapértelmezés szerint kínált ingyenes SLA nem garantálja a magas rendelkezésre állású API Server-végpontot (a szolgáltatási szint célkitűzése 99,5%). Előfordulhat, hogy a frissítés, a nem kifogástalan állapotú alátét csomópontok, a platformok karbantartása stb. Ha a munkaterhelés nem tűri a APIServer újraindítását, javasoljuk, hogy használja a rendelkezésre állási SLA-t.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Alkalmazhatom az Azure-beli foglalási kedvezményeket az AK-ügynökök csomópontjaira?
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.author: shhazam
-ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809507"
+ms.locfileid: "99820670"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Az Azure Defender IoT újdonságai
 
@@ -27,13 +27,13 @@ Ez a cikk felsorolja a Defender új szolgáltatásait és funkcióinak fejleszt�
 A feljegyzett funkciók előzetes verzióban érhetők el. Az [Azure előzetes verziójának kiegészítő feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak az olyan Azure-funkciókra vonatkozó további jogi feltételek, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelennek meg az általánosan elérhetővé tételben.
 ## <a name="february-2021"></a>Február 2021
 
-### <a name="enhanced-custom-alert-rules"></a>Bővített egyéni riasztási szabályok
+### <a name="sensor---enhanced-custom-alert-rules"></a>Érzékelő – bővített egyéni riasztási szabályok
 
 Mostantól létrehozhat egyéni riasztási szabályokat a nap alapján, a napok csoportját és az időpontot hálózati tevékenységet észlelve.  A nap-és időszabályi feltételek használata hasznos lehet, például azokban az esetekben, amikor a riasztás súlyossága a riasztási esemény időpontjában van származtatva. Létrehozhat például egy olyan egyéni szabályt, amely magas súlyosságú riasztást indít el, ha egy hétvégén vagy esténként a hálózati tevékenységet észlel.
 
 Ez a funkció az érzékelőn érhető el az 10,1-es verzió kiadásával.
 
-### <a name="export-alerts-from-on-premises-management-console"></a>Riasztások exportálása a helyszíni felügyeleti konzolról
+### <a name="on-premises-management-console---export-alerts"></a>Helyszíni felügyeleti konzol – riasztások exportálása
 
 A riasztási adatok mostantól egy. csv-fájlba exportálhatók a helyszíni felügyeleti konzolról. Exportálhatja az összes észlelt riasztás adatait, vagy exportálhatja az adatokat a szűrt nézet alapján.
 
@@ -48,7 +48,7 @@ Ez a szolgáltatás a helyszíni felügyeleti konzolon érhető el, az 10,1-es v
 - **Biztonsági állapot kezelése** – proaktív módon figyeli a IoT-eszközök biztonsági állapotát.
 - **Folyamatos, valós idejű IoT/s veszélyforrások észlelése** – olyan fenyegetések észlelése, mint például a botnetek, a találgatásos támadások, a kriptográfiai bányászok és a gyanús hálózati tevékenységek
 
-Az elavult biztonsági modul dokumentációját a rendszer a klasszikus mappába helyezi át.
+Az elavult biztonsági modul dokumentációját a rendszer áthelyezi az *eszköz-építők számára>klasszikus* mappába.
 
 Ez a szolgáltatáskészlet a jelenleg elérhető nyilvános előzetes verziójú felhőben érhető el.
 

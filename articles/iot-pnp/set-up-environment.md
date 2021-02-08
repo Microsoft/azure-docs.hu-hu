@@ -1,20 +1,20 @@
 ---
-title: Állítsa be a IoT Plug and Play szükséges IoT-erőforrásokat | Microsoft Docs
-description: Hozzon létre egy IoT Hub és egy eszköz kiépítési szolgáltatási példányát a IoT Plug and Play rövid útmutatók és oktatóanyagok segítségével.
+title: Rövid útmutató – a IoT Plug and Playához szükséges IoT-erőforrások beállítása | Microsoft Docs
+description: Rövid útmutató – hozzon létre egy IoT Hub és egy eszköz kiépítési szolgáltatási példányát, amelyet a IoT Plug and Play rövid útmutatók és oktatóanyagok segítségével használhat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/11/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96004262"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820030"
 ---
-# <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>A környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok
+# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Rövid útmutató – a környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok
 
 Mielőtt IoT Plug and Play a gyors útmutatókat és oktatóanyagokat, konfigurálnia kell egy IoT hubot és a Device kiépítési szolgáltatást (DPS) az Azure-előfizetésében. Szüksége lesz a minta-alkalmazások és az Azure IoT Explorer eszköz helyi példányaira is.
 
@@ -138,7 +138,7 @@ Az IoT hub és a DPS-példány az összes IoT Plug and Play gyors és oktatóany
 az group delete --name my-pnp-resourcegroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a környezetét, kipróbálhatja az alábbiak egyikét vagy az oktatóanyagokat, például:
 

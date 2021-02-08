@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927737"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820551"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
@@ -175,6 +175,24 @@ A diagnosztikai beállítások a [Azure Monitor REST API](/rest/api/monitor/)has
 
 ## <a name="create-using-azure-policy"></a>Létrehozás a Azure Policy használatával
 Mivel minden egyes Azure-erőforráshoz létre kell hozni egy diagnosztikai beállítást, Azure Policy használatával automatikusan létrehozhat egy diagnosztikai beállítást, mivel minden erőforrás létrejön. A részletekért lásd: [Azure monitor üzembe helyezése méretezéssel Azure Policy](../deploy-scale.md) .
+
+## <a name="metric-category-is-not-supported-error"></a>A metrika kategóriája nem támogatott hiba
+Diagnosztikai beállítások telepítésekor a következő hibaüzenet jelenik meg:
+
+   A "metrika kategóriája"*XXXX*"nem támogatott"
+
+Például: 
+
+   A "metrika kategóriája" ActionsFailed "nem támogatott"
+
+az üzemelő példány sikeres volt. 
+
+A probléma egy Resource Manager-sablon, a diagnosztikai beállítások REST API, az Azure CLI vagy a Azure PowerShell használatakor fordul elő. A Azure Portal használatával létrehozott diagnosztikai beállításokat a rendszer nem érinti, mert csak a támogatott kategóriájú nevek jelennek meg.
+
+Ezt a problémát az alapul szolgáló API legutóbbi változása okozza. A "AllMetrics"-től eltérő metrikai kategóriák nem támogatottak, és soha nem voltak kivételek a nagyon konkrét IP-engedélyezési listán szereplő esetekben. A múltban a diagnosztikai beállítások telepítésekor a rendszer figyelmen kívül hagyja a többi kategória nevét. A Azure Monitor háttér egyszerűen átirányítja ezeket a kategóriákat a "AllMetrics" értékre.  Február 2021-án a háttér frissítése megtörtént, hogy pontosan megerősítse a megadott metrikai kategóriát. Ez a változás bizonyos központi telepítések meghibásodását okozta.
+
+Ha ezt a hibaüzenetet kapja, frissítse az üzemelő példányokat, hogy a probléma megoldásához cserélje le a metrikus kategóriájú neveket a "AllMetrics" értékre. Ha a központi telepítés korábban több kategóriát adott hozzá, csak egyet kell megőrizni a "AllMetrics" hivatkozással. Ha továbbra is fennáll a probléma, vegye fel a kapcsolatot az Azure ügyfélszolgálatával a Azure Portal. 
+
 
 
 ## <a name="next-steps"></a>Következő lépések

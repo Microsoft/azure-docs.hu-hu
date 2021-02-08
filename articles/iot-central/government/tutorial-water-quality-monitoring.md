@@ -8,16 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 6e8f9b8b33d391c4e13c6076a8589d336455d8c0
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a928b1223b91faae6d4aca68b81cc16c827933b3
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590222"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820065"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azure-ban IoT Central
-
-
 
 Ez az oktatóanyag végigvezeti Önt egy vízminőség-figyelési alkalmazás létrehozásán az Azure IoT Centralban. Az alkalmazást az Azure IoT Central **Water Quality monitoring** Application sablon alapján hozza létre.
 
@@ -139,13 +137,13 @@ A következő eszközbeállítások beállításainak testreszabása:
 1. Lépjen a **hőmérséklet** telemetria típusra.
 1. Módosítsa a **megjelenített név** értékét a **jelentett hőmérséklet** értékre.
 1. Módosítsa a mértékegységet, vagy állítsa be a **minimális értéket** és a **maximális értéket**.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 #### <a name="add-a-cloud-property"></a>Felhőbeli tulajdonság hozzáadása
 
 1. Az eszköz sablonja menüben válassza a **Cloud Property** elemet.
 1. Új Felhőbeli tulajdonság hozzáadásához válassza a **+ Cloud Property hozzáadása** elemet. Az Azure IoT Centralban hozzáadhat egy olyan tulajdonságot, amely egy eszközhöz kapcsolódik, de az nem várható, hogy az eszköz elküldje őket. Ilyen tulajdonság például a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="explore-views"></a>Nézetek megismerése
 
