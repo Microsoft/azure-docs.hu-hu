@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Legutóbbi frissítések
       items:
+        - name: Január 2021 új és frissített funkciók
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: '2020. november: új és továbbfejlesztett funkciók'
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
         - name: '2020. október: új és továbbfejlesztett funkciók'

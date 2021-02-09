@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346707"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832232"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
-
-
 
 Az oktatóanyag bemutatja, hogyan hozhat létre Azure IoT Central Store-beli elemzési alkalmazást a megoldás-építők számára. A minta alkalmazás egy kiskereskedelmi áruházban található. Ez egy olyan megoldás, amely a közös üzleti igényeknek megfelelően figyeli és alkalmazkodik a kihasználtsági és környezeti feltételekhez.
 
@@ -77,7 +75,7 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 
     A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../core/quick-deploy-iot-central.md).
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     ![Azure IoT Central Alkalmazás létrehozása oldal](./media/tutorial-in-store-analytics-create-app/preview-application-template.png)
 
@@ -95,7 +93,7 @@ Előre definiált alkalmazás-téma kiválasztása:
 
 2. Válasszon ki egy új **témát**.
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 Az előre definiált témák helyett létrehozhat egy egyéni témát is. Ha minta lemezképek készletét szeretné használni az alkalmazás testreszabásához és az oktatóanyag elvégzéséhez, töltse le a [contoso-minta lemezképeit](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail).
 
@@ -113,7 +111,7 @@ Egyéni téma létrehozása:
 
 1. Igény szerint cserélje le a **böngésző alapértelmezett színét** a HTML hexadecimális színkódok hozzáadásával. A **fejléchez** adja hozzá a *#008575*.  A **Hangsúlyhoz** adja hozzá a *#A1F3EA*. 
 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
     ![Az Azure IoT Central testreszabott emblémája](./media/tutorial-in-store-analytics-create-app/select-application-logo.png)
 
@@ -127,7 +125,7 @@ Az alkalmazás rendszerképének frissítése:
 
 1. A **rendszerkép kiválasztása** gomb használatával kiválaszthatja az alkalmazási képként feltölteni kívánt képet. Ez a rendszerkép a IoT Central Application Manager **saját alkalmazások** lapjának alkalmazás csempén jelenik meg.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Szükség esetén navigáljon a **saját alkalmazások** nézethez az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén. Az alkalmazás csempe megjeleníti a frissített alkalmazás rendszerképét.
 
@@ -150,7 +148,7 @@ RuuviTag-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
     ![Képernyőfelvétel: a Next (Testreszabás) gomb kiemelése.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
-1. Kattintson a **Létrehozás** gombra. Az alkalmazás hozzáadja a RuuviTag-eszköz sablonját.
+1. Válassza a **Létrehozás** lehetőséget. Az alkalmazás hozzáadja a RuuviTag-eszköz sablonját.
 
 1. A bal oldali ablaktáblán válassza ki az **eszközök sablonjait** . A lap megjeleníti az alkalmazás sablonjában szereplő összes eszközt, valamint az imént hozzáadott RuuviTag-sablont.
 
@@ -276,7 +274,12 @@ Művelet hozzáadása a szabályhoz:
 
     Néhány percen belül a megadott e-mail-fióknak meg kell kezdenie az e-mailek fogadását. Az alkalmazás minden alkalommal küld e-mailt, amikor egy érzékelő azt jelzi, hogy a nedvességtartalom túllépte a feltételben megadott értéket.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>További lépések
+
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Hozzon létre egy kiskereskedelmi áruházbeli alkalmazást az Azure IoT Central **in-store Analytics-Checkout** sablon használatával

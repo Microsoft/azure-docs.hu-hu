@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762887"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834323"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektum-replikálás blokk-blobokhoz
 
@@ -42,6 +42,8 @@ Az objektum-replikációhoz a következő Azure Storage-funkciók is engedélyez
 - [Blob verziószámozása](versioning-overview.md): engedélyezni kell a forrás-és a célhelyen is. A verziószámozás engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 
 A módosítási hírcsatorna és a blob verziószámozásának engedélyezése további költségeket eredményezhet. További részletekért tekintse meg az [Azure Storage díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/storage/).
+
+Az objektum-replikáció csak általános célú v2-alapú Storage-fiókok esetén támogatott. A forrás-és a cél fióknak általános célú v2-nek kell lennie. 
 
 ## <a name="how-object-replication-works"></a>Az objektum-replikáció működése
 
@@ -106,7 +108,7 @@ Ha a forrás fiókban található blob replikációs állapota hibát jelez, akk
 
 Az objektum-replikálás további költségekkel jár a forrás-és a célhelyek olvasási és írási műveleteinél, valamint a kimenő adatforgalomért a forrás-fiókból a cél fiókba történő adatreplikálási költségekkel, valamint a változási adatcsatorna feldolgozásával kapcsolatos költségek beolvasásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Objektumreplikáció konfigurálása](object-replication-configure.md)
 - [A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage](storage-blob-change-feed.md)

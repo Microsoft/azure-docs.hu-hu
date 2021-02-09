@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346367"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831688"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
 
@@ -34,10 +34,10 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Az előző két oktatóanyag elvégzéséhez [hozzon létre egy áruházbeli elemzési alkalmazást az azure IoT Centralban](./tutorial-in-store-analytics-create-app.md) , és [szabja testre az operátor irányítópultját, és kezelje az eszközöket az Azure IoT Centralban](./tutorial-in-store-analytics-customize-dashboard.md).
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event hub és a Logic app létrehozása előtt létre kell hoznia egy erőforráscsoportot a kezeléséhez. Az erőforráscsoport ugyanazon a helyen kell lennie, mint az **áruházbeli elemzési-pénztár** IoT Central alkalmazás. Erőforráscsoport létrehozása:
 
@@ -46,7 +46,7 @@ Az Event hub és a Logic app létrehozása előtt létre kell hoznia egy erőfor
 1. Az **előfizetés** mezőben válassza ki a IoT Central alkalmazás létrehozásához használt Azure-előfizetés nevét.
 1. Az **erőforráscsoport** neve mezőbe írja be a következőt: _Retail-Store-Analysis_*.
 1. A **régió** esetében válassza ki ugyanazt a régiót, amelyet a IoT Central alkalmazáshoz választott.
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.
 
 Most már rendelkezik egy **Retail-Store-Analysis** nevű erőforráscsoporthoz az előfizetésében.
@@ -64,7 +64,7 @@ Ahhoz, hogy konfigurálni tudja a kiskereskedelmi figyelési alkalmazást a tele
     * Válassza ki ugyanazt az **előfizetést** , amelyet a IoT Central alkalmazás létrehozásához használt.
     * Válassza ki a **kiskereskedelmi tároló-elemzési** erőforráscsoportot.
     * Válassza ki ugyanazt a helyet, amelyet a IoT Central alkalmazáshoz használt.
-    * Kattintson a **Létrehozás** gombra. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiépíti az erőforrásokat.
+    * Válassza a **Létrehozás** lehetőséget. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiépíti az erőforrásokat.
 1. A portálon navigáljon a **Retail-Store-Analysis** erőforráscsoport elemre. Várjon, amíg az üzembe helyezés befejeződik. Előfordulhat, hogy a **frissítés** gombra kell kattintania a telepítés állapotának frissítéséhez. Az Event hub-névtér létrehozásának állapotát az **értesítésekben** is megtekintheti.
 1. A **Retail-Store-Analysis** Resource csoportban válassza ki a **Event Hubs névteret**. Ekkor megjelenik a **Event Hubs névtér** kezdőlapja a portálon.
 
@@ -88,7 +88,7 @@ Most már rendelkezik egy Event hub-vel, beállíthatja az **áruházbeli elemz�
 1. Válassza ki a **Event Hubs névteret**.
 1. Válassza ki a **Store-telemetria** Event hubot.
 1. Kapcsolja ki az **eszközöket** és az eszközök **sablonjait** az **exportálandó adatexportálás** szakaszban.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az adatexportálás eltarthat néhány percig, hogy el lehessen küldeni a telemetria az Event hub-ra. Az Exportálás állapota az **adatexportálás** oldalon látható:
 
@@ -109,7 +109,7 @@ A Power BI irányítópulton megjelennek a kiskereskedelmi monitorozási alkalma
 
     | Érték neve  | Érték típusa |
     | ----------- | ---------- |
-    | Timestamp   | DateTime   |
+    | Időbélyeg   | DateTime   |
     | Páratartalom    | Szám     |
     | Hőmérséklet | Szám     |
 
@@ -132,7 +132,7 @@ Szüksége lesz egy folyamatos átviteli adatkészletre is a foglaltság telemet
 
     | Érték neve     | Érték típusa |
     | -------------- | ---------- |
-    | Timestamp      | DateTime   |
+    | Időbélyeg      | DateTime   |
     | Várólista hossza 1 | Szám     |
     | Várólista hossza 2 | Szám     |
     | 1. tartózkodási idő   | Szám     |
@@ -167,7 +167,7 @@ A következő lépések bemutatják, hogyan hozhatja létre a logikai alkalmazá
     * Válassza ki ugyanazt az **előfizetést** , amelyet a IoT Central alkalmazás létrehozásához használt.
     * Válassza ki a **kiskereskedelmi tároló-elemzési** erőforráscsoportot.
     * Válassza ki ugyanazt a helyet, amelyet a IoT Central alkalmazáshoz használt.
-    * Kattintson a **Létrehozás** gombra. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiépíti az erőforrásokat.
+    * Válassza a **Létrehozás** lehetőséget. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiépíti az erőforrásokat.
 1. A Azure Portal navigáljon az új logikai alkalmazáshoz.
 1. A **Logic apps Designer** lapon görgessen le, és válassza az **üres logikai alkalmazás** lehetőséget.
 1. Az **Összekötők és eseményindítók keresése** területen adja meg a _Event Hubs_.
@@ -441,11 +441,11 @@ Adja hozzá a négy vonalas diagramot a hőmérséklet és a páratartalom megje
 | ------- | -------- | -------- | -------- | -------- |
 | Adathalmaz | 1. zóna érzékelő | 1. zóna érzékelő | 2. zóna érzékelő | 2. zóna érzékelő |
 | Vizualizáció típusa | Vonaldiagram | Vonaldiagram | Vonaldiagram | Vonaldiagram |
-| Tengely | Timestamp | Timestamp | Timestamp | Timestamp |
+| Tengely | Időbélyeg | Időbélyeg | Időbélyeg | Időbélyeg |
 | Értékek | Hőmérséklet | Páratartalom | Hőmérséklet | Páratartalom |
 | Időablak | 60 perc | 60 perc | 60 perc | 60 perc |
 | Cím | Hőmérséklet (1 óra) | Páratartalom (1 óra) | Hőmérséklet (1 óra) | Páratartalom (1 óra) |
-| Alcím | 1. zóna | 1. zóna | 2. zóna | 2. zóna |
+| Alcím | 1\. zóna | 1\. zóna | 2\. zóna | 2\. zóna |
 
 Az alábbi képernyőképen az első diagram beállításai láthatók:
 
@@ -461,7 +461,7 @@ A két környezeti érzékelő közül a legutóbbi hőmérséklet és a párata
 | Vizualizáció típusa | Kártya | Kártya | Kártya | Kártya |
 | Mezők | Hőmérséklet | Páratartalom | Hőmérséklet | Páratartalom |
 | Cím | Hőmérséklet (F) | Páratartalom (%) | Hőmérséklet (F) | Páratartalom (%) |
-| Alcím | 1. zóna | 1. zóna | 2. zóna | 2. zóna |
+| Alcím | 1\. zóna | 1\. zóna | 2\. zóna | 2\. zóna |
 
 Az alábbi képernyőképen az első kártya beállításai láthatók:
 
@@ -475,7 +475,7 @@ Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a t
 | ------- | ------- | ------- | ------- | ------- |
 | Adathalmaz | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője |
 | Vizualizáció típusa | Fürtözött oszlopdiagram | Fürtözött oszlopdiagram | Kijelző | Kijelző |
-| Tengely    | Timestamp | Timestamp | N.A. | N.A. |
+| Tengely    | Időbélyeg | Időbélyeg | N.A. | N.A. |
 | Érték | 1. tartózkodási idő | 2. tartózkodási idő | Várólista hossza 1 | Várólista hossza 2 |
 | Időablak | 60 perc | 60 perc |  N.A. | N.A. |
 | Cím | Tartózkodási idő | Tartózkodási idő | Processzor-várólista hossza | Processzor-várólista hossza |
@@ -499,11 +499,9 @@ Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Stor
 
 Power BI adatkészleteket és irányítópultokat a munkaterület Power BI beállítások lapján lévő munkaterület törlésével törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a három oktatóanyag olyan teljes körű megoldást mutat be, amely a **Store Analytics-checkout** IoT Central alkalmazás sablonját használja. Csatlakoztatta az eszközöket az alkalmazáshoz, a IoT Central használta az eszközök figyelésére, és Power BI, hogy irányítópultot hozzon létre az eszköz telemetria való betekintés céljából. A következő lépés egy másik IoT Central alkalmazás-sablon egyikének megismerése:
 
 > [!div class="nextstepaction"]
-> * [Energiaipari megoldások létrehozása az IoT Centrallal](../energy/overview-iot-central-energy.md)
-> * [Kormányzati megoldások létrehozása az IoT Centrallal](../government/overview-iot-central-government.md)
-> * [Egészségügyi megoldások létrehozása az IoT Centrallal](../healthcare/overview-iot-central-healthcare.md)
+> [Energiaipari megoldások létrehozása az IoT Centrallal](../energy/overview-iot-central-energy.md)

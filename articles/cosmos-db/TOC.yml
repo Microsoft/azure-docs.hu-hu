@@ -766,6 +766,8 @@
                   href: troubleshoot-not-found.md
                 - name: Hibaelhárítás – Nem engedélyezett
                   href: troubleshoot-unauthorized.md
+                - name: Tiltott hibák
+                  href: troubleshoot-forbidden.md
                 - name: Rendelkezésreállási hibák többrégiós környezetekben
                   href: troubleshoot-sdk-availability.md
             - name: .NET

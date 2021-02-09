@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás számítási és memóri
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a415a739cd9c1e2ca39ebeaef1d8903ab72cf0c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661374"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831280"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -29,12 +29,12 @@ A következő régiók és maximális erőforrások elérhetők a Linux-tároló
 > [!IMPORTANT]
 > Egy adott régióban a maximális erőforrások eltérőek a telepítéstől függően. Előfordulhat például, hogy egy adott régió esetében a processzor és a memória mérete eltérő lehet egy Azure-beli virtuális hálózatban, mint az általános telepítésnél. Ugyanez a régió a GPU-erőforrásokkal rendelkező üzemelő példányok esetében is eltérő értékeket tartalmazhat. Ellenőrizze a központi telepítési típust, mielőtt ellenőrzi az alábbi táblákat a régiójában lévő maximális értékekhez.
 
-| Régió | Max CPU (Max. CPU) | Maximális memória (GB) | VNET Max CPU | VNET maximális mérete (GB) | Tárterület (GB) | GPU SKU-i (előzetes verzió) |
+| Region | Max CPU (Max. CPU) | Maximális memória (GB) | VNET Max CPU | VNET maximális mérete (GB) | Tárterület (GB) | GPU SKU-i (előzetes verzió) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | Kelet-Ausztrália | 4 | 16 | 4 | 16 | 50 | N/A |
 | Dél-Brazília | 4 | 16 | 2 | 8 | 50 | N/A |
 | Közép-Kanada | 4 | 16 | 4 | 16 | 50 | N/A |
-| Közép-India | 4 | 16 | N.A. | N.A. | 50 | V100 |
+| Közép-India | 4 | 16 | 4 | 4 | 50 | V100 |
 | Az USA középső régiója | 4 | 16 | 4 | 16 | 50 | N/A |
 | Kelet-Ázsia | 4 | 16 | 4 | 16 | 50 | N/A |
 | USA keleti régiója | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
@@ -81,7 +81,7 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 > [!NOTE]
 > További információ az 1B, 2B és 3B gazdagépekről: a [gazdagép és a tároló verziószámának kompatibilitása](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
 
-| Régió | 1B/2B maximális CPU | 1B/2B maximális memória (GB) |3B Max CPU | 3B maximális memória (GB) | Tárterület (GB) |
+| Region | 1B/2B maximális CPU | 1B/2B maximális memória (GB) |3B Max CPU | 3B maximális memória (GB) | Tárterület (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Kelet-Ausztrália | 2 | 8 | 2 | 8 | 20 |
 | Dél-Brazília | 4 | 16 | 4 | 16 | 20 |
@@ -110,7 +110,7 @@ A következő régiók és maximális erőforrások elérhetők a [támogatott �
 > [!NOTE]
 > További információ az 1B, 2B és 3B gazdagépekről: a [gazdagép és a tároló verziószámának kompatibilitása](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
 
-| Régió | 1B/2B maximális CPU | 1B/2B maximális memória (GB) |3B Max CPU | 3B maximális memória (GB) | Tárterület (GB) |
+| Region | 1B/2B maximális CPU | 1B/2B maximális memória (GB) |3B Max CPU | 3B maximális memória (GB) | Tárterület (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
 | Kelet-Ausztrália | 4 | 16 | 4 | 16 | 20 |
 | Dél-Brazília | 4 | 16 | 4 | 16 | 20 |

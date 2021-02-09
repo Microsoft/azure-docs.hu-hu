@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 10ddbf3dde62380eb79af685ad41b22e4552cea1
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763876"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832623"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Oktatóanyag: IoT Edge-példány létrehozása videó-elemzéshez (linuxos virtuális gép)
 
@@ -50,7 +50,7 @@ A következő táblázatban található információk segítségével fejezze be
 | ----- | ----- |
 | Előfizetés | Válassza ki Azure-előfizetését. |
 | Erőforráscsoport | *LVA – RG* – az előző oktatóanyagban létrehozott erőforráscsoport. |
-| Régió       | *USA keleti régiója* |
+| Region       | *USA keleti régiója* |
 | DNS-címke előtagja | Válasszon egyedi DNS-előtagot a virtuális géphez. Csak betűkből és betűkből állhat, és nem tartalmazhat számjegyeket vagy speciális karaktereket. |
 | Rendszergazdai Felhasználónév | *AzureUser* |
 | Rendszergazdai jelszó | Adjon meg egy jelszót. Jegyezze fel a jelszót a *scratchpad.txt* fájlban, amelyet később használni fog. |
@@ -119,7 +119,15 @@ sudo docker ps
 
 A lista egy **LIVE555** nevű tárolót tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha végzett az alkalmazással, a következőképpen távolíthatja el az összes létrehozott erőforrást:
+
+1. A IoT Central alkalmazásban navigáljon az **alkalmazás** lapjára az **Adminisztráció** szakaszban. Ezután válassza a **Törlés** elemet.
+1. A Azure Portal törölje a **LVA-RG** erőforráscsoportot.
+1. A helyi gépen állítsa le az **amp-Viewer** Docker-tárolót.
+
+## <a name="next-steps"></a>Következő lépések
 
 Most telepítette a IoT Edge futtatókörnyezetet, a LVA modulokat és a Live555 szimulációs streamet egy Azure-on futó linuxos virtuális gépen.
 

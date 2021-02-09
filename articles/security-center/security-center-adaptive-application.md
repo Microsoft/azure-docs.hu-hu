@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820755"
+ms.locfileid: "99834391"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Az adaptív alkalmazás-vezérlőelemek használatával csökkentheti a gépek támadási felületét
 
@@ -44,7 +44,7 @@ Ha az ismert alkalmazások listáját definiálja, és riasztásokat állít el�
 - A szervezet által tiltott adott szoftverek letiltása
 - Bizalmas adatokhoz hozzáférő alkalmazások áttekintésének fokozása
 
-Nem érhető el kényszerítési lehetőség, és nincs terv. Az adaptív alkalmazások vezérlői a biztonsági riasztások biztosítására szolgálnak, ha bármely alkalmazás a biztonságosként megadott módon fut.
+Jelenleg nem érhető el kényszerítési lehetőség. Az adaptív alkalmazások vezérlői a biztonsági riasztások biztosítására szolgálnak, ha bármely alkalmazás a biztonságosként megadott módon fut.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -54,7 +54,7 @@ Nem érhető el kényszerítési lehetőség, és nincs terv. Az adaptív alkalm
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
 |Támogatott gépek:|![Igen ](./media/icons/yes-icon.png) , Windows és Linux rendszerű Azure-és nem Azure-beli gépek<br>![Igen ](./media/icons/yes-icon.png) [Azure arc](../azure-arc/index.yml) -gépek|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági olvasó** és **olvasó** szerepkörök a csoportok és az ismert biztonságos alkalmazások listáját egyaránt megtekinthetik<br>A **közreműködő** és a **biztonsági rendszergazdai** szerepkörök egyaránt módosíthatják a csoportokat és az ismert alkalmazások listáját|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -238,7 +238,7 @@ A REST API elérhető függvények:
 ## <a name="faq---adaptive-application-controls"></a>Gyakori kérdések – adaptív alkalmazások vezérlői
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Van lehetőség az alkalmazás vezérlőinek betartatására?
-Nem érhető el kényszerítési lehetőség, és nincs terv. Az adaptív alkalmazások vezérlői a **biztonsági riasztások** biztosítására szolgálnak, ha bármely alkalmazás a biztonságosként megadott módon fut. Számos előnnyel rendelkeznek ([Milyen előnyökkel jár az adaptív alkalmazások vezérlése?](#what-are-the-benefits-of-adaptive-application-controls)), és az ezen az oldalon látható módon rendkívül testreszabható.
+Jelenleg nem érhető el kényszerítési lehetőség. Az adaptív alkalmazások vezérlői a **biztonsági riasztások** biztosítására szolgálnak, ha bármely alkalmazás a biztonságosként megadott módon fut. Számos előnnyel rendelkeznek ([Milyen előnyökkel jár az adaptív alkalmazások vezérlése?](#what-are-the-benefits-of-adaptive-application-controls)), és az ezen az oldalon látható módon rendkívül testreszabható.
 
  
 

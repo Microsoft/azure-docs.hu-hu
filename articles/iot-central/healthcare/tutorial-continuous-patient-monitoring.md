@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98482a43516683499e83bebafe4eeadc5b7a8b7
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531270"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832504"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Oktatóanyag: folyamatos, beteg monitorozási alkalmazás sablonjának üzembe helyezése és áttekintése
 
@@ -24,6 +24,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Alkalmazás sablonjának létrehozása
 > * Az alkalmazás sablonjának átjárása
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az Azure-előfizetés használata ajánlott. Alternatív megoldásként ingyenes, 7 napos próbaverziót is használhat. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription).
 
 ## <a name="create-an-application-template"></a>Alkalmazás sablonjának létrehozása
 
@@ -49,7 +53,7 @@ Az alkalmazás létrehozása:
 
 ### <a name="dashboards"></a>Irányítópultok
 
-Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg monitorozási irányítópultján**kell megszállnia. A Lamna Healthcare egy fiktív kórházi rendszer, amely két kórházat tartalmaz: a Woodgrove kórházat és a Burkville kórházat. A Woodgrove Hospital Operator irányítópultján a következőket teheti:
+Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg monitorozási irányítópultján** kell megszállnia. A Lamna Healthcare egy fiktív kórházi rendszer, amely két kórházat tartalmaz: a Woodgrove kórházat és a Burkville kórházat. A Woodgrove Hospital Operator irányítópultján a következőket teheti:
 
 * Lásd: az eszköz telemetria és tulajdonságai, például az eszköz **töltöttségi szintje** vagy a **kapcsolati** állapota.
 
@@ -61,11 +65,11 @@ Az alkalmazás sablonjának üzembe helyezése után először a **Lamna a beteg
 
 * Módosítsa az eszköz **beteg állapotát** annak jelzésére, hogy az eszköz használatban van-e egy fekvőbeteg-vagy távoli forgatókönyvben.
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="Healthcre-alkalmazás sablonja":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Fekvőbeteg-állapot":::
 
 A Burkville Kórház-kezelő irányítópultjának megnyitásához válassza a **Ugrás a távoli beteg irányítópultra** lehetőséget. Ez az irányítópult a műveletek, a telemetria és az információk hasonló készletét tartalmazza. Több eszközt is láthat a használatban, és a **belső vezérlőprogram frissítését** is választhatja.
 
-:::image type="content" source="media/lamna-remote.png" alt-text="Healthcre-alkalmazás sablonja":::
+:::image type="content" source="media/lamna-remote.png" alt-text="Távoli operátor irányítópultja":::
 
 ### <a name="device-templates"></a>Eszközsablonok
 
@@ -75,7 +79,7 @@ Ha kijelöli az **eszköz sablonokat**, a sablon két típusát látja:
 
 * **Intelligens térd zárójel**: ez az eszköz egy térd zárójelet jelöl, amelyet a páciensek a térdtől való kiváltáskor használnak. Ha ezt a sablont választja, megtekintheti az eszközök, a mozgási tartomány és a gyorsítás funkcióit.
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Healthcre-alkalmazás sablonja":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Intelligens javítási sablon":::
 
 ### <a name="device-groups"></a>Device groups
 
@@ -85,7 +89,7 @@ Ha kiválasztja az eszközcsoport fület, megjelenik egy alapértelmezett eszkö
 
 ### <a name="rules"></a>Szabályok
 
-Ha a **szabályok**lehetőséget választja, a sablon három szabálya látható:
+Ha a **szabályok** lehetőséget választja, a sablon három szabálya látható:
 
 * **Kapcsos zárójel hőmérséklete**: Ez a szabály akkor aktiválódik, ha az intelligens térd zárójelének hőmérséklete nagyobb, mint 95 &deg; F egy 5 perces ablakban. Ez a szabály figyelmezteti a betegeket és a gondozási csapatot, és távolról lehűti az eszközt.
 
@@ -93,7 +97,7 @@ Ha a **szabályok**lehetőséget választja, a sablon három szabálya látható
 
 * **Alacsony javítási akkumulátor**: Ez a szabály akkor aktiválódik, ha az eszköz töltöttségi szintje 10% alá esik. Ezzel a szabállyal elindíthatja az értesítéseket a betegnek az eszközük feltöltéséhez.
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="Healthcre-alkalmazás sablonja":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Szabályok":::
 
 ### <a name="jobs"></a>Feladatok
 
@@ -105,7 +109,7 @@ A feladatok lehetővé teszik a tömeges műveletek futtatását egy [adott eszk
 
 ### <a name="devices"></a>Eszközök
 
-Válassza az **eszközök** fület, majd válassza ki a **Smart térd zárójel**egy példányát. A kiválasztott eszköz információit három nézetben tekintheti meg. Ezek a nézetek az eszköz sablonjának összeállítása során jönnek létre és jelennek meg. ezért ezek a nézetek konzisztensek az összes csatlakoztatott vagy szimulált eszközön.
+Válassza az **eszközök** fület, majd válassza ki a **Smart térd zárójel** egy példányát. A kiválasztott eszköz információit három nézetben tekintheti meg. Ezek a nézetek az eszköz sablonjának összeállítása során jönnek létre és jelennek meg. ezért ezek a nézetek konzisztensek az összes csatlakoztatott vagy szimulált eszközön.
 
 Az **irányítópult** nézet áttekintést nyújt az eszköz telemetria és tulajdonságairól.
 
@@ -113,7 +117,7 @@ A **Tulajdonságok** lapon szerkesztheti a felhő tulajdonságait, valamint az e
 
 A **parancsok** lapon parancsokat futtathat az eszközön.
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Healthcre-alkalmazás sablonja":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Térd zárójelek irányítópultja":::
 
 ### <a name="data-export"></a>Adatexportálás
 
@@ -121,11 +125,11 @@ Az adatexportálás lehetővé teszi, hogy az eszköz adatait folyamatosan expor
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az **adminisztráció > alkalmazás beállításai** között, és kattintson a **Törlés**gombra.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az **adminisztráció > alkalmazás beállításai** között, és kattintson a **Törlés** gombra.
 
-:::image type="content" source="media/admin-delete.png" alt-text="Healthcre-alkalmazás sablonja":::
+:::image type="content" source="media/admin-delete.png" alt-text="Tiszta erőforrások":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan hozhat létre olyan szolgáltatói irányítópultot, amely kapcsolódik a IoT Central alkalmazáshoz.
 

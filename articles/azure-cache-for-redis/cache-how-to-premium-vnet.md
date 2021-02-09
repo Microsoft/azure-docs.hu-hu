@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9343bc424a0a38da173a56701528c4fd7549aabd
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734657"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833830"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Virtuális hálózatok támogatásának konfigurálása prémium szintű Azure cache-hez a Redis-példányhoz
 
@@ -77,7 +77,7 @@ A virtuális hálózatok támogatása a gyorsítótár létrehozásakor a **Redi
 
 1. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
 
 1. Ha megjelenik az **átadott zöld érvényesítés** üzenet, válassza a **Létrehozás** lehetőséget.
 
@@ -178,7 +178,7 @@ Az Azure cache hálózati kapcsolati követelményei olyan Redis esetében fordu
 * A kimenő hálózati kapcsolat az Azure Storage-végpontokkal világszerte. Azok a végpontok, amelyek ugyanabban a régióban találhatók, mint az Azure cache az Redis-példányhoz és *más* Azure-régiókban található tárolási végpontok is. Az Azure Storage-végpontok a következő DNS-tartományok alatt oldhatók fel: *table.Core.Windows.net*, *blob.Core.Windows.net*, *Queue.Core.Windows.net* és *file.Core.Windows.net*.
 * Kimenő hálózati kapcsolat a *OCSP.Digicert.com*, a *crl4.digicert.com*, a *OCSP.msocsp.com*, a *mscrl.microsoft.com*, a *crl3.digicert.com* *, a cacerts.Digicert.com,* a *oneocsp.microsoft.com* és a *CRL.microsoft.com*. Ez a kapcsolat szükséges a TLS/SSL-funkciók támogatásához.
 * A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a korábbi pontokban említett összes végpont és tartomány feloldására. Ezek a DNS-követelmények teljesíthetők az érvényes DNS-infrastruktúra konfigurálásának és karbantartásának biztosításával a virtuális hálózat számára.
-* Kimenő hálózati kapcsolat az alábbi Azure Monitor-végpontokkal, amelyek a következő DNS-tartományok alatt oldhatók fel: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net* és *azglobal-Red.azglobal.Metrics.nsatc.net*.
+* Kimenő hálózati kapcsolat az alábbi Azure Monitor-végpontokkal, amelyek a következő DNS-tartományok alatt oldhatók fel: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net*, *azglobal-Red.azglobal.Metrics.nsatc.net*, *shoebox3.prod.microsoftmetrics.com*, *shoebox3-Red.prod.microsoftmetrics.com* és *shoebox3-Black.prod.microsoftmetrics.com*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>Hogyan tudom ellenőrizni, hogy a gyorsítótár működik-e egy virtuális hálózaton?
 
@@ -268,7 +268,7 @@ A UDR kapcsolatos háttér-információk a [virtuális hálózati forgalom útv�
 
 További információ a ExpressRoute: a [ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure cache Redis szolgáltatásairól.
 

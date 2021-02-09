@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516770"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833303"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának létrehozása és végigvezeti 
 
@@ -100,10 +100,9 @@ Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alk
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás törlése](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További tudnivalók az Intelligens Fogyasztásmérők alkalmazás-architektúrával kapcsolatban 
+A Smart Meter alkalmazás architektúrájának megismeréséhez lásd:
+
 > [!div class="nextstepaction"]
-> [a koncepcióról szóló cikk](./concept-iot-central-smart-meter-app.md)
-* Smart Meter-alkalmazás sablonjainak létrehozása ingyen: [intelligens fogyasztásmérő](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring) alkalmazás
-* További információ a IoT Centralről: [IoT Central áttekintése](../index.yml)
+> [Intelligens fogyasztásmérő alkalmazás architektúrája](./concept-iot-central-smart-meter-app.md)

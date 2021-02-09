@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 01/21/2021
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: e6fd69d7016a364d92e1873e0df1521a27612b79
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ff6d1f46299875354a72a6a93a828df7960169ad
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791476"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831542"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Az Azure Stack Edge Pro-problémák elhárítása
 
@@ -87,6 +87,6 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
 [!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információk a [jelen kiadás ismert problémáiról](../databox-gateway/data-box-gateway-release-notes.md).

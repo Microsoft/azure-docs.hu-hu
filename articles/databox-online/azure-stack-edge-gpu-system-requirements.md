@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: d97f500bb84f816bacf44208ba305840e797b3bd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d2fa464214f6a4201b1ecd62ee1a5dacdd7ec158
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447712"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832453"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 
@@ -40,7 +40,7 @@ Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 
 A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. Az Edge Storage-fiókok az eszközön jönnek létre. További információ: [Edge Storage-fiókok](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
 
-|Típus  |Tárfiók  |Megjegyzések  |
+|Típus  |A(z)  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása         |         |
 
@@ -50,7 +50,7 @@ A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. 
 
 Ezek a Storage-fiókok a helyi Azure Resource Managerhoz való csatlakozáskor az eszköz helyi API-kon keresztül jönnek létre. A következő Storage-fiókok támogatottak:
 
-|Típus  |Tárfiók  |Megjegyzések  |
+|Típus  |A(z)  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása, oldal Blobja        | Az SKU típusa Standard_LRS       |
 |Prémium     |GPv1: blob blokkolása, oldal Blobja        | Az SKU típusa Premium_LRS        |
@@ -69,7 +69,7 @@ Ezek a Storage-fiókok a helyi Azure Resource Managerhoz való csatlakozáskor a
 
 ### <a name="port-requirements-for-azure-stack-edge-pro"></a>A Azure Stack Edge Pro portjának követelményei
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimeneti* állapot arra utal, hogy az Azure stack Edge *Pro-eszköz* külsőleg, az üzembe helyezésen túl, például az interneten keresztül küldi az adatokat.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z)  vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimeneti* állapot arra utal, hogy az Azure stack Edge *Pro-eszköz* külsőleg, az üzembe helyezésen túl, például az interneten keresztül küldi az adatokat.
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 

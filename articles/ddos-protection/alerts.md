@@ -3,7 +3,7 @@ title: A DDoS Protection-riasztások megtekintése és konfigurálása Azure DDo
 description: Megtudhatja, hogyan tekintheti meg és konfigurálhatja a DDoS Protection-riasztásokat a Azure DDoS Protection Standard rendszerhez.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2d72027082ed2b57b28a15a736c35801ba88188c
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806290"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832521"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS Protection-riasztások megtekintése és konfigurálása
 
@@ -41,7 +41,8 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 Ezekkel a sablonokkal olyan nyilvános IP-címekre vonatkozó riasztásokat konfigurálhat, amelyeken engedélyezve van a diagnosztikai bejelentkezés. Ezért ahhoz, hogy használni lehessen ezeket a riasztási sablonokat, először egy Log Analytics munkaterületre lesz szüksége, amelyen engedélyezve van a diagnosztikai beállítások. Lásd: [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor riasztási szabály
-Ez a [Azure Monitor riasztási szabály](https://aka.ms/ddosmitigationstatus) egy egyszerű lekérdezést futtat, amely azt vizsgálja, hogy mikor történt aktív DDoS-csökkentés. Ez potenciális támadást jelez. A műveleti csoportok használatával a riasztás eredményeként műveleteket lehet meghívni.
+
+Ez a [Azure Monitor riasztási szabály](https://aka.ms/DDOSmitigationstatus) egy egyszerű lekérdezést futtat, amely azt vizsgálja, hogy mikor történt aktív DDoS-csökkentés. Ez potenciális támadást jelez. A műveleti csoportok használatával a riasztás eredményeként műveleteket lehet meghívni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874798"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832606"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Oktatóanyag: video Analytics-objektum-és mozgásészlelési alkalmazás figyelése és kezelése
 
@@ -55,13 +55,13 @@ A kamera eszköz hozzáadásához válassza a **Futtatás** elemet:
 
 ## <a name="add-a-motion-detection-camera-optional"></a>Mozgásészlelési kamera hozzáadása (nem kötelező)
 
-Ha két kamerája van a IoT Edge átjáró-eszközhöz csatlakoztatva, ismételje meg az előző lépéseket, és adjon hozzá egy mozgásérzékelő kamerát az alkalmazáshoz. Különböző értékeket használhat a **kamera azonosítójának**, a **kamera nevének**és az **RTSP URL-címének** paramétereinek.
+Ha két kamerája van a IoT Edge átjáró-eszközhöz csatlakoztatva, ismételje meg az előző lépéseket, és adjon hozzá egy mozgásérzékelő kamerát az alkalmazáshoz. Különböző értékeket használhat a **kamera azonosítójának**, a **kamera nevének** és az **RTSP URL-címének** paramétereinek.
 
 ## <a name="view-the-downstream-devices"></a>Az alsóbb rétegbeli eszközök megtekintése
 
 Válassza ki a **LVA Gateway 001** eszköz **alsóbb rétegbeli eszközök** lapját az imént hozzáadott kamera-eszközök megtekintéséhez:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Kamera hozzáadása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Vizsgálata":::
 
 A kamera eszközei az alkalmazás **eszközök** lapján is megjelennek a listában.
 
@@ -98,7 +98,7 @@ Kattintson a **Mentés** gombra.
 
 Néhány másodperc elteltével megjelenik az egyes beállításokhoz tartozó **elfogadott** megerősítő üzenet:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Kamera hozzáadása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Objektum észlelése":::
 
 ## <a name="start-lva-processing"></a>LVA-feldolgozás indítása
 
@@ -108,13 +108,13 @@ Futtassa a **Start LVA Processing** parancsot.
 
 Ha a parancs befejeződik, tekintse meg a parancs előzményeit, és győződjön meg róla, hogy nincsenek hibák:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Kamera hozzáadása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="LVA-feldolgozási parancs elindítása":::
 
 ## <a name="monitor-the-cameras"></a>A kamerák figyelése
 
 Navigáljon a **kamera-003** eszközhöz, és válassza az **irányítópult** fület:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera hozzáadása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Kamera irányítópultja":::
 
 Az **észlelések száma** csempe a kiválasztott észlelési osztályok objektumainak átlagos észlelési számát jeleníti meg egy másodperces észlelési intervallumban.
 
@@ -128,7 +128,7 @@ A Media Services végpont elindításával engedélyezheti, hogy az ügyfél Med
 
 * A Azure Portal navigáljon az **LVA-RG** erőforráscsoporthoz.
 * Nyissa meg az **adatfolyam-végpont** erőforrását.
-* Az **adatfolyam-végpont részletei** lapon válassza az **Indítás**lehetőséget. Megjelenik egy figyelmeztetés, miszerint a számlázás a végpont indításakor elindul.
+* Az **adatfolyam-végpont részletei** lapon válassza az **Indítás** lehetőséget. Megjelenik egy figyelmeztetés, miszerint a számlázás a végpont indításakor elindul.
 
 ## <a name="view-stored-video"></a>Tárolt videó megtekintése
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 Navigáljon a **kamera-003** eszközhöz, és válassza az **irányítópult** fület. Ezután kattintson az egyik rögzített objektum-észlelési hiperhivatkozásra a **következtetési esemény videó** csempén. A videó a helyi videolejátszó által megjelenített oldalon jelenik meg:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Kamera hozzáadása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videó kódrészlet":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Szimulált eszközök módosítása alkalmazás-irányítópultokon
 
@@ -176,13 +176,13 @@ Az alkalmazás-irányítópultok eredetileg a IoT Central szimulált eszközökr
     1. Az **észlelési** tortadiagram a `AI Inference Interface/Inference/entity/tag/value` telemetria típust használja.
     1. A **következtetés** az `AI Inference Interface/Inference/entity/tag/value` utolsó ismert értéket használja.
     1. A **(z)% megbízhatósági%** az `AI Inference Interface/Inference/entity/tag/confidence` utolsó ismert értéket használja
-    1. **Snapshot** A pillanatkép `AI Inference Interface/Inference Image` képként jelenik meg.
+    1.  A pillanatkép `AI Inference Interface/Inference Image` képként jelenik meg.
     1. A **következtetési esemény videó** `AI Inference Interface/Inference Event Video` hivatkozásként jelenik meg.
 1. Kattintson a **Mentés** gombra.
 
 Az **igazi kamera-figyelő** irányítópultja mostantól megjeleníti a valódi kamera-eszköz értékeit:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Kamera hozzáadása":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Valódi fényképezőgépek alkalmazás-irányítópult":::
 
 ## <a name="pause-processing"></a>Feldolgozás szüneteltetése
 
@@ -193,9 +193,9 @@ Az alkalmazásban szüneteltetheti az élő videók elemzésének feldolgozásá
 1. Állítsa le a Media Services-fiók streaming-végpontját:
     * A Azure Portal navigáljon az **LVA-RG** erőforráscsoporthoz.
     * Kattintson a **streaming Endpoint** erőforrásra.
-    * A **folyamatos átviteli végpont részletei** lapon válassza a **Leállítás**lehetőséget.
+    * A **folyamatos átviteli végpont részletei** lapon válassza a **Leállítás** lehetőséget.
 
-## <a name="tidy-up"></a>Kitakarítás
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett az alkalmazással, a következőképpen távolíthatja el az összes létrehozott erőforrást:
 

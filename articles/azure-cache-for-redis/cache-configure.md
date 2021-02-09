@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734623"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831773"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -236,10 +236,7 @@ A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár 
 
 A karbantartási időszak megadásához tekintse meg a kívánt napokat, és minden nap esetében határozza meg a karbantartási időszak kezdő óráját, majd kattintson **az OK** gombra. A karbantartási időszak időpontja UTC.
 
-> [!IMPORTANT]
-> Az **ütemezett frissítések** funkció csak a prémium szintű gyorsítótárak esetében érhető el. További információkért és útmutatásért lásd: [Azure cache for Redis Administration – frissítések frissítése](cache-administration.md#schedule-updates).
->
->
+További információkért és útmutatásért lásd: [Azure cache for Redis Administration – frissítések ütemezett frissítése](cache-administration.md#schedule-updates)
 
 ### <a name="geo-replication"></a>Georeplikáció
 
@@ -386,7 +383,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 >
 
-| Beállítás | Alapértelmezett érték | Leírás |
+| Beállítás | Alapértelmezett érték | Description |
 | --- | --- | --- |
 | `databases` |16 |Az adatbázisok alapértelmezett száma 16, de az árképzési csomag alapján eltérő számot is beállíthat. <sup>1</sup> az alapértelmezett adatbázis: db 0, a és a közötti kapcsolaton keresztül választhat egy másikat `connection.GetDatabase(dbid)` `dbid` `0` `databases - 1` . |
 | `maxclients` |A<sup>2</sup> . árképzési szinttől függ |Ez az érték a csatlakoztatott ügyfelek által egyszerre engedélyezett maximális szám. Ha elérte a korlátot, a Redis lezárja az összes új kapcsolatot, és "az ügyfelek maximális száma elérte a hibát" hibaüzenetet adja vissza. |
@@ -504,5 +501,5 @@ A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés** gomb
 
 További információ az erőforrások egyik erőforráscsoporthoz egy másikra való áthelyezéséről, illetve az egyik előfizetésről a másikra: [erőforrások áthelyezése új erőforrás-csoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Redis-parancsok használatáról: [Hogyan futtathatók a Redis parancsok?](cache-development-faq.md#how-can-i-run-redis-commands)

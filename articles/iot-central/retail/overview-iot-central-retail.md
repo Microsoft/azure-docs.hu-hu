@@ -1,5 +1,5 @@
 ---
-title: Kiskereskedelmi megoldások kiépítése az Azure IoT Centralkal | Microsoft Docs
+title: Mik az Azure IoT Central kiskereskedelmi megoldásai | Microsoft Docs
 description: Ismerje meg, hogyan használhatók az Azure IoT Central alkalmazás-sablonok a csatlakoztatott logisztika, a digitális terjesztési központ, az áruházbeli elemzés, a feltételek figyelése, a pénztár, az intelligens leltár-kezelés és a kiskereskedelmi megoldások létrehozásához.
 author: avneet723
 ms.author: avneets
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124962"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832283"
 ---
-# <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
+# <a name="what-are-the-iot-central-retail-solutions"></a>Mik a IoT Central kiskereskedelmi megoldások?
 
 Az Azure IoT Central egy IoT, amely csökkenti a nagyvállalati szintű IoT-megoldások fejlesztésével, kezelésével és karbantartásával járó terheket és költségeket. Az Azure IoT Central kiválasztásával lehetősége van arra, hogy az Ön üzleti adatait IoT-adataival alakítsa át, és nem csupán egy összetett és folyamatosan fejlődő IoT-infrastruktúra karbantartására és frissítésére koncentrál.
 
@@ -41,9 +41,9 @@ A csatlakoztatott logisztikai megoldás előnyei a következők:
 
 A következő képernyőképek az alkalmazás sablonjában lévő beépített irányítópultot mutatják be. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="A kapcsolódó logisztikai műveletek irányítópultjának felső felét bemutató képernyőkép.":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Képernyőkép, amely a csatlakoztatott logisztikai műveletek irányítópultjának alsó felét mutatja.":::
 
 További információért lásd: az [üzembe helyezés és az útmutató egy csatlakoztatott logisztikai alkalmazás sablonjának](./tutorial-iot-central-connected-logistics.md) létrehozásához.
 
@@ -64,7 +64,7 @@ A digitális terjesztési központ előnyei a következők:
 
 Az alábbi képernyőfelvételen a beépített irányítópult látható az alkalmazás sablonjában. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek: 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Digitális terjesztési központ irányítópultja":::
 
 További információért lásd: a [Digital Distribution Center alkalmazás-sablon üzembe helyezése és](./tutorial-iot-central-digital-distribution-center.md) áttekintő oktatóanyaga.
 
@@ -86,7 +86,7 @@ Az alkalmazás sablonja tartalmazza az eszközök sablonjait, és szimulált esz
 
 Az alábbi képernyőfelvételen a beépített irányítópult látható az alkalmazás sablonjában. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek: 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Az áruházbeli elemzési feltétel figyelése":::
 
 További információért lásd az [Azure-ban tárolt elemzési alkalmazás létrehozása az Azure IoT Central](./tutorial-in-store-analytics-create-app.md) oktatóanyagban című témakört.
 
@@ -108,7 +108,7 @@ Az alkalmazás sablonja tartalmazza az eszközök sablonjait, és szimulált esz
 
 Az alábbi képernyőfelvételen a beépített irányítópult látható az alkalmazás sablonjában. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek: 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Tárolt elemzési pénztár":::
 
 További információért lásd az [Azure-ban tárolt elemzési alkalmazás létrehozása az Azure IoT Central](./tutorial-in-store-analytics-create-app.md) oktatóanyagban című témakört.
 
@@ -128,7 +128,7 @@ Ez az alkalmazási sablon az eszközök kapcsolatára koncentrál, valamint az R
 
 Az alábbi képernyőfelvételen a beépített irányítópult látható az alkalmazás sablonjában. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek:
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Intelligens leltár-kezelési irányítópult":::
 
 További információ: [üzembe helyezés és útmutató az intelligens leltár kezelési alkalmazás sablonjának](./tutorial-iot-central-smart-inventory-management.md) oktatóanyaga.
 
@@ -148,7 +148,7 @@ Az alkalmazás sablonja a következőket teszi lehetővé:
 
 Az alábbi képernyőfelvételen a beépített irányítópult látható az alkalmazás sablonjában. Az irányítópult teljes mértékben testreszabható, hogy megfeleljen az adott megoldás követelményeinek:
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Micro-beteljesülés központja":::
 
 További információért lásd: [üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonjának](./tutorial-micro-fulfillment-center.md) oktatóanyaga.
 
@@ -165,7 +165,7 @@ Az alkalmazás sablonja négy alkalmazás-irányítópultot tartalmaz:
 * **(Minta) a Real cames Management** szimulált kamerák használatával mutatja be, hogyan kezelheti a kamerákat az alkalmazásból.
 * **(Minta) a valódi kamera-figyelő** szimulált kamerákat használ annak bemutatására, hogyan figyelheti meg a kamerákat az alkalmazásból.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Az Azure IoT kiskereskedelmi áttekintése":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videóelemzés – objektum- és mozgásérzékelés":::
 
 A megoldás architektúrájának megismeréséhez tekintse meg a [video Analytics alkalmazás architektúráját](architecture-video-analytics.md)ismertető témakört.
 
@@ -180,9 +180,5 @@ Az [élő videó Analytics](https://github.com/Azure/live-video-analytics) platf
 A kereskedelmi megoldások létrehozásának megkezdéséhez:
 
 * Ismerkedjen meg az [Azure IoT Central in-store Analytics-alkalmazás létrehozása](./tutorial-in-store-analytics-create-app.md) című oktatóanyaggal, amely végigvezeti a megoldásnak az áruházbeli elemzési alkalmazás-sablonokkal való kiépítésének lépésein.
-* [Üzembe helyezés és végigvezeti a csatlakoztatott logisztikai alkalmazás sablonján](./tutorial-iot-central-connected-logistics.md).
-* [A Digital Distribution Center alkalmazás sablonjának üzembe helyezése és átjárása](./tutorial-iot-central-digital-distribution-center.md).
-* [Helyezzen üzembe és járjon el egy intelligens leltár-kezelési alkalmazás sablonján](./tutorial-iot-central-smart-inventory-management.md).
-* [Üzembe helyezheti és végigvezeti a Micro-teljesítési központ alkalmazás sablonján](./tutorial-micro-fulfillment-center.md).
 * [A video Analytics-alkalmazás sablonjának üzembe helyezése és átjárása](./tutorial-video-analytics-deploy.md).
-* További információ a IoT Centralről a [IoT Central áttekintésében](../core/overview-iot-central.md).
+* [Üzembe helyezés és végigvezeti a csatlakoztatott logisztikai alkalmazás sablonján](./tutorial-iot-central-connected-logistics.md).

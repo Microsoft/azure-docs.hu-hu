@@ -1,4 +1,4 @@
-- name: Dokumentáció egészségügyi Azure IoT Central-megoldások létrehozásához
+- name: Azure IoT Central az egészségügyi dokumentációhoz
   href: index.yml
 - name: Áttekintés
   items:
@@ -9,6 +9,8 @@
   items:
     - name: Folyamatos betegfigyelési alkalmazás létrehozása
       href: tutorial-continuous-patient-monitoring.md
+    - name: Egészségügyi adatok osztályozására szolgáló irányítópult létrehozása
+      href: howto-health-data-triage.md
 - name: Alapelvek
   items:
     - name: A folyamatos betegfigyelés architektúrája
@@ -19,8 +21,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Útmutatók
   items:
-    - name: Egészségügyi adatok osztályozására szolgáló irányítópult létrehozása
-      href: howto-health-data-triage.md
     - name: Eszközök csatlakoztatása és fejlesztése
       items:
         - name: Rigado Cascade 500 előkészítése és csatlakoztatása

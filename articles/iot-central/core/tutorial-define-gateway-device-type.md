@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995522"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832385"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag – új IoT átjáró-eszköz típusának meghatározása az Azure IoT Central-alkalmazásban
 
@@ -51,11 +51,11 @@ Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
 1. A **felülvizsgálat** lapon válassza a **Létrehozás** lehetőséget az eszköz sablonjának az alkalmazáshoz való hozzáadásához. 
 
-Eszköz sablonjának létrehozása **_RS40 foglaltság érzékelő_* eszközhöz:
+Eszköz sablonjának létrehozása ***RS40 foglaltság érzékelő** eszközhöz:
 
 1. A bal oldali panelen válassza az **eszközök sablonjai** elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
-1. Görgessen lefelé, amíg meg nem jelenik a **_RS40 foglaltság érzékelő_* eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás** lehetőséget.
+1. Görgessen lefelé, amíg meg nem jelenik a ***RS40 foglaltság érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás** lehetőséget.
 
 1. A **felülvizsgálat** lapon válassza a **Létrehozás** lehetőséget az eszköz sablonjának az alkalmazáshoz való hozzáadásához. 
 
@@ -110,7 +110,7 @@ Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró e
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | Nincs          | Dátum   |
+    | Utolsó szervizelés dátuma | Nincs          | Date   |
     | Ügyfél neve     | Nincs          | Sztring |
 
 2. Kattintson a **Mentés** gombra.
@@ -138,7 +138,7 @@ Az átjáró-eszköz sablonjának közzététele:
 
 1. Válassza ki az **intelligens felépítési átjáró eszköz** sablonját az **eszközök sablonjai** lapon.
 
-2. Kattintson a **Publish** (Közzététel) elemre.
+2. Válassza a **Közzététel** lehetőséget.
 
 3. Az **eszköz sablonjának közzététele** párbeszédpanelen válassza a **Közzététel** lehetőséget.
 
@@ -154,7 +154,7 @@ Szimulált átjáró eszköz létrehozása:
 
 1. **+** Új eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
-1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
+1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Válassza a **Létrehozás** lehetőséget.
 
 Szimulált alsóbb szintű eszközök létrehozása:
 
@@ -162,13 +162,13 @@ Szimulált alsóbb szintű eszközök létrehozása:
 
 1. **+** Új eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
-1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
+1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Válassza a **Létrehozás** lehetőséget.
 
 1. Az **eszközök** lapon válassza az **S1 Sensor** elemet az eszközök listájában.
 
 1. **+** Új eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
-1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
+1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Válassza a **Létrehozás** lehetőséget.
 
 ![Szimulált eszközök az alkalmazásban](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 
@@ -198,6 +198,10 @@ A szimulált alsóbb szintű eszközök most már csatlakozva vannak a szimulál
 
 Válassza ki az átjáró-eszköz sablonját és az átjáró eszköz példányát, és válassza a **Csatlakozás** lehetőséget.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
@@ -208,9 +212,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 * Adjon meg egy vizualizációt az eszköz telemetria.
 * Kapcsolatok hozzáadása.
 * Tegye közzé az eszköz sablonját.
-
-> [!NOTE]
-> A VS Code-alapú programkódok létrehozása jelenleg nem támogatott a IoT Centralban modellezett átjáró eszközök esetében.
 
 A következő lépésként az eszköz fejlesztője a következőket ismerteti:
 

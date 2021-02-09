@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7c6c50b6fd8200726aa11f120d9748cc1b40aa22
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346214"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831620"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a csatlakoztatott logisztikai alkalmazási sablonhoz
 
@@ -130,8 +130,8 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Sablon karbantartása":::
 
 ## <a name="next-steps"></a>Következő lépések
-* További információ 
+
+További információ:
+
 > [!div class="nextstepaction"]
-> [Kapcsolódó logisztikai koncepció](./architecture-connected-logistics.md)
-* További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
-* További információ az [IoT Central áttekintése](../core/overview-iot-central.md)
+> [Kapcsolódó logisztikai fogalmak](./architecture-connected-logistics.md)

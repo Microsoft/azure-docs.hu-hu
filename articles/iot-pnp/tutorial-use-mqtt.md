@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421379"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831263"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Oktatóanyag – a MQTT használata IoT Plug and Play eszköz ügyfelének fejlesztéséhez
 
@@ -38,7 +38,7 @@ Az *Azure IoT Explorer* eszköz használatával hozzáadhat egy új eszközt a I
 1. Hozzon létre egy *My-mqtt-Device* nevű eszközt, amely egy automatikusan létrehozott szimmetrikus kulcsot használ.
 1. Az **eszköz identitása** lapon bontsa ki a **kapcsolati sztring sas-tokenrel elemet**.
 1. Válassza ki a **szimmetrikus kulcsként** használandó **elsődleges kulcsot** , állítsa a lejárati időt 60 percre, majd válassza a **Létrehozás** lehetőséget.
-1. Másolja a generált **sas-jogkivonat kapcsolati karakterláncát** , ezt az értéket később az oktatóanyagban használja.
+1. Másolja a generált **sas-jogkivonat kapcsolati karakterláncát**, ezt az értéket később az oktatóanyagban használja.
 
 ## <a name="clone-sample-repo"></a>A klónozott minta tárháza
 
@@ -137,15 +137,14 @@ A következő definíciók az eszköz által az IoT hub-ra való adatküldéshez
 * A `DEVICE_TELEMETRY_MESSAGE` meghatározza azt a témakört, amelyet az eszköz használ a telemetria az IoT hubhoz való küldéséhez.
 
 A MQTT kapcsolatos további információkért tekintse meg az Azure IoT GitHub-tárház [MQTT-mintáit](https://github.com/Azure-Samples/IoTMQTTSample/) .
-  
-## <a name="next-steps"></a>További lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan módosíthat egy MQTT-eszköz ügyfelet a IoT Plug and Play konvenciók követéséhez. A IoT Plug and Play további tudnivalókért lásd:
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-> [!div class="nextstepaction"]
-> [Architektúra](concepts-architecture.md)
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
-Ha többet szeretne megtudni a MQTT protokoll IoT Hub támogatásáról, tekintse meg a következőt:
+## <a name="next-steps"></a>Következő lépések
+
+Ebből az oktatóanyagból megtudhatta, hogyan módosíthat egy MQTT-eszköz ügyfelet a IoT Plug and Play konvenciók követéséhez. Ha többet szeretne megtudni a MQTT protokoll IoT Hub támogatásáról, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [Kommunikáció az IoT hub használatával a MQTT protokollal](../iot-hub/iot-hub-mqtt-support.md)

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d9c2aea284a2ab84b5d45fe35a35785adfc88123
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763467"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832069"
 ---
 ### <a name="publish-the-device-template"></a>Az eszközsablon közzététele
 
@@ -61,16 +61,3 @@ Szüksége lesz a hitelesítő adatokra, amelyek lehetővé teszik az eszköz sz
 
 1. Válassza a **Bezárás** gombot.
 
-## <a name="next-steps"></a>További lépések
-
-Ezzel létrehozott egy IoT Central alkalmazást a **video Analytics-Object és a mozgásérzékelő** alkalmazás sablonnal, létrehozott egy eszköz sablont az átjáró eszközhöz, és hozzáadta az átjáró-eszközt az alkalmazáshoz.
-
-Ha olyan IoT Edge-modulokkal szeretné kipróbálni a video Analytics – Object és Motion Detection alkalmazást, amelyeken szimulált videó streamekkel rendelkező felhőalapú virtuális gépek futnak:
-
-> [!div class="nextstepaction"]
-> [IoT Edge-példány létrehozása a video analyticshez (Linux rendszerű virtuális gép)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-vm.md)
-
-Ha olyan IoT Edge-modulokkal szeretné kipróbálni a video Analytics – Object és Motion Detection alkalmazást, amelyek valódi **ONVIF** kamera használatával futtatnak valós eszközt:
-
-> [!div class="nextstepaction"]
-> [IoT Edge-példány létrehozása a video analyticshez (Intel NUC)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-nuc.md)

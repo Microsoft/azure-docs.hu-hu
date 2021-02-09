@@ -7,18 +7,23 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820180"
+ms.locfileid: "99834357"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Oktatóanyag: Time Series Insights Gen2-környezet létrehozása és konfigurálása
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és konfigurálhat egy [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) -környezetet a IoT Plug and Play megoldással való integrációhoz. A Time Series Insights az idősoros adatok gyűjtésére, feldolgozására, tárolására, lekérdezésére és megjelenítésére használható eszközök internetes hálózata (IoT) skálán.
 
-Először is üzembe kell helyeznie egy Time Series Insights-környezetet, és csatlakoztatnia kell az IoT hub-t adatfolyam-eseményforrásként. Ezután a modell szinkronizálásával dolgozhat az [idősorozat-modell](../time-series-insights/concepts-model-overview.md)létrehozásához. A hőmérséklet-vezérlőhöz és a termosztátos eszközökhöz használt [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) minta típusú fájlokat használja.
+Ebben az oktatóanyagban az alábbiakat végezte el:
+
+> [!div class="checklist"]
+> * Hozzon létre egy Time Series Insights-környezetet, és az IoT hub-t adatfolyam-eseményforrásként kapcsolja össze.
+> * Az [idősorozat-modell](../time-series-insights/concepts-model-overview.md)létrehozásához a modell szinkronizálásával dolgozhat.
+> * Használja a hőmérséklet-vezérlőhöz és a termosztáthoz használt [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) minta típusú fájlokat.
 
 > [!NOTE]
 > A Time Series Insights és a IoT közötti integráció előzetes verzióban érhető el Plug and Play. Előfordulhat, hogy a DTDL-eszköz modelljeinek a Time Series Insights idősorozat-modellhez való leképezése változhat. 
@@ -222,10 +227,11 @@ Lépjen vissza a diagram panelre, és bontsa ki az eszköz **flottáját** > az 
 
 ![A thermostat2 példány típusának módosítását bemutató képernyőkép.](./media/tutorial-configure-tsi/charting-values.png)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni a különböző diagram-beállítási lehetőségekről, beleértve az intervallumok méretezését és az y tengely vezérlőelemeket, tekintse meg a [Azure Time Series Insights Explorert](../time-series-insights/concepts-ux-panels.md).
-
-* A környezet idősorozat-modelljének részletes áttekintését lásd: [Time Series Model in Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md).
-
-* A lekérdezési API-k és az idősorozat-kifejezés szintaxisának betekintéséhez tekintse meg [Azure Time Series Insights Gen2 lekérdezési API-kat](/rest/api/time-series-insights/reference-query-apis).
+> [!div class="nextstepaction"]
+> Ha többet szeretne megtudni a különböző diagram-beállítási lehetőségekről, beleértve az intervallumok méretezését és az y tengely vezérlőelemeket, tekintse meg a [Azure Time Series Insights Explorert](../time-series-insights/concepts-ux-panels.md).

@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326120"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832963"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor megoldás: teljesítményfigyelés
+
+> [!IMPORTANT]
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 A [Network Performance monitor](network-performance-monitor.md) Teljesítményfigyelő funkciója segíti a hálózati kapcsolatok figyelését a hálózat különböző pontjai között. A Felhőbeli üzemelő példányokat, a helyszíni helyszíneket, több adatközpontot és fiókirodát, valamint a kritikus többrétegű alkalmazásokat és a-szolgáltatásokat is figyelheti. A Teljesítményfigyelő használatával észlelheti a hálózati problémákat, mielőtt a felhasználók panaszkodnak. A legfontosabb előnyök a következők lehetnek: 
 
@@ -27,7 +30,7 @@ A [Network Performance monitor](network-performance-monitor.md) Teljesítményfi
 ![Hálózati teljesítményfigyelő](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfiguráció
-A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md), és válassza a **Konfigurálás**lehetőséget.
+A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md), és válassza a **Konfigurálás** lehetőséget.
 
 ![A Network Performance Monitor konfigurálása](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
 
@@ -41,8 +44,8 @@ Amikor hálózatot hoz létre, hozzá kell adnia egy alhálózatot. Ezt követő
 
 
 1. Válassza a **hálózatok** fület.
-1. Válassza a **hálózat hozzáadása**lehetőséget, majd írja be a hálózat nevét és leírását. 
-2. Válasszon ki egy vagy több alhálózatot, majd válassza a **Hozzáadás**lehetőséget. 
+1. Válassza a **hálózat hozzáadása** lehetőséget, majd írja be a hálózat nevét és leírását. 
+2. Válasszon ki egy vagy több alhálózatot, majd válassza a **Hozzáadás** lehetőséget. 
 3. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
 
 
@@ -59,13 +62,13 @@ Egyéni figyelési szabályok létrehozása:
 
 1. A **figyelés** lapon válassza a **szabály hozzáadása** lehetőséget, és írja be a szabály nevét és leírását.
 2. Válassza ki a listából a figyeléshez használandó hálózati vagy alhálózati kapcsolatokat. 
-3. Válassza ki azt a hálózatot, amely a hálózat legördülő listából a kívánt alhálózatokat tartalmazza. Ezután válassza ki az alhálózatokat a megfelelő alhálózat legördülő listából. Ha egy hálózati kapcsolat összes alhálózatát figyelni szeretné, válassza az **összes alhálózat**lehetőséget. Hasonlóképpen válassza ki a többi kívánt alhálózatot. Ha ki szeretné zárni a megadott alhálózati kapcsolatok figyelését a kiválasztott beállítások közül, válassza a **kivétel hozzáadása**elemet. 
+3. Válassza ki azt a hálózatot, amely a hálózat legördülő listából a kívánt alhálózatokat tartalmazza. Ezután válassza ki az alhálózatokat a megfelelő alhálózat legördülő listából. Ha egy hálózati kapcsolat összes alhálózatát figyelni szeretné, válassza az **összes alhálózat** lehetőséget. Hasonlóképpen válassza ki a többi kívánt alhálózatot. Ha ki szeretné zárni a megadott alhálózati kapcsolatok figyelését a kiválasztott beállítások közül, válassza a **kivétel hozzáadása** elemet. 
 4. Válasszon az ICMP és a TCP protokollok közül a szintetikus tranzakciók végrehajtásához. 
 5. Ha nem szeretne állapot-eseményeket létrehozni a kiválasztott elemekhez, törölje a jelet **az állapot-figyelés engedélyezése a szabály által érintett hivatkozásokra**. 
 6. Válassza a figyelési feltételek lehetőséget. Az állapot-események generálásához szükséges egyéni küszöbértékek megadásához adja meg a küszöbértékeket. Ha a feltétel értéke meghaladja a kiválasztott hálózati vagy alhálózati pár küszöbértékét, a rendszer egy állapottal kapcsolatos eseményt generál. 
 7. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
 
-A figyelési szabály mentését követően a **riasztás létrehozása**lehetőség kiválasztásával integrálhatja ezt a szabályt a Alert Management. A rendszer automatikusan létrehoz egy riasztási szabályt a keresési lekérdezéssel. A rendszer a többi szükséges paramétert automatikusan kitölti. A riasztási szabályok használatával e-mail-alapú riasztásokat fogadhat, a Network Performance Monitoron belüli meglévő riasztások mellett is. A riasztások a runbookok-mel is indíthatnak javító műveleteket, vagy webhookok használatával integrálhatók a meglévő Service Management-megoldásokkal. A riasztási beállítások szerkesztéséhez válassza a **riasztás kezelése** lehetőséget. 
+A figyelési szabály mentését követően a **riasztás létrehozása** lehetőség kiválasztásával integrálhatja ezt a szabályt a Alert Management. A rendszer automatikusan létrehoz egy riasztási szabályt a keresési lekérdezéssel. A rendszer a többi szükséges paramétert automatikusan kitölti. A riasztási szabályok használatával e-mail-alapú riasztásokat fogadhat, a Network Performance Monitoron belüli meglévő riasztások mellett is. A riasztások a runbookok-mel is indíthatnak javító műveleteket, vagy webhookok használatával integrálhatók a meglévő Service Management-megoldásokkal. A riasztási beállítások szerkesztéséhez válassza a **riasztás kezelése** lehetőséget. 
 
 Most már több Teljesítményfigyelő szabályt is létrehozhat, vagy áthelyezheti a megoldás irányítópultját a funkció használatára.
 
@@ -94,7 +97,7 @@ A protokoll kiválasztása előtt vegye figyelembe a következő információkat
 
 Ha az üzembe helyezés során az ICMP használatát választotta, akkor az alapértelmezett figyelési szabály szerkesztésével bármikor átválthat a TCP-re.
 
-1. Nyissa **meg a Hálózatfigyelő**   >  **Monitor**   >  **konfigurálása**   >  **figyelőt**. Ezután válassza az **alapértelmezett szabály**lehetőséget. 
+1. Nyissa **meg a Hálózatfigyelő**   >  ****   >  **konfigurálása**   >  **figyelőt**. Ezután válassza az **alapértelmezett szabály** lehetőséget. 
 2. Görgessen a **protokoll** szakaszhoz, és válassza ki a használni kívánt protokollt. 
 3. A beállítás alkalmazásához válassza a **Mentés** lehetőséget. 
 
@@ -127,6 +130,5 @@ A következő ábrán a probléma területének kiváltó oka a hálózat adott 
  
 ![Topológiai Térkép a csomópont tulajdonságaival kiválasztva](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
-

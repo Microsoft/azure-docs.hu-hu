@@ -1,5 +1,5 @@
 ---
-title: Kormányzati megoldások létrehozása az Azure IoT Centrallal
+title: Mik az Azure IoT Central Government-megoldások?
 description: Ismerje meg, hogyan hozhat létre intelligens városi megoldásokat az Azure IoT Central alkalmazás-sablonok használatával.
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590817"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834340"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások létrehozása az Azure IoT Centrallal
+# <a name="what-are-the-iot-central-government-solutions"></a>Mik a IoT Central kormányzati megoldások?
 
 Ismerkedjen meg az intelligens városi megoldások Azure IoT Central alkalmazás-sablonok használatával történő létrehozásával. Kezdje el most a **víz minőségének monitorozásával**, a **vízfogyasztás figyelésével** és a **csatlakoztatott hulladékgazdálkodással**.
 
@@ -71,8 +71,6 @@ Ismerkedés a [csatlakoztatott hulladékgazdálkodási alkalmazás oktatóanyag�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Próbálja ki a IoT Centralban az ingyenes [create app](https://apps.azureiotcentral.com/build/government) (kormányzati alkalmazás sablonjait)
 * További tudnivalók a [víz minőségének monitorozásával kapcsolatos fogalmakról](./concepts-waterqualitymonitoring-architecture.md)
 * További információ a víz-használat [figyelésével kapcsolatos fogalmakról](./concepts-waterconsumptionmonitoring-architecture.md)
 * További tudnivalók a [kapcsolódó hulladékgazdálkodási fogalmakról](./concepts-connectedwastemanagement-architecture.md)  
-* További információ a IoT Centralről: [IoT Central áttekintése](../core/overview-iot-central.md)

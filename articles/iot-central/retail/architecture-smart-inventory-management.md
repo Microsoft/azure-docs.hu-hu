@@ -5,15 +5,15 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 9e0b4a3c22c1e6008bdce7fecc1d122fe317dd58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7939193b0dad1ed74dccd0ace0b0f0323b17124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686206"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832640"
 ---
 # <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>A IoT Central Smart Inventory Management alkalmazás-sablon architektúrája
 
@@ -52,7 +52,7 @@ Az Azure IoT Central egy megoldás-fejlesztői platform, amely leegyszerűsíti 
 ## <a name="business-insights--actions-using-data-egress"></a>Üzleti elemzések & a kimenő adatforgalommal kapcsolatos műveletek 
 A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén gazdag bővíthetőségi lehetőségeket biztosít. A telemetria adatfeldolgozási vagy nyers telemetria alapuló üzleti elemzések általában egy előnyben részesített üzletági alkalmazásba exportálhatók. A webhook, a Service Bus, az Event hub vagy a blob Storage használatával a gépi tanulási modellek fejlesztéséhez, betanításához és üzembe helyezéséhez & további ismeretek bevezetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan telepítheti az [intelligens leltár felügyeleti sablonját](./tutorial-iot-central-smart-inventory-management.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central.md)

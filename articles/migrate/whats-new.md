@@ -7,21 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: fbafed60019005fe2d81c96fb9557e3c307669ac
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233763"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834034"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
 A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszolgálókat, alkalmazásokat és az Microsoft Azure felhőbe áttelepítheti, elemezheti és áttelepítheti azokat. Ez a cikk a Azure Migrate új kiadásait és szolgáltatásait foglalja össze.
 
 ## <a name="update-january-2021"></a>Frissítés (január 2021)
--  A VMware virtuális gépek áttelepítése az Azure Virtual Machines szolgáltatásba kettős titkosítással, platform által felügyelt és ügyfél által felügyelt kulcsokkal (CMK) rendelkező lemezekkel, a Azure Migrate kiszolgáló áttelepítése (ügynök nélküli replikáció) mostantól Azure Portal keresztül érhető el.
-- A VMware virtuális gépek áttelepítése az Azure Virtual Machines szolgáltatásba a kiszolgálóoldali titkosítással (SSE) és az ügyfél által felügyelt kulcsokkal (CMK) titkosított lemezekkel, valamint a platform által felügyelt és az ügyfél által felügyelt kulcsokkal való dupla titkosítással a Azure Migrate kiszolgáló áttelepítése (ügynök-alapú replikáció) mostantól elérhető a Azure Portalon keresztül.
-- A fizikai kiszolgálók és virtuális gépek más felhőkből, például az AWS-ből és a GCP-ből az Azure Virtual Machines szolgáltatásba való áttelepítése az ügyfél által felügyelt kulcsokkal (CMK), valamint a platform által felügyelt és az ügyfél által felügyelt kulcsokkal végzett kettős titkosítással rendelkező Azure Migrate, kiszolgálóoldali titkosítással (az ügynök-alapú replikációval) rendelkező lemezekkel Azure Portal elérhető
+-  Azure Migrate: a kiszolgáló áttelepítési eszköze lehetővé teszi a VMware virtuális gépek, fizikai kiszolgálók és virtuális gépek áttelepítését más felhőből az Azure-beli virtuális gépekre, az ügyfél által felügyelt kulcsokkal (CMK) kiszolgálóoldali titkosítással titkosított lemezekkel.
 
 ## <a name="update-december-2020"></a>Frissítés (2020. december)
 - Azure Migrate mostantól automatikusan telepíti az Azure virtuálisgép-ügynököt a VMware virtuális gépekre, miközben az Azure-ba való Migrálás során a VMware Migration ügynök nélküli módszerét használja.
@@ -113,7 +111,7 @@ Ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMware vir
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Itt talál további információkat](https://azure.microsoft.com/pricing/details/azure-migrate/) az Azure Migrate díjszabásáról.
 - Tekintse meg az Azure Migrate használatával kapcsolatban felmerülő [gyakori kérdéseket](resources-faq.md).

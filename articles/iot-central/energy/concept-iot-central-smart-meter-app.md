@@ -4,16 +4,16 @@ description: Ez a cikk az Azure IoT Central Energy app-sablon architektúráján
 author: op-ravi
 ms.author: omravi
 ms.date: 12/11/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f9167df3ce56116e02addec411d5f720ea366ea0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 48dd95acf725e57d63f85c54c97b641935b049b9
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516675"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832368"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – intelligens fogyasztásmérő alkalmazás architektúrája
 
@@ -35,7 +35,7 @@ Az Azure IoT Central egy olyan platform, amely leegyszerűsíti a IoT-megoldás 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>Bővíthetőségi lehetőségek a IoT Central létrehozásához
 A IoT Central platform két bővíthetőségi lehetőséget kínál: folyamatos adatexportálást (CDE) és API-kat. Az ügyfelek és a partnerek választhatnak ezek között a lehetőségek közül, hogy testre szabják az adott igényeknek megfelelő megoldásokat. Például az egyik partner konfigurálta az Azure Data Lake Storage (ADLS) CDE. A ADLS használják a hosszú távú adatmegőrzésre és más, a lassú elérésű útvonalak tárolási helyzetére, az ilyen kötegelt feldolgozásra, a naplózásra és a jelentéskészítésre. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy megismerte az architektúrát, [ingyenes Smart Meter-alkalmazást készíthet](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
 * További információ a IoT Centralről: [IoT Central áttekintése](../index.yml)

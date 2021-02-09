@@ -3,18 +3,18 @@ title: Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztiz
 description: A .NET SDK használatakor olyan szolgáltatásokat használhat, mint az ügyféloldali naplózás és más külső eszközök a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 09/12/2020
+ms.date: 02/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683101"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831246"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +55,7 @@ Ellenőrizze, hogy aktív-e a [GitHub-problémák szakasza](https://github.com/A
 A [portál metrikáinak](./monitor-cosmos-db.md) ellenőrzése segít meghatározni, hogy az ügyféloldali probléma-e, vagy hogy van-e probléma a szolgáltatással. Ha például a mérőszámok nagy arányban korlátozott kérelmeket tartalmaznak (a 429-as HTTP-állapotkód), ami azt jelenti, hogy a kérést a rendszer lekéri, akkor ellenőrizze, hogy a [kérelem sebessége túl nagy](troubleshoot-request-rate-too-large.md) . 
 
 ## <a name="retry-logic"></a>Újrapróbálkozási logika <a id="retry-logics"></a>
-Cosmos DB SDK bármely i/o-hiba esetén megpróbálja megismételni a sikertelen műveletet, ha az SDK-ban az Újrapróbálkozás megoldható. Ha bármilyen hiba esetén újra próbálkozik, az írási hibák konkrét kezelése/újrapróbálása kötelező. Javasoljuk, hogy a legújabb SDK-t használja, mivel az újrapróbálkozási logikát folyamatosan fejleszti.
+A Cosmos DB SDK bármely I/O-hiba esetén megpróbálja újra végrehajtani a sikertelen műveletet, ha az SDK-ban kivitelezhető az újrapróbálkozás. Ha bármilyen hiba esetén újra próbálkozik, az írási hibák konkrét kezelése/újrapróbálása kötelező. Javasoljuk, hogy a legújabb SDK-t használja, mivel az újrapróbálkozási logikát folyamatosan fejleszti.
 
 1. Az i/o-hibák olvasása és lekérése az SDK-val újra próbálkozik a végfelhasználók nélkül.
 2. Az írások (létrehozás, Upsert, csere, törlés) nem idempotens, ezért az SDK nem mindig vakon próbálkozik a sikertelen írási műveletekkel. Szükség van arra, hogy a felhasználó alkalmazás-logikája kezelni tudja a hibát, és próbálkozzon újra.
@@ -63,10 +63,11 @@ Cosmos DB SDK bármely i/o-hiba esetén megpróbálja megismételni a sikertelen
 
 ## <a name="common-error-status-codes"></a>Gyakori hibák állapotkódok <a id="error-codes"></a>
 
-| Állapotkód | Leírás | 
+| Állapotkód | Description | 
 |----------|-------------|
 | 400 | Hibás kérés (a hibaüzenettől függ)| 
 | 401 | [Nincs engedélyezve](troubleshoot-unauthorized.md) | 
+| 403 | [Forbidden](troubleshoot-forbidden.md) |
 | 404 | [Az erőforrás nem található](troubleshoot-not-found.md) |
 | 408 | [A kérelem időkorlátja lejárt](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | Ütközési hiba az, amikor egy meglévő erőforrás elvégezte egy írási művelethez megadott erőforrás AZONOSÍTÓját. A probléma megoldásához használjon másik azonosítót az erőforráshoz, mivel az AZONOSÍTÓnak egyedinek kell lennie az összes olyan dokumentumon belül, amelynek a partíciós kulcs értéke azonos. |
@@ -120,7 +121,7 @@ A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, 
 
 Ha a következő hibába ütközik: `Unable to load DLL 'Microsoft.Azure.Cosmos.ServiceInterop.dll' or one of its dependencies:` és Windows rendszert használ, frissítsen a legújabb Windows-verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md) teljesítményével kapcsolatos irányelvek ismertetése
 * Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) -k használatáról

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500271"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831204"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Oktatóanyag: IoT Plug and Play modul összekötése (C#)
 
@@ -20,7 +20,12 @@ Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy általános IoT Plug and P
 
 Az eszköz egy IoT Plug and Play eszköz, ha közzéteszi a modell AZONOSÍTÓját, amikor csatlakozik egy IoT hubhoz, és megvalósítja a modell azonosítója által azonosított digitális Twins Definition Language (DTDL) modellben ismertetett tulajdonságokat és metódusokat. Ha többet szeretne megtudni arról, hogy az eszközök hogyan használják a DTDL és a modell AZONOSÍTÓját, olvassa el a következőt: [IoT Plug and Play fejlesztői útmutató](./concepts-developer-guide-device.md). A modulok ugyanúgy használják a modell-azonosítókat és a DTDL modelleket.
 
-A IoT Plug and Play modul megvalósításának bemutatásához az oktatóanyag bemutatja, hogyan alakíthatja át a termosztát C# eszközének mintáját egy általános modulba.
+A IoT Plug and Play modul megvalósításának bemutatásához az oktatóanyag a következőket mutatja be:
+
+> [!div class="checklist"]
+> * Adjon hozzá egy modult a IoT hub-hoz.
+> * Alakítsa át a termosztát C#-eszköz mintáját egy általános modulba.
+> * Használja a Service SDK-t a modullal való interakcióhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -232,6 +237,10 @@ Az Azure IoT Explorer eszköz használatával a következőket tekintheti meg:
 * Telemetria a IoT Edge eszközről.
 * IoT Edge modul Twin Property frissítései a IoT Plug and Play értesítéseket aktiválják.
 * A IoT Edge modul reagál a IoT Plug and Play parancsokra.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

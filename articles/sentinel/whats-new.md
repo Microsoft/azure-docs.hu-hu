@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 02/04/2021
+ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526636"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832759"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -32,6 +32,7 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 
 ## <a name="january-2021"></a>2021. január
 
+- [Elemzési szabály varázsló: továbbfejlesztett lekérdezés-szerkesztési élmény (nyilvános előzetes verzió)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-összekötő](#sql-database-connector)
 - [Javított incidensek megjegyzései](#improved-incident-comments)
@@ -40,6 +41,16 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 - [Továbbfejlesztett szabályok finomhangolása az analitikai szabályok előzetes verziójának diagramjaival](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Elemzési szabály varázsló: továbbfejlesztett lekérdezés-szerkesztési élmény (nyilvános előzetes verzió)
+
+Az Azure Sentinel ütemezett elemzési szabály varázsló most a következő fejlesztéseket biztosítja a lekérdezések írásához és szerkesztéséhez:
+
+-   Egy bővíthető szerkesztési ablak, amely több képernyős területet biztosít a lekérdezés megtekintéséhez.
+-   A lekérdezés kódjában szereplő legfontosabb szavak kiemelése.
+-   Kibontott automatikus kiegészítési támogatás.
+-   Valós idejű lekérdezések érvényessége. A lekérdezésben szereplő hibák mostantól piros blokkként jelennek meg a görgetősávon, és a **szabály logikája** lap neve piros pont. Emellett a hibákkal rendelkező lekérdezések nem menthetők.
+
+További információ: [oktatóanyag: fenyegetések észlelése](tutorial-detect-threats-built-in.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)
 
 Az Azure Sentinel mostantól támogatja az új az [. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell-modult.
@@ -113,7 +124,7 @@ Ez az Azure Sentinel-frissítés olyan új vadászati lekérdezéseket tartalmaz
 - **Gyűjtemény**
 - **Parancs és vezérlés**
 - **Hitelesítőadat-hozzáférés**
-- **Felfedezés**
+- **Felderítés**
 - **Végrehajtási**
 - **Kiszűrése**
 - **Hatás**

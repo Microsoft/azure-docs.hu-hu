@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065286"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834374"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: Szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban
 
@@ -24,7 +24,7 @@ Az eszközök a telemetria használatával numerikus adatok küldését az eszk�
 
 Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha egy szimulált érzékelő eszköz hőmérséklete meghaladja a 70 F-ot &deg; .
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -107,6 +107,10 @@ Válassza ki az engedélyezni vagy letiltani kívánt szabályt. A szabályban l
 ## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Adott eszközökhöz tartozó szabályok engedélyezése vagy letiltása
 
 Válassza ki a testre szabni kívánt szabályt. Használjon egy vagy több szűrőt a **cél eszközök** szakaszban, hogy szűkítse a szabály hatókörét a figyelni kívánt eszközökre.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

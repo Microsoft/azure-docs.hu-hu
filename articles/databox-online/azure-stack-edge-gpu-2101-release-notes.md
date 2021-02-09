@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/27/2021
+ms.date: 02/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: eb01ae5e9c7e134e33460674eb2c44b710671a4a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954614"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833354"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 kibocsátási megjegyzései
 
@@ -47,8 +47,8 @@ Az alábbi táblázat összefoglalja az 2101 kiadás ismert problémáit.
 |**3.**|Kubernetes |Az Edge Container Registry nem működik, ha a webproxy engedélyezve van.|A funkciók egy későbbi kiadásban lesznek elérhetők. |
 |**4.**|Kubernetes |Az Edge Container Registry nem működik IoT Edge modulokkal.| |
 |**5.**|Kubernetes |A Kubernetes nem támogatja a (z) ":" környezetet a .NET-alkalmazások által használt környezeti változók neveiben. Ez az Event Grid IoT Edge moduljának Azure Stack Edge-eszközön és más alkalmazásokban való működéséhez is szükséges. További információ: a [ASP.net Core dokumentációja](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|A ":" kifejezést dupla aláhúzással cserélje le. További információ: [Kubernetes probléma](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**6.** |Azure arc + Kubernetes-fürt |Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből.  |Az arc OperatorParams kell beállítania, `--sync-garbage-collection`  hogy lehetővé váljon az erőforrások törlése a git-tárházból való törléskor. További információ: [konfiguráció törlése](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
-|**7.**|NFS |Az NFS-megosztást használó alkalmazások, amelyek az eszközön az adatírást használják, kizárólagos írást kell használniuk. Ez biztosítja, hogy az írások a lemezre legyenek írva.| |
+|**6.** |Azure arc + Kubernetes-fürt |Alapértelmezés szerint, ha az erőforrást `yamls` a git-tárházból törli, a rendszer nem törli a megfelelő erőforrásokat a Kubernetes-fürtből.  |Ha engedélyezni szeretné a git-tárházból törölt erőforrások törlését, állítsa `--sync-garbage-collection` az ív OperatorParams. További információ: [konfiguráció törlése](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**7.**|NFS |Az NFS-megosztást használó alkalmazások, amelyek az eszközön az adatírást használják, kizárólagos írást kell használniuk. Ezzel biztosítható, hogy a rendszer a lemezre írja a írásokat.| |
 |**8.**|Számítási konfiguráció |A számítási konfiguráció nem sikerül olyan hálózati konfigurációknál, amelyekben az átjárók, illetve kapcsolók vagy útválasztók válaszolnak a hálózaton nem létező rendszerekre vonatkozó ARP-kérelmekre.| |
 |**9.**|Számítás és Kubernetes |Ha a Kubernetes először van beállítva az eszközön, az az összes rendelkezésre álló GPU-t kéri. Ezért a Kubernetes beállítása után nem hozhatók létre Azure Resource Manager virtuális gépek a GPU-k használatával. |Ha az eszköz 2 GPU-val rendelkezik, hozzon létre 1 virtuális gépet, amely a GPU-t használja, majd konfigurálja a Kubernetes. Ebben az esetben a Kubernetes a fennmaradó elérhető 1 GPU-t fogja használni. |
 
@@ -73,11 +73,12 @@ Az alábbi táblázat az előző kiadásokból származó ismert problémák ös
 |**12.**|Kubernetes |A Kubernetes jelenleg nem teszi lehetővé a többprotokollos terheléselosztó szolgáltatások használatát. Például egy DNS-szolgáltatás, amely a TCP és az UDP protokollal is figyelni fogja. |A Kubernetes és a MetalLB közötti korlátozás megkerüléséhez két szolgáltatás (az egyik a TCP, az egyik az UDP) hozható létre ugyanazon a pod választón. Ezek a szolgáltatások ugyanazt a megosztási kulcsot és spec. loadBalancerIP használják ugyanazon IP-cím megosztására. Az IP-címek akkor is megoszthatók, ha több szolgáltatással rendelkezik, mint az elérhető IP-címek. <br> További információ: [IP-címek megosztása](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**13.**|Kubernetes-fürt|A meglévő Azure IoT Edge Marketplace-moduloknak módosításra lehet szükségük az Azure Stack Edge-eszközön IoT Edge futtatásához.|További információ: Azure IoT Edge-modulok módosítása a piactérről Azure Stack Edge-eszközön való futtatáshoz.<!-- insert link-->|
 |**14.**|Kubernetes |A fájl alapú kötési csatlakoztatások nem támogatottak az Azure Stack Edge-eszközön lévő Kubernetes Azure IoT Edge.|A IoT Edge egy fordítási réteget használ a Kubernetes-szerkezetek számára történő fordításhoz `ContainerCreate` . A `Binds` leképezések létrehozása a `hostpath` címtárban, így a fájl alapú kötési csatlakoztatások nem köthetők IoT Edge tárolók elérési útjaihoz. Ha lehetséges, képezze le a szülő könyvtárat.|
-|**15.**|Kubernetes |Ha saját tanúsítványokat hoz létre a IoT Edgehoz, és hozzáadja azokat a Azure Stack Edge-eszközön, miután a számítás konfigurálva lett az eszközön, az új tanúsítványok nem lesznek felveszve.|A probléma megkerüléséhez töltse fel a tanúsítványokat, mielőtt beállítja az eszközön a számítást. Ha a számítás már konfigurálva van, [kapcsolódjon az eszköz PowerShell-felületéhez, és futtassa IoT Edge parancsokat](azure-stack-edge-gpu-connect-powershell-interface.md#use-iotedge-commands). Újraindítás `iotedged` és `edgehub` hüvely.|
+|**15.**|Kubernetes |Ha saját tanúsítványokat hoz létre a IoT Edgehoz, és hozzáadja ezeket a tanúsítványokat a Azure Stack Edge-eszközön, miután a számítás konfigurálva lett az eszközön, az új tanúsítványok nem lesznek felveszve.|A probléma megkerüléséhez töltse fel a tanúsítványokat, mielőtt beállítja az eszközön a számítást. Ha a számítás már konfigurálva van, [kapcsolódjon az eszköz PowerShell-felületéhez, és futtassa IoT Edge parancsokat](azure-stack-edge-gpu-connect-powershell-interface.md#use-iotedge-commands). Újraindítás `iotedged` és `edgehub` hüvely.|
 |**16.**|Tanúsítványok |Bizonyos példányokban a helyi felhasználói felületen a tanúsítvány állapota több másodpercig is eltarthat a frissítéshez. |A helyi felhasználói felületen a következő forgatókönyvek befolyásolhatják a műveletet.<ul><li>**Állapot** oszlop a **tanúsítványok** lapon.</li><li>**Biztonsági** csempe az **első lépések** oldalon.</li><li>**Konfigurációs** csempe az **Áttekintés** oldalon.</li></ul>  |
 |**17.**|IoT Edge |A IoT Edge használatával központilag telepített modulok nem használhatják a gazdagép hálózatot. | |
 |**18.**|Számítás + Kubernetes |A számítási/Kubernetes nem támogatja az NTLM webproxyt. ||
 |**19.**|Kubernetes + frissítés |A korábbi szoftververziók, például az 2008-es kiadásokban olyan versenyhelyzet-frissítési probléma merül fel, amelynek hatására a frissítés meghiúsul a ClusterConnectionException. |Az újabb buildek használata segít elkerülni ezt a problémát. Ha továbbra is ezt a problémát látja, a megkerülő megoldással próbálja megismételni a frissítést, és működnie kell.|
+|**20**|Internet Explorer|Ha a fokozott biztonsági funkciók engedélyezve vannak, előfordulhat, hogy nem fog tudni hozzáférni a helyi webes felhasználói felület lapjaihoz. | Tiltsa le a fokozott biztonságot, és indítsa újra a böngészőt.|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->

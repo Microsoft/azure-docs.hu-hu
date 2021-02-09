@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c87c8cfd40903f6296f0a36f5c83c0b5c5cb7818
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452644"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831577"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro rendszerkövetelményei
 
 Ez a cikk ismerteti az Microsoft Azure Stack Edge Pro-megoldás és a Azure Stack Edge Pro-hoz csatlakozó ügyfelek fontos rendszerkövetelményeit. Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt telepítené a Azure Stack Edge Pro-t. Az üzembe helyezés és az azt követő művelet során szükség szerint visszatérhet ezekre az adatokra.
 
-Az Azure Stack Edge Pro rendszerkövetelményei a következők:
+Az Azure Stack Edge Pro rendszerkövetelményei a következők: 
 
 - A **gazdagépek szoftveres követelményei** – a támogatott platformokat, a helyi konfiguráció felhasználói felületének böngészőit, az SMB-ügyfeleket, valamint az eszközt elérő ügyfelekre vonatkozó további követelményeket ismerteti.
 - **Az eszköz hálózati követelményei** – információt nyújt a fizikai eszköz működésével kapcsolatos hálózati követelményekről.
@@ -48,7 +48,7 @@ Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 
 ### <a name="port-requirements-for-azure-stack-edge-pro"></a>A Azure Stack Edge Pro portjának követelményei
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimeneti* állapot arra utal, hogy az Azure stack Edge *Pro-eszköz* külsőleg, az üzembe helyezésen túl, például az interneten keresztül küldi az adatokat.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z)  vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimeneti* állapot arra utal, hogy az Azure stack Edge *Pro-eszköz* külsőleg, az üzembe helyezésen túl, például az interneten keresztül küldi az adatokat.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 

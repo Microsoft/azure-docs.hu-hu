@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125969"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832130"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonja
 
@@ -33,7 +33,7 @@ Ebben a szakaszban új Azure IoT Central alkalmazást hoz létre egy sablonból.
 
 1. Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassza az **Új alkalmazás** lehetőséget.
 
-1. Válassza a **kereskedelmi**lehetőséget.  A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
+1. Válassza a **kereskedelmi** lehetőséget.  A kiskereskedelmi oldalon számos kereskedelmi alkalmazás-sablon látható.
 
 Az előzetes verziójú funkciókat használó új, Micro-beteljesülő központ alkalmazás létrehozása:  
 1. Válassza ki a **Micro-beteljesülés központ** alkalmazás sablonját. Ez a sablon az oktatóanyagban használt összes eszközhöz tartalmaz sablonokat. A sablon egy operátori irányítópultot is biztosít a teljesítési központban lévő figyelési feltételekhez, valamint a robot-szolgáltatók feltételeihez. 
@@ -49,13 +49,13 @@ Az előzetes verziójú funkciókat használó új, Micro-beteljesülő központ
 
     További információ a címtárakról és az előfizetésekről: [alkalmazás létrehozása](../core/quick-deploy-iot-central.md) – rövid útmutató.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     ![Az Azure IoT Central új alkalmazás oldalának képernyőképe](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
 
 ## <a name="walk-through-the-application"></a>Az alkalmazás végigvezeti 
 
-Az alkalmazás sablonjának sikeres üzembe helyezését követően a **Northwind Traders Micro-beteljesülő központ irányítópultja**látható. A Northwind Traders egy fiktív kiskereskedő, amely az Azure IoT Central alkalmazásban felügyelt, mikro-teljesítési központtal rendelkezik. Ezen az operátor irányítópulton megtekintheti a sablonban lévő eszközök információit és telemetria, valamint parancsokat, feladatokat és műveleteket is végrehajthat. Az irányítópult logikailag két szakaszra oszlik. A bal oldalon nyomon követheti a környezeti feltételeket a beteljesülés struktúrán belül, és a jobb oldalon nyomon követheti a robot-szolgáltatók állapotát a létesítményen belül.  
+Az alkalmazás sablonjának sikeres üzembe helyezését követően a **Northwind Traders Micro-beteljesülő központ irányítópultja** látható. A Northwind Traders egy fiktív kiskereskedő, amely az Azure IoT Central alkalmazásban felügyelt, mikro-teljesítési központtal rendelkezik. Ezen az operátor irányítópulton megtekintheti a sablonban lévő eszközök információit és telemetria, valamint parancsokat, feladatokat és műveleteket is végrehajthat. Az irányítópult logikailag két szakaszra oszlik. A bal oldalon nyomon követheti a környezeti feltételeket a beteljesülés struktúrán belül, és a jobb oldalon nyomon követheti a robot-szolgáltatók állapotát a létesítményen belül.  
 
 Az irányítópulton a következőket teheti:
    * Tekintse meg az eszköz telemetria, például a kivételezések számát, a feldolgozott megrendelések számát és a tulajdonságokat, például a struktúra rendszer állapotát.  
@@ -86,14 +86,13 @@ A minta szabály mint inspiráció használatával határozhatja meg az üzleti 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját. Nyissa meg az **adminisztrációs**  >  **alkalmazás beállításait**, és válassza a **Törlés**lehetőséget.
+Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonját. Nyissa meg az **adminisztrációs**  >  **alkalmazás beállításait**, és válassza a **Törlés** lehetőséget.
 
 ![Képernyőkép a Micro-beteljesülés központ Alkalmazásbeállítások oldaláról](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ
+További információk:
+
 > [!div class="nextstepaction"]
 > [Micro-teljesítési központ megoldási architektúrája](./architecture-micro-fulfillment-center.md)
-* További információ az [Azure IoT Central kiskereskedelmi sablonjairól](./overview-iot-central-retail.md)
-* További információ az [Azure IoT Central](../core/overview-iot-central.md)

@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761039"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832929"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
+
+> [!IMPORTANT]
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 A [Network Performance monitor](network-performance-monitor.md) Service connectivity monitor funkciójának használatával figyelheti a hálózati kapcsolatot bármely olyan végponthoz, amely nyitott TCP-porttal rendelkezik. Ilyen végpontok közé tartoznak a webhelyek, az SaaS-alkalmazások, a Pásti-alkalmazások és az SQL-adatbázisok. 
 
@@ -30,7 +33,7 @@ A szolgáltatás-kapcsolódási figyelővel a következő függvényeket végezh
 
 
 ## <a name="configuration"></a>Konfiguráció 
-A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás**lehetőséget.
+A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás** lehetőséget.
 
 ![A Network Performance Monitor konfigurálása](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
 
@@ -52,16 +55,16 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 Kezdje el a tesztek létrehozását a szolgáltatási végpontokhoz való hálózati kapcsolat figyelésére.
 
 1. Válassza ki a **szolgáltatás-kapcsolódási figyelő** lapot.
-2. Válassza a **teszt hozzáadása**lehetőséget, és adja meg a teszt nevét és leírását. Munkaterületen legfeljebb 450 tesztet hozhat létre. 
+2. Válassza a **teszt hozzáadása** lehetőséget, és adja meg a teszt nevét és leírását. Munkaterületen legfeljebb 450 tesztet hozhat létre. 
 3. Válassza ki a teszt típusát:<br>
 
     * Válassza a **web** lehetőséget egy olyan szolgáltatáshoz való kapcsolódás figyelésére, amely válaszol a http/S kérelmekre, például outlook.office365.com vagy Bing.com.<br>
     * Válassza a **hálózat** lehetőséget a TCP-kérelmekre válaszoló szolgáltatáshoz való kapcsolódás figyeléséhez, de nem válaszol a http/S kérelmekre, például az SQL Serverre, az FTP-kiszolgálóra vagy az SSH-portra. 
     * Például: webteszt létrehozása blob Storage-fiókba válassza a **web** lehetőséget, és adja meg a TARGET értéket *yourstorageaccount*. blob.Core.Windows.net néven. Hasonlóképpen létrehozhat teszteket más Table Storage-hoz, üzenetsor-tároláshoz és Azure Files [a hivatkozás használatával.](../../storage/common/storage-account-overview.md#storage-account-endpoints)
 4. Ha nem szeretne hálózati méréseket végrehajtani, például a hálózati késést, a csomagok elvesztését és a topológia felderítését, törölje a jelet a **hálózati mérések végrehajtása** jelölőnégyzetből. Hagyja kiválasztva, hogy a képességből maximális előnyt kapjon. 
-5. A **cél**mezőben adja meg azt az URL/FQDN/IP-címet, amelyre figyelni szeretné a hálózati kapcsolatot.
-6. A **portszám**mezőben adja meg a cél szolgáltatás portszámát. 
-7. A **tesztelési gyakoriság**mezőben adjon meg egy értéket, hogy milyen gyakran szeretné futtatni a tesztet. 
+5. A **cél** mezőben adja meg azt az URL/FQDN/IP-címet, amelyre figyelni szeretné a hálózati kapcsolatot.
+6. A **portszám** mezőben adja meg a cél szolgáltatás portszámát. 
+7. A **tesztelési gyakoriság** mezőben adjon meg egy értéket, hogy milyen gyakran szeretné futtatni a tesztet. 
 8. Válassza ki azokat a csomópontokat, amelyeken figyelni szeretné a szolgáltatással létesített hálózati kapcsolatot. Győződjön meg arról, hogy a tesztek által hozzáadott ügynökök száma kisebb, mint 150. Bármelyik ügynök legfeljebb 150 végpontot/ügynököt tud tesztelni.
 
     >[!NOTE]
@@ -117,7 +120,7 @@ Ha rendellenesség figyelhető meg, kövesse az alábbi lépéseket:
     - Ha a szolgáltatáshoz való hálózati kapcsolat ellenőrzéséhez használt csomópont egy Windows-ügyfélszámítógép, vagy a célként megadott szolgáltatás blokkolja az ICMP-kéréseket, vagy a hálózati tűzfal blokkolja a csomóponttól származó ICMP-kérelmeket.
     - A **hálózati mérések elvégzése** jelölőnégyzet üres a tesztelési konfigurációban. 
 
-* Ha a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes, akkor előfordulhat, hogy a célként megadott szolgáltatás nem webalkalmazás. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a **web**helyett **hálózatként** . 
+* Ha a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes, akkor előfordulhat, hogy a célként megadott szolgáltatás nem webalkalmazás. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a **web** helyett **hálózatként** . 
 
 * Ha az alkalmazás lassan fut, állapítsa meg, hogy a gyenge alkalmazások teljesítménye a hálózat vagy az alkalmazás szolgáltatójának végén található-e.
 
@@ -134,4 +137,3 @@ Az USA-beli kormányzati Virginia régió esetében csak a DOD URL-címek beép�
 
 ## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
-

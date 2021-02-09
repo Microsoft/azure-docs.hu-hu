@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 75eb847bd85f52e8fe168b0ee7270af4bdea20ed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6836777c761fa2cce482cb000b6c86919e6b5613
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466680"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834068"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>Azure Stack Edge mini R rendszerkövetelményei
 
@@ -40,7 +40,7 @@ A Azure Stack Edge mini R rendszerkövetelményei a következők:
 
 A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. Az Edge Storage-fiókok az eszközön jönnek létre. További információ: [Edge Storage-fiókok](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)
 
-|Típus  |Tárfiók  |Megjegyzések  |
+|Típus  |A(z)  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása         |         |
 
@@ -51,7 +51,7 @@ A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. 
 
 Ezek a Storage-fiókok a helyi Azure Resource Managerhoz való csatlakozáskor az eszköz helyi API-kon keresztül érhetők el. A következő Storage-fiókok támogatottak:
 
-|Típus  |Tárfiók  |Megjegyzések  |
+|Típus  |A(z)  |Megjegyzések  |
 |---------|---------|---------|
 |Standard     |GPv1: blob blokkolása, oldal Blobja         | Az SKU típusa Standard_LRS        |
 |Prémium   |GPv1: blob blokkolása, oldal Blobja         |Az SKU típusa Premium_LRS         |
@@ -70,7 +70,7 @@ Ezek a Storage-fiókok a helyi Azure Resource Managerhoz való csatlakozáskor a
 
 ### <a name="port-requirements-for-azure-stack-edge-mini-r"></a>A Azure Stack Edge mini R-re vonatkozó portokra vonatkozó követelmények
 
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenet* vagy a *kimenő* érték arra utal, hogy az Azure stack Edge mini R-eszköz az üzembe helyezésen túl az adatokat, például az interneten keresztül küldi el az adatokat.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z)  vagy a *bejövő* tábla a bejövő ügyfél által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenet* vagy a *kimenő* érték arra utal, hogy az Azure stack Edge mini R-eszköz az üzembe helyezésen túl az adatokat, például az interneten keresztül küldi el az adatokat.
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 

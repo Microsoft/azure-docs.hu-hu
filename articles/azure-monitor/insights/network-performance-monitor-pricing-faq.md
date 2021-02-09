@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b9e8a81095a63c667925f8b51d9f9f2aa081f8d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539652"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832878"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure Network Performance Monitor díjszabásának változásai
+
+> [!IMPORTANT]
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 Meghallgatta visszajelzését, és a közelmúltban bevezetett egy [új díjszabást](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure különböző monitorozási szolgáltatásaihoz. Ez a cikk az Azure [Network Performance monitor](../../networking/network-monitoring-overview.md) (NPM) szolgáltatással kapcsolatos árképzési változásokat rögzíti egy könnyen olvasható kérdés-és válasz formátumban.
 
@@ -30,7 +33,7 @@ A következő részek a NPM összetevőinek díjszabási változásait ismerteti
 
 A NPM-számlázás a két összetevő használatának és felhasználásának függvénye:
 * **Csomópontok**: az összes szintetikus tranzakció származik és leáll a csomópontokon. A csomópontokat ügynöknek vagy Microsoft Management agentnek is nevezzük.
-* **Adatmennyiség: a**különböző hálózati tesztek eredményei a log Analytics munkaterületen vannak tárolva.
+* **Adatmennyiség: a** különböző hálózati tesztek eredményei a log Analytics munkaterületen vannak tárolva.
 
 A régi modellben a számla kiszámítása a csomópontok száma és a generált adatok mennyisége alapján történik. 
 
