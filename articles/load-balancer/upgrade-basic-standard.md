@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3bf910d3309285c8b700c39af68fb90715f8863a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045393"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987709"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure nyilvános Load Balancer frissítése
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](./skus.md#skus).
@@ -21,6 +21,9 @@ A frissítés két szakaszból áll:
 
 1. Módosítsa az IP-kiosztási módszert Dinamikusról statikusra.
 2. Futtassa a PowerShell-parancsfájlt a frissítés és a forgalom áttelepítésének befejezéséhez.
+
+> [!IMPORTANT]
+> A szkript jelenleg karbantartás alatt áll. A nyilvános IP-címek az alapszintű SKU-ból és a standard SKU-ból történő frissítésével kapcsolatban [itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade?tabs=option-upgrade-cli%2Coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) talál útmutatást.
 
 ## <a name="upgrade-overview"></a>Frissítés áttekintése
 
@@ -121,6 +124,6 @@ Igen. Lásd a [figyelmeztetéseket és korlátozásokat](#caveatslimitations).
 
 Igen. A Azure PowerShell parancsfájl nem csak a nyilvános IP-címet frissíti, a konfigurációt alapszintről standard Load Balancerre másolja, de a virtuális gépet az újonnan létrehozott Standard nyilvános Load Balancer is telepíti. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a standard Load Balancer](load-balancer-overview.md)
