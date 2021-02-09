@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693451"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987883"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -60,7 +60,8 @@ A legtöbb funkció minden szinten elérhető, beleértve az ingyenes szintet is
 | [A kimenő (indexelő) hozzáféréshez kezelt vagy megbízható identitások](search-howto-managed-identities-data-sources.md) | Az ingyenes szinten nem érhető el.|
 | [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) | Az ingyenes szinten nem érhető el. |
 | [IP-tűzfal-hozzáférés](service-configure-firewall.md) | Az ingyenes szinten nem érhető el. |
-| [Privát végpont (az Azure Private Linktel való integráció)](service-create-private-endpoint.md) | A keresési szolgáltatáshoz való bejövő kapcsolatok esetében az ingyenes szinten nem érhető el. Az indexelő által más Azure-erőforrásokhoz való kimenő kapcsolatok esetén az ingyenes vagy az S3 HD-on nem érhető el. Az szakértelmével-t használó indexelő esetében az ingyenes, az alapszintű, az S1 vagy az S3 HD nem érhető el.|
+| [Privát végpont (az Azure Private Linktel való integráció)](service-create-private-endpoint.md) | A keresési szolgáltatáshoz való bejövő kapcsolatok esetében az ingyenes szinten nem érhető el. Az indexelő által más Azure-erőforrásokhoz való kimenő kapcsolatok esetén az ingyenes vagy az S3 HD-on nem érhető el. Az szakértelmével-t használó indexelő esetében az ingyenes, az alapszintű, az S1 vagy az S3 HD nem érhető el.| 
+| [Rendelkezésre állási zónák](search-performance-optimization.md) | Az ingyenes szint és az alapszintű csomag nem érhető el. |
 
 Előfordulhat, hogy az erőforrás-igényes funkciók nem működnek megfelelően, hacsak nem biztosít elegendő kapacitást. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
 
@@ -84,7 +85,7 @@ Az alábbi példa egy illusztrációt tartalmaz. Tegyük fel, hogy az $100-as fe
 
 Ez az árképzési modell a keresési szolgáltatás által használt szám *keresési egységekre* (su) vonatkozó számlázási díjszabás alkalmazásának koncepcióján alapul. Az összes szolgáltatás kezdetben egy SU-ben lett kiépítve, de a nagyobb számítási feladatok kezeléséhez partíciók vagy replikák hozzáadásával növelheti az SUs-t. További információkért lásd: a [keresési szolgáltatás költségeinek becslése](search-sku-manage-costs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az árképzési szintek kiválasztásának legjobb módja, ha a legkevésbé költséghatékony szintet választja, és lehetővé teszi, hogy a tapasztalatok és a tesztelés tájékoztassa a szolgáltatást, vagy hozzon létre egy újat egy magasabb szintű szinten. A következő lépésekhez javasoljuk, hogy hozzon létre egy keresési szolgáltatást egy olyan szinten, amely képes a kívánt tesztelési szint befogadására, majd tekintse át a következő útmutatást a költséghatékonyság és a kapacitás becsléséhez.
 

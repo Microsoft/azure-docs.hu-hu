@@ -2,17 +2,17 @@
 title: Engedélyek a Azure Container Registry adattárakhoz
 description: Hozzon létre egy jogkivonatot, amely a prémium szintű beállításjegyzék adott tárházára vonatkozik a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához.
 ms.topic: article
-ms.date: 05/27/2020
-ms.openlocfilehash: b65b1bf69337cb172a17043490a5d13c7bd7afc2
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.date: 02/04/2021
+ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381235"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988254"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Token létrehozása adattárral hatókörrel rendelkező engedélyekkel
 
-Ez a cikk azt ismerteti, hogyan hozhatók létre tokenek és hatókör-leképezések az adattárra vonatkozó hatókörrel rendelkező engedélyek kezeléséhez a tároló-beállításjegyzékben. A jogkivonatok létrehozásával a beállításjegyzék tulajdonosa a felhasználók vagy szolgáltatások hatókörön belüli, időkorlátos hozzáférését biztosíthatja a Tárházak számára a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához. A tokenek részletesebb engedélyeket biztosítanak, mint a beállításjegyzék más [hitelesítési beállításai](container-registry-authentication.md), amelyek hatóköre a teljes beállításjegyzékre érvényes. 
+Ez a cikk azt ismerteti, hogyan hozhat létre jogkivonatokat és hatókör-leképezéseket a tároló-beállításjegyzékben lévő adott adattárakhoz való hozzáférés kezeléséhez. A jogkivonatok létrehozásával a beállításjegyzék tulajdonosa a felhasználók vagy szolgáltatások hatókörön belüli, időkorlátos hozzáférését biztosíthatja a Tárházak számára a képek lekéréséhez vagy leküldéséhez, illetve egyéb műveletek végrehajtásához. A tokenek részletesebb engedélyeket biztosítanak, mint a beállításjegyzék más [hitelesítési beállításai](container-registry-authentication.md), amelyek hatóköre a teljes beállításjegyzékre érvényes. 
 
 Tokenek létrehozásához a következő forgatókönyvek tartoznak:
 
@@ -30,7 +30,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 * Jelenleg nem rendelhet hozzá tárház hatókörű engedélyeket egy Azure Active Directory identitáshoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
 * Nem hozhat létre hatókör-leképezést egy olyan beállításjegyzékben, amelyen engedélyezve van a [Névtelen lekéréses hozzáférés](container-registry-faq.md#how-do-i-enable-anonymous-pull-access).
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 A tárház hatókörű engedélyeinek konfigurálásához hozzon létre egy *jogkivonatot* egy társított *hatókör-térképpel*. 
 
@@ -61,7 +61,7 @@ Az alábbi képen a tokenek és a hatóköri térképek közötti kapcsolat lát
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure CLI** – a tokenek létrehozásához és kezeléséhez használható Azure CLI-parancsok az Azure CLI 2.0.76 vagy újabb verzióiban érhetők el. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+* **Azure CLI** – Azure CLI-parancsok parancs a cikkben szereplő példákhoz az Azure CLI 2.17.0 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 * **Docker** – a rendszerképek lekéréséhez vagy leküldéséhez szükséges beállításjegyzékbeli hitelesítéshez helyi Docker-telepítésre van szükség. A Docker a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszerhez biztosít telepítési utasításokat.
 * **Container Registry** – ha még nem rendelkezik ilyennel, hozzon létre egy prémium szintű tároló-beállításjegyzéket az Azure-előfizetésében, vagy frissítsen egy meglévőt. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. 
 
@@ -79,7 +79,7 @@ az acr token create --name MyToken --registry myregistry \
   content/write content/read
 ```
 
-A kimenet a jogkivonat részleteit jeleníti meg. Alapértelmezés szerint két jelszó jön létre. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később is használhassa a hitelesítést. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
+A kimenet a jogkivonat részleteit jeleníti meg. Alapértelmezés szerint két jelszó jön létre, amelyek nem járnak le, de igény szerint megadhat egy lejárati dátumot is. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később is használhassa a hitelesítést. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
 
 ```console
 {
@@ -113,7 +113,7 @@ A kimenet a jogkivonat részleteit jeleníti meg. Alapértelmezés szerint két 
 ```
 
 > [!NOTE]
-> Ha újból létre szeretné hozni a jogkivonat-jelszavakat, és beállítja a jelszó lejárati idejét, a cikk későbbi részében talál további információt a [jogkivonat jelszavának újbóli létrehozása](#regenerate-token-passwords)
+> A jogkivonat-jelszavak és a lejárati időszakok újralétrehozásáról a jelen cikk későbbi, a [jogkivonat-jelszavak újbóli előállítása](#regenerate-token-passwords) című cikkben olvashat
 
 A kimenet tartalmazza a parancs által létrehozott hatókör-hozzárendelés részleteit. A (z) nevű hatókör-leképezést használhatja `MyToken-scope-map` arra, hogy ugyanazokat a tárház-műveleteket alkalmazza más jogkivonatokra. Vagy frissítse a hatókör-leképezést később, hogy megváltoztassa a társított jogkivonatok engedélyeit.
 
@@ -141,7 +141,7 @@ az acr token create --name MyToken \
 A kimenet a jogkivonat részleteit jeleníti meg. Alapértelmezés szerint két jelszó jön létre. Javasoljuk, hogy a jelszavakat biztonságos helyen mentse, hogy később is használhassa a hitelesítést. A jelszavakat nem lehet újból beolvasni, de újakat lehet létrehozni.
 
 > [!NOTE]
-> Ha újból létre szeretné hozni a jogkivonat-jelszavakat, és beállítja a jelszó lejárati idejét, a cikk későbbi részében talál további információt a [jogkivonat jelszavának újbóli létrehozása](#regenerate-token-passwords)
+> A jogkivonat-jelszavak és a lejárati időszakok újralétrehozásáról a jelen cikk későbbi, a [jogkivonat-jelszavak újbóli előállítása](#regenerate-token-passwords) című cikkben olvashat
 
 ## <a name="create-token---portal"></a>Jogkivonat létrehozása – portál
 
@@ -198,13 +198,13 @@ Az alábbi példák a cikkben korábban létrehozott jogkivonatot használják a
 
 ### <a name="pull-and-tag-test-images"></a>Tesztelési lemezképek lekérése és címkézése
 
-Az alábbi példákban lekérheti a `hello-world` és a `alpine` lemezképeket a Docker hub-ból, és címkézheti azokat a beállításjegyzékben és a tárházban.
+Az alábbi példákban lehívhatja a nyilvános `hello-world` és a `nginx` rendszerképeket a Microsoft Container Registryból, és címkézheti azokat a beállításjegyzékben és a tárházban.
 
 ```bash
-docker pull hello-world
-docker pull alpine
-docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag alpine myregistry.azurecr.io/samples/alpine:v1
+docker pull mcr.microsoft.com/hello-world
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+docker tag mcr.microsoft.com/hello-world myregistry.azurecr.io/samples/hello-world:v1
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx:v1
 ```
 
 ### <a name="authenticate-using-token"></a>Hitelesítés token használatával
@@ -234,17 +234,17 @@ A sikeres bejelentkezést követően próbálja meg leküldeni a címkézett ké
 docker push myregistry.azurecr.io/samples/hello-world:v1
 ```
 
-A jogkivonat nem rendelkezik jogosultsággal a tárházhoz `samples/alpine` , ezért a következő leküldéses kísérlet egy hasonló hibával meghiúsul `requested access to the resource is denied` :
+A jogkivonat nem rendelkezik jogosultsággal a tárházhoz `samples/nginx` , ezért a következő leküldéses kísérlet egy hasonló hibával meghiúsul `requested access to the resource is denied` :
 
 ```bash
-docker push myregistry.azurecr.io/samples/alpine:v1
+docker push myregistry.azurecr.io/samples/nginx:v1
 ```
 
 ### <a name="update-token-permissions"></a>Jogkivonat-engedélyek frissítése
 
 Egy jogkivonat engedélyeinek frissítéséhez frissítse az engedélyeket a társított hatókör-térképen. A frissített hatókör-leképezést a rendszer azonnal alkalmazza az összes társított jogkivonatra. 
 
-Például frissítsen a `MyToken-scope-map` `content/write` és a `content/read` műveletekkel az `samples/alpine` adattáron, és távolítsa el a `content/write` műveletet az `samples/hello-world` adattáron.  
+Például frissítsen a `MyToken-scope-map` `content/write` és a `content/read` műveletekkel az `samples/ngnx` adattáron, és távolítsa el a `content/write` műveletet az `samples/hello-world` adattáron.  
 
 Az Azure CLI használatához futtassa az az [ACR scope-Map Update][az-acr-scope-map-update] parancsot a hatókör-hozzárendelés frissítéséhez:
 
@@ -252,21 +252,21 @@ Az Azure CLI használatához futtassa az az [ACR scope-Map Update][az-acr-scope-
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/alpine content/write content/read \
-  --remove samples/hello-world content/write 
+  --add-repository samples/nginx content/write content/read \
+  --remove-repository samples/hello-world content/write 
 ```
 
 Az Azure Portalon:
 
 1. Navigáljon a tároló-beállításjegyzékhez.
 1. A **tárház engedélyei** területen válassza a **hatókör-térképek (előzetes verzió)** lehetőséget, majd válassza ki a frissíteni kívánt hatókör-leképezést.
-1. A **Tárházak** területen adja meg a `samples/alpine` és az **engedélyek** területen a és a elemet `content/read` `content/write` . Ezután válassza a **+ Hozzáadás** lehetőséget.
-1. A **Tárházak** területen válassza az `samples/hello-world` **engedélyek** , majd a kijelölés elemet `content/write` . Kattintson a **Mentés** gombra.
+1. A **Tárházak** területen adja meg a `samples/nginx` és az **engedélyek** területen a és a elemet `content/read` `content/write` . Ezután válassza a **+ Hozzáadás** lehetőséget.
+1. A **Tárházak** területen válassza az `samples/hello-world` **engedélyek**, majd a kijelölés elemet `content/write` . Kattintson a **Mentés** gombra.
 
 A hatókör-hozzárendelés frissítése után a következő leküldése sikeres:
 
 ```bash
-docker push myregistry.azurecr.io/samples/alpine:v1
+docker push myregistry.azurecr.io/samples/nginx:v1
 ```
 
 Mivel a hatókör-hozzárendelés csak az `content/read` `samples/hello-world` adattárhoz rendelkezik engedéllyel, a tárház leküldéses kísérlete `samples/hello-world` most meghiúsul:
@@ -278,12 +278,12 @@ docker push myregistry.azurecr.io/samples/hello-world:v1
 A lemezképek mindkét adattárakból való kihúzása sikeres, mert a hatókör-hozzárendelés mindkét adattárhoz biztosít `content/read` engedélyeket:
 
 ```bash
-docker pull myregistry.azurecr.io/samples/alpine:v1
+docker pull myregistry.azurecr.io/samples/nginx:v1
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 ```
 ### <a name="delete-images"></a>Rendszerképek törlése
 
-Frissítse a hatókör-leképezést úgy `content/delete` , hogy hozzáadja a műveletet a `alpine` tárházhoz. Ez a művelet lehetővé teszi a lemezképek törlését a tárházban, vagy a teljes tárház törlését.
+Frissítse a hatókör-leképezést úgy `content/delete` , hogy hozzáadja a műveletet a `nginx` tárházhoz. Ez a művelet lehetővé teszi a lemezképek törlését a tárházban, vagy a teljes tárház törlését.
 
 Rövid ideig csak az [az ACR scope-Map Update][az-acr-scope-map-update] parancs jelenik meg a hatókör-hozzárendelés frissítéséhez:
 
@@ -291,16 +291,16 @@ Rövid ideig csak az [az ACR scope-Map Update][az-acr-scope-map-update] parancs 
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/alpine content/delete
+  --add-repository samples/nginx content/delete
 ``` 
 
 A hatókör-leképezés a portál használatával történő frissítéséhez tekintse meg az [előző szakaszt](#update-token-permissions).
 
-A tárház törléséhez használja a következő az [ACR repository delete][az-acr-repository-delete] parancsot `samples/alpine` . Képek vagy adattárak törléséhez adja át a token nevét és jelszavát a parancsnak. A következő példa a cikkben korábban létrehozott környezeti változókat használja:
+A tárház törléséhez használja a következő az [ACR repository delete][az-acr-repository-delete] parancsot `samples/nginx` . Képek vagy adattárak törléséhez adja át a token nevét és jelszavát a parancsnak. A következő példa a cikkben korábban létrehozott környezeti változókat használja:
 
 ```azurecli
 az acr repository delete \
-  --name myregistry --repository samples/alpine \
+  --name myregistry --repository samples/nginx \
   --username $TOKEN_NAME --password $TOKEN_PWD
 ```
 
@@ -314,7 +314,7 @@ Rövid ideig csak az [az ACR scope-Map Update][az-acr-scope-map-update] parancs 
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/hello-world metadata/read 
+  --add-repository samples/hello-world metadata/read 
 ```  
 
 A hatókör-leképezés a portál használatával történő frissítéséhez tekintse meg az [előző szakaszt](#update-token-permissions).
@@ -382,7 +382,7 @@ Az alábbi példa új értéket hoz létre a *MyToken* -token jelszó1, amelynek
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
-  --name MyToken --registry myregistry --days 30 \
+  --name MyToken --registry myregistry --expiration-in-days 30 \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 

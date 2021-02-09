@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420597"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987816"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Az Azure-Cognitive Search teljesítményének méretezése
 
@@ -87,6 +87,27 @@ További részletekért látogasson el az [Azure Cognitive Search szolgáltatói
 
 Mivel a replikák az adatai másolatai, több replikát is biztosít az Azure Cognitive Search a számítógép újraindítását és karbantartását az egyik replikán, míg a lekérdezés végrehajtása más replikákban folytatódik. Ezzel szemben, ha elvégzi a replikákat, a lekérdezési teljesítmény romlása merül fel, feltéve, hogy ezek a replikák egy kihasználatlan erőforrás.
 
+### <a name="availability-zones"></a>Rendelkezésre állási zónák
+
+[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) a régió adatközpontjait különálló fizikai hely csoportokba oszthatja, hogy magas rendelkezésre állást biztosítson a régión belül. A keresési szolgáltatás egy régión belül fut; a replikák különböző zónákban futnak.
+
+Availability Zones az Azure Cognitive Search használatával két vagy több replikát adhat hozzá a keresési szolgáltatáshoz. Minden replika a régión belül egy másik rendelkezésre állási zónába kerül. Ha Availability Zones több replikával rendelkezik, a replikák a lehető legegyenletesebb Availability Zones lesznek elosztva.
+
+Az Azure Cognitive Search jelenleg a következő régiók egyikében létrehozott standard szintű vagy magasabb szintű keresési szolgáltatásokhoz Availability Zonest támogatja:
++ Kelet-Ausztrália (létrehozva: január 30., 2021 vagy újabb)
++ Közép-Kanada (2021. január 30-ig vagy újabb)
++ USA középső régiója (2020. december 4. és újabb verziók)
++ USA 2. keleti régiója (2021-es vagy újabb)
++ Közép-Franciaország (2020. október 23. vagy újabb)
++ Kelet-Japán (2021. január 30-ig vagy újabb)
++ Észak-Európa (létrehozva január 28., 2021 vagy újabb)
++ Dél-Kelet-Ázsia (létrehozva: január 31., 2021 vagy újabb)
++ Egyesült Királyság déli régiója (létrehozva: január 30., 2021 vagy újabb)
++ Nyugat-Európa (létrehozva január 29., 2021 vagy újabb)
++ USA 2. nyugati régiója (létrehozva január 30, 2021 vagy újabb)
+
+Availability Zones nem érinti az [Azure Cognitive Search szolgáltatói szerződés](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Méretezés földrajzilag elosztott számítási feladatokhoz és geo-redundancia
 
 A földrajzilag elosztott számítási feladatokhoz a gazdagép-adatközponttól távol lévő felhasználóknak nagyobb késési aránya lesz. Az egyik megoldás az, hogy több keresési szolgáltatást kell kiépíteni a régiókban, és ezek a felhasználók közelebb vannak egymáshoz.
@@ -119,7 +140,7 @@ Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehet
 
    ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az egyes díjszabási csomagokról és szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [szolgáltatási korlátok](search-limits-quotas-capacity.md)című témakört. A partíció-és replika-kombinációkkal kapcsolatos további tudnivalókért tekintse meg [a kapacitás megtervezése](search-capacity-planning.md) című témakört.
 

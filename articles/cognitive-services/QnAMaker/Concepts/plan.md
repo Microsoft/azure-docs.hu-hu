@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222865"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987984"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
@@ -124,17 +124,17 @@ Meg kell terveznie a beszélgetési folyamatát egy hurkoval, hogy a felhasznál
 
 A közreműködők más fejlesztők is lehetnek, akik megosztják a Tudásbázis-alkalmazás teljes fejlesztői veremét, vagy csak a tudásbázist használják.
 
-A Tudásbázis authoring számos [szerepköralapú hozzáférési engedélyt](../reference-role-based-access-control.md) támogat, amelyeket a Azure Portal alkalmaz a közreműködő képességei hatókörének korlátozására.
+A Tudásbázis authoring számos szerepköralapú hozzáférési engedélyt támogat, amelyeket a Azure Portal alkalmaz a közreműködő képességei hatókörének korlátozására.
 
 ## <a name="integration-with-client-applications"></a>Integráció az ügyfélalkalmazások alkalmazásával
 
-Az [ügyfélalkalmazások](../index.yml) közötti integráció az előrejelzési futtatókörnyezet végpontjának lekérdezését küldi el. A rendszer egy lekérdezést küld az adott tudásbázisba egy SDK-val vagy REST-alapú kéréssel a QnA Maker webalkalmazás-végpontjának.
+Az ügyfélalkalmazások közötti integráció az előrejelzési futtatókörnyezet végpontjának lekérdezését küldi el. A rendszer egy lekérdezést küld az adott tudásbázisba egy SDK-val vagy REST-alapú kéréssel a QnA Maker webalkalmazás-végpontjának.
 
 Az ügyfélalkalmazás megfelelő hitelesítéséhez az ügyfélalkalmazás a megfelelő hitelesítő adatokat és Tudásbázis-azonosítót kell küldenie. Ha Azure Bot Service használ, ezeket a beállításokat a Azure Portal bot-konfigurációjának részeként adja meg.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Beszélgetési folyamat egy ügyfélalkalmazás
 
-A beszélgetési folyamat egy [ügyfélalkalmazás](../index.yml), például egy Azure bot esetében a tudásbázissal való interakció előtt és után is megkövetelheti a funkciót.
+A beszélgetési folyamat egy ügyfélalkalmazás, például egy Azure bot esetében a tudásbázissal való interakció előtt és után is megkövetelheti a funkciót.
 
 Támogatja az ügyfélalkalmazás a beszélgetési folyamatokat, vagy ha alternatív módszert biztosít a követő kérések kezelésére, vagy akár a Chit-Chitra? Ha igen, tervezze meg ezeket a korai lépéseket, és győződjön meg róla, hogy az ügyfélalkalmazás lekérdezését megfelelően kezeli egy másik szolgáltatás, vagy ha a tudásbázisba érkezik.
 
@@ -148,7 +148,7 @@ Ilyen [megosztott architektúrák](../choose-natural-language-processing-service
 
 ### <a name="active-learning-from-a-client-application"></a>Az ügyfélalkalmazás aktív tanulása
 
-A QnA Maker az _aktív tanulással_ fejleszti a tudásbázist, ha alternatív kérdéseket javasol a válaszra. Az ügyfélalkalmazás felelős az [aktív tanulás](active-learning-suggestions.md)egy részéért. A társalgási kérések segítségével az ügyfélalkalmazás megállapíthatja, hogy a Tudásbázis olyan választ adott vissza, amely nem hasznos a felhasználó számára, és jobb választ tud adni. Az ügyfélalkalmazás [ezt az információt vissza kell küldenie a tudásbázisba](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) az előrejelzési minőség javítása érdekében.
+A QnA Maker az _aktív tanulással_ fejleszti a tudásbázist, ha alternatív kérdéseket javasol a válaszra. Az ügyfélalkalmazás felelős az [aktív tanulás](../How-To/use-active-learning.md)egy részéért. A társalgási kérések segítségével az ügyfélalkalmazás megállapíthatja, hogy a Tudásbázis olyan választ adott vissza, amely nem hasznos a felhasználó számára, és jobb választ tud adni. Az ügyfélalkalmazás ezt az információt vissza kell küldenie a tudásbázisba az előrejelzési minőség javítása érdekében.
 
 ### <a name="providing-a-default-answer"></a>Alapértelmezett válasz megadása
 
@@ -208,16 +208,16 @@ A Tudásbázis [fejlesztési életciklusa](development-lifecycle-knowledge-base.
 
 ### <a name="knowledge-base-development-of-qna-maker-pairs"></a>QnA Maker pár tudásbázisának fejlesztése
 
-Az [QnA-párokat](question-answer-set.md) az ügyfélalkalmazás használata alapján kell megtervezni és kifejleszteni.
+Az QnA-párokat az ügyfélalkalmazás használata alapján kell megtervezni és kifejleszteni.
 
 Minden pár tartalmazhatja a következőket:
 * Metaadatok – szűrheti a lekérdezés során, hogy lehetővé tegye a QnA-párok címkézését az adatok forrásával, tartalmával, formátumával és céljával kapcsolatos további információkkal.
 * Utólagos utasítások – segít meghatározni az elérési utat a Tudásbázisban, hogy a felhasználó a megfelelő válaszra jusson.
-* Alternatív kérdések – fontos, hogy a keresés megegyezzen a kérdés különböző formáinak válaszával. Az [aktív tanulási javaslatok](active-learning-suggestions.md) alternatív kérdéseket tesznek fel.
+* Alternatív kérdések – fontos, hogy a keresés megegyezzen a kérdés különböző formáinak válaszával. Az [aktív tanulási javaslatok](../How-To/use-active-learning.md) alternatív kérdéseket tesznek fel.
 
 ### <a name="devops-development"></a>DevOps-fejlesztés
 
-A DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist a [Batch-tesztelés](../index.yml)során el kell különíteni.
+A DevOps-folyamatba beszúrandó Tudásbázis létrehozásához a tudásbázist a Batch-tesztelés során el kell különíteni.
 
 A Tudásbázis megosztja a Cognitive Search indexet az QnA Maker erőforrás minden más tudásbázisával. Amíg a Tudásbázis el van különítve a partícióval, az index megosztása a közzétett tudásbázishoz képest különbséget eredményezhet a pontszámban.
 

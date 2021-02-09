@@ -1,21 +1,21 @@
 ---
-title: Leküldéses & lekéréses Docker-rendszerkép
-description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
+title: Leküldéses & lekéréses tároló képe
+description: Docker-rendszerképek leküldése és lekérése az Azure-beli privát tároló-beállításjegyzékbe a Docker CLI használatával
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071629"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987767"
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése az Azure Container registrybe a Docker CLI használatával
 
-Az Azure-beli tároló-beállításjegyzékek privát [Docker](https://hub.docker.com)-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a [Docker Hub](https://hub.docker.com/) nyilvános Docker-rendszerképeket tárol. A [Docker parancssori felületét](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) használhatja [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/), [leküldéses](https://docs.docker.com/engine/reference/commandline/push/), [lekéréses](https://docs.docker.com/engine/reference/commandline/pull/)és egyéb műveletekhez a tároló-beállításjegyzékben.
+Az Azure Container Registry tárolja és kezeli a privát tárolók lemezképeit és más összetevőit, hasonlóan ahhoz, ahogyan a [Docker hub](https://hub.docker.com/) a nyilvános Docker-tárolók lemezképeit tárolja. A [Docker parancssori felületét](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) használhatja a tároló-beállításjegyzékben a [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/), [leküldéses](https://docs.docker.com/engine/reference/commandline/push/), [lekérési](https://docs.docker.com/engine/reference/commandline/pull/)és egyéb tároló-rendszerkép műveletekhez.
 
-A következő lépésekben letölt egy hivatalos Nginx- [rendszerképet](https://store.docker.com/images/nginx) a nyilvános Docker hub-beállításjegyzékből, megcímkézi azt a privát Azure Container registryben, leküldheti a beállításjegyzékbe, majd lehívhatja a beállításjegyzékből.
+A következő lépésekben letölt egy nyilvános Nginx- [rendszerképet](https://store.docker.com/images/nginx), megcímkézi azt a privát Azure Container registryben, leküldheti a beállításjegyzékbe, majd lehívhatja azt a beállításjegyzékből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,9 +24,10 @@ A következő lépésekben letölt egy hivatalos Nginx- [rendszerképet](https:/
 
 ## <a name="log-in-to-a-registry"></a>Bejelentkezés beállításjegyzékbe
 
-A privát tároló beállításjegyzékének több módja is van a [hitelesítéshez](container-registry-authentication.md) . A parancssorban végzett munka esetén ajánlott módszer az Azure CLI-parancs az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Például egy *myregistry* nevű beállításjegyzékbe való bejelentkezéshez:
+A privát tároló beállításjegyzékének több módja is van a [hitelesítéshez](container-registry-authentication.md) . A parancssorban végzett munka esetén ajánlott módszer az Azure CLI-parancs az [ACR login](/cli/azure/acr#az-acr-login). Ha például egy *myregistry* nevű beállításjegyzékbe szeretne bejelentkezni, jelentkezzen be az Azure CLI-be, majd hitelesítse magát a beállításjegyzékben:
 
 ```azurecli
+az login
 az acr login --name myregistry
 ```
 
@@ -43,12 +44,12 @@ Mindkét parancs a `Login Succeeded` Befejezés után visszatér.
 > [!TIP]
 > Mindig a teljes beállításjegyzékbeli nevet adja meg (az összes kisbetűs) a használatakor `docker login` , és ha képeket címkéz fel a beállításjegyzékbe való leküldéshez. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO*.
 
-## <a name="pull-the-official-nginx-image"></a>A hivatalos Nginx-rendszerkép lekérése
+## <a name="pull-a-public-nginx-image"></a>Nyilvános Nginx-rendszerkép lekérése
 
-Először kérje le a nyilvános Nginx-rendszerképet a helyi számítógépre.
+Először lehívhat egy nyilvános Nginx-rendszerképet a helyi számítógépre. Ez a példa egy rendszerképet húz le a Microsoft Container Registryból.
 
 ```
-docker pull nginx
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 ## <a name="run-the-container-locally"></a>Futtassa helyileg a tárolót
@@ -56,7 +57,7 @@ docker pull nginx
 A következő [Docker-futtatási](https://docs.docker.com/engine/reference/run/) parancs végrehajtásával indítsa el az Nginx-tároló helyi példányát interaktívan ( `-it` ) a 8080-es porton. Az `--rm` argumentum azt adja meg, hogy a tárolót el kell távolítani, amikor leállítja.
 
 ```
-docker run -it --rm -p 8080:80 nginx
+docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 Tallózással `http://localhost:8080` megtekintheti az Nginx által a futó tárolóban kiszolgált alapértelmezett weblapot. A következőhöz hasonló oldalnak kell megjelennie:
@@ -72,7 +73,7 @@ A tároló leállításához és eltávolításához nyomja meg a gombot `Contro
 A [Docker címke](https://docs.docker.com/engine/reference/commandline/tag/) használatával hozza létre a rendszerkép aliasát a beállításjegyzék teljes elérési útjával. A példa a(z) `samples` névteret határozza meg, hogy ne legyen zsúfolt a beállításjegyzék gyökere.
 
 ```
-docker tag nginx myregistry.azurecr.io/samples/nginx
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx
 ```
 
 A névterekkel való címkézéssel kapcsolatos további információkért tekintse [meg a Azure Container Registry ajánlott eljárásainak](container-registry-best-practices.md) [tárházbeli névterek](container-registry-best-practices.md#repository-namespaces) című szakaszát.

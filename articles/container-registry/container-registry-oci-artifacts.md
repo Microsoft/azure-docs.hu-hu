@@ -4,14 +4,14 @@ description: A nyílt Container Initiative (OCI) összetevők leküldése és le
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485003"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988234"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>OCI-összetevő leküldése és lekérése egy Azure Container Registry használatával
 
@@ -46,7 +46,7 @@ A jelszó stdin-ből való olvasásához használja a következőt: `--password-
 
 [Jelentkezzen](/cli/azure/authenticate-azure-cli) be az Azure CLI-be a személyazonosságával, hogy lekérje és lekérje az összetevők beküldését a tároló-beállításjegyzékből.
 
-Ezután használja az Azure CLI-parancsot az [ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) használatával a beállításjegyzék eléréséhez. Például egy *myregistry*nevű beállításjegyzékbeli hitelesítéshez:
+Ezután használja az Azure CLI-parancsot az [ACR login](/cli/azure/acr#az-acr-login) használatával a beállításjegyzék eléréséhez. Például egy *myregistry* nevű beállításjegyzékbeli hitelesítéshez:
 
 ```azurecli
 az login
@@ -61,12 +61,12 @@ az acr login --name myregistry
 Hozzon létre egy szövegfájlt egy helyi munkakönyvtárban egy adott mintaszöveg alapján. Például egy bash-rendszerhéjban:
 
 ```bash
-echo "Here is an artifact!" > artifact.txt
+echo "Here is an artifact" > artifact.txt
 ```
 
 A paranccsal küldje el a `oras push` szövegfájlt a beállításjegyzékbe. A következő példa leküldi a minta szöveges fájlt a tárházba `samples/artifact` . A beállításjegyzéket a rendszer a teljesen minősített *myregistry.azurecr.IO* (az összes kisbetűs) azonosítja. Az összetevő címkézve van `1.0` . Az összetevő alapértelmezés szerint nem definiált típust tartalmaz, amelyet a rendszer az *adathordozó Type* karakterlánca azonosít a fájlnév után `artifact.txt` . További típusok: [OCI](https://github.com/opencontainers/artifacts) -összetevők. 
 
-**Linux**
+**Linux vagy macOS**
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -137,7 +137,7 @@ Ellenőrizze, hogy a lekérés sikeres volt-e:
 
 ```bash
 $ cat artifact.txt
-Here is an artifact!
+Here is an artifact
 ```
 
 ## <a name="remove-the-artifact-optional"></a>Az összetevő eltávolítása (nem kötelező)
@@ -157,7 +157,7 @@ A tárolók rendszerképének létrehozásához használható forráskód és bi
 Hozzon létre például egy egysoros Docker:
 
 ```bash
-echo "FROM hello-world" > hello-world.dockerfile
+echo "FROM mcr.microsoft.com/hello-world" > hello-world.dockerfile
 ```
 
 Jelentkezzen be a cél tároló beállításjegyzékbe.
@@ -170,14 +170,15 @@ az acr login --name myregistry
 Hozzon létre és helyezzen el egy új OCI-összetevőt a cél beállításjegyzékbe a `oras push` parancs használatával. Ez a példa az összetevő alapértelmezett adathordozó-típusát állítja be.
 
 ```bash
-oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
 ```
 
 Futtassa az az [ACR Build](/cli/azure/acr#az-acr-build) parancsot a Hello-World rendszerkép létrehozásához az új összetevő létrehozási kontextusa alapján:
 
 ```azurecli
-az acr build --registry myregistry --file hello-world.dockerfile \
-  oci://myregistry.azurecr.io/hello-world:1.0
+az acr build --registry myregistry --image builds/hello-world:v1 \
+  --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/dockerfile:1.0
 ```
 
 ## <a name="next-steps"></a>Következő lépések

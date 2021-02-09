@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945066"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988163"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -236,6 +236,10 @@ Automatizált folyamatok, például a CI/CD-folyamatok esetében érdemes automa
 
 1. Azure Resource Manager jogkivonat beszerzése a [webhelyről](https://resources.azure.com/api/token?plaintext=true). Ez a token lejár, ezért azonnal használja. A kérelem Azure Resource Manager tokent ad vissza.
 
+    ```azurecli
+    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
+    ```
+    
     ![A Azure Resource Manager tokent kérő webhelyet bemutató képernyőkép.](./media/luis-manage-keys/get-arm-token.png)
 
 1. Használja a tokent a LUIS Runtime-erőforrások előfizetések közötti kéréséhez. Használja a [Get Luis Azure accounts API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)-t, amelyhez a felhasználói fiókja hozzáfér.

@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695214"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987779"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -71,7 +71,7 @@ Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup*
 
 1. A **Beállítások** területen válassza a **kimenő biztonsági szabályok** lehetőséget.
 
-1. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup* értékre van állítva.
+1. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup* értékre van állítva.
 
 1. Válassza a **Hozzáadás**  lehetőséget az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
@@ -98,6 +98,46 @@ A következő teljes tartományneveket is használhatja a szükséges szolgálta
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>HTTP-proxykiszolgáló használata a forgalom irányításához
 
 Ha egy Azure-beli virtuális gépen futó SAP HANA adatbázisról készít biztonsági másolatot, a virtuális gépen található biztonsági mentési bővítmény a HTTPS API-k használatával küldi el a felügyeleti parancsokat a Azure Backup és az Azure Storage-ba történő adattároláshoz. A biztonsági mentési bővítmény az Azure AD-t is használja a hitelesítéshez. Irányítsa a biztonsági mentési bővítmény a három szolgáltatáshoz kapcsolódó forgalmát a HTTP-proxyn keresztül. A fent említett IP-címek és FQDN-k listájának használata a szükséges szolgáltatásokhoz való hozzáférés engedélyezéséhez. A hitelesített proxykiszolgálók nem támogatottak.
+
+## <a name="understanding-backup-and-restore-throughput-performance"></a>A biztonsági mentés és a visszaállítás teljesítményének ismertetése
+
+A Backint-n keresztül biztosított SAP HANA Azure-beli virtuális gépek biztonsági mentései (log és nem log) streamek az Azure Recovery Services-tárolóba, ezért fontos megérteni ezt a folyamatos átviteli módszert.
+
+A HANA Backint összetevője biztosítja a "Pipes" (a beolvasható cső és egy pipe-ról való írás), az adatbázis-fájlok tárolására szolgáló lemezeket, amelyeket aztán a Azure Backup szolgáltatás olvas be, majd az Azure Recovery Services-tárolóba szállítja. A Azure Backup szolgáltatás a backint natív ellenőrzési ellenőrzéseken felül ellenőrzőösszeget is végrehajt a streamek ellenőrzéséhez. Ezek az érvényesítések gondoskodnak arról, hogy az Azure Recovery Services-tárolóban lévő adatszolgáltatások valóban megbízhatóak és helyreállítható legyenek.
+
+Mivel a streamek elsősorban a lemezekkel foglalkoznak, meg kell ismernie a lemez teljesítményét a biztonsági mentés és a visszaállítás teljesítményének méréséhez. Ez a [cikk](https://docs.microsoft.com/azure/virtual-machines/disks-performance) részletesen ismerteti a lemezek átviteli sebességét és teljesítményét az Azure-beli virtuális gépeken. Ezek a teljesítmény biztonsági mentésére és visszaállítására is érvényesek.
+
+**A Azure Backup szolgáltatás megkísérli 420 elérni a nem naplózott biztonsági másolatok (például a teljes, a különbözeti és a növekményes), valamint a 100 Mbps biztonsági mentést a HANA-hoz készült naplók** számára. A fentiekben említettek szerint ezek nem garantált sebességek, és a következő tényezőktől függenek:
+
+* A virtuális gép gyorsítótár nélküli lemezének maximális átviteli sebessége
+* A mögöttes lemez típusa és teljesítménye
+* Azon folyamatok száma, amelyek egyszerre próbálnak beolvasni és írni ugyanabba a lemezre.
+
+> [!IMPORTANT]
+> A kisebb virtuális gépeken, ahol a nem gyorsítótárazott lemez sebessége nagyon közel van vagy kisebb, mint 400 MBps, előfordulhat, hogy a biztonsági mentési szolgáltatás teljes IOPS használ, ami hatással lehet SAP HANA a lemezekről való írásra/írásra vonatkozó műveletekre. Ebben az esetben, ha a biztonsági mentési szolgáltatás felhasználását a maximális korlátra kívánja szabályozni vagy korlátozni, tekintse meg a következő szakaszt.
+
+### <a name="limiting-backup-throughput-performance"></a>A biztonsági mentés átviteli teljesítményének korlátozása
+
+Ha a Backup szolgáltatás lemezének IOPS-felhasználását a maximális értékre szeretné szabályozni, hajtsa végre a következő lépéseket.
+
+1. Nyissa meg az "opt/msawb/bin" mappát
+2. Hozzon létre egy "ExtensionSettingOverrides.JSON" nevű új JSON-fájlt
+3. Adja hozzá a kulcs-érték párokat a JSON-fájlhoz a következőképpen:
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. Módosítsa a fájl engedélyeit és tulajdonjogát a következőképpen:
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. Nincs szükség semmilyen szolgáltatás újraindítására. A Azure Backup szolgáltatás megkísérli korlátozni az átviteli sebesség teljesítményét a fájlban említettek szerint.
 
 ## <a name="what-the-pre-registration-script-does"></a>Az előzetes regisztrációs parancsfájl
 
@@ -158,7 +198,7 @@ Egy Recovery Services-tároló létrehozásához:
    Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata** lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához kattintson az **Új létrehozása** elemre, majd adjon meg egy nevet. Az erőforráscsoportok részletes ismertetését itt tekintheti meg: [Azure Resource Manager Overview (áttekintés](../azure-resource-manager/management/overview.md)).
    * **Hely**: Válassza ki a tároló földrajzi régióját. A tárolónak ugyanabban a régióban kell lennie, mint ahol a virtuális gép SAP HANA fut. Használtuk az **USA 2. keleti** régióját.
 
-5. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
    ![& létrehozási áttekintés kiválasztása](./media/tutorial-backup-sap-hana-db/review-create.png)
 

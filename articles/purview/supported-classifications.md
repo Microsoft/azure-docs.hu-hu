@@ -6,17 +6,23 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 11/20/2020
-ms.openlocfilehash: 7458b027add8be86d9491c674c2f1a0bc9fbc68c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 2/5/2021
+ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552829"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988313"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Támogatott besorolások az Azure hatáskörébe
 
 Ez a cikk az Azure hatáskörébe (előzetes verzió) támogatott és definiált rendszerbesorolásokat sorolja fel.
+
+
+- **Eltérő egyezési küszöbérték**: az oszlopokban a képolvasó által az adatmintázat futtatása előtt megtalált különböző adatértékek teljes száma. A rendszer besorolási szabályai szerint az egyes oszlopokban legalább 8 különböző értéknek kell lennie, hogy azok besorolásra vonatkozzanak. A rendszernek ezt az értéket kell megadnia ahhoz, hogy az oszlop elegendő adatmennyiséget tartalmazzon a képolvasó számára a pontos besoroláshoz. Például egy olyan oszlop, amely az 1 értéket tartalmazó több sort tartalmaz, nem lesz besorolva. Azokat az oszlopokat, amelyek egy értéket tartalmazó sort tartalmaznak, és a sorok többi része null értékű, nem lesz besorolva. Ha több mintázatot ad meg, ez az érték mindenre vonatkozik.
+
+- **Minimális egyezési küszöb**: az adatértékek minimális százalékos aránya egy oszlopban, amelyet a lapolvasónak kell megkeresnie az alkalmazandó besoroláshoz. A rendszer besorolási értéke 60%.
+
 
 ## <a name="defined-system-classifications"></a>Definiált rendszerbesorolások
 
@@ -274,7 +280,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-## <a name="australia-medical-account-number"></a>Ausztráliai egészségügyi fiók száma
+## <a name="australian-medicare-number"></a>Ausztráliai Medicare-szám
 
 ### <a name="format"></a>Formátum
 
@@ -291,7 +297,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>Kulcsszavak
 
-#### <a name="keyword_australia_medical_account_number"></a>Keyword_Australia_Medical_Account_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
 
 ```
 bank account details
@@ -2964,7 +2970,7 @@ ad, ae, al, at, az, ba, be, bg, bh, ch, cr, cy, cz, de, dk, do, ee, es, fi, fo, 
 
 ### <a name="keywords"></a>Kulcsszavak
 
-Nincsenek
+Nincs
 
 ## <a name="ireland-personal-public-service-pps-number"></a>Írországi személyes nyilvános szolgáltatás (PPS) száma
 
@@ -3953,7 +3959,7 @@ Ezt a bizalmas adattípus-entitást az EU társadalombiztosítási száma vagy a
 
 ### <a name="keywords"></a>Kulcsszavak
 
-Nincsenek
+Nincs
 
 ## <a name="sweden-national-id"></a>Svéd nemzeti azonosító
 

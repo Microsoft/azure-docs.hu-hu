@@ -530,6 +530,8 @@
   items:
     - name: Azure közösségi támogatás
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: Partner Spotlight
+      href: resource-partners-knowledge-mining.md
     - name: Azure-frissítések
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Visszajelzési fórum (UserVoice)
@@ -554,8 +556,6 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Fejlesztői képzés (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: Partneri megoldások
-      href: resource-partners-knowledge-mining.md
     - name: GYIK
       href: search-faq-frequently-asked-questions.md
     - name: Díjszabás

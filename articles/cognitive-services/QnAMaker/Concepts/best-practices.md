@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346358"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988033"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis ajánlott eljárásai
 
@@ -75,7 +75,7 @@ Javasoljuk, hogy a következő Chit-Chat-QnAs konkrétabb legyen:
 * Mit tehet?
 * mennyi idős vagy?
 * Ki hozta létre?
-* helló
+* Üdvözöljük
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Egyéni Chit-Chat hozzáadása metaadat-címkével
 
@@ -141,7 +141,7 @@ Előfordulhat például, hogy két különálló QnAs rendelkezik a következő 
 Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek  *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például  *a "hol van a parkolóban"* és *"hol van az ATM"*, a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
 
 ## <a name="collaborate"></a>Együttműködés
-QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [működjenek együtt](../index.yml) . A tudásbázisok eléréséhez a felhasználóknak hozzá kell férniük az Azure QnA Maker erőforráscsoporthoz. Előfordulhat, hogy néhány szervezet szeretné kiszervezni a Tudásbázis szerkesztését és karbantartását, és továbbra is képes lesz biztosítani az Azure-erőforrásokhoz való hozzáférést. Ez a szerkesztő-jóváhagyó modell két azonos [QnA Maker-szolgáltatásnak](../How-to/set-up-qnamaker-service-azure.md) a különböző előfizetésekben való beállításával és a szerkesztési tesztelési ciklus egyikének kiválasztásával valósítható meg. A tesztelés befejezése után a Tudásbázis tartalma [importálási és exportálási](../Tutorials/migrate-knowledge-base.md) folyamattal kerül át a jóváhagyó QnA Maker szolgáltatásához, amely végül közzéteszi a tudásbázist, és frissíti a végpontot.
+QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban működjenek együtt. A tudásbázisok eléréséhez a felhasználóknak hozzá kell férniük az Azure QnA Maker erőforráscsoporthoz. Előfordulhat, hogy néhány szervezet szeretné kiszervezni a Tudásbázis szerkesztését és karbantartását, és továbbra is képes lesz biztosítani az Azure-erőforrásokhoz való hozzáférést. Ez a szerkesztő-jóváhagyó modell két azonos [QnA Maker-szolgáltatásnak](../How-to/set-up-qnamaker-service-azure.md) a különböző előfizetésekben való beállításával és a szerkesztési tesztelési ciklus egyikének kiválasztásával valósítható meg. A tesztelés befejezése után a Tudásbázis tartalma [importálási és exportálási](../Tutorials/migrate-knowledge-base.md) folyamattal kerül át a jóváhagyó QnA Maker szolgáltatásához, amely végül közzéteszi a tudásbázist, és frissíti a végpontot.
 
 
 
@@ -149,7 +149,7 @@ QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [m
 
 Az [aktív tanulás](../How-to/use-active-learning.md) a legjobb megoldás arra, hogy alternatív kérdéseket tegyen fel, ha számos minőségi és mennyiségű felhasználó-alapú lekérdezést tartalmaz. Fontos, hogy az ügyfélalkalmazások felhasználói lekérdezései részt vegyenek az aktív tanulási visszajelzési hurokban a cenzúra nélkül. Ha kérdése van a QnA Maker-portálon, akkor a **[javaslatok alapján szűrheti a javaslatokat](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** , majd áttekintheti, elfogadhatja vagy elutasíthatja ezeket a javaslatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-to/edit-knowledge-base.md)

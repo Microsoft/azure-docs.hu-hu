@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943891"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988425"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage táblatervezési útmutatója: Skálázható és hatékony táblák
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -632,7 +632,7 @@ Ehhez a beállításhoz használja az indexelő entitásokat, amelyek a követke
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Képernyőkép, amely megjeleníti az Employee index entitást, amely tartalmazza a RowKey és a PartitionKey tárolt utolsó névvel rendelkező alkalmazottak alkalmazotti azonosítóinak listáját.":::
 
-A `EmployeeIDs` tulajdonság a (z) és a (z) és a utolsó néven tárolt alkalmazottak alkalmazotti azonosítóinak listáját tartalmazza `RowKey` `PartitionKey` .  
+A `EmployeeDetails` tulajdonság tartalmazza az alkalmazotti azonosítók és a részleg neve párok listáját a ben tárolt utolsó névvel rendelkező alkalmazottak számára `RowKey` .
 
 A EGTs nem használható a konzisztencia fenntartásához, mert az index entitások az alkalmazott entitások külön partíciójában vannak. Győződjön meg arról, hogy az indexelő entitások végül konzisztensek az alkalmazott entitásokkal.  
 

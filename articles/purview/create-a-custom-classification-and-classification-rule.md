@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/1/2020
-ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 2/5/2021
+ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693457"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988383"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Egyéni besorolások az Azure hatáskörébe 
 
@@ -39,7 +39,7 @@ Egyéni besorolás létrehozásához tegye a következőket:
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification.png" alt-text="Új besorolás" border="true":::
 
 Megnyílik az **új besorolás hozzáadása** panel, ahol megadhatja a besorolás nevét és leírását. Érdemes egy név-térköz konvenciót használni, például: `your company name.classification name` .
-A Microsoft rendszerbesorolások a fenntartott névtér alatt vannak csoportosítva `MS.` . Példa: **MS. Kormány. USA. TÁRSADALOMBIZTOSÍTÁSI \_ \_ szám**.
+A Microsoft rendszerbesorolások a fenntartott névtér alatt vannak csoportosítva `MICROSOFT.` . Ilyen például a **Microsoft. Kormány. USA. TÁRSADALOMBIZTOSÍTÁSI \_ \_ szám**.
 
 A besorolás nevének betűvel kell kezdődnie, amelyet betűk, számok és pont (.) vagy aláhúzás karakteres karaktersorozat követ.
 Nem engedélyezett szóközök. A gépelés során az UX automatikusan létrehoz egy rövid nevet. Ez a felhasználóbarát név az, amit a felhasználók látnak, amikor alkalmazza azt egy eszközre a katalógusban.
@@ -98,9 +98,9 @@ Egyéni besorolási szabály létrehozása:
 |Mező     |Leírás  |
 |---------|---------|
 |Név   |    Kötelező. A maximális érték 100 karakter.    |
-|Leírás      |Választható. A maximális érték 256 karakter.    |
+|Description      |Választható. A maximális érték 256 karakter.    |
 |Besorolás neve    | Kötelező. A legördülő listából válassza ki a besorolás nevét, hogy a rendszer a képolvasót alkalmazza, ha egyezést talál.        |
-|Állapot   |  Kötelező. A beállítások engedélyezve vagy le vannak tiltva. Az alapértelmezés szerint engedélyezve van.    |
+|Állam   |  Kötelező. A beállítások engedélyezve vagy le vannak tiltva. Az alapértelmezés szerint engedélyezve van.    |
 |Adatminta    |Választható. Egy reguláris kifejezés, amely az adatmezőben tárolt adatértéket jelöli. A korlát nagyon nagy. Az előző példában az adatmintázatok a szó szerint egy alkalmazotti AZONOSÍTÓhoz vannak tesztelve `Employee{GUID}` .  |
 |Oszlop mintája    |Választható. Egy reguláris kifejezés, amely az egyező oszlop nevét jelöli. A korlát nagyon nagy.          |
 
@@ -110,6 +110,6 @@ Az **adatminta** területen két lehetőség közül választhat:
 
 - **Minimális egyezési küszöb**: ezzel a beállítással megadható, hogy az adatértékek hány százalékos aránya legyen a képolvasó által az alkalmazandó besoroláshoz. A javasolt érték 60%. Ennek a beállításnak Körültekintőnek kell lennie. Ha csökkenti a 60% alatti szintet, akkor előfordulhat, hogy hamis pozitív besorolásokat vezet be a katalógusba. Ha több Adatmintázatot is megad, ez a beállítás le van tiltva, és az érték 60%-on lesz javítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozta a besorolási szabályt, készen áll a beolvasási szabálykészlet hozzáadására, hogy a vizsgálat a szabályt használja a vizsgálat során. További információkért lásd: [ellenőrzési szabálykészlet létrehozása](create-a-scan-rule-set.md).

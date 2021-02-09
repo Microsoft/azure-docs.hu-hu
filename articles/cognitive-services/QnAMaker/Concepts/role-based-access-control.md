@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954106"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988016"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
@@ -46,7 +46,7 @@ Ha meg szeretné hívni a [szerzői API-kat](../index.yml), ismerkedjen meg a hi
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Hitelesítés QnA Maker portálon
 
-Ha a QnA Maker-portál használatával hoz létre és együttműködik, miután [hozzáadta az erőforráshoz a megfelelő szerepkört egy közreműködőhöz](../index.yml), a QnA Maker-portál kezeli az összes hozzáférési engedélyt.
+Ha a QnA Maker-portál használatával hoz létre és együttműködik, miután hozzáadta az erőforráshoz a megfelelő szerepkört egy közreműködőhöz, a QnA Maker-portál kezeli az összes hozzáférési engedélyt.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Hitelesítés QnA Maker API-k és SDK-k használatával
 
@@ -54,4 +54,4 @@ Ha az API-k használatával hoz létre és együttműködik a REST vagy az SDK-k
 
 ## <a name="next-step"></a>Következő lépés
 
-* Tudásbázis kialakítása [nyelvekhez](../index.yml) és [ügyfélalkalmazások](../index.yml) számára
+* Tudásbázis kialakítása nyelvekhez és ügyfélalkalmazások számára

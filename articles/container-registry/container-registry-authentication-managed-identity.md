@@ -3,12 +3,12 @@ title: Hitelesítés felügyelt identitással
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253462"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987755"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
@@ -49,13 +49,13 @@ Ezt követően az identitás használatával hitelesítheti magát az [Azure ad-
 
 Ha még nem rendelkezik Azure Container Registry-regisztrációval, hozzon létre egy beállításjegyzéket, és küldje el a minta-tároló képét. A lépéseket a rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md)című témakörben tekintheti meg.
 
-Ez a cikk azt feltételezi, hogy a `aci-helloworld:v1` tároló rendszerképe a beállításjegyzékben van tárolva. A példák a *myContainerRegistry*beállításjegyzékbeli nevét használják. Cserélje le a változót a saját beállításjegyzékére és a képek nevére a későbbi lépésekben.
+Ez a cikk azt feltételezi, hogy a `aci-helloworld:v1` tároló rendszerképe a beállításjegyzékben van tárolva. A példák a *myContainerRegistry* beállításjegyzékbeli nevét használják. Cserélje le a változót a saját beállításjegyzékére és a képek nevére a későbbi lépésekben.
 
 ## <a name="create-a-docker-enabled-vm"></a>Docker-kompatibilis virtuális gép létrehozása
 
-Hozzon létre egy Docker-kompatibilis Ubuntu virtuális gépet. Telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t is a virtuális gépre. Ha már rendelkezik Azure-beli virtuális géppel, ugorja át ezt a lépést a virtuális gép létrehozásához.
+Hozzon létre egy Docker-kompatibilis Ubuntu virtuális gépet. Telepítenie kell az [Azure CLI](/cli/azure/install-azure-cli) -t is a virtuális gépre. Ha már rendelkezik Azure-beli virtuális géppel, ugorja át ezt a lépést a virtuális gép létrehozásához.
 
-Telepítsen egy alapértelmezett Ubuntu Azure-beli virtuális gépet az [az VM Create][az-vm-create]paranccsal. Az alábbi példa egy *myDockerVM* nevű virtuális gépet hoz létre egy *myResourceGroup*nevű meglévő erőforráscsoporthoz:
+Telepítsen egy alapértelmezett Ubuntu Azure-beli virtuális gépet az [az VM Create][az-vm-create]paranccsal. Az alábbi példa egy *myDockerVM* nevű virtuális gépet hoz létre egy *myResourceGroup* nevű meglévő erőforráscsoporthoz:
 
 ```azurecli
 az vm create \
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 A telepítés után futtassa a következő parancsot annak ellenőrzéséhez, hogy a Docker megfelelően fut-e a virtuális gépen:
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 Kimenet:
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Az Azure CLI összetevő telepítése
 
-Az Azure CLI az Ubuntu rendszerű virtuális gépen való telepítéséhez kövesse az Azure CLI az [apt-vel](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) való telepítésének lépéseit. Ehhez a cikkhez győződjön meg arról, hogy a 2.0.55 vagy újabb verzióját telepíti.
+Az Azure CLI az Ubuntu rendszerű virtuális gépen való telepítéséhez kövesse az Azure CLI az [apt-vel](/cli/azure/install-azure-cli-apt) való telepítésének lépéseit. Ehhez a cikkhez győződjön meg arról, hogy a 2.0.55 vagy újabb verzióját telepíti.
 
 Lépjen ki az SSH-munkamenetből.
 
@@ -107,7 +107,7 @@ Lépjen ki az SSH-munkamenetből.
 
 ### <a name="create-an-identity"></a>Identitás létrehozása
 
-Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyet korábban használt a tároló-beállításjegyzék vagy a virtuális gép létrehozásához, vagy egy másikat.
+Hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identit#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amelyet korábban használt a tároló-beállításjegyzék vagy a virtuális gép létrehozásához, vagy egy másikat.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
