@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127481"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979291"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
@@ -27,6 +27,10 @@ Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül ne
 ## <a name="about-soft-delete-for-blobs"></a>A Blobok Soft delete szolgáltatásának ismertetése
 
 Ha a Blobok helyreállított törlését engedélyezték a Storage-fiókon, akkor a törölt objektumokat a megadott adatmegőrzési időtartamon belül állíthatja helyre. Ez a védelem kiterjed minden blobra (Blobok, hozzáfűzési Blobok vagy Blobok letiltására), amelyeket a rendszer a felülírás eredményeképpen töröl.
+
+A következő ábra azt mutatja be, hogyan állítható vissza a törölt blob, ha engedélyezve van a blob-törlés:
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="Az a diagram, amely bemutatja, hogyan lehet visszaállítani egy helyreállítható blobot":::
 
 Ha egy meglévő blobban vagy pillanatképben lévő adatok törlődnek, miközben a blob-alapú törlés engedélyezve van, de a blob verziószámozása nincs engedélyezve, akkor a rendszer egy helyreállított pillanatképet hoz létre a felülírt adatok állapotának mentéséhez. A megadott megőrzési időszak lejárta után az objektum véglegesen törölve lesz.
 
@@ -83,7 +87,7 @@ A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlés
 
 A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor elvárt viselkedést:
 
-| REST API művelet | Erőforrás típusa | Leírás | Változás a viselkedésben |
+| REST API művelet | Erőforrás típusa | Description | Változás a viselkedésben |
 |--------------------|---------------|-------------|--------------------|
 | [Törlés](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
 | [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve a benne található összes blobot is. | Nincs változás. A törölt tárolóban lévő Blobok nem lesznek helyreállítva. |

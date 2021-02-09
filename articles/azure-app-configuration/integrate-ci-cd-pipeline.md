@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
-ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928449"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979844"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 
@@ -35,9 +35,9 @@ Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha helyileg épít, töltse le és telepítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t, ha még nem tette meg.
+Ha helyileg épít, töltse le és telepítse az [Azure CLI](/cli/azure/install-azure-cli) -t, ha még nem tette meg.
 
-A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze, hogy az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van-e a Build rendszerbe.
+A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze, hogy az [Azure CLI](/cli/azure/install-azure-cli) telepítve van-e a Build rendszerbe.
 
 ### <a name="export-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló exportálása
 
@@ -107,4 +107,4 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
 Ebben az oktatóanyagban exportálta az Azure-alkalmazás konfigurációs szolgáltatásait egy központi telepítési folyamat során. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

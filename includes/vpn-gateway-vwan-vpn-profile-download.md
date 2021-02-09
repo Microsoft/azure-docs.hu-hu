@@ -1,41 +1,34 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 07/31/2020
+ms.date: 02/08/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fc2393cfe87e2639ce40e66e6053d4d430518719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3eb2d9469ab3a3d2c1d09e4adc3ee2cb1f86e6e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87515327"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979069"
 ---
-## <a name="1-download-the-file"></a>1. Töltse le a fájlt
-
-Futtassa az alábbi parancsokat. Másolja le az eredmény-URL-címet a böngészőjébe a profil zip-fájljának letöltéséhez.
-
-```azurepowershell-interactive
-$profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
-   
-$PROFILE.VpnProfileSASUrl
-```
-
-## <a name="2-extract-the-zip-file"></a>2. Csomagolja ki a zip-fájlt
+## <a name="extract-the-zip-file"></a>Zip-fájl kibontása
 
 Csomagolja ki a tömörített fájlt. A fájl a következő mappákat tartalmazza:
 
 * AzureVPN
 * Általános
-* OpenVPN (ha engedélyezte az OpenVPN-t az **Azure-tanúsítvánnyal** vagy **RADIUS-hitelesítési** beállításokkal az átjárón). VPN Gateway esetén tekintse meg [a bérlő létrehozása](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)című témakört. Virtuális WAN esetén lásd: [bérlői VWAN létrehozása](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
+* OpenVPN (ha engedélyezte az OpenVPN-t az **Azure-tanúsítvánnyal** vagy **RADIUS-hitelesítési** beállításokkal az átjárón). Válassza ki a megfelelő cikket, amely megfelel a konfigurációnak a bérlő létrehozásához.
 
-## <a name="3-retrieve-information"></a>3. adatok lekérése
+  * [VPN Gateway – bérlő létrehozása](../articles/vpn-gateway/openvpn-azure-ad-tenant.md).
+  * [Virtuális WAN – bérlő létrehozása](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
 
-A **AzureVPN** mappában navigáljon a ***azurevpnconfig.xml*** fájlhoz, és nyissa meg a Jegyzettömbben. Jegyezze fel a következő címkék közötti szöveget.
+## <a name="retrieve-information"></a>Adatok lekérése
+
+A **AzureVPN** mappában navigáljon a **_azurevpnconfig.xml_** fájlhoz, és nyissa meg a Jegyzettömbben. Jegyezze fel a következő címkék közötti szöveget.
 
 ```
 <audience>          </audience>
@@ -49,11 +42,11 @@ A **AzureVPN** mappában navigáljon a ***azurevpnconfig.xml*** fájlhoz, és ny
 
 Kapcsolat hozzáadásakor használja az előző lépésben összegyűjtött adatokat a profil részletei lapon. A mezők a következő adatoknak felelnek meg:
 
-   * **Célközönség:** Azonosítja azt a címzett-erőforrást, amelyet a jogkivonat szánt
-   * **Kiállító:** A jogkivonatot és az Azure AD-bérlőt kibocsátó biztonságijogkivonat-szolgáltatás (STS) azonosítása
-   * **Bérlő:** A jogkivonatot kiállító címtár-bérlő megváltoztathatatlan, egyedi azonosítóját tartalmazza
-   * **Teljes tartománynév:** Az Azure VPN Gateway teljes tartományneve (FQDN)
-   * **ServerSecret:** A VPN-átjáró előmegosztott kulcsa
+* **Célközönség:** Azonosítja azt a címzett-erőforrást, amelyet a jogkivonat szánt.
+* **Kiállító:** Azonosítja a jogkivonatot és az Azure AD-bérlőt kibocsátó biztonságijogkivonat-szolgáltatást (STS).
+* **Bérlő:** A jogkivonatot kiállító címtár-bérlő megváltoztathatatlan, egyedi azonosítóját tartalmazza.
+* **Teljes tartománynév:** Az Azure VPN Gateway teljes tartományneve (FQDN).
+* **ServerSecret:** A VPN-átjáró előmegosztott kulcsa.
 
 ## <a name="folder-contents"></a>Mappa tartalma
 

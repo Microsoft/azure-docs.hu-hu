@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 6ea796fb2ec038a03595d37d903fe8ee3ce904db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070269"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979164"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>A ParallelRunStep hibaelhárítása
 
@@ -171,7 +171,16 @@ Ha teljes mértékben meg kell ismernie, hogy az egyes csomópontok hogyan hajto
     - Az elemek teljes száma, a sikeresen feldolgozott elemek száma és a sikertelen elemek száma.
     - A kezdési idő, az időtartam, a feldolgozási idő és a futtatási módszer ideje.
 
-Az egyes feldolgozókhoz tartozó folyamatok erőforrás-használatáról is talál információt. Ez az információ CSV formátumú, és a következő helyen található: `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Az egyes folyamatokra vonatkozó információk a alatt találhatók `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
+Az egyes csomópontok erőforrás-használatának időszakos ellenőrzésének eredményeit is megtekintheti. A naplófájlok és a telepítőfájlok a következő mappában találhatók:
+
+- `~/logs/perf`: Állítsa be `--resource_monitor_interval` az ellenőrzési időközt másodpercben. Az alapértelmezett intervallum `600` , amely körülbelül 10 percet vesz igénybe. A figyelés leállításához állítsa a értéket a következőre: `0` . Az egyes mappák a következőket `<ip_address>` tartalmazzák:
+
+    - `os/`: A csomóponton futó összes folyamatra vonatkozó információ. Egy ellenőrzés futtatja az operációs rendszer parancsát, és menti az eredményt egy fájlba. Linux rendszeren a parancs a következő: `ps` . Windows rendszeren használja a következőt: `tasklist` .
+        - `%Y%m%d%H`: Az almappa neve az idő óra.
+            - `processes_%M`: A fájl az ellenőrzési idő percével végződik.
+    - `node_disk_usage.csv`: A csomópont részletes lemezes használata.
+    - `node_resource_usage.csv`: A csomópont erőforrás-használati áttekintése.
+    - `processes_resource_usage.csv`: Az egyes folyamatok erőforrás-használati áttekintése.
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>A felhasználói szkriptből Hogyan a naplót egy távoli környezetből?
 
@@ -233,25 +242,25 @@ A felhasználó átadhat bemeneti adatkészleteket a munkaterületen használt e
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="**_",
-    service_principal_id="_*_",
-    service_principal_password="_*_")
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
  
 ws = Workspace(
-    subscription_id="_*_",
-    resource_group="_*_",
-    workspace_name="_*_",
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
-ds = Dataset.File.from_files(default_blob_store, '_*path**_')
-registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Következő lépések
 
-_ Tekintse meg ezeket a [Jupyter-jegyzetfüzeteket Azure Machine learning folyamatok bemutatásával](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+* Tekintse meg az alábbi [Jupyter-jegyzetfüzeteket Azure Machine learning folyamatok bemutatásával](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 * A [azureml-pipeline-Steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) csomaggal kapcsolatos segítségért tekintse meg az SDK-referenciát. A ParallelRunStep osztály [dokumentációjának](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) megtekintése.
 

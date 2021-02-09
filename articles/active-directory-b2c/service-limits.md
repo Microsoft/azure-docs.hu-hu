@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/02/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 92652c33e261f08e0cb1c8eb57c66d363801f34e
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 190d88e62069a34b61017a0079f75696d67f6c82
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475066"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979912"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C szolgáltatási korlátok és korlátozások
 
@@ -39,7 +39,6 @@ A következő táblázat a Azure AD B2C szolgáltatás felügyeleti konfiguráci
 
 |Kategória  |Korlát  |
 |---------|---------|
-|Alkalmazások száma Azure AD B2C bérlőn   |250           |
 |Hatókörök száma egy alkalmazásban        |1000          |
 |[Egyéni attribútumok](user-profile-attributes.md#extension-attributes)száma felhasználónként   <sup>1</sup>       |100         |
 |Átirányítási URL-címek száma egy alkalmazásban       |100         |

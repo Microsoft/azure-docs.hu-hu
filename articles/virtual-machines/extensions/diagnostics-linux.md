@@ -1,6 +1,6 @@
 ---
-title: Azure-beli számítás – Linux diagnosztikai bővítmény
-description: Az Azure Linux diagnosztikai bővítmény (LAD) konfigurálása az Azure-ban futó Linux rendszerű virtuális gépek metrikáinak és naplózási eseményeinek összegyűjtéséhez.
+title: Azure számítás – Linux diagnosztikai bővítmény 4,0
+description: Az Azure Linux diagnosztikai bővítmény (LAD) 4,0 konfigurálása az Azure-ban futó Linux rendszerű virtuális gépek metrikáinak és naplózási eseményeinek összegyűjtéséhez.
 services: virtual-machines-linux
 author: axayjo
 manager: gwallace
@@ -8,21 +8,21 @@ ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: 2e831b3c091b18a5c739275e4c932094ce088ba4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ebc4867f0ce16657c550b3d33d76fccdb41cef54
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202606"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980643"
 ---
-# <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Metrikák és naplók figyelése a Linux diagnosztikai bővítmény használatával
+# <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény 4,0 használata a metrikák és naplók figyeléséhez
 
-Ez a dokumentum a Linux diagnosztikai bővítmény 3,0-es és újabb verzióját ismerteti.
+Ez a dokumentum a Linux diagnosztikai bővítmény 4,0-es és újabb verzióját ismerteti.
 
 > [!IMPORTANT]
-> A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> A 3. * verzióval kapcsolatos információkért tekintse meg  [ezt a dokumentumot](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux-v3). A 2,3-es és régebbi verzióval kapcsolatos információkért tekintse meg [ezt a dokumentumot](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -44,10 +44,11 @@ Ezt a bővítményt a Azure PowerShell-parancsmagok, az Azure CLI-parancsfájlok
 >[!NOTE]
 >A diagnosztikai virtuálisgép-bővítmény egyes összetevőit a [log Analytics VM-bővítmény](./oms-linux.md)is tartalmazza. Az architektúra miatt ütközések merülhetnek fel, ha mindkét bővítmény ugyanabban az ARM-sablonban van létrehozva. A telepítési idejű ütközések elkerülése érdekében használja az [ `dependsOn` irányelvet](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) annak biztosítására, hogy a bővítmények egymás után legyenek telepítve. A bővítmények mindkét sorrendben telepíthetők.
 
-Ezek a telepítési utasítások és egy [letölthető minta konfiguráció](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) , amely a Lad 3,0-et konfigurálja:
+Ezek a telepítési utasítások és egy [letölthető minta konfiguráció](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) , amely a Lad 4,0-et konfigurálja:
 
-* rögzítheti és tárolhatja ugyanazokat a mérőszámokat, mint a LAD 2,3;
-* rögzítse a fájlrendszer metrikáinak hasznos készletét, amely az új a LAD 3,0;
+* rögzítse és tárolja ugyanazokat a mérőszámokat, mint a LAD 2,3, 3 *;
+* metrikák küldése Azure Monitor fogadónak az Azure Storage-ba való szokásos fogadóval együtt, új érték: Lad 4,0
+* rögzítse a fájlrendszer metrikáinak hasznos készletét, amelyet a LAD 3,0;
 * a LAD 2,3; által engedélyezett alapértelmezett syslog-gyűjtemény rögzítése
 * a virtuális gépek metrikáinak ábrázolására és riasztására szolgáló Azure Portal használatának engedélyezése.
 
@@ -106,6 +107,9 @@ A python2 végrehajtható fájljának aliasnak kell lennie a *Pythonhoz*. Az al�
 
 A példákban letöltött minta-konfiguráció szabványos adatokat gyűjt, és a táblázatos tárolóba küldi őket. A minta konfigurációjának és tartalmának URL-címe változhat. A legtöbb esetben le kell töltenie a portál beállítások JSON-fájljának másolatát, és testre kell szabnia az igényeinek megfelelően, majd minden olyan sablonnal vagy automatizálással rendelkezik, amely a konfigurációs fájl saját verzióját használja, és nem tölti le az adott URL-címet.
 
+> [!NOTE]
+> Az új Azure Monitor-fogadó engedélyezése esetén a virtuális gépeknek az MSI Auth token generálásához engedélyezve kell lennie a rendszerhez rendelt identitásnak. Ezt a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után teheti meg. A rendszerhez rendelt identitás a portálon, a CLI-n, a PowerShellen és a Resource Manageren keresztül történő engedélyezésének lépései.  [itt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)részletesen láthatók. 
+
 #### <a name="azure-cli-sample"></a>Azure CLI-minta
 
 ```azurecli
@@ -120,6 +124,9 @@ az login
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
 
+# Enable System Assigned Identity to the existing VM
+az vm identity assign -g $my_resource_group -n $my_linux_vm
+
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
@@ -132,10 +139,10 @@ sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finallly tell Azure to install and enable the extension
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+# Finally tell Azure to install and enable the extension
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-#### <a name="azure-cli-sample-for-installing-lad-30-extension-on-the-vmss-instance"></a>Azure CLI-minta a LAD 3,0-bővítmény telepítéséhez a VMSS-példányon
+#### <a name="azure-cli-sample-for-installing-lad-40-extension-on-the-virtual-machine-scale-set-instance"></a>Azure CLI-minta a LAD 4,0-bővítmény telepítéséhez a virtuálisgép-méretezési csoport példányán
 
 ```azurecli
 #Set your Azure VMSS diagnostic variables correctly below
@@ -148,6 +155,9 @@ az login
 
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
+
+# Enable System Assigned Identity to the existing VMSS
+az vmss identity assign -g $my_resource_group -n $my_linux_vmss
 
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
@@ -162,7 +172,7 @@ $my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --acco
 $my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
 # Finally tell Azure to install and enable the extension
-az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
 #### <a name="powershell-sample"></a>PowerShell-minta
@@ -175,6 +185,9 @@ $VMresourceGroup = "yourVMResourceGroupName"
 
 # Get the VM object
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
+
+# Enable System Assigned Identity on an existing VM
+Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
 
 # Get the public settings template from GitHub and update the templated values for storage account and resource ID
 $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
@@ -190,7 +203,7 @@ $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Servi
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
 
 # Finally install the extension with the settings built above
-Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
 ```
 
 ### <a name="updating-the-extension-settings"></a>A bővítmény beállításainak frissítése
@@ -199,21 +212,17 @@ Miután módosította a védett vagy a nyilvános beállításokat, telepítse �
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Áttelepítés a bővítmény korábbi verzióiból
 
-A bővítmény legújabb verziója **3,0**. A **régi verziók (2. x) elavultak, és a 2018. július 31-ig vagy azt követően nem** tehetők közzé.
+A bővítmény legújabb verziója **4,0, amely jelenleg nyilvános előzetes** verzióban érhető el. A **3. x régebbi verziói továbbra is támogatottak, míg a 2. x verzióit a 2018. július 31-ig elavultak**.
 
 > [!IMPORTANT]
-> Ez a bővítmény bevezeti a bővítmény konfigurációjának feltörésének változásait. Egy ilyen változás történt a bővítmény biztonságának javítása érdekében; Ennek eredményeképpen a 2. x verzióra visszamenőleges kompatibilitás nem tartható karban. Emellett a bővítmény közzétevője nem azonos a 2. x verzió közzétevője verziójával.
->
-> Ha 2. x verzióról kíván áttérni a bővítmény ezen új verziójára, el kell távolítania a régi bővítményt (a régi közzétevő neve alatt), majd telepítenie kell a bővítmény 3. verzióját.
+> Ha 3. x verzióról kíván áttérni a bővítmény erre az új verziójára, el kell távolítania a régi bővítményt, majd telepítenie kell a bővítmény 4-es verzióját (a rendszer által hozzárendelt identitáshoz tartozó frissített konfigurációval, és elsüllyed a metrikák Azure Monitor fogadónak való küldéséhez.)
 
 Javaslatok
 
 * Telepítse a bővítményt, ha engedélyezve van az alverzió automatikus frissítése.
-  * A klasszikus üzembe helyezési modellben a virtuális gépeken a "3. *" verziót kell megadni, ha a bővítményt az Azure XPLAT CLI vagy a PowerShell használatával telepíti.
+  * Ha a bővítményt az Azure XPLAT CLI vagy a PowerShell használatával telepíti, a klasszikus üzembe helyezési modell virtuális gépeken a "4. *" verziót kell megadni.
   * Azure Resource Manager üzembe helyezési modell virtuális gépeken a virtuális gép központi telepítési sablonjában a "autoUpgradeMinorVersion": true "értéket kell tartalmaznia.
-* Új/eltérő Storage-fiók használata a LAD 3,0-hez. Több kis inkompatibilitás van a LAD 2,3 és a LAD 3,0 között, amelyek megosztanak egy fiókot:
-  * A LAD 3,0 egy másik nevű táblában tárolja a syslog-eseményeket.
-  * A metrikák counterSpecifier karakterláncai `builtin` eltérnek a 3,0.
+* Használhatja ugyanazt a Storage-fiókot a LAD 4,0-hez, mint a LAD 3. *. 
 
 ## <a name="protected-settings"></a>Védett beállítások
 
@@ -246,7 +255,7 @@ A szükséges SAS-tokent egyszerűen létrehozhatja a Azure Portalon keresztül.
 1. Tegye meg a megfelelő szakaszokat az előzőekben leírtak szerint
 1. Kattintson az "SAS előállítása" gombra.
 
-![Képernyőfelvétel: a közös hozzáférésű aláírás oldal, amely az S A S-t tartalmazza.](./media/diagnostics-linux/make_sas.png)
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Képernyőfelvétel: a közös hozzáférésű aláírás oldal, amely az S A S-t tartalmazza.":::
 
 Másolja a generált SAS-t a storageAccountSasToken mezőbe; eltávolítja a kezdő kérdőjelet ("?").
 
@@ -272,7 +281,7 @@ Elem | Érték
 name | A bővítmény konfigurációjában máshol a fogadóhoz való hivatkozáshoz használt karakterlánc.
 típus | A definiált fogadó típusa. Meghatározza az ilyen típusú példányok egyéb értékeit (ha vannak ilyenek).
 
-A Linux diagnosztikai bővítmény 3,0-es verziója két fogadó típust támogat: EventHub és JsonBlob.
+A Linux diagnosztikai bővítmény 4,0-es verziója két fogadó típust támogat: EventHub és JsonBlob.
 
 #### <a name="the-eventhub-sink"></a>A EventHub fogadó
 
@@ -317,14 +326,14 @@ Az JsonBlob-fogadóba irányított adattárolók tárolása a blobokban történ
 
 ## <a name="public-settings"></a>Nyilvános beállítások
 
-Ez a struktúra különböző beállításokat tartalmaz, amelyek a bővítmény által gyűjtött adatokat vezérlik. Az egyes beállítások megadása nem kötelező. Ha megadja `ladCfg` , azt is meg kell adnia `StorageAccount` .
+Ez a struktúra különböző beállításokat tartalmaz, amelyek a bővítmény által gyűjtött adatokat vezérlik. Minden beállítás (kivéve a ladCfg) nem kötelező. Ha metrikus vagy syslog-gyűjteményt ad meg a-ben `ladCfg` , akkor azt is meg kell adnia `StorageAccount` . a sinksConfig elemet meg kell adni ahhoz, hogy a 4,0-as mérőszámok számára lehetővé váljon Azure Monitor fogadó
 
 ```json
 {
     "ladCfg":  { ... },
-    "perfCfg": { ... },
     "fileLogs": { ... },
     "StorageAccount": "the storage account to receive data",
+    "sinksConfig": { ... },
     "mdsdHttpProxy" : ""
 }
 ```
@@ -350,7 +359,15 @@ A többi elemet a következő szakaszokban részletesen ismertetjük.
 }
 ```
 
-Ez a választható struktúra szabályozza a metrikák és naplók összegyűjtését az Azure metrika szolgáltatásba és más adatnyelők számára történő kézbesítéshez. A `performanceCounters` vagy a vagy a mindkettőt kell megadnia `syslogEvents` . Meg kell adnia a `metrics` struktúrát.
+Ez a struktúra szabályozza a metrikák és naplók összegyűjtését az Azure metrika szolgáltatásba és más adatnyelők számára történő kézbesítéshez. A `performanceCounters` vagy a vagy a mindkettőt kell megadnia `syslogEvents` . Meg kell adnia a `metrics` struktúrát.
+
+Ha nem szeretné engedélyezni a syslog vagy a metrikák gyűjtését, egyszerűen megadhat egy üres struktúrát a ladCfg elemhez az alábbi ábrán látható módon: 
+
+```json
+"ladCfg": {
+    "diagnosticMonitorConfiguration": {}
+    }
+```
 
 Elem | Érték
 ------- | -----
@@ -468,31 +485,25 @@ Ha megadja `syslogEvents` , a Lad mindig az Azure Storage-ban lévő táblába �
 
 Ilyenek például `LinuxSyslog20170410` a és a `LinuxSyslog20170609` .
 
-### <a name="perfcfg"></a>perfCfg
+### <a name="sinksconfig"></a>sinksConfig
 
-Ez a választható szakasz vezérli a [tetszőleges típusú](https://github.com/Microsoft/omi) adatlekérdezések végrehajtását.
+Ez a választható szakasz szabályozza a metrikák küldését a Azure Monitor fogadóba a Storage-fiók és az alapértelmezett vendég metrikák panel mellett.
+
+> [!NOTE]
+> Ehhez engedélyezni kell a rendszerhez rendelt identitást a virtuális gépeken/VMSS. Ez a portál, a CLI, a PowerShell és a Resource Manager használatával végezhető el. A lépéseket [itt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)találja részletesen. Az engedélyezésének lépései az az CLI, a PowerShell stb. című telepítési mintákban is szerepelnek. 
 
 ```json
-"perfCfg": [
-    {
-        "namespace": "root/scx",
-        "query": "SELECT PercentAvailableMemory, PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
-        "table": "LinuxOldMemory",
-        "frequency": 300,
-        "sinks": ""
-    }
-]
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
 ```
 
-Elem | Érték
-------- | -----
-névtér | választható Az a-t tartalmazó-névtér, amelyen belül a lekérdezés végrehajtása történik. Ha nincs megadva, az alapértelmezett érték a [System Center platformfüggetlen szolgáltatók](https://github.com/Microsoft/SCXcore)által megvalósított "root/SCX".
-lekérdezés | A végrehajtandó a kipróbálható adatlekérdezés.
-tábla | választható Az Azure Storage-tábla a kijelölt Storage-fiókban (lásd a [védett beállításokat](#protected-settings)).
-frequency | választható A lekérdezés végrehajtása közötti másodpercek száma. Az alapértelmezett érték 300 (5 perc); a minimális érték 15 másodperc.
-fogadóként | választható A további mosdók neveinek vesszővel tagolt listája, amelybe a nyers minta metrikájának eredményeit közzé kell tenni. A nyers minták összesítését a bővítmény vagy az Azure-metrika számítja ki.
-
-Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
 
 ### <a name="filelogs"></a>fileLogs
 
@@ -521,6 +532,9 @@ Meg kell adni a "Table" vagy a "mosogató", vagy mindkettőt.
 
 ## <a name="metrics-supported-by-the-builtin-provider"></a>A beépített szolgáltató által támogatott metrikák
 
+> [!NOTE]
+> A LAD által támogatott alapértelmezett mérőszámok az összes File-Systems/Disks/Name érték szerint vannak összesítve. A nem aggregált mérőszámok esetében kérjük, olvassa el az újabb Azure Monitor fogadó metrikák támogatását.
+
 A beépített metrikai szolgáltató a felhasználók széles köréhez legérdekesebb mérőszámok forrása. Ezek a metrikák öt átfogó osztályba sorolhatók:
 
 * Processzor
@@ -545,8 +559,6 @@ PercentPrivilegedTime | A nem üresjárati idő, a rendszerjogosultságú (kerne
 
 Az első négy számláló összege 100%. Az utolsó három számláló a 100%-ot is összegzi; a PercentProcessorTime, a PercentIOWaitTime és a PercentInterruptTime összegét osztják meg.
 
-Ha egyetlen mérőszámot szeretne beolvasni az összes processzor között, állítsa be a következőt: `"condition": "IsAggregate=TRUE"` . Egy adott processzor metrikájának beszerzéséhez, például egy négy vCPU virtuális gép második logikai processzorához, állítsa be a következőt: `"condition": "Name=\\"1\\""` . A logikai processzorok száma a tartományban van `[0..n-1]` .
-
 ### <a name="builtin-metrics-for-the-memory-class"></a>beépített metrikák a memória osztályhoz
 
 A metrikák memória osztálya információt nyújt a memória kihasználtságáról, a lapozásról és a cseréről.
@@ -569,7 +581,7 @@ A metrikák ezen osztálya csak egyetlen példánnyal rendelkezik. A "Condition"
 
 ### <a name="builtin-metrics-for-the-network-class"></a>a hálózati osztály beépített metrikái
 
-A metrikák hálózati osztálya a rendszerindítás óta az egyes hálózati adaptereken lévő hálózati tevékenységekről nyújt információt. A LAD nem tesz elérhetővé sávszélesség-metrikákat, amelyek a gazdagép metrikái alapján kérhetők le.
+A metrikák hálózati osztálya a rendszerindítás óta információt nyújt az egyes hálózati adapterek hálózati tevékenységéről. A LAD nem tesz elérhetővé sávszélesség-metrikákat, amelyek a gazdagép metrikái alapján kérhetők le.
 
 számláló | Értelmezés
 ------- | -------
@@ -581,8 +593,6 @@ PacketsReceived | A rendszerindítás óta fogadott csomagok összesen
 TotalRxErrors | Fogadási hibák száma a rendszerindítás óta
 TotalTxErrors | Küldési hibák száma a rendszerindítás óta
 TotalCollisions | A hálózati portok által a rendszerindítás óta jelentett ütközések száma
-
- Bár ez az osztály példányt tartalmaz, a LAD nem támogatja az összes hálózati eszközre összesített hálózati metrikák rögzítését. Egy adott csatoló (például ETH0) metrikáinak beszerzéséhez állítsa be a következőt: `"condition": "InstanceID=\\"eth0\\""` .
 
 ### <a name="builtin-metrics-for-the-filesystem-class"></a>a fájlrendszer osztályának beépített metrikái
 
@@ -603,10 +613,6 @@ ReadsPerSecond | Olvasási műveletek másodpercenként
 WritesPerSecond | Írási műveletek másodpercenként
 TransfersPerSecond | Olvasási vagy írási műveletek másodpercenként
 
-A rendszer az összes fájlrendszer összesített értékeit a beállítással szerezheti be `"condition": "IsAggregate=True"` . Az adott csatlakoztatott fájlrendszer, például a "/mnt" értékeit a beállítással lehet beolvasni `"condition": 'Name="/mnt"'` . 
-
-**Megjegyzés**: Ha a JSON helyett az Azure Portalt használja, a megfelelő feltétel mező űrlap a name = '/mnt '.
-
 ### <a name="builtin-metrics-for-the-disk-class"></a>beépített metrikák a lemez osztályhoz
 
 A metrikák lemezes osztálya információt nyújt a lemezes eszközök használatáról. Ezek a statisztikák a teljes meghajtóra vonatkoznak. Ha több fájlrendszer van egy eszközön, az eszköz számlálói hatékonyan, összesítve lesznek az összesre.
@@ -624,16 +630,14 @@ ReadBytesPerSecond | Olvasott bájtok másodpercenkénti száma
 WriteBytesPerSecond | A másodpercenként írt bájtok száma
 BytesPerSecond | Olvasott vagy írt bájtok másodpercenkénti száma
 
-Az összes lemez összesített értékei a beállítás alapján szerezhetők be `"condition": "IsAggregate=True"` . Egy adott eszközre vonatkozó információk (például/dev/sdf1) lekéréséhez állítsa be a következőt: `"condition": "Name=\\"/dev/sdf1\\""` .
-
-## <a name="installing-and-configuring-lad-30"></a>A LAD 3,0 telepítése és konfigurálása
+## <a name="installing-and-configuring-lad-40"></a>A LAD 4,0 telepítése és konfigurálása
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Ha azt feltételezi, hogy a védett beállítások szerepelnek a ProtectedSettings.jsfájlban, és a nyilvános konfigurációs adatok PublicSettings.jsbe van kapcsolva, futtassa ezt a parancsot:
 
 ```azurecli
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
 A parancs feltételezi, hogy az Azure CLI Azure Resource Management üzemmódját használja. A klasszikus üzembe helyezési modell (ASM) virtuális gépei konfigurálásához váltson az "ASM" módra ( `azure config mode asm` ), és hagyja ki az erőforráscsoport nevét a parancsban. További információkért lásd a [többplatformos CLI dokumentációját](/cli/azure/authenticate-azure-cli).
@@ -643,12 +647,12 @@ A parancs feltételezi, hogy az Azure CLI Azure Resource Management üzemmódjá
 Feltételezve, hogy a védett beállítások szerepelnek a `$protectedSettings` változóban, és a nyilvános konfigurációs adatok szerepelnek a `$publicSettings` változóban, futtassa a következő parancsot:
 
 ```powershell
-Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
 ```
 
-## <a name="an-example-lad-30-configuration"></a>Példa LAD 3,0-konfigurációra
+## <a name="an-example-lad-40-configuration"></a>Példa LAD 4,0-konfigurációra
 
-Az előző definíciók alapján Íme egy példa a 3,0-es, néhány magyarázattal ellátott bővítmény-konfigurációra. Ha alkalmazni szeretné a mintát az esetére, használja a saját Storage-fiók nevét, a fiók SAS-tokenjét és a EventHubs SAS-tokeneket.
+Az előző definíciók alapján Íme egy példa a 4,0-es, néhány magyarázattal ellátott bővítmény-konfigurációra. Ha alkalmazni szeretné a mintát az esetére, használja a saját Storage-fiók nevét, a fiók SAS-tokenjét és a EventHubs SAS-tokeneket.
 
 > [!NOTE]
 > Attól függően, hogy az Azure CLI vagy a PowerShell használatával telepíti a LAD-t, a nyilvános és védett beállítások biztosításának módszere eltérő lesz. Ha az Azure CLI-t használja, mentse a következő beállításokat ProtectedSettings.jsbe és PublicSettings.jsbe a parancsot a fenti minta paranccsal való használatra. Ha a PowerShellt használja, mentse a beállításokat a és a parancs `$protectedSettings` `$publicSettings` futtatásával `$protectedSettings = '{ ... }'` .
@@ -709,7 +713,6 @@ Ezek a nyilvános beállítások a következőt okozzák:
 
 * Százalék-processzor-idő és felhasznált lemezterület-metrikák feltöltése a `WADMetrics*` táblába
 * Üzenetek feltöltése a syslog-létesítményből a "user" és a "fontosság" információkkal a `LinuxSyslog*` táblába
-* Nyers PercentProcessorTime-és PercentIdleTime-lekérdezési eredmények feltöltése a nevesített `LinuxCPU` táblázatba
 * A fájlban lévő hozzáfűzött sorok feltöltése `/var/log/myladtestlog` a `MyLadTestLog` táblába
 
 A rendszer minden esetben feltölti az adatfájlokat a következőre:
@@ -776,14 +779,15 @@ A rendszer minden esetben feltölti az adatfájlokat a következőre:
       }
     }
   },
-  "perfCfg": [
-    {
-      "query": "SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'",
-      "table": "LinuxCpu",
-      "frequency": 60,
-      "sinks": "LinuxCpuJsonBlob,LinuxCpuEventHub"
-    }
-  ],
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
   "fileLogs": [
     {
       "file": "/var/log/myladtestlog",
@@ -804,7 +808,7 @@ A `resourceId` konfigurációnak meg kell egyeznie a virtuális gép vagy a virt
 
 A Azure Portal használatával megtekintheti a teljesítményadatokat, vagy beállíthatja a riasztásokat:
 
-![Képernyőfelvétel: az Azure Portal, amely a felhasznált lemezterületet mutatja a metrika kiválasztott és az eredményül kapott diagramon.](./media/diagnostics-linux/graph_metrics.png)
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Képernyőfelvétel: az Azure Portal, amely a felhasznált lemezterületet mutatja a metrika kiválasztott és az eredményül kapott diagramon.":::
 
 Az `performanceCounters` adattárolást mindig egy Azure Storage-táblában tárolja a rendszer. Az Azure Storage API-jai számos nyelven és platformon elérhetők.
 
@@ -815,9 +819,9 @@ Emellett használhatja ezeket a felhasználói felületi eszközöket az Azure S
 * A Visual Studio Server Explorer.
 * [A képernyőképen a Azure Storage Explorer tárolók és táblák láthatók.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer")
 
-A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azure Storage-táblákat és-tárolókat mutatja be egy, a teszt virtuális gépen megfelelően konfigurált, LAD 3,0-es bővítménnyel. A rendszerkép nem egyezik pontosan a [LAD 3,0-konfigurációval](#an-example-lad-30-configuration).
+A Microsoft Azure Storage Explorer-munkamenet ezen pillanatképe a generált Azure Storage-táblákat és-tárolókat mutatja be egy, a teszt virtuális gépen megfelelően konfigurált, LAD 3,0-es bővítménnyel. A rendszerkép nem egyezik pontosan a [LAD 3,0-konfigurációval](#an-example-lad-40-configuration).
 
-![image](./media/diagnostics-linux/stg_explorer.png)
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="A képernyőképen a Azure Storage Explorer látható.":::
 
 A EventHubs-végponton közzétett üzenetek felhasználásának megismeréséhez tekintse meg a vonatkozó [EventHubs dokumentációját](../../event-hubs/event-hubs-about.md) .
 

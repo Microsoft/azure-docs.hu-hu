@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 17a7ad29596c5ab5ed65868fde0e814bc83e8c37
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576742"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979535"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -132,20 +132,20 @@ Tekintse meg a sikeres JSON-válasz következő példáját:
 }
 ```
 
-## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Válassza ki az oldal (oka) t vagy az oldal tartományait szöveg kinyeréséhez
-Ha a [Read 3,2 Preview API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)-t használja nagyméretű többoldalas dokumentumok esetén, a `pages` lekérdezési paraméterrel adhatja meg az oldalszámokat vagy az oldalak tartományait, hogy csak az adott lapról származó szöveget lehessen kinyerni. Például a következő példa egy olyan dokumentumot mutat be, amelyben mindkét esetben 10 oldal szerepel – az összes oldal (1-10) és a kijelölt lapok (3-6).
+## <a name="natural-reading-order-output"></a>Természetes olvasási sorrend kimenete
+Az [olvasási 3,2 előzetes verzió API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)-val adja meg azt a sorrendet, amelyben a szövegsorok kimenete a `readingOrder` lekérdezési paraméterrel történik. Az `natural` az alábbi példában látható módon egy emberi felhasználóbarát olvasási sorrendi kimenetre használható.
 
-:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Kijelölt lapok kimenete":::
-
-## <a name="specify-text-line-order-in-the-output"></a>Adja meg a szöveg vonalának sorrendjét a kimenetben
-Az [olvasási 3,2 előzetes verzió API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)-val adja meg azt a sorrendet, amelyben a szövegsorok kimenete a `read order` lekérdezési paraméterrel történik. Válassza ki `basic` az alapértelmezett balra és fentről lefelé irányuló sorrendet, illetve `natural` az emberi olvasáshoz használható vonal megrendelését. Az alábbi példában az azonos kétoszlopos dokumentumhoz tartozó sorok sorrendi száma is látható. Figyelje meg, hogy a jobb oldali képen az egyes oszlopokon belül szekvenciális sorszámok jelennek meg, amelyek az olvasási sorrendet jelölik.
-
-:::image border type="content" source="./Images/ocr-read-order.png" alt-text="OCR-olvasási sorrend – példa":::
+:::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR-olvasási sorrend – példa":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Szövegsorok kézírásos besorolása (csak latin betűs)
 Az [olvasási 3,2 előzetes verzió API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) -válasza magában foglalja annak besorolását, hogy az egyes szövegfájlok kézírásos stílussal vagy sem, valamint a megbízhatósági pontszámmal együtt. Ez a funkció csak latin nyelveken támogatott. Az alábbi példa a képen látható szöveg kézírásos besorolását mutatja be.
 
-:::image border type="content" source="./Images/handwritten-text-line.png" alt-text="Példa OCR kézírás-besorolásra":::
+:::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="Példa OCR kézírás-besorolásra":::
+
+## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Válassza ki az oldal (oka) t vagy az oldal tartományait szöveg kinyeréséhez
+Ha a [Read 3,2 Preview API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)-t használja nagyméretű többoldalas dokumentumok esetén, a `pages` lekérdezési paraméterrel adhatja meg az oldalszámokat vagy az oldalak tartományait, hogy csak az adott lapról származó szöveget lehessen kinyerni. Az alábbi példa egy 10 oldalas dokumentumot mutat be, amely mindkét esetben kinyert szöveggel rendelkezik – az összes oldalt (1-10) és a kijelölt lapokat (3-6).
+
+:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Kijelölt lapok kimenete":::
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 Az olvasási API-k összesen 73 nyelvet támogatnak a nyomtatási stílus szövegeként. Tekintse meg az [OCR által támogatott nyelvek](./language-support.md#optical-character-recognition-ocr)teljes listáját. A kézzel írott stílusú OCR kizárólag angol nyelven támogatott.

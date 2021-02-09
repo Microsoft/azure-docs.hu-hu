@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 02/02/2021
+ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 41047a35328d4eac370d98a6d660f20e5006a2bb
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b76723c9ea94581561f5bdb04ea1fd8335da77b7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805174"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981085"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -165,6 +165,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 Támogatási kérelmek:
 
 - A [ **Súgó és támogatás** támogatási kéréseinek megnyitása](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) a Azure Portal a delegált erőforrások esetében (a delegált hatókörhöz elérhető támogatási csomag kiválasztása)
+- Az Azure [kvóta API](/rest/api/reserved-vm-instances/quotaapi) használatával megtekintheti és kezelheti az Azure-szolgáltatási kvótákat a delegált ügyfelek erőforrásaihoz
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 

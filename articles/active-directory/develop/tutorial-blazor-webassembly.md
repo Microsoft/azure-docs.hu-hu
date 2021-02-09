@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226422"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979878"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
@@ -102,7 +102,7 @@ Ezután adja hozzá a következőt a projekt *. csproj* fájljához a Netstandar
 
 Ezután módosítsa a kódot a következő néhány lépésben megadott módon. Ezek a módosítások [hozzáférési jogkivonatokat](access-tokens.md) fognak hozzáadni a Microsoft Graph API-nak küldött kimenő kérelmekhez. Ezt a mintát részletesebben a [ASP.net Core Blazer webszerelvény további biztonsági forgatókönyvei](/aspnet/core/blazor/security/webassembly/additional-scenarios)tárgyalják.
 
-Először hozzon létre egy *GraphAuthorizationMessageHandler.cs* nevű új fájlt a következő kóddal. Ez a kezelő a felhasználó számára hozzáférési tokent ad hozzá a `User.Read` és `Mail.Read` hatókörökhöz a Microsoft Graph API felé irányuló kimenő kérésekhez.
+Először hozzon létre egy *GraphAPIAuthorizationMessageHandler.cs* nevű új fájlt a következő kóddal. Ez a kezelő a felhasználó számára hozzáférési tokent ad hozzá a `User.Read` és `Mail.Read` hatókörökhöz a Microsoft Graph API felé irányuló kimenő kérésekhez.
 
 ```csharp
 using Microsoft.AspNetCore.Components;

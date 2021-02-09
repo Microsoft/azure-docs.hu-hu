@@ -12,6 +12,8 @@
   items:
     - name: Azure-beli virtuális gépek áthelyezése egy másik régióba
       href: tutorial-move-region-virtual-machines.md
+    - name: Titkosított Azure-beli virtuális gépek áthelyezése másik régióba
+      href: tutorial-move-region-encrypted-virtual-machines.md
     - name: SQL-erőforrások áthelyezése egy másik régióba
       href: tutorial-move-region-sql.md
 - name: Fogalmak

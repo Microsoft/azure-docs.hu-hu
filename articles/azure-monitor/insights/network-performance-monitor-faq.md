@@ -6,16 +6,19 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625165"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833014"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
 ![Network Performance Monitor szimbólum](media/network-performance-monitor-faq/npm-symbol.png)
+
+> [!IMPORTANT]
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 Ez a cikk az Azure-beli Network Performance Monitor (NPM) kapcsolatos gyakori kérdéseket (GYIK) rögzíti
 
@@ -34,7 +37,7 @@ Az alábbiakban az NPM különböző képességeire vonatkozó platformokra vona
 - A NPM ExpressRoute-figyelő funkciója csak a Windows Server (2008 SP1 vagy újabb) operációs rendszert támogatja.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Használhatok Linux rendszerű gépeket figyelési csomópontként a NPM-ben?
-A hálózatok a Linux-alapú csomópontok használatával történő figyelésének képessége már általánosan elérhető. [Itt](../../virtual-machines/extensions/oms-linux.md)nyilára az ügynököt. 
+A hálózatok a Linux-alapú csomópontok használatával történő figyelésének képessége már általánosan elérhető. [Itt](../../virtual-machines/extensions/oms-linux.md)érheti el az ügynököt. 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik a NPM által a figyeléshez használt csomópontok méretére vonatkozó követelmények?
 Ahhoz, hogy a NPM megoldás a csomópontokon futó virtuális gépeken a hálózatok figyelésére fusson, a csomópontoknak legalább 500 MB memóriával és egy mag kell rendelkezniük. Nem kell külön csomópontokat használnia a NPM futtatásához. A megoldás olyan csomópontokon is futhat, amelyeken más munkaterhelések futnak. A megoldás képes a figyelési folyamat leállítására, ha az több mint 5%-os CPU-t használ.
@@ -255,10 +258,10 @@ Ez a következő esetekben fordulhat elő:
 * A ExpressRoute áramkör figyelési konfigurációban való figyelésére kiválasztott helyszíni és Azure-csomópontok nem rendelkeznek kapcsolattal egymással a kívánt ExpressRoute áramkörön keresztül. Győződjön meg arról, hogy a figyelni kívánt ExpressRoute-áramkörön a megfelelő csomópontok vannak kiválasztva.
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Miért jelent a ExpressRoute-figyelő a saját áramkörét/társát a nem kifogástalan állapotú, amikor az elérhető, és továbbítja az adattovábbítást.
-A ExpressRoute-figyelő összehasonlítja az ügynökök/szolgáltatás által jelentett hálózati teljesítménnyel kapcsolatos értékeket (veszteségek, késések és sávszélesség-kihasználtság) a konfiguráció során beállított küszöbértékekkel. Ha egy áramkör esetében a jelentett sávszélesség nagyobb, mint a konfigurációban beállított küszöbérték, az áramkör nem kifogástalan állapotú van megjelölve. A társítások esetében, ha a jelentett veszteség, késés vagy sávszélesség-felhasználás nagyobb, mint a konfigurációban beállított küszöbérték, a társítás sérültként van megjelölve. A NPM nem használ mérőszámokat vagy más típusú adatokat az deicde állapotának megváltozására.
+A ExpressRoute-figyelő összehasonlítja az ügynökök/szolgáltatás által jelentett hálózati teljesítménnyel kapcsolatos értékeket (veszteségek, késések és sávszélesség-kihasználtság) a konfiguráció során beállított küszöbértékekkel. Ha egy áramkör esetében a jelentett sávszélesség meghaladja a konfigurációban beállított küszöbértéket, az áramkör nem kifogástalan állapotú van megjelölve. A társítások esetében, ha a jelentett veszteség, késés vagy sávszélesség kihasználtsága nagyobb, mint a konfigurációban beállított küszöbérték, a társítás sérültként van megjelölve. A NPM nem használ mérőszámokat vagy bármilyen más adattípust az állapot eldöntéséhez.
 
-### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Miért jelent a ExpressRoute Monitor'bandwidth-kihasználtsága egy értéket a metrikák differrent a/kimenetben
-A ExpressRoute-figyelő esetében a sávszélesség-utiliation az elmúlt 20 percben a bejövő és kimenő sávszélesség átlaga (bit/mp) kifejezve. Az expressz útvonal metrikái esetében a bit be/ki érték percenkénti adatpontok. A mindkettőhöz használt adatkészlet belsőleg azonos, de a NPM és az ER mérőszámok közötti összesítések között. A szemcsés, a percenkénti figyelés és a gyors riasztások esetében javasoljuk, hogy a riasztásokat közvetlenül az ER mérőszámokon állítsa be.
+### <a name="why-does-expressroute-monitorbandwidth-utilization-report-a-value-different-from-metrics-bits-inout"></a>Miért jelent a ExpressRoute Monitor'bandwidth-kihasználtsága olyan értéket, amely eltér a metrikai bitek és a kimenő értékek között
+A ExpressRoute-figyelő esetében a sávszélesség-kihasználtság az elmúlt 20 percben a bejövő és a kimenő sávszélesség átlaga, amelyet a rendszer bit/mp-ben fejez ki. Az expressz útvonal metrikái esetében a bit be/ki érték percenkénti adatpontok. A mindkettőhöz használt adatkészlet belsőleg azonos, de az Összesítés a NPM és az ER mérőszámok között változik. A szemcsés, a percenkénti figyelés és a gyors riasztások esetében javasoljuk, hogy a riasztásokat közvetlenül az ER mérőszámokon állítsa be.
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>A ExpressRoute-áramkör figyelésének konfigurálása közben az Azure-csomópontok nem észlelhetők.
 Ez akkor fordulhat elő, ha az Azure-csomópontok Operations Manageron keresztül csatlakoznak. A ExpressRoute-figyelő funkció csak azokat az Azure-csomópontokat támogatja, amelyek közvetlen ügynökként vannak csatlakoztatva.
@@ -300,4 +303,3 @@ A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmá
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](./network-performance-monitor.md)való hivatkozással.
-

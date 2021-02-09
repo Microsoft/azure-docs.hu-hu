@@ -713,8 +713,6 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: Csatlakozás távolról fürtcsomópontbeli virtuális géphez
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-                - name: Fürtcsomópontok frissítése felügyelt lemezek használatához
-                  href: upgrade-managed-disks.md
         - name: Önálló fürtök
           items:
             - name: Létrehozás

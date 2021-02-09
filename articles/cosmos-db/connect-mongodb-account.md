@@ -8,12 +8,16 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06b03ac1cfe37307a5839be0d5ca3b1003db35af
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+adobe-target: true
+adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
+adobe-target-experience: Experience B
+adobe-target-content: connect-mongodb-account-experimental.md
+ms.openlocfilehash: d3e619559f1fb2500904aa7349aa131fd9b5fc00
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072411"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980779"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -35,7 +39,7 @@ Ez az oktatóanyag két módszert ismertet a kapcsolati sztringgel kapcsolatos i
 1. Egy böngészőben jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 2. A **Azure Cosmos db** panelen válassza ki az API-t.
 3. A fiók panel bal oldali paneljén kattintson a **gyors üzembe helyezés** elemre.
-4. Válassza ki a platformot ( **.net** , **Node.js** , **MongoDB Shell** , **Java** , **Python** ). Ha nem látja a felsorolt illesztőprogramot vagy eszközt, ne aggódjon – a további kapcsolatok kódrészleteit folyamatosan dokumentáljuk. Kérjük, írja le alább, hogy mit szeretne látni. Ha szeretné megismerni a saját kapcsolatok kiépítésének módját, olvassa el [a fiók kapcsolódási karakterláncával kapcsolatos információkat](#get-the-mongodb-connection-string-to-customize).
+4. Válassza ki a platformot (**.net**, **Node.js**, **MongoDB Shell**, **Java**, **Python**). Ha nem látja a felsorolt illesztőprogramot vagy eszközt, ne aggódjon – a további kapcsolatok kódrészleteit folyamatosan dokumentáljuk. Kérjük, írja le alább, hogy mit szeretne látni. Ha szeretné megismerni a saját kapcsolatok kiépítésének módját, olvassa el [a fiók kapcsolódási karakterláncával kapcsolatos információkat](#get-the-mongodb-connection-string-to-customize).
 5. Másolja és illessze be a kódrészletet a MongoDB alkalmazásba.
 
     :::image type="content" source="./media/connect-mongodb-account/QuickStartBlade.png" alt-text="Gyors üzembe helyezés panel":::
@@ -47,7 +51,7 @@ Ez az oktatóanyag két módszert ismertet a kapcsolati sztringgel kapcsolatos i
 3. A fiók panel bal oldali ablaktábláján kattintson a **kapcsolatok karakterlánc** elemre.
 4. Megnyílik a **kapcsolatok karakterlánca** panel. Minden olyan információt tartalmaz, amely a fiókhoz való kapcsolódáshoz szükséges a MongoDB illesztőprogramjának használatával, beleértve az előépített kapcsolati karakterláncot is.
 
-   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Gyors üzembe helyezés panel" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Kapcsolati sztring panel" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>A kapcsolatok karakterláncának követelményei
 

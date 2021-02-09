@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728091"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979572"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások lekérése az alkalmazás konfigurálásához az Azure-folyamatokkal
 
@@ -60,7 +60,7 @@ Rendelje hozzá a megfelelő alkalmazás-konfigurációs szerepkört a feladaton
 
 Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfigurációs feladata egy Azure DevOps Build-folyamaton.
 
-1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai** elemre kattintva. A folyamat felépítésével kapcsolatos dokumentációért lásd:  [az első folyamat létrehozása](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
+1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai** elemre kattintva. A folyamat felépítésével kapcsolatos dokumentációért lásd:  [az első folyamat létrehozása](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
       - Új létrehozási folyamat létrehozásakor kattintson az **új folyamat** elemre, válassza ki a folyamat tárházát. Válassza az **asszisztens megjelenítése** lehetőséget a folyamat jobb oldalán, és keresse meg az **Azure-alkalmazás konfigurációs** feladatát.
       - Ha meglévő Build-folyamatot használ, válassza a **Szerkesztés** lehetőséget a folyamat szerkesztéséhez. A **feladatok** lapon keresse meg az Azure- **alkalmazás konfigurációs** feladatát.
 1. Konfigurálja a szükséges paramétereket ahhoz, hogy a feladat lekérje a kulcs-értékeket az alkalmazás konfigurációs tárolójából. A paraméterek leírása az alábbi **Paraméterek** szakaszban és az egyes paraméterek melletti elemleírásokban érhető el.
@@ -73,10 +73,10 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfiguráció
 
 Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfigurációs feladata az Azure DevOps kiadási folyamatában.
 
-1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamat dokumentációjában tekintse meg a [folyamatok kiadásával](/azure/devops/pipelines/release?view=azure-devops)foglalkozó témakört.
+1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamat dokumentációjában tekintse meg a [folyamatok kiadásával](/azure/devops/pipelines/release)foglalkozó témakört.
 1. Válasszon ki egy meglévő kiadási folyamatot. Ha még nem rendelkezik ilyennel, kattintson az **új folyamat** elemre, és hozzon létre egy újat.
 1. A kiadási folyamat szerkesztéséhez kattintson a jobb felső sarokban található **Szerkesztés** gombra.
-1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információ a szakaszokról: [szakaszok, függőségek, & feltételek hozzáadása](/azure/devops/pipelines/release/environments?view=azure-devops).
+1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információ a szakaszokról: [szakaszok, függőségek, & feltételek hozzáadása](/azure/devops/pipelines/release/environments).
 1. Kattintson a **+** "Futtatás ügynökön" lehetőségre, majd adja hozzá az **Azure-alkalmazás konfigurációs** feladatát a **feladatok hozzáadása** lapon.
 1. Konfigurálja a szükséges paramétereket a feladaton belül, hogy lekérje a kulcs-értékeket az alkalmazás konfigurációs tárolójából. A paraméterek leírása az alábbi **Paraméterek** szakaszban és az egyes paraméterek melletti elemleírásokban érhető el.
       - Állítsa be az **Azure-előfizetési** paramétert az előző lépésben létrehozott szolgáltatási kapcsolatok nevére.

@@ -1,6 +1,6 @@
 ---
 title: Cloud Service (klasszikus) automatikus méretezése a portálon | Microsoft Docs
-description: Ebből a témakörből megtudhatja, hogyan konfigurálhat automatikus méretezési szabályokat a Cloud Service webes szerepkör vagy feldolgozói szerepkör számára az Azure-ban a portál használatával.
+description: Ebből a témakörből megtudhatja, hogyan konfigurálhatja az Azure-beli Cloud Service (klasszikus) szerepkörök automatikus méretezési szabályait a portál használatával.
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743355"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980830"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Felhőalapú szolgáltatás (klasszikus) automatikus skálázásának konfigurálása a portálon
 
@@ -23,7 +23,7 @@ ms.locfileid: "98743355"
 A Felhőbeli szolgáltatások feldolgozói szerepkörhöz olyan feltételek állíthatók be, amelyek egy méretezési vagy kimenő műveletet indítanak el. A szerepkör feltételei a szerepkör PROCESSZORán, lemezén vagy hálózati terhelésén alapulnak. Beállíthat egy olyan feltételt is, amely egy üzenetsor vagy egy másik, az előfizetéshez társított Azure-erőforrás metrikája alapján is megadható.
 
 > [!NOTE]
-> Ez a cikk a Cloud Service webes és feldolgozói szerepköreire koncentrál. Amikor közvetlenül hoz létre egy virtuális gépet (klasszikus), azt egy felhőalapú szolgáltatás üzemelteti. A standard szintű virtuális gépeket a [rendelkezésre állási csoportokhoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) társíthatja, majd manuálisan be-és kikapcsolhatja őket.
+> Ez a cikk a Cloud Service (klasszikus) szolgáltatásra koncentrál. Amikor közvetlenül hoz létre egy virtuális gépet (klasszikus), azt egy felhőalapú szolgáltatás üzemelteti. A standard szintű virtuális gépeket a [rendelkezésre állási csoportokhoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) társíthatja, majd manuálisan be-és kikapcsolhatja őket.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 Az alkalmazás skálázásának konfigurálása előtt vegye figyelembe a következő információkat:

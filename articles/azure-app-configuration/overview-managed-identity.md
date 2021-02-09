@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6ced30e8c8c5eb60eea3806d9c8080df7c2a12d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072798"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979589"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Felügyelt identitások használata az Azure-alkalmazások konfigurálásához
 
@@ -99,7 +99,7 @@ A következő lépések végigvezetik a felhasználó által hozzárendelt ident
 
 ## <a name="removing-an-identity"></a>Identitás eltávolítása
 
-A rendszer által hozzárendelt identitás eltávolításához tiltsa le a szolgáltatást az Azure CLI az [appconfig Identity Remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) paranccsal. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek a HRE-ből az alkalmazás-erőforrás törlésekor.
+A rendszer által hozzárendelt identitás eltávolításához tiltsa le a szolgáltatást az Azure CLI az [appconfig Identity Remove](/cli/azure/appconfig/identity#az-appconfig-identity-remove) paranccsal. A felhasználó által hozzárendelt identitások egyenként eltávolíthatók. A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek a HRE-ből az alkalmazás-erőforrás törlésekor.
 
 ## <a name="next-steps"></a>Következő lépések
 

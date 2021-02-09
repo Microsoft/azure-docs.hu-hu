@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3289db9b0f27aa528e027ab2e355852947187e76
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 9a4bda216a91efc8139c1f87c5c350c50ae8741d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98187350"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980939"
 ---
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
@@ -27,7 +27,7 @@ ms.locfileid: "98187350"
     | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
     | **Függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.  |
     |**Közzététel**| Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
-    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. A portálon belüli szerkesztés jelenleg nem támogatott a [Python-fejlesztéshez](../articles/azure-functions/functions-reference-python.md). |
+    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. A portálon történő szerkesztés csak a JavaScript, a PowerShell, a írógéppel és a C# szkriptek esetében érhető el. A C# Class Library, a Java és a Python funkciókat [helyileg kell fejleszteni](../articles/azure-functions/functions-develop-local.md#local-development-environments).  |
     |**Verzió**| Verziószám | Válassza ki a telepített futtatókörnyezet verzióját. |
     |**Régió**| Előnyben részesített régió | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 

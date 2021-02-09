@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkemper
-ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932115"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979606"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
 
@@ -56,7 +56,7 @@ Rendelje hozzá a megfelelő alkalmazás-konfigurációs szerepkör-hozzárendel
 
 Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküldéses feladat az Azure DevOps Build-folyamatokban.
 
-1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai** elemre kattintva. A folyamatok létrehozásához szükséges dokumentáció [itt](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)található.
+1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai** elemre kattintva. A folyamatok létrehozásához szükséges dokumentáció [itt](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2)található.
       - Ha új létrehozási folyamatot hoz létre, válassza az **asszisztens megjelenítése** lehetőséget a folyamat jobb oldalán, és keresse meg az Azure- **alkalmazás konfigurálása leküldéses** feladatot.
       - Ha meglévő Build-folyamatot használ, navigáljon a **feladatok** lapra a folyamat szerkesztésekor, és keresse meg az **Azure-alkalmazás konfigurációjának leküldése** feladatot.
 2. Adja meg a szükséges paramétereket ahhoz, hogy a feladat a kulcs-értékeket a konfigurációs fájlból az alkalmazás konfigurációs tárolójába küldje. A **konfigurációs fájl elérési útja** paraméter a fájl tárházának gyökerénél kezdődik.
@@ -66,10 +66,10 @@ Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküld�
 
 Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküldéses feladat egy Azure DevOps kiadási folyamatokban.
 
-1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamatok dokumentációja [itt](/azure/devops/pipelines/release?view=azure-devops)található.
+1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamatok dokumentációja [itt](/azure/devops/pipelines/release)található.
 1. Válasszon ki egy meglévő kiadási folyamatot. Ha még nem rendelkezik ilyennel, válassza az **+ új** lehetőséget, hogy újat hozzon létre.
 1. A kiadási folyamat szerkesztéséhez kattintson a jobb felső sarokban található **Szerkesztés** gombra.
-1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információt a szakaszokról [itt](/azure/devops/pipelines/release/environments?view=azure-devops)találhat.
+1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információt a szakaszokról [itt](/azure/devops/pipelines/release/environments)találhat.
 1. Válassza ki **+** ezt a feladatot, majd adja hozzá az **Azure app Configuration leküldéses** feladatot a **telepítés** lapon.
 1. Konfigurálja a szükséges paramétereket a feladaton belül, hogy a kulcs-értékeket a konfigurációs fájlból az alkalmazás konfigurációs tárolójába küldje el. A paraméterek magyarázatai az alábbi **Paraméterek** szakaszban, valamint az egyes paraméterek melletti elemleírásokban érhetők el.
 1. Kiadás mentése és várólistára helyezése. A kiadási napló megjeleníti a feladat végrehajtása során felmerülő hibákat.

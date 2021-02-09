@@ -1,5 +1,5 @@
 ---
-title: Egészségügyi megoldások létrehozása az Azure IoT Central-vel | Microsoft Docs
+title: Mik az Azure IoT Central Healthcare-megoldások | Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre egészségügyi megoldásokat az Azure IoT Central alkalmazás-sablonok használatával.
 author: philmea
 ms.author: philmea
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c46ce28801c74d0dcc37d23f9d384a69f022ecc4
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: e8a72195f0fcacce2c994e8770157b05b65d70ee
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820347"
+ms.locfileid: "99833150"
 ---
-# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Egészségügyi megoldások létrehozása az Azure IoT Centrallal
+# <a name="what-are-the-iot-central-healthcare-solutions"></a>Mik a IoT Central egészségügyi megoldások?
 
 Ismerje meg, hogyan hozhat létre egészségügyi megoldásokat az Azure IoT Central alkalmazás-sablonok használatával.
 

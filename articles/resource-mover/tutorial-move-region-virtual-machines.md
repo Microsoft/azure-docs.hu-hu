@@ -8,19 +8,17 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820213"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979742"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Oktatóanyag: Azure-beli virtuális gépek áthelyezése régiók között
 
 Ebből a cikkből megtudhatja, hogyan helyezheti át az Azure-beli virtuális gépeket és a kapcsolódó hálózati/tárolási erőforrásokat egy másik Azure-régióba az [Azure-erőforrás-mozgató](overview.md)használatával.
-
-> [!NOTE]
-> Az Azure-beli erőforrás-mozgató szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+.
 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -40,26 +38,21 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Előfeltételek
-
--  Győződjön meg arról, hogy *tulajdonosi* hozzáféréssel rendelkezik az áthelyezni kívánt erőforrásokat tartalmazó előfizetéshez.
-    - Amikor először ad hozzá egy erőforrást egy adott forráshoz és célhoz egy Azure-előfizetésben, az erőforrás-mozgató létrehoz egy [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (korábbi nevén felügyelt szolgáltatás azonosítása (MSI)), amelyet az előfizetés megbízhatónak tekint.
-    - Az identitás létrehozásához, valamint a szükséges szerepkör (közreműködő vagy felhasználói hozzáférés rendszergazdája a forrás-előfizetésben) való hozzárendeléséhez az erőforrások hozzáadásához használt fióknak *tulajdonosi* engedélyekkel kell rendelkeznie az előfizetésben. [További](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) információ az Azure-szerepkörökről.
-- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy létrehozza a célhelyen áthelyezett erőforrásokat. Ha nem rendelkezik kvótával, [kérjen további korlátozásokat](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
+**Követelmény** | **Leírás**
+--- | ---
+**Előfizetés engedélyei** | Győződjön meg arról, hogy *tulajdonosi* hozzáféréssel rendelkezik az áthelyezni kívánt erőforrásokat tartalmazó előfizetéshez<br/><br/> **Miért van szükség tulajdonosi hozzáférésre?** Amikor először ad hozzá egy erőforrást egy adott forráshoz és célhoz egy Azure-előfizetésben, az erőforrás-mozgató létrehoz egy [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (korábbi nevén felügyelt szolgáltatás azonosítása (MSI)), amelyet az előfizetés megbízhatónak tekint. Az identitás létrehozásához, valamint a szükséges szerepkör (közreműködő vagy felhasználói hozzáférés rendszergazdája a forrás-előfizetésben) való hozzárendeléséhez az erőforrások hozzáadásához használt fióknak *tulajdonosi* engedélyekkel kell rendelkeznie az előfizetésben. [További](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) információ az Azure-szerepkörökről.
+**VM-támogatás** |  Győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek támogatottak.<br/><br/> - [Ellenőrizze](support-matrix-move-region-azure-vm.md#windows-vm-support) a támogatott Windows-alapú virtuális gépeket.<br/><br/> - [Ellenőrizze](support-matrix-move-region-azure-vm.md#linux-vm-support) a támogatott Linux-alapú virtuális gépek és kernel-verziók ellenőrzését.<br/><br/> – A támogatott [számítási](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [tárolási](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)és [hálózati](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) beállítások keresése.
+**Cél-előfizetés** | A célhelyen lévő előfizetésnek elegendő kvótára van szüksége ahhoz, hogy létrehozza a célhelyen áthelyezett erőforrásokat. Ha nem rendelkezik kvótával, [kérjen további korlátozásokat](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**A célként megadott régió díjai** | Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
     
 
-## <a name="check-vm-requirements"></a>VIRTUÁLIS gépekre vonatkozó követelmények keresése
+## <a name="prepare-vms"></a>Virtuális gépek előkészítése
 
-1. Győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek támogatottak.
-
-    - [Ellenőrizze](support-matrix-move-region-azure-vm.md#windows-vm-support) a támogatott Windows-alapú virtuális gépeket.
-    - [Ellenőrizze](support-matrix-move-region-azure-vm.md#linux-vm-support) a támogatott Linux-alapú virtuális gépek és kernel-verziók ellenőrzését.
-    - Keresse meg a támogatott [számítási](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [tárolási](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)és [hálózati](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) beállításokat.
-2. Győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek be vannak kapcsolva.
-3. Győződjön meg arról, hogy a virtuális gépek rendelkeznek a legújabb megbízható főtanúsítványokkal, valamint a visszavont tanúsítványok listájának (CRL) frissítése. Ehhez tegye a következőket:
+1. Miután ellenőrizte, hogy a virtuális gépek megfelelnek-e a követelményeknek, győződjön meg arról, hogy az áthelyezni kívánt virtuális gépek be vannak kapcsolva. A célként megadott régióban elérhetővé kívánt összes virtuális gép lemezét csatolni és inicializálni kell a virtuális gépen.
+1. Győződjön meg arról, hogy a virtuális gépek rendelkeznek a legújabb megbízható főtanúsítványokkal, valamint a visszavont tanúsítványok listájának (CRL) frissítése. Ehhez tegye a következőket:
     - Windows rendszerű virtuális gépeken telepítse a legújabb Windows-frissítéseket.
     - Linux rendszerű virtuális gépeken kövesse a terjesztői útmutatót, hogy a számítógépek rendelkezzenek a legújabb tanúsítványokkal és CRL-vel. 
-4. Kimenő kapcsolatok engedélyezése a virtuális gépekről:
+1. Kimenő kapcsolatok engedélyezése a virtuális gépekről:
     - Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi [URL-címek](support-matrix-move-region-azure-vm.md#url-access) elérését
     - Ha hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsolatok vezérléséhez, hozza létre ezeket a [szolgáltatási kódelemek szabályait](support-matrix-move-region-azure-vm.md#nsg-rules).
 
@@ -85,12 +78,12 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
     ![A forrás és a cél régió kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/source-target.png)
 
 6. Az **áthelyezni kívánt erőforrások** területen kattintson az **erőforrások kiválasztása** elemre.
-7. Az **erőforrások kiválasztása** területen válassza ki a virtuális gépet. Csak [az áthelyezéshez támogatott erőforrásokat](#check-vm-requirements)adhat hozzá. Ezután kattintson a **kész** gombra.
+7. Az **erőforrások kiválasztása** területen válassza ki a virtuális gépet. Csak [az áthelyezéshez támogatott erőforrásokat](#prepare-vms)adhat hozzá. Ezután kattintson a **kész** gombra.
 
     ![Az áthelyezni kívánt virtuális gépek kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  Az **áthelyezni kívánt erőforrásokhoz** kattintson a **tovább** gombra.
-9. A **felülvizsgálat + Hozzáadás** elemnél ellenőrizze a forrás-és a célhely beállításait. 
+9. A **felülvizsgálat** területen ellenőrizze a forrás-és a célhely beállításait. 
 
     ![Lap a beállítások áttekintéséhez és az áthelyezés folytatásához](./media/tutorial-move-region-virtual-machines/review.png)
 10. Az erőforrások hozzáadásának megkezdéséhez kattintson a **Folytatás** gombra.
@@ -99,25 +92,27 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 
 > [!NOTE]
 > - A hozzáadott erőforrások *előkészítésre váró* állapotban vannak.
-> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információk](remove-move-resources.md).
+> - A virtuális gépek erőforráscsoport hozzáadása automatikusan megtörténik.
+> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információ](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Függőségek feloldása
 
 1. Ha az erőforrások egy *érvényesítési függőségek* üzenetet jelenítenek meg a **problémák** oszlopban, kattintson a **függőségek ellenőrzése** gombra. Az érvényesítési folyamat megkezdődik.
 2. Ha függőségek találhatók, kattintson a **függőségek hozzáadása** lehetőségre. 
-3. A **függőségek hozzáadása** területen válassza ki a függő erőforrásokat > **függőségek hozzáadása** elemet. Figyelje az értesítések állapotát.
+3. A **függőségek hozzáadása** területen hagyja meg az alapértelmezett **összes függőség megjelenítése** beállítást.
+
+    - Az összes függőség megjelenítése az erőforrás közvetlen és közvetett függőségein keresztül. Egy virtuális gép esetében például a NIC, a Virtual Network, a hálózati biztonsági csoportok (NSG) stb.
+    - Az első szint függőségeinek megjelenítése csak a közvetlen függőségeket jeleníti meg. Egy virtuális gép esetében például a hálózati ADAPTERt jeleníti meg, a virtuális hálózatot azonban nem.
+
+
+4. Válassza ki azokat a függő erőforrásokat, amelyeket hozzá szeretne adni > **függőségek hozzáadása** elemet. Figyelje az értesítések állapotát.
 
     ![Függőségek hozzáadása](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
-4. Szükség esetén további függőségeket vehet fel, és újból érvényesítheti a függőségeket. 
+4. Újból érvényesítse a függőségeket. 
     ![További függőségek hozzáadására szolgáló oldal](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. Az **egyes régiók** oldalon ellenőrizze, hogy az erőforrások mostantól függőben vannak-e *előkészítésre váró* állapotban, problémák nélkül.
 
-    ![A függőben lévő előkészítési állapotú erőforrásokat megjelenítő oldal](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
-
-> [!NOTE]
-> Ha a cél beállításait a mozgatás megkezdése előtt szeretné szerkeszteni, válassza ki a hivatkozást az erőforráshoz tartozó **cél konfiguráció** oszlopban, és szerkessze a beállításokat. Ha szerkeszti a cél virtuális gép beállításait, a cél virtuális gép mérete nem lehet kisebb, mint a forrás virtuális gép mérete.  
 
 ## <a name="move-the-source-resource-group"></a>A forrás erőforráscsoport áthelyezése 
 
@@ -158,9 +153,17 @@ Az áthelyezési folyamat véglegesítése és befejezése:
 
 ## <a name="prepare-resources-to-move"></a>Az áthelyezni kívánt erőforrások előkészítése
 
+Most, hogy áthelyezte a forrás-erőforráscsoport áthelyezését, előkészítheti az *előkészítés függő* állapotában lévő egyéb erőforrások áthelyezését.
+
+1. Az **egyes régiókban** ellenőrizze, hogy az erőforrások mostantól *függőben* lévő állapotban vannak-e, és nincs probléma. Ha nem, ellenőrizze újra, és hárítsa el a függőben lévő problémákat.
+
+    ![A függőben lévő előkészítési állapotú erőforrásokat megjelenítő oldal](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
+
+2. Ha a cél beállításait a mozgatás megkezdése előtt szeretné szerkeszteni, válassza ki a hivatkozást az erőforráshoz tartozó **cél konfiguráció** oszlopban, és szerkessze a beállításokat. Ha szerkeszti a cél virtuális gép beállításait, a cél virtuális gép mérete nem lehet kisebb, mint a forrás virtuális gép mérete.  
+
 Most, hogy áthelyezte a forrás erőforráscsoportot, előkészítheti a többi erőforrás áthelyezését.
 
-1. Az **egyes régiókban** válassza ki az előkészíteni kívánt erőforrásokat. 
+3. Válassza ki az előkészíteni kívánt erőforrásokat. 
 
     ![Az egyéb erőforrások előkészítésének kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 

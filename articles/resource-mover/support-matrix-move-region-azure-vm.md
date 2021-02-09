@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222798"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980490"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közötti áthelyezésének támogatása
 
@@ -116,7 +116,7 @@ Bővítmények | Nem támogatott | A bővítmények nem másolódnak át a célk
 Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideiglenes lemez támogatását foglalja össze. Fontos, hogy megfigyelje a virtuálisgép-lemezek korlátait és a [felügyelt lemezekre](../virtual-machines/disks-scalability-targets.md) vonatkozó célokat, hogy elkerülje a teljesítménnyel kapcsolatos problémákat.
 
 > [!NOTE]
-> A cél virtuális gép méretének egyenlőnek vagy annál nagyobbnak kell lennie a forrás virtuális géppel. Az érvényesítéshez használt paraméterek a következők: adatlemezek száma, hálózati adapterek száma, rendelkezésre álló processzorok, memória GB-ban. Ha nem ad meg hibát, a rendszer nem adja ki.
+> A cél virtuális gép méretének egyenlőnek vagy annál nagyobbnak kell lennie a forrás virtuális géppel. Az érvényesítéshez használt paraméterek a következők: adatlemezek száma, hálózati adapterek száma, rendelkezésre álló processzorok, memória GB-ban. Ha a hiba sn't van kiállítva.
 
 
 **Összetevő** | **Támogatás** | **Részletek**
@@ -134,6 +134,8 @@ Felügyelt lemez (prémium) | Támogatott |
 Standard SSD | Támogatott |
 2. generációs (UEFI rendszerindítási) | Támogatott
 Rendszerindítási diagnosztika Storage-fiókja | Nem támogatott | A virtuális gép a célként megadott régióba való áthelyezése után engedélyezze újra.
+Virtuális gépek, amelyeken engedélyezve van az Azure Disk Encryption | Támogatott | [További információ](tutorial-move-region-encrypted-virtual-machines.md)
+Ügyfél által felügyelt kulccsal kiszolgálóoldali titkosítást használó virtuális gépek | Támogatott | [További információ](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>Korlátok és adatváltozások aránya
 

@@ -10,12 +10,12 @@ ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5f8264221ada261ccae1b347c47cdf27967d5d8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537158"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980277"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -37,6 +37,10 @@ A blob verziószámozásának engedélyezéséről a [blob verziószámozásána
 A verzió rögzíti egy blob állapotát egy adott időpontban. Ha a blob verziószámozása engedélyezve van egy Storage-fiókhoz, az Azure Storage automatikusan létrehoz egy blob új verzióját a blob módosításának vagy törlésének minden egyes időpontjában.
 
 Ha olyan blobot hoz létre, amelyen engedélyezve van a verziószámozás, az új blob a blob aktuális verziója (vagy az alap blob). Ha ezt követően módosítja a blobot, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a módosítás előtt. A módosított blob lesz az új aktuális verzió. Minden alkalommal létrejön egy új verzió, amikor módosítja a blobot.
+
+Az alábbi ábra bemutatja, hogyan jönnek létre a verziók az írási és törlési műveletekben, és hogyan lehet a korábbi verziót az aktuális verzióra előléptetni:
+
+:::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="A blob verziószámozásának működését bemutató ábra":::
 
 Ha a Blobok egy része nagy számú verziót használ, növelheti a Blobok listázási műveleteinek késését. A Microsoft a Blobok kevesebb mint 1000 verzióját javasolja. Az életciklus-kezelési szolgáltatással automatikusan törölheti a régi verziókat. Az életciklus-kezeléssel kapcsolatos további információkért lásd: [a költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával](storage-lifecycle-management-concepts.md).
 
@@ -187,7 +191,7 @@ A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy r
 
 A következő táblázat bemutatja, hogy mely Azure RBAC-műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Leírás | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
+| Description | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage-blobadatok közreműködője |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage-blobadatok tulajdonosa |

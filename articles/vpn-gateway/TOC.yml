@@ -161,7 +161,7 @@
               href: openvpn-azure-ad-mfa.md
             - name: VPN-ügyfél konfigurálása
               href: openvpn-azure-ad-client.md
-            - name: Tudnivalók az ügyféloldali VPN-profil letöltési fájljáról
+            - name: VPN-ügyfél profil fájljainak használata
               href: about-vpn-profile-download.md
             - name: Intune – VPN-ügyfélprofil üzembe helyezése
               href: vpn-profile-intune.md

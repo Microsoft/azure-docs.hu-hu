@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803867"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980514"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
@@ -32,6 +32,10 @@ Az időponthoz tartozó visszaállítás engedélyezéséhez létre kell hoznia 
 Egy időponthoz tartozó visszaállítás kezdeményezéséhez hívja meg a blob- [tartományok visszaállítása](/rest/api/storagerp/storageaccounts/restoreblobranges) műveletet, és adja meg a visszaállítási pontot UTC idő szerint. Megadhatja a visszaállítandó tároló-és blob-nevek lexicographical, vagy kihagyhatja a tartományt a Storage-fiókban lévő összes tároló visszaállításához. Egy visszaállítási műveletben legfeljebb 10 lexicographical-tartomány támogatott.
 
 Az Azure Storage elemzi a megadott Blobok összes módosítását a kért visszaállítási pont között, az UTC időpontban és a jelen pillanatban megadva. A visszaállítási művelet atomi, így az összes módosítás visszaállításával vagy meghibásodásával teljesen sikeres lesz. Ha vannak olyan Blobok, amelyek nem állíthatók vissza, a művelet meghiúsul, és az érintett tárolók olvasási és írási műveletei folytatódnak.
+
+Az alábbi ábrán látható, hogy az időponthoz tartozó visszaállítás hogyan működik. Egy vagy több tároló vagy blob tartománya *n* nappal ezelőtt lett visszaállítva állapotba, ahol *n* az adott időponthoz tartozó visszaállításhoz megadott megőrzési időtartamnál kisebb vagy azzal egyenlő. Ennek hatására a megőrzési időszak során történt írási és törlési műveletek visszaállíthatók.
+
+:::image type="content" source="media/point-in-time-restore-overview/point-in-time-restore-diagram.png" alt-text="Ábra, amely bemutatja, hogy az adott időpontban visszaállítja a tárolókat egy korábbi állapotba":::
 
 Egyszerre csak egy visszaállítási műveletet lehet futtatni a Storage-fiókban. A visszaállítási művelet nem szakítható meg, ha folyamatban van, de egy második visszaállítási művelet is végrehajtható az első művelet visszavonásához.
 
@@ -91,7 +95,7 @@ A visszaállítási művelet költségeit a helyreállítási időszak során m�
 
 Az időponthoz tartozó visszaállítás díjszabásáról további információt a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben](point-in-time-restore-manage.md)
 - [A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage](storage-blob-change-feed.md)

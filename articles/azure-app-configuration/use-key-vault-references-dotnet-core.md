@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 94bab9506d2bf7c29f997bcbfd400a412d5ac041
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 37bc7fbcd366455668d5316e45ffbf79127a49f3
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932234"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981222"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Oktatóanyag: Key Vault referenciák használata ASP.NET Core alkalmazásban
 
@@ -51,7 +51,7 @@ Az oktatóanyag elindítása előtt telepítse a [.net Core SDK](https://dotnet.
 1. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában:
 
     ![A képernyőképen az erőforrás létrehozása lehetőség látható a Azure Portal.](./media/quickstarts/search-services.png)
-1. A keresőmezőbe írja be a **Key Vault** kifejezést.
+1. A keresőmezőbe írja be a **Key Vault** nevet.
 1. Az eredmények listából válassza a bal oldali **kulcstartók** lehetőséget.
 1. A **kulcstartók** területen válassza a **Hozzáadás** lehetőséget.
 1. A **Key Vault létrehozása** jobb oldalán adja meg a következő információkat:
@@ -93,7 +93,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
 ## <a name="connect-to-key-vault"></a>Kapcsolódás Key Vaulthoz
 
-1. Ebben az oktatóanyagban egy egyszerű szolgáltatásnevet használ a Key Vault való hitelesítéshez. Az egyszerű szolgáltatás létrehozásához használja az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot:
+1. Ebben az oktatóanyagban egy egyszerű szolgáltatásnevet használ a Key Vault való hitelesítéshez. Az egyszerű szolgáltatás létrehozásához használja az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot:
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth

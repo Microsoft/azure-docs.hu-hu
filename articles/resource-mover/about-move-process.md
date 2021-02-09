@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 5261904dd1ee7f280209015d8f756a055dfab57e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: facbb30201aa6bde2044ca647383cc32ecd9ba26
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522944"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980558"
 ---
 # <a name="about-the-move-process"></a>Az áthelyezési folyamat
 
@@ -46,7 +46,7 @@ Az egyes áthelyezési erőforrások az összegzett lépésekből állnak.
 **4. lépés: áthelyezés kezdeményezése** | Az áthelyezési folyamat elindításához. Az áthelyezési módszer az erőforrás típusától függ:<br/><br/> - **Állapot nélküli**: az állapot nélküli erőforrások esetében az áthelyezési folyamat általában egy importált sablont helyez üzembe a célként megadott régióban. A sablon a forrás erőforrás-beállításokon alapul, és a megcélzott beállításokon végzett manuális módosításokat is megteheti.<br/><br/> - **Állapot**-nyilvántartó: állapot-nyilvántartó erőforrások esetében az áthelyezési folyamat magában foglalhatja az erőforrás létrehozását, illetve a másolás engedélyezését a céltartományban.<br/><br/>  Csak állapot-nyilvántartó erőforrások esetében az áthelyezés kezdeményezése a forrás erőforrásainak leállását eredményezheti. Például a virtuális gépek és az SQL. | Az áthelyezési *folyamat elindításával elindíthatja* az állapotot.<br/><br/> A sikeres kezdeményező áthelyezés az erőforrás-állapotot áthelyezi a *függőben lévő áthelyezésre*, és nincs probléma. <br/><br/> Egy sikertelen áthelyezési folyamat *nem tudta végrehajtani* az állapotot az áthelyezés indításához.
 **5. lépés 1. lehetőség: áthelyezés elvetése** | A kezdeti áthelyezés után eldöntheti, hogy a teljes áthelyezéssel kíván-e továbblépni. Ha nem, akkor elvetheti az áthelyezést, és az erőforrás-mozgató törli a célhelyen létrehozott erőforrásokat. Az állapot-nyilvántartó erőforrások replikálási folyamata az elvetési folyamat után is folytatódik. Ez a beállítás teszteléshez használható. | Az erőforrások figyelmen kívül hagyása az állapot *elvetésével* történik.<br/><br/> Az áthelyezés sikeres elvetése a *függőben állapotba helyezés elindításához*, problémák nélkül.<br/><br/> A meghiúsult elvetési lépések állapota *nem sikerült az áthelyezés elvetéséhez*. 
 **5. lépés 2. lehetőség: áthelyezés elkövetése** | Ha a kezdeti lépés után a teljes áthelyezést szeretné használni, ellenőrizze, hogy az erőforrások megtalálhatók-e a cél régióban, és ha elkészült, véglegesítse az áthelyezést.<br/><br/> Csak állapot-nyilvántartó erőforrások esetén a véglegesítés olyan forrás-erőforrásokat eredményezhet, mint például a virtuális gépek vagy az SQL elérhetetlenné válása. | Ha véglegesíti az áthelyezést, az erőforrás állapota a * végrehajtás folyamatban * * állapotba kerül.<br/><br/> A sikeres végrehajtást követően az erőforrás állapota a *véglegesített áthelyezés befejezése* nélkül jelenik meg, és nincs probléma.<br/><br/> Nem sikerült végrehajtani a sikertelen végrehajtás állapotának *áthelyezését*.
-**6. lépés: forrás törlése** | Miután elvégezte az áthelyezést, és ellenőrizte az erőforrásokat a céltartományban, törölheti a forrás erőforrást. | Az áthelyezés véglegesítése után az erőforrás állapota *függőben* állapotba kerül.
+**6. lépés: forrás törlése** | Miután elvégezte az áthelyezést, és ellenőrizte az erőforrásokat a céltartományban, törölheti a forrás erőforrást. | A véglegesítést követően egy erőforrás állapota *függőben van a törlési forrásra*. Ezután kiválaszthatja a forrás erőforrást, és törölheti is.<br/><br/> – Csak a *törlési forrás függőben* lévő állapotú erőforrások törölhetők. | Egy erőforráscsoport vagy SQL Server törlése az erőforrás-mozgató portálon nem támogatott. Ezeket az erőforrásokat csak az erőforrás-tulajdonságok lapról lehet törölni.
 
 
 ## <a name="move-region-states"></a>Régió állapotának áthelyezése
@@ -66,13 +66,13 @@ Az áthelyezési folyamat során előfordulhat, hogy a rendszer a következő f�
 
 ### <a name="remove-resources"></a>Erőforrások eltávolítása
 
-Ha nem szeretne áthelyezni egy erőforrást, távolítsa el az áthelyezési gyűjteményből. Általában az erőforrás törlődik a gyűjteményből, valamint a kapcsolódó műveletekkel vagy objektumokkal, például a replikálással vagy a tárolt sablonokkal együtt. Pontosan mi történik, ha eltávolít egy erőforrást az erőforrás típusától és az erőforrás állapotáról a törléskor. [További információk](remove-move-resources.md).
+Ha nem szeretne áthelyezni egy erőforrást, távolítsa el az áthelyezési gyűjteményből. Általában az erőforrás törlődik a gyűjteményből, valamint a kapcsolódó műveletekkel vagy objektumokkal, például a replikálással vagy a tárolt sablonokkal együtt. Pontosan mi történik, ha eltávolít egy erőforrást az erőforrás típusától és az erőforrás állapotáról a törléskor. [További információ](remove-move-resources.md).
 
 ## <a name="move-impact"></a>Hatás áthelyezése
 
 A táblázat összefoglalja, hogy mi befolyásolja a régiók közötti váltást.
 
-**Viselkedés** | **Régiók között**
+**Működés** | **Régiók között**
 --- | --- | --- 
 **Adatok** | Az erőforrás-adatok és a metaadatok át lesznek helyezve.<br/><br/> A metaadatok ideiglenes tárolása az erőforrás-függőségek és műveletek állapotának nyomon követése érdekében történik.
 **Erőforrás** | A forrás erőforrásai érintetlenek maradnak, hogy az alkalmazások továbbra is működőképesek legyenek, és az áthelyezés után is eltávolíthatók.<br/><br/> Egy erőforrás jön létre a célként megadott régióban.

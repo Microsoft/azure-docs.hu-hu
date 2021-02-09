@@ -4,18 +4,21 @@ description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét ki
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: bebef4e8964576b968af8f8aebd06030ca0d0227
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 63e9c87d1d94d6b803c27862bc9f2755e02f3111
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222717"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980940"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
 Azure Functions lehetővé teszi a kód kiszolgáló nélküli környezetben való futtatását anélkül, hogy először létre kellene hoznia egy virtuális gépet (VM), vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatja a Azure Functionst a "Hello World" HTTP-trigger függvény létrehozásához a Azure Portalban.
 
-Javasoljuk, hogy [helyileg fejlessze a függvényeket](functions-develop-local.md) , és tegye közzé az Azure-ban egy Function alkalmazásban.  
+>[!NOTE]
+>A portálon belüli szerkesztés csak a JavaScript, a PowerShell, a írógéppel és a C# parancsfájl-függvények esetében támogatott.<br><br>A C# Class Library, a Java és a Python függvények esetében létrehozhatja a Function alkalmazást a portálon, de a függvényeket helyileg is létre kell hoznia, majd közzé kell tennie őket az Azure-ban. 
+
+Ehelyett azt javasoljuk, hogy [helyileg fejlessze a funkciókat](functions-develop-local.md) , és tegye közzé az Azure-ban egy Function alkalmazásban.  
 A következő hivatkozások egyikével kezdheti meg a választott helyi fejlesztési környezet és nyelv használatát:
 
 | Visual Studio Code | Terminál/parancssor | Visual Studio |

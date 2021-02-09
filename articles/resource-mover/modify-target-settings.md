@@ -5,14 +5,14 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: eb28e4c8f6b465e2a9b38cc4571bc4a00baf4ef7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533055"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979623"
 ---
 # <a name="modify-target-settings"></a>Célbeállítások módosítása
 
@@ -36,16 +36,16 @@ A módosítható konfigurációs beállítások összegzése a táblázatban lá
 
 **Erőforrás** | **Beállítások** 
 --- | --- | --- 
-**Virtuális gép neve** | Paraméterek:<br/><br/> – Hozzon létre egy új virtuális gépet ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új virtuális gépet egy másik névvel a célként megadott régióban.<br/><br/> – Használjon egy meglévő virtuális gépet a célként megadott régióban.<br/><br/> Ha új virtuális gépet hoz létre, a módosított beállítások kivételével az új célként megadott virtuális gép ugyanazokat a beállításokat rendeli hozzá, mint a forrás.
-**Virtuális gép rendelkezésre állási zónája** | A rendelkezésre állási zóna, amelyben a célként megadott virtuális gép el lesz helyezve. Ez akkor jelölhető meg, ha nem szeretné módosítani a forrás beállításait, **vagy ha nem** szeretné a virtuális gépet egy rendelkezésre állási zónában elhelyezni.
+**a virtuális gép neve** | Paraméterek:<br/><br/> – Hozzon létre egy új virtuális gépet ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új virtuális gépet egy másik névvel a célként megadott régióban.<br/><br/> – Használjon egy meglévő virtuális gépet a célként megadott régióban.<br/><br/> Ha új virtuális gépet hoz létre, a módosított beállítások kivételével az új célként megadott virtuális gép ugyanazokat a beállításokat rendeli hozzá, mint a forrás.
+**Virtuális gép rendelkezésre állási zónája** | A rendelkezésre állási zóna, amelyben a célként megadott virtuális gép el lesz helyezve. Válassza a **nem alkalmazható** lehetőséget, ha nem szeretné módosítani a forrás beállításait, vagy ha nem szeretné a virtuális gépet egy rendelkezésre állási zónában elhelyezni.
 **Virtuális gép termékváltozata** | A [virtuális gép típusa](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (a célként megadott régióban elérhető), amelyet a cél virtuális géphez használni fog.<br/><br/> A kiválasztott cél virtuális gép nem lehet kisebb, mint a forrásoldali virtuális gép.
-**Hálózati erőforrások** | A Virtual Networks (virtuális hálózatok)/Network biztonsági csoportok/hálózati adapterek beállításai:<br/><br/> – Hozzon létre egy új erőforrást ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új erőforrást egy másik névvel a célként megadott régióban.<br/><br/> – Egy meglévő hálózati erőforrást használhat a célként megadott régióban.<br/><br/> Ha új cél-erőforrást hoz létre, a módosított beállítások kivételével a forrás erőforrással megegyező beállításokat rendel hozzá.
-**Nyilvános IP-cím neve** | Adja meg a nevet.
-**Nyilvános IP-cím SKU** | Határozza meg az [SKU](../virtual-network/public-ip-addresses.md#sku)-t.
-**Nyilvános IP-cím zóna** | A [zóna](../virtual-network/public-ip-addresses.md#standard) megadása a szabványos nyilvános IP-címekhez.<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
-**Terheléselosztó neve** | Adja meg a nevet.
-**Terheléselosztó SKU** | Alapszintű vagy standard. A standard használatát javasoljuk.
-**Terheléselosztó zónája** | Határozza meg a terheléselosztó zónáját. <br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
+* * Virtuális gép rendelkezésre állási készlete | A rendelkezésre állási csoport, amelyben a célként megadott virtuális gép el lesz helyezve. Válassza a **nem alkalmazható**  lehetőséget, ha nem szeretné módosítani a forrás beállításait, vagy ha nem szeretné a virtuális gépet egy rendelkezésre állási csoportba helyezni.
+**VM Key Vault** | A társított kulcstartó, amikor engedélyezi az Azure Disk Encryption szolgáltatást egy virtuális gépen.
+**Lemezes titkosítási csoport** | A társított lemez-titkosítási készlet, ha a virtuális gép ügyfél által felügyelt kulcsot használ a kiszolgálóoldali titkosításhoz.
+**Erőforráscsoport** | Az az erőforráscsoport, amelyben a célként megadott virtuális gép el lesz helyezve.
+**Hálózati erőforrások** | Hálózati adapterek, virtuális hálózatok (virtuális hálózatok/) és hálózati biztonsági csoportok/hálózati adapterek beállításai:<br/><br/> – Hozzon létre egy új erőforrást ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új erőforrást egy másik névvel a célként megadott régióban.<br/><br/> – Egy meglévő hálózati erőforrást használhat a célként megadott régióban.<br/><br/> Ha új cél-erőforrást hoz létre, a módosított beállítások kivételével a forrás erőforrással megegyező beállításokat rendel hozzá.
+**Nyilvános IP-cím neve, SKU és zóna** | Megadja a szabványos nyilvános IP-címek nevét, az [SKU](../virtual-network/public-ip-addresses.md#sku)-t és a [zónát](../virtual-network/public-ip-addresses.md#standard) .<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
+* * Terheléselosztó neve, SKU és zóna * * | Megadja a terheléselosztó nevét, SKU-jának (alapszintű vagy standard) és zónáját.<br/><br/> A standard sKU használatát javasoljuk.<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, a **zónát redundánsként** kell megadni.
 **Erőforrás-függőségek** | Az egyes függőségek beállításai:<br/><br/>– Az erőforrás a forrástól függő erőforrásokat használ, amelyek átkerülnek a célként megadott régióba.<br/><br/> – Az erőforrás a célként megadott régióban található különböző függő erőforrásokat használja. Ebben az esetben a megcélzott régióban található hasonló erőforrások közül választhat.
 
 ### <a name="edit-vm-target-settings"></a>Virtuálisgép-cél beállításainak szerkesztése

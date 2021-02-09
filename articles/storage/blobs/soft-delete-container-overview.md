@@ -6,33 +6,39 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0c15be86c282451440f9b81d57f17e835559b5ae
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962176"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979103"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
-A tárolók (előzetes verzió) helyreállítható törlésével az adatok véletlenül vagy hibásan módosíthatók vagy törölhetők. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, a rendszer megőrzi a törölt tárolókat és azok tartalmát az Azure Storage-ban az Ön által megadott időszakra vonatkozóan. A megőrzési időszak alatt visszaállíthatja a korábban törölt tárolókat és a bennük lévő blobokat.
+A tárolók (előzetes verzió) helyreállítható törlésével megvédheti az adatait véletlenül vagy rosszindulatúan törölve. Ha a tároló-helyreállító törlés engedélyezve van egy Storage-fiókhoz, a rendszer megőrzi a törölt tárolókat és azok tartalmát az Azure Storage-ban az Ön által megadott időszakra vonatkozóan. A megőrzési időszak alatt visszaállíthatja a korábban törölt tárolókat. A tároló visszaállítása visszaállítja a tárolóban lévő összes blobot a törlés után.
 
 A blob-adatai teljes körű védelme érdekében a Microsoft a következő adatvédelmi funkciók engedélyezését javasolja:
 
-- Tároló-helyreállítható törlés a tároló véletlen törlésével vagy felülírásával szembeni védelem érdekében. A tárolók helyreállítható törlésének engedélyezéséről a tárolók helyreállítható [törlésének engedélyezése és kezelése](soft-delete-container-enable.md)című témakörben olvashat bővebben.
-- BLOB-Törlés – az egyes Blobok véletlen törlésével vagy felülírásával szembeni védelem érdekében. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el [a](soft-delete-blob-overview.md)Blobok eltávolítását ismertető témakört.
+- Tároló-helyreállítható törlés a törölt tárolók visszaállításához. A tárolók helyreállítható törlésének engedélyezéséről a tárolók helyreállítható [törlésének engedélyezése és kezelése](soft-delete-container-enable.md)című témakörben olvashat bővebben.
 - BLOB verziószámozása, hogy automatikusan fenntartsa a blob korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve. A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
+- BLOB törölje a törlést, hogy visszaállítsa a törölt blobot vagy verziót. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el a következőt: Blobok eltávolításának [engedélyezése és kezelése](soft-delete-blob-enable.md).
 
 > [!WARNING]
-> A Storage-fiók törlése nem vonható vissza. A Soft delete nem véd a Storage-fiókok törlésével szemben. Egy Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+> A Storage-fiók törlése nem vonható vissza. A helyreállítható törlés nem véd a Storage-fiókok törlésével, de csak az adott fiókban lévő adatobjektumok törlésével szemben. A Storage-fiók törlésével szembeni védelemhez állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. A Azure Resource Manager erőforrásainak zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>A tárolók törlésének működése
 
 A tárolók helyreállított törlésének engedélyezésekor megadhat egy megőrzési időtartamot a törölt tárolók számára 1 és 365 nap között. Az alapértelmezett megőrzési időtartam 7 nap. A megőrzési időszak alatt helyreállíthatja a törölt tárolót a **tároló törlésének** visszavonása művelet meghívásával.
+
+A tárolók visszaállításakor a tároló blobok és a blob-verziók is visszaállíthatók. Ha azonban maga a tároló törlődött, csak a tárolók törlését használhatja a Blobok visszaállításához. Ha egy törölt blobot szeretne visszaállítani, ha a fölérendelt tároló nem lett törölve, a blob Soft DELETE vagy a blob verziószámozást kell használnia.
+
+A következő ábra azt mutatja be, hogyan állítható vissza a törölt tároló, ha a tárolók Soft delete engedélyezve van:
+
+:::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="Az a diagram, amely bemutatja, hogyan állítható vissza a helyreállítható tároló":::
 
 Tároló visszaállításakor visszaállíthatja az eredeti nevét, ha a nevet nem használták fel újra. Ha az eredeti tároló nevét használták, a tárolót új névvel állíthatja vissza.
 
@@ -42,7 +48,7 @@ A tárolók törlésének letiltása nem eredményezi végleges törlését a ko
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
-A tárolók Soft delete előzetes verzióban érhető el az összes nyilvános Azure-régióban.
+A tárolók Soft DELETE az összes Azure-régióban előzetes verzióban érhető el.
 
 > [!IMPORTANT]
 > A tároló Soft delete előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
@@ -113,7 +119,7 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 A tárolók törlésének engedélyezése nem díjköteles. A helyreállított törölt tárolókban lévő adatforgalom az aktív adatforgalommal megegyező sebességgel történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)

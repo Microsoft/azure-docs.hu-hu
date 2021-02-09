@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 86d0c75d8b4c7c331e3e7ad90271e3fb42ff1964
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664112"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980728"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -69,7 +69,7 @@ Először nyissa meg a böngészőt, ahol a Azure Portal meg van nyitva, és vé
 
 Ezután indítsa el a Visual studiót (vagy egy másik szerkesztőprogramot), és nyissa meg a kód megoldást a *Digital-Twins-Samples-master > ADTSampleApp* mappában. Ezután végezze el a következő lépéseket a függvények létrehozásához:
 
-1. Hozzon létre egy új, **SignalRFunctions.cs** nevű C# Sharp osztályt a *SampleFunctionsApp* projektben.
+1. A *SampleFunctionsApp* projektben hozzon létre egy új, **SignalRFunctions.cs** nevű C#-osztályt.
 
 1. Cserélje le a Class (osztály) fájl tartalmát a következő kódra:
     
@@ -82,7 +82,9 @@ Ezután indítsa el a Visual studiót (vagy egy másik szerkesztőprogramot), é
 
     Ennek során fel kell oldania a függőségi problémákat az osztályban.
 
-Ezután tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététele* című szakaszban](tutorial-end-to-end.md#publish-the-app) ismertetett lépéseket követve a *Kapcsolódás végpontok közötti megoldáshoz* című oktatóanyagot. Közzéteheti ugyanazt az App Service/Function alkalmazásban, amelyet a teljes körű oktatóanyag prereq használt, vagy létrehozhat egy újat – de érdemes lehet ugyanazt az eszközt használni a Duplikálás minimalizálásához. Továbbá fejezze be az alkalmazás közzétételét az alábbi lépésekkel:
+Ezután tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététele* című szakaszban](tutorial-end-to-end.md#publish-the-app) ismertetett lépéseket követve a *Kapcsolódás végpontok közötti megoldáshoz* című oktatóanyagot. Közzéteheti ugyanazt az App Service/Function alkalmazásban, amelyet a végpontok közötti oktatóanyag [előfeltételében](#prerequisites)használt, vagy létrehozhat egy újat – de érdemes lehet ugyanezt is használni a Duplikálás minimalizálásához. 
+
+Ezután fejezze be az alkalmazás közzétételét a következő lépésekkel:
 1. Gyűjtse össze az *egyeztetési* függvény **http-végpontjának URL-címét**. Ehhez nyissa meg a Azure Portal [Function apps](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) lapot, és válassza ki a függvény alkalmazást a listából. Az alkalmazás menüben válassza a *függvények* lehetőséget, majd válassza az *egyeztetés* funkciót.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal a Function alkalmazás nézetét, és a &quot;functions&quot; elem ki van emelve a menüben. A függvények listája megjelenik az oldalon, és az &quot;egyeztetés&quot; függvény is ki van emelve.":::
@@ -124,23 +126,11 @@ Az esemény- *előfizetés létrehozása* lapon kattintson a **create (létrehoz
 
 ## <a name="configure-and-run-the-web-app"></a>A webalkalmazás konfigurálása és futtatása
 
-Ebben a szakaszban a művelet eredményét fogja látni. Először is indítsa el a **szimulált eszköz minta alkalmazást** , amely telemetria adatokat küld az Azure Digital Twins-példányon keresztül. Ezután konfigurálja a **minta-ügyfél webalkalmazást** úgy, hogy az Ön által beállított Azure-szignáló folyamathoz kapcsolódjon. Ezt követően a minta-webalkalmazás valós időben történő frissítésével megtekintheti a mintául szolgáló webes alkalmazást.
-
-### <a name="run-the-device-simulator"></a>Az eszköz-szimulátor futtatása
-
-A végpontok közötti oktatóanyag előfeltétele, hogy az eszközt egy IoT Hub és az Azure Digital Twins-példányon keresztül küldje el [az eszközön](tutorial-end-to-end.md#configure-and-run-the-simulation) .
-
-Most mindössze annyit kell tennie, hogy elindítja a szimulátor projektet, amely a *Digital-Twins-Samples-master > DeviceSimulator > DeviceSimulator. SLN* címen található. Ha a Visual studiót használja, nyissa meg a projektet, majd futtassa ezt a gombot az eszköztáron:
-
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="A Visual Studio Start gombja (DeviceSimulator projekt)":::
-
-Ekkor megnyílik egy konzolablak szimulált hőmérsékleti telemetria üzenetek. Ezeket az Azure Digital Twins-példányon keresztül küldi el a rendszer, ahol ezeket az Azure functions és a Signaler is felvette.
-
-Ebben a konzolban nem kell mást tennie, de a következő lépések elvégzése után ne futtassa.
+Ebben a szakaszban a művelet eredményét fogja látni. Először konfigurálja a **minta ügyfél-webalkalmazást** úgy, hogy az Ön által beállított Azure-szignáló folyamathoz kapcsolódjon. Ezután elindítja a **szimulált eszköz minta alkalmazást** , amely telemetria adatokat küld az Azure Digital Twins-példányon keresztül. Ezt követően megtekintheti a mintául szolgáló webalkalmazást, amely valós időben frissíti a mintául szolgáló webalkalmazást.
 
 ### <a name="configure-the-sample-client-web-app"></a>A minta-ügyfél webalkalmazásának konfigurálása
 
-Ezután állítsa be a **signaler Integration Web App-mintát** a következő lépésekkel:
+A **signaler Integration Web App-minta** beállítása a következő lépésekkel:
 1. A Visual Studióval vagy bármely más szövegszerkesztővel nyissa meg a [*minta alkalmazások letöltése*](#download-the-sample-applications) szakaszban letöltött kibontott _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ mappát.
 
 1. Nyissa meg a *src/App.js* fájlt, és cserélje le az URL-címet a `HubConnectionBuilder` korábban mentett **egyeztetési** függvény http-végpont URL-címére:
@@ -161,6 +151,18 @@ Ezután állítsa be az engedélyeket a Function alkalmazásban a Azure Portalba
 1. Görgessen le a példány menüben, és válassza a *CORS* lehetőséget. A CORS lapon adja hozzá a következőt `http://localhost:3000` engedélyezett forrásként az üres mezőbe való beírásával. Jelölje be a *hozzáférés-vezérlés – engedélyezés – hitelesítő adatok engedélyezése* jelölőnégyzetet, és kattintson a *Mentés gombra*.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="CORS-beállítás az Azure-függvényben":::
+
+### <a name="run-the-device-simulator"></a>Az eszköz-szimulátor futtatása
+
+A végpontok közötti oktatóanyag előfeltétele, hogy az eszközt egy IoT Hub és az Azure Digital Twins-példányon keresztül küldje el [az eszközön](tutorial-end-to-end.md#configure-and-run-the-simulation) .
+
+Most mindössze annyit kell tennie, hogy elindítja a szimulátor projektet, amely a *Digital-Twins-Samples-master > DeviceSimulator > DeviceSimulator. SLN* címen található. Ha a Visual studiót használja, nyissa meg a projektet, majd futtassa ezt a gombot az eszköztáron:
+
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="A Visual Studio Start gombja (DeviceSimulator projekt)":::
+
+Ekkor megnyílik egy konzolablak szimulált hőmérsékleti telemetria üzenetek. Ezeket az Azure Digital Twins-példányon keresztül küldi el a rendszer, ahol ezeket az Azure functions és a Signaler is felvette.
+
+Ebben a konzolban nem kell mást tennie, de a következő lépés végrehajtása közben ne futtassa.
 
 ### <a name="see-the-results"></a>Az eredmények megtekintése
 

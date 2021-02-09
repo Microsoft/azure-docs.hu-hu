@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 5e1a1c62cafd982d44be3e06b98fc8c30461021c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820551"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979980"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
@@ -189,7 +189,7 @@ az üzemelő példány sikeres volt.
 
 A probléma egy Resource Manager-sablon, a diagnosztikai beállítások REST API, az Azure CLI vagy a Azure PowerShell használatakor fordul elő. A Azure Portal használatával létrehozott diagnosztikai beállításokat a rendszer nem érinti, mert csak a támogatott kategóriájú nevek jelennek meg.
 
-Ezt a problémát az alapul szolgáló API legutóbbi változása okozza. A "AllMetrics"-től eltérő metrikai kategóriák nem támogatottak, és soha nem voltak kivételek a nagyon konkrét IP-engedélyezési listán szereplő esetekben. A múltban a diagnosztikai beállítások telepítésekor a rendszer figyelmen kívül hagyja a többi kategória nevét. A Azure Monitor háttér egyszerűen átirányítja ezeket a kategóriákat a "AllMetrics" értékre.  Február 2021-án a háttér frissítése megtörtént, hogy pontosan megerősítse a megadott metrikai kategóriát. Ez a változás bizonyos központi telepítések meghibásodását okozta.
+Ezt a problémát az alapul szolgáló API legutóbbi változása okozza. A "AllMetrics"-től eltérő metrikus kategóriák nem támogatottak, és soha nem voltak kivételek néhány nagyon konkrét Azure-szolgáltatás esetében. A múltban a diagnosztikai beállítások telepítésekor a rendszer figyelmen kívül hagyja a többi kategória nevét. A Azure Monitor háttér egyszerűen átirányítja ezeket a kategóriákat a "AllMetrics" értékre.  Február 2021-án a háttér frissítése megtörtént, hogy pontosan megerősítse a megadott metrikai kategóriát. Ez a változás bizonyos központi telepítések meghibásodását okozta.
 
 Ha ezt a hibaüzenetet kapja, frissítse az üzemelő példányokat, hogy a probléma megoldásához cserélje le a metrikus kategóriájú neveket a "AllMetrics" értékre. Ha a központi telepítés korábban több kategóriát adott hozzá, csak egyet kell megőrizni a "AllMetrics" hivatkozással. Ha továbbra is fennáll a probléma, vegye fel a kapcsolatot az Azure ügyfélszolgálatával a Azure Portal. 
 

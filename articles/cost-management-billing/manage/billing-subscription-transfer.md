@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601534"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979433"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -80,7 +80,7 @@ Egyszerre csak egy átadási kérelem aktív. Az átadási kérelem 15 napig ér
 Átadási kérelem törlése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Navigáljon az **Előfizetések** lapra, > válassza ki az előfizetést, amelyhez az átadási kérelmet küldte, > majd válassza a **Számlázási tulajdonjog átadása** lehetőséget.
+1. Navigáljon az **Előfizetések** > válassza ki azt az előfizetést, amelyhez átadási kérelmet küld, majd válassza az **átvitel számlázási tulajdonos** lehetőséget.
 1. Az oldal alján válassza az **Átadási kérelem törlése** elemet.
 
 :::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="A Számlázási tulajdonjog átadása ablakot bemutató példa az Átadási kérelem törlése lehetőséggel" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
@@ -88,6 +88,20 @@ Egyszerre csak egy átadási kérelem aktív. Az átadási kérelem 15 napig ér
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha problémába ütközik az előfizetések átadása során, az alábbi hibaelhárítási információk segítséget nyújthatnak.
+
+### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Az eredeti Azure-előfizetés számlázási tulajdonosa elhagyja a szervezetét
+
+Lehetséges, hogy az eredeti számlázási tulajdonos, aki létrehozta az Azure-fiókot és az Azure-előfizetést, elhagyja a szervezetét. Ha ez a helyzet történik, akkor a felhasználói identitásuk már nem szerepel a szervezet Azure Active Directoryján. Az Azure-előfizetéshez nem tartozik számlázási tulajdonos. Ez a helyzet megakadályozza, hogy bárki elvégezzen számlázási műveleteket a fiókban, beleértve a megtekintést és a számlák kifizetését. Az előfizetés korábban esedékes állapotba kerülhet. Végül az előfizetés nem fizetés miatt letiltható. Végső soron az előfizetés törölhető, és az előfizetésen futó összes szolgáltatásra hatással lenne.
+
+Ha egy előfizetés már nem rendelkezik érvényes számlázási tulajdonossal, az Azure e-mailt küld a többi számlázási tulajdonosnak, a szolgáltatás-rendszergazdáknak, a társ-rendszergazdáknak és az előfizetés tulajdonosainak, és az előfizetés számlázási tulajdonjogának elfogadására szolgáló hivatkozást biztosít számukra. Bármelyik felhasználó kiválaszthatja a számlázási tulajdonjog elfogadására szolgáló hivatkozást. A számlázási szerepkörökkel kapcsolatos további információkért tekintse meg a [Számlázási szerepkörök](understand-mca-roles.md) és a [klasszikus szerepkörök és az Azure RBAC szerepkörei](../../role-based-access-control/rbac-and-directory-admin-roles.md)című témakört.
+
+Íme egy példa arra, hogy az e-mail hogyan néz ki.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-email.png" alt-text="Képernyőfelvétel: a számlázási tulajdonjog elfogadására szolgáló e-mail-cím." lightbox="./media/billing-subscription-transfer/orphaned-subscription-email.png" :::
+
+Emellett az Azure egy szalagcímet jelenít meg az előfizetés részletek ablakában a Azure Portal a számlázási tulajdonosok, a szolgáltatás-rendszergazdák, a társ-rendszergazdák és az előfizetések tulajdonosai számára. A számlázási tulajdonjog elfogadásához kattintson a szalagcímben található hivatkozásra.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-example.png" alt-text="Képernyőkép: egy érvényes számlázási tulajdonos nélküli előfizetésre mutató példa." lightbox="./media/billing-subscription-transfer/orphaned-subscription-example.png" :::
 
 ### <a name="the-transfer-subscription-option-is-unavailable"></a>„Az előfizetés átadása” lehetőség nem érhető el
 

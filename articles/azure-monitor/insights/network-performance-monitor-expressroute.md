@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326154"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833082"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
+
+> [!IMPORTANT]
+> 2021. július 1-től nem lehet új teszteket felvenni egy meglévő munkaterületre, vagy új munkaterületet engedélyezni Network Performance Monitor. Továbbra is használhatja a 2021. július 1. előtt létrehozott teszteket. A szolgáltatás megszakadásának minimalizálásához a jelenlegi számítási [feladatokhoz telepítse át a teszteket Network Performance monitorról az](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) Azure Network Watcher új, 2024. február 29. előtti kapcsolódási figyelője felé.
 
 A [Network Performance monitor](network-performance-monitor.md) Azure ExpressRoute monitor funkciójának használatával megfigyelheti a végpontok közötti kapcsolatot és a teljesítményt a fiókirodák és az Azure között, az Azure ExpressRoute-en keresztül. A legfontosabb előnyök a következők: 
 
@@ -24,7 +27,7 @@ A [Network Performance monitor](network-performance-monitor.md) Azure ExpressRou
 ![ExpressRoute-figyelő](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfiguráció 
-A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás**lehetőséget.
+A Network Performance Monitor konfigurációjának megnyitásához nyissa meg a [Network Performance monitor megoldást](network-performance-monitor.md) , és válassza a **Konfigurálás** lehetőséget.
 
 ### <a name="configure-network-security-group-rules"></a>A hálózati biztonsági csoport szabályainak konfigurálása 
 Az Azure-ban a Network Performance Monitor-on keresztül történő figyelésre használt kiszolgálók esetében konfigurálja a hálózati biztonsági csoport (NSG) szabályait úgy, hogy engedélyezzék a TCP-forgalmat a Network Performance Monitor által a szintetikus tranzakciók esetében használt porton. Az alapértelmezett port a 8084. Ez a konfiguráció lehetővé teszi, hogy az Azure-beli virtuális gépeken telepített Log Analytics-ügynök kommunikáljon egy helyszíni figyelő ügynökkel. 
@@ -54,7 +57,7 @@ További információ a NSG: [hálózati biztonsági csoportok](../../virtual-
 
 1. Válassza ki a figyelni kívánt privát társ-összevonási kapcsolatot.
 2. A jobb oldali ablaktáblán jelölje be a társítás **figyelése** jelölőnégyzetet. 
-3. Ha a kapcsolódáshoz szeretné létrehozni az állapotfigyelő eseményeket, válassza **az állapot figyelésének engedélyezése ehhez a**társításhoz lehetőséget. 
+3. Ha a kapcsolódáshoz szeretné létrehozni az állapotfigyelő eseményeket, válassza **az állapot figyelésének engedélyezése ehhez a** társításhoz lehetőséget. 
 4. Válassza a figyelési feltételek lehetőséget. A küszöbértékek megadásával egyéni küszöbértékeket állíthat be az állapot-események generálásához. Ha a feltétel értéke a társítási kapcsolathoz megadott küszöbérték fölé esik, a rendszer egy állapottal kapcsolatos eseményt generál. 
 5. Az **ügynökök hozzáadása** lehetőség kiválasztásával válassza ki azokat a figyelési ügynököket, amelyeket használni szeretne a társ-kapcsolódás figyeléséhez. Győződjön meg arról, hogy a kapcsolatok mindkét végpontján ügynököket ad hozzá. Ehhez a társításhoz csatlakoztatott virtuális hálózatban legalább egy ügynökre van szükség. Ehhez a társításhoz is szükség van legalább egy helyszíni ügynökre. 
 6. A konfiguráció mentéséhez kattintson a **Mentés** gombra. 
@@ -81,7 +84,7 @@ Az összes figyelt ExpressRoute-áramkör listájának megtekintéséhez válass
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>A veszteség, a késés és az átviteli sebesség trendjei 
 
-A sávszélesség kihasználtsága, a késés és a veszteségek diagramjai interaktívak. Az egér-vezérlőelemek használatával a diagramok bármelyik szakaszára nagyíthat. Emellett megtekintheti a sávszélességet, a késést és az adatvesztést más intervallumok esetén is. A **műveletek** gomb bal felső részén válassza a **dátum/idő**lehetőséget. 
+A sávszélesség kihasználtsága, a késés és a veszteségek diagramjai interaktívak. Az egér-vezérlőelemek használatával a diagramok bármelyik szakaszára nagyíthat. Emellett megtekintheti a sávszélességet, a késést és az adatvesztést más intervallumok esetén is. A **műveletek** gomb bal felső részén válassza a  **dátum/idő** lehetőséget. 
 
 ![ExpressRoute késés](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
@@ -93,7 +96,7 @@ Ha szeretné, hogy a virtuális hálózatok közötti összes kapcsolat összeka
 
 ### <a name="circuit-topology"></a>Áramköri topológia 
 
-Az áramköri topológia megtekintéséhez válassza a **topológia** csempét. Ezzel a művelettel a kijelölt kör vagy társítás topológiájának nézete látható. A topológia diagramja biztosítja a hálózat minden szegmensének késését, és a 3. rétegbeli ugrásokat a diagram egy csomópontja jelképezi. Egy ugrás kiválasztásával további részleteket talál a hop-ról. A helyszíni ugrásokat tartalmazó láthatóság szintjének növeléséhez mozgassa a csúszkát a **szűrők**területen. A csúszka balra vagy jobbra való mozgatásával növelheti vagy csökkentheti a topológiai gráfban lévő ugrások számát. Az egyes szegmensek késése látható, ami lehetővé teszi a nagy késleltetésű szegmensek gyorsabb elkülönítését a hálózaton.
+Az áramköri topológia megtekintéséhez válassza a **topológia** csempét. Ezzel a művelettel a kijelölt kör vagy társítás topológiájának nézete látható. A topológia diagramja biztosítja a hálózat minden szegmensének késését, és a 3. rétegbeli ugrásokat a diagram egy csomópontja jelképezi. Egy ugrás kiválasztásával további részleteket talál a hop-ról. A helyszíni ugrásokat tartalmazó láthatóság szintjének növeléséhez mozgassa a csúszkát a **szűrők** területen. A csúszka balra vagy jobbra való mozgatásával növelheti vagy csökkentheti a topológiai gráfban lévő ugrások számát. Az egyes szegmensek késése látható, ami lehetővé teszi a nagy késleltetésű szegmensek gyorsabb elkülönítését a hálózaton.
 
 ![ExpressRoute-topológia](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
@@ -109,7 +112,7 @@ Network Performance Monitor segítséget nyújt több áramköri kapcsolati prob
 
 Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **LogAnalytics**-on keresztül. A **NPM diagnosztika** lapon az összes aktivált diagnosztikai üzenet leírását láthatja.
 
-| Értesítési kód (naplók) | Leírás |
+| Értesítési kód (naplók) | Description |
 | --- | --- |
 | 5501 | A ExpressRoute áramkör másodlagos kapcsolata nem haladhat át |
 | 5502 | A ExpressRoute áramkör elsődleges kapcsolata nem haladhat át |
@@ -139,6 +142,5 @@ Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **
 
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
-

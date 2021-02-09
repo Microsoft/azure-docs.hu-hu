@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: d301ad1a9f5f55a41f87cd1316c9e5e4b38afd51
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853515"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980082"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -223,6 +223,21 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python esetén a [OpenCensus Python telemetria processzorok](api-filtering-sampling.md#opencensus-python-telemetry-processors) is használhatók.
+
+```python
+def callback_function(envelope):
+   envelope.tags['ai.cloud.role'] = 'new_role_name'
+   
+// AzureLogHandler
+handler.add_telemetry_processor(callback_function)
+
+// AzureExporter
+exporter.add_telemetry_processor(callback_function)
+```
 ---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>A Felhőbeli szerepkör nevének megértése az alkalmazás-hozzárendelés kontextusában
@@ -257,7 +272,7 @@ További információ arról, hogyan bírálható felül a Felhőbeli szerepkör
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 

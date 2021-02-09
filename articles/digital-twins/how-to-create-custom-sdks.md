@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051564"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980660"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
@@ -113,11 +113,14 @@ A nem lekérdezési lapozási mintában az alábbi példa azt szemlélteti, hogy
 
 A második minta csak a lekérdezési API-hoz lett létrehozva. `continuationToken`Explicit módon használja.
 
+>[!TIP]
+> A lapok beolvasásának fő oka az, hogy kiszámítsa a lekérdezési [egység díjait](concepts-query-units.md) a lekérdezési API-hívásokhoz.
+
 Íme egy példa a következő mintával:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="PagedQuery":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

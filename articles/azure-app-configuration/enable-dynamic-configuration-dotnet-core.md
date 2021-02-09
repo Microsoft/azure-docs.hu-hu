@@ -15,16 +15,16 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: aebe7772c673162d60f35d6a81725ba1452d16a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012356"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979861"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata .NET Core-alkalmazásokban
 
-Az App Configuration .NET Core ügyféloldali függvénytár támogatja az igény szerinti konfigurációs beállítások frissítését anélkül, hogy újra kellene indítani az alkalmazást. Ezt úgy teheti meg, hogy először beolvassa a `IConfigurationRefresher` konfigurációs szolgáltató beállításai közül a példányát, majd a `TryRefreshAsync` kódban bárhol meghívja a példányt.
+Az App Configuration .NET Core ügyféloldali függvénytár támogatja a konfiguráció igény szerinti frissítését anélkül, hogy újra kellene indítani az alkalmazást. Ezt úgy teheti meg, hogy először beolvassa a `IConfigurationRefresher` konfigurációs szolgáltató beállításai közül a példányát, majd a `TryRefreshAsync` kódban bárhol meghívja a példányt.
 
 A beállítások frissítésének megtartásához és a konfigurációs tárolóhoz való túl sok hívás elkerüléséhez minden beállításhoz gyorsítótárat kell használni. Amíg a beállítás gyorsítótárazott értéke lejárt, a frissítési művelet nem frissíti az értéket, még akkor is, ha az érték módosult a konfigurációs tárolóban. Az egyes kérések alapértelmezett lejárati ideje 30 másodperc, de szükség esetén felül lehet bírálni.
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfiguráci
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) egy kiváló lehetőség, amely a Windows, MacOS és Linux platformokon érhető el.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Állítsa be a .NET Core-alkalmazást úgy, hogy az alkalmazás konfigurációs tárolójának változásaira reagálva frissítse a konfigurációját.
@@ -150,7 +150,7 @@ A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeke
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte a .NET Core-alkalmazást, hogy dinamikusan frissítse a konfigurációs beállításokat az alkalmazás konfigurációjában. Ha meg szeretné tudni, hogyan használható az Azure felügyelt identitása az alkalmazás-konfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
 

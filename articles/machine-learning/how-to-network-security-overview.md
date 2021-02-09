@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060010"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980575"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Használati példa | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Eset | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 
@@ -137,6 +137,15 @@ A következő hálózati diagram egy biztonságos Azure Machine Learning munkate
 ### <a name="limitations"></a>Korlátozások
 - Az AK-fürtöknek ugyanahhoz a VNet kell tartozniuk, mint a munkaterületnek és a hozzá tartozó erőforrásoknak. 
 
+## <a name="optional-enable-public-access"></a>Opcionális: nyilvános hozzáférés engedélyezése
+
+A munkaterületet egy privát végponton keresztül biztonságossá teheti egy VNet mögött, és továbbra is engedélyezheti a hozzáférést a nyilvános interneten keresztül. A kezdeti konfiguráció ugyanaz, mint a [munkaterület és a kapcsolódó erőforrások védelme](#secure-the-workspace-and-associated-resources). 
+
+Miután a munkaterületet privát kapcsolattal [biztosította, engedélyezheti a nyilvános hozzáférést](how-to-configure-private-link.md#enable-public-access). Ezt követően a munkaterületet a nyilvános internetről és a VNet is elérheti.
+
+### <a name="limitations"></a>Korlátozások
+
+- Ha a Azure Machine Learning studiót a nyilvános interneten keresztül használja, bizonyos funkciók, például a tervező nem tud hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók.
 ## <a name="optional-enable-studio-functionality"></a>Opcionális: a Studio funkciójának engedélyezése
 
 [A munkaterület védelme](#secure-the-workspace-and-associated-resources)  >  [A képzési környezet](#secure-the-training-environment)  >  biztonságossá tétele [A következtetési környezet](#secure-the-inferencing-environment)  >  biztonságossá tétele A **Studio funkcióinak engedélyezése**  >  [Tűzfalbeállítások konfigurálása](#configure-firewall-settings)
@@ -167,7 +176,7 @@ Ha egyéni DNS-megoldást kell használnia a virtuális hálózatához, hozzá k
 
 További információ a szükséges tartománynévekről és IP-címekről: [munkaterület használata egyéni DNS-kiszolgálóval](how-to-custom-dns.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

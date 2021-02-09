@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: e894caddd037738645a37ccb43265a24d56e8afe
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493804"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979929"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
 
@@ -191,7 +191,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     ```
     ---
     > [!Tip]
-    > Ha többet szeretne megtudni a konfigurációs értékek olvasásával kapcsolatos beállításokról, tekintse meg a [ASP.net Core a beállítások mintáit](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > Ha többet szeretne megtudni a konfigurációs értékek olvasásával kapcsolatos beállításokról, tekintse meg a [ASP.net Core a beállítások mintáit](/aspnet/core/fundamentals/configuration/options).
 
 4. Frissítse a `Configure` metódust, és adja hozzá a `UseAzureAppConfiguration` middleware-t, hogy a frissítéshez regisztrált konfigurációs beállítások frissüljenek, miközben a ASP.net Core webalkalmazás továbbra is fogadja a kéréseket.
 
