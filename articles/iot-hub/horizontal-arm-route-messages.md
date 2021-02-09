@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fc8ddba2ec9b7bc9f1c2db8673ab805810afe17e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545480"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981289"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Gyors útmutató: Azure IoT Hub és Storage-fiók üzembe helyezése ARM-sablon használatával
 
@@ -89,9 +89,9 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. Az utolsó környezeti változó az **eszköz azonosítója** . A parancssorablakban állítsa be a parancsot, és hajtsa végre.
+1. Az utolsó környezeti változó az **eszköz azonosítója**. A parancssorablakban állítsa be a parancsot, és hajtsa végre.
 
-   ```cms
+   ```cmd
    SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
@@ -132,11 +132,11 @@ Ez a szakasz a sablon üzembe helyezésének lépéseit, a virtuális eszközök
 
 Üzembe helyezett egy ARM-sablont egy IoT Hub és egy Storage-fiók létrehozásához, és futtatott egy programot, amely üzeneteket küld a hubhoz. Az üzeneteket a rendszer automatikusan tárolja a Storage-fiókban, ahol megtekinthetők.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A rövid útmutató során hozzáadott erőforrások eltávolításához jelentkezzen be a [Azure Portalba](https://portal.azure.com). Válassza ki az **erőforráscsoportok** elemet, majd keresse meg az ehhez a rövid útmutatóhoz használt erőforráscsoportot. Válassza ki az erőforráscsoportot, majd válassza a *Törlés* lehetőséget. A csoport összes erőforrását törli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

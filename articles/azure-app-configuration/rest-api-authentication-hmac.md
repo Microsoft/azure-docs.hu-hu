@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4b5a073459fad734a11d3a75718240d0ebbb486a
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932710"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981391"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC-hitelesítés – REST API referenciája
 
@@ -22,7 +22,7 @@ A HTTP-kérelmeket a HMAC-SHA256 hitelesítési séma használatával hitelesít
 - **Hitelesítőadat** - \<Access Key ID\>
 - **Titkos** Base64 dekódolású hozzáférési kulcs értéke. ``base64_decode(<Access Key Value>)``
 
-A hitelesítő adatok (más néven `id` ) és a titkos kulcs (más néven) értékeit `value` Az Azure-alkalmazás konfigurációjának példánya alapján kell beolvasni. Ezt a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest)használatával teheti meg.
+A hitelesítő adatok (más néven `id` ) és a titkos kulcs (más néven) értékeit `value` Az Azure-alkalmazás konfigurációjának példánya alapján kell beolvasni. Ezt a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](/cli/azure/)használatával teheti meg.
 
 Adja meg az összes kérelmet a hitelesítéshez szükséges összes HTTP-fejléctel. A minimálisan szükséges érték a következők:
 
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC – sha256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Argumentum | Leírás  |
+|  Argumentum | Description  |
 | ------ | ------ |
 | **HMAC – SHA256** | Engedélyezési séma. _szükséges_ |
 | **Hitelesítőadat** | Az aláírás kiszámításához használt hozzáférési kulcs azonosítója. _szükséges_ |
@@ -87,7 +87,7 @@ _Karakterlánc – aláírás =_
 
 **HTTP_METHOD** + "\n" + **path_and_query** + "\n" + **signed_headers_values**
 
-|  Argumentum | Leírás  |
+|  Argumentum | Description  |
 | ------ | ------ |
 | **HTTP_METHOD** | A kéréshez használt nagybetűs HTTP-metódus neve. További információ: 9. [szakasz](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | A kérelem abszolút URI elérési útjának és lekérdezési karakterláncának összefűzése. További információ: 3,3. [szakasz](https://tools.ietf.org/html/rfc3986#section-3.3).
@@ -549,7 +549,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 | ------------ | ------- | --------------- |
 | [Bash](https://www.gnu.org/software/bash/) | bash | 3.5.27, 4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | TR | 8,28 |
-| [Curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
+| [curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
 | [OpenSSL](https://www.openssl.org/) | openssl | 1.1.0 g, 1.1.1 a |
 | [util-linux](https://github.com/karelzak/util-linux/) | hexdump | 2.14.1, 2.31.1 |
 

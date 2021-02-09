@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987371"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981510"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning adatkészlet létrehozása és feltárása címkékkel
 
@@ -39,6 +39,9 @@ Amikor elvégez egy adatcímkéző projektet, exportálhatja a címke adatait eg
 ### <a name="coco"></a>COCO 
 
  A kókusz-fájl a Azure Machine Learning munkaterület alapértelmezett blob-tárolójában jön létre az *export/Coco* mappában lévő mappában. 
+ 
+>[!NOTE]
+>Az objektum-észlelési projektekben az exportált "Bbox": [x, y, Width, height] "értékek normalizálva vannak a kókusz-fájlban. A méretezésük 1. Példa: a (10, 10) helyen található, 30 képpont vastagságú, 60 képpont magasságú határolókeret a (z) (0,015625) jelöléssel jelenik meg. 0,02083, 0,046875, 0,125). Mivel a coordintes normalizálva vannak, az összes rendszerkép "0,0"-ként jelenik meg "width" és "height" értékként. A tényleges szélesség és magasság a Python-kódtár, például a OpenCV vagy a párna (PIL) használatával szerezhető be.
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning adatkészlet
 

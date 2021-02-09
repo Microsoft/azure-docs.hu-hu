@@ -9,13 +9,13 @@ ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
-ms.date: 05/07/2019
-ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/08/2021
+ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788281"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981442"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -98,7 +98,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Forrás**     |Bármely IP-cím vagy szolgáltatás címkéje         |<ul><li>Az Azure-szolgáltatások, például a Power BI esetében válassza az Azure Cloud Service címkét</li> <li>A számítógép vagy az Azure-beli virtuális gép esetében használja a NAT IP-címet</li></ul> |
     |**Forrásporttartományok**     |* |Hagyja ezt a lehetőséget * (bármely), mivel a forrás portjai általában dinamikusan vannak lefoglalva, és mint ilyen, kiszámíthatatlan |
-    |**Cél**     |Bármelyik         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
+    |**Cél**     |Bármely         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
     |**Célporttartományok**     |3342         |Hatóköri célport a 3342-re, amely a felügyelt példány nyilvános TDS-végpontja |
     |**Protokoll**     |TCP         |Az SQL felügyelt példánya a TDS protokollhoz TCP protokollt használ. |
     |**Művelet**     |Engedélyezés         |Felügyelt példány bejövő forgalmának engedélyezése a nyilvános végponton keresztül |
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>A felügyelt példány nyilvános végpontjának összekapcsolási karakterláncának beszerzése
 
 1. Navigáljon a felügyelt példány konfigurálása lapra, amelyen engedélyezve van a nyilvános végpont. Válassza a **kapcsolatok karakterláncok** lapot a **Beállítások** konfiguráció alatt.
-1. Vegye figyelembe, hogy a nyilvános végpont állomásneve <mi_name> formátumban jön. **Public** . <dns_zone>. database.Windows.net és a csatlakozáshoz használt port 3342.
+1. Vegye figyelembe, hogy a nyilvános végpont állomásneve <mi_name> formátumban jön. **Public**. <dns_zone>. database.Windows.net és a csatlakozáshoz használt port 3342. Íme egy példa a kapcsolati sztringre, amely a SQL Server Management Studio vagy Azure Data Studio kapcsolatokban használható nyilvános végponti portot jelöli: `<mi_name>.public.<dns_zone>.database.windows.net,3342`
 
     ![A képernyőképen a nyilvános és a privát végpontokhoz tartozó kapcsolatok karakterláncai láthatók.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

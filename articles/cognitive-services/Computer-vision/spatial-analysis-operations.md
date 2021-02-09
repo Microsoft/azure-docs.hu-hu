@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226051"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981782"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -23,7 +23,7 @@ A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis – personcount | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. A zónát teljes egészében egyetlen kamerának kell tartalmaznia ahhoz, hogy a PersonCount pontos összeget rögzítsen. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis – personcrossingline | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -32,7 +32,7 @@ A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
 Az összes művelet a `.debug` verzióban is elérhető, amely képes megjeleníteni a képkockákat a feldolgozás során. A `xhost +` képkockák és események megjelenítésének engedélyezéséhez futtatnia kell a gazdagépen.
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. debug | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. debug | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -43,7 +43,7 @@ A térbeli elemzések videó AI-modulként is futtathatók [élő video Analytic
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. livevideoanalytics | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. livevideoanalytics | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -57,7 +57,7 @@ Az élő videó elemzési műveletei a verzióban is elérhetők `.debug` (pl. c
 
 Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 
-| Üzemeltetési paraméterek| Leírás|
+| Üzemeltetési paraméterek| Description|
 |---------|---------|
 | Művelet azonosítója | A fenti tábla műveleti azonosítója.|
 | engedélyezve | Boolean: true vagy FALSE|
@@ -122,7 +122,7 @@ Ez az összes térbeli elemzési művelet DETECTOR_NODE_CONFIG paramétereinek p
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -167,7 +167,7 @@ Ez egy példa egy olyan JSON-bemenetre a SPACEANALYTICS_CONFIG paraméter szám�
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `lines` | list| Sorok listája.|
 | `name` | sztring| A sor rövid neve.|
@@ -213,7 +213,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -247,7 +247,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -963,9 +963,9 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
       }
   }
   ```
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
-| `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
+| `batch_size` | int | Ha az összes kamera ugyanazzal a felbontással rendelkezik, állítsa be `batch_size` az adott műveletben használni kívánt kamerák számát, ellenkező esetben állítsa az 1 értéket, `batch_size` vagy hagyja meg az alapértelmezett (1) értéket, ami azt jelzi, hogy egyetlen köteg sem támogatott. |
 
 ## <a name="next-steps"></a>Következő lépések
 

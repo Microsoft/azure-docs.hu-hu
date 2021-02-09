@@ -10,27 +10,27 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: ec340e3371b0fe337354006b1284a21420a11f3a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1128504ee5f8c086d6a3c30a9fdd021550394f3f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573636"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981765"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk lehetnek. Könyvjelző ezen az oldalon naprakészen maradhat a szolgáltatással.
 
-## <a name="february-2021"></a>Február 2021
+## <a name="february-2021"></a>2021. február
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Az API v 3.2 nyilvános előzetes verziója az OCR-támogatással 73 nyelven
 A Computer Vision Read API v 3.2 nyilvános előzetes verziója a következő funkciókat tartalmazza:
-* OCR összesen [73 nyelven](./language-support.md#optical-character-recognition-ocr) , beleértve az egyszerűsített és a hagyományos kínai, Japán, Koreai és jelentős latin nyelveket.
-* Adja meg, hogy a szöveges vonalakat a jobb oldali és legfelső (alapértelmezett) sorrendben, vagy egy természetes olvasási sorrendben kívánja-e kijelölni.
-* Az egyes szöveges sorok kimenete esetén jelezze, hogy a kézírás stílusa vagy nem a megbízhatósági pontszáma (csak latin nyelvek esetén).
+* [OCR a 73 nyelvekhez](./language-support.md#optical-character-recognition-ocr) , beleértve az egyszerűsített és a hagyományos kínai, Japán, Koreai és latin nyelveket.
+* A szöveges sorok kimenete a természetes olvasási sorrendben.
+* Szövegsorok osztályozása kézírás stílusaként vagy nem a megbízhatósági pontszám mellett (csak latin nyelveken).
 * Többoldalas dokumentumok esetén csak a kijelölt lapok vagy az oldal tartománya számára kell szöveget kinyerni.
 
-További információért tekintse meg az [OLVASÁSI API áttekintése](concept-recognizing-text.md) című témakört.
+További információt az [előzetes verzió funkcióinak olvasása](concept-recognizing-text.md#natural-reading-order-output) című témakörben talál.
 
 > [!div class="nextstepaction"]
 > [A Read API v 3.2 nyilvános előzetes verziójának használata](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)

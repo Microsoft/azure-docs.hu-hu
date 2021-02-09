@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709437"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981340"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R biztonsági utasítások
 
@@ -27,17 +27,17 @@ Az Azure Stack Edge Pro R-eszköz használata előtt olvassa el az ebben a cikkb
 
 A következő jelzési szavak a veszélyforrások riasztási jelei:
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
 | ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Veszély:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. <br> **Figyelmeztetés:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. <br> **Vigyázat:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet.|
 |
 
 Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a következő kockázati ikonokat kell figyelembe venni:
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
 | ![Először olvassa el az összes utasítást](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Először olvassa el az összes utasítást |
-| ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Kockázati szimbólum |
+| ![Értesítés ikonjának ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **megjegyzése:** | A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. || ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Kockázati szimbólum |
 | ![Tipp veszélyességének ikonja](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Tipp kockázati tényező|
 | ![Nagy súly ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Nagy súlyú kockázati tényező|
 | ![Áramütés ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Áramütés veszélye |
@@ -88,6 +88,7 @@ Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a köv
   * Elegendő lemezterülettel rendelkezik a tápkábel (ek) eléréséhez, mert a termék fő energiaellátási leválasztását szolgálják.
 * Az Ethernet-kábelek nincsenek megadva a termékhez. Az elektromágneses interferencia csökkentése érdekében ajánlott a Cat 6 védett sodrott (STP) kábelezés használata.
 * Állítsa be a készüléket olyan munkaterületre, amely lehetővé teszi a megfelelő légáramlást a berendezések körül; Győződjön meg arról, hogy az első és a hátsó borító teljesen el van távolítva az eszköz futása közben.
+* Az Ethernet-kábelek nincsenek megadva a termékhez. Az elektromágneses interferencia csökkentése érdekében ajánlott a Cat 6 védett (STP) kábelezés használata.
 * A berendezést hőmérséklet által vezérelt területre kell telepíteni, amely nem szennyező anyagokból áll, és lehetővé teszi a megfelelő légáramlást a berendezések körül.
 * A berendezéseket a folyadék és a túlzottan párás környezetek forrásaiból is megtarthatja.
 * Ne engedélyezzen semmilyen folyadékot vagy idegen objektumot a rendszeren való belépéshez. Ne helyezzen italokat vagy más folyadék-tárolókat a rendszeren vagy annak közelében.
@@ -207,7 +208,7 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![Értesítési ikon ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **Megjegyzés:** &nbsp; a Microsoft által kifejezetten nem jóváhagyott berendezések módosításai vagy módosításai érvénytelenítik a felhasználó hatóságát a berendezés üzemeltetéséhez.
+> ![Értesítés ikonja – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **. Megjegyzés:** &nbsp; a Microsoft által kifejezetten nem jóváhagyott berendezésen végrehajtott módosítások vagy módosítások érvénytelenítik a felhasználó hatóságát a berendezés működtetéséhez.
 
 Kanada és USA:
 
@@ -239,6 +240,6 @@ Microsoft Ireland Sandyford ind est Dublin D18 KX32 IRL telefon száma: + 353 1 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés a Azure Stack Edge Pro R Edge üzembe helyezésére](azure-stack-edge-pro-r-deploy-prep.md)

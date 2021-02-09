@@ -30,6 +30,8 @@
       href: Concepts/azure-resources.md
     - name: Adatforrások és tartalom
       href: Concepts/data-sources-and-content.md
+    - name: Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
+      href: Concepts/role-based-access-control.md
     - name: Rangsoroló folyamat
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -46,7 +48,7 @@
     - name: Azure-erőforrások kezelése
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: QnA Maker-alkalmazás kezelése
+    - name: QnA Maker erőforrás-hozzáférés kezelése
       href: How-To/manage-qna-maker-app.md
     - name: Az aktív tanulás bekapcsolása
       href: How-To/use-active-learning.md
@@ -92,8 +94,6 @@
       href: Concepts/confidence-score.md
     - name: Hibaelhárítás
       href: troubleshooting.md
-    - name: Kérdés-válasz párok
-      href: Concepts/question-answer-set.md
     - name: Pontos válaszadás
       href: reference-precise-answering.md
     - name: Védett SharePoint-fájlok hozzáadása
@@ -105,14 +105,6 @@
       href: reference-app-service.md
     - name: Tartalomformátumra vonatkozó útmutatók
       href: reference-document-format-guidelines.md
-    - name: Tartalom és metaadatok
-      items:
-        - name: Tartalomformátumra vonatkozó útmutatók
-          href: reference-document-format-guidelines.md
-        - name: URL-címek
-          href: reference-document-type-url.md
-        - name: Adatimportálási és -exportálási irányelvek
-          href: reference-data-guidelines.md
     - name: Megjelenítési formátum
       href: reference-markdown-format.md
     - name: Privát hivatkozások
