@@ -2,13 +2,13 @@
 title: Azure VMware-megoldás virtuális gépek életciklus-kezelése
 description: Ismerje meg, hogyan kezelheti az Azure VMware megoldás virtuális gépei életciklusának minden aspektusát Microsoft Azure natív eszközökkel.
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062896"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988530"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek életciklus-kezelése
 
@@ -110,3 +110,11 @@ A Azure Monitor egy átfogó megoldás a Felhőbeli és a helyszíni környezete
     - [Naplózási riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/platform/alerts-log.md).
     - Az automatizált műveletek és értesítések beállítására szolgáló [műveleti szabályok](../azure-monitor/platform/alerts-action-rules.md) .
     - [Az Azure összekapcsolásával ITSM eszközöket it-szolgáltatásmenedzsmenti csatoló használatával](../azure-monitor/platform/itsmc-overview.md).
+    
+ ## <a name="next-steps"></a>Következő lépések
+
+Most, hogy az Azure natív eszközeivel felügyelte az Azure VMware-megoldás virtuális gépek életciklusa során történő kezelését, érdemes megismernie az alábbiakat:
+
+- Az [Azure VMware-megoldás virtuális gépei védelme Azure Security Centerokkal](azure-security-integration.md).
+- [Azure Backup Server beállítása Azure VMware-megoldáshoz](set-up-backup-server-for-azure-vmware-solution.md).
+- [Az Azure VMware-megoldás integrálása egy sugaras architektúrába](concepts-hub-and-spoke.md).

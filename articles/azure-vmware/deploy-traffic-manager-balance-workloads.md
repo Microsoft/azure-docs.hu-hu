@@ -2,13 +2,13 @@
 title: Traffic Manager üzembe helyezése az Azure VMware-megoldás számítási feladatainak elosztásához
 description: Ismerje meg, hogyan integrálhatja a Traffic Managert az Azure VMware-megoldással az alkalmazások számítási feladatainak több különböző régióban lévő végponton való kiegyensúlyozásához.
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: 6dbd58f17e29b045bd654bee90b6390f608803ab
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 02/08/2021
+ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809734"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988588"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Traffic Manager üzembe helyezése az Azure VMware-megoldás számítási feladatainak elosztásához
 
@@ -106,7 +106,7 @@ A következő lépésekkel ellenőrizheti a NSX-T szegmens konfigurációját az
 
 1. A különböző régiókban található külső végpontok esetében adja meg a szükséges adatokat, majd válassza a **Hozzáadás** lehetőséget: 
    - Típus
-   - Név
+   - Name
    - Teljes tartománynév (FQDN) vagy IP-cím
    - Súlyozás (1 súlyozást rendel az egyes végpontokhoz). 
 
@@ -128,11 +128,11 @@ A következő lépésekkel ellenőrizheti a NSX-T szegmens konfigurációját az
 
    :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Képernyőkép a böngészőablakban átirányított forgalomról.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információk:
+Most, hogy már az Azure Traffic Manager Azure VMware-megoldással való integrálását tárgyalta, érdemes megismernie az alábbiakat:
 
-- [Az Azure Application Gateway használata az Azure VMware-megoldáson](protect-azure-vmware-solution-with-application-gateway.md)
-- [A Traffic Manager útválasztási módszerei](../traffic-manager/traffic-manager-routing-methods.md)
-- [Terheléselosztási szolgáltatások kombinálása az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md)
-- [Traffic Manager teljesítmény mérése](../traffic-manager/traffic-manager-performance-considerations.md)
+- [Azure Application Gateway használata az Azure VMware-megoldással](protect-azure-vmware-solution-with-application-gateway.md).
+- [Traffic Manager útválasztási metódusok](../traffic-manager/traffic-manager-routing-methods.md).
+- [Terheléselosztási szolgáltatások kombinálása az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- [Traffic Manager teljesítmény mérése](../traffic-manager/traffic-manager-performance-considerations.md).

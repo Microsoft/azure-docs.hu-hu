@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 01/25/2021
 ms.author: apimpm
-ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232972"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989097"
 ---
 # <a name="self-hosted-gateway-overview"></a>Saját üzemeltetésű átjáró áttekintése
 
@@ -43,13 +43,13 @@ A saját üzemeltetésű átjárók üzembe helyezése azonos környezetekben, a
 
 ## <a name="packaging-and-features"></a>Csomagolás és szolgáltatások
 
-A saját üzemeltetésű átjáró a felügyelt átjáró egy, az Azure-ban üzembe helyezett, funkcionálisan egyenértékű verziója, amely minden API Management szolgáltatás részeként üzemel. A saját üzemeltetésű átjáró Linux-alapú Docker- [tárolóként](https://aka.ms/apim/sputnik/dhub) érhető el a Microsoft Container Registry. Üzembe helyezhető a Docker, a Kubernetes, vagy bármely más, a helyszínen, a felhő-infrastruktúrában, illetve a kiértékelési és fejlesztési célokra szolgáló, a személyes számítógépeken futó tároló-előkészítési megoldásban.
+A saját üzemeltetésű átjáró az Azure-ban üzembe helyezett felügyelt átjáró az összes API Management szolgáltatás részeként telepített, funkcionálisan egyenértékű verziója. A saját üzemeltetésű átjáró Linux-alapú Docker- [tárolóként](https://aka.ms/apim/sputnik/dhub) érhető el a Microsoft Container Registry. Üzembe helyezhető a Docker, a Kubernetes, vagy bármely más, a helyszínen, a felhő-infrastruktúrában, illetve a kiértékelési és fejlesztési célokra szolgáló, a személyes számítógépeken futó tároló-előkészítési megoldásban.
 
 A felügyelt átjárókban található következő funkciók **nem érhetők el** a saját üzemeltetésű átjárókban:
 
 - Azure Monitor-naplók
 - Felsőbb rétegbeli (háttérbeli) TLS-verzió és titkosítás kezelése
-- Kiszolgálói és Ügyféltanúsítványok ellenőrzése a API Management szolgáltatásba feltöltött [hitelesítésszolgáltatói főtanúsítványok](api-management-howto-ca-certificates.md) használatával. Az egyéni HITELESÍTÉSSZOLGÁLTATÓ támogatásának hozzáadásához vegyen fel egy réteget a saját üzemeltetésű átjáró tárolóba, amely telepíti a HITELESÍTÉSSZOLGÁLTATÓ főtanúsítványát.
+- Kiszolgálói és Ügyféltanúsítványok ellenőrzése a API Management szolgáltatásba feltöltött [hitelesítésszolgáltatói főtanúsítványok](api-management-howto-ca-certificates.md) használatával. További információ: [tanúsítvány ellenőrzése önkiszolgáló átjáróban](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway).
 - Integráció a [Service Fabric](../service-fabric/service-fabric-api-management-overview.md)
 - TLS-munkamenet folytatása
 - Ügyféltanúsítvány újraegyeztetése. Ez azt jelenti, hogy a munkahelyi [API-felhasználóknak a kezdeti](api-management-howto-mutual-certificates-for-clients.md) TLS-kézfogás részeként be kell mutatniuk a tanúsítványokat. Ennek biztosításához engedélyezze az ügyféltanúsítvány egyeztetése beállítást a saját üzemeltetésű átjáró egyéni állomásnév beállításakor.
@@ -80,7 +80,7 @@ Ha a konfigurációs biztonsági mentés be van kapcsolva, és az Azure-kapcsola
 
 Ha a kapcsolat helyreáll, a leállás által érintett összes saját üzemeltetésű átjáró automatikusan újra csatlakozik a társított API Management szolgáltatáshoz, és letölti az összes olyan konfigurációs frissítést, amely az átjáró kapcsolat nélküli üzemmódban történt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [A témakör további hátteréről szóló tanulmány elolvasása](https://aka.ms/hybrid-and-multi-cloud-api-management)
 -   [Saját üzemeltetésű átjáró üzembe helyezése a Docker-ben](how-to-deploy-self-hosted-gateway-docker.md)

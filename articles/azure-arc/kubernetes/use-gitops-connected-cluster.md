@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt (előzetes verzió) konfigurálása a GitOps használatával
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, AK, tárolók
-ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737184"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988705"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
@@ -148,17 +148,17 @@ A konfiguráció testreszabásához több paramétert is használhat:
 
 `--helm-operator-params` : Nem *kötelező* diagram-értékek a Helm-kezelőhöz (ha engedélyezve van).  Például: "--set Helm. Versions = v3".
 
-`--helm-operator-chart-version` : Nem *kötelező* diagram-verzió a Helm-kezelőhöz (ha engedélyezve van). Alapértelmezett: "1.2.0".
+`--helm-operator-version` : Nem *kötelező* diagram-verzió a Helm-kezelőhöz (ha engedélyezve van). A "1.2.0" vagy a nagyobb érték használata. Alapértelmezett: "1.2.0".
 
 `--operator-namespace` : Az operátori névtér neve nem *kötelező* . Alapértelmezett: "default". Max. 23 karakter.
 
-`--operator-params` : Nem *kötelező* paraméterek a kezelőhöz. Egy idézőjelek között kell megadni. Például: ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
+`--operator-params` : Nem *kötelező* paraméterek a kezelőhöz. Egy idézőjelek között kell megadni. Például: ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```
 
 A-operátor-params támogatott beállításai
 
 | Beállítás | Leírás |
 | ------------- | ------------- |
-| --git-ág  | A git-tárház Kubernetes-jegyzékekhez használt ága. Az alapértelmezett érték a "Master". |
+| --git-ág  | A git-tárház Kubernetes-jegyzékekhez használt ága. Az alapértelmezett érték a "Master". Az újabb Tárházak "Main" nevű főágra rendelkeznek, ebben az esetben be kell állítania a--git-ág = Main nevet. |
 | – git – elérési út  | Relatív elérési út a git-tárházon belül a Flux számára a Kubernetes-jegyzékek megkereséséhez. |
 | --git-ReadOnly | A git-adattárat csak olvashatónak tekinti a rendszer. A Flux nem próbál meg írni. |
 | --manifest-Generation  | Ha engedélyezve van, a Flux a. Flux. YAML és a Kustomize vagy más manifest-generátorok futtatására fog keresni. |
@@ -226,16 +226,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 }
 ```
 
-A `sourceControlConfiguration` létrehozása után néhány dolog a motorháztető alatt történik:
+Ha a létrehozása `sourceControlConfiguration` vagy frissítése megtörtént, néhány dolog a motorháztető alatt történik:
 
-1. Az Azure arc `config-agent` figyeli az új vagy frissített konfigurációkat ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ) Azure Resource Manager
-1. `config-agent` észreveszi az új `Pending` konfigurációt
-1. `config-agent` beolvassa a konfigurációs tulajdonságokat, és előkészíti a felügyelt példányának telepítését `flux`
-    * `config-agent` létrehozza a célhely névterét
-    * `config-agent` Kubernetes-szolgáltatásfiók előkészítése a megfelelő engedélyekkel ( `cluster` vagy `namespace` hatókörrel)
-    * `config-agent` Üzembe helyez egy példányt a `flux`
-    * `flux` létrehoz egy SSH-kulcsot, és naplózza a nyilvános kulcsot (ha az SSH lehetőséget használja a Flux által generált kulcsokkal)
-1. `config-agent` jelentések állapota az `sourceControlConfiguration` Azure-beli erőforrásnak
+1. Az Azure arc `config-agent` figyelési Azure Resource Manager új vagy frissített konfigurációkhoz ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ), és az új `Pending` konfigurációt észleli.
+1. A `config-agent` beolvassa a konfigurációs tulajdonságokat, és létrehozza a cél névterét.
+1. Az Azure arc `controller-manager` előkészít egy Kubernetes szolgáltatásfiókot a megfelelő engedélyekkel ( `cluster` vagy `namespace` hatókörrel), majd üzembe helyezi a példányát `flux` .
+1. Ha a Flux által generált kulcsokkal rendelkező SSH lehetőséget használja, `flux` létrehoz egy SSH-kulcsot, és naplózza a nyilvános kulcsot.
+1. A `config-agent` jelentések állapota vissza az `sourceControlConfiguration` Azure-beli erőforrásra.
 
 A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány állapotba. A folyamat figyelése a `az k8sconfiguration show ...` fenti paranccsal:
 
@@ -361,7 +358,7 @@ az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Helm használata a verziókövetés konfigurációjával](./use-gitops-with-helm.md)
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

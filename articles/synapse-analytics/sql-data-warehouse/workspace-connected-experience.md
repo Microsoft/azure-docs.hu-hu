@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/23/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5efb1df378df323585bc0ca1094451cdb095fe4e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d477693667c8d78687d27b291d2b3c15612a0f30
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499781"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989036"
 ---
 # <a name="enabling-synapse-workspace-features-on-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>A szinapszis munkaterület funkcióinak engedélyezése meglévő dedikált SQL-készleten (korábban SQL DW)
 
@@ -32,7 +32,7 @@ A következő információk lesznek érvényesek, amikor dedikált SQL DW-t (kor
 - **SQL-képességek** A szinapszis munkaterület funkciójának engedélyezése után az összes SQL-funkció továbbra is a logikai SQL Server marad. A munkaterület engedélyezése után a kiszolgálóhoz való hozzáférés az SQL erőforrás-szolgáltatón keresztül továbbra is lehetséges lesz. Az összes felügyeleti funkció a munkaterületen keresztül kezdeményezhető, és a művelet az SQL-készleteket üzemeltető logikai SQL Serveron történik. A munkaterületek engedélyezésekor nem lesznek megszakítva a meglévő automatizálás, az eszközök és a kapcsolatok.  
 - **Erőforrás áthelyezése**  Ha egy erőforrást egy olyan kiszolgálóra helyez át, amelyen a szinapszis munkaterület funkció engedélyezve lesz, a kiszolgáló és a munkaterület közötti kapcsolat megszakad, és többé nem fog tudni hozzáférni a meglévő dedikált SQL-készlethez (korábbi nevén SQL DW) tartozó példányokhoz a munkaterületről. A kapcsolódás megőrzésének biztosításához ajánlott, hogy mindkét erőforrás ugyanabban az előfizetésben és erőforráscsoporthoz legyen. 
 - **Figyelés** A szinapszis studión keresztül elküldött SQL-kérelmek egy olyan munkaterületen, amelyen engedélyezve van a dedikált SQL-készlet (korábbi nevén SQL DW), megtekinthetők a figyelő központban. Az összes többi figyelési tevékenységhez lépjen Azure Portal dedikált SQL-készlet (korábban SQL DW) figyelése lehetőségre. 
-- A fentiekben leírtak szerint a **biztonsági** és **hozzáférés-vezérlési vezérlők** az SQL Server és a dedikált SQL-készletek (korábban SQL DW-példányok) összes felügyeleti funkciója továbbra is a logikai SQL Serveren marad. A függvények közé tartozik a tűzfalszabályok kezelése, az Azure AD-rendszergazda beállítása, valamint a dedikált SQL-készletben (korábban SQL DW) található adatokhoz való hozzáférés-vezérlés. A következő lépéseket kell megtenni annak biztosításához, hogy a dedikált SQL-készlet (korábban SQL DW) elérhető legyen, és a szinapszis munkaterületen keresztül is használható legyen. A munkaterület szerepkör-tagságok nem biztosítanak hozzáférést a felhasználóknak a dedikált SQL-készlet (korábban SQL DW) példányokban lévő adathoz. A normál [SQL-hitelesítési](sql-data-warehouse-authentication.md) házirendeket követve biztosíthatja, hogy a felhasználók hozzáférhessenek a dedikált SQL-készlet (korábban SQL DW) példányaihoz a logikai kiszolgálón. 
+- A fentiekben leírtak szerint a **biztonsági** és **hozzáférés-vezérlési vezérlők** az SQL Server és a dedikált SQL-készletek (korábban SQL DW-példányok) összes felügyeleti funkciója továbbra is a logikai SQL Serveren marad. A függvények közé tartozik a tűzfalszabályok kezelése, az Azure AD-rendszergazda beállítása, valamint a dedikált SQL-készletben (korábban SQL DW) található adatokhoz való hozzáférés-vezérlés. A következő lépéseket kell megtenni annak biztosításához, hogy a dedikált SQL-készlet (korábban SQL DW) elérhető legyen, és a szinapszis munkaterületen keresztül is használható legyen. A munkaterület szerepkör-tagságok nem biztosítanak hozzáférést a felhasználóknak a dedikált SQL-készlet (korábban SQL DW) példányokban lévő adathoz. A normál [SQL-hitelesítési](sql-data-warehouse-authentication.md) házirendeket követve biztosíthatja, hogy a felhasználók hozzáférhessenek a dedikált SQL-készlet (korábban SQL DW) példányaihoz a logikai kiszolgálón. Ha a dedikált SQL-készlet (korábban SQL DW) gazdagépének felügyelt identitása már hozzá van rendelve, akkor ez a felügyelt identitás neve ugyanaz lesz, mint a munkaterület által felügyelt identitás, amelyet a rendszer automatikusan hoz létre a munkaterület-partneri szolgáltatások (például az ADF-folyamatok) támogatásához.  Két azonos nevű felügyelt identitás létezhet egy csatlakoztatott forgatókönyvben. A felügyelt identitások az Azure AD-objektumazonosítók alapján különböztethetők meg, és az SQL-felhasználók objektumazonosítók használatával történő létrehozásának funkciója hamarosan elérhető lesz.
 
     ```sql
     CREATE USER [<workspace managed identity] FROM EXTERNAL PROVIDER 
@@ -46,5 +46,5 @@ A következő információk lesznek érvényesek, amikor dedikált SQL DW-t (kor
 - **Studió** Az **adatközpontban** található SQL-készletek a munkaterület engedélyezve dedikált SQL-készlet (korábban SQL DW) az adatközpontban található elemleírás segítségével azonosítható. 
 - **Új DEDIKÁLT SQL-készlet létrehozása (korábban SQL DW)** Új dedikált SQL-készletek hozhatók létre a szinapszis munkaterületen és a Studióban, miután a munkaterület funkció engedélyezve lett, és az új készlet üzembe helyezése a logikai SQL-kiszolgálón történik. Az új erőforrások a Portálon és a Studióban fognak megjelenni a kiépítés befejezésekor.      
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A [szinapszis munkaterület funkcióinak](workspace-connected-create.md) engedélyezése a meglévő dedikált SQL-készleten (korábban SQL DW)

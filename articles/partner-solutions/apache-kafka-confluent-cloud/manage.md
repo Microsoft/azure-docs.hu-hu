@@ -3,15 +3,15 @@ title: Gördülékeny felhőalapú Azure-partneri megoldások kezelése
 description: Ez a cikk bemutatja, hogyan kell egy Fluent felhőt a Azure Portal. Egyszeri bejelentkezés beállítása, egy Fluent szervezet törlése és támogatás kérése.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 2d13c183f0b3891fa92b5e2a6534acbf8102e032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253504"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989129"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Az Fluent felhő erőforrásának kezelése
 
@@ -66,14 +66,24 @@ Ha támogatási kérést szeretne beküldeni, lépjen kapcsolatba a megfelelő [
 > [!NOTE]
 > A felhasználók első alkalommal alaphelyzetbe állíthatják a jelszót, mielőtt bejelentkeznek a Fluent támogatási portálra. Ha nincs olyan fiókja, amely az Fluent felhővel rendelkezik, küldjön további segítséget e-mailben `cloud-support@confluent.io` .
 
+A portálon az Azure Súgó és támogatás szolgáltatáson keresztül küldhet be kérelmet, vagy közvetlenül a Apache Kafka példányán keresztül az Azure-beli Fluent-felhőben.
+
+Kérelem küldése az Azure súgójában és támogatásán keresztül:
+
+1. Válassza a **Súgó + támogatás** lehetőséget.
+1. Válassza **a támogatási kérelem létrehozása** lehetőséget.
+1. Az űrlapon válassza a **technikai** **probléma típusa** lehetőséget. Válassza ki előfizetését. A szolgáltatások listájában válassza az Fluent lehetőséget az **Azure**-ban.
+
+    :::image type="content" source="media/support-request-help.png" alt-text="Hozzon létre egy támogatási kérést a súgóból.":::
+
 Az alábbi lépéseket követve küldhet be kérelmet az erőforrásból:
 
 1. A Azure Portal válassza ki a Fluent szervezetet.
 1. Válassza az **új támogatási kérés** lehetőséget a képernyő bal oldalán található menüből.
 1. Ha támogatási kérést szeretne létrehozni, válassza ki az **Fluent-portálra** mutató hivatkozást.
 
-    :::image type="content" source="media/support-request.png" alt-text="Hozzon létre egy támogatási kérést.":::
+    :::image type="content" source="media/support-request.png" alt-text="Hozzon létre egy támogatási kérést a példányból.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibaelhárítással kapcsolatos segítségért tekintse meg a következő témakört: [a felhőalapú megoldások Apache Kafka hibaelhárítása](troubleshoot.md).

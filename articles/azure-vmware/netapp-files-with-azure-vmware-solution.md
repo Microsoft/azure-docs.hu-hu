@@ -2,13 +2,13 @@
 title: Azure NetApp Files Azure VMware-megoldással
 description: A Azure NetApp Files és az Azure VMware megoldás virtuális gépei segítségével áttelepítheti és szinkronizálhatja a helyszíni kiszolgálók, az Azure VMware-megoldás virtuális gépei és a Felhőbeli infrastruktúrák közötti adatátvitelt.
 ms.topic: how-to
-ms.date: 02/01/2021
-ms.openlocfilehash: 8c101b652ffcefe05e9b6c11f166c1da3df2ede1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/08/2021
+ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539366"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988655"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files Azure VMware-megoldással
 
@@ -16,9 +16,9 @@ Ebben a cikkben végigvezeti a Azure NetApp Files integrálásának lépésein a
 
 ## <a name="azure-netapp-files-overview"></a>Azure NetApp Files áttekintése
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) egy Azure-beli, első féltől származó szolgáltatás áttelepítésre és a legigényesebb vállalati fájl-munkaterhelések futtatására a felhőben, beleértve az adatbázisokat, az SAP-t és a nagy teljesítményű számítástechnikai alkalmazásokat, a kód módosítása nélkül.
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) egy Azure-szolgáltatás áttelepítésre és a legigényesebb vállalati fájl-számítási feladatok futtatására a felhőben. Ilyenek például az adatbázisok, az SAP és a nagy teljesítményű számítástechnikai alkalmazások, amelyek nem módosítanak programkódot.
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 (Szolgáltatások, ahol a Azure NetApp Files használatban vannak.)
 
 - **Active Directory kapcsolatok**: a Azure NetApp Files támogatja [a Active Directory Domain Services és a Azure Active Directory Domain Services](../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#decide-which-domain-services-to-use).
@@ -31,7 +31,7 @@ Azure NetApp Files számos Azure-régióban elérhető, és támogatja a régió
 
 ## <a name="reference-architecture"></a>Referenciaarchitektúra
 
-Az alábbi ábra az Azure ExpressRoute keresztüli, egy Azure VMware-megoldáshoz tartozó privát felhőhöz való kapcsolódást ábrázolja. Egy Azure NetApp Files-megosztás használatát mutatja be, amely Azure VMware-megoldású virtuális gépekre van csatlakoztatva, és az Azure VMware-megoldási környezettel érhető el.
+Az alábbi ábra az Azure ExpressRoute keresztüli, egy Azure VMware-megoldáshoz tartozó privát felhőhöz való kapcsolódást ábrázolja. Az Azure VMware-megoldás környezete hozzáfér a Azure NetApp Files-megosztáshoz, amely az Azure VMware-megoldás virtuális gépekre van csatlakoztatva.
 
 ![Az Azure VMware megoldás architektúrájának NetApp-fájljait bemutató ábra.](media/net-app-files/net-app-files-topology.png)
 
@@ -83,11 +83,11 @@ A következő lépések bemutatják az Azure-ban az Azure NetApp Files Premium S
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="A kötet konfigurációs adatait bemutató képernyőkép.":::
 
-    Láthatja, hogy a kötet anfvolume, amelynek mérete 200 GiB, a kapacitás-készlet anfpool1 lett létrehozva, és NFS-fájlmegosztásként exportálta a 10.22.3.4:/ANFVOLUME. A rendszer létrehoz egy magánhálózati IP-címet az Azure Virtual Networkról (VNet) a Azure NetApp Fileshez és a virtuális gépen csatlakoztatni kívánt NFS-útvonalhoz. A mérettel ("kvóta") Azure NetApp Files kötet teljesítményével kapcsolatos további információkért tekintse meg a [Azure NetApp Files teljesítményével kapcsolatos szempontokat](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
+    Láthatja, hogy a anfvolume kötet 200 GiB méretű, és a Capacity Pool anfpool1 van.  A rendszer NFS-fájlmegosztásként exportálja a 10.22.3.4-on keresztül:/ANFVOLUME. A rendszer létrehoz egy magánhálózati IP-címet az Azure Virtual Networkról (VNet) a Azure NetApp Fileshez és a virtuális gépen csatlakoztatni kívánt NFS-útvonalhoz. Ha többet szeretne megtudni a Azure NetApp Files kötet teljesítményéről vagy a "kvóta" értékről, tekintse meg [a Azure NetApp Files teljesítményével kapcsolatos szempontokat](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>Az előre konfigurált Azure VMware-megoldás virtuálisgép-megosztási leképezésének ellenőrzése
 
-Mielőtt bemutatjuk Azure NetApp Files megosztás hozzáférhetőségét egy Azure VMware megoldás virtuális géphez, fontos megérteni az SMB-és NFS-megosztások megfeleltetését. Csak az SMB-vagy NFS-kötetek konfigurálása után csatlakoztathatók az itt dokumentált módon.
+Ahhoz, hogy egy Azure NetApp Files-megosztás elérhető legyen egy Azure VMware-megoldás virtuális gépe számára, fontos megérteni az SMB-és NFS-megosztások leképezését. Csak az SMB-vagy NFS-kötetek konfigurálása után csatlakoztathatók az itt dokumentált módon.
 
 - SMB-megosztás: hozzon létre egy Active Directory-kapcsolatokat az SMB-kötet telepítése előtt. A sikeres kapcsolatok eléréséhez a megadott tartományvezérlőknek a Azure NetApp Files delegált alhálózatának kell elérhetőnek lennie. Miután a Active Directory konfigurálva lett a Azure NetApp Files-fiókban, az SMB-kötetek létrehozásakor választható elemként fog megjelenni.
 
@@ -103,7 +103,7 @@ A következőkben csak néhány meggyőző Azure NetApp Files használati eset v
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután integrálta Azure NetApp Files az Azure VMware-megoldás munkaterhelésével, érdemes többet megtudni a következőről:
+Most, hogy az Azure VMware-megoldás számítási feladataival kezelte Azure NetApp Files integrálását, érdemes megismernie az alábbiakat:
 
 - [A Azure NetApp Files erőforrás-korlátai](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
 - [Útmutatás Azure NetApp Files hálózati tervezéshez](../azure-netapp-files/azure-netapp-files-network-topologies.md).

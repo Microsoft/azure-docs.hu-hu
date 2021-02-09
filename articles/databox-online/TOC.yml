@@ -206,6 +206,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Állapotmentes alkalmazás üzembe helyezése a GitOps használatával
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+                - name: Az Azure arc-adatkezelő üzembe helyezése
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Az Azure Resource Manager konfigurálása (előzetes verzió)
           items:
             - name: Csatlakozás az Azure PowerShell használatával

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940051"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989080"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatainak konfigurálása
 
@@ -59,7 +59,7 @@ A virtuális hálózatok (virtuális hálózatok) támogatottak azokon a [régi�
 
 
 > [!NOTE]
-> Ha LUIS-t használ, a **CognitiveServicesManagement** címke csak az SDK-val vagy a REST API használatával használhatja a szolgáltatást. A LUIS-portál virtuális hálózatról való eléréséhez és használatához a következő címkéket kell használnia:  
+> Ha LUIS vagy Speech Services szolgáltatást használ, a **CognitiveServicesManagement** címke csak az SDK vagy a REST API használatával teszi lehetővé a szolgáltatás használatát. A LUIS Portal és/vagy a Speech Studio virtuális hálózatról való eléréséhez és használatához a következő címkéket kell használnia:  
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor. frontend**
 > * **AzureResourceManager** 
@@ -157,7 +157,7 @@ Cognitive Services erőforrások alapértelmezett hálózati hozzáférési szab
         --default-action Allow
     ```
 
-**_
+***
 
 ## <a name="grant-access-from-a-virtual-network"></a>Hozzáférés biztosítása egy virtuális hálózattól
 
@@ -169,7 +169,7 @@ Minden Cognitive Services erőforrás legfeljebb 100 virtuális hálózati szab�
 
 ### <a name="required-permissions"></a>Szükséges engedélyek
 
-Ha egy virtuális hálózati szabályt Cognitive Services erőforrásra kíván alkalmazni, a felhasználónak rendelkeznie kell a megfelelő engedélyekkel az alhálózatok hozzáadásához. A szükséges engedély az alapértelmezett _Contributor * szerepkör vagy a *Cognitive Services közreműködő* szerepkör. A szükséges engedélyek hozzáadhatók egyéni szerepkör-definícióhoz is.
+Ha egy virtuális hálózati szabályt Cognitive Services erőforrásra kíván alkalmazni, a felhasználónak rendelkeznie kell a megfelelő engedélyekkel az alhálózatok hozzáadásához. A szükséges engedély az alapértelmezett *közreműködő* szerepkör vagy a *Cognitive Services közreműködő* szerepkör. A szükséges engedélyek hozzáadhatók egyéni szerepkör-definícióhoz is.
 
 Cognitive Services erőforrás és a hozzáférést kapott virtuális hálózatok különböző előfizetésekben lehetnek, beleértve az olyan előfizetéseket, amelyek egy másik Azure AD-bérlő részét képezik.
 
@@ -325,10 +325,10 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
         --subnet $subnetid
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) _ * deny * * értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférés biztosítása internetes IP-címtartományról
 
@@ -472,10 +472,10 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
         --ip-address "16.17.18.0/24"
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) _ * deny * * értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
+> Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás** értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
 ## <a name="use-private-endpoints"></a>Privát végpontok használata
 

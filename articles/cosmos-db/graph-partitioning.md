@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91516c9815cfd71ffb59c399ea6580c6e28d8fce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4d76bdcb385ed2fe4b8a697f24187b8e3d5addbc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576464"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988748"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Particionált gráfok használata az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 A Azure Cosmos DB Gremlin API egyik fő funkciója a horizontális skálázási képességgel rendelkező nagyméretű diagramok kezelése. A tárolók egymástól függetlenül méretezhetők a tárolás és az átviteli sebesség tekintetében. Létrehozhat olyan Azure Cosmos DB tárolókat, amelyek automatikusan méretezhetők a Graph-adatmennyiség tárolására. Az adatértékek a megadott **partíciós kulcs** alapján automatikusan egyensúlyban vannak.
 
-A particionálás belsőleg történik, ha a tároló várhatóan 20 GB-nál több méretet tárol, vagy ha több mint 10 000 adategységet szeretne lefoglalni másodpercenként (RUs). A rendszer a megadott partíciós kulcs alapján automatikusan particionálja az adattárolást. A partíciós kulcs megadása kötelező, ha gráf-tárolókat hoz létre a Azure Portal vagy a Gremlin-illesztőprogramok 3. x vagy újabb verziójából. A partíciós kulcs nem szükséges, ha 2. x vagy alacsonyabb verziójú Gremlin-illesztőprogramot használ. 
+A particionálás belsőleg történik, ha a tároló várhatóan 20 GB-nál több méretet tárol, vagy ha több mint 10 000 adategységet szeretne lefoglalni másodpercenként (RUs). A rendszer a megadott partíciós kulcs alapján automatikusan particionálja az adattárolást. A partíciós kulcs megadása kötelező, ha gráf-tárolókat hoz létre a Azure Portal vagy a Gremlin-illesztőprogramok 3. x vagy újabb verziójából. A partíciós kulcs nem szükséges, ha 2. x vagy alacsonyabb verziójú Gremlin-illesztőprogramot használ.
 
 A [Azure Cosmos db particionálási mechanizmussal](partitioning-overview.md) azonos általános elvek vonatkoznak néhány, az alábbiakban ismertetett gráf-specifikus optimalizálásra.
 

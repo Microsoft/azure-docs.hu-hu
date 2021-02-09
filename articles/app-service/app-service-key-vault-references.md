@@ -3,15 +3,15 @@ title: Key Vault-referenciák használata
 description: Megtudhatja, hogyan állíthatja be Azure App Service és Azure Functions Azure Key Vault-hivatkozások használatára. Key Vault titkokat elérhetővé teheti az alkalmazás kódjában.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b55aeb68d5fa740d34c8823f555f804be54895a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205846"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988772"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
@@ -38,26 +38,26 @@ A Key Vault titkainak beolvasásához létre kell hoznia egy tárolót, és enge
 A Key Vault hivatkozás az űrlapra mutat `@Microsoft.KeyVault({referenceString})` , ahol a `{referenceString}` a következő lehetőségek egyikével helyettesíti:
 
 > [!div class="mx-tdBreakAll"]
-> | Hivatkozási sztring                                                            | Leírás                                                                                                                                                                                 |
+> | Hivatkozási sztring                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | A **SecretUri** az Key Vault titkos kulcsa teljes adatsík URI-ja, beleértve a verziószámot is, például: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** meg kell egyeznie a Key Vault erőforrás nevével. A **SecretName** a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** a használni kívánt titkos kulcs verziószámának kell lennie. |
+> | SecretUri =_SecretUri_                                                       | A **SecretUri** a titkos kulcs teljes adatsík URI-ja legyen Key Vaultban, opcionálisan egy verziót is beleértve, például `https://myvault.vault.azure.net/secrets/mysecret/` vagy `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
+> | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** kötelező megadni, és meg kell adni a Key Vault erőforrás nevét. A **SecretName** megadása kötelező, és a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** nem kötelező, de ha a jelen esetben a használni kívánt titok verzióját jelzi. |
 
-> [!NOTE] 
-> A verziókra jelenleg szükség van. A titkok elforgatásakor frissítenie kell a verziót az alkalmazás konfigurációjában.
 A teljes hivatkozás például a következőhöz hasonló lesz:
 
-
 ```
-@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret)
 ```
 
 Alternatív megoldás:
 
 ```
-@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret)
 ```
 
+## <a name="rotation"></a>Változtatás
+
+Ha egy verzió nincs megadva a hivatkozásban, akkor az alkalmazás a Key Vault található legújabb verziót fogja használni. Ha az újabb verziók elérhetővé válnak, például egy rotációs eseménnyel, akkor az alkalmazás automatikusan frissül, és egy napon belül elkezdi használni a legújabb verziót. Az alkalmazásban végrehajtott összes konfigurációs módosítás azonnali frissítést eredményez az összes hivatkozott titok legújabb verzióihoz.
 
 ## <a name="source-application-settings-from-key-vault"></a>A forrásoldali Alkalmazásbeállítások Key Vault
 
@@ -193,7 +193,7 @@ A beépített érzékelők egyikét is használhatja további információk megs
 1. A portálon navigáljon az alkalmazáshoz.
 2. Válassza a **Problémák diagnosztizálása és megoldása** lehetőséget.
 3. Válassza a **rendelkezésre állás és teljesítmény** lehetőséget, majd válassza a **webalkalmazás lehetőséget.**
-4. Keresse meg **Key Vault az Alkalmazásbeállítások diagnosztikát** , és kattintson a **További információ**elemre.
+4. Keresse meg **Key Vault az Alkalmazásbeállítások diagnosztikát** , és kattintson a **További információ** elemre.
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>A Azure Functions detektorának használata

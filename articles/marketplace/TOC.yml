@@ -13,7 +13,7 @@
       href: partner-center-portal/company-work-accounts.md
     - name: Fiók migrálása a CPP-ből a Partnerközpontba
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
-- name: Fogalmak
+- name: Alapelvek
   items:
     - name: Terméklistázási lehetőségek
       href: determine-your-listing-type.md
@@ -299,6 +299,8 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Értékelések és vélemények irányítópult
       href: partner-center-portal/ratings-reviews.md
+    - name: A mért számlázás rendellenességének észlelése
+      href: anomaly-detection.md
     - name: Gyakori kérdések az elemzésről
       href: analytics-faq.md
 - name: Szabályzatok és feltételek

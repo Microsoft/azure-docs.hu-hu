@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2020
+ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 72ded01b141aafb7fd3e4d761882a10eaf0c4b33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920409"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988570"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>E-mail-értesítések konfigurálása biztonsági riasztásokhoz 
 
@@ -26,8 +26,8 @@ A biztonsági riasztásoknak el kell érniük a szervezete megfelelő személyei
 
 Az értesítő e-mailek saját beállításainak megadásához Azure Security Center **e-mail-értesítéseinek** beállításai oldalon a következő lehetőségek közül választhat:
 
-- **_kinek_ kell értesítést** küldeni – az e-maileket elküldheti az egyéni felhasználóknak vagy egy adott Azure-szerepkörrel rendelkező felhasználók számára az előfizetéshez. 
-- **_mit_ kell** kapniuk a szolgáltatásról – módosítsa azokat a súlyossági szinteket, amelyekre Security Center küldi az értesítéseket.
+- ***kinek* kell értesítést** küldeni – az e-maileket elküldheti az egyéni felhasználóknak vagy egy adott Azure-szerepkörrel rendelkező felhasználók számára az előfizetéshez. 
+- ***mit* kell** kapniuk a szolgáltatásról – módosítsa azokat a súlyossági szinteket, amelyekre Security Center küldi az értesítéseket.
 
 A riasztások fáradtságának elkerülése érdekében Security Center korlátozza a kimenő levelek mennyiségét. Az egyes előfizetésekhez Security Center a következőt küldi el:
 
@@ -44,12 +44,11 @@ A riasztások fáradtságának elkerülése érdekében Security Center korláto
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazda**<br>**Előfizetés tulajdonosa** |
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
-## <a name="customize-the-security-alerts-email-notifications"></a>A biztonsági riasztások e-mail-értesítéseinek testreszabása<a name="email"></a>
-
+## <a name="customize-the-security-alerts-email-notifications-via-the-portal"></a>A biztonsági riasztások e-mail-értesítéseinek testreszabása a portálon keresztül<a name="email"></a>
 E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szerepkörökkel rendelkező felhasználóknak is.
 
 1. A Security Center **díjszabása & beállítások** területen válassza ki a megfelelő előfizetést, és válassza az **e-mail értesítések** lehetőséget.
@@ -60,6 +59,28 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szere
     - Adja meg a megadott e-mail-címeket vesszővel elválasztva. A megadható e-mail-címek száma nincs korlátozva.
 
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés** lehetőséget.
+
+## <a name="customize-the-alerts-email-notifications-through-the-api"></a>A riasztások e-mail-értesítéseinek testreszabása az API-n keresztül
+Az e-mailes értesítéseket a megadott REST APIon is kezelheti. A részletekért tekintse meg a [SECURITYCONTACTS API dokumentációját](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts).
+
+Ez egy példa az PUT-kérelemre a biztonsági kapcsolatfelvételi konfiguráció létrehozásakor:
+
+```json
+{
+    "properties": {
+        "emails": admin@contoso.com;admin2@contoso.com,
+        "notificationsByRole": {
+            "state": "On",
+            "roles": ["AccountAdmin", "Owner"]
+        },
+        "alertNotifications": {
+            "state": "On",
+            "minimalSeverity": "High"
+        },
+        "phone": ""
+    }
+}
+```
 
 
 ## <a name="see-also"></a>Lásd még

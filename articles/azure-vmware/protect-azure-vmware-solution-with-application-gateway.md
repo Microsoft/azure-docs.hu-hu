@@ -2,13 +2,13 @@
 title: Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson futó webalkalmazások biztonságos megjelenítéséhez.
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/08/2021
+ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628992"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988636"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 
@@ -188,4 +188,8 @@ Ez az eljárás bemutatja, hogyan határozhatja meg a háttérbeli címkészlete
 
 ## <a name="next-steps"></a>Következő lépések
 
-További konfigurációs példákért tekintse át az [Azure Application Gateway dokumentációját](../application-gateway/index.yml) .
+Most, hogy a Application Gateway használatával gondoskodik az Azure VMware-megoldáson futó webalkalmazások védeleméről, érdemes megismernie az alábbiakat:
+
+- [Az Azure Application Gateway konfigurálása különböző forgatókönyvekhez](../application-gateway/configuration-overview.md).
+- [Traffic Manager üzembe helyezése az Azure VMware-megoldás](deploy-traffic-manager-balance-workloads.md)számítási feladatainak terheléselosztásához.
+- [Azure NetApp Files integrálása az Azure VMware megoldás-alapú munkaterhelésekkel](netapp-files-with-azure-vmware-solution.md).

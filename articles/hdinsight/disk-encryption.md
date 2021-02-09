@@ -5,12 +5,12 @@ description: Ez a cikk az Azure HDInsight-fürtökön tárolt adatok számára e
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927330"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988625"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -106,7 +106,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -116,7 +116,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél által felügyelt kulcsok csak a fürt létrehozása során alkalmazhatók az új fürtökre. A titkosítás nem távolítható el az ügyfél által felügyelt kulcstárolóból, és az ügyfél által felügyelt kulcsok nem vehetők fel a meglévő fürtökbe.
 
-A [November 2020-es kiadástól](hdinsight-release-notes.md#release-date-11182020)kezdve a HDInsight támogatja a fürtök létrehozását a verziószámmal ellátott és a verziószám nélküli kulcs URI-k használatával. Ha a fürtöt egy verzió nélküli kulcs-URI-val hozza létre, akkor a HDInsight-fürt megpróbálja végrehajtani a kulcs automatikus elforgatását, ha a kulcs frissül a Azure Key Vault. Ha a fürtöt egy verziószámmal ellátott kulcs URI-val hozza létre, akkor a [titkosítási kulcs elforgatása](#rotating-the-encryption-key)című cikkben leírtak szerint manuálisan kell elvégeznie a kulcsot.
+A november 2020-es kiadástól kezdve a HDInsight támogatja a fürtök létrehozását a verziószámmal ellátott és a verziószám nélküli kulcs URI-k használatával. Ha a fürtöt egy verzió nélküli kulcs-URI-val hozza létre, akkor a HDInsight-fürt megpróbálja végrehajtani a kulcs automatikus elforgatását, ha a kulcs frissül a Azure Key Vault. Ha a fürtöt egy verziószámmal ellátott kulcs URI-val hozza létre, akkor a [titkosítási kulcs elforgatása](#rotating-the-encryption-key)című cikkben leírtak szerint manuálisan kell elvégeznie a kulcsot.
 
 A november 2020-es kiadás előtt létrehozott fürtök esetében manuálisan kell elvégeznie a kulcs elforgatását a verziószámmal ellátott kulcs URI használatával.
 

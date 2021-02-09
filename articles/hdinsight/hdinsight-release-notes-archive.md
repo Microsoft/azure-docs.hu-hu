@@ -4,19 +4,47 @@ description: Archivált kibocsátási megjegyzések az Azure HDInsight-hoz. A Ha
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 10/07/2020
-ms.openlocfilehash: 8e6f27c378a6cea8fffbdcda58c4fc3bb865e51e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932166"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988543"
 ---
 # <a name="archived-release-notes"></a>Archivált kibocsátási megjegyzések
 
 ## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében a nyílt forráskódú Apache Hadoop és az Azure-beli Apache Spark-elemzések terén.
+
+## <a name="release-date-11182020"></a>Kiadás dátuma: 11/18/2020
+
+Ez a kiadás a 3,6-es és a HDInsight 4,0-es HDInsight egyaránt érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
+
+### <a name="new-features"></a>Új funkciók
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Ügyfél által felügyelt kulcs titkosításának automatikus kulcsának elforgatása nyugalmi állapotban
+Ettől a kiadástól kezdődően az ügyfelek az Azure KeyValut-verzió-kevesebb titkosítási kulcs URL-címét használhatják az ügyfelek által felügyelt kulcs titkosítására nyugalmi állapotban. A HDInsight automatikusan elforgatja a kulcsokat, és lecseréli azokat új verzióra. További információt [itt talál](./disk-encryption.md).
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>A Spark, a Hadoop és a ML szolgáltatások Zookeeper eltérő virtuálisgép-méretek kiválasztásának lehetősége
+A HDInsight korábban nem támogatta a Zookeeper-csomópontok méretének testreszabását a Spark, a Hadoop és a ML Services típusú fürtök esetében. Alapértelmezés szerint A2_v2/a2 virtuálisgép-méreteket tartalmaz, amelyek díjmentesen állnak rendelkezésére. Ebből a kiadásból kiválaszthatja a forgatókönyvhöz leginkább megfelelő Zookeeper virtuális gépek méretét. A A2_v2/a2 eltérő virtuálisgép-mérettel rendelkező Zookeeper-csomópontokat a rendszer felszámítja. A A2_v2 és az A2-es virtuális gépek továbbra is díjmentesen elérhetők.
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
+A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Ettől a kiadástól kezdve a szolgáltatás fokozatosan migrálva lesz az [Azure virtuálisgép-méretezési csoportokra](../virtual-machine-scale-sets/overview.md). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
+
+### <a name="deprecation"></a>Elavulás
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>A HDInsight 3,6 ML Services-fürt elavult változata
+A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 2020 decemberében. Az ügyfelek nem tudnak új 3,6 ML-es szolgáltatási fürtöket létrehozni a 31 2020. december után. A meglévő fürtök a Microsoft támogatásának hiányában lesznek futtatva. Tekintse meg a HDInsight-verziók és-fürtök támogatásának lejárati idejét [itt](./hdinsight-component-versioning.md#available-versions).
+
+#### <a name="disabled-vm-sizes"></a>Letiltott virtuálisgép-méretek
+A HDInsight november 16 2020-től kezdődően megakadályozza, hogy az új ügyfelek standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretekkel hozzanak létre fürtöket. Az elmúlt három hónapban ezeket a virtuálisgép-méreteket használó meglévő ügyfeleket nem érinti a rendszer. A HDInsight január 9 2021-től kezdődően a standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretek használatával letiltja a fürtöket létrehozó összes ügyfelet. A meglévő fürtök futtatása a következőképpen történik:. Vegye fontolóra a HDInsight 4,0-re való áttérést, hogy elkerülje a lehetséges rendszer/támogatás megszakadását.
+
+### <a name="behavior-changes"></a>Viselkedési változások
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>NSG-szabály-ellenőrzés hozzáadása a skálázási művelet előtt
+A HDInsight hozzáadta a hálózati biztonsági csoportokat (NSG) és a felhasználó által megadott útvonalakat (UDR) a skálázási művelettel. Ugyanez az érvényesítés történik a fürt létrehozásakor a fürtök skálázása mellett. Ez az ellenőrzés segít megakadályozni a kiszámíthatatlan hibákat. Ha az érvényesítés nem történik meg, a skálázás sikertelen lesz. További információ a NSG és a UDR helyes konfigurálásáról: [HDInsight-felügyeleti IP-címek](./hdinsight-management-ip-addresses.md).
+
+### <a name="component-version-change"></a>Összetevő verziójának módosítása
+Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](./hdinsight-component-versioning.md)találja.
 
 ## <a name="release-date-11092020"></a>Kiadás dátuma: 11/09/2020
 
@@ -595,11 +623,11 @@ Az új frissítések és képességek a következő kategóriákba sorolhatók:
 
     b.  [**Új szolgáltatások a Apache Kafka 1,0**](https://kafka.apache.org/downloads#1.0.0)
 
-*  *Az 9,1-es **R Server frissítéssel Machine Learning Services 9,3** _ – ezzel a kiadással adatszakértőket és mérnököket biztosítunk a legjobb nyílt forráskódú fejlesztéshez, amely a lehető leggyorsabban az operacionalizálási, és az összes előnyben részesített nyelven elérhető, az Apache Spark sebességének köszönhetően. Ez a kiadás a Python támogatásával bővült R Serverban kínált képességekkel, ami a fürt nevének változása R Server és ML szolgáltatások között. 
+*  Az 9,1-es ***R Server frissítéssel Machine Learning Services 9,3*** – ezzel a kiadással adatszakértőket és mérnököket biztosítunk a legjobb nyílt forráskódú fejlesztéshez, amely a lehető leggyorsabban elérhető a operacionalizálási, és az összes előnyben részesített nyelven érhető el, az Apache Spark sebességével. Ez a kiadás a Python támogatásával bővült R Serverban kínált képességekkel, ami a fürt nevének változása R Server és ML szolgáltatások között. 
 
-_ ***Támogatás a Azure Data Lake Storage Gen2** _ – a HDInsight támogatja a Azure Data Lake Storage Gen2 előzetes kiadását. Az elérhető régiókban az ügyfelek kiválaszthatják a HDInsight-fürtök elsődleges vagy másodlagos tárolójának ADLS Gen2 fiókját.
+*  A ***Azure Data Lake Storage Gen2 támogatása*** – a HDInsight támogatja a Azure Data Lake Storage Gen2 előzetes kiadását. Az elérhető régiókban az ügyfelek kiválaszthatják a HDInsight-fürtök elsődleges vagy másodlagos tárolójának ADLS Gen2 fiókját.
 
-_ ***HDInsight Enterprise Security Package Updates (előzetes verzió)** _ – (előzetes verzió) [Virtual Network szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) támogatása Azure Blob Storage, ADLS Gen1, Cosmos db és Azure db.
+*  ***HDInsight Enterprise Security Package Updates (előzetes verzió)*** – (előzetes verzió) [Virtual Network szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) támogatása az Azure Blob Storage, ADLS Gen1, Cosmos db és az Azure db számára.
 
 ### <a name="component-versions"></a>Összetevő-verziók
 
@@ -797,7 +825,7 @@ Ebben a kiadásban a HBase 1.1.2 és a következő Apache-javítások is elérhe
 
 Ez a kiadás a következő javítások mellett biztosítja a kaptár 1.2.1-es és a kaptár-2.1.0:
 
-_ *Kaptár 1.2.1 Apache-javítások:**
+**Kaptár 1.2.1 Apache-javítások:**
 
 -   [*Struktúra-10697*](https://issues.apache.org/jira/browse/HIVE-10697): \# a ObjectInspectorConvertors UnionConvertor hibás konverziót végez.
 
