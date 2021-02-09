@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan hozhat létre egy olyan AK-fürtöt, amely biza
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/11/2020
+ms.date: 2/5/2020
 ms.author: amgowda
-ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b6fe8f4fe34799a71d59b7487d96217b4ac6a429
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760639"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833203"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal (DCsv2) az Azure CLI használatával (előzetes verzió)
 
@@ -75,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 ### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azure bizalmas számítástechnikai funkciók regisztrálása az Azure-ban (nem kötelező, de ajánlott)
-A AKS-ConfidentialComputinAddon regisztrálása az Azure-előfizetésben. Ez a funkció két daemonsets fog felvenni, ahogy az [itt](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)látható a részletek között:
+A AKS-ConfidentialComputingAddon regisztrálása az Azure-előfizetésben. Ez a funkció két daemonsets fog felvenni, ahogy az [itt](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)látható a részletek között:
 1. SGX ENKLÁVÉHOZ illesztőprogram beépülő modul
 2. SGX ENKLÁVÉHOZ-igazolási ajánlat segítője
 
@@ -85,7 +85,7 @@ az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.
 Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg. Ez a szolgáltatás regisztrációja csak egyszer érhető el az előfizetések esetében. Ha korábban már regisztrálták, ugorja át a fenti lépést:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 Ha az állapot regisztrálva értékre van állítva, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az "az Provider Register" parancs használatával:
 
@@ -134,7 +134,7 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
 Ha a kimenet megfelel a fentinek, akkor az AK-fürt most már készen áll a bizalmas alkalmazások futtatására.
 
-Nyissa meg [„Helló világ!” alkalmazás az enklávé](#hello-world) üzembe helyezése szakaszát, hogy tesztelje az alkalmazást egy enklávéban. Vagy kövesse az alábbi utasításokat további Node-készletek hozzáadásához az AK-ban (az AK támogatja a SGX ENKLÁVÉHOZ-csomópontok és a nem SGX ENKLÁVÉHOZ csomópont-készletek keverését)
+Nyissa meg [Hello World az enklávé](#hello-world) üzembe helyezése szakaszát, hogy tesztelje az alkalmazást egy enklávéban. Vagy kövesse az alábbi utasításokat további Node-készletek hozzáadásához az AK-ban (az AK támogatja a SGX ENKLÁVÉHOZ-csomópontok és a nem SGX ENKLÁVÉHOZ csomópont-készletek keverését)
 
 ## <a name="adding-confidential-computing-node-pool-to-existing-aks-cluster"></a>Bizalmas számítástechnikai csomópont-készlet hozzáadása meglévő AK-fürthöz<a id="existing-cluster"></a>
 
@@ -143,12 +143,12 @@ Ez a szakasz azt feltételezi, hogy rendelkezik egy már működő AK-fürttel, 
 Először is lehetővé teszi a funkció hozzáadását az Azure-előfizetéshez
 
 ```azurecli-interactive
-az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
 ```
 Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg. Ez a szolgáltatás regisztrációja csak egyszer érhető el az előfizetések esetében. Ha korábban már regisztrálták, ugorja át a fenti lépést:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 Ha az állapot regisztrálva értékre van állítva, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az "az Provider Register" parancs használatával:
 
@@ -190,7 +190,7 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
 Ha a kimenet megfelel a fentinek, akkor az AK-fürt most már készen áll a bizalmas alkalmazások futtatására.
 
-## <a name="hello-world-from-isolated-enclave-application"></a>„Helló világ!” alkalmazás izolált enklávé alkalmazásból <a id="hello-world"></a>
+## <a name="hello-world-from-isolated-enclave-application"></a>Hello World izolált enklávé alkalmazásból <a id="hello-world"></a>
 Hozzon létre egy *Hello-World-enklávé. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a nyílt enklávé-alapú minta alkalmazás kódja az [Open enklávé projektben](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)található. Az alábbi központi telepítés feltételezi, hogy telepítette a "confcom" addon.
 
 ```yaml
@@ -270,7 +270,7 @@ Removing the confidential computing node pool
 az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resource-group myResourceGroup
 ``````
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Python, node stb. futtatása Bizalmas tárolókban bizalmasan kezelheti az alkalmazásokat a [bizalmas tárolók mintáinak](https://github.com/Azure-Samples/confidential-container-samples)meglátogatásával.
 

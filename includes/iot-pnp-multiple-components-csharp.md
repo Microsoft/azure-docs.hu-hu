@@ -4,14 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: ff1041c941a994784c68d779bd96dec9070ce89a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 6d507d31680b25932980bdede2c1252348d84803
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510532"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834169"
 ---
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre IoT Plug and Play-eszköz-alkalmazást összetevőkkel, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás C# nyelven íródott, és a C#-hoz készült Azure IoT Device SDK tartalmazza. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
+
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+
+> [!div class="checklist"]
+> * A mintakód letöltése.
+> * Hozzon létre egy mintakód-kódot.
+> * Futtassa a minta-eszköz alkalmazást, és ellenőrizze, hogy csatlakozik-e az IoT hubhoz.
+> * Tekintse át a forráskódot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
