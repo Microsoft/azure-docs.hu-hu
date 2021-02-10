@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820874"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007056"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
@@ -42,6 +42,10 @@ Az erőforrás-mozgató használatával jelenleg a következő erőforrásokat h
 
 A lemezek nem választhatók ki erőforrásként az áthelyezett régiók között. A lemezeket azonban a virtuális gépek áthelyezésének részeként helyezi át a rendszer.
 
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>Mit jelent az erőforráscsoport áthelyezése?
+
+Ha erőforrás van kiválasztva áthelyezésre, a rendszer automatikusan hozzáadja a megfelelő erőforráscsoportot az áthelyezéshez. Erre azért van szükség, mert a cél erőforrást egy olyan erőforráscsoport alá kell helyezni, mint a cél. Kiválaszthatja, hogy testreszabja és megadja a meglévő erőforráscsoportot, ha az áthelyezéshez hozzá lett adva. Vegye figyelembe, hogy az erőforráscsoport áthelyezése **nem** jelenti azt, hogy a forrás erőforráscsoport összes erőforrása át lesz helyezve.
+
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Át lehet helyezni az erőforrásokat az előfizetések között, amikor áthelyezem őket a régiók között?
 
 Az erőforrásoknak a célhelyre való áthelyezése után módosíthatja az előfizetést. [További](../azure-resource-manager/management/move-resource-group-and-subscription.md) információ az erőforrások másik előfizetésre való áthelyezéséről. 
@@ -69,7 +73,7 @@ A [felügyelt identitás](../active-directory/managed-identities-azure-resources
 - Ha erőforrásokat helyez át a portál régiói között, a folyamat automatikusan megtörténik.
 - Ha az erőforrásokat a PowerShell használatával helyezi át, a parancsmagok futtatásával rendeljen hozzá egy rendszerhez rendelt identitást a gyűjteményhez, majd rendeljen hozzá egy szerepkört a megfelelő előfizetési engedélyekkel az identitás rendszerbiztonsági tagjához. 
 
-### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Milyen felügyelt identitási engedélyek szükségesek az erőforrás-mozgató számára?
+### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Milyen felügyelt identitási engedélyek szükségesek az erőforrás-mozgató számára? 
 
 Az Azure Resource Mover felügyelt identitásának eléréséhez legalább a következő engedélyekre van szükség: 
 
@@ -96,7 +100,7 @@ Szükség szerint módosítsa a forrás-és a cél kombinációt a portálon a m
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Mi történik, ha eltávolítok egy erőforrást az áthelyezési erőforrások listájából?
 
-Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. Ha az erőforrást a listából távolítja el, az erőforrás állapotától függ. [További információk](remove-move-resources.md#vm-resource-state-after-removing).
+Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. Ha az erőforrást a listából távolítja el, az erőforrás állapotától függ. [További információ](remove-move-resources.md#vm-resource-state-after-removing).
 
 
 

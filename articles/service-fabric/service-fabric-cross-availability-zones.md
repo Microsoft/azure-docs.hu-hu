@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918923"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007040"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -374,8 +374,8 @@ A több rendelkezésre állási zóna támogatásához engedélyezni kell a Serv
 * Az első érték a **multipleAvailabilityZones** , amelyet igaz értékűre kell állítani a nodeType esetében.
 * A második érték a **sfZonalUpgradeMode** , és nem kötelező. Ez a tulajdonság nem módosítható, ha a fürtben már szerepel egy olyan NodeType, amely több AZ az.
       A tulajdonság a virtuális gépek logikai csoportosítását vezérli a frissítési tartományokban.
-          Ha az érték hamis (lapos mód), a csomópont típusú virtuális gépek az UD-ben lesznek csoportosítva, figyelmen kívül hagyva a zóna adatait 5 frissítési.
-          Ha az érték nincs megadva vagy True (hierarchikus mód) értékűre van állítva, a virtuális gépek úgy vannak csoportosítva, hogy tükrözzék a zónák közötti eloszlást akár 15 frissítési. A 3 zóna mindegyike 5 frissítési fog rendelkezni.
+          Ha értéke "Parallel" (párhuzamos) értékre van állítva: a NodeType alatti virtuális gépek a frissítési-ben lesznek csoportosítva, figyelmen kívül hagyva a zóna adatait 5 frissítési.
+          Ha az érték ki van hagyva vagy "hierarchikus" értékűre van állítva: a virtuális gépek úgy vannak csoportosítva, hogy tükrözzék a zóna szerinti eloszlást akár 15 frissítési. A 3 zóna mindegyike 5 frissítési fog rendelkezni.
           Ez a tulajdonság csak a ServiceFabric alkalmazás és a kód verziófrissítésének frissítési viselkedését határozza meg. Az alapul szolgáló virtuálisgép-méretezési csoport frissítései továbbra is párhuzamosak lesznek az AZ-ban.
       Ez a tulajdonság nem befolyásolja az UD-eloszlást olyan csomópont-típusok esetén, amelyeken nincs engedélyezve több zóna.
 * A harmadik érték a **vmssZonalUpgradeMode = Parallel**. Ez egy *kötelező* tulajdonság, amelyet konfigurálni kell a fürtben, ha több AZs rendelkező nodeType van hozzáadva. Ez a tulajdonság határozza meg a virtuálisgép-méretezési csoport frissítéseinek frissítési módját, amely párhuzamosan fog történni az AZ összes időpontban.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: be807c7654123962f93820d9a3d54f3c7c070d97
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 049c24beb6bb1573458779bf0796357fa634898f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526958"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008570"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és kiépítése Windows-eszközön (előzetes verzió)
 
@@ -27,6 +27,8 @@ Ez a cikk a IoT Edge Windows-eszközökön való beállításának lépéseit so
 
 >[!NOTE]
 >A Windows rendszerhez készült Linux IoT Edge [nyilvános előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
+>
+>Habár a Windows Linux rendszerhez készült IoT Edge a Windows-környezetben való Azure IoT Edge ajánlott használata, a Windows-tárolók továbbra is elérhetők. Ha a Windows-tárolókat szeretné használni, tekintse meg a Windows rendszerű [Azure IoT Edge telepítésének és felügyeletének](how-to-install-iot-edge-windows-on-windows.md)útmutatója című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -99,7 +101,7 @@ Ha a helyi eszköz helyett egy távoli céleszköz kíván üzembe helyezni, és
 
    ![Kezdeti Windows felügyeleti központ irányítópultja a felsorolt eszközzel](./media/how-to-install-iot-edge-on-windows/windows-admin-center-initial-dashboard.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Az **erőforrások hozzáadása vagy létrehozása** panelen keresse meg a **Azure IoT Edge** csempét. Válassza az **új létrehozása** lehetőséget a Linux rendszerhez készült Azure IoT Edge új példányának telepítéséhez az eszközön.
 

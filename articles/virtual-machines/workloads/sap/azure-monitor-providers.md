@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8192d7104daf1474a2123331183edf05e6fa1ada
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968604"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007414"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor SAP Solutions-szolgáltatók számára (előzetes verzió)
 
@@ -41,7 +41,7 @@ Ha az ügyfelek nem állítanak be szolgáltatót az SAP-figyelő erőforrásán
 
 Az ügyfelek egy vagy több szolgáltatót *SAP HANA* használhatnak az adatgyűjtés SAP HANA adatbázisból való engedélyezéséhez. Az SAP HANA-szolgáltató az SQL-porton keresztül csatlakozik a SAP HANA adatbázishoz, lekéri a telemetria adatait az adatbázisból, és leküldi az ügyfél-előfizetés Log Analytics munkaterületére. A SAP HANA szolgáltató 1 percenként gyűjt adatokat az SAP HANA-adatbázisból.  
 
-A nyilvános előzetes verzióban az ügyfelek a következő adatokat számíthatják SAP HANA szolgáltatóval: a mögöttes infrastruktúra kihasználtsága, a SAP HANA gazdagép állapota, SAP HANA a rendszer replikálása és SAP HANA biztonsági másolat telemetria adatai. SAP HANA szolgáltató konfigurálásához a gazdagép IP-címét, a HANA SQL-portszámot, valamint a SYSTEMDB felhasználónevét és jelszavát kötelező megadni. Javasoljuk, hogy SAP HANA szolgáltatót a SYSTEMDB-ra konfigurálja, azonban további szolgáltatók is konfigurálhatók más adatbázis-bérlők ellen.
+A nyilvános előzetes verzióban az ügyfelek a következő adatokat számíthatják SAP HANA szolgáltatóval: a mögöttes infrastruktúra kihasználtsága, a SAP HANA gazdagép állapota, SAP HANA a rendszer replikálása és SAP HANA biztonsági másolat telemetria adatai. SAP HANA szolgáltató konfigurálásához a gazdagép IP-címét, a HANA SQL-portszámot, valamint a SYSTEMDB felhasználónevét és jelszavát kötelező megadni. Javasoljuk, hogy a SAP HANA szolgáltatót a SYSTEMDB-ra konfigurálja, azonban több szolgáltató is konfigurálható más adatbázis-bérlők között.
 
 ![Azure Monitor SAP Solutions-szolgáltatók számára – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
@@ -68,10 +68,38 @@ Magas rendelkezésre állású fürt konfigurálásához két elsődleges lépé
    A magas rendelkezésre állású fürt szolgáltatójának konfigurálásához a következő információk szükségesek:
    
    - **Név**. A szolgáltató neve. Ennek a Azure Monitornek egyedinek kell lennie az SAP Solutions-példány esetében.
-   - **Prometheus-végpont**. Általában http \: // \<servername or ip address\> : 9664/mérőszámok.
+   - **Prometheus-végpont**. http \: // \<servername or ip address\> : 9664/mérőszámok.
    - **SID**. SAP-rendszerek esetén használja az SAP SID-t. Más rendszerekhez (például NFS-fürtökhöz) használjon egy három karakterből álló nevet a fürt számára. A biztonsági azonosítónak a figyelt többi fürttől eltérőnek kell lennie.   
    - **Fürt neve**. A fürt létrehozásakor használt fürt neve. A fürt neve megtalálható a cluster tulajdonságban `cluster-name` .
    - **Állomásnév**. A virtuális gép linuxos állomásneve.  
+
+
+## <a name="provider-type-os-linux"></a>Szolgáltató típusa (Linux)
+Az ügyfelek az operációs rendszer (Linux) egy vagy több szolgáltatóját konfigurálhatják az BareMetal vagy a virtuálisgép-csomópontból történő adatgyűjtés engedélyezéséhez. Az operációs rendszer (Linux) szolgáltatója BareMetal vagy virtuálisgép-csomópontokhoz csatlakozik [Node_Exporter](https://github.com/prometheus/node_exporter)végpont használatával lekéri   a telemetria adatait a csomópontokról, és leküldi az ügyfél-előfizetés log Analytics munkaterületére. Az operációs rendszer (Linux) szolgáltatója 60 másodpercenként gyűjt adatokat a csomópontok többsége számára. 
+
+A nyilvános előzetes verzióban az ügyfelek a következő adatokra számíthatnak a (z) operációs rendszer (Linux) szolgáltatójának használatával: 
+   - CPU-használat, CPU-használat folyamat szerint 
+   - Lemez kihasználtsága, I/O-olvasási & írás 
+   - Memória eloszlása, memóriahasználat, memória használatának cseréje 
+   - Hálózati használat, hálózati bejövő & kimenő forgalom részletei. 
+
+Egy operációs rendszer (Linux) szolgáltatójának konfigurálásához két elsődleges lépésre van szó:
+1. Telepítse a [Node_Exportert](https://github.com/prometheus/node_exporter)   az egyes BareMetal vagy virtuálisgép-csomópontokon.
+   A [Node_exporter](https://github.com/prometheus/node_exporter)telepítéséhez két lehetősége van: 
+      - A Ansible-mel való automatizáláshoz az operációs rendszer (Linux) szolgáltatójának telepítéséhez minden BareMetal vagy virtuálisgép-csomóponton [Node_Exportert](https://github.com/prometheus/node_exporter) kell használni.  
+      - Manuálisan végezze el a [telepítést](https://prometheus.io/docs/guides/node-exporter/).
+
+2. Konfiguráljon egy operációsrendszer-(Linux-) szolgáltatót a környezet minden egyes BareMetal vagy virtuálisgép-csomópont-példányához. 
+   Az operációs rendszer (Linux) szolgáltatójának konfigurálásához a következő információk szükségesek: 
+      - név. A szolgáltató neve. Ennek a Azure Monitornek egyedinek kell lennie az SAP Solutions-példány esetében. 
+      - Csomópont-exportőr végpontja. Általában http:// <servername or ip address> : 9100/mérőszámok 
+
+> [!NOTE]
+> a 9100 egy Node_Exporter végpont számára elérhető port.
+
+> [!Warning]
+> Győződjön meg arról, hogy a csomópont-exportőr fut a csomópont újraindítása után. 
+
 
 ## <a name="provider-type-microsoft-sql-server"></a>Szolgáltató típusa Microsoft SQL Server
 
@@ -79,7 +107,7 @@ Az ügyfelek egy vagy több szolgáltatói típust konfigurálhatják *Microsoft
 
 A nyilvános előzetes verzióban az ügyfelek a következő adatokat számíthatják SQL Server szolgáltatóval: a mögöttes infrastruktúra kihasználtsága, a legnépszerűbb SQL-utasítások, a legnagyobb táblázat, a SQL Server a hibák naplójában rögzített problémák, a blokkoló folyamatok és mások.  
 
-Microsoft SQL Server szolgáltató konfigurálásához az SAP rendszerazonosítóját, a gazdagép IP-címét, SQL Server portszámát, valamint a SQL Server bejelentkezési nevet és jelszót kötelező megadni.
+Microsoft SQL Server szolgáltató konfigurálásához az SAP rendszer-azonosító, a gazdagép IP-címe, SQL Server portszám és a SQL Server bejelentkezési név és jelszó szükséges.
 
 ![Azure Monitor SAP Solutions-szolgáltatók számára – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
 

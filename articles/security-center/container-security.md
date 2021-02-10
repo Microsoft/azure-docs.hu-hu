@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132716"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007813"
 ---
 # <a name="container-security-in-security-center"></a>Tárolóbiztonság a Security Centerben
 
@@ -70,11 +70,25 @@ A IaaS Linux rendszerű virtuális gépeken üzemeltetett nem felügyelt tárol�
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>A Kubernetes-fürtök folyamatos figyelése
 A Security Center együttműködik az Azure Kubernetes szolgáltatással (ak), a Microsoft felügyelt tároló-előkészítési szolgáltatásával a tároló alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez.
 
-Az AK biztonsági ellenőrzéseket és láthatóságot biztosít a fürtök biztonsági állapotáról. Security Center a következő funkciókat használja:
-* Az AK-fürtök konfigurációjának folyamatos figyelése
-* Iparági szabványokhoz igazított biztonsági javaslatok előállítása
+Az AK biztonsági ellenőrzéseket és láthatóságot biztosít a fürtök biztonsági állapotáról. Security Center ezekkel a szolgáltatásokkal folyamatosan figyeli az AK-fürtök konfigurációját, és előkészíti az iparági szabványokhoz igazított biztonsági javaslatokat.
+
+Ez a Azure Security Center, az Azure Kubernetes Service és a Azure Policy közötti interakció magas szintű diagramja:
+
+:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Az Azure Security Center, az Azure Kubernetes szolgáltatás és a Azure Policy közötti interakció magas szintű architektúrája" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+
+Láthatja, hogy a Security Center kapott és elemzett elemek a következők:
+
+- naplók naplózása az API-kiszolgálóról
+- nyers biztonsági események a Log Analytics-ügynökből
+
+    > [!NOTE]
+    > Jelenleg nem támogatjuk a Log Analytics ügynök telepítését a virtuálisgép-méretezési csoportokon futó Azure Kubernetes Service-fürtökön.
+
+- a fürt konfigurációs adatai az AK-fürtből
+- munkaterhelés-konfiguráció Azure Policy (a **Kubernetes Azure Policy-bővítményének** használatával)
 
 A szolgáltatással kapcsolatos releváns Security Center javaslatok részleteiért tekintse meg az ajánlásokat ismertető táblázat [számítási szakaszát](recommendations-reference.md#recs-compute) .
+
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Munkaterhelések elleni védelem – ajánlott eljárások a Kubernetes belépésvezérlés használatával
 

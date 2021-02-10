@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 5bedb7da2f088c065d95d60effeda1e4db15d44a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64955cdc1e4eb0088b53ad73d9c464c9533aa0fa
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589486"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007720"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>A Apache Spark és a függő összetevők támogatott nyelvi és futtatókörnyezeti verziói  
 
@@ -30,7 +30,7 @@ Az Azure szinapszis Apache Spark az Ubuntu 16,04-es verzióján fut.
 
 ## <a name="java-version"></a>Java-verzió
 
-Apache Spark az Azure Szinapszisban a Java-verzió 1.8.0 _222-t tartalmaz
+Apache Spark az Azure Szinapszisban a Java-verzió 1.8.0 _272-t tartalmaz
 
 ## <a name="scala-version"></a>Scala verziója
 
@@ -38,15 +38,15 @@ Az Azure szinapszis Apache Spark tartalmazza a Scala 2.11.12
 
 ## <a name="net-core-version"></a>.NET Core-verzió
 
-Az Azure szinapszis Apache Spark része a .NET Core 3,0
+Az Azure szinapszis Apache Spark része a .NET Core 3,1
 
 ## <a name="net-support-for-apache-spark"></a>.NET-támogatás Apache Spark
 
-Az Azure szinapszis .NET-támogatást tartalmaz Apache Spark 0.11.0
+Az Azure szinapszis a Apache Spark 1.0.0 .NET-támogatását tartalmazza
 
 ## <a name="delta-lake"></a>Delta Lake
 
-A szinapszis Analytics támogatja a Delta Lake 0.6.0
+A szinapszis Analytics támogatja a Delta Lake 0.6.1
 
 ## <a name="python-version"></a>Python-verzió
 

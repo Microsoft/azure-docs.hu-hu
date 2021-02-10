@@ -107,7 +107,7 @@
         - name: Támogatási kérés megnyitása a sikertelen üzembe helyezésekhez
           href: fix-deployment-provisioning-failures.md
     - name: GYIK
-      href: faq.md
+      href: faq.yml
 - name: Referencia
   items:
     - name: Azure CLI

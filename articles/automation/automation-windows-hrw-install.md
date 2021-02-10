@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182784"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006989"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -38,8 +38,8 @@ A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure
 
 A hibrid Runbook Worker szolgáltatás a következő operációs rendszereket támogatja:
 
-* Windows Server 2019
-* Windows Server 2016, 1709-es és 1803-es verzió
+* Windows Server 2019 (beleértve a Server Core-t)
+* Windows Server 2016, 1709 és 1803 verzió (kivéve a Server Core-t)
 * Windows Server 2012, 2012 R2
 * Windows Server 2008 SP2 (x64), 2008 R2
 * Windows 10 Enterprise (több munkamenetet is beleértve) és Pro

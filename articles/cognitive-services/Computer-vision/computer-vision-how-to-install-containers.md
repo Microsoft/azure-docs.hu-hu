@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: helyszíni, OCR, Docker, tároló
-ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576820"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008587"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Az OCR Docker-tárolók beolvasása (előzetes verzió) 
 
@@ -92,7 +92,7 @@ Az olvasáshoz tároló lemezképek érhetők el.
 | Tároló | Container Registry/adattár/rendszerkép neve |
 |-----------|------------|
 | Olvasás 2,0 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Olvasás 3,2 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
+| Olvasás 3,2 – előzetes verzió | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
 
 A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) parancs használatával töltse le a tárolók rendszerképét.
 
@@ -101,7 +101,7 @@ A [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) pa
 # <a name="version-32-preview"></a>[3,2-es verzió – előzetes verzió](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
 ```
 
 # <a name="version-20-preview"></a>[2,0-es verzió – előzetes verzió](#tab/version-2)
@@ -131,7 +131,7 @@ A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engi
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

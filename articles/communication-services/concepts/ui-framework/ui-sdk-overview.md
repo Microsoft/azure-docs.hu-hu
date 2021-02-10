@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ecef7e13c107a07b6dac52a467315d2a5f1f9090
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: b6f9987c21ecdcf0e1b5358486312dceb26c8b82
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539841"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008553"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Azure kommunikációs szolgáltatások felhasználói felületi keretrendszere
 
@@ -47,7 +47,7 @@ A követelmények megismerése segítséget nyújt a megfelelő ügyféloldali k
 
 A funkciók rendelkezésre állásával kapcsolatos részletek a különböző [felhasználói felületi SDK-k itt érhetők el](ui-sdk-features.md), de a legfontosabb kompromisszumok összegzése alább látható.
 
-|Ügyféloldali kódtár/SDK|Implementáció bonyolultsága|    Testreszabási képesség|  Hívó| Csevegés| [Csapatok együttműködése](./../voice-video-calling/teams-interop.md)
+|Ügyféloldali kódtár/SDK|Implementáció bonyolultsága|    Testreszabási képesség|  Hívó| Csevegés| [Csapatok együttműködése](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Összetett összetevők|Alacsony|Alacsony|✔|✔|✕
 |Alapösszetevők|Közepes|Közepes|✔|✔|✕

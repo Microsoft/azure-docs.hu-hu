@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a8d3ded1d11a350ff53ffda71348b2cc707760b8
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878935"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008417"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -81,10 +81,12 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hogyan beolvasni az adatnaplót?
 Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query Language (KQL) használatával írt napló lekérdezés használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és bepillantást, amelyek egy adott alkalmazáshoz vagy szolgáltatáshoz tartozó naplózási lekérdezéseket tartalmaznak. Lásd: [Azure monitorban található naplók áttekintése](log-query/log-query-overview.md).
-P
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Törölhetek adatok Log Analytics munkaterületről?
 Az adatok el lettek távolítva a munkaterületről a [megőrzési időtartamnak](platform/manage-cost-storage.md#change-the-data-retention-period)megfelelően. A megadott adatokat adatvédelmi vagy megfelelőségi okokból is törölheti. További információkért lásd: [privát adatok exportálása és törlése](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
+### <a name="is-log-analytics-storage-immutable"></a>Nem változtathatók Log Analytics a tárolók?
+Az adatbázis-tárolóban tárolt adatmennyiség nem módosítható a betöltés után, de törölhető [a *kiürítési* API-útvonalon keresztül a magánjellegű adattörléshez](platform/personal-data-mgmt.md#delete). Bár az adat nem módosítható, bizonyos minősítésekhez szükséges, hogy az adat nem módosítható és nem törölhető a tárolóban. Az adatmódosíthatatlansági a nem módosítható [tárolóként](../storage/blobs/storage-blob-immutability-policies-manage.md)konfigurált Storage-fiókba történő [adatexportálással](platform/logs-data-export.md) érhető el.
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Mi a Log Analytics-munkaterület?
 A Azure Monitor által gyűjtött összes naplózási adatokat egy Log Analytics munkaterületen tárolja a rendszer. A munkaterület lényegében egy olyan tároló, amelyben a naplózási adatokat különböző forrásokból gyűjti a rendszer. Lehet, hogy az összes figyelési adathoz egyetlen Log Analytics munkaterület tartozik, vagy több munkaterületre vonatkozó követelmények is lehetnek. Lásd: [a Azure monitor naplók üzembe helyezésének megtervezése](platform/design-logs-deployment.md).
@@ -821,7 +823,7 @@ Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log A
 Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.
 
 - [Naplóelemzés](/answers/topics/azure-monitor.html)

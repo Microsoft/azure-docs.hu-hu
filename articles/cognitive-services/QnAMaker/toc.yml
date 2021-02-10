@@ -8,12 +8,10 @@
       href: whats-new.md
 - name: Rövid útmutatók
   items:
-    - name: a QnA Maker portállal
-      items:
-        - name: Tudásbázis létrehozása
-          href: Quickstarts/create-publish-knowledge-base.md
-        - name: Tudásbázis lekérdezése
-          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Tudásbázis létrehozása QnA Maker portálon
+      href: Quickstarts/create-publish-knowledge-base.md
+    - name: Tudásbázis lekérdezése REST API-kkal
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Ügyféloldali kódtárak vagy REST API használata
       href: Quickstarts/quickstart-sdk.md
 - name: Oktatóanyagok
@@ -38,6 +36,8 @@
     - name: Fejlesztési életciklus
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Pontos válaszadás
+      href: reference-precise-answering.md
     - name: Ajánlott eljárások
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -50,6 +50,13 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: QnA Maker erőforrás-hozzáférés kezelése
       href: How-To/manage-qna-maker-app.md
+    - name: Az aktív tanulás beállítása a Tudásbázis fejlesztéséhez
+      items:
+        - name: Az aktív tanulás bekapcsolása
+          href: How-To/use-active-learning.md
+        - name: Javasolt alternatív kérdések lekérése
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Az aktív tanulás bekapcsolása
       href: How-To/use-active-learning.md
     - name: A tudásbázis kezelése
@@ -86,16 +93,10 @@
       href: Overview/language-support.md
     - name: Korlátok
       href: limits.md
-    - name: Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
-      href: Concepts/role-based-access-control.md
-    - name: Aktív tanulás
-      href: Concepts/active-learning-suggestions.md
     - name: Megbízhatósági pontszám
       href: Concepts/confidence-score.md
     - name: Hibaelhárítás
       href: troubleshooting.md
-    - name: Pontos válaszadás
-      href: reference-precise-answering.md
     - name: Védett SharePoint-fájlok hozzáadása
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'

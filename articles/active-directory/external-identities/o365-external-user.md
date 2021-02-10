@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515506"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008128"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 külső megosztási és Azure Active Directory (Azure AD) B2B együttműködés
 
@@ -32,8 +32,7 @@ A OneDrive/SharePoint Online külön meghívó-kezelővel rendelkezik. A külső
 
 - Az Azure AD B2B együttműködés meghívott felhasználóit a OneDrive/SharePoint Online megosztás párbeszédpanelekről lehet kiválasztani. A OneDrive/SharePoint Online meghívott felhasználók az Azure AD-ben is megjelennek a meghívóik beváltása után.
 
-- A licencelési követelmények eltérnek. A licenceléssel kapcsolatos további tudnivalókért tekintse meg az [Azure ad B2B licencelés](./external-identities-pricing.md) és [a "mi a külső felhasználó?" című részt a SharePoint Online külső megosztásának áttekintésében](/sharepoint/external-sharing-overview#what-happens-when-users-share).
-
+- A licencelési követelmények eltérnek. A licenceléssel kapcsolatos további tudnivalókért tekintse meg az [Azure ad külső identitások licencelése](./external-identities-pricing.md) és [a SharePoint Online külső megosztásának áttekintése](/sharepoint/external-sharing-overview)című témakört.
 A OneDrive/SharePoint Online-ban az Azure AD B2B együttműködéssel való külső megosztás kezeléséhez állítsa be a OneDrive/SharePoint Online külső megosztási beállítást úgy, hogy **csak a szervezet címtárában már meglévő külső felhasználók számára engedélyezze a megosztást**. A felhasználók a külsőleg megosztott webhelyekre léphetnek, és a rendszergazda által hozzáadott külső közreműködők közül választhatnak. A rendszergazda a B2B Collaboration Meghívási API-kon keresztül veheti fel a külső közreműködőket.
 
 

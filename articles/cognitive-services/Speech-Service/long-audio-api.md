@@ -1,5 +1,5 @@
 ---
-title: Long audio API (előzetes verzió) – Speech Service
+title: Long audio API – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogy a hosszú hangalapú API hogyan lett kialakítva a hosszú formátumú szöveg és a beszéd közötti aszinkron szintézishez.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: 255cfe11f8601abc89a1d96f702f453c2af1ccbd
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533060"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007448"
 ---
-# <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
+# <a name="long-audio-api"></a>Hosszú hang API
 
-A hosszú hangalapú API a hosszú formátumú szöveg és a beszéd aszinkron szintéziséhez készült (például hangkönyvek, Hírek és dokumentumok). Ez az API nem adja vissza a szintetizált hangot valós időben, ezért a várt érték az, hogy a válasz (ok) ra fog szavazni, és a kimenet (eke) t a szolgáltatás által elérhetővé tettnek megfelelően használja fel. A Speech SDK által használt szöveg-beszéd API-val ellentétben a hosszú hang-API 10 percnél hosszabb szintetizált hangot is létrehozhat, így a kiadók és a hangtartalom-platformok ideálisak.
+A hosszú hangalapú API a hosszú formátumú szöveg és a beszéd aszinkron szintéziséhez készült (például hangkönyvek, Hírek és dokumentumok). Ez az API nem adja vissza a szintetizált hangot valós időben, ezért a várt érték az, hogy a válasz (ok) ra fog szavazni, és a kimenet (eke) t a szolgáltatás által elérhetővé tettnek megfelelően használja fel. A Speech SDK által használt szöveg-és beszédfelismerési API-val ellentétben a hosszú hangalapú API 10 percnél tovább képes létrehozni a szintetizált hangot, így ideális választás a kiadók és a hangtartalom-platformok számára, hogy hosszú hanganyagokat hozzon létre, például hangkönyveket egy kötegben.
 
 A hosszú hang API további előnyei:
 
@@ -47,53 +47,41 @@ A szövegfájl előkészítésekor győződjön meg róla, hogy:
 * Több mint 400 karaktert [tartalmaz az egyszerű szöveges vagy a 400](./text-to-speech.md#pricing-note) -es SSML-szövegekhez, és kisebb, mint 10 000 bekezdés
   * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
   * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
-> [!NOTE]
-> A kínai (anyaországi), a kínai (Hongkong KKT), a kínai (Tajvan), a japán és a Koreai nyelveken egy szót két karakternek számítunk fel. 
 
 ## <a name="python-example"></a>Python-példa
 
-Ez a szakasz olyan Python-példákat tartalmaz, amelyek a hosszú hang API alapszintű használatát mutatják be. Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a kódrészletet egy nevű fájlba `voice_synthesis_client.py` .
+Ez a szakasz olyan Python-példákat tartalmaz, amelyek a hosszú hang API alapszintű használatát mutatják be. Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a kódrészletet egy nevű fájlba `long_audio_synthesis_client.py` .
 
 ```python
-import argparse
 import json
 import ntpath
-import urllib3
 import requests
-import time
-from json import dumps, loads, JSONEncoder, JSONDecoder
-import pickle
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
-Ezek a kódtárak az argumentumok elemzésére, a HTTP-kérelem összeállítására, valamint a szöveg-beszéd hosszú hang REST API meghívására szolgálnak.
+Ezek a kódtárak a HTTP-kérések összeállítására szolgálnak, és meghívják a szöveg-beszéd hosszú hangszintézis REST API.
 
 ### <a name="get-a-list-of-supported-voices"></a>A támogatott hangok listájának beolvasása
 
-Ez a kód lehetővé teszi, hogy teljes listát kapjon a hangokat egy adott régióhoz vagy végponthoz, amelyet használhat. Adja hozzá a kódot a következőhöz `voice_synthesis_client.py` :
+A támogatott hangok listájának lekéréséhez küldje el a GET kérelmet a következőnek: `https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/voices` .
 
+
+Ez a kód lehetővé teszi, hogy teljes listát kapjon a hangokat egy adott régióhoz vagy végponthoz, amelyet használhat.
 ```python
-parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
-parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
-parser.add_argument('-key', action="store", dest="key", required=True, help='the speech subscription key, like fg1f763i01d94768bda32u7a******** ')
-parser.add_argument('-region', action="store", dest="region", required=True, help='the region information, could be centralindia, canadacentral or uksouth')
-args = parser.parse_args()
-baseAddress = 'https://%s.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0-beta1/' % args.region
+def get_voices():
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/voices'.format(region)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
 
-def getVoices():
-    response=requests.get(baseAddress+"voicesynthesis/voices", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    voices = json.loads(response.text)
-    return voices
+    response = requests.get(url, headers=header)
+    print(response.text)
 
-if args.voices:
-    voices = getVoices()
-    print("There are %d voices available:" % len(voices))
-    for voice in voices:
-        print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
+get_voices()
 ```
 
-Futtassa a szkriptet a parancs használatával `python voice_synthesis_client.py --voices -key <your_key> -region <region>` , és cserélje le a következő értékeket:
+Cserélje le a következő értékeket:
 
 * Cserélje le a `<your_key>` billentyűt a beszédfelismerési szolgáltatás előfizetési kulcsára. Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
 * Cserélje le `<region>` a helyére azt a régiót, ahol a beszédfelismerési erőforrás létrejött (például: `eastus` vagy `westus` ). Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
@@ -101,163 +89,321 @@ Futtassa a szkriptet a parancs használatával `python voice_synthesis_client.py
 Ekkor a következőhöz hasonló kimenet jelenik meg:
 
 ```console
-There are xx voices available:
-
-Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xxx , Id: xxx, Locale: en-US, Gender: Male, PublicVoice: xxx, Created: 2019-07-22T09:38:14Z
-Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
+{
+  "values": [
+    {
+      "locale": "en-US",
+      "voiceName": "en-US-AriaNeural",
+      "description": "",
+      "gender": "Female",
+      "createdDateTime": "2020-05-21T05:57:39.123Z",
+      "properties": {
+        "publicAvailable": true
+      }
+    },
+    {
+      "id": "8fafd8cd-5f95-4a27-a0ce-59260f873141"
+      "locale": "en-US",
+      "voiceName": "my custom neural voice",
+      "description": "",
+      "gender": "Male",
+      "createdDateTime": "2020-05-21T05:25:40.243Z",
+      "properties": {
+        "publicAvailable": false
+      }
+    }
+  ]
+}
 ```
 
-Ha a **PublicVoice** paraméter értéke **true (igaz**), a hang a nyilvános neurális hang. Ellenkező esetben az egyéni neurális hang.
+Ha a **Properties. publicAvailable** értéke **igaz**, a hang egy nyilvános neurális hang. Ellenkező esetben ez egy egyéni neurális hang.
 
 ### <a name="convert-text-to-speech"></a>Szöveg konvertálása beszédre
 
-Készítse elő a bemeneti szövegfájlt egyszerű szöveges vagy SSML szövegben, majd adja hozzá az alábbi kódot a következőhöz `voice_synthesis_client.py` :
+Készítse elő a bemeneti szövegfájlt egyszerű szöveges vagy SSML szövegben, majd adja hozzá az alábbi kódot a következőhöz `long_audio_synthesis_client.py` :
 
 > [!NOTE]
-> a "concatenateResult" paraméter nem kötelező. Ha ez a paraméter nincs megadva, a rendszer a hangkimeneteket egy bekezdés alapján hozza létre. A hanganyagot 1 kimenetre is összefűzheti a paraméter beállításával. Alapértelmezés szerint a hang kimenete a riff-16khz-16bit-mono-PCM értékre van beállítva. További információ a támogatott hangkimenetekről: [hang kimeneti formátumai](#audio-output-formats).
+> `concatenateResult` egy választható paraméter. Ha ez a paraméter nincs megadva, a rendszer a hangkimeneteket egy bekezdés alapján hozza létre. A hanganyagot 1 kimenetre is összefűzheti a paraméter beállításával. 
+> `outputFormat` szintén nem kötelező. Alapértelmezés szerint a hang kimenete a riff-16khz-16bit-mono-PCM értékre van beállítva. További információ a támogatott hangkimeneti formátumokról: [hangkimeneti formátumok](#audio-output-formats).
 
 ```python
-parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
-parser.add_argument('--concatenateResult', action="store_true", default=False, help='If concatenate result in a single wave file')
-parser.add_argument('-file', action="store", dest="file", help='the input text script file path')
-parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
-parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
-parser.add_argument('-format', action="store", dest="format", default='riff-16khz-16bit-mono-pcm', help='the output audio format')
+def submit_synthesis():
+    region = '<region>'
+    key = '<your_key>'
+    input_file_path = '<input_file_path>'
+    locale = '<locale>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis'.format(region)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
 
-def submitSynthesis():
-    modelList = args.voiceId
-    data={'name': 'simple test', 'description': 'desc...', 'models': json.dumps(modelList), 'locale': args.locale, 'outputformat': args.format}
-    if args.concatenateResult:
-        properties={'ConcatenateResult': 'true'}
-        data['properties'] = json.dumps(properties)
-    if args.file is not None:
-        scriptfilename=ntpath.basename(args.file)
-        files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
-    response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
-    if response.status_code == 202:
-        location = response.headers['Location']
-        id = location.split("/")[-1]
-        print("Submit synthesis request successful")
-        return id
-    else:
-        print("Submit synthesis request failed")
-        print("response.status_code: %d" % response.status_code)
-        print("response.text: %s" % response.text)
-        return 0
+    voice_identities = [
+        {
+            'voicename': '<voice_name>'
+        }
+    ]
 
-def getSubmittedSynthesis(id):
-    response=requests.get(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    synthesis = json.loads(response.text)
-    return synthesis
+    payload = {
+        'displayname': 'long audio synthesis sample',
+        'description': 'sample description',
+        'locale': locale,
+        'voices': json.dumps(voice_identities),
+        'outputformat': 'riff-16khz-16bit-mono-pcm',
+        'concatenateresult': True,
+    }
 
-if args.submit:
-    id = submitSynthesis()
-    if (id == 0):
-        exit(1)
+    filename = ntpath.basename(input_file_path)
+    files = {
+        'script': (filename, open(input_file_path, 'rb'), 'text/plain')
+    }
 
-    while(1):
-        print("\r\nChecking status")
-        synthesis=getSubmittedSynthesis(id)
-        if synthesis['status'] == "Succeeded":
-            r = requests.get(synthesis['resultsUrl'])
-            filename=id + ".zip"
-            with open(filename, 'wb') as f:  
-                f.write(r.content)
-                print("Succeeded... Result file downloaded : " + filename)
-            break
-        elif synthesis['status'] == "Failed":
-            print("Failed...")
-            break
-        elif synthesis['status'] == "Running":
-            print("Running...")
-        elif synthesis['status'] == "NotStarted":
-            print("NotStarted...")
-        time.sleep(10)
+    response = requests.post(url, payload, headers=header, files=files)
+    print('response.status_code: %d' % response.status_code)
+    print(response.headers['Location'])
+
+submit_synthesis()
 ```
 
-Futtassa a szkriptet a parancs használatával `python voice_synthesis_client.py --submit -key <your_key> -region <region> -file <input> -locale <locale> -voiceId <voice_guid>` , és cserélje le a következő értékeket:
+Cserélje le a következő értékeket:
 
 * Cserélje le a `<your_key>` billentyűt a beszédfelismerési szolgáltatás előfizetési kulcsára. Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
 * Cserélje le `<region>` a helyére azt a régiót, ahol a beszédfelismerési erőforrás létrejött (például: `eastus` vagy `westus` ). Ezek az információk a [Azure Portal](https://aka.ms/azureportal)erőforrásának **Áttekintés** lapján érhetők el.
-* Cserélje le a `<input>` szöveget a szövegről beszédre előkészített szövegfájl elérési útjára.
+* Cserélje le a `<input_file_path>` szöveget a szövegről beszédre előkészített szövegfájl elérési útjára.
 * Cserélje le `<locale>` a helyére a kívánt kimeneti területi beállítást. További információ: [nyelvi támogatás](language-support.md#neural-voices).
-* Cserélje le `<voice_guid>` a gombot a kívánt kimeneti hangra. Használja az előző hívása által visszaadott hangok egyikét a `/voicesynthesis/voices` végpontra.
+
+Használja az előző hívása által visszaadott hangok egyikét a `/voices` végpontra.
+
+* Ha nyilvános neurális hangvételt használ, cserélje le `<voice_name>` a kívánt kimeneti hangra.
+* Egyéni neurális hang használatához cserélje le a `voice_identities` változót a következőre, és cserélje le `<voice_id>` az `id` Egyéni neurális hangra.
+```Python
+voice_identities = [
+    {
+        'id': '<voice_id>'
+    }
+]
+```
 
 Ekkor a következőhöz hasonló kimenet jelenik meg:
 
 ```console
-Submit synthesis request successful
-
-Checking status
-NotStarted...
-
-Checking status
-Running...
-
-Checking status
-Running...
-
-Checking status
-Succeeded... Result file downloaded : xxxx.zip
+response.status_code: 202
+https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/<guid>
 ```
 
-Az eredmény tartalmazza a bemeneti szöveget és a szolgáltatás által létrehozott hangkimeneti fájlokat. Ezeket a fájlokat zip-fájlból töltheti le.
-
 > [!NOTE]
-> Ha egynél több bemeneti fájllal rendelkezik, több kérést is el kell küldenie. Néhány korlátozást kell figyelembe venni. 
-> * Az ügyfél legfeljebb **5** kérést küldhet a kiszolgálónak másodpercenként az egyes Azure-előfizetési fiókokhoz. Ha meghaladja a korlátozást, akkor az ügyfél 429 hibakódot kap (túl sok kérés). Csökkentse a kérelmek mennyiségét másodpercenként
-> * A kiszolgáló az egyes Azure-előfizetésekhez tartozó fiókokhoz legfeljebb **120** kérelmet futtathat, és a várólistára állíthatja. Ha meghaladja a korlátozást, a kiszolgáló 429 hibakódot ad vissza (túl sok kérés). Várjon, és ne küldje el az új kérést, amíg néhány kérelem be nem fejeződik
+> Ha egynél több bemeneti fájllal rendelkezik, több kérést is el kell küldenie. Néhány korlátozást kell figyelembe venni.
+> * Az ügyfél legfeljebb **5** kérést küldhet a kiszolgálónak másodpercenként az egyes Azure-előfizetési fiókokhoz. Ha meghaladja a korlátozást, akkor az ügyfél 429 hibakódot kap (túl sok kérés). Csökkentse a kérések másodpercenkénti számát.
+> * A kiszolgáló az egyes Azure-előfizetésekhez tartozó fiókokhoz legfeljebb **120** kérelmet futtathat, és a várólistára állíthatja. Ha meghaladja a korlátozást, a kiszolgáló 429 hibakódot ad vissza (túl sok kérés). Várjon, és ne küldje el az új kérést, amíg néhány kérelem be nem fejeződik.
+
+A kimenetben lévő URL-cím használható a kérelem állapotának beolvasásához.
+
+### <a name="get-information-of-a-submitted-request"></a>Beküldött kérelem adatainak beolvasása
+
+Egy elküldött összefoglaló kérelem állapotának lekéréséhez egyszerűen küldjön egy GET-kérést az előző lépésben visszaadott URL-címre.
+```Python
+
+def get_synthesis():
+    url = '<url>'
+    key = '<your_key>'
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
+    response = requests.get(url, headers=header)
+    print(response.text)
+
+get_synthesis()
+```
+A kimenet a következőképpen fog kinézni:
+```console
+response.status_code: 200
+{
+  "models": [
+    {
+      "voiceName": "en-US-AriaNeural"
+    }
+  ],
+  "properties": {
+    "outputFormat": "riff-16khz-16bit-mono-pcm",
+    "concatenateResult": false,
+    "totalDuration": "PT5M57.252S",
+    "billableCharacterCount": 3048
+  },
+  "id": "eb3d7a81-ee3e-4e9a-b725-713383e71677",
+  "lastActionDateTime": "2021-01-14T11:12:27.240Z",
+  "status": "Succeeded",
+  "createdDateTime": "2021-01-14T11:11:02.557Z",
+  "locale": "en-US",
+  "displayName": "long audio synthesis sample",
+  "description": "sample description"
+}
+```
+
+A tulajdonságból megtekintheti a `status` kérelem állapotát. A kérés az `NotStarted` állapotból kezdődik, majd a és a értékre `Running` vált, végül pedig a következő lesz: `Succeeded` `Failed` . A hurok használatával lekérdezheti az API-t, amíg az állapot be nem válik `Succeeded` .
+
+### <a name="download-audio-result"></a>Hang eredményének letöltése
+
+Ha egy összefoglaló kérelem sikeres, letöltheti a hangeredményt a GET API meghívásával `/files` .
+
+```python
+def get_files():
+    id = '<request_id>'
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/{}/files'.format(region, id)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
+
+    response = requests.get(url, headers=header)
+    print('response.status_code: %d' % response.status_code)
+    print(response.text)
+
+get_files()
+```
+A helyére írja be annak `<request_id>` a kérésnek az azonosítóját, amelyről le szeretné tölteni az eredményt. Az előző lépés válaszában található.
+
+A kimenet a következőképpen fog kinézni:
+```console
+response.status_code: 200
+{
+  "values": [
+    {
+      "name": "2779f2aa-4e21-4d13-8afb-6b3104d6661a.txt",
+      "kind": "LongAudioSynthesisScript",
+      "properties": {
+        "size": 4200
+      },
+      "createdDateTime": "2021-01-14T11:11:02.410Z",
+      "links": {
+        "contentUrl": "https://customvoice-usw.blob.core.windows.net/artifacts/input.txt?st=2018-02-09T18%3A07%3A00Z&se=2018-02-10T18%3A07%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=e05d8d56-9675-448b-820c-4318ae64c8d5"
+      }
+    },
+    {
+      "name": "voicesynthesis_waves.zip",
+      "kind": "LongAudioSynthesisResult",
+      "properties": {
+        "size": 9290000
+      },
+      "createdDateTime": "2021-01-14T11:12:27.226Z",
+      "links": {
+        "contentUrl": "https://customvoice-usw.blob.core.windows.net/artifacts/voicesynthesis_waves.zip?st=2018-02-09T18%3A07%3A00Z&se=2018-02-10T18%3A07%3A00Z&sp=rl&sv=2017-04-17&sr=b&sig=e05d8d56-9675-448b-820c-4318ae64c8d5"
+      }
+    }
+  ]
+}
+```
+A kimenet 2 fájlból álló adatokat tartalmaz. Az a-val `"kind": "LongAudioSynthesisScript"` a bemeneti szkript elküldve. A másik a a `"kind": "LongAudioSynthesisResult"` kérelem eredménye.
+Az eredmény zip-fájl, amely tartalmazza a generált hangkimeneti fájlokat, valamint a bemeneti szöveg másolatát.
+
+Mindkét fájl letölthető a tulajdonságában lévő URL-címről `links.contentUrl` .
+
+### <a name="get-all-synthesis-requests"></a>Az összes összefoglaló kérelem beolvasása
+
+Az összes elküldött kérelem listáját a következő kóddal érheti el:
+
+```python
+def get_synthesis():
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/'.format(region)    
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
+
+    response = requests.get(url, headers=header)
+    print('response.status_code: %d' % response.status_code)
+    print(response.text)
+
+get_synthesis()
+```
+
+A kimenet a következőhöz hasonló lesz:
+```console
+response.status_code: 200
+{
+  "values": [
+    {
+      "models": [
+        {
+          "id": "8fafd8cd-5f95-4a27-a0ce-59260f873141",
+          "voiceName": "my custom neural voice"
+        }
+      ],
+      "properties": {
+        "outputFormat": "riff-16khz-16bit-mono-pcm",
+        "concatenateResult": false,
+        "totalDuration": "PT1S",
+        "billableCharacterCount": 5
+      },
+      "id": "f9f0bb74-dfa5-423d-95e7-58a5e1479315",
+      "lastActionDateTime": "2021-01-05T07:25:42.433Z",
+      "status": "Succeeded",
+      "createdDateTime": "2021-01-05T07:25:13.600Z",
+      "locale": "en-US",
+      "displayName": "Long Audio Synthesis",
+      "description": "Long audio synthesis sample"
+    },
+    {
+      "models": [
+        {
+          "voiceName": "en-US-AriaNeural"
+        }
+      ],
+      "properties": {
+        "outputFormat": "riff-16khz-16bit-mono-pcm",
+        "concatenateResult": false,
+        "totalDuration": "PT5M57.252S",
+        "billableCharacterCount": 3048
+      },
+      "id": "eb3d7a81-ee3e-4e9a-b725-713383e71677",
+      "lastActionDateTime": "2021-01-14T11:12:27.240Z",
+      "status": "Succeeded",
+      "createdDateTime": "2021-01-14T11:11:02.557Z",
+      "locale": "en-US",
+      "displayName": "long audio synthesis sample",
+      "description": "sample description"
+    }
+  ]
+}
+```
+
+`values` a tulajdonság a szintézisi kérelmek listáját tartalmazza. A lista oldalszámmal van ellátva, és a lap maximális mérete 100. Ha több mint 100 kérelem érkezik, a rendszer egy `"@nextLink"` tulajdonságot biztosít a többoldalas lista következő oldalának beolvasásához.
+
+```console
+  "@nextLink": "https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/?top=100&skip=100"
+```
+
+Az oldal mérete és a szám kihagyása az `skip` `top` URL-cím paraméterének megadásával is elvégezhető.
 
 ### <a name="remove-previous-requests"></a>Korábbi kérelmek eltávolítása
 
 A szolgáltatás minden egyes Azure-előfizetési fiók esetében **20 000** -kérelmeket fog tartani. Ha a kérelem összege meghaladja ezt a korlátozást, távolítsa el az előző kéréseket, mielőtt újakat hozna. Ha nem távolítja el a meglévő kérelmeket, a rendszer hibaüzenetet küld.
 
-Szúrja be a következő kódot az `voice_synthesis_client.py` fájlba:
-
+A következő kód bemutatja, hogyan távolíthat el egy adott szintézis-kérelmet.
 ```python
-parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
-parser.add_argument('--delete', action="store_true", default=False, help='delete a synthesis request')
-parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be deleted')
+def delete_synthesis():
+    id = '<request_id>'
+    region = '<region>'
+    key = '<your_key>'
+    url = 'https://{}.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0/longaudiosynthesis/{}/'.format(region, id)
+    header = {
+        'Ocp-Apim-Subscription-Key': key
+    }
 
-def getSubmittedSyntheses():
-    response=requests.get(baseAddress+"voicesynthesis", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    syntheses = json.loads(response.text)
-    return syntheses
-
-def deleteSynthesis(ids):
-    for id in ids:
-        print("delete voice synthesis %s " % id)
-        response = requests.delete(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-        if (response.status_code == 204):
-            print("delete successful")
-        else:
-            print("delete failed, response.status_code: %d, response.text: %s " % (response.status_code, response.text))
-
-if args.syntheses:
-    synthese = getSubmittedSyntheses()
-    print("There are %d synthesis requests submitted:" % len(synthese))
-    for synthesis in synthese:
-        print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
-
-if args.delete:
-    deleteSynthesis(args.synthesisId)
+    response = requests.delete(url, headers=header)
+    print('response.status_code: %d' % response.status_code)
 ```
 
-A futtatásával lekérheti a `python voice_synthesis_client.py --syntheses -key <your_key> -region <region>` készített összefoglaló kérelmek listáját. A következőhöz hasonló kimenetet fog látni:
+Ha a kérés sikeresen el lett távolítva, a válasz állapotkód HTTP 204 lesz (nincs tartalom).
 
 ```console
-There are <number> synthesis requests submitted:
-ID : xxx , Name : xxx, Status : Succeeded
-ID : xxx , Name : xxx, Status : Running
-ID : xxx , Name : xxx : Succeeded
+response.status_code: 204
 ```
 
-Egy kérelem törléséhez futtassa a parancsot, `python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>` és cserélje le `<synthesis_id>` az előző kérelemből visszaadott kérelem-azonosító értékre.
-
 > [!NOTE]
-> A "Running"/"Waiting" állapotú kérelmeket nem lehet eltávolítani vagy törölni.
+> A vagy az állapotú kérelmeket `NotStarted` `Running` nem lehet eltávolítani vagy törölni.
 
-A kész a `voice_synthesis_client.py` [githubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)érhető el.
+A kész a `long_audio_synthesis_client.py` [githubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)érhető el.
 
 ## <a name="http-status-codes"></a>HTTP-állapotkódok
 

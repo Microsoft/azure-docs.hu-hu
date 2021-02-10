@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1e0dbd23fa14c1bd79275d3f9ff6a164293ac19
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728859"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007346"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -174,6 +174,8 @@ A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható 
 
 Az adatbázisban tárolt összegyűjtött adatok megőrzési ideje a kiválasztott díjszabási csomagtól függ. Az *ingyenes* szinten az összegyűjtött adatok hét napig elérhetők. A *fizetős* csomag esetében a begyűjtött adatok alapértelmezés szerint 31 napig elérhetők, de 730 napig bővíthetők. Az adatok tárolása titkosított marad az Azure Storage-ban, az adatok titkosságának biztosítása érdekében, és a helyi régióban a helyileg redundáns tárolás (LRS) használatával történik az adatok replikálása. Az utolsó két hetet is tárolja SSD-alapú gyorsítótárban, és ez a gyorsítótár titkosítva van.
 
+Az adatbázis-tárolóban tárolt adatmennyiség nem módosítható a beolvasás után, de törölhető az API- [  elérési út](personal-data-mgmt.md#delete)használatával. Bár az adat nem módosítható, bizonyos minősítésekhez szükséges, hogy az adat nem módosítható és nem törölhető a tárolóban. Az adatmódosíthatatlansági a nem módosítható [tárolóként](../../storage/blobs/storage-blob-immutability-policies-manage.md)konfigurált Storage-fiókba történő [adatexportálással](logs-data-export.md) érhető el.
+
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. a Log Analytics használata az adateléréshez
 Log Analytics munkaterület eléréséhez jelentkezzen be a Azure Portal a korábban beállított szervezeti fiókkal vagy Microsoft-fiók. A portál és a Log Analytics szolgáltatás közötti összes forgalmat biztonságos HTTPS-csatornán keresztül küldik el. A portál használatakor a rendszer egy munkamenet-azonosítót hoz létre a felhasználói ügyfélen (webböngészőn), és a rendszer a munkamenet megszakítása előtt helyi gyorsítótárban tárolja az adataikat. Ha leállt, a gyorsítótár törlődik. A személyazonosításra alkalmas adatokat nem tartalmazó ügyféloldali cookie-k nem törlődnek automatikusan. A munkamenet-cookie-k HTTPOnly vannak megjelölve, és biztonságosak. Az előre meghatározott üresjárati időszak után a Azure Portal munkamenet megszakad.
 
@@ -186,7 +188,7 @@ Ezeket a további biztonsági funkciókat a Azure Monitor/Log Analytics-környez
 - Az [Azure Customer kulcstároló](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek számára az ügyfél-hozzáférési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
 
 *  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.

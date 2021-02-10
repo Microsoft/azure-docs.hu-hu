@@ -3,12 +3,12 @@ title: Esemény-kézbesítés, felügyelt szolgáltatás identitása és privát
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolgáltatás identitása egy Azure Event Grid-témakörben. Használatával továbbíthatja az eseményeket a támogatott célhelyekre.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054417"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007771"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Esemény kézbesítése felügyelt identitással
 Ez a cikk azt ismerteti, hogyan engedélyezhető a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) az Azure Event Grid egyéni témaköreihez vagy tartományokhoz. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>Az Azure CLI – Azure Storage-üzenetsor használata 
-Ebből a szakaszból megtudhatja, hogyan használhatja az Azure CLI-t, hogy egy rendszer által hozzárendelt identitás használatával kézbesítse az eseményeket egy Azure Storage-üzenetsor számára. Az identitásnak a Storage- **blob adatközreműködői** szerepkör tagjának kell lennie a Storage-fiókban.
+Ebből a szakaszból megtudhatja, hogyan használhatja az Azure CLI-t, hogy egy rendszer által hozzárendelt identitás használatával kézbesítse az eseményeket egy Azure Storage-üzenetsor számára. Az identitásnak a Storage-üzenetsor **adatüzenet-küldő** szerepkörének tagjának kell lennie a Storage-fiókban. Emellett a **Storage-blob adatközreműködői** szerepkör tagjának kell lennie a kézbesítetlen levelekhez használt Storage-fiókban.
 
 #### <a name="define-variables"></a>Változók meghatározása  
 

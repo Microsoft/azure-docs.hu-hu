@@ -338,7 +338,7 @@
         - name: Alkalmazás buildelése a MySQL-lel
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
-        - name: Nyílt Liberty-vagy WebSphere Liberty-alkalmazás üzembe helyezése
+        - name: Alkalmazás létrehozása a nyílt Liberty vagy a WebSphere Liberty-szel
           href: howto-deploy-java-liberty-app.md
         - name: Az Azure API Management használata
           href: ../api-management/api-management-kubernetes.md

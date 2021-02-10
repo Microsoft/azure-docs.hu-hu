@@ -55,9 +55,11 @@
       href: tutorials/hmac-header-tutorial.md
     - name: Webes alkalmazás előkészítése kommunikációs szolgáltatásokhoz (Node.js)
       href: tutorials/building-app-start.md
-- name: Fogalmak
+- name: Alapelvek
   expanded: false
   items:
+    - name: Teams-együttműködés
+      href: concepts/teams-interop.md
     - name: Csevegés
       items:
         - name: A csevegési ügyfélkódtár áttekintése
@@ -78,8 +80,6 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: A hang- és videóhívással kapcsolatos alapfogalmak
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Teams-együttműködés
-          href: concepts/voice-video-calling/teams-interop.md
     - name: Felhasználói felületi keretrendszer
       items:
         - name: A felhasználói felületi keretrendszer áttekintése

@@ -2,19 +2,19 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: dc70457cbe507ccf1727ea8736e7235edfdb76ca
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 4a303e5af2ce05102de6889d0bc5fce8af232a32
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797216"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007603"
 ---
 Ebben a kategóriában **15** javaslat van.
 
-|Ajánlás |Leírás |Súlyosság |
+|Ajánlás |Description |Súlyosság |
 |---|---|---|
 |A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell |Tekintse át a hálózati hozzáférés beállításait a Storage-fiók tűzfala beállításaiban. Javasoljuk, hogy konfigurálja a hálózati szabályokat úgy, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyi ügyfelekről érkező kapcsolatok engedélyezéséhez hozzáférés adható a megadott Azure-beli virtuális hálózatokból vagy a nyilvános internetes IP-címtartományok érkező forgalomhoz.<br />(Kapcsolódó szabályzat: a [Storage-fiókoknak korlátoznia kell a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34c877ad-507e-4c82-993e-3452a6e0ad3c)) |Alacsony |
 |A belső elérésű virtuális gépekre alkalmazni kell az adaptív hálózatokra vonatkozó kötési javaslatokat. |Azure Security Center elemezte az alább felsorolt virtuális gépek internetes forgalomra vonatkozó kommunikációs mintáit, és megállapította, hogy a hozzájuk társított NSG meglévő szabályai túlságosan engedékenyek, ami nagyobb potenciális támadási felületet eredményez. Ennek oka lehet a port/protokoll rekordok vagy az olyan IP-címekre vonatkozó forgalom hiánya, amelyeket az Security Center fenyegetést biztosító forrásai kártékonyként jelöltek meg.<br />(Nincs kapcsolódó házirend) |Közepes |

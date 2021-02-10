@@ -252,6 +252,8 @@
           href: automation-solution-vm-management-config.md
         - name: Virtuális gépek munkaidőn kívüli indításának és leállításának lekérdezési naplói
           href: automation-solution-vm-management-logs.md
+        - name: Start/Stop VMs during off-hours eltávolítása
+          href: automation-solution-vm-management-remove.md
         - name: Virtuális gépek munkaidőn kívüli indításának és leállításának hibaelhárítása
           href: troubleshoot/start-stop-vm.md
     - name: Frissítéskezelés

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896511"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008162"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Szolgáltatás üzembehelyezési problémáinak elhárítása
 
@@ -148,7 +148,7 @@ Ha ezeket használja, távolítsa el a munkaterület következő funkcióinak er
 A szolgáltatás erőforrásainak eltávolítása után megszüntetheti a munkaterület összekapcsolását. Fontos, hogy a munkaterületről és az Automation-fiókból törölje a meglévő összetevőkből származó összes összetevőt:
 
 * Update Management esetén távolítsa el az Automation-fiókból a **frissítési központi telepítéseket (ütemterveket)** .
-* Start/Stop VMS During off-hours esetén távolítsa el az Automation-fiókban lévő funkció-összetevők zárolásait a **Beállítások**  >  **zárolása** alatt. További információ: [a szolgáltatás eltávolítása](../automation-solution-vm-management.md#remove-the-feature).
+* Start/Stop VMS During off-hours esetén távolítsa el az Automation-fiókban lévő funkció-összetevők zárolásait a **Beállítások**  >  **zárolása** alatt. További információ: [a szolgáltatás eltávolítása](../automation-solution-vm-management-remove.md).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>A Windows-bővítményekkel kapcsolatos hibák Log Analytics
 

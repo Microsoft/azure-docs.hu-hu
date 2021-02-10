@@ -7,16 +7,23 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, AK, kubernetes
-ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526890"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007132"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty vagy WebSphere Liberty szolgáltatással Azure Kubernetes Service (ak) fürtön
 
-Ez az útmutató bemutatja, hogyan futtatható a Java, a Java EE, a [Jakarta EE](https://jakarta.ee/)vagy a [profil](https://microprofile.io/) alkalmazása a nyílt Liberty vagy a WebSphere Liberty futtatókörnyezetben, majd a tároló alkalmazás üzembe helyezése egy AK-fürtön az Open Liberty operátor használatával. A nyílt Liberty-kezelő leegyszerűsíti a nyílt Liberty Kubernetes-fürtökön futó alkalmazások üzembe helyezését és felügyeletét. Olyan speciális műveleteket is végrehajthat, mint például a Nyomkövetések és a memóriaképek összegyűjtése a kezelő használatával. Ebből a cikkből megtudhatja, hogyan készítheti elő a Liberty-alkalmazást, hogyan építheti fel az Application Docker-rendszerképet, és hogyan futtathatja a tároló alkalmazást egy AK-fürtön  A nyitott szabadságról a [szabadság projekt megnyitása oldalon](https://openliberty.io/)talál további információt. Az IBM WebSphere Liberty szolgáltatással kapcsolatos további információkért tekintse meg [a WebSphere Liberty-termék oldalát](https://www.ibm.com/cloud/websphere-liberty).
+Ez a cikk a következőket mutatja be:  
+* A nyílt Liberty vagy a WebSphere Liberty futtatókörnyezetben futtathat Java-, Java EE-, Jakarta EE-vagy profil-alkalmazást.
+* Az alkalmazás Docker-rendszerképének létrehozása nyílt Liberty-tárolók használatával.
+* A tároló alkalmazás üzembe helyezése egy AK-fürtön az Open Liberty operátor használatával.   
+
+A nyílt Liberty-kezelő leegyszerűsíti a Kubernetes-fürtökön futó alkalmazások üzembe helyezését és felügyeletét. A nyílt Liberty-kezelővel speciális műveleteket is végrehajthat, például nyomkövetési és memóriaképek gyűjtését. 
+
+A nyitott szabadságról a [szabadság projekt megnyitása oldalon](https://openliberty.io/)talál további információt. Az IBM WebSphere Liberty szolgáltatással kapcsolatos további információkért tekintse meg [a WebSphere Liberty-termék oldalát](https://www.ibm.com/cloud/websphere-liberty).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,17 +31,20 @@ Ez az útmutató bemutatja, hogyan futtatható a Java, a Java EE, a [Jakarta EE]
 
 * Ehhez a cikkhez az Azure CLI legújabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 * Ha a jelen útmutatóban található parancsokat helyileg futtatja (Azure Cloud Shell helyett):
-  * Készítsen elő egy olyan helyi gépet, amely a UNIX-hoz hasonló operációs rendszer van telepítve (például Ubuntu, macOS).
+  * Készítsen elő egy helyi gépet UNIX-szerű operációs rendszerrel (például Ubuntu, macOS, Linux Windows alrendszere).
   * Telepítsen Java SE-implementációt (például [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
   * Telepítse a [Maven](https://maven.apache.org/download.cgi) 3.5.0 vagy újabb verzióját.
   * Telepítse a [Docker](https://docs.docker.com/get-docker/) -t az operációs rendszeréhez.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot a *Java-Liberty-Project* használatával az *eastus* helyen található az [Group Create](/cli/azure/group#az_group_create) paranccsal. A rendszer a Azure Container Registry (ACR) példány és az AK-fürt későbbi létrehozásához használja. 
+Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik.  
+
+Hozzon létre egy *Java-Liberty-Project* nevű erőforráscsoportot az az [Group Create](/cli/azure/group#az_group_create) paranccsal a *eastus* helyen. Ezt az erőforráscsoportot később a Azure Container Registry (ACR) példány és az AK-fürt létrehozásához fogjuk használni. 
 
 ```azurecli-interactive
-az group create --name java-liberty-project --location eastus
+RESOURCE_GROUP_NAME=java-liberty-project
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
 ## <a name="create-an-acr-instance"></a>ACR-példány létrehozása
@@ -42,7 +52,8 @@ az group create --name java-liberty-project --location eastus
 Hozzon létre egy ACR-példányt az az [ACR Create](/cli/azure/acr#az_acr_create) paranccsal. A következő példa egy *youruniqueacrname* nevű ACR-példányt hoz létre. Győződjön meg arról, hogy az *youruniqueacrname* egyedi az Azure-on belül.
 
 ```azurecli-interactive
-az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
+REGISTRY_NAME=youruniqueacrname
+az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
 Rövid idő elteltével a következőt tartalmazó JSON-kimenetnek kell megjelennie:
@@ -55,10 +66,9 @@ Rövid idő elteltével a következőt tartalmazó JSON-kimenetnek kell megjelen
 
 ### <a name="connect-to-the-acr-instance"></a>Kapcsolódás az ACR-példányhoz
 
-Egy rendszerkép az ACR-példányba való elküldéséhez először be kell jelentkeznie. Futtassa a következő parancsokat a kapcsolódás ellenőrzéséhez:
+Be kell jelentkeznie az ACR-példányba, mielőtt leküldi a rendszerképet. Futtassa a következő parancsokat a kapcsolódás ellenőrzéséhez:
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
 USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
 PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
@@ -73,7 +83,8 @@ docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 Használja az [az aks create](/cli/azure/aks#az_aks_create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
-az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
+CLUSTER_NAME=myAKSCluster
+az aks create --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --node-count 1 --generate-ssh-keys --enable-managed-identity
 ```
 
 Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza, beleértve a következőket:
@@ -96,7 +107,7 @@ az aks install-cli
 Az [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
-az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --overwrite-existing
 ```
 
 > [!NOTE]
@@ -144,6 +155,7 @@ A Liberty-alkalmazás az AK-fürtön való üzembe helyezéséhez és futtatás�
 1. Az útmutató mintakód klónozása. A minta a [githubon](https://github.com/Azure-Samples/open-liberty-on-aks)található.
 1. Módosítsa a könyvtárat a `javaee-app-simple-cluster` helyi klónra.
 1. Futtassa `mvn clean package` az alkalmazást az alkalmazás előkészítéséhez.
+1. Futtassa `mvn liberty:dev` az alkalmazást az alkalmazás teszteléséhez. `The defaultServer server is ready to run a smarter planet.`Ha a művelet sikeres, a parancs kimenetében látnia kell. `CTRL-C`Az alkalmazás leállításához használja a következőt:.
 1. Futtassa az alábbi parancsok egyikét az alkalmazás rendszerképének létrehozásához, majd küldje el az ACR-példányba.
    * Az Open Liberty alaprendszerképének használatával kiépítheti az Open Liberty-t egy egyszerű, nyílt forráskódú Java™ futtatókörnyezettel:
 
@@ -206,12 +218,12 @@ A folyamat állapotának monitorozásához használja [kubectl get service](http
 kubectl get service javaee-app-simple-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:31732/TCP   68s
+javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
-Várjon, amíg a *külső IP-* cím változása *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címekre változik, `CTRL-C` a használatával állítsa le a `kubectl` figyelési folyamatot.
+Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` .
 
-Nyisson meg egy webböngészőt a szolgáltatás külső IP-címéhez és portjához ( `52.152.189.57:9080` a fenti példában) az alkalmazás kezdőlapjának megtekintéséhez. A lap bal felső sarkában megjelenik az alkalmazás-replikák Pod neve. Várjon néhány percet, és frissítse az oldalt, valószínűleg egy másik Pod-nevet fog látni, amely az AK-fürt által biztosított terheléselosztás miatt jelenik meg.
+Nyisson meg egy webböngészőt a szolgáltatás külső IP-címére (a `52.152.189.57` fenti példában) az alkalmazás kezdőlapjának megjelenítéséhez. A lap bal felső sarkában megjelenik az alkalmazás-replikák Pod neve. Várjon néhány percet, és frissítse az oldalt, hogy megjelenjen egy másik Pod-név, amely az AK-fürt által biztosított terheléselosztás miatt jelenik meg.
 
 :::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java Liberty-alkalmazás sikeresen telepítve az AK-on":::
 
@@ -220,10 +232,10 @@ Nyisson meg egy webböngészőt a szolgáltatás külső IP-címéhez és portj�
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az az [Group delete](/cli/azure/group#az_group_delete) paranccsal távolíthatja el az erőforráscsoportot, a Container Service-t, a tároló-beállításjegyzéket és az összes kapcsolódó erőforrást.
+Az Azure-költségek elkerülése érdekében szükségtelen erőforrásokat kell megtisztítani.  Ha a fürtre már nincs szükség, az az [Group delete](/cli/azure/group#az_group_delete) paranccsal távolíthatja el az erőforráscsoportot, a Container Service-t, a tároló-beállításjegyzéket és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
-az group delete --name java-liberty-project --yes --no-wait
+az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Következő lépések

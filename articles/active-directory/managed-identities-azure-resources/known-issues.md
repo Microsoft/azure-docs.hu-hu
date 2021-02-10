@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 02/04/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825802"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008536"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásával kapcsolatos gyakori kérdések és ismert problémák
 
@@ -48,6 +48,10 @@ Nem. A felügyelt identitások és Azure AD alkalmazás regisztrációk nem egye
 Alkalmazásregisztrációk két összetevővel rendelkezik: egy Application Object + egy egyszerű szolgáltatásnév objektum. Az Azure-erőforrásokhoz tartozó felügyelt identitások csak a következő összetevők egyikével rendelkeznek: egyszerű szolgáltatásnév-objektum. 
 
 A felügyelt identitások nem rendelkeznek alkalmazás-objektummal a címtárban, ami általában az MS Graph alkalmazás engedélyeinek megadására szolgál. Ehelyett a felügyelt identitásokhoz tartozó MS Graph-engedélyeket közvetlenül az egyszerű szolgáltatásnak kell megadnia.  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>Ugyanaz a felügyelt identitás több régióban is használható?
+
+Röviden, igen, a felhasználóhoz rendelt felügyelt identitásokat több Azure-régióban is használhatja. A hosszú válasz az, hogy míg a felhasználóhoz rendelt felügyelt identitások regionális erőforrásként jönnek létre, az Azure AD-ben létrehozott társított [egyszerű](../develop/app-objects-and-service-principals.md#service-principal-object) szolgáltatásnév (SPN) globálisan elérhető. Az egyszerű szolgáltatás bármely Azure-régióból felhasználható, a rendelkezésre állása pedig az Azure AD rendelkezésre állásának függvénye. Ha például egy felhasználóhoz rendelt felügyelt identitást hozott létre a South-Central régióban, és ez a régió elérhetetlenné válik, akkor ez a probléma csak a felügyelt identitásban lévő [sík tevékenységek vezérlését](../../azure-resource-manager/management/control-plane-and-data-plane.md) befolyásolja.  A felügyelt identitások használatára már konfigurált erőforrások által végrehajtott tevékenységeket nem érinti a program.
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Az Azure-erőforrások felügyelt identitásai működnek az Azure Cloud Services?
 

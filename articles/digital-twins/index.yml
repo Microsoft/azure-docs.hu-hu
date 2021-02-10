@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-  ms.translationtype: HT
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96186405"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007754"
 landingContent:
 - title: Az Azure Digital Twins bemutatása
   linkLists:
@@ -23,6 +23,14 @@ landingContent:
     links:
     - text: Mi az az Azure Digital Twins?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Egyéni modellek
+      url: concepts-models.md
+    - text: Digitális ikermodellek és az ikergráf
+      url: concepts-twins-graph.md
+    - text: Lekérdezés nyelve
+      url: concepts-query-language.md
 - title: Első lépések a gyorsútmutatóval
   linkLists:
   - linkListType: quickstart
@@ -43,20 +51,6 @@ landingContent:
     links:
     - text: Teljes körű megoldás csatlakoztatása
       url: tutorial-end-to-end.md
-- title: Tanulás
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Egyéni modellek
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: Digitális ikermodellek és az ikergráf
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: Lekérdezés nyelve
-      url: concepts-query-language.md
 - title: Fejlesztés
   linkLists:
   - linkListType: how-to-guide
@@ -115,3 +109,19 @@ landingContent:
     links:
     - text: Egyéni swaggerek Logic Apps-összekötőhöz
       url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: Forgatókönyv-alapú tanulás Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Képzési terv: fejlesztés az Azure digitális Twins szolgáltatással'
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: 'A modul ismertetése: az Azure digitális Twins bemutatása'
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: 'A modul megismerése: Azure digitális Twins-gráf készítése csokoládé gyári gépsor'
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: 'A modul megismerése: az adatgyűjtés az Azure digitális Twins szolgáltatásba'
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: 'A modul megismerése: az Azure Digital Twins kimenete az alárendelt szolgáltatásokba'
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/
