@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762982"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090598"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -83,10 +83,6 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
     - A szakaszos bevezetéshez *nem használhatók* dinamikus csoportok.
     - A csoporton belüli kapcsolattartási objektumok nem lesznek hozzáadva a csoporthoz.
 
-- Azure AD Connect vagy PowerShell használatával továbbra is a végső átváltás kell összevontról felhőbe történő hitelesítésre. A előkészített bevezetések nem váltják át a tartományokat összevontról felügyelt állapotba.  További információ a tartományi átváltás: [áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba](plan-migrate-adfs-password-hash-sync.md) és [áttelepítés az összevonási szolgáltatásból átmenő hitelesítésre](plan-migrate-adfs-pass-through-authentication.md)
-
-
-
 - Amikor először ad hozzá egy biztonsági csoportot az előkészített bevezetéshez, a rendszer 200-re korlátozza a felhasználóktól, hogy elkerülje az UX időtúllépését. A csoport hozzáadása után további felhasználókat is hozzáadhat közvetlenül hozzá, ha szükséges.
 
 - Míg a felhasználók szakaszos bevezetéssel rendelkeznek, ha a EnforceCloudPasswordPolicyForPasswordSyncedUsers engedélyezve van, a jelszó lejárati szabályzata 90 napra van beállítva, és nincs lehetőség testreszabásra. 
@@ -95,7 +91,9 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 - A Windows 10 Hybrid JOIN vagy az Azure AD JOIN elsődleges frissítési jogkivonat beszerzése az összes verzióhoz, ha a felhasználó helyszíni UPN-azonosítója nem irányítható át. Ez a forgatókönyv a WS-Trust végpontra kerül vissza szakaszos bevezetési módban, de nem fog működni, ha a szakaszos áttelepítés befejeződött, és a felhasználói bejelentkezés már nem az összevonási kiszolgálón található.
 
-
+  >[!NOTE]
+  >Azure AD Connect vagy PowerShell használatával továbbra is a végső átváltás kell összevontról felhőbe történő hitelesítésre. A előkészített bevezetések nem váltják át a tartományokat összevontról felügyelt állapotba.  További információ a tartományi átváltás: [áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) és [áttelepítés az összevonási szolgáltatásból átmenő hitelesítésre](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel
 
 Ha tesztelni szeretné a *jelszó-kivonatolási szinkronizálást* a szakaszos bevezetéssel, kövesse a következő szakaszban ismertetett lépéseket.
@@ -255,5 +253,7 @@ A: nem, ez a funkció a felhőalapú hitelesítés tesztelésére szolgál. A si
 
 V: Igen. Ha szeretné megtudni, hogyan használhatja a PowerShellt a szakaszos bevezetéshez, tekintse meg az [Azure ad előzetes](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure AD 2,0 előzetes verzió](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Bejelentkezési módszer módosítása a jelszó-kivonatolási szinkronizáláshoz](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [Bejelentkezési módszer módosítása átmenő hitelesítéshez](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

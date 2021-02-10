@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074255"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091346"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Beágyazott virtualizálás engedélyezése Azure-beli virtuális gépen
 
@@ -24,7 +24,7 @@ Ez a cikk a Hyper-V Azure-beli virtuális gépen való engedélyezésének, vala
 
 Hozzon létre egy új Windows Server 2016 Azure-beli virtuális gépet. A beágyazást támogató virtuálisgép-méretek teljes listájáért tekintse meg az [Azure számítási egységét ismertető cikket](../acu.md).
 
-Ne feledje, hogy a virtuális gép méretét elég nagy méretűre kell kiválasztania ahhoz, hogy támogassa a vendég virtuális gépek igényeit. Ebben a példában egy D3_v3 méretű Azure-beli virtuális gépet használunk. 
+Ne feledje, hogy a virtuális gép méretét elég nagy méretűre kell kiválasztania ahhoz, hogy támogassa a vendég virtuális gépek igényeit. Ebben a példában egy D4_v3 méretű Azure-beli virtuális gépet használunk. 
 
 [Itt](https://azure.microsoft.com/regions/services/)megtekintheti a Dv3 vagy Ev3 sorozatú virtuális gépek regionális elérhetőségét.
 
@@ -139,11 +139,11 @@ Az alábbi lépések végrehajtásával konfigurálja a DHCP-t a gazdagép virtu
 
 #### <a name="install-dhcp-server-on-the-azure-vm"></a>DHCP-kiszolgáló telepítése az Azure-beli virtuális gépen
 
-1. Nyissa meg a Kiszolgálókezelőt. Az irányítópulton kattintson a **szerepkörök és szolgáltatások hozzáadása**elemre. A Szerepkörök és szolgáltatások hozzáadása varázsló jelenik meg.
+1. Nyissa meg a Kiszolgálókezelőt. Az irányítópulton kattintson a **szerepkörök és szolgáltatások hozzáadása** elemre. A Szerepkörök és szolgáltatások hozzáadása varázsló jelenik meg.
   
 2. A varázslóban kattintson a **tovább** gombra a kiszolgálói szerepkörök lapra.
   
-3. Jelölje be a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása**elemre, majd kattintson a **tovább** gombra a varázsló befejezéséhez.
+3. Jelölje be a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása** elemre, majd kattintson a **tovább** gombra a varázsló befejezéséhez.
   
 4. Kattintson az **Install** (Telepítés) gombra.
 
@@ -151,15 +151,15 @@ Az alábbi lépések végrehajtásával konfigurálja a DHCP-t a gazdagép virtu
 
 1. Nyissa meg a DHCP-kezelőt.
   
-2. A navigációs ablaktáblán bontsa ki a kiszolgáló nevét, kattintson a jobb gombbal az **IPv4**elemre, majd kattintson az **Új hatókör**elemre. Megjelenik az új hatókör varázsló, és kattintson a **tovább**gombra.
+2. A navigációs ablaktáblán bontsa ki a kiszolgáló nevét, kattintson a jobb gombbal az **IPv4** elemre, majd kattintson az **Új hatókör** elemre. Megjelenik az új hatókör varázsló, és kattintson a **tovább** gombra.
   
-3. Adja meg a hatókör nevét és leírását, majd kattintson a **tovább**gombra.
+3. Adja meg a hatókör nevét és leírását, majd kattintson a **tovább** gombra.
   
 4. Adja meg a DHCP-kiszolgáló IP-tartományát (például 192.168.0.100 – 192.168.0.200).
   
-5. Kattintson a **tovább** gombra az alapértelmezett átjáró lapon. Adja meg a korábban létrehozott IP-címet (például 192.168.0.1) az alapértelmezett átjáróként, majd kattintson a **Hozzáadás**gombra.
+5. Kattintson a **tovább** gombra az alapértelmezett átjáró lapon. Adja meg a korábban létrehozott IP-címet (például 192.168.0.1) az alapértelmezett átjáróként, majd kattintson a **Hozzáadás** gombra.
   
-6. Kattintson a **tovább** gombra, amíg a varázsló befejeződik, elhagyja az összes alapértelmezett értéket, majd kattintson a **Befejezés**gombra.
+6. Kattintson a **tovább** gombra, amíg a varázsló befejeződik, elhagyja az összes alapértelmezett értéket, majd kattintson a **Befejezés** gombra.
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>2. lehetőség: statikus IP-cím manuális beállítása a vendég virtuális gépen
 Ha nem konfigurálta a DHCP-t úgy, hogy dinamikusan rendeljen hozzá IP-címet a vendég virtuális géphez, kövesse az alábbi lépéseket egy statikus IP-cím beállításához.

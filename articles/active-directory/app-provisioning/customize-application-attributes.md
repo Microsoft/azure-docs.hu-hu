@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: kenwith
-ms.openlocfilehash: 03eacf4405217ee883689a088499d86d6f2262b5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99830702"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091108"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
 A Microsoft Azure AD támogatja a külső SaaS-alkalmazások, például a Salesforce, a G Suite és más felhasználók számára történő üzembe helyezést. Ha engedélyezi a felhasználók kiosztását egy külső SaaS-alkalmazás számára, a Azure Portal attribútum-hozzárendelések segítségével vezérli az attribútum értékeit.
 
-Mielőtt elkezdené, győződjön meg arról, hogy ismeri az App Management és az **egyszeri Sign-On (SSO)** fogalmakat, és tekintse meg az alábbi hivatkozásokat:
+Mielőtt elkezdené, győződjön meg arról, hogy ismeri az App managementet és az **egyszeri Sign-On (SSO)** fogalmakat. Tekintse meg az alábbi hivatkozásokat:
 - [A gyors üzembe helyezési sorozat az alkalmazások kezelésében az Azure AD-ben](../manage-apps/view-applications-portal.md)
 - [Mi az az egyszeri Sign-On (SSO)?](../manage-apps/what-is-single-sign-on.md)
 

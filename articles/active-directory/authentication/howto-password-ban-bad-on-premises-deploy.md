@@ -1,6 +1,6 @@
 ---
 title: Helyszíni Azure AD jelszavas védelem üzembe helyezése
-description: Ismerje meg, hogyan tervezhet és helyezhet üzembe Azure AD-jelszavas védelmet helyszíni Active Directory tartományi szolgáltatások környezetben
+description: Ismerje meg, hogyan tervezhet és helyezhet üzembe Azure AD-jelszavas védelmet helyszíni Active Directory Domain Services környezetben
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,18 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6f17f6eb913d1ea54e8db6acd369d165553e16ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220286"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091040"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem tervezése és üzembe helyezése
 
 A felhasználók gyakran olyan gyakori helyi szavakat (például iskolát, sport csapatot vagy híres személyt) használó jelszavakat hoznak létre. Ezek a jelszavak könnyen kiolvashatók és gyengék a szótáron alapuló támadásokkal szemben. A szervezet erős jelszavainak kényszerítéséhez Azure Active Directory (Azure AD) jelszavas védelme globális és egyéni tiltott jelszavakat tartalmaz. A jelszó-módosítási kérelem meghiúsul, ha egyezés szerepel a tiltott jelszavak listájában.
 
-A helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetének védelme érdekében telepítheti és konfigurálhatja az Azure AD jelszavas védelmet a helyszíni TARTOMÁNYVEZÉRLŐvel való együttműködéshez. Ebből a cikkből megtudhatja, hogyan telepítheti és regisztrálja az Azure AD jelszavas védelem-proxy szolgáltatást és az Azure AD jelszavas védelmet biztosító tartományvezérlő ügynököt a helyszíni környezetben.
+A helyszíni Active Directory Domain Services (AD DS) környezetének védelme érdekében telepítheti és konfigurálhatja az Azure AD jelszavas védelmet a helyszíni TARTOMÁNYVEZÉRLŐvel való együttműködéshez. Ebből a cikkből megtudhatja, hogyan telepítheti és regisztrálja az Azure AD jelszavas védelem-proxy szolgáltatást és az Azure AD jelszavas védelmet biztosító tartományvezérlő ügynököt a helyszíni környezetben.
 
 Az Azure AD jelszavas védelem helyszíni környezetben való működésével kapcsolatos további információkért lásd: [Az Azure ad jelszavas védelem betartatása a Windows Server Active Directory](concept-password-ban-bad-on-premises.md).
 
@@ -85,7 +85,8 @@ A következő alapvető követelmények érvényesek:
 * Az Azure AD jelszavas védelem összetevőit tartalmazó összes gépnek telepítve kell lennie az univerzális C futtatókörnyezetnek.
     * A futtatókörnyezet beszerzéséhez győződjön meg arról, hogy Windows Update összes frissítését elvégezte. Azt is megteheti, hogy egy operációs rendszerre vonatkozó frissítési csomagban van. További információ: az [univerzális C futtatókörnyezet frissítése a Windowsban](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Olyan fiókra van szüksége, amely Active Directory tartományi rendszergazdai jogosultságokkal rendelkezik az erdő gyökértartományában a Windows Server Active Directory-erdő Azure AD-vel való regisztrálásához.
-* A Key Distribution szolgáltatást engedélyezni kell a Windows Server 2012 rendszert futtató tartomány összes tartományvezérlőjén. Ez a szolgáltatás alapértelmezés szerint a manuális trigger indításával engedélyezhető.
+* A Key Distribution szolgáltatást a Windows Server 2012-es és újabb verzióit futtató tartomány összes tartományvezérlőjén engedélyezni kell. Ez a szolgáltatás alapértelmezés szerint a manuális trigger indításával engedélyezhető.
+
 * A hálózati kapcsolatnak léteznie kell legalább egy, az egyes tartományokban lévő tartományvezérlő és legalább egy olyan kiszolgáló között, amely az Azure AD jelszavas védelemhez az proxy szolgáltatást üzemelteti. Ez a kapcsolat lehetővé teszi, hogy a tartományvezérlő hozzáférhessen az RPC Endpoint Mapper port 135-es portjához és a proxykiszolgáló RPC-kiszolgáló portjához.
     * Alapértelmezés szerint az RPC-kiszolgáló portja egy dinamikus RPC-port, de konfigurálható [statikus port használatára](#static)is.
 * Minden olyan gépen, amelyen telepítve van az Azure AD jelszavas védelmi proxy szolgáltatás, hálózati hozzáféréssel kell rendelkeznie a következő végpontokhoz:

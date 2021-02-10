@@ -143,6 +143,8 @@
                   href: resilience-client-app.md
                 - name: Démonalkalmazások
                   href: resilience-daemon-app.md
+            - name: Az alkalmazás állapotának figyelése a rugalmasság érdekében
+              href: monitor-sign-in-health-for-resilience.md
         - name: Az Azure-ban használt hitelesítésszolgáltatók
           href: certificate-authorities.md
     - name: Üzembehelyezési útmutató
