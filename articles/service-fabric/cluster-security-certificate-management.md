@@ -4,12 +4,12 @@ description: További információ az X. 509 tanúsítvánnyal védett Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901266"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099506"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Tanúsítványkezelő Service Fabric-fürtökben
 
@@ -427,6 +427,7 @@ A KVVM-bővítmény kiépítési ügynökként folyamatosan fut előre meghatár
 Előfordulhat, hogy észrevette a KVVM-bővítmény "linkOnRenewal" jelzőjét, és az a tény, hogy hamis értékre van állítva. Itt részletesen ismertetjük az e jelző által vezérelt viselkedést, valamint a fürt működésével kapcsolatos következményeiket. Megjegyzés Ez a viselkedés a Windowsra jellemző.
 
 A [definíciója](../virtual-machines/extensions/key-vault-windows.md#extension-schema)szerint:
+
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
@@ -456,7 +457,7 @@ Ahogy az a fenti JSON-kódrészletből megjelent, az átalakítás sikerességé
 
 Felügyelt identitás létrehozásához vagy egy másik erőforráshoz való hozzárendeléséhez a telepítési operátornak rendelkeznie kell az előfizetés vagy az erőforráscsoport szükséges szerepkörével (ManagedIdentityOperator), valamint a sablonban hivatkozott többi erőforrás kezeléséhez szükséges szerepkörökkel. 
 
-Biztonsági szempontból ne felejtse el, hogy a virtuális gép (méretezési csoport) biztonsági határnak minősül az Azure-identitás tekintetében. Ez azt jelenti, hogy a virtuális gépen üzemeltetett bármely alkalmazás a nem hitelesített IMDS-végpontról szerezhet be olyan hozzáférési jogkivonatot, amely a virtuális gép által felügyelt identitás-hozzáférési jogkivonatokat jelképezi. Ha úgy gondolja, hogy a virtuális gép megosztott vagy több-bérlős környezetben van, akkor előfordulhat, hogy ez a metódus nem szerepel a fürt tanúsítványainak beolvasásakor. Azonban az egyetlen kiépítési mechanizmus, amely alkalmas a tanúsítványok autorolloverre.
+Biztonsági szempontból ne felejtse el, hogy a virtuális gép (méretezési csoport) biztonsági határnak minősül az Azure-identitásával kapcsolatban. Ez azt jelenti, hogy a virtuális gépen üzemeltetett bármely alkalmazás a nem hitelesített IMDS-végpontról szerezhet be olyan hozzáférési jogkivonatot, amely a virtuális gép által felügyelt identitás-hozzáférési jogkivonatokat jelképezi. Ha úgy gondolja, hogy a virtuális gép megosztott vagy több-bérlős környezetben van, akkor előfordulhat, hogy ez a metódus nem szerepel a fürt tanúsítványainak beolvasásakor. Azonban az egyetlen kiépítési mechanizmus, amely alkalmas a tanúsítványok autorolloverre.
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Hibaelhárítás és gyakran ismételt kérdések
 

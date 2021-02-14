@@ -30,6 +30,9 @@
     - name: Verziókezelési szabályzat
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: Ismert problémák & korlátozásokkal kapcsolatban
+      href: concepts-known-issues-limitations.md
+      displayName: 'issues, limitations, postgresql'
 - name: Önálló kiszolgáló
   expanded: true
   items:

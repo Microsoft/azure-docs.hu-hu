@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: fec130ff02d9796fb9a6cea7a831bbdcb25cb1ed
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: f7f14b91dc69eeba4ac06f6608f6151634dc38d3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225630"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103498"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -30,7 +30,7 @@ Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutat
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -50,7 +50,7 @@ Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutat
 1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.
 1. Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).
 1. Válassza ki a kulcs időtartamát **1 év vagy 2 év között,** vagy **Soha ne járjon le**.
-1. Válassza a **Hozzáadás** elemet. Ekkor megjelenik a kulcs értéke. Másolja a kulcs értékét, és mentse biztonságos helyre későbbi használatra.
+1. Válassza a **Hozzáadás** lehetőséget. Ekkor megjelenik a kulcs értéke. Másolja a kulcs értékét, és mentse biztonságos helyre későbbi használatra.
 
 
 ## <a name="download-the-sample-application-and-modules"></a>A minta alkalmazás és modulok letöltése

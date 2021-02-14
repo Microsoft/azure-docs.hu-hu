@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3afaf654228511a357461a9e762be0b04acc65c6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 778523869715916bf1e4c32af59ea7a0081df91b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064164"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103311"
 ---
 # <a name="how-to-discover-endpoints"></a>Végpontok felderítése
 
 Az alkalmazáshoz tartozó hitelesítési végpontokat a [Azure Portalban](https://portal.azure.com)találja.
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Válassza a **Azure Active Directory** lehetőséget.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd a felső menüben válassza a **végpontok** lehetőséget.
 

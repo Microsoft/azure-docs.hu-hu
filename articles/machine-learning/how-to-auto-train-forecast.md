@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132082"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392323"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -128,7 +128,7 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 >[!Tip]
 > A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-Modellek| Leírás | Előnyök
+Modellek| Description | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
@@ -193,6 +193,14 @@ automl_config = AutoMLConfig(task='forecasting',
                              verbosity=logging.INFO,
                              **forecasting_parameters)
 ```
+
+Az automatikus ML-előrejelzési modell sikeres betanításához szükséges adatok mennyiségét a, a és a `forecast_horizon` `n_cross_validations` `target_lags` `target_rolling_window_size` konfigurálásakor megadott értékek befolyásolják `AutoMLConfig` . 
+
+A következő képlet kiszámítja az idősorozat-funkciók létrehozásához szükséges történelmi adatmennyiséget.
+
+Minimálisan szükséges korábbi adatmennyiség: (2x `forecast_horizon` ) + # `n_cross_validations` + Max (max ( `target_lags` ), `target_rolling_window_size` )
+
+Hiba történt az adatkészlet bármely olyan adatsorozata esetében, amely nem felel meg a megfelelő megadott beállításoknak. 
 
 ### <a name="featurization-steps"></a>Featurization lépések
 
@@ -368,7 +376,7 @@ day_datetime,store,week_of_year
 Ismételje meg a szükséges lépéseket a jövőbeli adatok egy dataframe való betöltéséhez, majd futtassa a parancsot `best_run.predict(test_data)` a jövőbeli értékek előrejelzéséhez.
 
 > [!NOTE]
-> Nem lehet előre jelezni az értéknél nagyobb időszakok számát `forecast_horizon` . A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
+> A mintavételi előrejelzések nem támogatottak az automatikus ML-vel való előrejelzéshez, ha `target_lags` és/vagy `target_rolling_window_size` engedélyezve vannak.
 
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek

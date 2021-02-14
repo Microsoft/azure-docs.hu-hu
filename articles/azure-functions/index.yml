@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
-  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-  ms.translationtype: HT
+  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570133"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100363032"
 landingContent:
 - title: Az Azure Functions ismertetése
   linkLists:
@@ -128,14 +128,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Üzembe helyezés a Jenkins beépülő modul használatával
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Teljesítmény és monitorozás
+- title: Teljesítmény-és monitorozás – ajánlott eljárások
   linkLists:
   - linkListType: concept
     links:
+    - text: Teljesítmény és megbízhatóság
+      url: functions-best-practices.md
+    - text: Kapcsolatok kezelése
+      url: manage-connections.md
+    - text: A tárterülettel kapcsolatos szempontok
+      url: storage-considerations.md
+    - text: Hibakezelés és a függvények újrapróbálkozásai
+      url: functions-bindings-error-pages.md
+    - text: Biztonság
+      url: security-concepts.md
     - text: Függvények figyelés
       url: functions-monitoring.md
-    - text: Teljesítmény optimalizálása
-      url: functions-best-practices.md
     - text: Hálózati megfontolások
       url: functions-networking-options.md
   - linkListType: how-to-guide

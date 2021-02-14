@@ -1,22 +1,17 @@
 ---
 title: Adat átalakítása Databricks Notebooktal
-description: Megtudhatja, hogyan dolgozhat fel és alakíthat át egy Databricks notebook futtatásával.
-services: data-factory
-documentationcenter: ''
+description: Megtudhatja, hogyan dolgozhat fel és alakíthat át egy Databricks notebookot a Azure Data Factoryban.
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
-manager: shwang
-ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4679d06e877679f0a56ee782b9a43a5a8147d7a5
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 486dc2ab3a14917e8c7bdddf8b5b9c6f9da1a1dc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608119"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373997"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Adat átalakítása Databricks-jegyzetfüzet futtatásával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,14 +54,13 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 
 |Tulajdonság|Leírás|Kötelező|
 |---|---|---|
-|name|A folyamatban szereplő tevékenység neve.|Igen|
-|leírás|A tevékenység működését leíró szöveg|Nem|
-|típus|A Databricks notebook tevékenység esetén a DatabricksNotebook a tevékenység típusa.|Igen|
-|linkedServiceName|Azon Databricks társított szolgáltatás neve, amelyen a Databricks-jegyzetfüzet fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
-|notebookPath|A Databricks-munkaterületen futtatandó jegyzetfüzetek abszolút elérési útja. Ezt az elérési utat perjeltel kell kezdeni.|Igen|
-|baseParameters|Key-Value pár tömbje. Az alapparaméterek az egyes tevékenységek futtatásához használhatók. Ha a jegyzetfüzet nem megadott paramétert használ, a rendszer a jegyzetfüzet alapértelmezett értékét fogja használni. További információ a Databricks- [jegyzetfüzetekben](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)található paraméterekről.|Nem|
-|kódtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. A tömbje lehet \<string, object> .|Nem|
-
+|name|A folyamatban szereplő tevékenység neve.|Yes|
+|leírás|A tevékenység működését leíró szöveg|No|
+|típus|A Databricks notebook tevékenység esetén a DatabricksNotebook a tevékenység típusa.|Yes|
+|linkedServiceName|Azon Databricks társított szolgáltatás neve, amelyen a Databricks-jegyzetfüzet fut. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Yes|
+|notebookPath|A Databricks-munkaterületen futtatandó jegyzetfüzetek abszolút elérési útja. Ezt az elérési utat perjeltel kell kezdeni.|Yes|
+|baseParameters|Key-Value pár tömbje. Az alapparaméterek az egyes tevékenységek futtatásához használhatók. Ha a jegyzetfüzet nem megadott paramétert használ, a rendszer a jegyzetfüzet alapértelmezett értékét fogja használni. További információ a Databricks- [jegyzetfüzetekben](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)található paraméterekről.|No|
+|kódtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. A tömbje lehet \<string, object> .|No|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a Databricks-tevékenységekhez
 
@@ -110,31 +104,35 @@ A fenti Databricks-tevékenység definíciójában a következő típustár-típ
 
 ```
 
-További részletekért tekintse meg a [Databricks dokumentációját](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) .
+További részletekért tekintse meg a [Databricks dokumentációját](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary) .
 
 ## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Paraméterek átadása notebookok és Data Factory között
 
-Az adat-előállító paramétereit átadhatja jegyzetfüzeteknek a databricks tevékenység *baseParameters* tulajdonságának használatával. 
+Az adat-előállító paramétereit átadhatja jegyzetfüzeteknek a databricks tevékenység *baseParameters* tulajdonságának használatával.
 
-Bizonyos esetekben szükség lehet arra, hogy bizonyos értékeket továbbítson a jegyzetfüzetből a adat-előállítónak, amely a adat-előállító vezérlési folyamatához (feltételes ellenőrzésekhez) használható, vagy az alsóbb rétegbeli tevékenységek által felhasználható (legfeljebb 2 MB méretű). 
+Bizonyos esetekben szükség lehet arra, hogy bizonyos értékeket továbbítson a jegyzetfüzetből a adat-előállítónak, amely a adat-előállító vezérlési folyamatához (feltételes ellenőrzésekhez) használható, vagy az alsóbb rétegbeli tevékenységek által felhasználható (legfeljebb 2 MB méretű).
 
-1. A jegyzetfüzetben hívhatja a [dbutils. notebook. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) és a megfelelő "ReturnValue" értéket a rendszer a adat-előállítónak.
+1. A jegyzetfüzetben hívhatja a [dbutils. notebook. Exit ("ReturnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) és a megfelelő "ReturnValue" értéket a rendszer a adat-előállítónak.
 
-2. A kimenetet az adatgyárban használhatja kifejezés (például) használatával `'@activity('databricks notebook activity name').output.runOutput'` . 
+2. A kimenetet az adatgyárban használhatja kifejezés (például) használatával `'@activity('databricks notebook activity name').output.runOutput'` .
 
    > [!IMPORTANT]
    > Ha JSON-objektumot továbbít, az értékeket a tulajdonságok nevének hozzáfűzésével kérheti le. Például: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Könyvtár feltöltése a Databricks-ben
 
-#### <a name="using-databricks-workspace-ui"></a>[Databricks-munkaterület felhasználói felületének használata](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+### <a name="you-can-use-the-workspace-ui"></a>Használhatja a munkaterület felhasználói felületét:
 
-A felhasználói felület használatával hozzáadott könyvtár dbfs elérési útjának beszerzéséhez használhatja a [DATABRICKS parancssori felületet (telepítés)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+1. [A Databricks-munkaterület felhasználói felületének használata](/azure/databricks/libraries/#create-a-library)
 
-A jar-kódtárak általában a dbfs:/FileStore/tégelyek alatt tárolódnak, miközben a felhasználói felületet használják. A CLI: *databricks FS ls dbfs:/FileStore/tégelyek* segítségével listázhatja az összeset.
+2. A felhasználói felület használatával hozzáadott könyvtár dbfs elérési útjának beszerzéséhez használhatja az [DATABRICKS CLI](/azure/databricks/dev-tools/cli/#install-the-cli)-t.
 
+   A jar-kódtárak általában a dbfs:/FileStore/tégelyek alatt tárolódnak, miközben a felhasználói felületet használják. A CLI-n keresztül listázhatja az összeset: *databricks FS ls dbfs:/FileStore/Job-jars*
 
+### <a name="or-you-can-use-the-databricks-cli"></a>Vagy használhatja a Databricks CLI-t is:
 
-#### <a name="copy-library-using-databricks-cli"></a>[Könyvtár másolása a Databricks CLI használatával](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+1. [A könyvtár másolásának követése a DATABRICKS CLI használatával](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
 
-Például: *databricks FS CP sparkpi-Assembly-0,1. jar dbfs:/FileStore/tégelyek*
+2. A Databricks CLI használata [(telepítési lépések)](/azure/databricks/dev-tools/cli/#install-the-cli)
+
+   Példa a JAR dbfs való másolására: `dbfs cp SparkPi-assembly-0.1.jar dbfs:/docs/sparkpi.jar`

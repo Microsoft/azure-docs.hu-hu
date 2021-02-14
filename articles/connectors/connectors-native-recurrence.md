@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 9565ad1efc5ae3dc03b94c78ce8ce52e8dd48c65
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382293"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval Azure Logic Apps
 
@@ -52,19 +52,19 @@ A trigger és a csúszó ablak trigger közötti különbségek, illetve az ism�
 
    ![Az intervallum és a gyakoriság beállítása](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
    |----------|-----------|----------|------|-------------|
-   | **Intervallum** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap <br>Hét: 1-71 hét <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
+   | **Intervallum** | `interval` | Yes | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap <br>Hét: 1-71 hét <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
    | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét** vagy **hónap** |
    ||||||
 
    > [!IMPORTANT]
-   > Ha az ismétlődések nem határoznak meg speciális ütemezési beállításokat, a jövőbeli ismétlődések az utolsó futási időn alapulnak.
-   > Ezeknek az ismétlődéseknek az indítási időpontja a tárolási hívások során felmerülő tényezők, például a késés miatt eltérhet. A következő lehetőségek egyikének használatával győződjön meg arról, hogy a logikai alkalmazás nem hagyja ki az ismétlődést, különösen akkor, ha a gyakoriság napokban vagy már nem érhető el.
+   > Ha az ismétlődés nem ad meg konkrét [kezdési dátumot és időpontot](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time), az első ismétlődés azonnal fut a logikai alkalmazás mentésekor vagy telepítésekor, az eseményindító ismétlődésének beállítása ellenére. A viselkedés elkerülése érdekében adjon meg egy kezdési dátumot és időpontot, amikor az első ismétlődést futtatni szeretné.
+   >
+   > Ha az ismétlődés nem ad meg olyan speciális ütemezési beállításokat, mint például a jövőbeli ismétlődések futtatásához megadott időpontok, ezek az ismétlődések az utolsó futási időn alapulnak. Ennek eredményeképpen az ismétlődések indítási időpontja a tárolási hívások során felmerülő tényezők, például a késések miatt eltérhet. 
+   > Ha meg szeretné győződni arról, hogy a logikai alkalmazás nem hagyja ki az ismétlődést, különösen akkor, ha a gyakoriság napokban vagy már nem érhető el, próbálkozzon a következő beállításokkal:
    > 
-   > * Adja meg az ismétlődés kezdési idejét.
-   > 
-   > * Adja meg az órákat és a perceket, hogy mikor futtassa az ismétlődést az **ezen az órában** és a **percekben** elnevezett tulajdonságok használatával.
+   > * Adja meg az ismétlődés kezdő dátumát és időpontját, valamint azokat a megadott időpontokat, amikor a későbbi ismétlődéseket az **ezen órákban** elnevezett tulajdonságok használatával és **ezen a percekben** szeretné futtatni, amelyek csak a **napi** és **heti** gyakorisággal érhetők el.
    > 
    > * Az ismétlődési eseményindító helyett használja a [csúszó ablak eseményindítóját](../connectors/connectors-native-sliding-window.md).
 
@@ -72,13 +72,13 @@ A trigger és a csúszó ablak trigger közötti különbségek, illetve az ism�
 
    ![Speciális ütemezési beállítások](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
    |----------|-----------|----------|------|-------------|
    | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
    | **Kezdési idő** | `startTime` | Nem | Sztring | Adjon meg egy kezdési dátumot és időpontot, amely a jövőben legfeljebb 49 év, és az [ISO 8601 dátum és idő specifikációját](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) az [UTC dátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)és idő formátumban kell követnie, de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>-vagy- <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Így például, ha a szeptember 18., 2020 at 2:00 PM-t szeretné használni, adja meg a "2020-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2020-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p><p>**Fontos:** Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. Ha kijelöl egy időzóna-értéket, nem kell hozzáadnia "Z" értéket a **Kezdési idő** értékének végéhez. Ha így tesz, Logic Apps figyelmen kívül hagyja az időzóna értékét, mert a "Z" egy UTC-időformátumot jelent. <p><p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
-   | **Ezeken a napokon** | `weekDays` | Nem | Karakterlánc-vagy karakterlánc-tömb | Ha a "hét" lehetőséget választja, kiválaszthat egy vagy több napot, amikor futtatni szeretné a munkafolyamatot: **hétfő**, **kedd**, **szerda**, **csütörtök**, **péntek**, **szombat** és **vasárnap** |
-   | **Ezekben az órákban** | `hours` | Nem | Egész vagy egész tömb | Ha a "nap" vagy a "hét" lehetőséget választja, akkor 0 és 23 közötti egész számot is kiválaszthat a nap azon órájára, amikor futtatni kívánja a munkafolyamatot. <p><p>Ha például a "10", a "12" és a "14" lehetőséget választja, akkor a nap órájában 10 ÓRAKOR, 12 ÓRAKOR és 2 óráig lesz kiszámítva, de a nap perce az ismétlődés megkezdése alapján történik. A nap adott percének megadásához például: 10:00, 12:00 PM és 2:00 PM, adja meg ezeket az értékeket az **ezen a percekben** elnevezett tulajdonság használatával. |
-   | **Ezekben a percekben** | `minutes` | Nem | Egész vagy egész tömb | Ha a "nap" vagy a "hét" lehetőséget választja, akkor 0 és 59 közötti egész számot is kiválaszthat, ha a munkafolyamatot futtatni szeretné az óra percében. <p>Megadhatja például a "30" percet a perces jelölésként, és az előző példában a nap órájában a következőt kapja: 10:30, 12:30 PM és 2:30 PM. <p>**Megjegyzés**: Előfordulhat, hogy az aktivált Futtatás időbélyegzője az ütemezett időponttól számított 1 percen belül változhat. Ha az időbélyeget pontosan úgy kell átadni, ahogy az a következő műveletekre van ütemezve, a sablon kifejezéseit használva ennek megfelelően módosíthatja az időbélyeget. További információ: [date és Time függvények a kifejezésekhez](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions). |
+   | **Ezeken a napokon** | `weekDays` | No | Karakterlánc-vagy karakterlánc-tömb | Ha a "hét" lehetőséget választja, kiválaszthat egy vagy több napot, amikor futtatni szeretné a munkafolyamatot: **hétfő**, **kedd**, **szerda**, **csütörtök**, **péntek**, **szombat** és **vasárnap** |
+   | **Ezekben az órákban** | `hours` | No | Egész vagy egész tömb | Ha a "nap" vagy a "hét" lehetőséget választja, akkor 0 és 23 közötti egész számot is kiválaszthat a nap azon órájára, amikor futtatni kívánja a munkafolyamatot. <p><p>Ha például a "10", a "12" és a "14" lehetőséget választja, akkor a nap órájában 10 ÓRAKOR, 12 ÓRAKOR és 2 óráig lesz kiszámítva, de a nap perce az ismétlődés megkezdése alapján történik. A nap adott percének megadásához például: 10:00, 12:00 PM és 2:00 PM, adja meg ezeket az értékeket az **ezen a percekben** elnevezett tulajdonság használatával. |
+   | **Ezekben a percekben** | `minutes` | No | Egész vagy egész tömb | Ha a "nap" vagy a "hét" lehetőséget választja, akkor 0 és 59 közötti egész számot is kiválaszthat, ha a munkafolyamatot futtatni szeretné az óra percében. <p>Megadhatja például a "30" percet a perces jelölésként, és az előző példában a nap órájában a következőt kapja: 10:30, 12:30 PM és 2:30 PM. <p>**Megjegyzés**: Előfordulhat, hogy az aktivált Futtatás időbélyegzője az ütemezett időponttól számított 1 percen belül változhat. Ha az időbélyeget pontosan úgy kell átadni, ahogy az a következő műveletekre van ütemezve, a sablon kifejezéseit használva ennek megfelelően módosíthatja az időbélyeget. További információ: [date és Time függvények a kifejezésekhez](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions). |
    |||||
 
    Tegyük fel például, hogy ma péntek, szeptember 4., 2020. A következő ismétlődési eseményindító nem  indul el a kezdési dátumnál és az időpontnál, amely a 2020-es, 8:00-as és a $ PST-kor. Az ismétlődési ütemterv azonban 10:30, 12:30 PM és 2:30 ÓRAKOR van beállítva hétfőnként. Így az eseményindító első indításakor és egy logikai alkalmazás munkafolyamat-példányának létrehozása hétfőn, 10:30 ÓRAKOR történik. A kezdési idő működésével kapcsolatos további tudnivalókért tekintse meg a következő [példákat](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time).
@@ -133,7 +133,7 @@ Az ismétlődő beépített eseményindítók tiszteletben tartják a beállíto
 
 Ha el szeretné kerülni ezt a váltást, hogy a logikai alkalmazás a megadott kezdési időpontban fusson, győződjön meg róla, hogy kijelöl egy időzónát. Így a logikai alkalmazás UTC-ideje a szezonális időváltozások ellen is tolódik. Azonban előfordulhat, hogy egy kis idő elteltével a Windows problémákat okozhat az idő váltásakor. További információért és Példákért lásd: [az ismétlődés a nyári](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)időszámításhoz és a téli időponthoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkafolyamatok szüneteltetése késleltetési műveletekkel](../connectors/connectors-native-delay.md)
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)

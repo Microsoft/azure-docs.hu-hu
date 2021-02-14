@@ -245,6 +245,8 @@
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Szolgáltatási korlátozások
       href: ../enterprise-users/directory-service-limits-restrictions.md
+    - name: FIDO2 kompatibilitása
+      href: fido2-compatibility.md
 - name: További források
   items:
     - name: Azure visszajelzési fórum

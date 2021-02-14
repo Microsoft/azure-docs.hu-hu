@@ -1,22 +1,17 @@
 ---
 title: Webes tevékenység Azure Data Factory
 description: Megtudhatja, hogyan használhatja a webes tevékenységeket, a Data Factory által támogatott vezérlési folyamatok egyikét a REST-végpontok egy folyamatból való meghívásához.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387717"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361519"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -75,16 +70,16 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A webes tevékenység neve | Sztring | Igen
-típus | **Webtevékenységre** kell beállítani. | Sztring | Igen
-method | A célként megadott végpont REST API-metódusa. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Igen
-url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 perc után időtúllépési hibaüzenetet ad vissza, ha nem kap választ a végponttól. | Igen
+name | A webes tevékenység neve | Sztring | Yes
+típus | **Webtevékenységre** kell beállítani. | Sztring | Yes
+method | A célként megadott végpont REST API-metódusa. | Sztring. <br/><br/>Támogatott típusok: "GET", "POST", "PUT" | Yes
+url | Cél végpontja és elérési útja | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). A tevékenység 1 perc után időtúllépési hibaüzenetet ad vissza, ha nem kap választ a végponttól. | Yes
 fejlécek | A kérelembe küldendő fejlécek. Például egy kérelem nyelvének és típusának megadásához: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Igen, a Content-Type fejléc megadása kötelező. `"headers":{ "Content-Type":"application/json"}`
 body (Törzs) | A végpontnak elküldhető adattartalmat jelöli.  | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés). <br/><br/>Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos adatait tartalmazó sémában](#request-payload-schema) . | A POST/PUT metódusokhoz szükséges.
-hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem
-adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Igen
-linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Igen
-Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](./concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Az Integration Runtime referenciája. | Nem 
+hitelesítés | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű vagy ClientCertificate". További információ: [hitelesítés](#authentication) szakasz. Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | No
+adathalmazok | A végpontnak átadott adatkészletek listája. | Adatkészlet-hivatkozások tömbje. Üres tömb lehet. | Yes
+linkedServices | A végpontnak átadott társított szolgáltatások listája. | Társított szolgáltatási referenciák tömbje. Üres tömb lehet. | Yes
+Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](./concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy a saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha ez a tulajdonság nincs megadva, a szolgáltatás az alapértelmezett Azure Integration Runtime-t használja. | Az Integration Runtime referenciája. | No 
 
 > [!NOTE]
 > A webes tevékenység által meghívott REST-végpontoknak JSON típusú választ kell visszaadniuk. A tevékenység 1 perc után időtúllépési hibaüzenetet ad vissza, ha nem kap választ a végponttól.
@@ -103,7 +98,7 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 
 Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
 
-### <a name="none"></a>Nincsenek
+### <a name="none"></a>Nincs
 
 Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
 

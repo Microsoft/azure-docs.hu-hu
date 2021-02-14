@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736751"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374133"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Adatok lekérése az Azure Time Series Insights Gen2-ből
 
@@ -54,13 +54,12 @@ Ezen API-k többsége támogatja a Batch-végrehajtási műveletet, hogy több i
 
 ## <a name="time-series-query-tsq-apis"></a>Idősorozat-lekérdezési (TSQ) API-k
 
-Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (meleg és hideg) érhetők el. A lekérdezés URL-paramétereinek használatával megadható, hogy a lekérdezés milyen [típusú tárolási típust](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) hajtson végre:
+Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (meleg és hideg) érhetők el. 
 
 * [Események beolvasása API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): lehetővé teszi a nyers események lekérdezését és beolvasását, valamint a hozzájuk tartozó esemény-időbélyegeket, ahogy azokat a forrás szolgáltató Azure Time Series Insights Gen2 rögzíti. Ez az API lehetővé teszi a nyers események lekérését egy adott idősorozat-azonosító és keresési tartomány számára. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához.
 
   > [!IMPORTANT]
-
-  > * A [JSON-összeolvasztási és-Escape-szabályok közelgő változásainak](./ingestion-rules-update.md)részeként a tömbök **dinamikus** típusúak lesznek tárolva. Az ebben a típusban tárolt hasznos adatok tulajdonságai **csak a Get Events API-n keresztül érhetők** el.
+  > A [JSON-összeolvasztási és-Escape-szabályok közelgő változásainak](./ingestion-rules-update.md)részeként a tömbök **dinamikus** típusúak lesznek tárolva. Az ebben a típusban tárolt hasznos adatok tulajdonságai **csak a Get Events API-n keresztül érhetők** el.
 
 * [Series API beolvasása](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): lehetővé teszi a kiszámított értékek lekérdezését és lekérését, valamint a kapcsolódó esemény időbélyegét a változók által a nyers eseményeken definiált számítások alkalmazásával. Ezek a változók az idősorozat-modellben definiálhatók, vagy a lekérdezésben beágyazottan is elérhetők. Ez az API támogatja a tördelést a kiválasztott bemenet teljes válasz adatkészletének beolvasásához.
 
@@ -70,7 +69,17 @@ Ezek az API-k a többrétegű tárolási megoldásban mindkét áruházban (mele
 
   A válaszban visszaadott időbélyegek a bal oldali intervallumok, nem pedig az intervallumban szereplő események.
 
-## <a name="next-steps"></a>További lépések
+
+### <a name="selecting-store-type"></a>Tár típusának kiválasztása
+
+A fenti API-k csak a két tárolási típus egyikén hajthatók végre (hideg vagy meleg) egyetlen hívásban. A lekérdezés URL-paramétereinek használatával megadható, hogy a lekérdezés milyen [típusú tárolón](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) fusson. 
+
+Ha nincs megadva paraméter, a lekérdezés alapértelmezés szerint a hűtőházi tárolóban lesz végrehajtva. Ha egy lekérdezés a hideg és a meleg tárolóban is átfedésben lévő időtartományra mutat, javasoljuk, hogy a lekérdezést a hűtőházi tárolóba irányítsa a legjobb megoldás érdekében, mivel a meleg tár csak részleges adattárolást fog tartalmazni. 
+
+A [Azure Time Series Insights Explorer](./concepts-ux-panels.md) és [Power bi összekötő](./how-to-connect-power-bi.md) kezdeményezi a fenti API-kat, és automatikusan kiválasztja a megfelelő storeType paramétert, ahol szükséges. 
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [idősorozat-modellben](./concepts-model-overview.md)definiálható különböző változókról.
 * További információ az adatok lekérdezéséről a [Azure Time Series Insights Explorerben](./concepts-ux-panels.md).

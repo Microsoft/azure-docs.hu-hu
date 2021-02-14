@@ -1,22 +1,18 @@
 ---
 title: Webhook-tevékenység Azure Data Factory
 description: A webhook tevékenység nem folytatja a folyamat végrehajtását mindaddig, amíg a felhasználó által megadott feltételekkel ellenőrzi a csatolt adatkészletet.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 144006c3d0722bc3211f542b7059bba0bb0cbdbf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499407"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361485"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
 
@@ -24,7 +20,7 @@ ms.locfileid: "96499407"
 
 A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végrehajtását. A webhook tevékenységgel az ügyfelek kódja hívhat meg egy végpontot, és átadhatja a visszahívási URL-címet. A folyamat futása megvárja a visszahívás meghívását, mielőtt továbblép a következő tevékenységre.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -55,21 +51,21 @@ A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végreha
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-**név** | A webhook tevékenység neve. | Sztring | Igen |
-**típusa** | "Webhook" értékre kell beállítani. | Sztring | Igen |
-**metódus** | A célként megadott végpont REST API metódusa. | Sztring. A támogatott típus a "POST". | Igen |
-**URL** | A célként megadott végpont és elérési út. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen |
+**name** | A webhook tevékenység neve. | Sztring | Yes |
+**típusa** | "Webhook" értékre kell beállítani. | Sztring | Yes |
+**metódus** | A célként megadott végpont REST API metódusa. | Sztring. A támogatott típus a "POST". | Yes |
+**URL** | A célként megadott végpont és elérési út. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Yes |
 **fejlécek** | A kérelembe küldendő fejlécek. Az alábbi példa egy kérelem nyelvét és típusát állítja be: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen. Ehhez `Content-Type` hasonló fejlécre `"headers":{ "Content-Type":"application/json"}` van szükség. |
-**törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](./control-flow-web-activity.md#request-payload-schema) . | Igen |
-**hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](./control-flow-web-activity.md#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Nem |
-**időtúllépés** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d* TimeSpan formátumban jelennek meg. *óó*:*PP*:*ss* mm. | Sztring | Nem |
-**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai érték | Nem |
+**törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](./control-flow-web-activity.md#request-payload-schema) . | Yes |
+**hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](./control-flow-web-activity.md#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | No |
+**timeout** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d* TimeSpan formátumban jelennek meg. *óó*:*PP*:mm. | Sztring | No |
+**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai | No |
 
 ## <a name="authentication"></a>Hitelesítés
 
 A webhook-tevékenység a következő hitelesítési típusokat támogatja.
 
-### <a name="none"></a>Nincsenek
+### <a name="none"></a>Nincs
 
 Ha nincs szükség hitelesítésre, ne adja meg a **hitelesítési** tulajdonságot.
 
@@ -140,7 +136,7 @@ Ha a **jelentés állapotát visszahívási** tulajdonságot használja, a vissz
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő, a Data Factory által támogatott irányítási folyamatokat:
 

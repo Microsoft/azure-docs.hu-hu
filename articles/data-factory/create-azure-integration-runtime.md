@@ -1,23 +1,19 @@
 ---
 title: Azure Integration Runtime létrehozása a Azure Data Factory-ben
 description: Megtudhatja, hogyan hozhat létre Azure Integration Runtime-t a Azure Data Factoryban, amely az adatmásolási és-átalakítási tevékenységek másolására szolgál.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895341"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373062"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime létrehozása és konfigurálása
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure-beli integrációs modul létrehozása és konfigurálása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Integration Runtime (IR) a Azure Data Factory által használt számítási infrastruktúra, amely különböző hálózati környezetekben biztosít adatintegrációs képességeket. Az IR-vel kapcsolatos további információkért lásd: [Integration Runtime](concepts-integration-runtime.md).

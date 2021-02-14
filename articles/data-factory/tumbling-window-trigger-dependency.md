@@ -1,22 +1,18 @@
 ---
 title: Kieséses ablak trigger függőségeinek létrehozása
 description: Megtudhatja, hogyan hozhat létre függőséget egy kieséses ablakos triggerből Azure Data Factoryban.
-services: data-factory
 ms.author: chez
 author: chez-charlie
-manager: weetok
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f969c06a3419a8017cfc5ebc0de19caa67c8dc68
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508798"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361468"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,9 +77,9 @@ Az alábbi táblázat tartalmazza az ablak függőségének definiálásához sz
 
 | **Tulajdonság neve** | **Leírás**  | **Típus** | **Kötelező** |
 |---|---|---|---|
-| típus  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Igen |
+| típus  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Yes |
 | offset | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Időtartomány<br/>(óó: PP: SS) | Önálló függőség: igen<br/>Egyéb: nem |
-| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | Nem  |
+| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | No  |
 
 > [!NOTE]
 > A kihelyezett ablakos eseményindítók legfeljebb öt másik eseményindítótól függnek.
@@ -181,6 +177,6 @@ Az átlátszó mezők megjelenítik a függőségi ablakokat az egyes adatfolyam
 
 Egy ablak Gantt-diagram nézetben való újrafuttatásához jelölje be az ablakhoz tartozó Solid Color (folytonos szín) jelölőnégyzetet, és a műveleti panel a részletek és az újrafuttatási beállítások használatával jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A bukdácsoló ablakos trigger létrehozásának](how-to-create-tumbling-window-trigger.md) áttekintése

@@ -3,16 +3,15 @@ title: Csatlakozás a GitHubhoz
 description: A GitHub használata a közös adatmodell-entitásokra vonatkozó hivatkozások megadásához
 author: djpmsft
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: daperlov
-ms.openlocfilehash: 0e17580524d6a67934aed83c6f745583b92e2422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d555d7bc4d3aae9c016cacbe17b68c30859d99a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84771036"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372280"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>A GitHub használata a Common adatmodell-entitásokra vonatkozó hivatkozások olvasásához
 
@@ -26,10 +25,10 @@ A GitHub társított szolgáltatás a következő tulajdonságokat támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a **GitHub**értékre kell beállítani. | igen
+| típus | A Type tulajdonságot a **GitHub** értékre kell beállítani. | igen
 | userName (Felhasználónév) | GitHub-Felhasználónév | igen |
 | jelszó | GitHub-jelszó | igen |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy [forrás-adatkészletet](data-flow-source.md) a leképezési adatfolyamban.

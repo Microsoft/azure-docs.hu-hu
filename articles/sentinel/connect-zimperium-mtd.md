@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 86854fa22a49f09e5d3d2fc5fdb53c245850fbac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cbf1c52af1d2902ae0726fc0dd98dbf12cecc44
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77587940"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097449"
 ---
 # <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>A Zimperium Mobile Threat Defense és az Azure Sentinel összekötése
 
 
 > [!IMPORTANT]
 > A Zimperium Mobile Threat Defense-adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
@@ -37,7 +37,7 @@ A Zimperium Mobile Threat Defense-összekötő lehetővé teszi az Zimperium-fen
 
 A Zimperium Mobile Threat Defense képes a naplók közvetlen integrálására és exportálására az **Azure sentinelbe**.
 
-1. Az Azure Sentinel portálon kattintson az adatösszekötők lehetőségre, és válassza a **Zimperium Mobile Threat Defense**lehetőséget.
+1. Az Azure Sentinel portálon kattintson az adatösszekötők lehetőségre, és válassza a **Zimperium Mobile Threat Defense** lehetőséget.
 2. Válassza az **összekötő megnyitása lapot**.
 3. Kövesse a **Zimperium Mobile Threat Defense** -összekötő oldalának utasításait, a következőképpen Összefoglalva.
  1. A zConsole kattintson a navigációs sávon a **kezelés** elemre.
@@ -60,7 +60,7 @@ A Zimperium Mobile Threat Defense Log Analytics vonatkozó sémájának használ
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Zimperium Mobile Threat Defense az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 02/11/2021
 tags: connectors
-ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355120"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382351"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban (Microsoft Dataverse) a Azure Logic Apps használatával
 
 > [!NOTE]
 > November 2020-én átnevezték Common Data Service a Microsoft Dataverse.
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Common Data Service-összekötővel](/connectors/commondataservice/)olyan automatizált munkafolyamatokat hozhat létre, amelyek a [Common Data Service, a Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) -adatbázisában is kezelhetik a rekordokat. Ezek a munkafolyamatok létrehozhatnak rekordokat, frissíthetik a rekordokat, és egyéb műveleteket végezhetnek el. A Common Data Service adatbázisból is kérhet információt, és a kimenet elérhetővé teheti a logikai alkalmazásban használható egyéb műveletek számára. Ha például egy rekord frissül a Common Data Service adatbázisban, az Office 365 Outlook Connector használatával küldhet e-mailt.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Common Data Service-összekötővel](/connectors/commondataservice/)olyan automatizált munkafolyamatokat hozhat létre, amelyek a [Common Data Service, a Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) -adatbázisában is kezelhetik a rekordokat. Ezek a munkafolyamatok létrehozhatnak rekordokat, frissíthetik a rekordokat, és egyéb műveleteket végezhetnek el. A Dataverse-adatbázisból is kérhet információt, és a kimenet elérhetővé teheti a logikai alkalmazásban használható egyéb műveletek számára. Ha például egy rekord frissül a Dataverse-adatbázisban, az Office 365 Outlook Connector használatával küldhet e-mailt.
 
 Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely egy új érdeklődői rekord létrehozásakor feladatsort hoz létre.
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy olyan logikai alkalmazást, amely 
   * [További információ: a Common Data Service első lépései](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview)
 
-* Alapszintű információ a Logic apps és a logikai alkalmazás [létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md) , ahonnan a Common Data Service adatbázisban lévő rekordokhoz szeretne hozzáférni. Ha Common Data Service triggerrel szeretné elindítani a logikai alkalmazást, üres logikai alkalmazásra van szüksége. Ha most ismerkedik a Azure Logic Appsval, tekintse át a gyors útmutató [: az első munkafolyamat létrehozása a Azure Logic Apps használatával](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md) és a logikai alkalmazásról, amelyről a Dataverse-adatbázisban lévő rekordokat szeretné elérni. Ha Common Data Service triggerrel szeretné elindítani a logikai alkalmazást, üres logikai alkalmazásra van szüksége. Ha most ismerkedik a Azure Logic Appsval, tekintse át a gyors útmutató [: az első munkafolyamat létrehozása a Azure Logic Apps használatával](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-common-data-service-trigger"></a>Common Data Service trigger hozzáadása
 
@@ -90,7 +90,7 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
       ![Válassza ki a feladat rekordban használni kívánt trigger-kimeneteket](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Trigger kimenete | Leírás |
+      | Trigger kimenete | Description |
       |----------------|-------------|
       | **Keresztnév** | Az első név a rekordban, amelyet elsődleges partnerként kíván használni a feladatban. |
       | **Vezetéknév** | A tevékenység rekordjában az elsődleges partnerként használandó utolsó név a vezető rekordban |
@@ -170,6 +170,62 @@ Ez a példa azt szemlélteti, hogy az **új rekord létrehozása** művelet hogy
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 Az összekötők kivágási leírásán alapuló technikai információk, például eseményindítók, műveletek, korlátok és egyéb részletek: az [összekötő hivatkozási lapja](/connectors/commondataservice/).
+
+## <a name="troubleshooting-problems"></a>Hibaelhárítási problémák
+
+### <a name="calls-from-multiple-environments"></a>Több környezetből indított hívások
+
+Mindkét összekötő, Common Data Service és Common Data Service (aktuális környezet) tárolja a logikai alkalmazások munkafolyamataival kapcsolatos információkat, amelyekre szüksége van, és értesítést kap az entitások változásairól a `callbackregistrations` Microsoft-Dataverse található entitás használatával. Dataverse-szervezet másolásakor a rendszer minden webhookot is másol. Ha a szervezetre leképezett munkafolyamatok letiltását megelőzően másolja a munkahelyét, a másolt webhookok ugyanazon logikai alkalmazásokon is mutatnak, amelyek ezután több szervezettől kapnak értesítéseket.
+
+A nemkívánatos értesítések leállításához törölje a visszahívási regisztrációt a szervezettől, amely az alábbi lépéseket követve küldi el ezeket az értesítéseket:
+
+1. Azonosítsa azt a Dataverse-szervezetet, amelyről el szeretné távolítani az értesítéseket, és jelentkezzen be az adott szervezetbe.
+
+1. A Chrome böngészőben keresse meg a törölni kívánt visszahívási regisztrációt a következő lépésekkel:
+
+   1. Tekintse át az összes visszahívási regisztráció általános listáját a következő OData URI-n, hogy az entitáson belül megtekinthető legyen az adatai `callbackregistrations` :
+
+      `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
+
+      > [!NOTE]
+      > Ha nem ad vissza értéket, lehet, hogy nincs engedélye az entitás típusának megtekintésére, vagy előfordulhat, hogy nem jelentkezik be a megfelelő szervezetbe.
+
+   1. Szűrje az eseményindító entitás logikai nevét `entityname` és a logikai alkalmazás munkafolyamatának megfelelő értesítési eseményt (üzenet). Minden eseménytípus a következőképpen van leképezve az üzenet egészére:
+
+      | Eseménytípus | Üzenet egésze |
+      |------------|-----------------|
+      | Létrehozás | 1 |
+      | Törlés | 2 |
+      | Frissítés | 3 |
+      | CreateOrUpdate | 4 |
+      | CreateOrDelete | 5 |
+      | UpdateOrDelete | 6 |
+      | CreateOrUpdateOrDelete | 7 |
+      |||
+
+      Ebből a példából megtudhatja, hogyan szűrheti az `Create` értesítéseket egy nevű entitásra `nov_validation` a következő OData URI használatával egy minta szervezet számára:
+
+      `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
+
+      ![Képernyőkép, amely a címsorban a böngészőablakot és a OData URI-t jeleníti meg.](./media/connect-common-data-service/find-callback-registrations.png)
+
+      > [!TIP]
+      > Ha ugyanahhoz az entitáshoz vagy eseményhez több eseményindító is létezik, a listát további szűrők, például a `createdon` és attribútumok használatával szűrheti `_owninguser_value` . A tulajdonos felhasználójának neve a alatt jelenik meg `/api/data/v9.0/systemusers({id})` .
+
+   1. Miután megtalálta a törölni kívánt visszahívási regisztráció AZONOSÍTÓját, kövesse az alábbi lépéseket:
+   
+      1. A Chrome böngészőben nyissa meg a Chrome Fejlesztői eszközök (billentyűzet: F12).
+
+      1. A felső ablakban válassza a **konzol** fület.
+
+      1. A parancssorba írja be ezt a parancsot, amely a megadott visszahívási regisztráció törlésére vonatkozó kérést küld:
+
+         `fetch('http://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations({ID-to-delete})', { method: 'DELETE'})`
+
+         > [!IMPORTANT]
+         > Győződjön meg arról, hogy a kérést egy nem egységesített ügyfél-illesztőfelület (UCI) lapról hajtja végre, például a OData vagy az API-válasz oldalról. Ellenkező esetben a app.js fájlban lévő logika zavarhatja a műveletet.
+
+   1. Győződjön meg arról, hogy a visszahívás regisztrációja már nem létezik, ellenőrizze a visszahívási regisztrációk listáját.
 
 ## <a name="next-steps"></a>Következő lépések
 

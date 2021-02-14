@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38403eed56dc718afdfce13375dd2662beb13eb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879561"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374167"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Adatok megjelenítése Azure Time Series Insightsról Power BI
 
@@ -37,9 +37,7 @@ Tekintse át a [környezeti hozzáférési szabályzatokat](./concepts-access-po
 > [!IMPORTANT]
 > * Töltse le és telepítse a [Power bi Desktop](https://powerbi.microsoft.com/downloads/)legújabb verzióját. Ha követni szeretné a cikkben ismertetett lépéseket, győződjön meg arról, hogy a Power BI Desktop telepítve van legalább a december 2020 (2.88.321.0) verziója. 
 
-## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Adatok összekötése Azure Time Series Insightsról Power BI
-
-### <a name="1-export-data-into-power-bi-desktop"></a>1. Az adatexportálás Power BI asztalra
+## <a name="export-data-from-azure-time-series-insights-into-power-bi-desktop"></a>Adatok exportálása Azure Time Series Insightsból Power BI asztalra
 
 Első lépések:
 
@@ -53,37 +51,36 @@ Első lépések:
    * **Adatformátum**: válassza ki, hogy szeretné-e exportálni az **összesített adatokat** vagy a **nyers eseményeket** a Power BIba. 
 
        > [!NOTE]
-       > * Ha nyers eseményeket exportál, akkor a Power BI később összesítheti ezeket az adatokat. Ha azonban összesített adatokat exportál, nem lehet visszaállítani a nyers adatokat Power BI. 
-       > * A nyers események szintjének maximális száma 250 000.
+       > Ha nyers eseményeket exportál, akkor a Power BI később összesítheti ezeket az adatokat. Ha azonban összesített adatokat exportál, nem lehet visszaállítani a nyers adatokat Power BI. A nyers események szintjének maximális száma 250 000.
 
    * **Időtartomány**: válassza ki, hogy szeretné-e megtekinteni a **rögzített** időtartományt vagy a **legfrissebb** adatPower bi. A rögzített időtartomány kiválasztása azt jelenti, hogy a diagramon megadott keresési hatókörben lévő összes érték Power BI lesz exportálva. A legújabb időtartomány kiválasztása azt jelenti, hogy a Power BI fogja megragadni a kiválasztott keresési tartomány legfrissebb értékeit (például ha 1 órányi adatdiagramot jelöl ki, és a "legutóbbi" beállítást választja, a Power BI-összekötő mindig lekérdezéseket hajt végre a legújabb 1 órás adatmennyiséggel.)
   
-   * **Áruház típusa**: válassza ki, hogy szeretné-e futtatni a kiválasztott lekérdezést a **meleg tárolón** vagy a **hűtőházi tárolón**. 
+   * **Áruház típusa**: válassza ki, hogy szeretné-e futtatni a kiválasztott lekérdezést a **meleg tárolón** vagy a **hűtőházi tárolón**. Ha olyan tartományt jelölt ki, amely a hideg és a meleg áruházakra is kiterjed, a lekérdezés alapértelmezés szerint a hűtőházi tárolóba lesz átirányítva, mivel a meleg tár csak a legfrissebb adatait fogja tartalmazni. A storeType paraméter manuális módosítása engedélyezett, de a legjobb élmény érdekében nem ajánlott. 
 
-    > [!TIP]
-    > * Azure Time Series Insights Explorer automatikusan kiválasztja az ajánlott paramétereket az exportálásra kiválasztott adatoktól függően. 
+    > [!TIP] 
+    > Azure Time Series Insights Explorer automatikusan kiválasztja az ajánlott paramétereket a keresési időtartamtól és az exportálásra kiválasztott adatok nézettől függően. 
 
 1. Miután konfigurálta a beállításokat, válassza a **lekérdezés másolása a vágólapra** lehetőséget.
 
     [![Azure Time Series Insights Explorer exportálási modális](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-2. Indítsa el a Power BI Desktopot.
+1. Indítsa el a Power BI Desktopot.
    
-3. A **kezdőlapon** Power bi Desktop kattintson a bal felső sarokban található **adatlekérdezés** elemre, majd a **tovább** gombra.
+1. A **kezdőlapon** Power bi Desktop kattintson a bal felső sarokban található **adatlekérdezés** elemre, majd a **tovább** gombra.
 
     [![Adatlekérdezés a Power BI-ban](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-4. Keressen **Azure Time Series Insights**, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **kapcsolat** lehetőséget.
+1. Keressen **Azure Time Series Insights**, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **kapcsolat** lehetőséget.
 
     [![Power BI összekötése a Azure Time Series Insights](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Másik lehetőségként navigáljon az **Azure** lapra, válassza a **Azure Time Series Insights (bétaverzió)**, majd a **Kapcsolódás** lehetőséget.
 
-5. Illessze be a Azure Time Series Insights Intézőből másolt lekérdezést az **egyéni lekérdezési** mezőbe, majd nyomja meg az **OK** gombot.
+1. Illessze be a Azure Time Series Insights Intézőből másolt lekérdezést az **egyéni lekérdezési** mezőbe, majd nyomja meg az **OK** gombot.
 
     [![Illessze be az egyéni lekérdezést, és kattintson az OK gombra.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-6.  Az adattábla ekkor betöltődik. A betöltéshez nyomja meg a **Load** (betöltés) Power bi Ha az adatátalakítást szeretné elvégezni, az **adatátalakítás** lehetőségre kattintva megteheti. Az adatait a betöltését követően is átalakíthatja.
+1.  Az adattábla ekkor betöltődik. A betöltéshez nyomja meg a **Load** (betöltés) Power bi Ha az adatátalakítást szeretné elvégezni, az **adatátalakítás** lehetőségre kattintva megteheti. Az adatait a betöltését követően is átalakíthatja.
 
     [![Tekintse át a táblázatban szereplő, és válassza a betöltés lehetőséget.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 

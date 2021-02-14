@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 03ffea7688207b56a683d3afcbe49bf95ea00708
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226304"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103124"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Oktatóanyag: bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -48,7 +48,7 @@ A létrehozott minta alkalmazás egy olyan forgatókönyvön alapul, ahol a bön
 
 Ez az útmutató a következő könyvtárakat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára az OpenIdConnect hitelesítésre való használatát|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenetek cookie-k használatával történő fenntartását|
@@ -187,7 +187,7 @@ Ha új vezérlőt szeretne létrehozni a bejelentkezéshez és a kijelentkezési
 
 1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a   >  **vezérlő** hozzáadása elemet.
 2.  Válassza az **MVC (.NET version) Controller – Empty** (MVC (.NET verzió) vezérlő – Üres) elemet.
-3.  Válassza a **Hozzáadás** elemet.
+3.  Válassza a **Hozzáadás** lehetőséget.
 4.  Nevezze el **HomeController** , majd válassza a **Hozzáadás** lehetőséget.
 5.  OWIN-hivatkozások hozzáadása a osztályhoz:
 
@@ -279,7 +279,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
 
 1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a  >  **vezérlő** hozzáadása elemet.
 2.  Válassza az **MVC {version} Controller – Empty** (MVC {verzió} vezérlő – Üres) elemet.
-3.  Válassza a **Hozzáadás** elemet.
+3.  Válassza a **Hozzáadás** lehetőséget.
 4.  Adja neki a **ClaimsController** nevet.
 5.  Cserélje le a vezérlő osztály kódját a következő kódra. Ezzel hozzáadja az `[Authorize]` attribútumot a osztályhoz:
 
@@ -361,7 +361,7 @@ Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak 
 
 Az alkalmazás gyors regisztrálásához kövesse az alábbi lépéseket:
 
-1. Lépjen a <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk <span class="docon docon-navigate-external x-hidden-focus"></span> </a> gyors üzembe helyezési élményhez.  
+1. Lépjen a <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk</a> gyors üzembe helyezési élményhez.  
 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 1. Az új alkalmazás egyetlen kattintással való letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
 
@@ -375,7 +375,7 @@ Az alkalmazás regisztrálásához és az alkalmazás regisztrációs informáci
    1. Kattintson a jobb gombbal a projektre a Visual Studióban, válassza a **Tulajdonságok** lehetőséget, majd válassza a **Web (weblap** ) lapot. A **kiszolgálók** szakaszban módosítsa a **projekt URL** -címét az **SSL URL-címére**.
    1. Másolja az SSL-URL-címet. A következő lépésben hozzáadja ezt az URL-címet a regisztrációs portál átirányítási URI-k listájához.<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
    
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.

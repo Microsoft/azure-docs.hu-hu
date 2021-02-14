@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe6faf72f17dae23f6e8a6c7cc56f8577881281a
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6165499ef0dad61910f26bc9d740bd19a28c43c7
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615829"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100105535"
 ---
 Az ebben a szakaszban található hivatkozásokat a partnerek által kínált szolgáltatásokkal kapcsolatos további információkért tekintheti meg. Ha az alábbi szakaszban nem szerepel az ág-eszköz partnere, vegye fel velünk a kapcsolatot. Felvehetik velünk a kapcsolatot, ha e-mailt küldenek a címre azurevirtualwan@microsoft.com .
 
@@ -30,7 +30,7 @@ Az ebben a szakaszban található hivatkozásokat a partnerek által kínált sz
 |[Nuage/Nokia](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|[A Nuage és az Azure Virtual WAN telepítési útmutatója](https://onestore.nokia.com/asset/210073)|
 |[Nyitott rendszerek]( https://open-systems.com/solutions/microsoft-azure-virtual-wan)|[A nyílt rendszerek és az Azure Virtual WAN üzembe helyezési útmutatója](https://open-systems.com/wp-content/uploads/2020/07/Azure-Virtual-WAN-UserGuide.pdf)|
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |[A Palo Alto Networks Azure Virtual WAN üzembe helyezési útmutatója](https://github.com/PaloAltoNetworks/microsoft_azure_virtual_wan)|
-|[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
+|[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|[Azure Virtual WAN & SteelConnect EX](https://www.riverbed.com/partners/microsoft-azure-virtual-wan.html) |
 |[Silver-Peak]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect és Microsoft Azure virtuális WAN-integrációs útmutató](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
 |[Velocloud – VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Az Azure Virtual WAN Velocloud üzembe helyezési útmutatója](https://kb.vmware.com/s/article/79000)|
 | [Fordítva](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [A megfordított SD-WAN és Microsoft Azure vWAN konfigurálása (regisztrált ügyfelek számára elérhető)](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |

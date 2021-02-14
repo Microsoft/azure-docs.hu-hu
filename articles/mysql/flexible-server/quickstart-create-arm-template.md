@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: a7dc6a6b11d3bfacf0aac5472a872ffaa7acc92b
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5be0bf21514dd92c2f980081bb57d873895bbb91
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748705"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099931"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Gyors útmutató: ARM-sablon használata Azure Database for MySQL rugalmas kiszolgáló létrehozásához (előzetes verzió)
 
@@ -97,7 +97,7 @@ Hozzon létre egy _mysql-flexible-server-template.jsa_ fájlon, és másolja a J
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_D4ds_v4",
-        "tier": "[parameters('serverEdition')]"        
+        "tier": "[parameters('serverEdition')]"
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -205,6 +205,22 @@ echo "Enter the resource group where the Azure Database for MySQL server exists:
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
 ```
+## <a name="exporting-arm-template-from-the-portal"></a>ARM-sablon exportálása a portálról
+ARM-sablonokat a Azure Portal is [exportálhat](../../azure-resource-manager/templates/export-template-portal.md) . Kétféleképpen exportálhat sablont:
+
+- [Exportálás erőforráscsoporthoz vagy erőforrásból](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Ez a beállítás új sablont hoz létre a meglévő erőforrásokból. Az exportált sablon az erőforráscsoport aktuális állapotának "pillanatképe". A teljes erőforráscsoportot vagy az adott erőforráscsoporthoz tartozó erőforrásokat is exportálhatja.
+- [Exportálás az üzembe helyezés előtt vagy az előzményekből](../../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Ez a beállítás az üzembe helyezéshez használt sablon pontos másolatát kérdezi le.
+
+A sablon exportálásakor a ```"parameters":{ }``` sablon szakaszában láthatja, hogy a ```administratorLogin``` és a ```administratorLoginPassword``` biztonsági okokból nem fog szerepelni. Ezeket a paramétereket hozzá **kell** adnia a sablonhoz a sablon telepítése előtt, vagy a sablon sikertelen lesz.
+
+```
+"administratorLogin": {
+      "type": "String"
+    },
+"administratorLoginPassword": {
+      "type": "SecureString"
+    },
+```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -237,7 +253,7 @@ echo "Press [ENTER] to continue ..."
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 
