@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546171"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365548"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégmeghívási jogosultság kezelése
 
@@ -45,8 +45,6 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
 
 4. A **vendég felhasználói hozzáférési korlátozások (előzetes verzió)** területen válassza ki azt a hozzáférési szintet, amelyet a vendég felhasználóknak szeretne:
   
-    ![Vendég felhasználói hozzáférés korlátozásának beállításai](./media/delegate-invitations/guest-user-access.png)
-
    - **A vendég felhasználók ugyanazokkal a hozzáféréssel rendelkeznek, mint a tagok (a legtöbb szolgáltató)**: Ez a beállítás lehetővé teszi, hogy a felhasználók ugyanazt az Azure ad-erőforrásokhoz és a címtáradatok eléréséhez férhessenek hozzá.
 
    - A **vendég felhasználók korlátozott hozzáféréssel rendelkeznek a címtárobjektumok tulajdonságaihoz és tagságához**: (alapértelmezés) Ez a beállítás letiltja a vendégeket bizonyos címtárbeli feladatokból, például a felhasználók, csoportok vagy más címtárbeli erőforrások enumerálásával. A vendégek megtekinthetik az összes nem rejtett csoport tagságát.
@@ -69,13 +67,11 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
 
 6. Válassza ki a megfelelő beállításokat a **levelezés egyszeri jelszava a vendégek** számára területen. További információért lásd az [e-mail egyszeri jelszavas hitelesítését](one-time-passcode.md)ismertető témakört:
 
-   ![Egyszeri jelszóra vonatkozó e-mail-beállítások](./media/delegate-invitations/email-otp-settings.png)
-
-   - **E-mail egyszeri PIN-kód automatikus engedélyezése a vendégek számára a 2021 márciusában**. Alapértelmezett Ha az egyszer használatos e-mail-jelszó funkció még nincs engedélyezve a bérlőnél, a rendszer automatikusan bekapcsolja az 2021-es időpontban. Ha azt szeretné, hogy a szolgáltatás egyszerre legyen engedélyezve, nincs szükség további műveletekre. Ha már engedélyezte vagy letiltotta a szolgáltatást, ez a beállítás nem lesz elérhető.
+   - **E-mail egyszeri PIN-kód automatikus engedélyezése a vendégek számára a 2021 októberi időszakban**. Alapértelmezett Ha az egyszer használatos e-mail-jelszó funkció még nincs engedélyezve a bérlőnél, a rendszer automatikusan bekapcsolja a 2021-es időpontban. Ha azt szeretné, hogy a szolgáltatás egyszerre legyen engedélyezve, nincs szükség további műveletekre. Ha már engedélyezte vagy letiltotta a szolgáltatást, ez a beállítás nem lesz elérhető.
 
    - **E-mailes egyszeri jelszó engedélyezése a vendégek számára most**. Bekapcsolja a bérlői e-mailek egyszeri jelszavas szolgáltatását.
 
-   - **Tiltsa le az e-mailek egyszeri PIN-kódját a vendégek** számára. Kikapcsolja az e-mailek egyszeri jelszavas funkcióját a bérlő számára, és megakadályozza, hogy a funkció bekapcsoljon a 2021. márciusi időszakra.
+   - **Tiltsa le az e-mailek egyszeri PIN-kódját a vendégek** számára. Kikapcsolja az e-mailek egyszeri jelszavas funkcióját a bérlő számára, és megakadályozza, hogy a funkció bekapcsoljon a 2021. októberi időszakra.
 
    > [!NOTE]
    > A fenti lehetőségek helyett a következő váltógomb jelenik meg, ha engedélyezte vagy letiltotta ezt a funkciót, vagy ha korábban már beállította az előzetes verziót:

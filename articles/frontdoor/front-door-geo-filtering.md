@@ -13,18 +13,19 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449265"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369424"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geo-szűrés egy tartományon az Azure bejárati ajtaján
 
 Alapértelmezés szerint az Azure bejárati ajtaja válaszol az összes felhasználói kérésre, függetlenül attól, hogy a kérés honnan származik. Bizonyos esetekben előfordulhat, hogy korlátozni szeretné a webalkalmazáshoz való hozzáférést országok/régiók szerint. A webalkalmazási tűzfal (WAF) a bejárati ajtón lehetővé teszi, hogy egyéni hozzáférési szabályokkal Definiáljon egy házirendet a végpont egy adott elérési útján, hogy engedélyezze vagy tiltsa le a hozzáférést a megadott országokból/régiókból. 
 
-A WAF szabályzat egyéni szabályokat tartalmaz. A szabály egyezési feltételekből, műveletből és prioritásból áll. Egyeztetési feltételben definiálni kell egy egyezési változót, egy operátort és egy egyezési értéket. A földrajzi szűrési szabályok esetében REMOTE_ADDR az operátor GeoMatch, és az érték egy kétbetűs ország/régió. Egy GeoMatch-feltételt és egy REQUEST_URI karakterlánc-egyeztetési feltételt egyesítheti elérésiút-alapú geo-szűrési szabály létrehozásához.
+A WAF szabályzat egyéni szabályokat tartalmaz. A szabály egyezési feltételekből, műveletből és prioritásból áll. Egyeztetési feltételben definiálni kell egy egyezési változót, egy operátort és egy egyezési értéket. A földrajzi szűrési szabályok esetében REMOTE_ADDR az operátor GeoMatch, és az érték egy kétbetűs ország/régió. A "ZZ" országkód vagy az "ismeretlen" ország rögzíti azokat az IP-címeket, amelyek még nincsenek leképezve az adatkészlet egyik országához sem. Az egyeztetési feltételhez hozzáadhatja a ZZ-t, hogy elkerülje a hamis pozitív értéket. Egy GeoMatch-feltételt és egy REQUEST_URI karakterlánc-egyeztetési feltételt egyesítheti elérésiút-alapú geo-szűrési szabály létrehozásához. 
+
 
 Az [Azure PowerShell](front-door-tutorial-geo-filtering.md) vagy egy rövid útmutató [sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)használatával konfigurálhatja a Geo-szűrési szabályzatot az előtérben.
 

@@ -1,20 +1,18 @@
 ---
 title: Váltás a Azure Data Factoryban
 description: A kapcsoló tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
-services: data-factory
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: fd5bb37d54183020e233774a778d27f5d4588bb4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4d58b032fe0371c9b54cf66ab13f525880867fb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486006"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385353"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Váltás a Azure Data Factoryban
 
@@ -22,7 +20,7 @@ ms.locfileid: "96486006"
 
 A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch utasítások a programozási nyelveken. Kiértékeli a feltételnek megfelelő esetet, amely megfelel a feltétel kiértékelésének.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -69,11 +67,11 @@ A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch u
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A kapcsoló tevékenység neve. | Sztring | Igen
-típus | *Kapcsolót* kell beállítani* | Sztring | Igen
-kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Igen
-esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Igen
-defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Igen
+name | A kapcsoló tevékenység neve. | Sztring | Yes
+típus | *Kapcsolót* kell beállítani* | Sztring | Yes
+kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Yes
+esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Yes
+defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Yes
 
 ## <a name="example"></a>Példa
 
@@ -329,7 +327,7 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 

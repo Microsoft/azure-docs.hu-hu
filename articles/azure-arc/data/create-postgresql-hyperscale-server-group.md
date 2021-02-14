@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4ff45eea8e07a282d8529c745344c11706bc27bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985886"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387988"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport létrehozása
 
@@ -81,13 +81,13 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 > [!IMPORTANT]
 > - A biztonsági mentéshez használt tárolási osztály (_--Storage-Class-Backups-SCB_) alapértelmezett értéke az adatkezelő adattároló osztálya, ha nincs megadva.
 > - A kiszolgálócsoport egy különálló kiszolgálócsoport (például a időpontra történő visszaállítás) visszaállításához úgy kell beállítania a ReadWriteMany, hogy a virtuális adategységeket használja az adatelérési mód használatával. Ehhez a kiszolgálócsoport létrehozásakor van szükség. Létrehozása után nem módosítható. További részletekért olvassa el a következőt:
->    - [A biztonsági mentéssel és visszaállítással kapcsolatos szakasz](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
->    - [Ez a szakasz az Azure arc-kompatibilis PostgreSQL-nagy kapacitású korlátozásait ismerteti](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+>    - [Biztonsági mentéshez és visszaállításhoz kész kiszolgálócsoport létrehozása](backup-restore-postgresql-hyperscale.md#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Az Azure arc-kompatibilis PostgreSQL nagy kapacitású korlátai](limitations-postgresql-hyperscale.md)
 
 
 > [!NOTE]
 > - **Más parancssori paraméterek is elérhetők.  A lehetőségek teljes listáját a futtatásával tekintheti meg `azdata arc postgres server create --help` .**
-
+>
 > - A--Volume-size-* paraméterek által elfogadott egység egy Kubernetes-erőforrás mennyisége (egy egész szám, amelyet a fenti SI-K egyike is elegendő (T, G, M, K, m), vagy a két megfelelője (ti, GI, mi, ki)).
 > - A névnek 12 vagy kevesebb karakterből kell állnia, és meg kell felelnie a DNS elnevezési konvencióinak.
 > - A rendszer kérni fogja, hogy adja meg a _postgres_ standard rendszergazdai jogú felhasználó jelszavát.  Az interaktív kérdés kihagyható úgy, hogy a `AZDATA_PASSWORD` create parancs futtatása előtt beállítja a munkamenet környezeti változóját.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624038"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386849"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Oktatóanyag: webszolgáltatás migrálása a Google Mapsből
 
@@ -54,7 +54,7 @@ A táblázat megjeleníti a Azure Maps Service API-kat, amelyek hasonló funkci�
 
 A következő szolgáltatási API-k jelenleg nem érhetők el Azure Mapsban:
 
-- Földrajzi hely
+- Térinformatikai-Azure Maps rendelkezik egy térinformatikai szolgáltatással, de IP-címet biztosít a helyadatok számára, de jelenleg nem támogatja a Cell Tower vagy a Wi-Fi-háromszögárfolyam-használatot.
 - Helyek részletei és fényképek – a telefonszámok és a webhely URL-címe a Azure Maps Search API-ban érhető el.
 - Térkép URL-címei
 - Legközelebbi utak – ez elérhető a web SDK-val, ahogy az [itt](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)látható, de jelenleg nem érhető el szolgáltatásként.

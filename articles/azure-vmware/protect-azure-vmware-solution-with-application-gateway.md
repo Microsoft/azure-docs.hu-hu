@@ -2,13 +2,13 @@
 title: Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson futó webalkalmazások biztonságos megjelenítéséhez.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988636"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384197"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 
@@ -35,7 +35,7 @@ Az ábrán az Azure VMware Solution web Applications használatával végzett Ap
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="A Application Gateway Azure VMware-megoldás webalkalmazásaival való ellenőrzéséhez használt tesztelési forgatókönyvet bemutató ábra." border="false":::
 
-A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve a központban. Azure-beli nyilvános IP-címmel rendelkezik. Ajánlott a virtuális hálózat szabványos DDoS-védelmének aktiválása. A webkiszolgáló a NSX T0 és T1 útválasztók mögötti Azure VMware-megoldásban található. Az Azure VMware-megoldás [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használ az elosztóval és a helyszíni rendszerekkel való kommunikáció engedélyezésére.
+A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve a központban. Azure-beli nyilvános IP-címmel rendelkezik. Ajánlott a virtuális hálózat szabványos DDoS-védelmének aktiválása. A webkiszolgáló egy, a NSX T0 és T1 átjáró mögötti Azure VMware-megoldáshoz tartozó saját felhőben üzemel. Az Azure VMware-megoldás [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használ az elosztóval és a helyszíni rendszerekkel való kommunikáció engedélyezésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,7 +57,7 @@ A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve
 
 4. Adja hozzá az Azure VMware megoldás-infrastruktúrán futó virtuális gépek háttérbeli készletét. Adja meg az Azure VMware-megoldás saját felhőben futó webkiszolgálók részleteit, és válassza a **Hozzáadás** lehetőséget.  Ezután válassza a **következő: Configuration>**.
 
-1. A **konfiguráció** lapon válassza az **útválasztási szabály hozzáadása** elemet.
+5. A **konfiguráció** lapon válassza az **útválasztási szabály hozzáadása** elemet.
 
 6. A **figyelő** lapon adja meg a figyelő részleteit. Ha a HTTPS lehetőséget választja, meg kell adnia egy tanúsítványt a PFX-fájlból vagy egy meglévő Azure Key Vault-tanúsítványból. 
 
@@ -77,7 +77,7 @@ A Application Gateway példány egy dedikált alhálózaton van üzembe helyezve
 
 ## <a name="configuration-examples"></a>Konfigurációs példák
 
-Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az Azure VMware-megoldás virtuális gépekkel való Application Gatewayt háttér-készletekként a következő felhasználási esetekben: 
+Most a következő használati esetekben konfiguráljuk a Application Gateway az Azure VMware-megoldás virtuális gépei háttér-készletekként: 
 
 - [Több webhely üzemeltetése](#hosting-multiple-sites)
 - [Útválasztás URL-cím szerint](#routing-by-url)
@@ -94,7 +94,7 @@ Ez az eljárás bemutatja, hogyan határozhatja meg a háttérbeli címkészlete
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="Képernyőfelvétel: a webkiszolgáló részleteinek összefoglalása a VSphere-ügyfélen.":::
 
-    A Windows Server 2016 Internet Information Services (IIS) szerepkört használta az oktatóanyag szemléltetésére. A virtuális gépek telepítése után futtassa a következő PowerShell-parancsokat az IIS konfigurálásához az egyes virtuális gépeken. 
+    A Windows Server 2016-et a telepített Internet Information Services (IIS) szerepkörrel használtuk. A virtuális gépek telepítése után futtassa a következő PowerShell-parancsokat az IIS konfigurálásához az egyes virtuális gépeken. 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -121,7 +121,7 @@ Ez az eljárás bemutatja, hogyan határozhatja meg a háttérbeli címkészlete
 
 ### <a name="routing-by-url"></a>Útválasztás URL-cím szerint
 
-Ez az eljárás bemutatja, hogyan határozhatja meg a háttérbeli címkészletet egy Azure VMware-megoldás privát felhőben futó virtuális gépek használatával egy meglévő Application gatewayen. Ezután olyan útválasztási szabályokat hozhat létre, amelyek gondoskodnak arról, hogy a webes forgalom a készletekben lévő megfelelő kiszolgálókon érkezzen.
+A következő lépések a háttérbeli címkészlet használatát határozzák meg egy Azure VMware-megoldás privát felhőben futó virtuális gépek használatával. A privát felhő egy meglévő Application Gateway-kiszolgálón található. Ezután olyan útválasztási szabályokat hozhat létre, amelyek gondoskodnak arról, hogy a webes forgalom a készletekben lévő megfelelő kiszolgálókon érkezzen.
 
 1. A saját felhőben hozzon létre egy virtuálisgép-készletet a webfarm megjelenítéséhez. 
 

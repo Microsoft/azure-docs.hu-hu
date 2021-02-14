@@ -1,22 +1,18 @@
 ---
 title: Adatfeldolgozó másolása vagy klónozása Azure Data Factory
 description: Megtudhatja, hogyan másolhat vagy klónozott egy adatgyárat Azure Data Factory
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ea16785502ce8a82087b79dd8e7f0014c0059fc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85552970"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375238"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Adatfeldolgozó másolása vagy klónozása Azure Data Factory
 
@@ -51,6 +47,6 @@ Ez a cikk bemutatja, hogyan másolhat vagy klónozott egy adatgyárat a Azure Da
 
 1. Biztonsági okokból a generált Resource Manager-sablon nem tartalmaz titkos adatokat, például a társított szolgáltatások jelszavait. Ezért a hitelesítő adatokat központi telepítési paraméterekként kell megadnia. Ha a beállítások manuális bevitele nem kívánatos, fontolja meg a kapcsolatok karakterláncának és jelszavának beolvasását Azure Key Vault helyett. [Részletek](store-credentials-in-key-vault.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át az adatfeldolgozó létrehozásával kapcsolatos útmutatót a Azure Portal az [adatfeldolgozó létrehozása a Azure Data Factory felhasználói felület használatával](quickstart-create-data-factory-portal.md)című témakörben.

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576481"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374371"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -238,7 +238,7 @@ Az Azure Cosmos DB Cassandra API egy felügyelt szolgáltatási platform. A für
 
 ## <a name="hosted-cql-shell-preview"></a>Üzemeltetett CQL-rendszerhéj (előzetes verzió)
 
-Egy üzemeltetett natív Cassandra shellt (CQLSH v 5.0.1) közvetlenül a [Azure Portal](data-explorer.md) vagy a [Azure Cosmos db Explorer](https://cosmos.azure.com/)adatkezelő is megnyithat. A CQL-rendszerhéj engedélyezése előtt engedélyeznie kell [a jegyzetfüzetek](enable-notebooks.md) szolgáltatást a fiókjában (ha még nincs engedélyezve, akkor a rendszer rákérdez a gombra `Open Cassandra Shell` ). Jelölje be a Kiemelt Megjegyzés a [jegyzetfüzetek engedélyezése Azure Cosmos db-fiókok](enable-notebooks.md) számára támogatott Azure-régiók számára című részt.
+Egy üzemeltetett natív Cassandra shellt (CQLSH v 5.0.1) közvetlenül a [Azure Portal](data-explorer.md) vagy a [Azure Cosmos db Explorer](https://cosmos.azure.com/)adatkezelő is megnyithat. A CQL-rendszerhéj engedélyezése előtt engedélyeznie kell [a jegyzetfüzetek](enable-notebooks.md) szolgáltatást a fiókjában (ha még nincs engedélyezve, akkor a rendszer rákérdez a gombra `Open Cassandra Shell` ). Tekintse meg a [Azure Cosmos db-fiókok notebookok használatának engedélyezése](enable-notebooks.md#supported-regions) a támogatott Azure-régiókhoz című cikket.
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH megnyitása":::
 

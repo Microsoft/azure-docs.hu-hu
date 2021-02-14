@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630853"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374983"
 ---
 # <a name="smb-multichannel-performance"></a>Többcsatornás SMB teljesítménye
 
@@ -110,7 +110,7 @@ A terhelés egyetlen 128 GiB-fájlhoz lett létrehozva. Ha engedélyezve van a t
 
 - Egy nagyobb átlagos IO-mérettel (> ~ 16k) rendelkező hálózati adapteren az olvasási és írási műveletek terén jelentős változások történtek.
 - Kisebb i/o-méret esetén a teljesítmény kis mértékben befolyásolta a ~ 10%-ot, ha a többcsatornás SMB engedélyezve volt. Ez enyhíthető a több fájl terhelésének elosztásával vagy a szolgáltatás letiltásával.
-- A teljesítmény továbbra is az  [egyetlen fájl korlátaihoz](storage-files-scale-targets.md#file-level-limits)kötődik.
+- A teljesítmény továbbra is az [egyetlen fájl korlátaihoz](storage-files-scale-targets.md#file-scale-targets)kötődik.
 
 ## <a name="optimizing-performance"></a>Teljesítmény optimalizálása
 

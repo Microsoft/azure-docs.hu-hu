@@ -4,24 +4,24 @@ description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyí
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122261"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377805"
 ---
-# <a name="iot-central-device-development-overview"></a>Az IoT Central-eszközfejlesztés áttekintése
+# <a name="iot-central-device-development-guide"></a>IoT Central eszköz fejlesztési útmutatója
 
 *Ez a cikk az eszközök fejlesztőire vonatkozik.*
 
-Egy IoT Central alkalmazás lehetővé teszi több millió eszköz figyelését és kezelését életciklusuk során. Ez az Áttekintés olyan eszközök fejlesztői számára készült, akik a IoT Centralhoz csatlakozó eszközökön futtatnak programkódot.
+Egy IoT Central alkalmazás lehetővé teszi több millió eszköz figyelését és kezelését életciklusuk során. Ez az útmutató olyan eszköz-fejlesztőknek készült, akik a IoT Centralhoz csatlakozó eszközökön futtatnak programkódot.
 
 Az eszközök az alábbi primitívek használatával kommunikálnak IoT Central alkalmazásokkal:
 
@@ -141,7 +141,7 @@ Néhány mintakód: [ügyfélalkalmazás létrehozása és összekapcsolása](./
 
 További információ a támogatott nyelvekről és SDK-k használatáról: az [Azure IoT hub Device SDK-k megismerése és használata](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device.md).
 

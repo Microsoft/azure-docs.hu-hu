@@ -3,22 +3,22 @@ title: NSX-T hálózati szegmens hozzáadása
 description: A NSX-T hálózati szegmensek Azure VMware-megoldáshoz való hozzáadásának lépései.
 ms.topic: include
 ms.date: 11/09/2020
-ms.openlocfilehash: 5b97f0b280fa12eff39c9601bb73e439dba8e9fd
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 7db45650588d37c39e7d156fa189b3ff7da2239f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335063"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100514957"
 ---
 <!-- Used in manage-dhcp.md and tutorial-nsx-t-network-segment.md -->
 
-1. A NSX-T Managerben válassza a **hálózati**  >  **szegmensek** , majd a **szegmens hozzáadása** elemet. 
+1. A NSX-T Managerben válassza a **hálózati**  >  **szegmensek**, majd a **szegmens hozzáadása** elemet. 
 
    :::image type="content" source="../media/nsxt/nsxt-segments-overview.png" alt-text="Új szegmens hozzáadását bemutató képernyőkép":::
 
 1. Válassza a **szegmens hozzáadása** lehetőséget, és adja meg a szegmens nevét.
 
-1. Válassza ki a Tier1-átjárót (TNTxx-T1) **csatlakoztatott átjáróként** , és hagyja a **típust** rugalmasként.
+1. Válassza ki az 1. rétegbeli átjárót (TNTxx-T1) **csatlakoztatott átjáróként** , és hagyja a **típust** rugalmasként.
 
 1. Válassza ki az előre konfigurált átfedéses **átviteli zónát** (TNTXX-OVERLAY-TZ), majd válassza az **alhálózatok beállítása** lehetőséget. 
 

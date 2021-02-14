@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577793"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374541"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Költségek megtakarítása Azure App Service fenntartott példányokkal
 
@@ -37,24 +37,12 @@ A foglalási javaslatok segítségével megadhatja a megvásárolni kívánt fog
 - Az API-k használatával vásárlási javaslatokat kaphat a megosztott hatókörhöz és az egyszeri előfizetések hatóköréhez is. További információ: [fenntartott példányok vásárlására vonatkozó ajánlás API-k nagyvállalati ügyfelek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)számára.
 - A Nagyvállalati Szerződés (EA) és a Microsoft Customer Agreement (MCA) ügyfelek esetében a megosztott és az egyszeri előfizetési hatókörökkel kapcsolatos vásárlási javaslatok a [Azure Consumption Insights Power bi a Content Pack csomaggal](/power-bi/service-connect-to-azure-consumption-insights)érhetők el.
 
-#### <a name="instance-size-flexibility-setting"></a>Példány méretrugalmassági beállítása
-
-A példány méretrugalmassági beállítása határozza meg, hogy mely szolgáltatásokra vonatkozik a fenntartott példányokhoz kapcsolódó kedvezmény.
-
-Függetlenül attól, hogy a beállítás be van-e kapcsolva, a foglalási kedvezmények automatikusan érvényesek-e a megfelelő Premium v3 fenntartott példányok használatára.
-
 ### <a name="analyze-your-usage-information"></a>A használati adatok elemzése
 
 A használati adatok elemzésével megállapíthatja, hogy mely foglalásokat kell megvásárolnia. A használati adatok a használati fájlban és az API-kon érhetők el. Ezeket együtt használva meghatározhatja, hogy melyik foglalást szeretné megvásárolni. Ellenőrizze, hogy vannak-e olyan prémium v3-példányok, amelyek napi szinten magas kihasználtsággal rendelkeznek a megvásárolni kívánt foglalások mennyiségének meghatározásához.
 
 A használati fájl számlázási időszak és napi használat szerint jeleníti meg a díjakat. A használati fájl letöltésével kapcsolatos információkért tekintse meg [Az Azure-beli használat és díjak megtekintését és letöltését](../understand/download-azure-daily-usage.md)ismertető témakört. Ezt követően a használati fájl adatai alapján [meghatározhatja, hogy milyen foglalást szeretne megvásárolni](determine-reservation-purchase.md).
 
-### <a name="purchase-restriction-considerations"></a>Vásárlási korlátozási megfontolások
-
-A foglalási kedvezmények a következő prémium v3 példányokra nem érvényesek:
-
-- **Előzetes verzió vagy promo instances** – minden olyan prémium v3 fenntartott példány, amely előzetes verzióban érhető el, vagy promóciós fogyasztásmérőt használ.
-- **Felhők** – a foglalások nem vásárolhatók meg németországi vagy kínai régiókban.
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Premium v3 fenntartott példány vásárlása
 
@@ -79,7 +67,6 @@ Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozz�
 | Hatókör | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja: <ul><li>**Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza. </li><li>**Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.</li><li>**Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul> |
 | Region | A foglalás által érintett Azure-régió. |
 | Premium v3 fenntartott példány mérete | A prémium v3 fenntartott példányok mérete. |
-| Optimalizálás a következőhöz: | A Premium v3 fenntartott példányok méretének rugalmassága alapértelmezés szerint ki van választva. Kattintson a **Speciális beállítások** lehetőségre a példány méretének rugalmassági értékének módosításához, hogy a foglalási kedvezményt más prémium v3 fenntartott példányokra alkalmazza ugyanabban a [Premium v3 fenntartott példány mérete csoportban](../../virtual-machines/reserved-vm-instance-size-flexibility.md). A kapacitás prioritása kiemelt fontosságúként kezeli az adatközpont kapacitását az üzemelő példányok számára. További megbízhatóságot biztosít a prémium v3 fenntartott példányok elindításához, amikor szüksége van rájuk. A kapacitás prioritása csak akkor érhető el, ha a foglalási hatókör egyetlen előfizetés. |
 | Időszak | Egy vagy három év. A HBv2 Premium v3 fenntartott példányain 5 éves időszak is elérhető. |
 | Mennyiség | A foglalás keretében megvásárolt példányok száma. A mennyiség a számlázási kedvezményt elérő prémium v3 fenntartott példányok száma. Ha például 10 standard \_ D2 Premium v3 fenntartott példányt futtat az USA keleti régiójában, akkor a mennyiséget 10-re kell megadnia, hogy maximalizálja az összes, a prémium szintű v3 lefoglalt példány kedvezményét. |
 

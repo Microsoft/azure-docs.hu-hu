@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979181"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368013"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez
 
@@ -31,8 +31,9 @@ Az Azure Private link segítségével privát végponton keresztül csatlakozhat
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha egy ügyfél által felügyelt kulccsal rendelkező magánhálózati kapcsolaton alapuló munkaterületet tervez használni, ezt a szolgáltatást támogatási jegy használatával kell kérnie. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Ha egy ügyfél által felügyelt kulccsal rendelkező magánhálózati kapcsolaton alapuló munkaterületet tervez használni, ezt a szolgáltatást támogatási jegy használatával kell kérnie. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+* A privát végpont létrehozásához rendelkeznie kell egy meglévő virtuális hálózattal. A privát végpont hozzáadása előtt [le kell tiltania a magánhálózati végpontok hálózati házirendjeit](../private-link/disable-private-endpoint-network-policy.md) is.
 ## <a name="limitations"></a>Korlátozások
 
 * A privát hivatkozást tartalmazó Azure Machine Learning munkaterület nem érhető el a Azure Government-régiókban vagy az Azure China 21Vianet-régiókban.
@@ -73,6 +74,19 @@ A [Machine learninghez készült Azure CLI-bővítmény](reference-azure-machine
 * `--pe-vnet-name`: A meglévő virtuális hálózat, amely létrehozza a magánhálózati végpontot a alkalmazásban.
 * `--pe-subnet-name`: Annak az alhálózatnak a neve, amelybe a magánhálózati végpontot létre kívánja hozni. Az alapértelmezett érték `default`.
 
+Ezek a paraméterek a Create parancshoz tartozó egyéb kötelező paraméterek mellett is szerepelnek. Az alábbi parancs például egy új munkaterületet hoz létre az USA nyugati régiójában egy meglévő erőforráscsoport és VNet használatával:
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 A Azure Machine Learning Studio __hálózatkezelés__ lapja lehetővé teszi privát végpontok konfigurálását. Azonban szükség van egy meglévő virtuális hálózatra. További információ: [munkaterületek létrehozása a portálon](how-to-manage-workspace.md).
@@ -82,10 +96,6 @@ A Azure Machine Learning Studio __hálózatkezelés__ lapja lehetővé teszi pri
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>Privát végpont hozzáadása munkaterülethez
 
 A következő módszerek egyikével adhat hozzá privát végpontot egy meglévő munkaterülethez:
-
-> [!IMPORTANT]
->
-> A privát végpont létrehozásához rendelkeznie kell egy meglévő virtuális hálózattal. A privát végpont hozzáadása előtt [le kell tiltania a magánhálózati végpontok hálózati házirendjeit](../private-link/disable-private-endpoint-network-policy.md) is.
 
 > [!WARNING]
 >

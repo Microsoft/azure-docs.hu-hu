@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/24/2019
+ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: f307ff9e7d609628bc22374fc5874dcbf993e4c2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661188"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376802"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
 
@@ -75,7 +75,7 @@ Ehhez a konfigurációhoz létre kell hoznia egy VPN Gateway-kapcsolatot egy IPs
 
 Az alábbi táblázat egy példát mutat be a példa virtuális hálózatok és helyi helyeinek meghatározására:
 
-| Virtual Network | Címtartomány | Régió | Kapcsolódás helyi hálózati helyhez |
+| Virtual Network | Címtartomány | Region | Kapcsolódás helyi hálózati helyhez |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |
@@ -170,7 +170,7 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 
 **Példa értékei:** Helyi hálózati átjáró = ClassicVNetLocal
 
-| Virtual Network | Címtartomány | Régió | Kapcsolódás helyi hálózati helyhez |Átjáró nyilvános IP-címe|
+| Virtual Network | Címtartomány | Region | Kapcsolódás helyi hálózati helyhez |Átjáró nyilvános IP-címe|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA nyugati régiója | RMVNetLocal (192.168.0.0/16) |Az ClassicVNet-átjáróhoz hozzárendelt nyilvános IP-cím|
 | RMVNet | (192.168.0.0/16) |USA keleti régiója |ClassicVNetLocal (10.0.0.0/24) |A RMVNet-átjáróhoz hozzárendelt nyilvános IP-cím.|

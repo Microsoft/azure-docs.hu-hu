@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése a Salesforce a Data Factory használatával
 description: További információ az adatok Salesforce való áthelyezéséről Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ba95ba57bb57b1b2e9ecde3ad27f6bb5fbca66cb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124883"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387053"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -51,7 +46,7 @@ Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely kül�
 
 A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -68,11 +63,11 @@ A következő táblázat a Salesforce társított szolgáltatáshoz tartozó JSO
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **Salesforce** . |Igen |
-| environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br><br> – Az alapértelmezett érték a "https: \/ /login.Salesforce.com". <br> – Az adatok a homokozóból való másolásához válassza a " https://test.salesforce.com " lehetőséget. <br> – Az adatok egyéni tartományból történő másolásához írja be például a következőt: "https://[tartomány]. my. Salesforce. com". |Nem |
-| username |Adja meg a felhasználói fiók felhasználónevét. |Igen |
-| jelszó |A felhasználói fiókhoz tartozó jelszó megadása. |Igen |
-| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával/lekérésével kapcsolatos útmutatásért lásd a [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) című témakört. A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **Salesforce**. |Yes |
+| environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br><br> – Az alapértelmezett érték a "https: \/ /login.Salesforce.com". <br> – Az adatok a homokozóból való másolásához válassza a " https://test.salesforce.com " lehetőséget. <br> – Az adatok egyéni tartományból történő másolásához írja be például a következőt: "https://[tartomány]. my. Salesforce. com". |No |
+| username |Adja meg a felhasználói fiók felhasználónevét. |Yes |
+| jelszó |A felhasználói fiókhoz tartozó jelszó megadása. |Yes |
+| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával/lekérésével kapcsolatos útmutatásért lásd a [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) című témakört. A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-struktúrája, rendelkezésre állása és házirendje hasonló az összes adatkészlet-típushoz (Azure SQL, Azure Blob, Azure Table stb.).
@@ -97,7 +92,7 @@ A másolási tevékenységben, ha a forrás típusa **RelationalSource** (amely 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy [Salesforce objektum lekérdezési nyelve (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezése. Például: `select * from MyTable__c`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy [Salesforce objektum lekérdezési nyelve (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezése. Példa: `select * from MyTable__c`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 > [!IMPORTANT]
 > Az API-név "__c" része minden egyéni objektumhoz szükséges.
@@ -108,8 +103,8 @@ A másolási tevékenységben, ha a forrás típusa **RelationalSource** (amely 
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Adatok beolvasása WHERE záradék használatával DateTime oszlopban
 A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime formátuma legyen a különbség. Például:
 
-* **SOQL minta** : `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **SQL-minta** :
+* **SOQL minta**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL-minta**:
     * **A másolás varázsló használata a lekérdezés megadásához:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **A JSON-szerkesztés használata a lekérdezés megadásához (megfelelő escape-karakter):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
@@ -117,10 +112,10 @@ A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime for
 A Salesforce-jelentésekben lévő adatok lekéréséhez adja meg a lekérdezést úgy `{call "<report name>"}` , mint például:. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Törölt rekordok beolvasása a Salesforce Lomtárból
-Ha le szeretné kérdezni a Salesforce Lomtárában lévő nem törölt rekordokat, megadhatja a **"IsDeleted = 1"** kifejezést a lekérdezésben. Például:
+Ha le szeretné kérdezni a Salesforce Lomtárában lévő nem törölt rekordokat, megadhatja a **"IsDeleted = 1"** kifejezést a lekérdezésben. Példa:
 
-* Ha csak a törölt rekordokat szeretné lekérdezni, adja meg a "select * from MyTable__c **Where IsDeleted = 1** " elemet.
-* Az összes olyan rekord lekérdezéséhez, amely tartalmazza a meglévőt és a törölt adatokat, adja meg a "select * from MyTable__c, **ahol a IsDeleted = 0 vagy a IsDeleted = 1** " értéket.
+* Ha csak a törölt rekordokat szeretné lekérdezni, adja meg a "select * from MyTable__c **Where IsDeleted = 1**" elemet.
+* Az összes olyan rekord lekérdezéséhez, amely tartalmazza a meglévőt és a törölt adatokat, adja meg a "select * from MyTable__c, **ahol a IsDeleted = 0 vagy a IsDeleted = 1**" értéket.
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-példa: adatok másolása a Salesforce-ből az Azure-Blobba
 Az alábbi példa olyan JSON-definíciókat tartalmaz, amelyekkel a [Visual Studióval](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatják, hogyan másolhatók adatok a Salesforce-ből az Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
@@ -225,7 +220,7 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
 
 **Másolási tevékenységgel rendelkező folyamat**
 
-A folyamat másolási tevékenységet tartalmaz, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa pedig** **BlobSink** .
+A folyamat másolási tevékenységet tartalmaz, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa pedig** **BlobSink**.
 
 A RelationalSource által támogatott tulajdonságok listáját a [RelationalSource típus tulajdonságainál](#copy-activity-properties) tekintheti meg.
 
@@ -287,8 +282,8 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 | --- | --- |
 | Automatikus szám |Sztring |
 | Jelölőnégyzet |Logikai |
-| Currency (Pénznem) |Tizedesjegy |
-| Dátum |DateTime |
+| Pénznem |Tizedesjegy |
+| Date |DateTime |
 | Dátum/idő |DateTime |
 | E-mail |Sztring |
 | Id |Sztring |

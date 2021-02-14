@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 18104f06e779046786a2c7794736d01c35139490
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895614"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365803"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz 
 
@@ -39,6 +39,7 @@ Ez a cikk a lehetséges problémák megoldásával kapcsolatos hibaelhárítási
 **Tudnivalók:** 
 
 - Az alacsonyabb szintű Windows-eszközök hibrid Azure AD-csatlakoztatása némileg eltérő módon működik, mint a Windows 10-es verzióban. Sok ügyfél nem veszi észre, hogy szükségük van AD FSra (összevont tartományokra) vagy zökkenőmentes egyszeri bejelentkezésre (felügyelt tartományok esetén).
+- A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox és a Microsoft Edge böngészők privát böngészési módjában. Emellett az Internet Explorerben nem működik, ha a böngésző fokozottan védett módban fut.
 - Az összevont tartományokkal rendelkező ügyfelek esetében, ha a szolgáltatáskapcsolódási pont (SCP) úgy van konfigurálva, hogy a felügyelt tartománynévre mutasson (például contoso.onmicrosoft.com, contoso.com helyett), akkor a hibrid Azure AD JOIN az alacsonyabb szintű Windows-eszközökhöz nem fog működni.
 - Ugyanaz a fizikai eszköz többször is megjelenik az Azure AD-ben, ha több tartományi felhasználó jelentkezik be az alacsonyabb szintű hibrid Azure AD-hez csatlakoztatott eszközökre.  Ha például a *jdoe* és a *jharnett* egy eszközre jelentkezik be, akkor a **felhasználói** adatok lapon külön regisztráció (DeviceID) jön létre. 
 - A felhasználói adatok lapon több bejegyzést is megadhat egy eszközhöz az operációs rendszer újratelepítése, illetve a manuális ismételt regisztráció miatt.

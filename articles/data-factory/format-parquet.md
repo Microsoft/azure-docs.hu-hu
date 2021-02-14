@@ -2,19 +2,16 @@
 title: A parketta formátuma Azure Data Factory
 description: Ez a témakör azt ismerteti, hogyan kezelhető a parketta formátuma Azure Data Factoryban.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011608"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386391"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>A parketta formátuma Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +63,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="parquet-as-source"></a>Parketta forrásként
 
-A másolási tevékenység **_ \_ forrás \**** szakaszában a következő tulajdonságok támogatottak.
+A másolási tevékenység ***\* forrása \**** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -75,7 +72,7 @@ A másolási tevékenység **_ \_ forrás \**** szakaszában a következő tulaj
 
 ### <a name="parquet-as-sink"></a>Parketta mint fogadó
 
-A másolási tevékenység **_ \_ \*** fogadó * szakasza a következő tulajdonságokat támogatja.
+A másolási ***\* \* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -101,13 +98,13 @@ Az alábbi táblázat a Parquet-forrás által támogatott tulajdonságokat soro
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni `parquet` | yes | `parquet` | formátumban |
+| Formátum | A formátumot kötelező megadni `parquet` | igen | `parquet` | formátumban |
 | Wild kártya elérési útjai | A rendszer feldolgozza a helyettesítő karakteres elérési úttal egyező összes fájlt. Felülbírálja az adatkészletben beállított mappát és a fájl elérési útját. | nem | Karakterlánc [] | wildcardPaths |
 | Partíció gyökerének elérési útja | A particionált fájlok esetében megadhatja a partíció gyökerének elérési útját, hogy a particionált mappák oszlopként legyenek olvashatók. | nem | Sztring | partitionRootPath |
 | Fájlok listája | Azt jelzi, hogy a forrás egy szövegfájlra mutat-e, amely a feldolgozandó fájlokat listázza | nem | `true` vagy `false` | fileList |
 | A fájl nevét tároló oszlop | Új oszlop létrehozása a forrásfájl nevével és elérési útjával | nem | Sztring | rowUrlColumn |
 | Befejezés után | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem | Törlés: `true` vagy `false` <br> Áthelyezése `[<from>, <to>]` | purgeFiles <br> moveFiles |
-| Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Timestamp | modifiedAfter <br> modifiedBefore |
+| Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Időbélyeg | modifiedAfter <br> modifiedBefore |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Forrás példa
@@ -131,7 +128,7 @@ Az alábbi táblázat a Parquet fogadó által támogatott tulajdonságokat soro
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni `parquet` | yes | `parquet` | formátumban |
+| Formátum | A formátumot kötelező megadni `parquet` | igen | `parquet` | formátumban |
 | Mappa törlése | Ha a célmappa az írás előtt törlődik | nem | `true` vagy `false` | truncate |
 | Fájlnév beállítás | Az írt adatnév formátuma. Alapértelmezés szerint egy fájl/partíció formátumban `part-#####-tid-<guid>` | nem | Minta: karakterlánc <br> /Partíció: karakterlánc [] <br> Oszlopbeli adatként: karakterlánc <br> Kimenet egyetlen fájlba: `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 
@@ -176,7 +173,7 @@ A saját üzemeltetésű, a Parquet-fájlok szerializálásával/deszerializál�
 
 Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` . A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg `Xmx` a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a memóriával fog elindulni, `Xms` és a memória maximális mennyiségét fogja tudni használni `Xmx` . Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)

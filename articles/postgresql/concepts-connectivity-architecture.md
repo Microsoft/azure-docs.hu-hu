@@ -1,17 +1,17 @@
 ---
 title: Kapcsolati architektúra – Azure Database for PostgreSQL – egyetlen kiszolgáló
 description: A Azure Database for PostgreSQL-egyetlen kiszolgáló kapcsolati architektúráját ismerteti.
-author: mksuni
-ms.author: sumuth
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 23847c164ba59a8c46c2fdd5fb954b76ea251148
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 2/11/2021
+ms.openlocfilehash: 97778951777677ce02adec59d906c1246494457a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877679"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369407"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
 Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
@@ -49,14 +49,14 @@ A következő táblázat az összes adatterület Azure Database for PostgreSQL �
 | Dél-Brazília |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Közép-Kanada |40.85.224.249  | | |
 | Kelet-Kanada | 40.86.226.166    | | |
-| Az USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| Az USA középső régiója | 23.99.160.139, 52.182.136.37, 52.182.136.38 | 13.67.215.62 | |
 | Kelet-Kína | 139.219.130.35    | | |
 | Kelet-Kína 2 | 40.73.82.1  | | |
 | Észak-Kína | 139.219.15.17    | | |
 | Észak-Kína 2 | 40.73.50.0     | | |
 | Kelet-Ázsia | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     | | |
 | USA keleti régiója |40.71.8.203, 40.71.83.113 |40.121.158.30|191.238.6.43 |
-| USA 2. keleti régiója |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  | | |
+| USA 2. keleti régiója | 40.70.144.38, 52.167.105.38  | 52.177.185.181 | |
 | Közép-Franciaország | 40.79.137.0, 40.79.129.1  | | |
 | Dél-Franciaország | 40.79.177.0     | | |
 | Közép-Németország | 51.4.144.100     | | |
@@ -64,27 +64,27 @@ A következő táblázat az összes adatterület Azure Database for PostgreSQL �
 | Közép-India | 104.211.96.159     | | |
 | Dél-India | 104.211.224.146  | | |
 | Nyugat-India | 104.211.160.80    | | |
-| Kelet-Japán | 13.78.61.196, 191.237.240.43, 40.79.192.23 | | |
-| Nyugat-Japán | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    | | |
-| Dél-Korea középső régiója | 52.231.32.42   | | |
-| Dél-Korea déli régiója | 52.231.200.86    | | |
-| USA északi középső régiója | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    | | |
-| Észak-Európa | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
+| Kelet-Japán | 40.79.192.23 | 13.78.61.196 | |
+| Nyugat-Japán | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
+| Dél-Korea középső régiója | 52.231.17.13   | 52.231.32.42 | |
+| Dél-Korea déli régiója | 52.231.145.3     | 52.231.200.86 | |
+| USA északi középső régiója | 52.162.104.35, 52.162.104.36    | 23.96.178.199 | |
+| Észak-Európa | 52.138.224.6, 52.138.224.7  | 40.113.93.91 |191.235.193.75 |
 | Dél-Afrika északi régiója  | 102.133.152.0    | | |
 | Dél-Afrika nyugati régiója | 102.133.24.0   | | |
 | USA déli középső régiója |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
-| Délkelet-Ázsia | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     | | |
+| Délkelet-Ázsia | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
 | UAE középső régiója | 20.37.72.64  | | |
 | Észak-Egyesült Arab | 65.52.248.0    | | |
 | Az Egyesült Királyság déli régiója | 51.140.184.11   | | |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11  | | |
 | USA nyugati középső régiója | 13.78.145.25     | | |
-| Nyugat-Európa |13.69.105.208,104.40.169.187 |40.68.37.158 | 191.237.232.75|
+| Nyugat-Európa |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | USA nyugati régiója |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
 | USA 2. nyugati régiója | 13.66.226.202  | | |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)

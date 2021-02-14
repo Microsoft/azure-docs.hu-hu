@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376054"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM-védelemmel ellátott kulcsok importálása a felügyelt HSM-be (BYOK)
 
@@ -70,6 +70,7 @@ Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n k
 |Securosys SA|Gyártó, HSM szolgáltatásként|Primus HSM-család, Securosys felhők HSM|[Primus BYOK eszköz és dokumentáció](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[Részletekért lásd a StorMagic-webhelyet](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS és Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|Gyártó|IBM 476x, CryptoExpress|[IBM nagyvállalati kulcskezelő alaprendszer](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utimaco|Gyártó<br/>HSM szolgáltatásként|u. Trust-horgony, CryptoServer|[Utimaco BYOK eszköz és integrációs útmutató](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 

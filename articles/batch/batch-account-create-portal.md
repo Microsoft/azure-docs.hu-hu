@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Port
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896000"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368506"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -67,6 +67,9 @@ A Batch-fiókra vonatkozó [erőforrás-kvóták](batch-quota-limit.md) megtekin
 ## <a name="additional-configuration-for-user-subscription-mode"></a>További konfiguráció a felhasználói előfizetés módhoz
 
 Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, végezze el az alábbi kiegészítő lépéseket a fiók létrehozása előtt.
+
+> [!IMPORTANT]
+> A Batch-fiókot felhasználói előfizetési módban létrehozó felhasználónak közreműködői vagy tulajdonosi szerepkör-hozzárendeléssel kell rendelkeznie ahhoz az előfizetéshez, amelyben a Batch-fiókot létrehozza.
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Az előfizetés elérésének engedélyezése az Azure Batch számára (egyszeri művelet)
 

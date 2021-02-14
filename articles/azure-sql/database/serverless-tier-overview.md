@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97687399"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393241"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,16 +25,16 @@ A kiszolgáló nélküli a Azure SQL Database önálló adatbázisaihoz tartozó
 
 ## <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
-Azure SQL Database önálló adatbázisainak kiszolgáló nélküli számítási rétegét egy számítási automatikus skálázási tartomány és egy automatikus szüneteltetési késleltetés jellemzi. Ezeknek a paramétereknek a konfigurációja az adatbázis teljesítményének és számítási költségeit formálja.
+A Azure SQL Databaseban található önálló adatbázisok kiszolgáló nélküli számítási rétegét egy számítási automatikus skálázási tartomány és egy automatikus szüneteltetési késleltetés jellemzi. Ezeknek a paramétereknek a konfigurációja az adatbázis teljesítményének és számítási költségeit formálja.
 
 ![kiszolgáló nélküli számlázás](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>Teljesítmény konfigurálása
 
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
-- Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
+- Az **automatikus szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt automatikusan szünetelteti. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Alternatív megoldásként az automatikus szüneteltetés le is tiltható.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -57,7 +57,7 @@ A kiszolgáló nélküli adatbázisok ár–teljesítmény aránya az időszakos
 ### <a name="scenarios-well-suited-for-provisioned-compute"></a>A kiépített számítási feladatokhoz jól illeszkedő forgatókönyvek
 
 - Az önálló adatbázisok esetében több rendszeres, kiszámítható használati minta és nagyobb átlagos számítási kihasználtság áll az idő múlásával.
-- Azokat az adatbázisokat, amelyek nem tudják elviselni a teljesítménybeli kompromisszumokat, így gyakrabban fordulnak elő a memóriából, vagy késleltetik a szüneteltetett állapotból való automatikus folytatást.
+- Azokat az adatbázisokat, amelyek nem tudják tolerálni a teljesítménybeli kompromisszumokat, így gyakrabban fordulnak elő a memóriából, vagy késleltetik a szüneteltetett állapotból való folytatást.
 - Több adatbázis időszakos, előre nem látható használati mintákkal, amelyek rugalmas készletekbe egyesíthetők a jobb ár-teljesítmény optimalizálása érdekében.
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>Összehasonlítás a kiépített számítási szintjével
@@ -93,42 +93,42 @@ A kiépített számítási adatbázisokkal ellentétben az SQL-gyorsítótárbó
 - Az aktív gyorsítótár kihasználtsága akkor minősül alacsonynak, ha a legutóbb használt gyorsítótár-bejegyzések teljes mérete egy adott időtartam alatt egy küszöbérték alá esik.
 - A gyorsítótár-újraindításkor a cél gyorsítótárának mérete fokozatosan csökken az előző méret töredékéért, és a visszaigénylés csak akkor folytatódik, ha a használat alacsony marad.
 - A gyorsítótár-visszanyeréskor a kizárni kívánt gyorsítótár-bejegyzések kiválasztására szolgáló házirend ugyanaz a kiválasztási házirend, mint a kiépített számítási adatbázisok esetében, ha a memória nyomása magas.
-- A gyorsítótár mérete soha nem csökken a minimális memória-korlát alatt, amelyet konfigurálhat a percben megadott minimális virtuális mag.
+- A gyorsítótár mérete soha nem csökken a min. virtuális mag által meghatározott minimális memória-korlát alatt, amely konfigurálható.
 
 A kiszolgáló nélküli és a kiépített számítási adatbázisokban a gyorsítótár bejegyzései kizárható, ha az összes rendelkezésre álló memória használatban van.
 
-Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.  Azt is megteheti, hogy a felhasználói tevékenység leállítása után további késleltetést okoz a memória-visszanyerési művelet, mivel a korábbi felhasználói tevékenységekre válaszoló időszakos háttérben futó folyamatok időnként megtörténnek  A törlési műveletek és a QDS kiszolgálónév-karbantartási feladatok például a törlésre kijelölt szellemkép-rekordokat hoznak, de nem törlődnek fizikailag, amíg a szellemkép-tisztítási folyamat fut, ami magában foglalhatja az adatlapok gyorsítótárba való beolvasását is.
+Vegye figyelembe, hogy ha a CPU-kihasználtság alacsony, akkor az aktív gyorsítótár kihasználtsága a használati mintatól és a memória-visszanyeréstől függően magas marad.  Azt is megteheti, hogy a felhasználói tevékenység leállítása után további késések történnek, mielőtt a rendszer visszaállítja a memóriát a korábbi felhasználói tevékenységekre válaszoló időszakos háttérben futó folyamatok miatt.  A törlési műveletek és a QDS kiszolgálónév-karbantartási feladatok például a törlésre kijelölt szellemkép-rekordokat hoznak, de nem törlődnek fizikailag addig, amíg a szellemkép-tisztítási folyamat fut, ami magában foglalhatja az adatlapok gyorsítótárba való beolvasását is.
 
 #### <a name="cache-hydration"></a>Gyorsítótár-hidratáció
 
 Az SQL-gyorsítótár növekszik, ahogy az adatok beolvasása a lemezről ugyanúgy történik, mint a kiépített adatbázisokkal azonos sebességgel. Ha az adatbázis foglalt, akkor a gyorsítótár mérete a maximális memória korlátja miatt nem lehet nagyobb.
 
-## <a name="autopausing-and-autoresuming"></a>Az autoszüneteltetés és az autofolytatás
+## <a name="auto-pause-and-auto-resume"></a>Automatikus szüneteltetés és automatikus folytatás
 
-### <a name="autopausing"></a>Autoszüneteltetés
+### <a name="auto-pause"></a>Automatikus szüneteltetés
 
 Az automatikus szüneteltetés akkor aktiválódik, ha az alábbi feltételek mindegyike teljesül az automatikus szüneteltetés késleltetésének időtartama alatt:
 
 - Munkamenetek száma = 0
 - CPU = 0 a felhasználói munkaterheléshez, amely a felhasználói készletben fut
 
-Ha szükséges, a rendszer lehetőséget biztosít az autoszüneteltetés letiltására.
+Lehetőség van az automatikus szüneteltetés letiltására, ha szükséges.
 
-A következő szolgáltatások nem támogatják az automatikus szüneteltetést, de támogatják az automatikus skálázást.  Ha a következő szolgáltatások bármelyike használatban van, az autoszüneteltetést le kell tiltani, és az adatbázis az adatbázis inaktivitásának időtartamától függetlenül továbbra is elérhető marad:
+A következő szolgáltatások nem támogatják az automatikus szüneteltetést, de támogatják az automatikus skálázást.  Ha a következő funkciók bármelyikét használja, az automatikus szüneteltetést le kell tiltani, és az adatbázis az adatbázis inaktivitásának időtartamától függetlenül továbbra is elérhető marad:
 
 - Geo-replikáció (aktív geo-replikáció és automatikus feladatátvételi csoportok).
 - A biztonsági másolatok hosszú távú megőrzése (LTR).
-- Az SQL-adatszinkronizálás során használt szinkronizálási adatbázis.  A szinkronizálási adatbázisoktól eltérően a központ és a tagok adatbázisai támogatják az autoszüneteltetést.
+- Az SQL-adatszinkronizálás során használt szinkronizálási adatbázis.  A szinkronizálási adatbázisoktól eltérően a központ és a tagok adatbázisai támogatják az automatikus szüneteltetést.
 - DNS-alias
 - A rugalmas feladatokban (előzetes verzió) használt feladat-adatbázis.
 
-Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgáltatás telepítése során, amelyekhez az adatbázisnak online állapotra van szüksége.  Ilyen esetekben a szolgáltatás frissítésének befejeződése után ismét engedélyezve lesz az autoszüneteltetés.
+Az automatikus felfüggesztés átmenetileg megakadályozható néhány olyan szolgáltatás telepítése során, amelyeknek az adatbázis online állapotba kell esnie.  Ilyen esetekben a szolgáltatás frissítésének befejeződése után ismét engedélyezve lesz az automatikus felfüggesztés.
 
-### <a name="autoresuming"></a>Autofolytatás
+### <a name="auto-resuming"></a>Automatikus folytatás
 
-Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
+Az Automatikus folytatás akkor aktiválódik, ha a következő feltételek bármelyike bármikor teljesül:
 
-|Szolgáltatás|Trigger újraindítása|
+|Szolgáltatás|Trigger automatikus folytatása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -139,7 +139,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 |Sebezhetőségi felmérés|Ad hoc vizsgálatok és rendszeres vizsgálatok, ha engedélyezve vannak|
 |Lekérdezés (teljesítmény) adattár|A lekérdezési tároló beállításainak módosítása vagy megtekintése|
 |Teljesítménnyel kapcsolatos javaslatok|Teljesítményre vonatkozó javaslatok megtekintése és alkalmazása|
-|Autotuning|Automatikus finomhangolási javaslatok alkalmazása és ellenőrzése, például automatikus indexelés|
+|Automatikus hangolás|Automatikus hangolási javaslatok alkalmazása és ellenőrzése, például automatikus indexelés|
 |Adatbázis másolása|Adatbázis létrehozása másolásként.<br>Exportálás BACPAC-fájlba.|
 |SQL-adatszinkronizálás|Az olyan központi és tag adatbázisok közötti szinkronizálás, amelyek konfigurálható ütemterv szerint futnak, vagy manuálisan végeznek műveleteket|
 |Bizonyos adatbázis-metaadatok módosítása|Új adatbázis-Címkék hozzáadása.<br>A maximális virtuális mag, a minimális virtuális mag vagy az automatikus szüneteltetés késleltetésének módosítása.|
@@ -147,7 +147,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 
 A fent felsorolt műveletek bármelyikét végző figyelési, felügyeleti és egyéb megoldások automatikusan folytatják az automatikus folytatást.
 
-Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
+A rendszer az automatikus folytatást is elindítja néhány olyan szolgáltatás telepítése során, amelyeknek az adatbázis online állapotba kell esnie.
 
 ### <a name="connectivity"></a>Kapcsolatok
 
@@ -155,7 +155,7 @@ Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első beje
 
 ### <a name="latency"></a>Késés
 
-Az automatikus folytatáshoz és az automatikus szüneteltetéshez a kiszolgáló nélküli adatbázisok késése általában 1 percet vesz igénybe az automatikus folytatáshoz, és 1-10 percet az automatikus szüneteltetéshez.
+A kiszolgáló nélküli adatbázisok automatikus folytatásának és automatikus szüneteltetésének késése általában 1 percet vesz igénybe az Automatikus folytatás és a 1-10 perc közötti automatikus szüneteltetés érdekében.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Ügyfél által felügyelt transzparens adattitkosítás (BYOK)
 
@@ -209,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-Részletekért lásd: [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+Részletekért lásd: [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Adatbázis áthelyezése a kiépített számítási szintjéről a kiszolgáló nélküli számítási szintjére
 
@@ -234,14 +234,14 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
 
-A T-SQL használatakor a rendszer az alapértelmezett értékeket alkalmazza a minimális virtuális mag és az automatikus szüneteltetés késleltetésére.
+A T-SQL használatakor a rendszer az alapértelmezett értékeket alkalmazza a minimális virtuális mag, és automatikusan szünetelteti a késleltetést.
 
 ```sql
 ALTER DATABASE testdb 
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-Részletekért lásd: [adatbázis módosítása](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
+Részletekért lásd: [adatbázis módosítása](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Adatbázis áthelyezése a kiszolgáló nélküli számítási szintjéből a kiépített számítási szinten
 
@@ -366,7 +366,7 @@ A Azure Hybrid Benefit (AHB) és a fenntartott kapacitási kedvezmények nem von
 
 A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Kelet-Németország és US Gov Central (Iowa).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md)című témakört.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

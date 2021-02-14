@@ -1,22 +1,18 @@
 ---
 title: Az Adatmásolás a keresési indexbe
 description: Útmutató az Azure Search-indexek adatainak leküldéséhez vagy másolásához egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 0484d846501ef20e5d474668c45324452d0c8fc8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8c0fe30961e8ca0f31374bfdb5c5f17d58cb7673
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638227"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385795"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Adatmásolás Azure Cognitive Search-indexbe Azure Data Factory használatával
 
@@ -44,10 +40,10 @@ Az Azure Cognitive Search társított szolgáltatás a következő tulajdonságo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch** | Igen |
-| url | A keresési szolgáltatás URL-címe. | Igen |
-| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch** | Yes |
+| url | A keresési szolgáltatás URL-címe. | Yes |
+| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 > [!IMPORTANT]
 > Amikor az Azure Cognitive Search társított szolgáltatásban az adatok Felhőbeli adattárból történő másolását végzi, a connactVia-ben egy explicit régióval rendelkező Azure Integration Runtime kell hivatkoznia. Állítsa be a régiót, ahol a keresési szolgáltatás található. További információ: [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -82,8 +78,8 @@ Az Azure Cognitive Searchba való másoláshoz a következő tulajdonságok tám
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureSearchIndex** | Igen |
-| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureSearchIndex** | Yes |
+| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Yes |
 
 **Példa**
 
@@ -110,13 +106,13 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="azure-cognitive-search-as-sink"></a>Azure-Cognitive Search fogadóként
 
-Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink** . A másolási tevékenység fogadója szakasz a következő **sink** tulajdonságokat támogatja:
+Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink**. A másolási tevékenység fogadója szakasz a következő  tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Igen |
-| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload** . | Nem |
-| writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | Nem |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Yes |
+| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | No |
+| writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | No |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 
@@ -124,10 +120,10 @@ AzureSearchSink upsert az adatírás során. Más szóval, amikor egy dokumentum
 
 A AzureSearchSink a következő két upsert-viselkedést biztosítja (a AzureSearch SDK használatával):
 
-- **Egyesítés** : az új dokumentum összes oszlopát egyesítheti a meglévővel. Az új dokumentumban null értékű oszlopok esetén a meglévő érték megmarad.
-- **Feltöltés** : az új dokumentum lecseréli a meglévőt. Az új dokumentumban nem megadott oszlopok esetében az érték null, ha a meglévő dokumentumban nem null érték van megadva, vagy nem.
+- **Egyesítés**: az új dokumentum összes oszlopát egyesítheti a meglévővel. Az új dokumentumban null értékű oszlopok esetén a meglévő érték megmarad.
+- **Feltöltés**: az új dokumentum lecseréli a meglévőt. Az új dokumentumban nem megadott oszlopok esetében az érték null, ha a meglévő dokumentumban nem null érték van megadva, vagy nem.
 
-Az alapértelmezett viselkedés az **Egyesítés** .
+Az alapértelmezett viselkedés az **Egyesítés**.
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
 

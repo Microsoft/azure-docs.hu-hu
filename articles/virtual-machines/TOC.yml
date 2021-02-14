@@ -101,20 +101,12 @@
       href: ./workloads/oracle/oracle-database-quick-create.md
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
-    - name: FreeBSD csomagszűrő
-      href: ./linux/freebsd-pf-nat.md
     - name: Nagyszámítógépes áthelyezés
       href: ./workloads/mainframe-rehosting/overview.md
-    - name: Adatbázisok
-      items:
-        - name: MongoDB
-        - name: MS SQL Linux rendszeren
-          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: SQL on Virtual Machines
+      href: 'https://docs.microsoft.com/azure/azure-sql/virtual-machines/'
     - name: Nagy teljesítményű számítástechnika (HPC)
       href: /azure/architecture/topics/high-performance-computing/
-    - name: Tárolók
-    - name: Visual Studio
-      href: ./windows/using-visual-studio-vm.md
 - name: példányszám
   items:
     - name: Méretek
@@ -218,6 +210,12 @@
                   href: ./windows/n-series-driver-setup.md
             - name: AMD GPU-illesztők beállítása
               href: ./windows/n-series-amd-driver-setup.md
+        - name: FPGA – gyorsított számítás
+          items:
+            - name: Áttekintés
+              href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
+            - name: NP sorozat
+              href: np-series.md
         - name: Nagy teljesítményű számítás
           displayName: H-series
           items:
@@ -329,7 +327,8 @@
           href: ./linux/tutorial-build-deploy-azure-pipelines.md
         - name: LAMP-verem létrehozása
           href: ./linux/tutorial-lamp-stack.md
-        - name: Webkiszolgáló biztonságossá tétele SSL használatával
+        - name: Biztonságos webkiszolgáló a TLS\SSL
+          displayname: SSL TLS
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
@@ -592,6 +591,8 @@
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
               href: ./linux/freebsd-intro-on-azure.md
+            - name: FreeBSD csomagszűrő
+              href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
@@ -636,6 +637,8 @@
           href: ./windows/capture-image-resource.md
         - name: Virtuális gép létrehozása felügyelt rendszerképből
           href: ./windows/create-vm-generalized-managed.md
+        - name: Visual Studio
+          href: ./windows/using-visual-studio-vm.md
     - name: Megosztott rendszerkép-katalógusok
       items:
         - name: Áttekintés
@@ -1225,6 +1228,8 @@
       href: maintenance-and-updates.md
     - name: Automatikus virtuálisgép-vendég-javítás (előzetes verzió)
       href: ./windows/automatic-vm-guest-patching.md
+    - name: Automatikus bővítmény frissítése (előzetes verzió)
+      href: ./automatic-extension-upgrade.md
     - name: Karbantartásszabályozás
       items:
         - name: Karbantartási értesítések

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377329"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>A folyamatos biztonsági mentés és az időponthoz tartozó visszaállítás (előzetes verzió) konfigurálása és kezelése – Azure CLI használata
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy fiókot folyamatos biztonsági
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>SQL API-fiók kiépítése folyamatos biztonsági mentéssel
 
-Ha egy SQL API-fiókot folyamatos biztonsági mentéssel szeretne kiépíteni, egy további argumentumot `--backup-policy-type Continuous` is át kell adni a normál kiépítési paranccsal. A következő parancs egy, a " `pitracct2` myrg" erőforráscsoport alatti "nyugati USA-beli" régióban létrehozott, folyamatos biztonsági mentési szabályzattal ellátott, egyetlen régióból álló írási fiókra mutat példát:
+Ha egy SQL API-fiókot folyamatos biztonsági mentéssel szeretne kiépíteni, egy további argumentumot `--backup-policy-type Continuous` is át kell adni a normál kiépítési paranccsal. Az alábbi parancs egy, az `pitracct2` *USA nyugati* régiójában, a *myrg* erőforráscsoport alatt létrehozott, folyamatos biztonsági mentési szabályzattal ellátott, egyetlen régióból álló írási fiókot mutat be:
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>Azure Cosmos DB API kiépítése a MongoDB-fiókhoz folyamatos biztonsági mentéssel
 
-Az alábbi parancs egy, a folyamatos biztonsági mentési szabályzattal ellátott, egyetlen régióból álló írási fiókot mutat be, amely `pitracct3` a "myrg" erőforráscsoport alatt létrehozta a "West us" régiót:
+Az alábbi parancs egy, a folyamatos biztonsági mentési szabályzattal ellátott, egyetlen régióból álló írási fiókot mutat be, amely `pitracct3` az *USA nyugati* régiójában, az *myrg* erőforráscsoport alatt lett létrehozva:
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ A válasz tartalmazza az összes olyan adatbázis-fiókot (élő és törölt), 
   }
 ```
 
-A fiók "CreationTime" vagy "DeletionTime" hasonlóan a régió "CreationTime" vagy "DeletionTime" is szerepel. Ezek az időpontok lehetővé teszik a megfelelő régió és érvényes időtartomány kiválasztását az adott régióba való visszaállításhoz.
+Akárcsak a `CreationTime` vagy a `DeletionTime` fiókhoz, a `CreationTime` vagy a `DeletionTime` régióhoz is. Ezek az időpontok lehetővé teszik a megfelelő régió és érvényes időtartomány kiválasztását az adott régióba való visszaállításhoz.
 
 **Az adatbázisok összes verziójának listázása egy élő adatbázis-fiókban**
 
 Az adatbázisok összes verziójának listázásával kiválaszthatja a megfelelő adatbázist olyan forgatókönyvben, amelyben az adatbázis létezésének tényleges ideje ismeretlen.
 
-Futtassa az alábbi CLI-parancsot az adatbázisok összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A "instanceId" és a "location" paraméterek a parancs válaszában a "Name" és a "location" tulajdonságból szerezhetők be `az cosmosdb restorable-database-account list` . A instanceId attribútum a visszaállított forrás-adatbázis-fiók tulajdonsága is:
+Futtassa az alábbi CLI-parancsot az adatbázisok összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A `instanceId` és a `location` paramétereket a `name` parancs válaszában szereplő és tulajdonságok alapján szerezheti `location` be `az cosmosdb restorable-database-account list` . A instanceId attribútum a visszaállított forrás-adatbázis-fiók tulajdonsága is:
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ Ez a parancs kimenete mostantól egy adatbázis létrehozása és törlése utá
 
 **Egy élő adatbázis-fiókban lévő adatbázis SQL-tárolóinak összes verziójának listázása**
 
-Használja az alábbi parancsot az SQL-tárolók összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A "databaseRid" paraméter a visszaállítani kívánt adatbázis "ResourceId". A parancs válaszában a "ownerResourceid" attribútum értéke található `az cosmosdb sql restorable-database list` .
+Használja az alábbi parancsot az SQL-tárolók összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A `databaseRid` paraméter a `ResourceId` visszaállítani kívánt adatbázis. Ez a `ownerResourceid` parancs válaszában található attribútum értéke `az cosmosdb sql restorable-database list` .
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>MongoDB API-fiók helyreállítható erőforrásainak számbavétele
 
-Az alább ismertetett enumerálási parancsok segítséget nyújtanak a különböző időbélyegeken való visszaállításhoz elérhető erőforrások felderítésében. Emellett a legfontosabb eseményeket is megadhatják a helyreállítható fiók, az adatbázis és a tároló erőforrásaiban. Az SQL API-hoz hasonlóan a (z `az cosmosdb` ) parancsot használhatja a "mongodb" paraméterrel az "SQL" helyett. Ezek a parancsok csak az élő fiókok esetében működnek.
+Az alább ismertetett enumerálási parancsok segítséget nyújtanak a különböző időbélyegeken való visszaállításhoz elérhető erőforrások felderítésében. Emellett a legfontosabb eseményeket is megadhatják a helyreállítható fiók, az adatbázis és a tároló erőforrásaiban. Az SQL API-hoz hasonlóan a (z `az cosmosdb` ) parancsot használhatja a `mongodb` helyett a as paraméterrel `sql` . Ezek a parancsok csak az élő fiókok esetében működnek.
 
 **A mongodb-adatbázisok összes verziójának listázása egy élő adatbázis-fiókban**
 

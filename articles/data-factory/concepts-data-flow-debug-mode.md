@@ -3,17 +3,16 @@ title: Adatfolyam-hibakeresési mód leképezése
 description: Interaktív hibakeresési munkamenet elindítása az adatfolyamatok létrehozásakor
 ms.author: makromer
 author: kromerm
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/04/2020
-ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b2197950d5dbb95bd0a90f15506756ee3ed0b2d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621644"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369832"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -96,7 +95,7 @@ Ha kijelöl egy oszlopot az adatelőnézet lapon, és a **statisztikák** elemre
 
 ![Oszlop statisztikái](media/data-flow/stats.png "Oszlop statisztikái")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Miután befejezte az adatfolyamok létrehozását és hibakeresését, [hajtsa végre a folyamatot egy folyamatból.](control-flow-execute-data-flow-activity.md)
 * Amikor adatfolyamként teszteli a folyamatot, használja a folyamat [hibakeresési futtatásának futtatása beállítást.](iterative-development-debugging.md)

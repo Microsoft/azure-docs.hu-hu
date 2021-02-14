@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory folyamat létrehozása privát végpontok használatával
 description: Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat a másolási tevékenységet használja az adatok Azure Blob Storage-ból egy Azure SQL Database-be való másolásához.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 002ceba60853908e381f084e95ec1ee58e8580cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249516"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375816"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Adatok biztonságos másolása az Azure Blob Storage-ból egy SQL-adatbázisba privát végpontok használatával
 
@@ -157,7 +152,7 @@ Ebben az oktatóanyagban egy folyamat létrehozásával kezdi meg a folyamatot. 
 
     ![Az interaktív szerzői műveleteket bemutató képernyőkép.](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
-1. Válassza a **kapcsolatok tesztelése** lehetőséget. Ha a Storage-fiók csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factoryt igényel ahhoz, hogy olyan privát végpontot hozzon létre, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a [következő szakaszban](#create-a-managed-private-endpoint) található utasításokat követve felügyelt privát végpontot hoz létre.
+1. Válassza a **Kapcsolat tesztelése** elemet. Ha a Storage-fiók csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factoryt igényel ahhoz, hogy olyan privát végpontot hozzon létre, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a [következő szakaszban](#create-a-managed-private-endpoint) található utasításokat követve felügyelt privát végpontot hoz létre.
 
    > [!NOTE]
    > Előfordulhat, hogy a **kezelés** lap nem érhető el az összes adatfeldolgozó példányhoz. Ha nem látja, elérheti a privát végpontokat a **szerzői**  >  **kapcsolatok**  >  **privát végpontjának** kiválasztásával.
@@ -235,7 +230,7 @@ Ha a kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kövesse 
     1. Az **Adatbázis neve** mezőben válassza ki az SQL Database-adatbázisát.
     1. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
     1. A **Jelszó** mezőben adja meg a felhasználó jelszavát.
-    1. Válassza a **kapcsolatok tesztelése** lehetőséget. A művelet végrehajtása sikertelen, mert az SQL Server csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factory kell létrehoznia egy privát végpontot, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a következő szakaszban található utasításokat követve felügyelt privát végpontot hoz létre.
+    1. Válassza a **Kapcsolat tesztelése** elemet. A művelet végrehajtása sikertelen, mert az SQL Server csak a **kiválasztott hálózatokról** engedélyezi a hozzáférést, és Data Factory kell létrehoznia egy privát végpontot, amelyet a használata előtt jóvá kell hagyni. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és a következő szakaszban található utasításokat követve felügyelt privát végpontot hoz létre.
     1. Hagyja nyitva a párbeszédpanelt, majd lépjen a kiválasztott SQL Server-kiszolgálóra.
     1. A privát hivatkozás jóváhagyásához kövesse az [ebben a szakaszban](#approval-of-a-private-link-in-sql-server) található utasításokat.
     1. Lépjen vissza a párbeszédpanelre. Válassza a kapcsolat újbóli **tesztelése** lehetőséget, majd válassza a **Létrehozás** lehetőséget a társított szolgáltatás telepítéséhez.

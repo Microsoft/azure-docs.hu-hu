@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 8202b9bd496b4f539df99e35a3118ed109dbd31c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608634"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365106"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
 
@@ -37,7 +37,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Leírás |
+| SAP-Megjegyzés | Description |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -145,10 +145,6 @@ Győződjön meg arról, hogy a kiválasztott operációs rendszer támogatja az
     + Az Azure Marketplace-en Red Hat Enterprise Linux for SAP-rendszerképet használhat.
     + Válassza ki a 3. lépésben létrehozott Azure rendelkezésre állási készletet, vagy válassza ki a rendelkezésre állási zónát (nem a 3. lépésben megadott zónát).
 1. Adja hozzá az adatlemezeket a virtuális gépekhez, majd az [IBM DB2 Azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP][dbms-db2]számítási feladatához című cikkben talál egy fájlrendszer-telepítő ajánlását.
-
-## <a name="create-the-pacemaker-cluster"></a>A pacemaker-fürt létrehozása
-    
-Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez az IBM DB2-kiszolgálóhoz, tekintse [meg a pacemaker beállítása Red Hat Enterprise Linux az Azure-ban][rhel-pcs-azr]című témakört. 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>Az IBM DB2-LUW és az SAP-környezet telepítése
 
@@ -277,7 +273,6 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 369280
              READS_ON_STANDBY_ENABLED = N
 
 
-
 #Secondary output:
 Database Member 0 -- Database ID2 -- Standby -- Up 1 days 15:45:18 -- Date 2019-06-25-10.56.19.820474
 
@@ -324,10 +319,78 @@ SOCK_RECV_BUF_REQUESTED,ACTUAL(bytes) = 0, 367360
                  PEER_WINDOW(seconds) = 1000
                       PEER_WINDOW_END = 06/25/2019 11:12:59.000000 (1561461179)
              READS_ON_STANDBY_ENABLED = N
-
 </code></pre>
 
+### <a name="configure-azure-load-balancer"></a>Az Azure Load Balancer konfigurálása
 
+Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load BALANCER SKU](../../../load-balancer/load-balancer-overview.md) -t használja, majd tegye a következőket:
+
+> [!NOTE]
+> A standard Load Balancer SKU korlátozza a nyilvános IP-címek elérését a Load Balancer alatti csomópontok között. Az [Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával történő Virtual Machines nyilvános végponti kapcsolata](./high-availability-guide-standard-load-balancer-outbound-connections.md) című cikk leírja, hogyan engedélyezheti a csomópontok számára a nyilvános IP-címek elérését.
+
+> [!IMPORTANT]
+> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
+
+1. Előtér-IP-címkészlet létrehozása:
+
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a előtéri **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+
+   b. Adja meg az új előtér-IP-készlet nevét (például **DB2-kapcsolatok**).
+
+   c. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
+
+   d. Válassza az **OK** lehetőséget.
+
+   e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
+
+1. Háttérbeli készlet létrehozása:
+
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza ki a **háttér-készletek** elemet, majd kattintson a **Hozzáadás** gombra.
+
+   b. Adja meg az új háttér-készlet nevét (például **DB2-backend**).
+
+   c. Válassza **a virtuális gép hozzáadása** lehetőséget.
+
+   d. Válassza ki a rendelkezésre állási készletet, vagy az előző lépésben létrehozott IBM DB2-adatbázist futtató virtuális gépeket.
+
+   e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
+
+   f. Válassza az **OK** lehetőséget.
+
+1. Állapot mintavételének létrehozása:
+
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
+
+   b. Adja meg az új állapot-mintavétel nevét (például **DB2-HP**).
+
+   c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5** értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2** értékre.
+
+   d. Válassza az **OK** lehetőséget.
+
+1. Hozza létre a terheléselosztási szabályokat:
+
+   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a terheléselosztási **szabályok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+
+   b. Adja meg az új Load Balancer szabály nevét (például **DB2-SID**).
+
+   c. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **DB2-frontend**).
+
+   d. Tartsa a **protokollt** **TCP**-re, és írja be a port *adatbázis kommunikációs portját*.
+
+   e. Növelje az **üresjárati időkorlátot** 30 percre.
+
+   f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
+
+   : Válassza az **OK** lehetőséget.
+
+**[A]** tűzfalszabály hozzáadása a mintavételi porthoz:
+
+<pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
+sudo firewall-cmd --reload</code></pre>
+
+## <a name="create-the-pacemaker-cluster"></a>A pacemaker-fürt létrehozása
+    
+Ha alapszintű pacemaker-fürtöt szeretne létrehozni ehhez az IBM DB2-kiszolgálóhoz, tekintse [meg a pacemaker beállítása Red Hat Enterprise Linux az Azure-ban][rhel-pcs-azr]című témakört. 
 
 ## <a name="db2-pacemaker-configuration"></a>DB2-pacemaker konfigurálása
 
@@ -341,12 +404,11 @@ A következő elemek előtaggal vannak ellátva:
 
 **[A]** a pacemaker konfigurálásának előfeltételei:
 1. Állítsa le mindkét adatbázis-kiszolgálót a db2stop-mel rendelkező User DB2- \<sid> vel.
-1. A/bin/ksh-re vonatkozó rendszerhéj \<sid> -környezet */bin/ksh* módosítása:
+1. A/bin/ksh-re vonatkozó rendszerhéj \<sid> -környezet módosítása:
 <pre><code># Install korn shell:
 sudo yum install ksh
 # Change users shell:
-sudo usermod -s /bin/ksh db2&lt;sid&gt;</code></pre>
-   
+sudo usermod -s /bin/ksh db2&lt;sid&gt;</code></pre>  
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-konfiguráció
 
@@ -356,6 +418,9 @@ sudo pcs property set maintenance-mode=true
 </code></pre>
 
 **[1]** IBM DB2-erőforrások létrehozása:
+
+Ha a **RHEL 7. x verzióban** hoz létre fürtöt, használja a következő parancsokat:
+
 <pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
 sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' master meta notify=true resource-stickiness=5000
 
@@ -378,94 +443,60 @@ sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master D
 sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-master then g_ipnc_<b>db2id2</b>_<b>ID2</b>
 </code></pre>
 
+Ha a **RHEL 8. x verzióban** hoz létre fürtöt, használja a következő parancsokat:
+
+<pre><code># Replace <b>bold strings</b> with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
+sudo pcs resource create Db2_HADR_<b>ID2</b> db2 instance='<b>db2id2</b>' dblist='<b>ID2</b>' promotable meta notify=true resource-stickiness=5000
+
+#Configure resource stickiness and correct cluster notifications for master resoruce
+sudo pcs resource update Db2_HADR_<b>ID2</b>-clone meta notify=true resource-stickiness=5000
+
+# Configure virtual IP - same as Azure Load Balancer IP
+sudo pcs resource create vip_<b>db2id2</b>_<b>ID2</b> IPaddr2 ip='<b>10.100.0.40</b>'
+
+# Configure probe port for Azure load Balancer
+sudo pcs resource create nc_<b>db2id2</b>_<b>ID2</b> azure-lb port=<b>62500</b>
+
+#Create a group for ip and Azure loadbalancer probe port
+sudo pcs resource group add g_ipnc_<b>db2id2</b>_<b>ID2</b> vip_<b>db2id2</b>_<b>ID2</b> nc_<b>db2id2</b>_<b>ID2</b>
+
+#Create colocation constrain - keep Db2 HADR Master and Group on same node
+sudo pcs constraint colocation add g_ipnc_<b>db2id2</b>_<b>ID2</b> with master Db2_HADR_<b>ID2</b>-clone
+
+#Create start order constrain
+sudo pcs constraint order promote Db2_HADR_<b>ID2</b>-clone then g_ipnc_<b>db2id2</b>_<b>ID2</b>
+</code></pre>
+
 **[1]** az IBM DB2-erőforrások elindítása:
 * Állítsa be a pacemakert a karbantartási módból.
 <pre><code># Put Pacemaker out of maintenance-mode - that start IBM Db2
 sudo pcs property set maintenance-mode=false</pre></code>
 
 **[1]** ellenőrizze, hogy a fürt állapota rendben van-e, és hogy az összes erőforrás el van-e indítva. Nem fontos, hogy az erőforrások melyik csomóponton futnak.
-<pre><code>sudo pcs status</code>
+<pre><code>sudo pcs status
 2 nodes configured
 5 resources configured
 
-Online: [az-idb01 az-idb02]
+Online: [ az-idb01 az-idb02 ]
 
-Erőforrások teljes listája:
+Full list of resources:
 
- rsc_st_azure (stonith: fence_azure_arm): elindítva az-idb01 master/slave set: Db2_HADR_ID2-Master [Db2_HADR_ID2] Masters: [az-idb01] Slaves: [az-idb02] erőforráscsoport: g_ipnc_db2id2_ID2 vip_db2id2_ID2 (OCF:: szívverés: IPaddr2): elindítva az-idb01 nc_db2id2_ID2 (OCF:: szívverés: Azure-LB): elindítva az-idb01
+ rsc_st_azure   (stonith:fence_azure_arm):      Started az-idb01
+ Master/Slave Set: Db2_HADR_ID2-master [Db2_HADR_ID2]
+     Masters: [ az-idb01 ]
+     Slaves: [ az-idb02 ]
+ Resource Group: g_ipnc_db2id2_ID2
+     vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb01
+     nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb01
 
-Démon állapota: Corosync: aktív/letiltott pacemaker: aktív/letiltott pcsd: aktív/engedélyezett
-</pre>
+Daemon Status:
+  corosync: active/disabled
+  pacemaker: active/disabled
+  pcsd: active/enabled
+</code></pre>
 
 > [!IMPORTANT]
 > A pacemaker fürtözött DB2-példányt a pacemaker Tools használatával kell felügyelni. Ha DB2-parancsokat (például db2stop) használ, a pacemaker észleli a műveletet az erőforrás meghibásodása esetén. Ha karbantartást végez, a csomópontokat vagy erőforrásokat a karbantartási módba helyezheti. A pacemaker felfüggeszti a figyelési erőforrásokat, és normál DB2 felügyeleti parancsokat is használhat.
-
-
-### <a name="configure-azure-load-balancer"></a>Az Azure Load Balancer konfigurálása
-Azure Load Balancer konfigurálásához javasoljuk, hogy az [Azure standard Load BALANCER SKU](../../../load-balancer/load-balancer-overview.md) -t használja, majd tegye a következőket:
-
-> [!NOTE]
-> A standard Load Balancer SKU korlátozza a nyilvános IP-címek elérését a Load Balancer alatti csomópontok között. Az [Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával történő Virtual Machines nyilvános végponti kapcsolata](./high-availability-guide-standard-load-balancer-outbound-connections.md) című cikk leírja, hogyan engedélyezheti a csomópontok számára a nyilvános IP-címek elérését.
-
-> [!IMPORTANT]
-> A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](../../../load-balancer/load-balancer-multivip-overview.md#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
-
-
-1. Előtér-IP-címkészlet létrehozása:
-
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a előtéri **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
-
-   b. Adja meg az új előtér-IP-készlet nevét (például **DB2-kapcsolatok**).
-
-   c. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az elején megadott IP **-cím virtuális IP-** címét.
-
-   d. Kattintson az **OK** gombra.
-
-   e. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
-
-1. Háttérbeli készlet létrehozása:
-
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza ki a **háttér-készletek** elemet, majd kattintson a **Hozzáadás** gombra.
-
-   b. Adja meg az új háttér-készlet nevét (például **DB2-backend**).
-
-   c. Válassza **a virtuális gép hozzáadása** lehetőséget.
-
-   d. Válassza ki a rendelkezésre állási készletet, vagy az előző lépésben létrehozott IBM DB2-adatbázist futtató virtuális gépeket.
-
-   e. Válassza ki az IBM DB2-fürthöz tartozó virtuális gépeket.
-
-   f. Kattintson az **OK** gombra.
-
-1. Állapot mintavételének létrehozása:
-
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
-
-   b. Adja meg az új állapot-mintavétel nevét (például **DB2-HP**).
-
-   c. Válassza a **TCP** lehetőséget a protokoll és a **62500**-es port közül. Tartsa meg az **intervallum** értékét **5** értékre, és tartsa meg a nem kifogástalan **állapot küszöbértékét** **2** értékre.
-
-   d. Kattintson az **OK** gombra.
-
-1. Hozza létre a terheléselosztási szabályokat:
-
-   a. A Azure Portal nyissa meg a Azure Load Balancer, válassza a terheléselosztási **szabályok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
-
-   b. Adja meg az új Load Balancer szabály nevét (például **DB2-SID**).
-
-   c. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **DB2-frontend**).
-
-   d. Tartsa a **protokollt** **TCP**-re, és írja be a port *adatbázis kommunikációs portját*.
-
-   e. Növelje az **üresjárati időkorlátot** 30 percre.
-
-   f. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-
-   : Kattintson az **OK** gombra.
-
-**[A]** tűzfalszabály hozzáadása a mintavételi porthoz:
-<pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
-sudo firewall-cmd --reload</code></pre>
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Az SAP-profilok módosítása virtuális IP-cím használatára a kapcsolódáshoz
 A HADR-konfiguráció elsődleges példányához való kapcsolódáshoz az SAP-alkalmazás rétegének a Azure Load Balancerhoz megadott és konfigurált virtuális IP-címet kell használnia. A következő módosítások szükségesek:
@@ -479,11 +510,9 @@ j2ee/dbhost = db-virt-hostname
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
-
-
 ## <a name="install-primary-and-dialog-application-servers"></a>Az elsődleges és a párbeszédpanel-alkalmazás-kiszolgálók telepítése
 
-Ha az elsődleges és a párbeszédpaneles alkalmazás-kiszolgálókat egy DB2 HADR-konfigurációval telepíti, használja a konfigurációhoz kiválasztott virtuális gazdagép nevét. 
+Ha az elsődleges és a párbeszédpaneles alkalmazás-kiszolgálókat egy DB2 HADR-konfigurációval telepíti, használja a konfigurációhoz kiválasztott virtuális gazdagép nevét.
 
 Ha a telepítést a DB2 HADR-konfiguráció létrehozása előtt végezte el, végezze el a módosításokat az előző szakaszban leírtak szerint, és az SAP Java-stackek esetében az alábbiak szerint.
 
@@ -501,19 +530,20 @@ A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissíthet
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>A HADR-telepítő naplózásának konfigurálása
+
 Azt javasoljuk, hogy a HADR beállításához a DB2-naplók archiválását konfigurálja úgy, hogy az elsődleges és a készenléti adatbázist is konfigurálja úgy, hogy az automatikus napló-lekérési funkció az összes log Archive-helyről beolvasható legyen. Mind az elsődleges, mind a készenléti adatbázisnak képesnek kell lennie a naplófájlok archiválására az összes olyan napló archiválási helyről, amelybe az egyik adatbázis-példány archiválhatja a naplófájlokat. 
 
 A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha megváltoztatja az adatbázis-kiszolgálók HADR-szerepköreit, vagy ha hiba történik, az új elsődleges adatbázis feladata a naplózás archiválása. Ha több log Archive-helyet állított be, előfordulhat, hogy a naplók kétszer is archiválva lesznek. Helyi vagy távoli felzárkózás esetén előfordulhat, hogy manuálisan át kell másolnia az archivált naplókat a régi elsődleges kiszolgálóról az új elsődleges kiszolgáló aktív naplójának helyére.
 
 Javasoljuk, hogy olyan közös NFS-megosztást vagy GlusterFS állítson be, amelyben mindkét csomópontból a naplók íródnak. Az NFS-megosztásnak vagy-GlusterFS nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információ:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információkért lásd:
 
 - [Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez][glusterfs] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez Red Hat Enterprise Linuxon Azure NetApp Files SAP-alkalmazásokhoz][anf-rhel]
@@ -553,9 +583,6 @@ Az SAP-rendszer eredeti állapota dokumentálva van a Transaction DBACOCKPIT > C
 
 ![DBACockpit – előzetes áttelepítés](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-org-rhel.png)
 
-
-
-
 ### <a name="test-takeover-of-ibm-db2"></a>Az IBM DB2 átvételének tesztelése
 
 
@@ -565,9 +592,12 @@ Az SAP-rendszer eredeti állapota dokumentálva van a Transaction DBACOCKPIT > C
 > * Nincsenek megkötések (az áttelepítési teszt maradékai)
 > * Az IBM DB2 HADR szinkronizálása működik. Keresés DB2-vel\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
-
 Telepítse át az elsődleges DB2-adatbázist futtató csomópontot a következő parancs végrehajtásával:
-<pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master</code></pre>
+<pre><code># On RHEL 7.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-master
+# On RHEL 8.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
+</code></pre>
 
 Az áttelepítés befejezése után a CRM-állapot kimenete a következőképpen néz ki:
 <pre><code>2 nodes configured
@@ -594,8 +624,13 @@ Az SAP-rendszer eredeti állapota dokumentálva van a Transaction DBACOCKPIT > C
 Az erőforrás-Migrálás a "számítógépek erőforrás-áthelyezéssel" a hely megkötéseit hozza létre. Ebben az esetben a hely megkötései akadályozzák az IBM DB2-példány futtatását az az-idb01-on. Ha a hely megkötéseit nem törli, az erőforrás nem tud visszavenni a feladatokat.
 
 Távolítsa el a hely korlátozását, és a készenléti csomópontot az az-idb01-on fogja elindítani.
-<pre><code>sudo pcs resource clear Db2_HADR_<b>ID2</b>-master</code></pre>
+<pre><code># On RHEL 7.x
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
+# On RHEL 8.x
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
+
 És a fürt állapota a következőre változik:
+
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -613,13 +648,16 @@ Full list of resources:
 
 ![DBACockpit – eltávolított hely korlátozása](./media/high-availability-guide-rhel-ibm-db2-luw/hadr-sap-mgr-clear-rhel.png)
 
-
 Telepítse át az erőforrást az *az-idb01-* be, és törölje a hely megkötéseit
-<pre><code>sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
+<pre><code># On RHEL 7.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-master az-idb01
 sudo pcs resource clear Db2_HADR_<b>ID2</b>-master
-</code></pre>
+# On RHEL 8.x
+sudo pcs resource move Db2_HADR_<b>ID2</b>-clone --master
+sudo pcs resource clear Db2_HADR_<b>ID2</b>-clone</code></pre>
 
-- **számítógépek erőforrásának mozgatása \<res_name> <host> :** megkötéseket hoz létre, és problémákat okozhat az átvétel során
+- **RHEL 7. x-PC-k erőforrás áthelyezése \<res_name> <host> :** hely megkötésének létrehozása, és problémák merülhetnek fel az átvétel során
+- **RHEL 8. x-PC-k erőforrás áthelyezése \<res_name> – főkiszolgáló:** megkötések létrehozása, és problémák merülhetnek fel az átvétel során
 - **számítógépek erőforrásának \<res_name> törlése**: törli a hely megkötéseit
 - **számítógépek erőforrás- \<res_name> karbantartása**: törli az erőforrás összes hibáját
 
@@ -763,7 +801,7 @@ Failed Actions:
 
 ### <a name="crash-the-vm-that-runs-the-hadr-primary-database-instance-with-halt"></a>Összeomlik a virtuális gép, amely a HADR elsődleges adatbázis-példányát futtatja a "állj" értékkel
 
-<pre><code>#Linux kernel panic. 
+<pre><code>#Linux kernel panic.
 sudo echo b > /proc/sysrq-trigger</code></pre>
 
 Ebben az esetben a pacemaker azt fogja érzékelni, hogy az elsődleges adatbázis-példányt futtató csomópont nem válaszol.
@@ -821,7 +859,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      vip_db2id2_ID2     (ocf::heartbeat:IPaddr2):       Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](./sap-high-availability-architecture-scenarios.md)
 - [A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban][rhel-pcs-azr]
 

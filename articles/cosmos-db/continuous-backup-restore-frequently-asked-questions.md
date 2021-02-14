@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1cf94964f420f7a7d4fc0f6ba0b77813b3e75787
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539181"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393224"
 ---
 # <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Gyakori kérdések a Azure Cosmos DB időponthoz tartozó visszaállítási funkcióról (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ A visszaállítás időtartama az adatai méretétől függ.
 Előfordulhat, hogy a visszaállítás nem történik meg attól függően, hogy a kulcsfontosságú erőforrások, például adatbázisok vagy tárolók léteztek-e az adott időpontban. A következő lépésekkel ellenőrizheti az időt, és megtekintheti a kijelölt adatbázist vagy tárolót egy adott időpontra. Ha úgy látja, hogy nem található erőforrás a visszaállításhoz, akkor a visszaállítási folyamat nem működik.
 
 ### <a name="how-can-i-track-if-an-account-is-being-restored"></a>Hogyan követhetem nyomon, ha egy fiók visszaállítása folyamatban van?
-Miután elküldte a Restore parancsot, és a művelet befejeződése után megvárja, hogy az állapotsor sikeresen visszaállította a fiók üzenetét. Kereshet a visszaállított fiókra is, és [nyomon követheti a visszaállított fiók állapotát](continuous-backup-restore-portal.md#track-restore-status). A visszaállítás folyamatban van, a fiók állapota "létrehozás" lesz, miután a visszaállítási művelet befejeződik, a fiók állapota "online" állapotúra változik.
+Miután elküldte a Restore parancsot, és a művelet befejeződése után megvárja, hogy az állapotsor sikeresen visszaállította a fiók üzenetét. Kereshet a visszaállított fiókra is, és [nyomon követheti a visszaállított fiók állapotát](continuous-backup-restore-portal.md#track-restore-status). Ha a visszaállítás folyamatban van, a rendszer *létrehozza* a fiók állapotát, miután a visszaállítási művelet befejeződik, majd a fiók állapota *online* értékre változik.
 
 Ehhez hasonlóan a PowerShell és a parancssori felület esetében is nyomon követheti a visszaállítási művelet állapotát a `az cosmosdb show` következő parancs végrehajtásával:
 
@@ -39,7 +39,7 @@ Ehhez hasonlóan a PowerShell és a parancssori felület esetében is nyomon kö
 az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ```
 
-A provisioningState a "sikeres" állapotot jeleníti meg, ha a fiók online állapotban van.
+A provisioningState *sikeresnek* bizonyult, ha a fiók online állapotban van.
 
 ```json
 {
@@ -60,7 +60,7 @@ A provisioningState a "sikeres" állapotot jeleníti meg, ha a fiók online áll
 ### <a name="how-can-i-find-out-whether-an-account-was-restored-from-another-account"></a>Honnan tudhatom meg, hogy egy fiókot visszaállítottak-e egy másik fiókból?
 Futtassa a `az cosmosdb show` parancsot, a kimenetben láthatja, hogy a `createMode` tulajdonság értéke. Ha az érték **visszaállításra** van beállítva. azt jelzi, hogy a fiók egy másik fiókból lett visszaállítva. A `restoreParameters` tulajdonság további részleteket tartalmaz, például `restoreSource` a forrás fiók azonosítóját. A paraméter utolsó GUID-azonosítója a `restoreSource` instanceId.
 
-A következő kimenetben például a forrásoldali fiók példányának azonosítója: "7b4bb-f6a0-430E-ade1-638d781830cc"
+A következő kimenetben például a forrásoldali fiók *7b4bb-f6a0-430E-ade1-638d781830cc*
 
 ```json
 "restoreParameters": {
@@ -75,9 +75,9 @@ A következő kimenetben például a forrásoldali fiók példányának azonosí
 A rendszer visszaállítja a teljes megosztott átviteli sebesség-adatbázist. A tárolók részhalmaza nem választható egy megosztott átviteli sebességű adatbázisban a visszaállításhoz.
 
 ### <a name="what-is-the-use-of-instanceid-in-the-account-definition"></a>Mi a InstanceID használata a fiók definíciójában?
-Egy adott időpontban Azure Cosmos DB fiók "accountName" tulajdonsága globálisan egyedi, miközben életben van. A fiók törlése után azonban létrehozhat egy másik fiókot ugyanazzal a névvel, így a "accountName" már nem elegendő a fiók egy példányának azonosításához. 
+Egy adott időpontban a Azure Cosmos DB fiók `accountName` tulajdonsága globálisan egyedi, miközben életben van. A fiók törlése után azonban létrehozhat egy másik fiókot ugyanazzal a névvel, így a "accountName" már nem elegendő a fiók egy példányának azonosításához. 
 
-Az azonosító vagy a "instanceId" a fiók egy példányának tulajdonsága, és a rendszer több fiók között egyértelműsítse (élő és törölt), ha a visszaállításhoz ugyanazt a nevet használja. A példány AZONOSÍTÓját a vagy a parancsok futtatásával kérheti le `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` . A Name attribútum értéke jelöli a "InstanceID" értéket.
+Az azonosító vagy a egy `instanceId` fiók egy példányának tulajdonsága, és a rendszer több fiók között (élő és törölt) egyértelműsítse, ha a visszaállításhoz ugyanazt a nevet használja. A példány AZONOSÍTÓját a vagy a parancsok futtatásával kérheti le `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` . A Name attribútum értéke jelöli a "InstanceID" értéket.
 
 ## <a name="next-steps"></a>Következő lépések
 

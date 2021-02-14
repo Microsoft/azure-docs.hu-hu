@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576672"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383891"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Támogatott adatforrások és fájltípusok az Azure hatáskörébe
 
@@ -71,11 +72,33 @@ A fájlok mintavételezése fájltípusok szerinti erőforrás-készletek eseté
 - **SQL-objektumok és CosmosDB-entitások** – minden fájl L3-ra van beolvasva.
 - **Dokumentumok** fájltípusai – az egyes fájlok L3-ban vannak beolvasva. Az erőforrás-készlet mintái nem vonatkoznak ezekre a fájltípusokra.
 
-## <a name="classification"></a>Osztályozás
+## <a name="scan-regions"></a>Vizsgálati régiók
+Az alábbi lista felsorolja az összes olyan Azure-adatforrást (adatközpont-) régiót, ahol a hatáskörébe tartozó képolvasó fut. Ha az Azure-adatforrás ezen a listán kívüli régióban található, a képolvasó a hatáskörébe tartozó példány régiójában fog futni.
+ 
+### <a name="purview-scanner-regions"></a>A hatáskörébe tartozó képolvasó régiói
+
+- EastUs
+- EastUs2 
+- SouthCentralUS
+- WestUs
+- WestUs2
+- SoutheastAsia
+- WestEurope
+- NorthEurope
+- UkSouth
+- AustraliaEast
+- CanadaCentral
+- BrazilSouth
+- CentralIndia
+- JapanEast
+- SouthAfricaNorth
+- FranceCentral
+
+## <a name="classification"></a>Besorolás
 
 Az összes 105 rendszerbesorolási szabály a strukturált fájlformátumokra vonatkozik. Csak az MCE besorolási szabályok érvényesek a dokumentumok fájltípusára (nem az adatvizsgálati natív regex-mintákra, a Bloom Filter-alapú észlelésre). A támogatott besorolásokkal kapcsolatos további információkért lásd: [támogatott besorolások az Azure hatáskörébe](supported-classifications.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: a Starter Kit futtatása és az adatvizsgálat](tutorial-scan-data.md)
 - [Adatforrások kezelése az Azure hatáskörébe (előzetes verzió)](manage-data-sources.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601599"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386747"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps Közösség – nyílt forráskódú projektek
 
@@ -24,7 +24,7 @@ A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteke
 
 **Robotok**
 
-| Projekt neve | Leírás |
+| Projekt neve | Description |
 |-|-|
 | [Bot Framework – érdekes pont – szakértelem](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Az érdeklődési pont szakértelmet biztosít a POI-val kapcsolatos képességekhez egy virtuális asszisztens számára, amely a Azure Bot Service és a bot Framework használatával Azure Maps. |
 | [Botbuilder témakörben helye](https://github.com/Microsoft/BotBuilder-Location) | A Bing Maps REST Services által működtetett, nyílt forráskódú Location Picker Control a Microsoft bot Framework szolgáltatáshoz. |
@@ -35,7 +35,7 @@ A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteke
 
 Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek kibővítik a Azure Maps web SDK képességeit.
 
-| Projekt neve | Leírás |
+| Projekt neve | Description |
 |-|-|
 | [Azure Maps animációs modul](https://github.com/Azure-Samples/azure-maps-animations) | Az Azure Maps web SDK-val használható animációk gazdag könyvtára. |
 | [Az adatAzure Maps a nézet vezérlő modulba](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely megkönnyíti a térképre betöltött adatterhelések megtekintését. |
@@ -55,7 +55,7 @@ Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek 
 
 **Példák**
 
-| Projekt neve | Leírás |
+| Projekt neve | Description |
 |-|-|
 | [Azure Maps kód mintái](https://github.com/Azure-Samples/AzureMapsCodeSamples) | A webalapú alkalmazások Azure Maps használatára szolgáló mintakód-gyűjtemény. |
 | [Azure Maps gov Cloud Code-minták](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Mintakód-gyűjtemény, amely a Azure Maps Azure Government felhőben való használatára. |
@@ -66,14 +66,17 @@ Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek 
 | [IoT-térelemzés implementálása az Azure Maps használatával](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | A térben és időben előforduló releváns események nyomon követése és rögzítése gyakori IoT forgatókönyv. |
 
 **Harmadik féltől származó Térkép vezérlőelem beépülő modul**
+<a name="third-part-map-control-plugins"></a>
 
-| Projekt neve | Leírás |
+| Projekt neve | Description |
 |-|-|
+| [Azure Maps cézium beépülő modul](https://github.com/azure-samples/azure-maps-cesium) | Egy [cézium js](https://cesium.com/cesiumjs/) beépülő modul, amely megkönnyíti a Azure Maps-szolgáltatások, például a [csempék](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) és a [helymeghatározáshoz-szolgáltatások](https://docs.microsoft.com/rest/api/maps/search)integrálását. |
 | [Azure Maps szórólap beépülő modul](https://github.com/azure-samples/azure-maps-leaflet) | A [szórólap](https://leafletjs.com/) JavaScript beépülő modulja, amely megkönnyíti a csempe rétegek átfedését a [Azure Maps csempe-szolgáltatásokból](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
- 
+ | [Azure Maps OpenLayers beépülő modul](https://github.com/azure-samples/azure-maps-openlayers) | Egy [OpenLayers](https://www.openlayers.org/) JavaScript beépülő modul, amely megkönnyíti a csempék rétegének átfedését a [Azure Maps csempe-szolgáltatásokból](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
+
 **Eszközök és erőforrások**
 
-| Projekt neve | Leírás |
+| Projekt neve | Description |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Forrás az összes Azure Location Based Services dokumentációhoz. |
 | [Azure Maps Creator (előzetes verzió) eszközei](https://github.com/Azure-Samples/AzureMapsCreator) | Python Tools for Azure Maps Creator (előzetes verzió) eszközei. |
@@ -91,7 +94,7 @@ Az alábbi utasítások az összes létrehozott és karbantartott nyílt forrás
 - Azure Maps nyílt forráskódú projektek és minták nem termék, ezért Premier szintű támogatás vagy más hivatalos támogatási csatorna nem támogatja.
 - A nyílt forráskódú projektek és minták Azure Maps hasonló módon támogatottak, mint a Microsoft által a Közösség által nyújtott támogatással végzett más nyílt forráskódú projektek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További nyílt forráskódú Azure Maps projekteket talál.
 

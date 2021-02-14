@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6185c5408f74b914ce5ad47634999786ba1d7ab6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299765"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367996"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health gyakori kérdések
 Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati állapotával kapcsolatos gyakori kérdésekre (GYIK). Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket foglalják magukban, beleértve a számlázási modellt, a képességeket, a korlátozásokat és a támogatást.
@@ -29,7 +29,7 @@ Ez a cikk válaszokat tartalmaz a Azure Active Directory (Azure AD) kapcsolati �
 ## <a name="general-questions"></a>Általános kérdések
 **K: több Azure AD-címtárat is kezelhetek. Hogyan váltson a prémium szintű Azure Active Directoryra?**
 
-A különböző Azure AD-bérlők közötti váltáshoz válassza ki a jelenleg bejelentkezett **felhasználónevet** a jobb felső sarokban, majd válassza ki a megfelelő fiókot. Ha a fiók nem szerepel a listán, válassza a kijelentkezés **lehetőséget, majd**használja a bejelentkezéshez prémium szintű Azure Active Directory engedélyezett könyvtár globális rendszergazdai hitelesítő adatait.
+A különböző Azure AD-bérlők közötti váltáshoz válassza ki a jelenleg bejelentkezett **felhasználónevet** a jobb felső sarokban, majd válassza ki a megfelelő fiókot. Ha a fiók nem szerepel a listán, válassza a kijelentkezés **lehetőséget, majd** használja a bejelentkezéshez engedélyezett prémium szintű Azure Active Directory (P1 vagy P2) könyvtár globális rendszergazdai hitelesítő adatait.
 
 **K: az Azure AD Connect Health által támogatott identitás-szerepkörök verziója?**
 
@@ -47,8 +47,8 @@ Vegye figyelembe, hogy a szolgáltatás által biztosított szolgáltatások a s
 
 **K: hány licencre van szükségem az infrastruktúra figyeléséhez?**
 
-* Az első összekapcsolási ügynökhöz legalább egy prémium szintű Azure AD licenc szükséges.
-* Minden további regisztrált ügynökhöz 25 további prémium szintű Azure AD licenc szükséges.
+* Az első összekapcsolási ügynökhöz legalább egy prémium szintű Azure AD (P1 vagy P2) licenc szükséges.
+* Minden további regisztrált ügynökhöz 25 további prémium szintű Azure AD (P1 vagy P2) licenc szükséges.
 * Az ügynökök száma megegyezik az összes figyelt szerepkörben (AD FS, Azure AD Connect és/vagy AD DS) regisztrált ügynökök teljes számával.
 * A HRE-kapcsolat licencelése nem igényli, hogy a licencet meghatározott felhasználókhoz rendelje. Csak a szükséges számú érvényes licenc szükséges.
 
@@ -68,12 +68,12 @@ Példa:
 
 A Azure AD Connect Health a németországi felhőben nem támogatott, kivéve a [szinkronizálási hibák jelentési funkcióját](how-to-connect-health-sync.md#object-level-synchronization-error-report).
 
-| Szerepkörök | Szolgáltatások | Támogatott a német felhőben |
+| Szerepkörök | Funkciók | Támogatott a német felhőben |
 | ------ | --------------- | --- |
-| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | Nem |
-|  | Szinkronizálási hibajelentés | Igen |
-| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | Nem |
-| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | Nem |
+| Kapcsolat állapota szinkronizáláshoz | Figyelés/betekintés/riasztások/elemzés | No |
+|  | Szinkronizálási hibajelentés | Yes |
+| Az ADFS kapcsolati állapota | Figyelés/betekintés/riasztások/elemzés | No |
+| Összekapcsolási állapot a HOZZÁADÁShoz | Figyelés/betekintés/riasztások/elemzés | No |
 
 Annak érdekében, hogy az ügynök kapcsolatba lépjen a csatlakozás állapota szinkronizáláshoz, a [telepítési követelményt](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) ennek megfelelően konfigurálja.
 
@@ -109,7 +109,7 @@ További információ a [http-proxy állapot-ügynökökhöz való konfigurálá
 
 Ha proxyt kell konfigurálnia az ügynök regisztrálása során, előfordulhat, hogy előzőleg módosítania kell az Internet Explorer-proxy beállításait.
 
-1. Nyissa meg az Internet Explorer > **Beállítások**  >  **Internetbeállítások**  >  **kapcsolatok**  >  **LAN-beállítások**lehetőséget.
+1. Nyissa meg az Internet Explorer > **Beállítások**  >  **Internetbeállítások**  >  **kapcsolatok**  >  **LAN-beállítások** lehetőséget.
 2. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
 3. Válassza a **speciális** lehetőséget, ha különböző proxy portokkal rendelkezik a http és a https/Secure szolgáltatáshoz.
 

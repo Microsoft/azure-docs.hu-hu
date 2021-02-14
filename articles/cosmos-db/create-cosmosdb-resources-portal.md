@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/10/2020
-ms.openlocfilehash: 731a1fdf9520efc43c954cba79602ed84f983b3d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 041b930a0c2fa82727216b4ca0c8367387d0d801
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247250"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367255"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Gyors útmutató: Azure Cosmos-fiók,-adatbázis,-tároló és-elemek létrehozása a Azure Portal
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ Azure Cosmos DB-fiók létrehozásához nyissa meg a [Azure Portal](https://port
 
    :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Az Azure Portal Adatbázisok panelje":::
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A **Azure Cosmos db fiók létrehozása** lapon adja meg az új Azure Cosmos-fiók alapszintű beállításait. 
 
     |Beállítás|Érték|Leírás |
@@ -71,7 +71,7 @@ Azure Cosmos DB-fiók létrehozásához nyissa meg a [Azure Portal](https://port
 > - Georedundancia
 > - Többrégiós írók
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Az Azure Cosmos DB új fiók lapja":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Az Azure Cosmos DB új fiók lapja":::
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és a **címkék** szakaszt.
 
@@ -128,7 +128,7 @@ Adja hozzá az új adatbázis adatait az Adatkezelő használatával.
      }
      ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
    
    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Másolja a JSON-adatfájlt, és válassza a Mentés Adatkezelő a Azure Portal":::
    
@@ -148,7 +148,7 @@ Ha csak az adatbázist szeretné törölni, és a jövőben az Azure Cosmos-fió
 * Nyissa meg **adatkezelő**, kattintson a jobb gombbal a törölni kívánt adatbázisra, majd válassza az **adatbázis törlése** lehetőséget.
 * Adja meg az adatbázis-azonosító/adatbázis nevét a törlési művelet megerősítéséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre adatbázist és tárolót a Adatkezelő használatával. Így már további adatokat importálhat az Azure Cosmos DB-fiókba. 
 

@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése az SAP Business Warehouse-ból Azure Data Factory használatával
 description: Ismerje meg, hogyan helyezhet át adatátvitelt az SAP Business Warehouse-ból Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508288"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386968"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok áthelyezése az SAP Business Warehouse-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -63,12 +58,12 @@ Az alábbi táblázat az SAP Business Warehouse (BW) társított szolgáltatásh
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | sztring | Igen
-systemNumber | A SAP BWrendszer rendszerszáma. | String típusú kétszámjegyű decimális szám. | Igen
-ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren. | Karakterláncként megjelenített háromjegyű decimális szám. | Igen
-username | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
-jelszó | A felhasználó jelszava. | sztring | Igen
-Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP BW-példányhoz való kapcsolódáshoz. | sztring | Igen
+kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | sztring | Yes
+systemNumber | A SAP BWrendszer rendszerszáma. | String típusú kétszámjegyű decimális szám. | Yes
+ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren. | Karakterláncként megjelenített háromjegyű decimális szám. | Yes
+username | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Yes
+jelszó | A felhasználó jelszava. | sztring | Yes
+Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP BW-példányhoz való kapcsolódáshoz. | sztring | Yes
 encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring | No
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -86,7 +81,7 @@ Ha a másolási tevékenységben szereplő forrás **RelationalSource** típusú
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | MDX-lekérdezés. | Igen |
+| lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | MDX-lekérdezés. | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON-példa: adatok másolása az SAP Business Warehouse-ból az Azure Blobba
@@ -288,7 +283,7 @@ Az adatok SAP BWból való áthelyezésekor a rendszer a következő leképezés
 
 Adattípus a ABAP szótárban | .NET-adattípus
 -------------------------------- | --------------
-ACCP |  Int
+ACCP |    Int
 CHAR | Sztring
 Ügyf | Sztring
 CURR | Tizedesjegy

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099523"
+ms.locfileid: "100104603"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -24,7 +24,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
 | [Dokumentumok alaphelyzetbe állítása (előzetes verzió)](search-howto-run-reset-indexers.md) |  Egyénileg kiválasztott keresési dokumentumok újrafeldolgozása az indexelő munkaterhelésekben. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/index-preview) |
-| Rendelkezésre állási zóna támogatása | Az egyes régiókban két vagy több replikával rendelkező szolgáltatások keresése – a [teljesítmény skálázása](search-performance-optimization.md), a rugalmasság növelése azáltal, hogy két vagy több különböző fizikai helyen replikák vannak.  | A keresési szolgáltatás létrehozásának régiója és dátuma határozza meg a rendelkezésre állást. A részletekért tekintse meg a teljesítmény finomhangolása című dokumentumot. |
+| [Rendelkezésre állási zónák](search-performance-optimization.md#availability-zones)| Az [ebben a cikkben](search-performance-optimization.md#availability-zones)leírtak szerint a két vagy több replikával rendelkező szolgáltatások között a két vagy több különböző fizikai helyen lévő replikák révén rugalmasságot nyerhet.  | A keresési szolgáltatás létrehozásának régiója és dátuma határozza meg a rendelkezésre állást. A részletekért tekintse meg a teljesítmény finomhangolása című dokumentumot. |
 
 ## <a name="january-2021"></a>2021. január
 
@@ -36,7 +36,8 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 | Month (hónap) | Szolgáltatás | Leírás |
 |-------|---------|-------------|
-| November | [Ügyfél által felügyelt kulcs titkosítása (bővített)](search-security-manage-encryption-keys.md) | kiterjeszti az ügyfél által felügyelt titkosítást a keresési szolgáltatás által létrehozott és kezelt eszközök teljes skáláján. Általánosan elérhető.|
+| November | [Ügyfél által felügyelt kulcs titkosítása (bővített)](search-security-manage-encryption-keys.md) | Kiterjeszti az ügyfél által felügyelt titkosítást a keresési szolgáltatás által létrehozott és kezelt eszközök teljes skáláján. Általánosan elérhető.|
+| Szeptember | [Visual Studio Code-bővítmény az Azure Cognitive Search](search-get-started-vs-code.md) | Felvesz egy munkaterületet, navigációs, IntelliSense és sablont az indexek, az indexelő, az adatforrások és a szakértelmével létrehozásához. | Nyilvános előzetes verzió |
 | Szeptember | [Felügyelt szolgáltatás identitása (indexelő)](search-howto-managed-identities-data-sources.md) | Általánosan elérhető.  |
 | Szeptember | [Privát hivatkozást használó kimenő kérelmek](search-indexer-howto-access-private.md) | Általánosan elérhető.  |
 | Szeptember | [Felügyeleti REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Általánosan elérhető. |

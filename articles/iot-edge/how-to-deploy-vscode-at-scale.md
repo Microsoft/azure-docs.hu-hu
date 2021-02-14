@@ -9,12 +9,12 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f6e90edc0503326dc9dbb06abfcf59fa2d51e1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9ae7009468b548cb9386fd405abfbe110d62f9a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043816"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377516"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge modulok méretezése a Visual Studio Code használatával
 
@@ -44,11 +44,11 @@ A Visual Studio Code-hoz készült Azure IoT Extensions használatával művelet
 
 1. Kattintson a **...** elemre az **Azure IoT hub** szakasz fejlécében. Ha nem látja a három pontot, vigye a kurzort a fejléc fölé.
 
-1. Válassza a **IoT hub kiválasztása**lehetőséget.
+1. Válassza a **IoT hub kiválasztása** lehetőséget.
 
 1. Ha nincs bejelentkezve az Azure-fiókjába, kövesse az utasításokat.
 
-1. Válassza ki az Azure-előfizetését.
+1. Válassza ki Azure-előfizetését.
 
 1. Válassza ki az IoT hubot.
 
@@ -82,7 +82,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -91,7 +91,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
@@ -218,9 +218,9 @@ Miután konfigurálta az üzembe helyezési jegyzéket és a konfigurált címk�
 
 1. A **nézet** menüben válassza a **parancs paletta** lehetőséget, majd válassza ki a **Azure IoT Edge: központi telepítés létrehozása a Scale** parancsban.
 
-1. Navigáljon a használni kívánt üzembe helyezési jegyzékfájlhoz tartozó JSON-fájlhoz, majd kattintson a **peremhálózat-telepítési jegyzék kiválasztása**elemre.
+1. Navigáljon a használni kívánt üzembe helyezési jegyzékfájlhoz tartozó JSON-fájlhoz, majd kattintson a **peremhálózat-telepítési jegyzék kiválasztása** elemre.
 
-1. Adja meg az értékeket a rendszer a **központi telepítési azonosítótól**kezdve.
+1. Adja meg az értékeket a rendszer a **központi telepítési azonosítótól** kezdve.
 
    ![Telepítési azonosító meghatározása](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
 
@@ -229,7 +229,7 @@ Miután konfigurálta az üzembe helyezési jegyzéket és a konfigurált címk�
   | Paraméter | Leírás |
   | --- | --- |
   | Központi telepítés azonosítója | Az IoT hub-ban létrehozandó központi telepítés neve. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` . |
-  | Cél feltétel | Adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel.A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával.Például: `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
+  | Cél feltétel | Adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel. A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például: `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
   | Prioritás |  Pozitív egész szám. Ha két vagy több üzemelő példány ugyanarra az eszközre van célozva, akkor a prioritáshoz tartozó legmagasabb numerikus értékkel rendelkező üzemelő példány érvényes lesz. |
 
   A prioritás meghatározása után a terminálnak az alábbi ábrához hasonló kimenetet kell megjelenítenie:

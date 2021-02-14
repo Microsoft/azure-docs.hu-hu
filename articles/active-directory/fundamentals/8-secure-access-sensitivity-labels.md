@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ac3141823eb72b17754a771cd63264fe851949d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725128"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365361"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Hozzáférés szabályozása érzékenységi címkékkel 
 
@@ -66,7 +66,7 @@ Ha úgy gondolja, hogy a külső hozzáférés szabályozható a tartalomhoz, a 
 
 * Milyen alapértelmezett értékekkel kell rendelkeznie a HBI-, a-vagy Microsoft 365-csoportoknak?
 
-* Hol fogja használni az érzékenységi címkéket a [címkézéshez és a figyeléshez](/microsoft-365/compliance/label-analytics?view=o365-worldwide), a [titkosítás kikényszerített](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) vagy a [tárolók hozzáférési korlátozásának betartatásához](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
+* Hol fogja használni az érzékenységi címkéket a [címkézéshez és a figyeléshez](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide), a [titkosítás kikényszerített](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) vagy a [tárolók hozzáférési korlátozásának betartatásához](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
 
 **E-mailek és tartalmak esetén**
 
@@ -136,7 +136,7 @@ Miután meghatározta, hogyan szeretné használni az érzékenységi címkéket
 
 6. [Az Office-fájlok érzékenységi feliratainak engedélyezése a SharePointban és a OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

@@ -1,21 +1,17 @@
 ---
 title: A Azure-SSIS Integration Runtime teljesítményének konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a Azure-SSIS Integration Runtime tulajdonságait a nagy teljesítmény érdekében
-services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: ''
-manager: anandsub
-ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5d275100124660b901504b7e7f71cf93518fd077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635320"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364392"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez
 
@@ -118,7 +114,7 @@ Az y tengely azon csomagok száma, amelyek egy órán belül befejezték a végr
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-A **AzureSSISNodeNumber** az integrációs modul méretezhetőségét állítja be. Az Integration Runtime átviteli sebessége arányos a **AzureSSISNodeNumber** . Először állítsa be a **AzureSSISNodeNumber** egy kisebb értékre, figyelje az integrációs modul átviteli sebességét, majd állítsa be a forgatókönyv értékét. A munkavégző csomópontok számának újrakonfigurálásával kapcsolatban lásd: [Az Azure SSIS Integration Runtime kezelése](manage-azure-ssis-integration-runtime.md).
+A **AzureSSISNodeNumber** az integrációs modul méretezhetőségét állítja be. Az Integration Runtime átviteli sebessége arányos a **AzureSSISNodeNumber**. Először állítsa be a **AzureSSISNodeNumber** egy kisebb értékre, figyelje az integrációs modul átviteli sebességét, majd állítsa be a forgatókönyv értékét. A munkavégző csomópontok számának újrakonfigurálásával kapcsolatban lásd: [Az Azure SSIS Integration Runtime kezelése](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 

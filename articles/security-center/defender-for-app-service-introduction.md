@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916713"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393309"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>A App Service Azure Defender bemutatása
 
@@ -23,13 +23,13 @@ Az **Azure Defender for app Service** a felhő méretezését használja a app S
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-|Szempont|Részletek|
-|----|:----|
-|Kiadás állapota:|Általánosan elérhető (GA)|
-|Árképzési|Az [Azure Defender for app Service](azure-defender.md) számlázása [a díjszabási oldalon](security-center-pricing.md) látható<br>A díjszabás és beállítások lap felsorolja az **erőforrás-mennyiség** példányainak számát. Ez a szám a számítási példányok teljes száma, az előfizetéshez tartozó összes App Service csomag esetében, amely akkor fut, amikor megnyitotta a díjszabási szintet tartalmazó lapot.<br>A darabszám ellenőrzéséhez nyissa meg **app Service terveket** a Azure Portalban, és ellenőrizze az egyes csomagok által használt számítási példányok számát.|
-|Támogatott App Service csomagok:|![Igen, ](./media/icons/yes-icon.png) alapszintű, standard, prémium, elkülönített vagy linuxos<br>![Nincs ](./media/icons/no-icon.png) ingyenes, közös vagy felhasználási<br>[További információ a App Service csomagokról](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
-|||
+| Szempont                       | Részletek                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Kiadás állapota:               | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Árképzési                     | Az [Azure Defender for app Service](azure-defender.md) számlázása [a díjszabási oldalon](security-center-pricing.md) látható<br>A számlázás az összes csomag összes számítási példánya szerint történik|
+| Támogatott App Service csomagok: | Az összes App Service-csomag támogatott (egyetlen kivétellel, lásd alább). [További információ a app Service csomagokról](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>A felhasználási terv Azure Functions nem támogatott. [További információ a Azure functions üzemeltetési lehetőségeiről](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
+| Felhők                      | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                                                                                                                                                                                                                                                                                                                                                 |
+|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Milyen előnyökkel jár az Azure Defender a App Service?
 

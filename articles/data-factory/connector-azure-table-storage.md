@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása Azure Table Storage-ba és-ból
 description: Megtudhatja, hogyan másolhatja át a támogatott forrásokból származó adatok adatait az Azure Table Storage-ba vagy a Table Storage-ból a támogatott fogadó áruházakba Data Factory használatával.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/20/2020
-ms.openlocfilehash: b70c08df25f3f5d572f88879f5073756de588d52
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1448bb3ebf541af047759bc886b2c174d89c1c50
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636476"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383772"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-be vagy onnan máshová az Azure Data Factoryvel
 
@@ -55,9 +51,9 @@ Létrehozhat egy Azure Storage-beli társított szolgáltatást a fiók kulcsa a
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **AzureTableStorage** értékre kell beállítani. |Igen |
-| connectionString | Határozza meg a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. <br/>A Azure Key Vault is elhelyezheti a fiók kulcsát, és lekérheti a `accountKey` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot **AzureTableStorage** értékre kell beállítani. |Yes |
+| connectionString | Határozza meg a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. <br/>A Azure Key Vault is elhelyezheti a fiók kulcsát, és lekérheti a `accountKey` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. |Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 >[!NOTE]
 >Ha a "AzureStorage" típusú társított szolgáltatást használta, akkor továbbra is támogatott, míg a rendszer ezt az új "AzureTableStorage" társított szolgáltatástípus használatát javasolja.
@@ -124,9 +120,9 @@ A közös hozzáférésű aláírás-hitelesítés használatához a következő
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **AzureTableStorage** értékre kell beállítani. |Igen |
-| sasUri | A megosztott hozzáférési aláírás URI azonosítójának SAS URI azonosítójának megadása a táblához. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A Azure Key Vault SAS-tokent is helyezhet el az automatikus elforgatás kihasználása és a jogkivonat-rész eltávolításához. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja a Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot **AzureTableStorage** értékre kell beállítani. |Yes |
+| sasUri | A megosztott hozzáférési aláírás URI azonosítójának SAS URI azonosítójának megadása a táblához. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A Azure Key Vault SAS-tokent is helyezhet el az automatikus elforgatás kihasználása és a jogkivonat-rész eltávolításához. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja a Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 >[!NOTE]
 >Ha a "AzureStorage" típusú társított szolgáltatást használta, akkor továbbra is támogatott, míg a rendszer ezt az új "AzureTableStorage" társított szolgáltatástípus használatát javasolja.
@@ -195,8 +191,8 @@ Az adatok Azure-táblába való másolásához állítsa az adatkészlet Type (t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát **AzureTable** értékre kell állítani. |Igen |
-| tableName |Annak a táblának a neve, amely a társított szolgáltatás által hivatkozott Table Storage-adatbázis példányában található. |Igen |
+| típus | Az adatkészlet Type tulajdonságát **AzureTable** értékre kell állítani. |Yes |
+| tableName |Annak a táblának a neve, amely a társított szolgáltatás által hivatkozott Table Storage-adatbázis példányában található. |Yes |
 
 **Példa**
 
@@ -231,13 +227,13 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="azure-table-as-a-source-type"></a>Az Azure Table forrás típusa
 
-Az adatok Azure-táblázatból való másolásához állítsa a forrás típusát a másolás tevékenység **AzureTableSource** . A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
+Az adatok Azure-táblázatból való másolásához állítsa a forrás típusát a másolás tevékenység **AzureTableSource**. A másolási tevékenység **forrása** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát **AzureTableSource** értékre kell állítani. |Igen |
-| azureTableSourceQuery |Az egyéni tábla-tárolási lekérdezéssel olvashatja el az adatolvasást.<br/>A forrás lekérdezés az `$filter` Azure Table Storage által támogatott lekérdezési lehetőségből származó közvetlen leképezés, további információ a [doc](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)szintaxisáról, valamint az alábbi [azureTableSourceQuery példák című szakaszban](#azuretablesourcequery-examples)található példákban. |Nem |
-| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivételének engedélyezése nem létezik-e.<br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). |Nem |
+| típus | A másolási tevékenység forrásának Type tulajdonságát **AzureTableSource** értékre kell állítani. |Yes |
+| azureTableSourceQuery |Az egyéni tábla-tárolási lekérdezéssel olvashatja el az adatolvasást.<br/>A forrás lekérdezés az `$filter` Azure Table Storage által támogatott lekérdezési lehetőségből származó közvetlen leképezés, további információ a [doc](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)szintaxisáról, valamint az alábbi [azureTableSourceQuery példák című szakaszban](#azuretablesourcequery-examples)található példákban. |No |
+| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivételének engedélyezése nem létezik-e.<br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). |No |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-példák
 
@@ -260,15 +256,15 @@ Ha a folyamat paramétert használja, a DateTime értéket az előző minták sz
 
 ### <a name="azure-table-as-a-sink-type"></a>Azure Table fogadó típusa
 
-Az Azure Table-be való másoláshoz állítsa a fogadó típust a másolás tevékenység **AzureTableSink** . A másolási tevékenység fogadója szakaszban a következő **sink** tulajdonságok támogatottak.
+Az Azure Table-be való másoláshoz állítsa a fogadó típust a másolás tevékenység **AzureTableSink**. A másolási tevékenység fogadója szakaszban a következő  tulajdonságok támogatottak.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát **AzureTableSink** értékre kell állítani. |Igen |
-| azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Nem |
-| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a "AzureTableDefaultPartitionKeyValue" paramétert használja a partíciós kulcsként. |Nem |
-| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Nem |
-| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be. Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Az engedélyezett értékek **egyesítése** (alapértelmezett) és **Csere** . <br/><br> Ez a beállítás a tábla szintjén nem szereplő sorra vonatkozik. Egyik lehetőség sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. Az egyesítési és a lecserélési beállítások működésének megismeréséhez lásd: [entitás beszúrása vagy egyesítése](/rest/api/storageservices/Insert-Or-Merge-Entity) és az [entitás beszúrása vagy cseréje](/rest/api/storageservices/Insert-Or-Replace-Entity). |Nem |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát **AzureTableSink** értékre kell állítani. |Yes |
+| azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |No |
+| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a "AzureTableDefaultPartitionKeyValue" paramétert használja a partíciós kulcsként. |No |
+| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |No |
+| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be. Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Az engedélyezett értékek **egyesítése** (alapértelmezett) és **Csere**. <br/><br> Ez a beállítás a tábla szintjén nem szereplő sorra vonatkozik. Egyik lehetőség sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. Az egyesítési és a lecserélési beállítások működésének megismeréséhez lásd: [entitás beszúrása vagy egyesítése](/rest/api/storageservices/Insert-Or-Merge-Entity) és az [entitás beszúrása vagy cseréje](/rest/api/storageservices/Insert-Or-Replace-Entity). |No |
 | writeBatchSize |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
 | writeBatchTimeout |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek a TimeSpan. Ilyen például a "00:20:00" (20 perc). |Nem (az alapértelmezett érték 90 másodperc, a Storage-ügyfél alapértelmezett időtúllépése) |
 

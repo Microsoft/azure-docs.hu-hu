@@ -323,8 +323,6 @@
       items:
         - name: A Governance YouTube-csatornája
           href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-        - name: Videó – Ignite 2019
-          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
         - name: Vendégkonfiguráció – videók
           items:
             - name: Első lépések

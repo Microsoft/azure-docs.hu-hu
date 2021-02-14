@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4031e43b3ec6f6f451fbc4888cc482249042690b
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 155df45d975a30991edc80d587445d699a8d2695
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582723"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103226"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -49,7 +49,7 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 - Ha meg szeretné különböztetni az [eszköz kódjának áramlását](scenario-desktop-acquire-token.md#device-code-flow), az [integrált Windows-hitelesítést](scenario-desktop-acquire-token.md#integrated-windows-authentication), valamint egy olyan bizalmas ügyfélalkalmazás [felhasználónevét és jelszavát](scenario-desktop-acquire-token.md#username-and-password) , amely a [démon-alkalmazásokban](scenario-daemon-overview.md)használt ügyfél-hitelesítő adatokat használja, egyikhez sem kell átirányítási URI-t konfigurálnia, hanem nyilvános ügyfélalkalmazásként kell beállítania. A konfiguráció elérése:
 
-    1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>válassza ki az alkalmazást **Alkalmazásregisztrációkban**, majd válassza a **hitelesítés** lehetőséget.
+    1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>válassza ki az alkalmazást **Alkalmazásregisztrációkban**, majd válassza a **hitelesítés** lehetőséget.
     1. A **Speciális beállítások**  >  **lehetővé teszik a nyilvános ügyfél-folyamatok** számára  >  **a következő mobil-és asztali folyamatok használatát: válassza az** **Igen** lehetőséget.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Nyilvános ügyfél beállításainak engedélyezése a Azure Portal hitelesítés paneljén":::

@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556130"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384503"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -286,15 +286,18 @@ A napi mennyiségi korláttal rendelkező e-mailek letiltásához a Application 
 
 Az Azure Application Insights korai alkalmazói számára még két lehetséges árképzési szint létezik: alapszintű és vállalati. Az alapszintű díjszabás megegyezik a fentiekben leírtak szerint, és az alapértelmezett szint. Minden nagyvállalati szintű szolgáltatást magában foglal, díjmentesen. Az alapszintű csomag elsősorban a betöltött adatok mennyiségét számlázza.
 
-> [!NOTE]
-> Ezek az örökölt árképzési szintek át lettek nevezve. A nagyvállalati díjszabási szint mostantól **csomópontként** van meghívva, és az alapszintű díjszabás mostantól **GB-ra** van meghívva. A rendszer ezeket az új neveket használja a Azure Portal.  
+Ezek az örökölt árképzési szintek át lettek nevezve. A nagyvállalati díjszabási szint mostantól **csomópontként** van meghívva, és az alapszintű díjszabás mostantól **GB-ra** van meghívva. A rendszer ezeket az új neveket használja a Azure Portal.  
 
-A per node (korábban nagyvállalati) szinten egy csomópontos díjat számítunk fel, és minden egyes csomópont napi adatmennyiséget kap. A per Node díjszabási szinten a befoglalt mennyiség fölött betöltött adatért kell fizetnie. Ha az Operations Management Suite-t használja, válassza ki a csomópontok közötti szintet.
+A per node (korábban nagyvállalati) szinten egy csomópontos díjat számítunk fel, és minden egyes csomópont napi adatmennyiséget kap. A per Node díjszabási szinten a befoglalt mennyiség fölött betöltött adatért kell fizetnie. Ha az Operations Management Suite-t használja, válassza ki a csomópontok közötti szintet. A 2018-es verzióban egy új díjszabási modellt [vezettünk be](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure monitoring szolgáltatáshoz. Ez a modell egy egyszerű "utólagos elszámolású" modellt alkalmaz a figyelési szolgáltatások teljes portfóliójában. További információ az [új díjszabási modellről](../platform/usage-estimated-costs.md).
 
 A pénznem és a régió aktuális áraiért lásd: [Application Insights díjszabása](https://azure.microsoft.com/pricing/details/application-insights/).
 
-> [!NOTE]
-> A 2018-es verzióban egy új díjszabási modellt [vezettünk be](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) az Azure monitoring szolgáltatáshoz. Ez a modell egy egyszerű "utólagos elszámolású" modellt alkalmaz a figyelési szolgáltatások teljes portfóliójában. További információ az [új díjszabási modellről](../platform/usage-estimated-costs.md), a [modellre való áttérés következményeinek felmérése](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs) a használati minták alapján, valamint [az új modell használatának módja](../platform/usage-estimated-costs.md#azure-monitor-pricing-model)
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Az örökölt vállalati (csomóponton belüli) díj számlázásának ismertetése 
+
+Az alább leírtak szerint az örökölt nagyvállalati (csomóponton belüli) szint az előfizetésben lévő összes Application Insights-erőforrás használatát ötvözi a csomópontok számának és az adatok túlterhelésének kiszámításához. A kombinált folyamat miatt a rendszer az **előfizetésben lévő összes Application Insights erőforrás használatát csak az egyik erőforrásra vonatkozóan** jelenti.  Így összehangolhatja a [számlázott használatot](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) az egyes Application Insights-erőforrásoknál megfigyelt használattal. 
+
+> [!WARNING]
+> Az örökölt nagyvállalati (csomópont-) szinten Application Insights erőforrások használatának és megismerésének összetettsége miatt erősen ajánlott az aktuális utólagos elszámolású díjszabás használata. 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>/Csomópontok és az Operations Management Suite előfizetési jogosultságai
 
@@ -347,4 +350,3 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

@@ -1,22 +1,17 @@
 ---
 title: Metaadatok és ACL-ek megőrzése a másolási tevékenység használatával Azure Data Factory
 description: Tudnivalók a metaadatok és az ACL-ek megőrzéséről a másolási tevékenység Azure Data Factoryban való használata során.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: a96b04df56dc7d5ea26463073d673275b8a4a8c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 396a598d143e85687f9dfbf765b3c18736627e41
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015077"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387716"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Metaadatok és ACL-ek megőrzése a másolási tevékenység használatával Azure Data Factory
 
@@ -145,7 +140,7 @@ Ha a forrást bináris formátumú vagy bináris másolási lehetőséggel Data 
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd a másolási tevékenység egyéb cikkeit:
 

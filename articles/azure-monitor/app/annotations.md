@@ -3,12 +3,12 @@ title: A Application Insights kibocsátási megjegyzései | Microsoft Docs
 description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a metrikák Explorer diagramjaihoz Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993720"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386033"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
@@ -81,7 +81,7 @@ Hozzon létre külön API-kulcsot az Azure-folyamatok egyes kiadási sablonjaiho
 
 Most, amikor a kiadás sablont használja egy új kiadás üzembe helyezéséhez, a rendszer elküld egy jegyzetet Application Insights. A jegyzetek a következő helyszíneken tekinthetők meg:
 
-A használat ablaktáblán lehetősége van a kiadási jegyzetek manuális létrehozására is:
+A **használat** ablaktáblán lehetősége van a kiadási jegyzetek manuális létrehozására is:
 
 ![Képernyőkép – a sávdiagramok száma egy adott időszakon belül megjelenített felhasználói látogatások számával. A kiadási jegyzetek zöld pipaként jelennek meg a diagram felett, amely azt jelzi, hogy a kiadás milyen időpontban történt](./media/annotations/usage-pane.png)
 
@@ -117,7 +117,7 @@ A GitHubról származó [CreateReleaseAnnotation](https://github.com/MohanGsk/Ap
 
 Módosíthatja a parancsfájlt, például a múltbeli jegyzetek létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkaelemek létrehozása](./diagnostic-search.md#create-work-item)
 * [Automatizálás a PowerShell használatával](./powershell.md)

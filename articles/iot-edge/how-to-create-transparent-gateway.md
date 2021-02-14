@@ -11,18 +11,18 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938783"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370427"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
 Ez a cikk részletesen ismerteti, hogyan konfigurálhat egy IoT Edge eszközt úgy, hogy az más eszközök számára transzparens átjáróként működjön, hogy az IoT Hub kommunikáljon. Ez a cikk az *IoT Edge átjáró* kifejezést használja az átlátszó átjáróként konfigurált IoT Edge eszközre való hivatkozáshoz. További tudnivalókért tekintse meg a [IoT Edge-eszköz átjáróként való használatát](./iot-edge-as-gateway.md)ismertető témakört.
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
@@ -97,8 +97,8 @@ A következő fájlok készen állnak:
 2. Ha egy másik gépen hozta létre a tanúsítványokat, másolja át őket a IoT Edge eszközre.
 
 3. A IoT Edge eszközön nyissa meg a biztonsági démon konfigurációs fájlját.
-   * Windows `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
 4. Keresse meg a fájl **tanúsítvány-beállítások** szakaszát. A következő tulajdonságok értékének megadásával adja meg a négy sort a **tanúsítványokkal** kezdődően: és adja meg a fájl URI-azonosítóit a három fájl számára:
    * **device_ca_cert**: eszköz hitelesítésszolgáltatói tanúsítványa
@@ -110,8 +110,8 @@ A következő fájlok készen állnak:
 5. Mentse és zárja be a fájlt.
 
 6. IoT Edge újraindítása.
-   * Windows `Restart-Service iotedge`
-   * Linux `sudo systemctl restart iotedge`
+   * Windows: `Restart-Service iotedge`
+   * Linux: `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>EdgeHub üzembe helyezése és az üzenetek továbbítása
 

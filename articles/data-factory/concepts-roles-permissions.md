@@ -4,18 +4,14 @@ description: Az adat-előállítók létrehozásához és a gyermekek erőforrá
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053771"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364477"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -54,14 +50,13 @@ Az **Data Factory közreműködő** szerepkör, az erőforráscsoport szintjén 
 
 Az Azure Repos és a GitHub engedélyei függetlenek Data Factory engedélyeitől. Ennek eredményeképpen egy olyan felhasználó, aki a tárház engedélyekkel rendelkezik, és csak az olvasó szerepkör tagja, szerkesztheti Data Factory gyermek erőforrásait és véglegesítheti a tárház módosításait, de nem teheti közzé ezeket a módosításokat.
 
+
 > [!IMPORTANT]
 > A **Data Factory közreműködő** szerepkörrel rendelkező Resource Manager-sablonok nem emelik fel az engedélyeiket. Ha például olyan sablont telepít, amely egy Azure-beli virtuális gépet hoz létre, és nem rendelkezik virtuális gépek létrehozásához szükséges engedéllyel, akkor a központi telepítés engedélyezési hibával meghiúsul.
 
-> [!IMPORTANT]
-> A közzétételi kontextusban mindkét módban a **Microsoft. DataFactory/Factorys/writes** engedély szükséges.
-
+   A közzétételi kontextusban a **Microsoft. DataFactory/gyárak/írási** engedélyek az alábbi módokon érvényesek.
 - Ez az engedély csak akkor szükséges az élő módban, ha az ügyfél módosítja a globális paramétereket.
-- Ezt az engedélyt mindig a git módban kell megadni, mivel az ügyfél által közzétett minden alkalommal, mert az utolsó véglegesítő azonosítóval rendelkező gyári objektum frissül.
+- Ezt az engedélyt mindig a git módban kell megadni, mivel az ügyfél által közzétett minden alkalommal, a legutóbbi véglegesítő AZONOSÍTÓval rendelkező gyári objektumot frissíteni kell.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Egyéni forgatókönyvek és egyéni szerepkörök
 
@@ -95,6 +90,7 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
 - Lehetővé teheti, hogy a felhasználó frissítsen egy adatgyárat a PowerShellből vagy az SDK-ból, de ne a Azure Portal.
 
   Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a  **Közzététel** és az **összes közzététel** gombhoz.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

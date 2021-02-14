@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/10/2021
 ms.subservice: alerts
-ms.openlocfilehash: 8f59f3488f6c8f5b35ec68d93db656447f882a92
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ee281e60a0eb6f6192e63a9733146714e4aaf2eb
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510682"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104382"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -35,7 +35,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. AppConfiguration/configurationStores |Igen | Nem | [Alkalmazás konfigurációja](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft. AppPlatform/Spring | Igen | Nem | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Microsoft. Automation/automationAccounts | Igen| Nem | [Automation-fiókok](./metrics-supported.md#microsoftautomationautomationaccounts) |
-|Microsoft. AVS/privateClouds | Nem | Nem | |
+|Microsoft. AVS/privateClouds | Nem | Nem | [Azure VMware Solution](./metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.BatCH/batchAccounts | Igen | Nem | [Batch-fiókok](./metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft. cache/Redis | Igen | Igen | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
 |Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök | Nem | Nem | [Klasszikus Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
@@ -54,7 +54,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Igen | Igen | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
 |Microsoft. DataFactory/datafactories| Igen| Nem | [Az adatgyárak v1-es verziója](./metrics-supported.md#microsoftdatafactorydatafactories) |
 |Microsoft. DataFactory/gyárak |Igen | Nem | [Az adatgyár v2](./metrics-supported.md#microsoftdatafactoryfactories) |
-|Microsoft. DataShare/fiókok | Igen | Nem | |
+|Microsoft. DataShare/fiókok | Igen | Nem | [Adatmegosztások](./metrics-supported.md#microsoftdatashareaccounts) |
 |Microsoft. DBforMariaDB/kiszolgálók | Nem | Nem | [MariaDB-adatbázis](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. DBforMySQL/kiszolgálók | Nem | Nem |[A MySQL-hez készült adatbázis](./metrics-supported.md#microsoftdbformysqlservers)|
 |Microsoft. DBforPostgreSQL/kiszolgálók | Nem | Nem | [PostgreSQL-hez készült adatbázis](./metrics-supported.md#microsoftdbforpostgresqlservers)|
@@ -62,7 +62,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | [PostgreSQL-hez készült adatbázis (rugalmas kiszolgálók)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Igen | Nem |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Igen | Nem | [Eszközök kiépítési szolgáltatásai](./metrics-supported.md#microsoftdevicesprovisioningservices) |
-|Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | |
+|Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | [Digital Twins](./metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
 |Microsoft.DocumentDB/databaseAccounts | Igen | Nem | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
 |Microsoft. EventGrid/tartományok | Igen | Nem | [Event Grid-tartományok](./metrics-supported.md#microsofteventgriddomains) |
 |Microsoft. EventGrid/systemTopics | Igen | Nem | [Event Grid rendszertémakörök](./metrics-supported.md#microsofteventgridsystemtopics) |
@@ -87,10 +87,10 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. Network/expressRouteCircuits | Igen | Nem |[ExpressRoute-áramkörök](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft. Network/expressRoutePorts | Igen | Nem |[ExpressRoute Direct](./metrics-supported.md#microsoftnetworkexpressrouteports) |
 |Microsoft. Network/loadBalancers (csak standard SKU-hoz)| Igen| Nem | [Terheléselosztó](./metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft. Network/natGateways| Nem | Nem | |
-|Microsoft. Network/privateEndpoints| Nem | Nem | |
-|Microsoft. Network/privateLinkServices| Nem | Nem |
-|Microsoft. Network/nyilvános IP | Nem | Nem |[Nyilvános IP-címek](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/natGateways| Nem | Nem | [NAT-átjárók](./metrics-supported.md#microsoftnetworknatgateways) |
+|Microsoft. Network/privateEndpoints| Nem | Nem | [Privát végpontok](./metrics-supported.md#microsoftnetworkprivateendpoints) |
+|Microsoft. Network/privateLinkServices| Nem | Nem | [Private link Services](./metrics-supported.md#microsoftnetworkprivatelinkservices) |
+|Microsoft. Network/nyilvános IP | Nem | Nem | [Nyilvános IP-címek](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft. Network/trafficManagerProfiles | Igen | Nem | [Traffic Manager-profilok](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft. OperationalInsights/munkaterületek| Igen | Nem | [Log Analytics-munkaterületek](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Microsoft. peering/társaik | Igen | Nem | [Társviszonyok](./metrics-supported.md#microsoftpeeringpeerings) |
@@ -107,7 +107,7 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. Storage/storageAccounts/fileServices | Igen| Nem | [Storage-fiókok – fájlok](./metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
 |Microsoft. Storage/storageAccounts/queueServices | Igen| Nem | [Storage-fiókok – várólisták](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
 |Microsoft. Storage/storageAccounts/tableServices | Igen| Nem | [Storage-fiókok – táblák](./metrics-supported.md#microsoftstoragestorageaccountstableservices) |
-|Microsoft. StorageCache/gyorsítótárak | Igen | Nem | |
+|Microsoft. StorageCache/gyorsítótárak | Igen | Nem | [HPC-gyorsítótárak](./metrics-supported.md#microsoftstoragecachecaches) |
 |Microsoft. StorageSync/storageSyncServices | Igen | Nem | [Storage Sync Services](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft. StreamAnalytics/streamingjobs | Igen | Nem | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
 |Microsoft. szinapszis/munkaterületek | Igen | Nem | [Synapse Analytics](./metrics-supported.md#microsoftsynapseworkspaces) |
@@ -181,7 +181,7 @@ A POST művelet a következő JSON-adattartalomot és sémát tartalmazza az ös
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az új [riasztási élményről](./alerts-overview.md).
 * További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).

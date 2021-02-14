@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097617"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369798"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>A Azure Cosmos DB beépített Jupyter notebookok támogatása (előzetes verzió)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,7 +24,7 @@ Azure Cosmos DB beépített Jupyter jegyzetfüzetek közvetlenül integrálva va
 
 A Azure Cosmos DB a C# és a Python jegyzetfüzeteket is támogatja minden API-hoz, beleértve a Core (SQL), Cassandra, Gremlin, Table és API-t a MongoDB. A notebookon belül kihasználhatja a beépített parancsok és szolgáltatások előnyeit, amelyek megkönnyítik Azure Cosmos DB erőforrások létrehozását, az adatok feltöltését és a lekérdezési adatok megjelenítését Azure Cosmos DBokban. 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Jupyter notebook-vizualizációk Azure Cosmos DB":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="A Jupyter notebookok támogatása Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>A Jupyter notebookok előnyei
 
@@ -61,5 +61,7 @@ A Jupyter notebookok többféle típusú összetevőt tartalmazhatnak, amelyek m
 A Azure Cosmos DB beépített Jupyter-jegyzetfüzetek megkezdéséhez tekintse meg a következő cikkeket:
 
 * [Jegyzetfüzetek engedélyezése Azure Cosmos-fiókban](enable-notebooks.md)
+* [Ismerkedés a notebook Samples-galériával](https://cosmos.azure.com/gallery.html)
 * [A Python notebook funkcióinak és parancsainak használata](use-python-notebook-features-and-commands.md)
 * [C# Notebook-funkciók és-parancsok használata](use-csharp-notebook-features-and-commands.md)
+* [Jegyzetfüzetek importálása GitHub-tárházból](import-github-notebooks.md)

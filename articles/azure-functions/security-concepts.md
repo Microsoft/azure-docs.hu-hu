@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491324"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368489"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -107,6 +107,8 @@ A (z) alkalmazás beállításaiban tárolt kapcsolatok és egyéb hitelesítő 
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+A felügyelt identitások bizonyos eseményindítók és kötések esetén a titkos kulcsok helyett is használhatók. Lásd: [identitás-alapú kapcsolatok](#identity-based-connections).
+
 További információ: a [felügyelt identitások használata app Service és Azure Functionshoz](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json).
 
 #### <a name="restrict-cors-access"></a>CORS-hozzáférés korlátozása
@@ -136,6 +138,14 @@ A beállításokat a helyi számítógépen lévő függvények fejlesztésekor 
 Noha az Alkalmazásbeállítások a legtöbb függvényhez elegendőek, érdemes lehet ugyanazokat a titkokat több szolgáltatás között megosztani. Ebben az esetben a titkok redundáns tárolása nagyobb potenciális biztonsági réseket eredményez. A biztonságosabb megközelítés egy központi titkos tárolási szolgáltatás, amely a titkok helyett a szolgáltatásra mutató hivatkozásokat használ.      
 
 A [Azure Key Vault](../key-vault/general/overview.md) egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával. Az alkalmazás beállításai között használhat egy Key Vault hivatkozást a kapcsolatok karakterláncának vagy kulcsának helyén. További információ: [Key Vault referenciák használata app Service és Azure Functionshoz](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json).
+
+### <a name="identity-based-connections"></a>Identitás-alapú kapcsolatok
+
+Az identitások felhasználhatók a titkok helyett az egyes erőforrásokhoz való csatlakozáshoz. Ennek az az előnye, hogy nem követeli meg a titkos kód kezelését, és részletesebb hozzáférés-vezérlést és naplózást biztosít. 
+
+Ha olyan kódot ír, amely létrehozza az [Azure ad-hitelesítést támogató Azure-szolgáltatásokhoz](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)való kapcsolódást, akkor a titkos vagy a kapcsolódási karakterlánc helyett identitást is használhat. Mindkét kapcsolati módszer részleteit az egyes szolgáltatások dokumentációja tartalmazza.
+
+Egyes Azure Functions triggerek és kötési bővítmények identitás-alapú kapcsolat használatával konfigurálhatók. Napjainkban ez magában foglalja az [Azure Blob](./functions-bindings-storage-blob.md) és az [Azure üzenetsor](./functions-bindings-storage-queue.md) -bővítmények használatát. A bővítmények identitás használatára való konfigurálásával kapcsolatos további információkért lásd: az [identitás-alapú kapcsolatok használata a Azure Functionsban](./functions-reference.md#configure-an-identity-based-connection).
 
 ### <a name="set-usage-quotas"></a>Használati kvóták beállítása
 
@@ -217,7 +227,7 @@ A hozzáférési korlátozások lehetővé teszik az engedélyezési/megtagadás
 
 Az átjáró-szolgáltatások, például az [azure Application Gateway](../application-gateway/overview.md) és az [Azure bejárati ajtó](../frontdoor/front-door-overview.md) lehetővé teszik a webalkalmazási tűzfal (WAF) beállítását. A WAF-szabályok az észlelt támadások figyelésére vagy letiltására szolgálnak, amelyek további védelmi réteget biztosítanak a függvények számára. A WAF beállításához a Function app-nak egy beadási vagy privát végpontok (előzetes verzió) használatával kell futnia. További információt a [privát végpontok használata](../app-service/networking/private-endpoint.md)című témakörben talál.    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Azure Functions Azure biztonsági alapterve](security-baseline.md)
 + [Azure Functions diagnosztika](functions-diagnostics.md)
