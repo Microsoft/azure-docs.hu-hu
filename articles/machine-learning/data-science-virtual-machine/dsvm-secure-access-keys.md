@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Megtudhatja, hogyan tárolhatja biztonságosan a hozzáférési hitelesítő adatokat a Data Science Virtual Machineon. Megtudhatja, hogyan használhatók a felügyelt szolgáltatásbeli identitások és a Azure Key Vault a hozzáférési hitelesítő adatok tárolásához.
 keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, térinformatikai elemzés, csoportos adatelemzési folyamat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: adc66fc794ac6cce3fc0f8fd1552f701a4968860
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309145"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519677"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Hozzáférési hitelesítő adatok biztonságos tárolása Azure-Data Science Virtual Machine
 

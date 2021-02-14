@@ -1,25 +1,18 @@
 ---
 title: Az Azure SSIS Integration Runtime kiépítése
 description: Ismerje meg, hogyan helyezheti üzembe az Azure SSIS integrációs modult az Azure Data Factoryben, hogy SSIS-csomagokat telepíthessen és futtathasson az Azure-ban.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 10/13/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
-ms.openlocfilehash: 98d18c1cd65ccd50d120f8a9edd693f79e87787e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: e0b84bb65e71b023121a5deae8295ddaf8879311
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555841"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391354"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul kiépítése Azure Data Factory
 

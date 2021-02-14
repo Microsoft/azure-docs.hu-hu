@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8c963f11a34217253f02cb5d116d66cdbf8bcc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033957"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391541"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a blob-adathozzáférést a Azure Portal
 
@@ -37,6 +37,9 @@ Ahhoz, hogy a blob-információk hozzáférhessenek a fiók elérési kulcsához
 - A [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor) szerepköre
 
 Amikor megpróbál hozzáférni a blob-adathoz a Azure Portalban, a portál először ellenőrzi, hogy van-e hozzárendelve szerepkör a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelethez**. Ha ezzel a művelettel társított egy szerepkört, akkor a portál a fiók kulcsát használja a Blobok adatokhoz való hozzáféréshez. Ha nem rendelt hozzá szerepkört ezzel a művelettel, akkor a portál az Azure AD-fiókjával próbál hozzáférni az adataihoz.
+
+> [!IMPORTANT]
+> Ha egy Storage-fiók zárolva van egy Azure Resource Manager **írásvédett** zárolással, a [kulcsok listázása](/rest/api/storagerp/storageaccounts/listkeys) művelet nem engedélyezett ehhez a Storage-fiókhoz. A **kulcsok listázása** post művelet, és az összes post művelet meg lesz akadályozva, ha **írásvédett** zárolás van konfigurálva a fiókhoz. Ezért ha a fiók **írásvédett** zárolással van zárolva, a felhasználóknak Azure ad-beli hitelesítő adatokkal kell rendelkezniük a blob adatainak a portálon való eléréséhez. További információ a Blobok adatainak a portálon az Azure AD-vel való eléréséről: [Azure ad-fiók használata](#use-your-azure-ad-account).
 
 > [!NOTE]
 > A klasszikus előfizetés-rendszergazdai szerepkörök szolgáltatás rendszergazdája és Co-Administrator tartalmazza a Azure Resource Manager [tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkörének megfelelőt. A **tulajdonosi** szerepkör magában foglalja az összes műveletet, beleértve a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a blob-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
@@ -111,6 +114,6 @@ A blob-feltöltési műveletek engedélyezésének megadásához kövesse az al�
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](../common/storage-auth-aad.md)
-- [A Azure Portal használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-portal.md)
+- [Az Azure Portal használata a blob- és üzenetsoradatok elérésére szolgáló Azure-szerepkör hozzárendeléséhez](../common/storage-auth-aad-rbac-portal.md)
 - [Az Azure CLI-vel hozzárendelhet egy Azure-szerepkört a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-cli.md)
 - [A Azure PowerShell modul használatával rendeljen hozzá egy Azure-szerepkört a blob-és üzenetsor-információ eléréséhez](../common/storage-auth-aad-rbac-powershell.md)

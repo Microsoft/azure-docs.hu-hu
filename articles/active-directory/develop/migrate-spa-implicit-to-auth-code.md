@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fc5d9cbd02490748c17a9f40a1440c5ad0c46278
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754957"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104110"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>JavaScript-alapú egyoldalas alkalmazás migrálása implicit engedélyről az Auth Code flow-ba
 
@@ -41,7 +41,7 @@ Ha továbbra is szeretné használni a meglévő alkalmazás-regisztrációt az 
 
 Kövesse az alábbi **lépéseket a webplatform-** átirányítási URI-k által jelenleg konfigurált alkalmazások regisztrálásához:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span></a> , és válassza ki a **Azure Active Directory** bérlőt.
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba</a> , és válassza ki a **Azure Active Directory** bérlőt.
 1. A **Alkalmazásregisztrációk** területen válassza ki az alkalmazást, majd a **hitelesítést**.
 1. A **webplatform csempén az** URI-k **átirányítása** területen válassza a figyelmeztetési szalagcímet, amely jelzi, hogy át kell telepítenie az URI-ket.
 
@@ -88,7 +88,7 @@ Ha törli az implicit engedélyezési beállításokat az alkalmazás regisztrá
 
 Az összes alkalmazás MSAL.js 2. x és a [PublicClientApplication][msal-js-publicclientapplication]való frissítése előtt **ne tiltsa le** az implicit engedélyezési folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az engedélyezési kód folyamatáról, beleértve az implicit és az Auth kód közötti különbségeket, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md).
 

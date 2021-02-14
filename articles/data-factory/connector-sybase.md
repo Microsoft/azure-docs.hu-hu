@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása Sybase használatával Azure Data Factory
 description: Megtudhatja, hogyan másolhatja át a Sybase adatait egy Azure Data Factoryi folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef63eded5403c1cf5faddec71ed3503c3ae2138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669834"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384809"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Adatok másolása Sybase használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,13 +56,13 @@ A Sybase társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Sybase** | Igen |
-| kiszolgáló | A Sybase-kiszolgáló neve. |Igen |
-| adatbázis | A Sybase-adatbázis neve. |Igen |
-| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű**és **Windows**. |Igen |
-| username | Adja meg a Sybase-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Sybase** | Yes |
+| kiszolgáló | A Sybase-kiszolgáló neve. |Yes |
+| adatbázis | A Sybase-adatbázis neve. |Yes |
+| authenticationType | A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Windows**. |Yes |
+| username | Adja meg a Sybase-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Yes |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
 
 **Példa**
 
@@ -102,7 +97,7 @@ A Sybase-adatok másolásához a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SybaseTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SybaseTable** | Yes |
 | tableName | A Sybase-adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -134,8 +129,8 @@ A Sybase adatainak másolásához a másolási tevékenység **forrása** szakas
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SybaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SybaseSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -183,5 +178,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

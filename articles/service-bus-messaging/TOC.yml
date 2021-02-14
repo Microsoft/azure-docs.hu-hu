@@ -144,6 +144,10 @@
           href: ./security-controls-policy.md
         - name: Hálózati biztonság
           href: network-security.md
+    - name: Integráció más szolgáltatásokkal
+      items:
+        - name: Azure Service Bus és Azure Event Grid integráció
+          href: service-bus-to-event-grid-integration-concept.md
 - name: Útmutatók
   items:
     - name: Áthelyezés régiók között
@@ -168,8 +172,6 @@
               href: message-sequencing.md
             - name: Üzenetek lejárata (élettartama)
               href: message-expiration.md
-            - name: Üzenetkezelés az Azure Event Griddel
-              href: service-bus-to-event-grid-integration-concept.md
         - name: Témakörszűrők és -műveletek
           href: topic-filters.md
         - name: Migrálás standard névterekről prémium névterekre

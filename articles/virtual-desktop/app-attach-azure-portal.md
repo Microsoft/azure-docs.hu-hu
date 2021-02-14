@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali MSIX-alkalmazás csatlakoztatása a
 description: A Windows rendszerű virtuális asztali MSIX-alkalmazás csatlakoztatása a Azure Portal használatával.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185954"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373470"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>MSIX-alkalmazás csatolásának beállítása az Azure Portal használatával
 
@@ -65,7 +65,7 @@ Ezután le kell töltenie és konfigurálnia kell a MSIX alkalmazás csatolása 
 
 A felügyeleti felület beállítása:
 
-1. [Nyissa meg a betekintő portált](https://preview.portal.azure.com/?feature.msixapplications=true#home).
+1. [Nyissa meg a Azure Portal](https://portal.azure.com).
 2. Ha a bővítmény megbízhatóságának megadását kérő üzenet jelenik meg, válassza az **Engedélyezés lehetőséget**.
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ Az alkalmazások közzététele:
 ## <a name="assign-a-user-to-an-app-group"></a>Felhasználó társítása egy alkalmazás-csoporthoz
 
 Miután MSIX-alkalmazásokat rendelt egy alkalmazás-csoporthoz, hozzáférést kell biztosítania a felhasználóknak. A hozzáférést a közzétett MSIX-alkalmazásokkal rendelkező alkalmazáscsoport felhasználói vagy felhasználói csoportjainak hozzáadásával rendelheti hozzá. A felhasználók egy alkalmazás-csoporthoz való hozzárendeléséhez kövesse az [alkalmazás-csoportok kezelése a Azure Portal](manage-app-groups.md) segítségével című témakör útmutatását.
+
+>[!NOTE]
+>A távoli alkalmazások a nyilvános előzetes verzióban való tesztelésekor eltűnnek a MSIX, ha a távoli alkalmazások nem tudnak csatlakozni a hírcsatornához. Az alkalmazások nem jelennek meg, mert a kiértékelési környezetben használt alkalmazáskészletet az éles környezetben működő távoli asztali közvetítő kézbesíti. Mivel az éles környezetben található távoli asztali közvetítő nem regisztrálja a MSIX alkalmazás távoli alkalmazások csatolását, az alkalmazások nem jelennek meg a hírcsatornában.
 
 ## <a name="change-msix-package-state"></a>MSIX-csomag állapotának módosítása
 

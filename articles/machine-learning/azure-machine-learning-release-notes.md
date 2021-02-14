@@ -9,16 +9,46 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100097075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375561"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>Azure Machine Learning SDK a Python v 1.22.0
++ **Hibajavítások és javítások**
+  + **azureml-automl-core**
+    + Kijavítva a hiba, ahol egy további pip-függőség lett hozzáadva a Conda YML-fájlhoz a látási modellekhez.
+  + **azureml-automl-runtime**
+    + Kijavítva a hiba, ahol a klasszikus előrejelzési modellek (például a AutoArima) olyan képzési adatokhoz vezethetnek, amelyekben nem szerepelnek az imputált célérték értékű sorok. Ez megsértette ezeknek a modelleknek az adategyezményét. * Az idősoros késleltető operátorban rögzített különböző hibák, amelyek késési előfordulási viselkedéssel rendelkeznek. Korábban a késések közötti művelet nem jelölte meg megfelelően az összes imputált sort, így nem mindig eredményezi a helyes előfordulási késési értékeket. A lag-kezelő és a gördülő ablak operátora közötti kompatibilitási problémák is kijavítva vannak a késések miatti viselkedéssel. Ez korábban azt eredményezte, hogy a gördülő ablak kezelője eldobott néhány sort a betanítási adatokból, amelyeket egyébként használnia kell.
+  + **azureml-core**
+    + Támogatás hozzáadása a token-hitelesítéshez a célközönség által.
+    + Adja hozzá `process_count` a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a többcsomópontos többcsomópontos PyTorch feladatok támogatásához.
+  + **azureml-pipeline-steps**
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) most, és már nem kísérletezik.
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): adjon hozzá argumentumot allowed_failed_count és allowed_failed_percent a hiba küszöbértékének a mini batch szintjén való vizsgálatához. A hiba küszöbértéke már 3 íz:
+       + error_threshold – a nem engedélyezett mini batch-elemek száma; 
+       + allowed_failed_count – a nem engedélyezett mini-kötegek száma; 
+       + allowed_failed_percent – a nem engedélyezett mini-kötegek százalékos aránya. 
+       
+       A feladatok akkor állnak le, ha az meghaladja valamelyiket. a visszamenőleges kompatibilitás érdekében error_threshold szükséges. A-1 értékre állítva hagyja figyelmen kívül.
+    + A AutoMLStep neve rögzített szóközökkel való kezelését.
+    + A ScriptRunConfig mostantól támogatja a HyperDriveStep
+  + **azureml-train-core**
+    + A ScriptRun meghívott HyperDrive-futtatások most már alárendeltnek minősülnek.
+    + Adja hozzá `process_count` a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a többcsomópontos többcsomópontos PyTorch feladatok támogatásához.
+  + **azureml-widgets**
+    + Adja hozzá a widget ParallelRunStepDetails egy ParallelRunStep állapotának megjelenítéséhez.
+    + Lehetővé teszi a HyperDrive-felhasználók számára, hogy egy további tengelyt lássanak a párhuzamos koordináták diagramon, amely megjeleníti az egyes hiperparaméterek beállítása tartozó egyes gyermekobjektumok metrikai értékét.
+
 
  ## <a name="2021-01-31"></a>2021-01-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio notebookok élménye (januári frissítés)
@@ -35,6 +65,7 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
   + Jobb teljesítmény 
   + Továbbfejlesztett sebesség és kernel megbízhatóság
   
+
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK a Python v 1.21.0
@@ -145,7 +176,7 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
     + A HyperDriveRun.get_children_sorted_by_primary_metric () gyorsabb befejezést tesz elérhetővé
     + Továbbfejlesztett hibakezelés a HyperDrive SDK-ban.
     +  Az összes kalkulátor-osztály elavult az ScriptRunConfig használatával a kísérlet futtatásának konfigurálásához. Az elavult osztályok a következők:
-        + MMLBaseEstimator
+        + MMLBase
         + Estimator
         + PyTorch 
         + TensorFlow 

@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 8953f9ca174414c55e6e06774167d3951d0bbd41
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090238"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103889"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>A Microsoft Identity platformmal regisztrált alkalmazások eltávolítása
 
@@ -39,9 +39,10 @@ A saját maga vagy a szervezete által regisztrált alkalmazásokat egy alkalmaz
 
 Egy alkalmazás törléséhez az alkalmazás tulajdonosaként vagy rendszergazdai jogosultságokkal kell szerepelnie.
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
-1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk** lehetőséget. Keresse meg, és válassza ki a konfigurálni kívánt alkalmazást. Miután kiválasztotta az alkalmazást, megjelenik annak **Áttekintés** lapja.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben az alkalmazás regisztrálva van.
+1. Keresse meg és válassza ki a **Azure Active Directory**. 
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  lehetőséget, majd válassza ki a konfigurálni kívánt alkalmazást. Miután kiválasztotta az alkalmazást, megjelenik annak **Áttekintés** lapja.
 1. Az **Áttekintés** lapon válassza a **Törlés** elemet.
 1. Kattintson az **Igen** gombra az alkalmazás törlésének megerősítéséhez.
 

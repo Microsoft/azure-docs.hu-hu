@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása a részletezésből Azure Data Factory használatával
 description: Bemutatjuk, hogyan másolhatók adatok a furatból a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 050037748969fe76dd1be9db80d68fb23ccd7940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bdd8df45d9e63898b3d08542aa0370d3c430651
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381035"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Adatok másolása a részletezésből Azure Data Factory használatával
 
@@ -51,9 +46,9 @@ A társított szolgáltatás részletezése a következő tulajdonságokkal tám
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **részletezés** | Igen |
-| connectionString | Egy ODBC-kapcsolati karakterlánc, amely a részletezéshez csatlakozik. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **részletezés** | Yes |
+| connectionString | Egy ODBC-kapcsolati karakterlánc, amely a részletezéshez csatlakozik. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 **Példa**
 
@@ -82,13 +77,13 @@ A társított szolgáltatás részletezése a következő tulajdonságokkal tám
         "type": "Drill",
         "typeProperties": {
             "connectionString": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -104,11 +99,11 @@ A társított szolgáltatás részletezése a következő tulajdonságokkal tám
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a részletezési adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok részletezésből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **DrillTable**értékre. A következő tulajdonságok támogatottak:
+Az adatok részletezésből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **DrillTable** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **DrillTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **DrillTable** | Yes |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
@@ -140,8 +135,8 @@ Az adatok részletezésből való másolásához állítsa a forrás típusát a
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **DrillSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **DrillSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -179,5 +174,5 @@ Az adatok részletezésből való másolásához állítsa a forrás típusát a
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

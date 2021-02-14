@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573190"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361706"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
@@ -64,7 +64,7 @@ Az alábbiakban megtalálhatja a Storage-fiókba másolható adatméret korláto
 
 | Adatok típusa             | Alapértelmezett korlát          |
 |--------------------------|------------------------|
-| BLOB blokkolása, oldal blobja    | A korlátokkal kapcsolatos aktuális információk: [Azure Blob Storage méretezési célok](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Azure standard Storage méretezési célok](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)és [Azure Files méretezési cél](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> A korlátok tartalmazzák az összes forrás adatait, beleértve a Data Box Disk is.|
+| BLOB blokkolása, oldal blobja    | A korlátokkal kapcsolatos aktuális információk: [Azure Blob Storage méretezési célok](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Azure standard Storage méretezési](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)célok és [Azure Files méretezési célok](../storage/files/storage-files-scale-targets.md). <br /><br /> A korlátok tartalmazzák az összes forrás adatait, beleértve a Data Box Disk is.|
 
 
 ## <a name="azure-object-size-limits"></a>Azure-objektum méretének korlátai
@@ -93,6 +93,6 @@ Itt láthatók a megírható Azure-objektumok méretei. Győződjön meg arról,
 |-------------------|-----------------------------------------------------------|
 | Felügyelt lemezek nevei       | <li> A névnek 1 – 80 karakter hosszúnak kell lennie. </li><li> A névnek betűvel vagy számmal kell kezdődnie, betűvel, számmal vagy aláhúzással kell végződnie. </li><li> A név csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. </li><li>   A névnek nem lehetnek szóközök vagy `/` .                                              |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [rendszerkövetelmények áttekintése Data Box Disk](data-box-disk-system-requirements.md)

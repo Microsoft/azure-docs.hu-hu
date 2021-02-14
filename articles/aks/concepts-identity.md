@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8d69033dedc3a45263b087c9b9ee5b156af460be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615801"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361060"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -166,7 +166,7 @@ Az Azure RBAC-integrációjában az AK egy Kubernetes-hitelesítési webhook-kis
 
 ![Azure-RBAC az Kubernetes engedélyezési folyamatához](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
-Ahogy a fenti ábrán is látható, az Azure RBAC-integráció használatakor a Kubernetes API-nak küldött összes kérelem ugyanezt a hitelesítési folyamatot fogja követni, ahogy az az [Azure Active Integration szakaszban](#azure-active-directory-integration)is látható. 
+Ahogy az a fenti ábrán is látható, az Azure RBAC-integráció használatakor a Kubernetes API-nak küldött összes kérelem ugyanezt a hitelesítési folyamatot fogja követni, ahogy az a [Azure Active Directory Integration (integráció) szakaszban](#azure-active-directory-integration)is látható. 
 
 De ezt követően, ahelyett, hogy kizárólag az Kubernetes RBAC-ra támaszkodik, a kérést az Azure engedélyezi, feltéve, hogy a kérést használó identitás létezik a HRE-ben. Ha az identitás nem létezik a HRE, például egy Kubernetes-szolgáltatásfiók, akkor az Azure-RBAC nem indul el, és ez lesz a normál Kubernetes RBAC.
 
@@ -174,6 +174,8 @@ Ebben a forgatókönyvben az egyik négy beépített szerepkört is megadhatja a
 
 Ez a funkció lehetővé teszi, hogy például ne csak a felhasználók számára engedélyezze az AK-erőforrást az előfizetések között, de be kell állítania és hozzá kell adni azokat a szerepköröket és engedélyeket, amelyek a Kubernetes API-hoz való hozzáférést vezérlik a fürtben. Például megadhatja a `Azure Kubernetes Service RBAC Viewer` szerepkört az előfizetés hatókörében, és a címzettje minden fürtből listázhatja és lekérheti az összes Kubernetes objektumot, de nem módosíthatja azokat.
 
+> [!IMPORTANT]
+> Vegye figyelembe, hogy a funkció használata előtt engedélyeznie kell az Azure RBAC Kubernetes-engedélyezést. További részletekért és részletes útmutatásért [lásd itt](manage-azure-rbac.md).
 
 #### <a name="built-in-roles"></a>Beépített szerepkörök
 
@@ -186,7 +188,6 @@ Az AK a következő négy beépített szerepkört biztosítja. Hasonlóak a [Kub
 | Az Azure Kubernetes Service RBAC rendszergazdája  | A rendszergazdai hozzáférés engedélyezése a névtéren belül. Írási/olvasási hozzáférés engedélyezése a névtér (vagy a fürt hatóköre) legtöbb erőforrásához, beleértve a szerepkörök és a szerepkör-kötések létrehozását a névtéren belül. Ez a szerepkör nem engedélyez írási hozzáférést az erőforrás-kvótához vagy magához a névtérhez. |
 | Azure Kubernetes Service RBAC-fürt rendszergazdája  | Lehetővé teszi a felügyelők számára, hogy bármilyen műveletet végezzenek bármilyen erőforráson. Teljes hozzáférést biztosít a fürt összes erőforrásához és az összes névtérhez. |
 
-**Ha szeretné megtudni, hogyan engedélyezheti az Azure RBAC az Kubernetes-engedélyezést, [olvassa el itt](manage-azure-rbac.md).**
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -197,14 +198,14 @@ Ez a táblázat összefoglalja, hogy a felhasználók hogyan hitelesíthetők a 
 
 A második oszlopban szereplő szerepkör-támogatás a Azure Portal **Access Control** lapján látható Azure RBAC szerepkör-támogatás. A fürt rendszergazdája Azure AD-csoport a portál **konfiguráció** lapján (vagy az Azure CLI-ben található paraméter nevével) jelenik meg `--aad-admin-group-object-ids` .
 
-| Leírás        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
+| Description        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
 | -------------------|------------|----------------------------|-------------|
-| Örökölt rendszergazdai bejelentkezés ügyféltanúsítvány használatával| Az **Azure Kubernetes rendszergazdai szerepköre**. Ez a szerepkör lehetővé teszi `az aks get-credentials` a jelzővel való használatot `--admin` , amely egy [örökölt (nem Azure ad-) fürt rendszergazdai tanúsítványát](control-kubeconfig-access.md) tölti le a felhasználó számára `.kube/config` . Ez az egyetlen célja az "Azure Kubernetes-rendszergazdai szerepkör".|n/a|Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz.| 
+| Örökölt rendszergazdai bejelentkezés ügyféltanúsítvány használatával| Az **Azure Kubernetes rendszergazdai szerepköre**. Ez a szerepkör lehetővé teszi `az aks get-credentials` a jelzővel való használatot `--admin` , amely egy [örökölt (nem Azure ad-) fürt rendszergazdai tanúsítványát](control-kubeconfig-access.md) tölti le a felhasználó számára `.kube/config` . Ez az egyetlen célja az "Azure Kubernetes-rendszergazdai szerepkör".|n.a.|Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz.| 
 | Azure AD manuális (fürt) RoleBindings| Az **Azure Kubernetes felhasználói szerepköre**. A "user" szerepkör lehetővé teszi a `az aks get-credentials` jelző nélküli használatot `--admin` . (Ez az egyetlen célja az "Azure Kubernetes felhasználói szerepkör".) Ennek eredményeképpen egy Azure AD-kompatibilis fürtön [egy üres bejegyzés](control-kubeconfig-access.md) tölthető le `.kube/config` , amely a böngészőalapú hitelesítést indítja el, amikor először használja `kubectl` .| A felhasználó nem szerepel ezen csoportok egyikében sem. Mivel a felhasználó nem tagja a fürt rendszergazdai csoportjainak, a jogosultságokat teljes mértékben a RoleBindings vagy ClusterRoleBindings vezérli. A (fürt) RoleBindings az [Azure ad-felhasználókat vagy az Azure ad-csoportokat jelölik](azure-ad-rbac.md) `subjects` . Ha nincsenek beállítva ilyen kötések, a felhasználó nem fog tudni Excute egyetlen `kubectl` parancsot sem.|Ha részletes hozzáférés-vezérlést szeretne, és nem használja az Azure RBAC-t a Kubernetes engedélyezéséhez. Vegye figyelembe, hogy a kötéseket beállító felhasználónak a táblázatban felsorolt más módszerek egyikével kell bejelentkeznie.|
 | Azure AD a rendszergazda csoport tagjaként| Lásd fent|A felhasználó az itt felsorolt csoportok egyikének tagja. Az AK automatikusan létrehoz egy ClusterRoleBinding, amely az összes felsorolt csoportot a `cluster-admin` Kubernetes szerepkörhöz köti. Az ezekben a csoportokban lévő felhasználók az összes parancsot is futtathatják `kubectl` `cluster-admin` .|Ha a felhasználók számára teljes körű rendszergazdai jogosultságot szeretne biztosítani, és _nem_ használja az Azure RBAC-t a Kubernetes engedélyezéséhez.|
 | Azure AD az Azure RBAC Kubernetes-engedélyezéshez|Két szerepkör: először az **Azure Kubernetes felhasználói szerepköre** (a fentiek szerint). Másodszor, az egyik "Azure Kubernetes Service **RBAC**..." a fent felsorolt szerepkörök vagy a saját egyéni alternatívája.|A konfiguráció lap rendszergazdai szerepkörök mezője nem releváns, ha engedélyezve van az Azure-RBAC az Kubernetes-hitelesítéshez.|Azure RBAC-t használ a Kubernetes engedélyezéséhez. Ez a megközelítés részletes szabályozást biztosít anélkül, hogy be kellene állítania a RoleBindings vagy a ClusterRoleBindings.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD és a Kubernetes RBAC megismeréséhez tekintse meg a következőt: [Azure Active Directory integrálása az AK-val][aks-aad].
 - A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][operator-best-practices-identity].

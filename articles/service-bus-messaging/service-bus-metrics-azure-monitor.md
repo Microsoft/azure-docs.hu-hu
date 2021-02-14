@@ -2,13 +2,13 @@
 title: Azure Service Bus metrikák a Azure Monitorban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Service Bus entitások (várólisták, témakörök és előfizetések) figyelésére.
 ms.topic: article
-ms.date: 11/18/2020
-ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 02/12/2021
+ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916882"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519099"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor Azure Service Bus metrikák
 
@@ -54,7 +54,7 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 Megszámolja az adatok és a felügyeleti műveleti kérelmek számát.
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 | Bejövő kérelmek| A Service Bus szolgáltatásnak megadott időszakon keresztül küldött kérések száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Sikeres kérelmek|A Service Bus szolgáltatásnak adott időszakon keresztül végrehajtott sikeres kérelmek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
@@ -72,9 +72,9 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 ## <a name="message-metrics"></a>Üzenet metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
-|Bejövő üzenetek|A megadott időszakban Service Bus küldött események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
+|Bejövő üzenetek|A megadott időszakban Service Bus küldött események vagy üzenetek száma. Ez a metrika nem tartalmaz automatikusan továbbított üzeneteket.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Kimenő üzenetek|A Service Bus a megadott időszakban fogadott események vagy üzenetek száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 | Üzenetek| Üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: entitás neve |
 | Aktív üzenetek| Üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Dimenzió: entitás neve |
@@ -89,7 +89,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 ## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |Aktív kapcsolatok|Az aktív kapcsolatok száma a névtérben és a névtérben lévő entitásokban. A metrika értéke egy adott időponthoz tartozó érték. Azok a kapcsolatok, amelyek közvetlenül az adott időpontot követően aktívak voltak, nem tükröződnek a metrikában.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
 |Megnyitott kapcsolatok |A nyitott kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: entitás neve|
@@ -104,7 +104,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 > 
 > A figyelt másik mérőszám: **szabályozott kérelmek**. Nem lehet probléma, ha a névtér a memóriájában, a PROCESSZORon és a felügyelt kapcsolaton belül marad. További információ: [szabályozás Azure Service Bus Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) szinten
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 | ------------------- | ----------------- |
 |CPU-használat/névtér|A névtér százalékos CPU-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: entitás neve|
 |Memória méretének használata névtérben|A névtér százalékos memória-használata.<br/><br/> Egység: százalék <br/> Összesítés típusa: maximum <br/> Dimenzió: entitás neve|
@@ -113,7 +113,7 @@ A következő két típusú hiba van besorolva felhasználói hibaként:
 
 A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
-|Dimenzió neve|Leírás|
+|Dimenzió neve|Description|
 | ------------------- | ----------------- |
 |Entitás neve| Service Bus támogatja az üzenetküldési entitásokat a névtérben.|
 
@@ -157,7 +157,7 @@ A Azure Service Bus a Azure Monitor metrikáinak következő dimenzióit támoga
     8. Az **e-mail/SMS/leküldés/hang** oldalon hajtsa végre a következő műveleteket:
         1. Válassza az **e-mail** lehetőséget. 
         2. Adja meg az **e-mail-címet**. 
-        3. Kattintson az **OK** gombra.
+        3. Válassza az **OK** lehetőséget.
 
             ![A műveleti csoport hozzáadása lap képernyőképe. Az "e-mail küldése" nevű művelet a csoportba kerülő e-mail-/SMS/push/Voice típusú művelettel.](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. A **műveleti csoport hozzáadása** lapon kattintson **az OK gombra**. 

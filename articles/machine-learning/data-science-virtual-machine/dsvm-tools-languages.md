@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: A Data Science Virtual Machineon előre telepített támogatott programok és kapcsolódó eszközök.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42110eb896a751080044247932770f37617174c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843266"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516430"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott nyelvek 
 
@@ -56,7 +55,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
   A Visual Studio Community Edition-ben telepített Python Tools for Visual Studio (PTVS) használata. Alapértelmezés szerint az PTVS-ben automatikusan beállított környezet a Python 3,6. 
 
     > [!NOTE]
-    > Ahhoz, hogy a PTVS a Python 2,7-es verzióra mutasson, egyéni környezetet kell létrehoznia a PTVS-ben. A környezeti útvonal a Visual Studio Community kiadásban történő beállításához nyissa meg az **eszközök**  ->  **Python-eszközök**  ->  **Python-környezetek** elemet, és válassza a **+ Egyéni**lehetőséget. Ezután állítsa be a **c:\anaconda\envs\python2** helyet, és válassza az **automatikus észlelés**lehetőséget.
+    > Ahhoz, hogy a PTVS a Python 2,7-es verzióra mutasson, egyéni környezetet kell létrehoznia a PTVS-ben. A környezeti útvonal a Visual Studio Community kiadásban történő beállításához nyissa meg az **eszközök**  ->  **Python-eszközök**  ->  **Python-környezetek** elemet, és válassza a **+ Egyéni** lehetőséget. Ezután állítsa be a **c:\anaconda\envs\python2** helyet, és válassza az **automatikus észlelés** lehetőséget.
 
 * Használat a Jupyter-ben:
 
@@ -111,7 +110,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Microsoft R Open 3. x (100%-kompatibilis a CRAN-R-vel)<br /> Microsoft R Server 9. x Developer Edition (skálázható, nagyvállalati használatra kész R platform)|
 | Támogatott DSVM-kiadások      | Linux, Windows     |
-| Hogyan van konfigurálva/telepítve a DSVM?  | Windows `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Hogyan van konfigurálva/telepítve a DSVM?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Mintákra mutató hivatkozások      | Az R-hez készült minta Jupyter-jegyzetfüzeteket tartalmazza.     |
 | A DSVM kapcsolódó eszközök      | Sparker, Python, Julia      |
 
@@ -177,7 +176,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Használat a Jupyter-ben:
 
-  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Júlia-verzióként**állíthatja be.
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Júlia-verzióként** állíthatja be.
 
 * Julia-csomagok telepítése:
 
@@ -194,7 +193,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 * Használat a Jupyter-ben:
 
-  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Júlia-verzióként**állíthatja be.
+  Nyissa meg a Jupyter, és válassza az **új** lehetőséget egy új jegyzetfüzet létrehozásához. A kernel típusát **Júlia-verzióként** állíthatja be.
 
 * Julia-csomagok telepítése:
 

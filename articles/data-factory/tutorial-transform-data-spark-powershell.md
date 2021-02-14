@@ -1,21 +1,17 @@
 ---
 title: 'Az adatátalakítás a Spark használatával Azure Data Factory '
 description: Ez az oktatóanyag lépésenkénti utasításokat biztosít az adatok átalakításához egy Spark-tevékenység az Azure Data Factoryban való használatával.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409089"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377618"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 
@@ -66,7 +62,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     if __name__ == "__main__":
         main()
     ```
-2. Cserélje le az ** &lt; StorageAccountName &gt; ** az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
+2. Cserélje le az **&lt; StorageAccountName &gt;** az Azure Storage-fiók nevére. Ezután mentse a fájlt. 
 3. Az Azure Blob Storage-ban hozzon létre egy **adftutorial** nevű tárolót, ha még nem létezik. 
 4. Hozzon létre egy **spark** mappát.
 5. Hozzon létre egy **szkript** almappát a **spark** mappában. 
@@ -136,7 +132,7 @@ Frissítse a következő tulajdonságok értékeit a társított szolgáltatás 
 
 - **hostSubscriptionId**. Cserélje le a &lt;SubscriptionId&gt; kifejezést az Azure-előfizetés azonosítójára. Létrejön az igény szerinti HDInsight-fürt ebben az előfizetésben. 
 - **bérlő**. A &lt;tenantID&gt; helyére írja a saját Azure bérlőjének az azonosítóját. 
-- **servicePrincipalId**, **servicePrincipalKey**. A &lt;servicePrincipalID&gt; és a &lt;servicePrincipalKey&gt; helyére írja az Azure Active Directoryban használatos szolgáltatásneve azonosítóját és kulcsát. A szolgáltatásnévnek az előfizetés vagy a létrejövő fürtnek helyet adó erőforráscsoport Közreműködő szerepkörének tagjának kell lennie. Részletek: [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md). Az **egyszerű szolgáltatásnév azonosítója** megegyezik az alkalmazás- *azonosítóval* , és az **egyszerű szolgáltatásnév kulcsa** megegyezik az *ügyfél titkos*kódjának értékével.
+- **servicePrincipalId**, **servicePrincipalKey**. A &lt;servicePrincipalID&gt; és a &lt;servicePrincipalKey&gt; helyére írja az Azure Active Directoryban használatos szolgáltatásneve azonosítóját és kulcsát. A szolgáltatásnévnek az előfizetés vagy a létrejövő fürtnek helyet adó erőforráscsoport Közreműködő szerepkörének tagjának kell lennie. Részletek: [Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása](../active-directory/develop/howto-create-service-principal-portal.md). Az **egyszerű szolgáltatásnév azonosítója** megegyezik az alkalmazás- *azonosítóval* , és az **egyszerű szolgáltatásnév kulcsa** megegyezik az *ügyfél titkos* kódjának értékével.
 - **clusterResourceGroup**. A &lt;resourceGroupOfHDICluster&gt; helyére írja annak az erőforráscsoportnak a nevét, amelyben a HDInsight-fürtöt létre kell hozni. 
 
 > [!NOTE]
@@ -182,7 +178,7 @@ Vegye figyelembe a következő szempontokat:
 
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása 
-Már létrehozta a társított szolgáltatást és a folyamat definícióját JSON-fájlokban. Most hozzunk létre egy adat-előállítót, és helyezzük üzembe a társított szolgáltatás és a folyamat JSON-fájljait PowerShell-parancsmagok segítségével. Futtassa egyesével az alábbi PowerShell-parancsokat: 
+Már létrehozta a társított szolgáltatást és a folyamat definícióját JSON-fájlokban. Most hozzon létre egy adatelőállítót, és telepítse a társított szolgáltatás és a folyamat JSON-fájljait a PowerShell-parancsmagok használatával. Futtassa egyesével az alábbi PowerShell-parancsokat: 
 
 1. Adja meg egyesével a változókat.
 
@@ -331,7 +327,7 @@ Már létrehozta a társított szolgáltatást és a folyamat definícióját JS
 4. Ellenőrizze, hogy az `outputfiles` nevű mappa létrejött-e az adftutorial tároló `spark` mappájában a Spark program kimenetével. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket: 
 
 > [!div class="checklist"]

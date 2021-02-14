@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096389"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518164"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
@@ -233,7 +233,7 @@ A probléma megoldásához törölje a társítást mindkét virtuális hálóza
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nem sikerült a Databricks virtuális hálózat társítása
 
-A probléma megoldásához konfigurálja a **Azure Databricks** alatt a virtuális hálózat társítását, majd adja meg a cél virtuális hálózatot az **erőforrás-azonosító** használatával. További információ: [Databricks virtuális hálózat létrehozása távoli virtuális hálózathoz](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+A probléma megoldásához konfigurálja a **Azure Databricks** alatt a virtuális hálózat társítását, majd adja meg a cél virtuális hálózatot az **erőforrás-azonosító** használatával. További információ: [Databricks virtuális hálózat létrehozása távoli virtuális hálózathoz](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2).
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>A távoli virtuális hálózat nem rendelkezik átjáróval
 

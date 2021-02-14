@@ -1,22 +1,18 @@
 ---
 title: Ütemezés és végrehajtás a Data Factory
 description: Az Azure Data Factory alkalmazás modelljének ütemezési és végrehajtási szempontjainak megismerése.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 60410eb2a9a5f18abf2daf87646943ffdc944402
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bfdae688f7736149fe7ddf04cd3833d9adf30818
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495174"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382718"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
 > [!NOTE]
@@ -184,11 +180,11 @@ A következő táblázat a **rendelkezésre állási** szakaszban használható 
 
 | Tulajdonság | Leírás | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- |
-| frequency |Megadja az adatkészlet-szelet gyártásának időegységét.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Igen |NA |
-| interval |A gyakoriság szorzóját adja meg<br/><br/>A "Frequency x Interval" érték határozza meg, hogy milyen gyakran történjen a szelet előállítása.<br/><br/>Ha az adatkészletet óránként kell darabolni, a <b>gyakoriságot</b> <b>óra</b>értékre kell állítani, és az <b>intervallumot</b> <b>1-re</b>kell állítania.<br/><br/><b>Megjegyzés</b>: Ha a gyakoriságot percben adja meg, azt javasoljuk, hogy az intervallumot 15-nél kevesebbre állítsa be |Igen |NA |
-| stílus |Megadja, hogy a szelet az intervallum elején/végén legyen-e előkészítve.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha a gyakoriság értéke hónap, és a Style EndOfInterval értékre van állítva, a szelet a hónap utolsó napján jön létre. Ha a stílus StartOfInterval értékre van állítva, a szelet a hónap első napján jön létre.<br/><br/>Ha a gyakoriság beállítása nap, a stílus pedig EndOfInterval, a szelet a nap utolsó órájában jön létre.<br/><br/>Ha a gyakoriság értéke óra, és a stílus értéke EndOfInterval, a szelet az óra végén jön létre. A szeletek esetében például 1 – 2 PM-időszak esetén a SZELET 2 ÓRAKOR jön létre. |Nem |EndOfInterval |
-| anchorDateTime |Meghatározza a ütemező által az adatkészlet-szeletek határainak kiszámításához használt abszolút pozíciót. <br/><br/><b>Megjegyzés</b>: Ha a AnchorDateTime olyan részek vannak, amelyek részletesebbek, mint a gyakoriság, akkor a rendszer figyelmen kívül hagyja a további szemcsés részeket. <br/><br/>Ha például az <b>intervallum</b> <b>óránként</b> (Frequency: Hour és Interval: 1), a <b>AnchorDateTime</b> pedig <b>perc és másodperc</b>értéket tartalmaz, a rendszer figyelmen kívül hagyja a AnchorDateTime <b>perc és másodperc</b> részét. |Nem |01/01/0001 |
-| offset |TimeSpan, amely az összes adatkészlet összes szeletének kezdetét és végét eltolja. <br/><br/><b>Megjegyzés</b>: Ha a anchorDateTime és az eltolás is meg van adva, az eredmény a kombinált eltolás. |Nem |NA |
+| frequency |Megadja az adatkészlet-szelet gyártásának időegységét.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Yes |NA |
+| interval |A gyakoriság szorzóját adja meg<br/><br/>A "Frequency x Interval" érték határozza meg, hogy milyen gyakran történjen a szelet előállítása.<br/><br/>Ha az adatkészletet óránként kell darabolni, a <b>gyakoriságot</b> <b>óra</b>értékre kell állítani, és az <b>intervallumot</b> <b>1-re</b>kell állítania.<br/><br/><b>Megjegyzés</b>: Ha a gyakoriságot percben adja meg, azt javasoljuk, hogy az intervallumot 15-nél kevesebbre állítsa be |Yes |NA |
+| stílus |Megadja, hogy a szelet az intervallum elején/végén legyen-e előkészítve.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha a gyakoriság értéke hónap, és a Style EndOfInterval értékre van állítva, a szelet a hónap utolsó napján jön létre. Ha a stílus StartOfInterval értékre van állítva, a szelet a hónap első napján jön létre.<br/><br/>Ha a gyakoriság beállítása nap, a stílus pedig EndOfInterval, a szelet a nap utolsó órájában jön létre.<br/><br/>Ha a gyakoriság értéke óra, és a stílus értéke EndOfInterval, a szelet az óra végén jön létre. A szeletek esetében például 1 – 2 PM-időszak esetén a SZELET 2 ÓRAKOR jön létre. |No |EndOfInterval |
+| anchorDateTime |Meghatározza a ütemező által az adatkészlet-szeletek határainak kiszámításához használt abszolút pozíciót. <br/><br/><b>Megjegyzés</b>: Ha a AnchorDateTime olyan részek vannak, amelyek részletesebbek, mint a gyakoriság, akkor a rendszer figyelmen kívül hagyja a további szemcsés részeket. <br/><br/>Ha például az <b>intervallum</b> <b>óránként</b> (Frequency: Hour és Interval: 1), a <b>AnchorDateTime</b> pedig <b>perc és másodperc</b>értéket tartalmaz, a rendszer figyelmen kívül hagyja a AnchorDateTime <b>perc és másodperc</b> részét. |No |01/01/0001 |
+| offset |TimeSpan, amely az összes adatkészlet összes szeletének kezdetét és végét eltolja. <br/><br/><b>Megjegyzés</b>: Ha a anchorDateTime és az eltolás is meg van adva, az eredmény a kombinált eltolás. |No |NA |
 
 ### <a name="offset-example"></a>eltolási példa
 Alapértelmezés szerint a napi ( `"frequency": "Day", "interval": 1` ) szeletek a 12 UTC időpontnál (éjfélkor) kezdődnek. Ha a kezdési időpontot 6 UTC-időre szeretné használni, állítsa be az eltolást az alábbi kódrészletben látható módon: 
@@ -232,8 +228,8 @@ Az adatkészlet definíciójának **szabályzat** szakasza meghatározza azokat 
 
 | Házirend neve | Leírás | Alkalmazva erre | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ellenőrzi, hogy egy **Azure-blobban** lévő adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure-blob |Nem |NA |
-| minimumRows | Ellenőrzi, hogy a **Azure SQL Database** vagy az **Azure táblában** lévő adatmennyiség tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
+| minimumSizeMB | Ellenőrzi, hogy egy **Azure-blobban** lévő adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure-blob |No |NA |
+| minimumRows | Ellenőrzi, hogy a **Azure SQL Database** vagy az **Azure táblában** lévő adatmennyiség tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |No |NA |
 
 #### <a name="examples"></a>Példák
 **minimumSizeMB:**

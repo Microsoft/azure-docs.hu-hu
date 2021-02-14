@@ -1,22 +1,19 @@
 ---
 title: Fájlok áthelyezése a fájl alapú tárterület között
 description: Megtudhatja, hogyan helyezhet át fájlokat a fájl-alapú tárolók között Azure Data Factory használatával a megoldás sablon használatával.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522720"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361944"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése Azure Data Factory
 
@@ -62,7 +59,7 @@ A sablon négy paramétert határoz meg:
 
     ![A folyamat megjelenítése](media/solution-template-move-files/move-files4.png)
 
-5. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.   A paraméterek a mappa elérési útja, ahová át kívánja helyezni a fájlokat és a mappa elérési útját, ahová át szeretné helyezni a fájlokat. 
+5. Válassza a **hibakeresés** lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.   A paraméterek a mappa elérési útja, ahová át kívánja helyezni a fájlokat és a mappa elérési útját, ahová át szeretné helyezni a fájlokat. 
 
     ![A folyamat futtatása](media/solution-template-move-files/move-files5.png)
 
@@ -70,7 +67,7 @@ A sablon négy paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-move-files/move-files6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory](solution-template-copy-new-files-lastmodifieddate.md)
 

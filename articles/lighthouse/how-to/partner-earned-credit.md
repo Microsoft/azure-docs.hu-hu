@@ -1,32 +1,30 @@
 ---
 title: A partner AZONOSÍTÓjának összekapcsolása a delegált erőforrásokra gyakorolt hatás nyomon követéséhez
 description: Megtudhatja, hogyan rendelheti hozzá partner-AZONOSÍTÓját az Azure Lighthouse használatával kezelt felhasználói erőforrásokhoz kapcsolódó partneri kreditek (PEC) fogadásához.
-ms.date: 01/28/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985971"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372093"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>A partner AZONOSÍTÓjának összekapcsolása a delegált erőforrásokra gyakorolt hatás nyomon követéséhez 
 
 Ha Ön a [Microsoft Partner Network](https://partner.microsoft.com/)tagja, összekapcsolhatja a Partner azonosítóját a delegált ügyfelek erőforrásainak kezeléséhez használt hitelesítő adatokkal, így a Microsoft azonosíthatja és felismerheti az Azure-ügyfelek sikerességét biztosító partnereket. Ez a hivatkozás azt is lehetővé teszi, hogy a [CSP (Cloud Solution Provider)](/partner-center/csp-overview) partnerei megkapják a [felügyelt szolgáltatásokra (PEC) vonatkozó partneri kreditet](/partner-center/partner-earned-credit) azon ügyfelek számára, akik [aláírták a Microsoft Customer szerződést (MCA)](/partner-center/confirm-customer-agreement) , és [Az Azure-csomag alá](/partner-center/azure-plan-get-started)tartoznak.
 
-Ha az [Azure Marketplace-en felügyelt szolgáltatási ajánlatokat használó ügyfeleket](publish-managed-services-offers.md)készít, a csatolás automatikusan megtörténik az ajánlatok közzétételéhez használt fiókpartner-fiókhoz társított MPN-azonosító használatával. Ezeknek az ügyfeleknek a hatásainak nyomon követéséhez nincs szükség további műveletekre.
-
-Ha az [ügyfeleket Azure Resource Management-sablonok használatával](onboard-customer.md)készíti elő, a hivatkozás létrehozásához műveletet kell végrehajtania. Ezt úgy teheti meg, hogy az [MPN-azonosítót összekapcsolja](../../cost-management-billing/manage/link-partner-id.md) legalább egy olyan felhasználói fiókkal, amely az összes előfizetett előfizetéshez hozzáfér.
+Az Azure Lighthouse-tevékenységek elismerésének megszerzéséhez az MPN-azonosítót legalább egy felhasználói fiókkal kell [összekapcsolni](../../cost-management-billing/manage/link-partner-id.md) a felügyeleti bérlőben, és biztosítania kell, hogy a társított fiók hozzáférjen a beérkező előfizetésekhez.
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Partner-azonosító hozzárendelése új ügyfelek bevezetéséhez
 
-Ha Azure Resource Manager-sablonok (ARM-sablonok) segítségével készíti elő az ügyfeleket, az alábbi eljárással összekapcsolhatja a Partner azonosítóját (és ha van ilyen), akkor a partner-azonosítót (ha van). A lépések elvégzéséhez ismernie kell az [MPN-Partner azonosítóját](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Ügyeljen arra, hogy a partnerprofilon szereplő **társított MPN-azonosítót** használja.
+A következő eljárással kapcsolhatja össze partneri AZONOSÍTÓját (és ha szükséges, a partner által létrehozott kreditet is engedélyezheti). A lépések elvégzéséhez ismernie kell az [MPN-Partner azonosítóját](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Ügyeljen arra, hogy a partnerprofilon szereplő **társított MPN-azonosítót** használja.
 
 Az egyszerűség kedvéért javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, csatolja a **társított MPN-azonosítóhoz**, majd minden ügyfél számára hozzáférést biztosítson a [PEC-re jogosult Azure beépített szerepkörhöz](/partner-center/azure-roles-perms-pec).
 
-1. [Hozzon létre egy egyszerű szolgáltatásnevet](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) a kezelő bérlőben. Ebben a példában az egyszerű szolgáltatásnév számára a name *Provider Automation-fiókot* fogjuk használni.
+1. [Hozzon létre egy egyszerű szolgáltatásnév felhasználói fiókot](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) a felügyeleti bérlőben. Ebben a példában az egyszerű szolgáltatásnév fiókhoz tartozó name *Provider Automation-fiókot* fogjuk használni.
 1. Az egyszerű szolgáltatás fiókjának használatával [csatolja a társított MPN-azonosítót](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) a felügyeleti bérlőben. Ezt csak egyszer kell elvégeznie.
-1. Amikor [ARM-sablonokkal](onboard-customer.md)végez bevezetést, ügyeljen arra, hogy olyan hitelesítést tartalmazzon, amely tartalmazza a szolgáltatói Automation-fiókot olyan felhasználóként, aki a [PEC használatára jogosult Azure beépített szerepkörrel](/partner-center/azure-roles-perms-pec)rendelkezik.
+1. Amikor [ARM-sablonokkal](onboard-customer.md) vagy [felügyelt szolgáltatás-ajánlatokkal](publish-managed-services-offers.md)végez egy ügyfelet, ügyeljen arra, hogy olyan hitelesítést tartalmazzon, amely tartalmazza a szolgáltató Automation-fiókját a [PEC használatára jogosult Azure beépített szerepkörrel](/partner-center/azure-roles-perms-pec)rendelkező felhasználóként.
 
 A lépéseket követve minden Ön által kezelt ügyfél-bérlő társítva lesz a partner-AZONOSÍTÓhoz. A szolgáltatói Automation-fióknak nem kell hitelesítenie vagy végrehajtania semmilyen műveletet az ügyfél bérlője számára.
 

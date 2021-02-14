@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): kiértékeli & több ellenőrzési modelljét �
 description: Ismerje meg a Azure Machine Learning Studio (klasszikus) modell teljesítményének figyeléséhez használható metrikákat.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ca369f8a3e680a4d2aae49df83dda0cdd3dc4075
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310149"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520017"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Modell teljesítményének kiértékelése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Ebből a cikkből megtudhatja, hogyan figyelheti a modell teljesítményének figyeléséhez használható mérőszámokat Azure Machine Learning Studio (klasszikus).  A modell teljesítményének kiértékelése az adatelemzési folyamat egyik alapvető fázisa. Azt jelzi, hogy egy adatkészlethez tartozó pontozási (előrejelzések) hogyan lett kiképezve egy betanított modellből. A Azure Machine Learning Studio (klasszikus) a modell kiértékelését két fő gépi tanulási modulon keresztül támogatja: 
@@ -47,7 +47,7 @@ Azt is megteheti, hogy több érvényesítést is használhat, hogy a bemeneti a
 A következő részekben egyszerű regressziós és besorolási modelleket hozunk létre, és kiértékeljük a teljesítményüket a [kiértékelési modell][evaluate-model] és a [modell-ellenőrzési][cross-validate-model] modulok használatával.
 
 ## <a name="evaluating-a-regression-model"></a>Regressziós modell kiértékelése
-Feltételezzük, hogy az autó árát a méretek, a lóerő, a motor specs és egyéb funkciók használatával szeretnénk előre jelezni. Ez egy tipikus regressziós probléma, amelyben a célként megadott változó ( *Ár* ) folytonos számérték. Egy lineáris regressziós modellt is használhatunk, amely egy adott autó funkciójának értéke alapján előre jelezheti az autó árát. Ez a regressziós modell a betanított adatkészletek kiértékelésére használható. Az előre jelzett személygépkocsik díjszabásával kiértékeljük a modell teljesítményét, és megvizsgáljuk, hogy az előrejelzések mekkora mértékben térnek el a tényleges árak átlagával. Ennek szemléltetése érdekében a Machine Learning Studio (klasszikus) **tárolt adatkészletek** szakaszában elérhető *Automobile Price (nyers) adatkészletet* használjuk.
+Feltételezzük, hogy az autó árát a méretek, a lóerő, a motor specs és egyéb funkciók használatával szeretnénk előre jelezni. Ez egy tipikus regressziós probléma, amelyben a célként megadott változó (*Ár*) folytonos számérték. Egy lineáris regressziós modellt is használhatunk, amely egy adott autó funkciójának értéke alapján előre jelezheti az autó árát. Ez a regressziós modell a betanított adatkészletek kiértékelésére használható. Az előre jelzett személygépkocsik díjszabásával kiértékeljük a modell teljesítményét, és megvizsgáljuk, hogy az előrejelzések mekkora mértékben térnek el a tényleges árak átlagával. Ennek szemléltetése érdekében a Machine Learning Studio (klasszikus) **tárolt adatkészletek** szakaszában elérhető *Automobile Price (nyers) adatkészletet* használjuk.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
@@ -65,7 +65,7 @@ Kapcsolja össze a portokat az 1. ábrán látható módon, és állítsa a [Tra
 1. ábra Regressziós modell kiértékelése.
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
-A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Megjelenítés* elemet a kiértékelés eredményeinek megtekintéséhez. A regressziós modellekhez elérhető értékelési mérőszámok a következők: *abszolút hiba* , *gyökér középérték abszolút hiba* , *relatív abszolút hiba* , *relatív négyzetes hiba* és a *meghatározási együttható*.
+A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Megjelenítés* elemet a kiértékelés eredményeinek megtekintéséhez. A regressziós modellekhez elérhető értékelési mérőszámok a következők: *abszolút hiba*, *gyökér középérték abszolút hiba*, *relatív abszolút hiba*, *relatív négyzetes hiba* és a *meghatározási együttható*.
 
 A "hiba" kifejezés az előre jelzett érték és a True érték közötti különbséget jelenti. A különbség abszolút értékét vagy négyzetét általában úgy számítjuk ki, hogy az összes példányban a hibák teljes mértékét rögzítik, mivel az előre jelzett és a igaz érték közötti különbség bizonyos esetekben negatív lehet. A hiba mérőszámai egy regressziós modell prediktív teljesítményét mérik a valódi értékekkel kapcsolatos jóslatok középértéke alapján. Az alacsonyabb hibaérték azt jelenti, hogy a modell pontosabb az előrejelzések készítése során. A nulla általános hiba azt jelenti, hogy a modell tökéletesen illeszkedik az adatokhoz.
 
@@ -107,7 +107,7 @@ Kösse össze a portokat az 5. ábrán látható módon, és állítsa a [Train 
 5. ábra Bináris besorolási modell kiértékelése.
 
 ### <a name="inspecting-the-evaluation-results"></a>A kiértékelés eredményeinek vizsgálata
-A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Megjelenítés* elemet a kiértékelés eredményeinek megtekintéséhez (7. ábra). A bináris besorolású modellekhez elérhető értékelési mérőszámok a következők: *pontosság* , *pontosság* , *visszahívás* , *F1 pontszám* és *AUC*. Emellett a modul egy zavart mátrixot jelenít meg, amely a valódi pozitív, a hamis negatív, a hamis pozitív és az igaz negatív érték, valamint a *Roc* , a *pontosság/visszahívás* és a *lift* görbék számát mutatja.
+A kísérlet futtatása után kattintson a [modell kiértékelése][evaluate-model] modul kimeneti portjára, és válassza a *Megjelenítés* elemet a kiértékelés eredményeinek megtekintéséhez (7. ábra). A bináris besorolású modellekhez elérhető értékelési mérőszámok a következők: *pontosság*, *pontosság*, *visszahívás*, *F1 pontszám* és *AUC*. Emellett a modul egy zavart mátrixot jelenít meg, amely a valódi pozitív, a hamis negatív, a hamis pozitív és az igaz negatív érték, valamint a *Roc*, a *pontosság/visszahívás* és a *lift* görbék számát mutatja.
 
 A pontosság egyszerűen a helyesen besorolt példányok aránya. Az osztályozó kiértékelése során általában az első mérőszámot kell megtekinteni. Ha azonban a teszt adatai kiegyensúlyozatlan (ahol a példányok többsége az egyik osztályhoz tartozik), vagy ha az egyik osztály teljesítményére kíváncsi, a pontosság nem igazán rögzíti az osztályozók hatékonyságát. A bevételi szint besorolási forgatókönyve feltételezi, hogy a példányok 99%-ában olyan személyeket vizsgál, akik évente kevesebb, mint 50 000-et keresnek. 0,99 pontosságot lehet elérni az összes példány "<= 50K" osztályának előrejelzésével. Az osztályozás ebben az esetben úgy tűnik, hogy összességében jó munkát végez, de a valóságban nem tudja osztályozni a magas jövedelmű személyeket (1%) helyesen.
 
@@ -117,13 +117,13 @@ Emiatt hasznos lehet olyan további mérőszámokat kiszámítani, amelyek a ki�
 
 6. ábra Bináris besorolás – zavart mátrix.
 
-Ha visszatér a bevétel besorolási problémára, több kiértékelési kérdést is szeretnénk megtenni, amelyek segítenek megérteni a felhasznált osztályozó teljesítményét. Természetes kérdés a következő: "a modell azon személyei számára, akik számára a modell >50 K (TP + FP) beszerzését, hány besorolása helyesen (TP)?" Ezt a kérdést a modell **pontosságának** megkeresésével választhatja ki, amely a megfelelő besorolású pozitívok aránya: TP/(TP + FP). Egy másik gyakori kérdés, hogy "az összes magas jövedelmű alkalmazottak bevétele >50k (TP + FN), hányan osztályozták helyesen a besorolást (TP)". Ez valójában a **visszahívás** , vagy a valódi pozitív arány: az osztályozó TP/(TP + FN). Észreveheti, hogy nyilvánvaló kompromisszum van a pontosság és a visszahívás között. Ha például egy viszonylag kiegyensúlyozott adatkészletet ad meg, egy olyan osztályozó, amely többnyire pozitív példányokat jósol, magas visszahívás lenne, de meglehetősen alacsony pontosságú, mivel a negatív példányok többsége helytelenül van besorolva, ami nagyszámú hamis pozitív értéket eredményez. Ha meg szeretné tekinteni a két metrika változásának feladatát, kattintson a kiértékelés eredményének kimenete oldalon látható **pontosság/visszahívás** görbére (a 7. ábrán a bal felső résznél).
+Ha visszatér a bevétel besorolási problémára, több kiértékelési kérdést is szeretnénk megtenni, amelyek segítenek megérteni a felhasznált osztályozó teljesítményét. Természetes kérdés a következő: "a modell azon személyei számára, akik számára a modell >50 K (TP + FP) beszerzését, hány besorolása helyesen (TP)?" Ezt a kérdést a modell **pontosságának** megkeresésével választhatja ki, amely a megfelelő besorolású pozitívok aránya: TP/(TP + FP). Egy másik gyakori kérdés, hogy "az összes magas jövedelmű alkalmazottak bevétele >50k (TP + FN), hányan osztályozták helyesen a besorolást (TP)". Ez valójában a **visszahívás**, vagy a valódi pozitív arány: az osztályozó TP/(TP + FN). Észreveheti, hogy nyilvánvaló kompromisszum van a pontosság és a visszahívás között. Ha például egy viszonylag kiegyensúlyozott adatkészletet ad meg, egy olyan osztályozó, amely többnyire pozitív példányokat jósol, magas visszahívás lenne, de meglehetősen alacsony pontosságú, mivel a negatív példányok többsége helytelenül van besorolva, ami nagyszámú hamis pozitív értéket eredményez. Ha meg szeretné tekinteni a két metrika változásának feladatát, kattintson a kiértékelés eredményének kimenete oldalon látható **pontosság/visszahívás** görbére (a 7. ábrán a bal felső résznél).
 
 ![Bináris besorolás kiértékelésének eredményei](./media/evaluate-model-performance/7.png)
 
 7. ábra A bináris besorolás kiértékelésének eredménye.
 
-Egy másik kapcsolódó metrika, amelyet gyakran használnak az **F1 pontszám** , amely a pontosságot és a visszahívást is figyelembe veszi. Ez a két metrika harmonikus középértéke, és a következőképpen számítjuk ki: F1 = 2 (precíziós x visszahívás)/(pontosság + visszahívás). Az F1-es pontszám jó módszer arra, hogy egyetlen számon összesítse a kiértékelést, de mindig érdemes megtekinteni a pontosságot, és felidézni, hogy jobban megértse, hogyan viselkedik az osztályozó.
+Egy másik kapcsolódó metrika, amelyet gyakran használnak az **F1 pontszám**, amely a pontosságot és a visszahívást is figyelembe veszi. Ez a két metrika harmonikus középértéke, és a következőképpen számítjuk ki: F1 = 2 (precíziós x visszahívás)/(pontosság + visszahívás). Az F1-es pontszám jó módszer arra, hogy egyetlen számon összesítse a kiértékelést, de mindig érdemes megtekinteni a pontosságot, és felidézni, hogy jobban megértse, hogyan viselkedik az osztályozó.
 
 Emellett az is megvizsgálhatja a valódi pozitív arányt és a hamis pozitív arányt a **fogadó működési jellemző (Roc)** görbében és a **görbe (AUC) érték alatti megfelelő területen** . Minél közelebb van a görbe a bal felső sarokban, annál jobb az osztályozó teljesítménye (ami maximalizálja a valódi pozitív arányt, miközben minimalizálja a hamis pozitív arányt). A mintaterület átlója felé közeledő görbék olyan besorolásokból származnak, amelyek általában a véletlenszerű találgatáshoz közeledő előrejelzéseket készítenek.
 
@@ -144,7 +144,7 @@ Ebben a kísérletben a népszerű [írisz](https://archive.ics.uci.edu/ml/datas
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Adja hozzá a következő modulokat a munkaterületéhez Azure Machine Learning Studio (klasszikus):
 
-* [Adatimportálás][import-data]
+* [Adatok importálása][import-data]
 * [Többosztályos döntési erdő][multiclass-decision-forest]
 * [Adatok felosztása][split]
 * [Modell betanítása][train-model]
@@ -155,7 +155,7 @@ A portok a 10. ábrán látható módon csatlakoztathatók.
 
 Állítsa a [Train Model][train-model] modul felirat oszlopának indexét 5 értékre. Az adatkészlet nem tartalmaz fejlécsort, de tudjuk, hogy az osztály címkéi az ötödik oszlopban vannak.
 
-Kattintson az [adatimportálási][import-data] modulra, és állítsa be az *adatforrás* tulajdonságot a *webes URL-címre http-n keresztül* , valamint a következő *URL-címet* : http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data .
+Kattintson az [adatimportálási][import-data] modulra, és állítsa be az *adatforrás* tulajdonságot a *webes URL-címre http-n keresztül*, valamint a következő *URL-címet* : http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data .
 
 Állítsa be, hogy a példányok milyen hányadát szeretné használni az [Adatfelosztási][split] modulban (0,7 például) a betanításhoz.
 

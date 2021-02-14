@@ -1,26 +1,26 @@
 ---
 title: Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
-description: Ismerje meg, hogyan védhető az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel egyetlen irányítópultról Azure Security Center.
+description: Az Azure VMware-megoldás virtuális gépei az Azure natív biztonsági eszközeivel védhetők az Azure Security Center irányítópulton.
 ms.topic: how-to
-ms.date: 02/04/2021
-ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 02/12/2021
+ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584957"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516362"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Az Azure VMware-megoldás virtuális gépei a Azure Security Center integrációval védhetők
 
-Az Azure natív biztonsági eszközei biztonságos infrastruktúrát biztosítanak az Azure, az Azure VMware megoldás és a helyszíni virtuális gépek (VM-EK) hibrid környezetéhez. Ez a cikk bemutatja, hogyan állíthatja be az Azure-eszközöket a hibrid környezetek biztonságához. Különböző eszközöket fog használni a különböző veszélyforrások azonosításához és kezeléséhez.
+Az Azure natív biztonsági eszközei biztosítják az Azure, az Azure VMware megoldás és a helyszíni virtuális gépek (VM-EK) hibrid környezetének védelmét. Ez a cikk bemutatja, hogyan állíthatja be az Azure-eszközöket a hibrid környezetek biztonságához. Ezeket az eszközöket a különböző fenyegetések azonosítására és kezelésére fogja használni.
 
 ## <a name="azure-native-services"></a>Azure Native Services
 
-Itt látható az egyes Azure-beli natív szolgáltatások rövid összefoglalása:
+Az Azure Native Services gyors összefoglalása:
 
 - **Log Analytics munkaterület:** Log Analytics munkaterület a naplófájlok tárolására szolgáló egyedi környezet. Mindegyik munkaterület saját adattárral és konfigurációval rendelkezik. Az adatforrások és megoldások úgy vannak konfigurálva, hogy egy adott munkaterületen tárolják az adatforrásokat.
-- **Azure Security Center:** Azure Security Center egy egységes infrastruktúra-biztonsági felügyeleti rendszer. Erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben vagy a helyszínen lévő hibrid számítási feladatokban.
-- **Azure Sentinel:** Az Azure Sentinel egy Felhőbeli natív, biztonsági információs esemény-felügyeleti (SIEM) és biztonsági előkészítési (felszárnyalt) megoldás. Intelligens biztonsági elemzési és fenyegetési intelligenciát biztosít a környezetekben. Ez egyetlen megoldás a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra.
+- **Azure Security Center:** Azure Security Center egy egységes infrastruktúra-biztonsági felügyeleti rendszer. Erősíti az adatközpontok biztonságát, és komplex veszélyforrások elleni védelmet biztosít a felhőben vagy a helyszínen lévő hibrid számítási feladatokhoz.
+- **Azure Sentinel:** Az Azure Sentinel egy felhőalapú, biztonsági Information Event Management-(SIEM-) megoldás. Biztonsági elemzéseket, riasztások észlelését és automatizált veszélyforrásokra adott válaszokat biztosít a környezetek között.
 
 ## <a name="topology"></a>Topológia
 
@@ -30,7 +30,7 @@ A Log Analytics ügynök lehetővé teszi a naplózási adatok gyűjtését az A
 
 Ha a naplók gyűjtése a Log Analytics munkaterületen történik, a Log Analytics munkaterületet Azure Security Center használatával konfigurálhatja. Azure Security Center felméri az Azure VMware-megoldás virtuális gépei sebezhetőségi állapotát, és riasztást küld a kritikus biztonsági rések ellen. Például az operációs rendszer hiányzó javításait, a biztonsági beállításokat és az [Endpoint Protectiont](../security-center/security-center-services.md)vizsgálja.
 
-A Log Analytics munkaterület az Azure Sentinel szolgáltatással konfigurálható a riasztások észlelése, a fenyegetések láthatósága, a proaktív vadászat és a veszélyforrások megválaszolásához. Az előző ábrán a Azure Security Center Azure Security Center Connector használatával csatlakozik az Azure Sentinelhez. A Azure Security Center továbbítja a környezeti sebezhetőséget az Azure Sentinelnek, hogy eseményt hozzon létre, és más fenyegetésekkel képezze le azokat. Az ütemezett szabályok lekérdezést is létrehozhatja a nemkívánatos tevékenységek észleléséhez és az incidensekre való átalakításához.
+A Log Analytics munkaterület a riasztások észlelése, a fenyegetések láthatósága, a vadászat és a fenyegetés megválaszolásához konfigurálható az Azure Sentinel használatával. Az előző ábrán a Azure Security Center Azure Security Center Connector használatával csatlakozik az Azure Sentinelhez. A Azure Security Center továbbítja a környezeti sebezhetőséget az Azure Sentinelnek, hogy eseményt hozzon létre, és más fenyegetésekkel képezze le azokat. Az ütemezett szabályok lekérdezést is létrehozhatja a nemkívánatos tevékenységek észleléséhez és az incidensekre való átalakításához.
 
 ## <a name="benefits"></a>Előnyök
 
@@ -50,11 +50,11 @@ A Log Analytics munkaterület az Azure Sentinel szolgáltatással konfigurálhat
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
-A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre lesz szüksége. További információ: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
+A különböző forrásokból származó adatok gyűjtéséhez Log Analytics munkaterületre van szükség. További információ: [log Analytics munkaterület létrehozása a Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Az Azure VMware megoldás virtuális gépei Security Center üzembe helyezése és konfigurálása
 
-Azure Security Center egy előre konfigurált eszköz, és nem igényel telepítést. A Azure Portal keresse meg **Security Center** és jelölje ki.
+A Azure Security Center egy olyan előre konfigurált eszköz, amely nem igényel telepítést. A Azure Portal keresse meg **Security Center** és jelölje ki.
 
 ### <a name="enable-azure-defender"></a>Az Azure Defender engedélyezése
 
@@ -149,7 +149,7 @@ Most már készen áll az Azure Sentinel és az adatforrások (ebben az esetben 
 
 ## <a name="create-rules-to-identify-security-threats"></a>Szabályok létrehozása a biztonsági fenyegetések azonosításához
 
-Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat szabályokat az észlelt fenyegetések alapján létrehozott riasztások létrehozásához. Az alábbi példában egy olyan szabályt hozunk létre, amely a helytelen jelszóval azonosítja a Windows Server rendszerbe való bejelentkezésre tett kísérleteket.
+Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat olyan szabályokat, amelyek riasztásokat hoznak létre az észlelt fenyegetésekkel kapcsolatban. A következő példában létrehozunk egy szabályt, amely nem megfelelő jelszóval kísérli meg a Windows Server rendszerbe való bejelentkezést.
 
 1. Az Azure Sentinel – Áttekintés lap konfigurációk területén válassza az **elemzés** lehetőséget.
 
@@ -196,7 +196,7 @@ Az adatforrások Azure Sentinelhez való csatlakoztatása után létrehozhat sza
 
 Miután a harmadik sikertelen kísérletet tett a Windows Serverbe való bejelentkezésre, a létrehozott szabály minden sikertelen kísérlet esetén eseményt indít el.
 
-## <a name="view-generated-alerts"></a>Generált riasztások megtekintése
+## <a name="view-alerts"></a>Riasztások megtekintése
 
 A generált incidenseket az Azure Sentinel használatával tekintheti meg. Az Azure Sentinel szolgáltatásból is hozzárendelhet incidenseket, és a megoldásuk után lezárhatja őket.
 

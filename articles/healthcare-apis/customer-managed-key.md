@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
 ms.author: ginle
-ms.openlocfilehash: ae78aa80594e46b02d77adcafed961e801780d4f
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6dff16f4a68f3db4ff841141e7d7025e794cca8f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430259"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100105181"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>Ügyfél által felügyelt kulcsok konfigurálása nyugalmi állapotban
 
@@ -26,7 +26,7 @@ Az Azure-ban ez általában az ügyfél Azure Key Vault található titkosítás
 - [Hozzáférési szabályzat hozzáadása az Azure Key Vault-példányhoz](../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance)
 - [Kulcs létrehozása Azure Key Vault](../cosmos-db/how-to-setup-cmk.md#generate-a-key-in-azure-key-vault)
 
-## <a name="specify-the-azure-key-vault-key"></a>Azure Key Vault kulcs meghatározása
+## <a name="using-azure-portal"></a>Az Azure Portal használata
 
 Az Azure API FHIR-Azure Portal fiókhoz való létrehozásakor a "További beállítások" lapon a "Database Settings" (adatbázis-beállítások) alatt az "adattitkosítási" konfigurációs beállítás látható. Alapértelmezés szerint a szolgáltatás által felügyelt kulcs beállítás lesz kiválasztva. 
 
@@ -44,9 +44,100 @@ A meglévő FHIR-fiókok esetében az alábbi módon tekintheti meg a kulcs titk
 
 Emellett a megadott kulcs új verzióját is létrehozhatja, amely után az adatok a szolgáltatás megszakítása nélkül lesznek titkosítva az új verzióval. A kulcshoz való hozzáférés eltávolításával is eltávolíthatja az adathozzáférést. Ha a kulcs le van tiltva, a lekérdezések hibát eredményeznek. Ha a kulcs újból engedélyezve van, a lekérdezések ismét sikeresek lesznek.
 
+
+
+
+## <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+
+A Azure Key Vault kulcs URI-ja segítségével az alábbi PowerShell-parancs futtatásával konfigurálhatja a CMK a PowerShell használatával:
+
+```powershell
+New-AzHealthcareApisService
+    -Name "myService"
+    -Kind "fhir-R4"
+    -ResourceGroupName "myResourceGroup"
+    -Location "westus2"
+    -CosmosKeyVaultKeyUri "https://<my-vault>.vault.azure.net/keys/<my-key>"
+```
+
+## <a name="using-azure-cli"></a>Az Azure parancssori felület használata
+
+A PowerShell-metódushoz hasonlóan a CMK is konfigurálhatja, ha átadja a Azure Key Vault kulcs URI-JÁT a `key-vault-key-uri` paraméterben, és az alábbi CLI-parancsot futtatja: 
+
+```azurecli-interactive
+az healthcareapis service create
+    --resource-group "myResourceGroup"
+    --resource-name "myResourceName"
+    --kind "fhir-R4"
+    --location "westus2"
+    --cosmos-db-configuration key-vault-key-uri="https://<my-vault>.vault.azure.net/keys/<my-key>"
+
+```
+## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
+
+A Azure Key Vault kulcs URI-ja segítségével a CMK úgy konfigurálhatja, hogy a **Tulajdonságok** objektum **keyVaultKeyUri** tulajdonságában átadja azt.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "services_myService_name": {
+            "defaultValue": "myService",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.HealthcareApis/services",
+            "apiVersion": "2020-03-30",
+            "name": "[parameters('services_myService_name')]",
+            "location": "westus2",
+            "kind": "fhir-R4",
+            "properties": {
+                "accessPolicies": [],
+                "cosmosDbConfiguration": {
+                    "offerThroughput": 400,
+                    "keyVaultKeyUri": "https://<my-vault>.vault.azure.net/keys/<my-key>"
+                },
+                "authenticationConfiguration": {
+                    "authority": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47",
+                    "audience": "[concat('https://', parameters('services_myService_name'), '.azurehealthcareapis.com')]",
+                    "smartProxyEnabled": false
+                },
+                "corsConfiguration": {
+                    "origins": [],
+                    "headers": [],
+                    "methods": [],
+                    "maxAge": 0,
+                    "allowCredentials": false
+                }
+            }
+        }
+    ]
+}
+```
+
+A sablont a következő PowerShell-parancsfájllal is telepítheti:
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$accountLocation = "West US 2"
+$keyVaultKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-key>"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile "deploy.json" `
+    -accountName $accountName `
+    -location $accountLocation `
+    -keyVaultKeyUri $keyVaultKeyUri
+```
+
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan konfigurálhatja az ügyfelek által felügyelt kulcsokat a nyugalmi állapotban. Ezután tekintse meg a Azure Cosmos DB GYIK szakaszt: 
+Ebben a cikkben megtanulta, hogyan konfigurálhatja az ügyfelek által felügyelt kulcsokat a Azure Portal, a PowerShell, a CLI és a Resource Manager-sablon használatával. Az esetlegesen felmerülő kérdésekkel kapcsolatban tekintse meg a Azure Cosmos DB gyakori kérdések című szakaszt: 
  
 >[!div class="nextstepaction"]
 >[Cosmos DB: a CMK beállítása](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#frequently-asked-questions)

@@ -1,102 +1,127 @@
 ---
 title: Hitelesítő adatok létrehozása és kezelése a vizsgálatokhoz
-description: Ez a cikk a hitelesítő adatok Azure-ban való létrehozásának és kezelésének lépéseit ismerteti.
+description: A hitelesítő adatok Azure-ban való létrehozásához és kezeléséhez szükséges lépések ismertetése.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/23/2020
-ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.date: 02/11/2021
+ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381188"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Az Azure hatáskörébe tartozó forrás-hitelesítés hitelesítő adatai
 
-Ez a cikk azt ismerteti, hogyan hozhat létre hitelesítő adatokat az Azure-ban, hogy gyorsan újrahasznosítsa az adatokat, és alkalmazza a mentett hitelesítési adatokat az adatforrások vizsgálatára.
+Ez a cikk azt ismerteti, hogyan hozhat létre hitelesítő adatokat az Azure hatáskörébe. Ezek a mentett hitelesítő adatok segítségével gyorsan újra felhasználhatja a mentett hitelesítési adatokat, és alkalmazhatja azokat az adatforrások vizsgálatára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Key Vault. A létrehozásával kapcsolatos információkért lásd: rövid útmutató [: kulcstartó létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md).
+- Egy Azure Key Vault. A létrehozásával kapcsolatos információkért lásd: rövid útmutató [: kulcstartó létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Bevezetés
-A hitelesítő adatok olyan hitelesítési információk, amelyeket az Azure hatáskörébe használhat a regisztrált adatforrásokhoz való hitelesítéshez. Egy hitelesítőadat-objektum hozható létre különféle hitelesítési forgatókönyvekhez (például a Felhasználónév/jelszó megkövetelése egyszerű hitelesítéshez), és a kiválasztott hitelesítési módszer alapján rögzíti a szükséges információkat. A hitelesítő adatok a meglévő Azure Key Vault-titkokat használják a bizalmas hitelesítési információk beolvasására a hitelesítő adatok létrehozásakor.
 
-## <a name="using-purview-managed-identity-to-set-up-scans"></a>A hatáskörébe tartozó felügyelt identitás használata a vizsgálatok beállításához
-Ha a hatáskörébe tartozó felügyelt identitást használja a vizsgálatok beállításához, akkor nem kell explicit módon létrehoznia a hitelesítő adatokat, és a Key vaultot csatolnia kell a hatáskörébe, hogy tárolja őket. A hatáskörébe tartozó felügyelt identitásnak az adatforrások vizsgálatához való hozzáadásával kapcsolatos részletes utasításokért tekintse meg az alábbi, az adatforrás-specifikus hitelesítési szakaszt alább:
+A hitelesítő adatok olyan hitelesítési információk, amelyeket az Azure hatáskörébe használhat a regisztrált adatforrásokhoz való hitelesítéshez. Hitelesítő objektum hozható létre különféle hitelesítési forgatókönyvekhez, például a Felhasználónév/jelszó megkövetelése egyszerű hitelesítéshez. A hitelesítő adatok a kiválasztott hitelesítési módszer alapján rögzítik a hitelesítéshez szükséges konkrét adatokat. A hitelesítő adatok a meglévő Azure Key Vault-titkokat használják a bizalmas hitelesítési információk beolvasására a hitelesítő adatok létrehozásakor.
+
+## <a name="use-purview-managed-identity-to-set-up-scans"></a>A felügyelet beállítása a hatáskörébe tartozó felügyelt identitás használatával
+
+Ha a hatáskörébe tartozó felügyelt identitást használja a vizsgálatok beállításához, akkor nem kell explicit módon létrehoznia a hitelesítő adatokat, és a Key vaultot csatolnia kell a hatáskörébe, hogy tárolja őket. A hatáskörébe tartozó felügyelt identitásnak az adatforrások vizsgálatához való hozzáadásával kapcsolatos részletes utasításokért tekintse meg az alábbi adatforrás-specifikus hitelesítési szakaszt alább:
 
 - [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
 - [1. generációs Azure Data Lake Storage](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Database](register-scan-azure-sql-database.md)
-- [Felügyelt Azure SQL Database-példány](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Felügyelt példány Azure SQL Database](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Azure Key Vault-kapcsolatok létrehozása az Azure hatáskörébe tartozó fiókban
 
-A hitelesítő adatok létrehozása előtt először hozzá kell rendelnie egy vagy több meglévő Azure Key Vault példányát az Azure-beli hatáskörébe-fiókjához.
+A hitelesítő adatok létrehozása előtt először társítson egy vagy több meglévő Azure Key Vault példányt az Azure hatáskörébe tartozó fiókjával.
 
-1. Az Azure hatáskörébe navigációs menüben navigáljon a felügyeleti központhoz, majd navigáljon a hitelesítő adatokhoz.
+1. A [Azure Portal](https://portal.azure.com)válassza ki az Azure-beli hatáskörébe tartozó fiókot. Navigáljon a **felügyeleti központhoz** , és navigáljon a **hitelesítő adatokhoz**.
 
-2. A hitelesítő adatok parancssáv lapon válassza a Key Vault kapcsolatok kezelése lehetőséget.
+2. A **hitelesítő adatok** lapon válassza a **Key Vault kapcsolatok kezelése** lehetőséget.
 
-    :::image type="content" source="media/manage-credentials/manage-kv-connections.png" alt-text="AKV-kapcsolatok kezelése":::
+   :::image type="content" source="media/manage-credentials/manage-kv-connections.png" alt-text="Azure Key Vault kapcsolatok kezelése":::
 
-3. Válassza az + új elemet a kezelés Key Vault kapcsolatok panelen 
+3. Válassza az **+ új** lehetőséget a Key Vault kapcsolatok kezelése lapon.
 
-4. Adja meg a szükséges adatokat, majd válassza a létrehozás lehetőséget.
+4. Adja meg a szükséges adatokat, majd válassza a **Létrehozás** lehetőséget.
 
-5. Győződjön meg arról, hogy a Key Vault sikeresen hozzá lett rendelve az Azure-beli hatáskörébe-fiókjához
+5. Győződjön meg arról, hogy a Key Vault sikeresen hozzá lett rendelve az Azure-beli hatáskörébe-fiókjához, ahogy az ebben a példában is látható:
 
-    :::image type="content" source="media/manage-credentials/view-kv-connections.png" alt-text="AKV-kapcsolatok megtekintése":::
+   :::image type="content" source="media/manage-credentials/view-kv-connections.png" alt-text="Azure Key Vault kapcsolatok megtekintése a megerősítéshez.":::
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>Adja meg a hatáskörébe tartozó felügyelt identitás hozzáférést a Azure Key Vault
 
-Navigáljon a Key vaulthoz – > hozzáférési szabályzatok – > hozzáférési házirend hozzáadása lehetőségre. Adja meg a Get engedélyt a Secrets engedély legördülő menüben, és válassza az elsődleges elemet a hatáskörébe MSI. 
+1. Navigáljon a Azure Key Vault.
 
-:::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="A hatáskörébe MSI hozzáadása a AKV-hez":::
+2. Válassza ki a **hozzáférési szabályzatok** lapot.
 
+3. Válassza a **hozzáférési házirend hozzáadása** lehetőséget.
 
-:::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="A hatáskörébe MSI hozzáadása a AKV-hez":::
 
+4. A **titkok engedélyei** legördülő menüben válassza a **lekérés** és **Listázás** engedélyeket.
 
-:::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Hozzáférési szabályzat mentése":::
+5. A **rendszerbiztonsági tag kiválasztása lapon** válassza ki a hatáskörébe tartozó felügyelt identitást.
+
+   :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Hozzáférési szabályzat hozzáadása":::
+
+6. Válassza a **Hozzáadás** lehetőséget.
+
+7. A hozzáférési szabályzat mentéséhez válassza a **Mentés** lehetőséget.
+
+   :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="Hozzáférési szabályzat mentése":::
 
 ## <a name="create-a-new-credential"></a>Új hitelesítő adat létrehozása
 
-A hatáskörébe jelenleg a hitelesítő adatok típusa támogatott:
-* Alapszintű hitelesítés: a **jelszót** a Key Vault titkos kulcsaként fogja felvenni
-* Egyszerű szolgáltatásnév: az **egyszerű szolgáltatásnév kulcsát** hozzáadja a Key Vault titkos kódjához 
-* SQL-hitelesítés: a **jelszót** a Key vaultban titkos kulcsként fogja felvenni
-* Fiók kulcsa: a Key Vault titkos kulcsaként adja hozzá a **fiók kulcsát**
+A következő hitelesítőadat-típusokat támogatja a hatáskörébe:
+
+- Alapszintű hitelesítés: a **jelszót** titkos kulcsként adja hozzá a Key vaulthoz.
+- Egyszerű szolgáltatásnév: az **egyszerű szolgáltatásnév kulcsát** hozzáadja a Key Vault titkos kódjához.
+- SQL-hitelesítés: a **jelszót** titkos kulcsként adja hozzá a Key vaulthoz.
+- Fiók kulcsa: a Key Vault titkos kulcsaként adja hozzá a **fiók kulcsát** .
 
 További információ: [Secret hozzáadása Key Vaulthoz](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
-A titkos kulcsoknak a kulcstartóban való tárolása után hozza létre az új hitelesítő adatokat a hitelesítő adatokkal rendelkező parancssáv + új elemének kiválasztásával. Adja meg a szükséges információkat, beleértve a hitelesítési módszer kiválasztását és egy Key Vault példányt, amelyből ki szeretne választani egy titkos kulcsot. Az összes adat kitöltése után kattintson a Létrehozás gombra.
+A titkos kulcsok tárolása után a Key vaultban:
 
-:::image type="content" source="media/manage-credentials/new-credential.png" alt-text="Új hitelesítő adat":::
+1. Az Azure-beli hatáskörébe lépjen a hitelesítő adatok lapon.
 
-Ellenőrizze, hogy az új hitelesítő adatok megjelennek-e a hitelesítőadat-lista nézetben, és készen áll-e a használatra
+2. Az új hitelesítő adatok létrehozásához válassza az **+ új** lehetőséget.
 
-:::image type="content" source="media/manage-credentials/view-credentials.png" alt-text="Hitelesítő adat megtekintése":::
+3. Adja meg a szükséges adatokat. Válassza ki azt a **hitelesítési módszert** és **Key Vault-kapcsolódást** , amelyből ki szeretne választani egy titkos kulcsot.
+
+4. A részletek kitöltését követően válassza a **Létrehozás** lehetőséget.
+
+   :::image type="content" source="media/manage-credentials/new-credential.png" alt-text="Új hitelesítő adat":::
+
+5. Győződjön meg arról, hogy az új hitelesítő adat megjelenik a lista nézetben, és készen áll a használatra.
+
+   :::image type="content" source="media/manage-credentials/view-credentials.png" alt-text="Hitelesítő adat megtekintése":::
 
 ## <a name="manage-your-key-vault-connections"></a>Key Vault-kapcsolatok kezelése
 
 1. Keresés/keresés Key Vault kapcsolatok név szerint
 
-    :::image type="content" source="media/manage-credentials/search-kv.png" alt-text="Keresés a Key vaultban":::
+   :::image type="content" source="media/manage-credentials/search-kv.png" alt-text="Keresés a Key vaultban":::
 
-1. Egy vagy több Key Vault kapcsolat törlése
- 
-    :::image type="content" source="media/manage-credentials/delete-kv.png" alt-text="Key Vault törlése":::
+2. Egy vagy több Key Vault kapcsolat törlése
+
+   :::image type="content" source="media/manage-credentials/delete-kv.png" alt-text="Key Vault törlése":::
 
 ## <a name="manage-your-credentials"></a>Hitelesítő adatok kezelése
 
-1. Hitelesítő adatok keresése/keresése név szerint
+1. Keressen/keressen hitelesítő adatokat név alapján.
   
-2. Meglévő hitelesítő adatok kiválasztása és frissítése
+2. Válasszon ki és frissítsen egy meglévő hitelesítő adatot.
 
-3. Egy vagy több hitelesítő adat törlése
+3. Egy vagy több hitelesítő adat törlése.
+
+## <a name="next-steps"></a>Következő lépések
+
+[Vizsgálati szabálykészlet létrehozása](create-a-scan-rule-set.md)

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382888"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -452,17 +452,23 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 >
 > A ISEs létrehozásával kapcsolatos további információkért lásd: [Kapcsolódás Azure-beli virtuális hálózatokhoz a Azure Logic Appsból](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
+## <a name="get-ready-for-deployment"></a>Felkészülés az üzembe helyezésre
+
+Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön Azure-erőforrások, saját erőforrás-definíciókkal rendelkeznek. A kapcsolódási erőforrás-definíciók áttekintéséhez [töltse le a logikai alkalmazást az Azure-ból a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md), amely a legegyszerűbben az üzembe helyezésre kész, érvényes paraméteres Logic app-sablon létrehozása.
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>Kapcsolatok létrehozásának tiltása
 
 Ha a szervezete nem engedélyezi a kapcsolódást bizonyos erőforrásokhoz a Azure Logic Apps összekötői segítségével, [letilthatja, hogy a](../logic-apps/block-connections-connectors.md) logikai alkalmazások munkafolyamataiban lévő összekötők a [Azure Policy](../governance/policy/overview.md)használatával képesek legyenek a kapcsolatok létrehozására. További információ: [adott összekötők által létrehozott kapcsolatok blokkolása a Azure Logic Appsban](../logic-apps/block-connections-connectors.md).
 
-## <a name="get-ready-for-deployment"></a>Felkészülés az üzembe helyezésre
+## <a name="known-issues"></a>Ismert problémák
 
-Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön Azure-erőforrások, saját erőforrás-definíciókkal rendelkeznek. A kapcsolódási erőforrás-definíciók áttekintéséhez [töltse le a logikai alkalmazást az Azure-ból a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md), amely a legegyszerűbben az üzembe helyezésre kész, érvényes paraméteres Logic app-sablon létrehozása.
+#### <a name="error-badgateway-client-request-id-guid"></a>Hiba: BadGateway. Ügyfél-kérelem azonosítója: {GUID}
 
-## <a name="next-steps"></a>További lépések
+Ez a hiba a logikai alkalmazásban található címkék frissítését eredményezi, ha egy vagy több kapcsolat nem támogatja a Azure Active Directory (Azure AD) OAuth hitelesítést, például az SFTP ad SQL-t, a kapcsolatok megszakításával. A viselkedés elkerülése érdekében kerülje a címkék frissítését.
+
+## <a name="next-steps"></a>Következő lépések
 
 * A [teljes összekötő listájának](/connectors) megtekintése
 * [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)

@@ -1,22 +1,18 @@
 ---
 title: Változó tevékenység beállítása Azure Data Factoryban
 description: Megtudhatja, hogyan állíthatja be egy Data Factory-folyamatban definiált meglévő változó értékét a változó beállítása tevékenység használatával.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/07/2020
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: f3c1fae2cbf2a1ba8b71dcbc8f6639bda4765f5c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 122a0a01c420d5efa12fa267a0d3605fc7a25960
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498387"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385336"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Változó tevékenység beállítása Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,11 +23,11 @@ A változó beállítása tevékenységgel egy Data Factory-folyamatban definiá
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | A tevékenység neve a folyamatban | yes
+name | A tevékenység neve a folyamatban | igen
 leírás | A tevékenység működését leíró szöveg | nem
-típus | **SetVariable** értékre kell állítani | yes
-value | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | yes
-variableName | A tevékenység által beállított változó neve | yes
+típus | **SetVariable** értékre kell állítani | igen
+érték | Karakterlánc-vagy kifejezési objektum értéke, amelyhez a változó hozzá van rendelve | igen
+variableName | A tevékenység által beállított változó neve | igen
 
 ## <a name="incrementing-a-variable"></a>Változó növelése
 
@@ -96,7 +92,7 @@ Az alábbiakban egy példa látható erre a mintára:
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Factory által támogatott kapcsolódó vezérlési folyamatokkal kapcsolatos tevékenységek ismertetése: 
 
 - [Változó tevékenység hozzáfűzése](control-flow-append-variable-activity.md)

@@ -2,43 +2,45 @@
 title: Apache Spark kódtárainak kezelése
 description: Megtudhatja, hogyan veheti fel és kezelheti a Apache Spark által használt könyvtárakat az Azure szinapszis Analyticsben.
 services: synapse-analytics
-author: euangMS
+author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0458fb8b140166b7bdf0fc0df41dbb207fdce3c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458823"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518521"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
-A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepítheti a kódtárat az egyik kiszolgáló nélküli Apache Spark készletbe. Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
+A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepíthet egy függvénytárat az egyik kiszolgáló nélküli Apache Spark-készletre. Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 - A kódtárak telepítéséhez és frissítéséhez a **Storage blob Adatközreműködőinek** vagy a **Storage blob-adattulajdonosi** engedélyekkel kell rendelkeznie az Azure szinapszis Analytics-munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
   
 ## <a name="default-installation"></a>Alapértelmezett telepítés
-Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md). 
+Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése plusz további könyvtárakat tartalmaz. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md). 
 
-A Spark-példány indításakor ezek a kódtárak automatikusan szerepelni fognak. A Spark-készlet szintjén további Python-és egyéni létrehozott csomagok is hozzáadhatók.
+A Spark-példány indításakor ezek a kódtárak automatikusan szerepelni fognak. A Spark-készlet szintjén további Python-és egyéni kialakítású csomagok is hozzáadhatók.
 
 
 ## <a name="manage-python-packages"></a>Python-csomagok kezelése
 Miután azonosította a Spark-alkalmazáshoz használni kívánt kódtárakat, egy Spark-készletbe is telepítheti őket. 
 
- A virtuális környezet frissítéséhez *requirements.txt* fájl (a parancs kimenete `pip freeze` ) használható. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPi a készlet indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
+ A virtuális környezet frissítéséhez *requirements.txt* fájl (a parancs kimenete `pip freeze` ) használható. A telepítéshez vagy frissítéshez a fájlban felsorolt csomagok letöltése a PyPI a készlet indításakor történik. Ezt a követelményt a rendszer minden alkalommal felhasználja, amikor egy Spark-példányt létrehoznak a Spark-készletből.
 
 > [!IMPORTANT]
 > - Ha a telepített csomag nagy méretű, vagy hosszú ideig tart a telepítés, ez hatással van a Spark-példány indítási idejére.
 > - A telepítéskor fordítási támogatást igénylő csomagok, például a GCC, nem támogatottak.
 > - A csomagokat nem lehet leértékelni, csak a Hozzáadás vagy a frissítés lehetőségre.
-> - A kódtárak telepítéséhez a tárolási blob adatközreműködőinek vagy a Storage blob-adattulajdonosi engedélyekkel kell rendelkeznie a szinapszis munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
+> - A PySpark, a Python, a Scala/Java, a .NET vagy a Spark verzió módosítása nem támogatott.
+> - A csomagok telepítése a PyPI-ből nem támogatott a DEP-kompatibilis munkaterületeken.
+
 
 ### <a name="requirements-format"></a>Követelmények formátuma
 
@@ -52,6 +54,9 @@ alabaster==0.7.10
 
 ### <a name="install-python-packages"></a>Python-csomagok telepítése
 A Spark-alkalmazás fejlesztése során előfordulhat, hogy frissítenie kell a meglévőt, vagy új kódtárakat kell telepítenie. A tárak a készlet létrehozásakor vagy azt követően is frissíthetők.
+
+> [!IMPORTANT]
+> A kódtárak telepítéséhez a tárolási blob adatközreműködőinek vagy a Storage blob-adattulajdonosi engedélyekkel kell rendelkeznie a szinapszis munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
 
 #### <a name="install-packages-during-pool-creation"></a>Csomagok telepítése a készlet létrehozása során
 Tárak telepítése Spark-készletre a készlet létrehozása során:
@@ -101,7 +106,7 @@ for d in pkg_resources.working_set:
      print(d)
 ```
 ### <a name="update-python-packages"></a>Python-csomagok frissítése
-A csomagok bármikor hozzáadhatók vagy módosíthatók a munkamenetek között. Új csomag-konfigurációs fájl feltöltésekor a rendszer felülírja a meglévő csomagokat és verziókat.  
+A csomagok bármikor hozzáadhatók vagy módosíthatók a munkamenetek között. Az új csomag-konfigurációs fájl felülírja a meglévő csomagokat és verziókat.  
 
 Könyvtár frissítése vagy eltávolítása:
 1. Navigáljon az Azure szinapszis Analytics-munkaterületre. 
@@ -124,7 +129,7 @@ Könyvtár frissítése vagy eltávolítása:
 ## <a name="manage-a-python-wheel"></a>Python-kerék kezelése
 
 ### <a name="install-a-custom-wheel-file"></a>Egyéni kör fájljának telepítése
-Az egyéni Builder-csomagok a Apache Spark készletre is telepíthetők, ha az összes kerék fájlt feltölti a szinapszis munkaterülethez csatolt Azure Data Lake Storage (Gen2) fiókba. 
+Az egyéni Builder-csomagok telepíthetők a Apache Spark készletbe úgy, hogy az összes kerék fájlt feltölti a szinapszis munkaterülethez csatolt Azure Data Lake Storage (Gen2) fiókba. 
 
 A fájlokat a Storage-fiók alapértelmezett tárolójában fel kell tölteni a következő elérési útra: 
 
@@ -132,8 +137,10 @@ A fájlokat a Storage-fiók alapértelmezett tárolójában fel kell tölteni a 
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
->[!IMPORTANT]
->Egyéni csomagok is hozzáadhatók és módosíthatók a munkamenetek között. A frissített csomag megjelenítéséhez azonban várnia kell, amíg a készlet és a munkamenet újra fog indulni.
+Előfordulhat, hogy a mappán belül fel kell vennie a ```python``` mappát, ```libraries``` Ha még nem létezik.
 
-## <a name="next-steps"></a>További lépések
+>[!IMPORTANT]
+>Egyéni – a-csomagok hozzáadhatók és módosíthatók a munkamenetek között. A frissített csomag megjelenítéséhez azonban várnia kell, amíg a készlet és a munkamenet újra fog indulni.
+
+## <a name="next-steps"></a>Következő lépések
 - Az alapértelmezett könyvtárak megtekintése: [Apache Spark verzió támogatása](apache-spark-version-support.md)

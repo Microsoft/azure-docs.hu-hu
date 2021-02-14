@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f9b970f498db7530b35c57a75edeae55dec3f22d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739185"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098843"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
 
@@ -100,7 +100,7 @@ A számítási fürtök a Studióban történő létrehozásával kapcsolatos in
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Csökkentse a számítási fürt költségeit
 
-Dönthet úgy is, hogy [alacsony prioritású virtuális gépeket](concept-plan-manage-cost.md#low-pri-vm) használ a számítási feladatok egy részének vagy egészének futtatásához. Ezek a virtuális gépek nem rendelkeznek garantált rendelkezésre állással, és a használat közben előzik is lehetnek. A rendszer újraindította a előzik-feladatot, és nem folytatja a műveletet. 
+Dönthet úgy is, hogy [alacsony prioritású virtuális gépeket](concept-plan-manage-cost.md#low-pri-vm) használ a számítási feladatok egy részének vagy egészének futtatásához. Ezek a virtuális gépek nem rendelkeznek garantált rendelkezésre állással, és a használat közben előzik is lehetnek. Újra kell indítania egy előzik-feladatot. 
 
 Egy alacsony prioritású virtuális gép megadásához használja a következő módszerek egyikét:
     
@@ -220,7 +220,7 @@ Ha a Azure Machine Learning számítási fürt a csomópont állapotának átmé
 
 [!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A számítási fürt használatával:
 

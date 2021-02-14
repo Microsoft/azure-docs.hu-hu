@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 584266a8f6aa82d8a47b5e3faff044acf0ef298c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026999"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361621"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Az Azure AD Multi-Factor Authentication beállításainak konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure AD Multi-Factor Authentication végfelhasználói élményének testres
 
 A Azure Portal a következő Azure AD Multi-Factor Authentication beállítások érhetők el:
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | ------- | ----------- |
 | [Fiókzárolási](#account-lockout) | A fiókok ideiglenes zárolása az Azure AD-Multi-Factor Authentication használatával, ha túl sok megtagadott hitelesítési kísérlet van egy sorban. Ez a funkció csak azokra a felhasználókra vonatkozik, akik hitelesítő PIN-kódot ad meg. (MFA-kiszolgáló) |
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Az Azure AD Multi-Factor Authentication kérések fogadásának letiltása adott felhasználók számára. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a blokkolt időponttól számítva 90 napig, vagy manuálisan feloldják a zárolást. |
@@ -65,9 +65,7 @@ Egy felhasználó letiltásához hajtsa végre a következő lépéseket:
 
 1. Keresse meg a **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **blokkolása/letiltása felhasználókat**.
 1. A felhasználó blokkolásához válassza a **Hozzáadás** lehetőséget.
-1. Válassza ki a **replikációs csoportot**, majd válassza az *Azure default (alapértelmezett*) lehetőséget.
-
-    Adja meg a letiltott felhasználó felhasználónevét `username\@domain.com` , majd adjon meg egy megjegyzést az *OK* mezőben.
+1. Adja meg a letiltott felhasználó felhasználónevét `username@domain.com` , majd adjon meg egy megjegyzést az *OK* mezőben.
 1. Ha elkészült, kattintson az **OK** gombra a felhasználó blokkolásához.
 
 ### <a name="unblock-a-user"></a>Felhasználó tiltásának feloldása

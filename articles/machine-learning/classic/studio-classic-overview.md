@@ -7,15 +7,15 @@ ms.author: keli19
 ms.custom: seodec18
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 0a18f9adb8c3723619b44b30bfa334edf4300c0d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ad0550dc20edfbc10fb8877ad049c27fc2edf086
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509490"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517535"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>Mire használhatom a Machine Learning Studio (klasszikus)?
 
@@ -30,14 +30,14 @@ A Machine Learning Studio (klasszikus) egy fogd és vidd eszköz, amellyel gépi
 
 A prediktív elemzési modell kialakításához jellemzően egy vagy több forrásból származó adatok felhasználásával, az adatok átalakításával és elemzésével különböző adatkezelési és statisztikai függvények, valamint az eredmények összessége hozható létre. Az ilyen modellek fejlesztése iteratív folyamat. A különböző függvényeket és paramétereket addig módosítjuk, az eredményeket addig közelítjük, amíg úgy nem véljük, hogy jól betanított, hatékony modellel rendelkezünk.
 
-A Machine Learning Studio (klasszikus) interaktív, vizualizációs munkaterületet biztosít a prediktív elemzési modell egyszerű létrehozásához, teszteléséhez és megismétléséhez. Az *_adatkészleteket_* _ és elemzési _*_modulokat_*_ egy interaktív vászonra húzhatja, és összekapcsolhatja őket egy _*_kísérlet_*_ létrehozásához, amelyet Machine learning Studio (klasszikus) futtat. A modell felépítésének fejlesztéséhez szerkesztheti a kísérletet, szükség esetén mentheti egy másolatát, majd újrafuttathatja. Ha elkészült, átalakíthatja a _*_betanítási kísérletet_*_ egy _*_prediktív kísérletbe_*_, majd közzéteheti _*_webszolgáltatásként_*_ , hogy a modell mások számára is elérhető legyen.
+A Machine Learning Studio (klasszikus) interaktív, vizualizációs munkaterületet biztosít a prediktív elemzési modell egyszerű létrehozásához, teszteléséhez és megismétléséhez. Az **adatkészleteket** _ és elemzési _*_modulokat_*_ egy interaktív vászonra húzhatja, és összekapcsolhatja őket egy _*_kísérlet_*_ létrehozásához, amelyet Machine learning Studio (klasszikus) futtat. A modell felépítésének fejlesztéséhez szerkesztheti a kísérletet, szükség esetén mentheti egy másolatát, majd újrafuttathatja. Ha elkészült, átalakíthatja a _*_betanítási kísérletet_*_ egy _*_prediktív kísérletbe_*_, majd közzéteheti azt _ *_webszolgáltatásként_**, hogy a modell mások számára is elérhető legyen.
 
 A prediktív elemzési modell létrehozásához nincs szükség programozásra, valamint az adatkészletek és modulok vizuális összekapcsolására.
 
 ![Machine Learning Studio (klasszikus) diagram: kísérletek létrehozása, számos forráshoz tartozó adatolvasás, pontszámmal ellátható adatmennyiség, írási modellek.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>Az ML Studio (klasszikus) áttekintési diagram letöltése
-Töltse le az _ *Microsoft ml Studio (klasszikus) képességek áttekintés** diagramot, és tekintse át a Machine learning Studio (klasszikus) képességeinek magas szintű nézetét. Hogy mindig kéznél legyen, kinyomtathatja a diagramot tabloid méretben (11 x 17-es méret).
+Töltse le a **Microsoft ml Studio (klasszikus) képességek áttekintése** diagramot, és tekintse át a Machine learning Studio (klasszikus) képességeinek magas szintű nézetét. Hogy mindig kéznél legyen, kinyomtathatja a diagramot tabloid méretben (11 x 17-es méret).
 
 **A diagram letöltése: [Microsoft Machine learning Studio (klasszikus) képességek áttekintése](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
  ![ A Microsoft Machine Learning Studio (klasszikus) képességeinek áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)

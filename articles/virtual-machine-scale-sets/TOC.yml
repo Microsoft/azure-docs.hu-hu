@@ -329,9 +329,10 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: Dedikált gazdagépek használata (előzetes verzió)
-          href: ../virtual-machines/dedicated-hosts.md
+        - name: Dedikált gazdagépek használata
           items:
+            - name: Áttekintés
+              href: ../virtual-machines/dedicated-hosts.md
             - name: parancssori felület
               href: ../virtual-machines/linux/dedicated-hosts-cli.md
             - name: PowerShell

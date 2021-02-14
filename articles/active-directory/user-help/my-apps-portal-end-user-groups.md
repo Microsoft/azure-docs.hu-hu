@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc8d211160e757c78a8e2adafad703118628e6dc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004151"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095044"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>A csoportok adatainak frissítése a saját alkalmazások portálon
 
@@ -27,6 +27,11 @@ Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** -portál
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
+>
+> Ha személyes Microsoft-fiók használatával jelentkezik be, akkor továbbra is bejelentkezhet a szervezet tartománynevére (például contoso.com) vagy a szervezet **bérlői azonosítójára** a rendszergazdától a következő URL-címek egyikében:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-groups-information"></a>A csoportok adatainak megtekintése
 
@@ -40,7 +45,11 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
-2. Nyissa meg a webböngészőjét, és lépjen a webhelyre https://myapps.microsoft.com , vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például: https://myapps.microsoft.com/contoso.com .
+2. Nyissa meg a webböngészőjét, és lépjen a webhelyre https://myapps.microsoft.com , vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például: https://myapps.microsoft.com/contoso.com . Ha személyes Microsoft-fiók jelentkezik be, akkor továbbra is bejelentkezhet a szervezet tartományneve (például contoso.com) vagy a szervezet **bérlői azonosítójának** használatával a rendszergazdától a következő URL-címek egyikében:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -88,7 +97,7 @@ Ha a rendszergazda engedélyt kapott a **csoportok** csempék megtekintésére, 
 
     - **Csoportházirend.** Válassza ki a lehetőséget, hogy mindenki csatlakozzon a csoporthoz, vagy csak a csoport tulajdonosa számára engedélyezze a tagok hozzáadását.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
     Az új csoport tulajdonosként jön létre, és megjelenik a **saját csoportok** listájában. Mivel Ön a tulajdonosa, ez a csoport is megjelenik a listán szereplő **csoportokban** .
 
@@ -162,7 +171,7 @@ Egy már meglévő csoportot is csatlakozhat a **csoportok** lapról, vagy megha
 
     ![Csatlakozás a csoportok oldalhoz, a kilépés gomb kiemelésével](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazások elérése és használata a saját alkalmazások portálon](my-apps-portal-end-user-access.md).
 

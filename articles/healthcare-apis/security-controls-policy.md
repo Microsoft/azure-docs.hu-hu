@@ -1,19 +1,19 @@
 ---
 title: A FHIR Azure API-ra vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
 description: Felsorolja Azure Policy az Azure API FHIR-hoz elérhető megfelelőségi szabályozásait. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 9e9bffde49c50ef5dcf9d133b7b704cb1975f76b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 06e94456b8c2032c75de7249d8875cf3fc6cb006
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555267"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091652"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-for-fhir"></a>A FHIR Azure API-ra vonatkozó szabályozási megfelelőségi ellenőrzések Azure Policy
 

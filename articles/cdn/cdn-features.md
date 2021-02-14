@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8dbf3b5de4b908eb831158b73b2b17472bc4895e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3a794d8915c820abecd530911f05ac649e5e538c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020963"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379913"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Milyen összehasonlítások vannak a Azure CDN termék szolgáltatásai között?
 
@@ -54,10 +54,10 @@ Az alábbi táblázat az egyes termékek szolgáltatásait hasonlítja össze.
 | [Egyéni tartomány HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;**, közvetlen CNAME-t igényel az engedélyezéshez |**&#x2713;** |**&#x2713;** |
 | [Egyéni tartománynevek támogatása](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Földrajzi szűrés](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Jogkivonat-alapú hitelesítés](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
+| [Jogkivonat-hitelesítés](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS-védelem](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Saját tanúsítvány használata](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
-| Támogatott TLS-verziók | TLS 1,2, TLS 1.0/1.1 – [konfigurálható](/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
+| Támogatott TLS-verziók | TLS 1,2, TLS 1.0/1.1 – [konfigurálható](/rest/api/cdn/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **Elemzések és jelentéskészítés** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Verizon Premium** | 
 | [Azure diagnosztikai naplók](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |

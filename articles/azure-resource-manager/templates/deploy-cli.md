@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: f01409db36ca29deb2f6938ce3118cdcb20cd1a1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881299"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378672"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
@@ -106,7 +106,7 @@ Az előző példa egy nyilvánosan elérhető URI-t igényel a sablonhoz, amely 
 
 Ha olyan távoli csatolt sablonokat kíván üzembe helyezni, amelyek egy Storage-fiókban tárolt relatív elérési úttal rendelkeznek, a következő paranccsal `query-string` adhatja meg az SAS-tokent:
 
-```azurepowershell
+```azurecli-interactive
 az deployment group create \
   --name linkedTemplateWithRelativePath \
   --resource-group myResourceGroup \
@@ -272,7 +272,7 @@ Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szere
   ],
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
