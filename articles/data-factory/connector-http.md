@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása HTTP-forrásokból Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhat adatok egy felhőből vagy helyszíni HTTP-forrásról a fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0462dac12d41fff667212902152b420d1460186d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416937"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383636"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
 
@@ -46,7 +41,7 @@ A HTTP-forrásokból származó adatok bármely támogatott fogadó adattárba m
 Ezt a HTTP-összekötőt a következő célra használhatja:
 
 - Adatok lekérése HTTP/S-végpontról a HTTP **Get** vagy **post** metódusok használatával.
-- Adatok beolvasása a következő hitelesítések egyikével: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**vagy **ClientCertificate**.
+- Adatok beolvasása a következő hitelesítések egyikével: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows** vagy **ClientCertificate**.
 - Másolja a HTTP-választ a-ként, vagy elemezze a [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs.md)használatával.
 
 > [!TIP]
@@ -68,20 +63,20 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **HttpServer**értékre kell beállítani. | Igen |
-| url | A webkiszolgáló alap URL-címe. | Igen |
-| enableServerCertificateValidation | Itt adhatja meg, hogy engedélyezi-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését egy HTTP-végponthoz való csatlakozáskor. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa **hamis**értékre a tulajdonságot. | Nem<br /> (az alapértelmezett érték **igaz**) |
-| authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A **Type** tulajdonságot **HttpServer** értékre kell beállítani. | Yes |
+| url | A webkiszolgáló alap URL-címe. | Yes |
+| enableServerCertificateValidation | Itt adhatja meg, hogy engedélyezi-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését egy HTTP-végponthoz való csatlakozáskor. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa **hamis** értékre a tulajdonságot. | No<br /> (az alapértelmezett érték **igaz**) |
+| authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows** és **ClientCertificate**. <br><br> A következő szakaszokban találhat további tulajdonságokat és JSON-mintákat a fenti hitelesítési típusokhoz. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |No |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Alapszintű, kivonatoló vagy Windows-hitelesítés használata
 
-Állítsa a **authenticationType** tulajdonságot **alapszintű**, **kivonatoló**vagy **Windows**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
+Állítsa a **authenticationType** tulajdonságot **alapszintű**, **kivonatoló** vagy **Windows** értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| userName (Felhasználónév) | A HTTP-végpont eléréséhez használandó Felhasználónév. | Igen |
-| jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Igen |
+| userName (Felhasználónév) | A HTTP-végpont eléréséhez használandó Felhasználónév. | Yes |
+| jelszó | A felhasználó jelszava (a **Felhasználónév** értéke). A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Yes |
 
 **Példa**
 
@@ -109,19 +104,19 @@ A HTTP társított szolgáltatás a következő tulajdonságokat támogatja:
 
 ### <a name="using-clientcertificate-authentication"></a>ClientCertificate-hitelesítés használata
 
-A ClientCertificate-hitelesítés használatához állítsa a **authenticationType** tulajdonságot **ClientCertificate**értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
+A ClientCertificate-hitelesítés használatához állítsa a **authenticationType** tulajdonságot **ClientCertificate** értékre. Az előző szakaszban leírt általános tulajdonságok mellett a következő tulajdonságokat is meg kell adni:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 kódolású tanúsítvány-adattartalom. | Adjon meg **embeddedCertData** vagy **certThumbprint**. |
 | certThumbprint | A saját üzemeltetésű Integration Runtime gép tanúsítványtárolójában telepített Tanúsítvány ujjlenyomata. Csak akkor érvényes, ha a Integration Runtime saját üzemeltetésű típusa van megadva a **connectvia tulajdonsággal** tulajdonságban. | Adjon meg **embeddedCertData** vagy **certThumbprint**. |
-| jelszó | A tanúsítványhoz társított jelszó. A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | Nem |
+| jelszó | A tanúsítványhoz társított jelszó. A mező megjelölése **SecureString** -típusként, hogy biztonságosan tárolja azt Data Factoryban. [Hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. | No |
 
 Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi számítógép személyes tárolójába van telepítve, adja meg az olvasási engedélyeket a saját üzemeltetésű Integration Runtime számára:
 
-1. Nyissa meg a Microsoft Management Console (MMC) programot. Adja hozzá a **helyi számítógépet**tároló **tanúsítványok** beépülő modult.
-2. Bontsa ki a **tanúsítványok**  >  **személyes**csomópontot, majd válassza a **tanúsítványok**lehetőséget.
-3. Kattintson a jobb gombbal a tanúsítványra a személyes tárolóban, majd válassza a **minden feladat**  >  **titkos kulcsok kezelése**lehetőséget.
+1. Nyissa meg a Microsoft Management Console (MMC) programot. Adja hozzá a **helyi számítógépet** tároló **tanúsítványok** beépülő modult.
+2. Bontsa ki a **tanúsítványok**  >  **személyes** csomópontot, majd válassza a **tanúsítványok** lehetőséget.
+3. Kattintson a jobb gombbal a tanúsítványra a személyes tárolóban, majd válassza a **minden feladat**  >  **titkos kulcsok kezelése** lehetőséget.
 3. A **Biztonság** lapon adja hozzá azt a felhasználói fiókot, amelyben a Integration Runtime gazda szolgáltatás (DIAHostService) fut, és olvasási hozzáféréssel rendelkezik a tanúsítványhoz.
 
 **1. példa: a certThumbprint használata**
@@ -178,8 +173,8 @@ A HTTP a következő tulajdonságokat támogatja a `location` Formátum-alapú a
 
 | Tulajdonság    | Leírás                                                  | Kötelező |
 | ----------- | ------------------------------------------------------------ | -------- |
-| típus        | Az `location` adatkészletben található Type tulajdonságot **HttpServerLocation**értékre kell állítani. | Igen      |
-| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. A HTTP-összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service][relative URL specified in dataset]` .   | Nem       |
+| típus        | Az `location` adatkészletben található Type tulajdonságot **HttpServerLocation** értékre kell állítani. | Yes      |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. A HTTP-összekötő a következő összevont URL-címről másolja az adatait: `[URL specified in linked service][relative URL specified in dataset]` .   | No       |
 
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
@@ -224,12 +219,12 @@ A HTTP a következő tulajdonságokat támogatja a `storeSettings` Format-alapú
 
 | Tulajdonság                 | Leírás                                                  | Kötelező |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| típus                     | A Type tulajdonságot a `storeSettings` **HttpReadSettings**értékre kell állítani. | Igen      |
-| requestMethod            | A HTTP-metódus. <br>Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem       |
-| addtionalHeaders         | További HTTP-kérelmek fejlécei.                             | Nem       |
-| requestBody              | A HTTP-kérelem törzse.                               | Nem       |
-| httpRequestTimeout           | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**. | Nem       |
-| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | Nem       |
+| típus                     | A Type tulajdonságot a `storeSettings` **HttpReadSettings** értékre kell állítani. | Yes      |
+| requestMethod            | A HTTP-metódus. <br>Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | No       |
+| addtionalHeaders         | További HTTP-kérelmek fejlécei.                             | No       |
+| requestBody              | A HTTP-kérelem törzse.                               | No       |
+| httpRequestTimeout           | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**. | No       |
+| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No       |
 
 **Példa**
 
@@ -285,13 +280,13 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **HttpFile**értékre kell állítani. | Igen |
-| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. | Nem |
-| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
-| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| requestBody | A HTTP-kérelem törzse. | Nem |
-| formátumban | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**és **ParquetFormat**. A **Formátum**alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2**és **ZipDeflate**.<br/>Támogatott szintek:  **optimális** és **leggyorsabb**. |Nem |
+| típus | Az adatkészlet **Type** tulajdonságát **HttpFile** értékre kell állítani. | Yes |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva ez a tulajdonság, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. | No |
+| requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | No |
+| additionalHeaders | További HTTP-kérelmek fejlécei. | No |
+| requestBody | A HTTP-kérelem törzse. | No |
+| formátumban | Ha az adatokat a HTTP-végpontról kívánja lekérdezni, az elemzés nélkül, majd másolja az adatokat egy fájl alapú tárolóba, ugorja át a **Formátum** szakaszt a bemeneti és a kimeneti adatkészlet-definíciókban is.<br/><br/>Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő fájlformátum-típusok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat** és **ParquetFormat**. A **Formátum** alatt állítsa be a **Type** tulajdonságot az alábbi értékek egyikére. További információ: JSON- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#json-format), [szöveges formátum](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs-legacy.md#avro-format), ork- [Formátum](supported-file-formats-and-compression-codecs-legacy.md#orc-format)és [parketta formátum](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |No |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. További információ: [támogatott fájlformátumok és tömörítési kodekek](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Támogatott típusok: **gzip**, **deflate**, **BZip2** és **ZipDeflate**.<br/>Támogatott szintek:  **optimális** és **leggyorsabb**. |No |
 
 > [!NOTE]
 > A HTTP-kérések támogatott mérete körülbelül 500 KB. Ha a webes végpontnak átadni kívánt hasznos adatok mérete meghaladja a 500 KB-ot, érdemes lehet kisebb adattömbökbe felvenni a hasznos adatokat.
@@ -339,8 +334,8 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **HttpSource**értékre kell állítani. | Igen |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | Nem |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **HttpSource** értékre kell állítani. | Yes |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | No |
 
 **Példa**
 
@@ -374,6 +369,6 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

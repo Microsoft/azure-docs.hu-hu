@@ -3,18 +3,17 @@ title: A kísérletek nyomon követése és üzembe helyezése
 titleSuffix: Azure Data Science Virtual Machine
 description: Megtudhatja, hogyan követheti nyomon és naplózhatja a Data Science Virtual Machinei kísérleteket Azure Machine Learning és/vagy MLFlow.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 3795d531c5c4c543587ab817c05cd1cfeea6be06
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704540"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518538"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Kísérletek követése és modellek üzembe helyezése Azure Machine Learning
 
@@ -30,7 +29,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
 ## <a name="create-a-new-notebook"></a>Új jegyzetfüzet létrehozása
 
-A Azure Machine Learning és a MLFlow SDK előre telepítve van a Data Science VM, és a **azureml_py36_ \** _ Conda környezetben érhető el. A JupyterLab-ben kattintson az indítóra, és válassza ki a következő kernelt:
+A Azure Machine Learning és a MLFlow SDK előre telepítve van a Data Science VM, és a **azureml_py36_ \*** Conda-környezetben érhető el. A JupyterLab-ben kattintson az indítóra, és válassza ki a következő kernelt:
 
 ![kernel kiválasztása](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +136,7 @@ A [AzureML Studio](https://ml.azure.com) bal oldali menüjében kattintson a __s
 
 Az __új viszonyítási fürt__ ablaktáblán adja meg a következő adatokat:
 
-_ Számítási név
+* Számítási név
 * Kubernetes szolgáltatás – válassza az új létrehozása lehetőséget.
 * Régió kiválasztása
 * Válassza ki a virtuális gép méretét (ebben az oktatóanyagban az alapértelmezett Standard_D3_v2 elegendő)

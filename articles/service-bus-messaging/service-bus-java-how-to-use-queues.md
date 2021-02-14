@@ -3,14 +3,14 @@ title: Azure Service Bus Queues használata Javával (Azure-Messaging-servicebus
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható a Java egy Azure Service Bus üzenetsor üzeneteinek üzenetküldésére és fogadására. Használja az új Azure-Messaging-servicebus csomagot.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 02/13/2021
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a910f61389183b77af1f73f8d3553f6c5bbc8452
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bfe7835bea4415085279fb77eb85d67ed3f5f0f3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881584"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518606"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (Java)
 Ebben a rövid útmutatóban egy Java-alkalmazást fog létrehozni, amely üzeneteket küld egy Azure Service Bus üzenetsor üzeneteit, és fogadja az üzeneteket. 
@@ -32,14 +32,41 @@ Ebben a szakaszban létre fog hozni egy Java-konzol projektet, és hozzá kell a
 Hozzon létre egy Java-projektet az Eclipse vagy egy tetszőleges eszköz használatával. 
 
 ### <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
-Azure Service Bus könyvtárra mutató hivatkozás hozzáadása. A Service Bus Java-ügyféloldali könyvtára a [Maven Central adattárában](https://search.maven.org/search?q=a:azure-messaging-servicebus)érhető el. Ezt a kódtárat a következő függőségi deklarációval hivatkozhat a Maven-projektfájl használatával:
+Hivatkozások hozzáadása az Azure Core-hoz és a Azure Service Bus könyvtárakhoz. 
+
+Ha Eclipse-et használ, és létrehozott egy Java-konzol alkalmazást, alakítsa át a Java-projektet a mavenbe: kattintson a jobb gombbal a projektre a **Package Explorer** ablakban, **majd válassza a**  ->  **Konvertálás a Maven projektbe** lehetőséget. Ezután vegyen fel függőségeket a két kódtárara az alábbi példában látható módon.
 
 ```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0</version>
-</dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.myorg.sbusquickstarts</groupId>
+    <artifactId>sbustopicqs</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>15</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core</artifactId>
+            <version>1.13.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-messaging-servicebus</artifactId>
+            <version>7.0.2</version>
+        </dependency>
+    </dependencies>
+</project>
 ```
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Kód hozzáadása az üzenetek várólistába küldéséhez
@@ -47,9 +74,9 @@ Azure Service Bus könyvtárra mutató hivatkozás hozzáadása. A Service Bus J
 
     ```java
     import com.azure.messaging.servicebus.*;
-    import com.azure.messaging.servicebus.models.*;
+    
+    import java.util.concurrent.CountDownLatch;
     import java.util.concurrent.TimeUnit;
-    import java.util.function.Consumer;
     import java.util.Arrays;
     import java.util.List;
     ```    
@@ -94,7 +121,7 @@ Azure Service Bus könyvtárra mutató hivatkozás hozzáadása. A Service Bus J
     ```
 1. Adjon hozzá egy metódus nevű metódust `sendMessageBatch` az üzenetek küldéséhez a létrehozott várólistára. Ez a metódus létrehoz egy- `ServiceBusSenderClient` t a várólistához, meghívja a `createMessages` metódust az üzenetek listájának lekéréséhez, előkészíti egy vagy több köteget, és elküldi a kötegeket a várólistába. 
 
-```java
+    ```java
     static void sendMessageBatch()
     {
         // create a Service Bus Sender client for the queue 
@@ -139,39 +166,29 @@ Azure Service Bus könyvtárra mutató hivatkozás hozzáadása. A Service Bus J
         //close the client
         senderClient.close();
     }
-```
+    ```
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lekéréséhez. 
 
 1. Adjon hozzá egy nevű metódust `receiveMessages` az üzenetek fogadásához a várólistából. Ez a metódus létrehoz egy `ServiceBusProcessorClient` -t az üzenetsor számára egy kezelő megadásával az üzenetek feldolgozásához, és egy másikat a hibák kezeléséhez. Ezután elindítja a processzort, megvárja a pár másodpercig, kinyomtatja a fogadott üzeneteket, majd leállítja és bezárja a processzort.
 
+    > [!IMPORTANT]
+    > A kód helyére írja be az `QueueTest` `QueueTest::processMessage` osztály nevét. 
+
     ```java
     // handles received messages
     static void receiveMessages() throws InterruptedException
     {
-        // consumer that processes a single message received from Service Bus
-        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
-            ServiceBusReceivedMessage message = context.getMessage();
-            System.out.println("Received message: " + message.getBody().toString());
-        };
+        CountDownLatch countdownLatch = new CountDownLatch(1);
 
-        // handles any errors that occur when receiving messages
-        Consumer<Throwable> errorHandler = throwable -> {
-            System.out.println("Error when receiving messages: " + throwable.getMessage());
-            if (throwable instanceof ServiceBusReceiverException) {
-                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
-                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
-            }
-        };
-
-        // create an instance of the processor through the ServiceBusClientBuilder
+        // Create an instance of the processor through the ServiceBusClientBuilder
         ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
             .connectionString(connectionString)
             .processor()
             .queueName(queueName)
-            .processMessage(messageProcessor)
-            .processError(errorHandler)
+            .processMessage(QueueTest::processMessage)
+            .processError(context -> processError(context, countdownLatch))
             .buildProcessorClient();
 
         System.out.println("Starting the processor");
@@ -180,7 +197,53 @@ Ebben a szakaszban kódot fog hozzáadni az üzenetek várólistából való lek
         TimeUnit.SECONDS.sleep(10);
         System.out.println("Stopping and closing the processor");
         processorClient.close();        
+    }   
+    ```
+2. Adja hozzá a `processMessage` metódust a Service Bus-előfizetésből fogadott üzenet feldolgozásához. 
+
+    ```java
+    private static void processMessage(ServiceBusReceivedMessageContext context) {
+        ServiceBusReceivedMessage message = context.getMessage();
+        System.out.printf("Processing message. Session: %s, Sequence #: %s. Contents: %s%n", message.getMessageId(),
+            message.getSequenceNumber(), message.getBody());
     }    
+    ```
+3. Adja hozzá a `processError` metódust a hibaüzenetek kezeléséhez.
+
+    ```java
+    private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
+        System.out.printf("Error when receiving messages from namespace: '%s'. Entity: '%s'%n",
+            context.getFullyQualifiedNamespace(), context.getEntityPath());
+
+        if (!(context.getException() instanceof ServiceBusException)) {
+            System.out.printf("Non-ServiceBusException occurred: %s%n", context.getException());
+            return;
+        }
+
+        ServiceBusException exception = (ServiceBusException) context.getException();
+        ServiceBusFailureReason reason = exception.getReason();
+
+        if (reason == ServiceBusFailureReason.MESSAGING_ENTITY_DISABLED
+            || reason == ServiceBusFailureReason.MESSAGING_ENTITY_NOT_FOUND
+            || reason == ServiceBusFailureReason.UNAUTHORIZED) {
+            System.out.printf("An unrecoverable error occurred. Stopping processing with reason %s: %s%n",
+                reason, exception.getMessage());
+
+            countdownLatch.countDown();
+        } else if (reason == ServiceBusFailureReason.MESSAGE_LOCK_LOST) {
+            System.out.printf("Message lock lost for message: %s%n", context.getException());
+        } else if (reason == ServiceBusFailureReason.SERVICE_BUSY) {
+            try {
+                // Choosing an arbitrary amount of time to wait until trying again.
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                System.err.println("Unable to sleep for period of time");
+            }
+        } else {
+            System.out.printf("Error source %s, reason %s, message: %s%n", context.getErrorSource(),
+                reason, context.getException());
+        }
+    }  
     ```
 2. Frissítse a `main` metódust, hogy meghívja `sendMessage` , `sendMessageBatch` , és `receiveMessages` metódusokat, és dobja `InterruptedException` .     
 
@@ -199,10 +262,10 @@ Az alkalmazás futtatásakor a konzol ablakban a következő üzenetek jelennek 
 Sent a single message to the queue: myqueue
 Sent a batch of messages to the queue: myqueue
 Starting the processor
-Received message: Hello, World!
-Received message: First message in the batch
-Received message: Second message in the batch
-Received message: Three message in the batch
+Processing message. Session: 88d961dd801f449e9c3e0f8a5393a527, Sequence #: 1. Contents: Hello, World!
+Processing message. Session: e90c8d9039ce403bbe1d0ec7038033a0, Sequence #: 2. Contents: First message
+Processing message. Session: 311a216a560c47d184f9831984e6ac1d, Sequence #: 3. Contents: Second message
+Processing message. Session: f9a871be07414baf9505f2c3d466c4ab, Sequence #: 4. Contents: Third message
 Stopping and closing the processor
 ```
 
@@ -220,7 +283,7 @@ Válassza ki a várólistát ezen az **áttekintő** lapon, és navigáljon a **
 Tekintse meg a következő dokumentációt és mintákat:
 
 - [A Javához készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [Példák a GitHubon](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Minták a GitHubon](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Java API-referencia](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started

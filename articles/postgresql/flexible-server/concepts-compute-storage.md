@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710073"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519388"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Számítási és tárolási lehetőségek Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -65,7 +65,7 @@ A rendelkezésre álló kiszolgálói típusok részletes leírása a következ�
 | E48s_v3              | 48     | 384 GiB     | 18000              | 750 MiB/mp                 |
 | E64s_v3              | 64     | 432 GiB     | 18000              | 750 MiB/mp                 |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Az Ön által kiépített tárterület a Azure Database for PostgreSQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a PostgreSQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
@@ -151,7 +151,10 @@ Ha egy \* , I/O-sávszélességgel van megjelölve, a kiválasztott virtuálisg�
 
 Amikor eléri a tárolási korlátot, a kiszolgáló a hibák visszaadását és a további módosítások elkerülését fogja megkezdeni. Ez problémákat okozhat más működési tevékenységekkel, például a biztonsági mentésekkel és a WAL archiválással kapcsolatban.
 
+Ha el szeretné kerülni ezt a helyzetet, amikor a tárterület-használat eléri a 95%-ot, vagy ha a rendelkezésre álló kapacitás kevesebb, mint 5 GiB, a kiszolgáló automatikusan **írásvédett módra** vált.
+
 Javasoljuk, hogy aktívan figyelje a használatban lévő lemezterületet, és növelje a lemez méretét a tárolási helyzetben lévők előtt. Beállíthat egy riasztást, amely értesíti, ha a kiszolgáló tárterülete elfogyott a lemezről, így elkerülhetők a lemezről való kifogyás okozta hibák. További információt a [riasztás beállításával](howto-alert-on-metrics.md)kapcsolatos dokumentációban talál.
+
 
 ### <a name="storage-auto-grow"></a>Tárterület automatikus növekedése
 

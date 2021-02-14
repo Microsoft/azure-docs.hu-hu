@@ -1,22 +1,18 @@
 ---
 title: Prediktív adatfolyamatok létrehozása Azure Data Factory használatával
 description: Ismerteti, hogyan hozhat létre prediktív folyamatokat Azure Data Factory és Azure Machine Learning Studio használatával (klasszikus)
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c04c94ef2a73085b982fde3efefecea351b083af
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a7042a67081475311341ad6d56e35b2a71b8b12c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608068"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379335"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Prediktív folyamatok létrehozása Azure Machine Learning Studio (klasszikus) és Azure Data Factory használatával
 

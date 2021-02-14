@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása SQL Serverról blob Storage-ba a PowerShell használatával
 description: Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű Integration Runtime átjáróval történő másolásának folyamatát.
-services: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: bed497dfdc25ec2815f51795a1f40847586ce798
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fc709147c61152bc85db96a059501a12c40a9332
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510311"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391218"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -716,7 +712,7 @@ A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `a
     ![Kimeneti fájl](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

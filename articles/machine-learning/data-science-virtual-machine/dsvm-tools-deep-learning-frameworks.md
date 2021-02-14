@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Elérhető mély tanulási keretrendszerek és eszközök az Azure Data Science Virtual Machineon.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: c8c6ee3d5eecc02ac921d7b10f2394380af684c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309037"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519490"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Mély tanulási és AI-keretrendszerek az Azure Data Science VM
 Az alábbi lista mély tanulási keretrendszerek a DSVM.
@@ -146,5 +145,5 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.0.3 |
 | Támogatott DSVM-kiadások      | Ubuntu 16.04 |
-| Hogyan van konfigurálva/telepítve a DSVM?  |A theano a Python 2,7 ( _root_ ) és a Python 3,5 ( _py35_ ) környezetben van telepítve. |
+| Hogyan van konfigurálva/telepítve a DSVM?  |A theano a Python 2,7 (_root_) és a Python 3,5 (_py35_) környezetben van telepítve. |
 | Futtatás      |  Terminál: aktiválja a kívánt Python-verziót (root vagy py35), futtassa a Pythont, majd importálja a theano.<br/>* Jupyter: válassza ki a Python 2,7 vagy a 3,5 kernelt, majd importálja a theano.  <br/>A legújabb matematikai kernel-függvénytári (MKL-) hibák megkerüléséhez először a következőképpen kell beállítania a MKL-szálat:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

@@ -1,24 +1,20 @@
 ---
 title: Felügyelt virtuális hálózat & felügyelt magánhálózati végpontok
 description: Ismerkedjen meg a felügyelt virtuális hálózattal és a felügyelt privát végpontokkal Azure Data Factoryban.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980361"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379573"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
@@ -51,7 +47,7 @@ A felügyelt magánhálózati végpontok a Azure Data Factory felügyelt Virtual
 
 ![Új felügyelt magánhálózati végpont](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure (Pásti) szolgáltatások elérését (például Azure Storage, Azure Cosmos DB, Azure szinapszis Analytics (korábban SQL Data Warehouse)).
+Azure Data Factory támogatja a privát hivatkozásokat. A privát hivatkozás lehetővé teszi az Azure-(Pásti-) szolgáltatások (például az Azure Storage, az Azure Cosmos DB, az Azure szinapszis Analytics) elérését.
 
 Privát kapcsolat használatakor az adattárak és a felügyelt Virtual Network közötti adatforgalom teljes egészében a Microsoft gerinc hálózatán halad át. A privát hivatkozás védi az adatkiszűrése kockázatait. Privát végpont létrehozásával létrehozhat egy erőforrásra mutató privát hivatkozást.
 
@@ -86,7 +82,7 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (nem tartalmazza az Azure SQL felügyelt példányát)
-- Azure Synapse Analytics (korábban SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure Private link Service
@@ -115,7 +111,7 @@ Az alábbi adatforrások az ADF által felügyelt Virtual Networkon keresztüli 
 - Az Azure Storage és a Azure Data Lake Gen2 nem támogatottak nyilvános végponton keresztüli csatlakoztatáshoz az ADF által felügyelt Virtual Network.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault társított szolgáltatásának létrehozása 
-- Ha Azure Key Vaulthoz társított szolgáltatást hoz létre, nincs Azure Integration Runtime-hivatkozás. Így nem hozhat létre privát végpontot a Azure Key Vault társított szolgáltatásának létrehozásakor. Ha azonban olyan adattárakhoz hoz létre társított szolgáltatást, amelyek Azure Key Vault társított szolgáltatásra hivatkoznak, és ez a társított szolgáltatás olyan Azure Integration Runtime, amelyeken engedélyezve van a felügyelt Virtual Network, akkor a létrehozás során létre tud hozni egy privát végpontot a Azure Key Vault társított szolgáltatáshoz. 
+- Amikor társított szolgáltatást hoz létre az Azure Key Vaulthoz, nincs az Azure integrációs modulra irányuló hivatkozás. Így nem hozhat létre privát végpontot a Azure Key Vault társított szolgáltatásának létrehozásakor. Ha azonban olyan adattárakhoz hoz létre társított szolgáltatást, amelyek Azure Key Vault társított szolgáltatásra hivatkoznak, és ez a társított szolgáltatás olyan Azure Integration Runtime, amelyeken engedélyezve van a felügyelt Virtual Network, akkor a létrehozás során létre tud hozni egy privát végpontot a Azure Key Vault társított szolgáltatáshoz. 
 - A Azure Key Vault társított szolgáltatásának **tesztelési** művelete csak az URL-formátumot ellenőrzi, de nem végez hálózati műveletet.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -2,13 +2,13 @@
 title: Azure NetApp Files Azure VMware-megoldással
 description: A Azure NetApp Files és az Azure VMware megoldás virtuális gépei segítségével áttelepítheti és szinkronizálhatja a helyszíni kiszolgálók, az Azure VMware-megoldás virtuális gépei és a Felhőbeli infrastruktúrák közötti adatátvitelt.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: db7d8eb05e5bd70f6a2397b3017924093218e78e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988655"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371566"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files Azure VMware-megoldással
 
@@ -16,7 +16,7 @@ Ebben a cikkben végigvezeti a Azure NetApp Files integrálásának lépésein a
 
 ## <a name="azure-netapp-files-overview"></a>Azure NetApp Files áttekintése
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) egy Azure-szolgáltatás áttelepítésre és a legigényesebb vállalati fájl-számítási feladatok futtatására a felhőben. Ilyenek például az adatbázisok, az SAP és a nagy teljesítményű számítástechnikai alkalmazások, amelyek nem módosítanak programkódot.
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) egy Azure-szolgáltatás áttelepítésre és a legigényesebb vállalati fájl-munkaterhelések futtatására a felhőben: adatbázisok, SAP és nagy teljesítményű számítástechnikai alkalmazások, kód módosítása nélkül.
 
 ### <a name="features"></a>Funkciók
 (Szolgáltatások, ahol a Azure NetApp Files használatban vannak.)
@@ -31,7 +31,7 @@ Azure NetApp Files számos Azure-régióban elérhető, és támogatja a régió
 
 ## <a name="reference-architecture"></a>Referenciaarchitektúra
 
-Az alábbi ábra az Azure ExpressRoute keresztüli, egy Azure VMware-megoldáshoz tartozó privát felhőhöz való kapcsolódást ábrázolja. Az Azure VMware-megoldás környezete hozzáfér a Azure NetApp Files-megosztáshoz, amely az Azure VMware-megoldás virtuális gépekre van csatlakoztatva.
+Az alábbi ábra az Azure ExpressRoute keresztüli, egy Azure VMware-megoldáshoz tartozó privát felhőhöz való kapcsolódást ábrázolja. Az Azure VMware-megoldás környezete hozzáfér az Azure VMware-megoldás virtuális gépei számára csatlakoztatott Azure NetApp Files megosztáshoz.
 
 ![Az Azure VMware megoldás architektúrájának NetApp-fájljait bemutató ábra.](media/net-app-files/net-app-files-topology.png)
 
@@ -83,11 +83,13 @@ A következő lépések bemutatják az Azure-ban az Azure NetApp Files Premium S
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="A kötet konfigurációs adatait bemutató képernyőkép.":::
 
-    Láthatja, hogy a anfvolume kötet 200 GiB méretű, és a Capacity Pool anfpool1 van.  A rendszer NFS-fájlmegosztásként exportálja a 10.22.3.4-on keresztül:/ANFVOLUME. A rendszer létrehoz egy magánhálózati IP-címet az Azure Virtual Networkról (VNet) a Azure NetApp Fileshez és a virtuális gépen csatlakoztatni kívánt NFS-útvonalhoz. Ha többet szeretne megtudni a Azure NetApp Files kötet teljesítményéről vagy a "kvóta" értékről, tekintse meg [a Azure NetApp Files teljesítményével kapcsolatos szempontokat](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
+    Láthatja, hogy a anfvolume mérete 200 GiB, és a Capacity Pool anfpool1 van. A rendszer NFS-fájlmegosztásként exportálja a 10.22.3.4-on keresztül:/ANFVOLUME. A rendszer létrehoz egy magánhálózati IP-címet az Azure Virtual Networkról (VNet) a Azure NetApp Fileshez és a virtuális gépen csatlakoztatni kívánt NFS-útvonalhoz.
+
+    Ha többet szeretne megtudni a Azure NetApp Files kötet teljesítményéről vagy a "kvóta" értékről, tekintse meg [a Azure NetApp Files teljesítményével kapcsolatos szempontokat](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>Az előre konfigurált Azure VMware-megoldás virtuálisgép-megosztási leképezésének ellenőrzése
 
-Ahhoz, hogy egy Azure NetApp Files-megosztás elérhető legyen egy Azure VMware-megoldás virtuális gépe számára, fontos megérteni az SMB-és NFS-megosztások leképezését. Csak az SMB-vagy NFS-kötetek konfigurálása után csatlakoztathatók az itt dokumentált módon.
+Ahhoz, hogy a Azure NetApp Files elérhetővé váljon az Azure VMware-megoldás virtuális gépe, meg kell ismernie az SMB-és NFS-megosztások megfeleltetését. Csak az SMB-vagy NFS-kötetek konfigurálása után csatlakoztathatja őket az itt dokumentált módon.
 
 - SMB-megosztás: hozzon létre egy Active Directory-kapcsolatokat az SMB-kötet telepítése előtt. A sikeres kapcsolatok eléréséhez a megadott tartományvezérlőknek a Azure NetApp Files delegált alhálózatának kell elérhetőnek lennie. Miután a Active Directory konfigurálva lett a Azure NetApp Files-fiókban, az SMB-kötetek létrehozásakor választható elemként fog megjelenni.
 

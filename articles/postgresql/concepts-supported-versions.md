@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938868"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518453"
 ---
 # <a name="supported-postgresql-major-versions"></a>Támogatott PostgreSQL főverziók
 
@@ -29,11 +29,8 @@ Az aktuális alverzió 10,11. Tekintse meg a [PostgreSQL dokumentációját](htt
 ## <a name="postgresql-version-96"></a>PostgreSQL 9,6-es verzió
 Az aktuális másodlagos kiadás a 9.6.16. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) , ahol további információt talál az ebben a másodlagos kiadásban található javításokról és javításokról.
 
-## <a name="postgresql-version-95"></a>PostgreSQL 9,5-es verzió
-Az aktuális másodlagos kiadás a 9.5.20. Tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) , amely az ebben a másodlagos kiadásban található javításokat és javításokat ismerteti.
-
-> [!NOTE]
-> A postgres közösségi [verziószámozási szabályzattal](https://www.postgresql.org/support/versioning/)való összehangolása Azure Database for PostgreSQL 9,5-es verziójának kivonásával történik a 2021. február 11-én a postgres. További részletekért és korlátozásért tekintse meg [Azure Database for PostgreSQL verziószámozási szabályzatát](concepts-version-policy.md) .
+## <a name="postgresql-version-95-retired"></a>PostgreSQL 9,5-es verzió (kivezetve)
+A postgres-Közösség [verziószámozási szabályzatával](https://www.postgresql.org/support/versioning/)összehangolva a Azure Database for PostgreSQL postgres 9,5-es verziójának kivonása 2021. február 11. További részletekért és korlátozásért tekintse meg [Azure Database for PostgreSQL verziószámozási szabályzatát](concepts-version-policy.md) . Ha ezt a főverziót futtatja, frissítsen egy újabb verzióra, lehetőleg a PostgreSQL 11-et a lehető leghamarabb.
 
 ## <a name="managing-upgrades"></a>Frissítések kezelése
 A PostgreSQL-projekt rendszeresen kiad kisebb kiadásokat a jelentett hibák kijavítása érdekében. Az Azure Database for PostgreSQL a szolgáltatás havi rendszerességű üzembehelyezései során automatikusan alverziókkal frissíti a kiszolgálókat. 

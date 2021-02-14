@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a1fb1c1be8a0203d9f36712fda8e30f0f9354091
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576115"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515070"
 ---
 A profilokat üzembe helyezheti az Azure VPN-ügyfelekhez (Windows 10) Microsoft Intune használatával. Ez a cikk segítséget nyújt az Intune-profilok egyéni beállításokkal történő létrehozásában.
 
@@ -46,21 +46,14 @@ Más támogatott lehetőségekért tekintse meg a [VPNV2 CSP](https://docs.micro
       <PluginProfile>
         <ServerUrlList>azuregateway-7cee0077-d553-4323-87df-069c331f58cb-053dd0f6af02.vpn.azure.com</ServerUrlList> 
         <CustomConfiguration>
+
         </CustomConfiguration>
         <PluginPackageFamilyName>Microsoft.AzureVpn_8wekyb3d8bbwe</PluginPackageFamilyName>
       </PluginProfile>
     </VPNProfile>
    ```
 1. Módosítsa a és a közötti bejegyzést ```<ServerUrlList>``` ```</ServerUrlList>``` a letöltött profil (azurevpnconfig.xml) bejegyzéseivel. Módosítsa a "TrustedNetworkDetection" FQDN-t úgy, hogy az illeszkedjen a környezetéhez.
-1. Nyissa meg az Azure letöltött profilt (azurevpnconfig.xml), és másolja a tartalmat a vágólapra a szöveg kiemelésével, és nyomja le a <ctrl> + C billentyűkombinációt. másolja a következő AzVpnProfile-sorok között, de ne másolja maguk a AzVpnProfile sorokat:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-   For example - copy the text in your xml that is located here.
-   </AzVpnProfile>
-   ```
+1. Nyissa meg az Azure letöltött profilt (azurevpnconfig.xml), és másolja a teljes tartalmat a vágólapra a szöveg kiemelésével és a CTRL + C billentyűkombinációval. 
 1. Illessze be a másolt szöveget az előző lépésből a címkék között a 2. lépésben létrehozott fájlba ```<CustomConfiguration>  </CustomConfiguration>``` . Mentse a fájlt egy XML-bővítménnyel.
 1. Jegyezze fel az értéket a ```<name>  </name>``` címkékben. Ez a profil neve. Erre a névre szüksége lesz, amikor létrehozza a profilt az Intune-ban. Zárjuk be a fájlt, és jegyezze fel a mentési helyét.
 
@@ -80,7 +73,7 @@ Ebben a szakaszban egy Microsoft Intune-profilt hoz létre egyéni beállításo
     * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (ez az információ a <name></name> címke azurevpnconfig.xml fájljában található).
     * **Adattípus:** Karakterlánc (XML-fájl).
 
-   Jelölje ki a mappa ikont, és válassza ki az [XML-](#xml) lépések 6. lépésében mentett fájlt. Válassza a **Hozzáadás** elemet.
+   Jelölje ki a mappa ikont, és válassza ki az [XML-](#xml) lépések 6. lépésében mentett fájlt. Válassza a **Hozzáadás** lehetőséget.
 
    :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/configuration-settings.png" alt-text="Konfigurációs beállítások" lightbox="./media/vpn-gateway-virtual-wan-vpn-profile-intune/configuration-settings.png":::
 1. Kattintson a **Tovább** gombra.

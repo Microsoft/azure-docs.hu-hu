@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001235"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381494"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure üzenetsor-tárolási trigger a Azure Functionshoz
 
@@ -351,19 +351,21 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `QueueTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa** | n/a| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**irányba**| n/a | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n/a |Annak a változónak a neve, amely a függvény kódjában található üzenetsor-elemek tartalmát tartalmazza.  |
+|**típusa** | n.a.| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**irányba**| n.a. | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n.a. |Annak a változónak a neve, amely a függvény kódjában található üzenetsor-elemek tartalmát tartalmazza.  |
 |**queueName** | **QueueName**| A lekérdezni kívánt várólista neve. |
-|**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .|
+|**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg.<br><br>Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .<br><br>Ha [a bővítmény 5. x vagy újabb verzióját](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)használja, a kapcsolati karakterlánc helyett megadhat egy olyan konfigurációs szakaszra mutató hivatkozást, amely meghatározza a kapcsolódást. Lásd: [kapcsolatok](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Használat
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Alapértelmezett
 
 Az üzenet adatai egy metódus-paraméter (például) használatával érhetők el `string paramName` . A következő típusokhoz köthető:
 
@@ -374,7 +376,17 @@ Az üzenet adatai egy metódus-paraméter (például) használatával érhetők 
 
 Ha egy hibaüzenetet próbál meg kötni `CloudQueueMessage` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
+### <a name="additional-types"></a>További típusok
+
+A [5.0.0 vagy újabb verzióját](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) használó alkalmazások a [.net-hez készült Azure SDK](/dotnet/api/overview/azure/storage.queues-readme)-ból is használhatnak típusokat. Ez a verzió a `CloudQueueMessage` következő típusok javára elveszíti a örökölt típus támogatását:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+A fenti típusokat használó példákat a [bővítmény GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)tekintheti meg.
+
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
+
+### <a name="default"></a>Alapértelmezett
 
 Az üzenet adatai egy metódus-paraméter (például) használatával érhetők el `string paramName` . A `paramName` értéke `name` *function.json* tulajdonságában megadott érték. A következő típusokhoz köthető:
 
@@ -384,6 +396,14 @@ Az üzenet adatai egy metódus-paraméter (például) használatával érhetők 
 * [CloudQueueMessage]
 
 Ha egy hibaüzenetet próbál meg kötni `CloudQueueMessage` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+
+### <a name="additional-types"></a>További típusok
+
+A [5.0.0 vagy újabb verzióját](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) használó alkalmazások a [.net-hez készült Azure SDK](/dotnet/api/overview/azure/storage.queues-readme)-ból is használhatnak típusokat. Ez a verzió a `CloudQueueMessage` következő típusok javára elveszíti a örökölt típus támogatását:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+
+A fenti típusokat használó példákat a [bővítmény GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)tekintheti meg.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -407,7 +427,7 @@ Nyissa meg az üzenetsor-üzenetet a [QueueMessage](/python/api/azure-functions/
 
 A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tagjai.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor-üzenet tartalma egy karakterlánc, akkor a `QueueTrigger` `name` *function.js* tulajdonságban megnevezett változóval megegyező értékkel rendelkezik.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|
@@ -448,9 +468,9 @@ A várólista-trigger automatikusan megakadályozza, hogy egy függvény egyszer
 
 ## <a name="hostjson-properties"></a>Tulajdonságok host.js
 
-A [host.js](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [ meg ahost.json Settings](functions-bindings-storage-queue-output.md#hostjson-settings) szakaszt.
+A [host.js](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [ meg ahost.json Settings](functions-bindings-storage-queue.md#hostjson-settings) szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Írási várólista tárolási üzenetei (kimeneti kötés)](./functions-bindings-storage-queue-output.md)
 

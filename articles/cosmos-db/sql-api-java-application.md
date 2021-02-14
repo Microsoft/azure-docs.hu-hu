@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b3cb6bf56820da84d17f0b981f461a545bbe5ab6
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d39c1d8c3ac60dda62556b1a8da0dfe29e3c1ee3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549259"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383619"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ Ez a Java-alkalmazásokra vonatkozó oktatóanyag bemutatja, hogyan hozhat létr
 :::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
 > [!TIP]
-> Ez az alkalmazásfejlesztési oktatóanyag feltételezi, hogy rendelkezik korábbi tapasztalattal a Java használatát illetően. Ha még nem ismeri a Javát vagy az [előfeltételt jelentő eszközöket](#Prerequisites), ajánlott letölteni a teljes [teendők](https://github.com/Azure-Samples/documentdb-java-todo-app) projektet a GitHubról, majd lefordítani azt a [jelen cikk végén található utasítások](#GetProject) segítségével. A projekt lefordítása után a cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.  
+> Ez az alkalmazásfejlesztési oktatóanyag feltételezi, hogy rendelkezik korábbi tapasztalattal a Java használatát illetően. Ha még nem ismeri a javát vagy az [előfeltételt jelentő eszközöket](#Prerequisites), javasoljuk, hogy töltse le a teljes [Todo] https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) projektet a githubról, és [a cikk végén található utasítások](#GetProject)alapján végezze el a fordítást. A projekt lefordítása után a cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.  
 >
 
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>A jelen Java-alkalmazásokra vonatkozó oktatóanyag előfeltételei
@@ -80,7 +80,7 @@ JSP-alkalmazás létrehozása:
 
 1. A **Select JSP Template** (JSP-sablon kiválasztása) párbeszédablakban, a jelen oktatóanyag céljából válassza a **New JSP File (html)** (Új JSP-fájl (html)) lehetőséget, majd kattintson a **Finish** (Befejezés) lehetőségre.
 
-1. Ha a *index.jsp* -fájl az Eclipse-ben nyílik meg, szöveg hozzáadásával jelenítheti meg a **„Helló világ!” alkalmazás!** a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
+1. Ha a *index.jsp* -fájl az Eclipse-ben nyílik meg, szöveg hozzáadásával jelenítheti meg a **Hello World!** a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
 
    ```html
    <body>
@@ -110,15 +110,15 @@ Az SQL Java SDK, valamint annak függőségei a legegyszerűbben az [Apache Mave
    
    * A **csoport azonosítója** mezőbe írja be a értéket `com.azure` .
    * Az összetevő- **azonosító** mezőben adja meg a értéket `azure-cosmos` .
-   * A **verzió** mezőbe írja be a értéket `4.0.1-beta.1` .
+   * A **verzió** mezőbe írja be a értéket `4.11.0` .
   
    Vagy hozzáadhatja a függőségi XML-t a csoport AZONOSÍTÓhoz és az összetevő-AZONOSÍTÓhoz közvetlenül a *pom.xml* fájlhoz:
 
    ```xml
    <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-cosmos</artifactId>
-      <version>4.0.1-beta.1</version>
+     <groupId>com.azure</groupId>
+     <artifactId>azure-cosmos</artifactId>
+     <version>4.11.0</version>
    </dependency>
    ```
 
@@ -132,7 +132,7 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket a webalkalmazás
 
 Először is Definiáljon egy modellt egy új, *TodoItem. Java* fájlon belül. Az `TodoItem` osztály meghatározza egy adott tétel sémáját a beolvasó és a beállító metódusokkal együtt:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/model/TodoItem.java":::
 
 ### <a name="add-the-data-access-objectdao-classes"></a>Az adatelérési objektum (DAO) osztályainak hozzáadása
 
@@ -140,37 +140,37 @@ Hozzon létre egy adatelérési objektumot (DAO) a teendők elAzure Cosmos DBáh
 
 1. A Azure Cosmos DB szolgáltatás meghívásához új objektumot kell létrehoznia `cosmosClient` . Általánosságban elmondható, hogy az objektumot újra fel kell használni ahelyett, hogy `cosmosClient` minden további kérelemhez új ügyfelet kellene létrehoznia. Az ügyfelet a osztályon belüli definiálásával is felhasználhatja `cosmosClientFactory` . Frissítse a GAZDAGÉPet, és MASTER_KEY az 1. [lépésben](#CreateDB)mentett értékeket. Cserélje le a GAZDAGÉP változót az URI-val, és cserélje le a MASTER_KEYt az elsődleges KULCSra. A következő kód használatával hozza létre az `CosmosClientFactory` osztályt a *CosmosClientFactory. Java* fájlban:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/CosmosClientFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/CosmosClientFactory.java":::
 
 1. Hozzon létre egy új *TodoDao. Java* fájlt, és adja hozzá az `TodoDao` osztályt a teendők létrehozásához, frissítéséhez, olvasásához és törléséhez:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDao.java":::
 
 1. Hozzon létre egy új *MockDao. Java* fájlt, és adja hozzá az `MockDao` osztályt, ez az osztály implementálja az `TodoDao` osztályt a szifiliszi műveletek végrehajtásához az elemeken:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/MockDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/MockDao.java":::
 
 1. Hozzon létre egy új *DocDbDao. Java* fájlt, és adja hozzá az `DocDbDao` osztályt. Ez az osztály a TodoItems a tárolóba való megőrzéséhez, az adatbázis és a gyűjtemény lekéréséhez, vagy egy új, a nem létező hely létrehozásához szükséges kódot határozza meg. Ez a példa a [Gson](https://code.google.com/p/google-gson/) használatával szerializálja és deszerializálja a TodoItem egyszerű régi Java-objektumokat (szerializálói) a JSON-dokumentumokra. Ha menteni szeretné a teendőket egy gyűjteménybe, az ügyfélnek tudnia kell, melyik adatbázisban és gyűjteményben kívánja azt megőrizni (ahogy erre az önhivatkozások is hivatkoznak). Ez az osztály azt is meghatározza, hogy a segítő függvény hogyan kérheti le a dokumentumokat egy másik attribútum (pl. "ID") helyett. A Helper metódus használatával TodoItem JSON-dokumentumot kérhet le azonosító alapján, majd deszerializálhatja egy POJO.
 
    Az TodoItems egy SQL- `cosmosClient` lekérdezés használatával is beolvashatja a gyűjteményt vagy a listát. Végezetül a DELETE metódust is megadhatja egy TodoItem törléséhez a listából. A következő kód a osztály tartalmát jeleníti meg `DocDbDao` :
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/DocDbDao.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/DocDbDao.java":::
 
 1. Ezután hozzon létre egy új *TodoDaoFactory. Java* fájlt, és adja hozzá `TodoDaoFactory` azt az osztályt, amely létrehoz egy új DocDbDao objektumot:
 
-   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDaoFactory.java":::
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/dao/TodoDaoFactory.java":::
 
 ### <a name="add-a-controller"></a>Vezérlő hozzáadása
 
 Adja hozzá az *TodoItemController* vezérlőt az alkalmazáshoz. Ebben a projektben a [Project Lombok](https://projectlombok.org/) nevű projekt használatával hozzuk létre a konstruktort, a beolvasókat, a beállítókat és a felépítőt. Ezt a kódot manuálisan is megírhatja, vagy létrehozhatja az IDE-t is.:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/controller/TodoItemController.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/controller/TodoItemController.java":::
 
 ### <a name="create-a-servlet"></a>Servlet létrehozása
 
 Ezután hozzon létre egy servletet a HTTP-kérések továbbításához a vezérlőhöz. Hozza létre a *ApiServlet. Java* fájlt, és adja meg a következő kódot:
 
-:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/ApiServlet.java":::
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/cosmos/sample/ApiServlet.java":::
 
 ## <a name="wire-the-rest-of-the-of-java-app-together"></a><a id="Wire"></a>A Java-alkalmazás többi részének egyesítése
 
@@ -194,17 +194,17 @@ Az Azure Websites megkönnyíti a Java-alkalmazások telepítését. Nincs más 
 
 1. A **WAR Export** (WAR-fájl exportálása) ablakban tegye a következőket:
    
-   * A Web project (Webes projekt) mezőben adja meg a következőt: azure-documentdb-java-sample.
+   * A webes projekt mezőben adja meg az Azure-Cosmos-Java-Sample értéket.
    * A Destination (Cél) mezőben válassza ki, hova szeretné menteni a WAR-fájlt.
    * Kattintson a **Finish** (Befejezés) gombra.
 
 1. Most, hogy megvan a WAR-fájl, egyszerűen töltse fel az Azure Websites **webapps** könyvtárába. A fájl feltöltésével kapcsolatos további információkért lásd a [Java-alkalmazások az Azure App Service Web Appshoz való hozzáadását](../app-service/quickstart-java.md) ismertető cikket. Miután feltöltötte a WAR-fájlt a webapps könyvtárba, a futásidejű környezet felismeri azt, és automatikusan betöltődik.
 
-1. A kész termék megtekintéséhez lépjen a `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` webhelyre, és kezdje meg a feladatok hozzáadását.
+1. A kész termék megtekintéséhez lépjen a `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-cosmos-java-sample/` webhelyre, és kezdje meg a feladatok hozzáadását.
 
 ## <a name="get-the-project-from-github"></a><a id="GetProject"></a>A projekt beszerzése a GitHubról
 
-A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) (teendők) projektben. A teendők projekt Eclipse-be történő importálásához győződjön meg arról, hogy rendelkezik az [Előfeltételek](#Prerequisites) szakaszban ismertetett szoftverekkel és erőforrásokkal, majd tegye a következőket:
+A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [todo](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) (teendők) projektben. A teendők projekt Eclipse-be történő importálásához győződjön meg arról, hogy rendelkezik az [Előfeltételek](#Prerequisites) szakaszban ismertetett szoftverekkel és erőforrásokkal, majd tegye a következőket:
 
 1. Telepítse a [Project Lombok](https://projectlombok.org/) nevű projektet. A projekt konstruktorainak, beolvasóinak, beállítóinak létrehozása a Lombok használatával történik. A lombok.jar fájl letöltése után kattintson rá duplán annak telepítéséhez, vagy telepítse azt a parancssorból.
 
@@ -216,7 +216,7 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. A **Select Repository Source** (Tárház forrásának kiválasztása) képernyőn kattintson a **Clone URI** (URI klónozása) lehetőségre.
 
-1. A **Source Git Repository** (Forrás Git-adattár) képernyő **URI** mezőjében adja meg a https://github.com/Azure-Samples/documentdb-java-todo-app.git címet, majd kattintson a **Next** (Tovább) gombra.
+1. A **Source Git Repository** (Forrás Git-adattár) képernyő **URI** mezőjében adja meg a https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app címet, majd kattintson a **Next** (Tovább) gombra.
 
 1. A **ág kiválasztása** képernyőn győződjön meg arról, hogy a **Main** van kiválasztva, majd kattintson a **tovább** gombra.
 
@@ -226,9 +226,9 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. Az **Import Projects** (Projektek importálása) képernyőn törölje a **DocumentDB** projekt jelölését, majd kattintson a **Finish** (Befejezés) gombra. A DocumentDB-projekt tartalmazza az Azure Cosmos DB Java SDK-t, amelyet inkább függőségként adunk hozzá.
 
-1. A **Project Explorer** (Projektböngésző) nézetben lépjen a következő helyre: azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java. Itt cserélje le a HOST és a MASTER_KEY értékét az Azure Cosmos DB-fiókjának URI és PRIMARY KEY értékeire, majd mentse a fájlt. További információ: [1. lépés. Hozzon létre egy Azure Cosmos-adatbázis-fiókot](#CreateDB).
+1. A **Project Explorerben** navigáljon a Azure-Cosmos-Java-sample\src\com.microsoft.Azure.Cosmos.sample.dao\DocumentClientFactory.Java elemre, és cserélje le a gazdagépet, és MASTER_KEY értékeket a Azure Cosmos db-fiók URI-ja és elsődleges kulcsával, majd mentse a fájlt. További információ: [1. lépés. Hozzon létre egy Azure Cosmos-adatbázis-fiókot](#CreateDB).
 
-1. A **Project Explorer** (Projektböngésző) nézetben kattintson a jobb gombbal az **azure-documentdb-java-sample** elemre, majd kattintson a **Build Path** (Verzió elérési útja), és végül a **Configure Build Path** (Verzió elérési útjának konfigurálása) lehetőségre.
+1. A **Project Explorerben** kattintson a jobb gombbal az **Azure-Cosmos-Java-Sample** elemre, kattintson a **Build útvonala** lehetőségre, majd a **Build elérési útjának konfigurálása** elemre.
 
 1. A **Java Build Path** (Java-verzió elérési útja) képernyő jobb oldalsó paneljén válassza ki a **Libraries** (Könyvtárak) lapot, majd kattintson az **Add External JARs** (Külső JAR-fájlok hozzáadása) lehetőségre. Navigáljon a lombok.jar fájl helyére, kattintson az **Open** (Megnyitás), majd az **OK** gombra.
 
@@ -242,11 +242,11 @@ A jelen oktatóanyag minden példáját megtalálhatja a GitHubról elérhető [
 
 1. A **Servers** (Kiszolgálók) lapon, a képernyő alján, kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost), majd az **Add and Remove** (Hozzáadás és eltávolítás) lehetőségre.
 
-1. Az **Add and Remove** (Hozzáadás és eltávolítás) ablakban helyezze át az **azure-documentdb-java-sample** kiszolgálót a **Configured** (Konfigurált) mezőbe, majd kattintson a **Finish** (Befejezés) gombra.
+1. Az **Add and Remove (Hozzáadás és eltávolítás** ) ablakban helyezze át az **Azure-Cosmos-Java-Sample** parancsot a **konfigurált** mezőbe, majd kattintson a **Befejezés** gombra.
 
 1. A **Servers** (Kiszolgálók) lapon kattintson a jobb gombbal a **Tomcat v7.0 Server at localhost** (Tomcat 7.0-s verziójú kiszolgáló itt: localhost) elemre, majd kattintson a **Restart** (Újraindítás) lehetőségre.
 
-1. Egy böngészőből lépjen a `http://localhost:8080/azure-documentdb-java-sample/` címre, és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
+1. Egy böngészőből lépjen a `http://localhost:8080/azure-cosmos-java-sample/` címre, és kezdje el hozzáadni a feladatait a listához. Ügyeljen arra, hogy ha módosította a portok alapértelmezett értékét, akkor a 8080 értéket módosítsa a választott értékre.
 
 1. A projekt Azure-webhelyre történő üzembe helyezéséhez lásd: [6. lépés. Az alkalmazás üzembe helyezése az Azure webhelyek szolgáltatásban](#Deploy).
 

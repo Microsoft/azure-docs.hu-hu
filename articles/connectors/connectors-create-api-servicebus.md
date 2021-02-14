@@ -3,16 +3,16 @@ title: Exchange-üzenetek Azure Service Bus
 description: Automatikus feladatok és munkafolyamatok létrehozása, amelyek üzeneteket küldenek és fogadnak a Azure Logic Apps Azure Service Bus használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019709"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367418"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -169,7 +169,7 @@ Logikai alkalmazás létrehozásakor kiválaszthatja a **korrelált sorrend szer
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>A logikai alkalmazás frissítéseinek érvénybe léptetése folyamatban van
 
-Ha egy Service Bus trigger lekérdezési időköze kicsi, például 10 másodperc, akkor előfordulhat, hogy a logikai alkalmazás frissítései akár 10 percig nem lépnek érvénybe. A probléma megkerüléséhez átmenetileg növelheti a lekérdezési időközt egy nagyobb értékre (például 30 másodpercre vagy 1 percre) a logikai alkalmazás frissítése előtt. A frissítés elvégzése után alaphelyzetbe állíthatja a lekérdezési időközt az eredeti értékre. 
+Ha egy Service Bus trigger lekérdezési időköze kicsi, például 10 másodperc, akkor előfordulhat, hogy a logikai alkalmazás frissítései akár 10 percig nem lépnek érvénybe. A probléma megkerüléséhez tiltsa le a logikai alkalmazást, végezze el a módosításokat, majd engedélyezze újra a logikai alkalmazást.
 
 <a name="connector-reference"></a>
 
@@ -179,6 +179,6 @@ A Service Bus szolgáltatásban az Service Bus-összekötő akár 1 500 egyedi m
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért, amelyeket az összekötő hencegő leírása ismertet, tekintse át az [összekötő-hivatkozás lapot](/connectors/servicebus/). További információ a Azure Service Bus üzenetkezelésről: [Mi az Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

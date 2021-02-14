@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526755"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378808"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -290,7 +290,7 @@ WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true)
 ORDER BY c.firstName, c.lastName
 ```
 
-A következő szempontokat kell használni összetett indexek létrehozásához egy szűrővel és záradékkal rendelkező lekérdezés optimalizálásához `ORDER BY` :
+Összetett indexek létrehozásakor a következő szempontokat kell figyelembe venni egy szűrővel és záradékkal történő lekérdezés optimalizálásához `ORDER BY` :
 
 * Ha nem definiál összetett indexet egy olyan lekérdezéshez, amely egy tulajdonságra vonatkozó szűrővel rendelkezik, és egy külön `ORDER BY` záradékot használ egy másik tulajdonság használatával, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető, különösen akkor, ha a záradékban szereplő tulajdonság `ORDER BY` magas fokú.
 * Ha a lekérdezés a tulajdonságok alapján szűri, ezeket a záradékban elsőként kell szerepeltetni `ORDER BY` .
@@ -308,6 +308,26 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
+### <a name="queries-with-a-filter-and-an-aggregate"></a>Lekérdezés szűrővel és összesítéssel 
+
+Ha egy lekérdezés szűrője egy vagy több tulajdonságra vonatkozik, és egy összesítő rendszerfüggvényt tartalmaz, hasznos lehet összetett indexet létrehozni a tulajdonságok szűrő és összesítés rendszerfüggvényben. Ez az optimalizálás a [Sum](sql-query-aggregate-sum.md) és az [AVG](sql-query-aggregate-avg.md) System függvényre vonatkozik.
+
+Összetett indexek létrehozásakor a következő szempontokat kell figyelembe venni, ha a lekérdezéseket szűrővel és összesítő rendszerfüggvénnyel szeretné optimalizálni.
+
+* Az összesítésekkel rendelkező lekérdezések futtatásakor az összetett indexek nem választhatók. A lekérdezés RU-díja azonban gyakran jelentősen csökkenthető egy összetett indexszel.
+* Ha a lekérdezés több tulajdonságra is szűr, az egyenlőségi szűrőknek az összetett index első tulajdonságainak kell lenniük.
+* Összetett indexek esetében legfeljebb egy tartomány-szűrő lehet, és az összesítő rendszerfüggvényben szereplő tulajdonságnak kell lennie.
+* Az összesítő rendszerfüggvényben szereplő tulajdonságot az összetett indexben kell megadni.
+* A `order` ( `ASC` vagy `DESC` ) nem számít.
+
+| **Összetett index**                      | **Példa lekérdezésre**                                  | **Támogatja az összetett index?** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
 ## <a name="index-transformationmodifying-the-indexing-policy"></a>Az indexelési házirendet módosító <index – átalakítás>
 

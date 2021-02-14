@@ -1,22 +1,18 @@
 ---
 title: Azure-beli adatgyár programozott figyelése
 description: Megtudhatja, hogyan figyelheti a folyamatokat egy adatgyárban különböző szoftverfejlesztői készletek (SDK-k) használatával.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556562"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379896"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
 
@@ -28,12 +24,23 @@ Ez a cikk bemutatja, hogyan figyelheti a folyamatokat egy adatgyárban különb�
 
 ## <a name="data-range"></a>Adattartomány
 
-Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell `Get-AzDataFactoryV2PipelineRun` -paranccsal –, a nem kötelező és a paraméterek esetében nincsenek maximális dátumok `LastUpdatedAfter` `LastUpdatedBefore` . Ha azonban az elmúlt év adatait kérdezi le, például a lekérdezés nem ad vissza hibát, de csak az utolsó 45 nap adatfeldolgozási folyamatát adja vissza.
+Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell `Get-AzDataFactoryV2PipelineRun` -paranccsal –, a nem kötelező és a paraméterek esetében nincsenek maximális dátumok `LastUpdatedAfter` `LastUpdatedBefore` . Ha azonban az elmúlt év adatait kérdezi le, például nem kap hibaüzenetet, de csak az utolsó 45 nap adatait fogja futtatni.
 
-Ha 45 napnál hosszabb ideig kívánja megőrizni a folyamat adatait, állítsa be a saját diagnosztikai naplózását [Azure monitor](monitor-using-azure-monitor.md).
+Ha több mint 45 napig szeretné megőrizni a folyamat adatait, állítsa be a saját diagnosztikai naplózását [Azure monitor](monitor-using-azure-monitor.md).
+
+## <a name="pipeline-run-information"></a>Folyamat futtatási adatai
+
+A folyamat futási tulajdonságainak megtekintéséhez tekintse meg a [PIPELINERUN API-referenciát](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun). Egy folyamat futása eltérő állapotú az életciklusa során, a futtatási állapot lehetséges értékei a következők:
+
+* Várólistán
+* Folyamatban
+* Sikeres
+* Sikertelen
+* Megszakítás
+* Megszakítva
 
 ## <a name="net"></a>.NET
-A folyamatok .NET SDK-val történő létrehozásával és figyelésével kapcsolatban lásd: az [adatfeldolgozó és a folyamat létrehozása a .NET használatával](quickstart-create-data-factory-dot-net.md).
+A folyamatok .NET SDK-val történő létrehozásának és figyelésének teljes körű ismertetését lásd: [adatfeldolgozó és-folyamat létrehozása a .NET használatával](quickstart-create-data-factory-dot-net.md).
 
 1. Adja hozzá a következő kódot a folyamat futási állapotának folyamatos vizsgálatához, amíg az adatok másolása be nem fejeződik.
 
@@ -45,7 +52,7 @@ A folyamatok .NET SDK-val történő létrehozásával és figyelésével kapcso
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -71,7 +78,7 @@ A folyamatok .NET SDK-val történő létrehozásával és figyelésével kapcso
 A .NET SDK-val kapcsolatos teljes dokumentációért tekintse meg [Data Factory .net SDK-referenciát](/dotnet/api/microsoft.azure.management.datafactory).
 
 ## <a name="python"></a>Python
-A folyamat Python SDK-val történő létrehozásával és figyelésével kapcsolatban lásd: [adatelőállító és-folyamat létrehozása a Python használatával](quickstart-create-data-factory-python.md).
+A folyamat Python SDK-val történő létrehozásának és figyelésének teljes körű ismertetését a következő témakörben tekintheti meg: az [adatelőállító és-folyamat létrehozása a Python használatával](quickstart-create-data-factory-python.md).
 
 A folyamat futtatásának figyeléséhez adja hozzá a következő kódot:
 
@@ -89,7 +96,7 @@ print_activity_run_details(activity_runs_paged[0])
 A Python SDK-val kapcsolatos teljes dokumentációért lásd [Data Factory PYTHON SDK-referenciát](/python/api/overview/azure/datafactory).
 
 ## <a name="rest-api"></a>REST API
-A folyamatok REST API használatával történő létrehozásáról és figyeléséről a következő témakörben talál részletes útmutatót: [adatfeldolgozó és-folyamat létrehozása REST API használatával](quickstart-create-data-factory-rest-api.md).
+A folyamatok REST API használatával történő létrehozásának és figyelésének teljes körű ismertetését a következő témakörben tekintheti meg: az [adatfeldolgozó és-folyamat létrehozása REST API használatával](quickstart-create-data-factory-rest-api.md).
  
 1. A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi szkriptet.
 
@@ -99,7 +106,7 @@ A folyamatok REST API használatával történő létrehozásáról és figyelé
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -119,7 +126,7 @@ A folyamatok REST API használatával történő létrehozásáról és figyelé
 A REST API teljes dokumentációját lásd: [Data Factory REST API-referenciák](/rest/api/datafactory/).
 
 ## <a name="powershell"></a>PowerShell
-A folyamat PowerShell használatával történő létrehozásával és figyelésével kapcsolatos teljes útmutatóért lásd: [adatelőállító és-folyamat létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
+A folyamat PowerShell használatával történő létrehozásának és figyelésének teljes körű ismertetését a következő témakörben tekintheti meg: az [adatelőállító és-folyamat létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
 1. A folyamat futási állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez futtassa az alábbi szkriptet.
 
@@ -128,12 +135,12 @@ A folyamat PowerShell használatával történő létrehozásával és figyelés
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30

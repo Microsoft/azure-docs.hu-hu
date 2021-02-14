@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése a helyszíni HDFS
 description: Ismerje meg, hogyan helyezheti át a helyszíni HDFS adatait Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 52e176e0fed85b649d482614667d695db539e5d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589616"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383075"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Adatok áthelyezése helyszíni HDFS Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -66,13 +61,13 @@ A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgy
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **Hdfs** |Igen |
-| url |A HDFS URL-címe |Igen |
-| authenticationType |Névtelen vagy Windows. <br><br> Ha **Kerberos-hitelesítést** kíván használni a HDFS-összekötőhöz, tekintse meg [ezt a szakaszt](#use-kerberos-authentication-for-hdfs-connector) , és ennek megfelelően állítsa be a helyszíni környezetet. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **Hdfs** |Yes |
+| url |A HDFS URL-címe |Yes |
+| authenticationType |Névtelen vagy Windows. <br><br> Ha **Kerberos-hitelesítést** kíván használni a HDFS-összekötőhöz, tekintse meg [ezt a szakaszt](#use-kerberos-authentication-for-hdfs-connector) , és ennek megfelelően állítsa be a helyszíni környezetet. |Yes |
 | userName (Felhasználónév) |Felhasználónév a Windows-hitelesítéshez. Kerberos-hitelesítés esetén válassza a következőt: `<username>@<domain>.com` . |Igen (Windows-hitelesítéshez) |
 | jelszó |Jelszó a Windows-hitelesítéshez. |Igen (Windows-hitelesítéshez) |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a HDFS való kapcsolódáshoz. |Igen |
-| encryptedCredential |[Új –](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) a hozzáférési hitelesítő adat AzDataFactoryEncryptValue kimenete. |Nem |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a HDFS való kapcsolódáshoz. |Yes |
+| encryptedCredential |[Új –](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) a hozzáférési hitelesítő adat AzDataFactoryEncryptValue kimenete. |No |
 
 ### <a name="using-anonymous-authentication"></a>Névtelen hitelesítés használata
 
@@ -112,6 +107,7 @@ A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgy
     }
 }
 ```
+
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
@@ -119,11 +115,11 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| folderPath |A mappa elérési útja. Például: `myfolder`<br/><br/>A karakterláncban a speciális karaktereknél használja a Escape karaktert. Például: a folder\subfolder esetében a mappa \\ \\ almappáját és a d:\samplefolder megadása esetén a d: samplefolder-t kell megadnia \\ \\ .<br/><br/>Ezt a tulajdonságot kombinálhatja a **partitionBy** , hogy a mappa elérési útjai a szelet kezdő/befejező dátum-és időpontjain alapulnak. |Igen |
-| fileName |Adja meg a fájl nevét a **folderPath** , ha azt szeretné, hogy a tábla egy adott fájlra hivatkozzon a mappában. Ha nem ad meg értéket ehhez a tulajdonsághoz, a tábla a mappában található összes fájlra mutat.<br/><br/>Ha a fájlnév nincs megadva egy kimeneti adatkészlethez, a létrehozott fájl neve a következő formátumú lesz: <br/><br/>`Data.<Guid>.txt` (például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
-| partitionedBy |a partitionedBy használható egy dinamikus folderPath, az idősorozat-adatfájlok fájlnevének megadására. Példa: az folderPath paramétert minden óra adatértékhez. |Nem |
-| formátumban | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2** és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| folderPath |A mappa elérési útja. Például: `myfolder`<br/><br/>A karakterláncban a speciális karaktereknél használja a Escape karaktert. Például: a folder\subfolder esetében a mappa \\ \\ almappáját és a d:\samplefolder megadása esetén a d: samplefolder-t kell megadnia \\ \\ .<br/><br/>Ezt a tulajdonságot kombinálhatja a **partitionBy** , hogy a mappa elérési útjai a szelet kezdő/befejező dátum-és időpontjain alapulnak. |Yes |
+| fileName |Adja meg a fájl nevét a **folderPath** , ha azt szeretné, hogy a tábla egy adott fájlra hivatkozzon a mappában. Ha nem ad meg értéket ehhez a tulajdonsághoz, a tábla a mappában található összes fájlra mutat.<br/><br/>Ha a fájlnév nincs megadva egy kimeneti adatkészlethez, a létrehozott fájl neve a következő formátumú lesz: <br/><br/>`Data.<Guid>.txt` (például: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| partitionedBy |a partitionedBy használható egy dinamikus folderPath, az idősorozat-adatfájlok fájlnevének megadására. Példa: az folderPath paramétert minden óra adatértékhez. |No |
+| formátumban | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. <br><br> Ha **fájlokat szeretne másolni** a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. |No |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2** és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > a filename és a fileFilter nem használható egyszerre.
@@ -170,7 +166,7 @@ A **FileSystemSource** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| rekurzív |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. |Igaz, hamis (alapértelmezett) |Nem |
+| rekurzív |Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az alárendelt mappákból, vagy csak a megadott mappából. |Igaz, hamis (alapértelmezett) |No |
 
 ## <a name="supported-file-and-compression-formats"></a>Támogatott fájl- és tömörítési formátumok
 A részletekért tekintse meg a [fájl-és tömörítési formátumokat Azure Data Factory](data-factory-supported-file-and-compression-formats.md) cikkben.
@@ -363,25 +359,25 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására ú
 
 **Az átjáró gépen:**
 
-1.  Futtassa a **Ksetup** segédprogramot a Kerberos KDC-kiszolgáló és-tartomány konfigurálásához.
+1. Futtassa a **Ksetup** segédprogramot a Kerberos KDC-kiszolgáló és-tartomány konfigurálásához.
 
-    A gépet egy munkacsoport tagjaként kell konfigurálni, mert egy Kerberos-tartomány eltér a Windows-tartománytól. Ezt a Kerberos-tartomány beállításával és a KDC-kiszolgáló a következőképpen való hozzáadásával lehet megvalósítani. Szükség szerint cserélje le a *REALM.com* -t a saját megfelelő tartománynevére.
+   A gépet egy munkacsoport tagjaként kell konfigurálni, mert egy Kerberos-tartomány eltér a Windows-tartománytól. Ezt a Kerberos-tartomány beállításával és a KDC-kiszolgáló a következőképpen való hozzáadásával lehet megvalósítani. Szükség szerint cserélje le a *REALM.com* -t a saját megfelelő tartománynevére.
 
-    ```cmd
-    C:> Ksetup /setdomain REALM.COM
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup /setdomain REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ```
 
-    **Indítsa újra** a gépet a 2 parancs végrehajtása után.
+   **Indítsa újra** a gépet a 2 parancs végrehajtása után.
 
-2.  Ellenőrizze a konfigurációt a **Ksetup** paranccsal. A kimenetnek az alábbihoz hasonlónak kell lennie:
+2. Ellenőrizze a konfigurációt a **Ksetup** paranccsal. A kimenetnek az alábbihoz hasonlónak kell lennie:
 
-    ```cmd
-    C:> Ksetup
-    default realm = REALM.COM (external)
-    REALM.com:
-        kdc = <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup
+   default realm = REALM.COM (external)
+   REALM.com:
+      kdc = <your_kdc_server_address>
+   ```
 
 **Azure Data Factory:**
 
@@ -390,8 +386,8 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására ú
 ### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>2. lehetőség: kölcsönös megbízhatóság engedélyezése a Windows és a Kerberos tartomány között
 
 #### <a name="requirement"></a>Követelmény
-*   Az átjárót tartalmazó gépnek Windows-tartományhoz kell csatlakoznia.
-*   Engedéllyel kell rendelkeznie a tartományvezérlő beállításainak frissítéséhez.
+*    Az átjárót tartalmazó gépnek Windows-tartományhoz kell csatlakoznia.
+*    Engedéllyel kell rendelkeznie a tartományvezérlő beállításainak frissítéséhez.
 
 #### <a name="how-to-configure"></a>Konfigurálás:
 
@@ -450,54 +446,54 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására ú
 
 **Tartományvezérlőn:**
 
-1.  A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést:
+1. A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést:
 
-    ```cmd
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
-    ```
+   ```cmd
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
-2.  Megbízhatósági kapcsolat létrehozása a Windows-tartományból a Kerberos tartományba. a [password] a fő **krbtgt/REALM. COM \@ ad.com** tartozó jelszó.
+2. Megbízhatósági kapcsolat létrehozása a Windows-tartományból a Kerberos tartományba. a [password] a fő **krbtgt/REALM. COM \@ ad.com** tartozó jelszó.
 
-    ```cmd
-    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
-    ```
+   ```cmd
+   netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+   ```
 
-3.  Válassza ki a Kerberosban használt titkosítási algoritmust.
+3. Válassza ki a Kerberosban használt titkosítási algoritmust.
 
-    1. Lépjen a Kiszolgálókezelő > Csoportházirend felügyeleti > tartomány > Csoportházirend objektumok > alapértelmezett vagy aktív tartományi házirend elemre, és szerkessze a következőt:.
+   1. Lépjen a Kiszolgálókezelő > Csoportházirend felügyeleti > tartomány > Csoportházirend objektumok > alapértelmezett vagy aktív tartományi házirend elemre, és szerkessze a következőt:.
 
-    2. A **csoportházirend-felügyeleti szerkesztő** előugró ablakban válassza a számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > helyi házirendek > biztonsági beállítások, majd **a hálózati biztonság konfigurálása: a Kerberos számára engedélyezett titkosítási típusok konfigurálása** című részt.
+   2. A **csoportházirend-felügyeleti szerkesztő** előugró ablakban válassza a számítógép konfigurációja > házirendek > Windows beállítások > biztonsági beállítások > helyi házirendek > biztonsági beállítások, majd **a hálózati biztonság konfigurálása: a Kerberos számára engedélyezett titkosítási típusok konfigurálása** című részt.
 
-    3. Válassza ki a KDC-hoz való csatlakozáskor használni kívánt titkosítási algoritmust. Általában egyszerűen kiválaszthatja az összes beállítást.
+   3. Válassza ki a KDC-hoz való csatlakozáskor használni kívánt titkosítási algoritmust. Általában egyszerűen kiválaszthatja az összes beállítást.
 
-        ![A Kerberos konfigurációjának titkosítási típusai](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+      ![A Kerberos konfigurációjának titkosítási típusai](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. A **Ksetup** parancs használatával megadhatja az adott tartományban használandó titkosítási algoritmust.
+   4. A **Ksetup** parancs használatával megadhatja az adott tartományban használandó titkosítási algoritmust.
 
-       ```cmd
-       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
-       ```
+      ```cmd
+      ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+      ```
 
-4.  Hozzon létre egy leképezést a tartományi fiók és a Kerberos-tag között a Kerberos-rendszerbiztonsági tag Windows-tartományban való használatához.
+4. Hozzon létre egy leképezést a tartományi fiók és a Kerberos-tag között a Kerberos-rendszerbiztonsági tag Windows-tartományban való használatához.
 
-    1. Indítsa el a felügyeleti eszközöket > **Active Directory felhasználókat és számítógépeket**.
+   1. Indítsa el a felügyeleti eszközöket > **Active Directory felhasználókat és számítógépeket**.
 
-    2. A speciális szolgáltatások konfigurálásához kattintson a  >  **speciális szolgáltatások** megtekintése elemre.
+   2. A speciális szolgáltatások konfigurálásához kattintson a  >  **speciális szolgáltatások** megtekintése elemre.
 
-    3. Keresse meg azt a fiókot, amelyhez leképezéseket szeretne létrehozni, majd kattintson a jobb gombbal a **név-hozzárendelések** megtekintéséhez > kattintson a **Kerberos-nevek** fülre.
+   3. Keresse meg azt a fiókot, amelyhez leképezéseket szeretne létrehozni, majd kattintson a jobb gombbal a **név-hozzárendelések** megtekintéséhez > kattintson a **Kerberos-nevek** fülre.
 
-    4. Adjon hozzá egy rendszerbiztonsági tag a tartományhoz.
+   4. Adjon hozzá egy rendszerbiztonsági tag a tartományhoz.
 
-        ![Térkép biztonsági identitása](media/data-factory-hdfs-connector/map-security-identity.png)
+      ![Térkép biztonsági identitása](media/data-factory-hdfs-connector/map-security-identity.png)
 
 **Az átjáró gépen:**
 
 * A következő **Ksetup** parancsok futtatásával vegyen fel egy tartományi bejegyzést.
 
    ```cmd
-   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
 **Azure Data Factory:**
@@ -506,7 +502,6 @@ Két lehetőség áll rendelkezésre a helyszíni környezet beállítására ú
 
 > [!NOTE]
 > Ha az oszlopokat a forrás adatkészletből a fogadó adatkészletből származó oszlopokra kívánja leképezni, tekintse meg [Azure Data Factory az adatkészlet oszlopainak](data-factory-map-columns.md)
-
 
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.

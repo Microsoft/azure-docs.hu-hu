@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Megtudhatja, hogyan hozhat létre olyan általános felhasználói fiókokat, amelyek több adatelemzési Virtual Machinesban is használhatók. Azure Active Directory vagy helyszíni Active Directory használatával hitelesítheti a felhasználókat a Data Science Virtual Machine.
 keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, térinformatikai elemzés, csoportos adatelemzési folyamat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 43ef0f55f0b0f3ff9008f0ddf240ad0ea4f37df6
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009228"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519728"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Közös identitás beállítása Data Science Virtual Machine
 
@@ -76,6 +75,6 @@ Most már rendelkezik az Azure-ban üzemeltetett Active Directory-példány felh
 
 Az automatikus skálázáshoz a virtuálisgép-méretezési csoport használatával létrehozhat olyan virtuális gépek készletét, amelyek mind a tartományhoz, mind a megosztott lemezhez csatlakoznak. A felhasználók bejelentkezhetnek bármely elérhető gépre a virtuálisgép-méretezési csoportba, és hozzáférhetnek a megosztott lemezhez, amelyen a jegyzetfüzetek el vannak mentve. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hitelesítő adatok biztonságos tárolása a felhőalapú erőforrások eléréséhez](dsvm-secure-access-keys.md)

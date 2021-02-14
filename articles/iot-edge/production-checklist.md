@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7850763abe2ef40aea4ab3b97187d50f7060fa18
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013292"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388770"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -78,7 +78,7 @@ Konfigurálja a UpstreamProtocol változót a IoT Edge ügynökhöz a config. YA
 
 Ha a IoT Edge-eszköz csatlakozik, mindenképpen folytassa a UpstreamProtocol változó konfigurálását mindkét futtatókörnyezeti modulban a jövőbeli telepítések során. Ennek a folyamatnak egy példája a [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztül történő kommunikációra](how-to-configure-proxy-support.md)című cikkben található.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 * **Hasznos**
   * Konzisztensnek kell lennie a felsőbb rétegbeli protokollal
@@ -188,13 +188,13 @@ Ezután frissítse a képhivatkozásokat a fájl deployment.template.jsa edgeAge
 
 * edgeAgent:
 
-    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+    `"image": "<registry name and server>/azureiotedge-agent:1.1",`
 
 * edgeHub:
 
-    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
+    `"image": "<registry name and server>/azureiotedge-hub:1.1",`
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 * **Hasznos**
   * Kimenő/bejövő konfiguráció áttekintése
@@ -323,7 +323,7 @@ Ezt megteheti az egyes modulok **createOptions** . Például:
 
 A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [IoT Edge automatikus központi telepítéséről](module-deployment-monitoring.md).
 * Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-continuous-integration-continuous-deployment.md).

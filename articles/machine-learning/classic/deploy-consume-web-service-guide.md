@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): üzembe helyezés és felhasználás – Azure'
 description: A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezek a webszolgáltatások a gépi tanulási modellek interneten keresztüli meghívására használhatók az előrejelzések valós idejű vagy kötegelt módban történő elvégzéséhez.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: dc71dc87ca972c52fabb91a6412eec702eee5460
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57c5462cd6eccab1d9c42e674e10ea34db3612b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307430"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520357"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezek a webszolgáltatások a gépi tanulási modellek interneten keresztüli meghívására használhatók az előrejelzések valós idejű vagy kötegelt módban történő elvégzéséhez. Mivel a webszolgáltatások REST-alapúak, különböző programozási nyelveken és platformokon, például a .NET-ben és a Java-ban, illetve az alkalmazásokból, például az Excelből is meghívhatók.
 
@@ -69,7 +69,7 @@ Az alkalmazás futtatása webszolgáltatási JSON-sablont hoz létre. Ha a sablo
 
 Adja hozzá őket a JSON-sablonhoz a *Tulajdonságok* csomópont gyermekeiként a *MachineLearningWorkspace* csomóponttal megegyező szinten.
 
-Például:
+Bemutatunk egy példát:
 
 ```json
 "StorageAccount": {
@@ -104,4 +104,4 @@ Letölthető egy Excel-sablon, amely a webszolgáltatást használja:
 
 ### <a name="from-a-rest-based-client"></a>REST-alapú ügyfélről
 
-Azure Machine Learning webszolgáltatások REST-alapú API-k. Ezeket az API-kat különböző platformokról, például a .NET, a Python, az R, a Java stb. használatával lehet felhasználni. A **Consume** webszolgáltatások felhasználható lapja a [Microsoft Azure Machine learning webszolgáltatások portálján](https://services.azureml.net) olyan mintakód található, amely segítséget nyújt az első lépésekhez. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
+Azure Machine Learning webszolgáltatások REST-alapú API-k. Ezeket az API-kat különböző platformokról, például a .NET, a Python, az R, a Java stb. használatával lehet felhasználni. A  webszolgáltatások felhasználható lapja a [Microsoft Azure Machine learning webszolgáltatások portálján](https://services.azureml.net) olyan mintakód található, amely segítséget nyújt az első lépésekhez. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).

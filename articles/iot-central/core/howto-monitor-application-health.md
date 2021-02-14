@@ -3,25 +3,25 @@ title: Azure IoT Central-alkalmazás állapotának monitorozása | Microsoft Doc
 description: Kezelőként vagy rendszergazdaként figyelje a IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotát.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760768"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515869"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotának figyelése
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Egy IoT Central alkalmazás általános állapotának figyelése
 
 > [!NOTE]
 > A metrikák csak a 3. verziójú IoT Central alkalmazások esetében érhetők el. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört.
 
 *Ez a cikk a kezelők és a rendszergazdákra vonatkozik.*
 
-Ebből a cikkből megtudhatja, hogyan használhatja a IoT Central által biztosított mérőszámokat a IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotának felméréséhez.
+Ebből a cikkből megtudhatja, hogyan használhatja a IoT Central által biztosított mérőszámokat a IoT Central alkalmazáshoz csatlakoztatott eszközök állapotának és a futó adatexportálások állapotának felmérésére.
 
 A metrikák alapértelmezés szerint engedélyezve vannak a IoT Central alkalmazáshoz, és a [Azure Portal](https://portal.azure.com/)érheti el azokat. A [Azure monitor adatplatform elérhetővé teszi ezeket a mérőszámokat](../../azure-monitor/platform/data-platform-metrics.md) , és számos módszert biztosít a velük való kommunikációra. Használhat például diagramokat a PowerShellben vagy az Azure CLI-ben lévő Azure Portal, REST API vagy lekérdezésekben.
 
@@ -31,7 +31,7 @@ Az ingyenes próbaverziót használó alkalmazások nem rendelkeznek társított
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Metrikák megtekintése a Azure Portalban
 
-Az alábbi lépések feltételezik, hogy van egy [IoT Central alkalmazás](./quick-deploy-iot-central.md) néhány [csatlakoztatott eszközzel](./tutorial-connect-device.md).
+Az alábbi lépések feltételezik, hogy van egy [IoT Central alkalmazás](./quick-deploy-iot-central.md) néhány [csatlakoztatott eszközzel](./tutorial-connect-device.md) vagy egy futó [adatexportálással](howto-export-data.md).
 
 IoT Central mérőszámok megtekintése a portálon:
 
@@ -58,6 +58,6 @@ A metrikák eltérhetnek az Azure IoT Central-számlán látható számtól. Ez 
 
 - Míg a metrikák az eszközről a felhőbe irányuló kommunikáció egy részhalmazát láthatják, az eszköz és a felhő közötti összes kommunikáció a [Számlázási üzenetnek számít](https://azure.microsoft.com/pricing/details/iot-central/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az alkalmazás-sablonok használatát, a javasolt következő lépés a [IoT Central kezelésének megismerése a Azure Portal](howto-manage-iot-central-from-portal.md).

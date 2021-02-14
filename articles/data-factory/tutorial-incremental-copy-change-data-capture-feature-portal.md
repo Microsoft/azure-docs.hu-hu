@@ -1,22 +1,17 @@
 ---
 title: Adatmásolás növekményes másolásával az adatváltozások rögzítése használatával
 description: Ebben az oktatóanyagban létrehoz egy Azure Data Factory folyamatot, amely a különbözeti adatok növekményes másolását végzi egy Azure SQL felügyelt példány-adatbázisban lévő táblából az Azure Storage-ba.
-services: data-factory
 ms.author: nihurt
 author: hurtn
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: ba4e5c3998c7c6218d2f0232e3c05930ca82e378
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555916"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391269"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Adatok növekményes betöltése az Azure SQL felügyelt példányairól az Azure Storage-ba az adatváltozások rögzítése (CDC) használatával
 
@@ -90,10 +85,10 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     ```sql
      insert into customers 
-        (customer_id, first_name, last_name, email, city) 
+         (customer_id, first_name, last_name, email, city) 
      values 
-        (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
-        (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
+         (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
+         (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
         (3, 'Nathalia', 'Seckom', 'nseckom2@blogger.com', 'Portsmouth');
     ```
 

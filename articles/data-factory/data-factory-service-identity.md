@@ -1,21 +1,17 @@
 ---
 title: Felügyelt identitás Data Factoryhoz
 description: Ismerkedjen meg Azure Data Factory felügyelt identitásával.
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 819f84eeb7540050fb001111690fb6d2ba484b2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e0d3b551265a480a700f374ddfcf89dd4d93333f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452300"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389161"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -246,7 +242,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő témaköröket, amelyek bemutatják, hogy mikor és hogyan kell használni az adatok gyári felügyelt identitását
 
 - [Hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)

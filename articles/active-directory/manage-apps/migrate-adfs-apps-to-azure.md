@@ -1,6 +1,6 @@
 ---
 title: Alkalmazás-hitelesítés áthelyezése AD FSról Azure Active Directoryra
-description: Ebből a cikkből megtudhatja, hogyan helyezhet át alkalmazásokat az Azure AD-be az összevont SaaS-alkalmazásokra összpontosítva.
+description: Ebből a cikkből megtudhatja, hogyan helyezheti át az alkalmazásokat a Azure Active Directoryba az összevont SaaS-alkalmazásokra összpontosítva.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,25 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.date: 04/01/2020
+ms.date: 02/10/2021
 ms.author: kenwith
 ms.reviewer: baselden
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27ccf5a861295ae83b5ddc021e77de75962de48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8ad137389ac11a41872190122eae6405a126b5b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258388"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381239"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba
 
 [Azure Active Directory (Azure ad)](../fundamentals/active-directory-whatis.md) univerzális identitási platformot kínál, amely a felhasználók, partnerek és ügyfelek számára egyetlen identitást biztosít az alkalmazások eléréséhez és a bármely platformról és eszközről való együttműködéshez. Az Azure AD [teljes körű Identitáskezelés-kezelési képességekkel](../fundamentals/active-directory-whatis.md)rendelkezik. Az alkalmazás (alkalmazás) hitelesítésének és az Azure AD-engedélyezésének egységesítése lehetővé teszi, hogy ezek a képességek milyen előnyöket biztosítanak.
 
 > [!TIP]
-> Ez a cikk fejlesztői közönség számára készült. Az alkalmazások Azure AD-ba való áthelyezését tervező projektmenedzserek és rendszergazdák megtekinthetik az [alkalmazás-hitelesítés áttelepítését az Azure ad-](https://aka.ms/migrateapps/whitepaper) tanulmányba (PDF).
+> Ez a cikk fejlesztői közönség számára készült. Az alkalmazások Azure AD-ba való áthelyezését tervező projektmenedzserek és rendszergazdák megtekinthetik az [alkalmazás-hitelesítés Azure ad-ba való áttelepítésének](migrate-application-authentication-to-azure-active-directory.md) elolvasását.
 
 ## <a name="introduction"></a>Bevezetés
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872892"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391020"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -30,9 +30,6 @@ A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszám
 - A Red Hat Gold images-ről kiépített virtuális gépek nem teljesítik a RHEL utólagos elszámolású lemezképekhez kapcsolódó RHEL díjakat.
 - A lemezképek nem jogosultak. A Red Hat Subscription-Manager használatával regisztrálnia és előfizethet a virtuális gépekre, hogy közvetlenül a Red hat-ból kapja meg a frissítéseket.
 - Az utólagos elszámolású lemezképekről a [Azure Hybrid Benefit](../../linux/azure-hybrid-benefit-linux.md)használatával válthat a BYOS. A Linux-lemezképek esetében azonban nem lehet átváltani egy kezdetben üzembe helyezett BYOS az utólagos elszámolású számlázási modellre. Ahhoz, hogy a számlázási modellt a BYOS-ból utólagos elszámolásra szeretné váltani, újra kell telepítenie a virtuális gépet a megfelelő lemezképből.
-
->[!NOTE]
-> A 2. generációs RHEL BYOS-lemezképek jelenleg nem érhetők el a Piactéri ajánlaton keresztül. Ha a 2. generációs RHEL BYOS-rendszerképre van szüksége, látogasson el a Cloud Access Irányítópultra a Red Hat előfizetés-kezelésben. További információt a [Red Hat dokumentációjában](https://access.redhat.com/articles/4847681)talál.
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>A Red Hat Gold images-képek elérésére vonatkozó követelmények és feltételek
 
@@ -209,7 +206,7 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
 - Ha az Automation használatával helyez üzembe virtuális gépeket a RHEL BYOS-lemezképből, meg kell adnia a minta parancsaiban láthatóhoz hasonló csomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Red Hat Cloud Access további információi a [Red Hat nyilvános felhő dokumentációjában](https://access.redhat.com/public-cloud) találhatók
 - A Felhőbeli hozzáférés részletes útmutatóját és a program részleteit a [Red Hat Cloud Access dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)találja.

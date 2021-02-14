@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/28/2017
+ms.date: 02/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966190"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382854"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-es sorozatú szoftverek, magas rendelkezésre állás és hálózati követelmények
 
@@ -41,7 +41,7 @@ A StorSimple-eszközt elérő Storage-ügyfelekre a következő szoftver-követe
 
 | Támogatott operációs rendszerek | Szükséges verzió | További követelmények/megjegyzések |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |A StorSimple iSCSI-kötetek használata csak a következő Windows-lemezeken támogatott:<ul><li>Egyszerű kötet az alapszintű lemezen</li><li>Egyszerű és tükrözött kötet dinamikus lemezen</li></ul>Csak az operációs rendszer natív módon elérhető szoftveres iSCSI-kezdeményezői támogatottak. A hardveres iSCSI-kezdeményezők nem támogatottak.<br></br>A Windows Server 2012 és a 2016 dinamikus kiosztású és ODX funkciók támogatottak, ha StorSimple iSCSI-kötetet használ.<br><br>A StorSimple dinamikusan kiosztott és teljesen kiosztott köteteket hozhat létre. Nem lehet részben kiosztott köteteket létrehozni.<br><br>A dinamikusan kiosztott kötetek újraformázása hosszú időt vehet igénybe. Javasoljuk, hogy az újraformázás helyett törölje a kötetet, majd hozzon létre egy újat. Ha azonban továbbra is szeretne újraformázni egy kötetet:<ul><li>Az újraformázás előtt futtassa az alábbi parancsot, amellyel elkerülheti a terület-visszaigénylés késleltetését:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>A formázás végeztével használja az alábbi parancsot a terület-visszaigénylés engedélyezéséhez: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Alkalmazza a Windows Server 2012 gyorsjavítást a [KB 2878635](https://support.microsoft.com/kb/2870270) -ben leírt módon a Windows Server rendszerű számítógépére.</li></ul></li></ul></ul> Ha StorSimple Snapshot Manager vagy StorSimple-adaptert szeretne konfigurálni a SharePointhoz, lépjen a [választható összetevőkhöz tartozó szoftverekre vonatkozó követelmények](#software-requirements-for-optional-components)közül. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |A StorSimple iSCSI-kötetek használata csak a következő Windows-lemezeken támogatott:<ul><li>Egyszerű kötet az alapszintű lemezen</li><li>Egyszerű és tükrözött kötet dinamikus lemezen</li></ul>Csak az operációs rendszer natív módon elérhető szoftveres iSCSI-kezdeményezői támogatottak. A hardveres iSCSI-kezdeményezők nem támogatottak.<br></br>A Windows Server 2012 és a 2016 dinamikus kiosztású és ODX funkciók támogatottak, ha StorSimple iSCSI-kötetet használ.<br><br>A StorSimple dinamikusan kiosztott és teljesen kiosztott köteteket hozhat létre. Nem lehet részben kiosztott köteteket létrehozni.<br><br>A dinamikusan kiosztott kötetek újraformázása hosszú időt vehet igénybe. Javasoljuk, hogy az újraformázás helyett törölje a kötetet, majd hozzon létre egy újat. Ha azonban továbbra is szeretne újraformázni egy kötetet:<ul><li>Az újraformázás előtt futtassa az alábbi parancsot, amellyel elkerülheti a terület-visszaigénylés késleltetését:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>A formázás végeztével használja az alábbi parancsot a terület-visszaigénylés engedélyezéséhez: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Alkalmazza a Windows Server 2012 gyorsjavítást a [KB 2878635](https://support.microsoft.com/kb/2870270) -ben leírt módon a Windows Server rendszerű számítógépére.</li></ul></li></ul></ul> Ha StorSimple Snapshot Manager vagy StorSimple-adaptert szeretne konfigurálni a SharePointhoz, lépjen a [választható összetevőkhöz tartozó szoftverekre vonatkozó követelmények](#software-requirements-for-optional-components)közül. <br> Ha a Windows Server-ügyfél az SMB protokollt használja a StorSimple-eszköz eléréséhez, ugorjon az [SMB-fájlkiszolgálók teljesítmény-finomhangolása](/windows-server/administration/performance-tuning/role/file-server/smb-file-server) elemre a párhuzamos feldolgozás növelésével kapcsolatos útmutatásért.|
 | VMware ESX |5,5 és 6,0 |A VMware vSphere iSCSI-ügyfélként támogatott. A VAAI funkció VMware vSphere StorSimple-eszközökön támogatott. |
 | Linux RHEL/CentOS |5, 6 és 7 |A Linux iSCSI-ügyfelek támogatása az Open-iSCSI-kezdeményezővel 5, 6 és 7 verziót biztosít. |
 | Linux |SUSE Linux 11 | |
@@ -61,18 +61,18 @@ A következő szoftverek követelményei a választható StorSimple-összetevők
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>A StorSimple-eszköz hálózati követelményei
 
-A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a portokat az iSCSI-, a felhő-és a felügyeleti forgalom engedélyezéséhez. A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
+A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a portokat az iSCSI-, a felhő-és a felügyeleti forgalom engedélyezéséhez. A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon. A (z)  vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
-| Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Megjegyzések |
+| Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Jegyzetek |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Ki |WAN |Nem |<ul><li>A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Ki |WAN |Igen |<ul><li>A kimenő port a felhőben tárolt adatok elérésére szolgál.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li><li>Ezt a portot is használja a rendszer az adattárolók begyűjtésére szolgáló vezérlőn is.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Ki |WAN |No |<ul><li>A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Ki |WAN |Yes |<ul><li>A kimenő port a felhőben tárolt adatok elérésére szolgál.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li><li>Ezt a portot is használja a rendszer az adattárolók begyűjtésére szolgáló vezérlőn is.</li></ul> |
 | UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet alapú DNS-kiszolgálót használ. |
 | UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet-alapú NTP-kiszolgálót használ. |
-| TCP 9354 |Ki |WAN |Igen |A StorSimple eszköz a kimenő portot használja a StorSimple Eszközkezelő szolgáltatással való kommunikációhoz. |
-| 3260 (iSCSI) |In |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
-| 5985 |In |LAN |Nem |A StorSimple Snapshot Manager a bejövő portot használja a StorSimple eszközzel való kommunikációhoz.<br>Ezt a portot akkor is használja a rendszer, amikor távolról csatlakozik a Windows PowerShell StorSimple-bővítménye HTTP-n keresztül. |
-| 5986 |In |LAN |Nem |Ezt a portot akkor használja a rendszer, amikor távolról csatlakozik Windows PowerShell StorSimple-bővítménye HTTPS-kapcsolaton keresztül. |
+| TCP 9354 |Ki |WAN |Yes |A StorSimple eszköz a kimenő portot használja a StorSimple Eszközkezelő szolgáltatással való kommunikációhoz. |
+| 3260 (iSCSI) |In |LAN |No |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
+| 5985 |In |LAN |No |A StorSimple Snapshot Manager a bejövő portot használja a StorSimple eszközzel való kommunikációhoz.<br>Ezt a portot akkor is használja a rendszer, amikor távolról csatlakozik a Windows PowerShell StorSimple-bővítménye HTTP-n keresztül. |
+| 5986 |In |LAN |No |Ezt a portot akkor használja a rendszer, amikor távolról csatlakozik Windows PowerShell StorSimple-bővítménye HTTPS-kapcsolaton keresztül. |
 
 <sup>1</sup> nem szükséges bejövő portot megnyitni a nyilvános interneten.
 

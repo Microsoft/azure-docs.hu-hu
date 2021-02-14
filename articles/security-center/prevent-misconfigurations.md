@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: a3da9cdea543894aa7aec66112e28658beac84b5
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 2607ff3a6c4bb7bf301818925990521572777ab9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379189"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Helytelen konfigurációk megelőzése Kényszerítés/Megtagadás javaslatokkal
 
-A biztonsági incidensek jelentős oka a biztonság. A Security Center mostantól lehetővé teszi az új erőforrások helytelen konfigurációjának *megelőzését* az adott javaslatok tekintetében. 
+A biztonsági incidensek jelentős oka a biztonság. Security Center mostantól lehetővé teszi az új erőforrások helytelen konfigurációjának *megelőzését* az adott javaslatok tekintetében. 
 
 Ez a funkció segít megőrizni a számítási feladatokat, és stabilizálni tudja a biztonságos pontszámot.
 
@@ -62,40 +62,7 @@ Ez az erőforrás részletei lap tetején található a kiválasztott biztonság
 
 A következő javaslatok használhatók a **megtagadási** beállítással:
 
-- A Storage-fiókokhoz a tűzfal és a virtuális hálózati konfigurációk hozzáférését korlátozni kell
-- A Redis tartozó Azure cache-nek egy virtuális hálózaton belül kell lennie
-- Azure Cosmos DB fiókoknak az ügyfelek által felügyelt kulcsokat kell használniuk a REST-adatok titkosításához
-- Azure Machine Learning-munkaterületeket ügyfél által felügyelt kulccsal kell titkosítani (CMK)
-- Az Azure Spring Cloud-nak hálózati befecskendezést kell használnia
-- Cognitive Services fiókoknak engedélyeznie kell az adattitkosítást az ügyfél által felügyelt kulccsal (CMK)
-- A tároló CPU-és memória-korlátozásait kényszeríteni kell
-- A tároló lemezképeit csak megbízható kibocsátásiegység-forgalmi jegyzékből kell telepíteni
-- A tároló-beállításjegyzékeket ügyfél által felügyelt kulccsal kell titkosítani (CMK)
-- A jogosultság-eszkalációs tárolót el kell kerülni
-- A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni
-- A tárolóknak csak az engedélyezett portok figyelésére kell figyelniük
-- Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára
-- Key Vault kulcsoknak lejárati dátummal kell rendelkezniük
-- Key Vault a titkoknak lejárati dátummal kell rendelkezniük
-- A kulcstárolóknak engedélyezve kell lennie a kiürítési védelemmel
-- A Key vaultok esetében engedélyezve kell lennie a helyreállítható törlésnek
-- A minimálisan privilegizált Linux-funkciókat kell kikényszeríteni a tárolók számára
-- Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
-- A tárolók AppArmor-profiljának felülbírálását vagy letiltását korlátozni kell
-- Az emelt szintű tárolókat el kell kerülni
-- A tárolók futtatását root felhasználóként el kell kerülni
-- Engedélyezni kell a tárfiókokba történő biztonságos átvitelt
-- Service Fabric-fürtökön a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre kell beállítani
-- Service Fabric-fürtök esetében csak Azure Active Directoryt kell használnia az ügyfél-hitelesítéshez
-- A szolgáltatásoknak csak a megengedett portok figyelésére kell figyelniük
-- A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
-- A Storage-fiókoknak a virtuális hálózati szabályok használatával kell korlátoznia a hálózati hozzáférést
-- A gazdagép hálózatkezelésének és portjainak használatát korlátozni kell
-- A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni, hogy korlátozza a csomópontok hozzáférését a feltört tárolók között
-- A Azure Key Vault tárolt tanúsítványok érvényességi időtartama nem haladhatja meg a 12 hónapot
-- A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
-- A webalkalmazási tűzfalat (WAF) engedélyezni kell Application Gateway
-- Engedélyezni kell a webalkalmazási tűzfalat (WAF) az Azure bejárati szolgáltatásának szolgáltatásához
+[!INCLUDE [azure-security-center-recommendations-deny](../../includes/asc/recommendations-with-deny.md)]
 
 A következő javaslatok használhatók a **kényszerítő** beállítással:
 

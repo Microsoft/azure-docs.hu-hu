@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c97958add682a4c49d7832843c0b95ffd2663bf
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365463"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -28,7 +28,7 @@ A meghívó szervezet igényeitől függően az Azure AD B2B csoportmunka-felhas
 - 1. állapot: az Azure AD külső példányán, a meghívóban pedig vendég felhasználóként jelennek meg. Ebben az esetben a B2B-felhasználó a meghívott bérlőhöz tartozó Azure AD-fiókkal jelentkezik be. Ha a partnerszervezet nem használja az Azure AD-t, a vendég felhasználó az Azure AD-ben továbbra is létrejön. A követelmények az, hogy beváltják a meghívót, és az Azure AD ellenőrzi az e-mail-címüket. Ezt a megállapodást az igény szerinti (JIT) bérletnek vagy a "vírus" bérletnek is nevezik.
 
    > [!IMPORTANT]
-   > **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > **Október 2021-től kezdve** a Microsoft nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 - 2. állapot: a Microsoft vagy más fiókban található, és vendég felhasználóként képviselteti magát a gazdagépen. Ebben az esetben a vendég felhasználó egy Microsoft-fiók vagy egy közösségi fiókkal jelentkezik be (google.com vagy hasonló). A meghívott felhasználó identitása Microsoft-fiókként jön létre a meghívó szervezet címtárában az ajánlat beváltásakor.
 
@@ -51,7 +51,7 @@ Az 1. és a 2. állapotú fiókok a vendég felhasználók saját hitelesítő a
 
 Miután a vendég felhasználó elfogadta a meghívót, a **forrás** tulajdonság a vendég felhasználó identitás-szolgáltatója alapján frissül.
 
-Az 1. állapotú vendég felhasználók esetében **Source** a forrás **külső Azure Active Directory**.
+Az 1. állapotú vendég felhasználók esetében  a forrás **külső Azure Active Directory**.
 
 ![1. állapotú vendég felhasználó az ajánlat megváltása után](media/user-properties/after-redemption-state1.png)
 

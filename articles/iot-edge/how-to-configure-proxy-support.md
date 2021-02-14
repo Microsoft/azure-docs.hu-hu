@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7fc57b46055281c64b39767047f6b7cb5b748ad2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032983"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373827"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
 
@@ -245,7 +245,7 @@ A környezeti változók között a modul definíciójának a következő edgeHu
 "edgeHub": {
     "type": "docker",
     "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+        "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
         "createOptions": ""
     },
     "env": {
@@ -275,7 +275,7 @@ Ha a **UpstreamProtocol** környezeti változót a IoT Edge eszköz config. YAML
 
 Ha a használni kívánt proxy TLS-védelemmel ellátott kapcsolatokon végzi a forgalom ellenőrzését, fontos megjegyezni, hogy az X. 509 tanúsítvánnyal történő hitelesítés nem működik. IoT Edge egy TLS-csatornát hoz létre, amelyet a rendszer a megadott tanúsítvánnyal és kulccsal végződik titkosított. Ha a csatorna megszakadt a forgalom ellenőrzésekor, a proxy nem tudja újra létrehozni a megfelelő hitelesítő adatokkal rendelkező csatornát, IoT Hub és a IoT Hub Device kiépítési szolgáltatás `Unauthorized` hibát ad vissza.
 
-Ha olyan proxyt szeretne használni, amely forgalom-ellenőrzést hajt végre, akkor a vizsgálat elkerülése érdekében használja a közös hozzáférésű aláírások hitelesítését, vagy IoT Hub és az IoT Hub Device kiépítési szolgáltatás egy engedélyezési való hozzáadását.
+Ha olyan proxyt szeretne használni, amely forgalom-ellenőrzést hajt végre, akkor a vizsgálat elkerülése érdekében használja a közös hozzáférésű aláírások hitelesítését, vagy IoT Hub és a IoT Hub Device kiépítési szolgáltatást egy engedélyezési listához.
 
 ## <a name="next-steps"></a>Következő lépések
 

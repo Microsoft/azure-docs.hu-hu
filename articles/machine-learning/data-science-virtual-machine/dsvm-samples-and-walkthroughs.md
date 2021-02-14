@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Ezekkel a mintákkal és útmutatókkal megismerheti, hogyan kezelheti a gyakori feladatokat és forgatókönyveket a Data Science Virtual Machine.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cda5dfd936243602775e1f4f965032b9d746b0b7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012569"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519762"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Minták az Azure adatelemzési Virtual Machines
 
@@ -28,7 +27,7 @@ Az Azure adatelemzési Virtual Machines (Dsvm) tartalmaz egy átfogó mintakód-
 A minták futtatásához [Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md)kell kiépíteni.
 
 ## <a name="available-samples"></a>Rendelkezésre álló minták
-| Minták kategóriája | Leírás | Helyek |
+| Minták kategóriája | Description | Helyek |
 | ------------- | ------------- | ------------- |
 | R nyelv  | A minták olyan forgatókönyveket mutatnak be, mint például az Azure-alapú felhőalapú adattárakkal való kapcsolódás, valamint a nyílt forráskódú R-és Microsoft Machine Learning Server összevetése. Azt is ismertetik, hogyan működővé tenni modelleket Microsoft Machine Learning Server és SQL Server. <br/> [R nyelv](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python nyelv  | A példák olyan forgatókönyveket mutatnak be, mint például az Azure-alapú felhőalapú adattárakkal való kapcsolódás, valamint a Azure Machine Learning használata.  <br/> [Python nyelv](#python-language) | <br/>`~notebooks` <br/><br/>|

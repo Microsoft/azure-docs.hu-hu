@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): webszolgáltatás újratanítása – Azure'
 description: Ismerje meg, hogyan frissíthet egy webszolgáltatást egy újonnan betanított gépi tanulási modell használatára Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325817"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517586"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Gépi tanulási modell újratanítása és üzembe helyezése
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Az átképzés az egyik módszer, amellyel biztosítható, hogy a gépi tanulási modellek pontosak maradjanak, és a rendelkezésre álló legfontosabb információk alapján. Ez a cikk bemutatja, hogyan lehet újratanítani és üzembe helyezni a Machine learning-modelleket új webszolgáltatásként a Studio (klasszikus) szolgáltatásban. Ha egy klasszikus webszolgáltatást szeretné áttanítani, [tekintse meg ezt a útmutató cikket.](retrain-classic-web-service.md)
@@ -82,7 +82,7 @@ Keresse meg a **apikey** deklarációját:
 const string apiKey = "abc123"; // Replace this with the API key for the web service
 ```
 
-A **Felhasználás lap alapszintű** használat adatai **Consume** szakaszában keresse meg az elsődleges kulcsot, és másolja a **apikey** deklarációba.
+A **Felhasználás lap alapszintű** használat adatai  szakaszában keresse meg az elsődleges kulcsot, és másolja a **apikey** deklarációba.
 
 ### <a name="update-the-azure-storage-information"></a>Az Azure Storage-adatok frissítése
 
@@ -96,7 +96,7 @@ A BES mintakód feltölt egy fájlt egy helyi meghajtóról (például "C:\temp\
 1. A bal oldali navigációs oszlopban kattintson a **Blobok** elemre.
 1. Válasszon ki egy meglévő tárolót, vagy hozzon létre egy újat, és mentse a nevet.
 
-Keresse meg a *StorageAccountName* , a *StorageAccountKey* és a *StorageContainerName* deklarációt, és frissítse a portálról mentett értékeket.
+Keresse meg a *StorageAccountName*, a *StorageAccountKey* és a *StorageContainerName* deklarációt, és frissítse a portálról mentett értékeket.
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -130,11 +130,11 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 Az alkalmazás futtatásakor a kimenet tartalmazza a kiértékelési eredmények eléréséhez szükséges URL-címet és közös hozzáférésű aláírási jogkivonatot.
 
-A visszatanított modell teljesítménybeli eredményeit a *BaseLocation* , a *RelativeLocation* és a *SasBlobToken* a *output2* kimeneti eredményeiből való összekapcsolásával, valamint a teljes URL-cím a böngésző címsorába való beillesztésével tekintheti meg.
+A visszatanított modell teljesítménybeli eredményeit a *BaseLocation*, a *RelativeLocation* és a *SasBlobToken* a *output2* kimeneti eredményeiből való összekapcsolásával, valamint a teljes URL-cím a böngésző címsorába való beillesztésével tekintheti meg.
 
 Vizsgálja meg az eredményeket annak megállapításához, hogy az újonnan betanított modell jobban teljesít-e, mint a meglévő.
 
-Mentse a *BaseLocation* , a *RelativeLocation* és a *SasBlobToken* a kimeneti eredményekből.
+Mentse a *BaseLocation*, a *RelativeLocation* és a *SasBlobToken* a kimeneti eredményekből.
 
 ## <a name="update-the-predictive-experiment"></a>A prediktív kísérlet frissítése
 

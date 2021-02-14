@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678608"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389807"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -42,7 +42,7 @@ Az alábbi forgatókönyvek az Azure-ból származó adatok exportálására szo
 
 - Vész- **helyreállítás** – ha az Azure-ból származó adatok egy példánya egy helyszíni hálózatra lett visszaállítva. Egy tipikus vész-helyreállítási forgatókönyv esetén nagy mennyiségű Azure-adatmennyiséget exportál egy Data Boxba. A Microsoft ezután leszállítja ezt a Data Box, és rövid idő alatt visszaállítja az adatait a helyszínen.
 
-- **Biztonsági követelmények** – ha az Azure-t kormányzati vagy biztonsági követelmények miatt ki kell tudni exportálni az Azure-ba. Az Azure Storage például az Egyesült Államok titkos és titkos felhők területén érhető el, és a Data Box segítségével exportálhatja az Azure-ból az adatmennyiséget. 
+- **Biztonsági követelmények** – ha a kormányzati vagy biztonsági követelmények miatt el kell tudnia érni az Azure-ból történő adatexportálást. Az Azure Storage például az Egyesült Államok titkos és titkos felhők területén érhető el, és a Data Box segítségével exportálhatja az Azure-ból az adatmennyiséget. 
 
 - **Áttelepítés a helyszíni rendszerbe vagy egy másik felhőalapú** szolgáltatóba – ha az összes adat visszahelyezését a helyszíni rendszerbe vagy egy másik felhőalapú szolgáltatóba kívánja áthelyezni, exportálja az adatok Data Box használatával a munkaterhelések áttelepítéséhez.
 
@@ -66,7 +66,7 @@ A Data Box nagy mennyiségű adat az Azure-ba való átvitelére szolgál, és m
 
 A Data Box eszköz jelen kiadása az alábbi funkciókkal rendelkezik.
 
-| Specifikációk                                          | Description (Leírás)              |
+| Specifikációk                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Tömeg                                                  | < 22,7 kg                |
 | Dimenziók                                              | Eszköz – szélesség: 309 mm; magasság: 430,4 mm; mélység: 502 mm |            

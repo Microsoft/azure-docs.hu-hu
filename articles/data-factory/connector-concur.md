@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása az összekötésből Azure Data Factory használatával (előzetes verzió)
 description: Ismerje meg, hogy miként másolhatók az adatok az összefoglalt adatokból a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030798"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383670"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Adatok másolása az összekötésből Azure Data Factory használatával (előzetes verzió)
 
@@ -53,7 +48,7 @@ A egyetértő társított szolgáltatás a következő tulajdonságokat támogat
 |:--- |:--- |:--- |
 | típus | A Type tulajdonságot a következőre kell beállítani: **egybeesik** | Yes |
 | connectionProperties | Tulajdonságok egy csoportja, amely meghatározza, hogyan csatlakozhat az összevonáshoz. | Yes |
-| **_Alatt `connectionProperties` :_* _ | | |
+| ***Alatt `connectionProperties` :*** | | |
 | authenticationType | Az engedélyezett értékek: `OAuth_2.0_Bearer` és `OAuth_2.0` (örökölt). A OAuth 2,0 hitelesítési lehetőség a 2017 régi, az "a" és a "a". | Yes |
 | gazda | A egyetértő kiszolgáló végpontja, például: `implementation.concursolutions.com` .  | Yes |
 | baseUrl | A egybeesik engedélyezési URL-címének alap URL-címe. | Igen a `OAuth_2.0_Bearer` hitelesítéshez |
@@ -65,7 +60,7 @@ A egyetértő társított szolgáltatás a következő tulajdonságokat támogat
 | useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
 | usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
-_ *Példa:**
+**Példa**
 
 ```json
 { 
@@ -157,7 +152,7 @@ Az adatoknak a **ConcurSource** való másolásához állítsa a másolási tev�
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ConcurSource** | Yes |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -195,5 +190,5 @@ Az adatoknak a **ConcurSource** való másolásához állítsa a másolási tev�
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

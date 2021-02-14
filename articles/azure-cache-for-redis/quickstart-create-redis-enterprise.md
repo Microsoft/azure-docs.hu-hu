@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: vállalati szintű gyorsítótár létrehozása'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure cache-példányt a Redis Enterprise szintjéhez
+title: 'Rövid útmutató: Redis Enterprise cache létrehozása'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure cache-példányt a vállalati szintű Redis
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795672"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365004"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Gyors útmutató: vállalati szintű gyorsítótár létrehozása (előzetes verzió)
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Gyors útmutató: Redis Enterprise cache létrehozása (előzetes verzió)
 
 Az Azure cache for Redis vállalati szintjei teljes mértékben integrált és felügyelt [Redis Enterprise](https://redislabs.com/redis-enterprise/) -t biztosítanak az Azure-ban. Jelenleg előzetes verzióként érhetők el. Ebben az előzetes verzióban két új szint érhető el:
 * Vállalat, amely felejtő memóriát használ a virtuális gépeken az adattároláshoz
@@ -22,7 +22,7 @@ Az Azure cache for Redis vállalati szintjei teljes mértékben integrált és f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyennel, hozzon létre egy [fiókot](https://azure.microsoft.com/). További információkért lásd a [vállalati szintű követelmények](cache-overview.md#enterprise-tier-requirements)című témakört.
+Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rendelkezik ilyennel, hozzon létre egy [fiókot](https://azure.microsoft.com/). További információkért lásd a [vállalati szintű követelmények](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements)című témakört.
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 1. Gyorsítótár létrehozásához jelentkezzen be a Azure Portal az előnézeti meghívásban található hivatkozással, és válassza az **erőforrás létrehozása** lehetőséget.
@@ -73,7 +73,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    
    Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a folyamat előrehaladását az Azure cache Redis **– Áttekintés** oldalon. Ha az **állapot** **futásra** mutat, a gyorsítótár készen áll a használatra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre az Azure cache nagyvállalati szintű példányát a Redis.
 

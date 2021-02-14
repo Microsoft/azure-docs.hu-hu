@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: bf0df4cc6e686b553baf8c2439c807d2f07ef440
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807479"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380236"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
 
@@ -218,7 +218,7 @@ Az egyezmény szerint a `FeatureManagement` JSON-dokumentum szakasza a szolgált
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Függőségi befecskendezés használata a IFeatureManager való hozzáféréshez 
 
-Egyes műveletekhez, például a szolgáltatás-jelzők manuális ellenőrzéséhez le kell kérnie a [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanage)egy példányát. ASP.NET Core MVC-ben a szolgáltatások kezelője `IFeatureManager` függőségi befecskendezéssel érhető el. A következő példában egy típusú argumentumot `IFeatureManager` adnak hozzá a vezérlő konstruktorának aláírásához. A futtatókörnyezet automatikusan feloldja a hivatkozást, és megadja a felületet a konstruktor hívásakor. Ha olyan alkalmazás-sablont használ, amelyben a vezérlőhöz már tartozik egy vagy több függőségi injekció argumentum a konstruktorban, például `ILogger` `IFeatureManager` :
+Egyes műveletekhez, például a szolgáltatás-jelzők manuális ellenőrzéséhez le kell kérnie a [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview)egy példányát. ASP.NET Core MVC-ben a szolgáltatások kezelője `IFeatureManager` függőségi befecskendezéssel érhető el. A következő példában egy típusú argumentumot `IFeatureManager` adnak hozzá a vezérlő konstruktorának aláírásához. A futtatókörnyezet automatikusan feloldja a hivatkozást, és megadja a felületet a konstruktor hívásakor. Ha olyan alkalmazás-sablont használ, amelyben a vezérlőhöz már tartozik egy vagy több függőségi injekció argumentum a konstruktorban, például `ILogger` `IFeatureManager` :
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     

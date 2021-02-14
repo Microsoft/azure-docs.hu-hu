@@ -1,22 +1,20 @@
 ---
 title: Azure Data Factory létrehozása Azure Resource Manager sablon használatával (ARM-sablon)
 description: Hozzon létre egy minta Azure Data Factory folyamatot egy Azure Resource Manager sablon (ARM-sablon) használatával.
-services: data-factory
 ms.service: data-factory
 tags: azure-resource-manager
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: 0a9c4f6d9e98e721370f54dfbe261025cf186b6c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373844"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rövid útmutató: Azure Data Factory létrehozása ARM-sablonnal
 
@@ -104,13 +102,13 @@ További Azure Data Factory-sablonok a gyorsindítási [sablonok](https://azure.
 2. Ellenőrizze, hogy létrejött-e a Storage-fiók.
     1. A Storage-fiók neve formátuma: Storage \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Storage-fiók":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Tárfiók":::
 
 3. Válassza ki a létrehozott Storage-fiókot, majd válassza a **tárolók** lehetőséget.
     1. A **tárolók** lapon válassza ki a létrehozott BLOB-tárolót.
         1. A blob-tároló neve a-blob formátumban van \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Blobtároló":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="BLOB-tároló":::
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
 
@@ -186,7 +184,7 @@ Ha csak az adatelőállítót szeretné törölni, és nem a teljes erőforrásc
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Data Factory egy ARM-sablonnal, és ellenőrizte az üzemelő példányt. Ha többet szeretne megtudni a Azure Data Factory és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e4d25b5ec50346c7a2ecabff835209218d1a3b63
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 850b590ae8aeab822367714fb9a56661306c2387
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093403"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518691"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Számítási célok beállítása a modell betanításához és üzembe helyezéséhez
 
@@ -225,7 +225,7 @@ Azure Databricks számítási célként való csatolásához adja meg a követke
 
 * __Databricks számítási név__: a számítási erőforráshoz hozzárendelni kívánt név.
 * __Databricks-munkaterület neve__: az Azure Databricks munkaterület neve.
-* __Databricks hozzáférési jogkivonat__: a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) dokumentumot.
+* __Databricks hozzáférési jogkivonat__: a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](/azure/databricks/dev-tools/api/latest/authentication) dokumentumot.
 
 Az alábbi kód azt mutatja be, hogyan csatolható Azure Databricks számítási célként a Azure Machine Learning SDK-val (__az Databricks-munkaterületnek ugyanabban az előfizetésben kell lennie, mint a pénzmosás-munkaterület__):
 

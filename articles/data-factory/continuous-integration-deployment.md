@@ -1,22 +1,18 @@
 ---
 title: Folyamatos integráció és teljesítés az Azure Data Factoryben
 description: Megtudhatja, hogyan használhatja a folyamatos integrációt és a szállítást, hogy Data Factory folyamatokat helyezzen át egy környezetből (fejlesztés, tesztelés, termelés) egy másikra.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: jroth
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680301"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383602"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 

@@ -1,20 +1,19 @@
 ---
 title: fájl belefoglalása
 description: fájl belefoglalása
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: lle
-ms.openlocfilehash: 45c6bbb88ef1f01f729451af27ecc73244483216
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 24a541080b580eab967987fa7c92cea64b99d65c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389499"
 ---
-| Tartománynevek                                          | Kimenő portok | Leírás                |
+| Tartománynevek                                          | Kimenő portok | Description                |
 | ----------------------------------------------------- | -------------- | ---------------------------|
 | Nyilvános felhő: `*.servicebus.windows.net` <br> Azure Government: `*.servicebus.usgovcloudapi.net` <br> Kína `*.servicebus.chinacloudapi.cn`   | 443            | A saját üzemeltetésű integrációs modul szükséges az interaktív létrehozáshoz. |
 | Nyilvános felhő: `{datafactory}.{region}.datafactory.azure.net`<br> vagy `*.frontend.clouddatahub.net` <br> Azure Government: `{datafactory}.{region}.datafactory.azure.us` <br> Kína `{datafactory}.{region}.datafactory.azure.cn` | 443            | A saját üzemeltetésű integrációs modul számára szükséges a Data Factory szolgáltatáshoz való csatlakozáshoz. <br>A nyilvános felhőben létrehozott új Data Factory esetén keresse meg a teljes tartománynevet a saját üzemeltetésű Integration Runtime-kulcsból, amely a következő formátumban van: {DataFactory}. {Region}. DataFactory. Azure. net. Ha a régi adatelőállító nem látja a teljes tartománynevet a saját üzemeltetésű integrációs kulcsban, használja a *. frontend.clouddatahub.net helyet. |

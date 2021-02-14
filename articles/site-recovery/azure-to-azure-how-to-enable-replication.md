@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424794"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383585"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek replikálása másik Azure-régióba
 
@@ -28,7 +28,7 @@ Meg kell adni az előfeltételeket, és létre kell hoznia egy Recovery Services
 
 Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges Azure-régió Kelet-Ázsia, a másodlagos régió pedig Dél-Kelet-Ázsia.
 
-1. A tárolóban kattintson a **+ replikálás**elemre.
+1. A tárolóban kattintson a **+ replikálás** elemre.
 2. Vegye figyelembe a következő mezőket:
    - **Forrás**: a virtuális gépek származási helye, amely ebben az esetben az **Azure**.
    - **Forrás helye**: az az Azure-régió, amelyből a virtuális gépeket biztosítani kívánja. Ebben az ábrán a forrás helye: "Kelet-Ázsia"
@@ -41,7 +41,7 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
 3. A **Virtual Machines > válassza a virtuális gépek lehetőséget**, majd kattintson és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra.
     ![Képernyőkép, amely kiemeli a virtuális gépek kiválasztásának helyét.](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
-4. A **Beállítások**lehetőségnél beállíthatja a célhely beállításait:
+4. A **Beállítások** lehetőségnél beállíthatja a célhely beállításait:
 
    - **Cél helye**: a forrásként szolgáló virtuális gép adatai replikálásának helye. A kiválasztott gépek helyétől függően Site Recovery megadja a megfelelő célcsoportok listáját. Javasoljuk, hogy a célhelyet a Recovery Services tároló helyével megegyező helyen tartsa.
    - **Célelőfizetés**: A vészhelyreállításhoz használt célelőfizetés. Alapértelmezés szerint a célelőfizetés megegyezik a forrás-előfizetéssel.
@@ -53,8 +53,11 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
    - **Célként megadott virtuális hálózat**: alapértelmezés szerint a site Recovery egy új virtuális hálózatot hoz létre a célként megadott régióban egy "ASR" utótaggal a névben. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](./azure-to-azure-network-mapping.md) információ a hálózati leképezésről.
    - **Cél Storage-fiókok (a forrásoldali virtuális gép nem használ felügyelt lemezeket)**: alapértelmezés szerint a site Recovery egy új célként szolgáló Storage-fiókot hoz létre, amely utánozza a forrás virtuális gép tárolási konfigurációját. Ha a Storage-fiók már létezik, az újra használatban van.
    - **Replika által felügyelt lemezek (a forrásoldali virtuális gép felügyelt lemezeket használ)**: a site Recovery új replika által felügyelt lemezeket hoz létre a céltartományban a forrás virtuális gép felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium), mint a forrás virtuális gép felügyelt lemezével.
-   - **Gyorsítótár-tárolási fiókok**: site Recovery a forrás régióban a cache Storage nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépeken végrehajtott összes módosítást nyomon követi, és a gyorsítótár Storage-fiókjába továbbítja, mielőtt replikálja azokat a célhelyre. A Storage-fióknak standard szintűnek kell lennie.
-   - **Cél rendelkezésre állási**csoportok: alapértelmezés szerint a site Recovery egy új rendelkezésre állási csoportot hoz létre a céltartományban a név "ASR" utótagja alapján, amely a rendelkezésre állási csoport részét képezi a forrás régióban. Ha a Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
+   - **Gyorsítótár-tárolási fiókok**: site Recovery a forrás régióban a cache Storage nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépeken végrehajtott összes módosítást nyomon követi, és a gyorsítótár Storage-fiókjába küldi, mielőtt replikálja őket a célhelyre. A Storage-fióknak standard szintűnek kell lennie.
+   - **Cél rendelkezésre állási** csoportok: alapértelmezés szerint a site Recovery egy új rendelkezésre állási csoportot hoz létre a célként megadott régióban a "Azure site Recovery" utótaggal a forrás régióban rendelkezésre állási csoportba tartozó virtuális gépek esetében. Ha a Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
+     >[!NOTE]
+     >A cél rendelkezésre állási csoportok konfigurálása közben konfigurálja a különböző rendelkezésre állási csoportokat a különböző méretű virtuális gépekhez. 
+     >
    - **Cél rendelkezésre állási zónák**: alapértelmezés szerint a site Recovery ugyanazt a zónát rendeli hozzá a célként megadott régióban, ha a célként megadott régió támogatja a rendelkezésre állási zónákat.
 
      Ha a célként megadott régió nem támogatja a rendelkezésre állási zónákat, a célként megadott virtuális gépek alapértelmezés szerint önálló példányként vannak konfigurálva. Ha szükséges, úgy is beállíthatja, hogy az ilyen virtuális gépek a célként megadott régióban rendelkezésre állási csoportok részévé legyenek. ehhez kattintson a "Testreszabás" gombra.
@@ -79,9 +82,9 @@ Ha lemezeket ad hozzá egy olyan Azure-beli virtuális géphez, amelyen engedél
 
 Egy hozzáadott lemez replikálásának engedélyezéséhez tegye a következőket:
 
-1.  A tárolóban > **replikált elemek**területen kattintson arra a virtuális gépre, amelyhez hozzáadta a lemezt.
-2.  Kattintson a **lemezek**elemre, majd válassza ki azt az adatlemezt, amelynek engedélyezni szeretné a replikálását (ezek a lemezek **nem védett** állapottal rendelkeznek).
-3.  A **lemez részletei**területen kattintson a **replikáció engedélyezése**elemre.
+1.  A tárolóban > **replikált elemek** területen kattintson arra a virtuális gépre, amelyhez hozzáadta a lemezt.
+2.  Kattintson a **lemezek** elemre, majd válassza ki azt az adatlemezt, amelynek engedélyezni szeretné a replikálását (ezek a lemezek **nem védett** állapottal rendelkeznek).
+3.  A **lemez részletei** területen kattintson a **replikáció engedélyezése** elemre.
 
     ![A további lemez replikálásának engedélyezése](./media/azure-to-azure-how-to-enable-replication/enabled-added.png)
 
@@ -96,14 +99,14 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
 1. Az alapértelmezett cél-előfizetés módosításához kattintson a **Testreszabás** elemre a cél előfizetés mellett. Válassza ki az előfizetést az azonos Azure Active Directory (HRE) bérlőben elérhető összes előfizetés listájából.
 
 2. Kattintson a **Testreszabás gombra:** az alapértelmezett beállítások módosításához:
-    - A **cél erőforráscsoport**területen válassza ki az erőforráscsoportot az előfizetés célhelyén lévő összes erőforráscsoport listájából.
-    - A **cél virtuális hálózat**területen válassza ki a hálózatot a célhelyen lévő összes virtuális hálózat listájából.
-    - A **rendelkezésre állási csoport**lehetőséget ad a rendelkezésre állási csoport beállításainak hozzáadására a virtuális géphez, ha azok egy rendelkezésre állási csoport részét képezik a forrás régióban.
-    - A **cél Storage-fiókok**területen válassza ki a használni kívánt fiókot.
+    - A **cél erőforráscsoport** területen válassza ki az erőforráscsoportot az előfizetés célhelyén lévő összes erőforráscsoport listájából.
+    - A **cél virtuális hálózat** területen válassza ki a hálózatot a célhelyen lévő összes virtuális hálózat listájából.
+    - A **rendelkezésre állási csoport** lehetőséget ad a rendelkezésre állási csoport beállításainak hozzáadására a virtuális géphez, ha azok egy rendelkezésre állási csoport részét képezik a forrás régióban.
+    - A **cél Storage-fiókok** területen válassza ki a használni kívánt fiókot.
 
         ![A cél-előfizetési beállítások testreszabását bemutató képernyőkép.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. A replikációs beállítások módosításához kattintson a **Testreszabás** elemre.
-4. A **több virtuális gépre kiterjedő konzisztencia**területen válassza ki azokat a virtuális gépeket, amelyeket együtt szeretne replikálni.
+4. A **több virtuális gépre kiterjedő konzisztencia** területen válassza ki azokat a virtuális gépeket, amelyeket együtt szeretne replikálni.
     - A feladatátvételkor a replikációs csoportba tartozó összes gép megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokkal rendelkezik majd.
     - A több virtuális gépre kiterjedő konzisztencia engedélyezése hatással lehet a munkaterhelés teljesítményére (mivel ez a CPU-igényes). Ez csak akkor engedélyezhető, ha a gépek ugyanazt a számítási feladatot futtatják, és több gépen is konzisztencia szükséges.
     - Ha például egy alkalmazás 2 SQL Server virtuális géppel és két webkiszolgálóval rendelkezik, akkor csak a SQL Server virtuális gépeket kell felvennie egy replikációs csoportba.
@@ -113,7 +116,7 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
     - Ha azt szeretné, hogy a Linux rendszerű virtuális gépek egy replikációs csoport részévé legyenek, győződjön meg arról, hogy az 20004-as porton a kimenő forgalom manuálisan nyílik meg az adott Linux-verzió útmutatása szerint.
 ![A több virtuális gépre kiterjedő konzisztencia-beállításokat bemutató képernyőkép.](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. Kattintson a **cél erőforrás létrehozása**  >  **replikáció engedélyezése**lehetőségre.
+5. Kattintson a **cél erőforrás létrehozása**  >  **replikáció engedélyezése** lehetőségre.
 6. Miután a virtuális gépek engedélyezve vannak a replikáláshoz, a virtuális gép állapotának állapotát a **replikált elemek** területen tekintheti meg
 
 >[!NOTE]
@@ -121,6 +124,6 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
 > - A kezdeti replikálás során az állapot frissítés nélkül is eltarthat egy ideig. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
 > - Ha egy helyreállítási pont nem lett létrehozva az elmúlt 60 percben, a virtuális gép replikációs állapota kritikus lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

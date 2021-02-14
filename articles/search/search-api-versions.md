@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820517"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518946"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -96,19 +96,19 @@ Az alábbi táblázat a újabb SDK-verziókra mutató hivatkozásokat tartalmaz.
 
 | SDK verziója | Állapot | Leírás  |
 |-------------|--------|------------------------------|
-| [Java Azure – keresés – 11. dokumentum](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
+| [Java Azure – keresés – 11. dokumentum](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Új ügyféloldali kódtár az Azure Java SDK-ból, amely megjelent a 2020. július. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
 | [Java Management-ügyfél 1.35.0](/java/api/overview/azure/search/management) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
 
 | SDK verziója | Állapot | Leírás  |
 |-------------|--------|------------------------------|
-| [JavaScript Azure – keresés 11,0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2016-09-01-et célozza meg. |
-| [JavaScript Azure-ARM-Search](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
+| [JavaScript @azure/search-documents 11,0](https://www.npmjs.com/package/@azure/search-documents) | Stable | Új ügyféloldali kódtár az Azure JavaScript & TypesScript SDK-ból, melyet július 2020-én bocsátottak ki. A keresési REST API-Version = 2016-09-01-et célozza meg. |
+| [JavaScript @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
 
 ## <a name="azure-sdk-for-python"></a>Azure SDK for Python
 
 | SDK verziója | Állapot | Leírás  |
 |-------------|--------|------------------------------|
-| [Python Azure – keresés – dokumentumok 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
-| [Python Azure-mgmt-Search 1,0](/python/api/overview/azure/search) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
+| [Python Azure – keresés – dokumentumok 11,0](https://pypi.org/project/azure-search-documents/) | Stable | Új ügyféloldali kódtár az Azure Python SDK-ból, amelyet a 2020 júliusában bocsátottak ki. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
+| [Python Azure-mgmt-Search 8,0](https://pypi.org/project/azure-mgmt-search/) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg. |
