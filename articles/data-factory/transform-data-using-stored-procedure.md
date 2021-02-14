@@ -1,22 +1,18 @@
 ---
 title: Adatátalakítás a tárolt eljárási tevékenység használatával
 description: A cikk azt ismerteti, hogyan használható SQL Server tárolt eljárás tevékenység egy Data Factory folyamat Azure SQL Database/adattárházában tárolt eljárás meghívásához.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b9ba2f9de82522d4348fa341ad0b41d43c3eebcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387541"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375646"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Az adatátalakítást az SQL Server tárolt eljárási tevékenység használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -70,12 +66,12 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 
 | Tulajdonság                  | Leírás                              | Kötelező |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | A tevékenység neve                     | Igen      |
-| leírás               | A tevékenység által használt szöveg leírása | Nem       |
-| típus                      | A tárolt eljárási tevékenységnél a tevékenység típusa **SqlServerStoredProcedure** . | Igen      |
-| linkedServiceName         | Hivatkozás a **Azure SQL Databasera** vagy az **Azure szinapszis analyticsre** , vagy **SQL Server** társított szolgáltatásként van regisztrálva Data Factoryban. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
-| storedProcedureName       | Adja meg a meghívott tárolt eljárás nevét. | Igen      |
-| storedProcedureParameters | A tárolt eljárás paramétereinek értékeinek megadása. `"param1": { "value": "param1Value","type":"param1Type" }`A paraméter értékének és az adatforrás által támogatott típusnak a továbbítására használható. Ha egy paraméternél null értéket kell átadnia, használja a `"param1": { "value": null }` (minden kisbetű) lehetőséget. | Nem       |
+| name                      | A tevékenység neve                     | Yes      |
+| leírás               | A tevékenység által használt szöveg leírása | No       |
+| típus                      | A tárolt eljárási tevékenységnél a tevékenység típusa **SqlServerStoredProcedure** . | Yes      |
+| linkedServiceName         | Hivatkozás a **Azure SQL Databasera** vagy az **Azure szinapszis analyticsre** , vagy **SQL Server** társított szolgáltatásként van regisztrálva Data Factoryban. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Yes      |
+| storedProcedureName       | Adja meg a meghívott tárolt eljárás nevét. | Yes      |
+| storedProcedureParameters | A tárolt eljárás paramétereinek értékeinek megadása. `"param1": { "value": "param1Value","type":"param1Type" }`A paraméter értékének és az adatforrás által támogatott típusnak a továbbítására használható. Ha egy paraméternél null értéket kell átadnia, használja a `"param1": { "value": null }` (minden kisbetű) lehetőséget. | No       |
 
 ## <a name="parameter-data-type-mapping"></a>Paraméter adattípusának leképezése
 A paraméterhez megadott adattípus a Azure Data Factory típus, amely a használt adatforrásban lévő adattípushoz van leképezve. Az adattípushoz tartozó leképezések az adatforráshoz az összekötők területen találhatók. Néhány példa

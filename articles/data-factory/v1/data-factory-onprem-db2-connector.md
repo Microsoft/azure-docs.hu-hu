@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése a DB2-ből Azure Data Factory használatával
 description: Ismerje meg, hogyan helyezhetők át adatok egy helyszíni DB2-adatbázisból Azure Data Factory másolási tevékenység használatával
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001065"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387359"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése a DB2-ből Azure Data Factory másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -310,15 +305,15 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyszeres |
+| Valós |Egyirányú |
 | Dupla |Dupla |
 | Float |Dupla |
 | Tizedesjegy |Tizedesjegy |
 | DecimalFloat |Tizedesjegy |
 | Numerikus |Tizedesjegy |
-| Dátum |Dátum/idő |
+| Date |Dátum/idő |
 | Idő |időtartam |
-| Timestamp |DateTime |
+| Időbélyeg |DateTime |
 | Xml |Bájt [] |
 | Char |Sztring |
 | VarChar |Sztring |
@@ -336,15 +331,15 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyszeres |
+| Valós |Egyirányú |
 | Dupla |Dupla |
 | Float |Dupla |
 | Tizedesjegy |Tizedesjegy |
 | DecimalFloat |Tizedesjegy |
 | Numerikus |Tizedesjegy |
-| Dátum |Dátum/idő |
+| Date |Dátum/idő |
 | Idő |időtartam |
-| Timestamp |DateTime |
+| Időbélyeg |DateTime |
 | Xml |Bájt [] |
 | Char |Sztring |
 

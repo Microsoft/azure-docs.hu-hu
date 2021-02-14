@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551025"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379018"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -31,7 +31,7 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
 
 
-## <a name="february-2021"></a>Február 2021
+## <a name="february-2021"></a>2021. február
 
 A februári frissítések a következők:
 
@@ -39,6 +39,7 @@ A februári frissítések a következők:
 - [Közvetlen hivatkozás a szabályzatra a javaslat részletei oldalon](#direct-link-to-policy-from-recommendation-details-page)
 - [Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [A tárgyieszköz-leltár oldal továbbfejlesztései](#asset-inventory-page-enhancements)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Az általánosan elérhető Kubernetes munkaterhelés-védelmi javaslatok (GA)
 
@@ -70,16 +71,32 @@ Ha áttekinti a javaslatok listáját a [biztonsági javaslatok hivatkozási út
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Az SQL-adatbesorolásra vonatkozó javaslat már nem érinti a biztonságos pontszámot
-
 Az **SQL-adatbázisokban lévő bizalmas adatokra vonatkozó ajánlás besorolása** nem befolyásolja a biztonságos pontszámot. Ez az egyetlen javaslat az **adatbesorolás** biztonságának szabályozására, hogy a vezérlő most a 0 értékkel rendelkező biztonságos pontszám legyen.
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>A munkafolyamatok automatizálása a szabályozások megfelelőségi felmérése (előzetes verzió) változásai alapján indítható el
-
 Egy harmadik adattípust adtunk hozzá a munkafolyamat-automatizálások trigger-beállításaihoz: a szabályozási megfelelőségi felmérések módosításai.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="A szabályozások megfelelőségi vizsgálatának módosításai a Munkafolyamat-automatizálás elindításához" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>A tárgyieszköz-leltár oldal továbbfejlesztései
+A Security Center eszköz leltározási lapja a következő módokon fejlődött:
+
+- A lap tetején található összefoglalók mostantól tartalmazzák a nem **regisztrált előfizetéseket**, amelyek az Security Center engedélyezése nélküli előfizetések számát mutatják.
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="A nem regisztrált előfizetések száma az Asset Inventory oldal tetején található összegzésekben":::
+
+- A szűrők kibontása és továbbfejlesztése a következőkre terjed ki:
+    - **Counts** – az egyes szűrők az egyes kategóriák feltételeit teljesítő erőforrások számát jelenítik meg
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Megszámolja a szűrőket a Azure Security Center tárgyieszköz-leltár lapján.":::
+
+    - **Kivételeket tartalmazó szűrőt tartalmaz** (nem kötelező) – Szűkítse az eredményeket olyan erőforrásokra, amelyeknek nincsenek kivételei. Ez a szűrő alapértelmezés szerint nem jelenik meg, de a **szűrő hozzáadása** gombbal érhető el.
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="A (z) &quot;kivételt tartalmazó&quot; szűrő hozzáadása Azure Security Center eszköz leltározási lapján":::
+
+További információ az [erőforrások az eszközök leltározásával való megismeréséről és kezeléséről](asset-inventory.md).
 
 ## <a name="january-2021"></a>2021. január
 
@@ -630,7 +647,7 @@ A Security Center szabályozási megfelelőségi irányítópultja betekintést 
 
 Az irányítópult a szabályozási szabványok alapértelmezett készletét tartalmazza. Ha a megadott szabványok bármelyike nem felel meg a szervezete számára, mostantól egy egyszerű folyamat távolítja el őket a felhasználói felületről egy előfizetéshez. A szabványokat csak az *előfizetés* szintjén lehet eltávolítani; a felügyeleti csoport hatóköre nem.
 
-További információ: [standard eltávolítása az irányítópultról](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
+További információ: [standard eltávolítása az irányítópultról](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/securityStatuses tábla eltávolítva az Azure Resource Graphből (ARG)

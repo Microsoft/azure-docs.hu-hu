@@ -1,24 +1,18 @@
 ---
 title: 'Oktatóanyag: Azure Data Factory folyamat létrehozása a REST API használatával '
 description: Ebben az oktatóanyagban a REST API használatával hoz létre egy másolási tevékenységgel rendelkező Azure Data Factory folyamatot az adatok Azure Blob Storage-ból Azure SQL Databaseba való másolásához.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7488834252dcd4e231c2d91a1435838befe7b1d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053821"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377023"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: REST API használata adatmásoló Azure Data Factory-folyamat létrehozásához 
 > [!div class="op_single_selector"]
@@ -55,7 +49,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 * Az [ebben a cikkben](../../active-directory/develop/howto-create-service-principal-portal.md) szereplő utasításokat követve végezze el a következőket: 
   1. Hozzon létre egy **ADFCopyTutorialApp** nevű webalkalmazást az Azure Active Directoryban.
   2. Szerezze be az **ügyfél-azonosítót** és a **titkos kulcsot**. 
-  3. **Bérlő azonosítójának**beolvasása. 
+  3. **Bérlő azonosítójának** beolvasása. 
   4. Rendelje az **ADFCopyTutorialApp** alkalmazáshoz a **Data Factory közreműködője** szerepkört.  
 * Telepítse a [Azure PowerShell](/powershell/azure/).  
 * Indítsa el a **PowerShellt**, és végezze el az alábbi lépéseket. Az Azure PowerShellt hagyja megnyitva az oktatóanyag végéig. Ha bezárja és újra megnyitja a programot, akkor újra le kell futtatnia a parancsokat.
@@ -70,7 +64,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az ** &lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére. 
+  3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az **&lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -121,7 +115,7 @@ A JSON tulajdonságokról további részleteket tartalmaz az [Azure Storage tár
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.jsbekapcsolva
 > [!IMPORTANT]
-> A **kiszolgálónév**, a **databasename**, a **Felhasználónév**és a **jelszó** helyére írja be a kiszolgáló nevét, az SQL Database nevét, a felhasználói fiókot és a jelszót a fiókhoz.  
+> A **kiszolgálónév**, a **databasename**, a **Felhasználónév** és a **jelszó** helyére írja be a kiszolgáló nevét, az SQL Database nevét, a felhasználói fiókot és a jelszót a fiókhoz.  
 > 
 >
 
@@ -351,7 +345,7 @@ Ebben a lépésben egy **ADFCopyTutorialDF** nevű Azure-adatelőállítót fog 
 
 Vegye figyelembe a következő szempontokat:
 
-* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha az eredményeknél a következő hibaüzenet jelenik meg: **A(z) „ADFCopyTutorialDF” Data factory nem érhető el**, tegye a következőket:  
+* Az Azure Data Factory nevének globálisan egyedinek kell lennie. Ha az eredmények között a következő hibaüzenet jelenik meg: a **"ADFCopyTutorialDF" nevű adatgyár nem érhető el**, hajtsa végre az alábbi lépéseket:  
   
   1. Módosítsa a nevet (például yournameADFCopyTutorialDF) a **datafactory.json** fájlban.
   2. Az első parancsnál, amikor a **$cmd** változóhoz értéket rendel, cserélje le az ADFCopyTutorialDF értéket az új névre, és futtassa le így a parancsot. 
@@ -529,7 +523,7 @@ Ebben az oktatóanyagban egy Azure-beli adatfeldolgozó létrehozásához REST A
 3. **Adatkészleteket** hozott létre, amelyek az adatcsatorna bemeneti és kimeneti adatait írják le.
 4. Létrehozott egy **folyamatot** egy Másolási tevékenységgel, ahol a BlobSource a forrás, az SqlSink pedig a fogadó. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban az Azure Blob Storage-t forrás adattárként használta, és a másolási művelet során Azure SQL Database célként megadott adattárként. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

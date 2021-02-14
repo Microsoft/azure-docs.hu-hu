@@ -8,18 +8,25 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cf0db71600c9350b4d70e6375f509a6e88709f70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944639"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378332"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
 
 IoT Central támogatja a közös hozzáférésű aláírások (SAS) és az X. 509 tanúsítványok használatát az eszköz és az alkalmazás közötti kommunikáció biztonságossá tételéhez. Az [ügyfélalkalmazás létrehozása és összekapcsolása az Azure IoT Central Application](./tutorial-connect-device.md) oktatóanyagban sas-t használ. Ebből a cikkből megtudhatja, hogyan módosíthatja a kód mintát az X. 509 használatára.  Az X. 509 tanúsítványokat éles környezetekben ajánlott használni. További információ: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md).
 
 Ez a cikk két módszert mutat be az X. 509 – [csoportos regisztrációk](how-to-connect-devices-x509.md#use-a-group-enrollment) jellemzően éles környezetben való használatát, valamint a teszteléshez hasznos [Egyéni regisztrációkat](how-to-connect-devices-x509.md#use-an-individual-enrollment) .
+
+A cikkben szereplő kódrészletek JavaScriptet használnak. Más nyelveken a kód mintáit lásd:
+
+- [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_ll_client_x509_sample)
+- [C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/X509DeviceCertWithChainSample)
+- [Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
+- [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

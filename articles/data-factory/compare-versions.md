@@ -1,21 +1,17 @@
 ---
 title: Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 description: Ez a cikk az Azure Data Factoryt hasonlítja össze az Azure Data Factory 1. verziójával.
-services: data-factory
-documentationcenter: ''
 author: kromerm
-manager: anandsub
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: makromer
-ms.openlocfilehash: c6a46f6c8a57b681f66bb98fced17bf0e2464fcd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638244"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393717"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 
@@ -30,7 +26,7 @@ Az alábbi táblázat Data Factory funkcióit hasonlítja össze a Data Factory 
 | ------- | --------- | --------- | 
 | Adathalmazok | Azon adatok elnevezett nézete, amelyek azokra az adatokra hivatkoznak, amelyeket a tevékenységekben használni szeretne be- vagy kimenetként. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt az Azure Blob Storage-mappát, amelyből a tevékenység beolvassa az adatokat.<br/><br/>A **rendelkezésre állás** megadja az adatkészlet feldolgozási időszakának felosztási modelljét (például óránként, naponta stb.). | Az adatkészletek változatlanok az aktuális verzióban. Az adatkészletek **rendelkezésre állásának** ütemezését azonban nem kell megadnia. Megadhat egy eseményindító erőforrást, amely folyamatokat ütemezhet egy óraütemező paradigmából. További információkért lásd: [Eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution) és [Adatkészletek](concepts-datasets-linked-services.md). | 
 | Társított szolgáltatások | A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. | A társított szolgáltatások ugyanazok, mint a Data Factory V1 esetében, de egy új **connectVia** tulajdonsággal az aktuális Data Factory verzió integrációs modul számítási környezetének használatához. További információkért lásd: [Integrációs modul az Azure Data Factoryban](concepts-integration-runtime.md) és [Társított szolgáltatások tulajdonságai az Azure Blob Storage-hoz](connector-azure-blob-storage.md#linked-service-properties). |
-| Pipelines | A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. A startTime, endTime, isPaused értékeket használja a folyamatok futtatásához és ütemezéséhez. | A folyamatok tevékenységek csoportjai, amelyeket adatokon végez el. A folyamat tevékenységeinek ütemezése azonban két új eseményindító erőforrásba lett elkülönítve. A Data Factory aktuális verziójának folyamatai leginkább „munkafolyamat-egységeknek” tekinthetők, amelyek külön ütemezhetők az eseményindítókon keresztül. <br/><br/>A Data Factory aktuális verziójában a folyamatok nem rendelkeznek végrehajtási időszakokkal. A Data Factory 1. verziójában található startTime, endTime és isPaused fogalmak már nem találhatók meg a Data Factory aktuális verziójában. További információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md) és a [Folyamatok és tevékenységek](concepts-pipelines-activities.md) című cikkben talál. |
+| Pipelines | A data factory egy vagy több folyamattal rendelkezhet. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. A startTime, endTime, isPaused értékeket használja a folyamatok futtatásához és ütemezéséhez. | A folyamatok tevékenységek csoportjai, amelyeket adatokon végez el. A folyamat tevékenységeinek ütemezése azonban két új eseményindító erőforrásba lett elkülönítve. Az aktuális verziójában a folyamatokat úgy tekintheti meg, Data Factory a "munkafolyamat-egységként", amelyet külön ütemezhet az eseményindítók segítségével. <br/><br/>A (z) Data Factory aktuális verziójában a folyamatok nem rendelkeznek a "Windows" időpontjának végrehajtásával. A Data Factory 1. verziójában található startTime, endTime és isPaused fogalmak már nem találhatók meg a Data Factory aktuális verziójában. További információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md) és a [Folyamatok és tevékenységek](concepts-pipelines-activities.md) című cikkben talál. |
 | Tevékenységek | A tevékenységek meghatározzák a folyamatban található adatokon végrehajtandó műveleteket. Az adatáthelyezés (másolási tevékenység) és az adatátalakító tevékenységek (például Hive, Pig és MapReduce) támogatottak. | Data Factory jelenlegi verziójában a tevékenységek továbbra is definiált műveletek egy folyamaton belül. A Data Factory aktuális verziója a [vezérlési folyamat új tevékenységeit](concepts-pipelines-activities.md#control-flow-activities)mutatja be. Ezeket a tevékenységek az átvitelvezérlésben (hurkolás és elágaztatás) használhatja. A V1-ben támogatott adatáthelyezési és adatátalakítási tevékenységeket az aktuális verzió is támogatja. Az aktuális verzióban adatkészletek használata nélkül is megadhat átalakítási tevékenységeket. |
 | Hibrid adatáthelyezés és tevékenységküldés | A most Integration Runtime-nak hívott [Adatkezelési átjáró](v1/data-factory-data-management-gateway.md) támogatta az adatok áthelyezését a helyszíni rendszer és a felhő között.| Az adatkezelési átjárót már Saját üzemeltetésű integrációs modulnak nevezzük. Ugyanazokkal a képességekkel rendelkezik, mint a V1-ben. <br/><br/> Az Azure-SSIS integrációs modul a Data Factory aktuális verziójában támogatja továbbá az SQL Server Integration Services- (SSIS)-csomagok üzembe helyezését és futtatását a felhőben. További információkért lásd: [Integrációs modul az Azure Data Factoryban](concepts-integration-runtime.md).|
 | Paraméterek | NA | A paraméterek a folyamatokban megadott írásvédett konfigurációs beállítások kulcs-érték párjai. Argumentumokat adhat át a paramétereknek, ha manuálisan futtatja a folyamatot. Ha ütemező eseményindítót használ, az eseményindító is átadhat értékeket a paramétereknek. A folyamatok tevékenységei a paraméterértékeket dolgozzák fel.  |
@@ -69,12 +65,12 @@ A folyamatok igény szerint (esemény alapján, például blobbejegyzés esetén
 A [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md) lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.
 
 ### <a name="delta-flows"></a>Változási folyamatok
-A fő használati eset az ETL-mintákban a „változásbetöltések”, amelyekben csak az olyan adatokat töltik be, amelyek módosultak a folyamat utolsó ismétlése óta. Az aktuális verzió új képességei, például a [keresési tevékenység](control-flow-lookup-activity.md), a rugalmas ütemezés vagy az átvitelvezérlés természetes módon teszik lehetővé ezt a használati esetet. Részletes utasításokat tartalmazó oktatóanyagért lásd: [Oktatóanyag: Növekményes másolat](tutorial-incremental-copy-powershell.md).
+Az ETL-minták egyik fő használati esete a "különbözeti terhelések", amelyekben csak a folyamat utolsó ismétlése óta megváltoztatott adatmennyiség töltődik be. Az aktuális verzió új képességei, például a [keresési tevékenység](control-flow-lookup-activity.md), a rugalmas ütemezés vagy az átvitelvezérlés természetes módon teszik lehetővé ezt a használati esetet. Részletes utasításokat tartalmazó oktatóanyagért lásd: [Oktatóanyag: Növekményes másolat](tutorial-incremental-copy-powershell.md).
 
 ### <a name="other-control-flow-activities"></a>Egyéb átvitelvezérlési tevékenységek
 Az alábbiakban néhány további, a Data Factory aktuális verziója által támogatott átvitelvezérlési tevékenység található. 
 
-Vezérlési tevékenység | Leírás
+Vezérlési tevékenység | Description
 ---------------- | -----------
 [ForEach tevékenység](control-flow-for-each-activity.md) | Ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység futtatására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 [Webes tevékenység](control-flow-web-activity.md) | Meghív egy egyéni REST-végpontot egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 
@@ -92,7 +88,7 @@ Például az SQL Server Data Tools vagy az SQL Server Management Studio használ
 ## <a name="flexible-scheduling"></a>Rugalmas ütemezés
 A Data Factory aktuális verziójában nem kell megadnia az adatkészletek rendelkezésre állásának ütemezését. Megadhat egy eseményindító erőforrást, amely folyamatokat ütemezhet egy óraütemező paradigmából. Paramétereket is átadhat a folyamatoknak egy eseményindítóból egy rugalmas ütemezési és végrehajtási modell érdekében. 
 
-A Data Factory aktuális verziójában a folyamatok nem rendelkeznek végrehajtási időszakokkal. A Data Factory 1. verziójában található startTime, endTime és isPaused fogalmak már nem találhatók meg a Data Factory aktuális verziójában. A folyamatok Data Factory aktuális verziójában való létrehozásáról, majd ütemezéséről további információ: [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
+A (z) Data Factory aktuális verziójában a folyamatok nem rendelkeznek a "Windows" időpontjának végrehajtásával. A Data Factory 1. verziójában található startTime, endTime és isPaused fogalmak már nem találhatók meg a Data Factory aktuális verziójában. A folyamatok Data Factory aktuális verziójában való létrehozásáról, majd ütemezéséről további információ: [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
 
 ## <a name="support-for-more-data-stores"></a>További adattárak támogatása
 Az aktuális verzió az 1. verziónál több adattárba vagy adattárból történő adatmásolást támogat. A támogatott adattárak listáját az alábbi cikkekben találja:
@@ -103,7 +99,7 @@ Az aktuális verzió az 1. verziónál több adattárba vagy adattárból tört�
 ## <a name="support-for-on-demand-spark-cluster"></a>Igény szerinti Spark-fürt támogatása
 Az aktuális verzió támogatja az igény szerinti Azure HDInsight Spark-fürt létrehozását. Igény szerinti Spark-fürt létrehozásához Sparkként határozza meg a fürt típusát az igény szerinti HDInsight társított szolgáltatás meghatározásában. Ezután úgy konfigurálhatja a Spark-tevékenységet a folyamatban, hogy ezt a társított szolgáltatást használja. 
 
-A tevékenység futásidőben való végrehajtásakor a Data Factory szolgáltatás automatikusan létrehozza a Spark-fürtöt. További információkat az következő cikkekben talál:
+A tevékenység futásidőben való végrehajtásakor a Data Factory szolgáltatás automatikusan létrehozza a Spark-fürtöt. További információért tekintse át a következő cikkeket:
 
 - [Spark-tevékenység a Data Factory aktuális verziójában](transform-data-using-spark.md)
 - [Azure HDInsight igény szerinti társított szolgáltatás](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)
@@ -118,13 +114,13 @@ További információ: [Az egyéni tevékenységek közötti különbségek a Da
 ## <a name="sdks"></a>SDK-k
  a Data Factory aktuális verziója az SDK-k szélesebb választékát biztosítja, amelyeket folyamatok létrehozásához, kezeléséhez és monitorozásához használhat.
 
-- **.NET SDK** : A .NET SDK frissült az aktuális verzióban.
+- **.NET SDK**: A .NET SDK frissült az aktuális verzióban.
 
-- **PowerShell** : A PowerShell-parancsmagok frissültek az aktuális verzióban. Az aktuális verzióhoz tartozó parancsmagoknak **szerepel datafactoryv2** van a névben, például: Get-AzDataFactoryV2. 
+- **PowerShell**: A PowerShell-parancsmagok frissültek az aktuális verzióban. Az aktuális verzióhoz tartozó parancsmagoknak **szerepel datafactoryv2** van a névben, például: Get-AzDataFactoryV2. 
 
-- **Python SDK** : Ez az SDK az aktuális verzióban lett bevezetve.
+- **Python SDK**: Ez az SDK az aktuális verzióban lett bevezetve.
 
-- **REST API** : A REST API frissült az aktuális verzióban. 
+- **REST API**: A REST API frissült az aktuális verzióban. 
 
 Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ügyfeleivel. 
 
@@ -132,11 +128,11 @@ Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek 
 
 | | 2-es verzió | 1-es verzió |
 | ------ | -- | -- | 
-| **Azure Portal** | [Igen](quickstart-create-data-factory-portal.md) | Nem |
+| **Azure Portal** | [Igen](quickstart-create-data-factory-portal.md) | No |
 | **Azure PowerShell** | [Igen](quickstart-create-data-factory-powershell.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
 | **.NET SDK** | [Igen](quickstart-create-data-factory-dot-net.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
 | **REST API** | [Igen](quickstart-create-data-factory-rest-api.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
-| **Python SDK** | [Igen](quickstart-create-data-factory-python.md) | Nem |
+| **Python SDK** | [Igen](quickstart-create-data-factory-python.md) | No |
 | **Resource Manager-sablon** | [Igen](quickstart-create-data-factory-resource-manager-template.md) | [Igen](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek

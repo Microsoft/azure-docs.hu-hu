@@ -1,23 +1,18 @@
 ---
 title: Útmutató a másolási tevékenységek teljesítményéhez és finomhangolásához
 description: A másolási tevékenység használatakor a Azure Data Factory adatáthelyezési teljesítményét befolyásoló főbb tényezők ismertetése.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5910b94dba03f105197a94cf1ea1805f45249f3f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451352"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377210"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Útmutató a másolási tevékenységek teljesítményéhez és finomhangolásához
 
@@ -207,10 +202,10 @@ Konfigurálja a **enableStaging** beállítást a másolási tevékenységben an
 
 | Tulajdonság | Leírás | Alapértelmezett érték | Kötelező |
 | --- | --- | --- | --- |
-| **enableStaging** |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |Nem |
-| **linkedServiceName** |Adja meg egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tároló példányára hivatkozik. <br/><br/> Nem használhat megosztott hozzáférési aláírással rendelkező tárolót az adatok Azure szinapszis-elemzésbe való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |N.A. |Igen, ha a **enableStaging** értéke TRUE (igaz) |
-| **elérési útja** |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N.A. |Nem |
-| **enableCompression** |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |Nem |
+| **enableStaging** |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |No |
+| **linkedServiceName** |Adja meg egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás nevét, amely az átmeneti előkészítési tárolóként használt tároló példányára hivatkozik. <br/><br/> Nem használhat megosztott hozzáférési aláírással rendelkező tárolót az adatok Azure szinapszis-elemzésbe való betöltéséhez a Base használatával. Ezt minden más esetben használhatja. |N/A |Igen, ha a **enableStaging** értéke TRUE (igaz) |
+| **elérési útja** |Itt adhatja meg a blob Storage azon elérési útját, amelyben az előkészített adatértékeket tárolni szeretné. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. <br/><br/> Elérési utat csak akkor kell megadni, ha megosztott hozzáférési aláírással rendelkező tárolót használ, vagy ha ideiglenes adatmennyiségre van szüksége egy adott helyen. |N/A |No |
+| **enableCompression** |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |No |
 
 Az alábbi példa a másolási tevékenység definícióját tartalmazza az előző táblázatban ismertetett tulajdonságokkal:
 
@@ -277,7 +272,7 @@ Javasoljuk, hogy hajtsa végre ezeket a lépéseket a Data Factory szolgáltatá
 **Átjáró figyelése és vertikális felskálázása**: egy vagy több átjárót tartalmazó logikai átjáró egyszerre több másolási tevékenységet is képes futni. Megtekintheti az erőforrás-felhasználás (CPU, memória, hálózat (in/out), stb.) közel valós idejű pillanatképét, valamint a Azure Portalon futó egyidejű feladatok számát, az [átjáró figyelése a portálon](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)című témakört. Ha nagy mennyiségű párhuzamos másolási tevékenységre van szüksége a hibrid adatáthelyezéshez, vagy nagyméretű adatmásolási művelettel vagy nagy mennyiségű adattal, vegye fontolóra az [átjáró vertikális felskálázását vagy felskálázását](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) , hogy jobban kihasználja az erőforrást, vagy több erőforrást lehessen kiépíteni a másolásra.
 
 ## <a name="considerations-for-the-source"></a>A forrás szempontjai
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 Ügyeljen arra, hogy az alapul szolgáló adattár ne legyen túlterhelve más, vagy azon kívül futó munkaterhelések között.
 
 A Microsoft adattárak esetében lásd: az adattárakra jellemző [témakörök figyelése és finomhangolása](#performance-reference) , valamint az adattárolási teljesítmény jellemzőinek megértése, a válaszidő csökkentése és az átviteli sebesség maximalizálása.
@@ -299,7 +294,7 @@ Ha a blob Storage-ból másolja az Azure szinapszis Analytics-be, érdemes **leh
 * Az **adatkezelés Gateway** használatát igénylő helyszíni, például a SQL Server és az **Oracle számára a** következő témakörben talál tudnivalókat: adatkezelés Gateway című szakasz.
 
 ## <a name="considerations-for-the-sink"></a>A fogadó szempontjai
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 Ügyeljen arra, hogy az alapul szolgáló adattár ne legyen túlterhelve más, vagy azon kívül futó munkaterhelések között.
 
 A Microsoft-adattárak esetében tekintse meg az adattárakra jellemző [témakörök figyelését és finomhangolását](#performance-reference) . Ezek a témakörök segítenek megérteni az adattár teljesítményének jellemzőit, és azt, hogy miként lehet csökkenteni a válaszidőt és maximalizálni az átviteli sebességet.
@@ -413,7 +408,7 @@ Ebben az esetben a bzip2 adattömörítés a teljes folyamat lelassulását okoz
 
 ![3\. példa](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Hivatkozás
+## <a name="reference"></a>Referencia
 Az alábbiakban a támogatott adattárakkal kapcsolatos Teljesítményfigyelés és hangolási referenciák találhatók:
 
 * Azure Blob Storage: a blob Storage-hoz szükséges [méretezhetőségi és teljesítményi célok](../../storage/blobs/scalability-targets.md) , valamint a blob Storage-hoz kapcsolódó [teljesítmény-és méretezhetőségi ellenőrzőlista](../../storage/blobs/storage-performance-checklist.md).

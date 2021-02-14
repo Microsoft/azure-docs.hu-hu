@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
 description: Ismerje meg, hogyan helyezhetők át adatok a MySQL-adatbázisból a Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c39435d2249981a45798ffe0717054fa7b0717
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872102"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387325"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -49,8 +44,8 @@ Ahhoz, hogy adatkezelés átjáró csatlakozhasson a MySQL-adatbázishoz, telep�
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal. 
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
-- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
+- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -67,14 +62,14 @@ A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
-| kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
-| adatbázis |A MySQL-adatbázis neve. |Igen |
-| schema |A séma neve az adatbázisban. |Nem |
-| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic` . |Igen |
-| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
-| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Yes |
+| kiszolgáló |A MySQL-kiszolgáló neve. |Yes |
+| adatbázis |A MySQL-adatbázis neve. |Yes |
+| schema |A séma neve az adatbázisban. |No |
+| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic` . |Yes |
+| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Yes |
+| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Yes |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -304,7 +299,7 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | bigint |Int64 |
 | bit |Tizedesjegy |
 | blob |Bájt [] |
-| logikai |Logikai érték |
+| logikai |Logikai |
 | char |Sztring |
 | dátum |Datetime |
 | dátum/idő |Datetime |

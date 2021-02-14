@@ -3,12 +3,12 @@ title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936158"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517263"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -27,7 +27,7 @@ A Azure Functions egy Azure Storage-fiókot igényel a Function App-példány l�
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint például az eseményindítók és a naplózási függvények végrehajtásának kezelése. Egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok csak a blob Storage-fiókokat, az Azure-Premium Storageokat és a ZRS-replikációval rendelkező általános célú Storage-fiókokat tartalmazzák.
+A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint például az eseményindítók és a naplózási függvények végrehajtásának kezelése. Egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok csak blob Storage-fiókokat és Azure-Premium Storage tartalmaznak.
 
 További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
 
@@ -88,7 +88,7 @@ import os
 files_in_share = os.listdir("/path/to/mount")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions üzemeltetési lehetőségeiről.
 

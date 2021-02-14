@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574431"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393853"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure-fájlmegosztás szolgáltatással kapcsolatos gyakori problé
 
 ### <a name="cause-1-share-was-throttled"></a>1. ok: a megosztás szabályozása megvolt
 
-A rendszer a kérelmeket akkor szabályozza, ha a fájlmegosztás I/O-műveletei másodpercenként (IOPS), bejövő vagy kimenő korláttal rendelkeznek. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](./storage-files-scale-targets.md#file-share-and-file-scale-targets)ismertető témakört.
+A rendszer a kérelmeket akkor szabályozza, ha a fájlmegosztás I/O-műveletei másodpercenként (IOPS), bejövő vagy kimenő korláttal rendelkeznek. A standard és a prémium szintű fájlmegosztás korlátainak megismeréséhez tekintse meg a [fájlmegosztás és a fájlméret céljait](./storage-files-scale-targets.md#azure-file-share-scale-targets)ismertető témakört.
 
 Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és használhatja az Azure-metrikákat a portálon.
 

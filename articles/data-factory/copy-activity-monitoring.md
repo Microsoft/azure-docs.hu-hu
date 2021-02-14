@@ -1,22 +1,17 @@
 ---
 title: Másolási tevékenység figyelése
 description: Tudnivalók a másolási tevékenységek végrehajtásának figyeléséről Azure Data Factoryban.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440609"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388294"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
 
@@ -50,7 +45,7 @@ Az alsó **végrehajtási adatok és időtartamok** a másolási tevékenység l
 
 A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredményének**  >  **kimenete** szakaszban is megjelennek, amely a felhasználói felület figyelési nézetének megjelenítésére szolgál. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek figyeléséről általában programozott módon: Azure-beli adat- [előállító programozott figyelése](monitor-programmatically.md).
 
-| Tulajdonság neve  | Leírás | Kimeneti egység |
+| Tulajdonság neve  | Description | Kimeneti egység |
 |:--- |:--- |:--- |
 | dataRead | A forrásból beolvasott adatok tényleges mennyisége. | Int64 érték bájtban |
 | dataWritten | A fogadóba írt/elkötelezett adatok tényleges csatlakoztatása. A méret különbözhet a `dataRead` mérettől, mivel az egyes adattár az adatok tárolására szolgál. | Int64 érték bájtban |
@@ -67,7 +62,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 | korlátozások | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
 | sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int32 érték (nincs egység) |
 | sinkPeakConnections| A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma.| Int32 érték (nincs egység) |
-| sqlDwPolyBase | Azt jelzi, hogy a rendszer az Azure szinapszis Analyticsbe másolt adatok (korábban SQL Data Warehouse) esetében használja-e a rendszer-e. | Logikai |
+| sqlDwPolyBase | Azt határozza meg, hogy a rendszer az adatok Azure szinapszis Analyticsbe való másolásakor használja-e a Base-t. | Logikai |
 | redshiftUnload | Azt jelzi, hogy a rendszer az ELTÁVOLÍTÁSt használja-e az adatok Vöröseltolódásból történő másolásakor. | Logikai |
 | hdfsDistcp | Azt határozza meg, hogy a rendszer DistCp használ-e az adatok HDFS-ből való másolásakor. | Logikai |
 | effectiveIntegrationRuntime | A tevékenység futtatásához használt integrációs modul (IR) vagy futtatókörnyezet a következő formátumban: `<IR name> (<region if it's Azure IR>)` . | Szöveg (karakterlánc) |
@@ -163,6 +158,6 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 ## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-\- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+\-[Másolási tevékenység – áttekintés](copy-activity-overview.md)
 
 \- [Másolási tevékenység teljesítménye](copy-activity-performance.md)

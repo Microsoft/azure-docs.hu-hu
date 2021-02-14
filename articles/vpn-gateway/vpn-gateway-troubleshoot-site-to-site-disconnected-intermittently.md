@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 02/10/2021
 ms.author: genli
-ms.openlocfilehash: 63c9bd93e75533e54c42c2041cb9f55a1f0036b6
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872145"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369339"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: Az Azure-beli helyek közötti VPN-kapcsolat időnként megszakad
 
@@ -64,7 +64,7 @@ A házirend-alapú virtuális hálózati átjáró 200 alhálózati biztonsági 
 
 A **tökéletes továbbítási titoktartási** funkció a leválasztási problémákhoz vezethet. Ha a VPN-eszközön engedélyezve van a megfelelő **továbbítási titoktartás** , tiltsa le a szolgáltatást. Ezután [frissítse a virtuális hálózati átjáró IPsec-házirendjét](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Helyek közötti kapcsolat konfigurálása virtuális hálózathoz](./tutorial-site-to-site-portal.md)
 - [IPsec/IKE-szabályzat konfigurálása két hálózat közötti pont-pont típusú VPN-kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md)

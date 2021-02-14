@@ -1,21 +1,17 @@
 ---
 title: Adatok másolása az Amazon Vöröseltolódásból
 description: További információ az Amazon vöröseltolódásról származó adatok másolásáról a Azure Data Factory használatával történő támogatott fogadó adattárakra.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: b17c567b2e83bef3c37c8f1272091021a1943b15
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008323"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364256"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -57,13 +53,13 @@ Az Amazon vöröseltolódás társított szolgáltatása a következő tulajdons
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **AmazonRedshift** | Igen |
-| kiszolgáló |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AmazonRedshift** | Yes |
+| kiszolgáló |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Yes |
 | port |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem, az alapértelmezett érték 5439 |
-| adatbázis |Az Amazon vöröseltolódás-adatbázis neve. |Igen |
-| username |Az adatbázishoz hozzáférő felhasználó neve. |Igen |
-| jelszó |A felhasználói fiók jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| adatbázis |Az Amazon vöröseltolódás-adatbázis neve. |Yes |
+| username |Az adatbázishoz hozzáférő felhasználó neve. |Yes |
+| jelszó |A felhasználói fiók jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 **Példa**
 
@@ -99,9 +95,9 @@ Az adatok Amazon Vöröseltolódásból való másolásához a következő tulaj
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftTable** | Yes |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -134,9 +130,9 @@ Az adatok Amazon Vöröseltolódásból való másolásához állítsa a forrás
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonRedshiftSource** | Yes |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Például: select * from Sajáttábla. |Nem (ha meg van adva a "táblanév" az adatkészletben) |
-| redshiftUnloadSettings | Tulajdonság az Amazon vöröseltolódás eltávolításakor. | Nem |
+| redshiftUnloadSettings | Tulajdonság az Amazon vöröseltolódás eltávolításakor. | No |
 | s3LinkedServiceName | Egy "AmazonS3" típusú társított szolgáltatás nevének megadásával egy olyan Amazon S3-ra hivatkozik, amelyet a rendszer ideiglenes tárolóként használ. | Igen, ha kitöltést használ |
 | bucketName | Adja meg az S3 gyűjtőt az ideiglenes adatai tárolásához. Ha nincs megadva, Data Factory a szolgáltatás automatikusan létrehozza azt.  | Igen, ha kitöltést használ |
 
@@ -225,10 +221,10 @@ Az Amazon Vöröseltolódásból történő adatmásoláskor a következő leké
 | DECIMÁLIS |Tizedesjegy |
 | DUPLA PONTOSSÁG |Dupla |
 | EGÉSZ SZÁM |Int32 |
-| VALÓS SZÁM |Egyszeres |
+| VALÓS SZÁM |Egyirányú |
 | SMALLINT |Int16 |
 | TEXT |Sztring |
-| IDŐBÉLYEG |DateTime |
+| IDŐBÉLYEGZŐ |DateTime |
 | VARCHAR |Sztring |
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai

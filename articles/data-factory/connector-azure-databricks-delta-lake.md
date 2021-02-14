@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása Azure Databricks Delta-tóhoz és onnan
 description: Megtudhatja, hogyan másolhat adatok Azure Databricks Delta Lake-be és onnan a Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221142"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364239"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Adatok másolása Azure Databricks Delta-tóból és onnan a Azure Data Factory használatával
 
@@ -151,8 +147,8 @@ Azure Databricks Delta-tótól származó adatok másolásához a másolási tev
 | típus                         | A másolási tevékenység forrásának Type tulajdonságát **AzureDatabricksDeltaLakeSource** értékre kell állítani. | Yes      |
 | lekérdezés          | Az adatolvasásra szolgáló SQL-lekérdezés meghatározása. Az időutazások vezérléséhez kövesse az alábbi mintát:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
 | exportSettings | Az adatok különbözeti táblából való beolvasásához használt speciális beállítások. | No       |
-| ***Alatt `exportSettings` :** _ |  |  |
-| típus | Az exportálási parancs típusa: _ * AzureDatabricksDeltaLakeExportCommand * *. | Yes |
+| ***Alatt `exportSettings` :*** |  |  |
+| típus | Az exportálási parancs típusa **AzureDatabricksDeltaLakeExportCommand** értékre van állítva. | Yes |
 | dateFormat | Dátum típusának formázása dátum formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | No |
 | timestampFormat | Az időbélyeg típusának formázása időbélyeg-formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
 
@@ -265,8 +261,8 @@ Ha az Adatmásolást Azure Databricks Delta-tóba szeretné másolni, a másolá
 | típus          | A másolási tevékenység fogadójának Type tulajdonsága **AzureDatabricksDeltaLakeSink** értékre van állítva. | Yes      |
 | preCopyScript | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatás során Databricks-különbözeti táblába írna. Ezt a tulajdonságot használhatja az előre betöltött adatok törléséhez, illetve egy csonkolt tábla vagy vákuum-utasítás hozzáadásához. | No       |
 | importSettings | Az adatkülönbözeti táblába való adatíráshoz használt speciális beállítások. | No |
-| **_Alatt `importSettings` :_* _ |                                                              |  |
-| típus | Az importálási parancs típusa: _ * AzureDatabricksDeltaLakeImportCommand * *. | Yes |
+| ***Alatt `importSettings` :*** |                                                              |  |
+| típus | Az importálási parancs típusa **AzureDatabricksDeltaLakeImportCommand** értékre van állítva. | Yes |
 | dateFormat | Formázza a karakterláncot dátum típusúra dátumformátum formájában. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | No |
 | timestampFormat | Formázza a karakterláncot timestamp típusúra időbélyeg-formátummal. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
 

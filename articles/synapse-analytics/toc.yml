@@ -113,6 +113,8 @@
                   href: ./security/workspace-data-exfiltration-protection.md
                 - name: Synapse-munkaterület Private Link-központokkal
                   href: ./security/synapse-private-link-hubs.md
+                - name: Kapcsolódás biztonságos Storage-fiókhoz
+                  href: ./security/connect-to-a-secure-storage-account.md
             - name: Hitelesítés és átmenő hitelesítés
               items:
                 - name: Azure Active Directory
@@ -571,7 +573,11 @@
         - name: A Delta Lake használata
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Kódtárak kezelése
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
+          items:
+            - name: Kódtárak létrehozása és kezelése
+              href: ./spark/apache-spark-azure-portal-add-libraries.md
+            - name: A kódtár telepítési hibáinak elhárítása
+              href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Jegyzetfüzetek és IDE-eszközök használata
           items:
             - name: Jegyzetfüzetek kezelése

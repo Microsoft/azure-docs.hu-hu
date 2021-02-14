@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Ismerje meg az adatelemzési Virtual Machines hatékonyságnövelő eszközeit.
 keywords: Deep learning, AI, adatelemzési eszközök, adatelemzési virtuális gép, térinformatikai elemzés, csoportos adatelemzési folyamat
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: 97381a58cdb759dec30e75860505b3a260223d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f0a54d99b7f2e84f7ac392de2fe9cb1c7c31a3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761192"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516447"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Hatékonyságnövelő eszközök a Data Science Virtual Machine
 

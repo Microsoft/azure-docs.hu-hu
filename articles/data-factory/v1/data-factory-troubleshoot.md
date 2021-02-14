@@ -1,24 +1,19 @@
 ---
 title: Azure Data Factory problémák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani a Azure Data Factory használatával kapcsolatos problémákat.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494970"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388243"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
@@ -35,14 +30,15 @@ Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgál
 1. Indítsa el az Azure PowerShellt.
 2. Jelentkezzen be az Azure-fiókjába a következő parancs használatával.
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. Futtassa a következő parancsot a Azure Data Factory-szolgáltató regisztrálásához.
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probléma: jogosulatlan hiba Data Factory parancsmag futtatásakor
 Valószínűleg nem a megfelelő Azure-fiókot vagy előfizetést használja az Azure PowerShell futtatásához. Az alábbi parancsmagokkal válassza ki a megfelelő Azure-fiókot és előfizetést az Azure PowerShell használatához.
@@ -67,7 +63,7 @@ Indítsa el **adatkezelés átjárót Configuration Manager** az átjárót hasz
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Probléma: a bemeneti szeletek örökre várakozó állapotban vannak
 Különböző okok miatt a szeletek **várakozási** állapotba kerülhetnek. Az egyik gyakori oka, hogy a **külső** tulajdonság értéke nem **true (igaz**). A Azure Data Factory hatókörén kívül létrehozott adatkészleteket **külső** tulajdonsággal kell megjelölni. Ez a tulajdonság azt jelzi, hogy az adatforrások kívül vannak, és az adatelőállítón belüli folyamatok nem rendelkeznek biztonsági mentéssel. Az adatszeletek **Készként** vannak jelölve, amint elérhetőek az adatok a megfelelő tárban.
 
-Tekintse meg a következő példát az **external** tulajdonság használatáról. Opcionálisan megadhatja a **externalData** _ értéket, ha a külsőt igaz értékre állítja.
+Tekintse meg a következő példát az **external** tulajdonság használatáról. Megadhatja a **externalData*** beállítást is, ha a külsőt igaz értékre állítja.
 
 A tulajdonságról az [adatkészleteket](data-factory-create-datasets.md) ismertető cikkben talál további információt.
 
@@ -97,7 +93,7 @@ A tulajdonságról az [adatkészleteket](data-factory-create-datasets.md) ismert
 }
 ```
 
-A hiba elhárításához adja hozzá a _ *External** tulajdonságot és a választható **externalData** SZAKASZT a bemeneti tábla JSON-definíciójában, és hozza létre újból a táblát.
+A hiba megoldásához adja hozzá az **external** tulajdonságot és a választható **externalData** szakaszt a bemeneti tábla JSON-definíciójához, és hozza létre ismét a táblát.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Probléma: a hibrid másolási művelet meghiúsul
 Az [átjáróval kapcsolatos hibák elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) a helyszíni adattárakból a adatkezelés átjáró használatával történő másolásával kapcsolatos hibák elhárítása című témakörben található.

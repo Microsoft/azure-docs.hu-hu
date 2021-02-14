@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: de54e179c6972ca1f79dbcd6e210ff64ee3480bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621467"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378860"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OpenAthens
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a OpenAthens a Azu
 * A OpenAthens-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a OpenAthens az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,22 +40,22 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A OpenAthens támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 * A OpenAthens **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-## <a name="adding-openathens-from-the-gallery"></a>OpenAthens hozzáadása a gyűjteményből
+## <a name="add-openathens-from-the-gallery"></a>OpenAthens hozzáadása a gyűjteményből
 
 A OpenAthens Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a OpenAthens a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **OpenAthens** kifejezést a keresőmezőbe.
 1. Válassza ki a **OpenAthens** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a OpenAthens
+## <a name="configure-and-test-azure-ad-sso-for-openathens"></a>Azure AD SSO konfigurálása és tesztelése a OpenAthens-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a OpenAthens a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a OpenAthens-ben.
 
-Az Azure AD SSO és a OpenAthens konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a OpenAthens konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -70,9 +68,9 @@ Az Azure AD SSO és a OpenAthens konfigurálásához és teszteléséhez hajtsa 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **OpenAthens** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal **OpenAthens** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -117,15 +115,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **OpenAthens** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-openathens-sso"></a>OpenAthens SSO konfigurálása
@@ -134,19 +126,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Válassza a **kapcsolatok** lehetőséget a listából a **kezelés** lapon.
 
-    ![A "felügyelet" lapról kiválasztott "connections" (kapcsolatokkal rendelkező) "OpenAthens" céges weboldalt bemutató képernyőkép.](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![A "felügyelet" lapról kiválasztott "connections" (kapcsolatokkal rendelkező) "OpenAthens" céges weboldalt bemutató képernyőkép.](./media/openathens-tutorial/connections.png)
 
 1. Válassza ki az **SAML 1.1/2.0** elemet, majd kattintson a **Konfigurálás** gombra.
 
-    ![Képernyőfelvétel: a "helyi hitelesítési rendszer típusának kiválasztása". párbeszédablak "S A M L 1.1/2.0" és a "configure" gomb kiválasztásával.](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Képernyőfelvétel: a "helyi hitelesítési rendszer típusának kiválasztása". párbeszédablak "S A M L 1.1/2.0" és a "configure" gomb kiválasztásával.](./media/openathens-tutorial/saml.png)
 
 1. A konfiguráció hozzáadásához kattintson a **Tallózás** gombra a Azure Portal letöltött metadata. xml fájl feltöltéséhez, majd válassza a **Hozzáadás** lehetőséget.
 
-    ![Képernyőkép, amely az "S A M L hitelesítési rendszer hozzáadása" kifejezést mutatja. párbeszédablak a "Tallózás" művelettel és a "Hozzáadás gomb kiválasztásával.](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Képernyőkép, amely az "S A M L hitelesítési rendszer hozzáadása" kifejezést mutatja. párbeszédablak a "Tallózás" művelettel és a "Hozzáadás gomb kiválasztásával.](./media/openathens-tutorial/configure.png)
 
 1. Hajtsa végre a következő lépéseket a **részletek** lapon.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application4.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/add.png)
 
     a. A **megjelenítendő név leképezése** lapon válassza az **attribútum használata** elemet.
 
@@ -164,7 +156,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     h. A **</> függő entitás** lapon másolja a **metaadatok URL-címét** , és nyissa meg ezt a böngészőben az **SP-metaadatok XML-** fájljának letöltéséhez. Töltse fel ezt az SP metaadat-fájlt az Azure AD **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![Képernyőkép, amely megjeleníti a "függő entitás" fület, valamint a "metaadatok U R L" elemet.](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Képernyőkép, amely megjeleníti a "függő entitás" fület, valamint a "metaadatok U R L" elemet.](./media/openathens-tutorial/metadata.png)
 
 ### <a name="create-openathens-test-user"></a>OpenAthens-tesztelési felhasználó létrehozása
 
@@ -172,16 +164,12 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a OpenAthens
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Ha a hozzáférési panelen a OpenAthens csempére kattint, automatikusan be kell jelentkeznie arra a OpenAthens, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a OpenAthens, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-## <a name="additional-resources"></a>További források
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások OpenAthens csempére kattint, automatikusan be kell jelentkeznie arra a OpenAthens, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A OpenAthens kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A OpenAthens konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -5,15 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 02/11/2021
 ms.author: normesta
-ms.reviewer: stewu
-ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879309"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516278"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -45,18 +44,19 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Megváltoztathatatlan tároló|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással](storage-blob-immutable-storage.md)|
 |Tároló – Soft delete|Előnézet|Előnézet|[Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)|
 |Azure Storage-leltár|Előnézet|Előnézet|[Az Azure Storage-leltár használata a blob-adatkezeléshez (előzetes verzió)](blob-inventory.md)|
+|Egyéni tartományok|Előnézet<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|Előnézet<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](./soft-delete-blob-overview.md)|
 |Blobfuse|Általánosan elérhető|Általánosan elérhető|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Névtelen nyilvános hozzáférés |Általánosan elérhető|Általánosan elérhető| Lásd: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok számára](anonymous-read-access-configure.md).|
 |Ügyfél által felügyelt fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Ügyfél által biztosított kulcsok|Még nem támogatott|Még nem támogatott|[Titkosítási kulcs megadása a blob Storage-kérelemben](encryption-customer-provided-keys.md)|
-|Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Titkosítási hatókörök|Még nem támogatott|Még nem támogatott|[Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)|
 |Csatorna módosítása|Még nem támogatott|Még nem támogatott|[A hírcsatornák támogatásának módosítása az Azure Blob Storage-ban](storage-blob-change-feed.md)|
 |Objektumreplikáció|Még nem támogatott|Még nem támogatott|[Objektumok replikálásának konfigurálása a blokkos blobokhoz](object-replication-configure.md)|
 |BLOB verziószámozása|Még nem támogatott|Még nem támogatott|[BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)|
 
 <div id="preview-form"><sup>1</sup> Ha a pillanatképeket, a nem módosítható tárolókat vagy a statikus webhelyeket Data Lake Storage Gen2 használatával szeretné használni, regisztrálnia kell az előzetes verzióban az <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>űrlap</a>kitöltésével.  </div>
+<div id="preview-form-2"><sup>2</sup> Az Egyéni tartománynév csak a blob szolgáltatás vagy a statikus webhely végpontja számára képezhető le. A Data Lake tárolási végpontja nem </a> támogatott.  </div>
 
 ## <a name="see-also"></a>Lásd még
 

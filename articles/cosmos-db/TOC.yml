@@ -932,7 +932,7 @@
         - name: REST (felügyeleti sík)
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
@@ -1050,7 +1050,7 @@
         - name: REST erőforrás-szolgáltató
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.documentdb/allversions
 - name: MongoDB API
@@ -1117,6 +1117,8 @@
           items:
             - name: Útmutató a migrálást megelőző folyamatokhoz
               href: mongodb-pre-migration.md
+            - name: MongoDB natív eszközei (offline)
+              href: tutorial-mongotools-cosmos-db.md
             - name: Database Migration Service (online)
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Database Migration Service (offline)
@@ -1175,7 +1177,7 @@
         - name: REST erőforrás-szolgáltató
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Gremlin API
@@ -1253,7 +1255,7 @@
         - name: Válaszfejlécek
           href: gremlin-headers.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: REST erőforrás-szolgáltató
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager-sablon
@@ -1339,7 +1341,7 @@
         - name: Python
           href: table-sdk-python.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Table Storage REST API-k
           href: /rest/api/storageservices/table-service-rest-api
 - name: Útmutatók
@@ -1419,7 +1421,7 @@
           href: monitor-cosmos-db.md
         - name: Azure Monitor-metrikák használata
           items:
-            - name: Azure Monitor a Cosmoshoz (előzetes verzió)
+            - name: Cosmos DB Azure Monitor
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Monitorozandó forgatókönyvek
               href: use-metrics.md

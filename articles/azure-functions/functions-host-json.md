@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7ab60fb364eb3268a03c04bb4950251ae030f015
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654812"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374048"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -39,6 +39,7 @@ A (z) 2. x + verzióban található fájlon a következő minta *host.js* minden
         "flushTimeout": "00:00:30"
     },
     "extensions": {
+        "blobs": {},
         "cosmosDb": {},
         "durableTask": {},
         "eventHubs": {},
@@ -153,13 +154,13 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 | Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
-| samplingSettings | n/a | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | n.a. | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Élő metrikák gyűjtésének engedélyezése. |
 | enableDependencyTracking | true | A függőségek követésének engedélyezése. |
 | enablePerformanceCountersCollection | true | Engedélyezi a kudu teljesítményszámlálók gyűjtését. |
 | liveMetricsInitializationDelay | 00:00:15 | Csak belső használatra. |
-| httpAutoCollectionOptions | n/a | Lásd: [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | n/a | Lásd: [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | n.a. | Lásd: [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | n.a. | Lásd: [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
@@ -173,9 +174,9 @@ További információ ezekről a beállításokról: [mintavétel Application In
 | initialSamplingPercentage| 100,0 | A mintavételi folyamat elején alkalmazott kezdeti mintavételezési arány dinamikusan változik a százalékos arányban. Hibakeresés közben ne csökkentse az értéket. |
 | samplingPercentageIncreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a további adatmennyiségek rögzítéséhez. |
 | samplingPercentageDecreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a kevesebb adattal való rögzítéshez. |
-| minSamplingPercentage | 0,1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
+| minSamplingPercentage | 0.1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
 | maxSamplingPercentage | 100,0 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalékot. |
-| movingAverageRatio | 1,0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
+| movingAverageRatio | 1.0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
 | excludedTypes | null | Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak. |
 | includedTypes | null | A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája; az üres lista minden típust magában foglalja. Írja be az `excludedTypes` itt felsorolt felülbírálási típusok listán szereplő típust. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A megadott típusok példányainak mintája; a nem megadott vagy vélelmezett típusú típusok mintavételezés nélkül továbbítódnak. |
 
@@ -216,6 +217,10 @@ A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-
 | thresholdForSnapshotting | 1 | Hányszor Application Insights kell megtekintenie egy kivételt, mielőtt megkéri a pillanatképeket. |
 | uploaderProxy | null | Felülbírálja a pillanatkép-feltöltő folyamat során használt proxykiszolgálót. Előfordulhat, hogy ezt a beállítást kell használnia, ha az alkalmazás egy proxykiszolgálón keresztül csatlakozik az internethez. A Snapshot Collector az alkalmazás folyamatán belül fut, és ugyanazokat a proxybeállításokat fogja használni. A pillanatkép-feltöltő azonban külön folyamatként fut, és előfordulhat, hogy manuálisan kell konfigurálnia a proxykiszolgálót. Ha ez az érték null, a Snapshot Collector megkísérli automatikusan felderíteni a proxy címeit a System .net. Request. DefaultWebProxy és a pillanatkép-feltöltő értékének átadásával. Ha ez az érték nem null, akkor a rendszer nem használja az automatikus észlelést, és az itt megadott proxykiszolgálót fogja használni a pillanatkép-Feltöltőben. |
 
+## <a name="blobs"></a>Blobok
+
+A konfigurációs beállítások a [Storage blob-eseményindítók és-kötések](functions-bindings-storage-blob.md#hostjson-settings)szolgáltatásban találhatók.  
+
 ## <a name="cosmosdb"></a>cosmosDb
 
 A konfigurációs beállítás [Cosmos db eseményindítókban és kötésekben](functions-bindings-cosmosdb-v2-output.md#host-json)található.
@@ -237,9 +242,9 @@ Egyéni kezelő konfigurációs beállításai. További információ: [Azure fu
 
 |Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- |
-| defaultExecutablePath | n/a | A végrehajtható fájl, amely az egyéni kezelői folyamatként indul el. Az egyéni kezelők használata kötelező beállítás, és az értéke a Function alkalmazás gyökeréhez képest relatív. |
+| defaultExecutablePath | n.a. | A végrehajtható fájl, amely az egyéni kezelői folyamatként indul el. Az egyéni kezelők használata kötelező beállítás, és az értéke a Function alkalmazás gyökeréhez képest relatív. |
 | workingDirectory | *function alkalmazás gyökere* | Az a munkakönyvtár, amelyben el kell indítani az egyéni kezelő folyamatát. Ez egy opcionális beállítás, amely értéke a Function alkalmazás gyökeréhez képest relatív. |
-| argumentumok | n/a | Az egyéni kezelői folyamatnak átadandó parancssori argumentumok tömbje. |
+| argumentumok | n.a. | Az egyéni kezelői folyamatnak átadandó parancssori argumentumok tömbje. |
 | enableForwardingHttpRequest | hamis | Ha be van állítva, az összes olyan függvény, amely csak HTTP-triggerből és HTTP-kimenetből áll, a rendszer az egyéni kezelő [kérelmének adattartalma](functions-custom-handlers.md#request-payload)helyett az eredeti http-kérelmet továbbítja. |
 
 ## <a name="durabletask"></a>durableTask
@@ -276,7 +281,7 @@ Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterl
 
 | Csomag típusa | Alapértelmezett (min.) | Maximum (min.) |
 | -- | -- | -- |
-| Felhasználás | 5 | 10 |
+| Használat | 5 | 10 |
 | <sup>1</sup> . prémium | 30 | -1 (nem kötött)<sup>2</sup> |
 | Dedikált (App Service) | 30 | -1 (nem kötött)<sup>2</sup> |
 
@@ -340,9 +345,9 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 |Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők:, `never` `always` `debugOnly` . |
-|Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) a ASP.net Core dokumentációjában. |
-|konzol|n/a| A [konzol](#console) naplózási beállítása. |
-|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
+|Naplózási szint|n.a.|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) a ASP.net Core dokumentációjában. |
+|konzol|n.a.| A [konzol](#console) naplózási beállítása. |
+|applicationInsights|n.a.| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="console"></a>konzol
 
@@ -378,7 +383,7 @@ A felügyelt függőség egy olyan szolgáltatás, amely jelenleg csak PowerShel
 
 ## <a name="queues"></a>üzenetsorok
 
-A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue-output.md#host-json)szolgáltatásban találhatók.  
+A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue.md#host-json)szolgáltatásban találhatók.  
 
 ## <a name="retry"></a>retry
 
@@ -432,7 +437,7 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
 |lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
-|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|n.a.|A zárolási beszerzési kísérletek közötti időköz.| 
 
 ## <a name="version"></a>version
 

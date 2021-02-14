@@ -1,22 +1,18 @@
 ---
 title: Az Adatmásolás növekményes másolása a Change Tracking használatával Azure Portal
 description: Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ban lévő forrás-adatbázis változás-követési információi alapján tölti be a különbözeti adatokat a Azure SQL Database.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 3ea231258f7a60ce90ec119803b5abc8b6e525fe
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 42ca5b2c58568a6b38ed71bcd54badbac603cf16
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510617"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378723"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Adatok növekményes betöltése Azure SQL Databaseból az Azure-ba Blob Storage a Change Tracking Information használatával a Azure Portal
 
@@ -177,7 +173,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 4. Válassza a **V2 (előzetes verzió)** értéket a **verzió** esetén.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** gombra.      
+7. Kattintson a **Létrehozás** lehetőségre.      
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**.
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -470,7 +466,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 6        new     50            1                                 I
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]

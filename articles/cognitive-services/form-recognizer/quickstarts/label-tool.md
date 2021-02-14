@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584719"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364791"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -228,7 +228,7 @@ Kövesse a fenti lépéseket az űrlapok legalább öt megjelöléséhez.
 Opcionálisan megadhatja az egyes címkék várt adattípusát. Nyissa meg a címke jobb oldalán a helyi menüt, és válasszon egy típust a menüből. Ez a funkció lehetővé teszi, hogy az észlelési algoritmus bizonyos feltételezéseket tegyen elérhetővé, amelyek javítják a szöveg-észlelési pontosságot. Azt is biztosítja, hogy a rendszer az észlelt értékeket a végső JSON-kimenet szabványosított formátumában adja vissza. Az érték típusának adatait a rendszer a (z) fájlban lévő *fields.js* menti, a címkézett fájlokkal megegyező elérési úton.
 
 > [!div class="mx-imgBorder"]
-> ![Értéktípus kiválasztása a minta címkézési eszközzel](../media/whats-new/formre-value-type.png)
+> ![Értéktípus kiválasztása a minta címkézési eszközzel](../media/whats-new/value-type.png)
 
 A következő típusú értékek és változatok jelenleg támogatottak:
 * `string`

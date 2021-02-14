@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937671"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515648"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -133,9 +133,6 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 | [Alkalmazás-rendszergazda](../roles/permissions-reference.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | [Cloud Application Administrator](../roles/permissions-reference.md) | Katalógus tulajdonosa |  |  | :heavy_check_mark: |  |
 | User | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akkor, ha az alkalmazás tulajdonosa |  |
-
-> [!NOTE]
-> Ha a felhasználó egy biztonsági csoportot vagy Microsoft 365 csoportot ad hozzá, akkor a csoport nem lehet szerepkörhöz hozzárendelhető. Ha a felhasználó olyan csoportot ad hozzá, amely a hozzáférési csomag létrehozásakor szerepkörhöz rendelhető, akkor a szerepkörhöz hozzárendelhető csoport tulajdonosának is kell lennie. További információ: [a szerepkörhöz hozzárendelhető csoport létrehozása Azure Active Directoryban](../roles/groups-create-eligible.md).
 
 Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../roles/delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 

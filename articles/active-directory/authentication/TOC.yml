@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Ügynök verzióelőzményei
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Ideiglenes hozzáférési pass (előzetes verzió) használata
+      href: howto-authentication-temporary-access-pass.md
     - name: SMS-alapú hitelesítés használata
       href: howto-authentication-sms-signin.md
     - name: E-mail cím bejelentkezésének használata

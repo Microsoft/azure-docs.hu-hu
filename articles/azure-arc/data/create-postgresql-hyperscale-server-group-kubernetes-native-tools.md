@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955246"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384945"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása a Kubernetes Tools használatával
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>A név testreszabása
 
-A sablon "example" értékkel rendelkezik a name attribútumhoz.  Ezt módosíthatja, de a DNS-elnevezési szabványoknak megfelelő karakternek kell lennie.  A titok nevét is módosítania kell, hogy egyezzen.  Ha például megváltoztatja a PostgreSQL nagy kapacitású-kiszolgáló csoport nevét a "postgres1" értékre, akkor a titkos kulcsot a "példa-login-Secret" értékről a "postgres1-login-Secret" névre kell módosítania.
+A sablon "PG1" értékkel rendelkezik a name attribútumhoz.  Ezt módosíthatja, de a DNS-elnevezési szabványoknak megfelelő karakternek kell lennie.  A titok nevét is módosítania kell, hogy egyezzen.  Ha például megváltoztatja a PostgreSQL nagy kapacitású-kiszolgáló csoport nevét a "PG2" értékre, a titkos kulcsot a "PG1-login-Secret" értékről a "PG2-login-Secret" névre kell módosítania.
 
 ### <a name="customizing-the-engine-version"></a>A motor verziójának testreszabása
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 A PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása néhány percet is igénybe vehet. A következő parancsokkal figyelheti a folyamatot egy másik terminál ablakban:
 
 > [!NOTE]
->  Az alábbi parancsok azt feltételezik, hogy létrehozott egy "postgres1" nevű PostgreSQL nagy kapacitású-csoportot, és Kubernetes névteret az "arc" névvel.  Ha más névtér/PostgreSQL nagy kapacitású-kiszolgálócsoport nevét használta, akkor az "arc" és a "postgres1" nevet is használhatja a nevükkel.
+>  Az alábbi parancsok azt feltételezik, hogy létrehozott egy "PG1" nevű PostgreSQL nagy kapacitású-csoportot, és Kubernetes névteret az "arc" névvel.  Ha más névtér/PostgreSQL nagy kapacitású-kiszolgálócsoport nevét használta, akkor az "arc" és a "PG1" nevet is használhatja a nevükkel.
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ Egy adott Pod létrehozási állapotát is megtekintheti egy, az alábbihoz haso
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>A létrehozási problémák elhárítása

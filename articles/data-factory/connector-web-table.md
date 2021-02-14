@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása webes táblából Azure Data Factory használatával
 description: Ismerkedjen meg a Azure Data Factory webtábla-összekötővel, amely lehetővé teszi, hogy egy webtáblából másoljon adatokból a Data Factory által támogatott adattárakba.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab45868afd8d1b7ba1f61f5eaacca283817e6d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410216"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367010"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása webes táblából Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -59,10 +54,10 @@ A webes tábla társított szolgáltatása a következő tulajdonságokat támog
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **web** |Igen |
-| url | A webes forrás URL-címe |Igen |
-| authenticationType | Az engedélyezett érték: **Anonymous**. |Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **web** |Yes |
+| url | A webes forrás URL-címe |Yes |
+| authenticationType | Az engedélyezett érték: **Anonymous**. |Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
 
 **Példa**
 
@@ -87,13 +82,13 @@ A webes tábla társított szolgáltatása a következő tulajdonságokat támog
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a webes tábla adatkészlete által támogatott tulajdonságok listáját tartalmazza.
 
-Ha adatokat szeretne másolni a webtáblából, állítsa be az adatkészlet Type (típus) tulajdonságát a webes **táblázat**értékre. A következő tulajdonságok támogatottak:
+Ha adatokat szeretne másolni a webtáblából, állítsa be az adatkészlet Type (típus) tulajdonságát a webes **táblázat** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Webtable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Webtable** | Yes |
 | path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
-| index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Igen |
+| index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Yes |
 
 **Példa**
 
@@ -121,7 +116,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="web-table-as-source"></a>Webes tábla forrásként
 
-Az adatok webtáblából való másolásához a másolási tevékenységben állítsa be a forrás típusát a **Websource**értékre, a további tulajdonságok nem támogatottak.
+Az adatok webtáblából való másolásához a másolási tevékenységben állítsa be a forrás típusát a **Websource** értékre, a további tulajdonságok nem támogatottak.
 
 **Példa**
 
@@ -162,12 +157,12 @@ Egy olyan tábla indexének lekéréséhez, amelyet az [adatkészlet tulajdonsá
 2. Kattintson a **New Query (új lekérdezés** ) elemre az eszköztáron, mutasson a **más forrásokból** lehetőségre, és kattintson **a from web**
 
     ![Power Query menü](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON-ban kíván használni (például: az https://en.wikipedia.org/wiki/) adatkészlethez megadott elérési ÚTTAL együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK**gombra.
+3. A **from web (webes** verzió) párbeszédpanelen adja meg az **URL-címet** , amelyet a társított szolgáltatás JSON-ban kíván használni (például: az https://en.wikipedia.org/wiki/) adatkészlethez megadott elérési ÚTTAL együtt (például: AFI% 27s_100_Years... 100_Movies), majd kattintson **az OK** gombra.
 
     ![Webes párbeszédpanelen](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
     Az ebben a példában használt URL-cím: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Ha a **webes tartalom elérése** párbeszédpanel jelenik meg, válassza ki a **megfelelő URL-címet**, a **hitelesítést**, majd kattintson a **Kapcsolódás**elemre.
+4. Ha a **webes tartalom elérése** párbeszédpanel jelenik meg, válassza ki a **megfelelő URL-címet**, a **hitelesítést**, majd kattintson a **Kapcsolódás** elemre.
 
    ![Hozzáférés a webes tartalomhoz párbeszédpanel](./media/copy-data-from-web-table/AccessWebContentDialog.png)
 5. Kattintson a fanézetben **a táblázat elemre** a tartalom megjelenítéséhez, majd kattintson a lap alján található **Szerkesztés** gombra.  
@@ -187,5 +182,5 @@ Ha az Excel 2013-et használja, az index beszerzéséhez használja a [Excelhez 
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

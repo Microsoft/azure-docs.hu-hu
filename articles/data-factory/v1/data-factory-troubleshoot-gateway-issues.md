@@ -1,22 +1,18 @@
 ---
 title: Az átjáróval kapcsolatos problémák elhárítása adatkezelés
 description: Tippeket nyújt adatkezelés átjáróval kapcsolatos problémák elhárításához.
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896565"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388345"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk a adatkezelés átjáró használatával kapcsolatos hibaelhárítási problémákkal kapcsolatos információkat tartalmaz.
@@ -99,7 +95,7 @@ Ha a telepítés folyamatban van/a legfrissebb, és az átjáró továbbra is l�
 ### <a name="6-problem"></a>6. probléma
 Az átjáró regisztrálásakor a következő hibaüzenet jelenhet meg:
 
-`Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
+`Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
 ![Az átjáró kulcsa érvénytelen vagy üres](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
@@ -167,7 +163,7 @@ Az átjáró nem tud csatlakozni a felhőalapú szolgáltatáshoz Service Buson 
 #### <a name="resolution"></a>Feloldás
 Kövesse az alábbi lépéseket az átjáró újbóli letöltéséhez:
 
-1. Engedélyezze az IP-címek kimenő szabályait az átjárót és a vállalati tűzfalat. Az IP-címek a Windows-eseménynaplóból (azonosító = = 401) találhatók: kísérlet történt egy szoftvercsatorna elérésére olyan módon, hogy a hozzáférési engedélyeik XX-ös verziójában tiltottak. XX. XX. XX: 9350.
+1. Engedélyezze az IP-címek kimenő szabályait az átjárót és a vállalati tűzfalat. Az IP-címek a Windows-eseménynaplóból (azonosító = = 401) találhatók: kísérlet történt egy szoftvercsatorna elérésére olyan módon, hogy az a hozzáférési engedélyeivel (XX. XX. XX. XX: 9350) tiltott.
 1. Konfigurálja a proxybeállításokat az átjárón. A részletekért tekintse meg a proxykiszolgáló szempontjait ismertető szakaszt.
 1. Engedélyezze a 5671-es és a 9350-9354-as kimenő portokat az átjárót és a vállalati tűzfalat is a Windows tűzfalon. A részletekért tekintse meg a portok és a tűzfal szakaszt. Ez a lépés nem kötelező, de javasoljuk, hogy a teljesítmény szempontjából megfontolandó legyen.
 
@@ -278,7 +274,7 @@ Kattintson az **archív átjáró naplói** hivatkozásra az archiváláshoz és
 ### <a name="locate-gateway-logs"></a>Átjáró naplófájljainak megkeresése
 Az átjárókkal kapcsolatos részletes információkat a Windows-eseménynaplókban találja.
 
-1. Indítsa el a Windows **Eseménynapló** .
+1. Indítsa el a Windows **Eseménynapló**.
 2. Keresse meg a naplókat az **alkalmazás és szolgáltatások naplók**  >  **adatkezelés átjáró** mappájában.
 
    Az átjárókkal kapcsolatos problémák elhárításakor keresse meg a hiba szintű eseményeket az eseménynaplóban.

@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): a klasszikus webszolgáltatás újratanítása �
 description: Megtudhatja, hogyan lehet áttanítani a modelleket, és hogyan frissíthet egy klasszikus webszolgáltatást, hogy az újonnan betanított modellt használja Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325787"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517569"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasszikus Studio-webszolgáltatás újratanítása és üzembe helyezése
 
-**a következőkre vonatkozik:** ![ Zöld pipa. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ X, amely nem. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ Zöld pipa. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ X, amely nem.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A gépi tanulási modellek átképzésének egyik módja annak biztosítása, hogy pontosak maradjanak, és a rendelkezésre álló legfontosabb információk alapján. Ez a cikk bemutatja, hogyan végezheti el a klasszikus Studio (klasszikus) webszolgáltatás újratanítását. Az új Studio (klasszikus) webszolgáltatás újratanításával kapcsolatos útmutatóért [tekintse meg ezt a cikket.](retrain-machine-learning-model.md)
@@ -76,7 +76,7 @@ A javítás súgója lapon a használni kívánt PATCH URL-cím szerepel, és a 
 
 Most már a betanított modellt is használhatja a korábban létrehozott pontozási végpont frissítéséhez.
 
-Az alábbi mintakód bemutatja, hogyan használhatja a *BaseLocation* , a *RelativeLocation* , a *SasBlobToken* és a patch URL-címet a végpont frissítéséhez.
+Az alábbi mintakód bemutatja, hogyan használhatja a *BaseLocation*, a *RelativeLocation*, a *SasBlobToken* és a patch URL-címet a végpont frissítéséhez.
 
 ```csharp
 private async Task OverwriteModel()

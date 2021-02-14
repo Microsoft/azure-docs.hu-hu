@@ -1,23 +1,18 @@
 ---
 title: Az adatküldés a keresési indexbe Data Factory használatával
 description: Útmutató az Azure Cognitive Search indexbe történő adatküldéshez Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0226ab75d53733b94a9ae5734b42b7340998759c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194920"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379267"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Az adatküldés Azure Cognitive Search indexbe Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -37,9 +32,9 @@ Adatkezelés átjáró biztonságos és felügyelt módon csatlakoztatja a helys
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával küldi el az adatok egy forrás adattárból a keresési indexbe történő küldését.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -57,9 +52,9 @@ Az alábbi táblázat az Azure Cognitive Search társított szolgáltatáshoz ta
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch**. | Igen |
-| url | A keresési szolgáltatás URL-címe. | Igen |
-| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch**. | Yes |
+| url | A keresési szolgáltatás URL-címe. | Yes |
+| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -67,8 +62,8 @@ Az adatkészletek definiálásához elérhető csoportok és tulajdonságok telj
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| típus | A Type tulajdonságot **AzureSearchIndex**értékre kell beállítani.| Igen |
-| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
+| típus | A Type tulajdonságot **AzureSearchIndex** értékre kell beállítani.| Yes |
+| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Yes |
 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -78,8 +73,8 @@ Másolási tevékenység esetén, ha a fogadó típusa **AzureSearchIndexSink**,
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
-| WriteBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) . | 1 – 1 000. Az alapértelmezett érték a 1000. | Nem |
+| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| No |
+| WriteBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) . | 1 – 1 000. Az alapértelmezett érték a 1000. | No |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 AzureSearchSink upsert az adatírás során. Más szóval, amikor egy dokumentum írásakor a dokumentum kulcsa már létezik a keresési indexben, az Azure Cognitive Search frissíti a meglévő dokumentumot ahelyett, hogy ütközést kellene eldobnia.
@@ -99,12 +94,12 @@ A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípu
 
 | Az Azure Cognitive Search adattípusa | Az Azure Cognitive Search fogadóban támogatott |
 | ---------------------- | ------------------------------ |
-| Sztring | I |
-| Int32 | I |
-| Int64 | I |
-| Dupla | I |
-| Logikai | I |
-| DataTimeOffset | I |
+| Sztring | Y |
+| Int32 | Y |
+| Int64 | Y |
+| Dupla | Y |
+| Logikai | Y |
+| DataTimeOffset | Y |
 | Karakterlánc-tömb | N |
 | Geographypoint adattípuson | N |
 
@@ -185,7 +180,7 @@ A "külső": "true" beállítás azt tájékoztatja, Data Factory szolgáltatás
 
 **Azure Cognitive Search kimeneti adatkészlet:**
 
-A minta a **Products**nevű Azure Cognitive Search indexbe másolja az adatmásolt fájlokat. Data Factory nem hozza létre az indexet. A minta teszteléséhez hozzon létre egy indexet ezzel a névvel. Hozza létre a keresési indexet ugyanazzal a számú oszloppal, mint a bemeneti adatkészletben. Az új bejegyzések minden órában hozzáadódnak a keresési indexhez.
+A minta a **Products** nevű Azure Cognitive Search indexbe másolja az adatmásolt fájlokat. Data Factory nem hozza létre az indexet. A minta teszteléséhez hozzon létre egy indexet ezzel a névvel. Hozza létre a keresési indexet ugyanazzal a számú oszloppal, mint a bemeneti adatkészletben. Az új bejegyzések minden órában hozzáadódnak a keresési indexhez.
 
 ```JSON
 {
@@ -290,7 +285,7 @@ A másolási tevékenység definíciójában a forrás adatkészletből származ
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 A [másolási tevékenység teljesítményének és hangolásának útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés teljesítményére (másolási tevékenység) és az optimalizálás különféle módjaira.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 * A [másolási](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) tevékenységről szóló oktatóanyag részletesen ismerteti a folyamat másolási tevékenységgel történő létrehozását.

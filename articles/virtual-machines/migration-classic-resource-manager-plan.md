@@ -1,22 +1,22 @@
 ---
 title: A klasszikusról Azure Resource Managerre való Migrálás megtervezése
-description: Ebből a cikkből megtudhatja, hogyan tervezheti meg a IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítését Linux rendszeren.
-services: virtual-machines-linux
+description: Ebből a cikkből megtudhatja, hogyan tervezheti meg a IaaS-erőforrások áttelepítését a klasszikusról Azure Resource Managerra.
+services: virtual-machines
 author: tanmaygore
 manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 271a20c5c9b6e157343246afb79f40894fe8a097
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c29ca5f51e59775479fa5e97e88b28dba110d866
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904701"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366075"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésének megtervezése Linux rendszeren
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése
 
 > [!IMPORTANT]
 > Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](classic-vm-deprecation.md#how-does-this-affect-me).
@@ -153,7 +153,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
 - Ne használja a parancsikonokat, és hagyja ki a száraz futtatások ellenőrzése/előkészítése/megszakítása műveleteit.
 - A lehetséges problémák többsége az érvényesítési/előkészítési/megszakítási lépések során felszínre kerül.
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technikai megfontolások és kompromisszumok
 

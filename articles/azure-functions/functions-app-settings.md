@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881923"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378298"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -19,7 +19,7 @@ A Function alkalmazásban az Alkalmazásbeállítások olyan globális konfigur�
 Más globális konfigurációs beállítások is találhatók a fájl [host.jsjában](functions-host-json.md) , a fájl [local.settings.js](functions-run-local.md#local-settings-file) pedig a fájlban.
 
 > [!NOTE]  
-> Az Alkalmazásbeállítások segítségével felülbírálhatja host.jsbeállításait, anélkül, hogy módosítania kellene a host.jsa fájlon. Ez olyan esetekben hasznos, amikor egy adott környezet beállításain egy adott host.jskell konfigurálnia vagy módosítania. Ez a beállítás azt is lehetővé teszi, hogy a projekt újbóli közzététele nélkül módosítsa host.jsbeállításait. További tudnivalókat ahost.jscímű [ cikkben](functions-host-json.md#override-hostjson-values)talál.  
+> Az Alkalmazásbeállítások segítségével felülbírálhatja host.jsbeállításait, anélkül, hogy módosítania kellene a host.jsa fájlon. Ez olyan esetekben hasznos, amikor egy adott környezet beállításain egy adott host.jskell konfigurálnia vagy módosítania. Ez a beállítás azt is lehetővé teszi, hogy a projekt újbóli közzététele nélkül módosítsa host.jsbeállításait. További tudnivalókat ahost.jscímű [ cikkben](functions-host-json.md#override-hostjson-values)talál. A Function app-beállítások módosítása megköveteli a Function alkalmazás újraindítását.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -213,7 +213,7 @@ A beállítás értéke a Python-alkalmazások egyéni csomag-indexelési URL-c�
 
 További információ: [Egyéni függőségek](functions-reference-python.md#remote-build-with-extra-index-url) a Python fejlesztői referenciában.
 
-## <a name="scale_controller_logging_enable"></a>SKÁLÁZÁSi \_ vezérlő \_ naplózásának \_ engedélyezése
+## <a name="scale_controller_logging_enabled"></a>SKÁLÁZÁSi \_ vezérlő \_ naplózása \_ engedélyezve
 
 _Ez a beállítás jelenleg előzetes verzióban érhető el._  
 
@@ -221,7 +221,7 @@ Ezzel a beállítással szabályozható a Azure Functions skálázási vezérlő
 
 |Kulcs|Mintaérték|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights: részletes|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights: részletes|
 
 A kulcs értéke a következő formátumban van megadva `<DESTINATION>:<VERBOSITY>` :
 
@@ -235,7 +235,7 @@ A Storage-fiókhoz tartozó kapcsolati karakterlánc, amelyben a Function app-k�
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [név]; AccountKey = [kulcs]|
 
-Csak Windows rendszeren futó fogyasztási vagy prémium csomagok telepítésekor használatos. Linux esetében nem támogatott. A beállítás módosítása vagy eltávolítása miatt előfordulhat, hogy a Function alkalmazás nem indul el. További információt [ebben a hibaelhárítási cikkben](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)talál. 
+Csak Prémium csomag telepítésekor vagy Windows rendszeren futó használati tervhez használatos. A Linux rendszerű fogyasztási csomagok esetében nem támogatott. A beállítás módosítása vagy eltávolítása miatt előfordulhat, hogy a Function alkalmazás nem indul el. További információt [ebben a hibaelhárítási cikkben](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)talál. 
 
 ## <a name="website_contentovervnet"></a>WEBHELY \_ CONTENTOVERVNET
 
@@ -253,7 +253,7 @@ A függvény alkalmazás kódjának és konfigurációjának elérési útja egy
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-Csak a Windows rendszeren futó fogyasztási vagy prémium szintű alkalmazásokban használja. Linux esetében nem támogatott. A beállítás módosítása vagy eltávolítása miatt előfordulhat, hogy a Function alkalmazás nem indul el. További információt [ebben a hibaelhárítási cikkben](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)talál.
+Csak Prémium csomag telepítésekor vagy Windows rendszeren futó használati tervhez használatos. A Linux rendszerű fogyasztási csomagok esetében nem támogatott. A beállítás módosítása vagy eltávolítása miatt előfordulhat, hogy a Function alkalmazás nem indul el. További információt [ebben a hibaelhárítási cikkben](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)talál.
 
 Amikor az üzembe helyezés során egy Azure Resource Manager használatával hoz létre egy Function-alkalmazást, a sablonban ne szerepeljenek WEBSITE_CONTENTSHARE. Ez az Alkalmazásbeállítás a telepítés során jön létre. További információ: az [erőforrás-telepítés automatizálása a Function alkalmazáshoz](functions-infrastructure-as-code.md#windows).   
 
@@ -298,7 +298,7 @@ Lehetővé teszi a Function alkalmazás időzónájának beállítását.
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 

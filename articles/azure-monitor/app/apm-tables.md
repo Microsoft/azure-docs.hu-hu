@@ -3,14 +3,14 @@ title: Azure Monitor Application Insights munkaterület-alapú erőforrás-sém�
 description: Ismerkedjen meg a Azure Monitor Application Insights munkaterület-alapú erőforrások új táblázatos struktúrájával és sémájával.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931053"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385965"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Munkaterület-alapú erőforrás-változások (előzetes verzió)
+# <a name="workspace-based-resource-changes"></a>Munkaterület-alapú erőforrás-változások
 
 A [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)bevezetését megelőzően Application Insights az adatok a Azure monitor egyéb naplófájljaitól elkülönítve vannak tárolva. Mindkettő az Azure Adatkezelőon alapul, és ugyanazt a Kusto lekérdezési nyelvet (KQL) használja. Ezt a [Azure monitor naplóiban](../platform/data-platform-logs.md)ismertetjük.
 
@@ -18,7 +18,7 @@ A munkaterületen alapuló Application Insights erőforrás-adathalmazok egy Log
 
 ## <a name="table-structure"></a>Táblastruktúra
 
-| Örökölt tábla neve | Új tábla neve | Leírás |
+| Örökölt tábla neve | Új táblanév | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  A rendelkezésre állási tesztek összesített adatai.|
 | browserTimings | AppBrowserTimings | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő.|
@@ -66,7 +66,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemType|sztring|Típus|Sztring|
 |location|sztring|Hely|sztring|
 |message|sztring|Üzenet|sztring|
-|name|sztring|Name (Név)|sztring|
+|name|sztring|Name|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -75,7 +75,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |sdkVersion|sztring|SdkVersion|sztring|
 |session_Id|sztring|SessionId|sztring|
 |size|valós szám|Méret|valós szám|
-|sikeres|sztring|Success|Logikai|
+|sikeres|sztring|Siker|Logikai|
 |időbélyeg|dátum/idő|TimeGenerated|dátum/idő|
 |user_AccountId|sztring|UserAccountId|sztring|
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
@@ -106,7 +106,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Name (Név)|dátum/idő|
+|name|sztring|Name|dátum/idő|
 |networkDuration|valós szám|NetworkDurationMs|valós szám|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
@@ -153,7 +153,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|Sztring|
-|name|sztring|Name (Név)|sztring|
+|name|sztring|Name|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -162,7 +162,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |resultCode|sztring|ResultCode|sztring|
 |sdkVersion|sztring|SdkVersion|sztring|
 |session_Id|sztring|SessionId|sztring|
-|sikeres|sztring|Success|Logikai|
+|sikeres|sztring|Siker|Logikai|
 |cél|sztring|Cél|sztring|
 |időbélyeg|dátum/idő|TimeGenerated|dátum/idő|
 |típus|sztring|DependencyType|sztring|
@@ -195,7 +195,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Name (Név)|sztring|
+|name|sztring|Name|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -230,7 +230,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Name (Név)|sztring|
+|name|sztring|Name|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -275,7 +275,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|Sztring|
-|name|sztring|Name (Név)|sztring|
+|name|sztring|Name|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -315,7 +315,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |például|sztring|Példány|sztring|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Name (Név)|sztring|
+|name|sztring|Name|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -355,7 +355,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|Sztring|
-|name|sztring|Name (Név)|Sztring|
+|name|sztring|Name|Sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -365,7 +365,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |sdkVersion|sztring|SdkVersion|sztring|
 |session_Id|sztring|SessionId|sztring|
 |source|sztring|Forrás|Sztring|
-|sikeres|sztring|Success|Logikai|
+|sikeres|sztring|Siker|Logikai|
 |időbélyeg|dátum/idő|TimeGenerated|dátum/idő|
 |url|sztring|URL-cím|Sztring|
 |user_AccountId|sztring|UserAccountId|sztring|
@@ -405,7 +405,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
 |message|sztring|Üzenet|sztring|
-|method|sztring|Módszer|sztring|
+|method|sztring|Metódus|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|

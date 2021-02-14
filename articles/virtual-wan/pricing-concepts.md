@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905536"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517688"
 ---
 # <a name="about-virtual-wan-pricing"></a>A Virtual WAN díjszabása
 
@@ -23,8 +23,7 @@ Az Azure Virtual WAN több hálózati és biztonsági szolgáltatást is tartalm
 A virtuális WAN minden szolgáltatása díjszabás szerint történik. Ezért arra utal, hogy egyetlen díj nem alkalmazható a virtuális WAN-ra. Az [Azure díjszabási kalkulátora](https://azure.microsoft.com/pricing/calculator/) egy mechanizmust biztosít a költség kinyeréséhez, amely a virtuális WAN-ban kiépített szolgáltatásokon alapul. Ez a cikk a virtuális WAN díjszabásával kapcsolatos gyakori kérdéseket tárgyalja.
 
 >[!NOTE]
->A jelenlegi díjszabási információkért lásd: [virtuális WAN díjszabása](https://azure.microsoft.com/pricing/details/virtual-wan/).
->
+>A jelenlegi díjszabási információkért lásd: [virtuális WAN díjszabása](https://azure.microsoft.com/pricing/details/virtual-wan/). Az Inter-hub (hub – hub) díjak nem jelennek meg a virtuális WAN díjszabási oldalán, mivel a Inter-Region (a kontinensen belüli/kontinentális) díjak [Azure-adatátviteli díjakra](https://azure.microsoft.com/pricing/details/bandwidth/)vonatkoznak.
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>Gyakori díjszabási kérdések
 

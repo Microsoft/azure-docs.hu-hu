@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cc17a66aceb6ab3eba9a18f8f07902822f4c81bb
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937661"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516515"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Korlátok Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -66,7 +66,14 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 
 - A fő adatbázismotor-verziók közötti automatikus áttelepítés jelenleg nem támogatott. Ha a következő főverzióra szeretne frissíteni, hozzon létre egy [memóriaképet, és állítsa vissza](../howto-migrate-using-dump-and-restore.md) egy olyan kiszolgálóra, amely az új motor verziójával lett létrehozva.
 
-### <a name="networking"></a>Hálózat
+### <a name="storage"></a>Tárolás
+
+- A konfigurálást követően a tárterület mérete nem csökkenthető.
+- Jelenleg a Storage automatikus növekedés funkciója nem érhető el. Figyelje a használatot, és növelje a tárterületet magasabb méretre. 
+- Ha a tárterület-használat eléri a 95%-ot, vagy ha a rendelkezésre álló kapacitás kevesebb, mint 5 GiB, a kiszolgáló automatikusan **írásvédett módra** vált, így elkerülhetők a lemezek teljes helyzetével kapcsolatos hibák. 
+- Javasoljuk, hogy a riasztási szabályokat állítsa be, `storage used` vagy `storage percent` ha azok túllépik az egyes küszöbértékeket, így proaktív módon végezhet műveleteket, például növelheti a tárterület méretét. Beállíthat például egy riasztást, ha a tárolási százalék meghaladja a 80%-os kihasználtságot.
+  
+### <a name="networking"></a>Hálózatkezelés
 
 - A VNET-ben és a-ban való áthelyezés jelenleg nem támogatott.
 - A nyilvános hozzáférésnek a VNET belüli üzembe helyezésével való kombinálása jelenleg nem támogatott.

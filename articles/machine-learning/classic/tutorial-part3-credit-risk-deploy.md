@@ -6,15 +6,15 @@ author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503918"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517382"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
 
@@ -48,12 +48,12 @@ Fejezze be [az oktatóanyag második részét](tutorial-part2-credit-risk-train.
 ## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
 Annak érdekében, hogy a jelen oktatóanyagban fejlesztett prediktív modellt az Azure-ban, webszolgáltatásként is üzembe helyezheti.
 
-Ez a pont már kísérletezett a modell betanításával. Az üzembe helyezett szolgáltatás azonban már nem fog képzést végezni – az új előrejelzések létrehozásához a modellen alapuló felhasználó bemenetét kell megmutatnia. Ezért elvégezünk némi felkészülést, hogy a kísérletet a ***betanítási** _ kísérletből egy _*_prediktív_*_ kísérletre alakítsa át. 
+Ez a pont már kísérletezett a modell betanításával. Az üzembe helyezett szolgáltatás azonban már nem fog képzést végezni – az új előrejelzések létrehozásához a modellen alapuló felhasználó bemenetét kell megmutatnia. Ezért elvégezünk némi felkészülést, hogy a kísérletet a ***betanítási** _ kísérletből egy _ *_prediktív_** kísérletre konvertáljuk. 
 
 Az üzembe helyezés előkészítése egy három lépésből álló folyamat:  
 
 1. Az egyik modell eltávolítása
-1. A létrehozott _training-kísérlet átalakítása *prediktív kísérletbe*
+1. A létrehozott *betanítási kísérlet* átalakítása *prediktív kísérletbe*
 1. A prediktív kísérlet webszolgáltatásként való üzembe helyezése
 
 ### <a name="remove-one-of-the-models"></a>Az egyik modell eltávolítása

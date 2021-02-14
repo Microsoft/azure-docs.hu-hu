@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979433"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367197"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
@@ -91,9 +91,12 @@ Ha problémába ütközik az előfizetések átadása során, az alábbi hibaelh
 
 ### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Az eredeti Azure-előfizetés számlázási tulajdonosa elhagyja a szervezetét
 
-Lehetséges, hogy az eredeti számlázási tulajdonos, aki létrehozta az Azure-fiókot és az Azure-előfizetést, elhagyja a szervezetét. Ha ez a helyzet történik, akkor a felhasználói identitásuk már nem szerepel a szervezet Azure Active Directoryján. Az Azure-előfizetéshez nem tartozik számlázási tulajdonos. Ez a helyzet megakadályozza, hogy bárki elvégezzen számlázási műveleteket a fiókban, beleértve a megtekintést és a számlák kifizetését. Az előfizetés korábban esedékes állapotba kerülhet. Végül az előfizetés nem fizetés miatt letiltható. Végső soron az előfizetés törölhető, és az előfizetésen futó összes szolgáltatásra hatással lenne.
+> [!Note]
+> Ez a szakasz kifejezetten egy Microsoft-ügyfél szerződés számlázási fiókjára vonatkozik. Ellenőrizze, hogy van-e hozzáférése [Microsoft-ügyfél szerződéshez](mca-request-billing-ownership.md#check-for-access).
 
-Ha egy előfizetés már nem rendelkezik érvényes számlázási tulajdonossal, az Azure e-mailt küld a többi számlázási tulajdonosnak, a szolgáltatás-rendszergazdáknak, a társ-rendszergazdáknak és az előfizetés tulajdonosainak, és az előfizetés számlázási tulajdonjogának elfogadására szolgáló hivatkozást biztosít számukra. Bármelyik felhasználó kiválaszthatja a számlázási tulajdonjog elfogadására szolgáló hivatkozást. A számlázási szerepkörökkel kapcsolatos további információkért tekintse meg a [Számlázási szerepkörök](understand-mca-roles.md) és a [klasszikus szerepkörök és az Azure RBAC szerepkörei](../../role-based-access-control/rbac-and-directory-admin-roles.md)című témakört.
+Lehetséges, hogy az eredeti számlázási fiók tulajdonosa, aki létrehozta az Azure-fiókot és az Azure-előfizetést, elhagyja a szervezetét. Ha ez a helyzet történik, akkor a felhasználói identitásuk már nem szerepel a szervezet Azure Active Directoryján. Az Azure-előfizetéshez nem tartozik számlázási tulajdonos. Ez a helyzet megakadályozza, hogy bárki elvégezzen számlázási műveleteket a fiókban, beleértve a megtekintést és a számlák kifizetését. Az előfizetés korábban esedékes állapotba kerülhet. Végül az előfizetés nem fizetés miatt letiltható. Végső soron az előfizetés törölhető, és az előfizetésen futó összes szolgáltatásra hatással lenne.
+
+Ha egy előfizetés már nem rendelkezik érvényes számlázási fiók tulajdonosával, az Azure e-mailt küld a számlázási fiókok más tulajdonosainak, a szolgáltatás rendszergazdáinak (ha vannak ilyenek), Co-Administrators (ha van), és az előfizetés tulajdonosai tájékoztatják őket a helyzetről, és egy hivatkozást biztosítanak az előfizetés számlázási tulajdonjogának elfogadására. Bármelyik felhasználó kiválaszthatja a számlázási tulajdonjog elfogadására szolgáló hivatkozást. A számlázási szerepkörökkel kapcsolatos további információkért tekintse meg a [Számlázási szerepkörök](understand-mca-roles.md) és a [klasszikus szerepkörök és az Azure RBAC szerepkörei](../../role-based-access-control/rbac-and-directory-admin-roles.md)című témakört.
 
 Íme egy példa arra, hogy az e-mail hogyan néz ki.
 

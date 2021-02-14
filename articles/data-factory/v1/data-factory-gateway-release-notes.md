@@ -1,22 +1,18 @@
 ---
 title: Az adatkezelési átjáró kibocsátási megjegyzései
 description: adatkezelés Gateway Tory kibocsátási megjegyzései
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001626"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363916"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Az adatkezelési átjáró kibocsátási megjegyzései
 > [!NOTE]
@@ -46,12 +42,12 @@ A kibocsátási megjegyzések itt nem állnak fenn. A legújabb [kibocsátási m
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Fejlesztések
--   Hozzáadhat olyan DNS-bejegyzéseket, amelyek lehetővé teszik Service Bus használatát, és nem engedélyezi az összes Azure-beli IP-címet a tűzfalról (ha szükséges). További részletek.
--   Mostantól akár 4,75 TB-ig is másolhatja az adatait egy blokkos blobba, amely a blokkolt Blobok maximálisan támogatott mérete. (korábbi korlát: 195 GB).
--   Kijavítva: kevés a memória-probléma, miközben a másolási tevékenység során több kis fájlt is kicsomagolta.
--   Kijavítva: az index tartományon kívüli probléma a Document DB-ről SQL Server a idempotencia szolgáltatással való másoláskor.
--   Kijavítva: az SQL-karbantartási parancsfájl nem működik SQL Server a másolás varázslóval.
--   Javítva: az oszlop neve, amelynek a végén található a helye, nem működik a másolási tevékenységben.
+-    Hozzáadhat olyan DNS-bejegyzéseket, amelyek lehetővé teszik Service Bus használatát, és nem engedélyezi az összes Azure-beli IP-címet a tűzfalról (ha szükséges). További részletek.
+-    Mostantól akár 4,75 TB-ig is másolhatja az adatait egy blokkos blobba, amely a blokkolt Blobok maximálisan támogatott mérete. (korábbi korlát: 195 GB).
+-    Kijavítva: kevés a memória-probléma, miközben a másolási tevékenység során több kis fájlt is kicsomagolta.
+-    Kijavítva: az index tartományon kívüli probléma a Document DB-ről SQL Server a idempotencia szolgáltatással való másoláskor.
+-    Kijavítva: az SQL-karbantartási parancsfájl nem működik SQL Server a másolás varázslóval.
+-    Javítva: az oszlop neve, amelynek a végén található a helye, nem működik a másolási tevékenységben.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Fejlesztések

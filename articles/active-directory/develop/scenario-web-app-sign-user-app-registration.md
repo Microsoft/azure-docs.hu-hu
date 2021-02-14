@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937883"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103192"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -42,7 +42,7 @@ Ezeket a hivatkozásokat használhatja a webalkalmazás létrehozásához:
 > A használni kívánt portál eltérő lehet attól függően, hogy az alkalmazás a Microsoft Azure nyilvános felhőben, vagy egy nemzeti vagy szuverén felhőben fut-e. További információ: [National felhők](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>. 
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -92,7 +92,7 @@ Alapértelmezés szerint a minta a következőket használja:
 
    1. Adja meg a kulcs leírását.
    1. Válassza ki a kulcs időtartamát **1 évben**.
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
    1. Ha a kulcs értéke megjelenik, másolja később. Ez az érték nem jelenik meg újra, vagy bármilyen más módon lekérdezhető.
 
 # <a name="python"></a>[Python](#tab/python)
@@ -107,7 +107,7 @@ Alapértelmezés szerint a minta a következőket használja:
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet, majd a következőket:
    1. Adja meg a kulcs leírását.
    1. Adja **meg az 1 év** kulcsának időtartamát.
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
    1. Ha a kulcs értéke megjelenik, másolja. Erre később még szüksége lesz.
 ---
 

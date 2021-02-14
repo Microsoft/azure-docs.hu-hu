@@ -1,19 +1,17 @@
 ---
 title: Azure SQL Database táblák migrálása az Azure CosmosDB-be Azure Data Factory
 description: Készítsen egy meglévő normalizált adatbázis-sémát a Azure SQL Databaseból, és telepítse át az Azure-CosmosDB denormalizált tárolóba Azure Data Factory használatával.
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383942"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Normalizált adatbázisséma migrálása Azure SQL Database-ből denormalizált Azure Cosmos DB-tárolóba
 

@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): megtekintheti & újrafuttatási kísérleteit �
 description: A kísérletek kezelése Azure Machine Learning Studio (klasszikus) folyamatban van. A kísérletek korábbi futtatásait bármikor áttekintheti, hogy megtámadja, újra felkeresse és végső soron megerősítse vagy pontosítsa a korábbi feltételezéseket.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: c958de5e49fbb7519ae71b13e9deba9af0c698de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 419a696da1244afab7aa03cd8c4521ea819a5298
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312879"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515954"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>A kísérletek kezelése Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A prediktív elemzési modell kialakítása egy iterációs folyamat – ahogy módosítja a kísérlet különböző funkcióit és paramétereit, az eredmények konvergálnak, amíg nem meggyőződött arról, hogy Ön rendelkezik egy betanított, hatékony modellel. A folyamat kulcsa a kísérlet paramétereinek és konfigurációinak különböző ismétléseit követi nyomon.
@@ -42,7 +42,7 @@ Tegyük fel például, hogy létrehoz egy kísérletet a [lineáris regressziós
 
 | Tanulási arány értéke | Futtatás kezdő időpontja |
 | --- | --- |
-| 0,1 |9/11/2014 4:18:58 PM |
+| 0.1 |9/11/2014 4:18:58 PM |
 | 0,2 |9/11/2014 4:24:33 PM |
 | 0,4 |9/11/2014 4:28:36 PM |
 | 0,5 |9/11/2014 4:33:31 PM |
