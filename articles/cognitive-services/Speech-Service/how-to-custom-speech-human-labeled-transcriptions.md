@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 85f239afd1b9263440abff1f924c12cdb7eeadaa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: db3d8f4424f59d8432221753af776a5b55859882
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560288"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388855"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
@@ -24,7 +24,12 @@ Ha szeretné javítani az elismerés pontosságát, különösen azokat a probl�
 Az elismerés javításához nagy minta szükséges az átírási adatgyűjtéshez, javasoljuk, hogy 10 és 20 órányi átírást adjon meg. Ezen az oldalon áttekintjük a kiváló minőségű átírások létrehozásához kialakított irányelveket. Ez az útmutató területi beállítással van elválasztva, és az angol, a mandarin kínai és a német nyelvű szakaszt is tartalmazza.
 
 > [!NOTE]
-> Nem minden alapmodell támogatja a hangfájlok testreszabását. Ha egy alapmodell nem támogatja azt, akkor a képzés a kapcsolódó szöveggel megegyező módon fogja használni a beírások szövegét.
+> Nem minden alapmodell támogatja a hangfájlok testreszabását. Ha egy alapmodell nem támogatja azt, akkor a képzés a kapcsolódó szöveggel megegyező módon fogja használni a beírások szövegét. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.
+
+> [!NOTE]
+> Abban az esetben, ha megváltoztatja a betanításhoz használt alapmodellt, és a betanítási adatkészletben van hang, *mindig* győződjön meg arról, hogy az új kiválasztott alapmodell támogatja-e a [hangadatokkal való képzést](language-support.md#speech-to-text). Ha a korábban használt alapmodell nem támogatja a hangadatokkal való betanítást, és a betanítási adatkészlet hang-és betanítási időt tartalmaz, az új alapmodellel **jelentősen** növekedni fog, és könnyen elvégezhető több óra és több nap között. Ez különösen akkor igaz, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardvert](custom-speech-overview.md#set-up-your-azure-account) betanítják.
+>
+> Ha a fenti bekezdésben ismertetett probléma merül fel, gyorsan csökkentheti a betanítási időt, ha csökkenti az adatkészletben lévő hang mennyiségét, vagy teljesen eltávolítja, és csak a szöveget hagyja. Az utóbbi lehetőség kifejezetten ajánlott, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardver](custom-speech-overview.md#set-up-your-azure-account) betanítása történik.
 
 ## <a name="us-english-en-us"></a>USA angol (en-US)
 

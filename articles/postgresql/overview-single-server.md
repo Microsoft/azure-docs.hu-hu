@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 18d944cd2b3bfde1a0ee5fc53e83e4016b11b01f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476144"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379216"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Egyetlen kiszolgáló Azure Database for PostgreSQL
 
@@ -69,7 +69,7 @@ A natív hitelesítésen kívül az egyetlen kiszolgáló szolgáltatás támoga
 
 Naplózási [naplózás]() (előzetes verzió) az összes adatbázis szintű tevékenység nyomon követésére szolgál.
 
-Az egykiszolgálós szolgáltatás az összes piacvezető tanúsítvány, például a FedRAMP, a HIPAA, a PCI DSS. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban]() talál információkat.
+Az egykiszolgálós szolgáltatás megfelel az összes piacvezető tanúsítványnak, mint például a FedRAMP, a HIPAA PCI DSS. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban]() talál információkat.
 
 A Azure Database for PostgreSQL biztonsági funkcióival kapcsolatos további információkért tekintse meg a [Biztonság áttekintése]()című témakört.
 
@@ -77,7 +77,7 @@ A Azure Database for PostgreSQL biztonsági funkcióival kapcsolatos további in
 
 Az egykiszolgálós szolgáltatás beépített teljesítmény-figyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. A szolgáltatás lehetővé teszi a lassú lekérdezési naplók konfigurálását, és egy eltérő [lekérdezési tárolási](./concepts-query-store.md) funkcióval rendelkezik. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. Ezen eszközök használatával gyorsan optimalizálhatja a számítási feladatokat, és konfigurálhatja a kiszolgálót a legjobb teljesítmény érdekében. További részletek: [figyelés](./concepts-monitoring.md) .
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a PostgreSQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 

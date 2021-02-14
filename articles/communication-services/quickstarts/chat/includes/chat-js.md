@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-communication-services
 author: mikben
 manager: mikben
@@ -10,20 +10,20 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4f50bce86b43c83401ac41c59dbd4e5e952d15d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376871"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379663"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
 
 - Aktív előfizetéssel rendelkező Azure-fiók létrehozása. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört. 
 - Telepítse [Node.js](https://nodejs.org/en/download/) aktív LTS-és karbantartási LTS-verzióit (8.11.1 és 10.14.1 ajánlott).
-- Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell jegyeznie az erőforrás- **végpontot** .
-- [Felhasználói hozzáférési jogkivonat](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a "csevegés" értékre állítsa, és jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot.
+- Hozzon létre egy Azure kommunikációs szolgáltatások erőforrást. További információ: [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md). Ehhez a rövid útmutatóhoz fel kell **jegyeznie az erőforrás-végpontot** .
+- Hozzon létre *három* ACS-felhasználót, és adja ki a felhasználói hozzáférési jogkivonat [felhasználói hozzáférési jogkivonatát](../../access-tokens.md). Ügyeljen arra, hogy a hatókört a **csevegés** értékre állítsa, és **jegyezze fel a jogkivonat karakterláncát, valamint a userId karakterláncot**. A teljes bemutató létrehoz egy szálat két kezdeti résztvevővel, majd felvesz egy harmadik résztvevőt a szálba.
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -40,8 +40,6 @@ A futtatásával `npm init -y` **package.js** hozhat létre az alapértelmezett 
 ```console
 npm init -y
 ```
-
-Szövegszerkesztő használatával hozzon létre egy **start-chat.js** nevű fájlt a projekt gyökérkönyvtárában. Ehhez a rövid útmutatóhoz tartozó forráskódot a következő részekben adja hozzá ehhez a fájlhoz.
 
 ### <a name="install-the-packages"></a>A csomagok telepítése
 
@@ -70,8 +68,6 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 
 Hozzon létre egy **index.html** fájlt a projekt gyökérkönyvtárában. Ezt a fájlt sablonként használjuk a csevegési funkció hozzáadásához az Azure kommunikációs csevegési ügyféloldali kódtár használatával a JavaScripthez.
 
-A kód itt látható:
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -85,13 +81,33 @@ A kód itt látható:
   </body>
 </html>
 ```
-Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, hogy tartalmazza az alkalmazás logikáját ehhez a rövid útmutatóhoz. 
+
+Hozzon létre egy fájlt **client.js** nevű projekt gyökérkönyvtárában, hogy tartalmazza az alkalmazás logikáját ehhez a rövid útmutatóhoz.
 
 ### <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
 
-Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, akkor a kommunikációs szolgáltatás végpontját és az előfeltételként szükséges lépések részeként létrehozott hozzáférési tokent fogja használni. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. Az osztályt kell használnia `AzureCommunicationUserCredential` `Common client library` , hogy átadja a tokent a csevegési ügyfelének.
+Ha csevegési ügyfelet szeretne létrehozni a webalkalmazásban, akkor a kommunikációs szolgáltatás **végpontját** és az előfeltételként szükséges lépések részeként létrehozott **hozzáférési tokent** fogja használni. 
 
-Hozzon létre egy **client.js** fájlt a projekt gyökérkönyvtárában. Ezt a fájlt használjuk a csevegési funkció hozzáadására az Azure kommunikációs csevegési ügyféloldali kódtár használatával a JavaScripthez.
+A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve.
+
+##### <a name="server-vs-client-side"></a>Kiszolgáló és ügyfél oldal
+
+Javasoljuk, hogy a hozzáférési jogkivonatokat egy kiszolgálóoldali összetevővel hozza létre, amely továbbítja azokat az ügyfélalkalmazás számára. Ebben a forgatókönyvben a kiszolgálói oldal feladata a felhasználók létrehozása és kezelése, valamint a jogkivonatok kiállítása. Az ügyfél ezután hozzáférési jogkivonatokat fogadhat a szolgáltatástól, és az Azure kommunikációs szolgáltatások ügyféloldali kódtárainak hitelesítéséhez használhatja azokat.
+
+A tokenek a JavaScripthez készült Azure kommunikációs adminisztrációs könyvtár használatával is kiadhatók az ügyfél oldalán. Ebben az esetben az ügyfélnek tudnia kell a felhasználókat a jogkivonatok kibocsátása érdekében.
+
+Az [ügyfél és a kiszolgáló architektúrájának](../../../concepts/client-and-server-architecture.md) további részleteiért tekintse meg az alábbi dokumentációt
+
+Az alábbi ábrán az ügyféloldali alkalmazás egy megbízható szolgáltatási szinten kap hozzáférési jogkivonatot. Az alkalmazás ezután a token használatával hitelesíti a kommunikációs szolgáltatások kódtárait. A hitelesítés után az alkalmazás mostantól használhatja a kommunikációs szolgáltatások ügyféloldali kódtárait olyan műveletek elvégzésére, mint például a más felhasználókkal való csevegés.
+
+:::image type="content" source="../../../media/scenarios/archdiagram-access.png" alt-text="A felhasználói hozzáférési jogkivonat architektúráját bemutató ábra.":::
+
+##### <a name="instructions"></a>Utasítások
+Ez a bemutató nem fedi le a csevegési alkalmazás szolgáltatási szintjeinek létrehozását. 
+
+Ha nem hozott létre felhasználókat és jogkivonatokat, kövesse az itt található utasításokat: [felhasználói hozzáférési jogkivonat](../../access-tokens.md). Ne felejtse el beállítani a hatókört a "csevegés" és nem "VoIP" értékre.
+
+**client.js** az alábbi kódban a végpont és a hozzáférési token használatával adja hozzá a csevegési képességet az Azure kommunikációs csevegési ügyféloldali kódtár használatával a javascripthez.
 
 ```JavaScript
 
@@ -100,17 +116,18 @@ import { AzureCommunicationUserCredential } from '@azure/communication-common';
 
 // Your unique Azure Communication service endpoint
 let endpointUrl = 'https://<RESOURCE_NAME>.communication.azure.com';
+// The user access token generated as part of the pre-requisites
 let userAccessToken = '<USER_ACCESS_TOKEN>';
 
 let chatClient = new ChatClient(endpointUrl, new AzureCommunicationUserCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-Cserélje le a **végpontot** a létrehozás előtt az [Azure kommunikációs erőforrás létrehozása](../../create-communication-resource.md) dokumentáció alapján.
-Cserélje le a **USER_ACCESS_TOKENt** a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) dokumentációja alapján kiadott jogkivonatra.
-A kód hozzáadása **client.js** fájlhoz
+- Cserélje le az **endpointUrl** -t a kommunikációs szolgáltatások erőforrás-végpontra: [hozzon létre egy Azure kommunikációs erőforrást](../../create-communication-resource.md) , ha még nem tette meg.
+- Cserélje le a **userAccessToken** elemet a kiállított jogkivonatra.
 
 
 ### <a name="run-the-code"></a>A kód futtatása
+
 Használja az `webpack-dev-server` alkalmazást az alkalmazás létrehozásához és futtatásához. Futtassa a következő parancsot az alkalmazás gazdagépének a helyi webkiszolgálón való megadásához:
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -138,55 +155,54 @@ A következő osztályok és felületek az Azure kommunikációs szolgáltatáso
 `createThreadRequest` a szál kérelmének leírására szolgál:
 
 - A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` . 
-- A használatával `members` listázhatja a csevegési szálba felvenni kívánt tagokat;
+- A használatával `participants` listázhatja a csevegési szálba felvenni kívánt résztvevőket.
 
-Ha megoldotta `createChatThread` a metódust, `threadId` a függvény az újonnan létrehozott csevegési szálon műveleteket hajt végre, például tagok hozzáadását a csevegési szálhoz, üzenetek küldését, üzenet törlését stb.
+Ha megoldotta, `createChatThread` a metódus a értéket adja vissza `CreateChatThreadResponse` . Ez a modell egy olyan `chatThread` tulajdonságot tartalmaz, amely az `id` újonnan létrehozott szál elérésére használható. Ezután a használatával `id` kérheti le a egy példányát `ChatThreadClient` . A `ChatThreadClient` felhasználható a művelet végrehajtására a szálon belül, például üzenetek küldésére vagy listaelemek fogadására.
 
-```Javascript
+```JavaScript
 async function createChatThread() {
-   let createThreadRequest = {
-       topic: 'Preparation for London conference',
-       members: [{
-                   user: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                   displayName: 'Jack'
-               }, {
-                   user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                   displayName: 'Geeta'
-               }]
-   };
-   let chatThreadClient= await chatClient.createChatThread(createThreadRequest);
-   let threadId = chatThreadClient.threadId;
-   return threadId;
-}
+    let createThreadRequest = {
+        topic: 'Preparation for London conference',
+        participants: [{
+                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    displayName: 'Jack'
+                }, {
+                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    displayName: 'Geeta'
+                }]
+    };
+    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createThreadResponse.chatThread.id;
+    return threadId;
+    }
 
 createChatThread().then(async threadId => {
-   console.log(`Thread created:${threadId}`);
-   // PLACEHOLDERS
-   // <CREATE CHAT THREAD CLIENT>
-   // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-   // <SEND MESSAGE TO A CHAT THREAD>
-   // <LIST MESSAGES IN A CHAT THREAD>
-   // <ADD NEW MEMBER TO THREAD>
-   // <LIST MEMBERS IN A THREAD>
-   // <REMOVE MEMBER FROM THREAD>
-});
+    console.log(`Thread created:${threadId}`);
+    // PLACEHOLDERS
+    // <CREATE CHAT THREAD CLIENT>
+    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+    // <SEND MESSAGE TO A CHAT THREAD>
+    // <LIST MESSAGES IN A CHAT THREAD>
+    // <ADD NEW PARTICIPANT TO THREAD>
+    // <LIST PARTICIPANTS IN A THREAD>
+    // <REMOVE PARTICIPANT FROM THREAD>
+    });
 ```
 
-Cserélje le **USER_ID_FOR_JACK** és **USER_ID_FOR_GEETA** az előző lépésből beszerzett felhasználói azonosítókkal (felhasználók létrehozása és [felhasználói hozzáférési tokenek](../../access-tokens.md)kiadása)
+Cserélje le a **USER_ID_FOR_JACK** és a **USER_ID_FOR_GEETAt** a felhasználók és tokenek létrehozásakor beszerzett felhasználói azonosítókkal ([felhasználói hozzáférési tokenek](../../access-tokens.md)).
 
 Amikor frissíti a böngésző lapját, a következőnek kell megjelennie a konzolon:
 ```console
-Thread created: <threadId>
+Thread created: <thread_id>
 ```
 
 ## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
 
-A `getChatThreadClient` metódus egy olyan `chatThreadClient` szálat ad vissza, amely már létezik. Használható a létrehozott szálon végzett műveletek végrehajtásához: Tagok hozzáadása, üzenet küldése stb. a szálazonosító a meglévő csevegési szál egyedi azonosítója.
+A `getChatThreadClient` metódus egy olyan `chatThreadClient` szálat ad vissza, amely már létezik. A létrehozott szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása, üzenet küldése stb. szálazonosító a meglévő csevegési szál egyedi azonosítója.
 
 ```JavaScript
-
 let chatThreadClient = await chatClient.getChatThreadClient(threadId);
-console.log(`Chat Thread client for threadId:${chatThreadClient.threadId}`);
+console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
 Vegye fel ezt a kódot a `<CREATE CHAT THREAD CLIENT>` Megjegyzés helyére a **client.js**, frissítse a böngésző fület, és ellenőrizze a konzolt, és tekintse meg a következőt:
@@ -253,12 +269,12 @@ Azt is megteheti, hogy a csevegési üzeneteket lekérdezi a `listMessages` met�
 
 let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
 let nextMessage = await pagedAsyncIterableIterator.next();
- while (!nextMessage.done) {
-     let chatMessage = nextMessage.value;
-     console.log(`Message :${chatMessage.content}`);
-     // your code here
-     nextMessage = await pagedAsyncIterableIterator.next();
- }
+    while (!nextMessage.done) {
+        let chatMessage = nextMessage.value;
+        console.log(`Message :${chatMessage.content}`);
+        // your code here
+        nextMessage = await pagedAsyncIterableIterator.next();
+    }
 
 ```
 Adja hozzá ezt a kódot a `<LIST MESSAGES IN A CHAT THREAD>` Megjegyzés helyén **client.js**.
@@ -270,46 +286,48 @@ A törölt üzenetek esetében `chatMessage.deletedOn` egy DateTime értéket ad
 
 `listMessages` a által azonosítható különböző típusú üzeneteket ad vissza `chatMessage.type` . Ezek a típusok a következők:
 
-- `Text`: Egy szál tagja által küldött normál csevegési üzenet.
+- `Text`: Egy szál résztvevője által küldött normál csevegési üzenet.
 
 - `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
 
-- `ThreadActivity/AddMember`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz.
+- `ThreadActivity/AddParticipant`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több résztvevő hozzá lett adva a csevegési szálhoz.
 
-- `ThreadActivity/RemoveMember`: Az a Rendszerüzenet, amely azt jelzi, hogy a tag el lett távolítva a csevegési szálból.
+- `ThreadActivity/RemoveParticipant`: A résztvevőt jelző Rendszerüzenet el lett távolítva a csevegési szálból.
 
 További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Felhasználó hozzáadása a csevegési szálhoz tagként
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
-A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és más tagokat adjon hozzá vagy távolítson el. A metódus meghívása előtt `addMembers` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
+A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és további résztvevőket vegyen fel/távolítson el.
 
-`addMembersRequest` leírja a kérelmeket tartalmazó objektumot, amelyben `members` felsorolja a csevegési szálhoz hozzáadandó tagokat.
+A metódus meghívása előtt `addParticipants` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
+
+`addParticipantsRequest` leírja a kérelem azon objektumát, amelyben a `participants` csevegési szálhoz hozzáadandó résztvevők szerepelnek.
 - `user`, kötelező, az a kommunikációs felhasználó, akit fel kell venni a csevegési szálba.
-- `displayName`, nem kötelező, a szál tagja megjelenítendő neve.
-- `shareHistoryTime`, nem kötelező, az az idő, amelyből a csevegési előzmények meg vannak osztva a taggal. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha meg szeretné osztani az előző előzményeket a tag hozzáadásakor, állítsa az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a választott dátumra.
+- `displayName`, nem kötelező, a szál résztvevő megjelenítendő neve.
+- `shareHistoryTime`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a választott dátumra.
 
 ```JavaScript
 
-let addMembersRequest =
+let addParticipantsRequest =
 {
-    members: [
+    participants: [
         {
-            user: { communicationUserId: '<NEW_MEMBER_USER_ID>' },
+            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]
 };
 
-await chatThreadClient.addMembers(addMembersRequest);
+await chatThreadClient.addParticipants(addParticipantsRequest);
 
 ```
-**NEW_MEMBER_USER_ID** cseréje [új felhasználói azonosítóval](../../access-tokens.md) adja hozzá ezt a kódot a Megjegyzés helyett `<ADD NEW MEMBER TO THREAD>` **client.js**
+**NEW_PARTICIPANT_USER_ID** cseréje [új felhasználói azonosítóval](../../access-tokens.md) adja hozzá ezt a kódot a Megjegyzés helyett `<ADD NEW PARTICIPANT TO THREAD>` **client.js**
 
 ## <a name="list-users-in-a-chat-thread"></a>Csevegési szál felhasználóinak listázása
 ```JavaScript
-async function listThreadMembers() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listMembers();
+async function listParticipants() {
+   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
    let next = await pagedAsyncIterableIterator.next();
    while (!next.done) {
       let user = next.value;
@@ -317,20 +335,20 @@ async function listThreadMembers() {
       next = await pagedAsyncIterableIterator.next();
    }
 }
-await listThreadMembers();
+await listParticipants();
 ```
-Vegye fel ezt a kódot a `<LIST MEMBERS IN A THREAD>` Megjegyzés helyére **client.js**, frissítse a böngésző fület, és ellenőrizze a konzolt, és tekintse meg a szál felhasználóiról szóló információkat.
+Vegye fel ezt a kódot a `<LIST PARTICIPANTS IN A THREAD>` Megjegyzés helyére **client.js**, frissítse a böngésző fület, és ellenőrizze a konzolt, és tekintse meg a szál felhasználóiról szóló információkat.
 
 ## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
 
-Egy tag hozzáadásához hasonlóan a csevegési szálból is eltávolíthat tagokat. Az eltávolításhoz követnie kell a hozzáadott tagok azonosítóit.
+A résztvevők hozzáadásához hasonlóan a csevegési szálból is eltávolíthatja a résztvevőket. Az eltávolításhoz követnie kell a felvett résztvevők azonosítóit.
 
-Használja a `removeMember` metódust, ahol `member` a kommunikációs felhasználó el lesz távolítva a szálból.
+Használja a `removeParticipant` metódust, ahol `participant` a kommunikációs felhasználó el lesz távolítva a szálból.
 
 ```JavaScript
 
-await chatThreadClient.removeMember({ communicationUserId: <MEMBER_ID> });
-await listThreadMembers();
+await chatThreadClient.removeParticipant({ communicationUserId: <PARTICIPANT_ID> });
+await listParticipants();
 ```
-Cserélje le a **MEMBER_IDt** az előző lépésben használt felhasználói azonosítóra (<NEW_MEMBER_USER_ID>).
-Adja hozzá ezt a kódot a `<REMOVE MEMBER FROM THREAD>` Megjegyzés helyén **client.js**,
+Cserélje le a **PARTICIPANT_IDt** az előző lépésben használt felhasználói azonosítóra (<NEW_PARTICIPANT_USER_ID>).
+Adja hozzá ezt a kódot a `<REMOVE PARTICIPANT FROM THREAD>` Megjegyzés helyén **client.js**,

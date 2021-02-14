@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/11/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185356"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392765"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -75,7 +75,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 > [!NOTE]
 > Az alábbi példa a Azure SQL Databaset használja, de ki kell választania a megfelelő terméket, amelynek az adatfelderítési & besorolását konfigurálni kívánja.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
 1. Lépjen az **Adatfelderítési & besorolása** elemre a Azure SQL Database panel **biztonsági** fejléce alatt. Az Áttekintés lap az adatbázis aktuális besorolási állapotának összegzését tartalmazza. Az összefoglalás tartalmazza az összes besorolt oszlop részletes listáját, amelyeket szűrheti is, ha csak bizonyos sémákat, adattípusokat és címkéket szeretne megjeleníteni. Ha még nem sorolt be oszlopokat, [ugorjon a 4. lépésre](#step-4).
 
@@ -183,6 +183,13 @@ A REST API használatával programozott módon kezelheti a besorolásokat és a 
 - [Get](/rest/api/sql/sensitivitylabels/get): lekéri a megadott oszlop érzékenységi címkéjét.
 - [Aktuális adatbázis listázása](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
 - Az [adatbázis által ajánlott lista](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
+
+
+## <a name="faq---advanced-classification-capabilities"></a>Gyakori kérdések – speciális besorolási képességek
+
+**Kérdés**: az [Azure hatáskörébe](https://docs.microsoft.com/azure/purview/overview) kerül az sql-adatfelderítés & besorolása, vagy az sql-adatfelderítés & a besorolás hamarosan megszűnik?
+**Válasz**: továbbra is támogatja az SQL-adatfelderítési & besorolását, és azt javasoljuk, hogy fogadja el az [Azure](https://docs.microsoft.com/azure/purview/overview) -t, amely gazdagabb képességekkel rendelkezik a fejlett besorolási funkciók és az adatkezelés terén. Ha úgy döntünk, hogy bármely szolgáltatást, funkciót, API-t vagy SKU-t kivonják, értesítést fog kapni, beleértve az áttelepítési vagy áttérési útvonalat is. További információ a Microsoft életciklus-szabályzatokról itt található.
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Következő lépések
 

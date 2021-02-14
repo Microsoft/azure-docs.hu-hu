@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 1b9d515c197b56f7e0520539b23be60504059675
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 14e3991c7a9c24ea8fa2a619dc7100af2cd8617c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131253"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362760"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 
@@ -25,7 +25,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -45,7 +45,7 @@ Egy `Pipeline` fut az a-ben `Experiment` . A folyamat `Run` minden egyes lépés
 
 A dolgok konkrét elvégzéséhez ez a cikk egy egyszerű folyamatot hoz létre egy besorolási feladathoz. A feladat a Titanic túlélésének előrejelzése, de az adatok vagy a feladat nem kerül megvitatásra, kivéve az átadást.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 ### <a name="retrieve-initial-dataset"></a>Kezdeti adatkészlet beolvasása
 
@@ -108,32 +108,15 @@ A kód blokkolja a cél üzembe helyezését, majd kinyomtatja az imént létreh
 
 ### <a name="configure-the-training-run"></a>A betanítási Futtatás konfigurálása
 
-A következő lépés arról gondoskodik, hogy a távoli tanítás futtatása a betanítási lépések által igényelt összes függőséggel rendelkezik. A függőségek és a futásidejű környezet egy objektum létrehozásával és konfigurálásával állítható be `RunConfiguration` . 
+A AutoMLStep automatikusan konfigurálja a függőségeket a feladatok beküldésekor. A futásidejű környezet egy objektum létrehozásával és konfigurálásával állítható be `RunConfiguration` . Itt beállítjuk a számítási célt.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
-from azureml.core.conda_dependencies import CondaDependencies
-from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-
-USE_CURATED_ENV = True
-if USE_CURATED_ENV :
-    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
-    aml_run_config.environment = curated_environment
-else:
-    aml_run_config.environment.python.user_managed_dependencies = False
-    
-    # Add some packages relied on by data prep step
-    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-        conda_packages=['pandas','scikit-learn'], 
-        pip_packages=['azureml-sdk[automl]', 'azureml-dataprep[fuse,pandas]'], 
-        pin_sdk_version=False)
 ```
-
-A fenti kód két lehetőséget mutat a függőségek kezelésére. Ahogy az a `USE_CURATED_ENV = True` esetében is látható, a konfiguráció egy kurátori környezetben alapul. A "előre ellátott" környezetek közös, egymástól függő kódtárakkal rendelkeznek, és jelentősen gyorsabban online állapotba helyezhetők. A kurátori környezetek előre összeállított Docker-rendszerképekkel rendelkeznek a [Microsoft Container Registryban](https://hub.docker.com/publishers/microsoftowner). Az elérési út, ha úgy módosítja `USE_CURATED_ENV` , hogy `False` a függőségek explicit beállítására szolgáló mintázatot jeleníti meg. Ebben az esetben egy új egyéni Docker-rendszerkép jön létre és lesz regisztrálva az erőforráscsoport egy Azure Container Registryjában (lásd: [Bevezetés az Azure-beli privát Docker-jegyzékbe](../container-registry/container-registry-intro.md)). A rendszerkép kiépítése és regisztrálása néhány percet is igénybe vehet. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Az automatizált gépi tanulásra vonatkozó adatelőkészítés
 

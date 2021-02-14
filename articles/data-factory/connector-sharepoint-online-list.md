@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhat adatokat a SharePoint Online-listáról egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474947"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393428"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,12 +76,12 @@ A SharePoint Online-listák társított szolgáltatásai a következő tulajdons
 
 | **Tulajdonság**        | **Leírás**                                              | **Kötelező** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Igen          |
-| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Igen          |
-| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Igen          |
-| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen          |
-| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Igen          |
-| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | Nem           |
+| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Yes          |
+| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
+| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Yes          |
+| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes          |
+| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Yes          |
+| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | No           |
 
 **Példa**
 
@@ -114,8 +109,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Igen |
-| listName | A SharePoint Online-lista neve. | Igen |
+| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Yes |
+| listName | A SharePoint Online-lista neve. | Yes |
 
 **Példa**
 
@@ -147,9 +142,9 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Igen |
-| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | Nem |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Yes |
+| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | No |
 
 **Példa**
 
@@ -196,7 +191,7 @@ Az adatok SharePoint Online-listából való másolása során a rendszer a köv
 | Több sornyi szöveg                          | Edm.String                                           | Sztring                                   |
 | Choice (választható menü)                    | Edm.String                                           | Sztring                                   |
 | Szám (1, 1,0, 100)                            | Edm.Double                                           | Dupla                                   |
-| Pénznem ($, ¥, €)                              | Edm.Double                                           | Dupla                                   |
+| Pénznem ($, ¥, &euro; )                              | Edm.Double                                           | Dupla                                   |
 | Dátum és idő                                   | EDM. DateTime                                         | DateTime                                 |
 | Keresés (az ezen a helyen található információk)       | Edm.Int32                                            | Int32                                    |
 | Igen/nem (jelölőnégyzet)                              | Edm.Boolean                                          | Logikai                                  |

@@ -1,22 +1,17 @@
 ---
 title: Oktatóanyag egy Azure-SSIS integrációs modul konfigurálásához egy virtuális hálózathoz való csatlakozáshoz
 description: Ismerje meg, hogyan csatlakozhat Azure-SSIS integrációs modulhoz egy Azure-beli virtuális hálózathoz való csatlakozáshoz.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: fc34c2422816f23c0c3eb8adf8a02b5e7ed3b4c0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3dbbce4adc44696fdd12f6ce948b48b34caaed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636986"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391235"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) konfigurálása virtuális hálózathoz való csatlakozáshoz
 
@@ -33,12 +28,12 @@ A lépések a következők:
 
 - **Azure-SSIS integrációs** modul. Ha nem rendelkezik Azure-SSIS integrációs futtatókörnyezettel, a Kezdés előtt hozzon [létre egy Azure-SSIS integrációs modult Azure Data Factory](tutorial-deploy-ssis-packages-azure.md) .
 
-- **Felhasználói engedély** . A Azure-SSIS IR létrehozó felhasználónak legalább az alábbi lehetőségek egyikével kell rendelkeznie a [szerepkör-hozzárendeléssel](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) Azure Data Factory erőforráson:
+- **Felhasználói engedély**. A Azure-SSIS IR létrehozó felhasználónak legalább az alábbi lehetőségek egyikével kell rendelkeznie a [szerepkör-hozzárendeléssel](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) Azure Data Factory erőforráson:
 
     - Használja a beépített hálózati közreműködő szerepkört. Ehhez a szerepkörhöz a _Microsoft. Network/ \*_ engedély tartozik, amely a szükségesnél sokkal nagyobb hatókörű.
     - Hozzon létre egy egyéni szerepkört, amely csak a szükséges _Microsoft. Network/virtualNetworks/ \* /JOIN/Action_ engedélyt tartalmazza. Ha a Azure-SSIS IR saját nyilvános IP-címeit is szeretné csatlakoztatni egy Azure Resource Manager virtuális hálózathoz, akkor a szerepkörben a _Microsoft. Network/nyilvános IP/*/JOIN/Action_ engedély is szerepel.
 
-- **Virtuális hálózat** .
+- **Virtuális hálózat**.
 
     - Ha nem rendelkezik virtuális hálózattal, [hozzon létre egy virtuális hálózatot a Azure Portal használatával](../virtual-network/quick-create-portal.md).
 
@@ -72,7 +67,7 @@ A Azure Portal használatával konfigurálhatja a virtuális hálózatokat, miel
 
 1. Indítsa el a Microsoft Edge vagy a Google Chrome böngészőt. Jelenleg csak ezek a böngészők támogatják a Data Factory felhasználói felületet.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza a **További szolgáltatások** lehetőséget. A **virtuális hálózatok** szűrése és kiválasztása.
 

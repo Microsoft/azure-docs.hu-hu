@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése az ODBC-adattárból
 description: Ismerje meg, hogyan helyezhetők át adatok az ODBC-adattárakból Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e847592127d19eba3370255385f5b969b87e886e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636867"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380100"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Adatok áthelyezése az ODBC-adattárakból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -49,7 +44,7 @@ Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely kül�
 
 A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -66,13 +61,13 @@ Az alábbi táblázat az ODBC-hez társított szolgáltatáshoz tartozó JSON-el
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesOdbc** |Igen |
-| connectionString |A kapcsolati karakterlánc és egy opcionálisan titkosított hitelesítő adat nem hozzáférési hitelesítő része. Tekintse meg a példákat a következő részekben. <br/><br/>Megadhatja a kapcsolati karakterláncot, mint például a minta `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , vagy használhatja a rendszeradatforrás nevét (adatforrás neve) az átjárón a (z) rendszerhez (a társított `"DSN=<name of the DSN>;"` szolgáltatásban még mindig meg kell adnia a hitelesítő adatok részét). |Igen |
-| hitelesítő adat |Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nem |
-| authenticationType |Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen és alapszintű. |Igen |
-| userName (Felhasználónév) |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell az ODBC-adattárhoz való kapcsolódáshoz. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesOdbc** |Yes |
+| connectionString |A kapcsolati karakterlánc és egy opcionálisan titkosított hitelesítő adat nem hozzáférési hitelesítő része. Tekintse meg a példákat a következő részekben. <br/><br/>Megadhatja a kapcsolati karakterláncot, mint például a minta `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , vagy használhatja a rendszeradatforrás nevét (adatforrás neve) az átjárón a (z) rendszerhez (a társított `"DSN=<name of the DSN>;"` szolgáltatásban még mindig meg kell adnia a hitelesítő adatok részét). |Yes |
+| hitelesítő adat |Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |No |
+| authenticationType |Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen és alapszintű. |Yes |
+| userName (Felhasználónév) |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |No |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |No |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell az ODBC-adattárhoz való kapcsolódáshoz. |Yes |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 
@@ -138,7 +133,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Az ODBC-adattárban található tábla neve. |Igen |
+| tableName |Az ODBC-adattárban található tábla neve. |Yes |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a házirendek minden típusú tevékenységhez elérhetők.
@@ -149,7 +144,7 @@ A másolási tevékenységben ha a forrás **RelationalSource** típusú (amely 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Yes |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-példa: adatok másolása az ODBC-adattárból az Azure-Blobba
@@ -293,7 +288,7 @@ A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, i
 
 **Másolási tevékenység az ODBC-forrással (RelationalSource) és a blob-fogadóval (BlobSink) rendelkező folyamatokban**
 
-A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink** . A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
+A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **RelationalSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
 
 ```json
 {

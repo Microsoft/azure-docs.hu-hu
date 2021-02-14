@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc51a8af85b85db28265d1fca420a5b9b368b078
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d843755847d074e00aec9ed2830cb873b6bb3382
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576915"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365412"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>Vendég felhasználó beváltási állapotának visszaállítása
 
@@ -26,7 +26,7 @@ Miután a vendég felhasználó beváltotta a B2B-együttműködésre vonatkozó
 - A felhasználó át lett helyezve egy másik vállalatba, de továbbra is ugyanazokat az erőforrásokat kell elérnie
 - A felhasználó feladatai egy másik felhasználóhoz lettek továbbítva
 
-A fenti forgatókönyvek kezeléséhez manuálisan törölnie kell a vendég felhasználói fiókját a címtárból, és újra kell hívnia a felhasználót. Most már használhatja a PowerShellt vagy a Microsoft Graph meghívó API-t a felhasználó visszaváltási állapotának alaphelyzetbe állításához és újbóli meghívásához a felhasználó objektumazonosító, csoporttagság és alkalmazás-hozzárendelései megőrzése mellett. Amikor a felhasználó beváltja az új meghívót, az új e-mail-cím lesz a felhasználó egyszerű felhasználóneve. A felhasználó később bejelentkezhet az új e-mailben vagy egy, a `otherMails` felhasználói objektum tulajdonságához hozzáadott e-mailben.
+A fenti forgatókönyvek kezeléséhez manuálisan törölnie kell a vendég felhasználói fiókját a címtárból, és újra kell hívnia a felhasználót. Most már használhatja a PowerShellt vagy a Microsoft Graph meghívó API-t a felhasználó visszaváltási állapotának alaphelyzetbe állításához és újbóli meghívásához a felhasználó objektumazonosító, csoporttagság és alkalmazás-hozzárendelései megőrzése mellett. Amikor a felhasználó beváltja az új meghívót, a felhasználó UPN-je nem változik, de a felhasználó bejelentkezési neve az új e-mailre módosul. A felhasználó később bejelentkezhet az új e-mailben vagy egy, a `otherMails` felhasználói objektum tulajdonságához hozzáadott e-mailben.
 
 ## <a name="use-powershell-to-reset-redemption-status"></a>A beváltási állapot visszaállítása a PowerShell használatával
 

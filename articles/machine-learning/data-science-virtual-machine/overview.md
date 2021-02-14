@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Az Azure Data Science Virtual Machine áttekintése – egy könnyen használható virtuális gép az Azure Cloud platformon előre telepített és konfigurált eszközökkel és könyvtárakkal az adatelemzéshez.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 7bcee0f571fe42e4c00499f188e35d0e0ff2ebe7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bd2333d89e4d1789b3464606b49f624609ef67d5
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322503"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518759"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi a Linux és a Windows rendszerhez készült Azure Data Science Virtual Machine?
 
@@ -24,7 +23,7 @@ A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerk
 A DSVM a következő címen érhető el:
 
 + Windows Server 2019
-+ Ubuntu 18,04 LTS
++ Ubuntu 18.04 LTS
 
 ## <a name="comparison-with-azure-machine-learning"></a>Összehasonlítás a Azure Machine Learning
 
@@ -49,17 +48,17 @@ A DSVM egy testreszabott virtuálisgép-rendszerkép az adatelemzéshez, de a [A
 A két termék-ajánlat közötti fő különbségek a következők:
 
 
-|Funkció |Adattudomány<br>VM |AzureML<br>Számítási példány  | 
+|Szolgáltatás |Adattudomány<br>VM |AzureML<br>Számítási példány  | 
 |---------|---------|---------|
 | Teljes körűen felügyelt | Nem        | Igen        |
 |Nyelvi támogatás     |  Python, R, Julia, SQL, C#,<br> Java, Node.js, F #       | Python és R        |
 |Operációs rendszer     | Ubuntu<br>Windows         |    Ubuntu     |
-|Előre konfigurált GPU-beállítás     |  Igen       |    Igen     |
-|Vertikális Felskálázási beállítás | Igen | Igen |
-|SSH-hozzáférés    | Igen        |    Igen     |
+|Előre konfigurált GPU-beállítás     |  Igen       |    Yes     |
+|Vertikális Felskálázási beállítás | Igen | Yes |
+|SSH-hozzáférés    | Igen        |    Yes     |
 |RDP-hozzáférés    | Igen        |     Nem    |
-|Beépített<br>Üzemeltetett jegyzetfüzetek     |   Nem<br>(további konfiguráció szükséges)      |      Igen   |
-|Beépített egyszeri bejelentkezés     | Nem <br>(további konfiguráció szükséges)         |    Igen     |
+|Beépített<br>Üzemeltetett jegyzetfüzetek     |   No<br>(további konfiguráció szükséges)      |      Yes   |
+|Beépített egyszeri bejelentkezés     | No <br>(további konfiguráció szükséges)         |    Yes     |
 |Beépített együttműködés     | Nem         | Igen        |
 |Előre telepített eszközök     |  Jupyter (labor), RStudio-kiszolgáló, VSCode,<br> Visual Studio, Notebookshoz, Juno,<br>Power BI Desktop, SSMS, <br>Microsoft Office 365, Apache Drill       |     Jupyter (labor)<br> RStudio Server   |
 

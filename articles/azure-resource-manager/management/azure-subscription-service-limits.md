@@ -3,12 +3,12 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920467"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370103"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
 
@@ -364,6 +364,9 @@ SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Dat
 
 Az Azure szinapszis Analytics korlátaival kapcsolatban lásd: az [Azure szinapszis erőforrás-korlátai](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure Files és Azure File Sync
+Ha többet szeretne megtudni a Azure Files és File Sync korlátairól, tekintse meg [Azure Files skálázhatósági és teljesítménybeli célokat](../../storage/files/storage-files-scale-targets.md).
+
 ## <a name="storage-limits"></a>Tárolási korlátok
 
 <!--like # storage accts -->
@@ -378,16 +381,6 @@ A standard szintű Storage-fiókok korlátaival kapcsolatos további informáci�
 ### <a name="azure-blob-storage-limits"></a>Azure Blob Storage-korlátok
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure Files korlátok
-
-Azure Files korlátozásokkal kapcsolatos további információkért lásd: [Azure Files skálázhatósági és teljesítményi célok](../../storage/files/storage-files-scale-targets.md).
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Azure File Sync korlátok
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Az Azure üzenetsor tárterületének korlátai
 

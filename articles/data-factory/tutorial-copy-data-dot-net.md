@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása az Azure Blob Storageból a Azure SQL Databaseba
 description: Ez az oktatóanyag részletes útmutatást biztosít adatok másolásához az Azure Blob Storage-ból az Azure SQL Database-be.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2ec4a65f1001d6d1c93a23964d59972419f651e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513258"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380882"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 
@@ -44,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 * *Azure SQL Database*. Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Database-adatbázissal, tekintse [meg az adatbázis létrehozása a Azure SQL Database-ben](../azure-sql/database/single-database-create-quickstart.md)című témakört.
 * *Visual Studio*. A jelen cikkben található útmutató a Visual Studio 2019-et használja.
 * *[Azure SDK a .net-hez](/dotnet/azure/dotnet-tools)*.
-* *Azure Active Directory alkalmazás*. Ha nem rendelkezik Azure Active Directory alkalmazással, tekintse meg a következő témakört: a [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) című rész, amelyből megtudhatja, [hogyan hozhat létre Azure ad-alkalmazást a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md). Másolja a következő értékeket a későbbi lépésekben való használatra: **alkalmazás (ügyfél) azonosítója**, **hitelesítési kulcs**és **könyvtár (bérlő) azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
+* *Azure Active Directory alkalmazás*. Ha nem rendelkezik Azure Active Directory alkalmazással, tekintse meg a következő témakört: a [Azure Active Directory alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) című rész, amelyből megtudhatja, [hogyan hozhat létre Azure ad-alkalmazást a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md). Másolja a következő értékeket a későbbi lépésekben való használatra: **alkalmazás (ügyfél) azonosítója**, **hitelesítési kulcs** és **könyvtár (bérlő) azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -54,7 +49,7 @@ Készítse elő az Azure-blobot, és Azure SQL Database az oktatóanyaghoz forr�
 
 Először hozzon létre egy forrás blobot egy tároló létrehozásával és egy bemeneti szövegfájl feltöltésével:
 
-1. Nyissa meg a jegyzettömböt. Másolja az alábbi szöveget, és mentse helyileg egy *inputEmp.txt*nevű fájlba.
+1. Nyissa meg a jegyzettömböt. Másolja az alábbi szöveget, és mentse helyileg egy *inputEmp.txt* nevű fájlba.
 
     ```inputEmp.txt
     John|Doe
@@ -87,24 +82,24 @@ Következő lépésként hozzon létre egy fogadó SQL-táblázatot:
 
     2. Válassza ki a kiszolgálót.
 
-    3. Az SQL Server menü **biztonsági** fejléce alatt válassza a **tűzfalak és virtuális hálózatok**lehetőséget.
+    3. Az SQL Server menü **biztonsági** fejléce alatt válassza a **tűzfalak és virtuális hálózatok** lehetőséget.
 
-    4. A **tűzfal-és virtuális hálózatok** lapon, az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáféréshez**területen válassza **a be**lehetőséget.
+    4. A **tűzfal-és virtuális hálózatok** lapon, az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáféréshez** területen válassza **a be** lehetőséget.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
 Hozzon létre egy C# .NET-konzol alkalmazást a Visual Studióval.
 
 1. Nyissa meg a Visual Studiót.
-2. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
+2. A **Start** ablakban válassza az **új projekt létrehozása** lehetőséget.
 3. A **create a New Project (új projekt létrehozása** ) ablakban válassza ki a **Console app (.NET-keretrendszer)** C#-verzióját a projekttípus listájából. Ezután kattintson a **Tovább** gombra.
-4. Az **új projekt konfigurálása** ablakban adja meg az *ADFv2Tutorial* **projekt nevét** . A **Hely mezőben**keresse meg és/vagy hozza létre azt a könyvtárat, amelybe menteni szeretné a projektet. Ezután válassza a **Létrehozás** elemet. Az új projekt megjelenik a Visual Studio IDE-ban.
+4. Az **új projekt konfigurálása** ablakban adja meg az *ADFv2Tutorial* **projekt nevét** . A **Hely mezőben** keresse meg és/vagy hozza létre azt a könyvtárat, amelybe menteni szeretné a projektet. Ezután kattintson a **Létrehozás** elemre. Az új projekt megjelenik a Visual Studio IDE-ban.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
 Ezután telepítse a szükséges függvénytár-csomagokat a NuGet csomagkezelő használatával.
 
-1. A menüsávban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
+1. A menüsávban válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**.
 2. A **Package Manager konzol** ablaktábláján futtassa a következő parancsokat a csomagok telepítéséhez. További információ a Azure Data Factory NuGet csomagról: [Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```package manager console
@@ -133,7 +128,7 @@ Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
 
 2. Adja hozzá a következő kódot a `Main` metódushoz, amely beállítja a változókat. Cserélje le a 14 helyőrzőt a saját értékeire.
 
-    Ha szeretné megtekinteni azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/). A **termékek** legördülő listában válassza a **Tallózás**  >  **Analytics**  >  **Data Factory**lehetőséget. Ezután a **régiók** legördülő listában válassza ki az Önt érdeklő régiókat. Megjelenik egy rács a kiválasztott régiókban Data Factory termékek rendelkezésre állási állapotával.
+    Ha szeretné megtekinteni azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, tekintse meg a [régiókban elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/). A **termékek** legördülő listában válassza a **Tallózás**  >  **Analytics**  >  **Data Factory** lehetőséget. Ezután a **régiók** legördülő listában válassza ki az Önt érdeklő régiókat. Megjelenik egy rács a kiválasztott régiókban Data Factory termékek rendelkezésre állási állapotával.
 
     > [!NOTE]
     > Az adattárak, például az Azure Storage és a Azure SQL Database, valamint a számítások, például a HDInsight, a Data Factory által használt más régiókban is lehetnek, mint amit a Data Factory választott.
@@ -337,7 +332,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
-Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *másolási tevékenységgel rendelkező*folyamatot. Ebben az oktatóanyagban ez a folyamat egy tevékenységet tartalmaz: `CopyActivity` , amely a blob-adatkészletet forrásként és az SQL-adatkészletként veszi fel fogadóként. További információ a másolási tevékenység részleteiről: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
+Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *másolási tevékenységgel rendelkező* folyamatot. Ebben az oktatóanyagban ez a folyamat egy tevékenységet tartalmaz: `CopyActivity` , amely a blob-adatkészletet forrásként és az SQL-adatkészletként veszi fel fogadóként. További információ a másolási tevékenység részleteiről: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
 
 ```csharp
 // Create a pipeline with copy activity
@@ -371,7 +366,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
 
-Adja hozzá a következő kódot a `Main` *folyamat futtatását kiváltó*metódushoz.
+Adja hozzá a következő kódot a `Main` *folyamat futtatását kiváltó* metódushoz.
 
 ```csharp
 // Create a pipeline run
@@ -432,7 +427,7 @@ Most szúrja be a kódot a folyamat futtatási állapotának vizsgálatához, é
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Hozza létre az alkalmazást a **Build**  >  **Build megoldás**kiválasztásával. Ezután indítsa el az alkalmazást a **hibakeresés**  >  **megkezdése**parancs kiválasztásával, és ellenőrizze a folyamat végrehajtását.
+Hozza létre az alkalmazást a **Build**  >  **Build megoldás** kiválasztásával. Ezután indítsa el az alkalmazást a **hibakeresés**  >  **megkezdése** parancs kiválasztásával, és ellenőrizze a folyamat végrehajtását.
 
 A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozásának állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelenik a másolási tevékenység futtatási részletei az adatok olvasási/írási méretével. Ezt követően a SQL Server Management Studio (SSMS) vagy a Visual Studio használatával csatlakozhat a célhelyhez Azure SQL Database és megtekintheti, hogy a megadott céltábla tartalmazza-e a másolt adatait.
 
@@ -564,7 +559,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 

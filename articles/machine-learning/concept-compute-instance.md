@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862131"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099795"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -32,7 +32,7 @@ A számítási példányok Jupyter működéséhez győződjön meg arról, hogy
 
 A számítási példány egy teljes körűen felügyelt felhőalapú munkaállomás, amely a gépi tanulási fejlesztési környezethez van optimalizálva. A következő előnyöket biztosítja:
 
-|Főbb előnyök|Leírás|
+|Főbb előnyök|Description|
 |----|----|
 |Termelékenység|A modelleket integrált jegyzetfüzetekkel és a Azure Machine Learning Studio következő eszközeivel hozhatja létre és helyezheti üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio (előzetes verzió)<br/>A számítási példány teljes mértékben integrálva van Azure Machine Learning munkaterülettel és Studióval. A jegyzetfüzeteket és az egyéb adatszakértőket a munkaterületen is megoszthatja.<br/> A [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) -ot számítási példányokkal is használhatja.
 |Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Kiépítés Resource Manager-sablonokból vagy Azure Machine learning SDK-ból<br/>- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Virtuális hálózatok támogatása](./how-to-secure-training-vnet.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához<br/>TLS 1,2 engedélyezve |
@@ -51,7 +51,7 @@ A Azure Machine Learning számítási példány lehetővé teszi, hogy a munkate
 
 A [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) -ban a Jupyter-jegyzetfüzeteket a számítási példányok használatával futtathatja, ha a távoli kiszolgáló SSH-val nem szükséges. A VS Code-integrációt a [távoli SSH-bővítmény](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)használatával is engedélyezheti.
 
-[Telepítheti a csomagokat](how-to-create-manage-compute-instance.md#install-packages) , és [hozzáadhat kerneleket](how-to-create-manage-compute-instance.md#add-new-kernels) a számítási példányhoz.  
+[Telepítheti a csomagokat](how-to-access-terminal.md#install-packages) , és [hozzáadhat kerneleket](how-to-access-terminal.md#add-new-kernels) a számítási példányhoz.  
 
 A következő eszközök és környezetek már telepítve vannak a számítási példányon: 
 
@@ -77,7 +77,7 @@ A következő eszközök és környezetek már telepítve vannak a számítási 
 |Anaconda Python||
 |Jupyter és-bővítmények||
 |Jupyterlab és-bővítmények||
-[Pythonhoz készült Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-run-jupyter-notebooks.md#terminal) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
+[Pythonhoz készült Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-access-terminal.md) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
 |Egyéb PyPI-csomagok|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep learning-csomagok|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -124,18 +124,18 @@ Az [Azure RBAC](../role-based-access-control/overview.md) lehetővé teszi annak
 
 Ezeket a műveleteket az Azure RBAC is szabályozhatja:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/olvasás*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/törlés*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
 
 Számítási példány létrehozásához a következő műveletekhez szükséges engedélyekkel kell rendelkeznie:
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
-* *Microsoft. MachineLearningServices/munkaterületek/checkComputeNameAvailability/művelet*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>Számítási példány létrehozása
+### <a name="create-a-compute-instance"></a><a name="create"></a>Új számítási példány létrehozása
 
 A Azure Machine Learning Studio munkaterületén [hozzon létre egy új számítási példányt](how-to-create-attach-compute-studio.md#compute-instance) a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására. 
 
@@ -189,7 +189,7 @@ A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok
 Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md)
 * [Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

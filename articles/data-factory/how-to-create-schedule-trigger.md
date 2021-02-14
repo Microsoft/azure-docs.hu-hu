@@ -1,25 +1,21 @@
 ---
 title: Ütemterv-eseményindítók létrehozása a Azure Data Factoryban
 description: Megtudhatja, hogyan hozhat létre olyan triggert Azure Data Factoryban, amely ütemezett folyamatokat futtat.
-services: data-factory
-documentationcenter: ''
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3673dd9eba717d2bdb569b4248936bbb59a8eae7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001983"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387580"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamat ütemezett futtatását futtató trigger létrehozása
+# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Egy ütemezett folyamatot futtató trigger létrehozása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk az ütemezett triggerről és az ütemezett triggerek létrehozásának, indításának és figyelésének lépéseiről nyújt információkat. Más típusú eseményindítók esetén lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -349,13 +345,13 @@ A következő JSON-definíció bemutatja, hogyan hozhat létre ütemezési és i
 ### <a name="schema-overview"></a>A séma áttekintése
 Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
-| JSON-tulajdonság | Leírás |
+| JSON-tulajdonság | Description |
 |:--- |:--- |
 | **startTime** | Dátum-idő érték. Egyszerű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. <br> UTC időzóna esetén a formátum a `'yyyy-MM-ddTHH:mm:ssZ'` következő:, más időzóna esetén pedig a Format érték `'yyyy-MM-ddTHH:mm:ss'` . |
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. Ez a tulajdonság nem kötelező.  <br> UTC időzóna esetén a formátum a `'yyyy-MM-ddTHH:mm:ssZ'` következő:, más időzóna esetén pedig a Format érték `'yyyy-MM-ddTHH:mm:ss'` . |
 | **timeZone** | Az az időzóna, amelyben a trigger létrejött. Ez a beállítás a kezdési, a **befejezési** és az **ütemezett** időpontot **befolyásolja.** Tekintse meg [a támogatott időzóna listáját](#time-zone-option) |
 | **megismétlődésének** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. A recurrence objektum a **frequency**, **interval**, **endTime**, **count** és **schedule** elemeket támogatja. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
-| **frekvencia** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: „minute”, „hour”, „day”, „week”, és „month” (percenként, óránként, naponta, hetente és havonta). |
+| **frequency** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: „minute”, „hour”, „day”, „week”, és „month” (percenként, óránként, naponta, hetente és havonta). |
 | **időköz** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **interval** 3, a **frequency** pedig „week”, az eseményindító 3 hetente ismétlődik. |
 | **menetrend** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál.
 
@@ -418,7 +414,7 @@ Ha több **schedule** elem is meg van adva, a kiértékelési sorrend a legnagyo
 A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 
-| JSON-elem | Leírás | Érvényes értékek |
+| JSON-elem | Description | Érvényes értékek |
 |:--- |:--- |:--- |
 | **perc** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
 | **óra** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
@@ -462,5 +458,5 @@ Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **freq
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).

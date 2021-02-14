@@ -1,0 +1,317 @@
+- name: Az Azure IoT Central dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure IoT Central?
+      href: core/overview-iot-central.md
+    - name: Felhasználói felület bemutatása
+      href: core/overview-iot-central-tour.md
+    - name: Legutóbbi frissítések
+      items:
+        - name: Január 2021 új és frissített funkciók
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
+        - name: '2020. november: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
+        - name: '2020. október: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
+        - name: '2020. szeptember: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
+        - name: '2020. augusztus: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
+        - name: '2020. július: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
+        - name: '2020. június: új és továbbfejlesztett funkciók'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
+        - name: '2020. június: felhasználói felület és dokumentáció frissítései'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+        - name: 2020. májusi feladat- és metrikafrissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: 2020. májusi irányítópult-frissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
+        - name: 2020. április – új funkciók
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: 2020. április – frissítések
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
+        - name: 2020. március
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: 1. Új alkalmazás létrehozása
+      href: core/quick-deploy-iot-central.md
+    - name: 2. Szimulált eszköz hozzáadása
+      href: core/quick-create-simulated-device.md
+    - name: 3. Szabályok és műveletek konfigurálása
+      href: core/quick-configure-rules.md
+    - name: 4. Eszközök monitorozása
+      href: core/quick-monitor-devices.md
+- name: Oktatóanyagok
+  items:
+    - name: Eszközök fejlesztése és csatlakoztatása
+      items:
+        - name: Eszköz létrehozása és csatlakoztatása
+          href: core/tutorial-connect-device.md
+        - name: Átjáró-eszközsablon létrehozása
+          href: core/tutorial-define-gateway-device-type.md
+        - name: IoT Edge-eszköz csatlakoztatása
+          href: core/tutorial-add-edge-as-leaf-device.md
+    - name: Integrált megoldások készítése
+      items:
+        - name: Eszközcsoport létrehozása
+          href: core/tutorial-use-device-groups.md
+        - name: Szabály létrehozása
+          href: core/tutorial-create-telemetry-rules.md
+        - name: Ismerkedés az IoT Central API-kkal
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - name: Iparág-specifikus megoldások
+      items:
+        - name: Retail
+          href: retail/overview-iot-central-retail.md
+          items:
+            - name: Üzlethelyiség-elemzés – pénztárrészleg
+              href: retail/store-analytics-architecture.md
+              items:
+                - name: 1 – Kiskereskedelmi alkalmazás létrehozása
+                  href: retail/tutorial-in-store-analytics-create-app.md
+                - name: 2 – Az operátori irányítópult testreszabása
+                  href: retail/tutorial-in-store-analytics-customize-dashboard.md
+                - name: 3 – Adatok exportálása és megállapítások megjelenítése
+                  href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
+            - name: Intelligens készletkezelés
+              href: retail/architecture-smart-inventory-management.md
+              items:
+                - name: Intelligens készletkezelési alkalmazás létrehozása
+                  href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Összekapcsolt logisztika
+              href: retail/architecture-connected-logistics.md
+              items:
+                - name: Összekapcsolt logisztikai alkalmazás létrehozása
+                  href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Digitális terjesztési központ
+              href: retail/architecture-digital-distribution-center.md
+              items:
+                - name: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
+                  href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Mikro-teljesítési központ
+              href: retail/architecture-micro-fulfillment-center.md
+              items:
+                - name: Mikro-teljesítési központ alkalmazásának létrehozása
+                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Videóelemzés – objektum- és mozgásérzékelés
+              href: retail/architecture-video-analytics.md
+              items:
+                - name: 0 – Objektum- és mozgásérzékelési alkalmazás üzembe helyezése
+                  href: retail/tutorial-video-analytics-deploy.md
+                - name: 1 – Videóelemzési alkalmazás létrehozása
+                  items:
+                    - name: Objektum- és mozgásérzékelés (YOLO v3)
+                      href: retail/tutorial-video-analytics-create-app-yolo-v3.md
+                    - name: Objektum- és mozgásérzékelés (OpenVINO)
+                      href: retail/tutorial-video-analytics-create-app-openvino.md
+                - name: 2 – IoT Edge-eszköz konfigurálása
+                  items:
+                    - name: Videóelemzési eszköz létrehozása a peremhálózaton (Linux VM)
+                      href: retail/tutorial-video-analytics-iot-edge-vm.md
+                    - name: Videóelemzési eszköz létrehozása a peremhálózaton (Intel NUC)
+                      href: retail/tutorial-video-analytics-iot-edge-nuc.md
+                - name: 3 – Videóelemzési alkalmazás monitorozása és kezelése
+                  href: retail/tutorial-video-analytics-manage.md
+                - name: 4 – Élő videóelemzési átjárómodulok módosítása és kiépítése
+                  href: retail/tutorial-video-analytics-build-module.md
+        - name: Energia
+          href: energy/overview-iot-central-energy.md
+          items:
+            - name: Az intelligens fogyasztásmérési alkalmazás architektúrája
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása
+              href: energy/tutorial-smart-meter-app.md
+            - name: A napelempanel-alkalmazás architektúrája
+              href: energy/concept-iot-central-solar-panel-app.md
+            - name: Napelempanel monitorozására szolgáló alkalmazás létrehozása
+              href: energy/tutorial-solar-panel-app.md
+        - name: Államigazgatás
+          href: government/overview-iot-central-government.md
+          items:
+            - name: Az összekapcsolt hulladékmonitorozás referenciaarchitektúrája
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Összekapcsolt hulladékgazdálkodási alkalmazás létrehozása
+              href: government/tutorial-connected-waste-management.md
+            - name: A vízfogyasztás-monitorozás referenciaarchitektúrája
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Vízfogyasztás-monitorozási alkalmazás létrehozása
+              href: government/tutorial-water-consumption-monitoring.md
+            - name: A vízminőség-monitorozás referenciaarchitektúrája
+              href: government/concepts-waterqualitymonitoring-architecture.md
+            - name: Vízminőség-monitorozási alkalmazás létrehozása
+              href: government/tutorial-water-quality-monitoring.md
+            - name: Azure IoT Central-alkalmazás összekötése a Dynamics 365 Field Services szolgáltatással
+              href: government/how-to-configure-connected-field-services.md
+        - name: Egészségügy
+          href: healthcare/overview-iot-central-healthcare.md
+          items:
+            - name: A folyamatos betegfigyelés architektúrája
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
+            - name: Folyamatos betegfigyelési alkalmazás létrehozása
+              href: healthcare/tutorial-continuous-patient-monitoring.md
+            - name: Egészségügyi adatok osztályozására szolgáló irányítópult létrehozása
+              href: healthcare/howto-health-data-triage.md
+- name: Alapelvek
+  items:
+    - name: Architektúra
+      href: core/concepts-architecture.md
+    - name: Útmutató eszközfejlesztők számára
+      href: core/overview-iot-central-developer.md
+    - name: Megoldás-előkészítő útmutató
+      href: core/overview-iot-central-developer.md
+    - name: Mik azok az alkalmazássablonok?
+      href: core/concepts-app-templates.md
+    - name: Mik azok az eszközsablonok?
+      href: core/concepts-device-templates.md
+    - name: Eszközkapcsolatok
+      href: core/concepts-get-connected.md
+    - name: Üzenetek hasznos adatai
+      href: core/concepts-telemetry-properties-commands.md
+    - name: IoT Edge-eszközök csatlakoztatása
+      href: core/concepts-iot-edge.md
+- name: Útmutatók
+  items:
+    - name: Eszközök fejlesztése és csatlakoztatása
+      items:
+        - name: Eszközsablon beállítása
+          href: core/howto-set-up-template.md
+        - name: Verzióeszköz-sablon
+          href: core/howto-version-device-template.md
+        - name: Tulajdonságok használata
+          href: core/howto-use-properties.md
+        - name: Parancsok használata
+          href: core/howto-use-commands.md
+        - name: Eszközök csatlakoztatása az X.509 használatával
+          href: core/how-to-connect-devices-x509.md
+        - name: Eszközkapcsolatok monitorozása az Azure CLI-vel
+          href: core/howto-monitor-devices-azure-cli.md
+        - name: Azure Sphere DevKit előkészítése és csatlakoztatása
+          href: core/howto-connect-sphere.md
+        - name: RuuviTag eszköz előkészítése és csatlakoztatása
+          href: core/howto-connect-ruuvi.md
+        - name: Rigado Cascade 500 előkészítése és csatlakoztatása
+          href: core/howto-connect-rigado-cascade-500.md
+        - name: Más IoT-felhők csatlakoztatása
+          href: core/howto-build-iotc-device-bridge.md
+    - name: Integrált megoldások készítése
+      items:
+        - name: Csempék hozzáadása az irányítópulthoz
+          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: Szabályok konfigurálása
+          href: core/howto-configure-rules.md
+        - name: Szabályokra vonatkozó webhookok létrehozása
+          href: core/howto-create-webhooks.md
+        - name: Szabályokra vonatkozó Azure Monitor-műveletcsoportok csatlakoztatása
+          href: core/howto-use-action-groups.md
+        - name: Eszközadatok elemzése
+          href: core/howto-create-analytics.md
+        - name: Adatok exportálása felhőbeli célhelyekre
+          href: core/howto-export-data.md
+        - name: Adatok exportálása felhőbeli célhelyekre – (örökölt)
+          href: core/howto-export-data-legacy.md
+        - name: Munkafolyamatok használata más szolgáltatásokkal való integráláshoz
+          href: core/howto-configure-rules-advanced.md
+        - name: Egyéni szabályok létrehozása
+          href: core/howto-create-custom-rules.md
+        - name: Egyéni elemzések létrehozása a Databricksszel
+          href: core/howto-create-custom-analytics.md
+        - name: Adatok vizualizációja a Power BI-ban
+          href: core/howto-connect-powerbi.md
+    - name: Eszközök kezelése
+      items:
+        - name: Eszközök hozzáadása és eltávolítása
+          href: core/howto-manage-devices.md
+        - name: Feladat futtatása
+          href: core/howto-run-a-job.md
+    - name: A megoldás felügyelete
+      items:
+        - name: Alkalmazásbeállítások módosítása
+          href: core/howto-administer.md
+        - name: Felhasználók és szerepkörök kezelése
+          href: core/howto-manage-users-roles.md
+        - name: A számla kezelése
+          href: core/howto-view-bill.md
+        - name: Az alkalmazás felhasználói felületének testreszabása
+          href: core/howto-customize-ui.md
+        - name: Az alkalmazás exportálása
+          href: core/howto-use-app-templates.md
+        - name: A v2 migrálása v3 alkalmazásba
+          href: core/howto-migrate.md
+        - name: Alkalmazásállapot monitorozása
+          href: core/howto-monitor-application-health.md
+        - name: Az alkalmazásról
+          href: core/howto-get-app-info.md
+        - name: Fájlfeltöltések konfigurálása és használata
+          href: core/howto-configure-file-uploads.md
+        - name: X.509-tanúsítványok összegzése
+          href: core/how-to-roll-x509-certificates.md
+        - name: Kezelés az Azure Portalról
+          href: core/howto-manage-iot-central-from-portal.md
+        - name: Kezelés az Azure CLI-ből
+          href: core/howto-manage-iot-central-from-cli.md
+        - name: Kezelés az Azure PowerShellből
+          href: core/howto-manage-iot-central-from-powershell.md
+        - name: Programozott kezelés
+          href: core/howto-manage-iot-central-programmatically.md
+        - name: Kezelés CSP-portálról
+          href: core/howto-create-and-manage-applications-csp.md
+    - name: A megoldás személyre szabása
+      items:
+        - name: Személyes irányítópult létrehozása
+          href: core/howto-create-personal-dashboards.md
+        - name: A személyes beállítások kezelése
+          href: core/howto-manage-preferences.md
+        - name: Élő csevegés ki-/bekapcsolása
+          href: core/howto-show-hide-chat.md
+    - name: Hibaelhárítás
+      items:
+        - name: Eszközkapcsolatok
+          href: core/troubleshoot-connection.md
+    - name: GYIK
+      href: core/howto-faq.md
+- name: Referencia
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: IoT Central API – Referencia
+      href: /rest/api/iotcentral/
+- name: További források
+  items:
+    - name: Kódminták
+      href: /samples/browse/?expanded=azure&products=azure-iot-central
+    - name: Támogatási és súgólehetőségek
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-szolgáltatások
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT-megoldásgyorsítók
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: Azure IoT SDK-k
+      items:
+        - name: IoT szolgáltatásoldali SDK-k
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: IoT eszközoldali SDK-k
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: Ügyfelek adattárolási helye
+      href: core/iot-central-customer-data-residency.md
+    - name: Ügyfelek adatkérései
+      href: core/iot-central-customer-data-requests.md
+    - name: Támogatott böngészők
+      href: core/iot-central-supported-browsers.md
+    - name: Azure IoT Central (örökölt sablonok)
+      href: /previous-versions/azure/iot-central/core/overview-iot-central

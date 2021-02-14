@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807546"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518079"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan regisztrálhat és vizsgálhat meg egy Power BI bér
 
 ## <a name="create-a-security-group-for-permissions"></a>Biztonsági csoport létrehozása engedélyekhez
 
-A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és adja hozzá a katalógus felügyelt identitását.
+A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és adja hozzá a hatáskörébe tartozó felügyelt identitást.
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory**.
 1. Hozzon létre egy új biztonsági csoportot a Azure Active Directoryban, [és hozzon létre egy alapszintű csoportot, és vegyen fel tagokat a Azure Active Directory használatával](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -35,11 +35,11 @@ A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és a
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Biztonsági csoport típusa":::
 
-1. Adja hozzá a katalógus felügyelt identitását ehhez a biztonsági csoporthoz. Válassza a **tagok**, majd a **+ Tagok hozzáadása** elemet.
+1. Adja hozzá a hatáskörébe tartozó felügyelt identitását ehhez a biztonsági csoporthoz. Válassza a **tagok**, majd a **+ Tagok hozzáadása** elemet.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="Adja hozzá a katalógus felügyelt példányát a csoporthoz.":::
 
-1. Keresse meg a katalógust, és válassza ki.
+1. Keresse meg a hatáskörébe tartozó felügyelt identitást, és válassza ki.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="Katalógus hozzáadása a kereséshez":::
 
@@ -61,14 +61,14 @@ A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és a
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Kép: az egyszerű Power BI felügyeleti API-engedélyek beolvasásának engedélyezése a szolgáltatásoknak":::
 
     > [!Caution]
-    > Ha engedélyezi a létrehozott biztonsági csoportot (amelyet a saját adatkatalógus felügyelt identitása tagként használ) a csak olvasási jogosultsággal rendelkező Power BI felügyeleti API-k használatához, akkor azt is lehetővé teszi, hogy a rendszer a metaadatokat (például az irányítópultot, a jelentés nevét, a tulajdonosokat, a leírásokat stb.) a bérlő összes Power BI összetevője számára is hozzáférhessen. Miután behúzta a metaadatokat az Azure hatáskörébe, a hatáskörébe tartozó engedélyek, nem Power BI engedélyek, határozza meg, ki láthatja a metaadatokat.
+    > Ha engedélyezi a létrehozott biztonsági csoportot (amely a hatáskörébe tartozó felügyelt identitás tagja) a csak olvasási jogosultsággal rendelkező Power BI felügyeleti API-k használatához, azt is lehetővé teszi, hogy az adott bérlő összes Power BI összetevője számára elérhetővé tegye a metaadatokat (például az irányítópultot és a jelentés nevét, a tulajdonosokat, a leírásokat stb.). Miután behúzta a metaadatokat az Azure hatáskörébe, a hatáskörébe tartozó engedélyek, nem Power BI engedélyek, határozza meg, ki láthatja a metaadatokat.
 
     > [!Note]
     > A biztonsági csoportot eltávolíthatja a fejlesztői beállításokból, de a korábban kibontott metaadatokat a rendszer nem távolítja el a hatáskörébe tartozó fiókból. Ha kívánja, külön is törölheti.
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>A Power BI regisztrálása és a vizsgálat beállítása
 
-Most, hogy megadta a katalógus engedélyeit a Power BI bérlő felügyeleti API-hoz való kapcsolódáshoz, beállíthatja a vizsgálatot a katalógus-portálról.
+Most, hogy az Power BI-bérlő felügyeleti API-hoz való kapcsolódáshoz biztosította a hatáskörébe tartozó felügyelt identitási engedélyeket, beállíthatja a vizsgálatot az Azure hatáskörébe studióból.
 
 Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatáskörébe URL-címéhez 
 

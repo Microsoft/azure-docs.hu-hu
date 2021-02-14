@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483465"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374881"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Az Azure NetApp Files erőforrás-szolgáltatójának hibaelhárítása 
 
 Ez a cikk a gyakori Azure NetApp Files erőforrás-szolgáltatói hibákat, azok okait, megoldásait és megkerülő megoldásait ismerteti (ha vannak ilyenek).
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>Gyakori Azure NetApp Files erőforrás-szolgáltatói hibák
+
+***A létrehozása `netAppAccounts` ebben a régióban korlátozott.***
+
+Ez a helyzet akkor fordul elő, ha az előfizetés Azure NetApp Files waitlisted, és a felhasználó egy NetApp-fiók létrehozását kísérli meg.
+
+* Ok:   
+Nem sikerült regisztrálni a Azure NetApp Files Azure-erőforrás-szolgáltatóját. 
+ 
+* Megoldás:   
+Az előfizetés waitlisted követően hajtsa végre az [Azure NetApp erőforrás-szolgáltató regisztrációjában](azure-netapp-files-register.md#resource-provider) ismertetett lépéseket.
 
 ***A BareMetalTenantId nem módosítható.***  
 
@@ -679,6 +689,6 @@ Megpróbál létrehozni egy kötetet egy pillanatképből, és a kötet hibás �
 Törölje a kötetet, majd próbálja megismételni a kötet-létrehozási műveletet a pillanatképből.
 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fejlesztés az Azure NetApp Filesra a REST API-val](azure-netapp-files-develop-with-rest-api.md)

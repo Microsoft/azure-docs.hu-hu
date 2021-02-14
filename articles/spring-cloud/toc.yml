@@ -10,7 +10,7 @@
   items:
     - name: Az első alkalmazás elindítása
       href: spring-cloud-quickstart.md
-    - name: Mikroszolgáltatások létrehozása és futtatása
+    - name: A szolgáltatás létrehozása és futtatása
       expanded: true
       items:
         - name: A mintaalkalmazás bemutatása
@@ -45,8 +45,12 @@
       href: spring-cloud-concept-metrics.md
     - name: Azure Spring Boot Actuator
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Biztonsági vezérlők
-      href: spring-cloud-concept-security-controls.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági vezérlők
+          href: spring-cloud-concept-security-controls.md
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
     - name: Alkalmazásállapotok ismertetése
       href: spring-cloud-concept-app-status.md
     - name: Vészhelyreállítás megtervezése
@@ -59,7 +63,7 @@
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Config Server beállítása
           href: spring-cloud-tutorial-config-server.md
-        - name: Szolgáltatásregisztráció engedélyezése
+        - name: Szolgáltatás regisztrációjának engedélyezése
           href: spring-cloud-service-registration.md
     - name: Üzembe helyezés
       items:
@@ -153,7 +157,11 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
-- name: DevOps-telepítés
+- name: Architektúra
+  items:
+    - name: Referenciaarchitektúra
+      href: spring-cloud-reference-architecture.md
+- name: DevOps üzembe helyezése
   items:
     - name: CI/CD az Azure DevOps használatával
       href: spring-cloud-howto-cicd.md

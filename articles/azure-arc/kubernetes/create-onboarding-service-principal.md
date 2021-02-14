@@ -2,30 +2,30 @@
 title: Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 'Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása '
+description: 'Azure arc-kompatibilis bevezető szolgáltatás létrehozása '
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8772cf7634d9a833af120784e3e7868b41d202c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390487"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure arc-kompatibilis bevezetési egyszerű szolgáltatás létrehozása (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
 
-A Kubernetes-fürtök Azure arc-ba való bevezetéséhez korlátozott jogosultságokkal rendelkező szerepkör-hozzárendelést használó egyszerű szolgáltatások is használhatók. Ez a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatokban, például az Azure-folyamatokban és a GitHub-műveletekben hasznos.
+A Kubernetes-fürtöket az Azure arc szolgáltatásba a korlátozott jogosultságú szerepkör-hozzárendelésekkel rendelkező egyszerű szolgáltatások használatával végezheti el. Ez a képesség a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) folyamatokban, például az Azure-folyamatokban és a GitHub-műveletekben hasznos.
 
-Az alábbi lépések útmutatást nyújtanak a Kubernetes-fürtök Azure arc-ba való bevezetéséhez.
+Az alábbi lépéseket követve megismerheti, hogyan használhatók a Kubernetes-fürtök bevezetésére szolgáló egyszerű szolgáltatások az Azure arc szolgáltatásban.
 
 ## <a name="create-a-new-service-principal"></a>Új egyszerű szolgáltatás létrehozása
 
-Hozzon létre egy új szolgáltatásnevet egy tájékoztató névvel. Vegye figyelembe, hogy a névnek egyedinek kell lennie a Azure Active Directory bérlő számára:
+Hozzon létre egy új egyszerű szolgáltatásnevet a Azure Active Directory bérlő számára egyedi tájékoztató névvel.
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,16 +45,16 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>Engedélyek hozzárendelése
 
-Az új szolgáltatásnév létrehozása után rendelje hozzá a "Kubernetes cluster-Azure arc bevezetése" szerepkört az újonnan létrehozott rendszerbiztonsági tag számára. Ez egy beépített Azure-szerepkör korlátozott engedélyekkel, amelyek csak a rendszerbiztonsági tag számára engedélyezik a fürtök regisztrálását az Azure-ban. A rendszerbiztonsági tag nem tudja frissíteni, törölni vagy módosítani az előfizetésben lévő többi fürtöt és erőforrást.
+Rendelje hozzá a "Kubernetes-fürt-Azure arc bevezetése" szerepkört az újonnan létrehozott egyszerű szolgáltatáshoz. Ez a beépített Azure-szerepkör korlátozott engedélyekkel rendelkezik, így a rendszerbiztonsági tag csak fürtöket regisztrálhat az Azure-ba. A hozzárendelt szerepkörrel rendelkező rendszerbiztonsági tag nem tudja frissíteni, törölni vagy módosítani az előfizetésen belüli többi fürtöt és erőforrást.
 
 A korlátozott képességek miatt az ügyfelek könnyedén újra használhatják ezt a résztvevőt több fürt bevezetéséhez.
 
-Az engedélyek tovább korlátozhatók, `--scope` Ha a szerepkör hozzárendeléséhez a megfelelő argumentumot továbbítják. Ez lehetővé teszi, hogy az ügyfelek korlátozzák a fürt regisztrációját. A különböző paraméterek a következő forgatókönyveket támogatják `--scope` :
+Az engedélyek további korlátozásához adja meg a megfelelő `--scope` argumentumot a szerepkör hozzárendeléséhez. Ez lehetővé teszi, hogy az ügyfelek korlátozzák a fürt regisztrációját. A különböző paraméterek a következő forgatókönyveket támogatják `--scope` :
 
 | Erőforrás  | `scope` argumentum| Hatás |
 | ------------- | ------------- | ------------- |
-| Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan fürtöt regisztrálhat egy meglévő erőforráscsoporthoz a megadott előfizetésben |
-| Erőforráscsoport | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtök regisztrálását tudja regisztrálni az erőforráscsoporthoz `myGroup` |
+| Előfizetés | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Az egyszerű szolgáltatás minden olyan fürtöt regisztrálhat egy meglévő erőforráscsoporthoz, amely a megadott előfizetésben van. |
+| Erőforráscsoport | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Az egyszerű szolgáltatásnév __csak__ a fürtöket regisztrálja az erőforráscsoporthoz `myGroup` . |
 
 ```console
 az role assignment create \
@@ -80,7 +80,7 @@ az role assignment create \
 
 ## <a name="use-service-principal-with-the-azure-cli"></a>Egyszerű szolgáltatásnév használata az Azure CLI-vel
 
-Az újonnan létrehozott egyszerű szolgáltatásnév hivatkozása:
+Az újonnan létrehozott szolgáltatásnevet az alábbi parancsokkal hivatkozhat:
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID

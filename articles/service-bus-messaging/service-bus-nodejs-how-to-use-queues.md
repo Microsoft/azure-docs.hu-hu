@@ -1,18 +1,18 @@
 ---
 title: Az Azure/Service-Bus-várólisták használata a JavaScriptben
-description: Megtudhatja, hogyan írhat egy olyan JavaScript-programot, amely a csomag legújabb előzetes verzióját használja @azure/service-bus egy Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához.
+description: Megtudhatja, hogyan írhat olyan JavaScript-programot, amely a csomag legújabb verzióját használja az üzenetek @azure/service-bus küldésére és fogadására egy Service Bus-várólistából.
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: ac24d84176f27170648545bc8044c5dcbc77781a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180013"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373079"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (JavaScript)
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomagot egy JavaScript-programban egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához.
@@ -205,6 +205,7 @@ Válassza ki a várólistát ezen az **áttekintő** lapon, és navigáljon a **
 ## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő dokumentációt és mintákat: 
 
-- [A JS-hez készült ügyféloldali kódtár Azure Service Bus](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [Minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). A **JavaScript** -mappa JavaScript-példákkal rendelkezik, az **írógéppel** pedig írógéppel készített mintákat tartalmaz. 
-- [Az Azure-servicebus dokumentációja](/javascript/api/overview/azure/service-bus)
+- [Az ügyféloldali kódtár Azure Service Bus a JavaScripthez](https://www.npmjs.com/package/@azure/service-bus)
+- [JavaScript-minták](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Írógéppel minták](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [API-referenciadokumentáció](/javascript/api/overview/azure/service-bus)

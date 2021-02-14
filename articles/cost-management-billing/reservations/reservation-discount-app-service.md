@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577789"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369730"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>A foglalási kedvezmények Azure App Service Premium v3-példányok és elkülönített bélyegek esetében
 
@@ -40,10 +40,6 @@ Az Azure foglalási kedvezményt a prémium v3 példányok óránkénti futtatá
 4.  A 4. órában az 1. példány 0,5 órán keresztül, a 2. példány pedig 1 órán keresztül fut. A foglalás az 1. példány használatát teljesen, a 2. példány használatából pedig 0,5 órát fedez. A fennmaradó 0,5 óráért használatalapú díjszabás szerint kell fizetni.
 
 Az Azure Reservations számlázási használati jelentésekben történő alkalmazásának megismeréséhez és megtekintéséhez lásd [a foglalások használatának ismertetését](understand-reserved-instance-usage-ea.md).
-
-### <a name="discount-can-apply-to-different-sizes"></a>A kedvezmény különböző méretekre alkalmazható
-
-Ha a fenntartott prémium v3 példányt vásárolja meg, és a **példány méretének rugalmasságára optimalizált** beállítást választja, a kedvezményes lefedettség a kiválasztott prémium v3-példányra vonatkozik. Más példányok esetében is alkalmazható, amelyek ugyanabban az adatsorozat-példány méretének rugalmassági csoportjába tartoznak.
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>A foglalási kedvezmények izolált bélyegekre való alkalmazása
 

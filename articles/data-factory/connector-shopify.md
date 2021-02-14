@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása a Shopify (előzetes verzió)
 description: Bemutatjuk, hogy miként másolhatók adatok a Shopify-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: e387d8329249fff0b3e84460bd753f35dd275507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b955ebd8827a46ae718d8a89863d5b37024e5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415198"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393394"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Adatok másolása a Shopify a Azure Data Factory használatával (előzetes verzió)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,12 +45,12 @@ A Shopify társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Shopify** | Igen |
-| gazda | A Shopify-kiszolgáló végpontja. (mystore.myshopify.com)  | Igen |
-| accessToken | Az Shopify-adatbázishoz való hozzáféréshez használható API-hozzáférési jogkivonat. A jogkivonat nem jár le, ha kapcsolat nélküli módban van. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Shopify** | Yes |
+| gazda | A Shopify-kiszolgáló végpontja. (mystore.myshopify.com)  | Yes |
+| accessToken | Az Shopify-adatbázishoz való hozzáféréshez használható API-hozzáférési jogkivonat. A jogkivonat nem jár le, ha kapcsolat nélküli módban van. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
+| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
+| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
 **Példa**
 
@@ -78,11 +74,11 @@ A Shopify társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Shopify adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok Shopify való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **ShopifyObject**értékre. A következő tulajdonságok támogatottak:
+Az adatok Shopify való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **ShopifyObject** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ShopifyObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ShopifyObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -108,12 +104,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="shopify-as-source"></a>Shopify forrásként
 
-Az adatok Shopify való másolásához állítsa a forrás típusát a másolás tevékenység **ShopifySource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Az adatok Shopify való másolásához állítsa a forrás típusát a másolás tevékenység **ShopifySource** értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ShopifySource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ShopifySource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -152,5 +148,5 @@ Az adatok Shopify való másolásához állítsa a forrás típusát a másolás
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,22 +1,18 @@
 ---
 title: Tömeges másolás egy adatbázisból a Control Table használatával
 description: Megtudhatja, hogyan másolhat egy külső vezérlőt egy olyan megoldási sablonnal, amellyel a Azure Data Factory használatával tárolhatja a forrásadatok listáját egy adatbázisból.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: eed7a304bdd57846cd038cc9bf9a67e8150ca505
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920888"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392459"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Tömeges másolás egy vezérlőelem-táblázattal rendelkező adatbázisból
 
@@ -24,7 +20,7 @@ ms.locfileid: "96920888"
 
 Az adatok adattárházból való másolásához az Oracle Server, a Netezza, a Teradata vagy a SQL Server az Azure szinapszis Analytics szolgáltatásban nagy mennyiségű adattal kell betölteni több táblából. Az adatok általában az egyes táblákban particionálva vannak, így egyetlen táblából párhuzamosan több szálat tartalmazó sorok is betölthetők. Ez a cikk az ezekben a forgatókönyvekben használandó sablont ismerteti.
 
- >! Vegye figyelembe, hogy a kis mennyiségű, viszonylag kis adatmennyiségű táblából származó adatoknak az Azure szinapszis Analyticsbe való másolásával hatékonyabban használhatja a [Azure Data Factory adatok másolása eszközt](copy-data-tool.md). A cikkben ismertetett sablon ennél a forgatókönyvnél többre van szüksége.
+ >! Vegye figyelembe, hogy ha kis számú, viszonylag kis adatmennyiséggel rendelkező táblából szeretne adatmásolni az Azure szinapszis Analytics szolgáltatásba, hatékonyabban használhatja a [Azure Data Factory adatok másolása eszközt](copy-data-tool.md). A cikkben ismertetett sablon ennél a forgatókönyvnél többre van szüksége.
 
 ## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
 

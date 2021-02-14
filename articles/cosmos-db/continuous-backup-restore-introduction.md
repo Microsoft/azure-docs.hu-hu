@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538847"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393139"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Folyamatos biztonsági mentés az időponthoz tartozó visszaállítás (előzetes verzió) szolgáltatással Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB végrehajtja az adatok biztonsági mentését a háttérben ané
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Cosmos DB az adatbiztonsági mentést az Azure Blob Storageba." lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-A visszaállításhoz rendelkezésre álló időablak (más néven megőrzési időtartam) a következő kettő alacsonyabb értéke: "30 nap vissza mostantól" vagy "az erőforrások létrehozásának ideje". A visszaállítás időpontjának időbélyege a megőrzési időtartamon belül lehet.
+A visszaállításhoz rendelkezésre álló időablak (más néven megőrzési időtartam) a következő két: *30 nap vissza a múltban* , vagy *akár az erőforrás-létrehozási időpontig*. A visszaállítás időpontjának időbélyege a megőrzési időtartamon belül lehet.
 
 A nyilvános előzetes verzióban visszaállíthatja a Azure Cosmos DB fiókot az SQL API-hoz, vagy MongoDB a tartalom időpontját egy másik fiókhoz a [Azure Portal](continuous-backup-restore-portal.md), az [Azure parancssori felület](continuous-backup-restore-command-line.md) (a CLI), a [Azure PowerShell](continuous-backup-restore-powershell.md)vagy a [Azure Resource Manager](continuous-backup-restore-template.md)használatával.
 
@@ -59,17 +59,18 @@ A visszaállítás befejeződése után ezeket a konfigurációkat a visszaáll�
 
 ## <a name="restore-scenarios"></a>Visszaállítási forgatókönyvek
 
-Az alábbiakban az adott időponthoz tartozó visszaállítási funkció által tárgyalt főbb forgatókönyvek találhatók. Az [a] és a [c] közötti forgatókönyvek azt mutatják be, hogyan lehet visszaállítani a visszaállítást, ha a visszaállítási időbélyeget előre ismeri. Előfordulhatnak azonban olyan helyzetek, amikor nem ismeri a véletlen törlés vagy sérülés pontos idejét. A [d] és az [e] forgatókönyvek azt mutatják be, hogyan _derítheti fel_ a visszaállítási időbélyeget az új Event feed API-k használatával a helyreállítható adatbázison vagy tárolón.
+Az alábbiakban az adott időponthoz tartozó visszaállítási funkció által tárgyalt főbb forgatókönyvek találhatók. Az [a] és a [c] közötti forgatókönyvek azt mutatják be, hogyan lehet visszaállítani a visszaállítást, ha a visszaállítási időbélyeget előre ismeri.
+Előfordulhatnak azonban olyan helyzetek, amikor nem ismeri a véletlen törlés vagy sérülés pontos idejét. A [d] és az [e] forgatókönyvek azt mutatják be, hogyan _derítheti fel_ a visszaállítási időbélyeget az új Event feed API-k használatával a helyreállítható adatbázison vagy tárolón.
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="A visszaállítható fiókok időbélyegeit tartalmazó életciklus-események." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Törölt fiók visszaállítása** – a visszaállítani kívánt törölt fiókok a **visszaállítás** ablaktáblán láthatók. Ha például a "fiók" törlődik az időbélyeg T3-as időpontjában. Ebben az esetben az időbélyegzőt közvetlenül a T3, a hely, a célkiszolgáló neve, az erőforráscsoport és a célalkalmazás neve elegendő a [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), a [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)vagy a [parancssori](continuous-backup-restore-command-line.md#trigger-restore)felületről történő visszaállításhoz.  
+a. **Törölt fiók visszaállítása** – a visszaállítani kívánt törölt fiókok a **visszaállítás** ablaktáblán láthatók. Például, ha az *A fiók* törölve van az időbélyeg T3-as időbélyegzővel. Ebben az esetben az időbélyegzőt közvetlenül a T3, a hely, a célkiszolgáló neve, az erőforráscsoport és a célalkalmazás neve elegendő a [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), a [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)vagy a [parancssori](continuous-backup-restore-command-line.md#trigger-restore)felületről történő visszaállításhoz.  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="A helyreállítható adatbázisok és tárolók időbélyegzőit tartalmazó életciklus-események." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. Egy **adott régióban lévő fiók adatait állíthatja vissza** – például ha "a fiók" létezik két régióban: "az USA keleti régiója" és az "USA nyugati régiója" az időbélyegző T3-on. Ha az "USA nyugati régiójában" lévő "A" fiók egy példányára van szüksége, akkor az USA nyugati régiójában, a célhelyen állíthatja be az időpontot [Azure Portal](continuous-backup-restore-portal.md), a [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)vagy a [CLI](continuous-backup-restore-command-line.md#trigger-restore) használatával.
+b. Egy **adott régióban lévő fiók adatait állíthatja vissza** – például ha az *a fiók* létezik az *USA keleti* régiójában és az USA *nyugati* régiójában, az időbélyeg T3-ban. Ha az *USA nyugati* régiójában az a fiók egy példányára van szüksége, akkor [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)vagy [CLI](continuous-backup-restore-command-line.md#trigger-restore) használatával visszaállíthat egy időpontot, amely az USA nyugati régiója.
 
-c. Egy **ismert visszaállítási időbélyegzővel rendelkező tárolóban lévő véletlen írási vagy törlési műveletből való helyreállítás** – például, **Ha biztos benne, hogy az** "1. adatbázis" tárolóban lévő "Container 1" tartalma véletlenül módosult az időbélyegzős T3-on. A [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), a [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)vagy a [CLI](continuous-backup-restore-command-line.md#trigger-restore) egy időpontját egy másik fiókba is elvégezheti, ha az időbélyeg T3-ban helyreállítja a kívánt állapotot a tárolóban.
+c. Egy **ismert visszaállítási időbélyegzővel rendelkező tárolóban lévő véletlen írási vagy törlési műveletből való helyreállítás** – például, **Ha biztos benne, hogy az** 1. *adatbázis* 1. *tárolójának* tartalmát véletlenül módosították a T3-as időbélyegzőn. A [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), a [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)vagy a [CLI](continuous-backup-restore-command-line.md#trigger-restore) egy időpontját egy másik fiókba is elvégezheti, ha az időbélyeg T3-ban helyreállítja a kívánt állapotot a tárolóban.
 
 d. Egy **fiók visszaállítása egy korábbi időpontra az adatbázis véletlen törlése előtt** – a [Azure Portalban](continuous-backup-restore-portal.md#restore-live-account)az esemény-hírcsatorna ablaktáblán meghatározhatja, hogy mikor lett törölve egy adatbázis, és megtalálja a visszaállítási időt. Hasonlóképpen, az [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) és a [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)használatával felderítheti az adatbázis-törlési eseményt az adatbázis-események hírcsatornájának enumerálásával, majd a szükséges paraméterekkel aktiválhatja a Restore parancsot.
 
@@ -81,7 +82,7 @@ Azure Cosmos DB lehetővé teszi a folyamatos biztonsági mentési fiókra vonat
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Díjszabás
 
-Azure Cosmos DB a folyamatos biztonsági mentést engedélyező fiókok esetén további havi díjat számítunk fel a "biztonsági mentés tárolása" és az "adatvisszaállítás" céljából. A visszaállítási költségeket a rendszer minden alkalommal hozzáadja a visszaállítási művelet elindításához. Ha folyamatos biztonsági mentést tartalmazó fiókot konfigurál, de nem állítja vissza az adatait, a számlán csak a biztonsági másolatok tárolási költségeit számítjuk fel.
+Azure Cosmos DB a folyamatos biztonsági mentést engedélyező fiókok esetében további havi díjat kell fizetnie *a biztonsági mentés tárolásához* és az *adatai visszaállításához*. A visszaállítási költségeket a rendszer minden alkalommal hozzáadja a visszaállítási művelet elindításához. Ha folyamatos biztonsági mentést tartalmazó fiókot konfigurál, de nem állítja vissza az adatait, a számlán csak a biztonsági másolatok tárolási költségeit számítjuk fel.
 
 Az alábbi példa egy, az USA-ban nem kormányzati régióban üzembe helyezett Azure Cosmos-fiók árát veszi alapul. A díjszabás és a számítás a használt régiótól függően változhat, a legfrissebb díjszabási információkért tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 

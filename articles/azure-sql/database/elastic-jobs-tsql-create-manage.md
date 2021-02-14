@@ -6,44 +6,46 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
+dev_langs:
+- TSQL
 ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 02/07/2020
-ms.openlocfilehash: 76f9fb4ed5c3b88b3a1f69e352f50079586ec336
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.date: 02/01/2021
+ms.openlocfilehash: 11b94ba5bcedf56f0115b8730dc58f808aff5c58
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663332"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371600"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>A Transact-SQL (T-SQL) használata Elastic Database feladatok létrehozásához és kezeléséhez (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Ez a cikk számos példát mutat be a rugalmas feladatok T-SQL használatával történő használatának megkezdésére.
 
-A példák a [*feladatok adatbázisban*](job-automation-overview.md#job-database)elérhető [tárolt eljárásokat](#job-stored-procedures) és [nézeteket](#job-views) használják.
+A példák a [*feladatok adatbázisban*](job-automation-overview.md#elastic-job-database)elérhető [tárolt eljárásokat](#job-stored-procedures) és [nézeteket](#job-views) használják.
 
 A Transact-SQL (T-SQL) feladatok létrehozására, konfigurálására, végrehajtására és kezelésére szolgál. A rugalmas feladatok ügynökének létrehozása nem támogatott a T-SQL-ben, ezért először létre kell hoznia egy *rugalmas feladatot* a portál vagy a [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)használatával.
 
 ## <a name="create-a-credential-for-job-execution"></a>Hitelesítő adat létrehozása a feladatok végrehajtásához
 
-A hitelesítő adatok használatával csatlakozhat a megcélzott adatbázisokhoz a parancsfájlok futtatásához. A hitelesítő adatoknak megfelelő engedélyekkel kell rendelkezniük a célcsoport által megadott adatbázisokon a parancsfájl sikeres végrehajtásához. Ha [logikai SQL Server](logical-servers.md) -és/vagy Pool-célcsoport-tagot használ, erősen javasolt egy fő hitelesítő adat létrehozása a hitelesítő adatok frissítéséhez a kiszolgáló és/vagy a készlet a feladatok végrehajtásának időpontjában történő bővítése előtt. Az adatbázis-hatókörrel rendelkező hitelesítő adatok létrejönnek a feladatra szolgáló ügynök adatbázisában. Ugyanezt a hitelesítő adatot kell használni a bejelentkezés *létrehozásához* és a *felhasználó bejelentkezési adatainak létrehozásához, hogy a bejelentkezési adatbázis engedélyei elérhetők legyenek* a cél adatbázisokra vonatkozóan.
+A hitelesítő adatok használatával csatlakozhat a megcélzott adatbázisokhoz a parancsfájlok futtatásához. A hitelesítő adatoknak megfelelő engedélyekkel kell rendelkezniük a célcsoport által megadott adatbázisokon a parancsfájl sikeres végrehajtásához. [Logikai SQL Server](logical-servers.md) és/vagy Pool célcsoport-tag használata esetén erősen javasolt a hitelesítő adatok létrehozása a hitelesítő adatok frissítéséhez a kiszolgáló és/vagy a készlet a feladatok végrehajtásakor történő bővítése előtt. Az adatbázis-hatókörrel rendelkező hitelesítő adatok létrejönnek a feladatra szolgáló ügynök adatbázisában. Ugyanezt a hitelesítő adatot kell használni a bejelentkezés *létrehozásához* és a *felhasználó bejelentkezési adatainak létrehozásához, hogy a bejelentkezési adatbázis engedélyei elérhetők legyenek* a cél adatbázisokra vonatkozóan.
 
 ```sql
---Connect to the job database specified when creating the job agent
+--Connect to the new job database specified when creating the Elastic Job agent
 
--- Create a db master key if one does not already exist, using your own password.  
+-- Create a database master key if one does not already exist, using your own password.  
 CREATE MASTER KEY ENCRYPTION BY PASSWORD='<EnterStrongPasswordHere>';  
   
--- Create a database scoped credential.  
-CREATE DATABASE SCOPED CREDENTIAL myjobcred WITH IDENTITY = 'jobcred',
+-- Create two database scoped credentials.  
+-- The credential to connect to the Azure SQL logical server, to execute jobs
+CREATE DATABASE SCOPED CREDENTIAL job_credential WITH IDENTITY = 'job_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
-
--- Create a database scoped credential for the master database of server1.
-CREATE DATABASE SCOPED CREDENTIAL mymastercred WITH IDENTITY = 'mastercred',
+-- The credential to connect to the Azure SQL logical server, to refresh the database metadata in server
+CREATE DATABASE SCOPED CREDENTIAL refresh_credential WITH IDENTITY = 'refresh_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
 ```
@@ -51,20 +53,20 @@ GO
 ## <a name="create-a-target-group-servers"></a>Célcsoport létrehozása (kiszolgálók)
 
 Az alábbi példa bemutatja, hogyan hajtható végre a feladatok a kiszolgálók összes adatbázisán.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 -- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group 'ServerGroup1'
+EXEC jobs.sp_add_target_group 'ServerGroup1';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-'ServerGroup1',
+@target_group_name = 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server1.database.windows.net'
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net';
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -74,29 +76,29 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-an-individual-database"></a>Önálló adatbázis kizárása
 
 Az alábbi példa bemutatja, hogyan hajtható végre a feladatok egy kiszolgáló összes adatbázisán, kivéve a *MappingDB* nevű adatbázist.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC [jobs].sp_add_target_group N'ServerGroup'
+EXEC [jobs].sp_add_target_group N'ServerGroup';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = N'London.database.windows.net'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server2.database.windows.net'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server2.database.windows.net';
 GO
 
 --Exclude a database target member from the server target group
@@ -105,7 +107,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.windows.net',
-@database_name = N'MappingDB'
+@database_name = N'MappingDB';
 GO
 
 --View the recently created target group and target group members
@@ -116,21 +118,21 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Célcsoport (készletek) létrehozása
 
 Az alábbi példa bemutatja, hogyan célozhat meg egy vagy több rugalmas készletben lévő összes adatbázist.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing pool(s)
-EXEC jobs.sp_add_target_group 'PoolGroup'
+EXEC jobs.sp_add_target_group 'PoolGroup';
 
 -- Add an elastic pool(s) target member
 EXEC jobs.sp_add_target_group_member
-'PoolGroup',
+@target_group_name = 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
 @server_name = 'server1.database.windows.net',
-@elastic_pool_name = 'ElasticPool-1'
+@elastic_pool_name = 'ElasticPool-1';
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -140,20 +142,20 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Új séma üzembe helyezése számos adatbázison
 
 Az alábbi példa bemutatja, hogyan helyezhet üzembe új sémát az összes adatbázison.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test';
 
 -- Add job step for create table
 EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
 @command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name = 'myjobcred',
-@target_group_name = 'PoolGroup'
+@credential_name = 'job_credential',
+@target_group_name = 'PoolGroup';
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>Adatgyűjtés beépített paraméterek használatával
@@ -188,7 +190,7 @@ Ha az idő előtt manuálisan szeretné létrehozni a táblázatot, akkor a köv
 3. A internal_execution_id oszlopban megnevezett nem fürtözött index `IX_<TableName>_Internal_Execution_ID` .
 4. Az összes fent felsorolt engedély, kivéve az `CREATE TABLE` adatbázisra vonatkozó engedélyeket.
 
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsokat:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsokat:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -200,32 +202,34 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 EXEC jobs.sp_add_jobstep
 @job_name = 'ResultsJob',
 @command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name = 'myjobcred',
+@credential_name = 'job_credential',
 @target_group_name = 'PoolGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = '<resultsdb>',
-@output_table_name = '<resutlstable>'
-Create a job to monitor pool performance
+@output_table_name = '<resutlstable>';
+
+--Create a job to monitor pool performance
+
 --Connect to the job database specified when creating the job agent
 
--- Add a target group containing master database
-EXEC jobs.sp_add_target_group 'MasterGroup'
+-- Add a target group containing Elastic Job database
+EXEC jobs.sp_add_target_group 'ElasticJobGroup';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'MasterGroup',
+@target_group_name = 'ElasticJobGroup',
 @target_type = 'SqlDatabase',
 @server_name = 'server1.database.windows.net',
-@database_name = 'master'
+@database_name = 'master';
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
 @job_name = 'ResultsPoolsJob',
 @description = 'Demo: Collection Performance data from all pools',
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -246,61 +250,61 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name = 'myjobcred',
-@target_group_name = 'MasterGroup',
+@credential_name = 'job_credential',
+@target_group_name = 'ElasticJobGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = 'resultsdb',
-@output_table_name = 'resutlstable'
+@output_table_name = 'resutlstable';
 ```
 
 ## <a name="view-job-definitions"></a>Feladatdefiníciók megtekintése
 
 Az alábbi példa bemutatja, hogyan tekintheti meg az aktuális feladatdefiníciók.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- View all jobs
-SELECT * FROM jobs.jobs
+SELECT * FROM jobs.jobs;
 
 -- View the steps of the current version of all jobs
 SELECT js.* FROM jobs.jobsteps js
 JOIN jobs.jobs j
-  ON j.job_id = js.job_id AND j.job_version = js.job_version
+  ON j.job_id = js.job_id AND j.job_version = js.job_version;
 
 -- View the steps of all versions of all jobs
-select * from jobs.jobsteps
+SELECT * FROM jobs.jobsteps;
 ```
 
 ## <a name="begin-unplanned-execution-of-a-job"></a>A feladatok nem tervezett végrehajtásának megkezdése
 
 Az alábbi példa bemutatja, hogyan indíthat el azonnal egy feladatot.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Execute the latest version of a job
-EXEC jobs.sp_start_job 'CreateTableTest'
+EXEC jobs.sp_start_job 'CreateTableTest';
 
 -- Execute the latest version of a job and receive the execution id
-declare @je uniqueidentifier
-exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output
-select @je
+declare @je uniqueidentifier;
+exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
+select @je;
 
-select * from jobs.job_executions where job_execution_id = @je
+select * from jobs.job_executions where job_execution_id = @je;
 
 -- Execute a specific version of a job (e.g. version 1)
-exec jobs.sp_start_job 'CreateTableTest', 1
+exec jobs.sp_start_job 'CreateTableTest', 1;
 ```
 
 ## <a name="schedule-execution-of-a-job"></a>Feladatok végrehajtásának ütemezve
 
 Az alábbi példa bemutatja, hogyan ütemezhet egy feladatot a jövőbeli végrehajtáshoz.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -309,13 +313,13 @@ EXEC jobs.sp_update_job
 @job_name = 'ResultsJob',
 @enabled=1,
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 ```
 
 ## <a name="monitor-job-execution-status"></a>A feladatok végrehajtási állapotának figyelése
 
 Az alábbi példa bemutatja, hogyan tekintheti meg az összes feladat végrehajtási állapotának részleteit.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -323,27 +327,27 @@ Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-dat
 --View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all top-level execution status for all jobs
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 -- View all active executions
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ## <a name="cancel-a-job"></a>Feladat megszakítása
 
 A következő példa egy feladat megszakítását mutatja be.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -351,23 +355,23 @@ Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-dat
 -- View all active executions to determine job execution id
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1 AND job_name = 'ResultPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 GO
 
 -- Cancel job execution with the specified job execution id
-EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
+EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef';
 ```
 
 ## <a name="delete-old-job-history"></a>Régi feladatok előzményeinek törlése
 
 Az alábbi példa bemutatja, hogyan törölheti a feladatok előzményeit egy adott dátum előtt.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
--- Delete history of a specific job’s executions older than the specified date
-EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00'
+-- Delete history of a specific job's executions older than the specified date
+EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
@@ -375,21 +379,21 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>A feladatok és a hozzá tartozó feladatok előzményeinek törlése
 
 Az alábbi példa bemutatja, hogyan törölhet egy feladatot és az összes kapcsolódó feladatot.  
-Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#job-database) , és futtassa a következő parancsot:
+Kapcsolódjon a [*feladatok adatbázisához*](job-automation-overview.md#elastic-job-database) , és futtassa a következő parancsot:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
-EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
+EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## <a name="job-stored-procedures"></a>Feladatok tárolt eljárásai
 
-A következő tárolt eljárások a [feladatok adatbázisban](job-automation-overview.md#job-database)találhatók.
+A következő tárolt eljárások a [feladatok adatbázisban](job-automation-overview.md#elastic-job-database)találhatók.
 
-|Tárolt eljárás  |Leírás  |
+|Tárolt eljárás  |Description  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Új feladatok hozzáadására szolgál.    |
 |[sp_update_job](#sp_update_job)    |      Egy meglévő feladatot frissít.   |
@@ -1065,27 +1069,27 @@ A következő példa hozzáadja az összes adatbázist a londoni és a NewYork-k
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
-USE ElasticJobs ;
+USE ElasticJobs;
 GO
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information'
+EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
-@server_name=N'London.database.windows.net' ;
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
+@server_name=N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
-@server_name=N'NewYork.database.windows.net' ;
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
+@server_name=N'NewYork.database.windows.net';
 GO
 
 --View the recently added members to the target group
@@ -1139,12 +1143,12 @@ GO
 
 -- Retrieve the target_id for a target_group_members
 declare @tid uniqueidentifier
-SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.windows.net'
+SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.windows.net';
 
 -- Remove a target group member of type server
 EXEC jobs.sp_delete_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
-@target_id = @tid
+@target_id = @tid;
 GO
 ```
 
@@ -1202,9 +1206,9 @@ GO
 
 ## <a name="job-views"></a>Feladatok nézetei
 
-A [feladatok adatbázisban](job-automation-overview.md#job-database)a következő nézetek érhetők el.
+A [feladatok adatbázisban](job-automation-overview.md#elastic-job-database)a következő nézetek érhetők el.
 
-|Nézet  |Leírás  |
+|Nézet  |Description  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  A feladatok végrehajtási előzményeit jeleníti meg.      |
 |[feladatok](#jobs-view)     |   Megjeleníti az összes feladatot.      |
@@ -1342,7 +1346,7 @@ Megjeleníti az összes célcsoport összes tagját.
 |**elastic_pool_name**|nvarchar (128)|A célcsoportban található rugalmas készlet neve. Csak akkor van megadva, ha target_type "SqlElasticPool".|
 |**shard_map_name**|nvarchar (128)|A célcsoportban lévő szegmens térképek neve. Csak akkor van megadva, ha target_type "SqlShardMap".|
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 - ![Témakör hivatkozás ikon](/sql/database-engine/configure-windows/media/topic-link.gif "Témakör hivatkozásának ikonja") [Transact-SQL szintaxisának konvenciói](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása a kaptárból Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhat adatokat a kaptárból egy Azure Data Factory-folyamat másolási tevékenységével támogatott fogadó adattárakba.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844949"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367027"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Adatok másolása és átalakítása a kaptárból a Azure Data Factory használatával 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,25 +45,25 @@ A kaptár társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **struktúra** | Igen |
-| gazda | A kaptár-kiszolgáló IP-címe vagy állomásneve, amely több gazdagép esetében ";" karakterrel elválasztva (csak akkor, ha a serviceDiscoveryMode engedélyezve van).  | Igen |
-| port | A kaptár-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Igen |
-| serverType | A kaptár-kiszolgáló típusa. <br/>Az engedélyezett értékek a következők: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nem |
-| thriftTransportProtocol | A takarékossági rétegben használandó átviteli protokoll. <br/>Az engedélyezett értékek: **Binary**, **SASL**, **http** | Nem |
-| authenticationType | A kaptár-kiszolgáló eléréséhez használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Anonymous**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. A Kerberos-hitelesítés jelenleg nem támogatott. | Igen |
-| serviceDiscoveryMode | igaz, ha a ZooKeeper szolgáltatás használatát jelzi, a hamis értéket nem.  | Nem |
-| zooKeeperNameSpace | A ZooKeeper névtér, amely alatt a kaptár-kiszolgáló 2 csomópontja hozzá van adva.  | Nem |
-| useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezéseket használ-e, vagy a HiveQL-ben egy egyenértékű űrlapra konvertálja őket.  | Nem |
-| username | A kaptár-kiszolgáló eléréséhez használt Felhasználónév.  | Nem |
-| jelszó | A felhasználóhoz tartozó jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
-| httpPath | A kaptár-kiszolgálónak megfelelő részleges URL-cím.  | Nem |
-| enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | Nem |
-| trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | Nem |
-| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | Nem |
-| allowHostNameCNMismatch | Megadja, hogy szükséges-e a CA által kiállított TLS/SSL-tanúsítvány neve ahhoz, hogy a kiszolgáló állomásneve megegyezzen a TLS-kapcsolaton keresztül. Az alapértelmezett érték a hamis.  | Nem |
-| allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
-| storageReference | A Storage-fióknak a leképezési adatfolyamatban való előkészítéséhez használt társított szolgáltatására mutató hivatkozás. Erre csak akkor van szükség, ha a struktúra társított szolgáltatását használja a leképezési folyamat során. | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **struktúra** | Yes |
+| gazda | A kaptár-kiszolgáló IP-címe vagy állomásneve, amely több gazdagép esetében ";" karakterrel elválasztva (csak akkor, ha a serviceDiscoveryMode engedélyezve van).  | Yes |
+| port | A kaptár-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Yes |
+| serverType | A kaptár-kiszolgáló típusa. <br/>Az engedélyezett értékek a következők: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | No |
+| thriftTransportProtocol | A takarékossági rétegben használandó átviteli protokoll. <br/>Az engedélyezett értékek: **Binary**, **SASL**, **http** | No |
+| authenticationType | A kaptár-kiszolgáló eléréséhez használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Anonymous**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. A Kerberos-hitelesítés jelenleg nem támogatott. | Yes |
+| serviceDiscoveryMode | igaz, ha a ZooKeeper szolgáltatás használatát jelzi, a hamis értéket nem.  | No |
+| zooKeeperNameSpace | A ZooKeeper névtér, amely alatt a kaptár-kiszolgáló 2 csomópontja hozzá van adva.  | No |
+| useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezéseket használ-e, vagy a HiveQL-ben egy egyenértékű űrlapra konvertálja őket.  | No |
+| username | A kaptár-kiszolgáló eléréséhez használt Felhasználónév.  | No |
+| jelszó | A felhasználóhoz tartozó jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
+| httpPath | A kaptár-kiszolgálónak megfelelő részleges URL-cím.  | No |
+| enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | No |
+| trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | No |
+| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | No |
+| allowHostNameCNMismatch | Megadja, hogy szükséges-e a CA által kiállított TLS/SSL-tanúsítvány neve ahhoz, hogy a kiszolgáló állomásneve megegyezzen a TLS-kapcsolaton keresztül. Az alapértelmezett érték a hamis.  | No |
+| allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | No |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
+| storageReference | A Storage-fióknak a leképezési adatfolyamatban való előkészítéséhez használt társított szolgáltatására mutató hivatkozás. Erre csak akkor van szükség, ha a struktúra társított szolgáltatását használja a leképezési folyamat során. | No |
 
 **Példa**
 
@@ -99,9 +94,9 @@ Ha adatokat szeretne másolni a kaptárból, állítsa az adatkészlet Type (tí
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HiveObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HiveObject** | Yes |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A tábla neve, beleértve a séma részét. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -131,8 +126,8 @@ Az adatok struktúrából való másolásához állítsa a forrás típusát a m
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HiveSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HiveSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -176,13 +171,13 @@ Az alábbi táblázatban a kaptár forrása által támogatott tulajdonságok sz
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Tárolás | A tárolónak `hive` | yes |  `hive` | áruház | 
-| Formátum | Azt jelzi, hogy egy táblából vagy lekérdezésből olvas-e | yes | `table` vagy `query` | formátumban |
+| Tárolás | A tárolónak `hive` | igen |  `hive` | áruház | 
+| Formátum | Azt jelzi, hogy egy táblából vagy lekérdezésből olvas-e | igen | `table` vagy `query` | formátumban |
 | Séma neve | Ha egy táblából olvas be, a forrástábla sémája |  igen, ha a formátum `table` | Sztring | schemaName |
-| Tábla neve | Ha egy táblából olvas be, a tábla neve |   igen, ha a formátum `table` | Sztring | tableName |
+| Table name (Táblázat neve) | Ha egy táblából olvas be, a tábla neve |   igen, ha a formátum `table` | Sztring | tableName |
 | Lekérdezés | Ha a Format `query` , a struktúra társított szolgáltatásának forrás-lekérdezése | igen, ha a formátum `query` | Sztring | lekérdezés |
-| Előkészített | A struktúra táblázata mindig előkészítés alatt áll. | yes | `true` | előkészített |
-| Storage-tároló | Az adatok a kaptárból való beolvasása vagy a kaptárba való írás előtt használt tároló tároló. A kaptár-fürtnek hozzáféréssel kell rendelkeznie ehhez a tárolóhoz. | yes | Sztring | storageContainer |
+| Előkészített | A struktúra táblázata mindig előkészítés alatt áll. | igen | `true` | előkészített |
+| Storage-tároló | Az adatok a kaptárból való beolvasása vagy a kaptárba való írás előtt használt tároló tároló. A kaptár-fürtnek hozzáféréssel kell rendelkeznie ehhez a tárolóhoz. | igen | Sztring | storageContainer |
 | Átmeneti adatbázis | Az a séma/adatbázis, amelyben a társított szolgáltatásban megadott felhasználói fiók hozzáfér. Külső táblák létrehozásához használatos az előkészítés során, majd eldobás után | nem | `true` vagy `false` | stagingDatabaseName |
 | Előzetes SQL-parancsfájlok | Az adatolvasás előtt a kaptár táblában futtatandó SQL-kód | nem | Sztring | preSQLs |
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bcd89274b1f2ba7b31a10a481e3d73901eac2c60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954749"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375187"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor a dedikált fürtöket naplózza
 
@@ -84,7 +84,7 @@ A *fürterőforrás* létrehozása után további tulajdonságokat (például *S
 Régiónként legfeljebb 2 aktív fürt lehet. Ha a fürt törölve van, a rendszer 14 napig is fenntart. Régiónként (aktív vagy nemrégiben törölt) legfeljebb 4 fenntartott fürt lehet.
 
 > [!WARNING]
-> A fürt létrehozása elindítja az erőforrás-kiosztást és az üzembe helyezést. A művelet elvégzése akár egy órát is igénybe vehet. Azt javasoljuk, hogy aszinkron módon futtassa.
+> A fürt létrehozása elindítja az erőforrás-kiosztást és az üzembe helyezést. A művelet elvégzése néhány órát is igénybe vehet. Azt javasoljuk, hogy aszinkron módon futtassa.
 
 A fürtöket létrehozó felhasználói fióknak rendelkeznie kell a szabványos Azure-Erőforrás-létrehozási engedéllyel: `Microsoft.Resources/deployments/*` és a fürt írási engedélye úgy, hogy `Microsoft.OperationalInsights/clusters/write` az adott művelet vagy vagy a szerepkör-hozzárendelései vannak `Microsoft.OperationalInsights/*` `*/write` .
 

@@ -1,21 +1,17 @@
 ---
 title: Azure-beli adatelőállító létrehozása a Azure Data Factory felhasználói felület használatával
 description: Létrehozhat egy adat-előállítót egy olyan folyamattal, amely adatokat másol egy Azure Blob Storage-beli helyről egy másik helyre.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632749"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372790"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyorsútmutató: Adat-előállító létrehozása az Azure Data Factory felhasználói felületén 
 
@@ -39,7 +35,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.
 1. Válassza az **integráció** lehetőséget, majd válassza a **Data Factory** lehetőséget. 
    

@@ -9,18 +9,18 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f5fa4ad357e937fed7df5be24a1fc78409a0259b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913674"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516396"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: a Databricks-különbözeti tábla frissítéséhez a adattó rögzítési mintájának megvalósítása
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az eseményeket egy hierarchikus névteret tartalmazó Storage-fiókban.
 
-Egy kis megoldást fog kiépíteni, amely lehetővé teszi, hogy a felhasználó feltöltse egy Databricks-különbözeti táblázatot egy olyan vesszővel tagolt (CSV) fájl feltöltésével, amely leírja az értékesítési sorrendet. Ezt a megoldást egy Event Grid-előfizetés, egy Azure-függvény és egy Azure Databricks- [feladat](https://docs.azuredatabricks.net/user-guide/jobs.html) összekapcsolásával fogja felépíteni.
+Egy kis megoldást fog kiépíteni, amely lehetővé teszi, hogy a felhasználó feltöltse egy Databricks-különbözeti táblázatot egy olyan vesszővel tagolt (CSV) fájl feltöltésével, amely leírja az értékesítési sorrendet. Ezt a megoldást egy Event Grid-előfizetés, egy Azure-függvény és egy Azure Databricks- [feladat](/azure/databricks/jobs) összekapcsolásával fogja felépíteni.
 
 Az oktatóanyagban a következőket végezheti el:
 
@@ -33,7 +33,7 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 * Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű Storage-fiókot használ `contosoorders` . Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](../common/storage-auth-aad-rbac-portal.md) hozzárendelve.
 
@@ -116,7 +116,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 4. Válassza a **fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
-További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
+További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](/azure/databricks/clusters/create) ismertető szakaszban talál.
 
 ### <a name="create-a-notebook"></a>Jegyzetfüzet létrehozása
 
@@ -128,7 +128,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
 
     ![A jegyzetfüzet létrehozása párbeszédpanelt és a Python nyelvként való kiválasztásának helyét bemutató képernyőkép.](./media/data-lake-storage-events/new-databricks-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
-    Kattintson a **Létrehozás** gombra.
+    Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks-különbözeti tábla létrehozása és feltöltése
 
@@ -153,7 +153,7 @@ További információt a fürtök létrehozásáról a [Spark-fürtök az Azure 
     Ez a kód létrehoz egy **source_file** nevű widgetet. Később létrehoz egy Azure-függvényt, amely meghívja ezt a kódot, és átadja egy fájl elérési útját az adott widgetnek.  Ez a kód is hitelesíti a szolgáltatásnevet a Storage-fiókkal, és létrehoz néhány változót, amelyet más cellákban fog használni.
 
     > [!NOTE]
-    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` , az alábbi kódrészletet fogja használni: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
+    > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. <br><br>Például a következő kódrészlet használata helyett: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` , az alábbi kódrészletet fogja használni: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` . <br><br>Az oktatóanyag elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) cikket, ahol megtekintheti a megközelítés példáit.
 
 2. Nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához ebben a blokkban.
 
@@ -411,7 +411,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)

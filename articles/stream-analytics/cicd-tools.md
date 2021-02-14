@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 9e79e0a2c030e2ebfcd5ddfd49e7c05afdb0dc3c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3ed3ff44b927fa230dedf16387c1daca889d7c66
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019550"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388702"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Egy Azure Stream Analytics-feladatokhoz tartozó buildek, tesztek és központi telepítések automatizálása CI/CD-eszközök használatával
 
@@ -158,7 +158,7 @@ Ha azt szeretné, hogy a teszt érvényesítése figyelmen kívül hagyja az ado
       "ExpectedOutputs": [
         {
           "OutputAlias": [Output alias string],
-          "FilePath": "Required",
+          "FilePath": [Required],
           "Required": true
         }
       ]
@@ -240,7 +240,7 @@ Ha az összes teszt elkészült, a rendszer a kimeneti mappában hozza létre a 
 
 A Build-ből generált Azure Resource Manager sablon és paraméter-fájlok használatával [üzembe helyezheti a feladatot az Azure](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Folyamatos integráció és folyamatos üzembe helyezés a Azure Stream Analytics számára](cicd-overview.md)
 * [CI/CD-folyamat beállítása Stream Analytics feladatokhoz az Azure-folyamatok használatával](set-up-cicd-pipeline.md)

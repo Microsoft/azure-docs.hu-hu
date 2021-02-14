@@ -1,22 +1,18 @@
 ---
 title: Adatok áthelyezése HTTP-forrásból – Azure
 description: Megtudhatja, hogyan helyezhet át egy helyszíni vagy Felhőbeli HTTP-forrás adatait Azure Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ce29b5a112d70575a721b0b527947fd95868da80
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608578"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382922"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Adatok áthelyezése HTTP-forrásokból Azure Data Factory használatával
 
@@ -37,7 +33,7 @@ Ezt a HTTP-összekötőt használhatja a *felhőből és egy helyszíni http/S-v
 
 Amikor helyszíni HTTP-végpontból másol Adatmásolást, adatkezelés átjárót kell telepítenie a helyszíni környezetben vagy egy Azure-beli virtuális gépen. Ha többet szeretne megtudni a adatkezelés átjáróról, valamint az átjáró beállításával kapcsolatos részletes utasításokért lásd: az [adatáthelyezés a helyszíni helyszínek és a felhő között](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök vagy API-k használatával helyezi át az adatok HTTP-forrásból való áthelyezését:
 
@@ -51,12 +47,12 @@ A következő táblázat a HTTP-társított szolgáltatáshoz tartozó JSON-elem
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus | A **Type** tulajdonságot **http**-értékre kell beállítani. | Igen |
-| url | A webkiszolgáló alap URL-címe. | Igen |
-| authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows** és **ClientCertificate**. <br><br> A jelen cikk későbbi szakaszaiban további tulajdonságokat és JSON-mintákat találhat a következő hitelesítési típusokhoz. | Igen |
-| enableServerCertificateValidation | Megadja, hogy engedélyezi-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését, ha a forrás egy HTTPS-webkiszolgáló. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, ezt állítsa **hamis** értékre. | Nem<br /> (az alapértelmezett érték **igaz**) |
+| típus | A **Type** tulajdonságot **http**-értékre kell beállítani. | Yes |
+| url | A webkiszolgáló alap URL-címe. | Yes |
+| authenticationType | Megadja a hitelesítési típust. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **kivonatoló**, **Windows** és **ClientCertificate**. <br><br> A jelen cikk későbbi szakaszaiban további tulajdonságokat és JSON-mintákat találhat a következő hitelesítési típusokhoz. | Yes |
+| enableServerCertificateValidation | Megadja, hogy engedélyezi-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését, ha a forrás egy HTTPS-webkiszolgáló. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, ezt állítsa **hamis** értékre. | No<br /> (az alapértelmezett érték **igaz**) |
 | Átjáró neve | A helyszíni HTTP-forráshoz való kapcsolódáshoz használt adatkezelés átjáró-példány neve. | Igen, ha helyszíni HTTP-forrásról másol adatokból |
-| encryptedCredential | A HTTP-végpont eléréséhez használt titkosított hitelesítő adat. Az érték automatikusan létrejön, amikor a hitelesítési adatokat a másolás varázslóban vagy a **ClickOnce** párbeszédpanelen konfigurálja. | Nem<br /> (csak akkor érvényes, ha egy helyszíni HTTP-kiszolgálóról másol adatokból) |
+| encryptedCredential | A HTTP-végpont eléréséhez használt titkosított hitelesítő adat. Az érték automatikusan létrejön, amikor a hitelesítési adatokat a másolás varázslóban vagy a **ClickOnce** párbeszédpanelen konfigurálja. | No<br /> (csak akkor érvényes, ha egy helyszíni HTTP-kiszolgálóról másol adatokból) |
 
 A helyszíni HTTP-összekötő adatforrásához tartozó hitelesítő adatok beállításával kapcsolatos részletekért lásd: az [adatok áthelyezése a helyszíni források és a felhő között adatkezelés átjáró használatával](data-factory-move-data-between-onprem-and-cloud.md).
 
@@ -66,8 +62,8 @@ A helyszíni HTTP-összekötő adatforrásához tartozó hitelesítő adatok be�
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| userName (Felhasználónév) | A HTTP-végpont eléréséhez használandó Felhasználónév. | Igen |
-| jelszó | A felhasználó jelszava (**username**). | Igen |
+| userName (Felhasználónév) | A HTTP-végpont eléréséhez használandó Felhasználónév. | Yes |
+| jelszó | A felhasználó jelszava (**username**). | Yes |
 
 **Példa: alapszintű, kivonatoló vagy Windows-hitelesítés használata**
 
@@ -96,7 +92,7 @@ Az alapszintű hitelesítés használatához állítsa a **AuthenticationType** 
 | --- | --- | --- |
 | embeddedCertData | A PFX-fájl bináris fájljainak Base64 kódolású tartalma. | **EmbeddedCertData** vagy **certThumbprint** meghatározása |
 | certThumbprint | Az átjárót tároló számítógép tanúsítványtárolójában telepített Tanúsítvány ujjlenyomata. Csak akkor érvényes, ha egy helyszíni HTTP-forrásból másol be egy Adatmásolást. | **EmbeddedCertData** vagy **certThumbprint** meghatározása |
-| jelszó | A tanúsítványhoz társított jelszó. | Nem |
+| jelszó | A tanúsítványhoz társított jelszó. | No |
 
 Ha **certThumbprint** használ a hitelesítéshez, és a tanúsítvány a helyi számítógép személyes tárolójába van telepítve, adjon olvasási jogosultságot az átjáró szolgáltatásnak:
 
@@ -157,13 +153,13 @@ A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. A **typ
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **típusát** **http**-értékre kell beállítani. | Igen |
-| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. <br><br> Dinamikus URL-cím létrehozásához [Data Factory függvényeket és rendszerváltozókat](data-factory-functions-variables.md)használhat. Példa: **relativeUrl**: **$ $Text. Format ("/My/Report? month = {0: ÉÉÉÉ}-{0: PP} &FMT Package = CSV", SliceStart)**. | Nem |
-| requestMethod | A HTTP-metódus. Az engedélyezett értékek a **Get** és a **post**. | Nem <br />(az alapértelmezett érték a **Get**) |
-| additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| requestBody | A HTTP-kérelem törzse. | Nem |
-| formátumban | Ha *egy http-végpont adatait* az elemzés nélkül szeretné lekérni, ugorja át a **formázási** beállítást. <br><br> Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat** és **ParquetFormat**. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és [parketta formátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nem |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. Támogatott típusok: **gzip**, **deflate**, **BZip2** és **ZipDeflate**. Támogatott szintek: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| típus | Az adatkészlet **típusát** **http**-értékre kell beállítani. | Yes |
+| relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. <br><br> Dinamikus URL-cím létrehozásához [Data Factory függvényeket és rendszerváltozókat](data-factory-functions-variables.md)használhat. Példa: **relativeUrl**: **$ $Text. Format ("/My/Report? month = {0: ÉÉÉÉ}-{0: PP} &FMT Package = CSV", SliceStart)**. | No |
+| requestMethod | A HTTP-metódus. Az engedélyezett értékek a **Get** és a **post**. | No <br />(az alapértelmezett érték a **Get**) |
+| additionalHeaders | További HTTP-kérelmek fejlécei. | No |
+| requestBody | A HTTP-kérelem törzse. | No |
+| formátumban | Ha *egy http-végpont adatait* az elemzés nélkül szeretné lekérni, ugorja át a **formázási** beállítást. <br><br> Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat** és **ParquetFormat**. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és [parketta formátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |No |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. Támogatott típusok: **gzip**, **deflate**, **BZip2** és **ZipDeflate**. Támogatott szintek: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 **Példa: a GET (alapértelmezett) metódus használata**
 
@@ -220,7 +216,7 @@ Jelenleg, ha a másolási tevékenység forrása a **HttpSource** típusú, a k�
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). A válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. | Nem<br />(alapértelmezett érték: **00:01:40**) |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). A válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. | No<br />(alapértelmezett érték: **00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Támogatott fájl- és tömörítési formátumok
 

@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186371"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365225"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -61,11 +61,11 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
         
 | Adatok | ASP.NET alapszintű gyűjtemény | ASP.NET ajánlott gyűjtemény |
 | --- | --- | --- |
-| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
-| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
-| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
-| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
-| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
+| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Yes |
+| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Yes |
+| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Yes |
+| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Yes |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Yes |
 
 3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
@@ -75,7 +75,8 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-A ASP.NET Core következő verziói támogatottak: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
+> [!IMPORTANT]
+> A ASP.NET Core következő verziói támogatottak: ASP.NET Core 2,1, 3,1 és 5,0. A 2,0, 2,2 és 3,0 verziók ki lettek vonva, és már nem támogatottak. A működéséhez frissítsen a .NET Core [támogatott verziójára](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) .
 
 A ASP.NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazások teljes keretrendszerének megcélzása jelenleg **nem támogatott** az ügynök/bővítmény alapú figyeléssel. (A programkódon keresztüli[manuális](./asp-net-core.md) kialakítás az összes korábbi forgatókönyvben működni fog.)
 
@@ -90,7 +91,7 @@ A ASP.NET Core, az önálló üzemelő példányok és a Linux-alapú alkalmazá
 
      ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
 
-2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A ASP.NET Core a ASP.NET Core 2,1, 2,2, 3,0 és 3,1 esetében **ajánlott gyűjteményt** vagy **letiltottot** kínál.
+2. Miután meghatározta, hogy melyik erőforrást szeretné használni, kiválaszthatja, hogy a Application Insights hogyan gyűjtsön adatokat egy platformon az alkalmazás számára. A ASP.NET Core a ASP.NET Core 2,1-es és a 3,1-es **ajánlott gyűjteményt** és **letiltást** kínál.
 
     ![Beállítások kiválasztása platformon](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -163,7 +164,7 @@ Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedé
 
 ### <a name="application-settings-definitions"></a>Alkalmazásbeállítások definíciói
 
-|Alkalmazás-beállítás neve |  Meghatározás | Érték |
+|Alkalmazás-beállítás neve |  Definíció | Érték |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | A fő bővítmény, amely a futtatókörnyezet figyelését vezérli. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett módban csak az alapvető funkciók engedélyezettek az optimális teljesítmény biztosításához. | `default` vagy `recommended`. |
@@ -419,6 +420,12 @@ Ha szeretné kipróbálni a kód nélküli kiszolgálót és az ügyféloldali f
 ### <a name="connection-string-and-instrumentation-key"></a>A kapcsolatok karakterlánca és a kialakítási kulcsa
 
 Ha kód nélküli figyelést használ, csak a kapcsolódási karakterláncra van szükség. Azonban továbbra is javasoljuk a kialakítási kulcs beállítását, hogy megőrizze a visszamenőleges kompatibilitást az SDK régebbi verzióival, ha manuális rendszerállapotot végez.
+
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Application Insights vs Azure App Service metrikák standard mérőszámai közötti különbség
+
+Application Insights gyűjti a telemetria az alkalmazásba feltett kérelmekhez. Ha a hiba a WebApps/IIS-ben történt, és a kérés nem érte el a felhasználói alkalmazást, Application Insights nem fog tudni telemetria.
+
+`serverresponsetime`Application Insights alapján számított időtartam nem szükségszerűen egyezik a Web Apps által megfigyelt kiszolgálói válaszidő értékével. Ennek az az oka, hogy Application Insights csak azt az időtartamot számítja fel, amikor a kérés ténylegesen eléri a felhasználói alkalmazást. Ha a kérelem beragadva/várólistán van az IIS-ben, akkor a várakozási idő szerepelni fog a webalkalmazás-mérőszámokban, de nem Application Insights mérőszámokban.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 

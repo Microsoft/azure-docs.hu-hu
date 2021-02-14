@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979291"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390357"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
@@ -83,7 +83,7 @@ Ha a **törlési blobot** egy alapblobra hívja (bármely olyan blob, amely nem 
 > [!NOTE]  
 > Ha a rendszer felülírja a törölt blobokat, a rendszer automatikusan létrehoz egy, a blob állapotára vonatkozó, az írási művelet előtt törölt pillanatképet. Az új blob örökli a felülírt blob szintjét.
 
-A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlése esetén, sem a blob metaadatainak és a blob tulajdonságainak felülírásával. Ha a Storage-fiók törlését szeretné biztosítani, a Azure Resource Manager használatával is beállíthat zárolást. További információkért tekintse [meg az erőforrások zárolása a váratlan változások elkerülése érdekében](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager cikket.
+A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlése esetén, sem a blob metaadatainak és a blob tulajdonságainak felülírásával. Ha a Storage-fiók törlését szeretné biztosítani, a Azure Resource Manager használatával is beállíthat zárolást. További információkért tekintse [meg az erőforrások zárolása a váratlan változások elkerülése érdekében](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager cikket.  A tárolók véletlen törléssel való ellátásához konfigurálja a tárolók helyreállított törlését a Storage-fiókhoz. További információ: a [tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md).
 
 A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor elvárt viselkedést:
 
