@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 49c5828e02bf96a536ff14f6b84e81f7adbe3090
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806903"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094015"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Azure-erőforrások régiók közötti áthelyezésének támogatása
 
@@ -151,7 +151,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
-> - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft. hatáskörébe](#microsoftpurview)
 > - [Microsoft. ProviderHub](#microsoftproviderhub)
 > - [Microsoft. Quantum](#microsoftquantum)
 > - [Microsoft. Recoveryservices szolgáltatónál](#microsoftrecoveryservices)
@@ -1518,7 +1518,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | kapacitások |  Nem | 
 
-## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
+## <a name="microsoftpurview"></a>Microsoft. hatáskörébe
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
@@ -1996,7 +1996,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](../../resource-mover/overview.md) információ az erőforrás-mozgató szolgáltatásról.
 

@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013702"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104246"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -49,7 +49,7 @@ A hozzáadott szerepkörök száma az Azure Active Directory által kényszerít
 
 Alkalmazás-szerepkör létrehozása a Azure Portal felhasználói felületének használatával:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure Active Directory bérlőt, amely az alkalmazás regisztrációját tartalmazza, amelyhez hozzá kívánja adni az alkalmazás-szerepkört.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt az alkalmazást, amelyben meg szeretné adni az alkalmazás-szerepköröket.
@@ -66,7 +66,7 @@ Alkalmazás-szerepkör létrehozása a Azure Portal felhasználói felületének
     | **Engedélyezett tagok Típusai** | Meghatározza, hogy az alkalmazás-szerepkör hozzárendelhető-e felhasználókhoz, alkalmazásokhoz vagy mindkettőhöz.<br/><br/>Ha elérhető, az alkalmazás `applications` szerepkörei alkalmazások engedélyeiként jelennek meg az alkalmazás regisztrációjának **kezelés** szakaszában > API-engedélyek, > engedély hozzáadása az api-khoz > az api-k **> válasszon egy API > alkalmazás-engedélyeket**. | `Users/Groups` |
     | **Érték** | Annak a szerepkör-jogcímnek az értékét adja meg, amelyet az alkalmazásnak el kell várnia a jogkivonatban. Az értéknek pontosan egyeznie kell az alkalmazás kódjában hivatkozott karakterlánccal. Az érték nem tartalmazhat szóközöket. | `Survey.Create` |
     | **Leírás** | Az alkalmazás szerepkör részletesebb leírása, amely a rendszergazdai alkalmazások hozzárendelésekor és a beleegyező felhasználói élményekben jelenik meg. | `Writers can create surveys.` |
-    | **Engedélyezi ezt az alkalmazási szerepkört?** | Megadja, hogy engedélyezve van-e az alkalmazás szerepköre. Egy alkalmazás-szerepkör törléséhez törölje a jelölőnégyzet jelölését, majd alkalmazza a módosítást a törlési művelet megkísérlése előtt. | *Jelölje be* |
+    | **Engedélyezi ezt az alkalmazási szerepkört?** | Megadja, hogy engedélyezve van-e az alkalmazás szerepköre. Egy alkalmazás-szerepkör törléséhez törölje a jelölőnégyzet jelölését, majd alkalmazza a módosítást a törlési művelet megkísérlése előtt. | *Ellenőrizni* |
 
 1. A módosítások mentéséhez válassza az **Alkalmaz** elemet.
 
@@ -74,7 +74,7 @@ Alkalmazás-szerepkör létrehozása a Azure Portal felhasználói felületének
 
 Szerepkörök hozzáadása a jegyzékfájl közvetlen szerkesztésével:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure Active Directory bérlőt, amely az alkalmazás regisztrációját tartalmazza, amelyhez hozzá kívánja adni az alkalmazás-szerepkört.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt az alkalmazást, amelyben meg szeretné adni az alkalmazás-szerepköröket.
@@ -136,7 +136,7 @@ Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárende
 
 Felhasználók és csoportok társítása a szerepkörökhöz a Azure Portal használatával:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. **Azure Active Directory** a bal oldali navigációs menüben válassza a **vállalati alkalmazások** lehetőséget.
 1. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját. Ha az alkalmazás nem jelenik meg a listában, használja a **minden alkalmazás** lista tetején található szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
 1. Válassza ki azt az alkalmazást, amelyben hozzá kívánja rendelni a felhasználókat vagy a biztonsági csoportokat a szerepkörökhöz.
@@ -158,7 +158,7 @@ Amikor alkalmazás-szerepköröket rendel hozzá egy alkalmazáshoz, *alkalmazá
 
 Alkalmazás-szerepkörök hozzárendeléséhez a Azure Portal használatával:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. **Azure Active Directory** a bal oldali navigációs menüben válassza a **Alkalmazásregisztrációk** lehetőséget.
 1. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját. Ha az alkalmazás nem jelenik meg a listában, használja a **minden alkalmazás** lista tetején található szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
 1. Válassza ki azt az alkalmazást, amelyhez hozzá szeretné rendelni az alkalmazás-szerepkört.
@@ -199,7 +199,7 @@ A fejlesztők az alkalmazás szerepkörei segítségével szabályozhatják, hog
 
 Az alkalmazási szerepköröket a fejlesztők részesítik előnyben, amikor az alkalmazásban lévő engedélyezési paramétereket szeretnék leírni és szabályozni. Például az engedélyezéshez csoportokat használó alkalmazások a következő bérlőn lesznek megszakítva, mivel a csoport azonosítója és neve is eltérő lehet. Az alkalmazás-szerepköröket használó alkalmazások biztonságosak maradnak. Valójában a csoportok az alkalmazás szerepköreihez való hozzárendelésével azonos okokból népszerűek az SaaS-alkalmazások.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazás szerepköreiről a következő erőforrásokkal.
 

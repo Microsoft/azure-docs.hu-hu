@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 7c10d3066dc7b9ee0994de8c327b286bf8c917e7
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701636"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099472"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -28,7 +28,7 @@ Mivel Azure Machine Learning nyomon követi a helyi git-tárház adatait, nem k�
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git-adattárak klónozása a munkaterület fájlrendszerébe
 Azure Machine Learning megosztott fájlrendszert biztosít a munkaterület összes felhasználója számára.
-Ha a git-tárházat ebbe a fájlmegosztásba szeretné klónozott, javasoljuk, hogy hozzon létre egy számítási példányt & nyisson meg egy terminált.
+Ha a git-tárházat ebbe a fájlmegosztásba szeretné klónozott, javasoljuk, hogy hozzon létre egy számítási példányt & [Nyisson meg egy terminált](how-to-access-terminal.md).
 Miután megnyitotta a terminált, egy teljes git-ügyfélhez férhet hozzá, és a git parancssori felületén keresztül klónozott és dolgozhat a git használatával.
 
 Azt javasoljuk, hogy a tárházat a felhasználók könyvtárába klónozással, hogy mások ne hozzanak ütközéseket közvetlenül a munkaágra.
@@ -39,7 +39,7 @@ A klónozással kapcsolatos további információkért tekintse meg a [git paran
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>A git-fiók hitelesítése SSH-val
 ### <a name="generate-a-new-ssh-key"></a>Új SSH-kulcs létrehozása
-1) [Nyissa meg a terminál ablakot](./how-to-run-jupyter-notebooks.md#terminal) a Azure Machine learning notebook lapon.
+1) [Nyissa meg a terminál ablakot](./how-to-access-terminal.md) a Azure Machine learning notebook lapon.
 
 2) Illessze be az alábbi szöveget az e-mail-címébe való Behelyettesítéssel.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Kezdje a **2. lépéssel**.
++ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true)  Kezdje a **2. lépéssel**.
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Kezdje a **4. lépéssel**.
 
@@ -123,7 +123,7 @@ Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez cs
 
 Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat azt a segítségével ellenőrizze, hogy a fájlok egy git-tárházban tárolódnak-e. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
 
-| Tulajdonság | Az érték beolvasásához használt git-parancs | Leírás |
+| Tulajdonság | Az érték beolvasásához használt git-parancs | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |

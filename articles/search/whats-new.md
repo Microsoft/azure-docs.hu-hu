@@ -6,18 +6,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/08/2021
+ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3f6eeab13a29eddd671411f46ac2220c10f68f
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820857"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099523"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást. Tekintse meg az előzetes verziójú szolgáltatások [listáját](search-api-preview.md) , ahol megtekintheti a nyilvános előzetes verzióban elérhető funkciókat.
+
+## <a name="february-2021"></a>2021. február
+
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Rendelkezésre állás  |
+|------------------------------|---------------|---------------|
+| [Dokumentumok alaphelyzetbe állítása (előzetes verzió)](search-howto-run-reset-indexers.md) |  Egyénileg kiválasztott keresési dokumentumok újrafeldolgozása az indexelő munkaterhelésekben. | [Keresés REST API 2020-06-30 – előzetes verzió](/rest/api/searchservice/index-preview) |
+| Rendelkezésre állási zóna támogatása | Az egyes régiókban két vagy több replikával rendelkező szolgáltatások keresése – a [teljesítmény skálázása](search-performance-optimization.md), a rugalmasság növelése azáltal, hogy két vagy több különböző fizikai helyen replikák vannak.  | A keresési szolgáltatás létrehozásának régiója és dátuma határozza meg a rendelkezésre állást. A részletekért tekintse meg a teljesítmény finomhangolása című dokumentumot. |
 
 ## <a name="january-2021"></a>2021. január
 

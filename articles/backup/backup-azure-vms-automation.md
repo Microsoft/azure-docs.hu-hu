@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a
 description: Az Azure-beli virtuális gépek biztonsági mentését és helyreállítását ismerteti a PowerShell-lel Azure Backup használatával
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 66b8fe0109a4dd2e054106b67f893def2ee596b0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804795"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095086"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -527,6 +527,53 @@ A felhasználók a teljes biztonsági mentés helyett több lemezt is Visszaáll
 
 A lemezek visszaállítása után lépjen a következő szakaszra a virtuális gép létrehozásához.
 
+#### <a name="restore-disks-to-a-secondary-region"></a>Lemezek visszaállítása másodlagos régióba
+
+Ha a régiók közötti visszaállítás engedélyezve van azon a tárolón, amellyel a virtuális gépeket védett, a biztonsági mentési adatait a rendszer a másodlagos régióba replikálja. A biztonsági mentési adatok használatával visszaállítást végezhet. A következő lépések végrehajtásával aktiválja a visszaállítást a másodlagos régióban:
+
+1. [A tároló azonosítójának beolvasása](#fetch-the-vault-id) , amellyel a virtuális gépek védve vannak.
+1. Válassza ki a [helyreállítani kívánt biztonsági mentési elemet](#select-the-vm-when-restoring-files).
+1. Válassza ki a megfelelő helyreállítási pontot abban a másodlagos régióban, amelyet a visszaállítás végrehajtásához használni kíván.
+
+    A lépés elvégzéséhez futtassa a következő parancsot:
+
+    ```powershell
+    $rp=Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion -Item $backupitem -VaultId $targetVault.ID
+    $rp=$rp[0]
+    ```
+
+1. Futtassa a [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) parancsmagot a `-RestoreToSecondaryRegion` paraméterrel, hogy aktiválja a visszaállítást a másodlagos régióban.
+
+    A lépés elvégzéséhez futtassa a következő parancsot:
+
+    ```powershell
+    $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -VaultLocation $targetVault.Location -RestoreToSecondaryRegion -RestoreOnlyOSDisk
+    ```
+
+    A kimenet az alábbi példához hasonló lesz:
+
+    ```output
+    WorkloadName     Operation             Status              StartTime                 EndTime          JobID
+    ------------     ---------             ------              ---------                 -------          ----------
+    V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+    ```
+
+1. Futtassa a [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) parancsmagot a (z `-UseSecondaryRegion` ) paraméterrel a visszaállítási feladatok figyeléséhez.
+
+    A lépés elvégzéséhez futtassa a következő parancsot:
+
+    ```powershell
+    Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -To (Get-Date).ToUniversalTime() -UseSecondaryRegion -VaultId $targetVault.ID
+    ```
+
+    A kimenet az alábbi példához hasonló lesz:
+
+    ```output
+    WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+    ------------     ---------            ------               ---------                 -------                   -----
+    V2VM             CrossRegionRestore   InProgress           2/8/2021 4:24:57 PM                                 2d071b07-8f7c-4368-bc39-98c7fb2983f7
+    ```
+
 ## <a name="replace-disks-in-azure-vm"></a>Lemezek cseréje az Azure-beli virtuális gépen
 
 A lemezek és a konfigurációs adatok cseréjéhez hajtsa végre a következő lépéseket:
@@ -893,6 +940,6 @@ A szükséges fájlok másolását követően a [disable-AzRecoveryServicesBacku
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $targetVault.ID
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha inkább a PowerShell-lel szeretné használni az Azure-erőforrásokat, tekintse meg a PowerShell-cikket, a [Windows Server biztonsági mentésének központi telepítését és kezelését](backup-client-automation.md)ismertető témakört. Ha DPM biztonsági mentéseket kezel, tekintse [meg a DPM biztonsági mentésének üzembe helyezése és kezelése](backup-dpm-automation.md)című cikket.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127876"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095001"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján
 
@@ -31,6 +31,11 @@ Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérj
 
 > [!IMPORTANT]
 > Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
+>
+> Ha személyes Microsoft-fiók használatával jelentkezik be, akkor továbbra is bejelentkezhet a szervezet tartománynevére (például contoso.com) vagy a szervezet **bérlői azonosítójára** a rendszergazdától a következő URL-címek egyikében:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="supported-browsers"></a>Támogatott böngészők
 
@@ -60,7 +65,7 @@ Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásainak elérésé
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>A saját alkalmazások biztonságos bejelentkezési bővítményének letöltése és telepítése
 
-Ha a rendszer kéri, töltse le és telepítse a **saját alkalmazások biztonságos bejelentkezési bővítményét** . Ezzel a bővítménnyel az asztali böngészővel egyszeri bejelentkezést használhat a szervezet felhőalapú alkalmazásaival. Vigye az egérmutatót egy alkalmazásra a **saját alkalmazások** portálon, majd válassza a **...** , majd az **alkalmazás kezelése** lehetőséget.
+Ha a rendszer kéri, töltse le és telepítse a **saját alkalmazások biztonságos bejelentkezési bővítményét**. Ezzel a bővítménnyel az asztali böngészővel egyszeri bejelentkezést használhat a szervezet felhőalapú alkalmazásaival. Vigye az egérmutatót egy alkalmazásra a **saját alkalmazások** portálon, majd válassza a **...**, majd az **alkalmazás kezelése** lehetőséget.
 
 Ha a szervezet már beállította az egyszeri bejelentkezést, a bővítmény automatikusan települ, és kihagyhatja ezt a szakaszt.
 
@@ -87,7 +92,7 @@ A **címsor** jobb oldalán megjelenik egy ikon, amely lehetővé teszi a bejele
 
 Kiválaszthatja, hogy hány alkalmazást szeretne megtekinteni a **legutóbb használt** szakaszban, és döntse el, hogy engedélyezi-e a szervezet belső URL-címeinek átirányítását.
 
-1. Válassza ki az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikonját a ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) **címsor** jobb oldalán, majd válassza a bejelentkezés lehetőséget a **kezdéshez** .
+1. Válassza ki az új **saját alkalmazások biztonságos bejelentkezési bővítmény** ikonját a ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) **címsor** jobb oldalán, majd válassza a bejelentkezés lehetőséget a **kezdéshez**.
 
 1. Kattintson a jobb gombbal a **Beállítások** ikonra ![ Beállítások ikonra ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) , majd válassza a **Beállítások** lehetőséget.
 

@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475252"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099948"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>A Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása
 
 A Windows rendszerű virtuális asztali ügynök több tényező miatt is okozhat kapcsolati problémákat:
    - Hiba a közvetítőn, amely az ügynököt a szolgáltatás leállítására készteti.
    - Problémák a frissítésekkel.
-   - Problémák az ügynök telepítése során, ami megszakítja a kapcsolódást a munkamenet-gazdagéphez.
+   - Az ügynök telepítése során felmerülő problémák, amelyek megszakítják a kapcsolódást a munkamenet-gazdagéphez.
 
 Ez a cikk végigvezeti a gyakori forgatókönyvek megoldásain, valamint a kapcsolódási problémák megoldásán.
 
@@ -184,7 +184,7 @@ A probléma megoldásához módosítsa a szívverés küszöbértékét:
 1. Nyissa meg a parancssort rendszergazdaként.
 2. Adja meg a **qwinsta** parancsot, és futtassa.
 3. Két verem-összetevőnek kell megjelennie: **RDP-TCP** és **RDP-SxS**. 
-   - Az Ön által használt operációs rendszer verziójától függően előfordulhat, hogy az **RDP-SxS** a Build száma követheti, ahogy az alábbi képernyőképen is látható. Ha igen, ügyeljen rá, hogy később írja le ezt a számot.
+   - A használt operációs rendszer verziójától függően előfordulhat, hogy az **RDP-SxS** a Build száma követi. Ha igen, ügyeljen rá, hogy később írja le ezt a számot.
 4. Nyissa meg a Beállításszerkesztőt.
 5. Nyissa meg a **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**.
 6. A **WinStations** alatt több mappát is láthat a különböző stack-verziókhoz. Válassza ki azt a mappát, amely megfelel a 3. lépésben szereplő verziószámnak.
@@ -207,7 +207,7 @@ A probléma megoldásához a következő lépésekkel szabadítson fel lemezter�
 Nyisson meg egy PowerShell-ablakot rendszergazdaként, és futtassa a következő parancsmagot:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 Ha a munkamenet-gazdagép vagy a gazdagépen lévő gazdagépek állapota mindig nem **érhető el** vagy nem **frissíthető**, akkor előfordulhat, hogy az ügynök vagy a verem telepítése sikertelen volt.

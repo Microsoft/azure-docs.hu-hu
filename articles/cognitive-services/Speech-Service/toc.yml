@@ -529,8 +529,6 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Tárolók – GYIK
-          href: speech-container-faq.md
         - name: Cognitive Services-tárolók – dokumentáció
           href: ../containers/index.yml
 - name: Eszközök

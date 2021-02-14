@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 70b42fb5522b31b5e7e15b5715717f0d010d56dc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 725f15d72694534da1fd924b3b6ffe223722fd3d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052413"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104467"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -140,4 +140,4 @@ Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Az
 ## <a name="next-steps"></a>Következő lépések  
 
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
-* [Kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)
+* [SMB-vagy kettős protokollú kötetek hibáinak megoldása](troubleshoot-dual-protocol-volumes.md)

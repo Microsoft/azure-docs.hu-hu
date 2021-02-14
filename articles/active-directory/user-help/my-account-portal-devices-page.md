@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798210"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096208"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
 
@@ -27,7 +27,12 @@ A **saját fiók** portál **eszközök** lapján kezelheti a munkahelyi vagy is
 - Tiltsa le az összes olyan eszközt, amely már nem tulajdonosa, elveszett vagy ellopták.
 
 >[!Important]
->Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott eszköz-információkat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más felhasználások eszköz-kezelésével kapcsolatos információkat keres, tekintse meg az [eszköz identitásait ismertető dokumentációt](../devices/index.yml).
+>Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott eszköz-információkat próbáljanak frissíteni. Ha a személyes Microsoft-fiók való bejelentkezéskor hibaüzenet jelenik meg, akkor is bejelentkezhet a szervezet tartományneve (például contoso.com) vagy a szervezete **bérlői azonosítójának** használatával a következő URL-címek egyikében:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Ha Ön rendszergazda, aki az alkalmazottak és más felhasználások eszköz-kezelésével kapcsolatos információkat keres, tekintse meg az [eszköz identitásait ismertető dokumentációt](../devices/index.yml).
 
 ## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
 
@@ -64,7 +69,7 @@ Ha kizárta az eszközét, vagy végzetes hibát észlel, lépjen egy másik esz
 
 2. Válassza a **BitLocker-kulcsok megtekintése** a zárolt eszközhöz lehetőséget, és jegyezze fel a zárolt eszköz BitLocker-kulcsát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csatlakoztatott eszközök megtekintése után a következőket teheti:
 

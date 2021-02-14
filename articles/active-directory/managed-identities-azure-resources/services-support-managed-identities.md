@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 969ca74d628da2bf91e0a7c091c9792f2676fb71
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555616"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095681"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -355,6 +355,17 @@ Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális
 Tekintse át az alábbi listát az Azure Signaler szolgáltatás felügyelt identitásának konfigurálásához (az elérhető régiókban):
 
 - [Azure Resource Manager-sablon](../../azure-signalr/howto-use-managed-identity.md)
+
+### <a name="azure-resource-mover"></a>Azure Resource Mover
+
+Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Rendszer által hozzárendelt | Elérhető azokon a régiókban, ahol elérhető az Azure Resource mozgató szolgáltatás | Nem érhető el | Nem érhető el | Nem érhető el |
+| Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
+
+Tekintse át a következő dokumentumot az Azure-erőforrás Mozgatójának használatához:
+
+- [Azure Resource Mover](../../resource-mover/overview.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD-hitelesítést támogató Azure-szolgáltatások
 

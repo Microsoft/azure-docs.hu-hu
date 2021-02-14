@@ -781,6 +781,8 @@
             - name: Rendelkezésre állási riasztások
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
+            - name: SLA-jelentés
+              href: app/sla-report.md
             - name: Hibaelhárítás
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -794,8 +796,8 @@
         - name: Élő metrikastream
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
-        - name: SLA-jelentés
-          href: app/sla-report.md
+        - name: Munkaelem-integráció
+          href: app/work-item-integration.md
         - name: Mérőszámok
           items:
             - name: Naplóalapú és előre összesített metrikák

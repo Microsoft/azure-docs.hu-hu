@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539744"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099914"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -193,7 +193,7 @@ A **qwinsta** kimenete az **RDP-SxS** fogja listázni a kimenetben, ha a párhuz
 > [!div class="mx-imgBorder"]
 > ![Az egymás melletti verem telepítve van vagy engedélyezve van a kimenetben RDP-SxS-ként felsorolt qwinsta.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és ellenőrizze, hogy az értékek egyeznek-e. Ha a beállításkulcsok hiányoznak, vagy az értékek nem egyeznek, kövesse a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md) -lel című témakör utasításait a párhuzamos verem újratelepítésének módjáról.
+Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és ellenőrizze, hogy az értékek egyeznek-e. Ha a beállításkulcsok hiányoznak, vagy az értékek nem egyeznek, győződjön meg arról, hogy [támogatott operációs rendszert](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os)futtat. Ha Ön, kövesse a [gazdagép létrehozása a PowerShell használatával](create-host-pools-powershell.md) című témakör utasításait a párhuzamos verem újratelepítéséhez.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -343,7 +343,7 @@ Ha a felhasználók egy biztonsági hiba miatt nem sikerült csatlakozni a távo
 
 A szabályzattal kapcsolatos további információkért lásd: [bejelentkezés engedélyezése távoli asztali szolgáltatásokon](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az Alkalmazáskészletek létrehozása](troubleshoot-set-up-issues.md)című témakört.

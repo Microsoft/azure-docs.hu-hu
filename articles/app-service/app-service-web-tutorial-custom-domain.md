@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608265"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096344"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -127,7 +127,7 @@ Ha a-től eltérő altartománnyal rendelkezik `www` , cserélje le az `www` alt
 
 Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (ahol az az `<app-name>.azurewebsites.net` `<app-name>` alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
 
-| Rekordtípus | Gazda | Érték | Megjegyzések |
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
 | TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
@@ -195,7 +195,7 @@ A rekord leképezéséhez az alkalmazás külső IP-címére van szükség. Ezt 
 
 Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfelső szintű tartományhoz, hozzon létre két rekordot:
 
-| Rekordtípus | Gazda | Érték | Megjegyzések |
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
 | - | - | - |
 | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés ( `@` általában a legfelső szintű tartományt jelenti). |
 | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja a következőt: `asuid` . |
@@ -203,7 +203,7 @@ Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfel
 > [!NOTE]
 > Egy altartomány (például) egy `www.contoso.com` , az ajánlott [CNAME-rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
 >
-> | Rekordtípus | Gazda | Érték |
+> | Rekordtípus | Gazdagép | Érték |
 > | - | - | - |
 > | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 > | TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) |
@@ -256,7 +256,7 @@ Az oktatóanyag példájában egy [helyettesítő karaktert tartalmazó DNS-neve
 
 Rendelje hozzá a helyettesítő karaktert `*` az alkalmazás alapértelmezett tartománynevéhez ( `<app-name>.azurewebsites.net` ahol az az `<app-name>` alkalmazás neve). A helyettesítő karakter nevének leképezéséhez hozzon létre két rekordot:
 
-| Rekordtípus | Gazda | Érték | Megjegyzések |
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
 | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-a-domain-verification-id) | App Service hozzáfér a `asuid` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
@@ -309,17 +309,20 @@ Ha HTTP 404 (nem található) hibaüzenet jelenik meg, amikor megkeresi az egyé
 - A konfigurált egyéni tartományból hiányzik egy rekord vagy egy CNAME rekord.
 - A böngészőügyfél gyorsítótárazta a tartomány régi IP-címét. Törölje a gyorsítótárat, és ismételje meg a DNS-feloldási tesztet. Windows-gépen az `ipconfig /flushdns` paranccsal törölheti a gyorsítótárat.
 
-<a name="virtualdir" aria-hidden="true"></a>
-
 ## <a name="migrate-an-active-domain"></a>Aktív tartomány migrálása
 
 Élő webhely és hozzá tartozó DNS-tartománynév migrálása leállás nélkül az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](manage-custom-dns-migrate-domain.md).
+
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="redirect-to-a-custom-directory"></a>Átirányítás egyéni könyvtárra
 
 Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Bizonyos webes keretrendszerek azonban nem a gyökérkönyvtárban kezdődnek. A [Laravel](https://laravel.com/) például a `public` alkönyvtárban indul. A `contoso.com` DNS-példa folytatásához egy ilyen alkalmazás a (z) címen érhető el `http://contoso.com/public` , de `http://contoso.com` `public` ehelyett inkább a címtárhoz szeretne csatlakozni. Ez a lépés nem jár a DNS-feloldással, hanem a virtuális könyvtár testreszabásával kapcsolatos.
 
-A virtuális könyvtárak testreszabásához válassza az **Alkalmazásbeállítások** lehetőséget a webalkalmazás lap bal oldali ablaktábláján.
+A Windows-alkalmazások virtuális könyvtárainak testreszabásához válassza az **Alkalmazásbeállítások** lehetőséget a webalkalmazás lap bal oldali ablaktábláján. 
+
+> [!NOTE]
+> A Linux-alkalmazások nem rendelkeznek ezzel az oldallal. A Linux-alkalmazások hely gyökerének módosításához tekintse meg a nyelvspecifikus konfigurációs útmutatókat (például:[php](configure-language-php.md?pivots=platform-linux#change-site-root)).
 
 A lap alján, a virtuális gyökérkönyvtár (`/`) alapértelmezés szerint a `site\wwwroot` könyvtárra mutat, amely az alkalmazáskód gyökérkönyvtára. Módosítsa úgy, hogy ehelyett a `site\wwwroot\public` könyvtárra mutasson, és mentse a módosításokat.
 

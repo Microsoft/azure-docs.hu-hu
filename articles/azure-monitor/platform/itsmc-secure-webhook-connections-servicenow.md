@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: fc384ffbc246f5ce9fa84b8161cbc4a5226fa5c8
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7801145ba1bcaa2ffd543becfe190f05d232e8c8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841193"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104960"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>A ServiceNow Azure Monitorhoz való kapcsolódása
 
@@ -22,7 +22,7 @@ A következő szakaszokban részletesen ismertetjük a ServiceNow-termék össze
 Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
 
 * Az Azure AD regisztrálva van.
-* A ServiceNow Event Management-ITOM támogatott verziója (Orlando vagy újabb verzió).
+* A ServiceNow Event Management-ITOM támogatott verziója (New York-i vagy újabb verzió).
 
 ## <a name="configure-the-servicenow-connection"></a>A ServiceNow-kapcsolatok konfigurálása
 

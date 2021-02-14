@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430997"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097075"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -162,7 +162,7 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio notebookok felülete (novemberi frissítés)
 + **Új funkciók**
-   + Natív terminál. A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az [integrált terminálon](./how-to-run-jupyter-notebooks.md#terminal) keresztül is.
+   + Natív terminál. A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az [integrált terminálon](./how-to-access-terminal.md) keresztül is.
   + Duplikált mappa 
   + Költségszámítás a számítási legördülő listához 
   + Offline számítási Pylance 
@@ -940,7 +940,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  |
+| Webalapú eszköz  |     Description  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1452,7 +1452,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | 
+| Webalapú eszköz | Description | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

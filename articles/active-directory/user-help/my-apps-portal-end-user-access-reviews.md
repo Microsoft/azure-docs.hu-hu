@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 34885e2a364778a2f81f4920aa26aa3bb5f40320
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124812"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095018"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján
 
@@ -29,6 +29,11 @@ Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérj
 
 >[!Important]
 >Ez a tartalom a **saját alkalmazások** felhasználói számára készült. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](../manage-apps/index.yml).
+>
+> Ha személyes Microsoft-fiók használatával jelentkezik be, akkor továbbra is bejelentkezhet a szervezet tartománynevére (például contoso.com) vagy a szervezet **bérlői azonosítójára** a rendszergazdától a következő URL-címek egyikében:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="manage-access-reviews"></a>Hozzáférési felülvizsgálatok kezelése
 
@@ -41,17 +46,17 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
-2. Nyissa meg a webböngészőjét, és lépjen a webhelyre https://myapps.microsoft.com , vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például: https://myapps.microsoft.com/contoso.com .
+1. Nyissa meg a webböngészőjét, és lépjen a webhelyre https://myapps.microsoft.com , vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például: https://myapps.microsoft.com/contoso.com .
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
     ![Alkalmazások lap a saját alkalmazások portálon](media/my-apps-portal/my-apps-home.png)
 
-3. Válassza a **hozzáférési felülvizsgálatok** csempét a jóváhagyásra váró hozzáférési felülvizsgálatok listájának megtekintéséhez.
+1. Válassza a **hozzáférési felülvizsgálatok** csempét a jóváhagyásra váró hozzáférési felülvizsgálatok listájának megtekintéséhez.
 
     ![Hozzáférési felülvizsgálatok lap a szervezetre vonatkozó függőben lévő hozzáférési felülvizsgálatokkal](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. A hozzáférési felülvizsgálat elindításához válassza az **Áttekintés megkezdése** lehetőséget.
+1. A hozzáférési felülvizsgálat elindításához válassza az **Áttekintés megkezdése** lehetőséget.
 
 5. Tekintse át a hozzáférését, és döntse el, hogy továbbra is szükséges-e.
 

@@ -39,8 +39,6 @@
       href: access-control.md
     - name: Beépített helyi RBAC-szerepkörök
       href: built-in-roles.md
-- name: Útmutatók
-  items: null
 - name: Referencia
   items:
     - name: Azure PowerShell

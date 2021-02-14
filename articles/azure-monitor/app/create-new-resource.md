@@ -2,17 +2,20 @@
 title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062913"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104586"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
 Az Azure Application Insights Microsoft Azure *erőforrásban* jeleníti meg az alkalmazással kapcsolatos információkat. Egy új erőforrás létrehozása ezért a [Application Insights beállításának része, amely egy új alkalmazás figyelésére][start]szolgál. Miután létrehozta az új erőforrást, megszerezheti a kialakítási kulcsát, és használhatja azt az Application Insights SDK konfigurálásához. A kialakítási kulcs a telemetria az erőforráshoz csatolja.
+
+> [!IMPORTANT]
+> A klasszikus Application Insights elavult. Kövesse ezeket az [utasításokat a munkaterületen alapuló Application Insights való frissítéshez](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Bejelentkezés Microsoft Azure
 

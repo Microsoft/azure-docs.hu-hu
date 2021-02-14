@@ -31,7 +31,7 @@
   items:
     - name: Modell tesztelése
       href: test-your-model.md
-    - name: Tartalombesoroló teljesítményének fokozása
+    - name: Modell továbbfejlesztése
       href: getting-started-improving-your-classifier.md
     - name: Tartomány kiválasztása
       href: select-domain.md

@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan telepíthet és konfigurálhat egy olyan NGINX 
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: e5a766eafb8f4b576a571b9b5379f343bbef54ea
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ee196bd749ad5821a1855d4549b22698c724b3f5
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729043"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104926"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>HTTPS bejövőforgalom-vezérlő létrehozása, és saját TLS-tanúsítványok használata az Azure Kubernetes Service-ben (AKS)
 
@@ -219,7 +219,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   tls:
   - hosts:
@@ -374,7 +374,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

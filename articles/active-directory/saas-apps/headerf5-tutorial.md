@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: ba58af8d3d28efcc7f97be01a96202a2203a3459
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 1290a13f23f49a99d5b9d962d93d91bc3331356d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796927"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093131"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Oktatóanyag: egyszeri bejelentkezés (SSO) konfigurálása Azure Active Directory és F5 között
 
@@ -26,7 +26,8 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az F5-et Azure Act
 * Engedélyezze, hogy a felhasználók automatikusan bejelentkezzenek az F5-be az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-ban való egyszeri bejelentkezéssel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md)című témakört.
+> [!NOTE]
+> F5 BIG-IP APM [vásárlása most](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -113,18 +114,18 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 Az F5 Azure AD-integrációjának konfigurálásához az F5 billentyűt kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **F5** kifejezést.
 1. Válassza az **F5** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése F5 rendszerhez
+## <a name="configure-and-test-azure-ad-sso-for-f5"></a>Azure AD SSO konfigurálása és tesztelése F5 rendszerhez
 
 Konfigurálja és tesztelje az Azure AD SSO-t az F5 használatával egy **B. Simon** nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az F5 billentyűvel.
 
-Az Azure AD SSO az F5 használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO az F5 használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -137,7 +138,7 @@ Az Azure AD SSO az F5 használatával történő konfigurálásához és tesztel
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **F5** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal az **F5** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
@@ -183,19 +184,10 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza az **F5** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-1. Kattintson a **feltételes hozzáférés** lehetőségre.
-1. Kattintson az **új házirend** elemre.
-1. Mostantól megtekintheti az F5 alkalmazás erőforrásként a feltételes hozzáférési házirendet, és alkalmazhatja a feltételes hozzáférést, beleértve a többtényezős hitelesítést, az eszközön alapuló hozzáférés-vezérlést vagy az Identity Protection-házirendet.
 
 ## <a name="configure-f5-sso"></a>Az F5 SSO konfigurálása
 
@@ -355,9 +347,9 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     f. **Egyező forrás =% {Session. Server. landinguri}** 
 
-    : **Egyező érték =/** _
+    : **Egyező érték =/***
 
-    h. Kattintson az _ *frissítés* elemre.*
+    h. Kattintson a **frissítés** gombra
 
     i. Kattintson **az OK** gombra
 
@@ -449,26 +441,24 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az F5 billentyű
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja az F5 bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot.  
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Lépjen közvetlenül az F5 bejelentkezési URL-címre, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az F5-re, amelyhez be kell állítania az egyszeri bejelentkezést 
 
-- [Az F5 kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások F5 csempére kattint, ha az SP módban van konfigurálva, akkor a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Az F5 egyszeri bejelentkezés konfigurálása a Kerberos-alkalmazáshoz](kerbf5-tutorial.md)
+> [!NOTE]
+> F5 BIG-IP APM [vásárlása most](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview).
 
-- [Az F5 egyszeri bejelentkezés konfigurálása a speciális Kerberos-alkalmazáshoz](advance-kerbf5-tutorial.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [F5 BIG-IP APM és Azure AD-integráció a biztonságos hibrid hozzáféréshez](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+Az F5 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-- [Oktatóanyag az F5 BIG-IP Virtual Edition virtuális gép üzembe helyezéséhez az Azure IaaS a biztonságos hibrid hozzáférés érdekében](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
-
-- [Oktatóanyag Azure Active Directory egyszeri bejelentkezéses integrációhoz az F5 BIG-IP jelszó nélküli VPN-hez](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn) 
