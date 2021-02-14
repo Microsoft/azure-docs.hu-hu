@@ -1,20 +1,18 @@
 ---
 title: Azure Data Factory titkosítása az ügyfél által felügyelt kulccsal
 description: A Data Factory biztonság növelése a Bring Your Own Keyokkal (BYOK)
-services: data-factory
-documentationcenter: ''
 author: chez-charlie
 ms.service: data-factory
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: f1a7bffc05d83b30fe9e5bcd6e17bf6bc0192e1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2a943b82689184353b9d350b931a069df9c35ff2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348942"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392697"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -114,6 +112,6 @@ Data Factory titkosításhoz használt kulcs módosításához manuálisan kell 
 
 A tervezés után az ügyfél által felügyelt kulcs funkció engedélyezése után nem távolíthatja el az extra biztonsági lépést. A gyár és az adatok titkosítása mindig egy ügyfél által megadott kulccsal történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

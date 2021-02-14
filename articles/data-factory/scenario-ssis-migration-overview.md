@@ -1,22 +1,17 @@
 ---
 title: Helyszíni SQL Server Integration Services (SSIS) számítási feladatok migrálása Azure Data Factory (ADF) SSIS
 description: Telepítse át a helyszíni SSIS számítási feladatokat az ADF-SSIS.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: ef4b01e38a60d6770ba476988fab934ada0bc631
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635694"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373606"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Helyszíni SSIS számítási feladatok migrálása az ADF-SSIS
 
@@ -28,7 +23,7 @@ Amikor áttelepíti az adatbázis-munkaterheléseket a helyszíni SQL Serverról
 
 A Azure Data Factory (ADF) Azure-SSIS Integration Runtime (IR) támogatja a SSIS-csomagok futtatását. A Azure-SSIS IR kiépítése után a csomagok üzembe helyezéséhez és futtatásához használhatja a jól ismert eszközöket, például a SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és a parancssori segédeszközöket, például a dtinstall/dtutil/dtexec. További információ: az [Azure SSIS lift-and-SHIFT áttekintése](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-Ebből a cikkből megtudhatja, hogy a helyszíni SSIS származó ETL számítási feladatok áttelepítési folyamata az ADF-ben SSIS. Az áttelepítési folyamat két fázisból áll: az **értékelésből** és az **áttelepítésből** .
+Ebből a cikkből megtudhatja, hogy a helyszíni SSIS származó ETL számítási feladatok áttelepítési folyamata az ADF-ben SSIS. Az áttelepítési folyamat két fázisból áll: az **értékelésből** és az **áttelepítésből**.
 
 ## <a name="assessment"></a>Értékelés
 
@@ -49,11 +44,11 @@ A Data Migration Assistant (DMA) egy ingyenesen letölthető eszköz erre a cél
   - A MSDB, amely a SSIS-csomagok tárolására használt SQL Server rendszeradatbázisa.
   - Felügyelt fájlrendszer, amely a SSIS-csomagok tárolására szolgáló SQL Server telepítési útvonal adott mappája.
 
-A DMA jelenleg támogatja a **fájlrendszerben** , a **Package Store** -ban és a **SSIS-katalógusban** tárolt csomagok kötegelt értékelését a **DMA v 5.0-s verziójának** futtatása óta.
+A DMA jelenleg támogatja a **fájlrendszerben**, a **Package Store**-ban és a **SSIS-katalógusban** tárolt csomagok kötegelt értékelését a **DMA v 5.0-s verziójának** futtatása óta.
 
 Szerezze be a [DMA](/sql/dma/dma-overview)-t, és [végezze el a csomag értékelését](/sql/dma/dma-assess-ssis).
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 [A forrás](#four-storage-types-for-ssis-packages) SSIS csomagjainak és az adatbázis-munkaterhelések áttelepítési célhelyének függvényében a **SSIS-csomagok** áttelepítésének lépései, valamint a SSIS-csomagok végrehajtásának elvégzésére szolgáló **SQL Server Agent feladatok** eltérőek lehetnek. Két forgatókönyv létezik:
 

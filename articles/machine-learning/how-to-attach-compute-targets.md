@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e4d25b5ec50346c7a2ecabff835209218d1a3b63
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033714"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093403"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Számítási célok beállítása a modell betanításához és üzembe helyezéséhez
 
@@ -66,7 +66,7 @@ Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell
 
 A Azure Machine Learning a saját számítási erőforrásait is támogatja, és csatolja azt a munkaterülethez. Az egyik ilyen erőforrástípus egy tetszőleges távoli virtuális gép, feltéve, hogy az Azure Machine Learningről érhető el. Az erőforrás lehet egy Azure-beli virtuális gép, egy távoli kiszolgáló a szervezetben vagy a helyszínen. Pontosabban, mivel az IP-cím és a hitelesítő adatok (Felhasználónév és jelszó, vagy SSH-kulcs) esetében bármilyen elérhető virtuális gép használható távoli futtatáshoz.
 
-Használhat egy rendszer által készített Conda-környezetet, egy már meglévő Python-környezetet vagy egy Docker-tárolót. A Docker-tárolón való végrehajtáshoz a virtuális gépen futó Docker-motorral kell rendelkeznie. Ez a funkció különösen akkor hasznos, ha rugalmasabb, felhőalapú fejlesztési/kísérletezési környezetet szeretne használni, mint a helyi gépen.
+Használhat egy [rendszer által készített Conda-környezetet](how-to-use-environments.md), egy már meglévő [Python-környezetet](how-to-configure-environment.md#local)vagy egy [Docker-tárolót](https://docs.docker.com/engine/install/ubuntu/). A Docker-tárolón való végrehajtáshoz a virtuális gépen futó Docker-motorral kell rendelkeznie. Ez a funkció különösen akkor hasznos, ha rugalmasabb, felhőalapú fejlesztési/kísérletezési környezetet szeretne használni, mint a helyi gépen.
 
 Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használata választható Azure-beli virtuális gép. Ez a virtuális gép egy előre konfigurált adatelemzési és AI-fejlesztési környezet az Azure-ban. A virtuális gép számos eszközt és keretrendszert kínál a teljes életciklusú gépi tanulás fejlesztéséhez. A DSVM és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [fejlesztési környezet konfigurálása](./how-to-configure-environment.md#dsvm).
 
@@ -327,7 +327,7 @@ Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](ht
 > [!TIP]
 > Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) másolhatja az Adatmásolást a betanítás előtt.
 
-## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instance
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container-példány
 
 A modell telepítésekor a Azure Container Instances (ACI) dinamikusan jön létre. Más módon nem hozhat létre vagy csatolhat ACI-t a munkaterülethez. További információ: [modell üzembe helyezése Azure Container instances](how-to-deploy-azure-container-instance.md).
 

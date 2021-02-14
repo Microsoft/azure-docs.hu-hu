@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozgun
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 01b78fa3250f371cfc4d713668531664ef8c139e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363168"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-kezeléshez az Azure CLI-vel
 
@@ -34,6 +34,9 @@ A várólista-információk olvasására és írására szolgáló Azure CLI-par
 
 A paraméter használatához győződjön `--auth-mode` meg arról, hogy telepítette az Azure CLI v 2.0.46 vagy újabb verzióját. Futtassa a parancsot a `az --version` telepített verziójának vizsgálatához.
 
+> [!NOTE]
+> Ha egy Storage-fiók zárolva van egy Azure Resource Manager **írásvédett** zárolással, a [kulcsok listázása](/rest/api/storagerp/storageaccounts/listkeys) művelet nem engedélyezett ehhez a Storage-fiókhoz. A **kulcsok listázása** post művelet, és az összes post művelet meg lesz akadályozva, ha **írásvédett** zárolás van konfigurálva a fiókhoz. Emiatt, ha a fiók **írásvédett** zárolással van zárolva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure ad hitelesítő adatait kell használniuk a várólista adatainak eléréséhez.
+
 > [!IMPORTANT]
 > Ha kihagyja a `--auth-mode` paramétert, vagy beállítja a értékre `key` , az Azure CLI a fiók hozzáférési kulcsát próbálja használni az engedélyezéshez. Ebben az esetben a Microsoft azt javasolja, hogy a hozzáférési kulcsot a parancson vagy a `AZURE_STORAGE_KEY` környezeti változón keresztül adja meg. A környezeti változókról további információt a [környezeti változók beállítása az engedélyezési paraméterekhez](#set-environment-variables-for-authorization-parameters)című szakaszban talál.
 >
@@ -41,7 +44,7 @@ A paraméter használatához győződjön `--auth-mode` meg arról, hogy telepí
 
 ## <a name="authorize-with-azure-ad-credentials"></a>Engedélyezés Azure AD-beli hitelesítő adatokkal
 
-Ha Azure AD-beli hitelesítő adatokkal jelentkezik be az Azure CLI-be, az OAuth 2,0 hozzáférési tokent ad vissza. Ezt a tokent a rendszer automatikusan használja az Azure CLI-vel a következő adatműveletek engedélyezéséhez Blob Storage vagy Queue Storage. A támogatott műveletek esetében már nem kell átadnia egy fiók kulcsát vagy SAS-jogkivonatát a paranccsal.
+Ha Azure AD-beli hitelesítő adatokkal jelentkezik be az Azure CLI-be, az OAuth 2,0 hozzáférési tokent ad vissza. Ezt a tokent a rendszer automatikusan használja az Azure CLI-vel a következő adatműveletek engedélyezéséhez Queue Storage. A támogatott műveletek esetében már nem kell átadnia egy fiók kulcsát vagy SAS-jogkivonatát a paranccsal.
 
 Engedélyeket rendelhet az Azure AD rendszerbiztonsági tag számára az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával az üzenetsor-adathoz. Az Azure Storage-beli Azure-szerepkörökkel kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése az Azure Storage-adatokhoz az Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
 
@@ -55,7 +58,7 @@ További információ az egyes Azure Storage-műveletekhez szükséges engedély
 
 Az alábbi példa bemutatja, hogyan hozhat létre várólistát az Azure CLI-vel az Azure AD-beli hitelesítő adataival. A várólista létrehozásához be kell jelentkeznie az Azure CLI-be, és szüksége lesz egy erőforráscsoport és egy Storage-fiókra.
 
-1. A várólista létrehozása előtt rendelje hozzá a [Storage blob-adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) szerepkört saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](../common/storage-auth-aad-rbac-portal.md).
+1. A várólista létrehozása előtt rendelje hozzá a [tárolási üzenetsor adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) szerepkörét. Annak ellenére, hogy Ön a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie az adatműveletek elvégzéséhez a Storage-fiókon. Az Azure-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adatokhoz való hozzáféréshez](../common/storage-auth-aad-rbac-portal.md).
 
     > [!IMPORTANT]
     > Az Azure-beli szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
@@ -98,7 +101,7 @@ az storage queue create \
 
 A környezeti változókban megadhatja az engedélyezési paramétereket, így elkerülhető, hogy azok az Azure Storage-adatműveletek minden hívásán bekerüljenek. Az alábbi táblázat az elérhető környezeti változókat ismerteti.
 
-| Környezeti változó | Leírás |
+| Környezeti változó | Description |
 |--|--|
 | **AZURE_STORAGE_ACCOUNT** | A tárfiók neve. Ezt a változót a Storage-fiók kulcsával vagy egy SAS-tokenrel együtt kell használni. Ha egyik sincs jelen, az Azure CLI a hitelesített Azure AD-fiók használatával megkísérli lekérni a Storage-fiók hozzáférési kulcsát. Ha egyszerre nagy számú parancs fut, az Azure Storage erőforrás-szolgáltató szabályozási korlátja is elérhető. Az erőforrás-szolgáltatói korlátokkal kapcsolatos további információkért tekintse [meg az Azure Storage erőforrás-szolgáltató skálázhatósági és teljesítménybeli céljait](../common/scalability-targets-resource-provider.md)ismertető témakört. |
 | **AZURE_STORAGE_KEY** | A tárfiókkulcs. Ezt a változót a Storage-fiók nevével együtt kell használni. |

@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 83cf8840ffb9d123efa88d4acc304c8af4db5bf8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593078"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102461"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Gyorsútmutató: Bérlő beállítása
 
@@ -50,7 +50,7 @@ Számos fejlesztő rendelkezik olyan szolgáltatásokkal vagy előfizetésekkel,
 
 A bérlő ellenõrzése:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Használja az alkalmazás felügyeletéhez használni kívánt fiókot.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>. Használja az alkalmazás felügyeletéhez használni kívánt fiókot.
 1. Győződjön meg a jobb felső sarokban. Ha Bérlővel rendelkezik, automatikusan bejelentkezik. A bérlő neve közvetlenül a fiók neve alatt jelenik meg.
    * Vigye a kurzort a fiókja nevére, hogy megtekintse a nevét, e-mail-címét, könyvtárát vagy bérlői AZONOSÍTÓját (GUID) és tartományát.
    * Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik.

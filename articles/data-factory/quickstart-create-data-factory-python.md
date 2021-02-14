@@ -1,24 +1,20 @@
 ---
 title: 'Gyors útmutató: Azure Data Factory létrehozása a Python használatával'
 description: Az adatok előállítójának használatával az Azure Blob Storage egyik helyéről egy másik helyre másolhatja az adatait.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 883b7df1d4dfd1b405f2952aa675db5948ab3ca3
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234290"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372365"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
@@ -460,6 +456,6 @@ Az adat-előállító törléséhez adja hozzá az alábbi kódot a programhoz:
 adf_client.factories.delete(rg_name, df_name)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

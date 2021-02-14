@@ -1,20 +1,17 @@
 ---
 title: Az Azure Data Factory bemutatása
 description: 'A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97812868"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392544"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -57,12 +54,12 @@ Ha inkább a kód átalakítását részesíti előnyben, az ADF támogatja a k�
 
 ### <a name="cicd-and-publish"></a>CI/CD és közzététel
 A [Data Factory teljes körű támogatást nyújt](continuous-integration-deployment.md) az adatfolyamatok CI/CD-hez az Azure DevOps és a GitHub használatával. Ez lehetővé teszi az ETL-folyamatok fokozatos fejlesztését és továbbítását a végtermék közzététele előtt. Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
-### <a name="monitor"></a>Figyelés
+### <a name="monitor"></a>Monitor
 Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. A Azure Data Factory beépített támogatást nyújt a folyamat-figyeléshez Azure Monitor, API, PowerShell, Azure Monitor naplók és az Azure Portal található állapotadatok használatával.
 
 ## <a name="top-level-concepts"></a>Legfelső szintű fogalmak
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Azure Data Factory a legfontosabb összetevőkből áll.
-- Folyamatok
+- Pipelines
 - Tevékenységek
 - Adathalmazok
 - Társított szolgáltatások
@@ -94,7 +91,7 @@ A társított szolgáltatásokat két célból használjuk a Data Factoryban:
 
 - Olyan **számítási erőforrás** jelölésére, amely egy tevékenység végrehajtását képes tárolni. A HDInsightHive-tevékenység végrehajtása például egy HDInsight Hadoop-fürtön történik. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd az [adatok átalakítása](transform-data.md) cikkben.
 
-### <a name="triggers"></a>Eseményindítók
+### <a name="triggers"></a>Triggerek
 Az eseményindítók olyan feldolgozási egységek, amelyek meghatározzák, hogy mikor kezdődjön egy folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak.
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
@@ -113,7 +110,7 @@ A társított szolgáltatások szintén adattárak vagy számítási környezete
 ### <a name="variables"></a>Változók
 A változókat a folyamatokon belül lehet használni az ideiglenes értékek tárolására, és a paraméterekkel együtt használhatók a folyamatok, az adatfolyamatok és az egyéb tevékenységek közötti értékek átadásának engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő, fontos dokumentumok a következők:
 
 - [Adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md)
@@ -126,5 +123,5 @@ A következő, fontos dokumentumok a következők:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager sablon](quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager-sablon](quickstart-create-data-factory-resource-manager-template.md)
  

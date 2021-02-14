@@ -1,22 +1,18 @@
 ---
 title: Az első adatgyár létrehozása (Resource Manager-sablon)
 description: Ebben az oktatóprogramban egy egyszerű minta Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: e65039d39bea4063f717709f97b090e465c5e3c4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: deeed3890094961b0934a6e093b9f5025990d1a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508509"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392102"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory létrehozása Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
@@ -49,7 +45,7 @@ A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: e
 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 
-| Entitás | Leírás |
+| Entitás | Description |
 | --- | --- |
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. |
 | HDInsight igény szerinti társított szolgáltatás |Egy igény szerinti HDInsight-fürtöt társít a data factoryhoz. A rendszer automatikusan létrehozza a fürtöt az adatok feldolgozásához, majd törli a feldolgozás befejezése után. |
@@ -620,7 +616,7 @@ Ez a sablon létrehozza a GatewayUsingArmDF nevű data factoryt a GatewayUsingAR
 
 ## <a name="see-also"></a>Lásd még:
 
-| Témakör | Leírás |
+| Témakör | Description |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |

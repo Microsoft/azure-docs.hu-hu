@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható a fürt automatikus méretezése,
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223142"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373249"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus skálázása az alkalmazás igényeinek kielégítéséhez az Azure Kubernetes Service-ben (AKS)
 
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely megadja a `--enable-cluster-autoscaler` , a és a `--min-count` `--max-count` paramétereket.
+
+> [!NOTE]
+> Ha azt tervezi, hogy a fürt automéretezőjét olyan nodepools használja, amely több zónára terjed ki, és kihasználja az olyan zónákhoz kapcsolódó ütemezési funkciókat, mint például a kötet topológia-ütemezése, az ajánlásnak egy nodepool kell rendelkeznie, és engedélyeznie kell az `--balance-similar-node-groups` autoskálázási profilt. Így biztosítható, hogy az autoskálázás sikeresen felskálázásra kerüljön, és megpróbálkozik a nodepools méretével.
 
 ## <a name="next-steps"></a>Következő lépések
 

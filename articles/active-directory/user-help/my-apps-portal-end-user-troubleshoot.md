@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833979"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094967"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>A My apps portál problémáinak elhárítása
 
@@ -31,9 +31,9 @@ Ha problémákat tapasztal a saját alkalmazások biztonságos bejelentkezési b
 
     - **Microsoft Edge.** Windows 10 évfordulós kiadáson vagy újabb rendszeren fut.
 
-    - **Google Chrome.** Windows 7 vagy újabb, illetve Mac OS X vagy újabb rendszeren fut.
+    - **Google Chrome.** Windows 7 vagy újabb rendszeren, valamint macOS X vagy újabb rendszereken.
 
-    - **Mozilla Firefox 26,0 vagy újabb verzió.** Windows XP SP2 vagy újabb rendszeren, valamint Mac OS X 10,6-es vagy újabb verzión fut.
+    - **Mozilla Firefox 26,0 vagy újabb verzió.** Windows XP SP2 vagy újabb rendszeren fut, macOS X 10,6 vagy újabb rendszereken.
 
     - **Internet Explorer 11.** Windows 7 vagy újabb rendszeren fut (korlátozott támogatás).
 
@@ -46,6 +46,11 @@ Ha problémákat tapasztal a saját alkalmazások biztonságos bejelentkezési b
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Nem tudok bejelentkezni a **My apps** portálra
 
 Ha nem sikerül bejelentkeznie a **My apps** portálra, a következőket teheti meg:
+
+- Ha személyes Microsoft-fiók használatával jelentkezik be, akkor továbbra is bejelentkezhet a szervezet tartománynevére (például contoso.com) vagy a szervezet **bérlői azonosítójára** a rendszergazdától a következő URL-címek egyikében:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 - Győződjön meg arról, hogy a megfelelő URL-címet használja. https://myapps.microsoft.comA szervezetnek vagy egy testreszabott lapnak kell lennie, például: https://myapps.microsoft.com/contoso.com .
 

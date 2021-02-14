@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e180ecbf5c68dbd9c179244083a641ac6ed42de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94748063"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371957"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési feladatok végrehajtása: feltárás, modellezés és üzembe helyezés
 
@@ -42,7 +42,7 @@ A különböző nyelveken számos eszközkészletet és csomagot kell betanítan
 Több modell létrehozása után általában a modellek regisztrálásához és kezeléséhez szükséges rendszernek kell lennie. Általában parancsfájlok vagy API-k, valamint háttér-adatbázis vagy verziószámozási rendszer kombinációja szükséges. A következő felügyeleti feladatokhoz néhány lehetőség közül választhat:
 
 1. [Azure Machine Learning – modell-kezelési szolgáltatás](../index.yml)
-2. [ModelDB az MIT](http://modeldb.csail.mit.edu:3000/projects) 
+2. [ModelDB az MIT](https://people.csail.mit.edu/mvartak/papers/modeldb-hilda.pdf) 
 3. [SQL-kiszolgáló modell-felügyeleti rendszerként](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning-kiszolgáló](/sql/advanced-analytics/r/r-server-standalone)
 

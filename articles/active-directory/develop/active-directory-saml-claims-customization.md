@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756071"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102699"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, akkor a Microsoft Identit
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Leírás |
+| NameID formátuma | Description |
 |---------------|-------------|
 | **Alapértelmezett** | A Microsoft Identity platform az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
@@ -81,10 +81,8 @@ További információ [: 3. táblázat: érvényes azonosító értékek forrás
 
 Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben definiált jogcímekhez. Állandó érték hozzárendeléséhez kövesse az alábbi lépéseket:
 
-1. A <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>a **felhasználói attribútumok & jogcímek** szakaszban kattintson a **Szerkesztés** ikonra a jogcímek szerkesztéséhez.
-
+1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>a **felhasználói attribútumok & jogcímek** szakaszban kattintson a **Szerkesztés** ikonra a jogcímek szerkesztéséhez.
 1. Kattintson arra a szükséges jogcímere, amelyet módosítani szeretne.
-
 1. Adja meg az állandó értéket idézőjelek nélkül a **forrás attribútumban** a szervezetnél, majd kattintson a **Save (Mentés**) gombra.
 
     ![Szervezeti attribútumok & jogcímek szakasz a Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
@@ -174,7 +172,7 @@ Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasznál
 
 ![Feltételes konfiguráció igénylése](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-saml-single-sign-on.md)

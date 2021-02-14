@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018241"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362284"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health ügynök telepítése
 
@@ -34,7 +34,7 @@ A következő táblázat a Azure AD Connect Health használatának követelmény
 
 | Követelmény | Leírás |
 | --- | --- |
-| A prémium szintű Azure AD telepítve van. |A Azure AD Connect Health prémium szintű Azure AD egyik funkciója. További információ: [regisztráció a prémium szintű Azure ADra](../fundamentals/active-directory-get-started-premium.md). <br /><br />A 30 napos ingyenes próbaverzió indításához lásd: [próbaverzió indítása](https://azure.microsoft.com/trial/get-started-active-directory/). |
+| Prémium szintű Azure AD (P1 vagy P2) előfizetésben van.  |A Azure AD Connect Health prémium szintű Azure AD (P1 vagy P2) funkció. További információ: [regisztráció a prémium szintű Azure ADra](../fundamentals/active-directory-get-started-premium.md). <br /><br />A 30 napos ingyenes próbaverzió indításához lásd: [próbaverzió indítása](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | Ön globális rendszergazda az Azure AD-ben. |Alapértelmezés szerint csak a globális rendszergazdák telepíthetik és konfigurálhatják az állapotfigyelő ügynököket, érhetik el a portált, és a Azure AD Connect Healthon belül végezhetnek műveleteket. További információkért lásd: [Az Azure AD-címtár felügyelete](../fundamentals/active-directory-whatis.md). <br /><br /> Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával lehetővé teheti, hogy a szervezet más felhasználói hozzáférhessenek Azure AD Connect Healthhoz. További információ: [Azure RBAC for Azure ad Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Fontos**: használjon munkahelyi vagy iskolai fiókot az ügynökök telepítéséhez. Microsoft-fiók nem használható. További információ: [regisztráció az Azure-ba szervezetként](../fundamentals/sign-up-organization.md). |
 | A Azure AD Connect Health ügynök telepítve van az egyes megcélzó kiszolgálókon. | Az állapotfigyelő szolgáltatásoknak a célként megadott kiszolgálókon kell telepíteniük és konfigurálniuk, hogy képesek legyenek az adatfogadásra és a figyelési és elemzési funkciók biztosítására. <br /><br />Ha például az Active Directory összevonási szolgáltatások (AD FS) (AD FS) infrastruktúra adatait szeretné lekérni, telepítenie kell az ügynököt a AD FS-kiszolgálóra és a webalkalmazás-proxy kiszolgálóra. Hasonlóképpen, ha a helyszíni Azure AD Domain Services (Azure AD DS) infrastruktúra adatait szeretné lekérni, telepítenie kell az ügynököt a tartományvezérlőkön.  |
 | Az Azure szolgáltatási végpontok kimenő kapcsolattal rendelkeznek. | A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Ha a tűzfalak letiltják a kimenő kapcsolatot, adja hozzá a [kimenő kapcsolati végpontokat](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) az engedélyezési listához. |
@@ -195,7 +195,7 @@ Az ügynök telepítésének ellenőrzéséhez keresse meg a következő szolgá
 ![A kiszolgálón futó szinkronizálási szolgáltatások futtatási Azure AD Connect Healthét bemutató képernyőkép.](./media/how-to-connect-health-agent-install/services.png)
 
 > [!NOTE]
-> Ne feledje, hogy a Azure AD Connect Health használatához prémium szintű Azure AD kell rendelkeznie. Ha nincs prémium szintű Azure AD, a konfiguráció nem hajtható végre a Azure Portalban. További információt a [követelmények](how-to-connect-health-agent-install.md#requirements)című témakörben talál.
+> Ne feledje, hogy a Azure AD Connect Health használatához prémium szintű Azure AD (P1 vagy P2) szükséges. Ha nincs prémium szintű Azure AD, a konfiguráció nem hajtható végre a Azure Portalban. További információt a [követelmények](how-to-connect-health-agent-install.md#requirements)című témakörben talál.
 >
 >
 
@@ -351,7 +351,7 @@ A proxykiszolgálót manuálisan is megadhatja. Az állapotfigyelő ügynököt 
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-Íme egy példa: 
+Bemutatunk egy példát: 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 
@@ -398,7 +398,7 @@ A szerepkör-paraméter a következő értékeket veheti:
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő kapcsolódó cikkeket:
 

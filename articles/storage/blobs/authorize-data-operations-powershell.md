@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: de42854f512a69b7b70a15a10fe8499ca1d0bf8b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45fa5cf4c76577cb5e8ba9bf482f4aab7301e3c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017729"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391490"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a Blobok adatainak eléréséhez
 
@@ -28,6 +28,9 @@ Engedélyeket rendelhet a blob-adathoz az Azure AD rendszerbiztonsági tag szám
 Az Azure Storage-bővítmények a blob-adatokon végrehajtott műveletek esetében támogatottak. A felhívható műveletek az Azure AD rendszerbiztonsági tag által a PowerShellbe való bejelentkezéshez megadott engedélyektől függenek. Az Azure Storage-tárolók engedélyei az Azure RBAC keresztül rendelhetők hozzá. Ha például hozzá lett rendelve a **blob-Adatolvasó** szerepkörhöz, futtathat parancsfájl-parancsokat, amelyek egy tárolóból olvasnak be egy adatforrást. Ha a **blob-adatközreműködői** szerepkört hozzárendelte, akkor futtathat parancsfájl-parancsokat, amelyek egy tárolót vagy az általuk tartalmazott adattartalmakat olvassák, írhatják vagy törölhetik.
 
 A tárolók egyes Azure Storage-műveleteihez szükséges engedélyekkel kapcsolatos további információkért lásd: [tárolási műveletek hívása OAuth-tokenekkel](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+
+> [!IMPORTANT]
+> Ha egy Storage-fiók zárolva van egy Azure Resource Manager **írásvédett** zárolással, a [kulcsok listázása](/rest/api/storagerp/storageaccounts/listkeys) művelet nem engedélyezett ehhez a Storage-fiókhoz. A **kulcsok listázása** post művelet, és az összes post művelet meg lesz akadályozva, ha **írásvédett** zárolás van konfigurálva a fiókhoz. Emiatt, ha a fiók **írásvédett** zárolással van zárolva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure ad hitelesítő adatait kell használniuk a Blobok adatainak eléréséhez. A PowerShellben adja meg a `-UseConnectedAccount` paramétert, és hozzon létre egy **AzureStorageContext** -OBJEKTUMOT az Azure ad-beli hitelesítő adataival.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>PowerShell-parancsok meghívása az Azure AD hitelesítő adataival
 
@@ -80,7 +83,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy tárolót egy új Storage-
     New-AzStorageContainer -Name $containerName -Context $ctx
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A PowerShell használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-adateléréshez](../common/storage-auth-aad-rbac-powershell.md)
 - [Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával](../common/storage-auth-aad-msi.md)

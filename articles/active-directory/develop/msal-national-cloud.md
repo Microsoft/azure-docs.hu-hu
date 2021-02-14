@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583959"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102495"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -70,7 +70,7 @@ MSAL.js alkalmazásának engedélyezése a szuverén felhők esetében:
 
 ### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 
-1. Jelentkezzen be a <a href="https://portal.azure.us/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.us/" target="_blank">Azure Portalra</a>.
 
    Más nemzeti felhők Azure Portal végpontjának megkereséséhez lásd: [alkalmazás-regisztrációs végpontok](authentication-national-cloud.md#app-registration-endpoints).
 

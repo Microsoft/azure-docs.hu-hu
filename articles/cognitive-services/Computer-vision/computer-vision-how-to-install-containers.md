@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: helyszíni, OCR, Docker, tároló
-ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008587"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391770"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Az OCR Docker-tárolók beolvasása (előzetes verzió) 
 
@@ -41,7 +41,7 @@ Az olvasási 3,2 – előzetes verziójú OCR-tároló a következőket biztosí
 * Megbízhatósági pontszámok.
 * A nyomtatott és a kézzel írott szöveggel rendelkező dokumentumok támogatása.
 * Lehetőség szöveg kinyerésére csak a dokumentum kiválasztott oldaláról.
-* Válassza ki a Text Line kimeneti sorrendet az alapértelmezettről a természetes olvasási sorrendre.
+* Válassza ki a Text Line kimeneti sorrendet az alapértelmezetttől a latin nyelvek természetesebb olvasási sorrendjéhez.
 * Szöveges sor besorolása kézzel írott stílusként, vagy csak latin nyelvekhez.
 
 Ha jelenleg olvasási 2,0-tárolót használ, tekintse meg az [áttelepítési útmutatót](read-container-migration-guide.md) az új verziók változásainak megismeréséhez.

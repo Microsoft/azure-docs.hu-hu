@@ -1,23 +1,18 @@
 ---
 title: Adatok másolása az Azure szinapszis Analytics szolgáltatásba vagy onnan
 description: Megtudhatja, hogyan másolhat adatok az Azure szinapszis Analytics szolgáltatásba vagy onnan az Azure Data Factory használatával
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452363"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392085"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Adatok másolása az Azure szinapszis Analytics és a rendszerből a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -70,8 +65,8 @@ Az alábbi táblázat az Azure szinapszis Analytics társított szolgáltatásho
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Igen |
-| connectionString |A connectionString tulajdonsághoz tartozó Azure szinapszis Analytics-példányhoz való kapcsolódáshoz szükséges információk megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDW** |Yes |
+| connectionString |A connectionString tulajdonsághoz tartozó Azure szinapszis Analytics-példányhoz való kapcsolódáshoz szükséges információk megadása. Csak az alapszintű hitelesítés támogatott. |Yes |
 
 > [!IMPORTANT]
 > Konfigurálja [Azure SQL Database tűzfalat](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure) és az adatbázis-kiszolgálót, hogy [engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure). Emellett, ha adatokat másol az Azure-ba az Azure-on kívülről, többek között a helyszíni adatforrásokból a (z) és a (z) adatfeldolgozó-átjáróval, konfigurálja a megfelelő IP-címtartományt azon számítógép számára, amely adatokat küld az Azure szinapszis Analyticsnek.
@@ -83,7 +78,7 @@ A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Annak a táblának vagy nézetnek a neve, amelyre a társított szolgáltatás hivatkozik az Azure szinapszis Analytics-adatbázisban. |Igen |
+| tableName |Annak a táblának vagy nézetnek a neve, amelyre a társított szolgáltatás hivatkozik az Azure szinapszis Analytics-adatbázisban. |Yes |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -98,9 +93,9 @@ Ha a forrás **SqlDWSource** típusú, a következő tulajdonságok érhetők el
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem |
-| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |No |
+| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |No |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
 
 Ha a **sqlReaderQuery** meg van adva a SqlDWSource, a másolási tevékenység futtatja ezt a lekérdezést az Azure szinapszis Analytics-forráson az adatkéréshez.
 
@@ -144,15 +139,15 @@ A **SqlDWSink** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. Részletekért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |Egy lekérdezési utasítás. |Nem |
-| allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok Azure szinapszis-elemzésbe való betöltésének ajánlott módja a Base használata.** Megkötések és részletek a következő témakörben találhatók: az [adatok betöltése az Azure szinapszis analyticsbe](#use-polybase-to-load-data-into-azure-synapse-analytics) című szakasza. |Igaz <br/>False (alapértelmezett) |Nem |
-| polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz**). |&nbsp; |Nem |
-| rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
-| rejectType |Megadja, hogy a rejectValue beállítás literál értékként vagy százalékként van-e megadva. |Érték (alapértelmezett), százalék |Nem |
-| rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2,... |Igen, ha **rejectType** a rejectType **százaléka** |
-| useTypeDefault |Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |Nem |
+| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. Részletekért lásd: [ismételhetőség szakasz](#repeatability-during-copy). |Egy lekérdezési utasítás. |No |
+| allowPolyBase |Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni (ha van ilyen). <br/><br/> **Az adatok Azure szinapszis-elemzésbe való betöltésének ajánlott módja a Base használata.** Megkötések és részletek a következő témakörben találhatók: az [adatok betöltése az Azure szinapszis analyticsbe](#use-polybase-to-load-data-into-azure-synapse-analytics) című szakasza. |Igaz <br/>False (alapértelmezett) |No |
+| polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz**). |&nbsp; |No |
+| rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |No |
+| rejectType |Megadja, hogy a rejectValue beállítás literál értékként vagy százalékként van-e megadva. |Érték (alapértelmezett), százalék |No |
+| rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2,... |Igen, ha  a rejectType **százaléka** |
+| useTypeDefault |Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |No |
 | writeBatchSize |Az SQL-táblába szúrja be az adatmennyiséget, ha a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |No |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink példa
 
@@ -273,7 +268,7 @@ A lehető legjobb átviteli sebesség elérése érdekében érdemes lehet nagyo
 ### <a name="tablename-in-azure-synapse-analytics"></a>Táblanév az Azure szinapszis Analyticsben
 A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot az adatkészlet JSON-ban a séma és a tábla különböző kombinációi esetében.
 
-| ADATBÁZIS-séma | Tábla neve | Táblanév JSON-tulajdonság |
+| ADATBÁZIS-séma | Table name (Táblázat neve) | Táblanév JSON-tulajdonság |
 | --- | --- | --- |
 | dbo |Sajáttábla |Sajáttábla vagy dbo. Sajáttábla vagy [dbo]. Sajáttábla |
 | dbo1 |Sajáttábla |dbo1. Sajáttábla vagy [dbo1]. Sajáttábla |
@@ -322,7 +317,7 @@ Data Factory létrehozza a tárolóban található táblát a forrás adattárba
 | Idő adattípusúra | Idő adattípusúra |
 | Szöveg | Varchar (legfeljebb 8000) |
 | NText | NVarChar (legfeljebb 4000) |
-| Rendszerkép | VarBinary (legfeljebb 8000) |
+| Kép | VarBinary (legfeljebb 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -346,7 +341,7 @@ A leképezés megegyezik a [ADO.net Adattípusának SQL Server-leképezésével]
 | --- | --- |
 | bigint |Int64 |
 | binary |Bájt [] |
-| bit |Logikai érték |
+| bit |Logikai |
 | char |Karakterlánc, char [] |
 | dátum |DateTime |
 | Datetime |DateTime |

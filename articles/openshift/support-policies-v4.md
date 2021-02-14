@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521138"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093165"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift-támogatási szabályzat
 
@@ -26,6 +26,7 @@ Az Azure Red Hat OpenShift 4 fürtök bizonyos konfigurációi befolyásolhatjá
 * A fürtnek legalább két feldolgozói csomóponttal kell rendelkeznie. Ne méretezi a fürt feldolgozóit nulla értékre, vagy próbálja meg egy kecses fürt leállítását.
 * Ne távolítsa el vagy módosítsa a fürt Prometheus-és Alertmanager-szolgáltatásait.
 * Ne távolítsa el a szolgáltatás Alertmanager szabályait.
+* Ne távolítsa el vagy módosítsa a hálózati biztonsági csoportokat.
 * Ne távolítsa el vagy módosítsa az Azure Red Hat OpenShift szolgáltatás naplózását (MDSD hüvely).
 * Ne távolítsa el vagy módosítsa a "arosvc.azurecr.io" fürt lekérési titkát.
 * Minden fürt virtuális gépnek közvetlen kimenő internet-hozzáféréssel kell rendelkeznie, legalább a Azure Resource Manager (ARM) és a Service Logging (Genf) végpontokhoz.  A HTTPS-proxyk egyetlen formája sem támogatott.

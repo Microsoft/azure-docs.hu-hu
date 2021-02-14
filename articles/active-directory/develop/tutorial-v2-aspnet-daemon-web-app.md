@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a5f0a7d8221e970c8c1aa3c1ddffbfc56f2d5715
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4fccff70fd267aef84550b4e2f5d6f5f9422a341
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226186"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103022"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -93,7 +93,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 
 ### <a name="choose-the-azure-ad-tenant"></a>Az Azure AD-bérlő kiválasztása
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 
 
@@ -116,7 +116,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet. 
 1. Adja meg a kulcs leírását (például az **alkalmazás titkát**).
 1. Válassza ki a kulcs időtartamát **1 év** vagy **2 év** között, vagy **Soha ne járjon le**.
-1. Válassza a **Hozzáadás** elemet. Jegyezze fel a kulcs értékét egy biztonságos helyen. Erre a kulcsra később szüksége lesz a projekt konfigurálásához a Visual Studióban.
+1. Válassza a **Hozzáadás** lehetőséget. Jegyezze fel a kulcs értékét egy biztonságos helyen. Erre a kulcsra később szüksége lesz a projekt konfigurálásához a Visual Studióban.
 1. A **kezelés** területen válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**.
 1. A **gyakran használt Microsoft API** -k szakaszban válassza a **Microsoft Graph** lehetőséget.
 1. Az **alkalmazás engedélyei** szakaszban győződjön meg arról, hogy a megfelelő engedélyek vannak kiválasztva: **User. Read. All**.
@@ -203,7 +203,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>DotNet-web-Daemon-v2 létrehozása és közzététele egy Azure-webhelyen
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Válassza az **Erőforrás létrehozása** lehetőséget a bal felső sarokban.
 1. Válassza **a**  >  **webalkalmazás** lehetőséget, majd adja meg a webhely nevét. Adja meg például a **DotNet-web-Daemon-v2-contoso.azurewebsites.net** nevet.
 1. Válassza ki az **előfizetés**, az **erőforráscsoport** és az **app Service-csomag és a hely** adatait. Az **operációs rendszer** **Windows**, és a **Közzététel** **kód**.
@@ -224,7 +224,7 @@ A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngés
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Az Azure AD-bérlői alkalmazás regisztrációjának frissítése a DotNet-web-Daemon-v2-re
 
-1. Térjen vissza a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Térjen vissza a <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki a **DotNet-web-Daemon-v2** alkalmazást.
 1. Az alkalmazáshoz tartozó **hitelesítés** lapon frissítse az **előtérben KIJELENTKEZÉSI URL-címeket** a szolgáltatás címével. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession` .

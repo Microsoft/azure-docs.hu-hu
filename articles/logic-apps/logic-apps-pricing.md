@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088921"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372008"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>A Azure Logic Apps díjszabása és számlázási modelljei
 
@@ -72,8 +72,8 @@ A rögzített díjszabási modell az [ *integrációs szolgáltatási környezet
 
 | ISE SKU | Description |
 |---------|-------------|
-| **Prémium** | Az alapegység kapacitása rögzített, és [a prémium SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ha több átviteli sebességre van szüksége, [további skálázási egységeket adhat hozzá](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) az ISE vagy azután. Az egyes skálázási egységek [óradíja nagyjából az alapegység díjszabása](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>A határértékekkel kapcsolatos információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| **Fejlesztő** | Az alapegység rögzített kapacitással rendelkezik, és [a fejlesztői SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ez az SKU nem rendelkezik vertikális Felskálázási képességgel, szolgáltatói szerződéssel (SLA) vagy közzétett korlátozásokkal. Ezt az SKU-t kizárólag feltárásra, kísérletezésre, fejlesztésre és tesztelésre használja, nem éles környezetben, sem pedig a teljesítmény teszteléséhez. |
+| **Prémium** | Az alapegység [kapacitása rögzített](logic-apps-limits-and-config.md#integration-service-environment-ise) , és [a prémium SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ha több átviteli sebességre van szüksége, [további skálázási egységeket adhat hozzá](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) az ISE vagy azután. Az egyes skálázási egységek [óradíja nagyjából az alapegység díjszabása](https://azure.microsoft.com/pricing/details/logic-apps). <p><p>A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Fejlesztő** | Az alapegység [rögzített kapacitással](logic-apps-limits-and-config.md#integration-service-environment-ise) rendelkezik, és [a fejlesztői SKU óradíja](https://azure.microsoft.com/pricing/details/logic-apps)alapján számítjuk fel a díjat. Ez az SKU azonban nem rendelkezik szolgáltatói szerződéssel (SLA), vertikális Felskálázási képességgel vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késések vagy leállások merülhetnek fel. Előfordulhat, hogy a háttérbeli frissítések időnként megszakítják a szolgáltatást. <p><p>**Fontos**: Ügyeljen arra, hogy ezt az SKU-t kizárólag feltáráshoz, kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben vagy teljesítmény-teszteléshez. <p><p>A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>Külön díj nélkül

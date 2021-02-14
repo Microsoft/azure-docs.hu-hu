@@ -22,9 +22,15 @@
     - name: Felügyeleti csoport létrehozása – .NET
       displayName: hierarchy
       href: ./create-management-group-dotnet.md
+    - name: Felügyeleti csoport létrehozása – go
+      displayName: hierarchy
+      href: ./create-management-group-go.md
     - name: Felügyeleti csoport létrehozása – JavaScript
       displayName: hierarchy
       href: ./create-management-group-javascript.md
+    - name: Felügyeleti csoport létrehozása – Python
+      displayName: hierarchy
+      href: ./create-management-group-python.md
     - name: Felügyeleti csoport létrehozása – REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
@@ -48,8 +54,12 @@
       href: /powershell/module/az.resources/#resources
     - name: Azure SDK for .NET
       href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK for Go
+      href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups'
     - name: Azure SDK for JavaScript
       href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: Azure SDK for Python
+      href: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - name: REST
       href: /rest/api/resources/managementgroups
     - name: Resource Manager-sablonok

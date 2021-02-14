@@ -11,18 +11,21 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362743"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Hálózati útválasztási beállítások konfigurálása az Azure Storage-hoz (előzetes verzió)
 
 Megadhatja az Azure Storage-fiókhoz tartozó hálózati [útválasztási](../../virtual-network/routing-preference-overview.md) beállításokat (előzetes verzió) annak megadásához, hogy a hálózati forgalom hogyan legyen átirányítva a fiókjához az interneten keresztül. Alapértelmezés szerint az internetről érkező forgalmat a rendszer a [Microsoft globális hálózatán](../../networking/microsoft-global-network.md)keresztül továbbítja a Storage-fiók nyilvános végpontjának. Az Azure Storage további lehetőségeket biztosít annak konfigurálására, hogy a rendszer hogyan irányítsa át a forgalmat a Storage-fiókjába.
 
 Az útválasztási beállítások konfigurálása lehetővé teszi, hogy rugalmasan optimalizálja a forgalmat a prémium szintű hálózati teljesítmény vagy a költséghatékonyság érdekében. Útválasztási beállítások konfigurálásakor megadhatja, hogy alapértelmezés szerint a rendszer hogyan irányítsa át a forgalmat a Storage-fiók nyilvános végpontjának. A Storage-fiókhoz adott útválasztási végpontokat is közzéteheti.
+
+> [!NOTE]
+> Ez a funkció nem támogatott olyan Storage-fiókokban, amelyek a prémium szintű teljesítmény vagy a zóna redundáns tárolás (ZRS) használatára vannak konfigurálva.
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Microsoft Global Network és Internet-Útválasztás
 
@@ -105,7 +108,7 @@ A következő ismert problémák hatással vannak az Azure Storage-hoz készült
 
 A díjszabással és a számlázással kapcsolatos részletekért tekintse meg a [Mi az útválasztási preferencia (előzetes verzió)](../../virtual-network/routing-preference-overview.md#pricing)című témakör **díjszabását** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az útválasztási preferencia (előzetes verzió)?](../../virtual-network/routing-preference-overview.md)
 - [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md)

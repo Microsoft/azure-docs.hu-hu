@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c12ad505777111499fb354709ce606189398458f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391929"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -118,10 +118,9 @@ Ha már rendelkezik Microsoft Defender-licenccel a végponthoz, nem kell fizetni
 Ha szeretné megerősíteni a kedvezményt, lépjen kapcsolatba Security Center támogatási csapatával, és adja meg a megfelelő munkaterület-azonosítót, régiót és licencelési információt az egyes kapcsolódó licencekhez.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem? 
-Nem. Ha engedélyezi [Az Azure Defender számára az előfizetéshez tartozó kiszolgálókat](defender-for-servers-introduction.md) , óradíjat kell fizetnie a kiszolgálók futtatásához. A kikapcsolt kiszolgálók után nem számítunk fel díjat. 
+Nem. Ha engedélyezi az [Azure Defender számára](defender-for-servers-introduction.md) az előfizetéshez tartozó kiszolgálókat, nem számítunk fel díjat a "felszabadított" állapotú kiszolgálók esetében, amíg azok az állapotban vannak.
 
-> [!TIP]
-> Ez a Security Center által védett egyéb erőforrástípusok esetében is érvényes. 
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Egy felhasználatlan gépet megjelenítő Azure Virtual Machines":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>A Log Analytics ügynök nélküli gépek után kell díjat fizetni?
 Igen. Ha engedélyezi az [Azure Defender számára az előfizetéshez tartozó kiszolgálókat](defender-for-servers-introduction.md) , az adott előfizetésben lévő gépek akkor is különböző védelmet kapnak, ha még nem telepítette a log Analytics ügynököt.
@@ -137,7 +136,7 @@ Napi 500 MB-nyi ingyenes adatfeldolgozást biztosít minden, a munkaterülethez 
 
 Ez az adatmennyiség az összes csomópont napi átlaga. Így még akkor is, ha egyes gépek 100-MB-ot küldenek, mások pedig 800-MB-ot küldenek, ha az összeg nem lépi túl a **[gépek számát] x 500-MB** szabad korlátot, nem számítunk fel külön díjat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a Security Center díjszabási lehetőségeit ismerteti. Kapcsolódó anyagok esetében lásd:
 
 - [Az Azure számítási feladatok költségeinek optimalizálása](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
