@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680726"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386798"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>Oktatóanyag: Migrálás a Google Maps szolgáltatásból a Azure Mapsba
 
@@ -48,21 +48,21 @@ A táblázat a Google Maps szolgáltatásainak megfelelő Azure Maps-funkciók m
 | REST-szolgáltatás API-k           | ✓                                      |
 | Irányok (Útválasztás)        | ✓                                      |
 | Távolsági mátrix             | ✓                                      |
-| Jogosultságszint                   | Tervezve                                |
+| Jogosultságszint                   | ✓ (Előzetes verzió)                            |
 | Helymeghatározáshoz (előre/hátra) | ✓                                      |
-| Földrajzi hely                 | N.A.                                    |
+| Földrajzi hely                 | N/A                                    |
 | Legközelebbi utak               | ✓                                      |
 | Helyek keresése               | ✓                                      |
 | Helyek részletei              | N/A – A webhely & telefonszáma elérhető |
-| Fényképek elhelyezése               | N.A.                                    |
+| Fényképek elhelyezése               | N/A                                    |
 | Automatikus kiegészítés          | ✓                                      |
 | Elérési út                | ✓                                      |
 | Sebességkorlátozások                | ✓                                      |
 | Statikus térképek                 | ✓                                      |
-| Statikus utcai nézet          | N.A.                                    |
+| Statikus utcai nézet          | N/A                                    |
 | Időzóna                   | ✓                                      |
-| Maps Embedded API           | N.A.                                    |
-| Térkép URL-címei                    | N.A.                                    |
+| Maps Embedded API           | N/A                                    |
+| Térkép URL-címei                    | N/A                                    |
 
 A Google Maps alapszintű kulcs-alapú hitelesítést biztosít. Azure Maps az alapszintű kulcs-alapú hitelesítés és a Azure Active Directory hitelesítés is rendelkezésre áll. Azure Active Directory hitelesítés nagyobb biztonsági funkciókat biztosít, mint az alapszintű kulcs-alapú hitelesítés.
 
@@ -119,7 +119,7 @@ Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 
 A fejlesztők a [fórumok](/answers/topics/azure-maps.html) vagy a számos Azure-támogatási lehetőség közül választhatják a Migrálás támogatását: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Nincs kitakarítható erőforrás.
 

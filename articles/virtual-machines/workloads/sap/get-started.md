@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 25d9d53b9bc597b5eb51586c594dd631609f476e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549388"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362148"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -84,6 +84,7 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 02/11/2021: az [IBM DB2 LUW magas rendelkezésre állásának változásai a Red Hat Enterprise Linux-kiszolgálón lévő Azure-beli virtuális gépeken](./high-availability-guide-rhel-ibm-db2-luw.md) a pacemaker-fürt parancsainak a 8. x RHEL való módosításához
 - 02/03/2021: változás a [pacemaker beállítása a RHEL az Azure](./high-availability-guide-rhel-pacemaker.md) -ban a stonith-létrehozási parancsban található pcmk_host_map frissítéséhez
 - 02/03/2021: változás a [pacemaker beállítása a SLES az Azure](./high-availability-guide-suse-pacemaker.md) -ban a stonith Create parancsban pcmk_host_map hozzáadásához 
 - 02/03/2021: további részletek az Azure-beli [virtuális gépek tárolási konfigurációinak SAP HANA](./hana-vm-operations-storage.md) cikkében a SUSE I/O-beállításairól

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f207509baba2499adf5d5d00df0ccd0503a25491
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 918dd929244c7177790a77bfff32589847073c70
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98665191"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104781"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Az Azure szinapszis Analytics adatintegrációs partnerei
 
@@ -24,7 +24,7 @@ Az adattárház-megoldás az Azure szinapszis Analytics dedikált SQL-készlette
 
 ## <a name="data-integration-partners"></a>Adatintegrációs partnerek
 
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Ab initio](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**Ab initio**<br> Az ab initio agilis digitális mérnöki platformja segítségével megoldhatja a vállalati számítástechnika legszigorúbb adatfeldolgozási és adatkezelési problémáit. Az ab initio Felhőbeli natív platformja lehetővé teszi, hogy az Azure-ban vagy a helyszíni környezetben bárhol hozzáférjen a vállalati ökoszisztémához, beleértve az örökölt rendszereken tárolt adatait is. A hatékony automatizálással, adatminőséggel, adatszabályozással és aktív metaadatokkal rendelkező intuitív interfészek kombinációja lehetővé teszi a gyors fejlesztést és a valódi adatszolgáltatások önkiszolgálását, így az elemzők gyorsan és hatékonyan végezhetik el a munkájukat. Csatlakozzon a világ legnagyobb vállalkozásaihoz az ab initio használatával, hogy bekapcsolja big data az értelmes adatba. |[Termék lap](https://www.abinitio.com/) |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> A Alooma egy kinyerési, átalakítási és betöltési (ETL) megoldás, amely lehetővé teszi, hogy az adatcsapatok valós időben integrálják, gazdagítsák és továbbítsák a különböző adatsilók adatait egy Azure szinapszis-adattárházba. |[Termék lap](https://www.alooma.com/) |
@@ -52,7 +52,8 @@ Az adattárház-megoldás az Azure szinapszis Analytics dedikált SQL-készlette
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>A TimeXtender felderítési központja lehetővé teszi a vállalatok számára, hogy egy integrált adatkezelési platformot biztosítanak a modern adatközpontok létrehozásához, amely akár 10 alkalommal gyorsítja fel az adatelemzési időt. A mindennapi ETL-és ELT túlmenően az adathozzáférés, az adatmodellezés és a megfelelőség egyetlen platformon is elérhetővé válik. A felderítési központ egy egységes adathálót biztosít a felhőalapú méretezési elemzésekhez. Lehetővé teszi a különféle adatsilók, katalógusok, modellek, áthelyezési és dokumentum-adatkészletek összekapcsolását és integrálását az elemzéshez és a mesterséges intelligenciához. | [Termék lap](https://www.timextender.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> A Trifacta segítségével a magánszemélyek és a szervezetek is megismerhetik és összekapcsolhatók különböző adatelemzési adataikkal. A Trifacta Wrangler úgy van kialakítva, hogy kezelje az olyan huzavona-munkaterheléseket, amelyeknek a nagy mennyiségű felhasználót kell támogatniuk.|[Termék lap](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape piros**<br> A WhereScape RED egy IDE, amely automatizálási eszközökkel segíti a csapatok számára az ETL-munkafolyamatok egyszerűsítését. Az IDE ajánlott eljárás, optimalizált natív kód a népszerű adatcélokhoz. A WhereScape RED használatával csökkentheti az adatinfrastruktúra fejlesztéséhez, üzembe helyezéséhez és üzemeltetéséhez szükséges időt.|[Termék lap](https://www.wherescape.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
-| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> A Xplenty ELT platform segítségével gyorsan és egyszerűen előkészítheti az adatait elemzési és üzemi célú használati esetekre egy egyszerű felhőalapú szolgáltatás használatával. A Xplenty pont & kattintással, húzással & drop Interface lehetővé teszi az adatintegrációt, a feldolgozást és az előkészítést a szoftverek telepítése, telepítése és karbantartása nélkül. Több adattárház és SaaS-alkalmazás, például az Azure szinapszis, az Azure Blob Storage és a SQL Server széles választékával kapcsolódhat és integrálhat. A Xplenty a REST API-n keresztül elérhető összes webszolgáltatást is támogatja.|[Termék lap](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
+| ![Xpert BI](./media/sql-data-warehouse-partner-data-integration/xpertbi-logo.png) |**Xpert BI**<br> A Xpert BI segítségével a szervezetek a metaadatokon alapuló automatizálás révén gyorsabban hozhatnak létre és kezelhetnek robusztus és skálázható adatplatformot az Azure-ban. Kiterjeszti az Azure Szinapszisot az ajánlott eljárásokkal és DataOps, a beépített adatkezelési funkciókkal való agilis adatfejlesztés érdekében. A Xpert BI használatával gyorsan kipróbálhatja a különböző Azure-megoldások, például az Azure szinapszis, a Azure Data Lake Storage és a Azure SQL Database közötti váltást, mivel az üzleti és elemzési igények változását és növekedését is kielégíti.|[Termék lap](https://www.bi-builders.com/adding-automation-and-governance-to-azure-analytics/)<br> |
+| ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> A Xplenty ELT platform segítségével gyorsan és egyszerűen előkészítheti az adatait elemzési és üzemi célú használati esetekre egy egyszerű felhőalapú szolgáltatás használatával. A Xplenty pont & válassza a húzás & drop Interface lehetővé teszi az adatintegrációt, a feldolgozást és az előkészítést a szoftverek telepítése, telepítése és karbantartása nélkül. Több adattárház és SaaS-alkalmazás, például az Azure szinapszis, az Azure Blob Storage és a SQL Server széles választékával kapcsolódhat és integrálhat. A Xplenty a REST API-n keresztül elérhető összes webszolgáltatást is támogatja.|[Termék lap](https://www.xplenty.com/integrations/azure-synapse-analytics/ )<br> |
 
 
 ## <a name="next-steps"></a>Következő lépések

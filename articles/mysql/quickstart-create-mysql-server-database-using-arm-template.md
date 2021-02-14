@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/19/2020
-ms.openlocfilehash: 0e7fcf51d9c663ca4a289f54972f00ef037cb323
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3da3b1694a16507203d7f1f1f6cb5df58dd54423
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542269"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366177"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása ARM-sablonnal
 
@@ -74,30 +74,30 @@ A **Azure Database for MySQL üzembe helyezése a VNet** oldalon:
 
 2. Ha létrehozott egy új erőforráscsoportot, válassza ki az erőforráscsoport és az új kiszolgáló **helyét** .
 
-3. Adja meg a **kiszolgáló nevét** , a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót**.
+3. Adja meg a **kiszolgáló nevét**, a **rendszergazdai bejelentkezési azonosítót** és a **rendszergazdai bejelentkezési jelszót**.
 
     :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Azure Database for MySQL üzembe helyezése a VNet ablakban, Azure-beli Gyorsindítás sablon, Azure Portal":::
 
 4. Ha szeretné, módosítsa a többi alapértelmezett beállítást:
 
-    * **Előfizetés** : a kiszolgálóhoz használni kívánt Azure-előfizetés.
-    * **SKU-kapacitás** : a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4* , *8* , *16* , *32* vagy *64*.
-    * **SKU neve** : az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1* , *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
-    * **SKU mérete MB** : a Azure Database for MySQL kiszolgáló tárterületének mérete (MB) (alapértelmezett *5120* ).
-    * **SKU-szint** : az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
-    * **SKU-család** : *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
-    * **MySQL-verzió** : a telepítendő MySQL-kiszolgáló verziója, például *5,6* vagy *5,7* (alapértelmezett).
-    * **Biztonsági másolatok megőrzési napjai** : a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7* ).
-    * **Geo redundáns biztonsági mentés** : *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
-    * **Virtual Network neve** : a virtuális hálózat neve (alapértelmezett *azure_mysql_vnet* ).
-    * **Alhálózat neve** : az alhálózat neve (alapértelmezett *azure_mysql_subnet* ).
-    * **Virtual Network szabály neve** : az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet* ).
-    * **Vnet-címek előtagja** : a virtuális hálózat címe (alapértelmezett *10.0.0.0/16* ).
-    * **Alhálózat-előtag** : az alhálózat 10.0.0.0 (alapértelmezett érték */16* ).
+    * **Előfizetés**: a kiszolgálóhoz használni kívánt Azure-előfizetés.
+    * **SKU-kapacitás**: a virtuális mag kapacitása, amely lehet *2* (alapértelmezett), *4*, *8*, *16*, *32* vagy *64*.
+    * **SKU neve**: az SKU-rétegek előtagja, az SKU-család és az SKU-kapacitás, aláhúzások, például *B_Gen5_1*, *GP_Gen5_2* (alapértelmezett) vagy *MO_Gen5_32*.
+    * **SKU mérete MB**: a Azure Database for MySQL kiszolgáló tárterületének mérete (MB) (alapértelmezett *5120*).
+    * **SKU-szint**: az üzembe helyezési szint, például *alapszintű,* *GeneralPurpose* (alapértelmezett) vagy *MemoryOptimized*.
+    * **SKU-család**: *Gen4* vagy *Gen5* (alapértelmezett), amely a kiszolgáló telepítésének hardveres generálását jelzi.
+    * **MySQL-verzió**: a telepítendő MySQL-kiszolgáló verziója, például *5,6* vagy *5,7* (alapértelmezett).
+    * **Biztonsági másolatok megőrzési napjai**: a földrajzi redundáns biztonsági másolatok megőrzésének kívánt időtartama napokban (alapértelmezett *7*).
+    * **Geo redundáns biztonsági mentés**: *engedélyezve* vagy *Letiltva* (az alapértelmezett) a Geo-vész-helyreállítási (Geo-Dr) követelményektől függően.
+    * **Virtual Network neve**: a virtuális hálózat neve (alapértelmezett *azure_mysql_vnet*).
+    * **Alhálózat neve**: az alhálózat neve (alapértelmezett *azure_mysql_subnet*).
+    * **Virtual Network szabály neve**: az alhálózatot engedélyező virtuális hálózati szabály neve (alapértelmezett *AllowSubnet*).
+    * **Vnet-címek előtagja**: a virtuális hálózat címe (alapértelmezett *10.0.0.0/16*).
+    * **Alhálózat-előtag**: az alhálózat 10.0.0.0 (alapértelmezett érték */16*).
 
 5. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és** kikötéseket lehetőséget.
 
-6. Válassza a **Vásárlás** lehetőséget.
+6. Válassza a **Beszerzés** lehetőséget.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -181,7 +181,33 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 ---
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="exporting-arm-template-from-the-portal"></a>ARM-sablon exportálása a portálról
+ARM-sablonokat a Azure Portal is [exportálhat](../azure-resource-manager/templates/export-template-portal.md) . Kétféleképpen exportálhat sablont:
+
+- [Exportálás erőforráscsoporthoz vagy erőforrásból](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Ez a beállítás új sablont hoz létre a meglévő erőforrásokból. Az exportált sablon az erőforráscsoport aktuális állapotának "pillanatképe". A teljes erőforráscsoportot vagy az adott erőforráscsoporthoz tartozó erőforrásokat is exportálhatja.
+- [Exportálás az üzembe helyezés előtt vagy az előzményekből](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Ez a beállítás az üzembe helyezéshez használt sablon pontos másolatát kérdezi le.
+
+A sablon exportálásakor a MySQL- ```"properties":{ }``` kiszolgáló erőforrásának szakaszában megfigyelheti, hogy a ```administratorLogin``` ```administratorLoginPassword``` rendszer nem fogja tartalmazni biztonsági okokból. Ezeket a paramétereket hozzá **kell** adnia a sablonhoz a sablon telepítése előtt, vagy a sablon sikertelen lesz.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 

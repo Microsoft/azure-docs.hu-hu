@@ -54,8 +54,12 @@
       href: ensure-tags-exists-on-new-virtual-machines.md
     - name: E-mail küldése az IoT Hub-eszköz leválasztásakor
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Válasz küldése Service Bus-eseményekre
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Service Bus-események kezelése az Event Griden keresztül
+      items:
+        - name: Azure Logic Apps
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure Functions
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-function.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Adatok streamelése az Event Hubsból
       href: event-grid-event-hubs-integration.md
     - name: Media Services-események irányítása
@@ -262,14 +266,18 @@
       items:
         - name: Események biztonságos közzététele privát kapcsolaton keresztül
           href: configure-private-endpoints.md
+        - name: Események kézbesítése felügyelt identitás használatával
+          href: managed-service-identity.md
+        - name: Események biztonságos kézbesítése privát kapcsolaton keresztül
+          href: consume-private-endpoints.md
         - name: IP-tűzfal konfigurálása
           href: configure-firewall.md
         - name: Biztonságos webhook az Azure Active Directoryval
           href: secure-webhook-delivery.md
-        - name: 'Eseménykézbesítés, felügyelt identitás és privát kapcsolat'
-          href: managed-service-identity.md
     - name: Hibaelhárítás
       items:
+        - name: Event Grid problémák elhárítása
+          href: troubleshoot-issues.md
         - name: Diagnosztikai naplók engedélyezése
           href: enable-diagnostic-logs-topic.md
         - name: Hibák elhárítása

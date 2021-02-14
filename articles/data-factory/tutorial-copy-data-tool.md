@@ -1,23 +1,18 @@
 ---
 title: Adatok másolása az Azure Blob Storage-ból az SQL-be Adatok másolása eszköz használatával
 description: Hozzon létre egy Azure Data Factory, majd a Adatok másolása eszköz használatával másolja át az Azure Blob Storage-ból egy SQL Databaseba.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 585a325c2a5650510b2138c0d708cebdfd17d034
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008344"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375731"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
 
@@ -101,7 +96,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. A **Hely** alatt válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más helyeken/régiókban is lehetnek.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A létrehozás befejezése után a **Data Factory** kezdőlapja jelenik meg.
 
@@ -176,7 +171,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     ![Szerző lap kiválasztása](./media/tutorial-copy-data-tool/author-tab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

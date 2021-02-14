@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62ed3915dcaf596d144a2f59817626cdf8ec47e5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588246"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092774"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>A Forcepoint DLP és az Azure Sentinel összekötése
 
 > [!IMPORTANT]
-> Az Azure Sentinel Forcepoint adatvesztés-megelőzési (DLP) adatösszekötője jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Sentinel Forcepoint adatvesztés-megelőzési (DLP) adatösszekötője jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
@@ -38,7 +38,7 @@ Konfigurálja a Forcepoint DLP-t, hogy JSON formátumban továbbítsa az inciden
 
 ## <a name="find-your-data"></a>Az adatai megkeresése
 
-Miután beállította a Forcepoint DLP-összekötőt, az CustomLogs **ForcepointDLPEvents_CL**alatt megjelenik az adat a log Analytics.
+Miután beállította a Forcepoint DLP-összekötőt, az CustomLogs **ForcepointDLPEvents_CL** alatt megjelenik az adat a log Analytics.
 
 
 Ha a Forcepoint DLP Log Analytics vonatkozó sémáját szeretné használni, keresse meg a **ForcepointDLPEvents_CL**.
@@ -48,7 +48,7 @@ Ha a Forcepoint DLP Log Analytics vonatkozó sémáját szeretné használni, ke
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Forcepoint DLP az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügyfelet a beállítások naplózására a virtuális gépeken belül.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210120"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104807"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -142,11 +142,15 @@ Ha a _konfigurálással_ kezdődő definíciókat rendeli hozzá, akkor a defin�
 
 A vendég konfigurációhoz elérhető naplózási házirend-definíciók közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus. Az Azure-ív részét képező, a házirend-hozzárendelés hatókörében lévő kiszolgálók automatikusan beletartoznak a [szolgáltatásba](../../../azure-arc/servers/overview.md) .
 
+## <a name="troubleshooting-guest-configuration"></a>A vendég konfigurációjának hibaelhárítása
+
+További információ a vendég konfigurációjának hibaelhárításáról: [Azure Policy hibaelhárítás](../troubleshoot/general.md).
+
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
 A vendég-konfiguráció házirendjének definíciói jelenleg csak egyszer kell hozzárendelni ugyanazt a vendég-hozzárendelést, még akkor is, ha a házirend-hozzárendelés eltérő paramétereket használ.
 
-## <a name="client-log-files"></a>Ügyfél naplófájljai
+### <a name="client-log-files"></a>Ügyfél naplófájljai
 
 A vendég konfigurációs bővítmény naplófájlokat ír a következő helyszínekre:
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>Ügyféloldali fájlok
+
+A vendég konfigurációs ügyfél letölti a csomagokat a gépre, és kibontja a tartalmat.
+A letöltött és tárolt tartalmak ellenőrzéséhez tekintse meg az alább megadott mappák helyét.
+
+Windows: `c:\programdata\guestconfig\configurations`
+
+Linux: `/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>Vendég konfigurációs minták
 

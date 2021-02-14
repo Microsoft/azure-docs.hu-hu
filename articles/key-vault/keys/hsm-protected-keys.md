@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 17ef0cb7efcd2a76b46a6bb0dbc82268895dae00
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 86807899c06cb333238344b7168b5675e8f2e9a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222200"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366585"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM által védett kulcsok importálása a Key Vaultba
 
@@ -38,9 +38,10 @@ A HSM-védelemmel ellátott kulcsok Key Vaultre való átvitele a használt HSM 
 |Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>Self-Defending kulcskezelő szolgáltatás (SDKMS)</li><li>Equinix SmartKey</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|Securosys SA|Gyártó, HSM szolgáltatásként|Primus HSM-család, Securosys felhők HSM|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Securosys SA|Gyártó<br/>HSM szolgáltatásként|Primus HSM-család, Securosys felhők HSM|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |StorMagic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[Részletekért lásd a StorMagic-webhelyet](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
-|IBM|Gyártó|IBM 476x, CryptoExpress|Új BYOK metódus használata] (HSM által védett kulcsok – byok.md)|
+|IBM|Gyártó|IBM 476x, CryptoExpress|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
+|Utimaco|Gyártó<br/>HSM szolgáltatásként|u. Trust-horgony, CryptoServer|[Új BYOK metódus használata](hsm-protected-keys-byok.md)|
 |||||
 
 ## <a name="next-steps"></a>Következő lépések

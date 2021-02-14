@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Data Box
 description: Felsorolja Azure Policy Azure Data Box számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: alkohli
 ms.author: alkohli
 ms.service: databox
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bc17572a0624065b153ed1e575d2fd82073000fd
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 55c8706b06e43e3ddc9911098d324883cc15d702
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556380"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096589"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-box"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Data Box
 

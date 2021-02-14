@@ -32,6 +32,8 @@
       href: tutorial-deploy-vmware-hcx.md
     - name: 8 – Magánfelhő skálázása
       href: tutorial-scale-private-cloud.md
+    - name: 9 – privát felhő törlése
+      href: tutorial-delete-private-cloud.md
 - name: Alapelvek
   items:
     - name: Magánfelhők és -fürtök

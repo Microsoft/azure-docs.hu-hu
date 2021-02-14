@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833099"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361026"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással
 
@@ -74,11 +74,24 @@ A hálózati biztonsági csoport (NSG) vagy a tűzfal szabályai letilthatják a
 
 ### <a name="agents-for-on-premises-machines"></a>Helyszíni gépek ügynökei
 
-Ahhoz, hogy a Csatlakozáskezelő felismerje a helyszíni gépeket a figyeléshez, telepítse a Log Analytics ügynököt a gépekre. Ezután engedélyezze a Network Performance Monitor megoldást. Ezek az ügynökök Log Analytics munkaterületekhez vannak társítva, ezért be kell állítania a munkaterület-azonosítót és az elsődleges kulcsot, mielőtt az ügynökök el tudják indítani a figyelést.
+Ahhoz, hogy a Csatlakozáskezelő felismerje a helyszíni gépeket a figyeléshez, telepítse a Log Analytics ügynököt a gépekre.  Ezután engedélyezze a Network Performance Monitor megoldást. Ezek az ügynökök Log Analytics munkaterületekhez vannak társítva, ezért be kell állítania a munkaterület-azonosítót és az elsődleges kulcsot, mielőtt az ügynökök el tudják indítani a figyelést.
 
 A Windows rendszerű gépek Log Analytics ügynökének telepítéséhez lásd: [Azure monitor virtuálisgép-bővítmény a Windows](../virtual-machines/extensions/oms-windows.md)rendszerhez.
 
 Ha az elérési út tartalmazza a tűzfalakat vagy a hálózati virtuális berendezéseket (NVA), akkor győződjön meg arról, hogy a célhely elérhető.
+
+Windows rendszerű gépek esetén a port megnyitásához futtassa a [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-parancsfájlt a rendszergazdai jogosultságokkal rendelkező PowerShell-ablakban található paraméterek nélkül.
+
+A Linux rendszerű gépek esetében a használni kívánt portNumbers manuálisan kell módosítani. 
+* Navigáljon a következő elérési útra:/var/opt/Microsoft/omsagent/npm_state. 
+* Fájl megnyitása: npmdregistry
+* A portszám értékének módosítása ```“PortNumber:<port of your choice>”```
+
+ Ne feledje, hogy a használt portszámoknak meg kell egyezniük a munkaterületen használt összes ügynökkel. 
+
+A parancsfájl a megoldáshoz szükséges beállításkulcsokat hoz létre. Emellett Windows tűzfal-szabályokat is létrehoz, amelyek lehetővé teszik, hogy az ügynökök TCP-kapcsolatokat hozzanak létre egymással. A parancsfájl által létrehozott beállításkulcsok határozzák meg, hogy naplózzák-e a hibakeresési naplókat és a naplófájlok elérési útját. A parancsfájl a kommunikációhoz használt ügynök TCP-portját is meghatározza. A kulcsok értékeit a parancsfájl automatikusan beállítja. Ezeket a kulcsokat ne módosítsa manuálisan. Alapértelmezés szerint a 8084-es port van megnyitva. Egyéni portot úgy használhat, hogy a portszám paramétert a parancsfájlhoz adja. Ugyanazt a portot használja az összes olyan számítógépen, amelyen a parancsfájl fut. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) információ a log Analytics-ügynökök hálózati követelményeiről
+
+A parancsfájl csak a Windows tűzfalat konfigurálja helyileg. Ha hálózati tűzfallal rendelkezik, győződjön meg arról, hogy az Network Performance Monitor által használt TCP-portra irányuló forgalmat engedélyezi.
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>Network Watcher engedélyezése az előfizetésen
 

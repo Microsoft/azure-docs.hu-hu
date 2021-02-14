@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566768"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096854"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Az Apache HTTP-kiszolgáló és az Azure Sentinel összekötése
 
@@ -37,7 +37,7 @@ Ez a cikk azt ismerteti, hogyan csatlakoztatható az Apache HTTP-kiszolgáló az
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>Apache HTTP Server-naplók konfigurálása és integrálása Log Analytics ügynök használatával
 
-Konfigurálja az Apache HTTP-kiszolgáló naplófájljainak helyét, hogy az Log Analytics ügynökön keresztül továbbítsa az adatait az Azure-munkaterületre.
+Konfigurálja az Apache HTTP-kiszolgálót, hogy naplófájlokat küldjön az Azure-munkaterületre a Log Analytics ügynök használatával.
 Log Analytics ügynök konfigurálása az Apache HTTP-kiszolgáló naplófájljainak olvasásához.
 
 1. Kövesse az utasításokat a https://httpd.apache.org/docs/2.4/logs.html naplófájlok helyének Apache HTTP-kiszolgálón történő beállításához.

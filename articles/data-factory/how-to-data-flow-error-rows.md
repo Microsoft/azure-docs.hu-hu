@@ -1,19 +1,17 @@
 ---
 title: Hibás sorok kezelése a Azure Data Factory leképezési adatforgalmával
 description: Megtudhatja, hogyan kezelheti az SQL-csonkolt hibákat Azure Data Factory a leképezési adatfolyamatok használatával.
-services: data-factory
 author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a7a03ff1a58f50f16ebefce48b9e2772a16a011a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352601"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386339"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-csonkolt hibák sorainak kezelése Data Factory leképezési adatforgalomban
 
@@ -29,7 +27,7 @@ Az adatbázis-fogadóba az ADF-adatfolyamatok során két elsődleges módszer t
 > [!NOTE]
 > Ha engedélyezi az automatikus hibajelentések kezelését, a saját hibakezelés logikájának írásakor az alábbi módszernek megfelelően a rendszer kis teljesítményű szankciót használ, és az ADF által végrehajtott további lépéseket végrehajtva kétfázisú műveletet hajt végre a hibák alátöltése érdekében.
 
-## <a name="scenario"></a>Használati példa
+## <a name="scenario"></a>Eset
 
 1. Egy ```nvarchar(5)``` "Name" nevű oszlopot tartalmazó céladatbázis-táblánk van.
 
@@ -62,6 +60,6 @@ Ez a videó végigvezeti egy, az adatfolyamatban a hibák sorát kezelő logiká
 
     ![az adatforgalom befejezése a hibák soraival](media/data-flow/error-row-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.

@@ -1,14 +1,14 @@
 ---
 title: Alkalmazások renderelése
 description: Azure Batch használatával bármilyen renderelési alkalmazás használható. Az Azure Marketplace virtuálisgép-lemezképei azonban előre telepített általános alkalmazásokkal is elérhetők.
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 4eeb87c866858f2f1733b81e3e2154f4521e94bc
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430028"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362233"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Előre telepített alkalmazások a Batch rendering virtuálisgép-rendszerképein
 
@@ -18,20 +18,15 @@ Ha alkalmazható, a használaton kívüli licencelés elérhető az előre telep
 
 Néhány alkalmazás csak a Windowst támogatja, de a legtöbb Windows és Linux rendszeren is támogatott.
 
-## <a name="applications-on-centos-7-rendering-image"></a>A CentOS 7 renderelési képét használó alkalmazások
+## <a name="applications-on-latest-centos-7-rendering-image"></a>Az alkalmazások a CentOS 7-es renderelési lemezképén
 
-A következő lista a CentOS 7,6-es verziójú 1.1.6-renderelési lemezképekre vonatkozik.
+Az alábbi lista a CentOS rendering-rendszerképre, a 1.1.7 verzióra vonatkozik.
 
-* Autodesk Maya I/O 2017 5. frissítés (201708032230-s verzió)
-* Autodesk Maya I/O 2018 2. frissítés (cut 201711281015)
-* Autodesk Maya I/O 2019 1. frissítés
-* Autodesk Arnold Maya 2017 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2017
-* Autodesk Arnold Maya 2018 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2018
-* Autodesk Arnold Maya 2019 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2019
-* Chaos Group V-Ray for Maya 2017 (3.60.04-es verzió)
-* Chaos Group V-Ray for Maya 2018 (3.60.04-es verzió)
-* Blender (2.68)
-* Turmixgép (2,8)
+* Autodesk Maya I/O 2020 frissítés 4,6
+* Autodesk Arnold Maya 2020 (Arnold Version 6.2.0.0) MtoA-4.2.0-2020
+* Chaos Group V-Ray a Maya 2020 (5.00.21 verzió)
+* Turmixgép (2,80)
+* AZ 10
 
 ## <a name="applications-on-latest-windows-server-rendering-image"></a>A Windows Server legújabb megjelenítési lemezképét bemutató alkalmazások
 
@@ -96,6 +91,21 @@ A következő lista a Windows Server 2016-es verziójának 1.3.7-megjelenítési
 
 > [!NOTE]
 > A Chaos-csoport V-Ray for 3ds Max 2019 (4.10.01 verzió) bevezeti a V-Ray változásait. Az előző verzió (3.60.02-verzió) használatához használja a Windows Server 2016-es verzióját, a 1.3.2 renderelési csomópontokat.
+
+## <a name="applications-on-previous-centos-rendering-images"></a>Alkalmazások az előző CentOS-renderelési lemezképeken
+
+A következő lista a CentOS 7,6-es verziójú 1.1.6-renderelési lemezképekre vonatkozik.
+
+* Autodesk Maya I/O 2017 5. frissítés (201708032230-s verzió)
+* Autodesk Maya I/O 2018 2. frissítés (cut 201711281015)
+* Autodesk Maya I/O 2019 1. frissítés
+* Autodesk Arnold Maya 2017 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2017
+* Autodesk Arnold Maya 2018 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2018
+* Autodesk Arnold Maya 2019 (Arnold Version 5.3.1.1) MtoA-3.2.1.1-2019
+* Chaos Group V-Ray for Maya 2017 (3.60.04-es verzió)
+* Chaos Group V-Ray for Maya 2018 (3.60.04-es verzió)
+* Blender (2.68)
+* Turmixgép (2,8)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,23 +1,18 @@
 ---
 title: Adateszköz az új és frissített fájlok növekményes másolásához
 description: Hozzon létre egy Azure-beli adatelőállítót, majd használja az Adatok másolása eszközt az új fájlok LastModifiedDate-alapú növekményes betöltéséhez.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: f94975b91a332e480a1b570c29f02040a1047f75
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f2f0b3e452b39cb81f435dbee4a3b0f524b0213d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555413"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361145"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Új és módosított fájlok növekményes másolása LastModifiedDate alapján a Adatok másolása eszköz használatával
 
@@ -39,8 +34,8 @@ Ebben az oktatóanyagban a következő feladatokat hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure Storage-fiók** : használjon blob Storage-t a forrás-és fogadó adattárakhoz. Ha nem rendelkezik Azure Storage-fiókkal, kövesse a Storage- [fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* **Azure Storage-fiók**: használjon blob Storage-t a forrás-és fogadó adattárakhoz. Ha nem rendelkezik Azure Storage-fiókkal, kövesse a Storage- [fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
 
 ## <a name="create-two-containers-in-blob-storage"></a>Két tároló létrehozása a blob Storage-ban
 
@@ -74,7 +69,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
 5. A **Verzió** résznél válassza a **V2** értéket.
 6. A **hely** területen válassza ki az adat-előállító helyét. A listában csak a támogatott helyszínek jelennek meg. Az adattárolók (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más helyszíneken és régiókban is lehetnek.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 9. Az adatelőállító létrehozása után megjelenik a The Factory kezdőlapja.
 10. A Azure Data Factory felhasználói felületének (UI) külön lapon való megnyitásához válassza a **szerző & monitor** csempe:
 
@@ -96,7 +91,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     d. Az **Ismétlődés** alatt adja meg a **15 percet**.
 
-    e. Válassza a **Tovább** gombot.
+    e. Kattintson a **Tovább** gombra.
 
     Data Factory létrehoz egy folyamatot a megadott feladathoz tartozó névvel.
 
@@ -112,7 +107,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     c. Az **új társított szolgáltatás (Azure Blob Storage)** lapon válassza ki a Storage-fiók nevét a **Storage-fiók neve** listából. Tesztelje a kapcsolatokat, majd válassza a **Létrehozás** lehetőséget.
 
-    d. Válassza ki az új társított szolgáltatást, majd válassza a **Next (tovább** ) gombot:
+    d. Válassza ki az új társított szolgáltatást, majd válassza a **Next (tovább**) gombot:
 
    ![Válassza ki az új társított szolgáltatást](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
@@ -124,7 +119,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     b. A **fájl betöltése viselkedés** területen válassza a **növekményes betöltés: LastModifiedDate** lehetőséget.
 
-    c. Válassza a **bináris másolás** lehetőséget, majd válassza a **Next (tovább** ) gombot:
+    c. Válassza a **bináris másolás** lehetőséget, majd válassza a **Next (tovább**) gombot:
 
      ![Válassza ki a bemeneti fájl vagy mappa lapot.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
@@ -136,7 +131,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz a következő lépések elv�
 
     ![Válassza ki a kimeneti fájl vagy mappa lapot](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
-    b. Válassza a **Tovább** gombot.
+    b. Kattintson a **Tovább** gombra.
 
 7. A **Beállítások** lapon kattintson a **Tovább** gombra.
 

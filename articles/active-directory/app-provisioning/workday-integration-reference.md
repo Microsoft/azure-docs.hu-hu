@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255984"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104331"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>A Azure Active Directory kiépítés munkanapokkal való integrálása
 
@@ -448,6 +448,21 @@ Tegyük fel, hogy egy felhasználóhoz tartozó tanúsítványokat szeretne beol
 Tegyük fel, hogy egy feldolgozóhoz rendelt *kiépítési csoportokat* szeretne lekérdezni. Ezek az adatok a *fiók létesítési* adatkészletének részeként érhetők el. Ha ezt az adatkészletet a *Get_Workers* válasz részeként szeretné lekérni, használja a következő XPath-t: 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>Különböző HR-forgatókönyvek feldolgozása
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>Nemzetközi feladat-hozzárendelések és másodlagos feladat adatainak beolvasása
+
+Alapértelmezés szerint a munkanap-összekötő a feldolgozó elsődleges feladataihoz társított attribútumokat kérdezi le. Az összekötő támogatja a további, a nemzetközi feladatok hozzárendeléseihez vagy a másodlagos feladatokhoz kapcsolódó feladatok *adatainak* beolvasását is. 
+
+Az alábbi lépéseket követve beolvashatja a nemzetközi feladatok hozzárendeléseihez kapcsolódó attribútumokat: 
+
+1. A munkanap-kapcsolat URL-címének beállítása a munkanap Web Service API 30,0-es vagy újabb verzióját használja. Ennek megfelelően állítsa be a [helyes XPath-értékeket](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) a munkanap-kiépítési alkalmazásban. 
+1. A `@wd:Primary_Job=0` `Worker_Job_Data` megfelelő attribútum beolvasásához használja a csomópont választóját. 
+   * **1. példa:** `SecondaryBusinessTitle` Az XPath használatának megkezdése `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()`
+   * **2. példa:** `SecondaryBusinessLocation` Az XPath használatának megkezdése `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor`
+
+ 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -4,15 +4,15 @@ description: Virtuális hálózati átjáró törlése a Azure Portal használat
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 7d9ae31b5701707589d79fd5f3d7eb0802038eb9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 413fd8c7f03ef44abe4bece39ca717c533dea66b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148199"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376384"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Virtuális hálózati átjáró törlése a portál használatával
 
@@ -44,24 +44,24 @@ A következő lépések segítségével törölheti a már nem használt erőfor
 
 #### <a name="to-delete-the-local-network-gateway"></a>A helyi hálózati átjáró törlése
 
-1. Az **összes erőforrás**területen keresse meg az egyes kapcsolatok számára társított helyi hálózati átjárókat.
-1. A helyi hálózati átjáró **Áttekintés** paneljén kattintson a **Törlés**elemre.
+1. Az **összes erőforrás** területen keresse meg az egyes kapcsolatok számára társított helyi hálózati átjárókat.
+1. A helyi hálózati átjáró **Áttekintés** paneljén kattintson a **Törlés** elemre.
 
 #### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Az átjáró nyilvános IP-címéhez tartozó erőforrás törlése
 
-1. Az **összes erőforrás**területen keresse meg az átjáróhoz társított nyilvános IP-cím erőforrást. Ha a virtuális hálózati átjáró aktív-aktív, két nyilvános IP-címet fog látni.
+1. Az **összes erőforrás** területen keresse meg az átjáróhoz társított nyilvános IP-cím erőforrást. Ha a virtuális hálózati átjáró aktív-aktív, két nyilvános IP-címet fog látni.
 1. A nyilvános IP-cím **Áttekintés** lapján kattintson a **Törlés**, majd az **Igen** gombra a megerősítéshez.
 
 #### <a name="to-delete-the-gateway-subnet"></a>Az átjáró-alhálózat törlése
 
-1. A **minden erőforrás**területen keresse meg a virtuális hálózatot. 
-1. Az **alhálózatok** panelen kattintson a **GatewaySubnet**, majd a **Törlés**elemre. 
+1. A **minden erőforrás** területen keresse meg a virtuális hálózatot. 
+1. Az **alhálózatok** panelen kattintson a **GatewaySubnet**, majd a **Törlés** elemre. 
 1. Az **Igen** gombra kattintva erősítse meg, hogy törölni szeretné az átjáró-alhálózatot.
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>VPN-átjáró törlése az erőforráscsoport törlésével
 
 Ha nem érdekli az erőforráscsoport erőforrásainak megtartása, és csak azt szeretné kezdeni, törölheti a teljes erőforráscsoportot. Ez egy gyors módszer, amellyel mindent eltávolíthat. A következő lépések csak a Resource Manager-alapú üzemi modellre vonatkoznak.
 
-1. Az **összes erőforrás**területen keresse meg az erőforráscsoportot, és kattintson a panel megnyitásához.
+1. Az **összes erőforrás** területen keresse meg az erőforráscsoportot, és kattintson a panel megnyitásához.
 1. Kattintson a **Törlés** gombra. A törlés panelen tekintse meg az érintett erőforrásokat. Győződjön meg arról, hogy az összes erőforrást törölni kívánja. Ha nem, használja a cikk elején található VPN Gateway törlésének lépéseit.
-1. A folytatáshoz írja be a törölni kívánt erőforráscsoport nevét, majd kattintson a **Törlés**gombra.
+1. A folytatáshoz írja be a törölni kívánt erőforráscsoport nevét, majd kattintson a **Törlés** gombra.

@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f3eff6f5660089472ef431bad9a4f05be1fffe24
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178738"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104145"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Útmutató: az Azure AD-alkalmazás korlátozása egy Azure AD-bérlőben lévő felhasználók köré
 
@@ -47,7 +47,7 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhatók l
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Vállalati alkalmazások (globális rendszergazdai szerepkört igényel)
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> **globális rendszergazdaként**.
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> **globális rendszergazdaként**.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
@@ -55,11 +55,11 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhatók l
     Egy adott alkalmazás megkereséséhez használja az ablak tetején található szűrőket.
 1. Az alkalmazás **Áttekintés** lapjának **kezelés** területén válassza a **Tulajdonságok** elemet.
 1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen** értékre. Ha ezt a beállítást az **Igen** értékre állítja, akkor a bérlőben lévő felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, vagy nem lesznek képesek bejelentkezni az alkalmazásba.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="app-registration"></a>Alkalmazásregisztráció
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
@@ -67,7 +67,7 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhatók l
 1. Az alkalmazás **áttekintése** lapon válassza ki a **felügyelt alkalmazást a helyi címtár** hivatkozásra az **alapvető** erőforrások szakaszban.
 1. A **Kezelés** területen válassza a **Tulajdonságok** elemet.
 1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen** értékre. Ha ezt a beállítást az **Igen** értékre állítja, akkor a bérlőben lévő felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, vagy nem lesznek képesek bejelentkezni az alkalmazásba.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Felhasználók és csoportok társítása az alkalmazáshoz
 

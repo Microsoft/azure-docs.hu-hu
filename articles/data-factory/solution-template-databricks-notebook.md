@@ -1,22 +1,18 @@
 ---
 title: Átalakítás az Azure Databricks szolgáltatással
 description: Megtudhatja, hogyan alakíthat át egy megoldást sablon használatával az adatátalakításhoz a Azure Data Factory Databricks-jegyzetfüzettel.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 1c20508d27d03c00a6842979731fb905bbaa9def
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ee663423071458605f37f07293693dbc91f592bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461256"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362114"
 ---
 # <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks szolgáltatással
 
@@ -134,7 +130,7 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
 
    - **Forrás** lap ![ forrás lapja](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **Sink** Fogadó lap fogadójának ![ lapja](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   -  Fogadó lap fogadójának ![ lapja](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. A **Jegyzetfüzet** tevékenység- **átalakítás** területén szükség szerint tekintse át és frissítse az elérési utakat és beállításokat.
 
@@ -183,6 +179,6 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
     > A Data Factory-folyamat futtatásával való korrelációhoz ez a példa a folyamat futtatási AZONOSÍTÓját fűzi hozzá az adatok gyárból a kimeneti mappába. Ez segít nyomon követni az egyes futtatások által létrehozott fájlokat.
     > ![Hozzáfűzött folyamat futtatási azonosítója](media/solution-template-Databricks-notebook/verify-data-files.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

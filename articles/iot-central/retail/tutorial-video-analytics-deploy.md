@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e524905aaeed54de6501eb6f024bf28dbab9c594
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831943"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362165"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Oktatóanyag: IoT Central-alkalmazás üzembe helyezése a video Analytics – Object és Motion Detection alkalmazás sablon használatával
 
@@ -22,6 +22,13 @@ A Key *video Analytics – Object és Motion Detection alkalmazás-* összetevő
 A következő videó bemutatja, hogyan használható a _video Analytics-Object és a Motion Detection alkalmazás sablonja_ egy IoT Central-megoldás üzembe helyezéséhez:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+Ebben az oktatóanyagban a következőket sajátíthatja el:
+
+> [!div class="checklist"]
+> * Az alkalmazás üzembe helyezése
+> * Az alkalmazáshoz csatlakozó IoT Edge-példány üzembe helyezése
+> * Az alkalmazás figyelése és kezelése
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,22 +1,19 @@
 ---
 title: Elágazás Azure Data Factoryi folyamatban
 description: Megismerheti, hogyan vezérelheti az adatok folyamát az Azure Data Factoryben elágaztatási és láncolási tevékenységekkel.
-services: data-factory
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496942"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386016"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -79,7 +76,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**.
+1. Válassza az **Eszközök** > **NuGet-csomagkezelő** > **Package Csomagkezelő konzol** elemet.
 1. A **Package Manager konzolon** futtassa a következő parancsokat a csomagok telepítéséhez. A részletekért tekintse meg a [Microsoft. Azure. Management. DataFactory nuget csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -336,7 +333,7 @@ A munkafolyamat a következő példához hasonlóan néz ki:
 
 Ez a JSON-tartalom az `EmailRequest` előző szakaszban létrehozott osztályhoz igazodik.
 
-Adja hozzá a műveletét `Office 365 Outlook – Send an email` . Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Például:
+Adja hozzá a műveletét `Office 365 Outlook – Send an email` . Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Bemutatunk egy példát:
 
 ![Logic app Designer – e-mail küldése művelet](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -610,7 +607,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -748,12 +745,12 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
 > [!div class="checklist"]
-> _ Adatelőállító létrehozása
+> * Adat-előállító létrehozása
 > * Azure Storage-beli társított szolgáltatás létrehozása
 > * Azure Blob-adatkészlet létrehozása
 > * Másolási tevékenységet és webes tevékenységet tartalmazó folyamat létrehozása

@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8a61586acd888301350277d924f3d4fe176b4c8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 91dc6ba0bcd455aefe9de2efdff2feb20938152d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148208"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376385"
 ---
 ### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>1. lépés: navigáljon a virtuális hálózati átjáróhoz
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az **összes erőforráshoz**. 
-2. A virtuális hálózati átjáró megnyitásához nyissa meg a törölni kívánt virtuális hálózati átjárót, és kattintson rá.
+2. A virtuális hálózati átjáró megnyitásához nyissa meg a virtuális hálózati átjárót, és kattintással jelölje ki. 
 
 ### <a name="step-2-delete-connections"></a>2. lépés: kapcsolatok törlése
 
@@ -30,5 +30,5 @@ ms.locfileid: "92148208"
 
 Ügyeljen arra, hogy ha a S2S-konfiguráción kívül P2S-konfigurációval rendelkezik ehhez a VNet, a virtuális hálózati átjáró törlésével a rendszer figyelmeztetés nélkül automatikusan leválasztja az összes P2S-ügyfelet.
 
-1. A virtuális hálózati átjáró lapon kattintson az **Áttekintés**elemre.
+1. A virtuális hálózati átjáró lapon kattintson az **Áttekintés** elemre.
 2. Az átjáró törléséhez az **Áttekintés** lapon kattintson a **Törlés** elemre.

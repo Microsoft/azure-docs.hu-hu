@@ -1,18 +1,17 @@
 ---
 title: A Azure Data Factory saját üzemeltetésű integrációs moduljának hibakeresése
 description: Ismerje meg, hogy miként lehet elhárítani a Azure Data Factory a saját üzemeltetésű integrációs modul hibáit.
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551076"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376462"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Helyi integrációs modul hibaelhárítása
 
@@ -83,8 +82,8 @@ Példa: az egyidejű feladatok maximális száma jelenleg 24 értékre van áll�
 Az egyidejű feladatok számának korlátozása a számítógép Logic Core-és memóriájától függ. Próbálja meg lefelé módosítani az értéket egy értékre (például 24), majd tekintse meg az eredményt.
 
 > [!TIP] 
-> - Ha többet szeretne megtudni a logikai mag darabszámáról és a gép logikai alapszámának meghatározásáról, tekintse meg [a következő négy módszert: a processzorok számának megállapítása a CPU-ban Windows 10 rendszerben](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
-> - A Math. log kiszámításához nyissa meg a logaritmus- [kalkulátort](https://www.rapidtables.com/calc/math/Log_Calculator.html).
+> -    Ha többet szeretne megtudni a logikai mag darabszámáról és a gép logikai alapszámának meghatározásáról, tekintse meg [a következő négy módszert: a processzorok számának megállapítása a CPU-ban Windows 10 rendszerben](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> -    A Math. log kiszámításához nyissa meg a logaritmus- [kalkulátort](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>Saját üzemeltetésű IR magas rendelkezésre állás (HA) SSL-tanúsítvány probléma
