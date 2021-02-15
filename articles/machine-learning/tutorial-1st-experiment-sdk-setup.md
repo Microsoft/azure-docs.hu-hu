@@ -10,12 +10,13 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ebde8048c26364d77d95b9c7b34f9d1d7a4a20ee
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+adobe-target: true
+ms.openlocfilehash: b597c483354a4bc1763e7b6a4bb3727aaaaf0c51
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326266"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369203"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Oktatóanyag: első lépések a Azure Machine Learning Jupyter-jegyzetfüzetekben
 
@@ -99,13 +100,13 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
 
     1. Válassza ki a virtuális gép méretét a rendelkezésre álló lehetőségek közül. Az oktatóanyagok esetében az alapértelmezett virtuális gép jó választás.
 
-    1. Ezután válassza a **Létrehozás** elemet. A virtuális gép beállítása körülbelül öt percet vesz igénybe.
+    1. Ezután kattintson a **Létrehozás** elemre. A virtuális gép beállítása körülbelül öt percet vesz igénybe.
 
 1. Ha a virtuális gép elérhető, megjelenik a felső eszköztáron. Most már futtathatja a jegyzetfüzetet az eszköztáron az **összes futtatása** lehetőséggel, vagy a **SHIFT + ENTER billentyűkombinációt** a jegyzetfüzet kódjában.
 
 Ha egyéni widgetekkel rendelkezik, vagy szívesebben szeretné használni a Jupyter vagy a JupyterLab, válassza a jobb szélen a **Jupyter** legördülő listát. Ezután válassza a **Jupyter** vagy a **JupyterLab** lehetőséget. Megnyílik az új böngészőablak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a fejlesztési környezetet, folytassa a modell betanítását Jupyter Notebook.
 

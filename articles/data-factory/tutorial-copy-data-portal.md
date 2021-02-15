@@ -1,23 +1,18 @@
 ---
 title: Adatfeldolgozó folyamat létrehozása a Azure Portal használatával
 description: Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat a másolási tevékenységet használja az adatok Azure Blob Storage-ból Azure SQL Databaseba való másolásához.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 34eb34a86948a2b4c043d5d9b58b50958855e449
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca3250fb54440d6b68a808a3b1b3800bdcfd14eb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508714"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375765"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy Azure SQL Database-adatbázisba Azure Data Factory használatával
 
@@ -255,7 +250,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
 1. Ellenőrizze, hogy a megadott befejezési időig percenként (folyamatfuttatásonként) két sor be van-e szúrva az **emp** táblába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

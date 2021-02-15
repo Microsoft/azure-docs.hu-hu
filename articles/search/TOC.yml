@@ -212,6 +212,8 @@
       items:
         - name: Indexelő létrehozása
           href: search-howto-create-indexers.md
+        - name: Indexelő futtatása vagy visszaállítása
+          href: search-howto-run-reset-indexers.md
         - name: Indexelő beosztása
           href: search-howto-schedule-indexers.md
         - name: Mező-hozzárendelések definiálása

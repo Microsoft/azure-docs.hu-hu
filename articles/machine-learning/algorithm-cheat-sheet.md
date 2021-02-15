@@ -9,18 +9,19 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+adobe-target: true
+ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82890979"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367056"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>A Azure Machine Learning Designer Machine Learning algoritmushoz tartozó Cheat Sheet
 
 A **Azure Machine learning algoritmust tartalmazó Cheat Sheet** segítségével kiválaszthatja a tervezőtől a prediktív elemzési modellhez megfelelő algoritmust.
 
-A Azure Machine Learning a ***besorolás***, az ***ajánló rendszerek***, a ***fürtözés***, a ***rendellenességek észlelése***, a ***regresszió***és a ***szöveges elemzési*** családok nagy könyvtára. Mindegyik úgy van kialakítva, hogy más típusú gépi tanulási problémát lehessen kezelni.
+A Azure Machine Learning a **besorolási** _, az _*_ajánlott rendszerek_*_, a _*_fürtözés_*_, a _*_rendellenességek észlelése_*_, a _*_regresszió_*_ és a _ *_text Analytics_** termékcsaládok nagy könyvtára. Mindegyik úgy van kialakítva, hogy más típusú gépi tanulási problémát lehessen kezelni.
 
 További útmutatás: [algoritmusok kiválasztása](how-to-select-algorithms.md)
 
@@ -42,7 +43,7 @@ Ha többet szeretne megtudni a Azure Machine Learning Designer algoritmusait ill
 
 ## <a name="kinds-of-machine-learning"></a>Gépi tanulás típusa
 
-A gépi tanulásnak három fő kategóriája van: a *felügyelt tanulás*, a nem *felügyelt tanulás*és a *megerősítő tanulás*.
+A gépi tanulásnak három fő kategóriája van: a *felügyelt tanulás*, a nem *felügyelt tanulás* és a *megerősítő tanulás*.
 
 ### <a name="supervised-learning"></a>Felügyelt tanulás
 
@@ -56,7 +57,7 @@ A nem felügyelt tanulásban az adatpontokhoz nem tartoznak címkék. Ehelyett e
 
 A megerősítő tanulásban az algoritmus az egyes adatpontokra adott válaszként kiválaszt egy műveletet. A robotika közös megközelítése, amelyben egy adott időpontban az érzékelő beolvasása egy adatpont, és az algoritmusnak a robot következő műveletét kell választania. A eszközök internetes hálózata-alkalmazások számára is természetes. A tanulási algoritmus rövid idő múlva egy jutalom jelzést is kap, amely azt jelzi, hogy milyen jó döntés volt. A jel alapján az algoritmus módosítja a stratégiát a legmagasabb jutalom elérése érdekében. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [algoritmusok kiválasztásával](how-to-select-algorithms.md) kapcsolatos további útmutatásért lásd:
 

@@ -2,13 +2,13 @@
 title: Azure Event Hubs tűzfalszabályok | Microsoft Docs
 description: A tűzfalszabályok használatával engedélyezheti az adott IP-címekről az Azure Event Hubs való kapcsolódást.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: e07f863bf8b7d5f64ec0ba04bf16fba12f4a785d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: 18d043ebff7ff317207d0a33eaeba741fea8cc8a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427445"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517195"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Azure Event Hubs-névterek elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
@@ -26,8 +26,9 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre IP-tűzfalszabályok Even
 
 1. Navigáljon a **Event Hubs névtérhez** a [Azure Portal](https://portal.azure.com).
 4. A bal oldali menü **Beállítások** területén válassza a **hálózatkezelés** lehetőséget. A **hálózatkezelés** lap csak a **standard** vagy a **dedikált** névtér esetében jelenik meg. 
-    > [!NOTE]
-    > Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva, ahogy az az alábbi képen is látható. Ha nem ad meg IP-tűzfalszabály-szabályt, vagy nem ad hozzá virtuális hálózatot ezen a lapon, a névtér a **nyilvános interneten** keresztül érhető el (a hozzáférési kulccsal).  
+    
+    > [!WARNING]
+    > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a **nyilvános interneten** keresztül érhető el (a hozzáférési kulcs használatával).  
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Hálózatok lap – kiválasztott hálózatok lehetőség" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -55,23 +56,9 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre IP-tűzfalszabályok Even
 
 A következő Resource Manager-sablon lehetővé teszi az IP-szűrési szabály hozzáadását egy meglévő Event Hubs névtérhez.
 
-Sablon paraméterei:
+a sablonban található **ipMask** egyetlen IPv4-cím vagy IP-cím CIDR jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
 
-- a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
-
-> [!NOTE]
-> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
-> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a **_"defaultAction"_**
-> 
-> a
-> ```json
-> "defaultAction": "Allow"
-> ```
-> a következőre:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+Virtuális hálózati vagy tűzfalszabályok hozzáadásakor állítsa be a értékét a következőre `defaultAction` : `Deny` .
 
 ```json
 {
@@ -136,6 +123,9 @@ Sablon paraméterei:
 ```
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
+
+> [!IMPORTANT]
+> Ha nincsenek IP-és virtuális hálózati szabályok, akkor az összes forgalom a névtérbe kerül, még akkor is, ha be van állítva `defaultAction` `deny` .  A névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal). Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat.  
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033357"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097253"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Meglévő ajánlatok frissítése a kereskedelmi piactéren
 
@@ -31,6 +31,10 @@ Ezekkel a lépésekkel frissítheti az előzetes verzióra vagy az élő állapo
     - Nem **közzétett módosítások**: a szakasz frissítve lett, és befejeződött. Minden szükséges információ meg lett adta, és a frissítésekben nem történt hiba.
     - **Hiányos**: a szakasz azon frissítései, amelyeket meg kell oldani, vagy amelyekhez további információkra van szükség.
 2. Válassza a **Közzététel** lehetőséget a frissített ajánlat közzétételhez való elküldéséhez. Az ajánlat a normál [ellenőrzési és közzétételi lépéseken](../review-publish-offer.md#validation-and-publishing-steps)keresztül fog haladni.
+
+## <a name="changing-offer-type"></a>Ajánlat típusának módosítása
+
+[!INCLUDE [change-offer-type](../includes/change-offer-type.md)]
 
 > [!IMPORTANT]
 > Ha elérhető, tekintse át az ajánlat előzetes verzióját, és válassza a **Go-Live** lehetőséget a frissített ajánlat közzétételéhez a célközönség (nyilvános vagy magánjellegű) számára.

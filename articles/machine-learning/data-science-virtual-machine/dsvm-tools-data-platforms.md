@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Ismerje meg az Azure Data Science Virtual Machine által támogatott adatplatformokat és eszközöket.
 keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 9f432b417140440584bf4dfd01ed45814a746953
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 927e945a0d045abcd1caa2951dbd484224b2f425
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320909"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519541"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott adatplatformok
 
@@ -31,7 +30,7 @@ A DSVM a következő adatplatform-eszközöket támogatja.
 | Támogatott DSVM-kiadások      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
 | Jellemző felhasználások      | <ul><li>Gyors fejlesztés helyileg, kisebb adatkészlettel</li><li>Futtatás a-adatbázisban R</li></ul> |
 | Mintákra mutató hivatkozások      | <ul><li>A New York City-adathalmazok egy kis mintája betöltődik az SQL Database-be:<br/>  `nyctaxi`</li><li>A Microsoft Machine Learning Server és az adatbázison belüli elemzéseket bemutató Jupyter-minta a következő helyen található:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
-| A DSVM kapcsolódó eszközök       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC-illesztőprogramok</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
+| A DSVM kapcsolódó eszközök       | <ul><li>Az SQL Server Management Studio</li><li>ODBC/JDBC-illesztőprogramok</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer kiadás csak fejlesztési és tesztelési célokra használható. Az üzemi környezetben való futtatásához licencre vagy a SQL Server virtuális gépek egyikére van szükség.

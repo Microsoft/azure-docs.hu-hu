@@ -8,22 +8,26 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: f18126448f5a6dca29e798ad80cb53a8760689d8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576515"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095171"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
-Azure Active Directory (Azure AD) olyan alkalmazásproxy-szolgáltatással rendelkezik, amely lehetővé teszi a felhasználók számára, hogy az Azure AD-fiókjával való bejelentkezéssel hozzáférjenek a helyszíni alkalmazásokhoz. Ez az oktatóanyag előkészíti a környezetet az alkalmazásproxy használatához. Ha a környezet elkészült, a Azure Portal használatával hozzáadhat egy helyszíni alkalmazást az Azure AD-bérlőhöz. Ha szeretné **megtekinteni az alkalmazásokat, és gyorsan** felgyorsul az App Management az Azure-ban, tekintse meg a gyors üzembe helyezési [sorozatot](view-applications-portal.md).
+Azure Active Directory (Azure AD) olyan alkalmazásproxy-szolgáltatással rendelkezik, amely lehetővé teszi a felhasználók számára, hogy az Azure AD-fiókjával való bejelentkezéssel hozzáférjenek a helyszíni alkalmazásokhoz. További információ az alkalmazásproxy használatáról: [Mi az az App proxy?](what-is-application-proxy.md). Ez az oktatóanyag előkészíti a környezetet az alkalmazásproxy használatához. Ha a környezet elkészült, a Azure Portal használatával hozzáadhat egy helyszíni alkalmazást az Azure AD-bérlőhöz. 
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Alkalmazásproxy áttekintő diagramja" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
+
+Mielőtt elkezdené, győződjön meg arról, hogy ismeri az App managementet és az **egyszeri Sign-On (SSO)** fogalmakat. Tekintse meg az alábbi hivatkozásokat:
+- [A gyors üzembe helyezési sorozat az alkalmazások kezelésében az Azure AD-ben](view-applications-portal.md)
+- [Mi az az egyszeri Sign-On (SSO)?](what-is-single-sign-on.md)
 
 Az összekötők az alkalmazásproxy egyik kulcsfontosságú részét képezik. További információ az összekötők használatáról: az [Azure ad Application proxy-összekötők megismerése](application-proxy-connectors.md).
 
@@ -223,7 +227,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
     | **URL-címek lefordítása a fejlécekben** | Tartsa meg ezt az értéket **Igen** , kivéve, ha az alkalmazásnak a hitelesítési kérelemben az eredeti állomásfejléc-fejlécet kellett volna megadnia. |
     | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne **csak akkor tartsa meg, ha** hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Válassza a **Hozzáadás** elemet.
+7. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 

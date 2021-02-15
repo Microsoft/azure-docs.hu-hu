@@ -6,16 +6,16 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozgun
-ms.date: 09/14/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: bf2696d329f852741c42219219600dc773090623
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 61bcf7abca2860078bd89da070309a0057360f0c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590715"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370223"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>PowerShell-parancsok futtatása Azure AD-beli hitelesítő adatokkal a várólista adatainak eléréséhez
 
@@ -28,6 +28,9 @@ Engedélyeket rendelhet az Azure AD rendszerbiztonsági tag számára az Azure s
 Az Azure Storage-bővítmények az üzenetsor-adatokon végrehajtott műveletek esetében támogatottak. A felhívható műveletek az Azure AD rendszerbiztonsági tag által a PowerShellbe való bejelentkezéshez megadott engedélyektől függenek. A várólisták engedélyei az Azure RBAC keresztül rendelhetők hozzá. Ha például hozzá lett rendelve a **várólista-Adatolvasó** szerepkörhöz, futtathat parancsfájl-parancsokat, amelyek egy várólistáról olvasnak be egy adatforrást. Ha hozzá lett rendelve a **várólista-adatközreműködői** szerepkörhöz, futtathat parancsfájl-parancsokat, amelyek egy várólistát vagy az általa tárolt adat olvasását, írását vagy törlését írják le, írhatják vagy törölhetik.
 
 További információ az egyes Azure Storage-műveletekhez szükséges engedélyekről a várólistán: [tárolási műveletek hívása OAuth-jogkivonatokkal](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
+
+> [!IMPORTANT]
+> Ha egy Storage-fiók zárolva van egy Azure Resource Manager **írásvédett** zárolással, a [kulcsok listázása](/rest/api/storagerp/storageaccounts/listkeys) művelet nem engedélyezett ehhez a Storage-fiókhoz. A **kulcsok listázása** post művelet, és az összes post művelet meg lesz akadályozva, ha **írásvédett** zárolás van konfigurálva a fiókhoz. Emiatt, ha a fiók **írásvédett** zárolással van zárolva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure ad hitelesítő adatait kell használniuk a várólista adatainak eléréséhez. A PowerShellben adja meg a `-UseConnectedAccount` paramétert, és hozzon létre egy **AzureStorageContext** -OBJEKTUMOT az Azure ad-beli hitelesítő adataival.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>PowerShell-parancsok meghívása az Azure AD hitelesítő adataival
 

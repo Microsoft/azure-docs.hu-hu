@@ -4,16 +4,16 @@ description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9a9361df817db46028259d8792d9a1431df4ce67
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630530"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516325"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -62,12 +62,11 @@ Azure IoT Edge támogatja a Linux vagy Windows rendszerű tárolóként létreho
 
 A Linux-tárolóként létrehozott modulok Linux vagy Windows rendszerű eszközökön is üzembe helyezhetők. Linux rendszerű eszközök esetén a IoT Edge futtatókörnyezet közvetlenül települ a gazdagép eszközén. Windows-eszközökön a IoT Edge futtatókörnyezettel előre összeépített linuxos virtuális gép fut a gazdagépen.
 
-A Windows rendszerhez készült Linux-IoT Edge jelenleg nyilvános előzetes verzióban érhető el, de a IoT Edge Windows-eszközökön való futtatásának ajánlott módja.
+A Windows rendszerhez készült [Linux-IoT Edge](iot-edge-for-linux-on-windows.md) jelenleg nyilvános előzetes verzióban érhető el, de a IoT Edge Windows-eszközökön való futtatásának ajánlott módja.
 
 | Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Málna PI-OS stretch |  | ![Málna PI OS stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 16.04 | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió  |
 | Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Nyilvános előzetes verzió |
 | Windows 10 Pro | Nyilvános előzetes verzió |  |  |
 | Windows 10 Enterprise | Nyilvános előzetes verzió |  |  |
@@ -76,20 +75,26 @@ A Windows rendszerhez készült Linux-IoT Edge jelenleg nyilvános előzetes ver
 
 Az összes Windows operációs rendszernek 1809 (Build 17763) vagy újabb verziójúnak kell lennie.
 
+>[!NOTE]
+>Az Ubuntu Server 16,04 támogatása a 1,1-es IoT Edge-verzióval végződött.
+
 #### <a name="windows-containers"></a>Windows-tárolók
+
+>[!IMPORTANT]
+>IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatni fogja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem lesznek támogatottak. A Windows rendszerű eszközökön [IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md) való használatának vagy áthelyezésének megfontolnia, hogy Windows-eszközökön fusson IoT Edge.
 
 A Windows-tárolóként létrehozott modulok csak Windows-eszközökre telepíthetők.
 
 | Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Windows 10 IoT Enterprise | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-
-<sup>1</sup> a Windows 10 IoT Core verziója a 1.0.10 verzió után nem lesz támogatott.
+| Windows Server IoT 2019 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
 
 Az összes Windows operációs rendszernek 1809 (Build 17763) verziójúnak kell lennie. A Windows adott Windows-buildje szükséges a Windows IoT Edge, mert a Windows-tárolók verziószámának pontosan egyeznie kell a gazdagép Windows-eszközének verziójával. A Windows-tárolók jelenleg csak a Build 17763-et használják.
+
+>[!NOTE]
+>A Windows 10 IoT alapszintű támogatása IoT Edge 1,1-es verziójának kiadásával végződött.
 
 ### <a name="tier-2"></a>Második réteg
 
@@ -98,20 +103,18 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 | Operációs rendszer | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | [CentOS 7.5](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1804) | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 8](https://www.debian.org/releases/jessie/) | ![Debian 8 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 20,04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 9](https://www.debian.org/releases/stretch/) | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 10](https://www.debian.org/releases/buster/) | ![Debian 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [A mentor Embedded Linux Flex operációs rendszer](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Mentor Embedded Linux Omni operációs rendszer](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/tutorial-c-module/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [RHEL 7.5](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.5_release_notes/index) | ![RHEL 7,5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu 16,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![A Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Málna PI OS Buster |  | ![Málna PI OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Málna PI OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 20,04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> a [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) tárházból származó Debian 9 csomagoknak az Ubuntu 20,04-mel kell működniük.
+<sup>1</sup> az ubuntu Server 18,04 telepítésének lépései a [Linux-Azure IoT Edge telepítése vagy eltávolítása](how-to-install-iot-edge.md) során az Ubuntu 20,04 módosítása nélkül is működnek.
 
 ## <a name="releases"></a>Kiadások
 
@@ -121,21 +124,30 @@ IoT Edge összetevőket külön lehet telepíteni vagy frissíteni, és visszame
 
 | Kiadás | Biztonsági démon | Peremhálózati hub<br>Edge-ügynök | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.10** | 1.0.10 | 1.0.10 | 1.0.10 |  |
+| **1.1.0 LTS**<sup>1</sup> | 1.1.0 | 1.1.0 | 1.1.0 |   |
+| **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
+<sup>1</sup> A IoT Edge 1,1 az első hosszú távú támogatási (LTS) kiadási csatorna. Ez a verzió nem tartalmaz új funkciókat, de hibajavításokat és biztonsági javításokat fog kapni. IoT Edge 1,1 LTS a .NET Core 3,1-et használja, és a 2022. december 3. előtt támogatott, hogy megfeleljen a [.net Core és a .net 5 kiadási életciklusának](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
+>[!IMPORTANT]
+>A hosszú távú támogatási csatorna megjelenése esetén azt javasoljuk, hogy az 1.0. x verziót futtató összes aktuális ügyfél frissítse eszközét 1.1. x verzióra, hogy a folyamatos támogatást kapjon.
+
 IoT Edge a Microsoft. Azure. Devices. Client SDK-t használja. További információkért tekintse meg az [Azure IoT C# SDK GitHub](https://github.com/Azure/azure-iot-sdk-csharp) -tárházat vagy a [.net-hez készült Azure SDK-referenciát](/dotnet/api/overview/azure/iot/client). Az alábbi lista az ügyfél SDK azon verzióját mutatja be, amelyet az egyes kiadások a következővel teszteltek:
 
-* **IoT Edge 1.0.10**: ügyféloldali SDK-1.28.0
-* **IoT Edge 1.0.9**: ügyféloldali SDK-1.21.1
-* **IoT Edge 1.0.8**: ügyféloldali SDK-1.20.3
-* **IoT Edge 1.0.7**: ügyféloldali SDK-1.20.1
-* **IoT Edge 1.0.6**: ügyféloldali SDK-1.17.1
-* **IoT Edge 1.0.5**: ügyféloldali SDK-1.17.1
+| IoT Edge-verzió | Microsoft. Azure. Devices. Client SDK-verzió |
+|------------------|--------------------------------------------|
+| 1.1.0 (LTS)      | 1.28.0                                     |
+| 1.0.10           | 1.28.0                                     |
+| 1.0.9            | 1.21.1                                     |
+| 1.0.8            | 1.20.3                                     |
+| 1.0.7            | 1.20.1                                     |
+| 1.0.6            | 1.17.1                                     |
+| 1.0.5            | 1.17.1                                     |
 
 ## <a name="virtual-machines"></a>Virtual Machines
 

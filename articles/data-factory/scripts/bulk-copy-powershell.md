@@ -1,21 +1,18 @@
 ---
 title: Nagy mennyiségű Adatmásolás a PowerShell használatával
 description: Ez a PowerShell-parancsfájl azt mutatja be, hogyan lehet a Azure Data Factory használatával adatok másolását egy forrás adattárolóból a cél adattárolóba tömegesen.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 3b06cc68a4de50ae95d8946f32b241d38b4781ea
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 16cb08d49efcd46e2746c5031793af8b747a2b31
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460964"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373572"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell-parancsfájl – több tábla másolása a Azure Data Factory használatával
 
@@ -63,7 +60,7 @@ Ez a szkript a következő parancsokat használja:
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/).
 

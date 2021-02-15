@@ -7,16 +7,19 @@ ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 8007f11cb37063cef46ac7f3ac51e23bdfaae11a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 13eb84e91e1809012a2ae1ad01397b20cb322f16
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226454"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104450"
 ---
 # <a name="defender-for-iot-glossary"></a>A Defender for IoT szószedete
 
 Ez a Szószedet röviden ismerteti az Azure Defender for IoT platform fontos használati feltételeit és fogalmait. Kattintson a **További tudnivalók** hivatkozásra, hogy a kapcsolódó kifejezésekhez lépjen a szószedetben. Ez segít a termék-eszközök gyors megismerésében és használatában.
+
+> [!Note]
+> Bármely kifejezés, amelynek a `(AL)` neve szerepel, ügynökön alapuló eszköz-építő kifejezés. 
 
 <a name="glossary-a"></a>
 
@@ -58,6 +61,7 @@ Ez a Szószedet röviden ismerteti az Azure Defender for IoT platform fontos has
 | **Eszköz leltározása – érzékelő** | Az eszközök leltára a Defender által a IoT számára észlelt eszközök széles körét jeleníti meg. A következő lehetőségek érhetők el:<br /><br />– Megjelenített adatok szűrése.<br /><br />– Exportálja ezt az információt egy CSV-fájlba.<br /><br />– Importálja a Windows beállításjegyzékének részleteit. | **[Group](#g)** <br /><br />**[Eszközök leltározása – helyszíni felügyeleti konzol](#d)** |
 | **Eszközök leltározása – helyszíni felügyeleti konzol** | A csatlakoztatott érzékelőkről származó információkat a helyszíni felügyeleti konzolról lehet megtekinteni az eszközök leltárában. Ez lehetővé teszi a helyszíni felügyeleti konzol számára az összes hálózati információ átfogó áttekintését. | **[Eszköz leltározása – érzékelő](#d) <br /> <br /> [Eszközök leltározása – adatintegrátor](#d)** |
 | **Eszközök leltározása – adatintegrátor** | A helyszíni felügyeleti konzol adatintegrációs funkciói lehetővé teszik, hogy az eszközök leltárában lévő adatokat más vállalati erőforrásokból származó adatokkal fejlessze. Az erőforrások például CMDBs, DNS, tűzfalak és webes API-k. | **[Eszközök leltározása – helyszíni felügyeleti konzol](#d)** |
+| **Eszköz ikrek**`(AL)` | Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. | [Modul Twin](#m) <br /> <br />[Biztonsági modul Twin](#s) |
 
 ## <a name="e"></a>E
 
@@ -90,6 +94,7 @@ Ez a Szószedet röviden ismerteti az Azure Defender for IoT platform fontos has
 
 | Időszak | Leírás | Tudjon meg többet |
 |--|--|--|
+| **IoT Hub** `(AL)` | A felhőben üzemeltetett felügyelt szolgáltatás, amely központi üzenetsorként működik a IoT-alkalmazás és az általa felügyelt eszközök közötti kétirányú kommunikációhoz.  |   |
 | **Integráció** | Bontsa ki a Defender for IoT képességeit, ha megosztja az eszköz adatait a partneri rendszerekkel. A szervezetek a korábban silózott biztonsági, NAC-, incidens-felügyeleti és eszközkezelés-megoldásokkal tudják felgyorsítani a rendszerszintű válaszokat, és gyorsabban csökkentik a kockázatokat. | **[Továbbítási szabály](#f)** |
 | **Belső alhálózat** | A Defender által a IoT számára meghatározott alhálózati konfigurációk. Bizonyos esetekben, például belső tartományként nyilvános tartományokat használó környezetekben a Defender a IoT az összes alhálózat belső alhálózatként való feloldására is utasíthatja. Az alhálózatok a térképen és a IoT különböző Defender-jelentésekben jelennek meg. | **[Alhálózatok](#s)** |
 
@@ -105,6 +110,8 @@ Ez a Szószedet röviden ismerteti az Azure Defender for IoT platform fontos has
 
 | Időszak | Leírás | Tudjon meg többet |
 |--|--|--|
+| **Micro Agent**`(AL)` | Részletes biztonsági képességeket biztosít a IoT-eszközökhöz, beleértve a biztonsági helyzeteket és a fenyegetések észlelését.  |    |
+| **Modul Twin**`(AL)` | Az ikermodulok JSON-dokumentumok, amelyek a modulok állapotinformációit, például a metaadatokat, konfigurációkat és állapotokat tárolják. | [Ikereszközök](#d) <br /> <br />[Biztonsági modul Twin](#s) |
 | **Riasztási esemény némítása** | Utasítsa a Defendert a IoT, hogy folyamatosan figyelmen kívül hagyja a tevékenységeket azonos eszközökkel és hasonló adatforgalommal. | **[](#glossary-a) <br /> Riasztás <br /> [Kizárási szabály](#e) <br /> <br /> [Riasztási esemény nyugtázása](#glossary-a) <br /> <br /> [Riasztási esemény megismerése](#l)** |
 
 ## <a name="n"></a>N
@@ -140,6 +147,7 @@ Ez a Szószedet röviden ismerteti az Azure Defender for IoT platform fontos has
 | Időszak | Leírás | Tudjon meg többet |
 |--|--|--|
 | **Biztonsági riasztás** | A biztonsági problémákkal foglalkozó riasztások, például a túlzott SMB-bejelentkezési kísérletek vagy a kártevők észlelése. | **[](#glossary-a) <br /> Riasztás <br /> [Működési riasztás](#o)** |
+| **Biztonsági modul Twin**`(AL)` | A biztonsági modul külön tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldás minden egyes eszközén. | [Ikereszközök](#d) <br /> <br />[Modul Twin](#m)  |
 | **Szelektív szondázás** | A IoT Defender passzívan vizsgálja meg az IT-t és az OT, és észleli az eszközökre, azok attribútumaira, viselkedésére és egyéb adataira vonatkozó információkat. Bizonyos esetekben előfordulhat, hogy egyes információk nem láthatók a passzív hálózati elemzésekben.<br /><br />Ha ez történik, a IoT-ben a biztonságos, részletesen megjelenő szondázás-eszközöket használhatja a korábban nem elérhető eszközökkel kapcsolatos fontos információk megtalálásához. | - |
 | **Érzékelő** | Az a fizikai vagy virtuális gép, amelyen a Defender for IoT platform telepítve van. | **[Helyszíni felügyeleti konzol](#o)** |
 | **Hely** | Egy gyár vagy más entitás helye. A helynek tartalmaznia kell egy zónát vagy több olyan zónát, amelyben az érzékelő telepítve van. | **[Zóna](#z)** |

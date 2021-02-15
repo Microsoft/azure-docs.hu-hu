@@ -1,24 +1,18 @@
 ---
 title: 'Oktatóanyag: folyamat létrehozása Resource Manager-sablonnal '
 description: Ebben az oktatóanyagban egy egyszerű Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével. Ez a folyamat az Azure Blob Storage-ból Azure SQL Databaseba másolja az adatait.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 18e8965a152deb6393d7e3b63ea22994484e100c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608748"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377244"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
@@ -54,7 +48,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 Ebben az oktatóanyagban az alábbi Data Factory-entitásokkal rendelkező adat-előállítót hozza létre:
 
-| Entitás | Leírás |
+| Entitás | Description |
 | --- | --- |
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Az Azure Storage a forrás adattár, a Azure SQL Database pedig az oktatóanyag másolási tevékenységének fogadó adattára. Meghatározza a másolási tevékenység bemeneti adatait tartalmazó tárfiókot. |
 | Azure SQL Database társított szolgáltatás |Összekapcsolja Azure SQL Database adatbázisát az adatgyárban. Meghatározza azt az adatbázist, amely a másolási tevékenység kimeneti adatokat tárolja. |
@@ -604,7 +598,7 @@ Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztk
 
 Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Ilyen eset például, ha több olyan, egy vagy több folyamattal rendelkező adat-előállítót is létre kell hoznia, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Storage- és SQL Database-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal az adat-előállítók létrehozásához.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban az Azure Blob Storage-t forrás adattárként használta, és a másolási művelet során Azure SQL Database célként megadott adattárként. Az alábbi táblázatban a másolási tevékenység által támogatott forrásadattárak és céladattárak listája látható: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725495"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365531"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Egyszeri jelszavas hitelesítés e-mailben
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a levelezés egyszeri jelszavas
 ![E-mail egyszeri jelszó áttekintő diagramja](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **Március 2021**-én az e-mailes egyszeri jelszó funkció bekapcsolva lesz az összes meglévő bérlőhöz, és alapértelmezés szerint engedélyezve van az új bérlők számára. Ha nem szeretné engedélyezni a funkció automatikus bekapcsolását, letilthatja. Lásd az [e-mailek egyszeri jelszó letiltását](#disable-email-one-time-passcode) ismertető szakaszt.
+> **Október 2021**-én az e-mailes egyszeri jelszó funkció be lesz kapcsolva az összes meglévő bérlőhöz, és alapértelmezés szerint engedélyezve van az új bérlők számára. Ha nem szeretné engedélyezni a funkció automatikus bekapcsolását, letilthatja. Lásd az [e-mailek egyszeri jelszó letiltását](#disable-email-one-time-passcode) ismertető szakaszt.
 
 > [!NOTE]
 > Egyszeri jelszóval rendelkező felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A vendég felhasználók jelenleg nem tudnak bejelentkezni a bérlői kontextus nélküli végpontok használatával. A használatával például `https://myapps.microsoft.com` `https://portal.azure.com` hibaüzenetet fog eredményezni.
@@ -71,7 +71,7 @@ A vendég felhasználó teri@gmail.com meghívja a fabrikam-t, amely nem rendelk
 
 ## <a name="disable-email-one-time-passcode"></a>E-mail egyszeri jelszó letiltása
 
-Március 2021-én az e-mailes egyszeri jelszó funkció bekapcsolva lesz az összes meglévő bérlőhöz, és alapértelmezés szerint engedélyezve van az új bérlők számára. Ekkor a Microsoft többé nem támogatja a meghívások beváltását úgy, hogy nem felügyelt ("vírus" vagy "igény szerinti") Azure AD-fiókokat és bérlőket hoz létre VÁLLALATKÖZI együttműködési forgatókönyvek létrehozásához. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja.
+Október 2021-én az e-mailes egyszeri jelszó funkció be lesz kapcsolva az összes meglévő bérlőhöz, és alapértelmezés szerint engedélyezve van az új bérlők számára. Ekkor a Microsoft többé nem támogatja a meghívások beváltását úgy, hogy nem felügyelt ("vírus" vagy "igény szerinti") Azure AD-fiókokat és bérlőket hoz létre VÁLLALATKÖZI együttműködési forgatókönyvek létrehozásához. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja.
 
 > [!NOTE]
 >
@@ -87,10 +87,8 @@ Március 2021-én az e-mailes egyszeri jelszó funkció bekapcsolva lesz az öss
 
 4. Az **e-mailek egyszeri jelszava a vendégek** számára területen jelölje be **az E-mail egyszeri jelszó letiltása a vendégek** számára jelölőnégyzetet.
 
-    ![Egyszeri jelszóra vonatkozó e-mail-beállítások](media/one-time-passcode/otp-admin-settings.png)
-
    > [!NOTE]
-   > Ha a fenti beállítások helyett a következő váltógomb jelenik meg, ez azt jelenti, hogy korábban engedélyezte, letiltotta vagy választotta a funkció előnézetét. Válassza a **nem** lehetőséget a funkció letiltásához.
+   > Ha az e-mailek egyszeri jelszavas beállítása helyett a következő váltógomb jelenik meg, ez azt jelenti, hogy korábban engedélyezte, letiltotta vagy választotta a funkció előnézetét. Válassza a **nem** lehetőséget a funkció letiltásához.
    >
    >![E-mailek egyszeri jelszavas beállításának engedélyezése](media/delegate-invitations/enable-email-otp-opted-in.png)
 
@@ -98,14 +96,14 @@ Március 2021-én az e-mailes egyszeri jelszó funkció bekapcsolva lesz az öss
 
 ## <a name="note-for-public-preview-customers"></a>Megjegyzés a nyilvános előzetes verzió ügyfelei számára
 
-Ha korábban már engedélyezte az egyszer használatos e-mail-jelszó nyilvános előzetesét, az automatikus szolgáltatás engedélyezésének március 2021-os dátuma nem vonatkozik Önre, így a kapcsolódó üzleti folyamatokat nem érinti a rendszer. Továbbá a Azure Portal az **e-mail egyszeri jelszava a vendégek** számára tulajdonság esetében nem fogja látni az **e-mailek egyszeri PIN**-kódját a 2021. márciusi vendégek számára. Ehelyett a következő **Igen** vagy **nincs** váltógomb jelenik meg:
+Ha korábban már engedélyezte az egyszeri e-mail-jelszó nyilvános előzetesét, az automatikus szolgáltatás engedélyezésének október 2021 dátuma nem vonatkozik Önre, így a kapcsolódó üzleti folyamatokat nem érinti a rendszer. Továbbá a Azure Portal az **e-mail egyszeri jelszava a vendégek** számára tulajdonság esetében nem fogja látni a **levelezés egyszeri PIN-kódját a 2021 októberi időpontban**. Ehelyett a következő **Igen** vagy **nincs** váltógomb jelenik meg:
 
 ![E-mailek egyszeri jelszavas beállításának engedélyezése](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Ha azonban szeretné letiltani a szolgáltatást, és az automatikusan engedélyezve lesz a 2021 márciusában, a Microsoft Graph API [e-mail hitelesítési módszer konfigurációs erőforrástípus](/graph/api/resources/emailauthenticationmethodconfiguration)használatával visszaállíthatja az alapértelmezett beállításokat. Miután visszaállította az alapértelmezett beállításokat, a következő beállítások lesznek elérhetők a **levelezés egyszeri jelszava a vendégek** számára:
+Ha azonban szeretné letiltani a szolgáltatást, és engedélyezi, hogy az automatikusan engedélyezve legyen a 2021-as verzióban, a Microsoft Graph API [e-mail hitelesítési módszer konfigurációs erőforrástípus](/graph/api/resources/emailauthenticationmethodconfiguration)használatával visszaállíthatja az alapértelmezett beállításokat. Miután visszaállította az alapértelmezett beállításokat, a következő beállítások lesznek elérhetők a **levelezés egyszeri jelszava a vendégek** számára:
 
-- **E-mail egyszeri PIN-kód automatikus engedélyezése a vendégek számára a 2021 márciusában**. Alapértelmezett Ha az egyszer használatos e-mail-jelszó funkció még nincs engedélyezve a bérlőnél, a rendszer automatikusan bekapcsolja az 2021-es időpontban. Ha azt szeretné, hogy a szolgáltatás egyszerre legyen engedélyezve, nincs szükség további műveletekre. Ha már engedélyezte vagy letiltotta a szolgáltatást, ez a beállítás nem lesz elérhető.
+- **E-mail egyszeri PIN-kód automatikus engedélyezése a vendégek számára a 2021 októberi időszakban**. Alapértelmezett Ha az egyszer használatos e-mail-jelszó funkció még nincs engedélyezve a bérlőnél, a rendszer automatikusan bekapcsolja a 2021-es időpontban. Ha azt szeretné, hogy a szolgáltatás egyszerre legyen engedélyezve, nincs szükség további műveletekre. Ha már engedélyezte vagy letiltotta a szolgáltatást, ez a beállítás nem lesz elérhető.
 
 - **E-mailes egyszeri jelszó engedélyezése a vendégek számára most**. Bekapcsolja a bérlői e-mailek egyszeri jelszavas szolgáltatását.
 
-- **Tiltsa le az e-mailek egyszeri PIN-kódját a vendégek** számára. Kikapcsolja az e-mailek egyszeri jelszavas funkcióját a bérlő számára, és megakadályozza, hogy a funkció bekapcsoljon a 2021. márciusi időszakra.
+- **Tiltsa le az e-mailek egyszeri PIN-kódját a vendégek** számára. Kikapcsolja az e-mailek egyszeri jelszavas funkcióját a bérlő számára, és megakadályozza, hogy a funkció bekapcsoljon a 2021. októberi időszakra.

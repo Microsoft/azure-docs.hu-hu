@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988033"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104518"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis ajánlott eljárásai
 
@@ -147,7 +147,7 @@ QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban m�
 
 ## <a name="active-learning"></a>Aktív tanulás
 
-Az [aktív tanulás](../How-to/use-active-learning.md) a legjobb megoldás arra, hogy alternatív kérdéseket tegyen fel, ha számos minőségi és mennyiségű felhasználó-alapú lekérdezést tartalmaz. Fontos, hogy az ügyfélalkalmazások felhasználói lekérdezései részt vegyenek az aktív tanulási visszajelzési hurokban a cenzúra nélkül. Ha kérdése van a QnA Maker-portálon, akkor a **[javaslatok alapján szűrheti a javaslatokat](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** , majd áttekintheti, elfogadhatja vagy elutasíthatja ezeket a javaslatokat.
+Az [aktív tanulás](../How-to/use-active-learning.md) a legjobb megoldás arra, hogy alternatív kérdéseket tegyen fel, ha számos minőségi és mennyiségű felhasználó-alapú lekérdezést tartalmaz. Fontos, hogy az ügyfélalkalmazások felhasználói lekérdezései részt vegyenek az aktív tanulási visszajelzési hurokban a cenzúra nélkül. Ha kérdése van a QnA Maker-portálon, akkor a **[javaslatok alapján szűrheti a javaslatokat](../How-To/improve-knowledge-base.md)** , majd áttekintheti, elfogadhatja vagy elutasíthatja ezeket a javaslatokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

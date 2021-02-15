@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792803"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104739"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata szolgáltatás: A Linux rendszerű virtuális gépek ütemezett eseményei
 
@@ -71,7 +71,7 @@ A VNET-kompatibilis virtuális gépek esetében a Metadata Service statikus, nem
 Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Services és a klasszikus virtuális gépek esetében az alapértelmezett esetekben további logikára van szükség a használandó IP-cím felderítéséhez. A [gazdagép végpontjának felderítéséhez](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)tekintse meg ezt a mintát.
 
 ### <a name="version-and-region-availability"></a>Verzió és régió elérhetősége
-A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező; a jelenlegi verzió: `2019-01-01` .
+A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező; a jelenlegi verzió: `2019-08-01` .
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - | 
@@ -138,7 +138,7 @@ Abban az esetben, ha ütemezett események vannak, a válasz események tömbjé
 | További források| Az eseményt érintő erőforrások listája. A lista garantáltan legfeljebb egy [frissítési tartományból](../manage-availability.md)származó gépeket tartalmazhat, de előfordulhat, hogy nem tartalmazza a UD összes számítógépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény a tulajdonságban megadott idő után indul el `NotBefore` .<li>`Started`: Ez az esemény megkezdődött.</ul> `Completed`A rendszer nem adott meg és nem is hasonló állapotot. Az eseményt a rendszer már nem adja vissza az esemény befejeződése után.
 | NotBefore| Az esemény elindításának időpontja. <br><br> Példa: <br><ul><li> Hétfő, 19 Sep 2016 18:29:47 GMT  |
-| Leírás | Az esemény leírása. <br><br> Példa: <br><ul><li> A gazdagép-kiszolgáló karbantartás alatt áll. |
+| Description | Az esemény leírása. <br><br> Példa: <br><ul><li> A gazdagép-kiszolgáló karbantartás alatt áll. |
 | EventSource | Az esemény kezdeményezője. <br><br> Példa: <br><ul><li> `Platform`: Ezt az eseményt a platform kezdeményezi. <li>`User`: Ezt az eseményt a felhasználó kezdeményezi. |
 
 ### <a name="event-scheduling"></a>Események ütemezése

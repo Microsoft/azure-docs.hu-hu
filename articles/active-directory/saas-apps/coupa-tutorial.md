@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/14/2021
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: c6932292b86924cfab6d17c315cbd6946bd63f61
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0be2e2f6ce22525cb4c3a7e0656ce9ce75fb7f77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621329"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Azure Active Directory a Coupa-integrációval
 
@@ -28,10 +28,10 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Coupa Azure Acti
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció és a Coupa konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
-* Coupa egyszeri bejelentkezésre alkalmas előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* A Coupe egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -63,7 +63,7 @@ Az Azure AD SSO és a Coupa szolgáltatás konfigurálásához és teszteléséh
     1. **[Hozzon létre coupa-teszt felhasználót](#create-coupa-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez csatolt B. Simon incoupé-ügyféllel.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -128,17 +128,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="configure-coupa-sso"></a>A Coupa SSO konfigurálása
+## <a name="configure-coupa-sso"></a>A Coupa SSO konfigurálása
 
 1. Jelentkezzen be a Coupa vállalati webhelyre rendszergazdaként.
 
 2. Nyissa meg a **beállítás \> biztonsági vezérlőt**.
 
-    ![Biztonsági vezérlők](./media/coupa-tutorial/ic791900.png "Biztonsági vezérlők")
+    ![Biztonsági vezérlők](./media/coupa-tutorial/setup.png "Biztonsági vezérlők")
 
 3. A **Bejelentkezés a coupa hitelesítő adatokkal** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Coupa SP-metaadatok](./media/coupa-tutorial/ic791901.png "Coupa SP-metaadatok")
+    ![Coupa SP-metaadatok](./media/coupa-tutorial/login.png "Coupa SP-metaadatok")
 
     a. Válassza **a bejelentkezés az SAML használatával** lehetőséget.
 
@@ -158,15 +158,15 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Coupa-be, a Coupa-be k
 
 2. A felső menüben kattintson a **telepítés** elemre, majd kattintson a **felhasználók** elemre.
 
-    ![Felhasználók](./media/coupa-tutorial/ic791908.png "Felhasználók")
+    ![Felhasználók](./media/coupa-tutorial/user.png "Felhasználók")
 
 3. Kattintson a **Létrehozás** lehetőségre.
 
-    ![Felhasználók létrehozása](./media/coupa-tutorial/ic791909.png "Felhasználók létrehozása")
+    ![Felhasználók létrehozása](./media/coupa-tutorial/create.png "Felhasználók létrehozása")
 
 4. A **felhasználó létrehozása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Felhasználó adatai](./media/coupa-tutorial/ic791910.png "Felhasználó adatai")
+    ![Felhasználó adatai](./media/coupa-tutorial/details.png "Felhasználó adatai")
 
     a. Adja meg a kapcsolódó szövegmezőbe beépíteni kívánt érvényes Azure Active Directory-fiók **bejelentkezési** **nevét, utónevét,** **VEZETÉKNEVét**, **egy Sign-On azonosítóját**, **e-mail-** attribútumait.
 
@@ -179,7 +179,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Coupa-be, a Coupa-be k
 >[!NOTE]
 >Az Azure AD felhasználói fiókjainak kiépítéséhez a Coupa által biztosított bármely egyéb felhasználói fiók létrehozási eszközét vagy API-t használhatja.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 

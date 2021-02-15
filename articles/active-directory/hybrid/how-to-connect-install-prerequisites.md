@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201722"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368965"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -73,6 +73,7 @@ További információ a Active Directory környezet biztonságossá tételéről
     - Konfigurálnia kell a TLS/SSL-tanúsítványokat. További információ: [SSL/TLS protokollok és titkosító csomagok kezelése a AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) és [az SSL-tanúsítványok kezelése a ad FSban](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Konfigurálnia kell a névfeloldást. 
 - Ha a globális rendszergazdák rendelkeznek MFA-támogatással, az URL-címnek szerepelnie kell https://secure.aadcdn.microsoftonline-p.com  a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kérdés megadását kéri, és korábban még nem adta hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
+- Ha Azure AD Connect Health szinkronizálást szeretne használni, győződjön meg arról, hogy a Azure AD Connect Health előfeltételei is teljesülnek. További információ: [Azure ad Connect Health ügynök telepítése](how-to-connect-health-agent-install.md).
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect-kiszolgáló megerősítése 
 Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kritikus összetevője számára történő csökkentése érdekében a Azure AD Connect-kiszolgáló megerősítse. A javaslatok követése segít csökkenteni a szervezete biztonsági kockázatait.

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015929"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104093"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a MSAL használatával
 
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Miután létrehozta az aláírási kivonatot a (z) *eszközzel*, a Azure Portal használatával hozza létre az ÁTirányítási URI-t:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span></a> , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba</a> , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
 1. Válassza   >  **a hitelesítés platform hozzáadása**  >  **Android** lehetőséget.
 1. A megnyíló **Android-alkalmazás konfigurálása** panelen adja meg a korábban létrehozott **aláírási kivonatot** és a **csomag nevét**.
 1. Válassza a **Konfigurálás** gombot.
@@ -191,7 +191,7 @@ A alkalmazáson belüli webnézet használatához helyezze a következő sort az
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-Az alkalmazáson belüli használatakor `WebView` a felhasználó közvetlenül az alkalmazásba jelentkezik be. A tokenek az alkalmazás Homokozójában maradnak, és nem érhetők el az alkalmazás cookie jar-on kívül. Ennek eredményeképpen a felhasználónak nem lehet egyszeri bejelentkezéses felhasználói felülete, kivéve, ha az alkalmazások integrálva vannak a hitelesítő vagy a Céges portál.
+Az alkalmazáson belüli használatakor `WebView` a felhasználó közvetlenül az alkalmazásba jelentkezik be. A tokenek az alkalmazás Homokozójában maradnak, és nem érhetők el az alkalmazás cookie jar-on kívül. Ennek eredményeképpen a felhasználónak nem lehet egyszeri bejelentkezéses felhasználói felülete, kivéve, ha az alkalmazások integrálva vannak a hitelesítő vagy a céges portál.
 
 A azonban `WebView` lehetővé teszi a bejelentkezési felhasználói felület megjelenésének és működésének testreszabását. A testreszabással kapcsolatos további tudnivalókért tekintse meg az [androidos Webnézeteket](https://developer.android.com/reference/android/webkit/WebView) .
 
@@ -233,6 +233,6 @@ A következő böngészők tesztelték, hogy megfelelően átirányítva vannak-
 <sup>2</sup> A Huawei beépített böngészője a Huawei böngésző.<br/>
 <sup>3</sup> Az alapértelmezett böngésző nem módosítható a ellenfél-eszköz beállításán belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [androidos eszközökhöz készült megosztott eszköz mód](msal-android-shared-devices.md) lehetővé teszi, hogy egy Android-eszközt úgy konfiguráljon, hogy az egyszerűen több alkalmazott számára is megosztható legyen.

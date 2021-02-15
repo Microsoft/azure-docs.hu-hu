@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509384"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360958"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Indexelő létrehozása az Azure Cognitive Searchban
 
@@ -142,6 +142,20 @@ Az ütemezett feldolgozás általában egybeesik a módosított tartalom növekm
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 + [Azure-Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+
+## <a name="change-detection-and-indexer-state"></a>Az észlelés és az indexelő állapotának módosítása
+
+Az indexelő képes a mögöttes adat változásainak észlelésére, és csak az új vagy frissített dokumentumok feldolgozására az egyes indexelő futtatások esetében. Ha például az indexelő állapota azt jelzi, hogy egy Futtatás sikeresen befejeződött a `0/0` dokumentumok feldolgozásakor, az azt jelenti, hogy az indexelő nem talált új vagy módosított sorokat vagy blobokat az alapul szolgáló adatforrásban.
+
+Az indexelő által támogatott változások észlelésének módja az adatforrás:
+
++ Az Azure Blob Storage, az Azure Table Storage és az Azure Data Lake Storage Gen2 bélyegzővel minden blob vagy sor frissítését dátummal és idővel kell ellátni. A különböző indexelő ezt az információt használják annak meghatározására, hogy mely dokumentumokat kell frissíteni az indexben. A beépített változások észlelése azt jelenti, hogy az indexelő felismeri az új és frissített dokumentumokat, és nem igényel további konfigurálást az Ön részéről.
+
++ Az Azure SQL és a Cosmos DB a platformon megjelenő változás-észlelési funkciókat biztosítanak. Az adatforrások definíciójában megadhatja a változás észlelésére vonatkozó szabályzatot.
+
+A nagyméretű indexelési terhelések esetében az indexelő nyomon követi az utolsó, a belső "magas vízjelek" által feldolgozott dokumentumot. A jelölő soha nem érhető el az API-ban, de belsőleg az indexelő nyomon követi a leállt helyét. Ha az indexelés folytatódik, vagy egy ütemezett futtatás vagy egy igény szerinti hívás útján, az indexelő a magas vízjelekre hivatkozik, hogy az képes legyen abbahagyni.
+
+Ha törölnie kell a magas vízjeleket, hogy az újraindexelés teljes legyen, használja az [Indexelő alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)lehetőséget. A szelektív újraindexeléshez használja a [képességek alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) vagy a [dokumentumok alaphelyzetbe állítása című dokumentumot](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents). Az API-k alaphelyzetbe állításával törölheti a belső állapotot, és ha engedélyezte a [növekményes](search-howto-incremental-index.md)bővítést, kiürítheti a gyorsítótárat is. További hátteret és az egyes alaphelyzetek összehasonlítását lásd: [Indexelő, készségek és dokumentumok futtatása vagy visszaállítása](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Az adatai ismerete
 

@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: SameSite-cookie-k változásainak kezelése a Chrome böngészőben
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: A jelszóval nem rendelkező hitelesítés támogatása
+      items:
+        - name: FIDO2-hitelesítés támogatása
+          href: support-fido2-authentication.md
     - name: Alkalmazások és szolgáltatások hitelesítése
       items:
         - name: Szolgáltatásnév létrehozása az Azure PowerShell használatával

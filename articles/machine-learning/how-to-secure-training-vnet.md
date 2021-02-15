@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538000"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515988"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Azure Machine Learning képzési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -26,7 +26,7 @@ Ez a cikk egy öt részes sorozat harmadik része, amely végigvezeti egy Azure 
 
 Tekintse meg a sorozat egyéb cikkeit:
 
-[1. a VNet áttekintése](how-to-network-security-overview.md)  >  [védi a 3. munkaterületet](how-to-secure-workspace-vnet.md)  >  **. Gondoskodjon a 4. képzési környezet védelméről**  >  [. Gondoskodjon az 5. következtetési környezet védelméről](how-to-secure-inferencing-vnet.md)   >  [. A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+[1. VNet – áttekintés](how-to-network-security-overview.md)  >  [2. A](how-to-secure-workspace-vnet.md)  >  **3. munkaterület védelme Gondoskodjon a 4. képzési környezet védelméről**  >  [. Gondoskodjon az 5. következtetési környezet védelméről](how-to-secure-inferencing-vnet.md)   >  [. A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
 
 Ebből a cikkből megtudhatja, hogyan védheti meg a virtuális hálózatok következő betanítási erőforrásait:
 > [!div class="checklist"]
@@ -273,7 +273,7 @@ Ha Azure Databricks szeretne használni a munkaterülettel rendelkező virtuáli
 > * Ha a munkaterülethez tartozó Azure Storage-fiók (ok) is védett virtuális hálózatban, akkor a Azure Databricks-fürttel megegyező virtuális hálózatban kell lenniük.
 > * Az Azure Databricks által használt __databricks-__ és __databricks-__ alhálózatok mellett a virtuális hálózathoz létrehozott __alapértelmezett__ alhálózat is szükséges.
 
-A Azure Databricks virtuális hálózattal való használatáról a [Azure Databricks üzembe helyezése az Azure-Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)című témakörben olvashat bővebben.
+A Azure Databricks virtuális hálózattal való használatáról a [Azure Databricks üzembe helyezése az Azure-Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)című témakörben olvashat bővebben.
 
 <a id="vmorhdi"></a>
 

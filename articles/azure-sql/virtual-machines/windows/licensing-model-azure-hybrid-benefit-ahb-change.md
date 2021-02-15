@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879830"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361553"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure-beli, SQL-t futtató virtuális gépek licencmodelljének módosítása
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,6 @@ A licencelési modell módosítása:
    - Csak a SQL Server standard és Enterprise kiadásai esetében támogatott. Az Express, a web és a Developer licencelési módosításai nem támogatottak. 
    - Csak a Azure Resource Manager modellen keresztül üzembe helyezett virtuális gépek esetében támogatott. A klasszikus modellen keresztül üzembe helyezett virtuális gépek nem támogatottak. 
    - Csak a nyilvános vagy Azure Government felhők esetében érhető el. 
-   - Csak olyan virtuális gépek esetében támogatott, amelyek egyetlen hálózati adapterrel (NIC) rendelkeznek. 
 
 > [!Note]
 > Csak a frissítési garanciával vagy előfizetéssel rendelkező alapszintű licencek SQL Server Azure Hybrid Benefit jogosultak. Ha a SQL Server Server + CAL licencelését használja, és rendelkezik frissítési garanciával, használhatja a saját licencét egy Azure-beli SQL Server virtuálisgép-lemezképre a licencek mobilitásának kihasználásához a kiszolgálókon, de nem használhatja a Azure Hybrid Benefit egyéb funkcióit. 
@@ -137,12 +136,8 @@ Ez a hiba akkor fordul elő, ha egy olyan SQL Server VMon próbálja meg módos�
 Regisztrálnia kell az előfizetését az erőforrás-szolgáltatónál, majd [regisztrálnia kell a SQL Server VM az SQL IaaS-ügynök bővítménnyel](sql-agent-extension-manually-register-single-vm.md). 
 
 
-**A (z) "" virtuális gépnek \<vmname\> több hálózati adaptere van társítva**
 
-Ez a hiba olyan virtuális gépeken fordul elő, amelyek egynél több hálózati adapterrel rendelkeznek. A licencelési modell módosítása előtt távolítsa el az egyik hálózati adaptert. Bár a licenc modell módosítása után a hálózati adaptert visszaállíthatja a virtuális géphez, a Azure Portal, például az automatikus biztonsági mentés és a javítások nem lesznek többé támogatottak. 
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket: 
 

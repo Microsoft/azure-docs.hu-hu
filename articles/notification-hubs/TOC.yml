@@ -151,6 +151,8 @@
       href: notification-hubs-baidu-china-android-notifications-get-started.md
     - name: Az APNS VOIP használata a Notification Hubson keresztül
       href: voip-apns.md
+    - name: Diagnosztikai naplók engedélyezése Notification Hubshoz
+      href: notification-hubs-diagnostic-logs.md
 - name: Referencia
   items:
     - name: .NET

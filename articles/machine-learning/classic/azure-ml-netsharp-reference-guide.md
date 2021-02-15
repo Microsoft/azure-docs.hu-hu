@@ -3,18 +3,18 @@ title: 'ML Studio (klasszikus): net # Custom neurális hálózatok – Azure'
 description: 'A net # neurális hálózatok specifikációs nyelvének szintaxisi útmutatója. Ismerje meg, hogyan hozhat létre egyéni neurális hálózati modelleket Azure Machine Learning Studio (klasszikus).'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302788"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519252"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Útmutató a net # neurális hálózat specifikációjának nyelvéhez Machine Learning Studio (klasszikus)
 
@@ -152,7 +152,7 @@ Jelenleg a kapcsolatok öt típusa támogatott:
 
 + A kulcsszó által jelzett **teljes** kötegek`all`
 + A kulcsszó által jelzett **szűrt** csomagok, `where` amelyeket egy predikátum kifejezés követ
-+ **Convolutional** A kulcsszó által jelzett, a következőhöz tartozó, a megkötési `convolve` attribútumokkal kiegészített, egymáshoz kapcsolódó csomagok
++  A kulcsszó által jelzett, a következőhöz tartozó, a megkötési `convolve` attribútumokkal kiegészített, egymáshoz kapcsolódó csomagok
 + **Készletezési** csomagok, amelyeket a **Max. Pool** vagy **Mean Pool** kulcsszó jelöl
 + **Válasz normalizálása** kötegek, amelyeket a kulcsszó **válaszának normája** jelez
 
@@ -266,9 +266,9 @@ A válasz normalizálása a neurális hálók általánosításának támogatás
 
 A válasz normalizálása kötegek támogatják az összes, a megosztást, a **MapCount** és a **súlyozást** **megosztó** attribútumot.
 
-+ Ha a kernel olyan neuronokat tartalmaz, amelyek ugyanabban a térképen találhatók, mint az **_x_*_, a normalizálás sémájának* neve: _ ugyanaz a leképezési normalizálás**. Ha ugyanazt a leképezési normalizált szeretné meghatározni, a **InputShape** első koordinátája 1 értékkel kell rendelkeznie.
++ Ha a kernel olyan neuronokat tartalmaz, mint a ***x** _, a normalizálás sémája: _ * ugyanaz a leképezési normalizálás * *. Ha ugyanazt a leképezési normalizált szeretné meghatározni, a **InputShape** első koordinátája 1 értékkel kell rendelkeznie.
 
-+ Ha a kernel az x _-ben azonos térbeli pozícióban található neuronokat tartalmaz **_x_*, de a neuronok más térképeken vannak, a normalizálás sémája a* Maps-normalizálás alatt van**. Az ilyen típusú válaszok normalizálása a valódi neuronokban található típus által ihletett oldalirányú gátlás formáját valósítja meg, amely a különböző térképeken kiszámított neuron-kimenetek közti nagy aktiválási szintek versenyét hozza létre. A leképezések normalizálása között az első koordináta csak egy egész szám lehet, és nem haladhatja meg a térképek számát, és a koordináták további részének 1 értékűnek kell lennie.
++ Ha a kernel olyan neuronokat tartalmaz, amelyek ugyanabban a térbeli helyzetben vannak, mint ***x** _, de a neuronok más térképeken találhatók, a normalizálás sémája a Maps-normalizálás * * alatt található. Az ilyen típusú válaszok normalizálása a valódi neuronokban található típus által ihletett oldalirányú gátlás formáját valósítja meg, amely a különböző térképeken kiszámított neuron-kimenetek közti nagy aktiválási szintek versenyét hozza létre. A leképezések normalizálása között az első koordináta csak egy egész szám lehet, és nem haladhatja meg a térképek számát, és a koordináták további részének 1 értékűnek kell lennie.
 
 Mivel a válasz normalizálása kötegek előre definiált függvényt alkalmaznak a csomópont-értékek forrására a cél csomópont értékének meghatározásához, nem rendelkeznek betanítható állapottal (súlyok vagy torzítások).
 
@@ -369,7 +369,7 @@ A rövid űrlapot csak akkor használhatja, ha a rétegek egyetlen köteget tart
 
 Ez a szakasz néhány példát mutat be arra, hogyan használható a net # a rejtett rétegek hozzáadására, a rejtett rétegek más rétegekkel való interakciójának módjára, valamint a többszintű hálózatok kiépítésére.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Hozzon létre egy egyszerű egyéni neurális hálózatot: "„Helló világ!” alkalmazás" példa
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Hozzon létre egy egyszerű egyéni neurális hálózatot: "Hello World" példa
 
 Ez az egyszerű példa azt szemlélteti, hogyan hozható létre egy olyan neurális hálózati modell, amely egyetlen rejtett réteggel rendelkezik.
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
-ms.openlocfilehash: ab783d6cb20f1c2fe31e8556dc57999df20d5637
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629810"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378077"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Linuxos Azure IoT Edge telepítése vagy eltávolítása
 
@@ -32,7 +32,7 @@ Ez a cikk a Azure IoT Edge futtatókörnyezet Linux rendszerű eszközökön val
 
 * Linux-eszköz
 
-  X64-, ARM32-vagy ARM64-alapú Linux-eszközre van telepítve. A Microsoft az Ubuntu Server 16,04, az Ubuntu Server 18,04 és a málna PI OS stretch operációs rendszerek telepítési csomagjait biztosítja.
+  X64-, ARM32-vagy ARM64-alapú Linux-eszközre van telepítve. A Microsoft az Ubuntu Server 18,04 és a málna PI OS stretch operációs rendszerek telepítési csomagjait biztosítja.
 
   Az éles környezetekben jelenleg támogatott operációs rendszerekkel kapcsolatos legfrissebb információk: [Azure IoT Edge támogatott rendszerek](support.md#operating-systems)
 
@@ -42,12 +42,6 @@ Ez a cikk a Azure IoT Edge futtatókörnyezet Linux rendszerű eszközökön val
 * Készítse elő az eszközt a Microsoft telepítési csomagjainak eléréséhez.
 
   Telepítse az eszköz operációs rendszerének megfelelő adattár-konfigurációt.
-
-  * **Ubuntu Server 16,04**:
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18,04**:
 

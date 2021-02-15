@@ -1,24 +1,18 @@
 ---
 title: Data Factory Azure Copy varázsló
 description: Ismerje meg, hogyan másolhatók az adatok a támogatott adatforrásokból a mosdóba a Data Factory Azure Copy varázslóval.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0f95b0d62bc81a8dddc72239491a05ca78945490
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462211"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393377"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory másolási varázsló
 
@@ -132,5 +126,5 @@ Ez a szakasz a másolás varázsló gyakori hibaelhárítási módszereit vizsg�
     3.  Próbáljon másik böngészőt használni. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenységgel rendelkező folyamat létrehozásához a Data Factory másolási varázslóval című cikkből megtudhatja, hogyan hozhat létre [folyamatokat a másolás varázsló](data-factory-copy-data-wizard-tutorial.md)segítségével.

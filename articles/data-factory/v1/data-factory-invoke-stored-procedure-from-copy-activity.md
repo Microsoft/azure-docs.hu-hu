@@ -1,23 +1,18 @@
 ---
 title: Tárolt eljárás meghívása Azure Data Factory másolási tevékenységből
 description: Megtudhatja, hogyan hívhat meg egy tárolt eljárást Azure SQL Database vagy SQL Server egy Azure Data Factory másolási tevékenységből.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2b10744222da8e5d85b19e1ded5aa24cf9c9706
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637853"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374966"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Tárolt eljárás meghívása másolási tevékenységből Azure Data Factory
 > [!NOTE]
@@ -29,7 +24,7 @@ Az adatok [SQL Server](data-factory-sqlserver-connector.md) vagy [Azure SQL Data
 Az alábbi példa bemutatja, hogyan hívhat meg egy tárolt eljárást egy SQL Server-adatbázisban egy Data Factory folyamatból (másolási tevékenység):  
 
 ## <a name="output-dataset-json"></a>Kimeneti adatkészlet JSON-je
-A kimeneti adatkészlet JSON-fájljában állítsa be a **következőt** : **SqlServerTable** . Állítsa be a **tulajdonsága azuresqltable** -re, hogy az Azure SQL Database használatával használhassa. A **Táblanév** tulajdonság értékének meg kell egyeznie a tárolt eljárás első paraméterének nevével.  
+A kimeneti adatkészlet JSON-fájljában állítsa be a **következőt** : **SqlServerTable**. Állítsa be a **tulajdonsága azuresqltable** -re, hogy az Azure SQL Database használatával használhassa. A **Táblanév** tulajdonság értékének meg kell egyeznie a tárolt eljárás első paraméterének nevével.  
 
 ```json
 {
@@ -68,7 +63,7 @@ Adja meg az **SqlSink** szakaszt a másolási tevékenység JSON-fájljában az 
 ```
 
 ## <a name="stored-procedure-definition"></a>Tárolt eljárás definíciója 
-Az adatbázisban adja meg a tárolt eljárást ugyanazzal a névvel, mint a **SqlWriterStoredProcedureName** . A tárolt eljárás kezeli a bemeneti adatokat a forrás adattárból, és beszúrja az adatokat a céladatbázis egyik táblájába. A tárolt eljárás első paraméterének meg kell egyeznie a JSON (marketing) adatkészletben definiált táblanév.
+Az adatbázisban adja meg a tárolt eljárást ugyanazzal a névvel, mint a **SqlWriterStoredProcedureName**. A tárolt eljárás kezeli a bemeneti adatokat a forrás adattárból, és beszúrja az adatokat a céladatbázis egyik táblájába. A tárolt eljárás első paraméterének meg kell egyeznie a JSON (marketing) adatkészletben definiált táblanév.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)

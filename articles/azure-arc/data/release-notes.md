@@ -7,18 +7,45 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653571"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391456"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="january-2021"></a>2021. január
+
+### <a name="new-capabilities-and-features"></a>Új képességek és funkciók
+
+Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.3.0. Töltse le a következő címen: [https://aka.ms/azdata](https://aka.ms/azdata) . Telepítheti `azdata` Az Azure-beli [adatok parancssori felületét ( `azdata` )](/sql/azdata/install/deploy-install-azdata)is.
+
+
+A további frissítések a következők:
+- A honosított portál 17 új nyelven érhető el
+- Kube-natív. YAML fájlok kisebb módosításai
+- A Grafana és a Kibana új verziói
+- Problémák a Python-környezetekben, ha a Azure Data Studio megoldott jegyzetfüzetekben azdata használ
+- A pg_audit bővítmény mostantól elérhető a PostgreSQL nagy kapacitású
+- A PostgreSQL nagy kapacitású-adatbázis teljes visszaállításához már nincs szükség biztonsági mentési AZONOSÍTÓra
+- Az állapotot (állapot) a rendszer minden olyan PostgreSQL-példányra vonatkozóan jelenteni kell, amely egy sever-csoportot alkot
+
+   A korábbi kiadásokban az állapot a kiszolgáló csoport szintjén lett összesítve, és nem részletezve a PostgreSQL csomópont szintjén.
+
+- A PostgreSQL üzembe helyezése most már tiszteletben tartja a Create parancsokban jelzett kötet mérete paramétereit
+- A motor verziószáma mostantól a kiszolgálócsoport szerkesztésekor van megbecsülve
+- Az Azure arc-alapú, a PostgreSQL nagy kapacitású-hez készült hüvelyek elnevezési konvenciója megváltozott
+
+    Most már a (z) formában van: `ServergroupName{c, w}-n` . Például egy három csomóponttal rendelkező kiszolgálócsoport, egy koordinátori csomópont és két feldolgozói csomópont a következőképpen jelenik meg:
+   - `Postgres01c-0` (koordinátori csomópont)
+   - `Postgres01w-0` (feldolgozó csomópont)
+   - `Postgres01w-1` (feldolgozó csomópont)
 
 ## <a name="december-2020"></a>2020. december
 

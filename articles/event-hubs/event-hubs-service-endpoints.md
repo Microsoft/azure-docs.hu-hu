@@ -2,13 +2,13 @@
 title: Virtual Network szolgáltatási végpontok – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. EventHub szolgáltatási végpontot egy virtuális hálózathoz.
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/12/2021
+ms.openlocfilehash: f725c4f4d94cbf7d0463ce49c1d2809444ef6f7a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015578"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516684"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Azure Event Hubs-névterek elérésének engedélyezése adott virtuális hálózatokból 
 
@@ -46,8 +46,8 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 1. Navigáljon a **Event Hubs névtérhez** a [Azure Portal](https://portal.azure.com).
 4. A bal oldali menü **Beállítások** területén válassza a **hálózatkezelés** lehetőséget. A **hálózatkezelés** lap csak a **standard** vagy a **dedikált** névtér esetében jelenik meg. 
 
-    > [!NOTE]
-    > Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva, ahogy az az alábbi képen is látható. Ha nem ad meg IP-tűzfalszabály-szabályt, vagy nem ad hozzá virtuális hálózatot ezen a lapon, a névtér a **nyilvános interneten** keresztül érhető el (a hozzáférési kulccsal). 
+    > [!WARNING]
+    > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a **nyilvános interneten** keresztül érhető el (a hozzáférési kulcs használatával). 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Hálózatok lap – kiválasztott hálózatok lehetőség" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -79,28 +79,12 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 [!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
+A következő példa Resource Manager-sablon egy virtuális hálózati szabályt vesz fel egy meglévő Event Hubs névtérbe. A hálózati szabály a virtuális hálózatban lévő alhálózat AZONOSÍTÓját határozza meg. 
 
-A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Event Hubs névtérhez.
+Az azonosító a virtuális hálózat alhálózatának teljes erőforrás-kezelői útvonala. Például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózata esetében.
 
-Sablon paraméterei:
+Virtuális hálózati vagy tűzfalszabályok hozzáadásakor állítsa be a értékét a következőre `defaultAction` : `Deny` .
 
-* `namespaceName`: Event Hubs névtér.
-* `vnetRuleName`: A létrehozandó Virtual Network szabály neve.
-* `virtualNetworkingSubnetId`: Teljes körű erőforrás-kezelő útvonal a virtuális hálózat alhálózatához; például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` egy virtuális hálózat alapértelmezett alhálózata esetében.
-
-> [!NOTE]
-> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
-> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a **_"defaultAction"_**
-> 
-> a
-> ```json
-> "defaultAction": "Allow"
-> ```
-> a következőre:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -203,7 +187,10 @@ Sablon paraméterei:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>További lépések
+> [!IMPORTANT]
+> Ha nincsenek IP-és virtuális hálózati szabályok, akkor az összes forgalom a névtérbe kerül, még akkor is, ha be van állítva `defaultAction` `deny` .  A névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal). Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat.  
+
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális hálózatokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

@@ -1,21 +1,18 @@
 ---
 title: Adatok másolása a helyszínről az Azure-ba a PowerShell használatával
 description: Ez a PowerShell-parancsfájl egy SQL Server adatbázisból egy másik Azure-Blob Storageba másolja az adatait.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632232"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373385"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Adatok másolása SQL Serverról az Azure-ba a PowerShell használatával
 
@@ -27,8 +24,8 @@ Ez a példa PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban,
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **SQL Server** . Ebben a példában egy SQL Server adatbázist használ **forrásként** szolgáló adattárként.
-- **Azure Storage-fiók** . Ebben a példában az Azure Blob Storage-t **célként/fogadó** adattárként kell használni. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
+- **SQL Server**. Ebben a példában egy SQL Server adatbázist használ **forrásként** szolgáló adattárként.
+- **Azure Storage-fiók**. Ebben a példában az Azure Blob Storage-t **célként/fogadó** adattárként kell használni. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket a létrehozás lépéseihez.
 - **Saját üzemeltetésű integrációs** modul. Töltse le az MSI-fájlt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) , és futtassa a saját üzemeltetésű integrációs modul telepítéséhez a gépen.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Mintaadatbázis létrehozása a SQL Serverban
