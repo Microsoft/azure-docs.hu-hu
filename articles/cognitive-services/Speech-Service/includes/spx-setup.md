@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580331"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100514978"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -39,6 +39,16 @@ Ha fájlba, például egy Jegyzettömbbe vagy egy webböngészőbe (például a 
 
 #### <a name="linux-install"></a>[Linux-telepítés](#tab/linuxinstall)
 
+A következő Linux-disztribúciók támogatottak x64-architektúrák esetén a Speech CLI használatával:
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> A Speech SDK támogatja a további architektúrákat (nem a Speech CLI-t). További információ: [Tudnivalók a SPEECH SDK-ról](../speech-sdk.md).
+
 A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-es PROCESSZORon:
 
 1. Telepítse a [.net Core 3,1](/dotnet/core/install/linux)-ot.
@@ -49,7 +59,7 @@ A következő lépésekkel telepítheti a Speech CLI-t Linux rendszeren egy x64-
 `spx`A SPEECH parancssori felület súgójának megjelenítéséhez írja be a következőt:.
 
 > [!NOTE]
-> A NuGet alternatívájaként letöltheti a bináris fájlokat a [zip Archive](https://aka.ms/speech/spx-zips.zip)-ben, kinyerheti `spx-netcore-30-linux-x64` azt egy új `~/spx` könyvtárba, begépelheti a `sudo chmod +r+x spx` bináris fájlt, és hozzáadhatja az elérési utat a `~/spx` path rendszerváltozóhoz.
+> A NuGet alternatívájaként letöltheti a bináris fájlokat a [zip Archive](https://aka.ms/speech/spx-zips.zip)-ben, kinyerheti `spx-netcore-30-linux-x64.zip` azt egy új `~/spx` könyvtárba, begépelheti a `sudo chmod +r+x spx` bináris fájlt, és hozzáadhatja az elérési utat a `~/spx` path rendszerváltozóhoz.
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-telepítés (Windows, Linux, macOS)](#tab/dockerinstall)
@@ -107,7 +117,7 @@ A `spx` tárolóban telepített parancs használatához mindig adja meg a fent l
 Windows rendszeren például a következő parancs állítja be a kulcsot:
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 A parancssori eszközzel való nagyobb körű interakcióhoz egy BelépésiPont paraméter hozzáadásával elindíthat egy tárolót interaktív bash-rendszerhéj használatával.
@@ -160,8 +170,8 @@ A beszédfelismerési parancssori felület használatának megkezdéséhez meg k
 Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
 
 ```console
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 Az előfizetés-hitelesítés mostantól a jövőbeli SPX-kérelmekhez van tárolva. Ha el kell távolítania a tárolt értékek valamelyikét, futtassa a vagy a parancsot `spx config @region --clear` `spx config @key --clear` .

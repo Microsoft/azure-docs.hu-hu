@@ -1,25 +1,19 @@
 ---
 title: SSIS-csomag futtatása tárolt eljárási tevékenységgel – Azure
 description: Ez a cikk azt ismerteti, hogyan futtathat egy SQL Server Integration Services-(SSIS-) csomagot egy Azure Data Factory-folyamatban a tárolt eljárási tevékenység használatával.
-services: data-factory
-documentationcenter: ''
 author: swinarko
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6cb3bf53db14c6c01290abea7a5c48c332a07632
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634878"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391507"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag futtatása a Tárolt eljárás tevékenységgel az Azure Data Factoryben
 
@@ -43,17 +37,17 @@ Első lépésként hozzon létre egy adatgyárat a Azure Portal használatával.
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 2. Navigáljon a [Azure Portal](https://portal.azure.com). 
-3. Kattintson az **Új** elemre, majd az **Adatok + analitika** , végül a **Data Factory** elemre. 
+3. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. Az **Új adat-előállító** lapon, a **Név** mezőben adja meg a következőt: **ADFTutorialDataFactory** . 
+2. Az **Új adat-előállító** lapon, a **Név** mezőben adja meg a következőt: **ADFTutorialDataFactory**. 
       
      ![Új adat-előállító lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
    Az Azure-beli adatgyár nevének **globálisan egyedinek** kell lennie. Ha a Név mezőnél az alábbi hiba jelenik meg, módosítsa az adat-előállító nevét (például a következőre: sajátneveADFTutorialDataFactory). A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
      ![A név nem érhető el – hiba](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
-3. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni. 
+3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
      
    - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából. 
@@ -61,10 +55,10 @@ Első lépésként hozzon létre egy adatgyárat a Azure Portal használatával.
          
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
-5. Válassza ki a Data Factory **helyét** . A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
+5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** gombra.
-8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése** . 
+7. Kattintson a **Létrehozás** lehetőségre.
+8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -89,9 +83,9 @@ Ebben a lépésben a Data Factory felhasználói felületét használja egy foly
     1. A **típushoz** válassza a **Azure SQL Database** lehetőséget.
     2. Válassza ki az **alapértelmezett** Azure Integration Runtime az adatbázist futtató Azure SQL Databasehoz való kapcsolódáshoz `SSISDB` .
     3. Válassza ki a SSISDB-adatbázist futtató Azure SQL Database a **kiszolgálónév** mezőhöz.
-    4. Válassza ki a **SSISDB** az **adatbázis neveként** .
+    4. Válassza ki a **SSISDB** az **adatbázis neveként**.
     5. A **Felhasználónév** mezőbe írja be annak a felhasználónak a nevét, aki hozzáfér az adatbázishoz.
-    6. A **Password (jelszó** ) mezőben adja meg a felhasználó jelszavát. 
+    6. A **Password (jelszó**) mezőben adja meg a felhasználó jelszavát. 
     7. Az adatbázishoz való kapcsolódás teszteléséhez kattintson a **Kapcsolódás tesztelése** gombra.
     8. Mentse a társított szolgáltatást a Save ( **Mentés** ) gombra kattintva. 
 
@@ -101,11 +95,11 @@ Ebben a lépésben a Data Factory felhasználói felületét használja egy foly
     1. Válassza a **Szerkesztés** elemet. 
     2. A **tárolt eljárás neve** mezőbe írja be a következőt: `sp_executesql` . 
     3. Kattintson az **+ új** elemre a **tárolt eljárás paramétereinek** szakaszában. 
-    4. A paraméter **neve** mezőbe írja be a következőt: **stmt** . 
+    4. A paraméter **neve** mezőbe írja be a következőt: **stmt**. 
     5. A paraméter **típusához** írja be a **karakterlánc** értéket. 
     6. A paraméter **értékeként** adja meg a következő SQL-lekérdezést:
 
-        Az SQL-lekérdezésben határozza meg a **folder_name** , **project_name** és **package_name** paraméterek megfelelő értékeit. 
+        Az SQL-lekérdezésben határozza meg a **folder_name**, **project_name** és **package_name** paraméterek megfelelő értékeit. 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
@@ -158,7 +152,7 @@ Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepíté
 ### <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Használhatja ugyanazt az adatelőállítót, amely rendelkezik a Azure-SSIS IR vagy létrehoz egy különálló adatelőállítót. Az alábbi eljárás egy adatelőállító létrehozásának lépéseit ismerteti. A folyamat egy tárolt eljárási tevékenységgel rendelkező folyamatot hoz létre ebben az adatgyárban. A tárolt eljárási tevékenység végrehajt egy tárolt eljárást a SSISDB-adatbázisban a SSIS-csomag futtatásához. 
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Példa: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -194,7 +188,7 @@ Vegye figyelembe a következő szempontokat:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
-* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory** : [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása
 Hozzon létre egy társított szolgáltatást, amely összekapcsolja az adatbázist, amely a SSIS-katalógust az adatgyárba tárolja. Data Factory a társított szolgáltatás információit használja a SSISDB-adatbázishoz való kapcsolódáshoz, és egy tárolt eljárást hajt végre egy SSIS-csomag futtatásához. 
@@ -218,7 +212,7 @@ Hozzon létre egy társított szolgáltatást, amely összekapcsolja az adatbáz
 
 2. A **Azure PowerShellban** váltson a **C:\ADF\RunSSISPackage** mappára.
 
-3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService** . 
+3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -259,7 +253,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     }
     ```
 
-2. A folyamat létrehozása: **RunSSISPackagePipeline** , futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
+2. A folyamat létrehozása: **RunSSISPackagePipeline**, futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"

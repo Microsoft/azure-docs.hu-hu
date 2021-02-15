@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása az Oracle Eloqua (előzetes verzió)
 description: Megtudhatja, hogyan másolhat adatokat az Oracle Eloqua egy Azure Data Factory-folyamat másolási tevékenységének használatával a támogatott fogadó adattárakba.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bb392b05fb54f22720202b83f1af707e381251
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416854"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372229"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Adatok másolása Oracle-Eloqua Azure Data Factory használatával (előzetes verzió)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,13 +45,13 @@ Az Oracle Eloqua társított szolgáltatás a következő tulajdonságokat támo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Eloqua** | Igen |
-| endpoint | A Eloqua-kiszolgáló végpontja. A Eloqua több adatközpontot is támogat, a végpont meghatározásához jelentkezzen be a https://login.eloqua.com hitelesítő adataival, majd másolja az **alapszintű URL-** címet az ÁTIRÁNYÍTott URL-ből a mintázatával `xxx.xxx.eloqua.com` . | Igen |
-| username | A Eloqua-fiókhoz tartozó hely neve és felhasználóneve a (z) formában: `SiteName\Username` például `Eloqua\Alice` .  | Igen |
-| jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Eloqua** | Yes |
+| endpoint | A Eloqua-kiszolgáló végpontja. A Eloqua több adatközpontot is támogat, a végpont meghatározásához jelentkezzen be a https://login.eloqua.com hitelesítő adataival, majd másolja az **alapszintű URL-** címet az ÁTIRÁNYÍTott URL-ből a mintázatával `xxx.xxx.eloqua.com` . | Yes |
+| username | A Eloqua-fiókhoz tartozó hely neve és felhasználóneve a (z) formában: `SiteName\Username` például `Eloqua\Alice` .  | Yes |
+| jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
+| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
+| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
 **Példa**
 
@@ -80,11 +76,11 @@ Az Oracle Eloqua társított szolgáltatás a következő tulajdonságokat támo
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az Oracle Eloqua-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok Oracle-Eloqua való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **EloquaObject**értékre. A következő tulajdonságok támogatottak:
+Az adatok Oracle-Eloqua való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **EloquaObject** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **EloquaObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **EloquaObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -110,12 +106,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="eloqua-as-source"></a>Eloqua forrásként
 
-Az adatok Oracle-Eloqua való másolásához állítsa a forrás típusát a másolás tevékenység **EloquaSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Az adatok Oracle-Eloqua való másolásához állítsa a forrás típusát a másolás tevékenység **EloquaSource** értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **EloquaSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **EloquaSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -154,5 +150,5 @@ Az adatok Oracle-Eloqua való másolásához állítsa a forrás típusát a má
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory által tárolt támogatott adatmennyiségek listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

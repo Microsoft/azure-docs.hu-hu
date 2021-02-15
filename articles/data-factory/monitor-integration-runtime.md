@@ -1,21 +1,17 @@
 ---
 title: Integrációs modul monitorozása Azure Data Factory
 description: Megtudhatja, hogyan figyelheti Azure Data Factory Integration Runtime különböző típusait.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862445"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377499"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
 
@@ -52,13 +48,13 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 | Hely | Az Azure Integration Runtime helye. Az Azure Integration Runtime helyével kapcsolatos részletekért lásd: [az Integration Runtime bemutatása](concepts-integration-runtime.md). |
 | DataFactoryName | Annak az adatelőállítónak a neve, amelyhez az Azure Integration Runtime tartozik. | 
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
-| Leírás | Az Integration Runtime leírása.  |
+| Description | Az Integration Runtime leírása.  |
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 
 Az alábbi táblázat az Azure Integration Runtime lehetséges állapotait tartalmazza:
 
-| status | Megjegyzések/forgatókönyvek | 
+| Állapot | Megjegyzések/forgatókönyvek | 
 | ------ | ------------------ |
 | Online | Az Azure Integration Runtime online állapotban van, és készen áll a használatra. | 
 | Offline | Az Azure Integration Runtime belső hiba miatt offline állapotban van. |
@@ -77,7 +73,7 @@ Az alábbi táblázat az **egyes csomópontok** figyelési tulajdonságainak le�
 | Tulajdonság | Leírás | 
 | -------- | ----------- | 
 | Név | A saját üzemeltetésű Integration Runtime és a hozzá társított csomópontok neve. A csomópont egy helyszíni Windows rendszerű számítógép, amelyen telepítve van a saját üzemeltetésű integrációs modul. |  
-| status | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
+| Állapot | A saját üzemeltetésű integrációs modul általános és minden csomópontjának állapota. Példa: online/offline/korlátozott/stb. Ezekről az állapotokról további információt a következő szakaszban talál. | 
 | Verzió | A saját üzemeltetésű Integration Runtime és az egyes csomópontok verziója. A saját üzemeltetésű integrációs modul verziója a csoportban lévő csomópontok többségének verziója alapján van meghatározva. Ha a saját üzemeltetésű integrációs modul telepítője eltérő verziójú csomópontokkal rendelkezik, akkor csak a logikai saját üzemeltetésű integrációs modulnak megfelelő verziószámmal rendelkező csomópontok működnek megfelelően. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul). | 
 | Igénybe vehető memória | Rendelkezésre álló memória a saját üzemeltetésű integrációs modul csomópontján. Ez az érték a közel valós idejű pillanatkép. | 
 | Processzorhasználat | Egy saját üzemeltetésű Integration Runtime-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép. |
@@ -103,7 +99,7 @@ A következő táblázat a saját üzemeltetésű Integration Runtime csomópont
 | ------ | ------------------ | 
 | Online | A csomópont a Data Factory szolgáltatáshoz van csatlakoztatva. |
 | Offline | A csomópont offline állapotban van. |
-| Frissítése | A csomópont automatikus frissítése folyamatban van. |
+| Frissítés | A csomópont automatikus frissítése folyamatban van. |
 | Korlátozott | Kapcsolódási probléma miatt. A hiba oka lehet a 8060-es HTTP-port, a Service Bus-kapcsolat problémája vagy a hitelesítő adatok szinkronizálása. |
 | Inaktív | A csomópont más többségi csomópontok konfigurációjától eltérő konfigurációban található. |
 
@@ -175,7 +171,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott tulajdonságok leírásait tartalmazza.
 
-| Tulajdonság/állapot              | Leírás                  |
+| Tulajdonság/állapot              | Description                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | A Azure-SSIS IR létrehozásának UTC-ideje. |
 | Csomópontok                        | A Azure-SSIS IR lefoglalt/rendelkezésre álló csomópontjai csomópont-specifikus állapotokkal (kezdő/elérhető/újrahasznosítási/nem elérhető) és végrehajtható hibákkal rendelkeznek. |
@@ -196,14 +192,14 @@ A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott t
 | Típus                         | A Azure-SSIS IR IR-típusa (felügyelt/saját üzemeltetésű). |
 | ResourceGroupName            | Azon Azure-erőforráscsoport neve, amelyben az ADF és a Azure-SSIS IR létrejött. |
 | DataFactoryName              | Az ADF neve. |
-| Név                         | A Azure-SSIS IR neve. |
-| Leírás                  | A Azure-SSIS IR leírása. |
+| Name                         | A Azure-SSIS IR neve. |
+| Description                  | A Azure-SSIS IR leírása. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Állapot (Azure-SSIS IR csomóponton)
 
 Az alábbi táblázat egy Azure-SSIS IR csomópont lehetséges állapotát tartalmazza:
 
-| Csomópont-specifikus állapot | Leírás |
+| Csomópont-specifikus állapot | Description |
 | -------------------- | ----------- | 
 | Indítás             | A csomópont előkészítése folyamatban van. |
 | Elérhető            | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezésére és végrehajtására. |
@@ -214,7 +210,7 @@ Az alábbi táblázat egy Azure-SSIS IR csomópont lehetséges állapotát tarta
 
 Az alábbi táblázat egy Azure-SSIS IR lehetséges általános állapotait tartalmazza. A teljes állapot a Azure-SSIS IRhoz tartozó összes csomópont összesített állapotával függ. 
 
-| Általános állapot | Leírás | 
+| Általános állapot | Description | 
 | -------------- | ----------- | 
 | Kezdeti        | A Azure-SSIS IR csomópontjai nem lettek kiosztva/előkészített állapotban. | 
 | Indítás       | A Azure-SSIS IR csomópontjai vannak lefoglalva/elkészítve, és a számlázás megkezdődött. |

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390402"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
@@ -26,7 +26,7 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek kibocsátási megjegy
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Az API v 3.2 nyilvános előzetes verziója az OCR-támogatással 73 nyelven
 A Computer Vision Read API v 3.2 nyilvános előzetes verziója, amely a Cloud Service-ben és a Docker-tárolóban érhető el, a következő frissítéseket tartalmazza:
 * [OCR a 73 nyelvekhez](./language-support.md#optical-character-recognition-ocr) , beleértve az egyszerűsített és a hagyományos kínai, Japán, Koreai és latin nyelveket.
-* A szöveges sor kimenetének természetes olvasási sorrendje.
+* A szöveges vonal kimenetének természetes olvasási sorrendje (csak latin nyelveken)
 * A szöveges vonalak kézírási stílusának osztályozása a megbízhatósági pontszám mellett (csak latin nyelveken).
 * Csak a kijelölt lapokon lévő szöveg kinyerése többoldalas dokumentum esetén.
 * Elérhető a helyi telepítéshez szükséges, [distro-tárolóként](./computer-vision-how-to-install-containers.md?tabs=version-3-2) .

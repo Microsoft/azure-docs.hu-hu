@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: f6b7000812f1adfe6ff7bd93711c9b8fe4ff9adc
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1a0b1a0400ae3d43817921e8a336421aee35ccd6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988355"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378145"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -49,7 +49,8 @@ A HDInsight fokozatosan migrálja az Azure-beli virtuálisgép-méretezési csop
 
 
 ### <a name="breaking-change-for-net-for-apache-spark-100"></a>A .NET Apache Spark 1.0.0-hoz való feltörésének változása
-A HDInsight bevezeti a .NET első jelentős kiadását Apache Spark a következő kiadásban. Biztosítja a Spark 2.4. x és a Spark 3.0. x DataFrame API-teljességét más funkciókkal együtt. Ebben a főverzióban módosulnak a változások, ezért tekintse át [ezt az áttelepítési útmutatót](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) a kód és a folyamatok frissítéséhez szükséges lépések megismeréséhez. További információ [itt](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+A legújabb kiadással a HDInsight bevezeti a [".net for Apache Spark"](https://github.com/dotnet/spark) könyvtár első hivatalos verziójának v 1.0.0 verzióját. A DataFrame API teljességét biztosítja a Spark 2.4. x és a Spark 3.0. x számára, valamint számos [más funkciót](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)is tartalmaz. Ebben a főverzióban módosulnak a módosítások, [a .net for Apache Spark áttelepítési útmutató](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) a kód és a folyamatok frissítéséhez szükséges lépések megismeréséhez. További információért tekintse meg ezt a [.net for Apache Spark 1.0-s verziójú Azure HDInsight útmutatót](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.
@@ -68,4 +69,3 @@ A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének n
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](./hdinsight-component-versioning.md)találja.
-

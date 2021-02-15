@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108568"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374728"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
@@ -93,20 +93,22 @@ A helyszíni rendszerek és az ISE-összekötőket nem tartalmazó adatforrások
 
 ## <a name="ise-skus"></a>ISE SKU-i
 
-Az ISE létrehozásakor kiválaszthatja a fejlesztői SKU-t vagy prémium SKU-t. Az alábbi két SKU közötti különbségeket láthatja:
+Az ISE létrehozásakor kiválaszthatja a fejlesztői SKU-t vagy prémium SKU-t. Ez az SKU-beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. Az alábbi két SKU közötti különbségeket láthatja:
 
 * **Fejlesztő**
 
-  A olyan alacsonyabb szintű ISE, amely a kísérletezéshez, fejlesztéshez és teszteléshez használható, de éles és teljesítménybeli teszteléshez nem. A fejlesztői SKU beépített eseményindítókat és műveleteket, standard szintű összekötőket, vállalati összekötőket és egyetlen [ingyenes rétegbeli](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiókot tartalmaz a rögzített havi díjakhoz. Ez az SKU azonban nem tartalmaz semmilyen szolgáltatói szerződést (SLA), a kapacitás növelésének lehetőségeit vagy az újrahasznosítás során felmerülő redundanciát, ami azt jelenti, hogy késések vagy leállások merülhetnek fel.
+  A olyan alacsonyabb költségeket biztosító ISE-t biztosít, amelyet a felderítéshez, a kísérletezéshez, a fejlesztéshez és a teszteléshez használhat, nem pedig éles környezetben vagy teljesítmény-teszteléshez. A fejlesztői SKU beépített eseményindítókat és műveleteket, standard szintű összekötőket, vállalati összekötőket és egyetlen [ingyenes rétegbeli](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiókot tartalmaz a [rögzített havi díjakhoz](https://azure.microsoft.com/pricing/details/logic-apps). 
+
+  > [!IMPORTANT]
+  > Ez az SKU nem rendelkezik szolgáltatói szerződéssel (SLA), vertikális Felskálázási képességgel vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késések vagy leállások merülhetnek fel. Előfordulhat, hogy a háttérbeli frissítések időnként megszakítják a szolgáltatást.
+
+  A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). A ISEs számlázási működésének megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing).
 
 * **Prémium**
 
-  Egy olyan ISE-t biztosít, amely az éles környezethez használható, és tartalmaz SLA-támogatást, beépített eseményindítókat és műveleteket, standard összekötőket, vállalati összekötőket, egyetlen [standard szintű](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiókot, a kapacitás növelésének lehetőségeit, valamint a rögzített havi díj miatti redundanciát.
+  Egy olyan ISE-t biztosít, amelyet éles és teljesítményű teszteléshez használhat. A prémium SKU SLA-támogatást, beépített eseményindítókat és műveleteket, standard összekötőket, vállalati összekötőket, egyetlen [standard szintű](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiókot, vertikális Felskálázási képességet és redundanciát biztosít a [rögzített havi díj](https://azure.microsoft.com/pricing/details/logic-apps)ellenében.
 
-> [!IMPORTANT]
-> Az SKU beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható.
-
-A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/). A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing).
+  A kapacitásra és a korlátozásokra vonatkozó információkért lásd: [az ISE korlátai a Azure Logic Appsban](logic-apps-limits-and-config.md#integration-service-environment-ise). A ISEs számlázási működésének megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing).
 
 <a name="endpoint-access"></a>
 

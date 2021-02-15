@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590749"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385013"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a hozzáférést az üzenetsor-információhoz a Azure Portal
 
@@ -28,16 +28,19 @@ Attól függően, hogy hogyan kívánja engedélyezni az üzenetsor-azonosítók
 
 ### <a name="use-the-account-access-key"></a>A fiók elérési kulcsának használata
 
-A várólista-információk fiók-hozzáférési kulccsal való eléréséhez hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza az Azure RBAC műveletet `Microsoft.Storage/storageAccounts/listkeys/action` . Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. `Microsoft.Storage/storageAccounts/listkeys/action`Többek között a következőket támogató beépített szerepkörök:
+A várólista-információk fiók-hozzáférési kulccsal való eléréséhez hozzá kell rendelnie egy Azure-szerepkört, amely tartalmazza az Azure RBAC műveletet a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet**. Ez az Azure-szerepkör beépített vagy egyéni szerepkör lehet. A **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** támogató beépített szerepkörök a következők:
 
 - A Azure Resource Manager [tulajdonosi szerepkör](../../role-based-access-control/built-in-roles.md#owner)
 - A Azure Resource Manager [közreműködő szerepkör](../../role-based-access-control/built-in-roles.md#contributor)
 - A [Storage-fiók közreműködői szerepköre](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Amikor megpróbál hozzáférni a várólista-információhoz a Azure Portalban, a portál először ellenőrzi, hogy van-e hozzárendelve szerepkör a következővel: `Microsoft.Storage/storageAccounts/listkeys/action` . Ha ezzel a művelettel társított egy szerepkört, akkor a portál a fiók kulcsát használja a várólista-adatok eléréséhez. Ha nem rendelt hozzá szerepkört ezzel a művelettel, akkor a portál az Azure AD-fiókjával próbál hozzáférni az adataihoz.
+Amikor megpróbál hozzáférni a várólista-információhoz a Azure Portal, a portál először ellenőrzi, hogy van-e hozzárendelve szerepkör a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelethez**. Ha ezzel a művelettel társított egy szerepkört, akkor a portál a fiók kulcsát használja a várólista-adatok eléréséhez. Ha nem rendelt hozzá szerepkört ezzel a művelettel, akkor a portál az Azure AD-fiókjával próbál hozzáférni az adataihoz.
+
+> [!IMPORTANT]
+> Ha egy Storage-fiók zárolva van egy Azure Resource Manager **írásvédett** zárolással, a [kulcsok listázása](/rest/api/storagerp/storageaccounts/listkeys) művelet nem engedélyezett ehhez a Storage-fiókhoz. A **kulcsok listázása** post művelet, és az összes post művelet meg lesz akadályozva, ha **írásvédett** zárolás van konfigurálva a fiókhoz. Emiatt, ha a fiók **írásvédett** zárolással van zárolva, a felhasználóknak Azure ad-beli hitelesítő adatokkal kell rendelkezniük a várólista adatainak a portálon való eléréséhez. További információ a üzenetsor-adatok Azure AD-vel való eléréséről: [Azure ad-fiók használata](#use-your-azure-ad-account).
 
 > [!NOTE]
-> A klasszikus előfizetés-rendszergazdai szerepkörök **szolgáltatás rendszergazdája** és a **társ-rendszergazda** a Azure Resource Manager szerepkör megfelelőjét tartalmazza [`Owner`](../../role-based-access-control/built-in-roles.md#owner) . A **tulajdonosi** szerepkör magában foglalja az összes műveletet, beleértve a `Microsoft.Storage/storageAccounts/listkeys/action` -t is, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a várólista-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> A klasszikus előfizetés-rendszergazdai szerepkörök **szolgáltatás rendszergazdája** és a **társ-rendszergazda** a Azure Resource Manager szerepkör megfelelőjét tartalmazza [`Owner`](../../role-based-access-control/built-in-roles.md#owner) . A **tulajdonosi** szerepkör tartalmazza az összes műveletet, beleértve a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, így az egyik rendszergazdai szerepkörrel rendelkező felhasználó is elérheti a várólista-adataikat a fiók kulcsával. További információ: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-rendszergazdai szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Az Azure AD-fiók használata
 
@@ -58,7 +61,7 @@ Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos 
 A klasszikus előfizetés-rendszergazdai szerepkörrel rendelkező várólisták listázása nem támogatott. A várólisták listázásához a felhasználónak hozzá kell rendelnie a Azure Resource Manager **olvasó** szerepkört, a **tárolási üzenetsor Adatolvasó** szerepkörét vagy a **tárolási várólista adatközreműködői** szerepkörét.
 
 > [!IMPORTANT]
-> A Azure Portal Storage Explorer előzetes verziója nem támogatja az Azure AD-beli hitelesítő adatok használatát a várólista-adatok megtekintéséhez és módosításához. Storage Explorer a Azure Portal mindig a fiók kulcsait használja az adateléréshez. A Azure Portal Storage Explorer használatához hozzá kell rendelnie egy olyan szerepkört, amely tartalmazza a következőt: `Microsoft.Storage/storageAccounts/listkeys/action` .
+> A Azure Portal Storage Explorer előzetes verziója nem támogatja az Azure AD-beli hitelesítő adatok használatát a várólista-adatok megtekintéséhez és módosításához. Storage Explorer a Azure Portal mindig a fiók kulcsait használja az adateléréshez. A Azure Portal Storage Explorer használatához olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Navigáljon a Azure Portalban található várólistákhoz
 
@@ -95,6 +98,6 @@ A várólisták nem jelennek meg a portálon, ha nem rendelkezik hozzáférésse
 ## <a name="next-steps"></a>Következő lépések
 
 - [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](../common/storage-auth-aad.md)
-- [A Azure Portal használata Azure-szerepkörök hozzárendeléséhez a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-portal.md)
+- [Az Azure Portal használata a blob- és üzenetsoradatok elérésére szolgáló Azure-szerepkör hozzárendeléséhez](../common/storage-auth-aad-rbac-portal.md)
 - [Az Azure CLI-vel hozzárendelhet egy Azure-szerepkört a blob-és üzenetsor-adat eléréséhez](../common/storage-auth-aad-rbac-cli.md)
 - [A Azure PowerShell modul használatával rendeljen hozzá egy Azure-szerepkört a blob-és üzenetsor-információ eléréséhez](../common/storage-auth-aad-rbac-powershell.md)

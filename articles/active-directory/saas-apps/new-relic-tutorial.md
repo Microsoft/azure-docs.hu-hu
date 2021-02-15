@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: cd438609a4ba2c3eb025226c98eec79fd855c075
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827461"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az új ereklye fiókkal
 
@@ -25,8 +25,6 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható az új ereklye a Azure A
 * Vezérlés az Azure AD-ben, amely fiókkal fér hozzá az új ereklye szolgáltatáshoz.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az új Ereklyebe az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,24 +39,22 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * Az új ereklye fiók támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-* Az új ereklye fiókkal való konfigurálása után kényszerítheti a munkamenet-vezérlők betartatását, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
-
-## <a name="adding-new-relic-by-account-from-the-gallery"></a>Új ereklye hozzáadása fiók alapján a katalógusból
+## <a name="add-new-relic-by-account-from-the-gallery"></a>Új ereklye hozzáadása fiók alapján a katalógusból
 
 Az új ereklye az Azure AD-be való integrálásának konfigurálásához új Ereklyeet kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az új ereklye a következőt **: fiók** .
 1. Válassza ki az **új ereklye a fiókból** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése fiókkal az új ereklye számára
+## <a name="configure-and-test-azure-ad-sso-for-new-relic-by-account"></a>Az Azure AD SSO konfigurálása és tesztelése az új ereklye számára fiók alapján
 
 Konfigurálja és tesztelje az Azure AD SSO-t új ereklye fiókkal egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az új ereklye fiókkal.
 
-Az Azure AD SSO az új ereklye fiókkal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO az új ereklye fiókkal való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -71,11 +67,12 @@ Az Azure AD SSO az új ereklye fiókkal való konfigurálásához és tesztelés
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **új ereklye a fiók** alkalmazás-integrációja oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal az **új ereklye a fiók** alkalmazás-integrációja oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
@@ -91,12 +88,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **új ereklye fiók beállítása alapján** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL
-
-    b. Azure ad-azonosító
-
-    c. Kijelentkezési URL-cím
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -117,15 +108,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza az **új ereklye a fiók alapján** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-new-relic-by-account-sso"></a>Új ereklye konfigurálása fiók egyszeri bejelentkezéssel
@@ -134,15 +119,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüben kattintson a **Fiókbeállítások** lehetőségre.
    
-    ![Képernyőfelvétel: a kiválasztott fiók beállításait tartalmazó üdvözlő oldal.](./media/new-relic-tutorial/ic797036.png "Fiókbeállítások")
+    ![Képernyőfelvétel: a kiválasztott fiók beállításait tartalmazó üdvözlő oldal.](./media/new-relic-tutorial/settings.png "Fiókbeállítások")
 
 3. Kattintson a **Biztonság és hitelesítés** lapra, majd kattintson az **egyszeri bejelentkezés** fülre.
    
-    ![Egyszeri bejelentkezés](./media/new-relic-tutorial/ic797037.png "Egyszeri bejelentkezés")
+    ![Egyszeri bejelentkezés](./media/new-relic-tutorial/single-sign-on-tab.png "Egyszeri bejelentkezés")
 
 4. Az SAML párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
+    ![SAML](./media/new-relic-tutorial/save.png "SAML")
    
     a. A letöltött Azure Active Directory-tanúsítvány feltöltéséhez kattintson a **fájl kiválasztása** lehetőségre.
 
@@ -158,15 +143,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A felső menüben kattintson a **Fiókbeállítások** lehetőségre.
    
-    ![A képernyőképen az üdvözlőlapon kiválasztott Fiókbeállítások láthatók.](./media/new-relic-tutorial/ic797040.png "Fiókbeállítások")
+    ![A képernyőképen az üdvözlőlapon kiválasztott Fiókbeállítások láthatók.](./media/new-relic-tutorial/account.png "Fiókbeállítások")
 
 3. A bal oldali **fiók** ablaktáblán kattintson az **Összefoglalás**, majd a **felhasználó hozzáadása** elemre.
    
-    ![Képernyőfelvétel: az összefoglalás panel, ahol kiválaszthatja a felhasználó hozzáadása elemet.](./media/new-relic-tutorial/ic797041.png "Fiókbeállítások")
+    ![Képernyőfelvétel: az összefoglalás panel, ahol kiválaszthatja a felhasználó hozzáadása elemet.](./media/new-relic-tutorial/add.png "Fiókbeállítások")
 
 4. Az **aktív felhasználók** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Aktív felhasználók](./media/new-relic-tutorial/ic797042.png "Aktív felhasználók")
+    ![Aktív felhasználók](./media/new-relic-tutorial/user.png "Aktív felhasználók")
    
     a. Az **e-mail** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory-felhasználó e-mail-címét.
 
@@ -179,18 +164,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen az új ereklye a fiók csempére kattint, automatikusan be kell jelentkeznie az új ereklye fiókba, amelyhez be van állítva az egyszeri bejelentkezés. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja az új ereklye értékre a fiók bejelentkezési URL-címével, amelyen kezdeményezheti a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Az új ereklye a fiók bejelentkezési URL-címe közvetlenül, a bejelentkezési folyamat elindítása innen.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások fiókjában az új ereklye lehetőségre kattint, ez a fiók bejelentkezési URL-címén át lesz irányítva az új ereklye értékre. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [Új ereklye kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+Az új ereklye fiókkal való konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

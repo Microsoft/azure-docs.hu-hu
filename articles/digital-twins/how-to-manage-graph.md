@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601074"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388192"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -116,6 +116,21 @@ Ezt a függvényt most a következőhöz hasonlóan hívhatja meg a fő metódus
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
+## <a name="update-relationships"></a>Kapcsolatok frissítése
+
+A kapcsolatok a metódus használatával frissülnek `UpdateRelationship` . 
+
+>[!NOTE]
+>Ez a módszer egy kapcsolat **tulajdonságainak** frissítésére szolgál. Ha módosítania kell a kapcsolati forrás Twin vagy a cél ikerét, [törölnie kell a kapcsolatot](#delete-relationships) , majd [újra létre kell hoznia egyet](#create-relationships) az új ikrek használatával.
+
+Az ügyfél hívásához szükséges paraméterek a forrás-és a Twin (az a kapcsolat, ahol a kapcsolat származik), a frissíteni kívánt kapcsolat azonosítója, valamint egy [JSON-javítási](http://jsonpatch.com/) dokumentum, amely a frissíteni kívánt tulajdonságokat és új értékeket tartalmazza.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+
+Íme egy példa erre a metódusra, amely egy JSON-javító dokumentumot küld a tulajdonság frissítéséhez szükséges információkkal.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
+
 ## <a name="delete-relationships"></a>Kapcsolatok törlése
 
 Az első paraméter határozza meg a forrást (Twin) (az a kapcsolat, amelyben a kapcsolat származik). A másik paraméter a kapcsolat azonosítója. A Twin azonosítót és a kapcsolat AZONOSÍTÓját egyaránt meg kell adni, mivel a kapcsolati azonosítók csak a Twin hatókörén belül egyediek.
@@ -179,7 +194,7 @@ Az alábbi kódban a CSV-fájl neve *data.csv*, és az Azure Digital Twins-péld
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graphFromCSV.cs":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)

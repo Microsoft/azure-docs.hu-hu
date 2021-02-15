@@ -2,13 +2,13 @@
 title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft Docs
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222882"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390674"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 
@@ -75,24 +75,27 @@ A következő szakasz áttekintést nyújt a feladatátvételi folyamatról, és
 Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. 
 
 1. Hozza létre az elsődleges névteret.
-1. Hozza létre a másodlagos névteret az előfizetésben és az elsődleges névteret tartalmazó erőforráscsoportot. Ez a lépés nem kötelező. A másodlagos névteret a következő lépésben a párosítás létrehozásakor hozhatja létre. 
+1. Hozza létre a másodlagos névteret az előfizetésben és az elsődleges névtérrel rendelkező erőforráscsoportot, de egy másik régióban. Ez a lépés nem kötelező. A másodlagos névteret a következő lépésben a párosítás létrehozásakor hozhatja létre. 
 1. A Azure Portal navigáljon az elsődleges névtérhez.
 1. A bal oldali menüben válassza a **geo-helyreállítás** lehetőséget, majd válassza a **párosítás kezdeményezése** lehetőséget az eszköztáron. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Párosítás kezdeményezése az elsődleges névtérből":::    
-1. A **párosítás kezdeményezése** lapon válasszon ki egy meglévő másodlagos névteret, vagy hozzon létre egyet az előfizetésben és az elsődleges névteret tartalmazó erőforráscsoportot. Ezután kattintson a **Létrehozás** elemre. A következő példában egy meglévő másodlagos névtér van kiválasztva. 
+1. A **párosítás kezdeményezése** lapon kövesse az alábbi lépéseket:
+    1. Válasszon ki egy meglévő másodlagos névteret, vagy hozzon létre egyet az előfizetésben és az elsődleges névteret tartalmazó erőforráscsoportot. Ebben a példában egy meglévő névtér van kiválasztva.  
+    1. **Alias** esetén adjon meg egy aliast a Geo-Dr párosításhoz. 
+    1. Ezután kattintson a **Létrehozás** elemre. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Másodlagos névtér kiválasztása":::        
-1. Most, amikor kiválasztja a **geo-helyreállítás** lehetőséget az elsődleges névtérhez, a **geo-Dr alias** oldalon kell megjelennie, amely a következő képhez hasonlít:
+1. Ekkor meg kell jelennie a **geo-Dr alias** oldalnak. A bal oldali menüben a **geo-helyreállítás** lehetőség kiválasztásával az elsődleges névtérből is megnyithatja ezt az oldalt.
 
     :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Geo-DR alias oldal":::    
+1. A **geo-Dr alias** lapon a bal oldali menüben válassza a **megosztott hozzáférési házirendek** lehetőséget az alias elsődleges kapcsolati karakterláncának eléréséhez. Használja ezt a kapcsolódási karakterláncot ahelyett, hogy közvetlenül a kapcsolódási karakterláncot használja az elsődleges/másodlagos névtérhez. 
 1. Ezen **Áttekintés** lapon a következő műveleteket végezheti el: 
     1. Szüntesse meg az elsődleges és a másodlagos névterek közötti párosítást. Válassza a **párosítás megszakítása** lehetőséget az eszköztáron. 
     1. Manuálisan végezze el a feladatátvételt a másodlagos névtérbe. Válassza a **feladatátvétel** lehetőséget az eszköztáron. 
     
         > [!WARNING]
         > Ha feladatátvételt hajt végre, aktiválja a másodlagos névteret, és távolítsa el az elsődleges névteret a Geo-Disaster helyreállítási párosításból. Hozzon létre egy másik névteret, hogy új földrajzi katasztrófa utáni helyreállítási pár legyen. 
-1. A **geo-Dr alias** lapon válassza a **megosztott hozzáférési házirendek** lehetőséget az alias elsődleges kapcsolati karakterláncának eléréséhez. Használja ezt a kapcsolódási karakterláncot ahelyett, hogy közvetlenül a kapcsolódási karakterláncot használja az elsődleges/másodlagos névtérhez. 
 
 Végezetül vegyen fel némi figyelést, hogy ellenőrizze, szükség van-e feladatátvételre. A legtöbb esetben a szolgáltatás egy nagyméretű ökoszisztéma egyik része, így az automatikus feladatátvétel ritkán lehetséges, mivel a feladatátvételt a többi alrendszerrel vagy infrastruktúrával szinkronizálva kell végrehajtani.
 
@@ -133,9 +136,9 @@ Vegye figyelembe, hogy a következő szempontokat kell szem előtt tartani:
 
 1. A tervezés szerint Event Hubs geo-vész-helyreállítás nem replikálja az adatait, ezért nem használhatja fel az elsődleges Event hub régi eltolási értékét a másodlagos esemény központján. Javasoljuk, hogy a következő módszerek egyikével indítsa újra az esemény-fogadót:
 
-- *EventPosition. FromStart ()* – ha szeretné beolvasni az összes adatközpontot a másodlagos esemény központján.
-- *EventPosition. FromEnd ()* – ha szeretné beolvasni az összes új adatforrást a másodlagos esemény központhoz való kapcsolódáskor.
-- *EventPosition. FromEnqueuedTime (datetime)* – ha szeretné beolvasni a másodlagos Event hub-ban fogadott összes adat egy adott dátumtól és időponttól kezdve.
+   - *EventPosition. FromStart ()* – ha szeretné beolvasni az összes adatközpontot a másodlagos esemény központján.
+   - *EventPosition. FromEnd ()* – ha szeretné beolvasni az összes új adatforrást a másodlagos esemény központhoz való kapcsolódáskor.
+   - *EventPosition. FromEnqueuedTime (datetime)* – ha szeretné beolvasni a másodlagos Event hub-ban fogadott összes adat egy adott dátumtól és időponttól kezdve.
 
 2. A feladatátvétel tervezése során az időtényezőt is figyelembe kell venni. Ha például megszakad a kapcsolat a 15 – 20 percnél hosszabb ideig, dönthet úgy, hogy kezdeményezi a feladatátvételt. 
  
@@ -153,6 +156,8 @@ A Event Hubs standard SKU támogatja a [Availability Zones](../availability-zone
 > Az Azure Event Hubs standard Availability Zones támogatása csak olyan [Azure-régiókban](../availability-zones/az-region.md) érhető el, ahol elérhetők a rendelkezésre állási zónák.
 
 A Availability Zones csak az új névtereken engedélyezheti, a Azure Portal használatával. A Event Hubs nem támogatja a meglévő névterek áttelepítését. A zóna redundancia nem tiltható le, miután engedélyezte azt a névtérben.
+
+A rendelkezésre állási zónák használatakor a rendszer a metaadatokat és az adatokat (eseményeket) is replikálja a rendelkezésre állási zónában lévő adatközpontokban. 
 
 ![3][]
 

@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban a JavaScript használatával hozzon l�
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 25fd93e51c1b49519bb315aab28cdfc44a2a0c58
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593976"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099149"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Gyors útmutató: felügyeleti csoport létrehozása JavaScript-sel
 
@@ -29,7 +29,7 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
 
 ## <a name="application-setup"></a>Alkalmazásbeállítás
 
-Annak engedélyezéséhez, hogy a JavaScript lekérdezze az Azure Resource Graphot, a környezetet be kell állítani. Ez a beállítás bárhol használható a JavaScript használatával, beleértve [a bash használatát a Windows 10 rendszeren](/windows/wsl/install-win10).
+Ahhoz, hogy a JavaScript felügyelje a felügyeleti csoportokat, a környezetet be kell állítani. Ez a beállítás bárhol használható a JavaScript használatával, beleértve [a bash használatát a Windows 10 rendszeren](/windows/wsl/install-win10).
 
 1. Hozzon létre egy új Node.js projektet a következő parancs futtatásával.
 

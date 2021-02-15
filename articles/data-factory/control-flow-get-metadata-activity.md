@@ -1,23 +1,17 @@
 ---
 title: Metaadatok beolvasása tevékenység Azure Data Factory
 description: Megtudhatja, hogyan használhatja a metaadatok beolvasása tevékenységet egy Data Factory folyamaton.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297606"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385489"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
 
@@ -33,7 +27,7 @@ A következő funkciók érhetők el a vezérlési folyamatban:
 - Az érvényesítés végrehajtásához használhatja a metaadatok beolvasása tevékenységből a feltételes kifejezésekben szereplő kimenetet.
 - A folyamat akkor aktiválható, ha a feltételt a "Do" utasításon keresztül, a hurok nélkül kell megtenni.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, és a metaadatok adatait adja vissza kimenetként. Jelenleg a következő összekötők és a megfelelő lekérdezhető metaadatok támogatottak. A visszaadott metaadatok maximális mérete körülbelül 4 MB.
 
@@ -76,7 +70,7 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 
 A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység mezőinek listájában a megfelelő információk lekéréséhez:
 
-| Metaadat típusa | Leírás |
+| Metaadat típusa | Description |
 |:--- |:--- |
 | itemName | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusa. A visszaadott érték a következő: `File` vagy `Folder` . |
@@ -168,10 +162,10 @@ A metaadatok beolvasása tevékenység jelenleg a következő típusú metaadato
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Igen 
-adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Igen
-formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
-storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
+Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Yes 
+adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Yes
+formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
+storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
 
 ## <a name="sample-output"></a>Példakimenet
 

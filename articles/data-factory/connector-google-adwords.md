@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása a Google AdWordsből
 description: Megtudhatja, hogyan másolhat adatokat a Google AdWordsből egy Azure Data Factory adatcsatorna másolási tevékenységének használatával támogatott fogadó adattárakba.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b3036f09e41b20bc3c190f06842acd817fcece6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415024"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380950"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Adatok másolása a Google AdWordsből Azure Data Factory használatával
 
@@ -49,17 +45,17 @@ A Google AdWords társított szolgáltatás a következő tulajdonságokat támo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **GoogleAdWords** | Igen |
-| clientCustomerID | Azon AdWords-fiók ügyfél-ügyfél-azonosítója, amelyre vonatkozóan be szeretné olvasni a jelentési adatmennyiséget.  | Igen |
-| developerToken | Az AdWords API-hoz való hozzáférés biztosításához használt Manager-fiókhoz társított fejlesztői jogkivonat.  Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Igen |
-| authenticationType | A hitelesítéshez használt OAuth 2,0 hitelesítési mechanizmus. A ServiceAuthentication csak saját üzemeltetésű IR-ben használható. <br/>Az engedélyezett értékek a következők: **ServiceAuthentication**, **UserAuthentication** | Igen |
-| refreshToken | A Google által a UserAuthentication-hez való hozzáférés engedélyezéséhez beszerzett frissítési jogkivonat. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
-| ügyfél-azonosító | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-azonosítója. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
-| clientSecret | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-titka. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Nem |
-| e-mail | A ServiceAuthentication használt szolgáltatásfiók-e-mail-azonosító, amely csak saját üzemeltetésű integrációs modulban használható.  | Nem |
-| keyFilePath | A szolgáltatásfiók e-mail-címének hitelesítéséhez használt. P12 fájl teljes elérési útja, amely csak a saját üzemeltetésű integrációs modulban használható.  | Nem |
-| trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | Nem |
-| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **GoogleAdWords** | Yes |
+| clientCustomerID | Azon AdWords-fiók ügyfél-ügyfél-azonosítója, amelyre vonatkozóan be szeretné olvasni a jelentési adatmennyiséget.  | Yes |
+| developerToken | Az AdWords API-hoz való hozzáférés biztosításához használt Manager-fiókhoz társított fejlesztői jogkivonat.  Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | Yes |
+| authenticationType | A hitelesítéshez használt OAuth 2,0 hitelesítési mechanizmus. A ServiceAuthentication csak saját üzemeltetésű IR-ben használható. <br/>Az engedélyezett értékek a következők: **ServiceAuthentication**, **UserAuthentication** | Yes |
+| refreshToken | A Google által a UserAuthentication-hez való hozzáférés engedélyezéséhez beszerzett frissítési jogkivonat. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | No |
+| ügyfél-azonosító | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-azonosítója. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | No |
+| clientSecret | A frissítési jogkivonat beszerzéséhez használt Google-alkalmazás ügyfél-titka. Kiválaszthatja, hogy ezt a mezőt SecureString szeretné tárolni az ADF-ben való biztonságos tároláshoz, vagy a jelszó tárolásához Azure Key Vaultban, majd az ADF másolási tevékenységének lekérése az adatok másolásakor – további információ a [tárolt hitelesítő adatokról Key Vault](store-credentials-in-key-vault.md). | No |
+| e-mail | A ServiceAuthentication használt szolgáltatásfiók-e-mail-azonosító, amely csak saját üzemeltetésű integrációs modulban használható.  | No |
+| keyFilePath | A szolgáltatásfiók e-mail-címének hitelesítéséhez használt. P12 fájl teljes elérési útja, amely csak a saját üzemeltetésű integrációs modulban használható.  | No |
+| trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | No |
+| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | No |
 
 **Példa**
 
@@ -101,11 +97,11 @@ A Google AdWords társított szolgáltatás a következő tulajdonságokat támo
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Google AdWords-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Ha adatokat szeretne másolni a Google AdWordsből, állítsa az adatkészlet Type (típus) tulajdonságát **GoogleAdWordsObject**értékre. A következő tulajdonságok támogatottak:
+Ha adatokat szeretne másolni a Google AdWordsből, állítsa az adatkészlet Type (típus) tulajdonságát **GoogleAdWordsObject** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -136,8 +132,8 @@ Az adatok Google AdWordsből való másolásához állítsa a forrás típusát 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **GoogleAdWordsSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -176,5 +172,5 @@ Az adatok Google AdWordsből való másolásához állítsa a forrás típusát 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

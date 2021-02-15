@@ -7,16 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832130"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390470"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonja
 
-Ebben az oktatóanyagban a kiskereskedelmi megoldás létrehozásához az Azure IoT Central Micro-beteljesülés Center alkalmazás sablonját használhatja. Megtudhatja, hogyan helyezheti üzembe a sablont, mit tartalmaz benne, és mit szeretne tenni a következő lépésekkel.
+Ebben az oktatóanyagban a kiskereskedelmi megoldás létrehozásához az Azure IoT Central Micro-beteljesülés Center alkalmazás sablonját használhatja.
+
+Ez az oktatóanyag a következőket ismerteti:
+
+> [!div class="checklist"]
+> * Az alkalmazás sablonjának üzembe helyezése
+> * Az alkalmazás sablonjának használata
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag-Sorozat elvégzéséhez szüksége lesz egy Azure-előfizetésre. Igény szerint ingyenes 7 napos próbaverziót is használhat. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription).

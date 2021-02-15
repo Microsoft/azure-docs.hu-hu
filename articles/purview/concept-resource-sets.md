@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539467"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387852"
 ---
 # <a name="understanding-resource-sets"></a>Erőforráskészletek megismerése
 
@@ -86,19 +86,19 @@ Ha az Azure-beli hatáskörébe illeszkedik egy erőforrás-csoportba, az megpr�
 
 ### <a name="example-1"></a>1\. példa
 
-Minősített név: https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+Minősített név: `https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}`
 
 Megjelenítendő név: "Spark-kimenet neve"
 
 ### <a name="example-2"></a>2\. példa
 
-Minősített név: https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+Minősített név: `https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}`
 
 Megjelenítendő név: "saját particionált adatai"
 
 ### <a name="example-3"></a>3\. példa
 
-Minősített név: https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+Minősített név: `https://myblob.blob.core.windows.net/sample-data/data{N}.csv`
 
 Megjelenítendő név: "érték"
 

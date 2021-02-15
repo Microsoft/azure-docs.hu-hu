@@ -1,21 +1,18 @@
 ---
 title: Egyéni tevékenységek használata egy folyamatban
 description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket a .NET használatával, majd hogyan használhatja a tevékenységeket egy Azure Data Factory folyamaton belül.
-services: data-factory
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632107"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374796"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -102,16 +99,16 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 
 | Tulajdonság              | Leírás                              | Kötelező |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | A folyamatban szereplő tevékenység neve     | Igen      |
-| leírás           | A tevékenység működését leíró szöveg  | Nem       |
-| típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni** . | Igen      |
-| linkedServiceName     | Társított szolgáltatás Azure Batch. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  | Igen      |
-| command               | A végrehajtandó egyéni alkalmazás parancsa. Ha az alkalmazás már elérhető a Azure Batch készlet csomóponton, a resourceLinkedService és a folderPath kihagyható. Megadhatja például a következő parancsot `cmd /c dir` :, amelyet natív módon támogat a Windows batch-készlet csomópont. | Igen      |
+| name                  | A folyamatban szereplő tevékenység neve     | Yes      |
+| leírás           | A tevékenység működését leíró szöveg  | No       |
+| típus                  | Egyéni tevékenység esetén a tevékenység típusa **Egyéni**. | Yes      |
+| linkedServiceName     | Társított szolgáltatás Azure Batch. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  | Yes      |
+| command               | A végrehajtandó egyéni alkalmazás parancsa. Ha az alkalmazás már elérhető a Azure Batch készlet csomóponton, a resourceLinkedService és a folderPath kihagyható. Megadhatja például a következő parancsot `cmd /c dir` :, amelyet natív módon támogat a Windows batch-készlet csomópont. | Yes      |
 | resourceLinkedService | Azure Storage-beli társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | Nincs &#42;       |
 | folderPath            | Az egyéni alkalmazás mappájának és az összes függőségének elérési útja<br/><br/>Ha az almappákban tárolt függőségek vannak – vagyis a *folderPath* alatt lévő hierarchikus mappák struktúrájában – a rendszer jelenleg összefoglalja a mappa struktúráját, amikor a fájlok Azure Batchba másolódnak. Ez azt is megtörténik, hogy minden fájl egyetlen mappába van másolva, és nincs almappa. A viselkedés megkerüléséhez vegye fontolóra a fájlok tömörítését, a tömörített fájl másolását, majd a kívánt helyen lévő egyéni kóddal való kicsomagolását. | Nincs &#42;       |
-| referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket a rendszer JSON formátumban adja át az egyéni alkalmazásnak, így az egyéni kód hivatkozhat a Data Factory erőforrásaira | Nem       |
-| Extendedproperties példányt paraméterként    | Felhasználó által definiált tulajdonságok, amelyek JSON formátumban adhatók át az egyéni alkalmazásnak, így az egyéni kód további tulajdonságokat is hivatkozhat | Nem       |
-| retentionTimeInDays | Az egyéni tevékenységhez elküldött fájlok megőrzési ideje. Az alapértelmezett érték 30 nap. | Nem |
+| referenceObjects      | Meglévő társított szolgáltatások és adatkészletek tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket a rendszer JSON formátumban adja át az egyéni alkalmazásnak, így az egyéni kód hivatkozhat a Data Factory erőforrásaira | No       |
+| Extendedproperties példányt paraméterként    | Felhasználó által definiált tulajdonságok, amelyek JSON formátumban adhatók át az egyéni alkalmazásnak, így az egyéni kód további tulajdonságokat is hivatkozhat | No       |
+| retentionTimeInDays | Az egyéni tevékenységhez elküldött fájlok megőrzési ideje. Az alapértelmezett érték 30 nap. | No |
 
 &#42; a tulajdonságokat `resourceLinkedService` , és `folderPath` mindkettőt meg kell adni, vagy mindkettőt el kell hagyni.
 
@@ -342,7 +339,7 @@ Az alábbi táblázat a Data Factory v2 egyéni tevékenység és az Data Factor
 |Egyéni logika meghatározása      |Végrehajtható fájl biztosításával      |.NET DLL implementálása      |
 |Az egyéni logika végrehajtási környezete      |Windows vagy Linux      |Windows (.NET-keretrendszer 4.5.2)      |
 |Parancsfájlok végrehajtása      |Támogatja a parancsfájlok közvetlen végrehajtását (például "cmd/c echo Hello World") a Windows rendszerű virtuális gépen      |Implementáció szükséges a .NET DLL-ben      |
-|Adatkészlet szükséges      |Nem kötelező      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
+|Adatkészlet szükséges      |Választható      |A tevékenységek láncolásához és az információk továbbításához szükséges      |
 |Információk átadása a tevékenységtől az egyéni logikáig      |ReferenceObjects (LinkedServices és adatkészletek) és Extendedproperties példányt paraméterként (egyéni tulajdonságok)      |Extendedproperties példányt paraméterként (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
 |Információk beolvasása az egyéni logikában      |A végrehajtható fájl ugyanazon mappájában tárolt activity.jselemzése, linkedServices.jsbe-és datasets.js      |.NET SDK-n keresztül (.NET frame 4.5.2)      |
 |Naplózás      |Írás közvetlenül az STDOUT-ba      |A naplózó implementálása a .NET DLL-ben      |

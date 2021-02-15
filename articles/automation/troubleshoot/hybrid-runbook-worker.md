@@ -3,14 +3,16 @@ title: A hibrid Runbook-feldolgozói problémák elhárítása Azure Automation
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémákat.
 services: automation
 ms.subservice: ''
-ms.date: 11/25/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: af432d9c6323bd2328eb8dd84d8572a8a5ae05a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055331"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388005"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
@@ -26,9 +28,7 @@ A hibrid Runbook-feldolgozó attól függ, hogy az ügynök kommunikál-e a Azur
 
 A Runbook végrehajtása sikertelen, és a következő hibaüzenet jelenik meg:
 
-```error
-"The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
-```
+`The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times.`
 
 A runbook röviddel azután fel van függesztve, hogy háromszor próbálkozik a végrehajtással. Vannak olyan feltételek, amelyek megszakítják a runbook befejezését. Előfordulhat, hogy a kapcsolódó hibaüzenet nem tartalmaz további információkat.
 
@@ -56,13 +56,12 @@ A leírást a megfelelő eseményhez tartozó **Microsoft-SMA** eseménynaplóba
 
 A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a lekérdezés eredménye érvénytelen. A következő hiba jelenik meg, amikor a feldolgozó megpróbál megnyitni egy kapcsolódást a [jelző kiszolgálóval](/aspnet/core/signalr/introduction).
 
-```error
-[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
+`[AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
 [Uri=https://cc-jobruntimedata-prod-su1.azure-automation.net/notifications/hub][Exception=System.TimeoutException: Transport timed out trying to connect
    at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    at JobRuntimeData.NotificationsClient.JobRuntimeDataServiceSignalRClient.<Start>d__45.MoveNext()
-```
+`
 
 #### <a name="cause"></a>Ok
 
@@ -96,14 +95,13 @@ Indítsa el a munkavégző gépet, majd rereregister Azure Automation. A runbook
 
 A hibrid Runbook-feldolgozón futó runbook a következő hibaüzenettel meghiúsul:
 
-```error
-Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
-At line:3 char:1
-+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
-```
+`Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000`  
+`At line:3 char:1`  
+`+ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...`  
+`+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`  
+`    + CategoryInfo          : CloseError: (:) [Connect-AzAccount],ArgumentException`  
+`    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand`
+
 #### <a name="cause"></a>Ok
 
 Ez a hiba akkor fordul elő, ha a futtató [fiókot](../automation-security-overview.md#run-as-accounts) egy olyan runbook próbálja meg használni, amely olyan hibrid runbook-feldolgozón fut, amelyen a futtató fiók tanúsítványa nincs jelen. A hibrid Runbook-feldolgozók alapértelmezés szerint nem helyileg rendelkeznek a tanúsítvány eszközzel. A futtató fiók működéséhez az szükséges, hogy az eszköz megfelelően működjön.
@@ -118,9 +116,7 @@ Ha a hibrid Runbook-feldolgozó egy Azure-beli virtuális gép, a [Runbook-hitel
 
 A feldolgozó kezdeti regisztrációs fázisa meghiúsul, és a következő hibaüzenetet kapja (403):
 
-```error
-"Forbidden: You don't have permission to access / on this server."
-```
+`Forbidden: You don't have permission to access / on this server.`
 
 #### <a name="cause"></a>Ok
 
@@ -139,6 +135,37 @@ Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a mun
 A Log Analytics munkaterület és az Automation-fióknak egy összekapcsolt régióban kell lennie. A támogatott régiók listáját itt tekintheti meg: [Azure Automation és log Analytics munkaterület-hozzárendelések](../how-to/region-mappings.md).
 
 Előfordulhat, hogy frissítenie kell a számítógép dátum-vagy időzónáját is. Ha egyéni időtartományt választ, győződjön meg arról, hogy a tartomány UTC-ben van, ami eltérhet a helyi időzónától.
+
+### <a name="scenario-set-azstorageblobcontent-fails-on-a-hybrid-runbook-worker"></a><a name="set-azstorageblobcontent-execution-fails"></a>Forgatókönyv: a Set-AzStorageBlobContent a hibrid Runbook-feldolgozón meghiúsul 
+
+#### <a name="issue"></a>Probléma
+
+A Runbook meghiúsul, ha megpróbálja végrehajtani `Set-AzStorageBlobContent` a műveletet, és a következő hibaüzenet jelenik meg:
+
+`Set-AzStorageBlobContent : Failed to open file xxxxxxxxxxxxxxxx: Illegal characters in path`
+
+#### <a name="cause"></a>Ok
+
+ Ezt a hibát a hívások hosszú fájlnevének viselkedése okozza, `[System.IO.Path]::GetFullPath()` amely az UNC elérési utakat hozzáadja.
+
+#### <a name="resolution"></a>Feloldás
+
+Megkerülő megoldásként létrehozhat egy nevű konfigurációs fájlt `OrchestratorSandbox.exe.config` a következő tartalommal:
+
+```azurecli
+<configuration>
+  <runtime>
+    <AppContextSwitchOverrides value="Switch.System.IO.UseLegacyPathHandling=false" />
+  </runtime>
+</configuration>
+```
+
+Helyezze a fájlt a végrehajtható fájllal megegyező mappába `OrchestratorSandbox.exe` . Példa:
+
+`%ProgramFiles%\Microsoft Monitoring Agent\Agent\AzureAutomation\7.3.702.0\HybridAgent`
+
+>[!Note]
+> Ha frissíti az ügynököt, a rendszer törli a konfigurációs fájlt, és újból létre kell hoznia.
 
 ## <a name="linux"></a>Linux
 
@@ -192,7 +219,7 @@ Ha az ügynök nem fut, futtassa a következő parancsot a szolgáltatás elind�
 
 Ha a/var/opt/Microsoft/omsconfig/omsconfig.log hibaüzenet jelenik meg `The specified class does not exist..` , akkor a Linux log Analytics-ügynökének frissítése szükséges. A következő parancs futtatásával telepítse újra az ügynököt.
 
-```bash
+```Bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
@@ -267,8 +294,7 @@ A hibrid Runbook Worker gépe fut, de a munkaterületen nem jelenik meg szívver
 
 A következő példában szereplő lekérdezés a munkaterületen található gépeket és az utolsó szívverését jeleníti meg:
 
-```loganalytics
-// Last heartbeat of each computer
+```kusto
 Heartbeat
 | summarize arg_max(TimeGenerated, *) by Computer
 ```
@@ -295,9 +321,7 @@ Start-Service -Name HealthService
 
 A következő üzenet jelenik meg, amikor egy hibrid Runbook-feldolgozót próbál hozzáadni a `Add-HybridRunbookWorker` parancsmag használatával:
 
-```error
-Machine is already registered
-```
+`Machine is already registered`
 
 #### <a name="cause"></a>Ok
 
@@ -315,15 +339,11 @@ A probléma megoldásához távolítsa el a következő beállításkulcsot, ind
 
 A következő üzenet jelenik meg, ha hibrid Runbook-feldolgozót próbál hozzáadni a `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python-parancsfájl használatával:
 
-```error
-Unable to register, an existing worker was found. Please deregister any existing worker and try again.
-```
+`Unable to register, an existing worker was found. Please deregister any existing worker and try again.`
 
 Emellett kísérlet történt a hibrid Runbook-feldolgozók deregisztrálására a `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` Python-szkript használatával:
 
-```error
-Failed to deregister worker. [response_status=404]
-```
+`Failed to deregister worker. [response_status=404]`
 
 #### <a name="cause"></a>Ok
 

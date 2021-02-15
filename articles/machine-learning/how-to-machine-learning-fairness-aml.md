@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: ee589aed2b8f3c53d21c1f762a5d2027f3762649
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222768"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366963"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning használata a Fairlearn nyílt forráskódú csomaggal, amellyel mérhető az ML-modellek tisztasága (előzetes verzió)
 
@@ -214,10 +214,15 @@ Az alábbi példa bemutatja, hogyan használható a méltányos csomag. Azure Ma
     1. Válassza a **kísérletek** lehetőséget a bal oldali ablaktáblán a Azure Machine learning futtatott kísérletek listájának megjelenítéséhez.
     1. Válasszon ki egy adott kísérletet a kísérlet összes futtatásának megtekintéséhez.
     1. Válasszon egy futtatást, majd a **tisztesség** fület a magyarázat vizualizáció irányítópultra.
+    1. Miután kikerül a **tisztesség** lapon, kattintson a jobb oldali menüben a **méltányosság azonosítóra** .
+    1. Konfigurálja az irányítópultot úgy, hogy kijelöli a méltányosság értékelését szolgáló oldalon a bizalmas attribútumot, a teljesítmény metrikáját és a méltányos minősítési mérőszámot.
+    1. A diagram típusának átváltása az egyikről a másikra a **foglalási** ártalmak és **a szolgáltatás minőségi** károsodásának megfigyelése érdekében.
 
 
-    [![Méltányosság irányítópultja](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
+
+    [![A méltányosság irányítópult-kiosztása](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
+    [![A tisztesség irányítópult minőségi szolgáltatásának minősége](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * **Modellek panel**
     1. Ha az előző lépések követésével regisztrálta az eredeti modellt, akkor a bal oldali ablaktáblán kiválaszthatja a **modelleket** .
     1. Válasszon ki egy modellt, majd a **tisztesség** lapon tekintse meg a magyarázó vizualizáció irányítópultját.

@@ -1,19 +1,19 @@
 ---
-title: Az Azure Cache for Redis monitorozása
+title: Az Azure cache figyelése a Redis
 description: Ismerje meg, hogyan figyelheti a Redis-példányok Azure cache állapotát és teljesítményét
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327338"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389705"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Az Azure Cache for Redis monitorozása
+# <a name="monitor-azure-cache-for-redis"></a>Az Azure cache figyelése a Redis
 
 Az Azure cache for Redis [Azure monitort](../azure-monitor/index.yml) használ a gyorsítótár-példányok figyelésére. Megtekintheti a metrikákat, rögzítheti a metrikák diagramokat a Kezdőpulton, testreszabhatja a figyelési diagramok dátumát és időtartományát, metrikákat adhat hozzá és távolíthat el a diagramokból, valamint riasztásokat állíthat be bizonyos feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure cache Redis-példányok állapotának figyelését, valamint a gyorsítótárazási alkalmazások kezelését.
 
@@ -109,7 +109,7 @@ Minden metrika két verziót tartalmaz. Az egyik mérőszám a teljes gyorsító
 | Lekérések |A lekérési műveletek száma a gyorsítótárból a megadott jelentési intervallumban. Ez az érték a következő értékek összege a Redis info all parancsban:,,,,, `cmdstat_get` `cmdstat_hget` `cmdstat_hgetall` `cmdstat_hmget` `cmdstat_mget` `cmdstat_getbit` és `cmdstat_getrange` , és egyenlő a gyorsítótárbeli találatok összegével és a jelentési intervallumban lemaradt értékekkel. |
 | Műveletek száma másodpercenként | A gyorsítótár-kiszolgáló által másodpercenként feldolgozott parancsok teljes száma a megadott jelentési intervallumban.  Ez az érték a "instantaneous_ops_per_sec" értéket képezi le a Redis INFO parancsból. |
 | Redis-kiszolgáló terhelése |Azon ciklusok százalékos aránya, amelyekben a Redis-kiszolgáló foglalt, és nem várakozik az üzenetek üresjáratára. Ha a számláló eléri a 100-et, az azt jelenti, hogy a Redis-kiszolgáló elérte a teljesítmény felső határát, és a processzor nem tud gyorsabban feldolgozni. Ha magas Redis-kiszolgáló betöltését látja, akkor időtúllépési kivételek jelennek meg az ügyfélen. Ebben az esetben érdemes megfontolnia, hogy az adatait több gyorsítótárba lehessen felskálázással vagy particionálni. |
-| Készletek |A megadott jelentési intervallumban a gyorsítótárban beállított műveletek száma. Ez az érték a következő értékek összege a Redis info all paranccsal:,,,,,,,,, `cmdstat_set` `cmdstat_hset` `cmdstat_hmset` `cmdstat_hsetnx` `cmdstat_lset` `cmdstat_mset` `cmdstat_msetnx` `cmdstat_setbit` `cmdstat_setex` `cmdstat_setrange` és `cmdstat_setnx` . |
+| Halmazok |A megadott jelentési intervallumban a gyorsítótárban beállított műveletek száma. Ez az érték a következő értékek összege a Redis info all paranccsal:,,,,,,,,, `cmdstat_set` `cmdstat_hset` `cmdstat_hmset` `cmdstat_hsetnx` `cmdstat_lset` `cmdstat_mset` `cmdstat_msetnx` `cmdstat_setbit` `cmdstat_setex` `cmdstat_setrange` és `cmdstat_setnx` . |
 | Kulcsok összesen  | A gyorsítótárban lévő kulcsok maximális száma a korábbi jelentési időszakban. Ez a szám `keyspace` a REDIS info parancsból képezi le. Az alapul szolgáló mérőszámok rendszerének korlátozása miatt a fürtöket engedélyező gyorsítótárak esetében az összes kulcs visszaadja azon szegmens kulcsainak maximális számát, amely a jelentési intervallumban a kulcsok maximális száma volt.  |
 | Műveletek összesen |A gyorsítótár-kiszolgáló által a megadott jelentési intervallumban feldolgozott parancsok teljes száma. Ez az érték `total_commands_processed` a REDIS info parancsból képezi le. Ha a Redis-hez készült Azure cache-t kizárólag a pub/sub esetében használja, akkor a,, vagy rendszerhez nem lesz mérőszám, `Cache Hits` `Cache Misses` `Gets` `Sets` de `Total Operations` a pub/sub műveletekhez tartozó gyorsítótár-használatot tükröző mérőszámok szerepelnek. |
 | Felhasznált memória |A gyorsítótárban lévő kulcs/érték párokhoz felhasznált gyorsítótár-memória mennyisége a megadott jelentési intervallumban (MB). Ez az érték `used_memory` a REDIS info parancsból képezi le. Ez az érték nem tartalmazza a metaadatokat vagy a töredezettséget. |

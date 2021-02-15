@@ -1,21 +1,18 @@
 ---
 title: Adatmásolás a felhőben a PowerShell használatával
 description: Ez a PowerShell-parancsfájl az Azure-Blob Storage egyik helyéről másolja át az adatait ugyanazon a Blob Storage egy másik helyére.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 169420aee32a49549a71746708bd8377a4c63b5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637989"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370291"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>A PowerShell használatával hozzon létre egy adatfeldolgozó-folyamatot a felhőben tárolt adatmásoláshoz
 
@@ -26,7 +23,7 @@ Ez a példa PowerShell-szkript létrehoz egy folyamatot a Azure Data Factoryban,
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure Storage-fiók** . A blobtároló **forrás-** és **fogadó** adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../../storage/common/storage-account-create.md) ismertető cikket. 
+* **Azure Storage-fiók**. A blobtároló **forrás-** és **fogadó** adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozását](../../storage/common/storage-account-create.md) ismertető cikket. 
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az Azure Blob Storage-hoz való kapcsolódáshoz olyan eszközöket használhat, mint például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) . hozzon létre egy BLOB-tárolót, töltse fel a bemeneti fájlt, és ellenőrizze a kimeneti fájlt.
 
 ## <a name="sample-script"></a>Példaszkript

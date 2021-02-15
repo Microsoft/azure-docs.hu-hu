@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746456"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097313"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ kimeneti kötés a Azure Functions áttekintéséhez
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az alábbi példa egy Java-függvényt mutat be, amely a RabbitMQ-várólistára küldött üzenetet küld, amikor 5 percenként egy TimerTrigger indítja el.
+A következő Java-függvény a `@RabbitMQOutput` [Java RabbitMQ-típusok](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq) megjegyzéseit használja a RabbitMQ-várólista kimeneti kötései konfigurációjának leírásához. A függvény egy üzenetet küld a RabbitMQ-várólistának, amikor 5 percenként aktiválja a TimerTrigger.
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -266,11 +266,11 @@ További részletekért tekintse meg a kimeneti kötési [példát](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQ` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa** | n/a | "RabbitMQ" értékre kell állítani.|
-|**irányba** | n/a | "Out" értékre kell állítani. |
-|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. |
+|**típusa** | n.a. | "RabbitMQ" értékre kell állítani.|
+|**irányba** | n.a. | "Out" értékre kell állítani. |
+|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. |
 |**queueName**|**QueueName**| Azon várólista neve, ahová üzeneteket szeretne küldeni. |
 |**hostName**|**HostName**|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
 |**userName**|**UserName**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólistához való hozzáféréshez használt felhasználónevet tartalmazza. Például: UserNameSetting: "< UserNameFromSettings >"|
@@ -324,6 +324,6 @@ A kimeneti kötéshez használja a következő paramétereket:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)

@@ -1,22 +1,18 @@
 ---
 title: Saját üzemeltetésű Integration Runtime telepítésének automatizálása helyi PowerShell-parancsfájlok használatával
 description: Saját üzemeltetésű Integration Runtime helyi gépekre történő telepítésének automatizálása.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636969"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376207"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Saját üzemeltetésű Integration Runtime telepítésének automatizálása helyi PowerShell-parancsfájlok használatával
 Ha az Azure-beli virtuális gépeken kívül szeretné használni a saját üzemeltetésű Integration Runtime telepítését, akkor a helyi PowerShell-parancsfájlokat használhatja. Ez a cikk két olyan parancsfájlt mutat be, amelyet használhat.
@@ -44,7 +40,7 @@ Ha az Azure-beli virtuális gépeken kívül szeretné használni a saját üzem
 
 ### <a name="for-automating-setup"></a>A telepítő automatizálása
 1. Töltse le a saját üzemeltetésű IR [-t innen](https://www.microsoft.com/download/details.aspx?id=39717). 
-1. Itt adhatja meg azt az elérési utat, ahol a fenti letöltött (telepítési fájl). Ha például az elérési út *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi* , akkor a következő PowerShell parancssori példát használhatja ehhez a feladathoz:
+1. Itt adhatja meg azt az elérési utat, ahol a fenti letöltött (telepítési fájl). Ha például az elérési út *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi*, akkor a következő PowerShell parancssori példát használhatja ehhez a feladathoz:
 
    ```powershell
    PS C:\windows\system32> C:\Users\username\Desktop\InstallGatewayOnLocalMachine.ps1 -path "C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi" -authKey "[key]"

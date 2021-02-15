@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165144"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365820"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -298,7 +298,12 @@ Az UPN-módosítások a Windows 10 2004 Update szolgáltatással támogatottak. 
 **Egy** 
 - A Windows 10 Azure ad-ban regisztrált eszközökhöz lépjen a **Beállítások**  >  **fiókok**  >  **hozzáférés munkahelyi vagy iskolai** rendszerhez. Válassza ki a fiókját, és válassza a **Leválasztás** lehetőséget. Az eszköz regisztrálása felhasználónkénti profil a Windows 10 rendszeren.
 - Az iOS és az Android esetében használhatja a **Microsoft Authenticator Alkalmazásbeállítások**  >  **eszköz regisztrációját** , és válassza az **eszköz regisztrációjának törlése** lehetőséget.
-- MacOS esetén a Microsoft Intune Céges portál alkalmazással törölheti az eszközt a felügyelet alól, és eltávolíthatja a regisztrációt. 
+- MacOS esetén a Microsoft Intune céges portál alkalmazással törölheti az eszközt a felügyelet alól, és eltávolíthatja a regisztrációt. 
+
+Windows 10-es eszközök esetén ez a folyamat automatizálható a [Workplace JOIN (WPJ)-eltávolító eszköz](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip) használatával
+
+> [!NOTE]
+> Ez az eszköz eltávolítja az összes SSO-fiókot az eszközön. A művelet után az összes alkalmazás elveszti az egyszeri bejelentkezés állapotát, és az eszköz regisztrációja megszűnik a felügyeleti eszközökről (MDM), és törli a felhőből való regisztrációt. Amikor az alkalmazás legközelebb megpróbál bejelentkezni, a rendszer felkéri a felhasználókat a fiók újbóli hozzáadására.
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>K: Hogyan tiltható le a felhasználók további munkahelyi fiókok (Azure AD-regisztráció) hozzáadására a vállalati Windows 10-es eszközökön?

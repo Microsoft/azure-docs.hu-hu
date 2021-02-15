@@ -1,24 +1,19 @@
 ---
 title: Egyéni tevékenységek használata Azure Data Factory-folyamatban
 description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket, és hogyan használhatja őket egy Azure Data Factory folyamat során.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606946"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393020"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Egyéni tevékenységek használata egy Azure Data Factory 1-es verziójú adatcsatornán
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -54,7 +49,7 @@ Az oktatóanyaghoz hozzon létre egy Azure Batch-fiókot virtuális gépek kész
 
 1. Hozzon létre egy **Azure batch fiókot** a [Azure Portal](https://portal.azure.com)használatával. Útmutatásért tekintse meg a [Azure batch-fiók létrehozása és kezelése][batch-create-account] című cikket.
 2. Jegyezze fel a Azure Batch fiók nevét, a fiók kulcsát, az URI-t és a készlet nevét. Szükség van rájuk egy Azure Batch társított szolgáltatás létrehozásához.
-    1. Azure Batch fiók kezdőlapján a következő formátumban jelenik meg egy **URL-cím** : `https://myaccount.westus.batch.azure.com` . Ebben a példában a **MyAccount** a Azure batch fiók neve. A társított szolgáltatás definíciójában használt URI az URL-cím a fiók neve nélkül. Például: `https://<region>.batch.azure.com`.
+    1. Azure Batch fiók kezdőlapján a következő formátumban jelenik meg egy **URL-cím** : `https://myaccount.westus.batch.azure.com` . Ebben a példában a **MyAccount** a Azure batch fiók neve. A társított szolgáltatás definíciójában használt URI az URL-cím a fiók neve nélkül. Példa: `https://<region>.batch.azure.com`.
     2. A bal oldali menüben kattintson a **kulcsok** elemre, és másolja ki az **elsődleges hozzáférési kulcsot**.
     3. Meglévő készlet használatához kattintson a menü **készletek** elemére, és jegyezze fel a készlet **azonosítóját** . Ha nem rendelkezik meglévő készlettel, lépjen a következő lépésre.
 2. Hozzon létre egy **Azure batch készletet**.
@@ -247,7 +242,7 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
                                      null);
 
             // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
+            // the search term ("Microsoft") in each blob associated
             // with the data slice. definition of the method is shown in the next step.
 
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");

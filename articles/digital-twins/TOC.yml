@@ -52,7 +52,11 @@
             - name: Szkriptes verzió
               href: how-to-set-up-instance-scripted.md
         - name: Privát hozzáférés engedélyezése Private Linkkel
-          href: how-to-enable-private-link.md
+          items:
+            - name: Portálverzió
+              href: how-to-enable-private-link-portal.md
+            - name: Parancssori felület verziója
+              href: how-to-enable-private-link-cli.md
         - name: Alkalmazáshitelesítési kód írása
           href: how-to-authenticate-client.md
         - name: Alkalmazásregisztráció létrehozása
@@ -103,12 +107,16 @@
       items:
         - name: Végpontok és útvonalak kezelése
           items:
-            - name: API-k és CLI-verziók
-              href: how-to-manage-routes-apis-cli.md
             - name: Portálverzió
               href: how-to-manage-routes-portal.md
+            - name: API-k és CLI-verziók
+              href: how-to-manage-routes-apis-cli.md
         - name: Felügyelt identitás engedélyezése útválasztási eseményekhez
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: Portálverzió
+              href: how-to-enable-managed-identities-portal.md
+            - name: Parancssori felület verziója
+              href: how-to-enable-managed-identities-cli.md
         - name: Integrálás az Azure Mapsszel
           href: how-to-integrate-maps.md
         - name: Integrálás az Azure Time Series Insights szolgáltatással

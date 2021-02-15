@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb8533f4ca714402482c666c520c1d0bd745e8cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363270"
+ms.locfileid: "100518827"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
@@ -83,11 +83,11 @@ Az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-admin
 
 A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator) szerepköre rendelkezik engedélyekkel a bérlő hitelesítési módszer házirendjének beállításához, amely meghatározza, hogy az egyes felhasználók hogyan regisztrálhatnak és használhatnak.
 
-| Szerepkör | A felhasználó hitelesítési módszereinek kezelése | Felhasználónkénti MFA kezelése | MFA-beállítások kezelése | Hitelesítési módszer házirendjének kezelése | Jelszavas védelmi szabályzat kezelése |  
+| Szerepkör | A felhasználó hitelesítési módszereinek kezelése | Felhasználónkénti MFA kezelése | MFA-beállítások kezelése | Hitelesítési módszer házirendjének kezelése | Jelszavas védelmi szabályzat kezelése |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem | 
-| Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára  |Nem | Nem  |Nem | 
-| Hitelesítési házirend rendszergazdája | Nem  |Nem | Igen | Igen | Yes | 
+| Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem | 
+| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Yes | 
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -107,11 +107,11 @@ Az ezzel a szerepkörrel rendelkező felhasználók konfigurálhatják a hiteles
 
 A [hitelesítési rendszergazda](#authentication-administrator) és az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-administrator) szerepkörei engedéllyel rendelkeznek a regisztrált hitelesítési módszerek kezeléséhez a felhasználókon, és az újbóli regisztrációt és a többtényezős hitelesítést is kényszerítheti az összes felhasználó számára. 
 
-| Szerepkör | A felhasználó hitelesítési módszereinek kezelése | Felhasználónkénti MFA kezelése | MFA-beállítások kezelése | Hitelesítési módszer házirendjének kezelése | Jelszavas védelmi szabályzat kezelése |  
+| Szerepkör | A felhasználó hitelesítési módszereinek kezelése | Felhasználónkénti MFA kezelése | MFA-beállítások kezelése | Hitelesítési módszer házirendjének kezelése | Jelszavas védelmi szabályzat kezelése |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem | 
-| Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára  |Nem | Nem  |Nem | 
-| Hitelesítési házirend rendszergazdája | Nem  |Nem | Igen | Igen | Yes | 
+| Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem | 
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes | 
 
 > [!IMPORTANT]
 > Ez a szerepkör jelenleg nem képes kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon.
@@ -293,7 +293,7 @@ Ezt a szerepkört korábban "password Administrator" néven nevezték a [Azure P
 
 ### <a name="hybrid-identity-administrator"></a>[Hibrid identitás-rendszergazda](#hybrid-identity-administrator-permissions)
 
-Az ebben a szerepkörben lévő felhasználók létrehozhatják, kezelhetik és telepíthetik az AD-ből az Azure AD-be történő üzembe helyezési konfigurációt a felhőalapú kiépítés, valamint az összevonási beállítások kezelése révén. A felhasználók ezen szerepkör használatával is elhárítják és megfigyelheti a naplókat.  
+Az ebben a szerepkörben lévő felhasználók létrehozhatják, kezelhetik és telepíthetik az AD-ből az Azure AD-be történő üzembe helyezési konfigurációt a felhőalapú kiépítés, valamint az összevonási beállítások kezelése révén. A felhasználók ezen szerepkör használatával is elhárítják és megfigyelheti a naplókat.
 
 ### <a name="insights-administrator"></a>[Az Áttekintés rendszergazdája](#insights-administrator-permissions)
 Az ebben a szerepkörben lévő felhasználók a M365-betekintő [alkalmazásban](https://go.microsoft.com/fwlink/?linkid=2129521)hozzáférhetnek a felügyeleti funkciók teljes készletéhez. Ez a szerepkör képes a címtáradatok olvasására, a szolgáltatás állapotának figyelésére, a fájlok támogatására szolgáló jegyek megtekintésére és a rendszergazdai beállítások beszerzésére.
@@ -336,10 +336,10 @@ A modern kereskedelmi felhasználói szerepkörrel rendelkező felhasználók á
 
 **Mikor van hozzárendelve a modern kereskedelmi felhasználói szerepkör?**
 
-* **Önkiszolgáló vásárlás a Microsoft 365 felügyeleti központban** – az önkiszolgáló vásárlás lehetővé teszi a felhasználóknak az új termékek kipróbálását a saját maguk általi megvásárlásával vagy regisztrálásával. Ezeket a termékeket a felügyeleti központban kezelheti. Azok a felhasználók, akik önkiszolgáló vásárlást végeznek, egy szerepkört kapnak a kereskedelmi rendszeren, és a modern kereskedelmi felhasználói szerepkört, hogy a vásárlásokat a felügyeleti központban tudják kezelni. A rendszergazdák letilthatják az önkiszolgáló vásárlásokat (Power BI, energiagazdálkodási alkalmazások, automatizálás) a [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell)használatával. További információért olvassa el az [önkiszolgáló vásárlással kapcsolatos gyakori kérdéseket](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
-* **Vásárlások a Microsoft kereskedelmi piactérről**  – az önkiszolgáló vásárláshoz hasonlóan, amikor egy felhasználó terméket vagy szolgáltatást vásárol Microsoft AppSource vagy Azure piactéren, a modern kereskedelmi felhasználói szerepkör hozzá lesz rendelve, ha nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel. Bizonyos esetekben előfordulhat, hogy a felhasználók nem tudják a vásárlásokat letiltani. További információ: [Microsoft kereskedelmi piactér](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
+* **Önkiszolgáló vásárlás a Microsoft 365 felügyeleti központban** – az önkiszolgáló vásárlás lehetővé teszi a felhasználóknak az új termékek kipróbálását a saját maguk általi megvásárlásával vagy regisztrálásával. Ezeket a termékeket a felügyeleti központban kezelheti. Azok a felhasználók, akik önkiszolgáló vásárlást végeznek, egy szerepkört kapnak a kereskedelmi rendszeren, és a modern kereskedelmi felhasználói szerepkört, hogy a vásárlásokat a felügyeleti központban tudják kezelni. A rendszergazdák letilthatják az önkiszolgáló vásárlásokat (Power BI, energiagazdálkodási alkalmazások, automatizálás) a [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell)használatával. További információért olvassa el az [önkiszolgáló vásárlással kapcsolatos gyakori kérdéseket](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
+* **Vásárlások a Microsoft kereskedelmi piactérről** – az önkiszolgáló vásárláshoz hasonlóan, amikor egy felhasználó terméket vagy szolgáltatást vásárol Microsoft AppSource vagy Azure piactéren, a modern kereskedelmi felhasználói szerepkör hozzá lesz rendelve, ha nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel. Bizonyos esetekben előfordulhat, hogy a felhasználók nem tudják a vásárlásokat letiltani. További információ: [Microsoft kereskedelmi piactér](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
 * A Microsoft **javaslatai** – a javaslat a Microsoft hivatalos ajánlata a Microsoft termékeinek és szolgáltatásainak megvásárlására. Ha a javaslatot elfogadó személy nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel az Azure AD-ben, akkor a javaslatot és a modern kereskedelmi felhasználói szerepkört a felügyeleti központ eléréséhez is hozzá kell rendelni. Amikor hozzáférnek a felügyeleti központhoz, csak azok a funkciók használhatók, amelyeket a kereskedelmi jellemző szerepköre is jogosult.
-* **Commerce-specifikus szerepkörök** – egyes felhasználók kereskedelmi-specifikus szerepköröket kapnak. Ha a felhasználó nem globális vagy számlázási rendszergazda, akkor a modern kereskedelmi felhasználói szerepkört kapják meg, hogy hozzáférhessenek a felügyeleti központhoz.  
+* **Commerce-specifikus szerepkörök** – egyes felhasználók kereskedelmi-specifikus szerepköröket kapnak. Ha a felhasználó nem globális vagy számlázási rendszergazda, akkor a modern kereskedelmi felhasználói szerepkört kapják meg, hogy hozzáférhessenek a felügyeleti központhoz.
 
 Ha a modern kereskedelmi felhasználói szerepkör nincs hozzárendelve egy felhasználóhoz, akkor elveszti a hozzáférést Microsoft 365 felügyeleti központhoz. Ha bármilyen terméket kezelnek, akár saját maguk, akár a szervezete számára, nem lesznek képesek a felügyeletre. Ez magában foglalhatja a licencek hozzárendelését, a fizetési módok módosítását, a számlák kifizetését, valamint az előfizetések kezeléséhez szükséges egyéb feladatokat.
 
@@ -389,11 +389,11 @@ A [hitelesítési rendszergazdai](#authentication-administrator) szerepkör jogo
 
 A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator) szerepköre rendelkezik engedélyekkel a bérlő hitelesítési módszer házirendjének beállításához, amely meghatározza, hogy az egyes felhasználók hogyan regisztrálhatnak és használhatnak.
 
-| Szerepkör | A felhasználó hitelesítési módszereinek kezelése | Felhasználónkénti MFA kezelése | MFA-beállítások kezelése | Hitelesítési módszer házirendjének kezelése | Jelszavas védelmi szabályzat kezelése |  
+| Szerepkör | A felhasználó hitelesítési módszereinek kezelése | Felhasználónkénti MFA kezelése | MFA-beállítások kezelése | Hitelesítési módszer házirendjének kezelése | Jelszavas védelmi szabályzat kezelése |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem | 
-| Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára  |Nem | Nem  |Nem | 
-| Hitelesítési házirend rendszergazdája | Nem  |Nem | Igen | Igen | Yes | 
+| Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem | 
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes | 
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -992,7 +992,7 @@ Olvasás & az alapszintű könyvtár adatainak írása. Az alkalmazásokhoz val�
 > | --- | --- |
 > | Microsoft. Directory/csoportok/appRoleAssignments/Update | A groups. appRoleAssignments tulajdonság frissítése Azure Active Directoryban. |
 > | Microsoft. Directory/csoportok/assignLicense | A licencek kezelése Azure Active Directory-csoportokban. |
-> | Microsoft. Directory/csoportok/alapszintű/frissítés | Azure Active Directoryban lévő csoportok alapszintű tulajdonságainak frissítése.  |
+> | Microsoft. Directory/csoportok/alapszintű/frissítés | Azure Active Directoryban lévő csoportok alapszintű tulajdonságainak frissítése. |
 > | Microsoft. Directory/csoportok/besorolás/frissítés | Azure Active Directory a csoport Update besorolási tulajdonsága. |
 > | Microsoft. Directory/csoportok/létrehozás | Csoportok létrehozása a Azure Active Directoryban. |
 > | Microsoft. Directory/csoportok/groupType/Update | Egy csoport groupType tulajdonságának frissítése Azure Active Directoryban. |
@@ -1183,69 +1183,69 @@ Mindent megtudhat, hogy globális rendszergazda tud-e, de nem szerkeszthet semmi
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |
-> | Microsoft. Commerce. számlázás/allEntities/olvasás    | A számlázás összes aspektusának olvasása. |
-> | Microsoft. Directory/Administrativeunit/Basic/READ    | A Azure Active Directory Administrativeunit alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/Administrativeunit/tagok/olvasás    | Olvassa el a Administrativeunit. Members tulajdonságot Azure Active Directory. |
-> | Microsoft. Directory/alkalmazások/alap/olvasás    | Azure Active Directory-alkalmazások alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/alkalmazások/tulajdonosok/olvasás    | Az Applications. owners tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/alkalmazások/házirendek/olvasás    | Olvassa el az Applications. policies tulajdonságot Azure Active Directory. |
+> | Microsoft. Commerce. számlázás/allEntities/olvasás | A számlázás összes aspektusának olvasása. |
+> | Microsoft. Directory/Administrativeunit/Basic/READ | A Azure Active Directory Administrativeunit alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/Administrativeunit/tagok/olvasás | Olvassa el a Administrativeunit. Members tulajdonságot Azure Active Directory. |
+> | Microsoft. Directory/alkalmazások/alap/olvasás | Azure Active Directory-alkalmazások alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/alkalmazások/tulajdonosok/olvasás | Az Applications. owners tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/alkalmazások/házirendek/olvasás | Olvassa el az Applications. policies tulajdonságot Azure Active Directory. |
 > | Microsoft. Directory/bitlockerKeys/kulcs/olvasás | Olvassa el a BitLocker-kulcsok objektumait és tulajdonságait (beleértve a helyreállítási kulcsot is) a Azure Active Directory. |
-> | Microsoft. Directory/Contacts/Basic/READ    | A névjegyek alapszintű tulajdonságainak olvasása Azure Active Directory. |
-> | Microsoft. Directory/Contacts/memberOf/READ    | A Contacts. memberOf tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/szerződések/alapszintű/beolvasás    | Azure Active Directory-szerződések alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/eszközök/alap/olvasás    | A Azure Active Directory eszközök alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/eszközök/memberOf/olvasás    | A Devices. memberOf tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/eszközök/registeredOwners/olvasás    | A Devices. registeredOwners tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/eszközök/registeredUsers/olvasás    | A Devices. registeredUsers tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/Basic/READ    | A Azure Active Directory directoryRoles alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/directoryRoles/eligibleMembers/READ    | Azure Active Directory directoryRoles. eligibleMembers tulajdonságának olvasása. |
-> | Microsoft. Directory/directoryRoles/tagok/olvasás    | Olvassa el a directoryRoles. Members tulajdonságot Azure Active Directory. |
-> | Microsoft. Directory/tartományok/alapszintű/beolvasás    | Alapszintű tulajdonságok olvasása Azure Active Directory tartományban. |
+> | Microsoft. Directory/Contacts/Basic/READ | A névjegyek alapszintű tulajdonságainak olvasása Azure Active Directory. |
+> | Microsoft. Directory/Contacts/memberOf/READ | A Contacts. memberOf tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/szerződések/alapszintű/beolvasás | Azure Active Directory-szerződések alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/eszközök/alap/olvasás | A Azure Active Directory eszközök alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/eszközök/memberOf/olvasás | A Devices. memberOf tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/eszközök/registeredOwners/olvasás | A Devices. registeredOwners tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/eszközök/registeredUsers/olvasás | A Devices. registeredUsers tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Basic/READ | A Azure Active Directory directoryRoles alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/directoryRoles/eligibleMembers/READ | Azure Active Directory directoryRoles. eligibleMembers tulajdonságának olvasása. |
+> | Microsoft. Directory/directoryRoles/tagok/olvasás | Olvassa el a directoryRoles. Members tulajdonságot Azure Active Directory. |
+> | Microsoft. Directory/tartományok/alapszintű/beolvasás | Alapszintű tulajdonságok olvasása Azure Active Directory tartományban. |
 > | Microsoft. Directory/entitlementManagement/allProperties/READ | Az Azure AD-jogosultságok kezelésének összes tulajdonságának olvasása. |
-> | Microsoft. Directory/csoportok/appRoleAssignments/olvasás    | A groups. appRoleAssignments tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/csoportok/alap/olvasás    | Azure Active Directory-csoportok alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/csoportok/hiddenMembers/olvasás    | A groups. hiddenMembers tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/csoportok/memberOf/olvasás    | A groups. memberOf tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/csoportok/tagok/olvasás    | A groups. Members tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/csoportok/tulajdonosok/olvasás    | A groups. owners tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/csoportok/beállítások/olvasás    | A groups. Settings tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/groupSettings/Basic/READ    | A Azure Active Directory groupSettings alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/groupSettingTemplates/Basic/READ    | A Azure Active Directory groupSettingTemplates alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/Oauth2permissiongrant objektumok/Basic/READ    | A Azure Active Directory Oauth2permissiongrant objektumok alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/szervezet/alap/olvasás    | A Azure Active Directoryban található szervezet alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/szervezet/trustedCAsForPasswordlessAuth/olvasás    | A Azure Active Directory szervezet. trustedCAsForPasswordlessAuth tulajdonságának olvasása. |
-> | Microsoft. Directory/házirendek/standard/olvasás    | Általános szabályzatok olvasása Azure Active Directoryban. |
+> | Microsoft. Directory/csoportok/appRoleAssignments/olvasás | A groups. appRoleAssignments tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/csoportok/alap/olvasás | Azure Active Directory-csoportok alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/csoportok/hiddenMembers/olvasás | A groups. hiddenMembers tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/csoportok/memberOf/olvasás | A groups. memberOf tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/csoportok/tagok/olvasás | A groups. Members tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/csoportok/tulajdonosok/olvasás | A groups. owners tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/csoportok/beállítások/olvasás | A groups. Settings tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/groupSettings/Basic/READ | A Azure Active Directory groupSettings alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/READ | A Azure Active Directory groupSettingTemplates alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/Oauth2permissiongrant objektumok/Basic/READ | A Azure Active Directory Oauth2permissiongrant objektumok alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/szervezet/alap/olvasás | A Azure Active Directoryban található szervezet alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/szervezet/trustedCAsForPasswordlessAuth/olvasás | A Azure Active Directory szervezet. trustedCAsForPasswordlessAuth tulajdonságának olvasása. |
+> | Microsoft. Directory/házirendek/standard/olvasás | Általános szabályzatok olvasása Azure Active Directoryban. |
 > | Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása. |
-> | Microsoft. Directory/roleAssignments/Basic/READ    | A Azure Active Directory roleAssignments alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/roleDefinitions/Basic/READ    | A Azure Active Directory roleDefinitions alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/READ    | Azure Active Directory servicePrincipals. appRoleAssignedTo tulajdonságának olvasása. |
-> | Microsoft. Directory/servicePrincipals/appRoleAssignments/READ    | Azure Active Directory servicePrincipals. appRoleAssignments tulajdonságának olvasása. |
-> | Microsoft. Directory/servicePrincipals/Basic/READ    | A Azure Active Directory servicePrincipals alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/servicePrincipals/memberOf/READ    | Azure Active Directory servicePrincipals. memberOf tulajdonságának olvasása. |
-> | Microsoft. Directory/servicePrincipals/Oauth2permissiongrant objektumok/Basic/READ    | Azure Active Directory servicePrincipals. Oauth2permissiongrant objektumok tulajdonságának olvasása. |
-> | Microsoft. Directory/servicePrincipals/ownedObjects/READ    | Azure Active Directory servicePrincipals. ownedObjects tulajdonságának olvasása. |
-> | Microsoft. Directory/servicePrincipals/tulajdonosok/olvasás    | Azure Active Directory servicePrincipals. owners tulajdonságának olvasása. |
-> | Microsoft. Directory/servicePrincipals/házirendek/olvasás    | Olvassa el a servicePrincipals. policies tulajdonságot a Azure Active Directoryban. |
-> | Microsoft. Directory/signInReports/allProperties/READ    | Olvassa el az összes tulajdonságot (beleértve a privilegizált tulajdonságokat is) a signInReports Azure Active Directory. |
-> | Microsoft. Directory/subscribedSkus/Basic/READ    | A Azure Active Directory subscribedSkus alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/felhasználók/appRoleAssignments/olvasás    | A users. appRoleAssignments tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/alapszintű/beolvasás    | Azure Active Directory-felhasználók alapszintű tulajdonságainak olvasása. |
-> | Microsoft. Directory/felhasználók/directReports/olvasás    | A users. directReports tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/kezelő/olvasás    | A users. Manager tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/memberOf/olvasás    | A users. memberOf tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/Oauth2permissiongrant objektumok/alap/olvasás    | A users. Oauth2permissiongrant objektumok tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/ownedDevices/olvasás    | A users. ownedDevices tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/ownedObjects/olvasás    | A users. ownedObjects tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/registeredDevices/olvasás    | A users. registeredDevices tulajdonság olvasása Azure Active Directory. |
-> | Microsoft. Directory/felhasználók/strongAuthentication/olvasás    | Olvassa el az erős hitelesítési tulajdonságokat, például az MFA hitelesítő adatait. |
-> | Microsoft. Office 365. Exchange/allEntities/READ    | Az Exchange Online összes aspektusának olvasása. |
-> | Microsoft. Office 365. messageCenter/messages/READ    | Üzenetek olvasása a Microsoft. Office 365. messageCenter. |
-> | Microsoft. Office 365. messageCenter/securityMessages/READ    | SecurityMessages olvasása a Microsoft. Office 365. messageCenter. |
+> | Microsoft. Directory/roleAssignments/Basic/READ | A Azure Active Directory roleAssignments alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/roleDefinitions/Basic/READ | A Azure Active Directory roleDefinitions alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/READ | Azure Active Directory servicePrincipals. appRoleAssignedTo tulajdonságának olvasása. |
+> | Microsoft. Directory/servicePrincipals/appRoleAssignments/READ | Azure Active Directory servicePrincipals. appRoleAssignments tulajdonságának olvasása. |
+> | Microsoft. Directory/servicePrincipals/Basic/READ | A Azure Active Directory servicePrincipals alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/servicePrincipals/memberOf/READ | Azure Active Directory servicePrincipals. memberOf tulajdonságának olvasása. |
+> | Microsoft. Directory/servicePrincipals/Oauth2permissiongrant objektumok/Basic/READ | Azure Active Directory servicePrincipals. Oauth2permissiongrant objektumok tulajdonságának olvasása. |
+> | Microsoft. Directory/servicePrincipals/ownedObjects/READ | Azure Active Directory servicePrincipals. ownedObjects tulajdonságának olvasása. |
+> | Microsoft. Directory/servicePrincipals/tulajdonosok/olvasás | Azure Active Directory servicePrincipals. owners tulajdonságának olvasása. |
+> | Microsoft. Directory/servicePrincipals/házirendek/olvasás | Olvassa el a servicePrincipals. policies tulajdonságot a Azure Active Directoryban. |
+> | Microsoft. Directory/signInReports/allProperties/READ | Olvassa el az összes tulajdonságot (beleértve a privilegizált tulajdonságokat is) a signInReports Azure Active Directory. |
+> | Microsoft. Directory/subscribedSkus/Basic/READ | A Azure Active Directory subscribedSkus alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/felhasználók/appRoleAssignments/olvasás | A users. appRoleAssignments tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/alapszintű/beolvasás | Azure Active Directory-felhasználók alapszintű tulajdonságainak olvasása. |
+> | Microsoft. Directory/felhasználók/directReports/olvasás | A users. directReports tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/kezelő/olvasás | A users. Manager tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/memberOf/olvasás | A users. memberOf tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/Oauth2permissiongrant objektumok/alap/olvasás | A users. Oauth2permissiongrant objektumok tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/ownedDevices/olvasás | A users. ownedDevices tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/ownedObjects/olvasás | A users. ownedObjects tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/registeredDevices/olvasás | A users. registeredDevices tulajdonság olvasása Azure Active Directory. |
+> | Microsoft. Directory/felhasználók/strongAuthentication/olvasás | Olvassa el az erős hitelesítési tulajdonságokat, például az MFA hitelesítő adatait. |
+> | Microsoft. Office 365. Exchange/allEntities/READ | Az Exchange Online összes aspektusának olvasása. |
+> | Microsoft. Office 365. messageCenter/messages/READ | Üzenetek olvasása a Microsoft. Office 365. messageCenter. |
+> | Microsoft. Office 365. messageCenter/securityMessages/READ | SecurityMessages olvasása a Microsoft. Office 365. messageCenter. |
 > | Microsoft. Office 365. Network/Performance/allProperties/READ | Hálózati teljesítménnyel kapcsolatos lapok olvasása Microsoft 365 felügyeleti központban. |
-> | Microsoft. Office 365. protectionCenter/allEntities/READ    | Az Office 365 Protection Center összes aspektusának olvasása. |
-> | Microsoft. Office 365. securityComplianceCenter/allEntities/READ    | A Microsoft. Office 365. securityComplianceCenter összes szabványos tulajdonságának olvasása. |
-> | Microsoft. Office 365. usageReports/allEntities/READ    | Olvassa el az Office 365 használati jelentéseit. |
-> | Microsoft. Office 365. Webportal/allEntities/standard/olvasás    | A Microsoft. Office 365. webporting összes erőforrásának általános tulajdonságainak olvasása. |
+> | Microsoft. Office 365. protectionCenter/allEntities/READ | Az Office 365 Protection Center összes aspektusának olvasása. |
+> | Microsoft. Office 365. securityComplianceCenter/allEntities/READ | A Microsoft. Office 365. securityComplianceCenter összes szabványos tulajdonságának olvasása. |
+> | Microsoft. Office 365. usageReports/allEntities/READ | Olvassa el az Office 365 használati jelentéseit. |
+> | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának általános tulajdonságainak olvasása. |
 
 ### <a name="groups-administrator-permissions"></a>Rendszergazdai engedélyek csoportok
 
@@ -1313,8 +1313,8 @@ Az AD-t az Azure AD Felhőbeli üzembe helyezési és összevonási beállítás
 > | --- | --- |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása. |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése a címtár szintű szolgáltatásokhoz. |
-> | Microsoft. Directory/alkalmazások/célközönség/frissítés  | Az Applications. célközönség tulajdonság frissítése Azure Active Directoryban. |
-> | Microsoft. Directory/alkalmazások/hitelesítés/frissítés | Az Applications. Authentication tulajdonság frissítése Azure Active Directoryban.  |
+> | Microsoft. Directory/alkalmazások/célközönség/frissítés | Az Applications. célközönség tulajdonság frissítése Azure Active Directoryban. |
+> | Microsoft. Directory/alkalmazások/hitelesítés/frissítés | Az Applications. Authentication tulajdonság frissítése Azure Active Directoryban. |
 > | Microsoft. Directory/alkalmazások/alapszintű/frissítés | Azure Active Directory alkalmazásokban lévő alkalmazások alapszintű tulajdonságainak frissítése. |
 > | Microsoft. Directory/alkalmazások/létrehozás | Alkalmazások létrehozása a Azure Active Directoryban. |
 > | Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés | Az Applications. hitelesítőadatok tulajdonság frissítése Azure Active Directoryban. |
@@ -1491,7 +1491,7 @@ A felügyelheti a hálózati telephelyeket, és áttekintheti a vállalati hál�
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |
-> | Microsoft. Office 365. Network/Performance/allProperties/READ | Hálózati teljesítménnyel kapcsolatos lapok olvasása a M365 felügyeleti központban.  |
+> | Microsoft. Office 365. Network/Performance/allProperties/READ | Hálózati teljesítménnyel kapcsolatos lapok olvasása a M365 felügyeleti központban. |
 > | Microsoft. Office 365. Network/Locations/allProperties/allTasks | A hálózati helyek tulajdonságainak olvasása és konfigurálása az egyes helyekhez. |
 
 ### <a name="office-apps-administrator-permissions"></a>Office-alkalmazások rendszergazdai engedélyei
@@ -1896,7 +1896,7 @@ A a Skype vállalati verziójának minden aspektusát képes kezelni.
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 > | Microsoft. Office 365. skypeForBusiness/allEntities/allTasks | A Skype vállalati online verzió összes aspektusának kezelése. |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-> | Microsoft. Office 365. usageReports/allEntities/READ    | Olvassa el az Office 365 használati jelentéseit. |
+> | Microsoft. Office 365. usageReports/allEntities/READ | Olvassa el az Office 365 használati jelentéseit. |
 > | Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 
 ### <a name="teams-administrator-permissions"></a>Csapatok rendszergazdai engedélyei
@@ -2144,7 +2144,7 @@ Eszköz csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](pe
 Eszközkezelők | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 Eszköz felhasználói | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 Címtár-szinkronizálási fiókok | Nem látható, mert nem használható | [A címtár-szinkronizálási fiókok dokumentációja](permissions-reference.md#directory-synchronization-accounts)
-Vendégfelhasználó | Nem látható, mert nem használható  | NA
+Vendégfelhasználó | Nem látható, mert nem használható | NA
 1. partneri szintű támogatás | Nem látható, mert nem használható | [A partneri Tier1 támogatási dokumentációja](permissions-reference.md#partner-tier1-support)
 2. partneri szintű támogatás | Nem látható, mert nem használható | [A partneri szint támogatási dokumentációja](permissions-reference.md#partner-tier2-support)
 Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
