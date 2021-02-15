@@ -51,7 +51,7 @@
     - name: Tárolórendszerképek címkéi és kibocsátási megjegyzései
       href: ./containers/container-image-tags.md
     - name: Tároló – GYIK
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: Tárolóreceptek
       items:
         - name: Tárolók újrahasznosítása

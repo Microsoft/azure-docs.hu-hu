@@ -11,17 +11,17 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781056"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364953"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database rugalmas lekérdezés áttekintése (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A rugalmas lekérdezés funkció (előzetes verzió) lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely Azure SQL Database több adatbázisra is kiterjed. Lehetővé teszi a távoli táblák elérését, valamint a Microsoft és harmadik féltől származó eszközök (Excel, Power BI, tabló stb.) összekapcsolását a több adatbázissal rendelkező adatrétegek lekérdezéséhez. Ezzel a funkcióval kibővítheti a lekérdezéseket a nagyméretű adatok szintjére, és megjelenítheti az eredményeket az üzleti intelligencia (BI) jelentéseiben.
+A rugalmas lekérdezési funkció (előzetes verzió) lehetővé teszi, hogy több adatbázisra kiterjedő Transact-SQL-lekérdezést futtasson az Azure SQL Database-ben. Lehetővé teszi a távoli táblák elérését, valamint a Microsoft és harmadik féltől származó eszközök (Excel, Power BI, tabló stb.) összekapcsolását a több adatbázissal rendelkező adatrétegek lekérdezéséhez. Ezzel a funkcióval nagy adatrétegekre terjesztheti ki a lekérdezéseket, és üzletiintelligencia- (BI-) jelentésekben jelenítheti meg az eredményeket.
 
 ## <a name="why-use-elastic-queries"></a>Miért érdemes rugalmas lekérdezéseket használni
 
@@ -73,13 +73,13 @@ A rugalmas lekérdezés használatával a SQL Database adatbázisban található
 > Rendelkeznie kell a külső adatforrásra vonatkozó engedélyekkel. Ez az engedély az ALTER DATABASE engedély részét képezi. Az alapul szolgáló adatforrásra való hivatkozáshoz minden külső ADATFORRÁS engedélyére van szükség.
 >
 
-**Hivatkozási érték** : a topológia a hivatkozási adatkezeléshez használatos. Az alábbi ábrán két táblázat (T1 és T2) található, és a rendszer egy dedikált adatbázisban tárolja a hivatkozási adatot. A rugalmas lekérdezés használatával mostantól a T1 és a T2 táblákat távolról is elérheti más adatbázisokból, ahogy az ábrán is látható. 1. topológia használata, ha a hivatkozási táblázatok kis-vagy távoli lekérdezések a hivatkozási táblázatba vannak szelektív predikátumok.
+**Hivatkozási érték**: a topológia a hivatkozási adatkezeléshez használatos. Az alábbi ábrán két táblázat (T1 és T2) található, és a rendszer egy dedikált adatbázisban tárolja a hivatkozási adatot. A rugalmas lekérdezés használatával mostantól a T1 és a T2 táblákat távolról is elérheti más adatbázisokból, ahogy az ábrán is látható. 1. topológia használata, ha a hivatkozási táblázatok kis-vagy távoli lekérdezések a hivatkozási táblázatba vannak szelektív predikátumok.
 
 **2. ábra** Vertikális particionálás – a rugalmas lekérdezés használatával kérdezi le a hivatkozási adataikat
 
 ![Vertikális particionálás – a rugalmas lekérdezés használatával kérdezi le a hivatkozási adataikat][3]
 
-**Adatbázisok közötti lekérdezés** : a rugalmas lekérdezések olyan használati eseteket tesznek lehetővé, amelyek a SQL Database több adatbázisában történő lekérdezését igénylik. A 3. ábra négy különböző adatbázist mutat be: CRM, leltár, HR és termékek. Az egyik adatbázisban végrehajtott lekérdezéseknek hozzá kell férniük egy vagy az összes többi adatbázishoz is. A rugalmas lekérdezés használatával az adatbázist úgy is konfigurálhatja, hogy a négy adatbázison néhány egyszerű DDL-utasítást futtat. Ezen egyszeri konfiguráció után a távoli táblához való hozzáférés olyan egyszerű, mintha a T-SQL-lekérdezésekből vagy a BI-eszközökből helyi táblára hivatkozik. Ez a módszer akkor javasolt, ha a távoli lekérdezések nem adnak vissza nagy eredményeket.
+**Adatbázisok közötti lekérdezés**: a rugalmas lekérdezések olyan használati eseteket tesznek lehetővé, amelyek a SQL Database több adatbázisában történő lekérdezését igénylik. A 3. ábra négy különböző adatbázist mutat be: CRM, leltár, HR és termékek. Az egyik adatbázisban végrehajtott lekérdezéseknek hozzá kell férniük egy vagy az összes többi adatbázishoz is. A rugalmas lekérdezés használatával az adatbázist úgy is konfigurálhatja, hogy a négy adatbázison néhány egyszerű DDL-utasítást futtat. Ezen egyszeri konfiguráció után a távoli táblához való hozzáférés olyan egyszerű, mintha a T-SQL-lekérdezésekből vagy a BI-eszközökből helyi táblára hivatkozik. Ez a módszer akkor javasolt, ha a távoli lekérdezések nem adnak vissza nagy eredményeket.
 
 **3. ábra** Vertikális particionálás – rugalmas lekérdezés használata különböző adatbázisok lekérdezéséhez
 
@@ -120,7 +120,7 @@ A horizontális particionálási forgatókönyvhöz szükséges lépésekkel kap
 A kódolás megkezdéséhez tekintse meg a [rugalmas lekérdezés a horizontális particionáláshoz](elastic-query-getting-started.md)való használatáról szóló témakört.
 
 > [!IMPORTANT]
-> A rugalmas lekérdezések nagy mennyiségű adatbázisban való sikeres végrehajtása nagymértékben támaszkodik az egyes adatbázisok rendelkezésre állására a lekérdezés végrehajtása során. Ha egy adatbázis nem érhető el, a teljes lekérdezés sikertelen lesz. Ha egyszerre több száz vagy több ezer adatbázis lekérdezését tervezi, győződjön meg arról, hogy az ügyfélalkalmazás újrapróbálkozott a logikai beágyazással, vagy vegye fontolóra [Elastic Database feladatok](./job-automation-overview.md#elastic-database-jobs-preview) (előzetes verzió) kihasználása és az adatbázisok kisebb részhalmazának lekérdezése, az egyes lekérdezések eredményeinek összesítése egyetlen célhelyre.
+> A rugalmas lekérdezések nagy mennyiségű adatbázisban való sikeres végrehajtása nagymértékben támaszkodik az egyes adatbázisok rendelkezésre állására a lekérdezés végrehajtása során. Ha egy adatbázis nem érhető el, a teljes lekérdezés sikertelen lesz. Ha egyszerre több száz vagy több ezer adatbázis lekérdezését tervezi, győződjön meg arról, hogy az ügyfélalkalmazás újrapróbálkozott a logikai beágyazással, vagy vegye fontolóra [Elastic Database feladatok](./job-automation-overview.md) (előzetes verzió) kihasználása és az adatbázisok kisebb részhalmazának lekérdezése, az egyes lekérdezések eredményeinek összesítése egyetlen célhelyre.
 
 ## <a name="t-sql-querying"></a>T-SQL-lekérdezés
 

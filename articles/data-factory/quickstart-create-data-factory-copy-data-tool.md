@@ -1,22 +1,17 @@
 ---
 title: Adatmásolás az Azure Adatok másolása eszköz használatával
 description: Hozzon létre egy Azure Data Factory, majd a Adatok másolása eszközzel másolja át az adatait az Azure Blob Storage egyik helyéről egy másik helyre.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 282917a6bbf7edb962a87ad87810adde56206d97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 48624e415649be2fb76aed99c5cb0e1b3b12f04b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013459"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372858"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
 
@@ -36,7 +31,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
 1. A Azure Portal menüben válassza az **erőforrás létrehozása**  >  **integráció**  >  **Data Factory**:
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -58,7 +53,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
    A listában csak a Data Factory által támogatott helyek és az Azure Data Factory-metaadatok tárolási helye jelenik meg. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
@@ -125,5 +120,5 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
     ![Szerző lap kiválasztása](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra az Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információért tekintse meg az [oktatóanyagokat](tutorial-copy-data-portal.md). 

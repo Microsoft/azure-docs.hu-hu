@@ -1,21 +1,18 @@
 ---
 title: A Azure Data Factory díjszabásának ismertetése példákkal
 description: Ez a cikk ismerteti és bemutatja a Azure Data Factory díjszabási modellt részletes példákkal
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: cea8ae07585f09c644f0ef6e1e6142998ddc7f08
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b9f163a7632ca59d4f97aef21d8d62157610ba73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497503"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372807"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákon keresztül
 
@@ -211,7 +208,7 @@ K: Ha több mint 50 folyamatot kívánok futtatni, akkor ezeket a tevékenysége
 
 A: legfeljebb 50 egyidejű folyamatra vonatkozó művelet engedélyezett.  A 51th folyamata tevékenység várólistára kerül, amíg meg nem nyit egy "szabad tárolóhelyet". Ugyanaz, mint a külső tevékenység. Legfeljebb 800 egyidejű külső tevékenység lesz engedélyezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette Azure Data Factory díjszabását, megkezdheti!
 

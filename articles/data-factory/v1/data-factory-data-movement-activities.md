@@ -1,23 +1,18 @@
 ---
 title: Az adatáthelyezés a másolási tevékenység használatával
 description: 'Ismerje meg az adatáthelyezést Data Factory folyamatokban: adatáttelepítés a felhőalapú tárolók között, valamint egy helyszíni tároló és egy felhőalapú tároló között. Másolási tevékenység használata.'
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195964"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364018"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Az adatáthelyezés a másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -96,7 +91,7 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 |:--- |:--- |:--- |
 | Egyesült Államok | USA keleti régiója | USA keleti régiója |
 | &nbsp; | USA 2. keleti régiója | USA 2. keleti régiója |
-| &nbsp; | USA középső régiója | USA középső régiója |
+| &nbsp; | Az USA középső régiója | Az USA középső régiója |
 | &nbsp; | USA északi középső régiója | USA északi középső régiója |
 | &nbsp; | USA déli középső régiója | USA déli középső régiója |
 | &nbsp; | USA nyugati középső régiója | USA nyugati középső régiója |
@@ -210,6 +205,6 @@ A különböző adattárak eltérő natív típusú rendszerekkel rendelkeznek. 
 
 A natív típusrendszer és az adattár .NET-típusra való leképezése a megfelelő adattár-cikkben található. (Kattintson az adott hivatkozásra a támogatott adattár táblában). Ezeket a leképezéseket a táblázatok létrehozásakor a megfelelő típusok meghatározására használhatja, így a másolási tevékenység a megfelelő konverziókat hajtja végre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a másolási tevékenységről: [adatok másolása az Azure Blob Storage-ból a Azure SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Az adatok helyszíni adattárból Felhőbeli adattárba való áthelyezésével kapcsolatos további információkért lásd: [adatok áthelyezése a helyszínről a Felhőbeli adattárakba](data-factory-move-data-between-onprem-and-cloud.md).

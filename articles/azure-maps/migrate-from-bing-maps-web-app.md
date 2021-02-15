@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684825"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389110"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Oktatóanyag: webalkalmazás migrálása a Bing Mapsből
 
@@ -33,9 +33,9 @@ A Bing Maps szolgáltatást használó webalkalmazások gyakran a Bing Maps V8 J
 
 Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlőelem-függvénytárat, például a céziumot, a betegtájékoztatót és a OpenLayers használja-e. Ha így van, és továbbra is használni szeretné ezt a könyvtárat, akkor a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](/rest/api/maps/render/getmaptile) \| [műholdas csempéi](/rest/api/maps/render/getmapimagerytile)) csatlakoztatható. Az alábbi hivatkozásokkal megtudhatja, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
 
-* Cézium – a webes 3D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentáció](https://cesiumjs.org/)
-* Szórólap – kis méretű 2D Térkép vezérlőelem a weben. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentáció](https://leafletjs.com/)
-* OpenLayers – a kivetítéseket támogató webes 2D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentáció](https://openlayers.org/)
+* [Cézium](https://cesiumjs.org/) – a webes 3D Térkép vezérlőelem. [Kód mintái](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| A [beépülő modul]() adattára
+* [Szórólap](https://leafletjs.com/) – kis méretű 2D Térkép vezérlőelem a weben. [Kód mintái](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| A [beépülő modul]() adattára
+* [OpenLayers](https://openlayers.org/) – a kivetítéseket támogató webes 2D Térkép vezérlőelem. [Kód mintái](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| A [beépülő modul]() adattára
 
 Ha JavaScript-keretrendszer használatával fejleszt, a következő nyílt forráskódú projektek egyike hasznos lehet:
 
@@ -64,7 +64,7 @@ Az alábbi táblázat a Bing Maps V8 JavaScript SDK legfontosabb API-funkcióit 
 | Csempe rétegei              | ✓                                                                                      |
 | KML-réteg                | ✓                                                                                      |
 | Kontúr réteg            | [Példák](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Adatdobozolási réteg       | [Példák](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Adatdobozolási réteg       | A nyílt forráskódú Azure Maps [kockás adatforrási moduljában](https://github.com/Azure-Samples/azure-maps-gridded-data-source) szerepel       |
 | Animált csempe réteg      | A nyílt forráskódú Azure Maps [animációs modul](https://github.com/Azure-Samples/azure-maps-animations) része |
 | Rajzeszközök            | ✓                                                                                      |
 | Geocoder szolgáltatás         | ✓                                                                                      |
@@ -72,10 +72,10 @@ Az alábbi táblázat a Bing Maps V8 JavaScript SDK legfontosabb API-funkcióit 
 | Távolsági mátrix szolgáltatás  | ✓                                                                                      |
 | Térbeli adatszolgáltatás     | N/A                                                                                    |
 | Satellite/antenna-képek | ✓                                                                                      |
-| Madarak szemének képei         | Tervezve                                                                                |
-| Utcai-képek       | Tervezve                                                                                |
+| Madarak szemének képei         | N/A                                                                                |
+| Utcai-képek       | N/A                                                                                |
 | GeoJSON-támogatás          | ✓                                                                                      |
-| GeoXML-támogatás           | ✓                                                                                      |
+| GeoXML-támogatás           | ✓ [Térbeli IO-modul](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known szöveg támogatása  | ✓                                                                                      |
 | Egyéni Térkép stílusa        | Részleges                                                                                |
 
@@ -909,7 +909,7 @@ A Azure Mapsban az adatforrások felveszik és kezelik az adatforrásokat. A ré
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve               | Típus    | Leírás                                    |
+| Tulajdonság neve               | Típus    | Description                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e.     |
 | `cluster_id`                | sztring  | A fürt egyedi azonosítója, amely az `DataSource` osztályokkal `getClusterExpansionZoom` , valamint a függvények használatával használható `getClusterChildren` `getClusterLeaves` . |
@@ -918,7 +918,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Függvény       | Visszatérési típus        | Leírás     |
+| Függvény       | Visszatérési típus        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyermekek alakzatokat és alfürtöket is tartalmazhatnak. Az alfürtök a fürt tulajdonságaival egyező tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |

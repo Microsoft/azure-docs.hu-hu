@@ -2,13 +2,13 @@
 title: Saját kulcs konfigurálása a Azure Service Bus inaktív adatok titkosításához
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a saját kulcsát a Azure Service Bus adatok titkosításához.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 5d14c8953819575d1c2688520838135efc7121e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928094"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378315"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Az Service Bus Premium az Azure Storage-t használja az adattároláshoz. Az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal van titkosítva. Ha saját kulcsot (más néven Bring Your Own Key (BYOK) vagy ügyfél által felügyelt kulcsot) használ, az adatok továbbra is a Microsoft által felügyelt kulccsal lesznek titkosítva, a Microsoft által felügyelt kulcs pedig az ügyfél által felügyelt kulcs használatával lesz titkosítva. Ez a funkció lehetővé teszi a Microsoft által felügyelt kulcsok titkosításához használt ügyfél által felügyelt kulcsok elérésének létrehozását, elforgatását, letiltását és visszavonását. A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben.
@@ -94,6 +94,17 @@ A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgat
 A titkosítási kulcsokhoz való hozzáférés visszavonása nem törli az Service Busból származó adatok törlését. Azonban az adatok nem érhetők el a Service Bus névtérből. A titkosítási kulcsot a hozzáférési házirendben vagy a kulcs törlésével vonhatja vissza. További információ a hozzáférési házirendekről és a Key Vault biztonságossá [tételéről a kulcstartó biztonságos eléréséről](../key-vault/general/secure-your-key-vault.md).
 
 A titkosítási kulcs visszavonása után a titkosított névtér Service Bus szolgáltatása inműködőképes lesz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törölt kulcs vissza lett állítva, Service Bus a szolgáltatás kiválasztja a kulcsot, hogy hozzáférjen az adatokhoz a titkosított Service Bus névtérből.
+
+## <a name="caching-of-keys"></a>Kulcsok gyorsítótárazása
+A Service Bus-példány 5 percenként lekérdezi a felsorolt titkosítási kulcsokat. Gyorsítótárazza és azokat a következő lekérdezésre használja, amely 5 perc után következik be. Amíg legalább egy kulcs elérhető, a várólisták és a témakörök elérhetők. Ha az összes felsorolt kulcs nem érhető el a lekérdezésekben, az összes várólista és témakör elérhetetlenné válik. 
+
+További részletek: 
+
+- A Service Bus szolgáltatás 5 percenként lekérdezi a névtér rekordjában felsorolt összes ügyfél által felügyelt kulcsot:
+    - Ha egy kulcs el lett forgatva, a rekord frissül az új kulccsal.
+    - Ha a kulcsot visszavonták, a kulcsot a rendszer eltávolítja a rekordból.
+    - Ha az összes kulcs vissza lett vonva, a névtér titkosítási állapota **Visszavonva** értékre van állítva. Az adatok nem érhetők el a Service Bus névtérből. 
+    
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>A titkosítás engedélyezése Resource Manager-sablon használatával
 Ez a szakasz bemutatja, hogyan végezheti el a következő feladatokat **Azure Resource Manager sablonok** használatával. 

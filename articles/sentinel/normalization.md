@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805090"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390810"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizálás az Azure Sentinelben
 
@@ -70,6 +70,9 @@ A séma-hivatkozás az érték és a formátum szabványosítását is tartalmaz
 
 ## <a name="parsers"></a>Elemzőit
 
+- [Mi az elemzés?](#what-is-parsing)
+- [Lekérdezési idő elemzők használata](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>Mi az elemzés?
 
 A definiált normalizált táblázatok alapkészlete elérhető, és ezeket a táblákat át kell alakítania (elemezni/leképezni). Ez azt eredményezi, hogy a nyers űrlapról származó konkrét adatok a normalizált sémában jól ismert oszlopokban lesznek kibontva. Az Azure Sentinel szolgáltatásban végzett elemzés a **lekérdezési idő** -elemzők log Analytics felhasználói függvények (Kusto lekérdezési nyelv – KQL) használatával történik, amely a meglévő táblákban lévő adatok (például CommonSecurityLog, egyéni naplók táblái, syslog) segítségével alakítja át a normalizált táblák sémába.
@@ -77,6 +80,10 @@ A definiált normalizált táblázatok alapkészlete elérhető, és ezeket a t�
 Az Azure Sentinel szolgáltatásban még nem támogatott egyéb elemzési módszer a **betöltési idő** , amely lehetővé teszi az adatok közvetlenül a normalizált táblázat (ok) ba való begyűjtését, mivel az adatforrásokból való betöltése folyamatban van. A betöltési idő elemzése nagyobb teljesítményt biztosít, mivel az adatmodellt közvetlenül a függvények használata nélkül kérdezik le.
 
 ### <a name="using-query-time-parsers"></a>Lekérdezési idő elemzők használata
+
+- [Elemző telepítése](#installing-a-parser)
+- [Az elemzők használata](#using-the-parsers)
+- [Elemzők testreszabása](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>Elemző telepítése
 
@@ -119,6 +126,12 @@ A jobb oldali ablaktáblán bontsa ki a "mentett lekérdezések" szakaszt, és k
 
 Az egyes elemzők lehetőségre kattintva megtekintheti az általa használt mögöttes függvényt, és futtathatja (vagy közvetlenül az aliasával érheti el). Vegye figyelembe, hogy egyes elemzők a normalizált mezők számára is megőrzik az eredeti mezőket a kényelem érdekében. Ezt egyszerűen szerkesztheti az elemző lekérdezésében.
 
+> [!TIP]
+> A mentett függvények az Azure Sentinel-táblázatok helyett bármilyen lekérdezésben használhatók, beleértve a vadászati és észlelési lekérdezéseket is. További információkért lásd:
+>
+> - [Adatnormalizálás az Azure Sentinel szolgáltatásban](normalization.md#parsers)
+> - [Szöveg elemzése Azure Monitor naplókban](/azure/azure-monitor/log-query/parse-text)
+>
 #### <a name="customizing-parsers"></a>Elemzők testreszabása
 
 Ismételje meg a fenti lépéseket (az elemző megkeresése a Query Explorerben), kattintson a megfelelő elemzőre, és tekintse meg a funkció megvalósítását.
@@ -131,6 +144,8 @@ Ha a függvény módosult, kattintson ismét a Save (Mentés) gombra, és haszn�
 :::image type="content" source="./media/normalization/are-you-sure.png" alt-text="biztos vagy benne":::
 
 #### <a name="additional-information"></a>További információ
+
+A JSON, az XML és a CSV különösen a lekérdezési idő elemzésekor használható. Az Azure Sentinel beépített elemzési funkciókat tartalmaz a JSON, az XML és a CSV számára, valamint egy JSON-elemzési eszközt is.  További információ: [JSON-mezők használata az Azure sentinelben](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blog). 
 
 További információ a [mentett lekérdezésekről](../azure-monitor/log-query/example-queries.md) (a lekérdezési idő elemzői megvalósításáról) log Analytics.
 

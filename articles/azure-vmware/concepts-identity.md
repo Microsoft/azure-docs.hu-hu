@@ -3,12 +3,12 @@ title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 0f58cbdaa641af24cef53c3cfd9604cf1b0c1c3b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538941"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364885"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
@@ -49,7 +49,7 @@ A táblázat a **CloudAdmin** és a **CloudGlobalAdmin** jogosultságokat jelen�
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX – T Manager-hozzáférés és-identitás
 
-A "rendszergazda" fiók használatával férhet hozzá a NSX-T kezelőhöz. Teljes körű jogosultságokkal rendelkezik, és lehetővé teszi T1 útválasztók, logikai kapcsolók és minden szolgáltatás létrehozását és kezelését. A jogosultságok hozzáférést biztosítanak az NSX-T T0 útválasztóhoz. A t0 útválasztóra való váltás a hálózati teljesítmény romlása vagy a saját Felhőbeli hozzáférés nélkül is csökkenhet. Nyisson meg egy támogatási kérést a Azure Portalban, hogy az NSX-T T0-útválasztón bármilyen módosítást igényeljen.
+Az NSX-T kezelőjének eléréséhez használja a *rendszergazdai* fiókot. Teljes körű jogosultságokkal rendelkezik, és lehetővé teszi az 1. szintű (T1) átjárók, szegmensek (logikai kapcsolók) és minden szolgáltatás létrehozását és felügyeletét. A jogosultságok hozzáférést biztosítanak az NSX-T réteg-0 (T0) átjáróhoz. A t0-átjáró módosítása a hálózati teljesítmény romlása vagy a saját Felhőbeli hozzáférés nélkül is csökkenhet. Nyisson meg egy támogatási kérést a Azure Portal az NSX-T T0-átjáró módosításainak igényléséhez.
   
 ## <a name="next-steps"></a>Következő lépések
 

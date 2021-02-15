@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628152"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373708"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Labor beállítása a ArcMap\ArcGIS Desktophoz
 
@@ -55,7 +55,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan állíthatja be a s
 1.  Indítsa el a sablon virtuális gépet, és csatlakozzon a géphez RDP használatával.
 
 2.  Töltse le és telepítse a ArcGIS asztali összetevőket az ESRI-től származó utasítások használatával.  Ezek a lépések többek között a licenckezelő hozzárendelésének egyidejű használatára való engedélyezése: 
-    - [A ArcGIS Desktop telepítésének és konfigurálásának bemutatása](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [A ArcGIS Desktop telepítésének és konfigurálásának bemutatása](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  Külső biztonságimásolat-tároló beállítása diákoknak.  A diákok közvetlenül a hozzárendelt virtuális gépre menthetik a fájlokat, mivel az általuk végrehajtott módosítások a munkamenetek között lesznek mentve.  Azt javasoljuk azonban, hogy a tanulók a saját virtuális gépén kívüli tárhelyre biztonsági másolatot készítenek a munkájuk alól a következő okok miatt:
     - Annak lehetővé tétele, hogy a tanulók az osztály és a labor vége után hozzáférjenek a munkához.  

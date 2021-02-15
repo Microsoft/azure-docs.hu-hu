@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575160"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517824"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,23 @@ A legfrissebb információk a [Azure SQL Database átjáró IP-címei](connectiv
 ## <a name="status-updates"></a>Állapot-frissítések
 
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
-## <a name="february-2021"></a>Február 2021
+## <a name="march-2021"></a>Március 2021
+A következő SQL-átjárók több régióban vannak folyamatban inaktiválva:
+
+- Dél-Brazília: 104.41.11.5
+- Kelet-Ázsia: 191.234.2.139
+- USA keleti régiója: 191.238.6.43
+- Kelet-Japán: 191.237.240.43
+- Nyugat-Japán: 191.238.68.11
+- Észak-Európa: 191.235.193.75
+- USA déli középső régiója: 23.98.162.75
+- Délkelet-Ázsia: 23.100.117.95
+- Nyugat-Európa: 191.237.232.75
+- USA nyugati régiója: 23.99.34.75
+
+Az ügyfelekre gyakorolt hatás várható, mivel ezek az átjárók (a régebbi hardvereken futnak) nem irányítják az ügyfelek forgalmát. Az átjárók IP-címeit inaktiválni kell a 2021. március 15-én.
+
+## <a name="february-2021"></a>2021. február
 Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
 
 - USA középső régiója: 13.89.169.20

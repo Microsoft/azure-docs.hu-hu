@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760401"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388991"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-trigger Azure Functions – áttekintés
 
@@ -27,7 +27,7 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely a RabbitMQ üzenetet olvassa és naplózza [RabbitMQ-eseményként](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html):
+Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely a RabbitMQ üzenetet olvassa és naplózza [RabbitMQ-eseményként](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html):
 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
@@ -211,11 +211,11 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa** | n/a | "RabbitMQTrigger" értékre kell állítani.|
-|**irányba** | n/a | "In" értékre kell állítani.|
-|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. |
+|**típusa** | n.a. | "RabbitMQTrigger" értékre kell állítani.|
+|**irányba** | n.a. | "In" értékre kell állítani.|
+|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. |
 |**queueName**|**QueueName**| Azon várólista neve, amelyről üzeneteket szeretne fogadni. |
 |**hostName**|**HostName**|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
 |**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólistához való hozzáféréshez használt felhasználónevet tartalmazza. Például: UserNameSetting: "% < UserNameFromSettings >%"|
@@ -229,7 +229,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html), és a `Body` RabbitMQ esemény tulajdonsága az alább felsorolt típusok szerint olvasható:
+Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html), és a `Body` RabbitMQ esemény tulajdonsága az alább felsorolt típusok szerint olvasható:
 
 * `An object serializable as JSON` – Az üzenet érvényes JSON-sztringként lesz továbbítva.
 * `string`
@@ -238,7 +238,7 @@ Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://www.rabbitmq.com
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html), és a `Body` RabbitMQ esemény tulajdonsága az alább felsorolt típusok szerint olvasható:
+Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html), és a `Body` RabbitMQ esemény tulajdonsága az alább felsorolt típusok szerint olvasható:
 
 * `An object serializable as JSON` – Az üzenet érvényes JSON-sztringként lesz továbbítva.
 * `string`
@@ -280,11 +280,11 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |prefetchCount|30|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg kérelmezhető és gyorsítótárazott üzenetek számát.|
-|queueName|n/a| Azon várólista neve, amelyről üzeneteket szeretne fogadni.|
-|connectionString|n/a|A RabbitMQ üzenet-várólista-kapcsolatok karakterlánca. Vegye figyelembe, hogy a kapcsolatok karakterlánca közvetlenül itt van megadva, és nem az alkalmazás beállításain keresztül.|
+|queueName|n.a.| Azon várólista neve, amelyről üzeneteket szeretne fogadni.|
+|connectionString|n.a.|A RabbitMQ üzenet-várólista-kapcsolatok karakterlánca. Vegye figyelembe, hogy a kapcsolatok karakterlánca közvetlenül itt van megadva, és nem az alkalmazás beállításain keresztül.|
 |port|0|(a connectionString használatával figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0, amely a rabbitmq-ügyfél alapértelmezett portjának beállítására mutat: 5672.|
 
 ## <a name="local-testing"></a>Helyi tesztelés
@@ -308,11 +308,11 @@ Ha a helyi tesztelést nem a kapcsolatok karakterlánca nélkül végzi, állít
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
-|hostName|n/a|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
-|userName (Felhasználónév)|n/a|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista eléréséhez használandó név |
-|jelszó|n/a|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista eléréséhez szükséges jelszó|
+|hostName|n.a.|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
+|userName (Felhasználónév)|n.a.|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista eléréséhez használandó név |
+|jelszó|n.a.|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista eléréséhez szükséges jelszó|
 
 
 ## <a name="enable-runtime-scaling"></a>Futtatókörnyezet Skálázásának engedélyezése
@@ -335,6 +335,6 @@ A várólisták és az egyes RabbitMQ-végpontok cseréjének figyelése:
 * A [RabbitMQ-kezelő beépülő modul](https://www.rabbitmq.com/management.html) engedélyezése
 * Keresse meg a http://{node-hostname}: 15672, és jelentkezzen be a felhasználónevével és jelszavával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

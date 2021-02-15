@@ -1,23 +1,18 @@
 ---
 title: Adatok másolása a négyzetből (előzetes verzió)
 description: Megtudhatja, hogyan másolhat adatokat a Square-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
-ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac10e42d338e0ddd44cb3c07709645a69653808d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529364"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384792"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása a térről a Azure Data Factory használatával (előzetes verzió)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,17 +45,17 @@ A Square társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Square** | Igen |
-| connectionProperties | A Square-hez való kapcsolódás módját meghatározó tulajdonságok csoportja. | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Square** | Yes |
+| connectionProperties | A Square-hez való kapcsolódás módját meghatározó tulajdonságok csoportja. | Yes |
 | ***Alatt `connectionProperties` :*** | | |
-| gazda | A négyzet-példány URL-címe (pl. mystore.mysquare.com)  | Igen |
-| ügyfél-azonosító | A Square-alkalmazáshoz társított ügyfél-azonosító.  | Igen |
-| clientSecret | A Square-alkalmazáshoz társított ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| accessToken | A négyzetből beszerzett hozzáférési jogkivonat. Korlátozott hozzáférést biztosít egy négyzetes fiókhoz, ha hitelesített felhasználót kér az explicit engedélyekhez. A OAuth hozzáférési tokenek a kiállítottak után 30 nappal lejárnak, de a frissítési tokenek nem járnak le. A hozzáférési jogkivonatok frissítési token használatával frissíthetők.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).  | Igen |
-| refreshToken | A négyzetből beszerzett frissítési jogkivonat. Új hozzáférési jogkivonatok beszerzésére szolgál, ha az aktuális lejárat lejár.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
+| gazda | A négyzet-példány URL-címe (pl. mystore.mysquare.com)  | Yes |
+| ügyfél-azonosító | A Square-alkalmazáshoz társított ügyfél-azonosító.  | Yes |
+| clientSecret | A Square-alkalmazáshoz társított ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| accessToken | A négyzetből beszerzett hozzáférési jogkivonat. Korlátozott hozzáférést biztosít egy négyzetes fiókhoz, ha hitelesített felhasználót kér az explicit engedélyekhez. A OAuth hozzáférési tokenek a kiállítottak után 30 nappal lejárnak, de a frissítési tokenek nem járnak le. A hozzáférési jogkivonatok frissítési token használatával frissíthetők.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).  | Yes |
+| refreshToken | A négyzetből beszerzett frissítési jogkivonat. Új hozzáférési jogkivonatok beszerzésére szolgál, ha az aktuális lejárat lejár.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
+| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
+| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
 A Square két típusú hozzáférési tokent támogat: a **személyes** és a **OAuth**.
 
@@ -105,11 +100,11 @@ Data Factory a személyes hozzáférési jogkivonaton keresztüli hitelesítés 
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a négyzetes adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok négyzetből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **SquareObject**értékre. A következő tulajdonságok támogatottak:
+Az adatok négyzetből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **SquareObject** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SquareObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SquareObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -139,8 +134,8 @@ Az adatok négyzetből való másolásához állítsa a forrás típusát a más
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SquareSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Business"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SquareSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Business"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -178,5 +173,5 @@ Az adatok négyzetből való másolásához állítsa a forrás típusát a más
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

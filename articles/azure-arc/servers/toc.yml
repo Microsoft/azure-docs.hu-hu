@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: Ügynök kezelése
           href: manage-agent.md
+        - name: Számítógép átmigrálása régiók között
+          href: manage-howto-migrate.md
     - name: Forgatókönyvek
       items:
         - name: Előkészítés az Azure Sentinel számára

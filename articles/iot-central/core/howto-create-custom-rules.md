@@ -1,20 +1,20 @@
 ---
 title: Az Azure IoT Central kiterjesztése egyéni szabályokkal és értesítésekkel | Microsoft Docs
 description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást e-mail-értesítések küldéséhez, amikor egy eszköz leállítja a telemetria küldését. Ez a megoldás Azure Stream Analytics, Azure Functions és SendGrid használ.
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7e3292a9070e6676faad15e73d357e7f6875b5f4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220265"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371672"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kibővítése egyéni szabályokkal a Stream Analytics, az Azure Functions és a SendGrid használatával
 
@@ -97,22 +97,18 @@ A [Azure Portal használatával hozzon létre egy Function alkalmazást](https:/
 | Futtatókörnyezet verme | .NET |
 | Tárolás | Új létrehozása |
 
-### <a name="sendgrid-account"></a>SendGrid-fiók
+### <a name="sendgrid-account-and-api-keys"></a>SendGrid-fiók és API-kulcsok
 
-A [Azure Portal használatával hozzon létre egy SendGrid-fiókot](https://portal.azure.com/#create/Sendgrid.sendgrid) a következő beállításokkal:
+Ha nem rendelkezik Sendgrid-fiókkal, hozzon létre egy [ingyenes fiókot](https://app.sendgrid.com/) a Kezdés előtt.
 
-| Beállítás | Érték |
-| ------- | ----- |
-| Név    | Válassza ki a SendGrid-fiók nevét |
-| Jelszó | Jelszó létrehozása |
-| Előfizetés | Az Ön előfizetése |
-| Erőforráscsoport | DetectStoppedDevices |
-| Tarifacsomag | F1 – Ingyenes |
-| Kapcsolattartási adatok | A szükséges információk kitöltése |
+1. A bal oldali menüben a Sendgrid-irányítópult beállításainál válassza az **API-kulcsok** elemet.
+1. Kattintson az **API-kulcs létrehozása** lehetőségre.
+1. Nevezze el az új API-kulcs **AzureFunctionAccess.**
+1. Kattintson a **létrehozás & nézet** elemre.
 
-Ha létrehozta az összes szükséges erőforrást, a **DetectStoppedDevices** -erőforráscsoport a következő képernyőképhez hasonlóan néz ki:
+    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Képernyőfelvétel a SendGrid API-kulcs létrehozásáról.":::
 
-![Leállított eszközök erőforráscsoport észlelése](media/howto-create-custom-rules/resource-group.png)
+Ezt követően egy API-kulcsot fog kapni. Mentse ezt a karakterláncot későbbi használatra.
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
@@ -121,21 +117,9 @@ IoT Central alkalmazást úgy konfigurálhatja, hogy folyamatosan exportálja a 
 1. A Azure Portal navigáljon a Event Hubs névtérhez, és válassza a **+ Event hub** elemet.
 1. Nevezze el az Event hub- **centralexport**, majd válassza a **Létrehozás** lehetőséget.
 
-A Event Hubs névtere a következő képernyőképre hasonlít:
+A Event Hubs névtere a következő képernyőképre hasonlít: 
 
-![Event Hubs-névtér](media/howto-create-custom-rules/event-hubs-namespace.png)
-
-## <a name="get-sendgrid-api-key"></a>SendGrid API-kulcs beolvasása
-
-Az e-mailek küldéséhez a Function alkalmazásnak szüksége van egy SendGrid API-kulcsra. SendGrid API-kulcs létrehozása:
-
-1. A Azure Portal navigáljon a SendGrid-fiókjához. Ezután válassza a **kezelés** lehetőséget a SendGrid-fiók eléréséhez.
-1. A SendGrid-fiókban válassza a **Beállítások**, majd az **API-kulcsok** elemet. Válassza az **API-kulcs létrehozása** elemet:
-
-    ![SendGrid API-kulcs létrehozása](media/howto-create-custom-rules/sendgrid-api-keys.png)
-
-1. Az **API-kulcs létrehozása** lapon hozzon létre egy **AzureFunctionAccess** nevű kulcsot **teljes hozzáférési** engedélyekkel.
-1. Jegyezze fel az API-kulcsot, szüksége lesz rá, amikor konfigurálja a Function alkalmazást.
+    :::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
 ## <a name="define-the-function"></a>A függvény megadása
 
@@ -143,37 +127,22 @@ Ez a megoldás egy Azure Functions alkalmazást használ e-mail-értesítés kü
 
 1. A Azure Portal navigáljon a **DetectStoppedDevices** erőforráscsoport **app Service** példányához.
 1. **+** Új függvény létrehozásához válassza a lehetőséget.
-1. A **fejlesztési környezet kiválasztása** lapon válassza **a portálon** , majd a **Folytatás** lehetőséget.
-1. A **függvény létrehozása** lapon válassza a **WEBhook + API** elemet, majd kattintson a **Létrehozás** gombra.
+1. Válassza a **http-trigger** lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget.
+
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Az alapértelmezett HTTP-trigger függvény képe"::: 
+
+## <a name="edit-code-for-http-trigger"></a>Kód szerkesztése HTTP-triggerhez
 
 A portál létrehoz egy **HttpTrigger1** nevű alapértelmezett függvényt:
 
-![Alapértelmezett HTTP-trigger függvény](media/howto-create-custom-rules/default-function.png)
+    :::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-### <a name="configure-function-bindings"></a>Függvények kötésének konfigurálása
-
-Az e-mailek SendGrid való elküldéséhez a következő módon kell konfigurálnia a függvény kötéseit:
-
-1. Válassza az **integráció** lehetőséget, válassza ki a kimeneti http-t **($Return)**, majd válassza a **Törlés** lehetőséget.
-1. Válassza az **+ új kimenet**, majd a **SendGrid** lehetőséget, majd a **kiválasztás** lehetőséget. A SendGrid-bővítmény telepítéséhez válassza a **telepítés** lehetőséget.
-1. Ha a telepítés befejeződött, válassza a **függvény visszatérési értékének használata** lehetőséget. Adjon meg egy érvényes **címet** az e-mail-értesítések fogadásához.  Adjon meg egy érvényes **címet** az e-mail feladóként való használathoz.
-1. Válassza a **SENDGRID API-kulcs alkalmazás** melletti **új** lehetőséget. Adja meg a **SendGridAPIKey** kulcsot, és a korábban feljegyzett SendGrid API-kulcsot értékként. Ezután kattintson a **Létrehozás** elemre.
-1. A **Save (Mentés** ) gombra kattintva mentse a függvény SendGrid-kötéseit.
-
-Az integrálási beállítások a következő képernyőképhez hasonlóan néznek ki:
-
-![Function app-integrációk](media/howto-create-custom-rules/function-integrate.png)
-
-### <a name="add-the-function-code"></a>A függvény kódjának hozzáadása
-
-A függvény megvalósításához adja hozzá a C#-kódot a bejövő HTTP-kérés elemzéséhez, és küldje el az e-maileket a következőképpen:
-
-1. Válassza ki a **HttpTrigger1** függvényt a Function alkalmazásban, és cserélje le a C#-kódot a következő kódra:
+1. Cserélje le a C#-kódot a következő kódra:
 
     ```csharp
     #r "Newtonsoft.Json"
-    #r "..\bin\SendGrid.dll"
-
+    #r "SendGrid"
     using System;
     using SendGrid.Helpers.Mail;
     using Microsoft.Azure.WebJobs.Host;
@@ -196,7 +165,7 @@ A függvény megvalósításához adja hozzá a C#-kódot a bejövő HTTP-kéré
             content += $"<tr><td>{notification.deviceid}</td><td>{notification.time}</td></tr>";
         }
         content += "</table>";
-        message.AddContent("text/html", content);
+        message.AddContent("text/html", content);  
 
         return message;
     }
@@ -209,8 +178,45 @@ A függvény megvalósításához adja hozzá a C#-kódot a bejövő HTTP-kéré
     ```
 
     Előfordulhat, hogy az új kód mentésekor hibaüzenet jelenik meg.
-
 1. A függvény mentéséhez válassza a **Mentés** lehetőséget.
+
+## <a name="add-sendgrid-key"></a>SendGrid kulcs hozzáadása
+
+A SendGrid API-kulcs hozzáadásához hozzá kell adnia azt a **funkcióbillentyűk** számára a következő módon:
+
+1. Válassza a **funkcióbillentyűk** lehetőséget.
+1. Válassza az **+ új funkcióbillentyű** lehetőséget.
+1. Adja meg a korábban létrehozott API-kulcs *nevét* és *értékét* .
+1. Kattintson **az OK gombra.**
+
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Képernyőkép a Sangrid-kulcs hozzáadásáról.":::
+
+
+## <a name="configure-httptrigger-function-to-use-sendgrid"></a>A HttpTrigger függvény konfigurálása a SendGrid használatára
+
+Az e-mailek SendGrid való elküldéséhez a következő módon kell konfigurálnia a függvény kötéseit:
+
+1. Válassza az **Integrálás** lehetőséget.
+1. Válassza a **kimenet hozzáadása** **http-ben ($Return)** lehetőséget.
+1. Válassza a **Törlés lehetőséget.**
+1. Válassza az **+ új kimenet** lehetőséget.
+1. A kötés típusa beállításnál válassza a **SendGrid** lehetőséget.
+1. A SendGrid API-kulcs beállításának típusa területen kattintson az új elemre.
+1. Adja meg a SendGrid API-kulcs *nevét* és *értékét* .
+1. Adja meg a következő információkat:
+
+| Beállítás | Érték |
+| ------- | ----- |
+| Üzenet-paraméter neve | Válassza ki a nevét |
+| A címe | Válassza ki a címnek a nevét |
+| Feladó címe | Válassza ki a feladó címe nevet |
+| Üzenet tárgya | Adja meg a tárgy fejlécét |
+| Szöveges üzenet | Adja meg az integrációs üzenetet |
+
+1. Válassza az **OK** lehetőséget.
+
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Képernyőkép a SandGrid-kimenet hozzáadásáról.":::
+
 
 ### <a name="test-the-function-works"></a>A függvény működésének tesztelése
 
@@ -222,7 +228,7 @@ A függvénynek a portálon való teszteléséhez először a Kódszerkesztő al
 
 A függvények naplójának üzenetei a **naplók** panelen jelennek meg:
 
-![Függvény naplójának kimenete](media/howto-create-custom-rules/function-app-logs.png)
+    :::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
 Néhány perc elteltével az e- **mail-címe** megkapja az alábbi tartalommal ellátott e-mailt:
 
@@ -300,17 +306,17 @@ Ez a megoldás egy Stream Analytics lekérdezést használ annak észlelésére,
         RightSide.deviceid2 is NULL
     ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A Stream Analytics-feladatok elindításához válassza az **Áttekintés**, majd a **Start** **, majd a** Start lehetőséget, majd **indítsa** el a következőt:
 
-    ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
+    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Képernyőkép a Stream Analyticsról.":::
 
 ## <a name="configure-export-in-iot-central"></a>Az Exportálás konfigurálása IoT Central
 
 Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a contoso-sablonból létrehozott IoT Central alkalmazáshoz. Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
 
 1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs** elemet.
-1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés** lehetőséget:
+1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés** lehetőséget: 
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -322,7 +328,7 @@ Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén
     | Eszközök | Ki |
     | Eszközök sablonjai | Ki |
 
-![Folyamatos adatexportálási konfiguráció](media/howto-create-custom-rules/cde-configuration.png)
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Képernyőkép a folyamatos adatexportálási konfigurációról.":::
 
 A folytatás előtt várjon, amíg az Exportálás állapota **fut** .
 

@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása eszköz Azure Data Factory
 description: Információt nyújt a Adatok másolása eszközről Azure Data Factory felhasználói felületen
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434197"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372994"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz az Azure Data Factoryben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,8 +38,8 @@ Az Adatok másolása eszköz elindításához kattintson az adatgyár kezdőlapj
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuitív folyamat az adatbevitelhez egy adattóba
 Ez az eszköz lehetővé teszi, hogy a különböző forrásokból származó adatok könnyedén áthelyezhetők legyenek a célhelyekre egy intuitív folyamattal:  
 
-1. Konfigurálja a **forrás**beállításait.
-2. Adja meg a **célhely**beállításait. 
+1. Konfigurálja a **forrás** beállításait.
+2. Adja meg a **célhely** beállításait. 
 3. Konfigurálja a másolási művelet **speciális beállításait** , például az oszlopok leképezését, a teljesítmény beállításait és a hibatűrési beállításokat. 
 4. Az adatok betöltésére szolgáló feladat **ütemtervének** megadása. 
 5. Tekintse át a létrehozandó Data Factory entitások **összegzését** . 
@@ -69,7 +64,7 @@ Előfordulhat, hogy az adatforrás sémája nem egyezik meg az adatforrások sé
 A Adatok másolása eszköz figyeli és megtanulja a viselkedését, ha a forrás-és a célhelyek közötti oszlopokat térképezi fel. Miután kiválasztotta a forrás adattárból egy vagy több oszlopot, és leképezi őket a célként megadott sémába, a Adatok másolása eszköz elkezdi elemezni a két oldalról kiválasztott oszlop párok mintázatát. Ezt követően ugyanezt a mintát alkalmazza a többi oszlopra is. Ezért láthatja, hogy az összes oszlop hozzá van rendelve a célhoz úgy, ahogy azt több kattintás után szeretné.  Ha nem elégedett az Adatok másolása eszköz által biztosított oszlop-hozzárendelési lehetőséggel, akkor figyelmen kívül hagyhatja, és folytathatja az oszlopok manuális leképezését. Eközben a Adatok másolása eszköz folyamatosan megtanulja és frissíti a mintát, és végül eléri a megfelelő mintát a elérni kívánt oszlop-hozzárendeléshez. 
 
 > [!NOTE]
-> Ha az adatok másolása SQL Server vagy Azure SQL Database az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse) történik, ha a tábla nem létezik a célhelyen, Adatok másolása eszköz támogatja a tábla automatikus létrehozását a forrásoldali séma használatával. 
+> Ha az adatok másolása SQL Server vagy Azure SQL Database az Azure szinapszis Analytics szolgáltatásba történik, ha a tábla nem létezik a célhelyen, Adatok másolása eszköz támogatja a tábla automatikus létrehozását a forrásoldali séma használatával. 
 
 ## <a name="filter-data"></a>Adatok szűrése
 A forrásadatok szűrésével kiválaszthatja azokat az adatforrásokat, amelyeket át kell másolni a fogadó adattárba. A szűrés csökkenti a fogadó adattárba másolandó adatok mennyiségét, így fokozza a másolási művelet átviteli sebességét. Az Adatok másolása eszköz rugalmas módot biztosít a kapcsolódó adatbázisok adatszűrésére az SQL-lekérdezési nyelv vagy egy Azure Blob mappában található fájlok használatával. 
@@ -91,7 +86,7 @@ Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak:
 ...
 ```
 
-Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás**gombra. A szövegmezőben a 2016/03/01/02 értéknek kell megjelennie. 
+Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás** gombra. A szövegmezőben a 2016/03/01/02 értéknek kell megjelennie. 
 
 Ezután cserélje le a **2016** -et **{Year}**, **03** és { **month}**, **01** és **{Day}**, valamint **02** és **{Hour}** értékűre, majd nyomja le a **Tab** billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
 

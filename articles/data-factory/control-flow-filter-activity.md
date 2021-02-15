@@ -1,22 +1,18 @@
 ---
 title: Szűrési tevékenység Azure Data Factory
 description: A szűrő tevékenység szűri a bemeneteket.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2026bdd1898df460bfed2ae9d5544f90c532308f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 035ee5a5f1fe193fcb4579f1d46472ad9cd0b8b5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507438"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385591"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Szűrési tevékenység Azure Data Factory
 Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy bemeneti tömbre. 
@@ -39,10 +35,10 @@ Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy be
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A tevékenység neve `Filter` . | Sztring | Igen
-típus | **Szűrésre** kell beállítani. | Sztring | Igen
-feltétel | A bemenet szűréséhez használandó feltétel. | Expression | Igen
-elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Expression | Igen
+name | A tevékenység neve `Filter` . | Sztring | Yes
+típus | **Szűrésre** kell beállítani. | Sztring | Yes
+feltétel | A bemenet szűréséhez használandó feltétel. | Expression | Yes
+elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Expression | Yes
 
 ## <a name="example"></a>Példa
 
@@ -112,7 +108,7 @@ Ebben a példában a folyamat két tevékenységgel rendelkezik: **Filter** és 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)

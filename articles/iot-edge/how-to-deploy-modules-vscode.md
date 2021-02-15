@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccc87b1b3103e799a5974542de602090df8e1e4b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6415aa55a67b37d9564398eb77dacb48cf16f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048389"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378111"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modulok üzembe helyezése a Visual Studio Code-ból
 
@@ -61,7 +61,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
              "edgeAgent": {
                "type": "docker",
                "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                 "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                  "createOptions": "{}"
                }
              },
@@ -70,7 +70,7 @@ Ha Visual Studio Code-t használó modulokat kíván üzembe helyezni, mentse he
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                 "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                  "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                }
              }
@@ -119,11 +119,11 @@ A Visual Studio Code-hoz készült Azure IoT Extensions használatával művelet
 
 1. Kattintson a **...** elemre az **Azure IoT hub** szakasz fejlécében. Ha nem látja a három pontot, vigye a kurzort a fejléc fölé.
 
-1. Válassza a **IoT hub kiválasztása**lehetőséget.
+1. Válassza a **IoT hub kiválasztása** lehetőséget.
 
 1. Ha nem jelentkezett be az Azure-fiókjába, kövesse az utasításokat.
 
-1. Válassza ki az Azure-előfizetését.
+1. Válassza ki Azure-előfizetését.
 
 1. Válassza ki az IoT hubot.
 
@@ -136,11 +136,11 @@ A modulok az eszközön való üzembe helyezéséhez alkalmazza a modul adataiva
 1. Kattintson a jobb gombbal arra a IoT Edge eszközre, amelyet az üzembe helyezési jegyzékkel szeretne konfigurálni.
 
     > [!TIP]
-    > Annak ellenőrzéséhez, hogy a kiválasztott eszköz egy IoT Edge eszköz-e, válassza ki a modulok listájának kibontásához és a **$edgeHub** és a **$edgeAgent**meglétének ellenőrzéséhez. Minden IoT Edge eszköz tartalmazza ezt a két modult.
+    > Annak ellenőrzéséhez, hogy a kiválasztott eszköz egy IoT Edge eszköz-e, válassza ki a modulok listájának kibontásához és a **$edgeHub** és a **$edgeAgent** meglétének ellenőrzéséhez. Minden IoT Edge eszköz tartalmazza ezt a két modult.
 
-1. Válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+1. Válassza **a központi telepítés létrehozása egyetlen eszközhöz** lehetőséget.
 
-1. Navigáljon a használni kívánt üzembe helyezési jegyzékfájlhoz tartozó JSON-fájlhoz, majd kattintson a **peremhálózat-telepítési jegyzék kiválasztása**elemre.
+1. Navigáljon a használni kívánt üzembe helyezési jegyzékfájlhoz tartozó JSON-fájlhoz, majd kattintson a **peremhálózat-telepítési jegyzék kiválasztása** elemre.
 
    ![Edge központi telepítési jegyzékfájljának kiválasztása](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 

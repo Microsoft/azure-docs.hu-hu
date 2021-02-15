@@ -1,29 +1,25 @@
 ---
 title: ForEach-tevékenység Azure Data Factory
 description: Az minden tevékenység esetében egy ismétlődő vezérlési folyamat van definiálva a folyamatban. Ez a művelet egy gyűjtemény átugrására és meghatározott tevékenységek végrehajtására szolgál.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499509"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385608"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A ForEach tevékenység a folyamat ismétlődő vezérlési folyamatát határozza meg. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdonság a gyűjtemény és a gyűjtemény minden eleme a `@item()` következő szintaxissal látható módon hivatkozik rá:  
 
 ```json
@@ -72,12 +68,12 @@ A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdons�
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A for-each tevékenység neve. | Sztring | Igen
-típus | **Foreach** értékre kell állítani | Sztring | Igen
-isSequential | Meghatározza, hogy a hurkot egymás után vagy párhuzamosan kell-e végrehajtani.  Egyidejűleg legfeljebb 20 hurok-iteráció hajtható végre. Ha például egy ForEach-tevékenység egy másolási tevékenységhez képest 10 különböző forrás-és fogadó adatkészlettel rendelkezik, és a **isSequential** értéke hamis, akkor az összes másolat egyszerre lesz végrehajtva. Az alapértelmezett érték a false. <br/><br/> Ha a "isSequential" értéke false (hamis), akkor ellenőrizze, hogy van-e megfelelő konfiguráció több végrehajtható fájl futtatásához. Ellenkező esetben ezt a tulajdonságot körültekintően kell használni az írási ütközések elkerülése érdekében. További információ: [párhuzamos végrehajtás](#parallel-execution) szakasz. | Logikai érték | Nem. Az alapértelmezett érték a false.
+name | A for-each tevékenység neve. | Sztring | Yes
+típus | **Foreach** értékre kell állítani | Sztring | Yes
+isSequential | Meghatározza, hogy a hurkot egymás után vagy párhuzamosan kell-e végrehajtani.  Egyidejűleg legfeljebb 20 hurok-iteráció hajtható végre. Ha például egy ForEach-tevékenység egy másolási tevékenységhez képest 10 különböző forrás-és fogadó adatkészlettel rendelkezik, és a **isSequential** értéke hamis, akkor az összes másolat egyszerre lesz végrehajtva. Az alapértelmezett érték a false. <br/><br/> Ha a "isSequential" értéke false (hamis), akkor ellenőrizze, hogy van-e megfelelő konfiguráció több végrehajtható fájl futtatásához. Ellenkező esetben ezt a tulajdonságot körültekintően kell használni az írási ütközések elkerülése érdekében. További információ: [párhuzamos végrehajtás](#parallel-execution) szakasz. | Logikai | Nem. Az alapértelmezett érték a false.
 batchCount | A párhuzamos végrehajtások számának szabályozásához használandó kötegek száma (ha a isSequential hamis értékre van állítva). Ez a felső egyidejűségi korlát, de a for-each tevékenység nem mindig lesz végrehajtva ennél a számnál | Egész szám (legfeljebb 50) | Nem. Az alapértelmezett érték 20.
-Elemek | Egy kifejezés, amely egy JSON-tömböt ad vissza, amelyet a rendszer megismétel. | Kifejezés (amely egy JSON-tömböt ad vissza) | Igen
-Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája | Igen
+Elemek | Egy kifejezés, amely egy JSON-tömböt ad vissza, amelyet a rendszer megismétel. | Kifejezés (amely egy JSON-tömböt ad vissza) | Yes
+Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája | Yes
 
 ## <a name="parallel-execution"></a>Párhuzamos végrehajtás
 Ha a **isSequential** hamis értékre van állítva, a tevékenység párhuzamosan, legfeljebb 20 egyidejű ismétléssel közelíthető meg. Ezt a beállítást körültekintően kell használni. Ha az egyidejű ismétlések ugyanarra a mappára, de különböző fájlokra is érvényesek, ez a megközelítés rendben van. Ha az egyidejű ismétlések egyidejű, ugyanazon a fájlon vannak írva, ez a megközelítés valószínűleg hibát okoz. 
@@ -195,7 +191,7 @@ A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismét
 Több tevékenység is megismételhető (például másolási és webes tevékenységek) egy ForEach-tevékenységben. Ebben a forgatókönyvben azt javasoljuk, hogy több tevékenységet is elkülönítse egy külön folyamatba. Ezt követően használhatja a folyamat [ExecutePipeline tevékenységét](control-flow-execute-pipeline-activity.md) a foreach tevékenységgel, hogy meghívja a különálló folyamatot több tevékenységgel. 
 
 
-### <a name="syntax"></a>Szintaxis
+### <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -489,7 +485,7 @@ Először deklaráljon egy `array` _változót_ a folyamatban. Ezután hívja me
 | A ForEach tevékenység legfeljebb `batchCount` 50 párhuzamos feldolgozásra és legfeljebb 100 000 elemet tartalmaz. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat ForEach tevékenysége egy belső folyamaton keresztül megismétli a folyamatokat. |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

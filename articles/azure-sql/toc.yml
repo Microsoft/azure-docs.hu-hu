@@ -143,8 +143,10 @@
       items:
         - name: Kvótanövelések kérése
           href: database/quota-increase-request.md
-        - name: Feladat automatizálása
+        - name: Feladatok automatizálása rugalmas feladatokkal
           href: database/job-automation-overview.md
+        - name: Feladatok automatizálása SQL-ügynökkel
+          href: database/job-automation-managed-instances.md
         - name: Az üzletmenet folytonossága
           items:
             - name: Feladatátvételi csoport konfigurálása

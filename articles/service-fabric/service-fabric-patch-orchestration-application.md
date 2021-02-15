@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791223"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390640"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
 
-> 
 > [!IMPORTANT]
-> 2019. április 30-ig a patch-előkészítési alkalmazás 1,2. * verziója már nem támogatott. Ügyeljen arra, hogy a legújabb verzióra frissítsen.
+> 2019. április 30-ig a patch-előkészítési alkalmazás 1,2. * verziója már nem támogatott. Ügyeljen arra, hogy a legújabb verzióra frissítsen. A virtuális gépek, amelyeknél a "Windows Update" az operációs rendszer javításait az operációsrendszer-lemez cseréje nélkül alkalmazza, nem támogatottak. 
 
 > [!NOTE]
-> Az operációs rendszer javításának az Azure-ban való megtartásának ajánlott módja a [virtuális gépi méretezési csoport automatikus operációsrendszer-rendszerkép-frissítéseinek](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) beszerzése. A virtuálisgép-méretezési csoporton alapuló automatikus operációsrendszer-képek frissítése a méretezési csoportokon ezüst vagy nagyobb tartósságot igényel.
->
+> Az operációs rendszer javításának az Azure-ban való megtartásának ajánlott módja a [virtuális gépi méretezési csoport automatikus operációsrendszer-rendszerkép-frissítéseinek](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) beszerzése. A virtuálisgép-méretezési csoporton alapuló automatikus operációsrendszer-képek frissítése a méretezési csoportokon ezüst vagy nagyobb tartósságot igényel. A tartóssági szinttel rendelkező csomópontok esetében ez nem támogatott, ebben az esetben használja a patch-előkészítési alkalmazást.
 
- A javítási előkészítési alkalmazás (POA) az Azure Service Fabric javításkezelő szolgáltatás egyik burkolója, amely lehetővé teszi a konfiguráció-alapú operációsrendszer-javítások ütemezését a nem Azure-beli üzemeltetett fürtökhöz. A POA nem szükséges a nem Azure-beli üzemeltetett fürtökhöz, de a frissítési tartományon belüli javítás telepítésének ütemezése szükséges ahhoz, hogy leállást ne kelljen kijavítani Service Fabric-fürtöt.
+A javítási előkészítési alkalmazás (POA) az Azure Service Fabric javításkezelő szolgáltatás egyik burkolója, amely lehetővé teszi a konfiguráció-alapú operációsrendszer-javítások ütemezését a nem Azure-beli üzemeltetett fürtökhöz. A POA nem szükséges a nem Azure-beli üzemeltetett fürtökhöz, de a frissítési tartományon belüli javítás telepítésének ütemezése szükséges ahhoz, hogy leállást ne kelljen kijavítani Service Fabric-fürtöt.
 
 A POA egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön anélkül, hogy leállás lenne.
 
@@ -313,7 +311,7 @@ Ha meg szeretné ismerni, hogy a frissítések hogyan folytatódnak egy adott cs
 
    Ha további problémák is megtalálhatók, jelentkezzen be a virtuális gépre vagy virtuális gépekre, és ismerkedjen meg velük a Windows-eseménynaplók használatával. A korábban említett javítási feladat csak a következő végrehajtó alállapotokban létezhet:
 
-      ExecutorSubState | Leírás
+      ExecutorSubState | Description
     -- | -- 
       Nincs = 1 |  Azt jelenti, hogy nem volt folyamatban művelet a csomóponton. Lehet, hogy az állapot átmeneti állapotban van.
       DownloadCompleted = 2 | Azt jelenti, hogy a letöltési művelet sikerrel, részleges meghibásodással vagy meghibásodással fejeződött be.

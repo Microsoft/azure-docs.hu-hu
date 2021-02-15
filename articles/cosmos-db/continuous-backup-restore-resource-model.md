@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538502"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369968"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Erőforrás-modell a Azure Cosmos DB időponthoz tartozó visszaállítási szolgáltatáshoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,29 +30,29 @@ Az adatbázis-fiók erőforrás-modelljét néhány további tulajdonsággal fri
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-A "backuppolicy" paraméterben található "type" nevű fiók szintű biztonsági mentési szabályzatban egy új tulajdonság teszi lehetővé a folyamatos biztonsági mentést és az időponthoz tartozó visszaállítási funkciókat. Ezt a módot nevezzük **folyamatos biztonsági mentésnek**. A nyilvános előzetes verzióban ezt a módot csak a fiók létrehozásakor állíthatja be. Ha engedélyezve van, a fiókon belül létrehozott összes tároló és adatbázis folyamatos biztonsági mentési és időponthoz tartozó visszaállítási funkciói lesznek alapértelmezés szerint engedélyezve.
+A fiók szintű biztonsági mentési házirendben a (z) paraméterben megnevezett új tulajdonság `Type` `backuppolicy` lehetővé teszi a folyamatos biztonsági mentést és az időponthoz tartozó visszaállítási funkciókat. Ezt a módot nevezzük **folyamatos biztonsági mentésnek**. A nyilvános előzetes verzióban ezt a módot csak a fiók létrehozásakor állíthatja be. Ha engedélyezve van, a fiókon belül létrehozott összes tároló és adatbázis folyamatos biztonsági mentési és időponthoz tartozó visszaállítási funkciói lesznek alapértelmezés szerint engedélyezve.
 
 > [!NOTE]
 > Jelenleg az időponthoz tartozó visszaállítási funkció nyilvános előzetes verzióban érhető el, és elérhető a MongoDB és az SQL-fiókok Azure Cosmos DB API-hoz. Miután létrehozta a folyamatos üzemmódú fiókot, nem válthat ismétlődő módba.
 
 ### <a name="createmode"></a>CreateMode
 
-Ez a tulajdonság azt jelzi, hogy a fiók hogyan lett létrehozva. A lehetséges értékek: "default" és "Restore". A visszaállítás végrehajtásához állítsa ezt az értéket "visszaállítás" értékre, és adja meg a megfelelő értékeket a `RestoreParameters` tulajdonságban.
+Ez a tulajdonság azt jelzi, hogy a fiók hogyan lett létrehozva. A lehetséges értékek: *default* és *Restore*. A visszaállítás végrehajtásához állítsa ezt az értéket a *visszaállításhoz* , és adja meg a megfelelő értékeket a `RestoreParameters` tulajdonságban.
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
 Az `RestoreParameters` erőforrás tartalmazza a visszaállítási művelet részleteit, beleértve a fiók azonosítóját, a visszaállítani kívánt időt és a visszaállítani kívánt erőforrásokat.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
-|restoreMode  | A visszaállítási mód legyen "PointInTime" |
+|restoreMode  | A visszaállítási módnak *PointInTime* kell lennie |
 |restoreSource   |  Annak a instanceId a címe, amelyből a visszaállítást kezdeményezni kívánja.       |
 |restoreTimestampInUtc  | Az UTC szerinti időpontot, amelyhez a fiókot vissza kell állítani. |
 |databasesToRestore   | Azon objektumok listája, `DatabaseRestoreSource` amelyek meghatározzák, hogy mely adatbázisokat és tárolókat kell visszaállítani. Ha ez az érték üres, akkor a rendszer visszaállítja a teljes fiókot.   |
 
 **DatabaseRestoreResource** – minden erőforrás egyetlen adatbázist és az adatbázis alatti összes gyűjteményt jelképezi.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 |databaseName | Az adatbázis nevét |
 | collectionNames| Az adatbázishoz tartozó tárolók listája |
@@ -134,7 +134,7 @@ Az összes helyreállítható fiók listájának lekéréséhez lásd: [helyreá
 
 Minden erőforrás egy mutációs eseményről tartalmaz információkat, például a létrehozás és a törlés a SQL Databaseon történt. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben véletlenül törölték az adatbázist, és ha meg kell tudnia, hogy mikor történt ez az esemény.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 | eventTimestamp | Az adatbázis létrehozásakor vagy törlésekor az időpontot (UTC). |
 | ownerId | Az SQL-adatbázis neve. |
@@ -148,7 +148,7 @@ Az adatbázis-mutációk listájának lekéréséhez lásd: [helyreállítható 
 
 Mindegyik erőforrás olyan mutációs eseményről tartalmaz információkat, mint például az SQL-tárolóban történt létrehozás és törlés. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben a tárolót módosították vagy törölték, és ha az esemény megtörtént.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 | eventTimestamp    | A tároló eseményének időpontja (UTC).|
 | ownerId| Az SQL-tároló neve.|
@@ -162,7 +162,7 @@ Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megteki
 
 Az egyes erőforrások egyetlen adatbázist és az adatbázis alatti összes tárolót jelölik.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 | databaseName  | Az SQL-adatbázis neve.
 | collectionNames   | Az adatbázishoz tartozó SQL-tárolók listája.|
@@ -173,7 +173,7 @@ Az SQL Database és a Container combok listájának lekéréséhez, amelyek a me
 
 Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, mint például a MongoDB-adatbázisban történt létrehozás és törlés. Ezek az információk segíthetnek abban a forgatókönyvben, amikor az adatbázist véletlenül törölték, és a felhasználónak meg kell találnia az esemény bekövetkezésekor.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 |eventTimestamp| Az adatbázis eseményének időpontja (UTC).|
 | ownerId| A MongoDB-adatbázis neve. |
@@ -186,7 +186,7 @@ Az adatbázis-mutációk listájának lekéréséhez tekintse meg a visszaállí
 
 Minden erőforrás egy olyan mutációs eseményről tartalmaz információkat, mint például a MongoDB-gyűjteményen történt létrehozás és törlés. Ezek az információk segíthetnek olyan forgatókönyvekben, amelyekben a gyűjteményt módosították vagy törölték, és a felhasználónak meg kell találnia az esemény megtörténtét.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 | eventTimestamp |A gyűjtemény eseményének időpontja (UTC). |
 | ownerId| A MongoDB-gyűjtemény neve. |
@@ -199,7 +199,7 @@ Az azonos adatbázishoz tartozó összes tároló-mutáció listájának megteki
 
 Mindegyik erőforrás egyetlen adatbázist és az adatbázis alatti összes gyűjteményt jelképezi.
 
-|Tulajdonság neve |Leírás  |
+|Tulajdonság neve |Description  |
 |---------|---------|
 | databaseName  |A MongoDB-adatbázis neve. |
 | collectionNames | A MongoDB-gyűjtemények listája ebben az adatbázisban. |

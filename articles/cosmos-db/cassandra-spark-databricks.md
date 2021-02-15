@@ -8,17 +8,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5aaf31d8c629e0770b913485de175c38f708390c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516566"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Cosmos DB Cassandra API adatok elérése a Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Ez a cikk részletesen ismerteti, hogyan workwith Azure Cosmos DB Cassandra API a Sparkból a [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
+Ez a cikk részletesen ismerteti, hogyan használható a Spark Azure Cosmos DB Cassandra API a [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ A Spark-programok, amelyeken a Azure Databricks automatikus folyamatai futnak, a
 
 Az alábbi hivatkozások segítséget nyújtanak a Spark Scala-programok a Azure Cosmos DB Cassandra API való interakcióhoz való megkezdésében.
 * [Kapcsolódás Azure Cosmos DB Cassandra API Spark Scala programból](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Spark Scala-program futtatása automatizált feladatokként Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Spark Scala-program futtatása automatizált feladatokként Azure Databricks](/azure/databricks/jobs)
 * [A Cassandra API használatához használható mintakód-minták teljes listája](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>Következő lépések

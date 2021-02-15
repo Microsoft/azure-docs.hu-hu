@@ -1,22 +1,18 @@
 ---
 title: Azure Integration Runtime – IP-címek
 description: Megtudhatja, hogy mely IP-címeken kell engedélyezni a bejövő forgalmat, hogy megfelelően konfigurálja a tűzfalakat az adattárakhoz való hálózati hozzáférés biztonságossá tételéhez.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638295"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371396"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
 
@@ -31,7 +27,7 @@ A Azure Integration Runtime által használt IP-címek attól a régiótól füg
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP-címek: adott régiók
 
-Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom engedélyezése az adott Azure-régióban, ahol az erőforrások találhatók. A szolgáltatási címkék IP-címtartományok listáját a [szolgáltatás címkék IP-címtartomány letöltési hivatkozásával](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)érheti el. Ha például az Azure-régió **AustraliaEast** , akkor a **DataFactory. AustraliaEast** IP-címtartomány listáját szerezheti be.
+Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom engedélyezése az adott Azure-régióban, ahol az erőforrások találhatók. A szolgáltatási címkék IP-címtartományok listáját a [szolgáltatás címkék IP-címtartomány letöltési hivatkozásával](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)érheti el. Ha például az Azure-régió **AustraliaEast**, akkor a **DataFactory. AustraliaEast** IP-címtartomány listáját szerezheti be.
 
 
 ## <a name="known-issue-with-azure-storage"></a>Ismert probléma az Azure Storage-ban

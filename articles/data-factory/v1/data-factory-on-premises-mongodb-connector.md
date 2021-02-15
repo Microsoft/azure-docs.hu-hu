@@ -1,20 +1,17 @@
 ---
 title: Adatok áthelyezése a MongoDB
 description: Ismerje meg, hogyan helyezhetők át adatok a MongoDB-adatbázisból a Azure Data Factory használatával.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79281339"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387512"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a MongoDB a Azure Data Factory használatával
 
@@ -44,9 +41,9 @@ Ahhoz, hogy a Azure Data Factory szolgáltatás csatlakozni tudjon a helyszíni 
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni MongoDB-adattárból származó adatokkal.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -63,15 +60,15 @@ A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz t
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
-| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Yes |
+| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Yes |
 | port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, alapértelmezett érték: 27017 |
-| authenticationType |Alapszintű vagy névtelen. |Igen |
+| authenticationType |Alapszintű vagy névtelen. |Yes |
 | username |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszava. |Igen (ha alapszintű hitelesítést használ). |
 | authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem kötelező (ha alapszintű hitelesítést használ). alapértelmezett: a databaseName tulajdonsággal megadott rendszergazdai fiókot és adatbázist használja. |
-| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
-| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Igen |
+| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Yes |
+| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Yes |
 | encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Választható |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -81,7 +78,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
+| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -293,7 +290,7 @@ Az adatok MongoDB való áthelyezésekor a rendszer a következő leképezéseke
 | MongoDB típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | Bináris |Bájt [] |
-| Logikai érték |Logikai érték |
+| Logikai érték |Logikai |
 | Dátum |DateTime |
 | NumberDouble |Dupla |
 | NumberInt |Int32 |
@@ -365,5 +362,5 @@ Az adatok a kapcsolódó adattárakból való másolása során érdemes megism�
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adatok [áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikk részletes útmutatást nyújt olyan adatfolyamatok létrehozásához, amelyek egy helyszíni adattárból egy Azure-adattárba helyezik át az adatok áthelyezését.

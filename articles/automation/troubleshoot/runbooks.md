@@ -2,16 +2,15 @@
 title: Azure Automation runbook kapcsolatos problémák elhárítása
 description: Ez a cikk a Azure Automation runbookok kapcsolatos hibák elhárítását és megoldását ismerteti.
 services: automation
-ms.subservice: ''
-ms.date: 11/03/2020
+ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 0ae7af848fd3ceb1d5b186a5a326c8fa43a69d24
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053669"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388022"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
 
@@ -224,37 +223,46 @@ A runbookok végrehajtásakor a runbook nem tudja kezelni az Azure-erőforrások
 
 ### <a name="cause"></a>Ok
 
-A runbook nem a megfelelő környezetet használja a futtatásakor.
+A runbook nem a megfelelő környezetet használja a futtatásakor. Ennek az lehet az oka, hogy a runbook véletlenül megpróbál hozzáférni a helytelen előfizetéshez.
+
+A következőhöz hasonló hibák jelenhetnek meg:
+
+```error
+Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automation-runas-account-guid>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope '/subscriptions/<subcriptionIdOfSubscriptionWichDoesntContainTheVM>/resourceGroups/REsourceGroupName/providers/Microsoft.Compute/virtualMachines/VMName '.
+   ErrorCode: AuthorizationFailed
+   StatusCode: 403
+   ReasonPhrase: Forbidden Operation
+   ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
+```
 
 ### <a name="resolution"></a>Feloldás
 
-Előfordulhat, hogy az előfizetési környezet elvész, ha egy runbook több runbookok hív meg. Annak biztosítása érdekében, hogy az előfizetési környezet átkerüljön a runbookok, az ügyfélnek runbook kell adnia a kontextust a `Start-AzureRmAutomationRunbook` paraméterben található parancsmagnak `AzureRmContext` . A `Disable-AzureRmContextAutosave` parancsmaggal állítsa be a `Scope` paramétert annak `Process` biztosítására, hogy a megadott hitelesítő adatok csak az aktuális runbook legyenek felhasználva. További információ: [előfizetések](../automation-runbook-execution.md#subscriptions).
+Előfordulhat, hogy az előfizetési környezet elvész, ha egy runbook több runbookok hív meg. A helytelen előfizetéshez való véletlen próbálkozás elkerüléséhez kövesse az alábbi útmutatást.
 
-```azurepowershell-interactive
-# Ensures that any credentials apply only to the execution of this runbook
-Disable-AzContextAutosave –Scope Process
+* Ha el szeretné kerülni a helytelen előfizetés hivatkozását, tiltsa le az Automation-runbookok a környezetek mentését az egyes runbook elején lévő következő kód használatával.
 
-# Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+   ```azurepowershell-interactive
+   Disable-AzContextAutosave –Scope Process
+   ```
 
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+* A Azure PowerShell parancsmagok támogatják a `-DefaultProfile` paramétert. Ez az összes és a AzureRm parancsmaghoz lett hozzáadva, hogy támogassa több PowerShell-parancsfájl futtatását ugyanabban a folyamatban, így megadhatja a környezetet és az egyes parancsmagokhoz használni kívánt előfizetést. A runbookok mentse a környezeti objektumot a runbook a runbook létrehozásakor (azaz amikor egy fiók bejelentkezik), és minden alkalommal, amikor módosul, és hivatkozzon a környezetre az az parancsmag megadásakor.
 
-$AzContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   > [!NOTE]
+   > Akkor is át kell adnia egy környezeti objektumot, ha a kontextust közvetlenül a parancsmagok, például a [set-AzContext](/powershell/module/az.accounts/Set-AzContext) vagy a [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription)használatával kezeli.
 
-$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-
-Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
-    -ResourceGroupName 'LabRG' `
-    -AzContext $AzContext `
-    –Parameters $params –wait
-```
-
+   ```azurepowershell-interactive
+   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
+   $context = Add-AzAccount `
+             -ServicePrincipal `
+             -TenantId $servicePrincipalConnection.TenantId `
+             -ApplicationId $servicePrincipalConnection.ApplicationId `
+             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
+             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+   $context = Set-AzContext -SubscriptionName $subscription `
+       -DefaultProfile $context
+   Get-AzVm -DefaultProfile $context
+   ```
+  
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Forgatókönyv: az Azure-hitelesítés sikertelen, mert a többtényezős hitelesítés engedélyezve van
 
 ### <a name="issue"></a>Probléma

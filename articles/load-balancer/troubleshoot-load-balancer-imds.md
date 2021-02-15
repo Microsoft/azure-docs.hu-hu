@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: e648d71ed3c501c07a2491054b273a13d74cedaf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e932e211996a05b2740613381735a7de3492e5bf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417626"
+ms.locfileid: "100519184"
 ---
 # <a name="error-codes-common-error-codes-when-using-imds-to-retrieve-load-balancer-information"></a>Hibakódok: gyakori hibakódok a terheléselosztó adatainak lekéréséhez a IMDS használatával
 
@@ -28,8 +28,8 @@ Ez a cikk a gyakori telepítési hibákat ismerteti, valamint azt, hogy Hogyan o
 | 400 | Váratlan kérelem. Ellenőrizze a lekérdezési paramétereket, majd próbálkozzon újra. | A hibakód azt jelzi, hogy a kérelem formátuma nincs megfelelően konfigurálva. </br> További információkért lásd: a [Load Balancer metaadatainak beolvasása az Azure instance metadata Service (IMDS) használatával](howto-load-balancer-imds.md#sample-request-and-response) a kérelem törzsének kijavításához és az újrapróbálkozáshoz. |
 | 404 | Nem található terheléselosztó-metaadatok. Ellenőrizze, hogy a virtuális gép nem alapszintű SKU Load balancert használ-e, majd próbálkozzon újra később. | A hibakód azt jelzi, hogy a virtuális gép nincs hozzárendelve egy terheléselosztó, vagy a terheléselosztó alapszintű SKU a standard helyett. </br> További információ: rövid útmutató [: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával](quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard) a standard Load Balancer üzembe helyezéséhez.|
 | 404 | Az API nem található: Path = " \<UrlPath> ", metódus = " \<Method> " | A hibakód az elérési út hibás konfigurációját jelzi. </br> További információkért lásd: a [Load Balancer metaadatainak beolvasása az Azure instance metadata Service (IMDS) használatával](howto-load-balancer-imds.md#sample-request-and-response) a kérelem törzsének kijavításához és az újrapróbálkozáshoz.|
-| 405 | A http-metódus nem engedélyezett: Path = " \<UrlPath> ", metódus = " \<Method> " | A hibakód egy nem támogatott HTTP-műveletet jelez. </br> További információ: [Azure instance metadata Service (IMDS)](/virtual-machines/windows/instance-metadata-service?tabs=windows.md#http-verbs) a támogatott műveletekhez. |
-| 429 | Túl sok kérelem | A hibakód a díjszabási korlátot jelzi. </br> A díjszabással kapcsolatos további információkért lásd: [Azure instance metadata Service (IMDS)](/virtual-machines/windows/instance-metadata-service?tabs=windows#rate-limiting).|
+| 405 | A http-metódus nem engedélyezett: Path = " \<UrlPath> ", metódus = " \<Method> " | A hibakód egy nem támogatott HTTP-műveletet jelez. </br> További információ: [Azure instance metadata Service (IMDS)](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#http-verbs) a támogatott műveletekhez. |
+| 429 | Túl sok kérelem | A hibakód a díjszabási korlátot jelzi. </br> A díjszabással kapcsolatos további információkért lásd: [Azure instance metadata Service (IMDS)](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#rate-limiting).|
 | 400 | A kérelem törzse nagyobb, mint MaxBodyLength:... | A hibakód a MaxBodyLength nagyobb kérést jelez. </br> A törzs hosszával kapcsolatos további információkért lásd: [a Load Balancer metaadatainak beolvasása az Azure instance metadata Service (IMDS) használatával](howto-load-balancer-imds.md#sample-request-and-response).|
 | 400 | A paraméter kulcsának hossza nagyobb, mint MaxParameterKeyLength:... | A hibakód a MaxParameterKeyLength nagyobb hosszúságú paramétert jelez. </br> A törzs hosszával kapcsolatos további információkért lásd: [a Load Balancer metaadatainak beolvasása az Azure instance metadata Service (IMDS) használatával](howto-load-balancer-imds.md#sample-request-and-response). |
 | 400 | A paraméter értékének hossza nagyobb, mint MaxParameterValueLength:... | A hibakód a MaxParameterValueLength nagyobb hosszúságú paramétert jelez. </br> Az érték hosszával kapcsolatos további információkért lásd: [a Load Balancer metaadatainak beolvasása az Azure instance metadata Service (IMDS) használatával](howto-load-balancer-imds.md#sample-request-and-response).|
@@ -41,5 +41,5 @@ Ez a cikk a gyakori telepítési hibákat ismerteti, valamint azt, hogy Hogyan o
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure instance metadata Service](/virtual-machines/windows/instance-metadata-service.md)
+További információ az [Azure instance metadata Service](../virtual-machines/windows/instance-metadata-service.md)
 

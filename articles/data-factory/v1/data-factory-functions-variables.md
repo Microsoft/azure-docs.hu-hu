@@ -1,21 +1,18 @@
 ---
 title: Data Factory függvények és rendszerváltozók
 description: A Azure Data Factory függvények és rendszerváltozók listáját tartalmazza
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d47a26b46fad1ab8238f9fa7a1183aad20530ef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495650"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363933"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
 > [!NOTE]
@@ -72,26 +69,26 @@ A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a függv�
 
 Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](/dotnet/standard/base-types/custom-date-and-time-format-strings) témakört, amely leírja a különböző formázási beállításokat (például: ay vagy nn). 
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
 
-| Category | Függvény | Paraméterek | Description |
+| Kategória | Függvény | Paraméterek | Description |
 | --- | --- | --- | --- |
 | Idő |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Idő |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
 | Idő |Óra kezdete (X) |X: dátum és idő |Az X óra összetevője által képviselt óra kezdő időpontjának beolvasása. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| Dátum |AddDays (X, Y) |X: dátum és idő<br/><br/>Y: int |Y nappal adja hozzá az X-et. <br/><br/>Például: 9/15/2013 12:00:00 PM + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Napokat is ki lehet vonni az Y negatív szám megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| Dátum |AddMonths (X, Y) |X: dátum és idő<br/><br/>Y: int |Y hónapot hoz létre az X értékhez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónapok is kivonhatók, ha az Y értéket negatív számként határozza meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| Dátum |AddQuarters (X, Y) |X: dátum és idő <br/><br/>Y: int |Y * 3 hónapot adja hozzá X értékhez.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| Dátum |AddWeeks (X, Y) |X: dátum és idő<br/><br/>Y: int |Y * 7 nap feladása X értékre<br/><br/>Például: 9/15/2013 12:00:00 PM + 1 hét = 9/22/2013 12:00:00 PM<br/><br/>Az Y negatív szám megadásával is kivonja a heteket.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
-| Dátum |AddYears (X, Y) |X: dátum és idő<br/><br/>Y: int |Y évet adja hozzá az X-hez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Ha az Y értéket negatív számként határozza meg, akkor az év is kivonható.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| Dátum |Nap (X) |X: dátum és idő |Az X nap összetevőjét kapja meg.<br/><br/>Példa: `Day of 9/15/2013 12:00:00 PM is 9`. |
-| Dátum |DayOfWeek (X) |X: dátum és idő |Beolvassa az X hét napjának összetevőjét.<br/><br/>Példa: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| Dátum |DayOfYear (X) |X: dátum és idő |Az X év összetevője által jelzett nap beolvasása.<br/><br/>Példák:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| Dátum |DaysInMonth (X) |X: dátum és idő |Beolvassa az X paraméter hónap összetevőjével jelölt hónap napjait.<br/><br/>Példa: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
-| Dátum |EndOfDay (X) |X: dátum és idő |Az X nap (nap összetevője) végének dátumának és időpontjának beolvasása.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
-| Dátum |EndOfMonth (X) |X: dátum és idő |Lekérdezi a hónap végét, amelyet az X paraméter a hónap összetevője képvisel. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (a hónap szeptember végét jelölő dátum-idő) |
-| Dátum |StartOfDay (X) |X: dátum és idő |Beolvassa az X paraméter Day összetevőjének napja által jelzett nap kezdetét.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
+| Date |AddDays (X, Y) |X: dátum és idő<br/><br/>Y: int |Y nappal adja hozzá az X-et. <br/><br/>Például: 9/15/2013 12:00:00 PM + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Napokat is ki lehet vonni az Y negatív szám megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
+| Date |AddMonths (X, Y) |X: dátum és idő<br/><br/>Y: int |Y hónapot hoz létre az X értékhez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónapok is kivonhatók, ha az Y értéket negatív számként határozza meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| Date |AddQuarters (X, Y) |X: dátum és idő <br/><br/>Y: int |Y * 3 hónapot adja hozzá X értékhez.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Date |AddWeeks (X, Y) |X: dátum és idő<br/><br/>Y: int |Y * 7 nap feladása X értékre<br/><br/>Például: 9/15/2013 12:00:00 PM + 1 hét = 9/22/2013 12:00:00 PM<br/><br/>Az Y negatív szám megadásával is kivonja a heteket.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| Date |AddYears (X, Y) |X: dátum és idő<br/><br/>Y: int |Y évet adja hozzá az X-hez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Ha az Y értéket negatív számként határozza meg, akkor az év is kivonható.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
+| Date |Nap (X) |X: dátum és idő |Az X nap összetevőjét kapja meg.<br/><br/>Példa: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Date |DayOfWeek (X) |X: dátum és idő |Beolvassa az X hét napjának összetevőjét.<br/><br/>Példa: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
+| Date |DayOfYear (X) |X: dátum és idő |Az X év összetevője által jelzett nap beolvasása.<br/><br/>Angol nyelvű Példák:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| Date |DaysInMonth (X) |X: dátum és idő |Beolvassa az X paraméter hónap összetevőjével jelölt hónap napjait.<br/><br/>Példa: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
+| Date |EndOfDay (X) |X: dátum és idő |Az X nap (nap összetevője) végének dátumának és időpontjának beolvasása.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
+| Date |EndOfMonth (X) |X: dátum és idő |Lekérdezi a hónap végét, amelyet az X paraméter a hónap összetevője képvisel. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (a hónap szeptember végét jelölő dátum-idő) |
+| Date |StartOfDay (X) |X: dátum és idő |Beolvassa az X paraméter Day összetevőjének napja által jelzett nap kezdetét.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
 | DateTime |Forrás: (X) |X: sztring |X sztring értelmezése dátum és idő szerint. |
 | DateTime |Osztásjelek (X) |X: dátum és idő |Az X paraméter kullancsok tulajdonságának beolvasása. Egy Tick 100 nanoszekundumban. Ennek a tulajdonságnak az értéke a 12:00:00 éjfél óta eltelt kullancsok számát jelöli. január 1., 0,001. |
 | Szöveg |Formátum (X) |X: string változó |A szöveg formázása (a `\\'` kombináció használata Escape `'` -karakterrel).|
