@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c702cb16267d5495feedd8d361092b23b6d4deac
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 569a1365e73acbc2fdaf351f2e2cff21181241e1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372465"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523468"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -97,8 +97,8 @@ Minden oldalon megjelenik a felső menü:
 
 * Az eszközök sablonjainak és eszközeinek kereséséhez adjon meg egy **keresési** értéket.
 * A felhasználói felület nyelvének vagy témájának módosításához válassza a **Beállítások** ikont. További információ [az alkalmazások beállításainak kezeléséről](howto-manage-preferences.md)
-* Az alkalmazásból való kijelentkezéshez válassza a **fiók** ikont.
 * Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját. Az [alkalmazással kapcsolatos információkat](./howto-get-app-info.md) az alkalmazás **névjegye** hivatkozásra kattintva érheti el. Az ingyenes díjszabási csomag alkalmazásaiban a támogatási források az [élő csevegéshez](howto-show-hide-chat.md)is hozzáférést biztosítanak.
+* Az alkalmazásból való kijelentkezéshez válassza a **fiók** ikont.
 
 A kezelőfelületen egy világos és egy sötét téma közül választhat:
 

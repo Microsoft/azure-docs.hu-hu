@@ -1,5 +1,5 @@
 ---
-title: Riasztások használata a helyszíni felügyeleti konzolon
+title: Riasztások kezelése a helyszíni felügyeleti konzolon
 description: A helyszíni felügyeleti konzol segítségével vállalati nézetet kaphat a hálózat legutóbbi fenyegetésekről, és jobban megismerheti, hogyan kezelik az érzékelőket a felhasználók.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ebd5a0c14b6f9e3a57e3a7df888b5f9d24f9a2df
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840577"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523617"
 ---
-# <a name="work-with-alerts-on-the-on-premises-management-console"></a>Riasztások használata a helyszíni felügyeleti konzolon 
+# <a name="work-with-alerts-on-the-on-premises-management-console"></a>Riasztások kezelése a helyszíni felügyeleti konzolon 
 
 A felügyeleti konzol **riasztások** ablakában a következőket teheti:
 
@@ -119,13 +119,34 @@ Az eszközök megtekintése a zóna térképén:
 
 ## <a name="manage-alert-events"></a>Riasztási események kezelése
 
-A szervezeti érzékelők által észlelt riasztási eseményeket a következőképpen kezelheti:
+Több lehetőség is rendelkezésre áll a riasztási események kezeléséhez a helyszíni felügyeleti konzolról.
 
 - Riasztási események megismerése vagy nyugtázása. Válassza a **tanulás & tudomásul** vétele lehetőséget az összes engedélyezett riasztási esemény megismeréséhez, valamint az összes olyan riasztási esemény elfogadásához, amelyik jelenleg nem ismerhető fel.
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="Az összes megismeréséhez válassza a & tudomásul vétele lehetőséget.":::
 
 - Riasztási események elnémítása és feloldása.
+
+Ha többet szeretne megtudni a riasztási események megismeréséről, visszaigazolásáról és elnémításáról, tekintse meg az érzékelő [riasztási események kezelése](how-to-manage-the-alert-event.md) című cikket.
+
+## <a name="export-alert-information"></a>Riasztási adatok exportálása
+
+Riasztási adatok exportálása CSV-fájlba. Exportálhatja az összes észlelt riasztás adatait, vagy exportálhatja az adatokat a szűrt nézet alapján. A rendszer a következő adatokat exportálja:
+
+- Forrás címe
+- Cél címe
+- Riasztás címe
+- A riasztás súlyossága
+- Riasztási üzenet
+- További információ
+- Elismert állapot
+- PCAP rendelkezésre állása
+
+Exportálás:
+
+1. Válassza a riasztások lehetőséget az oldal menüjében.
+1. Válassza az Export (Exportálás) lehetőséget.
+1. Válassza a kiterjesztett riasztások exportálása lehetőséget, hogy a riasztási információkat külön sorokban exportálja a több eszközt magában foglaló riasztások esetén. Ha a kiterjesztett riasztások exportálása lehetőséget választja, a. csv-fájl a riasztás duplikált sorát fogja létrehozni az egyes sorok egyedi elemeivel. Ezzel a beállítással egyszerűbbé válik az exportált riasztási események vizsgálata.  
 
 ## <a name="create-alert-exclusion-rules"></a>Riasztás kizárási szabályainak létrehozása
 
@@ -225,6 +246,6 @@ Az API használatával létrehozott szabályok a **kizárási szabály** ablakba
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Képernyőkép a kizárási szabály szerkesztése nézetről.":::
 
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
 [Riasztások használata az érzékelőn](how-to-work-with-alerts-on-your-sensor.md)

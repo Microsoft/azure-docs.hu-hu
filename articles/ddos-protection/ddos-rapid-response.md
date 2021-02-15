@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814193"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521781"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS – gyors reagálás
 
@@ -30,7 +30,7 @@ Aktív hozzáférés esetén Azure DDoS Protection a standard szintű ügyfelek 
 
 A DRR csak akkor folytassa, ha: 
 
-- A DDoS-támadások során, ha úgy látja, hogy a védett erőforrás teljesítménye súlyosan csökken, vagy az erőforrás nem érhető el. Tekintse át a fenti 2. lépést a figyelők konfigurálása az erőforrások rendelkezésre állásának és a teljesítménnyel kapcsolatos problémák észlelése érdekében.
+- A DDoS-támadások során, ha úgy látja, hogy a védett erőforrás teljesítménye súlyosan csökken, vagy az erőforrás nem érhető el. 
 - Úgy gondolja, hogy az erőforrás DDoS-támadás alá esik, de DDoS Protection szolgáltatás nem csökkenti a támadás hatékonyságát.
 - Olyan vírusos eseményt tervez, amely jelentősen növeli a hálózati forgalmat.
 - Kritikus üzleti hatású támadások esetén.
@@ -53,7 +53,7 @@ A DRR követi a Azure Rapid Response támogatási modellt. A gyors reagálással
 
 További információért olvassa el a [DDoS Protection standard dokumentációt](./ddos-protection-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [tesztelheti a szimulációkat](test-through-simulations.md).
 - Megtudhatja [, hogyan tekintheti meg és konfigurálhatja a DDoS Protection telemetria](telemetry.md).

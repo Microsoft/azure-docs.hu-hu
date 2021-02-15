@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 3d5a29ed26d58f0cbaa57768d4b8ad236283deb9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621312"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523855"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Tudnivalók az Azure Defender for IoT Network telepítőről
 
@@ -534,24 +534,23 @@ A hely üzembe helyezése előtt tekintse át ezt a listát:
 
 | **#** | **Feladat vagy tevékenység** | **Állapot** | **Megjegyzések** |
 |--|--|--|--|
-| 1 | Adja meg a globálisat. | ☐ |  |
-| 3 | Berendezések megrendelése. | ☐ |  |
-| 4 | Készítse elő a hálózatban lévő alhálózatok listáját. | ☐ |  |
-| 5 | Adja meg az üzemi hálózatok VLAN-listáját. | ☐ |  |
-| 6 | Adja meg a hálózat kapcsoló modelljeinek listáját. | ☐ |  |
-| 7 | Adja meg az ipari berendezések szállítóinak és protokolljainak listáját. | ☐ |  |
-| 8 | Adja meg az érzékelők hálózati adatait (IP-cím, alhálózat, D-GW, DNS). | ☐ |  |
-| 9 | Hozza létre a szükséges tűzfalszabályok és a hozzáférési listát. | ☐ |  |
-| 10 | Hozzon létre átfedésben lévő portokat a portok figyelésére szolgáló kapcsolókon, vagy konfigurálja a hálózati csapokat a kívánt módon. | ☐ |  |
-| 11 | Készítse elő a rack-területet az érzékelő berendezésekhez. | ☐ |  |
-| 12 | Munkaállomások előkészítése a személyzet számára. | ☐ |  |
-| 13 | Adjon meg egy billentyűzetet, egy figyelőt és egy egeret a Defender számára a IoT rack-eszközökhöz. | ☐ |  |
-| 14 | A berendezések csatlakoztatása és a kábelek csatlakoztatása. | ☐ |  |
-| 15 | A központi telepítés támogatására szolgáló hely erőforrásainak lefoglalása. | ☐ |  |
-| 16 | Hozzon létre Active Directory csoportokat vagy helyi felhasználókat. | ☐ |  |
-| 17 | Set-up Training (saját tanulás). | ☐ |  |
-| 18 | Ugrás vagy nem ugrás. | ☐ |  |
-| 19 | A központi telepítés dátumának beolvasása. | ☐ |  |
+| 1 | Berendezések megrendelése. | ☐ |  |
+| 2 | Készítse elő a hálózatban lévő alhálózatok listáját. | ☐ |  |
+| 3 | Adja meg az üzemi hálózatok VLAN-listáját. | ☐ |  |
+| 4 | Adja meg a hálózat kapcsoló modelljeinek listáját. | ☐ |  |
+| 5 | Adja meg az ipari berendezések szállítóinak és protokolljainak listáját. | ☐ |  |
+| 6 | Adja meg az érzékelők hálózati adatait (IP-cím, alhálózat, D-GW, DNS). | ☐ |  |
+| 7 | Hozza létre a szükséges tűzfalszabályok és a hozzáférési listát. | ☐ |  |
+| 8 | Hozzon létre átfedésben lévő portokat a portok figyelésére szolgáló kapcsolókon, vagy konfigurálja a hálózati csapokat a kívánt módon. | ☐ |  |
+| 9 | Készítse elő a rack-területet az érzékelő berendezésekhez. | ☐ |  |
+| 10 | Munkaállomások előkészítése a személyzet számára. | ☐ |  |
+| 11 | Adjon meg egy billentyűzetet, egy figyelőt és egy egeret a Defender számára a IoT rack-eszközökhöz. | ☐ |  |
+| 12 | A berendezések csatlakoztatása és a kábelek csatlakoztatása. | ☐ |  |
+| 13 | A központi telepítés támogatására szolgáló hely erőforrásainak lefoglalása. | ☐ |  |
+| 14 | Hozzon létre Active Directory csoportokat vagy helyi felhasználókat. | ☐ |  |
+| 15 | Set-up Training (saját tanulás). | ☐ |  |
+| 16 | Ugrás vagy nem ugrás. | ☐ |  |
+| 17 | A központi telepítés dátumának beolvasása. | ☐ |  |
 
 
 | **Date** | **Megjegyzés** | **Központi telepítés dátuma** | **Megjegyzés** |
@@ -696,6 +695,6 @@ Vegye fel a kapcsolatot egy Active Directory rendszergazdájával, és hozzon l�
 | Kamera | |
 | X-ray gép | |
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók a IoT-beli Defender-telepítésről](how-to-install-software.md)

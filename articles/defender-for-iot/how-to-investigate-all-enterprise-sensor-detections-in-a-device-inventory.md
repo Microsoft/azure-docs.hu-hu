@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b4d824386a7c14165697f4b93f2e93cf0182a855
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625464"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100524025"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Az eszközök leltárában szereplő összes vállalati érzékelő észlelésének vizsgálata
 
@@ -225,6 +225,6 @@ A következő további zónák információi érhetők el:
 
 - **Frissítés** állapota: Ha a csatlakoztatott érzékelő frissítése folyamatban van, a frissítési állapotok jelennek meg. A frissítés során a helyszíni felügyeleti konzol nem fogadja az eszköz adatait az érzékelőtől.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)

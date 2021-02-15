@@ -1,5 +1,5 @@
 ---
-title: Rendszerkövetelmények
+title: Rendszer-előfeltételek
 description: Szerezze be a IoT Azure Defender futtatásához szükséges rendszerkövetelményeket.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 8ee3afcae69ca6c082452e590eb8370bcc122af4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7b609fec2a47dc0685b30dac12f43263127f70ef
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97844509"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523209"
 ---
-# <a name="system-prerequisites"></a>Rendszerkövetelmények
+# <a name="system-prerequisites"></a>Rendszer-előfeltételek
 Ez a cikk az Azure Defender IoT való futtatásának rendszerkövetelményeit sorolja fel.
 
 ## <a name="minimum-requirements"></a>Minimális követelmények
@@ -31,7 +31,7 @@ A IoT Defender az összes európai régióból érkező forgalmat a Nyugat-euró
 
 További információ: [IoT hub támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
 
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
-- [Szükséges berendezések azonosítása](how-to-identify-required-appliances.md)
-- [Tudnivalók az Azure Defender for IoT Network telepítőről](how-to-set-up-your-network.md)
+[Szükséges berendezések azonosítása](how-to-identify-required-appliances.md) 
+ [Tudnivalók az Azure Defender for IoT Network telepítőről](how-to-set-up-your-network.md)
