@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509031"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523566"
 ---
 # <a name="work-with-device-notifications"></a>Az eszközértesítések kezelése
 
@@ -48,7 +48,7 @@ A hálózati tevékenységre vonatkozó értesítések fogadása mellett *riaszt
 
 Használjon keresési szűrőket az Önt érdeklő értesítések megjelenítéséhez.
 
-| Szűrés | Leírás |
+| Szűrés | Description |
 |--|--|
 | Szűrés típus szerint | Egy adott területre kiterjedő értesítések megtekintése. Megtekintheti például az inaktív eszközökre vonatkozó értesítéseket. |
 | Szűrés dátumtartomány szerint | Egy adott időtartományra kiterjedő értesítések megjelenítése. Megtekintheti például a csak az elmúlt héten küldött értesítéseket. |
@@ -58,7 +58,7 @@ Használjon keresési szűrőket az Önt érdeklő értesítések megjelenítés
 
 A következő táblázat ismerteti a megjelenő értesítési eseményeket, valamint a kezelési lehetőségeit. Az eszköz adatait a javasolt értékkel frissítheti, vagy elvetheti az értesítést. Egy értesítés elvetése után az eszköz adatai nem frissülnek a javasolt információkkal. Ha a rendszer újra észleli a forgalmat, az értesítés újra el lesz küldve.
 
-| Értesítési események típusai | Leírás | Válaszok |
+| Értesítési események típusai | Description | Válaszok |
 |--|--|--|
 | Új IP-cím észlelhető | Új IP-cím van társítva az eszközhöz. Öt forgatókönyv észlelése lehetséges: <br /><br /> További IP-cím lett társítva egy eszközhöz. Ez az eszköz egy meglévő MAC-címnek is társítva van.<br /><br /> A rendszer új IP-címet észlelt egy meglévő MAC-címet használó eszközhöz. Az eszköz jelenleg nem kommunikál IP-cím használatával.<br /> <br /> A rendszer új IP-címet észlelt egy NetBIOS-nevet használó eszközhöz. <br /><br /> A rendszer IP-címet észlelt egy MAC-címhez társított eszköz felügyeleti felülete. <br /><br /> A rendszer új IP-címet észlelt egy virtuális IP-címet használó eszközhöz. | **További IP-cím beállítása eszközre** (eszközök egyesítése) <br /> <br />**Meglévő IP-cím cseréje** <br /> <br /> **Elvetés**<br /> Távolítsa el az értesítést. |
 | Inaktív eszközök | Az eszközön a forgalom több mint 60 napig nem észlelhető. | **Törlés** <br /> Ha az eszköz nem része a hálózatnak, távolítsa el. <br /><br />**Elvetés** <br /> Ha az eszköz a hálózat része, távolítsa el az értesítést. Ha az eszköz inaktív (például azért, mert véletlenül le van választva a hálózatról), zárja be az értesítést, és csatlakoztassa újra az eszközt. |
@@ -98,6 +98,6 @@ Vizsgálja meg a javaslatokat az operációs rendszer besorolásának gazdagít�
 
 Ha elfogadja a javaslatot, az operációs rendszer típusának adatai frissülnek az érzékelőben.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Riasztások megtekintése](how-to-view-alerts.md)

@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése az Amazon Vöröseltolódásból Azure Data Factory használatával
 description: Megtudhatja, hogyan helyezhet át az Amazon Vöröseltolódásból származó adatok Azure Data Factory másolási tevékenység használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 025250f47bf0630be5ae988140a5feeecfd0eaf0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463092"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377550"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Vöröseltolódásból a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -61,12 +56,12 @@ Az alábbi táblázat az Amazon vöröseltolódás társított szolgáltatásáh
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **AmazonRedshift** értékre kell beállítani. |Igen |
-| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Igen |
+| **típusa** |Ezt a tulajdonságot **AmazonRedshift** értékre kell beállítani. |Yes |
+| **Server** |Az Amazon Vöröseltolódási kiszolgáló IP-címe vagy állomásneve. |Yes |
 | **Port** |Az Amazon vöröseltolódás-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem (az alapértelmezett érték 5439) |
-| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Igen |
-| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Igen |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Igen |
+| **adatbázis** |Az Amazon vöröseltolódás-adatbázis neve. |Yes |
+| **username** |Annak a felhasználónak a neve, aki hozzáfér az adatbázishoz. |Yes |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -87,7 +82,7 @@ Másolási tevékenység esetén, ha a forrás **AmazonRedshiftSource** típusú
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **lekérdezés** | Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
-| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | Nem |
+| **redshiftUnloadSettings** | A tulajdonságot tartalmazza **a vöröseltolódás eltávolítása** parancs használatakor. | No |
 | **s3LinkedServiceName** | Az Amazon S3, amelyet ideiglenes tárolóként kell használni. A társított szolgáltatás egy **awsaccesskey használnia** típusú Azure Data Factory-név használatával van megadva. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 | **bucketName** | Azt az Amazon S3 gyűjtőt jelzi, amely az ideiglenes adattároláshoz használható. Ha ez a tulajdonság nincs megadva, a másolási tevékenység automatikusan létrehoz egy gyűjtőt. | A **redshiftUnloadSettings** tulajdonság használatakor szükséges |
 
@@ -339,7 +334,7 @@ A következő leképezések akkor használatosak, ha a másolási tevékenység 
 | CHAR |Sztring |
 | VARCHAR |Sztring |
 | DATE |DateTime |
-| IDŐBÉLYEG |DateTime |
+| IDŐBÉLYEGZŐ |DateTime |
 | TEXT |Sztring |
 
 ## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
@@ -351,5 +346,5 @@ Amikor Adatmásolást végez egy kapcsolódó adattárból, a nem kívánt eredm
 ## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
 Ismerje meg a másolási tevékenység teljesítményét befolyásoló főbb tényezőket és a teljesítmény optimalizálásának módjait a [másolási tevékenység teljesítményének és hangolási útmutatójának](data-factory-copy-activity-performance.md)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenységgel rendelkező folyamatok létrehozásával kapcsolatos részletes útmutatásért lásd a [másolási tevékenységről szóló oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

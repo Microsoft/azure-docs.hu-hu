@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 10051bfdf7a93a8d6c83d649a7b0ad008b5e2caf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624591"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523957"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Érzékelők kezelése a felügyeleti konzolról
 
@@ -64,7 +64,7 @@ A rendszerbeállítások alkalmazása:
 
 6. Az érzékelő fán válassza ki azokat az elemeket, amelyekre alkalmazni kívánja a konfigurációt.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="update-versions"></a>Frissítési verziók
 
@@ -72,7 +72,7 @@ A helyszíni felügyeleti konzolról egyszerre több érzékelőt is frissíthet
 
 Több érzékelő frissítése:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/).
 
 2. Nyissa meg az Azure Defender IoT.
 
@@ -144,7 +144,7 @@ A leválasztott érzékelőkkel kapcsolatos információkat tartalmazó harmadik
 
 Az érzékelők védelmét a IoT-motorok öt védelmezője védi. Engedélyezheti vagy letilthatja a csatlakoztatott érzékelőkhöz tartozó motorokat.
 
-| Motor | Leírás | Példaforgatókönyv |
+| Motor | Description | Példaforgatókönyv |
 |--|--|--|
 | Protokoll-megsértési motor | A protokollok megsértése akkor fordul elő, ha a csomag szerkezete vagy a mező értéke nem felel meg a protokoll specifikációjának. | "Szabálytalan MODBUS művelet (kód: nulla)" riasztás. Ez a riasztás azt jelzi, hogy egy elsődleges eszköz 0 értékű kérelmet küld egy másodlagos eszköznek. Ez a protokoll specifikációja szerint nem engedélyezett, és előfordulhat, hogy a másodlagos eszköz nem kezeli helyesen a bemenetet. |
 | Házirend-megsértési motor | A szabályzat megsértése a megtanult vagy konfigurált szabályzatban meghatározott alapkonfigurációi viselkedéstől való eltéréssel történik. | "Jogosulatlan HTTP-felhasználói ügynök" riasztás. Ez a riasztás azt jelzi, hogy a szabályzat által nem megtanult vagy jóváhagyott alkalmazás HTTP-ügyfélként van használatban az eszközön. Ez lehet egy új böngésző vagy alkalmazás az eszközön. |
@@ -235,7 +235,7 @@ Az érzékelő biztonsági mentési fájljai a következő formátumban lesznek 
 
    - Egy külső kiszolgálóra történő biztonsági mentéshez engedélyezze az **Egyéni elérésiút** -kapcsolót, és adjon meg egy helyet. A következő számok és karakterek támogatottak: `/, a-z, A-Z, 0-9, and, _` . 
 
-7. Válassza a **Mentés** lehetőséget. 
+7. Kattintson a **Mentés** gombra. 
 
 Azonnali biztonsági mentés: 
 
@@ -315,6 +315,6 @@ Egy SMB-kiszolgáló beállításához, hogy az érzékelő biztonsági mentés�
 
 9. Állítsa a következőre: `Backup.shared_location` `<backup_folder_name_on_cyberx_server>` .
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Különálló érzékelők kezelése](how-to-manage-individual-sensors.md)

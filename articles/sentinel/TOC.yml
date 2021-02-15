@@ -210,6 +210,8 @@
                       href: connect-zscaler.md
                 - name: '3. LÉPÉS: A kapcsolat ellenőrzése'
                   href: connect-cef-verify.md
+        - name: Egyéni összekötők létrehozása
+          href: create-custom-connector.md
         - name: Fenyegetésfelderítés csatlakoztatása
           href: connect-threat-intelligence.md
         - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
@@ -255,8 +257,6 @@
           href: hunting-with-rest-api.md
         - name: A listák kezelése REST-API-val
           href: watchlist-with-rest-api.md
-    - name: Azure Monitor adathivatkozás
-      href: /azure/azure-monitor/reference/
     - name: Az Azure Sentinel Logic Apps-összekötője
       href: /connectors/azuresentinel/
     - name: Hálózati normalizációs séma
@@ -275,8 +275,6 @@
   items:
     - name: Hasznos források
       href: resources.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
       href: /archive/blogs/azuresecurity/
     - name: Régiónkénti rendelkezésre állás

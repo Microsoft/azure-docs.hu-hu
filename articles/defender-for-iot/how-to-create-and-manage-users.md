@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977013"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522342"
 ---
 # <a name="about-defender-for-iot-console-users"></a>A IoT-konzol felhasználói
 
@@ -185,7 +185,7 @@ Active Directory konfigurálása:
 
 1. Állítsa be a Active Directory kiszolgáló paramétereit az alábbiak szerint:
 
-   | Kiszolgáló paraméter | Leírás |
+   | Kiszolgáló paraméter | Description |
    |--|--|
    | Tartományvezérlő teljes tartományneve | Állítsa a teljes tartománynevet (FQDN) pontosan úgy, ahogy az az LDAP-kiszolgálón megjelenik. Adja meg például a következőt: `host1.subdomain.domain.com`. |
    | Tartományvezérlő portja | Adja meg azt a portot, amelyen az LDAP konfigurálva van. |
@@ -193,7 +193,7 @@ Active Directory konfigurálása:
    | Active Directory csoportok | Adja meg az LDAP-kiszolgálón Active Directory konfigurációjában definiált csoportnevet. |
    | Megbízható tartományok | Megbízható tartomány hozzáadásához adja hozzá a tartománynevet és a megbízható tartomány kapcsolódási típusát. <br />A megbízható tartományokat csak a felhasználók által definiált felhasználók számára állíthatja be. |
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Megbízható kiszolgáló hozzáadásához válassza a **kiszolgáló hozzáadása** lehetőséget, és konfigurálja a másik kiszolgálót.
 
@@ -265,7 +265,7 @@ A felhasználó jelszavának alaphelyzetbe állítása a helyszíni felügyeleti
 
 1. Válassza a **Frissítés** lehetőséget.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Az érzékelő](how-to-activate-and-set-up-your-sensor.md) 
  aktiválása és beállítása [A helyszíni felügyeleti konzol](how-to-activate-and-set-up-your-on-premises-management-console.md) 

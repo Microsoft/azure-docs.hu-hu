@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 459bac2ef01e69b9316af7e8374e7416ab51d915
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562709"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523906"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Érzékelők beléptetése és kezelése a Defender for IoT portálon
 
@@ -52,12 +52,10 @@ Aktiválási fájl letöltése:
 
 ## <a name="view-onboarded-sensors"></a>Beépített érzékelők megtekintése
 
-A [Defender for IoT portálon](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)megtekintheti a beépített érzékelőkre vonatkozó alapvető információkat. 
+A [Defender for IoT portálon](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)megtekintheti a beépített érzékelőkre vonatkozó alapvető információkat.
 
 1. Válassza **a helyek és érzékelők** lehetőséget.
-1. A **helyek és érzékelők** lapon a szűrő-és keresési eszközök segítségével megkeresheti a szükséges szenzor-információkat.
-
-Az elérhető információk a következők:
+1. A szűrő-és keresési eszközökkel megkeresheti az érzékelő és a fenyegetések felderítéséhez szükséges információkat.
 
 - Hány érzékelők lettek bevezetve
 - A felhőhöz csatlakoztatott és helyileg felügyelt érzékelők száma
@@ -68,32 +66,40 @@ Az elérhető információk a következők:
 
 Az érzékelőkkel kapcsolatos felügyeleti feladatokhoz használja a [Defender for IoT portált](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) .
 
-### <a name="export"></a>Exportálás
+A beépített érzékelők a **helyek és érzékelők** lapon tekinthetők meg. Ezen az oldalon szerkesztheti az érzékelő adatait is.
+
+### <a name="export-sensor-details"></a>Az érzékelő adatainak exportálása
 
 A beépített érzékelő adatainak exportálásához válassza az **Exportálás** ikont a **helyek és érzékelők** oldal tetején.
 
-### <a name="edit"></a>Szerkesztés
+### <a name="edit-sensor-zone-details"></a>Az érzékelő zóna részleteinek szerkesztése
 
-A **helyek és érzékelők** szerkesztési eszközeivel adhatja hozzá és szerkesztheti a hely nevét, a zónát és a címkéket.
+A **helyek és érzékelők** szerkesztési lehetőségeivel szerkesztheti az érzékelő nevét és zónáját.
 
-### <a name="delete"></a>Törlés
+Szerkesztés:
+
+1. Kattintson a jobb gombbal a szerkeszteni kívánt érzékelő három pontra (**...**).
+1. Válassza a Szerkesztés elemet.
+1. Frissítse az érzékelő zónát, vagy hozzon létre egy új zónát.
+
+### <a name="delete-a-sensor"></a>Érzékelő törlése
 
 Ha töröl egy felhőhöz csatlakoztatott érzékelőt, a rendszer nem továbbítja az adatokat az IoT hubhoz. Törölje a helyileg csatlakoztatott érzékelőket, ha már nem dolgozik velük.
 
 Érzékelő törlése:
 
-1. Válassza ki a törölni kívánt érzékelő három pontot (**..**.). 
+1. Válassza ki a törölni kívánt érzékelő három pontot (**..**.).
 1. Erősítse meg a törlési szándékát.
 
-### <a name="reactivate"></a>Újraaktiválás
+### <a name="reactivate-a-sensor"></a>Érzékelő újraaktiválása 
 
-Előfordulhat, hogy frissíteni szeretné az érzékelő által felügyelt módot. Például:
+Előfordulhat, hogy újra kell aktiválnia az érzékelőt, mert a következőket kívánja végezni:
 
-- **Helyileg felügyelt mód helyett felhőalapú csatlakozású módban dolgozhat**: ehhez frissítse a helyileg csatlakoztatott érzékelőhöz tartozó aktiválási fájlt egy felhőalapú érzékelőhöz tartozó aktiválási fájllal. Az újraaktiválást követően az érzékelő és az [IoT-portál Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)-észlelései is megjelennek. Az újraaktiválási fájl sikeres feltöltése után a rendszer az újonnan észlelt riasztási adatokat küldi el az Azure-nak.
+- **Helyileg felügyelt mód helyett felhőalapú kapcsolódási mód használata**: az újraaktiválást követően az érzékelők észlelései az érzékelőben jelennek meg, az újonnan észlelt riasztási információk pedig az IoT hub-on keresztül érkeznek. Ezek az információk megoszthatók más Azure-szolgáltatásokkal, például az Azure Sentinel használatával.
 
-- **Helyileg csatlakoztatott módban dolgozhat a felhőalapú kapcsolat helyett**: ehhez frissítse az aktiválási fájlt egy felhőhöz csatlakoztatott érzékelőhöz egy, a helyileg felügyelt érzékelőhöz tartozó aktiválási fájllal. Az újraaktiválást követően az érzékelő észlelési adatai csak az érzékelőben jelennek meg.
+- **Helyileg felügyelt módban dolgozhat a felhőalapú kapcsolat helyett**: az újraaktiválást követően az érzékelő észlelési adatai csak az érzékelőben jelennek meg.
 
-- **Az érzékelő társítása egy új IoT-hubhoz**: ehhez újra regisztrálnia kell az érzékelőt, és fel kell töltenie egy új aktiválási fájlt.
+- **Az érzékelő társítása egy új IoT hubhoz**: ehhez regisztrálja újra az érzékelőt egy új hubhoz, majd töltsön le egy új aktiválási fájlt.
 
 Érzékelő újraaktiválása:
 
@@ -103,20 +109,20 @@ Előfordulhat, hogy frissíteni szeretné az érzékelő által felügyelt módo
 
 3. Törölje az érzékelőt.
 
-4. Az érzékelőt újra bevezetheti **a bevezetési oldalról** az új mód vagy egy új IoT hub között.
+4. Az érzékelőt az új módban, vagy egy új IoT hub-ban, az Első lépések lapról válassza ki az **érzékelőt** .
 
-5. Töltse le az aktiválási fájlt az **aktiválási fájl letöltése** lapról.
+5. Töltse le az aktiválási fájlt.
 
-6. Jelentkezzen be a Defender for IoT szenzor-konzolra.
+1. Jelentkezzen be a Defender for IoT szenzor-konzolra.
 
 7. Az érzékelő konzolon válassza a **Rendszerbeállítások** , majd az **újraaktiválás** lehetőséget.
 
    :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Töltse fel az aktiválási fájlt az érzékelő újraaktiválásához.":::
 
-8. Válassza a **feltöltés** lehetőséget, és válassza ki a mentett fájlt.
+8. Válassza a **feltöltés** lehetőséget, és válassza ki az előkészítési érzékelő lapról mentett fájlt.
 
-9. Válassza az **aktiválás** lehetőséget. 
+9. Válassza az **aktiválás** lehetőséget.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Az érzékelő aktiválása és beállítása](how-to-activate-and-set-up-your-sensor.md)

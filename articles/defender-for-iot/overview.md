@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: de8638cbb4e39ccf6013e5a8d596417401700c8d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621710"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521594"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Üdvözli a IoT készült Azure Defender!
 
@@ -81,6 +81,6 @@ Az olyan fenyegetések észlelése, mint a botnetek, a találgatásos támadáso
 
 Az Azure Defender for IoT Micro Agent tartalmazza a forráskódot, így a Micro Agent a belső vezérlőprogram részét képezi, vagy testreszabhatja úgy, hogy csak a szükséges igényeket foglalja bele. Bináris csomagként is elérhető, vagy közvetlenül integrálható más Azure IoT-megoldásokhoz. 
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Defender a IoT architektúrához](architecture.md)

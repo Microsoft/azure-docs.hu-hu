@@ -8,12 +8,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515903"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522614"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
@@ -168,14 +168,14 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
 
 ## <a name="monitor-your-export"></a>Az Exportálás figyelése
 
-Az IoT Central-beli exportálások állapotának megismerése mellett nyomon követheti, hogy az adatok Mennyibe áramlanak az exporton, és figyelje az exportálási hibákat a Azure Monitor adatplatformon. A Azure Portal, a REST API, a PowerShellben vagy az Azure CLI-ben lévő lekérdezésekben az exportálási és eszközállapot-mérőszámokat is elérheti. Jelenleg ezeket az adatexportálási metrikákat a Azure Monitorban figyelheti:
+A IoT Centralban lévő exportálások állapotának megtekintése mellett a [Azure monitor](../../azure-monitor/overview.md) használatával megtekintheti, hogy mennyi adattal exportálja, és milyen exportálási hibákba ütközik. Az exportálási és az Eszközállapot-metrikákat a Azure Portalban lévő diagramokon REST API, a PowerShellben vagy az Azure CLI-ben lévő lekérdezésekkel érheti el. Jelenleg a következő adatexportálási metrikákat figyelheti Azure Monitorban:
 
-1. Az exportáláshoz bejövő üzenetek száma a szűrők alkalmazása előtt
-2. A szűrőkkel továbbított üzenetek száma
-3. A célhelyekre sikeresen exportált üzenetek száma
-4. Észlelt hibák száma
- 
-[További információ a IoT Central metrikák eléréséről.](howto-monitor-application-health.md)
+- Az exportáláshoz bejövő üzenetek száma a szűrők alkalmazása előtt.
+- A szűrőkkel továbbított üzenetek száma.
+- A célhelyekre sikeresen exportált üzenetek száma.
+- Az észlelt hibák száma.
+
+További információ: [IoT Central alkalmazások általános állapotának figyelése](howto-monitor-application-health.md).
 
 ## <a name="destinations"></a>Célhelyek
 

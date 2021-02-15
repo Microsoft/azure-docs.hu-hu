@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6a1a4d13ee9f9032c739773b678600d52dec82b8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508743"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523923"
 ---
 # <a name="manage-alert-events"></a>Riasztási események kezelése
 
@@ -23,7 +23,8 @@ A riasztási események kezeléséhez a következő lehetőségek állnak rendel
  | **Learn** | Engedélyezze az észlelt eseményt. További információkért lásd: [az események megismerése és](#about-learning-and-unlearning-events)a nem betanulás. |
  | **Tudomásul vesz** | A riasztás elrejtése egyszer az észlelt eseménynél. A riasztás újra aktiválódik, ha az eseményt újra észleli a rendszer. További információ: [Tudnivalók a nyugtázás és a nem nyugtázott eseményekről](#about-acknowledging-and-unacknowledging-events). |
  | **Némító** | A tevékenységek folyamatos figyelmen kívül hagyása azonos eszközökkel és hasonló adatforgalommal. További információ: [az elnémítással és az elnémítással kapcsolatos események](#about-muting-and-unmuting-events). |
-
+ 
+A riasztási adatokat is exportálhatja.
 ## <a name="about-learning-and-unlearning-events"></a>Az események megismerése és a nem betanulás
 
 Azok az események, amelyek jelzik, hogy a megtanult hálózattól való eltérések érvényes hálózati módosításokat tükröznek. Ilyenek lehetnek például egy új, a hálózathoz csatlakozó vagy a belső vezérlőprogram-frissítésre alkalmas eszköz.
@@ -68,9 +69,9 @@ Ilyen helyzetekben a tanulás nem érhető el. Ha a tanulás nem hajtható végr
 > [!NOTE] 
 > Nem lehet némítani azokat az eseményeket, amelyekben egy internetes eszköz a forrásként vagy a célhelyként van meghatározva.
 
-### <a name="what-traffic-is-muted"></a>Milyen forgalom van elnémítva?
+### <a name="what-alert-activity-is-muted"></a>Milyen riasztási tevékenység van elnémítva?
 
-A tompított forgatókönyvek közé tartozik a hálózati eszközök és az események által észlelt forgalom. A riasztás címe az elnémítva forgalmat mutatja.
+A tompított forgatókönyvek között szerepelnek az események által észlelt hálózati eszközök és forgalom. A riasztás címe az elnémítva forgalmat mutatja.
 
 Az elnémítva kívánt eszköz vagy eszközök képként lesznek megjelenítve a riasztásban. Ha két eszköz jelenik meg, akkor a közöttük található adott riasztások közötti forgalom el lesz némítva.
 
@@ -88,7 +89,7 @@ Ha egy esemény el van némítva, figyelmen kívül hagyja a rendszer minden alk
 
 **Egy esemény elnémítása után:**
 
-- A riasztás a **visszaigazolt** riasztási nézetben lesz elérhető, amíg nem áll le az Elnémítás.
+- A riasztás a **visszaigazolt** riasztási nézetben lesz elérhető, amíg a rendszer nem elnémítja.
 
 - Az Elnémítás művelet az **esemény idővonalán** fog megjelenni.
 
@@ -106,6 +107,25 @@ Ha egy esemény el van némítva, figyelmen kívül hagyja a rendszer minden alk
 
 2. Vigye az egérmutatót a riasztás fölé, és ellenőrizze, hogy elnémítva van-e.  
 
-## <a name="see-also"></a>Lásd még
+## <a name="export-alert-information"></a>Riasztási adatok exportálása
+
+Riasztási adatok exportálása CSV-fájlba. Exportálhatja az összes észlelt riasztás adatait, vagy exportálhatja az adatokat a szűrt nézet alapján. A rendszer a következő adatokat exportálja:
+
+- Forrás címe
+- Cél címe
+- Riasztás címe
+- A riasztás súlyossága
+- Riasztási üzenet
+- További információ
+- Elismert állapot
+- PCAP rendelkezésre állása
+
+Exportálás:
+
+1. Válassza a riasztások lehetőséget az oldal menüjében.
+1. Válassza az Export (Exportálás) lehetőséget.
+1. Válassza a kiterjesztett riasztások exportálása lehetőséget, hogy a riasztási információkat külön sorokban exportálja a több eszközt magában foglaló riasztások esetén. Ha a kiterjesztett riasztások exportálása lehetőséget választja, a. csv-fájl létrehozza a riasztási esemény duplikált sorát az egyes sorok egyedi elemeivel. Ezzel a beállítással egyszerűbbé válik az exportált riasztási események vizsgálata.
+
+## <a name="next-steps"></a>Következő lépések
 
 [A monitorozandó forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)

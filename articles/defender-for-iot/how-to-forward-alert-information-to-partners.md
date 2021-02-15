@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841145"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522733"
 ---
 # <a name="forward-alert-information"></a>Riasztási információk továbbítása
 
@@ -112,7 +112,7 @@ Adja meg a következő paramétereket:
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="Állítsa be a titkosítást a továbbítási szabályhoz.":::
 
-| Syslog szöveges üzenet kimeneti mezői | Leírás |
+| Syslog szöveges üzenet kimeneti mezői | Description |
 |--|--|
 | Dátum és idő | Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |
 | Prioritás | User. Alert |
@@ -121,7 +121,7 @@ Adja meg a következő paramétereket:
 | Üzenet | Érzékelő: az érzékelő neve.<br /> Riasztás: a riasztás címe.<br /> Típus: a riasztás típusa. A **protokoll megsértését**, a **szabályzat megsértését**, **a kártevőket**, a **rendellenességeket** vagy a **működést** lehet megsérteni.<br /> Súlyosság: a riasztás súlyossága. **Figyelmeztetés**, **kisebb**, **fő** vagy **kritikus** lehet.<br /> Forrás: a forrás eszköz neve.<br /> Forrás IP-cím: a forrásoldali eszköz IP-címe.<br /> Cél: a cél eszköz neve.<br /> Cél IP-cím: a céleszköz IP-címe.<br /> Üzenet: a riasztás üzenete.<br /> Riasztási Csoport: a riasztáshoz társított riasztási csoport. |
 
 
-| Syslog-objektum kimenete | Leírás |
+| Syslog-objektum kimenete | Description |
 |--|--|
 | Dátum és idő |   Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |  
 | Prioritás |    User. Alert | 
@@ -129,14 +129,14 @@ Adja meg a következő paramétereket:
 | Üzenet | Érzékelő neve: a készülék neve. <br /> Riasztás időpontja: a riasztás észlelésének időpontja: a syslog-kiszolgáló számítógépének idejétől függően változhat, és a továbbítási szabály időzóna-konfigurációjától függ. <br /> Riasztás címe: a riasztás címe. <br /> Riasztási üzenet: a riasztás üzenete. <br /> Riasztás súlyossága: a riasztás súlyossága: **Figyelmeztetés**, **kisebb**, **fő** vagy **kritikus**. <br /> Riasztás típusa: **protokoll megsértése**, **szabályzat megsértése**, **kártevő**, **rendellenesség** vagy **működési**. <br /> Protokoll: a riasztás protokollja.  <br /> **Source_MAC**: a forrásoldali eszköz IP-címe, neve, szállítója vagy operációs rendszere. <br /> Destination_MAC: a célhely IP-címe, neve, szállítója vagy operációs rendszere. Ha hiányzik az adat, az érték **N/a** lesz. <br /> alert_group: a riasztáshoz társított riasztási csoport. |
 
 
-| Syslog CEF kimeneti formátuma | Leírás |
+| Syslog CEF kimeneti formátuma | Description |
 |--|--|
 | Dátum és idő | Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |
 | Prioritás | User. Alert | 
 | Hostname (Gazdanév) | Érzékelő IP-címe |
 | Üzenet | CEF: 0 <br />Azure Defender IoT-hez <br />Érzékelő neve: az érzékelő berendezés neve. <br />Érzékelő verziója <br />Riasztás címe: a riasztás címe. <br />msg: a riasztás üzenete. <br />protokoll: a riasztás protokollja. <br />Súlyosság: **Figyelmeztetés**, **kisebb**, **fő** vagy **kritikus**. <br />típus: **protokoll megsértése**, **szabályzat megsértése**, **kártevő**, **rendellenesség** vagy **működési**. <br /> Kezdés: a riasztás észlelésének időpontja. <br />A syslog-kiszolgáló számítógépének idejétől eltérő lehet, és a továbbítási szabály időzóna-konfigurációjától függ. <br />src_ip: a forrás eszköz IP-címe.  <br />dst_ip: a céleszköz IP-címe.<br />Cat: a riasztáshoz társított riasztási csoport.  |
 
-| Syslog LEEF kimeneti formátuma | Leírás |
+| Syslog LEEF kimeneti formátuma | Description |
 |--|--|
 | Dátum és idő |   Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |  
 | Prioritás |    User. Alert | 
@@ -203,6 +203,6 @@ Lehet, hogy a rendszergazda definiálta a riasztások kizárási szabályait. Ez
 
 Ez azt jelenti, hogy az Ön által definiált továbbítási szabályok figyelmen kívül hagyhatók a rendszergazda által létrehozott kizárási szabályok alapján. A kizárási szabályok a helyszíni felügyeleti konzolon vannak meghatározva.
 
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
 [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)

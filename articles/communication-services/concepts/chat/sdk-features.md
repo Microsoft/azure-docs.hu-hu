@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 93f90520f9a5f6ec424a7558418abfa4de4699ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625264"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364834"
 ---
 # <a name="chat-client-library-overview"></a>A csevegési ügyfélkódtár áttekintése
 
@@ -44,7 +44,7 @@ A következő lista a kommunikációs szolgáltatások csevegési ügyféloldali
 |                   | Értesítés küldése és fogadása, ha egy tag aktívan beírja az üzenetet egy csevegési szálba <br/> *Nem érhető el, ha több mint 20 tag van egy csevegési szálban*      | ✔️   | ✔️   | ✔️    | ✔️    |
 |                   | Csevegési szál összes üzenetének beolvasása <br/> *Támogatott Unicode-hangulatjelek*                                                  | ✔️   | ✔️  | ✔️    | ✔️  |
 |                   | Hangulatjelek küldése az üzenet tartalmának részeként                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |
-|Valós idejű jelzés (a tulajdonosi jelző csomaggal engedélyezve)| Értesítés küldése, ha egy felhasználó olyan csevegési szálban kap új üzenetet, amelyik tagja                                     | ✔️   | ❌    | ❌  | ❌  |
+|Valós idejű jelzés (a tulajdonosi jelzési csomaggal * *)| Értesítés küldése, ha egy felhasználó olyan csevegési szálban kap új üzenetet, amelyik tagja                                     | ✔️   | ❌    | ❌  | ❌  |
 |                    | Értesítés küldése, ha egy üzenetet egy másik tag szerkeszt egy csevegési szálban, amely tagja a                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Értesítés küldése, ha egy csevegési szál egy másik tag törölte egy üzenetet.                | ✔️   | ❌    | ❌    | ❌  |
 |                    | Értesítés küldése, ha egy másik csevegési szál tagja begépel                                                             | ✔️   | ❌    | ❌    | ❌  |
@@ -53,6 +53,8 @@ A következő lista a kommunikációs szolgáltatások csevegési ügyféloldali
 | Figyelés        | Használat figyelése az elküldött üzenetek tekintetében                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Az alkalmazás által végzett API-kérelmek minőségének és állapotának, valamint a riasztások a portálon keresztüli konfigurálásának monitorozása                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |További funkciók | A [Cognitive Services API-k](../../../cognitive-services/index.yml) és a csevegő ügyféloldali kódtár használatával is lehetővé teszi az intelligens funkciók – *nyelvi fordítás & a beérkező üzenet hangulati elemzését egy ügyfélen, a szöveg átalakítását egy üzenet összeállításához, miközben a tag beszél stb.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+* * A tulajdonosi jelző csomag webes szoftvercsatornák használatával valósítható meg. Ha a webes szoftvercsatornák nem támogatottak, a rendszer visszaküldi a hosszú lekérdezést.
 
 ## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>JavaScript csevegő ügyféloldali függvénytár-támogatás az operációs rendszer és a böngésző számára
 

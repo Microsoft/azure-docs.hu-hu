@@ -4,12 +4,12 @@ description: Az IP-címek és a térinformatikai kezelésének ismertetése az A
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a8969d5d0df2fdacf78815c6f47c7c6bfa73a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333307"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521917"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -68,18 +68,18 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
 
     ![A "Deploy" (üzembe helyezés) feliratú gomb piros színnel](media/ip-collection/deploy.png)
 
-3. Válassza a **Sablon szerkesztése**lehetőséget.
+3. Válassza a **Sablon szerkesztése** lehetőséget.
 
     ![Gomb a "szerkesztés" szöveggel piros színnel](media/ip-collection/edit-template.png)
 
-4. Végezze el az alábbi módosításokat a JSON-ban az erőforráshoz, majd válassza a **Mentés**lehetőséget:
+4. Végezze el az alábbi módosításokat a JSON-ban az erőforráshoz, majd válassza a **Mentés** lehetőséget:
 
     ![A képernyőfelvétel egy vesszőt ad hozzá a "IbizaAIExtension" után, és új sort ad hozzá a "DisableIpMasking" kifejezéssel: true](media/ip-collection/save.png)
 
     > [!WARNING]
-    > Ha olyan hibát tapasztal, amely azt mondja: ** _az erőforráscsoport olyan helyen található, amelyet a sablon egy vagy több erőforrása nem támogat. Válasszon másik erőforráscsoportot._** Ideiglenesen válasszon egy másik erőforráscsoportot a legördülő listából, majd válassza ki újra az eredeti erőforráscsoportot a hiba elhárításához.
+    > Ha olyan hibát tapasztal, amely azt mondja: **_az erőforráscsoport olyan helyen található, amelyet a sablon egy vagy több erőforrása nem támogat. Válasszon másik erőforráscsoportot._** Ideiglenesen válasszon egy másik erőforráscsoportot a legördülő listából, majd válassza ki újra az eredeti erőforráscsoportot a hiba elhárításához.
 
-5. Válassza az **Elfogadom**a  >  **vásárlás**lehetőséget. 
+5. Válassza az **Elfogadom** a  >  **vásárlás** lehetőséget. 
 
     ![Az "Elfogadom a fenti feltételeket és kikötéseket" feliratú jelölőnégyzetet a "vásárlás" feliratú piros színnel kiemelve.](media/ip-collection/purchase.png)
 
@@ -99,7 +99,7 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
     
     Ennek eredményeképpen a rendszer a tulajdonságok listáját adja vissza. Az egyik tulajdonságnak olvasnia kell `DisableIpMasking: true` . Ha a PowerShellt a Azure Resource Manager új tulajdonságának telepítése előtt futtatja, akkor a tulajdonság nem létezik.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rest API
 
 A [REST API](/rest/api/azure/) -adattartalom, amely ugyanezeket a módosításokat hajtja végre, a következőképpen történik:
 
@@ -241,7 +241,7 @@ requests
 
 Az újonnan összegyűjtött IP-címek az oszlopban fognak megjelenni `customDimensions_client-ip` . Az alapértelmezett `client-ip` oszlop továbbra is mind a négy oktetttel egyenlő lesz. 
 
-Ha a localhost-ról történő tesztelés és a `customDimensions_client-ip` értéke `::1` , ez az érték a várt viselkedés. `::1` a visszacsatolási cím az IPv6-ban. Ez egyenértékű az `127.0.01` IPv4-ben.
+Ha a localhost-ról történő tesztelés és a `customDimensions_client-ip` értéke `::1` , ez az érték a várt viselkedés. `::1` a visszacsatolási cím az IPv6-ban. Ez egyenértékű az `127.0.0.1` IPv4-ben.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746019"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523362"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizont-tulajdonosi protokollok
 
@@ -320,13 +320,13 @@ Ez a szakasz az alapszintű paramétereket ismerteti.
 | **sanity_failure_codes** | Ezek az elemző által visszaadott kódok, ha a kód identitásával kapcsolatos józanság ütközik. Lásd a Magic Number Validation című szakaszt a C++ szakaszban. | Sztring |
 | **malformed_codes** | Ezek a kódok megfelelően vannak azonosítva, de a rendszer hibát észlelt. Ha például a mező hossza túl rövid vagy hosszú, vagy érvénytelen az érték. | Sztring |
 | **dissect_as** | Egy tömb, amely meghatározza, hogy az adott protokoll forgalmát Mikor kell megérkezni. | TCP/UDP, Port stb. |
-| **fields** | A forgalomból kinyert mezők deklarációja. Minden mező saját AZONOSÍTÓval (névvel) és típussal (numerikus, karakterlánc, nyers, tömb, összetett) rendelkezik. Például a kinyert mező [függvény](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) a megvalósítási elemző fájlban. A konfigurációs fájlban írt mezők az egyetlenek, amelyek hozzáadhatók a réteghez. |  |
+| **mezők** | A forgalomból kinyert mezők deklarációja. Minden mező saját AZONOSÍTÓval (névvel) és típussal (numerikus, karakterlánc, nyers, tömb, összetett) rendelkezik. Például a kinyert mező [függvény](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) a megvalósítási elemző fájlban. A konfigurációs fájlban írt mezők az egyetlenek, amelyek hozzáadhatók a réteghez. |  |
 
 ### <a name="other-advanced-fields"></a>Egyéb speciális mezők 
 
 Ez a szakasz a többi mezőt ismerteti.
 
-| Paraméter felirata | Leírás |
+| Paraméter felirata | Description |
 |-----------------|--------|
 | **címlisták engedélyezése** | Indexelheti a protokollok értékeit, és megjelenítheti őket az adatbányászati jelentésekben. Ezek a jelentések a hálózati alapkonfigurációt tükrözik. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Az adatbányászati nézet mintája."::: <br /> További információ: [Kapcsolódás egy indexelő szolgáltatáshoz (alapterv)](#connect-to-an-indexing-service-baseline) a részletekért. |
 | **belső vezérlőprogram** | Kinyerheti a belső vezérlőprogram adatait, megadhatja az indexelési értékeket, és aktiválhatja a belső vezérlőprogram riasztásait a beépülő modulhoz. További információ: a [belső vezérlőprogram adatainak kinyerése](#extract-firmware-data) . |
@@ -817,7 +817,7 @@ Adja hozzá a **riasztások** paramétert a `config.json` beépülő modulhoz.
 
 Ez a szakasz a JSON-konfigurációs mezőket ismerteti. 
 
-| Mező neve | Leírás | Lehetséges értékek |
+| Mező neve | Description | Lehetséges értékek |
 |--|--|--|
 | **ID (Azonosító)** | Egyetlen riasztási azonosítót jelöl. Ebben a kontextusban egyedinek kell lennie. | 0-10000 numerikus érték |
 | **üzenetet** | A felhasználó számára megjelenő információk. Ez a mező különböző mezők használatát teszi lehetővé. | A protokoll bármelyik mezőjét vagy bármely alsóbb rétegbeli protokollt használhat. |
@@ -1640,6 +1640,6 @@ Figyelés:
 
 Kattintson a beépülő modulhoz tartozó figyelő gombra az áttekintésben.
 
-Következő lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Horizon API](references-horizon-api.md) beállítása

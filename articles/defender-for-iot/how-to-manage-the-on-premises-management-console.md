@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539354"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523940"
 ---
 # <a name="manage-the-on-premises-management-console"></a>A helyszíni felügyeleti konzol kezelése
 
@@ -90,7 +90,7 @@ Az érvényesítési beállítás módosítása:
 
 1. A **tanúsítvány-ellenőrzés engedélyezése** váltógomb bekapcsolása vagy kikapcsolása.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ha a beállítás engedélyezve van, és az érvényesítés sikertelen, a felügyeleti konzol és az érzékelő közötti kommunikáció leállt, és egy érvényesítési hiba jelenik meg a konzolon.
 
@@ -226,7 +226,7 @@ A CLI-parancs használatakor:
 
 A tanúsítványokat a következő parancsokkal kezelheti:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | Új titkos kulcs és tanúsítvány-aláírási kérelem létrehozása | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Önaláírt tanúsítvány létrehozása | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -236,7 +236,7 @@ A tanúsítványokat a következő parancsokkal kezelheti:
 
 Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli adatokat, használja a következő parancsokat:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | Tanúsítvány-aláírási kérelem (CSR) keresése | `openssl req -text -noout -verify -in CSR.csr` |
 | Titkos kulcs keresése | `openssl rsa -in privateKey.key -check` |
@@ -244,13 +244,13 @@ Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli
 
 Ha hibaüzenet jelenik meg arról, hogy a titkos kulcs nem egyezik a tanúsítvánnyal, vagy ha egy helyre telepített tanúsítvány nem megbízható, a következő parancsokkal javítsa ki a hibát;
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | A nyilvános kulcs MD5-kivonatának ellenőrzése annak biztosításához, hogy az megfelel-e a CSR vagy a titkos kulcsnak | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Ha a tanúsítványokat és a kulcsokat különböző formátumokra szeretné átalakítani, hogy azok kompatibilisek legyenek a kiszolgálók vagy szoftverek bizonyos típusaival, használja a következő parancsokat:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | DER-fájl konvertálása (. CRT. cer. der) a PEM-ba  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PEM-fájl átalakítása DER-re | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -322,7 +322,7 @@ A felügyeleti konzolon a szervezeti DNS-kiszolgálón konfigurált állomásné
 
 3. Adja meg a szervezeti DNS-kiszolgálón konfigurált állomásnév nevét. 
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="define-vlan-names"></a>VLAN-nevek definiálása
 
@@ -372,7 +372,7 @@ A név módosítása:
 
    :::image type="content" source="media/how-to-change-the-name-of-your-azure-consoles/edit-management-console-configuration.png" alt-text="Képernyőkép a Defender IoT platform konfigurációjának szerkesztéséről.":::
 
-3. Válassza a **Mentés** lehetőséget. Az új név lesz alkalmazva.
+3. Kattintson a **Mentés** gombra. Az új név lesz alkalmazva.
 
    :::image type="content" source="media/how-to-change-the-name-of-your-azure-consoles/name-changed.png" alt-text="A konzol módosított nevét bemutató képernyőkép.":::
 
@@ -399,7 +399,7 @@ A jelszó alaphelyzetbe állítása:
 
 Az alábbi eljárás ismerteti, hogyan frissítheti a helyszíni felügyeleti konzol szoftverének verzióját. A frissítési folyamat körülbelül 30 percet vesz igénybe.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/).
 
 1. Nyissa meg a Defender for IoT.
 
@@ -415,7 +415,7 @@ Az alábbi eljárás ismerteti, hogyan frissítheti a helyszíni felügyeleti ko
 
 1. Válassza ki azt a fájlt, amelyet a Defender for IoT **Updates** lapon töltött le.
 
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
 [Érzékelők kezelése a felügyeleti konzolról](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

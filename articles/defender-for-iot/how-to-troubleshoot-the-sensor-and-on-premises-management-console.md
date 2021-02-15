@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955433"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523719"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása
 
@@ -258,7 +258,7 @@ Naplók exportálása:
 
 1. Az exportálni kívánt adatkategóriák meghatározásához válassza ki az adatkategóriákat:  
 
-    | Exportálási kategória | Leírás |
+    | Exportálási kategória | Description |
     |--|--|
     | **Operációs rendszer naplói** | Válassza ezt a lehetőséget az operációs rendszer állapotával kapcsolatos információk lekéréséhez. |
     | **Telepítési/frissítési naplók** | Válassza ezt a lehetőséget a telepítési és frissítési konfigurációs paraméterek vizsgálatához. |
@@ -283,7 +283,7 @@ Az exportált naplók bekerülnek az **archivált naplók** listájára. Küldje
 
 Az archivált naplók listája legfeljebb öt elemet tartalmazhat. Ha a listában szereplő elemek száma túllépi ezt a számot, a rendszer a legkorábbi elemet törli.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 - [Riasztások megtekintése](how-to-view-alerts.md)
 

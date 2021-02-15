@@ -108,7 +108,7 @@
     - name: Kötegelt tesztelési formátum
       href: reference-tsv-format-batch-testing.md
     - name: Titkosítás
-      href: qna-maker-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: REST API-referencia
       items:
         - name: QnA Maker 4.0

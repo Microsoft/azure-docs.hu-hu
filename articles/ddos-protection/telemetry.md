@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b34fcd66f0b64e2522da69bcfc7d119628b9d9d9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0a8c30076231aecb17505dd0d7a2fe4e7be485a3
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516702"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522665"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése és konfigurálása
 
@@ -70,7 +70,7 @@ A következő [metrikák](../azure-monitor/platform/metrics-supported.md#microso
 
 ## <a name="view-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése
 
-A támadás telemetria valós időben Azure Monitor biztosítjuk. A telemetria csak arra az időtartamra érhető el, ameddig a nyilvános IP-cím mérséklés alatt áll. A telemetria nem jelenik meg a támadás előtt vagy után.
+A támadás telemetria valós időben Azure Monitor biztosítjuk. A telemetria csak akkor érhető el, ha egy nyilvános IP-cím mérséklés alatt áll. 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és keresse meg a DDoS Protection tervet.
 2. A **Figyelés** területen kattintson a **Metrikák** elemre.

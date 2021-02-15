@@ -1,5 +1,5 @@
 ---
-title: A Defender használata a IoT CLI-parancsokkal
+title: A Defender for IoT parancssori felületi parancsainak használata
 description: Ez a cikk az érzékelőkre és a helyszíni felügyeleti konzolokra vonatkozó IoT CLI-parancsait ismerteti.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 48c525004b095c1e0f498f86a5395d0002be26f1
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845257"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523141"
 ---
-# <a name="work-with-defender-for-iot-cli-commands"></a>A Defender használata a IoT CLI-parancsokkal
+# <a name="work-with-defender-for-iot-cli-commands"></a>A Defender for IoT parancssori felületi parancsainak használata
 
 Ez a cikk az érzékelők és a helyszíni felügyeleti konzolok CLI-parancsait ismerteti. A parancsok a rendszergazdák, a cyberx-felhasználók és a támogatási felhasználók számára érhetők el.
 
@@ -35,7 +35,7 @@ A riasztás kizárási szabályaiban megadható attribútumok a következők:
 |--|--|
 | [-h] | A parancshoz tartozó súgó adatainak kinyomtatása. |
 | -n név | A létrehozandó szabály neve. |
-| [-TS TIMES] | Az az időtartomány, amelyre a szabály aktív. Ezt a következőképpen kell megadni:<br />`xx:yy-xx:yy`<br />Több időszakot is megadhat a közöttük lévő vesszők használatával. Például: `xx:yy-xx:yy, xx:yy-xx:yy`. |
+| [-TS TIMES] | Az az időtartomány, amelyre a szabály aktív. Ezt a következőképpen kell megadni:<br />`xx:yy-xx:yy`<br />Több időszakot is megadhat a közöttük lévő vesszők használatával. Példa: `xx:yy-xx:yy, xx:yy-xx:yy`. |
 | [-dir irány] | A szabály alkalmazásának iránya. Ezt a következőképpen kell megadni:<br />`both | src | dst` |
 | [-dev-eszközök] | A szabály által kizárandó eszközök IP-címe és címe, a következőként megadva:<br />`ip-x.x.x.x`<br />`mac-xx:xx:xx:xx:xx:xx`<br />`subnet: x.x.x.x/x` |
 | [-a RIASZTÁSok] | A szabály által kizárni kívánt riasztás neve:<br />`0x00000`<br />`0x000001` |
@@ -103,7 +103,7 @@ A parancson belül megadható attribútum az NTP-kiszolgáló IP-címe.
 
 A következő táblázat a IoT Azure Defender hálózati beállításainak konfigurálásához elérhető parancsokat ismerteti:
 
-|Név|Parancs|Leírás|
+|Name|Parancs|Leírás|
 |-----------|-------|-----------|
 |Ping|`ping IP `| A IoT platform Defenderen kívüli címeinek pingelése.|
 |Blink|`network blink`|Engedélyezi a hálózati konfigurációs paraméterek módosítását.|
@@ -254,7 +254,7 @@ A paranccsal a következő attribútumok használhatók `directions` :
 ## <a name="system-actions"></a>Rendszerműveletek
 A következő táblázat ismerteti a különböző rendszerműveletek végrehajtásához elérhető parancsokat a Defender for IoT:
 
-|Név|Code|Leírás|
+|Name|Code|Description|
 |----|----|-----------|
 |A gazdagép újraindítása|`system reboot`|Újraindítja a gazdagép eszközét.|
 |A gazdagép leállítása|`system shutdown`|Leállítja a gazdagépet.|
@@ -290,6 +290,6 @@ Az eszköz használatakor:
 
 - Erősítse meg a berendezés tartományát (ahogy az a tanúsítványban jelenik meg) a DNS-kiszolgálóval és a megfelelő IP-címmel. 
     
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
 [Defender for IoT API-érzékelő és felügyeleti konzol API-k](references-work-with-defender-for-iot-apis.md)

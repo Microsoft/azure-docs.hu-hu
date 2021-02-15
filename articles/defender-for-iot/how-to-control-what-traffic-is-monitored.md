@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624684"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522393"
 ---
 # <a name="control-what-traffic-is-monitored"></a>A monitorozandó forgalom szabályozása
 
@@ -90,7 +90,7 @@ Alhálózatok konfigurálása:
 
 10. A konfigurált alhálózatok exportálásához válassza az **Exportálás** lehetőséget. Az alhálózati tábla le van töltve a munkaállomásra.
 
-11. Válassza a **Mentés** lehetőséget.
+11. Kattintson a **Mentés** gombra.
 
 ### <a name="importing-information"></a>Adatok importálása 
 
@@ -182,7 +182,7 @@ DHCP-címtartomány beállítása:
     > [!NOTE]
     > A CSV-fájlból importált tartományok felülírják a meglévő tartomány beállításait.
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>DNS-kiszolgálók konfigurálása a névlekérdezési feloldáshoz
 
@@ -277,7 +277,7 @@ Automatikus vizsgálat konfigurálása:
 
 7. Tartomány eltávolításához válassza :::image type="icon" source="media/how-to-control-what-traffic-is-monitored/remove-scan-icon.png" border="false"::: a tartomány melletti lehetőséget.
 
-8. Válassza a **Mentés** lehetőséget. A **keresési tartományok konfigurációjának szerkesztése** párbeszédpanel bezárul, és a tartományok száma megjelenik a **vizsgálati tartományok** ablaktáblán.
+8. Kattintson a **Mentés** gombra. A **keresési tartományok konfigurációjának szerkesztése** párbeszédpanel bezárul, és a tartományok száma megjelenik a **vizsgálati tartományok** ablaktáblán.
 
 Manuális vizsgálat végrehajtása:
 
@@ -295,7 +295,7 @@ A vizsgálati eredmények megtekintése:
 
 1. Ha a vizsgálat befejeződött, a **műveletek** ablaktáblán válassza a **vizsgálat eredményeinek megtekintése** lehetőséget. A rendszer letölti a vizsgálat eredményeit tartalmazó CSV-fájlt a számítógépre.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  [Az érzékelő észlelésének vizsgálata az eszköz térképén](how-to-work-with-the-sensor-device-map.md)

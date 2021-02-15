@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Translator?
       href: translator-info-overview.md
-    - name: Első lépések
+    - name: Gyorsútmutató
       href: quickstart-translator.md
     - name: Nyelvi támogatás
       href: language-support.md
@@ -149,4 +149,4 @@
         - name: Megfelelőség
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Titkosítás
-          href: translator-encryption-of-data-at-rest.md
+          href: encrypt-data-at-rest.md

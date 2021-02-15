@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493719"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522886"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Nyilvános IP-címek frissítése
 
@@ -36,7 +36,7 @@ Ebben a cikkben a következő forgatókönyveket tekintjük át:
 Nyilvános IP-cím frissítéséhez nem köthető erőforráshoz ( [ebben az oldalon](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) további információt talál a nyilvános IP-címek társításának megszüntetéséről).
 
 >[!IMPORTANT]
->Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is rendelkeznek [rendelkezésre állási zónákkal](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Ez azt jelenti, hogy nem társítható olyan Azure-erőforráshoz, amely akár zónán kívüli, akár egy előre meghatározott zónához van kötve, ahol ez elérhető.
+>Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is nem rendelkeznek garantált [rendelkezésre állási zónákkal](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  Gondoskodjon róla, hogy ez ne legyen figyelembe véve, amikor kiválasztja, hogy mely erőforrások legyenek társítva az IP-címhez.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Alapszintű, standard – PowerShell**](#tab/option-upgrade-powershell)

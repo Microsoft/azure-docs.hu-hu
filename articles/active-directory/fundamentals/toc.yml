@@ -25,6 +25,8 @@
   items:
     - name: Biztonság
       items:
+        - name: A Microsoft 365 védelme a helyszíni támadások ellen
+          href: protect-m365-from-on-premises-attacks.md
         - name: Biztonságos külső együttműködés
           items:
             - name: A biztonságos külső hozzáférés áttekintése
@@ -47,8 +49,20 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: '9. A Teamshez, a SharePointhoz és a OneDrive-hoz való hozzáférés biztonságossá tétele'
               href: 9-secure-access-teams-sharepoint.md
-        - name: A Microsoft 365 védelme a helyszíni támadások ellen
-          href: protect-m365-from-on-premises-attacks.md
+        - name: Biztonságos szolgáltatásfiókok
+          items:
+            - name: A helyszíni szolgáltatásfiókok bemutatása
+              href: service-accounts-on-premises.md
+            - name: A csoport MSAs biztonságossá tétele
+              href: service-accounts-group-managed.md
+            - name: Önálló MSAs biztonságossá tétele
+              href: service-accounts-standalone-managed.md
+            - name: Számítógépfiókok biztonságossá tétele
+              href: service-accounts-computer.md
+            - name: A felhasználó-alapú szolgáltatásfiókok biztonságossá tétele
+              href: service-accounts-user-on-premises.md
+            - name: Helyszíni szolgáltatásfiókok szabályozása
+              href: service-accounts-govern-on-premises.md
         - name: MFA engedélyezése
           href: concept-fundamentals-mfa-get-started.md
         - name: Alapértelmezett biztonsági szabályok

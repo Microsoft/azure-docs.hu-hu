@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-communication-services
 author: mikben
 manager: mikben
@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: edf48bc75817b3510264d852eb9cc717ed022f33
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6a075ae721d767faf25e4774dd545d36eedfaef4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915422"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379664"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A POM-fájlban hivatkozzon a `azure-communication-chat` csomagra a csevegési AP
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
 ```
 
@@ -66,9 +66,8 @@ A hitelesítéshez az ügyfélnek a csomagra kell hivatkoznia `azure-communicati
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0-beta.4</version> 
 </dependency>
-
 ```
 
 ## <a name="object-model"></a>Objektummodell
@@ -83,7 +82,7 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 | ChatThreadAsyncClient | Ez az osztály szükséges az aszinkron csevegési szál működéséhez. A példányokat a ChatAsyncClient keresztül szerezheti be, és használhatja az üzenetek küldésére/fogadására/frissítésére/törlésére, a felhasználók hozzáadására/eltávolítására/lekérésére, valamint a beírási értesítések küldésére |
 
 ## <a name="create-a-chat-client"></a>Csevegési ügyfél létrehozása
-Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A CommunicationUserCredential osztályt kell használnia a közös ügyféloldali függvénytárban, hogy átadja a tokent a csevegési ügyfelének. 
+Csevegési ügyfél létrehozásához használja a kommunikációs szolgáltatás végpontját és az előfeltételként létrehozott hozzáférési tokent. A felhasználói hozzáférési tokenek lehetővé teszik olyan ügyfélalkalmazások összeállítását, amelyek közvetlenül az Azure kommunikációs szolgáltatásokban vannak hitelesítve. Miután létrehozta ezeket a jogkivonatokat a kiszolgálón, továbbíthatja őket egy ügyfél-eszköznek. A CommunicationTokenCredential osztályt kell használnia a közös ügyféloldali függvénytárban, hogy átadja a tokent a csevegési ügyfelének. 
 
 Az importálási utasítások hozzáadásakor ügyeljen arra, hogy csak a com. Azure. Communication. chat és a com. Azure. Communication. chat. models névtérből vegyen fel importokat, nem pedig a com. Azure. Communication. chat. implementációs névtérből. A Maven használatával létrehozott app. Java-fájlban a következő kódot használhatja a kezdéshez:
 
@@ -112,8 +111,8 @@ public class App
         // User access token fetched from your trusted service
         String userAccessToken = "<USER_ACCESS_TOKEN>";
 
-        // Create a CommunicationUserCredential with the given access token, which is only valid until the token is valid
-        CommunicationUserCredential userCredential = new CommunicationUserCredential(userAccessToken);
+        // Create a CommunicationTokenCredential with the given access token, which is only valid until the token is valid
+        CommunicationTokenCredential userCredential = new CommunicationTokenCredential(userAccessToken);
 
         // Initialize the chat client
         final ChatClientBuilder builder = new ChatClientBuilder();
@@ -132,27 +131,27 @@ public class App
 `createChatThreadOptions` a szál kérelmének leírására szolgál.
 
 - A használatával `topic` témakört adhat ehhez a csevegéshez; A témakör a funkció használatával frissíthető a csevegési szál létrehozása után `UpdateThread` .
-- Ezzel a paranccsal `members` listázhatja a szálhoz hozzáadandó szál tagokat. `ChatThreadMember` a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) rövid útmutatójában létrehozott felhasználót hozza létre.
+- Ezzel a paranccsal `participants` listázhatja a szálhoz hozzáadandó hozzászólásláncok résztvevőit. `ChatParticipant` a [felhasználói hozzáférési jogkivonat](../../access-tokens.md) rövid útmutatójában létrehozott felhasználót hozza létre.
 
-A válasz a `chatThreadClient` létrehozott csevegési szálon végzett műveletek végrehajtásához használható: Tagok hozzáadása a csevegési szálhoz, üzenet küldése, üzenet törlése stb. Egy olyan `chatThreadId` tulajdonságot tartalmaz, amely a csevegési szál egyedi azonosítója. A tulajdonságot a nyilvános metódus. getChatThreadId () teszi elérhetővé.
+A válasz a `chatThreadClient` létrehozott csevegési szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása a csevegési szálhoz, üzenet küldése, üzenet törlése stb. Egy olyan `chatThreadId` tulajdonságot tartalmaz, amely a csevegési szál egyedi azonosítója. A tulajdonságot a nyilvános metódus. getChatThreadId () teszi elérhetővé.
 
 ```Java
-List<ChatThreadMember> members = new ArrayList<ChatThreadMember>();
+List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatThreadMember firstThreadMember = new ChatThreadMember()
+ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setUser(firstUser)
-    .setDisplayName("Member Display Name 1");
+    .setDisplayName("Participant Display Name 1");
     
-ChatThreadMember secondThreadMember = new ChatThreadMember()
+ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setUser(secondUser)
-    .setDisplayName("Member Display Name 2");
+    .setDisplayName("Participant Display Name 2");
 
-members.add(firstThreadMember);
-members.add(secondThreadMember);
+participants.add(firstThreadParticipant);
+participants.add(secondThreadParticipant);
 
 CreateChatThreadOptions createChatThreadOptions = new CreateChatThreadOptions()
     .setTopic("Topic")
-    .setMembers(members);
+    .setParticipants(participants);
 ChatThreadClient chatThreadClient = chatClient.createChatThread(createChatThreadOptions);
 String chatThreadId = chatThreadClient.getChatThreadId();
 ```
@@ -163,7 +162,7 @@ A `sendMessage` metódus használatával üzenetet küldhet az imént létrehozo
 `sendChatMessageOptions` a csevegési üzenetre vonatkozó kérelem leírására szolgál.
 
 - `content`A csevegési üzenet tartalmának megadásához használja a következőt:.
-- Ezzel `priority` a beállítással adható meg a csevegés prioritási szintje, például a "NORMAL" vagy a "High"; Ez a tulajdonság használható felhasználói felületi mutatót az alkalmazásban lévő címzett felhasználó számára, hogy az üzenetre figyeljen, vagy egyéni üzleti logikát hajtson végre.
+- `type`A csevegési üzenet tartalomtípusának, szövegének vagy HTML-címének megadásához használja a következőt:.
 - A (z `senderDisplayName` ) használatával adja meg a feladó megjelenítendő nevét.
 
 A válasz `sendChatMessageResult` tartalmaz egy `id` -t, amely az üzenet egyedi azonosítója.
@@ -171,7 +170,7 @@ A válasz `sendChatMessageResult` tartalmaz egy `id` -t, amely az üzenet egyedi
 ```Java
 SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
     .setContent("Message content")
-    .setPriority(ChatMessagePriority.NORMAL)
+    .setType(ChatMessageType.TEXT)
     .setSenderDisplayName("Sender Display Name");
 
 SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendChatMessageOptions);
@@ -181,7 +180,7 @@ String chatMessageId = sendChatMessageResult.getId();
 
 ## <a name="get-a-chat-thread-client"></a>Csevegési szál ügyfelének beolvasása
 
-A `getChatThreadClient` metódus egy szál-ügyfelet ad vissza egy már létező szálhoz. A létrehozott szálon végzett műveletek végrehajtásához használható: Tagok hozzáadása, üzenet küldése stb. `chatThreadId` a meglévő csevegési szál egyedi azonosítója.
+A `getChatThreadClient` metódus egy szál-ügyfelet ad vissza egy már létező szálhoz. A létrehozott szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása, üzenet küldése stb. `chatThreadId` a meglévő csevegési szál egyedi azonosítója.
 
 ```Java
 String chatThreadId = "Id";
@@ -206,7 +205,7 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 `listMessages` a által azonosítható különböző típusú üzeneteket ad vissza `chatMessage.getType()` . Ezek a típusok a következők:
 
-- `Text`: Egy szál tagja által küldött normál csevegési üzenet.
+- `Text`: Egy szál résztvevője által küldött normál csevegési üzenet.
 
 - `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett.
 
@@ -216,44 +215,44 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 
 További részletek: [üzenetek típusai](../../../concepts/chat/concepts.md#message-types).
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>Felhasználó hozzáadása a csevegési szálhoz tagként
+## <a name="add-a-user-as-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
 
-A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és más tagokat adjon hozzá vagy távolítson el. Először új hozzáférési jogkivonatot és identitást kell beszereznie az adott felhasználó számára. A addMembers metódus meghívása előtt győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
+A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhasználókat. A felhasználók hozzáadásával hozzáférést biztosíthat számukra, hogy üzeneteket küldjön a csevegési szálba, és további résztvevőket vegyen fel/távolítson el. Először új hozzáférési jogkivonatot és identitást kell beszereznie az adott felhasználó számára. A addParticipants metódus meghívása előtt győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
 
-`addMembers`A metódus használatával a szálazonosító által azonosított szálat adhat hozzá a szálhoz.
+`addParticipants`A metódussal vehet fel résztvevőket a szálazonosító által azonosított szálba.
 
-- A használatával `members` listázhatja a csevegési szálba felvenni kívánt tagokat.
-- `user`, kötelező, az a CommunicationUser, amelyet a CommunicationIdentityClient hozott létre a [felhasználói hozzáférési jogkivonat rövid útmutatójában](../../access-tokens.md) .
-- `display_name`, nem kötelező, a szál tagja megjelenítendő neve.
-- `share_history_time`, nem kötelező, az az idő, amelyből a csevegési előzmények meg vannak osztva a taggal. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha meg szeretné osztani az előző előzményeket a tag hozzáadásakor, állítsa az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a szükséges dátumra.
+- A használatával `listParticipants` listázhatja a csevegési szálba felvenni kívánt résztvevőket.
+- `user`, kötelező, az a CommunicationUserIdentifier, amelyet a CommunicationIdentityClient hozott létre a [felhasználói hozzáférési jogkivonat rövid útmutatójában](../../access-tokens.md) .
+- `display_name`, nem kötelező, a szál résztvevő megjelenítendő neve.
+- `share_history_time`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a szükséges dátumra.
 
 ```Java
-List<ChatThreadMember> members = new ArrayList<ChatThreadMember>();
+List<ChatParticipant> participants = new ArrayList<ChatParticipant>();
 
-ChatThreadMember firstThreadMember = new ChatThreadMember()
+ChatParticipant firstThreadParticipant = new ChatParticipant()
     .setUser(user1)
     .setDisplayName("Display Name 1");
 
-ChatThreadMember secondThreadMember = new ChatThreadMember()
+ChatParticipant secondThreadParticipant = new ChatParticipant()
     .setUser(user2)
     .setDisplayName("Display Name 2");
 
-members.add(firstThreadMember);
-members.add(secondThreadMember);
+participants.add(firstThreadParticipant);
+participants.add(secondThreadParticipant);
 
-AddChatThreadMembersOptions addChatThreadMembersOptions = new AddChatThreadMembersOptions()
-    .setMembers(members);
-chatThreadClient.addMembers(addChatThreadMembersOptions);
+AddChatParticipantsOptions addChatParticipantsOptions = new AddChatParticipantsOptions()
+    .setParticipants(participants);
+chatThreadClient.addParticipants(addChatParticipantsOptions);
 ```
 
 ## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
 
-A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési szálból is eltávolíthat felhasználókat. Ehhez nyomon kell követnie a felvett tagok felhasználói identitásait.
+A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési szálból is eltávolíthat felhasználókat. Ehhez nyomon kell követnie a felvett résztvevők felhasználói identitásait.
 
-Használja `removeMember` , ahol `user` a a létrehozott CommunicationUser.
+Használja `removeParticipant` , ahol `user` a a létrehozott CommunicationUserIdentifier.
 
 ```Java
-chatThreadClient.removeMember(user);
+chatThreadClient.removeParticipant(user);
 ```
 
 ## <a name="run-the-code"></a>A kód futtatása

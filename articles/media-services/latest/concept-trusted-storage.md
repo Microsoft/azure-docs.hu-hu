@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 96031642efb1248fb3b1acabeb9d7381177a2c70
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428588"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098078"
 ---
 # <a name="trusted-storage-for-media-services"></a>Megbízható tárterület Media Services
 
@@ -22,7 +22,11 @@ Media Services fiók létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz
 
 ## <a name="trusted-storage-with-a-firewall"></a>Megbízható tárterület tűzfallal
 
-Ha azonban tűzfalat szeretne használni a Storage-fiók biztonságossá tételéhez és a megbízható tárolás engedélyezéséhez, a [felügyelt identitások](concept-managed-identities.md) hitelesítése az előnyben részesített lehetőség. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz.
+Ha azonban tűzfalat szeretne használni a Storage-fiók biztonságossá tételéhez és a megbízható tárolás engedélyezéséhez, a [felügyelt identitások](concept-managed-identities.md) hitelesítése az előnyben részesített lehetőség. Lehetővé teszi Media Services számára, hogy hozzáférjen a megbízható tároló-hozzáférésen keresztül tűzfallal vagy VNet-korlátozással konfigurált Storage-fiókhoz.
+
+## <a name="tutorial"></a>Oktatóanyag
+
+További információt a megbízható tárolás engedélyezéséről a [Media Services megbízható tárolóval](tutorial-trusted-storage-rest.md) foglalkozó oktatóanyagban talál.
 
 > [!NOTE]
 > Ahhoz, hogy a Media Services képes legyen olvasni és írni a Storage-fiókot, meg kell adnia az AMS által felügyelt identitás tárolójának blob-adatközreműködői hozzáférését.  Az általános közreműködő szerepkör megadása nem fog működni, mert nem engedélyezi a megfelelő engedélyeket az adatsíkon.

@@ -2,18 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4991bb889d4b9a099662b8d46c6d5cd5a89c1c63
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: dcd08c0635eb4a104cc945fbf4025a6807987968
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561257"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100100342"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
+|[Az Azure szinapszis-munkaterületek csak a jóváhagyott célokhoz engedélyezhetik a kimenő adatforgalmat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3484ce98-c0c5-4c83-994b-c5ac24785218) |Növelje a szinapszis-munkaterület biztonságát azáltal, hogy csak a jóváhagyott célokhoz engedélyezi a kimenő adatforgalmat. Ez segít megakadályozni az adatok kiszűrése azáltal, hogy az adatok elküldése előtt érvényesíti a célt. |Naplózás, letiltva, megtagadás |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_RestrictOutboundDataTraffic_Audit.json) |
 |[Az Azure szinapszis-munkaterületek az ügyfél által felügyelt kulcsokat használják a REST-adatok titkosításához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |Az Azure szinapszis-munkaterületeken tárolt adatok titkosításának szabályozásához használja az ügyfél által felügyelt kulcsokat. Az ügyfél által felügyelt kulcsok dupla titkosítást biztosítanak egy második titkosítási réteg hozzáadásával az alapértelmezett titkosításhoz a szolgáltatás által felügyelt kulcsokkal. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |
 |[Az Azure szinapszis-munkaterületeken található IP-tűzfalszabályok eltávolítását el kell távolítani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56fd377d-098c-4f02-8406-81eb055902b8) |Az összes IP-tűzfalszabály eltávolítása növeli a biztonságot azáltal, hogy az Azure szinapszis-munkaterület csak privát végpontról érhető el. Ez a konfiguráció naplózza a nyilvános hálózati hozzáférést engedélyező tűzfalszabályok létrehozását a munkaterületen. |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceFirewallRules_Audit.json) |
 |[A felügyelt munkaterület virtuális hálózatát engedélyezni kell az Azure szinapszis-munkaterületeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |A felügyelt munkaterület virtuális hálózatának engedélyezése biztosítja, hogy a munkaterület más munkaterületekről izolált hálózat legyen. Az ebben a virtuális hálózaton üzembe helyezett adatintegrációs és Spark-erőforrások felhasználói szintű elkülönítést is biztosítanak a Spark-tevékenységekhez. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |

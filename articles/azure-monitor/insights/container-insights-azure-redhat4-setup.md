@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v4. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6668ac22c6c0f53c7511cfb76bf50c5474f3a76
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944524"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521628"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v4. x konfigurálása Azure Monitor for containers szolgáltatással
 
@@ -121,7 +121,7 @@ Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az al
     export kubeContext="<kubeContext name of your ARO v4 cluster>"  
     ```
 
-    Példa:
+    Az alábbi parancsot kell futtatnia, ha a 3 változót az exportálási parancsokkal tölti fel:
 
     `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
 

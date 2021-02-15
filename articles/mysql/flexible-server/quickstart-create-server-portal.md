@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 864152d1f1d0074305cbba448946bc05888b4f3b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566758"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521968"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Gyors útmutató: Azure Database for MySQL rugalmas kiszolgáló létrehozásához használja a Azure Portal
 
@@ -24,7 +24,7 @@ Azure Database for MySQL rugalmas kiszolgáló egy felügyelt szolgáltatás, am
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-Nyissa meg az [Azure Portalt](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
+Nyissa meg az [Azure Portal](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL rugalmas kiszolgáló létrehozása
 
@@ -36,7 +36,7 @@ Egy rugalmas kiszolgáló létrehozásához hajtsa végre a következő lépése
     
     > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="A Azure Database for MySQL-kiszolgálók keresését bemutató képernyőkép.":::
 
-2. Válassza a **Hozzáadás** elemet. 
+2. Válassza a **Hozzáadás** lehetőséget. 
 
 3. A **Azure Database for MySQL központi telepítési lehetőség kiválasztása** lapon válassza a **rugalmas kiszolgáló** lehetőséget a központi telepítési lehetőségként:
      
@@ -51,11 +51,11 @@ Egy rugalmas kiszolgáló létrehozásához hajtsa végre a következő lépése
     Előfizetés|Az Ön előfizetésének neve|A kiszolgálóhoz használni kívánt Azure-előfizetés. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben az erőforrásért díjat kell fizetnie.|
     Erőforráscsoport|**myresourcegroup**| Egy új erőforráscsoport neve vagy egy meglévő az előfizetéséből.|
     Kiszolgálónév |**mydemoserver**|Egy egyedi név, amely a rugalmas kiszolgálót azonosítja. A rendszer hozzáfűzi a tartománynevet `mysql.database.azure.com` a megadott kiszolgálónévhez. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. A jelszó 3–63 karakterből állhat.|
-    Rendszergazdai felhasználónév |**mydemouser**| Saját bejelentkezési fiókja, amelyet a kiszolgálóhoz való csatlakozáskor kell használni. A rendszergazda felhasználóneve nem lehet **azure_superuser** , **Admin** , **Administrator** , **root** , **Guest** vagy **Public**.|
+    Rendszergazdai felhasználónév |**mydemouser**| Saját bejelentkezési fiókja, amelyet a kiszolgálóhoz való csatlakozáskor kell használni. A rendszergazda felhasználóneve nem lehet **azure_superuser**, **Admin**, **Administrator**, **root**, **Guest** vagy **Public**.|
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. Tartalmaznia kell a következő kategóriák közül legalább háromat is: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0 – 9) és nem alfanumerikus karakterek (!, $, #,% stb.).|
-    Régió|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
+    Region|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.|
     Verzió|**5.7**| Egy MySQL főverzió.|
-    Számítás + tárolás | **Feltört** , **Standard_B1ms** , **10 GIB** , **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása** lehetőséget. A **számítási szint** , a **számítási méret** , a **tárterület mérete** és a biztonsági másolatok **megőrzési időszaka** alapértelmezett értékei a következők: **feltört** , **Standard_B1ms** , **10 GIB** és **7 nap** . Ezeket az értékeket elhagyhatja, vagy módosíthatja is azokat. A számítási és a tárolási beállítások mentéséhez kattintson a **Mentés** gombra a konfiguráció folytatásához. A következő képernyőfelvételen a számítási és tárolási lehetőségek láthatók.|
+    Számítás + tárolás | **Feltört**, **Standard_B1ms**, **10 GIB**, **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása** lehetőséget. A **számítási szint**, a **számítási méret**, a **tárterület mérete** és a biztonsági másolatok **megőrzési időszaka** alapértelmezett értékei a következők: **feltört**, **Standard_B1ms**, **10 GIB** és **7 nap** . Ezeket az értékeket elhagyhatja, vagy módosíthatja is azokat. A számítási és a tárolási beállítások mentéséhez kattintson a **Mentés** gombra a konfiguráció folytatásához. A következő képernyőfelvételen a számítási és tárolási lehetőségek láthatók.|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="A számítási és tárolási beállításokat megjelenítő képernyőkép.":::
 
@@ -85,17 +85,35 @@ Alapértelmezés szerint ezek az adatbázisok a kiszolgáló alatt jönnek létr
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>Kapcsolódás a kiszolgálóhoz a mysql.exe használatával
 
-Ha a rugalmas kiszolgálót privát hozzáférés (VNet-integráció) használatával hozta létre, akkor a kiszolgálóval azonos virtuális hálózaton belüli erőforrással kell csatlakoznia a kiszolgálóhoz. Létrehozhat egy virtuális gépet, és hozzáadhatja azt a rugalmas kiszolgálóval létrehozott virtuális hálózathoz.
+Ha a rugalmas kiszolgálót privát hozzáférés (VNet-integráció) használatával hozta létre, akkor a kiszolgálóval azonos virtuális hálózaton belüli erőforrással kell csatlakoznia a kiszolgálóhoz. Létrehozhat egy virtuális gépet, és hozzáadhatja azt a rugalmas kiszolgálóval létrehozott virtuális hálózathoz. További tudnivalókért tekintse meg a [privát hozzáférési dokumentáció](how-to-manage-virtual-network-portal.md) konfigurálását ismertető témakört.
 
-Ha a rugalmas kiszolgálót a nyilvános hozzáférés (engedélyezett IP-címek) használatával hozta létre, a helyi IP-címet hozzáadhatja a kiszolgálón található tűzfalszabályok listájához.
+Ha a rugalmas kiszolgálót a nyilvános hozzáférés (engedélyezett IP-címek) használatával hozta létre, a helyi IP-címet hozzáadhatja a kiszolgálón található tűzfalszabályok listájához. További útmutatásért tekintse meg a [Tűzfalszabályok létrehozásával és kezelésével kapcsolatos dokumentációt](how-to-manage-firewall-portal.md) .
 
 A helyi környezetből [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) vagy [MySQL Workbench](./connect-workbench.md) használatával kapcsolódhat a kiszolgálóhoz. 
 
-Ha mysql.exe használ, a következő parancs használatával kapcsolódjon. A parancsban használja a kiszolgáló nevét, felhasználónevét és jelszavát. 
-
 ```bash
- mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
+Ha a rugalmas kiszolgálót **nyilvános hozzáférés** használatával állította be, akkor a [Azure Cloud Shell](https://shell.azure.com/bash) használatával is csatlakozhat a rugalmas kiszolgálóhoz az előre telepített MySQL-ügyféllel az alábbi ábrán látható módon:
+
+Ahhoz, hogy a Azure Cloud Shellt a rugalmas kiszolgálóhoz való kapcsolódáshoz használhassa, engedélyeznie kell a hálózati hozzáférést a Azure Cloud Shell a rugalmas kiszolgálóra. Ennek eléréséhez nyissa meg a **hálózatkezelés** panelt Azure Portal a MySQL-hez készült rugalmas kiszolgálónál, és jelölje be a **tűzfal** szakaszban található jelölőnégyzetet, amely a "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatásból az Azure-ban ezen a kiszolgálón" lehetőséget, majd kattintson a Mentés gombra a beállítás megőrzéséhez.
+
+> [!NOTE]
+> Annak ellenőrzése, **hogy a nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáson belül erre a kiszolgálóra** csak fejlesztési vagy tesztelési célokra használható. Úgy konfigurálja a tűzfalat, hogy engedélyezze az Azure-szolgáltatásokhoz vagy-eszközökhöz lefoglalt IP-címekről érkező kapcsolatokat, beleértve a más ügyfelek előfizetéseit is.
+
+Kattintson a **kipróbálás** gombra a Azure Cloud Shell elindításához és az alábbi parancsok használatával a rugalmas kiszolgálóhoz való kapcsolódáshoz. A parancsban használja a kiszolgáló nevét, felhasználónevét és jelszavát. 
+
+```azurecli-interactive
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+```
+
+Ha a következő hibaüzenet jelenik meg, amikor a fenti parancsot követve csatlakozik a rugalmas kiszolgálóhoz, a korábban említett "nyilvános hozzáférés engedélyezése bármely Azure-szolgáltatáshoz az Azure-ban erre a kiszolgálóra" beállítást nem sikerült beállítani, vagy a beállítás nincs mentve. Próbálkozzon újra a tűzfal beállításával, és próbálkozzon újra.
+
+HIBA 2002 (HY000): nem lehet csatlakozni a MySQL-kiszolgálóhoz <servername> (115)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ezzel létrehozott egy Azure Database for MySQL rugalmas kiszolgálót egy erőforráscsoporthoz. Ha nem szeretné, hogy a jövőben is szükség lenne ezekre az erőforrásokra, törölheti őket az erőforráscsoport törlésével, vagy egyszerűen törölheti a MySQL-kiszolgálót is. Az erőforráscsoport törléséhez hajtsa végre a következő lépéseket:
 

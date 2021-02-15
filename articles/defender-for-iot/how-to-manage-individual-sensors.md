@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan kezelheti az egyes érzékelőket, beleértve a
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508760"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523974"
 ---
 # <a name="manage-individual-sensors"></a>Különálló érzékelők kezelése
 
@@ -86,7 +86,7 @@ Hibaüzenet jelenik meg, ha az aktiválási fájlt nem lehet feltölteni. Előfo
 
 - **Felhőhöz csatlakoztatott érzékelők esetén**: az érzékelő nem tud csatlakozni az internethez. Keresse meg az érzékelő hálózati konfigurációját. Ha az érzékelő webproxyn keresztül csatlakozik az internethez, ellenőrizze, hogy a proxykiszolgáló megfelelően van-e konfigurálva az **érzékelő hálózati konfiguráció** képernyőjén. Ellenőrizze, hogy \* a. Azure-Devices.net:443 engedélyezett-e a tűzfalban és/vagy a proxyban. Ha a helyettesítő karakterek használata nem támogatott, vagy ha további szabályozásra van szüksége, akkor a IoT hub-hoz tartozó egyedi teljes tartománynevet meg kell nyitni a tűzfalban és/vagy a proxyban. Részletekért lásd: [referenciák IoT hub végpontok](../iot-hub/iot-hub-devguide-endpoints.md).  
 
-- **Felhőhöz csatlakoztatott érzékelők esetén**: az aktiválási fájl érvényes, de a IoT Defender visszautasította azt. Ha nem tudja elhárítani ezt a problémát, egy másik aktiválást is letölthet a Defender IoT-portál **Sensor Management** oldaláról. Ha ez nem működik, forduljon a Microsoft ügyfélszolgálatahoz.
+- **Felhőhöz csatlakoztatott érzékelők esetén**: az aktiválási fájl érvényes, de a IoT Defender visszautasította azt. Ha nem tudja megoldani ezt a problémát, egy másik aktiválást is letöltheti a Defender for IoT portál helyek és érzékelők lapján. Ha ez nem működik, forduljon a Microsoft ügyfélszolgálatahoz.
 
 ## <a name="manage-certificates"></a>Tanúsítványok kezelése
 
@@ -114,7 +114,7 @@ A Defender for IoT szenzor és a helyszíni felügyeleti konzol SSL-és TLS-tan�
  
  - Biztonságos kommunikáció az érzékelők és a helyszíni felügyeleti konzol között. 
 
-A telepítés után a készülék létrehoz egy helyi önaláírt tanúsítványt, hogy engedélyezze az előzetes hozzáférést a webkonzolhoz. A vállalati SSL és a TLS-tanúsítványok a parancssori eszköz használatával telepíthetők [`cyberx-xsense-certificate-import`](#cli-commands) . 
+A telepítés után a készülék létrehoz egy helyi önaláírt tanúsítványt, hogy engedélyezze az előzetes hozzáférést a webkonzolhoz. A vállalati SSL és a TLS-tanúsítványok a parancssori eszköz használatával telepíthetők [`cyberx-xsense-certificate-import`](#cli-commands) .
 
  > [!NOTE]
  > Az integrációk és a továbbítási szabályok esetében, ahol a berendezés a munkamenet ügyfele és kezdeményezője, a rendszer bizonyos tanúsítványokat használ, és nem kapcsolódik a rendszertanúsítványokhoz.  
@@ -282,7 +282,7 @@ A CLI-parancs használatakor:
 
 A tanúsítványokat a következő parancsokkal kezelheti:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | Új titkos kulcs és tanúsítvány-aláírási kérelem létrehozása | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Önaláírt tanúsítvány létrehozása | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ A tanúsítványokat a következő parancsokkal kezelheti:
 
 Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli adatokat, használja a következő parancsokat:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | Tanúsítvány-aláírási kérelem (CSR) keresése | `openssl req -text -noout -verify -in CSR.csr` |
 | Titkos kulcs keresése | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli
 
 Ha hibaüzenet jelenik meg arról, hogy a titkos kulcs nem egyezik a tanúsítvánnyal, vagy ha egy helyre telepített tanúsítvány nem megbízható, a következő parancsokkal javítsa ki a hibát;
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | A nyilvános kulcs MD5-kivonatának ellenőrzése annak biztosításához, hogy az megfelel-e a CSR vagy a titkos kulcsnak | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Ha a tanúsítványokat és a kulcsokat különböző formátumokra szeretné átalakítani, hogy azok kompatibilisek legyenek a kiszolgálók vagy szoftverek bizonyos típusaival, használja a következő parancsokat:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | DER-fájl konvertálása (. CRT. cer. der) a PEM-ba  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PEM-fájl átalakítása DER-re | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -363,15 +363,23 @@ Ha az érzékelőt felhőalapú csatlakoztatott érzékelőként regisztrálták
 
 A név módosítása:
 
-1. Az Azure Defender for IoT portálon nyissa meg az **érzékelő kezelése** lapot.
+1. Az Azure Defender for IoT portálon nyissa meg a helyek és érzékelők lapot.
 
-1. Törölje az érzékelőt az **érzékelő kezelése** ablakból.
+1. Törölje az érzékelőt a helyek és érzékelők lapról.
 
-1. Regisztrálja újra az új nevet.
+1. Regisztrálja az új nevet az Első lépések oldalának bevezető **érzékelő** kiválasztásával.
 
 1. Töltse le az új aktiválási fájlt.
 
-1. Jelentkezzen be az érzékelőbe, és töltse fel az új aktiválási fájlt.
+1. Jelentkezzen be a Defender for IoT szenzor-konzolra.
+
+1. Az érzékelő konzolon válassza a **Rendszerbeállítások** , majd az **újraaktiválás** lehetőséget.
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="Töltse fel az aktiválási fájlt az érzékelő újraaktiválásához.":::
+
+1. Válassza a **feltöltés** lehetőséget, és válassza ki a mentett fájlt.
+
+1. Válassza az **aktiválás** lehetőséget.
 
 ## <a name="update-the-sensor-network-configuration"></a>Az érzékelő hálózati konfigurációjának frissítése
 
@@ -387,7 +395,7 @@ A konfiguráció módosítása:
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="Konfigurálja a hálózati beállításokat.":::
 
-3. Állítsa be a paramétereket az alábbiak szerint:
+3. Állítsa be a paramétereket:
 
     | Paraméter | Leírás |
     |--|--|
@@ -458,7 +466,7 @@ A biztonsági másolat mentése külső SMB-kiszolgálóra:
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. Szerkesztés `fstab` : 
+3. Szerkesztés `fstab` :
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ Az alábbi eljárás azt ismerteti, hogyan frissíthető egy önálló érzékel
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="A bejelentkezés után megjelenő verziófrissítési verzió képernyőképe.":::
 
-## <a name="forward-sensor-failure-alerts"></a>Továbbítási érzékelők sikertelen riasztásai 
+## <a name="forward-sensor-failure-alerts"></a>Továbbítási érzékelők sikertelen riasztásai
 
 A riasztásokat harmadik feleknek továbbíthatja, hogy a következő adatokat adja meg:
 
@@ -562,7 +570,7 @@ A Rendszertulajdonságok elérése:
 
 3. Válassza ki a **rendszer tulajdonságai** elemet az **általános** szakaszban.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Veszélyforrások elleni kutatás és csomagok](how-to-work-with-threat-intelligence-packages.md)
 

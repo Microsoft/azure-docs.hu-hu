@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622795"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377999"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
@@ -82,21 +82,8 @@ optimizer = optim.SGD(
 
 A szkript mostantól argumentumként fogadja az _adatelérési utat_ . A-től kezdődően tesztelje helyileg. Adja hozzá az oktatóanyag-címtár struktúrához egy nevű mappát `data` . A címtár struktúrájának a következőhöz hasonlóan kell kinéznie:
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-|  └──pytorch-env.yml
-└──data
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-└──04-run-pytorch.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="A címtár szerkezete a. azureml, az adat és az src alkönyvtárakat mutatja.":::
+
 
 Ha `train.py` az előző oktatóanyagban nem futtatta helyileg a szolgáltatást, nem lesz a `data/` könyvtára. Ebben az esetben futtassa a `torchvision.datasets.CIFAR10` metódust helyileg a `download=True` `train.py` parancsfájlban.
 

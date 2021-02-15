@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/03/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 804cdbd6266f2e77b5562d914bac089fce80f645
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 5877db6b3bc7366f28e679882a2c784e6828b1c1
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840652"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523583"
 ---
 # <a name="view-information-in-alerts"></a>Információk megtekintése a riasztásokban
 
@@ -90,7 +90,7 @@ PCAP-fájl letöltéséhez válassza a :::image type="content" source="media/how
 
 A riasztások **javaslati** területe olyan információkat jelenít meg, amelyek segíthetnek az események jobb megismerésében. Tekintse át ezeket az információkat a riasztási esemény kezelése vagy az eszközön vagy a hálózaton való beavatkozás előtt.
 
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
 [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)
 

@@ -2,19 +2,19 @@
 title: Hozzáférés-vezérlés beállítása a szinapszis-munkaterülethez
 description: Ez a cikk bemutatja, hogyan vezérelheti a szinapszis-munkaterülethez való hozzáférést az Azure-szerepkörök, a szinapszis-szerepkörök, az SQL-engedélyek és a git-engedélyek használatával.
 services: synapse-analytics
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/03/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218076"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102172"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Hozzáférés-vezérlés beállítása a szinapszis-munkaterülethez 
 
@@ -43,7 +43,7 @@ A szinapszis-munkaterület biztonságossá tételéhez kövesse az alábbi eleme
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le őket a választott nevekre.
 
-|Beállítás | Normál név | Leírás |
+|Beállítás | Normál név | Description |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | `workspace1` |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | `storage1` | A munkaterülethez használni kívánt ADLS-fiók. |

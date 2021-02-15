@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: d7b672b7e2c3004eba4a38bd659965b7dee24db6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 02/09/2021
+ms.openlocfilehash: c992693bfb278ac559feb6fa82fa947086ceafbb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422484"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381137"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Cognitive Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "93422484"
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](/rest/api/searchmanagement/)
 > * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)
 
 Az Azure Cognitive Search létrehozásához és konfigurálásához Windows, Linux vagy [Azure Cloud Shell](../cloud-shell/overview.md) PowerShell-parancsmagokat és-parancsfájlokat is futtathat. Az az **. Search** modul a [keresési felügyeleti REST API](/rest/api/searchmanagement) -k teljes paritásával bővíti a [Azure PowerShellt](/powershell/) , és képes a következő feladatok végrehajtására:
 
@@ -30,9 +30,11 @@ Az Azure Cognitive Search létrehozásához és konfigurálásához Windows, Lin
 > * [Előfizetés keresési szolgáltatásainak listázása](#list-search-services)
 > * [Szolgáltatás adatainak visszaküldése](#get-search-service-information)
 > * [Szolgáltatás létrehozása vagy törlése](#create-or-delete-a-service)
+> * [Szolgáltatás létrehozása privát végponttal](#create-a-service-with-a-private-endpoint)
 > * [Felügyeleti API-kulcsok újragenerálása](#regenerate-admin-keys)
 > * [Lekérdezési API-kulcsok létrehozása vagy törlése](#create-or-delete-query-keys)
 > * [Vertikális fel-vagy leskálázás replikákkal és partíciókkal](#scale-replicas-and-partitions)
+> * [Megosztott magánhálózati kapcsolati erőforrás létrehozása](#create-a-shared-private-link-resource)
 
 Alkalmanként a fenti listán *nem* szereplő feladatokkal kapcsolatos kérdéseket is fel kell kérni. Jelenleg nem használható az az **. Search** modul vagy a felügyeleti REST API a kiszolgálónév, régió vagy rétegek módosításához. A dedikált erőforrások a szolgáltatás létrehozásakor vannak lefoglalva. Ennek megfelelően a mögöttes hardver (hely vagy csomópont típusa) módosítása új szolgáltatást igényel. Hasonlóképpen nincsenek olyan eszközök vagy API-k, amelyek a tartalmak, például indexek továbbítására szolgálnak az egyik szolgáltatásból a másikba.
 
@@ -111,7 +113,7 @@ Name              : my-demo-searchapp
 ResourceGroupName : demo-westus
 ResourceType      : Microsoft.Search/searchServices
 Location          : westus
-ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
+ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
 ## <a name="import-azsearch"></a>Importálás az. Search
@@ -133,17 +135,31 @@ Get-Command -Module Az.Search
 Az eredményeknek az alábbi kimenethez hasonlóan kell kinéznie.
 
 ```
-CommandType     Name                                Version    Source
------------     ----                                -------    ------
-Cmdlet          Get-AzSearchAdminKeyPair            0.7.1      Az.Search
-Cmdlet          Get-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          Get-AzSearchService                 0.7.1      Az.Search
-Cmdlet          New-AzSearchAdminKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchQueryKey                0.7.1      Az.Search
-Cmdlet          New-AzSearchService                 0.7.1      Az.Search
-Cmdlet          Remove-AzSearchQueryKey             0.7.1      Az.Search
-Cmdlet          Remove-AzSearchService              0.7.1      Az.Search
-Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
+CommandType     Name                                               Version    Source                                                                
+-----------     ----                                               -------    ------                                                                
+Cmdlet          Get-AzSearchAdminKeyPair                           0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchPrivateLinkResource                    0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Get-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchAdminKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchQueryKey                               0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          New-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchPrivateEndpointConnection           0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchQueryKey                            0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchService                             0.8.0      Az.Search                                                             
+Cmdlet          Remove-AzSearchSharedPrivateLinkResource           0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchPrivateEndpointConnection              0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchService                                0.8.0      Az.Search                                                             
+Cmdlet          Set-AzSearchSharedPrivateLinkResource              0.8.0      Az.Search   
+```
+
+Ha a csomag egy régebbi verziója van telepítve, frissítse a modult a legújabb funkciók beszerzéséhez.
+
+```azurepowershell-interactive
+Update-Module -Name Az.Search
 ```
 
 ## <a name="get-search-service-information"></a>Keresési szolgáltatás adatainak beolvasása
@@ -173,7 +189,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 A [**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey) [új keresési szolgáltatás létrehozásához](search-create-service-portal.md)használatos.
 
 ```azurepowershell-interactive
-New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
+New-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3 -HostingMode Default
 ``` 
 Az eredményeknek az alábbi kimenethez hasonlóan kell kinéznie.
 
@@ -188,6 +204,141 @@ PartitionCount    : 3
 HostingMode       : Default
 Tags
 ```     
+
+### <a name="create-a-service-with-ip-rules"></a>Szolgáltatás létrehozása IP-szabályokkal
+
+A biztonsági követelményektől függően érdemes lehet olyan keresési szolgáltatást létrehozni, amely konfigurálva van egy [IP-tűzfallal](service-configure-firewall.md). Ehhez először meg kell határoznia az IP-szabályokat, majd át kell adni őket a `IPRuleList` paraméternek az alább látható módon.
+
+```azurepowershell-interactive
+$ipRules = @([pscustomobject]@{Value="55.5.63.73"},
+        [pscustomobject]@{Value="52.228.215.197"},
+        [pscustomobject]@{Value="101.37.221.205"})
+
+ New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IPRuleList $ipRules
+```
+
+### <a name="create-a-service-with-a-system-assigned-managed-identity"></a>Szolgáltatás létrehozása rendszerhez rendelt felügyelt identitással
+
+Bizonyos esetekben, például ha a [felügyelt identitás használatával csatlakozik egy adatforráshoz](search-howto-managed-identities-storage.md), be kell kapcsolni a [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md). Ezt a parancs hozzáadásával teheti `-IdentityType SystemAssigned` meg.
+
+```azurepowershell-interactive
+New-AzSearchService -ResourceGroupName <resource-group-name> `
+                      -Name <search-service-name> `
+                      -Sku Standard `
+                      -Location "West US" `
+                      -PartitionCount 3 -ReplicaCount 3 `
+                      -HostingMode Default `
+                      -IdentityType SystemAssigned
+```
+
+## <a name="create-a-service-with-a-private-endpoint"></a>Szolgáltatás létrehozása privát végponttal
+
+Az Azure Cognitive Search [magánhálózati végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy egy virtuális hálózaton lévő ügyfél biztonságosan hozzáférhessen egy keresési indexben lévő adathoz egy [privát hivatkozáson](../private-link/private-link-overview.md)keresztül. A privát végpont egy IP-címet használ a keresési szolgáltatáshoz tartozó [virtuális hálózati címtartomány](../virtual-network/private-ip-addresses.md) alapján. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. További részletekért tekintse meg az Azure-beli [privát végpontok létrehozásához szükséges](service-create-private-endpoint.md) dokumentációt Cognitive Search
+
+Az alábbi példa bemutatja, hogyan hozhat létre egy keresési szolgáltatást privát végponttal.
+
+Először telepítsen egy keresési szolgáltatást, amely a következőre van `PublicNetworkAccess` beállítva: `Disabled` .
+
+```azurepowershell-interactive
+$searchService = New-AzSearchService `
+    -ResourceGroupName <resource-group-name> `
+    -Name <search-service-name> `
+    -Sku Standard `
+    -Location "West US" `
+    -PartitionCount 1 -ReplicaCount 1 `
+    -HostingMode Default `
+    -PublicNetworkAccess Disabled
+```
+
+Ezután hozzon létre egy virtuális hálózatot, magánhálózati kapcsolatokat és a magánhálózati végpontot.
+
+```azurepowershell-interactive
+# Create the subnet
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+    -Name <subnet-name> `
+    -AddressPrefix 10.1.0.0/24 `
+    -PrivateEndpointNetworkPolicies Disabled 
+
+# Create the virtual network
+$virtualNetwork = New-AzVirtualNetwork `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Name <virtual-network-name> `
+    -AddressPrefix 10.1.0.0/16 `
+    -Subnet $subnetConfig
+
+# Create the private network connection
+$privateLinkConnection = New-AzPrivateLinkServiceConnection `
+    -Name <private-link-name> `
+    -PrivateLinkServiceId $searchService.Id `
+    -GroupId searchService
+
+# Create the private endpoint
+$privateEndpoint = New-AzPrivateEndpoint `
+    -Name <private-endpoint-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Location "West US" `
+    -Subnet $virtualNetwork.subnets[0] `
+    -PrivateLinkServiceConnection $privateLinkConnection
+```
+
+Végül hozzon létre egy privát DNS-zónát. 
+
+```azurepowershell-interactive
+## Create private dns zone
+$zone = New-AzPrivateDnsZone `
+    -ResourceGroupName <resource-group-name> `
+    -Name "privatelink.search.windows.net"
+
+## Create dns network link
+$link = New-AzPrivateDnsVirtualNetworkLink `
+    -ResourceGroupName <resource-group-name> `
+    -ZoneName "privatelink.search.windows.net" `
+    -Name "myLink" `
+    -VirtualNetworkId $virtualNetwork.Id
+
+## Create DNS configuration 
+$config = New-AzPrivateDnsZoneConfig `
+    -Name "privatelink.search.windows.net" `
+    -PrivateDnsZoneId $zone.ResourceId
+
+## Create DNS zone group
+New-AzPrivateDnsZoneGroup `
+    -ResourceGroupName <resource-group-name> `
+    -PrivateEndpointName <private-endpoint-name> `
+    -Name 'myZoneGroup' `
+    -PrivateDnsZoneConfig $config
+```
+
+A privát végpontok PowerShellben való létrehozásával kapcsolatos további információkért tekintse meg ezt a [privát hivatkozás](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell) rövid útmutatóját.
+
+### <a name="manage-private-endpoint-connections"></a>Magánhálózati végpontok kapcsolatainak kezelése
+
+Privát végponti kapcsolatok létrehozásán kívül `Get` `Set` a, a és a kapcsolatok is megadhatók `Remove` .
+
+A [Get-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Get-AzSearchPrivateEndpointConnection) a magánhálózati végpontok kapcsolatának lekérésére és állapotának megjelenítésére szolgál.
+
+```azurepowershell-interactive
+Get-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name>
+```
+
+A [set-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Set-AzSearchPrivateEndpointConnection) a kapcsolódás frissítésére szolgál. Az alábbi példa egy privát végponti kapcsolódást állít be az elutasított értékre:
+
+```azurepowershell-interactive
+Set-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name> -Status Rejected  -Description "Rejected"
+```
+
+A [Remove-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Remove-AzSearchPrivateEndpointConnection) a magánhálózati végponti kapcsolatok törlésére szolgál.
+
+```azurepowershell-interactive
+ Remove-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name>
+```
 
 ## <a name="regenerate-admin-keys"></a>Rendszergazdai kulcsok újragenerálása
 
@@ -248,7 +399,47 @@ HostingMode       : Default
 Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resourceGroups/demo-westus/providers/Microsoft.Search/searchServices/my-demo-searchapp
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="create-a-shared-private-link-resource"></a>Megosztott magánhálózati kapcsolati erőforrás létrehozása
+
+Az Azure Cognitive Search API-kkal létrehozott biztonságos erőforrások privát végpontait *megosztott magánhálózati kapcsolati erőforrásoknak* nevezzük. Ennek az az oka, hogy az [Azure Private link szolgáltatással](https://azure.microsoft.com/services/private-link/)integrált erőforráshoz (például egy Storage-fiókhoz) való hozzáférés "megosztás".
+
+Ha indexelő használatával indexeli az adatait az Azure Cognitive Searchban, és az adatforrás egy magánhálózaton található, létrehozhat egy kimenő [magánhálózati végponti kapcsolattal](../private-link/private-endpoint-overview.md) az adatelérést.
+
+Azon Azure-erőforrások teljes listája, amelyekhez kimenő privát végpontokat hozhat létre az Azure Cognitive Search a kapcsolódó **Csoportazonosító** értékeivel együtt [itt](search-indexer-howto-access-private.md#shared-private-link-resources-management-apis) található.
+
+A [New-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/New-AzSearchSharedPrivateLinkResource) a megosztott magánhálózati kapcsolati erőforrás létrehozásához használatos. Ne feledje, hogy a parancs futtatása előtt néhány konfigurációra szükség lehet az adatforráshoz.
+
+```azurepowershell-interactive
+New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
+```
+
+A [Get-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Get-AzSearchSharedPrivateLinkResource) lehetővé teszi a megosztott magánhálózati kapcsolati erőforrások beolvasását és az állapotuk megtekintését.
+
+```azurepowershell-interactive
+Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name>
+```
+
+Ahhoz, hogy használni lehessen, jóvá kell hagynia a következő paranccsal való kapcsolódást.
+
+```azurepowershell-interactive
+Approve-AzPrivateEndpointConnection `
+    -Name <spl-name> `
+    -ServiceName <search-service-name> `
+    -ResourceGroupName <resource-group-name> `
+    -Description = "Approved"
+```
+
+A [Remove-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Remove-AzSearchSharedPrivateLinkResource) a megosztott magánhálózati kapcsolati erőforrás törlésére szolgál.
+
+```azurepowershell-interactive
+$job = Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -Force -AsJob
+
+$job | Get-Job
+```
+
+A megosztott magánhálózati kapcsolati erőforrások beállításával kapcsolatos részletes információkért tekintse meg az [Indexelő kapcsolatainak privát végponton keresztül](search-indexer-howto-access-private.md)történő létrehozását ismertető dokumentációt.
+
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 

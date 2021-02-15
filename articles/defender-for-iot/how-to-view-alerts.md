@@ -7,24 +7,24 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509069"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523668"
 ---
 # <a name="view-alerts"></a>Riasztások megtekintése
 
 Ez a cikk bemutatja, hogyan tekintheti meg az érzékelő által aktivált riasztásokat, és hogyan kezelheti őket a riasztási eszközökkel.
 
-A riasztásokat különböző kategóriák alapján tekintheti meg, például az archivált vagy rögzített riasztásokat. Vagy kereshet olyan riasztásokat is, mint például az IP-vagy MAC-címeken alapuló riasztások.  
+A riasztásokat különböző kategóriák alapján tekintheti meg, például az archivált vagy rögzített riasztásokat. Kereshet olyan riasztásokat is, mint például az IP-vagy MAC-címeken alapuló riasztások.  
 
 A riasztásokat az érzékelő irányítópultján is megtekintheti.
 
 Riasztások megtekintése:
 
-- Válassza a **riasztások** lehetőséget az oldal menüjében. A **riasztások** ablak megjeleníti az érzékelő által észlelt riasztásokat.
+- Válassza a **riasztások** lehetőséget az oldal menüjében. A riasztások ablak megjeleníti az érzékelő által észlelt riasztásokat.
 
   :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-screen.png" alt-text="A riasztások képernyő nézete.":::
 
@@ -32,7 +32,7 @@ Riasztások megtekintése:
 
 A riasztások a **riasztások** főnézetből különböző kategóriák szerint tekinthetők meg. Válasszon ki egy riasztást a részletek áttekintéséhez és az esemény kezeléséhez.
 
-| Rendezés típus szerint | Leírás |
+| Rendezés típus szerint | Description |
 |--|--|
 | **Fontos riasztások** | A riasztások fontosság szerint rendezve jelennek meg. |
 | **Rögzített riasztások** | Riasztások, amelyeket a felhasználó a további vizsgálathoz rögzített. A rögzített riasztások archiválása nem történik meg, és a rögzített mappában 14 napig vannak tárolva. |
@@ -42,21 +42,21 @@ A riasztások a **riasztások** főnézetből különböző kategóriák szerint
 
 ## <a name="search-for-alerts-of-interest"></a>Érdekes riasztások keresése
 
-A **riasztások** fő nézete különböző keresési funkciókat kínál, amelyek segítenek a fontos riasztások megtalálásában.
+A riasztások fő nézete különböző keresési funkciókat kínál, amelyek segítenek a fontos riasztások megtalálásában.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/main-alerts-view.png" alt-text="Riasztások a képernyőképen.":::
 
-### <a name="text-search"></a>Szöveges keresés 
+### <a name="text-search"></a>Szöveges keresés
 
-A riasztások szöveg, számok vagy karakterek alapján való kereséséhez használja az **ingyenes keresési** lehetőséget.
+A riasztások szöveg, számok vagy karakterek alapján való kereséséhez használja az ingyenes keresési lehetőséget.
 
 Keresés:
 
-- Írja be a szükséges szöveget az **ingyenes keresés** mezőbe, majd nyomja le az ENTER billentyűt a billentyűzeten.
+- Írja be a szükséges szöveget az ingyenes Keresés mezőbe, majd nyomja le az ENTER billentyűt a billentyűzeten.
 
 A keresés törlése:
 
-- Törölje a szöveget az **ingyenes keresés** mezőbe, majd nyomja le az ENTER billentyűt a billentyűzeten.
+- Törölje a szöveget az ingyenes Keresés mezőbe, majd nyomja le az ENTER billentyűt a billentyűzeten.
 
 ### <a name="device-group-or-device-ip-address-search"></a>Eszközcsoport vagy eszköz IP-címének keresése
 
@@ -100,7 +100,7 @@ A riasztási üzenetek a következő műveleteket biztosítják:
 
 - Válassza ki :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: az összes riasztás megismeréséhez és elfogadásához.
 
-- Válassza ki a :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: riasztási lista CSV-fájlba exportálását, és válassza az Exportálás lehetőséget. Válassza a **riasztás exportálás** lehetőséget a normál EXPORTÁLÁS – CSV beállításhoz. Vagy válassza a **kiterjesztett riasztások exportálás** lehetőséget, hogy a CSV-fájlban lévő riasztással kapcsolatos további információkhoz külön sorokat adjon hozzá.
+- Válassza ki :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: a riasztási adatok. csv fájlba való exportálását. A **kiterjesztett riasztások exportálási** beállításával a riasztási információkat külön sorokban exportálhatja a több eszközt magában foglaló riasztásokhoz.
 
 ## <a name="alert-pop-up-window-options"></a>Riasztás előugró ablakának beállításai
 

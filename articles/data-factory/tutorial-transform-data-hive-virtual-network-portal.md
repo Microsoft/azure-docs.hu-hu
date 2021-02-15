@@ -1,21 +1,18 @@
 ---
 title: Adatátalakítás a kaptár használatával az Azure Virtual Network használatával Azure Portal
 description: Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: f6e1f80ebba0aa67cf2bab4a772ebc1765cd8298
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634368"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377958"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Adatátalakítás az Azure Virtual Networkban a kaptár tevékenységgel Azure Data Factory a Azure Portal
 
@@ -38,15 +35,15 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure Storage-fiók** . Létrehoz egy Hive-szkriptet, és feltölti az Azure Storage-ba. A Hive-szkript kimenetét ebben a Storage-fiókban tárolja a rendszer. A példában a HDInsight-fürt ezt az Azure Storage-fiókot használja elsődleges tárolóként. 
+- **Azure Storage-fiók**. Létrehoz egy Hive-szkriptet, és feltölti az Azure Storage-ba. A Hive-szkript kimenetét ebben a Storage-fiókban tárolja a rendszer. A példában a HDInsight-fürt ezt az Azure Storage-fiókot használja elsődleges tárolóként. 
 - **Azure Virtual Network.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
 
     ![Virtuális hálózat létrehozása](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatolja az előző lépésben létrehozott virtuális hálózathoz az [Azure HDInsight Azure virtuális hálózat segítségével történő bővítésével](../hdinsight/hdinsight-plan-virtual-network-deployment.md) kapcsolatos cikk utasításait követve. Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
 
     ![HDInsight virtuális hálózaton](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell** . Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
-- **Egy virtuális gép** . Hozzon létre egy Azure-beli virtuális gépet, és csatlakoztassa ahhoz a virtuális hálózathoz, amelyen a HDInsight-fürt található. Részletekért tekintse meg a [virtuális gépek létrehozását](../virtual-network/quick-create-portal.md#create-virtual-machines) ismertető cikket. 
+- **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
+- **Egy virtuális gép**. Hozzon létre egy Azure-beli virtuális gépet, és csatlakoztassa ahhoz a virtuális hálózathoz, amelyen a HDInsight-fürt található. Részletekért tekintse meg a [virtuális gépek létrehozását](../virtual-network/quick-create-portal.md#create-virtual-machines) ismertető cikket. 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive-szkript feltöltése Blob Storage-fiókba
 
@@ -73,18 +70,18 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
-2. Kattintson az **Új** elemre, majd az **Adatok + analitika** , végül a **Data Factory** elemre. 
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).    
+2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
-3. Az **Új adat-előállító** lapon, a **név** mezőben adja meg a következőt: **ADFTutorialHiveFactory** . 
+3. Az **Új adat-előállító** lapon, a **név** mezőben adja meg a következőt: **ADFTutorialHiveFactory**. 
       
      ![Új adat-előállító lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
    Az Azure-beli adatgyár nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
     *A "MyAzureSsisDataFactory" nevű adatgyár nem érhető el*
-3. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni. 
+3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
      
    - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából. 
@@ -92,10 +89,10 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
          
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
-5. Válassza ki a Data Factory **helyét** . A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
+5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** gombra.
-8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése** . 
+7. Kattintson a **Létrehozás** lehetőségre.
+8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -152,7 +149,7 @@ Mivel a Hadoop-fürt egy virtuális hálózatban található, telepítenie kell 
 
 Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
 - Egy Azure Storage-beli **társított szolgáltatás** , amely egy Azure Storage-fiókot csatol az adatgyárhoz. Ez a tároló a HDInsight-fürt által használt elsődleges tároló. Ebben az esetben ezt az Azure Storage-fiókot használjuk a Hive-szkript és a szkript kimenetének tárolására.
-- Egy **HDInsight társított szolgáltatás** . Az Azure Data Factory a Hive-szkriptet erre a HDInsight-fürtre küldi el végrehajtásra.
+- Egy **HDInsight társított szolgáltatás**. Az Azure Data Factory a Hive-szkriptet erre a HDInsight-fürtre küldi el végrehajtásra.
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
 
@@ -166,7 +163,7 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
 
     1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
     2. Válassza a **MySelfHostedIR** elemet a **Connect via integration runtime** (Csatlakozás integrációs modulon keresztül) lehetőségnél.
-    3. Válassza ki az Azure Storage-fiókját a **Storage-fiók nevéhez** . 
+    3. Válassza ki az Azure Storage-fiókját a **Storage-fiók nevéhez**. 
     4. Ha tesztelni szeretné a tárfiókkal létrejövő kapcsolatot, kattintson a **Test connection** (Kapcsolat tesztelése) lehetőségre.
     5. Kattintson a **Mentés** gombra.
    
@@ -182,10 +179,10 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
     ![Az Azure HDInsight kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
 3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
-    1. A **Name** (Név) mezőben adja meg a következőt: **AzureHDInsightLinkedService** .
+    1. A **Name** (Név) mezőben adja meg a következőt: **AzureHDInsightLinkedService**.
     2. Válassza a **Bring your own HDInsight** (Saját HDInsight használata) lehetőséget. 
     3. A **HDI cluster** (HDI-fürt) elemnél válassza ki saját HDInsight-fürtjét. 
-    4. Adja meg a HDInsight-fürthöz tartozó **felhasználónevet** .
+    4. Adja meg a HDInsight-fürthöz tartozó **felhasználónevet**.
     5. Adja meg a felhasználó **jelszavát** . 
     
         ![Az Azure HDInsight beállításai](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-hdinsight.png)
@@ -223,12 +220,12 @@ Vegye figyelembe a következő szempontokat:
     3. A **Choose a file or folder** (Fájl vagy mappa választása) ablakban keressem meg a **hivescripts** mappát az **adftutorial** tárolóban, válassza ki a **hivescript.hql** fájlt, és kattintson a **Finish** (Befejezés) elemre.  
         
         ![Fájl vagy mappa kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
-    4. Ellenőrizze, hogy megjelenik-e az **adftutorial/hivescripts/hivescript.hql** a **fájl elérési útjánál** .
+    4. Ellenőrizze, hogy megjelenik-e az **adftutorial/hivescripts/hivescript.hql** a **fájl elérési útjánál**.
 
         ![Szkript beállításai](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. A **Script lapon** bontsa ki az **Advanced** (Speciális) szakaszt. 
     6. Kattintson az **Auto-fill from script** (Automatikus kitöltés szkript alapján) elemre a **Parameters** (Paraméterek) menüpontban. 
-    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Például: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Adja meg a **kimeneti** paraméter értékét a következő formátumban: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Példa: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Szkript argumentumai](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Ahhoz, hogy közzétehesse az összetevőket a Data Factoryn, kattintson a **Publish** (Közzététel) gombra.

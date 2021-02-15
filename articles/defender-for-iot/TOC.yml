@@ -131,8 +131,8 @@
               displayName: 'Active Directory, roles, permissions'
               href: how-to-create-and-manage-users.md
             - name: Globális felhasználói hozzáférés-vezérlés meghatározása
-              displayName: 'business unit, site, region'
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region, user'
         - name: A monitorozandó forgalom szabályozása
           displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
           href: how-to-control-what-traffic-is-monitored.md
@@ -140,8 +140,8 @@
           displayName: 'disconnect, connect, activation file, sensor backup'
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: Különálló érzékelők kezelése
-          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, SSL, TLS, connect, timezone time zone, backup, restore, software update, failure'
         - name: Érzékelők kezelése a felhőben
           href: how-to-manage-sensors-on-the-cloud.md
         - name: A helyszíni felügyeleti konzol kezelése
@@ -153,10 +153,13 @@
           items:
             - name: Egy eszközkészlet összes vállalati érzékelője általi észlelések vizsgálata
               href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+              displayName: classification
             - name: Egy eszközkészlet érzékelői általi észlelések vizsgálata
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+              displayName: 'classification, Windows registry'
         - name: Az érzékelőeszköz-térkép használata
           href: how-to-work-with-the-sensor-device-map.md
+          displayName: 'connections, Purdue, zoom'
         - name: Az érzékelők által észlelt riasztások kezelése
           items:
             - name: Az érzékelő általi riasztás kezelése
@@ -165,8 +168,10 @@
               href: how-to-view-alerts.md
             - name: A riasztások által biztosított információk megtekintése
               href: how-to-view-information-provided-in-alerts.md
+              displayName: PCAP
             - name: A riasztási esemény kezelése
               href: how-to-manage-the-alert-event.md
+              displayName: 'PCAP, acknowledge, learn, mute, policy'
             - name: A riasztási eseményekre való válaszadás gyorsítása
               href: how-to-accelerate-alert-incident-response.md
               displayName: 'custom, alerts, comments, groups'
@@ -175,18 +180,21 @@
               displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: 'A globális, regionális és helyi fenyegetések megismerése'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
+          displayName: 'site, business unit, region, map'
         - name: Riasztások kezelése a helyszíni felügyeleti konzolon
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: Jelentések létrehozása
           items:
             - name: Kockázatértékelési jelentések létrehozása
               href: how-to-create-risk-assessment-reports.md
+              displayName: 'vulnerability, security score, score'
             - name: Támadási vektoros jelentések létrehozása
               href: how-to-create-attack-vector-reports.md
             - name: Adatbányászati jelentések létrehozása
               href: how-to-create-data-mining-queries.md
             - name: Trendek és statisztikai jelentések létrehozása
-              href: how-to-create-data-mining-queries.md
+              href: how-to-create-trends-and-statistics-reports.md
+              displayName: 'widgets, charts'
         - name: Eszközadatok bővítése
           items:
             - name: Az eszközértesítések kezelése

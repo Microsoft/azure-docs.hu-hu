@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e9904e9157a560e2a4853a1a9cd37977defe73ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935101"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522953"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Biztonsági ügynök hibaelhárítási útmutatója (Linux)
 
@@ -97,7 +97,7 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 | Helyi konfiguráció | Nem értelmezhető konfiguráció | A konfigurációs érték nem elemezhető. A hibaüzenetnek azt kell megadnia, hogy melyik kulcsot nem lehet elemezni. A konfigurációs érték nem elemezhető, mert az érték nem a várt típusú, vagy az érték a tartományon kívül esik. | Javítsa ki a kulcs értékét a/var/LocalConfiguration.jsfájlban, hogy az megfeleljen a LocalConfiguration sémának, lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című részt a részletekért. |  Javítsa ki a kulcs értékét General.config fájlban, hogy az megfeleljen a sémának, tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című részt a részletekért.|
 | Helyi konfiguráció | Fájlformátum | Nem sikerült elemezni a konfigurációs fájlt. | A konfigurációs fájl sérült, töltse le az ügynököt, és telepítse újra. | |
 | Távoli konfiguráció | Időtúllépés | Az ügynök nem tudja beolvasni a azureiotsecurity modult az időtúllépési időszakon belül. | Győződjön meg arról, hogy a hitelesítési konfiguráció helyes, és próbálkozzon újra. | Az ügynök nem tudott beolvasni az azureiotsecurity modult az időtúllépési időszakon belül. | Győződjön meg arról, hogy a hitelesítési konfiguráció helyes, és próbálkozzon újra. |
-| Hitelesítés | A fájl nem létezik | A megadott elérési úton található fájl nem létezik. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa ** meg aLocalConfiguration.js** fájlt, és módosítsa a **filepath** konfigurációját. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa meg a **Authentication.config** fájlt, és módosítsa a **filepath** konfigurációját.|
+| Hitelesítés | A fájl nem létezik | A megadott elérési úton található fájl nem létezik. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa **meg aLocalConfiguration.js** fájlt, és módosítsa a **filepath** konfigurációját. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa meg a **Authentication.config** fájlt, és módosítsa a **filepath** konfigurációját.|
 | Hitelesítés | Fájl engedélye | Az ügynök nem rendelkezik megfelelő engedélyekkel a fájl megnyitásához. | A megadott elérési úton adja meg a **asciotagent** -felhasználó olvasási engedélyeit a fájlhoz. | Győződjön meg arról, hogy a fájl elérhető. |
 | Hitelesítés | Fájlformátum | A megadott fájl formátuma nem megfelelő. | Győződjön meg arról, hogy a fájl formátuma megfelelő. A támogatott fájltípusok:. pfx és. PEM. | Győződjön meg arról, hogy a fájl érvényes tanúsítványfájl. |
 | Hitelesítés | Nem engedélyezett | Az ügynök nem tudta hitelesíteni a IoT Hub a megadott hitelesítő adatokkal. | Ellenőrizze a hitelesítési konfigurációt a LocalConfiguration fájlban, hajtsa végre a hitelesítési konfigurációt, és győződjön meg róla, hogy az összes adat helyes, ellenőrizze, hogy a fájl titkos kulcsa megegyezik-e a hitelesített identitással. | Ellenőrizze Authentication.config hitelesítési konfigurációját, hajtsa végre a hitelesítési konfigurációt, és győződjön meg arról, hogy az összes adat helyes, majd ellenőrizze, hogy a fájl titkos kulcsa megegyezik-e a hitelesített identitással.
@@ -108,10 +108,4 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Olvassa el a Defender for IoT szolgáltatást [– Áttekintés](overview.md)
-- További információ a IoT [architektúra](architecture.md) Defender szolgáltatásáról
-- A Defender engedélyezése a IoT [szolgáltatáshoz](quickstart-onboard-iot-hub.md)
-- Olvassa el a Defender for IoT szolgáltatást [– Gyakori kérdések](resources-frequently-asked-questions.md)
-- Ismerje meg, hogyan érheti el a [nyers biztonsági információkat](how-to-security-data-access.md)
-- [Javaslatok](concept-recommendations.md) ismertetése
-- Biztonsági [riasztások](concept-security-alerts.md) ismertetése
+A Defender for IoT szolgáltatás [áttekintése –](overview.md) további információ a Defender for IoT [architektúráról](architecture.md) : a Defender for IoT [szolgáltatás](quickstart-onboard-iot-hub.md) beolvasása a Defender for IoT szolgáltatással kapcsolatos [Gyakori kérdések](resources-frequently-asked-questions.md) a biztonsági [](concept-recommendations.md) [riasztások](concept-security-alerts.md) [megismerésének](how-to-security-data-access.md) ismertetése

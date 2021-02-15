@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 8d6cee5e8d9683ca88a71608595b7dfde8261b8d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520527"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522869"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -125,11 +125,9 @@ Nem. Ha engedélyezi az [Azure Defender számára](defender-for-servers-introduc
 | Indítás     | A virtuális gép elindul.                                                                                                                               | Nem számlázott            |
 | Futó      | Virtuális gép normál működésének állapota                                                                                                                    | Számlázása                |
 | Leállítás     | Ez egy átmeneti állapot. Ha elkészült, a rendszer leállítottként jeleníti meg.                                                                           | Számlázása                |
-| Leállítva      | A virtuális gép le lett állítva a vendég operációs rendszerből, vagy az erő API-k használatával. A hardver továbbra is a virtuális gép számára van lefoglalva, és a gazdagépen marad. | Számlázott (1)            |
-| Felszabadítás | Átmeneti állapot. Ha elkészült, a virtuális gép fel lesz töltve.                                                                             | Nem számlázott (1)        |
+| Leállítva      | A virtuális gép le lett állítva a vendég operációs rendszerből, vagy az erő API-k használatával. A hardver továbbra is a virtuális gép számára van lefoglalva, és a gazdagépen marad. | Számlázása                |
+| Felszabadítás | Átmeneti állapot. Ha elkészült, a virtuális gép fel lesz töltve.                                                                             | Nem számlázott            |
 | Felszabadítva  | A virtuális gép sikeresen leállt, és el lett távolítva a gazdagépről.                                                                                  | Nem számlázott            |
-
-(1) egyes Azure-erőforrások, például a lemezek és a hálózatkezelés költségekkel járnak. A példányon lévő szoftverlicenc-licencek nem számítanak fel díjat.
 
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Egy felhasználatlan gépet megjelenítő Azure Virtual Machines":::
 

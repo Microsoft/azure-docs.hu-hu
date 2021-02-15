@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: c28e2f1c24d39ceb915be9f4f6f222d70de9ee73
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509486"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522223"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Érzékelő trendek és statisztikai jelentések
 
@@ -93,7 +93,7 @@ Az oldalsó menüben válassza a **trendek & statisztikát** .
 
 Alapértelmezés szerint az eredmények az elmúlt 7 napban észlelhetők. A szűrési eszközök használatával módosíthatja ezt a tartományt. Például egy ingyenes szöveges keresés.
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
 [Kockázatértékelési jelentéskészítés](how-to-create-risk-assessment-reports.md) 
  [Érzékelő adatbányászati lekérdezések](how-to-create-data-mining-queries.md) 

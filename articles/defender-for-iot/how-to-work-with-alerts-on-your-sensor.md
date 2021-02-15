@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840572"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523549"
 ---
 # <a name="work-with-alerts-on-your-sensor"></a>Riasztások használata az érzékelőn
 
@@ -48,7 +48,7 @@ A riasztások vizsgálatának fokozása és meggyorsítása érdekében további
 
 A riasztások akkor aktiválódnak, ha az érzékelő motorok a hálózati forgalom és a beavatkozást igénylő viselkedés változásait figyelik. Ez a cikk az egyes motorok által kiváltott riasztások típusait ismerteti.
 
-| Riasztástípus | Leírás |
+| Riasztástípus | Description |
 |-|-|
 | Szabályzat megsértésével kapcsolatos riasztások | Akkor aktiválódik, ha a házirend-megsértési motor észleli a korábban megszerzett forgalomtól való eltérést. Például: <br /> – A rendszer új eszközt észlelt.  <br /> – Új konfiguráció észlelhető az eszközön. <br /> – A programozási eszközként nem definiált eszközök programozási változást végeznek. <br /> – A belső vezérlőprogram verziója megváltozott. |
 | Protokollok megsértésével kapcsolatos riasztások | Akkor aktiválódik, ha a protokoll-megsértési motor olyan csomagok szerkezetét vagy mezőértékeket észlel, amelyek nem felelnek meg a protokoll specifikációjának. | 
@@ -68,9 +68,9 @@ Például:
 
   - A hálózati eszközökön észlelt kártevő-eseményeket a kockázatértékelési jelentések jelentik. Ha a kártevő-eseményekre vonatkozó riasztások el vannak *némítva*, az érintett eszközök nem lesznek kiszámítva a kockázatértékelési jelentésben.
 
-## <a name="see-also"></a>További információ
+## <a name="next-steps"></a>Következő lépések
 
-- [Tanulási és intelligens informatikai képzési módok](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [A riasztásokban megadott információk megtekintése](how-to-view-information-provided-in-alerts.md)
-- [A riasztási esemény kezelése](how-to-manage-the-alert-event.md)
-- [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)
+[Tanulási és intelligens informatikai képzési módok](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
+ [A riasztásokban](how-to-view-information-provided-in-alerts.md) 
+ megadott információk megtekintése [A riasztási esemény kezelése](how-to-manage-the-alert-event.md) 
+ [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)

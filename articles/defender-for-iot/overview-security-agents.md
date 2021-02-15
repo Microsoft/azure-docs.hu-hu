@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 61c7f1bddd40151aff2b1ca556045d34c4a1cc0d
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a40b64dd3b8f898c961863c1d78a2a56642c44b9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820823"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521611"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Ismerkedés az Azure Defender IoT-eszköz Micro-ügynökökkel való használatába
 
@@ -44,7 +44,6 @@ A következő munkafolyamat használatával telepítheti és tesztelheti a Defen
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A [megoldás](quickstart-configure-your-solution.md) konfigurálása
-- [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)
-- [Egyéni riasztások](quickstart-create-custom-alerts.md) konfigurálása
-- [Biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md)
+A [megoldás](quickstart-configure-your-solution.md)beállítása 
+ [biztonsági modulok](quickstart-create-security-twin.md) konfigurálása [egyéni riasztások](quickstart-create-custom-alerts.md)beállítása 
+ [biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md)
