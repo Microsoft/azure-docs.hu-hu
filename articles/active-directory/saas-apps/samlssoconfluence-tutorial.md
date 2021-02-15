@@ -9,105 +9,77 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: c8f85c6dd42f1f4505474e03e378c0fe48d70005
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 64e358ef6c20c72b1a6a406df1e49ca5a9763b1c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896497"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a Solution GmbH összefolyásánál
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAML SSO-t a Solution GmbH Azure Active Directory (Azure AD) szolgáltatással való összefolyásánál.
-Az SAML SSO az Azure AD-vel való összevonáshoz való integrálásával az alábbi előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAML SSO-t a Solution GmbH Azure Active Directory (Azure AD) szolgáltatással való összefolyásánál. Ha integrálja az SAML SSO-t az Azure AD-vel való összefolyásánál, a következőket teheti:
 
-* Az Azure AD-ben beállíthatja, hogy az SAML SSO-nal Hogyan férhet hozzá a Resolution GmbH összefolyásánál.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az SAML SSO-ba az Azure AD-fiókkal való összefolyásánál (egyszeri bejelentkezés).
+* Vezérlés az Azure AD-ben, aki hozzáfér az SAML SSO-hoz a Resolution GmbH általi összefolyásánál.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezzenek az SAML SSO-ba az Azure AD-fiókkal való összefolyásánál.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha az Azure AD-integrációt az SAML SSO-nal szeretné konfigurálni a Solution GmbH összevonásához, a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* SAML SSO a Resolution GmbH egyszeri bejelentkezésre engedélyezett előfizetéssel való összefolyásánál
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* SAML SSO a Resolution GmbH egyszeri bejelentkezéses (SSO) engedélyezett előfizetésének összefolyásánál.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Resolution GmbH által összefolyásánál az SAML SSO támogatja az **SP** és a **identitásszolgáltató** által kezdeményezett SSO-t
+* A Resolution GmbH által összefolyásánál az SAML SSO támogatja az **SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-## <a name="adding-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>SAML SSO hozzáadása az összefolyásánál
+## <a name="add-saml-sso-for-confluence-by-resolution-gmbh-from-the-gallery"></a>SAML SSO hozzáadása az összefolyásánál a Resolution GmbH által a katalógusból
 
 Az SAML SSO az Azure AD-be való összevonáshoz való integrálásának konfigurálásához az SAML SSO-t hozzá kell adnia a katalógusból a Managed SaaS-alkalmazások listájához.
 
-**A következő lépések végrehajtásával adhat hozzá SAML SSO-t a Resolution GmbH által összefolyásánál a katalógusból:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **SAML SSO az összefolyásánál a Resolution GmbH által** a keresőmezőbe.
+1. Válassza ki az **SAML SSO-t a Resolution GmbH által** az eredmények panelről való összefolyásánál, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-saml-sso-for-confluence-by-resolution-gmbh"></a>Az Azure AD SSO konfigurálása és tesztelése az SAML SSO-hoz a Solution GmbH összefolyásánál
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t az SAML SSO-nal a Resolution GmbH által a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az SAML SSO-ben a megoldási szolgáltatás összefolyásánál.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+A következő lépések végrehajtásával konfigurálhatja és tesztelheti az Azure AD SSO-t az SAML SSO-nal a Solution GmbH összefolyásánál:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+2. Az **[SAML SSO konfigurálása a Resolution GmbH SSO](#configure-saml-sso-for-confluence-by-resolution-gmbh-sso)** -hoz való összekapcsoláshoz – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
+    1. **[SAML SSO létrehozása a Solution GmbH által végzett összekapcsoláshoz](#create-saml-sso-for-confluence-by-resolution-gmbh-test-user)** – a felhasználó Azure ad-beli képviseletéhez kapcsolódó Britta Simon-nek a SAML SSO-ban való összekapcsolásához.
+6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A keresőmezőbe írja be az **SAML SSO-t a Resolution GmbH összefolyásánál** : válassza ki az **SAML SSO-t a Resolution GmbH általi összefolyásánál** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A Azure Portalban, az SAML SSO-hoz való összevonáshoz a **Resolution GmbH** Application Integration lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
-     ![SAML SSO az eredmények listájában a megoldási szolgáltatáshoz való összefolyásánál](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SAML SSO-nal konfigurálja és teszteli az **Britta Simon** nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolatot kell létrehozni az SAML SSO-hoz a Resolution GmbH összefolyásánál.
-
-Ha az Azure AD egyszeri bejelentkezést az SAML SSO-nal konfigurálja és tesztelni kívánja a Solution GmbH összefolyásánál, a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az SAML SSO-t a Resolution GmbH egyszeri bejelentkezéssel való összefolyásánál](#configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on)** , hogy az alkalmazás oldalának egyetlen Sign-On beállításait konfigurálja.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[SAML SSO létrehozása a Solution GmbH által végzett összekapcsoláshoz](#create-saml-sso-for-confluence-by-resolution-gmbh-test-user)** – a felhasználó Azure ad-beli képviseletéhez kapcsolódó Britta Simon-nek a SAML SSO-ban való összekapcsolásához.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést az SAML SSO-nal a Solution GmbH összefolyásánál:
-
-1. A [Azure Portal](https://portal.azure.com/), az **SAML SSO for Resolution GmbH** Application Integration (az egyszeri bejelentkezés kiválasztása) lapon válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni:
-
-    ![Képernyőkép, amely az "alapszintű S L konfiguráció" kifejezést jeleníti meg az "azonosító" és "válasz U R L" szövegmezők kiemelésével, valamint a "Mentés" művelet kiválasztásával.](common/idp-intiated.png)
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást SP-ben kezdeményezett módban szeretné konfigurálni:
-
-    ![SAML SSO a Solution GmbH-tartomány és az URL-címek egyszeri bejelentkezési adatainak összefolyásánál](common/metadata-upload-additional-signon.png)
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -118,51 +90,77 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>SAML SSO konfigurálása a Resolution GmbH egyetlen Sign-On való összefolyásánál
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** lehetőségre.
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít az SAML SSO-hoz a Solution GmbH összefolyásánál.
+
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listájában válassza ki az **SAML SSO-t a megoldási GmbH-hoz való összefolyásánál**.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+
+## <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-sso"></a>SAML SSO konfigurálása a Resolution GmbH SSO-hoz való összefolyásánál
 
 1. Egy másik böngészőablakban jelentkezzen be az SAML SSO-ba a **Resolution GmbH felügyeleti portáljának** rendszergazdájaként.
 
 2. Mutasson a fogaskerékre, és kattintson a **bővítmények** elemre.
     
-    ![A legördülő menüben kiválasztott "fogaskerék" ikont és "bővítményeket" megjelenítő képernyőkép.](./media/samlssoconfluence-tutorial/addon1.png)
+    ![A legördülő menüben kiválasztott "fogaskerék" ikont és "bővítményeket" megjelenítő képernyőkép.](./media/saml-sso-confluence-tutorial/add-on-1.png)
 
 3. A rendszer átirányítja a rendszergazdai hozzáférés lapra. Adja meg a jelszót, és kattintson a **Confirm (megerősítés** ) gombra.
 
-    ![Képernyőkép a "rendszergazdai hozzáférés" oldalon a "megerősítés" gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon2.png)
+    ![Képernyőkép a "rendszergazdai hozzáférés" oldalon a "megerősítés" gomb kiválasztásával.](./media/saml-sso-confluence-tutorial/add-on-2.png)
 
 4. Az **ATLASSIAN-piactér** lapon kattintson az **új bővítmények keresése** elemre. 
 
-    ![Képernyőkép, amely a "Attlassian Marketplace" fület jeleníti meg az "új bővítmények keresése" beállítással.](./media/samlssoconfluence-tutorial/addon.png)
+    ![Képernyőkép, amely a "Attlassian Marketplace" fület jeleníti meg az "új bővítmények keresése" beállítással.](./media/saml-sso-confluence-tutorial/add-on.png)
 
 5. Keressen **SAML egyszeri bejelentkezést (SSO) a torkolatánál** , és kattintson a **telepítés** gombra az új SAML beépülő modul telepítéséhez.
 
-    ![Képernyőkép: az "új bővítmények keresése" lap "S A M L egyszeri bejelentkezés (S O) a" összefolyásánál "a keresőmezőbe és a" telepítés "gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon7.png)
+    ![Képernyőkép: az "új bővítmények keresése" lap "S A M L egyszeri bejelentkezés (S O) a" összefolyásánál "a keresőmezőbe és a" telepítés "gomb kiválasztásával.](./media/saml-sso-confluence-tutorial/add-on-7.png)
 
 6. A beépülő modul telepítése megkezdődik. Kattintson a **Bezárás** gombra.
 
-    ![A "telepítés" párbeszédpanelt megjelenítő képernyőkép.](./media/samlssoconfluence-tutorial/addon8.png)
+    ![A "telepítés" párbeszédpanelt megjelenítő képernyőkép.](./media/saml-sso-confluence-tutorial/add-on-8.png)
 
-    ![Képernyőkép, amely a "telepített és kész" állapotot mutatja. párbeszédablak a "Bezárás" művelettel kiválasztva.](./media/samlssoconfluence-tutorial/addon9.png)
+    ![Képernyőkép, amely a "telepített és kész" állapotot mutatja. párbeszédablak a "Bezárás" művelettel kiválasztva.](./media/saml-sso-confluence-tutorial/add-on-9.png)
 
 7.  Kattintson a **Kezelés** gombra.
 
-    ![Képernyőfelvétel: "az M L egyszeri bejelentkezés (S O)" a "Manage" (kezelés) gombbal kiválasztva az alkalmazás oldalára.](./media/samlssoconfluence-tutorial/addon10.png)
+    ![Képernyőfelvétel: "az M L egyszeri bejelentkezés (S O)" a "Manage" (kezelés) gombbal kiválasztva az alkalmazás oldalára.](./media/saml-sso-confluence-tutorial/add-on-10.png)
     
 8. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
-    ![Képernyőkép, amely a "felügyelet" lapot jeleníti meg a "Konfigurálás" gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon11.png)
+    ![Képernyőkép, amely a "felügyelet" lapot jeleníti meg a "Konfigurálás" gomb kiválasztásával.](./media/saml-sso-confluence-tutorial/add-on-11.png)
 
 9. Ez az új beépülő modul a **felhasználók & biztonság** lapon is megtalálható.
 
-    ![Képernyőfelvétel: a "felhasználók & biztonság" lapot jelölte meg "S A M L SingleSignOn".](./media/samlssoconfluence-tutorial/addon3.png)
+    ![Képernyőfelvétel: a "felhasználók & biztonság" lapot jelölte meg "S A M L SingleSignOn".](./media/saml-sso-confluence-tutorial/add-on-3.png)
     
 10. Az **SAML SingleSignon beépülő modul konfigurálása** lapon kattintson az **új identitásszolgáltató hozzáadása** gombra az Identitáskezelő beállításainak konfigurálásához.
 
-    ![Képernyőfelvétel: az "S A M SingleSignOn beépülő modul konfigurálása" oldal, az "új I d P hozzáadása" gomb kiválasztásával.](./media/samlssoconfluence-tutorial/addon4.png)
+    ![Képernyőfelvétel: az "S A M SingleSignOn beépülő modul konfigurálása" oldal, az "új I d P hozzáadása" gomb kiválasztásával.](./media/saml-sso-confluence-tutorial/add-on-4.png)
 
 11. Az **SAML-identitás szolgáltatójának kiválasztása** lapon hajtsa végre a következő lépéseket:
 
-    ![Az "I d P type", a "Name" és a "Description" szövegmezők kiemelésével megjelenő képernyőkép.](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![Az "I d P type", a "Name" és a "Description" szövegmezők kiemelésével megjelenő képernyőkép.](./media/saml-sso-confluence-tutorial/add-on-5-a.png)
  
     a. Állítsa be az **Azure ad** -t identitásszolgáltató típusként.
     
@@ -174,11 +172,11 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
     
 12. Az **identitás-szolgáltató konfigurációja** lapon kattintson a **tovább** gombra.
 
-    ![Képernyőkép, amely a "következő" gomb kiválasztásával jeleníti meg az "identitás-szolgáltató konfigurációja" lapot.](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![Képernyőkép, amely a "következő" gomb kiválasztásával jeleníti meg az "identitás-szolgáltató konfigurációja" lapot.](./media/saml-sso-confluence-tutorial/add-on-5-b.png)
 
 13. Az **SAML-identitásszolgáltató metaadatainak importálása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Képernyőkép: az "Importálás", "fájl betöltése" és "tovább" gombokkal rendelkező "Importálás" M L I d P metaadatok "oldal.](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![Képernyőkép: az "Importálás", "fájl betöltése" és "tovább" gombokkal rendelkező "Importálás" M L I d P metaadatok "oldal.](./media/saml-sso-confluence-tutorial/add-on-5-c.png)
 
     a. Kattintson a **fájl betöltése** gombra, és válassza ki az 5. lépésben letöltött metaadatokat tartalmazó XML-fájlt.
 
@@ -190,70 +188,20 @@ A következő lépésekkel konfigurálhatja az Azure AD egyszeri bejelentkezést
     
 14. A **felhasználói azonosító attribútum és átalakítás** lapon kattintson a **tovább** gombra.
 
-    ![Képernyőfelvétel: a "Next" gomb kiválasztásával megjelenített "felhasználói azonosító attribútum és átalakítás" oldal.](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![Képernyőfelvétel: a "Next" gomb kiválasztásával megjelenített "felhasználói azonosító attribútum és átalakítás" oldal.](./media/saml-sso-confluence-tutorial/add-on-5-d.png)
     
 15. A **felhasználók létrehozása és frissítése** lapon kattintson a **Mentés gombra &** a beállítások mentése elem mellett.   
     
-    ![A "felhasználó létrehozása és frissítése" oldalt megjelenítő képernyőkép, amely a "Mentés & Next" (következő) gombra kattint.](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![A "felhasználó létrehozása és frissítése" oldalt megjelenítő képernyőkép, amely a "Mentés & Next" (következő) gombra kattint.](./media/saml-sso-confluence-tutorial/add-on-6-a.png)
     
 16. A **beállítások tesztelése** lapon kattintson a **teszt kihagyása & a manuális konfigurálás** lehetőségre a felhasználói teszt azonnali kihagyása érdekében. Ez a következő szakaszban lesz elvégezve, és néhány beállítást igényel a Azure Portalban. 
     
-    ![Képernyőfelvétel: "a beállítások tesztelése" lapon a "teszt kihagyása & manuális beállítása" gomb látható.](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![Képernyőfelvétel: "a beállítások tesztelése" lapon a "teszt kihagyása & manuális beállítása" gomb látható.](./media/saml-sso-confluence-tutorial/add-on-6-b.png)
     
-17. A megjelenő párbeszédablakban a **teszt kihagyása azt jelenti** , hogy..., kattintson **az OK** gombra.
+17. A megjelenő párbeszédablakban a **teszt kihagyása azt jelenti**, hogy..., kattintson **az OK** gombra.
     
-    ![Egyetlen Sign-On konfigurálása](./media/samlssoconfluence-tutorial/addon6c.png)
+    ![Egyetlen Sign-On konfigurálása](./media/saml-sso-confluence-tutorial/add-on-6-c.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
-
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson az SAML SSO-hoz a Solution GmbH összefolyásánál.
-
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza ki **az SAML egyszeri bejelentkezést a feloldási GmbH általi összefolyásánál** .
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában írja be a következőt: és válassza ki az **SAML SSO-t a Resolution GmbH összefolyásánál** .
-
-    ![Az SAML SSO az alkalmazások listája](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ### <a name="create-saml-sso-for-confluence-by-resolution-gmbh-test-user"></a>SAML SSO létrehozása a Resolution GmbH által végzett összefolyásánál
 
@@ -266,11 +214,11 @@ Az SAML SSO a Solution GmbH összefolyásánál a kiépítés manuális feladat.
 
 2. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet** elemre.
 
-    ![Képernyőkép, amely a menüből kiválasztott "fogaskerék" ikont és a "felhasználói kezelés" elemet mutatja.](./media/samlssoconfluence-tutorial/user1.png) 
+    ![Képernyőkép, amely a menüből kiválasztott "fogaskerék" ikont és a "felhasználói kezelés" elemet mutatja.](./media/saml-sso-confluence-tutorial/user-1.png) 
 
 3. A felhasználók szakaszban kattintson a **felhasználók hozzáadása** fülre. A **"felhasználó hozzáadása"** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Alkalmazott hozzáadása](./media/samlssoconfluence-tutorial/user2.png) 
+    ![Alkalmazott hozzáadása](./media/saml-sso-confluence-tutorial/user-2.png) 
 
     a. A **Felhasználónév** szövegmezőbe írja be a felhasználó e-mail-címét, például Britta Simon.
 
@@ -284,16 +232,22 @@ Az SAML SSO a Solution GmbH összefolyásánál a kiépítés manuális feladat.
     
     f. Kattintson a **Hozzáadás** gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen az SAML SSO-hoz való összefolyásánál a Resolution GmbH csempére kattint, automatikusan be kell jelentkeznie az SAML SSO-ba a Resolution GmbH összefolyásánál, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja az SAML SSO-ra a Resolution GmbH bejelentkezési URL-címével való összekapcsoláshoz, ahol elindíthatja a bejelentkezési folyamatot.  
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Nyissa meg az SAML SSO-t a Resolution GmbH közvetlen bejelentkezési URL-címével való összekapcsoláshoz, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az SAML SSO-ba olyan összefolyásánál, amely az SSO-t állítja be. 
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a My apps-ben a saját alkalmazások megoldási lehetőségeit tartalmazó SAML SSO-hoz való összekapcsolásra kattint, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az SAML SSO-ba olyan összekapcsoláshoz, amely az SSO-t állítja be. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+## <a name="next-steps"></a>Következő lépések
+
+Miután konfigurálta az SAML SSO-t a Solution GmbH összefolyásánál, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

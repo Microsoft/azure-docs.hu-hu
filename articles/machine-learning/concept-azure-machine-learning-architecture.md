@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540202"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091669"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -47,28 +47,15 @@ A munkaterület más Azure-erőforrásokat is tartalmaz, amelyeket a munkaterül
 
 A munkaterületeket másokkal is megoszthatja.
 
-### <a name="create-workspace"></a>Munkaterület létrehozása
-
-A következő ábra a munkaterület létrehozása munkafolyamatot mutatja be.
-
-* Jelentkezzen be az Azure AD-be az egyik támogatott Azure Machine Learning ügyfélről (Azure CLI, Python SDK, Azure Portal), és kérje meg a megfelelő Azure Resource Manager tokent.
-* A munkaterületet a Azure Resource Manager meghívásával hozhatja létre. 
-* Azure Resource Manager a munkaterület kiépítéséhez kapcsolatba lép a Azure Machine Learning erőforrás-szolgáltatóval.
-* Ha nem ad meg meglévő erőforrásokat, a rendszer további szükséges erőforrásokat hoz létre az előfizetésében.
-
-A munkaterületekhez (például az Azure Kubernetes szolgáltatáshoz vagy virtuális gépekhez) csatlakoztatott egyéb számítási célokat igény szerint is kiépítheti.
-
-[![Munkaterület-munkafolyamat létrehozása](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
-
 ## <a name="computes"></a>Kiszámítja
 
 <a name="compute-targets"></a> A [számítási cél](concept-compute-target.md) bármely olyan számítógép vagy gép, amelyet a betanítási parancsfájl futtatásához vagy a szolgáltatás központi telepítésének üzemeltetéséhez használ. Számítási célként a helyi gépet vagy egy távoli számítási erőforrást is használhat.  A számítási célokkal megkezdheti a képzést a helyi gépen, majd kibővítheti a felhőt a betanítási szkript módosítása nélkül.
 
 A Azure Machine Learning a gépi tanulási feladatokhoz konfigurált két teljes körűen felügyelt felhőalapú virtuális gépet (VM) mutatja be:
 
-* <a name="compute-instance"></a>**Számítási példány** : a számítási példány egy olyan virtuális gép, amely a gépi tanuláshoz telepített több eszközt és környezetet is tartalmaz. A számítási példány elsődleges használata a fejlesztési munkaállomás számára szükséges.  Megkezdheti a telepítés megkezdése nélkül megjelenő minta-jegyzetfüzetek futtatását. A számítási példányok számítási célként is használhatók a betanítási és a következtetési feladatokhoz.
+* <a name="compute-instance"></a>**Számítási példány**: a számítási példány egy olyan virtuális gép, amely a gépi tanuláshoz telepített több eszközt és környezetet is tartalmaz. A számítási példány elsődleges használata a fejlesztési munkaállomás számára szükséges.  Megkezdheti a telepítés megkezdése nélkül megjelenő minta-jegyzetfüzetek futtatását. A számítási példányok számítási célként is használhatók a betanítási és a következtetési feladatokhoz.
 
-* **Számítási fürtök** : a számítási fürtök több csomópontos skálázási képességekkel rendelkező virtuális gépekből álló fürtök. A számítási fürtök jobban illeszkednek a nagyméretű feladatok és az éles számítási célokhoz.  A fürt automatikusan méretezi a feladatokat, amikor elküld egy feladatot.  Használjon képzési számítási célt vagy fejlesztési/tesztelési célú üzembe helyezést.
+* **Számítási fürtök**: a számítási fürtök több csomópontos skálázási képességekkel rendelkező virtuális gépekből álló fürtök. A számítási fürtök jobban illeszkednek a nagyméretű feladatok és az éles számítási célokhoz.  A fürt automatikusan méretezi a feladatokat, amikor elküld egy feladatot.  Használjon képzési számítási célt vagy fejlesztési/tesztelési célú üzembe helyezést.
 
 A számítási célok betanításával kapcsolatos további információkért lásd: [számítási célok betanítása](concept-compute-target.md#train).  További információ az üzembe helyezési számítási célokról: [telepítési célok](concept-compute-target.md#deploy).
 
@@ -126,10 +113,6 @@ Példa a futtatási konfigurációkra: [képzések futtatásának konfigurálás
 [Munkaterület](#workspace)  >  [Kísérletek](#experiments)  >  [Futtatás](#runs)  >  **Pillanatkép**
 
 Amikor elküld egy futtatást, Azure Machine Learning tömöríti azt a könyvtárat, amely a parancsfájlt zip-fájlként tartalmazza, és elküldi a számítási célnak. Ekkor a rendszer kibontja a zip-fájlt, és ott futtatja a parancsfájlt. Azure Machine Learning a zip-fájlt pillanatképként tárolja a futtatási rekord részeként. Bárki, aki hozzáféréssel rendelkezik a munkaterülethez, böngészhet egy futtatási rekordot, és letöltheti a pillanatképet.
-
-Az alábbi ábrán a kód pillanatkép-munkafolyamata látható.
-
-[![Kód pillanatkép-munkafolyamata](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
 
 ### <a name="logging"></a>Naplózás
 
@@ -272,7 +255,7 @@ A folyamat lépései újrafelhasználhatók, és az előző lépések újbóli f
 
 Azure Machine Learning a következő figyelési és naplózási képességeket biztosítja:
 
-* Az __Adatszakértőknél__ nyomon követheti a kísérletek és a naplózási információkat a betanítási futtatásokból. További információkat az következő cikkekben talál:
+* Az __Adatszakértőknél__ nyomon követheti a kísérletek és a naplózási információkat a betanítási futtatásokból. További információért tekintse át a következő cikkeket:
    * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
    * [A betanítási futtatások mérőszámainak naplózása](how-to-track-experiments.md)
    * [Kísérletek nyomon követése az MLflow használatával](how-to-use-mlflow.md)

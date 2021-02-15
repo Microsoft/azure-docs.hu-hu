@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5734844d91e95fe7d4081e5986095934ea02b4fd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: e273b1c41a9c418bf0121e87e73ec59e65f2242e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584281"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102954"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -71,7 +71,7 @@ Ha le szeretné tölteni az oktatóanyagban felépített alkalmazás befejezett 
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.

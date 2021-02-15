@@ -1,20 +1,20 @@
 ---
-title: 'Rövid útmutató: Azure cache létrehozása a Redis-hez'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure cache-példányt a Redis
+title: 'Gyors útmutató: nyílt forráskódú Redis cache létrehozása'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure cache-példányt a Redis alapszintű, standard vagy prémium szinten
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 829f954fede18da2dbf7b3f2d84f69452294a17a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/08/2021
+ms.openlocfilehash: 24de9e4eabfbc03e942868cce7560b5df093e1ad
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83204807"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365123"
 ---
-# <a name="quickstart-create-an-azure-cache-for-redis-instance"></a>Rövid útmutató: Azure cache létrehozása a Redis-példányhoz
+# <a name="quickstart-create-an-open-source-redis-cache"></a>Gyors útmutató: nyílt forráskódú Redis cache létrehozása
 
 Az Azure cache for Redis teljes körűen felügyelt [nyílt forráskódú Redis](https://redis.io/) biztosít az Azure-on belül. Az Azure cache-t bármely szint (alapszintű, standard vagy prémium szintű) Redis-példányához, illetve mérethez is elindíthatja, és az alkalmazás teljesítményének kielégítéséhez méretezheti azt. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal egy új Azure cache létrehozásához a Redis.
 
@@ -25,10 +25,9 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure cache-példányt a Redis.
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
-

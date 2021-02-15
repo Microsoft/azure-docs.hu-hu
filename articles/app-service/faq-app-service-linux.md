@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008554"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093998"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service Linuxon – gyakori kérdések
 
@@ -110,7 +110,7 @@ Igen, a git üzembe helyezése során a kudu meg kell állapítania, hogy egy PH
 
 **Saját egyéni tárolót használok. Szeretném, hogy a platform csatlakoztatjon egy SMB-megosztást a `/home/` címtárhoz.**
 
-Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás nincs **megadva** , vagy *igaz* értékre van állítva, a `/home/` **rendszer megosztja** a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között **megmaradnak** . Ha explicit módon beállítja a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *Hamis értéket* , a rendszer letiltja a csatlakoztatást.
+Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` a beállítás nincs **megadva** vagy *false* értékre van állítva, a `/home/` **rendszer nem osztja** meg a könyvtárat a méretezési példányok között, és a megírt fájlok az újraindítások között **nem maradnak** meg. Ha explicit módon beállítja az `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *igaz* értéket, a rendszer engedélyezi a csatlakoztatást.
 
 **Az egyéni tároló hosszú időt vesz igénybe, és a platform újraindítja a tárolót, mielőtt befejezi a kezdést.**
 

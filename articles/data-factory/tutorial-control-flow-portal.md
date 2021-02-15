@@ -1,22 +1,19 @@
 ---
 title: A folyamat elágazási és láncolási tevékenységei Azure Portal használatával
 description: Megtudhatja, hogyan vezérelheti Azure Data Factory folyamat adatáramlását a Azure Portal használatával.
-services: data-factory
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: dc82cfdc4e5a063e7c5cb833b617da58023d1ba6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9d8d9af4892001ff1f8f60a92f28aedad14c17cf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497435"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378604"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Elágazó és láncolási tevékenységek egy Azure Data Factory-folyamatban a Azure Portal használatával
 
@@ -151,7 +148,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Létrehozás** gombra.      
+7. Kattintson a **Létrehozás** lehetőségre.      
 8. Az irányítópulton a következő csempe jelenik meg, amelynek állapota: az **adatgyár üzembe helyezése**.
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -331,7 +328,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
 
     ![Tevékenységfuttatási hiba](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

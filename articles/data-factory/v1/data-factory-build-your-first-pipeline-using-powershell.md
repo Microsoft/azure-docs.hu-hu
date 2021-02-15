@@ -1,22 +1,18 @@
 ---
 title: Az első adatgyár létrehozása (PowerShell)
 description: Az oktatóanyag során létrehoz egy minta Azure Data Factory-folyamatot az Azure PowerShell használatával.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: bbeb87c6e96c75e62fe97db031ae926ce30b6a19
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60fb3a8c1fed8e8005ba0b8f67865a7d39c754d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496344"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392051"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Oktatóanyag: Az első Azure data factory létrehozása az Azure PowerShell használatával
 > [!div class="op_single_selector"]
@@ -406,7 +402,7 @@ Az oktatóanyag során létrehozott egy Azure data factoryt, amely egy HDInsight
 3. Létrehozott két **adatkészletet**, amelyek leírják a bemeneti és kimeneti adatokat az adatcsatorna HDInsight Hive-tevékenysége számára.
 4. Létrehozott egy **folyamatot** egy **HDInsight Hive**-tevékenységgel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely Hive-parancsfájlt futtat egy igény szerinti Azure HDInsight-fürtön. Ha tudni szeretné, hogyan használhatja a Másolás tevékenységet az adatok Azure-blobból Azure SQL Database adatbázisba történő másolásához, tekintse meg a következő cikket: [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Oktatóanyag: adatok másolása Azure-blobból Azure SQL Database adatbázisba).
 
 ## <a name="see-also"></a>Lásd még:

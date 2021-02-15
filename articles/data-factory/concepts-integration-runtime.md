@@ -1,22 +1,18 @@
 ---
 title: Integrációs modul
 description: Ismerje meg az integrációs modult az Azure Data Factoryban.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636646"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389943"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -24,10 +20,10 @@ ms.locfileid: "92636646"
 
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
 
-- **Adatfolyam** : [adatfolyamatok](concepts-data-flow-overview.md) végrehajtása felügyelt Azure számítási környezetben.  
-- **Adatáthelyezés** : a nyilvános hálózatban lévő adattárakban és a magánhálózaton (helyszíni vagy virtuális magánhálózat) lévő adattárakban tárolt Adatmásolás. Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
-- **Tevékenység elküldése** : különböző számítási szolgáltatásokon, például az Azure Databrickson, az Azure HDInsight, a Azure Machine Learningon, a Azure SQL Databaseon, a SQL Serveron és egyebeken futó átalakítási tevékenységek elküldése és monitorozása.
-- **SSIS-csomag végrehajtása** : Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
+- **Adatfolyam**: [adatfolyamatok](concepts-data-flow-overview.md) végrehajtása felügyelt Azure számítási környezetben.  
+- **Adatáthelyezés**: a nyilvános hálózatban lévő adattárakban és a magánhálózaton (helyszíni vagy virtuális magánhálózat) lévő adattárakban tárolt Adatmásolás. Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
+- **Tevékenység elküldése**: különböző számítási szolgáltatásokon, például az Azure Databrickson, az Azure HDInsight, a Azure Machine Learningon, a Azure SQL Databaseon, a SQL Serveron és egyebeken futó átalakítási tevékenységek elküldése és monitorozása.
+- **SSIS-csomag végrehajtása**: Natívan végrehajthat SQL Server Integration Services- (SSIS-) csomagokat egy Azure-beli felügyelt számítási környezetben.
 
 A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás vagy tevékenység hivatkozik rá, és megadja azt a számítási környezetet, ahol a tevékenység vagy a szolgáltatás fut, vagy amelyről elküldi a szolgáltatást. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
 
@@ -180,9 +176,9 @@ Az alábbi ábrán a Data Factory és a hozzá tartozó integrációs modul beá
 
 A másolási tevékenységhez szükséges egy forrás és fogadó társított szolgáltatás az adatfolyam irányának meghatározására. A rendszer az alábbi logikával határozza meg, melyik integrációsmodell-példányt használja a másolás végrehajtásához: 
 
-- **Másolás két felhőalapú adatforrás között** : Ha a forrás és a fogadó társított szolgáltatás is Azure IR használ, az ADF a helyi Azure IR használja, vagy ha az [integrációs modul helye](#integration-runtime-location) című szakaszban leírtak szerint automatikusan meghatározza a Azure IR helyét.
-- **Egy felhőalapú adatforrás és egy magánhálózaton lévő adatforrás közötti másolás** : ha a forrás vagy a fogadó társított szolgáltatása egy saját üzemeltetésű integrációs modulra mutat, a rendszer azon a saját üzemeltetésű integrációs modulon hajtja végre a másolási tevékenységet.
-- **Másolás két magánhálózati adatforrás között** : a forrás-és a fogadó társított szolgáltatásnak az integrációs modul ugyanazon példányára kell mutatnia, és az integrációs modul a másolási tevékenység végrehajtásához használatos.
+- **Másolás két felhőalapú adatforrás között**: Ha a forrás és a fogadó társított szolgáltatás is Azure IR használ, az ADF a helyi Azure IR használja, vagy ha az [integrációs modul helye](#integration-runtime-location) című szakaszban leírtak szerint automatikusan meghatározza a Azure IR helyét.
+- **Egy felhőalapú adatforrás és egy magánhálózaton lévő adatforrás közötti másolás**: ha a forrás vagy a fogadó társított szolgáltatása egy saját üzemeltetésű integrációs modulra mutat, a rendszer azon a saját üzemeltetésű integrációs modulon hajtja végre a másolási tevékenységet.
+- **Másolás két magánhálózati adatforrás között**: a forrás-és a fogadó társított szolgáltatásnak az integrációs modul ugyanazon példányára kell mutatnia, és az integrációs modul a másolási tevékenység végrehajtásához használatos.
 
 ### <a name="lookup-and-getmetadata-activity"></a>Keresési és metaadat-beolvasási tevékenység
 

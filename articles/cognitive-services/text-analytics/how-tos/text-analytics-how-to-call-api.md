@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654829"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092128"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -35,6 +35,16 @@ A Text Analytics API használata előtt létre kell hoznia egy Azure-erőforrás
 
 3.  Hozza létre a Text Analytics-erőforrást, és lépjen a lap bal oldalán található kulcsok és végpont panelre. Másolja az API-k meghívásakor később használni kívánt kulcsot. Ezt később adja hozzá a fejléc értékeként `Ocp-Apim-Subscription-Key` .
 
+## <a name="change-your-pricing-tier"></a>Árképzési szintek módosítása 
+
+Ha már rendelkezik egy meglévő Text Analytics erőforrással a S0 az S4 díjszabási szinten keresztül, akkor frissítheti a standard (S) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)használatára:
+
+1. A [Azure Portalban](https://portal.azure.com/)navigáljon a Text Analytics-erőforráshoz.
+2. A bal oldali navigációs menüben válassza ki az **árképzési szintet** . Ez az erőforrás- **kezelés** alatt lesz. 
+3. Válassza a standard (S) árképzési szintet. Ezután kattintson a **Kiválasztás** elemre.
+
+Létrehozhat egy új Text Analytics-erőforrást is a standard (S) árképzési szinttel, és áttelepítheti az alkalmazásokat az új erőforráshoz tartozó hitelesítő adatok használatára. 
+
 ## <a name="using-the-api-synchronously"></a>Az API szinkron használata
 
 A Text Analytics szinkron módon hívható (alacsony késésű forgatókönyvek esetén). A szinkron API használatakor külön kell meghívnia az egyes API-k (szolgáltatások) használatát. Ha több szolgáltatást is meg kell hívnia, tekintse meg az alábbi szakaszt a Text Analytics aszinkron módon történő meghívásához. 
@@ -49,7 +59,7 @@ A 3.1-es verziótól kezdődően a Text Analytics API két aszinkron végpontot 
 
 Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszinkron módon használni. Vegye figyelembe, hogy csak néhány funkció hívható meg a `/analyze` végpontról. 
 
-| Funkció | Szinkron | Aszinkron |
+| Szolgáltatás | Szinkron | Aszinkron |
 |--|--|--|
 | Nyelvfelismerés | ✔ |  |
 | Hangulatelemzés | ✔ |  |
@@ -205,7 +215,7 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 ### <a name="endpoints-for-sending-synchronous-requests"></a>Szinkron kérések küldésére szolgáló végpontok
 
-| Funkció | Kérelemtípus | Erőforrás-végpontok |
+| Szolgáltatás | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Nyelvfelismerés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Hangulatelemzés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -219,14 +229,14 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Végpontok aszinkron kérelmek küldéséhez a `/analyze` végpontra
 
-| Funkció | Kérelemtípus | Erőforrás-végpontok |
+| Szolgáltatás | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Elemzési feladatok elküldése | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Elemzési állapot és eredmények beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Végpontok aszinkron kérelmek küldéséhez a `/health` végpontra
 
-| Funkció | Kérelemtípus | Erőforrás-végpontok |
+| Szolgáltatás | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Text Analytics beküldése a Health-feladatokhoz  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | Feladatok állapotának és eredményeinek beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
@@ -255,7 +265,7 @@ Miután elvégezte a végpontot, a poster (vagy egy másik webes API-tesztelési
 5. Illesszen be néhány JSON-dokumentumot érvényes formátumban. Használja a fentiekben ismertetett **API-kérelmek formátumát** , és további információkat és példákat a következő témakörökben talál:
 
       + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)
-      + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)
+      + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)
       + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)
       + [Entitások felismerése](text-analytics-how-to-entity-linking.md)
 
@@ -285,7 +295,7 @@ Vegye figyelembe, hogy a `/analyze` `/health` fenti 2. lépésben az aszinkron v
 A szinkron végpontokra adott válaszok a használt végponttól függően változnak. Tekintse meg a következő cikkeket, például a válaszokat.
 
 + [Nyelvfelismerés](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
 
@@ -295,7 +305,7 @@ A szinkron végpontokra adott válaszok a használt végponttól függően vált
 
 Ha a művelet sikeres, a GET kérelem a `/analyze` végponthoz a hozzárendelt feladatokat tartalmazó objektumot ad vissza. Például: `keyPhraseExtractionTasks`. Ezek a feladatok tartalmazzák a válasz objektumot a megfelelő Text Analytics szolgáltatásból. További információt a következő cikkekben talál.
 
-+ [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
 + [Egészségügyi Text Analytics](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 

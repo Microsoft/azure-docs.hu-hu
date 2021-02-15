@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 186ded90b504420a2f315d054551d97821cf8465
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778209"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385047"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Eszközök előzetes betöltése Azure CDN-végponton
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -68,5 +68,5 @@ Ez az oktatóanyag végigvezeti a gyorsítótárazott tartalom előzetes betölt
 
 ## <a name="see-also"></a>Lásd még
 * [Azure CDN végpont kiürítése](cdn-purge-endpoint.md)
-* [Azure CDN REST API-hivatkozás: tartalom előzetes betöltése egy végponton](/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API-hivatkozás: tartalom kiürítése egy végpontból](/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN REST API-hivatkozás: tartalom előzetes betöltése egy végponton](/rest/api/cdn/cdn/endpoints/loadcontent)
+* [Azure CDN REST API-hivatkozás: tartalom kiürítése egy végpontból](/rest/api/cdn/cdn/endpoints/purgecontent)

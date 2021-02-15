@@ -1,22 +1,18 @@
 ---
 title: Hibatűrés hozzáadása Azure Data Factory másolási tevékenységben inkompatibilis sorok kihagyása
 description: Megtudhatja, hogyan adhat hozzá hibatűrést Azure Data Factory másolási tevékenységhez, ha kihagyja a nem kompatibilis sorokat a másolás során
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452285"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377176"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hibatűrés hozzáadása a másolási tevékenységhez inkompatibilis sorok kihagyása
 
@@ -71,10 +67,10 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | A nem kompatibilis sorok kihagyásának engedélyezése a másolás során vagy nem. | Igaz<br/>False (alapértelmezett) | Nem |
-| **redirectIncompatibleRowSettings** | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem |
-| **linkedServiceName** | Az Azure Storage társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás neve, amely arra a tárolási példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | Nem |
-| **elérési útja** | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg azt a blob Storage-elérési útvonalat, amelyet a nem kompatibilis adatértékek naplózásához használni kíván. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
+| **enableSkipIncompatibleRow** | A nem kompatibilis sorok kihagyásának engedélyezése a másolás során vagy nem. | Igaz<br/>False (alapértelmezett) | No |
+| **redirectIncompatibleRowSettings** | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | No |
+| **linkedServiceName** | Az Azure Storage társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás neve, amely arra a tárolási példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | No |
+| **elérési útja** | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg azt a blob Storage-elérési útvonalat, amelyet a nem kompatibilis adatértékek naplózásához használni kíván. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No |
 
 ## <a name="monitoring"></a>Figyelés
 A másolási tevékenység futtatása után a figyelés szakaszban látható a kihagyott sorok száma:
@@ -89,5 +85,5 @@ data1, data2, data3, UserErrorInvalidDataValue,Column 'Prop_2' contains an inval
 data4, data5, data6, Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4).
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni Azure Data Factory másolási tevékenységről, olvassa el az [adatáthelyezés a másolási tevékenységgel](data-factory-data-movement-activities.md)című témakört.

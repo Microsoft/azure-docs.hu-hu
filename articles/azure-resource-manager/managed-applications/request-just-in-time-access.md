@@ -5,16 +5,16 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435688"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377363"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Igény szerinti hozzáférés engedélyezése és kérése Azure Managed Applications
 
-Előfordulhat, hogy a felügyelt alkalmazás felhasználói vonakodnak állandó hozzáférést biztosítani a felügyelt erőforráscsoporthoz. Egy Manager-alkalmazás közzétevője számára érdemes lehet, hogy a fogyasztók pontosan tudják, mikor kell hozzáférni a felügyelt erőforrásokhoz. Ahhoz, hogy a felhasználók nagyobb mértékben szabályozzák a felügyelt erőforrásokhoz való hozzáférést, Azure Managed Applications az igény szerinti (JIT) hozzáférés szolgáltatást nyújt. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+Előfordulhat, hogy a felügyelt alkalmazás felhasználói vonakodnak állandó hozzáférést biztosítani a felügyelt erőforráscsoporthoz. Felügyelt alkalmazás közzétevője érdemes lehet, hogy a fogyasztók pontosan tudják, mikor kell hozzáférni a felügyelt erőforrásokhoz. Ahhoz, hogy a felhasználók nagyobb mértékben szabályozzák a felügyelt erőforrásokhoz való hozzáférést, Azure Managed Applications az igény szerinti (JIT) hozzáférés szolgáltatást nyújt. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 A JIT-hozzáférés lehetővé teszi, hogy a hibaelhárítás és a karbantartás érdekében emelt szintű hozzáférést kérjen egy felügyelt alkalmazás erőforrásaihoz. Mindig csak olvasási hozzáférése van az erőforrásokhoz, de egy adott időszakra vonatkozóan nagyobb hozzáférés érhető el.
 
@@ -110,6 +110,6 @@ JIT hozzáférési kérelem küldése:
 
 A JIT-hozzáférést kérő fiók résztvevő-AZONOSÍTÓjának explicit módon szerepelnie kell a felügyelt alkalmazás definíciójában. A fiók nem szerepelhet csak a csomagban megadott csoporton keresztül. Ezt a korlátozást egy későbbi kiadásban rögzíti a rendszer.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A JIT-hozzáférésre vonatkozó kérések jóváhagyásáról további információt az igény szerinti [hozzáférés jóváhagyása Azure Managed Applications-ben](approve-just-in-time-access.md)című témakörben talál.

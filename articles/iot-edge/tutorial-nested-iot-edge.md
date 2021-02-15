@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 05d6607c091361ecee3fcd5527025b6f9fb59051
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a7f82ec5a4ef918b1bc7ab0fd6813199c0a1d772
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573207"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366392"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Oktatóanyag: IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)
 
@@ -27,7 +27,7 @@ Az eszközök hierarchiáját strukturálhatja úgy, hogy csak a legfelső réte
 
 Ennek az oktatóanyagnak a célja, hogy IoT Edge-eszközök hierarchiáját hozza létre, amely egy éles környezetet szimulál. A rendszer a [szimulált hőmérséklet-érzékelő modult](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) az Internet-hozzáférés nélküli alsóbb rétegbeli eszközre helyezi át a tároló lemezképének a hierarchián keresztüli letöltésével.
 
-A cél megvalósítása érdekében ez az oktatóanyag végigvezeti IoT Edge eszközök hierarchiájának létrehozásán, IoT Edge futtatókörnyezeti tárolók üzembe helyezésén az eszközökön, valamint az eszközök helyi konfigurálásán. Az oktatóanyag a következőket ismerteti:
+A cél megvalósítása érdekében ez az oktatóanyag végigvezeti IoT Edge eszközök hierarchiájának létrehozásán, IoT Edge futtatókörnyezeti tárolók üzembe helyezésén az eszközökön, valamint az eszközök helyi konfigurálásán. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -85,11 +85,11 @@ Az IoT Edge-eszközök létrehozásának első lépése a Azure Portal vagy az A
 
 1. A bal oldali ablaktábla menüjének **automatikus eszközkezelés** területén válassza a **IoT Edge** lehetőséget.
 
-1. Válassza **a + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a legfelső rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót. Válassza a **Mentés** lehetőséget.
+1. Válassza **a + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a legfelső rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót. Kattintson a **Mentés** gombra.
 
 1. Válassza **az + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a peremhálózati alsóbb rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót.
 
-1. Válassza a **fölérendelt eszköz beállítása** lehetőséget, válassza ki a legfelső rétegbeli eszközt az eszközök listájából, majd kattintson **az OK gombra**. Válassza a **Mentés** lehetőséget.
+1. Válassza a **fölérendelt eszköz beállítása** lehetőséget, válassza ki a legfelső rétegbeli eszközt az eszközök listájából, majd kattintson **az OK gombra**. Kattintson a **Mentés** gombra.
 
    ![A szülő beállítása az alsó rétegbeli eszközhöz](./media/tutorial-nested-iot-edge/set-parent-device.png)
 
@@ -190,12 +190,6 @@ Minden eszköznek szüksége van a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI
 A IoT Edge telepítéséhez mindkét eszközön végezze el a következő lépéseket.
 
 1. Telepítse az eszköz operációs rendszerének megfelelő adattár-konfigurációt.
-
-   * **Ubuntu Server 16,04**:
-
-     ```bash
-     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-     ```
 
    * **Ubuntu Server 18,04**:
 
@@ -367,7 +361,7 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
    ![Az Edge hub környezeti változóinak szerkesztése](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Válassza a **Mentés** lehetőséget.
+1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Kattintson a **Mentés** gombra.
 
 1. Adja hozzá a Docker beállításjegyzék-modulját a felső rétegbeli eszközhöz. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult** a legördülő menüből. Adja meg a `registry` Docker beállításjegyzék-moduljának nevét, és adja meg a `registry:latest` rendszerkép URI azonosítóját. Ezután adja hozzá a környezeti változókat, és hozzon létre beállításokat a helyi beállításjegyzék-modul a Microsoft Container registryben való letöltéséhez, hogy letöltse a lemezképeket a alkalmazásból, és a következő beállításjegyzékben szolgálja ki a képeket: 5000
 
@@ -537,7 +531,7 @@ A [Azure Portalban](https://ms.portal.azure.com/):
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Válassza a **Mentés** lehetőséget.
+1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Kattintson a **Mentés** gombra.
 
 1. Adja hozzá a hőmérséklet-érzékelő modult. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki a **piactér modult** a legördülő menüből. Keresse meg `Simulated Temperature Sensor` és válassza ki a modult.
 
@@ -681,7 +675,7 @@ Az erőforrások törlése:
 
 3. Ellenőrizze az erőforráscsoportban található erőforrások listáját. Ha mindet törölni szeretné, válassza az **Erőforráscsoport törlése** lehetőséget. Ha csak bizonyos elemeket szeretne törölni, az egyes erőforrásokra kattintva külön törölheti őket. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban két IoT Edge eszközt konfigurált átjáróként, és az egyiket a másik szülő eszközként állította be. Ezután megmutatta, hogyan húz egy tároló lemezképet a gyermek eszközre egy átjárón keresztül.
 

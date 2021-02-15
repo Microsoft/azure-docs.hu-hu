@@ -2,8 +2,7 @@
 title: A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
 description: Ismerje meg a Resource Manager-sablon definícióját az Azure kívánt State Configuration (DSC) bővítményéhez.
 services: virtual-machines-windows
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -12,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 10/05/2018
-ms.author: robreed
-ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/09/2021
+ms.author: magoedte
+ms.openlocfilehash: 4e9133697cda4a46a895c7e41eff6d17ccd01e4a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735690"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093658"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
 
@@ -37,7 +36,7 @@ További információ: [VirtualMachineExtension osztály](/dotnet/api/microsoft.
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "Microsoft.Powershell.DSC",
+  "name": "[concat(parameters('VMName'), '/Microsoft.Powershell.DSC')]",
   "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -178,7 +177,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 
 ## <a name="details"></a>Részletek
 
-| Tulajdonság neve | Típus | Leírás |
+| Tulajdonság neve | Típus | Description |
 | --- | --- | --- |
 | Settings. wmfVersion |sztring |A Windows Management Framework (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a **legújabbra** állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke **4,0**, **5,0**, **5,1** és **Latest**. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**. |
 | settings.configszülő. URL |sztring |Azt az URL-címet adja meg, amelyből le szeretné tölteni a DSC Configuration. zip fájlt. Ha a megadott URL-címnek szüksége van egy SAS-tokenre a hozzáféréshez, állítsa a **protectedSettings.configurationUrlSasToken** tulajdonságot az SAS-token értékére. Ez a tulajdonság akkor szükséges, ha **settings.configszülő. script** vagy **settings.configszülő. Function** van definiálva. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt a Location Configuration Manager (LCD) metaadatainak beállításához, és meg kell adni az argumentumokat. |
@@ -197,7 +196,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 A következő értékekkel kapcsolatos további információkért lásd: [helyi Configuration Manager alapszintű beállítások](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 A DSC-bővítmény alapértelmezett konfigurációs parancsfájlja csak az alábbi táblázatban felsorolt LCD-tulajdonságok konfigurálására használható.
 
-| Tulajdonság neve | Típus | Leírás |
+| Tulajdonság neve | Típus | Description |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Kötelező tulajdonság. Meghatározza azt a kulcsot, amelyet egy csomóponthoz használ a Azure Automation szolgáltatásban egy PowerShell hitelesítőadat-objektum jelszavaként való regisztráláshoz. Ez az érték automatikusan felderíthető az Automation-fiók **listkeys műveletének beolvasása** metódusának használatával.  Lásd a [példát](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |sztring |Kötelező tulajdonság. Megadja annak az Automation-végpontnak az URL-címét, amelyben a csomópont megpróbál regisztrálni. Ez az érték automatikusan felderíthető az Automation-fiókra vonatkozó **hivatkozási** módszer használatával. |
@@ -426,7 +425,7 @@ A "" duplikált argumentumok találhatók {0} a nyilvános és a védett configu
 - Adja meg a hiányzó tulajdonságot.
 - Távolítsa el a hiányzó tulajdonságot igénylő tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan használhatja a virtuálisgép-méretezési csoportokat az Azure DSC bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 - További információ a [DSC biztonságos hitelesítőadat-kezeléséről](dsc-credentials.md).

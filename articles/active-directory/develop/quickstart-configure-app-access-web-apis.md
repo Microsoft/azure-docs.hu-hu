@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 460c96ddb06318cacd4e436190f459e4c060536e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: bd6acc5d3b7cd6e88b56e4a922e777adca031538
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583688"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102563"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
 
@@ -42,7 +42,7 @@ Ez az ábra azt szemlélteti, hogy a két alkalmazás regisztrációja hogyan ka
 
 Miután regisztrálta az ügyfélalkalmazás és a webes API-t, és hatókörök létrehozásával adta meg az API-t, a következő lépések végrehajtásával konfigurálhatja az ügyfél engedélyeit az API-hoz:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az ügyfélalkalmazás (*nem* a webes API-t).
 1. Válassza az **API-engedélyek**  >  **Hozzáadás engedély**  >  **saját API**-k lehetőséget.
@@ -71,7 +71,7 @@ Ahhoz, hogy a bejelentkezett felhasználó nevében hozzáférjen a saját webes
 
 Delegált engedély konfigurálása a Microsoft Graphhoz, hogy az ügyfélalkalmazás a bejelentkezett felhasználó nevében hajtson végre műveleteket, például az e-mailek olvasása vagy a profil módosítása. Alapértelmezés szerint az ügyfélalkalmazás felhasználói megkérik, amikor bejelentkeznek az Ön számára konfigurált delegált engedélyekre.
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az ügyfélalkalmazás.
 1. Adja meg az **API-engedélyek**  >  **engedélyt**  >  **Microsoft Graph**
@@ -96,7 +96,7 @@ Konfigurálja az alkalmazás engedélyeit egy olyan alkalmazáshoz, amely felhas
 
 A következő lépésekben engedélyeket adhat Microsoft Graph *fájljaihoz. olvassa el az összes* engedélyt példaként.
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az ügyfélalkalmazás.
 1. Válassza az **API-engedélyek** engedély megadása  >    >  **Microsoft Graph** az  >  **alkalmazás engedélyei** lehetőséget.

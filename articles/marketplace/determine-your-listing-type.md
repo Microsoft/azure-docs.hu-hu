@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247547"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099234"
 ---
 # <a name="introduction-to-listing-options"></a>A listázási lehetőségek bemutatása
 
@@ -38,7 +38,11 @@ Ebben a táblázatban látható, hogy az egyes ajánlatok milyen listaelemeket b
 
 &#42; a Letöltés most (ingyenes) lehetőséget, a saját licencét (BYOL), az előfizetést és a használaton alapuló díjszabást is tartalmazza. Részletekért [lásd: Letöltés.](#get-it-now)
 
-### <a name="free-trial"></a>Ingyenes próba
+## <a name="changing-offer-type"></a>Ajánlat típusának módosítása
+
+[!INCLUDE [change-offer-type](./includes/change-offer-type.md)]
+
+## <a name="free-trial"></a>Ingyenes próba
 
 A kereskedelmi piactéren javíthatja a felderíthetőség és automatizálhatja a megoldás próbaverziójának használatát. Ez lehetővé teszi a leendő ügyfelek számára, hogy a szolgáltatás (SaaS), a IaaS vagy a Microsoft alkalmazáson belüli élményét díjmentesen használják az ajánlat típusától függően 30 nap és hat hónap között.
 
@@ -46,18 +50,18 @@ Az ügyfelek az ajánlat lista lapján az _ingyenes próbaverzió_ gombra kattin
 
 A virtuális gépekkel kapcsolatos ajánlatok esetében az ügyfeleknek az Azure-infrastruktúra költségeit kell megfizetniük az ajánlat próbaidőszakos használata esetén. A próbaidőszak lejárta után a rendszer automatikusan felszámítja az ügyfeleket a standard díjszabás alapján, kivéve, ha a próbaidőszak vége előtt lemondják.
 
-### <a name="test-drive"></a>Tesztverzió
+## <a name="test-drive"></a>Tesztverzió
 
 Az ügyfelek az ajánlat lista lapján lévő _Test Drive (tesztelési meghajtó_ ) gombbal érhetik el az előre konfigurált környezeteket rögzített számú óráig. További információ a tesztelési meghajtókról: [Mi az a test Drive?](what-is-test-drive.md)
 
 > [!TIP]
 > A tesztelési meghajtó nem azonos az ingyenes próbaverzióval. Tesztelési meghajtót, ingyenes próbaverziót vagy mindkettőt is kipróbálhat. A megoldás a rögzített időszakra is biztosítja ügyfelei számára a megoldást. A tesztvezetés azonban magában foglalja a termék legfontosabb funkcióit és előnyeit is, amelyek valós implementációs forgatókönyvekben jelennek meg.
 
-### <a name="contact-me"></a>Kapcsolatfelvétel
+## <a name="contact-me"></a>Kapcsolatfelvétel
 
 Az alkalmazás vagy szolgáltatás egyszerű felsorolása. A felhasználók az ajánlat lista lapján lévő _Contact me (Kapcsolatfelvétel_ ) gombra kattintva kérhetik, hogy az Ön ajánlatával csatlakozzanak velük.
 
-### <a name="get-it-now"></a>Letöltés most
+## <a name="get-it-now"></a>Letöltés most
 
 Ez a felsorolási lehetőség magában foglalja a Transact-ajánlatokat (előfizetések és felhasználói alapú díjszabás), a saját licencek ajánlatait és a letöltését (ingyenes). A tranzakciós ajánlatokat a kereskedelmi Piactéren keresztül értékesítjük. A Microsoft felelős a számlázásért és a gyűjteményért. Az ügyfelek az azonnali _Letöltés gombot_ használják az ajánlat beszerzéséhez.
 
@@ -92,28 +96,28 @@ Ebből a táblázatból megtekintheti, hogy mely típusú ajánlatok támogatjá
 
 <sup></sup> óradíjas és havi díj.
 
-#### <a name="get-it-now-free"></a>Letöltés (ingyenes)
+### <a name="get-it-now-free"></a>Letöltés (ingyenes)
 
 Ezzel a listával ingyenesen kínálhatja alkalmazását. Az ügyfelek az _azonnali letöltés_ gombra kattintva vehetik igénybe az ingyenes ajánlatot.
 
 > [!NOTE]
 > A szolgáltatás azonnali (ingyenes) ajánlatai nem jogosultak a piactéren elérhető előnyökre a visszagörgethető ajánlatok esetében. Mivel a kirakaton nincs tranzakció, ezeket a rendszer "próbaverziónak" minősíti. Tekintse meg az alábbi [Marketplace-jutalmakat](#marketplace-rewards) .
 
-#### <a name="bring-your-own-license-byol"></a>Saját licenc használata (BYOL)
+### <a name="bring-your-own-license-byol"></a>Saját licenc használata (BYOL)
 
 Ezzel a listával engedélyezheti, hogy az ügyfelek a kereskedelmi piactéren kívül vásárolt licenccel telepítsenek ajánlatot. Ez a lehetőség ideális a helyszíni – felhő áttelepítésekhez. Az ügyfelek az _azonnali letöltés_ gomb használatával vásárolhatják meg az ajánlatot az Ön által előre megvásárolt licenccel.
 
 > [!NOTE]
 > A BYOL-ajánlatok nem jogosultak a piaci előnyökre a visszagörgethető ajánlatok esetében. Mivel ezek megkövetelik, hogy az ügyfél megszerezze a licencet a partnertől, és nincs tranzakció a kereskedelmi piactéren, a "List" kategóriába sorolja. Tekintse meg az alábbi [Marketplace-jutalmakat](#marketplace-rewards) .
 
-#### <a name="subscription"></a>Előfizetés
+### <a name="subscription"></a>Előfizetés
 
 A következő típusú ajánlatokra vonatkozó átalány-díjat számíthat:
 
 - Az Azure-alkalmazás (felügyelt alkalmazás) támogatást nyújt a havi előfizetésekhez.
 - A SaaS a havi és éves előfizetéseket is támogatja.
 
-#### <a name="usage-based-pricing"></a>Használat alapú díjszabás
+### <a name="usage-based-pricing"></a>Használat alapú díjszabás
 
 A következő ajánlati típusok támogatják a használaton alapuló díjszabást:
 
@@ -163,6 +167,6 @@ Ha az ajánlata feldolgozható, akkor a számlázott értékesítések megnövel
 
 A nem visszagörgethető ajánlatok előnyt biztosítanak attól függően, hogy az ingyenes próbaverzió csatolva van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A létrehozandó ajánlat típusának kiválasztásához lásd: [közzétételi útmutató ajánlat típusa szerint](publisher-guide-by-offer-type.md).

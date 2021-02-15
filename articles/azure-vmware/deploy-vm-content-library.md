@@ -3,12 +3,12 @@ title: Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezés
 description: Hozzon létre egy kódtárat egy virtuális gép üzembe helyezéséhez egy Azure VMware-megoldás saját felhőben.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550538"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382004"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Tartalom-függvénytár létrehozása virtuális gépek üzembe helyezéséhez az Azure VMware-megoldásban
 
@@ -18,7 +18,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy tartalom-függvénytára
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez egy NSX-T logikai kapcsoló szegmens és egy felügyelt DHCP szolgáltatás szükséges.  További információ: a [DHCP kezelése az Azure VMware megoldásban](manage-dhcp.md) című cikk.
+Az oktatóanyag elvégzéséhez szükség van egy NSX-T szegmensre (logikai kapcsoló) és egy felügyelt DHCP-szolgáltatásra.  További információ: a [DHCP kezelése az Azure VMware megoldásban](manage-dhcp.md) című cikk.
 
 ## <a name="create-a-content-library"></a>Tartalom könyvtárának létrehozása
 

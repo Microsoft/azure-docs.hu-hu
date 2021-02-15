@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982212"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361009"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Oktatóanyag: titkosított Azure-beli virtuális gépek áthelyezése régiók között
 
@@ -54,26 +54,49 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 **A célként megadott régió díjai** | Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>Key Vault-engedélyek ellenőrzése (Azure Disk Encryption)
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>A Key vaulton lévő virtuális gépekre vonatkozó felhasználói engedélyek ellenőrzése Azure Disk Encryption (ADE) használatával
 
-Ha olyan virtuális gépeket helyez át, amelyeken engedélyezve van az Azure Disk Encryption, a forrás-és a célhelyen található kulcstartókban ellenőrizze/állítsa be az engedélyeket, hogy a titkosított virtuális gépek áthelyezése a várt módon fog működni. 
+Ha olyan virtuális gépeket helyez át, amelyeken engedélyezve van az Azure Disk Encryption, le kell futtatnia egy parancsfájlt az [alább](#copy-the-keys-to-the-destination-key-vault) leírtak szerint, amelyhez a parancsfájlt végrehajtó felhasználónak megfelelő engedélyekkel kell rendelkeznie. A szükséges engedélyekről az alábbi táblázatból tájékozódhat. Az engedélyek módosításához a Azure Portal a Key vaultra navigálva, a **Beállítások** területen válassza a **hozzáférési szabályzatok** lehetőséget.
 
-1. A Azure Portal nyissa meg a Key vaultot a forrás régióban.
-2. A **Beállítások** területen válassza a **hozzáférési szabályzatok** lehetőséget.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Gomb a Key Vault hozzáférési házirendjeinek megnyitásához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Gomb a Key Vault hozzáférési házirendjeinek megnyitásához." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+Ha nincsenek felhasználói engedélyek, válassza a **hozzáférési házirend hozzáadása** lehetőséget, és adja meg az engedélyeket. Ha a felhasználói fiók már rendelkezik szabályzattal, a **felhasználó** területen állítsa be az engedélyeket az alábbi táblázat szerint.
 
-3. Ha nincsenek felhasználói engedélyek, válassza a **hozzáférési házirend hozzáadása** lehetőséget, és adja meg az engedélyeket. Ha a felhasználói fióknak már van szabályzata, a **felhasználó** területen állítsa be az engedélyeket.
+Az ADE-t használó Azure-beli virtuális gépek a következő variációkkal rendelkezhetnek, és ennek megfelelően kell beállítani az engedélyeket a megfelelő összetevőkhöz.
+- Alapértelmezett beállítás, amelyben a lemez csak titok használatával titkosított
+- Biztonság hozzáadva a [kulcs titkosítási kulcsával](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
 
-    - Ha az áthelyezni kívánt virtuális gépek engedélyezve vannak az Azure Disk Encryption (ADE) használatával, a **Key permissions**  >  **Kulcskezelő műveletei** területen válassza a **lekérés** és a **lista** lehetőséget, ha nincsenek kiválasztva.
-    - Ha ügyfél által felügyelt kulcsokat (CMKs-ket) használ a titkosításhoz használt titkosítási kulcsok titkosításához (kiszolgálóoldali titkosítás), a **kulcs engedélyeinek** kulcskezelő  >  **műveleteiben** válassza a **lekérés** és a **lista** lehetőséget. Emellett a **titkosítási műveletek** területen válassza a **Visszafejtés** és **titkosítás** lehetőséget.
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="A Key Vault-engedélyek kiválasztására szolgáló legördülő lista." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>Forrás régió kulcstartója
 
-4. A **titkos engedélyek**,  **titkos felügyeleti műveletek** területen válassza a **beolvasás**, **Listázás** és **beállítás** lehetőséget. 
-5. Ha új felhasználói fiókhoz rendel engedélyeket, a **rendszerbiztonsági tag kiválasztása** területen válassza ki azt a felhasználót, akihez engedélyeket rendel.
-6. A **hozzáférési házirendek** területen győződjön meg arról, hogy a **kötet titkosításának Azure Disk Encryption** engedélyezve van.
-7. Ismételje meg a Key Vault eljárását a célhely régióban.
+A parancsfájlt végrehajtó felhasználónak be kell állítania az alábbi engedélyeket 
+
+**Összetevő** | **Engedély szükséges**
+--- | ---
+Titkos kulcsok|  Engedély kérése <br> </br> A **Secret permissions** >   **Secret Management műveletekben** válassza a **beolvasás** lehetőséget. 
+Kulcsok <br> </br> Ha a kulcs titkosítási kulcsát (KEK) használja, akkor a titkok mellett erre az engedélyre is szüksége van| Lekérési és visszafejtési engedély <br> </br> A **Key permissions** kulcskezelő  >  **műveletei** területen válassza a **beolvasás** lehetőséget. A **titkosítási műveletek** területen válassza a **Visszafejtés** lehetőséget.
+
+### <a name="destination-region-keyvault"></a>Rendeltetési régió kulcstartója
+
+A **hozzáférési házirendek** területen győződjön meg arról, hogy a **kötet titkosításának Azure Disk Encryption** engedélyezve van. 
+
+A parancsfájlt végrehajtó felhasználónak be kell állítania az alábbi engedélyeket 
+
+**Összetevő** | **Engedély szükséges**
+--- | ---
+Titkos kulcsok|  Engedély beállítása <br> </br> A **Secret permissions** >   **Secret Management műveletekben** válassza a **beállítás** lehetőséget. 
+Kulcsok <br> </br> Ha a kulcs titkosítási kulcsát (KEK) használja, akkor a titkok mellett erre az engedélyre is szüksége van| Engedély beszerzése, létrehozása és titkosítása <br> </br> A **Key permissions** kulcskezelő  >  **műveletei** területen válassza a **beolvasás** és **Létrehozás** elemet. A **titkosítási műveletek** területen válassza a **titkosítás** lehetőséget.
+
+A fenti engedélyek mellett a célként megadott Key vaultban engedélyeket kell adni ahhoz a [felügyelt Rendszeridentitáshoz](./common-questions.md#how-is-managed-identity-used-in-resource-mover) , amelyet az erőforrás-mozgató használ az Azure-erőforrások eléréséhez az Ön nevében. 
+
+1. A **Beállítások** területen válassza a **hozzáférési házirendek hozzáadása** elemet. 
+2. A **rendszerbiztonsági tag kiválasztása** területen keresse meg az MSI-t. Az MSI neve: ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
+3. Adja hozzá a következő engedélyeket az MSI-hez
+
+**Összetevő** | **Engedély szükséges**
+--- | ---
+Titkos kulcsok|  Engedélyek beolvasása és listázása <br> </br> A **Secret permissions** >   **Secret Management műveletekben** válassza a **beolvasás** és **Listázás** lehetőséget. 
+Kulcsok <br> </br> Ha a kulcs titkosítási kulcsát (KEK) használja, akkor a titkok mellett erre az engedélyre is szüksége van| Letöltés, engedélyek listázása <br> </br> A **Key permissions** kulcskezelő  >  **műveletei** területen válassza a **beolvasás** és **lista** lehetőséget.
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>A kulcsok másolása a cél Key vaultba

@@ -3,12 +3,12 @@ title: Azure VMware-megoldás üzembe helyezése és konfigurálása
 description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegyűjtött információkat az Azure VMware-megoldás saját felhőbe történő üzembe helyezéséhez.
 ms.topic: tutorial
 ms.date: 12/24/2020
-ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760879"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382055"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -68,13 +68,13 @@ Ebben a példában az üzembe helyezés során a 10.74.72.0/22 hálózat bemenet
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>Kapcsolódás és bejelentkezés a vCenter és a NSX-T-re
 
-Jelentkezzen be az előző lépésben létrehozott Jump Box-ba. Miután bejelentkezett, nyisson meg egy webböngészőt, és lépjen be, és jelentkezzen be a vCenter és a NSX-T felügyeleti konzolon.  
+Jelentkezzen be az előző lépésben létrehozott Jump Box-ba. Miután bejelentkezett, nyisson meg egy webböngészőt, és lépjen be, és jelentkezzen be a vCenter és a NSX-T Manager alkalmazásba.  
 
-A Azure Portal azonosíthatja a vCenter, valamint a NSX-T felügyeleti konzol IP-címeit és hitelesítő adatait.  Válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett** lehetőséget. 
+Azonosíthatja a vCenter, és a NSX-T kezelő konzol IP-címeit és hitelesítő adatait a Azure Portal.  Válassza ki saját felhőjét, majd az **Áttekintés** nézetben válassza az **identitás > alapértelmezett** lehetőséget. 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Hálózati szegmens létrehozása Azure VMware-megoldással
 
-Az NSX-T használatával új hálózati szegmenseket hozhat létre az Azure VMware-megoldási környezetben.  Definiálta a [tervezés szakaszban](production-ready-deployment-steps.md)létrehozni kívánt hálózatokat.  Ha még nem definiálta őket, lépjen vissza a [tervezés szakaszra](production-ready-deployment-steps.md) a továbblépés előtt.
+Az NSX-T Manager használatával új hálózati szegmenseket hozhat létre az Azure VMware-megoldási környezetben.  Definiálta a [tervezés szakaszban](production-ready-deployment-steps.md)létrehozni kívánt hálózatokat.  Ha még nem definiálta őket, lépjen vissza a [tervezés szakaszra](production-ready-deployment-steps.md) a továbblépés előtt.
 
 >[!IMPORTANT]
 >Győződjön meg arról, hogy a megadott CIDR hálózati címterület nem fedi át az Azure-ban vagy a helyszíni környezetekben található bármit.  
@@ -129,7 +129,7 @@ Jelentkezzen be az előző lépésben létrehozott virtuális gépre, és ellen�
 
 Az Azure VMware-megoldás mostantól működik, és sikeresen létesített kapcsolatot az Azure Virtual Network és az internet között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő szakaszban az Azure VMware-megoldást a helyszíni hálózathoz a ExpressRoute-on keresztül kapcsolhatja össze.
 > [!div class="nextstepaction"]

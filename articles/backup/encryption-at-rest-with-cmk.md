@@ -1,16 +1,16 @@
 ---
-title: Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
+title: Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával
 description: Megtudhatja, hogyan titkosíthatja a biztonsági mentési adatait az ügyfél által felügyelt kulcsokkal (CMK) a Azure Backup segítségével.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735860"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369458"
 ---
-# <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
+# <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával
 
 Azure Backup lehetővé teszi, hogy az ügyfél által felügyelt kulcsok (CMK-EK) használatával Titkosítsa a biztonsági mentési adatait a platform által felügyelt kulcsok használata helyett, amely alapértelmezés szerint engedélyezve van. A biztonsági mentési adatai titkosításához használt kulcsokat [Azure Key Vault](../key-vault/index.yml)kell tárolni.
 
@@ -36,6 +36,7 @@ Ez a cikk a következőket ismerteti:
 - Az Recovery Services-tároló csak az **ugyanabban a régióban** található, Azure Key Vaultban tárolt kulcsokkal titkosítható. Emellett a kulcsok csak **RSA 2048 kulcsok** lehetnek, és **engedélyezve** állapotban kell lenniük.
 
 - Az CMK titkosított Recovery Services tárolójának áthelyezése az erőforráscsoportok és az előfizetések között jelenleg nem támogatott.
+- Ha olyan Recovery Services-tárolót helyez át, amely már titkosítva van az ügyfél által felügyelt kulcsokkal egy új bérlő számára, akkor frissítenie kell a Recovery Services-tárolót a tár felügyelt identitásának és CMK újbóli létrehozásához és újrakonfigurálásához (amelynek az új Bérlőnek kell lennie). Ha ez nem történik meg, a biztonsági mentési és visszaállítási műveletek sikertelenek lesznek. Az előfizetésen belül beállított szerepköralapú hozzáférés-vezérlési (RBAC) engedélyeket is újra kell konfigurálni.
 
 - Ez a funkció a Azure Portal és a PowerShell használatával is konfigurálható.
 
@@ -119,32 +120,6 @@ Most engedélyeznie kell a Recovery Services-tárolónak a titkosítási kulcsot
 
 1. Válassza a **Mentés** lehetőséget a Azure Key Vault hozzáférési házirendjében történt módosítások mentéséhez.
 
-**PowerShell**-lel:
-
-A [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) parancs használatával engedélyezheti a titkosítást az ügyfél által felügyelt kulcsokkal, valamint a használni kívánt titkosítási kulcs hozzárendelését vagy frissítését.
-
-Példa:
-
-```azurepowershell
-$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
-$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
-
-
-$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
-$enc.encryptionProperties | fl
-```
-
-Kimenet:
-
-```output
-EncryptionAtRestType          : CustomerManaged
-KeyUri                        : testkey
-SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-LastUpdateStatus              : Succeeded
-InfrastructureEncryptionState : Disabled
-```
-
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>A Azure Key Vault eltávolításának és törlésének engedélyezése
 
 Engedélyeznie kell a **Soft delete és Purge Protection** szolgáltatást a titkosítási kulcsot tároló Azure Key Vault. Ezt az alább látható Azure Key Vault felhasználói felületen végezheti el. (Másik lehetőségként ezek a tulajdonságok a Key Vault létrehozásakor is megadhatók.) További információt ezekről a Key Vault tulajdonságokról [itt](../key-vault/general/soft-delete-overview.md)talál.
@@ -197,7 +172,7 @@ A következő lépésekkel engedélyezheti a helyreállítható törlési és-ki
 
 A fentiek betartását követően folytassa a tároló titkosítási kulcsának kiválasztásával.
 
-A kulcs hozzárendeléséhez:
+#### <a name="to-assign-the-key-in-the-portal"></a>A kulcs kiosztása a portálon
 
 1. Ugrás a Recovery Services-tárolóra – > **tulajdonságai**
 
@@ -230,6 +205,32 @@ A kulcs hozzárendeléséhez:
     A titkosítási kulcs frissítéseit a rendszer a tár tevékenységi naplójában is naplózza.
 
     ![Tevékenységnapló](./media/encryption-at-rest-with-cmk/activity-log.png)
+
+#### <a name="to-assign-the-key-with-powershell"></a>A kulcs társítása a PowerShell-lel
+
+A [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) parancs használatával engedélyezheti a titkosítást az ügyfél által felügyelt kulcsokkal, valamint a használni kívánt titkosítási kulcs hozzárendelését vagy frissítését.
+
+Példa:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Kimenet:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 >[!NOTE]
 > Ez a folyamat változatlan marad, ha frissíteni vagy módosítani szeretné a titkosítási kulcsot. Ha egy másik Key Vault (az éppen jelenleg használttól eltérő) kulcsát szeretné frissíteni és használni, ügyeljen rá, hogy:
@@ -337,6 +338,6 @@ Nem követi a cikkben szereplő lépéseket, és az elemek védelemének folytat
 
 A CMK titkosítás használata a biztonsági mentéshez nem jár további költségekkel. Azonban továbbra is felmerülhetnek a költségek arra, hogy a Azure Key Vault, ahol a kulcsot tárolják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Backup biztonsági funkcióinak áttekintése](security-overview.md)

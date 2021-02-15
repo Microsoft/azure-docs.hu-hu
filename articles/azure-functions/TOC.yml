@@ -138,6 +138,23 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Alapelvek
   items:
+    - name: Ajánlott eljárások
+      items:
+        - name: Teljesítmény és megbízhatóság
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: Kapcsolatok kezelése
+          href: manage-connections.md
+          displayName: best practices
+        - name: A tárterülettel kapcsolatos szempontok
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: Hibakezelés és a függvények újrapróbálkozásai
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: Biztonság
+          href: security-concepts.md
+          displayName: best practices
     - name: Futtatókörnyezet-verziók összehasonlítása
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
@@ -212,12 +229,7 @@
       href: functions-diagnostics.md
     - name: Használatalapú csomag költségei
       href: functions-consumption-costs.md
-    - name: A teljesítménnyel kapcsolatos megfontolások
-      href: functions-best-practices.md
       displayName: best practice
-    - name: A tárterülettel kapcsolatos szempontok
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: Functions-proxyk
       href: functions-proxies.md
     - name: Hálózatkezelési lehetőségek

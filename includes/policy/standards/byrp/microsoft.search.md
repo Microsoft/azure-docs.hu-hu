@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0392aabed734fb032268196a7321617ed9e07049
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 74c1b8d72907467bca25d8be29ed06c10c4e74b6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559525"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095960"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
@@ -20,7 +20,7 @@ Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz rendelkezésr
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Naplózás és fenyegetésészlelés |LT-4 |Azure-erőforrások naplózásának engedélyezése |[A keresési szolgáltatásokban engedélyezni kell a diagnosztikai naplókat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
+|Naplózás és fenyegetésészlelés |LT-4 |Azure-erőforrások naplózásának engedélyezése |[A keresési szolgáltatásokban engedélyezni kell az erőforrás-naplókat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="azure-security-benchmark-v1"></a>Azure Security teljesítményteszt v1
 
@@ -30,7 +30,7 @@ Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz rendelkezésr
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Naplózás és monitorozás |2.3 |Naplózás engedélyezése az Azure-erőforrásokhoz |[A keresési szolgáltatásokban engedélyezni kell a diagnosztikai naplókat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
+|Naplózás és monitorozás |2.3 |Naplózás engedélyezése az Azure-erőforrásokhoz |[A keresési szolgáltatásokban engedélyezni kell az erőforrás-naplókat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
 
@@ -39,5 +39,5 @@ További információ erről a megfelelőségi szabványról: [HIPAA HITRUST 9,2
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Naplózás naplózása |1208.09 aa3System. 1-09. AA |A naplókat a felügyeleti tevékenységek, a rendszer és az alkalmazások indítási/leállítási/hibák, a fájlok módosításai és a biztonsági házirendek változásai kezelik. |[A keresési szolgáltatásokban engedélyezni kell a diagnosztikai naplókat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
+|Naplózás naplózása |1208.09 aa3System. 1-09. AA |A naplókat a felügyeleti tevékenységek, a rendszer és az alkalmazások indítási/leállítási/hibák, a fájlok módosításai és a biztonsági házirendek változásai kezelik. |[A keresési szolgáltatásokban engedélyezni kell az erőforrás-naplókat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
 

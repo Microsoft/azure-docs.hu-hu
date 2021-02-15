@@ -1,18 +1,18 @@
 ---
 title: Azure Policy az Azure-jelző megfelelőségi szabályozása
 description: Felsorolja Azure Policy az Azure-jelzőhöz elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 21907f05eee5d1c8af08392e1d3133e3276ceedd
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: c77aaffa2607d5096f46cafd50c54bdc7a80219f
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558430"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096623"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-signalr"></a>Azure Policy az Azure-jelző megfelelőségi szabályozása
 

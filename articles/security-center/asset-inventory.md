@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 12/22/2020
+ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920426"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393351"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Erőforrások megismerése és kezelése az eszközök leltározásával
 
@@ -37,7 +37,6 @@ Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan nö
 
 
 ## <a name="availability"></a>Rendelkezésre állás
-
 |Szempont|Részletek|
 |----|:----|
 |Kiadás állapota:|Általánosan elérhető (GA)|
@@ -48,33 +47,36 @@ Az eszköz erőforrás-kezelési lehetőségei jelentősek, és folyamatosan nö
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Mik az eszközök leltárának főbb jellemzői?
-
 A leltár oldal a következő eszközöket biztosítja:
 
-- **Összegzések** – a szűrők definiálása előtt a leltár nézet felső részén látható értékek egy kiemelt sáv jelenik meg:
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Az Asset Inventory lapjának főbb funkciói Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **Összes erőforrás**: Security Centerhoz csatlakoztatott erőforrások teljes száma.
-    - **Sérült erőforrások**: aktív biztonsági javaslatokkal rendelkező erőforrások. [További információ a biztonsági javaslatokról](security-center-recommendations.md).
-    - Nem **figyelt erőforrások**: az ügynök figyelésével kapcsolatos problémákkal rendelkező erőforrások – log Analytics ügynök telepítve van, de az ügynök nem küld adatokat, vagy egyéb állapottal kapcsolatos problémákba ütközik.
 
-- **Szűrők** – a lap tetején található több szűrő lehetővé teszi, hogy gyorsan pontosítsa az erőforrások listáját a válaszolni kívánt kérdésnek megfelelően. Ha például a *"Production" címkével rendelkező gépekkel* kapcsolatos kérdést szeretné megválaszolni, akkor a log Analytics ügynök hiányzik? az **ügynök figyelési** szűrőjét a **címkék** szűrővel kombinálhatja a következő klipben látható módon:
+### <a name="1---summaries"></a>1 – összefoglalók
+A szűrők meghatározása előtt a leltár nézet tetején található, Kiemelt sáv értékek láthatók:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="A nem figyelt éles erőforrásokra való szűrés":::
+- **Összes erőforrás**: Security Centerhoz csatlakoztatott erőforrások teljes száma.
+- **Sérült erőforrások**: aktív biztonsági javaslatokkal rendelkező erőforrások. [További információ a biztonsági javaslatokról](security-center-recommendations.md).
+- Nem **figyelt erőforrások**: az ügynök figyelésével kapcsolatos problémákkal rendelkező erőforrások – log Analytics ügynök telepítve van, de az ügynök nem küld adatokat, vagy egyéb állapottal kapcsolatos problémákba ütközik.
+- Nem **regisztrált előfizetések**: a kijelölt hatókörben lévő olyan előfizetés, amely még nem kapcsolódott a Azure Security Centerhoz.
 
-    Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
+### <a name="2---filters"></a>2 – szűrők
+A lap tetején található több szűrő lehetővé teszi, hogy gyorsan pontosítsa az erőforrások listáját a válaszolni kívánt kérdésnek megfelelően. Ha például a *"termelés" címkével rendelkező gépeket tartalmazó* kérdést szeretné megválaszolni, akkor a log Analytics ügynök hiányzik? az **ügynök figyelési** szűrőjét összekapcsolhatja a **címkék** szűrővel.
 
-- **Exportálási beállítások** – a leltár lehetővé teszi, hogy a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba exportálja. Emellett a lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja a Kusto lekérdezési nyelv (KQL) lekérdezését.
+Amint alkalmazta a szűrőket, a rendszer frissíti az összegző értékeket, hogy azok a lekérdezés eredményeire vonatkozzanak. 
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Leltár exportálási beállításai":::
+### <a name="3---export-and-asset-management-tools"></a>3 – exportálási és Asset Management-eszközök
 
-    > [!TIP]
-    > A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a "Feel" kifejezést a nyelvhez. [További információ ebben a KQL-oktatóanyagban](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+**Exportálási beállítások** – a leltár tartalmaz egy lehetőséget, amellyel exportálhatja a kiválasztott szűrési beállítások eredményeit egy CSV-fájlba. A lekérdezést az Azure Resource Graph Explorerben is exportálhatja, így tovább pontosíthatja, mentheti vagy módosíthatja a Kusto lekérdezési nyelv (KQL) lekérdezését.
 
-- **Eszközkezelés beállításai** – a leltár lehetővé teszi összetett felderítési lekérdezések végrehajtását. Ha megtalálta a lekérdezéseknek megfelelő erőforrásokat, a leltár a következő műveletekhez nyújt parancsikonokat:
+> [!TIP]
+> A KQL dokumentációja olyan adatbázist biztosít, amely bizonyos mintaadatok mellett néhány egyszerű lekérdezéssel biztosítja a "Feel" kifejezést a nyelvhez. [További információ ebben a KQL-oktatóanyagban](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
-    - Címkék kiosztása a szűrt erőforrásokhoz – jelölje be a címkével ellátni kívánt erőforrások melletti jelölőnégyzeteket.
-    - Új kiszolgálók előkészítése a Security Centerhoz – használja a **nem Azure-kiszolgálók hozzáadása** eszköztár gombot.
-    - Munkaterhelések automatizálása a Azure Logic Apps használatával – a logikai alkalmazás **elindítása** gomb segítségével futtathat egy logikai alkalmazást egy vagy több erőforráson. A logikai alkalmazásokat előre elő kell készíteni, és el kell fogadni a megfelelő trigger típusát (HTTP-kérés). [További információ a Logic apps](../logic-apps/logic-apps-overview.md)szolgáltatásról.
+**Eszközkezelés beállításai** – a leltár lehetővé teszi összetett felderítési lekérdezések végrehajtását. Ha megtalálta a lekérdezéseknek megfelelő erőforrásokat, a leltár a következő műveletekhez nyújt parancsikonokat:
+
+- Címkék kiosztása a szűrt erőforrásokhoz – jelölje be a címkével ellátni kívánt erőforrások melletti jelölőnégyzeteket.
+- Új kiszolgálók előkészítése a Security Centerhoz – használja a **nem Azure-kiszolgálók hozzáadása** eszköztár gombot.
+- Munkaterhelések automatizálása a Azure Logic Apps használatával – a logikai alkalmazás **elindítása** gomb segítségével futtathat egy logikai alkalmazást egy vagy több erőforráson. A logikai alkalmazásokat előre elő kell készíteni, és el kell fogadni a megfelelő trigger típusát (HTTP-kérés). [További információ a Logic apps](../logic-apps/logic-apps-overview.md)szolgáltatásról.
 
 
 ## <a name="how-does-asset-inventory-work"></a>Hogyan működik a tárgyieszköz-leltár?
@@ -94,14 +96,14 @@ A [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/)használat
 
 1. A szűrőkben válassza ki a megfelelő beállításokat a végrehajtani kívánt lekérdezés létrehozásához.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Leltár szűrési beállításai" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     Alapértelmezés szerint az erőforrásokat az aktív biztonsági javaslatok száma alapján rendezi a rendszer.
 
     > [!IMPORTANT]
     > Az egyes szűrők beállításai az aktuálisan kijelölt előfizetésekben lévő erőforrásokra **és** a többi szűrőben megadott beállításokra vonatkoznak.
     >
     > Ha például csak egy előfizetést jelölt ki, és az előfizetés nem rendelkezik olyan erőforrásokkal, amelyek nem rendelkeznek magas biztonsági javaslatokkal a szervizeléshez (0 sérült erőforrás), a **javaslatok** szűrője nem lesz elérhető. 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="A Azure Security Center adatkészletének szűrési beállításai használatával szűrheti az erőforrásokat a nem figyelt éles erőforrásokra.":::
 
 1. A **biztonsági eredmények** szűrővel való használatához adja meg az érintett erőforrásokhoz szűrni kívánt biztonsági rés azonosítójának, biztonsági vizsgálatának vagy CVE-nevének a szabad szövegét:
 

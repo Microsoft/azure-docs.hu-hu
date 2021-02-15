@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 601b725e5f1fe06c12416ad8ab36ac657f0412f2
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: a7337175241834cef862b4af07c7bcf7c8b845d0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583416"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103770"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -38,7 +38,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > ### <a name="option-1-register-and-automatically-configure-your-app-and-then-download-the-code-sample"></a>1. lehetőség: az alkalmazás regisztrálása és automatikus konfigurálása, majd a kód letöltése
 >
-> 1. Lépjen a <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk <span class="docon docon-navigate-external x-hidden-focus"></span> </a> gyors üzembe helyezési élményhez.
+> 1. Lépjen a <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk</a> gyors üzembe helyezési élményhez.
 > 1. Adja meg az alkalmazás nevét, majd válassza a **regisztráció** lehetőséget.
 > 1. Az automatikusan konfigurált alkalmazás kódjának letöltéséhez kövesse a portál gyors üzembe helyezési felületének utasításait.
 >
@@ -48,7 +48,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak manuális hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 > 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kívánja az alkalmazást.
 > 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 > 1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.

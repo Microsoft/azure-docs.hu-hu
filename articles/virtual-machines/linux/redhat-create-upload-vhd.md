@@ -8,19 +8,20 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: c6a3385b4347f76d83963ca33fa8485974d3c62a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28f82b641216dcd77b650b066c72bef4c4470dd2
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881282"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098962"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése az Azure-beli használatra
-Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](../image-builder-overview.md)című témakört.
+
+Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához lásd: az [Azure Image Builder](../image-builder-overview.md).
 
 ## <a name="hyper-v-manager"></a>Hyper-V kezelője
 
-Ebből a szakaszból megtudhatja, hogyan készítse elő a [RHEL 6](#rhel-6-using-hyper-v-manager) vagy a [RHEL 7](#rhel-7-using-hyper-v-manager) rendszerű virtuális gépet a Hyper-V kezelőjével.
+Ebből a szakaszból megtudhatja, hogyan készítse elő a [RHEL 6](#rhel-6-using-hyper-v-manager), [RHEL 7](#rhel-7-using-hyper-v-manager)vagy [RHEL 8](#rhel-8-using-hyper-v-manager) virtuális gépet a Hyper-V kezelőjével.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat webhelyről, és telepítette a RHEL-lemezképet egy virtuális merevlemezre (VHD). A Hyper-V kezelőjének operációsrendszer-rendszerkép telepítéséhez való használatával kapcsolatos további információkért lásd: [a Hyper-v szerepkör telepítése és a virtuális gép konfigurálása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
@@ -1465,7 +1466,7 @@ Initramfs újraépítése:
 
 További részletekért tekintse meg a [initramfs újjáépítésével](https://access.redhat.com/solutions/1958)kapcsolatos információkat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Most már készen áll a Red Hat Enterprise Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
 * A Red Hat Enterprise Linux futtatására jogosult hypervisorokkal kapcsolatos további részletekért tekintse meg [a Red Hat webhelyét](https://access.redhat.com/certified-hypervisors).
 * Ha többet szeretne megtudni a RHEL BYOS-lemezképek használatáról, látogasson el a [BYOS](../workloads/redhat/byos.md)dokumentációs oldalára.

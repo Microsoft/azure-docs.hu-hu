@@ -3,18 +3,18 @@ title: 'ML Studio (klasszikus): Azure AI Gallery – Azure'
 description: Többek között a Azure AI Galleryban megoszthatja és felderítheti az elemzési erőforrásokat. Ismerkedjen meg másokkal, és tegye meg saját hozzájárulását a Közösséghez.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486126"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519847"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
 
@@ -161,7 +161,7 @@ Segíthet másoknak egy olyan **oktatóanyag** megírásában, amely ismerteti a
    > [!TIP]
    > Ha azt szeretné, hogy a dokumentációja még a nyilvánosan elérhetővé tétel előtt is megfelelő legyen, először közzéteheti a kísérletet a **listán**. Később módosíthatja a láthatósági beállítást **nyilvánosra** a kísérlet részletei oldalon. Vegye figyelembe, hogy miután megtörtént egy kísérlet **nyilvánosra** állítása, később nem módosítható a **listára**.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Az Ön hozzájárulása már Azure AI Galleryban van. Az Ön hozzájárulásai az **elemek** lap fiók lapján jelennek meg.
 

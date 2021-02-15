@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536438"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371098"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge-eszköz használata átjáróként
 
@@ -37,7 +37,7 @@ Az átjáró összes mintázata a következő előnyöket biztosítja:
 
 * **Elemzések az Edge** -ben – a mesterséges intelligenciát használó eszközök használatával helyileg dolgozhat fel adatokat, anélkül, hogy teljes hűségű telemetria küldene a felhőbe. Megkeresheti és reagálhat helyi elemzésekre, és csak az adathalmazt küldheti IoT Hubba.
 * **Alsóbb rétegbeli eszközök elkülönítése** – az átjáró eszköz az összes alsóbb rétegbeli eszközt megvédi az internet felé. Egy olyan operatív technológiai (OT) hálózat között tud részt venni, amely nem rendelkezik kapcsolattal és olyan informatikai (IT) hálózattal, amely hozzáférést biztosít a webhelyhez. Hasonlóképpen, azok az eszközök, amelyek nem képesek csatlakozni a IoT Hubhoz a saját maguk csatlakozhatnak egy átjáró-eszközhöz.
-* **Kapcsolat – többszörös** használat – az IoT hub IoT Edge átjárón keresztül csatlakozó összes eszköz ugyanazt az alapul szolgáló kapcsolatot használja.
+* **Kapcsolat – többszörös** használat – az IoT Hub egy IoT Edge átjárón keresztül csatlakozó összes eszköz ugyanazt az alapul szolgáló kapcsolatot használhatja. Ehhez a multiplexeri képességhez az IoT Edge-átjáró a AMQP-t használja felsőbb rétegbeli protokollként.
 * **Forgalom simítása** – a IoT Edge eszköz automatikusan végrehajtja az exponenciális leállítási, ha IoT hub szabályozza a forgalmat, miközben az üzeneteket helyileg tartja fenn. Ezzel a megoldással rugalmasan teheti meg a megoldást a forgalomban lévő csúcsokra.
 * **Offline támogatás** – az átjáró eszköz olyan üzeneteket és kettős frissítéseket tárol, amelyek nem továbbíthatók IoT hubba.
 
@@ -45,7 +45,9 @@ Az átjáró összes mintázata a következő előnyöket biztosítja:
 
 Az átlátszó átjáró mintájában az eszközök, amelyek elméletileg csatlakozhatnak IoT Hub csatlakozhatnak egy átjáró-eszközhöz. Az alsóbb rétegbeli eszközök saját IoT Hub identitásokkal rendelkeznek, és a MQTT vagy AMQP protokollok használatával kapcsolódnak egymáshoz. Az átjáró csupán továbbítja az eszközök és az IoT Hub közötti kommunikációt. Az eszközök és a velük kommunikáló felhasználók IoT Hub nem biztos, hogy az átjáró közvetíti a kommunikációt. Ez a tájékoztatás hiánya azt jelenti, hogy az átjáró *transzparensnek* tekintendő.
 
-<!-- 1.0.10 -->
+További információ arról, hogy az IoT Edge hub hogyan kezeli az alsóbb rétegbeli eszközök és a felhő közötti kommunikációt: [Ismerje meg a Azure IoT Edge futtatókörnyezetet és annak architektúráját](iot-edge-runtime.md).
+
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge-eszközök nem lehetnek IoT Edge átjárók alsóbb rétegében.
@@ -73,6 +75,11 @@ A szülő/gyermek kapcsolat az átjáró konfigurációjának három pontján va
 
 Az átlátszó átjárókban lévő összes eszközön Felhőbeli identitásokra van szükség, hogy a hitelesítésük IoT Hub legyen. Az eszköz identitásának létrehozásakor vagy frissítésekor beállíthatja az eszköz szülő-vagy gyermek-eszközét. Ezzel a konfigurációval engedélyezheti a szülő átjáró eszköznek, hogy kezelje az alárendelt eszközei hitelesítését.
 
+>[!NOTE]
+>A szülő eszköz beállítása IoT Hub a szimmetrikus kulcsos hitelesítést használó alsóbb rétegbeli eszközök esetében választható lépésként használható. A 1.1.0 verziótól kezdődően azonban minden alsóbb rétegbeli eszköznek hozzá kell rendelnie egy fölérendelt eszközhöz.
+>
+>Az IoT Edge hub úgy is beállítható, hogy visszalépjen az előző viselkedésre úgy, hogy a környezeti változót a **authenticationmode tulajdonsághoz** értékre állítja a **CloudAndScope**.
+
 A gyermek eszközökhöz csak egy szülő tartozhat. Minden szülő akár 100 gyermeket is tartalmazhat.
 
 <!-- 1.2.0 -->
@@ -82,7 +89,7 @@ IoT Edge az eszközök lehetnek szülők és gyermekek is transzparens átjáró
 
 #### <a name="gateway-discovery"></a>Átjáró felderítése
 
-A gyermek eszköznek képesnek kell lennie a fölérendelt eszköz megkeresésére a helyi hálózaton. Konfigurálja az átjáró-eszközöket egy **állomásnévvel** , vagy egy teljes tartománynevet (FQDN) vagy egy IP-címet, amelyet a gyermeke eszközei a kereséséhez fognak használni.
+A gyermek eszköznek képesnek kell lennie a fölérendelt eszköz megkeresésére a helyi hálózaton. Konfigurálja az átjáró-eszközöket egy **állomásnévvel**, vagy egy teljes tartománynevet (FQDN) vagy egy IP-címet, amelyet a gyermeke eszközei a kereséséhez fognak használni.
 
 Az alsóbb rétegbeli IoT eszközökön használja a **gatewayHostname** paramétert a kapcsolódási karakterláncban, hogy a fölérendelt eszközre mutasson.
 
@@ -106,7 +113,7 @@ Az IoT Edge üzenetkezelési folyamatával dolgozó összes IoT Hub-primitív t�
 
 Az alábbi táblázat segítségével megtekintheti, hogy a különböző IoT Hub képességek hogyan támogatottak az eszközökhöz képest az átjárók mögötti eszközökhöz képest.
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 | Képesség | IoT-eszköz | IoT az átjáró mögött |
@@ -134,7 +141,7 @@ Az alábbi táblázat segítségével megtekintheti, hogy a különböző IoT Hu
 
 A **tárolók lemezképeit** letöltheti, tárolhatja és elküldheti a szülői eszközökről a gyermek eszközökre.
 
-A **Blobok** , beleértve a támogatási csomagokat és a naplókat, a gyermek eszközökről a szülő eszközökre tölthetők fel.
+A **Blobok**, beleértve a támogatási csomagokat és a naplókat, a gyermek eszközökről a szülő eszközökre tölthetők fel.
 
 ::: moniker-end
 

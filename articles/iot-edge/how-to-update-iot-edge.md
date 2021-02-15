@@ -9,12 +9,12 @@ ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a739736182713b35c3a5e9e25742aa39c5d1122
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633137"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378026"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -35,12 +35,6 @@ A parancs használatával keresse meg az eszközön futó Security Daemon verzi�
 Linux x64 rendszerű eszközökön használja az apt-get vagy a megfelelő csomagkezelő eszközt a biztonsági démon legújabb verzióra való frissítéséhez.
 
 A legújabb adattár-konfiguráció beszerzése a Microsofttól:
-
-* **Ubuntu Server 16,04**:
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18,04**:
 
@@ -100,7 +94,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 A Windows rendszeren futó Linux-IoT Edge esetén a IoT Edge egy Windows-eszközön üzemeltetett linuxos virtuális gépen fut. Ez a virtuális gép előre telepítve van a IoT Edgeval, és a Microsoft Update kezeli az összetevők naprakészen tartásához. Jelenleg nincsenek elérhető frissítések.
@@ -160,7 +154,7 @@ Ha adott címkéket használ a központi telepítésben (például mcr.microsoft
 
    ![Edge hub-ügynök verziójának frissítése](./media/how-to-update-iot-edge/runtime-settings-edgeagent.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, tekintse át a telepítést, és válassza a **Létrehozás** lehetőséget.
 

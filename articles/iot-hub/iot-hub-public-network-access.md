@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/12/2021
+ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85937521"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517127"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>A IoT hub nyilvános hálózati hozzáférésének kezelése
 
@@ -28,7 +28,13 @@ A nyilvános hálózati hozzáférés letiltásával korlátozhatja a hozzáfér
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="A nyilvános hálózati hozzáférés kikapcsolását Azure Portal bemutató kép" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-A nyilvános hálózati hozzáférés bekapcsolásához válassza az **engedélyezve**, majd a **Mentés**lehetőséget.
+A nyilvános hálózati hozzáférés bekapcsolásához válassza a **minden hálózat**, majd a **Mentés** lehetőséget.
+
+## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>Végpontok, IP-címek és portok IoT Hub a nyilvános hálózati hozzáférés letiltása után
+
+IoT Hub egy több-bérlős platform-szolgáltatás (Péter), így a különböző ügyfelek ugyanazt a számítási, hálózati és tárolási hardveres erőforrásokat használják. A IoT Hub állomásneve egy nyilvános végpontra mutat, amely nyilvánosan irányítható IP-címmel rendelkezik az interneten keresztül. A különböző ügyfelek megoszthatják ezt a IoT Hub nyilvános végpontot, és IoT a nagy területű hálózatokon és a helyszíni hálózatokon található eszközöket. 
+
+A nyilvános hálózati hozzáférés letiltása egy adott IoT hub-erőforráson történik, az elkülönítés biztosítása érdekében. Annak érdekében, hogy a szolgáltatás a nyilvános elérési úttal rendelkező más ügyfelek erőforrásai számára is aktív maradjon, a nyilvános végpont feloldható marad, az IP-címek felderíthetők, és a portok nyitva maradnak. Ez nem okoz problémát, mert a Microsoft több biztonsági réteget integrál a bérlők közötti teljes elkülönítés biztosításához. További információ: elkülönítés az [Azure nyilvános felhőben](../security/fundamentals/isolation-choices.md#tenant-level-isolation).
 
 ## <a name="ip-filter"></a>IP-szűrő 
 

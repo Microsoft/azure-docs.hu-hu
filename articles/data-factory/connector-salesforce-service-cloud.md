@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása a Salesforce és a szolgáltatásból a felhőbe
 description: Megtudhatja, hogyan másolhat adatokat a Salesforce Service Cloud-ból a fogadó adattárakba vagy a támogatott forrás-adattárakból a Salesforce szolgáltatás-felhőbe másolási tevékenységgel egy adatfeldolgozó-folyamaton keresztül.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4075552e2070eba653fba54c7db1d021016644c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430764"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369764"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Adatok másolása a-ból és a Salesforce szolgáltatás-felhőbe Azure Data Factory használatával
 
@@ -65,13 +61,13 @@ A Salesforce társított szolgáltatás a következő tulajdonságokat támogatj
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus |A Type tulajdonságot **SalesforceServiceCloud** értékre kell beállítani. |Igen |
-| environmentUrl | A Salesforce Service Cloud-példány URL-címének megadása. <br> – Az alapértelmezett érték `"https://login.salesforce.com"` . <br> – Adatok másolása a homokozóból, a következőt kell megadnia: `"https://test.salesforce.com"` . <br> – Az adatok egyéni tartományból történő másolásához például a következőt kell megadnia: `"https://[domain].my.salesforce.com"` . |Nem |
-| username |Adja meg a felhasználói fiók felhasználónevét. |Igen |
-| jelszó |A felhasználói fiókhoz tartozó jelszó megadása.<br/><br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. <br/><br/>A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). A biztonsági jogkivonatot csak akkor lehet kihagyni, ha hozzáadja a Integration Runtime IP- [címét a megbízható IP-címek listájához](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) a Salesforce-on. Azure IR használatakor tekintse meg [Azure Integration Runtime IP-címeket](azure-integration-runtime-ip-addresses.md).<br/><br/>A biztonsági jogkivonat beszerzésével és alaphelyzetbe állításával kapcsolatos utasításokért lásd: [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Nem |
-| apiVersion | Itt adhatja meg a használni kívánt REST/tömeges API-verziót, például: Salesforce `48.0` . Alapértelmezés szerint az összekötő [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) használ az adatok Salesforce való másolásához, és a [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) használatával másolja az adatok Salesforce. | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem |
+| típus |A Type tulajdonságot **SalesforceServiceCloud** értékre kell beállítani. |Yes |
+| environmentUrl | A Salesforce Service Cloud-példány URL-címének megadása. <br> – Az alapértelmezett érték `"https://login.salesforce.com"` . <br> – Adatok másolása a homokozóból, a következőt kell megadnia: `"https://test.salesforce.com"` . <br> – Az adatok egyéni tartományból történő másolásához például a következőt kell megadnia: `"https://[domain].my.salesforce.com"` . |No |
+| username |Adja meg a felhasználói fiók felhasználónevét. |Yes |
+| jelszó |A felhasználói fiókhoz tartozó jelszó megadása.<br/><br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Yes |
+| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. <br/><br/>A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). A biztonsági jogkivonatot csak akkor lehet kihagyni, ha hozzáadja a Integration Runtime IP- [címét a megbízható IP-címek listájához](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) a Salesforce-on. Azure IR használatakor tekintse meg [Azure Integration Runtime IP-címeket](azure-integration-runtime-ip-addresses.md).<br/><br/>A biztonsági jogkivonat beszerzésével és alaphelyzetbe állításával kapcsolatos utasításokért lásd: [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |No |
+| apiVersion | Itt adhatja meg a használni kívánt REST/tömeges API-verziót, például: Salesforce `48.0` . Alapértelmezés szerint az összekötő [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) használ az adatok Salesforce való másolásához, és a [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) használatával másolja az adatok Salesforce. | No |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No |
 
 **Példa: hitelesítő adatok tárolása Data Factoryban**
 
@@ -141,7 +137,7 @@ Az adatoknak a és a Salesforce szolgáltatásba történő másolásához a kö
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **SalesforceServiceCloudObject** értékre kell beállítani.  | Igen |
+| típus | A Type tulajdonságot **SalesforceServiceCloudObject** értékre kell beállítani.  | Yes |
 | objectApiName | Az Salesforce-objektum neve, amelyből az adatok beolvashatók. | Nem, forrás, igen, fogadó |
 
 > [!IMPORTANT]
@@ -170,7 +166,7 @@ Az adatoknak a és a Salesforce szolgáltatásba történő másolásához a kö
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát **RelationalTable** értékre kell állítani. | Igen |
+| típus | Az adatkészlet Type tulajdonságát **RelationalTable** értékre kell állítani. | Yes |
 | tableName | A tábla neve a Salesforce Service felhőben. | Nem (ha a tevékenység forrásában a "Query" érték van megadva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -183,9 +179,9 @@ Az adatok Salesforce szolgáltatásbeli felhőből való másolásához a másol
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát **SalesforceServiceCloudSource** értékre kell állítani. | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát **SalesforceServiceCloudSource** értékre kell állítani. | Yes |
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Használhatja a [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezést vagy az SQL-92 lekérdezést. További tippeket a [lekérdezési tippek](#query-tips) szakaszban talál. Ha a lekérdezés nincs megadva, a rendszer az adatkészlet "objectApiName" részében megadott Salesforce Service Cloud objektum összes adatát beolvassa. | Nem (ha meg van adva a "objectApiName" az adatkészletben) |
-| readBehavior | Azt jelzi, hogy le kell-e kérdezni a meglévő rekordokat, vagy az összes rekordot, beleértve a törölt fájlokat is. Ha nincs megadva, az alapértelmezett viselkedés a korábbi. <br>Engedélyezett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
+| readBehavior | Azt jelzi, hogy le kell-e kérdezni a meglévő rekordokat, vagy az összes rekordot, beleértve a törölt fájlokat is. Ha nincs megadva, az alapértelmezett viselkedés a korábbi. <br>Engedélyezett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | No |
 
 > [!IMPORTANT]
 > Az **API-név** "__c" része minden egyéni objektumhoz szükséges.
@@ -230,7 +226,7 @@ Az Salesforce szolgáltatásbeli felhőbe történő adatmásoláshoz a másolá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát **SalesforceServiceCloudSink** értékre kell állítani. | Igen |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát **SalesforceServiceCloudSink** értékre kell állítani. | Yes |
 | writeBehavior | A művelet írási viselkedése.<br/>Az engedélyezett értékek: **Insert** és **Upsert**. | Nem (az alapértelmezett érték a Beszúrás) |
 | externalIdFieldName | A upsert művelet külső azonosító mezőjének neve. A megadott mezőt "külső azonosító mezőként" kell definiálni a Salesforce Service Cloud objektumban. A megfelelő bemeneti adatokban nem szerepelhet NULL érték. | Igen a "Upsert" |
 | writeBatchSize | Az egyes kötegekben a Salesforce szolgáltatásbeli felhőbe írt adatsorok száma. | Nem (az alapértelmezett érték 5 000) |

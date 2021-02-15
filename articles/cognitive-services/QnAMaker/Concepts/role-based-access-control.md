@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988016"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379709"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
@@ -23,6 +23,9 @@ Minden engedélyt a QnA Maker erőforrásra helyezett engedélyek szabályoznak.
 Ez az Azure RBAC szolgáltatás a következőket tartalmazza:
 * A Azure Active Directory (HRE) 100%-os visszamenőleges kompatibilitást biztosít a tulajdonosok és a közreműködők kulcs alapú hitelesítésével. A felhasználók a kérelmekben kulcs alapú hitelesítést vagy Azure RBAC-alapú hitelesítést használhatnak.
 * A szerzők és szerkesztők gyorsan hozzáadhatók az erőforrás összes tudásbázisához, mivel a vezérlő az erőforrás szintjén van, nem pedig a Tudásbázis szintjén.
+
+> [!NOTE]
+> Ha AR-t használ, vegyen fel egy egyéni altartományt az erőforráshoz. Az [Egyéni altartománynak](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) alapértelmezés szerint jelen kell lennie, de ha nem, akkor adja hozzá
 
 ## <a name="access-is-provided-by-a-defined-role"></a>A hozzáférést egy meghatározott szerepkör adta meg
 

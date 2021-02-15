@@ -2,21 +2,21 @@
 title: Egyéni Azure-szkriptek bővítménye Windowshoz
 description: A Windowsos virtuális gépek konfigurációs feladatainak automatizálása az egyéni szkriptek bővítményének használatával
 services: virtual-machines-windows
-manager: carmonm
-author: bobbytreed
+manager: gwallace
+author: amjads1
 ms.service: virtual-machines-windows
 ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
-ms.author: robreed
-ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.author: amjads
+ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258704"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390130"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -32,6 +32,7 @@ Ez a dokumentum részletesen ismerteti, hogyan használhatók az egyéni szkript
 ### <a name="operating-system"></a>Operációs rendszer
 
 A Windowshoz készült egyéni parancsfájl-bővítmény az OSs támogatott bővítményét fogja futtatni;
+
 ### <a name="windows"></a>Windows
 
 * Windows Server 2008 R2
@@ -67,7 +68,7 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * A bővítmény egy szkriptet csak egyszer futtat. Ha egy szkriptet minden indításkor futtatni szeretne, létre kell hoznia egy ütemezett Windows-feladatot a bővítménnyel.
 * Ha ütemezni szeretné, hogy mikor fusson egy szkript, hozzon létre egy ütemezett Windows-feladatot a bővítménnyel.
 * Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha gyakoribb állapotfrissítést szeretne egy futó szkripthez, létre kell hoznia a saját megoldását.
-* Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálót, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *curl*
+* Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálót, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *Meghívási Webkérést*
 * Vegye figyelembe, hogy vannak olyan nem alapértelmezett könyvtárhelyek, amelyekre a szkriptjei és a parancsai támaszkodhatnak, és amelyek rendelkeznek a helyzet kezeléséhez szükséges logikával.
 * Az egyéni szkriptek bővítménye a LocalSystem fiókban fog futni.
 * Ha azt tervezi, hogy a *storageAccountName* és a *storageAccountKey* tulajdonságot használja, ezeknek a tulajdonságoknak közös elhelyezésű kell lenniük a *protectedsettingsfromkeyvault*.

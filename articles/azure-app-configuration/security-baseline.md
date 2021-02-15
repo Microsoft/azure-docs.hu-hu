@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4af00b2e0e5445ecc904f603d813d843a9c54b93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b160f6641cced1e4ea6af1eac225d92abe26a631
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735016"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380270"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure-beli biztonsági alaptervek az Azure-alkalmazások konfigurálásához
 
@@ -437,7 +437,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 - [Hozzáférés engedélyezése az Azure-alkalmazás konfigurációjához Azure Active Directory használatával](concept-enable-rbac.md)
 
-- [Az alkalmazás konfigurációjának adattitkosítása](faq.md#does-app-configuration-encrypt-my-data)
+- [Az alkalmazás konfigurációjának adattitkosítása](faq.yml#does-app-configuration-encrypt-my-data)
 
 - [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) 
 
@@ -993,7 +993,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

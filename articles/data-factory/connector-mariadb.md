@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása a MariaDB a Azure Data Factory használatával
 description: Bemutatjuk, hogy miként másolhatók adatok a MariaDB-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f515738ad2af6b7779495b55226c10fef9272b13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81414984"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385676"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Adatok másolása a MariaDB a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,9 +47,9 @@ A MariaDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **MariaDB** | Igen |
-| connectionString | ODBC-kapcsolati sztring a MariaDB való kapcsolódáshoz. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **MariaDB** | Yes |
+| connectionString | ODBC-kapcsolati sztring a MariaDB való kapcsolódáshoz. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 **Példa**
 
@@ -83,13 +78,13 @@ A MariaDB társított szolgáltatás a következő tulajdonságokat támogatja:
         "type": "MariaDB",
         "typeProperties": {
             "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -104,7 +99,7 @@ A MariaDB társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a MariaDB adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok MariaDB való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **MariaDBTable**értékre. Az ilyen típusú adatkészletekben nem szerepel további Type-specifikus tulajdonság.
+Az adatok MariaDB való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **MariaDBTable** értékre. Az ilyen típusú adatkészletekben nem szerepel további Type-specifikus tulajdonság.
 
 **Példa**
 
@@ -129,12 +124,12 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="mariadb-as-source"></a>MariaDB forrásként
 
-Az adatok MariaDB való másolásához állítsa a forrás típusát a másolás tevékenység **MariaDBSource**értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Az adatok MariaDB való másolásához állítsa a forrás típusát a másolás tevékenység **MariaDBSource** értékére. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MariaDBSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **MariaDBSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
 
@@ -173,5 +168,5 @@ Az adatok MariaDB való másolásához állítsa a forrás típusát a másolás
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

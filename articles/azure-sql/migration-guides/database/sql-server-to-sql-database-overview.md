@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357328"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368047"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Áttelepítési Áttekintés: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ SQL Server magas rendelkezésre állású szolgáltatások (például az Always 
 A SQL Database részét képező, magas rendelkezésre állású architektúrán kívül az [automatikus feladatátvételi csoportok](../../database/auto-failover-group-overview.md) funkciója is lehetővé teszi a felügyelt példányban lévő adatbázisok replikálásának és feladatátvételének kezelését egy másik régióba. 
 
 #### <a name="sql-agent-jobs"></a>SQL-ügynök feladatai
-Az SQL Agent-feladatok nem támogatottak közvetlenül a Azure SQL Databaseban, és telepíteni kell őket [Elastic Database feladatokhoz (előzetes verzió)](../../database/job-automation-overview.md#elastic-database-jobs-preview).
+Az SQL Agent-feladatok nem támogatottak közvetlenül a Azure SQL Databaseban, és telepíteni kell őket [Elastic Database feladatokhoz (előzetes verzió)](../../database/job-automation-overview.md).
 
 #### <a name="logins-and-groups"></a>Bejelentkezések és csoportok
 Helyezze át az SQL-bejelentkezéseket a forrás SQL Serverról Azure SQL Database kapcsolat nélküli módban Database Migration Service (DMS) használatával.  Az **áttelepítési varázsló** **kiválasztott bejelentkezések** paneljének használatával áttelepítheti a bejelentkezéseket a cél SQL Databaseba. 
@@ -194,7 +194,7 @@ A speciális felügyeleti és biztonsági funkciók mellett a SQL Database olyan
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Leírás  |
+|Objektum  |Description  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely lehetővé teszi a nagyméretű ingatlan-értékelések felgyorsítását azáltal, hogy automatizált és egységes célzott platformra vonatkozó döntési folyamatot biztosít.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve a Azure SQL Databaset is.|

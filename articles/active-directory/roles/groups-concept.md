@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740091"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095137"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez Azure Active Directory (előzetes verzió)
 
@@ -28,7 +28,7 @@ Vegyük például a következő példát: a contoso az Azure AD-szervezetében d
 
 ## <a name="how-this-feature-works"></a>A szolgáltatás működése
 
-Hozzon létre egy új Microsoft 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való** bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 200 szerepkör-hozzárendelhető csoport hozható létre.
+Hozzon létre egy új Microsoft 365 vagy biztonsági csoportot az "isAssignableToRole" tulajdonsággal "true" értékre. Ezt a tulajdonságot akkor is engedélyezheti, ha az **Azure ad-szerepköröket a csoporthoz való** bekapcsolásával létrehoz egy csoportot a Azure Portal. Mindkét esetben hozzárendelhet egy vagy több Azure AD-szerepkörhöz a csoportot ugyanúgy, ahogyan a szerepköröket a felhasználókhoz rendeli. Egyetlen Azure AD-szervezetben (bérlőben) legfeljebb 250 szerepkör-hozzárendelhető csoport hozható létre.
 
 Ha nem szeretné, hogy a csoport tagjai rendelkezzenek állandó hozzáféréssel a szerepkörhöz, használhatja a Azure AD Privileged Identity Management. Rendeljen hozzá egy csoportot egy Azure AD-szerepkör jogosult tagjaként. A csoport minden tagja ezután jogosult a hozzárendelés aktiválására ahhoz a szerepkörhöz, amelyhez a csoport hozzá van rendelve. Ezután aktiválják a szerepkör-hozzárendelést egy rögzített időtartamra.
 
@@ -70,7 +70,7 @@ Ezeket a problémákat kijavítja.
 
 A szolgáltatás használatához elérhető prémium szintű Azure AD P1-licenccel kell rendelkeznie az Azure AD-szervezetben. Ahhoz, hogy az igény szerinti szerepkör-aktiváláshoz Privileged Identity Management is használhassa, elérhetőnek kell lennie prémium szintű Azure AD P2-licenccel. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes és prémium csomagok általánosan elérhető funkcióinak összehasonlítását](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](groups-create-eligible.md)
 - [Szerepkör társítása szerepkörhöz hozzárendelhető csoporthoz](groups-assign-role.md)

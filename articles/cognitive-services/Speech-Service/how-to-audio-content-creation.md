@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024959"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388583"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>A hanganyag-létrehozási eszközzel fejlesztheti a szintézist
 
@@ -125,7 +125,7 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>Hangtartalom-létrehozási felhasználók hozzáadása/eltávolítása
 
-Ha egynél több felhasználó szeretné használni a hangtartalom létrehozását, megoszthatja az Azure-fiókját és jelszavát a felhasználóval, vagy megadhatja a felhasználói hozzáférést az Azure-előfizetéshez és a beszédfelismerési erőforráshoz. Ha hozzáad egy felhasználót egy Azure-előfizetéshez, a felhasználó elérheti az Azure-előfizetéshez tartozó összes erőforrást. Ha azonban csak egy felhasználót vesz fel egy beszédfelismerési erőforráshoz, a felhasználó csak a beszédfelismerési erőforráshoz férhet hozzá, és nem fér hozzá az Azure-előfizetéshez tartozó egyéb erőforrásokhoz. A beszédfelismerési erőforráshoz hozzáféréssel rendelkező felhasználók hangtartalmat hozhatnak létre.
+Ha egynél több felhasználó szeretné használni a hangtartalom létrehozását, felhasználói hozzáférést biztosíthat az Azure-előfizetéshez és a beszédfelismerési erőforráshoz. Ha hozzáad egy felhasználót egy Azure-előfizetéshez, a felhasználó elérheti az Azure-előfizetéshez tartozó összes erőforrást. Ha azonban csak egy felhasználót vesz fel egy beszédfelismerési erőforráshoz, a felhasználó csak a beszédfelismerési erőforráshoz férhet hozzá, és nem fér hozzá az Azure-előfizetéshez tartozó egyéb erőforrásokhoz. A beszédfelismerési erőforráshoz hozzáféréssel rendelkező felhasználók hangtartalmat hozhatnak létre.
 
 ### <a name="add-users-to-a-speech-resource"></a>Felhasználók hozzáadása egy beszédfelismerési erőforráshoz
 
@@ -140,14 +140,14 @@ Az alábbi lépéseket követve hozzáadhat egy felhasználót egy beszédfelism
 
     :::image source="media/audio-content-creation/add-role-first.png" alt-text="Szerepkör hozzáadása párbeszédpanel":::
 
-1. A hozzáadott felhasználók egy meghívót tartalmazó e-mailt fognak kapni. Miután **Accept invitation**  >  **Az Azure-hoz való csatlakozásra** kattintott a meghívó elfogadása elemre, használhatja a [hangtartalom létrehozását](https://aka.ms/audiocontentcreation).
+1. A hozzáadott felhasználók egy meghívót tartalmazó e-mailt fognak kapni. Miután   >  **Az Azure-hoz való csatlakozásra** kattintott a meghívó elfogadása elemre, használhatja a [hangtartalom létrehozását](https://aka.ms/audiocontentcreation).
 
 Azok a felhasználók, akik ugyanabban a beszédfelismerési erőforrásban találhatók, láthatják egymás munkáját a hangtartalom-létrehozási Studióban. Ha azt szeretné, hogy az egyes felhasználók egyedi és privát munkaterülettel rendelkezzenek a hangtartalom létrehozásakor, [hozzon létre egy új beszédfelismerési erőforrást](#step-2---create-a-speech-resource) minden felhasználó számára, és adjon meg minden felhasználónak egyedi hozzáférést a beszédfelismerési erőforráshoz. 
 
 ### <a name="remove-users-from-a-speech-resource"></a>Felhasználók eltávolítása egy beszédfelismerési erőforrásból
 1. Keresse meg a **kognitív szolgáltatásokat** a Azure Portalban, válassza ki azt a beszédfelismerési erőforrást, amelyből el szeretné távolítani a felhasználókat.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre. Kattintson a **szerepkör-hozzárendelések** lapra a beszédfelismerési erőforrás összes szerepkör-hozzárendelésének megtekintéséhez.
-3. Válassza ki az eltávolítani kívánt felhasználókat, majd kattintson **Remove**  >  **az OK eltávolítása gombra**.
+3. Válassza ki az eltávolítani kívánt felhasználókat, majd kattintson   >  **az OK eltávolítása gombra**.
     :::image source="media/audio-content-creation/remove-user.png" alt-text="Eltávolítás gomb":::
 
 ### <a name="enable-users-to-grant-access"></a>Hozzáférés engedélyezésének engedélyezése a felhasználók számára

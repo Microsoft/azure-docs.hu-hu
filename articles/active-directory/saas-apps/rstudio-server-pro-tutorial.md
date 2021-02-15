@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a RStudio Server Pro SAML-hitelesítéssel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és RStudio Server Pro SAML-hitelesítés között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a RStudio Server Pro-val | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a RStudio Server Pro között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ecefc7c585f2f556e76efe6a3a272e38de98e297
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 490ecb201b91cdbdcdddceecdd2d145d2f9bb815
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181560"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390045"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro-saml-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a RStudio Server Pro SAML-hitelesítéssel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a RStudio Server Pro-val
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RStudio Server Pro SAML-hitelesítést Azure Active Directory (Azure AD) használatával. Ha integrálja az RStudio Server Pro SAML-hitelesítést az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RStudio Server Pro (RSP) szolgáltatást Azure Active Directory (Azure AD) használatával. Ha integrálja az RSP-t az Azure AD-vel, a következőket teheti:
 
-* A RStudio Server Pro SAML-hitelesítéshez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a RStudio Server Pro SAML-Hitelesítésbe az Azure AD-fiókkal.
+* A RSP-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a RSP az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,17 +31,17 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a RStudio Server P
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* RStudio Server Pro SAML-hitelesítés egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* RSP (verzió: >= 1,4) telepítése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A RStudio Server Pro SAML-hitelesítés támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* A RSP támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-rstudio-server-pro-saml-authentication-from-the-gallery"></a>RStudio Server Pro SAML-hitelesítés hozzáadása a katalógusból
+## <a name="adding-rstudio-server-pro-from-the-gallery"></a>A RStudio Server Pro hozzáadása a gyűjteményből
 
-A RStudio Server Pro SAML-hitelesítés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a RStudio Server Pro SAML-hitelesítést a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A RSP Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a RStudio Server Pro SAML-hitelesítést a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
@@ -51,17 +51,17 @@ A RStudio Server Pro SAML-hitelesítés Azure AD-be való integrálásának konf
 1. Válassza az **RStudio Server Pro SAML-hitelesítés** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro-saml-authentication"></a>Az Azure AD SSO konfigurálása és tesztelése a RStudio Server Pro SAML-hitelesítéshez
+## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro"></a>Azure AD SSO konfigurálása és tesztelése a RStudio Server Pro-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a RStudio Server Pro SAML-hitelesítéssel egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a RStudio Server Pro SAML-hitelesítésben.
+Konfigurálja és tesztelje az Azure AD SSO-t a RSP a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a RSP-ben.
 
 Az Azure AD SSO RStudio Server Pro SAML-hitelesítéssel történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[RStudio Server Pro SAML-hitelesítésének konfigurálása](#configure-rstudio-server-pro-saml-authentication-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre egy RStudio Server Pro SAML hitelesítési teszt felhasználót](#create-rstudio-server-pro-saml-authentication-test-user)** – ha a RStudio Server Pro SAML-hitelesítéssel rendelkezik, amely a felhasználó Azure ad-képviseletéhez van társítva.
+1. A **[RStudio Server Pro SSO konfigurálása](#configure-rstudio-server-pro-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre egy RStudio Server Pro test User](#create-rstudio-server-pro-test-user)** -t, hogy rendelkezzen a RStudio Server Pro-ban található, a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ügyféllel.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -76,16 +76,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/metadata`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<RSP-SERVER>/<PATH>/saml/metadata`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/acs`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<RSP-SERVER>/<PATH>/saml/acs`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.rstudioservices.com`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<RSP-SERVER>/<PATH>/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [RStudio Server Pro SAML hitelesítési](mailto:support@rstudio.com) ügyfélszolgálatával, hogy lekérje ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a RSP-telepítés tényleges URI-azonosítójához. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -115,13 +115,27 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-rstudio-server-pro-saml-authentication-sso"></a>RStudio Server Pro SAML-hitelesítés konfigurálása SSO
+## <a name="configure-rstudio-server-pro-sso"></a>A RStudio Server Pro SSO konfigurálása
 
-Ha egyszeri bejelentkezést szeretne konfigurálni a **RStudio Server Pro SAML hitelesítési** oldalán, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [RStudio Server Pro SAML-hitelesítés támogatási csapatának](mailto:support@rstudio.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Frissítse a RSP konfigurációs fájlját `/etc/rstudio/rserver.conf` a következővel:
 
-### <a name="create-rstudio-server-pro-saml-authentication-test-user"></a>RStudio Server Pro SAML hitelesítési teszt felhasználó létrehozása
+    ```
+    auth-saml=1
+    auth-saml-metadata-url=<federation-metadata-URI>
+    auth-saml-sp-name-id-format=emailaddress
+    auth-saml-sp-attribute-username=NameID
+    auth-saml-sp-base-uri=<RSP-Server-URI>
+    ```
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a RStudio Server Pro SAML-hitelesítésben. Együttműködik a [RStudio Server Pro SAML-hitelesítési támogatási csapatával](mailto:support@rstudio.com) , és felveheti a felhasználókat a RStudio Server Pro SAML hitelesítési platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+2. Indítsa újra a RSP a következő futtatásával:
+
+    ```
+    sudo rstudio-server restart
+    ```
+
+### <a name="create-rstudio-server-pro-test-user"></a>RStudio Server Pro test User létrehozása
+
+Minden RSP-t használó felhasználónak kiépíteni kell a kiszolgálót. A felhasználót a vagy parancs használatával hozhatja létre `useradd` `adduser` .
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

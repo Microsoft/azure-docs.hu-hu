@@ -2,19 +2,19 @@
 title: Az űrlap-felismerő minta címkézési eszközének üzembe helyezése
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg a felügyelt tanulást segítő űrlap-felismerő minta címkéző eszköz különböző módszereit.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 04/14/2020
-ms.author: pafarley
-ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/11/2021
+ms.author: lajanuar
+ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790427"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370030"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>A mintacímkézési eszköz üzembe helyezése
 
@@ -32,7 +32,7 @@ Az adatfelirat megkezdésének leggyorsabb módja a minta feliratozási eszköz 
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Üzembe helyezés Azure Container Instancessal (ACI)
 
-Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe helyezni a minta-címkézési eszközt az Azure Container instance (ACI) szolgáltatásban. Mindkét lehetőség a minta feliratozási eszközének az ACI-val való futtatására szolgál. 
+Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe helyezni a minta-címkézési eszközt az Azure Container instance (ACI) szolgáltatásban. Mindkét lehetőség a minta feliratozási eszközének az ACI-val való futtatására szolgál.
 
 * [Az Azure Portal használata](#azure-portal)
 * [Az Azure CLI-vel](#azure-cli)
@@ -42,16 +42,16 @@ Mielőtt elkezdenénk, fontos megjegyezni, hogy kétféleképpen lehet üzembe h
 Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Portal használatával: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index/).
-2. Válassza az **Erőforrás létrehozása** lehetőséget. 
-3. Ezután válassza a **webalkalmazás** lehetőséget. 
+2. Válassza az **Erőforrás létrehozása** lehetőséget.
+3. Ezután válassza a **webalkalmazás** lehetőséget.
 
    > [!div class="mx-imgBorder"]
-   > ![Webalkalmazás kiválasztása](./media/quickstarts/formre-create-web-app.png)
-   
-4. Először is győződjön meg arról, hogy az **alapvető beállítások** lap van kiválasztva. Most meg kell adnia néhány információt: 
+   > ![Webalkalmazás kiválasztása](./media/quickstarts/create-web-app.png)
+
+4. Először is győződjön meg arról, hogy az **alapvető beállítások** lap van kiválasztva. Most meg kell adnia néhány információt:
 
    > [!div class="mx-imgBorder"]
-   > ![Alapismeretek kiválasztása](./media/quickstarts/formre-select-basics.png)
+   > ![Alapismeretek kiválasztása](./media/quickstarts/select-basics.png)
    * Előfizetés – válasszon ki egy meglévő Azure-előfizetést
    * Erőforráscsoport – felhasználhat egy meglévő erőforráscsoportot, vagy létrehozhat egy újat ehhez a projekthez. Az új erőforráscsoport létrehozása ajánlott.
    * Név – adja meg a webalkalmazás nevét. 
@@ -61,44 +61,46 @@ Az alábbi lépéseket követve hozzon létre egy új erőforrást a Azure Porta
    * Linux-csomag – válassza ki az App Service díjszabási szintjét/tervét. 
 
    > [!div class="mx-imgBorder"]
-   > ![A webalkalmazás konfigurálása](./media/quickstarts/formre-select-docker-linux.png)
+   > ![A webalkalmazás konfigurálása](./media/quickstarts/select-docker.png)
 
-5. Ezután válassza a **Docker** fület. 
+5. Ezután válassza a **Docker** fület.
 
    > [!div class="mx-imgBorder"]
-   > ![Docker kiválasztása](./media/quickstarts/formre-select-docker.png)
+   > ![Docker kiválasztása](./media/quickstarts/select-docker.png)
 
 6. Most konfigurálja a Docker-tárolót. Az összes mező megadása kötelező, kivéve, ha másként jelezzük:
 
-    # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
-   * Beállítások – **egyetlen tároló** kijelölése
-   * Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
-   * Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
-   * Username (nem kötelező) – hozzon létre egy felhasználónevet. 
-   * Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
-   * Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-   * Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
-   * Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
+    # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
+
+* Beállítások – **egyetlen tároló** kijelölése
+* Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
+* Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
+* Username (nem kötelező) – hozzon létre egy felhasználónevet. 
+* Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
+* Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+* Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
+* Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
 
     # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1) 
-   * Beállítások – **egyetlen tároló** kijelölése
-   * Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
-   * Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
-   * Username (nem kötelező) – hozzon létre egy felhasználónevet. 
-   * Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
-   * Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
-   * Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
-   * Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
-    
+
+* Beállítások – **egyetlen tároló** kijelölése
+* Rendszerkép forrása – **privát beállításjegyzék** kiválasztása 
+* Kiszolgáló URL-címe – Itt adhatja meg a következőt: `https://mcr.microsoft.com`
+* Username (nem kötelező) – hozzon létre egy felhasználónevet. 
+* Password (nem kötelező) – hozzon létre egy biztonságos jelszót, amelyet meg szeretne jegyezni.
+* Rendszerkép és címke – ezt állítsa be a következőre: `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
+* Folyamatos üzembe helyezés – állítsa be ezt **a** be értékre, ha automatikus frissítéseket szeretne kapni, amikor a fejlesztői csapat megváltoztatja a minta feliratozási eszközét.
+* Indítási parancs – ezt állítsa be a következőre: `./run.sh eula=accept`
+
     ---
 
    > [!div class="mx-imgBorder"]
-   > ![A Docker konfigurálása](./media/quickstarts/formre-configure-docker.png)
+   > ![A Docker konfigurálása](./media/quickstarts/configure-docker.png)
 
 7. Ennyi az egész. Ezután válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget a webalkalmazás üzembe helyezéséhez. Ha elkészült, elérheti a webalkalmazást az erőforrás **áttekintésében** megadott URL-címen.
 
 > [!NOTE]
-> A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez. 
+> A webalkalmazás létrehozásakor konfigurálhatja az engedélyezést és a hitelesítést is. Ez nem szükséges a kezdéshez.
 
 > [!IMPORTANT]
 > Előfordulhat, hogy engedélyeznie kell a TLS-t a webalkalmazáshoz, hogy megtekintse azt a `https` címben. Kövesse az alábbi utasításokat a [TLS-végpont](../../container-instances/container-instances-container-group-ssl.md) beállítása egy oldalkocsi-tároló beállításához, mint a TLS/SSL engedélyezése a webalkalmazáshoz.
@@ -114,10 +116,10 @@ Itt van néhány dolog, amit tudnia kell a paranccsal kapcsolatban:
 * Meg kell adnia, hogy hová szeretné létrehozni az erőforrást. Cserélje le a `<region name>` alkalmazást a kívánt régióra a webalkalmazáshoz. 
 * Ez a parancs automatikusan elfogadja a végfelhasználói licencszerződést.
 
-Az Azure CLI-ből futtassa ezt a parancsot egy webalkalmazás-erőforrás létrehozásához a minta feliratozási eszközhöz: 
+Az Azure CLI-ből futtassa ezt a parancsot egy webalkalmazás-erőforrás létrehozásához a minta feliratozási eszközhöz:
 
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
-# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -131,8 +133,10 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-``` 
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
+`
+
+# [v2.1 preview](#tab/v2-1) 
+   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -158,6 +162,6 @@ Javasoljuk, hogy a webalkalmazást Azure Active Directoryhoz kapcsolja. Ez bizto
 
 Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A betanítási](./quickstarts/label-tool.md) útmutató segítségével megtudhatja, hogyan használhatja az eszközt a betanítási adatok manuális címkézéséhez és a felügyelt tanulás végrehajtásához.

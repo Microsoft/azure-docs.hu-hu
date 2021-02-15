@@ -736,6 +736,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: Deduplikáció és NULL ellenőrzés kódrészletekkel
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: A pénzmosás-modellből származó adatok feldolgozása az adatfolyam használatával
+              href: scenario-dataflow-process-data-aml-models.md
         - name: SSIS-migrálás helyszínről
           items:
             - name: SSIS-migrálás áttekintése

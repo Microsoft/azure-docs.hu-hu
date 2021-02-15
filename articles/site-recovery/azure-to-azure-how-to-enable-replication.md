@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 427b471158e89b2b3ae4ea6477133f1e69247078
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383585"
+ms.locfileid: "100518844"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek replikálása másik Azure-régióba
 
@@ -54,7 +54,7 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
    - **Cél Storage-fiókok (a forrásoldali virtuális gép nem használ felügyelt lemezeket)**: alapértelmezés szerint a site Recovery egy új célként szolgáló Storage-fiókot hoz létre, amely utánozza a forrás virtuális gép tárolási konfigurációját. Ha a Storage-fiók már létezik, az újra használatban van.
    - **Replika által felügyelt lemezek (a forrásoldali virtuális gép felügyelt lemezeket használ)**: a site Recovery új replika által felügyelt lemezeket hoz létre a céltartományban a forrás virtuális gép felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium), mint a forrás virtuális gép felügyelt lemezével.
    - **Gyorsítótár-tárolási fiókok**: site Recovery a forrás régióban a cache Storage nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépeken végrehajtott összes módosítást nyomon követi, és a gyorsítótár Storage-fiókjába küldi, mielőtt replikálja őket a célhelyre. A Storage-fióknak standard szintűnek kell lennie.
-   - **Cél rendelkezésre állási** csoportok: alapértelmezés szerint a site Recovery egy új rendelkezésre állási csoportot hoz létre a célként megadott régióban a "Azure site Recovery" utótaggal a forrás régióban rendelkezésre állási csoportba tartozó virtuális gépek esetében. Ha a Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
+   - **Cél rendelkezésre állási** csoportok: alapértelmezés szerint a site Recovery egy új rendelkezésre állási csoportot hoz létre a céltartományban a név "ASR" utótagja alapján, amely a rendelkezésre állási csoport részét képezi a forrás régióban. Ha a Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
      >[!NOTE]
      >A cél rendelkezésre állási csoportok konfigurálása közben konfigurálja a különböző rendelkezésre állási csoportokat a különböző méretű virtuális gépekhez. 
      >

@@ -3,33 +3,33 @@ title: 'ML Studio (klasszikus): hogyan válik a modell webszolgáltatás – Azu
 description: Annak mechanikája, hogy a Azure Machine Learning Studio (klasszikus) modell hogyan halad egy fejlesztési kísérletből egy webszolgáltatásba.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c92f8c74da76b2ac938892e27f3d6be9c70c3238
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95507263"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518623"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan halad egy Machine Learning Studio (klasszikus) modell egy kísérletből a webszolgáltatásba
 
 **a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
-A Azure Machine Learning Studio (klasszikus) egy interaktív vászon, amely lehetővé teszi egy prediktív elemzési modellt jelölő **_kísérlet_* _ fejlesztését, futtatását, tesztelését és megismétlését. Számos különböző modul érhető el, amelyek a következőket tehetik:
+A Azure Machine Learning Studio (klasszikus) egy interaktív vászon, amely lehetővé teszi egy prediktív elemzési modellt jelölő ***kísérlet*** fejlesztését, futtatását, tesztelését és megismétlését. Számos különböző modul érhető el, amelyek a következőket tehetik:
 
-Bemeneti adatok bevitele a kísérletbe
+* Adatok bevitele a kísérletbe
 * Az adatkezelés
 * Modell betanítása gépi tanulási algoritmusok használatával
 * A modell pontozása
 * Az eredmények kiértékelése
 * Kimeneti végső értékek
 
-Ha elégedett a kísérlettel, központilag telepítheti a **szolgáltatást * klasszikus Azure Machine learning webszolgáltatásként**, vagy egy _*_új Azure Machine learning webszolgáltatást_*_ , hogy a felhasználók el tudják küldeni az új adatait, és megkapják az eredményeket.
+Ha elégedett a kísérlettel, telepítheti a t ***klasszikus Azure Machine learning webszolgáltatásként**, vagy egy _ *_új Azure Machine learning webszolgáltatásként_**, hogy a felhasználók el tudják küldeni az új adatait, és megkapják az eredményeket.
 
 Ebben a cikkben áttekintjük, hogy a Machine Learning modell hogyan halad egy fejlesztési kísérletből egy működőképes webszolgáltatásra.
 
@@ -38,7 +38,7 @@ Ebben a cikkben áttekintjük, hogy a Machine Learning modell hogyan halad egy f
 >
 >
 
-Míg a Azure Machine Learning Studio (klasszikus) úgy van kialakítva, hogy segítse a _predictive Analysis Model * fejlesztését és üzembe helyezését, a Studio (klasszikus) használatával olyan kísérletet fejleszthet, amely nem tartalmaz prediktív elemzési modellt. Előfordulhat például, hogy egy kísérlet csak bevitt adatokat tartalmaz, majd a módosítást végez, majd kiírja az eredményeket. A prediktív elemzési kísérletekhez hasonlóan ezt a nem prediktív kísérletet is üzembe helyezheti webszolgáltatásként, de ez egy egyszerűbb folyamat, mert a kísérlet nem tanít vagy nem talál gépi tanulási modellt. Habár a Studio (klasszikus) nem a szokásos módon használható, a beszélgetésbe belefoglaljuk, hogy a Studio (klasszikus) működése teljes körű magyarázatot nyújtson.
+Habár a Azure Machine Learning Studio (klasszikus) úgy van kialakítva, hogy segítséget nyújtson a *prediktív elemzési modellek* fejlesztéséhez és üzembe helyezéséhez, a Studio (klasszikus) használatával olyan kísérletet fejleszthet, amely nem tartalmaz prediktív elemzési modellt. Előfordulhat például, hogy egy kísérlet csak bevitt adatokat tartalmaz, majd a módosítást végez, majd kiírja az eredményeket. A prediktív elemzési kísérletekhez hasonlóan ezt a nem prediktív kísérletet is üzembe helyezheti webszolgáltatásként, de ez egy egyszerűbb folyamat, mert a kísérlet nem tanít vagy nem talál gépi tanulási modellt. Habár a Studio (klasszikus) nem a szokásos módon használható, a beszélgetésbe belefoglaljuk, hogy a Studio (klasszikus) működése teljes körű magyarázatot nyújtson.
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>Prediktív webszolgáltatás fejlesztése és üzembe helyezése
 Az alábbi szakaszokban egy tipikus megoldás következik be, amelyet a Machine Learning Studio (klasszikus) használatával fejleszt és telepít:
@@ -48,14 +48,14 @@ Az alábbi szakaszokban egy tipikus megoldás következik be, amelyet a Machine 
 *1. ábra – egy tipikus prediktív elemzési modell szakaszai*
 
 ### <a name="the-training-experiment"></a>A betanítási kísérlet
-A ***betanítási kísérlet** _ a webszolgáltatások fejlesztésének kezdeti fázisa Machine learning Studio (klasszikus). A betanítási kísérlet célja, hogy lehetővé teszi a gépi tanulási modellek fejlesztését, tesztelését, megismétlését és végül betanítását. Akár egyszerre több modellt is betaníthat, amikor a legjobb megoldást keresi, de ha végzett a kísérletezéssel, egyetlen betanított modellt is kiválaszthat, és kizárja a többit a kísérletből. A prediktív elemzési kísérlet kialakítására példát a következő témakörben talál: [Azure Machine learning Studio (klasszikus) hitelkockázat-értékelésének prediktív elemzési megoldásának fejlesztése](tutorial-part1-credit-risk.md).
+A ***betanítási kísérlet*** a webszolgáltatások fejlesztésének kezdeti fázisa Machine learning Studio (klasszikus). A betanítási kísérlet célja, hogy lehetővé teszi a gépi tanulási modellek fejlesztését, tesztelését, megismétlését és végül betanítását. Akár egyszerre több modellt is betaníthat, amikor a legjobb megoldást keresi, de ha végzett a kísérletezéssel, egyetlen betanított modellt is kiválaszthat, és kizárja a többit a kísérletből. A prediktív elemzési kísérlet kialakítására példát a következő témakörben talál: [Azure Machine learning Studio (klasszikus) hitelkockázat-értékelésének prediktív elemzési megoldásának fejlesztése](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>A prediktív kísérlet
-Ha betanított modellt készített a betanítási kísérletben, kattintson a _*webszolgáltatás beállítása** elemre, és válassza a **prediktív webszolgáltatást** Machine learning Studio (klasszikus) lehetőségre, hogy elindítsa a betanítási kísérlet egy **_prediktív kísérletre_* való átalakításának folyamatát_. A prediktív kísérlet célja, hogy a betanított modellt használja az új adatmennyiségek kiértékelésére, amelynek célja, hogy végül Azure-webszolgáltatásként működőképes legyen.
+Miután betanított modellt a betanítási kísérletben, kattintson a **webszolgáltatás beállítása** elemre, és válassza a **prediktív webszolgáltatás** Machine learning Studio (klasszikus) lehetőséget, hogy elindítsa a betanítási kísérletet egy **_prediktív kísérletre_**. A prediktív kísérlet célja, hogy a betanított modellt használja az új adatmennyiségek kiértékelésére, amelynek célja, hogy végül Azure-webszolgáltatásként működőképes legyen.
 
 Ezt a konverziót a következő lépésekkel végezheti el:
 
-– Konvertálja a betanításhoz használt modulok készletét egyetlen modulba, és mentse azt betanított modellként
+* Átalakíthatja a betanításhoz használt modulok készletét egyetlen modulba, és megtakaríthatja azt betanított modellként
 * A pontozáshoz nem kapcsolódó külső modulok kizárása
 * Adja meg azokat a bemeneti és kimeneti portokat, amelyeket a végső webszolgáltatás használni fog
 
@@ -97,7 +97,7 @@ Példa: tegyük fel, hogy a prediktív kísérlet a bemeneti adatok teljes sorá
 
 Ha szeretné megőrizni a gépi tanulási modellt, de az új adataival szeretné újratanítani, két lehetőség közül választhat:
 
-1. **A modell újratanítása a webszolgáltatás futása közben** – ha a prediktív webszolgáltatás futása közben szeretné áttanítani a modellt, ezt úgy teheti meg, hogy a betanítási kísérlet során egy pár módosítást hajt végre a **_retraining experiment_*_, then you can deploy it as a _*_retraining web_ betanítási kísérlet során.** Ennek módjával kapcsolatos útmutatásért olvassa el a [Machine learning modellek programozott újratanítása](./retrain-machine-learning-model.md)című témakört.
+1. **A modell újratanítása a webszolgáltatás futása közben** – ha a prediktív webszolgáltatás futása közben szeretné áttanítani a modellt, ezt úgy teheti meg, hogy a betanítási kísérlet során egy pár módosítást hajt végre a **betanítási kísérlet során.** Ennek módjával kapcsolatos útmutatásért olvassa el a [Machine learning modellek programozott újratanítása](./retrain-machine-learning-model.md)című témakört.
 2. **Térjen vissza az eredeti betanítási kísérletre, és használjon különböző képzési adatait a modell fejlesztéséhez** – a prediktív kísérlet a webszolgáltatáshoz van csatolva, de a betanítási kísérlet nem kapcsolódik közvetlenül ehhez a módszerhez. Ha módosítja az eredeti betanítási kísérletet, és a **webszolgáltatás beállítása** elemre kattint, a rendszer létrehoz egy *új*     prediktív kísérletet, amely telepítésekor a rendszer létrehoz egy *új* webszolgáltatás-szolgáltatást. Nem csupán az eredeti webszolgáltatás frissítésére szolgál.
 
    Ha módosítania kell a betanítási kísérletet, nyissa meg, majd kattintson a **Mentés másként** lehetőségre a másoláshoz. Ez érintetlenül hagyja az eredeti betanítási kísérletet, a prediktív kísérletet és a webszolgáltatás-szolgáltatást. Mostantól létrehozhat egy új webszolgáltatást is a módosításaival. Miután telepítette az új webszolgáltatást, eldöntheti, hogy leállítja-e az előző webszolgáltatást, vagy továbbra is fut-e az új webszolgáltatás mellett.

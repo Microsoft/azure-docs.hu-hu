@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan replikálhatja az Azure-beli virtuális gépeke
 author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
-ms.openlocfilehash: 7ac836992db33c6212fd009b914b30b7221249d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/11/2021
+ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745583"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380740"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Közelségi elhelyezési csoportokban futó, Azure-alapú virtuális gépek replikálása egy másik régióba
 
@@ -25,21 +25,72 @@ Egy tipikus forgatókönyv esetében előfordulhat, hogy a virtuális gépek egy
 ## <a name="considerations"></a>Megfontolandó szempontok
 
 - A legjobb megoldás az, ha a virtuális gépeket egy közelségi elhelyezési csoportba helyezi a feladatátvétel/feladat-visszavétel során. Ha azonban a virtuális gép a feladatátvétel/feladat-visszavétel során nem tud megjelenni a közelségben, akkor a feladatátvétel/feladat-visszavétel továbbra is megtörténik, és a virtuális gépeket a közelségi elhelyezési csoporton kívül hozza létre a rendszer.
--  Ha egy rendelkezésre állási csoport egy közelségi helyhez van rögzítve, és a rendelkezésre állási csoportban lévő feladatátvételi/feladat-visszavételi virtuális gépeken foglalási korlátozás van megadva, akkor a virtuális gépek a rendelkezésre állási csoporton és a közelségi elhelyezési csoportban kívül is létrejönnek.
--  Nem felügyelt lemezek esetén nem támogatott a közelségi csoportok Site Recovery.
+- Ha egy rendelkezésre állási csoport egy közelségi helyhez van rögzítve, és a rendelkezésre állási csoportban lévő feladatátvételi/feladat-visszavételi virtuális gépeken foglalási korlátozás van megadva, akkor a virtuális gépek a rendelkezésre állási csoporton és a közelségi elhelyezési csoportban kívül is létrejönnek.
+- Nem felügyelt lemezek esetén nem támogatott a közelségi csoportok Site Recovery.
 
 > [!NOTE]
 > A Azure Site Recovery nem támogatja a Hyper-V – Azure forgatókönyvek esetében a felügyelt lemezek feladat-visszavételét. Ezért az Azure-ból a Hyper-V-be történő, a közelségi elhelyezési csoportból történő feladat-visszavétel nem támogatott.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>A virtuális gépek vész-helyreállításának beállítása a közeli elhelyezési csoportokban a portálon keresztül
+
+### <a name="azure-to-azure-via-portal"></a>Azure-ról Azure-ra a portálon keresztül
+
+Dönthet úgy, hogy engedélyezi a virtuális gépek replikálását a virtuális gép vész-helyreállítási oldalán, vagy egy előre létrehozott tárolóba lépjen, és navigáljon a Site Recovery szakaszhoz, majd engedélyezze a replikációt. Nézzük meg, hogyan állíthat be Site Recovery a PPG-n belüli virtuális gépekre mindkét megközelítéssel:
+
+- Válassza ki a PPG elemet a DR régióban, miközben engedélyezi a replikációt a IaaS VM DR paneljén keresztül:
+  1. Nyissa meg a virtuális gépet. A bal oldali panel Operations (műveletek) területén válassza a vész-helyreállítás lehetőséget.
+  2. Az "alapismeretek" lapon válassza ki azt a DR régiót, amelyre a virtuális gépet replikálni szeretné. Ugrás a speciális beállítások menüpontra
+  3. Itt láthatja a virtuális gép közelségét, valamint azt a lehetőséget, hogy a PPG a DR régióban legyen kiválasztva. A Site Recovery lehetővé teszi, hogy egy új, az általa létrehozott Proximity-elhelyezési csoportot használjon, ha ezt az alapértelmezett beállítást választja. Szabadon választhatja ki a kívánt közelségi csoportot, majd megtekintheti a "felülvizsgálat + replikáció indítása" lehetőséget, majd végül engedélyezheti a replikálást.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="Replikáció engedélyezése.":::
+
+- A PPG kiválasztásához a DR régióban, miközben engedélyezi a replikációt a tár paneljén keresztül:
+  1. Nyissa meg a Recovery Services-tárolót, és lépjen a Site Recovery lapra
+  2. Kattintson a "+ engedélyezés Site Recovery" elemre, majd válassza az "1: replikáció engedélyezése" lehetőséget az Azure Virtual Machines szolgáltatásban (az Azure-beli virtuális gépek replikálásakor)
+  3. Adja meg a kötelező mezőket a forrás lapon, és kattintson a Next (tovább) gombra.
+  4. Válassza ki azoknak a virtuális gépeknek a listáját, amelyeken engedélyezni szeretné a replikálást a virtuális gépek lapon, és kattintson a Next (tovább) gombra.
+  5. Itt megtekintheti a PPG kiválasztásának lehetőségét a DR régióban. A Site Recovery egy új, az általa létrehozott PPG használatát is lehetővé teszi, ha ezt az alapértelmezett beállítást választja. Szabadon kiválaszthatja a kívánt PPG-t, majd folytathatja a replikáció engedélyezését.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="Engedélyezze a replikálást a tárolón keresztül.":::
+
+Vegye figyelembe, hogy a virtuális gép replikálásának engedélyezése után egyszerűen frissítheti a PPG kiválasztást a DR régióban.
+
+1. Nyissa meg a virtuális gépet, és a bal oldali panelen, a "műveletek" területen válassza a "vész-helyreállítás" lehetőséget.
+2. Lépjen a "számítás és hálózat" panelre, és kattintson a lap tetején található Szerkesztés gombra.
+3. Megtekintheti a több cél beállításainak szerkesztésének lehetőségeit, beleértve a cél PPG-t is. Válassza ki azt a PPG-t, amelyre a virtuális gépet szeretné átvenni, majd kattintson a Save (Mentés) gombra.
+
+### <a name="vmware-to-azure-via-portal"></a>VMware-ből az Azure-ba portálon keresztül
+
+A virtuális gép replikálásának engedélyezése után beállítható a célként megadott virtuális gép közelségi csoportja. Kérjük, külön hozza létre a PPG-t a célként megadott régióban a követelménynek megfelelően. Ezt követően egyszerűen frissítheti a PPG-kiválasztást a DR régióban, miután engedélyezte a virtuális gép replikációját.
+
+1. Válassza ki a virtuális gépet a tárolóból, és a bal oldali panelen, a műveletek területen válassza a "vész-helyreállítás" lehetőséget.
+2. Lépjen a "számítás és hálózat" panelre, és kattintson a lap tetején található Szerkesztés gombra.
+3. Megtekintheti a több cél beállításainak szerkesztésének lehetőségeit, beleértve a cél PPG-t is. Válassza ki azt a PPG-t, amelyre a virtuális gépet szeretné átvenni, majd kattintson a Save (Mentés) gombra.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="A PPG V2A frissítése":::
+
+### <a name="hyper-v-to-azure-via-portal"></a>Hyper-V – Azure portálon keresztül
+
+A virtuális gép replikálásának engedélyezése után beállítható a célként megadott virtuális gép közelségi csoportja. Kérjük, külön hozza létre a PPG-t a célként megadott régióban a követelménynek megfelelően. Ezt követően egyszerűen frissítheti a PPG-kiválasztást a DR régióban, miután engedélyezte a virtuális gép replikációját.
+
+1. Válassza ki a virtuális gépet a tárolóból, és a bal oldali panelen, a műveletek területen válassza a "vész-helyreállítás" lehetőséget.
+2. Lépjen a "számítás és hálózat" panelre, és kattintson a lap tetején található Szerkesztés gombra.
+3. Megtekintheti a több cél beállításainak szerkesztésének lehetőségeit, beleértve a cél PPG-t is. Válassza ki azt a PPG-t, amelyre a virtuális gépet szeretné átvenni, majd kattintson a Save (Mentés) gombra.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="A PPG H2A frissítése":::
+
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>A virtuális gépek vész-helyreállításának beállítása a közeli elhelyezési csoportokban a PowerShell használatával
+
+### <a name="prerequisites"></a>Előfeltételek 
 
 1. Győződjön meg arról, hogy rendelkezik a Azure PowerShell az modulhoz. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
 2. A minimális Azure PowerShell az verziónak 4.1.0 kell lennie. Az aktuális verzió ellenõrzéséhez használja az alábbi parancsot:
+
     ```
     Get-InstalledModule -Name Az
     ```
 
-## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Virtual Machines Site Recovery beállítása a közelségi elhelyezési csoportban
+### <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Virtual Machines Site Recovery beállítása a közelségi elhelyezési csoportban
 
 > [!NOTE]
 > Győződjön meg arról, hogy a cél közelségi csoportok egyedi azonosítója kéznél van. Ha új Proximity-elhelyezési csoportot hoz létre, akkor [itt](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) tekintse meg [a parancsot,](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)és ha meglévő közelségi elhelyezési csoportot használ, használja a parancsot.
@@ -165,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. A replikáció letiltásához kövesse az [alábbi lépéseket.](./azure-to-azure-powershell.md#disable-replication)
 
-### <a name="vmware-to-azure"></a>VMware – Azure
+### <a name="vmware-to-azure-via-powershell"></a>VMware-ből az Azure-ba a PowerShell használatával
 
 1. Győződjön meg arról, hogy [előkészíti a helyszíni VMware-kiszolgálókat](./vmware-azure-tutorial-prepare-on-premises.md) az Azure-ba való vész-helyreállításra.
 2. Jelentkezzen be a fiókjába, és állítsa be az előfizetését az [itt](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)megadott módon.
@@ -203,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. [Futtasson](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) feladatátvételi tesztet.
 11. Feladatátvétel az Azure-ba az [alábbi](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) lépésekkel.
 
-### <a name="hyper-v-to-azure"></a>Hyper-V – Azure
+### <a name="hyper-v-to-azure-via-powershell"></a>Hyper-V-ről Azure-ra a PowerShell használatával
 
 1. Győződjön meg arról, hogy [előkészíti a helyszíni Hyper-V-kiszolgálókat](./hyper-v-prepare-on-premises-tutorial.md) a vész-helyreállításra az Azure-ban.
 2. [Jelentkezzen](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) be az Azure-ba.
@@ -253,7 +304,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 8. Futtasson [feladatátvételi](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover)tesztet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A VMware-ből az Azure-ba történő ismételt védelem és feladat-visszavétel végrehajtásához kövesse az [itt](./vmware-azure-prepare-failback.md)ismertetett lépéseket.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538544"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381834"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>A folyamatos biztonsági mentés és az időponthoz tartozó visszaállítás (előzetes verzió) konfigurálása és kezelése – Azure PowerShell
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy fiókot folyamatos biztonsági
 
 Ha folyamatos biztonsági mentéssel rendelkező fiókot szeretne kiépíteni, adjon hozzá egy argumentumot `-BackupPolicyType Continuous` a normál kiépítési paranccsal együtt.
 
-A következő parancsmag egy, az " `pitracct2` myrg" erőforráscsoport alatti "West us" régióban létrehozott folyamatos biztonsági mentési szabályzattal rendelkező egyetlen régióból álló írási fiókra mutat példát:
+A következő parancsmag egy, az `pitracct2` *USA nyugati* régiójában, az *myrg* erőforráscsoport alatt létrehozott folyamatos biztonsági mentési szabályzattal rendelkező egyetlen régióból álló írási fiókra mutat példát:
 
 ```azurepowershell
 
@@ -65,7 +65,7 @@ New-AzCosmosDBAccount `
 
 ## <a name="provision-a-mongodb-api-account-with-continuous-backup"></a><a id="provision-mongodb-api"></a>MongoDB API-fiók kiépítése folyamatos biztonsági mentéssel
 
-A következő parancsmag egy példa a "pitracct2" nevű folyamatos biztonsági mentési fiókra, amely a "myrg" erőforráscsoport alatt, a "West US" régióban jött létre:
+A következő parancsmag egy példa az *USA nyugati* régiójában létrehozott folyamatos biztonsági mentési fiók *pitracct2* a *myrg* erőforráscsoport alatt:
 
 ```azurepowershell
 
@@ -162,13 +162,13 @@ A válasz tartalmazza az összes olyan adatbázis-fiókot (mind az élő, mind a
   },
 ```
 
-A fiók "CreationTime" vagy "DeletionTime" hasonlóan a régió "CreationTime" vagy "DeletionTime" is szerepel. Ezek az időpontok lehetővé teszik a megfelelő régió és érvényes időtartomány kiválasztását az adott régióba való visszaállításhoz.
+Akárcsak a `CreationTime` vagy a `DeletionTime` fiókhoz, a `CreationTime` vagy a `DeletionTime` régióhoz is. Ezek az időpontok lehetővé teszik a megfelelő régió és érvényes időtartomány kiválasztását az adott régióba való visszaállításhoz.
 
 **Az SQL-adatbázisok összes verziójának listázása egy élő adatbázis-fiókban**
 
 Az adatbázisok összes verziójának listázásával kiválaszthatja a megfelelő adatbázist olyan forgatókönyvben, amelyben az adatbázis létezésének tényleges ideje ismeretlen.
 
-Futtassa a következő PowerShell-parancsot az adatbázisok összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A "DatabaseAccountInstanceId" és a "LocationName" paraméterek a "Name" és a "location" tulajdonságból szerezhetők be a parancsmag válaszában `Get-AzCosmosDBRestorableDatabaseAccount` . A "DatabaseAccountInstanceId" attribútum a visszaállított forrás-adatbázis "instanceId" tulajdonságára hivatkozik:
+Futtassa a következő PowerShell-parancsot az adatbázisok összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A `DatabaseAccountInstanceId` és a `LocationName` paramétereket a `name` parancsmag válaszában szereplő és tulajdonságok alapján szerezheti `location` be `Get-AzCosmosDBRestorableDatabaseAccount` . Az `DatabaseAccountInstanceId` attribútum a `instanceId` visszaállított forrás adatbázis-fiók tulajdonságára hivatkozik:
 
 
 ```azurepowershell
@@ -181,7 +181,7 @@ Get-AzCosmosdbSqlRestorableDatabase `
 
 **Az adatbázis SQL-tárolóinak összes verziójának listázása egy élő adatbázis-fiókban.**
 
-Használja az alábbi parancsot az SQL-tárolók összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A "DatabaseRid" paraméter a visszaállítani kívánt adatbázis "ResourceId". Ez a parancsmag válaszában található "ownerResourceid" attribútum értéke `Get-AzCosmosdbSqlRestorableDatabase` . A válasz tartalmazza az adatbázison belüli összes tárolón végrehajtott műveletek listáját is.
+Használja az alábbi parancsot az SQL-tárolók összes verziójának listázásához. Ez a parancs csak Live-fiókokkal működik. A `DatabaseRid` paraméter a `ResourceId` visszaállítani kívánt adatbázis. Ez a `ownerResourceid` parancsmag válaszában található attribútum értéke `Get-AzCosmosdbSqlRestorableDatabase` . A válasz tartalmazza az adatbázison belüli összes tárolón végrehajtott műveletek listáját is.
 
 ```azurepowershell
 
@@ -208,7 +208,7 @@ Get-AzCosmosdbSqlRestorableResource `
 
 ## <a name="enumerate-restorable-resources-for-mongodb"></a><a id="enumerate-mongodb-api"></a>Helyreállítható erőforrások számbavétele a MongoDB
 
-Az alább ismertetett enumerálási parancsok segítséget nyújtanak a különböző időbélyegeken való visszaállításhoz elérhető erőforrások felderítésében. Emellett a legfontosabb eseményeket is megadhatják a helyreállítható fiók, az adatbázis és a tároló erőforrásaiban. Ezek a parancsok csak az élő fiókok esetében működnek, és hasonlóak az SQL API-parancsokhoz, de a parancs neve "MongoDB", az "SQL" helyett.
+Az alább ismertetett enumerálási parancsok segítséget nyújtanak a különböző időbélyegeken való visszaállításhoz elérhető erőforrások felderítésében. Emellett a legfontosabb eseményeket is megadhatják a helyreállítható fiók, az adatbázis és a tároló erőforrásaiban. Ezek a parancsok csak az élő fiókok esetében működnek, és hasonlók az SQL API-parancsokhoz, de `MongoDB` a parancs neve helyett `sql` .
 
 **A MongoDB-adatbázisok összes verziójának listázása egy élő adatbázis-fiókban**
 
