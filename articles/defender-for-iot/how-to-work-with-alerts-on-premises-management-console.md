@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ebd5a0c14b6f9e3a57e3a7df888b5f9d24f9a2df
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 878b1b2d5ba13b68b5122e4b9cffc3c408e211e2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523617"
+ms.locfileid: "100526323"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Riasztások kezelése a helyszíni felügyeleti konzolon 
 
@@ -246,6 +246,6 @@ Az API használatával létrehozott szabályok a **kizárási szabály** ablakba
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="Képernyőkép a kizárási szabály szerkesztése nézetről.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Riasztások használata az érzékelőn](how-to-work-with-alerts-on-your-sensor.md)

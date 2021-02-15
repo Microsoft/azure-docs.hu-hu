@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731408"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526425"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezéséhez használható elemezhető beállítás
 
@@ -32,6 +32,7 @@ Ez az oktatóanyag leírja, hogy milyen lépéseket kell elvégeznie az elemezhe
 > * Felhasználók létrehozása elemezhető
 > * Elemezhető felhasználók eltávolítása, ha már nincs szükség hozzáférésre
 > * A felhasználói attribútumok szinkronizálása az Azure AD és a elemezhetők között
+> * Csoportok és csoporttagságok kiépítése elemezhető
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -107,17 +108,25 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |userName (Felhasználónév)|Sztring|&check;|
    |displayName|Sztring|
 
-10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása elemezhető** lehetőséget.
 
-11. Az Azure **ad-** kiépítési szolgáltatás elemezhető állapotának engedélyezéséhez módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
+11. Tekintse át az Azure AD-ből szinkronizált csoport-attribútumokat az **attribútumok leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekben elemezhető csoportok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+
+      |Attribútum|Típus|Szűréshez támogatott|
+      |---|---|---|
+      |displayName|Sztring|&check;|
+      |tagok|Referencia|
+12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+
+13. Az Azure **ad-** kiépítési szolgáltatás elemezhető állapotának engedélyezéséhez módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket elemezni szeretne, ha a **Settings (beállítások** ) szakaszban szeretné kijelölni a kívánt értékeket a **hatókörben** .
+14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket elemezni szeretne, ha a **Settings (beállítások** ) szakaszban szeretné kijelölni a kívánt értékeket a **hatókörben** .
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
-13. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+15. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
     ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
@@ -129,6 +138,10 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+
+## <a name="change-log"></a>Változási napló
+
+* 02/15/2021 – a csoport létesítése engedélyezve van.
 
 ## <a name="additional-resources"></a>További források
 

@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257946"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526663"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
 > [!IMPORTANT]
 > Azonnal engedélyeznie kell a Soft-delete szolgáltatást a kulcstartókban. A helyreállítható törlés lehetősége hamarosan elavulttá válik. A részletes információk [itt](soft-delete-change.md) találhatók
+
+> [!IMPORTANT]
+> A helyreállítható tároló-eseményindítók törlik a Key Vault-szolgáltatásokkal való integráció beállításait, például az Azure RBAC szerepköreinek hozzárendeléseit, Event Grid előfizetéseket, Azure Monitor a diagnosztikai beállításokat. A Soft-Deleted Key Vault az integrált szolgáltatások beállításainak helyreállítását manuálisan újra létre kell hozni. 
 
 Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt tárolók helyreállítását és a Key Vault-objektumok (például kulcsok, titkok, tanúsítványok) törlését, amelyeket a rendszer a Soft delete néven is ismert. Pontosabban a következő helyzeteket vesszük fel: Ez a védelem a következő védelmi lehetőségeket kínálja:
 
@@ -27,7 +30,7 @@ Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt t�
 
 ## <a name="supporting-interfaces"></a>Támogató felületek
 
-A Soft-delete funkció a [REST API](/rest/api/keyvault/), az [Azure CLI](./key-vault-recovery.md), a [Azure PowerShell](./key-vault-recovery.md)és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületen, valamint az [ARM-sablonokon](/azure/templates/microsoft.keyvault/2019-09-01/vaults)keresztül érhető el.
+A Soft-delete funkció a [REST API](/rest/api/keyvault/), az [Azure CLI](./key-vault-recovery.md), a [Azure PowerShell](./key-vault-recovery.md)és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) felületen, valamint az [ARM-sablonokon](/azure/templates/microsoft.keyvault/2019-09-01/vaults)keresztül érhető el.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 

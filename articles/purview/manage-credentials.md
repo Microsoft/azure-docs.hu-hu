@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381188"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526695"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Az Azure hatáskörébe tartozó forrás-hitelesítés hitelesítő adatai
 
@@ -67,7 +67,7 @@ A hitelesítő adatok létrehozása előtt először társítson egy vagy több 
 
 4. A **titkok engedélyei** legördülő menüben válassza a **lekérés** és **Listázás** engedélyeket.
 
-5. A **rendszerbiztonsági tag kiválasztása lapon** válassza ki a hatáskörébe tartozó felügyelt identitást.
+5. A **rendszerbiztonsági tag kiválasztása lapon** válassza ki a hatáskörébe tartozó felügyelt identitást. A hatáskörébe tartozó MSI-t a felügyeleti példány **vagy** a felügyelt identitás alkalmazás azonosítójának használatával keresheti meg. Jelenleg nem támogatottak az összetett identitások (felügyelt identitás neve + alkalmazás-azonosító).
 
    :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Hozzáférési szabályzat hozzáadása":::
 

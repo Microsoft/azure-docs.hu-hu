@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: b79a63d16229c761b29776667c771e940d8f69d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673376"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527122"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés CybSafe konfigurálása
 
@@ -121,6 +121,10 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |területi beállítás|Sztring|
    |timezone|Sztring|
    |userType|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Division|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
+   
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a CybSafe** lehetőséget.
 
@@ -153,6 +157,10 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+
+## <a name="change-log"></a>Változási napló
+
+* 02/15/2021 – a felhasználó vállalati bővítmény attribútumának **részlege**, **részlege** és **szervezete** hozzá lett adva.
 
 ## <a name="additional-resources"></a>További források
 

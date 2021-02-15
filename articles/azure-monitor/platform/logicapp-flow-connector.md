@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019038"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526986"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor a naplók összekötőjét Logic Apps és a teljesítmény automatizálásához
 A [Azure Logic apps](../../logic-apps/index.yml) és a [Power automatizálása](https://flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
@@ -25,6 +25,7 @@ A Azure Monitor naplók összekötője a következő korlátozásokkal rendelkez
 * Maximális lekérdezési válasz mérete 100 MB
 * Rekordok maximális száma: 500 000
 * A lekérdezés maximális időtúllépése 110 másodperc.
+* A diagram vizualizációi elérhetővé válhatnak a naplók lapon, és hiányoznak az összekötőből, mivel az összekötő és a naplók lap jelenleg nem ugyanazt a diagramot használja.
 
 Az adat méretétől és a használt lekérdezéstől függően előfordulhat, hogy az összekötő eléri a korlátait, és sikertelen lesz. Ilyen eseteket is használhat, amikor az eseményindító ismétlődését úgy állítja be, hogy gyakrabban fusson, és kevesebb adattal Kérdezzen le. Az adatokat összesítő lekérdezések használatával kevesebb rekordot és oszlopot adhat vissza.
 
@@ -122,7 +123,7 @@ Ha a logikai alkalmazás befejeződik, tekintse meg a megadott címzett e-mail-c
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
 - További információ a [Logic apps](../../logic-apps/index.yml)

@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: Portál
               href: assign-access-policy-portal.md
-        - name: 'Azure RBAC alkalmazása a kulcsokhoz, titkos kódokhoz és tanúsítványokhoz való hozzáférés felügyelete terén (előzetes verzió)'
-          href: rbac-guide.md
-        - name: Útmutató tárolóhozzáférési szabályzatok migrálásához az Azure RBAC-be
-          href: rbac-migration.md
+        - name: Azure RBAC engedélyezési modell
+          items:
+            - name: 'A kulcsok, titkos kódok és tanúsítványok hozzáférésének kezelésére szolgáló Azure-RBAC használata'
+              href: rbac-guide.md
+            - name: Útmutató tárolóhozzáférési szabályzatok migrálásához az Azure RBAC-be
+              href: rbac-migration.md
         - name: Hozzáférési problémák elhárítása
           href: troubleshooting-access-issues.md
     - name: Fejlesztés

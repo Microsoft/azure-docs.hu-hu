@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: eb3df574029a7c13488830e01354e738930fcd7f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 55da26296f0545c8e2c0008185de14230cfee304
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523430"
+ms.locfileid: "100526612"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Hoxhunt konfigurálása
 
@@ -42,16 +42,13 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * Egy Hoxhunt-bérlő.
 * SCIM API-kulcs és SCIM-végpont URL-címe a szervezet számára (Hoxhunt-támogatással konfigurálva).
-?
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
 1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 3. Határozza meg, hogy az [Azure ad és a Hoxhunt között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
 ## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>2. lépés Hoxhunt konfigurálása az Azure AD-vel való kiépítés támogatásához
-?
 Forduljon a [Hoxhunt támogatási szolgálatához](mailto:support@hoxhunt.com) a scim API-kulcs és a scim végpont URL-címének megadásához az Azure ad-vel való kiépítés támogatásához.
-?
 ## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>3. lépés Hoxhunt hozzáadása az Azure AD Application Galleryből
 
 Vegyen fel Hoxhunt az Azure AD-alkalmazás-katalógusból a Hoxhunt való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a Hoxhunt az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 

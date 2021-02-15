@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876393"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526969"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -43,12 +43,11 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
 | Árképzési                        | [Az Azure Defender for Servers](security-center-pricing.md) használatát igényli                                                                                                                                                                                                                                             |
 | Támogatott platformok:            | Windows rendszerű Azure-gépek<br>Windows rendszerű Azure arc-gépek|
-| A Windows támogatott verziói:  |  • A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszerben<br> • A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára|
-| Nem támogatott operációs rendszerek:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
+| A Windows támogatott verziói:  |  • A Security Center támogatja az észlelést a Windows Server 2019, 2016, 2012 R2 és 2008 R2 SP1 rendszeren<br> • A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára<br> • [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (korábbi nevén vállalati virtuális asztalok (EVD)<br> •  [Windowsos virtuális asztal (WVD)](../virtual-desktop/overview.md)|
+| Nem támogatott operációs rendszerek:  |  • Windows 10 (a EVD vagy a WVD kivételével)<br> • Linux|
 | Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**|
 | Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov<br>![Nem](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
-
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>A Microsoft Defender for Endpoint szolgáltatásai Security Center
 
@@ -62,7 +61,7 @@ A Microsoft Defender for Endpoint a következőket biztosítja:
 
 A Defender Security Center-nal való integrálásával a következő kiegészítő képességeket veheti igénybe:
 
-- **Automatizált** előkészítés. A Security Center automatikusan engedélyezi a Microsoft Defender for Endpoint Sensor használatát a Security Center által figyelt összes Windows-kiszolgálóhoz. A Windows Server 2019 rendszert futtatók kivételével, amelyeket helyi parancsfájllal, Csoportházirend objektummal (GPO) vagy a [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (korábban SCCM) kell bevezetni.
+- **Automatizált** előkészítés. A Security Center automatikusan engedélyezi a Microsoft Defender for Endpoint Sensor használatát a Security Center által figyelt összes Windows-kiszolgálóhoz.
 
 - **Egyetlen** üvegtábla. A Security Center-konzolon a Microsoft Defender for Endpoint riasztások jelennek meg. További vizsgálathoz használja a Microsoft Defendert a végpont saját portáljának oldalain, ahol további információkat talál, például a riasztási folyamat fáját és az incidens diagramot. Megtekintheti a részletes gépi idővonalat is, amely egy 6 hónapos időszakra visszamenőlegesen mutatja be az összes viselkedést.
 
@@ -141,7 +140,7 @@ A nem a Microsofttól származó végponti megoldásról történő váltásra v
   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Azure Security Center biztonsági javaslatainak kezelése](security-center-recommendations.md): Ismerje meg, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.

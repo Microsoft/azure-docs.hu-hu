@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ae3865c1ee5e656fc4feda48de9ab67995619593
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936369"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526238"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -111,7 +111,7 @@ Következő lépésként tegye elérhetővé az API-t egy hatókör hozzáadás�
 Ezután határozza meg, hogy az alkalmazást nyilvános ügyfélként kell kezelni:
 
 1. A bal oldali menüben kattintson a **kezelés** elemre, majd válassza a **hitelesítés** lehetőséget.
-1. A **Speciális beállítások** területen engedélyezze az **alkalmazás kezelése nyilvános ügyfélként** (válassza az **Igen** lehetőséget). Győződjön meg arról, hogy a **"allowPublicClient": true** érték van beállítva az alkalmazás jegyzékfájljában. 
+1. A **Speciális beállítások** területen a **nyilvános ügyfelek forgalmának engedélyezése** szakaszban állítsa **a következő mobil-és asztali folyamatok engedélyezése** **Igen értéket**. Győződjön meg arról, hogy a **"allowPublicClient": true** érték van beállítva az alkalmazás jegyzékfájljában. 
 1. Kattintson a **Mentés** gombra.
 
 Most adja meg a *IdentityExperienceFramework* -regisztráció során korábban közzétett API-hatókörre vonatkozó engedélyeket:

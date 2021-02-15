@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d4bc59a9bd5299698bff9949aaaa881fbdf385ee
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501056"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526272"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Az Azure szinapszis Analytics-munkaterületek titkosítása
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Titkosítás Azure Synapse Analytics-munkaterületekhez
 
 Ez a cikk a következőket ismerteti:
 * Inaktív adatok titkosítása a szinapszis Analytics-munkaterületeken.
@@ -39,7 +39,7 @@ A következő szinapszis-összetevőkben lévő adatforgalom a munkaterület szi
 * SQL-készletek
  * Dedikált SQL-készletek
  * Kiszolgáló nélküli SQL-készletek
-* Apache Spark készletek
+* Apache Spark-készletek
 * Azure Data Factory integrációs modulokat, folyamatokat és adatkészleteket.
 
 ## <a name="workspace-encryption-configuration"></a>Munkaterület titkosítási konfigurációja
@@ -53,7 +53,7 @@ A munkaterületek konfigurálhatók úgy, hogy lehetővé tegyék a dupla titkos
 
 ### <a name="key-access-and-workspace-activation"></a>Kulcs-hozzáférés és munkaterület aktiválása
 
-Az ügyfél által felügyelt kulcsokkal rendelkező Azure szinapszis titkosítási modell magában foglalja a munkaterületet, amely a Azure Key Vault kulcsait használja a titkosításhoz és a visszafejtéshez szükség szerint. A kulcsok elérhetővé válnak a munkaterület számára hozzáférési házirend vagy Azure Key Vault RBAC-hozzáférés ([előzetes](../../key-vault/general/rbac-guide.md)verzió) használatával. Amikor engedélyeket ad meg egy Azure Key Vault hozzáférési házirenden keresztül, válassza a házirend létrehozásakor a ["csak alkalmazás"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) lehetőséget (válassza ki a munkaterület felügyelt identitását, és ne adja hozzá engedélyezett alkalmazásként).
+Az ügyfél által felügyelt kulcsokkal rendelkező Azure szinapszis titkosítási modell magában foglalja a munkaterületet, amely a Azure Key Vault kulcsait használja a titkosításhoz és a visszafejtéshez szükség szerint. A kulcsok elérhetővé válnak a munkaterület számára hozzáférési házirend vagy [Azure Key Vault RBAC hozzáférés](../../key-vault/general/rbac-guide.md)használatával. Amikor engedélyeket ad meg egy Azure Key Vault hozzáférési házirenden keresztül, válassza a házirend létrehozásakor a ["csak alkalmazás"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) lehetőséget (válassza ki a munkaterület felügyelt identitását, és ne adja hozzá engedélyezett alkalmazásként).
 
  A munkaterület által felügyelt identitásnak meg kell adnia a Key Vault számára szükséges engedélyeket a munkaterület aktiválása előtt. Ez a munkaterületek aktiválásának szakaszos megközelítése biztosítja, hogy a munkaterületen lévő adatforgalom titkosítva legyen az ügyfél által felügyelt kulccsal. Vegye figyelembe, hogy a titkosítás engedélyezhető vagy letiltható a dedikált SQL-készletekben – az egyes készletek nem engedélyezettek alapértelmezés szerint a titkosításhoz.
 
@@ -89,7 +89,7 @@ Az Azure Key Vault-szabályzatok automatikusan, a kulcsok rendszeres elforgatás
 
 Az SQL transzparens adattitkosítás (TDE) elérhető a dedikált SQL-készletek számára a munkaterületeken, amelyek *nem* engedélyezettek a kettős titkosításhoz. Az ilyen típusú munkaterületeken a szolgáltatás által felügyelt kulcs a dedikált SQL-készletekben található adat kettős titkosításának biztosítására szolgál. A szolgáltatás által felügyelt kulccsal rendelkező TDE engedélyezhető vagy letiltható az egyes dedikált SQL-készleteknél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A beépített Azure-szabályzatok használatával titkosíthatja a szinapszis-munkaterületek titkosítási védelmét](../policy-reference.md)
 

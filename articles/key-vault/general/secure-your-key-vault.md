@@ -1,5 +1,5 @@
 ---
-title: Biztonságos hozzáférés a kulcstartóhoz
+title: Biztonságos hozzáférés egy kulcstartóhoz
 description: Azure Key Vaulthoz való hozzáférési modell, beleértve a Active Directory hitelesítési és erőforrás-végpontokat.
 services: key-vault
 author: ShaneBala-keyvault
@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f82c7060f703aff6c19f0082454779b8fea1ba76
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796499"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526255"
 ---
-# <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
+# <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés egy kulcstartóhoz
 
 A Azure Key Vault egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsok és a titkok, például a tanúsítványok, a kapcsolatok karakterláncai és a jelszavak számára. Mivel ezek az adatok érzékenyek és üzleti szempontból kritikus fontosságúak, a kulcstartóhoz való hozzáférést csak a jogosult alkalmazások és felhasználók engedélyezésével kell biztosítani. Ez a cikk a Key Vault hozzáférési modell áttekintését tartalmazza. Ismerteti a hitelesítést és az engedélyezést, valamint ismerteti a kulcstartók hozzáférésének biztonságossá tételét.
 
@@ -26,7 +26,7 @@ További információ a Key Vaultről: [About Azure Key Vault](overview.md); a K
 
 A kulcstartóhoz való hozzáférést két interfész szabályozza: a **felügyeleti síkon** és az **adatsíkon**. A felügyeleti síkon a Key Vault saját maga felügyeli. Az ebben a síkban található műveletek közé tartozik a kulcstartók létrehozása és törlése, Key Vault tulajdonságok beolvasása és a hozzáférési házirendek frissítése. Az adatsíkon a Key vaultban tárolt adatmennyiséggel dolgozik. Kulcsok, titkos kódok és tanúsítványok hozzáadására, törlésére és módosítására is lehetőség van.
 
-Mindkét síkon [Azure Active Directoryt (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) használ a hitelesítéshez. Az engedélyezéshez a felügyeleti sík [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) használ, és az adatsík egy [Key Vault hozzáférési házirendet](./assign-access-policy-portal.md) és az [Azure-RBAC használja Key Vault adatsík-műveletekhez (előzetes verzió)](./rbac-guide.md).
+Mindkét síkon [Azure Active Directoryt (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) használ a hitelesítéshez. Az engedélyezéshez a felügyeleti sík [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../role-based-access-control/overview.md) használ, és az adatsík egy [Key Vault hozzáférési házirendet](./assign-access-policy-portal.md) és az [Azure-RBAC használja Key Vault adatsík-műveletekhez](./rbac-guide.md).
 
 A kulcstartók bármelyik síkon való eléréséhez minden hívónak (felhasználónak vagy alkalmazásnak) megfelelő hitelesítéssel és engedélyezéssel kell rendelkeznie. A hitelesítés létrehozza a hívó identitását. Az engedélyezés meghatározza, hogy a hívó milyen műveleteket hajthat végre. A Key Vault-alapú hitelesítés az [Azure Active Directory (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md)szolgáltatással együtt működik, amely az adott **rendszerbiztonsági tag** identitásának hitelesítéséhez felelős.
 
@@ -111,7 +111,7 @@ Ha az Azure-szerepköröket egy Azure AD-rendszerbiztonsági tag számára rende
 
 Az Azure RBAC-engedélyek a tár-hozzáférési házirendekkel való használatának fő előnyei a központosított hozzáférés-vezérlés kezelése és a [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)integrációja. A Privileged Identity Management időalapú és jóváhagyási alapú szerepkör-aktiválást biztosít az Ön számára fontos erőforrásokra vonatkozó túlzott, szükségtelen vagy nem használt hozzáférési engedélyek kockázatának csökkentése érdekében.
 
-További információ az Azure RBAC Key Vault adatsíkon [Key Vault: kulcsok, tanúsítványok és titkos kódok az Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](rbac-guide.md)
+További információ az Azure RBAC Key Vault adatsíkon [Key Vault: kulcsok, tanúsítványok és titkos kódok az Azure szerepköralapú hozzáférés-vezérléssel](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>Tűzfalak és virtuális hálózatok
 
@@ -185,10 +185,10 @@ A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzá
 | Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
 | --- | --- | --- | --- |
 | Biztonsági csapat | [Key Vault közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Tanúsítványok: minden művelet <br> Kulcsok: minden művelet <br> Titkok: minden művelet | [Key Vault rendszergazda (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | None | None |
-| Ellenőrök | None | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure Storage-tárfiók neve | None | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Alkalmazás | None | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincs | Nincs |
+| Ellenőrök | Nincs | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage-tárfiók neve | Nincs | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
+| Alkalmazás | Nincs | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek telepíteniük kell a hozzáférést. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
@@ -197,7 +197,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 > [!NOTE]
 > Ez a példa azt mutatja be, hogy a Key Vault hozzáférés hogyan legyen zárolva az éles környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporthoz kell rendelkezniük, amely teljes körű engedélyekkel rendelkezik a tárolók, virtuális gépek és az alkalmazás fejlesztéséhez szükséges Storage-fiók kezeléséhez.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 - [Információk az Azure Key Vaultról](overview.md)
 - [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
@@ -205,7 +205,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 - [Azure RBAC-vel](../../role-based-access-control/overview.md)
 - [Privát kapcsolat](../../private-link/private-link-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hitelesítés az Azure Key Vaulttal](authentication.md)
 

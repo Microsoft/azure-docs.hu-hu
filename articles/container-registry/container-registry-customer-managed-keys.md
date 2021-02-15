@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Container Registry titkosítását, valamint a
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062728"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526442"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-Azt is megteheti, hogy az [Azure RBAC Key Vault](../key-vault/general/rbac-guide.md) (előzetes verzió) használatával rendeli hozzá az identitáshoz a kulcstartó eléréséhez szükséges engedélyeket. Rendelje hozzá például a Key Vault titkosítási szolgáltatás titkosítási szerepkörét az identitáshoz az az [role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) parancs használatával:
+Azt is megteheti, hogy a [Key Vault Azure RBAC](../key-vault/general/rbac-guide.md) használatával rendeli hozzá az identitáshoz a kulcstartó eléréséhez szükséges engedélyeket. Rendelje hozzá például a Key Vault titkosítási szolgáltatás titkosítási szerepkörét az identitáshoz az az [role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) parancs használatával:
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhess
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="Key Vault hozzáférési szabályzat létrehozása":::
 
-Azt is megteheti, hogy az [Azure RBAC Key Vault](../key-vault/general/rbac-guide.md) (előzetes verzió) használatával rendeli hozzá az identitáshoz a kulcstartó eléréséhez szükséges engedélyeket. Rendelje hozzá például az Key Vault titkosítási szolgáltatás titkosítási szerepkörét az identitáshoz.
+Azt is megteheti, hogy a [Key Vault Azure RBAC](../key-vault/general/rbac-guide.md) használatával rendeli hozzá az identitáshoz a kulcstartó eléréséhez szükséges engedélyeket. Rendelje hozzá például az Key Vault titkosítási szolgáltatás titkosítási szerepkörét az identitáshoz.
 
 1. Navigáljon a kulcstartóhoz.
 1. Válassza a **hozzáférés-vezérlés (iam)**  >  **+** Hozzáadás  >  **szerepkör-hozzárendelés** hozzáadása elemet.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban:
-    1. Válassza **Key Vault titkosítási szolgáltatás titkosítása (előzetes verzió)** szerepkört. 
+    1. Válassza ki **Key Vault titkosítási szolgáltatás titkosítási felhasználói** szerepkörét. 
     1. Hozzáférés hozzárendelése a **felhasználóhoz rendelt felügyelt identitáshoz**.
     1. Válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét, majd válassza a **Mentés** lehetőséget.
 

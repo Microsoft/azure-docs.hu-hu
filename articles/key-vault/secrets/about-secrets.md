@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786039"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526637"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Tudnivalók a Azure Key Vault titkairól
 
@@ -74,7 +74,7 @@ A titkokkal kapcsolatos további információkért tekintse meg [a Key Vault RES
 - [Key Vault hozzáférési szabályzat kiosztása a parancssori felület használatával](../general/assign-access-policy-cli.md)
 - [Key Vault hozzáférési szabályzatok társítása a PowerShell használatával](../general/assign-access-policy-powershell.md)
 - [Key Vault hozzáférési szabályzat társítása a Azure Portal használatával](../general/assign-access-policy-portal.md)
-- [Hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](../general/rbac-guide.md)
+- [Hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>Titkos Címkék  
 További alkalmazásspecifikus metaadatokat is megadhat címkék formájában. A Key Vault legfeljebb 15 címkét támogat, amelyek mindegyike 256 karakterből és 256 karakterből állhat.  
@@ -124,10 +124,10 @@ További információ: a [Storage-fiók műveletei a Key Vault REST API-referenc
 - [Key Vault hozzáférési szabályzat kiosztása a parancssori felület használatával](../general/assign-access-policy-cli.md)
 - [Key Vault hozzáférési szabályzatok társítása a PowerShell használatával](../general/assign-access-policy-powershell.md)
 - [Key Vault hozzáférési szabályzat társítása a Azure Portal használatával](../general/assign-access-policy-portal.md)
-- [Hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel (előzetes verzió)](../general/rbac-guide.md)
+- [Hozzáférés biztosítása Key Vault kulcsokhoz, tanúsítványokhoz és titkokhoz egy Azure szerepköralapú hozzáférés-vezérléssel](../general/rbac-guide.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tudnivalók a Key Vaultról](../general/overview.md)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](../general/about-keys-secrets-certificates.md)

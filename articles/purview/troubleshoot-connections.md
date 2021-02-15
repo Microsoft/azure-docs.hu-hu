@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 8be5def6d4780fd8b2ab65c5c9e1104a869f6d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: db3954b0368392d63680a8d92f13d6a0423e8ef5
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391592"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526870"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Az Azure hatáskörébe tartozó kapcsolatok hibáinak megoldása
 
@@ -53,7 +53,10 @@ Ellenőrizze, hogy a megfelelő engedélyek konfigurálva vannak-e a hatáskör�
 Ennek ellenőrzéséhez hajtsa végre a következő lépéseket:
 
 1. Navigáljon a kulcstartóhoz és a **hozzáférési házirendek** szakaszhoz.
-1. Ellenőrizze, hogy a hatáskörébe tartozó felügyelt identitás az *aktuális hozzáférési szabályzatok* szakaszban látható-e legalább a titkos kulcsokra vonatkozó **Get** és **List** engedélyekkel
+
+1. Ellenőrizze, hogy a hatáskörébe tartozó felügyelt identitás a *jelenlegi hozzáférési szabályzatok* szakaszban látható-e a titkos kulcsokra vonatkozó minimum **Get** és **List** engedélyekkel
+
+   :::image type="content" source="./media/troubleshoot-connections/verify-minimum-permissions.png" alt-text="A beolvasási és listázási engedélyek legördülő listájának kijelölését bemutató kép":::
 
 Ha nem látja a hatáskörébe tartozó felügyelt identitást, akkor a hozzáadásához kövesse a [hitelesítő adatok létrehozása és kezelése a vizsgálatokhoz](manage-credentials.md) című témakör lépéseit. 
 

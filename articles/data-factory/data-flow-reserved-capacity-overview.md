@@ -6,14 +6,16 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: 86ebbb46e8f3b5bb34dfe5789a17a2d63526f65c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808320"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526306"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>A fenntartott kapacitással rendelkező erőforrások költségeinek megtakarítása – Azure Data Factory adatforgalom
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Az utólagos elszámolású díjszabáshoz képest a számítási erőforrások foglalásával megtakaríthat pénzt Azure Data Factory adatáramlási költségekkel. A fenntartott kapacitással egy-egy vagy három éves időszakra vonatkozó, a számítási költségek jelentős kedvezményét biztosító, az ADF-adatforgalom használatára vonatkozó kötelezettségvállalást tesz. A fenntartott kapacitás megvásárlásához meg kell adnia az Azure-régiót, a számítási típust, a mag darabszámának mennyiségét és a kifejezést.
 
