@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590560"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384486"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Munkaterület létrehozása a kiszűrése-védelem engedélyezésével
 Ez a cikk azt ismerteti, hogyan hozhat létre olyan munkaterületet, amelyen engedélyezve van az kiszűrése Protection, és hogyan kezelheti a jóváhagyott Azure AD-bérlőket ehhez a munkaterülethez.
@@ -49,6 +49,9 @@ Felügyelt privát végpontokat hozhat létre az Azure AD-bérlők azon Azure-er
 >[!IMPORTANT]
 >A munkaterületén kívüli bérlők erőforrásai nem rendelkezhetnek az SQL-készletekhez való kapcsolódáshoz szükséges tűzfalszabályok blokkolásával. A munkaterület felügyelt virtuális hálózatában lévő erőforrások, például a Spark-fürtök, felügyelt magánhálózati kapcsolatokon keresztül kapcsolódhatnak a tűzfallal védett erőforrásokhoz.
 
+## <a name="known-limitations"></a>Ismert korlátozások
+A felhasználók megadhatnak egy környezeti konfigurációs fájlt a Python-csomagok nyilvános adattárakból (például PyPI) való telepítéséhez. A védett munkaterületek kiszűrése a kimenő adattárak kapcsolatai le vannak tiltva. Ennek eredményeképpen a nyilvános adattárakból (például PyPI) telepített Python-könyvtár nem támogatott. 
+  
 ## <a name="next-steps"></a>Következő lépések
 
 További információ a [kiszűrése-védelemről a szinapszis-munkaterületeken](./workspace-data-exfiltration-protection.md)

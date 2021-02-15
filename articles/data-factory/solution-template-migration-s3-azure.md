@@ -1,22 +1,18 @@
 ---
 title: Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
 description: Megtudhatja, hogyan használhatja a megoldás sablonnal az Amazon S3-ból származó adatok áttelepítését egy külső vezérlési táblázat használatával, amely az AWS S3 és a Azure Data Factory segítségével tárolja a partíciós listákat.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398220"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361987"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
 
@@ -53,7 +49,7 @@ A sablon két paramétert tartalmaz:
 Ez a sablon (*sablon neve: az AWS S3 és a Azure Data Lake Storage Gen2 közötti különbözeti adatok másolása*) az egyes fájlok LastModifiedTime használatával másolja az új vagy frissített fájlokat csak az AWS S3-ből az Azure-ba. Vegye figyelembe, hogy ha a fájlok vagy mappák már időben particionálva vannak a timeslice-adatokkal az AWS S3 fájl-vagy mappanév (például/yyyy/MM/DD/file.csv) részeként, akkor a jelen [oktatóanyagban](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) az új fájlok növekményes betöltésének nagyobb teljesítményű megközelítését érheti el. Ez a sablon feltételezi, hogy egy Azure SQL Database külső vezérlő táblájában írt egy partíciós listát. Így egy *keresési* tevékenység fogja lekérni a partíciós listát a külső vezérlő táblából, megismételni az egyes partíciókat, és minden egyes ADF-másolási feladatot egyszerre másol egy partícióra. Amikor az egyes másolási feladatok megkezdik a fájlok másolását az AWS S3-ból, a LastModifiedTime tulajdonságra támaszkodik az új vagy frissített fájlok azonosítására és másolására. A másolási feladatok befejezése után a *tárolt eljárási* tevékenységgel frissíti az egyes partíciók másolásának állapotát a vezérlési táblában.
 
 A sablon hét tevékenységet tartalmaz:
-- A **lookup** egy külső vezérlő táblából kéri le a partíciókat. A tábla neve *s3_partition_delta_control_table* , és a tábla adatainak betöltésére szolgáló lekérdezés a *"DISTINCT PartitionPrefix kiválasztása a*következőből: s3_partition_delta_control_table".
+- A **lookup** egy külső vezérlő táblából kéri le a partíciókat. A tábla neve *s3_partition_delta_control_table* , és a tábla adatainak betöltésére szolgáló lekérdezés a *"DISTINCT PartitionPrefix kiválasztása a* következőből: s3_partition_delta_control_table".
 - A **foreach** beolvassa a *keresési* tevékenységből a partíciók listáját, és megismétli az egyes partíciókat a *TriggerDeltaCopy* tevékenységhez. A *batchCount* beállíthatja úgy, hogy egyidejűleg több ADF-másolási feladatot futtasson. Ebben a sablonban 2 van beállítva.
 - A **ExecutePipeline** végrehajtja a *DeltaCopyFolderPartitionFromS3* folyamatát. Ennek az az oka, hogy az egyes másolási feladatok elvégzéséhez egy másik folyamatot hozunk létre, mert így egyszerűen újrafuttathatja a sikertelen másolási feladatot, hogy az adott partíciót újra újra lehessen tölteni az AWS S3-ból. Az egyéb partíciókat betöltő többi másolási feladatot nem érinti a rendszer.
 - A **lookup** lekéri a legutóbbi másolási feladatot a külső vezérlő táblából, hogy az új vagy frissített fájlok azonosíthatók legyenek a LastModifiedTime-on keresztül. A tábla neve *s3_partition_delta_control_table* , és az adatok a táblából való betöltésére szolgáló lekérdezés *"Select Max (JobRunTime) as LastModifiedTime from s3_partition_delta_control_table where PartitionPrefix = ' @ {pipeline (). Parameters. prefixStr}" és SuccessOrFailure = 1 "*.
@@ -111,7 +107,7 @@ A sablon két paramétert tartalmaz:
 
     ![Képernyőfelvétel: az AWS S3 korábbi adatainak átmigrálása Azure Data Lake Storage Gen2 sablonba.](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. Válassza **a sablon használata**lehetőséget.
+4. Válassza **a sablon használata** lehetőséget.
 
     ![Képernyőfelvétel: a sablon használata gomb.](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
@@ -119,7 +115,7 @@ A sablon két paramétert tartalmaz:
 
     ![A sablon használatával létrehozott két folyamatot és három adatkészletet bemutató képernyőkép.](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+6. Nyissa meg a "BulkCopyFromS3" folyamatot, és válassza a **hibakeresés** lehetőséget, és adja meg a **paramétereket**. Ezután válassza a **Befejezés** gombot.
 
     ![Képernyőkép, amely bemutatja, hol válassza ki a hibakeresést, és adja meg a paramétereket a Befejezés gombra kattintva.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
@@ -174,7 +170,7 @@ A sablon két paramétert tartalmaz:
 
     ![Új kapcsolat létrehozása](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. Válassza **a sablon használata**lehetőséget.
+4. Válassza **a sablon használata** lehetőséget.
 
     ![Sablon használata](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
@@ -182,7 +178,7 @@ A sablon két paramétert tartalmaz:
 
     ![A folyamat áttekintése](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+6.  Nyissa meg a "DeltaCopyFromS3" folyamatot, és válassza a **hibakeresés** lehetőséget, majd adja meg a **paramétereket**. Ezután válassza a **Befejezés** gombot.
 
     ![Kattintson * * hibakeresés * *](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 

@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 856d8961cbdf77fc848df41502678cb438773dbe
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78c27292a92152946ba33258d27940e3c1aea47d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550117"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391575"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -35,6 +35,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 **Azure-beli virtuális gépek replikálása egyik előfizetésből a másikba vész-helyreállítás céljából** | Ugyanazon Azure Active Directory bérlőn belül támogatott.
 **Virtuális gépek áttelepítése régiók között a támogatott földrajzi fürtökön belül (és az előfizetések között)** | Ugyanazon Azure Active Directory bérlőn belül támogatott.
 **Virtuális gépek migrálása ugyanazon a régión belül** | Nem támogatott.
+**Dedikált Azure-gazdagépek** | Nem támogatott.
 
 ## <a name="region-support"></a>Régiós támogatás
 
@@ -75,7 +76,7 @@ Azure Storage-tűzfalak virtuális hálózatokhoz  | Támogatott | Ha a tűzfalo
 
 ## <a name="replicated-machine-operating-systems"></a>Replikált gépi operációs rendszerek
 
-Site Recovery támogatja az ebben a részben felsorolt operációs rendszereket futtató Azure-beli virtuális gépek replikálását. Vegye figyelembe, hogy ha egy már replikáló gépet később frissítenek (vagy leértékelnek) egy másik nagy kernelre, le kell tiltania a replikálást, és újra engedélyeznie kell a replikálást a frissítés után.
+Site Recovery támogatja az ebben a részben felsorolt operációs rendszereket futtató Azure-beli virtuális gépek replikálását. Vegye figyelembe, hogy ha egy már replikáló gépet egy másik nagy kernelre frissítenek (vagy leértékelnek), le kell tiltania a replikálást, és újra engedélyeznie kell a replikálást a frissítés után.
 
 ### <a name="windows"></a>Windows
 
@@ -205,7 +206,7 @@ Site Recovery használatával áttelepített virtuális gépek | Támogatott | H
 Azure RBAC-szabályzatok | Nem támogatott | Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) virtuális gépekre vonatkozó házirendjei nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre.
 Bővítmények | Nem támogatott | A bővítmények nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre. A feladatátvételt követően kézzel kell telepíteni.
 Proximity elhelyezési csoportok | Támogatott | A közelségi elhelyezési csoportban található virtuális gépeket Site Recovery használatával lehet védeni.
-Címkék  | Támogatott | A forrásként szolgáló virtuális gépeken alkalmazott, felhasználó által létrehozott címkéket a rendszer a feladatátvétel vagy feladatátvételi teszt utáni cél virtuális gépekre végzi.
+Címkék  | Támogatott | A forrásként szolgáló virtuális gépeken alkalmazott, felhasználó által létrehozott címkéket a rendszer a feladatátvétel vagy feladatátvételi teszt utáni cél virtuális gépekre végzi. A virtuális gép (ek) címkéket 24 óránként egyszer replikálja a rendszer, ha a virtuális gép (ek) be van kapcsolva, és a cél régióban található.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replikált gépek – lemezes műveletek
@@ -227,7 +228,7 @@ Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideig
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/managed-disks-overview.md) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/managed-disks-overview.md).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/managed-disks-overview.md).
 Adatlemez maximális mérete | 32 TB felügyelt lemezekhez<br></br>4 TB a nem felügyelt lemezekhez|
 Adatlemez minimális mérete | Nem felügyelt lemezekre vonatkozó korlátozás. 2 GB a felügyelt lemezekhez |
 Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/sizes.md) információ a virtuális gépek méreteiről.
@@ -265,7 +266,7 @@ NVMe-lemezek | Nem támogatott
 Azure megosztott lemezek | Nem támogatott
 Biztonságos átvitel lehetőség | Támogatott
 Gyorssegéd-kompatibilis lemezek írása | Nem támogatott
-Címkék  | A felhasználó által generált címkéket 24 óránként replikálja a rendszer.
+Címkék  | Támogatott | A felhasználó által generált címkéket 24 óránként replikálja a rendszer.
 
 >[!IMPORTANT]
 > A teljesítményproblémák elkerülése érdekében győződjön meg arról, hogy követte a virtuális gépek méretezhetőségét és a teljesítményre vonatkozó célokat a [felügyelt lemezeken](../virtual-machines/disks-scalability-targets.md). Ha az alapértelmezett beállításokat használja, Site Recovery létrehozza a szükséges lemezeket és a Storage-fiókokat a forrás konfigurációja alapján. Ha testreszabja és kiválasztja a saját beállításait, kövesse a forrásként szolgáló virtuális gépek lemezének méretezhetőségét és teljesítményére vonatkozó célokat.
@@ -308,7 +309,7 @@ Hitelesített proxy | Nem támogatott | Ha a virtuális gép hitelesített proxy
 Helyszíni VPN-helyek közötti kapcsolat<br/><br/>(ExpressRoute vagy anélkül)| Támogatott | Győződjön meg arról, hogy a UDR és a NSG úgy vannak konfigurálva, hogy a Site Recovery forgalom ne legyen átirányítva a helyszíni környezetbe. [További információ](./azure-to-azure-about-networking.md)
 VNET – VNET-kapcsolatok    | Támogatott | [További információ](./azure-to-azure-about-networking.md)
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások hozzáférése engedélyezett a Storage-fiókhoz.
-Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információ](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto hálózati berendezés | Nem támogatott | A harmadik féltől származó készülékekkel gyakran a virtuális gépen belüli szolgáltató korlátozza a korlátozásokat. Azure Site Recovery szüksége van az ügynökre, a bővítményekre és a kimenő kapcsolatokra. A készülék azonban nem teszi lehetővé, hogy a kimenő tevékenységek a virtuális gépen belül legyenek konfigurálva.
 IPv6  | Nem támogatott | Az IPv4 és az IPv6 protokollt is tartalmazó vegyes konfigurációk nem támogatottak. A Site Recovery művelet előtt szabadítson fel az IPv6-tartomány alhálózatát.
 Site Recovery szolgáltatáshoz való privát hivatkozás | Támogatott | [További információ](azure-to-azure-how-to-enable-replication-private-endpoints.md)

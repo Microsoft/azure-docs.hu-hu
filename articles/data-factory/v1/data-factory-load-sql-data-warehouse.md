@@ -1,23 +1,18 @@
 ---
 title: Az Azure szinapszis Analyticsbe való betöltési terabájt
 description: Azt mutatja be, hogy az Azure szinapszis Analytics szolgáltatásban 1 TB-nyi adat hogyan tölthető le 15 percen belül Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5acae7c90efbf178fad199177fa6e0886e497fdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457095"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371209"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Töltsön be 1 TB-ot az Azure szinapszis Analytics szolgáltatásba 15 perc alatt Data Factory
 > [!NOTE]
@@ -115,7 +110,7 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
 2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika** elemre, majd a **Data Factory** elemre.
 3. Az **új adatgyár** panelen:
 
-   1. Adja **LoadIntoSQLDWDataFactory** meg a LoadIntoSQLDWDataFactory **nevet**.
+   1. Adja  meg a LoadIntoSQLDWDataFactory **nevet**.
        Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: a **"LoadIntoSQLDWDataFactory" nem érhető el** az adatfeldolgozó neve, módosítsa az adatgyár nevét (például yournameLoadIntoSQLDWDataFactory), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  
    2. Válassza ki az Azure- **előfizetését**.
    3. Az erőforráscsoportban hajtsa végre a következő lépések egyikét:
@@ -123,7 +118,7 @@ Ez a cikk részletes útmutatást nyújt az adatáthelyezéshez az Azure szinaps
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a **Létrehozás** gombra.
+   6. Kattintson a **Létrehozás** lehetőségre.
 4. A létrehozás befejezése után a **Data Factory** panel jelenik meg, ahogy az a következő képen látható:
 
    ![Data factory kezdőlap](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -212,6 +207,6 @@ Alapértelmezés szerint be van jelölve a " **Base** " jelölőnégyzet.  Katti
 
 További részletekért tekintse meg az [Azure szinapszis Analytics ajánlott eljárásai](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Data Factory másolási varázsló](data-factory-copy-wizard.md) – ez a cikk a másolás varázsló részleteit tartalmazza.
 * [Másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md) – ez a cikk a referenciák teljesítményének méréseit és hangolási útmutatóját tartalmazza.

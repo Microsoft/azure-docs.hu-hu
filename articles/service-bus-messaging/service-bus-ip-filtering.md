@@ -2,13 +2,13 @@
 title: A Azure Service Bus IP-tűzfalszabályok konfigurálása
 description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3aacf54dca07f0e1f2a66c8cdd85f892dda68cd4
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: 11a17575e65bc8878819767804d7f69f3d590ad3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426587"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516549"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Azure Service Bus névtér elérésének engedélyezése adott IP-címekről vagy tartományokból
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
@@ -37,7 +37,8 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfal
     > [!NOTE]
     > A **hálózatkezelés** lap csak a **prémium** szintű névterek esetében jelenik meg.  
     
-    Alapértelmezés szerint a **kiválasztott hálózatok** lehetőség van kiválasztva. Ha nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
+    >[!WARNING]
+    > Ha a **kiválasztott hálózatok** lehetőséget választja, és nem ad hozzá legalább egy IP-tűzfalszabály vagy virtuális hálózat ezen a lapon, a névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulcs használatával).
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Hálózatkezelés lap – alapértelmezett" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
@@ -61,28 +62,12 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfal
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
-Ez a szakasz egy minta Azure Resource Manager sablonnal rendelkezik, amely létrehoz egy virtuális hálózatot és egy tűzfalszabály-szabályt.
+Ebben a szakaszban egy példa Azure Resource Manager sablonnal, amely egy virtuális hálózatot és egy tűzfalszabály hozzáadását is felveszi egy meglévő Service Bus-névtérbe.
 
+a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
 
-A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Service Bus névtérhez.
+Virtuális hálózati vagy tűzfalszabályok hozzáadásakor állítsa be a értékét a következőre `defaultAction` : `Deny` .
 
-Sablon paraméterei:
-
-- a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
-
-> [!NOTE]
-> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
-> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a **_"defaultAction"_**
-> 
-> a
-> ```json
-> "defaultAction": "Allow"
-> ```
-> a következőre:
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -147,6 +132,10 @@ Sablon paraméterei:
 ```
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
+
+> [!IMPORTANT]
+> Ha nincsenek IP-és virtuális hálózati szabályok, akkor az összes forgalom a névtérbe kerül, még akkor is, ha be van állítva `defaultAction` `deny` . A névtér a nyilvános interneten keresztül érhető el (a hozzáférési kulccsal). Legalább egy IP-szabályt vagy virtuális hálózati szabályt meg kell adni a névtérhez, hogy csak a virtuális hálózat megadott IP-címeiről vagy alhálózatáról engedélyezze a forgalmat.  
+
 
 ## <a name="next-steps"></a>Következő lépések
 

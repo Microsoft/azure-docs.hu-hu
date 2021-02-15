@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737201"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371549"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -92,8 +92,8 @@ Az alkalmazás konfigurációja regionális szolgáltatás. Régiónként eltér
 
 ## <a name="client-applications-in-app-configuration"></a>Ügyfélalkalmazások az alkalmazások konfigurációjában 
 
-Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást vagy túlterhelést okozhatnak. Az alkalmazások a jelenleg elérhető gyorsítótárazás és intelligens frissítés előnyeit használják az általuk küldött kérések számának optimalizálására. Ez a folyamat nagy mennyiségű ügyfélalkalmazások számára is tükrözhető azáltal, hogy elkerüli a közvetlen kapcsolatot a konfigurációs tárolóval. Ehelyett az ügyfélalkalmazások egy egyéni szolgáltatáshoz csatlakoznak, és ez a szolgáltatás kommunikál a konfigurációs tárolóval. Ez a proxy-megoldás biztosítja, hogy az ügyfélalkalmazások ne közelítsék meg a konfigurációs tároló szabályozási korlátját. A szabályozással kapcsolatos további információkért tekintse meg [a gyakori kérdéseket](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
+Az alkalmazások konfigurálására irányuló túlzott kérelmek szabályozást vagy túlterhelést okozhatnak. Az alkalmazások a jelenleg elérhető gyorsítótárazás és intelligens frissítés előnyeit használják az általuk küldött kérések számának optimalizálására. Ez a folyamat nagy mennyiségű ügyfélalkalmazások számára is tükrözhető azáltal, hogy elkerüli a közvetlen kapcsolatot a konfigurációs tárolóval. Ehelyett az ügyfélalkalmazások egy egyéni szolgáltatáshoz csatlakoznak, és ez a szolgáltatás kommunikál a konfigurációs tárolóval. Ez a proxy-megoldás biztosítja, hogy az ügyfélalkalmazások ne közelítsék meg a konfigurációs tároló szabályozási korlátját. A szabályozással kapcsolatos további információkért tekintse meg [a gyakori kérdéseket](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kulcsok és értékek](./concept-key-value.md)

@@ -1,14 +1,14 @@
 ---
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének kezelése
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában az Azure arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynök életciklusa során fog elvégezni.
-ms.date: 01/21/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662126"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368455"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -48,60 +48,17 @@ Az ív használatára képes kiszolgálók esetében a gép átnevezése előtt 
 > [!WARNING]
 > Javasoljuk, hogy ne nevezze át a gép számítógépnevét, és csak akkor hajtsa végre ezt az eljárást, ha feltétlenül szükséges.
 
-Az alábbi lépések összefoglalják a számítógép átnevezési eljárását.
-
 1. Naplózza a gépen telepített virtuálisgép-bővítményeket, és jegyezze fel a konfigurációt az [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) használatával vagy a [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed)használatával.
 
-2. Távolítsa el a virtuálisgép-bővítményeket a PowerShell, az Azure CLI vagy a Azure Portal használatával.
+2. Távolítsa el a [Azure Portalról](manage-vm-extensions-portal.md#uninstall-extension)telepített virtuálisgép-bővítményeket az [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)használatával vagy a [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)használatával.
 
-    > [!NOTE]
-    > Ha a Azure Monitor for VMs (elemzés) ügynököt vagy az Log Analytics ügynököt egy Azure Policy vendég konfigurációs szabályzattal telepítette, akkor az ügynökök a következő [kiértékelési ciklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) után települnek újra, és az átnevezett gép az ív használatára képes kiszolgálókon regisztrálva lesz.
+3. A **azcmagent** eszköz és a [leválasztási](manage-agent.md#disconnect) paraméter használatával válassza le a gépet az Azure arc-ról, és törölje a gépi erőforrást az Azure-ból. A gép az arc-kompatibilis kiszolgálókról való leválasztása nem távolítja el a csatlakoztatott számítógép-ügynököt, és a folyamat részeként nem kell eltávolítania az ügynököt. Ezt manuálisan is futtathatja, ha interaktív módon jelentkezett be, vagy automatizálja ugyanazt a szolgáltatásnevet, amelyet több ügynök bevezetéséhez vagy egy Microsoft Identity platform [hozzáférési jogkivonatához](../../active-directory/develop/access-tokens.md)használ. Ha nem használ egyszerű szolgáltatásnevet a gép Azure arc-kompatibilis kiszolgálókhoz való regisztrálásához, tekintse meg az alábbi [cikket](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) egy egyszerű szolgáltatásnév létrehozásához.
 
-3. Válassza le a gépet az arc-kompatibilis kiszolgálókról a PowerShell, az Azure CLI vagy a portál használatával.
+4. Nevezze át a gépek számítógépének nevét.
 
-4. Nevezze át a számítógépet.
+5. Regisztrálja újra a csatlakoztatott gép ügynököt az ív használatára képes kiszolgálókon. Futtassa az `azcmagent` eszközt a [csatlakozási](manage-agent.md#connect) paraméterrel, és fejezze be ezt a lépést.
 
-5. Csatlakoztasson `Azcmagent` egy új erőforrást az Azure-ban az eszközzel, és hozzon létre egy új erőforrást az eszköz használatával
-
-6. Telepítse a korábban telepített virtuálisgép-bővítményeket a célszámítógépen.
-
-A feladat végrehajtásához kövesse az alábbi lépéseket.
-
-1. Távolítsa el a [Azure Portalról](manage-vm-extensions-portal.md#uninstall-extension)telepített virtuálisgép-bővítményeket az [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)használatával vagy a [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)használatával.
-
-2. Az alábbi módszerek egyikével leválaszthatja a gépet az Azure-ív használatával. A gép az arc-kompatibilis kiszolgálókról való leválasztása nem távolítja el a csatlakoztatott számítógép-ügynököt, és a folyamat részeként nem kell eltávolítania az ügynököt. A folyamat során a gépre központilag telepített virtuálisgép-bővítmények továbbra is működni tudnak.
-
-    # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
-
-    1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com).
-    1. A portálon keresse meg a **kiszolgálók – Azure arc** elemet, és válassza ki a hibrid gépet a listából.
-    1. A kiválasztott regisztrált ív-kompatibilis kiszolgálóról válassza a **Törlés** lehetőséget a felső sávon az Azure-beli erőforrás törléséhez.
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    ```azurecli
-    az resource delete \
-      --resource-group ExampleResourceGroup \
-      --name ExampleArcMachine \
-      --resource-type "Microsoft.HybridCompute/machines"
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-    ```powershell
-    Remove-AzResource `
-     -ResourceGroupName ExampleResourceGroup `
-     -ResourceName ExampleArcMachine `
-     -ResourceType Microsoft.HybridCompute/machines
-    ```
-
-3. Nevezze át a gép számítógépnevét.
-
-### <a name="after-renaming-operation"></a>Az átnevezési művelet után
-
-Miután átnevezte a gépet, a csatlakoztatott számítógép ügynökét újra regisztrálni kell az arc-kompatibilis kiszolgálókon. Futtassa az `azcmagent` eszközt a [csatlakozási](#connect) paraméterrel, és fejezze be ezt a lépést.
-
-Telepítse újra azokat a virtuálisgép-bővítményeket, amelyeket eredetileg az arc-kompatibilis kiszolgálókról telepítettek a gépre. Ha a Azure Monitor for VMs (elemzés) ügynököt vagy az Log Analytics ügynököt egy Azure Policy vendég konfigurációs szabályzattal telepítette, akkor az ügynökök a következő [értékelési ciklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)után települnek újra.
+6. Telepítse újra azokat a virtuálisgép-bővítményeket, amelyeket eredetileg az arc-kompatibilis kiszolgálókról telepítettek a gépre. Ha az Azure Monitor for VMs (elemzés) ügynököt vagy az Log Analytics ügynököt egy Azure-szabályzattal telepítette, az ügynököket a következő [értékelési ciklust követően újra](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)üzembe helyezi a rendszer.
 
 ## <a name="upgrading-agent"></a>Ügynök frissítése
 

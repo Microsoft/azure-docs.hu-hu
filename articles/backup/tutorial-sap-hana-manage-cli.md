@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan kezelheti az Azure-b
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb552c5a336c3c55652936b87a668b54cfdeb41e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507232"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371770"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok kezelése Azure-beli virtuális gépen az Azure CLI használatával
 
@@ -95,7 +95,7 @@ Példa:
 az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
 ```
 
-Példa JSON (sappolicy.json) kimenetre:
+JSON-minta (sappolicy.js):
 
 ```json
   "eTag": null,
@@ -226,11 +226,12 @@ Példa JSON (sappolicy.json) kimenetre:
     ],
     "workLoadType": "SAPHanaDatabase"
   },
-  "resourceGroup": "azurefiles",
+  "resourceGroup": "saphanaResourceGroup",
   "tags": null,
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+A szabályzat sikeres létrehozása után a parancs kimenete a parancs végrehajtásakor paraméterként megadott JSON-t jeleníti meg.
 
 A szabályzat következő szakaszának módosításával megadhatja a biztonsági mentés kívánt gyakoriságát és a növekményes biztonsági mentések megőrzését.
 

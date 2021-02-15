@@ -8,22 +8,22 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879275"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371940"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Felügyelt szolgáltatási ajánlat tervezése a Microsoft kereskedelmi piactéren
 
 Ez a cikk bemutatja a felügyelt szolgáltatás ajánlatának a Microsoft kereskedelmi piactéren keresztüli közzétételének követelményeit a partner Center használatával.
 
-A felügyelt szolgáltatások olyan Azure Marketplace-ajánlatok, amelyek lehetővé teszik a több-bérlős és a több-bérlős felügyeletet az Azure Lighthouse segítségével. További információ: [Mi az az Azure Lighthouse?](../lighthouse/overview.md) Ha egy ügyfél felügyelt szolgáltatást vásárol, egy vagy több előfizetést vagy erőforrás-csoportot delegálhat.
+A felügyelt szolgáltatások olyan Azure Marketplace-ajánlatok, amelyek lehetővé teszik a több-bérlős és a több-bérlős felügyeletet az Azure Lighthouse segítségével. További információ: [Mi az az Azure Lighthouse?](../lighthouse/overview.md) Ha egy ügyfél felügyelt szolgáltatási ajánlatot vásárol, egy vagy több előfizetést vagy erőforráscsoportot delegálhat. Ezeket az erőforrásokat az Azure világítótorony [Azure által delegált erőforrás-kezelési](../lighthouse/concepts/azure-delegated-resource-management.md) képességeinek használatával végezheti el.
 
 ## <a name="eligibility-requirements"></a>Jogosultsági követelmények
 
-A felügyelt szolgáltatások közzétételéhez a Microsoft a Cloud platformon szerzett Gold vagy Silver Microsoft kompetenciát kell megszereznie. Ez a kompetencia mutatja be szakértelmét az ügyfeleknek. További információ: [Microsoft Partner Network kompetenciák](https://partner.microsoft.com/membership/competencies).
+A felügyelt szolgáltatások ajánlatának közzétételéhez a Microsoft a Cloud platformon szerzett Gold vagy Silver Microsoft kompetenciával kell rendelkeznie. Ez a kompetencia mutatja be szakértelmét az ügyfeleknek. További információ: [Microsoft Partner Network kompetenciák](https://partner.microsoft.com/membership/competencies).
 
 Az ajánlatoknak meg kell felelniük az Azure Marketplace-en közzétenni kívánt [kereskedelmi Piactéri minősítési szabályzatoknak](/legal/marketplace/certification-policies) .
 
@@ -50,7 +50,7 @@ Amikor létrehoz egy felügyelt szolgáltatási ajánlatot a partner Centerben, 
 1. Rövid leírás
 1. Kategóriák
 1. Jogi szerződések és adatvédelmi szabályzat
-1. Leírás
+1. Description
 1. Képernyőképek/videók
 1. Hasznos hivatkozások
 
@@ -129,7 +129,7 @@ A felügyelt szolgáltatáshoz legalább egy csomag szükséges. A terv meghatá
 
 A felügyelt szolgáltatások csak egy díjszabási modellt támogatnak: **saját licenc használata (BYOL)**. Ez azt jelenti, hogy közvetlenül számlázza az ügyfeleit, és a Microsoft nem számít fel díjat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása](./create-managed-service-offer.md)
 * [Ajánlatlistákra vonatkozó ajánlott eljárások](./gtm-offer-listing-best-practices.md)

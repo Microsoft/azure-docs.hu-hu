@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása a PostgreSQL-ből Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhat adatok a PostgreSQL-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d8783c4b07c8c87e57ccd9a5d65983825347c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416754"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384095"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása a PostgreSQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -56,16 +51,16 @@ A PostgreSQL-hez társított szolgáltatás a következő tulajdonságokat támo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **PostgreSql** | Igen |
-| connectionString | Az Azure Database for PostgreSQLhoz való kapcsolódáshoz használandó ODBC-kapcsolati karakterlánc. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **PostgreSql** | Yes |
+| connectionString | Az Azure Database for PostgreSQLhoz való kapcsolódáshoz használandó ODBC-kapcsolati karakterlánc. <br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
 
 Egy tipikus kapcsolatok karakterlánca: `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . További tulajdonságok állíthatók be az egyes esetekben:
 
-| Tulajdonság | Leírás | Lehetőségek | Kötelező |
+| Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Az illesztőprogram és az adatbázis-kiszolgáló között továbbított adattitkosításhoz használt metódus. Például:  `EncryptionMethod=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** /1 (SSL)/6 (RequestSSL) | Nem |
-| ValidateServerCertificate (VSC) | Meghatározza, hogy az illesztőprogram érvényesítse-e az adatbázis-kiszolgáló által eljuttatott tanúsítványt, ha engedélyezve van az SSL-titkosítás (titkosítási módszer = 1). Például:  `ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** /1 (engedélyezve) | Nem |
+| EncryptionMethod (EM)| Az illesztőprogram és az adatbázis-kiszolgáló között továbbított adattitkosításhoz használt metódus. Például:  `EncryptionMethod=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** /1 (SSL)/6 (RequestSSL) | No |
+| ValidateServerCertificate (VSC) | Meghatározza, hogy az illesztőprogram érvényesítse-e az adatbázis-kiszolgáló által eljuttatott tanúsítványt, ha engedélyezve van az SSL-titkosítás (titkosítási módszer = 1). Például:  `ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** /1 (engedélyezve) | No |
 
 **Példa**
 
@@ -94,13 +89,13 @@ Egy tipikus kapcsolatok karakterlánca: `Server=<server>;Database=<database>;Por
         "type": "PostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -145,7 +140,7 @@ Az adatok PostgreSQL-ből való másolásához a következő tulajdonságok tám
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PostgreSqlTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PostgreSqlTable** | Yes |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
@@ -180,8 +175,8 @@ Az adatok PostgreSQL-ből való másolásához a másolási tevékenység **forr
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PostgreSqlSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PostgreSqlSource** | Yes |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 > [!NOTE]
 > A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. Csatolja őket a `""` lekérdezésben (idézőjelek között).
@@ -225,5 +220,5 @@ Ha `RelationalSource` a beírt forrást használta, a rendszer továbbra is tám
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

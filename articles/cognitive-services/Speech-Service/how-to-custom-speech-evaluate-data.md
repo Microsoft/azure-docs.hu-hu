@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857358"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388940"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése és javítása
 
@@ -33,7 +33,7 @@ A helytelenül azonosított szavak három kategóriába sorolhatók:
 * Törlés (D): a hipotézis átiratában nem észlelhető szavak
 * Helyettesítő (k): a hivatkozás és a hipotézis között helyettesített szavak
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ![Helytelenül azonosított szavak – példa](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -115,10 +115,15 @@ Tekintse meg az alábbi adatokat:
 * Ha az átiratok minősége változó, a kivételesen jó mondatok (például a kiváló átiratok, amelyek tartalmazzák a kulcsfontosságú kifejezéseket) megismétlődnek a súlyozásuk növeléséhez.
 * A beszédfelismerési szolgáltatás automatikusan az átiratokkal javítja a tartományra vonatkozó szavak és kifejezések felismerését, mintha a hozzá kapcsolódó szövegként lett hozzáadva.
 * A hanggal való képzés a legtöbb előnyt biztosítja, ha a hang az emberek számára is nehezen érthető. A legtöbb esetben a betanítást csak a kapcsolódó szöveg használatával kezdheti meg.
-* A betanítási művelet elvégzése több napot is igénybe vehet. A képzés sebességének növelése érdekében mindenképpen hozzon létre egy olyan [régióban, amely dedikált hardverrel rendelkezik](custom-speech-overview.md#set-up-your-azure-account) a betanításhoz.
+* A betanítási művelet elvégzése több napot is igénybe vehet. A képzés sebességének növelése érdekében mindenképpen hozzon létre egy olyan régióban a Speech Service-előfizetést, [amely a dedikált hardverrel](custom-speech-overview.md#set-up-your-azure-account) rendelkezik.
 
 > [!NOTE]
-> Nem minden alapmodell támogatja a hangfelvételt. Ha egy alapmodell nem támogatja azt, a beszédfelismerési szolgáltatás csak az átiratokból származó szöveget fogja használni, és figyelmen kívül hagyja a hangot.
+> Nem minden alapmodell támogatja a hangfelvételt. Ha egy alapmodell nem támogatja azt, a beszédfelismerési szolgáltatás csak az átiratokból származó szöveget fogja használni, és figyelmen kívül hagyja a hangot. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.
+
+> [!NOTE]
+> Abban az esetben, ha megváltoztatja a betanításhoz használt alapmodellt, és a betanítási adatkészletben van hang, *mindig* győződjön meg arról, hogy az új kiválasztott alapmodell támogatja-e a [hangadatokkal való képzést](language-support.md#speech-to-text). Ha a korábban használt alapmodell nem támogatja a hangadatokkal való betanítást, és a betanítási adatkészlet hang-és betanítási időt tartalmaz, az új alapmodellel **jelentősen** növekedni fog, és könnyen elvégezhető több óra és több nap között. Ez különösen akkor igaz, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardvert](custom-speech-overview.md#set-up-your-azure-account) betanítják.
+>
+> Ha a fenti bekezdésben ismertetett probléma merül fel, gyorsan csökkentheti a betanítási időt, ha csökkenti az adatkészletben lévő hang mennyiségét, vagy teljesen eltávolítja, és csak a szöveget hagyja. Az utóbbi lehetőség kifejezetten ajánlott, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardver](custom-speech-overview.md#set-up-your-azure-account) betanítása történik.
 
 ### <a name="add-new-words-with-pronunciation"></a>Új szavak hozzáadása a kiejtéssel
 
@@ -138,7 +143,7 @@ A következő táblázat a hangfelismerési forgatókönyveket mutatja be, és f
 | Diktálás               | írásos bevitel, például azonnali üzenetek vagy e-mailek | a fentiekhez hasonlóan | a fentiekhez hasonlóan |
 | Videós kódolt feliratok | TV show-szkriptek, filmek, marketing-tartalmak, videó-összefoglalók | videók pontos átiratai | a fentiekhez hasonlóan |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell betanítása és üzembe helyezése](how-to-custom-speech-train-model.md)
 

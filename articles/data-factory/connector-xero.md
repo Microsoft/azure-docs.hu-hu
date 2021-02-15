@@ -1,22 +1,17 @@
 ---
 title: Adatok másolása a Xero a Azure Data Factory használatával
 description: Bemutatjuk, hogy miként másolhatók adatok a Xero-ből a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879965"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366908"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Adatok másolása a Xero a Azure Data Factory használatával
 
@@ -50,18 +45,18 @@ A Xero társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Xero** | Igen |
-| connectionProperties | A Xero való kapcsolódás módját meghatározó tulajdonságok csoportja. | Igen |
-| **_Alatt `connectionProperties` :_* _ | | |
-| gazda | A Xero-kiszolgáló () végpontja `api.xero.com` .  | Igen |
-| authenticationType | Az engedélyezett értékek: `OAuth_2.0` és `OAuth_1.0` . | Igen |
-| consumerKey | A OAuth 2,0 esetében adja meg a Xero-alkalmazás _ *ügyfél-azonosítóját**.<br>A OAuth 1,0 esetében a Xero alkalmazáshoz társított fogyasztói kulcsot kell megadnia.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| privateKey | A OAuth 2,0 esetében adja meg a Xero-alkalmazáshoz tartozó **ügyfél-titkot** .<br>A OAuth 1,0 esetében adja meg a titkos kulcsot a Xero privát alkalmazásához létrehozott. PEM-fájlból, lásd: [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Megjegyzés: **a privatekey. PEM a 512-es numbits-vel való létrehozásához** a `openssl genrsa -out privatekey.pem 512` 1024-es használata nem támogatott. Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n), lásd az alábbi mintát.<br/><br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Xero** | Yes |
+| connectionProperties | A Xero való kapcsolódás módját meghatározó tulajdonságok csoportja. | Yes |
+| ***Alatt `connectionProperties` :*** | | |
+| gazda | A Xero-kiszolgáló () végpontja `api.xero.com` .  | Yes |
+| authenticationType | Az engedélyezett értékek: `OAuth_2.0` és `OAuth_1.0` . | Yes |
+| consumerKey | A OAuth 2,0 esetében adja meg a Xero-alkalmazás **ügyfél-azonosítóját** .<br>A OAuth 1,0 esetében a Xero alkalmazáshoz társított fogyasztói kulcsot kell megadnia.<br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| privateKey | A OAuth 2,0 esetében adja meg a Xero-alkalmazáshoz tartozó **ügyfél-titkot** .<br>A OAuth 1,0 esetében adja meg a titkos kulcsot a Xero privát alkalmazásához létrehozott. PEM-fájlból, lásd: [nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Megjegyzés: **a privatekey. PEM a 512-es numbits-vel való létrehozásához** a `openssl genrsa -out privatekey.pem 512` 1024-es használata nem támogatott. Adja meg a. PEM fájl összes szövegét, beleértve a UNIX-sorok végződését (\n), lásd az alábbi mintát.<br/><br>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
 | tenantId | A Xero-alkalmazáshoz társított bérlői azonosító. A OAuth 2,0-hitelesítésre alkalmazható.<br>Megtudhatja, hogyan kérheti le a bérlő AZONOSÍTÓját, hogy [ellenőrizzék a jogosult bérlőket](https://developer.xero.com/documentation/oauth2/auth-flow). | Igen a OAuth 2,0-hitelesítéshez |
 | refreshToken | A OAuth 2,0-hitelesítésre alkalmazható.<br/>A OAuth 2,0 frissítési token társítva van a Xero alkalmazáshoz, és a hozzáférési token frissítésére szolgál. a hozzáférési jogkivonat 30 perc után lejár. Ismerje meg, hogyan működik a Xero engedélyezési folyamata, és hogyan kérheti le a frissítési tokent [ebből a cikkből](https://developer.xero.com/documentation/oauth2/auth-flow). A frissítési jogkivonat beszerzéséhez a [offline_access hatókört](https://developer.xero.com/documentation/oauth2/scopes)kell kérnie. <br/>A **know korlátozása**: Megjegyzés a Xero alaphelyzetbe állítja a frissítési tokent, miután használta a hozzáférési jogkivonat frissítését. A működés közbeni munkaterhelések esetében az egyes másolási tevékenységek futtatása előtt érvényes frissítési tokent kell beállítania az ADF használatához.<br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen a OAuth 2,0-hitelesítéshez |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification | Azt adja meg, hogy az állomásnév kötelező-e a kiszolgáló tanúsítványában, hogy az megfeleljen a kiszolgáló állomásneve a TLS protokollal való csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
+| useHostVerification | Azt adja meg, hogy az állomásnév kötelező-e a kiszolgáló tanúsítványában, hogy az megfeleljen a kiszolgáló állomásneve a TLS protokollal való csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
+| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
 **Példa: OAuth 2,0 hitelesítés**
 
@@ -140,7 +135,7 @@ Az adatok Xero való másolásához állítsa az adatkészlet Type (típus) tula
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **XeroObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **XeroObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -170,7 +165,7 @@ Az adatok Xero való másolásához állítsa a forrás típusát a másolás te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Yes |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM Contacts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
@@ -264,5 +259,5 @@ A következő táblázatok csak a teljes sémával kérhetők le:
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység által támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

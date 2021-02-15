@@ -3,22 +3,22 @@ title: 'ML Studio (klasszikus): helyszíni SQL Server – Azure'
 description: SQL Server-adatbázisból származó adatokkal speciális elemzési műveleteket hajthat végre Azure Machine Learning Studio (klasszikus) használatával.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8cdf1029371e0e11c38616e7800652ca9debbba7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325701"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517399"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Elemzések végrehajtása Azure Machine Learning Studio (klasszikus) SQL Server-adatbázis használatával
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A helyszíni adatokkal dolgozó vállalatok gyakran szeretnék kihasználni a felhő méretezését és rugalmasságát a gépi tanulási munkaterhelésekhez. Azonban nem szeretnék megszakítani a jelenlegi üzleti folyamatokat és munkafolyamatokat azáltal, hogy áthelyezik a helyszíni és a felhőbe. Azure Machine Learning Studio (klasszikus) mostantól támogatja az adatok SQL Server adatbázisból való olvasását, majd az adatokkal rendelkező modellek betanítását és pontozását. Már nem kell manuálisan átmásolnia és szinkronizálnia az adatait a felhő és a helyszíni kiszolgáló között. Ehelyett a Azure Machine Learning Studio (klasszikus) **adatimportálási** modulja most már közvetlenül a SQL Server-adatbázisból is olvasható a betanítási és pontozási feladatokhoz.
@@ -134,7 +134,7 @@ Az átjáró beállítása után hozzáadhat egy **adatimportálási** modult eg
 5. Válassza ki a telepített és regisztrált **adatátjárót** . Beállíthat egy másik átjárót az "(új adatátjáró hozzáadása...)" lehetőség kiválasztásával.
 
    ![Adatátjáró kiválasztása adatmodul importálásához](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Adja meg az SQL **Database-kiszolgáló nevét** és az **adatbázis nevét** , valamint azt az SQL **Database-lekérdezést** , amelyet végre szeretne hajtani.
+6. Adja meg az SQL **Database-kiszolgáló nevét** és az **adatbázis nevét**, valamint azt az SQL **Database-lekérdezést** , amelyet végre szeretne hajtani.
 7. Kattintson az **értékek megadása** a **Felhasználónév és a jelszó** területen, majd adja meg az adatbázis hitelesítő adatait. A SQL Server konfigurálásának módjától függően integrált Windows-hitelesítést vagy SQL Server hitelesítést használhat.
 
    ![Adja meg az adatbázis hitelesítő adatait](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)

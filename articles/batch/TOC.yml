@@ -172,6 +172,11 @@
         - name: Készlet létrehozása nyilvános IP-címek nélkül
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: Bővítmények használata készletekkel
+          href: create-pool-extensions.md
+        - name: Felügyelt identitások konfigurálása
+          displayName: user-assigned
+          href: managed-identity-pools.md
         - name: Virtuális fájlrendszer csatlakoztatása
           href: virtual-file-mount.md
         - name: Azure-fájlmegosztás csatlakoztatása

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754079"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389535"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -50,7 +50,7 @@ Az Azure Migrate hub az alábbi eszközöket tartalmazza:
 
 A Azure Migrate számos ISV-ajánlattal integrálható. 
 
-**ISV**    | **Jellemző**
+**ISV**    | **Szolgáltatás**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Kiszolgálók migrálása.
 [Cloudamize](https://www.cloudamize.com/platform) | Kiszolgálók értékelése.
@@ -83,7 +83,7 @@ A kiszolgáló értékelése a helyszínen üzembe helyezett, könnyű [Azure Mi
 
 A Azure Migrate: a kiszolgáló áttelepítési eszköze segíti az Azure-ba való áttelepítést:
 
-**Migrate (Áttelepítés)** | **Részletek**
+**Migrate** | **Részletek**
 --- | ---
 Helyszíni VMware virtuális gépek | Virtuális gépek migrálása az Azure-ba ügynök nélküli vagy ügynök-alapú áttelepítés használatával.<br/><br/> Az ügynök nélküli áttelepítés esetében a kiszolgáló áttelepítése ugyanazt a Azure Migrate készüléket használja, amelyet a kiszolgáló értékelésével is használhat a VMware virtuális gépek felderítéséhez és értékeléséhez.<br/><br/> Az ügynök-alapú áttelepítés esetében a kiszolgáló áttelepítése replikációs berendezést használ.
 Helyszíni Hyper-V rendszerű virtuális gépek | Virtuális gépek migrálása az Azure-ba.<br/><br/> A kiszolgáló áttelepítése a Hyper-V gazdagépre telepített szolgáltatói ügynököket használja az áttelepítéshez.
@@ -121,11 +121,11 @@ Ha szakértői segítségre van szüksége az első lépésekhez, a Microsoft az
 A Azure Migrate szolgáltatásnak két verziója van.
 
 - **Aktuális verzió**: ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
-- **Előző verzió**: a Azure Migrate korábbi verziója csak a helyszíni VMWare virtuális gépek értékelését támogatja. Ha az előző verziót használta, most az aktuális verziót kell használnia. Már nem hozhat létre Azure Migrate projekteket az előző verzió használatával. Azt javasoljuk, hogy ne végezze el az új felfedezéseket.
+- **Előző verzió**: a Azure Migrate korábbi, klasszikus Azure Migrate néven is ismert verziója csak a helyszíni VMWare virtuális gépek értékelését támogatja. A klasszikus Azure Migrate kivonása február 2024. Február 2024 után a Azure Migrate klasszikus verziója már nem támogatott, és a rendszer a klasszikus projektekben lévő leltári metaadatokat törli. Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](create-manage-projects.md), és [hozzá kell adnia az értékelési és áttelepítési eszközöket](./create-manage-projects.md) . Az oktatóanyagok segítségével megismerheti, hogyan használhatja az elérhető értékelési és áttelepítési eszközöket. Ha egy klasszikus projekthez csatlakoztatott Log Analytics munkaterülettel rendelkezik, a klasszikus projekt törlése után csatolhatja azt egy aktuális verzió projekthez.
 
     A Azure Portal meglévő projektjeinek eléréséhez keresse meg és válassza a **Azure Migrate** lehetőséget. A **Azure Migrate** irányítópulton egy értesítés és egy hivatkozás látható a régi Azure Migrate projektek eléréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [VMWare virtuális gépek](./tutorial-discover-vmware.md), a [Hyper-V virtuális gépek](./tutorial-discover-hyper-v.md)és a [fizikai kiszolgálók](./tutorial-discover-physical.md)értékeléséhez próbálja ki az oktatóanyagokat.
 - Tekintse meg az Azure Migrate használatával kapcsolatban felmerülő [gyakori kérdéseket](resources-faq.md).

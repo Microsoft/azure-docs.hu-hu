@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása az Amazon Simple Storage szolgáltatásból (S3)
 description: Ismerje meg, hogyan másolhat adatok az Amazon Simple Storage Service (S3) szolgáltatásból a Azure Data Factory használatával támogatott fogadó adattárakba.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/14/2021
-ms.openlocfilehash: 82871a09916b2b64f74e25088f5e75ac60a40678
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 2680c930bfa8451eec7dd518d3c535e0d04046cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202504"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387886"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Az Amazon Simple Storage szolgáltatásból származó adatok másolása Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -182,14 +178,14 @@ A következő tulajdonságok támogatottak az Amazon S3 `storeSettings` -ban a F
 | Tulajdonság                 | Leírás                                                  | Kötelező                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | típus                     | A **Type** tulajdonságot a `storeSettings` **AmazonS3ReadSettings** értékre kell állítani. | Yes                                                         |
-| **_A másolandó fájlok megkeresése:_* _ |  |  |
-| 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott gyűjtő vagy mappa vagy fájl elérési útját. Ha egy gyűjtőből vagy mappából kívánja átmásolni az összes fájlt, azt is meg kell adni `wildcardFileName` `_` . |  |
+| ***Keresse meg a másolandó fájlokat:*** |  |  |
+| 1. lehetőség: statikus elérési út<br> | Másolja az adatkészletben megadott gyűjtő vagy mappa vagy fájl elérési útját. Ha egy gyűjtőből vagy mappából kívánja átmásolni az összes fájlt, azt is meg kell adni `wildcardFileName` `*` . |  |
 | 2. lehetőség: S3 előtag<br>-előtag | Az S3-kulcsnév előtagja a forrás S3-fájlok szűréséhez az adatkészletben konfigurált megadott gyűjtő alatt. Az S3-kulcsok, amelyeknek a neve kezdődik, `bucket_in_dataset/this_prefix` ki vannak választva. A szolgáltatás S3's, amely jobb teljesítményt nyújt, mint a helyettesítő karakteres szűrő.<br/><br/>Ha előtagot használ, és úgy dönt, hogy a fájl alapú fogadóba másol egy megőrzött hierarchiát, a rendszer megőrzi az utolsó "/" előtag utáni alútvonalat. Tegyük fel például, hogy rendelkezik forrással  `bucket/folder/subfolder/file.txt` , és konfigurálja az előtagot `folder/sub` , majd a megőrzött fájl elérési útja `subfolder/file.txt` . | No |
 | 3. lehetőség: helyettesítő karakter<br>- wildcardFolderPath | A mappa elérési útja a forrás mappák szűréséhez az adatkészletben konfigurált megadott gyűjtőben lévő helyettesítő karakterekkel. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). `^`Ha a mappa neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert. <br>További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | No                                            |
 | 3. lehetőség: helyettesítő karakter<br>- wildcardFileName | Az adott gyűjtő és mappa elérési útján (vagy helyettesítő mappa elérési útján) található, helyettesítő karakterekkel rendelkező fájlnév a forrásfájlok szűréséhez. <br>Az engedélyezett helyettesítő karakterek a következők: `*` (nulla vagy több karakternek felel meg) és `?` (nulla vagy egyetlen karakternek felel meg). `^`Ha a fájl neve helyettesítő karakter vagy a escape-karakter található, akkor a (z) használatával elkerülheti a menekülési karaktert.  További példákat a [mappák és a fájlok szűrésére szolgáló példákban](#folder-and-file-filter-examples)talál. | Yes |
 | 4. lehetőség: a fájlok listája<br>- fileListPath | Egy adott fájl másolását jelzi. Mutasson egy szövegfájlra, amely tartalmazza a másolni kívánt fájlok listáját, soronként egy fájlt, amely az adatkészletben konfigurált útvonal relatív elérési útja.<br/>Ha ezt a beállítást használja, ne adjon meg fájlnevet az adatkészletben. További példákat a [fájllista példákban](#file-list-examples)talál. |No |
-| ***További beállítások:** _ |  | |
-| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha az _ *rekurzív** érték **true (igaz** ) értékre van állítva, és a fogadó egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
+| ***További beállítások:*** |  | |
+| rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát. <br>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**).<br>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . |No |
 | deleteFilesAfterCompletion | Azt jelzi, hogy a rendszer törli-e a bináris fájlokat a forrás-áruházból, miután sikeresen áthelyezte a célhelyre. A fájl törlése fájl alapján történik, így ha a másolási tevékenység meghiúsul, néhány fájl már át lett másolva a célhelyre, és törlődik a forrásból, míg mások továbbra is a forrás-áruházban maradnak. <br/>Ez a tulajdonság csak bináris fájlok másolási forgatókönyv esetén érvényes. Az alapértelmezett érték: false. |No |
 | modifiedDatetimeStart    | A fájlok a következő attribútum alapján vannak szűrve: utoljára módosítva. <br>A fájlok akkor lesznek kiválasztva, ha az utolsó módosítás időpontja a és a közötti időintervallumon belül van `modifiedDatetimeStart` `modifiedDatetimeEnd` . Az idő az UTC-időzónára vonatkozik "2018-12-01T05:00:00Z" formátumban. <br> A tulajdonságok lehetnek **Null értékűek**, ami azt jelenti, hogy a rendszer nem alkalmazza a file Attribute szűrőt az adatkészletre.  Ha a `modifiedDatetimeStart` dátum datetime értékkel rendelkezik `modifiedDatetimeEnd` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosított attribútuma nagyobb vagy egyenlő, mint a DateTime érték.  Ha a `modifiedDatetimeEnd` dátum datetime értékkel rendelkezik `modifiedDatetimeStart` , de **Null** értékű, akkor azok a fájlok lesznek kiválasztva, amelyek utolsó módosítási attribútuma kisebb a DateTime értéknél.<br/>Ez a tulajdonság nem érvényes a konfiguráláskor `fileListPath` . | No                                            |
 | modifiedDatetimeEnd      | Lásd fentebb.                                               | No                                                          |

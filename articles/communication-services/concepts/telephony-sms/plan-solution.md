@@ -1,7 +1,7 @@
 ---
-title: Az Azure kommunikációs szolgáltatások telefonos és SMS-megoldásának megtervezése
+title: Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
 titleSuffix: An Azure Communication Services concept document
-description: Megtudhatja, hogyan tervezheti meg hatékonyan a telefonszámok és a telefonos szolgáltatások használatát.
+description: Megtudhatja, hogyan használhatja a különböző típusú telefonszámokat az SMS-ben és a telefonos szolgáltatásban.
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937236"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366466"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>A telefonos és SMS-megoldás megtervezése
+# <a name="phone-number-types-in-azure-communication-services"></a>Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok használatát hanghívások készítésére és SMS-üzenetek küldésére a nyilvános kapcsolású telefonos hálózattal (PSTN). Ebben a dokumentumban áttekintjük a telefonszámokat, a konfigurációs beállításokat és a régió rendelkezésre állását a telefonos és SMS-megoldás kommunikációs szolgáltatásokkal történő megtervezéséhez.
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
- 
+## <a name="number-types-and-features"></a>Típusok és szolgáltatások száma
 A kommunikációs szolgáltatások kétféle telefonszámot biztosítanak: **helyi** és **díjmentes**. 
 
 ### <a name="local-numbers"></a>Helyi számok
@@ -52,7 +47,7 @@ Az alábbi táblázat összefoglalja a következő telefonszámokat:
 | Toll-Free         | + 1 (díjmentes terület *kódja*) xxx XX XX | USA                      | Calling (kimenő), SMS (bejövő/kimenő)| Telefonszámok kiosztása interaktív hangválaszi (IVR) rendszerekhez/robotokhoz, SMS-alkalmazásokhoz                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Az Azure kommunikációs szolgáltatások telefonszám-szolgáltatásai 
+### <a name="phone-number-features-in-azure-communication-services"></a>Az Azure kommunikációs szolgáltatások telefonszám-szolgáltatásai 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ Jelenleg a telefonszámok rendelkezésre állása olyan Azure-előfizetésekre k
 ### <a name="conceptual-documentation"></a>Fogalmi dokumentáció
 
 - [A hang- és videóhívással kapcsolatos alapfogalmak](../voice-video-calling/about-call-types.md)
+- [Telefonos fogalmak](./telephony-concept.md)
 - [Folyamatok meghívása](../call-flows.md)
 - [Díjszabás](../pricing.md)

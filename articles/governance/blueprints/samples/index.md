@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225141"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370954"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -18,9 +18,10 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 
 | Sample | Leírás |
 |---------|---------|
-| [Australian Government ISM PROTECTED](./ism-protected/index.md) | Az ausztrál kormány által védett guardrails biztosítja a megfelelőséget. |
-| [Azure Security teljesítményteszt v1](./azure-security-benchmark.md) | A guardrails biztosítja az [Azure Security teljesítményteszt v1](../../../security/benchmarks/overview.md)-nek való megfelelőséget. |
-| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | A guardrails biztosítja a következőknek való megfelelést: Kanada szövetségi védett B, közepes integritás, közepes rendelkezésre állás (PBMM). |
+| [Australian Government ISM PROTECTED](./ism-protected/index.md) | Védőkorlátokat biztosít az Australian Government ISM PROTECTED szabványnak való megfelelőséghez. |
+| [Azure-biztonsági teljesítményteszt](./azure-security-benchmark.md) | Védőkorlátokat biztosít az [Azure biztonsági-teljesítménytesztnek](../../../security/benchmarks/overview.md) való megfelelőséghez. |
+| [Az Azure Security teljesítményteszt alapjai](./azure-security-benchmark-foundation/index.md) | Az Azure Security teljesítményteszt Foundation üzembe helyezése és konfigurálása. |
+| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Védőkorlátokat biztosít a Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM) szabványnak való megfeleléshez. |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Szabályzatkészletet biztosít a CIS Microsoft Azure Foundations Benchmark ajánlásainak való megfelelőséghez. |
 | [DoD Impact Level 4](./dod-impact-level-4/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 4 előírásainak. |
 | [DoD Impact Level 5](./dod-impact-level-5/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 5 előírásainak. |

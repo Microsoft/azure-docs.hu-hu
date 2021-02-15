@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ce0d3a06846cbc3aa37ab836564150e6f2c34ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499186"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362811"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-adatok vizsgálata
 
 > [!NOTE]
 > Ez az oldal azt feltételezi, hogy elolvasta a [Custom Speechi tesztelési adatokat](./how-to-custom-speech-test-and-train.md) , és feltöltött egy adatkészletet a vizsgálathoz.
 
-A Custom Speech olyan eszközöket biztosít, amelyekkel vizuálisan ellenőrizheti a modell felismerési minőségét a hangadatoknak a megfelelő felismerési eredménnyel való összehasonlításával. A [Custom Speech-portálon](https://speech.microsoft.com/customspeech)lejátszhatja a feltöltött hangot, és megállapíthatja, hogy a megadott felismerési eredmény helyes-e. Ez az eszköz segít megvizsgálni a Microsoft alapszintű beszéd-szöveg modelljét, megvizsgálja a betanított egyéni modellt, vagy összehasonlítja a két modellből való átírást.
+A Custom Speech olyan eszközöket biztosít, amelyekkel vizuálisan ellenőrizheti a modell felismerési minőségét a hangadatoknak a megfelelő felismerési eredménnyel való összehasonlításával. A [Speech studióból](https://speech.microsoft.com/customspeech)lejátszhatja a feltöltött hangot, és megállapíthatja, hogy a megadott felismerési eredmény helyes-e. Ez az eszköz segít megvizsgálni a Microsoft alapszintű beszéd-szöveg modelljét, megvizsgálja a betanított egyéni modellt, vagy összehasonlítja a két modellből való átírást.
 
 Ebből a dokumentumból megtudhatja, hogyan vizsgálhatja meg a Microsoft alapvető beszédfelismerési modelljét és/vagy a betanított egyéni modelleket. Azt is megtudhatja, hogyan hozhat létre és pontosíthat címkézett hang-adatkészleteket az online transzkripció Editor használatával.
 
@@ -30,12 +30,12 @@ Ebből a dokumentumból megtudhatja, hogyan vizsgálhatja meg a Microsoft alapve
 
 Teszt létrehozásához kövesse az alábbi utasításokat:
 
-1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
+1. Jelentkezzen be a [Speech studióba](https://speech.microsoft.com/customspeech).
 2. Navigáljon a **beszéd – szöveg > Custom Speech > [a projekt neve] > tesztelése** elemre.
 3. Kattintson a **teszt hozzáadása** gombra.
 4. Válassza a **minőség vizsgálata (csak hangalapú adatok)** lehetőséget. Adja meg a teszt nevét, leírását, és válassza ki a hangkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 Egy teszt sikeres létrehozása után megtekintheti, hogy egy modell hogyan írja át a megadott hangkészletet, vagy összehasonlítja a két modell eredményeit egymás mellett.
 
@@ -95,7 +95,7 @@ Az adatkészletek az **adatok** lapra való exportálásához navigáljon az ada
 
 Az adatba exportált fájlok teljesen új adatkészletként lesznek felhasználva, és nem érintik a meglévő adat/képzés/tesztelési entitásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
 - [A modell betanítása](how-to-custom-speech-train-model.md)

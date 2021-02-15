@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753943"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373283"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
@@ -22,7 +22,7 @@ Ez a cikk a Azure Migrate korábbi verziójának használatáról nyújt inform�
 A Azure Migrate szolgáltatásnak két verziója van:
 
 - **Aktuális verzió**: ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
-- **Előző verzió**: ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. A korábbi verziójú projekteket klasszikus projekteknek nevezzük ebben a cikkben. Ha továbbra is az előző verzióban létrehozott Azure Migrate projekteket kell használnia, akkor ez a következő lehet:
+- **Előző verzió**: ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. A korábbi verziójú projekteket klasszikus projekteknek nevezzük ebben a cikkben. A klasszikus Azure Migrate kivonása február 2024. Február 2024 után a Azure Migrate klasszikus verziója már nem támogatott, és a rendszer a klasszikus projektekben lévő leltári metaadatokat törli. Ha továbbra is klasszikus Azure Migrate-projekteket kell használnia, ezt a következő műveleteket hajthatja végre:
     - Már nem hozhat létre áttelepítési projekteket.
     - Javasoljuk, hogy ne végezzen új felfedezéseket.
     - Továbbra is hozzáférhet a meglévő projektekhez.
@@ -219,7 +219,7 @@ A függőségi vizualizáció használatához egy Log Analytics munkaterületet 
 
 A munkaterület konfigurálása után le kell töltenie és telepítenie kell az ügynököket minden olyan helyszíni gépen, amelyet ki szeretne értékelni. Továbbá, ha olyan gépekkel rendelkezik, amelyeknek nincs internetkapcsolata, le kell töltenie és telepítenie kell [log Analytics-átjárót](../azure-monitor/platform/gateway.md) .
 
-1. Az **Áttekintés** lapon kattintson **Manage**  >  a **gépek** kezelése lehetőségre, és válassza ki a szükséges gépet.
+1. Az **Áttekintés** lapon kattintson   >  a **gépek** kezelése lehetőségre, és válassza ki a szükséges gépet.
 2. A **függőségek** oszlopban kattintson az **ügynökök telepítése** elemre.
 3. A **függőségek** lapon töltse le és telepítse a Microsoft monitoring Agent (MMA) és a függőségi ügynököt minden olyan virtuális gépen, amelyet fel szeretne mérni.
 4. Másolja ki a munkaterület-azonosítót és -kulcsot. Ezekre akkor van szükség, amikor telepíti az MMA-t a helyszíni gépre.
@@ -270,7 +270,7 @@ A System Center Operations Manager 2012 R2 vagy újabb verziói által monitoroz
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Függőségi leképezést tartalmazó csoport létrehozása
 
-1. Az ügynökök telepítése után lépjen a portálra, és kattintson a **Manage**  >  **gépek** kezelése lehetőségre.
+1. Az ügynökök telepítése után lépjen a portálra, és kattintson a   >  **gépek** kezelése lehetőségre.
 2. Keresse meg azt a gépet, amelyre az ügynököket telepítette.
 3. A gép **függőségek** oszlopának ekkor a következőnek kell megjelennie: **View függőségei**. Az oszlopra kattintva megtekintheti a gép függőségeit.
 4. A gép függőségi térképe a következő adatokat jeleníti meg:
@@ -349,5 +349,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További](migrate-services-overview.md) információ a Azure Migrate legújabb verziójáról.

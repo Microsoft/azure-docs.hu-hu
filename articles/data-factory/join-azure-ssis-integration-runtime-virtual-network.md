@@ -1,22 +1,17 @@
 ---
 title: Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 description: Ismerje meg, hogyan csatlakozhat Azure-SSIS integrációs futtatókörnyezethez egy Azure-beli virtuális hálózathoz.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
-ms.openlocfilehash: a8928f9d52fd8e721ac770dda8f0cbf0162a0f61
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 9a82b305adec1385bf659987ea39df6bb953cd70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797915"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370971"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -175,7 +170,7 @@ Ha meg kell valósítania egy NSG a Azure-SSIS IR által használt alhálózatho
 | Kimenő | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az **Azure ExpressRoute vagy a UDR használatát** ismertető szakaszt.|
 | Kimenő | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a kiszolgáló által üzemeltetett SSISDB. Ha a kiszolgálói kapcsolódási házirend az **átirányítás** helyett **proxyra** van beállítva, akkor csak az 1433-es port szükséges. <br/><br/> Ez a kimenő biztonsági szabály nem alkalmazható a virtuális hálózatban lévő SQL felügyelt példány által üzemeltetett SSISDB, vagy a magánhálózati végponttal konfigurált SQL Database. |
 | Kimenő | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a virtuális hálózatban található SQL felügyelt példány által üzemeltetett SSISDB, vagy SQL Database privát végponttal konfigurálták. Ha a kiszolgálói kapcsolódási házirend az **átirányítás** helyett **proxyra** van beállítva, akkor csak az 1433-es port szükséges. |
-| Kimenő | TCP | VirtualNetwork | * | Storage | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
+| Kimenő | TCP | VirtualNetwork | * | Tárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Az Azure ExpressRoute vagy a UDR használata
@@ -600,7 +595,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 A parancs futása 20 – 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure-SSIS IRról a következő cikkekben talál további információt: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az IRs-vel kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IRt is. 

@@ -5,12 +5,12 @@ description: A virtuális hálózati erőforrásokhoz és az Azure Kubernetes sz
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f004e0e78d7a626f878ba3651e4c6078f9cd21e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482725"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366568"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolatra és biztonságra vonatkozó ajánlott eljárások az Azure Kubernetes Service-ben (AKS)
 
@@ -19,7 +19,7 @@ A fürtök Azure Kubernetes szolgáltatásban (ak) való létrehozásakor és ke
 Ez az ajánlott eljárási cikk a fürtszolgáltatások hálózati kapcsolatára és biztonságára koncentrál. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * A kubenet és az Azure CNI hálózati módjai összehasonlítása az AK-ban
+> * A kubenet és az Azure Container Networking Interface (CNI) hálózati módjai összehasonlítása az AK-ban
 > * A szükséges IP-címzés és-kapcsolat tervezése
 > * Forgalom elosztása terheléselosztó, bejövő vezérlők vagy webalkalmazási tűzfal (WAF) használatával
 > * Biztonságos kapcsolódás fürtcsomópontok számára
@@ -33,11 +33,13 @@ A virtuális hálózatok alapszintű kapcsolatot biztosítanak az AK-csomóponto
 * **Kubenet hálózatkezelés** – az Azure felügyeli a virtuális hálózati erőforrásokat, mivel a fürt üzembe lett helyezve, és a [Kubenet][kubenet] Kubernetes beépülő modult használja.
 * **Azure CNI hálózatkezelés** – üzembe helyezi egy virtuális hálózatban, és az [Azure Container Network Interface (CNI)][cni-networking] Kubernetes beépülő modult használja. A hüvelyek olyan egyedi IP-címeket fogadnak, amelyek más hálózati szolgáltatásokhoz vagy helyszíni erőforrásokhoz is továbbíthatók.
 
-A Container Network Interface (CNI) egy olyan szállító-semleges protokoll, amely lehetővé teszi, hogy a tároló futásidejű kérelmeit egy hálózati szolgáltató számára tegye elérhetővé. Az Azure-CNI az IP-címeket a hüvelyekhez és a csomópontokhoz rendeli hozzá, és az IP-címek kezelésére szolgáló (IPAM) funkciókat biztosít a meglévő Azure-beli virtuális hálózatokhoz való kapcsolódáshoz. Az egyes csomópontok és Pod-erőforrások IP-címet kapnak az Azure virtuális hálózatban, és nincs szükség további útválasztásra más erőforrásokkal vagy szolgáltatásokkal való kommunikációhoz.
+Éles üzembe helyezés esetén a kubenet és az Azure CNI is érvényes beállítások.
+
+### <a name="cni-networking"></a>CNI hálózatkezelés
+
+A Container Network Interface (CNI) egy olyan szállító-semleges protokoll, amely lehetővé teszi, hogy a tároló futásidejű kérelmeit egy hálózati szolgáltató számára tegye elérhetővé. Az Azure-CNI az IP-címeket a hüvelyekhez és a csomópontokhoz rendeli hozzá, és az IP-címek kezelésére szolgáló (IPAM) funkciókat biztosít a meglévő Azure-beli virtuális hálózatokhoz való kapcsolódáshoz. Minden egyes csomópont-és Pod-erőforrás IP-címet kap az Azure Virtual Networkben, és nincs szükség további útválasztásra más erőforrásokkal vagy szolgáltatásokkal való kommunikációhoz.
 
 ![Diagram, amely két csomópontot mutat be egyetlen Azure-VNet csatlakozó hidakkal](media/operator-best-practices-network/advanced-networking-diagram.png)
-
-Éles üzembe helyezés esetén a kubenet és az Azure CNI is érvényes beállítások.
 
 Az Azure CNI hálózatkezelésének jelentős előnye, hogy a hálózati modell lehetővé teszi az erőforrások felügyeletének és kezelésének elkülönítését. Biztonsági szempontból gyakran más csapatoknak is szüksége lehet az erőforrások felügyeletére és védelmére. Az Azure CNI hálózatkezelés lehetővé teszi a meglévő Azure-erőforrásokhoz, helyszíni erőforrásokhoz és egyéb szolgáltatásokhoz való kapcsolódást közvetlenül az egyes Pod-eszközökhöz rendelt IP-címeken keresztül.
 
@@ -47,9 +49,11 @@ Ha Azure CNI hálózatkezelést használ, a virtuális hálózati erőforrás eg
 
 Az AK szolgáltatás egyszerű delegálásával kapcsolatos további információkért lásd: [hozzáférés delegálása más Azure-erőforrásokhoz][sp-delegation]. Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást is az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
-Mivel a csomópontok és a pod a saját IP-címüket kapják, tervezze meg az AK-alhálózatok címtartományt. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy az Ön által telepített összes csomópont, hüvely és hálózati erőforrás IP-címét meg lehessen adni. Az egyes AK-fürtöket a saját alhálózatán kell elhelyezni. A helyszíni vagy az Azure-beli helyi hálózatokhoz való kapcsolódás engedélyezéséhez ne használjon olyan IP-címtartományt, amely átfedésben van a meglévő hálózati erőforrásokkal. Az egyes csomópontok által futtatott kubenet és az Azure CNI hálózatkezelésének alapértelmezett korlátai vannak. A kibővíthető események és a fürtök frissítésének kezeléséhez további IP-címekre is szükség van a hozzárendelt alhálózatban való használathoz. Ez a további címterület különösen fontos, ha Windows Server-tárolókat használ, mivel ezek a csomópont-készletek a legújabb biztonsági javítások alkalmazásához frissítést igényelnek. A Windows Server-csomópontokkal kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
+Mivel a csomópontok és a pod a saját IP-címüket kapják, tervezze meg az AK-alhálózatok címtartományt. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy az Ön által telepített összes csomópont, hüvely és hálózati erőforrás IP-címét meg lehessen adni. Az egyes AK-fürtöket a saját alhálózatán kell elhelyezni. A helyszíni vagy az Azure-beli helyi hálózatokhoz való kapcsolódás engedélyezéséhez ne használjon olyan IP-címtartományt, amely átfedésben van a meglévő hálózati erőforrásokkal. Az egyes csomópontok által futtatott kubenet és az Azure CNI hálózatkezelésének alapértelmezett korlátai vannak. A kibővíthető események és a fürtök frissítésének kezeléséhez további IP-címekre is szükség van a hozzárendelt alhálózatban való használathoz. Ez az extra címtartomány különösen fontos, ha Windows Server-tárolókat használ, mivel a csomópont-készletek frissítést igényelnek a legújabb biztonsági javítások alkalmazásához. A Windows Server-csomópontokkal kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
 A szükséges IP-cím kiszámításához lásd: az [Azure CNI Networking konfigurálása az AK-ban][advanced-networking].
+
+Amikor Azure CNI hálózatkezeléssel hoz létre fürtöt, a fürt által használt egyéb címtartományt is megadhat, például a Docker-híd címét, a DNS-szolgáltatás IP-címét és a szolgáltatási címtartományt. Általánosságban elmondható, hogy ezek a címtartományok nem fedik át egymást, és nem fedik át a fürthöz társított hálózatokat, beleértve a virtuális hálózatokat, az alhálózatokat, a helyszíni és a társas hálózatokat. A címtartományok korlátainak és méretezésének részletes ismertetését lásd: az [Azure CNI Networking konfigurálása az AK-ban][advanced-networking].
 
 ### <a name="kubenet-networking"></a>Kubenet hálózatkezelés
 
@@ -58,7 +62,9 @@ Bár a kubenet nem igényli a virtuális hálózatok beállítását a fürt üz
 * A csomópontok és a hüvelyek eltérő IP-alhálózatokra vannak helyezve. A felhasználó által megadott útválasztás (UDR) és az IP-továbbítás a hüvelyek és a csomópontok közötti forgalom irányítására szolgál. Ez a további útválasztás csökkentheti a hálózati teljesítményt.
 * A meglévő helyszíni hálózatokhoz vagy más Azure-beli virtuális hálózatokhoz való csatlakozás bonyolult lehet.
 
-A Kubenet alkalmas a kisebb fejlesztési vagy tesztelési feladatokhoz, mivel nem kell külön létrehoznia a virtuális hálózatot és az alhálózatokat az AK-fürtből. Az alacsony forgalmú egyszerű webhelyek, illetve a számítási feladatok tárolóba való átemelése a kubenet hálózatkezeléssel üzembe helyezett AK-fürtök egyszerűségét is kihasználhatja. A legtöbb éles környezetben az Azure CNI hálózatkezelését kell terveznie és használni. [A kubenet használatával saját IP-címtartományt és virtuális hálózatokat is konfigurálhat][aks-configure-kubenet-networking].
+A Kubenet alkalmas a kisebb fejlesztési vagy tesztelési feladatokhoz, mivel nem kell külön létrehoznia a virtuális hálózatot és az alhálózatokat az AK-fürtből. Az alacsony forgalmú egyszerű webhelyek, illetve a számítási feladatok tárolóba való átemelése a kubenet hálózatkezeléssel üzembe helyezett AK-fürtök egyszerűségét is kihasználhatja. A legtöbb éles környezetben az Azure CNI hálózatkezelését kell terveznie és használni.
+
+[A kubenet használatával saját IP-címtartományt és virtuális hálózatokat is konfigurálhat][aks-configure-kubenet-networking]. Az Azure CNI hálózatkezeléshez hasonlóan ezek a címtartományok nem fedik át egymást, és nem fedik át a fürthöz társított hálózatokat, beleértve a virtuális hálózatokat, az alhálózatokat, a helyszíni és a társas hálózatokat. A címtartományok korlátainak és méretezésének részletes ismertetését lásd: [kubenet hálózatkezelés használata saját IP-címtartományok használatával az AK-ban][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Bejövő forgalom elosztása
 
@@ -73,7 +79,7 @@ Az Azure Load Balancer az ügyfelek adatforgalmát az AK-fürtben lévő alkalma
  * Egy bejövő *erőforrás*, és
  * Bejövő *adatkezelő*
 
-A bejövő erőforrás egy YAML-jegyzék, `kind: Ingress` amely meghatározza a gazdagépet, a tanúsítványokat és a szabályokat, amelyekkel átirányíthatja a forgalmat az AK-fürtön futó szolgáltatásokra. Az alábbi példa YAML-jegyzék a *MyApp.com* forgalmát a két szolgáltatás, a *blogservice* vagy a *storeservice*egyikére terjeszti. Az ügyfél egy szolgáltatásra vagy a másikra irányítja az általuk elért URL-cím alapján.
+A bejövő erőforrás egy YAML-jegyzék, `kind: Ingress` amely meghatározza a gazdagépet, a tanúsítványokat és a szabályokat, amelyekkel átirányíthatja a forgalmat az AK-fürtön futó szolgáltatásokra. Az alábbi példa YAML-jegyzék a *MyApp.com* forgalmát a két szolgáltatás, a *blogservice* vagy a *storeservice* egyikére terjeszti. Az ügyfél egy szolgáltatásra vagy a másikra irányítja az általuk elért URL-cím alapján.
 
 ```yaml
 kind: Ingress
@@ -118,7 +124,7 @@ A szolgáltatások és alkalmazások forgalmát terjesztő bejövő vezérlő á
 
 ![A webalkalmazási tűzfal (WAF), például az Azure app Gateway képes a forgalom biztonságára és terjesztésére az AK-alapú fürt számára](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-A webalkalmazási tűzfal (WAF) egy további biztonsági réteget biztosít a bejövő forgalom szűrésével. Az Open Web Application Security Project (OWASP) olyan szabályokat tartalmaz, amelyekkel megfigyelheti a több helyre történő parancsfájlok vagy a cookie-mérgezés elleni támadásokat. Az [Azure Application Gateway][app-gateway] (jelenleg előzetes verzióban érhető el) egy olyan WAF, amely az AK-fürtökkel integrálva biztosítja ezeket a biztonsági funkciókat, mielőtt a forgalom eléri az AK-fürtöt és-alkalmazásokat. Más, harmadik féltől származó megoldások is végrehajtják ezeket a funkciókat, így továbbra is használhatnak egy adott termék meglévő befektetéseit vagy szakértelmét.
+A webalkalmazási tűzfal (WAF) további biztonsági réteget biztosít a bejövő forgalom szűrésével. Az Open Web Application Security Project (OWASP) olyan szabályokat tartalmaz, amelyekkel megfigyelheti a több helyre történő parancsfájlok vagy a cookie-mérgezés elleni támadásokat. Az [Azure Application Gateway][app-gateway] (jelenleg előzetes verzióban érhető el) egy olyan WAF, amely az AK-fürtökkel integrálva biztosítja ezeket a biztonsági funkciókat, mielőtt a forgalom eléri az AK-fürtöt és-alkalmazásokat. Más, harmadik féltől származó megoldások is végrehajtják ezeket a funkciókat, így továbbra is használhatnak egy adott termék meglévő befektetéseit vagy szakértelmét.
 
 A terheléselosztó vagy a bejövő erőforrások továbbra is futnak az AK-fürtön, hogy tovább pontosítsák a forgalom eloszlását. Az alkalmazás-átjáró központilag felügyelhető egy erőforrás-definícióval rendelkező bejövő vezérlőként. Első lépésként [hozzon létre egy Application Gateway bejövő adatkezelőt][app-gateway-ingress].
 

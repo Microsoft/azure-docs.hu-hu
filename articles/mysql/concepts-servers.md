@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5477aa0c4eb2a66af816b287a8b6d7da8a53952f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ed6d5d676fd2c6eefd3288b7609446eb61611ed6
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534891"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517977"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>A kiszolgálói fogalmak a Azure Database for MySQL
 
@@ -46,7 +46,7 @@ A következő elemek segítenek biztosítani az adatbázis biztonságos elérés
 | **Tűzfal** | Az adatai védelme érdekében egy tűzfalszabály megakadályozza az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. Tekintse meg [Azure Database for MySQL kiszolgáló tűzfalszabályok szabályait](./concepts-firewall-rules.md). |
 | **SSL** | A szolgáltatás támogatja az alkalmazások és az adatbázis-kiszolgáló közötti SSL-kapcsolatok kényszerítését.  Lásd [SSL-összekapcsolhatóság konfigurálása az alkalmazásban a MySQL Azure-adatbázisához való biztonságos kapcsolódás érdekében](./howto-configure-ssl.md). |
 
-## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Azure Database for MySQL leállítása/elindítása (előzetes verzió)
+## <a name="stopstart-an-azure-database-for-mysql"></a>Azure Database for MySQL leállítása/elindítása
 
 Azure Database for MySQL lehetővé teszi a kiszolgáló **leállítását** , ha nincs használatban, és **elindítja** a kiszolgálót a tevékenység folytatásakor. Ez lényegében az adatbázis-kiszolgálók költségeinek megtakarítására szolgál, és csak használat közben kell fizetnie az erőforrásért. Ez még fontosabbá válik a fejlesztési és tesztelési feladatokhoz, és ha csak a nap egy részében használja a kiszolgálót. Ha leállítja a kiszolgálót, az összes aktív kapcsolat el lesz dobva. Később, amikor újra online állapotba szeretné állítani a kiszolgálót, használhatja a [Azure Portal](how-to-stop-start-server.md) vagy a [CLI](how-to-stop-start-server.md)-t.
 

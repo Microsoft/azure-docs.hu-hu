@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 02/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904035"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362420"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -196,7 +196,7 @@ Az eszköz állapotának feltétele a hibrid Azure AD-hez csatlakoztatott eszkö
 Például minden olyan *felhasználó* **, aki** a *Microsoft Azure Management* Cloud alkalmazáshoz fér hozzá, beleértve az eszköz **összes ÁLLAPOTÁT** , kivéve az **eszközök hibrid Azure ad-hez csatlakoztatott** eszközét és a **megfelelőként megjelölt eszközt** , valamint a *hozzáférés-vezérlést*. 
    - Ez a példa olyan házirendet hoz létre, amely csak a hibrid Azure AD-hez csatlakoztatott vagy a megfelelőként megjelölt eszközökön engedélyezi a Microsoft Azure felügyeletét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: Engedélyezés](concept-conditional-access-grant.md)
 

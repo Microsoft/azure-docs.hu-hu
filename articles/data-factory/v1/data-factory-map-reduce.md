@@ -1,23 +1,18 @@
 ---
 title: MapReduce program meghívása Azure Data Factory
 description: Ismerje meg, hogyan dolgozhat fel az adatok egy Azure HDInsight-fürtön futó MapReduce-programok Azure-beli adatgyárból való futtatásával.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8bdcaf20330a3700681fd96f858370dd7dcdf4c7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495429"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371073"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-programok meghívása Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]

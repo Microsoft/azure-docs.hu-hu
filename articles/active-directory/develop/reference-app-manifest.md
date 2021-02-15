@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583043"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103345"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
@@ -33,7 +33,7 @@ Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigu
 
 Az alkalmazás jegyzékfájljának konfigurálása:
 
-1. Lépjen a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
+1. Nyissa meg az <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>. Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
 1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki a konfigurálni kívánt alkalmazást.
 1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú jegyzékfájl-szerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését a portálon belül. Ha szeretné, a **Letöltés** lehetőségre kattintva helyileg szerkesztheti a jegyzékfájlt, majd a **feltöltés** funkcióval újra alkalmazhatja azt az alkalmazásra.

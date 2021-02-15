@@ -1,15 +1,15 @@
 ---
 title: A CIS Microsoft Azure alapjaira vonatkozó szabályozási megfelelőségi részletek
 description: A CIS Microsoft Azure alapítványok alapszintű szabályozási megfelelőségének beépített kezdeményezésének részletei. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 87af2d644490170af1dba336c578af3e8ceb5639
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 02976da72027f9e5c5396148cd15e361aaf20ab0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559179"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099778"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>A CIS Microsoft Azure alapítványok alapszintű szabályozási megfelelőségének beépített kezdeményezésének részletei
 
@@ -217,7 +217,7 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure alapítványok teljesít
 
 |Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[A Storage-fiókoknak korlátoznia kell a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |A Storage-fiókok hálózati hozzáférését korlátozni kell. Konfigurálja a hálózati szabályokat úgy, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyi ügyfelekről érkező kapcsolatok engedélyezéséhez hozzáférés adható a megadott Azure-beli virtuális hálózatoktól vagy a nyilvános internetes IP-címtartományok felé irányuló forgalom számára. |Naplózás, megtagadás, letiltva |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
+|[A Storage-fiókoknak korlátoznia kell a hálózati hozzáférést](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |A Storage-fiókok hálózati hozzáférését korlátozni kell. Konfigurálja a hálózati szabályokat úgy, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyszíni ügyfelekről érkező kapcsolatok engedélyezéséhez az adott Azure-beli virtuális hálózatoktól vagy a nyilvános internetes IP-címtartományok felé irányuló adatforgalom megadható. |Naplózás, megtagadás, letiltva |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 
 ### <a name="ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>Győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások engedélyezve vannak a Storage-fiók eléréséhez
 
@@ -251,7 +251,7 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure alapítványok teljesít
 
 |Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Az SQL-kiszolgálókat 90 napos naplózási vagy magasabb szintű naplózással kell konfigurálni.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |Az SQL-kiszolgálókat 90 napos naplózási vagy magasabb szintű naplózással kell konfigurálni. |AuditIfNotExists, letiltva |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
+|[Az SQL-kiszolgálókat 90 napos naplózási megőrzéssel vagy magasabb értékkel kell konfigurálni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |Az SQL-kiszolgálókat 90 napos naplózási vagy magasabb szintű naplózással kell konfigurálni. |AuditIfNotExists, letiltva |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
 
 ### <a name="ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>Győződjön meg arról, hogy az SQL Server "on" értékre van állítva a "speciális adatbiztonság"
 
@@ -391,7 +391,7 @@ Ez a beépített kezdeményezés a [CIS Microsoft Azure alapítványok teljesít
 
 |Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[A Key Vault lévő diagnosztikai naplókat engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Diagnosztikai naplók engedélyezésének naplózása. Ez lehetővé teszi, hogy újra létrehozza a vizsgálat céljára szolgáló tevékenység-nyomvonalat, amikor biztonsági incidens következik be, vagy ha a hálózat biztonsága sérül |AuditIfNotExists, letiltva |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|[A Key Vault erőforrás-naplóit engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Az erőforrás-naplók engedélyezésének naplózása. Ez lehetővé teszi, hogy újra létrehozza a vizsgálat céljára szolgáló tevékenység-nyomvonalat, amikor biztonsági incidens következik be, vagy ha a hálózat biztonsága sérül |AuditIfNotExists, letiltva |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>Győződjön meg arról, hogy a tevékenység naplójának riasztása létezik a szabályzat-hozzárendelés létrehozásakor
 

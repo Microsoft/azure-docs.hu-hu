@@ -1,15 +1,15 @@
 ---
 title: Az Azure Service Fabric beépített szabályzat-definíciói
 description: Az Azure Service Fabric beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 782c6aa91e5128be3018fa1a7b6be1671b8f9244
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a006e704dcfe91cd76daef169b64927a7f6ac62
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556013"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098341"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Az Azure Service Fabric beépített definíciói Azure Policy
 

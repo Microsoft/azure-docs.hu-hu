@@ -1,28 +1,82 @@
 ---
 title: Változók a sablonokban
-description: Leírja, hogyan lehet változókat definiálni egy Azure Resource Manager sablonban (ARM-sablon).
+description: Leírja, hogyan lehet változókat definiálni egy Azure Resource Manager sablonban (ARM-sablon) és a bicep-fájlban.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874434"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364460"
 ---
-# <a name="variables-in-arm-template"></a>Az ARM-sablonban szereplő változók
+# <a name="variables-in-arm-templates"></a>Az ARM-sablonokban szereplő változók
 
-Ez a cikk bemutatja, hogyan határozhat meg és használhat változókat a Azure Resource Manager-sablonban (ARM-sablon). Változók használatával egyszerűsítheti a sablont. Ahelyett, hogy a sablonban megismételje a bonyolult kifejezéseket, Definiáljon egy változót, amely tartalmazza a bonyolult kifejezést. Ezután a sablonban szükség szerint hivatkozhat erre a változóra.
+Ez a cikk bemutatja, hogyan határozhat meg és használhat változókat a Azure Resource Manager-sablonban (ARM-sablon) vagy a bicep-fájlban. Változók használatával egyszerűsítheti a sablont. Ahelyett, hogy a sablonban megismételje a bonyolult kifejezéseket, Definiáljon egy változót, amely tartalmazza a bonyolult kifejezést. Ezt követően a változót igény szerint használhatja a sablonban.
 
 A Resource Manager a telepítési műveletek megkezdése előtt feloldja a változókat. Mindenhol, ahol a sablonban a változót kell használni, a Resource Manager lecseréli a változót a feloldott értékre.
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>Változó meghatározása
 
-Egy változó definiálásakor adjon meg egy értéket vagy egy sablon kifejezést, amely feloldja az [adattípust](template-syntax.md#data-types). A változó létrehozásakor egy paraméter vagy egy másik változó értékét is használhatja.
+Változó meghatározásakor nem kell megadnia a változó [adattípusát](template-syntax.md#data-types) . Ehelyett adjon meg egy értéket vagy egy sablon kifejezést. A változó típusa a megoldott értékből lett kikövetkeztetve. A következő példa egy változót állít be egy karakterláncra.
 
-A változó deklarációjában használhatja a [template functions](template-functions.md) funkciót, de nem használhatja a [Reference](template-functions-resource.md#reference) függvényt vagy a [List](template-functions-resource.md#list) függvényeket. Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
+# <a name="json"></a>[JSON](#tab/json)
 
-Az alábbi példa egy változó definícióját mutatja be. Létrehoz egy karakterlánc-értéket a Storage-fiók nevéhez. Számos sablon függvényt használ a paraméterérték beolvasásához, és összefűzi azt egy egyedi karakterlánchoz.
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+A változó létrehozásakor egy paraméter vagy egy másik változó értékét is használhatja.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+A változó értékét a [template functions](template-functions.md) használatával hozhatja létre.
+
+A JSON-sablonokban nem használható a változó deklarációjában a [Reference](template-functions-resource.md#reference) függvény vagy a [List](template-functions-resource.md#list) függvény bármelyike. Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
+
+A hivatkozás és a lista függvények érvényesek egy változónak a bicep fájlban való deklarálása során.
+
+A következő példa egy karakterlánc-értéket hoz létre egy Storage-fiók nevéhez. Számos sablon függvényt használ a paraméterérték beolvasásához, és összefűzi azt egy egyedi karakterlánchoz.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ Az alábbi példa egy változó definícióját mutatja be. Létrehoz egy karakt
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>Változó használata
 
-A sablonban a [változók](template-functions-deployment.md#variables) függvény használatával hivatkozhat a paraméter értékére. Az alábbi példa bemutatja, hogyan használható a változó egy erőforrás-tulajdonsághoz.
+Az alábbi példa bemutatja, hogyan használható a változó egy erőforrás-tulajdonsághoz.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+Egy JSON-sablonban a változó értékét a [változók](template-functions-deployment.md#variables) függvény használatával kell hivatkozni.
 
 ```json
 "resources": [
@@ -44,19 +110,48 @@ A sablonban a [változók](template-functions-deployment.md#variables) függvén
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Egy bicep-fájlban a változó értékének megadásával hivatkozhat a változóra.
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>Példa sablonra
 
-A következő sablon egyetlen erőforrást sem helyez üzembe. Ez csak a változók bevallásának bizonyos módjait mutatja be.
+A következő sablon egyetlen erőforrást sem helyez üzembe. A különböző típusú változók deklarálása néhány módon megmutatható.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+A bicep jelenleg nem támogatja a hurkokat.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
+
 ## <a name="configuration-variables"></a>Konfigurációs változók
 
-Meghatározhatja a környezet konfigurálásához kapcsolódó értékeket tároló változókat. A változót az értékekkel rendelkező objektumként definiálhatja. A következő példa egy olyan objektumot mutat be, amely két környezet, a **test** és a **Prod** értékeit tárolja. A telepítés során az alábbi értékek egyikét adja át.
+Meghatározhatja a környezet konfigurálásához kapcsolódó értékeket tároló változókat. A változót az értékekkel rendelkező objektumként definiálhatja. A következő példa egy olyan objektumot mutat be, amely két környezet, a **test** és a **Prod** értékeit tárolja. Az üzembe helyezés során adja át az alábbi értékek egyikét.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
 
-## <a name="next-steps"></a>További lépések
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
+
+## <a name="next-steps"></a>Következő lépések
 
 * A változók elérhető tulajdonságainak megismeréséhez tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * A változók létrehozásával kapcsolatos javaslatokért lásd: [ajánlott eljárások – változók](template-best-practices.md#variables).

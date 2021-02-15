@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756043"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104280"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -105,7 +105,7 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
 
 **4. táblázat: választható jogcímek konfigurálásának értékei**
 
-| Tulajdonság neve  | További tulajdonságnév | Leírás |
+| Tulajdonság neve  | További tulajdonságnév | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Az SAML-és JWT-válaszokhoz, valamint a 1.0-s és a v 2.0-tokenekhez is használható. |
 |                | `include_externally_authenticated_upn`  | Az erőforrás-bérlőben tárolt vendég UPN-t tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -138,7 +138,7 @@ Ez a OptionalClaims objektum azt eredményezi, hogy a rendszer visszaadja az azo
 
 Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület vagy az alkalmazás jegyzékfájlja segítségével konfigurálhatja.
 
-1. Lépjen a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
+1. Nyissa meg az <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>. 
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
@@ -153,7 +153,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 1. Válassza a **választható jogcím hozzáadása** lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 
 **Választható jogcímek konfigurálása az alkalmazás jegyzékfájlján keresztül:**
@@ -201,7 +201,7 @@ Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmaz�
 
 **5. táblázat: OptionalClaims típusának tulajdonságai**
 
-| Név          | Típus                       | Leírás                                           |
+| Név          | Típus                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Gyűjtemény (OptionalClaim) | A JWT azonosító jogkivonatában visszaadott választható jogcímek.     |
 | `accessToken` | Gyűjtemény (OptionalClaim) | Az JWT hozzáférési jogkivonatban visszaadott választható jogcímek. |
@@ -214,7 +214,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 
 **6. táblázat: OptionalClaim típusának tulajdonságai**
 
-| Név                   | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
+| Név                   | Típus                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím neve.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | A jogcím forrása (Directory-objektum). A bővítmény tulajdonságaiban előre definiált jogcímek és felhasználó által definiált jogcímek találhatók. Ha a forrás értéke null, a jogcím egy előre meghatározott opcionális jogcím. Ha a forrás értéke felhasználó, a Name (név) tulajdonság értéke a felhasználói objektum kiterjesztés tulajdonsága. |
@@ -246,7 +246,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
 **Csoportok konfigurálása választható jogcímek a felhasználói felületen keresztül:**
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
@@ -259,7 +259,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
 **Csoportok konfigurálása választható jogcímek az alkalmazás jegyzékfájlján keresztül:**
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
@@ -388,7 +388,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 **Felhasználói felület konfigurációja:**
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
 
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
@@ -411,7 +411,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 **Jegyzékfájl konfigurációja:**
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. Keresse meg azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában, majd válassza ki azt.
@@ -447,7 +447,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Amikor befejezte a jegyzékfájl frissítését **, a Mentés gombra kattintva** mentheti a jegyzékfájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure AD által biztosított standard jogcímekről.
 

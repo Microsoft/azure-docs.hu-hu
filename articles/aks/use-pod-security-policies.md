@@ -3,18 +3,18 @@ title: A pod biztonsági szabályzatok használata az Azure Kubernetes szolgált
 description: Megtudhatja, hogyan vezérelheti a pod-felvételeket az Azure Kubernetes Service (ak) PodSecurityPolicy használatával
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/12/2021
+ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695996"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371226"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt biztonságossá tétele a pod biztonsági szabályzatok használatával az Azure Kubernetes szolgáltatásban (ak)
 
 > [!WARNING]
-> **A jelen dokumentumban ismertetett funkció, a pod biztonsági szabályzat (előzetes verzió), az elavult értékre van állítva, és a továbbiakban nem lesz elérhető a 2021** -es számú [Azure Policy az AK](use-pod-security-on-azure-policy.md)-ban. Az Érvénytelenítési dátum az előző dátummal bővült, 2020. október 15-ig.
+> **A jelen dokumentumban ismertetett szolgáltatás, a pod biztonsági szabályzat (előzetes verzió), az elavultság beállítására van beállítva, és a továbbiakban nem lesz elérhető 2021. június 30. után,** [Azure Policy az AK](use-pod-security-on-azure-policy.md)-ban. Az Érvénytelenítési dátum az előző dátummal bővült, 2020. október 15-ig.
 >
 > Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
 >

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d712dc0ebe91ea8815adf235e02b8945e0dea84
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518861"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Gyors útmutató: az adatelemzés a Databricks
 
@@ -76,7 +76,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 4. Válassza a **fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
-További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
+További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](/azure/databricks/clusters/create) ismertető szakaszban talál.
 
 ## <a name="create-notebook"></a>Jegyzetfüzet létrehozása
 
@@ -92,7 +92,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
 
     ![Jegyzetfüzet létrehozása a Databricks-ben](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
-    Kattintson a **Létrehozás** gombra.
+    Válassza a **Létrehozás** lehetőséget.
 
 4. Másolja és illessze be az alábbi kódrészletet az első cellába, de még ne futtassa ezt a kódot.
 
@@ -149,7 +149,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
     A parancs sikeres végrehajtása után a JSON-fájl összes adata táblaként jelenik meg a Databricks-fürtben.
 
-    Az `%sql` nyelvi varázsparancs segítségével SQL-kódot futtathat egy másik típusba tartozó notebookról is. További információért olvassa el a [többféle nyelv notebookokban történő használatát](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook) ismertető cikket.
+    Az `%sql` nyelvi varázsparancs segítségével SQL-kódot futtathat egy másik típusba tartozó notebookról is. További információért olvassa el a [többféle nyelv notebookokban történő használatát](/azure/databricks/notebooks/notebooks-use#mix-languages) ismertető cikket.
 
 2. A futtatott lekérdezés jobb megértéséhez vessünk egy pillantást a JSON-mintafájl adatairól készült pillanatfelvételre. Illessze be a következő kódtöredéket a kódcellába, majd nyomja le a **SHIFT + ENTER** billentyűparancsot.
 
@@ -191,7 +191,7 @@ Ha elkészült ezzel a cikkel, leállíthatja a fürtöt. Az Azure Databricks-mu
 
 Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzetet. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve futtatott egy Spark-feladatot a Data Lake Storage Gen2-kompatibilis tárfiók adatainak felhasználásával.
 
@@ -200,6 +200,6 @@ Folytassa a következő cikkel annak megismeréséhez, hogyan végezhet ETL-műv
 > [!div class="nextstepaction"]
 >[Adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
-- Az adatok más adatforrásokból Azure Databricksba való importálásának megismeréséhez tekintse meg a [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)című témakört.
+- Az adatok más adatforrásokból Azure Databricksba való importálásának megismeréséhez tekintse meg a [Spark-adatforrások](/azure/databricks/data/data-sources/)című témakört.
 
-- Az Azure Data Lake Storage Gen2 Azure Databricks munkaterületről való elérésének egyéb módjaival kapcsolatos további tudnivalókért lásd: [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).
+- Az Azure Data Lake Storage Gen2 Azure Databricks munkaterületről való elérésének egyéb módjaival kapcsolatos további tudnivalókért lásd: [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2).
