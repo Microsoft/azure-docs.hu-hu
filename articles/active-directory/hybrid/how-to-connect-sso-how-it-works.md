@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86144697"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369645"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: technikai részletes bemutató
 
@@ -67,6 +67,10 @@ A bejelentkezés a böngészőben a következőképpen történik:
 6. Active Directory megkeresi a számítógépfiókot, és a számítógép fiókjának titkával titkosított Kerberos-jegyet ad vissza a böngészőnek.
 7. A böngésző továbbítja a Active Directory által az Azure AD-be beszerzett Kerberos-jegyet.
 8. Az Azure AD visszafejti a Kerberos-jegyet, amely magában foglalja a vállalati eszközre bejelentkezett felhasználó identitását a korábban megosztott kulccsal.
+
+   >[!NOTE]
+   >Az Azure AD megkísérli a Kerberos-jegyből származó felhasználó UPN-azonosítójának egyeztetését egy olyan Azure AD felhasználói objektumba, amely megfelelő értékkel rendelkezik a userPrincipalName attribútumban. Ha ez nem sikerül, az Azure AD vissza fog térni a Kerberos-jegy samAccountName egy Azure AD felhasználói objektumba való megfeleltetéséhez, amely a onPremisesSamAccountName attribútum megfelelő értékkel rendelkezik.
+   
 9. Az értékelés után az Azure AD visszaadja a tokent az alkalmazásnak, vagy megkéri a felhasználót, hogy végezzen további bizonyítékokat, például a Multi-Factor Authentication.
 10. Ha a felhasználói bejelentkezés sikeres, a felhasználó hozzáférhet az alkalmazáshoz.
 
@@ -96,7 +100,7 @@ A következő ábra az összes összetevőt és a benne foglalt lépéseket muta
 
 ![Zökkenőmentes egyszeri bejelentkezés – natív alkalmazás folyamata](./media/how-to-connect-sso-how-it-works/sso14.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [**Gyorskonfigurálás**](how-to-connect-sso-quick-start.md) – az Azure ad zökkenőmentes egyszeri bejelentkezésének megkezdése és futtatása.
 - [**Gyakori kérdések**](how-to-connect-sso-faq.md) – válaszok a gyakori kérdésekre.

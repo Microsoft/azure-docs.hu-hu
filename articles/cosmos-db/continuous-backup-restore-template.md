@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 642c61414d882b9cfe83f585fda8ff5404e8834a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 4abfdd0209bd9f13fb7bd902b27a53f65156da2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538476"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381817"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-resource-manager-templates"></a>A folyamatos biztonsági mentés és az időponthoz tartozó visszaállítás (előzetes verzió) konfigurálása és kezelése Azure Resource Manager sablonok használatával
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy fiókot a folyamatos biztonsá
 
 ## <a name="provision-an-account-with-continuous-backup"></a><a id="provision"></a>Folyamatos biztonsági mentéssel rendelkező fiók kiépítése
 
-Azure Resource Manager-sablonok használatával folyamatos üzemmódú Azure Cosmos DB-fiókot helyezhet üzembe. A fiók kiépítéséhez szükséges sablon definiálásakor adja meg a "backupPolicy" paramétert az alábbi példában látható módon:
+Azure Resource Manager-sablonok használatával folyamatos üzemmódú Azure Cosmos DB-fiókot helyezhet üzembe. A fiók kiépítéséhez szükséges sablon definiálásakor a `backupPolicy` következő példában látható módon adja meg a paramétert:
 
 ```json
 {
@@ -66,9 +66,9 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 A fiókot a Resource Manager-sablonnal is visszaállíthatja. A sablon definiálásakor a következő paramétereket kell megadnia:
 
-* A "createMode" paraméter beállítása "visszaállítás" értékre
-* Adja meg a "restoreParameters" értéket, figyelje meg, hogy a "restoreSource" érték ki van kinyerve a `az cosmosdb restorable-database-account list` forrás fiókjához tartozó parancs kimenetében. A rendszer a fiókhoz tartozó instance ID attribútumot használja a visszaállításhoz.
-* Állítsa a "restoreMode" paramétert "PointInTime" értékre, és konfigurálja a "restoreTimestampInUtc" értéket.
+* Állítsa `createMode` vissza a paramétert a *visszaállításhoz*
+* Adja meg a `restoreParameters` következőt:, figyelje meg, hogy a `restoreSource` rendszer kinyeri az értéket a `az cosmosdb restorable-database-account list` forrás fiókjához tartozó parancs kimenetében. A rendszer a fiókhoz tartozó instance ID attribútumot használja a visszaállításhoz.
+* Állítsa a `restoreMode` paramétert a *PointInTime* és az `restoreTimestampInUtc` érték konfigurálására.
 
 ```json
 {

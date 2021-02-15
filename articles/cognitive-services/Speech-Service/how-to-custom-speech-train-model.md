@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968466"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373368"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>A Custom Speech-modellek betanítása és üzembe helyezése
 
@@ -40,7 +40,19 @@ A modellek betanításának első lépése a betanítási adatok feltöltése. A
 3. Válassza ki a **betanítási modellt**.
 4. Adja meg a betanítás **nevét** és **leírását**.
 5. A **forgatókönyv és** az alapkonfiguráció-modell listából válassza ki azt a forgatókönyvet, amely a legjobban megfelel a tartománynak. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános** lehetőséget. Az alapmodell a betanítás kiindulási pontja. A legújabb modell általában a legjobb választás.
-6. A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több kapcsolódó szöveges adatkészletet, vagy a betanításhoz használni kívánt hang-és emberi-címkével ellátott átírási adatkészleteket. Új modell betanításakor Kezdje a kapcsolódó szöveggel; a hang + ember által címkézett átiratok betanítása sokkal hosszabb időt vehet igénybe (akár [több napig](how-to-custom-speech-evaluate-data.md#improve-model-recognition)is).
+6. A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több kapcsolódó szöveges adatkészletet, vagy a betanításhoz használni kívánt hang-és emberi-címkével ellátott átírási adatkészleteket.
+
+> [!NOTE]
+> Új modell betanításakor Kezdje a kapcsolódó szöveggel; a hang + ember által címkézett átiratok betanítása sokkal hosszabb időt vehet igénybe **(akár [több napig](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)** is).
+
+> [!NOTE]
+> Nem minden alapmodell támogatja a hangfelvételt. Ha egy alapmodell nem támogatja azt, a beszédfelismerési szolgáltatás csak az átiratokból származó szöveget fogja használni, és figyelmen kívül hagyja a hangot. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg.
+
+> [!NOTE]
+> Abban az esetben, ha megváltoztatja a betanításhoz használt alapmodellt, és a betanítási adatkészletben van hang, *mindig* győződjön meg arról, hogy az új kiválasztott alapmodell támogatja-e a [hangadatokkal való képzést](language-support.md#speech-to-text). Ha a korábban használt alapmodell nem támogatja a hangadatokkal való betanítást, és a betanítási adatkészlet hang-és betanítási időt tartalmaz, az új alapmodellel **jelentősen** növekedni fog, és könnyen elvégezhető több óra és több nap között. Ez különösen akkor igaz, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardvert](custom-speech-overview.md#set-up-your-azure-account) betanítják.
+>
+> Ha a fenti bekezdésben ismertetett probléma merül fel, gyorsan csökkentheti a betanítási időt, ha csökkenti az adatkészletben lévő hang mennyiségét, vagy teljesen eltávolítja, és csak a szöveget hagyja. Az utóbbi lehetőség kifejezetten ajánlott, ha a beszédfelismerési szolgáltatás előfizetése **nincs** olyan [régióban, ahol a dedikált hardver](custom-speech-overview.md#set-up-your-azure-account) betanítása történik.
+
 7. A betanítás befejezése után az újonnan betanított modell pontossági tesztelését végezheti el. Ez a lépés nem kötelező.
 8. Válassza a **Létrehozás** lehetőséget az egyéni modell kiépítéséhez.
 

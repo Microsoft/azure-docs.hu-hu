@@ -1,23 +1,18 @@
 ---
 title: Az adatfolyamatok monitorozása és kezelése – Azure
 description: Ismerje meg, hogyan használható a figyelési és felügyeleti alkalmazás az Azure-beli adatüzemek és-folyamatok figyeléséhez és kezeléséhez.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495701"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380372"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
 > [!div class="op_single_selector"]
@@ -177,7 +172,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és nem futtathatja a tevékenység ablakait egészen addig, amíg újra nem fut.</td>
 </tr>
 <tr>
-<td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
+<td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
 <td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
@@ -210,7 +205,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Kimarad</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
 </tr>
 <tr>
-<td>Nincsenek</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
+<td>Nincs</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
 </tr>
 </table>
 

@@ -7,20 +7,22 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: dfd8526a035d4eef4d07539e541e37c88023b500
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/09/2021
+ms.openlocfilehash: 8ae9a89ddba2010603ae5a5f6b812e3aa1e1e3a6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063213"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097976"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexelő ütemezhetnek az Azure Cognitive Search
 
 Az indexelő általában egyszer fut, közvetlenül a létrehozása után. Ezt követően igény szerint újra futtathatja a Azure Portal használatával, az [Indexelő (REST)](/rest/api/searchservice/run-indexer)vagy egy Azure SDK futtatásával. Azt is megteheti, hogy az indexelő úgy is konfigurálhatja, hogy az ütemterv szerint fusson. Előfordulhat, hogy az indexelő ütemezése hasznos:
 
-* A forrásadatok idővel változnak, és azt szeretné, hogy a keresési indexelő automatikusan feldolgozza a különbözetet.
-* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. A nagy mennyiségű adat indexelésével kapcsolatos további információkért lásd: [nagyméretű adatkészletek indexelése az Azure Cognitive Searchban](search-howto-large-index.md).
+* A forrásadatok idővel változnak, és azt szeretné, hogy a keresési indexelő automatikusan feldolgozza a különbséget.
+
+* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. Az indexelő feladatok a normál adatforrások esetében legfeljebb 24 óra, a szakértelmével rendelkező indexelő esetében pedig 2 óra alatt futnak. Ha az indexelés nem hajtható végre a maximális intervallumon belül, beállíthatja a 2 óránként futó ütemtervet. Az indexelő automatikusan kiválaszthatják, hogy hol hagyták el őket, ahogy azt egy belső, magas vízjelek jelzik, amelyek az indexelés utolsó végére utalnak. Az indexelő ismétlődő 2 órás ütemezésű futtatása lehetővé teszi, hogy egy nagyon nagy adatkészletet (több millió dokumentumot) futtasson egy adott feladatokhoz engedélyezett intervallumon túl. A nagyméretű adatmennyiségek indexelésével kapcsolatos további információkért lásd: [nagyméretű adatkészletek indexelése az Azure Cognitive Searchban](search-howto-large-index.md).
+
 * A keresési index több adatforrásból lesz feltöltve, és azt szeretné, hogy az indexelő az ütközések csökkentése érdekében különböző időpontokban fussanak.
 
 Vizuálisan az ütemterv a következőhöz hasonló lehet: január 1-től kezdődően, és 50 percenként fut.

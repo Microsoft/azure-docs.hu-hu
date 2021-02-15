@@ -1,20 +1,20 @@
 ---
 title: Azure spot virtuális gépeket használó méretezési csoport létrehozása
 description: Megtudhatja, hogyan hozhat létre helyszíni virtuális gépeket használó Azure virtuálisgép-méretezési csoportokat a költségek megtakarítása érdekében.
-author: cynthn
-ms.author: cynthn
+author: JagVeerappan
+ms.author: jagaveer
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
-ms.reviewer: jagaveer
+ms.reviewer: cynthn
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03bf5e0ef7e6268e68139b6d73685f67d88f6231
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729015"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385931"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot virtuális gépek virtuálisgép-méretezési csoportokhoz 
 
@@ -30,13 +30,31 @@ A helyszíni példányok díjszabása a régió és az SKU alapján változó. T
 
 A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a példány árát a rendszer nem fogja kizárni. A példány díja a helyszíni aktuális díj, vagy egy standard példány díjszabása, amely soha nem kevesebb, ha rendelkezésre áll kapacitás és kvóta.
 
+
+## <a name="limitations"></a>Korlátozások
+
+Az Azure spot esetében a következő méretek nem támogatottak:
+ - B sorozat
+ - Bármilyen méretű promóciós verzió (például Dv2, NV, NC, H promo-méretek)
+
+Az Azure spot bármely régióba üzembe helyezhető, kivéve Microsoft Azure China 21Vianet.
+
+<a name="channel"></a>
+
+Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
+
+-   Nagyvállalati Szerződés
+-   Utólagos elszámolású ajánlat kódja 003P
+-   Szponzorált
+- A felhőalapú szolgáltató (CSP) esetében forduljon a partnerhez
+
 ## <a name="eviction-policy"></a>Kiürítési szabályzat
 
 A direktszínes méretezési csoportok létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
 
 A *felszabadított* házirend áthelyezi a kizárt példányokat a leállított, lefoglalt állapotba, ami lehetővé teszi a kizárt példányok újratelepítését. Azonban nem garantálható, hogy a foglalás sikeres lesz. A delefoglalt virtuális gépek a méretezési csoport példánya kvótájának számítanak, és a mögöttes lemezek után díjat számítunk fel. 
 
-Ha szeretné, hogy a direktszín-méretezési csoport példányai törölve legyenek a kizárásakor, beállíthatja a *törlési*szabályzatot. A törlési házirend beállításával új virtuális gépeket hozhat létre a méretezési csoport példányainak száma tulajdonság növelésével. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, ezért a tárterületért nem számítunk fel díjat. A méretezési csoportok automatikus skálázási funkciójának használatával automatikusan kipróbálhatja és kompenzálhatja a kizárt virtuális gépeket, azonban nem garantálható, hogy a foglalás sikeres lesz. Javasoljuk, hogy csak az automatikus méretezési funkciót használja a direktszínes méretezési csoportokon, ha a törlési szabályzatot törölni szeretné, hogy elkerülje a lemezek költségeit és a kvóták korlátait. 
+Ha szeretné, hogy a direktszín-méretezési csoport példányai törölve legyenek a kizárásakor, beállíthatja a *törlési* szabályzatot. A törlési házirend beállításával új virtuális gépeket hozhat létre a méretezési csoport példányainak száma tulajdonság növelésével. A kizárt virtuális gépeket a rendszer a mögöttes lemezekkel együtt törli, ezért a tárterületért nem számítunk fel díjat. A méretezési csoportok automatikus skálázási funkciójának használatával automatikusan kipróbálhatja és kompenzálhatja a kizárt virtuális gépeket, azonban nem garantálható, hogy a foglalás sikeres lesz. Javasoljuk, hogy csak az automatikus méretezési funkciót használja a direktszínes méretezési csoportokon, ha a törlési szabályzatot törölni szeretné, hogy elkerülje a lemezek költségeit és a kvóták korlátait. 
 
 A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md)használatával kapják meg. Ez értesíti Önt, ha a virtuális gépek ki vannak zárva, és 30 másodpercen belül befejezi az összes feladatot, és leállítási feladatokat hajt végre a kizárás előtt. 
 
@@ -44,7 +62,7 @@ A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure 
 Az elhelyezési csoport egy Azure rendelkezésre állási készlethez hasonló szerkezet, amely saját tartalék tartományokkal és frissítési tartománnyal rendelkezik. A méretezési csoport alapértelmezés szerint egy legfeljebb 100 virtuális gép méretű elhelyezési csoportból áll. Ha a nevű méretezési csoport tulajdonság értéke `singlePlacementGroup` *false (hamis*), a méretezési csoport több elhelyezési csoportból is állhat, és 0 – 1000 virtuális gépet tartalmaz. 
 
 > [!IMPORTANT]
-> Hacsak nem használ InfiniBand-t a HPC használatával, erősen ajánlott a méretezési csoport tulajdonságot false értékre állítani, `singlePlacementGroup` hogy több elhelyezési csoport legyen a jobb skálázás a régióban vagy a zónában. *false* 
+> Hacsak nem használ InfiniBand-t a HPC használatával, erősen ajánlott a méretezési csoport tulajdonságot false értékre állítani, `singlePlacementGroup` hogy több elhelyezési csoport legyen a jobb skálázás a régióban vagy a zónában.  
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Direktszínű virtuális gépek üzembe helyezése méretezési csoportokban
 
@@ -163,22 +181,7 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 **K:**  Működik az autoskálázás a kizárási házirendekkel (felszabadítás és törlés)?
 
-**A:** Igen, de javasoljuk, hogy a kizárási szabályzatot állítsa a törlésre az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. Emellett a méretezési műveleteket a helyszíni kizárások is befolyásolhatják. A VMSS-példányok például a percek száma alá eshetnek a méretezési műveletek során több hely kizárása miatt. 
-
-**K:** Milyen csatornák támogatják a helyszíni virtuális gépeket?
-
-**A:** Tekintse meg az alábbi táblázatot a helyszíni virtuális gépek rendelkezésre állásához.
-
-<a name="channel"></a>
-
-| Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
-|------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Igen                               |
-| Használatalapú fizetés                | Igen                               |
-| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](/partner-center/azure-plan-get-started) |
-| Előnyök                     | Nem elérhető                     |
-| Szponzorált                    | Igen                               |
-| Ingyenes próba                   | Nem elérhető                     |
+**A:** Igen, de javasoljuk, hogy a kizárási szabályzatot állítsa a törlésre az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. Emellett a méretezési műveleteket a helyszíni kizárások is befolyásolhatják. A virtuálisgép-méretezési csoport példányai például a percek száma alá eshetnek a méretezési műveletek során több hely kizárása miatt. 
 
 
 **K:** Hol tehetek közzé kérdéseket?

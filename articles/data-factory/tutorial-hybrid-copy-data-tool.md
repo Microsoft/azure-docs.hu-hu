@@ -1,22 +1,18 @@
 ---
 title: Helyszíni adatai másolása az Azure Adatok másolása eszköz használatával
 description: Hozzon létre egy Azure Data Factory, majd a Adatok másolása eszközzel másolja át az adatait egy SQL Server-adatbázisból az Azure Blob Storage-ba.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: d9cf9729d8be77845572efd9ef6e2486ddceaaaf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33dd1a1ca203ee57d3ef263bc5e8686841f03c1f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002834"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391252"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba a Adatok másolása eszköz használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -128,7 +124,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket.
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. A **hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például Azure Storage és SQL Database) és számítási erőforrások (például Azure HDInsight) más helyeken/régiókban is lehetnek.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
@@ -154,7 +150,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    ![Integrációs modul létrehozása](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután válassza a **Létrehozás** elemet.
+1. A **Integration Runtime beállítása** párbeszédpanel név területén írja be a **TutorialIntegrationRuntime** **nevet**. Ezután kattintson a **Létrehozás** elemre.
 
 1. A **Integration Runtime telepítés** párbeszédpanelen válassza **a kattintson ide, hogy elindítsa a számítógép expressz telepítését**. Ez a művelet telepíti az integrációs modult a számítógépére, és regisztrálja azt a Data Factoryban. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult.
 
@@ -199,7 +195,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
    c. A **Tárfiók neve** alatt a legördülő menüből válassza ki a tárfiókja nevét.
 
-   d. Válassza a **Befejezés** lehetőséget.
+   d. Válassza a **Befejezés** gombot.
 
 1. Győződjön meg arról, hogy az **Azure Blob Storage** van kiválasztva a **célhely adattára** párbeszédpanelen. Ezután kattintson a **Tovább** gombra.
 
@@ -226,7 +222,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 1. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Szerkesztés** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. A szerkesztőben megnyitott entitáshoz társított JSON-kód megtekintéséhez kattintson a **Kód** elemre. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ebben a példában szereplő folyamat átmásolja az adatait egy SQL Server adatbázisból a blob Storage-ba. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

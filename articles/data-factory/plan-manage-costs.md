@@ -1,19 +1,17 @@
 ---
 title: A Azure Data Factory költségeinek megtervezése és kezelése
 description: Ez a cikk a Azure Data Factory költségeinek megtervezését és kezelését ismerteti.
-documentationcenter: ''
 author: shirleywangmsft
 ms.author: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: d89275acdb8e13a792ea3166d874fabf911bb686
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678896"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372892"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>A Azure Data Factory költségeinek megtervezése és kezelése
 

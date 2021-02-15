@@ -3,13 +3,13 @@ title: Fogalmak – az Azure Kubernetes Services (ak) Kubernetes alapjai
 description: Ismerje meg a Kubernetes alapszintű fürt-és munkaterhelés-összetevőit, valamint azt, hogy azok hogyan kapcsolódnak az Azure Kubernetes szolgáltatás (ak) szolgáltatásaihoz
 services: container-service
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 12/07/2020
+ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674926"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373232"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -31,8 +31,8 @@ Az Azure Kubernetes Service (ak) olyan felügyelt Kubernetes szolgáltatást biz
 
 A Kubernetes-fürtök két összetevőhöz vannak osztva:
 
-- A *vezérlési sík* csomópontjai biztosítják a legfontosabb Kubernetes szolgáltatásokat és az alkalmazások számítási feladatainak előkészítését.
-- A *csomópontok* futtatják az alkalmazás munkaterheléseit.
+- A *vezérlési sík* biztosítja a Kubernetes alapvető szolgáltatásait és az alkalmazások számítási feladatainak előkészítését.
+- Az alkalmazás munkaterheléseit futtató *csomópontok* .
 
 ![Kubernetes-vezérlési sík és csomópont-összetevők](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 

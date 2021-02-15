@@ -1,23 +1,18 @@
 ---
 title: Adatok áthelyezése Azure Cosmos DB
 description: Megtudhatja, hogyan helyezheti át az adatok Azure Cosmos DB gyűjteménybe való áthelyezését Azure Data Factory használatával
-services: data-factory, cosmosdb
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
-ms.service: multiple
-ms.workload: data-services
+ms.author: jingwang
+ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91f2b338ac9cda96521a5fe1d555de054826e273
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a90b26c677c3d53794bce3c2ff48c618415e4cf2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637632"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379369"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése Azure Cosmos DBba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -41,7 +36,7 @@ Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely kül�
 
 A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager template** , **.NET API** és **REST API** . A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -58,8 +53,8 @@ A következő táblázat a Azure Cosmos DB társított szolgáltatáshoz tartoz�
 
 | **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **DocumentDb** |Igen |
-| connectionString |Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges információk megadásához. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **DocumentDb** |Yes |
+| connectionString |Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges információk megadásához. |Yes |
 
 Példa:
 
@@ -82,7 +77,7 @@ A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és
 
 | **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
-| collectionName |A Cosmos DB dokumentum-gyűjtemény neve. |Igen |
+| collectionName |A Cosmos DB dokumentum-gyűjtemény neve. |Yes |
 
 Példa:
 
@@ -123,8 +118,8 @@ Másolási tevékenység esetén, ha a forrás típusa **DocumentDbCollectionSou
 
 | **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| lekérdezés |Itt adhatja meg az adatolvasási lekérdezést. |Azure Cosmos DB által támogatott lekérdezési karakterlánc. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, a futtatott SQL-utasítás: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |A dokumentum beágyazásának jelzésére szolgáló speciális karakter |Bármilyen karakter. <br/><br/>Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a nestingSeparator-n keresztül, amely a következő: "." a fenti példákban. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel. |Nem |
+| lekérdezés |Itt adhatja meg az adatolvasási lekérdezést. |Azure Cosmos DB által támogatott lekérdezési karakterlánc. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Ha nincs megadva, a futtatott SQL-utasítás: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |A dokumentum beágyazásának jelzésére szolgáló speciális karakter |Bármilyen karakter. <br/><br/>Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi, hogy a felhasználó a nestingSeparator-on keresztül megjelölje a hierarchiát, amely a fenti példákban ".". Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel. |No |
 
 A **DocumentDbCollectionSink** a következő tulajdonságokat támogatja:
 
@@ -132,7 +127,7 @@ A **DocumentDbCollectionSink** a következő tulajdonságokat támogatja:
 | --- | --- | --- | --- |
 | nestingSeparator |A forrás oszlop nevének egy speciális karaktere, amely azt jelzi, hogy beágyazott dokumentumra van szükség. <br/><br/>A fenti példában például a `Name.First` kimenet táblában a következő JSON-struktúra jön létre a Cosmos db dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Az alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Az alapértelmezett érték `.` (pont). |
 | writeBatchSize |A Azure Cosmos DB szolgáltatás számára a dokumentumok létrehozásához szükséges párhuzamos kérelmek száma.<br/><br/>Ennek a tulajdonságnak a használatával javíthatja a teljesítményt a Cosmos DBba való adatmásoláskor. Nagyobb teljesítmény várható, ha a writeBatchSize növelése miatt Cosmos DB több párhuzamos kérelem küldése történik. Azonban el kell kerülnie a szabályozást, amely a következő hibaüzenetet eredményezi: "a kérelmek aránya nagy".<br/><br/>A szabályozást számos tényező határozza meg, többek között a dokumentumok mérete, a dokumentumok feltételeinek száma, a célhelyek indexelési szabályzata stb. A másolási műveleteknél jobb gyűjteményt (például S3) is használhat, hogy a lehető legtöbb átviteli sebesség elérhető legyen (2 500 kérelem egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
-| writeBatchTimeout |Várakozási idő a művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
+| writeBatchTimeout |Várakozási idő a művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |No |
 
 ## <a name="importexport-json-documents"></a>JSON-dokumentumok importálása/exportálása
 A Cosmos DB-összekötő használatával könnyedén elvégezheti a
@@ -478,7 +473,7 @@ Ezután a Cosmos DB kimeneti JSON a következőképpen fog megjelenni:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a **nestingSeparator** -n keresztül, amely a következő: "." Ebben a példában. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel.
+Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. A Azure Data Factory lehetővé teszi a felhasználó számára, hogy a hierarchiát a **nestingSeparator**-on keresztül jelölje meg, amely ebben a példában ".". Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel.
 
 ## <a name="appendix"></a>Függelék
 1. **Kérdés:** Támogatja a másolási tevékenység a meglévő rekordok frissítését?

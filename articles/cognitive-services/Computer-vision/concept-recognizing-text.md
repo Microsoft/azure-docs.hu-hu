@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979535"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362794"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -132,8 +132,8 @@ Tekintse meg a sikeres JSON-válasz következő példáját:
 }
 ```
 
-## <a name="natural-reading-order-output"></a>Természetes olvasási sorrend kimenete
-Az [olvasási 3,2 előzetes verzió API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)-val adja meg azt a sorrendet, amelyben a szövegsorok kimenete a `readingOrder` lekérdezési paraméterrel történik. Az `natural` az alábbi példában látható módon egy emberi felhasználóbarát olvasási sorrendi kimenetre használható.
+## <a name="natural-reading-order-output-latin-only"></a>Természetes olvasási sorrend kimenete (csak latin betűs)
+Az [olvasási 3,2 előzetes verzió API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)-val adja meg azt a sorrendet, amelyben a szövegsorok kimenete a `readingOrder` lekérdezési paraméterrel történik. Az `natural` az alábbi példában látható módon egy emberi felhasználóbarát olvasási sorrendi kimenetre használható. Ez a funkció csak latin nyelveken támogatott.
 
 :::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR-olvasási sorrend – példa":::
 

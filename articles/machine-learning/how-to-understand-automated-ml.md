@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: d5556ffb18a7a67e9415310f221e470761bf8cb8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098639"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388209"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -234,10 +234,7 @@ Ebben a példában azt vegye figyelembe, hogy a jobb modell előre jelzett és i
 
 Míg a modell-értékelési mérőszámok és diagramok jól használhatók a modell általános minőségének méréséhez, és azt is megvizsgálják, hogy mely adatkészletek használják az előrejelzések alapjául szolgáló modelleket a felelős AI gyakorlása során. Ezért az automatizált ML modell-értelmező irányítópultot biztosít az adatkészlet funkcióinak relatív hozzájárulásainak méréséhez és jelentéséhez.
 
-![Funkciók fontossága](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 Az értelmező irányítópult megtekintése a Studióban:
-
 1. [Jelentkezzen be a studióba](https://ml.azure.com/) , és navigáljon a munkaterületre
 2. A bal oldali menüben válassza a **kísérletek** elemet.
 3. Válassza ki a kísérletet a kísérletek listájából
@@ -246,10 +243,11 @@ Az értelmező irányítópult megtekintése a Studióban:
 6. A **magyarázatok** lapon láthatja, hogy már létrejött egy magyarázat, ha a modell a legjobb
 7. Új magyarázat létrehozásához válassza a **modell** meghatározása lehetőséget, és válassza ki azt a távoli számítást, amellyel a magyarázatokat szeretné kiszámítani
 
+[További információ a modellekre vonatkozó magyarázatokról az automatikus ml-ben](how-to-machine-learning-interpretability-automl.md).
+
 > [!NOTE]
 > Az automatikus ML-magyarázatok és az egyéb előrejelzési modellek jelenleg nem támogatják az ForecastTCN modellt, így korlátozott mértékben férhetnek hozzá az értelmező eszközökhöz.
 
 ## <a name="next-steps"></a>Következő lépések
 * Próbálja ki a [gépi tanulási modell magyarázó mintájának jegyzetfüzeteit](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model).
-* További információ a [felelős AI-ajánlatokról az automatikus ml-ben](how-to-machine-learning-interpretability-automl.md).
 * Az automatizált ML-specifikus kérdésekre való kapcsolódáshoz askautomatedml@microsoft.com .

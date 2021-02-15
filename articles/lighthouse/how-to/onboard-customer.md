@@ -1,14 +1,14 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 01/14/2021
+ms.date: 02/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c0a886b692b99156cbd53e5f0f5953047560c5b9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372144"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -311,14 +311,15 @@ Ha módosításokat kell végeznie az ügyfél beléptetése után, akkor [friss
 Ha nem tudja sikeresen bevezetni az ügyfelet, vagy ha a felhasználók nem tudnak hozzáférni a delegált erőforrásokhoz, tekintse meg az alábbi tippeket és követelményeket, és próbálkozzon újra.
 
 - Az `managedbyTenantId` érték nem egyezhet meg az előfizetéshez tartozó bérlői azonosítóval.
-- Ugyanahhoz a hatókörhöz nem tartozhat több hozzárendelés `mspOfferName` . 
+- Ugyanahhoz a hatókörhöz nem tartozhat több hozzárendelés `mspOfferName` .
 - A delegált előfizetéshez regisztrálni kell a **Microsoft. ManagedServices** erőforrás-szolgáltatót. Ez automatikusan megtörténik az üzembe helyezés során, de ha nem, akkor [manuálisan is regisztrálhatja](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Az engedélyek nem tartalmazhatnak olyan felhasználókat, akik a [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) beépített szerepkörével vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions)-mel rendelkező beépített szerepkörökkel rendelkeznek.
 - A csoportokat úgy kell létrehozni, hogy a [**csoport típusa**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) legyen **biztonsági** , és ne **Microsoft 365**.
 - A [beágyazott csoportok](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)hozzáférésének engedélyezése előtt további késleltetés is lehetséges.
 - Azok a felhasználók, akiknek a Azure Portal erőforrásainak meg kell tekinteniük az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz).
+- Az engedélyezésekben foglalt [Azure beépített szerepkörök](../../role-based-access-control/built-in-roles.md) nem tartalmazhatnak elavult szerepköröket. Ha egy Azure beépített szerepkör elavulttá válik, a szerepkörbe tartozó összes felhasználó elveszíti a hozzáférést, és nem fog tudni további delegálásokat bevezetni. A probléma megoldásához frissítse a sablont csak a támogatott beépített szerepkörök használatára, majd hajtson végre egy új központi telepítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

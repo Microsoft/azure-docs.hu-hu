@@ -4,23 +4,22 @@ description: Bemutatjuk, hogyan lehet az adatok importálása és az adatmodulok
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5dc348318401c9362636893d70294496c7012408
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308476"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520561"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Prediktív kísérlet létrehozásakor általában egy webszolgáltatás bemenetét és kimenetét kell hozzáadnia. A kísérlet telepítésekor a felhasználók adatokat küldhetnek és fogadhatnak a webszolgáltatástól a bemeneteken és kimeneteken keresztül. Egyes alkalmazások esetében előfordulhat, hogy a fogyasztó adatait adatcsatornán keresztül vagy egy külső adatforrásban, például az Azure Blob Storage-ban tárolja. Ezekben az esetekben nem szükséges az adatok olvasása és írása a webszolgáltatás-bemenetek és-kimenetek használatával. Ehelyett a Batch-végrehajtási szolgáltatás (BES) használatával olvashatnak az adatforrásból az adatok importálásával, és a pontozási eredményeket egy másik adatterületre írhatja az exportálási adatok modul használatával.
@@ -41,7 +40,7 @@ Az Azure SQL-táblából származó adatok beolvasása:
 3. Az eredmények listájában adjon hozzá egy *adatimportálási* modult a kísérlet vászonhoz.
 4. Az *adatok importálása* modul kimenetének összekötése a *tiszta hiányzó* adatmodul bemenetével.
 5. A Tulajdonságok ablaktáblán válassza a **Azure SQL Database** lehetőséget az **adatforrás** legördülő menüben.
-6. Az adatbázis- **kiszolgáló neve** , az **adatbázis neve** , a **Felhasználónév** és a **jelszó** mezőben adja meg az adatbázishoz szükséges adatokat.
+6. Az adatbázis- **kiszolgáló neve**, az **adatbázis neve**, a **Felhasználónév** és a **jelszó** mezőben adja meg az adatbázishoz szükséges adatokat.
 7. Az adatbázis-lekérdezés mezőben adja meg a következő lekérdezést.
 
     ```tsql
@@ -73,7 +72,7 @@ Ezután állítsa be azt a prediktív kísérletet, amelyről üzembe helyezi a 
 4. Az eredmények listájában adjon hozzá egy *adatexportálási* modult a kísérlet vászonhoz.
 5. A *score Model* modul kimenetének összekötése az *adatexportálási* modul bemenetével.
 6. A Tulajdonságok ablaktáblán válassza a **Azure SQL Database** lehetőséget az adatcél legördülő menüben.
-7. Az adatbázis- **kiszolgáló neve** , az **adatbázis neve** , a **kiszolgáló felhasználói fiókjának neve** és a **kiszolgáló felhasználói fiók jelszava** mezőkben adja meg az adatbázishoz szükséges adatokat.
+7. Az adatbázis- **kiszolgáló neve**, az **adatbázis neve**, a **kiszolgáló felhasználói fiókjának neve** és a **kiszolgáló felhasználói fiók jelszava** mezőkben adja meg az adatbázishoz szükséges adatokat.
 8. A **menteni kívánt oszlopok vesszővel tagolt listájában** írja be a következőt: pontozásos címkék.
 9. Az **adattábla neve mezőbe** írja be a következőt: dbo. ScoredLabels. Ha a tábla nem létezik, akkor a kísérlet futtatásakor vagy a webszolgáltatás meghívásakor jön létre.
 10. A **DataTable oszlopok vesszővel tagolt listája** mezőjébe írja be a következőt: ScoredLabels.

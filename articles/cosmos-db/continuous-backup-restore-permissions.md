@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 82af70547d20509c48f1e07bbc7610fc666a6da1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538693"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393054"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók visszaállítására vonatkozó engedélyek kezelése
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,7 +30,7 @@ A hatókör olyan erőforrások készlete, amelyeknek hozzáférése van, a hat�
 
 ## <a name="assign-roles-for-restore-using-the-azure-portal"></a>Szerepkörök társítása visszaállításhoz a Azure Portal használatával
 
-A visszaállításhoz a felhasználónak vagy a rendszerbiztonsági tag engedélyre van szüksége a visszaállításhoz (ez a "visszaállítás/művelet" engedély), és engedélyt ad egy új fiók kiépítésére (azaz "írás" engedélyre).  Ezen engedélyek megadásához a tulajdonos hozzárendelheti az "CosmosRestoreOperator" és a "Cosmos DB operátor" szerepkört a rendszerbiztonsági tag számára.
+A visszaállításhoz a felhasználónak vagy a rendszerbiztonsági tag engedélyre van szüksége a visszaállításhoz (ez a *visszaállítási/műveleti* engedély), és engedélyt ad egy új fiók kiépítésére (amely *írási* jogosultsággal rendelkezik).  Ezen engedélyek megadásához a tulajdonos hozzárendelheti a `CosmosRestoreOperator` és a `Cosmos DB Operator` beépített szerepköröket egy rendszerbiztonsági tag számára.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
@@ -40,7 +40,7 @@ A visszaállításhoz a felhasználónak vagy a rendszerbiztonsági tag engedél
 
    :::image type="content" source="./media/continuous-backup-restore-permissions/assign-restore-operator-roles.png" alt-text="CosmosRestoreOperator és Cosmos DB operátori szerepköröket rendelhet hozzá." border="true":::
 
-1. Válassza a **Mentés** lehetőséget a "visszaállítás/művelet" engedély megadásához.
+1. Válassza a **Mentés** lehetőséget a *visszaállítás/művelet* engedély megadásához.
 
 1. Ismételje meg a 3. lépést **Cosmos db operátori** szerepkörrel az írási engedély megadásához. Ha ezt a szerepkört a Azure Portal-ból rendeli hozzá, a teljes előfizetéshez engedélyezi a visszaállítási engedélyt.
 
@@ -52,7 +52,7 @@ A visszaállításhoz a felhasználónak vagy a rendszerbiztonsági tag engedél
 |Erőforráscsoport | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |CosmosDB helyreállítható fiók erőforrása | /Subscriptions/00000000-0000-0000-0000-000000000000/Providers/Microsoft.DocumentDB/Locations/USA nyugati régiója/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-A helyreállítható fiók erőforrás a `az cosmosdb restorable-database-account list --name <accountname>` parancssori felületen vagy a `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` PowerShell-parancsmagban található parancs kimenetében is kinyerhető. A kimenet Name attribútuma a helyreállítható fiók "instanceID" jelöli. További információt a [PowerShell](continuous-backup-restore-powershell.md) vagy a [parancssori](continuous-backup-restore-command-line.md) felület című cikkben talál.
+A helyreállítható fiók erőforrás a `az cosmosdb restorable-database-account list --name <accountname>` parancssori felületen vagy a `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` PowerShell-parancsmagban található parancs kimenetében is kinyerhető. A kimenetben található Name attribútum a `instanceID` helyreállítható fiók nevét jelöli. További információt a [PowerShell](continuous-backup-restore-powershell.md) vagy a [parancssori](continuous-backup-restore-command-line.md) felület című cikkben talál.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -60,11 +60,11 @@ A következő engedélyek szükségesek a folyamatos biztonsági mentési módú
 
 |Engedély  |Hatás  |Minimális hatókör  |Maximális hatókör  |
 |---------|---------|---------|---------|
-|Microsoft. Resources/Deployments/validate/Action, Microsoft. Resources/üzemelő példány/írás | Ezek az engedélyek szükségesek ahhoz, hogy az ARM-sablon üzembe kerüljön a visszaállított fiók létrehozásához. A szerepkör beállításához tekintse meg az alábbi minta engedély [RestorableAction]() . | Nem alkalmazható | Nem alkalmazható  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | Ezek az engedélyek szükségesek ahhoz, hogy az ARM-sablon üzembe kerüljön a visszaállított fiók létrehozásához. A szerepkör beállításához tekintse meg az alábbi minta engedély [RestorableAction](#custom-restorable-action) . | Nem alkalmazható | Nem alkalmazható  |
 |Microsoft.DocumentDB/databaseAccounts/írás | Ez az engedély szükséges a fiók erőforráscsoporthoz való visszaállításához | Az az erőforráscsoport, amelyben a visszaállított fiókot létrehozták. | Az előfizetés, amelyben a visszaállított fiókot létrehozták |
-|Microsoft.DocumentDB/Locations/restorableDatabaseAccounts/Restore/Action |Ez az engedély szükséges a forrás helyreállítható adatbázis-fiók hatókörében, hogy lehetővé váljon a visszaállítási műveletek végrehajtása.  | A visszaállítani kívánt forrásoldali fiókhoz tartozó "RestorableDatabaseAccount" erőforrás. Ezt az értéket a helyreállítható adatbázis-fiók erőforrásának "ID" tulajdonsága is adja. Egy példa a visszaállítható fiókra `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>` | A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként.  |
-|Microsoft.DocumentDB/Locations/restorableDatabaseAccounts/READ |Ez az engedély szükséges a forrás helyreállítható adatbázis-fiók hatókörében a visszaállítani kívánt adatbázis-fiókok listázásához.  | A visszaállítani kívánt forrásoldali fiókhoz tartozó "RestorableDatabaseAccount" erőforrás. Ezt az értéket a helyreállítható adatbázis-fiók erőforrásának "ID" tulajdonsága is adja. Egy példa a visszaállítható fiókra `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként.  |
-|Microsoft.DocumentDB/Locations/restorableDatabaseAccounts/*/READ | Ez az engedély szükséges a forrás helyreállítható fiók hatókörében, hogy lehetővé tegye a helyreállítható erőforrások, például az adatbázisok és tárolók beolvasását egy helyreállítható fiók számára.  | A visszaállítani kívánt forrásoldali fiókhoz tartozó "RestorableDatabaseAccount" erőforrás. Ezt az értéket a helyreállítható adatbázis-fiók erőforrásának "ID" tulajdonsága is adja. Egy példa a visszaállítható fiókra `/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>`| A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként. |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |Ez az engedély szükséges a forrás helyreállítható adatbázis-fiók hatókörében, hogy lehetővé váljon a visszaállítási műveletek végrehajtása.  | A visszaállítani kívánt *RestorableDatabaseAccount* tartozó erőforrás. Ezt az értéket a `ID` helyreállítható adatbázis-fiók erőforrásának tulajdonsága is adja. Egy visszaállítható fiók például a */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>* | A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |Ez az engedély szükséges a forrás helyreállítható adatbázis-fiók hatókörében a visszaállítani kívánt adatbázis-fiókok listázásához.  | A visszaállítani kívánt *RestorableDatabaseAccount* tartozó erőforrás. Ezt az értéket a `ID` helyreállítható adatbázis-fiók erőforrásának tulajdonsága is adja. Egy visszaállítható fiók például a */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként.  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | Ez az engedély szükséges a forrás helyreállítható fiók hatókörében, hogy lehetővé tegye a helyreállítható erőforrások, például az adatbázisok és tárolók beolvasását egy helyreállítható fiók számára.  | A visszaállítani kívánt *RestorableDatabaseAccount* tartozó erőforrás. Ezt az értéket a `ID` helyreállítható adatbázis-fiók erőforrásának tulajdonsága is adja. Egy visszaállítható fiók például a */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/Locations/regionName/restorableDatabaseAccounts/<GUID-instanceid>*| A helyreállítható adatbázis-fiókot tartalmazó előfizetés. Az erőforráscsoport nem választható hatókörként. |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>Azure CLI szerepkör-hozzárendelési forgatókönyvek különböző hatókörökön történő visszaállításhoz
 
@@ -82,7 +82,7 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 
 * Rendeljen hozzá egy felhasználói írási műveletet az adott erőforráscsoporthoz. Ez a művelet szükséges ahhoz, hogy új fiókot hozzon létre az erőforráscsoporthoz.
 
-* Rendelje hozzá a "CosmosRestoreOperator" beépített szerepkört a helyreállítani kívánt helyreállítható adatbázis-fiókhoz. A következő parancsban a "RestorableDatabaseAccount" hatókörét a rendszer a kimenetében található "ID" tulajdonságból olvassa be `az cosmosdb restorable-database-account` (ha CLI-t használ), vagy  `Get-AzCosmosDBRestorableDatabaseAccount` (ha a PowerShellt használja).
+* Rendelje hozzá a *CosmosRestoreOperator* beépített szerepkört a visszaállítani kívánt helyreállítható adatbázis-fiókhoz. A következő parancsban a *RestorableDatabaseAccount* hatóköre a `ID` `az cosmosdb restorable-database-account` (CLI használata esetén) vagy  `Get-AzCosmosDBRestorableDatabaseAccount` (a PowerShell használata esetén) kimenetében található tulajdonságból lesz lekérdezve.
 
   ```azurecli-interactive
    az role assignment create --role "CosmosRestoreOperator" --assignee <email> –scope <RestorableDatabaseAccount>
@@ -91,11 +91,11 @@ az role assignment create --role "CosmosRestoreOperator" --assignee <email> –s
 ### <a name="assign-capability-to-restore-from-any-source-account-in-a-resource-group"></a>Hozzárendelheti a képességet az erőforráscsoport bármely forrásoldali fiókjából történő visszaállításhoz.
 Ez a művelet jelenleg nem támogatott.
 
-## <a name="custom-role-creation-for-restore-action-with-cli"></a>Egyéni szerepkör létrehozása visszaállítási művelethez a CLI-vel
+## <a name="custom-role-creation-for-restore-action-with-cli"></a><a id="custom-restorable-action"></a>Egyéni szerepkör létrehozása visszaállítási művelethez a CLI-vel
 
-Az előfizetés tulajdonosa megadhatja az engedélyt bármely más Azure AD-identitásra való visszaállításhoz. A visszaállítási engedély a következő műveleten alapul: "Microsoft.DocumentDB/Locations/restorableDatabaseAccounts/Restore/Action", és szerepelnie kell a visszaállítási engedélyében. Létezik egy "CosmosRestoreOperator" nevű beépített szerepkör, amely tartalmazza ezt a szerepkört. Az engedélyt hozzárendelheti ehhez a beépített szerepkörhöz, vagy létrehozhat egy egyéni szerepkört is.
+Az előfizetés tulajdonosa megadhatja az engedélyt bármely más Azure AD-identitásra való visszaállításhoz. A visszaállítási engedély a következő műveleten alapul:, és tartalmaznia kell a `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` visszaállítási engedéllyel. Létezik egy *CosmosRestoreOperator* nevű beépített szerepkör, amely tartalmazza ezt a szerepkört. Az engedélyt hozzárendelheti ehhez a beépített szerepkörhöz, vagy létrehozhat egy egyéni szerepkört is.
 
-Az alábbi RestorableAction egy egyéni szerepkört jelöl. Explicit módon létre kell hoznia ezt a szerepkört. A következő JSON-sablon létrehoz egy "RestorableAction" nevű egyéni szerepkört visszaállítási engedéllyel:
+Az alábbi RestorableAction egy egyéni szerepkört jelöl. Explicit módon létre kell hoznia ezt a szerepkört. A következő JSON-sablon létrehoz egy egyéni szerepkör- *RestorableAction* visszaállítási engedéllyel:
 
 ```json
 {

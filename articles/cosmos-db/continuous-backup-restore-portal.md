@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e0fb337defc69354aa625fe63bef9768dbc4cf1f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538846"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381868"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>A folyamatos biztonsági mentés és az időponthoz tartozó visszaállítás (előzetes verzió) konfigurálása és kezelése – Azure Portal
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -74,7 +74,7 @@ Ha például egy bizonyos tároló törlése vagy frissítése előtt szeretné 
 A törölt fiókokat a törléstől számított 30 napon belül teljesen vissza lehet állítani a Azure Portal használatával. A törölt fiókok visszaállításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
-1. Keressen rá a "Azure Cosmos DB" erőforrásokra a globális keresési sávon. Felsorolja az összes meglévő fiókját.
+1. Keressen *Azure Cosmos db* erőforrásokat a globális keresési sávon. Felsorolja az összes meglévő fiókját.
 1. Ezután kattintson a **visszaállítás** gombra. A visszaállítás ablaktábla megjeleníti a törölt fiókok listáját, amelyek visszaállíthatók a megőrzési időtartamon belül, amely a törlési idő 30 napja.
 1. Válassza ki a visszaállítani kívánt fiókot.
 
@@ -95,7 +95,7 @@ A törölt fiókokat a törléstől számított 30 napon belül teljesen vissza 
 
 ## <a name="track-the-status-of-restore-operation"></a><a id="track-restore-status"></a>A visszaállítási művelet állapotának nyomon követése
 
-A visszaállítási művelet megkezdése után válassza az **értesítési** harang ikont a portál jobb felső sarkában. Ez a hivatkozás a visszaállított fiók állapotát jeleníti meg. A visszaállítás folyamatban van, a fiók állapota "létrehozás" lesz, miután a visszaállítási művelet befejeződik, a fiók állapota "online" állapotúra változik.
+A visszaállítási művelet megkezdése után válassza az **értesítési** harang ikont a portál jobb felső sarkában. Ez a hivatkozás a visszaállított fiók állapotát jeleníti meg. Ha a visszaállítás folyamatban van, a rendszer *létrehozza* a fiók állapotát, miután a visszaállítási művelet befejeződik, majd a fiók állapota *online* értékre változik.
 
 :::image type="content" source="./media/continuous-backup-restore-portal/track-restore-operation-status.png" alt-text="A visszaállított fiók állapota a létrehozásról a online állapotra változik, ha a művelet befejeződött." border="true":::
 

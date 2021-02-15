@@ -4,12 +4,12 @@ description: Annak megakadályozása, hogy a felhasználók az összes felhaszn�
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 912c7e86d253aa18b9a6c60717ceaa70e32fcf0e
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428317"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369475"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -32,7 +32,7 @@ A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekr
 
 A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. A zárolások megakadályozza, hogy a Azure Resource Manager API-nak POST-kérést igénylő műveletek is meglegyenek. Néhány gyakori példa a zárolások által blokkolt műveletekre:
 
-* A **Storage-fiók** írásvédett zárolása megakadályozza, hogy minden felhasználó hozzáférjen a kulcsokhoz. A kulcsok listázásának művelete POST kérelmen keresztül történik, mert a visszaadott kulcsokon írási műveleteket is végre lehet hajtani.
+* A **Storage-fiók** csak olvasható zárolása megakadályozza, hogy a felhasználók listázzák a fiók kulcsait. Az Azure Storage- [lista kulcsai](/rest/api/storagerp/storageaccounts/listkeys) művelet egy post-kérésen keresztül történik, hogy megvédje a fiók kulcsaihoz való hozzáférést, amelyek teljes körű hozzáférést biztosítanak a Storage-fiókban lévő összes információhoz. Ha a Storage-fiókhoz csak olvasási zárolás van konfigurálva, a fiók kulcsaival nem rendelkező felhasználóknak az Azure AD-beli hitelesítő adatokkal kell rendelkezniük a blob-vagy üzenetsor-adatok eléréséhez. A írásvédett zárolás megakadályozza a Storage-fiókra vagy egy adattárolóra (blob-tárolóra vagy-várólistára) kiterjedő Azure RBAC-szerepkörök hozzárendelését is.
 
 * Egy **app Service** erőforrás írásvédett zárolása megakadályozza, hogy a Visual Studio Server Explorer megjelenítse az erőforráshoz tartozó fájlokat, mert az interakcióhoz írási hozzáférés szükséges.
 

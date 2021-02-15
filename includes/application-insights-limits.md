@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: application-insights
-author: mrbullwinkle
+author: lgayhardt
 ms.service: application-insights
 ms.topic: include
 ms.date: 08/06/2019
-ms.author: mbullwin
+ms.author: lagayhar
 ms.custom: include file
-ms.openlocfilehash: 76176c72ad77341d7db1c8f4158a90836b74a91c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eda50bb9f65591cd837b7e74e9d783464de43367
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011343"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520687"
 ---
 A mérőszámok és események másodpercenkénti száma korlátozott a rendszerállapot-kulcs alapján. A korlátozások a választott [díjszabási csomagtól](https://azure.microsoft.com/pricing/details/application-insights/) függően változnak.
 
@@ -21,7 +21,8 @@ A mérőszámok és események másodpercenkénti száma korlátozott a rendszer
 | --- | --- | --- |
 | Napi teljes adatmennyiség | 100 GB | Egy korlát beállításával csökkenthető az adatmennyiség. Ha több adatra van szüksége, növelheti a portálon megjelenő korlátot, amely akár 1 000 GB is lehet. A 1 000 GB-nál nagyobb kapacitások esetében küldjön e-mailt a címre AIDataCap@microsoft.com .
 | Throttling | 32 000 esemény/másodperc | A korlát megállapítása egy percnyi mérés alapján történik.
-| Adatmegőrzés | [30-730 nap](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Ez az erőforrás a [Keresés](../articles/azure-monitor/app/diagnostic-search.md), [Elemzés](../articles/azure-monitor/log-query/log-query-overview.md) és [Metrikaböngésző](../articles/azure-monitor/platform/metrics-charts.md) esetén használható.
+| Adatmegőrzési naplók | [30-730 nap](../articles/azure-monitor/app/pricing.md#change-the-data-retention-period)  | Ez az erőforrás [naplókhoz](../articles/azure-monitor/log-query/log-query-overview.md)használható.
+| Adatmegőrzési metrikák | 90 nap| Ez az erőforrás a [Metrikaböngésző](../articles/azure-monitor/platform/metrics-charts.md).
 | [Többlépéses rendelkezésre állási teszt](../articles/azure-monitor/app/availability-multistep.md) a részletes eredmények megőrzésével | 90 nap | Ez az erőforrás minden lépésről részletes eredményeket biztosít.
 | Telemetria maximális mérete | 64 kB |
 | Telemetria elemek maximális száma kötegben | 64 K |

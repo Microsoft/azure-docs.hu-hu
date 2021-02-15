@@ -4,16 +4,16 @@ description: Az új adatexportálás használata a IoT-adatainak az Azure-ba és
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/05/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d31673b8d789cff5de3ddce63b67a98854b7aabc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226061"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515903"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
 
@@ -166,6 +166,17 @@ Most, hogy van egy célhelye az adatai exportálásához, állítsa be az adatex
 
 1. Ha végzett az Exportálás beállításával, válassza a **Mentés** lehetőséget. Néhány perc elteltével az adatai megjelennek a célhelyen.
 
+## <a name="monitor-your-export"></a>Az Exportálás figyelése
+
+Az IoT Central-beli exportálások állapotának megismerése mellett nyomon követheti, hogy az adatok Mennyibe áramlanak az exporton, és figyelje az exportálási hibákat a Azure Monitor adatplatformon. A Azure Portal, a REST API, a PowerShellben vagy az Azure CLI-ben lévő lekérdezésekben az exportálási és eszközállapot-mérőszámokat is elérheti. Jelenleg ezeket az adatexportálási metrikákat a Azure Monitorban figyelheti:
+
+1. Az exportáláshoz bejövő üzenetek száma a szűrők alkalmazása előtt
+2. A szűrőkkel továbbított üzenetek száma
+3. A célhelyekre sikeresen exportált üzenetek száma
+4. Észlelt hibák száma
+ 
+[További információ a IoT Central metrikák eléréséről.](howto-monitor-application-health.md)
+
 ## <a name="destinations"></a>Célhelyek
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage célhely
@@ -233,7 +244,6 @@ Az alábbi példa egy exportált telemetria üzenetet mutat be:
     }
 }
 ```
-
 ### <a name="message-properties"></a>Üzenet tulajdonságai
 
 A telemetria-üzenetek a telemetria-adattartalom mellett metaadatokat is tartalmazhatnak. Az előző kódrészlet példákat mutat be a rendszerüzenetekre, például a és a szolgáltatásra `deviceId` `enqueuedTime` . Ha többet szeretne megtudni a rendszerüzenetek tulajdonságairól, tekintse meg a [D2C IoT hub üzeneteinek rendszertulajdonságait](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).

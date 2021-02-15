@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d90061d6d56e24168bf368498d05962296892342
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75890984"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374864"
 ---
 # <a name="azure-netapp-files-videos"></a>Azure NetApp Files-videók
 Ez a cikk a Azure NetApp Files használatának részletes tárgyalásait tartalmazó videókra mutató hivatkozásokat tartalmaz. 
 
 Több videó is rendelkezésre áll, amelyekkel többet is megtudhat a Azure NetApp Files:  
 
-* [Microsoft ignite 2019: futtassa a legigényesebb vállalati fájlok](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) számítási feladatait az Azure NetApp Files segítségével rövid bevezetést nyújt a Azure NetApp Files, beleértve a használati eseteket és a bemutatót, majd mélyebbre helyezi a képességeket és az ütemtervet.
+* [Microsoft ignite 2019: futtassa a legigényesebb vállalati fájlok](https://azure.microsoft.com/resources/videos/ignite-2018-taking-on-the-most-demanding-enterprise-file-workloads-with-azure-netapp-files/) számítási feladatait az Azure NetApp Files segítségével rövid bevezetést nyújt a Azure NetApp Files, beleértve a használati eseteket és a bemutatót, majd mélyebbre helyezi a képességeket és az ütemtervet.
 * A [Azure NetApp Files a Kirk Ryan](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) számos videót, oktatóanyagot és bemutatót mutat be a Azure NetApp Files számára. 

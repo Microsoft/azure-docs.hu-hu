@@ -4,15 +4,15 @@ description: Az Azure Bastion biztonsági alapterve az Azure biztonsági Teljes�
 author: msmbaldwin
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 02/12/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 92c57c863cf09fee500b3ea7392757a4f729e4a5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d20a646eb7675efdab4cbdc5f13e929544dceaa3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723931"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392374"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>Azure Security-alaptervek az Azure-hoz
 
@@ -69,7 +69,11 @@ Az Azure-tanúsítványok az átjáró-kezelőhöz és az Azure-szolgáltatási 
 
 **Útmutató**: az Azure Bastion integrálva van Azure Active Directory (Azure ad) szolgáltatással, amely az Azure alapértelmezett identitás-és hozzáférés-kezelési szolgáltatása. A felhasználók az Azure AD-hitelesítés használatával férhetnek hozzá a Azure Portalhoz az Azure Bastion szolgáltatás kezeléséhez (a megerősített erőforrások létrehozásához, frissítéséhez és törléséhez).
 
-Az Azure Bastion használatával a virtuális gépekhez való csatlakozás SSH-kulcson vagy felhasználónévn/jelszón alapul, és jelenleg nem támogatja az Azure AD-beli hitelesítő adatok használatát.
+Az Azure Bastion használatával a virtuális gépekhez való csatlakozás SSH-kulcson vagy felhasználónévn/jelszón alapul, és jelenleg nem támogatja az Azure AD-beli hitelesítő adatok használatát. 
+
+Az SSH-kulcsokat Azure Key Vault titokként tárolhatja, és ezekkel a titkokkal csatlakozhat a virtuális gépekhez az Azure Bastion használatával. Ezeket a titkokat a felhasználók hozzáférését szabályozhatja úgy, hogy [Key Vault hozzáférési házirendeket rendel hozzá](../key-vault/general/assign-access-policy-portal.md) egyéni felhasználókhoz vagy Azure ad-csoportokhoz. A felhasználóknak a következő engedélyekkel kell rendelkezniük ahhoz, hogy ezt a módszert használják a virtuális géphez való kapcsolódáshoz:
+- **Hozzáférés a** kiválasztott Azure Key Vaultban tárolt titkokhoz
+- A kiválasztott Azure Key Vaultban tárolt titkokhoz való hozzáférés **listázása**
 
 Egy SSH-kulcson vagy felhasználónéven/jelszón kívül, amikor a virtuális gépekhez az Azure Bastion használatával csatlakozik, a felhasználónak a következő szerepkör-hozzárendelésekre lesz szüksége:
 - Olvasó szerepkör a cél virtuális gépen
@@ -106,7 +110,8 @@ További információkat az alábbi hivatkozásokon találhat:
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Erős hitelesítési vezérlők használata minden Azure Active Directory-alapú hozzáféréshez
 
-**Útmutató**: az Azure Bastion integrálva van Azure Active Directory (Azure ad) szolgáltatással a szolgáltatás eléréséhez és kezeléséhez. Konfigurálja az Azure-Multi-Factor Authentication az Azure AD-bérlőhöz. Az Azure AD a többtényezős hitelesítéssel (MFA) és az erős, jelszóval nem rendelkező metódusokkal támogatja az erős hitelesítési vezérlést.  
+**Útmutató**: az Azure Bastion integrálva van Azure Active Directory (Azure ad) szolgáltatással a szolgáltatás eléréséhez és kezeléséhez. Konfigurálja Azure Active Directory Multi-Factor Authentication az Azure AD-bérlőhöz. Az Azure AD a többtényezős hitelesítéssel (MFA) és az erős, jelszóval nem rendelkező metódusokkal támogatja az erős hitelesítési vezérlést.
+  
 - Többtényezős hitelesítés: engedélyezze az Azure AD MFA-t, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait az MFA-telepítéshez. Az MFA kikényszeríthető minden felhasználóra, kiválaszthatja a felhasználókat vagy a felhasználónkénti szinten a bejelentkezési feltételek és kockázati tényezők alapján. 
 
 - Jelszóval nem rendelkező hitelesítés: három jelszóval nem rendelkező hitelesítési lehetőség érhető el: a vállalati Windows Hello, Microsoft Authenticator alkalmazás és a helyszíni hitelesítési módszerek, például az intelligens kártyák. 
@@ -375,7 +380,7 @@ A hálózati biztonsági csoport (NSG) erőforrás-naplófájljainak és NSG-nap
 
 - [A naplózás és a különböző naplózási típusok megismerése az Azure-ban](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Azure-erőforrás-naplók engedélyezése az Azure Bastion számára ](diagnostic-logs.md)
+- [Azure-erőforrás-naplók engedélyezése az Azure Bastion számára](diagnostic-logs.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -747,7 +752,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

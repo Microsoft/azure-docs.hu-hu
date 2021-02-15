@@ -2,19 +2,16 @@
 title: Avro formátuma Azure Data Factory
 description: Ez a témakör azt ismerteti, hogyan kezelhető a Avro formátuma Azure Data Factoryban.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4be499e8e304f34b1cab10aed41b5b98a5f24e9b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010554"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392595"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Avro formátuma Azure Data Factory
 
@@ -67,7 +64,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="avro-as-source"></a>Avro forrásként
 
-A másolási tevékenység **_ \_ forrás \**** szakaszában a következő tulajdonságok támogatottak.
+A másolási tevékenység ***\* forrása \**** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -76,7 +73,7 @@ A másolási tevékenység **_ \_ forrás \**** szakaszában a következő tulaj
 
 ### <a name="avro-as-sink"></a>Avro fogadóként
 
-A másolási tevékenység **_ \_ \*** fogadó * szakasza a következő tulajdonságokat támogatja.
+A másolási ***\* \* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -107,7 +104,7 @@ Az alábbi táblázat felsorolja a Avro-forrás által támogatott tulajdonságo
 | Fájlok listája | Azt jelzi, hogy a forrás egy szövegfájlra mutat-e, amely a feldolgozandó fájlokat listázza | nem | `true` vagy `false` | fileList |
 | A fájl nevét tároló oszlop | Új oszlop létrehozása a forrásfájl nevével és elérési útjával | nem | Sztring | rowUrlColumn |
 | Befejezés után | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem | Törlés: `true` vagy `false` <br> Áthelyezése `['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Timestamp | modifiedAfter <br> modifiedBefore |
+| Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Időbélyeg | modifiedAfter <br> modifiedBefore |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
 ### <a name="sink-properties"></a>Fogadó tulajdonságai
@@ -128,7 +125,7 @@ A Avro [összetett adattípusok](https://avro.apache.org/docs/current/spec.html#
 ### <a name="data-flows"></a>Adatfolyamok
 Az adatfolyamatok Avro-fájljainak használatakor az összetett adattípusok olvashatók és írhatók, de ügyeljen rá, hogy először törölje a fizikai sémát az adatkészletből. Az adatfolyamatokban beállíthatja a logikai kivetítést, és kiszármaztathatja az összetett struktúrákat tartalmazó oszlopokat, majd automatikusan leképezheti ezeket a mezőket egy Avro-fájlra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)

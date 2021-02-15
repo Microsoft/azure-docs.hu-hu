@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42d388aed618a5a92212152166573719c9e973c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704169"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371022"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz
 
@@ -52,6 +52,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 |Azure SQL Database|[Transzparens adattitkosítás a Azure SQL Database és az Azure szinapszis Analytics bring your own Key támogatásával](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&preserve-view=true&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage Service encryption az ügyfél által felügyelt kulcsokat Azure Key Vault](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|A [Azure Data Lake Storeban lévő adattitkosítás](../../data-lake-store/data-lake-store-encryption.md) ügyfél által felügyelt kulccsal.|
+|Azure Synapse Analytics|[Az ügyfél által felügyelt kulcsokat használó adattitkosítás Azure Key Vault](../../synapse-analytics/security/workspaces-encryption.md)|
 |Azure Databricks|[Gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatás](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API Management|[Egyéni tartomány tanúsítványainak központi telepítése Key Vault az MSI használatával](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[Adattároló hitelesítő adatainak beolvasása a Key Vault Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
@@ -63,7 +64,7 @@ Itt látható azoknak a megbízható szolgáltatásoknak a listája, amelyek hoz
 > [!NOTE]
 > Be kell állítania a megfelelő Key Vault hozzáférési szabályzatokat, hogy a megfelelő szolgáltatások hozzáférjenek a Key Vaulthoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Részletes útmutatásért lásd: [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](network-security.md)
 - lásd a [Azure Key Vault biztonsági áttekintése](security-overview.md) című témakört.

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218365"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384520"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kapcsolódás a munkaterület erőforrásaihoz egy korlátozott hálózatról
 
@@ -74,7 +74,7 @@ A magánhálózati kapcsolat végpontjának létrehozása után elérheti az Azu
 
 Az Azure szinapszis Analytics Studio Workspace-erőforráson belüli erőforrások eléréséhez létre kell hoznia a következőket:
 
-- Legalább egy titkos kapcsolati végpont, amely a **cél alerőforrásának** **fejlesztői** típusát adja meg.
+- Legalább egy privát hivatkozás végpontja, amely egy **fejlesztési** **cél alerőforrás-** típussal rendelkezik.
 - Két további opcionális privát csatolási végpont **SQL** -vagy **SqlOnDemand**-típussal attól függően, hogy milyen erőforrásokat szeretne elérni a munkaterületen.
 
 A létrehozás hasonló ahhoz, ahogy az előző lépésben létrehozza a végpontot.  
@@ -146,7 +146,8 @@ A virtuális hálózati kapcsolat hozzáadása után hozzá kell adnia a DNS-rek
 
 * A **név mezőben** adja meg a dedikált név karakterláncokat a különböző privát végpontokhoz: 
   * a **web** az Azure szinapszis Analytics studióhoz való hozzáférés privát végpontja.
-  * A "***YourWorkSpaceName * * _" az SQL-lekérdezés SQL-készletben való futtatásának privát végpontja, valamint a privát végpont, amely az Azure szinapszis Analytics Studio-munkaterületeken található minden más számára elérhető. _ "*** YourWorkSpaceName *-OnDemand * *" az SQL-lekérdezés végrehajtásának privát végpontja a beépített készletben.
+  * A "***YourWorkSpaceName***" az SQL-lekérdezés futtatásának privát végpontja az SQL-készletben, valamint a privát végponthoz, amely az Azure szinapszis Analytics Studio-munkaterületeken található minden mást elér.
+  * A "***YourWorkSpaceName *-OnDemand**" a beépített készletben az SQL-lekérdezés végrehajtásának privát végpontja.
 * A **Type (típus) mezőben** válassza **a csak A** DNS-rekord lehetőséget. 
 * Az **IP-cím mezőben** adja meg az egyes privát végpontok megfelelő IP-címét. A **hálózati adapter** IP-címét a saját végpontjának áttekintésében érheti el.
 

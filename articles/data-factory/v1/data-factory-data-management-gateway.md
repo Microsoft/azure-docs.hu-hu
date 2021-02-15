@@ -1,23 +1,18 @@
 ---
 title: Data Factory adatkezelés átjárója
 description: Az adatáthelyezéshez használja a Azure Data Factory adatkezelés átjáróját.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450600"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375204"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -373,18 +368,18 @@ Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóp
 Processzorhasználat | Egy átjáró-csomópont CPU-kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
 Hálózatkezelés (be/ki) | Átjáró-csomópontok hálózati kihasználtsága. Ez az érték a közel valós idejű pillanatkép.
 Egyidejű feladatok (futó/korlát) | Az egyes csomópontokon futó feladatok vagy feladatok száma. Ez az érték a közel valós idejű pillanatkép. A korlát az egyes csomópontok maximális egyidejű feladatait jelzi. Ez az érték a gép méretétől függően van meghatározva. Az egyidejű feladatok végrehajtásának korlátját növelheti speciális forgatókönyvekben, ahol a CPU/memória/hálózat nincs használatban, a tevékenységek azonban időtúllépést okozhatnak. Ez a funkció egy egycsomópontos átjáróval is elérhető (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve).
-Role | A több csomópontos átjárók és a feldolgozók két típusú szerepkört használnak. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére, valamint a különböző munkavégző csomópontokra (beleértve a saját magára) történő küldésére szolgál.
+Szerepkör | A több csomópontos átjárók és a feldolgozók két típusú szerepkört használnak. Minden csomópont munkavégző, ami azt jelenti, hogy mind a feladatok végrehajtásához használhatók. Csak egy kiosztó csomópont létezik, amely a feladatok/feladatok a Cloud servicesből való lekérésére, valamint a különböző munkavégző csomópontokra (beleértve a saját magára) történő küldésére szolgál.
 
 Ezen a lapon néhány olyan beállítás látható, amely több értelmet mutat, ha két vagy több csomópont van (kibővíthető forgatókönyv) az átjárón. Lásd: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md) a több csomópontos átjáró beállításával kapcsolatos részletekért.
 
 ### <a name="gateway-status"></a>Átjáró állapota
 Az alábbi táblázat egy **átjáró-csomópont** lehetséges állapotát tartalmazza:
 
-Állapot  | Megjegyzések/forgatókönyvek
+Állapot    | Megjegyzések/forgatókönyvek
 :------- | :------------------
 Online | Data Factory szolgáltatáshoz csatlakoztatott csomópont.
 Offline | A csomópont offline állapotban van.
-Frissítése | A csomópont automatikus frissítése folyamatban van.
+Frissítés | A csomópont automatikus frissítése folyamatban van.
 Korlátozott | Kapcsolódási probléma miatt. A hiba oka lehet a 8050-es HTTP-port, a Service Bus-csatlakozási probléma vagy a hitelesítő adatok szinkronizálása.
 Inaktív | A csomópont más többségi csomópontok konfigurációjától eltérő konfigurációban található.<br/><br/> Egy csomópont inaktív lehet, ha nem tud csatlakozni más csomópontokhoz.
 
@@ -525,7 +520,7 @@ Ez a szakasz azt ismerteti, hogyan lehet átjárót létrehozni és regisztráln
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. A **Get-AzDataFactoryGateway** parancsmag használatával lekérheti az átjárók listáját az adatgyárban. Ha az **állapota online állapotú** , az azt jelenti, hogy az átjáró használatra kész. **online**
+2. A **Get-AzDataFactoryGateway** parancsmag használatával lekérheti az átjárók listáját az adatgyárban. Ha az **állapota online állapotú** , az azt jelenti, hogy az átjáró használatra kész. 
 
     ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
@@ -544,5 +539,5 @@ Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -Resourc
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok SQL Server adatbázisból egy Azure-blobba való áthelyezéséhez.

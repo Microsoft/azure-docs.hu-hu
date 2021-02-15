@@ -3,15 +3,15 @@ title: Fürtkonfiguráció az Azure Kubernetes Servicesben (ak)
 description: Megtudhatja, hogyan konfigurálhat fürtöt az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5519157b58268b30ecb7a1af7b86d13d587a23b8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201110"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519405"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -19,13 +19,19 @@ Az AK-fürtök létrehozásának részeként előfordulhat, hogy a fürt konfigu
 
 ## <a name="os-configuration"></a>Operációs rendszer konfigurációja
 
-Az AK mostantól támogatja az Ubuntu 18,04-et, mint a Node operációs rendszer (OS) a 1.18.8-nál nagyobb kubernetes-verziókban elérhető fürtök esetében. A 1.18. x alatti verziók esetében az AK Ubuntu 16,04 még mindig az alapértelmezett alaprendszerkép. A kubernetes v 1.18. x és újabb verziók esetében az alapértelmezett alap az AK Ubuntu 18,04.
+Az AK mostantól támogatja az Ubuntu 18,04-et, mivel a kubernetes-verziókban a 1,18-nál újabb verziójú fürtök esetében az alapértelmezett csomópontos operációs rendszer (GA) a 1,18-as verziónál nagyobb, az AK Ubuntu 16,04 továbbra is az alapértelmezett alaprendszerkép. Az kubernetes v 1.18-as és újabb verziójában az alapértelmezett alapszintű Ubuntu 18,04.
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Az AK Ubuntu 18,04 általánosan elérhető az új fürtökön
+> [!IMPORTANT]
+> A Kubernetes v 1.18-es vagy újabb verziójában létrehozott Node-készletek `AKS Ubuntu 18.04` . A 1,18-nál kisebb, támogatott Kubernetes-verzióban található csomópont `AKS Ubuntu 16.04` -készletek csomóponti képként jelennek meg, de `AKS Ubuntu 18.04` a csomópont-készlet Kubernetes verziójának frissítése a v 1.18-ra vagy újabbra történik.
+> 
+> Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt.
+
+
+### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>Az AK Ubuntu 18,04 (GA) használata új fürtökön
 
 A Kubernetes v 1.18-es vagy újabb verziójában létrehozott fürtök `AKS Ubuntu 18.04` . A 1,18-nál kisebb támogatott Kubernetes-verziókban a csomópont-készletek továbbra is `AKS Ubuntu 16.04` a csomóponti képként lesznek megkapva, de a rendszer a `AKS Ubuntu 18.04` fürt vagy a csomópont-készlet Kubernetes verziójának a v 1.18-es vagy újabb verziójára való frissítését követően frissíti.
 
-Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt. Olvassa el az [Ubuntu 18,04 Node-készletek tesztelését](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)ismertető témakört.
+Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt.
 
 Ha csomópont-rendszerkép használatával szeretne fürtöt létrehozni `AKS Ubuntu 18.04` , egyszerűen hozzon létre egy kubernetes v 1.18 vagy újabb rendszert futtató fürtöt az alábbi ábrán látható módon.
 
@@ -33,11 +39,11 @@ Ha csomópont-rendszerkép használatával szeretne fürtöt létrehozni `AKS Ub
 az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Az AK Ubuntu 18,04 általánosan elérhető a meglévő fürtökön
+### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>AK Ubuntu 18,04 (GA) használata meglévő fürtökön
 
 A Kubernetes v 1.18-es vagy újabb verziójában létrehozott fürtök `AKS Ubuntu 18.04` . A 1,18-nál kisebb támogatott Kubernetes-verziókban a csomópont-készletek továbbra is `AKS Ubuntu 16.04` a csomóponti képként lesznek megkapva, de a rendszer a `AKS Ubuntu 18.04` fürt vagy a csomópont-készlet Kubernetes verziójának a v 1.18-es vagy újabb verziójára való frissítését követően frissíti.
 
-Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt. Olvassa el az [Ubuntu 18,04 Node-készletek tesztelését](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)ismertető témakört.
+Erősen ajánlott az AK Ubuntu 18,04 Node-készletekben lévő munkaterhelések tesztelése az 1,18-es vagy újabb fürtök használata előtt.
 
 Ha a fürtök vagy a csomópontok készletei készen állnak a `AKS Ubuntu 18.04` Node-rendszerképekre, egyszerűen frissítheti őket egy v 1.18-es vagy újabb verzióra.
 
@@ -51,7 +57,7 @@ Ha csak egy csomópont-készletet szeretne frissíteni:
 az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Az AK Ubuntu 18,04 általánosan elérhető a meglévő fürtökön
+### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>AK Ubuntu 18,04 (GA) tesztelése meglévő fürtökön
 
 A Kubernetes v 1.18-es vagy újabb verziójában létrehozott Node-készletek `AKS Ubuntu 18.04` . A 1,18-nál kisebb támogatott Kubernetes-verziók csomópont-készletei továbbra is `AKS Ubuntu 16.04` a csomóponti képként fognak megjelenni, de `AKS Ubuntu 18.04` a csomópont-készlet Kubernetes verziójának frissítését a v 1.18 vagy újabb verzióra frissíti.
 
@@ -65,58 +71,6 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Az AK Ubuntu 18,04 használata új fürtökön (előzetes verzió)
-
-A következő szakasz ismerteti, hogyan használhatja és tesztelheti az AK Ubuntu 18,04-et olyan fürtökön, amelyek még nem használnak 1.18. x vagy újabb verziójú kubernetes, vagy amelyeket a szolgáltatás általánosan elérhetővé válása előtt hoztak létre az operációs rendszer konfigurációjának előzetes verziójának használatával.
-
-A következő erőforrásokat kell telepítenie:
-
-- [Az Azure CLI, a][azure-cli-install]2.2.0 vagy újabb verzió
-- Az AK – előzetes verziójú 0.4.35 bővítmény
-
-A következő Azure CLI-parancsokkal telepítheti a 0.4.35-bővítményt vagy újabb verziót:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-Regisztrálja a `UseCustomizedUbuntuPreview` szolgáltatást:
-
-```azurecli
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-```
-
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-list) parancs használatával tekintheti meg:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-Konfigurálja a fürtöt az Ubuntu 18,04 használatára a fürt létrehozásakor. Az `--aks-custom-headers` Ubuntu 18,04 alapértelmezett operációs rendszerként való beállításához használja a jelzőt.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-Ha az AK Ubuntu 16,04 rendszerképpel rendelkező fürtöket szeretne létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` .
-
-### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>AK Ubuntu 18,04 meglévő fürtök használata (előzetes verzió)
-
-Konfigurálja az új csomópont-készletet az Ubuntu 18,04 használatára. Használja a `--aks-custom-headers` jelzőt az Ubuntu 18,04 alapértelmezett operációs rendszerként való beállításához az adott csomópont-készlethez.
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-Ha a Node-készleteket az AK Ubuntu 16,04-lemezképpel szeretné létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` .
 
 ## <a name="container-runtime-configuration"></a>Tároló futásidejű konfigurációja
 
@@ -139,69 +93,6 @@ Az `containerd` AK-csomópontok használata esetén a pod indítási késése n�
 > 
 > Javasoljuk, hogy a munkaterheléseket az AK-beli csomópont-készleteken tesztelje, a `containerD` 1,19-es vagy újabb fürtök használata előtt.
 
-A következő szakasz ismerteti, hogyan használhatja és tesztelheti az AK-t olyan `containerD` fürtökön, amelyek még nem használják a 1,19-es vagy újabb Kubernetes-verziót, vagy amelyeket a szolgáltatás általánosan elérhetővé válása előtt hoztak létre a tároló futásidejű konfigurációjának előzetes verziójának használatával.
-
-### <a name="use-containerd-as-your-container-runtime-preview"></a>Használat `containerd` tároló-futtatókörnyezetként (előzetes verzió)
-
-A következő előfeltételek szükségesek:
-
-- [Az Azure CLI, a][azure-cli-install]2.8.0 vagy újabb verzió telepítve
-- Az AK-előzetes verziójú bővítmény 0.4.53 vagy újabb verziója
-- A `UseCustomizedContainerRuntime` szolgáltatás jelzője regisztrálva
-- A `UseCustomizedUbuntuPreview` szolgáltatás jelzője regisztrálva
-
-A következő Azure CLI-parancsokkal telepítheti a 0.4.53-bővítményt vagy újabb verziót:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-A `UseCustomizedContainerRuntime` és szolgáltatások regisztrálása `UseCustomizedUbuntuPreview` :
-
-```azurecli
-az feature register --name UseCustomizedContainerRuntime --namespace Microsoft.ContainerService
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-
-```
-
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-list) parancs használatával tekintheti meg:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
-
-### <a name="use-containerd-on-new-clusters-preview"></a>Használat `containerd` új fürtökön (előzetes verzió)
-
-Konfigurálja a fürtöt, amelyet `containerd` a fürt létrehozásakor használ. Használja a `--aks-custom-headers` jelzőt a `containerd` tároló futtatókörnyezetként való beállításhoz.
-
-> [!NOTE]
-> A `containerd` futtatókörnyezetet csak a csomópontok és csomópont-készletek támogatják az AK Ubuntu 18,04-rendszerkép használatával.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Ha a Moby (Docker) futtatókörnyezettel rendelkező fürtöket szeretne létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` .
-
-### <a name="use-containerd-on-existing-clusters-preview"></a>Használat `containerd` meglévő fürtökön (előzetes verzió)
-
-Konfigurálja a használni kívánt új csomópont-készletet `containerd` . Használja a `--aks-custom-headers` jelzőt az `containerd` adott csomópont-készlet futtatókörnyezetének beállításához.
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Ha a Moby (Docker) futtatókörnyezettel rendelkező csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyásával teheti meg `--aks-custom-headers` .
-
-
 ### <a name="containerd-limitationsdifferences"></a>`Containerd` korlátozások/különbségek
 
 * `containerd`A tároló-futtatókörnyezet használatához a Base os Ubuntu 18,04-et kell használnia az alap operációsrendszer-rendszerképként.
@@ -213,9 +104,9 @@ Ha a Moby (Docker) futtatókörnyezettel rendelkező csomópont-készleteket sze
 * Már nem fér hozzá a Docker-motorhoz, `/var/run/docker.sock` vagy használhatja a Docker-in-Docker-t (DinD).
   * Ha jelenleg az alkalmazás naplófájljait kinyeri vagy a Docker-motorból figyeli az adatait, akkor használjon hasonló [Azure monitor a tárolók](../azure-monitor/insights/container-insights-enable-new-cluster.md) helyett. Emellett az AK nem támogatja a sávon kívüli parancsok futtatását az ügynök csomópontjain, amelyek instabilitást okozhatnak.
   * A fenti módszerekkel még a Moby/Docker használatakor is felhasználhatja a lemezképek kiépítését, és közvetlenül kihasználhatja a Docker-motort a fenti módszerek segítségével. A Kubernetes nem teljesen [tisztában van a](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) felhasznált erőforrásokkal, és ezek a módszerek számos olyan problémát [jelentenek, mint](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)például a.
-* Lemezképek készítése – továbbra is használhatja a jelenlegi Docker-összeállítási munkafolyamatot a megszokott módon, hacsak nem imagages-t épít az AK-fürtön belül. Ebben az esetben érdemes átváltani a rendszerképek [ACR-feladatokkal](../container-registry/container-registry-quickstart-task-cli.md)történő összeállításának ajánlott megközelítésére, vagy a fürt biztonságosabb, például a [Docker-buildx](https://github.com/docker/buildx).
+* Rendszerképek készítése – továbbra is használhatja a jelenlegi Docker-összeállítási munkafolyamatot a szokásos módon, hacsak nem készít lemezképeket az AK-fürtön belül. Ebben az esetben érdemes átváltani a rendszerképek [ACR-feladatokkal](../container-registry/container-registry-quickstart-task-cli.md)történő összeállításának ajánlott megközelítésére, vagy a fürt biztonságosabb, például a [Docker-buildx](https://github.com/docker/buildx).
 
-## <a name="generation-2-virtual-machines-preview"></a>2. generációs virtuális gépek (előzetes verzió)
+## <a name="generation-2-virtual-machines"></a>2. generációs virtuális gépek
 
 Az Azure támogatja a [2. generációs (Gen2) virtuális gépeket (VM)](../virtual-machines/generation-2.md). A 2. generációs virtuális gépek támogatják az 1. generációs virtuális gépeken (Gen1) nem támogatott főbb funkciókat. A szolgáltatások közé tartozik a megnövekedett memória, az Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és a virtualizált állandó memória (vPMEM).
 
@@ -223,59 +114,6 @@ A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási archit
 A Gen2 virtuális gépeket csak a megadott SKU-és méretek támogatják. Tekintse át a [támogatott méretek listáját](../virtual-machines/generation-2.md#generation-2-vm-sizes), és ellenőrizze, hogy az SKU támogatja vagy igényli-e a Gen2.
 
 Emellett nem minden virtuálisgép-lemezkép támogatja a Gen2-t, az AK-Gen2 virtuális gépeken az új [AK Ubuntu 18,04-lemezképet](#os-configuration)fogja használni. Ez a rendszerkép az összes Gen2 SKU-t és méretet támogatja.
-
-Ha az előzetes verzióban szeretné használni a Gen2 virtuális gépeket, a következőkre lesz szüksége:
-- A `aks-preview` CLI-bővítmény telepítve van.
-- A `Gen2VMPreview` szolgáltatás jelzője regisztrálva van.
-
-Regisztrálja a `Gen2VMPreview` szolgáltatást:
-
-```azurecli
-az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
-```
-
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature#az-feature-list) parancs használatával tekintheti meg:
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
-```
-
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider#az-provider-register) paranccsal:
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-A következő Azure CLI-parancsokkal telepítheti az AK-előnézeti CLI-bővítményt:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítményt:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-gen2-vms-on-new-clusters-preview"></a>Gen2 virtuális gépek használata új fürtökön (előzetes verzió)
-Konfigurálja úgy a fürtöt, hogy Gen2 virtuális gépeket használjon a kiválasztott SKU-hoz a fürt létrehozásakor. A `--aks-custom-headers` jelzővel beállíthatja, hogy a Gen2 a virtuális gép létrehozásakor egy új fürtön legyen.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-Ha az 1. generációs (Gen1) virtuális gépek használatával szeretne normál fürtöt létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` . Azt is megteheti, hogy az alábbi módon további Gen1 vagy Gen2 virtuális gépeket ad hozzá.
-
-### <a name="use-gen2-vms-on-existing-clusters-preview"></a>Gen2 virtuális gépek használata meglévő fürtökön (előzetes verzió)
-Konfiguráljon egy új csomópont-készletet a Gen2 virtuális gépek használatára. A `--aks-custom-headers` jelzővel állítsa be a Gen2 virtuálisgép-generációként az adott csomópont-készlethez.
-
-```azurecli
-az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-Ha normál Gen1-csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` .
-
 
 ## <a name="ephemeral-os"></a>Ideiglenes operációs rendszer
 

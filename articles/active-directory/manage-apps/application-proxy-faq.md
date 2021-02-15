@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 121dcdf51374f625ad7393bb181b1be215775a0b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257777"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370818"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -106,6 +106,15 @@ Az alapértelmezett hossz 85 másodperc. A "Long" beállítás 180 másodperc. N
 
 Nem, ez jelenleg nem támogatott.
 
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>Mi történik, ha törölem CWAP_AuthSecret (az ügyfél titkos kulcsát) az alkalmazás regisztrálásakor?
+
+Az ügyfél titkos kulcsát (más néven *CWAP_AuthSecret*) automatikusan hozzáadja az alkalmazás-objektumhoz (alkalmazás-regisztráció) az Azure ad Application proxy-alkalmazás létrehozásakor.
+
+Az ügyfél titkos kulcsa egy évig érvényes. A rendszer automatikusan létrehoz egy új egyéves ügyfél-titkos kulcsot, mielőtt az aktuálisan érvényes ügyfél titkos kulcsa lejár. Három CWAP_AuthSecret ügyfél titkos kulcsát mindig az Application objektum tárolja. 
+
+> [!IMPORTANT]
+> CWAP_AuthSecret az Azure-AD Application Proxy előhitelesítésének törlése. Ne törölje CWAP_AuthSecret.
+
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Hogyan módosítja az alkalmazás betöltését a kezdőlapon?
 
 Az alkalmazás-regisztrációk lapon módosíthatja a Kezdőlap URL-címét a céloldal kívánt külső URL-címére. A megadott oldal betöltődik, amikor az alkalmazást a saját alkalmazások vagy az Office 365 portálról indítják el. A konfigurációs lépésekért lásd: [Egyéni Kezdőlap beállítása közzétett alkalmazásokhoz az Azure ad Application proxy használatával](./application-proxy-configure-custom-home-page.md)
@@ -187,11 +196,11 @@ Nem. Az Azure AD Application Proxy úgy lett kialakítva, hogy az Azure AD-vel m
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>A WebSocket-támogatás a QlikSense-től eltérő alkalmazásokhoz is működik?
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>A WebSocket támogatja a QlikSense és a Távoli asztal Web Client (HTML5) szolgáltatáson kívüli alkalmazásokhoz való munkát?
 
 A WebSocket protokoll támogatása jelenleg még nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokhoz nem működik. Néhány ügyfél vegyes sikerrel járt a WebSocket protokoll használatával más alkalmazásokkal. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje el nekünk visszajelzését a következő címen: aadapfeedback@microsoft.com .
 
-A Windows felügyeleti központban (WAC) vagy Távoli asztal webes ügyfélprogramban (HTML5) lévő funkciók (eseménynaplók, PowerShell és Távoli asztali szolgáltatások) nem működnek az Azure-AD Application Proxy használatával.
+A Windows felügyeleti központban (WAC) található szolgáltatások (eseménynaplók, PowerShell és Távoli asztali szolgáltatások) nem működnek az Azure AD Application Proxy használatával.
 
 ## <a name="link-translation"></a>Fordítás csatolása
 

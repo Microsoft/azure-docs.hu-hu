@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
-ms.openlocfilehash: 624a3a194b451dc1f498a0ded9d68f641b304eab
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918286"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383228"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>Csomagok létrehozása a felügyelt szolgáltatási ajánlathoz
 
@@ -24,7 +24,7 @@ A felügyelt szolgáltatásoknak a Microsoft kereskedelmi Piactéren keresztül 
 1. A partner Center ajánlatának **terv áttekintés** lapján válassza az **+ új csomag létrehozása** lehetőséget.
 2. A megjelenő párbeszédpanelen a **terv azonosítója** területen adjon meg egy egyedi díjcsomag-azonosítót. Legfeljebb 50 kisbetűs alfanumerikus karaktert, kötőjelet vagy aláhúzást használhat. A terv azonosítója a **Létrehozás** gombra kattintva nem módosítható. Ez az azonosító az ügyfelek számára látható lesz.
 3. A **terv neve** mezőbe írjon be egy egyedi nevet ehhez a csomaghoz. Legfeljebb 50 karaktert használhat. Ez a név jelenik meg az ügyfelek számára.
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="define-the-plan-listing"></a>A csomag listájának megadása
 

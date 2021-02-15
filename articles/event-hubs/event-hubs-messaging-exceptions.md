@@ -2,13 +2,13 @@
 title: Azure Event Hubs – kivételek (örökölt)
 description: Ez a cikk az Azure Event Hubs üzenetkezelési kivételek és a javasolt műveletek listáját tartalmazza.
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340967"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390895"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Üzenetkezelési kivételek Event Hubs – .NET (örökölt)
 Ez a szakasz a .NET-keretrendszer API-jai által generált .NET-kivételeket sorolja fel. 
@@ -125,18 +125,18 @@ Ez a hiba két okból fordulhat elő:
 
     Ha az értékek nagyobbak, mint az adatmennyiség * korlát (1 MB/s a bejövő forgalomhoz, vagy 1000 bejövő forgalom/másodperc, 2 MB/s a kimenő forgalomhoz), növelje az TUs számát egy Event Hubs névtér **méretével** (a bal oldali menüben), vagy használja a Event Hubs [automatikus](event-hubs-auto-inflate.md) méretezési funkcióját. Vegye figyelembe, hogy az automatikus feltöltés legfeljebb 20 TUS-t tud emelni. Ahhoz, hogy pontosan 40 TUs-re növelje, küldjön egy [támogatási kérést](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
-### <a name="error-code-50001"></a>50001-es hibakód
+### <a name="error-code-50008"></a>50008-es hibakód
 
 Ennek a hibának ritkán kell történnie. Ez akkor történik meg, amikor a névtér kódját futtató tárolója alacsony a CPU-ban – nem több, mint néhány másodperc, mielőtt megkezdődik a Event Hubs Load Balancer.
 
-**Megoldás**: korlátozza a GetRuntimeInformation metódus hívásait. Az Azure Event Hubs másodpercenként legfeljebb 50 hívást támogat a GetRuntimeInfo másodpercenként. A korlát elérésekor a következőhöz hasonló kivétel jelenhet meg:
+**Megoldás**: korlátozza a GetRuntimeInformation metódus felé irányuló hívásokat. Az Azure Event Hubs felhasználónkénti csoportonként legfeljebb 50 hívást támogat a GetRuntimeInfo másodpercenként. A korlát elérésekor a következőhöz hasonló kivétel jelenhet meg:
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

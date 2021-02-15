@@ -1,21 +1,17 @@
 ---
 title: 'Az adatátalakítás a Spark használatával Azure Data Factory '
 description: Ez az oktatóanyag lépésenkénti utasításokat biztosít az adatok átalakításához egy Spark-tevékenység az Azure Data Factoryban való használatával.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/10/2018
+ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010146"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377788"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 
@@ -108,7 +104,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
    Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. A létrehozás befejezése után megjelenik az **Adat-előállító** lap. A Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 
@@ -167,7 +163,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    j. Adja meg a felhasználónévhez tartozó jelszót a **Cluster password** (Fürt jelszava) mezőben. 
    
-   k. Válassza a **Befejezés** lehetőséget. 
+   k. Válassza a **Befejezés** gombot. 
 
    ![HDInsight társított szolgáltatás beállításai](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -243,7 +239,7 @@ A fájlban a bemeneti szövegfájl összes szavának szerepelnie kell, valamint 
 (u'file', 1)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A mintában szereplő folyamat egy Spark-tevékenységgel és egy igény szerinti HDInsight társított szolgáltatással alakítja át az adatokat. Megtanulta végrehajtani az alábbi műveleteket: 
 
 > [!div class="checklist"]

@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556307"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393751"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
 
@@ -78,14 +77,14 @@ A CI/CD kiadási folyamat a következő hibával meghiúsult:
 
 #### <a name="cause"></a>Ok
 
-Ennek oka egy olyan Integration Runtime, amelynek a neve azonos a cél gyárban, de egy másik típussal. A telepítéskor a Integration Runtimenak azonos típusúnak kell lennie.
+Ezt egy azonos nevű integrációs futtatókörnyezet okozza a cél gyárban, de egy másik típussal. A telepítéskor a Integration Runtimenak azonos típusúnak kell lennie.
 
 #### <a name="recommendation"></a>Ajánlás
 
 - Tekintse át az alábbi, CI/CD-re vonatkozó ajánlott eljárásokat:
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- Az integrációs modulok nem változnak gyakran, és a CI/CD összes fázisában hasonlóak, így Data Factory az integrációs modul azonos nevét és típusát adja meg a CI/CD összes szakaszában. Ha a név és a típus & tulajdonságok eltérőek, ügyeljen arra, hogy egyezzen a forrás és a cél IR-konfigurációval, majd telepítse a kiadási folyamatot.
+- Az integrációs modulok nem változnak gyakran, és a CI/CD összes fázisában hasonlóak, így Data Factory az integrációs modul azonos nevét és típusát adja meg a CI/CD összes szakaszában. Ha a név és a típus & tulajdonságok eltérőek, ügyeljen arra, hogy egyezzen a forrás és a cél integrációs modul konfigurációjával, majd telepítse a kiadási folyamatot.
 - Ha az integrációs modulokat minden fázisban meg szeretné osztani, érdemes lehet egy Ternáris-gyárat használni, amely csak a megosztott integrációs modulokat tartalmazza. Ezt a megosztott gyárat az összes környezetében használhatja társított Integration Runtime-típusként.
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>Érvénytelen hivatkozás miatt nem sikerült a dokumentumok létrehozása vagy frissítése.
@@ -133,7 +132,7 @@ Nem lehet áthelyezni Data Factory egyik erőforráscsoporthoz a másikba, a kö
 
 #### <a name="resolution"></a>Feloldás
 
-Az áthelyezési művelet engedélyezéséhez törölnie kell a SSIS-IR és a megosztott IRs-t. Ha nem szeretné törölni az IRs-t, a legjobb módszer a másolási és klónozási dokumentum elvégzése a másolás és a befejezés után, törölje a régi adatgyárat.
+Az áthelyezési művelet engedélyezéséhez törölnie kell a SSIS-IR és a megosztott IRs-t. Ha nem szeretné törölni az integrációs modulokat, a legjobb módszer a másolási és klónozási dokumentum a másolás és a végrehajtás befejezése után, a régi Data Factory törlése.
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>Az ARM-sablon nem exportálható és nem importálható
 
@@ -150,6 +149,34 @@ Felhasználóként létrehozott egy felhasználói szerepkört, és nem rendelke
 #### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához hozzá kell adnia a következő engedélyeket a szerepkörhöz: *Microsoft. DataFactory/Factorys/queryFeaturesValue/Action*. Ezt az engedélyt alapértelmezés szerint a "Data Factory közreműködő" szerepkörbe kell foglalni.
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatikus közzététel CI/CD-re a közzététel gomb megnyomása nélkül  
+
+#### <a name="issue"></a>Probléma
+
+A manuális közzététel az ADF-portálon kattintson az automatikus CI/CD-művelet lehetőségre.
+
+#### <a name="cause"></a>Ok
+
+Egészen a közelmúltig csak az ADF-folyamatnak a központi telepítésekhez való közzététele volt az ADF Portal gomb kattintson a lehetőségre. Ezt követően a folyamat automatikusan elvégezhető. 
+
+#### <a name="resolution"></a>Feloldás
+
+A CI/CD-folyamat ki lett bővítve. Az **automatikus közzétételi** funkció az ADF UX összes Azure Resource Manager (ARM) sablonjának funkcióit végrehajtja, ellenőrzi és exportálja. Egy nyilvánosan elérhető NPM-csomagon keresztül teszi a logikát [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) . Ez lehetővé teszi, hogy programozott módon aktiválja ezeket a műveleteket ahelyett, hogy az ADF felhasználói felületére ugorjon, majd kattintson a gombra. Így a CI/CD-folyamatok **valódi** folyamatos integrációs élményt biztosítanak. A részletekért kövesse az [ADF CI/CD közzétételének tökéletesítése](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements) című témakört. 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4MB nál ARM-sablon korlátja miatt nem lehet közzétenni  
+
+#### <a name="issue"></a>Probléma
+
+A telepítés nem végezhető el, mert elérte a 4MB nál teljes méretének Azure Resource Manager korlátját. A korlát átlépése után telepítenie kell egy megoldást. 
+
+#### <a name="cause"></a>Ok
+
+Azure Resource Manager korlátozza a sablon méretének 4MB nál. Korlátozza a sablon méretét 4 MB-ra, az egyes paramétereket pedig 64 KB-ra. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután az ismétlődő erőforrás-definíciókkal bővült, valamint a változók és paraméterek értékeit. Azonban átlépte a korlátot. 
+
+#### <a name="resolution"></a>Feloldás
+
+Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. A [csatolt és beágyazott sablonok használata esetén](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)kövesse az ajánlott eljárásokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

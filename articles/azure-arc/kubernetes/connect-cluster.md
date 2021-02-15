@@ -1,22 +1,22 @@
 ---
-title: Azure Arc-kompatibilis Kubernetes-fürt csatlakoztatása (előzetes verzió)
+title: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 02/09/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
+description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure Arcmal
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b4ab84153eaaf81c668d8589fec7516853aca5f9
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e68eccf998592aa7d1ebfea51e4ca66d577b3c7f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008111"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390555"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc-kompatibilis Kubernetes-fürt csatlakoztatása (előzetes verzió)
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
 Ez a cikk a felhőalapú natív számítástechnikai alaprendszer (CNCF) által tanúsított Kubernetes-fürtök (például az Azure-beli, az AK-motor, az Azure Stack hub, a GKE, a EKS és a VMware vSphere-fürt Azure-ba való összekapcsolásának folyamatát ismerteti.
 
@@ -27,11 +27,11 @@ Győződjön meg arról, hogy előkészítette a következő előfeltételeket:
 * Egy felhasználható Kubernetes-fürt. Ha nem rendelkezik meglévő Kubernetes-fürttel, a következő útmutatók egyikével hozhat létre egy tesztelési fürtöt:
   * Hozzon létre egy Kubernetes [-fürtöt a Kubernetes használatával a Docker-ben (Kind)](https://kind.sigs.k8s.io/).
   * Hozzon létre egy Kubernetes-fürtöt a Docker használatával [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) vagy [Windows rendszerhez](https://docs.docker.com/docker-for-windows/#kubernetes).
-* Egy kubeconfig-fájl, amely a fürt és a fürt rendszergazdai szerepkörét a fürtön fér hozzá az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
+* Kubeconfig-fájl, amely a fürt és a fürt rendszergazdai szerepkörének elérésére használható az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
 * A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. A "Kubernetes-fürt – Azure arc bevezetése" szerepkör rendelkezik ezekkel az engedélyekkel, és a felhasználó vagy az egyszerű szolgáltatás szerepkör-hozzárendeléseihez is használható.
 * 3. Helm a fürt bevezetéséhez connectedk8s-bővítmény használatával. [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
-* Azure CLI-verzió 2.15 + az Azure arc-kompatibilis Kubernetes CLI-bővítmények telepítéséhez. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t vagy frissítsen a legújabb verzióra.
-* Az arc-kompatibilis Kubernetes CLI-bővítmények telepítése:
+* Azure CLI-verzió 2.15 + az Azure arc-kompatibilis Kubernetes CLI-bővítményeinek telepítéséhez. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t vagy frissítsen a legújabb verzióra.
+* Az arc-kompatibilis Kubernetes CLI-bővítményeinek telepítése:
   
   * Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
   
@@ -113,14 +113,14 @@ eastus      AzureArcTest
 Ezután a következővel fogunk csatlakozni a Kubernetes-fürthöz az Azure-hoz `az connectedk8s connect` :
 
 1. Ellenőrizze a Kubernetes-fürthöz való csatlakozást a következők egyikével:
-   1. `KUBECONFIG`
-   1. `~/.kube/config`
-   1. `--kube-config`
+   * `KUBECONFIG`
+   * `~/.kube/config`
+   * `--kube-config`
 1. Azure arc-ügynökök üzembe helyezése a Kubernetes a Helm 3 használatával a `azure-arc` névtérben:
 
-```console
-az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
-```
+    ```console
+    az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
+    ```
 
 **Kimeneti**
 
@@ -169,8 +169,7 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti. Nyissa meg a portált a böngészőben, és navigáljon az erőforráscsoport és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancs korábbi részében használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .
-
+Ezt az erőforrást a [Azure Portal](https://portal.azure.com/)is megtekintheti. Nyissa meg a portált a böngészőben, és navigáljon az erőforráscsoporthoz és az Azure arc-kompatibilis Kubernetes-erőforráshoz a parancsban korábban használt erőforrás neve és erőforráscsoport-név bemenete alapján `az connectedk8s connect` .  
 > [!NOTE]
 > A fürt bevezetését követően 5 – 10 percet vesz igénybe, hogy a fürt metaadatai (a fürt verziója, az ügynök verziója, a csomópontok száma stb.) az Azure arc-kompatibilis Kubernetes-erőforrás áttekintés lapján legyenek felszínre Azure Portal.
 
@@ -211,9 +210,9 @@ Ha a fürt egy kimenő proxykiszolgáló mögött van, az Azure CLI és az arc-k
     ```
 
 > [!NOTE]
-> 1. `excludedCIDR`A alatt a `--proxy-skip-range` következő megadása fontos, hogy a fürtön belüli kommunikáció ne legyen megszakítva az ügynökök esetében.
-> 2. A `--proxy-http` `--proxy-https` és a a `--proxy-skip-range` legtöbb kimenő proxy esetében várhatóan `--proxy-cert` csak akkor szükséges, ha a proxy megbízható tanúsítványait az ügynök hüvelyének megbízható tanúsítványtárolóba kell befecskendezni.
-> 3. A fenti proxy-specifikációt jelenleg csak az ív-ügynökökre alkalmazza a rendszer, a sourceControlConfiguration használt Flux-hüvelyek esetében nem. Az arc-kompatibilis Kubernetes csapata aktívan dolgozik ezen a szolgáltatáson, és hamarosan elérhető lesz.
+> * `excludedCIDR`A alatt a `--proxy-skip-range` következő megadása fontos, hogy a fürtön belüli kommunikáció ne legyen megszakítva az ügynökök esetében.
+> * A `--proxy-http` `--proxy-https` és a a `--proxy-skip-range` legtöbb kimenő proxy esetében várhatóan `--proxy-cert` csak akkor szükséges, ha a proxy megbízható tanúsítványait az ügynök hüvelyének megbízható tanúsítványtárolóba kell befecskendezni.
+> * A fenti proxy-specifikációt jelenleg csak az ív-ügynökökre alkalmazza a rendszer, a sourceControlConfiguration használt Flux-hüvelyek esetében nem. Az arc-kompatibilis Kubernetes csapata aktívan dolgozik ezen a szolgáltatáson, és hamarosan elérhető lesz.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Azure arc-ügynökök a Kubernetes
 
@@ -254,7 +253,7 @@ Az Azure arc-kompatibilis Kubernetes néhány ügynököt (operátort) tartalmaz
 | `deployment.apps/metrics-agent`                                                                            | Más ív-ügynökök teljesítmény-metrikáit gyűjti.                                                                                    |
 | `deployment.apps/cluster-metadata-operator`                                                                            | A fürt metaadatait, például a fürt verzióját, a csomópontok darabszámát és az Azure arc-ügynök verzióját gyűjti.                                                                  |
 | `deployment.apps/resource-sync-agent`                                                                            |  Szinkronizálja a fent említett fürt metaadatait az Azure-ba.                                                                  |
-| `deployment.apps/clusteridentityoperator`                                                                            |  Az Azure arc-kompatibilis Kubernetes jelenleg a rendszer által hozzárendelt identitást támogatja. `clusteridentityoperator` karbantartja a más ügynökök által az Azure-nal folytatott kommunikációhoz használt felügyelt szolgáltatás-identitás (MSI) tanúsítványát.                                                                  |
+| `deployment.apps/clusteridentityoperator`                                                                            |  Az Azure arc-kompatibilis Kubernetes jelenleg támogatja a rendszer által hozzárendelt identitást. `clusteridentityoperator` karbantartja a más ügynökök által az Azure-nal folytatott kommunikációhoz használt felügyelt szolgáltatás-identitás (MSI) tanúsítványát.                                                                  |
 | `deployment.apps/flux-logs-agent`                                                                            |  Gyűjti a naplókat a verziókövetés konfigurációjának részeként üzembe helyezett Flux-kezelők számára.                                                                  |
 
 ## <a name="delete-a-connected-cluster"></a>Csatlakoztatott fürt törlése

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391723"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097534"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Modell tesztelése és újratanítása Custom Vision Service
 
@@ -23,7 +23,7 @@ A modell betanítása után gyorsan tesztelheti egy helyileg tárolt képpel vag
 
 ## <a name="test-your-model"></a>Modell tesztelése
 
-1. A [Custom Vision weblapon](https://customvision.ai)válassza ki a projektet. A felső menüsor jobb oldalán válassza a **gyors teszt** lehetőséget. Ez a művelet megnyit egy **gyors teszttel**ellátott ablakot.
+1. A [Custom Vision weblapon](https://customvision.ai)válassza ki a projektet. A felső menüsor jobb oldalán válassza a **gyors teszt** lehetőséget. Ez a művelet megnyit egy **gyors teszttel** ellátott ablakot.
 
     ![A gyors teszt gomb az ablak jobb felső sarkában látható.](./media/test-your-model/quick-test-button.png)
 
@@ -51,12 +51,12 @@ A korábban betanításra elküldött rendszerkép használatához kövesse az a
     > [!TIP]
     > A rendszerképek rangsorolva vannak, így azok a képek, amelyek az osztályozó legnagyobb nyereségét tudják elérni, felül vannak rendezve. Egy másik rendezés kiválasztásához használja a __Rendezés__ szakaszt.
 
-    Ha képet szeretne adni a betanítási adatokhoz, válassza ki a képet, válassza ki a címkét, majd válassza a __Mentés és bezárás__lehetőséget. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja őket a betanítási lemezképekhez. A __betanítási képek__ lapon tekintheti meg.
+    Ha képet szeretne adni a betanítási adatokhoz, válassza ki a képet, válassza ki a címkét, majd válassza a __Mentés és bezárás__ lehetőséget. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja őket a betanítási lemezképekhez. A __betanítási képek__ lapon tekintheti meg.
 
     ![A címkézési lap képe](./media/test-your-model/tag-image.png)
 
 3. A __vonat__ gomb használatával Újrataníthatja az osztályozó.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Tartalombesoroló teljesítményének fokozása](getting-started-improving-your-classifier.md)
+[Modell továbbfejlesztése](getting-started-improving-your-classifier.md)
