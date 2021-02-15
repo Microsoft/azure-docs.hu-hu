@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601150"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384469"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
 
@@ -73,7 +73,9 @@ Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure M
 
 A Azure Mapst használó további mintakód [itt](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)található.
 
-## <a name="next-steps"></a>További lépések
+[Íme](open-source-projects.md#third-part-map-control-plugins) néhány népszerű, nyílt forráskódú Térkép vezérlőelem, amelyet a Azure Maps csapat készített a beépülő modulhoz.
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps web SDK-ról:
 

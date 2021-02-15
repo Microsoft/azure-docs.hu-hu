@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aef4ff77eb02723bcd95dcc99a55094bd10acd4c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355477"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365446"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B együttműködés meghívásának beváltása
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-együttműködésre irányuló meghívás beváltása
 
 Ez a cikk bemutatja, hogyan érhetik el a vendég felhasználói az erőforrásokat és az azokhoz való belekapcsolódási folyamatot. Ha meghívó e-mailt küld a vendégnek, a meghívás tartalmaz egy hivatkozást, amely beválthat, hogy hozzáférjen az alkalmazáshoz vagy a portálhoz. A meghívás e-mail-címe csak egyike annak, hogy a vendégek hozzáférjenek az erőforrásokhoz. Másik lehetőségként hozzáadhat vendégeket a címtárhoz, és közvetlenül a megosztani kívánt portálra vagy alkalmazásra mutató hivatkozást adhat hozzájuk. Az általuk használt módszertől függetlenül a vendégek az első alkalommal történő belefoglalási folyamaton keresztül vezérlik. Ez a folyamat biztosítja, hogy a vendégek elfogadják az adatvédelmi feltételeket, és elfogadják a beállított használati [feltételeket](../conditional-access/terms-of-use.md) .
 
@@ -26,7 +26,7 @@ Amikor vendég felhasználót ad hozzá a címtárhoz, a vendég felhasználói 
 
    > [!IMPORTANT]
    > - **2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
-   > - **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > - **Október 2021-től kezdve** a Microsoft nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ## <a name="redemption-through-the-invitation-email"></a>Visszaváltás a meghívó e-mailben
 

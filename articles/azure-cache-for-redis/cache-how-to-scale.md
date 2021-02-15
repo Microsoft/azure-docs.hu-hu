@@ -1,21 +1,20 @@
 ---
-title: Az Azure cache méretezése a Redis
+title: Azure cache méretezése Redis-példányhoz
 description: Megtudhatja, hogyan méretezheti az Azure cache-t a Redis-példányok számára a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537847"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382395"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Az Azure cache méretezése a Redis
-A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A gyorsítótár létrehozása után méretezheti a gyorsítótár méretét és díjszabási szintjét, ha az alkalmazás követelményei megváltoznak. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
+# <a name="scale-an-azure-cache-for-redis-instance"></a>Azure cache méretezése Redis-példányhoz
+A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. Alapszintű, standard vagy prémium szintű gyorsítótár esetén megváltoztathatja annak méretét és szintjét, miután létrejött az alkalmazás igényeinek megfelelően. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
 
 ## <a name="when-to-scale"></a>Mikor érdemes méretezni
 Az Azure cache [figyelési](cache-how-to-monitor.md) funkcióit használhatja a Redis számára a gyorsítótár állapotának és teljesítményének figyeléséhez, valamint a gyorsítótár skálázási időpontjának meghatározásához. 
@@ -30,7 +29,7 @@ A következő mérőszámok figyelésével megállapíthatja, hogy szükség van
 Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás követelményeinek, egy nagyobb vagy kisebb gyorsítótár-díjszabási csomagra méretezheti, amely megfelelő az alkalmazásához. További információ a használandó gyorsítótár-díjszabási csomag meghatározásáról: [a megfelelő csomag kiválasztása](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="scale-a-cache"></a>Gyorsítótár skálázása
-A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a [Azure Portal](https://portal.azure.com) , majd kattintson a **Méretezés** elemre az **erőforrás menüben** .
+A gyorsítótár méretezéséhez keresse meg a [gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a [Azure Portal](https://portal.azure.com) , majd kattintson a **Méretezés** elemre az **erőforrás menüben**.
 
 ![Méretezés](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 

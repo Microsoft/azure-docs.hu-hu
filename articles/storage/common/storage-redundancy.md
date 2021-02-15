@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094909"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388515"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -185,6 +185,14 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 
 <sup>1</sup> a fiók feladatátvétele szükséges az írási rendelkezésre állás visszaállításához, ha az elsődleges régió elérhetetlenné válik. További információkért lásd a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
+
+### <a name="supported-azure-storage-services"></a>Támogatott Azure Storage-szolgáltatások
+
+Az alábbi táblázat az egyes Azure Storage-szolgáltatások által támogatott redundancia-beállításokat mutatja be.
+
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br />Azure Managed Disks | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br /> | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br /> |
 
 ### <a name="supported-storage-account-types"></a>Támogatott Storage-fiókok típusai
 

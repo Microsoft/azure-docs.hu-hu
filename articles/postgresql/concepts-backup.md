@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219723"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517297"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -66,7 +66,7 @@ Két típusú visszaállítás érhető el:
 - Az **időponthoz való visszaállítás** a Backup redundancia beállítással érhető el, és egy új kiszolgálót hoz létre ugyanabban a régióban, ahol az eredeti kiszolgáló található.
 - A **geo-visszaállítás** csak akkor érhető el, ha a kiszolgálót a földrajzilag redundáns tároláshoz konfigurálta, és lehetővé teszi a kiszolgáló másik régióba való visszaállítását.
 
-A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő általában kevesebb, mint 12 óra.
+A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázisok méretétől, a tranzakciós napló méretétől, a hálózati sávszélességtől és az azonos régióban lévő adatbázisok teljes számától. A helyreállítási idő a legutóbbi adatbiztonsági mentéstől és a szükséges helyreállítás mennyiségétől függően változhat. Általában kevesebb, mint 12 óra.
 
 > [!NOTE] 
 > Ha a forrás PostgreSQL-kiszolgáló az ügyfél által felügyelt kulcsokkal van titkosítva, további szempontokért tekintse meg a [dokumentációt](concepts-data-encryption-postgresql.md) . 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/05/2021
-ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805934"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388532"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -193,19 +193,20 @@ A logikai alkalmazás erőforrás-definíciójának részletes ismertetését az
 
 ### <a name="integration-service-environment-ise"></a>Integrációs szolgáltatási környezet (ISE)
 
-A [prémium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)átviteli sebességének korlátai:
+* [Fejlesztői ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level): legfeljebb 500 végrehajtást biztosít percenként, de a következő szempontokat kell figyelembe vennie:
 
-| Name | Korlát | Jegyzetek |
-|------|-------|-------|
-| Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta | |
-| Skálázási egység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden egyes méretezési egység percenként 2 000 további művelet-végrehajtást biztosít, ami ~ 80 000 000 további műveletek végrehajtása havonta | |
-| Felvehető maximális méretezési egységek | 10 | |
-||||
+  * Győződjön meg arról, hogy ezt az SKU-t kizárólag feltárásra, kísérletezésre, fejlesztésre és tesztelésre használja, nem éles környezetben vagy teljesítmény-teszteléshez. Ez az SKU nem rendelkezik szolgáltatói szerződéssel (SLA), vertikális Felskálázási képességgel vagy redundanciával az újrahasznosítás során, ami azt jelenti, hogy késések vagy leállások merülhetnek fel.
 
-Ha a határértékeket a normál feldolgozás során szeretné megtenni, vagy olyan terheléses tesztelést kell futtatnia, amely túllépheti ezeket a korlátokat, a követelményekkel kapcsolatos segítségért [forduljon a Logic apps csapatához](mailto://logicappsemail@microsoft.com) .
+  * Előfordulhat, hogy a háttérbeli frissítések időnként megszakítják a szolgáltatást.
 
-> [!NOTE]
-> A [fejlesztői ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) -nak nincsenek közzétett korlátai, nincs lehetőség a méretezésre, és nem biztosítunk szolgáltatói szerződést (SLA-t). Ezt az SKU-t csak kísérletezéshez, fejlesztéshez és teszteléshez használja, nem éles környezetben, sem pedig a teljesítmény teszteléséhez.
+* [Prémium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level): az alábbi táblázat ismerteti az SKU átviteli korlátait, de túllépi a határértékeket a normál feldolgozásban, vagy futtathatja a határértékek feletti terheléses tesztelést, ha segítségre van szükségük az [Logic apps csapatával](mailto://logicappsemail@microsoft.com) kapcsolatban.
+
+  | Name | Korlát | Jegyzetek |
+  |------|-------|-------|
+  | Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta | |
+  | Skálázási egység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden egyes méretezési egység percenként 2 000 további művelet-végrehajtást biztosít, ami ~ 80 000 000 további műveletek végrehajtása havonta | |
+  | Felvehető maximális méretezési egységek | 10 | |
+  ||||
 
 <a name="gateway-limits"></a>
 

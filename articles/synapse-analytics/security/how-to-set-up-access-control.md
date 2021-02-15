@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102172"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368999"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Hozzáférés-vezérlés beállítása a szinapszis-munkaterülethez 
 
@@ -132,7 +132,7 @@ SQL-készletek, Apache Spark készletek és integrációs modulok létrehozásá
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>6. lépés: az SQL Active Directory rendszergazdai szerepkörének kiosztása
 
-A munkaállomás létrehozója automatikusan be lesz állítva a munkaterület SQL Active Directory-rendszergazdájaként.  Csak egyetlen felhasználó vagy csoport kaphatja meg ezt a szerepkört. Ebben a lépésben az SQL Active Directory-rendszergazdát rendeli hozzá a munkaterületen a `workspace1_SQLAdmins` biztonsági csoporthoz.  A szerepkör hozzárendelésével ez a csoport magas jogosultsági szintű rendszergazdai hozzáférést biztosít a munkaterületen található összes SQL-készlethez és adatbázishoz.   
+A munkaterület létrehozója automatikusan be lesz állítva a munkaterület SQL Active Directory-rendszergazdájaként.  Csak egyetlen felhasználó vagy csoport kaphatja meg ezt a szerepkört. Ebben a lépésben az SQL Active Directory-rendszergazdát rendeli hozzá a munkaterületen a `workspace1_SQLAdmins` biztonsági csoporthoz.  A szerepkör hozzárendelésével ez a csoport magas jogosultsági szintű rendszergazdai hozzáférést biztosít a munkaterületen található összes SQL-készlethez és adatbázishoz.   
 
 - Nyissa meg az Azure Portalt
 - Navigáljon ide: `workspace1`

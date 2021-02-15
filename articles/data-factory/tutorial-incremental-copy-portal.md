@@ -1,22 +1,18 @@
 ---
 title: Táblázat növekményes másolása Azure Portal használatával
 description: Ebben az oktatóanyagban egy Azure Data Factory hoz létre egy olyan folyamattal, amely az Azure Blob Storage-ba Azure SQL Database egy táblából származó különbözeti adatait tölti be.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1f88571b407c138516568a7f74476ca35425da75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508526"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384690"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure SQL Database adatok növekményes betöltése az Azure Blob Storage-ba a Azure Portal használatával
 
@@ -171,7 +167,7 @@ END
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. A HDInsight adattárak (Azure Storage, Azure SQL Database, Azure SQL felügyelt példány stb.) és a (z) és a (z) és a (z) adatfeldolgozó által használt számítási erőforrások (stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás** gombra.      
+8. Kattintson a **Létrehozás** lehetőségre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -382,7 +378,7 @@ PersonID | Name | LastModifytime
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

@@ -14,7 +14,21 @@
 - name: Példák
   items:
     - name: Azure PowerShell
-      href: powershell-samples.md
+      items:
+        - name: Mintaparancsfájlok
+          href: powershell-samples.md
+        - name: VPN-átjáró létrehozása
+          href: scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md
+        - name: VPN Gateway + P2S sugár
+          href: scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md
+        - name: VPN Gateway + P2S tanúsítvány-hitelesítés
+          href: scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md
+        - name: VPN Gateway + helyek közötti
+          href: scripts/vpn-gateway-sample-site-to-site-powershell.md
+        - name: Virtuális hálózatok közötti kapcsolat
+          href: scripts/vpn-gateway-sample-vnet-vnet-powershell.md
+        - name: VPN-eszközsablon letöltése
+          href: scripts/vpn-gateway-sample-site-to-site-download-devicescript-powershell.md
 - name: Alapelvek
   items:
     - name: Távmunka
@@ -101,8 +115,6 @@
           href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: VPN privát társviszony-létesítéssel
           href: site-to-site-vpn-private-peering.md
-    - name: Helyek közötti kapcsolat az Azure és az AWS között
-      href: create-vpn-azure-aws-managed-solutions.md
     - name: Virtuális hálózatok közötti kapcsolatok
       items:
         - name: Virtuális hálózatok közötti kapcsolatok konfigurálása

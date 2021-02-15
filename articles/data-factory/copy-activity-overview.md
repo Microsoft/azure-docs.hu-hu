@@ -1,22 +1,17 @@
 ---
 title: Másolási tevékenység Azure Data Factory
 description: Ismerkedjen meg a másolási tevékenységgel Azure Data Factoryban. Használhatja az adatok egy támogatott forrás adattárból egy támogatott fogadó adattárba való másolásához.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96902160"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387903"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Másolási tevékenység Azure Data Factory
 
@@ -129,18 +124,18 @@ A másolási tevékenység következő sablonja a támogatott tulajdonságok tel
 
 | Tulajdonság | Leírás | Kötelező? |
 |:--- |:--- |:--- |
-| típus | Másolási tevékenység esetén állítsa a következőre: `Copy` | Igen |
-| bemenetek | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Igen |
-| kimenetek | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Igen |
-| typeProperties | A másolási tevékenység konfigurálásához adja meg a tulajdonságokat. | Igen |
-| source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Igen |
-| Translator | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | Nem |
-| dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/>További információ: [adatintegrációs egységek](copy-activity-performance-features.md#data-integration-units). | Nem |
-| parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/>További információ: [párhuzamos másolás](copy-activity-performance-features.md#parallel-copy). | Nem |
-| Preserve | Itt adhatja meg, hogy szeretné-e megőrizni a metaadatokat vagy az ACL-eket az adatok másolása <br/>További információ: a [metaadatok megőrzése](copy-activity-preserve-metadata.md). |Nem |
-| enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance-features.md#staged-copy). | Nem |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | Nem |
+| típus | Másolási tevékenység esetén állítsa a következőre: `Copy` | Yes |
+| bemenetek | Itt adhatja meg a forrásadatok számára kimutatott adatkészletet. A másolási tevékenység csak egyetlen bemenetet támogat. | Yes |
+| kimenetek | Itt adhatja meg a fogadó adatra mutató adatkészletet. A másolási tevékenység csak egyetlen kimenetet támogat. | Yes |
+| typeProperties | A másolási tevékenység konfigurálásához adja meg a tulajdonságokat. | Yes |
+| source | Adja meg a másolás forrásának típusát és a megfelelő tulajdonságokat az adatok beolvasásához.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Yes |
+| mosogató | Adja meg a másolási fogadó típusát és a hozzá tartozó tulajdonságokat az adatíráshoz.<br/>További információ: "másolási tevékenység tulajdonságai" szakasz, a [támogatott adattárakban és-formátumokban](#supported-data-stores-and-formats)felsorolt összekötők című cikke. | Yes |
+| Translator | Explicit oszlop-hozzárendelések meghatározása a forrásból a fogadóba. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [séma-hozzárendelés a másolási tevékenységben](copy-activity-schema-and-type-mapping.md). | No |
+| dataIntegrationUnits | Adja meg azt a mértéket, amely az [Azure Integration Runtime](concepts-integration-runtime.md) által az adatmásoláshoz használt teljesítmény mennyiségét jelöli. Ezeket az egységeket korábban Felhőbeli adatáthelyezési egységeknek (DMU) nevezik. <br/>További információ: [adatintegrációs egységek](copy-activity-performance-features.md#data-integration-units). | No |
+| parallelCopies | Itt adhatja meg azt a párhuzamosságot, amelyet a másolási tevékenység az adatok forrásból való beolvasásakor és az adatok fogadóba való írásához használni kíván.<br/>További információ: [párhuzamos másolás](copy-activity-performance-features.md#parallel-copy). | No |
+| Preserve | Itt adhatja meg, hogy szeretné-e megőrizni a metaadatokat vagy az ACL-eket az adatok másolása <br/>További információ: a [metaadatok megőrzése](copy-activity-preserve-metadata.md). |No |
+| enableStaging<br/>stagingSettings | Itt adhatja meg, hogy a blob Storage szolgáltatásban lévő ideiglenes adatok közvetlenül a forrásról a fogadóba másolva legyenek-e.<br/>További információ a hasznos forgatókönyvekről és a konfigurációs adatokról: [szakaszos másolás](copy-activity-performance-features.md#staged-copy). | No |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Válassza ki, hogyan kezelje a nem kompatibilis sorokat a forrásról a fogadóba másolt adatok másolása során.<br/>További információ: [hibatűrés](copy-activity-fault-tolerance.md). | No |
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -201,7 +196,7 @@ Programozott módon történő konfigurálásához adja hozzá a `additionalColu
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A tömb alá tartozó minden objektum `additionalColumns` egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a pedig `value` jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`** – a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **`$$COLUMN:<source_column_name>`** -egy fenntartott változó minta azt jelzi, hogy a megadott forrás oszlop duplikálása egy másik oszlopként<br>- **Kifejezés**<br>- **Statikus érték** | Nem |
+| additionalColumns | További adatoszlopokat adhat hozzá a fogadóba való másoláshoz.<br><br>A tömb alá tartozó minden objektum `additionalColumns` egy további oszlopot jelöl. A `name` meghatározza az oszlop nevét, a pedig `value` jelzi az oszlop adatértékét.<br><br>Az engedélyezett adatértékek a következők:<br>- **`$$FILEPATH`** – a fenntartott változó azt jelzi, hogy a forrásfájlok relatív elérési útját az adatkészletben megadott mappa elérési útjára tárolja. Alkalmazás fájl alapú forrásra.<br>- **`$$COLUMN:<source_column_name>`** -egy fenntartott változó minta azt jelzi, hogy a megadott forrás oszlop duplikálása egy másik oszlopként<br>- **Kifejezés**<br>- **Statikus érték** | No |
 
 **Példa**
 
@@ -253,7 +248,7 @@ Ha az adatok másolása az SQL Database-be/Azure szinapszis Analyticsbe történ
 Ez a funkció akkor támogatott, ha bármely forrásból másol adatokból a következő fogadó adattárakba. Megtalálhatja a lehetőséget az *ADF authoring UI* – > *másolási tevékenység* fogadó – > *tábla lehetőség* – > *automatikus létrehozási tábla* vagy `tableOption` a tulajdonság a másolási tevékenység fogadója adattartalomban.
 
 - [Azure SQL Database](connector-azure-sql-database.md)
-- [Felügyelt Azure SQL Database-példány](connector-azure-sql-managed-instance.md)
+- [Felügyelt példány Azure SQL Database](connector-azure-sql-managed-instance.md)
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 

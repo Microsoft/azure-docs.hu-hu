@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547763"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365633"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B – ajánlott eljárások
 Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz a vállalatok közötti (B2B) együttműködéshez Azure Active Directory (Azure AD).
 
    > [!IMPORTANT]
-   > **Március 2021**-én a Microsoft nem támogatja a meghívások beváltását úgy, hogy nem felügyelt ("vírus" vagy "igény szerinti") Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvekhez. Ekkor az egyszer használatos egyszeri jelszó funkció bekapcsol minden meglévő bérlőre, és alapértelmezés szerint engedélyezve lesz az új bérlők számára. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja. Részletekért lásd az [e-mailek egyszeri jelszavas hitelesítését](one-time-passcode.md) ismertető témakört.
+   > **Október 2021-től kezdve** a Microsoft nem támogatja a meghívások beváltását a nem felügyelt ("vírus" vagy "igény szerinti") Azure ad-fiókok és a bérlők számára a B2B együttműködési forgatókönyvek létrehozásához. Ekkor az egyszer használatos egyszeri jelszó funkció bekapcsol minden meglévő bérlőre, és alapértelmezés szerint engedélyezve lesz az új bérlők számára. Engedélyezjük az e-mailek egyszeri jelszavas szolgáltatását, mivel zökkenőmentes tartalék hitelesítési módszert biztosít a vendég felhasználói számára. Azonban lehetősége van letiltani ezt a funkciót, ha úgy dönt, hogy nem használja. Részletekért lásd az [e-mailek egyszeri jelszavas hitelesítését](one-time-passcode.md) ismertető témakört.
 
 
 ## <a name="b2b-recommendations"></a>B2B-javaslatok

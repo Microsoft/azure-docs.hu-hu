@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932455"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521441"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -41,7 +41,7 @@ Egy adott számítógépen csak az alapvető eszközök egyetlen verzióját leh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Functions Core Tools jelenleg az Azure CLI-vel függ az Azure-fiókkal való hitelesítéshez. Ez azt jelenti, hogy [Az Azure CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni az Azure-ba való [közzétételhez](#publish) Azure functions Core Toolsról. 
+Azure Functions Core Tools jelenleg az [Azure CLI](/cli/azure/install-azure-cli) -vel vagy az Azure-fiókkal való hitelesítéshez [Azure PowerShell](/powershell/azure/install-az-ps) függ. Ez azt jelenti, hogy az alábbi eszközök egyikét kell telepítenie az Azure-ba való [közzétételhez](#publish) Azure functions Core Toolsról. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
 
@@ -275,7 +275,7 @@ Még ha a fejlesztési Microsoft Azure Storage Emulator is használja, érdemes 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>Függvény létrehozása
 
-Függvény létrehozásához futtassa a következő parancsot:
+Függvény létrehozásához futtassa az alábbi parancsot:
 
 ```
 func new
@@ -309,7 +309,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Leírás                            |
+| Argumentum     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
 | **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 A Azure Functions Core Tools kétféle telepítési típust támogat: a Function-projektfájlok közvetlen üzembe helyezése a Function alkalmazásban a [zip üzembe helyezésével](functions-deployment-technologies.md#zip-deploy) és az [Egyéni Docker-tároló üzembe helyezésével](functions-deployment-technologies.md#docker-container). Már létre kell hoznia [egy Function alkalmazást az Azure-előfizetésében](functions-cli-samples.md#create), amelyre telepíteni fogja a kódot. A fordítást igénylő projekteket úgy kell felépíteni, hogy a bináris fájlok üzembe helyezhetők legyenek.
 
 >[!IMPORTANT]
->Az Azure [CLI](/cli/azure/install-azure-cli) -t helyileg kell telepíteni ahhoz, hogy közzé lehessen tenni az Azure-ban az alapvető eszközökről.  
+>Az Azure [CLI](/cli/azure/install-azure-cli) -vel vagy a [Azure PowerShell](/powershell/azure/install-az-ps) helyileg kell telepíteni az Azure-ba az alapvető eszközökről.  
 
 A Project mappa olyan nyelvspecifikus fájlokat és címtárakat tartalmazhat, amelyeket nem lehet közzétenni. A kizárt elemek a legfelső szintű projekt mappában található. funcignore fájlban szerepelnek.     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > A Java a Maven használatával teszi közzé a helyi projektet az Azure-ban. Használja az alábbi parancsot az Azure-ban való közzétételhez: `mvn azure-functions:deploy` . Az Azure-erőforrások a kezdeti üzembe helyezés során jönnek létre.
 
-Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hibaüzenet jelenik meg, ha olyan közzétételi kísérletet próbál végrehajtani, `<FunctionAppName>` amely nem létezik az előfizetésben. Ha szeretné megtudni, hogyan hozhat létre egy Function alkalmazást a parancssorból vagy a terminál ablakból az Azure CLI használatával, tekintse meg [a Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md)című témakört. Alapértelmezés szerint ez a parancs [távoli buildet](functions-deployment-technologies.md#remote-build) használ, és üzembe helyezi az alkalmazást [a központi telepítési csomagból való futtatásra](run-functions-from-deployment-package.md). Az ajánlott telepítési mód letiltásához használja a `--nozip` kapcsolót.
+Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hibaüzenet jelenik meg, ha olyan közzétételi kísérletet próbál végrehajtani, `<FunctionAppName>` amely nem létezik az előfizetésben. Ha szeretné megtudni, hogyan hozhat létre egy Function alkalmazást a parancssorból vagy a terminálból az Azure CLI vagy a Azure PowerShell használatával, tekintse meg [a Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md)című témakört. Alapértelmezés szerint ez a parancs [távoli buildet](functions-deployment-technologies.md#remote-build) használ, és üzembe helyezi az alkalmazást [a központi telepítési csomagból való futtatásra](run-functions-from-deployment-package.md). Az ajánlott telepítési mód letiltásához használja a `--nozip` kapcsolót.
 
 >[!IMPORTANT]
 > Ha a Azure Portalban hoz létre egy Function alkalmazást, a függvény alapértelmezés szerint a Function Runtime 3. x verzióját használja. Ha azt szeretné, hogy a Function app a futtatókörnyezet 1. x verzióját használja, kövesse az [1. x verzió futtatásának](functions-versions.md#creating-1x-apps)utasításait.
@@ -543,7 +543,7 @@ A következő közzétételi beállítások csak a 2. x vagy újabb verziókban 
 | **`--nozip`** | Kikapcsolja az alapértelmezett `Run-From-Package` üzemmódot. |
 | **`--build-native-deps`** | Kihagyja a generálás. Wheels mappát a Python-függvények alkalmazásainak közzétételekor. |
 | **`--build`**, **`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. A következőket fogadja el: `remote` és `local` . |
-| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Például: `python3-dev libevent-dev`. |
+| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Példa: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos helyzetekben figyelmen kívül hagyhatja a közzététel előtti ellenőrzést. |
 | **`--csx`** | C# parancsfájl-(. CSX) projekt közzététele. |
 | **`--no-build`** | A projekt nincs felépítve a közzététel során. A Python esetében `pip install` nincs elvégezve. |

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3055c9dd1294af81c6c52603dd60bb5aa6075abd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777865"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390164"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
@@ -36,13 +36,13 @@ Az Azure AD-bérlőnek a következő fiókokra van szüksége: egy globális ren
 Az Azure AD-bérlő legalább két felhasználójának létrehozásához használja a [felhasználók hozzáadása vagy törlése – Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) című témakör lépéseit. Ügyeljen arra, hogy a **címtárbeli szerepkört** a fióktípus létrehozásához módosítsa:
 
 * Globális rendszergazda
-* Felhasználó
+* User
 
 ## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. az Azure AD-hitelesítés engedélyezése a VPN-átjárón
 
 1. Keresse meg a hitelesítéshez használni kívánt címtár AZONOSÍTÓját. A Active Directory lap Tulajdonságok szakaszában szerepel.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Új Azure AD-bérlő" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="A könyvtár tulajdonságait megjelenítő képernyőkép" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
 
 1. Másolja ki a Címtár-azonosítót.
 
@@ -80,28 +80,28 @@ Az Azure AD-bérlő legalább két felhasználójának létrehozásához haszná
 
 1. Ha a rendszer kéri, válassza a **globális rendszergazdai** fiókot.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Új Azure AD-bérlő" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Fiók választása" border="false":::
 1. Ha a rendszer kéri, válassza az **elfogadás** lehetőséget.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="Új Azure AD-bérlő" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="A képernyőképen a szervezete által kért üzenet-engedélyek és az elfogadás lehetőség látható." border="false":::
 1. Az Azure AD-ben a **vállalati alkalmazásokban** a felsorolt **Azure VPN** látható.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="Új Azure AD-bérlő" lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="A minden alkalmazás lapot megjelenítő képernyőkép." lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
 1. Ha még nem rendelkezik működő pont – hely környezettel, kövesse az utasításokat, és hozzon létre egyet. Lásd: [pont – hely típusú VPN létrehozása](vpn-gateway-howto-point-to-site-resource-manager-portal.md) és konfigurálása pont – hely típusú VPN-átjáró létrehozásához és konfigurálásához.
 
     > [!IMPORTANT]
     > Az OpenVPN esetében az alapszintű SKU nem támogatott.
 
-1. Engedélyezze az Azure AD-hitelesítést a VPN-átjárón, ha a **pont – hely konfigurációhoz** navigál, és az **OpenVPN (SSL)** lehetőséget **adja meg bújtatási típusként** . A **hitelesítési típusként** válassza a **Azure Active Directory** lehetőséget, majd adja meg a **Azure Active Directory** szakaszban található információkat.
+1. Engedélyezze az Azure AD-hitelesítést a VPN-átjárón, ha a **pont – hely konfigurációhoz** navigál, és az **OpenVPN (SSL)** lehetőséget **adja meg bújtatási típusként**. A **hitelesítési típusként** válassza a **Azure Active Directory** lehetőséget, majd adja meg a **Azure Active Directory** szakaszban található információkat.
 
    * **Bérlő:** TenantID az Azure AD-bérlőhöz ```https://login.microsoftonline.com/{AzureAD TenantID}/```
 
    * **Célközönség:** Az "Azure VPN" Azure AD Enterprise-alkalmazás ApplicationID ```{AppID of the "Azure VPN" AD Enterprise app}```
 
-   * **Kiállító** : a biztonságos jogkivonat-szolgáltatás URL-címe ```https://sts.windows.net/{AzureAD TenantID}/```
+   * **Kiállító**: a biztonságos jogkivonat-szolgáltatás URL-címe ```https://sts.windows.net/{AzureAD TenantID}/```
 
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="Új Azure AD-bérlő" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="SAzure VPN" border="false":::
 
    > [!NOTE]
    > Győződjön meg róla, hogy az érték végén szerepelnie kell egy záró perjelnek `AadIssuerUri` . Ellenkező esetben a kapcsolatok sikertelenek lehetnek.
@@ -117,4 +117,4 @@ Az Azure AD-bérlő legalább két felhasználójának létrehozásához haszná
 
 ## <a name="next-steps"></a>Következő lépések
 
-A virtuális hálózatához létre kell hoznia és konfigurálnia kell egy VPN-ügyféloldali profilt. Lásd: [VPN-ügyfél konfigurálása P2S VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).
+Hozzon létre és konfiguráljon egy VPN-ügyféloldali profilt. Lásd: [VPN-ügyfél konfigurálása P2S VPN-kapcsolatokhoz](openvpn-azure-ad-client.md).

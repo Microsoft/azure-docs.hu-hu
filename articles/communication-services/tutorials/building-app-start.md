@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 60b5a2bf5c0aed3d1a4621e179429a157c2a0962
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: db59a9e7693190582736b9460658f629f4f1e555
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99421506"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369628"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Oktatóanyag: webalkalmazás előkészítése az Azure kommunikációs szolgáltatásokhoz (Node.js)
 
@@ -106,11 +106,25 @@ Kövesse ugyanezen lépéseket a [Azure functions](https://marketplace.visualstu
 
 ## <a name="set-up-a-local-webserver"></a>Helyi webkiszolgáló beállítása
 
+### <a name="create-a-new-npm-package"></a>Új NPM-csomag létrehozása
+
+A terminálban a munkaterület mappájának elérési útjából írja be a következőt:
+
+``` console
+npm init -y
+```
+
+Ez a parancs inicializál egy új NPM-csomagot, és hozzáadja `package.json` a projekt gyökérkönyvtárához.
+
+:::image type="content" source="./media/step-one-pic-eight.png" alt-text="JSON-csomag":::
+
+Az NPM init parancs további dokumentációja [itt](https://docs.npmjs.com/cli/v6/commands/npm-init) található.
+
 ### <a name="install-webpack"></a>A webpack telepítése
 
 a webpack lehetővé teszi, hogy az Azure-ban üzembe helyezhető statikus fájlokba [csomagolja](https://webpack.js.org/) a kódot. Emellett egy fejlesztői kiszolgáló is van, amelyet a hívó mintával való használatra konfigurálunk.
 
-A webpack telepítéséhez a következőt írja be a megnyitott terminálba:
+A (z)-ben a következőt kell beírnia a webpack telepítéséhez:
 
 ``` Console
 npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
@@ -175,7 +189,7 @@ A forrás-hozzárendelési beállítások [itt](https://webpack.js.org/configura
 
 :::image type="content" source="./media/step-one-pic-11.png" alt-text="A webpack konfigurálása":::
 
-A fejlesztői kiszolgáló futtatásához nyissa meg `package.json.js` a következő kódot, és adja hozzá a parancsfájlok területen:
+A fejlesztői kiszolgáló futtatásához nyissa meg `package.json` a következő kódot, és adja hozzá a parancsfájlok területen:
 
 ```JavaScript
     "build:dev": "webpack-dev-server --config webpack.dev.js"
@@ -206,7 +220,7 @@ A fájlnak most így kell kinéznie:
 
 Hozzáadta a NPM-ből használható parancsot. 
 
-:::image type="content" source="./media/step-one-pic-12.png" alt-text="package-json.jsmódosítása ":::
+:::image type="content" source="./media/step-one-pic-12.png" alt-text="package.jsmódosítása":::
 
 ### <a name="testing-the-development-server"></a>A fejlesztési kiszolgáló tesztelése
 
@@ -261,7 +275,7 @@ A fejlesztési konfiguráció teszteléséhez használja a következő terminál
 npm run build:dev
 ```
 
-A konzol megjeleníti, hogy a kiszolgáló hol fut. Alapértelmezés szerint ez a érték `http://localhost:8080` . A Build: dev parancs a korábban hozzáadott parancs `package-json.js` .
+A konzol megjeleníti, hogy a kiszolgáló hol fut. Alapértelmezés szerint ez a érték `http://localhost:8080` . A Build: dev parancs a korábban hozzáadott parancs `package.json` .
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Fejlesztői kiszolgáló indítása":::
  
@@ -289,26 +303,11 @@ Ez a művelet felveszi az Azure kommunikációs szolgáltatásokat, és meghívj
 
 :::image type="content" source="./media/step-one-pic-nine.png" alt-text="Az Azure kommunikációs szolgáltatások csomagjainak telepítése":::
 
-Ezeket a csomagokat az Azure kommunikációs szolgáltatások csapata adja meg, és tartalmazza a hitelesítést és a hívó kódtárakat. A "--Save" parancs azt jelzi, hogy az alkalmazás az éles használatú csomagoktól függ, és szerepelni fog a `dependencies` `package-json.js` fájlban. Az alkalmazás éles környezetben való létrehozásakor a csomagok szerepelni fognak a termelési kódban.
+Ezeket a csomagokat az Azure kommunikációs szolgáltatások csapata adja meg, és tartalmazza a hitelesítést és a hívó kódtárakat. A "--Save" parancs azt jelzi, hogy az alkalmazás az éles használatú csomagoktól függ, és szerepelni fog a `dependencies` `package.json` fájlban. Az alkalmazás éles környezetben való létrehozásakor a csomagok szerepelni fognak a termelési kódban.
 
 
 ## <a name="publish-your-website-to-azure-static-websites"></a>Webhelyek közzététele az Azure-beli statikus webhelyeken
 
-### <a name="create-a-new-npm-package"></a>Új NPM-csomag létrehozása
-
-A terminálban a munkaterület mappájának elérési útjából írja be a következőt:
-
-``` console
-npm init -y
-```
-
-Ez a parancs inicializál egy új NPM-csomagot, és hozzáadja `package.json` a projekt gyökérkönyvtárához.
-
-:::image type="content" source="./media/step-one-pic-eight.png" alt-text="JSON-csomag":::
-
-Az NPM init parancs további dokumentációja [itt](https://docs.npmjs.com/cli/v6/commands/npm-init) található.
-
- 
 ### <a name="create-a-configuration-for-production-deployment"></a>Konfiguráció létrehozása éles üzembe helyezéshez
 
 Adja hozzá az alábbi kódot a következőhöz `webpack.prod.js` :

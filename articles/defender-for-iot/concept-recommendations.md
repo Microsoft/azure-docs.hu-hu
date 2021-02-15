@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: d11154e26e2ffe97a1ea102a11dddb746db9433a
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809269"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521866"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
 
@@ -60,7 +60,6 @@ Az ajánlási riasztások betekintést és javaslatokat nyújtanak a környezet 
 | Közepes | Az alapértelmezett IP-szűrési házirendet meg kell tagadni | IoT Hub | Az IP-szűrési konfigurációnak meg kell határoznia az engedélyezett forgalomra vonatkozó szabályokat, és alapértelmezés szerint meg kell tagadnia az összes többi forgalmat. |
 | Közepes | Az IP-szűrési szabály nagyméretű IP-címtartományt tartalmaz | IoT Hub | Az IP-szűrési szabály forrás IP-tartományának engedélyezése túl nagy. A túlzottan megengedhető szabályok az IoT-hubot kártékony szereplőkkel tehetik ki. |
 | Alacsony | Diagnosztikai naplók engedélyezése IoT Hub | IoT Hub | Engedélyezheti a naplókat, és akár egy évig is megtarthatja őket. A naplók megőrzése lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidensek bekövetkezésekor vagy a hálózat biztonsága szempontjából. |
-
 
 ## <a name="next-steps"></a>Következő lépések
 

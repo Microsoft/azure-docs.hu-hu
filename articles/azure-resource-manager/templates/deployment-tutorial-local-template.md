@@ -1,16 +1,16 @@
 ---
 title: Oktatóanyag – helyi Azure Resource Manager sablon üzembe helyezése
 description: Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager-sablont (ARM-sablont) a helyi számítógépről
-ms.date: 01/12/2021
+ms.date: 02/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 3b2368f5adcfa4b7140c4ec00243ca2cba5c566a
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d8d54acfa345994edcc401170e70495b3826bfdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134126"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384231"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>Oktatóanyag: helyi ARM-sablon üzembe helyezése
 

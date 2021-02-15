@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366602"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben
 
@@ -230,11 +230,11 @@ A forrás tulajdonság a következő értékek bármelyike lehet:
 | `/messages/modules/<moduleId>/outputs/*` | Egy adott modul által a kimeneten keresztül küldött összes eszközről a felhőbe irányuló üzenet |
 | `/messages/modules/<moduleId>/outputs/<output>` | Egy adott modul által az adott kimeneten küldött összes eszközről a felhőbe irányuló üzenet |
 
-### <a name="condition"></a>Condition (Állapot)
+### <a name="condition"></a>Feltétel
 
 A feltétel nem kötelező az útvonal deklarációjában. Ha az összes üzenetet át szeretné adni a forrásról a fogadónak, csak hagyja ki a **Where** záradékot teljesen. Vagy használhatja a [IoT hub lekérdezési nyelvet](../iot-hub/iot-hub-devguide-routing-query-syntax.md) a feltételnek megfelelő üzenetek vagy üzenetek szűrésére. IoT Edge útvonalak nem támogatják az üzenetek szűrését a Twin címkék vagy tulajdonságok alapján.
 
-A IoT Edge moduljai között továbbított üzenetek ugyanúgy vannak formázva, mint az eszközök és az Azure IoT Hub között továbbított üzenetek. Minden üzenet JSON-ként van formázva, és **systemProperties**, **appProperties**és **szövegtörzs** paraméterekkel rendelkezik.
+A IoT Edge moduljai között továbbított üzenetek ugyanúgy vannak formázva, mint az eszközök és az Azure IoT Hub között továbbított üzenetek. Minden üzenet JSON-ként van formázva, és **systemProperties**, **appProperties** és **szövegtörzs** paraméterekkel rendelkezik.
 
 A következő szintaxissal hozhat létre lekérdezéseket a három paraméter bármelyikén:
 
@@ -244,7 +244,7 @@ A következő szintaxissal hozhat létre lekérdezéseket a három paraméter b�
 
 Az üzenet tulajdonságaira vonatkozó lekérdezések létrehozásával kapcsolatos példákat az [eszközről a felhőbe irányuló Message Routes lekérdezési kifejezések](../iot-hub/iot-hub-devguide-routing-query-syntax.md)című témakörben talál.
 
-IoT Edgera jellemző példa az, amikor egy levélből álló eszközről szeretne szűrni egy átjáró-eszközre érkező üzeneteket. A modulokból érkező üzenetek közé tartozik egy **connectionModuleId**nevű rendszertulajdonság. Tehát ha a levélből származó üzeneteket közvetlenül a IoT Hubra szeretné irányítani, a következő útvonal használatával zárja ki a modulok üzeneteit:
+IoT Edgera jellemző példa az, amikor egy levélből álló eszközről szeretne szűrni egy átjáró-eszközre érkező üzeneteket. A modulokból érkező üzenetek közé tartozik egy **connectionModuleId** nevű rendszertulajdonság. Tehát ha a levélből származó üzeneteket közvetlenül a IoT Hubra szeretné irányítani, a következő útvonal használatával zárja ki a modulok üzeneteit:
 
 ```query
 FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
@@ -327,7 +327,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -337,7 +337,7 @@ Az alábbi példa azt szemlélteti, hogy az érvényes üzembe helyezési jegyz�
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

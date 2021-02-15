@@ -1,23 +1,18 @@
 ---
 title: Adatok másolása a QuickBooks online-ból Azure Data Factory használatával (előzetes verzió)
 description: Megtudhatja, hogyan másolhat adatokat a QuickBooks online-ból a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: eecbcb817ad31480f8f6c3c7272328d06b17c081
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384061"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Adatok másolása a QuickBooks online-ból Azure Data Factory használatával (előzetes verzió)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,17 +45,17 @@ A QuickBooks társított szolgáltatás a következő tulajdonságokat támogatj
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **QuickBooks** | Igen |
-| connectionProperties | Olyan tulajdonságok csoportja, amelyek meghatározzák a QuickBooks-hez való kapcsolódás módját. | Igen |
-| **_Alatt `connectionProperties` :_* _ | | |
-| endpoint | A QuickBooks online-kiszolgáló végpontja. (quickbooks.api.intuit.com)  | Igen |
-| companyId | Az engedélyezni kívánt QuickBooks-vállalat vállalati azonosítója. További információ a céges azonosító megkereséséről: [Hogyan céges azonosítójának megkeresése](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Igen |
-| consumerKey | A OAuth 2,0-hitelesítéshez készült QuickBooks online-alkalmazás ügyfél-azonosítója. További információt [itt talál](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). | Igen |
-| consumerSecret | A OAuth 2,0-hitelesítéshez készült QuickBooks online-alkalmazás ügyfél-titka. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| refreshToken | A QuickBooks-alkalmazáshoz társított OAuth 2,0 frissítési jogkivonat. További információt [itt talál](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Megjegyzés: a frissítési token 180 nap után lejár. Az ügyfélnek rendszeresen frissítenie kell a frissítési tokent. <br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).| Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **QuickBooks** | Yes |
+| connectionProperties | Olyan tulajdonságok csoportja, amelyek meghatározzák a QuickBooks-hez való kapcsolódás módját. | Yes |
+| ***Alatt `connectionProperties` :*** | | |
+| endpoint | A QuickBooks online-kiszolgáló végpontja. (quickbooks.api.intuit.com)  | Yes |
+| companyId | Az engedélyezni kívánt QuickBooks-vállalat vállalati azonosítója. További információ a céges azonosító megkereséséről: [Hogyan céges azonosítójának megkeresése](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
+| consumerKey | A OAuth 2,0-hitelesítéshez készült QuickBooks online-alkalmazás ügyfél-azonosítója. További információt [itt talál](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). | Yes |
+| consumerSecret | A OAuth 2,0-hitelesítéshez készült QuickBooks online-alkalmazás ügyfél-titka. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| refreshToken | A QuickBooks-alkalmazáshoz társított OAuth 2,0 frissítési jogkivonat. További információt [itt talál](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Megjegyzés: a frissítési token 180 nap után lejár. Az ügyfélnek rendszeresen frissítenie kell a frissítési tokent. <br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).| Yes |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
 
-_ *Példa:**
+**Példa**
 
 ```json
 {
@@ -95,7 +90,7 @@ Az adatok QuickBooks online-ból való másolásához állítsa az adatkészlet 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **QuickBooksObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **QuickBooksObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -125,7 +120,7 @@ Az adatok QuickBooks online-ból való másolásához állítsa a forrás típus
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **QuickBooksSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **QuickBooksSource** | Yes |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
@@ -168,5 +163,5 @@ A Azure Data Factory másolási tevékenysége nem tud közvetlenül a QuickBook
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

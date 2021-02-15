@@ -1,22 +1,17 @@
 ---
 title: Várakozási tevékenység Azure Data Factory
 description: A várakozási tevékenység szünetelteti a folyamat végrehajtását a megadott időszakra vonatkozóan.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 12c9027067c00a3db84e6610a0d73090cc011713
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9271723e68e5edd6805f0197bca9cdefc3c5e921
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485910"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388328"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Várakozási tevékenység végrehajtása a Azure Data Factoryban
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
@@ -24,7 +19,7 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-## <a name="syntax"></a>Szintaxis
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -41,9 +36,9 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A tevékenység neve `Wait` . | Sztring | Igen
-típus | **Várakozási** értékre kell beállítani. | Sztring | Igen
-waitTimeInSeconds | Azon másodpercek száma, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Igen
+name | A tevékenység neve `Wait` . | Sztring | Yes
+típus | **Várakozási** értékre kell beállítani. | Sztring | Yes
+waitTimeInSeconds | Azon másodpercek száma, ameddig a folyamat várakozik a feldolgozás folytatása előtt. | Egész szám | Yes
 
 ## <a name="example"></a>Példa
 
@@ -101,7 +96,7 @@ Ebben a példában a folyamat két tevékenységgel rendelkezik: **eddig** és *
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 
 - [If Condition tevékenység](control-flow-if-condition-activity.md)

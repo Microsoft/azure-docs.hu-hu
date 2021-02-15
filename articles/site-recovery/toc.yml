@@ -216,7 +216,9 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után
               href: azure-to-azure-replicate-after-migration.md
-            - name: Zóna – katasztrófa-helyreállítás
+        - name: Zóna – katasztrófa-helyreállítás
+          items:
+            - name: Régión belüli zónák replikálásának engedélyezése
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Kezelés
           items:

@@ -125,7 +125,7 @@
           href: troubleshoot-capacity-pools.md
         - name: Régiók közötti replikáció hibaelhárítása
           href: troubleshoot-cross-region-replication.md
-        - name: Kettős protokollú kötetek hibaelhárítása
+        - name: SMB-vagy kettős protokollú kötetek hibáinak megoldása
           href: troubleshoot-dual-protocol-volumes.md
         - name: NFSv 4.1 Kerberos-kötetek hibaelhárítása
           href: troubleshoot-nfsv41-kerberos-volumes.md

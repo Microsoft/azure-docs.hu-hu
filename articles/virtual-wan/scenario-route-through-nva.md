@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 24671a34214864e253d96c356dc8b2853bf6d560
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99626660"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519796"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: Forgalom irányítása NVA-n keresztül
 
@@ -30,9 +30,9 @@ A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehet�
 
 Ebben az esetben az elnevezési konvenciót fogjuk használni:
 
-* "NVA virtuális hálózatok" olyan virtuális hálózatok esetében, amelyekben a felhasználók egy NVA telepítettek, és más virtuális hálózatokat is csatlakoztatottak a küllők (VNet 2 és VNet 4 a **kapcsolati mátrixban**).
-* "NVA küllők" a NVA-VNet (VNet 5, VNet 6, VNet 7 és VNet 8) csatlakoztatott virtuális hálózatok számára a következő **kapcsolati mátrixban**:.
-* "Nem NVA virtuális hálózatok" a virtuális WAN-hoz csatlakoztatott virtuális hálózatok esetében, amelyekhez nincs NVA vagy más virtuális hálózatok társítva (VNet 1 és VNet 3 a **kapcsolati mátrixban**).
+* A "NVA virtuális hálózatok" azon virtuális hálózatok esetében, amelyekben a felhasználók üzembe helyezettek egy NVA, és más virtuális hálózatokat is csatlakoztatottak a küllők (a VNet 2 és a VNet 4. **ábrán** ).
+* "NVA küllők" a NVA-VNet (VNet 5, VNet 6, VNet 7 és VNet 8) csatlakoztatott virtuális hálózatok számára a cikkben lejjebb található **2. ábrán** .
+* "Nem NVA virtuális hálózatok" a virtuális WAN-hoz csatlakoztatott virtuális hálózatok esetében, amelyeknek nincs NVA vagy más virtuális hálózatok társítva velük (VNet 1 és VNet 3 a cikk későbbi, **2. ábrájában** ).
 * "Hubok" a Microsoft által felügyelt virtuális WAN-hubokhoz, ahol a NVA virtuális hálózatok csatlakoznak. A NVA küllős virtuális hálózatok nem kell csatlakoznia a virtuális WAN-hubokhoz, csak NVA-virtuális hálózatok.
 
 A következő kapcsolati mátrix összegzi az ebben a forgatókönyvben támogatott folyamatokat:
@@ -49,7 +49,7 @@ A következő kapcsolati mátrix összegzi az ebben a forgatókönyvben támogat
 A kapcsolati mátrix minden cellája azt ismerteti, hogy egy VNet vagy ág (a folyamat "feladó" oldala, a tábla sorainak fejléce) a cél VNet vagy elágazásával kommunikáljon (a folyamat "–" oldalára, a táblázat oszlopainak fejlécei). A "Direct" érték azt jelenti, hogy a kapcsolat a virtuális WAN általi natív módon van megadva, a "társítás" azt jelenti, hogy a kapcsolat egy User-Defined útvonalon érhető el a VNet, "over NVA VNet" azt jelenti, hogy a kapcsolat áthalad a NVA VNet telepített NVA. A következőket ajánljuk figyelmébe:
 
 * A NVA Küllőit nem a virtuális WAN kezeli. Ennek eredményeképpen azokat a mechanizmusokat, amelyekkel más virtuális hálózatok vagy ágakkal kommunikálni fognak, a felhasználó tartja karban. A NVA-VNet való kapcsolódást egy VNet-társítás biztosítja, és a következő ugrás során a 0.0.0.0/0-ra mutató alapértelmezett útvonal a NVA való kapcsolódásra, az internetre, más küllőre és ágakra mutat
-* A NVA virtuális hálózatok a saját NVA beszél, de nem arról, hogy a NVA más NVA-virtuális hálózatok csatlakozik. Az 1. táblázatban például a VNet 2 az 5. és a VNet 6 VNet ismeri, de nem más küllők, például a VNet 7 és a VNet 8 között. A más küllők előtagjainak NVA-virtuális hálózatok való beadásához statikus útvonal szükséges.
+* A NVA virtuális hálózatok a saját NVA beszél, de nem arról, hogy a NVA más NVA-virtuális hálózatok csatlakozik. A cikk 2. Ábrájában például a VNet 2 az 5. és a VNet 6 VNet ismeri, más küllők, például a VNet 7 és a VNet 8 esetében nem. A más küllők előtagjainak NVA-virtuális hálózatok való beadásához statikus útvonal szükséges.
 * Hasonlóképpen, az ágak és a nem NVA virtuális hálózatok nem fognak tudni semmilyen NVA, mert a NVA küllők nem csatlakoznak a virtuális WAN-központokhoz. Ennek eredményeképpen a statikus útvonalakra is szükség lesz.
 
 Vegye figyelembe, hogy a NVA küllőit nem a virtuális WAN felügyeli, minden más sor ugyanazt a csatlakozási mintát jeleníti meg. Ennek eredményeképpen egyetlen útválasztási tábla (az alapértelmezett érték) a következő lesz:

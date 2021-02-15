@@ -4,38 +4,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: df6f7311613057c445ae714b8b11240d0d5be14b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6b16dea3c4f9241133b91b092c90c9056da57de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99569601"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100514909"
 ---
 ### <a name="standard-and-neural-voices"></a>Standard és neurális hangok
 
 A táblázat segítségével meghatározhatja a standard és a neurális hangok rendelkezésre állását régiónként/végpont szerint:
 
-| Region | Végpont | Standard hangok | Neurális hangok |
+| Region | Végpont | Neurális hangok | Standard hangok |
 |--------|----------|-----------------|---------------|
 | Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
+| Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
 | Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Az USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
-| Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
+| Az USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
+| Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
 | USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
-| Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
+| USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
+| Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
 | Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Kelet-Japán | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
-| Nyugat-Japán | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
-| Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
-| USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
-| Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
+| Kelet-Japán | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
+| Nyugat-Japán | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
+| Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
+| USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
+| Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
 | USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
 | Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
 | Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Nem |
+| USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
 | USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
 
 > [!TIP]
@@ -78,3 +78,15 @@ Az alábbi táblázat az egyéni neurális hangfunkciók regionális támogatás
 | Valós idejű karakterek | USA keleti régiója, USA 2. nyugati régiója, USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, Kelet-Ausztrália |
 | Hosszú hangjelek | USA keleti régiója, Nyugat-Európa, Egyesült Királyság déli régiója, Délkelet-Ázsia, Közép-India |
 | Egyéni neurális képzés | USA keleti régiója, Egyesült Királyság déli régiója |
+
+### <a name="long-audio-api"></a>Hosszú hang API
+
+A hosszú hang API több régióban is elérhető egyedi végpontokkal.
+
+| Region | Végpont |
+|--------|----------|
+| USA keleti régiója | `https://eastus.customvoice.api.speech.microsoft.com` |
+| Közép-India | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| Délkelet-Ázsia | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| Az Egyesült Királyság déli régiója | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| Nyugat-Európa | `https://westeurope.customvoice.api.speech.microsoft.com` |

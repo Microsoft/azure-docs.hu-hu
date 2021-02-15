@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363066"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R biztonsági utasítások
 
@@ -134,6 +134,7 @@ Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a köv
 
 * A szünetmentes tápegység (UPS) nélküli rendszerek esetében az összes hálózati adapter kihúzásával távolítsa el a hálózati adaptert a készülékről.
 * A UPS-rendszerek esetében az összes hálózati adaptert ki kell kapcsolni, és az UPS-kapcsoló használatával a rendszer megszüntetni. A UPS veszélyes AC-és DC-feszültségeket tartalmaz.
+* Ha a rendszer UPS-t tartalmaz, a UPS védett bemeneti tápkábelt kapott. A védett bemeneti tápkábelt kell használnia, ne cserélje vagy módosítsa a kábelt.
 
 ![Figyelmeztető ikon ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
  ![ áramütés ikonjának ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **figyelmeztetése:**
@@ -210,21 +211,22 @@ A device that has a UPS installed is designed to operate in the following enviro
 
 > ![Értesítés ikonja – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **. Megjegyzés:** &nbsp; a Microsoft által kifejezetten nem jóváhagyott berendezésen végrehajtott módosítások vagy módosítások érvénytelenítik a felhasználó hatóságát a berendezés működtetéséhez.
 
-Kanada és USA:
+#### <a name="canada-and-usa"></a>Kanada és USA:
 
-FIGYELJE meg, hogy a rendszer tesztelte a készüléket, és úgy találta, hogy megfelel az "a" osztályú digitális eszközök korlátainak, az FCC-szabályok 15. része alapján. Ezek a korlátok úgy vannak kialakítva, hogy ésszerű védelmet biztosítanak a káros interferenciák ellen, ha a berendezés kereskedelmi környezetben üzemel. Ez a berendezés a rádiófrekvenciás energia előállítására, felhasználására és kisugárzására szolgál, és ha nincs telepítve és használatban a használati utasítással összhangban, a rádiófrekvenciás kommunikáció káros hatással lehet. A berendezésnek a lakossági környezetben való működése valószínűleg káros interferencia okoz, amely esetben a felhasználónak a saját költségén kell kijavítania a beavatkozást.
+> ![Értesítés ikonja – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **. Megjegyzés:** &nbsp; a rendszer tesztelte a készüléket, és úgy találta, hogy megfelel a digitális eszközre vonatkozó KORLÁTOKnak, az FCC-szabályok 15. részének megfelelően. Ezek a korlátok úgy vannak kialakítva, hogy ésszerű védelmet biztosítanak a káros interferenciák ellen, ha a berendezés kereskedelmi környezetben üzemel. Ez a berendezés a rádiófrekvenciás energia előállítására, felhasználására és kisugárzására szolgál, és ha nincs telepítve és használatban a használati utasítással összhangban, a rádiófrekvenciás kommunikáció káros hatással lehet. A berendezésnek a lakossági környezetben való működése valószínűleg káros interferencia okoz, amely esetben a felhasználónak a saját költségén kell kijavítania a beavatkozást.
 
 Ez az eszköz megfelel az FCC-szabályok és az iparági kanadai licencek alól mentesített RSS-szabványoknak. A művelet a következő két feltétel hatálya alá esik: (1) Ez az eszköz nem okoz káros interferenciát, és (2) az eszköznek el kell fogadnia a kapott interferenciát, beleértve az interferenciát is, ami az eszköz nemkívánatos működéséhez vezethet.
 
 ![Szabályozási információ – 1. figyelmeztetés](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-A következő lehet: ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-Egyesült Államok: (800) 426-9400 Kanada: (800) 933-4750
+LEHET ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA Egyesült Államok: (800) 426-9400 Kanada: (800) 933-4750
 
-Európai Unió: az EU megfelelőségi nyilatkozatának másolatának kérése. 
+#### <a name="european-union"></a>EURÓPAI UNIÓ:
 
-![Figyelmeztető ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+Az EU megfelelőségi nyilatkozatának másolatának kérése. Küldjön egy e-mailt a következő címre: [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
+
+![Figyelmeztetés ikon ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **Figyelmeztetés!**
 
 Ez egy termék osztálya. Belföldi környezetben Ez a termék a rádiófrekvenciás interferencia okozhatja, amely esetben a felhasználónak szükség lehet a megfelelő intézkedések meghozatalára.
 
@@ -237,7 +239,6 @@ A termékre vagy annak elemeire vagy csomagolására vonatkozó szimbólum azt j
 Ez a termék érme cella akkumulátort (IES) tartalmaz.
 
 Microsoft Ireland Sandyford ind est Dublin D18 KX32 IRL telefon száma: + 353 1 295 3826 fax száma: + 353 1 706 4110
-
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,12 +3,12 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d003392eeeca56bbfb0033db22e6bde4ae5e136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370103"
+ms.locfileid: "100520688"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
 
@@ -170,7 +170,7 @@ Azure Machine Learning számítási kvóták legújabb értékei a [Azure Machin
 
 ### <a name="application-insights"></a>Application Insights
 
-[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-app-insights.md)]
+[!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="azure-policy-limits"></a>Azure Policy korlátok
 

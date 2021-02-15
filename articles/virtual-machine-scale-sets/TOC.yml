@@ -165,8 +165,13 @@
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: Karbantartás és frissítések
-      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-      maintainContext: true
+      items:
+        - name: Áttekintés
+          href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+          maintainContext: true
+        - name: Automatikus bővítmény frissítése (előzetes verzió)
+          href: ../virtual-machines/automatic-extension-upgrade.md
+          maintainContext: true
     - name: Lemezes tárolás
       items:
         - name: Felügyelt lemezek

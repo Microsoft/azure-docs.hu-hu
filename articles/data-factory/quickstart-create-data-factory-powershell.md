@@ -1,24 +1,18 @@
 ---
 title: Adatmásolás Blob Storage a Azure Data Factory használatával
 description: Azure Data Factory létrehozása a PowerShell használatával az adatok másolása az Azure Blob Storage egyik helyéről egy másik helyre.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9f419d89a9757a11055781335cbf98e9eb651548
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013357"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372722"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rövid útmutató: Azure Data Factory létrehozása a PowerShell használatával
 
@@ -40,6 +34,9 @@ Ez a rövid útmutató azt ismerteti, hogyan használható a PowerShell egy Azur
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepítésére és konfigurálására](/powershell/azure/install-Az-ps)vonatkozó utasításokat követve.
+
+>[!WARNING]
+>Ha nem a PowerShell és a Data Factory modul legújabb verzióit használja, a parancsok futtatása közben deszerializálási hibákba kerülhet. 
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
@@ -65,7 +62,7 @@ Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepíté
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"ADFQuickStartRG"`.
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Példa: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
@@ -341,12 +338,12 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
             -PipelineRunId $RunId
 
         if ($Run) {
-            if ($run.Status -ne 'InProgress') {
+            if ( ($Run.Status -ne "InProgress") -and ($Run.Status -ne "Queued") ) {
                 Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
                 $Run
                 break
             }
-            Write-Output "Pipeline is running...status: InProgress"
+            Write-Output ("Pipeline is running...status: " + $Run.Status)
         }
 
         Start-Sleep -Seconds 10
@@ -444,6 +441,6 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).
