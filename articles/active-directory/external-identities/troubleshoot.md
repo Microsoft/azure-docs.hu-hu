@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 12/11/2020
+ms.date: 02/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090637"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365429"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -27,7 +27,7 @@ ms.locfileid: "99090637"
 
    > [!IMPORTANT]
    > - **2021. január 4-én kezdődően** a Google [elavult webnézet-bejelentkezési támogatást jelenít meg](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Ha Google-összevonást vagy önkiszolgáló regisztrációt használ a Gmail szolgáltatással, az üzletági [natív alkalmazásokat tesztelje a kompatibilitás](google-federation.md#deprecation-of-webview-sign-in-support)érdekében.
-   > - **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > - **Október 2021-től kezdve** a Microsoft nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Hozzáadtam egy külső felhasználót, de nem látják őket a globális címjegyzékben vagy a People Picker
 
@@ -112,7 +112,7 @@ Az Amerikai Egyesült Államok kormányzati felhője keretében a B2B-együttmű
 
 Az önkiszolgáló bejelentkezési funkciók, például az egyéni felhasználói attribútumok vagy a felhasználói folyamatok használatakor a rendszer automatikusan létrehoz egy nevű alkalmazást `aad-extensions-app. Do not modify. Used by AAD for storing user data.` . Az Azure AD külső identitások használják a regisztrálásra és az egyéni attribútumok begyűjtésére szolgáló felhasználók adatainak tárolására.
 
-Ha véletlenül törölte a `aad-extensions-app` -et, 30 napja van a helyreállításhoz. Az alkalmazást az Azure AD PowerShell-modul használatával állíthatja vissza.
+Ha véletlenül törölte a `aad-extensions-app` alkalmazást, 30 napig helyreállíthatja. Az alkalmazást az Azure AD PowerShell-modul használatával állíthatja vissza.
 
 1. Indítsa el az Azure AD PowerShell-modult, és futtassa a parancsot `Connect-AzureAD` .
 1. Jelentkezzen be globális rendszergazdaként azon Azure AD-bérlőhöz, amely számára vissza kívánja állítani a törölt alkalmazást.

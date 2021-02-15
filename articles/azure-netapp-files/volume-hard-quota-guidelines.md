@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 69a970b7b088795602dfb842b20ad6457d5f27c4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808227"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374490"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Mi a mennyiségű kemény kvóta módosítása a Azure NetApp Files szolgáltatáshoz
 
 A szolgáltatás kezdetétől Azure NetApp Files kapacitás-készlet létesítési és automatikus növekedési mechanizmust használtak. Azure NetApp Files kötetek kiosztása a kiválasztott réteg és méret alapján, az ügyfél által kiosztott kapacitás készletén történik. A mennyiségi méretek (kvóták) a teljesítmény és a kapacitás biztosítására szolgálnak, és a kvóták bármikor módosíthatók. Ez azt jelenti, hogy a kötet kvótája jelenleg a kötet sávszélességének szabályozására szolgáló teljesítmény. Jelenleg a kapacitás kitöltésekor a kapacitás automatikusan növekszik.   
 
 > [!IMPORTANT] 
-> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **2021. március 15-től kezdődően a mennyiségi méretek (kvóta) kezeli a sávszélesség-teljesítményt, valamint a kiosztott kapacitást, és a mögöttes kapacitású készletek már nem fognak automatikusan növekedni.** 
+> A kötet és a kapacitás-készlet kiépítés Azure NetApp Files viselkedése *manuális* és *ellenőrizhető* mechanizmusra változik. **2021. április 1-től kezdődően a mennyiségi méretek (kvóta) kezeli a sávszélesség-teljesítményt, valamint a kiosztott kapacitást, és a mögöttes kapacitású készletek már nem fognak automatikusan növekedni.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>A mennyiségi rögzített kvóta változásának okai
 

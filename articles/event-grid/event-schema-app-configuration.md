@@ -2,20 +2,18 @@
 title: Azure-alkalmazás konfigurálása Event Grid forrásként
 description: Ez a cikk azt ismerteti, hogyan használható az Azure app Configuration Event Grid-eseményforrásként. Ez biztosítja a sémát és az oktatóanyagra és útmutatókra mutató hivatkozásokat.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: d305236e8408052be4be28ec003f4e545119fc59
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: a64c6fead5e6d95ba11bc98d7e9a52e3021c3be2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550674"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366772"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure-alkalmazás konfigurálása Event Grid forrásként
 Ez a cikk az Azure-alkalmazások konfigurációs eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). Emellett a gyors indulások és oktatóanyagok listáját is tartalmazza, amelyekkel az Azure-alkalmazások konfigurációját használhatja az esemény forrásaként.
 
-## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
-
-### <a name="available-event-types"></a>Elérhető események típusai
+## <a name="available-event-types"></a>Elérhető események típusai
 
 Az Azure-alkalmazások konfigurálása a következő típusú eseményeket bocsátja ki:
 
@@ -24,8 +22,9 @@ Az Azure-alkalmazások konfigurálása a következő típusú eseményeket bocs�
 | Microsoft. AppConfiguration. KeyValueModified | Kulcs-érték létrehozásakor vagy cseréjekor következik be. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Kulcs-érték törlésekor következik be. |
 
-### <a name="example-event"></a>Példa eseményre
+## <a name="example-event"></a>Példa eseményre
 
+# <a name="event-grid-event-schema"></a>[Event Grid-eseményséma](#tab/event-grid-event-schema)
 A következő példa egy kulcs-érték módosítási esemény sémáját mutatja be: 
 
 ```json
@@ -63,29 +62,87 @@ A kulcs-érték törölt esemény sémája hasonló:
   "metadataVersion": "1"
 }]
 ```
- 
-### <a name="event-properties"></a>Esemény tulajdonságai
+# <a name="cloud-event-schema"></a>[Felhő-eseményséma](#tab/cloud-event-schema)
+
+A következő példa egy kulcs-érték módosítási esemény sémáját mutatja be: 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueModified",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+A kulcs-érték törölt esemény sémája hasonló: 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueDeleted",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+---
+
+## <a name="event-properties"></a>Esemény tulajdonságai
+
+# <a name="event-grid-event-schema"></a>[Event Grid-eseményséma](#tab/event-grid-event-schema)
+Egy esemény a következő legfelső szintű adattal rendelkezik:
+
+| Tulajdonság | Típus | Description |
+| -------- | ---- | ----------- |
+| `topic` | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| `subject` | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| `eventType` | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| `eventTime` | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| `id` | sztring | Az esemény egyedi azonosítója. |
+| `data` | object | Az alkalmazás konfigurációs eseményeinek adatkészlete. |
+| `dataVersion` | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| `metadataVersion` | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+
+
+# <a name="cloud-event-schema"></a>[Felhő-eseményséma](#tab/cloud-event-schema)
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 | Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
-| eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
-| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| ID (Azonosító) | sztring | Az esemény egyedi azonosítója. |
-| adatok | object | Az alkalmazás konfigurációs eseményeinek adatkészlete. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
-| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+| `source` | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| `subject` | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| `type` | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| `time` | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| `id` | sztring | Az esemény egyedi azonosítója. |
+| `data` | object | Az alkalmazás konfigurációs eseményeinek adatkészlete. |
+| `specversion` | sztring | A CloudEvents séma specifikációjának verziója. |
+
+---
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
-| kulcs | sztring | A módosított vagy törölt kulcs-érték kulcsa. |
-| címke | sztring | A módosított vagy törölt kulcs-érték címkéje (ha van). |
-| ETAG | sztring | Az `KeyValueModified` új kulcs-érték ETAG. A `KeyValueDeleted` törölt kulcs-érték ETAG. |
+| `key` | sztring | A módosított vagy törölt kulcs-érték kulcsa. |
+| `label` | sztring | A módosított vagy törölt kulcs-érték címkéje (ha van). |
+| `etag` | sztring | Az `KeyValueModified` új kulcs-érték ETAG. A `KeyValueDeleted` törölt kulcs-érték ETAG. |
+
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
 

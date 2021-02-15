@@ -3,18 +3,18 @@ title: 'ML Studio (klasszikus): webszolgáltatás üzembe helyezése – Azure'
 description: Betanítási kísérlet előkészítése prediktív kísérletre, előkészítés üzembe helyezéshez, majd Azure Machine Learning Studio (klasszikus) webszolgáltatásként való üzembe helyezése.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 018e292abc7050f5d71c6bf9065618fecf8b5668
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495202"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520442"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
@@ -188,7 +188,7 @@ A **konfiguráció** lapon módosíthatja a leírást, a címet, a Storage-fiók
 
 Miután telepítette a webszolgáltatását a Machine Learning Studioról (klasszikus), elküldheti az adatait a szolgáltatásnak, és programozott módon fogadhatja a válaszokat.
 
-A **Consume** felhasználat oldal a webszolgáltatáshoz való hozzáféréshez szükséges összes információt tartalmazza. Az API-kulcs például a szolgáltatáshoz való jogosult hozzáférés engedélyezésére szolgál.
+A  felhasználat oldal a webszolgáltatáshoz való hozzáféréshez szükséges összes információt tartalmazza. Az API-kulcs például a szolgáltatáshoz való jogosult hozzáférés engedélyezésére szolgál.
 
 A Machine Learning Studio (klasszikus) webszolgáltatás elérésével kapcsolatos további információkért lásd: [Azure Machine learning Studio (klasszikus) webszolgáltatás felhasználása](consume-web-services.md).
 
@@ -212,7 +212,7 @@ A díjszabás régió-specifikus, ezért meg kell határoznia egy számlázási 
 6. Az **erőforráscsoport** legördülő listából válassza ki a csomaghoz tartozó erőforráscsoportot. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../../azure-resource-manager/management/overview.md)).
 7. A **csomag neve** mezőbe írja be a csomag nevét.
 8. A **terv beállításai** területen kattintson az új csomag számlázási szintjére.
-9. Kattintson a **Létrehozás** gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Webszolgáltatás üzembe helyezése egy másik régióban
 

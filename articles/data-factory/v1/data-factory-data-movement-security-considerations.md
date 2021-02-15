@@ -1,29 +1,25 @@
 ---
 title: A Azure Data Factory adatáthelyezésének biztonsági szempontjai
 description: További információ az adatáthelyezés biztonságossá tételéről Azure Data Factoryban.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c694cf58f4c6b613cbc183753785a34bc15063bd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375102"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory adatáthelyezési biztonsági szempontjait](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez. Azure Data Factory felügyeleti erőforrások az Azure biztonsági infrastruktúrára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést felhasználhatják.
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
@@ -33,10 +29,10 @@ Bár a Data Factory csak az **USA nyugati** régiójában, az **USA keleti** ré
 A Azure Data Factory maga nem tárol adatokat, kivéve a társított szolgáltatás hitelesítő adatait a felhőalapú adattárakhoz, amelyek tanúsítványokkal vannak titkosítva. Lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) közötti adatmozgás előkészítéséhez és az adatok feldolgozásához más régiókban, illetve helyszíni környezetben lévő [számítási szolgáltatások](data-factory-compute-linked-services.md) használatával. Lehetővé teszi továbbá a [munkafolyamatok monitorozását és kezelését](data-factory-monitor-manage-pipelines.md) a programozott és a felhasználói felületi mechanizmusokkal.
 
 A Azure Data Factory használatával történő adatáthelyezés a következőhöz lett **hitelesítve** :
--   [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
--   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA-CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-    [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
+-    [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-    [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-    [CSA-CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Ha érdekli az Azure megfelelősége, és hogy az Azure Hogyan védi a saját infrastruktúráját, látogasson el a [Microsoft adatvédelmi központba](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
@@ -122,7 +118,7 @@ Az adatátvitel a biztonságos csatorna **https** protokollon és a **TLS** prot
  
 A helyszíni hálózat és az Azure közötti kommunikációs csatorna további biztonságossá tételéhez [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) vagy [Express Route](../../expressroute/expressroute-introduction.md) is használható.
 
-A virtuális hálózat a hálózat logikai ábrázolása a felhőben. Helyszíni hálózatot az Azure Virtual Network (VNet) szolgáltatáshoz is összekapcsolhat az IPSec VPN (helyek közötti) vagy az expressz útvonal (privát társ) beállításával     
+A virtuális hálózat a hálózat logikai ábrázolása a felhőben. Helyszíni hálózatot az Azure Virtual Network (VNet) szolgáltatáshoz is összekapcsolhat az IPSec VPN (helyek közötti) vagy az expressz útvonal (privát társ) beállításával        
 
 A következő táblázat összefoglalja a hálózati és átjárók konfigurációs javaslatait a hibrid adatáthelyezéshez használt forrás-és célhelyek különböző kombinációi alapján.
 
@@ -144,17 +140,17 @@ Az alábbi képek a adatkezelés Gateway használatát mutatják be a helyszíni
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Tűzfal-konfigurációk és az átjáró IP-címének szűrése
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz    
 A vállalatokban a **vállalati tűzfal** a szervezet központi útválasztóján fut. A **Windows tűzfal** démonként fut azon a helyi gépen, amelyen az átjáró telepítve van. 
 
 A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tartományokra vonatkozó követelményeit tartalmazza.
 
-| Tartománynevek | Kimenő portok | Leírás |
+| Tartománynevek | Kimenő portok | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Az átjáró számára szükséges az adatátviteli szolgáltatásokhoz való kapcsolódáshoz Data Factory |
 | `*.core.windows.net` | 443 | Az átjáró az Azure Storage-fiókhoz való csatlakozáshoz használja az [előkészített másolási](data-factory-copy-activity-performance.md#staged-copy) szolgáltatás használatakor. | 
 | `*.frontend.clouddatahub.net` | 443 | Ahhoz szükséges, hogy az átjáró csatlakozhasson a Azure Data Factory szolgáltatáshoz. | 
-| `*.database.windows.net` | 1433   | (Nem kötelező) akkor szükséges, ha a cél Azure SQL Database/Azure szinapszis Analytics. Az előkészített másolási szolgáltatással az 1433-as port megnyitása nélkül másolhat Adatmásolást Azure SQL Database/Azure szinapszis Analytics szolgáltatásba. | 
+| `*.database.windows.net` | 1433    | (Nem kötelező) akkor szükséges, ha a cél Azure SQL Database/Azure szinapszis Analytics. Az előkészített másolási szolgáltatással az 1433-as port megnyitása nélkül másolhat Adatmásolást Azure SQL Database/Azure szinapszis Analytics szolgáltatásba. | 
 | `*.azuredatalakestore.net` | 443 | (Nem kötelező) akkor szükséges, ha a célhelye Azure Data Lake Store | 
 
 > [!NOTE] 
@@ -162,7 +158,7 @@ A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tarto
 
 A következő táblázat a **Windows tűzfal** **bejövő portokra** vonatkozó követelményeit tartalmazza.
 
-| Bejövő portok | Leírás | 
+| Bejövő portok | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | A Hitelesítőadat-kezelő alkalmazása megköveteli a helyszíni adattárakhoz tartozó hitelesítő adatok biztonságos beállítását az átjárón. | 
 

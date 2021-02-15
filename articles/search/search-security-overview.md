@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537306"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097636"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Az Azure Cognitive Search biztonsági áttekintése
 
@@ -98,7 +98,7 @@ A "sor szintű biztonság" fogalmával egyenértékű, az indexen belüli tartal
 
 A "sor szintű biztonságot" igénylő megoldások megkerülő megoldásai közé tartozik egy olyan mező létrehozása az adatforrásban, amely egy biztonsági csoportot vagy felhasználói identitást jelöl, majd a Cognitive Search szűrők használatával szelektíven metszi a dokumentumok és tartalmak keresési eredményeit az identitások alapján. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 
-| Módszer | Leírás |
+| Módszer | Description |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
 |[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (Azure AD) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |
@@ -113,12 +113,6 @@ A keresési szolgáltatás felügyeletéhez [három alapvető szerepkör](search
 
 > [!Note]
 > Az Azure-ra kiterjedő mechanizmusok használatával zárolhatja az előfizetést vagy az erőforrást, így megakadályozhatja a keresési szolgáltatás véletlen vagy jogosulatlan törlését rendszergazdai jogosultságokkal rendelkező felhasználók számára. További információ: [erőforrások zárolása a váratlan törlés megakadályozása érdekében](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="threat-protection"></a>Fenyegetések elleni védelem
-
-A keresési szolgáltatásokban lévő tartalmakhoz való hozzáférés kizárólag lekérdezéseken keresztül történik. Ha a keresési szolgáltatás a lekérdezési támadás célja, a rendszer levonja a lekérdezéseket, mivel a rendszer megközelíti a maximális kapacitást. 
-
-A szabályozás eltérően viselkedik a különböző API-kkal. A szolgáltatás terhelése alapján a lekérdezési API-k (keresés/javaslat/automatikus kiegészítés) és az indexelő API-k szabályozása dinamikusan történik. Az API-k és a Service Operations API indexe statikus kérelmekre vonatkozó korlátozásokat tartalmaz. A statikus díjszabásra vonatkozó kérelmek korlátozásait a [szabályozási korlátok](search-limits-quotas-capacity.md#throttling-limits)között tekintheti át. A szabályozás működésével kapcsolatos további információk: a [lekérdezési kérelmek figyelése](search-monitor-queries.md).
 
 <a name="encryption"></a>
 

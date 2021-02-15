@@ -1,23 +1,18 @@
 ---
 title: Adatátviteli adatkezelés átjáró
 description: Állítson be egy adatátjárót a helyszíni és a felhő közötti adatáthelyezéshez. Az adatáthelyezéshez használja a Azure Data Factory adatkezelés átjáróját.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
+ms.author: abnarain
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019684"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380287"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
 > [!NOTE]
@@ -236,7 +231,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
             }
         }
     }     
-    ```     
+    ```       
    Vegye figyelembe a következő szempontokat:
 
    * a **típus** értéke **SqlServerTable**.
@@ -384,7 +379,7 @@ Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot ho
     Nagyíthatja, nagyíthatja, nagyíthatja a 100%-ot, nagyíthatja a méretet, automatikusan áthelyezheti a folyamatokat és az adatkészleteket, és megjelenítheti a leszármazási adatokat (kiemeli a kijelölt elemek felsőbb rétegbeli és alárendelt elemeit).  A tulajdonságok megtekintéséhez kattintson duplán egy objektumra (bemeneti/kimeneti adatkészlet vagy folyamat).
 
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
-Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factory eseményeit. PowerShell-parancsmagokat is használhat az adatkészletek és folyamatok figyeléséhez. A figyeléssel kapcsolatos részletekért lásd: [folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md).
+Ebben a lépésben a Azure Portal használatával figyeli az Azure-beli adatgyárban zajló teendőket. PowerShell-parancsmagokat is használhat az adatkészletek és folyamatok figyeléséhez. A figyeléssel kapcsolatos részletekért lásd: [folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md).
 
 1. A diagramon kattintson duplán a **EmpOnPremSQLTable** elemre.  
 
@@ -410,6 +405,6 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az adatkezelés-átjáróval kapcsolatos további információkért tekintse meg a [adatkezelés átjáróval](data-factory-data-management-gateway.md) foglalkozó cikket.
 * Lásd: [adatok másolása az Azure blobból az Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) -be, hogy megtudja, hogyan használható a másolási tevékenység az adatok forrás adattárból egy fogadó adattárba való áthelyezéséhez.

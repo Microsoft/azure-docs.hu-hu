@@ -3,12 +3,12 @@ title: A szabályzatminták indexe
 description: Az Azure Policyhez készült beépített elemek indexe Kategóriacímkék, Jogszabályi megfelelőség, Key Vault, Kubernetes, Vendégkonfiguráció és egyebek.
 ms.date: 01/29/2021
 ms.topic: sample
-ms.openlocfilehash: ad608f594c544cc8de2d80f7cedaeeffdc2b83ea
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ae016e42af582847b871624844773ed971ef583d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095740"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095596"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-minták
 
@@ -43,6 +43,7 @@ Az alábbiak az [előírásoknak való megfelelőség](../concepts/regulatory-co
 - [3. CMMC szint](./cmmc-l3.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
 - [ISO 27001:2013](./iso-27001.md)
+- [Új-zélandi információs biztonsági kézikönyv](./new-zealand-ism.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 

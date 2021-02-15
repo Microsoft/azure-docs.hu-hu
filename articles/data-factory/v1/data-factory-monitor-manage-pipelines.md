@@ -1,22 +1,18 @@
 ---
 title: Folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 description: Megtudhatja, hogyan használhatja a Azure Portal és Azure PowerShell a létrehozott Azure-beli adatüzemek és-folyamatok figyelésére és felügyeletére.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495854"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380406"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -105,7 +101,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>ActivityResume</td><td>A tevékenység szüneteltetve van, és a tevékenység folytatása előtt nem futtathatók a szeletek.</td>
 </tr>
 <tr>
-<td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
+<td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
 <td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
@@ -135,10 +131,10 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kimarad</td><td>Nincsenek</td><td>A szelet feldolgozása nem történik meg.</td>
+<td>Kimarad</td><td>Nincs</td><td>A szelet feldolgozása nem történik meg.</td>
 </tr>
 <tr>
-<td>Nincsenek</td><td>-</td><td>Egy olyan szelet, amely más állapottal is létezik, de alaphelyzetbe lett állítva.</td>
+<td>Nincs</td><td>-</td><td>Egy olyan szelet, amely más állapottal is létezik, de alaphelyzetbe lett állítva.</td>
 </tr>
 </table>
 
@@ -287,7 +283,7 @@ Abban az esetben, ha a szelet házirend-meghibásodás miatt sikertelen volt (p�
 
 ![Hibajavítások és érvényesítés](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
-### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 A hibákat a **set-AzDataFactorySliceStatus** parancsmag használatával futtathatja újra. A parancsmag szintaxisát és egyéb részleteit lásd a [set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) témakörben.
 
 **Példa**

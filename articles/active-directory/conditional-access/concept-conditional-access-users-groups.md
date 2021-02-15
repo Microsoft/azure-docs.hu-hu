@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366360"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364579"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
@@ -42,6 +42,9 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
    - Felhasználók és csoportok
       - Engedélyezi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatnak egy csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazás van kiválasztva a felhőalapú alkalmazásként. Egy csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy a hozzárendelt biztonsági és terjesztési csoportokat is. A házirend a beágyazott felhasználókra és csoportokra lesz alkalmazva.
 
+> [!IMPORTANT]
+> Ha kiválasztja, hogy mely felhasználók és csoportok szerepelnek egy feltételes hozzáférési szabályzatban, a rendszer korlátozza a feltételes hozzáférési szabályzatba közvetlenül felvehető felhasználók számát. Ha a feltételes hozzáférési szabályzathoz közvetlenül hozzá kell adni egy nagy mennyiségű egyéni felhasználót, javasoljuk, hogy helyezze el a felhasználókat egy csoportba, és rendelje hozzá a csoportot a feltételes hozzáférési szabályzathoz.
+
 > [!WARNING]
 > Ha a felhasználók vagy csoportok tagjai több mint 2048 csoportnak, a hozzáférésük blokkolva lehet. Ez a korlátozás a közvetlen és a beágyazott csoporttagság is vonatkozik.
 
@@ -66,7 +69,7 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
 
 ### <a name="preventing-administrator-lockout"></a>Rendszergazdai zárolás megakadályozása
 
-Annak megakadályozása érdekében, hogy a rendszergazda a saját címtárában zárolja magát, amikor az **összes felhasználóra** és **alkalmazásra**alkalmazott házirendet hoz létre, a következő figyelmeztetés jelenik meg.
+Annak megakadályozása érdekében, hogy a rendszergazda a saját címtárában zárolja magát, amikor az **összes felhasználóra** és **alkalmazásra** alkalmazott házirendet hoz létre, a következő figyelmeztetés jelenik meg.
 
 > Ne zárja ki magát! Javasoljuk, hogy a szabályzatot egy kis felhasználói csoportba alkalmazzon először annak ellenőrzéséhez, hogy a várt módon viselkedik-e. Javasoljuk továbbá, hogy a szabályzatból legalább egy rendszergazdát kizárjon. Ezzel biztosíthatja, hogy a rendszer továbbra is hozzáférjen, és ha módosításra van szükség, frissítheti a szabályzatot. Tekintse át az érintett felhasználókat és alkalmazásokat.
 

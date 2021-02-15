@@ -1,22 +1,17 @@
 ---
 title: Az Azure-SSIS Integration Runtime újrakonfigurálása
 description: Megtudhatja, hogyan konfigurálhat egy Azure-SSIS integrációs modult Azure Data Factory a már üzembe helyezése után.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: 7545f593aea2aca8c0aa240d44bcef3b7a1ca7c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636272"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370682"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS Integration Runtime újrakonfigurálása
 
@@ -28,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan lehet újrakonfigurálni egy meglévő Azure-SSI
 A Azure-SSIS IR leállításához, szerkesztéséhez/újrakonfigurálásához vagy törléséhez Data Factory felhasználói felületet használhat. 
 
 1. Nyissa meg Data Factory felhasználói felületét úgy, hogy kijelöli az adatelőállító kezdőlapjának **szerző & figyelése** csempéjét.
-2. Válassza a **felügyeleti központ** **Kezdőlap** , **Szerkesztés** és **figyelés** csomópontokat a **kapcsolatok** ablaktábla megjelenítéséhez.
+2. Válassza a **felügyeleti központ** **Kezdőlap**, **Szerkesztés** és **figyelés** csomópontokat a **kapcsolatok** ablaktábla megjelenítéséhez.
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Azure-SSIS IR újrakonfigurálása
 A **Manage** hub **kapcsolatok** ablaktábláján váltson az **Integration Runtimes (integrációs** modulok) lapra, és válassza a **frissítés** lehetőséget. 

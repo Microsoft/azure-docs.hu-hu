@@ -3,36 +3,48 @@
 - name: Áttekintés
   items:
     - name: Mi az Azure Batch?
+      displayName: overview
       href: batch-technical-overview.md
 - name: Rövid útmutatók
   expanded: true
   items:
     - name: Batch-feladat futtatása – parancssori felület
+      displayName: 'quickstart, first, create'
       href: quick-create-cli.md
     - name: Batch-feladat futtatása – portál
+      displayName: 'quickstart, first, create'
       href: quick-create-portal.md
     - name: Batch-feladat futtatása – .NET
+      displayName: 'quickstart, first, create, c#, csharp'
       href: quick-run-dotnet.md
     - name: Batch-feladat futtatása – Python
+      displayName: 'quickstart, first, create'
       href: quick-run-python.md
     - name: Batch-fiók létrehozása – ARM-sablon
       href: quick-create-template.md
-      displayName: Resource Manager
+      displayName: 'Resource Manager, quickstart, first, create'
 - name: Oktatóanyagok
   items:
     - name: Párhuzamos fájlfeldolgozás – .NET
+      displayName: 'tutorial, hpc, high-performance, large, c#, csharp'
       href: tutorial-parallel-dotnet.md
     - name: Párhuzamos fájlfeldolgozás – Python
+      displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
     - name: Jelenetek renderelése az Arnolddal
+      displayName: tutorial
       href: tutorial-rendering-cli.md
     - name: Renderelés a Batch Explorer használatával
+      displayName: tutorial
       href: tutorial-rendering-batchexplorer-blender.md
     - name: Párhuzamos R-szimuláció
+      displayName: 'tutorial, doAzureParallel, rstudio'
       href: tutorial-r-doazureparallel.md
     - name: OCR Batch-feladattal és Functions-függvényekkel
+      displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
     - name: Python-szkriptek Data Factoryvel
+      displayName: tutorial
       href: tutorial-run-python-batch-azure-data-factory.md
 - name: Példák
   items:
@@ -68,20 +80,20 @@
         - name: Ajánlott biztonsági eljárások
           href: security-best-practices.md
     - name: A Batch szolgáltatás munkafolyamata és erőforrásai
-      displayName: developer features
+      displayName: 'developer features, core, component, overview'
       href: batch-service-workflow-features.md
       items:
         - name: Batch-fiókok
           displayName: storage account
           href: accounts.md
         - name: Csomópontok és készletek
-          displayName: 'compute node, application package, scaling, schedule, os'
+          displayName: 'compute node, application package, scaling, schedule, os, configuration'
           href: nodes-and-pools.md
         - name: Feladatok és tevékenységek
-          displayName: Batch job
+          displayName: 'Batch job, start task, environment'
           href: jobs-and-tasks.md
         - name: Fájlok és könyvtárak
-          displayName: Batch file
+          displayName: 'Batch file, working directory'
           href: files-and-directories.md
     - name: API-k és eszközök
       href: batch-apis-tools.md
@@ -131,26 +143,34 @@
     - name: Készletek létrehozása és kezelése
       items:
         - name: Számítási csomópontok automatikus méretezése
+          displayName: 'scaling, dynamic, formula'
           href: batch-automatic-scaling.md
         - name: Számítási csomópontok virtuálisgép-méretének kiválasztása
           href: batch-pool-vm-sizes.md
         - name: Migrálás felhőszolgáltatásból virtuálisgép-készletekre
+          displayName: migrate
           href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Számítási csomópontokhoz való hozzáférés konfigurálása
+          displayName: 'rdp, ssh, network, remote'
           href: pool-endpoint-configuration.md
         - name: Készlet létrehozása megosztott rendszerkép-katalógusból
+          displayName: 'managed image, sig'
           href: batch-sig-images.md
         - name: Készlet létrehozása felügyelt rendszerkép erőforrással
           href: batch-custom-images.md
         - name: Készlet létrehozása Availability Zones között
+          displayName: 'region, zonal policy'
           href: create-pool-availability-zones.md
         - name: Készlet létrehozása a lemeztitkosítás engedélyezése mellett
           href: disk-encryption.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
+          displayName: vNet
           href: batch-virtual-network.md
         - name: Készlet létrehozása nyilvános IP-címekkel
+          displayName: static
           href: create-pool-public-ip.md
         - name: Készlet létrehozása nyilvános IP-címek nélkül
+          displayName: private
           href: batch-pool-no-public-ip-address.md
         - name: Virtuális fájlrendszer csatlakoztatása
           href: virtual-file-mount.md
@@ -161,17 +181,21 @@
         - name: Linuxos számítási csomópontok használata
           href: batch-linux-nodes.md
         - name: Alacsony prioritású virtuális gépek használata
+          displayName: 'preempted, surplus, capacity'
           href: batch-low-pri-vms.md
         - name: Készlet- és csomóponthibák keresése
+          displayName: 'troubleshoot, failure'
           href: batch-pool-node-error-checking.md
     - name: CI/CD-folyamat létrehozása Batch-hez
+      displayName: 'Azure DevOps, devops, continuous'
       href: batch-ci-cd.md
     - name: Munkák és feladatok kezelése
       items:
         - name: Feladatok előkészítési és befejezési műveletei
+          displayName: 'release, job release'
           href: batch-job-prep-release.md
         - name: Párhuzamosan futó csomóponti feladatok
-          displayName: concurrent
+          displayName: 'variable, maximize'
           href: batch-parallel-node-tasks.md
         - name: Tevékenységfüggőségek
           href: batch-task-dependencies.md
@@ -182,6 +206,7 @@
         - name: Feladatok ütemezése a hatékony végrehajtás érdekében
           href: batch-job-schedule.md
         - name: Hibakeresés feladatokban és tevékenységekben
+          displayName: 'failure, troubleshoot'
           href: batch-job-task-error-checking.md
     - name: Feladatok és tevékenységek kimenetének megőrzése
       href: batch-task-output.md
@@ -194,29 +219,37 @@
       href: monitoring-overview.md
       items:
         - name: Metrikák és diagnosztikai naplók használata
+          displayName: 'alert, monitor'
           href: batch-diagnostics.md
         - name: Monitorozás az Application Insights segítségével
+          displayName: debug
           href: monitor-application-insights.md
         - name: Erőforrások számlálása állapot szerint
           href: batch-get-resource-counts.md
         - name: Az erőforrások hatékony lekérdezése
+          displayName: 'monitor, queries'
           href: batch-efficient-list-queries.md
     - name: Szkriptelési eszközök használata
       items:
         - name: Azure PowerShell használatával
+          displayName: 'ps, scripting, cmdlet'
           href: batch-powershell-cmdlets-get-started.md
         - name: Az Azure parancssori felület használatával
+          displayName: command line
           href: batch-cli-get-started.md
-          items:
-            - name: A Batch CLI-sablonok használata
-              href: batch-cli-templates.md
+        - name: A Batch CLI-sablonok használata
+          diplayName: extension
+          href: batch-cli-templates.md
     - name: A Batch Node.js SDK használata
+      displayName: json
       href: batch-nodejs-get-started.md
     - name: Számítási feladatok futtatása
       items:
-        - name: MPI-feladatok
+        - name: MPI
+          displayName: 'multi-instance, message passing interface'
           href: batch-mpi.md
         - name: Tárolókhoz kapcsolódó számítási feladatok
+          displayName: docker
           href: batch-docker-container-workloads.md
         - name: Renderelés
           items:
@@ -231,6 +264,7 @@
             - name: Alkalmazásreferencia renderelése
               href: batch-rendering-application-reference.md
             - name: Tárolás és adatáthelyezés
+              displayName: 'rendering, assets'
               href: batch-rendering-storage-data-movement.md
             - name: Architektúrák renderelése
               href: batch-rendering-architectures.md

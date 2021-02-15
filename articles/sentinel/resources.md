@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a6e31115fb2548f8248f741213970605f230036
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920020"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390725"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
@@ -75,15 +75,6 @@ Ezeket az adatok megtekinthetők úgy, hogy az Azure-tevékenység naplójában 
     ```
 
 
-
-## <a name="vendor-documentation"></a>Szállítói dokumentáció
-
-| **Szállító**  | **Incidens használata az Azure Sentinelben** | **Hivatkozás**|
-|----|----|----|
-| GitHub| A közösségi lap elérésére szolgál| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| CEF konfigurálása| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto Query Language-képzés| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
-
 ## <a name="blogs-and-forums"></a>Blogok és fórumok
 
 Szeretjük a felhasználóink meghallgatását!
@@ -96,8 +87,6 @@ Szeretjük a felhasználóink meghallgatását!
 
     - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
     - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
-
-Az Azure biztonsági és megfelelőségi szolgáltatásával kapcsolatos további információkért tekintse meg a [Microsoft Azure biztonsági és megfelelőségi blogot](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Következő lépések

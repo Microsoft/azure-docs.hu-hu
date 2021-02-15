@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása SAP HANAról
 description: Megtudhatja, hogyan másolhat adatok SAP HANAból a támogatott fogadó adattárakba egy Azure Data Factory-folyamat másolási tevékenységének használatával.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
-ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce3c1e22dd030c0730bf4d9859591c00860908a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529585"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382276"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása SAP HANA használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -67,11 +63,11 @@ SAP HANA társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapHana** | Igen |
-| connectionString | Adjon meg olyan információt, amely az **alapszintű hitelesítés** vagy a **Windows-hitelesítés**használatával a SAP HANAhoz való kapcsolódáshoz szükséges. Tekintse át a következő mintákat.<br>A kapcsolódási karakterláncban a kiszolgáló/port kötelező (az alapértelmezett port 30015), és a Felhasználónév és a jelszó megadása kötelező, ha alapszintű hitelesítést használ. További speciális beállításokért lásd: [SAP HANA ODBC-kapcsolatok tulajdonságai](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a jelszó konfigurációját a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| userName (Felhasználónév) | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | Nem |
-| jelszó | A felhasználói fiók jelszavának megadása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapHana** | Yes |
+| connectionString | Adjon meg olyan információt, amely az **alapszintű hitelesítés** vagy a **Windows-hitelesítés** használatával a SAP HANAhoz való kapcsolódáshoz szükséges. Tekintse át a következő mintákat.<br>A kapcsolódási karakterláncban a kiszolgáló/port kötelező (az alapértelmezett port 30015), és a Felhasználónév és a jelszó megadása kötelező, ha alapszintű hitelesítést használ. További speciális beállításokért lásd: [SAP HANA ODBC-kapcsolatok tulajdonságai](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a jelszó konfigurációját a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
+| userName (Felhasználónév) | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | No |
+| jelszó | A felhasználói fiók jelszavának megadása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
 
 **Példa: egyszerű hitelesítés használata**
 
@@ -148,7 +144,7 @@ Az adatok SAP HANAból történő másolásához a következő tulajdonságok t�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapHanaTable** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapHanaTable** | Yes |
 | schema | A séma neve a SAP HANA adatbázisban. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 | tábla | A SAP HANA adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
@@ -187,8 +183,8 @@ Az adatok SAP HANAból történő másolásához a másolási tevékenység **fo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapHanaSource** | Igen |
-| lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapHanaSource** | Yes |
+| lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | Yes |
 | partitionOptions | Meghatározza az adatok SAP HANAból való betöltéséhez használt adatparticionálási beállításokat. További információ a  [párhuzamos másolásról SAP HANA](#parallel-copy-from-sap-hana) szakaszból.<br>Értékek engedélyezése: **none**   (alapértelmezett), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. További információ a  [párhuzamos másolásról SAP HANA](#parallel-copy-from-sap-hana) szakaszból. `PhysicalPartitionsOfTable` csak akkor használható, ha egy tábla adatait másolja, de nem kérdezi le. <br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), akkor a párhuzamossági fok a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításával párhuzamosan töltődik be az adatok SAP HANAból való egyidejű betöltésére. | Hamis |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját.<br>Akkor alkalmazza, ha a partíció lehetőség van `SapHanaDynamicRange` . | Hamis |
 | partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amelyet a partíció a párhuzamos másoláshoz használ majd. Ha nincs megadva, a rendszer automatikusan észleli a tábla indexét vagy elsődleges kulcsát, és a partíció oszlopként használja.<br>Akkor alkalmazza, ha a partíciós beállítás van  `SapHanaDynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához, akkor a WHERE záradékot kell beolvasnia  `?AdfHanaDynamicRangePartitionCondition` . Tekintse meg a [SAP HANA szakasz párhuzamos másolásának](#parallel-copy-from-sap-hana) példáját. | Igen, ha `SapHanaDynamicRange` partíciót használ. |
@@ -238,7 +234,7 @@ A particionált másolás engedélyezésekor a Data Factory párhuzamos lekérde
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatok particionálásával, különösen akkor, ha nagy mennyiségű adatot tölt be a SAP HANAból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációk szerepelnek. Az adatok file-alapú adattárba való másolása esetén ajánlott több fájlként írni egy mappába (csak a mappa nevét adja meg), ebben az esetben a teljesítmény jobb, mint egyetlen fájl írásakor.
 
-| Forgatókönyv                                           | Javasolt beállítások                                           |
+| Eset                                           | Javasolt beállítások                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
 | Teljes terhelés a nagyméretű táblából.                        | **Partíciós beállítás**: a tábla fizikai partíciói. <br><br/>A végrehajtás során a Data Factory automatikusan észleli a megadott SAP HANA táblázat fizikai partíciójának típusát, és kiválasztja a megfelelő partíciós stratégiát:<br>- **Tartomány particionálása**: szerezze be a táblához definiált partíciós oszlopot és partíciós tartományokat, majd másolja az adattartomány alapján. <br>- **Kivonatoló particionálás**: használjon kivonatoló partíciós kulcsot partíciós oszlopként, majd az ADF számított tartományok alapján particionálja és másolja az adatokat. <br>- **Ciklikus időszeleteléses particionálás** vagy **nincs partíció**: használja az elsődleges kulcsot partíciós oszlopként, majd particionálja és másolja az adatkészletet az ADF számított tartományai alapján. |
 | Nagy mennyiségű adattal tölthetők be egyéni lekérdezések használatával. | **Partíciós beállítás**: dinamikus tartományú partíció.<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Partíciós oszlop**: a dinamikus tartományú partíció alkalmazásához használt oszlop meghatározása. <br><br>A végrehajtás során a Data Factory először kiszámítja a megadott partíciós oszlop értékeit, ha a sorok számát a partíció oszlopainak száma és az ADF párhuzamos másolási beállítása alapján egyenletesen osztja el, majd lecseréli `?AdfHanaDynamicRangePartitionCondition` a partíció oszlop érték-tartományát az egyes partíciók számára, és elküldi a SAP HANAnak.<br><br>Ha több oszlopot kíván használni partíciós oszlopként, az egyes oszlopok értékeit egyetlen oszlopként összefűzheti a lekérdezésben, és az ADF partíciós oszlopként adhatja meg, például: `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition` . |
@@ -296,7 +292,7 @@ Az adatok SAP HANAból való másolása során a rendszer a következő leképez
 | TIME               | időtartam                       |
 | TINYINT            | Bájt                           |
 | VARCHAR            | Sztring                         |
-| IDŐBÉLYEG          | DateTime                       |
+| IDŐBÉLYEGZŐ          | DateTime                       |
 | VARBINARY          | Bájt []                         |
 
 ## <a name="sap-hana-sink"></a>SAP HANA fogadó
@@ -331,5 +327,5 @@ Kövesse a saját üzemeltetésű Integration Runtime beállításának [előfel
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

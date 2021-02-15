@@ -1,23 +1,18 @@
 ---
 title: Ismételhető másolás Azure Data Factory
 description: Megtudhatja, hogyan kerülheti el a duplikált elemeket annak ellenére, hogy az adatmásoló szelet többször is fut.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456831"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387087"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Ismételhető másolás Azure Data Factory
 
@@ -147,7 +142,7 @@ Azure Data Factory ezt az oszlopot a szükséges módon tölti fel a forrás és
 
 Az 1. mechanizmushoz hasonlóan a másolási tevékenység automatikusan törli az adott szelet adatait a cél SQL-táblából. Ezután beszúrja az adatait a forrásból a cél táblába. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő összekötő-cikkeket a teljes JSON-példákhoz: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)

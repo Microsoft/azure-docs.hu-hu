@@ -9,28 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d17c6cb038bf5550f76a8aef7ac2d41244cfda1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798142"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096565"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Annak megtekintése, hogy a szervezet hogyan használja az adatvédelmet érintő adatokat
 
 Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** **Beállítások & adatvédelem** lapján.
 
+>[!Note]
+> Ha a személyes Microsoft-fiók való bejelentkezéskor hibaüzenet jelenik meg, akkor is bejelentkezhet a szervezet tartományneve (például contoso.com) vagy a szervezete **bérlői azonosítójának** használatával a következő URL-címek egyikében:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-your-privacy-related-info"></a>Adatvédelemmel kapcsolatos információk megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myaccount.microsoft.com/ lapra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myaccount.microsoft.com/ lapra. Ha személyes Microsoft-fiók jelentkezik be, akkor továbbra is bejelentkezhet a szervezet tartományneve (például contoso.com) vagy a szervezet **bérlői azonosítójának** használatával a rendszergazdától a következő URL-címek egyikében:
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 2. Válassza a **beállítások & adatvédelem** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza a beállítások **megtekintése és az adatvédelem** hivatkozását a **Beállítások & adatvédelmi** blokk menüpontban.
 
     ![Fiókom oldal, Kiemelt beállítások megjelenítése & adatvédelmi hivatkozás](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Válassza az **Adatvédelem**lehetőséget, ahogy az alábbi képernyőképen is látható, majd tekintse át az információkat, beleértve a következőket:
+3. Válassza az **Adatvédelem** lehetőséget, ahogy az alábbi képernyőképen is látható, majd tekintse át az információkat, beleértve a következőket:
 
     ![Beállítások & Adatvédelem lap Kiemelt adatvédelem lapjának megjelenítése](media/my-account-portal/my-account-portal-privacy-tab.png)
 
@@ -38,7 +47,7 @@ Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** *
 
     - **Használati feltételek**. A szervezet használati feltételei.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután megtekintette, hogy a szervezet hogyan használja az adatait, a következőket teheti:
 

@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131933"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368829"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Rugalmas feladatok ügynökének létrehozása a PowerShell használatával (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A [rugalmas feladatok (előzetes verzió)](job-automation-overview.md#elastic-database-jobs-preview) lehetővé teszik egy vagy több Transact-SQL (T-SQL) parancsfájlok futtatását számos adatbázis párhuzamosan.
+A [rugalmas feladatok (előzetes verzió)](job-automation-overview.md) lehetővé teszik egy vagy több Transact-SQL (T-SQL) parancsfájlok futtatását számos adatbázis párhuzamosan.
 
 Ebben az oktatóanyagban megtudhatja, hogy milyen lépéseket kell végrehajtani a lekérdezések több adatbázishoz való futtatásához:
 
@@ -63,7 +63,7 @@ Az az **. SQL** modulon kívül az oktatóanyaghoz a *SQLServer* PowerShell-modu
 
 ## <a name="create-required-resources"></a>A szükséges erőforrások létrehozása
 
-A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](job-automation-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség.
+A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](job-automation-overview.md#elastic-job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség.
 
 Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. A második parancsfájl létrehoz egy második kiszolgálót két üres adatbázissal a feladatok végrehajtásához.
 

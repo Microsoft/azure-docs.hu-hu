@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219909"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371787"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -371,10 +371,12 @@ Bizonyos esetekben előfordulhat, hogy egy alkalmazás olyan Azure-erőforrást�
 
 Az adott erőforrás-példány által a Storage-fiók adatain elvégezhető műveletek típusait az erőforrás-példány [Azure-szerepkör-hozzárendelései](storage-auth-aad.md#assign-azure-roles-for-access-rights) határozzák meg. Az erőforrás-példányoknak ugyanahhoz a bérlőhöz kell tartozniuk, mint a Storage-fióknak, de a bérlő bármelyik előfizetéséhez tartozhatnak.
 
-A támogatott Azure-szolgáltatások listája ebben a cikkben a [megbízható hozzáférés a rendszerhez rendelt felügyelt identitás alapján](#trusted-access-system-assigned-managed-identity) című szakaszában jelenik meg.
+> [!NOTE]
+> Ez a funkció nyilvános előzetes verzióban érhető el, és minden nyilvános Felhőbeli régióban elérhető.
 
 > [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el, és minden nyilvános Felhőbeli régióban elérhető. 
+> Az erőforrás-példányokra vonatkozó szabályok jelenleg csak az Azure szinapszis esetében támogatottak. A jelen cikk a [megbízható hozzáférés a rendszerhez rendelt felügyelt identitás alapján](#trusted-access-system-assigned-managed-identity) című részében felsorolt egyéb Azure-szolgáltatások támogatása az elkövetkező hetekben lesz elérhető.
+
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 

@@ -33,8 +33,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Porttovábbítás konfigurálása a Load Balancerben
       href: tutorial-load-balancer-port-forwarding-portal.md
-    - name: Régiók közötti terheléselosztó létrehozása – Portal
-      href: tutorial-cross-region-portal.md
+    - name: Régiók közötti terheléselosztó
+      items:
+        - name: Régiók közötti terheléselosztó létrehozása – Portal
+          href: tutorial-cross-region-portal.md
+        - name: Régiók közötti Load Balancer létrehozása – PowerShell
+          href: tutorial-cross-region-powershell.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -89,6 +93,8 @@
       href: backend-pool-management.md
     - name: A Standard Load Balancer és a Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
+    - name: Adatok lekérése az Azure Instance Metadata Service használatával
+      href: instance-metadata-service-load-balancer.md
 - name: Használati útmutató
   items:
     - name: Portálbeállítások
@@ -144,6 +150,8 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Csak kifelé irányuló terheléselosztó konfigurációja
       href: egress-only.md
+    - name: Metaadatok beolvasása az Azure IMDS
+      href: howto-load-balancer-imds.md
     - name: Hibaelhárítás
       items:
         - name: Az Azure Load Balancer hibaelhárítása
@@ -181,6 +189,8 @@
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Gyakori hibakódok az Azure Instance Metadata Service (IMDS) szolgáltatáshoz
+      href: troubleshoot-load-balancer-imds.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

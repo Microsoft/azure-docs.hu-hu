@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430462"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098095"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
@@ -118,6 +118,7 @@ Az indexelő állapotát a portálon vagy az [Indexelő status API](/rest/api/se
 Most, hogy már bemutatkozott, a következő lépés az indexelő tulajdonságainak, a paraméterek, az ütemezés és az indexelő figyelésének áttekintése. Azt is megteheti, hogy visszatérhet a [támogatott adatforrások](#supported-data-sources) listájához egy adott forrással kapcsolatos további információkért.
 
 + [Indexelő létrehozása](search-howto-create-indexers.md)
++ [Indexek alaphelyzetbe állítása és futtatása](search-howto-run-reset-indexers.md)
 + [Indexelők ütemezése](search-howto-schedule-indexers.md)
 + [Mező-hozzárendelések definiálása](search-indexer-field-mappings.md)
 + [Indexelő állapotának figyelése](search-howto-monitor-indexers.md)

@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: daf7a9fe3291850bea8c78680bcf375931383020
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e926dcd4b05d137c7927bdfe5221923d25d4670c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805597"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093488"
 ---
 # <a name="full-backup-and-restore"></a>Teljes biztonsági mentés és visszaállítás
 
@@ -44,9 +44,9 @@ A Backup egy hosszú ideig futó művelet, de azonnal visszaküldi a feladatot. 
 Amíg a biztonsági mentés folyamatban van, előfordulhat, hogy a HSM nem működik teljes átviteli sebességgel, mivel egyes HSM-partíciók el lesznek foglalva a biztonsági mentési művelet végrehajtásával.
 
 ```azurecli-interactive
-# time for 30 minutes later for SAS token expiry
+# time for 500 minutes later for SAS token expiry
 
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 
 # Get storage account key
 
@@ -84,9 +84,9 @@ Teljes visszaállítás végrehajtásához a következő információkat kell me
 A Restore egy hosszú ideig futó művelet, amely azonnal visszaadja a feladatot. A visszaállítási folyamat állapotát ennek a feladattípusnak a használatával tekintheti meg. Ha a visszaállítási folyamat folyamatban van, a HSM helyreállító módba lép, és az összes adatsík parancs (kivéve a visszaállítási állapotot) le van tiltva.
 
 ```azurecli-interactive
-#### time for 30 minutes later for SAS token expiry
+#### time for 500 minutes later for SAS token expiry
 
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 
 # Get storage account key
 

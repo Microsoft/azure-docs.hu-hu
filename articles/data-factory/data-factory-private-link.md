@@ -1,22 +1,18 @@
 ---
 title: Azure Private Link az Azure Data Factoryhez
 description: Ismerje meg, hogyan működik az Azure Private link a Azure Data Factoryban.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062188"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389178"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link az Azure Data Factoryhez
 

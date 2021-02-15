@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250689"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369125"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
@@ -68,7 +69,7 @@ pip install azureml-core
 > [!NOTE]
 > A Azure Machine Learning SDK telepítésének befejezéséhez körülbelül 2 percet vesz igénybe.
 >
-> Ha időtúllépési hiba jelenik meg, próbálja ki a `pip install --default-timeout=100 azureml-core` intstead.
+> Ha időtúllépési hibát kap, próbálkozzon `pip install --default-timeout=100 azureml-core` helyette.
 
 
 > [!div class="nextstepaction"]
@@ -78,20 +79,29 @@ pip install azureml-core
 
 Javasoljuk, hogy az oktatóanyaghoz az alábbi egyszerű címtár-struktúrát állítsa be:
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="könyvtár szerkezete: oktatóanyag legfelső szintjének a. azureml alkönyvtárral":::
+
 
 - `tutorial`: A projekt legfelső szintű könyvtára.
 - `.azureml`: Rejtett alkönyvtár a Azure Machine Learning konfigurációs fájljainak tárolásához.
 
+Ha például egy bash-ablakban szeretné létrehozni ezt:
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> A rejtett. azureml alkönyvtárat a Terminálablak segítségével hozhatja létre.  Vagy használja a következőt:
+> Ha grafikus ablakban szeretné létrehozni vagy megtekinteni a struktúrát, először engedélyezze a rejtett fájlok és mappák megtekintését és létrehozását:
 >
-> * A Mac-Finder ablakban a **Command + Shift + billentyűkombinációt használhatja.** a ponttal kezdődő könyvtárak megjelenítésének és létrehozásának lehetőségének bekapcsolása.  
+> * A Mac-Finder ablakban a **Command + Shift + billentyűkombinációt használhatja.** a rejtett fájlok/mappák megjelenítésének váltásához.  
 > * A Windows 10 fájlkezelőben tekintse meg a [rejtett fájlok és mappák megtekintését](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)ismertető témakört. 
 > * A Linux grafikus felületén használja a **CTRL + h billentyűkombinációt** vagy a **nézet** menüt, és jelölje be a jelölőnégyzetet a **rejtett fájlok megjelenítéséhez**.
+
+
+
 
 > [!div class="nextstepaction"]
 > [Létrehoztam egy könyvtárat](?success=create-dir#workspace) , amely egy [hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=create-dir)
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 A *01-Create-Workspace.py* sikeres futtatása után a mappa szerkezete a következőképpen fog kinézni:
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="A fájl config.jsekkor megjelenik a. azureml alkönyvtárában a 01-create-workspace.py futtatása után.":::
 
 A fájl `.azureml/config.json` tartalmazza a Azure Machine learning-munkaterülethez való kapcsolódáshoz szükséges metaadatokat. Ez tartalmazza az előfizetés-AZONOSÍTÓját, az erőforráscsoportot és a munkaterület nevét. 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 A mappa szerkezete mostantól a következőképpen fog megjelenni:
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="02-create-compute.py hozzáadása az oktatóanyag könyvtárához":::
 
 > [!div class="nextstepaction"]
 > [Létrehoztam egy számítási fürtöt](?success=create-compute-cluster#next-steps) [, amely egy hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
@@ -220,7 +219,7 @@ Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com) , és t
 
 Ez a nézet megjeleníti a kiépített számítási fürtöt, valamint az üresjárati csomópontok, a foglalt csomópontok és a nem kiépített csomópontok számát.  Mivel még nem használta a fürtöt, az összes csomópontot jelenleg nem lehet kiépíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a beállítási oktatóanyagban a következőket teheti:
 

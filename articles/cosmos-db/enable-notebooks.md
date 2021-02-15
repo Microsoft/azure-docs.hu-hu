@@ -5,30 +5,31 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/22/2019
+ms.date: 02/09/2021
 ms.author: dech
-ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: references_regions
+ms.openlocfilehash: b8ce745a0a0db96e7f6b9e3a0140d46364246e4a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187816"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379607"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Jegyzetfüzetek engedélyezése Azure Cosmos DB-fiókokhoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
-> A Azure Cosmos DB beépített jegyzetfüzetei jelenleg a következő Azure-régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa és az USA 2. nyugati régiója. Jegyzetfüzetek használatához [hozzon létre egy új fiókot jegyzetfüzetekkel](#enable-notebooks-in-a-new-cosmos-account) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](#enable-notebooks-in-an-existing-cosmos-account) az egyik régióban.
+> A Azure Cosmos DB beépített jegyzetfüzetei jelenleg [29 régióban](#supported-regions)érhetők el. Jegyzetfüzetek használatához [hozzon létre egy új Cosmos-fiókot](#create-a-new-cosmos-account) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](#enable-notebooks-in-an-existing-cosmos-account) ezen régiók egyikében. 
 
 A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk leírja, hogyan lehet engedélyezni ezt a funkciót az Azure Cosmos DB-fiókhoz.
 
-## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Jegyzetfüzetek engedélyezése új Cosmos-fiókban
-
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+## <a name="create-a-new-cosmos-account"></a>Új Cosmos-fiók létrehozása
+2021. február 10-én a [támogatott régió](#supported-regions) egyikében létrehozott új Azure Cosmos-fiókok automatikusan engedélyezve lesznek a jegyzetfüzetek számára. A jegyzetfüzetek engedélyezéséhez nincs szükség további konfigurációra. Új fiók létrehozásához kövesse az alábbi utasításokat:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza **az erőforrás létrehozása**  >  **adatbázisok**  >  **Azure Cosmos db** elemet.
-1. A **Azure Cosmos db fiók létrehozása** lapon válassza a **jegyzetfüzetek** lehetőséget. 
+1. Adja meg a fiók alapszintű beállításait. 
  
-    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Válassza a jegyzetfüzetek lehetőséget a Azure Cosmos DB létrehozás panelen":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Az Azure Cosmos DB új fiók lapja":::
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és a **címkék** lehetőséget. 
 1. Tekintse át a Fiókbeállítások beállítást, majd kattintson a **Létrehozás** gombra. A fiók létrehozása néhány percet vesz igénybe. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez**. 
@@ -74,6 +75,45 @@ Az **új jegyzetfüzet** lehetőség kiválasztásával új jegyzetfüzetet hozh
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása vagy feltöltése":::
 
+## <a name="supported-regions"></a>Támogatott régiók
+A Azure Cosmos DB beépített notebookja jelenleg 29 Azure-régióban érhető el. Az ezekben a régiókban létrehozott új Azure Cosmos-fiókoknál a jegyzetfüzetek automatikusan engedélyezve lesznek. A jegyzetfüzetek ingyenesek a fiókjával. 
+
+- Ausztrália középső régiója
+- Ausztrália 2. középső régiója
+- Kelet-Ausztrália
+- Délkelet-Ausztrália
+- Dél-Brazília
+- Közép-Kanada
+- Kelet-Kanada
+- Közép-India
+- USA középső régiója
+- USA keleti régiója
+- USA 2. keleti régiója
+- Közép-Franciaország
+- Dél-Franciaország
+- Észak-Németország
+- Középnyugat-Németország
+- Nyugat-Japán
+- Dél-Korea déli régiója
+- USA északi középső régiója
+- Észak-Európa
+- USA déli középső régiója
+- Délkelet-Ázsia
+- Észak-Svájc
+- UAE középső régiója
+- Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
+- USA nyugati középső régiója
+- Nyugat-Európa
+- Nyugat-India
+- USA 2. nyugati régiója
+
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
+* Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
+* [Ismerkedés a notebook Samples-galériával](https://cosmos.azure.com/gallery.html)
+* [A Python notebook funkcióinak és parancsainak használata](use-python-notebook-features-and-commands.md)
+* [C# Notebook-funkciók és-parancsok használata](use-csharp-notebook-features-and-commands.md)
+* [Jegyzetfüzetek importálása GitHub-tárházból](import-github-notebooks.md)
+
+

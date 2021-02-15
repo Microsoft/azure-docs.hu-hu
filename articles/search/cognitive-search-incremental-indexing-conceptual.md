@@ -7,23 +7,23 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/09/2021
+ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390861"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Növekményes gazdagodás és gyorsítótárazás az Azure-ban Cognitive Search
 
 > [!IMPORTANT] 
-> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 > A [REST API előzetes verziójának verziója](search-api-preview.md) biztosítja ezt a szolgáltatást. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 A *növekményes gazdagodás* egy olyan szolgáltatás, amely a [szakértelmével](cognitive-search-working-with-skillsets.md)célozza. Kihasználja az Azure Storage-t, hogy mentse a alkoholtartalom-növelési folyamat által kibocsátott feldolgozási kimenetet a jövőbeli indexelő futtatásokban való újrafelhasználáshoz. Amikor csak lehetséges, az indexelő újrahasznosítja a még érvényes gyorsítótárazott kimenetet. 
 
-A növekményes bővítés nem csupán a feldolgozásban (különösen az OCR-ben és a képfeldolgozásban) megőrzi a pénzügyi beruházásokat, de a rendszer hatékonyabbá teszi a rendszerek hatékonyságát is. Ha a rendszer gyorsítótárazza a struktúrákat és a tartalmakat, az indexelő meghatározhatja, hogy mely készségek módosultak és fussanak, és csak azokat, amelyeket módosítottak, valamint az alsóbb rétegbeli függő képességeket is. 
+A növekményes bővítés nem csupán a feldolgozásban (különösen az OCR-ben és a képfeldolgozásban) megőrzi a pénzügyi beruházásokat, de a rendszer hatékonyabbá teszi a rendszerek hatékonyságát is. 
 
 A növekményes gyorsítótárazást használó munkafolyamatok a következő lépéseket tartalmazzák:
 
@@ -95,7 +95,7 @@ A paraméter beállítása biztosítja, hogy csak a készségkészlet-definíci�
 Az alábbi példa egy frissítési Készségkészlet kérelmet mutat be a következő paraméterrel:
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://[search service].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>Adatforrás-ellenőrzési ellenőrzések megkerülése
@@ -103,7 +103,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 Az adatforrás-definíciók legtöbb módosítása érvényteleníti a gyorsítótárat. Ha azonban biztos lehet abban, hogy a módosítás nem érvényteleníti a gyorsítótárat – például a kapcsolatok karakterláncának módosítása vagy a kulcs elforgatása a Storage-fiókban – fűzze hozzá a `ignoreResetRequirement` paramétert az adatforrás frissítéséhez. Ha ezt a paramétert úgy állítja be `true` , hogy a véglegesítse a végrehajtást, anélkül, hogy olyan visszaállítási feltételt váltott ki, amely az összes objektum újraépítését és a semmiből való feltöltését eredményezi.
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
+PUT https://[search service].search.windows.net/datasources/[data source name]?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>Készségkészlet kiértékelésének kényszerítése
@@ -111,6 +111,10 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy olyan képességet módosít, amelyet az indexelő nem érzékel (például egy másikat a külső kódban, például egy egyéni képességet).
 
 Ebben az esetben a [képességek alaphelyzetbe állításával](/rest/api/searchservice/preview-api/reset-skills) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
+
+### <a name="reset-documents"></a>Dokumentumok alaphelyzetbe állítása
+
+Az [Indexelő alaphelyzetbe állítása](/rest/api/searchservice/reset-indexer) a keresési Corpus összes dokumentumának újrafeldolgozását eredményezi. Olyan helyzetekben, ahol csak néhány dokumentumot kell újra feldolgozni, és az adatforrás nem frissíthető, a [dokumentumok alaphelyzetbe állítása (előzetes verzió)](/rest/api/searchservice/preview-api/reset-documents) használatával kényszerítheti az adott dokumentumok újrafeldolgozását. A dokumentumok alaphelyzetbe állításakor az indexelő érvényteleníti az adott dokumentum gyorsítótárát, és a dokumentumot újra feldolgozza az adatforrásból való beolvasásával. További információ: [Indexelő, készségek és dokumentumok futtatása vagy visszaállítása](search-howto-run-reset-indexers.md).
 
 ## <a name="change-detection"></a>Módosításészleléses
 

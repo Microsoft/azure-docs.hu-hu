@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2020
-ms.openlocfilehash: 6e397242bd699adcba4737014ebbce72aadc8ec2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 02/11/2021
+ms.openlocfilehash: 4012cd83cf2e6fe438792a503731729b57a1425c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669813"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380593"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory egyszerű szolgáltatásnév az Azure SQL-sel
 
@@ -52,7 +52,7 @@ Ennek a funkciónak a támogatása az Azure AD Application Automation folyamatai
 
 Az Azure AD-objektumok létrehozásához SQL Database és Azure Szinapszisban egy Azure AD-alkalmazás nevében a következő beállítások szükségesek:
 
-1. A kiszolgáló identitásának kiosztása
+1. Rendelje hozzá a kiszolgáló identitását. A hozzárendelt kiszolgáló identitása a felügyelt rendszer identitását (MSI) jelöli. Az Azure SQL-kiszolgáló identitása jelenleg nem támogatja a felhasználó által felügyelt identitást (UMI).
     - Új Azure SQL logikai kiszolgáló esetén hajtsa végre a következő PowerShell-parancsot:
     
     ```powershell

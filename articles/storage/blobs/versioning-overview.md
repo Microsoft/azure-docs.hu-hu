@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980277"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380814"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -28,7 +28,7 @@ A Microsoft azt javasolja, hogy a Blobok verziószámozásával fenntartsa a blo
 A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 
 > [!IMPORTANT]
-> A blob verziószámozása nem segít helyreállítani egy Storage-fiók vagy-tároló véletlen törlését. A Storage-fiók véletlen törlésének megelőzése érdekében állítson be egy **CannotDelete** -zárolást a Storage-fiók erőforrásán. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+> A blob verziószámozása nem segít helyreállítani egy Storage-fiók vagy-tároló véletlen törlését. A Storage-fiók véletlen törlésének megakadályozásához konfigurálja a Storage-fiók erőforrásának zárolását. Az Azure-erőforrások zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md). A tárolók véletlen törléssel való ellátásához konfigurálja a tárolók helyreállított törlését a Storage-fiókhoz. További információ: a [tárolók helyreállítható törlése (előzetes verzió)](soft-delete-container-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 

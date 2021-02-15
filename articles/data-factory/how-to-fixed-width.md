@@ -1,19 +1,17 @@
 ---
 title: Rögzített hosszúságú szövegfájlok feldolgozása a leképezési adatfolyamatokkal Azure Data Factory
 description: Megtudhatja, hogyan dolgozhat fel Azure Data Factory rögzített hosszúságú szövegfájlokat a leképezési adatfolyamatok használatával.
-services: data-factory
 author: balakreshnan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 23b812da8c84ebf055ac4eabdc4649828c139a7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2297364e8f1a531b4512f2497bc4d99963d61179
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051015"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386203"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Rögzített hosszúságú szövegfájlok feldolgozása Data Factory leképezési adatfolyamatok használatával
 
@@ -29,7 +27,7 @@ Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített sz�
 
     ![Rögzített szélességű folyamat](media/data-flow/fwpipe.png)
 
-3. Az adatfolyam tevékenységben válassza az **új leképezési**adatfolyam lehetőséget.
+3. Az adatfolyam tevékenységben válassza az **új leképezési** adatfolyam lehetőséget.
 
 4. Forrás, származtatott oszlop, Select és mosogató átalakítás hozzáadása:
 
@@ -57,7 +55,7 @@ Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített sz�
     1234567813572468
     ```
 
-7. A forrás-átalakítás **vetítés** lapján egy *Column_1*nevű karakterlánc-oszlopot kell látnia.
+7. A forrás-átalakítás **vetítés** lapján egy *Column_1* nevű karakterlánc-oszlopot kell látnia.
 
 8. A származtatott oszlopban hozzon létre egy új oszlopot.
 

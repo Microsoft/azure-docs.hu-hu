@@ -4,16 +4,19 @@ description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási be�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99819860"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370988"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
 Az Azure-fájlmegosztás biztonsági mentését a [Azure Backup szolgáltatással](./backup-overview.md) végezheti el. Ez a cikk összefoglalja a támogatási beállításokat, amikor biztonsági mentést készít az Azure-fájlmegosztás Azure Backup.
+
+> [!NOTE]
+> A Azure Backup jelenleg nem támogatja az NFS-megosztásokat.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
