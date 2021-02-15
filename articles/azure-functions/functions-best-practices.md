@@ -5,35 +5,32 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5783f8092a6435b43ab8720df18cc5200e390d46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428300"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378247"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Az Azure Functions teljesítményének és megbízhatóságának optimalizálása
+# <a name="best-practices-for-performance-and-reliability-of-azure-functions"></a>Ajánlott eljárások a Azure Functions teljesítményéhez és megbízhatóságához
 
 Ez a cikk útmutatást nyújt a [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function-alkalmazások teljesítményének és megbízhatóságának javításához.  
 
-## <a name="general-best-practices"></a>Általános ajánlott eljárások
-
 Az alábbiakban az ajánlott eljárások azt ismertetik, hogyan hozhat létre és alakíthat ki kiszolgáló nélküli megoldásokat Azure Functions használatával.
 
-### <a name="avoid-long-running-functions"></a>A hosszan futó függvények elkerülése
+## <a name="avoid-long-running-functions"></a>A hosszan futó függvények elkerülése
 
-A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. Ha többet szeretne megtudni egy adott üzemeltetési csomag időtúllépéséről, tekintse meg a [Function app timeout időtartamát](functions-scale.md#timeout). 
+A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. Ha többet szeretne megtudni egy adott üzemeltetési csomag időtúllépéséről, tekintse meg a [Function app timeout időtartamát](functions-scale.md#timeout).
 
-A függvények sok Node.js függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
+A függvények sok Node.js függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti.
 
 Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functions-készletekbe, amelyek együtt működnek, és a válaszokat gyorsan adják vissza. Előfordulhat például, hogy egy webhook vagy egy HTTP trigger függvény egy bizonyos időkorláton belül visszaigazolási választ kér. gyakori, hogy a webhookok azonnali választ igényelnek. A HTTP-trigger hasznos adatait átadhatja egy, a várólista-trigger függvény által feldolgozandó várólistába. Ezzel a megközelítéssel késleltetheti a tényleges munkát, és azonnali választ adhat vissza.
 
-
-### <a name="cross-function-communication"></a>Cross Function kommunikáció
+## <a name="cross-function-communication"></a>Cross Function kommunikáció
 
 A [Durable functions](durable/durable-functions-overview.md) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az állapot-váltások és a több függvény közötti kommunikáció kezelésére készült.
 
-Ha nem használ Durable Functions vagy Logic Apps több funkcióval való integráláshoz, érdemes a tárolási várólistákat használni a több funkciós kommunikációhoz. Ennek fő oka, hogy a tárolási várólisták olcsóbbak, és sokkal könnyebben használhatók, mint a többi tárolási lehetőség. 
+Ha nem használ Durable Functions vagy Logic Apps több funkcióval való integráláshoz, érdemes a tárolási várólistákat használni a több funkciós kommunikációhoz. Ennek fő oka, hogy a tárolási várólisták olcsóbbak, és sokkal könnyebben használhatók, mint a többi tárolási lehetőség.
 
 A tárolási várólistán lévő egyes üzenetek mérete 64 KB-ra van korlátozva. Ha nagyobb üzeneteket kell átadnia a függvények között, egy Azure Service Bus üzenetsor használható a standard szinten 256 KB-ig, a prémium szinten legfeljebb 1 MB-ra.
 
@@ -41,28 +38,26 @@ Service Bus témakörök akkor hasznosak, ha a feldolgozás előtt üzenet-szűr
 
 Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
+## <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek
 
-### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
-
-A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációt az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított taggal fog rendelkezni `state` . Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációt az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított taggal fog rendelkezni `state` . Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad.
 
 A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
 
-
-### <a name="write-defensive-functions"></a>Védelmi függvények írása
+## <a name="write-defensive-functions"></a>Védelmi függvények írása
 
 Tegyük fel, hogy a függvényt bármikor felmerülhet. Tervezze meg a függvényeket úgy, hogy a következő végrehajtás során egy korábbi sikertelen pontról folytassanak. Vegyünk egy olyan forgatókönyvet, amely a következő műveleteket igényli:
 
 1. Egy adatbázisban lévő 10 000-sorok lekérdezése.
 2. Hozzon létre egy üzenetsor-üzenetet az egyes sorokhoz a sor további feldolgozásához.
- 
+
 Attól függően, hogy milyen összetett a rendszer, lehetséges, hogy: a kapcsolódó alsóbb szintű szolgáltatások rosszul viselkednek, a hálózati kimaradások, vagy a kvóta korlátai is megszülettek. Ezek mindegyike bármikor hatással lehet a függvényre. Meg kell terveznie a feladatait.
 
 Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követően a feldolgozáshoz? Egy megadott készlet elemeinek nyomon követése. Ellenkező esetben a következő alkalommal is beszúrhatja őket. Ez a kettős Beszúrás komoly hatással lehet a munkahelyi folyamatra, így [a függvények idempotens](functions-idempotent.md). 
 
 Ha egy üzenetsor-elem már fel lett dolgozva, a függvény nem lehet op.
 
-Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue-trigger.md#poison-messages)dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt. 
+Használja ki a Azure Functions platformon használt összetevőkhöz már megadott védelmi mértékeket. Tekintse meg például az [Azure Storage üzenetsor-eseményindítók és-kötések](functions-bindings-storage-queue-trigger.md#poison-messages)dokumentációjában található **méreg üzenetsor-üzeneteinek kezelését** ismertető részt.
 
 ## <a name="function-organization-best-practices"></a>Az ajánlott eljárások a szervezeti feladathoz
 
@@ -85,7 +80,7 @@ A Function apps tartalmaz egy `host.json` fájlt, amely a függvények és a Azu
 
 A helyi projekt összes funkciója együtt települ az Azure-beli Function alkalmazásban található fájlok készletével. Előfordulhat, hogy külön kell telepítenie az egyes függvényeket, vagy olyan szolgáltatásokat kell használnia, mint például az [üzembe helyezési](./functions-deployment-slots.md) pontok, amelyek nem mások. Ilyen esetekben ezeket a függvényeket (külön programkód-projektekben) a különböző Function apps-alkalmazásokba kell telepítenie.
 
-### <a name="organize-functions-by-privilege"></a>Függvények rendszerezése jogosultság alapján 
+### <a name="organize-functions-by-privilege"></a>Függvények rendszerezése jogosultság alapján
 
 A (z) alkalmazás beállításaiban tárolt kapcsolatok és egyéb hitelesítő adatok lehetővé teszi, hogy a Function alkalmazás összes funkciója ugyanazokat az engedélyeket adja meg a társított erőforrásban. Érdemes lehet minimalizálni az adott hitelesítő adatokhoz hozzáféréssel rendelkező függvények számát azáltal, hogy áthelyezi azokat a függvényeket, amelyek nem használják ezeket a hitelesítő adatokat egy különálló Function alkalmazásnak. Mindig használhat olyan technikákat, mint például a függvények [láncolása](/learn/modules/chain-azure-functions-data-using-bindings/) , hogy az adatok áthaladnak a függvények között különböző Function Apps-alkalmazásokban.  
 
@@ -99,7 +94,7 @@ Ha lehetséges, a külső erőforrásokhoz való kapcsolódást újra fel kell h
 
 ### <a name="avoid-sharing-storage-accounts"></a>A Storage-fiókok megosztásának elkerülése
 
-Egy Function-alkalmazás létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak. 
+Egy Function-alkalmazás létrehozásakor hozzá kell rendelnie egy Storage-fiókhoz. A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak.
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
@@ -123,9 +118,9 @@ A C# nyelvben mindig Kerülje a `Result` tulajdonság vagy a hívás `Wait` met�
 
 ### <a name="use-multiple-worker-processes"></a>Több munkavégző folyamat használata
 
-Alapértelmezés szerint a függvények minden gazdagép-példánya egyetlen munkavégző folyamatot használ. A teljesítmény javítása érdekében, különösen az egyszálas futtatókörnyezetek, például a Python esetében, a [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) használatával növelheti a munkavégző folyamatok számát (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között. 
+Alapértelmezés szerint a függvények minden gazdagép-példánya egyetlen munkavégző folyamatot használ. A teljesítmény javítása érdekében, különösen az egyszálas futtatókörnyezetek, például a Python esetében, a [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) használatával növelheti a munkavégző folyamatok számát (legfeljebb 10). Azure Functions ezt követően megpróbál egyenletesen terjeszteni egyidejű függvényeket a feldolgozók között.
 
-A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez. 
+A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a functions hoz létre, amikor az alkalmazás az igények kielégítése érdekében felskálázást végez.
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 

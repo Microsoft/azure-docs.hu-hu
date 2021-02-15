@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388073"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Felügyelt identitások használata Azure Machine Learning (előzetes verzió)
 
@@ -29,6 +29,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a felügyelt identitásokat 
 
  * Konfigurálja és használja az ACR-t az Azure Machine Learning munkaterülethez anélkül, hogy engedélyeznie kellene a rendszergazdai felhasználói hozzáférést az ACR-hez.
  * A saját munkaterületén kívüli privát ACR-t is elérheti, hogy lekérje az alapképek betanítását vagy következtetését.
+ * Hozzon létre egy munkaterületet a felhasználó által hozzárendelt felügyelt identitással a társított erőforrások eléréséhez.
 
 > [!IMPORTANT]
 > A felügyelt identitások használatával szabályozhatja az erőforrásokhoz való hozzáférést Azure Machine Learning jelenleg előzetes verzióban érhető el. Az előzetes verzió funkcióit a rendszer a támogatás és a szolgáltatói szerződés garanciája nélkül biztosítja. További információkért tekintse meg a [Microsoft Azure előzetesek használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -102,7 +103,7 @@ Ha nem hoz létre saját ACR-t, Azure Machine Learning szolgáltatás létrehoz 
 
 ### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>Hozzon létre egy felügyelt identitással rendelkező számítást a Docker-rendszerképek betanításához való hozzáféréshez
 
-A munkaterület ACR eléréséhez hozzon létre egy gépi tanulási számítási fürtöt, amelynek engedélyezve van a rendszerhez rendelt felügyelt identitás. Az identitást Azure Portal vagy studióból is engedélyezheti számítás létrehozásakor vagy az Azure CLI használatával
+A munkaterület ACR eléréséhez hozzon létre egy gépi tanulási számítási fürtöt, amelynek engedélyezve van a rendszerhez rendelt felügyelt identitás. Az identitást Azure Portal vagy studióból is engedélyezheti számítás létrehozásakor vagy az Azure CLI-vel az alábbi használatával. További információ: [felügyelt identitás használata számítási fürtökkel](how-to-create-attach-compute-cluster.md#managed-identity).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -228,6 +229,41 @@ Miután konfigurálta az ACR-t a korábban leírtaknak megfelelően a rendszerga
 
 > [!NOTE]
 > Ha saját AK-fürtöt használ, a fürtnek a felügyelt identitás helyett engedélyeznie kell az egyszerű szolgáltatásnevet.
+
+## <a name="create-workspace-with-user-assigned-managed-identity"></a>Munkaterület létrehozása felhasználó által hozzárendelt felügyelt identitással
+
+Munkaterület létrehozásakor megadhat egy felhasználó által hozzárendelt felügyelt identitást, amelyet a rendszer a társított erőforrások eléréséhez fog használni: ACR, kulcstartó, tárolás és alkalmazás-információk.
+
+Először [létre kell hoznia egy felhasználó által hozzárendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli]), és jegyezze fel a felügyelt identitás ARM erőforrás-azonosítóját.
+
+Ezután az Azure CLI vagy a Python SDK használatával hozza létre a munkaterületet. A parancssori felület használatakor a paraméter használatával határozza meg az azonosítót `--primary-user-assigned-identity` . Az SDK használatakor használja a t `primary_user_assigned_identity` . Az alábbi példák az Azure CLI és a Python használatával hoznak létre egy új munkaterületet a következő paraméterek használatával:
+
+__Azure CLI__
+
+```azurecli-interactive
+az ml workspace create -w <workspace name> -g <resource group> --primary-user-assigned-identity <managed identity ARM ID>
+```
+
+__Python__
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.create(name="workspace name", 
+    subscription_id="subscription id", 
+    resource_group="resource group name",
+    primary_user_assigned_identity="managed identity ARM ID")
+```
+
+[ARM-sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) is létrehozhat egy olyan munkaterületet, amely felhasználó által hozzárendelt felügyelt identitással rendelkezik.
+
+> [!IMPORTANT]
+> Ha saját társított erőforrásokat hoz létre, ahelyett, hogy Azure Machine Learning a szolgáltatást, meg kell adnia a felügyelt identitási szerepköröket ezekre az erőforrásokra. A hozzárendeléseket a [szerepkör-hozzárendelési ARM-sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) végezheti el.
+
+Ha egy munkaterülethez (az ügyfél által felügyelt kulcsokkal a titkosításhoz) [ https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ], a felhasználó által hozzárendelt felügyelt identitást átadhatja a tárolóból a Key Vaultba való hitelesítéshez. A felügyelt identitáshoz használja a __felhasználó által hozzárendelt-Identity-for-CMK-encryption__ (CLI) vagy __user_assigned_identity_for_cmk_encryption__ (SDK) argumentumot. Ez a felügyelt identitás lehet azonos vagy más, mint a munkaterület elsődleges felhasználó által hozzárendelt felügyelt identitása.
+
+Ha rendelkezik meglévő munkaterülettel, a felhasználó által hozzárendelt felügyelt identitáshoz a ```az ml workspace update``` CLI-parancs vagy a PYTHON SDK-módszer használatával frissítheti a rendszerből ```Workspace.update``` .
+
 
 ## <a name="next-steps"></a>Következő lépések
 

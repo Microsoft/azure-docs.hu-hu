@@ -12,6 +12,8 @@
       href: quickstarts/create-communication-resource.md
     - name: Hozzáférési jogkivonatok létrehozása és kezelése
       href: quickstarts/access-tokens.md
+    - name: Felügyelt identitások használata (.NET)
+      href: quickstarts/managed-identity.md
     - name: Csevegés
       items:
         - name: Csevegés hozzáadása az alkalmazáshoz
@@ -55,11 +57,9 @@
       href: tutorials/hmac-header-tutorial.md
     - name: Webes alkalmazás előkészítése kommunikációs szolgáltatásokhoz (Node.js)
       href: tutorials/building-app-start.md
-- name: Alapelvek
+- name: Fogalmak
   expanded: false
   items:
-    - name: Teams-együttműködés
-      href: concepts/teams-interop.md
     - name: Csevegés
       items:
         - name: A csevegési ügyfélkódtár áttekintése
@@ -72,8 +72,12 @@
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS-sel kapcsolatos alapfogalmak
           href: concepts/telephony-sms/concepts.md
-        - name: A telefonos és SMS-megoldás megtervezése
+        - name: Telefonos fogalmak
+          href: concepts/telephony-sms/telephony-concept.md
+        - name: Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
           href: concepts/telephony-sms/plan-solution.md
+        - name: A SIP-interfész infrastruktúrájának követelményei
+          href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: Hang- és videóhívás
       items:
         - name: Hívási ügyfélkódtár áttekintése
@@ -86,6 +90,8 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Felhasználói felületi keretrendszer képességei
           href: concepts/ui-framework/ui-sdk-features.md
+    - name: Teams-együttműködés
+      href: concepts/teams-interop.md
     - name: Ügyfél- és kiszolgálói architektúra
       href: concepts/client-and-server-architecture.md
     - name: Hívási folyamatok

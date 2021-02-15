@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2749e66375fbd808a9e87f252a813f1054ceff21
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d3b53c860c150b5b67d38cf5d11db9f070ffb81d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525568"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392799"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -66,7 +66,7 @@ Ahol a egy `--enable-private-cluster` privát fürt kötelező jelzője.
 > [!NOTE]
 > Ha a Docker-híd CIDR (172.17.0.1/16) ütközne az alhálózati CIDR, módosítsa a Docker-híd megfelelőjét.
 
-## <a name="configure-private-dns-zone"></a>saját DNS zóna konfigurálása
+## <a name="configure-private-dns-zone"></a>saját DNS zóna konfigurálása 
 
 A következő paraméterek használhatók a saját DNS zónák konfigurálásához.
 
@@ -79,7 +79,7 @@ A következő paraméterek használhatók a saját DNS zónák konfigurálásáh
 * Az AK előzetes verziójának 0.4.71 vagy újabb verziója
 * Az API 2020-11-01-es vagy újabb verziója
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Privát AK-fürt létrehozása saját DNS zónával
+### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Privát AK-fürt létrehozása saját DNS zónával (előzetes verzió)
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]

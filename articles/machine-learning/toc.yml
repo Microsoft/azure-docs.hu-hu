@@ -278,8 +278,16 @@
         - name: Fejlesztési környezetek beállítása
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Jupyter-notebookok futtatása
-          href: how-to-run-jupyter-notebooks.md
+        - name: Studio-környezet beállítása
+          items:
+            - name: Fájlok létrehozása és kezelése
+              href: how-to-manage-files.md
+              displayName: 'Jupyter, notebooks, clone, samples'
+            - name: Jupyter-notebookok futtatása
+              href: how-to-run-jupyter-notebooks.md
+            - name: Terminál használata
+              href: how-to-access-terminal.md
+              displayName: 'git, github, clone, kernel, package'
         - name: Szoftverkörnyezetek beállítása
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md

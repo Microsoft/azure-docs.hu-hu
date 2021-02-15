@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ba00e6f4fe97b0614483fd04ddee9fc768558db5
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102104"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384452"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>A szinapszis általános feladatai végrehajtásához szükséges szerepkörök megismerése
 
@@ -87,7 +87,7 @@ A jegyzetfüzetek és a feladatok végrehajtásához tartozó naplók megtekint�
 Apache Spark-készleten futó jegyzetfüzetek vagy Spark-feladatok megszakítása|Szinapszis számítási operátor a Apache Spark készleten.|bigDataPools/useCompute
 Jegyzetfüzet vagy feladatdefiníció létrehozása|Szinapszis-felhasználó vagy </br>Azure-tulajdonos, közreműködő vagy olvasó a munkaterületen</br> *További engedélyek szükségesek a módosítások futtatásához, közzétételéhez vagy végrehajtásához.*|olvasás</br></br></br></br></br> 
 Közzétett jegyzetfüzet vagy feladatdefiníció listázása és megnyitása, beleértve a mentett kimenetek áttekintését|Szinapszis-összetevő felhasználója, szinapszis összetevő-közzétevő, szinapszis közreműködő a munkaterületen|összetevők/olvasás
-Jegyzetfüzet futtatása és kimenetének áttekintése|Szinapszis Apache Spark Administrator, szinapszis számítási operátor a kiválasztott Apache Spark-készleten|bigDataPools/useCompute 
+Jegyzetfüzet futtatása és kimenetének megtekintése, illetve Spark-feladatok elküldése|Szinapszis Apache Spark Administrator, szinapszis számítási operátor a kiválasztott Apache Spark-készleten|bigDataPools/useCompute 
 Jegyzetfüzet vagy feladatdefiníció (beleértve a kimenetet is) közzététele vagy törlése a szolgáltatáshoz|Összetevő-közzétevő a munkaterületen, szinapszis Apache Spark Administrator|jegyzetfüzetek/írás, törlés
 Egy jegyzetfüzet vagy feladatdefiníció módosításainak végrehajtása a git-tárházban|Git-engedélyek|Nincs
 FOLYAMATOK, INTEGRÁCIÓS MODULOK, ADATFOLYAMOK, ADATKÉSZLETEK & ESEMÉNYINDÍTÓK|

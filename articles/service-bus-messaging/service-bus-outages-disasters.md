@@ -2,13 +2,13 @@
 title: Azure Service Bus-alkalmazások elszigetelése az kimaradások és a katasztrófák ellen
 description: Ez a cikk az alkalmazások lehetséges Azure Service Bus kimaradás elleni védeleméhez nyújt technikákat.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/10/2021
+ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065624"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374592"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások elszigeteléséhez a Service Bus leállásaival és katasztrófáival szemben
 
@@ -23,11 +23,13 @@ A magas rendelkezésre állást és a vész-helyreállítási fogalmakat közvet
 
 ### <a name="geo-disaster-recovery"></a>Geo-Disaster helyreállítás
 
-A Service Bus Premium a Geo-vész-helyreállítást támogatja a névtér szintjén. További információ: [Azure Service Bus földrajzi katasztrófa utáni helyreállítás](service-bus-geo-dr.md). A csak [prémium SKU](service-bus-premium-messaging.md) -hoz elérhető vész-helyreállítási funkció a metaadatok vész-helyreállítását valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterekre támaszkodik.
+A Service Bus Premium a Geo-vész-helyreállítást támogatja a névtér szintjén. További információ: [Azure Service Bus földrajzi katasztrófa utáni helyreállítás](service-bus-geo-dr.md). A csak [prémium SKU](service-bus-premium-messaging.md) -hoz elérhető vész-helyreállítási funkció a metaadatok vész-helyreállítását valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterekre támaszkodik. Geo-Disaster helyreállítás esetén a rendszer csak az entitások metaadatait replikálja az elsődleges és a másodlagos névterek között.  
 
 ### <a name="availability-zones"></a>Rendelkezésre állási zónák
 
 A Service Bus Premium SKU támogatja a [Availability Zones](../availability-zones/az-overview.md), amely az ugyanazon az Azure-régióban található, hibátlanul elszigetelt helyszíneket biztosít. A Service Bus az üzenetküldési tároló három példányát kezeli (1 elsődleges és 2 másodlagos). A Service Bus az adatok és a felügyeleti műveletek szinkronizálásában mindhárom másolatot megtartja. Ha az elsődleges másolat meghiúsul, az egyik másodlagos másolat az elsődleges értékre kerül, az észlelt állásidő nélkül. Ha az alkalmazások átmeneti leválasztást látnak Service Bus, az SDK-ban lévő újrapróbálkozási logika automatikusan újra csatlakozik Service Bushoz. 
+
+A rendelkezésre állási zónák használatakor a rendszer a metaadatokat és az adatokat (üzeneteket) is replikálja a rendelkezésre állási zóna adatközpontjai között. 
 
 > [!NOTE]
 > A prémium szintű Azure Service Bus Availability Zones támogatása csak olyan Azure- [régiókban](../availability-zones/az-region.md) érhető el, ahol rendelkezésre áll a rendelkezésre állási zónák.
@@ -38,7 +40,7 @@ A Availability Zones csak az új névtereken engedélyezheti, a Azure Portal has
 
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>Kimaradások és katasztrófák elleni védelem – Service Bus standard
-Az adatközpont-kimaradások elleni rugalmasság érdekében a szabványos üzenetkezelési csomag használata esetén Service Bus két módszert támogat: az *aktív* és a *passzív* replikálást. Minden megközelítés esetében, ha egy adott üzenetsor vagy témakör elérhető marad egy adatközpont-leállás jelenlétében, akkor mindkét névtérben létrehozhatja. Mindkét entitás ugyanazzal a névvel rendelkezhet. Az elsődleges várólista például elérhető a **contosoPrimary.servicebus.Windows.net/myQueue**alatt, míg a másodlagos párja a **contosoSecondary.servicebus.Windows.net/myQueue**területen érhető el.
+Az adatközpont-kimaradások elleni rugalmasság érdekében a szabványos üzenetkezelési csomag használata esetén Service Bus két módszert támogat: az *aktív* és a *passzív* replikálást. Minden megközelítés esetében, ha egy adott üzenetsor vagy témakör elérhető marad egy adatközpont-leállás jelenlétében, akkor mindkét névtérben létrehozhatja. Mindkét entitás ugyanazzal a névvel rendelkezhet. Az elsődleges várólista például elérhető a **contosoPrimary.servicebus.Windows.net/myQueue** alatt, míg a másodlagos párja a **contosoSecondary.servicebus.Windows.net/myQueue** területen érhető el.
 
 >[!NOTE]
 > Az **aktív replikálás** és a **passzív replikálás** beállítása általános célú megoldások, és nem a Service Bus specifikus szolgáltatásai. A replikációs logika (2 különböző névtérnek való küldés) a küldő alkalmazásokban él, és a fogadónak egyéni logikával kell rendelkeznie az ismétlődő észleléshez.
@@ -72,7 +74,7 @@ A passzív replikáció használatakor a következő esetekben az üzenetek elve
 A [Service Bus standard szintű geo-replikáció][Geo-replication with Service Bus Standard Tier] az üzenetkezelési entitások passzív replikálását mutatja be.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Továbbítási végpontok védelme adatközpont-kimaradások vagy katasztrófák ellen
-[Azure Relay](../azure-relay/relay-what-is-it.md) végpontok földrajzi replikálása lehetővé teszi egy olyan szolgáltatás számára, amely egy továbbító végpontot tesz elérhetővé Service Bus kimaradások jelenlétében. A földrajzi replikálás eléréséhez a szolgáltatásnak két továbbító végpontot kell létrehoznia különböző névterekben. A névtereknek különböző adatközpontokban kell lenniük, és a két végpontnak eltérő névvel kell rendelkeznie. Egy elsődleges végpont például elérhető a **contosoPrimary.servicebus.Windows.net/myPrimaryService**alatt, míg a másodlagos párja a **contosoSecondary.servicebus.Windows.net/mySecondaryService**területen érhető el.
+[Azure Relay](../azure-relay/relay-what-is-it.md) végpontok földrajzi replikálása lehetővé teszi egy olyan szolgáltatás számára, amely egy továbbító végpontot tesz elérhetővé Service Bus kimaradások jelenlétében. A földrajzi replikálás eléréséhez a szolgáltatásnak két továbbító végpontot kell létrehoznia különböző névterekben. A névtereknek különböző adatközpontokban kell lenniük, és a két végpontnak eltérő névvel kell rendelkeznie. Egy elsődleges végpont például elérhető a **contosoPrimary.servicebus.Windows.net/myPrimaryService** alatt, míg a másodlagos párja a **contosoSecondary.servicebus.Windows.net/mySecondaryService** területen érhető el.
 
 A szolgáltatás ezután mindkét végponton figyeli a szolgáltatást, és az ügyfél bármelyik végponton keresztül hívhatja a szolgáltatást. Egy ügyfélalkalmazás véletlenszerűen kiválasztja az egyik továbbítót elsődleges végpontként, és elküldi a kérést az aktív végpontnak. Ha a művelet hibakód miatt meghiúsul, ez a hiba azt jelzi, hogy a továbbítási végpont nem érhető el. Az alkalmazás megnyit egy csatornát a biztonsági mentési végponthoz, és újra kiadja a kérést. Ekkor az aktív és a biztonsági mentési végpontok kapcsolói szerepkörök: az ügyfélalkalmazás a régi aktív végpontot tekinti az új biztonsági mentési végpontnak, a régi biztonsági mentési végpont pedig az új aktív végpont lesz. Ha mindkét küldési művelet meghiúsul, a két entitás szerepkörei változatlanok maradnak, és a rendszer hibát ad vissza.
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d83bc653ae8c3ff5a9553de568bc6f2355f18760
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746713"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104620"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -115,6 +115,9 @@ További részletekért tekintse meg ezt a [közösségi bejegyzést](https://ch
 ### <a name="how-does-export-work"></a>Hogyan működik $export?
 
 $export a FHIR-specifikáció része: https://hl7.org/fhir/uv/bulkdata/export/index.html . Ha a FHIR szolgáltatás egy felügyelt identitással és egy Storage-fiókkal van konfigurálva, és ha a felügyelt identitás hozzáfér ehhez a Storage-fiókhoz, akkor egyszerűen hívja meg a $exportt a FHIR API-ban, és az összes FHIR-erőforrás exportálva lesz a Storage-fiókba. További információkért tekintse [meg a $exportról szóló cikket](./export-data.md).
+
+### <a name="is-de-identified-export-available-at-patient-and-group-level-as-well"></a>A azonosított exportálás a beteg és a csoport szintjén is elérhető?
+Az anonim exportálás jelenleg csak a teljes rendszer-exportáláson (/$export), és nem a beteg-exportálásnál (/Patient/-$export) támogatott. Dolgozunk azon, hogy elérhető legyen a beteg szintjén is.
 
 ## <a name="using-azure-api-for-fhir"></a>Az Azure API használata a FHIR-hez
 

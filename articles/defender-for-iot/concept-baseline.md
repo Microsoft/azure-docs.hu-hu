@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548885"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102240"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender a IoT alapkonfigurációhoz és egyéni ellenőrzésekhez
 
@@ -35,9 +35,13 @@ Az alapkonfiguráció egyéni ellenőrzése az eszközhöz tartozó **Identity T
 ## <a name="setting-baseline-properties"></a>Alapterv tulajdonságainak beállítása
 
 1. A IoT Hub keresse meg és válassza ki a módosítani kívánt eszközt.
+
 1. Kattintson az eszközre, majd kattintson a **azureiotsecurity** modulra.
+
 1. Kattintson a **modul Identity Twin** elemre.
+
 1. Töltse fel az alapkonfiguráció **Egyéni ellenőrzési** fájlját az eszközre.
+
 1. Adja hozzá az alapkonfiguráció tulajdonságait a biztonsági modulhoz, és kattintson a **Mentés** gombra.
 
 ### <a name="baseline-custom-check-file-example"></a>Példa alapterv egyéni ellenőrzési fájlra
@@ -62,7 +66,7 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 
 ## <a name="baseline-custom-check-properties"></a>Alapterv egyéni ellenőrzési tulajdonságai
 
-| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Description |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Boolean** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|

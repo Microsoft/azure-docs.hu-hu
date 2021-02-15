@@ -1,22 +1,17 @@
 ---
 title: Helyszíni SQL Server Integration Services-(SSIS-) feladatok migrálása Azure Data Factory
 description: Ez a cikk azt ismerteti, hogyan lehet áttelepíteni SQL Server Integration Services (SSIS) feladatokat Azure Data Factory folyamatokat/tevékenységeket/eseményindítókat SQL Server Management Studio használatával.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: ec10abfd6f2fc221a9e86203b2faa0d173d67675
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555746"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379590"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent feladatok migrálása az ADF-be a SSMS-mel
 

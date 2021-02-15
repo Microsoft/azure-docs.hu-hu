@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893379"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361764"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -74,6 +74,7 @@ Microsoft-partnerek a következő biztonsági ISV-val.
 | ISV-partner | Leírás és integrációs útmutató |
 |:-------------------------|:--------------|
 | ![Képernyőkép a Arkóz labor emblémáról](./media/partner-gallery/arkose-logo.png) | A [Arkóz Labs](./partner-arkose-labs.md) egy csalások elleni megelőzési megoldás szolgáltatója, amely segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával |
+| ![Képernyőkép a Microsoft Dynamics 365 emblémáról](./media/partner-gallery/microsoft-dynamics365-logo.png) | A [Microsoft Dynamics 365 csalások elleni védelem](./partner-dynamics-365-fraud-protection.md) olyan megoldás, amely segít a szervezeteknek a jogosulatlan fiókok elleni védelemben az eszközök ujjlenyomatának használatával. |
 | ![Képernyőkép a ping logóról](./media/partner-gallery/ping-logo.png) | A [ping Identity](./partner-ping-identity.md) lehetővé teszi, hogy a biztonságos hibrid hozzáférést biztosítson a helyszíni örökölt alkalmazásokhoz több felhőben. |
 | ![Képernyőfelvétel a rétegek emblémáról](./media/partner-gallery/strata-logo.png) | A [rétegek](./partner-strata.md) biztonságos hibrid hozzáférést biztosítanak a helyszíni alkalmazásokhoz a konzisztens hozzáférési házirendek betartatásával, az identitások szinkronban tartásával, valamint egyszerűvé teszik a régi identitású rendszerekből származó alkalmazások átváltását a szabvány alapú hitelesítésre és a Azure ad B2C által biztosított hozzáférés-vezérlésre. |
 | ![Képernyőkép egy zscaler-emblémáról](./media/partner-gallery/zscaler-logo.png) | A [Zscaler](./partner-zscaler.md) házirend-alapú, biztonságos hozzáférést biztosít a privát alkalmazásokhoz és az eszközökhöz a VPN-t érintő többletköltségek, szóváltás vagy biztonsági kockázatok nélkül. |

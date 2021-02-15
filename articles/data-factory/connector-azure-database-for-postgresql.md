@@ -1,22 +1,18 @@
 ---
 title: Adatmásolás és átalakítás Azure Database for PostgreSQL
 description: Megtudhatja, hogyan másolhat és alakíthat át Azure Database for PostgreSQLba Azure Data Factory használatával.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223091"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381324"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Database for PostgreSQL adatmásolása és átalakítása a Azure Data Factory használatával
 
@@ -73,7 +69,7 @@ Egy tipikus kapcsolatok karakterlánca: `Server=<server>.postgres.database.azure
 
 **Példa**:
 
-**_A Jelszó tárolása Azure Key Vault_* _
+***Jelszó tárolása Azure Key Vaultban***
 
 ```json
 {
@@ -99,7 +95,7 @@ Egy tipikus kapcsolatok karakterlánca: `Server=<server>.postgres.database.azure
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listájáért lásd: [Adatkészletek Azure Data Factoryban](concepts-datasets-linked-services.md). Ez a szakasz azoknak a tulajdonságoknak a listáját tartalmazza, amelyeket a Azure Database for PostgreSQL támogat az adatkészletekben.
 
-Az adatok Azure Database for PostgreSQLból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát _ * AzurePostgreSqlTable * * értékre. A következő tulajdonságok támogatottak:
+Az adatok Azure Database for PostgreSQLból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **AzurePostgreSqlTable** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |

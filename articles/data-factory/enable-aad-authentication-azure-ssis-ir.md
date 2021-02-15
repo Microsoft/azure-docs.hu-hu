@@ -1,22 +1,19 @@
 ---
 title: HRE engedélyezése az Azure SSIS Integration Runtime
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető Azure Active Directory hitelesítés a felügyelt identitással a Azure Data Factory számára Azure-SSIS Integration Runtime létrehozásához.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.devlang: powershell
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 30f5b5990e189cb6942c15b65b6a417ce49f0c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cd3f590e1869b28f0ac08ce98da32a98160e4e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637802"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392731"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-hitelesítés engedélyezése az Azure-SSIS integrációs modulhoz
 
@@ -160,7 +157,7 @@ Ehhez a következő lépéshez [Microsoft SQL Server Management Studiora](/sql/s
 
 1.  Indítsa el a SSMS.
 
-2.  Kapcsolódjon az SQL felügyelt példányához egy olyan SQL Server fiók használatával, amely **rendszergazda** . Ez egy ideiglenes korlátozás, amely akkor lesz eltávolítva, ha az Azure AD-kiszolgáló rendszerbiztonsági tagja (bejelentkezések) az Azure SQL felügyelt példányaihoz a GA lesz. A következő hibaüzenet jelenik meg, ha egy Azure AD-beli rendszergazdai fiókot próbál használni a bejelentkezés létrehozásához: msg 15247, 16. szint, 1. sor, az 1. sorban a felhasználónak nincs engedélye a művelet elvégzésére.
+2.  Kapcsolódjon az SQL felügyelt példányához egy olyan SQL Server fiók használatával, amely **rendszergazda**. Ez egy ideiglenes korlátozás, amely akkor lesz eltávolítva, ha az Azure AD-kiszolgáló rendszerbiztonsági tagja (bejelentkezések) az Azure SQL felügyelt példányaihoz a GA lesz. A következő hibaüzenet jelenik meg, ha egy Azure AD-beli rendszergazdai fiókot próbál használni a bejelentkezés létrehozásához: msg 15247, 16. szint, 1. sor, az 1. sorban a felhasználónak nincs engedélye a művelet elvégzésére.
 
 3.  A **Object Explorer** bontsa ki a **Databases**  ->  **System Databases (adatbázisok rendszeradatbázisok** ) mappát.
 

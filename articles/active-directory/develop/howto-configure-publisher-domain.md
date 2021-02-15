@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013634"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104178"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Útmutató: alkalmazás közzétevő tartományának konfigurálása
 
@@ -48,18 +48,12 @@ Ha az alkalmazás regisztrálása a 2019. május 21. előtt történt meg, az al
 
 Az alkalmazás közzétevő tartományának beállításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-
-1. Ha a fiókja több Azure AD-bérlőn is megtalálható:
-   1. Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át a könyvtárra**.
-   1. Módosítsa a munkamenetet arra az Azure AD-bérlőre, ahol létre szeretné hozni az alkalmazást.
-
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben az alkalmazás regisztrálva van.
 1. Keresse meg [Azure Active Directory > Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) a konfigurálni kívánt alkalmazás megkereséséhez és kiválasztásához.
 
    Miután kiválasztotta az alkalmazást, látni fogja az alkalmazás **Áttekintés** lapját.
-
-1. Az alkalmazás **Áttekintés** lapján válassza a **branding (védjegyezés** ) szakaszt.
-
+1. A **kezelés** területen válassza ki a **védjegyezést**.
 1. Keresse meg a **közzétevő tartomány** mezőt, és válasszon egyet a következő lehetőségek közül:
 
    - Válassza **a tartomány konfigurálása** lehetőséget, ha már nem konfigurált tartományt.

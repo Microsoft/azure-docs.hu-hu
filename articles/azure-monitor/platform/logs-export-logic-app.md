@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 21b9d73da0df5ada626500a706a19d1025de1dcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185997"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391966"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Adatok archiválása Log Analytics munkaterületről az Azure Storage-ba a logikai alkalmazás használatával
 Ez a cikk azt ismerteti, hogyan lehet a [Azure Logic apps](../../logic-apps/index.yml) segítségével lekérdezni a Azure monitor és az Azure Storage szolgáltatásba küldött log Analytics munkaterületről származó adatok lekérdezésére szolgáló módszert. Akkor használja ezt a folyamatot, ha a naplózási és megfelelőségi forgatókönyvek Azure Monitor naplózási adatait szeretné exportálni, vagy egy másik szolgáltatás számára engedélyezi az adatok lekérését.  
@@ -69,7 +69,7 @@ Lépjen a Azure Portal **Logic apps** elemre, majd kattintson a **Hozzáadás** 
 Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre. Ha a telepítés befejeződött, kattintson az **erőforrás** megnyitása lehetőségre a **Logic apps Designer** megnyitásához.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Trigger létrehozása a logikai alkalmazáshoz
-Az **Indítás általános eseményindítóval** területen válassza az **Ismétlődés** lehetőséget. Ez egy olyan logikai alkalmazást hoz létre, amely rendszeres időközönként automatikusan fut. A művelet **gyakorisága** mezőben válassza az **óra** lehetőséget, majd az **intervallum** mezőben adja meg az **1** értéket a munkafolyamat napi egyszeri futtatásához.
+Az **Indítás általános eseményindítóval** területen válassza az **Ismétlődés** lehetőséget. Ez egy olyan logikai alkalmazást hoz létre, amely rendszeres időközönként automatikusan fut. A művelet **gyakorisága** mezőben válassza a **nap** és az **intervallum** mezőben az **1** értéket, ha naponta egyszer szeretné futtatni a munkafolyamatot.
 
 ![Ismétlődési művelet](media/logs-export-logicapp/recurrence-action.png)
 

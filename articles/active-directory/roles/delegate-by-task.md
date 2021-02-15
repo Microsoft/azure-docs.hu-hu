@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad48141c69d78096981b89758afd56089093021
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 8d096bcd15254df4081a005b268934659e43037d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742930"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380304"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -109,7 +109,7 @@ Szinkronizálási szolgáltatás metrikáinak és értesítéseinek megtekintés
 
 Feladat | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Tartományok kezelése | Globális rendszergazda | 
+Tartományok kezelése | Tartománynév-rendszergazda | 
 Az összes konfiguráció olvasása | Directory-olvasók | Alapértelmezett felhasználói szerepkör ([lásd a dokumentációt](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>Tartományi szolgáltatások
@@ -216,9 +216,9 @@ Bejelentkezési naplók olvasása | Jelentések olvasója | Biztonsági olvasó,
 Feladat | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 A kiválasztott felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése | Globális rendszergazda | 
-MFA letiltása | Globális rendszergazda | 
-MFA engedélyezése | Globális rendszergazda | 
-MFA szolgáltatás beállításainak kezelése | Globális rendszergazda | 
+MFA letiltása | Hitelesítési rendszergazda (PowerShell használatával) | Kiemelt jogosultságú hitelesítés rendszergazdája (PowerShell használatával)
+MFA engedélyezése | Hitelesítési rendszergazda (PowerShell használatával) | Kiemelt jogosultságú hitelesítés rendszergazdája (PowerShell használatával) 
+MFA szolgáltatás beállításainak kezelése | Hitelesítési házirend rendszergazdája | 
 A kapcsolatfelvételi módszerek megadásának megkövetelése a kiválasztott felhasználóknak | Hitelesítés rendszergazdája | 
 A többtényezős hitelesítés visszaállítása az összes megjegyzett eszközön  | Hitelesítés rendszergazdája | 
 
@@ -226,15 +226,15 @@ A többtényezős hitelesítés visszaállítása az összes megjegyzett eszköz
 
 Feladat | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználók blokkolása/feloldása | Globális rendszergazda | 
-Fiókzárolási konfigurálása | Globális rendszergazda | 
-Gyorsítótárazási szabályok konfigurálása | Globális rendszergazda | 
-Csalási riasztás konfigurálása | Globális rendszergazda
-Értesítések konfigurálása | Globális rendszergazda | 
-Egyszeri Mellőzés konfigurálása | Globális rendszergazda | 
-Telefonhívás beállításainak konfigurálása | Globális rendszergazda | 
-Szolgáltatók konfigurálása | Globális rendszergazda | 
-Kiszolgálóbeállítások konfigurálása | Globális rendszergazda | 
+Felhasználók blokkolása/feloldása | Hitelesítési házirend rendszergazdája | 
+Fiókzárolási konfigurálása | Hitelesítési házirend rendszergazdája | 
+Gyorsítótárazási szabályok konfigurálása | Hitelesítési házirend rendszergazdája | 
+Csalási riasztás konfigurálása | Hitelesítési házirend rendszergazdája
+Értesítések konfigurálása | Hitelesítési házirend rendszergazdája | 
+Egyszeri Mellőzés konfigurálása | Hitelesítési házirend rendszergazdája | 
+Telefonhívás beállításainak konfigurálása | Hitelesítési házirend rendszergazdája | 
+Szolgáltatók konfigurálása | Hitelesítési házirend rendszergazdája | 
+Kiszolgálóbeállítások konfigurálása | Hitelesítési házirend rendszergazdája | 
 Tevékenység jelentésének olvasása | Globális olvasó | 
 Az összes konfiguráció olvasása | Globális olvasó | 
 Kiszolgáló állapotának olvasása | Globális olvasó |  
@@ -360,7 +360,7 @@ Feladat | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Támogatási jegy beküldése | Szolgáltatás-rendszergazda | Alkalmazás-rendszergazda, Azure Information Protection rendszergazda, számlázási rendszergazda, Felhőbeli alkalmazás rendszergazdája, megfelelőségi rendszergazda, Dynamics 365-rendszergazda, asztali elemzési rendszergazda, Exchange-rendszergazda, jelszó-rendszergazda, Intune-rendszergazda, Skype vállalati rendszergazda, Power BI rendszergazda, privilegizált hitelesítő rendszergazda, SharePoint-rendszergazda, csapat kommunikációs rendszergazda, csapat rendszergazdája, felhasználói rendszergazda, munkahelyi elemzési rendszergazda
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure AD-rendszergazdai szerepkörök kiosztása vagy eltávolítása](manage-roles-portal.md)
 * [Az Azure AD rendszergazdai szerepköreinek referenciája](permissions-reference.md)

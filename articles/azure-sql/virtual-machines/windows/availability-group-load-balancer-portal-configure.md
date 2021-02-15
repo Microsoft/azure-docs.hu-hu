@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359387"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096429"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Terheléselosztó konfigurálása SQL Server always on rendelkezésre állási csoporthoz az Azure-ban Virtual Machines
 
@@ -76,12 +76,12 @@ Először hozza létre a Load balancert.
    | **Virtuális hálózat** |Válassza ki azt a virtuális hálózatot, amelyre a SQL Server példányok tartoznak. |
    | **Alhálózat** |Válassza ki azt az alhálózatot, amelyhez a SQL Server példányok tartoznak. |
    | **IP-cím hozzárendelése** |**Statikus** |
-   | **Magánhálózati IP-cím** |Válasszon ki egy elérhető IP-címet az alhálózatból. Akkor használja ezt az IP-címet, ha egy figyelőt hoz létre a fürtön. A jelen cikk későbbi részében található PowerShell-szkriptben használja ezt a címeket a `$ILBIP` változóhoz. |
+   | **Magánhálózati IP-cím** |Válasszon ki egy elérhető IP-címet az alhálózatból. Akkor használja ezt az IP-címet, ha egy figyelőt hoz létre a fürtön. A jelen cikk későbbi részében található PowerShell-szkriptben használja ezt a címeket a `$ListenerILBIP` változóhoz. |
    | **Előfizetés** |Ha több előfizetéssel rendelkezik, ez a mező jelenhet meg. Válassza ki azt az előfizetést, amelyet hozzá szeretne rendelni ehhez az erőforráshoz. Általában ugyanazt az előfizetést, mint a rendelkezésre állási csoport összes erőforrását. |
    | **Erőforráscsoport** |Válassza ki azt az erőforráscsoportot, amelybe a SQL Server példányok tartoznak. |
    | **Hely** |Válassza ki azt az Azure-helyet, amelyen a SQL Server példányok szerepelnek. |
 
-6. Kattintson a **Létrehozás** gombra. 
+6. Válassza a **Létrehozás** lehetőséget. 
 
 Az Azure létrehozza a Load balancert. A terheléselosztó egy adott hálózathoz, alhálózathoz, erőforráscsoporthoz és helyhez tartozik. Miután az Azure befejezte a feladatot, ellenőrizze a terheléselosztó beállításait az Azure-ban. 
 
@@ -258,7 +258,7 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
     |**Háttérport** |Használja ugyanazt az értéket, mint a **port**.
     |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
     |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
-    |**Munkamenet-állandóság** |Nincsenek
+    |**Munkamenet-állandóság** |Nincs
     |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
     |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -307,7 +307,7 @@ Ha egy rendelkezésre állási csoport részt vesz egy elosztott rendelkezésre 
    |**Háttérport** | 5022 – ugyanazt az értéket használja, mint a **port**.
    |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
    |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenet-állandóság** |Nincsenek
+   |**Munkamenet-állandóság** |Nincs
    |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
    |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 

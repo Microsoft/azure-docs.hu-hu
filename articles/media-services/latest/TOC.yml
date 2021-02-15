@@ -13,6 +13,8 @@
   items:
     - name: Saját környezet beállítása
       items:
+        - name: A bérlő AZONOSÍTÓjának megkeresése
+          href: how-to-set-azure-tenant.md
         - name: Saját Azure-előfizetés megkeresése
           href: how-to-set-azure-subscription.md
         - name: Media Services-fiók létrehozása
@@ -70,6 +72,8 @@
           displayName: 'AAD, Active Directory'
     - name: REST
       items:
+        - name: Megbízható tár engedélyezése
+          href: tutorial-trusted-storage-rest.md
         - name: Egy távoli fájl kódolása és streamelése REST használatával
           href: stream-files-tutorial-with-rest.md
         - name: Felhasználó által kezelt kulcsok REST API-val
@@ -305,6 +309,12 @@
           displayName: 'migration, samples'
 - name: Útmutatók
   items:
+    - name: Bérlő és előfizetés keresése
+      items:
+        - name: A bérlő AZONOSÍTÓjának megkeresése
+          href: how-to-set-azure-tenant.md
+        - name: Előfizetés AZONOSÍTÓjának megkeresése
+          href: how-to-set-azure-subscription.md
     - name: Adategységek létrehozása és adathordozók feltöltése
       items:
         - name: Adategység létrehozása

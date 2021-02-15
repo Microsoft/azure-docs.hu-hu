@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e1a9f5d08168841d7651a17e2de4995b7a7cf38b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7c8a7eb06490a46e1c5b633944dcd596fa08515
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820721"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093624"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -35,25 +35,31 @@ A Key Vault virtuálisgép-bővítményt olyan egyéni helyi virtuális gépen i
 - PKCS #12
 - PEM
 
-## <a name="prerequisities"></a>Prerequisities
+## <a name="prerequisites"></a>Előfeltételek
+
   - Key Vault példány tanúsítvánnyal. Lásd: [Key Vault létrehozása](../../key-vault/general/quick-create-portal.md)
   - A virtuális gépnek hozzárendelt [felügyelt identitással](../../active-directory/managed-identities-azure-resources/overview.md) kell rendelkeznie
   - Az Key Vault hozzáférési szabályzatot titkos kulcsokkal `get` és engedélyekkel kell beállítani a `list` virtuális gép/VMSS által felügyelt identitáshoz, hogy beolvassák a tanúsítvány egy részét. Tekintse meg, [Hogyan hitelesítheti Key Vault](../../key-vault/general/authentication.md) és [hozzárendelhet egy Key Vault hozzáférési szabályzatot](../../key-vault/general/assign-access-policy-cli.md).
-  -  A VMSS a következő identitás-beállítással kell rendelkeznie: ` 
+  -  Virtual Machine Scale Sets a következő identitás-beállítással kell rendelkeznie:
+
+  ``` 
   "identity": {
-  "type": "UserAssigned",
-  "userAssignedIdentities": {
-  "[parameters('userAssignedIdentityResourceId')]": {}
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[parameters('userAssignedIdentityResourceId')]": {}
+    }
   }
-  }
-  `
+  ```
   
-- A AKV-bővítménynek a következő beállítással kell rendelkeznie: `
-                  "authenticationSettings": {
-                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
-                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
-                  }
-   `
+  - A AKV-bővítménynek a következő beállítással kell rendelkeznie:
+
+  ```
+  "authenticationSettings": {
+    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+  }
+  ```
+
 ## <a name="extension-schema"></a>Bővítményséma
 
 A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti meg. A bővítmény nem igényel védett beállításokat – az összes beállítás nyilvános információnak minősül. A bővítményhez meg kell adni a figyelt tanúsítványok listáját, a lekérdezés gyakoriságát és a célhely tanúsítványtárolóját. Ezek konkrétan a következők:  
@@ -164,7 +170,9 @@ A beállítás bekapcsolásához állítsa be a következőt:
     ...
 }
 ```
-> Megjegyzés A szolgáltatás használata nem kompatibilis egy ARM-sablonnal, amely létrehoz egy rendszerhez rendelt identitást, és frissíti az adott identitással rendelkező Key Vault hozzáférési szabályzatot. Ha így tesz, a rendszer holtpontot eredményez, mivel a tár hozzáférési szabályzata nem frissíthető, amíg az összes bővítmény el nem indul. Ehelyett az üzembe helyezés előtt *egyetlen felhasználó által hozzárendelt MSI-identitást* kell használnia, és a tárolókat előzetesen ACL-ként kell megadnia az identitáshoz.
+
+> [!Note] 
+> A szolgáltatás használata nem kompatibilis egy ARM-sablonnal, amely létrehoz egy rendszerhez rendelt identitást, és frissíti az adott identitással rendelkező Key Vault hozzáférési szabályzatot. Ha így tesz, a rendszer holtpontot eredményez, mivel a tár hozzáférési szabályzata nem frissíthető, amíg az összes bővítmény el nem indul. Ehelyett az üzembe helyezés előtt *egyetlen felhasználó által hozzárendelt MSI-identitást* kell használnia, és a tárolókat előzetesen ACL-ként kell megadnia az identitáshoz.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell üzemelő példány
 > [!WARNING]
@@ -222,9 +230,9 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
     
     ```azurecli
        # Start the deployment
-         az vm extension set --name "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -233,9 +241,9 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
 
    ```azurecli
         # Start the deployment
-        az vmss extension set --name "KeyVaultForWindows" `
+        az vmss extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         --resource-group "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```

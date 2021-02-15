@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 09/10/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ef2e79f8c8e7964d04db0dd1a3f9988599fcb130
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370338"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094117"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>A saját fiók portálon elérhető szervezetek kezelése
 
@@ -30,21 +30,26 @@ A **saját fiók** portál **szervezetek** lapján kezelheti a szervezeteket (á
 - **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
 >[!Important]
->Ez a cikk azoknak a felhasználóknak készült, akik a munkahelyi vagy iskolai fiókhoz hozzáférő szervezeti adatokat szeretnék frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](../enterprise-users/index.yml).
+>Ez a cikk azoknak a felhasználóknak készült, akik a munkahelyi vagy iskolai fiókhoz hozzáférő szervezeti adatokat szeretnék frissíteni. Ha a személyes Microsoft-fiók való bejelentkezéskor hibaüzenet jelenik meg, akkor is bejelentkezhet a szervezet tartományneve (például contoso.com) vagy a szervezete **bérlői azonosítójának** használatával a következő URL-címek egyikében:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](../enterprise-users/index.yml).
 
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** ( https://myaccount.microsoft.com/) oldal) lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** ( https://myaccount.microsoft.com/) oldal) lapot. 
 
-2. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, **vagy a szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
+1. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, **vagy a szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
 
     ![Saját fiók lap, amely a Kiemelt szervezetek hivatkozásait mutatja](media/my-account-portal/my-account-portal-organizations.png)
 
-3. Tekintse át a saját **szervezete**adatait.
+1. Tekintse át a saját **szervezete** adatait.
 
     ![Szervezetek lap](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Tekintse át a többi szervezetet, és győződjön meg arról, hogy ismeri fel az összes olyan szervezetet, amelyhez hozzáfér.
+1. Tekintse át a többi szervezetet, és győződjön meg arról, hogy ismeri fel az összes olyan szervezetet, amelyhez hozzáfér.
 
 ## <a name="leave-an-organization"></a>Szervezet elhagyása
 
