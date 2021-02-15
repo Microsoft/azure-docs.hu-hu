@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82b72567a0db4dc9dbff9128402d0ee9f40f3512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880033"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094151"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -116,6 +116,9 @@ Ha szükséges, kövesse az alábbi lépéseket az előfizetés konfigurálásá
 
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Képernyőfelvétel: Azure hatáskörébe tartozó fiók példányának létrehozása a Azure Portal.":::
 
+    > [!Note] 
+    > Az Azure-beli hatáskörébe nem támogatott a fiók áthelyezése a régiók között. Erről az [Azure által támogatott szolgáltatások oldalon](https://docs.microsoft.com/azure/azure-resource-manager/management/region-move-support)talál további információt.
+
 1. Az **alapok** lapon tegye a következőket:
     1. Válasszon ki egy **erőforráscsoportot**.
     1. Adja meg a katalógushoz a **hatáskörébe tartozó fiók nevét** . Szóközök és szimbólumok használata nem engedélyezett.
@@ -171,7 +174,7 @@ Ha már nincs szüksége erre az Azure-beli hatáskörébe fiókra, törölje a 
 
 2. Válassza ki a rövid útmutató elején létrehozott Azure-beli hatáskörébe tartozó fiókot. Válassza a **Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
 

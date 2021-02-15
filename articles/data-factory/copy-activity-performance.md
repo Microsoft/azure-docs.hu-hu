@@ -1,25 +1,20 @@
 ---
-title: Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató
+title: Útmutató a másolási tevékenységek teljesítményéhez és skálázhatóságához
 description: Ismerje meg azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés teljesítményére Azure Data Factory a másolási tevékenység használatakor.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: a6e89883ec0e1e493bad9572876af86f4a0d3853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324437"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387665"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>Másolási tevékenység teljesítményére és méretezhetőségére vonatkozó útmutató
+# <a name="copy-activity-performance-and-scalability-guide"></a>Útmutató a másolási tevékenységek teljesítményéhez és skálázhatóságához
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Azure Data Factory verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-activity-performance.md)
@@ -149,7 +144,7 @@ Azure Data Factory a következő teljesítmény-optimalizálási funkciókat biz
 
 ### <a name="data-integration-units"></a>Adatintegrációs egységek
 
-Az adatintegrációs egységek (DIU-EK) egy mérték, amely a Azure Data Factory egyetlen egységének erejét jelöli. A Power a CPU, a memória és a hálózati erőforrások kiosztásának kombinációja. A DIU csak az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)verzióra vonatkozik. A DIU nem vonatkozik a [saját üzemeltetésű integrációs](concepts-integration-runtime.md#self-hosted-integration-runtime)modulra. [További információ itt](copy-activity-performance-features.md#data-integration-units).
+Az adatintegrációs egységek (DIU-EK) egy mérték, amely a Azure Data Factory egyetlen egységének erejét jelöli. A Power a CPU, a memória és a hálózati erőforrások kiosztásának kombinációja. A DIU csak az [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)verzióra vonatkozik. A DIU nem vonatkozik a [saját üzemeltetésű integrációs](concepts-integration-runtime.md#self-hosted-integration-runtime)modulra. [További információt itt talál](copy-activity-performance-features.md#data-integration-units).
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>Saját üzemeltetésű Integration Runtime skálázhatósága
 
@@ -166,17 +161,17 @@ További információkért lásd:
 
 ### <a name="parallel-copy"></a>Párhuzamos másolás
 
-Megadhatja a `parallelCopies` tulajdonságot, hogy jelezze a másolási tevékenység által használni kívánt párhuzamosságot. Ezt a tulajdonságot úgy gondolja, mint a másolási tevékenységben lévő szálak maximális száma. A szálak párhuzamosan működnek. A szálak vagy a forrásból beolvasott adatok, vagy a fogadó adattárakba való írás. [További információk](copy-activity-performance-features.md#parallel-copy).
+Megadhatja a `parallelCopies` tulajdonságot, hogy jelezze a másolási tevékenység által használni kívánt párhuzamosságot. Ezt a tulajdonságot úgy gondolja, mint a másolási tevékenységben lévő szálak maximális száma. A szálak párhuzamosan működnek. A szálak vagy a forrásból beolvasott adatok, vagy a fogadó adattárakba való írás. [További információ](copy-activity-performance-features.md#parallel-copy).
 
 ### <a name="staged-copy"></a>Előkészített másolás
 
-Az adatmásolási művelet _közvetlenül_ a fogadó adattárba küldheti az adattárolási műveletet. Azt is megteheti, hogy a blob Storage-t _átmeneti átmeneti_ tárolóként használja. [További információk](copy-activity-performance-features.md#staged-copy).
+Az adatmásolási művelet _közvetlenül_ a fogadó adattárba küldheti az adattárolási műveletet. Azt is megteheti, hogy a blob Storage-t _átmeneti átmeneti_ tárolóként használja. [További információ](copy-activity-performance-features.md#staged-copy).
 
 ## <a name="next-steps"></a>Következő lépések
 
 Lásd a másolási tevékenység egyéb cikkeit:
 
-* [Másolási tevékenység áttekintése](copy-activity-overview.md)
+* [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 * [A másolási tevékenység teljesítményével kapcsolatos hibák](copy-activity-performance-troubleshooting.md)
 * [Másolási tevékenység teljesítményének optimalizálási funkciói](copy-activity-performance-features.md)
 * [Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból](data-migration-guidance-overview.md)

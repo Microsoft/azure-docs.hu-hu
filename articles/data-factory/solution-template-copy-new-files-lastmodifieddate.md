@@ -1,22 +1,19 @@
 ---
 title: Új és módosított fájlok másolása a LastModifiedDate
 description: Megtudhatja, hogyan másolhat új és módosított fájlokat a LastModifiedDate és a Azure Data Factory használatával a megoldási sablonnal.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 94d09dc96d017dba3b16cc5fe113272a9393741d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000810"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362080"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory
 
@@ -105,6 +102,6 @@ A sablon hat paramétert definiál:
 
     ![Képernyőkép, amely megjeleníti a folyamat indításakor visszaadott eredményeket.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

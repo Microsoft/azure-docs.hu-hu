@@ -1,22 +1,18 @@
 ---
 title: Licencelt összetevők telepítése az Azure-SSIS Integration Runtime-hoz
 description: Ismerje meg, hogy az ISV hogyan fejleszthet és telepíthet fizetős vagy licencelt egyéni összetevőket az Azure-SSIS Integration Runtime számára
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd62822e111346ee9a81a5d1bcce55191b19da02
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187615"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386288"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Fizetős vagy licencelt egyéni összetevők telepítése az Azure-SSIS Integration Runtime-hoz
 
@@ -34,7 +30,7 @@ Az Azure-SSIS integrációs modul természete számos kihívást jelent, amelyek
 
 ## <a name="the-solution"></a>A megoldás
 
-Az előző szakaszban ismertetett hagyományos licencelési módszerek korlátai miatt a Azure-SSIS IR új megoldást biztosít. Ez a megoldás a Windows környezeti változóit és SSIS rendszerváltozókat használ a licencek kötéséhez és a külső összetevők érvényesítéséhez. A független szoftvergyártók ezeket a változókat használhatják egy Azure-SSIS IR egyedi és állandó információinak beszerzésére, például a fürt AZONOSÍTÓjának és a fürtcsomópontok számának megadására. Ezzel az információval a független szoftvergyártók az összetevőhöz tartozó licencet a *fürthöz*tartozó Azure-SSIS IRhoz kötik. Ez a kötés olyan azonosítót használ, amely nem változik az ügyfelek indításakor vagy leállításakor, vertikális fel-vagy leskálázással, méretezéssel vagy kicsinyítéssel, vagy a Azure-SSIS IR bármely módon történő újrakonfigurálásával.
+Az előző szakaszban ismertetett hagyományos licencelési módszerek korlátai miatt a Azure-SSIS IR új megoldást biztosít. Ez a megoldás a Windows környezeti változóit és SSIS rendszerváltozókat használ a licencek kötéséhez és a külső összetevők érvényesítéséhez. A független szoftvergyártók ezeket a változókat használhatják egy Azure-SSIS IR egyedi és állandó információinak beszerzésére, például a fürt AZONOSÍTÓjának és a fürtcsomópontok számának megadására. Ezzel az információval a független szoftvergyártók az összetevőhöz tartozó licencet a *fürthöz* tartozó Azure-SSIS IRhoz kötik. Ez a kötés olyan azonosítót használ, amely nem változik az ügyfelek indításakor vagy leállításakor, vertikális fel-vagy leskálázással, méretezéssel vagy kicsinyítéssel, vagy a Azure-SSIS IR bármely módon történő újrakonfigurálásával.
 
 Az alábbi ábrán az új változókat használó, harmadik féltől származó összetevőkre jellemző telepítési, aktiválási és licenc-kötési és érvényesítési folyamatok láthatók:
 
@@ -79,7 +75,7 @@ Az alábbi ábrán az új változókat használó, harmadik féltől származó 
 
 Megtalálhatja azon ISV-partnerek listáját, akik kiigazították az összetevők és a bővítmények a Azure-SSIS IR a blogbejegyzés végén, az [egyéni beállítás és a harmadik féltől származó BŐVÍTHETŐSÉG SSIS az ADF-ben](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Az Azure-SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md)
 

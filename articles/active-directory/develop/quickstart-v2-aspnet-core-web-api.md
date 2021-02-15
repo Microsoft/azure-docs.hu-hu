@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: da53d6bad790e6b204fa2a2b045e7bfdd83e0cc9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754481"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102529"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Gyors útmutató: ASP.NET Core webes API-k védetté helyezése a Microsoft Identity platformmal
 
@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban letölt egy ASP.NET Core webes API-kód mintát, é
 >
 > Először regisztrálja a webes API-t az Azure AD-bérlőben, és adjon hozzá egy hatókört a következő lépésekkel:
 >
-> 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 > 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 > 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 > 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -98,7 +98,7 @@ A `AddAuthentication()` metódus konfigurálja a szolgáltatást JwtBearer-alap�
 
 A sort tartalmazó vonal `.AddMicrosoftIdentityWebApi` hozzáadja a Microsoft Identity platform engedélyezését a webes API-hoz. Ezután úgy van konfigurálva, hogy érvényesítse a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |
@@ -158,7 +158,7 @@ namespace webapi.Controllers
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ASP.NET Core web API code minta részét képező GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek bemutatják a következőket:
 

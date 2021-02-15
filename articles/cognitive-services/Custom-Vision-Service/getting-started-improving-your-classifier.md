@@ -1,28 +1,28 @@
 ---
-title: Az osztályozó javítása – Custom Vision Service
+title: A modell javítása – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Ebből a cikkből megtudhatja, hogy az adatmennyiség, a minőség és a különböző mennyiség hogyan javíthatja az osztályozó minőségét a Custom Vision szolgáltatásban.
+description: Ebből a cikkből megtudhatja, hogyan javíthatja a modell minőségét a Custom Vision szolgáltatásban, hogy az adatmennyiség, a minőség és a különböző adatmennyiség milyen minőségű lehet.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328bfe57c675d49aa951388e2808fcecfe8da8b5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271358"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096531"
 ---
-# <a name="how-to-improve-your-classifier"></a>Az osztályozó javítása
+# <a name="how-to-improve-your-custom-vision-model"></a>A Custom Vision-modell javítása
 
-Ebből az útmutatóból megtudhatja, hogyan javíthatja Custom Vision Service osztályozó minőségét. Az osztályozó minősége a megadott címkével ellátott adatok mennyiségétől, minőségétől és számától függ, és hogy mennyire kiegyensúlyozott a teljes adatkészlet. A megfelelő osztályozó kiegyensúlyozott betanítási adatkészlettel rendelkezik, amely az osztályozó által elküldött adatokat reprezentálja. Az ilyen osztályozók létrehozásának folyamata iterációs jellegű. gyakori, hogy eltarthat néhány kört a képzéstől a várt eredmények eléréséhez.
+Ebből az útmutatóból megtudhatja, hogyan javíthatja a Custom Vision Service modell minőségét. Az [osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vagy az [objektum-Kiderítő](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector) minősége függ az Ön által megadott címkézett adatok mennyiségétől, minőségétől és számától, valamint a teljes adatkészlet arányos mennyiségével. A megfelelő modellnek van egy kiegyensúlyozott betanítási adatkészlete, amely arra szolgál, hogy mi lesz elküldve. Egy ilyen modell kiépítésének folyamata iterációs jellegű. gyakori, hogy eltarthat néhány kört a képzéstől a várt eredmények eléréséhez.
 
-A következőkben egy általános minta található, amely segít a pontosabb osztályozó létrehozásában:
+A következő általános minta a pontosabb modellek betanításához nyújt segítséget:
 
 1. Első köros képzés
 1. További lemezképek és egyenlegek hozzáadása; újratanítása
@@ -32,15 +32,15 @@ A következőkben egy általános minta található, amely segít a pontosabb os
 
 ## <a name="prevent-overfitting"></a>Túlilleszkedés megakadályozása
 
-Időnként az osztályozó megtudhatja, hogy az előrejelzések a képek által közösen használt sajátosságok alapján legyenek elérhetők. Ha például az alma és a Citrus számára hoz létre egy osztályozó, és az alma a kezében és a Citrus on fehér lemezeken is használta a képeket, az osztályozó az alma és a Citrus helyett aránytalanul nagy jelentőséget biztosíthat a kezek és a lemezek számára.
+Előfordulhat, hogy egy modell megtanulja, hogy az előrejelzéseket a rendszerképek közös jellemzői alapján hozza meg. Ha például az alma és a Citrus számára hoz létre egy osztályozó, és az alma a kezében és a Citrus on fehér lemezeken is használta a képeket, az osztályozó az alma és a Citrus helyett aránytalanul nagy jelentőséget biztosíthat a kezek és a lemezek számára.
 
 ![Nem várt besorolású rendszerkép](./media/getting-started-improving-your-classifier/unexpected.png)
 
-A probléma megoldásához kövesse az alábbi útmutatást a többváltozós képekkel való képzéshez: különböző nézőpontokkal, háttérrel, objektum méretével, csoportokkal és egyéb változatokkal rendelkező lemezképeket biztosíthat.
+A probléma megoldásához különböző nézőpontokkal, háttérrel, objektum mérettel, csoportokkal és egyéb változatokkal rendelkező képeket adjon meg. Az alábbi fejezetek ezen fogalmakra épülnek.
 
 ## <a name="data-quantity"></a>Adatmennyiség
 
-A betanítási lemezképek száma a legfontosabb tényező. Javasolt kiindulási pontként legalább 50 lemezképet használni címkén. Kevesebb képpel nagyobb a terhelés, és míg a teljesítménybeli számok jó minőségűek lehetnek, a modell valós adatokkal járhat. 
+A betanítási lemezképek száma az adatkészlet legfontosabb tényezője. Javasolt kiindulási pontként legalább 50 lemezképet használni címkén. Kevesebb képpel nagyobb a terhelés, és míg a teljesítménybeli számok jó minőségűek lehetnek, a modell valós adatokkal járhat. 
 
 ## <a name="data-balance"></a>Adategyensúly
 
@@ -48,11 +48,11 @@ Fontos figyelembe venni a betanítási adataihoz tartozó relatív mennyiségeke
 
 ## <a name="data-variety"></a>Adatválaszték
 
-Ügyeljen arra, hogy a normál használat során az osztályozó által beküldött képeket is használják. Ellenkező esetben az osztályozó megtudhatja, hogy az előrejelzések a képek által közösen használt sajátosságok alapján legyenek elérhetők. Ha például az alma és a Citrus számára hoz létre egy osztályozó, és az alma a kezében és a Citrus on fehér lemezeken is használta a képeket, az osztályozó az alma és a Citrus helyett aránytalanul nagy jelentőséget biztosíthat a kezek és a lemezek számára.
+Ügyeljen arra, hogy a normál használat során az osztályozó által beküldött képeket is használják. Ellenkező esetben a modell megtudhatja, hogy az előrejelzések a képek által közösen használt sajátosságok alapján legyenek elérhetők. Ha például az alma és a Citrus számára hoz létre egy osztályozó, és az alma a kezében és a Citrus on fehér lemezeken is használta a képeket, az osztályozó az alma és a Citrus helyett aránytalanul nagy jelentőséget biztosíthat a kezek és a lemezek számára.
 
 ![Nem várt besorolású rendszerkép](./media/getting-started-improving-your-classifier/unexpected.png)
 
-A probléma megoldásához több rendszerkép is használható, amelyek biztosítják, hogy az osztályozó is általánosítható legyen. Az alábbi módokon teheti meg, hogy a képzési lehetőségek sokrétűek legyenek:
+A probléma megoldásához számos lemezképet kell tartalmaznia, hogy a modell általánosítható legyen. Az alábbi módokon teheti meg, hogy a képzési lehetőségek sokrétűek legyenek:
 
 * __Háttér:__ A különböző hátterek előtt adja meg az objektum képeit. A természetes környezetekben található fényképek jobbak, mint a semleges hátterű fényképek, mivel további információkat biztosítanak az osztályozó számára.
 
@@ -74,30 +74,39 @@ A probléma megoldásához több rendszerkép is használható, amelyek biztosí
 
     ![Stílusú minták képe](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>Negatív képek
+## <a name="negative-images-classifiers-only"></a>Negatív képek (csak osztályozók)
 
-Előfordulhat, hogy a projekt egy bizonyos pontján _negatív mintákat_ kell hozzáadnia, hogy az osztályozó pontosabb legyen. A negatív minták olyanok, amelyek nem egyeznek a többi címkével. Ha feltölti ezeket a képeket, alkalmazza rájuk a speciális **negatív** címkét.
+Képosztályozó használata esetén előfordulhat, hogy _negatív mintákat_ kell hozzáadnia, hogy az osztályozó pontosabb legyen. A negatív minták olyan képek, amelyek nem egyeznek a többi címkével. Ha feltölti ezeket a képeket, alkalmazza rájuk a speciális **negatív** címkét.
+
+Az objektum-érzékelők automatikusan kezelik a negatív mintákat, mert a rajzolt határoló mezőkön kívüli bármely képterület negatívnak minősül.
 
 > [!NOTE]
 > A Custom Vision Service támogatja a negatív rendszerképek automatikus kezelését. Ha például a szőlő és a banán besorolását készíti elő, és a cipőt az előrejelzéshez beküldi, akkor az osztályozó az adott képet a szőlő és a banán esetében is a 0%-os értékkel közelíti meg.
 > 
 > Ha azonban a negatív rendszerképek csak a betanítás során használt rendszerképek variációi, akkor valószínű, hogy a modell a nagy hasonlóságok miatt a negatív képeket címkézett osztályként fogja osztályozni. Ha például egy narancssárga és a grapefruit besorolással rendelkezik, és egy clementine-képet is megadsz, akkor a clementine narancssárgaként jelenhet meg, mivel a clementine számos funkciója hasonlít a narancssárga értékekre. Ha a negatív képek ilyen jellegűek, javasoljuk, hogy hozzon létre egy vagy több további címkét (például a **többiet**), és címkézze a negatív képeket ezzel a címkével a képzés során, hogy a modell jobban megkülönböztetse ezeket az osztályokat.
 
+## <a name="consider-occlusion-and-truncation-object-detectors-only"></a>Az elzáródás és a csonkítás megvizsgálása (csak az objektum-felismerők esetében)
+
+Ha azt szeretné, hogy az objektum detektora felderítse a csonkolt objektumokat (az objektum részben kikerül a lemezképből) vagy a bezárt objektumokat (az objektumot részben blokkolja a rendszerkép egy másik objektuma), akkor az ilyen eseteket lefedő betanítási lemezképeket is meg kell adnia.
+
+> [!NOTE]
+> A más objektumok által letiltott objektumok problémája nem tévesztendő össze az **átfedési küszöbértékkel**, a minősítési modell teljesítményének paraméterével. A [Custom Vision webhely](https://customvision.ai) **átfedéses küszöbértékének** csúszkája azt mutatja, hogy Mennyibe kerül egy előre jelzett határolókeret átfedése a True határolókeret használatával, hogy helyesnek lehessen tekinteni.
+
 ## <a name="use-prediction-images-for-further-training"></a>Előrejelzési lemezképek használata a további képzéshez
 
-Ha a lemezképet az előrejelzési végpontra küldi el, vagy a rendszerkép besorolását használja, akkor a Custom Vision szolgáltatás tárolja ezeket a lemezképeket. Ezután a modell fejlesztéséhez használhatja őket.
+A modell használatakor vagy tesztelésekor a lemezképeket az előrejelzési végpontba küldi el, a Custom Vision szolgáltatás tárolja ezeket a lemezképeket. Ezután a modell fejlesztéséhez használhatja őket.
 
-1. Az osztályozó által küldött képek megtekintéséhez nyissa meg a [Custom Vision weblapot](https://customvision.ai), lépjen a projektbe, és válassza a __jóslatok__ fület. Az alapértelmezett nézet az aktuális iteráció képeit jeleníti meg. A korábbi iterációk során elküldött képek megtekintéséhez használhatja az __iteráció__ legördülő menüt.
+1. Ha meg szeretné tekinteni a modellnek küldött képeket, nyissa meg a [Custom Vision weblapot](https://customvision.ai), lépjen a projektbe, és válassza a __jóslatok__ fület. Az alapértelmezett nézet az aktuális iteráció képeit jeleníti meg. A korábbi iterációk során elküldött képek megtekintéséhez használhatja az __iteráció__ legördülő menüt.
 
     ![képernyőkép a jóslatok lapról a képek nézetben](./media/getting-started-improving-your-classifier/predictions.png)
 
-2. Vigye az egérmutatót egy képre az osztályozó által előre jelzett címkék megtekintéséhez. A képek rendezése úgy történik, hogy azok, amelyek az osztályozó legtöbb tökéletesítését lehetővé teszik, megjelennek a tetején. Ha másik rendezési módszert szeretne használni, válasszon ki egy kijelölést a __Rendezés__ szakaszban. 
+2. Vigye az egérmutatót egy képre a modell által előre jelzett címkék megtekintéséhez. A képek rendezése úgy történik, hogy azok, amelyek a modell legtöbb tökéletesítését lehetővé teszik, megjelennek a tetején. Ha másik rendezési módszert szeretne használni, válasszon ki egy kijelölést a __Rendezés__ szakaszban. 
 
-    Ha képet szeretne adni a meglévő betanítási adatokhoz, válassza ki a képet, állítsa be a megfelelő címkét, majd kattintson a __Mentés és bezárás__gombra. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja a betanítási lemezképek készletéhez. A __betanítási képek__ lapon tekintheti meg.
+    Ha képet szeretne adni a meglévő betanítási adatokhoz, válassza ki a képet, állítsa be a megfelelő címkét, majd kattintson a __Mentés és bezárás__ gombra. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja a betanítási lemezképek készletéhez. A __betanítási képek__ lapon tekintheti meg.
 
     ![A címkézési lap képe](./media/getting-started-improving-your-classifier/tag.png)
 
-3. Ezután a __vonat__ gomb használatával Újrataníthatja az osztályozó.
+3. Ezután a __vonat__ gomb használatával végezze el a modell újratanítását.
 
 ## <a name="visually-inspect-predictions"></a>Előrejelzések vizuális vizsgálata
 
@@ -109,7 +118,7 @@ Előfordulhat, hogy a vizuális vizsgálat olyan mintákat azonosít, amelyeket 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az útmutatóban számos technikát tanult meg az egyéni képbesorolási modell pontosabb elvégzéséhez. Következő lépésként megtudhatja, hogyan tesztelheti a képeket programozott módon az előrejelzési API-ba való küldéssel.
+Ebben az útmutatóban számos technikát tanult meg, hogy az egyéni képbesorolási modell vagy az objektum-érzékelő modellje pontosabb legyen. Következő lépésként megtudhatja, hogyan tesztelheti a képeket programozott módon az előrejelzési API-ba való küldéssel.
 
 > [!div class="nextstepaction"]
 > [Előrejelzési API használata](use-prediction-api.md)

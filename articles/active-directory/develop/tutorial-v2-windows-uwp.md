@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584331"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102648"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
 
@@ -345,7 +345,7 @@ private async Task DisplayMessageAsync(string message)
 
 Most regisztrálja az alkalmazást:
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -356,8 +356,8 @@ Most regisztrálja az alkalmazást:
 
 Az alkalmazás hitelesítésének konfigurálása:
 
-1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>a **kezelés** területen válassza a **hitelesítés**  >  **a platform hozzáadása** lehetőséget, majd válassza a **mobil-és asztali alkalmazások** lehetőséget.
-1. Az **átirányítási URI** -k szakaszban keresse meg a t **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>a **kezelés** területen válassza a **hitelesítés**  >  **a platform hozzáadása** lehetőséget, majd válassza a **mobil-és asztali alkalmazások** lehetőséget.
+1. Az **átirányítási URI** -k szakaszban adja meg a értéket `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 1. Válassza a **Konfigurálás** lehetőséget.
 
 API-engedélyek konfigurálása az alkalmazáshoz:

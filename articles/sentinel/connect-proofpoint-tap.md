@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: df4292a40335e58c64b8ebc50ffb6ac1ceee8836
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86018bafaa42eac01e5dccf8da1d290b64e2475c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87059897"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092978"
 ---
 # <a name="connect-your-proofpoint-tap-to-azure-sentinel-with-azure-function"></a>A Proofpoint KOPPINTson az Azure Sentinelre az Azure-függvény használatával
 
 > [!IMPORTANT]
 > A Proofpoint TAP adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
-> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A Proofpoint Targeted Attack Protection (KOPPINTÁS) összekötővel könnyedén csatlakoztathatja az összes [Proofpoint](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) a biztonsági megoldások naplóihoz az Azure Sentinel használatával, az irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához. A Proofpoint TAP és az Azure Sentinel közötti integráció a Azure Functions használatával kéri le a naplózási adataikat a REST API használatával.
 
@@ -50,7 +50,7 @@ A sikeres kapcsolatok létrejötte után az adat a **ProofpointTAPMessagesBlocke
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a Proofpoint az Azure Sentinelhez az Azure Function Apps használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

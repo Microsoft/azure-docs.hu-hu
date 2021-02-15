@@ -2,19 +2,16 @@
 title: Az ork formátuma Azure Data Factory
 description: Ez a témakör azt ismerteti, hogyan kezelhető az ork formátum a Azure Data Factoryban.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 8973692b90cc9d6caa852616bf2962371d25abfa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945787"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386458"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Az ork formátuma Azure Data Factory
 
@@ -30,9 +27,9 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| típus             | Az adatkészlet Type tulajdonságát az **ork**értékre kell beállítani. | Igen      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
-| compressionCodec         | Az ork-fájlokra való íráskor használandó tömörítési kodek. Az ork-fájlokból való olvasáskor az adat-előállítók automatikusan meghatározzák a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: **none**, **zlib**, **Snappy** (alapértelmezett) és **LZO**. Megjegyzés: a másolási tevékenység jelenleg nem támogatja a LZO az ork-fájlok olvasásakor/írásakor. | Nem      |
+| típus             | Az adatkészlet Type tulajdonságát az **ork** értékre kell beállítani. | Yes      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Yes      |
+| compressionCodec         | Az ork-fájlokra való íráskor használandó tömörítési kodek. Az ork-fájlokból való olvasáskor az adat-előállítók automatikusan meghatározzák a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: **none**, **zlib**, **Snappy** (alapértelmezett) és **LZO**. Megjegyzés: a másolási tevékenység jelenleg nem támogatja a LZO az ork-fájlok olvasásakor/írásakor. | No      |
 
 Alább látható egy példa az Azure Blob Storage-beli ork-adatkészletre:
 
@@ -68,30 +65,30 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="orc-as-source"></a>ORK forrásként
 
-A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulajdonságok támogatottak.
+A másolási tevékenység ***\* forrása \**** szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység forrásának Type tulajdonságát **OrcSource**értékre kell állítani. | Igen      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **OrcSource** értékre kell állítani. | Yes      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
 
 ### <a name="orc-as-sink"></a>ORK mint fogadó
 
-A másolási *** \* \* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
+A másolási ***\* \* tevékenység*** fogadója szakaszban a következő tulajdonságok támogatottak.
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység fogadójának Type tulajdonságát **OrcSink**értékre kell állítani. | Igen      |
-| formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi, az **ork írási beállítások** táblázatát. |    Nem      |
-| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
+| típus          | A másolási tevékenység fogadójának Type tulajdonságát **OrcSink** értékre kell állítani. | Yes      |
+| formatSettings | Tulajdonságok csoportja. Tekintse meg az alábbi, az **ork írási beállítások** táblázatát. |    No      |
+| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
 
 Támogatott **ork írási beállítások** a alatt `formatSettings` :
 
 | Tulajdonság      | Leírás                                                  | Kötelező                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| típus          | A formatSettings típusát **OrcWriteSettings**értékre kell beállítani. | Igen                                                   |
-| maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | Nem |
-| fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | Nem |
+| típus          | A formatSettings típusát **OrcWriteSettings** értékre kell beállítani. | Yes                                                   |
+| maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | No |
+| fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | No |
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 
@@ -113,7 +110,7 @@ A beágyazott adatkészletek használatakor további beállításokat fog látni
 | Fájlok listája | Azt jelzi, hogy a forrás egy szövegfájlra mutat-e, amely a feldolgozandó fájlokat listázza | nem | `true` vagy `false` | fileList |
 | A fájl nevét tároló oszlop | Új oszlop létrehozása a forrásfájl nevével és elérési útjával | nem | Sztring | rowUrlColumn |
 | Befejezés után | A fájlok törlése vagy áthelyezése a feldolgozás után. A fájl elérési útja a tároló gyökeréből indul el | nem | Törlés: `true` vagy `false` <br> Áthelyezése `[<from>, <to>]` | purgeFiles <br> moveFiles |
-| Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Timestamp | modifiedAfter <br> modifiedBefore |
+| Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Időbélyeg | modifiedAfter <br> modifiedBefore |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Forrás példa
@@ -163,7 +160,7 @@ A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializál
 
 - A **JRE használatához**: a 64 bites IR használatához 64 bites JRE szükséges. [Itt](https://go.microsoft.com/fwlink/?LinkId=808605)találhatja meg.
 - **A OpenJDK használata**: az IR 3,13-es verzió óta támogatott. Csomagolja ki a jvm.dllt a OpenJDK összes többi szükséges szerelvényével a saját üzemeltetésű IR-gépre, és ennek megfelelően állítsa be a rendszerkörnyezeti változót JAVA_HOME.
-- **Visual c++ 2010 Újraterjeszthető csomag telepítése: a**visual c++ 2010 Újraterjeszthető csomag nincs telepítve a saját üzemeltetésű IR-telepítésekkel. [Itt](https://www.microsoft.com/download/details.aspx?id=14632)találhatja meg.
+- **Visual c++ 2010 Újraterjeszthető csomag telepítése: a** visual c++ 2010 Újraterjeszthető csomag nincs telepítve a saját üzemeltetésű IR-telepítésekkel. [Itt](https://www.microsoft.com/download/details.aspx?id=14632)találhatja meg.
 
 > [!TIP]
 > Ha az Adatmásolást az ork formátumba vagy a saját üzemeltetésű Integration Runtime használatával másolja, és a "hiba történt a Java meghívásakor, üzenet: **Java. lang. működése OutOfMemoryError: Java heap Space**" hibaüzenetet, akkor hozzáadhat egy környezeti változót a saját üzemeltetésű integrációs `_JAVA_OPTIONS` modult futtató gépen, amely a JVM minimális/maximális méretének módosítását teszi lehetővé az adott példány számára
@@ -172,8 +169,8 @@ A saját üzemeltetésű IR-ben az ork-fájl szerializálásával/deszerializál
 
 Példa: állítsa be `_JAVA_OPTIONS` a változót értékkel `-Xms256m -Xmx16g` . A jelző `Xms` meghatározza a Java virtuális gép (JVM) kezdeti memória-kiosztási készletét, míg `Xmx` a maximális memória-kiosztási készletet adja meg. Ez azt jelenti, hogy a JVM a memóriával fog elindulni, `Xms` és a memória maximális mennyiségét fogja tudni használni `Xmx` . Alapértelmezés szerint az ADF minimális 64 MB és Max 1G értéket használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 - [GetMetadata tevékenység](control-flow-get-metadata-activity.md)

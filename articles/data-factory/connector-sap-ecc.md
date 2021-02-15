@@ -1,22 +1,18 @@
 ---
 title: Adatok másolása az SAP ECC-ból
 description: Megtudhatja, hogyan másolhat adatokat az SAP ECC-ból egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/28/2020
-ms.openlocfilehash: 1f3ab61c6030c2871356f494db228711305e5466
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a3e701f3d433b5b52d8992035ac4ad75b78cb795
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901591"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386696"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +46,7 @@ Ez az SAP ECC-összekötő a következőket támogatja:
 Az 7,0-es vagy újabb verzió az SAP NetWeaver verziójára hivatkozik, az SAP ECC verziója helyett. Például az SAP ECC 6,0 EHP Hotels 7 általánosan a NetWeaver verziója >= 7,4. Ha nem biztos a környezetében, a következő lépésekkel ellenőrizheti a verziót az SAP-rendszerből:
 
 1. Az SAP-rendszerhez való kapcsolódáshoz használja az SAP GUI-t. 
-2. Nyissa **meg a**  ->  **rendszerállapotot** . 
+2. Nyissa **meg a**  ->  **rendszerállapotot**. 
 3. Ellenőrizze a SAP_BASIS kiadását, és győződjön meg arról, hogy a mérete egyenlő vagy nagyobb, mint 701.  
       ![SAP_BASIS keresése](./media/connector-sap-table/sap-basis.png)
 
@@ -61,9 +57,9 @@ Az 7,0-es vagy újabb verzió az SAP NetWeaver verziójára hivatkozik, az SAP E
 
 Az SAP ECC-összekötő használatához az SAP ECC-entitásokat a OData Services szolgáltatáson keresztül kell kitenni az SAP Gateway használatával. Pontosabban:
 
-- **Állítsa be az SAP Gatewayt** . Az SAP NetWeaver 7,4-nál újabb verzióval rendelkező kiszolgálók esetében az SAP Gateway már telepítve van. A korábbi verziók esetében telepítenie kell a beágyazott SAP-átjárót vagy az SAP Gateway hub-rendszerét, mielőtt az SAP ECC-adatok OData-szolgáltatásokon keresztül elérhetővé tehetők. Az SAP Gateway beállításához tekintse meg a [telepítési útmutatót](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
+- **Állítsa be az SAP Gatewayt**. Az SAP NetWeaver 7,4-nál újabb verzióval rendelkező kiszolgálók esetében az SAP Gateway már telepítve van. A korábbi verziók esetében telepítenie kell a beágyazott SAP-átjárót vagy az SAP Gateway hub-rendszerét, mielőtt az SAP ECC-adatok OData-szolgáltatásokon keresztül elérhetővé tehetők. Az SAP Gateway beállításához tekintse meg a [telepítési útmutatót](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **Aktiválja és konfigurálja az SAP OData szolgáltatást** . A OData szolgáltatást másodpercek alatt aktiválhatja a TCODE SICF használatával. Azt is beállíthatja, hogy mely objektumokat kell elérhetővé tenni. További információ: [lépésenkénti útmutató](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **Aktiválja és konfigurálja az SAP OData szolgáltatást**. A OData szolgáltatást másodpercek alatt aktiválhatja a TCODE SICF használatával. Azt is beállíthatja, hogy mely objektumokat kell elérhetővé tenni. További információ: [lépésenkénti útmutató](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

@@ -3,12 +3,12 @@ title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMware-megoldás használatával
 ms.topic: tutorial
 ms.date: 11/19/2020
-ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3c8ae3673ad049153c2b9700bd7efae6c4c286ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966309"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093947"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése az Azure-ban
 
@@ -49,7 +49,7 @@ Ahelyett, hogy a Azure Portal egy Azure VMware-megoldáshoz tartozó privát fel
 
 Válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
-#### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+#### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az `[az group create](/cli/azure/group)` paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
@@ -74,25 +74,6 @@ Adja meg az erőforráscsoport nevét, a saját felhőt, a helyet és a fürt m�
 ```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
-
-## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware-megoldás saját felhő törlése
-
-Ha rendelkezik olyan Azure VMware-megoldással, amelyet már nem kell használnia, törölheti. Az Azure VMware-megoldás saját felhője egy elkülönített hálózati tartományt, egy vagy több kiosztott vSphere-fürtöt tartalmaz dedikált kiszolgálói gazdagépeken és több virtuális gépen. Ha töröl egy privát felhőt, a rendszer törli az összes virtuális gépet, az adatmennyiséget és a fürtöket. A dedikált operációs rendszer nélküli gazdagépek biztonságosan törlődnek, és az ingyenes készletbe kerülnek vissza. Az ügyfél számára kiosztott hálózati tartomány törölve lett.  
-
-> [!CAUTION]
-> A privát felhő törlése visszafordíthatatlan művelet. A privát felhő törlése után az adatok nem állíthatók helyre, mivel leállítja az összes futó munkaterhelést és összetevőt, és megsemmisíti az összes titkos Felhőbeli adat-és konfigurációs beállítást, beleértve a nyilvános IP-címeket is.
-
-### <a name="prerequisites"></a>Előfeltételek
-
-A privát felhő törlése után nem lehet helyreállítani a virtuális gépeket és az azokhoz tartozó adatokat. Ha később szükség lesz a virtuális gépekre, a rendszergazdának először biztonsági másolatot kell készítenie az összes adattal a saját felhő törlése előtt.
-
-### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Azure-beli VMware-megoldás saját Felhőbeli törlésének lépései
-
-1. Nyissa meg a Azure Portal Azure VMware Solutions lapját.
-
-2. Válassza ki a törölni kívánt privát felhőt.
- 
-3. Adja meg a privát felhő nevét, és válassza az **Igen** lehetőséget. A törlési folyamat néhány órán belül befejeződik.  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-parancsok
 

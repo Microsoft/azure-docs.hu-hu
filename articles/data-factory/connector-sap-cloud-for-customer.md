@@ -1,23 +1,18 @@
 ---
 title: Adatok másolása az SAP-felhőbe vagy az ügyfél számára
 description: Megtudhatja, hogyan másolhat adatok az SAP-felhőből az ügyfelek által támogatott fogadó adattárakba (vagy) a támogatott forrás-adattárakból az SAP-felhőbe az ügyfelek számára a Data Factory használatával.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 9578b87e16f418a7923cd71aa0638fa4e9279cfd
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4590129b8d0d7a63ef4291a023ea4d980c89368c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430882"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386645"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
 
@@ -51,11 +46,11 @@ Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdons�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Igen |
-| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Igen |
-| username | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Yes |
+| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Yes |
+| username | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Yes |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | No |
 
 **Példa**
 
@@ -88,8 +83,8 @@ Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Igen |
-| path | Az SAP C4C OData entitás elérési útjának megadása. |Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Yes |
+| path | Az SAP C4C OData entitás elérési útjának megadása. |Yes |
 
 **Példa**
 
@@ -120,9 +115,9 @@ Az SAP felhőből az ügyfélnek történő adatmásoláshoz állítsa a forrás
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Igen |
-| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | Nem |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Yes |
+| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | No |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | No |
 
 Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -164,7 +159,7 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Yes |
 | writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
 | writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
 

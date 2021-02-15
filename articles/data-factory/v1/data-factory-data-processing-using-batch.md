@@ -1,23 +1,19 @@
 ---
 title: Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 description: Ismerteti, hogyan lehet a Azure Batch párhuzamos feldolgozási képességével nagy mennyiségű adatmennyiséget feldolgozni egy Azure Data Factory-folyamatban.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 365de79db450eda897621ccde3b92478ed93ecc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496160"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364273"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
@@ -187,13 +183,13 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
 
    d. A jobb oldalon válassza ki az **osztály könyvtára** elemet a projekttípus listából.
 
-   e. Adja **MyDotNetActivity** meg a MyDotNetActivity **nevet**.
+   e. Adja  meg a MyDotNetActivity **nevet**.
 
    f. Válassza a **C: \\ ADF** lehetőséget a **helyhez**. Ha nem létezik, hozza létre az **ADF** mappát.
 
    : A projekt létrehozásához válassza az **OK** lehetőséget.
 
-1. Válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**.
+1. Válassza az **Eszközök** > **NuGet-csomagkezelő** > **Package Csomagkezelő konzol** elemet.
 
 1. A Package Manager konzolon hajtsa végre a következő parancsot a Microsoft. Azure. Management. DataFactories importálásához:
 
@@ -868,7 +864,7 @@ Ebben a lépésben teszteli a folyamatot a fájlok bemeneti mappákba való eldo
 #### <a name="data-factory-and-batch-integration"></a>Data Factory és batch-integráció
 A Data Factory szolgáltatás létrehoz egy feladatot a Batchben a névvel `adf-poolname:job-xxx` .
 
-![Batch-feladatok](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+![Kötegelt feladatok](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
 A feladatban a szeletek minden egyes tevékenységéhez létrejön egy feladat. Ha 10 szelet készen áll a feldolgozásra, 10 feladat jön létre a feladatban. Ha több számítási csomóponttal rendelkezik a készletben, több párhuzamosan futó szelettel is rendelkezhet. Ha a számítási csomópontok maximális száma nagyobb, mint egy, akkor több szelet is futhat ugyanazon a számítási feladaton.
 

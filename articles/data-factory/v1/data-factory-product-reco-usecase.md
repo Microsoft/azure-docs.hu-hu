@@ -1,28 +1,23 @@
 ---
 title: Data Factory használati eset – termékre vonatkozó javaslatok
 description: További információ a Azure Data Factory használatával megvalósított használati esetekről, valamint más szolgáltatásokkal.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc1e0398f98dc72d57039530dce9751af012f154
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495293"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387189"
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – termékkel kapcsolatos javaslatok
 Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  A csomaggal kapcsolatos részletekért tekintse meg [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) oldalt. Ebben a dokumentumban általános használati esetet ismertetünk, amelyet az Azure-felhasználók már megoldottak és implementáltak Azure Data Factory és más Cortana Intelligence összetevő-szolgáltatások használatával.
 
-## <a name="scenario"></a>Használati példa
+## <a name="scenario"></a>Eset
 Az online kereskedők gyakran szeretnék megcsábítani ügyfeleiket termékeik megvásárlására azáltal, hogy olyan termékekkel látják el őket, amelyek nagy valószínűséggel érdeklik, és így nagy valószínűséggel vásárolnak. Ennek elvégzéséhez az online kiskereskedőknek személyre szabott termékre vonatkozó javaslatokkal kell testreszabnia a felhasználó online élményét. Ezeket a személyre szabott javaslatokat a jelenlegi és a korábbi vásárlási viselkedési adatok, a termékinformáció, az újonnan bevezetett márkák, valamint a termékek és az ügyfelek szegmentálási adatai alapján kell elvégezni.  Emellett a felhasználói termékre vonatkozó javaslatokat is megadhatnak a felhasználók összesített viselkedésének elemzése alapján.
 
 Ezeknek a kereskedőknek a célja, hogy optimalizálják a felhasználók kattintás utáni átalakítását, és magasabb értékesítési bevételt nyerjenek.  Ezt a konverziót a kontextust, viselkedésen alapuló termékre vonatkozó ajánlásokat biztosítanak az ügyfelek érdekei és műveletei alapján. Ebben a használati esetben az online kiskereskedőket használjuk példaként az ügyfeleknek optimalizálni kívánt vállalkozásokra. Ezek az alapelvek azonban minden olyan vállalkozásra érvényesek, amely az ügyfeleit a termékeit és szolgáltatásait szeretné felvenni, és a személyre szabott termékekkel kapcsolatos javaslatokkal fokozza ügyfeleik vásárlási tapasztalatát.

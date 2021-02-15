@@ -1,22 +1,18 @@
 ---
 title: Több tábla növekményes másolása Azure Portal használatával
 description: Ebben az oktatóanyagban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely egy SQL Server-adatbázisban található több táblából származó különbözeti adatok betöltését Azure SQL Database-adatbázisba.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: f3060a7308d728b31266008d75e18470883e4480
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 10ebca487e8149b509935b5eb4c8d9f67ced8ade
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508594"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361128"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Az adatok növekményes betöltése a SQL Server több táblájából egy Azure SQL Database-adatbázisba az Azure Portal
 
@@ -254,7 +250,7 @@ END
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás** gombra.      
+8. Kattintson a **Létrehozás** lehetőségre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -681,7 +677,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

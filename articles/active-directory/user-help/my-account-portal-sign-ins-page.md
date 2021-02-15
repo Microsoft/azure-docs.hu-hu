@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: a002254995e42fc586b707e3cb373dac66e678ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834149"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096072"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezési oldalról
 
@@ -25,6 +25,12 @@ A legutóbbi munkahelyi vagy iskolai fiók bejelentkezési tevékenységeit a **
 - Ha valaki megpróbálja kitalálni a jelszavát.
 - Ha egy támadó sikeresen bejelentkezett a fiókjába, és az adott helyről.
 - Milyen alkalmazások próbáltak hozzáférni a támadóhoz.
+
+>[!Note]
+> Ha a személyes Microsoft-fiók való bejelentkezéskor hibaüzenet jelenik meg, akkor is bejelentkezhet a szervezet tartományneve (például contoso.com) vagy a szervezete **bérlői azonosítójának** használatával a következő URL-címek egyikében:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-recent-sign-in-activity"></a>A legutóbbi bejelentkezési tevékenység megtekintése
 

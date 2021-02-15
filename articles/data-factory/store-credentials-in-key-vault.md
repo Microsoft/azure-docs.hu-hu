@@ -1,21 +1,17 @@
 ---
 title: Hitelesítő adatok tárolása az Azure Key Vaultban
 description: Megtudhatja, hogyan tárolhatja az Azure Key vaultban használt adattárak hitelesítő adatait, amelyek Azure Data Factory automatikusan lekérhető futásidőben.
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 828794715af1e7676253714da6fdc1a487c7c107
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81451686"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361893"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása Azure Key Vaultban
 
@@ -44,12 +40,12 @@ Azure Key Vault társított szolgáltatás a következő tulajdonságokat támog
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **AzureKeyVault**. | Igen |
-| baseUrl | A Azure Key Vault URL-cím megadása. | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureKeyVault**. | Yes |
+| baseUrl | A Azure Key Vault URL-cím megadása. | Yes |
 
 **Szerzői felhasználói felület használata:**
 
-Válassza a **kapcsolatok**  ->  **társított szolgáltatások**  ->  **új**lehetőséget. Az új társított szolgáltatásban keresse meg és válassza ki a "Azure Key Vault" elemet:
+Válassza a **kapcsolatok**  ->  **társított szolgáltatások**  ->  **új** lehetőséget. Az új társított szolgáltatásban keresse meg és válassza ki a "Azure Key Vault" elemet:
 
 ![Keresés Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -77,10 +73,10 @@ A következő tulajdonságok támogatottak, ha olyan mezőt konfigurál a társ�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A mező Type (típus) tulajdonságát a következőre kell beállítani: **AzureKeyVaultSecret**. | Igen |
-| secretName | A titok neve Azure Key Vaultban. | Igen |
-| Titkoskulcsverziója | A titok verziója Azure Key Vaultban.<br/>Ha nincs megadva, mindig a titkos kulcs legújabb verzióját használja.<br/>Ha meg van adva, a rendszer az adott verzióra ragaszkodik.| Nem |
-| áruház | Egy Azure Key Vault társított szolgáltatásra hivatkozik, amelyet a hitelesítő adatok tárolására használ. | Igen |
+| típus | A mező Type (típus) tulajdonságát a következőre kell beállítani: **AzureKeyVaultSecret**. | Yes |
+| secretName | A titok neve Azure Key Vaultban. | Yes |
+| Titkoskulcsverziója | A titok verziója Azure Key Vaultban.<br/>Ha nincs megadva, mindig a titkos kulcs legújabb verzióját használja.<br/>Ha meg van adva, a rendszer az adott verzióra ragaszkodik.| No |
+| áruház | Egy Azure Key Vault társított szolgáltatásra hivatkozik, amelyet a hitelesítő adatok tárolására használ. | Yes |
 
 **Szerzői felhasználói felület használata:**
 
@@ -116,5 +112,5 @@ Válassza a titkos mezők **Azure Key Vault** lehetőséget, miközben létrehoz
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

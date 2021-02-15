@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842889"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097194"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -44,9 +44,9 @@ A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuál
 
 **Becsült idő**: körülbelül 5 perc.
 
-A számítási példány létrehozása a munkaterület egyszeri folyamata. Ezt a számítást felhasználhatja fejlesztési munkaállomásként vagy betanításra szolgáló számítási célként. Több számítási példány is csatolható a munkaterülethez.
+A számítási példány létrehozása a munkaterület egyszeri folyamata. Felhasználhatja a számítási kapacitást fejlesztési munkaállomásként vagy kiszámítási célként a képzéshez. Több számítási példány is csatolható a munkaterülethez.
 
-A számítási példányok létrehozásakor a dedikált magok régiónként, a virtuálisgép-család kvótája és a teljes regionális kvóta alapján, valamint az Azure Machine Learning betanítása számítási fürt kvótáját egyesítjük és megosztva. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt. Vegye figyelembe, hogy az létrehozása után nem lehet módosítani a számítási példány virtuálisgép-méretét.
+A számítási példányok létrehozásakor a dedikált magok régiónként, a virtuálisgép-család kvótája és a teljes regionális kvóta alapján, valamint az Azure Machine Learning betanítása számítási fürt kvótáját egyesítjük és megosztva. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt. Megjegyzés: a számítási példányok virtuálisgép-méretének módosítása a létrehozás után nem lehetséges.
 
 Az alábbi példa bemutatja, hogyan hozhat létre számítási példányt:
 
@@ -230,68 +230,14 @@ Az [Azure RBAC](../role-based-access-control/overview.md) lehetővé teszi annak
 
 Ezeket a műveleteket az Azure RBAC is szabályozhatja:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/olvasás*
-* *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/törlés*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/indítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
 
-
-## <a name="access-the-terminal-window"></a>A terminál ablakának elérése
-
-Az alábbi módokon nyithatja meg a számítási példányok termináljának ablakát:
-
-* RStudio: válassza a bal felső sarokban található **terminál** fület.
-* Jupyter labor: válassza ki a **terminál** csempét az indító lap **másik** címsorában.
-* Jupyter: a fájlok lapon válassza a jobb felső sarokban található **új>terminál** elemet.
-* SSH-t a gépre, ha engedélyezte az SSH-hozzáférést a számítási példány létrehozásakor.
-
-A terminál ablak használatával telepíthet csomagokat, és további kerneleket hozhat létre.
-
-## <a name="install-packages"></a>Csomagok telepítése
-
-A csomagokat közvetlenül Jupyter Notebook vagy RStudio is telepítheti:
-
-* A RStudio a jobb alsó sarokban található **csomagok** fület vagy a bal felső sarokban található **konzol** fület használják.  
-* Python: telepítési kód hozzáadása és végrehajtása Jupyter Notebook cellában.
-
-Vagy telepítheti egy terminál-ablakból is. Telepítse a Python-csomagokat a **python 3,6-AzureML-** környezetbe.  Telepítse az R-csomagokat az **r** -környezetbe.
-
-> [!NOTE]
-> Jegyzetfüzeten belüli csomagkezelő esetén a **% pip** vagy **% Conda** Magic functions használatával automatikusan telepíthet csomagokat a **jelenleg futó kernelre**, nem pedig **! pip** vagy **! Conda** , amely az összes csomagra vonatkozik (beleértve a jelenleg futó kernelen kívüli csomagokat is)
-
-## <a name="add-new-kernels"></a>Új kernelek hozzáadása
-
-> [!WARNING]
->  A számítási példány testreszabása során győződjön meg arról, hogy nem törli a **azureml_py36** Conda-környezetet vagy a **Python 3,6-azureml** kernelt. Ez a Jupyter-/JupyterLab-funkciókhoz szükséges
-
-Új Jupyter-kernel hozzáadása a számítási példányhoz:
-
-1. Új terminál létrehozása Jupyter, JupyterLab vagy jegyzetfüzetből vagy SSH-ból a számítási példányba
-2. Hozzon létre egy új környezetet a terminálablak használatával.  Az alábbi kód például a következőt hozza létre `newenv` :
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. Aktiválja a környezetet.  Például a létrehozása után `newenv` :
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. Telepítse a pip és a ipykernel csomagot az új környezetbe, és hozzon létre egy kernelt az adott Conda env számára
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) bármelyike telepíthető.
-
-
-
 ## <a name="next-steps"></a>Következő lépések
 
+* [A számítási példány termináljának elérése](how-to-access-terminal.md)
+* [Fájlok létrehozása és kezelése](how-to-manage-files.md)
 * [Betanítási Futtatás beküldése](how-to-set-up-training-targets.md)

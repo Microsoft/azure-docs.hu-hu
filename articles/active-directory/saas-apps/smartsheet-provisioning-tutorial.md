@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e9ee994564e175d3c41cfd5ce415ead8c67df353
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181441"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103549"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Smartsheet konfigurálása
 
@@ -137,22 +137,20 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Smartsheet. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Smartsheet felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-   |Attribútum|Típus|
-   |---|---|
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
    |active|Logikai|
    |cím|Sztring|
-   |userName (Felhasználónév)|Sztring|
    |name.givenName|Sztring|
    |name.familyName|Sztring|
    |phoneNumbers[type eq "work"].value|Sztring|
    |phoneNumbers[type eq "mobile"].value|Sztring|
    |phoneNumbers [type EQ "fax"]. Value|Sztring|
+   |emails[type eq "work"].value|Sztring|
    |externalId|Sztring|
-   |szerepkörök [elsődleges EQ "true"]. megjelenítés|Sztring|
-   |szerepkörök [elsődleges EQ "true"]. Type|Sztring|
-   |roles[primary eq "True"].value|Sztring|
    |szerepkörök|Sztring|
-   urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Division|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: costCenter|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Sztring|
@@ -188,6 +186,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 ## <a name="change-log"></a>Változási napló
 
 * 06/16/2020 – a felhasználók számára a "Cost Center", a "Division", a "Manager" és a "Department" nagyvállalati szintű bővítmények támogatása.
+* 02/10/2021 – a felhasználók számára az "e-mailek [type EQ" work "]" alapvető attribútumok támogatása.
 
 ## <a name="additional-resources"></a>További források
 

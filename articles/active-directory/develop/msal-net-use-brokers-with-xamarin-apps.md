@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583841"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103991"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
@@ -183,7 +183,7 @@ Adja hozzá az átirányítási URI-t az alkalmazás regisztrálásához a [Azur
 
 **Az átirányítási URI előállítása:**
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk** a regisztrált alkalmazás >
 1. **Hitelesítés** kiválasztása  >    >  **iOS/MacOS** platform hozzáadása
 1. Adja meg a köteg AZONOSÍTÓját, majd válassza a **Konfigurálás** lehetőséget.

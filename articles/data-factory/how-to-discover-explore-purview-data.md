@@ -1,22 +1,18 @@
 ---
 title: Az ADF-ben lévő adatfelderítés és-vizsgálat a hatáskörébe
 description: Ismerje meg, hogyan derítheti fel Azure Data Factory az adataikat a hatáskörébe
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: accb9bbf195daa3d25e1aed109e36ef309083385
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 031e7ceee739ffd666ad367bd6778865a297a25d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805309"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386271"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Az ADF-ben lévő adatfelderítés és-vizsgálat a hatáskörébe
 

@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 820bc7dfe9123db495c151cd5cd0ea5ae337619f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017752"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103974"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
 
@@ -45,7 +45,7 @@ Az ügyfélalkalmazás kódja engedélyt kér a webes API által meghatározott 
 
 Először hajtsa végre az alábbi lépéseket egy nevű példa hatókör létrehozásához `Employees.Read.All` :
 
-1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Jelentkezzen be az <a href="https://portal.azure.com/" target="_blank">Azure Portalra</a>.
 1. Ha több bérlőhöz fér hozzá, használja a felső menüben található **Directory + előfizetés** szűrőt, :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: és válassza ki az ügyfélalkalmazás regisztrációját tartalmazó bérlőt.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**, majd válassza ki az API-alkalmazás regisztrációját.
 1. Válassza ki **az API**  >  **hozzáadása hatókört**.
@@ -111,7 +111,7 @@ Miután az ügyfélalkalmazás regisztrálva van a webes API-hoz való hozzáfé
 
 A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több művelethez társított több hatókört is ki tud tenni. Az erőforrás a (z) `scp` OAuth 2,0 hozzáférési jogkivonatban található hatókör () jogcímek kiértékelésével képes a webes API-hoz való hozzáférés szabályozására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kitette a webes API-t a hatókörök konfigurálásával, konfigurálja az ügyfélalkalmazás regisztrációját, és engedélyezze a hatókörök elérését.
 

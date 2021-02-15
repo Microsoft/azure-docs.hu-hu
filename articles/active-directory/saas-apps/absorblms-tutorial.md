@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5e962592779494e1d60d03e9e8a167d53ac8bda2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673868"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Oktatóanyag: Azure Active Directory integráció az LMS-sel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az LMS-t az Azure Active Directory (Azure AD) használatával.
-A bevonási LMS és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a befogadási LMS-t Azure Active Directory (Azure AD) használatával. Ha integrálja az LMS-t az Azure AD-vel, a következőket teheti:
 
-* Megadhatja az Azure AD-t, aki hozzáfér az LMS befogadásához.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az LMS (egyszeri bejelentkezés) Azure AD-fiókjával való befogadására.
+* Vezérlő az Azure AD-ben, aki hozzáfér az LMS befogadásához.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az LMS és az Azure AD-fiókjuk befogadására.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció a befogadási LMS szolgáltatással való konfigurálásához a következő elemek szükségesek:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
-* Az LMS egyszeri bejelentkezésre engedélyezett előfizetésének befogadása
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az LMS egyszeri bejelentkezést engedélyező előfizetésének befogadása.
 
 > [!NOTE]
 > Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
@@ -46,75 +42,56 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 * A befogadási LMS támogatja a **identitásszolgáltató** KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-absorb-lms-from-the-gallery"></a>Elnyelő LMS hozzáadása a katalógusból
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+
+## <a name="add-absorb-lms-from-the-gallery"></a>Elnyelő LMS hozzáadása a katalógusból
 
 A befogadási LMS Azure AD-be való integrálásának konfigurálásához fel kell vennie az LMS szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A következő lépések végrehajtásával adhat hozzá befogadó LMS-t a katalógusból:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **befogadja az LMS** elemet a keresőmezőbe.
+1. Jelölje be az **LMS befogadása** az eredmények paneljén lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-sso-for-absorb-lms"></a>Azure AD SSO konfigurálása és tesztelése a befogadási LMS számára
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a befogadási LMS használatával egy **B. Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az LMS-ben.
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a befogadási LMS használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[befogadási LMS egyszeri bejelentkezés konfigurálása](#configure-absorb-lms-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre egy befogadási LMS-teszt felhasználót](#create-absorb-lms-test-user)** –, hogy a B. Simon-nak egy, a felhasználó Azure ad-képviseletéhez kapcsolódó LMS-t tartalmazó.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A keresőmezőbe írja be a következőt: **elnyelő LMS**, válassza az **LMS befogadása** az eredményekből panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. A Azure Portal az **LMS** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
-    ![Az LMS befogadása az eredmények listájában](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a befogadási LMS-ben.
-
-Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[befogadási LMS egyszeri bejelentkezésének konfigurálása](#configure-absorb-lms-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre egy befogadási LMS-teszt felhasználót](#create-absorb-lms-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó LMS-ben való befogadásához.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő konfigurálásához hajtsa végre a következő lépéseket:
-
-1. Az [Azure Portal](https://portal.azure.com/)az **LMS** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Az LMS-tartomány és az URL-címek egyszeri bejelentkezési adatainak befogadása](common/idp-intiated.png)
-
     Ha **5 felhasználói felületet** használ, használja a következő konfigurációt:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/account/saml`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.myabsorb.com/account/saml`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/account/saml`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.myabsorb.com/account/saml`
 
     Ha **5 – új tanulási élményt** használ, használja a következő konfigurációt:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.myabsorb.com/api/rest/v2/authentication/saml`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez vegye fel a kapcsolatot az [LMS ügyfél-támogatási csapatával](https://support.absorblms.com/hc/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -131,27 +108,45 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    b. Azure AD-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL-cím
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="configure-absorb-lms-single-sign-on"></a>A befogadási LMS egyszeri Sign-On konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az LMS befogadására való hozzáférés biztosításával.
+
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **LMS befogadása** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-absorb-lms-sso"></a>A befogadási LMS egyszeri bejelentkezésének konfigurálása
 
 1. Egy új böngészőablakban jelentkezzen be rendszergazdaként az LMS céges webhelyre.
 
 2. Kattintson a jobb felső sarokban található **fiók** gombra.
 
-    ![A fiók gomb](./media/absorblms-tutorial/1.png)
+    ![A fiók gomb](./media/absorblms-tutorial/account.png)
 
 3. A fiók ablaktáblán válassza a **portál beállításai** lehetőséget.
 
-    ![A portál beállításainak hivatkozása](./media/absorblms-tutorial/2.png)
+    ![A portál beállításainak hivatkozása](./media/absorblms-tutorial/portal.png)
 
 4. Válassza az **SSO-beállítások kezelése** lapot.
 
-    ![A felhasználók lap](./media/absorblms-tutorial/managesso.png)
+    ![A felhasználók lap](./media/absorblms-tutorial/sso.png)
 
 5. Az **önálló Sign-On-beállítások kezelése** lapon tegye a következőket:
 
@@ -179,57 +174,6 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
 
     ![Az egyszeri bejelentkezési bejelentkezés engedélyezése](./media/absorblms-tutorial/save.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
-
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-
-    b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon\@yourcompanydomain.extension`  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
-
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az LMS befogadására való hozzáférés biztosításával.
-
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **LMS befogadása** lehetőséget.
-
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
-
-2. Az alkalmazások listában írja be és válassza az **LMS befogadása** lehetőséget.
-
-    ![A befogadási LMS hivatkozása az alkalmazások listájában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
-
 ### <a name="create-absorb-lms-test-user"></a>Befogadási LMS-teszt felhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az LMS-be, be kell őket állítani az LMS-ben. A befogadási LMS esetében a kiépítés manuális feladat.
@@ -240,11 +184,11 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az LMS-be, be kell őket
 
 2. A **felhasználók** ablaktáblán válassza a **felhasználók** lehetőséget.
 
-    ![A felhasználók hivatkozás](./media/absorblms-tutorial/absorblms_userssub.png)
+    ![A felhasználók hivatkozás](./media/absorblms-tutorial/users.png)
 
 3. Válassza a **felhasználó** fület.
 
-    ![Az új legördülő lista hozzáadása](./media/absorblms-tutorial/absorblms_createuser.png)
+    ![Az új legördülő lista hozzáadása](./media/absorblms-tutorial/add.png)
 
 4. A **felhasználó hozzáadása** lapon tegye a következőket:
 
@@ -269,16 +213,14 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az LMS-be, be kell őket
     > [!NOTE]
     > Alapértelmezés szerint a felhasználó kiépítés nincs engedélyezve az SSO-ban. Ha az ügyfél szeretné engedélyezni ezt a szolgáltatást, azt a [jelen](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning) dokumentációban említetteknek megfelelően be kell állítani. Azt is vegye figyelembe, hogy a felhasználói elővision csak az **5 – új tanulói élmény** az ACS URL-címmel érhető el`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Amikor a hozzáférési panelen a befogadási LMS csempére kattint, automatikusan be kell jelentkeznie a befogadási LMS-be, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a befogadási LMS-be, amelyhez be kell állítania az egyszeri bejelentkezést.
 
-## <a name="additional-resources"></a>További források
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások alkalmazásban az LMS-csempére kattint, automatikusan be kell jelentkeznie a befogadási LMS-be, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+A befogadási LMS konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

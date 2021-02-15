@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 02/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 4d095c3cc7e67938120260c35376b128be73ffa8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cd6ba1da92a19a1f73fc67c0165bfb19b3bb77aa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726980"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeter-81"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrációja a peremhálózati 81
 
@@ -71,13 +71,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal a **peremhálózati 81** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `urn:auth0:perimeter81:<SUBDOMAIN>`
+    a. Az **azonosító** szövegmezőbe írja be a következő mintát használó értéket: `urn:auth0:perimeter81:<SUBDOMAIN>`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://auth.perimeter81.com/login/callback?connection=<SUBDOMAIN>`
 
@@ -88,9 +88,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek beszerzéséhez vegye fel a kapcsolatot a [peremhálózati 81 ügyfél-támogatási csapatával](mailto:support@perimeter81.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+
+1. A **szegélyhálózati 81 beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
@@ -117,7 +122,42 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-perimeter-81-sso"></a>A szegélyhálózati 81 SSO konfigurálása
 
-Az egyszeri bejelentkezésnek a **peremhálózati 81** oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [szegélyhálózati 81 támogatási csapatának](mailto:support@perimeter81.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Az 81-es peremhálózati konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **szegélyhálózati 81 beállítása** elemre, majd a peremhálózati 81-alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a 81-as körzetbe való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha a szegélyhálózati 81-et manuálisan szeretné beállítani, egy másik böngészőablakban jelentkezzen be a szegélyhálózati 81 vállalati webhelyre rendszergazdaként.
+
+4. Lépjen a **Beállítások** pontra, és kattintson az **identitás-szolgáltatók** elemre.
+
+    ![Peremhálózati 81-beállítások](./media/perimeter-81-tutorial/settings.png)
+
+5. Kattintson a **szolgáltató hozzáadása** gombra.
+
+    ![Peremhálózati 81 – szolgáltató hozzáadása](./media/perimeter-81-tutorial/add-provider.png)
+
+6. Válassza ki az **SAML 2,0 Identity Providers** elemet, majd kattintson a **Continue (folytatás** ) gombra.
+
+    ![Peremhálózati 81 – identitás-szolgáltató hozzáadása](./media/perimeter-81-tutorial/add-identity-provider.png)
+
+7. Az **SAML 2,0 Identity Providers** szakaszban hajtsa végre a következő lépéseket:
+
+    ![Peremhálózati 81 – SAML beállítása](./media/perimeter-81-tutorial/setting-up-saml.png)
+
+    a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
+
+    b. A **tartomány aliasnevei** szövegmezőbe írja be a tartomány aliasának értékét.
+
+    c. Nyissa meg a letöltött **tanúsítványt (Base64)** a Azure Portal a Jegyzettömbben, és illessze be a tartalmat a **X509 aláíró tanúsítvány** szövegmezőbe.
+
+    > [!NOTE]
+    > Azt is megteheti, hogy a **PEM/tanúsítvány feltöltése** lehetőségre kattint a Azure Portalról letöltött **tanúsítvány (Base64)** feltöltéséhez.
+    
+    d. Kattintson a **Kész** gombra.
 
 ### <a name="create-perimeter-81-test-user"></a>Peremhálózati 81 tesztelési felhasználó létrehozása
 
@@ -135,10 +175,10 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a peremhálózati 81-re, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a peremhálózati 81-re, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
 A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások felületén a 81-es csempére kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a peremhálózati 81-be, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szegélyhálózati 81 konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
